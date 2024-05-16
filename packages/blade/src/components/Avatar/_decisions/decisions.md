@@ -4,11 +4,9 @@ An avatar component is a standardized visual representation of a user or entity.
 
 This document serves as an overview of the API for the `Avatar` component.
 
-
 <img width="50%" alt="Avatar Thumbnail" src="https://github.com/razorpay/blade/assets/46647141/6e89d932-602f-435f-9519-c46a41ddb4d5" />
 
 <img width="50%" alt="AvatarGroup Thumbnail" src="https://github.com/razorpay/blade/assets/46647141/e54260e8-7f8c-4343-b5f9-8b332d65161f" />
-
 
 ## Design
 
@@ -163,45 +161,6 @@ const App = () => (
     <Avatar color="notice" name="Sachin Tendulkar" />
   </AvatarGroup>
 );
-```
-
-### With Dropdown
-
-`Avatar` can also act as a dropdown trigger:
-
-```tsx
-import React from 'react';
-import {
-  Dropdown,
-  DropdownOverlay,
-  Avatar,
-  ActionList,
-  ActionListItem,
-  Box,
-} from '@razorpay/blade/components';
-
-const App = () => {
-  const menuItems = [
-    'Settings',
-    'Profile',
-    'Transactions',
-    'Help',
-    'Refunds',
-    'Settlements',
-    'Payouts',
-  ];
-
-  return (
-    <Dropdown>
-      <Avatar name="Nitin Kumar" src="https://api.rzp.com/user/snitin315" />
-      <DropdownOverlay>
-        <ActionList>
-          {menuItems.map((item, index) => <ActionListItem key={index} title={item} value={item} />)}
-        </ActionList>
-      </DropdownOverlay>
-    </Dropdown>
-  );
-};
 ```
 
 ## Accessibility
