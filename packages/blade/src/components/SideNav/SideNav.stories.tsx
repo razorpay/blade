@@ -25,6 +25,7 @@ import {
 import { Heading } from '~components/Typography';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
+import { Tooltip } from '~components/Tooltip';
 
 export default {
   title: 'Components/SideNav',
@@ -213,10 +214,17 @@ const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
             title="Payment Gateway"
             icon={HomeIcon}
             href="/app/pg"
-            trailing={<Button variant="tertiary" size="xsmall" icon={PlusIcon} />}
+            trailing={
+              <Tooltip content="Create Payouts (Cmd + P)" placement="right">
+                <Button variant="tertiary" size="xsmall" icon={PlusIcon} />
+              </Tooltip>
+            }
           />
           <NavItem
             title="Payment Links"
+            tooltip={{
+              content: 'Accept Payments via Payment Links',
+            }}
             titleSuffix={
               <Badge size="small" color="positive">
                 New
@@ -253,6 +261,9 @@ const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
             icon={SettingsIcon}
             href="/settings"
             activeOnLinks={['/settings/user', '/settings/account']}
+            tooltip={{
+              content: 'Open Settings',
+            }}
           >
             <SideNavLevel>
               <NavItem icon={UserIcon} title="User Settings" href="/settings/user" />

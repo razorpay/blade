@@ -1,6 +1,7 @@
 import type React from 'react';
 import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
+import type { TooltipProps } from '~components/Tooltip';
 
 type SideNavProps = {
   children: React.ReactNode;
@@ -28,6 +29,7 @@ type SideNavLinkProps = {
   isCurrentPage?: boolean;
   icon?: IconComponent;
   children?: React.ReactElement;
+  tooltip?: Pick<TooltipProps, 'title' | 'content' | 'onOpenChange'>;
 };
 
 type SideNavSectionProps = {

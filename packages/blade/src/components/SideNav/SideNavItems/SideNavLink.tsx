@@ -13,6 +13,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
 import { makeAccessible } from '~utils/makeAccessible';
+import { Tooltip } from '~components/Tooltip';
 
 const StyledNavLinkContainer = styled.a((props) => {
   return {
@@ -84,6 +85,24 @@ const StyledNavLinkContainer = styled.a((props) => {
   };
 });
 
+const TooltipifyNavLink = ({
+  children,
+  tooltip,
+}: {
+  children: React.ReactElement;
+  tooltip: SideNavLinkProps['tooltip'];
+}): React.ReactElement => {
+  if (!tooltip) {
+    return children;
+  }
+
+  return (
+    <Tooltip {...tooltip} placement="top">
+      {children}
+    </Tooltip>
+  );
+};
+
 const NavLinkIconTitle = ({
   icon: Icon,
   title,
@@ -121,9 +140,10 @@ const L3Trigger = ({
   as,
   href,
   titleSuffix,
+  tooltip,
 }: Pick<
   SideNavLinkProps,
-  'title' | 'icon' | 'as' | 'href' | 'titleSuffix'
+  'title' | 'icon' | 'as' | 'href' | 'titleSuffix' | 'tooltip'
 >): React.ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
@@ -134,17 +154,19 @@ const L3Trigger = ({
   } as const;
 
   return (
-    <StyledNavLinkContainer
-      as={href ? as : 'button'}
-      to={href}
-      onClick={toggleCollapse}
-      {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
-    >
-      <NavLinkIconTitle title={title} icon={icon} isL1Item={false} titleSuffix={titleSuffix} />
-      <BaseBox display="flex" alignItems="center">
-        {isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />}
-      </BaseBox>
-    </StyledNavLinkContainer>
+    <TooltipifyNavLink tooltip={tooltip}>
+      <StyledNavLinkContainer
+        as={href ? as : 'button'}
+        to={href}
+        onClick={toggleCollapse}
+        {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
+      >
+        <NavLinkIconTitle title={title} icon={icon} isL1Item={false} titleSuffix={titleSuffix} />
+        <BaseBox display="flex" alignItems="center">
+          {isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />}
+        </BaseBox>
+      </StyledNavLinkContainer>
+    </TooltipifyNavLink>
   );
 };
 
@@ -156,6 +178,7 @@ const SideNavLink = ({
   trailing,
   isCurrentPage,
   icon,
+  tooltip,
   as,
 }: SideNavLinkProps): React.ReactElement => {
   const {
@@ -202,51 +225,53 @@ const SideNavLink = ({
         </Collapsible>
       ) : (
         <>
-          <StyledNavLinkContainer
-            as={as}
-            to={href}
-            ref={refs.setReference}
-            onClick={() => {
-              // Close the mobile nav when item is clicked and its not trigger for next menu
-              if (!isL2Trigger) {
-                closeMobileNav?.();
-              }
+          <TooltipifyNavLink tooltip={tooltip}>
+            <StyledNavLinkContainer
+              as={as}
+              to={href}
+              ref={refs.setReference}
+              onClick={() => {
+                // Close the mobile nav when item is clicked and its not trigger for next menu
+                if (!isL2Trigger) {
+                  closeMobileNav?.();
+                }
 
-              if (isCurrentPage && isL2Trigger) {
-                onLinkActiveChange?.({
-                  id: navItemId,
-                  level: currentLevel,
-                  title,
-                  isActive: Boolean(isCurrentPage),
-                  isL2Trigger,
-                });
-              }
-            }}
-            onFocus={() => {
-              if (isL1Collapsed && currentLevel === 1) {
-                setIsL1Collapsed?.(false);
-              }
-            }}
-            aria-current={isCurrentPage ? 'page' : undefined}
-            data-level={currentLevel}
-            data-l2trigger={isL2Trigger}
-            data-navitemid={navItemId}
-          >
-            <NavLinkIconTitle
-              icon={icon}
-              title={title}
-              isL1Item={currentLevel === 1}
-              titleSuffix={titleSuffix}
-            />
-            {isL2Trigger ? (
-              <BaseBox className="hide-when-collapsed">
-                <ChevronRightIcon size="medium" color="currentColor" />
-              </BaseBox>
-            ) : null}
-            {trailing && !isL2Trigger ? (
-              <BaseBox className="hide-when-collapsed show-on-link-hover">{trailing}</BaseBox>
-            ) : null}
-          </StyledNavLinkContainer>
+                if (isCurrentPage && isL2Trigger) {
+                  onLinkActiveChange?.({
+                    id: navItemId,
+                    level: currentLevel,
+                    title,
+                    isActive: Boolean(isCurrentPage),
+                    isL2Trigger,
+                  });
+                }
+              }}
+              onFocus={() => {
+                if (isL1Collapsed && currentLevel === 1) {
+                  setIsL1Collapsed?.(false);
+                }
+              }}
+              aria-current={isCurrentPage ? 'page' : undefined}
+              data-level={currentLevel}
+              data-l2trigger={isL2Trigger}
+              data-navitemid={navItemId}
+            >
+              <NavLinkIconTitle
+                icon={icon}
+                title={title}
+                isL1Item={currentLevel === 1}
+                titleSuffix={titleSuffix}
+              />
+              {isL2Trigger ? (
+                <BaseBox className="hide-when-collapsed">
+                  <ChevronRightIcon size="medium" color="currentColor" />
+                </BaseBox>
+              ) : null}
+              {trailing && !isL2Trigger ? (
+                <BaseBox className="hide-when-collapsed show-on-link-hover">{trailing}</BaseBox>
+              ) : null}
+            </StyledNavLinkContainer>
+          </TooltipifyNavLink>
           {children ? (
             <FloatingPortal root={l2PortalContainerRef}>
               {isCurrentPage && isL1Collapsed ? (
