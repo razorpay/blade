@@ -234,6 +234,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
+      gap: makeSpace(theme.spacing[8]),
       table: {
         borderCollapse: 'collapse',
         width: '100%',

@@ -6,7 +6,7 @@ import { shiftTimezone, useDatesContext } from '@mantine/dates';
 import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { Calendar } from './Calendar';
-import { PresetSideBar } from './PresetSideBar';
+import { PresetSideBar } from './QuickSelection/PresetSideBar';
 import type { CalendarProps, DateSelectionType } from './types';
 import { useDatesState } from './useDatesState';
 import { DatePickerInput } from './DateInput';

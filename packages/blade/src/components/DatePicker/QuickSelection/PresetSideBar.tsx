@@ -1,10 +1,12 @@
 import type { DatesRangeValue } from '@mantine/dates';
-import type { CalendarProps } from './types';
+import type { CalendarProps } from '../types';
+import { QuickSelectionItem } from './QuickSelectionItem';
 import { Box } from '~components/Box';
-import { Link } from '~components/Link';
 import { makeSpace } from '~utils';
 import { Chip, ChipGroup } from '~components/Chip';
 import { Divider } from '~components/Divider';
+import BaseBox from '~components/Box/BaseBox';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const isSamePreset = (value1: DatesRangeValue | null, value2: DatesRangeValue | null): boolean => {
   if (!value1?.[0] || !value1?.[1]) return false;
@@ -59,32 +61,31 @@ const PresetSideBar = ({
   }
 
   return (
-    <Box
-      padding="spacing.6"
+    <BaseBox
+      padding="spacing.5"
       display="flex"
       flexDirection="column"
-      gap="spacing.5"
+      gap="spacing.2"
       backgroundColor="surface.background.gray.moderate"
-      width={makeSpace(160)}
+      minWidth={makeSpace(160)}
       borderRightColor="surface.border.gray.muted"
       borderRightStyle="solid"
       borderRightWidth="thin"
+      {...makeAccessible({ role: 'listbox', label: 'Select Presets' })}
     >
       {presets.map((preset, index) => {
         const isSelected = isSamePreset(selectedPreset, preset.value(date));
         return (
-          <Link
+          <QuickSelectionItem
             key={index}
-            size="medium"
-            variant="button"
-            color={isSelected ? 'primary' : 'neutral'}
+            isSelected={isSelected}
             onClick={() => onSelection(preset.value)}
           >
             {preset.label}
-          </Link>
+          </QuickSelectionItem>
         );
       })}
-    </Box>
+    </BaseBox>
   );
 };
 
