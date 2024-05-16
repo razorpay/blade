@@ -7,6 +7,8 @@ import type { FormInputValidationProps } from '~components/Form';
 import { ArrowRightIcon, CalendarIcon } from '~components/Icons';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { BaseInput } from '~components/Input/BaseInput';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils';
 import type { BladeElementRef } from '~utils/types';
 
 const _DateInput = (
@@ -59,6 +61,10 @@ type DatePickerCommonInputProps = {
 type DatePickerInputProps = DatePickerCommonInputProps &
   (DatePickerRangeInputProps | DatePickerSingleInputProps);
 
+const iconVerticalMargin = {
+  medium: size[16],
+  large: size[24],
+} as const;
 const _DatePickerInput = (
   {
     selectionType,
@@ -67,13 +73,15 @@ const _DatePickerInput = (
     date,
     label,
     labelPosition,
+    size = 'medium',
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
 ): React.ReactElement => {
   const format = 'DD/MM/YYYY';
-  const isLarge = props.size === 'large';
+  const isLarge = size === 'large';
   const isLabelPositionLeft = labelPosition === 'left';
+  const hasLabel = Boolean(label);
   const { locale } = useDatesContext();
 
   if (selectionType == 'single') {
@@ -86,6 +94,7 @@ const _DatePickerInput = (
         placeholder="DD MMM YYYY"
         popupId={referenceProps['aria-controls']}
         isPopupExpanded={referenceProps['aria-expanded']}
+        size={size}
         value={getFormattedDate({
           date,
           format,
@@ -105,7 +114,7 @@ const _DatePickerInput = (
         width="100%"
         display="flex"
         flexDirection="row"
-        gap="spacing.3"
+        gap="spacing.4"
         alignItems="flex-end"
         ref={ref as never}
       >
@@ -119,6 +128,7 @@ const _DatePickerInput = (
             placeholder={format}
             popupId={referenceProps['aria-controls']}
             isPopupExpanded={referenceProps['aria-expanded']}
+            size={size}
             value={getFormattedDate({
               type: 'default',
               date: date[0],
@@ -132,8 +142,13 @@ const _DatePickerInput = (
         </BaseBox>
         <BaseBox flexShrink={0} alignSelf="start">
           <ArrowRightIcon
-            marginTop={isLabelPositionLeft ? '0%' : `calc(22px + ${isLarge ? '200%' : '100%'})`}
-            size="small"
+            size="medium"
+            marginTop={
+              // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
+              hasLabel && !isLabelPositionLeft
+                ? `calc(${makeSize(iconVerticalMargin[size])} + ${isLarge ? '20px' : '15px'})`
+                : makeSize(iconVerticalMargin[size])
+            }
           />
         </BaseBox>
         <BaseBox flex={1}>
@@ -145,6 +160,7 @@ const _DatePickerInput = (
             labelPosition={isLabelPositionLeft ? undefined : labelPosition}
             popupId={referenceProps['aria-controls']}
             isPopupExpanded={referenceProps['aria-expanded']}
+            size={size}
             value={getFormattedDate({
               type: 'default',
               date: date[1],
