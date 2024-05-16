@@ -4,7 +4,7 @@ import { avatarSizeTokens, avatarBorderRadiusTokens } from './avatarTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeBorderSize, makeSize } from '~utils';
 
-const StyledAvatar = styled(BaseBox)<StyledAvatarProps>(({ theme, variant, color, size }) => {
+const StyledAvatar = styled(BaseBox)<StyledAvatarProps>(({ theme, variant, size }) => {
   return {
     display: 'flex',
     width: makeSize(avatarSizeTokens[size]),
