@@ -2,14 +2,13 @@ import type { ReactElement } from 'react';
 import React from 'react';
 import type { AvatarProps } from './types';
 import { StyledAvatar } from './StyledAvatar';
-import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 import { useAvatarGroupContext } from './AvatarGroupContext';
 import { AvatarButton } from './AvatarButton';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
-import type { IconComponent } from '~components/Icons';
+import { UserIcon } from '~components/Icons';
 
 const getInitials = (name: string): string => {
   // Combine first and last name initials
@@ -80,9 +79,7 @@ const _Avatar = ({
       return <AvatarButton {...commonButtonProps}>{getInitials(name)}</AvatarButton>;
     }
 
-    return (
-      <AvatarButton {...commonButtonProps} icon={(icon ?? DefaultAvatarIcon) as IconComponent} />
-    );
+    return <AvatarButton {...commonButtonProps} icon={icon ?? UserIcon} />;
   };
 
   return (
@@ -116,7 +113,7 @@ const _Avatar = ({
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-avatar-avatar Avatar Documentation}
  * 
  */
-const Avatar = assignWithoutSideEffects(React.forwardRef(_Avatar), {
+const Avatar = assignWithoutSideEffects(_Avatar, {
   displayName: 'Avatar',
   componentId: 'Avatar',
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledAvatarButton } from './StyledAvatarButton';
 import type { AvatarButtonProps } from './types';
-import { avatarTextSizeMapping } from './avatarTokens';
+import { avatarTextSizeMapping, avatarIconSizeTokens } from './avatarTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils/makeAccessible';
 import { Heading, Text } from '~components/Typography';
@@ -69,7 +69,7 @@ const AvatarButton = ({
       >
         {Icon ? (
           <BaseBox display="flex" justifyContent="center" alignItems="center">
-            <Icon size={size} color={iconColor} />
+            <Icon size={avatarIconSizeTokens[size]} color={iconColor} />
           </BaseBox>
         ) : null}
 

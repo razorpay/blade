@@ -9,11 +9,11 @@ const avatarSizeTokens = {
 } as const;
 
 const avatarIconSizeTokens = {
-  xsmall: size[16],
-  small: size[16],
-  medium: size[20],
-  large: size[24],
-  xlarge: size[30],
+  xsmall: 'small',
+  small: 'medium',
+  medium: 'medium',
+  large: 'large',
+  xlarge: 'xlarge',
 } as const;
 
 const avatarTextSizeMapping = {
