@@ -5,14 +5,11 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -20,29 +17,13 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -53,9 +34,48 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(200,84%,44%,0.09);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,84%,37%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -71,111 +91,6 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(200,84%,44%,0.09);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(200,84%,44%,0.09);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(200,84%,44%,0.09);
-  border-color: hsla(200,84%,44%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(200,84%,44%,0.18);
-  border-color: hsla(200,84%,44%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(200,84%,44%,0.18);
-  border-color: hsla(200,84%,44%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(200,84%,44%,0.18);
-  border-color: hsla(200,84%,44%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -183,25 +98,18 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="information"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -213,14 +121,11 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -228,29 +133,13 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(4,74%,49%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -261,9 +150,48 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(4,74%,49%,0.09);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -279,111 +207,6 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(4,74%,49%,0.09);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(4,74%,49%,0.09);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(4,74%,49%,0.18);
-  border-color: hsla(4,74%,49%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(4,74%,49%,0.18);
-  border-color: hsla(4,74%,49%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(4,74%,49%,0.18);
-  border-color: hsla(4,74%,49%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -391,25 +214,18 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="negative"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -421,14 +237,11 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -436,29 +249,13 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -469,9 +266,48 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -487,111 +323,6 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -599,25 +330,18 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -629,14 +353,11 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -644,29 +365,13 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(25,85%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -677,9 +382,48 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(25,90%,48%,0.09);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(25,85%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -695,111 +439,6 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(25,90%,48%,0.09);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(25,90%,48%,0.09);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(25,90%,48%,0.09);
-  border-color: hsla(25,90%,48%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(25,90%,48%,0.18);
-  border-color: hsla(25,90%,48%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(25,90%,48%,0.18);
-  border-color: hsla(25,90%,48%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(25,90%,48%,0.18);
-  border-color: hsla(25,90%,48%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -807,25 +446,18 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="notice"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -837,14 +469,11 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -852,29 +481,13 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(150,100%,27%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -885,9 +498,48 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(150,100%,32%,0.09);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -903,111 +555,6 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(150,100%,32%,0.09);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(150,100%,32%,0.09);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(150,100%,32%,0.18);
-  border-color: hsla(150,100%,32%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(150,100%,32%,0.18);
-  border-color: hsla(150,100%,32%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(150,100%,32%,0.18);
-  border-color: hsla(150,100%,32%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -1015,25 +562,18 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="positive"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -1045,14 +585,11 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1060,29 +597,13 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(227,100%,59%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1093,9 +614,48 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -1109,111 +669,6 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
 }
 
 <div>
@@ -1223,253 +678,20 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="primary"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
-  </div>
-</div>
-`;
-
-exports[`<Avatar /> should render avatar with dropdown 1`] = `
-.c0.c0.c0.c0.c0 {
-  text-align: left;
-  position: relative;
-}
-
-.c1.c1.c1.c1.c1 {
-  background-color: hsla(0,0%,100%,1);
-}
-
-.c5.c5.c5.c5.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.c7.c7.c7.c7.c7 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 20px;
-  height: 20px;
-  border-radius: 9999px;
-}
-
-.c2.c2.c2.c2.c2 div[data-blade-component="base-text"] {
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c2.c2.c2.c2.c2 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c2.c2.c2.c2.c2 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c2.c2.c2.c2.c2 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c3.c3.c3.c3.c3 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c3.c3.c3.c3.c3:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c3.c3.c3.c3.c3:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c3.c3.c3.c3.c3 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c4.c4.c4.c4.c4 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c6.c6.c6.c6.c6 {
-  opacity: 1;
-}
-
-<div>
-  <div
-    class=""
-    data-blade-component="dropdown"
-  >
-    <div
-      class="c0"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c1 c2"
-        data-blade-component="avatar"
-      >
-        <button
-          aria-controls="dropdown-1-actionlist"
-          aria-expanded="false"
-          aria-haspopup="menu"
-          class="c3"
-          data-blade-component="button"
-          role="button"
-          type="button"
-        >
-          <div
-            class=" c4"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c5 c6"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c7"
-                data-blade-component="base-text"
-              >
-                NK
-              </div>
-            </div>
-          </div>
-        </button>
-      </div>
-    </div>
   </div>
 </div>
 `;
@@ -1479,14 +701,11 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1494,14 +713,16 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
+  height: 100%;
 }
 
-.c6.c6.c6.c6.c6 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1524,9 +745,48 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -1542,112 +802,6 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  height: 28px;
-  width: 28px;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -1655,51 +809,48 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
         <div
-          class="c4 c5"
+          class="c4"
           data-blade-component="base-box"
         >
-          <div
-            class="c6"
-            data-blade-component="base-box"
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="8px"
+            viewBox="0 0 24 24"
+            width="8px"
           >
-            <svg
-              aria-hidden="true"
-              class="Svgweb__StyledSvg-vcmjs8-0"
-              data-blade-component="icon"
-              fill="none"
-              height="8px"
-              viewBox="0 0 24 24"
-              width="8px"
-            >
-              <path
-                d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
-              />
-              <path
-                d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
-              />
-              <path
-                clip-rule="evenodd"
-                d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
-                fill-rule="evenodd"
-              />
-            </svg>
-          </div>
+            <path
+              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+              data-blade-component="svg-path"
+              fill="hsla(211, 33%, 21%, 1)"
+            />
+            <path
+              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+              data-blade-component="svg-path"
+              fill="hsla(211, 33%, 21%, 1)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+              data-blade-component="svg-path"
+              fill="hsla(211, 33%, 21%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
+        <p
+          class="c5"
+          data-blade-component="text"
+        />
       </div>
     </button>
   </div>
@@ -1711,14 +862,11 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1726,29 +874,13 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1759,9 +891,48 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   width: 48px;
   height: 48px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 48px;
+  height: 48px;
+  width: 48px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 48px;
+  width: 48px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1777,111 +948,6 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 48px;
-  height: 48px;
-  width: 48px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 48px;
-  width: 48px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -1889,25 +955,18 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -1919,14 +978,11 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1934,29 +990,13 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1967,9 +1007,48 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 36px;
+  width: 36px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1985,111 +1064,6 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 36px;
-  height: 36px;
-  width: 36px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 36px;
-  width: 36px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -2097,25 +1071,18 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -2127,14 +1094,11 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2142,29 +1106,13 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -2175,9 +1123,48 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   width: 28px;
   height: 28px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 28px;
+  height: 28px;
+  width: 28px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 28px;
+  width: 28px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -2193,111 +1180,6 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 28px;
-  height: 28px;
-  width: 28px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 28px;
-  width: 28px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -2305,25 +1187,18 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -2335,14 +1210,11 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2350,29 +1222,13 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -2383,9 +1239,48 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   width: 56px;
   height: 56px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 56px;
+  height: 56px;
+  width: 56px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 56px;
+  width: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,33%,21%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -2401,111 +1296,6 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 56px;
-  height: 56px;
-  width: 56px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 56px;
-  width: 56px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -2513,25 +1303,18 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <h5
+          class="c4"
+          data-blade-component="heading"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </h5>
       </div>
     </button>
   </div>
@@ -2543,14 +1326,11 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2558,29 +1338,13 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -2591,9 +1355,48 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -2609,111 +1412,6 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -2721,25 +1419,18 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>
@@ -2751,14 +1442,11 @@ exports[`<Avatar /> should render default avatar 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2766,14 +1454,16 @@ exports[`<Avatar /> should render default avatar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
+  height: 100%;
 }
 
-.c6.c6.c6.c6.c6 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2796,9 +1486,48 @@ exports[`<Avatar /> should render default avatar 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -2814,112 +1543,6 @@ exports[`<Avatar /> should render default avatar 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 9999px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 9999px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  height: 28px;
-  width: 28px;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -2927,44 +1550,41 @@ exports[`<Avatar /> should render default avatar 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
         <div
-          class="c4 c5"
+          class="c4"
           data-blade-component="base-box"
         >
-          <div
-            class="c6"
-            data-blade-component="base-box"
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="14"
+            viewBox="0 0 14 14"
+            width="14"
           >
-            <svg
-              aria-hidden="true"
-              class="Svgweb__StyledSvg-vcmjs8-0"
-              data-blade-component="icon"
-              fill="none"
-              height="14"
-              viewBox="0 0 14 14"
-              width="14"
-            >
-              <path
-                d="M0.928589 11.3881C1.55965 8.94407 3.72749 7.14289 6.3048 7.14289H7.69523C10.2725 7.14289 12.4404 8.94407 13.0714 11.3881C11.505 12.96 9.36258 13.9286 7.00002 13.9286C4.63745 13.9286 2.49507 12.96 0.928589 11.3881Z"
-                data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
-              />
-              <path
-                d="M4.21915 3.21432C4.21915 1.63637 5.46417 0.357178 7.00002 0.357178C8.53587 0.357178 9.78088 1.63637 9.78088 3.21432C9.78088 4.79228 8.53587 6.07146 7.00002 6.07146C5.46417 6.07146 4.21915 4.79228 4.21915 3.21432Z"
-                data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
-              />
-            </svg>
-          </div>
+            <path
+              d="M0.928589 11.3881C1.55965 8.94407 3.72749 7.14289 6.3048 7.14289H7.69523C10.2725 7.14289 12.4404 8.94407 13.0714 11.3881C11.505 12.96 9.36258 13.9286 7.00002 13.9286C4.63745 13.9286 2.49507 12.96 0.928589 11.3881Z"
+              data-blade-component="svg-path"
+              fill="hsla(211, 33%, 21%, 1)"
+            />
+            <path
+              d="M4.21915 3.21432C4.21915 1.63637 5.46417 0.357178 7.00002 0.357178C8.53587 0.357178 9.78088 1.63637 9.78088 3.21432C9.78088 4.79228 8.53587 6.07146 7.00002 6.07146C5.46417 6.07146 4.21915 4.79228 4.21915 3.21432Z"
+              data-blade-component="svg-path"
+              fill="hsla(211, 33%, 21%, 1)"
+            />
+          </svg>
         </div>
+        <p
+          class="c5"
+          data-blade-component="text"
+        />
       </div>
     </button>
   </div>
@@ -2976,14 +1596,11 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2991,29 +1608,13 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -3024,9 +1625,48 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 4px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1 div[data-blade-component="base-text"] {
+.c1.c1.c1.c1.c1:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c2.c2.c2.c2.c2 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -3042,111 +1682,6 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 button[role="button"] {
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  border-width: 0.5px;
-  border-radius: 4px;
-  border-color: hsla(214,28%,84%,1);
-  outline: none;
-  background-color: hsla(211,20%,52%,0.18);
-  -webkit-transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-  transition: border-color 150 cubic-bezier(0.3,0,0.2,1),outline 150 cubic-bezier(0.3,0,0.2,1);
-}
-
-.c1.c1.c1.c1.c1 button[role="button"] img {
-  display: block;
-  height: 20px;
-  width: 20px;
-  border-radius: 4px;
-  object-fit: cover;
-}
-
-.c1.c1.c1.c1.c1 button[role="button"]:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border: hsla(211,20%,52%,0.18);
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
-  min-height: 28px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c2.c2.c2.c2.c2:hover {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-}
-
-.c2.c2.c2.c2.c2:focus-visible {
-  background-color: hsla(211,20%,52%,0.32);
-  border-color: hsla(211,20%,52%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c2.c2.c2.c2.c2 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c5.c5.c5.c5.c5 {
-  opacity: 1;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -3154,25 +1689,18 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   >
     <button
       class="c2"
-      data-blade-component="button"
-      role="button"
-      type="button"
+      color="neutral"
     >
       <div
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
-        <div
-          class="c4 c5"
-          data-blade-component="base-box"
+        <p
+          class="c4"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-text"
-          >
-            NK
-          </div>
-        </div>
+          NK
+        </p>
       </div>
     </button>
   </div>

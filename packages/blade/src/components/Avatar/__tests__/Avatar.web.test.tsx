@@ -100,30 +100,6 @@ describe('<Avatar />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render avatar with dropdown', async () => {
-    const user = userEvent.setup();
-    const { container, queryByRole, getByRole } = renderWithTheme(
-      <Dropdown>
-        <Avatar name="Nitin Kumar" />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Payouts" value="payout" />
-            <ActionListItem title="Transactions" value="transactions" />
-            <ActionListItem title="Settings" value="settings" />
-            <ActionListItem title="Logout" value="logout" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>,
-    );
-    expect(container).toMatchSnapshot();
-
-    const dropdownTrigger = getByRole('button', { name: 'NK' });
-    expect(dropdownTrigger).toBeInTheDocument();
-    expect(queryByRole('menu')).toBeNull();
-    await user.click(dropdownTrigger);
-    await waitFor(() => expect(getByRole('menu')).toBeVisible());
-  });
-
   it('should render avatar as link', () => {
     const { getByRole } = renderWithTheme(
       <Avatar href="https://youtu.be/iPaBUhIsslA" target="_blank" name="Nitin Kumar" />,

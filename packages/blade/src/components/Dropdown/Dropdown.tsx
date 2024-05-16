@@ -24,7 +24,6 @@ const validDropdownChildren = [
   dropdownComponentIds.DropdownOverlay,
   dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
-  dropdownComponentIds.triggers.Avatar,
 ];
 
 /**
@@ -141,10 +140,6 @@ const _Dropdown = ({
 
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownButton)) {
         dropdownTriggerer.current = 'DropdownButton';
-      }
-
-      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.Avatar)) {
-        dropdownTriggerer.current = 'Avatar';
       }
 
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {

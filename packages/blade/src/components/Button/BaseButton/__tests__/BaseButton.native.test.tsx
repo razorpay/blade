@@ -34,7 +34,7 @@ describe('<BaseButton />', () => {
     } catch (error: unknown) {
       if (error instanceof Error) {
         expect(error.message).toEqual(
-          `[Blade: BaseButton]: At least one of icon, text, or image is required to render a button.`,
+          `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
         );
       }
     }

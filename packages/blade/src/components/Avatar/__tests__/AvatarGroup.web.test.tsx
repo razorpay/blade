@@ -6,7 +6,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 const sizes: AvatarGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 
-describe('<Avatar />', () => {
+describe('<AvatarGroup />', () => {
   sizes.forEach((size) => {
     it(`should render AvatarGroup with size ${size}`, () => {
       const { container } = renderWithTheme(

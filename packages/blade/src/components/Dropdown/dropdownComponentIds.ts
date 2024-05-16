@@ -7,6 +7,5 @@ export const dropdownComponentIds = {
     DropdownButton: 'DropdownButton',
     DropdownLink: 'DropdownLink',
     AutoComplete: 'AutoComplete',
-    Avatar: 'Avatar',
   },
 };

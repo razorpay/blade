@@ -3,7 +3,7 @@ import { Avatar } from '../Avatar';
 import { AvatarGroup } from '../AvatarGroup';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
-describe('<Avatar />', () => {
+describe('<AvatarGroup />', () => {
   it(`should render AvatarGroup with `, () => {
     const { container } = renderWithSSR(
       <AvatarGroup>
