@@ -9,7 +9,7 @@ const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactE
   const currentLevel = prevLevel + 1;
   return (
     <BaseBox
-      marginLeft={{ base: 'spacing.0', m: currentLevel === 3 ? 'spacing.5' : '52px' }}
+      marginLeft={currentLevel === 3 ? 'spacing.7' : { base: 'spacing.0', m: '52px' }}
       onMouseOver={(e) => {
         e.stopPropagation();
       }}

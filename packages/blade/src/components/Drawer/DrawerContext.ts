@@ -1,10 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
-const DrawerContext = React.createContext<{
+type DrawerContextType = {
   close: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
+  stackingLevel?: number;
+  isExiting: boolean;
+};
+
+const DrawerContext = React.createContext<DrawerContextType>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-}>({ close: () => {} });
+  close: () => {},
+  isExiting: false,
+});
 
 export { DrawerContext };

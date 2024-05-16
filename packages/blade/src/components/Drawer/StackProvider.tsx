@@ -1,34 +1,47 @@
 import React from 'react';
 
-type StackActionType = (elementId: string) => void;
+type AddToStackType = ({
+  elementId,
+  onDismiss,
+}: {
+  elementId: string;
+  onDismiss: () => void;
+}) => void;
+
+type RemoveFromStackType = ({ elementId }: { elementId: string }) => void;
 
 type GlobalStackStateType = {
-  drawerStack: string[];
-  addToDrawerStack: StackActionType;
-  removeFromDrawerStack: StackActionType;
+  drawerStack: Record<string, () => void>;
+  addToDrawerStack: AddToStackType;
+  removeFromDrawerStack: RemoveFromStackType;
 };
 
 const StackingContext = React.createContext<GlobalStackStateType>({
-  drawerStack: [],
+  drawerStack: {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   addToDrawerStack: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   removeFromDrawerStack: () => {},
 });
 
-const useStacking = (): [string[], StackActionType, StackActionType] => {
-  const [stack, setStack] = React.useState<string[]>([]);
+const useStacking = (): [
+  GlobalStackStateType['drawerStack'],
+  AddToStackType,
+  RemoveFromStackType,
+] => {
+  const [stack, setStack] = React.useState<GlobalStackStateType['drawerStack']>({});
 
-  const addToStack = (elementId: string): void => {
-    if (stack.includes(elementId)) {
+  const addToStack: AddToStackType = ({ elementId, onDismiss }) => {
+    if (stack[elementId]) {
       return;
     }
 
-    setStack([...stack, elementId]);
+    setStack({ ...stack, [elementId]: onDismiss });
   };
 
-  const removeFromStack = (elementId: string): void => {
-    setStack(stack.filter((stackElementId) => stackElementId !== elementId));
+  const removeFromStack: RemoveFromStackType = ({ elementId }) => {
+    const { [elementId]: _, ...newStack } = stack;
+    setStack(newStack);
   };
 
   return [stack, addToStack, removeFromStack];

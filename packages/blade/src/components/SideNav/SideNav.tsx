@@ -43,6 +43,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
+  const [isMobileL2Open, setIsMobileL2Open] = React.useState(false);
   const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
   const [isHoverAgainEnabled, setIsHoverAgainEnabled] = React.useState(false);
   const [isHoverTransitioning, setIsHoverTransitioning] = React.useState(false);
@@ -51,20 +52,23 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
 
   const closeMobileNav = (): void => {
     if (isMobile) {
-      setIsL1Collapsed(false);
+      setIsMobileL2Open(false);
       onDismiss?.();
     }
   };
 
   const onLinkActiveChange: SideNavContextType['onLinkActiveChange'] = (args) => {
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
+      if (isMobile) {
+        setL2DrawerTitle(args.title);
+        setIsMobileL2Open(true);
+        return;
+      }
+
       setIsL1Collapsed(true);
       setIsCollapsedHover(false);
       setIsHoverAgainEnabled(false);
       setIsHoverTransitioning(true);
-      if (isMobile) {
-        setL2DrawerTitle(args.title);
-      }
       // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
       setTimeout(() => {
         setIsHoverAgainEnabled(true);
@@ -72,6 +76,11 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
     }
 
     if (args.level === 1 && !args.isL2Trigger && args.isActive) {
+      if (isMobile) {
+        setIsMobileL2Open(false);
+        return;
+      }
+
       setIsL1Collapsed(false);
     }
   };
@@ -81,15 +90,12 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
       l2PortalContainerRef,
       onLinkActiveChange,
       closeMobileNav,
-      isL1Collapsed,
+      isL1Collapsed: isMobile ? isMobileL2Open : isL1Collapsed,
       setIsL1Collapsed,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isL1Collapsed, isMobile],
+    [isL1Collapsed, isMobile, isMobileL2Open],
   );
-
-  const isL2Open = isL1Collapsed;
-  const setIsL2Open = setIsL1Collapsed;
 
   return (
     <SideNavContext.Provider value={contextValue}>
@@ -103,7 +109,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             </DrawerBody>
           </Drawer>
           {/* L2 */}
-          <Drawer isOpen={isL2Open} onDismiss={() => setIsL2Open(false)} isLazy={false}>
+          <Drawer isOpen={isMobileL2Open} onDismiss={() => setIsMobileL2Open(false)} isLazy={false}>
             <DrawerHeader title={l2DrawerTitle} />
             <DrawerBody>
               <BaseBox ref={l2PortalContainerRef} />
