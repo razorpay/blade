@@ -21,9 +21,11 @@ const cell = {
   background: {
     default: 'transparent',
     hover: 'interactive.background.gray.highlighted',
+    disabled: 'transparent',
   },
   text: {
     default: 'interactive.text.gray.normal',
+    disabled: 'interactive.text.gray.disabled',
   },
 } as const;
 
@@ -280,6 +282,11 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
 
       '&:hover': {
         backgroundColor: getIn(theme.colors, cell.background.hover),
+      },
+      '&[data-disabled]': {
+        color: getIn(theme.colors, cell.text.disabled),
+        backgroundColor: getIn(theme.colors, cell.background.disabled),
+        cursor: 'not-allowed',
       },
       '&[data-outside]': {
         color: theme.colors.interactive.text.gray.muted,
