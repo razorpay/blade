@@ -19,6 +19,7 @@ const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactE
     >
       {currentLevel === 2 && headingTitle ? (
         <BaseBox
+          display={{ base: 'none', m: 'block' }}
           padding="spacing.4"
           borderBottomWidth="thin"
           borderBottomColor="surface.border.gray.muted"

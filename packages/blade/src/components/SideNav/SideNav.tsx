@@ -7,6 +7,7 @@ import { size } from '~tokens/global';
 import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
+import { useIsMobile } from '~utils/useIsMobile';
 
 const StyledL1Level = styled(BaseBox)((props) => {
   return {
@@ -46,7 +47,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   const [isHoverAgainEnabled, setIsHoverAgainEnabled] = React.useState(false);
   const [isHoverTransitioning, setIsHoverTransitioning] = React.useState(false);
   const [l2DrawerTitle, setL2DrawerTitle] = React.useState('');
-  const isMobile = true;
+  const isMobile = useIsMobile();
 
   const closeMobileNav = (): void => {
     if (isMobile) {
@@ -84,7 +85,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
       setIsL1Collapsed,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isL1Collapsed],
+    [isL1Collapsed, isMobile],
   );
 
   const isL2Open = isL1Collapsed;

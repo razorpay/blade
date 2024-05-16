@@ -36,7 +36,7 @@ const StyledNavLinkContainer = styled.a((props) => {
     }`,
     backgroundColor: props.theme.colors.transparent,
     '.show-on-link-hover': {
-      display: 'none',
+      opacity: 0,
     },
     '.collapsed &': {
       padding: '0px 10px',
@@ -51,7 +51,7 @@ const StyledNavLinkContainer = styled.a((props) => {
       color: props.theme.colors.interactive.text.gray.normal,
       backgroundColor: props.theme.colors.interactive.background.gray.default,
       '.show-on-link-hover': {
-        display: 'block',
+        opacity: 1,
       },
     },
     '&[aria-current]': {
