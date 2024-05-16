@@ -211,6 +211,60 @@ export const Validations: StoryFn<typeof DatePickerComponent> = () => {
 
 Validations.storyName = 'Validations';
 
+export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">minDate</Code> and <Code size="medium">maxDate</Code> props you can
+        set minimum and maximum dates that can be selected.
+      </Text>
+      <Box marginY="spacing.4" display="flex" gap="spacing.2" flexDirection="column">
+        <Text>Example: </Text>
+        <Text size="small">{`minDate={dayjs().subtract(1, 'week').toDate()}`}</Text>
+        <Text size="small">{`maxDate={dayjs().add(1, 'week').toDate()}`}</Text>
+      </Box>
+      <HeadlessMantineProvider>
+        <DatesProvider settings={{ locale: 'en-US' }}>
+          <DatePickerComponent
+            label={{ start: 'Start Date', end: 'End Date' }}
+            selectionType="range"
+            minDate={dayjs().subtract(1, 'week').toDate()}
+            maxDate={dayjs().add(1, 'week').toDate()}
+          />
+        </DatesProvider>
+      </HeadlessMantineProvider>
+    </Box>
+  );
+};
+
+MinMaxDates.storyName = 'MinMaxDates';
+
+export const ExcludeDates: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">excludeDate</Code> function you can exclude specific dates from
+        being selected.
+      </Text>
+      <Box marginY="spacing.4" display="flex" gap="spacing.2" flexDirection="column">
+        <Text>Example, exclude weekends: </Text>
+        <Text size="small">{`excludeDate={(date) => dayjs(date).day() === 0 || dayjs(date).day() === 6}`}</Text>
+      </Box>
+      <HeadlessMantineProvider>
+        <DatesProvider settings={{ locale: 'en-US' }}>
+          <DatePickerComponent
+            label="Select Dates Without Weekends"
+            selectionType="single"
+            excludeDate={(date) => dayjs(date).day() === 0 || dayjs(date).day() === 6}
+          />
+        </DatesProvider>
+      </HeadlessMantineProvider>
+    </Box>
+  );
+};
+
+ExcludeDates.storyName = 'ExcludeDates';
+
 export const LabelPositionLeft: StoryFn<typeof DatePickerComponent> = () => {
   return (
     <Box>
