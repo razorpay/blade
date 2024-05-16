@@ -48,7 +48,6 @@ const _AvatarGroup = ({
                   {...metaAttribute({ name: MetaConstants.Avatar, testID })}
                   backgroundColor="surface.background.gray.intense"
                   size={size}
-                  color="neutral"
                   variant="circle"
                 >
                   <AvatarButton variant="circle" color="neutral" size={size}>

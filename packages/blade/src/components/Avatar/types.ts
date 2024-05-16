@@ -108,7 +108,6 @@ type AvatarGroupContextType = Pick<AvatarGroupProps, 'size'>;
 type StyledAvatarProps = {
   size: NonNullable<AvatarProps['size']>;
   variant: NonNullable<AvatarProps['variant']>;
-  color: NonNullable<AvatarProps['color']>;
 };
 
 export type {

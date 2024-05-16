@@ -91,7 +91,6 @@ const _Avatar = ({
       {...getStyledProps(styledProps)}
       backgroundColor="surface.background.gray.intense"
       variant={variant}
-      color={color}
       size={avatarSize}
     >
       {getChildrenToRender()}
