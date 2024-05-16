@@ -358,4 +358,4 @@ https://github.com/iamkun/dayjs/issues/1041
 ## References
 
 - [DatePicker Library Exploration](https://docs.google.com/document/d/1PJ9gT-P38vHufKDzxEzPvDY5IjsI_HeBGg-9gVaC7vU/edit?usp=sharing)
-- https://mantine.dev/dates/date-picker-input/
+  - We will be using [mantine](https://mantine.dev/dates/date-picker-input/) for the DatePicker component as it suffices all the requirements and is highly customizable.
