@@ -1,14 +1,10 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
-import { waitFor } from '@testing-library/react';
 import type { AvatarProps } from '../Avatar.web';
 import { Avatar } from '../Avatar.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~utils/testing/assertAccessible.native';
 import { Box } from '~components/Box';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
 
 const sizes: AvatarProps['size'][] = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 const colors: AvatarProps['color'][] = [
