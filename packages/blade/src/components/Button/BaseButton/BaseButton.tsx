@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { HTMLAttributeReferrerPolicy } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
@@ -24,7 +23,7 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
-import type { IconComponent, IconSize } from '~components/Icons';
+import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -55,7 +54,6 @@ type BaseButtonCommonProps = {
   rel?: BaseLinkProps['rel'];
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
-  iconSize?: IconSize;
   isDisabled?: boolean;
   isFullWidth?: boolean;
   onKeyDown?: Platform.Select<{
@@ -71,40 +69,15 @@ type BaseButtonCommonProps = {
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-  isPressAnimationDisabled?: boolean;
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
 
-type ButtonImgProps = {
-  /**
-   * Custom image source
-   */
-  src: string;
-  /**
-   * The `alt` attribute for the `img` element
-   */
-  alt?: string;
-  /**
-   * The `srcSet` attribute for the `img` element, useful for responsive images.
-   */
-  srcSet?: string;
-  /**
-   * CORS settings attributes
-   */
-  crossOrigin?: 'anonymous' | 'use-credentials' | '';
-  /**
-   * Defines which referrer is sent when fetching the resource.
-   */
-  referrerPolicy?: HTMLAttributeReferrerPolicy;
-};
-
 /*
 Mandatory children prop when icon is not provided
 */
-type BaseButtonWithoutIconOrImgProps = BaseButtonCommonProps & {
+type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
   icon?: undefined;
-  imgProps?: undefined;
   children: StringChildrenType;
 };
 
@@ -114,25 +87,12 @@ type BaseButtonWithoutIconOrImgProps = BaseButtonCommonProps & {
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
   icon: IconComponent;
   children?: StringChildrenType;
-  imgProps?: undefined;
 };
 
 /*
- Optional children/icon props when img is provided
+ With or without icon prop. We need at least an icon or a children prop present.
 */
-type BaseButtonWithImageProps = BaseButtonCommonProps & {
-  imgProps: ButtonImgProps;
-  children?: StringChildrenType;
-  icon?: undefined;
-};
-
-/*
- With or without icon/img props. We need at least an icon or a children prop present.
-*/
-export type BaseButtonProps =
-  | BaseButtonWithIconProps
-  | BaseButtonWithImageProps
-  | BaseButtonWithoutIconOrImgProps;
+export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
 type BaseButtonColorTokenModifiers = {
   variant: NonNullable<BaseButtonProps['variant']>;
@@ -179,7 +139,7 @@ export const getBackgroundColorToken = ({
   return tokens.base[variant][_state];
 };
 
-const getTextColorToken = ({
+export const getTextColorToken = ({
   property,
   variant,
   state,
@@ -234,9 +194,7 @@ const getProps = ({
 
   const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
   const props: BaseButtonStyleProps = {
-    defaultIconSize: isIconOnly
-      ? buttonIconOnlySizeToIconSizeMap[size]
-      : buttonSizeToIconSizeMap[size],
+    iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
@@ -345,8 +303,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     size = 'medium',
     icon: Icon,
     iconPosition = 'left',
-    iconSize,
-    imgProps,
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
@@ -364,7 +320,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     accessibilityProps,
     onTouchEnd,
     onTouchStart,
-    isPressAnimationDisabled = false,
     ...rest
   },
   ref,
@@ -380,9 +335,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const disabled = buttonGroupProps.isDisabled ?? (isLoading || (isDisabled && !isLink));
 
   if (__DEV__) {
-    if (!Icon && !childrenString?.trim() && !imgProps?.src) {
+    if (!Icon && !childrenString?.trim()) {
       throwBladeError({
-        message: 'At least one of icon, text, or image is required to render a button.',
+        message: 'At least one of icon or text is required to render a button.',
         moduleName: 'BaseButton',
       });
     }
@@ -413,7 +368,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     hoverBorderColor,
     hoverBackgroundColor,
     iconColor,
-    defaultIconSize,
+    iconSize,
     iconPadding,
     spinnerSize,
     lineHeight,
@@ -438,33 +393,33 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
 
   const handlePointerPressedIn = React.useCallback(() => {
-    if (disabled || isPressAnimationDisabled) return;
+    if (disabled) return;
     setIsPressed(true);
-  }, [disabled, isPressAnimationDisabled]);
+  }, [disabled]);
 
   const handlePointerPressedOut = React.useCallback(() => {
-    if (disabled || isPressAnimationDisabled) return;
+    if (disabled) return;
     setIsPressed(false);
-  }, [disabled, isPressAnimationDisabled]);
+  }, [disabled]);
 
   const handleKeyboardPressedIn = React.useCallback(
     (e: React.KeyboardEvent) => {
-      if (disabled || isPressAnimationDisabled) return;
+      if (disabled) return;
       if (e.key === ' ' || e.key === 'Enter') {
         setIsPressed(true);
       }
     },
-    [disabled, isPressAnimationDisabled],
+    [disabled],
   );
 
   const handleKeyboardPressedOut = React.useCallback(
     (e: React.KeyboardEvent) => {
-      if (disabled || isPressAnimationDisabled) return;
+      if (disabled) return;
       if (e.key === ' ' || e.key === 'Enter') {
         setIsPressed(false);
       }
     },
-    [disabled, isPressAnimationDisabled],
+    [disabled],
   );
 
   return (
@@ -569,11 +524,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
               justifyContent="center"
               alignItems="center"
             >
-              <Icon size={iconSize ?? defaultIconSize} color={iconColor} />
+              <Icon size={iconSize} color={iconColor} />
             </BaseBox>
           ) : null}
-          {/* eslint-disable-next-line jsx-a11y/alt-text -- alt text is provided in imgProps */}
-          {imgProps?.src ? <img {...imgProps} /> : null}
           {text ? (
             isChildrenComponent ? (
               children
@@ -600,7 +553,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
               justifyContent="center"
               alignItems="center"
             >
-              <Icon size={iconSize ?? defaultIconSize} color={iconColor} />
+              <Icon size={iconSize} color={iconColor} />
             </BaseBox>
           ) : null}
         </ButtonContent>

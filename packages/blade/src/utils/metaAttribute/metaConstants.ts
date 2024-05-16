@@ -11,7 +11,6 @@ export const MetaConstants = {
   Amount: 'amount',
   AutoComplete: 'autocomplete',
   Avatar: 'avatar',
-  AvatarDefaultIcon: 'avatar-default-icon',
   AvatarGroup: 'avatar-group',
   Badge: 'badge',
   Box: 'box',

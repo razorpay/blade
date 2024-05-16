@@ -1,48 +1,14 @@
 import type { HTMLAttributeReferrerPolicy } from 'react';
+import type React from 'react';
 import type { ButtonProps } from '~components/Button/Button';
 import type { IconComponent } from '~components/Icons';
+import type { FeedbackColors } from '~tokens/theme/theme';
 
-type AvatarGroupProps = {
-  /**
-   * Children elements representing the avatars to stack.
-   */
-  children: React.ReactNode;
-  /**
-   * The size of each avatar within the group. Propagates to all avatars.
-   * @default "xsmall"
-   */
-  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-  /**
-   * The maximum number of avatars to display before truncating.
-   */
-  maxCount?: number;
-  testID?: string;
-};
+type AvatarSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 
-type AvatarProps = {
+type AvatarImgProps = {
   /**
-   * The size of the avatar.
-   */
-  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-  /**
-   * The visual variant of the avatar.
-   */
-  variant?: 'circle' | 'square';
-  /**
-   * The color theme of the avatar.
-   */
-  color?: 'primary' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-  /**
-   * Custom icon component to use as the avatar.
-   */
-  icon?: IconComponent;
-  /**
-   * The name of the avatar, used to generate initials.
-   * If src has loaded, the name will be used as the alt attribute of the img. If src is not loaded, the name will be used to create the initials.
-   */
-  name?: string;
-  /**
-   * Custom image source for an image avatar.
+   * Custom image source
    */
   src?: string;
   /**
@@ -61,6 +27,50 @@ type AvatarProps = {
    * Defines which referrer is sent when fetching the resource.
    */
   referrerPolicy?: HTMLAttributeReferrerPolicy;
+};
+
+type AvatarGroupProps = {
+  /**
+   * Children elements representing the avatars to stack.
+   */
+  children: React.ReactNode;
+  /**
+   * The size of each avatar within the group. Propagates to all avatars.
+   * @default "xsmall"
+   */
+  size?: AvatarSize;
+  /**
+   * The maximum number of avatars to display before truncating.
+   */
+  maxCount?: number;
+  testID?: string;
+};
+
+type AvatarCommonProps = {
+  /**
+   * The size of the avatar.
+   * @default "xsmall"
+   */
+  size?: AvatarSize;
+  /**
+   * The visual variant of the avatar.
+   * @default "circle"
+   */
+  variant?: 'circle' | 'square';
+  /**
+   * The color theme of the avatar.
+   * @default "neutral"
+   */
+  color?: 'primary' | FeedbackColors;
+  /**
+   * Custom icon component to use as the avatar.
+   */
+  icon?: IconComponent;
+  /**
+   * The name of the avatar, used to generate initials.
+   * If src has loaded, the name will be used as the alt attribute of the img. If src is not loaded, the name will be used to create the initials.
+   */
+  name?: string;
   /**
    * Automatically renders button with `a` tag with `href` on web
    */
@@ -84,6 +94,15 @@ type AvatarProps = {
   testID?: string;
 };
 
+type AvatarProps = AvatarCommonProps & AvatarImgProps;
+
+type AvatarButtonProps = AvatarCommonProps & {
+  imgProps?: AvatarImgProps;
+  children?: React.ReactNode;
+  as?: 'a' | 'button';
+  accessibilityProps?: Record<string, unknown>;
+};
+
 type AvatarGroupContextType = Pick<AvatarGroupProps, 'size'>;
 
 type StyledAvatarProps = {
@@ -92,4 +111,10 @@ type StyledAvatarProps = {
   color: NonNullable<AvatarProps['color']>;
 };
 
-export type { AvatarGroupProps, AvatarProps, StyledAvatarProps, AvatarGroupContextType };
+export type {
+  AvatarGroupProps,
+  AvatarProps,
+  StyledAvatarProps,
+  AvatarGroupContextType,
+  AvatarButtonProps,
+};
