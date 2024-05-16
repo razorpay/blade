@@ -26,14 +26,20 @@ export const Calendar: StoryFn<typeof DatePicker> = ({ ...args }) => {
       <HeadlessMantineProvider>
         <DatesProvider settings={{ locale: 'en-US' }}>
           <DatePicker
+            size="medium"
+            isRequired
+            validationState="none"
+            helpText="Cannot select this range"
+            selectionType="range"
             isOpen={isOpen}
             onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
-            selectionType="range"
             value={date}
+            labelPosition="top"
             onChange={(date) => {
               console.log(date);
               setDate(date);
             }}
+            label={{ start: 'Start Date', end: 'End Date' }}
             presets={[
               {
                 label: 'Past 3 days',

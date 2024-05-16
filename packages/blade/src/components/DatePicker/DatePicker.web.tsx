@@ -12,6 +12,7 @@ import { useDatesState } from './useDatesState';
 import { DatePickerInput } from './DateInput';
 import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter';
+import type { DatePickerCommonInputProps } from './DateInput';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -24,8 +25,14 @@ import {
   BottomSheetFooter,
   BottomSheetHeader,
 } from '~components/BottomSheet';
+import type { BaseInputProps } from '~components/Input/BaseInput';
 
-const DatePicker = <Type extends DateSelectionType>({
+type InputProps<Type extends DateSelectionType> = {
+  label?: Type extends 'single' ? string : { start: string; end?: string };
+  labelPosition?: BaseInputProps['labelPosition'];
+} & Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition'>;
+
+const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
   allowSingleDateInRange,
   value,
@@ -36,11 +43,22 @@ const DatePicker = <Type extends DateSelectionType>({
   isOpen,
   defaultIsOpen,
   onOpenChange,
+  label,
+  labelPosition = 'top',
+  accessibilityLabel,
+  errorText,
+  helpText,
+  isDisabled,
+  isRequired,
+  successText,
+  validationState,
+  size,
   ...props
-}: CalendarProps<Type>): React.ReactElement => {
+}: CalendarProps<Type> & InputProps<Type>): React.ReactElement => {
+  const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
   const ctx = useDatesContext();
-  const isSingle = selectionType === 'single';
+  const isSingle = _selectionType === 'single';
   const [_, forceRerenderBottomSheet] = React.useReducer((x: number) => x + 1, 0);
 
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
@@ -144,7 +162,7 @@ const DatePicker = <Type extends DateSelectionType>({
         backgroundColor="surface.background.gray.intense"
       >
         <Calendar
-          selectionType={selectionType}
+          selectionType={_selectionType}
           defaultValue={defaultValue}
           onMouseLeave={onRootMouseLeave}
           __onDayMouseEnter={(_event, date) => {
@@ -180,10 +198,21 @@ const DatePicker = <Type extends DateSelectionType>({
   return (
     <BaseBox width="100%">
       <DatePickerInput
+        selectionType={_selectionType}
         date={controlledValue}
         ref={referenceRef}
         inputRef={refs.setReference}
         referenceProps={getReferenceProps()}
+        label={label as never}
+        labelPosition={labelPosition}
+        accessibilityLabel={accessibilityLabel}
+        size={size}
+        errorText={errorText}
+        helpText={helpText}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
+        successText={successText}
+        validationState={validationState}
       />
       {isMobile ? (
         <BottomSheet
