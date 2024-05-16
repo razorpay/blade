@@ -20,6 +20,7 @@ const _AvatarGroup = ({
   const contextValue: AvatarGroupContextType = {
     size,
   };
+  const childrenCount = React.Children.count(children);
 
   return (
     <AvatarGroupProvider value={contextValue}>
@@ -40,7 +41,7 @@ const _AvatarGroup = ({
             }
           }
 
-          if (maxCount && maxCount <= React.Children.count(children)) {
+          if (maxCount && maxCount <= childrenCount) {
             if (index === maxCount) {
               return (
                 <StyledAvatar
@@ -51,7 +52,7 @@ const _AvatarGroup = ({
                   variant="circle"
                 >
                   <AvatarButton variant="circle" color="neutral" size={size}>
-                    {`+${String(React.Children.count(children) - maxCount)}`}
+                    {`+${String(childrenCount - maxCount)}`}
                   </AvatarButton>
                 </StyledAvatar>
               );

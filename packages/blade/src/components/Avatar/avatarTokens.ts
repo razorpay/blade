@@ -1,6 +1,4 @@
-import type { Theme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 const avatarSizeTokens = {
   xsmall: size[20],
@@ -8,7 +6,7 @@ const avatarSizeTokens = {
   medium: size[36],
   large: size[48],
   xlarge: size[56],
-};
+} as const;
 
 const avatarIconSizeTokens = {
   xsmall: size[16],
@@ -16,7 +14,7 @@ const avatarIconSizeTokens = {
   medium: size[20],
   large: size[24],
   xlarge: size[30],
-};
+} as const;
 
 const avatarTextSizeMapping = {
   xsmall: 'xsmall',
@@ -26,38 +24,7 @@ const avatarTextSizeMapping = {
   xlarge: 'medium',
 } as const;
 
-type InteractiveTextColors<
-  T extends 'positive' | 'negative' | 'primary' | 'notice' | 'information' | 'neutral'
-> = `interactive.text.${T}.${DotNotationToken<Theme['colors']['interactive']['text'][T]>}`;
-
-type InteractiveBackgroundColors<
-  T extends 'positive' | 'negative' | 'primary' | 'notice' | 'information' | 'neutral'
-> = `interactive.background.${T}.${DotNotationToken<
-  Theme['colors']['interactive']['background'][T]
->}`;
-
-type AvatarBackgroundColors =
-  | InteractiveBackgroundColors<'positive'>
-  | InteractiveBackgroundColors<'negative'>
-  | InteractiveBackgroundColors<'primary'>
-  | InteractiveBackgroundColors<'notice'>
-  | InteractiveBackgroundColors<'neutral'>
-  | InteractiveBackgroundColors<'information'>;
-
-type AvatarTextColors =
-  | InteractiveTextColors<'positive'>
-  | InteractiveTextColors<'negative'>
-  | InteractiveTextColors<'primary'>
-  | InteractiveTextColors<'notice'>
-  | InteractiveTextColors<'neutral'>
-  | InteractiveTextColors<'information'>;
-
-type AvatarColorTokensType = {
-  text: Record<string, AvatarTextColors>;
-  background: Record<string, AvatarBackgroundColors>;
-};
-
-const avatarColorTokens: AvatarColorTokensType = {
+const avatarColorTokens = {
   text: {
     primary: 'interactive.text.primary.normal',
     positive: 'interactive.text.positive.normal',
@@ -74,7 +41,7 @@ const avatarColorTokens: AvatarColorTokensType = {
     information: 'interactive.background.information.faded',
     neutral: 'interactive.background.neutral.faded',
   },
-};
+} as const;
 
 const avatarBorderRadiusTokens = {
   circle: 'max',
