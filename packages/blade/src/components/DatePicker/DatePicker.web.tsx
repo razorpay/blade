@@ -32,7 +32,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   defaultValue,
   onChange,
   presets,
-  date,
   isOpen,
   defaultIsOpen,
   onOpenChange,
@@ -84,8 +83,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
   });
 
-  const today = shiftTimezone('add', new Date(), ctx.getTimezone());
-  const currentDate = date ?? today;
+  const currentDate = shiftTimezone('add', new Date(), ctx.getTimezone());
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
 
   const close = React.useCallback(() => {

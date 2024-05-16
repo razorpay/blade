@@ -53,9 +53,6 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   isOpen?: boolean;
   defaultIsOpen?: boolean;
   onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
-  date?: Date;
-  defaultDate?: Date;
-  onDateChange?: (date: Date) => void;
 
   /**
    * Defines presets for the date picker
@@ -88,6 +85,7 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * Sets the maximum date that can be selected.
    */
   maxDate?: Date;
+  excludeDate?: (date: Date) => boolean;
   /**
    * Determines whether single date can be selected as range, applicable only when type="range"
    * @default false

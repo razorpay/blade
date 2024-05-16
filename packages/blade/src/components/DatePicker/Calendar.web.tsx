@@ -35,7 +35,11 @@ const Calendar = <Type extends DateSelectionType>({
   onPreviousDecade,
   presets,
   ...props
-}: CalendarProps<Type>): React.ReactElement => {
+}: CalendarProps<Type> & {
+  date?: Date;
+  defaultDate?: Date;
+  onDateChange?: (date: Date) => void;
+}): React.ReactElement => {
   const isRange = selectionType === 'range';
 
   const [level, setLevel] = useControllableState<CalendarLevel>({
