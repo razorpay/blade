@@ -170,6 +170,16 @@ const L3Trigger = ({
   );
 };
 
+const CurvedVerticalLine = styled(BaseBox)((props) => {
+  const borderPrimaryMuted = props.theme.colors.surface.border.primary.muted;
+  return {
+    borderWidth: '1px',
+    borderColor: `transparent transparent ${borderPrimaryMuted} ${borderPrimaryMuted}`,
+    borderStyle: 'solid',
+    borderRadius: '0px 0px 0px 4px',
+  };
+});
+
 const SideNavLink = ({
   title,
   href,
@@ -220,58 +230,70 @@ const SideNavLink = ({
         >
           <L3Trigger title={title} icon={icon} as={as} href={href} titleSuffix={titleSuffix} />
           <CollapsibleBody width="100%" _hasMargin={false}>
-            {children}
+            <Box position="relative">{children}</Box>
           </CollapsibleBody>
         </Collapsible>
       ) : (
         <>
-          <TooltipifyNavLink tooltip={tooltip}>
-            <StyledNavLinkContainer
-              as={as}
-              to={href}
-              ref={refs.setReference}
-              onClick={() => {
-                // Close the mobile nav when item is clicked and its not trigger for next menu
-                if (!isL2Trigger) {
-                  closeMobileNav?.();
-                }
+          <Box position="relative">
+            <TooltipifyNavLink tooltip={tooltip}>
+              <StyledNavLinkContainer
+                as={as}
+                to={href}
+                ref={refs.setReference}
+                onClick={() => {
+                  // Close the mobile nav when item is clicked and its not trigger for next menu
+                  if (!isL2Trigger) {
+                    closeMobileNav?.();
+                  }
 
-                if (isCurrentPage && isL2Trigger) {
-                  onLinkActiveChange?.({
-                    id: navItemId,
-                    level: currentLevel,
-                    title,
-                    isActive: Boolean(isCurrentPage),
-                    isL2Trigger,
-                  });
-                }
-              }}
-              onFocus={() => {
-                if (isL1Collapsed && currentLevel === 1) {
-                  setIsL1Collapsed?.(false);
-                }
-              }}
-              aria-current={isCurrentPage ? 'page' : undefined}
-              data-level={currentLevel}
-              data-l2trigger={isL2Trigger}
-              data-navitemid={navItemId}
-            >
-              <NavLinkIconTitle
-                icon={icon}
-                title={title}
-                isL1Item={currentLevel === 1}
-                titleSuffix={titleSuffix}
+                  if (isCurrentPage && isL2Trigger) {
+                    onLinkActiveChange?.({
+                      id: navItemId,
+                      level: currentLevel,
+                      title,
+                      isActive: Boolean(isCurrentPage),
+                      isL2Trigger,
+                    });
+                  }
+                }}
+                onFocus={() => {
+                  if (isL1Collapsed && currentLevel === 1) {
+                    setIsL1Collapsed?.(false);
+                  }
+                }}
+                aria-current={isCurrentPage ? 'page' : undefined}
+                data-level={currentLevel}
+                data-l2trigger={isL2Trigger}
+                data-navitemid={navItemId}
+              >
+                <NavLinkIconTitle
+                  icon={icon}
+                  title={title}
+                  isL1Item={currentLevel === 1}
+                  titleSuffix={titleSuffix}
+                />
+                {isL2Trigger ? (
+                  <BaseBox className="hide-when-collapsed">
+                    <ChevronRightIcon size="medium" color="currentColor" />
+                  </BaseBox>
+                ) : null}
+                {trailing && !isL2Trigger ? (
+                  <BaseBox className="hide-when-collapsed show-on-link-hover">{trailing}</BaseBox>
+                ) : null}
+              </StyledNavLinkContainer>
+            </TooltipifyNavLink>
+            {currentLevel === 3 && isCurrentPage ? (
+              <CurvedVerticalLine
+                height="100vh"
+                position="absolute"
+                top="calc(-100vh + 18px)"
+                width="7px"
+                left="-7px"
               />
-              {isL2Trigger ? (
-                <BaseBox className="hide-when-collapsed">
-                  <ChevronRightIcon size="medium" color="currentColor" />
-                </BaseBox>
-              ) : null}
-              {trailing && !isL2Trigger ? (
-                <BaseBox className="hide-when-collapsed show-on-link-hover">{trailing}</BaseBox>
-              ) : null}
-            </StyledNavLinkContainer>
-          </TooltipifyNavLink>
+            ) : null}
+          </Box>
+
           {children ? (
             <FloatingPortal root={l2PortalContainerRef}>
               {isCurrentPage && isL1Collapsed ? (
