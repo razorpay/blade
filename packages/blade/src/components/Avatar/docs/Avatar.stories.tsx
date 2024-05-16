@@ -7,8 +7,6 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { BuildingIcon } from '~components/Icons';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
 import iconMap from '~components/Icons/iconMap';
 
 const Page = (): React.ReactElement => {
@@ -187,22 +185,3 @@ const AvatarVariantsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
 
 export const AllVariants = AvatarVariantsTemplate.bind({});
 AllVariants.storyName = 'All Variants';
-
-const AvatarDropdownTemplate: StoryFn<typeof AvatarComponent> = (args) => {
-  return (
-    <Dropdown>
-      <AvatarComponent size="large" {...args} />
-      <DropdownOverlay>
-        <ActionList>
-          <ActionListItem title="Payouts" value="payout" />
-          <ActionListItem title="Transactions" value="transactions" />
-          <ActionListItem title="Settings" value="settings" />
-          <ActionListItem title="Logout" value="logout" />
-        </ActionList>
-      </DropdownOverlay>
-    </Dropdown>
-  );
-};
-
-export const WithDropdown = AvatarDropdownTemplate.bind({});
-WithDropdown.storyName = 'With Dropdown';
