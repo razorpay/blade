@@ -209,7 +209,7 @@ const SideNavLink = ({
     open: isCurrentPage,
   });
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     onLinkActiveChange?.({
       id: navItemId,
       level: currentLevel,

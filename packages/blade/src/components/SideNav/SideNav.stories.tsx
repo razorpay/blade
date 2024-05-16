@@ -35,7 +35,7 @@ export default {
     ...getStyledPropsArgTypes(),
   },
   // eslint-disable-next-line babel/new-cap
-  decorators: [StoryRouter(undefined, { initialEntries: ['/app/dashboard'] })] as unknown,
+  decorators: [StoryRouter(undefined, { initialEntries: ['/settings/user/home'] })] as unknown,
 } as Meta<typeof SideNav>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
