@@ -34,6 +34,9 @@ const StyledNavLinkContainer = styled.a((props) => {
       props.theme.colors.transparent
     }`,
     backgroundColor: props.theme.colors.transparent,
+    '.show-on-link-hover': {
+      display: 'none',
+    },
     '.collapsed &': {
       padding: '0px 10px',
       '&[aria-current]': {
@@ -46,6 +49,9 @@ const StyledNavLinkContainer = styled.a((props) => {
     ':hover': {
       color: props.theme.colors.interactive.text.gray.normal,
       backgroundColor: props.theme.colors.interactive.background.gray.default,
+      '.show-on-link-hover': {
+        display: 'block',
+      },
     },
     '&[aria-current]': {
       color: props.theme.colors.interactive.text.primary.subtle,
@@ -81,10 +87,9 @@ const StyledNavLinkContainer = styled.a((props) => {
 const NavLinkIconTitle = ({
   icon: Icon,
   title,
+  titleSuffix,
   isL1Item,
-}: {
-  icon: SideNavLinkProps['icon'];
-  title: SideNavLinkProps['title'];
+}: Pick<SideNavLinkProps, 'title' | 'icon' | 'titleSuffix'> & {
   isL1Item: boolean;
 }): React.ReactElement => {
   return (
@@ -101,10 +106,11 @@ const NavLinkIconTitle = ({
         fontSize={100}
         lineHeight={100}
         as="p"
-        className={isL1Item ? '' : ''}
+        className={isL1Item ? 'hide-when-collapsed' : ''}
       >
         {title}
       </BaseText>
+      {titleSuffix ? <BaseBox>{titleSuffix}</BaseBox> : null}
     </Box>
   );
 };
@@ -114,7 +120,11 @@ const L3Trigger = ({
   icon,
   as,
   href,
-}: Pick<SideNavLinkProps, 'title' | 'icon' | 'as' | 'href'>): React.ReactElement => {
+  titleSuffix,
+}: Pick<
+  SideNavLinkProps,
+  'title' | 'icon' | 'as' | 'href' | 'titleSuffix'
+>): React.ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
@@ -130,7 +140,7 @@ const L3Trigger = ({
       onClick={toggleCollapse}
       {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
     >
-      <NavLinkIconTitle title={title} icon={icon} isL1Item={false} />
+      <NavLinkIconTitle title={title} icon={icon} isL1Item={false} titleSuffix={titleSuffix} />
       <BaseBox display="flex" alignItems="center">
         {isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />}
       </BaseBox>
@@ -142,6 +152,8 @@ const SideNavLink = ({
   title,
   href,
   children,
+  titleSuffix,
+  trailing,
   isCurrentPage,
   icon,
   as,
@@ -183,7 +195,7 @@ const SideNavLink = ({
           _dangerouslyDisableValidations={true}
           _shouldApplyWidthRestrictions={false}
         >
-          <L3Trigger title={title} icon={icon} as={as} href={href} />
+          <L3Trigger title={title} icon={icon} as={as} href={href} titleSuffix={titleSuffix} />
           <CollapsibleBody width="100%" _hasMargin={false}>
             {children}
           </CollapsibleBody>
@@ -220,11 +232,19 @@ const SideNavLink = ({
             data-l2trigger={isL2Trigger}
             data-navitemid={navItemId}
           >
-            <NavLinkIconTitle icon={icon} title={title} isL1Item={currentLevel === 1} />
+            <NavLinkIconTitle
+              icon={icon}
+              title={title}
+              isL1Item={currentLevel === 1}
+              titleSuffix={titleSuffix}
+            />
             {isL2Trigger ? (
               <BaseBox className="hide-when-collapsed">
                 <ChevronRightIcon size="medium" color="currentColor" />
               </BaseBox>
+            ) : null}
+            {trailing && !isL2Trigger ? (
+              <BaseBox className="hide-when-collapsed show-on-link-hover">{trailing}</BaseBox>
             ) : null}
           </StyledNavLinkContainer>
           {children ? (

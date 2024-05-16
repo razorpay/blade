@@ -17,12 +17,14 @@ import {
   ArrowUpRightIcon,
   BoxIcon,
   HomeIcon,
+  PlusIcon,
   SettingsIcon,
   SubscriptionsIcon,
   UserIcon,
 } from '~components/Icons';
 import { Heading } from '~components/Typography';
 import { Button } from '~components/Button';
+import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/SideNav',
@@ -207,8 +209,22 @@ const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
       <SideNav>
         <NavItem title="Home" icon={HomeIcon} href="/app/dashboard" />
         <SideNavSection title="OFFERINGS SECTION" maxVisibleItems={3}>
-          <NavItem title="Payment Gateway" icon={HomeIcon} href="/app/pg" />
-          <NavItem title="Payment Links" icon={HomeIcon} href="/app/pl" />
+          <NavItem
+            title="Payment Gateway"
+            icon={HomeIcon}
+            href="/app/pg"
+            trailing={<Button variant="tertiary" size="xsmall" icon={PlusIcon} />}
+          />
+          <NavItem
+            title="Payment Links"
+            titleSuffix={
+              <Badge size="small" color="positive">
+                New
+              </Badge>
+            }
+            icon={HomeIcon}
+            href="/app/pl"
+          />
           <NavItem title="Payment Pages" icon={HomeIcon} href="/app/pp" />
           <NavItem title="Payment Amazing" icon={HomeIcon} href="/app/pa" />
           <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
