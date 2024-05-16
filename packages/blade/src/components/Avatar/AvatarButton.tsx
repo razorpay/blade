@@ -64,7 +64,6 @@ const AvatarButton = ({
         flexDirection="row"
         alignItems="center"
         justifyContent="center"
-        justifyItems="center"
         zIndex={1}
         height="100%"
       >

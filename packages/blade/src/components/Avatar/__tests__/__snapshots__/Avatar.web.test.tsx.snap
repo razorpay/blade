@@ -17,7 +17,6 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -133,7 +132,6 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -249,7 +247,6 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -365,7 +362,6 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -481,7 +477,6 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -597,7 +592,6 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -713,7 +707,6 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -874,7 +867,6 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -990,7 +982,6 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1106,7 +1097,6 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1222,7 +1212,6 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1338,7 +1327,6 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1454,7 +1442,6 @@ exports[`<Avatar /> should render default avatar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1608,7 +1595,6 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
