@@ -16,6 +16,7 @@ export * from './Checkbox';
 export * from './Chip';
 export * from './Collapsible';
 export * from './Counter';
+export * from './DatePicker';
 export * from './Divider';
 export * from './Drawer';
 export * from './Dropdown';
