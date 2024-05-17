@@ -2,6 +2,7 @@ export * from './Accordion';
 export * from './ActionList';
 export * from './Alert';
 export * from './Amount';
+export * from './Avatar';
 export * from './Badge';
 export * from './BladeProvider';
 export * from './BottomSheet';

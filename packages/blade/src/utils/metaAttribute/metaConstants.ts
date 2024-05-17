@@ -10,6 +10,8 @@ export const MetaConstants = {
   Alert: 'alert',
   Amount: 'amount',
   AutoComplete: 'autocomplete',
+  Avatar: 'avatar',
+  AvatarGroup: 'avatar-group',
   Badge: 'badge',
   Box: 'box',
   BaseBox: 'base-box',
