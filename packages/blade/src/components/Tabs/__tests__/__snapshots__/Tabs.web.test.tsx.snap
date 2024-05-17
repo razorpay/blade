@@ -174,7 +174,7 @@ exports[`Tabs should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(211,27%,76%,1);
+  border-bottom-color: hsla(214,28%,84%,1);
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -576,7 +576,7 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(211,27%,76%,1);
+  border-bottom-color: hsla(214,28%,84%,1);
   background-color: hsla(211,20%,52%,0.12);
 }
 
@@ -641,7 +641,7 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover {
-  border-bottom-color: hsla(211,27%,76%,1);
+  border-bottom-color: hsla(214,28%,84%,1);
   background-color: transparent;
 }
 
@@ -1080,7 +1080,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(211,27%,76%,1);
+  border-bottom-color: hsla(214,28%,84%,1);
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -1475,7 +1475,7 @@ exports[`Tabs should render with size 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(211,27%,76%,1);
+  border-bottom-color: hsla(214,28%,84%,1);
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -1864,7 +1864,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-left-color: hsla(211,27%,76%,1);
+  border-left-color: hsla(214,28%,84%,1);
   background-color: hsla(0,0%,100%,0);
 }
 

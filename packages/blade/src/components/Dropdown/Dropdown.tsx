@@ -19,6 +19,7 @@ const validDropdownChildren = [
   // TODO: Remove Box once CountrySelector's button sizing is fixed
   dropdownComponentIds.BaseBox,
   dropdownComponentIds.triggers.SelectInput,
+  dropdownComponentIds.triggers.SearchInput,
   dropdownComponentIds.triggers.DropdownButton,
   dropdownComponentIds.triggers.DropdownLink,
   dropdownComponentIds.DropdownOverlay,
@@ -136,6 +137,10 @@ const _Dropdown = ({
 
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.SelectInput)) {
         dropdownTriggerer.current = 'SelectInput';
+      }
+
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.SearchInput)) {
+        dropdownTriggerer.current = 'SearchInput';
       }
 
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownButton)) {

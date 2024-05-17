@@ -235,7 +235,7 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -247,7 +247,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -384,7 +384,7 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -396,7 +396,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -533,7 +533,7 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -545,7 +545,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -682,7 +682,7 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -694,7 +694,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -831,7 +831,7 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -843,7 +843,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -980,7 +980,7 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -992,7 +992,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -1320,7 +1320,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -1332,7 +1332,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -1470,7 +1470,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -1482,7 +1482,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -1620,7 +1620,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -1632,7 +1632,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -1770,7 +1770,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -1782,7 +1782,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -1920,7 +1920,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -1932,7 +1932,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -2069,7 +2069,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "yellow",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 0,
@@ -2081,7 +2081,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderColor": "hsla(214, 28%, 84%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,
