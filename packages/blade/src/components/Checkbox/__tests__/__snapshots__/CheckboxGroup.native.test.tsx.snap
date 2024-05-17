@@ -285,7 +285,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(214, 28%, 84%, 1)",
                             "borderRadius": 2,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -452,7 +452,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(214, 28%, 84%, 1)",
                             "borderRadius": 2,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -619,7 +619,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(214, 28%, 84%, 1)",
                             "borderRadius": 2,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -978,7 +978,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(214, 28%, 84%, 1)",
                             "borderRadius": 2,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -1145,7 +1145,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(214, 28%, 84%, 1)",
                             "borderRadius": 2,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -1312,7 +1312,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(214, 28%, 84%, 1)",
                             "borderRadius": 2,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,

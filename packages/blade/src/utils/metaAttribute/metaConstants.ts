@@ -49,6 +49,7 @@ export const MetaConstants = {
   ListItemText: 'list-item-text',
   OTPInput: 'otp-input',
   PasswordInput: 'password-input',
+  SearchInput: 'search-input',
   TextArea: 'textarea',
   TextInput: 'textinput',
   PhoneNumberInput: 'phone-number-input',
