@@ -23,7 +23,7 @@ type SideNavLinkProps = {
   title: string;
   titleSuffix?: React.ReactElement;
   trailing?: React.ReactElement;
-  href: string;
+  href?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as: React.ComponentType<any>;
   isActive?: boolean;

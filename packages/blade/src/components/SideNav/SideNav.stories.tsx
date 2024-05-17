@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
-import { Link, Route, Switch, useLocation } from 'react-router-dom';
+import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import type { SideNavLinkProps } from './';
 import {
   SideNav,
@@ -68,46 +68,48 @@ const navItems: SideNavLinkItemsJSONType = [
     href: '/nice',
   },
   {
-    icon: SettingsIcon,
-    title: 'Settings',
-    href: '/settings/subscriptions',
-    children: [
+    heading: 'Products',
+    items: [
       {
-        icon: SubscriptionsIcon,
-        title: 'Subscriptions',
-        href: '/settings/subscriptions',
-      },
-      {
-        icon: UserIcon,
-        title: 'User Settings',
-        href: '',
+        icon: SettingsIcon,
+        title: 'Settings',
         children: [
           {
-            title: 'Address',
-            href: '/settings/user/home',
+            icon: SubscriptionsIcon,
+            title: 'Subscriptions',
+            href: '/settings/subscriptions',
           },
           {
-            title: 'Account',
-            href: '/settings/user/account',
+            icon: UserIcon,
+            title: 'User Settings',
+            children: [
+              {
+                title: 'Address',
+                href: '/settings/user/home',
+              },
+              {
+                title: 'Account',
+                href: '/settings/user/account',
+              },
+            ],
           },
         ],
       },
-    ],
-  },
-  {
-    icon: SettingsIcon,
-    title: 'Settings 2',
-    href: '/settings/user-2',
-    children: [
       {
-        icon: UserIcon,
-        title: 'User Settings 2',
-        href: '/settings/user-2',
-      },
-      {
-        icon: SubscriptionsIcon,
-        title: 'Subscriptions 2',
-        href: '/settings/subscriptions-2',
+        icon: SettingsIcon,
+        title: 'Settings 2',
+        children: [
+          {
+            icon: UserIcon,
+            title: 'User Settings 2',
+            href: '/settings/user-2',
+          },
+          {
+            icon: SubscriptionsIcon,
+            title: 'Subscriptions 2',
+            href: '/settings/subscriptions-2',
+          },
+        ],
       },
     ],
   },
@@ -118,10 +120,14 @@ const getAllChildHrefs = (
 ): string[] => {
   const hrefs: string[] = [];
   l1ItemChildren?.forEach((l2Item) => {
-    hrefs.push(l2Item.href);
+    if (l2Item.href) {
+      hrefs.push(l2Item.href);
+    }
 
     l2Item.children?.forEach((l3Item) => {
-      hrefs.push(l3Item.href);
+      if (l3Item.href) {
+        hrefs.push(l3Item.href);
+      }
     });
   });
 
@@ -134,15 +140,18 @@ const NavItem = (
   },
 ): React.ReactElement => {
   const location = useLocation();
-  const isSubItemActive = props.activeOnLinks?.includes(location.pathname);
-
-  return (
-    <SideNavLink
-      {...props}
-      as={Link}
-      isActive={location.pathname === props.href || isSubItemActive}
-    />
+  const isCurrentPathActive = Boolean(
+    matchPath(location.pathname, {
+      path: props.href,
+      exact: false,
+    }),
   );
+
+  const isSubItemActive = Boolean(
+    props.activeOnLinks?.find((href) => matchPath(location.pathname, { path: href, exact: false })),
+  );
+
+  return <SideNavLink {...props} as={Link} isActive={isCurrentPathActive || isSubItemActive} />;
 };
 
 const SideNavTemplate: StoryFn<typeof SideNav> = () => {
@@ -156,6 +165,7 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
                 key={navItem.title}
                 {...navItem}
                 activeOnLinks={getAllChildHrefs(l1Children)}
+                href={l1Children[0].href}
               >
                 <SideNavLevel>
                   {l1Children.map(({ children: l2Children, ...l2Item }) => {
