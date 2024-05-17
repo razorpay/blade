@@ -15,10 +15,19 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import {
   ArrowUpRightIcon,
+  BillIcon,
   BoxIcon,
+  CashIcon,
+  ConfettiIcon,
+  CreditCardIcon,
+  FileTextIcon,
   HomeIcon,
+  LayoutIcon,
   PlusIcon,
+  RazorpayxPayrollIcon,
+  ReportsIcon,
   SettingsIcon,
+  StampIcon,
   SubscriptionsIcon,
   UserIcon,
 } from '~components/Icons';
@@ -46,70 +55,82 @@ const Page = ({ match }: { match: any }): React.ReactElement => (
   </Box>
 );
 
-type SideNavWithoutAsChildren = Omit<SideNavLinkProps, 'as' | 'children'>;
-type SideNavJSONChildrenType = {
-  children?: (SideNavWithoutAsChildren & SideNavJSONChildrenType)[];
-};
-type SideNavLinkItemsJSONType = (SideNavWithoutAsChildren & SideNavJSONChildrenType)[];
-const navItems: SideNavLinkItemsJSONType = [
+const navItemsJSON = [
   {
-    icon: HomeIcon,
-    title: 'Home',
-    href: '/app/dashboard',
-  },
-  {
-    icon: ArrowUpRightIcon,
-    title: 'Payouts',
-    href: '/app/payouts',
-  },
-  {
-    icon: ArrowUpRightIcon,
-    title: 'Nice',
-    href: '/nice',
-  },
-
-  {
-    icon: SettingsIcon,
-    title: 'Settings',
-    children: [
+    type: 'section',
+    label: undefined,
+    items: [
       {
-        icon: SubscriptionsIcon,
-        title: 'Subscriptions',
-        href: '/settings/subscriptions',
+        icon: LayoutIcon,
+        title: 'Home',
+        href: '/app/dashboard',
       },
       {
-        icon: UserIcon,
-        title: 'User Settings',
-        children: [
-          {
-            title: 'Address',
-            href: '/settings/user/home',
-          },
-          {
-            title: 'Account',
-            href: '/settings/user/account',
-          },
-        ],
+        icon: ArrowUpRightIcon,
+        title: 'Payouts',
+        href: '/app/payouts',
+      },
+      {
+        icon: FileTextIcon,
+        title: 'Account Statement',
+        href: '/app/account-statement',
       },
     ],
   },
   {
-    icon: SettingsIcon,
-    title: 'Settings 2',
-    children: [
+    type: 'section',
+    label: 'Offerings',
+    maxItemsVisible: 3,
+    items: [
       {
-        icon: UserIcon,
-        title: 'User Settings 2',
-        href: '/settings/user-2',
+        icon: CreditCardIcon,
+        title: 'Corporate Credit Card',
+        href: '/app/corporate-credit-card',
       },
       {
-        icon: SubscriptionsIcon,
-        title: 'Subscriptions 2',
-        href: '/settings/subscriptions-2',
+        icon: BillIcon,
+        title: 'Vendor Payments',
+        href: '/app/vendor-payments',
+      },
+      {
+        icon: StampIcon,
+        title: 'Tax Payments',
+        href: '/app/tax-payments',
+      },
+      {
+        icon: RazorpayxPayrollIcon,
+        title: 'Payroll',
+        href: '/app/payroll',
+      },
+      {
+        icon: ReportsIcon,
+        title: 'Reports',
+        href: '/app/reports',
+      },
+    ],
+  },
+  {
+    type: 'section',
+    label: 'Miscellaneous',
+    items: [
+      {
+        icon: CashIcon,
+        title: 'Cost Center',
+        href: '/app/cost-center',
+      },
+      {
+        icon: ConfettiIcon,
+        title: 'Offers',
+        href: '/app/confetti',
       },
     ],
   },
 ];
+
+type SideNavWithoutAsChildren = Omit<SideNavLinkProps, 'as' | 'children'>;
+type SideNavJSONChildrenType = {
+  children?: (SideNavWithoutAsChildren & SideNavJSONChildrenType)[];
+};
 
 const getAllChildHrefs = (
   l1ItemChildren?: (SideNavWithoutAsChildren & SideNavJSONChildrenType)[],
@@ -154,6 +175,18 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
   return (
     <Box>
       <SideNav>
+        {/* {navItemsJSON.map((l1Sections) => {
+          <SideNavSection title={l1Sections.label}>
+            {
+              l1Sections.items.map((l1Item) => {
+                return (
+
+                )
+              })
+            }
+          </SideNavSection>
+        })} */}
+
         {navItems.map(({ children: l1Children, ...navItem }) => {
           if (l1Children) {
             return (

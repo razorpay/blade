@@ -33,7 +33,7 @@ type SideNavLinkProps = {
 };
 
 type SideNavSectionProps = {
-  title: string;
+  title?: string;
   /**
    * Number of items after which the items are collapsed into `+x more`
    */
