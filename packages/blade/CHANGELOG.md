@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.18.0
+
+### Minor Changes
+
+- 0c009edc: feat: add `SearchInput` component
+- 00edb732: feat: add `Avatar` & `AvatarGroup` components
+
 ## 11.17.1
 
 ### Patch Changes
