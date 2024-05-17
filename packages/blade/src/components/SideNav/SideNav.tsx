@@ -150,6 +150,8 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
     [isL1Collapsed, isMobile, isMobileL2Open],
   );
 
+  console.log({ isMobile });
+
   return (
     <SideNavContext.Provider value={contextValue}>
       {isMobile && onDismiss ? (
@@ -177,6 +179,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           height="100%"
           top="spacing.0"
           left="spacing.0"
+          display={{ base: 'none', m: 'block' }}
           width={makeSize(EXPANDED_L1_WIDTH)}
         >
           <BaseBox

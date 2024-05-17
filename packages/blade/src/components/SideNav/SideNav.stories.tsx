@@ -67,49 +67,45 @@ const navItems: SideNavLinkItemsJSONType = [
     title: 'Nice',
     href: '/nice',
   },
+
   {
-    heading: 'Products',
-    items: [
+    icon: SettingsIcon,
+    title: 'Settings',
+    children: [
       {
-        icon: SettingsIcon,
-        title: 'Settings',
+        icon: SubscriptionsIcon,
+        title: 'Subscriptions',
+        href: '/settings/subscriptions',
+      },
+      {
+        icon: UserIcon,
+        title: 'User Settings',
         children: [
           {
-            icon: SubscriptionsIcon,
-            title: 'Subscriptions',
-            href: '/settings/subscriptions',
+            title: 'Address',
+            href: '/settings/user/home',
           },
           {
-            icon: UserIcon,
-            title: 'User Settings',
-            children: [
-              {
-                title: 'Address',
-                href: '/settings/user/home',
-              },
-              {
-                title: 'Account',
-                href: '/settings/user/account',
-              },
-            ],
+            title: 'Account',
+            href: '/settings/user/account',
           },
         ],
       },
+    ],
+  },
+  {
+    icon: SettingsIcon,
+    title: 'Settings 2',
+    children: [
       {
-        icon: SettingsIcon,
-        title: 'Settings 2',
-        children: [
-          {
-            icon: UserIcon,
-            title: 'User Settings 2',
-            href: '/settings/user-2',
-          },
-          {
-            icon: SubscriptionsIcon,
-            title: 'Subscriptions 2',
-            href: '/settings/subscriptions-2',
-          },
-        ],
+        icon: UserIcon,
+        title: 'User Settings 2',
+        href: '/settings/user-2',
+      },
+      {
+        icon: SubscriptionsIcon,
+        title: 'Subscriptions 2',
+        href: '/settings/subscriptions-2',
       },
     ],
   },
@@ -224,6 +220,9 @@ const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
             title="Payment Gateway"
             icon={HomeIcon}
             href="/app/pg"
+            tooltip={{
+              content: 'Open Payment Gateway Page',
+            }}
             trailing={
               <Tooltip content="Create Payouts (Cmd + P)" placement="right">
                 <Button variant="tertiary" size="xsmall" icon={PlusIcon} />

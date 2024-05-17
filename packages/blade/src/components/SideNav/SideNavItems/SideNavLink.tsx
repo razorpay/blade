@@ -44,13 +44,16 @@ const StyledNavLinkContainer = styled.a((props) => {
     transition: collapseItemPadding,
     [`.${SHOW_ON_LINK_HOVER}`]: {
       opacity: 0,
-      '&:focus-within, &:hover, &:focus-visible': {
+      '&:focus-within, &:focus-visible': {
         opacity: 1,
       },
     },
     ':hover': {
       color: props.theme.colors.interactive.text.gray.normal,
       backgroundColor: props.theme.colors.interactive.background.gray.default,
+      [`.${SHOW_ON_LINK_HOVER}`]: {
+        opacity: 1,
+      },
     },
     '&[aria-current]': {
       color: props.theme.colors.interactive.text.primary.subtle,
@@ -109,7 +112,7 @@ const TooltipifyNavLink = ({
   }
 
   return (
-    <Tooltip {...tooltip} placement="top">
+    <Tooltip {...tooltip} placement="right">
       {children}
     </Tooltip>
   );
