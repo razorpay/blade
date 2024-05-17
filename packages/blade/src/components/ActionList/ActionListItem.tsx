@@ -14,7 +14,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import type { Platform } from '~utils';
-import { castWebType } from '~utils';
+import { castWebType, isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Checkbox } from '~components/Checkbox';
 import { size } from '~tokens/global';

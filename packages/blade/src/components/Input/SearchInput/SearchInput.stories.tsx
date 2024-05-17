@@ -37,6 +37,7 @@ import {
   HelpCircleIcon,
   BulkPayoutsIcon,
 } from '~components/Icons';
+import { Spinner } from '~components/Spinner';
 
 const propsCategory = {
   BASE_PROPS: 'Search Input Props',
@@ -287,6 +288,17 @@ export const SearchInputSizes = SearchInputSizesTemplate.bind({});
 
 const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
   const [searchTerm, setSearchTerm] = React.useState('');
+  const [isFetching, setIsFetching] = React.useState(false);
+
+  // Set a timeout to simulate fetching data
+  React.useEffect(() => {
+    if (searchTerm.length > 0) {
+      setIsFetching(true);
+      setTimeout(() => {
+        setIsFetching(false);
+      }, 1000);
+    }
+  }, [searchTerm]);
 
   const popularItems = [
     { title: 'Transactions', icon: TransactionsIcon },
@@ -307,31 +319,37 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
       />
 
       <DropdownOverlay>
-        <ActionList>
-          {searchTerm.length === 0 ? (
-            <ActionListSection title="Popular Searches">
-              {popularItems.map((item, index) => (
-                <ActionListItem
-                  key={index}
-                  title={item.title}
-                  value={item.title}
-                  leading={<ActionListItemIcon icon={item.icon} />}
-                />
-              ))}
-            </ActionListSection>
-          ) : (
-            <ActionListSection title={`${filteredItems.length} items found`}>
-              {filteredItems.map((item, index) => (
-                <ActionListItem
-                  key={index}
-                  title={item.title}
-                  value={item.title}
-                  leading={<ActionListItemIcon icon={item.icon} />}
-                />
-              ))}
-            </ActionListSection>
-          )}
-        </ActionList>
+        {isFetching ? (
+          <BaseBox display="flex" justifyContent="center" padding="spacing.4">
+            <Spinner accessibilityLabel="Fetching data" />
+          </BaseBox>
+        ) : (
+          <ActionList>
+            {searchTerm.length === 0 ? (
+              <ActionListSection title="Popular Searches">
+                {popularItems.map((item, index) => (
+                  <ActionListItem
+                    key={index}
+                    title={item.title}
+                    value={item.title}
+                    leading={<ActionListItemIcon icon={item.icon} />}
+                  />
+                ))}
+              </ActionListSection>
+            ) : (
+              <ActionListSection title={`${filteredItems.length} items found`}>
+                {filteredItems.map((item, index) => (
+                  <ActionListItem
+                    key={index}
+                    title={item.title}
+                    value={item.title}
+                    leading={<ActionListItemIcon icon={item.icon} />}
+                  />
+                ))}
+              </ActionListSection>
+            )}
+          </ActionList>
+        )}
       </DropdownOverlay>
     </Dropdown>
   );
