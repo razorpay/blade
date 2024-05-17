@@ -1,4 +1,4 @@
-import type { HTMLAttributeReferrerPolicy } from 'react';
+import type { HTMLAttributeReferrerPolicy, ImgHTMLAttributes } from 'react';
 import type React from 'react';
 import type { ButtonProps } from '~components/Button/Button';
 import type { IconComponent } from '~components/Icons';
@@ -22,7 +22,7 @@ type AvatarImgProps = {
   /**
    * CORS settings attributes
    */
-  crossOrigin?: 'anonymous' | 'use-credentials' | '';
+  crossOrigin?: ImgHTMLAttributes<''>['crossOrigin'];
   /**
    * Defines which referrer is sent when fetching the resource.
    */
@@ -36,7 +36,7 @@ type AvatarGroupProps = {
   children: React.ReactNode;
   /**
    * The size of each avatar within the group. Propagates to all avatars.
-   * @default "xsmall"
+   * @default "medium"
    */
   size?: AvatarSize;
   /**
@@ -49,7 +49,7 @@ type AvatarGroupProps = {
 type AvatarCommonProps = {
   /**
    * The size of the avatar.
-   * @default "xsmall"
+   * @default "medium"
    */
   size?: AvatarSize;
   /**

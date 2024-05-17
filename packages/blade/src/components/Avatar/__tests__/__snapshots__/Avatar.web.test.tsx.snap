@@ -30,8 +30,8 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -46,9 +46,9 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(200,84%,44%,0.09);
@@ -56,8 +56,8 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -76,12 +76,12 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(200,84%,37%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -145,8 +145,8 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -161,9 +161,9 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(4,74%,49%,0.09);
@@ -171,8 +171,8 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -191,12 +191,12 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -260,8 +260,8 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -276,9 +276,9 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(211,20%,52%,0.18);
@@ -286,8 +286,8 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -306,12 +306,12 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -375,8 +375,8 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -391,9 +391,9 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(25,90%,48%,0.09);
@@ -401,8 +401,8 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -421,12 +421,12 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(25,85%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -490,8 +490,8 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -506,9 +506,9 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(150,100%,32%,0.09);
@@ -516,8 +516,8 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -536,12 +536,12 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -605,8 +605,8 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -621,9 +621,9 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(227,100%,59%,0.09);
@@ -631,8 +631,8 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -651,12 +651,12 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -735,8 +735,8 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -751,9 +751,9 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(211,20%,52%,0.18);
@@ -761,8 +761,8 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -781,12 +781,12 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
 .c5.c5.c5.c5.c5 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -817,9 +817,9 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
             class="Svgweb__StyledSvg-vcmjs8-0"
             data-blade-component="icon"
             fill="none"
-            height="12px"
+            height="16px"
             viewBox="0 0 24 24"
-            width="12px"
+            width="16px"
           >
             <path
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
@@ -1470,8 +1470,8 @@ exports[`<Avatar /> should render default avatar 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -1486,9 +1486,9 @@ exports[`<Avatar /> should render default avatar 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(211,20%,52%,0.18);
@@ -1496,8 +1496,8 @@ exports[`<Avatar /> should render default avatar 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -1516,12 +1516,12 @@ exports[`<Avatar /> should render default avatar 1`] = `
 .c5.c5.c5.c5.c5 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1552,9 +1552,9 @@ exports[`<Avatar /> should render default avatar 1`] = `
             class="Svgweb__StyledSvg-vcmjs8-0"
             data-blade-component="icon"
             fill="none"
-            height="12px"
+            height="16px"
             viewBox="0 0 24 24"
-            width="12px"
+            width="16px"
           >
             <path
               clip-rule="evenodd"
@@ -1610,8 +1610,8 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 4px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -1626,9 +1626,9 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 4px;
   background-color: hsla(211,20%,52%,0.18);
@@ -1636,8 +1636,8 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
 
 .c2.c2.c2.c2.c2 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 4px;
   object-fit: cover;
 }
@@ -1656,12 +1656,12 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;

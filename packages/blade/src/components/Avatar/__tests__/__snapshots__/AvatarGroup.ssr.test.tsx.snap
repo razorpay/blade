@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AvatarGroup /> should render AvatarGroup with  1`] = `"<div id="root"><div data-blade-component="avatar-group" role="group" class="BaseBox-bmPWx StyledAvatarGroup-sc-1fkrhuq-0  kNEUeN"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iFdTtI"><button color="information" class="StyledAvatarButton-sc-1w6qflj-0 dwEyNh"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fslMaN" data-blade-component="text">NK</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iFdTtI"><button color="positive" class="StyledAvatarButton-sc-1w6qflj-0 hyoWlT"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO behajj" data-blade-component="text">AN</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iFdTtI"><button color="negative" class="StyledAvatarButton-sc-1w6qflj-0 khchON"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO eIwQrt" data-blade-component="text">RB</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iFdTtI"><button color="primary" class="StyledAvatarButton-sc-1w6qflj-0 dHvmLd"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO bwRjBl" data-blade-component="text">CH</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iFdTtI"><button color="positive" class="StyledAvatarButton-sc-1w6qflj-0 hyoWlT"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO behajj" data-blade-component="text">SA</p></div></button></div></div></div>"`;
+exports[`<AvatarGroup /> should render AvatarGroup  1`] = `"<div id="root"><div data-blade-component="avatar-group" role="group" class="BaseBox-bmPWx StyledAvatarGroup-sc-1fkrhuq-0  bOeoht"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="information" class="StyledAvatarButton-sc-1w6qflj-0 jpQFpy"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO ljtOIr" data-blade-component="text">NK</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="positive" class="StyledAvatarButton-sc-1w6qflj-0 klKsIg"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fXPbSJ" data-blade-component="text">AN</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="negative" class="StyledAvatarButton-sc-1w6qflj-0 fWHsma"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fPQctD" data-blade-component="text">RB</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="primary" class="StyledAvatarButton-sc-1w6qflj-0 bXOAPS"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fcPkRn" data-blade-component="text">CH</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="positive" class="StyledAvatarButton-sc-1w6qflj-0 klKsIg"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fXPbSJ" data-blade-component="text">SA</p></div></button></div></div></div>"`;
 
-exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
+exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
 .c1.c1.c1.c1.c1 {
   background-color: hsla(0,0%,100%,1);
 }
@@ -32,8 +32,8 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
@@ -48,9 +48,9 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(200,84%,44%,0.09);
@@ -58,8 +58,8 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 
 .c3.c3.c3.c3.c3 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -80,9 +80,9 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(150,100%,32%,0.09);
@@ -90,8 +90,8 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 
 .c6.c6.c6.c6.c6 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -112,9 +112,9 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(4,74%,49%,0.09);
@@ -122,8 +122,8 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 
 .c8.c8.c8.c8.c8 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -144,9 +144,9 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
-  width: 20px;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
   border: none;
   border-radius: 9999px;
   background-color: hsla(227,100%,59%,0.09);
@@ -154,8 +154,8 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 
 .c10.c10.c10.c10.c10 img {
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   border-radius: 9999px;
   object-fit: cover;
 }
@@ -174,12 +174,12 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 .c5.c5.c5.c5.c5 {
   color: hsla(200,84%,37%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -191,12 +191,12 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 .c7.c7.c7.c7.c7 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -208,12 +208,12 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 .c9.c9.c9.c9.c9 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -225,12 +225,12 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 .c11.c11.c11.c11.c11 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -250,7 +250,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with  2`] = `
 }
 
 .c0.c0.c0.c0.c0 > *:not(:first-child) {
-  margin-left: -10px;
+  margin-left: -18px;
   z-index: 2;
 }
 

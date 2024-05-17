@@ -12,7 +12,7 @@ import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 const _AvatarGroup = ({
   children,
-  size = 'xsmall',
+  size = 'medium',
   maxCount,
   testID,
   ...styledProps

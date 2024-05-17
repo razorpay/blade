@@ -23,7 +23,7 @@ const getInitials = (name: string): string => {
 const _Avatar = ({
   name,
   color = 'neutral',
-  size = 'xsmall',
+  size = 'medium',
   variant = 'circle',
   icon,
   href,

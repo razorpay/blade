@@ -4,7 +4,7 @@ import { AvatarGroup } from '../AvatarGroup';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<AvatarGroup />', () => {
-  it(`should render AvatarGroup with `, () => {
+  it(`should render AvatarGroup `, () => {
     const { container } = renderWithSSR(
       <AvatarGroup>
         <Avatar name="Nitin Kumar" color="information" />

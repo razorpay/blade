@@ -9,27 +9,18 @@ import { getTextColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { IconColor } from '~components/Button/BaseButton/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
-const getRenderElement = (href?: string): 'a' | 'button' => {
-  if (href) {
-    return 'a';
-  }
-
-  return 'button';
-};
-
 const AvatarButton = ({
   href,
   target,
   rel,
   variant = 'circle',
   color = 'neutral',
-  size = 'xsmall',
+  size = 'medium',
   icon: Icon,
   imgProps,
   children,
 }: AvatarButtonProps): React.ReactElement => {
   const isLink = Boolean(href);
-  const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
   const iconColor = getTextColorToken({
     property: 'icon',
@@ -46,7 +37,7 @@ const AvatarButton = ({
 
   return (
     <StyledAvatarButton
-      as={renderElement}
+      as={href ? 'a' : 'button'}
       size={size}
       color={color}
       href={href}

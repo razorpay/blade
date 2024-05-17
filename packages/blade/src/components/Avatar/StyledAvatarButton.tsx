@@ -6,7 +6,7 @@ import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledAvatarButton = styled.button<AvatarButtonProps>(
-  ({ theme, size = 'xsmall', variant = 'circle', color = 'neutral' }) => {
+  ({ theme, size = 'medium', variant = 'circle', color = 'neutral' }) => {
     return {
       textAlign: 'center',
       textDecoration: 'none',
