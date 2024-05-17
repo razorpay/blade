@@ -16,6 +16,8 @@ const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactE
           ? { base: 'spacing.7', m: 'spacing.6' }
           : { base: 'spacing.0', m: makeSize(COLLAPSED_L1_WIDTH) }
       }
+      // When we're in level 2 or 3, we want to stop propagation of hover from its items.
+      // L1 is only expected to open / close on hover of L1 menu and L1 items
       onMouseOver={(e) => {
         e.stopPropagation();
       }}
