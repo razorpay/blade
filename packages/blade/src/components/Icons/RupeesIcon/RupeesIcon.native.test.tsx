@@ -1,4 +1,4 @@
-import RupeesIcon from './';
+import RupeesIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<RupeesIcon />', () => {

@@ -1,4 +1,4 @@
-import ZoomOutIcon from './';
+import ZoomOutIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ZoomOutIcon />', () => {

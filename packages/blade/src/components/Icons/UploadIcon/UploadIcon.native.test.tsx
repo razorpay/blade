@@ -1,4 +1,4 @@
-import UploadIcon from './';
+import UploadIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<UploadIcon />', () => {

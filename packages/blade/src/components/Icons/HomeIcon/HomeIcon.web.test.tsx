@@ -1,4 +1,4 @@
-import HomeIcon from '.';
+import HomeIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<HomeIcon />', () => {

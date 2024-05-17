@@ -39,6 +39,12 @@ type TableHeaderRowProps = {
    * </TableHeader>
    **/
   children: React.ReactNode;
+  /**
+   * The rowDensity prop determines the density of the table.
+   * The rowDensity prop can be 'compact', 'normal', or'comfortable'.
+   * The default value is `normal`.
+   **/
+  rowDensity?: TableProps<unknown>['rowDensity'];
 };
 
 type TableHeaderCellProps = {
@@ -94,10 +100,10 @@ type TableProps<Item> = {
   isFirstColumnSticky?: boolean;
   /**
    * The rowDensity prop determines the density of the table.
-   * The rowDensity prop can be 'normal' or 'comfortable'.
+   * The rowDensity prop can be 'compact', 'normal', or'comfortable'.
    * The default value is `normal`.
    **/
-  rowDensity?: 'normal' | 'comfortable';
+  rowDensity?: 'compact' | 'normal' | 'comfortable';
   /**
    * The onSortChange prop is a function that is called when the sort changes.
    * The function is called with an object that has a sortKey property that is the key of the column that is sorted and a isSortReversed property that is a boolean that determines whether the sort is reversed or not.

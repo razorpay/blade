@@ -1,4 +1,4 @@
-import ExternalLinkIcon from '.';
+import ExternalLinkIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ExternalLinkIcon />', () => {

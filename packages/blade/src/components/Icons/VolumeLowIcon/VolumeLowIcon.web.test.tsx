@@ -1,4 +1,4 @@
-import VolumeLowIcon from '.';
+import VolumeLowIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<VolumeLowIcon />', () => {

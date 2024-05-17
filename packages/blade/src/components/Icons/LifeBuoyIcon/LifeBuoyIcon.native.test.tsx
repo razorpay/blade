@@ -1,4 +1,4 @@
-import LifeBuoyIcon from './';
+import LifeBuoyIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<LifeBuoyIcon />', () => {

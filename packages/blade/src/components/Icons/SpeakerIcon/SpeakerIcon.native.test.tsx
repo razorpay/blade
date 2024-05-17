@@ -1,4 +1,4 @@
-import SpeakerIcon from './';
+import SpeakerIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SpeakerIcon />', () => {

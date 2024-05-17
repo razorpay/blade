@@ -1,4 +1,4 @@
-import CropIcon from './';
+import CropIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CropIcon />', () => {

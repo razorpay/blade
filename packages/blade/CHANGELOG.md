@@ -1,5 +1,24 @@
 # @razorpay/blade
 
+## 11.17.1
+
+### Patch Changes
+
+- 3d69bc9d: fix(blade): modal component failing to verify null component
+
+## 11.17.0
+
+### Minor Changes
+
+- 64108d77: feat(blade): add new icons and add figma icon importer script
+
+## 11.16.1
+
+### Patch Changes
+
+- 51c04c81: feat(Table): add compact rowDensity & update existing densities
+- 906e7f4f: fix(DropdownOverlay): Fix DropdownOverlay getting cropped in Sticky Table Column
+
 ## 11.16.0
 
 ### Minor Changes

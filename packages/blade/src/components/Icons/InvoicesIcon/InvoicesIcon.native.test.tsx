@@ -1,4 +1,4 @@
-import InvoicesIcon from './';
+import InvoicesIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<InvoicesIcon />', () => {

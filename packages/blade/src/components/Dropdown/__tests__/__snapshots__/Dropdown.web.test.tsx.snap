@@ -133,189 +133,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: flex-end;
 }
 
-.c25.c25.c25.c25.c25 {
-  width: 100%;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
-}
-
-.c27.c27.c27.c27.c27 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c28.c28.c28.c28.c28 {
-  padding-right: 16px;
-  padding-left: 16px;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  touch-action: none;
-}
-
-.c29.c29.c29.c29.c29 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c30.c30.c30.c30.c30 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  padding-right: 16px;
-  margin-right: auto;
-}
-
-.c31.c31.c31.c31.c31 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c32.c32.c32.c32.c32 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c34.c34.c34.c34.c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c35.c35.c35.c35.c35 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c39.c39.c39.c39.c39 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  max-height: 20px;
-}
-
-.c40.c40.c40.c40.c40 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c41.c41.c41.c41.c41 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 8px;
-  padding-left: 0px;
-}
-
-.c43.c43.c43.c43.c43 {
-  margin-left: auto;
-}
-
-.c44.c44.c44.c44.c44 {
-  padding: 16px;
-}
-
-.c24.c24.c24.c24.c24 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  z-index: 1002;
-}
-
-.c47.c47.c47.c47.c47 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 1;
-}
-
 .c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -333,87 +150,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
-}
-
-.c26.c26.c26.c26.c26 {
-  background-color: hsla(0,0%,100%,1);
-  border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
-  border-style: solid;
-  border-radius: 4px;
-}
-
-.c45.c45.c45.c45.c45 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c45.c45.c45.c45.c45:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c45.c45.c45.c45.c45:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c45.c45.c45.c45.c45:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c45.c45.c45.c45.c45 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c46.c46.c46.c46.c46 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -480,65 +216,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   overflow-wrap: break-word;
 }
 
-.c33.c33.c33.c33.c33 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  margin-top: 1px;
-}
-
-.c42.c42.c42.c42.c42 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
-.c49.c49.c49.c49.c49 {
-  color: hsla(0,0%,100%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -548,20 +225,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c20.c20.c20.c20.c20 {
   display: none;
-}
-
-.c48.c48.c48.c48.c48 {
-  opacity: 1;
-}
-
-.c36.c36.c36.c36.c36 {
-  border-width: 0;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
 }
 
 .c15.c15.c15.c15.c15 {
@@ -801,86 +464,32 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c37.c37.c37.c37.c37 {
-  overflow-y: auto;
-  max-height: 300px;
-  padding: 8px;
-}
-
-.c37.c37.c37.c37.c37 [role=group]:last-child > [role=separator]:last-child {
-  display: none;
-}
-
-.c38.c38.c38.c38.c38 {
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent;
-  text-align: left;
-  background-color: transparent;
-  padding: 4px;
-  border-radius: 4px;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  cursor: pointer;
-  width: 100%;
-  display: block;
-}
-
-.c38.c38.c38.c38.c38:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.12);
-}
-
-.c38.c38.c38.c38.c38[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c38.c38.c38.c38.c38[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
 @media screen and (min-width:768px) {
-  .c28.c28.c28.c28.c28 {
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
+
 }
 
 @media screen and (min-width:320px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:480px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:768px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:1024px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:1200px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:768px) {
-  .c44.c44.c44.c44.c44 {
-    padding: 20px;
-  }
+
 }
 
 <div>
@@ -1056,213 +665,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           </div>
         </div>
       </div>
-      <div
-        class="c24"
-        data-blade-component="base-box"
-        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
-      >
-        <div
-          class="c25 c26"
-          data-blade-component="dropdown-overlay"
-          elevation="midRaised"
-          style="transition-property: transform,opacity; transition-duration: 200ms;"
-        >
-          <div
-            class="c27"
-            data-blade-component="base-box"
-          >
-            <div
-              class=""
-              data-blade-component="dropdown-header"
-            >
-              <div
-                class="c28"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c29"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c30"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c31"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c32"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="c33"
-                          data-blade-component="text"
-                        >
-                          Recent Searches
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="c34"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class=""
-                    data-blade-component="box"
-                  />
-                </div>
-              </div>
-              <div
-                class="c35 c36"
-                data-blade-component="divider"
-                role="separator"
-              />
-            </div>
-          </div>
-          <div
-            aria-labelledby="dropdown-7-label"
-            class=""
-            data-blade-component="action-list"
-            id="dropdown-7-actionlist"
-            role="dialog"
-          >
-            <div
-              aria-multiselectable="false"
-              class=" c37"
-              data-blade-component="base-box"
-              role="listbox"
-            >
-              <button
-                aria-selected="false"
-                class=" c38"
-                data-blade-component="action-list-item"
-                data-index="0"
-                data-value="apple"
-                id="dropdown-7-0"
-                role="option"
-                tabindex="-1"
-                type="button"
-              >
-                <div
-                  class="c39"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c40"
-                    data-blade-component="base-box"
-                  />
-                  <div
-                    class="c41"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c42"
-                      data-blade-component="text"
-                    >
-                      Apple
-                    </p>
-                  </div>
-                  <div
-                    class="c43"
-                    data-blade-component="base-box"
-                  />
-                </div>
-                <div
-                  class=""
-                  data-blade-component="base-box"
-                />
-              </button>
-              <button
-                aria-selected="false"
-                class=" c38"
-                data-blade-component="action-list-item"
-                data-index="1"
-                data-value="mango"
-                id="dropdown-7-1"
-                role="option"
-                tabindex="-1"
-                type="button"
-              >
-                <div
-                  class="c39"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c40"
-                    data-blade-component="base-box"
-                  />
-                  <div
-                    class="c41"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c42"
-                      data-blade-component="text"
-                    >
-                      Mango
-                    </p>
-                  </div>
-                  <div
-                    class="c43"
-                    data-blade-component="base-box"
-                  />
-                </div>
-                <div
-                  class=""
-                  data-blade-component="base-box"
-                />
-              </button>
-            </div>
-          </div>
-          <div
-            class=""
-            data-blade-component="base-box"
-            role="group"
-          >
-            <div
-              class="c35 c36"
-              data-blade-component="divider"
-              role="separator"
-            />
-            <div
-              class="c44"
-              data-blade-component="dropdown-footer"
-            >
-              <div
-                class=""
-                data-blade-component="box"
-              >
-                <button
-                  class="c45"
-                  data-blade-component="button"
-                  role="button"
-                  type="button"
-                >
-                  <div
-                    class=" c46"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c47 c48"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c49"
-                        data-blade-component="base-text"
-                      >
-                        Apply
-                      </div>
-                    </div>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -1420,172 +822,6 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   justify-content: flex-end;
 }
 
-.c24.c24.c24.c24.c24 {
-  display: none;
-  z-index: 1002;
-}
-
-.c25.c25.c25.c25.c25 {
-  width: 100%;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
-}
-
-.c27.c27.c27.c27.c27 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c28.c28.c28.c28.c28 {
-  padding-right: 16px;
-  padding-left: 16px;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  touch-action: none;
-}
-
-.c29.c29.c29.c29.c29 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c30.c30.c30.c30.c30 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  padding-right: 16px;
-  margin-right: auto;
-}
-
-.c31.c31.c31.c31.c31 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c32.c32.c32.c32.c32 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c34.c34.c34.c34.c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c35.c35.c35.c35.c35 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c39.c39.c39.c39.c39 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  max-height: 20px;
-}
-
-.c40.c40.c40.c40.c40 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c41.c41.c41.c41.c41 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 8px;
-  padding-left: 0px;
-}
-
-.c43.c43.c43.c43.c43 {
-  margin-left: auto;
-}
-
-.c44.c44.c44.c44.c44 {
-  padding: 16px;
-}
-
-.c26.c26.c26.c26.c26 {
-  background-color: hsla(0,0%,100%,1);
-  border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
-  border-style: solid;
-  border-radius: 4px;
-}
-
 .c7.c7.c7.c7.c7 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -1650,47 +886,6 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   overflow-wrap: break-word;
 }
 
-.c33.c33.c33.c33.c33 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  margin-top: 1px;
-}
-
-.c42.c42.c42.c42.c42 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1700,16 +895,6 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 
 .c21.c21.c21.c21.c21 {
   display: none;
-}
-
-.c36.c36.c36.c36.c36 {
-  border-width: 0;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
 }
 
 .c15.c15.c15.c15.c15 {
@@ -1949,86 +1134,32 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c37.c37.c37.c37.c37 {
-  overflow-y: auto;
-  max-height: 300px;
-  padding: 8px;
-}
-
-.c37.c37.c37.c37.c37 [role=group]:last-child > [role=separator]:last-child {
-  display: none;
-}
-
-.c38.c38.c38.c38.c38 {
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent;
-  text-align: left;
-  background-color: transparent;
-  padding: 4px;
-  border-radius: 4px;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  cursor: pointer;
-  width: 100%;
-  display: block;
-}
-
-.c38.c38.c38.c38.c38:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.12);
-}
-
-.c38.c38.c38.c38.c38[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c38.c38.c38.c38.c38[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
 @media screen and (min-width:768px) {
-  .c28.c28.c28.c28.c28 {
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
+
 }
 
 @media screen and (min-width:320px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:480px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:768px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:1024px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:1200px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:768px) {
-  .c44.c44.c44.c44.c44 {
-    padding: 20px;
-  }
+
 }
 
 <div>
@@ -2200,184 +1331,6 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
             <div
               class="c23"
               data-blade-component="base-box"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        class="c24"
-        data-blade-component="base-box"
-        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 0px);"
-      >
-        <div
-          class="c25 c26"
-          data-blade-component="dropdown-overlay"
-          elevation="midRaised"
-          style="transform: translateY(-8px); opacity: 0; transition-property: transform,opacity; transition-duration: 200ms;"
-        >
-          <div
-            class="c27"
-            data-blade-component="base-box"
-          >
-            <div
-              class=""
-              data-blade-component="dropdown-header"
-            >
-              <div
-                class="c28"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c29"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c30"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c31"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c32"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="c33"
-                          data-blade-component="text"
-                        >
-                          Recent Searches
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="c34"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class=""
-                    data-blade-component="box"
-                  />
-                </div>
-              </div>
-              <div
-                class="c35 c36"
-                data-blade-component="divider"
-                role="separator"
-              />
-            </div>
-          </div>
-          <div
-            aria-labelledby="dropdown-55-label"
-            class=""
-            data-blade-component="action-list"
-            id="dropdown-55-actionlist"
-            role="dialog"
-          >
-            <div
-              aria-multiselectable="false"
-              class=" c37"
-              data-blade-component="base-box"
-              role="listbox"
-            >
-              <button
-                aria-selected="false"
-                class=" c38"
-                data-blade-component="action-list-item"
-                data-index="0"
-                data-value="apple"
-                id="dropdown-55-0"
-                role="option"
-                tabindex="-1"
-                type="button"
-              >
-                <div
-                  class="c39"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c40"
-                    data-blade-component="base-box"
-                  />
-                  <div
-                    class="c41"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c42"
-                      data-blade-component="text"
-                    >
-                      Apple
-                    </p>
-                  </div>
-                  <div
-                    class="c43"
-                    data-blade-component="base-box"
-                  />
-                </div>
-                <div
-                  class=""
-                  data-blade-component="base-box"
-                />
-              </button>
-              <button
-                aria-selected="false"
-                class=" c38"
-                data-blade-component="action-list-item"
-                data-index="1"
-                data-value="mango"
-                id="dropdown-55-1"
-                role="option"
-                tabindex="-1"
-                type="button"
-              >
-                <div
-                  class="c39"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c40"
-                    data-blade-component="base-box"
-                  />
-                  <div
-                    class="c41"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c42"
-                      data-blade-component="text"
-                    >
-                      Mango
-                    </p>
-                  </div>
-                  <div
-                    class="c43"
-                    data-blade-component="base-box"
-                  />
-                </div>
-                <div
-                  class=""
-                  data-blade-component="base-box"
-                />
-              </button>
-            </div>
-          </div>
-          <div
-            class=""
-            data-blade-component="base-box"
-            role="group"
-          >
-            <div
-              class="c35 c36"
-              data-blade-component="divider"
-              role="separator"
-            />
-            <div
-              class="c44"
-              data-blade-component="dropdown-footer"
             />
           </div>
         </div>

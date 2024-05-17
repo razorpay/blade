@@ -1,4 +1,4 @@
-import SunIcon from './';
+import SunIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SunIcon />', () => {

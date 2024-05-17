@@ -1,4 +1,4 @@
-import PowerIcon from './';
+import PowerIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PowerIcon />', () => {

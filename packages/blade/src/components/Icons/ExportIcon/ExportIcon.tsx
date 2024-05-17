@@ -3,7 +3,7 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
 const ExportIcon: IconComponent = ({ size, color, ...styledProps }) => {
-  const { width, height, iconColor } = useIconProps({ size, color });
+  const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">

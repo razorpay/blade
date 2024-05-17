@@ -1,4 +1,4 @@
-import VolumeIcon from './';
+import VolumeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<VolumeIcon />', () => {

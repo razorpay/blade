@@ -1,4 +1,4 @@
-import TvIcon from './';
+import TvIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TvIcon />', () => {

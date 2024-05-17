@@ -1,4 +1,4 @@
-import TargetIcon from './';
+import TargetIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TargetIcon />', () => {

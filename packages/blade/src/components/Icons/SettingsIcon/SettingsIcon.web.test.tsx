@@ -1,4 +1,4 @@
-import SettingsIcon from '.';
+import SettingsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SettingsIcon />', () => {

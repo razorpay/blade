@@ -1,4 +1,4 @@
-import CloudSnowIcon from './';
+import CloudSnowIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CloudSnowIcon />', () => {

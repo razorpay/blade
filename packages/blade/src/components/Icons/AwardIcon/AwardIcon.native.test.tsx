@@ -1,4 +1,4 @@
-import AwardIcon from './';
+import AwardIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<AwardIcon />', () => {

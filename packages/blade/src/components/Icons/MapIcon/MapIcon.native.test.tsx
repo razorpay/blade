@@ -1,4 +1,4 @@
-import MapIcon from './';
+import MapIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MapIcon />', () => {

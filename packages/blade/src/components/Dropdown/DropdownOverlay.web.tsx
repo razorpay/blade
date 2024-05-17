@@ -6,6 +6,9 @@ import {
   useFloating,
   useTransitionStyles,
   flip,
+  FloatingPortal,
+  useDismiss,
+  useInteractions,
 } from '@floating-ui/react';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
@@ -81,6 +84,9 @@ const _DropdownOverlay = ({
     whileElementsMounted: autoUpdate,
   });
 
+  const dismiss = useDismiss(context);
+  const { getFloatingProps } = useInteractions([dismiss]);
+
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
     initial: () => ({
@@ -98,23 +104,26 @@ const _DropdownOverlay = ({
   }, [isOpen]);
 
   return (
-    <BaseBox
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={refs.setFloating as any}
-      style={floatingStyles}
-      zIndex={zIndex}
-      display={isMounted ? 'flex' : 'none'}
-    >
-      <StyledDropdownOverlay
-        isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
-        elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
-        style={{ ...styles }}
-        width={width ? width : '100%'}
-        {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+    <FloatingPortal>
+      <BaseBox
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={refs.setFloating as any}
+        style={floatingStyles}
+        zIndex={zIndex}
+        display={isMounted ? 'flex' : 'none'}
+        {...getFloatingProps()}
       >
-        {children}
-      </StyledDropdownOverlay>
-    </BaseBox>
+        <StyledDropdownOverlay
+          isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+          elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
+          style={{ ...styles }}
+          width={width ? width : '100%'}
+          {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+        >
+          {children}
+        </StyledDropdownOverlay>
+      </BaseBox>
+    </FloatingPortal>
   );
 };
 

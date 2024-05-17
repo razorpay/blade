@@ -1,4 +1,4 @@
-import PaymentPagesIcon from './';
+import PaymentPagesIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PaymentPagesIcon />', () => {

@@ -1,4 +1,4 @@
-import CommandIcon from './';
+import CommandIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CommandIcon />', () => {

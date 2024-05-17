@@ -11,12 +11,9 @@ import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 
-const getActiveDescendant = (
-  selectInput: HTMLElement,
-  container: HTMLElement,
-): string | null | undefined => {
+const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
-  const activeDescendantElement = container.querySelector(`#${activeDescendantId}`);
+  const activeDescendantElement = document.querySelector(`#${activeDescendantId}`);
   return activeDescendantElement?.textContent;
 };
 
@@ -398,7 +395,7 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     const user = userEvent.setup();
     const profileClickHandler = jest.fn();
 
-    const { container, getByRole, queryByRole } = renderWithTheme(
+    const { getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <DropdownButton>My Account</DropdownButton>
         <DropdownOverlay>
@@ -425,13 +422,13 @@ describe('<Dropdown /> with <DropdownButton />', () => {
 
     // Move to first item
     await user.keyboard('{ArrowDown}');
-    expect(getActiveDescendant(dropdownTrigger, container)).toBe('Profile');
+    expect(getActiveDescendant(dropdownTrigger)).toBe('Profile');
     await user.keyboard('[Space]');
     expect(profileClickHandler).toBeCalled();
 
     await user.keyboard('{ArrowDown}');
     await user.keyboard('{ArrowDown}');
-    expect(getActiveDescendant(dropdownTrigger, container)).toBe('Settings');
+    expect(getActiveDescendant(dropdownTrigger)).toBe('Settings');
     window.open = jest.fn();
     await user.keyboard('[Space]');
     expect(window.open).toBeCalledWith('/settings', '_blank');

@@ -1,4 +1,4 @@
-import PlusCircleIcon from './';
+import PlusCircleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PlusCircleIcon />', () => {
