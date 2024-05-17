@@ -16,16 +16,16 @@
   {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
-    "size": 35058,
+    "size": 35067,
     "sizeLimit": 2000000,
-    "loading": 0.6847265625
+    "loading": 0.68490234375
   },
   {
     "name": "Alert",
     "passed": true,
-    "size": 33527,
+    "size": 33528,
     "sizeLimit": 2000000,
-    "loading": 0.65482421875
+    "loading": 0.65484375
   },
   {
     "name": "Amount",
@@ -135,16 +135,16 @@
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
     "passed": true,
-    "size": 50152,
+    "size": 50167,
     "sizeLimit": 2000000,
-    "loading": 0.97953125
+    "loading": 0.97982421875
   },
   {
     "name": "FileUpload",
     "passed": true,
-    "size": 36835,
+    "size": 36837,
     "sizeLimit": 2000000,
-    "loading": 0.71943359375
+    "loading": 0.71947265625
   },
   {
     "name": "Indicator",
@@ -156,16 +156,16 @@
   {
     "name": "List, ListItem, ListItemLink, ListItemCode, ListItemText",
     "passed": true,
-    "size": 27356,
+    "size": 27355,
     "sizeLimit": 2000000,
-    "loading": 0.534296875
+    "loading": 0.53427734375
   },
   {
     "name": "Modal",
     "passed": true,
-    "size": 35089,
+    "size": 35090,
     "sizeLimit": 2000000,
-    "loading": 0.68533203125
+    "loading": 0.6853515625
   },
   {
     "name": "Popover, PopoverInteractiveWrapper",
@@ -198,9 +198,9 @@
   {
     "name": "SpotlightPopoverTour, SpotlightPopoverTourFooter, SpotlightPopoverTourStep",
     "passed": true,
-    "size": 50922,
+    "size": 50925,
     "sizeLimit": 2000000,
-    "loading": 0.9945703125
+    "loading": 0.99462890625
   },
   {
     "name": "StepGroup, StepItem, StepItemIcon, StepItemIndicator",
@@ -219,9 +219,9 @@
   {
     "name": "Table, TableHeader, TableHeaderCell, TableHeaderRow, TableBody, TableCell, TableRow, TableFooter, TableFooterCell, TableFooterRow, TablePagination, TableToolbar, TableToolbarActions",
     "passed": true,
-    "size": 79630,
+    "size": 79643,
     "sizeLimit": 2000000,
-    "loading": 1.5552734375
+    "loading": 1.55552734375
   },
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
@@ -275,30 +275,37 @@
   {
     "name": "SelectInput, AutoComplete",
     "passed": true,
-    "size": 41367,
+    "size": 41388,
     "sizeLimit": 2000000,
-    "loading": 0.80794921875
+    "loading": 0.808359375
   },
   {
     "name": "OTPInput",
     "passed": true,
-    "size": 35452,
+    "size": 35454,
     "sizeLimit": 2000000,
-    "loading": 0.692421875
+    "loading": 0.6924609375
   },
   {
     "name": "PasswordInput",
     "passed": true,
-    "size": 37108,
+    "size": 37106,
     "sizeLimit": 2000000,
-    "loading": 0.724765625
+    "loading": 0.7247265625
   },
   {
     "name": "PhoneNumberInput",
     "passed": true,
-    "size": 76177,
+    "size": 76192,
     "sizeLimit": 2000000,
-    "loading": 1.48783203125
+    "loading": 1.488125
+  },
+  {
+    "name": "SearchInput",
+    "passed": true,
+    "size": 39681,
+    "sizeLimit": 2000000,
+    "loading": 0.77501953125
   },
   {
     "name": "TextArea",
@@ -310,9 +317,9 @@
   {
     "name": "TextInput",
     "passed": true,
-    "size": 39588,
+    "size": 39600,
     "sizeLimit": 2000000,
-    "loading": 0.773203125
+    "loading": 0.7734375
   },
   {
     "name": "Link",
@@ -331,9 +338,9 @@
   {
     "name": "Spinner",
     "passed": true,
-    "size": 24243,
+    "size": 24144,
     "sizeLimit": 2000000,
-    "loading": 0.47349609375
+    "loading": 0.4715625
   },
   {
     "name": "Code",
