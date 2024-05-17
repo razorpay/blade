@@ -237,7 +237,7 @@ export const BaseInputVisuals = ({
           <BaseBox paddingLeft="spacing.4" display="flex">
             <LeadingIcon
               size={iconSize[size]}
-              color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.subtle'}
+              color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
             />
           </BaseBox>
         ) : null}
