@@ -14,7 +14,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import type { Platform } from '~utils';
-import { isReactNative } from '~utils';
+import { castWebType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Checkbox } from '~components/Checkbox';
 import { size } from '~tokens/global';
@@ -446,7 +446,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
           if (typeof props._index === 'number') {
             onOptionClick(e, props._index);
-            props.onClick?.({ name: props.value, value: isSelected, event: e });
+            props.onClick?.({ name: props.value, value: isSelected, event: castWebType(e) });
           }
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
