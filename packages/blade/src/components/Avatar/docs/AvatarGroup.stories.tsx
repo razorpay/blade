@@ -24,11 +24,11 @@ const Page = (): React.ReactElement => {
         function App(): React.ReactElement {
           return (
             <AvatarGroup>
-              <Avatar name="Kamlesh Chandnani" />
-              <Avatar name="Rama Krushna Behera" />
-              <Avatar name="Chaitanya Vikas Deorukhkar" />
-              <Avatar name="Anurag Hazra" />
-              <Avatar name="Nitin Kumar" />
+              <Avatar color="primary" name="Kamlesh Chandnani" />
+              <Avatar color="positive" name="Rama Krushna Behera" />
+              <Avatar color="negative" name="Chaitanya Vikas Deorukhkar" />
+              <Avatar color="notice" name="Anurag Hazra" />
+              <Avatar color="information" name="Nitin Kumar" />
             </AvatarGroup>
           )
         }
