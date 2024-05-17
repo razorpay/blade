@@ -14,18 +14,18 @@
     "loading": 0.57923828125
   },
   {
-    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
-    "passed": true,
-    "size": 35067,
-    "sizeLimit": 2000000,
-    "loading": 0.68490234375
-  },
-  {
     "name": "Alert",
     "passed": true,
     "size": 33528,
     "sizeLimit": 2000000,
     "loading": 0.65484375
+  },
+  {
+    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
+    "passed": true,
+    "size": 35067,
+    "sizeLimit": 2000000,
+    "loading": 0.68490234375
   },
   {
     "name": "Amount",
