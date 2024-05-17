@@ -1022,7 +1022,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;
@@ -1047,7 +1047,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -1074,7 +1074,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;

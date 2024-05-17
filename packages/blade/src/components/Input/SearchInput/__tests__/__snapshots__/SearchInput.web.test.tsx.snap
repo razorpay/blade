@@ -259,7 +259,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;
@@ -284,7 +284,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -311,7 +311,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;
@@ -753,7 +753,7 @@ exports[`<SearchInput /> should render 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;
@@ -778,7 +778,7 @@ exports[`<SearchInput /> should render 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -805,7 +805,7 @@ exports[`<SearchInput /> should render 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;
@@ -941,7 +941,7 @@ exports[`<SearchInput /> should render 1`] = `
                 >
                   <path
                     clip-rule="evenodd"
-                    d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+                    d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
                     data-blade-component="svg-path"
                     fill="hsla(211, 26%, 34%, 1)"
                     fill-rule="evenodd"
@@ -1120,163 +1120,6 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   justify-content: flex-end;
 }
 
-.c21.c21.c21.c21.c21 {
-  width: 100%;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
-}
-
-.c23.c23.c23.c23.c23 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c24.c24.c24.c24.c24 {
-  padding-right: 16px;
-  padding-left: 16px;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  touch-action: none;
-}
-
-.c25.c25.c25.c25.c25 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c26.c26.c26.c26.c26 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  padding-right: 16px;
-  margin-right: auto;
-}
-
-.c27.c27.c27.c27.c27 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c28.c28.c28.c28.c28 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c30.c30.c30.c30.c30 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c31.c31.c31.c31.c31 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c35.c35.c35.c35.c35 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  max-height: 20px;
-}
-
-.c36.c36.c36.c36.c36 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c37.c37.c37.c37.c37 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 8px;
-  padding-left: 0px;
-}
-
-.c39.c39.c39.c39.c39 {
-  margin-left: auto;
-}
-
-.c20.c20.c20.c20.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  z-index: 1002;
-}
-
 .c6.c6.c6.c6.c6 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -1315,47 +1158,6 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c29.c29.c29.c29.c29 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  margin-top: 1px;
-}
-
-.c38.c38.c38.c38.c38 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1590,98 +1392,28 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c33.c33.c33.c33.c33 {
-  overflow-y: auto;
-  max-height: 300px;
-  padding: 8px;
-}
-
-.c33.c33.c33.c33.c33 [role=group]:last-child > [role=separator]:last-child {
-  display: none;
-}
-
-.c34.c34.c34.c34.c34 {
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent;
-  text-align: left;
-  background-color: transparent;
-  padding: 4px;
-  border-radius: 4px;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  cursor: pointer;
-  width: 100%;
-  display: block;
-}
-
-.c34.c34.c34.c34.c34:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.09);
-}
-
-.c34.c34.c34.c34.c34[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c34.c34.c34.c34.c34[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c32.c32.c32.c32.c32 {
-  border-width: 0;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-.c22.c22.c22.c22.c22 {
-  background-color: hsla(0,0%,100%,1);
-  border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
-  border-style: solid;
-  border-radius: 4px;
-}
-
 @media screen and (min-width:768px) {
-  .c24.c24.c24.c24.c24 {
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
+
 }
 
 @media screen and (min-width:320px) {
-  .c31.c31.c31.c31.c31 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:480px) {
-  .c31.c31.c31.c31.c31 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:768px) {
-  .c31.c31.c31.c31.c31 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:1024px) {
-  .c31.c31.c31.c31.c31 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:1200px) {
-  .c31.c31.c31.c31.c31 {
-    border-bottom-style: solid;
-  }
+
 }
 
 <div>
@@ -1768,7 +1500,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
                     >
                       <path
                         clip-rule="evenodd"
-                        d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+                        d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
                         data-blade-component="svg-path"
                         fill="hsla(211, 26%, 34%, 1)"
                         fill-rule="evenodd"
@@ -1812,165 +1544,6 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
               class="c19"
               data-blade-component="base-box"
             />
-          </div>
-        </div>
-      </div>
-      <div
-        class="c20"
-        data-blade-component="base-box"
-        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
-      >
-        <div
-          class="c21 c22"
-          data-blade-component="dropdown-overlay"
-          elevation="midRaised"
-          style="transform: translateY(-8px); opacity: 0; transition-property: transform,opacity;"
-        >
-          <div
-            class="c23"
-            data-blade-component="base-box"
-          >
-            <div
-              class=""
-              data-blade-component="dropdown-header"
-            >
-              <div
-                class="c24"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c25"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c26"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c27"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c28"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="c29"
-                          data-blade-component="text"
-                        >
-                          Recent Searches
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="c30"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class=""
-                    data-blade-component="box"
-                  />
-                </div>
-              </div>
-              <div
-                class="c31 c32"
-                data-blade-component="divider"
-                role="separator"
-              />
-            </div>
-          </div>
-          <div
-            aria-labelledby="dropdown-667-label"
-            class=""
-            data-blade-component="action-list"
-            id="dropdown-667-actionlist"
-            role="menu"
-          >
-            <div
-              class=" c33"
-              data-blade-component="base-box"
-            >
-              <button
-                class=" c34"
-                data-blade-component="action-list-item"
-                data-index="0"
-                data-value="apple"
-                id="dropdown-667-0"
-                role="menuitem"
-                tabindex="-1"
-                type="button"
-              >
-                <div
-                  class="c35"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c36"
-                    data-blade-component="base-box"
-                  />
-                  <div
-                    class="c37"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c38"
-                      data-blade-component="text"
-                    >
-                      Apple
-                    </p>
-                  </div>
-                  <div
-                    class="c39"
-                    data-blade-component="base-box"
-                  />
-                </div>
-                <div
-                  class=""
-                  data-blade-component="base-box"
-                />
-              </button>
-              <button
-                class=" c34"
-                data-blade-component="action-list-item"
-                data-index="1"
-                data-value="mango"
-                id="dropdown-667-1"
-                role="menuitem"
-                tabindex="-1"
-                type="button"
-              >
-                <div
-                  class="c35"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c36"
-                    data-blade-component="base-box"
-                  />
-                  <div
-                    class="c37"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c38"
-                      data-blade-component="text"
-                    >
-                      Mango
-                    </p>
-                  </div>
-                  <div
-                    class="c39"
-                    data-blade-component="base-box"
-                  />
-                </div>
-                <div
-                  class=""
-                  data-blade-component="base-box"
-                />
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -2298,7 +1871,7 @@ exports[`<SearchInput /> should render large size 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;
@@ -2323,7 +1896,7 @@ exports[`<SearchInput /> should render large size 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -2350,7 +1923,7 @@ exports[`<SearchInput /> should render large size 1`] = `
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;
@@ -2486,7 +2059,7 @@ exports[`<SearchInput /> should render large size 1`] = `
                 >
                   <path
                     clip-rule="evenodd"
-                    d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+                    d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
                     data-blade-component="svg-path"
                     fill="hsla(211, 26%, 34%, 1)"
                     fill-rule="evenodd"

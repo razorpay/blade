@@ -14,7 +14,7 @@ exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] =
     style={
       [
         {
-          "borderBottomColor": "hsla(211, 24%, 65%, 1)",
+          "borderBottomColor": "hsla(211, 27%, 76%, 1)",
           "borderBottomStyle": "solid",
         },
       ]
@@ -39,7 +39,7 @@ exports[`<Box /> should apply borderColor prop to all borders 1`] = `
     style={
       [
         {
-          "borderColor": "hsla(211, 24%, 65%, 1)",
+          "borderColor": "hsla(211, 27%, 76%, 1)",
           "borderStyle": "solid",
         },
       ]

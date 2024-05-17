@@ -192,8 +192,8 @@ export default {
         <StoryPageWrapper
           componentDescription="The SearchInput component is a component that can be used to input name, email, telephone, url, search or plain text."
           componentName="SearchInput"
-          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/SearchInput/_decisions/_decisions.md"
-          figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76077-57130&t=icthxu77bIRPBob9-1&scaling=min-zoom&page-id=10953%3A191554&mode=design"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/SearchInput/_decisions/decisions.md"
+          figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=85072%3A160345&mode=design&t=Pv93G8LK6OtL4wwk-1"
         >
           <Title>Usage</Title>
           <Sandbox>
@@ -219,8 +219,37 @@ export default {
   },
 } as Meta<SearchInputProps>;
 
+const menuItems = [
+  { title: 'Account & Settings', icon: SettingsIcon },
+  { title: 'Profile', icon: UserIcon },
+  { title: 'Transactions', icon: TransactionsIcon },
+  { title: 'Help', icon: HelpCircleIcon },
+  { title: 'Settlements', icon: SettlementsIcon },
+  { title: 'Payouts', icon: BulkPayoutsIcon },
+];
+
 const SearchInputTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
-  return <SearchInputComponent {...args} />;
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const filteredItems = menuItems.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+  return (
+    <BaseBox>
+      <SearchInputComponent {...args} onChange={({ value }) => setSearchTerm(value as string)} />
+      <ActionList>
+        <ActionListSection title={`${filteredItems.length} items found`}>
+          {filteredItems.map((item, index) => (
+            <ActionListItem
+              key={index}
+              title={item.title}
+              value={item.title}
+              leading={<ActionListItemIcon icon={item.icon} />}
+            />
+          ))}
+        </ActionListSection>
+      </ActionList>
+    </BaseBox>
+  );
 };
 
 export const Default = SearchInputTemplate.bind({});
@@ -259,14 +288,6 @@ export const SearchInputSizes = SearchInputSizesTemplate.bind({});
 const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
   const [searchTerm, setSearchTerm] = React.useState('');
 
-  const menuItems = [
-    { title: 'Account & Settings', icon: SettingsIcon },
-    { title: 'Profile', icon: UserIcon },
-    { title: 'Transactions', icon: TransactionsIcon },
-    { title: 'Help', icon: HelpCircleIcon },
-    { title: 'Settlements', icon: SettlementsIcon },
-    { title: 'Payouts', icon: BulkPayoutsIcon },
-  ];
   const popularItems = [
     { title: 'Transactions', icon: TransactionsIcon },
     { title: 'Settlements', icon: SettlementsIcon },
