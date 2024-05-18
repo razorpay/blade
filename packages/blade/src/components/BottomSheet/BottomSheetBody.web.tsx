@@ -11,18 +11,14 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 const bodyStyles: React.CSSProperties = {
-  // -webkit-user-select: auto;
-  // -ms-user-select: auto;
-  // user-select: auto;
-  // overflow: auto;
-  // overscroll-behavior: contain;
-  // -webkit-overflow-scrolling: touch;
-  WebkitOverflowScrolling: 'touch',
-  overflow: 'auto',
-  overscrollBehavior: 'contain',
+  WebkitTapHighlightColor: 'revert',
+  WebkitTouchCallout: 'revert',
   WebkitUserSelect: 'auto',
-  MozUserSelect: 'auto',
+  overscrollBehavior: 'contain',
+  WebkitOverflowScrolling: 'touch',
   userSelect: 'auto',
+  overflow: 'auto',
+  touchAction: 'none',
 };
 
 const _BottomSheetBody = ({
@@ -74,7 +70,7 @@ const _BottomSheetBody = ({
         paddingTop={bottomSheetHasActionList ? 'spacing.3' : padding}
         paddingBottom={bottomSheetHasActionList ? 'spacing.3' : padding}
         ref={contentRef}
-        overflow="hidden"
+        overflow="auto"
       >
         {children}
       </BaseBox>
