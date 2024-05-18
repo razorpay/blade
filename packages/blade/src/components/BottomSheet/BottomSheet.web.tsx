@@ -63,8 +63,24 @@ const BottomSheetSurface = styled.div<{
     backgroundColor: theme.colors.popup.background.subtle,
     justifyContent: 'center',
     alignItems: 'center',
-    touchAction: 'none',
-    overflow: 'hidden',
+    // touchAction: 'none',
+    // overflow: 'hidden',
+    ':after': {
+      content: "''",
+      pointerEvents: 'none',
+      height: '1px',
+      willChange: 'transform',
+      transformOrigin: 'bottom',
+      zIndex: 3,
+      overscrollBehavior: 'none',
+      touchAction: 'none',
+      position: 'fixed',
+      right: 0,
+      bottom: 0,
+      left: 0,
+      userSelect: 'none',
+      WebkitTouchCallout: 'none',
+    },
   };
 });
 
@@ -241,6 +257,7 @@ const _BottomSheet = ({
       velocity: [_velocityX, velocityY],
       lastOffset: [_, lastOffsetY],
       down,
+      memo = positionY,
       dragging,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
@@ -248,7 +265,7 @@ const _BottomSheet = ({
       // lastOffsetY is the previous position user stopped dragging the sheet
       // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
       // and rawY is the calculated offset from the last position of the bottomsheet to current drag amount.
-      const rawY = lastOffsetY - movementY;
+      const rawY = memo - movementY;
 
       const lowerSnapPoint = dimensions.height * snapPoints[0];
       const upperSnapPoint = dimensions.height * snapPoints[snapPoints.length - 1];
@@ -281,7 +298,7 @@ const _BottomSheet = ({
       const isPosAtUpperSnapPoint = newY >= upperSnapPoint;
 
       if (isContentDragging) {
-        if (isPosAtUpperSnapPoint) {
+        if (newY >= upperSnapPoint) {
           newY = upperSnapPoint;
         }
 
@@ -291,11 +308,16 @@ const _BottomSheet = ({
         // Note: how using newY won't work here since we need the previous value of the newY
         // since we always keep updating the newY,
         // this is cruicial in making the scroll feel natural
-        const isContentScrolledAtTop = scrollRef.current && scrollRef.current.scrollTop <= 0;
-        if (lastOffsetY === upperSnapPoint && !isContentScrolledAtTop) {
+        // const isContentScrolledAtTop = scrollRef.current && scrollRef.current.scrollTop <= 0;
+        // if (memo === upperSnapPoint && !isContentScrolledAtTop) {
+        //   newY = upperSnapPoint;
+        // }
+        if (memo === upperSnapPoint && scrollRef.current && scrollRef.current.scrollTop > 0) {
           newY = upperSnapPoint;
         }
         preventScrollingRef.current = newY < upperSnapPoint;
+      } else {
+        preventScrollingRef.current = false;
       }
 
       if (last) {
@@ -316,7 +338,7 @@ const _BottomSheet = ({
           setIsDragging(false);
           cancel();
           close();
-          return;
+          return memo;
         }
 
         // if we stop dragging assign snap to the nearest point
@@ -326,16 +348,17 @@ const _BottomSheet = ({
       }
 
       setPositionY(newY, !down);
+      return memo;
     },
     {
-      from: [0, positionY],
+      // from: [0, positionY],
       filterTaps: true,
       enabled: isOnTopOfStack && _isOpen,
     },
   );
 
   // Here we are preventing the scrolling of the content, until the preventScrollingRef value is true
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     const scrollElement = scrollRef.current;
     if (!scrollElement) return;
 
@@ -349,11 +372,11 @@ const _BottomSheet = ({
     const preventSafariOverscroll = (e: Event) => {
       if (scrollElement.scrollTop < 0) {
         // TODO: figure this out, it doesn't seem to work >iOS12
-        // requestAnimationFrame(() => {
-        //   elem.style.overflow = 'hidden';
-        //   elem.scrollTop = 0;
-        //   elem.style.removeProperty('overflow');
-        // });
+        requestAnimationFrame(() => {
+          // scrollElement.style.overflow = 'hidden';
+          // scrollElement.scrollTop = 0;
+          // scrollElement.style.removeProperty('overflow');
+        });
         e.preventDefault();
       }
     };
@@ -369,7 +392,7 @@ const _BottomSheet = ({
     // Only run this hook when we know all the layout calculations are done,
     // Otherwise the scrollRef.current will be null.
     // isReady prop will ensure that we are done measuring the content height
-  }, [isReady]);
+  }, [isReady, scrollRef]);
 
   // usePresence hook waits for the animation to finish before unmounting the component
   // It's similar to framer-motions usePresence hook
