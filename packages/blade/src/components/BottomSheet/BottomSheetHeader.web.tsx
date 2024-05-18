@@ -7,7 +7,6 @@ import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _BottomSheetHeader = ({
@@ -22,19 +21,12 @@ const _BottomSheetHeader = ({
 }: BottomSheetHeaderProps): React.ReactElement => {
   const {
     setHeaderHeight,
-    isOpen,
     close,
     bind,
     setIsHeaderEmpty,
     defaultInitialFocusRef,
   } = useBottomSheetContext();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
-  const ref = React.useRef<HTMLDivElement>(null);
-
-  useIsomorphicLayoutEffect(() => {
-    if (!ref.current) return;
-    setHeaderHeight(ref.current.getBoundingClientRect().height);
-  }, [ref, isOpen]);
 
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton || children);
 
@@ -45,7 +37,10 @@ const _BottomSheetHeader = ({
 
   return (
     <BaseBox
-      ref={ref}
+      ref={(node) => {
+        if (!node) return;
+        setHeaderHeight(node.getBoundingClientRect().height);
+      }}
       overflow={isHeaderEmpty ? 'visible' : 'auto'}
       flexShrink={0}
       {...metaAttribute({ name: MetaConstants.BottomSheetHeader })}
@@ -81,7 +76,7 @@ const _BottomSheetHeader = ({
   );
 };
 
-const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
+const BottomSheetHeader = assignWithoutSideEffects(React.memo(_BottomSheetHeader), {
   componentId: ComponentIds.BottomSheetHeader,
 });
 

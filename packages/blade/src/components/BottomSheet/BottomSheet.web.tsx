@@ -92,7 +92,6 @@ const _BottomSheet = ({
 
   const preventScrollingRef = React.useRef(true);
   const scrollRef = React.useRef<HTMLDivElement>(null);
-  const grabHandleRef = React.useRef<HTMLDivElement>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
   const originalFocusElement = React.useRef<HTMLElement | null>(null);
   const initialSnapPoint = React.useRef<number>(snapPoints[1]);
@@ -153,12 +152,6 @@ const _BottomSheet = ({
       clearAllBodyScrollLocks();
     }
   }, [stack]);
-
-  // take the grabHandle's height into headerHeight too
-  useIsomorphicLayoutEffect(() => {
-    if (!grabHandleRef.current) return;
-    setGrabHandleHeight(grabHandleRef.current.getBoundingClientRect().height);
-  }, [grabHandleRef.current, _isOpen]);
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
   useIsomorphicLayoutEffect(() => {
@@ -318,6 +311,7 @@ const _BottomSheet = ({
           setIsDragging(false);
           cancel();
           close();
+          return;
         }
 
         // if we stop dragging assign snap to the nearest point
@@ -471,7 +465,10 @@ const _BottomSheet = ({
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
           <BottomSheetGrabHandle
-            ref={grabHandleRef}
+            ref={(node) => {
+              if (!node) return;
+              setGrabHandleHeight(node.getBoundingClientRect().height);
+            }}
             isHeaderFloating={isHeaderFloating}
             {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
             {...bind()}

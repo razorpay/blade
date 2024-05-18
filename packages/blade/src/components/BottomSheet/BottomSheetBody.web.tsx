@@ -3,7 +3,6 @@ import React from 'react';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetBodyProps } from './types';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 import { componentIds } from '~components/ActionList/componentIds';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -25,14 +24,8 @@ const _BottomSheetBody = ({
   children,
   padding = 'spacing.5',
 }: BottomSheetBodyProps): React.ReactElement => {
-  const { scrollRef, setContentHeight, setHasBodyPadding, isOpen, bind } = useBottomSheetContext();
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const { scrollRef, setContentHeight, setHasBodyPadding, bind } = useBottomSheetContext();
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<boolean>(false);
-
-  useIsomorphicLayoutEffect(() => {
-    if (!contentRef.current) return;
-    setContentHeight(contentRef.current.getBoundingClientRect().height);
-  }, [contentRef, isOpen, children]);
 
   React.useEffect(() => {
     setBottomSheetHasActionList(false);
@@ -69,8 +62,11 @@ const _BottomSheetBody = ({
         paddingRight={bottomSheetHasActionList ? 'spacing.3' : padding}
         paddingTop={bottomSheetHasActionList ? 'spacing.3' : padding}
         paddingBottom={bottomSheetHasActionList ? 'spacing.3' : padding}
-        ref={contentRef}
         overflow="auto"
+        ref={(node) => {
+          if (!node) return;
+          setContentHeight(node.getBoundingClientRect().height);
+        }}
       >
         {children}
       </BaseBox>
@@ -78,7 +74,7 @@ const _BottomSheetBody = ({
   );
 };
 
-const BottomSheetBody = assignWithoutSideEffects(_BottomSheetBody, {
+const BottomSheetBody = assignWithoutSideEffects(React.memo(_BottomSheetBody), {
   componentId: ComponentIds.BottomSheetBody,
 });
 
