@@ -63,24 +63,8 @@ const BottomSheetSurface = styled.div<{
     backgroundColor: theme.colors.popup.background.subtle,
     justifyContent: 'center',
     alignItems: 'center',
-    // touchAction: 'none',
-    // overflow: 'hidden',
-    ':after': {
-      content: "''",
-      pointerEvents: 'none',
-      height: '1px',
-      willChange: 'transform',
-      transformOrigin: 'bottom',
-      zIndex: 3,
-      overscrollBehavior: 'none',
-      touchAction: 'none',
-      position: 'fixed',
-      right: 0,
-      bottom: 0,
-      left: 0,
-      userSelect: 'none',
-      WebkitTouchCallout: 'none',
-    },
+    touchAction: 'none',
+    overflow: 'hidden',
   };
 });
 
@@ -256,8 +240,8 @@ const _BottomSheet = ({
       movement: [_movementX, movementY],
       velocity: [_velocityX, velocityY],
       lastOffset: [_, lastOffsetY],
+      direction: [sideway, upwards],
       down,
-      memo = positionY,
       dragging,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
@@ -265,8 +249,7 @@ const _BottomSheet = ({
       // lastOffsetY is the previous position user stopped dragging the sheet
       // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
       // and rawY is the calculated offset from the last position of the bottomsheet to current drag amount.
-      const rawY = memo - movementY;
-
+      const rawY = lastOffsetY - movementY;
       const lowerSnapPoint = dimensions.height * snapPoints[0];
       const upperSnapPoint = dimensions.height * snapPoints[snapPoints.length - 1];
 
@@ -295,10 +278,9 @@ const _BottomSheet = ({
         newY = predictedY;
       }
 
-      const isPosAtUpperSnapPoint = newY >= upperSnapPoint;
-
       if (isContentDragging) {
-        if (newY >= upperSnapPoint) {
+        const isPosAtUpperSnapPoint = newY >= upperSnapPoint;
+        if (isPosAtUpperSnapPoint) {
           newY = upperSnapPoint;
         }
 
@@ -308,16 +290,14 @@ const _BottomSheet = ({
         // Note: how using newY won't work here since we need the previous value of the newY
         // since we always keep updating the newY,
         // this is cruicial in making the scroll feel natural
-        // const isContentScrolledAtTop = scrollRef.current && scrollRef.current.scrollTop <= 0;
-        // if (memo === upperSnapPoint && !isContentScrolledAtTop) {
-        //   newY = upperSnapPoint;
-        // }
-        if (memo === upperSnapPoint && scrollRef.current && scrollRef.current.scrollTop > 0) {
+        const isContentScrolledAtTop = scrollRef.current && scrollRef.current.scrollTop <= 0;
+        if (lastOffsetY === upperSnapPoint && !isContentScrolledAtTop) {
           newY = upperSnapPoint;
         }
-        preventScrollingRef.current = newY < upperSnapPoint;
-      } else {
-        preventScrollingRef.current = false;
+        // We don't want to prevent scrolling if user is scrolling horizontally
+        // eg: in a carousel or a horizontal scrollable container
+        const isScrollingSideways = Math.abs(sideway) == 1 && Math.abs(upwards) == 0;
+        preventScrollingRef.current = isScrollingSideways ? false : newY < upperSnapPoint;
       }
 
       if (last) {
@@ -338,7 +318,6 @@ const _BottomSheet = ({
           setIsDragging(false);
           cancel();
           close();
-          return memo;
         }
 
         // if we stop dragging assign snap to the nearest point
@@ -348,10 +327,9 @@ const _BottomSheet = ({
       }
 
       setPositionY(newY, !down);
-      return memo;
     },
     {
-      // from: [0, positionY],
+      from: [0, positionY],
       filterTaps: true,
       enabled: isOnTopOfStack && _isOpen,
     },
@@ -392,7 +370,7 @@ const _BottomSheet = ({
     // Only run this hook when we know all the layout calculations are done,
     // Otherwise the scrollRef.current will be null.
     // isReady prop will ensure that we are done measuring the content height
-  }, [isReady, scrollRef]);
+  }, [isReady]);
 
   // usePresence hook waits for the animation to finish before unmounting the component
   // It's similar to framer-motions usePresence hook

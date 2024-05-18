@@ -48,6 +48,7 @@ import { Radio, RadioGroup } from '~components/Radio';
 import { Checkbox } from '~components/Checkbox';
 import { TextInput } from '~components/Input/TextInput';
 import { Carousel, CarouselItem } from '~components/Carousel';
+import { TabItem, TabList, TabPanel, Tabs } from '~components/Tabs';
 
 const Page = (): React.ReactElement => {
   return (
@@ -290,12 +291,6 @@ const BottomSheetTemplate: StoryFn<typeof BottomSheetComponent> = ({ ...args }) 
       >
         <BottomSheetHeader title="Terms & Conditions" subtitle="Read carefully before accepting." />
         <BottomSheetBody>
-          <Carousel>
-            <CarouselItem>Item 1</CarouselItem>
-            <CarouselItem>Item 2</CarouselItem>
-            <CarouselItem>Item 3</CarouselItem>
-            <CarouselItem>Item 4</CarouselItem>
-          </Carousel>
           <Text marginY="spacing.11">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
             has been the industry's standard dummy text ever since the 1500s, when an unknown
@@ -1035,6 +1030,103 @@ const WithOTPInputTemplate: StoryFn<typeof BottomSheetComponent> = () => {
 };
 
 export const WithOTPInput = WithOTPInputTemplate.bind({});
+
+const CarouselExample = (): React.ReactElement => {
+  return (
+    <Box marginY="spacing.5">
+      <Carousel>
+        <CarouselItem>
+          <Box height="150px" padding="spacing.5" backgroundColor="surface.background.gray.subtle">
+            <Text>Product 1</Text>
+          </Box>
+        </CarouselItem>
+        <CarouselItem>
+          <Box height="150px" padding="spacing.5" backgroundColor="surface.background.gray.subtle">
+            <Text>Product 2</Text>
+          </Box>
+        </CarouselItem>
+        <CarouselItem>
+          <Box height="150px" padding="spacing.5" backgroundColor="surface.background.gray.subtle">
+            <Text>Product 3</Text>
+          </Box>
+        </CarouselItem>
+        <CarouselItem>
+          <Box height="150px" padding="spacing.5" backgroundColor="surface.background.gray.subtle">
+            <Text>Product 4</Text>
+          </Box>
+        </CarouselItem>
+      </Carousel>
+    </Box>
+  );
+};
+const WithTabsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        snapPoints={[0.6, 0.8, 1]}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetBody>
+          <Tabs>
+            <TabList>
+              <TabItem value="1">Top Products</TabItem>
+              <TabItem value="2">On Website/App</TabItem>
+              <TabItem value="3">In Store</TabItem>
+              <TabItem value="4">Plugins</TabItem>
+              <TabItem value="5">International</TabItem>
+              <TabItem value="6">With Smart Addons</TabItem>
+            </TabList>
+            <TabPanel value="1">
+              <CarouselExample />
+            </TabPanel>
+            <TabPanel value="2">
+              <CarouselExample />
+            </TabPanel>
+            <TabPanel value="3">
+              <CarouselExample />
+            </TabPanel>
+            <TabPanel value="4">
+              <CarouselExample />
+            </TabPanel>
+            <TabPanel value="5">
+              <CarouselExample />
+            </TabPanel>
+            <TabPanel value="6">
+              <CarouselExample />
+            </TabPanel>
+          </Tabs>
+          <Text marginTop="spacing.5">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has been the industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </Text>
+          <Text>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has been the industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </Text>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const WithTabs = WithTabsTemplate.bind({});
 
 type ValidationState = 'none' | 'success' | 'error';
 
