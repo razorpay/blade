@@ -19,13 +19,13 @@ import getBaseTextStyles from '~components/Typography/BaseText/getBaseTextStyles
 
 const pulseKeyframes = keyframes`
   0% {
-    opacity: 100;
+    opacity: 1;
   }
   50% {
     opacity: 0.65;
   }
   100% {
-    opacity: 100;
+    opacity: 1;
   }
 `;
 
@@ -54,16 +54,19 @@ const getPulseAnimationStyles = ({
     opacity: ${pulseAnimation.opacityInitial};
     background-color: ${pulseAnimation.backgroundColor};
     transition: stroke-dashoffset ${duration} ${easing};
-    animation: ${pulseKeyframes} ${duration} ${easing} infinite;
+    animation: ${pulseKeyframes} ${duration} ${easing} 2;
   `;
 };
 
 const StyledSVGText = styled.text<Pick<TextProps<{ variant: 'body' }>, 'size' | 'weight'>>(
   ({ theme, size, weight }) => {
-    return getBaseTextStyles({
-      theme,
-      ...getTextProps({ variant: 'body', size, weight }),
-    });
+    return {
+      ...getBaseTextStyles({
+        theme,
+        ...getTextProps({ variant: 'body', size, weight }),
+      }),
+      fill: getIn(theme.colors, 'surface.text.gray.normal'),
+    };
   },
 );
 
