@@ -54,7 +54,7 @@ const getPulseAnimationStyles = ({
     opacity: ${pulseAnimation.opacityInitial};
     background-color: ${pulseAnimation.backgroundColor};
     transition: stroke-dashoffset ${duration} ${easing};
-    animation: ${pulseKeyframes} ${duration} ${easing} 2;
+    animation: ${pulseKeyframes} ${duration} ${easing} infinite;
   `;
 };
 

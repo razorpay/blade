@@ -153,8 +153,8 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   background-color: white;
   -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
   transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -308,8 +308,8 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
   background-color: white;
   -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
   transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -478,8 +478,8 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
   background-color: white;
   -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
   transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -651,8 +651,8 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
   background-color: white;
   -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
   transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -824,8 +824,8 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
   background-color: white;
   -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
   transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -3738,8 +3738,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   background-color: white;
   -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
   transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -4048,8 +4048,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   background-color: white;
   -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
   transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) 2;
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 .c0.c0.c0.c0.c0 {
