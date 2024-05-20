@@ -437,7 +437,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -584,7 +584,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -731,7 +731,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1147,7 +1147,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="heading"
             >
               <button
-                aria-controls="collapsible-body-34"
+                aria-controls="collapsible-body-31"
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
@@ -1224,7 +1224,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1237,7 +1237,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               aria-hidden="true"
               class=""
               data-blade-component="collapsible-body"
-              id="collapsible-body-34"
+              id="collapsible-body-31"
               role="region"
             >
               <div
@@ -1294,7 +1294,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="heading"
             >
               <button
-                aria-controls="collapsible-body-35"
+                aria-controls="collapsible-body-32"
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
@@ -1371,7 +1371,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1384,7 +1384,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               aria-hidden="true"
               class=""
               data-blade-component="collapsible-body"
-              id="collapsible-body-35"
+              id="collapsible-body-32"
               role="region"
             >
               <div
@@ -1441,7 +1441,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="heading"
             >
               <button
-                aria-controls="collapsible-body-36"
+                aria-controls="collapsible-body-33"
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
@@ -1518,7 +1518,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1531,7 +1531,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               aria-hidden="true"
               class=""
               data-blade-component="collapsible-body"
-              id="collapsible-body-36"
+              id="collapsible-body-33"
               role="region"
             >
               <div
