@@ -4,10 +4,10 @@ import { within, userEvent } from '@storybook/testing-library';
 import { expect, jest } from '@storybook/jest';
 import type { Mock } from 'jest-mock';
 import React from 'react';
-import type { DatesRangeValue, DateValue } from '@mantine/dates';
 import { DatesProvider } from '@mantine/dates';
 import { HeadlessMantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
+import type { DatesRangeValue, DateValue } from '../types';
 import type { DatePickerProps } from '../';
 import { DatePicker as DatePickerComponent } from '../';
 import { Box } from '~components/Box';
@@ -18,13 +18,11 @@ const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout
 let onOpenChange: Mock<unknown, unknown[]> | null = null;
 
 const BasicDatePicker = (props: DatePickerProps<'range' | 'range'>): React.ReactElement => (
-  <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
-    <HeadlessMantineProvider>
-      <DatesProvider settings={{ locale: 'en-US' }}>
-        <DatePickerComponent {...props} />
-      </DatesProvider>
-    </HeadlessMantineProvider>
-  </Box>
+  <HeadlessMantineProvider>
+    <DatesProvider settings={{ locale: 'en-US' }}>
+      <DatePickerComponent {...props} />
+    </DatesProvider>
+  </HeadlessMantineProvider>
 );
 
 export const DatePickerShouldShow: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
