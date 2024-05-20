@@ -7,6 +7,7 @@ import { Chip, ChipGroup } from '~components/Chip';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils/makeAccessible';
+import { size } from '~tokens/global';
 
 const isSamePreset = (value1: DatesRangeValue | null, value2: DatesRangeValue | null): boolean => {
   if (!value1?.[0] || !value1?.[1]) return false;
@@ -67,7 +68,7 @@ const PresetSideBar = ({
       flexDirection="column"
       gap="spacing.2"
       backgroundColor="surface.background.gray.moderate"
-      minWidth={makeSpace(160)}
+      minWidth={makeSpace(size[160])}
       borderRightColor="surface.border.gray.muted"
       borderRightStyle="solid"
       borderRightWidth="thin"
