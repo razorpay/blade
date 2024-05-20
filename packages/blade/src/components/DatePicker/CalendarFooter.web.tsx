@@ -16,7 +16,13 @@ const CalendarFooter = ({
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.5">
       {isMobile ? null : <Divider />}
-      <BaseBox width="auto" marginLeft="auto" display="flex" flexDirection="row" gap="spacing.4">
+      <BaseBox
+        width={{ base: '100%', m: 'auto' }}
+        marginLeft="auto"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.4"
+      >
         <Button isFullWidth={isMobile} variant="tertiary" size="medium" onClick={onCancel}>
           Cancel
         </Button>

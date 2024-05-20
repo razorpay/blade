@@ -7,7 +7,7 @@ import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { Calendar } from './Calendar';
 import { PresetSideBar } from './QuickSelection/PresetSideBar';
-import type { DatePickerProps, DateSelectionType } from './types';
+import type { DatePickerProps, DateSelectionType, PickerType } from './types';
 import { useDatesState } from './useDatesState';
 import { DatePickerInput } from './DateInput';
 import { usePopup } from './usePopup';
@@ -45,6 +45,9 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   successText,
   validationState,
   size,
+  defaultPicker = 'day',
+  picker,
+  onPickerChange,
   ...props
 }: DatePickerProps<Type>): React.ReactElement => {
   const _selectionType = selectionType ?? 'single';
@@ -54,6 +57,15 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const [_, forceRerenderBottomSheet] = React.useReducer((x: number) => x + 1, 0);
 
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
+
+  const [_picker, setPicker] = useControllableState<PickerType>({
+    defaultValue: defaultPicker,
+    value: picker,
+    onChange: (picker) => {
+      onPickerChange?.(picker);
+    },
+  });
+
   const {
     onDateChange,
     onRootMouseLeave,
@@ -63,7 +75,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     controlledValue,
     setControlledValue,
   } = useDatesState({
-    level: 'day',
+    level: _picker,
     type: isSingle ? 'default' : 'range',
     allowDeselect: false,
     allowSingleDateInRange,
@@ -163,10 +175,14 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
           __onDayClick={(_event, date) => {
             onDateChange(date);
           }}
+          getMonthControlProps={(date) => {
+            return getControlProps(date);
+          }}
+          getYearControlProps={(date) => {
+            return getControlProps(date);
+          }}
           getDayProps={(date) => {
-            return {
-              ...getControlProps(date),
-            };
+            return getControlProps(date);
           }}
           onMonthSelect={(date) => {
             props?.onMonthSelect?.(date);
@@ -184,8 +200,9 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             props?.onPrevious?.(date);
             forceRerenderBottomSheet();
           }}
-          onPickerChange={(date) => {
-            props?.onPickerChange?.(date);
+          picker={_picker}
+          onPickerChange={(picker) => {
+            setPicker(() => picker);
             forceRerenderBottomSheet();
           }}
         />

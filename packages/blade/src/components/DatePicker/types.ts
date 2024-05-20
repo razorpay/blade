@@ -24,10 +24,21 @@ type Preset = {
 };
 
 type DateSelectionType = 'single' | 'range';
-type MantineInternalProps = '__onDayMouseEnter' | '__onDayClick' | 'getDayProps' | 'onMouseLeave';
+type MantineInternalProps =
+  | '__onDayMouseEnter'
+  | '__onDayClick'
+  | 'getDayProps'
+  | 'getYearControlProps'
+  | 'getMonthControlProps';
 type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   MantineDatePickerProps<SelectionType extends 'single' ? 'default' : 'range'>,
-  MantineInternalProps | 'value' | 'defaultValue' | 'onChange' | 'onMonthSelect' | 'onYearSelect'
+  | MantineInternalProps
+  | 'onMouseLeave'
+  | 'value'
+  | 'defaultValue'
+  | 'onChange'
+  | 'onMonthSelect'
+  | 'onYearSelect'
 > & {
   /**
    * Sets the selection mode of the calendar
