@@ -4,7 +4,7 @@ import { within, userEvent } from '@storybook/testing-library';
 import { expect, jest } from '@storybook/jest';
 import type { Mock } from 'jest-mock';
 import React from 'react';
-import type { DateValue } from '@mantine/dates';
+import type { DatesRangeValue, DateValue } from '@mantine/dates';
 import { DatesProvider } from '@mantine/dates';
 import { HeadlessMantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
@@ -27,13 +27,9 @@ const BasicDatePicker = (props: DatePickerProps<'range' | 'range'>): React.React
   </Box>
 );
 
-export const DatePickerShouldShow: StoryFn<typeof DatePickerComponent> = (
-  props,
-): React.ReactElement => {
+export const DatePickerShouldShow: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
   onOpenChange = jest.fn();
-  return (
-    <BasicDatePicker {...props} accessibilityLabel="Select Date" onOpenChange={onOpenChange} />
-  );
+  return <BasicDatePicker accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
 DatePickerShouldShow.play = async () => {
@@ -53,13 +49,26 @@ DatePickerShouldShow.play = async () => {
   await expect(onOpenChange).toBeCalledTimes(2);
 };
 
-export const DatePickerSingleSelect: StoryFn<typeof DatePickerComponent> = (
-  props,
-): React.ReactElement => {
+export const DatePickerDisabled: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
   onOpenChange = jest.fn();
   return (
-    <BasicDatePicker {...props} accessibilityLabel="Select Date" onOpenChange={onOpenChange} />
+    <BasicDatePicker isDisabled accessibilityLabel="Select Date" onOpenChange={onOpenChange} />
   );
+};
+
+DatePickerDisabled.play = async () => {
+  const { getByRole } = within(document.body);
+  const input = getByRole('combobox', { name: /Select Date/i });
+  await userEvent.click(input);
+  await sleep(400);
+  await expect(onOpenChange).not.toBeCalled();
+};
+
+export const DatePickerSingleSelect: StoryFn<
+  typeof DatePickerComponent
+> = (): React.ReactElement => {
+  onOpenChange = jest.fn();
+  return <BasicDatePicker accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
 DatePickerSingleSelect.play = async () => {
@@ -72,7 +81,7 @@ DatePickerSingleSelect.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
@@ -84,13 +93,11 @@ DatePickerSingleSelect.play = async () => {
   await expect(onOpenChange).toBeCalledTimes(2);
 };
 
-export const DatePickerSingleSelectCancel: StoryFn<typeof DatePickerComponent> = (
-  props,
-): React.ReactElement => {
+export const DatePickerSingleSelectCancel: StoryFn<
+  typeof DatePickerComponent
+> = (): React.ReactElement => {
   onOpenChange = jest.fn();
-  return (
-    <BasicDatePicker {...props} accessibilityLabel="Select Date" onOpenChange={onOpenChange} />
-  );
+  return <BasicDatePicker accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
 DatePickerSingleSelectCancel.play = async () => {
@@ -103,7 +110,7 @@ DatePickerSingleSelectCancel.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
   await userEvent.click(date);
   // assert inputs value
   await expect(input).toHaveValue(dateToSelect.format('DD/MM/YYYY'));
@@ -161,7 +168,7 @@ DatePickerSingleSelectControlled.play = async () => {
   await expect(input).toHaveValue(dayjs().add(5, 'day').format('DD/MM/YYYY'));
   // select another date
   const dateToSelect = dayjs().add(6, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
@@ -232,6 +239,97 @@ DatePickerSingleChangePicker.play = async () => {
   await sleep(400);
   // assert inputs value
   await expect(input).toHaveValue(dayjs('02/02/2025').format('DD/MM/YYYY'));
+};
+
+export const DatePickerRangeSelect: StoryFn<
+  typeof DatePickerComponent
+> = (): React.ReactElement => {
+  onOpenChange = jest.fn();
+  return (
+    <BasicDatePicker
+      selectionType="range"
+      label={{ start: 'Start Date', end: 'End Date' }}
+      onOpenChange={onOpenChange}
+    />
+  );
+};
+
+DatePickerRangeSelect.play = async () => {
+  const { getByRole, queryByText } = within(document.body);
+  const startInput = getByRole('combobox', { name: /Start Date/i });
+  const endInput = getByRole('combobox', { name: /End Date/i });
+  // open
+  await userEvent.click(startInput);
+  await sleep(400);
+  await expect(onOpenChange).toBeCalledWith({ isOpen: true });
+  await expect(queryByText('Apply')).toBeVisible();
+  // select start date
+  const startDateToSelect = dayjs().add(1, 'day');
+  await userEvent.click(getByRole('button', { name: startDateToSelect.format('DD MMMM YYYY') }));
+  // press next button
+  const nextButton = getByRole('button', { name: /Next/i });
+  await userEvent.click(nextButton);
+  const endDateToSelect = dayjs().add(2, 'month').add(2, 'day');
+  await userEvent.click(getByRole('button', { name: endDateToSelect.format('DD MMMM YYYY') }));
+  // press apply button
+  const applyButton = getByRole('button', { name: /Apply/i });
+  await userEvent.click(applyButton);
+  await sleep(400);
+  await expect(queryByText('Apply')).toBeNull();
+  // assert inputs value
+  await expect(startInput).toHaveValue(startDateToSelect.format('DD/MM/YYYY'));
+  await expect(endInput).toHaveValue(endDateToSelect.format('DD/MM/YYYY'));
+  await expect(onOpenChange).toBeCalledTimes(2);
+};
+
+export const DatePickerRangeSelectControlled: StoryFn<
+  typeof DatePickerComponent
+> = (): React.ReactElement => {
+  const [value, setValue] = React.useState<DatesRangeValue>(() => [
+    new Date(),
+    dayjs().add(6, 'day').toDate(),
+  ]);
+
+  return (
+    <BasicDatePicker
+      value={value}
+      onChange={(date) => {
+        setValue(date);
+      }}
+      selectionType="range"
+      label={{ start: 'Start Date', end: 'End Date' }}
+    />
+  );
+};
+
+DatePickerRangeSelectControlled.play = async () => {
+  const { getByRole, queryByText } = within(document.body);
+  const startInput = getByRole('combobox', { name: /Start Date/i });
+  const endInput = getByRole('combobox', { name: /End Date/i });
+  // assert inputs value
+  await expect(startInput).toHaveValue(dayjs().format('DD/MM/YYYY'));
+  await expect(endInput).toHaveValue(dayjs().add(6, 'day').format('DD/MM/YYYY'));
+
+  // open
+  await userEvent.click(startInput);
+  await sleep(400);
+  await expect(queryByText('Apply')).toBeVisible();
+  // select start date
+  const startDateToSelect = dayjs().add(1, 'day');
+  await userEvent.click(getByRole('button', { name: startDateToSelect.format('DD MMMM YYYY') }));
+  // press next button
+  const nextButton = getByRole('button', { name: /Next/i });
+  await userEvent.click(nextButton);
+  const endDateToSelect = dayjs().add(2, 'month').add(2, 'day');
+  await userEvent.click(getByRole('button', { name: endDateToSelect.format('DD MMMM YYYY') }));
+  // press apply button
+  const applyButton = getByRole('button', { name: /Apply/i });
+  await userEvent.click(applyButton);
+  await sleep(400);
+  await expect(queryByText('Apply')).toBeNull();
+  // assert inputs value
+  await expect(startInput).toHaveValue(startDateToSelect.format('DD/MM/YYYY'));
+  await expect(endInput).toHaveValue(endDateToSelect.format('DD/MM/YYYY'));
 };
 
 export default {
