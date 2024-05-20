@@ -8287,7 +8287,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
           }
           textAlign="center"
         >
-          PAY NOW
+          Pay Now
         </Text>
       </View>
     </View>
