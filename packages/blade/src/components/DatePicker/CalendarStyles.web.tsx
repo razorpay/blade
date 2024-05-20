@@ -6,7 +6,7 @@ import { classes } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { size } from '~tokens/global';
-import { makeSpace } from '~utils';
+import { makeBorderSize, makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { useIsMobile } from '~utils/useIsMobile';
 
@@ -46,17 +46,31 @@ const todayCell = {
 } as const;
 
 const selectedCell = {
-  background: {
-    default: 'interactive.background.primary.default',
-    hover: 'interactive.background.primary.highlighted',
+  day: {
+    background: {
+      default: 'interactive.background.primary.default',
+      hover: 'interactive.background.primary.highlighted',
+    },
+    border: {
+      default: 'interactive.border.primary.default',
+      hover: 'interactive.border.primary.faded',
+    },
+    text: {
+      default: 'interactive.text.onPrimary.normal',
+      hover: 'interactive.text.onPrimary.normal',
+    },
   },
-  border: {
-    default: 'interactive.border.primary.default',
-    hover: 'interactive.border.primary.faded',
-  },
-  text: {
-    default: 'interactive.text.onPrimary.normal',
-    hover: 'interactive.text.onPrimary.normal',
+  month: {
+    background: {
+      default: 'transparent',
+      hover: 'interactive.background.primary.faded',
+    },
+    border: {
+      default: 'interactive.border.primary.default',
+    },
+    text: {
+      default: 'interactive.text.primary.normal',
+    },
   },
 } as const;
 
@@ -186,20 +200,32 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
 
   const selected = {
     '&[data-selected]': {
-      backgroundColor: getIn(theme.colors, selectedCell.background.default),
-      outlineColor: getIn(theme.colors, selectedCell.border.default),
-      color: getIn(theme.colors, selectedCell.text.default),
+      '&[data-celltype="day"]': {
+        backgroundColor: getIn(theme.colors, selectedCell.day.background.default),
+        outlineColor: getIn(theme.colors, selectedCell.day.border.default),
+        color: getIn(theme.colors, selectedCell.day.text.default),
+        ':hover': {
+          backgroundColor: getIn(theme.colors, selectedCell.day.background.hover),
+          color: getIn(theme.colors, selectedCell.day.text.hover),
+        },
+      },
+      '&[data-celltype="month"], &[data-celltype="year"]': {
+        backgroundColor: 'transparent',
+        outlineStyle: 'solid',
+        outlineWidth: makeBorderSize(theme.border.width.thin),
+        outlineOffset: makeSpace(-theme.border.width.thin),
+        outlineColor: getIn(theme.colors, selectedCell.month.border.default),
+        color: getIn(theme.colors, selectedCell.month.text.default),
+        ':hover': {
+          backgroundColor: getIn(theme.colors, selectedCell.month.background.hover),
+        },
+      },
       ':before': {
-        backgroundColor: getIn(theme.colors, selectedCell.text.default),
+        backgroundColor: getIn(theme.colors, selectedCell.day.text.default),
       },
     },
     '&[data-selected] [data-date]': {
       background: 'none !important',
-    },
-    '&[data-selected]:hover': {
-      backgroundColor: getIn(theme.colors, selectedCell.background.hover),
-      outlineColor: 'red',
-      color: getIn(theme.colors, selectedCell.text.hover),
     },
   } as const;
 

@@ -142,11 +142,12 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
         firstInRange: isFirstInRange(date),
         lastInRange: isLastInRange(date),
         'data-autofocus': (!!_value[0] && dayjs(_value[0]).isSame(date, level)) || undefined,
+        'data-celltype': level,
       };
     }
 
     const selected = dayjs(_value).isSame(date, level);
-    return { selected, 'data-autofocus': selected || undefined };
+    return { selected, 'data-autofocus': selected || undefined, 'data-celltype': level };
   };
 
   const onHoveredDateChange = type === 'range' && pickedDate ? setHoveredDate : () => {};
