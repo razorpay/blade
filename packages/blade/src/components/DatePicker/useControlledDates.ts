@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import type { DatePickerType, DatePickerValue } from '@mantine/dates';
 import { shiftTimezone, useDatesContext } from '@mantine/dates';
+import { throwBladeError } from '~utils/logger';
 
 interface UseUncontrolledDates<Type extends DatePickerType = 'default'> {
   type: Type;
@@ -50,26 +51,26 @@ function useUncontrolledDates<Type extends DatePickerType = 'default'>({
       switch (type) {
         case 'default':
           if (value !== null && typeof value !== 'string') {
-            // eslint-disable-next-line no-console
-            console.error(
-              '[@mantine/dates/use-uncontrolled-dates] Value must be type of `null` or `string`',
-            );
+            throwBladeError({
+              message: 'Value must be type of `null` or `string`',
+              moduleName: 'useControlledDates',
+            });
           }
           break;
         case 'multiple':
           if (!(value instanceof Array)) {
-            // eslint-disable-next-line no-console
-            console.error(
-              '[@mantine/dates/use-uncontrolled-dates] Value must be type of `string[]`',
-            );
+            throwBladeError({
+              message: 'Value must be type of `string[]`',
+              moduleName: 'useControlledDates',
+            });
           }
           break;
         case 'range':
           if (!(value instanceof Array) || value.length !== 2) {
-            // eslint-disable-next-line no-console
-            console.error(
-              '[@mantine/dates/use-uncontrolled-dates] Value must be type of `[string, string]`',
-            );
+            throwBladeError({
+              message: 'Value must be type of `[string, string]`',
+              moduleName: 'useControlledDates',
+            });
           }
           break;
       }

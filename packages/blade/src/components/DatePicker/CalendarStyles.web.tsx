@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import type { PickerType } from './types';
+import { classes } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { size } from '~tokens/global';
@@ -51,7 +52,7 @@ const selectedCell = {
   },
   border: {
     default: 'interactive.border.primary.default',
-    hover: 'surface.border.primary.muted',
+    hover: 'interactive.border.primary.faded',
   },
   text: {
     default: 'interactive.text.onPrimary.normal',
@@ -132,7 +133,7 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
     };
 
     return {
-      '.DatePicker-cell': {
+      [`.${classes.dayCell}`]: {
         [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar1FirstGradient}"]`]: {
           ...gradientCell,
           '&:before': cal1IsFirstDayStartOfTheWeek ? {} : rightGradient,
@@ -197,7 +198,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
     },
     '&[data-selected]:hover': {
       backgroundColor: getIn(theme.colors, selectedCell.background.hover),
-      outlineColor: getIn(theme.colors, selectedCell.border.hover),
+      outlineColor: 'red',
       color: getIn(theme.colors, selectedCell.text.hover),
     },
   } as const;
@@ -232,7 +233,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
 
   return {
     width: '100%',
-    '.DatePicker-levelsGroup': {
+    [`.${classes.levelsGroup}`]: {
       width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
@@ -253,14 +254,14 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
         padding: '0px !important',
       },
     },
-    '.DatePicker-row': {
+    [`.${classes.row}`]: {
       textAlign: 'center',
       display: 'flex',
     },
-    '.DatePicker-header': {
+    [`.${classes.calendarHeader}`]: {
       display: 'none',
     },
-    '.DatePicker-weekday': {
+    [`.${classes.weekday}`]: {
       ...getTextStyles({
         theme,
         variant: 'body',
@@ -270,7 +271,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       }),
       paddingBottom: makeSpace(theme.spacing[4]),
     },
-    '.DatePicker-cell': {
+    [`.${classes.dayCell}`]: {
       cursor: 'pointer',
       width: isMobile || !isDayPicker ? '100%' : makeSpace(cell.size[device]),
       height: isDayPicker && isMobile ? undefined : makeSpace(cell.size[device]),
