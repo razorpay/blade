@@ -112,15 +112,6 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
     const calendar2FirstGradient = `${cal2.month()}-${cal2FirstDay.date()}`;
     const calendar2LastGradient = `${cal2.month()}-${cal2LastDay.date()}`;
 
-    const gradientCell = {
-      pointerEvents: 'none',
-      position: 'relative',
-      width: 'inherit',
-      height: 'inherit',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    } as const;
     const gradientBefore = {
       content: '""',
       position: 'absolute',
@@ -128,6 +119,7 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
       top: 0,
       bottom: 0,
       right: 0,
+      pointerEvents: 'none',
     } as const;
     const rightGradient = {
       ...gradientBefore,
@@ -148,21 +140,17 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
 
     return {
       [`.${classes.dayCell}`]: {
-        [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar1FirstGradient}"]`]: {
-          ...gradientCell,
+        [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar1FirstGradient}"]`]: {
           '&:before': cal1IsFirstDayStartOfTheWeek ? {} : rightGradient,
         },
-        [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar1LastGradient}"]`]: {
-          ...gradientCell,
+        [`&[data-in-range]:not(&[data-last-in-range])[data-date="${calendar1LastGradient}"]`]: {
           '&:before': cal1IsLastDayEndOfTheWeek ? {} : leftGradient,
         },
         // Second calendar column
-        [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar2FirstGradient}"]`]: {
-          ...gradientCell,
+        [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar2FirstGradient}"]`]: {
           '&:before': cal2IsFirstDayStartOfTheWeek ? {} : rightGradient,
         },
-        [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar2LastGradient}"]`]: {
-          ...gradientCell,
+        [`&[data-in-range]:not(&[data-last-in-range])[data-date="${calendar2LastGradient}"]`]: {
           '&:before': cal2IsLastDayEndOfTheWeek ? {} : leftGradient,
         },
       },
@@ -223,9 +211,6 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       ':before': {
         backgroundColor: getIn(theme.colors, selectedCell.day.text.default),
       },
-    },
-    '&[data-selected] [data-date]': {
-      background: 'none !important',
     },
   } as const;
 
