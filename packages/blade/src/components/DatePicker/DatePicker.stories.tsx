@@ -12,10 +12,64 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Code, Text } from '~components/Typography';
 
+const propsCategory = {
+  BASE_PROPS: 'DatePicker Props',
+  INPUT_PROPS: 'Input Props',
+};
+
+const baseProp = {
+  table: {
+    category: propsCategory.BASE_PROPS,
+  },
+} as const;
+const inputProp = {
+  table: {
+    category: propsCategory.INPUT_PROPS,
+  },
+} as const;
 export default {
   title: 'Components/DatePicker',
   component: DatePickerComponent,
   tags: ['autodocs'],
+  argTypes: {
+    value: baseProp,
+    isOpen: baseProp,
+    onChange: baseProp,
+    selectionType: baseProp,
+    presets: baseProp,
+    minDate: baseProp,
+    maxDate: baseProp,
+    excludeDate: baseProp,
+    picker: baseProp,
+    onOpenChange: baseProp,
+    allowSingleDateInRange: baseProp,
+    defaultIsOpen: baseProp,
+    defaultPicker: baseProp,
+    defaultValue: baseProp,
+    firstDayOfWeek: baseProp,
+    onMonthSelect: baseProp,
+    onYearSelect: baseProp,
+    onNext: baseProp,
+    onNextDecade: baseProp,
+    onNextMonth: baseProp,
+    onNextYear: baseProp,
+    onPickerChange: baseProp,
+    onPrevious: baseProp,
+    onPreviousDecade: baseProp,
+    onPreviousMonth: baseProp,
+    onPreviousYear: baseProp,
+    locale: baseProp,
+    accessibilityLabel: inputProp,
+    errorText: inputProp,
+    helpText: inputProp,
+    isDisabled: inputProp,
+    isRequired: inputProp,
+    label: inputProp,
+    labelPosition: inputProp,
+    size: inputProp,
+    successText: inputProp,
+    validationState: inputProp,
+  },
   parameters: {
     docs: {
       page: () => (

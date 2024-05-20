@@ -24,17 +24,10 @@ type Preset = {
 };
 
 type DateSelectionType = 'single' | 'range';
+type MantineInternalProps = '__onDayMouseEnter' | '__onDayClick' | 'getDayProps' | 'onMouseLeave';
 type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   MantineDatePickerProps<SelectionType extends 'single' ? 'default' : 'range'>,
-  | '__onDayMouseEnter'
-  | '__onDayClick'
-  | 'getDayProps'
-  | 'onMouseLeave'
-  | 'value'
-  | 'defaultValue'
-  | 'onChange'
-  | 'onMonthSelect'
-  | 'onYearSelect'
+  MantineInternalProps | 'value' | 'defaultValue' | 'onChange' | 'onMonthSelect' | 'onYearSelect'
 > & {
   /**
    * Sets the selection mode of the calendar
@@ -46,12 +39,26 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * @default 'date'
    */
   picker?: PickerType;
+  /**
+   * Sets the default picker type
+   */
   defaultPicker?: PickerType;
+  /**
+   * Callback which fires when picker type changes
+   */
   onPickerChange?: (picker: PickerType) => void;
 
-  // Standard controlled/uncontrolled state props
+  /**
+   * Controlled isOpen state
+   */
   isOpen?: boolean;
+  /**
+   * Uncontrolled isOpen state
+   */
   defaultIsOpen?: boolean;
+  /**
+   * Callback which fires when isOpen state changes
+   */
   onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
 
   /**
@@ -85,6 +92,9 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * Sets the maximum date that can be selected.
    */
   maxDate?: Date;
+  /**
+   * Disables dates that do not pass the function.
+   */
   excludeDate?: (date: Date) => boolean;
   /**
    * Determines whether single date can be selected as range, applicable only when type="range"
@@ -98,7 +108,7 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    */
   locale?: string;
 
-  // Basic selection props
+  // Basic event props
   onNext?: (date: Date) => void;
   onNextMonth?: (date: Date) => void;
   onNextYear?: (date: Date) => void;
@@ -109,7 +119,10 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   onPreviousDecade?: (date: Date) => void;
 };
 
-type DatePickerProps<Type extends DateSelectionType> = CalendarProps<Type> &
+type DatePickerProps<Type extends DateSelectionType> = Omit<
+  CalendarProps<Type>,
+  MantineInternalProps
+> &
   Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition'> & {
     label?: Type extends 'single' ? string : { start: string; end?: string };
     labelPosition?: BaseInputProps['labelPosition'];
