@@ -257,17 +257,16 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       th: {
         flex: 1,
       },
-      tr: {
-        marginBottom: makeSpace(cell.gap.y),
-      },
       td: {
         flex: 1,
-        padding: '0px !important',
+        padding: '0px',
+        paddingBottom: makeSpace(cell.gap.y),
       },
     },
     [`.${classes.row}`]: {
       textAlign: 'center',
-      display: 'flex',
+      display: isDayPicker ? 'flex' : 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
     },
     [`.${classes.calendarHeader}`]: {
       display: 'none',
