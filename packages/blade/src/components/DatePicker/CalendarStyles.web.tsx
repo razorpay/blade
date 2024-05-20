@@ -95,12 +95,18 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
     // Bail out if datepicker is not in range mode or on mobile
     if (isMobile || !isRange) return {};
 
+    // Calculate the first and last day of the month for both calendars in range mode
+    // This is to apply the gradient to the first and last day of the month
     const cal1 = dayjs(date);
     const cal1FirstDay = cal1.startOf('month');
     const cal1LastDay = cal1.endOf('month');
+    // Check if the first and last day of the month are at the start or end of the week
+    // If so, we don't apply the gradient, as it will overflow to the previous or next month
+    // Eg: https://github.com/razorpay/blade/assets/35374649/025b8ed9-90b4-49b6-a307-a746ae5b910f
     const cal1IsFirstDayStartOfTheWeek = cal1FirstDay.day() === 0;
     const cal1IsLastDayEndOfTheWeek = cal1LastDay.day() === 6;
 
+    // Do the same for the second calendar
     const cal2 = dayjs(date).add(1, 'month');
     const cal2FirstDay = cal2.startOf('month');
     const cal2LastDay = cal2.endOf('month');
@@ -140,6 +146,7 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
 
     return {
       [`.${classes.dayCell}`]: {
+        // First calendar column
         [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar1FirstGradient}"]`]: {
           '&:before': cal1IsFirstDayStartOfTheWeek ? {} : rightGradient,
         },
@@ -172,7 +179,6 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
         left: '50%',
         bottom: makeSpace(size[5]),
         transform: 'translate(-50%, -50%)',
-        // TODO use icon level tokens
         backgroundColor: getIn(theme.colors, todayCell.text.default),
         width: makeSpace(theme.spacing[2]),
         height: makeSpace(theme.spacing[2]),
