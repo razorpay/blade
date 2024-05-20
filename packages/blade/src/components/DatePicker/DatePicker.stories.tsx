@@ -1,10 +1,9 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import type { DatesRangeValue } from '@mantine/dates';
 import { DatesProvider } from '@mantine/dates';
 import { HeadlessMantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
 import React from 'react';
-import type { CalendarProps } from './types';
+import type { CalendarProps, DatesRangeValue } from './types';
 import { DatePicker } from './';
 import { Box } from '~components/Box';
 
