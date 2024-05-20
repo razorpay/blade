@@ -1,5 +1,6 @@
 import type {
   DayOfWeek,
+  DateValue,
   DatePickerProps as MantineDatePickerProps,
   DatesRangeValue,
 } from '@mantine/dates';
@@ -24,19 +25,17 @@ type Preset = {
 };
 
 type DateSelectionType = 'single' | 'range';
-type CalendarProps<SelectionType extends DateSelectionType> = Pick<
-  MantineDatePickerProps<SelectionType extends 'single' ? 'default' : 'range'>,
+type MantineInternalProps =
   | '__onDayMouseEnter'
   | '__onDayClick'
   | 'getDayProps'
   | 'getYearControlProps'
   | 'getMonthControlProps'
-  | 'onMouseLeave'
-  | 'value'
-  | 'defaultValue'
-  | 'onChange'
-  | 'onMonthSelect'
-  | 'onYearSelect'
+  | 'onMouseLeave';
+
+type CalendarProps<SelectionType extends DateSelectionType> = Pick<
+  MantineDatePickerProps<SelectionType extends 'single' ? 'default' : 'range'>,
+  MantineInternalProps | 'value' | 'defaultValue' | 'onChange' | 'onMonthSelect' | 'onYearSelect'
 > & {
   /**
    * Sets the selection mode of the calendar
@@ -111,10 +110,20 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   onPreviousDecade?: (date: Date) => void;
 };
 
-type DatePickerProps<Type extends DateSelectionType> = CalendarProps<Type> &
+type DatePickerProps<Type extends DateSelectionType> = Omit<
+  CalendarProps<Type>,
+  MantineInternalProps
+> &
   Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition'> & {
     label?: Type extends 'single' ? string : { start: string; end?: string };
     labelPosition?: BaseInputProps['labelPosition'];
   };
 
-export type { CalendarProps, DatePickerProps, PickerType, DateSelectionType };
+export type {
+  CalendarProps,
+  DatePickerProps,
+  PickerType,
+  DatesRangeValue,
+  DateValue,
+  DateSelectionType,
+};

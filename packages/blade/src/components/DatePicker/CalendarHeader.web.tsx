@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { CalendarLevel as MantineCalendarLevel, DatesRangeValue } from '@mantine/dates';
+import type { CalendarLevel as MantineCalendarLevel } from '@mantine/dates';
 import dayjs from 'dayjs';
-import type { PickerType } from './types';
+import type { PickerType, DateValue, DatesRangeValue } from './types';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
@@ -10,7 +10,7 @@ import { Link } from '~components/Link';
 
 type CalendarHeaderProps = {
   isRange: boolean;
-  date: Date | DatesRangeValue;
+  date: DateValue | DatesRangeValue;
   pickerType: PickerType;
   onNextMonth: () => void;
   onPreviousMonth: () => void;
