@@ -1,5 +1,6 @@
 import type {
   DayOfWeek,
+  DateValue,
   DatePickerProps as MantineDatePickerProps,
   DatesRangeValue,
 } from '@mantine/dates';
@@ -29,16 +30,12 @@ type MantineInternalProps =
   | '__onDayClick'
   | 'getDayProps'
   | 'getYearControlProps'
-  | 'getMonthControlProps';
+  | 'getMonthControlProps'
+  | 'onMouseLeave';
+
 type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   MantineDatePickerProps<SelectionType extends 'single' ? 'default' : 'range'>,
-  | MantineInternalProps
-  | 'onMouseLeave'
-  | 'value'
-  | 'defaultValue'
-  | 'onChange'
-  | 'onMonthSelect'
-  | 'onYearSelect'
+  MantineInternalProps | 'value' | 'defaultValue' | 'onChange' | 'onMonthSelect' | 'onYearSelect'
 > & {
   /**
    * Sets the selection mode of the calendar
@@ -139,4 +136,11 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     labelPosition?: BaseInputProps['labelPosition'];
   };
 
-export type { CalendarProps, DatePickerProps, PickerType, DateSelectionType };
+export type {
+  CalendarProps,
+  DatePickerProps,
+  PickerType,
+  DatesRangeValue,
+  DateValue,
+  DateSelectionType,
+};

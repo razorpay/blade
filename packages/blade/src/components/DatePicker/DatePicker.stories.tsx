@@ -1,11 +1,10 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import type { DatesRangeValue } from '@mantine/dates';
 import { DatesProvider } from '@mantine/dates';
 import { HeadlessMantineProvider } from '@mantine/core';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import dayjs from 'dayjs';
-import type { DatePickerProps } from './types';
+import type { DatePickerProps, DatesRangeValue } from './types';
 import { DatePicker as DatePickerComponent } from './';
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

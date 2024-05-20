@@ -1,3 +1,2 @@
-export * from './Calendar';
 export * from './DatePicker';
-export * from './types';
+export type { DatePickerProps, DateValue, DatesRangeValue } from './types';

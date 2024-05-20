@@ -1,5 +1,4 @@
-import type { DatesRangeValue } from '@mantine/dates';
-import type { CalendarProps } from '../types';
+import type { CalendarProps, DatesRangeValue } from '../types';
 import { QuickSelectionItem } from './QuickSelectionItem';
 import { Box } from '~components/Box';
 import { makeSpace } from '~utils';

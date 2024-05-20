@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { DatesRangeValue } from '@mantine/dates';
 import { shiftTimezone, useDatesContext } from '@mantine/dates';
 import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
+import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
 import { Calendar } from './Calendar';
 import { PresetSideBar } from './QuickSelection/PresetSideBar';
-import type { DatePickerProps, DateSelectionType, PickerType } from './types';
 import { useDatesState } from './useDatesState';
 import { DatePickerInput } from './DateInput';
 import { usePopup } from './usePopup';
