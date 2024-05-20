@@ -29,6 +29,8 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   | '__onDayMouseEnter'
   | '__onDayClick'
   | 'getDayProps'
+  | 'getYearControlProps'
+  | 'getMonthControlProps'
   | 'onMouseLeave'
   | 'value'
   | 'defaultValue'

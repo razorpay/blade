@@ -7,7 +7,7 @@ import type { FormInputValidationProps } from '~components/Form';
 import { ArrowRightIcon, CalendarIcon } from '~components/Icons';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { BaseInput } from '~components/Input/BaseInput';
-import { size } from '~tokens/global';
+import { size as sizeTokens } from '~tokens/global';
 import { makeSize } from '~utils';
 import type { BladeElementRef } from '~utils/types';
 
@@ -62,8 +62,8 @@ type DatePickerInputProps = DatePickerCommonInputProps &
   (DatePickerRangeInputProps | DatePickerSingleInputProps);
 
 const iconVerticalMargin = {
-  medium: size[16],
-  large: size[24],
+  medium: sizeTokens[16],
+  large: sizeTokens[24],
 } as const;
 const _DatePickerInput = (
   {
@@ -91,7 +91,7 @@ const _DatePickerInput = (
         id="start-date"
         labelPosition={labelPosition}
         label={label}
-        placeholder="DD MMM YYYY"
+        placeholder={format}
         popupId={referenceProps['aria-controls']}
         isPopupExpanded={referenceProps['aria-expanded']}
         size={size}
@@ -146,7 +146,9 @@ const _DatePickerInput = (
             marginTop={
               // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
               hasLabel && !isLabelPositionLeft
-                ? `calc(${makeSize(iconVerticalMargin[size])} + ${isLarge ? '20px' : '15px'})`
+                ? `calc(${makeSize(iconVerticalMargin[size])} + ${makeSize(
+                    isLarge ? sizeTokens[20] : sizeTokens[15],
+                  )})`
                 : makeSize(iconVerticalMargin[size])
             }
           />

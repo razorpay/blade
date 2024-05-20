@@ -17,7 +17,7 @@ const CalendarFooter = ({
     <BaseBox display="flex" flexDirection="column" gap="spacing.5">
       {isMobile ? null : <Divider />}
       <BaseBox
-        width={isMobile ? '100%' : undefined}
+        width={{ base: '100%', m: 'auto' }}
         marginLeft="auto"
         display="flex"
         flexDirection="row"

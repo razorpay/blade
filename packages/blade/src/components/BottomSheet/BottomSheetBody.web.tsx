@@ -23,7 +23,7 @@ const bodyStyles: React.CSSProperties = {
 const _BottomSheetBody = ({
   children,
   padding = 'spacing.5',
-  overflow,
+  overflow = 'auto',
 }: BottomSheetBodyProps): React.ReactElement => {
   const { scrollRef, setContentHeight, setHasBodyPadding, isOpen, bind } = useBottomSheetContext();
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -60,7 +60,7 @@ const _BottomSheetBody = ({
       flexGrow={1}
       flexShrink={1}
       style={bodyStyles}
-      overflow={overflow ?? 'auto'}
+      overflow={overflow}
       // Passing isContentDragging to bind()
       // Inside the useDrag() hook this will let us know if user is dragging the content or not
       {...bind?.({ isContentDragging: true })}
@@ -71,7 +71,7 @@ const _BottomSheetBody = ({
         paddingTop={bottomSheetHasActionList ? 'spacing.3' : padding}
         paddingBottom={bottomSheetHasActionList ? 'spacing.3' : padding}
         ref={contentRef}
-        overflow={overflow ?? 'auto'}
+        overflow={overflow}
       >
         {children}
       </BaseBox>

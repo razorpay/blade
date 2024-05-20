@@ -2,10 +2,11 @@
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import type { PickerType } from './types';
+import { classes } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { size } from '~tokens/global';
-import { makeSpace } from '~utils';
+import { makeBorderSize, makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { useIsMobile } from '~utils/useIsMobile';
 
@@ -45,17 +46,31 @@ const todayCell = {
 } as const;
 
 const selectedCell = {
-  background: {
-    default: 'interactive.background.primary.default',
-    hover: 'interactive.background.primary.highlighted',
+  day: {
+    background: {
+      default: 'interactive.background.primary.default',
+      hover: 'interactive.background.primary.highlighted',
+    },
+    border: {
+      default: 'interactive.border.primary.default',
+      hover: 'interactive.border.primary.faded',
+    },
+    text: {
+      default: 'interactive.text.onPrimary.normal',
+      hover: 'interactive.text.onPrimary.normal',
+    },
   },
-  border: {
-    default: 'interactive.border.primary.default',
-    hover: 'surface.border.primary.muted',
-  },
-  text: {
-    default: 'interactive.text.onPrimary.normal',
-    hover: 'interactive.text.onPrimary.normal',
+  month: {
+    background: {
+      default: 'transparent',
+      hover: 'interactive.background.primary.faded',
+    },
+    border: {
+      default: 'interactive.border.primary.default',
+    },
+    text: {
+      default: 'interactive.text.primary.normal',
+    },
   },
 } as const;
 
@@ -97,15 +112,6 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
     const calendar2FirstGradient = `${cal2.month()}-${cal2FirstDay.date()}`;
     const calendar2LastGradient = `${cal2.month()}-${cal2LastDay.date()}`;
 
-    const gradientCell = {
-      pointerEvents: 'none',
-      position: 'relative',
-      width: 'inherit',
-      height: 'inherit',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    } as const;
     const gradientBefore = {
       content: '""',
       position: 'absolute',
@@ -113,6 +119,7 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
       top: 0,
       bottom: 0,
       right: 0,
+      pointerEvents: 'none',
     } as const;
     const rightGradient = {
       ...gradientBefore,
@@ -132,22 +139,18 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
     };
 
     return {
-      '.DatePicker-cell': {
-        [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar1FirstGradient}"]`]: {
-          ...gradientCell,
+      [`.${classes.dayCell}`]: {
+        [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar1FirstGradient}"]`]: {
           '&:before': cal1IsFirstDayStartOfTheWeek ? {} : rightGradient,
         },
-        [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar1LastGradient}"]`]: {
-          ...gradientCell,
+        [`&[data-in-range]:not(&[data-last-in-range])[data-date="${calendar1LastGradient}"]`]: {
           '&:before': cal1IsLastDayEndOfTheWeek ? {} : leftGradient,
         },
         // Second calendar column
-        [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar2FirstGradient}"]`]: {
-          ...gradientCell,
+        [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar2FirstGradient}"]`]: {
           '&:before': cal2IsFirstDayStartOfTheWeek ? {} : rightGradient,
         },
-        [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar2LastGradient}"]`]: {
-          ...gradientCell,
+        [`&[data-in-range]:not(&[data-last-in-range])[data-date="${calendar2LastGradient}"]`]: {
           '&:before': cal2IsLastDayEndOfTheWeek ? {} : leftGradient,
         },
       },
@@ -185,20 +188,29 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
 
   const selected = {
     '&[data-selected]': {
-      backgroundColor: getIn(theme.colors, selectedCell.background.default),
-      outlineColor: getIn(theme.colors, selectedCell.border.default),
-      color: getIn(theme.colors, selectedCell.text.default),
-      ':before': {
-        backgroundColor: getIn(theme.colors, selectedCell.text.default),
+      '&[data-celltype="day"]': {
+        backgroundColor: getIn(theme.colors, selectedCell.day.background.default),
+        outlineColor: getIn(theme.colors, selectedCell.day.border.default),
+        color: getIn(theme.colors, selectedCell.day.text.default),
+        ':hover': {
+          backgroundColor: getIn(theme.colors, selectedCell.day.background.hover),
+          color: getIn(theme.colors, selectedCell.day.text.hover),
+        },
       },
-    },
-    '&[data-selected] [data-date]': {
-      background: 'none !important',
-    },
-    '&[data-selected]:hover': {
-      backgroundColor: getIn(theme.colors, selectedCell.background.hover),
-      outlineColor: getIn(theme.colors, selectedCell.border.hover),
-      color: getIn(theme.colors, selectedCell.text.hover),
+      '&[data-celltype="month"], &[data-celltype="year"]': {
+        backgroundColor: 'transparent',
+        outlineStyle: 'solid',
+        outlineWidth: makeBorderSize(theme.border.width.thin),
+        outlineOffset: makeSpace(-theme.border.width.thin),
+        outlineColor: getIn(theme.colors, selectedCell.month.border.default),
+        color: getIn(theme.colors, selectedCell.month.text.default),
+        ':hover': {
+          backgroundColor: getIn(theme.colors, selectedCell.month.background.hover),
+        },
+      },
+      ':before': {
+        backgroundColor: getIn(theme.colors, selectedCell.day.text.default),
+      },
     },
   } as const;
 
@@ -232,7 +244,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
 
   return {
     width: '100%',
-    '.DatePicker-levelsGroup': {
+    [`.${classes.levelsGroup}`]: {
       width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
@@ -245,22 +257,21 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       th: {
         flex: 1,
       },
-      tr: {
-        marginBottom: makeSpace(cell.gap.y),
-      },
       td: {
         flex: 1,
-        padding: '0px !important',
+        padding: '0px',
+        paddingBottom: makeSpace(cell.gap.y),
       },
     },
-    '.DatePicker-row': {
+    [`.${classes.row}`]: {
       textAlign: 'center',
-      display: 'flex',
+      display: isDayPicker ? 'flex' : 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
     },
-    '.DatePicker-header': {
+    [`.${classes.calendarHeader}`]: {
       display: 'none',
     },
-    '.DatePicker-weekday': {
+    [`.${classes.weekday}`]: {
       ...getTextStyles({
         theme,
         variant: 'body',
@@ -270,7 +281,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       }),
       paddingBottom: makeSpace(theme.spacing[4]),
     },
-    '.DatePicker-cell': {
+    [`.${classes.dayCell}`]: {
       cursor: 'pointer',
       width: isMobile || !isDayPicker ? '100%' : makeSpace(cell.size[device]),
       height: isDayPicker && isMobile ? undefined : makeSpace(cell.size[device]),
