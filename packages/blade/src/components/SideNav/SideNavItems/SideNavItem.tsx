@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { classes, NAV_ITEM_HEIGHT, useSideNavTransition } from '../tokens';
+import type { SideNavItemProps } from '../types';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { Indicator } from '~components/Indicator';
-import { Switch } from '~components/Switch';
 import { Text } from '~components/Typography';
 import { makeSize, makeSpace } from '~utils';
 
-const StyledNavSwitch = styled(BaseBox)((props) => {
+const StyledNavItem = styled(BaseBox)((props) => {
   const { collapseItemPadding } = useSideNavTransition();
   return {
     transition: collapseItemPadding,
@@ -18,19 +17,27 @@ const StyledNavSwitch = styled(BaseBox)((props) => {
   };
 });
 
-const SideNavSwitch = (): React.ReactElement => {
+const SideNavItem = ({
+  leading,
+  trailing,
+  title,
+  backgroundColor,
+  as = 'div',
+}: SideNavItemProps): React.ReactElement => {
   return (
-    <StyledNavSwitch
+    <StyledNavItem
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
       paddingX="spacing.4"
       height={makeSize(NAV_ITEM_HEIGHT)}
-      as="label"
+      backgroundColor={backgroundColor}
+      borderRadius="medium"
+      as={as}
     >
       <Box display="inline-flex" alignItems="center" gap="spacing.3">
-        <Indicator accessibilityLabel="" color="positive" emphasis="intense" />
+        {leading}
         <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>
           <Text
             truncateAfterLines={1}
@@ -38,16 +45,14 @@ const SideNavSwitch = (): React.ReactElement => {
             size="medium"
             color="surface.text.gray.subtle"
           >
-            Test Mode
+            {title}
           </Text>
         </BaseBox>
       </Box>
 
-      <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>
-        <Switch accessibilityLabel="" />
-      </BaseBox>
-    </StyledNavSwitch>
+      <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>{trailing}</BaseBox>
+    </StyledNavItem>
   );
 };
 
-export { SideNavSwitch };
+export { SideNavItem };

@@ -19,7 +19,6 @@ const NAV_ITEM_HEIGHT = size['36'];
 const useSideNavTransition = (): {
   l1Expand: string;
   l1Collapse: string;
-  notchOpacity: string;
   collapseItemPadding: string;
 } => {
   const { theme } = useTheme();
@@ -30,7 +29,6 @@ const useSideNavTransition = (): {
   return {
     l1Expand: `width ${xmoderate} ${easing.entrance.revealing}`,
     l1Collapse: `width ${xmoderate} ${easing.exit.revealing}`,
-    notchOpacity: `opacity ${xmoderate} ${easing.standard.revealing}`,
     collapseItemPadding: `padding ${quick} ${easing.standard.revealing}`,
   };
 };

@@ -22,7 +22,7 @@ const { SHOW_ON_LINK_HOVER, COLLAPSED, HIDE_WHEN_COLLAPSED } = classes;
 const STYLED_NAV_LINK = 'styled-nav-link';
 
 const StyledNavLinkContainer = styled(BaseBox)((props) => {
-  const { notchOpacity, collapseItemPadding } = useSideNavTransition();
+  const { collapseItemPadding } = useSideNavTransition();
 
   return {
     width: '100%',
@@ -69,23 +69,6 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
         border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
           props.theme.colors.surface.border.primary.muted
         }`,
-
-        '&::before': {
-          content: '" "',
-          position: 'absolute',
-          left: makeSpace(props.theme.spacing[0]),
-          top: makeSpace(props.theme.spacing[0]),
-          bottom: makeSpace(props.theme.spacing[0]),
-          margin: 'auto',
-          width: makeSize(size['4']),
-          height: makeSize(size['16']),
-          backgroundColor: props.theme.colors.interactive.background.primary.default,
-          borderRadius: `${makeBorderSize(props.theme.border.radius.none)} ${makeBorderSize(
-            props.theme.border.radius.medium,
-          )} ${makeBorderSize(props.theme.border.radius.medium)} ${makeBorderSize(
-            props.theme.border.radius.none,
-          )}`,
-        },
       },
       '&[aria-current]:hover': {
         color: props.theme.colors.interactive.text.primary.normal,
@@ -98,12 +81,6 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
         // Using size tokens because the padding here has to match the overall width of 52px in collapsed state
         padding: `${makeSize(size['0'])} ${makeSize(size['10'])}`,
         transition: collapseItemPadding,
-        '&[aria-current]': {
-          '&::before': {
-            opacity: 0,
-            transition: notchOpacity,
-          },
-        },
       },
     },
   };

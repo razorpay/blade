@@ -25,7 +25,7 @@ const _SideNavFooter = ({ children }: SideNavFooterProps): React.ReactElement =>
       elevation="highRaised"
       borderTopWidth="thin"
       borderTopColor="surface.border.gray.muted"
-      backgroundColor="surface.background.gray.intense"
+      backgroundColor="surface.background.gray.moderate"
       position="relative"
       bottom={{ base: `-${getDrawerPadding(theme)}`, m: 'spacing.0' }}
       left={{ base: `-${getDrawerPadding(theme)}`, m: 'spacing.0' }}

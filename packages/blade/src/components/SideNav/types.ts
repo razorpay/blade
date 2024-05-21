@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
 import type { TooltipProps } from '~components/Tooltip';
@@ -77,6 +78,19 @@ type NavLinkContextType = {
   title?: string;
 };
 
+type SideNavItemProps = {
+  leading: React.ReactElement;
+  trailing: React.ReactElement;
+  title: string;
+  /**
+   * Render item of container. Use as="label" when using Switch or form input in trailing
+   *
+   * @default div
+   */
+  as?: 'label' | 'div';
+  backgroundColor?: BaseBoxProps['backgroundColor'];
+};
+
 export type {
   SideNavProps,
   SideNavContextType,
@@ -84,4 +98,5 @@ export type {
   SideNavLinkProps,
   SideNavSectionProps,
   SideNavFooterProps,
+  SideNavItemProps,
 };

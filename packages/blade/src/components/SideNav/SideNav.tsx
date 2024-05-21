@@ -172,7 +172,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
       ) : (
         <BaseBox
           position="fixed"
-          backgroundColor="surface.background.gray.intense"
+          backgroundColor="surface.background.gray.moderate"
           height="100%"
           top="spacing.0"
           left="spacing.0"
@@ -193,7 +193,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
-            backgroundColor="surface.background.gray.intense"
+            backgroundColor="surface.background.gray.moderate"
             height="100%"
             overflow="hidden"
             top="spacing.0"

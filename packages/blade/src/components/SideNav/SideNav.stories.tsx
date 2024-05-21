@@ -11,7 +11,7 @@ import {
   SideNavLevel,
   SideNavSection,
   SideNavFooter,
-  SideNavSwitch,
+  SideNavItem,
 } from './';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
@@ -39,6 +39,8 @@ import {
 import { Heading } from '~components/Typography';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
+import { Indicator } from '~components/Indicator';
+import { Switch as BladeSwitch } from '~components/Switch';
 
 export default {
   title: 'Components/SideNav',
@@ -221,10 +223,6 @@ const isItemActive = (
     activeOnLinks?.find((href) => matchPath(location.pathname, { path: href, exact: false })),
   );
 
-  if (href?.includes('reports')) {
-    console.log({ href, isCurrentPathActive, isSubItemActive });
-  }
-
   return isCurrentPathActive || isSubItemActive;
 };
 
@@ -246,6 +244,7 @@ const NavItem = (
 
 const SideNavExample: StoryFn<typeof SideNav> = () => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
+  const [isTestModeActive, setIsTestModeActive] = React.useState(false);
   const location = useLocation();
 
   const getSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
@@ -255,7 +254,6 @@ const SideNavExample: StoryFn<typeof SideNav> = () => {
         activeOnLinks: getAllChildHrefs(l1Item.items),
       }),
     );
-    console.log(activeItem);
 
     return Boolean(activeItem);
   };
@@ -314,7 +312,28 @@ const SideNavExample: StoryFn<typeof SideNav> = () => {
           })}
         </SideNavBody>
         <SideNavFooter>
-          <SideNavSwitch />
+          <SideNavItem
+            as="label"
+            title="Test Mode"
+            leading={
+              <Indicator
+                color={isTestModeActive ? 'notice' : 'positive'}
+                emphasis="intense"
+                accessibilityLabel=""
+              />
+            }
+            backgroundColor={isTestModeActive ? `feedback.background.notice.subtle` : undefined}
+            trailing={
+              <BladeSwitch
+                accessibilityLabel=""
+                size="small"
+                isChecked={isTestModeActive}
+                onChange={({ isChecked }) => {
+                  setIsTestModeActive(isChecked);
+                }}
+              />
+            }
+          />
           <NavItem
             title="Settings"
             icon={SettingsIcon}
