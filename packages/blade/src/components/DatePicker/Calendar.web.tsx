@@ -68,8 +68,8 @@ const Calendar = <Type extends DateSelectionType>({
   const dateContext = useDatesContext();
   const isMobile = useIsMobile();
   const currentDate = _date ?? shiftTimezone('add', new Date(), dateContext.getTimezone());
-  const numberOfColumns = isMobile ?? !isRange ? 1 : 2;
-  const columnsToScroll = numberOfColumns ?? 1;
+  const numberOfColumns = isMobile || !isRange ? 1 : 2;
+  const columnsToScroll = numberOfColumns;
 
   const handleNextMonth = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();
