@@ -67,6 +67,7 @@ const getViteReactTSDependencies = (): Dependencies => {
     dependencies: {
       react: '^18',
       'react-dom': '^18',
+      'react-router-dom': '^6',
       '@types/react': '^18',
       '@types/react-dom': '^18',
       '@razorpay/blade': getBladeVersion(),

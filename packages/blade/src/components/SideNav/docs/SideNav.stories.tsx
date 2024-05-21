@@ -15,6 +15,7 @@ import {
   SideNavItem,
 } from '..';
 import { RazorpayLinesSvg, RazorpayLogo } from './RazorpayLogo';
+import { SideNavWithReactRouterv6 } from './code';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import {
@@ -44,7 +45,7 @@ import { Tooltip } from '~components/Tooltip';
 import { Indicator } from '~components/Indicator';
 import { Switch as BladeSwitch } from '~components/Switch';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-// import { Sandbox } from '~utils/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { Skeleton } from '~components/Skeleton';
 
 const DocsPage = (): React.ReactElement => {
@@ -55,7 +56,7 @@ const DocsPage = (): React.ReactElement => {
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=87921-138303&m=dev&scaling=min-zoom&page-id=87588%3A51157"
     >
       <Title>Usage (with React Router v6)</Title>
-      {/* <Sandbox></Sandbox> */}
+      <Sandbox>{SideNavWithReactRouterv6}</Sandbox>
     </StoryPageWrapper>
   );
 };

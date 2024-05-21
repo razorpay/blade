@@ -1,11 +1,11 @@
 import type React from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import { StyledPropsBlade } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
 import type { TooltipProps } from '~components/Tooltip';
-import { TestID } from '~utils/types';
+import type { TestID } from '~utils/types';
 
 type SideNavProps = {
   /**
