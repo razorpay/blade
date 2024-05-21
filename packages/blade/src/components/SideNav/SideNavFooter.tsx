@@ -1,7 +1,6 @@
 import React from 'react';
 import type { SideNavFooterProps } from './types';
 import { classes } from './tokens';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import { drawerPadding } from '~components/Drawer';
 import getIn from '~utils/lodashButBetter/get';
@@ -13,7 +12,7 @@ const getDrawerPadding = (theme: Theme): `${number}px` => {
   return makeSpace(negativePaddingValue);
 };
 
-const _SideNavFooter = ({ children }: SideNavFooterProps): React.ReactElement => {
+const SideNavFooter = ({ children }: SideNavFooterProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
     <BaseBox
@@ -37,9 +36,5 @@ const _SideNavFooter = ({ children }: SideNavFooterProps): React.ReactElement =>
     </BaseBox>
   );
 };
-
-const SideNavFooter = assignWithoutSideEffects(_SideNavFooter, {
-  componentId: 'SideNavFooter',
-});
 
 export { SideNavFooter };

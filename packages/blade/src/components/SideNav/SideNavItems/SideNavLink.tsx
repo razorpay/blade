@@ -4,6 +4,7 @@ import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
 import type { SideNavLinkProps } from '../types';
 import { classes, NAV_ITEM_HEIGHT, useSideNavTransition } from '../tokens';
+import { TooltipifyNavItem } from './TooltipifyNavItem';
 import { Box } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
@@ -13,7 +14,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
 import { makeAccessible } from '~utils/makeAccessible';
-import { Tooltip } from '~components/Tooltip';
 import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
@@ -48,7 +48,7 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      height: makeSize(size['36']),
+      height: makeSize(NAV_ITEM_HEIGHT),
       width: '100%',
       textDecoration: 'none',
       overflow: 'hidden',
@@ -85,24 +85,6 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
     },
   };
 });
-
-const TooltipifyNavLink = ({
-  children,
-  tooltip,
-}: {
-  children: React.ReactElement;
-  tooltip: SideNavLinkProps['tooltip'];
-}): React.ReactElement => {
-  if (!tooltip) {
-    return children;
-  }
-
-  return (
-    <Tooltip {...tooltip} placement="top">
-      {children}
-    </Tooltip>
-  );
-};
 
 const NavLinkIconTitle = ({
   icon: Icon,
@@ -155,7 +137,7 @@ const L3Trigger = ({
   } as const;
 
   return (
-    <TooltipifyNavLink tooltip={tooltip}>
+    <TooltipifyNavItem tooltip={tooltip}>
       <StyledNavLinkContainer>
         <BaseBox
           className={STYLED_NAV_LINK}
@@ -170,7 +152,7 @@ const L3Trigger = ({
           </BaseBox>
         </BaseBox>
       </StyledNavLinkContainer>
-    </TooltipifyNavLink>
+    </TooltipifyNavItem>
   );
 };
 
@@ -248,7 +230,7 @@ const SideNavLink = ({
       ) : (
         <>
           <StyledNavLinkContainer position="relative">
-            <TooltipifyNavLink tooltip={tooltip}>
+            <TooltipifyNavItem tooltip={tooltip}>
               <BaseBox
                 className={STYLED_NAV_LINK}
                 as={as}
@@ -291,7 +273,7 @@ const SideNavLink = ({
                   </BaseBox>
                 ) : null}
               </BaseBox>
-            </TooltipifyNavLink>
+            </TooltipifyNavItem>
             {trailing && !isL2Trigger ? (
               <BaseBox
                 position="absolute"

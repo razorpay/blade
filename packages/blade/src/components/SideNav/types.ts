@@ -2,9 +2,15 @@ import type React from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
+import type { LinkProps } from '~components/Link';
 import type { TooltipProps } from '~components/Tooltip';
 
 type SideNavProps = {
+  /**
+   * Children slot.
+   *
+   * Supports SideNavFooter, SideNavBody
+   */
   children: React.ReactNode;
   /**
    * **Only applicable in mobile**
@@ -21,15 +27,84 @@ type SideNavProps = {
 };
 
 type SideNavLinkProps = {
+  /**
+   * title of the Link
+   */
   title: string;
+
+  /**
+   * Slot after the title.
+   *
+   * Used for <Badge />, <Counter /> in most cases
+   */
   titleSuffix?: React.ReactElement;
+
+  /**
+   * Trailing slot for item. Only visible on hover of the item
+   *
+   * Used for <Button />
+   */
   trailing?: React.ReactElement;
-  href?: string;
+
+  /**
+   * href of the link
+   */
+  href?: LinkProps['href'];
+
+  /**
+   * Anchor tag `target` attribute
+   */
+  target?: LinkProps['target'];
+  /**
+   * as prop to pass ReactRouter's Link component.
+   *
+   * ```jsx
+   * import { Link } from 'react-router-dom';
+   *
+   * <SideNavLink as={Link} />
+   * ```
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as: React.ComponentType<any>;
+
+  /**
+   * Set Active state of SideNavLink.
+   *
+   * Checkout SideNav documentation for usage
+   */
   isActive?: boolean;
+
+  /**
+   * Leading icon for SideNavLink
+   */
   icon?: IconComponent;
+
+  /**
+   * Children slot to add Nested Menu
+   *
+   * ```jsx
+   * <SideNavLink title="L2 Trigger" href="/l2-first-item">
+   *  <SideNavLevel>
+   *    <SideNavLink title="L2 Item" href="/l2-first-item" />
+   *    <SideNavLink title="L2 Item 2" href="/l2-second-item" />
+   *  </SideNavLevel>
+   * </SideNavLink>
+   * ```
+   */
   children?: React.ReactElement;
+
+  /**
+   * Tooltip object to add tooltip to SideNavLink
+   *
+   * ```jsx
+   * <SideNavLink
+   *  tooltip={{
+   *    title: 'Tooltip Title',
+   *    content: 'Tooltip description'
+   *  }}
+   * />
+   * ```
+   */
   tooltip?: Pick<TooltipProps, 'title' | 'content' | 'onOpenChange'>;
 };
 
@@ -50,10 +125,16 @@ type SideNavSectionProps = {
    */
   onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
 
+  /**
+   * Children slot for SideNavLink
+   */
   children: React.ReactElement[];
 };
 
 type SideNavFooterProps = {
+  /**
+   * Children slot for SideNavLink, SideNavItem
+   */
   children: React.ReactElement[] | React.ReactElement;
 };
 
@@ -79,16 +160,52 @@ type NavLinkContextType = {
 };
 
 type SideNavItemProps = {
+  /**
+   * Leading slot for SideNavItem.
+   *
+   * Meant for Indicator, Icon, etc
+   */
   leading: React.ReactElement;
+
+  /**
+   * Trailing slot for SideNavItem.
+   *
+   * Meant for Button, Switch, etc
+   */
   trailing: React.ReactElement;
+
+  /**
+   * Title of SideNavItem
+   */
   title: string;
+
   /**
    * Render item of container. Use as="label" when using Switch or form input in trailing
    *
    * @default div
    */
   as?: 'label' | 'div';
+
+  /**
+   * backgroundColor of the item
+   *
+   * @default undefined
+   */
   backgroundColor?: BaseBoxProps['backgroundColor'];
+
+  /**
+   * Tooltip object to add tooltip to SideNavItem
+   *
+   * ```jsx
+   * <SideNavItem
+   *  tooltip={{
+   *    title: 'Tooltip Title',
+   *    content: 'Tooltip description'
+   *  }}
+   * />
+   * ```
+   */
+  tooltip?: SideNavLinkProps['tooltip'];
 };
 
 export type {
