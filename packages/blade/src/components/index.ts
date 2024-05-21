@@ -35,6 +35,7 @@ export * from './Modal';
 export * from './Popover';
 export * from './ProgressBar';
 export * from './Radio';
+export * from './SideNav';
 export * from './Skeleton';
 export * from './SkipNav';
 export * from './Spinner';
