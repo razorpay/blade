@@ -65,7 +65,7 @@ const StyledSVGText = styled.text<Pick<TextProps<{ variant: 'body' }>, 'size' | 
         theme,
         ...getTextProps({ variant: 'body', size, weight }),
       }),
-      fill: getIn(theme.colors, 'surface.text.gray.normal'),
+      fill: theme.colors.surface.text.gray.normal
     };
   },
 );
