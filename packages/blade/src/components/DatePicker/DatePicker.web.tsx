@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -44,6 +45,9 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   successText,
   validationState,
   size,
+  autoFocus,
+  necessityIndicator,
+  name,
   defaultPicker = 'day',
   picker,
   onPickerChange,
@@ -218,6 +222,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
         ref={referenceRef}
         inputRef={refs.reference}
         referenceProps={getReferenceProps()}
+        name={name as never}
         label={label as never}
         labelPosition={labelPosition}
         accessibilityLabel={accessibilityLabel}
@@ -228,6 +233,8 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
         isRequired={isRequired}
         successText={successText}
         validationState={validationState}
+        autoFocus={autoFocus}
+        necessityIndicator={necessityIndicator}
       />
       {isMobile ? (
         <BottomSheet

@@ -1,14 +1,16 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useDatesContext, getFormattedDate } from '@mantine/dates';
 import React from 'react';
+import { useDatesContext, getFormattedDate } from '@mantine/dates';
 import BaseBox from '~components/Box/BaseBox';
 import type { FormInputValidationProps } from '~components/Form';
 import { ArrowRightIcon, CalendarIcon } from '~components/Icons';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { BaseInput } from '~components/Input/BaseInput';
+import type { TextInputProps } from '~components/Input/TextInput';
 import { size as sizeTokens } from '~tokens/global';
-import { makeSize } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import type { BladeElementRef } from '~utils/types';
 
 const _DateInput = (
@@ -40,14 +42,22 @@ const _DateInput = (
 
 const DateInput = React.forwardRef(_DateInput);
 
+const HiddenInput = ({ value, name }: { value: string; name?: string }): React.ReactElement => {
+  if (isReactNative()) return <></>;
+
+  return <input hidden={true} name={name} value={value} readOnly />;
+};
+
 type DatePickerRangeInputProps = {
   selectionType: 'range';
   label?: { start: string; end?: string };
+  name?: { start: string; end: string };
   date: [Date, Date];
 };
 type DatePickerSingleInputProps = {
   selectionType: 'single';
   label?: string;
+  name?: string;
   date: Date;
 };
 
@@ -55,7 +65,10 @@ type DatePickerCommonInputProps = {
   labelPosition?: BaseInputProps['labelPosition'];
   inputRef: React.Ref<any>;
   referenceProps: any;
-} & Pick<BaseInputProps, 'size' | 'isRequired' | 'isDisabled' | 'accessibilityLabel'> &
+} & Pick<
+  TextInputProps,
+  'size' | 'isRequired' | 'necessityIndicator' | 'autoFocus' | 'isDisabled' | 'accessibilityLabel'
+> &
   FormInputValidationProps;
 
 type DatePickerInputProps = DatePickerCommonInputProps &
@@ -65,6 +78,7 @@ const iconVerticalMargin = {
   medium: sizeTokens[16],
   large: sizeTokens[24],
 } as const;
+
 const _DatePickerInput = (
   {
     selectionType,
@@ -73,6 +87,8 @@ const _DatePickerInput = (
     date,
     label,
     labelPosition,
+    autoFocus,
+    name,
     size = 'medium',
     ...props
   }: DatePickerInputProps,
@@ -85,30 +101,50 @@ const _DatePickerInput = (
   const { locale } = useDatesContext();
 
   if (selectionType == 'single') {
+    const dateValue = getFormattedDate({
+      date,
+      format,
+      labelSeparator: '-',
+      locale,
+      type: 'default',
+    });
     return (
-      <DateInput
-        ref={ref as never}
-        id="start-date"
-        labelPosition={labelPosition}
-        label={label}
-        placeholder={format}
-        popupId={referenceProps['aria-controls']}
-        isPopupExpanded={referenceProps['aria-expanded']}
-        size={size}
-        value={getFormattedDate({
-          date,
-          format,
-          labelSeparator: '-',
-          locale,
-          type: 'default',
-        })}
-        {...props}
-        {...referenceProps}
-      />
+      <BaseBox width="100%">
+        <HiddenInput value={dateValue} name={name} />
+        <DateInput
+          ref={ref as never}
+          id="start-date"
+          labelPosition={labelPosition}
+          label={label}
+          placeholder={format}
+          popupId={referenceProps['aria-controls']}
+          isPopupExpanded={referenceProps['aria-expanded']}
+          size={size}
+          autoFocus={autoFocus}
+          value={dateValue}
+          componentName="DatePickerInput"
+          {...props}
+          {...referenceProps}
+        />
+      </BaseBox>
     );
   }
 
   if (selectionType == 'range') {
+    const startValue = getFormattedDate({
+      type: 'default',
+      date: date[0],
+      format,
+      labelSeparator: '-',
+      locale,
+    });
+    const endValue = getFormattedDate({
+      type: 'default',
+      date: date[1],
+      format,
+      labelSeparator: '-',
+      locale,
+    });
     return (
       <BaseBox
         width="100%"
@@ -119,6 +155,7 @@ const _DatePickerInput = (
         ref={ref as never}
       >
         <BaseBox flex={1}>
+          <HiddenInput value={startValue} name={name?.start} />
           <DateInput
             setInputWrapperRef={(node) => ((inputRef as any)!.current = node)}
             id="start-date"
@@ -129,13 +166,9 @@ const _DatePickerInput = (
             popupId={referenceProps['aria-controls']}
             isPopupExpanded={referenceProps['aria-expanded']}
             size={size}
-            value={getFormattedDate({
-              type: 'default',
-              date: date[0],
-              format,
-              labelSeparator: '-',
-              locale,
-            })}
+            autoFocus={autoFocus}
+            value={startValue}
+            componentName="DatePickerInputStart"
             {...props}
             {...referenceProps}
           />
@@ -154,6 +187,7 @@ const _DatePickerInput = (
           />
         </BaseBox>
         <BaseBox flex={1}>
+          <HiddenInput value={endValue} name={name?.end} />
           <DateInput
             id="end-date"
             placeholder={format}
@@ -163,13 +197,8 @@ const _DatePickerInput = (
             popupId={referenceProps['aria-controls']}
             isPopupExpanded={referenceProps['aria-expanded']}
             size={size}
-            value={getFormattedDate({
-              type: 'default',
-              date: date[1],
-              format,
-              labelSeparator: '-',
-              locale,
-            })}
+            value={endValue}
+            componentName="DatePickerInputEnd"
             {...props}
             {...referenceProps}
           />

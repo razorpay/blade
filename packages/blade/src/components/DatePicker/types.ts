@@ -114,8 +114,18 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
   CalendarProps<Type>,
   MantineInternalProps
 > &
-  Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition'> & {
+  Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition' | 'name'> & {
+    /**
+     * Sets the label for the input element.
+     */
     label?: Type extends 'single' ? string : { start: string; end?: string };
+    /**
+     * Sets the HTML [name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) attribute on the input elements.
+     * Can be used when submitting a form.
+     *
+     * @example 'date' | { start: 'start-date', end: 'end-date' }
+     */
+    name?: Type extends 'single' ? string : { start: string; end?: string };
     labelPosition?: BaseInputProps['labelPosition'];
   };
 
