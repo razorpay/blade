@@ -9,6 +9,7 @@ import { size } from '~tokens/global';
 import { makeBorderSize, makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { useIsMobile } from '~utils/useIsMobile';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const cell = {
   gap: {
@@ -300,6 +301,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       '&:hover': {
         backgroundColor: getIn(theme.colors, cell.background.hover),
       },
+      '&:focus-visible': getFocusRingStyles({ theme, isImportant: true }),
       '&[data-disabled]': {
         color: getIn(theme.colors, cell.text.disabled),
         backgroundColor: getIn(theme.colors, cell.background.disabled),
