@@ -230,7 +230,6 @@ export const getIndexTSX = ({
   colorScheme: any;
   showConsole?: boolean;
 }): string => dedent`
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createGlobalStyle } from "styled-components";
 
@@ -270,23 +269,21 @@ const getTheme = () => {
 }
 
 root.render(
-  <StrictMode>
-    <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
-      <GlobalStyles />
-      <Box 
-        backgroundColor="surface.background.gray.subtle"
-        minHeight="100vh"
-        padding={['spacing.4', 'spacing.7']}
-        display="flex"
-        flexDirection="column"
-      >
-        <Box>
-          <App />
-        </Box>
-        ${showConsole ? '<Logger />' : ''}
+  <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
+    <GlobalStyles />
+    <Box 
+      backgroundColor="surface.background.gray.subtle"
+      minHeight="100vh"
+      padding={['spacing.4', 'spacing.7']}
+      display="flex"
+      flexDirection="column"
+    >
+      <Box>
+        <App />
       </Box>
-    </BladeProvider>
-  </StrictMode>
+      ${showConsole ? '<Logger />' : ''}
+    </Box>
+  </BladeProvider>
 );
 
 console.clear(); // There could be some codesandbox warnings, clearing them here on init
