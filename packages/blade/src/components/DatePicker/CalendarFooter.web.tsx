@@ -2,17 +2,15 @@ import React from 'react';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
+import { useIsMobile } from '~utils/useIsMobile';
 
 type CalendarFooterProps = {
   onApply: () => void;
   onCancel: () => void;
-  isMobile?: boolean;
 };
-const CalendarFooter = ({
-  onApply,
-  onCancel,
-  isMobile = false,
-}: CalendarFooterProps): React.ReactElement => {
+const CalendarFooter = ({ onApply, onCancel }: CalendarFooterProps): React.ReactElement => {
+  const isMobile = useIsMobile();
+
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.5">
       {isMobile ? null : <Divider />}

@@ -255,7 +255,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             )}
           </BottomSheetBody>
           <BottomSheetFooter>
-            <CalendarFooter onCancel={handleCancel} onApply={handleApply} isMobile />
+            <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
           </BottomSheetFooter>
         </BottomSheet>
       ) : (

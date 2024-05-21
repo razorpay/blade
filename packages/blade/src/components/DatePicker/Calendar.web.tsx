@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import React from 'react';
 import type { CalendarLevel } from '@mantine/dates';
 import { shiftTimezone, useDatesContext, DatePicker } from '@mantine/dates';
-import type { CalendarProps, DateSelectionType, PickerType } from './types';
+import type { CalendarProps, DateSelectionType, PickerType, DateValue } from './types';
 import { CalendarHeader } from './CalendarHeader';
 import { CalendarGradientStyles, CalendarStyles } from './CalendarStyles';
 import { useUncontrolledDates } from './useControlledDates';
@@ -37,7 +37,7 @@ const Calendar = <Type extends DateSelectionType>({
 }: CalendarProps<Type> & {
   date?: Date;
   defaultDate?: Date;
-  onDateChange?: (date: Date) => void;
+  onDateChange?: (date: DateValue) => void;
 }): React.ReactElement => {
   const isRange = selectionType === 'range';
 
@@ -62,14 +62,14 @@ const Calendar = <Type extends DateSelectionType>({
     type: 'default',
     value: date,
     defaultValue: defaultDate,
-    onChange: onDateChange as any,
+    onChange: onDateChange,
   });
 
-  const ctx = useDatesContext();
+  const dateContext = useDatesContext();
   const isMobile = useIsMobile();
-  const currentDate = _date || shiftTimezone('add', new Date(), ctx.getTimezone());
-  const numberOfColumns = isMobile ? 1 : isRange ? 2 : 1;
-  const columnsToScroll = numberOfColumns || 1;
+  const currentDate = _date ?? shiftTimezone('add', new Date(), dateContext.getTimezone());
+  const numberOfColumns = isMobile ?? !isRange ? 1 : 2;
+  const columnsToScroll = numberOfColumns ?? 1;
 
   const handleNextMonth = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();
