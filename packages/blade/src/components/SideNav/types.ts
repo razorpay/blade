@@ -39,9 +39,15 @@ type SideNavSectionProps = {
    */
   maxVisibleItems?: number;
   /**
+   * Default value if the nav section is expanded or collapsed after maxVisibleItems
+   *
+   * @default false
+   */
+  defaultIsExpanded?: boolean;
+  /**
    * Callback when `+x more is clicked`
    */
-  onToggleVisibleItems?: ({ isExpanded }: { isExpanded: boolean }) => void;
+  onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
 
   children: React.ReactElement[];
 };

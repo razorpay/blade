@@ -5,6 +5,7 @@ import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import type { SideNavSectionProps } from './types';
 import type { SideNavLinkProps } from './';
 import {
+  SideNavBody,
   SideNav,
   SideNavLink,
   SideNavLevel,
@@ -20,16 +21,19 @@ import {
   BoxIcon,
   BuildingIcon,
   CashIcon,
+  CodeSnippetIcon,
   ConfettiIcon,
   CreditCardIcon,
   FilePlusIcon,
   FileTextIcon,
+  HeadsetIcon,
   LayoutIcon,
   PlusIcon,
   RazorpayxPayrollIcon,
   ReportsIcon,
   SettingsIcon,
   StampIcon,
+  UserCheckIcon,
   UserIcon,
 } from '~components/Icons';
 import { Heading } from '~components/Typography';
@@ -55,15 +59,15 @@ const Page = ({ match }: { match: any }): React.ReactElement => (
 );
 
 type ItemsType = Pick<SideNavLinkProps, 'icon' | 'title' | 'href' | 'trailing' | 'tooltip'>;
-
-const navItemsJSON: {
+type NavItemsJSONType = {
   type: 'section';
   title?: SideNavSectionProps['title'];
   maxItemsVisible?: SideNavSectionProps['maxVisibleItems'];
   items: (ItemsType & {
     items?: (ItemsType & { items?: ItemsType[] })[];
   })[];
-}[] = [
+};
+const navItemsJSON: NavItemsJSONType[] = [
   {
     type: 'section',
     title: undefined,
@@ -150,6 +154,21 @@ const navItemsJSON: {
         title: 'Reports',
         href: '/app/reports',
       },
+      {
+        icon: UserCheckIcon,
+        title: 'Public Profile',
+        href: '/app/public-profile',
+      },
+      {
+        icon: CodeSnippetIcon,
+        title: 'Code Snippet',
+        href: '/app/code-snippet',
+      },
+      {
+        icon: HeadsetIcon,
+        title: 'Support',
+        href: '/app/support',
+      },
     ],
   },
   {
@@ -187,79 +206,113 @@ const getAllChildHrefs = (l1ItemChildren?: (ItemsType & { items?: ItemsType[] })
   return hrefs;
 };
 
+const isItemActive = (
+  location: { pathname: string },
+  { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] },
+): boolean => {
+  const isCurrentPathActive = Boolean(
+    matchPath(location.pathname, {
+      path: href,
+      exact: false,
+    }),
+  );
+
+  const isSubItemActive = Boolean(
+    activeOnLinks?.find((href) => matchPath(location.pathname, { path: href, exact: false })),
+  );
+
+  if (href?.includes('reports')) {
+    console.log({ href, isCurrentPathActive, isSubItemActive });
+  }
+
+  return isCurrentPathActive || isSubItemActive;
+};
+
 const NavItem = (
   props: Omit<SideNavLinkProps, 'as'> & {
     activeOnLinks?: string[];
   },
 ): React.ReactElement => {
   const location = useLocation();
-  const isCurrentPathActive = Boolean(
-    matchPath(location.pathname, {
-      path: props.href,
-      exact: false,
-    }),
-  );
 
-  const isSubItemActive = Boolean(
-    props.activeOnLinks?.find((href) => matchPath(location.pathname, { path: href, exact: false })),
+  return (
+    <SideNavLink
+      {...props}
+      as={Link}
+      isActive={isItemActive(location, { href: props.href, activeOnLinks: props.activeOnLinks })}
+    />
   );
-
-  return <SideNavLink {...props} as={Link} isActive={isCurrentPathActive || isSubItemActive} />;
 };
 
-const SideNavTemplate: StoryFn<typeof SideNav> = () => {
+const SideNavExample: StoryFn<typeof SideNav> = () => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
+  const location = useLocation();
+
+  const getSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
+    const activeItem = items.find((l1Item) =>
+      isItemActive(location, {
+        href: l1Item.href,
+        activeOnLinks: getAllChildHrefs(l1Item.items),
+      }),
+    );
+    console.log(activeItem);
+
+    return Boolean(activeItem);
+  };
 
   return (
     <Box minHeight="500px">
       <SideNav isOpen={isMobileOpen} onDismiss={() => setIsMobileOpen(false)}>
-        {navItemsJSON.map((l1Sections) => {
-          return (
-            <SideNavSection
-              key={l1Sections.title}
-              title={l1Sections.title}
-              maxVisibleItems={l1Sections.maxItemsVisible}
-            >
-              {l1Sections.items.map((l1Item) => {
-                if (!l1Item.items) {
-                  return <NavItem key={l1Item.title} {...l1Item} />;
-                }
+        <SideNavBody>
+          {navItemsJSON.map((l1Sections) => {
+            return (
+              <SideNavSection
+                key={l1Sections.title}
+                title={l1Sections.title}
+                maxVisibleItems={l1Sections.maxItemsVisible}
+                defaultIsExpanded={getSectionExpanded(l1Sections.items)}
+              >
+                {l1Sections.items.map((l1Item) => {
+                  if (!l1Item.items) {
+                    return <NavItem key={l1Item.title} {...l1Item} />;
+                  }
 
-                return (
-                  <NavItem
-                    key={l1Item.title}
-                    {...l1Item}
-                    activeOnLinks={getAllChildHrefs(l1Item.items)}
-                    href={l1Item.items[0].href}
-                  >
-                    <SideNavLevel key={l1Item.title}>
-                      {l1Item.items?.map((l2Item) => {
-                        if (!l2Item.items) {
-                          return <NavItem key={l2Item.title} {...l2Item} />;
-                        }
+                  return (
+                    <NavItem
+                      key={l1Item.title}
+                      {...l1Item}
+                      activeOnLinks={getAllChildHrefs(l1Item.items)}
+                      href={l1Item.items[0].href}
+                    >
+                      <SideNavLevel key={l1Item.title}>
+                        {l1Item.items?.map((l2Item) => {
+                          if (!l2Item.items) {
+                            return <NavItem key={l2Item.title} {...l2Item} />;
+                          }
 
-                        return (
-                          <NavItem
-                            key={l2Item.title}
-                            {...l2Item}
-                            activeOnLinks={getAllChildHrefs(l2Item.items)}
-                            href={undefined}
-                          >
-                            <SideNavLevel key={l2Item.title}>
-                              {l2Item.items?.map((l3Item) => {
-                                return <NavItem key={l3Item.title} {...l3Item} />;
-                              })}
-                            </SideNavLevel>
-                          </NavItem>
-                        );
-                      })}
-                    </SideNavLevel>
-                  </NavItem>
-                );
-              })}
-            </SideNavSection>
-          );
-        })}
+                          return (
+                            <NavItem
+                              key={l2Item.title}
+                              {...l2Item}
+                              activeOnLinks={getAllChildHrefs(l2Item.items)}
+                              href={undefined}
+                            >
+                              <SideNavLevel key={l2Item.title}>
+                                {l2Item.items?.map((l3Item) => {
+                                  return <NavItem key={l3Item.title} {...l3Item} />;
+                                })}
+                              </SideNavLevel>
+                            </NavItem>
+                          );
+                        })}
+                      </SideNavLevel>
+                    </NavItem>
+                  );
+                })}
+              </SideNavSection>
+            );
+          })}
+        </SideNavBody>
         <SideNavFooter>
           <SideNavSwitch />
           <NavItem
@@ -283,6 +336,7 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
         <Switch>
           <Route path="/app/dashboard" component={Page} />
           <Route path="/app/payouts" component={Page} />
+          <Route path="/app/reports" component={Page} />
           <Route path="/nice" component={Page} />
           <Route path="/settings" exact component={Page} />
           <Route path="/settings/user" exact component={Page} />
@@ -293,6 +347,10 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
       </Box>
     </Box>
   );
+};
+
+const SideNavTemplate: StoryFn<typeof SideNav> = ({ ...args }) => {
+  return <SideNavExample {...args} />;
 };
 
 export const Default = SideNavTemplate.bind({});

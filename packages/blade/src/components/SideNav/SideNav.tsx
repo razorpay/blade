@@ -14,7 +14,6 @@ import { makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
-import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const {
   COLLAPSED,
@@ -101,17 +100,6 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
     }
   };
 
-  const footerChild: React.ReactNode[] = [];
-  const restChild: React.ReactNode[] = [];
-
-  React.Children.map(children, (child) => {
-    if (getComponentId(child) === 'SideNavFooter') {
-      footerChild.push(child);
-    } else {
-      restChild.push(child);
-    }
-  });
-
   const onLinkActiveChange: SideNavContextType['onLinkActiveChange'] = (args) => {
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       if (isMobile) {
@@ -169,8 +157,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
                 className="mobile-l1-container"
                 height="100%"
               >
-                <BaseBox overflowY="auto">{restChild}</BaseBox>
-                {footerChild}
+                {children}
               </MobileL1Container>
             </DrawerBody>
           </Drawer>
@@ -231,10 +218,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             }}
           >
             <SkipNavLink id={SKIP_NAV_ID} _hasBackground={true} />
-            <BaseBox className={L1_ITEM_WRAPPER} overflowY="auto">
-              {restChild}
-            </BaseBox>
-            {footerChild}
+            {children}
           </StyledL1Menu>
           <SkipNavContent id={SKIP_NAV_ID} />
         </BaseBox>

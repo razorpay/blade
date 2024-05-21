@@ -238,8 +238,6 @@ const SideNavLink = ({
   const isL2Trigger = Boolean(children) && currentLevel === 1;
   const isL3Trigger = Boolean(children) && currentLevel === 2;
 
-  console.count('SideNavLink');
-
   const isFirstRender = useFirstRender();
 
   const { refs, context } = useFloating({

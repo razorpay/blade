@@ -58,8 +58,9 @@ const StyledSectionTitleContainer = styled(BaseBox)((_props) => {
 const SideNavSection = ({
   children,
   title,
+  defaultIsExpanded,
   maxVisibleItems,
-  onToggleVisibleItems,
+  onExpandChange,
 }: SideNavSectionProps): React.ReactElement => {
   const totalItemsCount = React.Children.count(children);
   const collapsedItemsCount = maxVisibleItems ? totalItemsCount - maxVisibleItems : undefined;
@@ -96,7 +97,8 @@ const SideNavSection = ({
           direction="top"
           _dangerouslyDisableValidations={true}
           _shouldApplyWidthRestrictions={false}
-          onExpandChange={onToggleVisibleItems}
+          onExpandChange={onExpandChange}
+          defaultIsExpanded={defaultIsExpanded}
         >
           <ShowMoreLink collapsedItemsCount={collapsedItemsCount!} />
           <CollapsibleBody width="100%" _hasMargin={false}>
