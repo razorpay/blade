@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
+import type { SideNavSectionProps } from './types';
 import type { SideNavLinkProps } from './';
 import {
   SideNav,
@@ -17,23 +18,22 @@ import {
   ArrowUpRightIcon,
   BillIcon,
   BoxIcon,
+  BuildingIcon,
   CashIcon,
   ConfettiIcon,
   CreditCardIcon,
+  FilePlusIcon,
   FileTextIcon,
-  HomeIcon,
   LayoutIcon,
   PlusIcon,
   RazorpayxPayrollIcon,
   ReportsIcon,
   SettingsIcon,
   StampIcon,
-  SubscriptionsIcon,
   UserIcon,
 } from '~components/Icons';
 import { Heading } from '~components/Typography';
 import { Button } from '~components/Button';
-import { Badge } from '~components/Badge';
 import { Tooltip } from '~components/Tooltip';
 
 export default {
@@ -50,15 +50,23 @@ export default {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Page = ({ match }: { match: any }): React.ReactElement => (
   <Box>
-    <Button>Hi</Button>
     <Heading>ID: {JSON.stringify(match)}</Heading>
   </Box>
 );
 
-const navItemsJSON = [
+type ItemsType = Pick<SideNavLinkProps, 'icon' | 'title' | 'href' | 'trailing' | 'tooltip'>;
+
+const navItemsJSON: {
+  type: 'section';
+  title?: SideNavSectionProps['title'];
+  maxItemsVisible?: SideNavSectionProps['maxVisibleItems'];
+  items: (ItemsType & {
+    items?: (ItemsType & { items?: ItemsType[] })[];
+  })[];
+}[] = [
   {
     type: 'section',
-    label: undefined,
+    title: undefined,
     items: [
       {
         icon: LayoutIcon,
@@ -69,6 +77,14 @@ const navItemsJSON = [
         icon: ArrowUpRightIcon,
         title: 'Payouts',
         href: '/app/payouts',
+        tooltip: {
+          content: 'Open Payouts (Cmd + O)',
+        },
+        trailing: (
+          <Tooltip content="Create Payout (Cmd + P)" placement="right">
+            <Button icon={PlusIcon} size="xsmall" variant="tertiary" />
+          </Tooltip>
+        ),
       },
       {
         icon: FileTextIcon,
@@ -79,13 +95,40 @@ const navItemsJSON = [
   },
   {
     type: 'section',
-    label: 'Offerings',
+    title: 'Offerings',
     maxItemsVisible: 3,
     items: [
       {
         icon: CreditCardIcon,
         title: 'Corporate Credit Card',
         href: '/app/corporate-credit-card',
+        items: [
+          {
+            icon: UserIcon,
+            title: 'User Profile',
+            href: '/app/user/profile',
+          },
+          {
+            icon: BuildingIcon,
+            title: 'Business Profile',
+            href: '/app/business/profile',
+            items: [
+              {
+                title: 'Business Banks',
+                href: '/app/business/banks',
+              },
+              {
+                title: 'Business Routes',
+                href: '/app/business/routes',
+              },
+            ],
+          },
+          {
+            icon: FilePlusIcon,
+            title: 'Billing',
+            href: '/app/billing',
+          },
+        ],
       },
       {
         icon: BillIcon,
@@ -111,7 +154,7 @@ const navItemsJSON = [
   },
   {
     type: 'section',
-    label: 'Miscellaneous',
+    title: 'Miscellaneous',
     items: [
       {
         icon: CashIcon,
@@ -127,21 +170,14 @@ const navItemsJSON = [
   },
 ];
 
-type SideNavWithoutAsChildren = Omit<SideNavLinkProps, 'as' | 'children'>;
-type SideNavJSONChildrenType = {
-  children?: (SideNavWithoutAsChildren & SideNavJSONChildrenType)[];
-};
-
-const getAllChildHrefs = (
-  l1ItemChildren?: (SideNavWithoutAsChildren & SideNavJSONChildrenType)[],
-): string[] => {
+const getAllChildHrefs = (l1ItemChildren?: (ItemsType & { items?: ItemsType[] })[]): string[] => {
   const hrefs: string[] = [];
   l1ItemChildren?.forEach((l2Item) => {
     if (l2Item.href) {
       hrefs.push(l2Item.href);
     }
 
-    l2Item.children?.forEach((l3Item) => {
+    l2Item.items?.forEach((l3Item) => {
       if (l3Item.href) {
         hrefs.push(l3Item.href);
       }
@@ -172,140 +208,65 @@ const NavItem = (
 };
 
 const SideNavTemplate: StoryFn<typeof SideNav> = () => {
+  const [isMobileOpen, setIsMobileOpen] = React.useState(false);
+
   return (
-    <Box>
-      <SideNav>
-        {/* {navItemsJSON.map((l1Sections) => {
-          <SideNavSection title={l1Sections.label}>
-            {
-              l1Sections.items.map((l1Item) => {
+    <Box minHeight="500px">
+      <SideNav isOpen={isMobileOpen} onDismiss={() => setIsMobileOpen(false)}>
+        {navItemsJSON.map((l1Sections) => {
+          return (
+            <SideNavSection
+              key={l1Sections.title}
+              title={l1Sections.title}
+              maxVisibleItems={l1Sections.maxItemsVisible}
+            >
+              {l1Sections.items.map((l1Item) => {
+                if (!l1Item.items) {
+                  return <NavItem key={l1Item.title} {...l1Item} />;
+                }
+
                 return (
+                  <NavItem
+                    key={l1Item.title}
+                    {...l1Item}
+                    activeOnLinks={getAllChildHrefs(l1Item.items)}
+                    href={l1Item.items[0].href}
+                  >
+                    <SideNavLevel key={l1Item.title}>
+                      {l1Item.items?.map((l2Item) => {
+                        if (!l2Item.items) {
+                          return <NavItem key={l2Item.title} {...l2Item} />;
+                        }
 
-                )
-              })
-            }
-          </SideNavSection>
-        })} */}
-
-        {navItems.map(({ children: l1Children, ...navItem }) => {
-          if (l1Children) {
-            return (
-              <NavItem
-                key={navItem.title}
-                {...navItem}
-                activeOnLinks={getAllChildHrefs(l1Children)}
-                href={l1Children[0].href}
-              >
-                <SideNavLevel>
-                  {l1Children.map(({ children: l2Children, ...l2Item }) => {
-                    if (!l2Children) {
-                      return <NavItem key={l2Item.title} {...l2Item} />;
-                    }
-
-                    return (
-                      <NavItem
-                        key={l2Item.title}
-                        {...l2Item}
-                        activeOnLinks={getAllChildHrefs(l2Children)}
-                      >
-                        <SideNavLevel>
-                          {l2Children.map(({ children: l3Children, ...l3Item }) => (
-                            <NavItem key={l3Item.title} {...l3Item} />
-                          ))}
-                        </SideNavLevel>
-                      </NavItem>
-                    );
-                  })}
-                </SideNavLevel>
-              </NavItem>
-            );
-          }
-          return <NavItem key={navItem.title} {...navItem} />;
+                        return (
+                          <NavItem
+                            key={l2Item.title}
+                            {...l2Item}
+                            activeOnLinks={getAllChildHrefs(l2Item.items)}
+                            href={undefined}
+                          >
+                            <SideNavLevel key={l2Item.title}>
+                              {l2Item.items?.map((l3Item) => {
+                                return <NavItem key={l3Item.title} {...l3Item} />;
+                              })}
+                            </SideNavLevel>
+                          </NavItem>
+                        );
+                      })}
+                    </SideNavLevel>
+                  </NavItem>
+                );
+              })}
+            </SideNavSection>
+          );
         })}
-        <SideNavFooter>
-          <SideNavSwitch />
-        </SideNavFooter>
-      </SideNav>
-
-      <Box marginLeft="300px">
-        <Switch>
-          <Route path="/app/dashboard" component={Page} />
-          <Route path="/app/payouts" component={Page} />
-          <Route path="/nice" component={Page} />
-          <Route path="/settings" exact component={Page} />
-          <Route path="/settings/user" exact component={Page} />
-          <Route path="/settings/user/home" exact component={Page} />
-          <Route path="/settings/user/account" exact component={Page} />
-          <Route path="/settings/subscriptions" exact component={Page} />
-        </Switch>
-      </Box>
-    </Box>
-  );
-};
-
-const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
-  return (
-    <Box>
-      <SideNav>
-        <NavItem title="Home" icon={HomeIcon} href="/app/dashboard" />
-        <SideNavSection title="OFFERINGS SECTION" maxVisibleItems={3}>
-          <NavItem
-            title="Payment Gateway"
-            icon={HomeIcon}
-            href="/app/pg"
-            tooltip={{
-              content: 'Open Payment Gateway Page',
-            }}
-            trailing={
-              <Tooltip content="Create Payouts (Cmd + P)" placement="right">
-                <Button variant="tertiary" size="xsmall" icon={PlusIcon} />
-              </Tooltip>
-            }
-          />
-          <NavItem
-            title="Payment Links"
-            tooltip={{
-              content: 'Accept Payments via Payment Links',
-            }}
-            titleSuffix={
-              <Badge size="small" color="positive">
-                New
-              </Badge>
-            }
-            icon={HomeIcon}
-            href="/app/pl"
-          />
-          <NavItem title="Payment Pages" icon={HomeIcon} href="/app/pp" />
-          <NavItem title="Payment Amazing" icon={HomeIcon} href="/app/pa" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
-        </SideNavSection>
-
         <SideNavFooter>
           <SideNavSwitch />
           <NavItem
             title="Settings"
             icon={SettingsIcon}
-            href="/settings"
+            href="/settings/user"
             activeOnLinks={['/settings/user', '/settings/account']}
-            tooltip={{
-              content: 'Open Settings',
-            }}
           >
             <SideNavLevel>
               <NavItem icon={UserIcon} title="User Settings" href="/settings/user" />
@@ -315,7 +276,10 @@ const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
         </SideNavFooter>
       </SideNav>
 
-      <Box marginLeft="300px">
+      <Box marginLeft={{ base: 'spacing.0', m: '300px' }}>
+        <Button display={{ base: undefined, m: 'none' }} onClick={() => setIsMobileOpen(true)}>
+          Open Mobile Drawer
+        </Button>
         <Switch>
           <Route path="/app/dashboard" component={Page} />
           <Route path="/app/payouts" component={Page} />
@@ -324,81 +288,6 @@ const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
           <Route path="/settings/user" exact component={Page} />
           <Route path="/settings/user/home" exact component={Page} />
           <Route path="/settings/user/account" exact component={Page} />
-          <Route path="/settings/subscriptions" exact component={Page} />
-        </Switch>
-      </Box>
-    </Box>
-  );
-};
-
-const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
-  const [isSideNavOpen, setIsSideNavOpen] = React.useState(false);
-  return (
-    <Box>
-      <SideNav isOpen={isSideNavOpen} onDismiss={() => setIsSideNavOpen(false)}>
-        {navItems.map(({ children: l1Children, ...navItem }) => {
-          if (l1Children) {
-            return (
-              <NavItem
-                key={navItem.title}
-                {...navItem}
-                activeOnLinks={getAllChildHrefs(l1Children)}
-              >
-                <SideNavLevel>
-                  {l1Children.map(({ children: l2Children, ...l2Item }) => {
-                    if (!l2Children) {
-                      return <NavItem key={l2Item.title} {...l2Item} />;
-                    }
-
-                    return (
-                      <NavItem
-                        key={l2Item.title}
-                        {...l2Item}
-                        activeOnLinks={getAllChildHrefs(l2Children)}
-                      >
-                        <SideNavLevel>
-                          {l2Children.map(({ children: l3Children, ...l3Item }) => (
-                            <NavItem key={l3Item.title} {...l3Item} />
-                          ))}
-                        </SideNavLevel>
-                      </NavItem>
-                    );
-                  })}
-                </SideNavLevel>
-              </NavItem>
-            );
-          }
-          return <NavItem key={navItem.title} {...navItem} />;
-        })}
-        <SideNavFooter>
-          <SideNavSwitch />
-          <NavItem
-            title="Settings"
-            icon={SettingsIcon}
-            href="/settings"
-            activeOnLinks={['/settings/user', '/settings/account']}
-            tooltip={{
-              content: 'Open Settings',
-            }}
-          >
-            <SideNavLevel>
-              <NavItem icon={UserIcon} title="User Settings" href="/settings/user" />
-              <NavItem icon={BoxIcon} title="Account Settings" href="/settings/account" />
-            </SideNavLevel>
-          </NavItem>
-        </SideNavFooter>
-      </SideNav>
-
-      <Button display={{ base: 'initial', m: 'none' }} onClick={() => setIsSideNavOpen(true)}>
-        Open Nav
-      </Button>
-      <Box>
-        <Switch>
-          <Route path="/app" component={Page} />
-          <Route path="/app/payouts" component={Page} />
-          <Route path="/nice" component={Page} />
-          <Route path="/settings" exact component={Page} />
-          <Route path="/settings/user" exact component={Page} />
           <Route path="/settings/subscriptions" exact component={Page} />
         </Switch>
       </Box>
@@ -407,5 +296,3 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
 };
 
 export const Default = SideNavTemplate.bind({});
-export const Compound = SideNavCompoundTemplate.bind({});
-export const Mobile = SideNavTemplateMobile.bind({});

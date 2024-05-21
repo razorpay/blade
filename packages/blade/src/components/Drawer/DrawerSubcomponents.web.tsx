@@ -63,9 +63,11 @@ const DrawerHeader = assignWithoutSideEffects(_DrawerHeader, {
   componentId: drawerComponentIds.DrawerHeader,
 });
 
+const drawerPadding = 'spacing.6';
+
 const _DrawerBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box padding="spacing.6" overflow="auto" flex="1">
+    <Box padding={drawerPadding} overflow="auto" flex="1">
       {children}
     </Box>
   );
@@ -74,4 +76,4 @@ const DrawerBody = assignWithoutSideEffects(_DrawerBody, {
   componentId: drawerComponentIds.DrawerBody,
 });
 
-export { DrawerHeader, DrawerBody };
+export { DrawerHeader, DrawerBody, drawerPadding };

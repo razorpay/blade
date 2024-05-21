@@ -58,42 +58,52 @@ const StyledSectionTitleContainer = styled(BaseBox)((_props) => {
 const SideNavSection = ({
   children,
   title,
-  maxVisibleItems = 999,
+  maxVisibleItems,
   onToggleVisibleItems,
 }: SideNavSectionProps): React.ReactElement => {
   const totalItemsCount = React.Children.count(children);
-  const collapsedItemsCount = totalItemsCount - maxVisibleItems;
+  const collapsedItemsCount = maxVisibleItems ? totalItemsCount - maxVisibleItems : undefined;
 
   return (
-    <Box paddingY="spacing.6">
-      <StyledSectionTitleContainer position="relative" padding={['spacing.2', 'spacing.4']}>
-        <Text size="xsmall" weight="medium" truncateAfterLines={1} color="surface.text.gray.muted">
-          {title}
-        </Text>
-        <BaseBox
-          className={classes.SHOW_WHEN_COLLAPSED}
-          position="absolute"
-          top="50%"
-          margin="auto"
-          left="spacing.0"
-          right="spacing.0"
-          transform="translateY(-50%)"
+    <Box paddingY="spacing.3">
+      {title ? (
+        <StyledSectionTitleContainer position="relative" padding={['spacing.2', 'spacing.4']}>
+          <Text
+            size="xsmall"
+            weight="medium"
+            truncateAfterLines={1}
+            color="surface.text.gray.muted"
+          >
+            {title?.toUpperCase()}
+          </Text>
+          <BaseBox
+            className={classes.SHOW_WHEN_COLLAPSED}
+            position="absolute"
+            top="50%"
+            margin="auto"
+            left="spacing.0"
+            right="spacing.0"
+            transform="translateY(-50%)"
+          >
+            <Divider />
+          </BaseBox>
+        </StyledSectionTitleContainer>
+      ) : null}
+
+      <Box>{maxVisibleItems ? children.slice(0, maxVisibleItems) : children}</Box>
+      {maxVisibleItems ? (
+        <Collapsible
+          direction="top"
+          _dangerouslyDisableValidations={true}
+          _shouldApplyWidthRestrictions={false}
+          onExpandChange={onToggleVisibleItems}
         >
-          <Divider />
-        </BaseBox>
-      </StyledSectionTitleContainer>
-      <Box>{children.slice(0, maxVisibleItems)}</Box>
-      <Collapsible
-        direction="top"
-        _dangerouslyDisableValidations={true}
-        _shouldApplyWidthRestrictions={false}
-        onExpandChange={onToggleVisibleItems}
-      >
-        <ShowMoreLink collapsedItemsCount={collapsedItemsCount} />
-        <CollapsibleBody width="100%" _hasMargin={false}>
-          {children.slice(maxVisibleItems)}
-        </CollapsibleBody>
-      </Collapsible>
+          <ShowMoreLink collapsedItemsCount={collapsedItemsCount!} />
+          <CollapsibleBody width="100%" _hasMargin={false}>
+            {children.slice(maxVisibleItems)}
+          </CollapsibleBody>
+        </Collapsible>
+      ) : null}
     </Box>
   );
 };

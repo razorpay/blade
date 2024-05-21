@@ -19,81 +19,90 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const { SHOW_ON_LINK_HOVER, COLLAPSED, HIDE_WHEN_COLLAPSED } = classes;
 
-const StyledNavLinkContainer = styled.a((props) => {
+const STYLED_NAV_LINK = 'styled-nav-link';
+
+const StyledNavLinkContainer = styled(BaseBox)((props) => {
   const { notchOpacity, collapseItemPadding } = useSideNavTransition();
 
   return {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    height: makeSize(size['36']),
     width: '100%',
-    textDecoration: 'none',
-    overflow: 'hidden',
-    flexWrap: 'nowrap',
-    cursor: 'pointer',
-    padding: `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[4])}`,
-    color: props.theme.colors.interactive.text.gray.subtle,
-    borderRadius: props.theme.border.radius.medium,
-    border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
-      props.theme.colors.transparent
-    }`,
-    backgroundColor: props.theme.colors.transparent,
-    transition: collapseItemPadding,
     [`.${SHOW_ON_LINK_HOVER}`]: {
       opacity: 0,
       '&:focus-within, &:focus-visible': {
         opacity: 1,
       },
     },
-    ':hover': {
-      color: props.theme.colors.interactive.text.gray.normal,
-      backgroundColor: props.theme.colors.interactive.background.gray.default,
+    '&:hover': {
       [`.${SHOW_ON_LINK_HOVER}`]: {
         opacity: 1,
       },
-    },
-    '&[aria-current]': {
-      color: props.theme.colors.interactive.text.primary.subtle,
-      backgroundColor: props.theme.colors.interactive.background.primary.faded,
-      border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
-        props.theme.colors.surface.border.primary.muted
-      }`,
 
-      '&::before': {
-        content: '" "',
-        position: 'absolute',
-        left: makeSpace(props.theme.spacing[0]),
-        top: makeSpace(props.theme.spacing[0]),
-        bottom: makeSpace(props.theme.spacing[0]),
-        margin: 'auto',
-        width: makeSize(size['4']),
-        height: makeSize(size['16']),
-        backgroundColor: props.theme.colors.interactive.background.primary.default,
-        borderRadius: `${makeBorderSize(props.theme.border.radius.none)} ${makeBorderSize(
-          props.theme.border.radius.medium,
-        )} ${makeBorderSize(props.theme.border.radius.medium)} ${makeBorderSize(
-          props.theme.border.radius.none,
-        )}`,
+      [`.${STYLED_NAV_LINK}`]: {
+        color: props.theme.colors.interactive.text.gray.normal,
+        backgroundColor: props.theme.colors.interactive.background.gray.default,
       },
     },
-    '&[aria-current]:hover': {
-      color: props.theme.colors.interactive.text.primary.normal,
-      backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
-    },
-    '&:focus-visible': {
-      ...getFocusRingStyles({ theme: props.theme }),
-    },
-    [`.${COLLAPSED} &`]: {
-      // Using size tokens because the padding here has to match the overall width of 52px in collapsed state
-      padding: `${makeSize(size['0'])} ${makeSize(size['10'])}`,
+    [`.${STYLED_NAV_LINK}`]: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      height: makeSize(size['36']),
+      width: '100%',
+      textDecoration: 'none',
+      overflow: 'hidden',
+      flexWrap: 'nowrap',
+      cursor: 'pointer',
+      padding: `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[4])}`,
+      margin: `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[0])}`,
+      color: props.theme.colors.interactive.text.gray.subtle,
+      borderRadius: props.theme.border.radius.medium,
+      border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
+        props.theme.colors.transparent
+      }`,
+      backgroundColor: props.theme.colors.transparent,
       transition: collapseItemPadding,
       '&[aria-current]': {
+        color: props.theme.colors.interactive.text.primary.subtle,
+        backgroundColor: props.theme.colors.interactive.background.primary.faded,
+        border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
+          props.theme.colors.surface.border.primary.muted
+        }`,
+
         '&::before': {
-          opacity: 0,
-          transition: notchOpacity,
+          content: '" "',
+          position: 'absolute',
+          left: makeSpace(props.theme.spacing[0]),
+          top: makeSpace(props.theme.spacing[0]),
+          bottom: makeSpace(props.theme.spacing[0]),
+          margin: 'auto',
+          width: makeSize(size['4']),
+          height: makeSize(size['16']),
+          backgroundColor: props.theme.colors.interactive.background.primary.default,
+          borderRadius: `${makeBorderSize(props.theme.border.radius.none)} ${makeBorderSize(
+            props.theme.border.radius.medium,
+          )} ${makeBorderSize(props.theme.border.radius.medium)} ${makeBorderSize(
+            props.theme.border.radius.none,
+          )}`,
+        },
+      },
+      '&[aria-current]:hover': {
+        color: props.theme.colors.interactive.text.primary.normal,
+        backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
+      },
+      '&:focus-visible': {
+        ...getFocusRingStyles({ theme: props.theme }),
+      },
+      [`.${COLLAPSED} &`]: {
+        // Using size tokens because the padding here has to match the overall width of 52px in collapsed state
+        padding: `${makeSize(size['0'])} ${makeSize(size['10'])}`,
+        transition: collapseItemPadding,
+        '&[aria-current]': {
+          '&::before': {
+            opacity: 0,
+            transition: notchOpacity,
+          },
         },
       },
     },
@@ -112,7 +121,7 @@ const TooltipifyNavLink = ({
   }
 
   return (
-    <Tooltip {...tooltip} placement="right">
+    <Tooltip {...tooltip} placement="top">
       {children}
     </Tooltip>
   );
@@ -170,15 +179,18 @@ const L3Trigger = ({
 
   return (
     <TooltipifyNavLink tooltip={tooltip}>
-      <StyledNavLinkContainer
-        as={href ? as : 'button'}
-        to={href}
-        onClick={toggleCollapse}
-        {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
-      >
-        <NavLinkIconTitle title={title} icon={icon} isL1Item={false} titleSuffix={titleSuffix} />
-        <BaseBox display="flex" alignItems="center">
-          {isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />}
+      <StyledNavLinkContainer>
+        <BaseBox
+          className={STYLED_NAV_LINK}
+          as={href ? as : 'button'}
+          to={href}
+          onClick={toggleCollapse}
+          {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
+        >
+          <NavLinkIconTitle title={title} icon={icon} isL1Item={false} titleSuffix={titleSuffix} />
+          <BaseBox display="flex" alignItems="center">
+            {isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />}
+          </BaseBox>
         </BaseBox>
       </StyledNavLinkContainer>
     </TooltipifyNavLink>
@@ -260,9 +272,10 @@ const SideNavLink = ({
         </Collapsible>
       ) : (
         <>
-          <Box position="relative">
+          <StyledNavLinkContainer position="relative">
             <TooltipifyNavLink tooltip={tooltip}>
-              <StyledNavLinkContainer
+              <BaseBox
+                className={STYLED_NAV_LINK}
                 as={as}
                 to={href}
                 ref={refs.setReference}
@@ -298,19 +311,27 @@ const SideNavLink = ({
                   titleSuffix={titleSuffix}
                 />
                 {isL2Trigger ? (
-                  <BaseBox className={HIDE_WHEN_COLLAPSED}>
+                  <BaseBox className={HIDE_WHEN_COLLAPSED} display="flex" alignItems="center">
                     <ChevronRightIcon size="medium" color="currentColor" />
                   </BaseBox>
                 ) : null}
-                {trailing && !isL2Trigger ? (
-                  <BaseBox className={`${HIDE_WHEN_COLLAPSED} ${SHOW_ON_LINK_HOVER}`}>
-                    {trailing}
-                  </BaseBox>
-                ) : null}
-              </StyledNavLinkContainer>
+              </BaseBox>
             </TooltipifyNavLink>
+            {trailing && !isL2Trigger ? (
+              <BaseBox
+                position="absolute"
+                top="spacing.0"
+                right="spacing.2"
+                height="100%"
+                display="flex"
+                alignItems="center"
+                className={`${HIDE_WHEN_COLLAPSED} ${SHOW_ON_LINK_HOVER}`}
+              >
+                {trailing}
+              </BaseBox>
+            ) : null}
             {currentLevel === 3 && isActive ? <CurvedVerticalLine /> : null}
-          </Box>
+          </StyledNavLinkContainer>
 
           {children ? (
             <FloatingPortal root={l2PortalContainerRef}>

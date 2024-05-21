@@ -24,6 +24,14 @@ const {
   L1_ITEM_WRAPPER,
 } = classes;
 
+const MobileL1Container = styled(BaseBox)(() => {
+  return {
+    [`.${SHOW_WHEN_COLLAPSED}`]: {
+      display: 'none',
+    },
+  };
+});
+
 const StyledL1Menu = styled(BaseBox)((props) => {
   const { l1Collapse, l1Expand } = useSideNavTransition();
 
@@ -84,7 +92,6 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   const [isTransitioning, setIsTransitioning] = React.useState(false);
   const [l2DrawerTitle, setL2DrawerTitle] = React.useState('');
 
-  console.count('SideNav');
   const isMobile = useIsMobile();
 
   const closeMobileNav = (): void => {
@@ -109,10 +116,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       if (isMobile) {
         setL2DrawerTitle(args.title);
-        if (!args.isFirstRender) {
-          // we don't want to open sidenav in mobile in first render
-          setIsMobileL2Open(true);
-        }
+        setIsMobileL2Open(true);
         return;
       }
 
@@ -150,8 +154,6 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
     [isL1Collapsed, isMobile, isMobileL2Open],
   );
 
-  console.log({ isMobile });
-
   return (
     <SideNavContext.Provider value={contextValue}>
       {isMobile && onDismiss ? (
@@ -160,8 +162,16 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           <Drawer isOpen={isOpen ?? false} onDismiss={onDismiss}>
             <DrawerHeader title="Main Menu" />
             <DrawerBody>
-              <BaseBox>{restChild}</BaseBox>
-              <BaseBox>{footerChild}</BaseBox>
+              <MobileL1Container
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
+                className="mobile-l1-container"
+                height="100%"
+              >
+                <BaseBox overflowY="auto">{restChild}</BaseBox>
+                {footerChild}
+              </MobileL1Container>
             </DrawerBody>
           </Drawer>
           {/* L2 */}
