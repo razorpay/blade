@@ -14,6 +14,7 @@ import { makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
+import { getStyledProps } from '~components/Box/styledProps';
 
 const {
   COLLAPSED,
@@ -81,7 +82,12 @@ const getL1MenuClassName = ({
   return '';
 };
 
-const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElement => {
+const SideNav = ({
+  children,
+  isOpen,
+  onDismiss,
+  ...styledProps
+}: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
@@ -178,6 +184,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           left="spacing.0"
           display={{ base: 'none', m: 'block' }}
           width={makeSize(EXPANDED_L1_WIDTH)}
+          {...getStyledProps(styledProps)}
         >
           <BaseBox
             position="absolute"

@@ -1,9 +1,10 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
-import type { SideNavSectionProps } from './types';
-import type { SideNavLinkProps } from './';
+import type { SideNavSectionProps } from '../types';
+import type { SideNavLinkProps } from '..';
 import {
   SideNavBody,
   SideNav,
@@ -12,7 +13,8 @@ import {
   SideNavSection,
   SideNavFooter,
   SideNavItem,
-} from './';
+} from '..';
+import { RazorpayLinesSvg, RazorpayLogo } from './RazorpayLogo';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import {
@@ -41,6 +43,22 @@ import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
 import { Indicator } from '~components/Indicator';
 import { Switch as BladeSwitch } from '~components/Switch';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+// import { Sandbox } from '~utils/storybook/Sandbox';
+import { Skeleton } from '~components/Skeleton';
+
+const DocsPage = (): React.ReactElement => {
+  return (
+    <StoryPageWrapper
+      componentName="SideNav"
+      componentDescription="The side navigation is positioned along the left side of the screen that provides quick access to different sections or functionalities of the application."
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=87921-138303&m=dev&scaling=min-zoom&page-id=87588%3A51157"
+    >
+      <Title>Usage (with React Router v6)</Title>
+      {/* <Sandbox></Sandbox> */}
+    </StoryPageWrapper>
+  );
+};
 
 export default {
   title: 'Components/SideNav',
@@ -49,16 +67,65 @@ export default {
   argTypes: {
     ...getStyledPropsArgTypes(),
   },
+  parameters: {
+    docs: {
+      page: DocsPage,
+    },
+  },
   // eslint-disable-next-line babel/new-cap
   decorators: [StoryRouter(undefined, { initialEntries: ['/settings/user/home'] })] as unknown,
 } as Meta<typeof SideNav>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Page = ({ match }: { match: any }): React.ReactElement => (
-  <Box>
+  <Box padding={{ base: 'spacing.2', m: 'spacing.6' }}>
     <Heading>ID: {JSON.stringify(match)}</Heading>
   </Box>
 );
+
+const DashboardSkeleton = ({ children }: { children: React.ReactElement }): React.ReactElement => {
+  return (
+    <Box
+      paddingX="spacing.4"
+      backgroundColor="surface.background.gray.moderate"
+      height="100%"
+      display="flex"
+      flexDirection="column"
+    >
+      <Box position="relative" display="flex" height="56px" alignItems="center" width="100%">
+        <Box position="absolute" bottom="-10px" left="0px">
+          <RazorpayLinesSvg />
+        </Box>
+        <Box width="256px" textAlign="center">
+          <RazorpayLogo />
+        </Box>
+        <Box flex="1">
+          <Skeleton width="100%" height="12px" borderRadius="medium" />
+        </Box>
+        <Box flex="3" marginLeft="spacing.6">
+          <Skeleton marginBottom="spacing.2" width="100%" height="12px" borderRadius="medium" />
+          <Skeleton width="100%" height="12px" borderRadius="medium" />
+        </Box>
+      </Box>
+      <Box
+        position="relative"
+        borderRadius="large"
+        overflow="hidden"
+        paddingTop="spacing.4"
+        flex="1"
+        borderWidth="thin"
+        borderColor="surface.border.gray.muted"
+        elevation="midRaised"
+        backgroundColor="surface.background.gray.intense"
+        borderBottomWidth="none"
+        borderBottomRightRadius="none"
+        borderBottomLeftRadius="none"
+      >
+        {children}
+      </Box>
+    </Box>
+  );
+};
 
 type ItemsType = Pick<SideNavLinkProps, 'icon' | 'title' | 'href' | 'trailing' | 'tooltip'>;
 type NavItemsJSONType = {
@@ -242,7 +309,7 @@ const NavItem = (
   );
 };
 
-const SideNavExample: StoryFn<typeof SideNav> = () => {
+const SideNavExample: StoryFn<typeof SideNav> = ({ ...args }) => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
   const [isTestModeActive, setIsTestModeActive] = React.useState(false);
   const location = useLocation();
@@ -260,7 +327,7 @@ const SideNavExample: StoryFn<typeof SideNav> = () => {
 
   return (
     <Box minHeight="500px">
-      <SideNav isOpen={isMobileOpen} onDismiss={() => setIsMobileOpen(false)}>
+      <SideNav {...args} isOpen={isMobileOpen} onDismiss={() => setIsMobileOpen(false)}>
         <SideNavBody>
           {navItemsJSON.map((l1Sections) => {
             return (
@@ -373,3 +440,11 @@ const SideNavTemplate: StoryFn<typeof SideNav> = ({ ...args }) => {
 };
 
 export const Default = SideNavTemplate.bind({});
+
+export const DashboardLayout: StoryFn<typeof SideNav> = ({ ...args }) => {
+  return (
+    <DashboardSkeleton>
+      <SideNavExample position="absolute" {...args} />
+    </DashboardSkeleton>
+  );
+};
