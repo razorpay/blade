@@ -53,7 +53,7 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
       overflow: 'hidden',
       flexWrap: 'nowrap',
       cursor: 'pointer',
-      padding: `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[4])}`,
+      padding: `${makeSpace(props.theme.spacing[0])} ${makeSize(size['10'])}`,
       margin: `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[0])}`,
       color: props.theme.colors.interactive.text.gray.subtle,
       borderRadius: props.theme.border.radius.medium,

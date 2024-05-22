@@ -1,8 +1,9 @@
-import userEvents from '@testing-library/user-event';
-import { waitFor } from '@testing-library/react';
 import { SideNavExample } from './SideNavExample';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
+
+// Test cases are limited here since SideNav gets flaky in unit tests with all the complexity
+// Major functionality tests are added in Interaction tests
 
 describe('SideNav', () => {
   test('should render', () => {
@@ -16,28 +17,6 @@ describe('SideNav', () => {
       <SideNavExample position="absolute" zIndex={1234} display="block" />,
     );
     expect(getByRole('navigation')).toHaveStyle('z-index: 1234; position: absolute');
-  });
-
-  test('should open L2 and L3', async () => {
-    const user = userEvents.setup();
-    const { getByRole } = renderWithTheme(<SideNavExample display="block" />);
-
-    // Open L2
-    await user.click(getByRole('link', { name: 'L2 Trigger' }));
-    await waitFor(() => expect(getByRole('link', { name: 'L2 Item' })).toBeVisible());
-
-    // Select L2 Item
-    expect(getByRole('link', { name: 'L2 Item' })).toHaveAttribute('aria-current', 'page');
-    await user.click(getByRole('link', { name: 'L2 Item 2' }));
-    expect(getByRole('link', { name: 'L2 Item 2' })).toHaveAttribute('aria-current', 'page');
-
-    // Open L3
-    await user.click(getByRole('button', { name: 'L3 Trigger' }));
-    await waitFor(() => expect(getByRole('link', { name: 'L3 Item 2' })).toBeVisible());
-
-    // Select L3 Item
-    await user.click(getByRole('link', { name: 'L3 Item 2' }));
-    expect(getByRole('link', { name: 'L3 Item 2' })).toHaveAttribute('aria-current', 'page');
   });
 
   test('should keep L3 Item selected based on URL', () => {
