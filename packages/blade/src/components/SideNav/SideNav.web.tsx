@@ -184,6 +184,7 @@ const SideNav = ({
           left="spacing.0"
           display={{ base: 'none', m: 'block' }}
           width={makeSize(EXPANDED_L1_WIDTH)}
+          as="nav"
           {...getStyledProps(styledProps)}
         >
           <BaseBox

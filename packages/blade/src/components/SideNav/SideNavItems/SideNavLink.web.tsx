@@ -16,6 +16,7 @@ import { Collapsible, CollapsibleBody } from '~components/Collapsible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const { SHOW_ON_LINK_HOVER, COLLAPSED, HIDE_WHEN_COLLAPSED } = classes;
 
@@ -203,7 +204,7 @@ const SideNavLink = ({
     open: isActive,
   });
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     onLinkActiveChange?.({
       level: currentLevel,
       title,
