@@ -7,6 +7,7 @@ import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useI18nContext } from '@razorpay/i18nify-react';
 import { HeadlessMantineProvider } from '@mantine/core';
+import dayjs from 'dayjs';
 import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
 import { Calendar } from './Calendar';
 import { PresetSideBar } from './QuickSelection/PresetSideBar';
@@ -217,8 +218,10 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   );
 
   const dateProviderValue = React.useMemo(() => {
+    const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
+    dayjs.locale(locale);
     return {
-      locale: convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN'),
+      locale,
     };
   }, [i18nState?.locale]);
 
