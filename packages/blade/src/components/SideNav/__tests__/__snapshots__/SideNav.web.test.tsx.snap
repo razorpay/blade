@@ -524,7 +524,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c3.c3.c3.c3.c3 > .l1-item-wrapper {
-  padding: 12px;
+  padding: 8px;
 }
 
 .c3.c3.c3.c3.c3 .show-when-collapsed {
@@ -538,7 +538,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c3.c3.c3.c3.c3.collapsed > .l1-item-wrapper {
-  padding: 12px 8px;
+  padding: 8px 8px;
 }
 
 .c3.c3.c3.c3.c3.collapsed:not(.transitioning) .hide-when-collapsed {
