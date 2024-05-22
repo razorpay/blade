@@ -3,19 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/lato": "^4.5.10",
+    "@razorpay/blade": "^11.18.0",
+    "@razorpay/i18nify-js": "^1.10.0",
+    "@razorpay/i18nify-react": "^4.0.9",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
-    "@types/react-native": "0.64.4",
     "@types/react-dom": "^18.0.0",
+    "@types/react-native": "0.64.4",
+    "@types/styled-components": "5.1.34",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "5.3.11",
     "typescript": "4.8.2",
-    "web-vitals": "^2.1.0",
-    "@razorpay/blade": "8.7.0",
-    "styled-components": "5.3.6",
-    "@fontsource/lato": "^4.5.10"
+    "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

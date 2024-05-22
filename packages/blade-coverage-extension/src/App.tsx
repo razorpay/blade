@@ -54,34 +54,33 @@ const App = (): ReactElement => {
   return (
     <BladeProvider themeTokens={bladeTheme} colorScheme={isDarkMode ? 'dark' : 'light'}>
       <Box height="312px" width="500px">
-        <Card elevation="lowRaised" padding="spacing.7" surfaceLevel={2}>
+        <Card
+          elevation="lowRaised"
+          padding="spacing.7"
+          backgroundColor="surface.background.gray.moderate"
+        >
           <CardBody>
             <Box
               width="450px"
               height="251px"
               marginBottom="spacing.5"
-              backgroundColor="surface.background.level3.lowContrast"
+              backgroundColor="surface.background.gray.intense"
               position="relative"
               alignItems="center"
               justifyContent="center"
               display="flex"
               flexDirection="column"
+              padding="spacing.4"
             >
               {coverage ? (
                 <>
                   <Heading marginBottom="spacing.5">
                     Blade Coverage: {coverage.bladeCoverage}%
                   </Heading>
-                  <Heading
-                    size="small"
-                    type="subdued"
-                    contrast="low"
-                    marginBottom="spacing.5"
-                    weight="regular"
-                  >
+                  <Heading size="small" marginBottom="spacing.5" weight="regular">
                     Total DOM Nodes: {coverage.totalNodes}
                   </Heading>
-                  <Heading size="small" type="subdued" contrast="low" weight="regular">
+                  <Heading size="small" weight="regular">
                     Total Blade Nodes: {coverage.bladeNodes}
                   </Heading>
                 </>
