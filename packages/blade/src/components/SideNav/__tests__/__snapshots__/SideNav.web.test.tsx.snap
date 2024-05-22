@@ -130,6 +130,46 @@ exports[`SideNav should render 1`] = `
 }
 
 .c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+  max-width: none;
+}
+
+.c23.c23.c23.c23.c23 {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.c27.c27.c27.c27.c27 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 4px;
+}
+
+.c28.c28.c28.c28.c28 {
+  width: 100%;
+}
+
+.c30.c30.c30.c30.c30 {
   position: relative;
   padding: 12px;
   width: calc(100% + 20px + 20px);
@@ -143,7 +183,7 @@ exports[`SideNav should render 1`] = `
   box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
 }
 
-.c23.c23.c23.c23.c23 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -165,7 +205,7 @@ exports[`SideNav should render 1`] = `
   border-radius: 4px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c33.c33.c33.c33.c33 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -177,18 +217,18 @@ exports[`SideNav should render 1`] = `
   gap: 8px;
 }
 
-.c26.c26.c26.c26.c26 {
+.c34.c34.c34.c34.c34 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c27.c27.c27.c27.c27 {
+.c35.c35.c35.c35.c35 {
   margin-left: 4px;
 }
 
-.c30.c30.c30.c30.c30 {
+.c38.c38.c38.c38.c38 {
   display: inline-block;
 }
 
@@ -266,7 +306,25 @@ exports[`SideNav should render 1`] = `
   overflow-wrap: break-word;
 }
 
-.c28.c28.c28.c28.c28 {
+.c25.c25.c25.c25.c25 {
+  color: hsla(211,33%,21%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c36.c36.c36.c36.c36 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -284,7 +342,7 @@ exports[`SideNav should render 1`] = `
   padding: 0;
 }
 
-.c29.c29.c29.c29.c29 {
+.c37.c37.c37.c37.c37 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -337,6 +395,90 @@ exports[`SideNav should render 1`] = `
 }
 
 .c4.c4.c4.c4.c4 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c24.c24.c24.c24.c24 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.c24.c24.c24.c24.c24 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c24.c24.c24.c24.c24:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+}
+
+.c24.c24.c24.c24.c24 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c26.c26.c26.c26.c26 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.c26.c26.c26.c26.c26 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c26.c26.c26.c26.c26:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+}
+
+.c26.c26.c26.c26.c26 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -405,6 +547,19 @@ exports[`SideNav should render 1`] = `
 
 .c3.c3.c3.c3.c3.collapsed:not(.transitioning) .show-when-collapsed {
   display: initial;
+}
+
+.c29.c29.c29.c29.c29 {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: height,opacity;
+  transition-property: height,opacity;
+  opacity: 0.8;
+  height: 0px;
+  display: none;
+  overflow-y: hidden;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -497,18 +652,18 @@ exports[`SideNav should render 1`] = `
   opacity: 0;
 }
 
-.c24.c24.c24.c24.c24 {
+.c32.c32.c32.c32.c32 {
   -webkit-transition: padding 200ms cubic-bezier(0.5,0,0,1);
   transition: padding 200ms cubic-bezier(0.5,0,0,1);
 }
 
-.collapsed .c24.c24.c24.c24.c24 {
+.collapsed .c32.c32.c32.c32.c32 {
   padding: 0px 8px;
   -webkit-transition: padding 200ms cubic-bezier(0.5,0,0,1);
   transition: padding 200ms cubic-bezier(0.5,0,0,1);
 }
 
-.c36.c36.c36.c36.c36 {
+.c44.c44.c44.c44.c44 {
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -518,7 +673,7 @@ exports[`SideNav should render 1`] = `
   opacity: 0;
 }
 
-.c34.c34.c34.c34.c34 {
+.c42.c42.c42.c42.c42 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -536,7 +691,7 @@ exports[`SideNav should render 1`] = `
   position: relative;
 }
 
-.c35.c35.c35.c35.c35 {
+.c43.c43.c43.c43.c43 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -568,7 +723,7 @@ exports[`SideNav should render 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c33.c33.c33.c33.c33 {
+.c41.c41.c41.c41.c41 {
   pointer-events: none;
   position: relative;
   display: -webkit-box;
@@ -591,7 +746,7 @@ exports[`SideNav should render 1`] = `
   transition-duration: 70ms;
 }
 
-.c32.c32.c32.c32.c32 {
+.c40.c40.c40.c40.c40 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -608,7 +763,7 @@ exports[`SideNav should render 1`] = `
   word-wrap: normal;
 }
 
-.c32.c32.c32.c32.c32:focus-visible + div {
+.c40.c40.c40.c40.c40:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -619,7 +774,7 @@ exports[`SideNav should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c32.c32.c32.c32.c32:hover + div {
+.c40.c40.c40.c40.c40:hover + div {
   background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -627,7 +782,7 @@ exports[`SideNav should render 1`] = `
   transition-duration: 70ms;
 }
 
-.c31.c31.c31.c31.c31 {
+.c39.c39.c39.c39.c39 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -703,19 +858,19 @@ exports[`SideNav should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c22.c22.c22.c22.c22 {
+  .c30.c30.c30.c30.c30 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c22.c22.c22.c22.c22 {
+  .c30.c30.c30.c30.c30 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c22.c22.c22.c22.c22 {
+  .c30.c30.c30.c30.c30 {
     width: 100%;
     right: 0px;
     bottom: 0px;
@@ -725,13 +880,13 @@ exports[`SideNav should render 1`] = `
 }
 
 @media screen and (min-width:1024px) {
-  .c22.c22.c22.c22.c22 {
+  .c30.c30.c30.c30.c30 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c22.c22.c22.c22.c22 {
+  .c30.c30.c30.c30.c30 {
     border-top-style: solid;
   }
 }
@@ -744,6 +899,7 @@ exports[`SideNav should render 1`] = `
     <div
       class="c1"
       data-blade-component="base-box"
+      id="blade-sidenav-l2"
     >
       <div
         data-floating-ui-portal=""
@@ -753,6 +909,7 @@ exports[`SideNav should render 1`] = `
     <div
       class="c2 c3"
       data-blade-component="base-box"
+      id="blade-sidenav-l1"
     >
       <a
         aria-disabled="false"
@@ -839,6 +996,28 @@ exports[`SideNav should render 1`] = `
               class="c11"
               data-blade-component="box"
             >
+              <div
+                class="c12"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M2 5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V5ZM10 20H19C19.5523 20 20 19.5523 20 19V10H10V20ZM8 10V20H5C4.44772 20 4 19.5523 4 19V10H8ZM20 8V5C20 4.44772 19.5523 4 19 4H5C4.44772 4 4 4.44772 4 5V8H20Z"
+                    data-blade-component="svg-path"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
               <p
                 class="c13 hide-when-collapsed"
                 data-blade-component="base-text"
@@ -993,24 +1172,214 @@ exports[`SideNav should render 1`] = `
               </a>
             </div>
           </div>
+          <div
+            class=""
+            data-blade-component="collapsible"
+          >
+            <div
+              class="c22"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c23 show-when-collapsed"
+                data-blade-component="base-box"
+              >
+                <button
+                  aria-disabled="false"
+                  class="c24"
+                  data-blade-component="link"
+                  role="button"
+                  type="button"
+                >
+                  <span
+                    class="c6 content-container"
+                    data-blade-component="base-box"
+                  >
+                    <span
+                      class="c25"
+                      data-blade-component="base-text"
+                    >
+                      +2
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div
+                class="hide-when-collapsed"
+                data-blade-component="base-box"
+              >
+                <button
+                  aria-disabled="false"
+                  class="c26"
+                  data-blade-component="link"
+                  role="button"
+                  type="button"
+                >
+                  <span
+                    class="c6 content-container"
+                    data-blade-component="base-box"
+                  >
+                    <span
+                      class="c25"
+                      data-blade-component="base-text"
+                    >
+                      +2 More
+                    </span>
+                    <span
+                      class="c27"
+                      data-blade-component="base-box"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="Svgweb__StyledSvg-vcmjs8-0"
+                        data-blade-component="icon"
+                        fill="none"
+                        height="12px"
+                        viewBox="0 0 24 24"
+                        width="12px"
+                      >
+                        <path
+                          clip-rule="evenodd"
+                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                          data-blade-component="svg-path"
+                          fill="hsla(211, 33%, 21%, 1)"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div
+                aria-hidden="true"
+                class="c28"
+                data-blade-component="collapsible-body"
+                id="collapsible-body-1"
+                role="region"
+              >
+                <div
+                  class=" c29"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class=""
+                    data-blade-component="box"
+                  >
+                    <div
+                      class="c9 c10"
+                      data-blade-component="base-box"
+                    >
+                      <a
+                        class="styled-nav-link"
+                        data-blade-component="base-box"
+                        data-l2trigger="false"
+                        data-level="1"
+                        href="/pages"
+                      >
+                        <div
+                          class="c11"
+                          data-blade-component="box"
+                        >
+                          <div
+                            class="c12"
+                            data-blade-component="base-box"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              width="16px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M18.2929 0.292893C18.6834 -0.0976311 19.3166 -0.0976311 19.7071 0.292893L21.7071 2.29289C22.0976 2.68342 22.0976 3.31658 21.7071 3.70711C21.3166 4.09763 20.6834 4.09763 20.2929 3.70711L20 3.41421V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V3.41421L17.7071 3.70711C17.3166 4.09763 16.6834 4.09763 16.2929 3.70711C15.9024 3.31658 15.9024 2.68342 16.2929 2.29289L18.2929 0.292893ZM2 4C2 2.34315 3.34314 1 5 1H14.0769C14.6292 1 15.0769 1.44772 15.0769 2C15.0769 2.55228 14.6292 3 14.0769 3H5C4.44771 3 4 3.44771 4 4V19.5C4 20.0523 4.44772 20.5 5 20.5H19C19.5523 20.5 20 20.0523 20 19.5V9.5C20 8.94772 20.4477 8.5 21 8.5C21.5523 8.5 22 8.94772 22 9.5V19.5C22 21.1569 20.6569 22.5 19 22.5H5C3.34315 22.5 2 21.1569 2 19.5V4ZM6 13C6 12.4477 6.44772 12 7 12H11C11.5523 12 12 12.4477 12 13C12 13.5523 11.5523 14 11 14H7C6.44772 14 6 13.5523 6 13ZM6 17C6 16.4477 6.44772 16 7 16H15C15.5523 16 16 16.4477 16 17C16 17.5523 15.5523 18 15 18H7C6.44772 18 6 17.5523 6 17Z"
+                                data-blade-component="svg-path"
+                                fill="currentColor"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                          <p
+                            class="c13 hide-when-collapsed"
+                            data-blade-component="base-text"
+                          >
+                            Pages
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                    <div
+                      class="c9 c10"
+                      data-blade-component="base-box"
+                    >
+                      <a
+                        class="styled-nav-link"
+                        data-blade-component="base-box"
+                        data-l2trigger="false"
+                        data-level="1"
+                        href="/button"
+                      >
+                        <div
+                          class="c11"
+                          data-blade-component="box"
+                        >
+                          <div
+                            class="c12"
+                            data-blade-component="base-box"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              width="16px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M10.5 6H18.5C20.433 6 22 7.567 22 9.5C22 11.433 20.433 13 18.5 13H10.5C8.567 13 7 11.433 7 9.5C7 7.567 8.567 6 10.5 6ZM5.02034 9.02363C5.26181 6.2091 7.62292 4 10.5 4H18.5C21.5376 4 24 6.46243 24 9.5C24 12.376 21.7925 14.7365 18.9794 14.9794C18.7365 17.7925 16.376 20 13.5 20H5.5C2.46243 20 0 17.5376 0 14.5C0 11.6268 2.22756 9.28193 5.02034 9.02363ZM5.21117 11.0146C3.4179 11.1773 2 12.6841 2 14.5C2 16.433 3.567 18 5.5 18H13.5C15.2632 18 16.7219 16.6961 16.9646 15H10.5C7.98774 15 5.86889 13.3156 5.21117 11.0146Z"
+                                data-blade-component="svg-path"
+                                fill="currentColor"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                          <p
+                            class="c13 hide-when-collapsed"
+                            data-blade-component="base-text"
+                          >
+                            Button
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="c22 l1-item-wrapper"
+        class="c30 l1-item-wrapper"
         data-blade-component="base-box"
         elevation="highRaised"
       >
         <div
-          class="c23 c24"
+          class="c31 c32"
           data-blade-component="base-box"
         >
           <div
-            class="c25"
+            class="c33"
             data-blade-component="box"
           >
             <div
               aria-label="Positive Indicator"
-              class="c26"
+              class="c34"
               data-blade-component="indicator"
               role="status"
             >
@@ -1023,24 +1392,31 @@ exports[`SideNav should render 1`] = `
                   class="Svgweb__StyledSvg-vcmjs8-0"
                   data-blade-component="icon"
                   fill="none"
-                  height="8"
+                  height="20"
                   viewBox="0 0 10 10"
-                  width="8"
+                  width="20"
                 >
                   <circle
                     cx="5"
                     cy="5"
                     data-blade-component="svg-circle"
-                    fill="hsla(150, 100%, 27%, 1)"
+                    fill="hsla(150, 100%, 32%, 0.09)"
                     r="5"
+                  />
+                  <circle
+                    cx="5"
+                    cy="5"
+                    data-blade-component="svg-circle"
+                    fill="hsla(150, 100%, 27%, 1)"
+                    r="2.5"
                   />
                 </svg>
                 <div
-                  class="c27"
+                  class="c35"
                   data-blade-component="base-box"
                 >
                   <p
-                    class="c28"
+                    class="c36"
                     data-blade-component="text"
                   />
                 </div>
@@ -1051,7 +1427,7 @@ exports[`SideNav should render 1`] = `
               data-blade-component="base-box"
             >
               <p
-                class="c29"
+                class="c37"
                 data-blade-component="text"
               >
                 Test Mode
@@ -1063,11 +1439,11 @@ exports[`SideNav should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c30"
+              class="c38"
               data-blade-component="switch"
             >
               <label
-                class="c31"
+                class="c39"
                 data-blade-component="switch-label"
                 style="cursor: pointer;"
               >
@@ -1077,27 +1453,27 @@ exports[`SideNav should render 1`] = `
                   aria-invalid="false"
                   aria-label="Test Mode"
                   aria-required="false"
-                  class="c32"
+                  class="c40"
                   role="switch"
                   type="checkbox"
                   value=""
                 />
                 <div
                   aria-hidden="true"
-                  class=" c33"
+                  class=" c41"
                   data-blade-component="base-box"
                 >
                   <div
-                    class=" c34"
+                    class=" c42"
                     data-blade-component="base-box"
                   >
                     <div
-                      class=" c35"
+                      class=" c43"
                       data-blade-component="base-box"
                     >
                       <svg
                         aria-hidden="true"
-                        class="Svgweb__StyledSvg-vcmjs8-0 c36"
+                        class="Svgweb__StyledSvg-vcmjs8-0 c44"
                         data-blade-component="icon"
                         fill="none"
                         height="8px"
