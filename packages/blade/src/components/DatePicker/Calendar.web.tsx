@@ -26,12 +26,6 @@ const Calendar = <Type extends DateSelectionType>({
   locale,
   onNext,
   onPrevious,
-  onNextMonth,
-  onNextYear,
-  onNextDecade,
-  onPreviousMonth,
-  onPreviousYear,
-  onPreviousDecade,
   presets,
   ...props
 }: CalendarProps<Type> & {
@@ -73,29 +67,25 @@ const Calendar = <Type extends DateSelectionType>({
 
   const handleNextMonth = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();
-    onNextMonth?.(nextDate);
-    onNext?.(nextDate);
+    onNext?.({ date: nextDate, type: 'month' });
     setDate(nextDate);
   };
 
   const handlePreviousMonth = () => {
     const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'month').toDate();
-    onPreviousMonth?.(nextDate);
-    onPrevious?.(nextDate);
+    onPrevious?.({ date: nextDate, type: 'month' });
     setDate(nextDate);
   };
 
   const handleNextYear = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'year').toDate();
-    onNextYear?.(nextDate);
-    onNext?.(nextDate);
+    onNext?.({ date: nextDate, type: 'year' });
     setDate(nextDate);
   };
 
   const handlePreviousYear = () => {
     const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'year').toDate();
-    onPreviousYear?.(nextDate);
-    onPrevious?.(nextDate);
+    onPrevious?.({ date: nextDate, type: 'year' });
     setDate(nextDate);
   };
 
@@ -103,8 +93,7 @@ const Calendar = <Type extends DateSelectionType>({
     const nextDate = dayjs(currentDate)
       .add(10 * columnsToScroll, 'year')
       .toDate();
-    onNextDecade?.(nextDate);
-    onNext?.(nextDate);
+    onNext?.({ date: nextDate, type: 'decade' });
     setDate(nextDate);
   };
 
@@ -112,8 +101,7 @@ const Calendar = <Type extends DateSelectionType>({
     const nextDate = dayjs(currentDate)
       .subtract(10 * columnsToScroll, 'year')
       .toDate();
-    onPreviousDecade?.(nextDate);
-    onNext?.(nextDate);
+    onPrevious?.({ date: nextDate, type: 'decade' });
     setDate(nextDate);
   };
 
