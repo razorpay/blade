@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   DayOfWeek,
   DateValue,
   DatePickerProps as MantineDatePickerProps,
   DatesRangeValue,
 } from '@mantine/dates';
-import type { DatePickerCommonInputProps } from './DateInput';
 import type { BaseInputProps } from '~components/Input/BaseInput';
+import type { TextInputProps } from '~components/Input/TextInput';
+import type { FormInputValidationProps } from '~components/Form';
 
 type PickerType = 'day' | 'month' | 'year';
 type Preset = {
@@ -114,10 +116,47 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
   CalendarProps<Type>,
   MantineInternalProps
 > &
-  Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition'> & {
+  Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition' | 'name'> & {
+    /**
+     * Sets the label for the input element.
+     */
     label?: Type extends 'single' ? string : { start: string; end?: string };
+    /**
+     * Sets the HTML [name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) attribute on the input elements.
+     * Can be used when submitting a form.
+     *
+     * @example 'date' | { start: 'start-date', end: 'end-date' }
+     */
+    name?: Type extends 'single' ? string : { start: string; end?: string };
     labelPosition?: BaseInputProps['labelPosition'];
   };
+
+type DatePickerRangeInputProps = {
+  selectionType: 'range';
+  label?: { start: string; end?: string };
+  name?: { start: string; end: string };
+  date: [Date, Date];
+};
+
+type DatePickerSingleInputProps = {
+  selectionType: 'single';
+  label?: string;
+  name?: string;
+  date: Date;
+};
+
+type DatePickerCommonInputProps = {
+  labelPosition?: BaseInputProps['labelPosition'];
+  inputRef: React.Ref<any>;
+  referenceProps: any;
+} & Pick<
+  TextInputProps,
+  'size' | 'isRequired' | 'necessityIndicator' | 'autoFocus' | 'isDisabled' | 'accessibilityLabel'
+> &
+  FormInputValidationProps;
+
+type DatePickerInputProps = DatePickerCommonInputProps &
+  (DatePickerRangeInputProps | DatePickerSingleInputProps);
 
 export type {
   CalendarProps,
@@ -126,4 +165,5 @@ export type {
   DatesRangeValue,
   DateValue,
   DateSelectionType,
+  DatePickerInputProps,
 };
