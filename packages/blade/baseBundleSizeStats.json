@@ -142,16 +142,16 @@
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
     "passed": true,
-    "size": 50165,
+    "size": 50118,
     "sizeLimit": 2000000,
-    "loading": 0.97978515625
+    "loading": 0.9788671875
   },
   {
     "name": "FileUpload",
     "passed": true,
-    "size": 36839,
+    "size": 36855,
     "sizeLimit": 2000000,
-    "loading": 0.71951171875
+    "loading": 0.71982421875
   },
   {
     "name": "Indicator",
@@ -184,9 +184,9 @@
   {
     "name": "ProgressBar",
     "passed": true,
-    "size": 25419,
+    "size": 25435,
     "sizeLimit": 2000000,
-    "loading": 0.49646484375
+    "loading": 0.49677734375
   },
   {
     "name": "Radio",
