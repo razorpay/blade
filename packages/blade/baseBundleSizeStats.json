@@ -254,9 +254,9 @@
   {
     "name": "Tooltip, TooltipInteractiveWrapper",
     "passed": true,
-    "size": 37736,
+    "size": 37737,
     "sizeLimit": 2000000,
-    "loading": 0.73703125
+    "loading": 0.73705078125
   },
   {
     "name": "Button",
