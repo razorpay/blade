@@ -11,15 +11,17 @@ const getCollapsibleBodyContentBoxProps = ({
   direction: CollapsibleProps['direction'];
   _hasMargin: CollapsibleBodyProps['_hasMargin'];
 }): BoxProps => {
-  const marginTop = direction === 'bottom' ? 'spacing.5' : 'spacing.0';
-  const marginBottom = direction === 'top' ? 'spacing.5' : 'spacing.0';
+  if (!_hasMargin) {
+    return {};
+  }
+
   return {
     /**
      * Need a margin inside the outside wrapper so this is
      * included in height calculations and prevents jank
      */
-    marginTop: _hasMargin ? marginTop : undefined,
-    marginBottom: _hasMargin ? marginBottom : undefined,
+    marginTop: direction === 'bottom' ? 'spacing.5' : 'spacing.0',
+    marginBottom: direction === 'top' ? 'spacing.5' : 'spacing.0',
   };
 };
 

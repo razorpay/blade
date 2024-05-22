@@ -39,7 +39,7 @@ const StyledL1Menu = styled(BaseBox)((props) => {
     width: '100%',
     transition: l1Expand,
     [`& > .${L1_ITEM_WRAPPER}`]: {
-      padding: makeSpace(props.theme.spacing[4]),
+      padding: makeSpace(props.theme.spacing[3]),
     },
     [`.${SHOW_WHEN_COLLAPSED}`]: {
       display: 'none',
@@ -48,7 +48,7 @@ const StyledL1Menu = styled(BaseBox)((props) => {
       width: makeSize(COLLAPSED_L1_WIDTH),
       transition: l1Collapse,
       [`& > .${L1_ITEM_WRAPPER}`]: {
-        padding: `${makeSpace(props.theme.spacing[4])} ${makeSpace(props.theme.spacing[3])}`,
+        padding: `${makeSpace(props.theme.spacing[3])} ${makeSpace(props.theme.spacing[3])}`,
       },
       [`&:not(.${TRANSITIONING}) .${HIDE_WHEN_COLLAPSED}`]: {
         display: 'none',
@@ -106,33 +106,39 @@ const SideNav = ({
     }
   };
 
+  /**
+   * Handles L1 -> L2 menu changes based on active item
+   */
   const onLinkActiveChange: SideNavContextType['onLinkActiveChange'] = (args) => {
-    if (args.level === 1 && args.isL2Trigger && args.isActive) {
-      if (isMobile) {
-        setL2DrawerTitle(args.title);
-        setIsMobileL2Open(true);
-        return;
-      }
+    const isL1ItemActive = args.level === 1 && args.isActive;
 
-      setIsL1Collapsed(true);
+    if (isL1ItemActive) {
+      if (args.isL2Trigger) {
+        // Click on L2 Trigger
+        if (isMobile) {
+          setL2DrawerTitle(args.title);
+          setIsMobileL2Open(true);
+          return;
+        }
 
-      if (!args.isFirstRender) {
-        setIsTransitioning(true);
-        setIsL1Hovered(false);
-        setIsHoverAgainEnabled(false);
-        // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
-        setTimeout(() => {
-          setIsHoverAgainEnabled(true);
-        }, 500);
-      }
-    }
+        setIsL1Collapsed(true);
 
-    if (args.level === 1 && !args.isL2Trigger && args.isActive) {
-      if (isMobile) {
-        setIsMobileL2Open(false);
-        return;
+        if (!args.isFirstRender) {
+          setIsTransitioning(true);
+          setIsL1Hovered(false);
+          setIsHoverAgainEnabled(false);
+          // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
+          setTimeout(() => {
+            setIsHoverAgainEnabled(true);
+          }, 500);
+        }
+      } else {
+        // Click on normal L1 Item
+        // eslint-disable-next-line no-lonely-if
+        if (isMobile) {
+          setIsMobileL2Open(false);
+        }
       }
-      setIsL1Collapsed(false);
     }
   };
 
@@ -211,6 +217,8 @@ const SideNav = ({
             borderRightWidth="thin"
             borderRightColor="surface.border.gray.muted"
             onTransitionEnd={(e) => {
+              // This check ensures transitioning is set to false only when its true
+              // And only the l1Container element's transitions are considered and other transitions of l1 expand or child elements are ignored
               if (isTransitioning && l1ContainerRef.current === e.target) {
                 setIsTransitioning(false);
               }

@@ -7,7 +7,10 @@ const SideNavContext = React.createContext<SideNavContextType>({});
 const useSideNav = (): SideNavContextType => {
   const value = React.useContext(SideNavContext);
   if (!value) {
-    throwBladeError({ moduleName: 'SideNavContext', message: 'SideNavLink used outside SideNav' });
+    throwBladeError({
+      moduleName: 'SideNavContext',
+      message: 'SideNav* components cannot be used outside SideNav',
+    });
   }
   return value;
 };

@@ -8,7 +8,8 @@ const classes = {
   TRANSITIONING: 'transitioning',
   L1_ITEM_WRAPPER: 'l1-item-wrapper',
   SHOW_ON_LINK_HOVER: 'show-on-link-hover',
-};
+  STYLED_NAV_LINK: 'styled-nav-link',
+} as const;
 
 const SKIP_NAV_ID = 'blade-side-nav-skip';
 

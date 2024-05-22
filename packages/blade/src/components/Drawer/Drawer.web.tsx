@@ -114,7 +114,7 @@ const _Drawer = ({
       removeFromDrawerStack({ elementId: drawerId });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, onDismiss]);
 
   // When z-index is not defined by user, we use default drawer z index and add stackingLevel to ensure
   // new drawer that opens, always opens on top of previous one.

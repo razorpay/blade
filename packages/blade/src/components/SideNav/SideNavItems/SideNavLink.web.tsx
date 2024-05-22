@@ -18,9 +18,7 @@ import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
-const { SHOW_ON_LINK_HOVER, COLLAPSED, HIDE_WHEN_COLLAPSED } = classes;
-
-const STYLED_NAV_LINK = 'styled-nav-link';
+const { SHOW_ON_LINK_HOVER, COLLAPSED, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
 const StyledNavLinkContainer = styled(BaseBox)((props) => {
   const { collapseItemPadding } = useSideNavTransition();
@@ -157,6 +155,9 @@ const L3Trigger = ({
   );
 };
 
+/**
+ * This is the curved line that appears when you select L3 item
+ */
 const CurvedVerticalLine = styled(BaseBox)((props) => {
   const { colors, border, spacing } = props.theme;
   return {
@@ -166,8 +167,10 @@ const CurvedVerticalLine = styled(BaseBox)((props) => {
     borderRadius: `${makeBorderSize(border.radius.none)} ${makeBorderSize(
       border.radius.none,
     )} ${makeBorderSize(border.radius.none)} ${makeBorderSize(border.radius.medium)}`,
+    // We set veritical line infinitely tall (full size of screen) and then hide the overflowing part from top
     height: '100vh',
     position: 'absolute',
+    // We want the active line to be positioned in the middle of item's height thus divide by 2
     top: `calc(-100vh + ${makeSize(NAV_ITEM_HEIGHT / 2)})`,
     width: makeSpace(spacing[3]),
     left: makeSpace(-spacing[3]),
