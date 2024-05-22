@@ -123,6 +123,7 @@ const SideNav = ({
 
         setIsL1Collapsed(true);
 
+        // `args.isFirstRender` checks if the item that triggered this change, triggered it during first render or during subsequent change
         if (!args.isFirstRender) {
           setIsTransitioning(true);
           setIsL1Hovered(false);
