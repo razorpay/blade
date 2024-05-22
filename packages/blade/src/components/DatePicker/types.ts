@@ -9,6 +9,7 @@ import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { TextInputProps } from '~components/Input/TextInput';
 import type { FormInputValidationProps } from '~components/Form';
 
+type Level = 'month' | 'year' | 'decade';
 type PickerType = 'day' | 'month' | 'year';
 type Preset = {
   /**
@@ -118,15 +119,20 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    */
   locale?: string;
 
-  // Basic event props
-  onNext?: (date: Date) => void;
-  onNextMonth?: (date: Date) => void;
-  onNextYear?: (date: Date) => void;
-  onNextDecade?: (date: Date) => void;
-  onPrevious?: (date: Date) => void;
-  onPreviousYear?: (date: Date) => void;
-  onPreviousMonth?: (date: Date) => void;
-  onPreviousDecade?: (date: Date) => void;
+  /**
+   * Callback which is called whenever the next button is clicked.
+   *
+   * @param date - The updated date.
+   * @param type - The level of the calendar. ("month" | "year" | "decade")
+   */
+  onNext?: ({ date, type }: { date: Date; type: Level }) => void;
+  /**
+   * Callback which is called whenever the previous button is clicked.
+   *
+   * @param date - The updated date.
+   * @param type - The level of the calendar. ("month" | "year" | "decade")
+   */
+  onPrevious?: ({ date, type }: { date: Date; type: Level }) => void;
 };
 
 type DatePickerProps<Type extends DateSelectionType> = Omit<
