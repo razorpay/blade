@@ -192,10 +192,12 @@ const SideNav = ({
             backgroundColor="surface.background.gray.moderate"
             height="100%"
             width="100%"
+            id="blade-sidenav-l2"
             ref={l2PortalContainerRef}
           />
           <StyledL1Menu
             ref={l1ContainerRef}
+            id="blade-sidenav-l1"
             className={getL1MenuClassName({ isL1Collapsed, isL1Hovered, isTransitioning })}
             position="absolute"
             display="flex"

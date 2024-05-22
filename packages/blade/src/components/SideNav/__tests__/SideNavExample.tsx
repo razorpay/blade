@@ -11,7 +11,14 @@ import {
 import type { SideNavLinkProps, SideNavProps } from '../index';
 import { Indicator } from '~components/Indicator';
 import { Switch } from '~components/Switch';
-import { HomeIcon, PaymentGatewayIcon, PaymentLinkIcon } from '~components/Icons';
+import {
+  HomeIcon,
+  LayoutIcon,
+  PaymentButtonIcon,
+  PaymentGatewayIcon,
+  PaymentLinkIcon,
+  PaymentPagesIcon,
+} from '~components/Icons';
 
 const isItemActive = (
   location: { pathname: string },
@@ -57,6 +64,7 @@ const SideNavExample = ({
         <SideNavBody>
           <NavLink icon={HomeIcon} title="Home" href="/home" />
           <NavLink
+            icon={LayoutIcon}
             title="L2 Trigger"
             href="/l2-item"
             activeOnLinks={['/l2-item', '/l2-item-2', '/l3-item', '/l3-item-2']}
@@ -73,14 +81,22 @@ const SideNavExample = ({
             </SideNavLevel>
           </NavLink>
 
-          <SideNavSection title="Products">
+          <SideNavSection title="Products" maxVisibleItems={2}>
             <NavLink icon={PaymentGatewayIcon} title="Gateway" href="/gateway" />
             <NavLink icon={PaymentLinkIcon} title="Links" href="/links" />
+            <NavLink icon={PaymentPagesIcon} title="Pages" href="/pages" />
+            <NavLink icon={PaymentButtonIcon} title="Button" href="/button" />
           </SideNavSection>
         </SideNavBody>
         <SideNavFooter>
           <SideNavItem
-            leading={<Indicator color="positive" accessibilityLabel="Positive Indicator" />}
+            leading={
+              <Indicator
+                emphasis="intense"
+                color="positive"
+                accessibilityLabel="Positive Indicator"
+              />
+            }
             title="Test Mode"
             trailing={<Switch accessibilityLabel="Test Mode" />}
           />
