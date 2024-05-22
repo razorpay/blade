@@ -61,7 +61,7 @@ const DropdownHeader = assignWithoutSideEffects(_DropdownHeader, {
 type DropdownFooter = Pick<BaseFooterProps, 'children' | 'testID'>;
 
 const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactElement => {
-  const { setHasFooterAction, activeIndex, onTriggerKeydown, isOpen } = useDropdown();
+  const { setHasFooterAction, isOpen } = useDropdown();
   const footerRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -73,21 +73,6 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
     <BaseBox
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={footerRef as any}
-      {...(isReactNative()
-        ? {}
-        : {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            onKeyDown: (e: any) => {
-              const nativeEvent = e.nativeEvent;
-              const shouldIgnoreDropdownKeydown =
-                (nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0;
-
-              if (!shouldIgnoreDropdownKeydown) {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onTriggerKeydown?.({ event: e.nativeEvent } as any);
-              }
-            },
-          })}
       {...makeAccessible({
         role: isReactNative() ? undefined : 'group',
       })}

@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.18.1
+
+### Patch Changes
+
+- 14f70c96: fix: update circular progress percentage color
+
 ## 11.18.0
 
 ### Minor Changes
