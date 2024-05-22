@@ -39,7 +39,6 @@ import {
   UserCheckIcon,
   UserIcon,
 } from '~components/Icons';
-import { Heading } from '~components/Typography';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
 import { Indicator } from '~components/Indicator';
@@ -47,7 +46,6 @@ import { Switch as BladeSwitch } from '~components/Switch';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Skeleton } from '~components/Skeleton';
-import styled from 'styled-components';
 
 const DocsPage = (): React.ReactElement => {
   return (
