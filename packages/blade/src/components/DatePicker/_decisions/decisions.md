@@ -6,7 +6,7 @@ The Date Picker component lets users select a date from a calendar. It is used t
 
 ## Design
 
-[Figma Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88832-1749323&m=dev) to all variants of the DatePicker component
+[Figma Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88832-1749327&m=dev) to all variants of the DatePicker component
 
 ## Anatomy
 
@@ -38,7 +38,6 @@ The Date Picker component lets users select a date from a calendar. It is used t
 type InputProps = Pick<
   BaseInputProps,
   | 'labelPosition'
-  | 'name'
   | 'validationState'
   | 'errorText'
   | 'successText'
@@ -60,7 +59,11 @@ type DatePickerProps = InputProps &
      * If labelPosition is set to "left" on range picker,
      * then we will take the `{ start }` label and render it on the left side of the input ignoring the `{ end }`
      */
-    label: string | { start: string, end?: string };
+    label?: string | { start: string, end?: string };
+    /**
+     * Sets the HTML name attribute
+     */
+    name?: string | { start: string, end: string };
     isOpen?: boolean;
     defaultIsOpen?: boolean;
     onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
@@ -143,15 +146,14 @@ type CalendarProps = {
    */
   locale?: string;
 
-  // Basic selection props
-  onNext: (date: Date) => void;
-  onNextMonth: (date: Date) => void;
-  onNextYear: (date: Date) => void;
-  onNextDecade: (date: Date) => void;
-  onPrevious: (date: Date) => void;
-  onPreviousYear: (date: Date) => void;
-  onPreviousMonth: (date: Date) => void;
-  onPreviousDecade: (date: Date) => void;
+  /**
+   * Callback which is called whenever the next button is clicked.
+   *
+   * @param date - The updated date.
+   * @param type - The level of the calendar. ("month" | "year" | "decade")
+   */
+  onNext?: ({ date, type }: { date: Date; type: Level }) => void;
+  onPrevious?: ({ date, type }: { date: Date; type: Level }) => void;
 };
 ```
 
