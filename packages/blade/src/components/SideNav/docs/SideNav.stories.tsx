@@ -47,6 +47,7 @@ import { Switch as BladeSwitch } from '~components/Switch';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Skeleton } from '~components/Skeleton';
+import styled from 'styled-components';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -80,7 +81,9 @@ export default {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Page = ({ match }: { match: any }): React.ReactElement => (
   <Box padding={{ base: 'spacing.2', m: 'spacing.6' }}>
-    <Heading>ID: {JSON.stringify(match)}</Heading>
+    <pre>
+      <code>{JSON.stringify(match, null, 4)}</code>
+    </pre>
   </Box>
 );
 
@@ -259,21 +262,52 @@ const navItemsJSON: NavItemsJSONType[] = [
   },
 ];
 
-const getAllChildHrefs = (l1ItemChildren?: (ItemsType & { items?: ItemsType[] })[]): string[] => {
-  const hrefs: string[] = [];
-  l1ItemChildren?.forEach((l2Item) => {
-    if (l2Item.href) {
-      hrefs.push(l2Item.href);
-    }
+// const getAllChildHrefs = (l1ItemChildren?: (ItemsType & { items?: ItemsType[] })[]): string[] => {
+//   const hrefs: string[] = [];
+//   l1ItemChildren?.forEach((l2Item) => {
+//     if (l2Item.href) {
+//       hrefs.push(l2Item.href);
+//     }
 
-    l2Item.items?.forEach((l3Item) => {
-      if (l3Item.href) {
-        hrefs.push(l3Item.href);
-      }
-    });
+//     l2Item.items?.forEach((l3Item) => {
+//       if (l3Item.href) {
+//         hrefs.push(l3Item.href);
+//       }
+//     });
+//   });
+
+//   return hrefs;
+// };
+
+const getAllChildHrefs = (items: (ItemsType & { items?: ItemsType[] })[] | undefined): string[] => {
+  const hrefs: string[] = [];
+
+  if (!items) {
+    return [];
+  }
+
+  items.forEach((item) => {
+    if (item.href) {
+      hrefs.push(item.href);
+    }
+    if (item.items) {
+      hrefs.push(...getAllChildHrefs(item.items));
+    }
   });
 
   return hrefs;
+};
+
+const getAllHrefs = (): string[] => {
+  let allHrefs: string[] = [];
+
+  navItemsJSON.forEach((section) => {
+    if (section.items) {
+      allHrefs = allHrefs.concat(getAllChildHrefs(section.items));
+    }
+  });
+
+  return allHrefs;
 };
 
 const isItemActive = (
@@ -421,15 +455,9 @@ const SideNavExample: StoryFn<typeof SideNav> = ({ ...args }) => {
           Open Mobile Drawer
         </Button>
         <Switch>
-          <Route path="/app/dashboard" component={Page} />
-          <Route path="/app/payouts" component={Page} />
-          <Route path="/app/reports" component={Page} />
-          <Route path="/nice" component={Page} />
-          <Route path="/settings" exact component={Page} />
-          <Route path="/settings/user" exact component={Page} />
-          <Route path="/settings/user/home" exact component={Page} />
-          <Route path="/settings/user/account" exact component={Page} />
-          <Route path="/settings/subscriptions" exact component={Page} />
+          {[...getAllHrefs(), '/settings/user', '/settings/account'].map((route) => (
+            <Route key={route} path={route} component={Page} />
+          ))}
         </Switch>
       </Box>
     </Box>
