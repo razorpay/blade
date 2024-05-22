@@ -57,6 +57,14 @@ export const bladeThemeData = {
     Divider: {
       key: '3942574367676524ab7ea045ece704f751984dae',
     },
+
+    Drawer: {
+      key: '0ac0ef71c3ea1e80df41865c3bedad8de2021c99',
+    },
+    'Drawer/Header': {
+      key: '8e525221266c2d002c28e0bc08310eaefa9fd706',
+    },
+
     'Dropdown Menu': {
       key: '301e099f941f2b4a4c1475779e72659d7caabd4d',
     },
@@ -268,7 +276,7 @@ export const bladeThemeData = {
       key: '938574fa23373c6a9a9a75eb19c2224ad40ff238',
     },
     Browsers: {
-      key: '89affaa18c972d661e866cb1f5c3882424d539f6',
+      key: 'd7daeb3a3138f7534ba377781a966715083a26e1',
     },
     'Wordmarks-Logos': {
       key: 'e792328de5953d34fcbb749c3569fb46061dad6a',
@@ -1092,6 +1100,75 @@ export const bladeThemeData = {
     invoices: {
       key: 'fd4d573099d6f1d691cb3ed6c43124722326659a',
     },
+    building: {
+      key: '6f4cc17cae44cb4604a3bd34081608ce2f5f1f35',
+    },
+    barcode: {
+      key: '2a8a84d04a9f7cda5897c3f4b9421f5e25d7fa2f',
+    },
+    storefront: {
+      key: 'cbb9aa0e14f97ddc33150d0ac792119253cd0662',
+    },
+    'shopping-bag': {
+      key: '5d25c8c58553c6d2319cb1a95870aa1566ae1b99',
+    },
+    'close-captioning': {
+      key: '8970845d4ca8ce7439edf09a5a69d54f7482af15',
+    },
+    trademark: {
+      key: '79ae7b7693516a37756b702214a50e5088739d06',
+    },
+    'trademark-registered': {
+      key: 'f479d042a60fa2d78fa9fe93d2e18ab991e68d56',
+    },
+    cookie: {
+      key: '1972c4ecccb330738f3fa4db5a18d332ae349cd2',
+    },
+    copyright: {
+      key: 'c9c86ec08b44c83bcb1d6334de6ae2cbe42d657f',
+    },
+    headset: {
+      key: '8b8e941cefb51120afc0082e9aa93a358e5263b0',
+    },
+    confetti: {
+      key: '69a819588520bc5a64bd09513b627cd59f5b6737',
+    },
+    test: {
+      key: '69a819588520bc5a64bd09513b627cd59f5b6737',
+    },
+    cash: {
+      key: '9731c5262649247aa2134d4d2e940fb7368453f3',
+    },
+    'picture-in-picture': {
+      key: '9731c5262649247aa2134d4d2e940fb7368453f3',
+    },
+    pin: {
+      key: '0d7b404dcb9f64c9e644037c3876606e0566a33b',
+    },
+    headphone: {
+      key: '8745ed5fefef70653d51f6fcb98c82f58a88995a',
+    },
+    coin: {
+      key: 'b1e4a7049b1fbbd229fdf3a4830f8fed671d1a16',
+    },
+    'address-book': {
+      key: 'e6dd6db9e7cec9765265c98177188261b2be7e2e',
+    },
+    'code-snippet': {
+      key: 'f3d59f7e70115f5130a061f9ec9e13f29d5551e3',
+    },
+    figma: {
+      key: '20d283599ff62d8be8a34b6b8d03f1eaee929364',
+    },
+    sparkles: {
+      key: '54ab15b26b0ec4a78ba2081b0b2df05f444cf3da',
+    },
+    announcment: {
+      key: 'cf85f3f35ae0d8624a75e888d000205af191ccb9',
+    },
+    'check-circle-2': {
+      key: '097b141914a95a9df34a3eb5f7e7bac30c3b962a',
+    },
   },
   colorStyles: {
     'elevation/highRaised': 'VariableID:240c65132f30cd5f0356eb6e268df75765739a9b',
@@ -1511,6 +1588,7 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components['Spotlight Popover'],
   bladeThemeData.components.Collapsible,
   bladeThemeData.components.Table,
+  bladeThemeData.components.Drawer,
 ]
   .map((component) => component.key)
   .flat();
