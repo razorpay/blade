@@ -62,6 +62,43 @@ DatePickerDisabled.play = async () => {
   await expect(onOpenChange).not.toBeCalled();
 };
 
+export const DatePickerMinMaxDate: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
+  onOpenChange = jest.fn();
+  return (
+    <BasicDatePicker
+      minDate={dayjs().subtract(5, 'day').toDate()}
+      maxDate={dayjs().toDate()}
+      accessibilityLabel="Select Date"
+      onOpenChange={onOpenChange}
+    />
+  );
+};
+
+DatePickerMinMaxDate.play = async () => {
+  const { getByRole } = within(document.body);
+  const input = getByRole('combobox', { name: /Select Date/i });
+  // open
+  await userEvent.click(input);
+  await sleep(400);
+  // expect date to be disabled
+  const disabledDate = getByRole('button', {
+    name: dayjs().subtract(6, 'day').format('DD MMMM YYYY'),
+  });
+  await expect(disabledDate).toBeDisabled();
+  // expect month to be disabled
+  const month = getByRole('button', { name: /Change month/i });
+  await userEvent.click(month);
+  const disabledMonth = getByRole('button', {
+    name: dayjs().subtract(1, 'month').format('MMM'),
+  });
+  await expect(disabledMonth).toBeDisabled();
+  // expect year to be disabled
+  const year = getByRole('button', { name: /Change decade/i });
+  await userEvent.click(year);
+  const disabledYear = getByRole('button', { name: dayjs().subtract(1, 'year').format('YYYY') });
+  await expect(disabledYear).toBeDisabled();
+};
+
 export const DatePickerSingleSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
@@ -328,6 +365,78 @@ DatePickerRangeSelectControlled.play = async () => {
   // assert inputs value
   await expect(startInput).toHaveValue(startDateToSelect.format('DD/MM/YYYY'));
   await expect(endInput).toHaveValue(endDateToSelect.format('DD/MM/YYYY'));
+};
+
+export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
+  onOpenChange = jest.fn();
+  return (
+    <BasicDatePicker
+      selectionType="range"
+      label={{ start: 'Start Date', end: 'End Date' }}
+      presets={[
+        {
+          label: 'Past 3 days',
+          value: (date) => [dayjs(date).subtract(3, 'day').toDate(), date],
+        },
+        {
+          label: 'Past 7 days',
+          value: (date) => [dayjs(date).subtract(7, 'day').toDate(), date],
+        },
+      ]}
+      onOpenChange={onOpenChange}
+    />
+  );
+};
+
+DatePickerPresets.play = async () => {
+  const { getByRole, queryByText } = within(document.body);
+  const startInput = getByRole('combobox', { name: /Start Date/i });
+  const endInput = getByRole('combobox', { name: /End Date/i });
+  // open
+  await userEvent.click(startInput);
+  await sleep(400);
+  await expect(onOpenChange).toBeCalledWith({ isOpen: true });
+  await expect(queryByText('Apply')).toBeVisible();
+  // select a preset
+  await userEvent.click(getByRole('option', { name: /Past 3 days/i }));
+  // assert inputs value
+  await expect(startInput).toHaveValue(dayjs().subtract(3, 'day').format('DD/MM/YYYY'));
+  await expect(endInput).toHaveValue(dayjs().format('DD/MM/YYYY'));
+  // press apply button
+  const applyButton = getByRole('button', { name: /Apply/i });
+  await userEvent.click(applyButton);
+
+  // open again
+  await userEvent.click(startInput);
+  await sleep(400);
+  // assert past 3 days to be selected
+  await expect(getByRole('option', { name: /Past 3 days/i })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+
+  // change date to past 7 days manually
+  await userEvent.click(
+    getByRole('button', { name: dayjs().subtract(7, 'day').format('DD MMMM YYYY') }),
+  );
+  await userEvent.click(getByRole('button', { name: dayjs().format('DD MMMM YYYY') }));
+  await sleep(400);
+  // assert past 3 days to be not selected anymore
+  await expect(getByRole('option', { name: /Past 3 days/i })).toHaveAttribute(
+    'aria-selected',
+    'false',
+  );
+  // assert past 7 days to be selected
+  await expect(getByRole('option', { name: /Past 7 days/i })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  // press apply button
+  await userEvent.click(applyButton);
+  await sleep(400);
+  // assert inputs value
+  await expect(startInput).toHaveValue(dayjs().subtract(7, 'day').format('DD/MM/YYYY'));
+  await expect(endInput).toHaveValue(dayjs().format('DD/MM/YYYY'));
 };
 
 export default {
