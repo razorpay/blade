@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   DayOfWeek,
   DateValue,
   DatePickerProps as MantineDatePickerProps,
   DatesRangeValue,
 } from '@mantine/dates';
-import type { DatePickerCommonInputProps } from './DateInput';
 import type { BaseInputProps } from '~components/Input/BaseInput';
+import type { TextInputProps } from '~components/Input/TextInput';
+import type { FormInputValidationProps } from '~components/Form';
 
 type PickerType = 'day' | 'month' | 'year';
 type Preset = {
@@ -129,6 +131,33 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     labelPosition?: BaseInputProps['labelPosition'];
   };
 
+type DatePickerRangeInputProps = {
+  selectionType: 'range';
+  label?: { start: string; end?: string };
+  name?: { start: string; end: string };
+  date: [Date, Date];
+};
+
+type DatePickerSingleInputProps = {
+  selectionType: 'single';
+  label?: string;
+  name?: string;
+  date: Date;
+};
+
+type DatePickerCommonInputProps = {
+  labelPosition?: BaseInputProps['labelPosition'];
+  inputRef: React.Ref<any>;
+  referenceProps: any;
+} & Pick<
+  TextInputProps,
+  'size' | 'isRequired' | 'necessityIndicator' | 'autoFocus' | 'isDisabled' | 'accessibilityLabel'
+> &
+  FormInputValidationProps;
+
+type DatePickerInputProps = DatePickerCommonInputProps &
+  (DatePickerRangeInputProps | DatePickerSingleInputProps);
+
 export type {
   CalendarProps,
   DatePickerProps,
@@ -136,4 +165,5 @@ export type {
   DatesRangeValue,
   DateValue,
   DateSelectionType,
+  DatePickerInputProps,
 };

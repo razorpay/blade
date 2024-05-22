@@ -163,7 +163,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
         display="flex"
         flexDirection="column"
         gap="spacing.5"
-        data-nice
         padding={{ m: 'spacing.6', s: 'spacing.0' }}
         backgroundColor="surface.background.gray.intense"
       >

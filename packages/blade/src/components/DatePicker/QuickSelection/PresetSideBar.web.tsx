@@ -1,5 +1,5 @@
 import type { CalendarProps, DatesRangeValue } from '../types';
-import { QuickSelectionItem } from './QuickSelectionItem';
+import { QuickSelectionItem } from './QuickSelectionItem.web';
 import { Box } from '~components/Box';
 import { makeSpace } from '~utils';
 import { Chip, ChipGroup } from '~components/Chip';

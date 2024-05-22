@@ -3,12 +3,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useDatesContext, getFormattedDate } from '@mantine/dates';
+import type { DatePickerInputProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import type { FormInputValidationProps } from '~components/Form';
 import { ArrowRightIcon, CalendarIcon } from '~components/Icons';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { BaseInput } from '~components/Input/BaseInput';
-import type { TextInputProps } from '~components/Input/TextInput';
 import { size as sizeTokens } from '~tokens/global';
 import { isReactNative, makeSize } from '~utils';
 import type { BladeElementRef } from '~utils/types';
@@ -47,32 +46,6 @@ const HiddenInput = ({ value, name }: { value: string; name?: string }): React.R
 
   return <input hidden={true} name={name} value={value} readOnly />;
 };
-
-type DatePickerRangeInputProps = {
-  selectionType: 'range';
-  label?: { start: string; end?: string };
-  name?: { start: string; end: string };
-  date: [Date, Date];
-};
-type DatePickerSingleInputProps = {
-  selectionType: 'single';
-  label?: string;
-  name?: string;
-  date: Date;
-};
-
-type DatePickerCommonInputProps = {
-  labelPosition?: BaseInputProps['labelPosition'];
-  inputRef: React.Ref<any>;
-  referenceProps: any;
-} & Pick<
-  TextInputProps,
-  'size' | 'isRequired' | 'necessityIndicator' | 'autoFocus' | 'isDisabled' | 'accessibilityLabel'
-> &
-  FormInputValidationProps;
-
-type DatePickerInputProps = DatePickerCommonInputProps &
-  (DatePickerRangeInputProps | DatePickerSingleInputProps);
 
 const iconVerticalMargin = {
   medium: sizeTokens[16],
@@ -211,5 +184,4 @@ const _DatePickerInput = (
 };
 
 const DatePickerInput = React.forwardRef(_DatePickerInput);
-export type { DatePickerCommonInputProps };
 export { DatePickerInput };
