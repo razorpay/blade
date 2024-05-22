@@ -211,6 +211,12 @@ type SideNavItemProps = {
   tooltip?: SideNavLinkProps['tooltip'];
 };
 
+type SideNavBodyProps = {
+  children: React.ReactElement | React.ReactElement[];
+};
+
+type SideNavLevelProps = { children: React.ReactElement | React.ReactElement[] };
+
 export type {
   SideNavProps,
   SideNavContextType,
@@ -219,4 +225,6 @@ export type {
   SideNavSectionProps,
   SideNavFooterProps,
   SideNavItemProps,
+  SideNavBodyProps,
+  SideNavLevelProps,
 };

@@ -1,7 +1,8 @@
+import type { SideNavSectionProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
 
-const SideNavSection = (): React.ReactElement => {
+const SideNavSection = (_props: SideNavSectionProps): React.ReactElement => {
   throwBladeError({
     message: 'SideNavSection is not yet implemented for native',
     moduleName: 'SideNavSection',

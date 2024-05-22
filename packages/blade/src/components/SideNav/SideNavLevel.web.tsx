@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavLink } from './SideNavContext';
 import { COLLAPSED_L1_WIDTH } from './tokens';
+import type { SideNavLevelProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
 
-const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const SideNavLevel = ({ children }: SideNavLevelProps): React.ReactElement => {
   const { level: _prevLevel, title: headingTitle } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
