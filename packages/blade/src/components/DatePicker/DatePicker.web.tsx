@@ -194,12 +194,12 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             props?.onYearSelect?.(date);
             onDateChange(date);
           }}
-          onNext={(date) => {
-            props?.onNext?.(date);
+          onNext={(data) => {
+            props?.onNext?.(data);
             forceRerenderBottomSheet();
           }}
-          onPrevious={(date) => {
-            props?.onPrevious?.(date);
+          onPrevious={(data) => {
+            props?.onPrevious?.(data);
             forceRerenderBottomSheet();
           }}
           picker={_picker}
