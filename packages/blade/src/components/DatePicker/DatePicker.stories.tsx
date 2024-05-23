@@ -68,6 +68,9 @@ export default {
     size: inputProp,
     successText: inputProp,
     validationState: inputProp,
+    name: inputProp,
+    autoFocus: inputProp,
+    necessityIndicator: inputProp,
   },
   parameters: {
     docs: {
@@ -102,6 +105,17 @@ export default {
 } as Meta<DatePickerProps<'single' | 'range'>>;
 
 const DatePickerTemplate: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
+  if (args.selectionType === 'range' && typeof args.label === 'string') {
+    throw new Error(
+      '[Storybook Controls]: Cannot use string label for range selection, please switch to the RangeDatePicker story',
+    );
+  }
+  if (args.selectionType === 'single' && typeof args.label === 'object') {
+    throw new Error(
+      '[Storybook Controls]: Cannot use {start,end} label for single selection, please switch to the SingleDatePicker story',
+    );
+  }
+
   return (
     <DatePickerComponent
       onChange={(date) => {
