@@ -23,7 +23,6 @@ export const sideNavWithReactRouter = {
     Routes,
     Route,
   } from 'react-router-dom';
-
   import {
     SideNavBody,
     SideNav,
@@ -40,7 +39,6 @@ export const sideNavWithReactRouter = {
     SettingsIcon,
     UserIcon,
   } from '@razorpay/blade/components';
-
   import { navItemsJSON } from './navItemsJSON';
   import type {  NavItemsJSONType, ItemsType } from './navItemsJSON';
 
@@ -52,6 +50,9 @@ export const sideNavWithReactRouter = {
     </Box>
   );
   
+  /**
+   * Returns all hrefs in child tree for given item
+   */ 
   const getAllChildHrefs = (
     items: (ItemsType & { items?: ItemsType[] })[] | undefined
   ): string[] => {
@@ -73,7 +74,10 @@ export const sideNavWithReactRouter = {
     return hrefs;
   };
 
-  const getAllHrefs = (): string[] => {
+  /**
+   * Loops over JSON to return all routes including child routes 
+   */ 
+  const getAllRoutesFromJSON = (): string[] => {
     let allHrefs: string[] = [];
 
     navItemsJSON.forEach((section) => {
@@ -85,6 +89,9 @@ export const sideNavWithReactRouter = {
     return allHrefs;
   };
 
+  /**
+   * Returns if the given href or one of the items from activeOnLinks are active
+   */ 
   const isItemActive = (
     location: { pathname: string },
     { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] }
@@ -98,7 +105,10 @@ export const sideNavWithReactRouter = {
     return isCurrentPathActive || isSubItemActive;
   };
 
-  const NavItem = (
+  /**
+   * React Router v6 Wrapper around Blade's SideNavLink that passes active state of item based on react router state
+   */ 
+  const NavLink = (
     props: Omit<SideNavLinkProps, 'as'> & {
       activeOnLinks?: string[];
     }
@@ -122,7 +132,10 @@ export const sideNavWithReactRouter = {
     const [isTestModeActive, setIsTestModeActive] = React.useState(false);
     const location = useLocation();
 
-    const getSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
+    /**
+     * Keeps the section expanded on load if one if the items are active
+     */ 
+    const getDefaultSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
       const activeItem = items.find((l1Item) =>
         isItemActive(location, {
           href: l1Item.href,
@@ -143,15 +156,17 @@ export const sideNavWithReactRouter = {
                   key={l1Sections.title}
                   title={l1Sections.title}
                   maxVisibleItems={l1Sections.maxItemsVisible}
-                  defaultIsExpanded={getSectionExpanded(l1Sections.items)}
+                  defaultIsExpanded={getDefaultSectionExpanded(
+                    l1Sections.items.slice(l1Sections.maxItemsVisible)
+                  )}
                 >
                   {l1Sections.items.map((l1Item) => {
                     if (!l1Item.items) {
-                      return <NavItem key={l1Item.title} {...l1Item} />;
+                      return <NavLink key={l1Item.title} {...l1Item} />;
                     }
 
                     return (
-                      <NavItem
+                      <NavLink
                         key={l1Item.title}
                         {...l1Item}
                         activeOnLinks={getAllChildHrefs(l1Item.items)}
@@ -160,11 +175,11 @@ export const sideNavWithReactRouter = {
                         <SideNavLevel key={l1Item.title}>
                           {l1Item.items?.map((l2Item) => {
                             if (!l2Item.items) {
-                              return <NavItem key={l2Item.title} {...l2Item} />;
+                              return <NavLink key={l2Item.title} {...l2Item} />;
                             }
 
                             return (
-                              <NavItem
+                              <NavLink
                                 key={l2Item.title}
                                 {...l2Item}
                                 activeOnLinks={getAllChildHrefs(l2Item.items)}
@@ -173,15 +188,15 @@ export const sideNavWithReactRouter = {
                                 <SideNavLevel key={l2Item.title}>
                                   {l2Item.items?.map((l3Item) => {
                                     return (
-                                      <NavItem key={l3Item.title} {...l3Item} />
+                                      <NavLink key={l3Item.title} {...l3Item} />
                                     );
                                   })}
                                 </SideNavLevel>
-                              </NavItem>
+                              </NavLink>
                             );
                           })}
                         </SideNavLevel>
-                      </NavItem>
+                      </NavLink>
                     );
                   })}
                 </SideNavSection>
@@ -213,25 +228,25 @@ export const sideNavWithReactRouter = {
                 />
               }
             />
-            <NavItem
+            <NavLink
               title="Settings"
               icon={SettingsIcon}
               href="/settings/user"
               activeOnLinks={['/settings/user', '/settings/account']}
             >
               <SideNavLevel>
-                <NavItem
+                <NavLink
                   icon={UserIcon}
                   title="User Settings"
                   href="/settings/user"
                 />
-                <NavItem
+                <NavLink
                   icon={BoxIcon}
                   title="Account Settings"
                   href="/settings/account"
                 />
               </SideNavLevel>
-            </NavItem>
+            </NavLink>
           </SideNavFooter>
         </SideNav>
 
@@ -243,7 +258,7 @@ export const sideNavWithReactRouter = {
             Open Mobile Drawer
           </Button>
           <Routes>
-            {[...getAllHrefs(), '/settings/user', '/settings/account'].map(
+            {[...getAllRoutesFromJSON(), '/settings/user', '/settings/account'].map(
               (route) => (
                 <Route
                   key={route}
