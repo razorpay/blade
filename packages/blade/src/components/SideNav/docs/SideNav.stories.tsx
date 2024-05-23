@@ -98,7 +98,7 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
         <Box position="absolute" bottom="-10px" left="0px">
           <RazorpayLinesSvg />
         </Box>
-        <Box width="256px" textAlign="center">
+        <Box width="264px" textAlign="center">
           <RazorpayLogo />
         </Box>
         <Box flex="1">

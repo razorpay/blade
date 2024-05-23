@@ -5,7 +5,7 @@ exports[`SideNav should render 1`] = `
   display: none;
   position: fixed;
   height: 100%;
-  width: 256px;
+  width: 264px;
   top: 0px;
   left: 0px;
   background-color: hsla(210,40%,98%,1);
@@ -16,6 +16,9 @@ exports[`SideNav should render 1`] = `
   height: 100%;
   width: 100%;
   background-color: hsla(210,40%,98%,1);
+  border-right-width: 1px;
+  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-style: solid;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -146,6 +149,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c23.c23.c23.c23.c23 {
+  text-align: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -153,7 +157,7 @@ exports[`SideNav should render 1`] = `
   width: 100%;
 }
 
-.c27.c27.c27.c27.c27 {
+.c26.c26.c26.c26.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -165,11 +169,11 @@ exports[`SideNav should render 1`] = `
   padding-left: 4px;
 }
 
-.c28.c28.c28.c28.c28 {
+.c27.c27.c27.c27.c27 {
   width: 100%;
 }
 
-.c30.c30.c30.c30.c30 {
+.c29.c29.c29.c29.c29 {
   position: relative;
   padding: 12px;
   width: calc(100% + 20px + 20px);
@@ -183,7 +187,7 @@ exports[`SideNav should render 1`] = `
   box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
 }
 
-.c31.c31.c31.c31.c31 {
+.c30.c30.c30.c30.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -199,13 +203,13 @@ exports[`SideNav should render 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding-right: 12px;
-  padding-left: 12px;
-  height: 36px;
+  padding-right: 8px;
+  padding-left: 8px;
+  height: 40px;
   border-radius: 4px;
 }
 
-.c33.c33.c33.c33.c33 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -217,18 +221,18 @@ exports[`SideNav should render 1`] = `
   gap: 8px;
 }
 
-.c34.c34.c34.c34.c34 {
+.c32.c32.c32.c32.c32 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c35.c35.c35.c35.c35 {
+.c33.c33.c33.c33.c33 {
   margin-left: 4px;
 }
 
-.c38.c38.c38.c38.c38 {
+.c36.c36.c36.c36.c36 {
   display: inline-block;
 }
 
@@ -324,7 +328,7 @@ exports[`SideNav should render 1`] = `
   padding: 0;
 }
 
-.c36.c36.c36.c36.c36 {
+.c34.c34.c34.c34.c34 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -342,7 +346,7 @@ exports[`SideNav should render 1`] = `
   padding: 0;
 }
 
-.c37.c37.c37.c37.c37 {
+.c35.c35.c35.c35.c35 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -421,8 +425,8 @@ exports[`SideNav should render 1`] = `
   transition-duration: 70ms;
   margin-bottom: 4px;
   margin-top: 4px;
-  margin-right: 8px;
-  margin-left: 8px;
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .c24.c24.c24.c24.c24 .content-container {
@@ -437,48 +441,6 @@ exports[`SideNav should render 1`] = `
 }
 
 .c24.c24.c24.c24.c24 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c26.c26.c26.c26.c26 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  margin-bottom: 4px;
-  margin-top: 4px;
-  margin-right: 12px;
-  margin-left: 12px;
-}
-
-.c26.c26.c26.c26.c26 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c26.c26.c26.c26.c26:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
-}
-
-.c26.c26.c26.c26.c26 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -519,8 +481,8 @@ exports[`SideNav should render 1`] = `
 
 .c3.c3.c3.c3.c3 {
   width: 100%;
-  -webkit-transition: width 300ms cubic-bezier(0,0,0,1);
-  transition: width 300ms cubic-bezier(0,0,0,1);
+  -webkit-transition: width 400ms cubic-bezier(0,0,0,1);
+  transition: width 400ms cubic-bezier(0,0,0,1);
 }
 
 .c3.c3.c3.c3.c3 > .l1-item-wrapper {
@@ -532,9 +494,9 @@ exports[`SideNav should render 1`] = `
 }
 
 .c3.c3.c3.c3.c3.collapsed {
-  width: 52px;
-  -webkit-transition: width 300ms cubic-bezier(0.5,0,1,1);
-  transition: width 300ms cubic-bezier(0.5,0,1,1);
+  width: 56px;
+  -webkit-transition: width 250ms cubic-bezier(0.5,0,1,1);
+  transition: width 250ms cubic-bezier(0.5,0,1,1);
 }
 
 .c3.c3.c3.c3.c3.collapsed > .l1-item-wrapper {
@@ -549,7 +511,7 @@ exports[`SideNav should render 1`] = `
   display: initial;
 }
 
-.c29.c29.c29.c29.c29 {
+.c28.c28.c28.c28.c28 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -601,7 +563,7 @@ exports[`SideNav should render 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 36px;
+  height: 40px;
   width: 100%;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -614,16 +576,13 @@ exports[`SideNav should render 1`] = `
   margin: 2px 0px;
   color: hsla(211,26%,34%,1);
   border-radius: 4px;
-  border: 0.5px solid hsla(0,0%,100%,0);
+  border-width: 0px;
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: padding 200ms cubic-bezier(0.5,0,0,1);
-  transition: padding 200ms cubic-bezier(0.5,0,0,1);
 }
 
 .c10.c10.c10.c10.c10 .styled-nav-link[aria-current] {
   color: hsla(227,100%,59%,1);
   background-color: hsla(227,100%,59%,0.09);
-  border: 0.5px solid hsla(227,100%,59%,0.18);
 }
 
 .c10.c10.c10.c10.c10 .styled-nav-link[aria-current]:hover {
@@ -642,28 +601,11 @@ exports[`SideNav should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.collapsed .c10.c10.c10.c10.c10 .styled-nav-link {
-  padding: 0px 10px;
-  -webkit-transition: padding 200ms cubic-bezier(0.5,0,0,1);
-  transition: padding 200ms cubic-bezier(0.5,0,0,1);
-}
-
 .collapsed:not(.transitioning) .c17.c17.c17.c17.c17 p {
   opacity: 0;
 }
 
-.c32.c32.c32.c32.c32 {
-  -webkit-transition: padding 200ms cubic-bezier(0.5,0,0,1);
-  transition: padding 200ms cubic-bezier(0.5,0,0,1);
-}
-
-.collapsed .c32.c32.c32.c32.c32 {
-  padding: 0px 8px;
-  -webkit-transition: padding 200ms cubic-bezier(0.5,0,0,1);
-  transition: padding 200ms cubic-bezier(0.5,0,0,1);
-}
-
-.c44.c44.c44.c44.c44 {
+.c42.c42.c42.c42.c42 {
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -673,7 +615,7 @@ exports[`SideNav should render 1`] = `
   opacity: 0;
 }
 
-.c42.c42.c42.c42.c42 {
+.c40.c40.c40.c40.c40 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -691,7 +633,7 @@ exports[`SideNav should render 1`] = `
   position: relative;
 }
 
-.c43.c43.c43.c43.c43 {
+.c41.c41.c41.c41.c41 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -723,7 +665,7 @@ exports[`SideNav should render 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c41.c41.c41.c41.c41 {
+.c39.c39.c39.c39.c39 {
   pointer-events: none;
   position: relative;
   display: -webkit-box;
@@ -746,7 +688,7 @@ exports[`SideNav should render 1`] = `
   transition-duration: 70ms;
 }
 
-.c40.c40.c40.c40.c40 {
+.c38.c38.c38.c38.c38 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -763,7 +705,7 @@ exports[`SideNav should render 1`] = `
   word-wrap: normal;
 }
 
-.c40.c40.c40.c40.c40:focus-visible + div {
+.c38.c38.c38.c38.c38:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -774,7 +716,7 @@ exports[`SideNav should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c40.c40.c40.c40.c40:hover + div {
+.c38.c38.c38.c38.c38:hover + div {
   background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -782,7 +724,7 @@ exports[`SideNav should render 1`] = `
   transition-duration: 70ms;
 }
 
-.c39.c39.c39.c39.c39 {
+.c37.c37.c37.c37.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -798,6 +740,36 @@ exports[`SideNav should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
+  .c1.c1.c1.c1.c1 {
+    border-right-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c1.c1.c1.c1.c1 {
+    border-right-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c1.c1.c1.c1.c1 {
+    border-right-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c1.c1.c1.c1.c1 {
+    border-right-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c1.c1.c1.c1.c1 {
+    border-right-style: solid;
+  }
+}
+
+@media screen and (min-width:320px) {
   .c2.c2.c2.c2.c2 {
     border-right-style: solid;
   }
@@ -858,19 +830,19 @@ exports[`SideNav should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c30.c30.c30.c30.c30 {
+  .c29.c29.c29.c29.c29 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c30.c30.c30.c30.c30 {
+  .c29.c29.c29.c29.c29 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c30.c30.c30.c30.c30 {
+  .c29.c29.c29.c29.c29 {
     width: 100%;
     right: 0px;
     bottom: 0px;
@@ -880,13 +852,13 @@ exports[`SideNav should render 1`] = `
 }
 
 @media screen and (min-width:1024px) {
-  .c30.c30.c30.c30.c30 {
+  .c29.c29.c29.c29.c29 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c30.c30.c30.c30.c30 {
+  .c29.c29.c29.c29.c29 {
     border-top-style: solid;
   }
 }
@@ -1210,7 +1182,7 @@ exports[`SideNav should render 1`] = `
               >
                 <button
                   aria-disabled="false"
-                  class="c26"
+                  class="c24"
                   data-blade-component="link"
                   role="button"
                   type="button"
@@ -1226,7 +1198,7 @@ exports[`SideNav should render 1`] = `
                       +2 More
                     </span>
                     <span
-                      class="c27"
+                      class="c26"
                       data-blade-component="base-box"
                     >
                       <svg
@@ -1252,13 +1224,13 @@ exports[`SideNav should render 1`] = `
               </div>
               <div
                 aria-hidden="true"
-                class="c28"
+                class="c27"
                 data-blade-component="collapsible-body"
                 id="collapsible-body-1"
                 role="region"
               >
                 <div
-                  class=" c29"
+                  class=" c28"
                   data-blade-component="base-box"
                 >
                   <div
@@ -1365,21 +1337,21 @@ exports[`SideNav should render 1`] = `
         </div>
       </div>
       <div
-        class="c30 l1-item-wrapper"
+        class="c29 l1-item-wrapper"
         data-blade-component="base-box"
         elevation="highRaised"
       >
         <div
-          class="c31 c32"
+          class="c30"
           data-blade-component="base-box"
         >
           <div
-            class="c33"
+            class="c31"
             data-blade-component="box"
           >
             <div
               aria-label="Positive Indicator"
-              class="c34"
+              class="c32"
               data-blade-component="indicator"
               role="status"
             >
@@ -1412,11 +1384,11 @@ exports[`SideNav should render 1`] = `
                   />
                 </svg>
                 <div
-                  class="c35"
+                  class="c33"
                   data-blade-component="base-box"
                 >
                   <p
-                    class="c36"
+                    class="c34"
                     data-blade-component="text"
                   />
                 </div>
@@ -1427,7 +1399,7 @@ exports[`SideNav should render 1`] = `
               data-blade-component="base-box"
             >
               <p
-                class="c37"
+                class="c35"
                 data-blade-component="text"
               >
                 Test Mode
@@ -1439,11 +1411,11 @@ exports[`SideNav should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c38"
+              class="c36"
               data-blade-component="switch"
             >
               <label
-                class="c39"
+                class="c37"
                 data-blade-component="switch-label"
                 style="cursor: pointer;"
               >
@@ -1453,27 +1425,27 @@ exports[`SideNav should render 1`] = `
                   aria-invalid="false"
                   aria-label="Test Mode"
                   aria-required="false"
-                  class="c40"
+                  class="c38"
                   role="switch"
                   type="checkbox"
                   value=""
                 />
                 <div
                   aria-hidden="true"
-                  class=" c41"
+                  class=" c39"
                   data-blade-component="base-box"
                 >
                   <div
-                    class=" c42"
+                    class=" c40"
                     data-blade-component="base-box"
                   >
                     <div
-                      class=" c43"
+                      class=" c41"
                       data-blade-component="base-box"
                     >
                       <svg
                         aria-hidden="true"
-                        class="Svgweb__StyledSvg-vcmjs8-0 c44"
+                        class="Svgweb__StyledSvg-vcmjs8-0 c42"
                         data-blade-component="icon"
                         fill="none"
                         height="8px"
