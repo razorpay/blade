@@ -50,12 +50,26 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * @default 'date'
    */
   picker?: PickerType;
+  /**
+   * Sets the default picker type
+   */
   defaultPicker?: PickerType;
+  /**
+   * Callback which fires when picker type changes
+   */
   onPickerChange?: (picker: PickerType) => void;
 
-  // Standard controlled/uncontrolled state props
+  /**
+   * Controlled isOpen state
+   */
   isOpen?: boolean;
+  /**
+   * Uncontrolled isOpen state
+   */
   defaultIsOpen?: boolean;
+  /**
+   * Callback which fires when isOpen state changes
+   */
   onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
 
   /**
@@ -89,6 +103,9 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * Sets the maximum date that can be selected.
    */
   maxDate?: Date;
+  /**
+   * Disables dates that do not pass the function.
+   */
   excludeDate?: (date: Date) => boolean;
   /**
    * Determines whether single date can be selected as range, applicable only when type="range"
