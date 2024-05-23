@@ -100,6 +100,7 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
         </Box>
         <Box width="264px" textAlign="center">
           <RazorpayLogo />
+          <Button>Click</Button>
         </Box>
         <Box flex="1">
           <Skeleton width="100%" height="12px" borderRadius="medium" />

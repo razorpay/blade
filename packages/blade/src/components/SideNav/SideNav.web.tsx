@@ -2,7 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { SideNavContext } from './SideNavContext';
 import type { SideNavContextType, SideNavProps } from './types';
-import { classes, COLLAPSED_L1_WIDTH, EXPANDED_L1_WIDTH, SKIP_NAV_ID } from './tokens';
+import {
+  classes,
+  COLLAPSED_L1_WIDTH,
+  EXPANDED_L1_WIDTH,
+  HOVER_AGAIN_DELAY,
+  SKIP_NAV_ID,
+  TRANSITION_CLEANUP_DELAY,
+} from './tokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
@@ -89,6 +96,7 @@ const SideNav = ({
 }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
+  const timeoutIdsRef = React.useRef<NodeJS.Timeout[]>([]);
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isMobileL2Open, setIsMobileL2Open] = React.useState(false);
   const [isL1Hovered, setIsL1Hovered] = React.useState(false);
@@ -103,6 +111,15 @@ const SideNav = ({
       setIsMobileL2Open(false);
       onDismiss?.();
     }
+  };
+
+  const cleanupTransition = (): void => {
+    const clearTransitionTimeout = setTimeout(() => {
+      if (isTransitioning) {
+        setIsTransitioning(false);
+      }
+    }, TRANSITION_CLEANUP_DELAY);
+    timeoutIdsRef.current.push(clearTransitionTimeout);
   };
 
   /**
@@ -125,12 +142,14 @@ const SideNav = ({
         // `args.isFirstRender` checks if the item that triggered this change, triggered it during first render or during subsequent change
         if (!args.isFirstRender) {
           setIsTransitioning(true);
+          cleanupTransition();
           setIsL1Hovered(false);
           setIsHoverAgainEnabled(false);
           // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
-          setTimeout(() => {
+          const hoverAgainTimeout = setTimeout(() => {
             setIsHoverAgainEnabled(true);
-          }, 500);
+          }, HOVER_AGAIN_DELAY);
+          timeoutIdsRef.current.push(hoverAgainTimeout);
         }
       } else {
         // Click on normal L1 Item
@@ -153,6 +172,15 @@ const SideNav = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [isL1Collapsed, isMobile, isMobileL2Open],
   );
+
+  React.useEffect(() => {
+    return () => {
+      for (const timeoutId of timeoutIdsRef.current) {
+        clearTimeout(timeoutId);
+      }
+      timeoutIdsRef.current = [];
+    };
+  }, []);
 
   return (
     <SideNavContext.Provider value={contextValue}>
@@ -234,6 +262,7 @@ const SideNav = ({
               if (isL1Collapsed) {
                 setIsL1Hovered(false);
                 setIsTransitioning(true);
+                cleanupTransition();
               }
             }}
           >

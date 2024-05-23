@@ -16,4 +16,17 @@ const COLLAPSED_L1_WIDTH = size['56'];
 const EXPANDED_L1_WIDTH = size['264'];
 const NAV_ITEM_HEIGHT = size['40'];
 
-export { SKIP_NAV_ID, classes, COLLAPSED_L1_WIDTH, EXPANDED_L1_WIDTH, NAV_ITEM_HEIGHT };
+// This is the delay after which transition cleanup happens for rare cases where transitionEnd is not triggered
+const TRANSITION_CLEANUP_DELAY = 300; // A little more than the duration of transition end
+
+const HOVER_AGAIN_DELAY = 500;
+
+export {
+  SKIP_NAV_ID,
+  classes,
+  COLLAPSED_L1_WIDTH,
+  EXPANDED_L1_WIDTH,
+  NAV_ITEM_HEIGHT,
+  TRANSITION_CLEANUP_DELAY,
+  HOVER_AGAIN_DELAY,
+};

@@ -21,7 +21,6 @@ const SideNavFooter = ({ children }: SideNavFooterProps): React.ReactElement => 
         base: `calc(100% + ${getDrawerPadding(theme)} + ${getDrawerPadding(theme)})`,
         m: '100%',
       }}
-      elevation="highRaised"
       borderTopWidth="thin"
       borderTopColor="surface.border.gray.muted"
       backgroundColor="surface.background.gray.moderate"

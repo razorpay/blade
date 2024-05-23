@@ -9,7 +9,15 @@ import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { Link } from '~components/Link';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
-import { Divider } from '~components/Divider';
+import { makeBorderSize } from '~utils';
+
+const SideNavTitleDivider = styled(BaseBox)(({ theme }) => {
+  return {
+    height: makeBorderSize(theme.border.width.thicker),
+    width: '100%',
+    background: `linear-gradient(90deg, ${theme.colors.transparent} 0%, ${theme.colors.surface.border.gray.muted} 50%, ${theme.colors.transparent} 100%)`,
+  };
+});
 
 const ShowMoreLink = ({
   collapsedItemsCount,
@@ -28,12 +36,7 @@ const ShowMoreLink = ({
 
   return (
     <>
-      <BaseBox
-        className={classes.SHOW_WHEN_COLLAPSED}
-        width="100%"
-        justifyContent="center"
-        textAlign="center"
-      >
+      <BaseBox className={classes.SHOW_WHEN_COLLAPSED} width="100%" justifyContent="center">
         <Link
           {...linkProps}
           marginX="spacing.4"
@@ -59,7 +62,8 @@ const ShowMoreLink = ({
 
 const StyledSectionTitleContainer = styled(BaseBox)((_props) => {
   return {
-    '.collapsed:not(.transitioning) & p': {
+    [`.${classes.COLLAPSED}:not(.${classes.TRANSITIONING}) & p`]: {
+      // We only make it opacity 0 to maintain the height of the title in collapsed state
       opacity: 0,
     },
   };
@@ -96,7 +100,7 @@ const SideNavSection = ({
             right="spacing.0"
             transform="translateY(-50%)"
           >
-            <Divider />
+            <SideNavTitleDivider />
           </BaseBox>
         </StyledSectionTitleContainer>
       ) : null}
