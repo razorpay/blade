@@ -2,12 +2,14 @@ import type { StoryFn, Meta } from '@storybook/react';
 import dayjs from 'dayjs';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
+import { I18nProvider } from '@razorpay/i18nify-react';
 import type { DatePickerProps, DatesRangeValue } from './types';
 import { DatePicker as DatePickerComponent } from './';
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Code, Text } from '~components/Typography';
+import 'dayjs/locale/fr';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
@@ -341,3 +343,32 @@ export const MonthPicker: StoryFn<typeof DatePickerComponent> = ({ ...args }) =>
 };
 
 MonthPicker.storyName = 'Month/Year Picker';
+
+export const Localization: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        The DatePicker component supports localization using the i18nify-js{' '}
+        <Code size="medium">I18nProvider</Code>. You can pass the locale as a prop to the
+        <Code size="medium">I18nProvider</Code> to change the locale of the DatePicker.
+      </Text>
+      <Box marginY="spacing.3" marginBottom="spacing.5">
+        <Text>
+          NOTE: Once you set the locale, you will also need to import the locale file from dayjs so
+          it takes effect.
+        </Text>
+        <Code marginTop="spacing.2" size="medium">
+          import "dayjs/locale/fr";
+        </Code>
+      </Box>
+      <I18nProvider initData={{ locale: 'fr' }}>
+        <DatePickerComponent
+          selectionType="range"
+          label={{ start: 'Start Date', end: 'End Date' }}
+        />
+      </I18nProvider>
+    </Box>
+  );
+};
+
+Localization.storyName = 'Localization';
