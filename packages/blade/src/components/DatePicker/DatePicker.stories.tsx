@@ -13,7 +13,7 @@ export default {
   tags: ['autodocs'],
 } as Meta<CalendarProps<'single' | 'range'>>;
 
-export const Calendar: StoryFn<typeof DatePicker> = ({ ...args }) => {
+export const Calendar: StoryFn<typeof DatePicker> = () => {
   const [isOpen, setIsOpen] = React.useState(true);
   const [date, setDate] = React.useState<DatesRangeValue>([
     new Date(),
