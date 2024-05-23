@@ -10,36 +10,6 @@ import { HomeIcon, PlusIcon } from '~components/Icons';
 import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
 
-// const stepItemColors = [
-//   'positive',
-//   'neutral',
-//   'notice',
-//   'information',
-//   'primary',
-//   'negative',
-// ] as const;
-
-// const indicatorMappings = stepItemColors.reduce<Record<string, React.ReactElement>>(
-//   (prevObj, itemColor) => {
-//     prevObj[`<SideNavLinkIndicator color="${itemColor}" />`] = <SideNavLinkIndicator color={itemColor} />;
-
-//     return prevObj;
-//   },
-//   {},
-// );
-
-// const iconMappings = stepItemColors.reduce<Record<string, React.ReactElement>>(
-//   (prevObj, itemColor) => {
-//     prevObj[`<SideNavLinkIcon color="${itemColor}" icon={CheckIcon} />`] = (
-//       <SideNavLinkIcon icon={CheckIcon} color={itemColor} />
-//     );
-//     return prevObj;
-//   },
-//   {},
-// );
-
-// const markerMapping = { ...indicatorMappings, ...iconMappings };
-
 const titleSuffixMapping = {
   '<Badge color="positive" size="small">NEW</Badge>': (
     <Badge color="positive" size="small">
