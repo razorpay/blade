@@ -16,9 +16,9 @@
   {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
-    "size": 35072,
+    "size": 35066,
     "sizeLimit": 2000000,
-    "loading": 0.685
+    "loading": 0.6848828125
   },
   {
     "name": "Alert",
@@ -100,9 +100,9 @@
   {
     "name": "Checkbox",
     "passed": true,
-    "size": 28287,
+    "size": 28280,
     "sizeLimit": 2000000,
-    "loading": 0.55248046875
+    "loading": 0.55234375
   },
   {
     "name": "Chip, ChipGroup",
@@ -135,9 +135,9 @@
   {
     "name": "Drawer, DrawerBody, DrawerHeader",
     "passed": true,
-    "size": 38456,
+    "size": 38457,
     "sizeLimit": 2000000,
-    "loading": 0.75109375
+    "loading": 0.75111328125
   },
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
@@ -191,9 +191,9 @@
   {
     "name": "Radio",
     "passed": true,
-    "size": 27085,
+    "size": 27077,
     "sizeLimit": 2000000,
-    "loading": 0.52900390625
+    "loading": 0.52884765625
   },
   {
     "name": "Skeleton",
@@ -226,9 +226,9 @@
   {
     "name": "Table, TableHeader, TableHeaderCell, TableHeaderRow, TableBody, TableCell, TableRow, TableFooter, TableFooterCell, TableFooterRow, TablePagination, TableToolbar, TableToolbarActions",
     "passed": true,
-    "size": 79646,
+    "size": 79643,
     "sizeLimit": 2000000,
-    "loading": 1.5555859375
+    "loading": 1.55552734375
   },
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
@@ -254,9 +254,9 @@
   {
     "name": "Tooltip, TooltipInteractiveWrapper",
     "passed": true,
-    "size": 37737,
+    "size": 37736,
     "sizeLimit": 2000000,
-    "loading": 0.73705078125
+    "loading": 0.73703125
   },
   {
     "name": "Button",
@@ -303,9 +303,9 @@
   {
     "name": "PhoneNumberInput",
     "passed": true,
-    "size": 76200,
+    "size": 76194,
     "sizeLimit": 2000000,
-    "loading": 1.48828125
+    "loading": 1.4881640625
   },
   {
     "name": "SearchInput",
