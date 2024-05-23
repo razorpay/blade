@@ -1,5 +1,4 @@
 import { size } from '~tokens/global';
-import { makeMotionTime, useTheme } from '~utils';
 
 const classes = {
   SHOW_WHEN_COLLAPSED: 'show-when-collapsed',
@@ -13,32 +12,8 @@ const classes = {
 
 const SKIP_NAV_ID = 'blade-side-nav-skip';
 
-const COLLAPSED_L1_WIDTH = size['52'];
-const EXPANDED_L1_WIDTH = size['256'];
-const NAV_ITEM_HEIGHT = size['36'];
+const COLLAPSED_L1_WIDTH = size['56'];
+const EXPANDED_L1_WIDTH = size['264'];
+const NAV_ITEM_HEIGHT = size['40'];
 
-const useSideNavTransition = (): {
-  l1Expand: string;
-  l1Collapse: string;
-  collapseItemPadding: string;
-} => {
-  const { theme } = useTheme();
-  const xmoderate = makeMotionTime(theme.motion.duration.xmoderate);
-  const quick = makeMotionTime(theme.motion.duration.quick);
-  const easing = theme.motion.easing;
-
-  return {
-    l1Expand: `width ${xmoderate} ${easing.entrance.revealing}`,
-    l1Collapse: `width ${xmoderate} ${easing.exit.revealing}`,
-    collapseItemPadding: `padding ${quick} ${easing.standard.revealing}`,
-  };
-};
-
-export {
-  useSideNavTransition,
-  SKIP_NAV_ID,
-  classes,
-  COLLAPSED_L1_WIDTH,
-  EXPANDED_L1_WIDTH,
-  NAV_ITEM_HEIGHT,
-};
+export { SKIP_NAV_ID, classes, COLLAPSED_L1_WIDTH, EXPANDED_L1_WIDTH, NAV_ITEM_HEIGHT };

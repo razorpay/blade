@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
 import type { SideNavLinkProps } from '../types';
-import { classes, NAV_ITEM_HEIGHT, useSideNavTransition } from '../tokens';
+import { classes, NAV_ITEM_HEIGHT } from '../tokens';
 import { TooltipifyNavItem } from './TooltipifyNavItem';
 import { Box } from '~components/Box';
-import { size } from '~tokens/global';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
@@ -18,11 +17,9 @@ import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
-const { SHOW_ON_LINK_HOVER, COLLAPSED, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
+const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
 const StyledNavLinkContainer = styled(BaseBox)((props) => {
-  const { collapseItemPadding } = useSideNavTransition();
-
   return {
     width: '100%',
     [`.${SHOW_ON_LINK_HOVER}`]: {
@@ -53,21 +50,15 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
       overflow: 'hidden',
       flexWrap: 'nowrap',
       cursor: 'pointer',
-      padding: `${makeSpace(props.theme.spacing[0])} ${makeSize(size['10'])}`,
+      padding: `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[4])}`,
       margin: `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[0])}`,
       color: props.theme.colors.interactive.text.gray.subtle,
       borderRadius: props.theme.border.radius.medium,
-      border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
-        props.theme.colors.transparent
-      }`,
+      borderWidth: makeBorderSize(props.theme.border.width.none),
       backgroundColor: props.theme.colors.transparent,
-      transition: collapseItemPadding,
       '&[aria-current]': {
         color: props.theme.colors.interactive.text.primary.subtle,
         backgroundColor: props.theme.colors.interactive.background.primary.faded,
-        border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
-          props.theme.colors.surface.border.primary.muted
-        }`,
       },
       '&[aria-current]:hover': {
         color: props.theme.colors.interactive.text.primary.normal,
@@ -75,11 +66,6 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
       },
       '&:focus-visible': {
         ...getFocusRingStyles({ theme: props.theme }),
-      },
-      [`.${COLLAPSED} &`]: {
-        // Using size tokens because the padding here has to match the overall width of 52px in collapsed state
-        padding: `${makeSize(size['0'])} ${makeSize(size['10'])}`,
-        transition: collapseItemPadding,
       },
     },
   };

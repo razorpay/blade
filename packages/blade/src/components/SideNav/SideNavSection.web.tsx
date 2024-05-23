@@ -28,9 +28,19 @@ const ShowMoreLink = ({
 
   return (
     <>
-      <BaseBox className={classes.SHOW_WHEN_COLLAPSED} width="100%" justifyContent="center">
-        <Link {...linkProps} marginX="spacing.3">
-          {isExpanded ? `-${collapsedItemsCount}` : `+${collapsedItemsCount}`}
+      <BaseBox
+        className={classes.SHOW_WHEN_COLLAPSED}
+        width="100%"
+        justifyContent="center"
+        textAlign="center"
+      >
+        <Link
+          {...linkProps}
+          marginX="spacing.4"
+          icon={isExpanded ? ChevronUpIcon : undefined}
+          iconPosition="right"
+        >
+          {isExpanded ? `` : `+${collapsedItemsCount}`}
         </Link>
       </BaseBox>
       <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>

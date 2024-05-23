@@ -2,15 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { SideNavContext } from './SideNavContext';
 import type { SideNavContextType, SideNavProps } from './types';
-import {
-  classes,
-  COLLAPSED_L1_WIDTH,
-  EXPANDED_L1_WIDTH,
-  SKIP_NAV_ID,
-  useSideNavTransition,
-} from './tokens';
+import { classes, COLLAPSED_L1_WIDTH, EXPANDED_L1_WIDTH, SKIP_NAV_ID } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { makeSize, makeSpace } from '~utils';
+import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
@@ -33,7 +27,12 @@ const MobileL1Container = styled(BaseBox)(() => {
 });
 
 const StyledL1Menu = styled(BaseBox)((props) => {
-  const { l1Collapse, l1Expand } = useSideNavTransition();
+  const moderate = makeMotionTime(props.theme.motion.duration.moderate);
+  const gentle = makeMotionTime(props.theme.motion.duration.gentle);
+  const easing = props.theme.motion.easing;
+
+  const l1Expand = `width ${gentle} ${easing.entrance.revealing}`;
+  const l1Collapse = `width ${moderate} ${easing.exit.revealing}`;
 
   return {
     width: '100%',
@@ -200,6 +199,8 @@ const SideNav = ({
             height="100%"
             width="100%"
             id="blade-sidenav-l2"
+            borderRightWidth="thin"
+            borderRightColor="surface.border.gray.muted"
             ref={l2PortalContainerRef}
           />
           <StyledL1Menu
