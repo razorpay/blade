@@ -135,9 +135,9 @@
   {
     "name": "Drawer, DrawerBody, DrawerHeader",
     "passed": true,
-    "size": 38457,
+    "size": 38456,
     "sizeLimit": 2000000,
-    "loading": 0.75111328125
+    "loading": 0.75109375
   },
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
