@@ -1,9 +1,13 @@
 export const SideNavWithReactRouterv6 = `import React from 'react';
-  import { matchPath, useLocation, Link, Routes, Route } from 'react-router-dom';
   import {
-    Collapsible,
-    CollapsibleBody,
-    CollapsibleLink,
+    matchPath,
+    useLocation,
+    Link,
+    Routes,
+    Route,
+    BrowserRouter,
+  } from 'react-router-dom';
+  import {
     SideNavBody,
     SideNav,
     SideNavLink,
@@ -12,7 +16,6 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
     SideNavFooter,
     SideNavItem,
     Box,
-    Heading,
     Button,
     Tooltip,
     Indicator,
@@ -38,8 +41,10 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
     UserIcon,
   } from '@razorpay/blade/components';
 
-  import type { SideNavLinkProps, SideNavSectionProps } from '@razorpay/blade/components';
-
+  import type {
+    SideNavLinkProps,
+    SideNavSectionProps,
+  } from '@razorpay/blade/components';
 
   type ItemsType = Pick<
     SideNavLinkProps,
@@ -177,31 +182,43 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
 
   const Page = ({ match }: { match: any }): React.ReactElement => (
     <Box padding={{ base: 'spacing.2', m: 'spacing.6' }}>
-      <Heading>ID: {JSON.stringify(match)}</Heading>
-      <Collapsible defaultIsExpanded={true}>
-        <CollapsibleLink>Hi</CollapsibleLink>
-        <CollapsibleBody>hi hi hi </CollapsibleBody>
-      </Collapsible>
+      <pre>
+        <code>{JSON.stringify(match, null, 4)}</code>
+      </pre>
     </Box>
   );
 
   const getAllChildHrefs = (
-    l1ItemChildren?: (ItemsType & { items?: ItemsType[] })[]
+    items: (ItemsType & { items?: ItemsType[] })[] | undefined
   ): string[] => {
     const hrefs: string[] = [];
-    l1ItemChildren?.forEach((l2Item) => {
-      if (l2Item.href) {
-        hrefs.push(l2Item.href);
-      }
 
-      l2Item.items?.forEach((l3Item) => {
-        if (l3Item.href) {
-          hrefs.push(l3Item.href);
-        }
-      });
+    if (!items) {
+      return [];
+    }
+
+    items.forEach((item) => {
+      if (item.href) {
+        hrefs.push(item.href);
+      }
+      if (item.items) {
+        hrefs.push(...getAllChildHrefs(item.items));
+      }
     });
 
     return hrefs;
+  };
+
+  const getAllHrefs = (): string[] => {
+    let allHrefs: string[] = [];
+
+    navItemsJSON.forEach((section) => {
+      if (section.items) {
+        allHrefs = allHrefs.concat(getAllChildHrefs(section.items));
+      }
+    });
+
+    return allHrefs;
   };
 
   const isItemActive = (
@@ -236,7 +253,7 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
     );
   };
 
-  const App = () => {
+  const SideNavExample = () => {
     const [isMobileOpen, setIsMobileOpen] = React.useState(false);
     const [isTestModeActive, setIsTestModeActive] = React.useState(false);
     const location = useLocation();
@@ -366,21 +383,28 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
             Open Mobile Drawer
           </Button>
           <Routes>
-            <Route path="/app/dashboard" element={<Page />} />
-            <Route path="/app/payouts" element={<Page />} />
-            <Route path="/app/reports" element={<Page />} />
-            <Route path="/nice" element={<Page />} />
-            <Route path="/settings" element={<Page />} />
-            <Route path="/settings/user" element={<Page />} />
-            <Route path="/settings/user/home" element={<Page />} />
-            <Route path="/settings/user/account" element={<Page />} />
-            <Route path="/settings/subscriptions" element={<Page />} />
+            {[...getAllHrefs(), '/settings/user', '/settings/account'].map(
+              (route) => (
+                <Route
+                  key={route}
+                  path={route}
+                  element={<Page match={{ route }} />}
+                />
+              )
+            )}
           </Routes>
         </Box>
       </Box>
     );
   };
 
-  export default App;
+  const App = () => {
+    return (
+      <BrowserRouter>
+        <SideNavExample />
+      </BrowserRouter>
+    );
+  };
 
+  export default App;
 `;

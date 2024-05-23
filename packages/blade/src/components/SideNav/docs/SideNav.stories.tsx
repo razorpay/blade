@@ -264,23 +264,6 @@ const navItemsJSON: NavItemsJSONType[] = [
   },
 ];
 
-// const getAllChildHrefs = (l1ItemChildren?: (ItemsType & { items?: ItemsType[] })[]): string[] => {
-//   const hrefs: string[] = [];
-//   l1ItemChildren?.forEach((l2Item) => {
-//     if (l2Item.href) {
-//       hrefs.push(l2Item.href);
-//     }
-
-//     l2Item.items?.forEach((l3Item) => {
-//       if (l3Item.href) {
-//         hrefs.push(l3Item.href);
-//       }
-//     });
-//   });
-
-//   return hrefs;
-// };
-
 const getAllChildHrefs = (items: (ItemsType & { items?: ItemsType[] })[] | undefined): string[] => {
   const hrefs: string[] = [];
 
