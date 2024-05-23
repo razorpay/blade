@@ -50,6 +50,7 @@ import { Skeleton } from '~components/Skeleton';
 import { Card, CardBody } from '~components/Card';
 import { ProgressBar } from '~components/ProgressBar';
 import { Text } from '~components/Typography';
+import { Alert } from '~components/Alert';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -59,6 +60,15 @@ const DocsPage = (): React.ReactElement => {
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=87921-138303&m=dev&scaling=min-zoom&page-id=87588%3A51157"
     >
       <Title>Usage (with React Router v6)</Title>
+      <Alert
+        color="notice"
+        title="SideNav State Management"
+        description="SideNav component requires you to handle active link and active menu item on consumer end
+        since the component is detached from React Router. The example below includes some boilerplate in handling these active states using React Router v6. Make sure to test your edge cases while implementing. Checkout API Decision of SideNav for more details."
+        isFullWidth
+        isDismissible={false}
+      />
+
       <Sandbox
         files={sideNavWithReactRouter}
         editorHeight={600}
