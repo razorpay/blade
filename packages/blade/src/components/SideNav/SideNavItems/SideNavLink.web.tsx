@@ -97,7 +97,11 @@ const NavLinkIconTitle = ({
       >
         {title}
       </BaseText>
-      {titleSuffix ? <BaseBox>{titleSuffix}</BaseBox> : null}
+      {titleSuffix ? (
+        <BaseBox display="flex" alignItems="center">
+          {titleSuffix}
+        </BaseBox>
+      ) : null}
     </Box>
   );
 };
@@ -223,8 +227,9 @@ const SideNavLink = ({
             <TooltipifyNavItem tooltip={tooltip}>
               <BaseBox
                 className={STYLED_NAV_LINK}
-                as={as}
+                as={as ?? 'a'}
                 to={href}
+                href={as ? undefined : href}
                 ref={refs.setReference}
                 onClick={() => {
                   // Close the mobile nav when item is clicked and its not trigger for next menu
@@ -272,7 +277,7 @@ const SideNavLink = ({
               <BaseBox
                 position="absolute"
                 top="spacing.0"
-                right="spacing.2"
+                right="spacing.4"
                 height="100%"
                 display="flex"
                 alignItems="center"
