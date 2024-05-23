@@ -92,6 +92,7 @@ const SideNav = ({
   children,
   isOpen,
   onDismiss,
+  banner,
   ...styledProps
 }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
@@ -157,6 +158,8 @@ const SideNav = ({
         if (isMobile) {
           setIsMobileL2Open(false);
         }
+        // Ensures that if Normal L1 item is clicked, the L1 stays expanded
+        setIsL1Collapsed(false);
       }
     }
   };
@@ -216,60 +219,78 @@ const SideNav = ({
           height="100%"
           top="spacing.0"
           left="spacing.0"
-          display={{ base: 'none', m: 'block' }}
+          display={{ base: 'none', m: 'flex' }}
+          flexDirection="column"
           width={makeSize(EXPANDED_L1_WIDTH)}
           as="nav"
           {...getStyledProps(styledProps)}
         >
-          <BaseBox
-            position="absolute"
-            backgroundColor="surface.background.gray.moderate"
-            height="100%"
-            width="100%"
-            id="blade-sidenav-l2"
-            borderRightWidth="thin"
-            borderRightColor="surface.border.gray.muted"
-            ref={l2PortalContainerRef}
-          />
-          <StyledL1Menu
-            ref={l1ContainerRef}
-            id="blade-sidenav-l1"
-            className={getL1MenuClassName({ isL1Collapsed, isL1Hovered, isTransitioning })}
-            position="absolute"
-            display="flex"
-            flexDirection="column"
-            justifyContent="space-between"
-            backgroundColor="surface.background.gray.moderate"
-            height="100%"
-            overflow="hidden"
-            top="spacing.0"
-            left="spacing.0"
-            borderRightWidth="thin"
-            borderRightColor="surface.border.gray.muted"
-            onTransitionEnd={(e) => {
-              // This check ensures transitioning is set to false only when its true
-              // And only the l1Container element's transitions are considered and other transitions of l1 expand or child elements are ignored
-              if (isTransitioning && l1ContainerRef.current === e.target) {
-                setIsTransitioning(false);
-              }
-            }}
-            onMouseOver={() => {
-              if (isL1Collapsed && isHoverAgainEnabled) {
-                setIsL1Hovered(true);
-              }
-            }}
-            onMouseOut={() => {
-              if (isL1Collapsed) {
-                setIsL1Hovered(false);
-                setIsTransitioning(true);
-                cleanupTransition();
-              }
-            }}
-          >
-            <SkipNavLink id={SKIP_NAV_ID} _hasBackground={true} />
-            {children}
-          </StyledL1Menu>
-          <SkipNavContent id={SKIP_NAV_ID} />
+          {banner ? (
+            <BaseBox
+              borderBottom="thin"
+              borderBottomColor="surface.border.gray.muted"
+              borderRight="thin"
+              borderRightColor="surface.border.gray.muted"
+              padding="spacing.3"
+              maxHeight="100px"
+              width="100%"
+            >
+              {banner}
+            </BaseBox>
+          ) : null}
+          <BaseBox position="relative" display="block" flex="1" width="100%">
+            <BaseBox
+              position="absolute"
+              backgroundColor="surface.background.gray.moderate"
+              height="100%"
+              width="100%"
+              top="spacing.0"
+              left="spacing.0"
+              id="blade-sidenav-l2"
+              borderRightWidth="thin"
+              borderRightColor="surface.border.gray.muted"
+              ref={l2PortalContainerRef}
+            />
+            <StyledL1Menu
+              ref={l1ContainerRef}
+              id="blade-sidenav-l1"
+              className={getL1MenuClassName({ isL1Collapsed, isL1Hovered, isTransitioning })}
+              position="absolute"
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-between"
+              backgroundColor="surface.background.gray.moderate"
+              height="100%"
+              overflow="hidden"
+              top="spacing.0"
+              left="spacing.0"
+              borderRightWidth="thin"
+              borderRightColor="surface.border.gray.muted"
+              onTransitionEnd={(e) => {
+                // This check ensures transitioning is set to false only when its true
+                // And only the l1Container element's transitions are considered and other transitions of l1 expand or child elements are ignored
+                if (isTransitioning && l1ContainerRef.current === e.target) {
+                  setIsTransitioning(false);
+                }
+              }}
+              onMouseOver={() => {
+                if (isL1Collapsed && isHoverAgainEnabled) {
+                  setIsL1Hovered(true);
+                }
+              }}
+              onMouseOut={() => {
+                if (isL1Collapsed) {
+                  setIsL1Hovered(false);
+                  setIsTransitioning(true);
+                  cleanupTransition();
+                }
+              }}
+            >
+              <SkipNavLink id={SKIP_NAV_ID} _hasBackground={true} />
+              {children}
+            </StyledL1Menu>
+            <SkipNavContent id={SKIP_NAV_ID} />
+          </BaseBox>
         </BaseBox>
       )}
     </SideNavContext.Provider>

@@ -26,6 +26,13 @@ type SideNavProps = {
    * Callback when SideNav is closed
    */
   onDismiss?: DrawerProps['onDismiss'];
+
+  /**
+   * Banner slot for usecases like adding Activation Panel
+   *
+   * **IMPORTANT** Avoid adding promotional items in this
+   */
+  banner?: React.ReactElement;
 } & StyledPropsBlade &
   TestID;
 

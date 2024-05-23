@@ -232,7 +232,7 @@ const SideNavLink = ({
                     closeMobileNav?.();
                   }
 
-                  if (isActive && isL2Trigger) {
+                  if (isActive) {
                     onLinkActiveChange?.({
                       level: currentLevel,
                       title,
@@ -243,6 +243,9 @@ const SideNavLink = ({
                   }
                 }}
                 onFocus={(e: { target: HTMLDivElement }) => {
+                  // FloatinFocusManager by default focusses on last clicked element when you move to different tab and come back to the original tab
+                  // Which can make L1 to expand when tabs / windows are changed
+                  // Adding focus-visible check ensures this behaviour of closing menus is only applicable when there is visible focus ring on it (while tabbing)
                   const hasFocusRing = e.target?.matches(':focus-visible');
                   if (isL1Collapsed && currentLevel === 1 && hasFocusRing) {
                     setIsL1Collapsed?.(false);
@@ -284,13 +287,7 @@ const SideNavLink = ({
           {children ? (
             <FloatingPortal root={l2PortalContainerRef}>
               {isActive && isL1Collapsed ? (
-                <FloatingFocusManager
-                  closeOnFocusOut={true}
-                  modal={false}
-                  context={context}
-                  initialFocus={-1}
-                  returnFocus
-                >
+                <FloatingFocusManager modal={false} context={context} initialFocus={-1} returnFocus>
                   <BaseBox ref={refs.setFloating}>{children}</BaseBox>
                 </FloatingFocusManager>
               ) : null}

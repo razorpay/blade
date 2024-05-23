@@ -24,6 +24,7 @@ import {
   BoxIcon,
   BuildingIcon,
   CashIcon,
+  ChevronRightIcon,
   CodeSnippetIcon,
   ConfettiIcon,
   CreditCardIcon,
@@ -46,6 +47,9 @@ import { Switch as BladeSwitch } from '~components/Switch';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Skeleton } from '~components/Skeleton';
+import { Card, CardBody } from '~components/Card';
+import { ProgressBar } from '~components/ProgressBar';
+import { Text } from '~components/Typography';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -100,7 +104,6 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
         </Box>
         <Box width="264px" textAlign="center">
           <RazorpayLogo />
-          <Button>Click</Button>
         </Box>
         <Box flex="1">
           <Skeleton width="100%" height="12px" borderRadius="medium" />
@@ -469,10 +472,28 @@ const SideNavTemplate: StoryFn<typeof SideNav> = ({ ...args }) => {
 
 export const Default = SideNavTemplate.bind({});
 
+const ActivationCard = (): React.ReactElement => {
+  return (
+    <Card href="/activate" padding="spacing.4" elevation="none">
+      <CardBody>
+        <Box display="flex" justifyContent="space-between" marginBottom="spacing.2">
+          <Text size="medium" weight="semibold">
+            Activation Pending
+          </Text>
+          <Box>
+            <ChevronRightIcon />
+          </Box>
+        </Box>
+        <ProgressBar label="Progress" showPercentage={true} value={50} />
+      </CardBody>
+    </Card>
+  );
+};
+
 export const DashboardLayout: StoryFn<typeof SideNav> = ({ ...args }) => {
   return (
     <DashboardSkeleton>
-      <SideNavExample position="absolute" {...args} />
+      <SideNavExample position="absolute" {...args} banner={<ActivationCard />} />
     </DashboardSkeleton>
   );
 };
