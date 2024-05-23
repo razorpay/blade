@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.18.2
+
+### Patch Changes
+
+- 00c87e88: fix(blade): radio helptext being negative
+
 ## 11.18.1
 
 ### Patch Changes
