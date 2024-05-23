@@ -1,4 +1,4 @@
-import RadioIcon from './';
+import RadioIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<RadioIcon />', () => {

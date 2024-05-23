@@ -1,4 +1,4 @@
-import CopyIcon from './';
+import CopyIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CopyIcon />', () => {

@@ -1,4 +1,4 @@
-import MaximizeIcon from './';
+import MaximizeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MaximizeIcon />', () => {

@@ -1,4 +1,4 @@
-import TypeIcon from './';
+import TypeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TypeIcon />', () => {

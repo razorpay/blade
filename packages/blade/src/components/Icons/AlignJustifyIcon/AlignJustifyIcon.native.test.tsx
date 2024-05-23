@@ -1,4 +1,4 @@
-import AlignJustifyIcon from './';
+import AlignJustifyIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<AlignJustifyIcon />', () => {

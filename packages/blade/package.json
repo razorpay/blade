@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "11.15.1",
+  "version": "11.18.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -129,7 +129,8 @@
     "publish-npm": "node ./scripts/publishToNpm.js",
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
-    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js"
+    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
+    "generate-icons": "node ./scripts/generateIcons.mjs"
   },
   "dependencies": {
     "@babel/runtime": "7.20.0",
@@ -279,8 +280,11 @@
     "typescript-transform-paths": "3.4.7",
     "@types/body-scroll-lock": "3.1.0",
     "ramda": "0.29.1",
-    "@razorpay/i18nify-js": "1.8.0",
-    "@razorpay/i18nify-react": "4.0.6"
+    "@razorpay/i18nify-js": "1.9.3",
+    "@razorpay/i18nify-react": "4.0.8",
+    "plop": "3.1.1",
+    "node-plop": "0.32.0",
+    "svgson": "5.3.1"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -296,7 +300,7 @@
     "react-hot-toast": "2.4.1",
     "@gorhom/bottom-sheet": "^4.4.6",
     "@gorhom/portal": "^1.0.14",
-    "@razorpay/i18nify-js": "^1.8.0"
+    "@razorpay/i18nify-js": "^1.9.3"
   },
   "peerDependenciesMeta": {
     "react-native": {

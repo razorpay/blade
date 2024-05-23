@@ -1,4 +1,4 @@
-import MoonIcon from './';
+import MoonIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MoonIcon />', () => {

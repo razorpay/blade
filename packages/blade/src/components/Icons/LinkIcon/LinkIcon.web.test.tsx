@@ -1,4 +1,4 @@
-import LinkIcon from '.';
+import LinkIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<LinkIcon />', () => {

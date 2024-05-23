@@ -1,4 +1,4 @@
-import HashIcon from './';
+import HashIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<HashIcon />', () => {

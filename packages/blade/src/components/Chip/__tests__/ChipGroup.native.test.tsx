@@ -18,8 +18,9 @@ describe('<ChipGroup />', () => {
   for (const selectionType of selectionTypes) {
     describe(`selectionType="${selectionType}"`, () => {
       it(`should render with selectionType="${selectionType}"`, () => {
+        const labelText = 'Select fruits';
         const { toJSON, getByText } = renderWithTheme(
-          <ChipGroup accessibilityLabel="Select fruits" selectionType={selectionType}>
+          <ChipGroup label={labelText} selectionType={selectionType}>
             <Chip value="apple">Apple</Chip>
             <Chip value="mango">Mango</Chip>
             <Chip value="orange">Orange</Chip>
@@ -29,7 +30,50 @@ describe('<ChipGroup />', () => {
         expect(getByText('Apple')).toBeDefined();
         expect(getByText('Mango')).toBeDefined();
         expect(getByText('Orange')).toBeDefined();
+        expect(getByText(labelText)).toBeDefined();
         expect(toJSON()).toMatchSnapshot();
+      });
+
+      it('should render with help text', () => {
+        const labelText = 'Select fruits';
+        const helpText = 'Select one';
+        const { getByText } = renderWithTheme(
+          <ChipGroup label={labelText} helpText={helpText} selectionType={selectionType}>
+            <Chip value="apple">Apple</Chip>
+            <Chip value="mango">Mango</Chip>
+            <Chip value="orange">Orange</Chip>
+          </ChipGroup>,
+        );
+
+        expect(getByText(helpText)).toBeDefined();
+      });
+
+      it('should render errorText when validationState is set to error', () => {
+        const labelText = 'Select fruits';
+        const helpText = 'Select one';
+        const errorText = 'Invalid selection';
+
+        const { getAllByRole, queryByText } = renderWithTheme(
+          <ChipGroup
+            helpText={helpText}
+            errorText={errorText}
+            label={labelText}
+            validationState="error"
+            selectionType={selectionType}
+          >
+            <Chip value="apple">Apple</Chip>
+            <Chip value="mango">Mango</Chip>
+            <Chip value="orange">Orange</Chip>
+          </ChipGroup>,
+        );
+
+        expect(queryByText(helpText)).toBeFalsy();
+        expect(queryByText(errorText)).toBeTruthy();
+
+        const chips = getAllByRole(selectionType === 'single' ? 'radio' : 'checkbox');
+        chips.forEach((chip) => {
+          expect(chip.props.accessibilityInvalid).toBeTruthy();
+        });
       });
 
       sizes.forEach((size) => {

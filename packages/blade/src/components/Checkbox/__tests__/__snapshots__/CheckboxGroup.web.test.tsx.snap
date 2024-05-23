@@ -25,7 +25,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(214,28%,84%,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -235,8 +235,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c9.c9.c9.c9.c9:hover + div {
-  border-color: hsla(211,27%,76%,1);
-  background-color: hsla(211,20%,52%,0.12);
+  border-color: hsla(214,28%,84%,1);
+  background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -584,7 +584,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(214,28%,84%,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -759,8 +759,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c9.c9.c9.c9.c9:hover + div {
-  border-color: hsla(211,27%,76%,1);
-  background-color: hsla(211,20%,52%,0.12);
+  border-color: hsla(214,28%,84%,1);
+  background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;

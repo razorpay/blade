@@ -155,19 +155,25 @@ export const bladeThemeData = {
 
     // Input Elements
     'Text Input': {
-      key: 'a8afab83a4a784647d6c7df136e365d7681e712e',
+      key: '80d2aa6b83e97fcd15fc13b4c3b4b10930d17b7a',
     },
     'TextArea Input': {
-      key: '1fbef7453e9ef0338195174488daf0eb12af547b',
+      key: '2f1a8c8a2c671a132e8f05eff402d5fa21b1ae20',
     },
     'Password Input': {
-      key: '765dfe31bdb5842b83cb32756aa39205a2d85114',
+      key: '32d3288a8c94e7f2937fd9d267a0eb6869498614',
     },
     'OTP Input': {
-      key: 'a49a552a588ecab96554fd77b0c26810e5341cb7',
+      key: '7b6cf020d3d912c5dd9393d65baec24441049703',
+    },
+    'PhoneNumber Input': {
+      key: '8e3ef810ea320bda3163206d423d25b935ec3aa9',
     },
     'Select Input': {
-      key: 'acf3eb63bacc1f1ed3d20adda0987e5b79e3b39c',
+      key: 'a6d039a89f0987ffb3363b3c26b5b2b3da9aa709',
+    },
+    'Search Input': {
+      key: '8d631a9604d64de10e4600f6c659a0b5cce90be6',
     },
     'Radio-Group': {
       key: 'cf97c2d61fde8367bd5e905e8048728069d32e0b',
@@ -237,6 +243,24 @@ export const bladeThemeData = {
     },
     'Spotlight Popover/Arrow': {
       key: '3991460bbbe1d0fb22fd45ed8672350a8be592aa',
+    },
+
+    // SideNav
+    'Side Navigation': {
+      key: '76684c0b18de39fff0cd94528d077f0bb0323cee',
+    },
+
+    // DatePicker
+    'Date Picker': {
+      key: 'b6ad28e5abaa6d3c38dad52098fe516d351d6c92',
+    },
+
+    // Avatar
+    Avatar: {
+      key: 'f401ff760de849db53703b19843877cefd4c8eb7',
+    },
+    'Avatar Group': {
+      key: 'd0391cad4a3c0f944dde0aa5bfde8ff84aa55083',
     },
 
     // Utility Components

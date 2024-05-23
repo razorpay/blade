@@ -1,4 +1,4 @@
-import XCircleIcon from './';
+import XCircleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<XCircleIcon />', () => {

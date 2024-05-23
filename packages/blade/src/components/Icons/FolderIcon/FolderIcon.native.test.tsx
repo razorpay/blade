@@ -1,4 +1,4 @@
-import FolderIcon from './';
+import FolderIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FolderIcon />', () => {

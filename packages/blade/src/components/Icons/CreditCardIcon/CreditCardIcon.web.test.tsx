@@ -1,4 +1,4 @@
-import CreditCardIcon from './CreditCardIcon';
+import CreditCardIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<CreditCardIcon />', () => {

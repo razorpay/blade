@@ -1,4 +1,4 @@
-import MenuDotsIcon from './';
+import MenuDotsIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MenuDotsIcon />', () => {

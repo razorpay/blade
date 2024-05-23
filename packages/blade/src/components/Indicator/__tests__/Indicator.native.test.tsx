@@ -21,6 +21,16 @@ describe('<Indicator />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render with intense emphasis', () => {
+    const { toJSON } = renderWithTheme(
+      <Indicator emphasis="intense" size="small" color="positive">
+        Success
+      </Indicator>,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render text label', () => {
     const label = 'Active';
     const { getByText } = renderWithTheme(<Indicator>{label}</Indicator>);

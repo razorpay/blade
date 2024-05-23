@@ -1,4 +1,4 @@
-import DropletIcon from './';
+import DropletIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<DropletIcon />', () => {

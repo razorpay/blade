@@ -1,4 +1,4 @@
-import PercentIcon from './';
+import PercentIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PercentIcon />', () => {

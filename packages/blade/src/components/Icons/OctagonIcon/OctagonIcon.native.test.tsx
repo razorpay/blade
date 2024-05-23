@@ -1,4 +1,4 @@
-import OctagonIcon from './';
+import OctagonIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<OctagonIcon />', () => {

@@ -1,4 +1,4 @@
-import VideoOffIcon from './';
+import VideoOffIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<VideoOffIcon />', () => {

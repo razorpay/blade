@@ -1,4 +1,4 @@
-import HelpCircleIcon from '.';
+import HelpCircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<HelpCircleIcon />', () => {

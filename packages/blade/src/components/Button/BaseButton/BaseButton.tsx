@@ -139,7 +139,7 @@ export const getBackgroundColorToken = ({
   return tokens.base[variant][_state];
 };
 
-const getTextColorToken = ({
+export const getTextColorToken = ({
   property,
   variant,
   state,

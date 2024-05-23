@@ -1,4 +1,4 @@
-import AttachmentIcon from '.';
+import AttachmentIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<AttachmentIcon />', () => {

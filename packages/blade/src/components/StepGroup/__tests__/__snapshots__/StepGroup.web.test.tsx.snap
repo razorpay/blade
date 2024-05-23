@@ -436,7 +436,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                     cx="5"
                     cy="5"
                     data-blade-component="svg-circle"
-                    fill="hsla(211, 29%, 26%, 1)"
+                    fill="hsla(211, 33%, 21%, 1)"
                     r="5"
                   />
                 </svg>
@@ -544,7 +544,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                     cx="5"
                     cy="5"
                     data-blade-component="svg-circle"
-                    fill="hsla(211, 29%, 26%, 1)"
+                    fill="hsla(211, 33%, 21%, 1)"
                     r="5"
                   />
                 </svg>
@@ -673,7 +673,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                       cx="5"
                       cy="5"
                       data-blade-component="svg-circle"
-                      fill="hsla(150, 100%, 32%, 1)"
+                      fill="hsla(150, 100%, 27%, 1)"
                       r="5"
                     />
                   </svg>
@@ -779,7 +779,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                       cx="5"
                       cy="5"
                       data-blade-component="svg-circle"
-                      fill="hsla(211, 29%, 26%, 1)"
+                      fill="hsla(211, 33%, 21%, 1)"
                       r="5"
                     />
                   </svg>

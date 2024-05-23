@@ -1,4 +1,4 @@
-import SkipForwardIcon from './';
+import SkipForwardIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SkipForwardIcon />', () => {

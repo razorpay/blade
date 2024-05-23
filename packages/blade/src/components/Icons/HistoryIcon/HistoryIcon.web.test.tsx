@@ -1,4 +1,4 @@
-import HistoryIcon from '.';
+import HistoryIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<HistoryIcon />', () => {

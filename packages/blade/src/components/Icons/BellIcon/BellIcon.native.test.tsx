@@ -1,4 +1,4 @@
-import BellIcon from './';
+import BellIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BellIcon />', () => {

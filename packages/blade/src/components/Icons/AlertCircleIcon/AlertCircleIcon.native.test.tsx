@@ -1,4 +1,4 @@
-import AlertCircleIcon from './';
+import AlertCircleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<AlertCircleIcon />', () => {

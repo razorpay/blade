@@ -1,4 +1,4 @@
-import InfoIcon from '.';
+import InfoIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<InfoIcon />', () => {

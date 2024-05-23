@@ -23,7 +23,7 @@ exports[`<Tag /> should render tag 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   padding: 4px 8px 4px 12px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   border-radius: 9999px;
 }
 
