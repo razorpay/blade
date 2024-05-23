@@ -19,11 +19,15 @@ import BaseBox from '~components/Box/BaseBox';
 
 const useStackblitzSetup = ({
   code,
+  files,
   editorHeight,
   showConsole,
   sandboxRef,
+  openFile,
 }: {
+  files: SandboxStackBlitzProps['files'];
   code: SandboxStackBlitzProps['children'];
+  openFile: SandboxStackBlitzProps['openFile'];
   editorHeight: SandboxStackBlitzProps['editorHeight'];
   showConsole: SandboxStackBlitzProps['showConsole'];
   sandboxRef: React.RefObject<HTMLDivElement>;
@@ -60,12 +64,13 @@ const useStackblitzSetup = ({
           brandColor,
           showConsole,
         }),
-        'App.tsx': dedent(code),
+        'App.tsx': code ? dedent(code) : '',
         'Logger.tsx': logger,
         'vite.config.ts': viteConfigTS,
         'tsconfig.json': tsConfigJSON,
         'package.json': vitePackageJSON,
         '.npmrc': `auto-install-peers = false`,
+        ...files,
       },
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,7 +81,7 @@ const useStackblitzSetup = ({
       sdk
         .embedProject(sandboxRef.current, stackblitzProject, {
           height: editorHeight,
-          openFile: 'App.tsx',
+          openFile,
           terminalHeight: 0,
           hideDevTools: true,
           hideNavigation: true,
@@ -109,6 +114,8 @@ export const Sandbox = ({
   children,
   editorHeight = 500,
   showConsole = false,
+  files,
+  openFile = 'App.tsx',
   padding = ['spacing.5', 'spacing.0', 'spacing.8'],
 }: SandboxStackBlitzProps): JSX.Element => {
   const sandboxRef = React.useRef<HTMLDivElement>(null);
@@ -117,6 +124,8 @@ export const Sandbox = ({
     code: children,
     editorHeight,
     showConsole,
+    files,
+    openFile,
     sandboxRef,
   });
 

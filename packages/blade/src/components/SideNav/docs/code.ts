@@ -1,12 +1,29 @@
-export const SideNavWithReactRouterv6 = `import React from 'react';
+import dedent from 'dedent';
+
+export const sideNavWithReactRouter = {
+  'App.tsx': dedent`import React from 'react';
+  import { BrowserRouter } from 'react-router-dom';
+  import SideNavExample from './SideNavExample';
+  
+  const App = () => {
+    return (
+      <BrowserRouter>
+        <SideNavExample />
+      </BrowserRouter>
+    );
+  };
+
+  export default App;
+  `,
+  'SideNavExample.tsx': dedent`import React from 'react';
   import {
     matchPath,
     useLocation,
     Link,
     Routes,
     Route,
-    BrowserRouter,
   } from 'react-router-dom';
+
   import {
     SideNavBody,
     SideNav,
@@ -17,168 +34,15 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
     SideNavItem,
     Box,
     Button,
-    Tooltip,
     Indicator,
     Switch as BladeSwitch,
-    ArrowUpRightIcon,
-    BillIcon,
     BoxIcon,
-    BuildingIcon,
-    CashIcon,
-    CodeSnippetIcon,
-    ConfettiIcon,
-    CreditCardIcon,
-    FilePlusIcon,
-    FileTextIcon,
-    HeadsetIcon,
-    LayoutIcon,
-    PlusIcon,
-    RazorpayxPayrollIcon,
-    ReportsIcon,
     SettingsIcon,
-    StampIcon,
-    UserCheckIcon,
     UserIcon,
   } from '@razorpay/blade/components';
 
-  import type {
-    SideNavLinkProps,
-    SideNavSectionProps,
-  } from '@razorpay/blade/components';
-
-  type ItemsType = Pick<
-    SideNavLinkProps,
-    'icon' | 'title' | 'href' | 'trailing' | 'tooltip'
-  >;
-  type NavItemsJSONType = {
-    type: 'section';
-    title?: SideNavSectionProps['title'];
-    maxItemsVisible?: SideNavSectionProps['maxVisibleItems'];
-    items: (ItemsType & {
-      items?: (ItemsType & { items?: ItemsType[] })[];
-    })[];
-  };
-  const navItemsJSON: NavItemsJSONType[] = [
-    {
-      type: 'section',
-      title: undefined,
-      items: [
-        {
-          icon: LayoutIcon,
-          title: 'Home',
-          href: '/app/dashboard',
-        },
-        {
-          icon: ArrowUpRightIcon,
-          title: 'Payouts',
-          href: '/app/payouts',
-          tooltip: {
-            content: 'Open Payouts (Cmd + O)',
-          },
-          trailing: (
-            <Tooltip content="Create Payout (Cmd + P)" placement="right">
-              <Button icon={PlusIcon} size="xsmall" variant="tertiary" />
-            </Tooltip>
-          ),
-        },
-        {
-          icon: FileTextIcon,
-          title: 'Account Statement',
-          href: '/app/account-statement',
-        },
-      ],
-    },
-    {
-      type: 'section',
-      title: 'Offerings',
-      maxItemsVisible: 3,
-      items: [
-        {
-          icon: CreditCardIcon,
-          title: 'Corporate Credit Card',
-          href: '/app/corporate-credit-card',
-          items: [
-            {
-              icon: UserIcon,
-              title: 'User Profile',
-              href: '/app/user/profile',
-            },
-            {
-              icon: BuildingIcon,
-              title: 'Business Profile',
-              href: '/app/business/profile',
-              items: [
-                {
-                  title: 'Business Banks',
-                  href: '/app/business/banks',
-                },
-                {
-                  title: 'Business Routes',
-                  href: '/app/business/routes',
-                },
-              ],
-            },
-            {
-              icon: FilePlusIcon,
-              title: 'Billing',
-              href: '/app/billing',
-            },
-          ],
-        },
-        {
-          icon: BillIcon,
-          title: 'Vendor Payments',
-          href: '/app/vendor-payments',
-        },
-        {
-          icon: StampIcon,
-          title: 'Tax Payments',
-          href: '/app/tax-payments',
-        },
-        {
-          icon: RazorpayxPayrollIcon,
-          title: 'Payroll',
-          href: '/app/payroll',
-        },
-        {
-          icon: ReportsIcon,
-          title: 'Reports',
-          href: '/app/reports',
-        },
-        {
-          icon: UserCheckIcon,
-          title: 'Public Profile',
-          href: '/app/public-profile',
-        },
-        {
-          icon: CodeSnippetIcon,
-          title: 'Code Snippet',
-          href: '/app/code-snippet',
-        },
-        {
-          icon: HeadsetIcon,
-          title: 'Support',
-          href: '/app/support',
-        },
-      ],
-    },
-    {
-      type: 'section',
-      title: 'Miscellaneous',
-      items: [
-        {
-          icon: CashIcon,
-          title: 'Cost Center',
-          href: '/app/cost-center',
-        },
-        {
-          icon: ConfettiIcon,
-          title: 'Offers',
-          href: '/app/confetti',
-        },
-      ],
-    },
-  ];
+  import { navItemsJSON } from './navItemsJSON';
+  import type {  NavItemsJSONType, ItemsType } from './navItemsJSON';
 
   const Page = ({ match }: { match: any }): React.ReactElement => (
     <Box padding={{ base: 'spacing.2', m: 'spacing.6' }}>
@@ -187,7 +51,7 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
       </pre>
     </Box>
   );
-
+  
   const getAllChildHrefs = (
     items: (ItemsType & { items?: ItemsType[] })[] | undefined
   ): string[] => {
@@ -265,10 +129,6 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
           activeOnLinks: getAllChildHrefs(l1Item.items),
         })
       );
-
-      if (location.pathname.includes('reports')) {
-        console.log({ activeItem, items });
-      }
 
       return Boolean(activeItem);
     };
@@ -398,13 +258,169 @@ export const SideNavWithReactRouterv6 = `import React from 'react';
     );
   };
 
-  const App = () => {
-    return (
-      <BrowserRouter>
-        <SideNavExample />
-      </BrowserRouter>
-    );
+  export default SideNavExample;
+  `,
+  'navItemsJSON.tsx': dedent`import {
+    ArrowUpRightIcon,
+    BillIcon,
+    BuildingIcon,
+    CashIcon,
+    CodeSnippetIcon,
+    ConfettiIcon,
+    CreditCardIcon,
+    FilePlusIcon,
+    FileTextIcon,
+    HeadsetIcon,
+    LayoutIcon,
+    PlusIcon,
+    RazorpayxPayrollIcon,
+    ReportsIcon,
+    StampIcon,
+    UserCheckIcon,
+    UserIcon,
+    Tooltip,
+    Button,
+  } from '@razorpay/blade/components';
+
+  import type {
+    SideNavLinkProps,
+    SideNavSectionProps,
+  } from '@razorpay/blade/components';
+
+  export type ItemsType = Pick<
+    SideNavLinkProps,
+    'icon' | 'title' | 'href' | 'trailing' | 'tooltip'
+  >;
+
+  export type NavItemsJSONType = {
+    type: 'section';
+    title?: SideNavSectionProps['title'];
+    maxItemsVisible?: SideNavSectionProps['maxVisibleItems'];
+    items: (ItemsType & {
+      items?: (ItemsType & { items?: ItemsType[] })[];
+    })[];
   };
 
-  export default App;
-`;
+  export const navItemsJSON: NavItemsJSONType[] = [
+    {
+      type: 'section',
+      title: undefined,
+      items: [
+        {
+          icon: LayoutIcon,
+          title: 'Home',
+          href: '/app/dashboard',
+        },
+        {
+          icon: ArrowUpRightIcon,
+          title: 'Payouts',
+          href: '/app/payouts',
+          tooltip: {
+            content: 'Open Payouts (Cmd + O)',
+          },
+          trailing: (
+            <Tooltip content="Create Payout (Cmd + P)" placement="right">
+              <Button icon={PlusIcon} size="xsmall" variant="tertiary" />
+            </Tooltip>
+          ),
+        },
+        {
+          icon: FileTextIcon,
+          title: 'Account Statement',
+          href: '/app/account-statement',
+        },
+      ],
+    },
+    {
+      type: 'section',
+      title: 'Offerings',
+      maxItemsVisible: 3,
+      items: [
+        {
+          icon: CreditCardIcon,
+          title: 'Corporate Credit Card',
+          href: '/app/corporate-credit-card',
+          items: [
+            {
+              icon: UserIcon,
+              title: 'User Profile',
+              href: '/app/user/profile',
+            },
+            {
+              icon: BuildingIcon,
+              title: 'Business Profile',
+              href: '/app/business/profile',
+              items: [
+                {
+                  title: 'Business Banks',
+                  href: '/app/business/banks',
+                },
+                {
+                  title: 'Business Routes',
+                  href: '/app/business/routes',
+                },
+              ],
+            },
+            {
+              icon: FilePlusIcon,
+              title: 'Billing',
+              href: '/app/billing',
+            },
+          ],
+        },
+        {
+          icon: BillIcon,
+          title: 'Vendor Payments',
+          href: '/app/vendor-payments',
+        },
+        {
+          icon: StampIcon,
+          title: 'Tax Payments',
+          href: '/app/tax-payments',
+        },
+        {
+          icon: RazorpayxPayrollIcon,
+          title: 'Payroll',
+          href: '/app/payroll',
+        },
+        {
+          icon: ReportsIcon,
+          title: 'Reports',
+          href: '/app/reports',
+        },
+        {
+          icon: UserCheckIcon,
+          title: 'Public Profile',
+          href: '/app/public-profile',
+        },
+        {
+          icon: CodeSnippetIcon,
+          title: 'Code Snippet',
+          href: '/app/code-snippet',
+        },
+        {
+          icon: HeadsetIcon,
+          title: 'Support',
+          href: '/app/support',
+        },
+      ],
+    },
+    {
+      type: 'section',
+      title: 'Miscellaneous',
+      items: [
+        {
+          icon: CashIcon,
+          title: 'Cost Center',
+          href: '/app/cost-center',
+        },
+        {
+          icon: ConfettiIcon,
+          title: 'Offers',
+          href: '/app/confetti',
+        },
+      ],
+    },
+  ];
+  `,
+};

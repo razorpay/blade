@@ -15,7 +15,7 @@ import {
   SideNavItem,
 } from '..';
 import { RazorpayLinesSvg, RazorpayLogo } from './RazorpayLogo';
-import { SideNavWithReactRouterv6 } from './code';
+import { sideNavWithReactRouter } from './code';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import {
@@ -59,7 +59,10 @@ const DocsPage = (): React.ReactElement => {
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=87921-138303&m=dev&scaling=min-zoom&page-id=87588%3A51157"
     >
       <Title>Usage (with React Router v6)</Title>
-      <Sandbox>{SideNavWithReactRouterv6}</Sandbox>
+      <Sandbox
+        files={sideNavWithReactRouter}
+        openFile="App.tsx,navItemsJSON.tsx,SideNavExample.tsx"
+      />
     </StoryPageWrapper>
   );
 };
