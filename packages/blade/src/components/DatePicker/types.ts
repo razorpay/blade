@@ -112,12 +112,6 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * @default false
    */
   allowSingleDateInRange?: boolean;
-  /**
-   * Sets the locale for the calendar.
-   *
-   * @default 'en'
-   */
-  locale?: string;
 
   /**
    * Callback which is called whenever the next button is clicked.

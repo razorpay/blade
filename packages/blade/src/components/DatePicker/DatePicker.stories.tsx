@@ -1,9 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { DatesProvider } from '@mantine/dates';
-import { HeadlessMantineProvider } from '@mantine/core';
+import dayjs from 'dayjs';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
-import dayjs from 'dayjs';
 import type { DatePickerProps, DatesRangeValue } from './types';
 import { DatePicker as DatePickerComponent } from './';
 import { Box } from '~components/Box';
@@ -103,16 +101,12 @@ export default {
 
 const DatePickerTemplate: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
   return (
-    <HeadlessMantineProvider>
-      <DatesProvider settings={{ locale: 'en-US' }}>
-        <DatePickerComponent
-          onChange={(date) => {
-            console.log(date);
-          }}
-          {...args}
-        />
-      </DatesProvider>
-    </HeadlessMantineProvider>
+    <DatePickerComponent
+      onChange={(date) => {
+        console.log(date);
+      }}
+      {...args}
+    />
   );
 };
 
@@ -149,35 +143,32 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
           `}
         </Code>
       </Text>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <DatePickerComponent
-            selectionType="range"
-            onChange={(date) => {
-              console.log(date);
-            }}
-            presets={[
-              {
-                label: 'Past 7 days',
-                value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
-              },
-              {
-                label: 'Past 15 days',
-                value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
-              },
-              {
-                label: 'Past month',
-                value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
-              },
-              {
-                label: 'Past year',
-                value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
-              },
-            ]}
-            {...args}
-          />
-        </DatesProvider>
-      </HeadlessMantineProvider>
+
+      <DatePickerComponent
+        selectionType="range"
+        onChange={(date) => {
+          console.log(date);
+        }}
+        presets={[
+          {
+            label: 'Past 7 days',
+            value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+          },
+          {
+            label: 'Past 15 days',
+            value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+          },
+          {
+            label: 'Past month',
+            value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+          },
+          {
+            label: 'Past year',
+            value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
+          },
+        ]}
+        {...args}
+      />
     </Box>
   );
 };
@@ -206,20 +197,16 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
         </Text>
         <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
       </Box>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <DatePickerComponent
-            label={{ start: 'Start Date', end: 'End Date' }}
-            selectionType="range"
-            isOpen={isOpen}
-            onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
-            value={date}
-            onChange={(date) => {
-              setDate(date);
-            }}
-          />
-        </DatesProvider>
-      </HeadlessMantineProvider>
+      <DatePickerComponent
+        label={{ start: 'Start Date', end: 'End Date' }}
+        selectionType="range"
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        value={date}
+        onChange={(date) => {
+          setDate(date);
+        }}
+      />
     </Box>
   );
 };
@@ -239,25 +226,21 @@ export const Validations: StoryFn<typeof DatePickerComponent> = () => {
         DatePicker supports all common Input props like <Code size="medium">validationState</Code>,{' '}
         <Code size="medium">isRequired</Code>, <Code size="medium">isDisabled</Code> etc.
       </Text>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <DatePickerComponent
-            validationState={hasError ? 'error' : 'none'}
-            errorText="Cannot select a range which is more than 3 days"
-            label={{ start: 'Start Date', end: 'End Date' }}
-            selectionType="range"
-            value={date}
-            onChange={(date) => {
-              setDate(date);
-              if (dayjs(date[1]).diff(date[0], 'day') > 3) {
-                setHasError(true);
-              } else {
-                setHasError(false);
-              }
-            }}
-          />
-        </DatesProvider>
-      </HeadlessMantineProvider>
+      <DatePickerComponent
+        validationState={hasError ? 'error' : 'none'}
+        errorText="Cannot select a range which is more than 3 days"
+        label={{ start: 'Start Date', end: 'End Date' }}
+        selectionType="range"
+        value={date}
+        onChange={(date) => {
+          setDate(date);
+          if (dayjs(date[1]).diff(date[0], 'day') > 3) {
+            setHasError(true);
+          } else {
+            setHasError(false);
+          }
+        }}
+      />
     </Box>
   );
 };
@@ -276,16 +259,12 @@ export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
         <Text size="small">{`minDate={dayjs().subtract(1, 'week').toDate()}`}</Text>
         <Text size="small">{`maxDate={dayjs().add(1, 'week').toDate()}`}</Text>
       </Box>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <DatePickerComponent
-            label={{ start: 'Start Date', end: 'End Date' }}
-            selectionType="range"
-            minDate={dayjs().subtract(1, 'week').toDate()}
-            maxDate={dayjs().add(1, 'week').toDate()}
-          />
-        </DatesProvider>
-      </HeadlessMantineProvider>
+      <DatePickerComponent
+        label={{ start: 'Start Date', end: 'End Date' }}
+        selectionType="range"
+        minDate={dayjs().subtract(1, 'week').toDate()}
+        maxDate={dayjs().add(1, 'week').toDate()}
+      />
     </Box>
   );
 };
@@ -303,15 +282,11 @@ export const ExcludeDates: StoryFn<typeof DatePickerComponent> = () => {
         <Text>Example, exclude weekends: </Text>
         <Text size="small">{`excludeDate={(date) => dayjs(date).day() === 0 || dayjs(date).day() === 6}`}</Text>
       </Box>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <DatePickerComponent
-            label="Select Dates Without Weekends"
-            selectionType="single"
-            excludeDate={(date) => dayjs(date).day() === 0 || dayjs(date).day() === 6}
-          />
-        </DatesProvider>
-      </HeadlessMantineProvider>
+      <DatePickerComponent
+        label="Select Dates Without Weekends"
+        selectionType="single"
+        excludeDate={(date) => dayjs(date).day() === 0 || dayjs(date).day() === 6}
+      />
     </Box>
   );
 };
@@ -328,22 +303,14 @@ export const LabelPositionLeft: StoryFn<typeof DatePickerComponent> = () => {
         <Code size="medium">labelPositionLeft</Code> prop is set & selectionType is range, the label
         will be rendered on the left with the <Code size="medium">{`{start}`}</Code> string.
       </Text>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <Box display="flex" gap="spacing.5" flexDirection="column">
-            <DatePickerComponent
-              labelPosition="left"
-              selectionType="range"
-              label={{ start: 'Select a range' }}
-            />
-            <DatePickerComponent
-              selectionType="single"
-              labelPosition="left"
-              label="Select a date"
-            />
-          </Box>
-        </DatesProvider>
-      </HeadlessMantineProvider>
+      <Box display="flex" gap="spacing.5" flexDirection="column">
+        <DatePickerComponent
+          labelPosition="left"
+          selectionType="range"
+          label={{ start: 'Select a range' }}
+        />
+        <DatePickerComponent selectionType="single" labelPosition="left" label="Select a date" />
+      </Box>
     </Box>
   );
 };
@@ -368,11 +335,7 @@ export const MonthPicker: StoryFn<typeof DatePickerComponent> = ({ ...args }) =>
       >
         Note: picker is only supported in single selection mode
       </Text>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <DatePickerComponent picker="month" selectionType="single" {...args} />
-        </DatesProvider>
-      </HeadlessMantineProvider>
+      <DatePickerComponent picker="month" selectionType="single" {...args} />
     </Box>
   );
 };

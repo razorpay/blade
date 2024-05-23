@@ -2,9 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { shiftTimezone, useDatesContext } from '@mantine/dates';
+import { DatesProvider, shiftTimezone, useDatesContext } from '@mantine/dates';
 import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
+import { useI18nContext } from '@razorpay/i18nify-react';
+import { HeadlessMantineProvider } from '@mantine/core';
+import dayjs from 'dayjs';
 import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
 import { Calendar } from './Calendar';
 import { PresetSideBar } from './QuickSelection/PresetSideBar';
@@ -12,6 +15,7 @@ import { useDatesState } from './useDatesState';
 import { DatePickerInput } from './DateInput';
 import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter';
+import { convertIntlToDayjsLocale } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -53,12 +57,12 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   onPickerChange,
   ...props
 }: DatePickerProps<Type>): React.ReactElement => {
+  const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
   const ctx = useDatesContext();
   const isSingle = _selectionType === 'single';
   const [_, forceRerenderBottomSheet] = React.useReducer((x: number) => x + 1, 0);
-
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
 
   const [_picker, setPicker] = useControllableState<PickerType>({
@@ -213,90 +217,102 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     </>
   );
 
+  const dateProviderValue = React.useMemo(() => {
+    const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
+    dayjs.locale(locale);
+    return {
+      locale,
+    };
+  }, [i18nState?.locale]);
+
   return (
-    <BaseBox width="100%">
-      <DatePickerInput
-        selectionType={_selectionType}
-        date={controlledValue}
-        ref={referenceRef}
-        inputRef={refs.reference}
-        referenceProps={getReferenceProps()}
-        name={name as never}
-        label={label as never}
-        labelPosition={labelPosition}
-        accessibilityLabel={accessibilityLabel}
-        size={size}
-        errorText={errorText}
-        helpText={helpText}
-        isDisabled={isDisabled}
-        isRequired={isRequired}
-        successText={successText}
-        validationState={validationState}
-        autoFocus={autoFocus}
-        necessityIndicator={necessityIndicator}
-      />
-      {isMobile ? (
-        <BottomSheet
-          snapPoints={[0.9, 0.9, 1]}
-          isOpen={controllableIsOpen}
-          onDismiss={() => {
-            handleCancel();
-          }}
-        >
-          <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
-          <BottomSheetBody>
-            {content}
-            {!isSingle && (
-              <PresetSideBar
-                isMobile
-                presets={presets}
-                date={currentDate}
-                selectedPreset={selectedPreset}
-                onSelection={(preset) => {
-                  const presetValue = preset?.(currentDate);
-                  setControlledValue(presetValue);
-                  setSelectedPreset(presetValue);
-                }}
-              />
-            )}
-          </BottomSheetBody>
-          <BottomSheetFooter>
-            <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
-          </BottomSheetFooter>
-        </BottomSheet>
-      ) : (
-        isMounted && (
-          <FloatingPortal>
-            <FloatingFocusManager
-              initialFocus={defaultInitialFocusRef}
-              context={context}
-              guards={true}
+    <HeadlessMantineProvider>
+      <DatesProvider settings={dateProviderValue}>
+        <BaseBox width="100%">
+          <DatePickerInput
+            selectionType={_selectionType}
+            date={controlledValue}
+            ref={referenceRef}
+            inputRef={refs.reference}
+            referenceProps={getReferenceProps()}
+            name={name as never}
+            label={label as never}
+            labelPosition={labelPosition}
+            accessibilityLabel={accessibilityLabel}
+            size={size}
+            errorText={errorText}
+            helpText={helpText}
+            isDisabled={isDisabled}
+            isRequired={isRequired}
+            successText={successText}
+            validationState={validationState}
+            autoFocus={autoFocus}
+            necessityIndicator={necessityIndicator}
+          />
+          {isMobile ? (
+            <BottomSheet
+              snapPoints={[0.9, 0.9, 1]}
+              isOpen={controllableIsOpen}
+              onDismiss={() => {
+                handleCancel();
+              }}
             >
-              <BaseBox
-                ref={refs.setFloating}
-                style={floatingStyles}
-                {...getFloatingProps()}
-                {...makeAccessible({ labelledBy: titleId })}
-              >
-                <BaseBox
-                  display="flex"
-                  flexDirection="row"
-                  borderColor="surface.border.gray.subtle"
-                  borderWidth="thin"
-                  borderStyle="solid"
-                  borderRadius="medium"
-                  overflow="hidden"
-                  minWidth="320px"
-                  style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+              <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
+              <BottomSheetBody>
+                {content}
+                {!isSingle && (
+                  <PresetSideBar
+                    isMobile
+                    presets={presets}
+                    date={currentDate}
+                    selectedPreset={selectedPreset}
+                    onSelection={(preset) => {
+                      const presetValue = preset?.(currentDate);
+                      setControlledValue(presetValue);
+                      setSelectedPreset(presetValue);
+                    }}
+                  />
+                )}
+              </BottomSheetBody>
+              <BottomSheetFooter>
+                <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
+              </BottomSheetFooter>
+            </BottomSheet>
+          ) : (
+            isMounted && (
+              <FloatingPortal>
+                <FloatingFocusManager
+                  initialFocus={defaultInitialFocusRef}
+                  context={context}
+                  guards={true}
                 >
-                  {content}
-                </BaseBox>
-              </BaseBox>
-            </FloatingFocusManager>
-          </FloatingPortal>
-        )
-      )}
-    </BaseBox>
+                  <BaseBox
+                    ref={refs.setFloating}
+                    style={floatingStyles}
+                    {...getFloatingProps()}
+                    {...makeAccessible({ labelledBy: titleId })}
+                  >
+                    <BaseBox
+                      display="flex"
+                      flexDirection="row"
+                      borderColor="surface.border.gray.subtle"
+                      borderWidth="thin"
+                      borderStyle="solid"
+                      borderRadius="medium"
+                      overflow="hidden"
+                      minWidth="320px"
+                      style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+                    >
+                      {content}
+                    </BaseBox>
+                  </BaseBox>
+                </FloatingFocusManager>
+              </FloatingPortal>
+            )
+          )}
+        </BaseBox>
+      </DatesProvider>
+    </HeadlessMantineProvider>
   );
 };
 

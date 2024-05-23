@@ -23,7 +23,6 @@ const Calendar = <Type extends DateSelectionType>({
   date,
   defaultDate,
   onDateChange,
-  locale,
   onNext,
   onPrevious,
   presets,
@@ -129,7 +128,7 @@ const Calendar = <Type extends DateSelectionType>({
           withCellSpacing={false}
           type={isRange ? 'range' : 'default'}
           date={_date}
-          locale={locale}
+          locale={dateContext.locale}
           level={level}
           onDateChange={setDate}
           onLevelChange={(level) => setLevel(() => level)}
