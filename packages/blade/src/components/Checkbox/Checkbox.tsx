@@ -193,9 +193,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     large: 'large',
   } as const;
 
-  // only show error when the self validation is set to error
-  // Since we don't want to show errorText inside the group
-  const showSupportingText = validationState !== 'error' && helpText;
+  const showSupportingText = helpText;
 
   const handleChange: OnChange = ({ isChecked, event, value }) => {
     if (isChecked) {
