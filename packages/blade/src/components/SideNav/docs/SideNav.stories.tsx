@@ -62,7 +62,7 @@ const DocsPage = (): React.ReactElement => {
       <Title>Usage (with React Router v6)</Title>
       <Alert
         color="notice"
-        title="SideNav State Management"
+        title="State Management Note"
         description="SideNav component requires you to handle active link and active menu item on consumer end
         since the component is detached from React Router. The example below includes some boilerplate in handling these active states using React Router v6. Make sure to test your edge cases while implementing. Checkout API Decision of SideNav for more details."
         isFullWidth
