@@ -271,6 +271,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c44.c44.c44.c44.c44 {
+  overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1636,7 +1637,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             class="c44"
             data-blade-component="bottom-sheet-body"
             data-testid="bottomsheet-body"
-            style="user-select: auto; overflow: auto;"
+            style="user-select: auto;"
           >
             <div
               class="c45"

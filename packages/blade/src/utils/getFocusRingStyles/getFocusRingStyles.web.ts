@@ -12,7 +12,7 @@ function getFocusRingStyles({
   negativeOffset = false,
   isImportant = false,
 }: GetFocusRingArgs) {
-  const important = `${isImportant ? ' !important' : ''};`;
+  const important = `${isImportant ? ' !important' : ''}`;
   return {
     outline: `4px solid ${theme.colors.surface.border.primary.muted}${important}`,
     outlineOffset: `${negativeOffset ? '-4px' : '1px'}${important}`,

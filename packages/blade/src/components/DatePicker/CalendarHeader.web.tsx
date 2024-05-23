@@ -133,6 +133,7 @@ const CalendarHeader = ({
               color="neutral"
               iconPosition="right"
               icon={ChevronDownIcon}
+              accessibilityLabel="Change month"
             >
               {month} {year}
             </Link>
@@ -147,6 +148,7 @@ const CalendarHeader = ({
               color="neutral"
               iconPosition="right"
               icon={ChevronDownIcon}
+              accessibilityLabel="Change decade"
             >
               {year}
             </Link>
