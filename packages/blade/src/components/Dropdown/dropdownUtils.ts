@@ -113,7 +113,9 @@ export function getActionFromKey(
     } else if (
       key === 'Enter' ||
       // we ignore the spacebar select in autocomplete since hitting spacebar might be expected while typing
-      (dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete && key === ' ')
+      (dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete &&
+        dropdownTriggerer !== dropdownComponentIds.triggers.SearchInput &&
+        key === ' ')
     ) {
       return SelectActions.CloseSelect;
     }

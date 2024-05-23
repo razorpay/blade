@@ -1,4 +1,5 @@
 import React from 'react';
+import { componentIds } from './constants';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
@@ -23,7 +24,7 @@ const _ModalFooter = (props: ModalFooterProps): React.ReactElement => {
 };
 
 const ModalFooter = assignWithoutSideEffects(_ModalFooter, {
-  componentId: MetaConstants.ModalFooter,
+  componentId: componentIds.ModalFooter,
 });
 
 export { ModalFooter };
