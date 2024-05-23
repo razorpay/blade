@@ -24,8 +24,10 @@ const useStackblitzSetup = ({
   showConsole,
   sandboxRef,
   openFile,
+  hideNavigation,
 }: {
   files: SandboxStackBlitzProps['files'];
+  hideNavigation: SandboxStackBlitzProps['hideNavigation'];
   code: SandboxStackBlitzProps['children'];
   openFile: SandboxStackBlitzProps['openFile'];
   editorHeight: SandboxStackBlitzProps['editorHeight'];
@@ -84,7 +86,7 @@ const useStackblitzSetup = ({
           openFile,
           terminalHeight: 0,
           hideDevTools: true,
-          hideNavigation: true,
+          hideNavigation,
           hideExplorer: true,
           theme: 'light',
           showSidebar: false,
@@ -117,6 +119,7 @@ export const Sandbox = ({
   files,
   openFile = 'App.tsx',
   padding = ['spacing.5', 'spacing.0', 'spacing.8'],
+  hideNavigation = true,
 }: SandboxStackBlitzProps): JSX.Element => {
   const sandboxRef = React.useRef<HTMLDivElement>(null);
 
@@ -127,6 +130,7 @@ export const Sandbox = ({
     files,
     openFile,
     sandboxRef,
+    hideNavigation,
   });
 
   return (

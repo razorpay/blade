@@ -34,6 +34,7 @@ export const sideNavWithReactRouter = {
     Box,
     Button,
     Indicator,
+    Text,
     Switch as BladeSwitch,
     BoxIcon,
     SettingsIcon,
@@ -257,6 +258,12 @@ export const sideNavWithReactRouter = {
           >
             Open Mobile Drawer
           </Button>
+          <Text 
+            marginY="spacing.4" 
+            display={{ base: undefined, m: 'none' }}
+          >
+            For Desktop version, click Preview tab below to open preview in fullscreen
+          </Text>
           <Routes>
             {[...getAllRoutesFromJSON(), '/settings/user', '/settings/account'].map(
               (route) => (

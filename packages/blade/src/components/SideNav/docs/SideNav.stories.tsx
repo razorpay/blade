@@ -61,6 +61,8 @@ const DocsPage = (): React.ReactElement => {
       <Title>Usage (with React Router v6)</Title>
       <Sandbox
         files={sideNavWithReactRouter}
+        editorHeight={600}
+        hideNavigation={false}
         openFile="App.tsx,navItemsJSON.tsx,SideNavExample.tsx"
       />
     </StoryPageWrapper>
