@@ -1260,7 +1260,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       style={
                         [
                           {
-                            "borderLeftColor": "hsla(211, 24%, 65%, 1)",
+                            "borderLeftColor": "hsla(211, 27%, 76%, 1)",
                             "borderLeftStyle": "solid",
                             "height": 20,
                             "left": 1,
@@ -1555,7 +1555,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       style={
                         [
                           {
-                            "borderLeftColor": "hsla(211, 24%, 65%, 1)",
+                            "borderLeftColor": "hsla(211, 27%, 76%, 1)",
                             "borderLeftStyle": "solid",
                             "height": 20,
                             "left": 1,

@@ -37,8 +37,8 @@ export const BasicSelectItem: StoryFn<typeof Dropdown> = (props): React.ReactEle
   return <BasicDropdown {...props} />;
 };
 
-BasicSelectItem.play = async ({ canvasElement }) => {
-  const { getByRole } = within(canvasElement);
+BasicSelectItem.play = async () => {
+  const { getByRole } = within(document.body);
   const selectInput = getByRole('combobox', { name: 'City' });
   await userEvent.click(selectInput);
   const option = getByRole('option', { name: 'Bengaluru' });
@@ -50,8 +50,8 @@ export const MultiSelectItem: StoryFn<typeof Dropdown> = (props): React.ReactEle
   return <BasicDropdown {...props} selectionType="multiple" />;
 };
 
-MultiSelectItem.play = async ({ canvasElement }) => {
-  const { getByRole, getByLabelText, queryByLabelText } = within(canvasElement);
+MultiSelectItem.play = async () => {
+  const { getByRole, getByLabelText, queryByLabelText } = within(document.body);
   const selectInput = getByRole('combobox', { name: 'City' });
   await userEvent.click(selectInput);
   await expect(queryByLabelText('Close Bengaluru tag')).toBeFalsy();
@@ -85,8 +85,8 @@ export const Accessibility: StoryFn<typeof Dropdown> = (props): React.ReactEleme
   );
 };
 
-Accessibility.play = async ({ canvasElement }) => {
-  const { getByRole, getByTestId } = within(canvasElement);
+Accessibility.play = async () => {
+  const { getByRole, getByTestId } = within(document.body);
   const selectInput = getByRole('combobox', { name: 'City' });
   selectInput.focus();
   await userEvent.keyboard('{ArrowDown}');
@@ -162,8 +162,8 @@ export const FooterActions: StoryFn<typeof Dropdown> = (): React.ReactElement =>
   );
 };
 
-FooterActions.play = async ({ canvasElement }) => {
-  const { getByRole, queryByRole, getByTestId } = within(canvasElement);
+FooterActions.play = async () => {
+  const { getByRole, queryByRole, getByTestId } = within(document.body);
   const selectInput = getByRole('combobox', { name: 'Fruits' });
   await userEvent.click(selectInput);
   await waitFor(() => expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible());
@@ -229,8 +229,8 @@ export const ControlledDropdownSingleSelect: StoryFn<typeof Dropdown> = (): Reac
   );
 };
 
-ControlledDropdownSingleSelect.play = async ({ canvasElement }) => {
-  const { getByRole } = within(canvasElement);
+ControlledDropdownSingleSelect.play = async () => {
+  const { getByRole } = within(document.body);
   const selectInput = getByRole('combobox', { name: 'Select City' });
 
   // external button control selection test
@@ -291,8 +291,8 @@ export const ControlledDropdownMultiSelect: StoryFn<typeof Dropdown> = (): React
   );
 };
 
-ControlledDropdownMultiSelect.play = async ({ canvasElement }) => {
-  const { getByRole, queryAllByLabelText } = within(canvasElement);
+ControlledDropdownMultiSelect.play = async () => {
+  const { getByRole, queryAllByLabelText } = within(document.body);
   const selectInput = getByRole('combobox', { name: 'Select City' });
 
   // Select 1 item programatically

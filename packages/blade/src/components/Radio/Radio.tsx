@@ -74,7 +74,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const _isRequired = groupProps?.isRequired || groupProps?.necessityIndicator === 'required';
   const name = groupProps?.name;
-  const showHelpText = !hasError && helpText;
+  const showHelpText = helpText;
   const isReactNative = getPlatformType() === 'react-native';
   const _size = groupProps.size ?? size;
 
@@ -131,7 +131,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
           </BaseBox>
           {showHelpText && (
             <BaseBox marginLeft={helpTextLeftSpacing}>
-              <SelectorSupportText size={_size} isNegative={true} id={ids?.helpTextId}>
+              <SelectorSupportText size={_size} id={ids?.helpTextId}>
                 {helpText}
               </SelectorSupportText>
             </BaseBox>

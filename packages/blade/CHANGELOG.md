@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 11.18.3
+
+### Patch Changes
+
+- d500ec14: feat: add placeholder prop in phone input
+
+## 11.18.2
+
+### Patch Changes
+
+- 00c87e88: fix(blade): radio helptext being negative
+
+## 11.18.1
+
+### Patch Changes
+
+- 14f70c96: fix: update circular progress percentage color
+
+## 11.18.0
+
+### Minor Changes
+
+- 0c009edc: feat: add `SearchInput` component
+- 00edb732: feat: add `Avatar` & `AvatarGroup` components
+
 ## 11.17.1
 
 ### Patch Changes

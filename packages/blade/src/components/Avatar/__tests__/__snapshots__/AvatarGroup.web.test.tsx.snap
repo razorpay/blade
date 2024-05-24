@@ -1,0 +1,1381 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
+.c1.c1.c1.c1.c1 {
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+  height: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
+}
+
+.c2.c2.c2.c2.c2:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 48px;
+  height: 48px;
+  width: 48px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(200,84%,44%,0.09);
+}
+
+.c3.c3.c3.c3.c3 img {
+  display: block;
+  height: 48px;
+  width: 48px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c3.c3.c3.c3.c3:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 48px;
+  height: 48px;
+  width: 48px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(150,100%,32%,0.09);
+}
+
+.c6.c6.c6.c6.c6 img {
+  display: block;
+  height: 48px;
+  width: 48px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8.c8.c8.c8.c8 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 48px;
+  height: 48px;
+  width: 48px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(4,74%,49%,0.09);
+}
+
+.c8.c8.c8.c8.c8 img {
+  display: block;
+  height: 48px;
+  width: 48px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c8.c8.c8.c8.c8:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(200,84%,37%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(4,74%,49%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0.c0.c0.c0.c0 > *:not(:first-child) {
+  margin-left: -24px;
+  z-index: 2;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="avatar-group"
+    role="group"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c3"
+        color="information"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            NK
+          </p>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c6"
+        color="positive"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c7"
+            data-blade-component="text"
+          >
+            AN
+          </p>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c8"
+        color="negative"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c9"
+            data-blade-component="text"
+          >
+            RB
+          </p>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
+.c1.c1.c1.c1.c1 {
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+  height: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
+}
+
+.c2.c2.c2.c2.c2:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(200,84%,44%,0.09);
+}
+
+.c3.c3.c3.c3.c3 img {
+  display: block;
+  height: 36px;
+  width: 36px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c3.c3.c3.c3.c3:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(150,100%,32%,0.09);
+}
+
+.c6.c6.c6.c6.c6 img {
+  display: block;
+  height: 36px;
+  width: 36px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8.c8.c8.c8.c8 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(4,74%,49%,0.09);
+}
+
+.c8.c8.c8.c8.c8 img {
+  display: block;
+  height: 36px;
+  width: 36px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c8.c8.c8.c8.c8:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(200,84%,37%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(4,74%,49%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0.c0.c0.c0.c0 > *:not(:first-child) {
+  margin-left: -18px;
+  z-index: 2;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="avatar-group"
+    role="group"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c3"
+        color="information"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            NK
+          </p>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c6"
+        color="positive"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c7"
+            data-blade-component="text"
+          >
+            AN
+          </p>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c8"
+        color="negative"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c9"
+            data-blade-component="text"
+          >
+            RB
+          </p>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
+.c1.c1.c1.c1.c1 {
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+  height: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
+}
+
+.c2.c2.c2.c2.c2:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 28px;
+  height: 28px;
+  width: 28px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(200,84%,44%,0.09);
+}
+
+.c3.c3.c3.c3.c3 img {
+  display: block;
+  height: 28px;
+  width: 28px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c3.c3.c3.c3.c3:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 28px;
+  height: 28px;
+  width: 28px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(150,100%,32%,0.09);
+}
+
+.c6.c6.c6.c6.c6 img {
+  display: block;
+  height: 28px;
+  width: 28px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8.c8.c8.c8.c8 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 28px;
+  height: 28px;
+  width: 28px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(4,74%,49%,0.09);
+}
+
+.c8.c8.c8.c8.c8 img {
+  display: block;
+  height: 28px;
+  width: 28px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c8.c8.c8.c8.c8:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(200,84%,37%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(4,74%,49%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0.c0.c0.c0.c0 > *:not(:first-child) {
+  margin-left: -14px;
+  z-index: 2;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="avatar-group"
+    role="group"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c3"
+        color="information"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            NK
+          </p>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c6"
+        color="positive"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c7"
+            data-blade-component="text"
+          >
+            AN
+          </p>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c8"
+        color="negative"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c9"
+            data-blade-component="text"
+          >
+            RB
+          </p>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
+.c1.c1.c1.c1.c1 {
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+  height: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
+}
+
+.c2.c2.c2.c2.c2:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 56px;
+  height: 56px;
+  width: 56px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(200,84%,44%,0.09);
+}
+
+.c3.c3.c3.c3.c3 img {
+  display: block;
+  height: 56px;
+  width: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c3.c3.c3.c3.c3:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 56px;
+  height: 56px;
+  width: 56px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(150,100%,32%,0.09);
+}
+
+.c6.c6.c6.c6.c6 img {
+  display: block;
+  height: 56px;
+  width: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8.c8.c8.c8.c8 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 56px;
+  height: 56px;
+  width: 56px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(4,74%,49%,0.09);
+}
+
+.c8.c8.c8.c8.c8 img {
+  display: block;
+  height: 56px;
+  width: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c8.c8.c8.c8.c8:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(200,84%,37%,1);
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(150,100%,27%,1);
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(4,74%,49%,1);
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0.c0.c0.c0.c0 > *:not(:first-child) {
+  margin-left: -28px;
+  z-index: 2;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="avatar-group"
+    role="group"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c3"
+        color="information"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <h5
+            class="c5"
+            data-blade-component="heading"
+          >
+            NK
+          </h5>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c6"
+        color="positive"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <h5
+            class="c7"
+            data-blade-component="heading"
+          >
+            AN
+          </h5>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c8"
+        color="negative"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <h5
+            class="c9"
+            data-blade-component="heading"
+          >
+            RB
+          </h5>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
+.c1.c1.c1.c1.c1 {
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+  height: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  outline: 0.5px solid hsla(214,28%,84%,1);
+}
+
+.c2.c2.c2.c2.c2:hover {
+  outline: 1.5px solid hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(200,84%,44%,0.09);
+}
+
+.c3.c3.c3.c3.c3 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c3.c3.c3.c3.c3:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(150,100%,32%,0.09);
+}
+
+.c6.c6.c6.c6.c6 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8.c8.c8.c8.c8 {
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 9999px;
+  background-color: hsla(4,74%,49%,0.09);
+}
+
+.c8.c8.c8.c8.c8 img {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.c8.c8.c8.c8.c8:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(200,84%,37%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(4,74%,49%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0.c0.c0.c0.c0 > *:not(:first-child) {
+  margin-left: -10px;
+  z-index: 2;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="avatar-group"
+    role="group"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c3"
+        color="information"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            NK
+          </p>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c6"
+        color="positive"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c7"
+            data-blade-component="text"
+          >
+            AN
+          </p>
+        </div>
+      </button>
+    </div>
+    <div
+      class="c1 c2"
+      data-blade-component="avatar"
+    >
+      <button
+        class="c8"
+        color="negative"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c9"
+            data-blade-component="text"
+          >
+            RB
+          </p>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;

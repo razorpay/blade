@@ -1,0 +1,551 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchInput /> should render 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    position="relative"
+    style={
+      [
+        {
+          "position": "relative",
+        },
+      ]
+    }
+  >
+    <View
+      data-blade-component="search-input"
+      style={
+        [
+          {},
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="column"
+        position="relative"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "column",
+              "position": "relative",
+              "width": "100%",
+            },
+          ]
+        }
+        width="100%"
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 0,
+                "marginTop": 0,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 4,
+                  "marginRight": 16,
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="center"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              gap="spacing.0"
+              maxHeight="36px"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 0,
+                    "maxHeight": 36,
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                color="surface.text.gray.subtle"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={75}
+                fontStyle="normal"
+                fontWeight="semibold"
+                lineHeight={75}
+                numberOfLines={2}
+                style={
+                  [
+                    {
+                      "color": "hsla(211, 26%, 34%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontStyle": "normal",
+                      "fontWeight": "600",
+                      "letterSpacing": 0,
+                      "lineHeight": 18,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Enter name
+              </Text>
+              <View
+                data-blade-component="visually-hidden"
+                style={
+                  [
+                    {
+                      "borderColor": "black",
+                      "borderStyle": "solid",
+                      "borderWidth": 0,
+                      "clip": "rect(0 0 0 0)",
+                      "clipPath": "inset(50%)",
+                      "height": 1,
+                      "left": -10000,
+                      "marginBottom": -1,
+                      "marginLeft": 0,
+                      "marginRight": -1,
+                      "marginTop": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                      "wordWrap": "normal",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  color="surface.text.gray.normal"
+                  data-blade-component="text"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight={100}
+                  style={
+                    [
+                      {
+                        "color": "hsla(212, 39%, 16%, 1)",
+                        "fontFamily": "Inter",
+                        "fontSize": 14,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "letterSpacing": 0,
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          currentInteraction="default"
+          data-blade-component="base-box"
+          style={
+            [
+              {},
+              {
+                "borderRadius": 4,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            currentInteraction="default"
+            isDropdownTrigger={true}
+            onClick={[Function]}
+            setShowAllTagsWithAnimation={[Function]}
+            size="medium"
+            style={
+              [
+                {
+                  "backgroundColor": "yellow",
+                  "borderColor": "hsla(214, 28%, 84%, 1)",
+                  "borderRadius": 4,
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "height": "auto",
+                  "position": "relative",
+                  "width": "100%",
+                },
+                {
+                  "maxHeight": 36,
+                },
+                {
+                  "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                  "borderColor": "hsla(214, 28%, 84%, 1)",
+                  "borderRadius": 4,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="center"
+              alignSelf="center"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "paddingLeft": 12,
+                    },
+                  ]
+                }
+              >
+                <RNSVGSvgView
+                  accessibilityElementsHidden={true}
+                  align="xMidYMid"
+                  bbHeight="16px"
+                  bbWidth="16px"
+                  data-blade-component="icon"
+                  fill="none"
+                  focusable={false}
+                  height="16px"
+                  importantForAccessibility="no-hide-descendants"
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      [
+                        {},
+                      ],
+                      {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width="16px"
+                >
+                  <RNSVGGroup
+                    fill={null}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      clipRule={0}
+                      d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
+                      fill={
+                        {
+                          "payload": 4285959847,
+                          "type": 0,
+                        }
+                      }
+                      fillRule={0}
+                      propList={
+                        [
+                          "fill",
+                          "fillRule",
+                        ]
+                      }
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </View>
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              justifyContent="flex-start"
+              minHeight="36px"
+              onLayout={[Function]}
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
+                    "minHeight": 36,
+                    "paddingBottom": 2,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 2,
+                    "position": "relative",
+                  },
+                ]
+              }
+            >
+              <RCTScrollView
+                contentContainerStyle={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexWrap": "wrap",
+                    "position": "relative",
+                  }
+                }
+                horizontal={false}
+                onContentSizeChange={[Function]}
+                onScrollBeginDrag={[Function]}
+                onScrollEndDrag={[Function]}
+                showsHorizontalScrollIndicator={false}
+              >
+                <View>
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessible={true}
+                    data-blade-component="base-box"
+                    focusable={true}
+                    height="100%"
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    position="absolute"
+                    style={
+                      [
+                        {
+                          "height": "100%",
+                          "position": "absolute",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    width="100%"
+                  />
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    width="100%"
+                  >
+                    <TextInput
+                      accessibilityDescribedBy=""
+                      accessibilityInvalid={false}
+                      accessibilityRequired={false}
+                      accessibilityState={
+                        {
+                          "disabled": false,
+                          "expanded": undefined,
+                        }
+                      }
+                      accessible={true}
+                      autoCompleteType="off"
+                      data-blade-component="styled-base-input"
+                      editable={true}
+                      hasTags={false}
+                      id="searchinput-1-input-2"
+                      isDropdownTrigger={true}
+                      isFocused={false}
+                      isTextArea={false}
+                      keyboardType="default"
+                      leadingIcon={[Function]}
+                      multiline={false}
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onEndEditing={[Function]}
+                      onFocus={[Function]}
+                      onKeyPress={[Function]}
+                      onSubmitEditing={[Function]}
+                      placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                      returnKeyType="search"
+                      secureTextEntry={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "transparent",
+                            "color": "hsla(211, 26%, 34%, 1)",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "height": 36,
+                            "letterSpacing": 0,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "minHeight": 36,
+                            "paddingBottom": 8,
+                            "paddingLeft": 0,
+                            "paddingRight": 12,
+                            "paddingTop": 8,
+                            "textAlignVertical": "top",
+                            "textDecorationLine": "none",
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                      textContentType="none"
+                      trailingInteractionElement={null}
+                      valueComponentType="text"
+                    />
+                  </View>
+                </View>
+              </RCTScrollView>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessible={true}
+                data-blade-component="base-box"
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {
+              "marginLeft": 0,
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          justifyContent="flex-end"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

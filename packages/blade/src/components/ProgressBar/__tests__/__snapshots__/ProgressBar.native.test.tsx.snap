@@ -3982,7 +3982,44 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
                 },
               ]
             }
-          />
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="semibold"
+              lineHeight={75}
+              marginTop="spacing.3"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 8,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              70
+              %
+            </Text>
+          </View>
         </View>
       </View>
     </View>

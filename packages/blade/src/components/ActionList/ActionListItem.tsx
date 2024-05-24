@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import styled from 'styled-components';
+import type { TouchableOpacity } from 'react-native';
 import { StyledActionListItem } from './styles/StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
@@ -12,7 +13,8 @@ import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import { isReactNative } from '~utils';
+import type { Platform } from '~utils';
+import { castWebType, isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Checkbox } from '~components/Checkbox';
 import { size } from '~tokens/global';
@@ -31,7 +33,14 @@ import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds'
 type ActionListItemProps = {
   title: string;
   description?: string;
-  onClick?: (clickProps: { name: string; value?: boolean }) => void;
+  onClick?: (clickProps: {
+    name: string;
+    value?: boolean;
+    event: Platform.Select<{
+      web: React.MouseEvent;
+      native: React.TouchEvent<TouchableOpacity>;
+    }>;
+  }) => void;
   /**
    * value that you get from `onChange` event on SelectInput or in form submissions.
    */
@@ -437,7 +446,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
           if (typeof props._index === 'number') {
             onOptionClick(e, props._index);
-            props.onClick?.({ name: props.value, value: isSelected });
+            props.onClick?.({ name: props.value, value: isSelected, event: castWebType(e) });
           }
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
