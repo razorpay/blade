@@ -41,6 +41,7 @@ export const sideNavWithReactRouter = {
     UserIcon,
     MenuIcon,
   } from '@razorpay/blade/components';
+  import type { SideNavLinkProps } from '@razorpay/blade/components';
   import { navItemsJSON } from './navItemsJSON';
   import type {  NavItemsJSONType, ItemsType } from './navItemsJSON';
 
@@ -252,7 +253,7 @@ export const sideNavWithReactRouter = {
           </SideNavFooter>
         </SideNav>
 
-        <Box marginLeft={{ base: 'spacing.0', m: '300px' }}>
+        <Box marginLeft={{ base: 'spacing.0', m: '300px' }} paddingTop="spacing.10">
           <Button
             display={{ base: undefined, m: 'none' }}
             variant="tertiary"
