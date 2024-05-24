@@ -39,6 +39,7 @@ export const sideNavWithReactRouter = {
     BoxIcon,
     SettingsIcon,
     UserIcon,
+    MenuIcon,
   } from '@razorpay/blade/components';
   import { navItemsJSON } from './navItemsJSON';
   import type {  NavItemsJSONType, ItemsType } from './navItemsJSON';
@@ -254,10 +255,14 @@ export const sideNavWithReactRouter = {
         <Box marginLeft={{ base: 'spacing.0', m: '300px' }}>
           <Button
             display={{ base: undefined, m: 'none' }}
+            variant="tertiary"
+            icon={MenuIcon}
             onClick={() => setIsMobileOpen(true)}
-          >
-            Open Mobile Drawer
-          </Button>
+            position="fixed"
+            top="spacing.4"
+            right="spacing.4"
+            zIndex="2"
+          />
           <Text 
             marginY="spacing.4" 
             display={{ base: undefined, m: 'none' }}

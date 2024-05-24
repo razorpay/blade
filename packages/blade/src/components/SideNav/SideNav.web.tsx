@@ -16,6 +16,7 @@ import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const {
   COLLAPSED,
@@ -93,6 +94,7 @@ const SideNav = ({
   isOpen,
   onDismiss,
   banner,
+  testID,
   ...styledProps
 }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
@@ -199,6 +201,10 @@ const SideNav = ({
                 justifyContent="space-between"
                 className="mobile-l1-container"
                 height="100%"
+                {...metaAttribute({
+                  name: MetaConstants.SideNav,
+                  testID,
+                })}
               >
                 {children}
               </MobileL1Container>
@@ -223,6 +229,10 @@ const SideNav = ({
           flexDirection="column"
           width={makeSize(EXPANDED_L1_WIDTH)}
           as="nav"
+          {...metaAttribute({
+            name: MetaConstants.SideNav,
+            testID,
+          })}
           {...getStyledProps(styledProps)}
         >
           {banner ? (
