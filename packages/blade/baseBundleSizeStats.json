@@ -303,9 +303,9 @@
   {
     "name": "PhoneNumberInput",
     "passed": true,
-    "size": 76194,
+    "size": 76215,
     "sizeLimit": 2000000,
-    "loading": 1.4881640625
+    "loading": 1.48857421875
   },
   {
     "name": "SearchInput",
