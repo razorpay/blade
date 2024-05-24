@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-chore(blade): add placeholder prop in phone input
+feat: add placeholder prop in phone input
