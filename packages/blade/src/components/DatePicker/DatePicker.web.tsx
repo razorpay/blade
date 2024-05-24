@@ -15,7 +15,7 @@ import { useDatesState } from './useDatesState';
 import { DatePickerInput } from './DateInput';
 import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter';
-import { convertIntlToDayjsLocale } from './utils';
+import { convertIntlToDayjsLocale, loadScript } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -28,6 +28,9 @@ import {
   BottomSheetFooter,
   BottomSheetHeader,
 } from '~components/BottomSheet';
+import { logger } from '~utils/logger';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -56,7 +59,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   picker,
   onPickerChange,
   ...props
-}: DatePickerProps<Type>): React.ReactElement => {
+}: DatePickerProps<Type> & StyledPropsBlade): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
@@ -225,10 +228,26 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     };
   }, [i18nState?.locale]);
 
+  // Dynamically load dayjs locales
+  React.useLayoutEffect(() => {
+    try {
+      const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
+      // dayjs needs to be loaded into window so that once the locale is loaded it can be parsed
+      if (!(window as any).dayjs) {
+        (window as any).dayjs = dayjs;
+      }
+      loadScript(`https://cdn.jsdelivr.net/npm/dayjs@1/locale/${locale}.js`, () =>
+        dayjs.locale(locale),
+      );
+    } catch (e: unknown) {
+      logger({ type: 'warn', message: 'Failed to load dayjs locale' });
+    }
+  }, [i18nState?.locale]);
+
   return (
     <HeadlessMantineProvider>
       <DatesProvider settings={dateProviderValue}>
-        <BaseBox width="100%">
+        <BaseBox width="100%" {...getStyledProps(props)}>
           <DatePickerInput
             selectionType={_selectionType}
             date={controlledValue}

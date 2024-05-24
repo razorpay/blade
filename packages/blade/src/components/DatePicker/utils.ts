@@ -142,7 +142,27 @@ function patchLocale(locale: string): string | boolean {
 function convertIntlToDayjsLocale(lang: string): string {
   lang = lang.toLowerCase();
   const locale = patchLocale(lang) || (lang.includes('-') && patchLocale(lang.split('-')[0]));
+  if (!locale) return 'en';
+
   return `${locale}`;
 }
 
-export { convertIntlToDayjsLocale };
+function isScriptLoaded(src: string): boolean {
+  return Boolean(document.querySelector(`script[src="${src}"]`));
+}
+
+/**
+ * Used to dynamically load a script
+ */
+function loadScript(src: string, callback: () => void): void {
+  if (isScriptLoaded(src)) {
+    callback();
+    return;
+  }
+  const localeScript = document.createElement('script');
+  localeScript.src = src;
+  localeScript.onload = () => callback();
+  document.head.appendChild(localeScript);
+}
+
+export { convertIntlToDayjsLocale, loadScript };
