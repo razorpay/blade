@@ -154,14 +154,15 @@ function isScriptLoaded(src: string): boolean {
 /**
  * Used to dynamically load a script
  */
-function loadScript(src: string, callback: () => void): void {
+function loadScript(src: string, callback?: () => void): void {
   if (isScriptLoaded(src)) {
-    callback();
+    callback?.();
     return;
   }
   const localeScript = document.createElement('script');
+  localeScript.async = true;
   localeScript.src = src;
-  localeScript.onload = () => callback();
+  localeScript.onload = () => callback?.();
   document.head.appendChild(localeScript);
 }
 

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { CalendarLevel as MantineCalendarLevel } from '@mantine/dates';
 import dayjs from 'dayjs';
+import { useI18nContext } from '@razorpay/i18nify-react';
 import type { PickerType, DateValue, DatesRangeValue } from './types';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -33,15 +34,24 @@ const CalendarHeader = ({
   onPreviousDecade,
   onLevelChange,
 }: CalendarHeaderProps): React.ReactElement => {
-  const month = dayjs(date as Date).format('MMMM');
-  const year = dayjs(date as Date).format('YYYY');
+  const { i18nState } = useI18nContext();
+  const locale = i18nState?.locale ?? 'en-IN';
+
+  const month = dayjs(date as Date)
+    .locale(locale)
+    .format('MMMM');
+  const year = dayjs(date as Date)
+    .locale(locale)
+    .format('YYYY');
   const currentYear = dayjs(date as Date).year();
   const startYearOfDecade = Math.floor(currentYear / 10) * 10;
   const endYearOfDecade = startYearOfDecade + 9;
   const nextMonth = dayjs(date as Date)
+    .locale(locale)
     .add(1, 'month')
     .format('MMMM');
   const nextYear = dayjs(date as Date)
+    .locale(locale)
     .add(1, 'month')
     .format('YYYY');
 

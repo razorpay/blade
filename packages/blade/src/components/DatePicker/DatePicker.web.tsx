@@ -222,7 +222,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
 
   const dateProviderValue = React.useMemo(() => {
     const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
-    dayjs.locale(locale);
     return {
       locale,
     };
@@ -236,9 +235,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       if (!(window as any).dayjs) {
         (window as any).dayjs = dayjs;
       }
-      loadScript(`https://cdn.jsdelivr.net/npm/dayjs@1/locale/${locale}.js`, () =>
-        dayjs.locale(locale),
-      );
+      loadScript(`https://cdn.jsdelivr.net/npm/dayjs@1/locale/${locale}.js`);
     } catch (e: unknown) {
       logger({ type: 'warn', message: 'Failed to load dayjs locale' });
     }
