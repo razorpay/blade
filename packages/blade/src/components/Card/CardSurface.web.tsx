@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
+import { makeBorderSize } from '~utils';
 
 const CardSurface = styled(BaseBox)(({ elevation, theme }) => {
   return {
@@ -7,7 +8,7 @@ const CardSurface = styled(BaseBox)(({ elevation, theme }) => {
     display: 'flex',
     position: 'relative',
     flexDirection: 'column',
-    borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
+    borderWidth: elevation === 'none' ? makeBorderSize(theme.border.width.thin) : undefined,
     borderStyle: elevation === 'none' ? 'solid' : undefined,
     borderColor: elevation === 'none' ? `${theme.colors.surface.border.gray.muted}` : undefined,
     boxSizing: 'border-box',
