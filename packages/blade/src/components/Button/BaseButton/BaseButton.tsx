@@ -225,7 +225,7 @@ const getProps = ({
     buttonPaddingRight: isIconOnly
       ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].right]),
-    text: size === 'xsmall' ? childrenString?.trim().toUpperCase() : childrenString?.trim(),
+    text: childrenString?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
       getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),

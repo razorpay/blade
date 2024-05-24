@@ -204,8 +204,8 @@ const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, Icon
 };
 
 const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
-  xsmall: 'small',
-  small: 'small',
+  xsmall: 'medium',
+  small: 'medium',
   medium: 'medium',
   large: 'medium',
 };

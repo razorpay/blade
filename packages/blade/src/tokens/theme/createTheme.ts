@@ -181,6 +181,11 @@ const getOnLightOverrides = (
           normal: brandColors[600],
         },
       },
+      text: {
+        primary: {
+          normal: brandColors[600],
+        },
+      },
     },
   };
 
