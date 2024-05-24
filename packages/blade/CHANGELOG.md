@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.18.3
+
+### Patch Changes
+
+- d500ec14: feat: add placeholder prop in phone input
+
 ## 11.18.2
 
 ### Patch Changes
