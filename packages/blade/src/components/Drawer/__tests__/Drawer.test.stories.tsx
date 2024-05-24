@@ -153,6 +153,7 @@ StackingDrawerOpen.play = async () => {
 
   // Open drawer again and close all at once with close button
   await userEvent.click(drawerToggleButton);
+  await waitFor(() => expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible());
   await userEvent.click(getByRole('button', { name: 'Open 2nd Drawer' }));
   await waitFor(() => expect(getByText('Drawer 2 Heading')).toBeVisible());
   await userEvent.click(getAllByLabelText('Close')[1]);
