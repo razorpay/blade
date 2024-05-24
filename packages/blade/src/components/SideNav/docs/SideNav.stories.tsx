@@ -2,8 +2,6 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import type { SideNavProps, SideNavSectionProps } from '../types';
 import type { SideNavLinkProps } from '..';
@@ -537,7 +535,6 @@ MobileSideNav.storyName = 'Mobile SideNav';
 
 MobileSideNav.parameters = {
   viewport: {
-    viewports: INITIAL_VIEWPORTS,
     defaultViewport: 'iPhone6',
   },
 };
