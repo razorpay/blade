@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+'@razorpay/blade': patch
 ---
 
-fix(Card): card border width
+fix(Card, Switch): card border width, switch colors
