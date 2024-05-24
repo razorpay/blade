@@ -3,6 +3,7 @@ import type { CalendarLevel as MantineCalendarLevel } from '@mantine/dates';
 import dayjs from 'dayjs';
 import { useI18nContext } from '@razorpay/i18nify-react';
 import type { PickerType, DateValue, DatesRangeValue } from './types';
+import { convertIntlToDayjsLocale } from './utils';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
@@ -35,7 +36,7 @@ const CalendarHeader = ({
   onLevelChange,
 }: CalendarHeaderProps): React.ReactElement => {
   const { i18nState } = useI18nContext();
-  const locale = i18nState?.locale ?? 'en-IN';
+  const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
 
   const month = dayjs(date as Date)
     .locale(locale)
