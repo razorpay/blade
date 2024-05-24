@@ -65,7 +65,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const { theme } = useTheme();
   const ctx = useDatesContext();
   const isSingle = _selectionType === 'single';
-  const [_, forceRerenderBottomSheet] = React.useReducer((x: number) => x + 1, 0);
+  const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
 
   const [_picker, setPicker] = useControllableState<PickerType>({
@@ -203,16 +203,16 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
           }}
           onNext={(data) => {
             props?.onNext?.(data);
-            forceRerenderBottomSheet();
+            forceRerender();
           }}
           onPrevious={(data) => {
             props?.onPrevious?.(data);
-            forceRerenderBottomSheet();
+            forceRerender();
           }}
           picker={_picker}
           onPickerChange={(picker) => {
             setPicker(() => picker);
-            forceRerenderBottomSheet();
+            forceRerender();
           }}
         />
         {isMobile ? null : <CalendarFooter onApply={handleApply} onCancel={handleCancel} />}
@@ -235,7 +235,9 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       if (!(window as any).dayjs) {
         (window as any).dayjs = dayjs;
       }
-      loadScript(`https://cdn.jsdelivr.net/npm/dayjs@1/locale/${locale}.js`);
+      loadScript(`https://cdn.jsdelivr.net/npm/dayjs@1/locale/${locale}.js`, () => {
+        forceRerender();
+      });
     } catch (e: unknown) {
       logger({ type: 'warn', message: 'Failed to load dayjs locale' });
     }

@@ -4,11 +4,9 @@ import { within, userEvent } from '@storybook/testing-library';
 import { expect, jest } from '@storybook/jest';
 import type { Mock } from 'jest-mock';
 import React from 'react';
-import { DatesProvider } from '@mantine/dates';
-import { HeadlessMantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
+import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
 import type { DatesRangeValue, DateValue } from '../types';
-import type { DatePickerProps } from '../';
 import { DatePicker as DatePickerComponent } from '../';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -17,17 +15,9 @@ const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout
 
 let onOpenChange: Mock<unknown, unknown[]> | null = null;
 
-const BasicDatePicker = (props: DatePickerProps<'range' | 'range'>): React.ReactElement => (
-  <HeadlessMantineProvider>
-    <DatesProvider settings={{ locale: 'en-US' }}>
-      <DatePickerComponent {...props} />
-    </DatesProvider>
-  </HeadlessMantineProvider>
-);
-
 export const DatePickerShouldShow: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
   onOpenChange = jest.fn();
-  return <BasicDatePicker accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
+  return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
 DatePickerShouldShow.play = async () => {
@@ -50,7 +40,7 @@ DatePickerShouldShow.play = async () => {
 export const DatePickerDisabled: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
   onOpenChange = jest.fn();
   return (
-    <BasicDatePicker isDisabled accessibilityLabel="Select Date" onOpenChange={onOpenChange} />
+    <DatePickerComponent isDisabled accessibilityLabel="Select Date" onOpenChange={onOpenChange} />
   );
 };
 
@@ -65,7 +55,7 @@ DatePickerDisabled.play = async () => {
 export const DatePickerMinMaxDate: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
   onOpenChange = jest.fn();
   return (
-    <BasicDatePicker
+    <DatePickerComponent
       minDate={dayjs().subtract(5, 'day').toDate()}
       maxDate={dayjs().toDate()}
       accessibilityLabel="Select Date"
@@ -103,7 +93,7 @@ export const DatePickerSingleSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
   onOpenChange = jest.fn();
-  return <BasicDatePicker accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
+  return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
 DatePickerSingleSelect.play = async () => {
@@ -132,7 +122,7 @@ export const DatePickerSingleSelectCancel: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
   onOpenChange = jest.fn();
-  return <BasicDatePicker accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
+  return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
 DatePickerSingleSelectCancel.play = async () => {
@@ -166,18 +156,14 @@ export const DatePickerSingleSelectControlled: StoryFn<
   return (
     <Box>
       <Button onClick={() => setValue(dayjs().add(5, 'day').toDate())}>Change Date</Button>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <DatePickerComponent
-            selectionType="single"
-            accessibilityLabel="Select Date"
-            value={value}
-            onChange={(date) => {
-              setValue(date);
-            }}
-          />
-        </DatesProvider>
-      </HeadlessMantineProvider>
+      <DatePickerComponent
+        selectionType="single"
+        accessibilityLabel="Select Date"
+        value={value}
+        onChange={(date) => {
+          setValue(date);
+        }}
+      />
     </Box>
   );
 };
@@ -217,15 +203,7 @@ DatePickerSingleSelectControlled.play = async () => {
 export const DatePickerSingleChangePicker: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  return (
-    <Box>
-      <HeadlessMantineProvider>
-        <DatesProvider settings={{ locale: 'en-US' }}>
-          <DatePickerComponent selectionType="single" accessibilityLabel="Select Date" />
-        </DatesProvider>
-      </HeadlessMantineProvider>
-    </Box>
-  );
+  return <DatePickerComponent selectionType="single" accessibilityLabel="Select Date" />;
 };
 
 DatePickerSingleChangePicker.play = async () => {
@@ -281,7 +259,7 @@ export const DatePickerRangeSelect: StoryFn<
 > = (): React.ReactElement => {
   onOpenChange = jest.fn();
   return (
-    <BasicDatePicker
+    <DatePickerComponent
       selectionType="range"
       label={{ start: 'Start Date', end: 'End Date' }}
       onOpenChange={onOpenChange}
@@ -326,7 +304,7 @@ export const DatePickerRangeSelectControlled: StoryFn<
   ]);
 
   return (
-    <BasicDatePicker
+    <DatePickerComponent
       value={value}
       onChange={(date) => {
         setValue(date);
@@ -370,7 +348,7 @@ DatePickerRangeSelectControlled.play = async () => {
 export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
   onOpenChange = jest.fn();
   return (
-    <BasicDatePicker
+    <DatePickerComponent
       selectionType="range"
       label={{ start: 'Start Date', end: 'End Date' }}
       presets={[
@@ -437,6 +415,53 @@ DatePickerPresets.play = async () => {
   // assert inputs value
   await expect(startInput).toHaveValue(dayjs().subtract(7, 'day').format('DD/MM/YYYY'));
   await expect(endInput).toHaveValue(dayjs().format('DD/MM/YYYY'));
+};
+
+const LocaleExample = (): React.ReactElement => {
+  onOpenChange = jest.fn();
+  const { setI18nState } = useI18nContext();
+
+  return (
+    <Box>
+      <Button onClick={() => setI18nState?.({ locale: 'hi-IN' })}>Change locale</Button>
+      <DatePickerComponent onOpenChange={onOpenChange} label="Select Date" />
+    </Box>
+  );
+};
+
+export const Localization: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
+  return (
+    <I18nProvider initData={{ locale: 'en-IN' }}>
+      <LocaleExample />
+    </I18nProvider>
+  );
+};
+
+Localization.play = async () => {
+  const { getByRole, queryByText } = within(document.body);
+  const input = getByRole('combobox', { name: /Select Date/i });
+  // open
+  await userEvent.click(input);
+  await sleep(400);
+  await expect(onOpenChange).toBeCalledWith({ isOpen: true });
+  await expect(queryByText('Apply')).toBeVisible();
+  // expect hindi locale
+  await expect(queryByText('Sun')).toBeVisible();
+
+  // click apply
+  const applyButton = getByRole('button', { name: /Apply/i });
+  await userEvent.click(applyButton);
+  await sleep(400);
+
+  // click change locale
+  const changeLocaleButton = getByRole('button', { name: /Change locale/i });
+  await userEvent.click(changeLocaleButton);
+  await sleep(400);
+
+  // open
+  await userEvent.click(input);
+  await sleep(400);
+  await expect(queryByText('रवि')).toBeVisible();
 };
 
 export default {
