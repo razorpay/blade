@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
-import type { SideNavSectionProps } from '../types';
+import type { SideNavProps, SideNavSectionProps } from '../types';
 import type { SideNavLinkProps } from '..';
 import {
   SideNavBody,
@@ -32,6 +32,7 @@ import {
   FileTextIcon,
   HeadsetIcon,
   LayoutIcon,
+  MenuIcon,
   PlusIcon,
   RazorpayxPayrollIcon,
   ReportsIcon,
@@ -117,13 +118,13 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
         <Box position="absolute" bottom="-10px" left="0px">
           <RazorpayLinesSvg />
         </Box>
-        <Box width="264px" textAlign="center">
+        <Box width={{ base: undefined, m: '264px' }} textAlign="center">
           <RazorpayLogo />
         </Box>
-        <Box flex="1">
+        <Box flex="1" display={{ base: 'none', m: undefined }}>
           <Skeleton width="100%" height="12px" borderRadius="medium" />
         </Box>
-        <Box flex="3" marginLeft="spacing.6">
+        <Box flex="3" marginLeft="spacing.6" display={{ base: 'none', m: undefined }}>
           <Skeleton marginBottom="spacing.2" width="100%" height="12px" borderRadius="medium" />
           <Skeleton width="100%" height="12px" borderRadius="medium" />
         </Box>
@@ -344,7 +345,10 @@ const NavItem = (
   );
 };
 
-const SideNavExample: StoryFn<typeof SideNav> = ({ ...args }) => {
+const SideNavExample = ({
+  showExampleContentPadding = true,
+  ...args
+}: SideNavProps & { showExampleContentPadding?: boolean }): React.ReactElement => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
   const [isTestModeActive, setIsTestModeActive] = React.useState(false);
   const location = useLocation();
@@ -450,10 +454,21 @@ const SideNavExample: StoryFn<typeof SideNav> = ({ ...args }) => {
         </SideNavFooter>
       </SideNav>
 
-      <Box marginLeft={{ base: 'spacing.0', m: '300px' }}>
-        <Button display={{ base: undefined, m: 'none' }} onClick={() => setIsMobileOpen(true)}>
-          Open Mobile Drawer
-        </Button>
+      <Box
+        marginLeft={{ base: 'spacing.0', m: '300px' }}
+        paddingY={showExampleContentPadding ? { base: 'spacing.11', m: 'spacing.0' } : 'spacing.0'}
+        paddingX={{ base: 'spacing.4', m: 'spacing.0' }}
+      >
+        <Button
+          display={{ base: undefined, m: 'none' }}
+          variant="tertiary"
+          icon={MenuIcon}
+          onClick={() => setIsMobileOpen(true)}
+          position="fixed"
+          top="spacing.4"
+          right="spacing.4"
+          zIndex="2"
+        />
         <Switch>
           {[...getAllHrefs(), '/settings/user', '/settings/account'].map((route) => (
             <Route key={route} path={route} component={Page} />
@@ -491,7 +506,12 @@ const ActivationCard = (): React.ReactElement => {
 export const DashboardLayout: StoryFn<typeof SideNav> = ({ ...args }) => {
   return (
     <DashboardSkeleton>
-      <SideNavExample position="absolute" {...args} banner={<ActivationCard />} />
+      <SideNavExample
+        position="absolute"
+        {...args}
+        banner={<ActivationCard />}
+        showExampleContentPadding={false}
+      />
     </DashboardSkeleton>
   );
 };
