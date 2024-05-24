@@ -89,6 +89,18 @@ const getL1MenuClassName = ({
   return '';
 };
 
+/**
+ * ### SideNav component
+ *
+ * The side navigation is positioned along the left side of the screen that provides quick access to different sections or functionalities of the application.
+ *
+ * ---
+ *
+ * #### Usage
+ *
+ * SideNav requires handling active state with React Router, Checkout Usage with React Router v6 at - [SideNav Documentation](https://blade.razorpay.com/?path=/docs/components-sidenav--docs)
+ *
+ */
 const SideNav = ({
   children,
   isOpen,

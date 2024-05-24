@@ -111,11 +111,12 @@ const L3Trigger = ({
   icon,
   as,
   href,
+  target,
   titleSuffix,
   tooltip,
 }: Pick<
   SideNavLinkProps,
-  'title' | 'icon' | 'as' | 'href' | 'titleSuffix' | 'tooltip'
+  'title' | 'icon' | 'as' | 'href' | 'titleSuffix' | 'tooltip' | 'target'
 >): React.ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
@@ -132,6 +133,7 @@ const L3Trigger = ({
           className={STYLED_NAV_LINK}
           as={href ? as : 'button'}
           to={href}
+          target={target}
           onClick={toggleCollapse}
           {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
         >
@@ -177,6 +179,7 @@ const SideNavLink = ({
   icon,
   tooltip,
   as,
+  target,
 }: SideNavLinkProps): React.ReactElement => {
   const {
     l2PortalContainerRef,
@@ -230,6 +233,7 @@ const SideNavLink = ({
                 as={as ?? 'a'}
                 to={href}
                 href={as ? undefined : href}
+                target={target}
                 ref={refs.setReference}
                 onClick={() => {
                   // Close the mobile nav when item is clicked and its not trigger for next menu
