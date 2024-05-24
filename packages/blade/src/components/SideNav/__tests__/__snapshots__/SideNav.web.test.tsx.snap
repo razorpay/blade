@@ -843,7 +843,7 @@ exports[`SideNav should render 1`] = `
 <div>
   <nav
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="sidenav"
   >
     <div
       class="c1"
