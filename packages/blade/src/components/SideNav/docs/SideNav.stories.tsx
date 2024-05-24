@@ -2,6 +2,8 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import type { SideNavProps, SideNavSectionProps } from '../types';
 import type { SideNavLinkProps } from '..';
@@ -374,7 +376,9 @@ const SideNavExample = ({
                 key={l1Sections.title}
                 title={l1Sections.title}
                 maxVisibleItems={l1Sections.maxItemsVisible}
-                defaultIsExpanded={getSectionExpanded(l1Sections.items)}
+                defaultIsExpanded={getSectionExpanded(
+                  l1Sections.items.slice(l1Sections.maxItemsVisible),
+                )}
               >
                 {l1Sections.items.map((l1Item) => {
                   if (!l1Item.items) {
@@ -514,4 +518,26 @@ export const DashboardLayout: StoryFn<typeof SideNav> = ({ ...args }) => {
       />
     </DashboardSkeleton>
   );
+};
+
+export const MobileSideNav: StoryFn<typeof SideNav> = ({ ...args }) => {
+  return (
+    <DashboardSkeleton>
+      <SideNavExample
+        position="absolute"
+        {...args}
+        banner={<ActivationCard />}
+        showExampleContentPadding={false}
+      />
+    </DashboardSkeleton>
+  );
+};
+
+MobileSideNav.storyName = 'Mobile SideNav';
+
+MobileSideNav.parameters = {
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+    defaultViewport: 'iPhone6',
+  },
 };
