@@ -123,10 +123,10 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
         <Box width={{ base: undefined, m: '264px' }} textAlign="center">
           <RazorpayLogo />
         </Box>
-        <Box flex="1" display={{ base: 'none', m: undefined }}>
+        <Box flex="1" display={{ base: 'none', m: 'block' }}>
           <Skeleton width="100%" height="12px" borderRadius="medium" />
         </Box>
-        <Box flex="3" marginLeft="spacing.6" display={{ base: 'none', m: undefined }}>
+        <Box flex="3" marginLeft="spacing.6" display={{ base: 'none', m: 'block' }}>
           <Skeleton marginBottom="spacing.2" width="100%" height="12px" borderRadius="medium" />
           <Skeleton width="100%" height="12px" borderRadius="medium" />
         </Box>
