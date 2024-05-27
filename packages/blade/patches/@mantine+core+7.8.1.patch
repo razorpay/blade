@@ -1,0 +1,49 @@
+diff --git a/node_modules/@mantine/core/esm/core/Box/use-random-classname/use-random-classname.mjs b/node_modules/@mantine/core/esm/core/Box/use-random-classname/use-random-classname.mjs
+index 494921c..acde45a 100644
+--- a/node_modules/@mantine/core/esm/core/Box/use-random-classname/use-random-classname.mjs
++++ b/node_modules/@mantine/core/esm/core/Box/use-random-classname/use-random-classname.mjs
+@@ -1,5 +1,43 @@
+ 'use client';
+-import { useId } from 'react';
++import React from 'react';
++
++/**
++ * Credit: https://github.com/reach/reach-ui/blob/dev/packages/auto-id/src/auto-id.ts
++ */
++let handoffComplete = false;
++let id = 0;
++const genId = () => ++id;
++
++/**
++ * Reack hook to generate unique id
++ * It helps us provide stable ID which we can reference in the components
++ * and also works in server side rendered component
++ * TODO: Add support for `React.useId` after React18 upgrade
++ *
++ * @param prefix prefix to append before the id
++ * @param idProp the external id passed from the user
++ */
++const useId = (prefix, idProp) => {
++  const initialId = idProp || (handoffComplete ? genId() : null);
++  const [uid, setUid] = React.useState(initialId);
++
++  React.useLayoutEffect(() => {
++    // Patch the ID after render. We do this in `useLayoutEffect` to avoid any
++    // rendering flicker, though it'll make the first render slower (unlikely
++    // to matter, but you're welcome to measure your app and let us know if
++    // it's a problem).
++    if (uid === null) setUid(genId());
++  }, []);
++
++  React.useEffect(() => {
++    if (!handoffComplete) {
++      handoffComplete = true;
++    }
++  }, []);
++
++  const id = uid != null ? uid.toString() : undefined;
++  return prefix ? `${prefix}-${id}` : id;
++};
+ 
+ function useRandomClassName() {
+   const id = useId().replace(/:/g, "");
