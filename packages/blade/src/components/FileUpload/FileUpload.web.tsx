@@ -163,6 +163,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       handleFilesChange(inputFiles);
       onChange?.({ name, fileList: allFiles });
     }
+
+    // Reset the input value to allow re-selecting the same file
+    event.target.value = '';
   };
 
   return (
