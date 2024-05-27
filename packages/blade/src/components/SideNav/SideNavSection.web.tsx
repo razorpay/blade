@@ -7,15 +7,21 @@ import { Text } from '~components/Typography';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
 import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
-import { Link } from '~components/Link';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { makeBorderSize } from '~utils';
+import { BaseLink } from '~components/Link/BaseLink';
 
 const SideNavTitleDivider = styled(BaseBox)(({ theme }) => {
   return {
     height: makeBorderSize(theme.border.width.thicker),
     width: '100%',
     background: `linear-gradient(90deg, ${theme.colors.transparent} 0%, ${theme.colors.surface.border.gray.muted} 50%, ${theme.colors.transparent} 100%)`,
+  };
+});
+
+const FullWidthLink = styled(BaseLink)(() => {
+  return {
+    width: '100%',
   };
 });
 
@@ -37,24 +43,24 @@ const ShowMoreLink = ({
   return (
     <>
       <BaseBox className={classes.SHOW_WHEN_COLLAPSED} width="100%" justifyContent="center">
-        <Link
+        <FullWidthLink
           {...linkProps}
           marginX="spacing.4"
           icon={isExpanded ? ChevronUpIcon : undefined}
           iconPosition="right"
         >
           {isExpanded ? `` : `+${collapsedItemsCount}`}
-        </Link>
+        </FullWidthLink>
       </BaseBox>
-      <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>
-        <Link
+      <BaseBox className={classes.HIDE_WHEN_COLLAPSED} width="100%">
+        <FullWidthLink
           {...linkProps}
           marginX="spacing.4"
           icon={isExpanded ? ChevronUpIcon : ChevronDownIcon}
           iconPosition="right"
         >
           {isExpanded ? 'Show Less' : `+${collapsedItemsCount} More`}
-        </Link>
+        </FullWidthLink>
       </BaseBox>
     </>
   );

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
 import type { SideNavLinkProps } from '../types';
-import { classes, NAV_ITEM_HEIGHT } from '../tokens';
+import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import { TooltipifyNavItem } from './TooltipifyNavItem';
 import { Box } from '~components/Box';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
@@ -56,6 +56,7 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
       borderRadius: props.theme.border.radius.medium,
       borderWidth: makeBorderSize(props.theme.border.width.none),
       backgroundColor: props.theme.colors.transparent,
+      transition: getNavItemTransition(props.theme),
       '&[aria-current]': {
         color: props.theme.colors.interactive.text.primary.subtle,
         backgroundColor: props.theme.colors.interactive.background.primary.faded,
