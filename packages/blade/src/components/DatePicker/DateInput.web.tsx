@@ -11,6 +11,7 @@ import { BaseInput } from '~components/Input/BaseInput';
 import { size as sizeTokens } from '~tokens/global';
 import { isReactNative, makeSize } from '~utils';
 import type { BladeElementRef } from '~utils/types';
+import { useIsMobile } from '~utils/useIsMobile';
 
 const _DateInput = (
   props: BaseInputProps,
@@ -48,7 +49,7 @@ const HiddenInput = ({ value, name }: { value: string; name?: string }): React.R
 };
 
 const iconVerticalMargin = {
-  medium: sizeTokens[16],
+  medium: sizeTokens[14],
   large: sizeTokens[24],
 } as const;
 
@@ -63,10 +64,12 @@ const _DatePickerInput = (
     autoFocus,
     name,
     size = 'medium',
+    necessityIndicator,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
 ): React.ReactElement => {
+  const isMobile = useIsMobile();
   const format = 'DD/MM/YYYY';
   const isLarge = size === 'large';
   const isLabelPositionLeft = labelPosition === 'left';
@@ -142,6 +145,7 @@ const _DatePickerInput = (
             autoFocus={autoFocus}
             value={startValue}
             componentName="DatePickerInputStart"
+            necessityIndicator={necessityIndicator}
             {...props}
             {...referenceProps}
           />
@@ -151,7 +155,7 @@ const _DatePickerInput = (
             size="medium"
             marginTop={
               // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
-              hasLabel && !isLabelPositionLeft
+              (hasLabel && !isLabelPositionLeft) || isMobile
                 ? `calc(${makeSize(iconVerticalMargin[size])} + ${makeSize(
                     isLarge ? sizeTokens[20] : sizeTokens[15],
                   )})`
