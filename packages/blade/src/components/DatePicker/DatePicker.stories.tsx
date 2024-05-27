@@ -194,7 +194,7 @@ DatePickerPresets.args = {
 };
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
   const [date, setDate] = React.useState<DatesRangeValue>([
     new Date(),
     dayjs().add(3, 'day').toDate(),
