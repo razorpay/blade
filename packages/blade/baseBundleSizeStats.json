@@ -2,9 +2,9 @@
   {
     "name": "Base",
     "passed": true,
-    "size": 25175,
+    "size": 25178,
     "sizeLimit": 2000000,
-    "loading": 0.49169921875
+    "loading": 0.4917578125
   },
   {
     "name": "Accordion, AccordionItemHeader, AccordionItemBody, AccordionItem",
@@ -14,18 +14,18 @@
     "loading": 0.63478515625
   },
   {
-    "name": "Alert",
-    "passed": true,
-    "size": 36396,
-    "sizeLimit": 2000000,
-    "loading": 0.710859375
-  },
-  {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
     "size": 37936,
     "sizeLimit": 2000000,
     "loading": 0.7409375
+  },
+  {
+    "name": "Alert",
+    "passed": true,
+    "size": 36396,
+    "sizeLimit": 2000000,
+    "loading": 0.710859375
   },
   {
     "name": "Amount",
@@ -86,9 +86,9 @@
   {
     "name": "Card, CardBody, CardHeader, CardHeaderIcon, CardHeaderIconButton, CardHeaderLeading, CardHeaderTrailing, CardFooter, CardFooterLeading, CardFooterTrailing",
     "passed": true,
-    "size": 34284,
+    "size": 34285,
     "sizeLimit": 2000000,
-    "loading": 0.669609375
+    "loading": 0.66962890625
   },
   {
     "name": "Carousel, CarouselItem",
@@ -128,9 +128,9 @@
   {
     "name": "DatePicker",
     "passed": true,
-    "size": 104324,
+    "size": 104320,
     "sizeLimit": 2000000,
-    "loading": 2.037578125
+    "loading": 2.0375
   },
   {
     "name": "Divider",
@@ -226,16 +226,16 @@
   {
     "name": "Switch",
     "passed": true,
-    "size": 29679,
+    "size": 29676,
     "sizeLimit": 2000000,
-    "loading": 0.57966796875
+    "loading": 0.579609375
   },
   {
     "name": "Table, TableHeader, TableHeaderCell, TableHeaderRow, TableBody, TableCell, TableRow, TableFooter, TableFooterCell, TableFooterRow, TablePagination, TableToolbar, TableToolbarActions",
     "passed": true,
-    "size": 82615,
+    "size": 82619,
     "sizeLimit": 2000000,
-    "loading": 1.61357421875
+    "loading": 1.61365234375
   },
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
