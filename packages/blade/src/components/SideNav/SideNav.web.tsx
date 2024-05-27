@@ -7,6 +7,7 @@ import {
   COLLAPSED_L1_WIDTH,
   EXPANDED_L1_WIDTH,
   HOVER_AGAIN_DELAY,
+  L1_EXIT_HOVER_DELAY,
   SKIP_NAV_ID,
   TRANSITION_CLEANUP_DELAY,
 } from './tokens';
@@ -112,6 +113,7 @@ const SideNav = ({
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const timeoutIdsRef = React.useRef<NodeJS.Timeout[]>([]);
+  const mouseOverTimeoutRef = React.useRef<NodeJS.Timeout>();
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isMobileL2Open, setIsMobileL2Open] = React.useState(false);
   const [isL1Hovered, setIsL1Hovered] = React.useState(false);
@@ -295,16 +297,31 @@ const SideNav = ({
                   setIsTransitioning(false);
                 }
               }}
+              // Hmm you might be wondering, why is `onMouseOver` paired with `onMouseLeave`? A sane person would pair `onMouseOver` with `onMouseOut`, and `onMouseEnter` with `onMouseLeave`
+              // since they are logical equivalents of each other. So why don't we do that? Hold tight, you're in for a ride ☕️.
+              //
+              // 1. In an ideal scenario, we would put `onMouseEnter` and `onMouseLeave` here and expect things to work.
+              // 2. The L2 menu of our SideNav is React Portalled out of the L1 child
+              // 3. React considers its own childs as true child for JS events and not DOM childs (Checkout React Portal Caveats - https://react.dev/reference/react-dom/createPortal#caveats)
+              // 3. In the next ideal scenario, we would put `e.stopPropagation` on child component of portal like React recommends, except mouseenter, mouseleave events don't propagate at all (https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event#usage_notes)
+              // 4. So `onMouseEnter` gets triggered on L2 enter. But we don't want to open L1 menu on L2 hover
+              // 5. Thus we use `onMouseOver` for hover part and call e.stopPropagation in portal child (SideNavLevel).
+              // 6. But in case of unhover/leave, we don't want to trigger mouseOut for all child components individually. We want 1 hover out of L1 menu. Thus we use `onMouseLeave`
               onMouseOver={() => {
+                if (mouseOverTimeoutRef.current) {
+                  clearTimeout(mouseOverTimeoutRef.current);
+                }
                 if (isL1Collapsed && isHoverAgainEnabled) {
                   setIsL1Hovered(true);
                 }
               }}
-              onMouseOut={() => {
-                if (isL1Collapsed) {
-                  setIsL1Hovered(false);
-                  setIsTransitioning(true);
-                  cleanupTransition();
+              onMouseLeave={() => {
+                if (isL1Collapsed && isL1Hovered) {
+                  mouseOverTimeoutRef.current = setTimeout(() => {
+                    setIsL1Hovered(false);
+                    setIsTransitioning(true);
+                    cleanupTransition();
+                  }, L1_EXIT_HOVER_DELAY);
                 }
               }}
             >

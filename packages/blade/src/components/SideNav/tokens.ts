@@ -23,6 +23,9 @@ const TRANSITION_CLEANUP_DELAY = 300; // A little more than the duration of tran
 
 const HOVER_AGAIN_DELAY = 500;
 
+// Delay between mouse out from L1 and L1 collapsing again
+const L1_EXIT_HOVER_DELAY = 150;
+
 const getNavItemTransition = ({ motion }: Theme): string => {
   return `background-color ${makeMotionTime(motion.duration['2xquick'])} ${
     motion.easing.standard.effective
@@ -38,4 +41,5 @@ export {
   TRANSITION_CLEANUP_DELAY,
   HOVER_AGAIN_DELAY,
   getNavItemTransition,
+  L1_EXIT_HOVER_DELAY,
 };
