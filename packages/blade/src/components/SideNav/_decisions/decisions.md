@@ -18,54 +18,57 @@ The side navigation is positioned along the left side of the screen that provide
 import { NavLink } from 'react-router-dom';
 
 // Component
-<SideNav>
-  {/* L1 Items */}
-  <SideNavLink as={NavLink} title="Home" icon={HomeIcon} href="/" />
-  <SideNavLink
-    as={NavLink}
-    title="Create Payouts"
-    trailing={<Button icon={PlusIcon} variant="tertiary" />}
-    icon={HomeIcon}
-    href="/create-payouts"
-  />
+<SideNav banner={<CustomActivationCard />}>
+  <SideNavBody>
+    {/* L1 Items */}
+    <SideNavLink as={NavLink} title="Home" icon={HomeIcon} href="/" />
+    <SideNavLink
+      as={NavLink}
+      title="Create Payouts"
+      trailing={<Button icon={PlusIcon} variant="tertiary" />}
+      icon={HomeIcon}
+      href="/create-payouts"
+    />
 
-  <SideNavLink 
-    as={NavLink} 
-    title="Accounts" 
-    icon={AccountsIcon} 
-    // sets the submenu as active
-    isActive={true}
-    href="/accounts"
-  >
-    {/* L2 */}
-    <SideNavLevel title="Accounts">
-      <SideNavLink as={NavLink} title="Profile" icon={UserIcon} href="/accounts/profile" />
-      <SideNavLink 
-        as={NavLink} 
-        title="Settings" 
-        icon={UserIcon} 
-        // sets the link as active 
-        isActive={true} 
-        href="/accounts/settings" 
-      />
-      <SideNavLink as={NavLink} title="Edit" icon={UserIcon} href="/accounts/settings">
-        {/* L3 */}
-        <SideNavLevel>
-          <SideNavLink as={NavLink} title="Password" icon={PassIcon} href="/accounts/edit/pass" />
-          <SideNavLink as={NavLink} title="Email" icon={EmailIcon} href="/accounts/edit/email" />
-        </SideNavLevel>
-      </SideNavLink>
-    </SideNavLevel>
-  </SideNavLink>
+    <SideNavLink 
+      as={NavLink} 
+      title="Accounts" 
+      icon={AccountsIcon} 
+      // sets the submenu as active
+      isActive={true}
+      href="/accounts"
+    >
+      {/* L2 */}
+      <SideNavLevel title="Accounts">
+        <SideNavLink as={NavLink} title="Profile" icon={UserIcon} href="/accounts/profile" />
+        <SideNavLink 
+          as={NavLink} 
+          title="Settings" 
+          icon={UserIcon} 
+          // sets the link as active 
+          isActive={true} 
+          href="/accounts/settings" 
+        />
+        <SideNavLink as={NavLink} title="Edit" icon={UserIcon} href="/accounts/settings">
+          {/* L3 */}
+          <SideNavLevel>
+            <SideNavLink as={NavLink} title="Password" icon={PassIcon} href="/accounts/edit/pass" />
+            <SideNavLink as={NavLink} title="Email" icon={EmailIcon} href="/accounts/edit/email" />
+          </SideNavLevel>
+        </SideNavLink>
+      </SideNavLevel>
+    </SideNavLink>
 
-  {/* Section Heading */}
-  <SideNavSection title="Products" maxVisibleItems={3}>
-    <SideNavLink as={NavLink} href="/payment-gateway" title="Payment Gateway" />
-    <SideNavLink as={NavLink} href="/payment-pages" title="Payment Pages" />
-    <SideNavLink as={NavLink} href="/payment-links" title="Payment Links" />
-    <SideNavLink as={NavLink} href="/qr-codes" title="QR Codes" />
-    <SideNavLink as={NavLink} href="/subscriptions" title="Subscriptions" />
-  </SideNavSection>
+    {/* Section Heading */}
+    <SideNavSection title="Products" maxVisibleItems={3}>
+      <SideNavLink as={NavLink} href="/payment-gateway" title="Payment Gateway" />
+      <SideNavLink as={NavLink} href="/payment-pages" title="Payment Pages" />
+      <SideNavLink as={NavLink} href="/payment-links" title="Payment Links" />
+      <SideNavLink as={NavLink} href="/qr-codes" title="QR Codes" />
+      <SideNavLink as={NavLink} href="/subscriptions" title="Subscriptions" />
+    </SideNavSection>
+  </SideNavBody>
+
 
   {/* Footer */}
   <SideNavFooter>
@@ -168,14 +171,25 @@ const accountsL2Ref = React.useRef(null);
 
 ### SideNav
 
-| **Props** | **Description**                                                              | **Type** | **Default Value** |
-| --------- | ---------------------------------------------------------------------------- | -------- | ----------------- |
-| children  | children slot of SideNav, accepts SideNavLink, SideNavSection, SideNavFooter | JSX      |                   |
+| **Props** | **Description**                                              | **Type** | **Default Value** |
+| --------- | ------------------------------------------------------------ | -------- | ----------------- |
+| children  | children slot of SideNav, accepts SideNavBody, SideNavFooter | JSX      |                   |
 
 ```jsx
-import { NavLink } from 'react-router-dom';
+<SideNav>{/* children */}</SideNav>
+```
 
-<SideNav>{/* children */}</SideNav>;
+### SideNavBody
+
+| **Props** | **Description**                                                                 | **Type** | **Default Value** |
+| --------- | ------------------------------------------------------------------------------- | -------- | ----------------- |
+| children  | children slot of SideNavBody, accepts SideNavLink, SideNavSection, SideNavLevel | JSX      |                   |
+
+```jsx
+<SideNav>
+  <SideNavBody>{/* children */}</SideNavBody>
+  <SideNavFooter>{/* children */}</SideNavFooter>
+</SideNav>
 ```
 
 ### SideNavLink
@@ -413,6 +427,24 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 </tr>
 </table>
 
+### SideNavItem
+
+A generic non-link item that gives you leading, trailing slots to render the components as per your usecase.
+
+> [!Note]
+>
+> SideNavItem cannot be active, cannot be link, and cannot be button. It can be static item with something interaction in trailing slot
+
+| **Props** | **Description**                                                                      | **Type**     | **Default Value** |
+| --------- | ------------------------------------------------------------------------------------ | ------------ | ----------------- |
+| title     | title of SideNavItem                                                                 | string       |                   |
+| as        | as prop for passing render element. Use `label` if trailing has some input component | div          |                   |
+| leading   | leading slot. Render indicator / icon here                                           |              |                   |
+| trailing  | Trailing Slot of Item. Render Switch, or any other blade component here              | JSX          |                   |
+| tooltip   | Object with props that are forwarded to tooltip                                      | TooltipProps | undefined         |
+
+For Example of SideNavItem, check SideNavFooter example below.
+
 ### SideNavFooter
 
 | **Props** | **Description** | **Type** | **Default Value** |
@@ -428,18 +460,36 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 <SideNav>
   {/* ... Other Items */}
   <SideNavFooter>
-    <Box 
-      display="flex" 
-      paddingY="spacing.4" 
-      paddingX="spacing.3" 
-      justifyContent="spacing-between"
-    >
-      <Box display="flex" gap="spacing.3">
-        <Indicator color="positive" />
-        <Text>Test Mode</Text>
-      </Box>
-      <Switch />
-    </Box>
+    <SideNavItem
+      as="label"
+      title="Test Mode"
+      leading={
+        <Indicator
+          color={
+            isTestModeActive 
+            ? 'notice' 
+            : 'positive'
+          }
+          emphasis="intense"
+          accessibilityLabel=""
+        />
+      }
+      backgroundColor={
+        isTestModeActive 
+        ? `feedback.background.notice.subtle` 
+        : undefined
+      }
+      trailing={
+        <Switch
+          accessibilityLabel=""
+          size="small"
+          isChecked={isTestModeActive}
+          onChange={({ isChecked }) => {
+            setIsTestModeActive(isChecked);
+          }}
+        />
+      }
+    />
     <SideNavLink 
       as={NavLink}
       icon={GearIcon}
