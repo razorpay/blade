@@ -21,10 +21,10 @@ const generateBundleDiff = async () => {
 
   // Filter the components that don't have the same size in the base and current bundle
   if (baseBundleSizeStats.length > 0) {
-    bundleDiff = baseBundleSizeStats.filter(
-      ({ size: baseSize, name: baseName }) =>
-        !currentBundleSizeStats.some(
-          ({ size: currentSize, name: currentName }) =>
+    bundleDiff = currentBundleSizeStats.filter(
+      ({ size: currentSize, name: currentName }) =>
+        !baseBundleSizeStats.some(
+          ({ size: baseSize, name: baseName }) =>
             currentSize === baseSize && currentName === baseName,
         ),
     );
