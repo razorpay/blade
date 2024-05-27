@@ -12,6 +12,7 @@ import { levelToPicker, pickerToLevel, classes } from './constants';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const Calendar = <Type extends DateSelectionType>({
   firstDayOfWeek = 0,
@@ -110,6 +111,7 @@ const Calendar = <Type extends DateSelectionType>({
       flexDirection="column"
       gap="spacing.7"
       pickerType={levelToPicker[level]}
+      {...metaAttribute({ name: MetaConstants.Calendar })}
     >
       <CalendarHeader
         isRange={isRange}

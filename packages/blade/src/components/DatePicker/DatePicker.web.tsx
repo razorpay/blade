@@ -31,6 +31,7 @@ import {
 import { logger } from '~utils/logger';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -246,7 +247,11 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   return (
     <HeadlessMantineProvider>
       <DatesProvider settings={dateProviderValue}>
-        <BaseBox width="100%" {...getStyledProps(props)}>
+        <BaseBox
+          width="100%"
+          {...getStyledProps(props)}
+          {...metaAttribute({ name: MetaConstants.DatePicker })}
+        >
           <DatePickerInput
             selectionType={_selectionType}
             date={controlledValue}
