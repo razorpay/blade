@@ -258,9 +258,12 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       gap: makeSpace(theme.spacing[8]),
       table: {
         borderCollapse: 'collapse',
-        width: '100%',
+        width: !isDayPicker || isMobile ? '100%' : undefined,
       },
-      '> div': { width: isMobile || !isDayPicker ? '100%' : undefined },
+      '> div': {
+        margin: 0,
+        width: isMobile || !isDayPicker ? '100%' : undefined,
+      },
       th: {
         flex: 1,
       },
@@ -289,33 +292,36 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       paddingBottom: makeSpace(theme.spacing[4]),
     },
     [`.${classes.dayCell}`]: {
-      cursor: 'pointer',
-      width: isMobile || !isDayPicker ? '100%' : makeSpace(cell.size[device]),
-      height: isDayPicker && isMobile ? undefined : makeSpace(cell.size[device]),
-      aspectRatio: isDayPicker && isMobile ? '1 / 1' : undefined,
-      borderRadius: theme.border.radius.medium,
-      backgroundColor: getIn(theme.colors, cell.background.default),
-      border: 'none',
-      ...getTextStyles({ theme, variant: 'body', size: 'medium', weight: 'regular' }),
+      button: {
+        all: 'unset',
+        cursor: 'pointer',
+        width: isMobile || !isDayPicker ? '100%' : makeSpace(cell.size[device]),
+        height: isDayPicker && isMobile ? '100%' : makeSpace(cell.size[device]),
+        aspectRatio: isDayPicker && isMobile ? '1 / 1' : undefined,
+        borderRadius: theme.border.radius.medium,
+        backgroundColor: getIn(theme.colors, cell.background.default),
+        border: 'none',
+        ...getTextStyles({ theme, variant: 'body', size: 'medium', weight: 'regular' }),
 
-      '&:hover': {
-        backgroundColor: getIn(theme.colors, cell.background.hover),
+        '&:hover': {
+          backgroundColor: getIn(theme.colors, cell.background.hover),
+        },
+        '&:focus-visible': getFocusRingStyles({ theme, isImportant: true }),
+        '&[data-disabled]': {
+          color: getIn(theme.colors, cell.text.disabled),
+          backgroundColor: getIn(theme.colors, cell.background.disabled),
+          cursor: 'not-allowed',
+        },
+        '&[data-outside]': {
+          color: theme.colors.interactive.text.gray.muted,
+        },
+        '&[data-outside]:hover': {
+          color: getIn(theme.colors, cell.text.default),
+        },
+        ...ranges,
+        ...today,
+        ...selected,
       },
-      '&:focus-visible': getFocusRingStyles({ theme, isImportant: true }),
-      '&[data-disabled]': {
-        color: getIn(theme.colors, cell.text.disabled),
-        backgroundColor: getIn(theme.colors, cell.background.disabled),
-        cursor: 'not-allowed',
-      },
-      '&[data-outside]': {
-        color: theme.colors.interactive.text.gray.muted,
-      },
-      '&[data-outside]:hover': {
-        color: getIn(theme.colors, cell.text.default),
-      },
-      ...ranges,
-      ...today,
-      ...selected,
     },
   };
 });

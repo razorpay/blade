@@ -144,9 +144,9 @@
     "@table-library/react-table-library": "4.1.7",
     "tinycolor2": "1.6.0",
     "universal-base64": "2.1.0",
-    "@mantine/core": "7.8.1",
-    "@mantine/dates": "7.8.1",
-    "@mantine/hooks": "7.8.1",
+    "@mantine/core": "6.0.21",
+    "@mantine/dates": "6.0.21",
+    "@mantine/hooks": "6.0.21",
     "dayjs": "1.11.10"
   },
   "devDependencies": {
@@ -280,8 +280,8 @@
     "typescript-transform-paths": "3.4.7",
     "@types/body-scroll-lock": "3.1.0",
     "ramda": "0.29.1",
-    "@razorpay/i18nify-js": "1.9.3",
-    "@razorpay/i18nify-react": "4.0.8",
+    "@razorpay/i18nify-js": "1.10.0",
+    "@razorpay/i18nify-react": "4.0.9",
     "plop": "3.1.1",
     "node-plop": "0.32.0",
     "svgson": "5.3.1"
@@ -300,7 +300,7 @@
     "react-hot-toast": "2.4.1",
     "@gorhom/bottom-sheet": "^4.4.6",
     "@gorhom/portal": "^1.0.14",
-    "@razorpay/i18nify-js": "^1.9.3"
+    "@razorpay/i18nify-js": "^1.10.0"
   },
   "peerDependenciesMeta": {
     "react-native": {
