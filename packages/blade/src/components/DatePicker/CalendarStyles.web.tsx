@@ -312,6 +312,9 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
           backgroundColor: getIn(theme.colors, cell.background.disabled),
           cursor: 'not-allowed',
         },
+        '&[data-hidden]': {
+          display: 'none',
+        },
         '&[data-outside]': {
           color: theme.colors.interactive.text.gray.muted,
         },
