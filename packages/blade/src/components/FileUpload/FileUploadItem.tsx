@@ -2,23 +2,25 @@ import { memo } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
-import { TrashIcon, EyeIcon, CloseIcon, CheckCircleIcon } from '~components/Icons';
+import { TrashIcon, EyeIcon, CloseIcon, CheckCircleIcon, RefreshIcon } from '~components/Icons';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { Divider } from '~components/Divider';
 import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
+import { BaseLink } from '~components/Link/BaseLink';
 
 const FileUploadItem = memo(
   ({
     file,
     onPreview,
     onRemove,
+    onRetry,
     onDismiss,
     size: containerSize,
   }: FileUploadItemProps): React.ReactElement => {
-    const { name, size, uploadPercent, errorText, status } = file;
+    const { name, size, uploadPercent, errorText, errorCtaText, status } = file;
     const isUploading = status === 'uploading';
     const sizeInKB = size / 1024;
     const sizeInMB = sizeInKB / 1024;
@@ -73,13 +75,28 @@ const FileUploadItem = memo(
                   } ${isUploading && uploadPercent ? `(${uploadPercent}%)` : ''}`}
               </Text>
             </BaseBox>
-            {status === 'error' || status === 'uploading' ? (
+            {status === 'uploading' ? (
               <BaseBox>
                 <IconButton
                   accessibilityLabel="Remove File"
                   icon={CloseIcon}
                   onClick={() => onDismiss?.({ file })}
                 />
+              </BaseBox>
+            ) : status === 'error' ? (
+              <BaseBox display="flex" flexDirection="row" alignItems="center">
+                <BaseLink
+                  marginX="spacing.1"
+                  variant="button"
+                  icon={RefreshIcon}
+                  color="negative"
+                  size="small"
+                  onClick={() => {
+                    onRetry?.({ file });
+                  }}
+                >
+                  {errorCtaText ?? 'Retry'}
+                </BaseLink>
               </BaseBox>
             ) : (
               <BaseBox display="flex" flexDirection="row" alignItems="center">

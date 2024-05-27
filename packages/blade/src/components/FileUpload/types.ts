@@ -18,6 +18,10 @@ interface BladeFile extends File {
    * Text indicating an error state
    */
   errorText?: string;
+  /**
+   * Text for the error call to action
+   */
+  errorCtaText?: string;
 }
 
 type BladeFileList = BladeFile[];
@@ -81,6 +85,10 @@ type FileUploadCommonProps = {
    * Callback function triggered when a file is removed
    */
   onRemove?: ({ file }: { file: File }) => void;
+  /**
+   * Callback function triggered when a file upload is retried
+   */
+  onRetry?: ({ file }: { file: File }) => void;
   /**
    * Callback function triggered when a file upload is dismissed
    */
@@ -146,7 +154,7 @@ type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel)
 
 type FileUploadItemProps = Pick<
   FileUploadProps,
-  'onPreview' | 'onRemove' | 'onDismiss' | 'size'
+  'onPreview' | 'onRemove' | 'onDismiss' | 'onRetry' | 'size'
 > & {
   file: BladeFile;
 };
