@@ -165,7 +165,11 @@ exports[`SideNav should render 1`] = `
   width: 100%;
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
+  width: 100%;
+}
+
+.c28.c28.c28.c28.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -177,11 +181,7 @@ exports[`SideNav should render 1`] = `
   padding-left: 4px;
 }
 
-.c27.c27.c27.c27.c27 {
-  width: 100%;
-}
-
-.c29.c29.c29.c29.c29 {
+.c30.c30.c30.c30.c30 {
   position: relative;
   padding: 12px;
   width: calc(100% + 20px + 20px);
@@ -195,7 +195,7 @@ exports[`SideNav should render 1`] = `
   box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
 }
 
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -217,7 +217,7 @@ exports[`SideNav should render 1`] = `
   border-radius: 4px;
 }
 
-.c31.c31.c31.c31.c31 {
+.c33.c33.c33.c33.c33 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -229,18 +229,18 @@ exports[`SideNav should render 1`] = `
   gap: 8px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c34.c34.c34.c34.c34 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c33.c33.c33.c33.c33 {
+.c35.c35.c35.c35.c35 {
   margin-left: 4px;
 }
 
-.c36.c36.c36.c36.c36 {
+.c38.c38.c38.c38.c38 {
   display: inline-block;
 }
 
@@ -308,7 +308,7 @@ exports[`SideNav should render 1`] = `
   overflow-wrap: break-word;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -326,7 +326,7 @@ exports[`SideNav should render 1`] = `
   padding: 0;
 }
 
-.c34.c34.c34.c34.c34 {
+.c36.c36.c36.c36.c36 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -344,7 +344,7 @@ exports[`SideNav should render 1`] = `
   padding: 0;
 }
 
-.c35.c35.c35.c35.c35 {
+.c37.c37.c37.c37.c37 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -509,7 +509,7 @@ exports[`SideNav should render 1`] = `
   display: initial;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -576,6 +576,8 @@ exports[`SideNav should render 1`] = `
   border-radius: 4px;
   border-width: 0px;
   background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 70ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 70ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11 .styled-nav-link[aria-current] {
@@ -605,11 +607,20 @@ exports[`SideNav should render 1`] = `
   background: linear-gradient(90deg,hsla(0,0%,100%,0) 0%,hsla(211,20%,52%,0.18) 50%,hsla(0,0%,100%,0) 100%);
 }
 
+.c25.c25.c25.c25.c25 {
+  width: 100%;
+}
+
 .collapsed:not(.transitioning) .c18.c18.c18.c18.c18 p {
   opacity: 0;
 }
 
-.c42.c42.c42.c42.c42 {
+.c32.c32.c32.c32.c32 {
+  -webkit-transition: background-color 70ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 70ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c44.c44.c44.c44.c44 {
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -619,7 +630,7 @@ exports[`SideNav should render 1`] = `
   opacity: 0;
 }
 
-.c40.c40.c40.c40.c40 {
+.c42.c42.c42.c42.c42 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -637,7 +648,7 @@ exports[`SideNav should render 1`] = `
   position: relative;
 }
 
-.c41.c41.c41.c41.c41 {
+.c43.c43.c43.c43.c43 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -669,7 +680,7 @@ exports[`SideNav should render 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c39.c39.c39.c39.c39 {
+.c41.c41.c41.c41.c41 {
   pointer-events: none;
   position: relative;
   display: -webkit-box;
@@ -692,7 +703,7 @@ exports[`SideNav should render 1`] = `
   transition-duration: 70ms;
 }
 
-.c38.c38.c38.c38.c38 {
+.c40.c40.c40.c40.c40 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -709,7 +720,7 @@ exports[`SideNav should render 1`] = `
   word-wrap: normal;
 }
 
-.c38.c38.c38.c38.c38:focus-visible + div {
+.c40.c40.c40.c40.c40:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -720,7 +731,7 @@ exports[`SideNav should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c38.c38.c38.c38.c38:hover + div {
+.c40.c40.c40.c40.c40:hover + div {
   background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -728,7 +739,7 @@ exports[`SideNav should render 1`] = `
   transition-duration: 70ms;
 }
 
-.c37.c37.c37.c37.c37 {
+.c39.c39.c39.c39.c39 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -807,19 +818,19 @@ exports[`SideNav should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c29.c29.c29.c29.c29 {
+  .c30.c30.c30.c30.c30 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c29.c29.c29.c29.c29 {
+  .c30.c30.c30.c30.c30 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c29.c29.c29.c29.c29 {
+  .c30.c30.c30.c30.c30 {
     width: 100%;
     right: 0px;
     bottom: 0px;
@@ -829,13 +840,13 @@ exports[`SideNav should render 1`] = `
 }
 
 @media screen and (min-width:1024px) {
-  .c29.c29.c29.c29.c29 {
+  .c30.c30.c30.c30.c30 {
     border-top-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c29.c29.c29.c29.c29 {
+  .c30.c30.c30.c30.c30 {
     border-top-style: solid;
   }
 }
@@ -1138,7 +1149,7 @@ exports[`SideNav should render 1`] = `
                 >
                   <button
                     aria-disabled="false"
-                    class="c24"
+                    class="c24 c25"
                     data-blade-component="link"
                     role="button"
                     type="button"
@@ -1148,7 +1159,7 @@ exports[`SideNav should render 1`] = `
                       data-blade-component="base-box"
                     >
                       <span
-                        class="c25"
+                        class="c26"
                         data-blade-component="base-text"
                       >
                         +2
@@ -1157,12 +1168,12 @@ exports[`SideNav should render 1`] = `
                   </button>
                 </div>
                 <div
-                  class="hide-when-collapsed"
+                  class="c27 hide-when-collapsed"
                   data-blade-component="base-box"
                 >
                   <button
                     aria-disabled="false"
-                    class="c24"
+                    class="c24 c25"
                     data-blade-component="link"
                     role="button"
                     type="button"
@@ -1172,13 +1183,13 @@ exports[`SideNav should render 1`] = `
                       data-blade-component="base-box"
                     >
                       <span
-                        class="c25"
+                        class="c26"
                         data-blade-component="base-text"
                       >
                         +2 More
                       </span>
                       <span
-                        class="c26"
+                        class="c28"
                         data-blade-component="base-box"
                       >
                         <svg
@@ -1210,7 +1221,7 @@ exports[`SideNav should render 1`] = `
                   role="region"
                 >
                   <div
-                    class=" c28"
+                    class=" c29"
                     data-blade-component="base-box"
                   >
                     <div
@@ -1317,21 +1328,21 @@ exports[`SideNav should render 1`] = `
           </div>
         </div>
         <div
-          class="c29 l1-item-wrapper"
+          class="c30 l1-item-wrapper"
           data-blade-component="base-box"
           elevation="lowRaised"
         >
           <div
-            class="c30"
+            class="c31 c32"
             data-blade-component="base-box"
           >
             <div
-              class="c31"
+              class="c33"
               data-blade-component="box"
             >
               <div
                 aria-label="Positive Indicator"
-                class="c32"
+                class="c34"
                 data-blade-component="indicator"
                 role="status"
               >
@@ -1364,11 +1375,11 @@ exports[`SideNav should render 1`] = `
                     />
                   </svg>
                   <div
-                    class="c33"
+                    class="c35"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c34"
+                      class="c36"
                       data-blade-component="text"
                     />
                   </div>
@@ -1379,7 +1390,7 @@ exports[`SideNav should render 1`] = `
                 data-blade-component="base-box"
               >
                 <p
-                  class="c35"
+                  class="c37"
                   data-blade-component="text"
                 >
                   Test Mode
@@ -1391,11 +1402,11 @@ exports[`SideNav should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class="c36"
+                class="c38"
                 data-blade-component="switch"
               >
                 <label
-                  class="c37"
+                  class="c39"
                   data-blade-component="switch-label"
                   style="cursor: pointer;"
                 >
@@ -1405,27 +1416,27 @@ exports[`SideNav should render 1`] = `
                     aria-invalid="false"
                     aria-label="Test Mode"
                     aria-required="false"
-                    class="c38"
+                    class="c40"
                     role="switch"
                     type="checkbox"
                     value=""
                   />
                   <div
                     aria-hidden="true"
-                    class=" c39"
+                    class=" c41"
                     data-blade-component="base-box"
                   >
                     <div
-                      class=" c40"
+                      class=" c42"
                       data-blade-component="base-box"
                     >
                       <div
-                        class=" c41"
+                        class=" c43"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="Svgweb__StyledSvg-vcmjs8-0 c42"
+                          class="Svgweb__StyledSvg-vcmjs8-0 c44"
                           data-blade-component="icon"
                           fill="none"
                           height="8px"
