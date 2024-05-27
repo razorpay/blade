@@ -22,6 +22,8 @@ const SideNavLevel = ({ children }: SideNavLevelProps): React.ReactElement => {
       onMouseOver={(e) => {
         e.stopPropagation();
       }}
+      // Although we don't use `onMouseOut` on SideNav, keeping it here in case we start using it in future as stopping propagation in child
+      // is expected behaviour for us. Checkout https://react.dev/reference/react-dom/createPortal#caveats
       onMouseOut={(e) => {
         e.stopPropagation();
       }}
