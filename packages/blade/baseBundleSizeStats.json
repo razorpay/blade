@@ -2,9 +2,9 @@
   {
     "name": "Base",
     "passed": true,
-    "size": 25178,
+    "size": 25175,
     "sizeLimit": 2000000,
-    "loading": 0.4917578125
+    "loading": 0.49169921875
   },
   {
     "name": "Accordion, AccordionItemHeader, AccordionItemBody, AccordionItem",
