@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.19.0
+
+### Minor Changes
+
+- 2ed5299e: feat(blade): add DatePicker component
+
 ## 11.18.3
 
 ### Patch Changes
