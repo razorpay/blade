@@ -171,13 +171,41 @@ const accountsL2Ref = React.useRef(null);
 
 ### SideNav
 
-| **Props** | **Description**                                              | **Type** | **Default Value** |
-| --------- | ------------------------------------------------------------ | -------- | ----------------- |
-| children  | children slot of SideNav, accepts SideNavBody, SideNavFooter | JSX      |                   |
+| **Props** | **Description**                                                                                                                                                                         | **Type** | **Default Value** |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| children  | children slot of SideNav, accepts SideNavBody, SideNavFooter                                                                                                                            | JSX      |                   |
+| banner    | Slot at the top of SideNav for rendering critical UI info like Activation Pending Card. Meant for critical information only, if you see it being used for promotional banners, dial 100 | JSX      |                   |
 
 ```jsx
 <SideNav>{/* children */}</SideNav>
 ```
+
+#### Banner Example
+
+<table>
+<tr>
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<SideNav 
+  banner={
+    <Card href="/activate">
+      {/* Activation Pending Styles */}
+    </Card>
+  }
+>
+  {/* children */}
+</SideNav>
+```
+
+</td>
+
+<td>
+<img width="300px" src="nav-banner.png" />
+</td>
+</tr>
+</table>
 
 ### SideNavBody
 
