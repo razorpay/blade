@@ -1099,7 +1099,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border-width: 1;
+  border-width: 1px;
   border-style: solid;
   border-color: hsla(211,20%,52%,0.18);
   box-sizing: border-box;

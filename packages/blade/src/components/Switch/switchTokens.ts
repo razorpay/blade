@@ -52,7 +52,7 @@ const switchColors = {
     default: {
       background: {
         checked: 'colors.interactive.background.primary.default',
-        unchecked: 'colors.interactive.background.gray.faded',
+        unchecked: 'colors.interactive.background.gray.default',
       },
     },
     disabled: {
@@ -97,7 +97,7 @@ const switchHoverTokens = {
   default: {
     background: {
       checked: 'colors.interactive.background.primary.highlighted',
-      unchecked: 'colors.interactive.background.gray.fadedHighlighted',
+      unchecked: 'colors.interactive.background.gray.highlighted',
     },
   },
 } as const;

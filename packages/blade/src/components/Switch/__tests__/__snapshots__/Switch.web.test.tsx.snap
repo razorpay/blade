@@ -81,7 +81,7 @@ exports[`<Switch /> should render switch 1`] = `
   width: 36px;
   height: 20px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -117,7 +117,7 @@ exports[`<Switch /> should render switch 1`] = `
 }
 
 .c2.c2.c2.c2.c2:hover + div {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.18);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
