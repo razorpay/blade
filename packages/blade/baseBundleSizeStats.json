@@ -2,379 +2,386 @@
   {
     "name": "Base",
     "passed": true,
-    "size": 22309,
+    "size": 25178,
     "sizeLimit": 2000000,
-    "loading": 0.43572265625
+    "loading": 0.4917578125
   },
   {
     "name": "Accordion, AccordionItemHeader, AccordionItemBody, AccordionItem",
     "passed": true,
-    "size": 29657,
+    "size": 32501,
     "sizeLimit": 2000000,
-    "loading": 0.57923828125
+    "loading": 0.63478515625
   },
   {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
-    "size": 35066,
+    "size": 37936,
     "sizeLimit": 2000000,
-    "loading": 0.6848828125
+    "loading": 0.7409375
   },
   {
     "name": "Alert",
     "passed": true,
-    "size": 33530,
+    "size": 36396,
     "sizeLimit": 2000000,
-    "loading": 0.6548828125
+    "loading": 0.710859375
   },
   {
     "name": "Amount",
     "passed": true,
-    "size": 23429,
+    "size": 26290,
     "sizeLimit": 2000000,
-    "loading": 0.45759765625
+    "loading": 0.5134765625
   },
   {
     "name": "Avatar, AvatarGroup",
     "passed": true,
-    "size": 25757,
+    "size": 28598,
     "sizeLimit": 2000000,
-    "loading": 0.50306640625
+    "loading": 0.5585546875
   },
   {
     "name": "Badge",
     "passed": true,
-    "size": 23121,
+    "size": 25975,
     "sizeLimit": 2000000,
-    "loading": 0.45158203125
+    "loading": 0.50732421875
   },
   {
     "name": "BladeProvider",
     "passed": true,
-    "size": 23964,
+    "size": 26807,
     "sizeLimit": 2000000,
-    "loading": 0.468046875
+    "loading": 0.52357421875
   },
   {
     "name": "BottomSheet",
     "passed": true,
-    "size": 31712,
+    "size": 34549,
     "sizeLimit": 2000000,
-    "loading": 0.619375
+    "loading": 0.67478515625
   },
   {
     "name": "Box",
     "passed": true,
-    "size": 23086,
+    "size": 25954,
     "sizeLimit": 2000000,
-    "loading": 0.4508984375
+    "loading": 0.5069140625
   },
   {
     "name": "Breadcrumb, BreadcrumbItem",
     "passed": true,
-    "size": 24858,
+    "size": 27664,
     "sizeLimit": 2000000,
-    "loading": 0.4855078125
+    "loading": 0.5403125
   },
   {
     "name": "ButtonGroup",
     "passed": true,
-    "size": 23431,
+    "size": 26296,
     "sizeLimit": 2000000,
-    "loading": 0.45763671875
+    "loading": 0.51359375
   },
   {
     "name": "Card, CardBody, CardHeader, CardHeaderIcon, CardHeaderIconButton, CardHeaderLeading, CardHeaderTrailing, CardFooter, CardFooterLeading, CardFooterTrailing",
     "passed": true,
-    "size": 31449,
+    "size": 34285,
     "sizeLimit": 2000000,
-    "loading": 0.61423828125
+    "loading": 0.66962890625
   },
   {
     "name": "Carousel, CarouselItem",
     "passed": true,
-    "size": 29179,
+    "size": 32028,
     "sizeLimit": 2000000,
-    "loading": 0.56990234375
+    "loading": 0.625546875
   },
   {
     "name": "Checkbox",
     "passed": true,
-    "size": 28280,
+    "size": 31131,
     "sizeLimit": 2000000,
-    "loading": 0.55234375
+    "loading": 0.60802734375
   },
   {
     "name": "Chip, ChipGroup",
     "passed": true,
-    "size": 29913,
+    "size": 32764,
     "sizeLimit": 2000000,
-    "loading": 0.58423828125
+    "loading": 0.639921875
   },
   {
     "name": "Collapsible, CollapsibleLink, CollapsibleButton, CollapsibleBody",
     "passed": true,
-    "size": 31807,
+    "size": 34633,
     "sizeLimit": 2000000,
-    "loading": 0.62123046875
+    "loading": 0.67642578125
   },
   {
     "name": "Counter",
     "passed": true,
-    "size": 23088,
+    "size": 25951,
     "sizeLimit": 2000000,
-    "loading": 0.4509375
+    "loading": 0.50685546875
+  },
+  {
+    "name": "DatePicker",
+    "passed": true,
+    "size": 104320,
+    "sizeLimit": 2000000,
+    "loading": 2.0375
   },
   {
     "name": "Divider",
     "passed": true,
-    "size": 22838,
+    "size": 25711,
     "sizeLimit": 2000000,
-    "loading": 0.4460546875
+    "loading": 0.50216796875
   },
   {
     "name": "Drawer, DrawerBody, DrawerHeader",
     "passed": true,
-    "size": 38456,
+    "size": 41727,
     "sizeLimit": 2000000,
-    "loading": 0.75109375
+    "loading": 0.81498046875
   },
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
     "passed": true,
-    "size": 50118,
+    "size": 52889,
     "sizeLimit": 2000000,
-    "loading": 0.9788671875
+    "loading": 1.03298828125
   },
   {
     "name": "FileUpload",
     "passed": true,
-    "size": 36855,
+    "size": 39717,
     "sizeLimit": 2000000,
-    "loading": 0.71982421875
+    "loading": 0.77572265625
   },
   {
     "name": "Indicator",
     "passed": true,
-    "size": 23358,
+    "size": 26224,
     "sizeLimit": 2000000,
-    "loading": 0.4562109375
+    "loading": 0.5121875
   },
   {
     "name": "List, ListItem, ListItemLink, ListItemCode, ListItemText",
     "passed": true,
-    "size": 27357,
+    "size": 30177,
     "sizeLimit": 2000000,
-    "loading": 0.53431640625
+    "loading": 0.58939453125
   },
   {
     "name": "Modal",
     "passed": true,
-    "size": 35091,
+    "size": 38287,
     "sizeLimit": 2000000,
-    "loading": 0.68537109375
+    "loading": 0.74779296875
   },
   {
     "name": "Popover, PopoverInteractiveWrapper",
     "passed": true,
-    "size": 42776,
+    "size": 46249,
     "sizeLimit": 2000000,
-    "loading": 0.83546875
+    "loading": 0.90330078125
   },
   {
     "name": "ProgressBar",
     "passed": true,
-    "size": 25435,
+    "size": 28255,
     "sizeLimit": 2000000,
-    "loading": 0.49677734375
+    "loading": 0.55185546875
   },
   {
     "name": "Radio",
     "passed": true,
-    "size": 27077,
+    "size": 29911,
     "sizeLimit": 2000000,
-    "loading": 0.52884765625
+    "loading": 0.58419921875
   },
   {
     "name": "Skeleton",
     "passed": true,
-    "size": 23059,
+    "size": 25923,
     "sizeLimit": 2000000,
-    "loading": 0.45037109375
+    "loading": 0.50630859375
   },
   {
     "name": "SpotlightPopoverTour, SpotlightPopoverTourFooter, SpotlightPopoverTourStep",
     "passed": true,
-    "size": 50923,
+    "size": 54507,
     "sizeLimit": 2000000,
-    "loading": 0.99458984375
+    "loading": 1.06458984375
   },
   {
     "name": "StepGroup, StepItem, StepItemIcon, StepItemIndicator",
     "passed": true,
-    "size": 29023,
+    "size": 31874,
     "sizeLimit": 2000000,
-    "loading": 0.56685546875
+    "loading": 0.6225390625
   },
   {
     "name": "Switch",
     "passed": true,
-    "size": 26832,
+    "size": 29676,
     "sizeLimit": 2000000,
-    "loading": 0.5240625
+    "loading": 0.579609375
   },
   {
     "name": "Table, TableHeader, TableHeaderCell, TableHeaderRow, TableBody, TableCell, TableRow, TableFooter, TableFooterCell, TableFooterRow, TablePagination, TableToolbar, TableToolbarActions",
     "passed": true,
-    "size": 79643,
+    "size": 82619,
     "sizeLimit": 2000000,
-    "loading": 1.55552734375
+    "loading": 1.61365234375
   },
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
     "passed": true,
-    "size": 28940,
+    "size": 32187,
     "sizeLimit": 2000000,
-    "loading": 0.565234375
+    "loading": 0.62865234375
   },
   {
     "name": "Tag",
     "passed": true,
-    "size": 25776,
+    "size": 28631,
     "sizeLimit": 2000000,
-    "loading": 0.5034375
+    "loading": 0.55919921875
   },
   {
     "name": "ToastContainer, useToast",
     "passed": true,
-    "size": 34754,
+    "size": 37596,
     "sizeLimit": 2000000,
-    "loading": 0.6787890625
+    "loading": 0.734296875
   },
   {
     "name": "Tooltip, TooltipInteractiveWrapper",
     "passed": true,
-    "size": 37736,
+    "size": 41249,
     "sizeLimit": 2000000,
-    "loading": 0.73703125
+    "loading": 0.80564453125
   },
   {
     "name": "Button",
     "passed": true,
-    "size": 28263,
+    "size": 31058,
     "sizeLimit": 2000000,
-    "loading": 0.55201171875
+    "loading": 0.6066015625
   },
   {
     "name": "IconButton",
     "passed": true,
-    "size": 23073,
+    "size": 25967,
     "sizeLimit": 2000000,
-    "loading": 0.45064453125
+    "loading": 0.50716796875
   },
   {
     "name": "CheckboxGroup",
     "passed": true,
-    "size": 26495,
+    "size": 29312,
     "sizeLimit": 2000000,
-    "loading": 0.51748046875
+    "loading": 0.5725
   },
   {
     "name": "SelectInput, AutoComplete",
     "passed": true,
-    "size": 41391,
+    "size": 44250,
     "sizeLimit": 2000000,
-    "loading": 0.80841796875
+    "loading": 0.8642578125
   },
   {
     "name": "OTPInput",
     "passed": true,
-    "size": 35457,
+    "size": 38347,
     "sizeLimit": 2000000,
-    "loading": 0.69251953125
+    "loading": 0.74896484375
   },
   {
     "name": "PasswordInput",
     "passed": true,
-    "size": 37108,
+    "size": 39945,
     "sizeLimit": 2000000,
-    "loading": 0.724765625
+    "loading": 0.78017578125
   },
   {
     "name": "PhoneNumberInput",
     "passed": true,
-    "size": 76215,
+    "size": 79275,
     "sizeLimit": 2000000,
-    "loading": 1.48857421875
+    "loading": 1.54833984375
   },
   {
     "name": "SearchInput",
     "passed": true,
-    "size": 39682,
+    "size": 42542,
     "sizeLimit": 2000000,
-    "loading": 0.7750390625
+    "loading": 0.8308984375
   },
   {
     "name": "TextArea",
     "passed": true,
-    "size": 38006,
+    "size": 40866,
     "sizeLimit": 2000000,
-    "loading": 0.7423046875
+    "loading": 0.7981640625
   },
   {
     "name": "TextInput",
     "passed": true,
-    "size": 39602,
+    "size": 42469,
     "sizeLimit": 2000000,
-    "loading": 0.7734765625
+    "loading": 0.82947265625
   },
   {
     "name": "Link",
     "passed": true,
-    "size": 24413,
+    "size": 27266,
     "sizeLimit": 2000000,
-    "loading": 0.47681640625
+    "loading": 0.5325390625
   },
   {
     "name": "RadioGroup",
     "passed": true,
-    "size": 26463,
+    "size": 29285,
     "sizeLimit": 2000000,
-    "loading": 0.51685546875
+    "loading": 0.57197265625
   },
   {
     "name": "Spinner",
     "passed": true,
-    "size": 24146,
+    "size": 26987,
     "sizeLimit": 2000000,
-    "loading": 0.4716015625
+    "loading": 0.52708984375
   },
   {
     "name": "Code",
     "passed": true,
-    "size": 22909,
+    "size": 25779,
     "sizeLimit": 2000000,
-    "loading": 0.44744140625
+    "loading": 0.50349609375
   },
   {
     "name": "Display",
     "passed": true,
-    "size": 22800,
+    "size": 25672,
     "sizeLimit": 2000000,
-    "loading": 0.4453125
+    "loading": 0.50140625
   },
   {
     "name": "Heading, getHeadingProps",
     "passed": true,
-    "size": 22748,
+    "size": 25618,
     "sizeLimit": 2000000,
-    "loading": 0.444296875
+    "loading": 0.5003515625
   },
   {
     "name": "Text",
     "passed": true,
-    "size": 22312,
+    "size": 25178,
     "sizeLimit": 2000000,
-    "loading": 0.43578125
+    "loading": 0.4917578125
   }
 ]

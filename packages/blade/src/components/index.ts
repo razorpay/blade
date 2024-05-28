@@ -19,6 +19,7 @@ export * from './Collapsible';
 export * from './Counter';
 export * from './Divider';
 export * from './Drawer';
+export * from './DatePicker';
 export * from './Dropdown';
 export * from './FileUpload';
 export * from './Icons';

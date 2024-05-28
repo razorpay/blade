@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 11.19.1
+
+### Patch Changes
+
+- 634eefd3: fix(Card, Switch): card border width, switch colors
+- 8f8b795e: fix: DatePicker necessityIndicator alignment
+
+## 11.19.0
+
+### Minor Changes
+
+- 2ed5299e: feat(blade): add DatePicker component
+
 ## 11.18.3
 
 ### Patch Changes

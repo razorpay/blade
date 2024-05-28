@@ -51,6 +51,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
+  overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -551,7 +552,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
               class="c11"
               data-blade-component="bottom-sheet-body"
               data-testid="bottomsheet-body"
-              style="user-select: auto; overflow: auto;"
+              style="user-select: auto;"
             >
               <div
                 class="c12"
@@ -895,6 +896,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c28.c28.c28.c28.c28 {
+  overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1555,7 +1557,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
           class="c28"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
-          style="user-select: auto; overflow: auto;"
+          style="user-select: auto;"
         >
           <div
             class="c29"
@@ -1633,6 +1635,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
+  overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1904,7 +1907,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
           class="c9"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
-          style="user-select: auto; overflow: auto;"
+          style="user-select: auto;"
         >
           <div
             class="c10"

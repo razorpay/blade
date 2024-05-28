@@ -37,6 +37,8 @@ export const MetaConstants = {
   DropdownOverlay: 'dropdown-overlay',
   DropdownFooter: 'dropdown-footer',
   DropdownHeader: 'dropdown-header',
+  DatePicker: 'datepicker',
+  Calendar: 'calendar',
   FileUpload: 'file-upload',
   FileUploadItem: 'file-upload-item',
   FileUploadLabel: 'file-upload-label',
