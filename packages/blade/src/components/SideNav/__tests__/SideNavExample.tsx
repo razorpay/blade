@@ -109,7 +109,7 @@ const SideNavExample = ({
 const SideNavL4NestingErrorExample = (): React.ReactElement => {
   return (
     <MemoryRouter initialEntries={['/four']}>
-      <SideNav display="block">
+      <SideNav>
         <SideNavBody>
           <NavLink href="/" title="Home L1">
             <SideNavLevel>
