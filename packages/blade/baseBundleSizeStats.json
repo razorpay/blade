@@ -289,9 +289,9 @@
   {
     "name": "SelectInput, AutoComplete",
     "passed": true,
-    "size": 44250,
+    "size": 44249,
     "sizeLimit": 2000000,
-    "loading": 0.8642578125
+    "loading": 0.86423828125
   },
   {
     "name": "OTPInput",
