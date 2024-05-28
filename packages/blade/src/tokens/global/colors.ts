@@ -93,6 +93,7 @@ export const colors: Color = {
       a100: `hsla(227, 100%, 59%, ${opacity[300]})`,
       a150: `hsla(227, 100%, 59%, ${opacity[400]})`,
       a200: `hsla(227, 100%, 59%, ${opacity[500]})`,
+      a400: `hsla(227, 100%, 59%, ${opacity[800]})`,
     },
     emerald: {
       50: `hsla(152, 60%, 95%, ${opacity[1200]})`,
