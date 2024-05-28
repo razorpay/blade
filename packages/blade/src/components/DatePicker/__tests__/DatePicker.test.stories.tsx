@@ -188,7 +188,7 @@ DatePickerSingleSelectControlled.play = async () => {
   // assert inputs value
   await expect(input).toHaveValue(dayjs().add(5, 'day').format('DD/MM/YYYY'));
   // select another date
-  const dateToSelect = dayjs().add(6, 'day');
+  const dateToSelect = dayjs().add(2, 'day');
   const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
