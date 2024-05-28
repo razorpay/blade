@@ -906,7 +906,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         position="relative"
         width="100%"
       >
-        {!hideLabelText && !isLabelInsideInput && (
+        {!hideLabelText && !isLabelInsideInput && label && (
           <BaseBox
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'column' : 'row'}

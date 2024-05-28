@@ -66,6 +66,9 @@ const _DatePickerInput = (
     name,
     size = 'medium',
     necessityIndicator,
+    successText,
+    errorText,
+    helpText,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -74,6 +77,8 @@ const _DatePickerInput = (
   const format = 'DD/MM/YYYY';
   const isLarge = size === 'large';
   const isLabelPositionLeft = labelPosition === 'left';
+  const isLabelPositionTop = labelPosition === 'top';
+  const isLabelPositionVisuallyTop = isLabelPositionTop || isMobile;
   const hasLabel = Boolean(label);
   const { locale } = useDatesContext();
 
@@ -100,6 +105,9 @@ const _DatePickerInput = (
           autoFocus={autoFocus}
           value={dateValue}
           componentName="DatePickerInput"
+          successText={successText}
+          errorText={errorText}
+          helpText={helpText}
           {...props}
           {...referenceProps}
         />
@@ -108,6 +116,21 @@ const _DatePickerInput = (
   }
 
   if (selectionType == 'range') {
+    const shouldRenderEndLabel = (): string | undefined => {
+      let finalLabel: string | undefined = '';
+
+      const labelEnd = isLabelPositionLeft ? undefined : label?.end;
+      if (isLabelPositionVisuallyTop && labelEnd === undefined) {
+        // Empty space, nbsp;
+        finalLabel = '\u00A0';
+      } else if (isLabelPositionLeft) {
+        finalLabel = undefined;
+      } else {
+        finalLabel = label?.end;
+      }
+      return finalLabel;
+    };
+
     const startValue = getFormattedDate({
       type: 'default',
       date: date[0],
@@ -128,7 +151,7 @@ const _DatePickerInput = (
         display="flex"
         flexDirection="row"
         gap="spacing.4"
-        alignItems="flex-end"
+        alignItems="flex-start"
         ref={ref as never}
       >
         <BaseBox flex={1}>
@@ -147,6 +170,9 @@ const _DatePickerInput = (
             value={startValue}
             componentName="DatePickerInputStart"
             necessityIndicator={necessityIndicator}
+            successText={successText?.start}
+            errorText={errorText?.start}
+            helpText={helpText?.start}
             {...props}
             {...referenceProps}
           />
@@ -170,13 +196,16 @@ const _DatePickerInput = (
             id="end-date"
             placeholder={format}
             leadingIcon={CalendarIcon}
-            label={isLabelPositionLeft ? undefined : label?.end}
+            label={shouldRenderEndLabel()}
             labelPosition={isLabelPositionLeft ? undefined : labelPosition}
             popupId={referenceProps['aria-controls']}
             isPopupExpanded={referenceProps['aria-expanded']}
             size={size}
             value={endValue}
             componentName="DatePickerInputEnd"
+            successText={successText?.end}
+            errorText={errorText?.end}
+            helpText={helpText?.end}
             {...props}
             {...referenceProps}
           />

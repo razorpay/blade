@@ -263,11 +263,11 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             labelPosition={labelPosition}
             accessibilityLabel={accessibilityLabel}
             size={size}
-            errorText={errorText}
-            helpText={helpText}
+            errorText={errorText as never}
+            helpText={helpText as never}
+            successText={successText as never}
             isDisabled={isDisabled}
             isRequired={isRequired}
-            successText={successText}
             validationState={validationState}
             autoFocus={autoFocus}
             necessityIndicator={necessityIndicator}
