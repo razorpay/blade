@@ -313,10 +313,14 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(newFiles);
               inputRef.current?.click();
-              onRetry?.({ file: selectedFiles[0] });
+
               // TODO - Remove this in the next major release
-              // Fallback to onRemove to avoid breaking changes in the API
-              onRemove?.({ file: selectedFiles[0] });
+              // Fallback to onRemove if onRetry isn't provided to avoid breaking changes in the API
+              if (onRetry) {
+                onRetry({ file: selectedFiles[0] });
+              } else {
+                onRemove?.({ file: selectedFiles[0] });
+              }
             }}
             onDismiss={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
@@ -370,10 +374,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(newFiles);
                 inputRef.current?.click();
-                onRetry?.({ file: selectedFiles[0] });
                 // TODO - Remove this in the next major release
-                // Fallback to onRemove to avoid breaking changes in the API
-                onRemove?.({ file: selectedFiles[0] });
+                // Fallback to onRemove if onRetry isn't provided to avoid breaking changes in the API
+                if (onRetry) {
+                  onRetry({ file: selectedFiles[0] });
+                } else {
+                  onRemove?.({ file: selectedFiles[0] });
+                }
               }}
               onDismiss={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
