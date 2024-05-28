@@ -302,7 +302,7 @@ const SideNav = ({
               //
               // 1. In an ideal scenario, we would put `onMouseEnter` and `onMouseLeave` here and expect things to work.
               // 2. The L2 menu of our SideNav is React Portalled out of the L1 child
-              // 3. React considers its own childs as true child for JS events and not DOM childs (Checkout React Portal Caveats - https://react.dev/reference/react-dom/createPortal#caveats)
+              // 3. React considers its own children as true children for JS events and not DOM children (Checkout React Portal Caveats - https://react.dev/reference/react-dom/createPortal#caveats)
               // 3. In the next ideal scenario, we would put `e.stopPropagation` on child component of portal like React recommends, except mouseenter, mouseleave events don't propagate at all (https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event#usage_notes)
               // 4. So `onMouseEnter` gets triggered on L2 enter. But we don't want to open L1 menu on L2 hover
               // 5. Thus we use `onMouseOver` for hover part and call e.stopPropagation in portal child (SideNavLevel).
