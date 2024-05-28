@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.20.0
+
+### Minor Changes
+
+- d9bb5223: refactor(blade): downgrade mantine to v6
+
 ## 11.19.1
 
 ### Patch Changes
