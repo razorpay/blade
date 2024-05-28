@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 11.21.0
+
+### Minor Changes
+
+- 0d3e260e: feat(SideNav): add SideNav component
+
+  Checkout [SideNav Documentation](https://blade.razorpay.com/?path=/docs/components-sidenav--docs)
+
+### Patch Changes
+
+- 2d82e41c: fix(FileUpload): allow re-uploading of the same file
+
 ## 11.20.0
 
 ### Minor Changes
