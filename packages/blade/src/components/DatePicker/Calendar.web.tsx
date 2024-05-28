@@ -3,12 +3,13 @@
 import dayjs from 'dayjs';
 import React from 'react';
 import type { CalendarLevel } from '@mantine/dates';
-import { shiftTimezone, useDatesContext, DatePicker } from '@mantine/dates';
+import { useDatesContext, DatePicker } from '@mantine/dates';
 import type { CalendarProps, DateSelectionType, PickerType, DateValue } from './types';
 import { CalendarHeader } from './CalendarHeader';
 import { CalendarGradientStyles, CalendarStyles } from './CalendarStyles';
 import { useUncontrolledDates } from './useControlledDates';
 import { levelToPicker, pickerToLevel, classes } from './constants';
+import { shiftTimezone } from './shiftTimezone';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
@@ -61,7 +62,7 @@ const Calendar = <Type extends DateSelectionType>({
 
   const dateContext = useDatesContext();
   const isMobile = useIsMobile();
-  const currentDate = _date ?? shiftTimezone('add', new Date(), dateContext.getTimezone());
+  const currentDate = _date ?? shiftTimezone('add', new Date());
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
 
@@ -140,10 +141,13 @@ const Calendar = <Type extends DateSelectionType>({
           // @ts-expect-error unable to narrow props based on `type`
           allowSingleDateInRange={allowSingleDateInRange}
           classNames={{
-            levelsGroup: classes.levelsGroup,
+            monthLevelGroup: classes.levelsGroup,
+            yearLevelGroup: classes.levelsGroup,
+            decadeLevelGroup: classes.levelsGroup,
             day: classes.dayCell,
-            monthsListControl: classes.monthsListControl,
-            yearsListControl: classes.yearsListControl,
+            monthsListCell: classes.yearsListControl,
+            yearsListCell: classes.monthsListControl,
+            monthCell: classes.dayCell,
             calendarHeader: classes.calendarHeader,
             monthRow: classes.row,
             yearsListRow: classes.row,

@@ -2,8 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { useDatesContext, getFormattedDate } from '@mantine/dates';
+import { useDatesContext } from '@mantine/dates';
 import type { DatePickerInputProps } from './types';
+import { getFormattedDate } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { ArrowRightIcon, CalendarIcon } from '~components/Icons';
 import type { BaseInputProps } from '~components/Input/BaseInput';

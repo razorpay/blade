@@ -4,7 +4,7 @@
 import { useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import type { DatePickerType, DatePickerValue } from '@mantine/dates';
-import { shiftTimezone, useDatesContext } from '@mantine/dates';
+import { shiftTimezone } from './shiftTimezone';
 import { throwBladeError } from '~utils/logger';
 
 interface UseUncontrolledDates<Type extends DatePickerType = 'default'> {
@@ -23,16 +23,14 @@ function useUncontrolledDates<Type extends DatePickerType = 'default'>({
   value,
   defaultValue,
   onChange,
-  applyTimezone = true,
 }: UseUncontrolledDates<Type>) {
   const storedType = useRef<Type>(type);
-  const ctx = useDatesContext();
   const [_value, _setValue, controlled] = useUncontrolled<any>({
-    value: shiftTimezone('add', value, ctx.getTimezone(), !applyTimezone),
-    defaultValue: shiftTimezone('add', defaultValue, ctx.getTimezone(), !applyTimezone),
+    value: shiftTimezone('add', value),
+    defaultValue: shiftTimezone('add', defaultValue),
     finalValue: getEmptyValue(type),
     onChange: (newDate) => {
-      onChange?.(shiftTimezone('remove', newDate, ctx.getTimezone(), !applyTimezone));
+      onChange?.(shiftTimezone('remove', newDate));
     },
   });
 

@@ -9,6 +9,7 @@ import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Code, Text } from '~components/Typography';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
@@ -30,6 +31,7 @@ export default {
   component: DatePickerComponent,
   tags: ['autodocs'],
   argTypes: {
+    ...getStyledPropsArgTypes(),
     value: baseProp,
     isOpen: baseProp,
     onChange: baseProp,

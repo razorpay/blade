@@ -2,11 +2,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DatesProvider, shiftTimezone, useDatesContext } from '@mantine/dates';
+import { DatesProvider } from '@mantine/dates';
 import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useI18nContext } from '@razorpay/i18nify-react';
-import { HeadlessMantineProvider } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
 import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
 import { Calendar } from './Calendar';
@@ -16,6 +16,7 @@ import { DatePickerInput } from './DateInput';
 import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter';
 import { convertIntlToDayjsLocale, loadScript } from './utils';
+import { shiftTimezone } from './shiftTimezone';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -64,7 +65,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
-  const ctx = useDatesContext();
   const isSingle = _selectionType === 'single';
   const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
@@ -106,7 +106,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
   });
 
-  const currentDate = shiftTimezone('add', new Date(), ctx.getTimezone());
+  const currentDate = shiftTimezone('add', new Date());
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
 
   const close = React.useCallback(() => {
@@ -245,7 +245,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   }, [i18nState?.locale]);
 
   return (
-    <HeadlessMantineProvider>
+    <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
         <BaseBox
           width="100%"
@@ -335,7 +335,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
           )}
         </BaseBox>
       </DatesProvider>
-    </HeadlessMantineProvider>
+    </MantineProvider>
   );
 };
 

@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import type { DatePickerType, DatePickerValue } from '@mantine/dates';
+import dayjs from 'dayjs';
+
 const dayjs_locales = [
   'af',
   'ar',
@@ -166,4 +171,44 @@ function loadScript(src: string, callback?: () => void): void {
   document.head.appendChild(localeScript);
 }
 
-export { convertIntlToDayjsLocale, loadScript };
+interface DateFormatterInput {
+  type: DatePickerType;
+  date: DatePickerValue<DatePickerType>;
+  locale: string;
+  format: string;
+  labelSeparator: string;
+}
+
+type DateFormatter = (input: DateFormatterInput) => string;
+
+function defaultDateFormatter({ type, date, locale, format, labelSeparator }: DateFormatterInput) {
+  const formatDate = (value: Date) => dayjs(value).locale(locale).format(format);
+
+  if (type === 'default') {
+    return date === null ? '' : formatDate(date as Date);
+  }
+
+  if (type === 'range' && Array.isArray(date)) {
+    if (date[0] && date[1]) {
+      return `${formatDate(date[0])} ${labelSeparator} ${formatDate(date[1])}`;
+    }
+
+    if (date[0]) {
+      return `${formatDate(date[0])} ${labelSeparator} `;
+    }
+
+    return '';
+  }
+
+  return '';
+}
+
+interface GetFormattedDateInput extends DateFormatterInput {
+  formatter?: DateFormatter;
+}
+
+function getFormattedDate({ formatter, ...others }: GetFormattedDateInput) {
+  return (formatter || defaultDateFormatter)(others);
+}
+
+export { convertIntlToDayjsLocale, loadScript, getFormattedDate };
