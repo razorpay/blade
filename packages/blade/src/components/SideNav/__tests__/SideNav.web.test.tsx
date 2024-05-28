@@ -1,4 +1,4 @@
-import { SideNavExample } from './SideNavExample';
+import { SideNavExample, SideNavL4NestingErrorExample } from './SideNavExample';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
 
@@ -17,6 +17,14 @@ describe('SideNav', () => {
       <SideNavExample position="absolute" zIndex={1234} display="block" />,
     );
     expect(getByRole('navigation')).toHaveStyle('z-index: 1234; position: absolute');
+  });
+
+  test('should throw error on more than 3 level nesting', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    expect(() => renderWithTheme(<SideNavL4NestingErrorExample />)).toThrow(
+      '[Blade: SideNavLink]: SideNav only supports nesting upto L3 but L4 nesting was found. Check the nesting of your SideNavLevel items',
+    );
+    mockConsoleError.mockRestore();
   });
 
   test('should keep L3 Item selected based on URL', () => {

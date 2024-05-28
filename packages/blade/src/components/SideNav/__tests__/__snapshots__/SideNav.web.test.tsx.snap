@@ -73,6 +73,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
+  overflow-x: hidden;
   overflow-y: auto;
 }
 

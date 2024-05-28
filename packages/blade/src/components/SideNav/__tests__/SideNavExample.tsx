@@ -105,4 +105,29 @@ const SideNavExample = ({
     </MemoryRouter>
   );
 };
-export { SideNavExample };
+
+const SideNavL4NestingErrorExample = (): React.ReactElement => {
+  return (
+    <MemoryRouter initialEntries={['/four']}>
+      <SideNav display="block">
+        <SideNavBody>
+          <NavLink href="/" title="Home L1">
+            <SideNavLevel>
+              <NavLink href="/two" title="Home L2">
+                <SideNavLevel>
+                  <NavLink href="/three" title="Home L3">
+                    <SideNavLevel>
+                      <NavLink href="/four" title="Home L4" />
+                    </SideNavLevel>
+                  </NavLink>
+                </SideNavLevel>
+              </NavLink>
+            </SideNavLevel>
+          </NavLink>
+        </SideNavBody>
+      </SideNav>
+    </MemoryRouter>
+  );
+};
+
+export { SideNavExample, SideNavL4NestingErrorExample };

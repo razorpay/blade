@@ -16,6 +16,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { throwBladeError } from '~utils/logger';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
@@ -194,6 +195,16 @@ const SideNavLink = ({
   const currentLevel = prevLevel + 1;
   const isL2Trigger = Boolean(children) && currentLevel === 1;
   const isL3Trigger = Boolean(children) && currentLevel === 2;
+
+  if (__DEV__) {
+    if (Boolean(children) && currentLevel >= 3) {
+      throwBladeError({
+        message:
+          'SideNav only supports nesting upto L3 but L4 nesting was found. Check the nesting of your SideNavLevel items',
+        moduleName: 'SideNavLink',
+      });
+    }
+  }
 
   const isFirstRender = useFirstRender();
 
