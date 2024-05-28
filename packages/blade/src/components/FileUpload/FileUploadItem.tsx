@@ -16,11 +16,11 @@ const FileUploadItem = memo(
     file,
     onPreview,
     onRemove,
-    onRetry,
+    onReupload,
     onDismiss,
     size: containerSize,
   }: FileUploadItemProps): React.ReactElement => {
-    const { name, size, uploadPercent, errorText, errorCtaText, status } = file;
+    const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
     const sizeInKB = size / 1024;
     const sizeInMB = sizeInKB / 1024;
@@ -92,10 +92,10 @@ const FileUploadItem = memo(
                   color="negative"
                   size="small"
                   onClick={() => {
-                    onRetry?.({ file });
+                    onReupload?.({ file });
                   }}
                 >
-                  {errorCtaText ?? 'Retry'}
+                  Re-upload
                 </BaseLink>
               </BaseBox>
             ) : (

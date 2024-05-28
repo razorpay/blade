@@ -34,7 +34,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     onChange,
     onPreview,
     onRemove,
-    onRetry,
+    onReupload,
     onDismiss,
     onDrop,
     isDisabled,
@@ -309,15 +309,15 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               setSelectedFiles(newFiles);
               onRemove?.({ file: selectedFiles[0] });
             }}
-            onRetry={() => {
+            onReupload={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(newFiles);
               inputRef.current?.click();
 
               // TODO - Remove this in the next major release
-              // Fallback to onRemove if onRetry isn't provided to avoid breaking changes in the API
-              if (onRetry) {
-                onRetry({ file: selectedFiles[0] });
+              // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
+              if (onReupload) {
+                onReupload({ file: selectedFiles[0] });
               } else {
                 onRemove?.({ file: selectedFiles[0] });
               }
@@ -370,14 +370,14 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 setSelectedFiles(newFiles);
                 onRemove?.({ file });
               }}
-              onRetry={() => {
+              onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(newFiles);
                 inputRef.current?.click();
                 // TODO - Remove this in the next major release
-                // Fallback to onRemove if onRetry isn't provided to avoid breaking changes in the API
-                if (onRetry) {
-                  onRetry({ file: selectedFiles[0] });
+                // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
+                if (onReupload) {
+                  onReupload({ file: selectedFiles[0] });
                 } else {
                   onRemove?.({ file: selectedFiles[0] });
                 }
