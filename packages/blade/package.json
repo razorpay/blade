@@ -284,8 +284,7 @@
     "@razorpay/i18nify-react": "4.0.8",
     "plop": "3.1.1",
     "node-plop": "0.32.0",
-    "svgson": "5.3.1",
-    "mockdate": "3.0.5"
+    "svgson": "5.3.1"
   },
   "peerDependencies": {
     "react": ">=18",
