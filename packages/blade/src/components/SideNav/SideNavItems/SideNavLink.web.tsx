@@ -293,7 +293,7 @@ const SideNavLink = ({
               <BaseBox
                 position="absolute"
                 top="spacing.0"
-                right="spacing.4"
+                right="spacing.2"
                 height="100%"
                 display="flex"
                 alignItems="center"
