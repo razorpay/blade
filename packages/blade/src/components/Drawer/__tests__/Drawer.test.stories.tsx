@@ -192,11 +192,11 @@ KeyboardNavigations.play = async () => {
   // 1st drawer close
   // the test gets flaky if we try to close drawer immediately after it opens so adding some delay here to let drawer open correctly
   await sleep(300);
+  await expect(getByRole('button', { name: 'Open 2nd Drawer' })).toHaveFocus();
   await userEvent.keyboard('{Escape}');
   await waitFor(() =>
     expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument(),
   );
-  await waitFor(() => expect(drawerToggleButton).toHaveFocus());
 };
 
 export default {

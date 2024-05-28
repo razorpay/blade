@@ -138,7 +138,11 @@ const _Drawer = ({
     <DrawerContext.Provider value={contextValue}>
       <FloatingPortal>
         {isMounted || !isLazy ? (
-          <FloatingFocusManager context={context} initialFocus={initialFocusRef ?? closeButtonRef}>
+          <FloatingFocusManager
+            context={context}
+            initialFocus={initialFocusRef ?? closeButtonRef}
+            returnFocus={true}
+          >
             <BaseBox
               display={isLazy ? undefined : isMounted ? 'block' : 'none'}
               position="fixed"
