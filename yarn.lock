@@ -4334,17 +4334,17 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@razorpay/i18nify-js@1.10.0":
-  version "1.10.0"
-  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.10.0/2ec13e536df7d7b5f8373fa4d6a0b8d9b8376be4#2ec13e536df7d7b5f8373fa4d6a0b8d9b8376be4"
-  integrity sha512-5TujF6TjczpmieKnDs08mZcKGQ4CyxdVxGZCbxaI0ovK1AjcBX9gzoaWXXk91ceJLCamp20I1ht41vtRSAFHQw==
+"@razorpay/i18nify-js@1.9.3":
+  version "1.9.3"
+  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.9.3/7b04d201733d06da53c434fd987097e6d1cf0544#7b04d201733d06da53c434fd987097e6d1cf0544"
+  integrity sha512-CxatwqjxGe481dHxa9Gc7iC9tICGeJ/olRC2486SbWa0hybPME7AQAU1y+1u3iQOOGG8aH7ZLyRMnHrHder6tA==
   dependencies:
     "@internationalized/date" "^3.5.2"
 
-"@razorpay/i18nify-react@4.0.9":
-  version "4.0.9"
-  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-react/4.0.9/3419b000fb0a69b1b6713f6ef42aa50e56cb4051#3419b000fb0a69b1b6713f6ef42aa50e56cb4051"
-  integrity sha512-7GR21S8LtTnxKbQsXqyzdvaVsPi+IsOgKr49Vpkvj3Dqdy0qgaLCDt8eHpv+iMndm/4AYMiWn+CL/bwjYlFp5A==
+"@razorpay/i18nify-react@4.0.8":
+  version "4.0.8"
+  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-react/4.0.8/6d997f6de917e7aa441399dc8e10ec2944aa665d#6d997f6de917e7aa441399dc8e10ec2944aa665d"
+  integrity sha512-BoyDyw6kHNTMv1q1Rvd3GL4IlSZibzMiTRrgRmz1zZYNqAxyG6/W33CEF+Mr+3gIfv7QYwbdQlRle3HA7CpVBA==
 
 "@react-hook/intersection-observer@^3.1.1":
   version "3.1.1"
@@ -20576,6 +20576,11 @@ mkdirp@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-3.0.1.tgz#e44e4c5607fb279c168241713cc6e0fea9adcb50"
   integrity sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==
+
+mockdate@3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/mockdate/-/mockdate-3.0.5.tgz#789be686deb3149e7df2b663d2bc4392bc3284fb"
+  integrity sha512-iniQP4rj1FhBdBYS/+eQv7j1tadJ9lJtdzgOpvsOHng/GbcDh2Fhdeq+ZRldrPYdXvCyfFUmFeEwEGXZB5I/AQ==
 
 modify-values@^1.0.0:
   version "1.0.1"
