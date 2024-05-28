@@ -10,7 +10,7 @@ import { bladeTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
 import type { HeadingProps } from '~components/Typography';
 import { Display, Heading } from '~components/Typography';
-import { AnnouncementIcon, ExternalLinkIcon, FileTextIcon } from '~components/Icons';
+import { AnnouncementIcon, FigmaIcon, FileTextIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 
 const Subtitle = (props: HeadingProps): React.ReactElement => {
@@ -104,12 +104,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             </Button>
           ) : null}
           {props.figmaURL ? (
-            <Button
-              href={props.figmaURL}
-              variant="tertiary"
-              icon={ExternalLinkIcon}
-              target="_blank"
-            >
+            <Button href={props.figmaURL} variant="tertiary" icon={FigmaIcon} target="_blank">
               View on Figma
             </Button>
           ) : null}

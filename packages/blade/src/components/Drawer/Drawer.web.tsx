@@ -72,6 +72,7 @@ const _Drawer = ({
   accessibilityLabel,
   showOverlay = true,
   initialFocusRef,
+  isLazy = true,
   testID,
 }: DrawerProps): React.ReactElement => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
@@ -87,7 +88,7 @@ const _Drawer = ({
   const drawerId = useId('drawer');
   const { drawerStack, addToDrawerStack, removeFromDrawerStack } = useDrawerStack();
 
-  const { isMounted, isVisible } = usePresence(isOpen, {
+  const { isMounted, isVisible, isExiting } = usePresence(isOpen, {
     enterTransitionDuration: theme.motion.duration.gentle,
     exitTransitionDuration: theme.motion.duration.xmoderate,
     initialEnter: true,
@@ -95,10 +96,10 @@ const _Drawer = ({
 
   const { stackingLevel, isFirstDrawerInStack } = React.useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    const level = drawerStack.indexOf(drawerId) + 1;
+    const level = Object.keys(drawerStack).indexOf(drawerId) + 1;
     return {
       stackingLevel: level,
-      isFirstDrawerInStack: level === 1 && drawerStack.length > 1,
+      isFirstDrawerInStack: level === 1 && Object.keys(drawerStack).length > 1,
     };
   }, [drawerId, drawerStack]);
 
@@ -108,9 +109,9 @@ const _Drawer = ({
 
   React.useEffect(() => {
     if (isOpen) {
-      addToDrawerStack(drawerId);
+      addToDrawerStack({ elementId: drawerId, onDismiss });
     } else {
-      removeFromDrawerStack(drawerId);
+      removeFromDrawerStack({ elementId: drawerId });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -123,12 +124,27 @@ const _Drawer = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
 
+  const contextValue = React.useMemo(
+    () => ({
+      close: onDismiss,
+      closeButtonRef,
+      stackingLevel,
+      isExiting,
+    }),
+    [isExiting, onDismiss, stackingLevel],
+  );
+
   return (
-    <DrawerContext.Provider value={{ close: onDismiss, closeButtonRef }}>
+    <DrawerContext.Provider value={contextValue}>
       <FloatingPortal>
-        {isMounted ? (
-          <FloatingFocusManager context={context} initialFocus={initialFocusRef ?? closeButtonRef}>
+        {isMounted || !isLazy ? (
+          <FloatingFocusManager
+            context={context}
+            initialFocus={initialFocusRef ?? closeButtonRef}
+            returnFocus={true}
+          >
             <BaseBox
+              display={isLazy ? undefined : isMounted ? 'block' : 'none'}
               position="fixed"
               {...metaAttribute({
                 name: MetaConstants.Drawer,

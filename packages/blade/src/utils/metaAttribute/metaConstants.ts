@@ -65,6 +65,7 @@ export const MetaConstants = {
   RadioLabel: 'radio-label',
   SkipNav: 'skipnav',
   Spinner: 'spinner',
+  SideNav: 'sidenav',
   SelectInput: 'select-input',
   Tag: 'tag',
   Tooltip: 'tooltip',

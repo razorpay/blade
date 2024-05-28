@@ -2,10 +2,26 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Platform } from '~utils/platform';
 
 type SandboxStackBlitzProps = {
-  children: string;
+  children?: string;
   editorHeight?: number | string;
   padding?: BaseBoxProps['padding'];
   showConsole?: boolean;
+  /**
+   * Ignore children and use this if you want to pass a file structure instead of single file code
+   */
+  files?: Record<string, string>;
+  /**
+   * Comma separated names of files to keep open in sandbox.
+   *
+   * E.g. App.tsx,index.tsx,Example.tsx
+   */
+  openFile?: string;
+  /**
+   * hides the URL bar in preview
+   *
+   * @default true
+   */
+  hideNavigation?: boolean;
   /**
    * Renders link in react native stories to open storybook on web
    *

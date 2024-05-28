@@ -31,7 +31,7 @@ type As =
 
 export type BaseTextProps = {
   id?: string;
-  color?: TextColors;
+  color?: TextColors | 'currentColor'; // currentColor is useful for letting text inherit color property from its container
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];

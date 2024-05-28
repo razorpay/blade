@@ -49,7 +49,10 @@ const StyledCollapsibleBodyContent = styled(BaseBox)<StyledCollapsibleBodyConten
   };
 });
 
-const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => {
+const CollapsibleBodyContent = ({
+  children,
+  _hasMargin,
+}: CollapsibleBodyContentProps): ReactElement => {
   const { isExpanded, defaultIsExpanded, direction } = useCollapsible();
   const collapsibleBodyContentRef = useRef<HTMLDivElement>(null);
 
@@ -126,7 +129,7 @@ const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): Reac
       defaultIsExpanded={defaultIsExpanded}
       onTransitionEnd={onTransitionEnd}
     >
-      <Box {...getCollapsibleBodyContentBoxProps({ direction })}>{children}</Box>
+      <Box {...getCollapsibleBodyContentBoxProps({ direction, _hasMargin })}>{children}</Box>
     </StyledCollapsibleBodyContent>
   );
 };

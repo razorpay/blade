@@ -51,6 +51,10 @@ type CollapsibleProps = {
   onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
 
   /**
+   * **Internal**: disables trigger validations. Used for AccordionButton and SideNavLink internally
+   */
+  _dangerouslyDisableValidations?: boolean;
+  /**
    * **Internal**: used to override responsive width restrictions
    */
   _shouldApplyWidthRestrictions?: boolean;
@@ -67,6 +71,7 @@ const Collapsible = ({
   onExpandChange,
   testID,
   _shouldApplyWidthRestrictions = true,
+  _dangerouslyDisableValidations = false,
   ...styledProps
 }: CollapsibleProps): ReactElement => {
   const [isBodyExpanded, setIsBodyExpanded] = useState(isExpanded ?? defaultIsExpanded);
@@ -110,9 +115,9 @@ const Collapsible = ({
         !(
           isValidAllowedChildren(child, MetaConstants.CollapsibleBody) ||
           isValidAllowedChildren(child, MetaConstants.CollapsibleButton) ||
-          isValidAllowedChildren(child, MetaConstants.CollapsibleLink) ||
-          isValidAllowedChildren(child, MetaConstants.AccordionButton)
-        )
+          isValidAllowedChildren(child, MetaConstants.CollapsibleLink)
+        ) &&
+        !_dangerouslyDisableValidations
       ) {
         throwBladeError({
           message: `only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
