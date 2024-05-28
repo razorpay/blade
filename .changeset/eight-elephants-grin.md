@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-feat(FileUpload): error state UX enhancements
+feat(FileUpload): add `onReupload` prop to use in case of error state
