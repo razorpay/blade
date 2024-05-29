@@ -133,7 +133,16 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
   CalendarProps<Type>,
   MantineInternalProps
 > &
-  Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition' | 'name'> & {
+  Omit<
+    DatePickerCommonInputProps,
+    | 'inputRef'
+    | 'referenceProps'
+    | 'labelPosition'
+    | 'name'
+    | 'successText'
+    | 'errorText'
+    | 'helpText'
+  > & {
     /**
      * Sets the label for the input element.
      */
@@ -145,6 +154,9 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * @example 'date' | { start: 'start-date', end: 'end-date' }
      */
     name?: Type extends 'single' ? string : { start: string; end?: string };
+    helpText?: Type extends 'single' ? string : { start: string; end?: string };
+    errorText?: Type extends 'single' ? string : { start: string; end?: string };
+    successText?: Type extends 'single' ? string : { start: string; end?: string };
     labelPosition?: BaseInputProps['labelPosition'];
   };
 
@@ -152,6 +164,9 @@ type DatePickerRangeInputProps = {
   selectionType: 'range';
   label?: { start: string; end?: string };
   name?: { start: string; end: string };
+  successText?: { start: string; end?: string };
+  errorText?: { start: string; end?: string };
+  helpText?: { start: string; end?: string };
   date: [Date, Date];
 };
 
@@ -159,6 +174,9 @@ type DatePickerSingleInputProps = {
   selectionType: 'single';
   label?: string;
   name?: string;
+  successText?: string;
+  errorText?: string;
+  helpText?: string;
   date: Date;
 };
 
