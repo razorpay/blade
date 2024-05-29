@@ -321,6 +321,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               } else {
                 onRemove?.({ file: selectedFiles[0] });
               }
+              setIsActive(false);
             }}
             onDismiss={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
@@ -381,6 +382,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 } else {
                   onRemove?.({ file: selectedFiles[0] });
                 }
+                setIsActive(false);
               }}
               onDismiss={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
