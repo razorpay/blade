@@ -176,7 +176,7 @@ type DatePickerSingleInputProps = {
   name?: string;
   successText?: string;
   errorText?: string;
-  helpText?: { start: string; end: string };
+  helpText?: string;
   date: Date;
 };
 
