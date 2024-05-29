@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.21.1
+
+### Patch Changes
+
+- 04c84eb4: fix: datepicker label alignment
+
 ## 11.21.0
 
 ### Minor Changes
