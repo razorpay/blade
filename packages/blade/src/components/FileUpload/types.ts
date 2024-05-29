@@ -82,6 +82,10 @@ type FileUploadCommonProps = {
    */
   onRemove?: ({ file }: { file: File }) => void;
   /**
+   * Callback function triggered when a file upload is retried
+   */
+  onReupload?: ({ file }: { file: File }) => void;
+  /**
    * Callback function triggered when a file upload is dismissed
    */
   onDismiss?: ({ file }: { file: File }) => void;
@@ -146,7 +150,7 @@ type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel)
 
 type FileUploadItemProps = Pick<
   FileUploadProps,
-  'onPreview' | 'onRemove' | 'onDismiss' | 'size'
+  'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
 > & {
   file: BladeFile;
 };

@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, forwardRef } from 'react';
+import { useState, useCallback, useMemo, useRef, forwardRef } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
@@ -24,6 +24,7 @@ import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
+import { useMergeRefs } from '~utils/useMergeRefs';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -33,6 +34,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     onChange,
     onPreview,
     onRemove,
+    onReupload,
     onDismiss,
     onDrop,
     isDisabled,
@@ -53,6 +55,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   },
   ref,
 ): React.ReactElement => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const mergedRef = useMergeRefs(ref, inputRef);
   const { platform } = useTheme();
   const [selectedFiles, setSelectedFiles] = useState<BladeFileList>(fileList ?? []);
   const [errorMessage, setErrorMessage] = useState(errorText);
@@ -262,7 +266,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     onBlur: () => setIsActive(false),
                     ...accessibilityProps,
                   }}
-                  ref={ref}
+                  ref={mergedRef}
                 />
 
                 <Box
@@ -304,6 +308,20 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(newFiles);
               onRemove?.({ file: selectedFiles[0] });
+            }}
+            onReupload={() => {
+              const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+              setSelectedFiles(newFiles);
+              inputRef.current?.click();
+
+              // TODO - Remove this in the next major release
+              // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
+              if (onReupload) {
+                onReupload({ file: selectedFiles[0] });
+              } else {
+                onRemove?.({ file: selectedFiles[0] });
+              }
+              setIsActive(false);
             }}
             onDismiss={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
@@ -352,6 +370,19 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(newFiles);
                 onRemove?.({ file });
+              }}
+              onReupload={() => {
+                const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
+                setSelectedFiles(newFiles);
+                inputRef.current?.click();
+                // TODO - Remove this in the next major release
+                // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
+                if (onReupload) {
+                  onReupload({ file: selectedFiles[0] });
+                } else {
+                  onRemove?.({ file: selectedFiles[0] });
+                }
+                setIsActive(false);
               }}
               onDismiss={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
