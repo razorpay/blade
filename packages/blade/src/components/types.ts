@@ -12,6 +12,7 @@ type BladeCommonEvents = {
   }>;
   onMouseLeave?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
   onMouseMove?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onMouseDown?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
   onPointerDown?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
   onPointerEnter?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
   onTouchStart?: Platform.Select<{

@@ -43,6 +43,32 @@ type ButtonCommonProps = {
    * @private
    */
   'aria-describedby'?: string;
+  /**
+   * It is exposed for internal usage with menu.
+   *
+   * @private
+   */
+  'aria-controls'?: string;
+  /**
+   * It is exposed for internal usage with menu.
+   *
+   * @private
+   */
+  'aria-expanded'?: string;
+  /**
+   * It is exposed for internal usage with menu.
+   *
+   * @private
+   */
+  'aria-haspopup'?: 'menu';
+  /**
+   * It is exposed for internal usage with menu.
+   *
+   * @private
+   */
+  role?: 'menuitem';
+  tabIndex?: BaseButtonProps['tabIndex'];
+  id?: BaseButtonProps['id'];
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -87,11 +113,14 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     variant = 'primary',
     color = 'primary',
     accessibilityLabel,
+    role,
     testID,
     onBlur,
     onFocus,
     onMouseLeave,
     onMouseMove,
+    onMouseDown,
+    id,
     onPointerDown,
     onPointerEnter,
     onTouchStart,
@@ -104,6 +133,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
       {...getStyledProps(rest)}
+      id={id}
       ref={ref}
       href={href}
       target={target}
@@ -111,6 +141,9 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       accessibilityProps={{
         label: accessibilityLabel,
         describedBy: rest['aria-describedby'],
+        expanded: rest['aria-expanded'] === 'true',
+        hasPopup: rest['aria-haspopup'],
+        role,
       }}
       iconPosition={iconPosition}
       color={color}
@@ -126,6 +159,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}
       onMouseMove={onMouseMove}
+      onMouseDown={onMouseDown}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
       onTouchStart={onTouchStart}
