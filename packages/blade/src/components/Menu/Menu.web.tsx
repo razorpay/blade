@@ -36,6 +36,14 @@ const StyledMenuItem = styled.button<{ hasFocusInside?: boolean }>((_props) => {
   };
 });
 
+export const MenuOverlay = ({
+  children,
+}: {
+  children: React.ReactElement[];
+}): React.ReactElement => {
+  return <BaseBox>{children}</BaseBox>;
+};
+
 const MenuContext = React.createContext<{
   getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>;
   setHasFocusInside: React.Dispatch<React.SetStateAction<boolean>>;
@@ -48,21 +56,12 @@ const MenuContext = React.createContext<{
 });
 
 interface MenuProps {
-  label: string;
   nested?: boolean;
   children?: React.ReactNode;
 }
 
-export const MenuComponent = React.forwardRef<
-  HTMLButtonElement,
-  MenuProps & React.HTMLProps<HTMLButtonElement>
->(({ children, label, ...props }, forwardedRef) => {
+const useFloatingMenuSetup = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [hasFocusInside, setHasFocusInside] = React.useState(false);
-
-  const elementsRef = React.useRef<Array<HTMLButtonElement | null>>([]);
-  const labelsRef = React.useRef<Array<string | null>>([]);
-  const parent = React.useContext(MenuContext);
 
   const tree = useFloatingTree();
   const nodeId = useFloatingNodeId();
@@ -137,6 +136,43 @@ export const MenuComponent = React.forwardRef<
     }
   }, [tree, isOpen, nodeId, parentId]);
 
+  return {
+    getReferenceProps,
+    getFloatingProps,
+    getItemProps,
+    item,
+    context,
+    nodeId,
+    isOpen,
+    floatingStyles,
+    refs,
+    isNested,
+  };
+};
+
+export const MenuComponent = React.forwardRef<
+  HTMLButtonElement,
+  MenuProps & React.HTMLProps<HTMLButtonElement>
+>(({ children, label, ...props }, forwardedRef) => {
+  const [hasFocusInside, setHasFocusInside] = React.useState(false);
+
+  const elementsRef = React.useRef<Array<HTMLButtonElement | null>>([]);
+  const labelsRef = React.useRef<Array<string | null>>([]);
+  const parent = React.useContext(MenuContext);
+
+  const {
+    getReferenceProps,
+    getFloatingProps,
+    getItemProps,
+    item,
+    refs,
+    floatingStyles,
+    isOpen,
+    nodeId,
+    isNested,
+    context,
+  } = useFloatingMenuSetup();
+
   const referenceProps = {
     ref: useMergeRefs([refs.setReference, item.ref, forwardedRef]),
     ...getReferenceProps(
@@ -151,18 +187,22 @@ export const MenuComponent = React.forwardRef<
     ),
   };
 
+  const floatingProps = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ref: refs.setFloating as any,
+    style: floatingStyles,
+    ...getFloatingProps(),
+  };
+
+  const triggerWithReferenceProps = React.cloneElement(children[0], {
+    ...children[0].props,
+    ...referenceProps,
+    hasFocusInside,
+    _isMenuTrigger: true,
+  });
+
   return (
     <FloatingNode id={nodeId}>
-      {isNested ? (
-        <StyledMenuItem hasFocusInside={hasFocusInside} {...referenceProps}>
-          {label}
-          <BaseBox display="flex" alignItems="center">
-            <ChevronRightIcon />
-          </BaseBox>
-        </StyledMenuItem>
-      ) : (
-        <Button {...referenceProps}>{label}</Button>
-      )}
       <MenuContext.Provider
         value={{
           getItemProps,
@@ -170,6 +210,18 @@ export const MenuComponent = React.forwardRef<
           isOpen,
         }}
       >
+        {triggerWithReferenceProps}
+        {/* {isNested ? (
+          <StyledMenuItem hasFocusInside={hasFocusInside} {...referenceProps}>
+            {label}
+            <BaseBox display="flex" alignItems="center">
+              <ChevronRightIcon />
+            </BaseBox>
+          </StyledMenuItem>
+        ) : (
+          <Button {...referenceProps}>{label}</Button>
+        )} */}
+
         <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
           {isOpen && (
             <FloatingPortal>
@@ -180,14 +232,11 @@ export const MenuComponent = React.forwardRef<
                 returnFocus={!isNested}
               >
                 <BaseBox
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  ref={refs.setFloating as any}
-                  style={floatingStyles}
                   backgroundColor="popup.background.subtle"
                   padding="spacing.4"
-                  {...getFloatingProps()}
+                  {...floatingProps}
                 >
-                  {children}
+                  {children[1]}
                 </BaseBox>
               </FloatingFocusManager>
             </FloatingPortal>
@@ -206,7 +255,7 @@ interface MenuItemProps {
 export const MenuItem = React.forwardRef<
   HTMLButtonElement,
   MenuItemProps & React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ label, disabled, ...props }, forwardedRef) => {
+>(({ label, disabled, _isMenuTrigger, ...props }, forwardedRef) => {
   const menu = React.useContext(MenuContext);
   const item = useListItem({ label: disabled ? null : label });
   const tree = useFloatingTree();
@@ -218,16 +267,18 @@ export const MenuItem = React.forwardRef<
       ref={useMergeRefs([item.ref, forwardedRef])}
       type="button"
       disabled={disabled}
-      {...menu.getItemProps({
-        onClick(event: React.MouseEvent<HTMLButtonElement>) {
-          props.onClick?.(event);
-          tree?.events.emit('click');
-        },
-        onFocus(event: React.FocusEvent<HTMLButtonElement>) {
-          props.onFocus?.(event);
-          menu.setHasFocusInside(true);
-        },
-      })}
+      {...(_isMenuTrigger
+        ? {}
+        : menu.getItemProps({
+            onClick(event: React.MouseEvent<HTMLButtonElement>) {
+              props.onClick?.(event);
+              tree?.events.emit('click');
+            },
+            onFocus(event: React.FocusEvent<HTMLButtonElement>) {
+              props.onFocus?.(event);
+              menu.setHasFocusInside(true);
+            },
+          }))}
     >
       {label}
     </StyledMenuItem>
