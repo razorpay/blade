@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.21.2
+
+### Patch Changes
+
+- 2a4d1673: feat(FileUpload): add `onReupload` prop to use in case of error state
+
 ## 11.21.1
 
 ### Patch Changes
