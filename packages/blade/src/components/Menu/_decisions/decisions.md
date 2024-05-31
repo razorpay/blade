@@ -2,19 +2,26 @@
 
 <img alt="Menu Overview Image" src="overview.png" width="300px" />
 
-## Usage
+## Design
+
+- [Figma - Menu](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=90082-41948&m=dev)
+
+## API
 
 ```jsx
 <Menu>
+  {/* Any interactive item which has onClick, onMouseDown exposed */}
   <Button>Open Menu</Button>
   <MenuOverlay>
+    {/* All of this is a slot */}
     <Box display="flex" paddingY="spacing.4" gap="spacing.2">
       <Avatar name="Saurabh Daware" />
       <Text>Saurabh Daware</Text>
     </Box>
     <MenuItem title="Undo" onClick={() => console.log('Undo')} />
-    <MenuItem title="Redo" disabled />
+    <MenuItem title="Redo" isDisabled />
     <MenuItem title="Cut" />
+    {/* Sub Menu */}
     <Menu>
       <MenuItem title="Copy" />
       <MenuOverlay>
@@ -42,8 +49,6 @@
 
 ### Challenges of adding this to Dropdown
 
-Before we get into API Decisions, you're probably wondering why Menu is a different component than our existing Dropdown.
-
 We started Dropdown with SelectInput and AutoComplete-like usecases (basically Combobox usecases), so Dropdown includes all the code that's needed for selection, typeahead, arrow navigations, AutoComplete's filtering, etc.
 
 Since our usecases of Menu were simple and small, we added triggers like DropdownButton, DropdownLink to also handle some of the menu cases inside our existing Dropdown.
@@ -56,11 +61,34 @@ Normally you would see design-systems having 2 components. 1 for SelectInput, Au
 
 Examples
 
-- [Primer SelectPanel](https://primer.style/components/selectpanel/react/alpha), [Primer ActionMenu](https://primer.style/components/action-menu/react/beta), [Primer ActionList]()
+- [Primer SelectPanel](https://primer.style/components/selectpanel/react/alpha), [Primer ActionMenu](https://primer.style/components/action-menu/react/beta)
 - [Ariakit Select](https://ariakit.org/components/select), [Ariakit Combobox](https://ariakit.org/components/combobox), [Ariakit Menu](https://ariakit.org/components/menu)
 
 Going forward, our Dropdown component will continue to cover SelectInput, AutoComplete, etc usecases where selections are happening.
 
 And Menu will cover usecases which trigger certain actions, has complex interactive / non-interactive things inside the Overlay, requires submenus, custom triggers, etc.
 
-![alt text](image.png)
+![alt text](dropdown-menu-table.png)
+
+## Is this a breaking change for Dropdown consumers?
+
+**No**. Everything that works currently will continue to work. We will deprecate the DropdownButton, DropdownLink usage and recommend moving to Menu for those usecase but not break the usage of DropdownButton or DropdownLink.
+
+```diff
+- <Dropdown>
+-   <DropdownButton variant="tertiary" icon={UserIcon}>User</DropdownButton>
+-   <DropdownOverlay>
+-     <ActionList>
+-       <ActionListItem title="Profile" />
+-       <ActionListItem title="Account" />
+-     </ActionList>
+-   </DropdownOverlay>
+- </Dropdown>
++ <Menu>
++   <Button variant="tertiary" icon={UserIcon}>User<Button>
++   <MenuOverlay>
++     <MenuItem title="Profile" />
++     <MenuItem title="Account" />
++   </MenuOverlay>
++ </Menu>
+```
