@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.21.3
+
+### Patch Changes
+
+- 4643a992: fix(blade): datepicker input width
+- c7ed69b4: chore: add petty cash budget icon
+
 ## 11.21.2
 
 ### Patch Changes
