@@ -245,7 +245,7 @@ export const Validations: StoryFn<typeof DatePickerComponent> = () => {
       </Text>
       <DatePickerComponent
         validationState={hasError ? 'error' : 'none'}
-        errorText="Cannot select a range which is more than 3 days"
+        errorText={{ start: 'Cannot select a range which is more than 3 days' }}
         label={{ start: 'Start Date', end: 'End Date' }}
         selectionType="range"
         value={date}

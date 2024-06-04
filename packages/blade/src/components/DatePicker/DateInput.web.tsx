@@ -53,6 +53,7 @@ const iconVerticalMargin = {
   medium: sizeTokens[14],
   large: sizeTokens[24],
 } as const;
+const LEFT_LABEL_WIDTH = 132;
 
 const _DatePickerInput = (
   {
@@ -154,7 +155,7 @@ const _DatePickerInput = (
         alignItems="flex-start"
         ref={ref as never}
       >
-        <BaseBox flex={1}>
+        <BaseBox flex={1} flexBasis={isLabelPositionLeft ? LEFT_LABEL_WIDTH : '0px'}>
           <HiddenInput value={startValue} name={name?.start} />
           <DateInput
             setInputWrapperRef={(node) => ((inputRef as any)!.current = node)}
