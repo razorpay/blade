@@ -1,5 +1,9 @@
 # Menu
 
+Action Menu displays a list of actions on temporary surfaces. They allow users to action(s) from multiple options. They appear when users interact with a button, action, or other control.
+
+Unlike Dropdown, they are specifically made to be non-selectable, clickable items and are more flexible with what they can contain. Checkout [Menu vs Dropdown](#menu-vs-dropdown) for more context.
+
 <img alt="Menu Overview Image" src="overview.png" width="300px" />
 
 ## Design
@@ -43,11 +47,157 @@
 </Menu>
 ```
 
+## Props
+
+### Menu
+
+```ts
+type MenuProps = {
+  /**
+   * First children is trigger and second children is MenuOverlay
+   **/
+  children: [React.ReactElement, React.ReactElement];
+
+  /**
+   * Open controlled state
+   */
+  isOpen?: boolean;
+
+  /**
+   * On Menu open change callback
+   */
+  onOpenChange?: (isOpen: boolean) => void;
+
+  /**
+   * Should menu open on click or hover
+   *
+   * @default 'click'
+   */
+  openInteraction?: 'hover' | 'click';
+};
+```
+
+### MenuOverlay
+
+This overlay will be flexible overlay which can have any component. Static / Non-Static / MenuItem / etc
+
+```ts
+type MenuOverlay = {
+  /**
+   * A slot inside Menu's overlay.
+   *
+   * Supports MenuItem or any other component
+   */
+  children: React.ReactElement[];
+};
+```
+
+### MenuItem
+
+```ts
+type MenuItemProps = {
+  /**
+   * title of item
+   */
+  title: string;
+
+  /**
+   * Description text for the item
+   */
+  description?: string;
+
+  /**
+   * Click handler for MenuItem
+   *
+   * Absense of this prop and href will turn the item into non-interactive item
+   */
+  onClick?: (event: React.MouseEvent) => void;
+
+  /**
+   * Link to open when item is clicked.
+   *
+   * Absense of this prop and onClick will turn the item into non-interactive item
+   */
+  href?: string;
+
+  /**
+   * HTML target of the link
+   */
+  target?: string;
+
+  /**
+   * Item that goes on left-side of item.
+   *
+   * Will be overriden in multiselect
+   */
+  leading?: React.ReactNode;
+
+  /**
+   * Item that goes on right-side of item.
+   */
+  trailing?: React.ReactNode;
+
+  /**
+   * Item that goes immediately next to the title.
+   */
+  titleSuffix?: React.ReactElement;
+
+  /**
+   * disabled state of item
+   */
+  isDisabled?: boolean;
+
+  /**
+   * Color of item. set to negative for dangerous actions like Delete, Remove, etc
+   */
+  color?: Extract<FeedbackColors, 'negative'>;
+};
+```
+
+## Example APIs
+
+### Basic API
+
+```jsx
+<Menu>
+  <Button>Edit</Button> {/* Can be Link, Avatar, or any custom interactive item */}
+  <MenuOverlay>
+    {/* Supports any JSX */}
+    <Box>Slot</Box>
+    <Box overflowY="auto">
+      <MenuItem title="Profile" />
+      <MenuItem>
+        <Text>Custom Slot in Item</Text>
+      </MenuItem>
+    </Box>
+  </MenuOverlay>
+</Menu>
+```
+
+### Sub Menu
+
+```jsx
+<Menu>
+  <Button>Edit</Button>
+  <MenuOverlay>
+    <MenuItem title="Profile" />
+    {/* You can nest menu and use MenuItem as trigger for the next submenu */}
+    <Menu>
+      <MenuItem title="Accounts" />
+      <MenuOverlay>
+        <MenuItem title="Business Account" />
+        <MenuItem title="Personal Account" />
+      </MenuOverlay>
+    </Menu>
+  </MenuOverlay>
+</Menu>
+```
+
 ## Questions you might have
 
-## Menu vs Dropdown
+### Menu vs Dropdown
 
-### Challenges of adding this to Dropdown
+#### Challenges of adding this to Dropdown
 
 We started Dropdown with SelectInput and AutoComplete-like usecases (basically Combobox usecases), so Dropdown includes all the code that's needed for selection, typeahead, arrow navigations, AutoComplete's filtering, etc.
 
@@ -55,7 +205,7 @@ Since our usecases of Menu were simple and small, we added triggers like Dropdow
 
 But as we move into the next set of Menu usecases, we see the complexity of Menu increasing exponentially. Adding these usecases to Dropdown would mean- bloating dropdown with more unrelated code and bundle-size, ending up with inifinite edge cases, complex keyboard navigations for consumers, and bunch of if-else conditions internally to handle 2 very different usecases.
 
-### Two Different Usecases
+#### Two Different Usecases
 
 Normally you would see design-systems having 2 components. 1 for SelectInput, AutoComplete, etc and 2nd for Menu, ContextMenu, ActionMenu, etc
 
@@ -73,6 +223,8 @@ And Menu will cover usecases which trigger certain actions, has complex interact
 ## Is this a breaking change for Dropdown consumers?
 
 **No**. Everything that works currently will continue to work. We will deprecate the DropdownButton, DropdownLink usage and recommend moving to Menu for those usecase but not break the usage of DropdownButton or DropdownLink.
+
+How migration from deprecated API to recommended API will look like-
 
 ```diff
 - <Dropdown>
@@ -92,3 +244,43 @@ And Menu will cover usecases which trigger certain actions, has complex interact
 +   </MenuOverlay>
 + </Menu>
 ```
+
+## Accessibility
+
+- Menu will follow the accessibility of `dialog` since it can have anything inside the overlay.
+- Unlike Dropdown, Menu will be accessed with TAB key and not arrow navigation since its dialog
+
+## Open Questions
+
+- ### Should we rename existing Dropdown component family?
+
+  Our existing Dropdown component will be specific to Select and Combobox usecases now so should we rename existing components? (Will be a breaking change or deprecate existing names and re-export with new names)
+
+  Proposed renames-
+
+  1. Least Breaking- `ActionList*` --> `SelectList*`
+  2. More Breaking- Rename Dropdown to Combobox
+
+  ```jsx
+  <Combobox>
+    <SelectInput />
+    <ComboboxOverlay>
+      <ComboboxList />
+        <ComboboxItem />
+        <ComboboxItem />
+      </ComboboxList>
+    </ComboboxOverlay>
+  </Combobox>
+  ```
+
+- ### Name Decision: Menu vs ActionMenu
+
+  Currently calling it Menu because we have ActionList component. If we decide to rename that as mentioned in above question, we can rename this to ActionMenu as well.
+
+- ### How much do we want to standardize design from code
+
+  Currently I've built API with flexibility in mind where we just give item, overlay, and functionality from our end. But consumers can decide what goes inside the overlay and how to place items.
+
+  - Should the header, footer be standardised?
+  - Should non-interactive item be standardised?
+  - Should section headings, dividers, etc be standardised?
