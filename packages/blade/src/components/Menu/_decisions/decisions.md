@@ -164,6 +164,7 @@ type MenuItemProps = {
   <MenuOverlay>
     {/* Supports any JSX */}
     <Box>Slot</Box>
+    <Divider />
     <Box overflowY="auto">
       <MenuItem title="Profile" />
       <MenuItem>
@@ -174,7 +175,7 @@ type MenuItemProps = {
 </Menu>
 ```
 
-### Sub Menu
+### SubMenu
 
 ```jsx
 <Menu>
@@ -196,6 +197,8 @@ type MenuItemProps = {
 ## Questions you might have
 
 ### Menu vs Dropdown
+
+Why is this not just part of Dropdown? Ans:
 
 #### Challenges of adding this to Dropdown
 
