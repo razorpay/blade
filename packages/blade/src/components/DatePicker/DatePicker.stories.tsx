@@ -264,6 +264,29 @@ export const Validations: StoryFn<typeof DatePickerComponent> = () => {
 
 Validations.storyName = 'Validations';
 
+export const Disabled: StoryFn<typeof DatePickerComponent> = () => {
+  const [date, setDate] = React.useState<DatesRangeValue>(() => [
+    dayjs().add(3, 'day').toDate(),
+    dayjs().add(7, 'day').toDate(),
+  ]);
+
+  return (
+    <Box>
+      <DatePickerComponent
+        label={{ start: 'Start Date', end: 'End Date' }}
+        isDisabled={{ start: true, end: false }}
+        selectionType="range"
+        value={date}
+        onChange={(date) => {
+          setDate(date);
+        }}
+      />
+    </Box>
+  );
+};
+
+Disabled.storyName = 'Disabled';
+
 export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
   return (
     <Box>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { UseFloatingOptions } from '@floating-ui/react';
 import {
@@ -22,6 +23,7 @@ type UsePopupProps = {
   placement: UseFloatingOptions['placement'];
   onOpenChange?: UseFloatingOptions['onOpenChange'];
   referenceRef: React.RefObject<HTMLButtonElement>;
+  offsetPosition?: number;
 };
 
 const usePopup = ({
@@ -30,6 +32,7 @@ const usePopup = ({
   open,
   onOpenChange,
   referenceRef,
+  offsetPosition = 0,
 }: UsePopupProps) => {
   const GAP = spacing[4];
   const { theme } = useTheme();

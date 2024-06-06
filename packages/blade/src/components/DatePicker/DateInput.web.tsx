@@ -70,6 +70,7 @@ const _DatePickerInput = (
     successText,
     errorText,
     helpText,
+    isDisabled,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -109,6 +110,7 @@ const _DatePickerInput = (
           successText={successText}
           errorText={errorText}
           helpText={helpText}
+          isDisabled={isDisabled}
           {...props}
           {...referenceProps}
         />
@@ -146,6 +148,7 @@ const _DatePickerInput = (
       labelSeparator: '-',
       locale,
     });
+
     return (
       <BaseBox
         width="100%"
@@ -174,6 +177,7 @@ const _DatePickerInput = (
             successText={successText?.start}
             errorText={errorText?.start}
             helpText={helpText?.start}
+            isDisabled={isDisabled?.start}
             {...props}
             {...referenceProps}
           />
@@ -207,6 +211,7 @@ const _DatePickerInput = (
             successText={successText?.end}
             errorText={errorText?.end}
             helpText={helpText?.end}
+            isDisabled={isDisabled?.end}
             {...props}
             {...referenceProps}
           />

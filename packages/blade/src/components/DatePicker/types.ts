@@ -142,6 +142,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     | 'successText'
     | 'errorText'
     | 'helpText'
+    | 'isDisabled'
   > & {
     /**
      * Sets the label for the input element.
@@ -157,6 +158,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     helpText?: Type extends 'single' ? string : { start: string; end?: string };
     errorText?: Type extends 'single' ? string : { start: string; end?: string };
     successText?: Type extends 'single' ? string : { start: string; end?: string };
+    isDisabled?: Type extends 'single' ? boolean : { start?: boolean; end?: boolean };
     labelPosition?: BaseInputProps['labelPosition'];
   };
 
@@ -167,6 +169,7 @@ type DatePickerRangeInputProps = {
   successText?: { start: string; end?: string };
   errorText?: { start: string; end?: string };
   helpText?: { start: string; end?: string };
+  isDisabled?: { start?: boolean; end?: boolean };
   date: [Date, Date];
 };
 
@@ -177,6 +180,7 @@ type DatePickerSingleInputProps = {
   successText?: string;
   errorText?: string;
   helpText?: string;
+  isDisabled?: boolean;
   date: Date;
 };
 
@@ -186,7 +190,7 @@ type DatePickerCommonInputProps = {
   referenceProps: any;
 } & Pick<
   TextInputProps,
-  'size' | 'isRequired' | 'necessityIndicator' | 'autoFocus' | 'isDisabled' | 'accessibilityLabel'
+  'size' | 'isRequired' | 'necessityIndicator' | 'autoFocus' | 'accessibilityLabel'
 > &
   FormInputValidationProps;
 

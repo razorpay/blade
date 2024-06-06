@@ -11,6 +11,7 @@ interface UseDatesRangeInput<Type extends DatePickerType = 'default'>
   type: Type;
   onMouseLeave?: (event: React.MouseEvent<HTMLDivElement>) => void;
   applyTimezone?: boolean;
+  disabledStartDate?: boolean;
 }
 
 function isInRange(date: Date, range: [Date, Date]) {
@@ -31,6 +32,7 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
   allowDeselect,
   onMouseLeave,
   applyTimezone = true,
+  disabledStartDate,
 }: UseDatesRangeInput<Type>) {
   const [_value, setValue] = useUncontrolledDates({
     type,
@@ -40,14 +42,28 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
     applyTimezone,
   });
 
+  const startDisabled = disabledStartDate;
   const [pickedDate, setPickedDate] = useState<Date | null>(
     type === 'range' ? (_value[0] && !_value[1] ? _value[0] : null) : null,
   );
+
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
 
   const onDateChange = (date: Date) => {
     if (type === 'range') {
+      // if start date is disabled & end date is not selected yet
+      // then set value to `[startDate, date]` and do not allow to change start date
+      if (startDisabled) {
+        // start date remains static
+        const startDate = _value[0];
+        setValue([startDate, date]);
+        setHoveredDate(null);
+        setPickedDate(date);
+        return;
+      }
+
       if (pickedDate instanceof Date && !_value[1]) {
+        // same date allowance
         if (dayjs(date).isSame(pickedDate, level) && !allowSingleDateInRange) {
           setPickedDate(null);
           setHoveredDate(null);
@@ -89,6 +105,11 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
   };
 
   const isDateInRange = (date: Date) => {
+    // Do not highlight on hover if start date is disabled
+    if (startDisabled && hoveredDate instanceof Date) {
+      return isInRange(date, _value);
+    }
+
     if (pickedDate instanceof Date && hoveredDate instanceof Date) {
       return isInRange(date, [hoveredDate, pickedDate]);
     }

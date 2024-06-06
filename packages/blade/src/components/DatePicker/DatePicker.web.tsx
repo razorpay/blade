@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -62,10 +63,11 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   onPickerChange,
   ...props
 }: DatePickerProps<Type> & StyledPropsBlade): React.ReactElement => {
+  const { theme } = useTheme();
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
-  const { theme } = useTheme();
   const isSingle = _selectionType === 'single';
+  const isRange = _selectionType === 'range';
   const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
 
@@ -88,6 +90,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   } = useDatesState({
     level: _picker,
     type: isSingle ? 'default' : 'range',
+    disabledStartDate: (isDisabled as any)?.start,
     allowDeselect: false,
     allowSingleDateInRange,
     value,
@@ -141,6 +144,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     enabled: !isMobile,
     placement: 'bottom-start',
     open: controllableIsOpen,
+    offsetPosition: validationState === 'none' ? 0 : 24,
     onOpenChange: (isOpen, _, reason) => {
       controllableSetIsOpen(() => isOpen);
       if (reason === 'escape-key' || reason === 'outside-press') {
@@ -215,6 +219,15 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             setPicker(() => picker);
             forceRerender();
           }}
+          excludeDate={(date) => {
+            const shouldExclude = Boolean(props?.excludeDate?.(date));
+            // If start date is disabled, then exclude all dates before it
+            const startDisabled = (isDisabled as any)?.start === true;
+            if (isRange && startDisabled) {
+              return dayjs(dayjs(date).add(1, 'day')).isBefore(controlledValue[0]) || shouldExclude;
+            }
+            return shouldExclude;
+          }}
         />
         {isMobile ? null : <CalendarFooter onApply={handleApply} onCancel={handleCancel} />}
       </BaseBox>
@@ -266,7 +279,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             errorText={errorText as never}
             helpText={helpText as never}
             successText={successText as never}
-            isDisabled={isDisabled}
+            isDisabled={isDisabled as never}
             isRequired={isRequired}
             validationState={validationState}
             autoFocus={autoFocus}
