@@ -5,6 +5,7 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { Avatar } from '~components/Avatar';
+import { Divider } from '~components/Divider';
 
 export default {
   title: 'Components/Menu',
@@ -43,10 +44,15 @@ export const Default = (): React.ReactElement => {
               <MenuItem label="Audio" />
             </MenuOverlay>
           </Menu>
-          <Menu label="Share">
-            <MenuItem label="Mail" />
-            <MenuItem label="Instagram" />
+          <Menu>
+            <MenuItem label="Share" />
+            <MenuOverlay>
+              <MenuItem label="Mail" />
+              <MenuItem label="Instagram" />
+            </MenuOverlay>
           </Menu>
+          <Divider position="absolute" left="spacing.0" width="100%" />
+          <MenuItem label="Log Out" />
           <Button>Apply</Button>
         </MenuOverlay>
       </Menu>

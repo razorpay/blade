@@ -17,32 +17,54 @@ import {
   useFloatingTree,
   useHover,
   useInteractions,
+  useListNavigation,
   useListItem,
   useMergeRefs,
   useRole,
 } from '@floating-ui/react';
 import * as React from 'react';
 import styled from 'styled-components';
+import { BaseMenuItem } from '~components/BaseMenu/BaseMenuItem';
 import BaseBox from '~components/Box/BaseBox';
-import { Button } from '~components/Button';
 import { ChevronRightIcon } from '~components/Icons';
-// import { Button } from '~components/Button';
-// import { ChevronRightIcon } from '~components/Icons';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils';
+import type { BladeElementRef } from '~utils/types';
 
-const StyledMenuItem = styled.button<{ hasFocusInside?: boolean }>((_props) => {
+const UnfocussableOverlay = styled(BaseBox)((props) => {
   return {
-    display: 'flex',
-    flexDirection: 'row',
+    '&:focus-visible': {
+      outline: 'none',
+    },
   };
 });
 
-export const MenuOverlay = ({
-  children,
-}: {
-  children: React.ReactElement[];
-}): React.ReactElement => {
-  return <BaseBox>{children}</BaseBox>;
+const _MenuOverlay: React.ForwardRefRenderFunction<
+  BladeElementRef,
+  {
+    children: React.ReactElement[];
+  }
+> = ({ children, ...props }, ref): React.ReactElement => {
+  return (
+    <UnfocussableOverlay
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+      {...props}
+      backgroundColor="popup.background.subtle"
+      paddingX="spacing.3"
+      paddingY="spacing.4"
+      minWidth={makeSize(size['240'])}
+      elevation="midRaised"
+      borderWidth="thin"
+      borderColor="surface.border.gray.muted"
+      borderRadius="medium"
+    >
+      {children}
+    </UnfocussableOverlay>
+  );
 };
+
+export const MenuOverlay = React.forwardRef(_MenuOverlay);
 
 const MenuContext = React.createContext<{
   getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>;
@@ -57,11 +79,16 @@ const MenuContext = React.createContext<{
 
 interface MenuProps {
   nested?: boolean;
-  children?: React.ReactNode;
+  children?: [React.ReactElement, React.ReactElement];
 }
 
-const useFloatingMenuSetup = () => {
+const useFloatingMenuSetup = ({
+  elementsRef,
+}: {
+  elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
 
   const tree = useFloatingTree();
   const nodeId = useFloatingNodeId();
@@ -76,7 +103,7 @@ const useFloatingMenuSetup = () => {
     onOpenChange: setIsOpen,
     placement: isNested ? 'right-start' : 'bottom-start',
     middleware: [
-      offset({ mainAxis: isNested ? 0 : 4, alignmentAxis: isNested ? -4 : 0 }),
+      offset({ mainAxis: isNested ? 12 : 4, alignmentAxis: isNested ? -12 : 0 }),
       flip(),
       shift(),
     ],
@@ -93,14 +120,22 @@ const useFloatingMenuSetup = () => {
     toggle: !isNested,
     ignoreMouse: isNested,
   });
-  const role = useRole(context, { role: 'dialog' });
+  const role = useRole(context, { role: 'menu' });
   const dismiss = useDismiss(context, { bubbles: true });
+  const listNavigation = useListNavigation(context, {
+    listRef: elementsRef,
+    activeIndex,
+    nested: isNested,
+    onNavigate: setActiveIndex,
+    focusItemOnHover: false,
+  });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
     hover,
     click,
     role,
     dismiss,
+    listNavigation,
   ]);
 
   // Event emitter allows you to communicate across tree components.
@@ -156,8 +191,8 @@ export const MenuComponent = React.forwardRef<
 >(({ children, label, ...props }, forwardedRef) => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
 
-  const elementsRef = React.useRef<Array<HTMLButtonElement | null>>([]);
-  const labelsRef = React.useRef<Array<string | null>>([]);
+  const elementsRef = React.useRef<(HTMLButtonElement | null)[]>([]);
+  const labelsRef = React.useRef<(string | null)[]>([]);
   const parent = React.useContext(MenuContext);
 
   const {
@@ -171,7 +206,9 @@ export const MenuComponent = React.forwardRef<
     nodeId,
     isNested,
     context,
-  } = useFloatingMenuSetup();
+  } = useFloatingMenuSetup({
+    elementsRef,
+  });
 
   const referenceProps = {
     ref: useMergeRefs([refs.setReference, item.ref, forwardedRef]),
@@ -194,11 +231,22 @@ export const MenuComponent = React.forwardRef<
     ...getFloatingProps(),
   };
 
-  const triggerWithReferenceProps = React.cloneElement(children[0], {
-    ...children[0].props,
+  const [menuTriggerChild, menuOverlayChild] = React.Children.toArray(children) as [
+    React.ReactElement,
+    React.ReactElement,
+  ];
+
+  const triggerWithReferenceProps = React.cloneElement(menuTriggerChild, {
+    ...menuTriggerChild.props,
     ...referenceProps,
-    hasFocusInside,
+    _hasFocusInside: hasFocusInside,
     _isMenuTrigger: true,
+    _isSubmenuOpen: isOpen,
+  });
+
+  const overlayWithFloatingProps = React.cloneElement(menuOverlayChild, {
+    ...menuOverlayChild.props,
+    ...floatingProps,
   });
 
   return (
@@ -211,33 +259,16 @@ export const MenuComponent = React.forwardRef<
         }}
       >
         {triggerWithReferenceProps}
-        {/* {isNested ? (
-          <StyledMenuItem hasFocusInside={hasFocusInside} {...referenceProps}>
-            {label}
-            <BaseBox display="flex" alignItems="center">
-              <ChevronRightIcon />
-            </BaseBox>
-          </StyledMenuItem>
-        ) : (
-          <Button {...referenceProps}>{label}</Button>
-        )} */}
-
         <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
           {isOpen && (
             <FloatingPortal>
               <FloatingFocusManager
                 context={context}
                 modal={false}
-                initialFocus={isNested ? -1 : 0}
+                initialFocus={-1}
                 returnFocus={!isNested}
               >
-                <BaseBox
-                  backgroundColor="popup.background.subtle"
-                  padding="spacing.4"
-                  {...floatingProps}
-                >
-                  {children[1]}
-                </BaseBox>
+                {overlayWithFloatingProps}
               </FloatingFocusManager>
             </FloatingPortal>
           )}
@@ -250,40 +281,49 @@ export const MenuComponent = React.forwardRef<
 interface MenuItemProps {
   label: string;
   disabled?: boolean;
+  onClick?: (event: any) => void;
+  onFocus?: (event: any) => void;
+  _hasFocusInside?: boolean;
+  _isMenuTrigger?: boolean;
+  _isSubmenuOpen?: boolean;
 }
 
-export const MenuItem = React.forwardRef<
-  HTMLButtonElement,
-  MenuItemProps & React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ label, disabled, _isMenuTrigger, ...props }, forwardedRef) => {
-  const menu = React.useContext(MenuContext);
-  const item = useListItem({ label: disabled ? null : label });
-  const tree = useFloatingTree();
+export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
+  (
+    { label, disabled, _isMenuTrigger, _hasFocusInside, _isSubmenuOpen, ...props },
+    forwardedRef,
+  ) => {
+    const menu = React.useContext(MenuContext);
+    const item = useListItem({ label: disabled ? null : label });
+    const tree = useFloatingTree();
 
-  return (
-    <StyledMenuItem
-      as="button"
-      {...props}
-      ref={useMergeRefs([item.ref, forwardedRef])}
-      type="button"
-      disabled={disabled}
-      {...(_isMenuTrigger
-        ? {}
-        : menu.getItemProps({
-            onClick(event: React.MouseEvent<HTMLButtonElement>) {
-              props.onClick?.(event);
-              tree?.events.emit('click');
-            },
-            onFocus(event: React.FocusEvent<HTMLButtonElement>) {
-              props.onFocus?.(event);
-              menu.setHasFocusInside(true);
-            },
-          }))}
-    >
-      {label}
-    </StyledMenuItem>
-  );
-});
+    return (
+      <BaseMenuItem
+        title={label}
+        trailing={
+          _isMenuTrigger ? <ChevronRightIcon color="interactive.icon.gray.muted" /> : undefined
+        }
+        as="button"
+        className={_isSubmenuOpen ? 'has-submenu-open' : ''}
+        {...props}
+        ref={useMergeRefs([item.ref, forwardedRef])}
+        isDisabled={disabled}
+        {...(_isMenuTrigger
+          ? {}
+          : menu.getItemProps({
+              onClick(event: React.MouseEvent<HTMLButtonElement>) {
+                props.onClick?.(event);
+                tree?.events.emit('click');
+              },
+              onFocus(event: React.FocusEvent<HTMLButtonElement>) {
+                props.onFocus?.(event);
+                menu.setHasFocusInside(true);
+              },
+            }))}
+      />
+    );
+  },
+);
 
 export const Menu = React.forwardRef<
   HTMLButtonElement,
