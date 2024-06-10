@@ -321,6 +321,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default text
      **/
     valueComponentType?: 'text' | 'heading';
+    /**
+     * Whether to show border around the input field
+     * @default true
+     **/
+    hasBorder?: boolean;
   } & TestID &
   Platform.Select<{
     native: {
@@ -718,29 +723,33 @@ const getDescribedByElementId = ({
 
 const FocusRingWrapper = styled(BaseBox)<{
   currentInteraction: ActionStates;
-}>(({ theme, currentInteraction }) => ({
-  borderRadius: makeBorderSize(theme.border.radius.medium),
+  hasBorder: NonNullable<BaseInputProps['hasBorder']>;
+}>(({ theme, currentInteraction, hasBorder }) => ({
+  borderRadius: makeBorderSize(hasBorder ? theme.border.radius.medium : theme.border.radius.none),
   width: '100%',
-  '&:focus-within': {
-    ...getFocusRingStyles({
-      theme,
-    }),
-    transitionDuration: castWebType(
-      makeMotionTime(
-        getIn(
-          theme.motion.duration,
-          baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-            .duration,
+  '&:focus-within': hasBorder
+    ? {
+        ...getFocusRingStyles({
+          theme,
+        }),
+        transitionDuration: castWebType(
+          makeMotionTime(
+            getIn(
+              theme.motion.duration,
+              baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+                .duration,
+            ),
+          ),
         ),
-      ),
-    ),
-    transitionTimingFunction: castWebType(
-      getIn(
-        theme.motion.easing,
-        baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit'].easing,
-      ),
-    ),
-  },
+        transitionTimingFunction: castWebType(
+          getIn(
+            theme.motion.easing,
+            baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+              .easing,
+          ),
+        ),
+      }
+    : {},
 }));
 
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
@@ -807,6 +816,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     size = 'medium',
     trailingButton,
     valueComponentType = 'text',
+    hasBorder = true,
     ...styledProps
   },
   ref,
@@ -927,7 +937,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <FocusRingWrapper currentInteraction={currentInteraction}>
+        <FocusRingWrapper currentInteraction={currentInteraction} hasBorder={hasBorder}>
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}
@@ -951,6 +961,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 inputRef.current?.focus();
               }
             }}
+            hasBorder={hasBorder}
           >
             <BaseInputVisuals
               size={size}

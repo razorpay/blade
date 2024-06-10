@@ -43,6 +43,7 @@ export type BaseInputWrapperProps = Pick<
   children: React.ReactNode;
   size: NonNullable<BaseInputProps['size']>;
   numberOfLines: BaseInputProps['numberOfLines'];
+  hasBorder: NonNullable<BaseInputProps['hasBorder']>;
   onClick?: () => void;
 };
 

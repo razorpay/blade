@@ -39,6 +39,7 @@ type GetInputStyles = Pick<
   hasTags?: boolean;
   theme: Theme;
   size: NonNullable<BaseInputProps['size']>;
+  hasBorder: NonNullable<BaseInputProps['hasBorder']>;
 };
 
 export const getBaseInputState = ({
@@ -69,6 +70,7 @@ export const getInputBackgroundAndBorderStyles = ({
   validationState,
   isTextArea,
   isDropdownTrigger,
+  hasBorder,
 }: Pick<
   GetInputStyles,
   | 'theme'
@@ -78,16 +80,20 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isHovered'
   | 'isTextArea'
   | 'isDropdownTrigger'
+  | 'hasBorder'
 >): CSSObject => {
   // normal state
   let backgroundColor = getIn(theme.colors, baseInputBackgroundColor.default);
-  let borderColor = getIn(theme.colors, baseInputBorderColor.default);
+  let borderColor = hasBorder ? getIn(theme.colors, baseInputBorderColor.default) : 'transparent';
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
 
   const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
 
   backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
-  borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
+  borderColor =
+    !hasBorder && baseInputState !== 'focused'
+      ? 'transparent'
+      : getIn(theme.colors, baseInputBorderColor[baseInputState]);
   borderWidth = getIn(theme.border.width, baseInputBorderWidth[baseInputState]);
 
   if (validationState === 'error') {
@@ -100,7 +106,7 @@ export const getInputBackgroundAndBorderStyles = ({
 
   return {
     backgroundColor,
-    borderRadius: makeBorderSize(theme.border.radius.medium),
+    borderRadius: makeBorderSize(hasBorder ? theme.border.radius.medium : theme.border.radius.none),
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
@@ -109,7 +115,7 @@ export const getInputBackgroundAndBorderStyles = ({
     position: 'relative',
     height: isDropdownTrigger && !isTextArea ? 'auto' : undefined,
     border: 'none',
-    ...getBaseInputBorderStyles({ theme, borderColor, borderWidth, isFocused }),
+    ...getBaseInputBorderStyles({ theme, borderColor, borderWidth, isFocused, hasBorder }),
   };
 };
 

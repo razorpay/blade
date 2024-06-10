@@ -8,6 +8,7 @@ const getBaseInputBorderStyles = ({
   borderWidth: number;
   borderColor: string;
   isFocused?: boolean;
+  hasBorder: boolean;
 }): CSSObject => ({
   borderColor,
 });

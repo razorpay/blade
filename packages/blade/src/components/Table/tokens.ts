@@ -119,6 +119,12 @@ const tablePagination = {
   defaultPageSize: 10,
 } as const;
 
+const tableEditableCellRowDensityToInputSizeMap = {
+  compact: 'medium',
+  normal: 'large',
+  comfortable: 'large',
+} as const;
+
 export {
   tableHeader,
   tableFooter,
@@ -129,4 +135,5 @@ export {
   tableBackgroundColor,
   firstColumnStickyHeaderFooterZIndex,
   checkboxCellWidth,
+  tableEditableCellRowDensityToInputSizeMap,
 };

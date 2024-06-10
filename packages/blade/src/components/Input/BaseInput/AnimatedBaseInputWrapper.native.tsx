@@ -32,8 +32,8 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     validationState: props.validationState,
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
+    hasBorder: props.hasBorder,
   }),
-  backgroundColor: 'yellow',
 }));
 
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
