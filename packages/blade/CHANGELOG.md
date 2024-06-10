@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.21.4
+
+### Patch Changes
+
+- d3789888: fix: datepicker zIndex issue and expose zIndex prop
+
 ## 11.21.3
 
 ### Patch Changes
