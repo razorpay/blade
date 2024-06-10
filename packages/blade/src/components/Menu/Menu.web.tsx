@@ -26,6 +26,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { BaseMenuItem } from '~components/BaseMenu/BaseMenuItem';
 import BaseBox from '~components/Box/BaseBox';
+import { Divider } from '~components/Divider';
 import { ChevronRightIcon } from '~components/Icons';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
@@ -103,7 +104,7 @@ const useFloatingMenuSetup = ({
     onOpenChange: setIsOpen,
     placement: isNested ? 'right-start' : 'bottom-start',
     middleware: [
-      offset({ mainAxis: isNested ? 12 : 4, alignmentAxis: isNested ? -12 : 0 }),
+      offset({ mainAxis: isNested ? 12 : 0, alignmentAxis: isNested ? -16 : 0 }),
       flip(),
       shift(),
     ],
@@ -277,6 +278,10 @@ export const MenuComponent = React.forwardRef<
     </FloatingNode>
   );
 });
+
+export const MenuDivider = (): React.ReactElement => {
+  return <Divider marginLeft="-8px" marginY="spacing.1" marginRight="-8px" />;
+};
 
 interface MenuItemProps {
   label: string;

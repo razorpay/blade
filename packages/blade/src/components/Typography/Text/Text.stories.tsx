@@ -6,7 +6,6 @@ import { Text as TextComponent } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { Button } from '~components/Button';
 
 const Page = (): ReactElement => {
   return (

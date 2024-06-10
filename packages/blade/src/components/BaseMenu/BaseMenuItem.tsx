@@ -19,6 +19,8 @@ const StyledMenuItemContainer = styled.button<{ intent?: 'negative' }>((props) =
     backgroundColor: 'transparent',
     padding: makeSize(props.theme.spacing[2]),
     borderRadius: makeSize(props.theme.border.radius.medium),
+    marginTop: makeSize(props.theme.spacing[1]),
+    marginBottom: makeSize(props.theme.spacing[1]),
     textDecoration: 'none',
     cursor: 'pointer',
     width: '100%',

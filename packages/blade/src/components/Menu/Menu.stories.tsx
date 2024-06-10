@@ -1,11 +1,10 @@
 import React from 'react';
 import type { Meta } from '@storybook/react';
-import { Menu, MenuItem, MenuOverlay } from './Menu';
+import { Menu, MenuDivider, MenuItem, MenuOverlay } from './Menu';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { Avatar } from '~components/Avatar';
-import { Divider } from '~components/Divider';
 
 export default {
   title: 'Components/Menu',
@@ -51,7 +50,7 @@ export const Default = (): React.ReactElement => {
               <MenuItem label="Instagram" />
             </MenuOverlay>
           </Menu>
-          <Divider position="absolute" left="spacing.0" width="100%" />
+          <MenuDivider />
           <MenuItem label="Log Out" />
           <Button>Apply</Button>
         </MenuOverlay>
