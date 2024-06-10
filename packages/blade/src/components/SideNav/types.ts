@@ -219,10 +219,18 @@ type SideNavItemProps = {
 };
 
 type SideNavBodyProps = {
+  /**
+   * Children slot for SideNavLink
+   */
   children: React.ReactElement | React.ReactElement[];
 };
 
-type SideNavLevelProps = { children: React.ReactElement | React.ReactElement[] };
+type SideNavLevelProps = {
+  /**
+   * Children slot for SideNavLink
+   */
+  children: React.ReactElement | React.ReactElement[];
+};
 
 export type {
   SideNavProps,

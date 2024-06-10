@@ -16,7 +16,6 @@ import {
 } from '..';
 import { RazorpayLinesSvg, RazorpayLogo } from './RazorpayLogo';
 import { sideNavWithReactRouter } from './code';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import {
   ArrowUpRightIcon,
@@ -84,8 +83,14 @@ export default {
   title: 'Components/SideNav',
   component: SideNav,
   tags: ['autodocs'],
-  argTypes: {
-    ...getStyledPropsArgTypes(),
+  subcomponents: {
+    SideNav,
+    SideNavLink,
+    SideNavItem,
+    SideNavSection,
+    SideNavLevel,
+    SideNavBody,
+    SideNavFooter,
   },
   parameters: {
     docs: {
