@@ -33,6 +33,7 @@ import { logger } from '~utils/logger';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -60,6 +61,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   defaultPicker = 'day',
   picker,
   onPickerChange,
+  zIndex = componentZIndices.popover,
   ...props
 }: DatePickerProps<Type> & StyledPropsBlade): React.ReactElement => {
   const { i18nState } = useI18nContext();
@@ -312,6 +314,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
                   <BaseBox
                     ref={refs.setFloating}
                     style={floatingStyles}
+                    zIndex={zIndex}
                     {...getFloatingProps()}
                     {...makeAccessible({ labelledBy: titleId })}
                   >
