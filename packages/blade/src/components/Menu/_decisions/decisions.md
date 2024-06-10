@@ -17,32 +17,38 @@ Unlike Dropdown, they are specifically made to be non-selectable, clickable item
   {/* Any interactive item which has onClick, onMouseDown exposed */}
   <Button>Open Menu</Button>
   <MenuOverlay>
-    {/* All of this is a slot */}
-    <Box display="flex" paddingY="spacing.4" gap="spacing.2">
-      <Avatar name="Saurabh Daware" />
-      <Text>Saurabh Daware</Text>
-    </Box>
-    <MenuItem title="Undo" onClick={() => console.log('Undo')} />
-    <MenuItem title="Redo" isDisabled />
-    <MenuItem title="Cut" />
-    {/* Sub Menu */}
-    <Menu>
-      <MenuItem title="Copy" />
-      <MenuOverlay>
-        <MenuItem title="Text" />
-        <MenuItem title="Video" />
-        <MenuItem title="Audio" />
-      </MenuOverlay>
-    </Menu>
-    <Menu>
-      <MenuItem title="Share" />
-      <MenuOverlay>
-        <MenuItem title="Text" />
-        <MenuItem title="Video" />
-        <MenuItem title="Audio" />
-      </MenuOverlay>
-    </Menu>
-    <Button>Apply</Button>
+    <MenuHeader title="" />
+    <MenuBody>
+      {/* All of this is a slot */}
+      <Box display="flex" paddingY="spacing.4" gap="spacing.2">
+        <Avatar name="Saurabh Daware" />
+        <Text>Saurabh Daware</Text>
+      </Box>
+      <MenuDivider />
+      <MenuItem title="Undo" onClick={() => console.log('Undo')} />
+      <MenuItem title="Redo" isDisabled />
+      <MenuItem title="Cut" />
+      {/* Sub Menu */}
+      <Menu>
+        <MenuItem title="Copy" />
+        <MenuOverlay>
+          <MenuItem title="Text" />
+          <MenuItem title="Video" />
+          <MenuItem title="Audio" />
+        </MenuOverlay>
+      </Menu>
+      <Menu>
+        <MenuItem title="Share" />
+        <MenuOverlay>
+          <MenuItem title="Text" />
+          <MenuItem title="Video" />
+          <MenuItem title="Audio" />
+        </MenuOverlay>
+      </Menu>
+    </MenuBody>
+    <MenuFooter>
+      <Button>Apply</Button>
+    </MenuFooter>
   </MenuOverlay>
 </Menu>
 ```
@@ -154,6 +160,17 @@ type MenuItemProps = {
 };
 ```
 
+### Menu Subcomponent Props
+
+```ts
+// Follows the standard header, footer types of Blade like DropdownHeader, ModalHeader, etc
+type MenuHeaderProps = BaseHeaderProps;
+type MenuFooterProps = BaseFooterProps;
+
+// No props
+type MenuDividerProps = {};
+```
+
 ## Example APIs
 
 ### Basic API
@@ -162,15 +179,17 @@ type MenuItemProps = {
 <Menu>
   <Button>Edit</Button> {/* Can be Link, Avatar, or any custom interactive item */}
   <MenuOverlay>
-    {/* Supports any JSX */}
-    <Box>Slot</Box>
-    <Divider />
-    <Box overflowY="auto">
-      <MenuItem title="Profile" />
-      <MenuItem>
-        <Text>Custom Slot in Item</Text>
-      </MenuItem>
-    </Box>
+    <MenuBody>
+      {/* Supports any JSX */}
+      <Box>Slot</Box>
+      <Divider />
+      <Box overflowY="auto">
+        <MenuItem title="Profile" />
+        <MenuItem>
+          <Text>Custom Slot in Item</Text>
+        </MenuItem>
+      </Box>
+    </MenuBody>
   </MenuOverlay>
 </Menu>
 ```
