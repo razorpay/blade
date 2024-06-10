@@ -200,15 +200,19 @@ type MenuDividerProps = {};
 <Menu>
   <Button>Edit</Button>
   <MenuOverlay>
-    <MenuItem title="Profile" />
-    {/* You can nest menu and use MenuItem as trigger for the next submenu */}
-    <Menu>
-      <MenuItem title="Accounts" />
-      <MenuOverlay>
-        <MenuItem title="Business Account" />
-        <MenuItem title="Personal Account" />
-      </MenuOverlay>
-    </Menu>
+    <MenuBody>
+      <MenuItem title="Profile" />
+      {/* You can nest menu and use MenuItem as trigger for the next submenu */}
+      <Menu>
+        <MenuItem title="Accounts" />
+        <MenuOverlay>
+          <MenuBody>
+            <MenuItem title="Business Account" />
+            <MenuItem title="Personal Account" />
+          </MenuBody>
+        </MenuOverlay>
+      </Menu>
+    </MenuBody>
   </MenuOverlay>
 </Menu>
 ```
@@ -295,9 +299,17 @@ How migration from deprecated API to recommended API will look like-
   </Combobox>
   ```
 
+  #### Conclusion
+
+  No. We won't tough the Dropdown right now to not break for existing consumers and only create new Menu component.
+
 - ### Name Decision: Menu vs ActionMenu
 
   Currently calling it Menu because we have ActionList component. If we decide to rename that as mentioned in above question, we can rename this to ActionMenu as well.
+
+  #### Conclusion
+
+  Menu
 
 - ### How much do we want to standardize design from code
 
@@ -306,3 +318,7 @@ How migration from deprecated API to recommended API will look like-
   - Should the header, footer be standardised?
   - Should non-interactive item be standardised?
   - Should section headings, dividers, etc be standardised?
+
+  #### Conclusion
+
+  We'll build header and footer component but rest things are left to consumer to implement since Menu has multiple usecases
