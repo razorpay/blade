@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta } from '@storybook/react';
-import { Menu, MenuDivider, MenuItem, MenuOverlay } from './Menu';
+import { Menu, MenuDivider, MenuItem, MenuOverlay } from './';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
@@ -23,35 +23,35 @@ export const Default = (): React.ReactElement => {
             <Avatar name="Saurabh Daware" />
             <Text>Saurabh Daware</Text>
           </Box>
-          <MenuItem label="Undo" onClick={() => console.log('Undo')} />
-          <MenuItem label="Redo" disabled />
-          <MenuItem label="Cut" />
+          <MenuItem title="Undo" onClick={() => console.log('Undo')} />
+          <MenuItem title="Redo" isDisabled />
+          <MenuItem title="Cut" />
           <Menu>
-            <MenuItem label="Copy as" />
+            <MenuItem title="Copy as" />
             <MenuOverlay>
-              <MenuItem label="Text" />
-              <MenuItem label="Video" />
+              <MenuItem title="Text" />
+              <MenuItem title="Video" />
               <Menu>
-                <MenuItem label="Image" />
+                <MenuItem title="Image" />
                 <MenuOverlay>
-                  <MenuItem label=".png" />
-                  <MenuItem label=".jpg" />
-                  <MenuItem label=".svg" />
-                  <MenuItem label=".gif" />
+                  <MenuItem title=".png" />
+                  <MenuItem title=".jpg" />
+                  <MenuItem title=".svg" />
+                  <MenuItem title=".gif" />
                 </MenuOverlay>
               </Menu>
-              <MenuItem label="Audio" />
+              <MenuItem title="Audio" />
             </MenuOverlay>
           </Menu>
           <Menu>
-            <MenuItem label="Share" />
+            <MenuItem title="Share" />
             <MenuOverlay>
-              <MenuItem label="Mail" />
-              <MenuItem label="Instagram" />
+              <MenuItem title="Mail" />
+              <MenuItem title="Instagram" />
             </MenuOverlay>
           </Menu>
           <MenuDivider />
-          <MenuItem label="Log Out" />
+          <MenuItem title="Log Out" />
           <Button>Apply</Button>
         </MenuOverlay>
       </Menu>
