@@ -29,6 +29,7 @@ const getWebInputStyles = (
       isDropdownTrigger: props.isDropdownTrigger,
       size: props.$size,
       valueComponentType: props.valueComponentType,
+      hasBorder: props.hasBorder,
     }),
     outline: 'none',
     border: 'none',

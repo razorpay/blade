@@ -1037,6 +1037,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 isDropdownTrigger={isDropdownTrigger}
                 $size={size}
                 valueComponentType={valueComponentType}
+                hasBorder={hasBorder}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
               />
             </BaseInputTagSlot>

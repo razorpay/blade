@@ -231,9 +231,7 @@ const StyledEditableCell = styled(StyledCell)(({ theme }) => ({
 }));
 
 const _TableEditableCell = (): React.ReactElement => {
-  const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
-  const isSelectable = selectionType !== 'none';
+  const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
 
   return (
     <StyledEditableCell
@@ -251,11 +249,10 @@ const _TableEditableCell = (): React.ReactElement => {
           flex={1}
           // when a direct string child is passed we want to disable pointer events
           // for custom cells components, consumers can handle pointer events themselves
-          pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
           hasPadding={false}
         >
           {/* <input type="text" value={children} /> */}
-          <Box margin="4px">
+          <Box margin="4px" width="100%">
             <BaseInput
               accessibilityLabel="test"
               hasBorder={false}
