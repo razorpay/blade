@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 11.21.4
+
+### Patch Changes
+
+- d3789888: fix: datepicker zIndex issue and expose zIndex prop
+
+## 11.21.3
+
+### Patch Changes
+
+- 4643a992: fix(blade): datepicker input width
+- c7ed69b4: chore: add petty cash budget icon
+
+## 11.21.2
+
+### Patch Changes
+
+- 2a4d1673: feat(FileUpload): add `onReupload` prop to use in case of error state
+
+## 11.21.1
+
+### Patch Changes
+
+- 04c84eb4: fix: datepicker label alignment
+
 ## 11.21.0
 
 ### Minor Changes
