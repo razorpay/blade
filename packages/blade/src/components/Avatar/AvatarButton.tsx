@@ -8,18 +8,32 @@ import { Heading, Text } from '~components/Typography';
 import { getTextColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { IconColor } from '~components/Button/BaseButton/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { BladeElementRef } from '~utils/types';
 
-const AvatarButton = ({
-  href,
-  target,
-  rel,
-  variant = 'circle',
-  color = 'neutral',
-  size = 'medium',
-  icon: Icon,
-  imgProps,
-  children,
-}: AvatarButtonProps): React.ReactElement => {
+const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButtonProps> = (
+  {
+    href,
+    target,
+    rel,
+    variant = 'circle',
+    color = 'neutral',
+    size = 'medium',
+    icon: Icon,
+    imgProps,
+    children,
+    onBlur,
+    onFocus,
+    onClick,
+    onMouseLeave,
+    onMouseMove,
+    onMouseDown,
+    onPointerDown,
+    onPointerEnter,
+    onTouchStart,
+    onTouchEnd,
+  },
+  ref,
+): React.ReactElement => {
   const isLink = Boolean(href);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
   const iconColor = getTextColorToken({
@@ -37,6 +51,8 @@ const AvatarButton = ({
 
   return (
     <StyledAvatarButton
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       as={href ? 'a' : 'button'}
       size={size}
       color={color}
@@ -49,6 +65,16 @@ const AvatarButton = ({
           role: isLink ? 'link' : 'button',
         }),
       }}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onClick={onClick}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onMouseDown={onMouseDown}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       <BaseBox
         display="flex"
@@ -80,5 +106,7 @@ const AvatarButton = ({
     </StyledAvatarButton>
   );
 };
+
+const AvatarButton = React.forwardRef(_AvatarButton);
 
 export { AvatarButton };
