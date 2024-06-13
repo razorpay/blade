@@ -4,6 +4,7 @@ import { Menu, MenuDivider, MenuItem, MenuOverlay, MenuHeader, MenuFooter } from
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { TestIcon, UserIcon } from '~components/Icons';
+import { Avatar } from '~components/Avatar';
 
 export default {
   title: 'Components/Menu',
@@ -16,7 +17,7 @@ export const Default = (): React.ReactElement => {
   return (
     <Box>
       <Menu>
-        <Button>Edit wow</Button>
+        <Avatar name="Saurabh Daware" />
         <MenuOverlay>
           <MenuHeader title="Saurabh Daware" subtitle="Admin" leading={<UserIcon />} />
           <MenuItem

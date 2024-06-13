@@ -36,7 +36,8 @@ const _MenuHeader = ({
         // close button
         showCloseButton={false}
         paddingX="spacing.3"
-        marginY="spacing.3"
+        marginTop="spacing.0"
+        marginBottom="spacing.3"
         showDivider={false}
       />
       <MenuDivider />
@@ -57,8 +58,7 @@ const _MenuFooter = ({ children, testID }: MenuFooter): React.ReactElement => {
       <BaseFooter
         metaComponentName={MetaConstants.MenuFooter}
         showDivider={false}
-        paddingX="spacing.3"
-        paddingY="spacing.3"
+        padding={['spacing.3', 'spacing.3', 'spacing.0', 'spacing.3']}
         testID={testID}
       >
         {children}

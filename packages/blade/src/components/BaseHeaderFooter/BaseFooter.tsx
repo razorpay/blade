@@ -10,16 +10,14 @@ type BaseFooterProps = {
   children: React.ReactNode;
   metaComponentName?: string;
   showDivider?: boolean;
-  paddingX?: BoxProps['paddingX'];
-  paddingY?: BoxProps['paddingY'];
+  padding?: BoxProps['padding'];
 } & TestID;
 
 const _BaseFooter = ({
   children,
   showDivider = true,
   metaComponentName,
-  paddingX,
-  paddingY,
+  padding,
   testID,
 }: BaseFooterProps): React.ReactElement => {
   return (
@@ -27,8 +25,7 @@ const _BaseFooter = ({
       {showDivider && <Divider />}
       <BaseBox
         {...metaAttribute({ name: metaComponentName, testID })}
-        paddingX={paddingX ?? { base: 'spacing.5', m: 'spacing.6' }}
-        paddingY={paddingY ?? { base: 'spacing.5', m: 'spacing.6' }}
+        padding={padding ?? { base: 'spacing.5', m: 'spacing.6' }}
       >
         {children}
       </BaseBox>
