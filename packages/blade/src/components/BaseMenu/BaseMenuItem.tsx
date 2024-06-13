@@ -10,11 +10,11 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeElementRef } from '~utils/types';
 
-const StyledMenuItemContainer = styled.button<{ intent?: 'negative' }>((props) => {
+const StyledMenuItemContainer = styled.button<{ color?: 'negative' }>((props) => {
   return {
     borderWidth: makeBorderSize(props.theme.border.width.none),
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     textAlign: 'left',
     backgroundColor: 'transparent',
     padding: makeSize(props.theme.spacing[2]),
@@ -30,7 +30,7 @@ const StyledMenuItemContainer = styled.button<{ intent?: 'negative' }>((props) =
     '&:focus-visible': getFocusRingStyles({ theme: props.theme }),
     '&:hover:not([aria-disabled=true]), &.has-submenu-open': {
       backgroundColor:
-        props.intent === 'negative'
+        props.color === 'negative'
           ? props.theme.colors.interactive.background.negative.faded
           : props.theme.colors.interactive.background.gray.default,
     },
@@ -55,6 +55,7 @@ type BaseMenuItemProps = {
   selectionType?: 'single' | 'multiple';
   color?: 'negative';
   className?: string;
+  href?: string;
 };
 
 const menuItemTitleColor = {
@@ -95,7 +96,10 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
       disabled={isDisabled}
       {...makeAccessible({
         role: 'menuitem',
+        disabled: isDisabled,
+        selected: isSelected,
       })}
+      color={color}
       {...props}
     >
       <Box

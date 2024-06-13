@@ -18,7 +18,7 @@ type MenuProps = {
   /**
    * On Menu open change callback
    */
-  onOpenChange?: (isOpen: boolean) => void;
+  onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
 
   /**
    * Should menu open on click or hover
@@ -103,7 +103,7 @@ type MenuContextType = {
   isOpen: boolean;
 };
 
-type UseFloatingMenuProps = {
+type UseFloatingMenuProps = Pick<MenuProps, 'openInteraction' | 'onOpenChange' | 'isOpen'> & {
   elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
 };
 

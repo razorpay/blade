@@ -11,7 +11,12 @@ import * as React from 'react';
 import { MenuContext, useFloatingMenuSetup, useMenu } from './useMenu';
 import type { MenuProps } from './types';
 
-const MenuTree = ({ children }: MenuProps): React.ReactElement => {
+const MenuTree = ({
+  children,
+  openInteraction = 'click',
+  onOpenChange,
+  isOpen: isOpenControlled,
+}: MenuProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
 
   const elementsRef = React.useRef<(HTMLButtonElement | null)[]>([]);
@@ -31,6 +36,9 @@ const MenuTree = ({ children }: MenuProps): React.ReactElement => {
     context,
   } = useFloatingMenuSetup({
     elementsRef,
+    openInteraction,
+    onOpenChange,
+    isOpen: isOpenControlled,
   });
 
   const referenceProps = {

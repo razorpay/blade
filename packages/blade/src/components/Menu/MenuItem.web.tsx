@@ -7,24 +7,41 @@ import { ChevronRightIcon } from '~components/Icons';
 
 const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
   (
-    { title, isDisabled, _isMenuTrigger, _hasFocusInside, _isSubmenuOpen, ...props },
+    {
+      title,
+      isDisabled,
+      description,
+      leading,
+      trailing,
+      _isMenuTrigger,
+      _hasFocusInside,
+      _isSubmenuOpen,
+      href,
+      target,
+      ...props
+    },
     forwardedRef,
   ) => {
     const menu = useMenu();
     const item = useListItem({ label: isDisabled ? null : title });
     const tree = useFloatingTree();
 
+    const isLink = Boolean(href);
+
     return (
       <BaseMenuItem
         title={title}
+        description={description}
+        leading={leading}
         trailing={
           _isMenuTrigger ? <ChevronRightIcon color="interactive.icon.gray.muted" /> : undefined
         }
-        as="button"
+        as={isLink ? 'a' : 'button'}
+        href={href}
         className={_isSubmenuOpen ? 'has-submenu-open' : ''}
-        {...props}
         ref={useMergeRefs([item.ref, forwardedRef])}
         isDisabled={isDisabled}
+        {...props}
         {...(_isMenuTrigger
           ? {}
           : menu.getItemProps({

@@ -1,10 +1,9 @@
 import React from 'react';
 import type { Meta } from '@storybook/react';
-import { Menu, MenuDivider, MenuItem, MenuOverlay } from './';
+import { Menu, MenuDivider, MenuItem, MenuOverlay, MenuHeader, MenuFooter } from './';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { Text } from '~components/Typography';
-import { Avatar } from '~components/Avatar';
+import { TestIcon, UserIcon } from '~components/Icons';
 
 export default {
   title: 'Components/Menu',
@@ -19,11 +18,13 @@ export const Default = (): React.ReactElement => {
       <Menu>
         <Button>Edit wow</Button>
         <MenuOverlay>
-          <Box display="flex" paddingY="spacing.4" gap="spacing.2">
-            <Avatar name="Saurabh Daware" />
-            <Text>Saurabh Daware</Text>
-          </Box>
-          <MenuItem title="Undo" onClick={() => console.log('Undo')} />
+          <MenuHeader title="Saurabh Daware" subtitle="Admin" leading={<UserIcon />} />
+          <MenuItem
+            title="Enable Test Mode"
+            leading={<TestIcon size="small" />}
+            description="Enable test mode"
+            onClick={() => console.log('Undo')}
+          />
           <MenuItem title="Redo" isDisabled />
           <MenuItem title="Cut" />
           <Menu>
@@ -40,7 +41,7 @@ export const Default = (): React.ReactElement => {
                   <MenuItem title=".gif" />
                 </MenuOverlay>
               </Menu>
-              <MenuItem title="Audio" />
+              <MenuItem title="Audio" href="/audio" />
             </MenuOverlay>
           </Menu>
           <Menu>
@@ -51,8 +52,10 @@ export const Default = (): React.ReactElement => {
             </MenuOverlay>
           </Menu>
           <MenuDivider />
-          <MenuItem title="Log Out" />
-          <Button>Apply</Button>
+          <MenuItem title="Log Out" color="negative" />
+          <MenuFooter>
+            <Button>Apply</Button>
+          </MenuFooter>
         </MenuOverlay>
       </Menu>
       <Button>Hello</Button>

@@ -18,6 +18,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import type { MenuContextType, UseFloatingMenuProps, UseFloatingMenuReturnType } from './types';
+import { useControllableState } from '~utils/useControllable';
 
 const MenuContext = React.createContext<MenuContextType>({
   getItemProps: () => ({}),
@@ -31,8 +32,17 @@ const useMenu = (): MenuContextType => {
   return contextValue;
 };
 
-const useFloatingMenuSetup = ({ elementsRef }: UseFloatingMenuProps): UseFloatingMenuReturnType => {
-  const [isOpen, setIsOpen] = React.useState(false);
+const useFloatingMenuSetup = ({
+  elementsRef,
+  openInteraction,
+  onOpenChange,
+  isOpen,
+}: UseFloatingMenuProps): UseFloatingMenuReturnType => {
+  const [isControllableOpen, setIsControllableOpen] = useControllableState({
+    value: isOpen,
+    defaultValue: false,
+    onChange: (isOpen) => onOpenChange?.({ isOpen }),
+  });
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
 
   const tree = useFloatingTree();
@@ -44,8 +54,8 @@ const useFloatingMenuSetup = ({ elementsRef }: UseFloatingMenuProps): UseFloatin
 
   const { floatingStyles, refs, context } = useFloating<HTMLButtonElement>({
     nodeId,
-    open: isOpen,
-    onOpenChange: setIsOpen,
+    open: isControllableOpen,
+    onOpenChange: (_isOpen) => setIsControllableOpen(() => _isOpen),
     placement: isNested ? 'right-start' : 'bottom-start',
     middleware: [
       offset({ mainAxis: isNested ? 12 : 0, alignmentAxis: isNested ? -16 : 0 }),
@@ -56,7 +66,7 @@ const useFloatingMenuSetup = ({ elementsRef }: UseFloatingMenuProps): UseFloatin
   });
 
   const hover = useHover(context, {
-    enabled: isNested,
+    enabled: isNested || openInteraction === 'hover',
     delay: { open: 75 },
     handleClose: safePolygon({ blockPointerEvents: true }),
   });
@@ -90,12 +100,12 @@ const useFloatingMenuSetup = ({ elementsRef }: UseFloatingMenuProps): UseFloatin
     if (!tree) return;
 
     const handleTreeClick = (): void => {
-      setIsOpen(false);
+      setIsControllableOpen(() => false);
     };
 
     const onSubMenuOpen = (event: { nodeId: string; parentId: string }): void => {
       if (event.nodeId !== nodeId && event.parentId === parentId) {
-        setIsOpen(false);
+        setIsControllableOpen(() => false);
       }
     };
 
@@ -108,6 +118,7 @@ const useFloatingMenuSetup = ({ elementsRef }: UseFloatingMenuProps): UseFloatin
       tree.events.off('click', handleTreeClick);
       tree.events.off('menuopen', onSubMenuOpen);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tree, nodeId, parentId]);
 
   React.useEffect(() => {
@@ -123,7 +134,7 @@ const useFloatingMenuSetup = ({ elementsRef }: UseFloatingMenuProps): UseFloatin
     item,
     context,
     nodeId,
-    isOpen,
+    isOpen: isControllableOpen,
     floatingStyles,
     refs,
     isNested,
