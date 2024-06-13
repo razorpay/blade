@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
+import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
 
 // EXPOSED TYPES
@@ -96,6 +97,11 @@ type MenuItemProps = {
   _isSubmenuOpen?: boolean;
 };
 
+type MenuOverlayProps = {
+  children: React.ReactElement[];
+  zIndex?: BoxProps['zIndex'];
+};
+
 // INTERNAL TYPES
 type MenuContextType = {
   getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>;
@@ -120,6 +126,7 @@ type UseFloatingMenuReturnType = Pick<
 
 export type {
   MenuItemProps,
+  MenuOverlayProps,
   MenuProps,
   MenuContextType,
   UseFloatingMenuProps,

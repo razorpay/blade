@@ -19,6 +19,7 @@ import {
 } from '@floating-ui/react';
 import type { MenuContextType, UseFloatingMenuProps, UseFloatingMenuReturnType } from './types';
 import { useControllableState } from '~utils/useControllable';
+import { OVERLAY_OFFSET } from '~components/BaseMenu/tokens';
 
 const MenuContext = React.createContext<MenuContextType>({
   getItemProps: () => ({}),
@@ -58,7 +59,7 @@ const useFloatingMenuSetup = ({
     onOpenChange: (_isOpen) => setIsControllableOpen(() => _isOpen),
     placement: isNested ? 'right-start' : 'bottom-start',
     middleware: [
-      offset({ mainAxis: isNested ? 12 : 0, alignmentAxis: isNested ? -16 : 0 }),
+      offset({ mainAxis: isNested ? 12 : OVERLAY_OFFSET, alignmentAxis: isNested ? -16 : 0 }),
       flip(),
       shift(),
     ],

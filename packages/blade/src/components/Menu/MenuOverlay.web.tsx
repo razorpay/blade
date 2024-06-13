@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { MenuOverlayProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
+import { componentZIndices } from '~utils/componentZIndices';
 import type { BladeElementRef } from '~utils/types';
 
 const UnfocussableOverlay = styled(BaseBox)((_props) => {
@@ -13,12 +15,10 @@ const UnfocussableOverlay = styled(BaseBox)((_props) => {
   };
 });
 
-const _MenuOverlay: React.ForwardRefRenderFunction<
-  BladeElementRef,
-  {
-    children: React.ReactElement[];
-  }
-> = ({ children, ...props }, ref): React.ReactElement => {
+const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayProps> = (
+  { children, zIndex = componentZIndices.dropdownOverlay, ...props },
+  ref,
+): React.ReactElement => {
   return (
     <UnfocussableOverlay
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,6 +32,7 @@ const _MenuOverlay: React.ForwardRefRenderFunction<
       borderWidth="thin"
       borderColor="surface.border.gray.muted"
       borderRadius="medium"
+      zIndex={zIndex}
     >
       {children}
     </UnfocussableOverlay>
