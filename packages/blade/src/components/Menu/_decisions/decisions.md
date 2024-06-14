@@ -18,34 +18,32 @@ Unlike Dropdown, they are specifically made to be non-selectable, clickable item
   <Button>Open Menu</Button>
   <MenuOverlay>
     <MenuHeader title="" />
-    <MenuBody>
-      {/* All of this is a slot */}
-      <Box display="flex" paddingY="spacing.4" gap="spacing.2">
-        <Avatar name="Saurabh Daware" />
-        <Text>Saurabh Daware</Text>
-      </Box>
-      <MenuDivider />
-      <MenuItem title="Undo" onClick={() => console.log('Undo')} />
-      <MenuItem title="Redo" isDisabled />
-      <MenuItem title="Cut" />
-      {/* Sub Menu */}
-      <Menu>
-        <MenuItem title="Copy" />
-        <MenuOverlay>
-          <MenuItem title="Text" />
-          <MenuItem title="Video" />
-          <MenuItem title="Audio" />
-        </MenuOverlay>
-      </Menu>
-      <Menu>
-        <MenuItem title="Share" />
-        <MenuOverlay>
-          <MenuItem title="Text" />
-          <MenuItem title="Video" />
-          <MenuItem title="Audio" />
-        </MenuOverlay>
-      </Menu>
-    </MenuBody>
+    {/* All of this is a slot */}
+    <Box display="flex" paddingY="spacing.4" gap="spacing.2">
+      <Avatar name="Saurabh Daware" />
+      <Text>Saurabh Daware</Text>
+    </Box>
+    <MenuDivider />
+    <MenuItem title="Undo" onClick={() => console.log('Undo')} />
+    <MenuItem title="Redo" isDisabled />
+    <MenuItem title="Cut" />
+    {/* Sub Menu */}
+    <Menu>
+      <MenuItem title="Copy" />
+      <MenuOverlay>
+        <MenuItem title="Text" />
+        <MenuItem title="Video" />
+        <MenuItem title="Audio" />
+      </MenuOverlay>
+    </Menu>
+    <Menu>
+      <MenuItem title="Share" />
+      <MenuOverlay>
+        <MenuItem title="Text" />
+        <MenuItem title="Video" />
+        <MenuItem title="Audio" />
+      </MenuOverlay>
+    </Menu>
     <MenuFooter>
       <Button>Apply</Button>
     </MenuFooter>
@@ -179,17 +177,15 @@ type MenuDividerProps = {};
 <Menu>
   <Button>Edit</Button> {/* Can be Link, Avatar, or any custom interactive item */}
   <MenuOverlay>
-    <MenuBody>
-      {/* Supports any JSX */}
-      <Box>Slot</Box>
-      <Divider />
-      <Box overflowY="auto">
-        <MenuItem title="Profile" />
-        <MenuItem>
-          <Text>Custom Slot in Item</Text>
-        </MenuItem>
-      </Box>
-    </MenuBody>
+    {/* Supports any JSX */}
+    <Box>Slot</Box>
+    <Divider />
+    <Box overflowY="auto">
+      <MenuItem title="Profile" />
+      <MenuItem>
+        <Text>Custom Slot in Item</Text>
+      </MenuItem>
+    </Box>
   </MenuOverlay>
 </Menu>
 ```
@@ -200,19 +196,15 @@ type MenuDividerProps = {};
 <Menu>
   <Button>Edit</Button>
   <MenuOverlay>
-    <MenuBody>
-      <MenuItem title="Profile" />
-      {/* You can nest menu and use MenuItem as trigger for the next submenu */}
-      <Menu>
-        <MenuItem title="Accounts" />
-        <MenuOverlay>
-          <MenuBody>
-            <MenuItem title="Business Account" />
-            <MenuItem title="Personal Account" />
-          </MenuBody>
-        </MenuOverlay>
-      </Menu>
-    </MenuBody>
+    <MenuItem title="Profile" />
+    {/* You can nest menu and use MenuItem as trigger for the next submenu */}
+    <Menu>
+      <MenuItem title="Accounts" />
+      <MenuOverlay>
+        <MenuItem title="Business Account" />
+        <MenuItem title="Personal Account" />
+      </MenuOverlay>
+    </Menu>
   </MenuOverlay>
 </Menu>
 ```
@@ -221,9 +213,11 @@ type MenuDividerProps = {};
 
 ### Menu vs Dropdown
 
-Why is this not just part of Dropdown? Ans:
+#### 1. Comparison Table
 
-#### Challenges of adding this to Dropdown
+![alt text](dropdown-menu-table.png)
+
+#### 2. Why is this not just part of Dropdown?
 
 We started Dropdown with SelectInput and AutoComplete-like usecases (basically Combobox usecases), so Dropdown includes all the code that's needed for selection, typeahead, arrow navigations, AutoComplete's filtering, etc.
 
@@ -231,7 +225,7 @@ Since our usecases of Menu were simple and small, we added triggers like Dropdow
 
 But as we move into the next set of Menu usecases, we see the complexity of Menu increasing exponentially. Adding these usecases to Dropdown would mean- bloating dropdown with more unrelated code and bundle-size, ending up with inifinite edge cases, complex keyboard navigations for consumers, and bunch of if-else conditions internally to handle 2 very different usecases.
 
-#### Two Different Usecases
+#### 3. Two Different Usecases
 
 Normally you would see design-systems having 2 components. 1 for SelectInput, AutoComplete, etc and 2nd for Menu, ContextMenu, ActionMenu, etc
 
@@ -240,11 +234,25 @@ Examples
 - [Primer SelectPanel](https://primer.style/components/selectpanel/react/alpha), [Primer ActionMenu](https://primer.style/components/action-menu/react/beta)
 - [Ariakit Select](https://ariakit.org/components/select), [Ariakit Combobox](https://ariakit.org/components/combobox), [Ariakit Menu](https://ariakit.org/components/menu)
 
+  > [!Note]
+  >
+  > AriaKit also has Select vs Menu usecases mentioned in their [Select vs Menu documentation](https://ariakit.org/components/menu#should-i-use-menu-or-select). You can check it out to understand their perspective
+
+- [Radix Dropdown Menu](https://www.radix-ui.com/themes/docs/components/dropdown-menu), [Radix Context Menu](https://www.radix-ui.com/themes/docs/components/context-menu), [Radix Select](https://www.radix-ui.com/themes/docs/components/select)
+
 Going forward, our Dropdown component will continue to cover SelectInput, AutoComplete, etc usecases where selections are happening.
 
 And Menu will cover usecases which trigger certain actions, has complex interactive / non-interactive things inside the Overlay, requires submenus, custom triggers, etc.
 
-![alt text](dropdown-menu-table.png)
+#### 4. Impossible Scenarios
+
+Putting menu usecases inside Dropdown also leads to more impossible scenarios in API. E.g-
+
+- What does selection in submenu mean? Submenu items shouldn't be selectable
+- What do custom components inside DropdownOverlay do? they can't be selected so shouldn't have selection logic code.
+- How do you build more flexible menus with custom items? Dropdown relies on items inside of it to be selectable.
+
+For these reasons, we are going ahead with Menu component which will be for more flexible, clickable menus that are not selectable.
 
 ## Is this a breaking change for Dropdown consumers?
 
