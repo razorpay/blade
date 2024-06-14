@@ -215,7 +215,7 @@ type MenuDividerProps = {};
 
 #### 1. Comparison Table
 
-![alt text](dropdown-menu-table.png)
+<img src="dropdown-menu-table.png" width="500px" />
 
 #### 2. Why is this not just part of Dropdown?
 
