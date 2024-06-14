@@ -70,7 +70,7 @@ type MenuProps = {
   /**
    * On Menu open change callback
    */
-  onOpenChange?: (isOpen: boolean) => void;
+  onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
 
   /**
    * Should menu open on click or hover
@@ -152,9 +152,14 @@ type MenuItemProps = {
   isDisabled?: boolean;
 
   /**
+   * as prop to pass React Router's Link component for client-side navigation
+   */
+  as?: React.ReactComponent;
+
+  /**
    * Color of item. set to negative for dangerous actions like Delete, Remove, etc
    */
-  color?: Extract<FeedbackColors, 'negative'>;
+  color?: 'negative';
 };
 ```
 
@@ -207,6 +212,41 @@ type MenuDividerProps = {};
     </Menu>
   </MenuOverlay>
 </Menu>
+```
+
+### Custom Trigger
+
+```jsx
+<Menu>
+  <CustomComponentTrigger />
+  <MenuOverlay>{/* ... */}</MenuOverlay>
+</Menu>
+```
+
+#### Menu Trigger Qualifications
+
+For a component to be used as custom trigger-
+
+- `ref` should be forwarded
+- Following props should be exposed from your component
+  - `aria-controls`
+  - `aria-expanded`
+  - `aria-haspopup`
+  - `onClick`
+  - `onFocus`
+  - `onKeyDown`
+  - `onKeyUp`
+  - `onMouseDown`
+  - `onPointerDown`
+
+### Client-Side Navigation
+
+Pass Router's Link from `as` prop for client-side navigation
+
+```jsx
+import { Link } from 'react-router-dom';
+
+<MenuItem as={Link} href="/support" />;
 ```
 
 ## Questions you might have
