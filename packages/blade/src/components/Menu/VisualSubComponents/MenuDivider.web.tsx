@@ -1,8 +1,11 @@
+import { getDividerMarginTokens } from '../tokens';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { Divider } from '~components/Divider';
+import { useTheme } from '~utils';
 
 const MenuDivider = (styledProps: StyledPropsBlade): React.ReactElement => {
-  return <Divider marginLeft="-8px" marginY="spacing.1" marginRight="-8px" {...styledProps} />;
+  const { theme } = useTheme();
+  return <Divider {...getDividerMarginTokens(theme)} {...styledProps} />;
 };
 
 export { MenuDivider };

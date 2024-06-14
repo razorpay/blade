@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
+import { footerPaddingTop, headerMarginBottom, overlayPaddingX } from '../tokens';
 import { MenuDivider } from './MenuDivider';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
@@ -35,9 +36,9 @@ const _MenuHeader = ({
         showBackButton={false}
         // close button
         showCloseButton={false}
-        paddingX="spacing.3"
+        paddingX={overlayPaddingX}
         marginTop="spacing.0"
-        marginBottom="spacing.3"
+        marginBottom={headerMarginBottom}
         showDivider={false}
       />
       <MenuDivider />
@@ -58,7 +59,7 @@ const _MenuFooter = ({ children, testID }: MenuFooter): React.ReactElement => {
       <BaseFooter
         metaComponentName={MetaConstants.MenuFooter}
         showDivider={false}
-        padding={['spacing.3', 'spacing.3', 'spacing.0', 'spacing.3']}
+        padding={[footerPaddingTop, overlayPaddingX, 'spacing.0', overlayPaddingX]}
         testID={testID}
       >
         {children}
