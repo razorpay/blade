@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
+import type React from 'react';
 import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
 
@@ -100,6 +101,7 @@ type MenuItemProps = {
 type MenuOverlayProps = {
   children: React.ReactElement[];
   zIndex?: BoxProps['zIndex'];
+  _transitionStyle: React.CSSProperties;
 };
 
 // INTERNAL TYPES
@@ -122,6 +124,8 @@ type UseFloatingMenuReturnType = Pick<
     nodeId: string;
     isOpen: boolean;
     isNested?: boolean;
+    isMounted?: boolean;
+    floatingTransitionStyles?: MenuOverlayProps['_transitionStyle'];
   };
 
 export type {

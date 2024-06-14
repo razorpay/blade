@@ -16,7 +16,7 @@ const UnfocussableOverlay = styled(BaseBox)((_props) => {
 });
 
 const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayProps> = (
-  { children, zIndex = componentZIndices.dropdownOverlay, ...props },
+  { children, zIndex = componentZIndices.dropdownOverlay, _transitionStyle, ...props },
   ref,
 ): React.ReactElement => {
   return (
@@ -24,17 +24,26 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...props}
-      backgroundColor="popup.background.subtle"
-      paddingX="spacing.3"
-      paddingY="spacing.4"
       minWidth={makeSize(size['240'])}
-      elevation="midRaised"
-      borderWidth="thin"
-      borderColor="surface.border.gray.muted"
-      borderRadius="medium"
       zIndex={zIndex}
     >
-      {children}
+      {/* 
+        Requires another nested div since floatingStyles clash with floatingTransitionStyles 
+
+        https://floating-ui.com/docs/usetransition#usetransitionstyles
+      */}
+      <BaseBox
+        backgroundColor="popup.background.subtle"
+        paddingX="spacing.3"
+        paddingY="spacing.4"
+        elevation="midRaised"
+        borderWidth="thin"
+        borderColor="surface.border.gray.muted"
+        borderRadius="medium"
+        style={_transitionStyle}
+      >
+        {children}
+      </BaseBox>
     </UnfocussableOverlay>
   );
 };

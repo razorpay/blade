@@ -34,6 +34,8 @@ const MenuTree = ({
     nodeId,
     isNested,
     context,
+    isMounted,
+    floatingTransitionStyles,
   } = useFloatingMenuSetup({
     elementsRef,
     openInteraction,
@@ -57,6 +59,7 @@ const MenuTree = ({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref: refs.setFloating as any,
     style: floatingStyles,
+    _transitionStyle: floatingTransitionStyles,
     ...getFloatingProps(),
   };
 
@@ -89,7 +92,7 @@ const MenuTree = ({
       >
         {triggerWithReferenceProps}
         <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-          {isOpen && (
+          {isMounted && (
             <FloatingPortal>
               <FloatingFocusManager
                 context={context}

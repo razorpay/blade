@@ -16,10 +16,12 @@ import {
   useListNavigation,
   useListItem,
   useRole,
+  useTransitionStyles,
 } from '@floating-ui/react';
 import type { MenuContextType, UseFloatingMenuProps, UseFloatingMenuReturnType } from './types';
 import { useControllableState } from '~utils/useControllable';
-import { OVERLAY_OFFSET } from '~components/BaseMenu/tokens';
+import { OVERLAY_OFFSET, OVERLAY_TRANSITION_OFFSET } from '~components/BaseMenu/tokens';
+import { makeSize, useTheme } from '~utils';
 
 const MenuContext = React.createContext<MenuContextType>({
   getItemProps: () => ({}),
@@ -50,6 +52,7 @@ const useFloatingMenuSetup = ({
   const nodeId = useFloatingNodeId();
   const parentId = useFloatingParentNodeId();
   const item = useListItem();
+  const { theme } = useTheme();
 
   const isNested = parentId != null;
 
@@ -93,6 +96,39 @@ const useFloatingMenuSetup = ({
     dismiss,
     listNavigation,
   ]);
+
+  const { isMounted, styles: floatingTransitionStyles } = useTransitionStyles(context, {
+    duration: theme.motion.duration.quick,
+    initial: ({ side }) => {
+      let transform: string;
+      const transitionOffset = makeSize(OVERLAY_TRANSITION_OFFSET);
+      switch (side) {
+        case 'top': {
+          transform = `translateY(${transitionOffset})`;
+          break;
+        }
+
+        case 'right': {
+          transform = `translateX(-${transitionOffset})`;
+          break;
+        }
+
+        case 'left': {
+          transform = `translateX(${transitionOffset})`;
+          break;
+        }
+
+        default: {
+          transform = `translateY(-${transitionOffset})`;
+        }
+      }
+
+      return {
+        transform,
+        opacity: 0,
+      };
+    },
+  });
 
   // Event emitter allows you to communicate across tree components.
   // This effect closes all menus when an item gets clicked anywhere
@@ -139,6 +175,8 @@ const useFloatingMenuSetup = ({
     floatingStyles,
     refs,
     isNested,
+    isMounted,
+    floatingTransitionStyles,
   };
 };
 
