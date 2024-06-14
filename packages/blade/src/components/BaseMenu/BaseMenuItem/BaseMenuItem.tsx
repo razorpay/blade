@@ -1,62 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import type { BaseMenuItemProps } from '../types';
+import { StyledMenuItemContainer } from './StyledMenuItemContainer';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
 import { size } from '~tokens/global';
-import { getMediaQuery, makeBorderSize, makeSize } from '~utils';
-import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { makeSize } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeElementRef } from '~utils/types';
-
-const StyledMenuItemContainer = styled.button<{ color?: 'negative' }>((props) => {
-  return {
-    borderWidth: makeBorderSize(props.theme.border.width.none),
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'left',
-    backgroundColor: 'transparent',
-    padding: makeSize(props.theme.spacing[2]),
-    borderRadius: makeSize(props.theme.border.radius.medium),
-    marginTop: makeSize(props.theme.spacing[1]),
-    marginBottom: makeSize(props.theme.spacing[1]),
-    textDecoration: 'none',
-    cursor: 'pointer',
-    width: '100%',
-    [`@media ${getMediaQuery({ min: props.theme.breakpoints.m })}`]: {
-      padding: makeSize(props.theme.spacing[3]),
-    },
-    '&:focus-visible': getFocusRingStyles({ theme: props.theme }),
-    '&:hover:not([aria-disabled=true]), &.has-submenu-open': {
-      backgroundColor:
-        props.color === 'negative'
-          ? props.theme.colors.interactive.background.negative.faded
-          : props.theme.colors.interactive.background.gray.default,
-    },
-    '&[aria-selected=true]': {
-      backgroundColor: props.theme.colors.interactive.background.primary.faded,
-    },
-    '&[aria-selected=true]:hover': {
-      backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
-    },
-  };
-});
-
-type BaseMenuItemProps = {
-  as?: 'a' | 'button';
-  title: string;
-  description?: string;
-  isDisabled?: boolean;
-  isSelected?: boolean;
-  leading?: React.ReactNode;
-  trailing?: React.ReactNode;
-  titleSuffix?: React.ReactNode;
-  selectionType?: 'single' | 'multiple';
-  color?: 'negative';
-  className?: string;
-  href?: string;
-};
 
 const menuItemTitleColor = {
   negative: {
@@ -80,9 +32,11 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
     trailing,
     titleSuffix,
     isDisabled,
-    selectionType,
+    selectionType = 'single',
     isSelected,
+    isVisible = true,
     color,
+    role = 'menuitem',
     ...props
   },
   ref,
@@ -92,14 +46,19 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       as={as}
-      type={as === 'button' ? 'button' : undefined}
+      type="button"
       disabled={isDisabled}
       {...makeAccessible({
-        role: 'menuitem',
+        role,
+        current: role === 'menuitem' || role === 'menuitemcheckbox' ? isSelected : undefined,
         disabled: isDisabled,
         selected: isSelected,
       })}
       color={color}
+      isVisible={isVisible}
+      isSelected={isSelected}
+      isDisabled={isDisabled}
+      selectionType={selectionType}
       {...props}
     >
       <Box
