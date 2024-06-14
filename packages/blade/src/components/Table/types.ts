@@ -157,6 +157,10 @@ type TableProps<Item> = {
    * The default value is `false`.
    **/
   isRefreshing?: boolean;
+  /**
+   * The showBorderedCells prop determines whether the table should have bordered cells or not.
+   **/
+  showBorderedCells?: boolean;
 } & StyledPropsBlade;
 
 type Identifier = string | number;
