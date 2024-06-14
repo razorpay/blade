@@ -20,6 +20,7 @@ export default {
   args: {
     selectionType: 'none',
     rowDensity: 'normal',
+    showBorderedCells: true,
   },
   tags: ['autodocs'],
   argTypes: {
