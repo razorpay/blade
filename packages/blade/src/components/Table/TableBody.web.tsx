@@ -10,12 +10,13 @@ import type {
   TableRowProps,
   TableCellProps,
   TableBackgroundColors,
+  TableEditableCellProps,
 } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
-import { makeMotionTime, makeSize, makeSpace } from '~utils';
+import { castWebType, makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -23,6 +24,8 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { BaseInput } from '~components/Input/BaseInput';
 import { Box } from '~components/Box';
+import { AlertCircleIcon, CheckIcon } from '~components/Icons';
+import type { MarginProps } from '~components/Box/BaseBox/types/spacingTypes';
 
 const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: boolean }>(
   ({ theme, $showStripedRows, $isSelectable }) => {
@@ -156,7 +159,6 @@ const StyledCell = styled(Cell)<{
       alignSelf: 'stretch',
     },
     '&:focus-visible': { ...getFocusRingStyles({ theme, negativeOffset: true }) },
-    '&:focus-within': { ...getFocusRingStyles({ theme, negativeOffset: true }) },
   },
 }));
 
@@ -221,22 +223,74 @@ const TableCell = assignWithoutSideEffects(_TableCell, {
   componentId: ComponentIds.TableCell,
 });
 
-const StyledEditableCell = styled(StyledCell)(({ theme }) => ({
+const StyledEditableCell = styled(StyledCell)<{
+  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
+}>(({ theme, rowDensity }) => ({
   '&&&': {
     '&:focus-visible': { outline: '1px solid' },
     '&:focus-within': {
-      ...getFocusRingStyles({ theme, negativeOffset: true }),
+      ...(rowDensity !== 'comfortable' ? getFocusRingStyles({ theme, negativeOffset: true }) : {}),
     },
   },
 }));
 
-const _TableEditableCell = (): React.ReactElement => {
+const validationStateToInputTrailingIconMap = {
+  none: undefined,
+  success: CheckIcon,
+  error: AlertCircleIcon,
+};
+
+const rowDensityToHasBorderMapping = {
+  comfortable: true,
+  normal: false,
+  compact: false,
+};
+
+const getEditableInputMargin = ({
+  rowDensity,
+}: {
+  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
+}): MarginProps['margin'] => {
+  switch (rowDensity) {
+    case 'comfortable':
+      return ['spacing.4', 'spacing.4'];
+    default:
+      return 'spacing.2';
+  }
+};
+
+const _TableEditableCell = ({
+  validationState = 'none',
+  accessibilityLabel,
+  autoCapitalize,
+  autoCompleteSuggestionType,
+  autoFocus,
+  defaultValue,
+  isDisabled,
+  isRequired,
+  keyboardReturnKeyType,
+  leadingIcon,
+  maxCharacters,
+  name,
+  onBlur,
+  onChange,
+  onClick,
+  onFocus,
+  onSubmit,
+  placeholder,
+  prefix,
+  suffix,
+  value,
+  testID,
+  trailingButton,
+}: TableEditableCellProps): React.ReactElement => {
   const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
 
   return (
     <StyledEditableCell
       role="cell"
       $backgroundColor={backgroundColor}
+      rowDensity={rowDensity}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
@@ -251,15 +305,37 @@ const _TableEditableCell = (): React.ReactElement => {
           // for custom cells components, consumers can handle pointer events themselves
           hasPadding={false}
         >
-          {/* <input type="text" value={children} /> */}
-          <Box margin="4px" width="100%">
+          <Box margin={getEditableInputMargin({ rowDensity })} width="100%">
             <BaseInput
-              accessibilityLabel="test"
-              hasBorder={false}
-              id="test"
-              placeholder="Enter text"
+              hasBorder={rowDensityToHasBorderMapping[rowDensity]}
+              validationState={validationState}
+              id="table-editable-cell-input"
               size={tableEditableCellRowDensityToInputSizeMap[rowDensity]}
               type="text"
+              trailingIcon={validationStateToInputTrailingIconMap[validationState]}
+              accessibilityLabel={accessibilityLabel}
+              autoCapitalize={autoCapitalize}
+              autoCompleteSuggestionType={autoCompleteSuggestionType}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus={autoFocus}
+              defaultValue={defaultValue}
+              isDisabled={isDisabled}
+              isRequired={isRequired}
+              keyboardReturnKeyType={keyboardReturnKeyType}
+              leadingIcon={leadingIcon}
+              maxCharacters={maxCharacters}
+              name={name}
+              onBlur={onBlur}
+              onChange={onChange}
+              onClick={onClick}
+              onFocus={onFocus}
+              onSubmit={castWebType(onSubmit)}
+              placeholder={placeholder}
+              prefix={prefix}
+              suffix={suffix}
+              value={value}
+              testID={testID}
+              trailingButton={trailingButton}
             />
           </Box>
         </CellWrapper>

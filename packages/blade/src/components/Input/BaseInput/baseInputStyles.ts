@@ -5,6 +5,7 @@ import {
   baseInputBackgroundColor,
   baseInputBorderColor,
   baseInputBorderWidth,
+  baseInputBorderlessBackgroundColor,
   baseInputHeight,
   baseInputPaddingTokens,
   baseInputWrapperMaxHeight,
@@ -83,25 +84,27 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'hasBorder'
 >): CSSObject => {
   // normal state
-  let backgroundColor = getIn(theme.colors, baseInputBackgroundColor.default);
+  const backgroundColorTokens = hasBorder
+    ? baseInputBackgroundColor
+    : baseInputBorderlessBackgroundColor;
+  let backgroundColor = getIn(theme.colors, backgroundColorTokens.default);
   let borderColor = hasBorder ? getIn(theme.colors, baseInputBorderColor.default) : 'transparent';
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
 
   const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
 
-  backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
+  backgroundColor = getIn(theme.colors, backgroundColorTokens[baseInputState]);
   borderColor =
     !hasBorder && baseInputState !== 'focused'
       ? 'transparent'
       : getIn(theme.colors, baseInputBorderColor[baseInputState]);
   borderWidth = getIn(theme.border.width, baseInputBorderWidth[baseInputState]);
 
-  if (validationState === 'error') {
-    borderColor = getIn(theme.colors, baseInputBorderColor.error);
-    borderWidth = getIn(theme.border.width, baseInputBorderWidth.error);
-  } else if (validationState === 'success') {
-    borderColor = getIn(theme.colors, baseInputBorderColor.success);
-    borderWidth = getIn(theme.border.width, baseInputBorderWidth.success);
+  if (hasBorder && validationState && validationState !== 'none') {
+    borderColor = getIn(theme.colors, baseInputBorderColor[validationState]);
+    borderWidth = getIn(theme.border.width, baseInputBorderWidth[validationState]);
+  } else if (validationState && validationState !== 'none') {
+    backgroundColor = getIn(theme.colors, baseInputBorderlessBackgroundColor[validationState]);
   }
 
   return {

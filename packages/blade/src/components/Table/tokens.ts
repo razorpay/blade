@@ -122,7 +122,7 @@ const tablePagination = {
 const tableEditableCellRowDensityToInputSizeMap = {
   compact: 'medium',
   normal: 'large',
-  comfortable: 'large',
+  comfortable: 'medium',
 } as const;
 
 export {

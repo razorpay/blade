@@ -154,8 +154,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
-                  <TableEditableCell />
-                  <TableEditableCell />
+                  <TableEditableCell accessibilityLabel="Amount" placeholder="Enter text" />
+                  <TableEditableCell accessibilityLabel="Account" />
                   <TableCell>
                     {tableItem.date?.toLocaleDateString('en-IN', {
                       year: 'numeric',
