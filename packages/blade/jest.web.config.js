@@ -32,7 +32,7 @@ const baseConfig = {
   },
 };
 
-module.exports = {
+export default {
   projects: [
     {
       displayName: 'SSR Test',
