@@ -6,7 +6,7 @@ const pureFunctions = ['assignWithoutSideEffects'];
  * Once we upgrade to rollup 3.5.0, we can use treeshake.manualPureFunctions config from rollup instead of this plugin.
  * https://rollupjs.org/configuration-options/#treeshake-manualpurefunctions
  */
-const manualPureFunctions = () => ({
+export const manualPureFunctions = () => ({
   visitor: {
     Identifier(path) {
       if (pureFunctions.includes(path.node.name)) {
@@ -15,5 +15,3 @@ const manualPureFunctions = () => ({
     },
   },
 });
-
-module.exports = manualPureFunctions;

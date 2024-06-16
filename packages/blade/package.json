@@ -1,11 +1,12 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "11.21.4",
+  "version": "11.21.4-module.1",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
   },
+  "type": "module",
   "bin": {
     "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts"
   },
@@ -98,7 +99,7 @@
     "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
     "types:copy-declarations:web": "copyfiles -u 1 build/types/web/components/**/*.d.ts build/components/**/*",
     "types:copy-declarations:native": "copyfiles -u 1 build/types/native/components/**/*.d.ts build/components/**/*",
-    "build:generate-root-imports": "node ./scripts/generateRootImports.js",
+    "build:generate-root-imports": "node ./scripts/generateRootImports.cjs",
     "build:clean-declarations": "rm -rf build/generated-types",
     "build:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
@@ -126,11 +127,11 @@
     "watch:test:react": "yarn test:react --watch --onlyChanged",
     "watch:test:react-native": "yarn test:react-native --watch --onlyChanged",
     "chromatic": "npx chromatic",
-    "publish-npm": "node ./scripts/publishToNpm.js",
+    "publish-npm": "node ./scripts/publishToNpm.cjs",
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
-    "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
-    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
-    "generate-icons": "node ./scripts/generateIcons.mjs"
+    "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.cjs",
+    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.cjs",
+    "generate-icons": "node ./scripts/generateIcons.js"
   },
   "dependencies": {
     "@babel/runtime": "7.20.0",
