@@ -1,6 +1,6 @@
 import Rect from '..';
 import Svg from '../../Svg';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Rect />', () => {
   it('should render react-native-svg Rect component', () => {

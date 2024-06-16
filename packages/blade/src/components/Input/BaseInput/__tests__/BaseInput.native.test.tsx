@@ -3,11 +3,9 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 
 import { BaseInput } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CloseIcon, EyeIcon } from '~components/Icons';
-
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
+import { Link } from '~components/Link';
 
 describe('<BaseInput />', () => {
   it('should render', () => {
@@ -75,6 +73,31 @@ describe('<BaseInput />', () => {
         leadingIcon={EyeIcon}
         trailingIcon={CloseIcon}
       />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render with large size input', () => {
+    const { toJSON } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder="First Last"
+        id="name"
+        leadingIcon={EyeIcon}
+        trailingIcon={CloseIcon}
+        successText="Success"
+        validationState="success"
+        size="large"
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render with trailingButton', () => {
+    const { toJSON } = renderWithTheme(
+      <BaseInput id="coupon" label="Coupon" trailingButton={<Link>Apply</Link>} />,
     );
 
     expect(toJSON()).toMatchSnapshot();
@@ -202,6 +225,7 @@ describe('<BaseInput />', () => {
   });
 
   it('should throw error when both value and defaultValue are passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <BaseInput
@@ -214,6 +238,7 @@ describe('<BaseInput />', () => {
     ).toThrow(
       `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should pass a11y', () => {

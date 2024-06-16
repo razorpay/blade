@@ -1,37 +1,36 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { BookmarkIcon } from '../Icons';
-import { Heading } from '../Typography';
 import type { ListProps } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
+import { ListItemText } from './ListItemText';
 import { ListItemLink } from './ListItemLink';
 import { ListItemCode } from './ListItemCode';
+import { Heading } from '~components/Typography';
+import { BookmarkIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { capitalize } from '~utils/lodashButBetter/capitalize';
+
+const listSizes: NonNullable<ListProps['size']>[] = ['small', 'medium', 'large'];
 
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentDescription="List displays a set of related items that are composed of text/links."
       componentName="List"
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=itEw2V8u5Q0PPGJq-4',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=13864%3A436458&t=nNhw3mY86j85bYfl-4',
-      }}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74881-74522&t=8BTDBesZFpcSIj8v-1&scaling=min-zoom&page-id=22049%3A455845&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
         {`
           import { List, ListItem } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <List>
                 <ListItem>
@@ -62,13 +61,13 @@ export default {
   title: 'Components/List',
   component: List,
   args: {
-    size: 'medium',
+    size: 'large',
     variant: 'unordered',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',
-      type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
@@ -81,7 +80,7 @@ export default {
   },
 } as Meta<ListProps>;
 
-const ListTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+const ListTemplate: StoryFn<typeof List> = ({ ...args }) => {
   return (
     <List variant="unordered" {...args}>
       <ListItem>
@@ -124,7 +123,7 @@ export const Default = ListTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {};
 
-const ListMixNestedTemplate: ComponentStory<typeof List> = () => {
+const ListMixNestedTemplate: StoryFn<typeof List> = () => {
   return (
     <List variant="ordered">
       <ListItem>
@@ -166,37 +165,27 @@ export const ListMixNested = ListMixNestedTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 ListMixNested.storyName = 'Unordered & Ordered Mix';
 
-const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+const ListWithSizesTemplate: StoryFn<typeof List> = ({ ...args }) => {
   return (
     <BaseBox>
-      <Heading>Small Size:</Heading>
-      <List {...args} size="small">
-        <ListItem>
-          Level 1
-          <List {...args} size="small">
+      {listSizes.map((size) => (
+        <BaseBox key={size}>
+          <Heading>{capitalize(size)} Size:</Heading>
+          <List {...args} size={size}>
             <ListItem>
-              Level 2
-              <List {...args} size="small">
-                <ListItem>Level 3</ListItem>
+              Level 1
+              <List {...args} size={size}>
+                <ListItem>
+                  Level 2
+                  <List {...args} size={size}>
+                    <ListItem>Level 3</ListItem>
+                  </List>
+                </ListItem>
               </List>
             </ListItem>
           </List>
-        </ListItem>
-      </List>
-      <Heading>Medium Size:</Heading>
-      <List {...args} size="medium">
-        <ListItem>
-          Level 1
-          <List {...args} size="medium">
-            <ListItem>
-              Level 2
-              <List {...args} size="medium">
-                <ListItem>Level 3</ListItem>
-              </List>
-            </ListItem>
-          </List>
-        </ListItem>
-      </List>
+        </BaseBox>
+      ))}
     </BaseBox>
   );
 };
@@ -223,39 +212,28 @@ OrderedListWithSizes.args = {
   variant: 'ordered',
 };
 
-const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
+const OrderedFilledListWithSizesTemplate: StoryFn<typeof List> = () => {
   return (
     <BaseBox>
-      <Heading>Small Size:</Heading>
-      <List variant="ordered-filled" size="small">
-        <ListItem>
-          <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
-          Razorpay Web Standard Checkout on your website.
-        </ListItem>
-        <ListItem>
-          <ListItemLink>Test Integration:</ListItemLink> Test the integration to ensure it was
-          successful.
-        </ListItem>
-        <ListItem>
-          <ListItemLink>Go-live Checklist:</ListItemLink> Check the go-live checklist before taking
-          the integration live.
-        </ListItem>
-      </List>
-      <Heading>Medium Size:</Heading>
-      <List variant="ordered-filled" size="medium">
-        <ListItem>
-          <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
-          Razorpay Web Standard Checkout on your website.
-        </ListItem>
-        <ListItem>
-          <ListItemLink>Test Integration:</ListItemLink> Test the integration to ensure it was
-          successful.
-        </ListItem>
-        <ListItem>
-          <ListItemLink>Go-live Checklist:</ListItemLink> Check the go-live checklist before taking
-          the integration live.
-        </ListItem>
-      </List>
+      {listSizes.map((size) => (
+        <BaseBox key={size}>
+          <Heading>{capitalize(size)} Size:</Heading>
+          <List variant="ordered-filled" size={size}>
+            <ListItem>
+              <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
+              Razorpay Web Standard Checkout on your website.
+            </ListItem>
+            <ListItem>
+              <ListItemLink>Test Integration:</ListItemLink> Test the integration to ensure it was
+              successful.
+            </ListItem>
+            <ListItem>
+              <ListItemLink>Go-live Checklist:</ListItemLink> Check the go-live checklist before
+              taking the integration live.
+            </ListItem>
+          </List>
+        </BaseBox>
+      ))}
     </BaseBox>
   );
 };
@@ -263,7 +241,7 @@ const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
 export const OrderedFilledListWithSizes = OrderedFilledListWithSizesTemplate.bind({});
 OrderedFilledListWithSizes.storyName = 'OrderedFilled - Sizes';
 
-const ListWithLinkAndIconTemplate: ComponentStory<typeof List> = () => {
+const ListWithLinkAndIconTemplate: StoryFn<typeof List> = () => {
   return (
     <List variant="unordered" icon={BookmarkIcon}>
       <ListItem>
@@ -285,37 +263,60 @@ const ListWithLinkAndIconTemplate: ComponentStory<typeof List> = () => {
 export const ListWithLinkAndIcon = ListWithLinkAndIconTemplate.bind({});
 ListWithLinkAndIcon.storyName = 'Link & Icon';
 
-const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
+const ListWithCodeTemplate: StoryFn<typeof List> = () => {
   return (
     <BaseBox>
-      <Heading>Small Size:</Heading>
-      <List variant="ordered" size="small">
-        <ListItem>
-          Bump blade version to <ListItemCode>v6.0.0</ListItemCode>
-        </ListItem>
-        <ListItem>
-          Run <ListItemCode>yarn install</ListItemCode>
-        </ListItem>
+      {listSizes.map((size) => (
+        <BaseBox key={size}>
+          <Heading>{capitalize(size)} Size:</Heading>
+          <List variant="ordered" size={size}>
+            <ListItem>
+              Bump blade version to <ListItemCode>v6.0.0</ListItemCode>
+            </ListItem>
+            <ListItem>
+              Run <ListItemCode>yarn install</ListItemCode>
+            </ListItem>
 
-        <ListItem>
-          Run <ListItemCode>yarn start</ListItemCode>
-        </ListItem>
-      </List>
-      <Heading>Medium Size:</Heading>
-      <List variant="ordered" size="medium">
-        <ListItem>
-          Bump blade version to <ListItemCode>v6.0.0</ListItemCode>
-        </ListItem>
-        <ListItem>
-          Run <ListItemCode>yarn install</ListItemCode>
-        </ListItem>
-
-        <ListItem>
-          Run <ListItemCode>yarn start</ListItemCode>
-        </ListItem>
-      </List>
+            <ListItem>
+              Run <ListItemCode>yarn start</ListItemCode>
+            </ListItem>
+          </List>
+        </BaseBox>
+      ))}
     </BaseBox>
   );
 };
 export const ListWithCodeAndIcon = ListWithCodeTemplate.bind({});
 ListWithCodeAndIcon.storyName = 'With Inline Code';
+
+const ListWithListItemTextTemplate: StoryFn<typeof List> = () => {
+  return (
+    <BaseBox>
+      {listSizes.map((size) => (
+        <BaseBox key={size}>
+          <Heading>{capitalize(size)} Size:</Heading>
+          <List variant="ordered" size={size}>
+            <ListItem>
+              <ListItemText>
+                You will receive an invoice after a
+                <ListItemText as="span" weight="semibold" color="feedback.text.positive.intense">
+                  {' successful '}
+                </ListItemText>
+                payment
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              You will receive a mail with further instruction after a
+              <ListItemText as="span" weight="semibold" color="feedback.text.negative.intense">
+                {' failed '}
+              </ListItemText>{' '}
+              payment
+            </ListItem>
+          </List>
+        </BaseBox>
+      ))}
+    </BaseBox>
+  );
+};
+export const ListWithListItemText = ListWithListItemTextTemplate.bind({});
+ListWithListItemText.storyName = 'With ListItemText';

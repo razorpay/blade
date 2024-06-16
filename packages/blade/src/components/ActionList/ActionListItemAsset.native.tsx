@@ -1,8 +1,8 @@
 import { Image } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { componentIds } from './componentIds';
-import size from '~tokens/global/size';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { size } from '~tokens/global';
 
 type ActionListItemAssetProps = {
   /**
@@ -27,7 +27,6 @@ const _ActionListItemAsset = (props: ActionListItemAssetProps): React.ReactEleme
       source={source}
       style={{ width: size[16], height: size[12] }}
       accessibilityIgnoresInvertColors
-      // @ts-expect-error: alt does exist on React Native Image https://reactnative.dev/docs/image#alt
       alt={props.alt}
     />
   );
@@ -37,4 +36,5 @@ const ActionListItemAsset = assignWithoutSideEffects(_ActionListItemAsset, {
   componentId: componentIds.ActionListItemAsset,
 });
 
-export { ActionListItemAsset, ActionListItemAssetProps };
+export type { ActionListItemAssetProps };
+export { ActionListItemAsset };

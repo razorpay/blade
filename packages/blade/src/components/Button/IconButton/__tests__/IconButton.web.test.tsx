@@ -4,8 +4,8 @@
 import userEvent from '@testing-library/user-event';
 
 import { IconButton } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 import { CloseIcon } from '~components/Icons';
 
 describe('<IconButton />', () => {
@@ -13,6 +13,15 @@ describe('<IconButton />', () => {
     const noop = () => {};
     const { container } = renderWithTheme(
       <IconButton accessibilityLabel="Close" icon={CloseIcon} onClick={noop} />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with emphasis', () => {
+    const noop = () => {};
+    const { container } = renderWithTheme(
+      <IconButton accessibilityLabel="Close" emphasis="intense" icon={CloseIcon} onClick={noop} />,
     );
 
     expect(container).toMatchSnapshot();

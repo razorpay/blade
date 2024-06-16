@@ -1,10 +1,10 @@
-import CutIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import CutIcon from '.';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CutIcon />', () => {
   it('should render CutIcon', () => {
     const renderTree = renderWithTheme(
-      <CutIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <CutIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

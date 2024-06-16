@@ -1,10 +1,10 @@
 import CastIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<CastIcon />', () => {
   it('should render CastIcon', () => {
     const { container } = renderWithTheme(
-      <CastIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <CastIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

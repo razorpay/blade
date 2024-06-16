@@ -1,12 +1,12 @@
 import type { ComponentType, ReactElement } from 'react';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Description } from '@storybook/addon-docs';
 import iconMap from './iconMap';
+import PlusIcon from './PlusIcon';
 import type { IconProps } from '.';
-import { CreditCardIcon } from '.';
 import BaseBox from '~components/Box/BaseBox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
@@ -14,21 +14,17 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="Blade provides a bunch of icons out of the box in 6 different sizes. You can choose the size & color that fits best for your use case using the color & size props."
       componentName="Icon"
+      apiDecisionLink=""
       note="Blade consists of a limited set of icons that are commonly used however you can contribute to Blade by adding more icons that are available on the Figma board as and when a use case arises. **See the adding icons section below for reference.**"
       imports={`// Replace IconName with actual Icon's name that you would like to use \nimport { IconName } from '@razorpay/blade/components' \n// IconProps are generic Icon props for all icons, don't replace it with your IconName \nimport type { IconProps } from '@razorpay/blade/components'`}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9308%3A64839',
-      }}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=59-177&t=asW4d8ea1ARhVt6g-1&scaling=min-zoom&page-id=57%3A0&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
         {`
         import { Button, ArrowRightIcon } from '@razorpay/blade/components';
 
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           // Icon component is meant to be used inside \`icon\` prop 
           // along with other components like \`Button\`, \`Badge\`, etc
           return (
@@ -51,7 +47,7 @@ const Page = (): ReactElement => {
       </Description>
       <Description>
         2. Visit the [icons figma
-        file](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=57%3A0&t=xzz6HfFC50U8iuJp-0)
+        file](https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=59-177&t=asW4d8ea1ARhVt6g-1&scaling=min-zoom&page-id=57%3A0&mode=design)
       </Description>
       <Description>
         3. Click the icon you wish to add on Figma. Select the root icon element instead of the
@@ -81,16 +77,21 @@ const Page = (): ReactElement => {
 
 export default {
   title: 'Components/Icons',
-  component: CreditCardIcon, // need to give it some icon component so that storybook can infer props & arg types
+  component: PlusIcon, // need to give it some icon component so that storybook can infer props & arg types
   args: {
-    color: 'feedback.icon.neutral.lowContrast',
+    color: 'surface.icon.gray.normal',
     size: 'medium',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',
-      type: 'select',
+      type: 'select' as 'string',
       options: Object.keys(iconMap),
+    },
+    size: {
+      options: ['small', 'medium', 'large', 'xlarge', '2xlarge'],
+      control: { type: 'select' },
     },
     ...getStyledPropsArgTypes(),
   },
@@ -101,10 +102,7 @@ export default {
   },
 } as Meta<IconProps>;
 
-const IconTemplate: ComponentStory<ComponentType<IconProps & { icon: string }>> = ({
-  icon,
-  ...args
-}) => {
+const IconTemplate: StoryFn<ComponentType<IconProps & { icon: string }>> = ({ icon, ...args }) => {
   const IconComponent = iconMap[icon];
   return <IconComponent {...args} />;
 };
@@ -114,7 +112,7 @@ Icon.args = {
   icon: 'CreditCardIcon',
 };
 
-export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) => {
+export const AllIcons: StoryFn<ComponentType<IconProps>> = ({ ...args }) => {
   return (
     <BaseBox>
       {Object.keys(iconMap).map((icon, key) => {

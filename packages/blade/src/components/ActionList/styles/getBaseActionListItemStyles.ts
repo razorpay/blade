@@ -4,7 +4,8 @@ import type { TouchableOpacity } from 'react-native';
 import type { ActionListItemProps } from '../ActionListItem';
 import type { Theme } from '~components/BladeProvider';
 import type { DropdownContextType } from '~components/Dropdown/useDropdown';
-import { isReactNative, makeSize } from '~utils';
+import { isReactNative } from '~utils';
+import { makeSize } from '~utils/makeSize';
 
 type StyledActionListItemProps = {
   selectionType: DropdownContextType['selectionType'];
@@ -14,6 +15,7 @@ type StyledActionListItemProps = {
   isSelected?: boolean;
   isKeydownPressed: boolean;
   isMobile: boolean;
+  isVisible?: boolean;
 };
 
 const getBaseActionListItemStyles = (
@@ -34,4 +36,5 @@ const getBaseActionListItemStyles = (
   };
 };
 
-export { getBaseActionListItemStyles, StyledActionListItemProps };
+export type { StyledActionListItemProps };
+export { getBaseActionListItemStyles };

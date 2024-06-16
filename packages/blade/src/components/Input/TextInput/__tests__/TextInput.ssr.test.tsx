@@ -1,6 +1,6 @@
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<TextInput />', () => {
   it('should render TextInput', () => {

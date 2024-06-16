@@ -1,10 +1,10 @@
-import SettingsIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import SettingsIcon from './';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SettingsIcon />', () => {
   it('should render SettingsIcon', () => {
     const { container } = renderWithTheme(
-      <SettingsIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <SettingsIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

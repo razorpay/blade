@@ -2,7 +2,7 @@ import { fireEvent } from '@testing-library/react-native';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { OTPInput } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -10,6 +10,12 @@ afterAll(() => jest.restoreAllMocks());
 describe('<OTPInput />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<OTPInput label="Enter OTP" />);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render large size', () => {
+    const { toJSON } = renderWithTheme(<OTPInput label="Enter OTP" value="1234" size="large" />);
 
     expect(toJSON()).toMatchSnapshot();
   });

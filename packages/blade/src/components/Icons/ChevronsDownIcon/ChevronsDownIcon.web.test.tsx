@@ -1,10 +1,10 @@
 import ChevronsDownIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ChevronsDownIcon />', () => {
   it('should render ChevronsDownIcon', () => {
     const { container } = renderWithTheme(
-      <ChevronsDownIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <ChevronsDownIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

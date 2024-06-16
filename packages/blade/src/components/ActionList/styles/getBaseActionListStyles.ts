@@ -1,36 +1,25 @@
 import type { CSSObject } from 'styled-components';
-import type { ActionListProps } from '../ActionList';
 import type { Theme } from '~components/BladeProvider';
-import { isReactNative, makeSize } from '~utils';
+import { makeSize } from '~utils/makeSize';
+import { castWebType, isReactNative } from '~utils';
 
 type StyledActionListProps = {
-  surfaceLevel: ActionListProps['surfaceLevel'];
-  elevation?: number;
   id?: string;
   isInBottomSheet?: boolean;
 };
 
 const getBaseActionListStyles = (props: StyledActionListProps & { theme: Theme }): CSSObject => {
-  const { theme, surfaceLevel = 2, isInBottomSheet } = props;
-
-  const shadowColor = theme.shadows.color.level[1];
-
-  // @TODO: tokenize shadows and replace the logic here
-  const elevation200 = `${makeSize(theme.shadows.offsetX.level[1])} ${makeSize(0)} ${makeSize(
-    theme.shadows.blurRadius.level[1],
-  )} 0px ${shadowColor}, ${makeSize(theme.shadows.offsetX.level[1])} ${makeSize(
-    theme.shadows.offsetY.level[2],
-  )} ${makeSize(theme.shadows.blurRadius.level[2])} 0px ${shadowColor}`;
-
-  const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
+  const { theme, isInBottomSheet } = props;
 
   return {
-    backgroundColor,
-    borderWidth: theme.border.width.thin,
-    borderColor: theme.colors.surface.border.normal.lowContrast,
+    borderWidth: isInBottomSheet ? undefined : theme.border.width.thin,
+    borderColor: theme.colors.surface.border.gray.normal,
+    borderStyle: isInBottomSheet ? undefined : 'solid',
     borderRadius: makeSize(theme.border.radius.medium),
-    boxShadow: isInBottomSheet || isReactNative() ? undefined : elevation200,
+    boxShadow:
+      isInBottomSheet || isReactNative() ? undefined : castWebType(theme.elevation.midRaised),
   };
 };
 
-export { getBaseActionListStyles, StyledActionListProps };
+export type { StyledActionListProps };
+export { getBaseActionListStyles };

@@ -1,6 +1,17 @@
+import type { BaseSpinnerProps } from '../BaseSpinner';
 import { BaseSpinner } from '../BaseSpinner';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+
+const colors: BaseSpinnerProps['color'][] = [
+  'primary',
+  'white',
+  'positive',
+  'negative',
+  'information',
+  'notice',
+  'neutral',
+];
 
 describe('<BaseSpinner />', () => {
   it('should render BaseSpinner with default props', () => {
@@ -29,110 +40,27 @@ describe('<BaseSpinner />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low contrast BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" contrast="low" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" contrast="high" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
   it('should render low contrast BaseSpinner with right label', () => {
     const { container } = renderWithTheme(
-      <BaseSpinner
-        accessibilityLabel="Loading"
-        contrast="low"
-        label="Loading"
-        labelPosition="right"
-      />,
+      <BaseSpinner accessibilityLabel="Loading" label="Loading" labelPosition="right" />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should render high contrast BaseSpinner with bottom label', () => {
     const { container } = renderWithTheme(
-      <BaseSpinner
-        accessibilityLabel="Loading"
-        contrast="high"
-        label="Loading"
-        labelPosition="bottom"
-      />,
+      <BaseSpinner accessibilityLabel="Loading" label="Loading" labelPosition="bottom" />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low contrast positive intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="positive" contrast="low" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast positive intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="positive" contrast="high" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast negative intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="negative" contrast="low" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast negative intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="negative" contrast="high" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-  it('should render low contrast information intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="information" contrast="low" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast information intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="information" contrast="high" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-  it('should render low contrast notice intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="notice" contrast="low" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast notice intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="notice" contrast="high" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast neutral intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="neutral" contrast="low" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast neutral intent BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="neutral" contrast="high" />,
-    );
-    expect(container).toMatchSnapshot();
+  colors.forEach((color) => {
+    it(`should render ${color} color BaseSpinner`, () => {
+      const { container } = renderWithTheme(
+        <BaseSpinner accessibilityLabel="Loading" color={color} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
   });
 
   it('should not have accessibility violations', async () => {

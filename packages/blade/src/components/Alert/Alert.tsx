@@ -2,6 +2,7 @@ import type { ReactChild, ReactElement } from 'react';
 import { Fragment, useState } from 'react';
 
 import { StyledAlert } from './StyledAlert';
+import type { IconComponent } from '~components/Icons';
 import {
   AlertOctagonIcon,
   AlertTriangleIcon,
@@ -9,27 +10,19 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import {
-  castNativeType,
-  castWebType,
-  getPlatformType,
-  makeAccessible,
-  metaAttribute,
-  MetaConstants,
-  useBreakpoint,
-} from '~utils';
+import { castNativeType, castWebType, useBreakpoint, getPlatformType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
-
-type Nullable<Type> = Type | null;
+import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type PrimaryAction = {
   text: string;
@@ -78,11 +71,16 @@ type AlertProps = {
   onDismiss?: () => void;
 
   /**
-   * Can be set to `high` for a more prominent look. Not to be confused with a11y contrast.
-   *
-   * @default low
+   * Can be used to render custom icon
    */
-  contrast?: ColorContrastTypes;
+  icon?: IconComponent;
+
+  /**
+   * Can be set to `high` for a more prominent look. Not to be confused with a11y emphasis.
+   *
+   * @default subtle
+   */
+  emphasis?: SubtleOrIntense;
 
   /**
    * Makes the Alert span the entire container width, instead of the default max width of `584px`.
@@ -94,10 +92,8 @@ type AlertProps = {
 
   /**
    * Sets the color tone
-   *
-   * @default neutral
    */
-  intent?: Feedback;
+  color?: FeedbackColors;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -106,8 +102,7 @@ type AlertProps = {
     /**
      * Renders a button (should **always** be present if `secondary` action is being used)
      */
-    primary: PrimaryAction;
-
+    primary?: PrimaryAction;
     /**
      * Renders a Link button
      */
@@ -134,29 +129,22 @@ const Alert = ({
   title,
   isDismissible = true,
   onDismiss,
-  contrast = 'low',
+  emphasis = 'subtle',
   isFullWidth = false,
-  intent = 'neutral',
+  color = 'neutral',
   actions,
   testID,
+  icon,
   ...styledProps
 }: AlertProps): ReactElement | null => {
-  if (!actions?.primary && actions?.secondary) {
-    throw new Error(
-      '[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.',
-    );
-  }
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const [isVisible, setIsVisible] = useState(true);
+
   const isDesktop = matchedDeviceType === 'desktop';
   const isMobile = !isDesktop;
 
-  const [isVisible, setIsVisible] = useState(true);
-  const contrastType = `${contrast}Contrast` as const;
-  const iconSize = isFullWidth ? 'large' : 'medium';
-  const textSize = isFullWidth ? 'medium' : 'small';
-
-  const Icon = intentIconMap[intent];
+  const Icon = icon ?? intentIconMap[color];
   let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
@@ -175,32 +163,40 @@ const Alert = ({
       iconOffset = 'spacing.2';
     }
   } else if (isFullWidth) {
-    iconOffset = 'spacing.0';
+    iconOffset = 'spacing.1';
   }
 
-  const icon = (
-    <BaseBox marginTop={iconOffset} display="flex">
-      <Icon color={`feedback.icon.${intent}.${contrastType}`} size={iconSize} />
+  const shouldCenterAlign = isFullWidth && !title;
+  let alignment: 'center' | 'flex-start' = 'flex-start';
+  if (!isFullWidth) alignment = 'flex-start';
+  if (shouldCenterAlign) alignment = 'center';
+
+  const leadingIcon = (
+    <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
+      <Icon
+        color={
+          emphasis === 'intense'
+            ? 'surface.icon.staticWhite.normal'
+            : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
+        }
+        size="medium"
+      />
     </BaseBox>
   );
 
+  const textColor =
+    emphasis === 'intense' ? 'surface.text.staticWhite.normal' : 'surface.text.gray.subtle';
   const _title = title ? (
     <BaseBox marginBottom="spacing.2">
-      {isFullWidth ? (
-        <Heading type="subtle" size="small" contrast={contrast}>
-          {title}
-        </Heading>
-      ) : (
-        <Text type="subtle" weight="bold" contrast={contrast}>
-          {title}
-        </Text>
-      )}
+      <Text color={textColor} size="medium" weight="semibold">
+        {title}
+      </Text>
     </BaseBox>
   ) : null;
 
   const _description = (
     <BaseBox marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text type="subtle" size={textSize} contrast={contrast}>
+      <Text color={textColor} size="small">
         {description}
       </Text>
     </BaseBox>
@@ -212,17 +208,17 @@ const Alert = ({
       display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
     >
       <BaseButton
-        size={textSize}
+        size="small"
         onClick={actions.primary.onClick}
-        intent={intent}
-        contrast={contrast}
+        color={emphasis === 'intense' ? 'white' : color}
+        variant="secondary"
       >
         {actions.primary.text}
       </BaseButton>
     </BaseBox>
   ) : null;
 
-  const secondaryActionParams: Nullable<Partial<SecondaryActionLinkButton>> = actions?.secondary
+  const secondaryActionParams: Partial<SecondaryActionLinkButton> | null = actions?.secondary
     ? {
         onClick: actions.secondary.onClick,
       }
@@ -239,12 +235,14 @@ const Alert = ({
     secondaryActionParams.target = actions.secondary.target;
     secondaryActionParams.rel = actions.secondary.rel;
   }
+
   const secondaryAction = actions?.secondary ? (
-    <BaseBox
-      marginRight="spacing.4"
-      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
-    >
-      <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
+    <BaseBox marginRight="spacing.4" display={(isReactNative ? 'flex' : 'inline-flex') as never}>
+      <BaseLink
+        size="small"
+        color={emphasis === 'intense' ? 'white' : color}
+        {...secondaryActionParams}
+      >
         {actions.secondary.text}
       </BaseLink>
     </BaseBox>
@@ -280,8 +278,8 @@ const Alert = ({
       <IconButton
         accessibilityLabel="Dismiss alert"
         onClick={onClickDismiss}
-        contrast={contrast}
-        size={iconSize}
+        emphasis={emphasis === 'intense' ? 'subtle' : 'intense'}
+        size="large"
         icon={CloseIcon}
       />
     </CloseButtonWrapper>
@@ -289,9 +287,9 @@ const Alert = ({
 
   const a11yProps = makeAccessible({
     // React Native doesn't has status as role
-    role: isReactNative || intent === 'negative' || intent === 'notice' ? 'alert' : 'status',
+    role: isReactNative || color === 'negative' || color === 'notice' ? 'alert' : 'status',
     // override the implicit live region of role `alert`
-    ...(intent === 'notice' && { liveRegion: 'polite' }),
+    ...(color === 'notice' && { liveRegion: 'polite' }),
   });
 
   if (!isVisible) {
@@ -299,29 +297,34 @@ const Alert = ({
   }
 
   return (
-    <StyledAlert
-      intent={intent}
-      contrastType={contrastType}
-      isFullWidth={isFullWidth}
-      isDesktop={isDesktop}
+    <BaseBox
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
       {...getStyledProps(styledProps)}
     >
-      {icon}
-      <BaseBox
-        flex={1}
-        paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
-        paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+      <StyledAlert
+        color={color}
+        emphasis={emphasis}
+        isFullWidth={isFullWidth}
+        isDesktop={isDesktop}
+        textAlign={'left' as never}
       >
-        {_title}
-        {_description}
-        {actionsVertical}
-      </BaseBox>
-      {actionsHorizontal}
-      {closeButton}
-    </StyledAlert>
+        {leadingIcon}
+        <BaseBox
+          flex={1}
+          paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
+          paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+        >
+          {_title}
+          {_description}
+          {actionsVertical}
+        </BaseBox>
+        {actionsHorizontal}
+        {closeButton}
+      </StyledAlert>
+    </BaseBox>
   );
 };
 
-export { AlertProps, Alert };
+export type { AlertProps };
+export { Alert };

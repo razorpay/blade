@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
-import { Text } from '../Typography';
 import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
 import type { CheckboxGroupProps } from './';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Text } from '~components/Typography';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -15,19 +15,15 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="CheckboxGroup"
       componentDescription="CheckboxGroup can be used to group together multiple checkboxes in a forms which provides out of the box state management for the multi-checkboxes and other features."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230590',
-      }}
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Checkbox/_decisions/decisions.md"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75857-44078&t=PxSB8TobkLzOQOjQ-1&scaling=min-zoom&page-id=13227%3A162974&mode=design"
     >
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
+      <Sandbox showConsole editorHeight={400}>
         {`
           import { CheckboxGroup, Checkbox } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <CheckboxGroup 
                 label="Where do you want to collect payments?"
@@ -62,6 +58,7 @@ export default {
     label: 'Checkbox Group',
     helpText: undefined,
     isDisabled: false,
+    isRequired: false,
     necessityIndicator: 'none',
     labelPosition: undefined,
     validationState: undefined,
@@ -71,6 +68,7 @@ export default {
     onChange: undefined,
     value: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     value: {
       options: ['apple', 'mango', 'orange'],
@@ -93,10 +91,7 @@ export default {
   },
 } as Meta<CheckboxGroupProps>;
 
-const CheckboxGroupTemplate: ComponentStory<typeof CheckboxGroupComponent> = ({
-  children,
-  ...args
-}) => {
+const CheckboxGroupTemplate: StoryFn<typeof CheckboxGroupComponent> = ({ children, ...args }) => {
   return (
     <CheckboxGroupComponent {...args}>
       <CheckboxComponent value="apple">Apple</CheckboxComponent>
@@ -109,9 +104,9 @@ const CheckboxGroupTemplate: ComponentStory<typeof CheckboxGroupComponent> = ({
 export const Default = CheckboxGroupTemplate.bind({});
 Default.storyName = 'Default';
 
-export const HelpText = CheckboxGroupTemplate.bind({});
-HelpText.storyName = 'HelpText';
-HelpText.args = {
+export const HelpTextCheckbox = CheckboxGroupTemplate.bind({});
+HelpTextCheckbox.storyName = 'HelpText';
+HelpTextCheckbox.args = {
   helpText: 'CheckboxGroup help text',
 };
 
@@ -144,6 +139,12 @@ export const Small = CheckboxGroupTemplate.bind({});
 Small.storyName = 'Small';
 Small.args = {
   size: 'small',
+};
+
+export const Large = CheckboxGroupTemplate.bind({});
+Large.storyName = 'Large';
+Large.args = {
+  size: 'large',
 };
 
 export const LabelPositionLeft = CheckboxGroupTemplate.bind({});
@@ -195,7 +196,7 @@ const IndeterminateExample = () => {
   );
 };
 
-const IndeterminateTemplate: ComponentStory<typeof CheckboxComponent> = () => {
+const IndeterminateTemplate: StoryFn<typeof CheckboxComponent> = () => {
   return <IndeterminateExample />;
 };
 export const Indeterminate = IndeterminateTemplate.bind({});

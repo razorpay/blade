@@ -1,236 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c1 {
-  margin-bottom: 4px;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 0px;
-}
-
-.c7 {
-  overflow: hidden;
-  position: relative;
-  height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
-}
-
-.c8 {
-  background-color: hsla(213,89%,56%,1);
-}
-
-.c9 {
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
-}
-
-.c11 {
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-}
-
-.c10 {
-  background-color: hsla(213,89%,56%,1);
-  height: 100%;
-  width: 20%;
-}
-
-.c12 {
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
-}
-
-.c3 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c4 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-<div>
-  <div
-    class=""
-  >
-    <div
-      class="c0"
-      display="flex"
-    >
-      <label
-        for="progress-1"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
-      >
-        <div
-          class="c1"
-        >
-          <div
-            class="c2"
-            display="flex"
-          >
-            <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
-            >
-              Label
-            </p>
-            <div
-              class="c4"
-              data-blade-component="visually-hidden"
-            >
-              <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
-          </div>
-        </div>
-      </label>
-      <div
-        class="c1"
-      >
-        <p
-          class="c6 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-label="Label"
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-1"
-      role="progressbar"
-    >
-      <div
-        class="c7"
-        height="2px"
-        overflow="hidden"
-      >
-        <div
-          class="c8 c9 c10"
-        >
-          <div
-            class=" c11 c12"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -244,25 +26,25 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c2 {
-  background-color: hsla(213,89%,56%,1);
+.c3.c3.c3.c3.c3 {
+  background-color: hsla(227,100%,59%,1);
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -271,51 +53,166 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c4 {
-  background-color: hsla(213,89%,56%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 50%;
 }
 
-.c6 {
+<div>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      />
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="50"
+        aria-valuetext="50%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-linear-14"
+        role="progressbar"
+      >
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3 c4 c5"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c6"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render ProgressBar without label and percentage 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2.c2.c2.c2.c2 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
-    />
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="50"
-      aria-valuetext="50%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-7"
-      role="progressbar"
+      data-blade-component="base-box"
     >
       <div
-        class="c1"
-        height="2px"
-        overflow="hidden"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="50"
+        aria-valuetext="50%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-circular-43"
+        role="progressbar"
       >
         <div
-          class="c2 c3 c4"
+          class="c1"
+          data-blade-component="base-box"
         >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              data-blade-component="svg-circle"
+              fill="none"
+              r="10.5"
+              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke-width="3px"
+            />
+            <circle
+              class="c2"
+              cx="12"
+              cy="12"
+              fill="none"
+              r="10.5"
+              stroke="hsla(227, 100%, 59%, 1)"
+              stroke-dasharray="65.97344572538566"
+              stroke-dashoffset="32.98672286269283"
+              stroke-width="3px"
+              transform="rotate(-90 12 12)"
+            />
+          </svg>
           <div
-            class=" c5 c6"
+            class="c3"
+            data-blade-component="base-box"
           />
         </div>
       </div>
@@ -324,8 +221,705 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 </div>
 `;
 
-exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render circular variant ProgressBar with default props 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 0px;
+}
+
+.c2.c2.c2.c2.c2 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-circular-32"
+        role="progressbar"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              data-blade-component="svg-circle"
+              fill="none"
+              r="10.5"
+              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke-width="3px"
+            />
+            <circle
+              class="c2"
+              cx="12"
+              cy="12"
+              fill="none"
+              r="10.5"
+              stroke="hsla(227, 100%, 59%, 1)"
+              stroke-dasharray="65.97344572538566"
+              stroke-dashoffset="52.778756580308524"
+              stroke-width="3px"
+              transform="rotate(-90 12 12)"
+            />
+          </svg>
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              20
+              %
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render circular variant ProgressBar with large size 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  fill: hsla(212,39%,16%,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-circular-41"
+        role="progressbar"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            height="72"
+            viewBox="0 0 72 72"
+            width="72"
+          >
+            <circle
+              cx="36"
+              cy="36"
+              data-blade-component="svg-circle"
+              fill="none"
+              r="32.5"
+              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke-width="7px"
+            />
+            <circle
+              class="c2"
+              cx="36"
+              cy="36"
+              fill="none"
+              r="32.5"
+              stroke="hsla(227, 100%, 59%, 1)"
+              stroke-dasharray="204.20352248333654"
+              stroke-dashoffset="163.36281798666923"
+              stroke-width="7px"
+              transform="rotate(-90 36 36)"
+            />
+            <text
+              class="c3"
+              dy=".4em"
+              text-anchor="middle"
+              x="50%"
+              y="50%"
+            >
+              20
+              %
+            </text>
+          </svg>
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render circular variant ProgressBar with medium size 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  fill: hsla(212,39%,16%,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-circular-39"
+        role="progressbar"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            height="48"
+            viewBox="0 0 48 48"
+            width="48"
+          >
+            <circle
+              cx="24"
+              cy="24"
+              data-blade-component="svg-circle"
+              fill="none"
+              r="21.5"
+              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke-width="5px"
+            />
+            <circle
+              class="c2"
+              cx="24"
+              cy="24"
+              fill="none"
+              r="21.5"
+              stroke="hsla(227, 100%, 59%, 1)"
+              stroke-dasharray="135.0884841043611"
+              stroke-dashoffset="108.07078728348888"
+              stroke-width="5px"
+              transform="rotate(-90 24 24)"
+            />
+            <text
+              class="c3"
+              dy=".4em"
+              text-anchor="middle"
+              x="50%"
+              y="50%"
+            >
+              20
+              %
+            </text>
+          </svg>
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render circular variant ProgressBar with small size 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 0px;
+}
+
+.c2.c2.c2.c2.c2 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-circular-37"
+        role="progressbar"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              data-blade-component="svg-circle"
+              fill="none"
+              r="10.5"
+              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke-width="3px"
+            />
+            <circle
+              class="c2"
+              cx="12"
+              cy="12"
+              fill="none"
+              r="10.5"
+              stroke="hsla(227, 100%, 59%, 1)"
+              stroke-dasharray="65.97344572538566"
+              stroke-dashoffset="52.778756580308524"
+              stroke-width="3px"
+              transform="rotate(-90 12 12)"
+            />
+          </svg>
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              20
+              %
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -339,29 +933,29 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(214,21%,94%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(213,89%,56%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(200,84%,44%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -370,32 +964,36 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(213,89%,56%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(200,84%,44%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -403,48 +1001,52 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-9"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-18"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -452,8 +1054,19 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 </div>
 `;
 
-exports[`<ProgressBar /> should render high contrast information intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -467,29 +1080,29 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(214,21%,94%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(193,100%,35%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(200,84%,44%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -498,32 +1111,36 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(193,100%,35%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(200,84%,44%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -531,48 +1148,52 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-17"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-47"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -580,8 +1201,19 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 </div>
 `;
 
-exports[`<ProgressBar /> should render high contrast negative intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -595,29 +1227,29 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(214,21%,94%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(8,73%,47%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(4,74%,49%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -626,32 +1258,36 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(8,73%,47%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(4,74%,49%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -659,48 +1295,52 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-13"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-20"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -708,8 +1348,19 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 </div>
 `;
 
-exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -723,29 +1374,29 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(214,21%,94%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(216,33%,29%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(4,74%,49%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -754,32 +1405,36 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(216,33%,29%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(4,74%,49%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -787,48 +1442,52 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-19"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-49"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -836,8 +1495,19 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 </div>
 `;
 
-exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -851,29 +1521,29 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(214,21%,94%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(38,97%,38%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(211,29%,26%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -882,32 +1552,36 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(38,97%,38%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(211,29%,26%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -915,48 +1589,52 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-15"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-22"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -964,8 +1642,19 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 </div>
 `;
 
-exports[`<ProgressBar /> should render high contrast positive intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -979,29 +1668,29 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(214,21%,94%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(160,100%,26%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(211,29%,26%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1010,32 +1699,36 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(160,100%,26%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(211,29%,26%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1043,48 +1736,52 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-11"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-51"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -1092,8 +1789,19 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 </div>
 `;
 
-exports[`<ProgressBar /> should render low contrast information intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1107,29 +1815,29 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(193,100%,35%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(25,90%,48%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1138,32 +1846,36 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(193,100%,35%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(25,90%,48%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1171,48 +1883,52 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-16"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-24"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -1220,8 +1936,19 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 </div>
 `;
 
-exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1235,29 +1962,29 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(8,73%,47%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(25,90%,48%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1266,32 +1993,36 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(8,73%,47%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(25,90%,48%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1299,48 +2030,52 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-12"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-53"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -1348,8 +2083,19 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 </div>
 `;
 
-exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1363,29 +2109,29 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(216,33%,29%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(150,100%,32%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1394,32 +2140,36 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(216,33%,29%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(150,100%,32%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1427,48 +2177,52 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-18"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-26"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -1476,8 +2230,19 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 </div>
 `;
 
-exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1491,29 +2256,29 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c4 {
-  background-color: hsla(38,97%,38%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(150,100%,32%,1);
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1522,32 +2287,36 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c6 {
-  background-color: hsla(38,97%,38%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(150,100%,32%,1);
   height: 100%;
   width: 20%;
 }
 
-.c8 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1555,48 +2324,52 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-14"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
       >
         <div
-          class="c4 c5 c6"
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c3"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-55"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c7 c8"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -1604,136 +2377,19 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 </div>
 `;
 
-exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render linear variant ProgressBar with default props 1`] = `
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.c1 {
-  margin-bottom: 4px;
-}
-
-.c3 {
-  overflow: hidden;
-  position: relative;
-  height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
-}
-
-.c4 {
-  background-color: hsla(160,100%,26%,1);
-}
-
-.c5 {
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
-}
-
-.c7 {
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-}
-
-.c6 {
-  background-color: hsla(160,100%,26%,1);
-  height: 100%;
-  width: 20%;
-}
-
-.c8 {
-  height: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 100%;
-  opacity: 0;
-  background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
 }
 
-.c2 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <div
-    class=""
-  >
-    <div
-      class="c0"
-      display="flex"
-    >
-      <div
-        class="c1"
-      >
-        <p
-          class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-10"
-      role="progressbar"
-    >
-      <div
-        class="c3"
-        height="2px"
-        overflow="hidden"
-      >
-        <div
-          class="c4 c5 c6"
-        >
-          <div
-            class=" c7 c8"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
-.c0 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1747,47 +2403,29 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c1 {
+.c3.c3.c3.c3.c3 {
   margin-bottom: 4px;
 }
 
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 0px;
-}
-
-.c7 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
-  height: 4px;
-  background-color: hsla(216,15%,54%,0.18);
+  height: 2px;
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c8 {
-  background-color: hsla(213,89%,56%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(227,100%,59%,1);
 }
 
-.c9 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c11 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1796,164 +2434,368 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c10 {
-  background-color: hsla(213,89%,56%,1);
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 20%;
 }
 
-.c12 {
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
-}
-
-.c3 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c2.c2.c2.c2.c2 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c4 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
-      <label
-        for="progress-6"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
-      >
-        <div
-          class="c1"
-        >
-          <div
-            class="c2"
-            display="flex"
-          >
-            <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
-            >
-              Label
-            </p>
-            <div
-              class="c4"
-              data-blade-component="visually-hidden"
-            >
-              <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
-          </div>
-        </div>
-      </label>
       <div
         class="c1"
+        data-blade-component="base-box"
       >
-        <p
-          class="c6 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
+        <label
+          class="c2"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
-          20%
-        </p>
+          Label
+        </label>
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c2"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
       </div>
-    </div>
-    <div
-      aria-label="Label"
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-6"
-      role="progressbar"
-    >
       <div
-        class="c7"
-        height="4px"
-        overflow="hidden"
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-linear-1"
+        role="progressbar"
       >
         <div
-          class="c8 c9 c10"
+          class="c4"
+          data-blade-component="base-box"
         >
           <div
-            class=" c11 c12"
-          />
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render linear variant ProgressBar with medium size 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c3.c3.c3.c3.c3 {
+  margin-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  overflow: hidden;
+  position: relative;
+  height: 4px;
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(227,100%,59%,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c8.c8.c8.c8.c8 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(227,100%,59%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <label
+          class="c2"
+          data-blade-component="text"
+        >
+          Label
+        </label>
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c2"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-linear-8"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render linear variant ProgressBar with small size 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c3.c3.c3.c3.c3 {
+  margin-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  overflow: hidden;
+  position: relative;
+  height: 2px;
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(227,100%,59%,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c8.c8.c8.c8.c8 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(227,100%,59%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <label
+          class="c2"
+          data-blade-component="text"
+        >
+          Label
+        </label>
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c2"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-linear-6"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8"
+              data-blade-component="base-box"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -1962,7 +2804,18 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1976,25 +2829,25 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   justify-content: flex-end;
 }
 
-.c1 {
+.c2.c2.c2.c2.c2 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c2 {
-  background-color: hsla(213,89%,56%,1);
+.c3.c3.c3.c3.c3 {
+  background-color: hsla(227,100%,59%,1);
 }
 
-.c3 {
+.c4.c4.c4.c4.c4 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2003,8 +2856,8 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c4 {
-  background-color: hsla(213,89%,56%,1);
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 70%;
 }
@@ -2012,32 +2865,40 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
-    />
-    <div
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="70"
-      aria-valuetext="70"
-      class=""
-      data-blade-component="progress-bar"
-      id="meter-8"
-      role="meter"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
-        height="2px"
-        overflow="hidden"
+        data-blade-component="base-box"
+      />
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="70"
+        aria-valuetext="70"
+        class=""
+        data-blade-component="base-box"
+        id="meter-linear-16"
+        role="meter"
       >
         <div
-          class="c2 c3 c4"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class=" c5"
-          />
+            class="c3 c4 c5"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c6"
+              data-blade-component="base-box"
+              type="meter"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -2045,228 +2906,140 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 </div>
 `;
 
-exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
-.c0 {
+exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
-.c1 {
-  margin-bottom: 4px;
-}
-
-.c2 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 0px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-.c7 {
-  overflow: hidden;
-  position: relative;
-  height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c8 {
-  background-color: hsla(213,89%,56%,1);
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
 }
 
-.c9 {
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
-}
-
-.c11 {
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-}
-
-.c10 {
-  background-color: hsla(213,89%,56%,1);
-  height: 100%;
-  width: 20%;
-}
-
-.c12 {
+.c2.c2.c2.c2.c2 {
   height: 100%;
   width: 100%;
-  opacity: 0;
-  background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
-}
-
-.c3 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c4 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
+  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
 }
 
 <div>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
       class="c0"
-      display="flex"
+      data-blade-component="base-box"
     >
-      <label
-        for="progress-5"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="70"
+        aria-valuetext="70"
+        class=""
+        data-blade-component="base-box"
+        id="meter-circular-45"
+        role="meter"
       >
         <div
           class="c1"
+          data-blade-component="base-box"
         >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              data-blade-component="svg-circle"
+              fill="none"
+              r="10.5"
+              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke-width="3px"
+            />
+            <circle
+              class="c2"
+              cx="12"
+              cy="12"
+              fill="none"
+              r="10.5"
+              stroke="hsla(227, 100%, 59%, 1)"
+              stroke-dasharray="65.97344572538566"
+              stroke-dashoffset="19.792033717615702"
+              stroke-width="3px"
+              transform="rotate(-90 12 12)"
+            />
+          </svg>
           <div
-            class="c2"
-            display="flex"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
-            >
-              Label
-            </p>
-            <div
               class="c4"
-              data-blade-component="visually-hidden"
+              data-blade-component="text"
             >
-              <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
+              70
+              %
+            </p>
           </div>
-        </div>
-      </label>
-      <div
-        class="c1"
-      >
-        <p
-          class="c6 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          20%
-        </p>
-      </div>
-    </div>
-    <div
-      aria-label="Label"
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="20"
-      aria-valuetext="20%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-5"
-      role="progressbar"
-    >
-      <div
-        class="c7"
-        height="2px"
-        overflow="hidden"
-      >
-        <div
-          class="c8 c9 c10"
-        >
-          <div
-            class=" c11 c12"
-          />
         </div>
       </div>
     </div>
@@ -2275,7 +3048,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
-.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2294,9 +3067,21 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c4 {
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2310,47 +3095,29 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: space-between;
 }
 
-.c5 {
+.c8.c8.c8.c8.c8 {
   margin-bottom: 4px;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 0px;
-}
-
-.c11 {
+.c9.c9.c9.c9.c9 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c12 {
-  background-color: hsla(213,89%,56%,1);
+.c10.c10.c10.c10.c10 {
+  background-color: hsla(227,100%,59%,1);
 }
 
-.c13 {
+.c11.c11.c11.c11.c11 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c15 {
+.c13.c13.c13.c13.c13 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2359,106 +3126,75 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c14 {
-  background-color: hsla(213,89%,56%,1);
+.c12.c12.c12.c12.c12 {
+  background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 0%;
 }
 
-.c16 {
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
-}
-
-.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c7 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c9 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c10 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c7.c7.c7.c7.c7 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c8 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 20px;
   padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2468,33 +3204,43 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   position: relative;
 }
 
-.c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
-.c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
-.c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2506,103 +3252,76 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
-      display="flex"
+      class=" c1"
+      data-blade-component="base-box"
     >
       <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Update Progress
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Update Progress
+        </div>
       </div>
     </div>
   </button>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
-      class="c4"
-      display="flex"
+      class="c5"
+      data-blade-component="base-box"
     >
-      <label
-        for="progress-3"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
-      >
-        <div
-          class="c5"
-        >
-          <div
-            class="c6"
-            display="flex"
-          >
-            <p
-              class="c7 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
-            >
-              Label
-            </p>
-            <div
-              class="c8"
-              data-blade-component="visually-hidden"
-            >
-              <p
-                class="c9 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
-          </div>
-        </div>
-      </label>
       <div
-        class="c5"
+        class="c6"
+        data-blade-component="base-box"
       >
-        <p
-          class="c10 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
+        <label
+          class="c7"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
-          0%
-        </p>
+          Label
+        </label>
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c7"
+            data-blade-component="text"
+          >
+            0%
+          </p>
+        </div>
       </div>
-    </div>
-    <div
-      aria-label="Label"
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="0"
-      aria-valuetext="0%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-3"
-      role="progressbar"
-    >
       <div
-        class="c11"
-        height="2px"
-        overflow="hidden"
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-linear-3"
+        role="progressbar"
       >
         <div
-          class="c12 c13 c14"
+          class="c9"
+          data-blade-component="base-box"
         >
           <div
-            class=" c15 c16"
-          />
+            class="c10 c11 c12"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c13"
+              data-blade-component="base-box"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -2611,7 +3330,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
-.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2630,9 +3349,21 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c4 {
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2646,47 +3377,29 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: space-between;
 }
 
-.c5 {
+.c8.c8.c8.c8.c8 {
   margin-bottom: 4px;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 0px;
-}
-
-.c11 {
+.c9.c9.c9.c9.c9 {
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
-.c12 {
-  background-color: hsla(213,89%,56%,1);
+.c10.c10.c10.c10.c10 {
+  background-color: hsla(227,100%,59%,1);
 }
 
-.c13 {
+.c11.c11.c11.c11.c11 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c15 {
+.c13.c13.c13.c13.c13 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2695,106 +3408,75 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c14 {
-  background-color: hsla(213,89%,56%,1);
+.c12.c12.c12.c12.c12 {
+  background-color: hsla(227,100%,59%,1);
   height: 100%;
-  width: 60%;
+  width: 0%;
 }
 
-.c16 {
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
-}
-
-.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c7 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c9 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c10 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c7.c7.c7.c7.c7 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c8 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 20px;
   padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2804,33 +3486,43 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   position: relative;
 }
 
-.c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
-.c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
-.c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2842,103 +3534,696 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     type="button"
   >
     <div
-      class="c1 c2"
-      display="flex"
+      class=" c1"
+      data-blade-component="base-box"
     >
       <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Update Progress
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Update Progress
+        </div>
       </div>
     </div>
   </button>
   <div
     class=""
+    data-blade-component="progress-bar"
   >
     <div
-      class="c4"
-      display="flex"
+      class="c5"
+      data-blade-component="base-box"
     >
-      <label
-        for="progress-3"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      <div
+        class="c6"
+        data-blade-component="base-box"
+      >
+        <label
+          class="c7"
+          data-blade-component="text"
+        >
+          Label
+        </label>
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c7"
+            data-blade-component="text"
+          >
+            0%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-linear-3"
+        role="progressbar"
       >
         <div
-          class="c5"
+          class="c9"
+          data-blade-component="base-box"
         >
           <div
-            class="c6"
-            display="flex"
+            class="c10 c11 c12"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c13"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.c10.c10.c10.c10.c10 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Update Progress
+        </div>
+      </div>
+    </div>
+  </button>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c5"
+      data-blade-component="base-box"
+    >
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-circular-34"
+        role="progressbar"
+      >
+        <div
+          class="c6"
+          data-blade-component="base-box"
+        >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              data-blade-component="svg-circle"
+              fill="none"
+              r="10.5"
+              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke-width="3px"
+            />
+            <circle
+              class="c7"
+              cx="12"
+              cy="12"
+              fill="none"
+              r="10.5"
+              stroke="hsla(227, 100%, 59%, 1)"
+              stroke-dasharray="65.97344572538566"
+              stroke-dashoffset="65.97344572538566"
+              stroke-width="3px"
+              transform="rotate(-90 12 12)"
+            />
+          </svg>
+          <div
+            class="c8"
+            data-blade-component="base-box"
           >
             <p
-              class="c7 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="c9"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Label
             </p>
-            <div
-              class="c8"
-              data-blade-component="visually-hidden"
+            <p
+              class="c10"
+              data-blade-component="text"
             >
-              <p
-                class="c9 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
+              0
+              %
+            </p>
           </div>
         </div>
-      </label>
-      <div
-        class="c5"
-      >
-        <p
-          class="c10 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
-        >
-          60%
-        </p>
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.c10.c10.c10.c10.c10 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
     <div
-      aria-label="Label"
-      aria-valuemax="100"
-      aria-valuemin="0"
-      aria-valuenow="60"
-      aria-valuetext="60%"
-      class=""
-      data-blade-component="progress-bar"
-      id="progress-3"
-      role="progressbar"
+      class=" c1"
+      data-blade-component="base-box"
     >
       <div
-        class="c11"
-        height="2px"
-        overflow="hidden"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
         <div
-          class="c12 c13 c14"
+          class="c4"
+          data-blade-component="base-text"
         >
+          Update Progress
+        </div>
+      </div>
+    </div>
+  </button>
+  <div
+    class=""
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c5"
+      data-blade-component="base-box"
+    >
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0%"
+        class=""
+        data-blade-component="base-box"
+        id="undefined-circular-34"
+        role="progressbar"
+      >
+        <div
+          class="c6"
+          data-blade-component="base-box"
+        >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              data-blade-component="svg-circle"
+              fill="none"
+              r="10.5"
+              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke-width="3px"
+            />
+            <circle
+              class="c7"
+              cx="12"
+              cy="12"
+              fill="none"
+              r="10.5"
+              stroke="hsla(227, 100%, 59%, 1)"
+              stroke-dasharray="65.97344572538566"
+              stroke-dashoffset="65.97344572538566"
+              stroke-width="3px"
+              transform="rotate(-90 12 12)"
+            />
+          </svg>
           <div
-            class=" c15 c16"
-          />
+            class="c8"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c9"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+            <p
+              class="c10"
+              data-blade-component="text"
+            >
+              0
+              %
+            </p>
+          </div>
         </div>
       </div>
     </div>

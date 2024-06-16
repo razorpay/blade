@@ -1,36 +1,50 @@
 import type { Theme } from '~components/BladeProvider';
-import type { AccessibilityProps } from '~src/utils/makeAccessible/types';
-import type { DotNotationColorStringToken, TestID } from '~src/_helpers/types';
-import type { Feedback } from '~tokens/theme/theme';
+import type { AccessibilityProps } from '~utils/makeAccessible/types';
+import type { TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
-type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
-  Theme['colors']['feedback']['text']
->}`;
-type FeedbackActionColors = `feedback.${Feedback}.action.text.${DotNotationColorStringToken<
-  Theme['colors']['feedback'][Feedback]['action']['text']
->}`;
-type SurfaceColors = `surface.text.${DotNotationColorStringToken<
-  Theme['colors']['surface']['text']
->}`;
-type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['action']['text']>}`;
-type BadgeTextColors = `badge.text.${DotNotationColorStringToken<
-  Theme['colors']['badge']['text']
->}`;
+type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;
+type SurfaceText = DotNotationToken<Theme['colors']['surface']['text']>;
+type FeedbackText = DotNotationToken<Theme['colors']['feedback']['text']>;
+export type TextColors =
+  | `interactive.text.${InteractiveText}`
+  | `surface.text.${SurfaceText}`
+  | `feedback.text.${FeedbackText}`;
+
+type As =
+  | 'code'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'p'
+  | 'span'
+  | 'abbr'
+  | 'q'
+  | 'cite'
+  | 'figcaption'
+  | 'div'
+  | 'label';
 
 export type BaseTextProps = {
   id?: string;
-  color?: ActionColors | FeedbackColors | SurfaceColors | FeedbackActionColors | BadgeTextColors;
+  color?: TextColors | 'currentColor'; // currentColor is useful for letting text inherit color property from its container
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
+  letterSpacing?: keyof Theme['typography']['letterSpacings'];
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
+  opacity?: number;
   /**
    * Web only
    */
-  as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  as?: As;
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   truncateAfterLines?: number;
   className?: string;
@@ -41,7 +55,7 @@ export type BaseTextProps = {
    * React Native only
    */
   numberOfLines?: number;
-  componentName?: 'text' | 'title' | 'heading' | 'code';
+  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code' | 'display';
 } & TestID &
   StyledPropsBlade;
 
@@ -54,7 +68,13 @@ export type StyledBaseTextProps = Pick<
   | 'fontStyle'
   | 'textDecorationLine'
   | 'lineHeight'
+  | 'letterSpacing'
   | 'as'
   | 'textAlign'
   | 'numberOfLines'
+  | 'truncateAfterLines'
+  | 'wordBreak'
+  | 'opacity'
 > & { theme: Theme };
+
+export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';

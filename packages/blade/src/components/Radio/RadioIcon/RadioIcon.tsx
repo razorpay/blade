@@ -5,10 +5,12 @@ import { radioIconColors, radioSizes } from '../radioTokens';
 import type { RadioProps } from '../Radio';
 import { RadioIconWrapper } from './RadioIconWrapper';
 import { Fade } from './Fade';
+import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
-import { getIn, makeSpace } from '~utils';
+import { makeSpace } from '~utils/makeSpace';
+import { metaAttribute } from '~utils/metaAttribute';
 
 export type RadioIconProps = {
   isDisabled?: boolean;
@@ -39,7 +41,8 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative, size }: RadioIconProps) 
   let variant: 'default' | 'disabled' | 'negative' = 'default';
   if (isDisabled) variant = 'disabled';
   if (isNegative) variant = 'negative';
-  const dotColor = getIn(theme, radioIconColors.variants[variant].dot[state]);
+  const dotColorToken = radioIconColors.variants[variant].dot[state];
+  const dotColor = getIn(theme, dotColorToken);
 
   return (
     <RadioIconWrapper
@@ -47,6 +50,7 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative, size }: RadioIconProps) 
       isDisabled={isDisabled}
       isNegative={isNegative}
       isChecked={checked}
+      {...metaAttribute({ name: 'radio-icon-wrapper' })}
     >
       <Fade show={checked} styles={{ position: 'absolute', display: 'flex' }}>
         <CheckedIcon size={size} color={dotColor} />

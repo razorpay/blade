@@ -1,7 +1,8 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import { Linking } from 'react-native';
+import type { BaseLinkProps } from '../BaseLink';
 import BaseLink from '../BaseLink';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
 
 jest.mock('react-native/Libraries/Linking/Linking', () => ({
@@ -11,6 +12,16 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const colors: BaseLinkProps['color'][] = [
+  'primary',
+  'white',
+  'positive',
+  'negative',
+  'notice',
+  'information',
+  'neutral',
+];
 
 describe('<BaseLink />', () => {
   it('should render link with default properties', () => {
@@ -176,210 +187,28 @@ describe('<BaseLink />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render positive intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="positive" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
+  colors.forEach((color) => {
+    it(`should render ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { toJSON } = renderWithTheme(<BaseLink color={color}>{linkText}</BaseLink>);
+      expect(toJSON()).toMatchSnapshot();
+    });
 
-  it('should render disabled positive intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="positive" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render positive intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="positive" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled positive intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="positive" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render negative intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="negative" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled negative intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="negative" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render negative intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="negative" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled negative intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="negative" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render information intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="information" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled information intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="information" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render information intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="information" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled information intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="information" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render notice intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="notice" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled notice intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="notice" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render notice intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="notice" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled notice intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="notice" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render neutral intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="neutral" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled neutral intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="neutral" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render neutral intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="neutral" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled neutral intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { toJSON } = renderWithTheme(
-      <BaseLink intent="neutral" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(toJSON()).toMatchSnapshot();
+    it(`should render disabled ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { toJSON } = renderWithTheme(
+        <BaseLink color={color} isDisabled={true}>
+          {linkText}
+        </BaseLink>,
+      );
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should have accessibilityLabel', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
-      <BaseLink accessibilityLabel="Info" icon={InfoIcon}>
+      <BaseLink accessibilityProps={{ label: 'Info' }} icon={InfoIcon}>
         {linkText}
       </BaseLink>,
     );

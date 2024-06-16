@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Utils/makeBorderSize" />
+
+## `makeBorderSize`
+
+Border width & radius sizes in our theme are stored as plain numbers or percentages but they need to be converted into platform specific units before we can use them.
+`makeBorderSize` converts numeric border size tokens into `px` but keeps percentage tokens as is for both web & react native.
+
+For example, `makeBorderSize(8)` returns `'8px'` but `makeBorderSize('50%')` returns `'50%'`.
+
+> Should be used only with Blade's [Border tokens](?path=/story/tokens-border--page)
+
+```tsx
+const makeBorderSize = (size: number) => string;
+```
+
+### Example
+
+```tsx
+import { makeBorderSize } from '@razorpay/blade/utils';
+import styled from 'styled-components';
+
+const CustomComponent = styled.div`
+  border-width: ${({ theme }) => makeBorderSize(theme.border.width.thick)}; // '1.5px'
+  border-radius: ${({ theme }) => makeBorderSize(theme.border.radius.round)}; // '50%'
+`;
+```

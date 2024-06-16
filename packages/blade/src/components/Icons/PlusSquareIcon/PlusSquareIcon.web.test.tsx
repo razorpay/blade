@@ -1,10 +1,10 @@
 import PlusSquareIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<PlusSquareIcon />', () => {
   it('should render PlusSquareIcon', () => {
     const { container } = renderWithTheme(
-      <PlusSquareIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <PlusSquareIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

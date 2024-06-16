@@ -1,10 +1,10 @@
-import LockIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import LockIcon from './';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<LockIcon />', () => {
   it('should render LockIcon', () => {
     const { container } = renderWithTheme(
-      <LockIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <LockIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

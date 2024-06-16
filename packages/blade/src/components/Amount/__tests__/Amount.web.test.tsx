@@ -1,15 +1,18 @@
-import {
-  addCommas,
-  Amount,
-  formatAmountWithSuffix,
-  getFlooredFixed,
-  getHumanizedAmount,
-} from '../Amount';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import { setState } from '@razorpay/i18nify-js';
+import { I18nProvider } from '@razorpay/i18nify-react';
+import type { AmountProps } from '../Amount';
+import { Amount, formatAmountWithSuffix } from '../Amount';
+import { AMOUNT_SUFFIX_TEST_SET } from './mock';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
+const I18nAmountWrapper = (args: AmountProps & { locale?: string }): JSX.Element => {
+  return (
+    <I18nProvider initData={{ locale: args.locale }}>
+      <Amount {...args} />
+    </I18nProvider>
+  );
+};
 
 describe('<Amount />', () => {
   it('should render Amount with default props', () => {
@@ -24,108 +27,196 @@ describe('<Amount />', () => {
   });
 
   it('should throw an error when a string is passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     // @ts-expect-error testing failure case when value is passed as a string
-    expect(() => renderWithTheme(<Amount value={'10000'} />)).toThrow(
+    expect(() => renderWithTheme(<Amount value="10000" />)).toThrow(
       '[Blade: Amount]: `value` prop must be of type `number` for Amount.',
     );
+    mockConsoleError.mockRestore();
+  });
+
+  it('should throw an error when invalid type and size is passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="display" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="display"',
+    );
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="heading" size="xsmall" />)).toThrow(
+      '[Blade: Amount]: size="xsmall" is not allowed with type="heading"',
+    );
+    mockConsoleError.mockRestore();
+
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="body" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="body"',
+    );
+    mockConsoleError.mockRestore();
   });
 
   it('should render body-small size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-small" value={1000} />);
+    const { container } = renderWithTheme(<Amount type="body" size="small" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-small-bold size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-small-bold" value={1000} />);
+    const { container } = renderWithTheme(
+      <Amount type="body" size="small" weight="semibold" value={1000} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-medium size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-medium" value={1000} />);
+    const { container } = renderWithTheme(<Amount type="body" size="medium" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-medium-bold size Amount', () => {
     const { container } = renderWithTheme(
       <>
-        <Amount size="body-medium" value={1000} />
-        <Amount size="body-medium-bold" value={1000} />
-        <Amount size="body-small" value={1000} />
-        <Amount size="body-small-bold" value={1000} />
-        <Amount size="heading-large" value={1000} />
-        <Amount size="heading-large-bold" value={1000} />
-        <Amount size="heading-small" value={1000} />
-        <Amount size="heading-small-bold" value={1000} />
-        <Amount size="title-medium" value={1000} />
+        <Amount type="body" size="medium" value={1000} />
+        <Amount type="body" size="medium" weight="semibold" value={1000} />
+        <Amount type="body" size="small" value={1000} />
+        <Amount type="body" size="small" weight="semibold" value={1000} />
+        <Amount type="heading" size="large" value={1000} />
+        <Amount type="heading" size="large" weight="semibold" value={1000} />
+        <Amount type="heading" size="small" value={1000} />
+        <Amount type="heading" size="small" weight="semibold" value={1000} />
+        <Amount type="display" size="medium" value={1000} />
       </>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render isStrikethrough={true}', () => {
+    const { container } = renderWithTheme(<Amount isStrikethrough={true} value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render currencyIndicator="currency-symbol"', () => {
+    const { container } = renderWithTheme(
+      <Amount currencyIndicator="currency-symbol" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render currencyIndicator="currency-code"', () => {
+    const { container } = renderWithTheme(
+      <Amount currencyIndicator="currency-code" value={1000} />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should render amount with Humanize value', () => {
     const { container } = renderWithTheme(
-      <Amount size="title-medium" suffix="humanize" value={1000.22} />,
+      <Amount type="display" size="medium" suffix="humanize" value={1000.22} />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should render positive intent Amount ', () => {
-    const { container } = renderWithTheme(<Amount intent="positive" value={1000} />);
+    const { container } = renderWithTheme(
+      <Amount color="feedback.text.positive.intense" value={1000} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('should render negative intent Amount ', () => {
     const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="negative" value={1000} />,
+      <Amount isAffixSubtle={false} color="feedback.text.negative.intense" value={1000} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render MYR currency Amount ', () => {
-    const { container } = renderWithTheme(<Amount currency="MYR" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
+  for (const currency of ['USD', 'MYR', 'AED']) {
+    it(`should render ${currency} currency Amount`, () => {
+      const { container } = renderWithTheme(
+        <Amount currency={currency as AmountProps['currency']} value={1000} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  }
 
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(<Amount value={1000} />);
     await assertAccessible(container);
   });
 
-  it('should check if getFlooredFixed is returning the floored value ', () => {
-    expect(getFlooredFixed(1000.22, 2)).toBe(1000.22);
-  });
-
-  it('should check if addCommas is returning the value with commas', () => {
-    expect(addCommas(1000.22, 'INR')).toBe('1,000.22');
-  });
-
-  it('should check if getHumanizedAmount is returning the humanized value', () => {
-    expect(getHumanizedAmount(1000.22, 'INR')).toBe('1k');
-    expect(getHumanizedAmount(1000000, 'INR')).toBe('10L');
-    expect(getHumanizedAmount(10000000, 'INR')).toBe('1Cr');
-    expect(getHumanizedAmount(1000.22, 'MYR')).toBe('1K');
-    expect(getHumanizedAmount(1000000, 'MYR')).toBe('1M');
-    expect(getHumanizedAmount(10000000, 'MYR')).toBe('10M');
-  });
-
   it('should check if formatAmountWithSuffix is returning the right value for humanize decimals and none', () => {
-    expect(formatAmountWithSuffix({ value: 1000.22, currency: 'INR', suffix: 'humanize' })).toBe(
-      '1k',
-    );
-    expect(formatAmountWithSuffix({ value: 1000000, currency: 'INR', suffix: 'decimals' })).toBe(
-      '10,00,000',
-    );
-    expect(formatAmountWithSuffix({ value: 10000000, currency: 'INR', suffix: 'none' })).toBe(
-      '1,00,00,000',
-    );
-    expect(formatAmountWithSuffix({ value: 1000.22, currency: 'MYR', suffix: 'humanize' })).toBe(
-      '1K',
-    );
-    expect(formatAmountWithSuffix({ value: 1000000, currency: 'MYR', suffix: 'decimals' })).toBe(
-      '1,000,000',
-    );
-    expect(formatAmountWithSuffix({ value: 10000000, currency: 'MYR', suffix: 'none' })).toBe(
-      '10,000,000',
-    );
+    setState({ locale: 'en-IN' });
+    expect(formatAmountWithSuffix({ value: 1000.22, suffix: 'humanize' })).toEqual({
+      formatted: '1T',
+    });
+    expect(formatAmountWithSuffix({ value: 1000000.0, suffix: 'decimals' })).toEqual({
+      decimal: '.',
+      formatted: '10,00,000.00',
+      fraction: '00',
+      integer: '10,00,000',
+      isPrefixSymbol: false,
+      rawParts: [
+        { type: 'integer', value: '10' },
+        { type: 'group', value: ',' },
+        { type: 'integer', value: '00' },
+        { type: 'group', value: ',' },
+        { type: 'integer', value: '000' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '00' },
+      ],
+    });
+    expect(formatAmountWithSuffix({ value: 10000000, suffix: 'none' })).toEqual({
+      formatted: '1,00,00,000',
+    });
+    // Related issue - https://github.com/razorpay/blade/issues/1572
+    expect(formatAmountWithSuffix({ value: 2.07, suffix: 'decimals' })).toEqual({
+      decimal: '.',
+      formatted: '2.07',
+      fraction: '07',
+      integer: '2',
+      isPrefixSymbol: false,
+      rawParts: [
+        { type: 'integer', value: '2' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '07' },
+      ],
+    });
+    expect(formatAmountWithSuffix({ value: 2.077, suffix: 'decimals' })).toEqual({
+      decimal: '.',
+      formatted: '2.08',
+      fraction: '08',
+      integer: '2',
+      isPrefixSymbol: false,
+      rawParts: [
+        { type: 'integer', value: '2' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '08' },
+      ],
+    });
+    expect(formatAmountWithSuffix({ value: 2.3, suffix: 'decimals' })).toEqual({
+      decimal: '.',
+      formatted: '2.30',
+      fraction: '30',
+      integer: '2',
+      isPrefixSymbol: false,
+      rawParts: [
+        { type: 'integer', value: '2' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '30' },
+      ],
+    });
+  });
+
+  AMOUNT_SUFFIX_TEST_SET.forEach((item) => {
+    it(`should render ${item.output} in Amount for value:${item.value} & suffix:${item.suffix}`, () => {
+      const { getByTestId } = renderWithTheme(
+        <I18nAmountWrapper
+          value={item.value}
+          suffix={item.suffix}
+          testID="amount-test"
+          locale={item.locale}
+        />,
+      );
+
+      expect(getByTestId('amount-test')).toHaveTextContent(item.output);
+    });
   });
 });

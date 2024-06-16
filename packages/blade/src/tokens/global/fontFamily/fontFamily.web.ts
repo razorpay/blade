@@ -1,9 +1,8 @@
 import type { FontFamily } from './types';
 
-const fontFamily: FontFamily = {
-  text:
-    'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  code: 'monospace',
+// Fallbacks here are defined in `packages/blade/fonts.css`
+export const fontFamily: FontFamily = {
+  text: '"Inter", "Inter Fallback Arial", Arial',
+  heading: '"TASA Orbiter", "TASA Orbiter Fallback Arial", Arial',
+  code: '"Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace',
 };
-
-export default fontFamily;

@@ -1,63 +1,97 @@
 /* eslint-disable react/display-name */
 import styled from 'styled-components';
-
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { StyledIconButtonProps } from './types';
-import { castWebType, metaAttribute, makeAccessible, makeMotionTime, MetaConstants } from '~utils';
-import type { ColorContrastTypes } from '~tokens/theme/theme';
+import { castWebType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { SubtleOrIntense } from '~tokens/theme/theme';
+import { makeAccessible } from '~utils/makeAccessible';
+import { makeMotionTime } from '~utils/makeMotionTime';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 type StyledButtonProps = {
-  contrast: ColorContrastTypes;
+  emphasis: SubtleOrIntense;
 };
 
 const StyledButton = styled.button<StyledButtonProps>((props) => {
-  const { theme, contrast } = props;
-  const iconColorToken = theme.colors.surface.action.icon;
-  const contrastToken = contrast === 'high' ? 'highContrast' : 'lowContrast';
+  const { theme, emphasis } = props;
   const motionToken = theme.motion;
+
+  const emphasisColor = emphasis === 'intense' ? 'gray' : 'staticWhite';
 
   return {
     border: 'none',
-    cursor: 'pointer',
+    cursor: props.disabled ? 'not-allowed' : 'pointer',
     padding: 0,
     borderRadius: theme.border.radius.small,
     background: 'transparent',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: iconColorToken.default[contrastToken],
+    color: props.disabled
+      ? theme.colors.interactive.icon[emphasisColor].disabled
+      : theme.colors.interactive.icon[emphasisColor].muted,
     transitionProperty: 'color, box-shadow',
     transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
     transitionTimingFunction: motionToken.easing.standard.effective as string,
 
     '&:hover': {
-      color: iconColorToken.hover[contrastToken],
+      color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
 
-    '&:focus': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-      color: iconColorToken.focus[contrastToken],
+    '&:focus-visible': {
+      ...getFocusRingStyles({ theme }),
+      color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
 
     '&:active': {
-      color: iconColorToken.active[contrastToken],
+      color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
   };
 });
 
 const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonProps>(
-  ({ icon: Icon, onClick, size, contrast, accessibilityLabel, testID }, ref): ReactElement => (
+  (
+    {
+      icon: Icon,
+      onClick,
+      size,
+      emphasis,
+      accessibilityLabel,
+      isDisabled,
+      testID,
+      onBlur,
+      onFocus,
+      onMouseLeave,
+      onMouseMove,
+      onPointerDown,
+      onPointerEnter,
+      onTouchEnd,
+      onTouchStart,
+      tabIndex,
+    },
+    ref,
+  ): ReactElement => (
     <StyledButton
       ref={ref}
-      onClick={onClick}
-      contrast={contrast}
+      onClick={castWebType(onClick)}
+      emphasis={emphasis}
       type="button"
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
+      onTouchEnd={onTouchEnd}
+      onTouchStart={onTouchStart}
+      disabled={isDisabled}
+      tabIndex={tabIndex}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
     >
-      <Icon size={size} color="currentColor" />
+      <Icon size={size} color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'} />
     </StyledButton>
   ),
 );

@@ -1,0 +1,70 @@
+import { Meta, DocsContainer } from '@storybook/addon-docs';
+import { JSONTree } from 'react-json-tree';
+import { useTheme, BladeProvider, Box, Text } from '../../src/components';
+import { bladeTheme } from '../../src/tokens';
+
+<Meta
+  title="Tokens/Theme"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        const colorScheme = context.store.globals.globals.colorScheme;
+        return (
+          <DocsContainer context={context}>
+            <BladeProvider key={colorScheme} themeTokens={bladeTheme} colorScheme={colorScheme}>
+              {children}
+            </BladeProvider>
+          </DocsContainer>
+        );
+      },
+    },
+  }}
+/>
+
+# 🔭 Blade's Theme
+
+Explore Blade's theme tokens.
+
+export const ThemeExplorer = () => {
+  const { theme } = useTheme();
+  return (
+    <Box paddingX="spacing.5" paddingY="spacing.2" backgroundColor="surface.background.gray.moderate">
+      <JSONTree
+        data={theme}
+        hideRoot
+        valueRenderer={(valueAsString, value) => {
+          if (value?.startsWith?.('hsla')) {
+            return (
+              <Box display="inline-flex" gap="spacing.5">
+                <div style={{ backgroundColor: value, height: '20px', width: '20px' }} />
+                <Text>{value}</Text>
+              </Box>
+            );
+          }
+          return <Text display="inline">{value}</Text>;
+        }}
+        theme={{
+          scheme: 'Material Lighter',
+          base00: theme.colors.surface.background.gray.moderate,
+          base01: '#f0f0f1',
+          base02: '#e5e5e6',
+          base03: theme.colors.surface.text.gray.muted,
+          base04: '#696c77',
+          base05: '#383a42',
+          base06: '#202227',
+          base07: '#090a0b',
+          base08: '#ca1243',
+          base09: '#d75f00',
+          base0A: '#c18401',
+          base0B: theme.colors.feedback.text.positive.intense,
+          base0C: '#0184bc',
+          base0D: theme.colors.interactive.text.primary.default,
+          base0E: '#a626a4',
+          base0F: '#986801',
+        }}
+      />
+    </Box>
+  );
+};
+
+<ThemeExplorer />

@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import breakpoints from '../../tokens/global/breakpoints';
 import { setupMatchMediaMock } from '../mocks/setupMatchMediaMock';
 import { useBreakpoint } from './';
+import { breakpoints } from '~tokens/global';
 
 describe('useBreakpoint', () => {
   it('should detect mobile and return smallest breakpoint of mobile devices', () => {

@@ -1,21 +1,33 @@
 import React from 'react';
+import {
+  labelLeftMarginRight,
+  labelMarginBottom,
+  labelOptionalIndicatorTextSize,
+  labelTextSize,
+  labelWidth,
+} from './formTokens';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
-import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType, makeSize, makeSpace, useBreakpoint } from '~utils';
+import { getPlatformType, makeSize, useBreakpoint } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import type { ColorContrastTypes } from '~tokens/theme/theme';
-import size from '~tokens/global/size';
+import { makeSpace } from '~utils/makeSpace';
+import { size as sizeToken } from '~tokens/global';
+import getIn from '~utils/lodashButBetter/get';
 
 type CommonProps = {
   as: 'span' | 'label';
   position?: 'top' | 'left';
   necessityIndicator?: 'required' | 'optional' | 'none';
   accessibilityText?: string;
-  children: string;
+  children: string | undefined;
   id?: string;
-  contrast?: ColorContrastTypes;
+  /**
+   * Sets the size of the label
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
 };
 
 type LabelProps = CommonProps & {
@@ -34,7 +46,7 @@ export type FormInputLabelProps = {
   /**
    * Label to be shown for the input field
    */
-  label: string;
+  label?: string;
   /**
    * Desktop only prop. Default value on mobile will be `top`
    */
@@ -53,7 +65,7 @@ const FormLabel = ({
   children,
   id,
   htmlFor,
-  contrast = 'low',
+  size = 'medium',
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -66,23 +78,24 @@ const FormLabel = ({
 
   if (necessityIndicator === 'optional') {
     necessityLabel = (
-      <Text variant="caption" weight="regular" type="placeholder">
+      <Text
+        variant="caption"
+        size={labelOptionalIndicatorTextSize[size]}
+        color="surface.text.gray.muted"
+      >
         (optional)
       </Text>
     );
   }
   if (necessityIndicator === 'required') {
     necessityLabel = (
-      <BaseText
-        lineHeight={100}
-        fontFamily="text"
-        fontStyle="normal"
-        fontSize={75}
-        fontWeight="bold"
-        color="feedback.text.negative.lowContrast"
+      <Text
+        variant="body"
+        size={isLabelLeftPositioned ? 'medium' : 'small'}
+        color="feedback.text.negative.intense"
       >
         *
-      </BaseText>
+      </Text>
     );
   }
 
@@ -100,13 +113,15 @@ const FormLabel = ({
       flexDirection="row"
       alignItems="center"
       flexWrap="wrap"
+      maxHeight={makeSpace(sizeToken[36])}
     >
       <Text
-        type="subdued"
         variant="body"
-        contrast={contrast}
-        size={isLabelLeftPositioned ? 'medium' : 'small'}
-        weight="bold"
+        size={labelTextSize[isLabelLeftPositioned ? 'left' : 'top'][size]}
+        color="surface.text.gray.subtle"
+        truncateAfterLines={2}
+        weight="semibold"
+        wordBreak={isLabelLeftPositioned ? 'break-word' : undefined}
       >
         {children}
       </Text>
@@ -127,7 +142,7 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = isLabelLeftPositioned && isDesktop ? makeSize(size[120]) : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : 'auto';
 
   return (
     <Component
@@ -135,12 +150,16 @@ const FormLabel = ({
       style={{
         width,
         flexShrink: 0,
-        marginRight: makeSpace(theme.spacing[5]),
-        wordBreak: 'break-all',
+        marginRight: isLabelLeftPositioned
+          ? makeSpace(getIn(theme, labelLeftMarginRight[size]))
+          : makeSpace(getIn(theme, 'spacing.0')),
       }}
       id={id}
+      {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
-      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</BaseBox>
+      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}>
+        {textNode}
+      </BaseBox>
     </Component>
   );
 };

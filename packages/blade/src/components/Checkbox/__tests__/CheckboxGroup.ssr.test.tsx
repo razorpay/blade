@@ -1,7 +1,7 @@
 import React from 'react';
-import renderWithSSR from '../../../_helpers/testing/renderWithSSR.web';
 import { Checkbox } from '../Checkbox';
 import { CheckboxGroup } from '../CheckboxGroup';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<CheckboxGroup />', () => {
   it('should render errorText when validationState is set to error', () => {

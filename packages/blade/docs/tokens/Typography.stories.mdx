@@ -1,28 +1,17 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
-import { useTheme, BladeProvider } from '../../src//components';
-import { paymentTheme, bankingTheme } from '../../src//tokens';
+import { useTheme, BladeProvider, Box, Button, ExternalLinkIcon } from '../../src//components';
+import { bladeTheme } from '../../src/tokens';
+import { makeTypographySize } from '../../src/utils';
 
 <Meta
   title="Tokens/Typography"
   parameters={{
     docs: {
       container: ({ children, context }) => {
-        const getThemeTokens = () => {
-          if (context.globals.themeTokenName === 'paymentTheme') {
-            return paymentTheme;
-          }
-          if (context.globals.themeTokenName === 'bankingTheme') {
-            return bankingTheme;
-          }
-          return null;
-        };
+        const colorScheme = context.store.globals.globals.colorScheme;
         return (
           <DocsContainer context={context}>
-            <BladeProvider
-              key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
-              themeTokens={getThemeTokens()}
-              colorScheme={context.globals.colorScheme}
-            >
+            <BladeProvider key={colorScheme} themeTokens={bladeTheme} colorScheme={colorScheme}>
               {children}
             </BladeProvider>
           </DocsContainer>
@@ -33,6 +22,19 @@ import { paymentTheme, bankingTheme } from '../../src//tokens';
 />
 
 # 🔡 Typography
+
+> These tokens should be used along with the [makeTypographySize util](?path=/story/utils-maketypographysize--page).
+
+<Box paddingBottom="spacing.6">
+  <Button
+    variant="tertiary"
+    href="https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=101-99618&mode=design&t=KdVVWtntizpKmsBt-0"
+    icon={ExternalLinkIcon}
+    target="_blank"
+  >
+    {'View on Figma'}
+  </Button>
+</Box>
 
 export const Typography = () => {
   const { theme } = useTheme();
@@ -84,7 +86,9 @@ export const Typography = () => {
           {Object.entries(theme.typography.fonts.size).map(([key, value]) => (
             <tr key={key}>
               <td>{`theme.typography.fonts.size.${key}`}</td>
-              <td style={{ fontSize: `${value}px`, padding: '16px' }}>Era of rising Fintech</td>
+              <td style={{ fontSize: makeTypographySize(value), padding: '16px' }}>
+                Era of rising Fintech
+              </td>
             </tr>
           ))}
         </tbody>

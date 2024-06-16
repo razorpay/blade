@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 type SnapPoints = [number, number, number];
 
 // Taken from:
@@ -54,4 +54,5 @@ function computeMaxContent(
   );
 }
 
-export { SnapPoints, computeMaxContent, computeMinContent, computeSnapPointBounds };
+export type { SnapPoints };
+export { computeMaxContent, computeMinContent, computeSnapPointBounds };

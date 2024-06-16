@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Title } from '@storybook/addon-docs';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { Text } from '../Typography';
 import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { Text } from '~components/Typography';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -17,19 +16,14 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Checkbox"
       componentDescription="Checkbox can be used in forms when a user needs to select multiple values from several options."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230354',
-      }}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75857-44078&t=ASvqFmFRXILEzPFG-1&scaling=min-zoom&page-id=13227%3A162974&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox showConsole>
         {`
         import { Checkbox } from '@razorpay/blade/components'
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           return (
             // Check console
             <Checkbox onChange={(e) => console.log(e.isChecked)}>
@@ -64,6 +58,7 @@ export default {
     children: 'Toggle checkbox',
     size: 'medium',
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
@@ -72,7 +67,7 @@ export default {
   },
 } as Meta<CheckboxProps>;
 
-const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = ({ children, ...args }) => {
+const CheckboxTemplate: StoryFn<typeof CheckboxComponent> = ({ children, ...args }) => {
   return <CheckboxComponent {...args}>{children}</CheckboxComponent>;
 };
 
@@ -110,6 +105,13 @@ Small.args = {
   size: 'small',
 };
 
+export const Large = CheckboxTemplate.bind({});
+Large.storyName = 'Large';
+Large.args = {
+  size: 'large',
+  helpText: 'Checkbox help text',
+};
+
 export const Indeterminate = CheckboxTemplate.bind({});
 Indeterminate.storyName = 'Indeterminate';
 Indeterminate.args = {
@@ -132,14 +134,14 @@ const ControlledAndUncontrolledComp = () => {
     </>
   );
 };
-const _ControlledAndUncontrolled: ComponentStory<typeof CheckboxComponent> = () => {
+const _ControlledAndUncontrolled: StoryFn<typeof CheckboxComponent> = () => {
   return <ControlledAndUncontrolledComp />;
 };
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
 
-export const checkboxRef: ComponentStory<typeof CheckboxComponent> = () => {
+export const checkboxRef: StoryFn<typeof CheckboxComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const checkboxRef = React.useRef<BladeElementRef>(null);
+  const checkboxRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="center">

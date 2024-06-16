@@ -1,0 +1,5771 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 8px;
+}
+
+.c8.c8.c8.c8.c8 {
+  text-align: left;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c7.c7.c7.c7.c7 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="16px"
+              viewBox="0 0 24 24"
+              width="16px"
+            >
+              <path
+                d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
+                data-blade-component="svg-path"
+                fill="hsla(0, 0%, 100%, 1)"
+              />
+            </svg>
+          </div>
+          <div
+            class="c6"
+            data-blade-component="base-text"
+          >
+            Payout
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c7"
+      data-blade-component="base-box"
+    />
+    <div
+      class=""
+      data-blade-component="dropdown"
+    >
+      <div
+        class="c8"
+        data-blade-component="base-box"
+      >
+        <button
+          aria-controls="dropdown-1-actionlist"
+          aria-expanded="false"
+          aria-haspopup="menu"
+          class="c1"
+          data-blade-component="button"
+          role="button"
+          type="button"
+        >
+          <div
+            class=" c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c3 c4"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c5"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                    data-blade-component="svg-path"
+                    fill="hsla(0, 0%, 100%, 1)"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div
+                class="c6"
+                data-blade-component="base-text"
+              >
+                More
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 48px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 32px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 28px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(227,100%,59%,0.18);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,0.09);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled negative color primary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(4,74%,49%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled negative color secondary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(4,74%,49%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled positive color primary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(150,100%,32%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled positive color secondary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(150,100%,32%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled primary color primary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(227,100%,59%,0.18);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled primary color secondary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,0.18);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(227,100%,59%,0.18);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(211,20%,52%,0.09);
+  border-color: hsla(214,40%,92%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(211,20%,52%,0.09);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled white color primary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.32);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.32);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.32);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.32);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,0%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled white color secondary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.32);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.32);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.32);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.32);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(0,0%,100%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render negative color primary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(4,74%,49%,1);
+  border-color: hsla(4,74%,49%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(4,77%,40%,1);
+  border-color: hsla(4,77%,40%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(4,77%,40%,1);
+  border-color: hsla(4,77%,40%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(4,77%,40%,1);
+  border-color: hsla(4,77%,40%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(4,74%,49%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,1);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(4,74%,49%,0.18);
+  border-color: hsla(4,74%,49%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(4,74%,49%,0.18);
+  border-color: hsla(4,74%,49%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(4,74%,49%,0.18);
+  border-color: hsla(4,74%,49%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(4,74%,49%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(4,74%,49%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(4,74%,49%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render positive color primary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(150,100%,32%,1);
+  border-color: hsla(150,100%,32%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(150,100%,27%,1);
+  border-color: hsla(150,100%,27%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(150,100%,27%,1);
+  border-color: hsla(150,100%,27%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(150,100%,27%,1);
+  border-color: hsla(150,100%,27%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(150,100%,32%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,1);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(150,100%,32%,0.18);
+  border-color: hsla(150,100%,32%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(150,100%,32%,0.18);
+  border-color: hsla(150,100%,32%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(150,100%,32%,0.18);
+  border-color: hsla(150,100%,32%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(150,100%,32%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(150,100%,32%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render primary color primary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(227,100%,59%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(211,20%,52%,0.12);
+  border-color: hsla(214,28%,84%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(211,20%,52%,0.12);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(211,20%,52%,0.18);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render white color primary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(0,0%,100%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(0,0%,100%,0.8);
+  border-color: hsla(0,0%,100%,0.8);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(0,0%,100%,0.8);
+  border-color: hsla(0,0%,100%,0.8);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(0,0%,100%,0.8);
+  border-color: hsla(0,0%,100%,0.8);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,0%,0.72);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(0,0%,100%,1);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render white color secondary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.8);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.8);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.8);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.8);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(0,0%,100%,0.8);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(0,0%,100%,0.8);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(0,0%,100%,0.32);
+  border-color: hsla(0,0%,100%,0.32);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(0,0%,100%,0.32);
+  border-color: hsla(0,0%,100%,0.32);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(0,0%,100%,0.32);
+  border-color: hsla(0,0%,100%,0.32);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(0,0%,100%,0.18);
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(211,20%,52%,0.18);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c6"
+      data-blade-component="base-box"
+    />
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;

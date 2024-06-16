@@ -2,8 +2,9 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible } from '~utils';
-import { useStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledBaseText = styled.Text<StyledBaseTextProps>(
   ({
@@ -13,30 +14,33 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
     fontWeight,
     fontStyle,
     textDecorationLine,
+    numberOfLines,
     lineHeight,
+    letterSpacing,
     textAlign,
     as,
+    opacity,
     ...props
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
-    if (as) {
-      throw new Error(`[Blade: BaseText]: "as" prop is not supported for BaseText on React Native`);
-    } else {
-      return {
-        ...getBaseTextStyles({
-          color,
-          fontFamily,
-          fontSize,
-          fontWeight,
-          fontStyle,
-          textDecorationLine,
-          lineHeight,
-          textAlign,
-          theme: props.theme,
-        }),
-        ...styledPropsCSSObject,
-      };
-    }
+
+    return {
+      ...getBaseTextStyles({
+        color,
+        fontFamily,
+        fontSize,
+        fontWeight,
+        fontStyle,
+        textDecorationLine,
+        numberOfLines,
+        lineHeight,
+        letterSpacing,
+        textAlign,
+        opacity,
+        theme: props.theme,
+      }),
+      ...styledPropsCSSObject,
+    };
   },
 );
 
@@ -49,20 +53,20 @@ export const BaseText = ({
   fontStyle,
   textDecorationLine,
   lineHeight,
-  as,
   textAlign,
   children,
   truncateAfterLines,
+  opacity,
   className,
   style,
   accessibilityProps = {},
-  componentName,
+  componentName = MetaConstants.BaseText,
   testID,
   ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
     <StyledBaseText
-      {...styledProps}
+      {...getStyledProps(styledProps)}
       color={color}
       fontFamily={fontFamily}
       fontSize={fontSize}
@@ -70,9 +74,10 @@ export const BaseText = ({
       fontStyle={fontStyle}
       textDecorationLine={textDecorationLine}
       lineHeight={lineHeight}
-      as={as}
+      as={undefined}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
+      opacity={opacity}
       className={className}
       style={style}
       id={id}

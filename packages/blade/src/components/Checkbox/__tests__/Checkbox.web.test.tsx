@@ -4,7 +4,7 @@ import userEvents from '@testing-library/user-event';
 import React from 'react';
 import { Checkbox } from '../Checkbox';
 import { Link } from '~components/Link';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
 
 describe('<Checkbox />', () => {
@@ -135,17 +135,17 @@ describe('<Checkbox />', () => {
           <Checkbox isChecked={checked} onChange={({ isChecked }) => setChecked(isChecked)}>
             {labelText}
           </Checkbox>
-          <p data-testid="state">{checked ? 'checked' : 'unchecked'}</p>
+          <p>{checked ? 'checked' : 'unchecked'}</p>
         </>
       );
     };
-    const { getByTestId, getByLabelText } = renderWithTheme(<Example />);
+    const { getByText, getByLabelText } = renderWithTheme(<Example />);
 
-    expect(getByTestId('state')).toHaveTextContent('unchecked');
+    expect(getByText('unchecked')).toBeInTheDocument();
     await user.click(getByLabelText(labelText));
-    expect(getByTestId('state')).toHaveTextContent('checked');
+    expect(getByText('checked')).toBeInTheDocument();
     await user.click(getByLabelText(labelText));
-    expect(getByTestId('state')).toHaveTextContent('unchecked');
+    expect(getByText('unchecked')).toBeInTheDocument();
   });
 
   it('should set to indeterminate state of checkbox', () => {

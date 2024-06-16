@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    borderBottomColor="surface.border.gray.normal"
+    data-blade-component="box"
+    style={
+      [
+        {
+          "borderBottomColor": "hsla(211, 27%, 76%, 1)",
+          "borderBottomStyle": "solid",
+        },
+      ]
+    }
+  >
+    I am Visible
+  </View>
+</View>
+`;
+
+exports[`<Box /> should apply borderColor prop to all borders 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    borderColor="surface.border.gray.normal"
+    data-blade-component="box"
+    style={
+      [
+        {
+          "borderColor": "hsla(211, 27%, 76%, 1)",
+          "borderStyle": "solid",
+        },
+      ]
+    }
+  >
+    I am Visible
+  </View>
+</View>
+`;

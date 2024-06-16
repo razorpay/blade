@@ -2,7 +2,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import type { SelectorLabelProps } from './types';
-import { makeSpace, metaAttribute } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
+import { makeSpace } from '~utils/makeSpace';
 
 const StyledSelectorLabel = styled.Pressable(({ theme }) => ({
   display: 'flex',
@@ -15,9 +16,16 @@ const SelectorLabel = ({
   children,
   inputProps,
   testID,
+  onMouseDown,
+  onMouseUp,
 }: SelectorLabelProps): React.ReactElement => {
   return (
-    <StyledSelectorLabel {...inputProps} {...metaAttribute({ testID })}>
+    <StyledSelectorLabel
+      onPressIn={onMouseDown}
+      onPressOut={onMouseUp}
+      {...inputProps}
+      {...metaAttribute({ testID })}
+    >
       {children}
     </StyledSelectorLabel>
   );

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import { Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
@@ -7,14 +7,15 @@ import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
 import type { VisuallyHiddenProps } from './types';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentDescription="The VisuallyHidden component makes content hidden from sighted users but available for screen reader users."
       componentName="VisuallyHidden"
+      apiDecisionLink={null}
     >
       <Link
         withArrow={true}
@@ -31,7 +32,7 @@ const Page = (): ReactElement => {
         {`
           import { VisuallyHidden, Checkbox, Text, Box } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <Box>
                 <Text>If you focus on checkbox below with voice over enabled, you will hear "Hidden Label" announcement</Text>
@@ -50,6 +51,7 @@ const Page = (): ReactElement => {
 const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
   title: 'Components/Accessibility/VisuallyHidden',
   component: VisuallyHiddenComponent,
+  tags: ['autodocs'],
   args: { children: 'Toggle dark mode' },
   parameters: {
     docs: {
@@ -58,7 +60,7 @@ const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
   },
 };
 
-const VisuallyHiddenTemplate: ComponentStory<typeof VisuallyHiddenComponent> = (args) => {
+const VisuallyHiddenTemplate: StoryFn<typeof VisuallyHiddenComponent> = (args) => {
   return (
     <>
       <Text>

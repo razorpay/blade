@@ -7,9 +7,12 @@ type BottomSheetContextProps = {
   headerHeight: number;
   contentHeight: number;
   footerHeight: number;
+  isHeaderFloating: boolean;
   setContentHeight: React.Dispatch<React.SetStateAction<number>>;
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
+  setHasBodyPadding: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsHeaderEmpty: React.Dispatch<React.SetStateAction<boolean>>;
   /**
    * Closes the bottomsheet
    */
@@ -52,9 +55,12 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   headerHeight: 0,
   contentHeight: 0,
   footerHeight: 0,
+  isHeaderFloating: false,
   setContentHeight: () => {},
   setHeaderHeight: () => {},
   setFooterHeight: () => {},
+  setHasBodyPadding: () => {},
+  setIsHeaderEmpty: () => {},
   close: () => {},
   scrollRef: null,
   bind: null,
@@ -71,8 +77,7 @@ const useBottomSheetContext = (): BottomSheetContextProps => {
 
 type BottomSheetAndDropdownGlueContext = {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  selectionType: 'single' | 'multiple';
+  hasAutoCompleteInBottomSheetHeader: boolean;
   /**
    * This flag is true when <Dropdown> contains or renders <BottomSheet> inside of it
    * We can use this flag to alter behavior or styles of Dropdown
@@ -82,6 +87,7 @@ type BottomSheetAndDropdownGlueContext = {
    * This is the setter for the flag, we set this flag to true inside <BottomSheet>
    */
   setDropdownHasBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
+  onBottomSheetDismiss: () => void;
 } | null;
 
 const BottomSheetAndDropdownGlueContext = React.createContext<BottomSheetAndDropdownGlueContext>(
@@ -99,9 +105,9 @@ const useBottomSheetAndDropdownGlue = (): BottomSheetAndDropdownGlueContext => {
   return state;
 };
 
+export type { BottomSheetContextProps };
 export {
   BottomSheetContext,
-  BottomSheetContextProps,
   useBottomSheetContext,
   BottomSheetAndDropdownGlueContext,
   useBottomSheetAndDropdownGlue,

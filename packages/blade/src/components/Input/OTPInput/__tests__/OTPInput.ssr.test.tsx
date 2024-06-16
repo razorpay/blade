@@ -1,5 +1,5 @@
 import { OTPInput } from '..';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<OTPInput />', () => {
   it('should have hidden input for form submissions', () => {

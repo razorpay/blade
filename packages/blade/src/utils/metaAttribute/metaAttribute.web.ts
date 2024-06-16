@@ -6,7 +6,10 @@ const metaAttribute = ({
 }: {
   name?: string;
   testID?: string;
-}): Record<string, string> => {
+}): {
+  'data-blade-component'?: string;
+  'data-testid'?: string;
+} => {
   return {
     ...(name ? { [`data-${MetaConstants.Component}`]: name } : {}),
     ...(testID ? { [`data-testid`]: testID } : {}),

@@ -1,70 +1,77 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
+import type { ButtonTypography } from './buttonTokens';
 import {
-  buttonIconOnlyPadding,
+  textColor,
+  backgroundColor,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   buttonSizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
-  textPadding,
+  buttonIconPadding,
   buttonPadding,
+  buttonIconOnlyHeightWidth,
 } from './buttonTokens';
+import type { BaseButtonStyleProps, IconColor } from './types';
+import AnimatedButtonContent from './AnimatedButtonContent';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import getIn from '~utils/lodashButBetter/get';
+import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
-import type { IconComponent, IconProps, IconSize } from '~components/Icons';
-import type { DurationString, EasingString } from '~tokens/global/motion';
-import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
+import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
+import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-
-import {
-  MetaConstants,
-  metaAttribute,
-  makeAccessible,
-  usePrevious,
-  makeSize,
-  makeSpace,
-  makeBorderSize,
-  getIn,
-} from '~utils';
-
+import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
+import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
-import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type {
-  DotNotationSpacingStringToken,
-  StringChildrenType,
-  TestID,
-} from '~src/_helpers/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { usePrevious } from '~utils/usePrevious';
+import { makeSize } from '~utils/makeSize';
+import { makeBorderSize } from '~utils/makeBorderSize';
+import type { AccessibilityProps } from '~utils/makeAccessible';
+import { makeAccessible } from '~utils/makeAccessible';
+import { makeSpace } from '~utils/makeSpace';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { BladeCommonEvents } from '~components/types';
+import { throwBladeError } from '~utils/logger';
 
 type BaseButtonCommonProps = {
+  href?: BaseLinkProps['href'];
+  target?: BaseLinkProps['target'];
+  rel?: BaseLinkProps['rel'];
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
+  onKeyDown?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  }>;
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
-  accessibilityLabel?: string;
+  accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
-  contrast?: 'low' | 'high';
-  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  BladeCommonEvents;
 
 /*
 Mandatory children prop when icon is not provided
@@ -88,158 +95,164 @@ type BaseButtonWithIconProps = BaseButtonCommonProps & {
 export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
 type BaseButtonColorTokenModifiers = {
-  property: 'background' | 'border' | 'text' | 'icon';
   variant: NonNullable<BaseButtonProps['variant']>;
-  state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
-  intent: BaseButtonProps['intent'];
-  contrast: BaseButtonProps['contrast'];
+  state: 'default' | 'hover' | 'focus' | 'disabled';
+  color: BaseButtonProps['color'];
 };
 
-/**
- * All possible icon colors, derived from `IconProps` minus `currentColor` because possible values should only be from tokens
- */
-type IconColor = Exclude<IconProps['color'], 'currentColor'>;
+const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
+  if (isReactNative()) {
+    return undefined; // as property doesn't work with react native
+  }
 
-const getColorToken = ({
+  if (href) {
+    return 'a';
+  }
+
+  return 'button';
+};
+
+export const getBackgroundColorToken = ({
   property,
   variant,
   state,
-  contrast,
-  intent,
-}: BaseButtonColorTokenModifiers):
-  | `action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
-  | `feedback.${NonNullable<
-      BaseButtonColorTokenModifiers['intent']
-    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${NonNullable<
-      BaseButtonColorTokenModifiers['contrast']
-    >}Contrast` => {
-  if (intent && contrast) {
-    // TODO: Add support for secondary & tertiary variants for feedback buttons here when a use-case is identified
-    return `feedback.${intent}.action.${property}.primary.${state}.${contrast}Contrast`;
+  color,
+}: BaseButtonColorTokenModifiers & {
+  property: 'background' | 'border';
+}): DotNotationToken<Theme['colors']> => {
+  const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
+  const tokens = backgroundColor(property);
+
+  if (color === 'white') {
+    return tokens.white[variant][_state];
   }
-  return `action.${property}.${variant}.${state}`;
+
+  if (color && color !== 'primary') {
+    if (variant === 'tertiary') {
+      throw new Error(
+        `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
+      );
+    }
+    return tokens.color(color)[variant][_state];
+  }
+
+  return tokens.base[variant][_state];
 };
 
-type BaseButtonStyleProps = {
-  iconSize: IconSize;
-  spinnerSize: BaseSpinnerProps['size'];
-  fontSize: keyof Theme['typography']['fonts']['size'];
-  lineHeight: keyof Theme['typography']['lineHeights'];
-  minHeight: `${ButtonMinHeight}px`;
-  iconPadding?: DotNotationSpacingStringToken;
-  iconColor: IconColor;
-  textColor: BaseTextProps['color'];
-  buttonPaddingTop: SpacingValues;
-  buttonPaddingBottom: SpacingValues;
-  buttonPaddingLeft: SpacingValues;
-  buttonPaddingRight: SpacingValues;
-  text?: string;
-  defaultBackgroundColor: string;
-  defaultBorderColor: string;
-  hoverBackgroundColor: string;
-  hoverBorderColor: string;
-  activeBackgroundColor: string;
-  activeBorderColor: string;
-  focusBackgroundColor: string;
-  focusBorderColor: string;
-  focusRingColor: string;
-  motionDuration: DurationString;
-  motionEasing: EasingString;
-  borderWidth: BorderWidthValues;
-  borderRadius: BorderRadiusValues;
+export const getTextColorToken = ({
+  property,
+  variant,
+  state,
+  color,
+}: BaseButtonColorTokenModifiers & {
+  property: 'icon' | 'text';
+}): DotNotationToken<Theme['colors']> => {
+  const tokens = textColor(property);
+  const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
+
+  if (color === 'white') {
+    return tokens.white[variant][_state];
+  }
+
+  if (color && color !== 'primary') {
+    if (variant === 'tertiary') {
+      throw new Error(
+        `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
+      );
+    }
+    return tokens.color(color)[variant][_state];
+  }
+
+  return tokens.base[variant][_state];
 };
 
 const getProps = ({
   buttonTypographyTokens,
-  children,
+  childrenString,
   isDisabled,
   size,
   theme,
   variant,
-  intent,
-  contrast,
+  color,
   hasIcon,
 }: {
   buttonTypographyTokens: ButtonTypography;
-  children?: string;
+  childrenString?: string;
   isDisabled: boolean;
   hasIcon: boolean;
   theme: Theme;
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
-  intent: BaseButtonProps['intent'];
-  contrast: NonNullable<BaseButtonProps['contrast']>;
+  color: BaseButtonProps['color'];
 }): BaseButtonStyleProps => {
-  const isIconOnly = hasIcon && (!children || children?.trim().length === 0);
+  if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
+    });
+  }
+
+  const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    iconPadding: hasIcon && children?.trim() ? `spacing.${textPadding[size]}` : undefined,
-    iconColor: getColorToken({
+    height: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
+    width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
+    iconPadding:
+      hasIcon && childrenString?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
+    iconColor: getTextColorToken({
       property: 'icon',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'default',
     }) as IconColor,
-    textColor: getColorToken({
+    textColor: getTextColorToken({
       property: 'text',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'default',
     }) as BaseTextProps['color'],
-    buttonPaddingTop: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].top])
-      : makeSpace(theme.spacing[buttonPadding[size].top]),
+    buttonPaddingTop: isIconOnly ? makeSpace(0) : makeSpace(theme.spacing[buttonPadding[size].top]),
     buttonPaddingBottom: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].bottom])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].bottom]),
     buttonPaddingLeft: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].left])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].left]),
     buttonPaddingRight: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].right])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].right]),
-    text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
+    text: childrenString?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'default' }),
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),
     ),
     defaultBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'default' }),
+      getBackgroundColorToken({ property: 'border', variant, color, state: 'default' }),
     ),
     hoverBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'hover' }),
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'hover' }),
     ),
     hoverBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'hover' }),
-    ),
-    activeBackgroundColor: getIn(
-      theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'active' }),
-    ),
-    activeBorderColor: getIn(
-      theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'active' }),
+      getBackgroundColorToken({ property: 'border', variant, color, state: 'hover' }),
     ),
     focusBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'focus' }),
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'focus' }),
     ),
     focusBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'focus' }),
+      getBackgroundColorToken({ property: 'border', variant, color, state: 'focus' }),
     ),
-    focusRingColor: getIn(theme.colors, 'brand.primary.400'),
-    borderWidth: makeBorderSize(theme.border.width.thin),
-    borderRadius: makeBorderSize(theme.border.radius.small),
+    focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
+    borderWidth: variant == 'secondary' ? makeBorderSize(theme.border.width.thin) : '0px',
+    borderRadius: makeBorderSize(theme.border.radius.medium),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard.effective',
   };
@@ -247,32 +260,28 @@ const getProps = ({
   if (isDisabled) {
     const disabledBackgroundColor = getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'disabled' }),
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'disabled' }),
     );
     const disabledBorderColor = getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'disabled' }),
+      getBackgroundColorToken({ property: 'border', variant, color, state: 'disabled' }),
     );
-    props.iconColor = getColorToken({
+    props.iconColor = getTextColorToken({
       property: 'icon',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'disabled',
     }) as IconColor;
-    props.textColor = getColorToken({
+    props.textColor = getTextColorToken({
       property: 'text',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'disabled',
     }) as BaseTextProps['color'];
     props.defaultBackgroundColor = disabledBackgroundColor;
     props.defaultBorderColor = disabledBorderColor;
     props.hoverBackgroundColor = disabledBackgroundColor;
     props.hoverBorderColor = disabledBorderColor;
-    props.activeBackgroundColor = disabledBackgroundColor;
-    props.activeBorderColor = disabledBorderColor;
     props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBorderColor = disabledBorderColor;
   }
@@ -286,9 +295,11 @@ const ButtonContent = styled(BaseBox)<{ isHidden: boolean }>(({ isHidden }) => (
 
 const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonProps> = (
   {
+    href,
+    target,
+    rel,
     variant = 'primary',
-    intent,
-    contrast = 'low',
+    color = 'primary',
     size = 'medium',
     icon: Icon,
     iconPosition = 'left',
@@ -296,22 +307,40 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     isFullWidth = false,
     isLoading = false,
     onClick,
+    onBlur,
+    onKeyDown,
     type = 'button',
     children,
-    accessibilityLabel,
     testID,
-    ...styledProps
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
+    accessibilityProps,
+    onTouchEnd,
+    onTouchStart,
+    ...rest
   },
   ref,
 ) => {
-  const childrenString = getStringFromReactText(children);
-  const buttonRef = useBladeInnerRef(ref);
-  const disabled = isLoading || isDisabled;
   const { theme } = useTheme();
-  if (!Icon && !childrenString?.trim()) {
-    throw new Error(
-      `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
-    );
+  const buttonGroupProps = useButtonGroupContext();
+  const [isPressed, setIsPressed] = React.useState(false);
+  const isLink = Boolean(href);
+  const childrenString = getStringFromReactText(children);
+  const isChildrenComponent = React.isValidElement(children);
+
+  // Button cannot be disabled when its rendered as Link
+  const disabled = buttonGroupProps.isDisabled ?? (isLoading || (isDisabled && !isLink));
+
+  if (__DEV__) {
+    if (!Icon && !childrenString?.trim()) {
+      throwBladeError({
+        message: 'At least one of icon or text is required to render a button.',
+        moduleName: 'BaseButton',
+      });
+    }
   }
 
   const prevLoading = usePrevious(isLoading);
@@ -323,11 +352,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   }, [isLoading, prevLoading]);
 
   const {
-    activeBorderColor,
-    activeBackgroundColor,
     defaultBorderColor,
     defaultBackgroundColor,
     minHeight,
+    height,
+    width,
     buttonPaddingTop,
     buttonPaddingBottom,
     buttonPaddingLeft,
@@ -351,24 +380,66 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     motionEasing,
   } = getProps({
     buttonTypographyTokens: buttonTypography,
-    children: childrenString,
+    childrenString,
     isDisabled: disabled,
-    size,
-    variant,
+    size: buttonGroupProps.size ?? size,
+    variant: buttonGroupProps.variant ?? variant,
     theme,
-    intent,
-    contrast,
+    color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
   });
 
+  const renderElement = React.useMemo(() => getRenderElement(href), [href]);
+  const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
+
+  const handlePointerPressedIn = React.useCallback(() => {
+    if (disabled) return;
+    setIsPressed(true);
+  }, [disabled]);
+
+  const handlePointerPressedOut = React.useCallback(() => {
+    if (disabled) return;
+    setIsPressed(false);
+  }, [disabled]);
+
+  const handleKeyboardPressedIn = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (disabled) return;
+      if (e.key === ' ' || e.key === 'Enter') {
+        setIsPressed(true);
+      }
+    },
+    [disabled],
+  );
+
+  const handleKeyboardPressedOut = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (disabled) return;
+      if (e.key === ' ' || e.key === 'Enter') {
+        setIsPressed(false);
+      }
+    },
+    [disabled],
+  );
+
   return (
     <StyledBaseButton
-      ref={buttonRef}
-      accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
+      ref={ref as any}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+      // @ts-ignore: On React Native it will always be undefined but TS doesn't understand that
+      as={renderElement}
+      href={href}
+      target={target}
+      rel={rel ?? defaultRel}
+      accessibilityProps={{
+        ...makeAccessible({
+          role: isLink ? 'link' : 'button',
+          ...accessibilityProps,
+        }),
+      }}
+      variant={variant}
       isLoading={isLoading}
       disabled={disabled}
-      activeBorderColor={activeBorderColor}
-      activeBackgroundColor={activeBackgroundColor}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       buttonPaddingTop={buttonPaddingTop}
@@ -381,75 +452,112 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       focusRingColor={focusRingColor}
       hoverBorderColor={hoverBorderColor}
       hoverBackgroundColor={hoverBackgroundColor}
-      isFullWidth={isFullWidth}
+      isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
+      // Setting type for web fails it on native typecheck and vice versa
+      onKeyDown={(event: any) => {
+        handleKeyboardPressedIn(event);
+        onKeyDown?.(event);
+      }}
+      onTouchStart={(event: React.TouchEvent) => {
+        handlePointerPressedIn();
+        onTouchStart?.(event);
+      }}
+      onTouchEnd={(event: React.TouchEvent) => {
+        handlePointerPressedOut();
+        onTouchEnd?.(event);
+      }}
       type={type}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      height={height}
+      width={width}
+      isPressed={isPressed}
+      onMouseDown={handlePointerPressedIn}
+      onMouseUp={handlePointerPressedOut}
+      onMouseOut={handlePointerPressedOut}
+      onKeyUp={handleKeyboardPressedOut}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
-      {...styledProps}
+      {...getStyledProps(rest)}
     >
-      {isLoading ? (
-        <BaseBox
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          position="absolute"
-          top="0px"
-          left="0px"
-          bottom="0px"
-          right="0px"
-        >
-          <BaseSpinner
-            accessibilityLabel="Loading"
-            size={spinnerSize}
-            intent={intent}
-            contrast={contrast}
-          />
-        </BaseBox>
-      ) : null}
-      <ButtonContent
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        flex={1}
-        isHidden={isLoading}
+      <AnimatedButtonContent
+        motionDuration={motionDuration}
+        motionEasing={motionEasing}
+        isPressed={isPressed}
       >
-        {Icon && iconPosition == 'left' ? (
+        {isLoading ? (
           <BaseBox
-            paddingRight={iconPadding}
             display="flex"
             justifyContent="center"
             alignItems="center"
+            position="absolute"
+            top="0px"
+            left="0px"
+            bottom="0px"
+            right="0px"
+            zIndex={1}
           >
-            <Icon size={iconSize} color={iconColor} />
+            <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
           </BaseBox>
         ) : null}
-        {text ? (
-          <BaseText
-            lineHeight={lineHeight}
-            fontSize={fontSize}
-            fontWeight="bold"
-            textAlign="center"
-            color={textColor}
-          >
-            {text}
-          </BaseText>
-        ) : null}
-        {Icon && iconPosition == 'right' ? (
-          <BaseBox
-            paddingLeft={iconPadding}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Icon size={iconSize} color={iconColor} />
-          </BaseBox>
-        ) : null}
-      </ButtonContent>
+        <ButtonContent
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+          flex={1}
+          isHidden={isLoading}
+          zIndex={1}
+        >
+          {Icon && iconPosition == 'left' ? (
+            <BaseBox
+              paddingRight={iconPadding}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon size={iconSize} color={iconColor} />
+            </BaseBox>
+          ) : null}
+          {text ? (
+            isChildrenComponent ? (
+              children
+            ) : (
+              <BaseText
+                lineHeight={lineHeight}
+                fontSize={fontSize}
+                // figma and web have different font-smoothing properties
+                // which causes web version of button text to look much bolder
+                // than figma version. To fix this we are changing font-weight from 600 to 500
+                // https://forum.figma.com/t/why-does-a-font-weight-in-figma-seem-lighter-than-the-same-weight-in-the-browser/2207
+                fontWeight="medium"
+                textAlign="center"
+                color={textColor}
+              >
+                {text}
+              </BaseText>
+            )
+          ) : null}
+          {Icon && iconPosition == 'right' ? (
+            <BaseBox
+              paddingLeft={iconPadding}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon size={iconSize} color={iconColor} />
+            </BaseBox>
+          ) : null}
+        </ButtonContent>
+      </AnimatedButtonContent>
     </StyledBaseButton>
   );
 };

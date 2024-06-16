@@ -2,6 +2,10 @@
  * @type {import("eslint").Linter.Config}
  */
 module.exports = {
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+  },
   extends: [
     'kentcdodds',
     'kentcdodds/react',
@@ -14,7 +18,6 @@ module.exports = {
     'max-lines-per-function': 'off',
     'max-lines': 'off',
     'no-console': 'off',
-    'import/no-cycle': 'error',
     'react-native-a11y/has-accessibility-hint': 'off',
     // need to turn this off because this rule is also being triggered on the web files as well
     'react-native-a11y/has-valid-accessibility-descriptors': 'off',
@@ -45,6 +48,13 @@ module.exports = {
           "Please define componentId using `assignWithoutSideEffects` instead. This will make sure the code doesn't create side-effects and tree-shaking continues to work",
       },
     ],
+    'react/display-name': 'off',
+    'import/no-named-as-default': 'off',
+    // Some bug with import/no-cycle where the ignoreExternal is not working as expected
+    // Setting ignoreExternal: true is slowing things down
+    // https://github.com/import-js/eslint-plugin-import/issues/2348
+    'import/no-cycle': ['error', { maxDepth: 4, ignoreExternal: false }],
+    'import/no-deprecated': 'off',
   },
   env: {
     browser: true,
@@ -123,8 +133,11 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:prettier/recommended',
       ],
-      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests'],
+      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests', 'blade'],
       rules: {
+        'blade/no-cross-platform-imports': ['error', { ignoreImportsPattern: 'renderWithSSR' }],
+        'import/no-cycle': ['error', { maxDepth: 4, ignoreExternal: false }],
+        'import/no-deprecated': 'off',
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
         'no-use-before-define': 'off',
@@ -156,6 +169,8 @@ module.exports = {
         '@typescript-eslint/unbound-method': 'off',
         '@typescript-eslint/sort-type-union-intersection-members': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/consistent-type-exports': 'error',
+        '@typescript-eslint/ban-ts-comment': 'off',
         'react-native-a11y/has-valid-accessibility-live-region': 'off',
         '@typescript-eslint/no-shadow': ['off'],
         '@typescript-eslint/explicit-module-boundary-types': ['off'],
@@ -173,13 +188,17 @@ module.exports = {
             patterns: ['!lodash/*'],
           },
         ],
+        'react/display-name': 'off',
       },
     },
     {
       files: ['**/*.stories.{ts,tsx}', '**/*.stories.internal.{ts,tsx}'],
       rules: {
         'react/display-name': ['off'],
+        'import/no-deprecated': 'off',
+        'import/no-cycle': 'off',
       },
     },
   ],
+  ignorePatterns: ['packages/blade-coverage-extension'],
 };

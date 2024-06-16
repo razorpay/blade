@@ -1,6 +1,6 @@
 import { List } from '../List';
 import { ListItem } from '../ListItem';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<List />', () => {
   it('should render List with default properties', () => {

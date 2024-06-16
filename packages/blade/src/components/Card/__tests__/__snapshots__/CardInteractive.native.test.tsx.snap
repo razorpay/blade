@@ -1,0 +1,487 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> should render a clickable Card 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": false,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      borderRadius="medium"
+      data-blade-component="card"
+      display="block"
+      isFocused={false}
+      isSelected={false}
+      style={
+        [
+          {
+            "borderRadius": 4,
+            "display": "block",
+          },
+          {
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="surface.background.gray.intense"
+        borderRadius="medium"
+        data-blade-component="base-box"
+        elevation="lowRaised"
+        style={
+          [
+            {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderRadius": 4,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "textAlign": "left",
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+            },
+            [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+        textAlign="left"
+      >
+        <View
+          data-blade-component="card-body"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          Plain Card
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Card /> should render a interactive Card 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": true,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      borderRadius="medium"
+      data-blade-component="card"
+      display="block"
+      isFocused={false}
+      isSelected={true}
+      style={
+        [
+          {
+            "borderRadius": 4,
+            "display": "block",
+          },
+          {
+            "borderColor": "hsla(227, 100%, 59%, 1)",
+            "borderStyle": "solid",
+            "borderWidth": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="surface.background.gray.intense"
+        borderRadius="medium"
+        data-blade-component="base-box"
+        elevation="lowRaised"
+        style={
+          [
+            {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderRadius": 4,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "textAlign": "left",
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+            },
+            [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+        textAlign="left"
+      >
+        <View
+          data-blade-component="card-body"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          Plain Card
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Card /> should render a linkable Card 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="link"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": false,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      borderRadius="medium"
+      data-blade-component="card"
+      display="block"
+      isFocused={false}
+      isSelected={false}
+      style={
+        [
+          {
+            "borderRadius": 4,
+            "display": "block",
+          },
+          {
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="surface.background.gray.intense"
+        borderRadius="medium"
+        data-blade-component="base-box"
+        elevation="lowRaised"
+        style={
+          [
+            {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderRadius": 4,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "textAlign": "left",
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+            },
+            [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+        textAlign="left"
+      >
+        <View
+          data-blade-component="card-body"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          Plain Card
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Card /> should render a linkable Card with onClick 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="link"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": false,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      borderRadius="medium"
+      data-blade-component="card"
+      display="block"
+      isFocused={false}
+      isSelected={false}
+      style={
+        [
+          {
+            "borderRadius": 4,
+            "display": "block",
+          },
+          {
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="surface.background.gray.intense"
+        borderRadius="medium"
+        data-blade-component="base-box"
+        elevation="lowRaised"
+        style={
+          [
+            {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderRadius": 4,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "textAlign": "left",
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+            },
+            [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+        textAlign="left"
+      >
+        <View
+          data-blade-component="card-body"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          Plain Card
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

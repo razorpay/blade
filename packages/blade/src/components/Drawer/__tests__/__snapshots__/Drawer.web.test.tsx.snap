@@ -1,0 +1,718 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer renders a Drawer 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  width: 90%;
+  top: 0px;
+  left: 100%;
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  touch-action: none;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  padding-right: 16px;
+  margin-right: auto;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-right: 8px;
+  height: 28px;
+}
+
+.c6.c6.c6.c6.c6 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  margin-left: 8px;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c12.c12.c12.c12.c12 {
+  text-align: left;
+  height: 20px;
+  background-color: hsla(150,100%,32%,0.09);
+}
+
+.c14.c14.c14.c14.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c24.c24.c24.c24.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c25.c25.c25.c25.c25 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c27.c27.c27.c27.c27 {
+  overflow: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 20px;
+}
+
+.c17.c17.c17.c17.c17 {
+  margin-right: 16px;
+}
+
+.c20.c20.c20.c20.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1.c1.c1.c1.c1 {
+  opacity: 0;
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
+  -webkit-transition: all 300ms cubic-bezier(0.5,0,1,1);
+  transition: all 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation-fill-mode: initial;
+  animation-fill-mode: initial;
+}
+
+.c26.c26.c26.c26.c26 {
+  border-width: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 1px;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c16.c16.c16.c16.c16 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c28.c28.c28.c28.c28 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c23.c23.c23.c23.c23 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(211,22%,56%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c23.c23.c23.c23.c23:hover {
+  color: hsla(211,26%,34%,1);
+}
+
+.c23.c23.c23.c23.c23:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  color: hsla(211,26%,34%,1);
+}
+
+.c23.c23.c23.c23.c23:active {
+  color: hsla(211,26%,34%,1);
+}
+
+.c13.c13.c13.c13.c13 {
+  background-color: hsla(150,100%,32%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c18.c18.c18.c18.c18 {
+  min-height: 28px;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+  background-color: hsla(211,20%,52%,0.12);
+  border-color: hsla(214,28%,84%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c18.c18.c18.c18.c18:hover {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c18.c18.c18.c18.c18:active {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c18.c18.c18.c18.c18:focus-visible {
+  background-color: hsla(211,20%,52%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c18.c18.c18.c18.c18 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c19.c19.c19.c19.c19 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c21.c21.c21.c21.c21 {
+  opacity: 1;
+}
+
+@media screen and (min-width:480px) {
+  .c0.c0.c0.c0.c0 {
+    width: 375px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c0.c0.c0.c0.c0 {
+    width: 420px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c2.c2.c2.c2.c2 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c25.c25.c25.c25.c25 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c25.c25.c25.c25.c25 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c25.c25.c25.c25.c25 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c25.c25.c25.c25.c25 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c25.c25.c25.c25.c25 {
+    border-bottom-style: solid;
+  }
+}
+
+<div
+  aria-label="Test Drawer"
+  aria-modal="true"
+  class="c0 c1"
+  data-blade-component="base-box"
+  elevation="highRaised"
+  role="dialog"
+  tabindex="-1"
+>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <div
+      class="c2"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="20px"
+              viewBox="0 0 24 24"
+              width="20px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M13.7743 0.363035C14.0383 0.159916 14.3547 0.0363566 14.6865 0.00687107C15.0183 -0.0226146 15.3516 0.0431988 15.6473 0.196579C15.9429 0.34996 16.1887 0.584536 16.3557 0.872751L23.8564 13.8644C24.023 14.1531 24.1038 14.4835 24.0891 14.8165C24.0744 15.1494 23.9649 15.4712 23.7736 15.7441C23.5822 16.017 23.3169 16.2295 23.0089 16.3567C22.7012 16.4838 22.3638 16.5205 22.0361 16.4625C19.0399 15.9345 16.4708 16.2347 14.6537 16.6655C13.8958 16.8451 13.2709 17.0471 12.8032 17.2197L14.1451 19.5439C14.2889 19.7933 14.3692 20.0747 14.3784 20.3624C14.3877 20.6501 14.3258 20.9356 14.1983 21.1936L13.6487 22.3047C13.5244 22.556 13.3413 22.7741 13.1153 22.94C12.8891 23.1059 12.6263 23.2151 12.3492 23.2582C12.072 23.3014 11.7885 23.2773 11.5226 23.1879C11.2595 23.0995 11.0212 22.9498 10.8274 22.7513L7.91081 19.8194C6.99128 20.1626 5.98112 20.2147 5.02062 19.9574C3.80377 19.6313 2.76628 18.8352 2.13639 17.7442C1.5065 16.6532 1.33581 15.3567 1.66186 14.1398C1.98792 12.923 2.78401 11.8855 3.87501 11.2556L7.09987 9.39373L7.11694 9.38248C7.14203 9.36576 7.18224 9.33849 7.23602 9.30055C7.34361 9.22464 7.50532 9.10616 7.70879 8.94409C8.11602 8.61974 8.6888 8.12217 9.32936 7.44338C10.6109 6.0853 12.1554 4.01088 13.1965 1.15285C13.31 0.839989 13.5105 0.566004 13.7743 0.363035ZM7.61439 17.7569C7.62235 17.7522 7.63037 17.7475 7.63843 17.7431L10.0066 16.3758L7.25658 11.6127L4.87501 12.9877C4.24338 13.3523 3.78249 13.953 3.59372 14.6575C3.40495 15.362 3.50377 16.1126 3.86844 16.7442C4.23312 17.3759 4.83377 17.8368 5.53826 18.0255C6.23881 18.2132 6.98498 18.1166 7.61439 17.7569ZM8.93679 10.5229C8.94278 10.5181 8.9488 10.5133 8.95484 10.5085C9.4261 10.1331 10.0703 9.57224 10.7839 8.81603C12.1352 7.38416 13.7426 5.24389 14.8885 2.33153L21.8607 14.4077C18.7654 13.9435 16.108 14.2653 14.1923 14.7194C13.1806 14.9593 12.3727 15.2367 11.812 15.4571C11.8048 15.46 11.7976 15.4628 11.7905 15.4656L8.93679 10.5229ZM11.0066 18.1078L9.75058 18.833L12.0108 21.105L12.3459 20.4276L11.0066 18.1078Z"
+                data-blade-component="svg-path"
+                fill="hsla(212, 39%, 16%, 1)"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <div
+            class="c6"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c7"
+              data-blade-component="base-box"
+            >
+              <p
+                class="c8"
+                data-blade-component="text"
+              >
+                Address Details
+              </p>
+              <div
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c10"
+                  data-blade-component="box"
+                >
+                  <div
+                    class="c11"
+                    data-blade-component="badge"
+                  >
+                    <div
+                      class="c12 c13"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c14"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c15"
+                          data-blade-component="text"
+                        >
+                          NEW
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p
+              class="c16"
+              data-blade-component="text"
+            >
+              Saving addresses will improve your checkout experience
+            </p>
+          </div>
+        </div>
+        <div
+          class="c17"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c10"
+            data-blade-component="box"
+          >
+            <button
+              class="c18"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class=" c19"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c20 c21"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c22"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        d="M13 2C13 1.44772 12.5523 1 12 1C11.4477 1 11 1.44772 11 2V13.5858L8.70711 11.2929C8.31658 10.9024 7.68342 10.9024 7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071L11.2922 16.7064C11.2946 16.7088 11.297 16.7112 11.2995 16.7136C11.3938 16.8063 11.502 16.8764 11.6172 16.9241C11.7343 16.9727 11.8625 16.9996 11.997 17L12 17L12.003 17C12.2746 16.9992 12.5208 16.8901 12.7005 16.7136C12.703 16.7112 12.7054 16.7088 12.7078 16.7064L16.7071 12.7071C17.0976 12.3166 17.0976 11.6834 16.7071 11.2929C16.3166 10.9024 15.6834 10.9024 15.2929 11.2929L13 13.5858V2Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(212, 39%, 16%, 1)"
+                      />
+                      <path
+                        d="M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(212, 39%, 16%, 1)"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div
+          class="c10"
+          data-blade-component="box"
+        >
+          <button
+            aria-label="Close"
+            class="c23"
+            data-blade-component="icon-button"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="20px"
+              viewBox="0 0 24 24"
+              width="20px"
+            >
+              <path
+                d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                data-blade-component="svg-path"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        class="c24"
+        data-blade-component="base-box"
+      >
+        <div
+          class=""
+          data-blade-component="box"
+        />
+      </div>
+    </div>
+    <div
+      class="c25 c26"
+      data-blade-component="divider"
+      role="separator"
+    />
+  </div>
+  <div
+    class="c27"
+    data-blade-component="box"
+  >
+    <p
+      class="c28"
+      data-blade-component="text"
+    >
+      Test Content
+    </p>
+  </div>
+</div>
+`;

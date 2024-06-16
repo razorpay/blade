@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 import React from 'react';
-import { Text } from '../Typography';
-import type { IconComponent } from '../Icons';
-import { useTheme } from '../BladeProvider';
 import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
@@ -15,17 +12,17 @@ import {
 } from './listTokens';
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
+import getIn from '~utils/lodashButBetter/get';
+import { Text } from '~components/Typography';
+import type { IconComponent } from '~components/Icons';
+import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import {
-  getComponentId,
-  getIn,
-  getPlatformType,
-  isValidAllowedChildren,
-  metaAttribute,
-  MetaConstants,
-} from '~utils';
-import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { getPlatformType } from '~utils/getPlatformType';
+import { throwBladeError } from '~utils/logger';
 
 type ListItemProps = {
   /**
@@ -68,16 +65,16 @@ const ListItemContentChildren = ({
 }: {
   children: React.ReactNode[];
   size: NonNullable<ListProps['size']>;
-}): JSX.Element => {
+}): React.ReactElement => {
   /* Having a <View><Text>...</Text><View/> inside <Text /> breaks vertical alignment. Issue: https://github.com/facebook/react-native/issues/31955
     As a workaround, we wrap individual strings in their own <Text /> and handle alignment with a parent <View> (BaseBox).
    */
   return getPlatformType() === 'react-native' ? (
     <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
-      {children.map((child) => {
+      {children.map((child, index) => {
         if (typeof child === 'string') {
           return (
-            <Text variant="body" size={size}>
+            <Text key={index} variant="body" size={size}>
               {child}
             </Text>
           );
@@ -102,31 +99,39 @@ const _ListItem = ({
   const { theme, platform } = useTheme();
   const ItemIcon = Icon ?? ListContextIcon;
 
-  if (level && level > 3) {
-    throw new Error('[Blade List]: List Nesting is allowed only upto 3 levels.');
+  if (__DEV__) {
+    if (level && level > 3) {
+      throwBladeError({
+        message: 'List Nesting is allowed only upto 3 levels.',
+        moduleName: 'List',
+      });
+    }
   }
 
   const childrenArray = React.Children.toArray(children);
 
   // Get children that are not a List component and are valid allowed children
   const validChildItem = childrenArray.filter((child) => {
-    if (getComponentId(child) === 'List') return null;
+    if (getComponentId(child) === MetaConstants.List) return null;
 
     if (
       typeof child === 'string' ||
-      isValidAllowedChildren(child, 'ListItemLink') ||
-      isValidAllowedChildren(child, 'ListItemCode')
+      isValidAllowedChildren(child, MetaConstants.ListItemLink) ||
+      isValidAllowedChildren(child, MetaConstants.ListItemText) ||
+      isValidAllowedChildren(child, MetaConstants.ListItemCode)
     ) {
       return child;
-    } else {
-      throw new Error(
-        '[Blade List]: You can only pass a List, ListItemLink, ListItemCode or a string as a child to ListItem.',
-      );
+    } else if (__DEV__) {
+      throwBladeError({
+        message: `You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.`,
+        moduleName: 'ListItem',
+      });
     }
+    return null;
   });
   // Get child that is a List component
   const childList = childrenArray.filter((child) =>
-    getComponentId(child) === 'List' ? child : null,
+    getComponentId(child) === MetaConstants.List ? child : null,
   );
   const hasIcon = Boolean(ItemIcon);
 
@@ -153,7 +158,7 @@ const _ListItem = ({
             alignSelf="flex-start"
           >
             {ItemIcon ? (
-              <ItemIcon size={size} color="surface.text.subdued.lowContrast" />
+              <ItemIcon size={size} color="surface.icon.gray.muted" />
             ) : (
               <UnorderedItemIcon level={level} />
             )}
@@ -172,11 +177,15 @@ const _ListItem = ({
             borderRadius={variant === 'ordered-filled' ? 'max' : undefined}
             backgroundColor={
               variant === 'ordered-filled'
-                ? getIn(theme, 'colors.brand.gray.a100.lowContrast')
+                ? getIn(theme.colors, 'feedback.background.neutral.subtle')
                 : undefined
             }
           >
-            <Text variant="body" type="subtle" size={variant === 'ordered' ? size : 'xsmall'}>
+            <Text
+              variant="body"
+              color="surface.text.gray.muted"
+              size={variant === 'ordered' ? size : 'xsmall'}
+            >
               {`${getOrderedListItemBullet({
                 itemNumber: _itemNumber ?? 1,
                 level: level ?? 1,
@@ -191,7 +200,7 @@ const _ListItem = ({
   );
 };
 
-const ListItem = assignWithoutSideEffects(_ListItem, { componentId: 'ListItem' });
+const ListItem = assignWithoutSideEffects(_ListItem, { componentId: MetaConstants.ListItem });
 
 export { ListItem };
 export type { ListItemProps };

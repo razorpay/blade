@@ -3,17 +3,22 @@ import styled from 'styled-components/native';
 import type { CSSObject, ThemeProps, DefaultTheme } from 'styled-components';
 import type {
   TextInputProps,
-  TextInput,
   TouchableHighlight,
   TouchableHighlightProps,
   GestureResponderEvent,
+  TextInput,
 } from 'react-native';
+import { Platform as RNPlatform } from 'react-native';
+import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
+import { baseInputHeight } from './baseInputTokens';
 import { Text } from '~components/Typography';
-import { makeSize } from '~utils';
-import size from '~tokens/global/size';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { useTheme } from '~components/BladeProvider';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { size as sizeToken } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
+import type { Platform } from '~utils';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -84,6 +89,28 @@ type StyledComponentInputProps = Omit<
   autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
   editable?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
+  $size: NonNullable<BaseInputProps['size']>;
+};
+
+const getInputHeight = ({
+  isTextArea,
+  hasTags,
+  numberOfLines,
+  isDropdownTrigger,
+  size,
+}: Pick<StyledBaseInputProps, 'hasTags' | 'isTextArea' | 'numberOfLines' | 'isDropdownTrigger'> & {
+  size: NonNullable<BaseInputProps['size']>;
+}): string | undefined => {
+  if (isTextArea) {
+    const lines = isDropdownTrigger ? 1 : numberOfLines ?? 0;
+    return `${baseInputHeight[size] * lines}px`;
+  }
+
+  if (hasTags) {
+    return undefined; // we don't set height on input. We set it on wrapper to properly include tags in overall height
+  }
+
+  return makeSize(sizeToken[baseInputHeight[size]]);
 };
 
 const getRNInputStyles = (
@@ -99,21 +126,111 @@ const getRNInputStyles = (
       validationState: props.validationState,
       leadingIcon: props.leadingIcon,
       prefix: props.prefix,
-      interactionElement: props.interactionElement,
+      trailingInteractionElement: props.trailingInteractionElement,
+      leadingInteractionElement: props.leadingInteractionElement,
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
       isTextArea: props.isTextArea,
+      hasTags: props.hasTags,
+      isDropdownTrigger: props.isDropdownTrigger,
+      size: props.$size,
+      valueComponentType: props.valueComponentType,
     }),
-    lineHeight: undefined,
+    lineHeight: RNPlatform.select({
+      android: makeSize(props.theme.typography.lineHeights[100]),
+      ios: undefined,
+    }),
     textAlignVertical: 'top',
-    height: props.isTextArea
-      ? `${props.theme.typography.lineHeights[300] * (props.numberOfLines ?? 0)}px`
-      : makeSize(size[36]),
+    height: getInputHeight({
+      isTextArea: props.isTextArea,
+      hasTags: props.hasTags,
+      numberOfLines: props.numberOfLines,
+      isDropdownTrigger: props.isDropdownTrigger,
+      size: props.$size,
+    }),
   };
 };
-
-const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(getRNInputStyles);
-const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(getRNInputStyles);
+const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
+  ({
+    id,
+    isFocused,
+    theme,
+    editable,
+    validationState,
+    leadingIcon,
+    prefix,
+    trailingInteractionElement,
+    leadingInteractionElement,
+    suffix,
+    trailingIcon,
+    isTextArea,
+    numberOfLines,
+    isDropdownTrigger,
+    hasTags,
+    $size,
+    valueComponentType,
+  }) =>
+    getRNInputStyles({
+      id,
+      isFocused,
+      theme,
+      editable,
+      validationState,
+      leadingIcon,
+      prefix,
+      trailingInteractionElement,
+      leadingInteractionElement,
+      suffix,
+      trailingIcon,
+      isTextArea,
+      numberOfLines,
+      hasTags,
+      isDropdownTrigger,
+      $size,
+      valueComponentType,
+    }),
+);
+const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
+  ({
+    id,
+    isFocused,
+    theme,
+    editable,
+    validationState,
+    leadingIcon,
+    prefix,
+    trailingInteractionElement,
+    leadingInteractionElement,
+    suffix,
+    trailingIcon,
+    isTextArea,
+    numberOfLines,
+    isDropdownTrigger,
+    hasTags,
+    $size,
+    valueComponentType,
+  }) => ({
+    ...getRNInputStyles({
+      id,
+      isFocused,
+      theme,
+      editable,
+      validationState,
+      leadingIcon,
+      prefix,
+      trailingInteractionElement,
+      leadingInteractionElement,
+      suffix,
+      trailingIcon,
+      isTextArea,
+      numberOfLines,
+      isDropdownTrigger,
+      hasTags,
+      $size,
+      valueComponentType,
+    }),
+  }),
+);
 
 const _StyledBaseInput: React.ForwardRefRenderFunction<
   TextInput | TouchableHighlight,
@@ -143,11 +260,14 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     hasPopup,
     shouldIgnoreBlurAnimation,
     autoCapitalize,
+    as: renderAs,
+    $size,
     ...props
   },
   ref,
 ) => {
   const buttonValue = props.value ? props.value : props.placeholder;
+  const { theme } = useTheme();
   const commonProps = {
     onBlur: (): void => {
       // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
@@ -156,10 +276,10 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         setCurrentInteraction('default');
       }
     },
-    isFocused: currentInteraction === 'active',
+    isFocused: currentInteraction === 'focus',
   };
 
-  return hasPopup ? (
+  return renderAs === 'button' ? (
     <StyledNativeBaseButton
       // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -169,18 +289,21 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       }}
       onFocus={(): void => {
         handleOnFocus?.({ name, value: props.value });
-        setCurrentInteraction('active');
+        setCurrentInteraction('focus');
       }}
+      as={undefined}
+      $size={$size}
       {...commonProps}
       {...props}
       {...accessibilityProps}
     >
       <Text
-        size="medium"
-        variant="body"
-        type={props.value ? 'subtle' : 'placeholder'}
-        contrast="low"
-        weight="regular"
+        color={
+          props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+        }
+        truncateAfterLines={1}
+        textAlign={props.textAlign}
+        size={$size}
       >
         {buttonValue}
       </Text>
@@ -194,9 +317,12 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       numberOfLines={numberOfLines}
       editable={!isDisabled}
       maxLength={maxCharacters}
+      placeholderTextColor={theme.colors.surface.text.gray.disabled}
       onFocus={(event): void => {
         handleOnFocus?.({ name, value: event?.nativeEvent.text });
-        setCurrentInteraction('active');
+        // React Native does not have native onPress event on Input elements so for consistency of API we call it on onFocus which also gets triggered on clicks
+        handleOnClick?.({ name, value: event?.nativeEvent.text });
+        setCurrentInteraction('focus');
       }}
       onChangeText={(text): void => {
         handleOnChange?.({ name, value: text });
@@ -218,7 +344,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       autoCompleteType={
         autoCompleteSuggestionType
           ? (autoCompleteSuggestionTypeAndroid[
-              autoCompleteSuggestionType
+              autoCompleteSuggestionType as Platform.CastNative<
+                BaseInputProps['autoCompleteSuggestionType']
+              >
             ] as StyledComponentAutoCompleteAndroid)
           : undefined
       }
@@ -226,10 +354,15 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       isTextArea={isTextArea}
       textContentType={
         autoCompleteSuggestionType
-          ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
+          ? autoCompleteSuggestionTypeIOS[
+              autoCompleteSuggestionType as Platform.CastNative<
+                BaseInputProps['autoCompleteSuggestionType']
+              >
+            ]
           : undefined
       }
       autoCapitalize={autoCapitalize}
+      $size={$size}
       {...commonProps}
       {...props}
       {...accessibilityProps}

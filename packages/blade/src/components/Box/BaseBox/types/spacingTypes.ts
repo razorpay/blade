@@ -1,13 +1,21 @@
 import type { MakeObjectResponsive } from './responsiveTypes';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import type { Platform } from '~utils';
+import type { DotNotationSpacingStringToken } from '~utils/types';
 
 type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
-type SpaceUnits = Platform.Select<{
-  web: 'px' | '%' | 'fr' | 'rem' | 'em' | 'vh' | 'vw';
-  native: 'px' | '%';
-}>;
-type SpacingValueType = DotNotationSpacingStringToken | `${string}${SpaceUnits}` | 'auto';
+type SpaceUnits = 'px' | '%' | 'fr' | 'rem' | 'em' | 'vh' | 'vw';
+
+type SpacingValueType =
+  | DotNotationSpacingStringToken
+  | `${string}${SpaceUnits}`
+  | `calc(${string})`
+  | 'auto'
+  | `min(${string})`
+  | `max(${string})`
+  | 'none'
+  | 'initial'
+  | 'fit-content'
+  | 'max-content'
+  | 'min-content';
 
 /**
  * @IMPORTANT
@@ -441,4 +449,4 @@ type MarginProps = MakeObjectResponsive<{
   marginLeft: SpacingValueType;
 }>;
 
-export { PaddingProps, MarginProps, SpacingValueType, SpaceUnits, ArrayOfMaxLength4 };
+export type { PaddingProps, MarginProps, SpacingValueType, SpaceUnits, ArrayOfMaxLength4 };

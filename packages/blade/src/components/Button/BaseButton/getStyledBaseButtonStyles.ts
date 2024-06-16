@@ -13,12 +13,15 @@ const getBaseButtonStyles = ({
   isFullWidth,
   borderWidth,
   borderRadius,
+  height,
+  width = 'auto',
 }: Omit<
   StyledBaseButtonProps,
   'children' | 'onClick' | 'accessibilityProps' | 'accessibilityLabel'
 >): CSSObject => ({
   minHeight,
-  width: isFullWidth ? '100%' : 'auto',
+  height,
+  width: isFullWidth ? '100%' : width,
   cursor: disabled ? 'not-allowed' : 'pointer',
   backgroundColor: defaultBackgroundColor,
   borderColor: defaultBorderColor,
@@ -29,6 +32,10 @@ const getBaseButtonStyles = ({
   paddingBottom: buttonPaddingBottom,
   paddingLeft: buttonPaddingLeft,
   paddingRight: buttonPaddingRight,
+  justifyContent: 'center',
+  alignItems: 'center',
+  textDecoration: 'none',
+  overflow: 'hidden',
 });
 
 export default getBaseButtonStyles;

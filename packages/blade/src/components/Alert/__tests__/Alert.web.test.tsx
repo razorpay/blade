@@ -1,11 +1,8 @@
 import userEvent from '@testing-library/user-event';
 
 import { Alert } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
-
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<Alert />', () => {
   it('should render', () => {
@@ -16,11 +13,23 @@ describe('<Alert />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render positive intent and full width', () => {
+  it('should render positive color and full width', () => {
     const { container } = renderWithTheme(
       <Alert
         description="Currently you can only accept payments in international currencies using PayPal."
-        intent="positive"
+        color="positive"
+        isFullWidth
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render positive color and full width', () => {
+    const { container } = renderWithTheme(
+      <Alert
+        description="Currently you can only accept payments in international currencies using PayPal."
+        color="positive"
         isFullWidth
       />,
     );
@@ -55,7 +64,7 @@ describe('<Alert />', () => {
     const { getByLabelText, getByRole, queryByRole } = renderWithTheme(
       <Alert
         description="Currently you can only accept payments in international currencies using PayPal."
-        intent="notice"
+        color="notice"
       />,
     );
     const closeButton = getByLabelText('Dismiss alert');
@@ -75,7 +84,7 @@ describe('<Alert />', () => {
     const { getByRole } = renderWithTheme(
       <Alert
         description="Currently you can only accept payments in international currencies using PayPal."
-        intent="notice"
+        color="notice"
       />,
     );
     const alert = getByRole('alert');
@@ -87,27 +96,12 @@ describe('<Alert />', () => {
     const { getByRole } = renderWithTheme(
       <Alert
         description="Currently you can only accept payments in international currencies using PayPal."
-        intent="positive"
+        color="positive"
       />,
     );
     const alert = getByRole('status');
 
     await assertAccessible(alert);
-  });
-
-  it('should throw an error if secondary action is defined without primary action', () => {
-    const onClickSecondary = jest.fn();
-    expect(() =>
-      renderWithTheme(
-        <Alert
-          description="Currently you can only accept payments in international currencies using PayPal."
-          // @ts-expect-error testing failure case when there is no primary action passed
-          actions={{
-            secondary: { text: 'Link', onClick: onClickSecondary },
-          }}
-        />,
-      ),
-    ).toThrow(`[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`);
   });
 
   it('should accept testID', () => {

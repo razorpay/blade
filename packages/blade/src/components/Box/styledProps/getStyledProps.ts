@@ -1,5 +1,5 @@
 import type { StyledPropsBlade } from '../BaseBox/types';
-import type { KeysRequired } from '~src/_helpers/types';
+import type { KeysRequired } from '~utils/types';
 
 /**
  * The input type to these styledProps utilities can be anything as we can just pass all the props and then get the filtered styledProps out of it
@@ -30,11 +30,10 @@ type StyledPropsInputType = Record<string, any>;
 const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInputType => {
   const onlyDefinedStyledProps: StyledPropsBlade = {};
   for (const key in obj) {
-    if (obj[key as keyof StyledPropsBlade] !== undefined) {
+    if (obj[key] !== undefined) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
       // @ts-ignore: complex type error
-      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      onlyDefinedStyledProps[key as keyof StyledPropsBlade] = obj[key as keyof StyledPropsBlade];
+      onlyDefinedStyledProps[key] = obj[key];
     }
   }
   return onlyDefinedStyledProps;
@@ -52,6 +51,7 @@ const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInput
 const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsBlade> => {
   return {
     alignSelf: props.alignSelf,
+    display: props.display,
     justifySelf: props.justifySelf,
     placeSelf: props.placeSelf,
     order: props.order,
@@ -75,6 +75,7 @@ const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsB
     right: props.right,
     bottom: props.bottom,
     left: props.left,
+    visibility: props.visibility,
   };
 };
 
@@ -101,7 +102,7 @@ const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsB
  *   // ... Your Props
  * } & StyledPropsBlade;
  *
- * const MyComponent = (props: MyComponentProps): JSX.Element => {
+ * const MyComponent = (props: MyComponentProps): React.ReactElement => {
  *  return (
  *    // Make sure styledProps come last so they take priority in stylings in-case of overrides
  *    <BaseBox someOtherProp={someValue} {...getStyledProps(props)}>
@@ -143,4 +144,5 @@ const getStyledProps = (props: Record<string, any>): StyledPropsBlade => {
   return removeUndefinedStyledProps(makeStyledProps(props));
 };
 
-export { getStyledProps, makeStyledProps, StyledPropsBlade, removeUndefinedStyledProps };
+export type { StyledPropsBlade };
+export { getStyledProps, makeStyledProps, removeUndefinedStyledProps };

@@ -1,18 +1,22 @@
 import type { ReactElement } from 'react';
-import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
-import { FormLabel } from '~components/Form';
-import type { AccessibilityProps } from '~utils';
-import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
+import { CircularProgressBarFilled } from './CircularProgressBar';
+import clamp from '~utils/lodashButBetter/clamp';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography/Text';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { useId } from '~src/hooks/useId';
+import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
-import size from '~tokens/global/size';
-import type { TestID } from '~src/_helpers/types';
+import type { FeedbackColors } from '~tokens/theme/theme';
+import { size } from '~tokens/global';
+import type { TestID } from '~utils/types';
+import { makeSize } from '~utils/makeSize';
+import type { AccessibilityProps } from '~utils/makeAccessible';
+import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type ProgressBarCommonProps = {
   /**
@@ -20,23 +24,24 @@ type ProgressBarCommonProps = {
    */
   accessibilityLabel?: string;
   /**
-   * Sets the contrast for the progress bar
-   * @default 'low'
+   * Sets the color of the progress bar which changes the feedback color.
    */
-  contrast?: ColorContrastTypes;
+  color?: FeedbackColors;
   /**
-   * Sets the intent of the progress bar which changes the feedback color.
+   * Sets the type of the progress bar.
+   * @default 'progress'
    */
-  intent?: Feedback;
+  type?: 'meter' | 'progress';
   /**
    * Sets the label to be rendered for the progress bar. This value will also be used as default for `accessibilityLabel`.
    */
   label?: string;
   /**
    * Sets the size of the progress bar.
+   * Note: 'large' size isn't available when the variant is 'linear'.
    * @default 'small'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Sets the progress value of the progress bar.
    * @default 'small'
@@ -55,14 +60,14 @@ type ProgressBarCommonProps = {
 } & TestID &
   StyledPropsBlade;
 
-type ProgressBarVariant = 'progress' | 'meter';
+type ProgressBarVariant = 'progress' | 'meter' | 'linear' | 'circular';
 
 type ProgressBarProgressProps = ProgressBarCommonProps & {
   /**
    * Sets the variant to be rendered for the progress bar.
    * @default 'progress'
    */
-  variant?: Extract<ProgressBarVariant, 'progress'>;
+  variant?: Extract<ProgressBarVariant, 'progress' | 'linear' | 'circular'>;
   /**
    * Sets whether the progress bar is in an indeterminate state.
    * @default false
@@ -80,7 +85,7 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
    * Sets the variant to be rendered for thr progress bar.
    * @default 'progress'
    */
-  variant?: Extract<ProgressBarVariant, 'meter'>;
+  variant?: Extract<ProgressBarVariant, 'meter' | 'linear' | 'circular'>;
   /**
    * Sets whether the progress bar is in an indeterminate state.
    * @default false
@@ -95,15 +100,17 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
-const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
+const progressBarHeight: Record<NonNullable<ProgressBarProps['size']>, 2 | 4 | 0> = {
   small: size[2],
   medium: size[4],
+  // Large size isn't available when variant is 'linear'
+  large: size[0],
 };
 
 const ProgressBar = ({
   accessibilityLabel,
-  contrast = 'low',
-  intent,
+  color,
+  type,
   isIndeterminate = false,
   label,
   showPercentage = true,
@@ -116,20 +123,48 @@ const ProgressBar = ({
   ...styledProps
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
-  const id = useId(variant);
+  const progressType = !type && (variant === 'meter' || variant === 'progress') ? variant : type;
+  const progressVariant = variant === 'meter' || variant === 'progress' ? 'linear' : variant;
+  const id = useId(`${progressType}-${progressVariant}`);
 
-  if (variant === 'meter' && isIndeterminate) {
-    throw new Error(
-      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
-    );
+  if (__DEV__) {
+    if (progressType === 'meter' && isIndeterminate) {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Cannot set 'isIndeterminate' when 'type' or 'variant' is 'meter'.`,
+      });
+    }
+
+    if (progressVariant === 'circular' && isIndeterminate) {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Cannot set 'isIndeterminate' when 'variant' is 'circular'.`,
+      });
+    }
+
+    if (progressVariant === 'linear' && size === 'large') {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Large size isn't available when 'variant' is 'linear'.`,
+      });
+    }
+
+    if (type && (variant === 'progress' || variant === 'meter')) {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `variant can only be 'linear' or 'circular' when 'type=${type}'.`,
+      });
+    }
   }
 
-  const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
-  const filledBackgroundColor = intent
-    ? theme.colors.feedback.background[intent].highContrast
-    : theme.colors.brand.primary[500];
+  const unfilledBackgroundColor = theme.colors.feedback.background.neutral
+    .subtle as BaseBoxProps['backgroundColor'];
+  const filledBackgroundColor = color
+    ? theme.colors.feedback.background[color].intense
+    : theme.colors.surface.background.primary.intense;
   const hasLabel = label && label.trim()?.length > 0;
-  const isMeter = variant === 'meter';
+  const isMeter = progressType === 'meter';
+  const isCircular = progressVariant === 'circular';
   const progressValue = clamp(value, min, max);
   const percentageProgressValue = Math.floor(((progressValue - min) * 100) / (max - min));
   const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
@@ -159,61 +194,84 @@ const ProgressBar = ({
   }
 
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
-      <BaseBox
-        display="flex"
-        flexDirection="row"
-        justifyContent={hasLabel ? 'space-between' : 'flex-end'}
-      >
-        {hasLabel ? (
-          <FormLabel as="label" htmlFor={id} contrast={contrast}>
-            {label}
-          </FormLabel>
-        ) : null}
-        {shouldShowPercentage ? (
-          <BaseBox marginBottom="spacing.2">
-            <Text
-              type="subdued"
-              variant="body"
-              contrast={contrast}
-              size="small"
-            >{`${percentageProgressValue}%`}</Text>
+    <BaseBox
+      {...getStyledProps(styledProps)}
+      {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
+    >
+      <BaseBox display="flex" flexDirection="column" width="100%">
+        {!isCircular ? (
+          <BaseBox
+            display="flex"
+            flexDirection="row"
+            justifyContent={hasLabel ? 'space-between' : 'flex-end'}
+          >
+            {hasLabel ? (
+              <Text as="label" variant="body" size="small" color="surface.text.gray.subtle">
+                {label}
+              </Text>
+            ) : null}
+            {shouldShowPercentage ? (
+              <BaseBox marginBottom="spacing.2">
+                <Text
+                  variant="body"
+                  size="small"
+                  color="surface.text.gray.subtle"
+                >{`${percentageProgressValue}%`}</Text>
+              </BaseBox>
+            ) : null}
           </BaseBox>
         ) : null}
-      </BaseBox>
-      <BaseBox
-        id={id}
-        {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
-        {...makeAccessible({
-          role: accessibilityProps.role,
-          label: accessibilityProps.label,
-          valueNow: accessibilityProps.valueNow,
-          valueText: accessibilityProps.valueText,
-          valueMin: accessibilityProps.valueMin,
-          valueMax: accessibilityProps.valueMax,
-        })}
-      >
+
         <BaseBox
-          backgroundColor={unfilledBackgroundColor}
-          height={makeSize(progressBarHeight[size])}
-          overflow="hidden"
-          position="relative"
+          id={id}
+          {...makeAccessible({
+            role: accessibilityProps.role,
+            label: accessibilityProps.label,
+            valueNow: accessibilityProps.valueNow,
+            valueText: accessibilityProps.valueText,
+            valueMin: accessibilityProps.valueMin,
+            valueMax: accessibilityProps.valueMax,
+          })}
         >
-          <ProgressBarFilled
-            backgroundColor={filledBackgroundColor}
-            progress={percentageProgressValue}
-            fillMotionDuration="duration.2xgentle"
-            pulseMotionDuration="duration.2xgentle"
-            indeterminateMotionDuration="duration.2xgentle"
-            pulseMotionDelay="delay.long"
-            motionEasing="easing.standard.revealing"
-            variant={variant}
-            isIndeterminate={isIndeterminate}
-          />
+          {isCircular ? (
+            <CircularProgressBarFilled
+              size={size}
+              label={label}
+              progressPercent={percentageProgressValue}
+              isMeter={isMeter}
+              showPercentage={showPercentage}
+              backgroundColor={unfilledBackgroundColor as string}
+              fillColor={filledBackgroundColor}
+              pulseMotionDuration="duration.2xgentle"
+              fillMotionDuration="duration.2xgentle"
+              pulseMotionDelay="delay.long"
+              motionEasing="easing.standard.revealing"
+            />
+          ) : (
+            <BaseBox
+              backgroundColor={unfilledBackgroundColor}
+              height={makeSize(progressBarHeight[size])}
+              overflow="hidden"
+              position="relative"
+            >
+              <ProgressBarFilled
+                backgroundColor={filledBackgroundColor}
+                progress={percentageProgressValue}
+                fillMotionDuration="duration.2xgentle"
+                pulseMotionDuration="duration.2xgentle"
+                indeterminateMotionDuration="duration.2xgentle"
+                pulseMotionDelay="delay.long"
+                motionEasing="easing.standard.revealing"
+                type={progressType}
+                isIndeterminate={isIndeterminate}
+              />
+            </BaseBox>
+          )}
         </BaseBox>
       </BaseBox>
     </BaseBox>
   );
 };
 
-export { ProgressBar, ProgressBarProps, ProgressBarVariant };
+export type { ProgressBarProps, ProgressBarVariant };
+export { ProgressBar };

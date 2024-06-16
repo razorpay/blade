@@ -1,21 +1,31 @@
 import React from 'react';
 import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
-import { componentIds } from './dropdownUtils';
-import { useId } from '~src/hooks/useId';
-import { isValidAllowedChildren } from '~utils';
+import type { DropdownProps } from './types';
+import { dropdownComponentIds } from './dropdownComponentIds';
+import { useId } from '~utils/useId';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
 import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
-
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
+import type { ContainerElementType } from '~utils/types';
+import { useControllableState } from '~utils/useControllable';
 
-type DropdownProps = {
-  selectionType?: 'single' | 'multiple';
-  children: React.ReactNode[];
-} & StyledPropsBlade;
+const validDropdownChildren = [
+  // TODO: Remove Box once CountrySelector's button sizing is fixed
+  dropdownComponentIds.BaseBox,
+  dropdownComponentIds.triggers.SelectInput,
+  dropdownComponentIds.triggers.SearchInput,
+  dropdownComponentIds.triggers.DropdownButton,
+  dropdownComponentIds.triggers.DropdownLink,
+  dropdownComponentIds.DropdownOverlay,
+  dropdownComponentIds.triggers.AutoComplete,
+  bottomSheetComponentIds.BottomSheet,
+];
 
 /**
  * ### Dropdown component
@@ -45,109 +55,193 @@ type DropdownProps = {
  */
 const _Dropdown = ({
   children,
+  isOpen: isOpenControlled,
+  onOpenChange,
   selectionType = 'single',
+  testID,
   ...styledProps
-}: DropdownProps): JSX.Element => {
-  const [isOpen, setIsOpen] = React.useState(false);
+}: DropdownProps): React.ReactElement => {
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
+  const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
     DropdownContextType['selectedIndices']
   >([]);
+  const [controlledValueIndices, setControlledValueIndices] = React.useState<
+    DropdownContextType['selectedIndices']
+  >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
-  const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
+  const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
-  const triggererRef = React.useRef<HTMLButtonElement>(null);
-  const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
-  const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
+  const [
+    hasAutoCompleteInBottomSheetHeader,
+    setHasAutoCompleteInBottomSheetHeader,
+  ] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
+  const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
+    DropdownContextType['changeCallbackTriggerer']
+  >(0);
+  const [isControlled, setIsControlled] = React.useState(false);
   // keep track if dropdown contains bottomsheet
   const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
-  const dropdownBaseId = useId('dropdown');
-
+  /**
+   * In inputs, actual input is smaller than the visible input wrapper.
+   * You can set this reference in such cases so floating ui calculations happen correctly
+   * */
+  const triggererWrapperRef = React.useRef<ContainerElementType>(null);
+  const triggererRef = React.useRef<HTMLButtonElement>(null);
+  const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
+  const isTagDismissedRef = React.useRef<{ value: boolean } | null>({ value: false });
+  const visibleTagsCountRef = React.useRef<{ value: number }>({ value: 0 });
+  const dropdownContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const dropdownBaseId = useId('dropdown');
+  const isDropdownOpenRef = React.useRef(isOpenControlled);
+
+  const [isDropdownOpen, setIsDropdownOpen] = useControllableState({
+    value: isOpenControlled,
+    defaultValue: false,
+    onChange: (isOpenControlledValue) => {
+      isDropdownOpenRef.current = isOpenControlledValue;
+      onOpenChange?.(isOpenControlledValue);
+    },
+  });
+
+  isDropdownOpenRef.current = isDropdownOpen;
+
+  const setIsOpen = (isOpenValue: boolean): void => {
+    isDropdownOpenRef.current = isOpenValue;
+    setIsDropdownOpen(() => isOpenValue);
+  };
+
+  const close = React.useCallback(() => {
+    setActiveTagIndex(-1);
+    setIsOpen(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      if (
-        !isValidAllowedChildren(child, 'SelectInput') &&
-        !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
-        !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
-      ) {
-        throw new Error(
-          `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
-        );
+      if (__DEV__) {
+        if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
+          throwBladeError({
+            message: `Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
+              ', ',
+            )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
+            moduleName: 'Dropdown',
+          });
+        }
       }
 
-      if (isValidAllowedChildren(child, 'SelectInput')) {
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.SelectInput)) {
         dropdownTriggerer.current = 'SelectInput';
+      }
+
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.SearchInput)) {
+        dropdownTriggerer.current = 'SearchInput';
+      }
+
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownButton)) {
+        dropdownTriggerer.current = 'DropdownButton';
+      }
+
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {
+        dropdownTriggerer.current = 'AutoComplete';
       }
     }
   });
 
   const contextValue = React.useMemo<DropdownContextType>(
     () => ({
-      isOpen,
+      isOpen: isDropdownOpen,
       setIsOpen,
+      close,
       selectedIndices,
       setSelectedIndices,
+      controlledValueIndices,
+      setControlledValueIndices,
       options,
       setOptions,
+      filteredValues,
+      setFilteredValues,
       activeIndex,
       setActiveIndex,
-      shouldIgnoreBlur,
-      setShouldIgnoreBlur,
+      activeTagIndex,
+      setActiveTagIndex,
+      visibleTagsCountRef,
       shouldIgnoreBlurAnimation,
       setShouldIgnoreBlurAnimation,
       isKeydownPressed,
       setIsKeydownPressed,
       dropdownBaseId,
       triggererRef,
+      triggererWrapperRef,
       actionListItemRef,
       selectionType,
       hasFooterAction,
       setHasFooterAction,
-      hasLabelOnLeft,
-      setHasLabelOnLeft,
+      hasAutoCompleteInBottomSheetHeader,
+      setHasAutoCompleteInBottomSheetHeader,
       dropdownTriggerer: dropdownTriggerer.current,
+      changeCallbackTriggerer,
+      setChangeCallbackTriggerer,
+      isControlled,
+      setIsControlled,
+      isTagDismissedRef,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
-      isOpen,
+      isDropdownOpen,
+      isOpenControlled,
       selectedIndices,
+      controlledValueIndices,
       options,
+      filteredValues,
       activeIndex,
-      shouldIgnoreBlur,
+      activeTagIndex,
       shouldIgnoreBlurAnimation,
       selectionType,
       hasFooterAction,
-      hasLabelOnLeft,
       isKeydownPressed,
+      changeCallbackTriggerer,
+      isControlled,
     ],
   );
 
-  const BottomSheetAndDropdownGlueContextValue = React.useMemo(() => {
+  const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
     return {
-      isOpen,
-      setIsOpen,
-      selectionType,
+      isOpen: isDropdownOpen,
       dropdownHasBottomSheet,
+      hasAutoCompleteInBottomSheetHeader,
       setDropdownHasBottomSheet,
+      // This is the dismiss function which will be injected into the BottomSheet
+      // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
+      onBottomSheetDismiss: close,
     };
-  }, [isOpen, setIsOpen, selectionType, dropdownHasBottomSheet, setDropdownHasBottomSheet]);
+  }, [dropdownHasBottomSheet, hasAutoCompleteInBottomSheetHeader, isDropdownOpen, close]);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
-        <BaseBox position="relative" {...getStyledProps(styledProps)}>
-          {children}
+        <BaseBox
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ref={dropdownContainerRef as any}
+          {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
+          {...getStyledProps(styledProps)}
+        >
+          <BaseBox position="relative" textAlign={'left' as never}>
+            {children}
+          </BaseBox>
         </BaseBox>
       </DropdownContext.Provider>
     </BottomSheetAndDropdownGlueContext.Provider>
   );
 };
 
-const Dropdown = assignWithoutSideEffects(_Dropdown, { componentId: componentIds.Dropdown });
+const Dropdown = assignWithoutSideEffects(_Dropdown, {
+  componentId: dropdownComponentIds.Dropdown,
+});
 
-export { Dropdown, DropdownProps };
+export { Dropdown };

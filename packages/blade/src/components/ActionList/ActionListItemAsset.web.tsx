@@ -1,6 +1,6 @@
 import { componentIds } from './componentIds';
-import size from '~tokens/global/size';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { size } from '~tokens/global';
 
 type ActionListItemAssetProps = {
   /**
@@ -20,4 +20,5 @@ const ActionListItemAsset = assignWithoutSideEffects(_ActionListItemAsset, {
   componentId: componentIds.ActionListItemAsset,
 });
 
-export { ActionListItemAsset, ActionListItemAssetProps };
+export type { ActionListItemAssetProps };
+export { ActionListItemAsset };

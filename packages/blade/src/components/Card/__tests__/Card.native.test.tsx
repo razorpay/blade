@@ -13,23 +13,40 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
 import BaseBox from '~components/Box/BaseBox';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<Card />', () => {
   it('should render a plain Card', () => {
     const { toJSON } = renderWithTheme(
-      <Card surfaceLevel={2}>
+      <Card backgroundColor="surface.background.gray.moderate" elevation="highRaised">
         <CardBody>
           <Text>Plain Card</Text>
         </CardBody>
+      </Card>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render a border when elevation is `none`', () => {
+    const { toJSON } = renderWithTheme(
+      <Card elevation="none">
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render a Card without 0 padding', () => {
+    const { toJSON } = renderWithTheme(
+      <Card padding="spacing.0">
+        <CardBody>Plain Card</CardBody>
       </Card>,
     );
     expect(toJSON()).toMatchSnapshot();
@@ -39,7 +56,7 @@ describe('<Card />', () => {
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';
     const { getByText, toJSON } = renderWithTheme(
-      <Card surfaceLevel={2}>
+      <Card>
         <CardHeader>
           <CardHeaderLeading
             title={cardTitle}
@@ -66,7 +83,7 @@ describe('<Card />', () => {
     const primaryFn = jest.fn();
     const secondaryFn = jest.fn();
     const { getByText, toJSON } = renderWithTheme(
-      <Card surfaceLevel={2}>
+      <Card>
         <CardBody>
           <Text>Plain Card</Text>
         </CardBody>
@@ -104,25 +121,26 @@ describe('<Card />', () => {
   });
 
   it('should only accept allowed components in Card Header', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';
     expect(() =>
       renderWithTheme(
-        <Card surfaceLevel={2}>
+        <Card>
           <CardHeader>
             <CardHeaderLeading
               title={cardTitle}
               subtitle={cardSubtitle}
-              prefix={<InfoIcon color="action.icon.primary.default" size="xsmall" />}
+              prefix={<InfoIcon color="interactive.icon.staticWhite.normal" size="xsmall" />}
             />
           </CardHeader>
         </Card>,
       ),
-    ).toThrow('[Blade CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
+    ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
 
     expect(() =>
       renderWithTheme(
-        <Card surfaceLevel={2}>
+        <Card>
           <CardHeader>
             <CardHeaderLeading
               title={cardTitle}
@@ -133,47 +151,51 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
+      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
     );
 
     expect(() =>
       renderWithTheme(
-        <Card surfaceLevel={2}>
+        <Card>
           <CardHeader>
             <CardHeaderTrailing visual={<Badge>NEW</Badge>} />
           </CardHeader>
         </Card>,
       ),
     ).toThrow(
-      '[Blade CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge` component is accepted in visual',
+      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount` component is accepted in visual',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should throw error if any sub card components are used outside of Card', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() => renderWithTheme(<CardBody>body</CardBody>)).toThrow(
-      '[Blade Card]: CardBody cannot be used outside of Card component',
+      '[Blade: Card]: CardBody cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardHeader />)).toThrow(
-      '[Blade Card]: CardHeader cannot be used outside of Card component',
+      '[Blade: Card]: CardHeader cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardHeaderLeading title="" />)).toThrow(
-      '[Blade Card]: CardHeaderLeading cannot be used outside of Card component',
+      '[Blade: Card]: CardHeaderLeading cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardHeaderTrailing />)).toThrow(
-      '[Blade Card]: CardHeaderTrailing cannot be used outside of Card component',
+      '[Blade: Card]: CardHeaderTrailing cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardFooter />)).toThrow(
-      '[Blade Card]: CardFooter cannot be used outside of Card component',
+      '[Blade: Card]: CardFooter cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardFooterLeading title="" />)).toThrow(
-      '[Blade Card]: CardFooterLeading cannot be used outside of Card component',
+      '[Blade: Card]: CardFooterLeading cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
-      '[Blade Card]: CardFooterTrailing cannot be used outside of Card component',
+      '[Blade: Card]: CardFooterTrailing cannot be used outside of Card component',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should restrict childrens & only allow CardHeader, CardBody & CardFooter in Card', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <Card>
@@ -184,11 +206,13 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted as Card children',
+      '[Blade: Card]: Only `CardHeader, CardBody, CardFooter` components are accepted in `Card` children',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should restrict childrens in CardHeader', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <Card>
@@ -202,11 +226,13 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted as CardHeader children',
+      '[Blade: CardHeader]: Only `CardHeaderLeading, CardHeaderTrailing` components are accepted in `CardHeader` children',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should restrict childrens in CardFooter', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <Card>
@@ -220,13 +246,14 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
+      '[Blade: CardFooter]: Only `CardFooterLeading, CardFooterTrailing` components are accepted in `CardFooter` children',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(
-      <Card surfaceLevel={2} testID="card-test">
+      <Card testID="card-test">
         <CardBody>
           <Text>Plain Card</Text>
         </CardBody>

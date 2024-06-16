@@ -1,6 +1,8 @@
-import type { Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import type { CardFooterAction } from './';
+import React from 'react';
+import type { CardSpacingValueType } from './types';
+import type { CardFooterAction, CardProps } from './';
 import {
   CardBody,
   Card,
@@ -15,31 +17,29 @@ import {
   CardHeaderBadge,
   CardHeaderIconButton,
   CardHeaderLink,
+  CardHeaderAmount,
   CardHeaderText,
 } from './';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import { UsersIcon, TrashIcon } from '~components/Icons';
+import { UsersIcon, TrashIcon, CheckCircleIcon } from '~components/Icons';
 
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import type { Elevation } from '~tokens/global';
+import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Card"
       componentDescription="Cards are used to group similar concepts and tasks together to make easier for merchants to scan, read, and get things done. In simpler words Cards help seprates content into sections. They are the surfaces that display content and actions on a single topic. They should be easy to scan for relevant and actionable information."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21248%3A400833&t=ZCWT255jVK78xf1J-4',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=12791%3A336279&t=ZCWT255jVK78xf1J-4',
-      }}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75857-127700&t=228BuziDJiPsRuIh-1&scaling=min-zoom&page-id=21248%3A307966&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
@@ -112,42 +112,67 @@ const Page = (): React.ReactElement => {
 
 const propsCategory = {
   CARD: 'Card Props',
+  CARD_HEADER: 'Header Props',
   CARD_HEADER_LEADING: 'Header Leading Props',
   CARD_HEADER_TRAILING: 'Header Trailing Props',
+  CARD_FOOTER: 'Footer Props',
   CARD_FOOTER_LEADING: 'Footer Leading Props',
   CARD_FOOTER_TRAILING: 'Footer Trailing Props',
 };
 
 type StoryControlProps = {
-  surfaceLevel: 2;
+  backgroundColor: CardProps['backgroundColor'];
+  borderRadius: CardProps['borderRadius'];
+  elevation: keyof Elevation;
+  padding: CardSpacingValueType;
   headerTitle: string;
   headerSubtitle: string;
+  headerMarginBottom: CardSpacingValueType;
+  headerPaddingBottom: CardSpacingValueType;
   prefix: IconComponent;
   suffix: number;
   visual: React.ReactNode;
   body: React.ReactNode;
   footerTitle: string;
   footerSubtitle: string;
+  footerMarginTop: CardSpacingValueType;
+  footerPaddingTop: CardSpacingValueType;
   footerPrimaryAction: CardFooterAction;
   footerSecondaryAction: CardFooterAction;
 };
+
+const spacingValueOptions: CardSpacingValueType[] = [
+  'spacing.0',
+  'spacing.3',
+  'spacing.4',
+  'spacing.5',
+  'spacing.7',
+];
 
 const visual = {
   Link: <CardHeaderLink href="/">Learn more</CardHeaderLink>,
   Text: <CardHeaderText>$100</CardHeaderText>,
   IconButton: <CardHeaderIconButton icon={TrashIcon} />,
-  Badge: <CardHeaderBadge variant="positive">NEW</CardHeaderBadge>,
+  Badge: <CardHeaderBadge color="positive">NEW</CardHeaderBadge>,
+  Amount: <CardHeaderAmount value={1000} />,
 };
 
 export default {
   title: 'Components/Card',
   component: Card,
   args: {
-    surfaceLevel: 2,
+    backgroundColor: 'surface.background.gray.intense',
+    borderRadius: 'medium',
+    elevation: 'lowRaised',
+    padding: 'spacing.7',
     headerTitle: 'Payment Links',
     headerSubtitle: 'Share payment link via an email, SMS, messenger, chatbot etc.',
+    headerPaddingBottom: 'spacing.4',
+    headerMarginBottom: 'spacing.4',
     footerTitle: 'Built for Developers',
     footerSubtitle: 'By Developers.',
+    footerMarginTop: 'spacing.4',
+    footerPaddingTop: 'spacing.4',
     body:
       'Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.',
     footerPrimaryAction: {
@@ -174,9 +199,22 @@ export default {
       isLoading: false,
       type: undefined,
     },
+    prefix: ('LinkIcon' as unknown) as IconComponent,
+    suffix: 12,
+    visual: 'Badge',
   },
+  tags: ['autodocs'],
   argTypes: {
-    surfaceLevel: {
+    backgroundColor: {
+      table: { category: propsCategory.CARD },
+    },
+    borderRadius: {
+      table: { category: propsCategory.CARD },
+    },
+    elevation: {
+      table: { category: propsCategory.CARD },
+    },
+    padding: {
       table: { category: propsCategory.CARD },
     },
     headerTitle: {
@@ -185,13 +223,26 @@ export default {
     headerSubtitle: {
       table: { category: propsCategory.CARD_HEADER_LEADING },
     },
+    headerMarginBottom: {
+      table: { category: propsCategory.CARD_HEADER },
+      control: {
+        type: 'radio',
+        options: spacingValueOptions,
+      },
+    },
+    headerPaddingBottom: {
+      table: { category: propsCategory.CARD_HEADER },
+      control: {
+        type: 'radio',
+        options: spacingValueOptions,
+      },
+    },
     prefix: {
       control: {
         type: 'select',
       },
       mapping: iconMap,
       options: Object.keys(iconMap),
-      defaultValue: 'LinkIcon',
       table: {
         category: propsCategory.CARD_HEADER_LEADING,
       },
@@ -200,7 +251,6 @@ export default {
       control: {
         type: 'number',
       },
-      defaultValue: 12,
       table: { category: propsCategory.CARD_HEADER_LEADING },
     },
     visual: {
@@ -209,7 +259,6 @@ export default {
       },
       mapping: visual,
       options: Object.keys(visual),
-      defaultValue: 'Badge',
       table: {
         category: propsCategory.CARD_HEADER_LEADING,
       },
@@ -220,6 +269,20 @@ export default {
     footerSubtitle: {
       table: { category: propsCategory.CARD_FOOTER_LEADING },
     },
+    footerMarginTop: {
+      table: { category: propsCategory.CARD_FOOTER },
+      control: {
+        type: 'radio',
+        options: spacingValueOptions,
+      },
+    },
+    footerPaddingTop: {
+      table: { category: propsCategory.CARD_FOOTER },
+      control: {
+        type: 'radio',
+        options: spacingValueOptions,
+      },
+    },
     footerPrimaryAction: {
       table: { category: propsCategory.CARD_FOOTER_TRAILING },
     },
@@ -228,6 +291,7 @@ export default {
     },
     ...getStyledPropsArgTypes(),
   },
+
   parameters: {
     docs: {
       page: Page,
@@ -237,20 +301,25 @@ export default {
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Card surfaceLevel={args.surfaceLevel}>
-      <CardHeader>
+    <Card
+      borderRadius={args.borderRadius}
+      backgroundColor={args.backgroundColor}
+      elevation={args.elevation}
+      padding={args.padding}
+    >
+      <CardHeader paddingBottom={args.headerPaddingBottom} marginBottom={args.headerMarginBottom}>
         <CardHeaderLeading
           title={args.headerTitle}
           subtitle={args.headerSubtitle}
-          prefix={<CardHeaderIcon icon={args.prefix} />}
-          suffix={<CardHeaderCounter value={args.suffix} />}
+          prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
+          suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
         />
         <CardHeaderTrailing visual={args.visual} />
       </CardHeader>
       <CardBody>
         <Text>{args.body}</Text>
       </CardBody>
-      <CardFooter>
+      <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
         <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
         <CardFooterTrailing
           actions={{
@@ -264,10 +333,19 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
 };
 
 export const CardExample = CardTemplate.bind({});
+export const FigmaExample = CardTemplate.bind({});
+// @ts-expect-error: storybook thinks it does exist but it does
+FigmaExample.args = {
+  headerTitle: 'Header Title',
+  headerSubtitle: 'Header Subtitle',
+  prefix: CheckCircleIcon,
+  footerTitle: 'Footer Title',
+  footerSubtitle: 'Footer Subtitle',
+};
 
 const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Card surfaceLevel={args.surfaceLevel}>
+    <Card backgroundColor={args.backgroundColor}>
       <CardHeader>
         <CardHeaderLeading
           title="Profile Information"
@@ -350,3 +428,41 @@ const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement
 };
 
 export const CardBodyContent = CardChildrenExample.bind({});
+
+const CardWithoutPaddingExample: StoryFn<typeof Card> = (): React.ReactElement => {
+  return (
+    <Card elevation="highRaised" padding="spacing.0">
+      <CardBody>
+        <Box display="flex" flexDirection="row">
+          <img
+            width="300"
+            height="auto"
+            src="https://d6xcmfyh68wv8.cloudfront.net/assets/case-studies/common-card/pg_breathingroom.png"
+            alt="Breathing Room"
+            style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
+          />
+          <Box padding="spacing.7" display="flex" flexDirection="column">
+            <Heading size="large">Breathing Room</Heading>
+            <Text marginTop="spacing.5">
+              Popular in the startup ecosystem, BreathingRoom.co offers short-term workspaces
+              conference rooms, training rooms, cabins & hotdesks to individuals and enterprises on
+              an hourly & monthly basis. BreathingRoom is perfect for a wide range of professional
+              needs like training sessions, recruitment drives, team offsites, and client meetings
+              in addition to cost effective office space rentals; great for setting up remote
+              offices. With a network of over 450 office spaces spread across Mumbai, Delhi,
+              Bangalore, Pune, Hyderabad and Chennai, BreathingRoom offers convenient, flexible
+              rental options that can be easily booked through the website or mobile app.
+            </Text>
+          </Box>
+        </Box>
+      </CardBody>
+    </Card>
+  );
+};
+
+export const CardWithoutPadding = CardWithoutPaddingExample.bind({});
+CardWithoutPadding.parameters = {
+  controls: {
+    disable: true,
+  },
+};

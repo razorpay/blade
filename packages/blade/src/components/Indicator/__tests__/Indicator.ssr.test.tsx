@@ -1,5 +1,5 @@
 import { Indicator } from '..';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<Indicator />', () => {
   it('should have role and a11y label when text label is passed', () => {

@@ -1,5 +1,5 @@
 import { Indicator } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Indicator />', () => {
   it('should render', () => {
@@ -8,14 +8,24 @@ describe('<Indicator />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render different variants for size and intent', () => {
+  it('should render different variants for size and color', () => {
     const { toJSON } = renderWithTheme(
       <>
-        <Indicator accessibilityLabel="Warning" size="small" intent="notice" />
-        <Indicator accessibilityLabel="Success" size="medium" intent="positive" />
-        <Indicator accessibilityLabel="Error" size="large" intent="negative" />
-        <Indicator accessibilityLabel="Info" intent="information" />
+        <Indicator accessibilityLabel="Warning" size="small" color="notice" />
+        <Indicator accessibilityLabel="Success" size="medium" color="positive" />
+        <Indicator accessibilityLabel="Error" size="large" color="negative" />
+        <Indicator accessibilityLabel="Info" color="information" />
       </>,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render with intense emphasis', () => {
+    const { toJSON } = renderWithTheme(
+      <Indicator emphasis="intense" size="small" color="positive">
+        Success
+      </Indicator>,
     );
 
     expect(toJSON()).toMatchSnapshot();

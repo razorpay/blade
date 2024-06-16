@@ -1,0 +1,1 @@
+export { transformBadge } from './badge';

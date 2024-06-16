@@ -1,5 +1,5 @@
 {
-  "node": "14",
+  "node": "18",
   "packages": ["packages/blade"],
   "//": "we don't want to build since post install and prepublish our build automatically runs",
   "buildCommand": false,

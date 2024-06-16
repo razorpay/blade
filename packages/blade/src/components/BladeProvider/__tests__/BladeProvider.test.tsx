@@ -1,10 +1,11 @@
 import type { WrapperComponent } from '@testing-library/react-hooks';
 import { renderHook, act } from '@testing-library/react-hooks';
-import paymentLightTheme from './paymentLightTheme';
-import { paymentTheme, colorSchemeNamesInput } from '~tokens/theme';
+import bladeLightTheme from './bladeLightTheme';
+import { bladeTheme } from '~tokens/theme';
+import { colorSchemeNamesInput } from '~tokens/theme/theme';
 import type { BladeProviderProps } from '~components/BladeProvider';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
-import { setupMatchMediaMock } from '~utils';
+import { setupMatchMediaMock } from '~utils/mocks';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -26,13 +27,13 @@ describe('<BladeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        themeTokens: paymentTheme,
+        themeTokens: bladeTheme,
         colorScheme: 'light',
         children: null,
       },
     });
 
-    expect(result.current.theme).toEqual(paymentLightTheme);
+    expect(result.current.theme).toEqual(bladeLightTheme);
     expect(result.current.colorScheme).toBe('light');
   });
 
@@ -40,7 +41,7 @@ describe('<BladeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        themeTokens: paymentTheme,
+        themeTokens: bladeTheme,
         children: null,
       },
     });
@@ -52,7 +53,7 @@ describe('<BladeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        themeTokens: paymentTheme,
+        themeTokens: bladeTheme,
         colorScheme: 'light',
         children: null,
       },
@@ -76,7 +77,7 @@ describe('<BladeProvider/>', () => {
     });
 
     expect(result.error?.message).toBe(
-      `[BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found undefined`,
+      `[Blade: BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found undefined`,
     );
   });
 
@@ -85,7 +86,7 @@ describe('<BladeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        themeTokens: paymentTheme,
+        themeTokens: bladeTheme,
         // @ts-expect-error testing the error case when colorscheme is not one of [light, dark, system]
         colorScheme: initialColorScheme,
         children: null,
@@ -93,7 +94,7 @@ describe('<BladeProvider/>', () => {
     });
 
     expect(result.error?.message).toBe(
-      `[BladeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
+      `[Blade: BladeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
     );
   });
 });

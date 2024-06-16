@@ -1,5 +1,5 @@
 import { PasswordInput } from '..';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<PasswordInput />', () => {
   it('should display error validation state', () => {

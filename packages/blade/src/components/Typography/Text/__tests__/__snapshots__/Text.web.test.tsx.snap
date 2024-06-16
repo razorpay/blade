@@ -1,15 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Text /> should render Text with center textAlign 1`] = `
-.c0 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -17,13 +21,36 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="regular"
+  >
+    Displaying some text
+  </p>
+</div>
+`;
+
+exports[`<Text /> should render Text with color 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <p
+    class="c0"
+    data-blade-component="text"
   >
     Displaying some text
   </p>
@@ -31,28 +58,27 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 `;
 
 exports[`<Text /> should render Text with default properties 1`] = `
-.c0 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="regular"
   >
     Displaying some text
   </p>
@@ -60,36 +86,33 @@ exports[`<Text /> should render Text with default properties 1`] = `
 `;
 
 exports[`<Text /> should render Text with variant "body" 1`] = `
-.c0 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
   <p
-    class="c0 c1"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying some text
   </p>
@@ -97,36 +120,33 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 `;
 
 exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
-.c0 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
   <p
-    class="c0 c1"
-    color="surface.text.normal.highContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying some text
   </p>
@@ -134,36 +154,33 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 `;
 
 exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
-.c0 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
   <p
-    class="c0 c1"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="75"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying some text
   </p>
@@ -171,28 +188,27 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 `;
 
 exports[`<Text /> should render Text with variant "caption" 1`] = `
-.c0 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying some text
   </p>

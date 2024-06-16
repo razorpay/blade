@@ -2,9 +2,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useBottomSheetContext } from './BottomSheetContext';
-import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime } from '~utils';
+import { castWebType } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpen }) => {
   return {
@@ -18,11 +19,11 @@ const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme,
 });
 
 const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement => {
-  const { theme } = useTheme();
   const { close, isOpen } = useBottomSheetContext();
 
   return (
     <StyledBottomSheetBackdrop
+      {...metaAttribute({ testID: 'bottomsheet-backdrop' })}
       onClick={() => {
         close();
       }}
@@ -34,7 +35,7 @@ const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement
       bottom="spacing.0"
       right="spacing.0"
       zIndex={zIndex}
-      backgroundColor={theme.colors.overlay.background}
+      backgroundColor="overlay.background.subtle"
     />
   );
 };

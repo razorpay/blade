@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseText } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -17,7 +17,7 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color="surface.text.gray.normal"
         fontFamily="text"
         lineHeight={100}
         fontSize={25}
@@ -34,7 +34,7 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color="surface.text.gray.normal"
         fontFamily="text"
         lineHeight={100}
         fontSize={25}
@@ -54,7 +54,7 @@ describe('<BaseText />', () => {
       const displayText = 'Displaying some text';
       renderWithTheme(
         <BaseText
-          color="surface.text.normal.highContrast"
+          color="surface.text.gray.normal"
           fontFamily="text"
           lineHeight={100}
           fontSize={25}

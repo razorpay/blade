@@ -1,8 +1,9 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import { Linking } from 'react-native';
+import type { LinkProps } from '../Link';
 import Link from '../Link';
 import { InfoIcon } from '~components/Icons';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 jest.mock('react-native/Libraries/Linking/Linking', () => ({
   openURL: jest.fn(() => Promise.resolve()),
@@ -11,6 +12,8 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const colors: LinkProps['color'][] = ['primary', 'white', 'neutral'];
 
 describe('<Link />', () => {
   it('should render link with default properties', () => {
@@ -85,6 +88,28 @@ describe('<Link />', () => {
       </Link>,
     );
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  colors.forEach((color) => {
+    it(`should render ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { toJSON } = renderWithTheme(
+        <Link color={color} isDisabled={true}>
+          {linkText}
+        </Link>,
+      );
+      expect(toJSON()).toMatchSnapshot();
+    });
+
+    it(`should render disabled ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { toJSON } = renderWithTheme(
+        <Link color={color} isDisabled={true}>
+          {linkText}
+        </Link>,
+      );
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should call function on click of button variant of link', () => {

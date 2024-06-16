@@ -1,0 +1,405 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Display /> should render Display with color 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.subtle"
+    data-blade-component="display"
+    fontFamily="heading"
+    fontSize={800}
+    fontStyle="normal"
+    fontWeight="semibold"
+    lineHeight={800}
+    style={
+      [
+        {
+          "color": "hsla(211, 26%, 34%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
+          "fontStyle": "normal",
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying Landing Page Display
+  </Text>
+</View>
+`;
+
+exports[`<Display /> should render Display with default properties 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.normal"
+    data-blade-component="display"
+    fontFamily="heading"
+    fontSize={800}
+    fontStyle="normal"
+    fontWeight="semibold"
+    lineHeight={800}
+    style={
+      [
+        {
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
+          "fontStyle": "normal",
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying Landing Screen Display
+  </Text>
+</View>
+`;
+
+exports[`<Display /> should render Display with mixed color 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.normal"
+    data-blade-component="display"
+    fontFamily="heading"
+    fontSize={800}
+    fontStyle="normal"
+    fontWeight="semibold"
+    lineHeight={800}
+    style={
+      [
+        {
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
+          "fontStyle": "normal",
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Supercharge your business with the all‑powerful
+     
+    <Text
+      accessibilityRole="header"
+      accessible={true}
+      color="interactive.text.information.subtle"
+      data-blade-component="display"
+      fontFamily="heading"
+      fontSize={800}
+      fontStyle="normal"
+      fontWeight="semibold"
+      lineHeight={800}
+      style={
+        [
+          {
+            "color": "hsla(200, 84%, 44%, 1)",
+            "fontFamily": "TASA Orbiter Display",
+            "fontSize": 34,
+            "fontStyle": "normal",
+            "fontWeight": "600",
+            "letterSpacing": 0,
+            "lineHeight": 40,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      Payment Gateway
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Display /> should render Display with variant "large" 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.normal"
+    data-blade-component="display"
+    fontFamily="heading"
+    fontSize={1000}
+    fontStyle="normal"
+    fontWeight="semibold"
+    lineHeight={1000}
+    style={
+      [
+        {
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 38,
+          "fontStyle": "normal",
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 46,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying Landing Screen Display
+  </Text>
+</View>
+`;
+
+exports[`<Display /> should render Display with variant "medium" 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.normal"
+    data-blade-component="display"
+    fontFamily="heading"
+    fontSize={900}
+    fontStyle="normal"
+    fontWeight="semibold"
+    lineHeight={900}
+    style={
+      [
+        {
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 36,
+          "fontStyle": "normal",
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 42,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying Landing Screen Display
+  </Text>
+</View>
+`;
+
+exports[`<Display /> should render Display with variant "small" 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.normal"
+    data-blade-component="display"
+    fontFamily="heading"
+    fontSize={800}
+    fontStyle="normal"
+    fontWeight="semibold"
+    lineHeight={800}
+    style={
+      [
+        {
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
+          "fontStyle": "normal",
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying Landing Screen Display
+  </Text>
+</View>
+`;
+
+exports[`<Display /> should render Display with variant "small" and contrast "high" 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.normal"
+    data-blade-component="display"
+    fontFamily="heading"
+    fontSize={800}
+    fontStyle="normal"
+    fontWeight="semibold"
+    lineHeight={800}
+    style={
+      [
+        {
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
+          "fontStyle": "normal",
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying Landing Screen Display
+  </Text>
+</View>
+`;
+
+exports[`<Display /> should render Display with variant "xlarge" 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    accessible={true}
+    color="surface.text.gray.normal"
+    data-blade-component="display"
+    fontFamily="heading"
+    fontSize={1100}
+    fontStyle="normal"
+    fontWeight="semibold"
+    lineHeight={1100}
+    style={
+      [
+        {
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 40,
+          "fontStyle": "normal",
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 48,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying Landing Screen Display
+  </Text>
+</View>
+`;

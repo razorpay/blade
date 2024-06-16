@@ -1,10 +1,10 @@
 import AlignCenterIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<AlignCenterIcon />', () => {
   it('should render AlignCenterIcon', () => {
     const { container } = renderWithTheme(
-      <AlignCenterIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <AlignCenterIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

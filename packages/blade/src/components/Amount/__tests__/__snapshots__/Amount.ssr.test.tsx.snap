@@ -1,43 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" data-blade-component=\\"amount\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fgJIjk\\"><span color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dHJgVN\\">₹</span><span color=\\"surface.text.normal.lowContrast\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav\\">10,000<!-- -->.</span><span color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hfiTkt\\">00</span></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx eBHIXa"><div data-blade-component="base-box" class="BaseBox-bmPWx boSJQS"><span opacity="0.64" class="StyledBaseText-dVBfTO eiFYBx" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO fAQkza" data-blade-component="base-text">10,000</span><span opacity="0.64" class="StyledBaseText-dVBfTO eZlGgd" data-blade-component="base-text">.<!-- -->00</span></div></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  position: relative;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  opacity: 0.64;
+  margin-right: 2px;
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  opacity: 0.64;
+}
+
 <div
-  data-reactroot=""
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fgJIjk"
+    class="c0"
     data-blade-component="amount"
-    display="flex"
   >
-    <span
-      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dHJgVN"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
+    <div
+      class="c1"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav"
-      color="surface.text.normal.lowContrast"
-      font-size="100"
-      font-weight="regular"
-    >
-      10,000
-      <!-- -->
-      .
-    </span>
-    <span
-      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hfiTkt"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+        opacity="0.64"
+      >
+        ₹
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        10,000
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+        opacity="0.64"
+      >
+        .
+        <!-- -->
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;

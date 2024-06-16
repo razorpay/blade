@@ -1,5 +1,5 @@
 import { Spinner } from '../Spinner';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Spinner />', () => {
   it('should render Spinner with default props', () => {
@@ -22,13 +22,13 @@ describe('<Spinner />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low contrast Spinner', () => {
-    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="low" />);
+  it('should render default color Spinner', () => {
+    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="primary" />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high contrast Spinner', () => {
-    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="high" />);
+  it('should render white color Spinner', () => {
+    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="white" />);
     expect(container).toMatchSnapshot();
   });
 

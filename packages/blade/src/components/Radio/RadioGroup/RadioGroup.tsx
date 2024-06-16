@@ -7,9 +7,10 @@ import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, makeSize, useBreakpoint } from '~utils';
+import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { makeSize } from '~utils/makeSize';
 
 type RadioGroupProps = {
   /**
@@ -47,9 +48,14 @@ type RadioGroupProps = {
    */
   isDisabled?: boolean;
   /**
+   * Sets the required state of the radioGroup
+   * @default false
+   */
+  isRequired?: boolean;
+  /**
    * Renders the label of the radio group
    */
-  label: string;
+  label?: string;
   /**
    * Sets the position of the label
    *
@@ -80,7 +86,7 @@ type RadioGroupProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & TestID &
   StyledPropsBlade;
 
@@ -89,6 +95,7 @@ const RadioGroup = ({
   label,
   helpText,
   isDisabled = false,
+  isRequired = false,
   necessityIndicator = 'none',
   labelPosition = 'top',
   validationState = 'none',
@@ -104,8 +111,10 @@ const RadioGroup = ({
   const { contextValue, ids } = useRadioGroup({
     defaultValue,
     isDisabled,
+    isRequired,
     labelPosition,
     name,
+    necessityIndicator,
     onChange,
     validationState,
     value,
@@ -117,7 +126,6 @@ const RadioGroup = ({
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
-  const isReactNative = getPlatformType() === 'react-native';
   const gap = radioSizes.group.gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
 
@@ -127,19 +135,22 @@ const RadioGroup = ({
         <SelectorGroupField
           position={labelPosition}
           labelledBy={ids.labelId}
-          accessibilityRole={isReactNative ? 'radiogroup' : 'group'}
+          accessibilityRole="radiogroup"
           componentName="radio-group"
           testID={testID}
         >
-          <FormLabel
-            as="span"
-            necessityIndicator={necessityIndicator}
-            position={labelPosition}
-            id={ids.labelId}
-            accessibilityText={accessibilityText && `,${accessibilityText}`}
-          >
-            {label}
-          </FormLabel>
+          {label ? (
+            <FormLabel
+              as="span"
+              necessityIndicator={necessityIndicator}
+              position={labelPosition}
+              id={ids.labelId}
+              accessibilityText={accessibilityText && `,${accessibilityText}`}
+              size={size}
+            >
+              {label}
+            </FormLabel>
+          ) : null}
           <BaseBox>
             <BaseBox display="flex" flexDirection="column">
               {React.Children.map(children, (child, index) => {
@@ -154,6 +165,7 @@ const RadioGroup = ({
               })}
             </BaseBox>
             <FormHint
+              size={size}
               type={validationState === 'error' ? 'error' : 'help'}
               errorText={errorText}
               helpText={helpText}
@@ -165,4 +177,5 @@ const RadioGroup = ({
   );
 };
 
-export { RadioGroup, RadioGroupProps };
+export type { RadioGroupProps };
+export { RadioGroup };

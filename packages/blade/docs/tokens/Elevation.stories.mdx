@@ -1,0 +1,62 @@
+import { Meta, DocsContainer } from '@storybook/addon-docs';
+import { useTheme, BladeProvider } from '../../src/components';
+import { bladeTheme } from '../../src/tokens';
+
+<Meta
+  title="Tokens/Elevation"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        const colorScheme = context.store.globals.globals.colorScheme;
+        return (
+          <DocsContainer context={context}>
+            <BladeProvider
+              key={colorScheme}
+              themeTokens={bladeTheme}
+              colorScheme={colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </DocsContainer>
+        );
+      },
+    },
+  }}
+/>
+
+# 🪞 Elevation
+
+export const Elevation = () => {
+  const { theme } = useTheme();
+  return (
+    <table>
+      <tbody>
+        {Object.entries(theme.elevation).map(([key, value]) => (
+          <tr
+            key={key}
+            style={{
+              backgroundColor: theme.colors.surface.background.gray.moderate,
+            }}
+          >
+            <td
+              style={{ color: theme.colors.surface.text.gray.normal }}
+            >{`theme.elevation.${key}`}</td>
+            <td style={{ padding: '20px' }}>
+              <div
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  backgroundColor: '#fff',
+                  borderRadius: '8px',
+                  boxShadow: `${value}`,
+                }}
+              />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+<Elevation />

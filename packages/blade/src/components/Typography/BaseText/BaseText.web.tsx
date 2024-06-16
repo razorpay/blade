@@ -3,10 +3,15 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible } from '~utils';
-import { useStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
+import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
-const StyledBaseText = styled.div<StyledBaseTextProps>(
+const StyledBaseText = styled.div.withConfig({
+  shouldForwardProp: omitPropsFromHTML,
+  displayName: 'StyledBaseText',
+})<StyledBaseTextProps>(
   ({
     color,
     fontFamily,
@@ -14,8 +19,12 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
     fontWeight,
     fontStyle,
     textDecorationLine,
+    numberOfLines,
     lineHeight,
+    letterSpacing,
     textAlign,
+    wordBreak,
+    opacity,
     ...props
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
@@ -27,8 +36,12 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
         fontWeight,
         fontStyle,
         textDecorationLine,
+        numberOfLines,
         lineHeight,
+        letterSpacing,
         textAlign,
+        wordBreak,
+        opacity,
         theme: props.theme,
       }),
       ...styledPropsCSSObject,
@@ -45,20 +58,23 @@ export const BaseText = ({
   fontStyle,
   textDecorationLine,
   lineHeight,
+  letterSpacing,
   as,
   textAlign,
   children,
   truncateAfterLines,
+  wordBreak,
+  opacity,
   className,
   style,
   accessibilityProps = {},
-  componentName,
+  componentName = MetaConstants.BaseText,
   testID,
   ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
     <StyledBaseText
-      {...styledProps}
+      {...getStyledProps(styledProps)}
       color={color}
       fontFamily={fontFamily}
       fontSize={fontSize}
@@ -66,9 +82,12 @@ export const BaseText = ({
       fontStyle={fontStyle}
       textDecorationLine={textDecorationLine}
       lineHeight={lineHeight}
+      letterSpacing={letterSpacing}
       as={as}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
+      wordBreak={wordBreak}
+      opacity={opacity}
       className={className}
       style={style}
       id={id}

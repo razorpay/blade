@@ -1,7 +1,7 @@
 import React from 'react';
-import renderWithSSR from '../../../_helpers/testing/renderWithSSR.web';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<RadioGroup />', () => {
   it('should render with help text', () => {

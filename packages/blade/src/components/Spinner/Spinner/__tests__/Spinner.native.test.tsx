@@ -1,5 +1,5 @@
 import { Spinner } from '../Spinner';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Spinner />', () => {
   it('should render Spinner with default props', () => {
@@ -22,13 +22,13 @@ describe('<Spinner />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast Spinner', () => {
-    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="low" />);
+  it('should render default color Spinner', () => {
+    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="primary" />);
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast Spinner', () => {
-    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="high" />);
+  it('should render white color Spinner', () => {
+    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="white" />);
     expect(toJSON()).toMatchSnapshot();
   });
 

@@ -31,7 +31,7 @@ export type Spacing = Readonly<{
   11: 56;
 }>;
 
-const spacing: Spacing = {
+export const spacing: Spacing = {
   0: 0,
   1: 2,
   2: 4,
@@ -45,5 +45,3 @@ const spacing: Spacing = {
   10: 48,
   11: 56,
 };
-
-export default spacing;

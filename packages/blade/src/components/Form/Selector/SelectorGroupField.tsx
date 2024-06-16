@@ -1,16 +1,18 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
-import { metaAttribute, getPlatformType, makeAccessible } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
-import type { AriaRoles } from '~utils';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import type { AriaRoles } from '~utils/makeAccessible';
+import { makeAccessible } from '~utils/makeAccessible';
+import { getPlatformType } from '~utils';
 
 type SelectorGroupFieldProps = {
   children: React.ReactNode;
   labelledBy: string;
   position?: 'top' | 'left';
   accessibilityRole?: AriaRoles;
-  componentName: 'checkbox-group' | 'radio-group';
+  componentName: 'checkbox-group' | 'radio-group' | 'chip-group';
 } & TestID;
 
 const SelectorGroupField = ({
