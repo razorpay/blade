@@ -338,44 +338,47 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   }, [props.intent, dropdownTriggerer]);
 
   return (
-    <BaseMenuItem
-      isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
-      as={!isReactNative() ? renderOnWebAs : undefined}
-      id={`${dropdownBaseId}-${props._index}`}
-      tabIndex={-1}
-      title={props.title}
-      description={props.description}
-      leading={props.leading}
-      trailing={props.trailing}
-      titleSuffix={props.titleSuffix}
-      href={props.href}
-      target={props.target}
-      className={activeIndex === props._index ? 'active-focus' : ''}
-      isSelected={isSelected}
-      isDisabled={props.isDisabled}
-      role={getActionListItemRole(dropdownTriggerer)}
-      {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
-        if (typeof props._index === 'number') {
-          onOptionClick(e, props._index);
-          props.onClick?.({ name: props.value, value: isSelected, event: castWebType(e) });
-        }
-      })}
-      {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
-      onMouseDown={() => {
-        // We want to keep focus on Dropdown's trigger while option is being clicked
-        // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
-        setShouldIgnoreBlurAnimation(true);
-      }}
-      onMouseUp={() => {
-        // (Contd from above comment...) We set this flag back to false since blur of SelectInput is done calling by this time
-        setShouldIgnoreBlurAnimation(false);
-      }}
-      data-value={props.value}
-      data-index={props._index}
-      selectionType={selectionType}
-      color={props.intent}
-      isKeydownPressed={isKeydownPressed}
-    />
+    // We use this context to change the color of subcomponents like ActionListItemIcon, ActionListItemText, etc
+    <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
+      <BaseMenuItem
+        isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
+        as={!isReactNative() ? renderOnWebAs : undefined}
+        id={`${dropdownBaseId}-${props._index}`}
+        tabIndex={-1}
+        title={props.title}
+        description={props.description}
+        leading={props.leading}
+        trailing={props.trailing}
+        titleSuffix={props.titleSuffix}
+        href={props.href}
+        target={props.target}
+        className={activeIndex === props._index ? 'active-focus' : ''}
+        isSelected={isSelected}
+        isDisabled={props.isDisabled}
+        role={getActionListItemRole(dropdownTriggerer)}
+        {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
+          if (typeof props._index === 'number') {
+            onOptionClick(e, props._index);
+            props.onClick?.({ name: props.value, value: isSelected, event: castWebType(e) });
+          }
+        })}
+        {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
+        onMouseDown={() => {
+          // We want to keep focus on Dropdown's trigger while option is being clicked
+          // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
+          setShouldIgnoreBlurAnimation(true);
+        }}
+        onMouseUp={() => {
+          // (Contd from above comment...) We set this flag back to false since blur of SelectInput is done calling by this time
+          setShouldIgnoreBlurAnimation(false);
+        }}
+        data-value={props.value}
+        data-index={props._index}
+        selectionType={selectionType}
+        color={props.intent}
+        isKeydownPressed={isKeydownPressed}
+      />
+    </ActionListItemContext.Provider>
   );
 };
 
