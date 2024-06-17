@@ -34,4 +34,9 @@ type StyledBaseMenuItemContainerProps = Pick<
   'color' | 'selectionType' | 'isSelected' | 'isDisabled' | 'isVisible' | 'isKeydownPressed'
 >;
 
-export type { BaseMenuItemProps, StyledBaseMenuItemContainerProps };
+type BaseMenuItemContextType = {
+  color?: BaseMenuItemProps['color'];
+  isDisabled?: BaseMenuItemProps['isDisabled'];
+};
+
+export type { BaseMenuItemProps, StyledBaseMenuItemContainerProps, BaseMenuItemContextType };

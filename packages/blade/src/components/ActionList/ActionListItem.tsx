@@ -23,7 +23,7 @@ import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Box } from '~components/Box';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
-import { BaseMenuItem } from '~components/BaseMenu';
+import { BaseMenuItem, useBaseMenuItem } from '~components/BaseMenu';
 
 type ActionListItemProps = {
   title: string;
@@ -84,11 +84,6 @@ type ActionListItemProps = {
    */
   _index?: number;
 } & TestID;
-
-const ActionListItemContext = React.createContext<{
-  intent?: ActionListItemProps['intent'];
-  isDisabled?: ActionListItemProps['isDisabled'];
-}>({});
 
 const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
   // @TODO: replace this styled-component with new layout box when we have padding shorthand
@@ -180,12 +175,12 @@ const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
 
 const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
-  const { intent, isDisabled } = React.useContext(ActionListItemContext);
+  const { color, isDisabled } = useBaseMenuItem();
   const iconState = isDisabled ? 'disabled' : 'muted';
   return (
     <Icon
       color={
-        intent === 'negative'
+        color === 'negative'
           ? 'feedback.icon.negative.intense'
           : `interactive.icon.gray.${iconState}`
       }
@@ -227,7 +222,7 @@ const _ActionListItemText = ({
 }: {
   children: StringChildrenType;
 }): React.ReactElement => {
-  const { isDisabled } = React.useContext(ActionListItemContext);
+  const { isDisabled } = useBaseMenuItem();
 
   return (
     <Text variant="caption" color={getNormalTextColor(isDisabled, { isMuted: true })}>
@@ -339,46 +334,44 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
 
   return (
     // We use this context to change the color of subcomponents like ActionListItemIcon, ActionListItemText, etc
-    <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
-      <BaseMenuItem
-        isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
-        as={!isReactNative() ? renderOnWebAs : undefined}
-        id={`${dropdownBaseId}-${props._index}`}
-        tabIndex={-1}
-        title={props.title}
-        description={props.description}
-        leading={props.leading}
-        trailing={props.trailing}
-        titleSuffix={props.titleSuffix}
-        href={props.href}
-        target={props.target}
-        className={activeIndex === props._index ? 'active-focus' : ''}
-        isSelected={isSelected}
-        isDisabled={props.isDisabled}
-        role={getActionListItemRole(dropdownTriggerer)}
-        {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
-          if (typeof props._index === 'number') {
-            onOptionClick(e, props._index);
-            props.onClick?.({ name: props.value, value: isSelected, event: castWebType(e) });
-          }
-        })}
-        {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
-        onMouseDown={() => {
-          // We want to keep focus on Dropdown's trigger while option is being clicked
-          // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
-          setShouldIgnoreBlurAnimation(true);
-        }}
-        onMouseUp={() => {
-          // (Contd from above comment...) We set this flag back to false since blur of SelectInput is done calling by this time
-          setShouldIgnoreBlurAnimation(false);
-        }}
-        data-value={props.value}
-        data-index={props._index}
-        selectionType={selectionType}
-        color={props.intent}
-        isKeydownPressed={isKeydownPressed}
-      />
-    </ActionListItemContext.Provider>
+    <BaseMenuItem
+      isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
+      as={!isReactNative() ? renderOnWebAs : undefined}
+      id={`${dropdownBaseId}-${props._index}`}
+      tabIndex={-1}
+      title={props.title}
+      description={props.description}
+      leading={props.leading}
+      trailing={props.trailing}
+      titleSuffix={props.titleSuffix}
+      href={props.href}
+      target={props.target}
+      className={activeIndex === props._index ? 'active-focus' : ''}
+      isSelected={isSelected}
+      isDisabled={props.isDisabled}
+      role={getActionListItemRole(dropdownTriggerer)}
+      {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
+        if (typeof props._index === 'number') {
+          onOptionClick(e, props._index);
+          props.onClick?.({ name: props.value, value: isSelected, event: castWebType(e) });
+        }
+      })}
+      {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
+      onMouseDown={() => {
+        // We want to keep focus on Dropdown's trigger while option is being clicked
+        // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
+        setShouldIgnoreBlurAnimation(true);
+      }}
+      onMouseUp={() => {
+        // (Contd from above comment...) We set this flag back to false since blur of SelectInput is done calling by this time
+        setShouldIgnoreBlurAnimation(false);
+      }}
+      data-value={props.value}
+      data-index={props._index}
+      selectionType={selectionType}
+      color={props.intent}
+      isKeydownPressed={isKeydownPressed}
+    />
   );
 };
 

@@ -4,7 +4,7 @@ import type { MenuProps } from './';
 import { Menu, MenuDivider, MenuItem, MenuOverlay, MenuHeader, MenuFooter } from './';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { CopyIcon, TestIcon, TicketIcon, UserIcon } from '~components/Icons';
+import { CopyIcon, LogOutIcon, ShareIcon, TestIcon, TicketIcon, UserIcon } from '~components/Icons';
 import { Avatar } from '~components/Avatar';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
@@ -58,7 +58,7 @@ const MenuTemplate: StoryFn<TemplateProps> = ({ trigger, ...args }) => {
             description="View all your support tickets"
           />
           <Menu>
-            <MenuItem title="Share Profile" />
+            <MenuItem leading={<ShareIcon size="small" />} title="Share Profile" />
             <MenuOverlay>
               <MenuItem title="Mail" />
               <Menu>
@@ -71,7 +71,11 @@ const MenuTemplate: StoryFn<TemplateProps> = ({ trigger, ...args }) => {
               </Menu>
             </MenuOverlay>
           </Menu>
-          <MenuItem title="Log Out" color="negative" />
+          <MenuItem
+            leading={<LogOutIcon size="small" color="feedback.icon.negative.intense" />}
+            title="Log Out"
+            color="negative"
+          />
           <MenuFooter>
             <Text variant="caption" size="small">
               Partner with us and start earning on every referral

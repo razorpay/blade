@@ -101,7 +101,7 @@ type MenuItemProps = {
 type MenuOverlayProps = {
   children: React.ReactElement[];
   zIndex?: BoxProps['zIndex'];
-  _transitionStyle: React.CSSProperties;
+  _transitionStyle?: React.CSSProperties;
 };
 
 // INTERNAL TYPES

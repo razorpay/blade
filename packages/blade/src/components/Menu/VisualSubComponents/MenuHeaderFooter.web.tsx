@@ -8,6 +8,7 @@ import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute/metaConstants';
+import { Box } from '~components/Box';
 
 type MenuHeaderProps = Pick<
   BaseHeaderProps,
@@ -54,7 +55,7 @@ type MenuFooter = Pick<BaseFooterProps, 'children' | 'testID'>;
 
 const _MenuFooter = ({ children, testID }: MenuFooter): React.ReactElement => {
   return (
-    <>
+    <Box marginTop="spacing.2">
       <MenuDivider />
       <BaseFooter
         metaComponentName={MetaConstants.MenuFooter}
@@ -64,7 +65,7 @@ const _MenuFooter = ({ children, testID }: MenuFooter): React.ReactElement => {
       >
         {children}
       </BaseFooter>
-    </>
+    </Box>
   );
 };
 
