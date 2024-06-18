@@ -2,6 +2,8 @@
 
 import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
 import type React from 'react';
+import { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+import { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
 
@@ -104,6 +106,13 @@ type MenuOverlayProps = {
   _transitionStyle?: React.CSSProperties;
 };
 
+type MenuFooterProps = Pick<BaseFooterProps, 'children' | 'testID'>;
+
+type MenuHeaderProps = Pick<
+  BaseHeaderProps,
+  'title' | 'subtitle' | 'leading' | 'trailing' | 'titleSuffix' | 'testID'
+>;
+
 // INTERNAL TYPES
 type MenuContextType = {
   getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>;
@@ -131,6 +140,8 @@ type UseFloatingMenuReturnType = Pick<
 export type {
   MenuItemProps,
   MenuOverlayProps,
+  MenuFooterProps,
+  MenuHeaderProps,
   MenuProps,
   MenuContextType,
   UseFloatingMenuProps,

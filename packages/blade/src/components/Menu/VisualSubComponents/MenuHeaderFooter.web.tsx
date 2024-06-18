@@ -1,19 +1,13 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
 import { footerPaddingTop, headerMarginBottom, overlayPaddingX } from '../tokens';
+import type { MenuFooterProps, MenuHeaderProps } from '../types';
 import { MenuDivider } from './MenuDivider';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
-import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute/metaConstants';
 import { Box } from '~components/Box';
-
-type MenuHeaderProps = Pick<
-  BaseHeaderProps,
-  'title' | 'subtitle' | 'leading' | 'trailing' | 'titleSuffix' | 'testID'
->;
 
 const _MenuHeader = ({
   title,
@@ -51,9 +45,7 @@ const MenuHeader = assignWithoutSideEffects(_MenuHeader, {
   componentId: 'MenuHeader',
 });
 
-type MenuFooter = Pick<BaseFooterProps, 'children' | 'testID'>;
-
-const _MenuFooter = ({ children, testID }: MenuFooter): React.ReactElement => {
+const _MenuFooter = ({ children, testID }: MenuFooterProps): React.ReactElement => {
   return (
     <Box marginTop="spacing.2">
       <MenuDivider />

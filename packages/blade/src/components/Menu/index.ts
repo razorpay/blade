@@ -3,4 +3,4 @@ export { MenuItem } from './MenuItem';
 export { MenuOverlay } from './MenuOverlay';
 export { MenuDivider } from './VisualSubComponents/MenuDivider';
 export { MenuHeader, MenuFooter } from './VisualSubComponents/MenuHeaderFooter';
-export type { MenuProps, MenuItemProps } from './types';
+export type { MenuProps, MenuItemProps, MenuOverlayProps } from './types';
