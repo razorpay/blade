@@ -68,7 +68,6 @@ type ButtonCommonProps = {
    */
   role?: 'menuitem';
   tabIndex?: BaseButtonProps['tabIndex'];
-  id?: BaseButtonProps['id'];
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -120,7 +119,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     onMouseLeave,
     onMouseMove,
     onMouseDown,
-    id,
     onPointerDown,
     onPointerEnter,
     onTouchStart,
@@ -133,7 +131,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
       {...getStyledProps(rest)}
-      id={id}
       ref={ref}
       href={href}
       target={target}

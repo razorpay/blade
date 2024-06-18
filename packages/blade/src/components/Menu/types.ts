@@ -99,7 +99,7 @@ type MenuItemProps = {
 };
 
 type MenuOverlayProps = {
-  children: React.ReactElement[];
+  children: React.ReactElement[] | React.ReactElement;
   zIndex?: BoxProps['zIndex'];
   _transitionStyle?: React.CSSProperties;
 };
