@@ -501,6 +501,10 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+@media screen and (min-width:768px) {
+
+}
+
 <div>
   <div
     class=""
@@ -1172,6 +1176,10 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   transition-duration: 400ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+@media screen and (min-width:768px) {
+
 }
 
 <div>

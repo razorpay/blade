@@ -54,7 +54,7 @@ type ButtonCommonProps = {
    *
    * @private
    */
-  'aria-expanded'?: string;
+  'aria-expanded'?: boolean;
   /**
    * It is exposed for internal usage with menu.
    *
@@ -138,7 +138,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       accessibilityProps={{
         label: accessibilityLabel,
         describedBy: rest['aria-describedby'],
-        expanded: rest['aria-expanded'] === 'true',
+        expanded: rest['aria-expanded'],
         hasPopup: rest['aria-haspopup'],
         role,
       }}
