@@ -44,9 +44,11 @@ const StyledMenuItemContainer = styled.button<{ color?: 'negative' }>((props) =>
 });
 
 type BaseMenuItemProps = {
-  as?: 'a' | 'button';
-  title: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: React.ComponentType<any> | 'a' | 'button';
+  title?: string;
   description?: string;
+  children?: React.ReactNode;
   isDisabled?: boolean;
   isSelected?: boolean;
   leading?: React.ReactNode;
@@ -83,6 +85,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
     selectionType,
     isSelected,
     color,
+    children,
     ...props
   },
   ref,
@@ -102,63 +105,72 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
       color={color}
       {...props}
     >
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        maxHeight={makeSize(size[20])}
-        width="100%"
-      >
-        <Box display="flex" justifyContent="center" alignItems="center">
-          {selectionType === 'multiple' ? (
-            // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-            <BaseBox
-              pointerEvents="none"
-              paddingRight="spacing.2"
-              {...makeAccessible({
-                hidden: true,
-              })}
-            >
-              <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
-                {/* 
+      {children ? (
+        children
+      ) : (
+        <>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            maxHeight={makeSize(size[20])}
+            width="100%"
+          >
+            <Box display="flex" justifyContent="center" alignItems="center">
+              {selectionType === 'multiple' ? (
+                // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+                <BaseBox
+                  pointerEvents="none"
+                  paddingRight="spacing.2"
+                  {...makeAccessible({
+                    hidden: true,
+                  })}
+                >
+                  <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
+                    {/* 
                   Checkbox requires children. Didn't want to make it optional because its helpful for consumers
                   But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
                 */}
-                {null}
-              </Checkbox>
-            </BaseBox>
-          ) : (
-            leading
-          )}
-        </Box>
-        <Box
-          paddingLeft={selectionType === 'multiple' || !leading ? 'spacing.0' : 'spacing.3'}
-          paddingRight="spacing.3"
-          display="flex"
-          alignItems="center"
-          flexDirection="row"
-        >
-          <Text
-            truncateAfterLines={1}
-            color={
-              menuItemTitleColor[color === 'negative' ? 'negative' : 'normal'][
-                isDisabled ? 'disabled' : 'default'
-              ]
-            }
-          >
-            {title}
-          </Text>
-          {titleSuffix}
-        </Box>
-        <Box marginLeft="auto">{trailing}</Box>
-      </Box>
-      <Box paddingLeft={leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
-        {description ? (
-          <Text color={menuItemDescriptionColor[isDisabled ? 'disabled' : 'default']} size="small">
-            {description}
-          </Text>
-        ) : null}
-      </Box>
+                    {null}
+                  </Checkbox>
+                </BaseBox>
+              ) : (
+                leading
+              )}
+            </Box>
+            <Box
+              paddingLeft={selectionType === 'multiple' || !leading ? 'spacing.0' : 'spacing.3'}
+              paddingRight="spacing.3"
+              display="flex"
+              alignItems="center"
+              flexDirection="row"
+            >
+              <Text
+                truncateAfterLines={1}
+                color={
+                  menuItemTitleColor[color === 'negative' ? 'negative' : 'normal'][
+                    isDisabled ? 'disabled' : 'default'
+                  ]
+                }
+              >
+                {title}
+              </Text>
+              {titleSuffix}
+            </Box>
+            <Box marginLeft="auto">{trailing}</Box>
+          </Box>
+          <Box paddingLeft={leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
+            {description ? (
+              <Text
+                color={menuItemDescriptionColor[isDisabled ? 'disabled' : 'default']}
+                size="small"
+              >
+                {description}
+              </Text>
+            ) : null}
+          </Box>
+        </>
+      )}
     </StyledMenuItemContainer>
   );
 };
@@ -166,3 +178,4 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
 const BaseMenuItem = React.forwardRef(_BaseMenuItem);
 
 export { BaseMenuItem };
+export type { BaseMenuItemProps };
