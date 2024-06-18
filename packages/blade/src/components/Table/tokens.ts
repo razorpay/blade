@@ -86,7 +86,7 @@ const tableRow = {
     backgroundColorSelectedActive: 'interactive.background.primary.faded',
   },
   borderBottomWidth: 'thin',
-  borderBottomColor: 'surface.border.gray.muted',
+  borderColor: 'surface.border.gray.muted',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.xquick',
 } as const;

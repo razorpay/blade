@@ -184,7 +184,7 @@ const CellWrapper = styled(BaseBox)<{
       height: '100%',
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
-        borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
+        borderBottomColor: getIn(theme.colors, tableRow.borderColor),
         borderBottomStyle: 'solid',
       }),
     },
@@ -392,7 +392,7 @@ const StyledRow = styled(Row)<{
         ? {
             borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
             borderRightStyle: 'solid',
-            borderRightColor: getIn(theme.colors, tableRow.borderBottomColor),
+            borderRightColor: getIn(theme.colors, tableRow.borderColor),
           }
         : undefined,
       '& td:last-child .cell-wrapper': {
