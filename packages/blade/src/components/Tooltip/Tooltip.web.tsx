@@ -30,15 +30,20 @@ import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+import { mergeRefs } from '~utils/useMergeRefs';
 
-const Tooltip = ({
-  title,
-  content,
-  children,
-  placement = 'top',
-  onOpenChange,
-  zIndex = componentZIndices.tooltip,
-}: TooltipProps): React.ReactElement => {
+const _Tooltip: React.ForwardRefRenderFunction<HTMLElement, TooltipProps> = (
+  {
+    title,
+    content,
+    children,
+    placement = 'top',
+    onOpenChange,
+    zIndex = componentZIndices.tooltip,
+    ...incomingReferenceProps
+  },
+  ref,
+): React.ReactElement => {
   const { theme } = useTheme();
   const id = useId();
   const [isOpen, setIsOpen] = React.useState(false);
@@ -92,9 +97,11 @@ const Tooltip = ({
     <TooltipContext.Provider value={true}>
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
-        ref: refs.setReference,
         ...makeAccessible({ label: content }),
-        ...mergeProps(children.props, getReferenceProps()),
+        ...mergeProps(
+          children.props,
+          getReferenceProps({ ...incomingReferenceProps, ref: mergeRefs(ref, refs.setReference) }),
+        ),
       })}
       {isMounted && (
         <FloatingPortal>
@@ -102,7 +109,6 @@ const Tooltip = ({
             ref={refs.setFloating}
             style={floatingStyles}
             pointerEvents="none"
-            // TODO: Tokenize zIndex values
             zIndex={zIndex}
             {...getFloatingProps()}
             {...metaAttribute({ name: MetaConstants.Tooltip })}
@@ -129,5 +135,7 @@ const Tooltip = ({
     </TooltipContext.Provider>
   );
 };
+
+const Tooltip = React.forwardRef(_Tooltip);
 
 export { Tooltip };

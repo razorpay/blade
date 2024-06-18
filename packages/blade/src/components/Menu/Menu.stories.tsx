@@ -9,6 +9,7 @@ import { Avatar } from '~components/Avatar';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
+import { Tooltip } from '~components/Tooltip';
 
 export default {
   title: 'Components/Menu',
@@ -31,7 +32,9 @@ const MenuTemplate: StoryFn<TemplateProps> = ({ trigger, ...args }) => {
   return (
     <Box>
       <Menu {...args}>
-        {trigger}
+        <Tooltip content="test test">
+          <Button>Test</Button>
+        </Tooltip>
         <MenuOverlay>
           <MenuHeader title="Saurabh Daware" subtitle="Admin" leading={<UserIcon />} />
           <Box paddingY="spacing.4" paddingX="spacing.3">

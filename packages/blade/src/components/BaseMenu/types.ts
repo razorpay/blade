@@ -5,7 +5,7 @@ import type { Platform } from '~utils';
 type BaseMenuItemProps = {
   as?: React.ComponentType<any> | 'a' | 'button';
   id?: string;
-  title: string;
+  title?: string;
   description?: string;
   children?: React.ReactNode;
   className?: string;
