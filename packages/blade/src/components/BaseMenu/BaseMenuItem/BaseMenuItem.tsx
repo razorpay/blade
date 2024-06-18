@@ -98,6 +98,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
             display="flex"
             alignItems="center"
             flexDirection="row"
+            gap="spacing.2"
           >
             <Text
               truncateAfterLines={1}
