@@ -26,6 +26,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Alert } from '~components/Alert';
 import { List, ListItem, ListItemText } from '~components/List';
+import { Tooltip } from '~components/Tooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -205,11 +206,13 @@ const accountsMenuOverlayContent = (
         </Menu>
       </MenuOverlay>
     </Menu>
-    <MenuItem
-      leading={<LogOutIcon size="small" color="feedback.icon.negative.intense" />}
-      title="Log Out"
-      color="negative"
-    />
+    <Tooltip content="Log out from Saurabh Daware's Profile">
+      <MenuItem
+        leading={<LogOutIcon size="small" color="feedback.icon.negative.intense" />}
+        title="Log Out"
+        color="negative"
+      />
+    </Tooltip>
     <MenuFooter>
       <Text variant="caption" size="small">
         Partner with us and start earning on every referral
@@ -402,4 +405,13 @@ export const WithDifferentTriggers = (props: MenuProps): React.ReactElement => {
 export const Controlled = ControlledMenuTemplate.bind({});
 Controlled.args = {
   trigger: <Avatar name="Saurabh Daware" size="large" color="primary" />,
+};
+
+export const WithTooltip = MenuTemplate.bind({});
+WithTooltip.args = {
+  trigger: (
+    <Tooltip content="Saurabh Daware's Profile" placement="top">
+      <Avatar marginTop="spacing.8" name="Saurabh Daware" size="large" color="primary" />
+    </Tooltip>
+  ),
 };

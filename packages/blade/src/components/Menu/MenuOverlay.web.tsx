@@ -24,7 +24,9 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...props}
-      minWidth={makeSize(MENU_MIN_WIDTH)}
+      // No min-width set on mobile. Floating UI's size middleware handles the max-width
+      minWidth={{ base: undefined, m: makeSize(MENU_MIN_WIDTH) }}
+      overflow="auto"
       zIndex={zIndex}
     >
       {/* 
