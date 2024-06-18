@@ -93,16 +93,20 @@ const _Tooltip: React.ForwardRefRenderFunction<HTMLElement, TooltipProps> = (
   const role = useRole(context, { role: 'tooltip' });
   const { getReferenceProps, getFloatingProps } = useInteractions([role, hover, focus]);
 
+  // Cloning the trigger children to enhance it with ref and event handler
+  const triggerElement = React.useMemo(() => {
+    return React.cloneElement(children, {
+      ...makeAccessible({ label: content }),
+      ...mergeProps(
+        children.props,
+        getReferenceProps({ ...incomingReferenceProps, ref: mergeRefs(ref, refs.setReference) }),
+      ),
+    });
+  }, [children, content]);
+
   return (
     <TooltipContext.Provider value={true}>
-      {/* Cloning the trigger children to enhance it with ref and event handler */}
-      {React.cloneElement(children, {
-        ...makeAccessible({ label: content }),
-        ...mergeProps(
-          children.props,
-          getReferenceProps({ ...incomingReferenceProps, ref: mergeRefs(ref, refs.setReference) }),
-        ),
-      })}
+      {triggerElement}
       {isMounted && (
         <FloatingPortal>
           <BaseBox
