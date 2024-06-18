@@ -14,6 +14,7 @@ import type { IconComponent } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { MenuItem } from '../';
 
 const CustomMenuTrigger = styled.button<{ isTransparent?: boolean }>((props) => {
   return {
@@ -50,20 +51,6 @@ const MenuTrigger = React.forwardRef<HTMLButtonElement, { children: string; clas
     );
   },
 );
-
-const StyledCustomMenuContainer = styled.a((props) => {
-  return {
-    all: 'unset',
-    cursor: 'pointer',
-    width: '300px',
-    borderRadius: makeBorderSize(props.theme.border.radius.medium),
-    backgroundColor: props.theme.colors.transparent,
-    '&:hover': {
-      backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
-    },
-    '&:focus-visible': getFocusRingStyles({ theme: props.theme }),
-  };
-});
 
 const navMenuItems = {
   payments: [
@@ -126,14 +113,8 @@ const CustomMenuItem = ({
   href: string;
 }): React.ReactElement => {
   return (
-    <StyledCustomMenuContainer href={href}>
-      <Box
-        display="flex"
-        alignItems="center"
-        gap="spacing.4"
-        paddingY="spacing.3"
-        paddingX="spacing.4"
-      >
+    <MenuItem href={href}>
+      <Box display="flex" alignItems="center" gap="spacing.4">
         <Box display="flex" alignItems="center">
           <Box
             borderRadius="round"
@@ -155,8 +136,8 @@ const CustomMenuItem = ({
           <Text color="surface.text.gray.muted">{description}</Text>
         </Box>
       </Box>
-    </StyledCustomMenuContainer>
+    </MenuItem>
   );
 };
 
-export { MenuTrigger, navMenuItems, CustomMenuItem, CustomMenuTrigger, StyledCustomMenuContainer };
+export { MenuTrigger, navMenuItems, CustomMenuItem, CustomMenuTrigger };
