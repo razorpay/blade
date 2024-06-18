@@ -18,15 +18,19 @@ const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
       _isSubmenuOpen,
       href,
       target,
+      children,
+      as,
       ...props
     },
     forwardedRef,
   ) => {
     const menu = useMenu();
-    const item = useListItem({ label: isDisabled ? null : title });
+    const item = useListItem({ label: isDisabled && Boolean(children) ? null : title });
     const tree = useFloatingTree();
 
     const isLink = Boolean(href);
+
+    const defaultAs = isLink ? 'a' : 'button';
 
     return (
       <BaseMenuItem
@@ -36,7 +40,7 @@ const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
         trailing={
           _isMenuTrigger ? <ChevronRightIcon color="interactive.icon.gray.muted" /> : undefined
         }
-        as={isLink ? 'a' : 'button'}
+        as={as ?? defaultAs}
         href={href}
         className={_isSubmenuOpen ? 'has-submenu-open' : ''}
         ref={useMergeRefs([item.ref, forwardedRef])}
@@ -54,7 +58,9 @@ const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
                 menu.setHasFocusInside(true);
               },
             }))}
-      />
+      >
+        {children}
+      </BaseMenuItem>
     );
   },
 );

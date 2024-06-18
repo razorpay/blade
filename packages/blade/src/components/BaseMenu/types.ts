@@ -3,10 +3,11 @@ import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
 
 type BaseMenuItemProps = {
-  as?: 'a' | 'button';
+  as?: React.ComponentType<any> | 'a' | 'button';
   id?: string;
   title: string;
   description?: string;
+  children?: React.ReactNode;
   className?: string;
   isDisabled?: boolean;
   isSelected?: boolean;

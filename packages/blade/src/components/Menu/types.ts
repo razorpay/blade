@@ -2,6 +2,7 @@
 
 import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
 import type React from 'react';
+import { BaseMenuItemProps } from '~components/BaseMenu/BaseMenuItem';
 import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
 
@@ -34,12 +35,20 @@ type MenuItemProps = {
   /**
    * title of item
    */
-  title: string;
+  title?: string;
 
   /**
    * Description text for the item
    */
   description?: string;
+
+  /**
+   * Slot to render custom menu items
+   */
+  children?: React.ReactNode;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: BaseMenuItemProps['as'];
 
   /**
    * Click handler for MenuItem
