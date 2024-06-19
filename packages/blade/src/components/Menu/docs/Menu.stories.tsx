@@ -26,7 +26,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Alert } from '~components/Alert';
 import { List, ListItem, ListItemText } from '~components/List';
-import { Tooltip } from '~components/Tooltip';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -407,11 +407,17 @@ Controlled.args = {
   trigger: <Avatar name="Saurabh Daware" size="large" color="primary" />,
 };
 
-export const WithTooltip = MenuTemplate.bind({});
-WithTooltip.args = {
-  trigger: (
-    <Tooltip content="Saurabh Daware's Profile" placement="top">
-      <Avatar marginTop="spacing.8" name="Saurabh Daware" size="large" color="primary" />
-    </Tooltip>
-  ),
+export const WithTooltip = () => {
+  return (
+    <Box paddingTop="spacing.10">
+      <Tooltip content="Saurabh Daware's Profile" placement="top">
+        <TooltipInteractiveWrapper>
+          <Menu>
+            <Avatar name="Saurabh Daware" />
+            <MenuOverlay>{accountsMenuOverlayContent}</MenuOverlay>
+          </Menu>
+        </TooltipInteractiveWrapper>
+      </Tooltip>
+    </Box>
+  );
 };

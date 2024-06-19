@@ -26,7 +26,6 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
       {...props}
       // No min-width set on mobile. Floating UI's size middleware handles the max-width
       minWidth={{ base: undefined, m: makeSize(MENU_MIN_WIDTH) }}
-      overflow="auto"
       zIndex={zIndex}
     >
       {/* 

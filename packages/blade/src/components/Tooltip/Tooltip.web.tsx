@@ -30,20 +30,15 @@ import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
-import { mergeRefs } from '~utils/useMergeRefs';
 
-const _Tooltip: React.ForwardRefRenderFunction<HTMLElement, TooltipProps> = (
-  {
-    title,
-    content,
-    children,
-    placement = 'top',
-    onOpenChange,
-    zIndex = componentZIndices.tooltip,
-    ...incomingReferenceProps
-  },
-  ref,
-): React.ReactElement => {
+const Tooltip = ({
+  title,
+  content,
+  children,
+  placement = 'top',
+  onOpenChange,
+  zIndex = componentZIndices.tooltip,
+}: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const id = useId();
   const [isOpen, setIsOpen] = React.useState(false);
@@ -93,20 +88,13 @@ const _Tooltip: React.ForwardRefRenderFunction<HTMLElement, TooltipProps> = (
   const role = useRole(context, { role: 'tooltip' });
   const { getReferenceProps, getFloatingProps } = useInteractions([role, hover, focus]);
 
-  // Cloning the trigger children to enhance it with ref and event handler
-  const triggerElement = React.useMemo(() => {
-    return React.cloneElement(children, {
-      ...makeAccessible({ label: content }),
-      ...mergeProps(
-        children.props,
-        getReferenceProps({ ...incomingReferenceProps, ref: mergeRefs(ref, refs.setReference) }),
-      ),
-    });
-  }, [children, content]);
-
   return (
     <TooltipContext.Provider value={true}>
-      {triggerElement}
+      {React.cloneElement(children, {
+        ref: refs.setReference,
+        ...makeAccessible({ label: content }),
+        ...mergeProps(children.props, getReferenceProps()),
+      })}
       {isMounted && (
         <FloatingPortal>
           <BaseBox
@@ -139,7 +127,5 @@ const _Tooltip: React.ForwardRefRenderFunction<HTMLElement, TooltipProps> = (
     </TooltipContext.Provider>
   );
 };
-
-const Tooltip = React.forwardRef(_Tooltip);
 
 export { Tooltip };
