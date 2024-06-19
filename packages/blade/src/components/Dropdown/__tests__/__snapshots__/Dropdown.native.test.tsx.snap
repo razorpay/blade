@@ -1101,12 +1101,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderColor": "transparent",
                           "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 4,
+                          "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
+                          "flexDirection": "column",
+                          "marginBottom": 2,
+                          "marginTop": 2,
                           "opacity": 1,
                           "paddingBottom": 8,
                           "paddingLeft": 8,
@@ -1121,24 +1122,26 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     >
                       <View
                         alignItems="center"
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                         display="flex"
-                        flexDirection="row"
                         justifyContent="center"
+                        maxHeight="20px"
                         style={
                           [
                             {
                               "alignItems": "center",
                               "display": "flex",
-                              "flexDirection": "row",
                               "justifyContent": "center",
+                              "maxHeight": 20,
+                              "width": "100%",
                             },
                           ]
                         }
+                        width="100%"
                       >
                         <View
                           alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
                           justifyContent="center"
                           style={
@@ -1153,7 +1156,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         />
                         <View
                           alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
                           flexDirection="row"
                           style={
@@ -1205,7 +1208,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           </Text>
                         </View>
                         <View
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           style={
                             [
                               {
@@ -1216,7 +1219,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         />
                       </View>
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                         style={
                           [
                             {},
@@ -1224,6 +1227,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         }
                       />
                     </View>
+                     
                   </View>
                   <View
                     onFocusCapture={[Function]}
@@ -1261,12 +1265,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderColor": "transparent",
                           "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 4,
+                          "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
+                          "flexDirection": "column",
+                          "marginBottom": 2,
+                          "marginTop": 2,
                           "opacity": 1,
                           "paddingBottom": 8,
                           "paddingLeft": 8,
@@ -1281,24 +1286,26 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     >
                       <View
                         alignItems="center"
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                         display="flex"
-                        flexDirection="row"
                         justifyContent="center"
+                        maxHeight="20px"
                         style={
                           [
                             {
                               "alignItems": "center",
                               "display": "flex",
-                              "flexDirection": "row",
                               "justifyContent": "center",
+                              "maxHeight": 20,
+                              "width": "100%",
                             },
                           ]
                         }
+                        width="100%"
                       >
                         <View
                           alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
                           justifyContent="center"
                           style={
@@ -1313,7 +1320,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         />
                         <View
                           alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
                           flexDirection="row"
                           style={
@@ -1365,7 +1372,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           </Text>
                         </View>
                         <View
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           style={
                             [
                               {
@@ -1376,7 +1383,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         />
                       </View>
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                         style={
                           [
                             {},
@@ -1384,6 +1391,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         }
                       />
                     </View>
+                     
                   </View>
                   <View
                     onFocusCapture={[Function]}

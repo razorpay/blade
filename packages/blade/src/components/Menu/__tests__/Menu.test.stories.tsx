@@ -74,7 +74,7 @@ MenuOpen.play = async () => {
 export const MenuSelect: StoryFn<typeof Menu> = (props): React.ReactElement => {
   const [selectedItem, setSelectedItem] = React.useState('');
   return (
-    <Menu>
+    <Menu {...props}>
       <Link variant="button">Menu: {selectedItem}</Link>
       <MenuOverlay>
         <MenuItem title="Account" onClick={() => setSelectedItem('Account')} />
@@ -99,7 +99,7 @@ MenuSelect.play = async () => {
 };
 
 export const WithCustomTrigger: StoryFn<typeof Menu> = (props): React.ReactElement => {
-  return <BasicMenu trigger={<button>Custom Button</button>} />;
+  return <BasicMenu {...props} trigger={<button>Custom Button</button>} />;
 };
 
 WithCustomTrigger.play = async () => {
@@ -122,7 +122,7 @@ WithCustomTrigger.play = async () => {
 };
 
 export const WithHoverOpen: StoryFn<typeof Menu> = (props): React.ReactElement => {
-  return <BasicMenu openInteraction="hover" />;
+  return <BasicMenu {...props} openInteraction="hover" />;
 };
 
 WithHoverOpen.play = async () => {
@@ -139,7 +139,7 @@ WithHoverOpen.play = async () => {
 };
 
 export const ListNavigation: StoryFn<typeof Menu> = (props): React.ReactElement => {
-  return <BasicMenu />;
+  return <BasicMenu {...props} />;
 };
 
 ListNavigation.play = async () => {
@@ -175,12 +175,12 @@ ListNavigation.play = async () => {
   await waitFor(() => expect(getByRole('button', { name: 'Open Menu' })).toHaveFocus());
 };
 
-export const WithTooltip: StoryFn<typeof Menu> = (): React.ReactElement => {
+export const WithTooltip: StoryFn<typeof Menu> = (props): React.ReactElement => {
   return (
     <Box paddingTop="spacing.10">
       <Tooltip content="Hi from tooltip" placement="top">
         <TooltipInteractiveWrapper>
-          <BasicMenu />
+          <BasicMenu {...props} />
         </TooltipInteractiveWrapper>
       </Tooltip>
     </Box>

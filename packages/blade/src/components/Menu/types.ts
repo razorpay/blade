@@ -2,12 +2,12 @@
 
 import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
 import type React from 'react';
-import { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
-import { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
-import { BaseMenuItemProps } from '~components/BaseMenu/types';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseMenuItemProps } from '~components/BaseMenu/types';
 import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
-import { TestID } from '~utils/types';
+import type { TestID } from '~utils/types';
 
 // EXPOSED TYPES
 type MenuProps = {
