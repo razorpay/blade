@@ -155,8 +155,17 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
-                  <TableEditableCell accessibilityLabel="Amount" placeholder="Enter text" />
-                  <TableEditableCell accessibilityLabel="Account" />
+                  <TableEditableCell
+                    validationState="success"
+                    accessibilityLabel="Amount"
+                    placeholder="Enter text"
+                    successText="Amount is valid"
+                  />
+                  <TableEditableCell
+                    errorText="Amount is invalid"
+                    validationState="error"
+                    accessibilityLabel="Account"
+                  />
                   <TableCell>
                     {tableItem.date?.toLocaleDateString('en-IN', {
                       year: 'numeric',

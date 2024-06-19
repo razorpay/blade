@@ -1049,12 +1049,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               validationState={validationState}
               trailingButton={trailingButton}
               size={size}
+              errorText={errorText}
+              successText={successText}
+              hasBorder={hasBorder}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>
 
-      {!hideFormHint && (
+      {!hideFormHint && hasBorder && (
         <BaseBox
           marginLeft={makeSize(
             isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,

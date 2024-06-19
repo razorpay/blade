@@ -286,6 +286,8 @@ const _TableEditableCell = ({
   value,
   testID,
   trailingButton,
+  errorText,
+  successText,
 }: TableEditableCellProps): React.ReactElement => {
   const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
 
@@ -339,6 +341,8 @@ const _TableEditableCell = ({
               value={value}
               testID={testID}
               trailingButton={trailingButton}
+              errorText={errorText}
+              successText={successText}
             />
           </Box>
         </CellWrapper>

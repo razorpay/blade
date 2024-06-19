@@ -254,6 +254,8 @@ type TableEditableCellProps = Pick<
   | 'onClick'
   | 'leadingIcon'
   | 'trailingButton'
+  | 'errorText'
+  | 'successText'
 > & {
   accessibilityLabel: NonNullable<BaseInputProps['accessibilityLabel']>;
 };
