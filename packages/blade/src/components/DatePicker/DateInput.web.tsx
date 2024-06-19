@@ -77,10 +77,11 @@ const _DatePickerInput = (
   const isMobile = useIsMobile();
   const format = 'DD/MM/YYYY';
   const isLarge = size === 'large';
+  const hasLabel = typeof label === 'string' ? Boolean(label) : Boolean(label?.start || label?.end);
   const isLabelPositionLeft = labelPosition === 'left';
   const isLabelPositionTop = labelPosition === 'top';
-  const isLabelPositionVisuallyTop = isLabelPositionTop || isMobile;
-  const hasLabel = typeof label === 'string' ? Boolean(label) : Boolean(label?.start || label?.end);
+  const isLabelPositionVisuallyTop = hasLabel && (isLabelPositionTop || isMobile);
+
   const { locale } = useDatesContext();
 
   if (selectionType == 'single') {
