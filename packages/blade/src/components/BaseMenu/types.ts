@@ -3,6 +3,7 @@ import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
 
 type BaseMenuItemProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as?: React.ComponentType<any> | 'a' | 'button';
   id?: string;
   title?: string;
