@@ -7,6 +7,7 @@ import { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseMenuItemProps } from '~components/BaseMenu/types';
 import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
+import { TestID } from '~utils/types';
 
 // EXPOSED TYPES
 type MenuProps = {
@@ -31,7 +32,7 @@ type MenuProps = {
    * @default 'click'
    */
   openInteraction?: 'hover' | 'click';
-};
+} & TestID;
 
 type MenuItemProps = {
   /**
