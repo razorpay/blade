@@ -52,18 +52,6 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
-.c9.c9.c9.c9.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -80,7 +68,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   border-style: solid;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -100,7 +88,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   gap: 6px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -119,7 +107,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   border-radius: 2px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -136,12 +124,11 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   border-bottom-style: solid;
 }
 
-.c17.c17.c17.c17.c17 {
-  margin-bottom: 16px;
+.c16.c16.c16.c16.c16 {
   margin-left: 0px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -153,11 +140,11 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -ms-flex-pack: 'justify;justify-content:'space-between;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   margin-top: 4px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -171,7 +158,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -188,7 +175,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   border-color: hsla(214,28%,84%,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(211,20%,52%,0.18);
 }
 
@@ -232,7 +219,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -249,7 +236,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -266,7 +253,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -309,7 +296,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   word-wrap: normal;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -326,7 +313,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   word-wrap: normal;
 }
 
-.c13.c13.c13.c13.c13:focus-visible + div {
+.c12.c12.c12.c12.c12:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -337,7 +324,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13.c13.c13.c13.c13:hover + div {
+.c12.c12.c12.c12.c12:hover + div {
   border-color: hsla(214,28%,84%,1);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -347,37 +334,37 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11.c11.c11.c11.c11 {
+  .c10.c10.c10.c10.c10 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -385,7 +372,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 }
 
 @media screen and (min-width:480px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -393,31 +380,31 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
@@ -470,20 +457,20 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
         style="cursor: pointer; width: 100%;"
       >
         <div
-          class="c8"
+          class="c0"
           data-blade-component="base-box"
         >
           <div
-            class="c9 c10"
+            class="c8 c9"
             data-blade-component="base-box"
             data-comp="f"
           >
             <div
-              class="c11"
+              class="c10"
               data-blade-component="box"
             >
               <p
-                class="c12"
+                class="c11"
                 data-blade-component="text"
               >
                 Drag files here or
@@ -495,21 +482,21 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
                 aria-disabled="false"
                 aria-invalid="false"
                 aria-required="false"
-                class="c13"
+                class="c12"
                 id="fileuploadinput-1-input-2"
                 name="single-file-upload-input"
                 type="file"
               />
               <div
-                class="c14"
+                class="c13"
                 data-blade-component="box"
               >
                 <div
-                  class="c15"
+                  class="c14"
                   data-blade-component="box"
                 >
                   <p
-                    class="c16"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Upload
@@ -522,25 +509,25 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
       </label>
     </div>
     <div
-      class="c17"
+      class="c16"
       data-blade-component="base-box"
     >
       <div
-        class="c18"
+        class="c17"
         data-blade-component="base-box"
       >
         <div
-          class="c19"
+          class="c18"
           data-blade-component="base-box"
           id="fileuploadinput-1-helptext-4"
         >
           <span
-            class="c20"
+            class="c19"
             data-blade-component="base-box"
             style="word-break: break-all;"
           >
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
             >
               Upload .jpg, .jpeg, or .png file only
@@ -605,18 +592,6 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
-.c9.c9.c9.c9.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -633,7 +608,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   border-style: solid;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -653,7 +628,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   gap: 6px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -672,7 +647,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   border-radius: 2px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -689,12 +664,11 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   border-bottom-style: solid;
 }
 
-.c17.c17.c17.c17.c17 {
-  margin-bottom: 16px;
+.c16.c16.c16.c16.c16 {
   margin-left: 0px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -706,11 +680,11 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -ms-flex-pack: 'justify;justify-content:'space-between;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   margin-top: 8px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -724,7 +698,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -741,7 +715,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   border-color: hsla(214,28%,84%,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(211,20%,52%,0.18);
 }
 
@@ -785,7 +759,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -802,7 +776,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -819,7 +793,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -862,7 +836,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   word-wrap: normal;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -879,7 +853,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   word-wrap: normal;
 }
 
-.c13.c13.c13.c13.c13:focus-visible + div {
+.c12.c12.c12.c12.c12:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -890,7 +864,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13.c13.c13.c13.c13:hover + div {
+.c12.c12.c12.c12.c12:hover + div {
   border-color: hsla(214,28%,84%,1);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -900,37 +874,37 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11.c11.c11.c11.c11 {
+  .c10.c10.c10.c10.c10 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -938,7 +912,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 }
 
 @media screen and (min-width:480px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -946,31 +920,31 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
@@ -1023,20 +997,20 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
         style="cursor: pointer; width: 100%;"
       >
         <div
-          class="c8"
+          class="c0"
           data-blade-component="base-box"
         >
           <div
-            class="c9 c10"
+            class="c8 c9"
             data-blade-component="base-box"
             data-comp="f"
           >
             <div
-              class="c11"
+              class="c10"
               data-blade-component="box"
             >
               <p
-                class="c12"
+                class="c11"
                 data-blade-component="text"
               >
                 Drag files here or
@@ -1048,21 +1022,21 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
                 aria-disabled="false"
                 aria-invalid="false"
                 aria-required="false"
-                class="c13"
+                class="c12"
                 id="fileuploadinput-13-input-14"
                 name="single-file-upload-input"
                 type="file"
               />
               <div
-                class="c14"
+                class="c13"
                 data-blade-component="box"
               >
                 <div
-                  class="c15"
+                  class="c14"
                   data-blade-component="box"
                 >
                   <p
-                    class="c16"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Upload
@@ -1075,25 +1049,25 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
       </label>
     </div>
     <div
-      class="c17"
+      class="c16"
       data-blade-component="base-box"
     >
       <div
-        class="c18"
+        class="c17"
         data-blade-component="base-box"
       >
         <div
-          class="c19"
+          class="c18"
           data-blade-component="base-box"
           id="fileuploadinput-13-helptext-16"
         >
           <span
-            class="c20"
+            class="c19"
             data-blade-component="base-box"
             style="word-break: break-all;"
           >
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
             >
               Upload .jpg, .jpeg, or .png file only
@@ -1158,18 +1132,6 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
-.c9.c9.c9.c9.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1186,7 +1148,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   border-style: solid;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1206,7 +1168,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   gap: 6px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1225,7 +1187,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   border-radius: 2px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1242,12 +1204,11 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   border-bottom-style: solid;
 }
 
-.c17.c17.c17.c17.c17 {
-  margin-bottom: 16px;
+.c16.c16.c16.c16.c16 {
   margin-left: 0px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1259,11 +1220,11 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -ms-flex-pack: 'justify;justify-content:'space-between;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   margin-top: 4px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1277,7 +1238,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1334,7 +1295,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1351,7 +1312,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1368,7 +1329,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -1411,7 +1372,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1428,7 +1389,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c13.c13.c13.c13.c13:focus-visible + div {
+.c12.c12.c12.c12.c12:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1440,37 +1401,37 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11.c11.c11.c11.c11 {
+  .c10.c10.c10.c10.c10 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -1478,7 +1439,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 }
 
 @media screen and (min-width:480px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -1486,31 +1447,31 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c15.c15.c15.c15.c15 {
+  .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
   }
 }
@@ -1563,20 +1524,20 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
         style="cursor: not-allowed; width: 100%;"
       >
         <div
-          class="c8"
+          class="c0"
           data-blade-component="base-box"
         >
           <div
-            class="c9 c10"
+            class="c8 c9"
             data-blade-component="base-box"
             data-comp="f"
           >
             <div
-              class="c11"
+              class="c10"
               data-blade-component="box"
             >
               <p
-                class="c12"
+                class="c11"
                 data-blade-component="text"
               >
                 Drag files here or
@@ -1588,22 +1549,22 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
                 aria-disabled="true"
                 aria-invalid="false"
                 aria-required="false"
-                class="c13"
+                class="c12"
                 disabled=""
                 id="fileuploadinput-25-input-26"
                 name="single-file-upload-input"
                 type="file"
               />
               <div
-                class="c14"
+                class="c13"
                 data-blade-component="box"
               >
                 <div
-                  class="c15"
+                  class="c14"
                   data-blade-component="box"
                 >
                   <p
-                    class="c16"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Upload
@@ -1616,25 +1577,25 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
       </label>
     </div>
     <div
-      class="c17"
+      class="c16"
       data-blade-component="base-box"
     >
       <div
-        class="c18"
+        class="c17"
         data-blade-component="base-box"
       >
         <div
-          class="c19"
+          class="c18"
           data-blade-component="base-box"
           id="fileuploadinput-25-helptext-28"
         >
           <span
-            class="c20"
+            class="c19"
             data-blade-component="base-box"
             style="word-break: break-all;"
           >
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
             >
               Upload .jpg, .jpeg, or .png file only

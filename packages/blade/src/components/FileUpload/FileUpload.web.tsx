@@ -208,12 +208,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             width: '100%',
           }}
         >
-          <BaseBox
-            display="flex"
-            flexDirection="column"
-            width="100%"
-            marginBottom={willRenderHintText ? 'spacing.0' : 'spacing.5'}
-          >
+          <BaseBox display="flex" flexDirection="column" width="100%">
             <StyledFileUploadWrapper
               size={size}
               isDisabled={isDisabled}
@@ -337,7 +332,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           marginLeft={makeSize(
             label && isLabelLeftPositioned ? formHintLeftLabelMarginLeft[size] : 0,
           )}
-          marginBottom="spacing.5"
         >
           <BaseBox display="flex" flexDirection="row" justifyContent="'space-between">
             <FormHint
@@ -355,13 +349,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         </BaseBox>
       )}
       {!isOneFileSelectedWithSingleUpload &&
-        selectedFiles.map((file) => (
+        selectedFiles.map((file, index) => (
           <BaseBox
             key={file.id}
             marginLeft={makeSize(
               label && isLabelLeftPositioned ? formHintLeftLabelMarginLeft[size] : 0,
             )}
-            marginBottom="spacing.3"
+            marginTop={index === 0 ? 'spacing.5' : 'spacing.3'}
           >
             <FileUploadItem
               file={file}
