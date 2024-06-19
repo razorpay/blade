@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.21.5
+
+### Patch Changes
+
+- 25fe56db: fix(DatePicker): correct input alignment without label
+- e179dd50: fix(FileUpload): remove excessive margins
+
 ## 11.21.4
 
 ### Patch Changes
