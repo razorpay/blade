@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import type { MenuOverlayProps } from './types';
 import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingY } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { makeSize } from '~utils';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { BladeElementRef } from '~utils/types';
 
@@ -24,8 +23,7 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...props}
-      // No min-width set on mobile. Floating UI's size middleware handles the max-width
-      minWidth={{ base: undefined, m: makeSize(MENU_MIN_WIDTH) }}
+      minWidth={MENU_MIN_WIDTH}
       zIndex={zIndex}
     >
       {/* 
