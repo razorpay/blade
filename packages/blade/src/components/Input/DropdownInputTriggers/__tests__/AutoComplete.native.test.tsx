@@ -7,7 +7,7 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 
 describe('<Dropdown /> with <AutoComplete />', () => {
-  it.only('should render AutoComplete', () => {
+  it('should render AutoComplete', () => {
     const applyClickHandler = jest.fn();
 
     const { getByRole, getByTestId, toJSON, queryAllByRole } = renderWithTheme(

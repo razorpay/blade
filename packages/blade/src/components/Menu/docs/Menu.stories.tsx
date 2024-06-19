@@ -407,12 +407,12 @@ Controlled.args = {
   trigger: <Avatar name="Saurabh Daware" size="large" color="primary" />,
 };
 
-export const WithTooltip = () => {
+export const WithTooltip = (props: MenuProps): React.ReactElement => {
   return (
     <Box paddingTop="spacing.10">
       <Tooltip content="Saurabh Daware's Profile" placement="top">
         <TooltipInteractiveWrapper>
-          <Menu>
+          <Menu {...props}>
             <Avatar name="Saurabh Daware" />
             <MenuOverlay>{accountsMenuOverlayContent}</MenuOverlay>
           </Menu>

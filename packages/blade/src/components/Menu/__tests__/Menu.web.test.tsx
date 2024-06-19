@@ -68,7 +68,7 @@ describe('Menu', () => {
   it('should open and close menu in controlled example', async () => {
     const user = userEvents.setup();
 
-    const ControlledMenu = () => {
+    const ControlledMenu = (): React.ReactElement => {
       const [isOpen, setIsOpen] = React.useState(false);
       return (
         <>
