@@ -327,7 +327,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   align-items: center;
   padding-right: 8px;
   padding-left: 0px;
-  gap: 4px;
 }
 
 .c52.c52.c52.c52.c52 {
