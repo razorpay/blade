@@ -10,6 +10,7 @@ import { Box } from '~components/Box';
 import { UserIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -172,6 +173,40 @@ ListNavigation.play = async () => {
   await userEvent.keyboard('{ESCAPE}');
   await waitFor(() => expect(queryByRole('menu')).not.toBeInTheDocument());
   await waitFor(() => expect(getByRole('button', { name: 'Open Menu' })).toHaveFocus());
+};
+
+export const WithTooltip: StoryFn<typeof Menu> = (): React.ReactElement => {
+  return (
+    <Box paddingTop="spacing.10">
+      <Tooltip content="Hi from tooltip" placement="top">
+        <TooltipInteractiveWrapper>
+          <BasicMenu />
+        </TooltipInteractiveWrapper>
+      </Tooltip>
+    </Box>
+  );
+};
+
+WithTooltip.play = async () => {
+  const { getByRole, queryByRole, queryByText } = within(document.body);
+
+  // Simple menu open / close
+  const menuTrigger = getByRole('button', { name: 'Open Menu' });
+  await userEvent.hover(menuTrigger);
+  await sleep(600);
+  await expect(queryByText('Hi from tooltip')).toBeVisible();
+  await userEvent.click(menuTrigger);
+  await waitFor(() => expect(getByRole('menu')).toBeVisible());
+
+  await userEvent.keyboard('{ESCAPE}');
+  await waitFor(() => expect(queryByRole('menu')).not.toBeInTheDocument());
+
+  // Submenu open / close
+  await userEvent.click(menuTrigger);
+  await waitFor(() => expect(getByRole('menu')).toBeVisible());
+
+  await userEvent.hover(getByRole('menuitem', { name: 'Share' }));
+  await waitFor(() => expect(getByRole('menuitem', { name: 'Instagram' })).toBeVisible());
 };
 
 export default {
