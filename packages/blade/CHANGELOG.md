@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.21.7
+
+### Patch Changes
+
+- be353128: fix: Spinner's white color
+
 ## 11.21.6
 
 ### Patch Changes
