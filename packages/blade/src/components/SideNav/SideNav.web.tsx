@@ -241,7 +241,8 @@ const SideNav = ({
           left="spacing.0"
           display={{ base: 'none', m: 'flex' }}
           flexDirection="column"
-          width={makeSize(EXPANDED_L1_WIDTH)}
+          // TODO tokenize these two values
+          width={{ base: makeSize(244), xl: makeSize(EXPANDED_L1_WIDTH) }}
           as="nav"
           {...metaAttribute({
             name: MetaConstants.SideNav,
