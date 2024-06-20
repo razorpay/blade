@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.21.6
+
+### Patch Changes
+
+- 0d6d7cf7: fix: bottomsheet initial focus triggering everytime
+- cc40b48e: fix(Accordion): add `maxWidth` prop
+
 ## 11.21.5
 
 ### Patch Changes
