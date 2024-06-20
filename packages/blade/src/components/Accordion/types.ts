@@ -1,5 +1,5 @@
 import type React from 'react';
-import { BoxProps } from '~components/Box';
+import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~utils/types';
