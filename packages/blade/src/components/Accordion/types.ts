@@ -1,4 +1,5 @@
 import type React from 'react';
+import { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~utils/types';
@@ -55,6 +56,12 @@ type AccordionProps = {
    * @default large
    */
   size?: 'large' | 'medium';
+
+  /**
+   * maxWidth prop of Accordion
+   *
+   */
+  maxWidth?: BoxProps['maxWidth'];
 
   /**
    * Accepts `AccordionItem` child nodes

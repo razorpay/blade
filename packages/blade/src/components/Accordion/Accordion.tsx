@@ -69,6 +69,7 @@ const Accordion = ({
   children,
   variant = 'transparent',
   size = 'large',
+  maxWidth,
   testID,
   ...styledProps
 }: AccordionProps): ReactElement => {
@@ -123,7 +124,7 @@ const Accordion = ({
         <BaseBox
           {...getVariantStyles(variant)}
           minWidth={MIN_WIDTH}
-          maxWidth={MAX_WIDTH}
+          maxWidth={maxWidth ?? MAX_WIDTH}
           width="100%"
         >
           {Children.map(children, (child, index) =>
