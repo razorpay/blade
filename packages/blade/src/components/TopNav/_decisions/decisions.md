@@ -277,7 +277,7 @@ const Dashboard = () => {
 2. How will the TabNav component handle the chevron icon for the Menu component?
 3. Should we call this component `TopNav`/`TopNavigationBar` instead of `NavigationBar`?
    1. We will call it `TopNav` since we will also have a `BottomNav` in the future.
-4. For the responsive behavior, should we just hide the `NavigationBarBrand` and `NavigationBarContent` with CSS media queries? instead of asking consumers to do conditional rendering?
+4. For the responsive behavior, should we just hide the `TopNavBrand` and `TopNavContent` with CSS media queries? instead of asking consumers to do conditional rendering?
 
 ### Design
 
