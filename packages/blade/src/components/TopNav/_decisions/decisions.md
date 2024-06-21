@@ -210,7 +210,7 @@ const WithMenu = () => {
 
 Once the available space for TabNavItems are less, the TabNav will start to horizontally scroll and will show a chevron icon to indicate that there are more items to the left or right.
 
-<video src="./tab-nav-behaviour.mov"></video>
+https://github.com/razorpay/blade/assets/35374649/8a0fb6ae-cedd-4065-80ed-27647938453c
 
 
 ## Mobile UX
