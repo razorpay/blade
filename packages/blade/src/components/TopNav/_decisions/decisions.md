@@ -1,4 +1,4 @@
-# NavigationBar - One Top Navigation Bar
+# TopNav - One Top Navigation Bar
 
 The navigation bar is positioned at the top of the screen that provides quick access to different products, search & user profile. 
 
@@ -11,12 +11,12 @@ The navigation bar is positioned at the top of the screen that provides quick ac
 
 ## Anatomy & Components
 
-- NavigationBar
-  - NavigationBarBrand *(Logo or Brand Name)*
-  - NavigationBarContent *(Can contain any JSX)*
+- TopNav
+  - TopNavBrand *(Logo or Brand Name)*
+  - TopNavContent *(Can contain any JSX)*
     - TabNav *(Horizontal Navigation Bars)*
       - TabNavItem
-  - NavigationBarActions *(Right Aligned Actions)*
+  - TopNavActions *(Right Aligned Actions)*
     - SearchInput
     - Button
     - Tooltip
@@ -28,11 +28,11 @@ The navigation bar is positioned at the top of the screen that provides quick ac
 
 ```jsx
 // Desktop Navigation Bar
-<NavigationBar>
-  <NavigationBarBrand>
+<TopNav>
+  <TopNavBrand>
     <img src="razorpay-logo" />
-  </NavigationBarBrand>
-  <NavigationBarContent>
+  </TopNavBrand>
+  <TopNavContent>
     <TabNav>
       <TabNavItem as={RouterLink} isSelected href="/home" icon={HomeIcon} />
       <TabNavItem as={RouterLink} href="/money">Money</TabNavItem>
@@ -44,8 +44,8 @@ The navigation bar is positioned at the top of the screen that provides quick ac
         </MenuOverlay>
       </Menu>
     </TabNav>
-  </NavigationBarContent>
-  <NavigationBarActions>
+  </TopNavContent>
+  <TopNavActions>
     <SearchInput />
     <Tooltip content="View Ecosystem Health">
       <Button icon={ActivityIcon} />
@@ -62,16 +62,16 @@ The navigation bar is positioned at the top of the screen that provides quick ac
         { /* Avatar Menu Items */ }
       </MenuOverlay>
     </Menu>
-  </NavigationBarActions>
-</NavigationBar>
+  </TopNavActions>
+</TopNav>
 
 // Mobile Navigation Bar
-<NavigationBar>
-  <NavigationBarContent>
+<TopNav>
+  <TopNavContent>
     <Button icon={MenuIcon} variant="secondary" accessibilityLabel="Toggle side navigation" />
     <Text>{currentPageTitle}</Text>
-  </NavigationBarContent>
-  <NavigationBarActions>
+  </TopNavContent>
+  <TopNavActions>
     <SearchInput />
     <Button icon={ActivityIcon} accessibilityLabel="View Ecosystem Health" />
     <Button icon={AnnouncementIcon} accessibilityLabel="View Announcements" />
@@ -80,33 +80,43 @@ The navigation bar is positioned at the top of the screen that provides quick ac
     <BottomSheet>
       { /* Avatar BottomSheet Content */ }
     </BottomSheet>
-  </NavigationBarActions>
-</NavigationBar>
+  </TopNavActions>
+</TopNav>
 ```
+
+## Design
+
+Desktop Navigation Bar:
+
+<img src="./top-nav-desktop-example.png" alt="TopNav Desktop Example" />
+
+Mobile Navigation Bar:
+
+<img src="./top-nav-mobile-example.png" alt="TopNav Mobile Example" />
 
 ## API
 
-All the top level components like `NavigationBar`, `NavigationBarBrand`, `NavigationBarContent`, `NavigationBarActions` accepts `children` prop which can be any JSX element.
+All the top level components like `TopNav`, `TopNavBrand`, `TopNavContent`, `TopNavActions` accepts `children` prop which can be any JSX element.
 
 ```ts
-type NavigationBarX = {
+type TopNavX = {
   children: React.ReactNode;
 };
 ```
 
-### NavigationBar
+### TopNav
 
 The top-level container for the navigation bar.
 
-### NavigationBarBrand
+### TopNavBrand
 
 The brand logo or name that appears on the left side of the navigation bar.
 
-### NavigationBarContent
+### TopNavContent
 
 The container for the main navigation items.
 
-### NavigationBarActions
+### TopNavActions
 
 The container for the right-aligned actions like search, buttons, and user profile.
 
@@ -136,19 +146,13 @@ type TabNavItem = {
    * 
    * @default false
    */
-  isSelected?: boolean;
+  isActive?: boolean;
   /**
    * Element to render before the navigation item.
    * 
    * @default undefined
    */
   leading?: React.ReactNode;
-  /**
-   * Icon to render after the navigation item.
-   * 
-   * @default undefined
-   */
-  trailing?: React.ReactNode;
   /**
    * Element to render inside the navigation item.
    * 
@@ -186,7 +190,7 @@ const WithMenu = () => {
 
 ## Mobile UX
 
-On mobile, the TabNav component will no longer be present and the NavigationBarContent will contain a single button to toggle the side navigation. The NavigationBarActions will contain the search input, buttons, and user profile.
+On mobile, the TabNav component will no longer be present and the TopNavContent will contain a single button to toggle the side navigation. The TopNavActions will contain the search input, buttons, and user profile.
 
 **Q:** So where will the product navigation items go? 
 **Ans:** The product navigation items will be moved to the bottom of the screen, but this will be part of a separate component called `BottomNavigation` which we will ship in phase 2.
@@ -199,12 +203,12 @@ const Dashboard = () => {
 
   if (isMobile) {
     return (
-      <NavigationBar>
-        <NavigationBarContent>
+      <TopNav>
+        <TopNavContent>
           <Button icon={MenuIcon} variant="secondary" accessibilityLabel="Toggle side navigation" />
           <Text>{currentPageTitle}</Text>
-        </NavigationBarContent>
-        <NavigationBarActions>
+        </TopNavContent>
+        <TopNavActions>
           <SearchInput />
           <Button icon={ActivityIcon} accessibilityLabel="View Ecosystem Health" />
           <Button icon={AnnouncementIcon} accessibilityLabel="View Announcements" />
@@ -213,8 +217,8 @@ const Dashboard = () => {
           <BottomSheet>
             { /* Avatar BottomSheet Content */ }
           </BottomSheet>
-        </NavigationBarActions>
-      </NavigationBar>
+        </TopNavActions>
+      </TopNav>
     )
   }
 
@@ -231,9 +235,9 @@ const Dashboard = () => {
   - Tab nav items will be a set of links that will be navigable using the keyboard.
   - The selected tab will have an `aria-selected` attribute set to `true`.
 
-- NavigationBar
+- TopNav
   - The navigation bar will have `role=navigation` to indicate that it is a navigation landmark.
-  - NavigationBar sub components will only compose other components and will not have any ARIA roles or attributes.
+  - TopNav sub components will only compose other components and will not have any ARIA roles or attributes.
 
 ## References
 
