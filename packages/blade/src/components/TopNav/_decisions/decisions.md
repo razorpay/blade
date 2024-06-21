@@ -206,6 +206,13 @@ const WithMenu = () => {
 }
 ```
 
+### TabNav overflow behaviour
+
+Once the available space for TabNavItems are less, the TabNav will start to horizontally scroll and will show a chevron icon to indicate that there are more items to the left or right.
+
+<video src="./tab-nav-behaviour.mov"></video>
+
+
 ## Mobile UX
 
 On mobile, the TabNav component will no longer be present and the TopNavContent will contain a single button to toggle the side navigation. The TopNavActions will contain the search input, buttons, and user profile.
