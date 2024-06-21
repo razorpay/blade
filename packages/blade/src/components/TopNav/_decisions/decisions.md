@@ -38,7 +38,7 @@ The navigation bar is positioned at the top of the screen that provides quick ac
       <TabNavItem as={RouterLink} href="/money">Money</TabNavItem>
       <TabNavItem as={RouterLink} href="/payroll">Payroll</TabNavItem>
       <Menu>
-        <TabNavItem trailingIcon={ChevronDown}>Payroll</TabNavItem>
+        <TabNavItem trailingIcon={ChevronDown}>Others</TabNavItem>
         <MenuOverlay>
           { /* Other Menu Items */ }
         </MenuOverlay>
