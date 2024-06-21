@@ -92,7 +92,7 @@ Desktop Navigation Bar:
 
 Mobile Navigation Bar:
 
-<img src="./top-nav-mobile-example.png" alt="TopNav Mobile Example" />
+<img width="50%" src="./top-nav-mobile-example.png" alt="TopNav Mobile Example" />
 
 ## API
 
