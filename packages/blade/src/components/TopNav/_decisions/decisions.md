@@ -134,31 +134,49 @@ type TabNav = {
 
 type TabNavItem = {
   /**
-   * The element to render as.
-   * 
-   * This can be used to render React Router Link for client side navigation.
-   * 
-   * @default 'a'
+   * href of the link
    */
-  as?: React.ElementType;
+  href?: LinkProps['href'];
+  /**
+   * Anchor tag `target` attribute
+   */
+  target?: LinkProps['target'];
+  /**
+   * as prop to pass ReactRouter's Link component.
+   *
+   * @default 'a'
+   *
+   * @example
+   * ```jsx
+   * import { Link } from 'react-router-dom';
+   *
+   * <TabNavItem as={Link} />
+   * ```
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as: React.ComponentType<any>;
   /**
    * Selected state of the navigation item.
-   * 
+   *
    * @default false
    */
   isActive?: boolean;
   /**
    * Element to render before the navigation item.
-   * 
+   *
    * @default undefined
    */
-  leading?: React.ReactNode;
+  leading?: IconComponent;
   /**
    * Element to render inside the navigation item.
-   * 
+   *
    * This can either be a string or JSX element (eg: Menu component)
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  /**
+   * Accessibility label for the navigation item.
+   */
+  accessibilityLabel?: string;
 };
 ```
 
@@ -204,12 +222,12 @@ const Dashboard = () => {
   if (isMobile) {
     return (
       <TopNav>
+        <TopNavBrand />
         <TopNavContent>
-          <Button icon={MenuIcon} variant="secondary" accessibilityLabel="Toggle side navigation" />
+          <Button icon={MenuIcon} variant="tertiary" accessibilityLabel="Toggle side navigation" />
           <Text>{currentPageTitle}</Text>
         </TopNavContent>
         <TopNavActions>
-          <SearchInput />
           <Button icon={ActivityIcon} accessibilityLabel="View Ecosystem Health" />
           <Button icon={AnnouncementIcon} accessibilityLabel="View Announcements" />
           <Button icon={RayIcon} accessibilityLabel="Ask Ray" />
