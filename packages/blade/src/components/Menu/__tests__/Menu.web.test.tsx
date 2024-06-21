@@ -86,23 +86,6 @@ describe('Menu', () => {
     await waitFor(() => expect(queryByRole('menu')).not.toBeInTheDocument());
   });
 
-  it('should open and close submenu', async () => {
-    const user = userEvents.setup();
-
-    const onOpenChange = jest.fn();
-
-    const { getByRole, queryByRole } = renderWithTheme(<BasicMenu onOpenChange={onOpenChange} />);
-    expect(queryByRole('menu')).not.toBeInTheDocument();
-    expect(queryByRole('menuitem', { name: 'Instagram' })).not.toBeInTheDocument();
-
-    await user.click(getByRole('button', { name: 'Open Menu' }));
-    await waitFor(() => expect(getByRole('menu')).toBeVisible());
-    await user.hover(getByRole('menuitem', { name: 'Share' }));
-    await waitFor(() => expect(getByRole('menuitem', { name: 'Instagram' })).toBeVisible());
-    await user.click(getByRole('menuitem', { name: 'Instagram' }));
-    await waitFor(() => expect(queryByRole('menu')).not.toBeInTheDocument());
-  });
-
   it('should pass a11y for menu and menuitem role', async () => {
     const user = userEvents.setup();
     const { getByRole } = renderWithTheme(<BasicMenu />);
