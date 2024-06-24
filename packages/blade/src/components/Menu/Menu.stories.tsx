@@ -32,9 +32,7 @@ const MenuTemplate: StoryFn<TemplateProps> = ({ trigger, ...args }) => {
   return (
     <Box>
       <Menu {...args}>
-        <Tooltip content="test test">
-          <Button>Test</Button>
-        </Tooltip>
+        {trigger}
         <MenuOverlay>
           <MenuHeader title="Saurabh Daware" subtitle="Admin" leading={<UserIcon />} />
           <Box paddingY="spacing.4" paddingX="spacing.3">
