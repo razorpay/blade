@@ -51,8 +51,7 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
 
   return (
     <StyledAvatarButton
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+      ref={ref as never}
       as={href ? 'a' : 'button'}
       size={size}
       color={color}

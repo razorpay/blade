@@ -103,8 +103,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
 
     if (name && !src) {
       return (
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        <AvatarButton ref={ref as any} {...commonButtonProps}>
+        <AvatarButton ref={ref as never} {...commonButtonProps}>
           {getInitials(name)}
         </AvatarButton>
       );
