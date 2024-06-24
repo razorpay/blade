@@ -100,31 +100,16 @@ const useFloatingMenuSetup = ({
   const { isMounted, styles: floatingTransitionStyles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
     initial: ({ side }) => {
-      let transform: string;
       const transitionOffset = makeSize(OVERLAY_TRANSITION_OFFSET);
-      switch (side) {
-        case 'top': {
-          transform = `translateY(${transitionOffset})`;
-          break;
-        }
-
-        case 'right': {
-          transform = `translateX(-${transitionOffset})`;
-          break;
-        }
-
-        case 'left': {
-          transform = `translateX(${transitionOffset})`;
-          break;
-        }
-
-        default: {
-          transform = `translateY(-${transitionOffset})`;
-        }
-      }
+      const transformMap = {
+        top: `translateY(${transitionOffset})`,
+        right: `translateX(-${transitionOffset})`,
+        left: `translateX(${transitionOffset})`,
+        bottom: `translateY(-${transitionOffset})`,
+      } as const;
 
       return {
-        transform,
+        transform: transformMap[side ?? 'bottom'],
         opacity: 0,
       };
     },
