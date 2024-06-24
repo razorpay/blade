@@ -2,7 +2,7 @@
 
 import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
 import type React from 'react';
-import { BaseMenuItemProps } from '~components/BaseMenu/BaseMenuItem';
+import { BaseMenuItemProps } from '~components/BaseMenu/types';
 import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
 
@@ -110,7 +110,7 @@ type MenuItemProps = {
 type MenuOverlayProps = {
   children: React.ReactElement[];
   zIndex?: BoxProps['zIndex'];
-  _transitionStyle: React.CSSProperties;
+  _transitionStyle?: React.CSSProperties;
 };
 
 // INTERNAL TYPES
