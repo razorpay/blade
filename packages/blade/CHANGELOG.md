@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.21.8
+
+### Patch Changes
+
+- 9b2883f8: feat: add iconColor prop to List & ListItem
+
 ## 11.21.7
 
 ### Patch Changes
