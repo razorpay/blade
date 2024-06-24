@@ -6,6 +6,7 @@ export type ListContextType = {
   level?: number;
   size: NonNullable<ListProps['size']>;
   icon?: IconComponent;
+  iconColor?: ListProps['iconColor'];
   variant: NonNullable<ListProps['variant']>;
 };
 

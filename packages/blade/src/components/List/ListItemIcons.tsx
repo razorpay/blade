@@ -42,9 +42,9 @@ const UnorderedLevel3Icon = ({ iconDimensions, color }: UnorderedIconProps): Rea
 
 const UnorderedItemIcon = ({ level }: { level?: number }): React.ReactElement => {
   const { theme, platform } = useTheme();
-  const { size } = useListContext();
+  const { size, iconColor } = useListContext();
   const iconDimensions = listItemUnorderedBulletSize[platform][size];
-  const backgroundToken = theme.colors.surface.text.gray.muted;
+  const backgroundToken = iconColor ?? theme.colors.surface.text.gray.muted;
 
   switch (level) {
     case 1:

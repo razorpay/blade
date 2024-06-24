@@ -36,6 +36,11 @@ type ListItemProps = {
    */
   icon?: IconComponent;
   /**
+   * Icon color of the ListItem's bullet.
+   *
+   */
+  iconColor?: ListProps['iconColor'];
+  /**
    * This is a private prop to be used only for internal logic purposes.
    *
    */
@@ -92,12 +97,14 @@ const ListItemContentChildren = ({
 const _ListItem = ({
   children,
   icon: Icon,
+  iconColor: listItemIconColor,
   _itemNumber,
   testID,
 }: ListItemProps): React.ReactElement => {
-  const { level, size, icon: ListContextIcon, variant } = useListContext();
+  const { level, size, icon: ListContextIcon, variant, iconColor } = useListContext();
   const { theme, platform } = useTheme();
   const ItemIcon = Icon ?? ListContextIcon;
+  const iconColorToken = listItemIconColor ?? iconColor ?? 'surface.icon.gray.muted';
 
   if (__DEV__) {
     if (level && level > 3) {
@@ -158,7 +165,7 @@ const _ListItem = ({
             alignSelf="flex-start"
           >
             {ItemIcon ? (
-              <ItemIcon size={size} color="surface.icon.gray.muted" />
+              <ItemIcon size={size} color={iconColorToken} />
             ) : (
               <UnorderedItemIcon level={level} />
             )}
