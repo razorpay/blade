@@ -10,15 +10,12 @@ import {
 import * as React from 'react';
 import { MenuContext, useFloatingMenuSetup, useMenu } from './useMenu';
 import type { MenuProps } from './types';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import BaseBox from '~components/Box/BaseBox';
 
 const MenuTree = ({
   children,
   openInteraction = 'click',
   onOpenChange,
   isOpen: isOpenControlled,
-  testID,
 }: MenuProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
 
@@ -92,23 +89,21 @@ const MenuTree = ({
           isOpen,
         }}
       >
-        <BaseBox {...metaAttribute({ name: MetaConstants.Menu, testID })}>
-          {triggerWithReferenceProps}
-          <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-            {isMounted && (
-              <FloatingPortal>
-                <FloatingFocusManager
-                  context={context}
-                  modal={false}
-                  initialFocus={-1}
-                  returnFocus={!isNested}
-                >
-                  {overlayWithFloatingProps}
-                </FloatingFocusManager>
-              </FloatingPortal>
-            )}
-          </FloatingList>
-        </BaseBox>
+        {triggerWithReferenceProps}
+        <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+          {isMounted && (
+            <FloatingPortal>
+              <FloatingFocusManager
+                context={context}
+                modal={false}
+                initialFocus={-1}
+                returnFocus={!isNested}
+              >
+                {overlayWithFloatingProps}
+              </FloatingFocusManager>
+            </FloatingPortal>
+          )}
+        </FloatingList>
       </MenuContext.Provider>
     </FloatingNode>
   );

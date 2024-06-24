@@ -32,7 +32,7 @@ type MenuProps = {
    * @default 'click'
    */
   openInteraction?: 'hover' | 'click';
-} & TestID;
+};
 
 type MenuItemProps = {
   /**
@@ -107,13 +107,14 @@ type MenuItemProps = {
   color?: Extract<FeedbackColors, 'negative'>;
   _hasFocusInside?: boolean;
   _isMenuTrigger?: boolean;
+  _isSubmenuOpen?: boolean;
 };
 
 type MenuOverlayProps = {
   children: React.ReactElement[] | React.ReactElement;
   zIndex?: BoxProps['zIndex'];
   _transitionStyle?: React.CSSProperties;
-};
+} & TestID;
 
 type MenuFooterProps = Pick<BaseFooterProps, 'children' | 'testID'>;
 
