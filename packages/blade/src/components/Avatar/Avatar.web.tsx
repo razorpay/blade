@@ -9,6 +9,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { UserIcon } from '~components/Icons';
+import type { BladeElementRef } from '~utils/types';
 
 const getInitials = (name: string): string => {
   // Combine first and last name initials
@@ -20,24 +21,38 @@ const getInitials = (name: string): string => {
   return names[0][0] + names[names.length - 1][0];
 };
 
-const _Avatar = ({
-  name,
-  color = 'neutral',
-  size = 'medium',
-  variant = 'circle',
-  icon,
-  href,
-  target,
-  rel,
-  // Image Props
-  src,
-  alt,
-  srcSet,
-  crossOrigin,
-  referrerPolicy,
-  testID,
-  ...styledProps
-}: AvatarProps): ReactElement => {
+const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
+  {
+    name,
+    color = 'neutral',
+    size = 'medium',
+    variant = 'circle',
+    icon,
+    href,
+    target,
+    rel,
+    // Image Props
+    src,
+    alt,
+    srcSet,
+    crossOrigin,
+    referrerPolicy,
+    testID,
+    // interaction props
+    onBlur,
+    onFocus,
+    onClick,
+    onMouseLeave,
+    onMouseMove,
+    onMouseDown,
+    onPointerDown,
+    onPointerEnter,
+    onTouchStart,
+    onTouchEnd,
+    ...styledProps
+  },
+  ref,
+): ReactElement => {
   if (__DEV__) {
     if (src && !alt && !name) {
       throwBladeError({
@@ -57,6 +72,16 @@ const _Avatar = ({
     href,
     target,
     rel,
+    onBlur,
+    onFocus,
+    onClick,
+    onMouseLeave,
+    onMouseMove,
+    onMouseDown,
+    onPointerDown,
+    onPointerEnter,
+    onTouchStart,
+    onTouchEnd,
   };
 
   const getChildrenToRender = (): React.ReactElement => {
@@ -64,6 +89,7 @@ const _Avatar = ({
       return (
         <AvatarButton
           {...commonButtonProps}
+          ref={ref as never}
           imgProps={{
             src,
             alt: alt ?? name,
@@ -76,7 +102,11 @@ const _Avatar = ({
     }
 
     if (name && !src) {
-      return <AvatarButton {...commonButtonProps}>{getInitials(name)}</AvatarButton>;
+      return (
+        <AvatarButton ref={ref as never} {...commonButtonProps}>
+          {getInitials(name)}
+        </AvatarButton>
+      );
     }
 
     return <AvatarButton {...commonButtonProps} icon={icon ?? UserIcon} />;
@@ -113,7 +143,7 @@ const _Avatar = ({
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-avatar-avatar Avatar Documentation}
  * 
  */
-const Avatar = assignWithoutSideEffects(_Avatar, {
+const Avatar = assignWithoutSideEffects(React.forwardRef(_Avatar), {
   displayName: 'Avatar',
   componentId: 'Avatar',
 });
