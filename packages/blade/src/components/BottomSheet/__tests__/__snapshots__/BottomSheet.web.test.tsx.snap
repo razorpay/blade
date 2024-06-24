@@ -456,7 +456,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c18.c18.c18.c18.c18:hover:not([aria-disabled=true]),
-.c18.c18.c18.c18.c18.has-submenu-open {
+.c18.c18.c18.c18.c18[aria-expanded="true"] {
   background-color: hsla(211,20%,52%,0.12);
 }
 
@@ -501,7 +501,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c24.c24.c24.c24.c24:hover:not([aria-disabled=true]),
-.c24.c24.c24.c24.c24.has-submenu-open {
+.c24.c24.c24.c24.c24[aria-expanded="true"] {
   background-color: hsla(4,74%,49%,0.09);
 }
 

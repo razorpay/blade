@@ -233,10 +233,6 @@ const MenuTemplate: StoryFn<TemplateProps> = ({ trigger, ...args }) => {
 };
 
 const CustomOverlayMenuTemplate: StoryFn<MenuProps> = (args) => {
-  const [openMenu, setOpenMenu] = React.useState<'payments' | 'banking' | 'payroll' | undefined>(
-    undefined,
-  );
-
   return (
     <>
       <Text marginY="spacing.4">
@@ -244,16 +240,7 @@ const CustomOverlayMenuTemplate: StoryFn<MenuProps> = (args) => {
         custom items
       </Text>
       <Box display="flex">
-        <Menu
-          {...args}
-          onOpenChange={({ isOpen }) => {
-            if (isOpen) {
-              setOpenMenu('payments');
-            } else {
-              setOpenMenu(undefined);
-            }
-          }}
-        >
+        <Menu {...args}>
           <MenuTrigger>Payments</MenuTrigger>
           <MenuOverlay>
             <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap="spacing.3">
@@ -274,16 +261,7 @@ const CustomOverlayMenuTemplate: StoryFn<MenuProps> = (args) => {
           </MenuOverlay>
         </Menu>
 
-        <Menu
-          {...args}
-          onOpenChange={({ isOpen }) => {
-            if (isOpen) {
-              setOpenMenu('banking');
-            } else {
-              setOpenMenu(undefined);
-            }
-          }}
-        >
+        <Menu {...args}>
           <MenuTrigger>Banking+</MenuTrigger>
           <MenuOverlay>
             <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap="spacing.3">
@@ -304,16 +282,7 @@ const CustomOverlayMenuTemplate: StoryFn<MenuProps> = (args) => {
           </MenuOverlay>
         </Menu>
 
-        <Menu
-          {...args}
-          onOpenChange={({ isOpen }) => {
-            if (isOpen) {
-              setOpenMenu('payroll');
-            } else {
-              setOpenMenu(undefined);
-            }
-          }}
-        >
+        <Menu {...args}>
           <MenuTrigger>Payroll</MenuTrigger>
           <MenuOverlay>
             <MenuItem title="For SMEs" href="/payroll" />
@@ -359,7 +328,6 @@ CustomItems.args = {
 };
 
 export const WithDifferentTriggers = (props: MenuProps): React.ReactElement => {
-  const [isCustomTriggerOpen, setIsCustomTriggerOpen] = React.useState(false);
   const [isLinkTriggerOpen, setIsLinkTriggerOpen] = React.useState(false);
 
   return (
@@ -383,9 +351,6 @@ export const WithDifferentTriggers = (props: MenuProps): React.ReactElement => {
       />
       <MenuTemplate
         {...props}
-        onOpenChange={({ isOpen }) => {
-          setIsCustomTriggerOpen(isOpen);
-        }}
         trigger={<CustomMenuTrigger>Custom Menu Trigger</CustomMenuTrigger>}
       />
     </Box>

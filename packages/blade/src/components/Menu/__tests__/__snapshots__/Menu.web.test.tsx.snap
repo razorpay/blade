@@ -231,7 +231,7 @@ exports[`Menu renders a Menu 1`] = `
 }
 
 .c19.c19.c19.c19.c19:hover:not([aria-disabled=true]),
-.c19.c19.c19.c19.c19.has-submenu-open {
+.c19.c19.c19.c19.c19[aria-expanded="true"] {
   background-color: hsla(211,20%,52%,0.12);
 }
 
@@ -276,7 +276,7 @@ exports[`Menu renders a Menu 1`] = `
 }
 
 .c28.c28.c28.c28.c28:hover:not([aria-disabled=true]),
-.c28.c28.c28.c28.c28.has-submenu-open {
+.c28.c28.c28.c28.c28[aria-expanded="true"] {
   background-color: hsla(4,74%,49%,0.09);
 }
 
@@ -605,54 +605,49 @@ exports[`Menu renders a Menu 1`] = `
   <div
     data-floating-ui-inert=""
   >
-    <div
-      class=""
-      data-blade-component="menu"
+    <button
+      aria-expanded="true"
+      aria-haspopup="menu"
+      class="c0"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
-      <button
-        aria-expanded="true"
-        aria-haspopup="menu"
-        class="c0"
-        data-blade-component="button"
-        role="button"
-        type="button"
+      <div
+        class=" c1"
+        data-blade-component="base-box"
       >
         <div
-          class=" c1"
+          class="c2 c3"
           data-blade-component="base-box"
         >
           <div
-            class="c2 c3"
-            data-blade-component="base-box"
+            class="c4"
+            data-blade-component="base-text"
           >
-            <div
-              class="c4"
-              data-blade-component="base-text"
-            >
-              Open Menu
-            </div>
+            Open Menu
           </div>
         </div>
-      </button>
-      <span
-        data-floating-ui-focus-guard=""
-        data-type="outside"
-        role="button"
-        style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-        tabindex="0"
-      />
-      <span
-        aria-owns=":r3:"
-        style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-      />
-      <span
-        data-floating-ui-focus-guard=""
-        data-type="outside"
-        role="button"
-        style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-        tabindex="0"
-      />
-    </div>
+      </div>
+    </button>
+    <span
+      data-floating-ui-focus-guard=""
+      data-type="outside"
+      role="button"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+      tabindex="0"
+    />
+    <span
+      aria-owns=":r3:"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+    />
+    <span
+      data-floating-ui-focus-guard=""
+      data-type="outside"
+      role="button"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+      tabindex="0"
+    />
   </div>
   <div
     data-floating-ui-portal=""
@@ -670,7 +665,7 @@ exports[`Menu renders a Menu 1`] = `
       aria-labelledby=":r2:"
       aria-orientation="vertical"
       class="c5 c6"
-      data-blade-component="base-box"
+      data-blade-component="menu"
       id=":r1:"
       role="menu"
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -8px;"
@@ -895,68 +890,63 @@ exports[`Menu renders a Menu 1`] = `
           />
         </button>
          
-        <div
-          class=""
-          data-blade-component="menu"
+        <button
+          aria-expanded="false"
+          aria-haspopup="menu"
+          class=" c19"
+          data-blade-component="base-box"
+          id=":r6:"
+          role="menuitem"
+          type="button"
         >
-          <button
-            aria-expanded="false"
-            aria-haspopup="menu"
-            class=" c19"
-            data-blade-component="base-box"
-            id=":r6:"
-            role="menuitem"
-            type="button"
+          <div
+            class="c20"
+            data-blade-component="box"
           >
             <div
-              class="c20"
-              data-blade-component="box"
-            >
-              <div
-                class="c21"
-                data-blade-component="box"
-              />
-              <div
-                class="c22"
-                data-blade-component="box"
-              >
-                <p
-                  class="c23"
-                  data-blade-component="text"
-                >
-                  Share
-                </p>
-              </div>
-              <div
-                class="c24"
-                data-blade-component="box"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  width="16px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
-                    data-blade-component="svg-path"
-                    fill="hsla(211, 22%, 56%, 1)"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div
-              class=""
+              class="c21"
               data-blade-component="box"
             />
-          </button>
-           
-        </div>
+            <div
+              class="c22"
+              data-blade-component="box"
+            >
+              <p
+                class="c23"
+                data-blade-component="text"
+              >
+                Share
+              </p>
+            </div>
+            <div
+              class="c24"
+              data-blade-component="box"
+            >
+              <svg
+                aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
+                data-blade-component="icon"
+                fill="none"
+                height="16px"
+                viewBox="0 0 24 24"
+                width="16px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
+                  data-blade-component="svg-path"
+                  fill="hsla(211, 22%, 56%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class=""
+            data-blade-component="box"
+          />
+        </button>
+         
         <button
           class=" c28"
           data-blade-component="base-box"

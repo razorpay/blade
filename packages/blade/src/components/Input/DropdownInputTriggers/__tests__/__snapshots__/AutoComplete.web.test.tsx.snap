@@ -1127,7 +1127,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c47.c47.c47.c47.c47:hover:not([aria-disabled=true]),
-.c47.c47.c47.c47.c47.has-submenu-open {
+.c47.c47.c47.c47.c47[aria-expanded="true"] {
   background-color: hsla(211,20%,52%,0.12);
 }
 
