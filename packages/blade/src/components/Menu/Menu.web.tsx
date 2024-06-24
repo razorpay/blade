@@ -76,7 +76,6 @@ const MenuTree = ({
     ...referenceProps,
     _hasFocusInside: hasFocusInside,
     _isMenuTrigger: true,
-    _isSubmenuOpen: isOpen,
   });
 
   const overlayWithFloatingProps = React.cloneElement(menuOverlayChild, {

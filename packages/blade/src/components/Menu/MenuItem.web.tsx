@@ -15,7 +15,6 @@ const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
       trailing,
       _isMenuTrigger,
       _hasFocusInside,
-      _isSubmenuOpen,
       href,
       target,
       children,
@@ -42,7 +41,6 @@ const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
         }
         as={as ?? defaultAs}
         href={href}
-        className={_isSubmenuOpen ? 'has-submenu-open' : ''}
         ref={useMergeRefs([item.ref, forwardedRef])}
         isDisabled={isDisabled}
         {...props}

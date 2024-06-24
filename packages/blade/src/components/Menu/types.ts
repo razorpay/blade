@@ -107,7 +107,6 @@ type MenuItemProps = {
   color?: Extract<FeedbackColors, 'negative'>;
   _hasFocusInside?: boolean;
   _isMenuTrigger?: boolean;
-  _isSubmenuOpen?: boolean;
 };
 
 type MenuOverlayProps = {

@@ -29,7 +29,7 @@ const CustomMenuTrigger = styled.button<{ isTransparent?: boolean }>((props) => 
     borderBottomStyle: 'solid',
     borderBottomColor: props.theme.colors.transparent,
     cursor: 'pointer',
-    '&:hover, &.menu-open': {
+    '&:hover, &[aria-expanded="true"]': {
       backgroundColor: props.isTransparent
         ? props.theme.colors.transparent
         : props.theme.colors.interactive.background.gray.fadedHighlighted,

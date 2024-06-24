@@ -254,9 +254,7 @@ const CustomOverlayMenuTemplate: StoryFn<MenuProps> = (args) => {
             }
           }}
         >
-          <MenuTrigger className={openMenu === 'payments' ? 'menu-open' : undefined}>
-            Payments
-          </MenuTrigger>
+          <MenuTrigger>Payments</MenuTrigger>
           <MenuOverlay>
             <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap="spacing.3">
               {navMenuItems.payments.map((product) => (
@@ -286,9 +284,7 @@ const CustomOverlayMenuTemplate: StoryFn<MenuProps> = (args) => {
             }
           }}
         >
-          <MenuTrigger className={openMenu === 'banking' ? 'menu-open' : undefined}>
-            Banking+
-          </MenuTrigger>
+          <MenuTrigger>Banking+</MenuTrigger>
           <MenuOverlay>
             <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap="spacing.3">
               {navMenuItems.banking.map((product) => (
@@ -318,9 +314,7 @@ const CustomOverlayMenuTemplate: StoryFn<MenuProps> = (args) => {
             }
           }}
         >
-          <MenuTrigger className={openMenu === 'payroll' ? 'menu-open' : undefined}>
-            Payroll
-          </MenuTrigger>
+          <MenuTrigger>Payroll</MenuTrigger>
           <MenuOverlay>
             <MenuItem title="For SMEs" href="/payroll" />
             <MenuItem
@@ -392,11 +386,7 @@ export const WithDifferentTriggers = (props: MenuProps): React.ReactElement => {
         onOpenChange={({ isOpen }) => {
           setIsCustomTriggerOpen(isOpen);
         }}
-        trigger={
-          <CustomMenuTrigger className={isCustomTriggerOpen ? 'menu-open' : ''}>
-            Custom Menu Trigger
-          </CustomMenuTrigger>
-        }
+        trigger={<CustomMenuTrigger>Custom Menu Trigger</CustomMenuTrigger>}
       />
     </Box>
   );
