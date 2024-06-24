@@ -161,8 +161,7 @@ export default {
       page: Page,
     },
   },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-} as Meta<any>;
+} as Meta<MenuProps>;
 
 type TemplateProps = MenuProps & { trigger: React.ReactElement };
 
