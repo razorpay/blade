@@ -2,9 +2,12 @@
 
 import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
 import type React from 'react';
-import { BaseMenuItemProps } from '~components/BaseMenu/types';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseMenuItemProps } from '~components/BaseMenu/types';
 import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
+import type { TestID } from '~utils/types';
 
 // EXPOSED TYPES
 type MenuProps = {
@@ -108,10 +111,17 @@ type MenuItemProps = {
 };
 
 type MenuOverlayProps = {
-  children: React.ReactElement[];
+  children: React.ReactElement[] | React.ReactElement;
   zIndex?: BoxProps['zIndex'];
   _transitionStyle?: React.CSSProperties;
-};
+} & TestID;
+
+type MenuFooterProps = Pick<BaseFooterProps, 'children' | 'testID'>;
+
+type MenuHeaderProps = Pick<
+  BaseHeaderProps,
+  'title' | 'subtitle' | 'leading' | 'trailing' | 'titleSuffix' | 'testID'
+>;
 
 // INTERNAL TYPES
 type MenuContextType = {
@@ -140,6 +150,8 @@ type UseFloatingMenuReturnType = Pick<
 export type {
   MenuItemProps,
   MenuOverlayProps,
+  MenuFooterProps,
+  MenuHeaderProps,
   MenuProps,
   MenuContextType,
   UseFloatingMenuProps,

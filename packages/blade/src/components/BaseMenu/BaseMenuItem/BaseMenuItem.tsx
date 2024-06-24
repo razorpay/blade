@@ -47,8 +47,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
   return (
     <BaseMenuItemContext.Provider value={{ color, isDisabled }}>
       <StyledMenuItemContainer
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={ref as any}
+        ref={ref as never}
         as={as}
         type="button"
         disabled={isDisabled}
@@ -69,7 +68,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
           children
         ) : (
           <>
-            <Box display="flex" alignItems="start" width="100%" justifyContent="center">
+            <Box display="flex" alignItems="flex-start" width="100%" justifyContent="center">
               <Box
                 display="flex"
                 justifyContent="center"

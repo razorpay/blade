@@ -1,7 +1,7 @@
 import type { Theme } from '~components/BladeProvider';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
-import { makeSpace } from '~utils';
+import { makeSize, makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 
 const overlayPaddingX = 'spacing.3';
@@ -24,7 +24,10 @@ const getDividerMarginTokens = (theme: Theme): GetDividerMarginTokensReturnType 
   };
 };
 
-const MENU_MIN_WIDTH = size['240'];
+const MENU_MIN_WIDTH = {
+  base: makeSize(size['200']),
+  s: makeSize(size['240']),
+} as const;
 
 export {
   overlayPaddingX,

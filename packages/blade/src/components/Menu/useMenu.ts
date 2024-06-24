@@ -5,6 +5,7 @@ import {
   offset,
   safePolygon,
   shift,
+  size,
   useClick,
   useDismiss,
   useFloating,
@@ -65,6 +66,11 @@ const useFloatingMenuSetup = ({
       offset({ mainAxis: isNested ? 12 : OVERLAY_OFFSET, alignmentAxis: isNested ? -16 : 0 }),
       flip(),
       shift(),
+      size({
+        apply({ availableHeight, elements }) {
+          elements.floating.style.maxHeight = `${availableHeight}px`;
+        },
+      }),
     ],
     whileElementsMounted: autoUpdate,
   });

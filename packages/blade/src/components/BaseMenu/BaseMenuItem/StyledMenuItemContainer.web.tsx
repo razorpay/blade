@@ -13,7 +13,7 @@ const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps
     [`@media ${getMediaQuery({ min: props.theme.breakpoints.m })}`]: {
       padding: makeSize(props.theme.spacing[3]),
     },
-    '&:hover:not([aria-disabled=true]), &.has-submenu-open': {
+    '&:hover:not([aria-disabled=true]), &[aria-expanded="true"]': {
       backgroundColor:
         props.color === 'negative'
           ? props.theme.colors.interactive.background.negative.faded

@@ -408,6 +408,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   color: hsla(214,28%,84%,1);
 }
 
+@media screen and (min-width:768px) {
+
+}
+
 <div>
   <div
     class=" c0"

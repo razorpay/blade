@@ -370,7 +370,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       className={activeIndex === props._index ? 'active-focus' : ''}
       isSelected={isSelected}
       isDisabled={props.isDisabled}
-      role={getActionListItemRole(dropdownTriggerer)}
+      role={getActionListItemRole(dropdownTriggerer, props.href)}
       {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
         if (typeof props._index === 'number') {
           onOptionClick(e, props._index);

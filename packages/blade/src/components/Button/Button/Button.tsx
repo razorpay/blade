@@ -55,7 +55,7 @@ type ButtonCommonProps = {
    *
    * @private
    */
-  'aria-expanded'?: string;
+  'aria-expanded'?: boolean;
   /**
    * It is exposed for internal usage with menu.
    *
@@ -69,7 +69,6 @@ type ButtonCommonProps = {
    */
   role?: AriaRoles;
   tabIndex?: BaseButtonProps['tabIndex'];
-  id?: BaseButtonProps['id'];
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -121,7 +120,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     onMouseLeave,
     onMouseMove,
     onMouseDown,
-    id,
     onPointerDown,
     onPointerEnter,
     onTouchStart,
@@ -134,7 +132,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
       {...getStyledProps(rest)}
-      id={id}
       ref={ref}
       href={href}
       target={target}
@@ -142,7 +139,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       accessibilityProps={{
         label: accessibilityLabel,
         describedBy: rest['aria-describedby'],
-        expanded: rest['aria-expanded'] === 'true',
+        expanded: rest['aria-expanded'],
         hasPopup: rest['aria-haspopup'],
         role,
       }}

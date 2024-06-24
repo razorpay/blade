@@ -106,7 +106,6 @@ export const MetaConstants = {
   Menu: 'menu',
   MenuHeader: 'menu-header',
   MenuFooter: 'menu-footer',
-  MenuList: 'menu-list',
   Modal: 'modal',
   ModalBody: 'modal-body',
   ModalHeader: 'modal-header',
