@@ -82,6 +82,11 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     describedBy: labelId,
   });
 
+  // Update selectedFiles when fileList prop changes in controlled mode
+  useMemo(() => {
+    setSelectedFiles(fileList ?? []);
+  }, [fileList]);
+
   // In control mode attach a unique id to each file if not provided
   useMemo(() => {
     for (const file of selectedFiles) {
