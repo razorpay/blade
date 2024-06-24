@@ -1,5 +1,31 @@
 # @razorpay/blade
 
+## 11.21.7
+
+### Patch Changes
+
+- be353128: fix: Spinner's white color
+
+## 11.21.6
+
+### Patch Changes
+
+- 0d6d7cf7: fix: bottomsheet initial focus triggering everytime
+- cc40b48e: fix(Accordion): add `maxWidth` prop
+
+## 11.21.5
+
+### Patch Changes
+
+- 25fe56db: fix(DatePicker): correct input alignment without label
+- e179dd50: fix(FileUpload): remove excessive margins
+
+## 11.21.4
+
+### Patch Changes
+
+- d3789888: fix: datepicker zIndex issue and expose zIndex prop
+
 ## 11.21.3
 
 ### Patch Changes

@@ -192,6 +192,13 @@ const _BottomSheet = ({
     }
   }, [initialFocusRef]);
 
+  // focus on the initial ref when the sheet is opened
+  React.useLayoutEffect(() => {
+    if (_isOpen) {
+      focusOnInitialRef();
+    }
+  }, [_isOpen, focusOnInitialRef]);
+
   const handleOnOpen = React.useCallback(() => {
     setPositionY(dimensions.height * initialSnapPoint.current);
     scrollLockRef.current.activate();
@@ -200,8 +207,7 @@ const _BottomSheet = ({
     // On Subsequent open operations it won't further update the original focus
     originalFocusElement.current =
       originalFocusElement.current ?? (document.activeElement as HTMLElement);
-    focusOnInitialRef();
-  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPositionY]);
+  }, [dimensions.height, scrollLockRef, setPositionY]);
 
   const handleOnClose = React.useCallback(() => {
     setPositionY(0);

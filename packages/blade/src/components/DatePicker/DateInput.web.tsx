@@ -77,10 +77,11 @@ const _DatePickerInput = (
   const isMobile = useIsMobile();
   const format = 'DD/MM/YYYY';
   const isLarge = size === 'large';
+  const hasLabel = typeof label === 'string' ? Boolean(label) : Boolean(label?.start || label?.end);
   const isLabelPositionLeft = labelPosition === 'left';
   const isLabelPositionTop = labelPosition === 'top';
-  const isLabelPositionVisuallyTop = isLabelPositionTop || isMobile;
-  const hasLabel = Boolean(label);
+  const isLabelPositionVisuallyTop = hasLabel && (isLabelPositionTop || isMobile);
+
   const { locale } = useDatesContext();
 
   if (selectionType == 'single') {
@@ -183,7 +184,7 @@ const _DatePickerInput = (
             size="medium"
             marginTop={
               // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
-              (hasLabel && !isLabelPositionLeft) || isMobile
+              hasLabel && (!isLabelPositionLeft || isMobile)
                 ? `calc(${makeSize(iconVerticalMargin[size])} + ${makeSize(
                     isLarge ? sizeTokens[20] : sizeTokens[15],
                   )})`
