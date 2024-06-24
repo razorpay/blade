@@ -132,7 +132,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   const animatedBorderAndBackgroundStyle = useAnimatedStyle(
     () => ({
-      borderWidth: theme.border.width.thin,
+      borderWidth: rest.hasBorder ? theme.border.width.thin : theme.border.width.none,
       borderRadius: theme.border.radius.medium,
       borderStyle: 'solid',
       backgroundColor: withTiming(backgroundColor, motionConfig),
