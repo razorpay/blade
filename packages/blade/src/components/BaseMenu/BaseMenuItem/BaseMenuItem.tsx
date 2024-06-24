@@ -3,8 +3,6 @@ import type { BaseMenuItemProps } from '../types';
 import { BaseMenuItemContext } from '../BaseMenuContext';
 import { StyledMenuItemContainer } from './StyledMenuItemContainer';
 import { Box } from '~components/Box';
-import BaseBox from '~components/Box/BaseBox';
-import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
@@ -23,6 +21,9 @@ const menuItemDescriptionColor = {
   default: 'interactive.text.gray.muted',
   disabled: 'interactive.text.gray.disabled',
 } as const;
+
+// This is the height of item excluding the description to make sure description comes at the bottom and other first row items are center aligned
+const itemFirstRowHeight = makeSize(size[20]);
 
 const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuItemProps> = (
   {
@@ -68,69 +69,55 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
           children
         ) : (
           <>
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              maxHeight={makeSize(size[20])}
-              width="100%"
-            >
-              <Box display="flex" justifyContent="center" alignItems="center">
-                {selectionType === 'multiple' ? (
-                  // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-                  <BaseBox
-                    pointerEvents="none"
-                    paddingRight="spacing.2"
-                    {...makeAccessible({
-                      hidden: true,
-                    })}
-                  >
-                    <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
-                      {/* 
-                  Checkbox requires children. Didn't want to make it optional because its helpful for consumers
-                  But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
-                */}
-                      {null}
-                    </Checkbox>
-                  </BaseBox>
-                ) : (
-                  leading
-                )}
+            <Box display="flex" alignItems="start" width="100%" justifyContent="center">
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                height={itemFirstRowHeight}
+              >
+                {leading}
               </Box>
               <Box
-                paddingLeft={selectionType === 'multiple' || !leading ? 'spacing.0' : 'spacing.3'}
+                paddingLeft={leading ? 'spacing.3' : 'spacing.0'}
                 paddingRight="spacing.3"
                 display="flex"
-                alignItems="center"
-                flexDirection="row"
+                flexDirection="column"
               >
-                <Text
-                  truncateAfterLines={1}
-                  color={
-                    menuItemTitleColor[color === 'negative' ? 'negative' : 'normal'][
-                      isDisabled ? 'disabled' : 'default'
-                    ]
-                  }
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  flexDirection="row"
+                  height={itemFirstRowHeight}
                 >
-                  {title}
-                </Text>
-                {titleSuffix}
+                  <Text
+                    truncateAfterLines={1}
+                    color={
+                      menuItemTitleColor[color === 'negative' ? 'negative' : 'normal'][
+                        isDisabled ? 'disabled' : 'default'
+                      ]
+                    }
+                  >
+                    {title}
+                  </Text>
+                  {titleSuffix}
+                </Box>
+                <Box>
+                  {description ? (
+                    <Text
+                      color={menuItemDescriptionColor[isDisabled ? 'disabled' : 'default']}
+                      size="small"
+                    >
+                      {description}
+                    </Text>
+                  ) : null}
+                </Box>
               </Box>
               <Box marginLeft="auto">{trailing}</Box>
             </Box>
-            <Box paddingLeft={leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
-              {description ? (
-                <Text
-                  color={menuItemDescriptionColor[isDisabled ? 'disabled' : 'default']}
-                  size="small"
-                >
-                  {description}
-                </Text>
-              ) : null}
-            </Box>
           </>
         )}
-      </StyledMenuItemContainer>{' '}
+      </StyledMenuItemContainer>
     </BaseMenuItemContext.Provider>
   );
 };

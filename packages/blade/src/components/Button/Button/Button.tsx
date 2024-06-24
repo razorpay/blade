@@ -9,6 +9,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
+import type { AriaRoles } from '~utils/makeAccessible';
 
 type ButtonCommonProps = {
   /**
@@ -66,7 +67,7 @@ type ButtonCommonProps = {
    *
    * @private
    */
-  role?: 'menuitem';
+  role?: AriaRoles;
   tabIndex?: BaseButtonProps['tabIndex'];
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;

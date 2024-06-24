@@ -89,8 +89,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
       return (
         <AvatarButton
           {...commonButtonProps}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref={ref as any}
+          ref={ref as never}
           imgProps={{
             src,
             alt: alt ?? name,
@@ -104,8 +103,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
 
     if (name && !src) {
       return (
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        <AvatarButton ref={ref as any} {...commonButtonProps}>
+        <AvatarButton ref={ref as never} {...commonButtonProps}>
           {getInitials(name)}
         </AvatarButton>
       );
@@ -116,7 +114,6 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
 
   return (
     <StyledAvatar
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       {...metaAttribute({ name: MetaConstants.Avatar, testID })}
       {...getStyledProps(styledProps)}
       backgroundColor="surface.background.gray.intense"

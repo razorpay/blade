@@ -24,6 +24,7 @@ import { Badge } from '~components/Badge';
 import { Box } from '~components/Box';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { BaseMenuItem, useBaseMenuItem } from '~components/BaseMenu';
+import { Checkbox } from '~components/Checkbox';
 
 type ActionListItemProps = {
   title: string;
@@ -341,7 +342,27 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       tabIndex={-1}
       title={props.title}
       description={props.description}
-      leading={props.leading}
+      leading={
+        selectionType === 'multiple' ? (
+          <BaseBox
+            pointerEvents="none"
+            // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+            {...makeAccessible({
+              hidden: true,
+            })}
+          >
+            <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={props.isDisabled}>
+              {/* 
+      Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+      But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+    */}
+              {null}
+            </Checkbox>
+          </BaseBox>
+        ) : (
+          props.leading
+        )
+      }
       trailing={props.trailing}
       titleSuffix={props.titleSuffix}
       href={props.href}
