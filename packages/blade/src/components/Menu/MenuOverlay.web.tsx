@@ -21,8 +21,7 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
 ): React.ReactElement => {
   return (
     <UnfocussableOverlay
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+      ref={ref as never}
       {...props}
       minWidth={MENU_MIN_WIDTH}
       zIndex={zIndex}
