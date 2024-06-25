@@ -25,6 +25,7 @@ import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { useControllableState } from '~utils/useControllable';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -58,7 +59,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const inputRef = useRef<HTMLInputElement | null>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
   const { platform } = useTheme();
-  const [selectedFiles, setSelectedFiles] = useState<BladeFileList>(fileList ?? []);
+  const [selectedFiles, setSelectedFiles] = useControllableState({
+    value: fileList,
+    defaultValue: fileList ?? [],
+  });
   const [errorMessage, setErrorMessage] = useState(errorText);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
@@ -81,11 +85,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     disabled: Boolean(isDisabled),
     describedBy: labelId,
   });
-
-  // Update selectedFiles when fileList prop changes in controlled mode
-  useMemo(() => {
-    setSelectedFiles(fileList ?? []);
-  }, [fileList]);
 
   // In control mode attach a unique id to each file if not provided
   useMemo(() => {
