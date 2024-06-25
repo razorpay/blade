@@ -43,7 +43,24 @@ const RazorpayLinesSvg = (): React.ReactElement => {
 
 type TopNavProps = {
   children: React.ReactNode;
-} & BoxProps;
+} & Pick<
+  BoxProps,
+  | 'padding'
+  | 'paddingTop'
+  | 'paddingBottom'
+  | 'paddingLeft'
+  | 'paddingRight'
+  | 'paddingX'
+  | 'paddingY'
+  | 'backgroundColor'
+  | 'position'
+  | 'top'
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'width'
+  | 'zIndex'
+>;
 
 const TopNav = ({ children, ...styledProps }: TopNavProps): React.ReactElement => {
   return (

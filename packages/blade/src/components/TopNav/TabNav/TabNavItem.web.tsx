@@ -17,6 +17,7 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     }),
     flex: 1,
     display: 'flex',
+    gap: makeSpace(theme.spacing[2]),
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
@@ -100,7 +101,17 @@ const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }
 });
 
 const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemProps> = (
-  { children, isActive, leading: Leading, as, accessibilityLabel, href, target, ...props },
+  {
+    as,
+    children,
+    isActive,
+    leading: Leading,
+    trailing: Trailing,
+    accessibilityLabel,
+    href,
+    target,
+    ...props
+  },
   ref,
 ): React.ReactElement => {
   return (
@@ -123,6 +134,12 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
           />
         ) : null}
         {children}
+        {Trailing ? (
+          <Trailing
+            size="large"
+            color={isActive ? 'interactive.icon.gray.normal' : 'surface.icon.gray.subtle'}
+          />
+        ) : null}
       </StyledTabNavItem>
     </StyledTabNavItemWrapper>
   );
