@@ -305,12 +305,12 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             size={size}
             onRemove={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
-              setSelectedFiles(newFiles);
+              setSelectedFiles(() => newFiles);
               onRemove?.({ file: selectedFiles[0] });
             }}
             onReupload={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
-              setSelectedFiles(newFiles);
+              setSelectedFiles(() => newFiles);
               inputRef.current?.click();
 
               // TODO - Remove this in the next major release
@@ -324,7 +324,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             }}
             onDismiss={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
-              setSelectedFiles(newFiles);
+              setSelectedFiles(() => newFiles);
               onDismiss?.({ file: selectedFiles[0] });
             }}
             onPreview={onPreview}
@@ -366,12 +366,12 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               size={size}
               onRemove={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
-                setSelectedFiles(newFiles);
+                setSelectedFiles(() => newFiles);
                 onRemove?.({ file });
               }}
               onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
-                setSelectedFiles(newFiles);
+                setSelectedFiles(() => newFiles);
                 inputRef.current?.click();
                 // TODO - Remove this in the next major release
                 // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
@@ -384,7 +384,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               }}
               onDismiss={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
-                setSelectedFiles(newFiles);
+                setSelectedFiles(() => newFiles);
                 onDismiss?.({ file });
               }}
               onPreview={onPreview}
