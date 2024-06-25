@@ -180,11 +180,13 @@ KeyboardNavigations.play = async () => {
   // 2nd drawer open
   await expect(queryByRole('heading', { name: 'Drawer 2 Heading' })).not.toBeInTheDocument();
   await userEvent.keyboard('{Tab}');
+  await sleep(300);
   await userEvent.keyboard('{Enter}');
   await waitFor(() => expect(getByText('Drawer 2 Heading')).toBeVisible());
 
   // 2nd drawer close
   await userEvent.keyboard('{Tab}');
+  await sleep(300);
   await userEvent.keyboard('{Enter}');
   await waitFor(() => expect(queryByText('Drawer 2 Heading')).not.toBeInTheDocument());
   await expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible();
