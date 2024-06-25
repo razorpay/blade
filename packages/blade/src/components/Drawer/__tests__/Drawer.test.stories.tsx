@@ -174,7 +174,6 @@ KeyboardNavigations.play = async () => {
   const drawerToggleButton = getByRole('button', { name: 'Toggle Drawer' });
   drawerToggleButton.focus();
   await userEvent.keyboard('{Enter}');
-  await sleep(300);
   await waitFor(() => expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible());
   await expect(getByRole('button', { name: 'Close' })).toHaveFocus();
 
@@ -183,14 +182,12 @@ KeyboardNavigations.play = async () => {
   await userEvent.keyboard('{Tab}');
   await sleep(300);
   await userEvent.keyboard('{Enter}');
-  await sleep(300);
   await waitFor(() => expect(getByText('Drawer 2 Heading')).toBeVisible());
 
   // 2nd drawer close
   await userEvent.keyboard('{Tab}');
   await sleep(300);
   await userEvent.keyboard('{Enter}');
-  await sleep(300);
   await waitFor(() => expect(queryByText('Drawer 2 Heading')).not.toBeInTheDocument());
   await expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible();
 
@@ -199,7 +196,6 @@ KeyboardNavigations.play = async () => {
   await sleep(300);
   await expect(getByRole('button', { name: 'Open 2nd Drawer' })).toHaveFocus();
   await userEvent.keyboard('{Escape}');
-  await sleep(300);
   await waitFor(() =>
     expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument(),
   );
