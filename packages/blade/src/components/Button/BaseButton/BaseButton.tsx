@@ -33,6 +33,7 @@ import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -53,6 +54,8 @@ type BaseButtonCommonProps = {
   target?: BaseLinkProps['target'];
   rel?: BaseLinkProps['rel'];
   size?: 'xsmall' | 'small' | 'medium' | 'large';
+  id?: string;
+  tabIndex?: BaseBoxProps['tabIndex'];
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
@@ -298,6 +301,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     href,
     target,
     rel,
+    tabIndex,
+    id,
     variant = 'primary',
     color = 'primary',
     size = 'medium',
@@ -315,6 +320,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     onFocus,
     onMouseLeave,
     onMouseMove,
+    onMouseDown,
     onPointerDown,
     onPointerEnter,
     accessibilityProps,
@@ -391,6 +397,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
+  const defaultRole = isLink ? 'link' : 'button';
 
   const handlePointerPressedIn = React.useCallback(() => {
     if (disabled) return;
@@ -425,6 +432,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   return (
     <StyledBaseButton
       ref={ref as any}
+      id={id}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
       // @ts-ignore: On React Native it will always be undefined but TS doesn't understand that
       as={renderElement}
@@ -433,8 +441,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       rel={rel ?? defaultRel}
       accessibilityProps={{
         ...makeAccessible({
-          role: isLink ? 'link' : 'button',
           ...accessibilityProps,
+          role: accessibilityProps?.role ?? defaultRole,
         }),
       }}
       variant={variant}
@@ -458,6 +466,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}
       onMouseMove={onMouseMove}
+      tabIndex={tabIndex}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
       // Setting type for web fails it on native typecheck and vice versa
@@ -481,7 +490,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       height={height}
       width={width}
       isPressed={isPressed}
-      onMouseDown={handlePointerPressedIn}
+      onMouseDown={(event: React.MouseEvent) => {
+        handlePointerPressedIn();
+        onMouseDown?.(event);
+      }}
       onMouseUp={handlePointerPressedOut}
       onMouseOut={handlePointerPressedOut}
       onKeyUp={handleKeyboardPressedOut}

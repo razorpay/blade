@@ -243,7 +243,12 @@ const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = ()
               value="profile"
               leading={<ActionListItemIcon icon={UserIcon} />}
             />
-            <ActionListItem title="Credit" value="credit" description="check your credit here!" />
+            <ActionListItem
+              title="Credit"
+              value="credit"
+              leading={<ActionListItemIcon icon={UserIcon} />}
+              description="check your credit here!"
+            />
             <ActionListItem title="Disabled" value="disabled" isDisabled />
           </ActionListSection>
           <ActionListItem

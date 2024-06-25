@@ -23,8 +23,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { componentZIndices } from '~utils/componentZIndices';
+import { OVERLAY_OFFSET, OVERLAY_TRANSITION_OFFSET } from '~components/BaseMenu/tokens';
 
-const OVERLAY_OFFSET: number = size['8'];
 const OVERLAY_PADDING: number = size['12']; // doesn't have to be exact. Just rough padding for floating ui to decide to show overlay on top or bottom
 
 /**
@@ -68,6 +68,7 @@ const _DropdownOverlay = ({
         mainAxis: OVERLAY_OFFSET,
       }),
       flip({
+        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
         padding: OVERLAY_OFFSET + OVERLAY_PADDING,
       }),
       sizeMiddleware({
@@ -91,7 +92,7 @@ const _DropdownOverlay = ({
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
     initial: () => ({
-      transform: `translateY(-${makeSize(size['8'])})`,
+      transform: `translateY(-${makeSize(OVERLAY_TRANSITION_OFFSET)})`,
       opacity: 0,
     }),
   });

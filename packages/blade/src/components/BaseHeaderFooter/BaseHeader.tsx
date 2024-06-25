@@ -65,6 +65,8 @@ type BaseHeaderProps = {
 
   paddingX?: BoxProps['paddingX'];
   marginY?: BoxProps['marginY'];
+  marginTop?: BoxProps['marginTop'];
+  marginBottom?: BoxProps['marginBottom'];
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
@@ -236,6 +238,8 @@ const _BaseHeader = ({
   metaComponentName,
   paddingX,
   marginY,
+  marginBottom,
+  marginTop,
   size = 'large',
   isDisabled,
   children,
@@ -262,6 +266,8 @@ const _BaseHeader = ({
       <BaseBox
         marginY={marginY ?? { base: 'spacing.5', m: 'spacing.6' }}
         paddingX={paddingX ?? { base: 'spacing.5', m: 'spacing.6' }}
+        marginTop={marginTop}
+        marginBottom={marginBottom}
         touchAction="none"
         {...webOnlyEventHandlers}
       >
