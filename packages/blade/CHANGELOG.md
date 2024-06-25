@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.21.9
+
+### Patch Changes
+
+- d12977d5: fix(FileUpload): correctly udpate state in controlled mode
+
 ## 11.21.8
 
 ### Patch Changes
