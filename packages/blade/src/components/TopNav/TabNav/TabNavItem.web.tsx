@@ -4,8 +4,18 @@ import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
+import type { Platform } from '~utils';
 import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
+
+type MenuTriggerProps = {
+  onMouseDown?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onPointerDown?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
+  onKeyDown?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
+  onKeyUp?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
+  onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+};
 
 type TabNavItemProps = {
   /**
@@ -29,7 +39,7 @@ type TabNavItemProps = {
    * ```
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  as: React.ComponentType<any>;
+  as?: React.ComponentType<any>;
   /**
    * Selected state of the navigation item.
    *
@@ -52,7 +62,7 @@ type TabNavItemProps = {
    * Accessibility label for the navigation item.
    */
   accessibilityLabel?: string;
-};
+} & MenuTriggerProps;
 
 const StyledTabNavItem = styled.a<{ isActive?: boolean }>(({ theme, isActive }) => {
   return {
@@ -146,24 +156,21 @@ const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }
   };
 });
 
-const TabNavItem = ({
-  children,
-  isActive,
-  leading: Leading,
-  as,
-  accessibilityLabel,
-  href,
-  target,
-}: TabNavItemProps): React.ReactElement => {
+const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemProps> = (
+  { children, isActive, leading: Leading, as, accessibilityLabel, href, target, ...props },
+  ref,
+): React.ReactElement => {
   return (
     <StyledTabNavItemWrapper isActive={isActive}>
       <SelectedBar isActive={isActive} />
       <StyledTabNavItem
+        ref={ref}
         as={as ?? 'a'}
         to={href}
         href={as ? undefined : href}
         target={target}
         isActive={isActive}
+        {...props}
         {...makeAccessible({ label: accessibilityLabel, current: isActive })}
       >
         {Leading ? (
@@ -178,5 +185,8 @@ const TabNavItem = ({
   );
 };
 
+const TabNavItem = assignWithoutSideEffects(React.forwardRef(_TabNavItem), {
+  displayName: 'TabNavItem',
+});
 export { TabNavItem };
 export type { TabNavItemProps };

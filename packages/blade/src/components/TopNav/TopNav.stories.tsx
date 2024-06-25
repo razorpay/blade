@@ -17,9 +17,12 @@ import {
   SideNavLink,
   SideNavSection,
 } from '~components/SideNav';
+import type { IconComponent } from '~components/Icons';
 import {
   ActivityIcon,
   AnnouncementIcon,
+  BulkPayoutsIcon,
+  ChevronRightIcon,
   HomeIcon,
   LayoutIcon,
   MenuIcon,
@@ -27,6 +30,7 @@ import {
   PaymentGatewayIcon,
   PaymentLinkIcon,
   PaymentPagesIcon,
+  RazorpayxPayrollIcon,
 } from '~components/Icons';
 import { RazorpayLogo } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';
@@ -35,6 +39,9 @@ import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
 import { useIsMobile } from '~utils/useIsMobile';
 import { Text } from '~components/Typography';
+import { Menu, MenuFooter, MenuHeader, MenuItem, MenuOverlay } from '~components/Menu';
+import { Link as BladeLink } from '~components/Link';
+import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/TopNav',
@@ -129,9 +136,40 @@ const TabNavItemLink = (
   );
 };
 
+const ExploreItem = ({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: IconComponent;
+  title: string;
+  description: string;
+}): React.ReactElement => {
+  return (
+    <Box display="flex" gap="spacing.4">
+      <Box
+        borderRadius="medium"
+        padding="spacing.5"
+        backgroundColor="surface.background.gray.subtle"
+      >
+        <Icon color="interactive.icon.neutral.subtle" size="medium" />
+      </Box>
+      <Box>
+        <Text color="surface.text.gray.subtle" size="medium" weight="semibold">
+          {title}
+        </Text>
+        <Text size="small" color="surface.text.gray.muted">
+          {description}
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
 const TopNavTemplate: StoryFn<typeof TopNav> = () => {
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const isMobile = useIsMobile();
+  const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
   return (
     <Box paddingX={{ base: 'spacing.0', m: 'spacing.4' }}>
@@ -147,6 +185,40 @@ const TopNavTemplate: StoryFn<typeof TopNav> = () => {
             <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
             <TabNavItemLink href="/payments">Payments</TabNavItemLink>
             <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
+            <Menu openInteraction="hover">
+              <TabNavItem href="#">
+                {selectedProduct ? `Explore: ${selectedProduct}` : 'Explore'}
+              </TabNavItem>
+              <MenuOverlay>
+                <MenuHeader
+                  title="Products for you"
+                  trailing={
+                    <Badge emphasis="subtle" color="notice">
+                      Recommended
+                    </Badge>
+                  }
+                />
+                <MenuItem onClick={() => setSelectedProduct('Payroll')}>
+                  <ExploreItem
+                    icon={RazorpayxPayrollIcon}
+                    title="Payroll"
+                    description="Supercharge your process of paying salaries to your employees"
+                  />
+                </MenuItem>
+                <MenuItem onClick={() => setSelectedProduct('Payout')}>
+                  <ExploreItem
+                    icon={BulkPayoutsIcon}
+                    title="Payout"
+                    description="Pay your vendors at ease with RazorpayX"
+                  />
+                </MenuItem>
+                <MenuFooter>
+                  <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
+                    View all products
+                  </BladeLink>
+                </MenuFooter>
+              </MenuOverlay>
+            </Menu>
           </TabNav>
           {/* Mobile */}
           <Box display={{ base: 'flex', m: 'none' }} gap="spacing.4" alignItems="center">
