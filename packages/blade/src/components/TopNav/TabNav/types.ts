@@ -46,6 +46,12 @@ type TabNavItemProps = {
    */
   leading?: IconComponent;
   /**
+   * Element to render before the navigation item.
+   *
+   * @default undefined
+   */
+  trailing?: IconComponent;
+  /**
    * Element to render inside the navigation item.
    *
    * This can either be a string or JSX element (eg: Menu component)
