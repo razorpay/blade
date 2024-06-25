@@ -4,10 +4,11 @@ import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { Link, matchPath, useLocation } from 'react-router-dom';
 import storyRouterDecorator from 'storybook-react-router';
-import type { TopNavProps } from './TopNav';
-import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from './TopNav';
-import type { TabNavItemProps } from './TabNav';
-import { TabNav, TabNavItem } from './TabNav';
+import { Title } from '@storybook/addon-docs';
+import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
+import type { TabNavItemProps } from '../TabNav';
+import { TabNav, TabNavItem } from '../TabNav';
+import { topNavFullExample } from './code';
 import { Box } from '~components/Box';
 import type { SideNavLinkProps, SideNavProps } from '~components/SideNav';
 import {
@@ -19,6 +20,7 @@ import {
 } from '~components/SideNav';
 import type { IconComponent } from '~components/Icons';
 import {
+  ChevronDownIcon,
   ActivityIcon,
   AnnouncementIcon,
   BulkPayoutsIcon,
@@ -42,12 +44,54 @@ import { Text } from '~components/Typography';
 import { Menu, MenuFooter, MenuHeader, MenuItem, MenuOverlay } from '~components/Menu';
 import { Link as BladeLink } from '~components/Link';
 import { Badge } from '~components/Badge';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+
+import { Alert } from '~components/Alert';
+import { List, ListItem } from '~components/List';
+
+const DocsPage = (): React.ReactElement => {
+  return (
+    <StoryPageWrapper
+      componentName="TopNav"
+      componentDescription="The top navigation bar is positioned at the top of the screen that provides quick access to different products, search & user profile."
+      figmaURL=""
+    >
+      <Title>Usage (with React Router v6)</Title>
+      <Alert
+        color="notice"
+        title="State Management Note"
+        description="TopNav component requires you to handle active link and active menu item on consumer end
+        since the component is detached from React Router. The example below includes some boilerplate in handling these active states using React Router v6. Make sure to test your edge cases while implementing."
+        isFullWidth
+        isDismissible={false}
+      />
+
+      <Sandbox
+        files={topNavFullExample}
+        editorHeight={600}
+        hideNavigation={false}
+        openFile="App.tsx"
+      />
+    </StoryPageWrapper>
+  );
+};
 
 export default {
   title: 'Components/TopNav',
   component: TopNav,
+  tags: ['autodocs'],
+  argTypes: {
+    ...getStyledPropsArgTypes({ category: 'StyledProps' }),
+  },
+  parameters: {
+    docs: {
+      page: DocsPage,
+    },
+  },
   decorators: [storyRouterDecorator(undefined, { initialEntries: ['/home'] })] as unknown,
-} as Meta<TopNavProps>;
+} as Meta<typeof SideNav>;
 
 const isItemActive = (
   location: { pathname: string },
@@ -166,9 +210,9 @@ const ExploreItem = ({
   );
 };
 
-const TopNavTemplate: StoryFn<typeof TopNav> = () => {
-  const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
+const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
   const isMobile = useIsMobile();
+  const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
   return (
@@ -186,7 +230,7 @@ const TopNavTemplate: StoryFn<typeof TopNav> = () => {
             <TabNavItemLink href="/payments">Payments</TabNavItemLink>
             <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
             <Menu openInteraction="hover">
-              <TabNavItem href="#">
+              <TabNavItem href="#" trailing={ChevronDownIcon}>
                 {selectedProduct ? `Explore: ${selectedProduct}` : 'Explore'}
               </TabNavItem>
               <MenuOverlay>
@@ -273,13 +317,20 @@ const TopNavTemplate: StoryFn<typeof TopNav> = () => {
         />
         <Box marginLeft={{ base: '100%', m: '240px', xl: '264px' }} height="calc(100vh - 58px)">
           <Box
-            overflowY="scroll"
-            backgroundColor="surface.background.gray.intense"
             height="100vh"
             padding="spacing.5"
+            backgroundColor="surface.background.gray.intense"
+            overflowY="scroll"
           >
             <Box width={{ base: 'max-content', m: '100%' }} height="200vh">
-              content
+              <Text marginBottom="spacing.4">This demo integrates:</Text>
+              <List>
+                <ListItem>SideNav</ListItem>
+                <ListItem>Menu (Explore Tab)</ListItem>
+                <ListItem>ReactRouter</ListItem>
+                <ListItem>Mobile Responsiveness</ListItem>
+                <ListItem>One Dashboard Layout</ListItem>
+              </List>
             </Box>
           </Box>
         </Box>
@@ -288,5 +339,47 @@ const TopNavTemplate: StoryFn<typeof TopNav> = () => {
   );
 };
 
-export const TopNavExample = TopNavTemplate.bind({});
-TopNavExample.storyName = 'TopNavExample';
+const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
+  return (
+    <Box height="100vh" backgroundColor="surface.background.gray.intense">
+      <TopNav paddingX="spacing.3">
+        <TopNavBrand>
+          <RazorpayLogo />
+        </TopNavBrand>
+        <TopNavContent>
+          <TabNav>
+            <TabNavItemLink leading={HomeIcon} accessibilityLabel="Home" href="/home" />
+            <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
+            <TabNavItemLink href="/payments">Payments</TabNavItemLink>
+            <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
+          </TabNav>
+        </TopNavContent>
+        <TopNavActions>
+          <SearchInput
+            placeholder="Search in payments"
+            accessibilityLabel="Search Across Razorpay"
+          />
+          <Tooltip content="View Ecosystem Health">
+            <Button size="medium" variant="tertiary" icon={ActivityIcon} />
+          </Tooltip>
+          <Tooltip content="View Announcements">
+            <Button variant="tertiary" icon={AnnouncementIcon} />
+          </Tooltip>
+          <Avatar size="medium" name="Anurag Hazra" />
+        </TopNavActions>
+      </TopNav>
+      <Box>
+        <Text margin="spacing.5">
+          This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
+          other features & integration details.
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
+export const Minimal = TopNavMinimalTemplate.bind({});
+Minimal.storyName = 'Minimal';
+
+export const FullExample = TopNavFullTemplate.bind({});
+FullExample.storyName = 'Full Example';
