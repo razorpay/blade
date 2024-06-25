@@ -35,6 +35,7 @@ export * from './Link';
 export * from './List';
 export * from './LiveAnnouncer';
 export * from './Modal';
+export * from './Menu';
 export * from './Popover';
 export * from './ProgressBar';
 export * from './Radio';

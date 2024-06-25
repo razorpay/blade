@@ -68,12 +68,14 @@ const Page = (): React.ReactElement => {
           MenuFooter,
           Button,
           Box,
+          Link,
           Text,
           CopyIcon,
           LogOutIcon,
           ShareIcon,
           TestIcon,
           TicketIcon,
+          UserIcon
         } from '@razorpay/blade/components';
         
         function App(): React.ReactElement {
