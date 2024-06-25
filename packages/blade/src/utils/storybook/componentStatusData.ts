@@ -424,6 +424,17 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
+    name: 'Charts',
+    status: 'in-design',
+    description: 'Charts will allow you to display your data in graphical manner',
+  },
+  {
+    name: 'Menu',
+    status: 'in-development',
+    description:
+      'Menu displays a list of actions on temporary surfaces. They allow users to action(s) from multiple options. They appear when users interact with a button, action, or other control.',
+  },
+  {
     name: 'TopNav',
     status: 'in-development',
     description:
