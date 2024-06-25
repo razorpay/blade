@@ -136,6 +136,7 @@ const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
     backgroundColor: theme.colors.interactive.icon.gray.normal,
+    pointerEvents: 'none',
     // TODO: Check in figma for actual animation values
     opacity: isActive ? 1 : 0,
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${

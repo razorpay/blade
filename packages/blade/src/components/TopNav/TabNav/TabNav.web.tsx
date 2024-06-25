@@ -7,7 +7,12 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
 import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
-import { makeMotionTime } from '~utils';
+import { makeMotionTime, makeSize, makeSpace } from '~utils';
+import { size } from '~tokens/global';
+
+const GRADIENT_WIDTH = 54;
+const GRADIENT_OFFSET = -11 as const;
+const OFFSET_BOTTOM = -12 as const;
 
 type TabNavProps = {
   children: React.ReactNode;
@@ -38,9 +43,9 @@ const GradientOverlay = styled(BaseBox)<{ shouldShow?: boolean; variant: 'left' 
         pointerEvents: 'none',
         position: 'absolute',
         [variant]: 0,
-        top: '-11px',
-        bottom: '-11px',
-        width: '54px',
+        top: makeSpace(GRADIENT_OFFSET),
+        bottom: makeSpace(GRADIENT_OFFSET),
+        width: makeSpace(GRADIENT_WIDTH),
         background: `linear-gradient(to ${variant}, transparent 0%, ${color} 30%, ${color} 100%);`,
       },
     };
@@ -112,7 +117,7 @@ const TabNav = ({
       <ScrollableArea
         ref={ref}
         onScroll={handleScrollStatus}
-        marginBottom="-12px"
+        marginBottom={makeSpace(OFFSET_BOTTOM)}
         display="flex"
         width="100%"
         position="relative"
@@ -126,7 +131,12 @@ const TabNav = ({
             return (
               <>
                 {index > 0 ? (
-                  <Divider margin="auto" height="20px" variant="muted" orientation="vertical" />
+                  <Divider
+                    margin="auto"
+                    variant="muted"
+                    orientation="vertical"
+                    height={makeSize(size[16])}
+                  />
                 ) : null}
                 {child}
               </>
