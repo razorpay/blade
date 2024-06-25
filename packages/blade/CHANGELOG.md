@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.22.0
+
+### Minor Changes
+
+- 2cb7668b: feat(Menu): add Menu component
+
 ## 11.21.9
 
 ### Patch Changes
