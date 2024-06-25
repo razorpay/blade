@@ -288,6 +288,8 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     onPointerEnter,
     onTouchStart,
     onTouchEnd,
+    onMouseDown,
+    onMouseUp,
     ...styledProps
   },
   ref,
@@ -376,6 +378,8 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
       onKeyDown={onKeyDown}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
       disabled={disabled}
       type={type}
       cursor={cursor}

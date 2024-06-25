@@ -103,7 +103,7 @@ describe('<List />', () => {
         <ListItem>
           Level 1
           <List>
-            <ListItem icon={ArrowUpIcon}>
+            <ListItem icon={ArrowUpIcon} iconColor="feedback.icon.positive.intense">
               Level 2
               <List>
                 <ListItem>Level 3</ListItem>

@@ -424,9 +424,38 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Date Picker',
-    status: 'to-be-decided',
+    name: 'Charts',
+    status: 'in-design',
+    description: 'Charts will allow you to display your data in graphical manner',
+  },
+  {
+    name: 'Menu',
+    status: 'in-development',
+    description:
+      'Menu displays a list of actions on temporary surfaces. They allow users to action(s) from multiple options. They appear when users interact with a button, action, or other control.',
+  },
+  {
+    name: 'TopNav',
+    status: 'in-development',
+    description:
+      'TopNav is a horizontal navigation component that can be used to navigate between pages.',
+  },
+  {
+    name: 'SideNav',
+    status: 'released',
+    description:
+      'SideNav is a vertical navigation component that can be used to navigate between pages.',
+    platform: 'web',
+    storybookLink: 'Components/DatePicker',
+    releasedIn: '11.21.0',
+  },
+  {
+    name: 'DatePicker',
+    status: 'released',
     description: 'DatePicker will provide an easy way to input dates and ranges',
+    platform: 'web',
+    storybookLink: 'Components/DatePicker',
+    releasedIn: '11.21.5',
   },
   {
     name: 'AutoComplete',
@@ -447,14 +476,20 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'SearchInput',
-    status: 'in-design',
+    status: 'released',
     description:
       'A search input is an input field that allow users to input search queries with a keyboard.',
+    platform: 'all',
+    releasedIn: '11.17.0',
+    storybookLink: 'Components/Input/SearchInput',
   },
   {
-    name: 'Stepper',
-    status: 'in-design',
+    name: 'StepGroup',
+    status: 'released',
     description: 'A stepper component is used to indicate progress through a multi-step process.',
+    platform: 'web',
+    storybookLink: 'Components/StepGroup',
+    releasedIn: '11.5.0',
   },
   {
     name: 'ButtonGroup',
