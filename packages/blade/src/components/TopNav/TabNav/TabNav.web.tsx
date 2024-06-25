@@ -7,10 +7,10 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
 import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
-import { makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeMotionTime, makeSize } from '~utils';
 import { size } from '~tokens/global';
 
-const GRADIENT_WIDTH = 54;
+const GRADIENT_WIDTH = 54 as const;
 const GRADIENT_OFFSET = -11 as const;
 const OFFSET_BOTTOM = -12 as const;
 
@@ -43,9 +43,9 @@ const GradientOverlay = styled(BaseBox)<{ shouldShow?: boolean; variant: 'left' 
         pointerEvents: 'none',
         position: 'absolute',
         [variant]: 0,
-        top: makeSpace(GRADIENT_OFFSET),
-        bottom: makeSpace(GRADIENT_OFFSET),
-        width: makeSpace(GRADIENT_WIDTH),
+        top: makeSize(GRADIENT_OFFSET),
+        bottom: makeSize(GRADIENT_OFFSET),
+        width: makeSize(GRADIENT_WIDTH),
         background: `linear-gradient(to ${variant}, transparent 0%, ${color} 30%, ${color} 100%);`,
       },
     };
@@ -117,7 +117,7 @@ const TabNav = ({
       <ScrollableArea
         ref={ref}
         onScroll={handleScrollStatus}
-        marginBottom={makeSpace(OFFSET_BOTTOM)}
+        marginBottom={makeSize(OFFSET_BOTTOM)}
         display="flex"
         width="100%"
         position="relative"

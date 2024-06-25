@@ -3,6 +3,11 @@ import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Divider } from '~components/Divider';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils';
+
+const TOP_NAV_HEIGHT = size[56];
+const CONTENT_RIGHT_GAP = size[80];
 
 const RazorpayLinesSvg = (): React.ReactElement => {
   return (
@@ -45,11 +50,11 @@ const TopNav = ({ children, ...styledProps }: TopNavProps): React.ReactElement =
     <Box
       display="grid"
       gridTemplateColumns={{ base: 'minmax(0, 1fr) auto', m: 'auto minmax(0, 1fr) auto' }}
+      alignItems="center"
       position="sticky"
       top="0px"
       width="100%"
-      height="56px"
-      alignItems="center"
+      height={makeSize(TOP_NAV_HEIGHT)}
       backgroundColor="surface.background.gray.subtle"
       zIndex={1}
       {...styledProps}
@@ -70,14 +75,14 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
         m: 'flex',
       }}
       flexDirection="row"
-      width={{ base: '244px', xl: '265px' }}
       marginTop="spacing.4"
+      width={{ base: '244px', xl: '265px' }}
     >
       <BaseBox width="100%" textAlign="center">
         {children}
       </BaseBox>
       <Box alignSelf="center" display={{ base: 'none', m: 'block' }}>
-        <Divider height="20px" alignSelf="center" orientation="vertical" />
+        <Divider height={makeSize(size[20])} alignSelf="center" orientation="vertical" />
       </Box>
     </Box>
   );
@@ -89,7 +94,7 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
       display="flex"
       alignItems="center"
       marginLeft={{ base: 'spacing.0', m: 'spacing.4' }}
-      paddingRight={{ base: 'spacing.0', m: '80px' }}
+      paddingRight={{ base: 'spacing.0', m: makeSize(CONTENT_RIGHT_GAP) }}
     >
       {children}
     </BaseBox>

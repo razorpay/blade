@@ -1,70 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { TabNavItemProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import type { IconComponent } from '~components/Icons';
-import type { LinkProps } from '~components/Link';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
-import type { Platform } from '~utils';
 import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 
-type MenuTriggerProps = {
-  onMouseDown?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
-  onPointerDown?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
-  onKeyDown?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
-  onKeyUp?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
-  onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
-};
-
-type TabNavItemProps = {
-  /**
-   * href of the link
-   */
-  href?: LinkProps['href'];
-  /**
-   * Anchor tag `target` attribute
-   */
-  target?: LinkProps['target'];
-  /**
-   * as prop to pass ReactRouter's Link component.
-   *
-   * @default 'a'
-   *
-   * @example
-   * ```jsx
-   * import { Link } from 'react-router-dom';
-   *
-   * <TabNavItem as={Link} />
-   * ```
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  as?: React.ComponentType<any>;
-  /**
-   * Selected state of the navigation item.
-   *
-   * @default false
-   */
-  isActive?: boolean;
-  /**
-   * Element to render before the navigation item.
-   *
-   * @default undefined
-   */
-  leading?: IconComponent;
-  /**
-   * Element to render inside the navigation item.
-   *
-   * This can either be a string or JSX element (eg: Menu component)
-   */
-  children?: React.ReactNode;
-  /**
-   * Accessibility label for the navigation item.
-   */
-  accessibilityLabel?: string;
-} & MenuTriggerProps;
-
-const StyledTabNavItem = styled.a<{ isActive?: boolean }>(({ theme, isActive }) => {
+const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
   return {
     ...getTextStyles({
       theme,
@@ -84,7 +27,7 @@ const StyledTabNavItem = styled.a<{ isActive?: boolean }>(({ theme, isActive }) 
     paddingLeft: makeSpace(theme.spacing[4]),
     paddingRight: makeSpace(theme.spacing[4]),
     borderRadius: makeBorderSize(theme.border.radius.medium),
-    '&:hover': isActive
+    '&:hover': $isActive
       ? {}
       : {
           backgroundColor: theme.colors.interactive.background.gray.default,
@@ -114,7 +57,7 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{ isActive?: boolean }>(({ theme
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
-    // TODO: Check in figma for actual animation values
+    // Animation
     transform: isActive ? 'translateY(2px)' : 'none',
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${
       theme.motion.easing.standard.effective
@@ -147,7 +90,7 @@ const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
     backgroundColor: theme.colors.interactive.icon.gray.normal,
     pointerEvents: 'none',
-    // TODO: Check in figma for actual animation values
+    // Animation
     opacity: isActive ? 1 : 0,
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${
       theme.motion.easing.standard.effective
@@ -169,7 +112,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
         to={href}
         href={as ? undefined : href}
         target={target}
-        isActive={isActive}
+        $isActive={isActive}
         {...props}
         {...makeAccessible({ label: accessibilityLabel, current: isActive })}
       >
@@ -188,5 +131,5 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
 const TabNavItem = assignWithoutSideEffects(React.forwardRef(_TabNavItem), {
   displayName: 'TabNavItem',
 });
+
 export { TabNavItem };
-export type { TabNavItemProps };
