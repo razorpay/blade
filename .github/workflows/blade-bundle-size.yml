@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.CI_BOT_TOKEN }}
-          ref: bundle-size-stats
+          ref: master
       - name: Use Node v18
         uses: actions/setup-node@v4
         with:
@@ -69,5 +69,5 @@ jobs:
           git config user.name "rzpcibot"
           git add baseBundleSizeStats.json
           git commit -m "chore: update bundle size data [skip ci]"
-          git push origin bundle-size-stats
+          git push origin master:bundle-size-stats --force
         working-directory: packages/blade
