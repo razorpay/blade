@@ -367,5 +367,22 @@ export const topNavFullExample = {
 };
 
 export const tabNavExample = {
-  'App.tsx': dedent``,
+  'App.tsx': dedent`import React from 'react';
+  import { Box, TabNav, TabNavItem } from '@razorpay/blade/components';
+
+  const App = () => {
+    return (
+      <Box padding="spacing.4">
+        <TabNav>
+          <TabNavItem isActive leading={HomeIcon} accessibilityLabel="Home" href="/home" />
+          <TabNavItem href="/payroll">Payroll</TabNavItem>
+          <TabNavItem href="/payments">Payments</TabNavItem>
+          <TabNavItem href="/magic-checkout">Magic Checkout</TabNavItem>
+        </TabNav>
+      </Box>
+    );
+  };
+
+  export default App;
+  `,
 };
