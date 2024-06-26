@@ -235,7 +235,7 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
             <TabNavItemLink href="/payments">Payments</TabNavItemLink>
             <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
             <Menu openInteraction="hover">
-              <TabNavItem href="#" trailing={ChevronDownIcon}>
+              <TabNavItem href="#" trailing={<ChevronDownIcon />}>
                 {selectedProduct ? `Explore: ${selectedProduct}` : 'Explore'}
               </TabNavItem>
               <MenuOverlay>
@@ -361,7 +361,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
         </TopNavBrand>
         <TopNavContent>
           <TabNav>
-            <TabNavItemLink leading={HomeIcon} accessibilityLabel="Home" href="/home" />
+            <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
             <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
             <TabNavItemLink href="/payments">Payments</TabNavItemLink>
             <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>

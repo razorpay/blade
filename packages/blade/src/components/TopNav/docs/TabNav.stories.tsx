@@ -26,12 +26,17 @@ const DocsPage = (): React.ReactElement => {
   );
 };
 
+const trailingMapping = {
+  '<ChevronDownIcon />': <ChevronDownIcon />,
+  '<Badge color="positive">NEW</Badge>': <Badge color="positive">NEW</Badge>,
+};
+
 export default {
   title: 'Components/TopNav/TabNav',
   component: TabNavItem,
   argTypes: {
-    leading: {
-      name: 'leading',
+    icon: {
+      name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
@@ -39,8 +44,8 @@ export default {
     trailing: {
       name: 'trailing',
       type: 'select',
-      options: Object.keys(iconMap),
-      mapping: iconMap,
+      options: Object.keys(trailingMapping),
+      mapping: trailingMapping,
     } as unknown,
     onClick: {
       type: 'function',
@@ -70,7 +75,7 @@ const TabNavTemplate: StoryFn<typeof TabNavItem> = (args) => {
   return (
     <Box padding="spacing.4">
       <TabNav>
-        <TabNavItem leading={HomeIcon} accessibilityLabel="Home" href="/home" />
+        <TabNavItem icon={HomeIcon} accessibilityLabel="Home" href="/home" />
         <TabNavItem {...args} href="/payroll">
           {args.children}
         </TabNavItem>
@@ -95,14 +100,14 @@ const TabNavTemplateWithMenu: StoryFn<typeof TabNavItem> = (args) => {
         </Text>
       </Box>
       <TabNav>
-        <TabNavItem leading={HomeIcon} accessibilityLabel="Home" href="/home" />
+        <TabNavItem icon={HomeIcon} accessibilityLabel="Home" href="/home" />
         <TabNavItem {...args} href="/payroll">
           {args.children}
         </TabNavItem>
         <TabNavItem href="/payments">Payments</TabNavItem>
         <TabNavItem href="/magic-checkout">Magic Checkout</TabNavItem>
         <Menu openInteraction="hover">
-          <TabNavItem href="#" trailing={ChevronDownIcon}>
+          <TabNavItem href="#" trailing={<ChevronDownIcon />}>
             Explore
           </TabNavItem>
           <MenuOverlay>
