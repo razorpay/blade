@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { approximatelyEqual, useIsOverflow } from './utils';
+import { approximatelyEqual, useHasOverflow } from './utils';
+import { TabNavContext } from './TabNavContext';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -58,7 +59,7 @@ const TabNav = ({
   ...styledProps
 }: TabNavProps & StyledPropsBlade): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const isOverflow = useIsOverflow(ref);
+  const hasOverflow = useHasOverflow(ref);
   const [scrollStatus, setScrollStatus] = React.useState<'start' | 'end' | 'middle'>('start');
 
   // Check if the scroll is at start, end or middle
@@ -99,62 +100,64 @@ const TabNav = ({
   };
 
   return (
-    <BaseBox
-      display="flex"
-      width="100%"
-      alignItems="center"
-      position="relative"
-      marginBottom={makeSize(OFFSET_BOTTOM)}
-      {...getStyledProps(styledProps)}
-    >
-      <GradientOverlay variant="left" shouldShow={isOverflow && scrollStatus !== 'start'}>
-        <Button
-          size="xsmall"
-          variant="tertiary"
-          icon={ChevronLeftIcon}
-          accessibilityLabel="Scroll Left"
-          onClick={scrollLeft}
-        />
-      </GradientOverlay>
-      <ScrollableArea
-        ref={ref}
-        onScroll={handleScrollStatus}
+    <TabNavContext.Provider value={{ containerRef: ref, hasOverflow }}>
+      <BaseBox
         display="flex"
         width="100%"
+        alignItems="center"
         position="relative"
-        whiteSpace="nowrap"
-        gap="spacing.0"
-        overflowY="visible"
-        overflowX="auto"
+        marginBottom={makeSize(OFFSET_BOTTOM)}
+        {...getStyledProps(styledProps)}
       >
-        <BaseBox display="flex" flexDirection="row" width="max-content">
-          {React.Children.map(children, (child, index) => {
-            return (
-              <>
-                {index > 0 ? (
-                  <Divider
-                    margin="auto"
-                    variant="muted"
-                    orientation="vertical"
-                    height={makeSize(size[16])}
-                  />
-                ) : null}
-                {child}
-              </>
-            );
-          })}
-        </BaseBox>
-      </ScrollableArea>
-      <GradientOverlay variant="right" shouldShow={isOverflow && scrollStatus !== 'end'}>
-        <Button
-          size="xsmall"
-          variant="tertiary"
-          icon={ChevronRightIcon}
-          accessibilityLabel="Scroll Right"
-          onClick={scrollRight}
-        />
-      </GradientOverlay>
-    </BaseBox>
+        <GradientOverlay variant="left" shouldShow={hasOverflow && scrollStatus !== 'start'}>
+          <Button
+            size="xsmall"
+            variant="tertiary"
+            icon={ChevronLeftIcon}
+            accessibilityLabel="Scroll Left"
+            onClick={scrollLeft}
+          />
+        </GradientOverlay>
+        <ScrollableArea
+          ref={ref}
+          onScroll={handleScrollStatus}
+          display="flex"
+          width="100%"
+          position="relative"
+          whiteSpace="nowrap"
+          gap="spacing.0"
+          overflowY="hidden"
+          overflowX="auto"
+        >
+          <BaseBox display="flex" flexDirection="row" width="max-content">
+            {React.Children.map(children, (child, index) => {
+              return (
+                <>
+                  {index > 0 ? (
+                    <Divider
+                      margin="auto"
+                      variant="muted"
+                      orientation="vertical"
+                      height={makeSize(size[16])}
+                    />
+                  ) : null}
+                  {child}
+                </>
+              );
+            })}
+          </BaseBox>
+        </ScrollableArea>
+        <GradientOverlay variant="right" shouldShow={hasOverflow && scrollStatus !== 'end'}>
+          <Button
+            size="xsmall"
+            variant="tertiary"
+            icon={ChevronRightIcon}
+            accessibilityLabel="Scroll Right"
+            onClick={scrollRight}
+          />
+        </GradientOverlay>
+      </BaseBox>
+    </TabNavContext.Provider>
   );
 };
 

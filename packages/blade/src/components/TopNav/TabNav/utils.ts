@@ -2,12 +2,15 @@
 import React from 'react';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
-const useIsOverflow = (
+/**
+ * Check if an element has scroll overflow
+ */
+const useHasOverflow = (
   ref: React.RefObject<HTMLDivElement>,
-  callback?: (isOverflow: boolean) => void,
+  callback?: (hasOverflow: boolean) => void,
 ): boolean => {
   const observer = React.useRef<ResizeObserver | null>(null);
-  const [isOverflow, setIsOverflow] = React.useState<boolean>(false);
+  const [hasOverflow, setHasOverflow] = React.useState<boolean>(false);
 
   useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
@@ -15,7 +18,7 @@ const useIsOverflow = (
 
     const trigger = (): void => {
       const hasOverflow = element.scrollWidth > element.clientWidth;
-      setIsOverflow(hasOverflow);
+      setHasOverflow(hasOverflow);
 
       if (callback) callback(hasOverflow);
     };
@@ -34,11 +37,11 @@ const useIsOverflow = (
     };
   }, [callback, ref]);
 
-  return isOverflow;
+  return hasOverflow;
 };
 
 const approximatelyEqual = (v1: number, v2: number, tolerance = 1): boolean => {
   return Math.abs(v1 - v2) < tolerance;
 };
 
-export { useIsOverflow, approximatelyEqual };
+export { useHasOverflow, approximatelyEqual };
