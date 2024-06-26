@@ -50,6 +50,8 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 import { Alert } from '~components/Alert';
 import { List, ListItem } from '~components/List';
+import { makeSize } from '~utils';
+import { EXPANDED_L1_WIDTH_DESKTOP, EXPANDED_L1_WIDTH_MOBILE } from '~components/SideNav/tokens';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -218,12 +220,12 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
   return (
     <Box>
       <TopNav>
-        {/* TopNavBrand gets hidden on mobile */}
+        {/* TopNavBrand automatically gets hidden on mobile */}
         <TopNavBrand>
           <RazorpayLogo />
         </TopNavBrand>
         <TopNavContent>
-          {/* Desktop */}
+          {/* Desktop - render TabNav */}
           <TabNav display={{ base: 'none', m: 'flex' }}>
             <TabNavItemLink leading={HomeIcon} accessibilityLabel="Home" href="/home" />
             <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
@@ -264,7 +266,7 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
               </MenuOverlay>
             </Menu>
           </TabNav>
-          {/* Mobile */}
+          {/* Mobile - render hamburger button */}
           <Box display={{ base: 'flex', m: 'none' }} gap="spacing.4" alignItems="center">
             <Button
               size="medium"
@@ -315,12 +317,20 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
             setIsSideBarOpen(false);
           }}
         />
-        <Box marginLeft={{ base: '100%', m: '240px', xl: '264px' }} height="calc(100vh - 58px)">
+        <Box
+          marginLeft={{
+            base: '100%',
+            m: makeSize(EXPANDED_L1_WIDTH_MOBILE),
+            xl: makeSize(EXPANDED_L1_WIDTH_DESKTOP),
+          }}
+          // 100vh - (topnav height [56px] + border [2px])
+          height="calc(100vh - 58px)"
+        >
           <Box
             height="100vh"
             padding="spacing.5"
-            backgroundColor="surface.background.gray.intense"
             overflowY="scroll"
+            backgroundColor="surface.background.gray.intense"
           >
             <Box width={{ base: 'max-content', m: '100%' }} height="200vh">
               <Text marginBottom="spacing.4">This demo integrates:</Text>
@@ -342,7 +352,7 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
 const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
   return (
     <Box height="100vh" backgroundColor="surface.background.gray.intense">
-      <TopNav paddingX="spacing.3">
+      <TopNav>
         <TopNavBrand>
           <RazorpayLogo />
         </TopNavBrand>
