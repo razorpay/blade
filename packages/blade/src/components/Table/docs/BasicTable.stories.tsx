@@ -20,7 +20,6 @@ export default {
   args: {
     selectionType: 'none',
     rowDensity: 'normal',
-    showBorderedCells: true,
   },
   tags: ['autodocs'],
   argTypes: {
@@ -156,16 +155,11 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
                   <TableEditableCell
-                    validationState="success"
                     accessibilityLabel="Amount"
                     placeholder="Enter text"
                     successText="Amount is valid"
                   />
-                  <TableEditableCell
-                    errorText="Amount is invalid"
-                    validationState="error"
-                    accessibilityLabel="Account"
-                  />
+                  <TableCell>{tableItem.account}</TableCell>
                   <TableCell>
                     {tableItem.date?.toLocaleDateString('en-IN', {
                       year: 'numeric',
