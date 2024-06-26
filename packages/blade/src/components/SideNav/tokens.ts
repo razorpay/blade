@@ -15,7 +15,8 @@ const classes = {
 const SKIP_NAV_ID = 'blade-side-nav-skip';
 
 const COLLAPSED_L1_WIDTH = size['56'];
-const EXPANDED_L1_WIDTH = size['264'];
+const EXPANDED_L1_WIDTH_DESKTOP = size['264'];
+const EXPANDED_L1_WIDTH_MOBILE = size['245'];
 const NAV_ITEM_HEIGHT = size['40'];
 
 // This is the delay after which transition cleanup happens for rare cases where transitionEnd is not triggered
@@ -36,7 +37,8 @@ export {
   SKIP_NAV_ID,
   classes,
   COLLAPSED_L1_WIDTH,
-  EXPANDED_L1_WIDTH,
+  EXPANDED_L1_WIDTH_DESKTOP,
+  EXPANDED_L1_WIDTH_MOBILE,
   NAV_ITEM_HEIGHT,
   TRANSITION_CLEANUP_DELAY,
   HOVER_AGAIN_DELAY,
