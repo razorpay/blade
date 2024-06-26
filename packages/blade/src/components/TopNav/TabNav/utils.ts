@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 import React from 'react';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const useIsOverflow = (
   ref: React.RefObject<HTMLDivElement>,
@@ -8,7 +9,7 @@ const useIsOverflow = (
   const observer = React.useRef<ResizeObserver | null>(null);
   const [isOverflow, setIsOverflow] = React.useState<boolean>(false);
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
     const element = ref.current;
 
