@@ -40,17 +40,17 @@ type TabNavItemProps = {
    */
   isActive?: boolean;
   /**
-   * Element to render before the navigation item.
+   * Leading icon for TabNavItem.
    *
    * @default undefined
    */
-  leading?: IconComponent;
+  icon?: IconComponent;
   /**
-   * Element to render before the navigation item.
+   * Element to render after the navigation item.
    *
    * @default undefined
    */
-  trailing?: IconComponent;
+  trailing?: React.ReactElement;
   /**
    * Element to render inside the navigation item.
    *

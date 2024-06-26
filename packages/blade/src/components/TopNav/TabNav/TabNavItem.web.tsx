@@ -105,7 +105,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     as,
     children,
     isActive,
-    leading: Leading,
+    icon: Icon,
     trailing: Trailing,
     accessibilityLabel,
     href,
@@ -127,19 +127,14 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
         {...props}
         {...makeAccessible({ label: accessibilityLabel, current: isActive })}
       >
-        {Leading ? (
-          <Leading
+        {Icon ? (
+          <Icon
             size="large"
             color={isActive ? 'interactive.icon.gray.normal' : 'surface.icon.gray.subtle'}
           />
         ) : null}
         {children}
-        {Trailing ? (
-          <Trailing
-            size="large"
-            color={isActive ? 'interactive.icon.gray.normal' : 'surface.icon.gray.subtle'}
-          />
-        ) : null}
+        {Trailing ? Trailing : null}
       </StyledTabNavItem>
     </StyledTabNavItemWrapper>
   );
