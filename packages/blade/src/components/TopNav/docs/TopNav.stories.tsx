@@ -216,8 +216,8 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
   return (
-    <Box paddingX={{ base: 'spacing.0', m: 'spacing.4' }}>
-      <TopNav paddingX={{ base: 'spacing.4', m: 'spacing.0' }}>
+    <Box>
+      <TopNav>
         {/* TopNavBrand gets hidden on mobile */}
         <TopNavBrand>
           <RazorpayLogo />
@@ -301,13 +301,13 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
       <Box
         overflow="hidden"
         position="relative"
-        marginX="spacing.0"
         borderWidth="thin"
         borderColor="surface.border.gray.muted"
         borderRadius="large"
         borderBottomLeftRadius="none"
         borderBottomRightRadius="none"
         height="100%"
+        marginX={{ base: 'spacing.0', m: 'spacing.3' }}
       >
         <SideNavExample
           isOpen={isSideBarOpen}

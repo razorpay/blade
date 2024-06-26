@@ -3,6 +3,7 @@ import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Divider } from '~components/Divider';
+import { EXPANDED_L1_WIDTH_DESKTOP, EXPANDED_L1_WIDTH_MOBILE } from '~components/SideNav/tokens';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 
@@ -71,6 +72,7 @@ const TopNav = ({ children, ...styledProps }: TopNavProps): React.ReactElement =
       position="sticky"
       top="0px"
       width="100%"
+      paddingX="spacing.3"
       height={makeSize(TOP_NAV_HEIGHT)}
       backgroundColor="surface.background.gray.subtle"
       zIndex={1}
@@ -93,13 +95,21 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
       }}
       flexDirection="row"
       marginTop="spacing.4"
-      width={{ base: '244px', xl: '265px' }}
+      width={{
+        base: makeSize(EXPANDED_L1_WIDTH_MOBILE),
+        xl: makeSize(EXPANDED_L1_WIDTH_DESKTOP),
+      }}
     >
       <BaseBox width="100%" textAlign="center">
         {children}
       </BaseBox>
       <Box alignSelf="center" display={{ base: 'none', m: 'block' }}>
-        <Divider height={makeSize(size[20])} alignSelf="center" orientation="vertical" />
+        <Divider
+          marginRight="-1px"
+          height={makeSize(size[20])}
+          alignSelf="center"
+          orientation="vertical"
+        />
       </Box>
     </Box>
   );

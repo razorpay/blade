@@ -5,7 +5,8 @@ import type { SideNavContextType, SideNavProps } from './types';
 import {
   classes,
   COLLAPSED_L1_WIDTH,
-  EXPANDED_L1_WIDTH,
+  EXPANDED_L1_WIDTH_DESKTOP,
+  EXPANDED_L1_WIDTH_MOBILE,
   HOVER_AGAIN_DELAY,
   L1_EXIT_HOVER_DELAY,
   SKIP_NAV_ID,
@@ -241,8 +242,10 @@ const SideNav = ({
           left="spacing.0"
           display={{ base: 'none', m: 'flex' }}
           flexDirection="column"
-          // TODO tokenize these two values
-          width={{ base: makeSize(244), xl: makeSize(EXPANDED_L1_WIDTH) }}
+          width={{
+            base: makeSize(EXPANDED_L1_WIDTH_MOBILE),
+            xl: makeSize(EXPANDED_L1_WIDTH_DESKTOP),
+          }}
           as="nav"
           {...metaAttribute({
             name: MetaConstants.SideNav,
