@@ -133,7 +133,7 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
 
 const TopNavActions = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <BaseBox display="flex" gap="spacing.3" alignItems="center">
+    <BaseBox display="flex" gap="spacing.3" alignItems="center" marginTop="spacing.1">
       {children}
     </BaseBox>
   );

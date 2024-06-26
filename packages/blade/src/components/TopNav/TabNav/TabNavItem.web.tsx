@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { TabNavItemProps } from './types';
+import { useTabNavContext } from './TabNavContext';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { mergeRefs } from '~utils/useMergeRefs';
 
 const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
   return {
@@ -14,7 +17,7 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
       theme,
       size: 'medium',
       weight: 'medium',
-      color: 'interactive.text.gray.normal',
+      color: $isActive ? 'interactive.text.gray.normal' : 'interactive.text.gray.subtle',
     }),
     flex: 1,
     display: 'flex',
@@ -105,11 +108,38 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
   { as, children, isActive, icon: Icon, trailing, accessibilityLabel, href, target, ...props },
   ref,
 ): React.ReactElement => {
+  const { containerRef } = useTabNavContext();
+  const linkRef = React.useRef<HTMLAnchorElement>(null);
+
+  // Scroll the active tab into view
+  // Only if the tab is very close to the edge
+  // Or if the tab is out of view
+  useIsomorphicLayoutEffect(() => {
+    if (!isActive) return;
+    if (!('requestAnimationFrame' in window)) return;
+
+    window.requestAnimationFrame(() => {
+      if (!linkRef.current || !containerRef.current) return;
+
+      const buffer = 100;
+      const container = containerRef.current;
+      const linkElement = linkRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const linkRect = linkElement.getBoundingClientRect();
+      const isCloseToStart = linkRect.left < containerRect.left + buffer;
+      const isCloseToEnd = linkRect.right > containerRect.right - buffer;
+
+      if (isCloseToStart || isCloseToEnd) {
+        linkElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'end' });
+      }
+    });
+  }, [isActive]);
+
   return (
     <StyledTabNavItemWrapper isActive={isActive}>
       <SelectedBar isActive={isActive} />
       <StyledTabNavItem
-        ref={ref}
+        ref={mergeRefs(ref, linkRef)}
         as={as ?? 'a'}
         to={href}
         href={as ? undefined : href}
