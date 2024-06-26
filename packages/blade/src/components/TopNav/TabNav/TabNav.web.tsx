@@ -100,6 +100,7 @@ const TabNav = ({
 
   return (
     <BaseBox
+      as="nav"
       display="flex"
       width="100%"
       alignItems="center"
