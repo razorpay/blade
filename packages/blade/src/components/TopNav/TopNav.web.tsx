@@ -3,7 +3,10 @@ import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Divider } from '~components/Divider';
-import { EXPANDED_L1_WIDTH_DESKTOP, EXPANDED_L1_WIDTH_MOBILE } from '~components/SideNav/tokens';
+import {
+  SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP,
+  SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE,
+} from '~components/SideNav/tokens';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 
@@ -96,8 +99,8 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
       flexDirection="row"
       marginTop="spacing.4"
       width={{
-        base: makeSize(EXPANDED_L1_WIDTH_MOBILE),
-        xl: makeSize(EXPANDED_L1_WIDTH_DESKTOP),
+        base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE),
+        xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP),
       }}
     >
       <BaseBox width="100%" textAlign="center">

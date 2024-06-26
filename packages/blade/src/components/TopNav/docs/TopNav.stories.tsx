@@ -51,7 +51,10 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Alert } from '~components/Alert';
 import { List, ListItem } from '~components/List';
 import { makeSize } from '~utils';
-import { EXPANDED_L1_WIDTH_DESKTOP, EXPANDED_L1_WIDTH_MOBILE } from '~components/SideNav/tokens';
+import {
+  SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP,
+  SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE,
+} from '~components/SideNav/tokens';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -74,7 +77,7 @@ const DocsPage = (): React.ReactElement => {
         files={topNavFullExample}
         editorHeight={600}
         hideNavigation={false}
-        openFile="App.tsx"
+        openFile="SideNavExample.tsx,utils.tsx,App.tsx,TopNavExample.tsx"
       />
     </StoryPageWrapper>
   );
@@ -320,8 +323,8 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
         <Box
           marginLeft={{
             base: '100%',
-            m: makeSize(EXPANDED_L1_WIDTH_MOBILE),
-            xl: makeSize(EXPANDED_L1_WIDTH_DESKTOP),
+            m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE),
+            xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP),
           }}
           // 100vh - (topnav height [56px] + border [2px])
           height="calc(100vh - 58px)"

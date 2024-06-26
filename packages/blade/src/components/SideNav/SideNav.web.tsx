@@ -5,8 +5,8 @@ import type { SideNavContextType, SideNavProps } from './types';
 import {
   classes,
   COLLAPSED_L1_WIDTH,
-  EXPANDED_L1_WIDTH_DESKTOP,
-  EXPANDED_L1_WIDTH_MOBILE,
+  SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP,
+  SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE,
   HOVER_AGAIN_DELAY,
   L1_EXIT_HOVER_DELAY,
   SKIP_NAV_ID,
@@ -243,8 +243,8 @@ const SideNav = ({
           display={{ base: 'none', m: 'flex' }}
           flexDirection="column"
           width={{
-            base: makeSize(EXPANDED_L1_WIDTH_MOBILE),
-            xl: makeSize(EXPANDED_L1_WIDTH_DESKTOP),
+            base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE),
+            xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP),
           }}
           as="nav"
           {...metaAttribute({
