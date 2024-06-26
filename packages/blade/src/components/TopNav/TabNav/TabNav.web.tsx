@@ -13,6 +13,7 @@ import { size } from '~tokens/global';
 const GRADIENT_WIDTH = 54 as const;
 const GRADIENT_OFFSET = -11 as const;
 const OFFSET_BOTTOM = -12 as const;
+const SCROLL_AMOUNT = 200;
 
 type TabNavProps = {
   children: React.ReactNode;
@@ -85,7 +86,7 @@ const TabNav = ({
     if (!ref.current) return;
     ref.current.scrollBy({
       behavior: 'smooth',
-      left: 200,
+      left: SCROLL_AMOUNT,
     });
   };
 
@@ -93,7 +94,7 @@ const TabNav = ({
     if (!ref.current) return;
     ref.current.scrollBy({
       behavior: 'smooth',
-      left: -200,
+      left: -SCROLL_AMOUNT,
     });
   };
 

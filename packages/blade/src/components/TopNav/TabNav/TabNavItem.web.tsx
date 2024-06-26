@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import type { TabNavItemProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
-import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
+import { size } from '~tokens/global';
 
 const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
   return {
@@ -42,7 +43,7 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{ isActive?: boolean }>(({ theme
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
-    width: 2,
+    width: makeSize(size[2]),
     height: '80%',
     backgroundColor: theme.colors.surface.background.gray.subtle,
   } as const;
@@ -59,7 +60,7 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{ isActive?: boolean }>(({ theme
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
     // Animation
-    transform: isActive ? 'translateY(2px)' : 'none',
+    transform: isActive ? `translateY(${makeSize(size[2])})` : 'none',
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${
       theme.motion.easing.standard.effective
     }`,
