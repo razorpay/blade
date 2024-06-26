@@ -130,7 +130,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
       const isCloseToEnd = linkRect.right > containerRect.right - buffer;
 
       if (isCloseToStart || isCloseToEnd) {
-        linkElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'end' });
+        linkElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       }
     });
   }, [hasOverflow, isActive]);
