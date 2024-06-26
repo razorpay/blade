@@ -11,7 +11,7 @@ import { makeMotionTime, makeSize } from '~utils';
 import { size } from '~tokens/global';
 
 const GRADIENT_WIDTH = 54 as const;
-const GRADIENT_OFFSET = -11 as const;
+const GRADIENT_OFFSET = -8 as const;
 const OFFSET_BOTTOM = -12 as const;
 const SCROLL_AMOUNT = 200;
 
@@ -102,8 +102,9 @@ const TabNav = ({
     <BaseBox
       display="flex"
       width="100%"
-      alignItems="flex-end"
+      alignItems="center"
       position="relative"
+      marginBottom={makeSize(OFFSET_BOTTOM)}
       {...getStyledProps(styledProps)}
     >
       <GradientOverlay variant="left" shouldShow={isOverflow && scrollStatus !== 'start'}>
@@ -118,7 +119,6 @@ const TabNav = ({
       <ScrollableArea
         ref={ref}
         onScroll={handleScrollStatus}
-        marginBottom={makeSize(OFFSET_BOTTOM)}
         display="flex"
         width="100%"
         position="relative"
