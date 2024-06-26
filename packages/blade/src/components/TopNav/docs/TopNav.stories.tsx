@@ -5,6 +5,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import { Link, matchPath, useLocation } from 'react-router-dom';
 import storyRouterDecorator from 'storybook-react-router';
 import { Title } from '@storybook/addon-docs';
+import type { TopNavProps } from '../TopNav';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
 import type { TabNavItemProps } from '../TabNav';
 import { TabNav, TabNavItem } from '../TabNav';
@@ -61,7 +62,7 @@ const DocsPage = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="TopNav"
       componentDescription="The top navigation bar is positioned at the top of the screen that provides quick access to different products, search & user profile."
-      figmaURL=""
+      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=90311-235393&m=dev"
     >
       <Title>Usage (with React Router v6)</Title>
       <Alert
@@ -87,16 +88,13 @@ export default {
   title: 'Components/TopNav',
   component: TopNav,
   tags: ['autodocs'],
-  argTypes: {
-    ...getStyledPropsArgTypes({ category: 'StyledProps' }),
-  },
   parameters: {
     docs: {
       page: DocsPage,
     },
   },
   decorators: [storyRouterDecorator(undefined, { initialEntries: ['/home'] })] as unknown,
-} as Meta<typeof SideNav>;
+} as Meta<TopNavProps>;
 
 const isItemActive = (
   location: { pathname: string },
