@@ -52,8 +52,8 @@ import { Alert } from '~components/Alert';
 import { List, ListItem } from '~components/List';
 import { makeSize } from '~utils';
 import {
-  SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP,
-  SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE,
+  SIDE_NAV_EXPANDED_L1_WIDTH_XL,
+  SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
 
 const DocsPage = (): React.ReactElement => {
@@ -320,8 +320,8 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
         <Box
           marginLeft={{
             base: '100%',
-            m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE),
-            xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP),
+            m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
+            xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
           }}
           // 100vh - (topnav height [56px] + border [2px])
           height="calc(100vh - 58px)"

@@ -141,6 +141,34 @@ const TabNavTemplateWithMenu: StoryFn<typeof TabNavItem> = (args) => {
   );
 };
 
+const TabNavTemplateOverFlowing: StoryFn<typeof TabNavItem> = (args) => {
+  return (
+    <Box padding="spacing.4">
+      <Box marginBottom="spacing.6">
+        <Text>
+          If there are more TabNavItems than we can fit in the available space, the TabNav will
+          become horizontally scrollable with left/right arrow buttons.
+        </Text>
+      </Box>
+      <Box padding="spacing.4" width="400px">
+        <TabNav>
+          <TabNavItem icon={HomeIcon} accessibilityLabel="Home" href="/home" />
+          <TabNavItem {...args} href="/payroll">
+            {args.children}
+          </TabNavItem>
+          <TabNavItem href="/payments">Payments</TabNavItem>
+          <TabNavItem href="/magic-checkout">Magic Checkout</TabNavItem>
+          <TabNavItem href="/test-1">Item 1</TabNavItem>
+          <TabNavItem href="/test-2">Item 2</TabNavItem>
+          <TabNavItem href="/test-3">Item 3</TabNavItem>
+          <TabNavItem href="/test-4">Item 4</TabNavItem>
+          <TabNavItem href="/test-5">Item 5</TabNavItem>
+        </TabNav>
+      </Box>
+    </Box>
+  );
+};
+
 export const TabNavExample = TabNavTemplate.bind({});
 TabNavExample.args = {
   children: 'Payroll',
@@ -154,3 +182,10 @@ WithMenu.args = {
   isActive: true,
 };
 WithMenu.storyName = 'With Menu';
+
+export const OverFlowing = TabNavTemplateOverFlowing.bind({});
+OverFlowing.args = {
+  children: 'Payroll',
+  isActive: true,
+};
+OverFlowing.storyName = 'Overflowing';
