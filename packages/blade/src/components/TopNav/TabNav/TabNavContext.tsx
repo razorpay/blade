@@ -3,6 +3,7 @@ import { throwBladeError } from '~utils/logger';
 
 type TabNavContextProps = {
   containerRef: React.RefObject<HTMLDivElement>;
+  hasOverflow: boolean;
 };
 const TabNavContext = React.createContext<TabNavContextProps | null>(null);
 

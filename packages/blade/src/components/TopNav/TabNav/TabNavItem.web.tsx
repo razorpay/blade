@@ -108,14 +108,14 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
   { as, children, isActive, icon: Icon, trailing, accessibilityLabel, href, target, ...props },
   ref,
 ): React.ReactElement => {
-  const { containerRef } = useTabNavContext();
+  const { containerRef, hasOverflow } = useTabNavContext();
   const linkRef = React.useRef<HTMLAnchorElement>(null);
 
   // Scroll the active tab into view
   // Only if the tab is very close to the edge
   // Or if the tab is out of view
   useIsomorphicLayoutEffect(() => {
-    if (!isActive) return;
+    if (!isActive || !hasOverflow) return;
     if (!('requestAnimationFrame' in window)) return;
 
     window.requestAnimationFrame(() => {
@@ -133,7 +133,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
         linkElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'end' });
       }
     });
-  }, [isActive]);
+  }, [hasOverflow, isActive]);
 
   return (
     <StyledTabNavItemWrapper isActive={isActive}>
