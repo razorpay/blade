@@ -34,7 +34,7 @@ The navigation bar is positioned at the top of the screen that provides quick ac
   </TopNavBrand>
   <TopNavContent>
     <TabNav>
-      <TabNavItem as={RouterLink} isSelected href="/home" icon={HomeIcon} />
+      <TabNavItem as={RouterLink} isActive href="/home" icon={HomeIcon} />
       <TabNavItem as={RouterLink} href="/money">Money</TabNavItem>
       <TabNavItem as={RouterLink} href="/payroll">Payroll</TabNavItem>
       <Menu>
@@ -189,7 +189,7 @@ const WithMenu = () => {
 
   return (
     <TabNav>
-      <TabNavItem as={RouterLink} isSelected href="/home" icon={HomeIcon} />
+      <TabNavItem as={RouterLink} isActive href="/home" icon={HomeIcon} />
       <Menu interactionType="hover">
         <TabNavItem 
           trailingIcon={isOpen ? ChevronDown : ChevronUp}
