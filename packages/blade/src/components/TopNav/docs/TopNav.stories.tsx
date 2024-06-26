@@ -230,7 +230,7 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
         <TopNavContent>
           {/* Desktop - render TabNav */}
           <TabNav display={{ base: 'none', m: 'flex' }}>
-            <TabNavItemLink leading={HomeIcon} accessibilityLabel="Home" href="/home" />
+            <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
             <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
             <TabNavItemLink href="/payments">Payments</TabNavItemLink>
             <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
