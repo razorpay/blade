@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTopNavContext } from '../TopNavContext';
 import type { TabNavItemProps } from './types';
 import { useTabNavContext } from './TabNavContext';
+import { MIXED_BG_COLOR } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
@@ -10,6 +12,8 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { mergeRefs } from '~utils/useMergeRefs';
+import type { BoxProps } from '~components/Box';
+import getIn from '~utils/lodashButBetter/get';
 
 const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
   return {
@@ -40,15 +44,18 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
   };
 });
 
-const StyledTabNavItemWrapper = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }) => {
+const StyledTabNavItemWrapper = styled(BaseBox)<{
+  isActive?: boolean;
+  dividerHiderColor: BoxProps['backgroundColor'];
+}>(({ theme, isActive, dividerHiderColor }) => {
   const dividerHiderStyle = {
     content: '""',
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
-    width: makeSize(size[2]),
-    height: '80%',
-    backgroundColor: theme.colors.surface.background.gray.subtle,
+    width: makeSize(size[1]),
+    height: '50%',
+    backgroundColor: getIn(theme.colors, dividerHiderColor as never, MIXED_BG_COLOR),
   } as const;
 
   return {
@@ -74,10 +81,10 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{ isActive?: boolean }>(({ theme
       ? {
           ':before, :after': dividerHiderStyle,
           ':before': {
-            left: -3,
+            left: -2,
           },
           ':after': {
-            right: -3,
+            right: -2,
           },
         }
       : {}),
@@ -109,6 +116,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
   ref,
 ): React.ReactElement => {
   const { containerRef, hasOverflow } = useTabNavContext();
+  const { backgroundColor } = useTopNavContext();
   const linkRef = React.useRef<HTMLAnchorElement>(null);
 
   // Scroll the active tab into view
@@ -136,7 +144,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
   }, [hasOverflow, isActive]);
 
   return (
-    <StyledTabNavItemWrapper isActive={isActive}>
+    <StyledTabNavItemWrapper isActive={isActive} dividerHiderColor={backgroundColor}>
       <SelectedBar isActive={isActive} />
       <StyledTabNavItem
         ref={mergeRefs(ref, linkRef)}
