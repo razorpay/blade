@@ -1,4 +1,5 @@
 import React from 'react';
+import { TopNavContext } from './TopNavContext';
 import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
@@ -68,24 +69,25 @@ type TopNavProps = {
 
 const TopNav = ({ children, ...styledProps }: TopNavProps): React.ReactElement => {
   return (
-    <Box
-      display="grid"
-      gridTemplateColumns={{ base: 'minmax(0, 1fr) auto', m: 'auto minmax(0, 1fr) auto' }}
-      alignItems="center"
-      position="sticky"
-      top="0px"
-      width="100%"
-      paddingX="spacing.3"
-      height={makeSize(TOP_NAV_HEIGHT)}
-      backgroundColor="surface.background.gray.subtle"
-      zIndex={1}
-      {...styledProps}
-    >
-      {children}
-      <Box position="absolute" top="0px" left="0px" pointerEvents="none">
-        <RazorpayLinesSvg />
+    <TopNavContext.Provider value={{ backgroundColor: styledProps.backgroundColor }}>
+      <Box
+        display="grid"
+        gridTemplateColumns={{ base: 'minmax(0, 1fr) auto', m: 'auto minmax(0, 1fr) auto' }}
+        alignItems="center"
+        position="sticky"
+        top="0px"
+        width="100%"
+        paddingX="spacing.3"
+        height={makeSize(TOP_NAV_HEIGHT)}
+        zIndex={1}
+        {...styledProps}
+      >
+        {children}
+        <Box position="absolute" top="0px" left="0px" pointerEvents="none">
+          <RazorpayLinesSvg />
+        </Box>
       </Box>
-    </Box>
+    </TopNavContext.Provider>
   );
 };
 

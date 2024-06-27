@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { approximatelyEqual, useHasOverflow } from './utils';
+import { useTopNavContext } from '../TopNavContext';
+import { approximatelyEqual, MIXED_BG_COLOR, useHasOverflow } from './utils';
 import { TabNavContext } from './TabNavContext';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -10,6 +11,8 @@ import { Divider } from '~components/Divider';
 import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
 import { makeMotionTime, makeSize } from '~utils';
 import { size } from '~tokens/global';
+import getIn from '~utils/lodashButBetter/get';
+import type { BoxProps } from '~components/Box';
 
 const GRADIENT_WIDTH = 54 as const;
 const GRADIENT_OFFSET = -8 as const;
@@ -26,33 +29,35 @@ const ScrollableArea = styled(BaseBox)(() => {
   };
 });
 
-const GradientOverlay = styled(BaseBox)<{ shouldShow?: boolean; variant: 'left' | 'right' }>(
-  ({ theme, shouldShow, variant }) => {
-    const color = theme.colors.surface.background.gray.subtle;
+const GradientOverlay = styled(BaseBox)<{
+  shouldShow?: boolean;
+  variant: 'left' | 'right';
+  $color: BoxProps['backgroundColor'];
+}>(({ theme, shouldShow, variant, $color }) => {
+  const color = getIn(theme.colors, $color as never, MIXED_BG_COLOR);
 
-    return {
+  return {
+    position: 'absolute',
+    [variant]: 0,
+    pointerEvents: shouldShow ? 'auto' : 'none',
+    transform: shouldShow ? 'scale(1)' : 'scale(0.5)',
+    opacity: shouldShow ? 1 : 0,
+    transitionTimingFunction: `${theme.motion.easing.standard.revealing}`,
+    transitionDuration: `${makeMotionTime(theme.motion.duration.xquick)}`,
+    transitionProperty: 'opacity, transform',
+    zIndex: 1,
+    ':before': {
+      content: "''",
+      pointerEvents: 'none',
       position: 'absolute',
       [variant]: 0,
-      pointerEvents: shouldShow ? 'auto' : 'none',
-      transform: shouldShow ? 'scale(1)' : 'scale(0.5)',
-      opacity: shouldShow ? 1 : 0,
-      transitionTimingFunction: `${theme.motion.easing.standard.revealing}`,
-      transitionDuration: `${makeMotionTime(theme.motion.duration.xquick)}`,
-      transitionProperty: 'opacity, transform',
-      zIndex: 1,
-      ':before': {
-        content: "''",
-        pointerEvents: 'none',
-        position: 'absolute',
-        [variant]: 0,
-        top: makeSize(GRADIENT_OFFSET),
-        bottom: makeSize(GRADIENT_OFFSET),
-        width: makeSize(GRADIENT_WIDTH),
-        background: `linear-gradient(to ${variant}, transparent 0%, ${color} 30%, ${color} 100%);`,
-      },
-    };
-  },
-);
+      top: makeSize(GRADIENT_OFFSET),
+      bottom: makeSize(GRADIENT_OFFSET),
+      width: makeSize(GRADIENT_WIDTH),
+      background: `linear-gradient(to ${variant}, transparent 0%, ${color} 30%, ${color} 100%);`,
+    },
+  };
+});
 
 const TabNav = ({
   children,
@@ -61,6 +66,7 @@ const TabNav = ({
   const ref = React.useRef<HTMLDivElement>(null);
   const hasOverflow = useHasOverflow(ref);
   const [scrollStatus, setScrollStatus] = React.useState<'start' | 'end' | 'middle'>('start');
+  const { backgroundColor } = useTopNavContext();
 
   // Check if the scroll is at start, end or middle
   const handleScrollStatus = React.useCallback(
@@ -110,7 +116,11 @@ const TabNav = ({
         marginBottom={makeSize(OFFSET_BOTTOM)}
         {...getStyledProps(styledProps)}
       >
-        <GradientOverlay variant="left" shouldShow={hasOverflow && scrollStatus !== 'start'}>
+        <GradientOverlay
+          variant="left"
+          $color={backgroundColor}
+          shouldShow={hasOverflow && scrollStatus !== 'start'}
+        >
           <Button
             size="xsmall"
             variant="tertiary"
@@ -148,7 +158,11 @@ const TabNav = ({
             })}
           </BaseBox>
         </ScrollableArea>
-        <GradientOverlay variant="right" shouldShow={hasOverflow && scrollStatus !== 'end'}>
+        <GradientOverlay
+          variant="right"
+          $color={backgroundColor}
+          shouldShow={hasOverflow && scrollStatus !== 'end'}
+        >
           <Button
             size="xsmall"
             variant="tertiary"
