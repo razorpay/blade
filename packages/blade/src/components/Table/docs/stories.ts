@@ -1939,6 +1939,111 @@ function App(): React.ReactElement {
 export default App;
 `;
 
+const TableWithEditableCellsStory = `
+import {
+  Table,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableEditableCell,
+} from '@razorpay/blade/components';
+import type { TableData } from '@razorpay/blade/components';
+import React from 'react';
+
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  date: Date;
+  method: string;
+};
+
+const nodes: Item[] = [
+  ...Array.from({ length: 5 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    date: new Date(
+      2021,
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    ),
+    method: ['Bank Transfer', 'Credit Card', 'PayPal'][
+      Math.floor(Math.random() * 3)
+    ],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+  })),
+];
+
+const data: TableData<Item> = {
+  nodes,
+};
+
+function App(): React.ReactElement {
+  return (
+    <Box
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Box paddingBottom="spacing.4">
+        <Heading>Table with Editable Cells</Heading>
+      </Box>
+      <Table data={data} showBorderedCells>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableEditableCell
+                    placeholder="Enter ID"
+                    accessibilityLabel="ID"
+                    autoFocus={index === 0}
+                    validationState="error"
+                    errorText="ID Cannot be empty"
+                  />
+
+                  <TableEditableCell
+                    placeholder="Enter Date"
+                    accessibilityLabel="Date"
+                  />
+                  <TableEditableCell
+                    placeholder="Enter Amount"
+                    accessibilityLabel="Amount"
+                    defaultValue={\`\${tableItem.amount}\`}
+                    validationState="success"
+                    successText="Amount is valid"
+                  />
+                  <TableEditableCell
+                    placeholder="Enter Method"
+                    accessibilityLabel="Method"
+                  />
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -1954,4 +2059,5 @@ export {
   TableWithIsRefreshingStory,
   TableWithClientSidePaginationStory,
   TableWithServerSidePaginationStory,
+  TableWithEditableCellsStory,
 };
