@@ -16,7 +16,7 @@ export const topNavFullExample = {
   export default App;
   `,
   'TopNavExample.tsx': dedent`import React from 'react';
-  import { Link, useLocation } from 'react-router-dom';
+  import { Link, useLocation, useHistory } from 'react-router-dom';
   import { SideNavExample } from './SideNavExample';
   import { isItemActive, RazorpayLogo } from './utils';
   import {
@@ -56,21 +56,23 @@ export const topNavFullExample = {
   import { makeSize } from '@razorpay/blade/utils';
   import type { TabNavItemProps, IconComponent } from '@razorpay/blade/components';
 
-  const TabNavItemLink = (
-    props: Omit<TabNavItemProps, 'as'> & {
+  const TabNavItemLink = React.forwardRef<
+    HTMLAnchorElement,
+    Omit<TabNavItemProps, 'as'> & {
       activeOnLinks?: string[];
-    },
-  ): React.ReactElement => {
+    }
+  >((props, ref) => {
     const location = useLocation();
-
     return (
       <TabNavItem
+        ref={ref}
         {...props}
         as={Link}
         isActive={isItemActive(location, { href: props.href, activeOnLinks: props.activeOnLinks })}
       />
     );
-  };
+  });
+
 
   const ExploreItem = ({
     icon: Icon,
@@ -104,6 +106,7 @@ export const topNavFullExample = {
 
   const TopNavExample = (): React.ReactElement => {
     const { platform } = useTheme();
+    const history = useHistory();
     const isMobile = platform === 'onMobile';
     const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
     const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
@@ -123,9 +126,9 @@ export const topNavFullExample = {
               <TabNavItemLink href="/payments">Payments</TabNavItemLink>
               <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
               <Menu openInteraction="hover">
-                <TabNavItem href="#" trailing={ChevronDownIcon}>
+                <TabNavItemLink href="/explore" trailing={ChevronDownIcon}>
                   {selectedProduct ? \`Explore: \${selectedProduct}\` : 'Explore'}
-                </TabNavItem>
+                </TabNavItemLink>
                 <MenuOverlay>
                   <MenuHeader
                     title="Products for you"
@@ -135,14 +138,24 @@ export const topNavFullExample = {
                       </Badge>
                     }
                   />
-                  <MenuItem onClick={() => setSelectedProduct('Payroll')}>
+                  <MenuItem 
+                    onClick={() => {
+                      history.push('/explore/payroll');
+                      setSelectedProduct('Payroll');
+                    }}
+                  >
                     <ExploreItem
                       icon={RazorpayxPayrollIcon}
                       title="Payroll"
                       description="Supercharge your process of paying salaries to your employees"
                     />
                   </MenuItem>
-                  <MenuItem onClick={() => setSelectedProduct('Payout')}>
+                  <MenuItem 
+                    onClick={() => {
+                      history.push('/explore/payouts');
+                      setSelectedProduct('Payout');
+                    }}
+                  >
                     <ExploreItem
                       icon={BulkPayoutsIcon}
                       title="Payout"

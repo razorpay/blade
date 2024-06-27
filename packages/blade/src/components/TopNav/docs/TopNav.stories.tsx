@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { Link, matchPath, useLocation } from 'react-router-dom';
+import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
 import storyRouterDecorator from 'storybook-react-router';
 import { Title } from '@storybook/addon-docs';
 import type { TopNavProps } from '../TopNav';
@@ -166,21 +166,22 @@ const SideNavExample = ({
   );
 };
 
-const TabNavItemLink = (
-  props: Omit<TabNavItemProps, 'as'> & {
+const TabNavItemLink = React.forwardRef<
+  HTMLAnchorElement,
+  Omit<TabNavItemProps, 'as'> & {
     activeOnLinks?: string[];
-  },
-): React.ReactElement => {
+  }
+>((props, ref) => {
   const location = useLocation();
-
   return (
     <TabNavItem
+      ref={ref}
       {...props}
       as={Link}
       isActive={isItemActive(location, { href: props.href, activeOnLinks: props.activeOnLinks })}
     />
   );
-};
+});
 
 const ExploreItem = ({
   icon: Icon,
@@ -212,8 +213,9 @@ const ExploreItem = ({
   );
 };
 
-const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
+const TopNavFullExample = () => {
   const isMobile = useIsMobile();
+  const history = useHistory();
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
@@ -232,9 +234,9 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
             <TabNavItemLink href="/payments">Payments</TabNavItemLink>
             <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
             <Menu openInteraction="hover">
-              <TabNavItem href="#" trailing={<ChevronDownIcon />}>
+              <TabNavItemLink href="/explore" trailing={<ChevronDownIcon />}>
                 {selectedProduct ? `Explore: ${selectedProduct}` : 'Explore'}
-              </TabNavItem>
+              </TabNavItemLink>
               <MenuOverlay>
                 <MenuHeader
                   title="Products for you"
@@ -244,14 +246,24 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
                     </Badge>
                   }
                 />
-                <MenuItem onClick={() => setSelectedProduct('Payroll')}>
+                <MenuItem
+                  onClick={() => {
+                    history.push('/explore/payroll');
+                    setSelectedProduct('Payroll');
+                  }}
+                >
                   <ExploreItem
                     icon={RazorpayxPayrollIcon}
                     title="Payroll"
                     description="Supercharge your process of paying salaries to your employees"
                   />
                 </MenuItem>
-                <MenuItem onClick={() => setSelectedProduct('Payout')}>
+                <MenuItem
+                  onClick={() => {
+                    history.push('/explore/payouts');
+                    setSelectedProduct('Payout');
+                  }}
+                >
                   <ExploreItem
                     icon={BulkPayoutsIcon}
                     title="Payout"
@@ -297,7 +309,29 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
               icon={AnnouncementIcon}
             />
           </Tooltip>
-          <Avatar size="medium" name="Anurag Hazra" />
+          <Menu openInteraction="click">
+            <Avatar size="medium" name="Anurag Hazra" />
+            <MenuOverlay>
+              <MenuHeader title="Profile" />
+              <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                <Avatar size="medium" name="John Doe" />
+                <Box display="flex" flexDirection="column" gap="spacing.2">
+                  <Text size="medium" weight="semibold">
+                    John Doe
+                  </Text>
+                  <Text size="xsmall" color="surface.text.gray.muted">
+                    Razorpay Trusted Merchant
+                  </Text>
+                </Box>
+              </Box>
+              <MenuItem>
+                <Text color="surface.text.gray.subtle">Settings</Text>
+              </MenuItem>
+              <MenuItem color="negative">
+                <Text color="feedback.text.negative.intense">Logout</Text>
+              </MenuItem>
+            </MenuOverlay>
+          </Menu>
         </TopNavActions>
       </TopNav>
       <Box
@@ -348,6 +382,7 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
     </Box>
   );
 };
+const TopNavFullTemplate: StoryFn<typeof TopNav> = () => <TopNavFullExample />;
 
 const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
   return (
