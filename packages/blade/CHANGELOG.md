@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.23.1
+
+### Patch Changes
+
+- 00238183: feat(Menu, Dropdown): add width props on MenuOverlay and allow it in SelectInput Dropdown
+
 ## 11.23.0
 
 ### Minor Changes
