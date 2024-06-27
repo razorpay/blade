@@ -217,7 +217,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             <View
               currentInteraction="default"
               data-blade-component="base-box"
-              hasBorder={true}
+              isTableInputCell={false}
               style={
                 [
                   {},
@@ -230,8 +230,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             >
               <View
                 currentInteraction="default"
-                hasBorder={true}
                 isDropdownTrigger={true}
+                isTableInputCell={false}
                 onClick={[Function]}
                 setShowAllTagsWithAnimation={[Function]}
                 size="medium"
@@ -381,7 +381,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           onStartShouldSetResponder={[Function]}
                           style={
                             {
-                              "backgroundColor": "transparent",
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
                               "color": "hsla(211, 20%, 52%, 0.32)",
                               "flexBasis": 0,
                               "flexGrow": 1,

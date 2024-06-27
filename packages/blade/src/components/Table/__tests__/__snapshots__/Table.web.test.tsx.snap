@@ -1611,7 +1611,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 12px;
@@ -1712,7 +1712,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: transparent 0px 0px 0px 1px;
+  box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;
@@ -1736,7 +1736,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: transparent 0px 0px 0px 1px;
+  box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -1762,7 +1762,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: transparent 0px 0px 0px 1px;
+  box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 400ms;

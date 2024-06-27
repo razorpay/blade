@@ -89,7 +89,7 @@ export const getInputBackgroundAndBorderStyles = ({
     : baseInputBackgroundColor;
   let backgroundColor = getIn(theme.colors, backgroundColorTokens.default);
   let borderColor = isTableInputCell
-    ? 'transparent'
+    ? theme.colors.transparent
     : getIn(theme.colors, baseInputBorderColor.default);
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
 
@@ -98,7 +98,7 @@ export const getInputBackgroundAndBorderStyles = ({
   backgroundColor = getIn(theme.colors, backgroundColorTokens[baseInputState]);
   borderColor =
     isTableInputCell && baseInputState !== 'focused'
-      ? 'transparent'
+      ? theme.colors.transparent
       : getIn(theme.colors, baseInputBorderColor[baseInputState]);
   borderWidth = getIn(theme.border.width, baseInputBorderWidth[baseInputState]);
 
@@ -222,7 +222,7 @@ export const getBaseInputStyles = ({
 
     // take the full available width of parent container for input field
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: theme.colors.transparent,
 
     paddingTop: makeSpace(theme.spacing[baseInputPaddingTokens.top[size]]),
     paddingBottom: makeSpace(theme.spacing[baseInputPaddingTokens.bottom[size]]),
