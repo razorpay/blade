@@ -108,6 +108,7 @@ const TabNav = ({
   return (
     <TabNavContext.Provider value={{ containerRef: ref, hasOverflow }}>
       <BaseBox
+        as="nav"
         display="flex"
         width="100%"
         alignItems="center"
