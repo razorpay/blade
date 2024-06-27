@@ -39,7 +39,7 @@ const TableFooter = assignWithoutSideEffects(_TableFooter, {
   componentId: ComponentIds.TableFooter,
 });
 
-const StyledHeaderRow = styled(FooterRow)<{ $showBorderedCells: boolean }>(
+const StyledFooterRow = styled(FooterRow)<{ $showBorderedCells: boolean }>(
   ({ theme, $showBorderedCells }) => ({
     '& th': $showBorderedCells
       ? {
@@ -57,12 +57,12 @@ const StyledHeaderRow = styled(FooterRow)<{ $showBorderedCells: boolean }>(
 const _TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
   const { showBorderedCells } = useTableContext();
   return (
-    <StyledHeaderRow
+    <StyledFooterRow
       {...metaAttribute({ name: MetaConstants.TableFooterRow })}
       $showBorderedCells={showBorderedCells}
     >
       {children}
-    </StyledHeaderRow>
+    </StyledFooterRow>
   );
 };
 
