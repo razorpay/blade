@@ -243,10 +243,10 @@ const validationStateToInputTrailingIconMap = {
   error: AlertCircleIcon,
 };
 
-const rowDensityToHasBorderMapping = {
-  comfortable: true,
-  normal: false,
-  compact: false,
+const rowDensityToIsTableInputCellMapping = {
+  comfortable: false,
+  normal: true,
+  compact: true,
 };
 
 const getEditableInputMargin = ({
@@ -312,7 +312,7 @@ const _TableEditableCell = ({
         >
           <Box margin={getEditableInputMargin({ rowDensity })} width="100%">
             <BaseInput
-              hasBorder={rowDensityToHasBorderMapping[rowDensity]}
+              isTableInputCell={rowDensityToIsTableInputCellMapping[rowDensity]}
               validationState={validationState}
               id="table-editable-cell-input"
               size={tableEditableCellRowDensityToInputSizeMap[rowDensity]}

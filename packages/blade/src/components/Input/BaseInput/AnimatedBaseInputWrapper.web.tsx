@@ -21,7 +21,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     | 'isTextArea'
     | 'isDropdownTrigger'
     | 'maxTagRows'
-    | 'hasBorder'
+    | 'isTableInputCell'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -31,7 +31,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     validationState: props.validationState,
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
-    hasBorder: props.hasBorder,
+    isTableInputCell: props.isTableInputCell,
   }),
   '&:hover': {
     ...getInputBackgroundAndBorderStyles({
@@ -42,7 +42,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
       isTextArea: props.isTextArea,
-      hasBorder: props.hasBorder,
+      isTableInputCell: props.isTableInputCell,
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
@@ -56,7 +56,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
       isTextArea: props.isTextArea,
-      hasBorder: props.hasBorder,
+      isTableInputCell: props.isTableInputCell,
     }),
   },
 }));
@@ -151,7 +151,7 @@ to {
           setShowAllTagsWithAnimation?.(false);
         }
       }}
-      hasBorder={rest.hasBorder}
+      isTableInputCell={rest.isTableInputCell}
     />
   );
 };

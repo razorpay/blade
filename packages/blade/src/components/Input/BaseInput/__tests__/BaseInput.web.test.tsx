@@ -74,7 +74,7 @@ describe('<BaseInput />', () => {
   it('should render base input with no borders', () => {
     const label = 'Enter name';
     const { getByLabelText } = renderWithTheme(
-      <BaseInput label={label} id="name" hasBorder={false} />,
+      <BaseInput label={label} id="name" isTableInputCell={false} />,
     );
 
     const input = getByLabelText(label);
@@ -88,7 +88,7 @@ describe('<BaseInput />', () => {
       <BaseInput
         label={label}
         id="name"
-        hasBorder={false}
+        isTableInputCell={false}
         validationState="error"
         errorText="Something went wrong"
       />,
@@ -105,7 +105,7 @@ describe('<BaseInput />', () => {
       <BaseInput
         label={label}
         id="name"
-        hasBorder={false}
+        isTableInputCell={false}
         validationState="success"
         successText="This seems valid"
       />,

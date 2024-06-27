@@ -66,7 +66,7 @@ describe('<BaseInput />', () => {
 
   it('should render input with no borders', () => {
     const { toJSON } = renderWithTheme(
-      <BaseInput hasBorder={false} label="Enter name" id="name" />,
+      <BaseInput isTableInputCell={true} label="Enter name" id="name" />,
     );
 
     expect(toJSON()).toMatchSnapshot();
@@ -75,7 +75,7 @@ describe('<BaseInput />', () => {
   it('should render input with no borders in error state', () => {
     const { toJSON } = renderWithTheme(
       <BaseInput
-        hasBorder={false}
+        isTableInputCell={true}
         validationState="error"
         errorText="Something went wrong"
         label="Enter name"
@@ -89,7 +89,7 @@ describe('<BaseInput />', () => {
   it('should render input with no borders in success state', () => {
     const { toJSON } = renderWithTheme(
       <BaseInput
-        hasBorder={false}
+        isTableInputCell={false}
         validationState="success"
         successText="This seems valid"
         label="Enter name"

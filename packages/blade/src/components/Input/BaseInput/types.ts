@@ -43,7 +43,7 @@ export type BaseInputWrapperProps = Pick<
   children: React.ReactNode;
   size: NonNullable<BaseInputProps['size']>;
   numberOfLines: BaseInputProps['numberOfLines'];
-  hasBorder: NonNullable<BaseInputProps['hasBorder']>;
+  isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   onClick?: () => void;
 };
 
@@ -63,7 +63,7 @@ export type StyledBaseInputProps = {
   isTextArea?: boolean;
   hasTags?: boolean;
   $size: NonNullable<BaseInputProps['size']>;
-  hasBorder: NonNullable<BaseInputProps['hasBorder']>;
+  isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
 } & Pick<
   BaseInputProps,

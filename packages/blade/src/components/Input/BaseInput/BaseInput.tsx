@@ -322,10 +322,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      **/
     valueComponentType?: 'text' | 'heading';
     /**
-     * Whether to show border around the input field
+     * Whether to render the input as a table cell
      * @default true
      **/
-    hasBorder?: boolean;
+    isTableInputCell?: boolean;
   } & TestID &
   Platform.Select<{
     native: {
@@ -723,11 +723,13 @@ const getDescribedByElementId = ({
 
 const FocusRingWrapper = styled(BaseBox)<{
   currentInteraction: ActionStates;
-  hasBorder: NonNullable<BaseInputProps['hasBorder']>;
-}>(({ theme, currentInteraction, hasBorder }) => ({
-  borderRadius: makeBorderSize(hasBorder ? theme.border.radius.medium : theme.border.radius.none),
+  isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
+}>(({ theme, currentInteraction, isTableInputCell }) => ({
+  borderRadius: makeBorderSize(
+    isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
+  ),
   width: '100%',
-  '&:focus-within': hasBorder
+  '&:focus-within': !isTableInputCell
     ? {
         ...getFocusRingStyles({
           theme,
@@ -816,7 +818,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     size = 'medium',
     trailingButton,
     valueComponentType = 'text',
-    hasBorder = true,
+    isTableInputCell = false,
     ...styledProps
   },
   ref,
@@ -937,7 +939,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <FocusRingWrapper currentInteraction={currentInteraction} hasBorder={hasBorder}>
+        <FocusRingWrapper
+          currentInteraction={currentInteraction}
+          isTableInputCell={isTableInputCell}
+        >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}
@@ -961,7 +966,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 inputRef.current?.focus();
               }
             }}
-            hasBorder={hasBorder}
+            isTableInputCell={isTableInputCell}
           >
             <BaseInputVisuals
               size={size}
@@ -1037,7 +1042,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 isDropdownTrigger={isDropdownTrigger}
                 $size={size}
                 valueComponentType={valueComponentType}
-                hasBorder={hasBorder}
+                isTableInputCell={isTableInputCell}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
               />
             </BaseInputTagSlot>
@@ -1051,13 +1056,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               size={size}
               errorText={errorText}
               successText={successText}
-              hasBorder={hasBorder}
+              isTableInputCell={isTableInputCell}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>
 
-      {!hideFormHint && hasBorder && (
+      {!hideFormHint && !isTableInputCell && (
         <BaseBox
           marginLeft={makeSize(
             isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,

@@ -32,7 +32,7 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     validationState: props.validationState,
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
-    hasBorder: props.hasBorder,
+    isTableInputCell: props.isTableInputCell,
   }),
 }));
 
@@ -132,7 +132,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   const animatedBorderAndBackgroundStyle = useAnimatedStyle(
     () => ({
-      borderWidth: rest.hasBorder ? theme.border.width.thin : theme.border.width.none,
+      borderWidth: rest.isTableInputCell ? theme.border.width.none : theme.border.width.thin,
       borderRadius: theme.border.radius.medium,
       borderStyle: 'solid',
       backgroundColor: withTiming(backgroundColor, motionConfig),
