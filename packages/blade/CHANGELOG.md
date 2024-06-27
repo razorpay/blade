@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.23.0
+
+### Minor Changes
+
+- fe9a0cff: feat(blade): add TopNav component
+
 ## 11.22.0
 
 ### Minor Changes
