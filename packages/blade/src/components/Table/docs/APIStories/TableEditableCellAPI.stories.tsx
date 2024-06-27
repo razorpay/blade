@@ -86,7 +86,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent data={data}>
+      <TableComponent showBorderedCells data={data}>
         {(tableData) => (
           <>
             <TableHeader>
