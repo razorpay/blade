@@ -173,7 +173,7 @@ const TopNavTemplate: StoryFn<typeof TopNav> = () => {
 
   return (
     <Box>
-      <TopNav>
+      <TopNav backgroundColor="surface.background.gray.subtle">
         {/* TopNavBrand gets hidden on mobile */}
         <TopNavBrand>
           <RazorpayLogo />

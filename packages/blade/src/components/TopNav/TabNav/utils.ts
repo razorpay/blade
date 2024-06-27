@@ -44,4 +44,8 @@ const approximatelyEqual = (v1: number, v2: number, tolerance = 1): boolean => {
   return Math.abs(v1 - v2) < tolerance;
 };
 
-export { useHasOverflow, approximatelyEqual };
+// Overlapping color of surface.background.gray.subtle + interactive.background.gray.default
+// TODO(future): design will tokenize or check if this is needed or not
+const MIXED_BG_COLOR = '#e1e7ef';
+
+export { useHasOverflow, approximatelyEqual, MIXED_BG_COLOR };
