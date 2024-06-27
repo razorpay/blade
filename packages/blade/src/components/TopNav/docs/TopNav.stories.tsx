@@ -352,7 +352,7 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => {
 const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
   return (
     <Box height="100vh" backgroundColor="surface.background.gray.intense">
-      <TopNav>
+      <TopNav backgroundColor="surface.background.gray.subtle">
         <TopNavBrand>
           <RazorpayLogo />
         </TopNavBrand>
