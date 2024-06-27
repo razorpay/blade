@@ -111,8 +111,36 @@ type MenuItemProps = {
 };
 
 type MenuOverlayProps = {
+  /**
+   * JSX Slot for MenuItem or anything else
+   */
   children: React.ReactElement[] | React.ReactElement;
+
+  /**
+   * zIndex override
+   */
   zIndex?: BoxProps['zIndex'];
+
+  /**
+   * width override.
+   *
+   * By default width is not set
+   */
+  width?: BoxProps['width'];
+
+  /**
+   * minWidth override
+   */
+  minWidth?: BoxProps['minWidth'];
+
+  /**
+   * maxWidth override
+   */
+  maxWidth?: BoxProps['maxWidth'];
+
+  /**
+   * @private Internal Prop. Do not override or you'll be fired
+   */
   _transitionStyle?: React.CSSProperties;
 } & TestID;
 
