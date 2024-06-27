@@ -37,6 +37,8 @@ const _DropdownOverlay = ({
   testID,
   zIndex = componentZIndices.dropdownOverlay,
   width,
+  minWidth,
+  maxWidth,
   referenceRef,
   defaultPlacement = 'bottom-start',
 }: DropdownOverlayProps): React.ReactElement | null => {
@@ -73,12 +75,16 @@ const _DropdownOverlay = ({
       }),
       sizeMiddleware({
         apply({ rects, elements }) {
+          const overlayWidth = isMenu ? undefined : makeSize(rects.reference.width);
+          const overlayMinWidth = isMenu ? makeSize(size['240']) : undefined;
+          const overlayMaxWidth = isMenu ? makeSize(size['400']) : undefined;
+
           Object.assign(elements.floating.style, {
             // in menu, we have flexible width between min and max
             // in input triggers, we just take width of trigger
-            width: isMenu ? undefined : makeSize(rects.reference.width),
-            minWidth: isMenu ? makeSize(size['240']) : undefined,
-            maxWidth: isMenu ? makeSize(size['400']) : undefined,
+            width: width ?? overlayWidth,
+            minWidth: minWidth ?? overlayMinWidth,
+            maxWidth: maxWidth ?? overlayMaxWidth,
           });
         },
       }),
@@ -120,6 +126,8 @@ const _DropdownOverlay = ({
           elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
           style={{ ...styles }}
           width={width ? width : '100%'}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
           {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
         >
           {children}

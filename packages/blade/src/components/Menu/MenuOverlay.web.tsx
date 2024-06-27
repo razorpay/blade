@@ -16,16 +16,27 @@ const UnfocussableOverlay = styled(BaseBox)((_props) => {
 });
 
 const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayProps> = (
-  { children, zIndex = componentZIndices.dropdownOverlay, _transitionStyle, testID, ...props },
+  {
+    children,
+    zIndex = componentZIndices.dropdownOverlay,
+    _transitionStyle,
+    minWidth,
+    maxWidth,
+    width,
+    testID,
+    ...props
+  },
   ref,
 ): React.ReactElement => {
   return (
     <UnfocussableOverlay
       ref={ref as never}
       {...props}
-      minWidth={MENU_MIN_WIDTH}
       zIndex={zIndex}
       {...metaAttribute({ name: MetaConstants.Menu, testID })}
+      minWidth={minWidth ?? MENU_MIN_WIDTH}
+      width={width}
+      maxWidth={maxWidth}
     >
       {/* 
         Requires another nested div since floatingStyles clash with floatingTransitionStyles 

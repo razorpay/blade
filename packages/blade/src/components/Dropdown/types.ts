@@ -28,7 +28,27 @@ type DropdownOverlayProps = {
    * @default 1001
    */
   zIndex?: number;
+  /**
+   * Override the default width of dropdown
+   *
+   * Avoid overriding width in SelectInput and AutoComplete as its expected to match the input
+   */
   width?: BoxProps['width'];
+
+  /**
+   * Override the default minWidth of dropdown
+   *
+   * Avoid overriding minWidth in SelectInput and AutoComplete as its expected to match the input
+   */
+  minWidth?: BoxProps['minWidth'];
+
+  /**
+   * Override the default maxWidth of dropdown
+   *
+   * Avoid overriding maxWidth in SelectInput and AutoComplete as its expected to match the input
+   */
+  maxWidth?: BoxProps['maxWidth'];
+
   /**
    * Reference to the element which triggers the DropdownOverlay
    *

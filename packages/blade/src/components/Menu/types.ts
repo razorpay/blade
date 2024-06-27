@@ -114,6 +114,9 @@ type MenuOverlayProps = {
   children: React.ReactElement[] | React.ReactElement;
   zIndex?: BoxProps['zIndex'];
   _transitionStyle?: React.CSSProperties;
+  width?: BoxProps['width'];
+  minWidth?: BoxProps['minWidth'];
+  maxWidth?: BoxProps['maxWidth'];
 } & TestID;
 
 type MenuFooterProps = Pick<BaseFooterProps, 'children' | 'testID'>;

@@ -199,7 +199,7 @@ export const InternalMultiSelect = (): React.ReactElement => {
     <Box padding="spacing.5" maxWidth="300px">
       <Dropdown selectionType="multiple">
         <SelectInput label="Select City" maxRows="single" />
-        <DropdownOverlay>
+        <DropdownOverlay width="500px">
           <DropdownHeader title="Header Title" subtitle="Header subtitle" />
           <ActionList>
             <ActionListItem title="Mumbai" value="mumbai" />
