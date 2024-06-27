@@ -55,6 +55,7 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
+import BaseBox from '~components/Box/BaseBox';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -220,206 +221,210 @@ const TopNavFullExample = () => {
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
   return (
-    <Box>
-      <TopNav backgroundColor="surface.background.gray.subtle">
-        {/* TopNavBrand gets hidden on mobile */}
-        <TopNavBrand>
-          <RazorpayLogo />
-        </TopNavBrand>
-        <TopNavContent>
-          {/* Desktop - render TabNav */}
-          <TabNav display={{ base: 'none', m: 'flex' }}>
-            <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-            <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
-            <TabNavItemLink href="/payments">Payments</TabNavItemLink>
-            <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
-            <Menu openInteraction="hover">
-              <TabNavItemLink href="/explore" trailing={<ChevronDownIcon />}>
-                {selectedProduct ? `Explore: ${selectedProduct}` : 'Explore'}
-              </TabNavItemLink>
+    <BaseBox backgroundColor="surface.background.gray.subtle">
+      <BaseBox backgroundColor="interactive.background.gray.default">
+        <TopNav>
+          {/* TopNavBrand gets hidden on mobile */}
+          <TopNavBrand>
+            <RazorpayLogo />
+          </TopNavBrand>
+          <TopNavContent>
+            {/* Desktop - render TabNav */}
+            <TabNav display={{ base: 'none', m: 'flex' }}>
+              <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
+              <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
+              <TabNavItemLink href="/payments">Payments</TabNavItemLink>
+              <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
+              <Menu openInteraction="hover">
+                <TabNavItemLink href="/explore" trailing={<ChevronDownIcon />}>
+                  {selectedProduct ? `Explore: ${selectedProduct}` : 'Explore'}
+                </TabNavItemLink>
+                <MenuOverlay>
+                  <MenuHeader
+                    title="Products for you"
+                    trailing={
+                      <Badge emphasis="subtle" color="notice">
+                        Recommended
+                      </Badge>
+                    }
+                  />
+                  <MenuItem
+                    onClick={() => {
+                      history.push('/explore/payroll');
+                      setSelectedProduct('Payroll');
+                    }}
+                  >
+                    <ExploreItem
+                      icon={RazorpayxPayrollIcon}
+                      title="Payroll"
+                      description="Supercharge your process of paying salaries to your employees"
+                    />
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      history.push('/explore/payouts');
+                      setSelectedProduct('Payout');
+                    }}
+                  >
+                    <ExploreItem
+                      icon={BulkPayoutsIcon}
+                      title="Payout"
+                      description="Pay your vendors at ease with RazorpayX"
+                    />
+                  </MenuItem>
+                  <MenuFooter>
+                    <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
+                      View all products
+                    </BladeLink>
+                  </MenuFooter>
+                </MenuOverlay>
+              </Menu>
+            </TabNav>
+            {/* Mobile - render hamburger button */}
+            <Box display={{ base: 'flex', m: 'none' }} gap="spacing.4" alignItems="center">
+              <Button
+                size="medium"
+                variant="tertiary"
+                icon={MenuIcon}
+                onClick={() => {
+                  setIsSideBarOpen(!isSideBarOpen);
+                }}
+              />
+              <Text>Home</Text>
+            </Box>
+          </TopNavContent>
+          <TopNavActions>
+            {/* Remove searchbar on mobile */}
+            <Box width={{ base: '220px', xl: '264px' }} display={{ base: 'none', m: 'block' }}>
+              <SearchInput
+                placeholder="Search in payments"
+                accessibilityLabel="Search Across Razorpay"
+              />
+            </Box>
+            <Tooltip content="View Ecosystem Health">
+              <Button size={isMobile ? 'small' : 'medium'} variant="tertiary" icon={ActivityIcon} />
+            </Tooltip>
+            <Tooltip content="View Announcements">
+              <Button
+                size={isMobile ? 'small' : 'medium'}
+                variant="tertiary"
+                icon={AnnouncementIcon}
+              />
+            </Tooltip>
+            <Menu openInteraction="click">
+              <Avatar size="medium" name="Anurag Hazra" />
               <MenuOverlay>
-                <MenuHeader
-                  title="Products for you"
-                  trailing={
-                    <Badge emphasis="subtle" color="notice">
-                      Recommended
-                    </Badge>
-                  }
-                />
-                <MenuItem
-                  onClick={() => {
-                    history.push('/explore/payroll');
-                    setSelectedProduct('Payroll');
-                  }}
-                >
-                  <ExploreItem
-                    icon={RazorpayxPayrollIcon}
-                    title="Payroll"
-                    description="Supercharge your process of paying salaries to your employees"
-                  />
+                <MenuHeader title="Profile" />
+                <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                  <Avatar size="medium" name="John Doe" />
+                  <Box display="flex" flexDirection="column" gap="spacing.2">
+                    <Text size="medium" weight="semibold">
+                      John Doe
+                    </Text>
+                    <Text size="xsmall" color="surface.text.gray.muted">
+                      Razorpay Trusted Merchant
+                    </Text>
+                  </Box>
+                </Box>
+                <MenuItem>
+                  <Text color="surface.text.gray.subtle">Settings</Text>
                 </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    history.push('/explore/payouts');
-                    setSelectedProduct('Payout');
-                  }}
-                >
-                  <ExploreItem
-                    icon={BulkPayoutsIcon}
-                    title="Payout"
-                    description="Pay your vendors at ease with RazorpayX"
-                  />
+                <MenuItem color="negative">
+                  <Text color="feedback.text.negative.intense">Logout</Text>
                 </MenuItem>
-                <MenuFooter>
-                  <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
-                    View all products
-                  </BladeLink>
-                </MenuFooter>
               </MenuOverlay>
             </Menu>
-          </TabNav>
-          {/* Mobile - render hamburger button */}
-          <Box display={{ base: 'flex', m: 'none' }} gap="spacing.4" alignItems="center">
-            <Button
-              size="medium"
-              variant="tertiary"
-              icon={MenuIcon}
-              onClick={() => {
-                setIsSideBarOpen(!isSideBarOpen);
-              }}
-            />
-            <Text>Home</Text>
-          </Box>
-        </TopNavContent>
-        <TopNavActions>
-          {/* Remove searchbar on mobile */}
-          <Box width={{ base: '220px', xl: '264px' }} display={{ base: 'none', m: 'block' }}>
-            <SearchInput
-              placeholder="Search in payments"
-              accessibilityLabel="Search Across Razorpay"
-            />
-          </Box>
-          <Tooltip content="View Ecosystem Health">
-            <Button size={isMobile ? 'small' : 'medium'} variant="tertiary" icon={ActivityIcon} />
-          </Tooltip>
-          <Tooltip content="View Announcements">
-            <Button
-              size={isMobile ? 'small' : 'medium'}
-              variant="tertiary"
-              icon={AnnouncementIcon}
-            />
-          </Tooltip>
-          <Menu openInteraction="click">
-            <Avatar size="medium" name="Anurag Hazra" />
-            <MenuOverlay>
-              <MenuHeader title="Profile" />
-              <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-                <Avatar size="medium" name="John Doe" />
-                <Box display="flex" flexDirection="column" gap="spacing.2">
-                  <Text size="medium" weight="semibold">
-                    John Doe
-                  </Text>
-                  <Text size="xsmall" color="surface.text.gray.muted">
-                    Razorpay Trusted Merchant
-                  </Text>
-                </Box>
-              </Box>
-              <MenuItem>
-                <Text color="surface.text.gray.subtle">Settings</Text>
-              </MenuItem>
-              <MenuItem color="negative">
-                <Text color="feedback.text.negative.intense">Logout</Text>
-              </MenuItem>
-            </MenuOverlay>
-          </Menu>
-        </TopNavActions>
-      </TopNav>
-      <Box
-        overflow="hidden"
-        position="relative"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
-        borderRadius="large"
-        borderBottomLeftRadius="none"
-        borderBottomRightRadius="none"
-        height="100%"
-        marginX={{ base: 'spacing.0', m: 'spacing.3' }}
-      >
-        <SideNavExample
-          isOpen={isSideBarOpen}
-          onDismiss={() => {
-            setIsSideBarOpen(false);
-          }}
-        />
+          </TopNavActions>
+        </TopNav>
         <Box
-          marginLeft={{
-            base: '100%',
-            m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
-            xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
-          }}
-          // 100vh - (topnav height [56px] + border [2px])
-          height="calc(100vh - 58px)"
+          overflow="hidden"
+          position="relative"
+          borderWidth="thin"
+          borderColor="surface.border.gray.muted"
+          borderRadius="large"
+          borderBottomLeftRadius="none"
+          borderBottomRightRadius="none"
+          height="100%"
+          marginX={{ base: 'spacing.0', m: 'spacing.3' }}
         >
+          <SideNavExample
+            isOpen={isSideBarOpen}
+            onDismiss={() => {
+              setIsSideBarOpen(false);
+            }}
+          />
           <Box
-            height="100vh"
-            padding="spacing.5"
-            overflowY="scroll"
-            backgroundColor="surface.background.gray.intense"
+            marginLeft={{
+              base: '100%',
+              m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
+              xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
+            }}
+            // 100vh - (topnav height [56px] + border [2px])
+            height="calc(100vh - 58px)"
           >
-            <Box width={{ base: 'max-content', m: '100%' }} height="200vh">
-              <Text marginBottom="spacing.4">This demo integrates:</Text>
-              <List>
-                <ListItem>SideNav</ListItem>
-                <ListItem>Menu (Explore Tab)</ListItem>
-                <ListItem>ReactRouter</ListItem>
-                <ListItem>Mobile Responsiveness</ListItem>
-                <ListItem>One Dashboard Layout</ListItem>
-              </List>
+            <Box
+              height="100vh"
+              padding="spacing.5"
+              overflowY="scroll"
+              backgroundColor="surface.background.gray.intense"
+            >
+              <Box width={{ base: 'max-content', m: '100%' }} height="200vh">
+                <Text marginBottom="spacing.4">This demo integrates:</Text>
+                <List>
+                  <ListItem>SideNav</ListItem>
+                  <ListItem>Menu (Explore Tab)</ListItem>
+                  <ListItem>ReactRouter</ListItem>
+                  <ListItem>Mobile Responsiveness</ListItem>
+                  <ListItem>One Dashboard Layout</ListItem>
+                </List>
+              </Box>
             </Box>
           </Box>
         </Box>
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 const TopNavFullTemplate: StoryFn<typeof TopNav> = () => <TopNavFullExample />;
 
 const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
   return (
-    <Box height="100vh" backgroundColor="surface.background.gray.intense">
-      <TopNav backgroundColor="surface.background.gray.subtle">
-        <TopNavBrand>
-          <RazorpayLogo />
-        </TopNavBrand>
-        <TopNavContent>
-          <TabNav>
-            <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-            <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
-            <TabNavItemLink href="/payments">Payments</TabNavItemLink>
-            <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
-          </TabNav>
-        </TopNavContent>
-        <TopNavActions>
-          <SearchInput
-            placeholder="Search in payments"
-            accessibilityLabel="Search Across Razorpay"
-          />
-          <Tooltip content="View Ecosystem Health">
-            <Button size="medium" variant="tertiary" icon={ActivityIcon} />
-          </Tooltip>
-          <Tooltip content="View Announcements">
-            <Button variant="tertiary" icon={AnnouncementIcon} />
-          </Tooltip>
-          <Avatar size="medium" name="Anurag Hazra" />
-        </TopNavActions>
-      </TopNav>
-      <Box>
-        <Text margin="spacing.5">
-          This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
-          other features & integration details.
-        </Text>
-      </Box>
-    </Box>
+    <BaseBox height="100vh" backgroundColor="surface.background.gray.subtle">
+      <BaseBox backgroundColor="interactive.background.gray.default">
+        <TopNav>
+          <TopNavBrand>
+            <RazorpayLogo />
+          </TopNavBrand>
+          <TopNavContent>
+            <TabNav>
+              <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
+              <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
+              <TabNavItemLink href="/payments">Payments</TabNavItemLink>
+              <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
+            </TabNav>
+          </TopNavContent>
+          <TopNavActions>
+            <SearchInput
+              placeholder="Search in payments"
+              accessibilityLabel="Search Across Razorpay"
+            />
+            <Tooltip content="View Ecosystem Health">
+              <Button size="medium" variant="tertiary" icon={ActivityIcon} />
+            </Tooltip>
+            <Tooltip content="View Announcements">
+              <Button variant="tertiary" icon={AnnouncementIcon} />
+            </Tooltip>
+            <Avatar size="medium" name="Anurag Hazra" />
+          </TopNavActions>
+        </TopNav>
+        <Box>
+          <Text margin="spacing.5">
+            This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
+            other features & integration details.
+          </Text>
+        </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 
