@@ -1,12 +1,11 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData } from '../../types';
-import { Table as TableComponent } from '../../Table.web';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader.web';
-import { TableBody, TableRow, TableCell, TableEditableCell } from '../../TableBody.web';
-import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter.web';
+import { Table as TableComponent } from '../../Table';
+import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
+import { TableBody, TableRow, TableCell, TableEditableCell } from '../../TableBody';
+import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
-import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 
