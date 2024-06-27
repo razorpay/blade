@@ -5,11 +5,12 @@ import type { SideNavContextType, SideNavProps } from './types';
 import {
   classes,
   COLLAPSED_L1_WIDTH,
-  EXPANDED_L1_WIDTH,
   HOVER_AGAIN_DELAY,
   L1_EXIT_HOVER_DELAY,
   SKIP_NAV_ID,
   TRANSITION_CLEANUP_DELAY,
+  SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
+  SIDE_NAV_EXPANDED_L1_WIDTH_XL,
 } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSize, makeSpace } from '~utils';
@@ -241,7 +242,10 @@ const SideNav = ({
           left="spacing.0"
           display={{ base: 'none', m: 'flex' }}
           flexDirection="column"
-          width={makeSize(EXPANDED_L1_WIDTH)}
+          width={{
+            base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
+            xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
+          }}
           as="nav"
           {...metaAttribute({
             name: MetaConstants.SideNav,
