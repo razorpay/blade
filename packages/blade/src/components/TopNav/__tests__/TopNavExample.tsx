@@ -10,7 +10,7 @@ import { Tooltip } from '~components/Tooltip';
 const TopNavExample = (): React.ReactElement => {
   return (
     <Box height="100vh" backgroundColor="surface.background.gray.intense">
-      <TopNav>
+      <TopNav backgroundColor="surface.background.gray.intense">
         <TopNavBrand>
           <RazorpayLogo />
         </TopNavBrand>

@@ -21,7 +21,7 @@ exports[`TopNav should render 1`] = `
   height: 56px;
   width: 100%;
   top: 0px;
-  background-color: hsla(213,47%,96%,1);
+  background-color: hsla(0,0%,100%,1);
 }
 
 .c2.c2.c2.c2.c2 {
@@ -125,7 +125,7 @@ exports[`TopNav should render 1`] = `
   display: -ms-flexbox;
   display: flex;
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;
   white-space: nowrap;
   position: relative;
   width: 100%;
@@ -161,6 +161,7 @@ exports[`TopNav should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  margin-top: 2px;
   gap: 8px;
 }
 
@@ -398,7 +399,7 @@ exports[`TopNav should render 1`] = `
   top: -8px;
   bottom: -8px;
   width: 54px;
-  background: linear-gradient(to left,transparent 0%,hsla(213,47%,96%,1) 30%,hsla(213,47%,96%,1) 100%);
+  background: linear-gradient(to left,transparent 0%,hsla(0,0%,100%,1) 30%,hsla(0,0%,100%,1) 100%);
 }
 
 .c23.c23.c23.c23.c23 {
@@ -427,11 +428,11 @@ exports[`TopNav should render 1`] = `
   top: -8px;
   bottom: -8px;
   width: 54px;
-  background: linear-gradient(to right,transparent 0%,hsla(213,47%,96%,1) 30%,hsla(213,47%,96%,1) 100%);
+  background: linear-gradient(to right,transparent 0%,hsla(0,0%,100%,1) 30%,hsla(0,0%,100%,1) 100%);
 }
 
 .c20.c20.c20.c20.c20 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
