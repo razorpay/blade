@@ -492,6 +492,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 }
 
+@media screen and (min-width:768px) {
+
+}
+
 <div>
   <div
     class=""
@@ -1155,6 +1159,10 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 }
 
 @media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
 
 }
 

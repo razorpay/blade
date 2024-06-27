@@ -494,6 +494,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
 
 }
 
+@media screen and (min-width:768px) {
+
+}
+
 <div
   id="root"
 >
