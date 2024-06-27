@@ -10,6 +10,7 @@ import {
 } from '~components/SideNav/tokens';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const TOP_NAV_HEIGHT = size[56];
 const CONTENT_RIGHT_GAP = size[80];
@@ -81,6 +82,7 @@ const TopNav = ({ children, ...styledProps }: TopNavProps): React.ReactElement =
         height={makeSize(TOP_NAV_HEIGHT)}
         zIndex={1}
         {...styledProps}
+        {...metaAttribute({ name: MetaConstants.TopNav })}
       >
         {children}
         <Box position="absolute" top="0px" left="0px" pointerEvents="none">
@@ -104,6 +106,7 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
         base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
         xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
       }}
+      {...metaAttribute({ name: MetaConstants.TopNavBrand })}
     >
       <BaseBox width="100%" textAlign="center">
         {children}
@@ -127,6 +130,7 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
       alignItems="center"
       marginLeft={{ base: 'spacing.0', m: 'spacing.4' }}
       paddingRight={{ base: 'spacing.0', m: makeSize(CONTENT_RIGHT_GAP) }}
+      {...metaAttribute({ name: MetaConstants.TopNavContent })}
     >
       {children}
     </BaseBox>
@@ -135,7 +139,13 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
 
 const TopNavActions = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <BaseBox display="flex" gap="spacing.3" alignItems="center" marginTop="spacing.1">
+    <BaseBox
+      display="flex"
+      gap="spacing.3"
+      alignItems="center"
+      marginTop="spacing.1"
+      {...metaAttribute({ name: MetaConstants.TopNavActions })}
+    >
       {children}
     </BaseBox>
   );

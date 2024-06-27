@@ -13,6 +13,7 @@ import { makeMotionTime, makeSize } from '~utils';
 import { size } from '~tokens/global';
 import getIn from '~utils/lodashButBetter/get';
 import type { BoxProps } from '~components/Box';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const GRADIENT_WIDTH = 54 as const;
 const GRADIENT_OFFSET = -8 as const;
@@ -115,6 +116,7 @@ const TabNav = ({
         position="relative"
         marginBottom={makeSize(OFFSET_BOTTOM)}
         {...getStyledProps(styledProps)}
+        {...metaAttribute({ name: MetaConstants.TabNav })}
       >
         <GradientOverlay
           variant="left"

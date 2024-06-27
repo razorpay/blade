@@ -14,6 +14,7 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { mergeRefs } from '~utils/useMergeRefs';
 import type { BoxProps } from '~components/Box';
 import getIn from '~utils/lodashButBetter/get';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
   return {
@@ -144,7 +145,11 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
   }, [hasOverflow, isActive]);
 
   return (
-    <StyledTabNavItemWrapper isActive={isActive} dividerHiderColor={backgroundColor}>
+    <StyledTabNavItemWrapper
+      isActive={isActive}
+      dividerHiderColor={backgroundColor}
+      {...metaAttribute({ name: MetaConstants.TabNavItem })}
+    >
       <SelectedBar isActive={isActive} />
       <StyledTabNavItem
         ref={mergeRefs(ref, linkRef)}

@@ -742,11 +742,11 @@ exports[`TopNav should render 1`] = `
       </div>
       <div
         class="c7"
-        data-blade-component="base-box"
+        data-blade-component="top-nav-content"
       >
         <nav
           class="c8"
-          data-blade-component="base-box"
+          data-blade-component="tab-nav"
         >
           <div
             class=" c9"
@@ -803,7 +803,7 @@ exports[`TopNav should render 1`] = `
             >
               <div
                 class=" c18"
-                data-blade-component="base-box"
+                data-blade-component="tab-nav-item"
               >
                 <div
                   class=" c19"
@@ -841,7 +841,7 @@ exports[`TopNav should render 1`] = `
               />
               <div
                 class=" c18"
-                data-blade-component="base-box"
+                data-blade-component="tab-nav-item"
               >
                 <div
                   class=" c19"
@@ -862,7 +862,7 @@ exports[`TopNav should render 1`] = `
               />
               <div
                 class=" c18"
-                data-blade-component="base-box"
+                data-blade-component="tab-nav-item"
               >
                 <div
                   class=" c19"
@@ -883,7 +883,7 @@ exports[`TopNav should render 1`] = `
               />
               <div
                 class=" c18"
-                data-blade-component="base-box"
+                data-blade-component="tab-nav-item"
               >
                 <div
                   class=" c19"
@@ -948,7 +948,7 @@ exports[`TopNav should render 1`] = `
       </div>
       <div
         class="c24"
-        data-blade-component="base-box"
+        data-blade-component="top-nav-actions"
       >
         <button
           aria-label="View Ecosystem Health"
