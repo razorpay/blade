@@ -166,7 +166,10 @@ const ProgressBar = ({
   const isMeter = progressType === 'meter';
   const isCircular = progressVariant === 'circular';
   const progressValue = clamp(value, min, max);
-  const percentageProgressValue = Math.floor(((progressValue - min) * 100) / (max - min));
+  const percentageValue = ((progressValue - min) * 100) / (max - min);
+  const percentageProgressValue = isMeter
+    ? parseFloat(percentageValue.toFixed(1))
+    : Math.floor(percentageValue);
   const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
   const accessibilityProps: Pick<
     AccessibilityProps,

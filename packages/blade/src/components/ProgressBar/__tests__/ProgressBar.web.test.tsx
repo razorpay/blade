@@ -69,6 +69,14 @@ describe('<ProgressBar />', () => {
       expect(getByRole('meter')).toBeTruthy();
     });
 
+    it('should render meter variant of ProgressBar with decimal value', () => {
+      const { getByRole } = renderWithTheme(
+        <ProgressBar variant={variant} value={0.1} type="meter" label="Downloading" />,
+      );
+
+      expect(getByRole('meter')).toHaveAttribute('aria-valuetext', '0.1');
+    });
+
     colors.forEach((color) => {
       it(`should render color=${color} ProgressBar`, () => {
         const { container } = renderWithTheme(<ProgressBar color={color} value={20} />);
