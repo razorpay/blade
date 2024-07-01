@@ -173,7 +173,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         aria-valuetext="50%"
         class=""
         data-blade-component="base-box"
-        id="undefined-circular-43"
+        id="undefined-circular-45"
         role="progressbar"
       >
         <div
@@ -329,7 +329,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="undefined-circular-32"
+        id="undefined-circular-34"
         role="progressbar"
       >
         <div
@@ -499,7 +499,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="undefined-circular-41"
+        id="undefined-circular-43"
         role="progressbar"
       >
         <div
@@ -672,7 +672,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="undefined-circular-39"
+        id="undefined-circular-41"
         role="progressbar"
       >
         <div
@@ -845,7 +845,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="undefined-circular-37"
+        id="undefined-circular-39"
         role="progressbar"
       >
         <div
@@ -1030,7 +1030,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-18"
+        id="progress-linear-20"
         role="progressbar"
       >
         <div
@@ -1177,7 +1177,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-47"
+        id="progress-linear-51"
         role="progressbar"
       >
         <div
@@ -1324,7 +1324,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-20"
+        id="progress-linear-22"
         role="progressbar"
       >
         <div
@@ -1471,7 +1471,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-49"
+        id="progress-linear-53"
         role="progressbar"
       >
         <div
@@ -1618,7 +1618,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-22"
+        id="progress-linear-24"
         role="progressbar"
       >
         <div
@@ -1765,7 +1765,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-51"
+        id="progress-linear-55"
         role="progressbar"
       >
         <div
@@ -1912,7 +1912,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-24"
+        id="progress-linear-26"
         role="progressbar"
       >
         <div
@@ -2059,7 +2059,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-53"
+        id="progress-linear-57"
         role="progressbar"
       >
         <div
@@ -2206,7 +2206,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-26"
+        id="progress-linear-28"
         role="progressbar"
       >
         <div
@@ -2353,7 +2353,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
         aria-valuetext="20%"
         class=""
         data-blade-component="base-box"
-        id="progress-linear-55"
+        id="progress-linear-59"
         role="progressbar"
       >
         <div
@@ -2991,7 +2991,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
         aria-valuetext="70"
         class=""
         data-blade-component="base-box"
-        id="meter-circular-45"
+        id="meter-circular-47"
         role="meter"
       >
         <div
@@ -3859,7 +3859,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
         aria-valuetext="0%"
         class=""
         data-blade-component="base-box"
-        id="undefined-circular-34"
+        id="undefined-circular-36"
         role="progressbar"
       >
         <div
@@ -4169,7 +4169,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
         aria-valuetext="0%"
         class=""
         data-blade-component="base-box"
-        id="undefined-circular-34"
+        id="undefined-circular-36"
         role="progressbar"
       >
         <div
