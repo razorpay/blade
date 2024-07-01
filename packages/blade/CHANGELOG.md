@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.23.2
+
+### Patch Changes
+
+- 59a333b4: fix(FileUpload): correctly update errortText
+- bb06013f: fix(ProgressBar): show percentage with decimal when using as meter
+
 ## 11.23.1
 
 ### Patch Changes
