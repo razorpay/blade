@@ -63,7 +63,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     value: fileList,
     defaultValue: fileList ?? [],
   });
-  const [errorMessage, setErrorMessage] = useState<string>();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
 
@@ -132,7 +132,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     }
 
     setInternalValidationState('none');
-    setErrorMessage('');
+    setErrorMessage(null);
     return false;
   };
 
@@ -345,7 +345,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 hasHelpText: Boolean(helpText),
               })}
               helpText={helpText}
-              errorText={errorMessage || errorText}
+              errorText={errorMessage ?? errorText}
               helpTextId={helpTextId}
               errorTextId={errorTextId}
             />
