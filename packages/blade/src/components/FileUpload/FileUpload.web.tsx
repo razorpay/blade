@@ -63,7 +63,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     value: fileList,
     defaultValue: fileList ?? [],
   });
-  const [errorMessage, setErrorMessage] = useState(errorText);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
 
@@ -76,7 +76,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const showError = validationState === 'error' || internalValidationState === 'error';
   const showHelpText = !showError && helpText;
   const accessibilityText =
-    accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+    accessibilityLabel ?? `,${showError ? errorMessage : ''} ${showHelpText ? helpText : ''}`;
   const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
   const accessibilityProps = makeAccessible({
@@ -132,7 +132,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     }
 
     setInternalValidationState('none');
-    setErrorMessage('');
+    setErrorMessage(null);
     return false;
   };
 
@@ -345,7 +345,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 hasHelpText: Boolean(helpText),
               })}
               helpText={helpText}
-              errorText={errorMessage}
+              errorText={errorMessage ?? errorText}
               helpTextId={helpTextId}
               errorTextId={errorTextId}
             />
