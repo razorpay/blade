@@ -364,6 +364,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
+                type="button"
               >
                 <div
                   class="c4"
@@ -511,6 +512,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
+                type="button"
               >
                 <div
                   class="c4"
@@ -658,6 +660,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
+                type="button"
               >
                 <div
                   class="c4"
@@ -1151,6 +1154,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
+                type="button"
               >
                 <div
                   class="c4"
@@ -1298,6 +1302,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
+                type="button"
               >
                 <div
                   class="c4"
@@ -1445,6 +1450,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-expanded="false"
                 class="c3"
                 data-blade-component="accordion-button"
+                type="button"
               >
                 <div
                   class="c4"

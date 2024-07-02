@@ -53,6 +53,7 @@ const _AccordionButton = ({
       width="100%"
     >
       <StyledAccordionButton
+        type="button"
         isExpanded={isItemExpanded}
         disabled={isDisabled}
         onClick={onClick}
