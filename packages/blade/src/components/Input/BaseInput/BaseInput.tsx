@@ -1062,7 +1062,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         </FocusRingWrapper>
       </BaseBox>
 
-      {!hideFormHint && !isTableInputCell && (
+      {hideFormHint || isTableInputCell ? null : (
         <BaseBox
           marginLeft={makeSize(
             isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,

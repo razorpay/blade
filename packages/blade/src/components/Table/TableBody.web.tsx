@@ -254,12 +254,11 @@ const getEditableInputMargin = ({
 }: {
   rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
 }): MarginProps['margin'] => {
-  switch (rowDensity) {
-    case 'comfortable':
-      return ['spacing.4', 'spacing.4'];
-    default:
-      return 'spacing.2';
+  if (rowDensity === 'comfortable') {
+    return ['spacing.4', 'spacing.4'];
   }
+
+  return 'spacing.2';
 };
 
 const _TableEditableCell = ({
@@ -306,8 +305,6 @@ const _TableEditableCell = ({
           display="flex"
           alignItems="center"
           flex={1}
-          // when a direct string child is passed we want to disable pointer events
-          // for custom cells components, consumers can handle pointer events themselves
           hasPadding={false}
         >
           <Box margin={getEditableInputMargin({ rowDensity })} width="100%">
