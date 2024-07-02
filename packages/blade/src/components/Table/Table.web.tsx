@@ -131,6 +131,7 @@ const _Table = <Item,>({
   gridTemplateColumns,
   isLoading = false,
   isRefreshing = false,
+  showBorderedCells = false,
   ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -399,6 +400,7 @@ const _Table = <Item,>({
       backgroundColor,
       headerRowDensity,
       setHeaderRowDensity,
+      showBorderedCells,
     }),
     [
       selectionType,
@@ -421,6 +423,7 @@ const _Table = <Item,>({
       backgroundColor,
       headerRowDensity,
       setHeaderRowDensity,
+      showBorderedCells,
     ],
   );
 

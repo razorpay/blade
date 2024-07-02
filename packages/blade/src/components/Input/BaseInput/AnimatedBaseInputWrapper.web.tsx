@@ -21,6 +21,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     | 'isTextArea'
     | 'isDropdownTrigger'
     | 'maxTagRows'
+    | 'isTableInputCell'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -30,6 +31,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     validationState: props.validationState,
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
+    isTableInputCell: props.isTableInputCell,
   }),
   '&:hover': {
     ...getInputBackgroundAndBorderStyles({
@@ -40,6 +42,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
       isTextArea: props.isTextArea,
+      isTableInputCell: props.isTableInputCell,
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
@@ -53,6 +56,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
       isTextArea: props.isTextArea,
+      isTableInputCell: props.isTableInputCell,
     }),
   },
 }));
@@ -147,6 +151,7 @@ to {
           setShowAllTagsWithAnimation?.(false);
         }
       }}
+      isTableInputCell={rest.isTableInputCell}
     />
   );
 };

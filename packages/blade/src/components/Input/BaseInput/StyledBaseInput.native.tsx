@@ -135,6 +135,7 @@ const getRNInputStyles = (
       isDropdownTrigger: props.isDropdownTrigger,
       size: props.$size,
       valueComponentType: props.valueComponentType,
+      isTableInputCell: props.isTableInputCell,
     }),
     lineHeight: RNPlatform.select({
       android: makeSize(props.theme.typography.lineHeights[100]),
@@ -168,6 +169,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     isDropdownTrigger,
     hasTags,
     $size,
+    isTableInputCell,
     valueComponentType,
   }) =>
     getRNInputStyles({
@@ -188,6 +190,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       isDropdownTrigger,
       $size,
       valueComponentType,
+      isTableInputCell,
     }),
 );
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
@@ -208,6 +211,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     isDropdownTrigger,
     hasTags,
     $size,
+    isTableInputCell,
     valueComponentType,
   }) => ({
     ...getRNInputStyles({
@@ -228,6 +232,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       hasTags,
       $size,
       valueComponentType,
+      isTableInputCell,
     }),
   }),
 );

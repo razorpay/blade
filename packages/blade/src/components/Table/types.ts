@@ -1,6 +1,7 @@
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 type TableNode<Item> = Item & {
@@ -156,6 +157,10 @@ type TableProps<Item> = {
    * The default value is `false`.
    **/
   isRefreshing?: boolean;
+  /**
+   * The showBorderedCells prop determines whether the table should have bordered cells or not.
+   **/
+  showBorderedCells?: boolean;
 } & StyledPropsBlade;
 
 type Identifier = string | number;
@@ -223,6 +228,36 @@ type TableCellProps = {
    * </TableCell>
    **/
   children: React.ReactNode;
+};
+
+type TableEditableCellProps = Pick<
+  BaseInputProps,
+  | 'validationState'
+  | 'placeholder'
+  | 'defaultValue'
+  | 'name'
+  | 'onChange'
+  | 'onFocus'
+  | 'onBlur'
+  | 'value'
+  | 'isDisabled'
+  | 'isRequired'
+  | 'prefix'
+  | 'suffix'
+  | 'maxCharacters'
+  | 'autoFocus'
+  | 'keyboardReturnKeyType'
+  | 'autoCompleteSuggestionType'
+  | 'onSubmit'
+  | 'autoCapitalize'
+  | 'testID'
+  | 'onClick'
+  | 'leadingIcon'
+  | 'trailingButton'
+  | 'errorText'
+  | 'successText'
+> & {
+  accessibilityLabel: NonNullable<BaseInputProps['accessibilityLabel']>;
 };
 
 type TableFooterProps = {
@@ -373,6 +408,7 @@ export type {
   TableBodyProps,
   TableRowProps,
   TableCellProps,
+  TableEditableCellProps,
   TableFooterProps,
   TableFooterRowProps,
   TableFooterCellProps,

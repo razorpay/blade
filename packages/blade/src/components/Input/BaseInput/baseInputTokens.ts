@@ -45,6 +45,15 @@ export const baseInputBackgroundColor = {
   success: 'surface.background.gray.intense',
 } as const;
 
+export const baseInputBorderlessBackgroundColor = {
+  default: 'transparent',
+  hovered: 'surface.background.gray.moderate',
+  focused: 'surface.background.gray.moderate',
+  disabled: 'surface.background.gray.intense',
+  error: 'feedback.background.negative.subtle',
+  success: 'feedback.background.positive.subtle',
+} as const;
+
 export const baseInputBorderWidth = {
   default: 'thin',
   hovered: 'thin',

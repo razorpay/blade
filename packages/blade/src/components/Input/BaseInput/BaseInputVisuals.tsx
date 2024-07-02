@@ -8,6 +8,8 @@ import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
 import type { IconColors } from '~components/Icons';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+import { Tooltip } from '~components/Tooltip';
+import { Box } from '~components/Box';
 
 type InputVisuals = Pick<
   BaseInputProps,
@@ -21,6 +23,9 @@ type InputVisuals = Pick<
   | 'validationState'
   | 'size'
   | 'trailingButton'
+  | 'isTableInputCell'
+  | 'errorText'
+  | 'successText'
 > & {
   size: NonNullable<BaseInputProps['size']>;
 };
@@ -171,6 +176,55 @@ export const getInputVisualsToBeRendered = ({
   hasTrailingButton: Boolean(trailingButton),
 });
 
+const getTooltipContent = ({
+  validationState,
+  errorText,
+  successText,
+}: {
+  validationState: BaseInputProps['validationState'];
+  errorText: BaseInputProps['errorText'];
+  successText: BaseInputProps['errorText'];
+}): string => {
+  if (validationState === 'error' && errorText) {
+    return errorText;
+  }
+
+  if (validationState === 'success' && successText) {
+    return successText;
+  }
+
+  return '';
+};
+
+const ValidationIconTooltip = ({
+  children,
+  validationState,
+  errorText,
+  successText,
+  isTableInputCell,
+}: {
+  children: ReactElement;
+  validationState: BaseInputProps['validationState'];
+  errorText: BaseInputProps['errorText'];
+  successText: BaseInputProps['errorText'];
+  isTableInputCell: BaseInputProps['isTableInputCell'];
+}) => {
+  if (
+    (isTableInputCell && validationState === 'error' && errorText) ||
+    (validationState === 'success' && successText)
+  ) {
+    return (
+      <Tooltip content={getTooltipContent({ validationState, errorText, successText })}>
+        <Box display="flex" justifyContent="center" alignItems="center">
+          {children}
+        </Box>
+      </Tooltip>
+    );
+  }
+
+  return children;
+};
+
 export const BaseInputVisuals = ({
   leadingIcon: LeadingIcon,
   prefix,
@@ -181,6 +235,9 @@ export const BaseInputVisuals = ({
   isDisabled,
   validationState = 'none',
   size,
+  isTableInputCell,
+  errorText,
+  successText,
   trailingButton: TrailingButton,
 }: InputVisuals): ReactElement | null => {
   const {
@@ -290,14 +347,23 @@ export const BaseInputVisuals = ({
         {TrailingIcon ? (
           <BaseBox
             display="flex"
+            justifyContent="center"
+            alignItems="center"
             {...getTrailingIconStyles({ hasTrailingIcon, hasTrailingButton })}
           >
-            <TrailingIcon
-              size={iconSize[size]}
-              color={
-                isDisabled ? 'interactive.icon.gray.disabled' : trailingIconColor[validationState]
-              }
-            />
+            <ValidationIconTooltip
+              isTableInputCell={isTableInputCell}
+              errorText={errorText}
+              successText={successText}
+              validationState={validationState}
+            >
+              <TrailingIcon
+                size={iconSize[size]}
+                color={
+                  isDisabled ? 'interactive.icon.gray.disabled' : trailingIconColor[validationState]
+                }
+              />
+            </ValidationIconTooltip>
           </BaseBox>
         ) : null}
         {TrailingButton ? (
