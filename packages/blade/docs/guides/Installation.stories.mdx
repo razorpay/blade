@@ -85,9 +85,9 @@ Before you install the package, make sure that you have performed the following 
 
     <StepGroup orientation="vertical" size="medium">
       <StepItem
-        title="1. Install blade as a dependency."
+        title="1. Install @razorpay/blade as a dependency."
       >
-        <Text>Blade has a peer dependency on a few libraries, you can skip adding it if you already have it installed in your project.</Text>
+        <Text>Blade has a few peer dependencies that you may already have installed in your project. If so, you can skip adding them again.</Text>
 
         ```shell
         yarn add @razorpay/blade styled-components@5.3.11 @razorpay/i18nify-js @razorpay/i18nify-react
@@ -167,14 +167,14 @@ Before you install the package, make sure that you have performed the following 
 
     ### Web
 
-    - To add these fonts to your project, you can import them from blade package in your root entry file.
+    - To add these fonts to your project, import them from the blade package in your root entry file.
 
       ```ts
       // Somewhere in root index.ts or entryBrowser.tsx file
       import '@razorpay/blade/fonts.css';
       ```
 
-    - While Blade handles setting font-family for its own components, you can set font-family globally as well in your global styles for any custom components or exceptions
+    - While Blade handles the `font-family` for its components, you can set the `font-family` globally in your project's global styles for any custom components or exceptions.
 
       ```ts
       import { createGlobalStyle } from 'styled-components';
@@ -198,7 +198,7 @@ Before you install the package, make sure that you have performed the following 
 
     ##### No Bundler Setups or No Code Tools
 
-    If your project uses a no-bundler setup or is a no-code tool, you can install fonts with `unpkg` link
+    If your project uses a no-bundler setup or is a no-code tool, you can install fonts with the `unpkg` link
 
     ```html
     <link rel="stylesheet" href="https://unpkg.com/@razorpay/blade@<blade-version>/fonts.css" />
@@ -240,7 +240,7 @@ Before you install the package, make sure that you have performed the following 
         import com.facebook.react.views.text.ReactFontManager;
         ```
 
-      - Now search for `onCreate` method and add the following line to it
+      - Now search for the `onCreate` method and add the following line to it
 
         ```js
         public void onCreate() {
@@ -257,13 +257,13 @@ Before you install the package, make sure that you have performed the following 
 
     ### Web
 
-    If you're using TypeScript in your project, firstly make sure you have `@types/styled-components` installed in your project.
+    If you're using TypeScript in your project, first make sure you have `@types/styled-components` installed.
 
     ```shell
     yarn add -D @types/styled-components
     ```
 
-    Now, you can extend the theme interface to include your custom theme properties to styled-components.
+    Now, you can extend the theme interface to include your custom theme properties to `styled-components`.
 
     ```ts
     // file: index.d.ts
@@ -276,7 +276,7 @@ Before you install the package, make sure that you have performed the following 
 
     ### React Native
 
-    To get ReactNative specific type hints for blade you can switch the `moduleSuffixes` in your `tsconfig.json` to include `.native` files.
+    To get ReactNative specific type hints for the blade components, you can switch the `moduleSuffixes` in your `tsconfig.json` to include `.native` files.
 
     ```json
     {
