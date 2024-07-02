@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.24.0
+
+### Minor Changes
+
+- 03837f9f: feat: add `TableEditableCell` component for Table
+
 ## 11.23.3
 
 ### Patch Changes
