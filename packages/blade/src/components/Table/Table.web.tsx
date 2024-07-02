@@ -120,7 +120,7 @@ const RefreshWrapper = styled(BaseBox)<{
 const _Table = <Item,>({
   children,
   data,
-  multiSelectionMode = 'row',
+  multiSelectTrigger = 'row',
   selectionType = 'none',
   onSelectionChange,
   isHeaderSticky,
@@ -263,7 +263,7 @@ const _Table = <Item,>({
     },
     {
       clickType:
-        multiSelectionMode === 'row' ? SelectClickTypes.RowClick : SelectClickTypes.ButtonClick,
+        multiSelectTrigger === 'row' ? SelectClickTypes.RowClick : SelectClickTypes.ButtonClick,
       rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
     },
   );
