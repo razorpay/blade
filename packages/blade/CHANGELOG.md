@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.23.3
+
+### Patch Changes
+
+- 5b3c42db: fix: white-labeling issue with surface text primary
+
 ## 11.23.2
 
 ### Patch Changes
