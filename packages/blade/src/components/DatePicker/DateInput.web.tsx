@@ -52,6 +52,9 @@ const HiddenInput = ({ value, name }: { value: string; name?: string }): React.R
 const iconVerticalMargin = {
   medium: sizeTokens[14],
   large: sizeTokens[24],
+  noLabel: sizeTokens[0],
+  noLabelM: sizeTokens[20],
+  noLabelL: sizeTokens[28],
 } as const;
 const LEFT_LABEL_WIDTH = 132;
 
@@ -179,16 +182,24 @@ const _DatePickerInput = (
             {...referenceProps}
           />
         </BaseBox>
-        <BaseBox flexShrink={0} alignSelf="start">
+        <BaseBox flexShrink={0} alignSelf="center">
           <ArrowRightIcon
             size="medium"
+            // marginTop={
+            //   // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
+            //   hasLabel && (!isLabelPositionLeft || isMobile)
+            //     ? `calc(${makeSize(iconVerticalMargin[size])} + ${makeSize(
+            //         isLarge ? sizeTokens[20] : sizeTokens[15],
+            //       )})`
+            //     : makeSize(iconVerticalMargin[size])
+            // }
             marginTop={
-              // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
-              hasLabel && (!isLabelPositionLeft || isMobile)
-                ? `calc(${makeSize(iconVerticalMargin[size])} + ${makeSize(
-                    isLarge ? sizeTokens[20] : sizeTokens[15],
-                  )})`
-                : makeSize(iconVerticalMargin[size])
+              // Label present ? add label height : remove label height; align basebox to center
+              hasLabel
+                ? isLarge
+                  ? makeSize(iconVerticalMargin['noLabelL'])
+                  : makeSize(iconVerticalMargin['noLabelM'])
+                : makeSize(iconVerticalMargin['noLabel'])
             }
           />
         </BaseBox>
