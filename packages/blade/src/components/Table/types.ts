@@ -74,6 +74,11 @@ type TableProps<Item> = {
    */
   data: TableData<Item>;
   /**
+   * Selection mode determines how the table rows can be selected.
+   * @default 'row'
+   **/
+  multiSelectTrigger?: 'checkbox' | 'row';
+  /**
    * The selectionType prop determines the type of selection that is allowed on the table.
    * The selectionType prop can be 'none', 'single' or 'multiple'.
    * @default 'none'
