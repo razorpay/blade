@@ -195,11 +195,11 @@ const _DatePickerInput = (
             // }
             marginTop={
               // Label present ? add label height : remove label height; align basebox to center
-              hasLabel
+              hasLabel && (!isLabelPositionLeft || isMobile)
                 ? isLarge
-                  ? makeSize(iconVerticalMargin['noLabelL'])
-                  : makeSize(iconVerticalMargin['noLabelM'])
-                : makeSize(iconVerticalMargin['noLabel'])
+                  ? makeSize(iconVerticalMargin.noLabelL)
+                  : makeSize(iconVerticalMargin.noLabelM)
+                : makeSize(iconVerticalMargin.noLabel)
             }
           />
         </BaseBox>
