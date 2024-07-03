@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 11.24.1
+
+### Patch Changes
+
+- b38943c0: fix: table multiselect with pagination bug
+- 636952b6: feat: add multiselection-mode prop to Table
+- caee2688: fix: add button type button
+
 ## 11.24.0
 
 ### Minor Changes
