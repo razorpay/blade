@@ -86,7 +86,19 @@ type TableProps<Item> = {
     values,
     selectedIds,
   }: {
+    /**
+     * Note: on server side paginated data, this prop will only contain the selected rows on the current page.
+     *
+     * Thus, it's recommended to use `selectedIds` for more consistent state management across server/client paginated data.
+     *
+     * *Deprecated:* Use `selectedIds` instead.
+     *
+     * @deprecated
+     */
     values: TableNode<Item>[];
+    /**
+     * An array of selected row ids.
+     */
     selectedIds: Identifier[];
   }) => void;
   /**

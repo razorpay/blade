@@ -126,6 +126,9 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
           DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
           STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
         }}
+        onSelectionChange={({ values }) => {
+          console.log(values);
+        }}
         pagination={
           <TablePagination
             onPageChange={console.log}
