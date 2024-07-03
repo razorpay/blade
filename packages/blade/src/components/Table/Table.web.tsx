@@ -250,10 +250,11 @@ const _Table = <Item,>({
 
   // Selection Logic
   const onSelectChange: MiddlewareFunction = (action, state): void => {
-    const selectedIDs: Identifier[] = state.id ? [state.id] : state.ids ?? [];
-    setSelectedRows(selectedIDs);
+    const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
+    setSelectedRows(selectedIds);
     onSelectionChange?.({
-      values: data.nodes.filter((node) => selectedIDs.includes(node.id)),
+      selectedIds,
+      values: data.nodes.filter((node) => selectedIds.includes(node.id)),
     });
   };
 

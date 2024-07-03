@@ -780,10 +780,10 @@ describe('<Table />', () => {
 
     const firstSelectableRow = getByText('rzp01').closest('td');
     if (firstSelectableRow) await user.click(firstSelectableRow);
-    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]] });
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]], selectedIds: ['1'] });
     const secondSelectableRow = getByText('rzp02').closest('td');
     if (secondSelectableRow) await user.click(secondSelectableRow);
-    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[1]] });
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[1]], selectedIds: ['2'] });
   });
 
   it('should render table with multi select', async () => {
@@ -831,14 +831,17 @@ describe('<Table />', () => {
     expect(getAllByRole('checkbox')).toHaveLength(6);
     const firstSelectableRow = getByText('rzp01').closest('td');
     if (firstSelectableRow) await user.click(firstSelectableRow);
-    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]] });
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]], selectedIds: ['1'] });
     const secondSelectableRow = getByText('rzp02').closest('td');
     if (secondSelectableRow) await user.click(secondSelectableRow);
-    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0], nodes[1]] });
+    expect(onSelectionChange).toHaveBeenCalledWith({
+      values: [nodes[0], nodes[1]],
+      selectedIds: ['1', '2'],
+    });
     expect(getByText('2 Items Selected')).toBeInTheDocument();
     const deselectButton = getByText('Deselect');
     await user.click(deselectButton);
-    expect(onSelectionChange).toHaveBeenCalledWith({ values: [] });
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [], selectedIds: [] });
   });
 
   it('should render table with client side pagination', async () => {

@@ -88,7 +88,25 @@ type TableProps<Item> = {
    * The onSelectionChange prop is a function that is called when the selection changes.
    * The function is called with an object that has a values property that is an array of the selected rows.
    **/
-  onSelectionChange?: ({ values }: { values: TableNode<Item>[] }) => void;
+  onSelectionChange?: ({
+    values,
+    selectedIds,
+  }: {
+    /**
+     * Note: on server side paginated data, this prop will only contain the selected rows on the current page.
+     *
+     * Thus, it's recommended to use `selectedIds` for more consistent state management across server/client paginated data.
+     *
+     * *Deprecated:* Use `selectedIds` instead.
+     *
+     * @deprecated
+     */
+    values: TableNode<Item>[];
+    /**
+     * An array of selected row ids.
+     */
+    selectedIds: Identifier[];
+  }) => void;
   /**
    * The isHeaderSticky prop determines whether the table header is sticky or not.
    * The default value is `false`.
