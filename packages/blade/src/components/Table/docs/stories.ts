@@ -594,7 +594,9 @@ function App(): React.ReactElement {
       <Table
         data={data}
         selectionType="multiple"
-        onSelectionChange={({ values }) => setSelectedItems(values)}
+        onSelectionChange={({ selectedIds }) => {
+          setSelectedItems(data.nodes.filter((node) => selectedIds.includes(node.id)));
+        }}
         toolbar={
           <TableToolbar
             title="Showing Recent Transactions"
