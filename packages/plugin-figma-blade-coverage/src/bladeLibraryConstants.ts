@@ -1643,7 +1643,7 @@ export const BLADE_COMPONENT_IDS = Object.values(bladeThemeData.components).map(
 
 // Carousel, Modal, Bottom Sheet, Card, Dropdown Menu, Accordion, Menu
 export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
-  bladeThemeData.components['Accordion'],
+  bladeThemeData.components.Accordion,
   bladeThemeData.components['Accordion/Item'],
   bladeThemeData.components['Accordion/Body'],
   bladeThemeData.components['Accordion/Header'],
