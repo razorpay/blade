@@ -4292,7 +4292,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
           class="c4"
           data-blade-component="base-text"
         >
-          PAY NOW
+          Pay Now
         </div>
       </div>
     </div>

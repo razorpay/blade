@@ -117,9 +117,14 @@ export const StackingDrawerOpen: StoryFn<typeof Drawer> = (props): React.ReactEl
 };
 
 StackingDrawerOpen.play = async () => {
-  const { getByRole, queryByRole, getAllByLabelText, getByText, queryByText } = within(
-    document.body,
-  );
+  const {
+    getByRole,
+    queryByRole,
+    getAllByLabelText,
+    getByText,
+    getByLabelText,
+    queryByText,
+  } = within(document.body);
 
   // first drawer open
   await expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument();
@@ -133,9 +138,10 @@ StackingDrawerOpen.play = async () => {
   await waitFor(() => expect(getByText('Drawer 2 Heading')).toBeVisible());
 
   const closeButtons = getAllByLabelText('Close');
+  const backButton = getByLabelText('Back');
 
   // 2nd drawer close
-  await userEvent.click(closeButtons[1]);
+  await userEvent.click(backButton);
   await waitFor(() => expect(queryByText('Drawer 2 Heading')).not.toBeInTheDocument());
   await expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible();
 
@@ -143,6 +149,16 @@ StackingDrawerOpen.play = async () => {
   await userEvent.click(closeButtons[0]);
   await waitFor(() =>
     expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument(),
+  );
+
+  // Open drawer again and close all at once with close button
+  await userEvent.click(drawerToggleButton);
+  await waitFor(() => expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible());
+  await userEvent.click(getByRole('button', { name: 'Open 2nd Drawer' }));
+  await waitFor(() => expect(getByText('Drawer 2 Heading')).toBeVisible());
+  await userEvent.click(getAllByLabelText('Close')[1]);
+  await waitFor(() =>
+    expect(queryByRole('heading', { name: 'Drawer 2 Heading' })).not.toBeInTheDocument(),
   );
 };
 
@@ -164,10 +180,13 @@ KeyboardNavigations.play = async () => {
   // 2nd drawer open
   await expect(queryByRole('heading', { name: 'Drawer 2 Heading' })).not.toBeInTheDocument();
   await userEvent.keyboard('{Tab}');
+  await sleep(300);
   await userEvent.keyboard('{Enter}');
   await waitFor(() => expect(getByText('Drawer 2 Heading')).toBeVisible());
 
   // 2nd drawer close
+  await userEvent.keyboard('{Tab}');
+  await sleep(300);
   await userEvent.keyboard('{Enter}');
   await waitFor(() => expect(queryByText('Drawer 2 Heading')).not.toBeInTheDocument());
   await expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible();
@@ -175,11 +194,11 @@ KeyboardNavigations.play = async () => {
   // 1st drawer close
   // the test gets flaky if we try to close drawer immediately after it opens so adding some delay here to let drawer open correctly
   await sleep(300);
+  await expect(getByRole('button', { name: 'Open 2nd Drawer' })).toHaveFocus();
   await userEvent.keyboard('{Escape}');
   await waitFor(() =>
     expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument(),
   );
-  await waitFor(() => expect(drawerToggleButton).toHaveFocus());
 };
 
 export default {

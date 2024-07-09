@@ -14,6 +14,7 @@ import {
   TableWithBackgroundColorStory,
   TableWithIsLoadingStory,
   TableWithIsRefreshingStory,
+  TableWithEditableCellsStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -128,6 +129,14 @@ export const TableWithIsRefreshing = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {TableWithIsRefreshingStory}
+    </Sandbox>
+  );
+};
+
+export const TableWithEditableCells = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {TableWithEditableCellsStory}
     </Sandbox>
   );
 };

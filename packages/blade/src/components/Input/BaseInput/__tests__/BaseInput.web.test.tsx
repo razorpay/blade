@@ -71,6 +71,51 @@ describe('<BaseInput />', () => {
     expect(input).toBeValid();
   });
 
+  it('should render base input with no borders', () => {
+    const label = 'Enter name';
+    const { getByLabelText } = renderWithTheme(
+      <BaseInput label={label} id="name" isTableInputCell={false} />,
+    );
+
+    const input = getByLabelText(label);
+
+    expect(input).toMatchSnapshot();
+  });
+
+  it('should render base input with no borders in error state', () => {
+    const label = 'Enter name';
+    const { getByLabelText } = renderWithTheme(
+      <BaseInput
+        label={label}
+        id="name"
+        isTableInputCell={false}
+        validationState="error"
+        errorText="Something went wrong"
+      />,
+    );
+
+    const input = getByLabelText(label);
+
+    expect(input).toMatchSnapshot();
+  });
+
+  it('should render base input with no borders in success state', () => {
+    const label = 'Enter name';
+    const { getByLabelText } = renderWithTheme(
+      <BaseInput
+        label={label}
+        id="name"
+        isTableInputCell={false}
+        validationState="success"
+        successText="This seems valid"
+      />,
+    );
+
+    const input = getByLabelText(label);
+
+    expect(input).toMatchSnapshot();
+  });
+
   it('should render with icons', () => {
     const { container } = renderWithTheme(
       <BaseInput

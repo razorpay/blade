@@ -321,6 +321,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default text
      **/
     valueComponentType?: 'text' | 'heading';
+    /**
+     * Whether to render the input as a table cell
+     * @default true
+     **/
+    isTableInputCell?: boolean;
   } & TestID &
   Platform.Select<{
     native: {
@@ -718,29 +723,35 @@ const getDescribedByElementId = ({
 
 const FocusRingWrapper = styled(BaseBox)<{
   currentInteraction: ActionStates;
-}>(({ theme, currentInteraction }) => ({
-  borderRadius: makeBorderSize(theme.border.radius.medium),
+  isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
+}>(({ theme, currentInteraction, isTableInputCell }) => ({
+  borderRadius: makeBorderSize(
+    isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
+  ),
   width: '100%',
-  '&:focus-within': {
-    ...getFocusRingStyles({
-      theme,
-    }),
-    transitionDuration: castWebType(
-      makeMotionTime(
-        getIn(
-          theme.motion.duration,
-          baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-            .duration,
+  '&:focus-within': !isTableInputCell
+    ? {
+        ...getFocusRingStyles({
+          theme,
+        }),
+        transitionDuration: castWebType(
+          makeMotionTime(
+            getIn(
+              theme.motion.duration,
+              baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+                .duration,
+            ),
+          ),
         ),
-      ),
-    ),
-    transitionTimingFunction: castWebType(
-      getIn(
-        theme.motion.easing,
-        baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit'].easing,
-      ),
-    ),
-  },
+        transitionTimingFunction: castWebType(
+          getIn(
+            theme.motion.easing,
+            baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+              .easing,
+          ),
+        ),
+      }
+    : {},
 }));
 
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
@@ -807,6 +818,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     size = 'medium',
     trailingButton,
     valueComponentType = 'text',
+    isTableInputCell = false,
     ...styledProps
   },
   ref,
@@ -906,7 +918,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         position="relative"
         width="100%"
       >
-        {!hideLabelText && !isLabelInsideInput && (
+        {!hideLabelText && !isLabelInsideInput && label && (
           <BaseBox
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
@@ -927,7 +939,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <FocusRingWrapper currentInteraction={currentInteraction}>
+        <FocusRingWrapper
+          currentInteraction={currentInteraction}
+          isTableInputCell={isTableInputCell}
+        >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}
@@ -951,6 +966,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 inputRef.current?.focus();
               }
             }}
+            isTableInputCell={isTableInputCell}
           >
             <BaseInputVisuals
               size={size}
@@ -1026,6 +1042,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 isDropdownTrigger={isDropdownTrigger}
                 $size={size}
                 valueComponentType={valueComponentType}
+                isTableInputCell={isTableInputCell}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
               />
             </BaseInputTagSlot>
@@ -1037,12 +1054,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               validationState={validationState}
               trailingButton={trailingButton}
               size={size}
+              errorText={errorText}
+              successText={successText}
+              isTableInputCell={isTableInputCell}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>
 
-      {!hideFormHint && (
+      {hideFormHint || isTableInputCell ? null : (
         <BaseBox
           marginLeft={makeSize(
             isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,

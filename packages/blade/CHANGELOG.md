@@ -1,5 +1,150 @@
 # @razorpay/blade
 
+## 11.24.1
+
+### Patch Changes
+
+- b38943c0: fix: table multiselect with pagination bug
+- 636952b6: feat: add multiselection-mode prop to Table
+- caee2688: fix: add button type button
+
+## 11.24.0
+
+### Minor Changes
+
+- 03837f9f: feat: add `TableEditableCell` component for Table
+
+## 11.23.3
+
+### Patch Changes
+
+- 5b3c42db: fix: white-labeling issue with surface text primary
+
+## 11.23.2
+
+### Patch Changes
+
+- 59a333b4: fix(FileUpload): correctly update errortText
+- bb06013f: fix(ProgressBar): show percentage with decimal when using as meter
+
+## 11.23.1
+
+### Patch Changes
+
+- 00238183: feat(Menu, Dropdown): add width props on MenuOverlay and allow it in SelectInput Dropdown
+
+## 11.23.0
+
+### Minor Changes
+
+- fe9a0cff: feat(blade): add TopNav component
+
+## 11.22.0
+
+### Minor Changes
+
+- 2cb7668b: feat(Menu): add Menu component
+
+## 11.21.9
+
+### Patch Changes
+
+- d12977d5: fix(FileUpload): correctly udpate state in controlled mode
+
+## 11.21.8
+
+### Patch Changes
+
+- 9b2883f8: feat: add iconColor prop to List & ListItem
+
+## 11.21.7
+
+### Patch Changes
+
+- be353128: fix: Spinner's white color
+
+## 11.21.6
+
+### Patch Changes
+
+- 0d6d7cf7: fix: bottomsheet initial focus triggering everytime
+- cc40b48e: fix(Accordion): add `maxWidth` prop
+
+## 11.21.5
+
+### Patch Changes
+
+- 25fe56db: fix(DatePicker): correct input alignment without label
+- e179dd50: fix(FileUpload): remove excessive margins
+
+## 11.21.4
+
+### Patch Changes
+
+- d3789888: fix: datepicker zIndex issue and expose zIndex prop
+
+## 11.21.3
+
+### Patch Changes
+
+- 4643a992: fix(blade): datepicker input width
+- c7ed69b4: chore: add petty cash budget icon
+
+## 11.21.2
+
+### Patch Changes
+
+- 2a4d1673: feat(FileUpload): add `onReupload` prop to use in case of error state
+
+## 11.21.1
+
+### Patch Changes
+
+- 04c84eb4: fix: datepicker label alignment
+
+## 11.21.0
+
+### Minor Changes
+
+- 0d3e260e: feat(SideNav): add SideNav component
+
+  Checkout [SideNav Documentation](https://blade.razorpay.com/?path=/docs/components-sidenav--docs)
+
+### Patch Changes
+
+- 2d82e41c: fix(FileUpload): allow re-uploading of the same file
+
+## 11.20.0
+
+### Minor Changes
+
+- d9bb5223: refactor(blade): downgrade mantine to v6
+
+## 11.19.1
+
+### Patch Changes
+
+- 634eefd3: fix(Card, Switch): card border width, switch colors
+- 8f8b795e: fix: DatePicker necessityIndicator alignment
+
+## 11.19.0
+
+### Minor Changes
+
+- 2ed5299e: feat(blade): add DatePicker component
+
+## 11.18.3
+
+### Patch Changes
+
+- d500ec14: feat: add placeholder prop in phone input
+
+## 11.18.2
+
+### Patch Changes
+
+- 00c87e88: fix(blade): radio helptext being negative
+
 ## 11.18.1
 
 ### Patch Changes

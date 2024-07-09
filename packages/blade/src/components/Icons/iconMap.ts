@@ -221,6 +221,7 @@ import PayrollAddonsIconComponent from './PayrollAddonsIcon';
 import PayrollForCaIconComponent from './PayrollForCaIcon';
 import PayrollForStartupOrSmeIconComponent from './PayrollForStartupOrSmeIcon';
 import PercentIconComponent from './PercentIcon';
+import PettyCashBudgetIconComponent from './PettyCashBudgetIcon';
 import PhoneCallIconComponent from './PhoneCallIcon';
 import PhoneForwardedIconComponent from './PhoneForwardedIcon';
 import PhoneIconComponent from './PhoneIcon';
@@ -567,6 +568,7 @@ const iconMap: Record<string, IconComponent> = {
   PayrollForCaIcon: PayrollForCaIconComponent,
   PayrollForStartupOrSmeIcon: PayrollForStartupOrSmeIconComponent,
   PercentIcon: PercentIconComponent,
+  PettyCashBudgetIcon: PettyCashBudgetIconComponent,
   PhoneCallIcon: PhoneCallIconComponent,
   PhoneForwardedIcon: PhoneForwardedIconComponent,
   PhoneIcon: PhoneIconComponent,

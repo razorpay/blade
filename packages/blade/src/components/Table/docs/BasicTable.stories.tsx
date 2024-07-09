@@ -2,7 +2,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData, TableProps } from '../types';
 import { Table as TableComponent } from '../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../TableHeader';
-import { TableBody, TableRow, TableCell } from '../TableBody';
+import { TableBody, TableRow, TableCell, TableEditableCell } from '../TableBody';
 import { TableToolbar, TableToolbarActions } from '../TableToolbar';
 import { TableFooter, TableFooterRow, TableFooterCell } from '../TableFooter';
 import { TablePagination } from '../TablePagination';
@@ -154,9 +154,11 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
-                  <TableCell>
-                    <Amount value={tableItem.amount} />
-                  </TableCell>
+                  <TableEditableCell
+                    accessibilityLabel="Amount"
+                    placeholder="Enter text"
+                    successText="Amount is valid"
+                  />
                   <TableCell>{tableItem.account}</TableCell>
                   <TableCell>
                     {tableItem.date?.toLocaleDateString('en-IN', {

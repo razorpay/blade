@@ -243,7 +243,7 @@ OrderedFilledListWithSizes.storyName = 'OrderedFilled - Sizes';
 
 const ListWithLinkAndIconTemplate: StoryFn<typeof List> = () => {
   return (
-    <List variant="unordered" icon={BookmarkIcon}>
+    <List variant="unordered" icon={BookmarkIcon} iconColor="interactive.icon.staticWhite.subtle">
       <ListItem>
         <ListItemLink>Troubleshooting and FAQs</ListItemLink>
       </ListItem>

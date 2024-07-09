@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "11.18.1",
+  "version": "11.24.1",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -138,12 +138,16 @@
     "ts-deepmerge": "6.2.0",
     "use-presence": "1.1.0",
     "@use-gesture/react": "10.2.24",
-    "@floating-ui/react": "0.25.4",
+    "@floating-ui/react": "0.26.13",
     "react-hot-toast": "2.4.1",
     "@emotion/react": "11.11.1",
     "@table-library/react-table-library": "4.1.7",
     "tinycolor2": "1.6.0",
-    "universal-base64": "2.1.0"
+    "universal-base64": "2.1.0",
+    "@mantine/core": "6.0.21",
+    "@mantine/dates": "6.0.21",
+    "@mantine/hooks": "6.0.21",
+    "dayjs": "1.11.10"
   },
   "devDependencies": {
     "http-server": "14.1.1",
@@ -296,7 +300,8 @@
     "react-hot-toast": "2.4.1",
     "@gorhom/bottom-sheet": "^4.4.6",
     "@gorhom/portal": "^1.0.14",
-    "@razorpay/i18nify-js": "^1.9.3"
+    "@razorpay/i18nify-js": "^1.9.3",
+    "@razorpay/i18nify-react": "^4.0.8"
   },
   "peerDependenciesMeta": {
     "react-native": {

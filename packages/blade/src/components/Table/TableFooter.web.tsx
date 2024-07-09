@@ -39,9 +39,30 @@ const TableFooter = assignWithoutSideEffects(_TableFooter, {
   componentId: ComponentIds.TableFooter,
 });
 
+const StyledFooterRow = styled(FooterRow)<{ $showBorderedCells: boolean }>(
+  ({ theme, $showBorderedCells }) => ({
+    '& th': $showBorderedCells
+      ? {
+          borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
+          borderRightColor: getIn(theme.colors, tableRow.borderColor),
+          borderRightStyle: 'solid',
+        }
+      : undefined,
+    '& th:last-child ': {
+      borderRight: 'none',
+    },
+  }),
+);
+
 const _TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
+  const { showBorderedCells } = useTableContext();
   return (
-    <FooterRow {...metaAttribute({ name: MetaConstants.TableFooterRow })}>{children}</FooterRow>
+    <StyledFooterRow
+      {...metaAttribute({ name: MetaConstants.TableFooterRow })}
+      $showBorderedCells={showBorderedCells}
+    >
+      {children}
+    </StyledFooterRow>
   );
 };
 

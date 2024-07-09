@@ -5,7 +5,7 @@ import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import type { ListItemProps } from './ListItem';
 import getIn from '~utils/lodashButBetter/get';
-import type { IconComponent } from '~components/Icons';
+import type { IconComponent, IconProps } from '~components/Icons';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
@@ -41,10 +41,12 @@ type ListCommonProps = {
 type ListWithIconProps = ListCommonProps & {
   variant?: 'unordered';
   icon?: IconComponent;
+  iconColor?: IconProps['color'];
 };
 type ListWithoutIconProps = ListCommonProps & {
   variant?: 'ordered' | 'ordered-filled';
   icon?: undefined;
+  iconColor?: undefined;
 };
 type ListProps = ListWithIconProps | ListWithoutIconProps;
 
@@ -86,6 +88,7 @@ const _List = ({
   children,
   icon,
   testID,
+  iconColor,
   ...styledProps
 }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? StyledUnorderedList : StyledOrderedList;
@@ -95,9 +98,10 @@ const _List = ({
       level: level ? level + 1 : 1,
       size: size ?? listContextSize,
       icon,
+      iconColor,
       variant,
     }),
-    [icon, level, listContextSize, size, variant],
+    [icon, iconColor, level, listContextSize, size, variant],
   );
 
   const childrenArray = React.Children.toArray(children);

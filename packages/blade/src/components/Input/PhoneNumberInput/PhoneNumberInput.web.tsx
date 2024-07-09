@@ -52,6 +52,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
     allowedCountries,
+    placeholder,
     ...styledProps
   },
   ref,
@@ -160,7 +161,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
       defaultValue={defaultValue}
       value={value}
       name={name}
-      placeholder={formatPhoneNumber('1234567890', selectedCountry)}
+      placeholder={placeholder ?? formatPhoneNumber('1234567890', selectedCountry)}
       trailingIcon={trailingIcon}
       leadingIcon={leadingIcon}
       prefix={showDialCode ? getDialCodeByCountryCode(selectedCountry) : undefined}

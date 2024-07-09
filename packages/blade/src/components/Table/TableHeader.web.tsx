@@ -180,6 +180,21 @@ const TableHeaderCellCheckbox = ({
   );
 };
 
+const StyledHeaderRow = styled(HeaderRow)<{ $showBorderedCells: boolean }>(
+  ({ theme, $showBorderedCells }) => ({
+    '& th': $showBorderedCells
+      ? {
+          borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
+          borderRightColor: getIn(theme.colors, tableRow.borderColor),
+          borderRightStyle: 'solid',
+        }
+      : undefined,
+    '& th:last-child ': {
+      borderRight: 'none',
+    },
+  }),
+);
+
 const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.ReactElement => {
   const {
     selectionType,
@@ -187,6 +202,7 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
     totalItems,
     toggleAllRowsSelection,
     setHeaderRowDensity,
+    showBorderedCells,
   } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
@@ -195,7 +211,11 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
     setHeaderRowDensity(rowDensity);
   }
   return (
-    <HeaderRow role="rowheader" {...metaAttribute({ name: MetaConstants.TableHeaderRow })}>
+    <StyledHeaderRow
+      role="rowheader"
+      {...metaAttribute({ name: MetaConstants.TableHeaderRow })}
+      $showBorderedCells={showBorderedCells}
+    >
       {isMultiSelect && (
         <TableHeaderCellCheckbox
           isChecked={isAllSelected}
@@ -204,7 +224,7 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
         />
       )}
       {children}
-    </HeaderRow>
+    </StyledHeaderRow>
   );
 };
 

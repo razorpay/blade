@@ -4,7 +4,11 @@ import { useTheme as useTableTheme } from '@table-library/react-table-library/th
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
 import { useSort } from '@table-library/react-table-library/sort';
 import { usePagination } from '@table-library/react-table-library/pagination';
-import { SelectTypes, useRowSelect } from '@table-library/react-table-library/select';
+import {
+  SelectClickTypes,
+  SelectTypes,
+  useRowSelect,
+} from '@table-library/react-table-library/select';
 import styled from 'styled-components';
 import usePresence from 'use-presence';
 import type { TableContextType } from './TableContext';
@@ -116,6 +120,7 @@ const RefreshWrapper = styled(BaseBox)<{
 const _Table = <Item,>({
   children,
   data,
+  multiSelectTrigger = 'row',
   selectionType = 'none',
   onSelectionChange,
   isHeaderSticky,
@@ -131,6 +136,7 @@ const _Table = <Item,>({
   gridTemplateColumns,
   isLoading = false,
   isRefreshing = false,
+  showBorderedCells = false,
   ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -244,10 +250,11 @@ const _Table = <Item,>({
 
   // Selection Logic
   const onSelectChange: MiddlewareFunction = (action, state): void => {
-    const selectedIDs: Identifier[] = state.id ? [state.id] : state.ids ?? [];
-    setSelectedRows(selectedIDs);
+    const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
+    setSelectedRows(selectedIds);
     onSelectionChange?.({
-      values: data.nodes.filter((node) => selectedIDs.includes(node.id)),
+      selectedIds,
+      values: data.nodes.filter((node) => selectedIds.includes(node.id)),
     });
   };
 
@@ -257,6 +264,8 @@ const _Table = <Item,>({
       onChange: onSelectChange,
     },
     {
+      clickType:
+        multiSelectTrigger === 'row' ? SelectClickTypes.RowClick : SelectClickTypes.ButtonClick,
       rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
     },
   );
@@ -399,6 +408,7 @@ const _Table = <Item,>({
       backgroundColor,
       headerRowDensity,
       setHeaderRowDensity,
+      showBorderedCells,
     }),
     [
       selectionType,
@@ -421,6 +431,7 @@ const _Table = <Item,>({
       backgroundColor,
       headerRowDensity,
       setHeaderRowDensity,
+      showBorderedCells,
     ],
   );
 

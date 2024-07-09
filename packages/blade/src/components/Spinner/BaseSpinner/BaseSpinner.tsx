@@ -49,7 +49,7 @@ type BaseSpinnerProps = {
 
 const getColor = ({ color, theme }: { color: BaseSpinnerProps['color']; theme: Theme }): string => {
   if (color && color === 'white') {
-    return getIn(theme.colors, 'surface.background.gray.intense');
+    return getIn(theme.colors, 'interactive.icon.staticWhite.subtle');
   }
   if (color && color !== 'primary') {
     return getIn(theme.colors, `feedback.background.${color}.intense`);

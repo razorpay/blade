@@ -1,19 +1,18 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import { CollapsibleBodyContent } from './CollapsibleBodyContent';
 import { useCollapsible } from './CollapsibleContext';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { CollapsibleBodyProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import type { TestID } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-type CollapsibleBodyProps = {
-  children: ReactNode;
-  width?: BaseBoxProps['width'];
-} & TestID;
-
-const _CollapsibleBody = ({ children, testID, width }: CollapsibleBodyProps): ReactElement => {
+const _CollapsibleBody = ({
+  children,
+  testID,
+  width,
+  _hasMargin = true,
+}: CollapsibleBodyProps): ReactElement => {
   const { collapsibleBodyId, isExpanded } = useCollapsible();
   return (
     <BaseBox
@@ -22,7 +21,7 @@ const _CollapsibleBody = ({ children, testID, width }: CollapsibleBodyProps): Re
       {...makeAccessible({ role: 'region', hidden: !isExpanded })}
       {...metaAttribute({ name: MetaConstants.CollapsibleBody, testID })}
     >
-      <CollapsibleBodyContent>{children}</CollapsibleBodyContent>
+      <CollapsibleBodyContent _hasMargin={_hasMargin}>{children}</CollapsibleBodyContent>
     </BaseBox>
   );
 };

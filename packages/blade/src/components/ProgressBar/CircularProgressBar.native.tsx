@@ -36,7 +36,10 @@ const StyledSVGText = styled(SVGText)<Pick<TextProps<{ variant: 'body' }>, 'size
     return {
       ...getBaseTextStyles({ theme, ...textProps }),
       strokeWidth: 0,
-      fill: getIn(theme.colors, textProps.color!),
+      fill:
+        textProps.color === 'currentColor'
+          ? textProps.color
+          : getIn(theme.colors, textProps.color!),
     };
   },
 );

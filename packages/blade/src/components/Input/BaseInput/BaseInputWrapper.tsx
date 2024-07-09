@@ -20,6 +20,7 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
     setShowAllTagsWithAnimation,
     maxTagRows,
     numberOfLines,
+    isTableInputCell,
     ...props
   },
   ref,
@@ -35,6 +36,7 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
       maxTagRows={maxTagRows}
       setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
       numberOfLines={numberOfLines}
+      isTableInputCell={isTableInputCell}
       {...props}
     >
       {children}

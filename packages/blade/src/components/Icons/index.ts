@@ -222,6 +222,7 @@ export { default as PayrollAddonsIcon } from './PayrollAddonsIcon';
 export { default as PayrollForCaIcon } from './PayrollForCaIcon';
 export { default as PayrollForStartupOrSmeIcon } from './PayrollForStartupOrSmeIcon';
 export { default as PercentIcon } from './PercentIcon';
+export { default as PettyCashBudgetIcon } from './PettyCashBudgetIcon';
 export { default as PhoneCallIcon } from './PhoneCallIcon';
 export { default as PhoneForwardedIcon } from './PhoneForwardedIcon';
 export { default as PhoneIcon } from './PhoneIcon';

@@ -5,7 +5,7 @@ const generateBundleDiff = async () => {
   // Get the base bundle size report from the master branch
   const baseBundleStatsURL =
     process.env.BASE_BUNDLE_SIZE_STATS_URL ||
-    'https://raw.githubusercontent.com/razorpay/blade/master/packages/blade/baseBundleSizeStats.json';
+    'https://raw.githubusercontent.com/razorpay/blade/bundle-size-stats/packages/blade/baseBundleSizeStats.json';
   const response = await fetch(baseBundleStatsURL);
 
   // Parse the JSON response if the request is successful
@@ -21,10 +21,10 @@ const generateBundleDiff = async () => {
 
   // Filter the components that don't have the same size in the base and current bundle
   if (baseBundleSizeStats.length > 0) {
-    bundleDiff = baseBundleSizeStats.filter(
-      ({ size: baseSize, name: baseName }) =>
-        !currentBundleSizeStats.some(
-          ({ size: currentSize, name: currentName }) =>
+    bundleDiff = currentBundleSizeStats.filter(
+      ({ size: currentSize, name: currentName }) =>
+        !baseBundleSizeStats.some(
+          ({ size: baseSize, name: baseName }) =>
             currentSize === baseSize && currentName === baseName,
         ),
     );

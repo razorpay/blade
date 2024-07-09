@@ -5,6 +5,7 @@ import {
   baseInputBackgroundColor,
   baseInputBorderColor,
   baseInputBorderWidth,
+  baseInputBorderlessBackgroundColor,
   baseInputHeight,
   baseInputPaddingTokens,
   baseInputWrapperMaxHeight,
@@ -39,6 +40,7 @@ type GetInputStyles = Pick<
   hasTags?: boolean;
   theme: Theme;
   size: NonNullable<BaseInputProps['size']>;
+  isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
 };
 
 export const getBaseInputState = ({
@@ -69,6 +71,7 @@ export const getInputBackgroundAndBorderStyles = ({
   validationState,
   isTextArea,
   isDropdownTrigger,
+  isTableInputCell,
 }: Pick<
   GetInputStyles,
   | 'theme'
@@ -78,29 +81,39 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isHovered'
   | 'isTextArea'
   | 'isDropdownTrigger'
+  | 'isTableInputCell'
 >): CSSObject => {
   // normal state
-  let backgroundColor = getIn(theme.colors, baseInputBackgroundColor.default);
-  let borderColor = getIn(theme.colors, baseInputBorderColor.default);
+  const backgroundColorTokens = isTableInputCell
+    ? baseInputBorderlessBackgroundColor
+    : baseInputBackgroundColor;
+  let backgroundColor = getIn(theme.colors, backgroundColorTokens.default);
+  let borderColor = isTableInputCell
+    ? theme.colors.transparent
+    : getIn(theme.colors, baseInputBorderColor.default);
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
 
   const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
 
-  backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
-  borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
+  backgroundColor = getIn(theme.colors, backgroundColorTokens[baseInputState]);
+  borderColor =
+    isTableInputCell && baseInputState !== 'focused'
+      ? theme.colors.transparent
+      : getIn(theme.colors, baseInputBorderColor[baseInputState]);
   borderWidth = getIn(theme.border.width, baseInputBorderWidth[baseInputState]);
 
-  if (validationState === 'error') {
-    borderColor = getIn(theme.colors, baseInputBorderColor.error);
-    borderWidth = getIn(theme.border.width, baseInputBorderWidth.error);
-  } else if (validationState === 'success') {
-    borderColor = getIn(theme.colors, baseInputBorderColor.success);
-    borderWidth = getIn(theme.border.width, baseInputBorderWidth.success);
+  if (!isTableInputCell && validationState && validationState !== 'none') {
+    borderColor = getIn(theme.colors, baseInputBorderColor[validationState]);
+    borderWidth = getIn(theme.border.width, baseInputBorderWidth[validationState]);
+  } else if (validationState && validationState !== 'none') {
+    backgroundColor = getIn(theme.colors, baseInputBorderlessBackgroundColor[validationState]);
   }
 
   return {
     backgroundColor,
-    borderRadius: makeBorderSize(theme.border.radius.medium),
+    borderRadius: makeBorderSize(
+      isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
+    ),
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
@@ -209,7 +222,7 @@ export const getBaseInputStyles = ({
 
     // take the full available width of parent container for input field
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: theme.colors.transparent,
 
     paddingTop: makeSpace(theme.spacing[baseInputPaddingTokens.top[size]]),
     paddingBottom: makeSpace(theme.spacing[baseInputPaddingTokens.bottom[size]]),

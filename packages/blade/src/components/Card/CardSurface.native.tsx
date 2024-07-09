@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Elevation } from '~tokens/global';
-import { castNativeType } from '~utils';
+import { castNativeType, makeBorderSize } from '~utils';
 
 const CardSurfaceStyled = styled(BaseBox)<{
   elevation: keyof Elevation;
@@ -12,7 +12,7 @@ const CardSurfaceStyled = styled(BaseBox)<{
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
+    borderWidth: elevation === 'none' ? makeBorderSize(theme.border.width.thin) : undefined,
     borderStyle: elevation === 'none' ? 'solid' : undefined,
     borderColor: elevation === 'none' ? `${theme.colors.surface.border.gray.muted}` : undefined,
   };

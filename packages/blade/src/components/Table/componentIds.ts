@@ -3,6 +3,7 @@ const ComponentIds = {
   TableBody: 'TableBody',
   TableRow: 'TableRow',
   TableCell: 'TableCell',
+  TableEditableCell: 'TableEditableCell',
   TableToolbar: 'TableToolbar',
   TableToolbarActions: 'TableToolbarActions',
   TableHeader: 'TableHeader',

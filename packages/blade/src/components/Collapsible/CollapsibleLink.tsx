@@ -6,18 +6,23 @@ import type { LinkProps } from '~components/Link';
 import { MetaConstants } from '~utils/metaAttribute';
 import { BaseLink } from '~components/Link/BaseLink';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 
 type CollapsibleLinkProps = Pick<
   LinkProps,
-  'size' | 'isDisabled' | 'testID' | 'accessibilityLabel' | 'children'
->;
+  'color' | 'size' | 'isDisabled' | 'testID' | 'accessibilityLabel' | 'children'
+> &
+  StyledPropsBlade;
 
 const _CollapsibleLink = ({
   children,
   size,
+  color = 'primary',
   isDisabled,
   testID,
   accessibilityLabel,
+  ...styledProps
 }: CollapsibleLinkProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
@@ -30,6 +35,7 @@ const _CollapsibleLink = ({
     <BaseLink
       variant="button"
       size={size}
+      color={color}
       icon={CollapsibleChevronIcon}
       iconPosition="right"
       isDisabled={isDisabled}
@@ -40,6 +46,7 @@ const _CollapsibleLink = ({
         controls: collapsibleBodyId,
         expanded: isExpanded,
       }}
+      {...getStyledProps(styledProps)}
     >
       {children}
     </BaseLink>

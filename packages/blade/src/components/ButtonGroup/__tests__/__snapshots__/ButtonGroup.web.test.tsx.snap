@@ -408,6 +408,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   color: hsla(214,28%,84%,1);
 }
 
+@media screen and (min-width:768px) {
+
+}
+
 <div>
   <div
     class=" c0"
@@ -1643,7 +1647,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
             class="c5"
             data-blade-component="base-text"
           >
-            ONE
+            One
           </div>
         </div>
       </div>
@@ -1670,7 +1674,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
             class="c5"
             data-blade-component="base-text"
           >
-            TWO
+            Two
           </div>
         </div>
       </div>
@@ -1697,7 +1701,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
             class="c5"
             data-blade-component="base-text"
           >
-            THREE
+            Three
           </div>
         </div>
       </div>

@@ -51,6 +51,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
+  overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -105,18 +106,15 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  max-height: 20px;
+  width: 100%;
 }
 
 .c20.c20.c20.c20.c20 {
@@ -132,9 +130,22 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  height: 20px;
 }
 
 .c21.c21.c21.c21.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-right: 8px;
+  padding-left: 0px;
+}
+
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -146,11 +157,10 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-right: 8px;
-  padding-left: 0px;
+  height: 20px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   margin-left: auto;
 }
 
@@ -227,7 +237,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   padding: 0;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -250,7 +260,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   overflow-wrap: break-word;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -436,22 +446,40 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c18.c18.c18.c18.c18 {
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent;
+  border-width: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   text-align: left;
   background-color: transparent;
-  padding: 4px;
   border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
   width: 100%;
-  display: block;
+  padding: 4px;
 }
 
-.c18.c18.c18.c18.c18:hover:not([aria-disabled=true]) {
+.c18.c18.c18.c18.c18:hover:not([aria-disabled=true]),
+.c18.c18.c18.c18.c18[aria-expanded="true"] {
   background-color: hsla(211,20%,52%,0.12);
+}
+
+.c18.c18.c18.c18.c18:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c18.c18.c18.c18.c18[aria-selected=true] {
@@ -462,31 +490,61 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
-.c24.c24.c24.c24.c24 {
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent;
+.c25.c25.c25.c25.c25 {
+  border-width: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   text-align: left;
   background-color: transparent;
-  padding: 4px;
   border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
   width: 100%;
-  display: block;
+  padding: 4px;
 }
 
-.c24.c24.c24.c24.c24:hover:not([aria-disabled=true]) {
+.c25.c25.c25.c25.c25:hover:not([aria-disabled=true]),
+.c25.c25.c25.c25.c25[aria-expanded="true"] {
   background-color: hsla(4,74%,49%,0.09);
 }
 
-.c24.c24.c24.c24.c24[aria-selected=true] {
+.c25.c25.c25.c25.c25:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c25.c25.c25.c25.c25[aria-selected=true] {
   background-color: hsla(227,100%,59%,0.09);
 }
 
-.c24.c24.c24.c24.c24[aria-selected=true]:hover {
+.c25.c25.c25.c25.c25[aria-selected=true]:hover {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+@media screen and (min-width:768px) {
+  .c18.c18.c18.c18.c18 {
+    padding: 8px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c25.c25.c25.c25.c25 {
+    padding: 8px;
+  }
 }
 
 <body>
@@ -551,7 +609,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
               class="c11"
               data-blade-component="bottom-sheet-body"
               data-testid="bottomsheet-body"
-              style="user-select: auto; overflow: auto;"
+              style="user-select: auto;"
             >
               <div
                 class="c12"
@@ -612,32 +670,37 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                   >
                     <div
                       class="c19"
-                      data-blade-component="base-box"
+                      data-blade-component="box"
                     >
                       <div
                         class="c20"
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                       />
                       <div
                         class="c21"
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                       >
-                        <p
+                        <div
                           class="c22"
-                          data-blade-component="text"
+                          data-blade-component="box"
                         >
-                          Approve
-                        </p>
+                          <p
+                            class="c23"
+                            data-blade-component="text"
+                          >
+                            Approve
+                          </p>
+                        </div>
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                       <div
-                        class="c23"
-                        data-blade-component="base-box"
+                        class="c24"
+                        data-blade-component="box"
                       />
                     </div>
-                    <div
-                      class=""
-                      data-blade-component="base-box"
-                    />
                   </button>
                   <button
                     aria-current="false"
@@ -653,37 +716,42 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                   >
                     <div
                       class="c19"
-                      data-blade-component="base-box"
+                      data-blade-component="box"
                     >
                       <div
                         class="c20"
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                       />
                       <div
                         class="c21"
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                       >
-                        <p
+                        <div
                           class="c22"
-                          data-blade-component="text"
+                          data-blade-component="box"
                         >
-                          In Progress
-                        </p>
+                          <p
+                            class="c23"
+                            data-blade-component="text"
+                          >
+                            In Progress
+                          </p>
+                        </div>
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                       <div
-                        class="c23"
-                        data-blade-component="base-box"
+                        class="c24"
+                        data-blade-component="box"
                       />
                     </div>
-                    <div
-                      class=""
-                      data-blade-component="base-box"
-                    />
                   </button>
                   <button
                     aria-current="false"
                     aria-selected="false"
-                    class=" c24"
+                    class=" c25"
                     data-blade-component="action-list-item"
                     data-index="2"
                     data-value="reject"
@@ -694,32 +762,37 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                   >
                     <div
                       class="c19"
-                      data-blade-component="base-box"
+                      data-blade-component="box"
                     >
                       <div
                         class="c20"
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                       />
                       <div
                         class="c21"
-                        data-blade-component="base-box"
+                        data-blade-component="box"
                       >
-                        <p
-                          class="c25"
-                          data-blade-component="text"
+                        <div
+                          class="c22"
+                          data-blade-component="box"
                         >
-                          Reject
-                        </p>
+                          <p
+                            class="c26"
+                            data-blade-component="text"
+                          >
+                            Reject
+                          </p>
+                        </div>
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                       <div
-                        class="c23"
-                        data-blade-component="base-box"
+                        class="c24"
+                        data-blade-component="box"
                       />
                     </div>
-                    <div
-                      class=""
-                      data-blade-component="base-box"
-                    />
                   </button>
                 </div>
               </div>
@@ -895,6 +968,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c28.c28.c28.c28.c28 {
+  overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1555,7 +1629,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
           class="c28"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
-          style="user-select: auto; overflow: auto;"
+          style="user-select: auto;"
         >
           <div
             class="c29"
@@ -1633,6 +1707,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
+  overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1904,7 +1979,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
           class="c9"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
-          style="user-select: auto; overflow: auto;"
+          style="user-select: auto;"
         >
           <div
             class="c10"
