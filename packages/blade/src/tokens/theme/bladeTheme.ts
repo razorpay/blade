@@ -915,6 +915,25 @@ const colors: ColorsWithModes = {
       },
     },
     transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
+    brand: {
+      primary: {
+        50: globalColors.chromatic.azure[50],
+        100: globalColors.chromatic.azure[100],
+        200: globalColors.chromatic.azure[200],
+        300: globalColors.chromatic.azure[300],
+        400: globalColors.chromatic.azure[400],
+        500: globalColors.chromatic.azure[500],
+        600: globalColors.chromatic.azure[600],
+        700: globalColors.chromatic.azure[700],
+        800: globalColors.chromatic.azure[800],
+        900: globalColors.chromatic.azure[900],
+        1000: globalColors.chromatic.azure[1000],
+        a50: globalColors.chromatic.azure.a50,
+        a100: globalColors.chromatic.azure.a100,
+        a150: globalColors.chromatic.azure.a150,
+        a200: globalColors.chromatic.azure.a200,
+      },
+    },
   },
 };
 
