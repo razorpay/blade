@@ -7,6 +7,7 @@ import type {
   TypographyWithPlatforms,
   ElevationWithColorModes,
 } from '~tokens/global';
+import type { ColorChromaticScale } from '~tokens/global/colors';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
@@ -91,6 +92,9 @@ export type Colors = {
     border: SubtleOrIntenseEmphasis;
   };
   transparent: string;
+  brand: {
+    primary: ColorChromaticScale;
+  };
 };
 
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;

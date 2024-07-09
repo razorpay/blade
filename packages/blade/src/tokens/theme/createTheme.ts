@@ -187,6 +187,9 @@ const getOnLightOverrides = (
         },
       },
     },
+    brand: {
+      primary: brandColors,
+    },
   };
 
   return lightThemeOverrides;
@@ -280,6 +283,9 @@ const getOnDarkOverrides = (
           normal: brandColors[600],
         },
       },
+    },
+    brand: {
+      primary: brandColors,
     },
   };
 
