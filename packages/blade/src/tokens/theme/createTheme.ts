@@ -187,9 +187,6 @@ const getOnLightOverrides = (
         },
       },
     },
-    brand: {
-      primary: brandColors,
-    },
   };
 
   return lightThemeOverrides;
@@ -284,9 +281,6 @@ const getOnDarkOverrides = (
         },
       },
     },
-    brand: {
-      primary: brandColors,
-    },
   };
 
   return darkThemeOverrides;
@@ -301,7 +295,11 @@ const getOnDarkOverrides = (
  * @example
  * const theme = createTheme({ brandColor: '#19BEA2'})
  **/
-export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTokens => {
+export const createTheme = ({
+  brandColor,
+}: {
+  brandColor: ColorInput;
+}): { theme: ThemeTokens; brandColors: ColorChromaticScale } => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
   // Get onLight overrides
   const brandedLightTheme = getOnLightOverrides(chromaticBrandColors);
@@ -323,5 +321,5 @@ export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTo
     },
   });
 
-  return brandedThemeTokens;
+  return { theme: brandedThemeTokens, brandColors: chromaticBrandColors };
 };
