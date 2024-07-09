@@ -10,3 +10,7 @@ body {
   -webkit-font-smoothing: unset !important;
   -moz-osx-font-smoothing: unset !important;
 }
+
+pre {
+  max-width: 100ch;
+}
