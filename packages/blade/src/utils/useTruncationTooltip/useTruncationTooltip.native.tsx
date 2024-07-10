@@ -1,4 +1,11 @@
-const useTruncationTooltip = ({ content }: { content?: string }) => {
+const useTruncationTooltip = ({
+  content: _,
+}: {
+  content?: string;
+}): {
+  containerRef: { current: null };
+  textRef: { current: null };
+} => {
   return {
     containerRef: { current: null },
     textRef: { current: null },

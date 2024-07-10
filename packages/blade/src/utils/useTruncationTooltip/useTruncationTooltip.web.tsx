@@ -1,6 +1,13 @@
 import React from 'react';
 
-const useTruncationTooltip = ({ content }: { content?: string }) => {
+const useTruncationTooltip = ({
+  content,
+}: {
+  content?: string;
+}): {
+  containerRef: React.RefObject<HTMLDivElement>;
+  textRef: React.RefObject<HTMLParagraphElement>;
+} => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const textRef = React.useRef<HTMLParagraphElement>(null);
 

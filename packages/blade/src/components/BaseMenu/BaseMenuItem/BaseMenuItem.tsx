@@ -94,6 +94,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
                   ref={containerRef as never}
                 >
                   <BaseText
+                    as="p"
                     ref={textRef as never}
                     truncateAfterLines={1}
                     wordBreak="break-all"
