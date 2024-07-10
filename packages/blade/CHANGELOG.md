@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.24.2
+
+### Patch Changes
+
+- 733b9545: fix: change onRemove/onReupload params
+
 ## 11.24.1
 
 ### Patch Changes
