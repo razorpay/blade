@@ -258,6 +258,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .c26.c26.c26.c26.c26 {
@@ -281,6 +282,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .c7.c7.c7.c7.c7 {
