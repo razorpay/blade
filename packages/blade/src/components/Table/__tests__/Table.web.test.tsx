@@ -2,13 +2,14 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
-import { TableBody, TableCell, TableEditableCell, TableRow } from '../TableBody';
+import { TableBody, TableCell, TableRow } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Amount } from '~components/Amount';
+import { TableEditableCell } from '../TableEditableCell.web';
 
 type Item = {
   id: string;

@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import { CellWrapper, StyledCell } from './TableBody';
 import { useTableContext } from './TableContext';
-import type { TableEditableCellProps, TableProps } from './types';
-import { tableEditableCellRowDensityToInputSizeMap } from './tokens';
+import type { TableEditableCellProps, TableEditableDropdownCellProps, TableProps } from './types';
+import {
+  rowDensityToIsTableInputCellMapping,
+  tableEditableCellRowDensityToInputSizeMap,
+  validationStateToInputTrailingIconMap,
+} from './tokens';
 import { ComponentIds } from './componentIds';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import { AlertCircleIcon, CheckIcon } from '~components/Icons';
 import type { MarginProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
@@ -13,6 +16,7 @@ import { Box } from '~components/Box';
 import { BaseInput } from '~components/Input/BaseInput';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { Dropdown } from '~components/Dropdown';
 
 export const StyledEditableCell = styled(StyledCell)<{
   rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
@@ -24,18 +28,6 @@ export const StyledEditableCell = styled(StyledCell)<{
     },
   },
 }));
-
-export const validationStateToInputTrailingIconMap = {
-  none: undefined,
-  success: CheckIcon,
-  error: AlertCircleIcon,
-};
-
-export const rowDensityToIsTableInputCellMapping = {
-  comfortable: false,
-  normal: true,
-  compact: true,
-};
 
 export const getEditableInputMargin = ({
   rowDensity,
@@ -136,8 +128,43 @@ const _TableEditableCell = ({
   );
 };
 
+const TableEditableDropdownCell = (
+  dropdownProps: TableEditableDropdownCellProps,
+): React.ReactElement => {
+  const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
+
+  return (
+    <StyledEditableCell
+      role="cell"
+      $backgroundColor={backgroundColor}
+      rowDensity={rowDensity}
+      {...metaAttribute({ name: MetaConstants.TableCell })}
+    >
+      <BaseBox
+        className="cell-wrapper-base"
+        display="flex"
+        alignItems="center"
+        height="100%"
+        width="100%"
+      >
+        <CellWrapper
+          className="cell-wrapper"
+          rowDensity={rowDensity}
+          showStripedRows={showStripedRows}
+          display="flex"
+          alignItems="center"
+          flex={1}
+          hasPadding={false}
+        >
+          <Dropdown _width="100%" margin="spacing.2" {...dropdownProps} />
+        </CellWrapper>
+      </BaseBox>
+    </StyledEditableCell>
+  );
+};
+
 const TableEditableCell = assignWithoutSideEffects(_TableEditableCell, {
   componentId: ComponentIds.TableEditableCell,
 });
 
-export { TableEditableCell };
+export { TableEditableCell, TableEditableDropdownCell };

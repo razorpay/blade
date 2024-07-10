@@ -69,7 +69,7 @@ const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
   isDropdownTrigger: BaseInputWrapperProps['isDropdownTrigger'];
   size: NonNullable<BaseInputWrapperProps['size']>;
 }>((props) =>
-  props.isDropdownTrigger
+  props.isDropdownTrigger && !props.isTableInputCell
     ? css`
         ${props.transition};
         max-height: ${makeSize(

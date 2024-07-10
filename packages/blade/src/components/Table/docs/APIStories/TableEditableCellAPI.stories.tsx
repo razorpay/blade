@@ -2,12 +2,16 @@ import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableBody, TableRow, TableCell, TableEditableCell } from '../../TableBody';
+import { TableBody, TableRow, TableCell } from '../../TableBody';
 import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { TableEditableCell, TableEditableDropdownCell } from '~components/Table/TableEditableCell';
+import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { DropdownOverlay } from '~components/Dropdown';
 
 export default {
   title: 'Components/Table/API',
@@ -116,12 +120,24 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                     placeholder="Account number"
                     errorText="Account number is invalid"
                   />
-                  <TableEditableCell
-                    accessibilityLabel="Account"
-                    defaultValue={`${tableItem.method}`}
-                    validationState="success"
-                    successText="Method  is valid"
-                  />
+                  <TableEditableDropdownCell selectionType="multiple">
+                    <SelectInput
+                      accessibilityLabel="Method"
+                      validationState={
+                        (['none', 'error', 'success'] as const).at(Math.floor(Math.random() * 3)) ??
+                        'none'
+                      }
+                      errorText="Invalid Method"
+                      successText="Valid Method"
+                    />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="Mumbai" value="mumbai" />
+                        <ActionListItem title="Pune" value="pune" />
+                        <ActionListItem title="Bangalore" value="bangalore" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
                   <TableCell>
                     {tableItem.date?.toLocaleDateString('en-IN', {
                       year: 'numeric',
@@ -139,7 +155,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                           ? 'notice'
                           : tableItem.status === 'Failed'
                           ? 'negative'
-                          : 'default'
+                          : 'primary'
                       }
                     >
                       {tableItem.status}

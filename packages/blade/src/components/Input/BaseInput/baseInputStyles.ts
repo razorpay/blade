@@ -183,6 +183,7 @@ export const getBaseInputStyles = ({
   hasTags,
   isDropdownTrigger,
   size,
+  isTableInputCell,
   valueComponentType,
 }: GetInputStyles): CSSObject => {
   const {
@@ -203,6 +204,7 @@ export const getBaseInputStyles = ({
 
   const isDropdownWithTags = isDropdownTrigger && hasTags;
   const isReactNative = getPlatformType() === 'react-native';
+  const shouldHaveFlexibleHeight = (isTextArea || isDropdownWithTags) && !isTableInputCell;
 
   return {
     ...(valueComponentType === 'heading'
@@ -239,8 +241,8 @@ export const getBaseInputStyles = ({
 
     textAlign,
     width: '100%',
-    height: isTextArea || isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
-    minHeight: isTextArea || isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
+    height: shouldHaveFlexibleHeight ? undefined : makeSpace(baseInputHeight[size]),
+    minHeight: shouldHaveFlexibleHeight ? undefined : makeSpace(baseInputHeight[size]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

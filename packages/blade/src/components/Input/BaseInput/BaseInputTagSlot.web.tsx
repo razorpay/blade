@@ -9,6 +9,7 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
 import { size as sizeToken } from '~tokens/global';
+import { useTableContext } from '~components/Table/TableContext';
 
 const MINUMUM_INPUT_SPACE = 60;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
@@ -31,9 +32,11 @@ const useVisibleTagsCount = ({
 }): number => {
   const [visibleTagsCount, setVisibleTagsCount] = React.useState(0);
   const visibleTagsCountStateRef = React.useRef<number>(0);
+  const { rowDensity } = useTableContext();
+  const isInsideTable = Boolean(rowDensity);
 
   useIsomorphicLayoutEffect(() => {
-    if (!tags || labelPrefix) {
+    if (!tags || labelPrefix || isInsideTable) {
       setVisibleTagsCount(0);
       return;
     }
@@ -109,6 +112,30 @@ const TagSlotContainer = styled(BaseBox)(() => {
   };
 });
 
+const SelectedCountText = ({
+  children,
+  isDisabled,
+}: {
+  children: string;
+  isDisabled?: boolean;
+}): React.ReactElement => {
+  return (
+    <Text
+      color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
+      alignSelf="center"
+      marginY="spacing.2"
+      marginRight="spacing.4"
+      variant="body"
+      size="small"
+      weight="regular"
+    >
+      <BaseBox as="span" whiteSpace="nowrap">
+        {children}
+      </BaseBox>
+    </Text>
+  );
+};
+
 const BaseInputTagSlot = ({
   renderAs,
   children,
@@ -127,6 +154,8 @@ const BaseInputTagSlot = ({
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
   const slotRef = React.useRef<HTMLDivElement>(null);
+  const { rowDensity } = useTableContext();
+  const isInsideTable = Boolean(rowDensity);
   const visibleTagsCount = useVisibleTagsCount({
     slotRef,
     tags,
@@ -214,30 +243,32 @@ const BaseInputTagSlot = ({
         setShouldIgnoreBlurAnimation?.(false);
       }}
     >
-      {visibleTags}
-      {tags && !showAllTags && invisibleTagsCount ? (
-        <Text
-          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
-          alignSelf="center"
-          marginY="spacing.2"
-          marginRight="spacing.4"
-          variant="body"
-          size="small"
-          weight="regular"
-        >
-          <BaseBox as="span" whiteSpace="nowrap">
-            {visibleTags?.length === 0
-              ? getSelectedTextWithoutTags({
-                  items: invisibleTagsCount,
-                  labelPrefix,
-                })
-              : `+${invisibleTagsCount} More`}
-          </BaseBox>
-        </Text>
-      ) : null}
+      {isInsideTable && tags && tags.length > 0 ? (
+        <SelectedCountText isDisabled={isDisabled}>
+          {getSelectedTextWithoutTags({ items: tags.length, labelPrefix })}
+        </SelectedCountText>
+      ) : (
+        <>
+          {visibleTags}
+          {tags && !showAllTags && invisibleTagsCount ? (
+            <SelectedCountText isDisabled={isDisabled}>
+              {visibleTags?.length === 0
+                ? getSelectedTextWithoutTags({
+                    items: invisibleTagsCount,
+                    labelPrefix,
+                  })
+                : `+${invisibleTagsCount} More`}
+            </SelectedCountText>
+          ) : null}
+        </>
+      )}
       <BaseBox
         marginTop="-4px"
-        minWidth={hasTags && renderAs === 'button' ? undefined : makeSize(MINUMUM_INPUT_SPACE)}
+        minWidth={
+          hasTags && renderAs === 'button'
+            ? undefined
+            : `min(20%, ${makeSize(MINUMUM_INPUT_SPACE)})`
+        }
         width={hasTags && renderAs === 'button' ? makeSize(sizeToken['1']) : '100%'}
       >
         {children}

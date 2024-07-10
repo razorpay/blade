@@ -177,6 +177,7 @@ export const CellWrapper = styled(BaseBox)<{
       paddingRight: hasPadding ? makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])) : '0px',
       minHeight: makeSize(getIn(size, tableRow.minHeight[rowDensity])),
       height: '100%',
+      width: '100%',
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
         borderBottomColor: getIn(theme.colors, tableRow.borderColor),

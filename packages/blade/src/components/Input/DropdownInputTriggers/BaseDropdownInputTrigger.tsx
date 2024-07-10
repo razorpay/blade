@@ -11,6 +11,12 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import type { BladeElementRef } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
+import { useTableContext } from '~components/Table/TableContext';
+import {
+  rowDensityToIsTableInputCellMapping,
+  tableEditableCellRowDensityToInputSizeMap,
+  validationStateToInputTrailingIconMap,
+} from '~components/Table/tokens';
 
 const useControlledDropdownInput = (
   props: Pick<
@@ -142,6 +148,8 @@ const _BaseDropdownInputTrigger = (
     setChangeCallbackTriggerer,
     changeCallbackTriggerer,
   } = useDropdown();
+  const { rowDensity } = useTableContext();
+  const isInsideTable = Boolean(rowDensity);
 
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
   const isAutoCompleteInHeader = !props.isSelectInput && hasAutoCompleteInBottomSheetHeader;
@@ -216,6 +224,13 @@ const _BaseDropdownInputTrigger = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedIndices, selectionType, activeTagIndex, changeCallbackTriggerer, options],
   );
+
+  const tableInputProps: Partial<BaseInputProps> = {
+    isTableInputCell: rowDensityToIsTableInputCellMapping[rowDensity],
+    id: 'table-editable-cell-input',
+    size: tableEditableCellRowDensityToInputSizeMap[rowDensity],
+    trailingIcon: validationStateToInputTrailingIconMap[props.validationState ?? 'none'],
+  };
 
   return (
     <BaseInput
@@ -297,7 +312,7 @@ const _BaseDropdownInputTrigger = (
       onKeyDown={props.onTriggerKeydown}
       size={props.size}
       trailingInteractionElement={
-        isAutoCompleteInHeader ? null : (
+        isAutoCompleteInHeader || (isInsideTable && props.validationState !== 'none') ? null : (
           <InputChevronIcon
             onClick={() => {
               if (!props.isDisabled) {
@@ -313,6 +328,7 @@ const _BaseDropdownInputTrigger = (
           />
         )
       }
+      {...(isInsideTable ? tableInputProps : undefined)}
     />
   );
 };
