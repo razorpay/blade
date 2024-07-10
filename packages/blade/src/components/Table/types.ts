@@ -354,6 +354,11 @@ type TablePaginationCommonProps = {
    * @default false
    */
   showLabel?: boolean;
+  /**
+   * The background color of the component.
+   * @default transparent
+   */
+  backgroundColor?: string;
 };
 
 type TablePaginationType = 'client' | 'server';

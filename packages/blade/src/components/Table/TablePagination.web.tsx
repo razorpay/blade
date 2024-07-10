@@ -141,6 +141,7 @@ const _TablePagination = ({
   currentPage: controlledCurrentPage,
   onPageChange,
   onPageSizeChange,
+  backgroundColor = tablePagination.backgroundColor,
   defaultPageSize = tablePagination.defaultPageSize,
   showPageSizePicker = true,
   showPageNumberSelector = false,
@@ -242,7 +243,7 @@ const _TablePagination = ({
       display="flex"
       flexDirection="row"
       padding={tablePagination.padding}
-      backgroundColor={tablePagination.backgroundColor}
+      backgroundColor={backgroundColor}
     >
       {showLabel && !onMobile && (
         <BaseBox display="flex" justifyContent="center" alignItems="center">
