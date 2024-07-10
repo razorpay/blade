@@ -3,11 +3,13 @@ import type { BaseMenuItemProps } from '../types';
 import { BaseMenuItemContext } from '../BaseMenuContext';
 import { StyledMenuItemContainer } from './StyledMenuItemContainer';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { getTextProps, Text } from '~components/Typography';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeElementRef } from '~utils/types';
+import { BaseText } from '~components/Typography/BaseText';
+import { useTruncationTooltip } from '~utils/useTruncationTooltip';
 
 const menuItemTitleColor = {
   negative: {
@@ -44,6 +46,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
   },
   ref,
 ): React.ReactElement => {
+  const { containerRef, textRef } = useTruncationTooltip({ content: title });
   return (
     <BaseMenuItemContext.Provider value={{ color, isDisabled }}>
       <StyledMenuItemContainer
@@ -88,17 +91,23 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
                   alignItems="center"
                   flexDirection="row"
                   height={itemFirstRowHeight}
+                  ref={containerRef as never}
                 >
-                  <Text
+                  <BaseText
+                    ref={textRef as never}
                     truncateAfterLines={1}
-                    color={
-                      menuItemTitleColor[color === 'negative' ? 'negative' : 'normal'][
-                        isDisabled ? 'disabled' : 'default'
-                      ]
-                    }
+                    wordBreak="break-all"
+                    {...getTextProps({
+                      size: 'medium',
+                      color:
+                        menuItemTitleColor[color === 'negative' ? 'negative' : 'normal'][
+                          isDisabled ? 'disabled' : 'default'
+                        ],
+                      weight: 'regular',
+                    })}
                   >
                     {title}
-                  </Text>
+                  </BaseText>
                   {titleSuffix}
                 </Box>
                 <Box>
