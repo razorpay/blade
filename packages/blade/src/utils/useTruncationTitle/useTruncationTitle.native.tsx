@@ -1,4 +1,4 @@
-const useTruncationTooltip = ({
+const useTruncationTitle = ({
   content: _,
 }: {
   content?: string;
@@ -12,4 +12,4 @@ const useTruncationTooltip = ({
   };
 };
 
-export { useTruncationTooltip };
+export { useTruncationTitle };

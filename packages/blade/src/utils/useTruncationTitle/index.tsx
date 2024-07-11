@@ -1,0 +1,1 @@
+export { useTruncationTitle } from './useTruncationTitle';

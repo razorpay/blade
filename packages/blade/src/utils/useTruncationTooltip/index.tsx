@@ -1,1 +1,0 @@
-export { useTruncationTooltip } from './useTruncationTooltip';
