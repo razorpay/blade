@@ -23,7 +23,7 @@ exports[`<Indicator /> should render 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  margin-left: 4px;
+  margin-left: 0px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -109,7 +109,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
 }
 
 .c2.c2.c2.c2.c2 {
-  margin-left: 4px;
+  margin-left: 0px;
 }
 
 .c3.c3.c3.c3.c3 {
