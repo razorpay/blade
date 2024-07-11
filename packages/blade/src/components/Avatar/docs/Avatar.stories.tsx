@@ -121,7 +121,7 @@ const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
           flex="1 1 auto"
           alignItems="center"
           justifyItems="center"
-          alignContent="start"
+          alignContent="center"
           gap="spacing.5"
           flexWrap="nowrap"
           width="120px"
@@ -129,7 +129,7 @@ const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
           <Box width="50px">
             <Heading>{size}</Heading>
           </Box>
-          <Box display="flex" flex="1 1 auto" justifyContent="flex-start">
+          <Box display="flex" flex="1 1 auto" justifyContent="center">
             <AvatarComponent {...args} size={size} />
           </Box>
         </Box>

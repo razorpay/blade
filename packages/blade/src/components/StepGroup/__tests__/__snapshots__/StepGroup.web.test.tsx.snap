@@ -76,7 +76,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   position: relative;
-  margin-left: 4px;
 }
 
 .c7.c7.c7.c7.c7 {

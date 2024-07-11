@@ -52,7 +52,6 @@ const StepItemIndicator = ({ color }: { color: IndicatorProps['color'] }): React
     >
       <Indicator
         position="relative"
-        marginLeft="spacing.2"
         color={color}
         size={size}
         accessibilityLabel={`${color} indicator`}
