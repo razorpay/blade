@@ -36,8 +36,7 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
   ref,
 ): React.ReactElement => {
   const isLink = Boolean(href);
-  const isClickable = Boolean(onClick);
-  const isInteractive = isClickable || isLink;
+  const isInteractive = Boolean(onClick || isLink);
   const as = isInteractive ? (href ? 'a' : 'button') : 'div';
 
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;

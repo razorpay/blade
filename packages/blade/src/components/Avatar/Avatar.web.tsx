@@ -39,7 +39,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
     rel,
     isSelected,
     bottomAddon: BottomAddon,
-    topAddon: TopAddon,
+    topAddon,
     // Image Props
     src,
     alt,
@@ -69,7 +69,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
         message: '"alt" or "name" prop is required when the "src" prop is provided.',
       });
     }
-    if (TopAddon && getComponentId(TopAddon) !== 'Indicator') {
+    if (topAddon && getComponentId(topAddon) !== 'Indicator') {
       throwBladeError({
         moduleName: 'Avatar',
         message: 'TopAddon only accepts `Indicator` component.',
@@ -140,13 +140,13 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
       isInteractive={isInteractive}
     >
       <BaseBox width="100%" height="100%" position="relative">
-        {TopAddon ? (
+        {topAddon ? (
           <BaseBox
             position="absolute"
             top={avatarTopAddonOffsets[variant][size].top}
             right={avatarTopAddonOffsets[variant][size].right}
           >
-            {React.cloneElement(TopAddon, { size: avatarToIndicatorSize[size], display: 'block' })}
+            {React.cloneElement(topAddon, { size: avatarToIndicatorSize[size], display: 'block' })}
           </BaseBox>
         ) : null}
         {getChildrenToRender()}

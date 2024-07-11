@@ -4,8 +4,8 @@ import type { IconComponent } from '~components/Icons';
 
 const TrustedBadge: IconComponent = () => {
   throwBladeError({
-    message: 'Truste is not yet implemented for React Native',
-    moduleName: 'Truste',
+    message: 'TrustedBadge is not yet implemented for React Native',
+    moduleName: 'TrustedBadge',
   });
 
   return <></>;

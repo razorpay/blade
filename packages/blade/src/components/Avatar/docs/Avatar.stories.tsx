@@ -10,6 +10,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { BuildingIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
 import { Indicator } from '~components/Indicator';
+import { Text } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
   return (
@@ -94,6 +95,20 @@ IconAvatars.args = {
   icon: BuildingIcon,
   variant: 'square',
 };
+
+const InteractiveNonInteractiveTemplate: StoryFn<typeof AvatarComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Text>We can make the Avatar interactive by adding an onClick or setting the href prop</Text>
+      <AvatarComponent href="https://razorpay.com" size="large" />
+      <Text>If we omit these props, the avatar will render as a plain div element</Text>
+      <AvatarComponent size="large" />
+    </Box>
+  );
+};
+
+export const InteractiveNonInteractive = InteractiveNonInteractiveTemplate.bind({});
+InteractiveNonInteractive.storyName = 'Interactive and NonInteractive Avatar';
 
 const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;

@@ -18,7 +18,7 @@ const StyledAvatarButton = styled.button<AvatarButtonProps & { isInteractive?: b
       display: 'block',
       textAlign: 'center',
       textDecoration: 'none',
-      cursor: isInteractive ? 'default' : 'pointer',
+      cursor: isInteractive ? 'pointer' : 'default',
       minHeight: makeSize(avatarSizeTokens[size]),
       height: makeSize(avatarSizeTokens[size]),
       width: makeSize(avatarSizeTokens[size]),
