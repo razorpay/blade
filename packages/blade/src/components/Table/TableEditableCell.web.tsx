@@ -17,6 +17,7 @@ import { BaseInput } from '~components/Input/BaseInput';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Dropdown } from '~components/Dropdown';
+import { TableEditableCellContext } from './TableEditableCellContext';
 
 export const StyledEditableCell = styled(StyledCell)<{
   rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
@@ -134,32 +135,34 @@ const TableEditableDropdownCell = (
   const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
 
   return (
-    <StyledEditableCell
-      role="cell"
-      $backgroundColor={backgroundColor}
-      rowDensity={rowDensity}
-      {...metaAttribute({ name: MetaConstants.TableCell })}
-    >
-      <BaseBox
-        className="cell-wrapper-base"
-        display="flex"
-        alignItems="center"
-        height="100%"
-        width="100%"
+    <TableEditableCellContext.Provider value={{ isInsideTableEditableCell: true }}>
+      <StyledEditableCell
+        role="cell"
+        $backgroundColor={backgroundColor}
+        rowDensity={rowDensity}
+        {...metaAttribute({ name: MetaConstants.TableCell })}
       >
-        <CellWrapper
-          className="cell-wrapper"
-          rowDensity={rowDensity}
-          showStripedRows={showStripedRows}
+        <BaseBox
+          className="cell-wrapper-base"
           display="flex"
           alignItems="center"
-          flex={1}
-          hasPadding={false}
+          height="100%"
+          width="100%"
         >
-          <Dropdown _width="100%" margin="spacing.2" {...dropdownProps} />
-        </CellWrapper>
-      </BaseBox>
-    </StyledEditableCell>
+          <CellWrapper
+            className="cell-wrapper"
+            rowDensity={rowDensity}
+            showStripedRows={showStripedRows}
+            display="flex"
+            alignItems="center"
+            flex={1}
+            hasPadding={false}
+          >
+            <Dropdown _width="100%" margin="spacing.2" {...dropdownProps} />
+          </CellWrapper>
+        </BaseBox>
+      </StyledEditableCell>
+    </TableEditableCellContext.Provider>
   );
 };
 

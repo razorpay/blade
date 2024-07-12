@@ -17,6 +17,7 @@ import {
   tableEditableCellRowDensityToInputSizeMap,
   validationStateToInputTrailingIconMap,
 } from '~components/Table/tokens';
+import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
 
 const useControlledDropdownInput = (
   props: Pick<
@@ -149,7 +150,7 @@ const _BaseDropdownInputTrigger = (
     changeCallbackTriggerer,
   } = useDropdown();
   const { rowDensity } = useTableContext();
-  const isInsideTable = Boolean(rowDensity);
+  const { isInsideTableEditableCell } = useTableEditableCell();
 
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
   const isAutoCompleteInHeader = !props.isSelectInput && hasAutoCompleteInBottomSheetHeader;
@@ -312,7 +313,8 @@ const _BaseDropdownInputTrigger = (
       onKeyDown={props.onTriggerKeydown}
       size={props.size}
       trailingInteractionElement={
-        isAutoCompleteInHeader || (isInsideTable && props.validationState !== 'none') ? null : (
+        isAutoCompleteInHeader ||
+        (isInsideTableEditableCell && props.validationState !== 'none') ? null : (
           <InputChevronIcon
             onClick={() => {
               if (!props.isDisabled) {
@@ -328,7 +330,7 @@ const _BaseDropdownInputTrigger = (
           />
         )
       }
-      {...(isInsideTable ? tableInputProps : undefined)}
+      {...(isInsideTableEditableCell ? tableInputProps : undefined)}
     />
   );
 };

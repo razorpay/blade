@@ -204,7 +204,7 @@ export const getBaseInputStyles = ({
 
   const isDropdownWithTags = isDropdownTrigger && hasTags;
   const isReactNative = getPlatformType() === 'react-native';
-  const shouldHaveFlexibleHeight = (isTextArea || isDropdownWithTags) && !isTableInputCell;
+  const shouldHaveFlexibleHeight = isTextArea || isDropdownWithTags;
 
   return {
     ...(valueComponentType === 'heading'

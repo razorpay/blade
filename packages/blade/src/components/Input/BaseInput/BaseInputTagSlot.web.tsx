@@ -9,7 +9,7 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
 import { size as sizeToken } from '~tokens/global';
-import { useTableContext } from '~components/Table/TableContext';
+import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
 
 const MINUMUM_INPUT_SPACE = 60;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
@@ -32,11 +32,10 @@ const useVisibleTagsCount = ({
 }): number => {
   const [visibleTagsCount, setVisibleTagsCount] = React.useState(0);
   const visibleTagsCountStateRef = React.useRef<number>(0);
-  const { rowDensity } = useTableContext();
-  const isInsideTable = Boolean(rowDensity);
+  const { isInsideTableEditableCell } = useTableEditableCell();
 
   useIsomorphicLayoutEffect(() => {
-    if (!tags || labelPrefix || isInsideTable) {
+    if (!tags || labelPrefix || isInsideTableEditableCell) {
       setVisibleTagsCount(0);
       return;
     }
@@ -154,8 +153,7 @@ const BaseInputTagSlot = ({
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
   const slotRef = React.useRef<HTMLDivElement>(null);
-  const { rowDensity } = useTableContext();
-  const isInsideTable = Boolean(rowDensity);
+  const { isInsideTableEditableCell } = useTableEditableCell();
   const visibleTagsCount = useVisibleTagsCount({
     slotRef,
     tags,
@@ -243,7 +241,7 @@ const BaseInputTagSlot = ({
         setShouldIgnoreBlurAnimation?.(false);
       }}
     >
-      {isInsideTable && tags && tags.length > 0 ? (
+      {isInsideTableEditableCell && tags && tags.length > 0 ? (
         <SelectedCountText isDisabled={isDisabled}>
           {getSelectedTextWithoutTags({ items: tags.length, labelPrefix })}
         </SelectedCountText>
