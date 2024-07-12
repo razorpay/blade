@@ -64,7 +64,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c17.c17.c17.c17.c17 {
@@ -757,7 +757,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c17.c17.c17.c17.c17 {
