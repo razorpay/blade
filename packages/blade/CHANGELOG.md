@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.24.3
+
+### Patch Changes
+
+- 343d494d: fix(ActionListItem, MenuItem): truncate text without spaces and add htmlTitle
+
 ## 11.24.2
 
 ### Patch Changes
