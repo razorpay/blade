@@ -1,7 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import type { AvatarProps } from '../Avatar';
 import { Avatar as AvatarComponent } from '../Avatar';
-import { TrustedBadge } from '../TrustedBadge';
+import { TrustedBadgeIcon } from '../TrustedBadgeIcon';
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -214,14 +214,14 @@ const AvatarWithAddonsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
             {...args}
             size={size}
             topAddon={<Indicator color="negative" />}
-            bottomAddon={TrustedBadge}
+            bottomAddon={TrustedBadgeIcon}
           />
           <AvatarComponent
             {...args}
             variant="square"
             size={size}
             topAddon={<Indicator color="negative" />}
-            bottomAddon={TrustedBadge}
+            bottomAddon={TrustedBadgeIcon}
           />
         </Box>
       ))}

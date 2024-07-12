@@ -2,7 +2,7 @@ import type { IconComponent } from '~components/Icons';
 import useIconProps from '~components/Icons/useIconProps';
 import Svg, { Path } from '~components/Icons/_Svg';
 
-const TrustedBadge: IconComponent = (props) => {
+const TrustedBadgeIcon: IconComponent = (props) => {
   const { width, height } = useIconProps(props);
   return (
     <Svg display="block" width={width} height={height} viewBox="0 0 19 20" fill="none">
@@ -149,4 +149,4 @@ const TrustedBadge: IconComponent = (props) => {
   );
 };
 
-export { TrustedBadge };
+export { TrustedBadgeIcon };
