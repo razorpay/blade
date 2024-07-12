@@ -31,10 +31,14 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
     onPointerEnter,
     onTouchStart,
     onTouchEnd,
+    isSelected,
   },
   ref,
 ): React.ReactElement => {
   const isLink = Boolean(href);
+  const isInteractive = Boolean(onClick || isLink);
+  const as = isInteractive ? (href ? 'a' : 'button') : 'div';
+
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
   const iconColor = getTextColorToken({
     property: 'icon',
@@ -52,7 +56,9 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
   return (
     <StyledAvatarButton
       ref={ref as never}
-      as={href ? 'a' : 'button'}
+      as={as as never}
+      isInteractive={isInteractive}
+      isSelected={isSelected}
       size={size}
       color={color}
       href={href}
@@ -61,7 +67,7 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
       rel={rel ?? defaultRel}
       accessibilityProps={{
         ...makeAccessible({
-          role: isLink ? 'link' : 'button',
+          role: isInteractive ? (isLink ? 'link' : 'button') : 'presentation',
         }),
       }}
       onBlur={onBlur}

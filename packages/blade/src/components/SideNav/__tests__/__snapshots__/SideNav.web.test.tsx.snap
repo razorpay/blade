@@ -238,7 +238,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c35.c35.c35.c35.c35 {
-  margin-left: 4px;
+  margin-left: 0px;
 }
 
 .c38.c38.c38.c38.c38 {
