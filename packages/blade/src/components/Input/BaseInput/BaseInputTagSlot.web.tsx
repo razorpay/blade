@@ -227,7 +227,8 @@ const BaseInputTagSlot = ({
       minHeight={makeSize(baseInputHeight[size])}
       maxHeight={
         // In TextArea with tagged input, we explicitly define maxHeight based on maxHeight so that tags dont overflow out of textarea
-        isDropdownTrigger && isTextArea
+        // And In table we strictly want the maxHeight to be defined to not mess up the table layout
+        (isDropdownTrigger && isTextArea) || isInsideTableEditableCell
           ? makeSize(baseInputHeight[size] * (numberOfLines ?? 1))
           : undefined
       }
