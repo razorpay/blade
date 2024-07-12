@@ -141,7 +141,6 @@ const _TablePagination = ({
   currentPage: controlledCurrentPage,
   onPageChange,
   onPageSizeChange,
-  backgroundColor = tablePagination.backgroundColor,
   defaultPageSize = tablePagination.defaultPageSize,
   showPageSizePicker = true,
   showPageNumberSelector = false,
@@ -156,6 +155,7 @@ const _TablePagination = ({
     totalItems,
     setPaginationRowSize,
     setPaginationType,
+    backgroundColor,
   } = useTableContext();
   const [currentPageSize, setCurrentPageSize] = React.useState<number>(defaultPageSize);
   const [currentPage, setCurrentPage] = React.useState<number>(
