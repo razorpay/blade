@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.25.0
+
+### Minor Changes
+
+- 45ed9267: feat: add avatar addons, added new topAddon and bottomAddon props
+
 ## 11.24.3
 
 ### Patch Changes
