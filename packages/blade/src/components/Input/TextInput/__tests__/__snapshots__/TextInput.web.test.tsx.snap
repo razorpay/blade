@@ -128,7 +128,7 @@ exports[`<TextInput /> should render 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 12px;
@@ -494,6 +494,14 @@ exports[`<TextInput /> should render large size 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding-right: 8px;
 }
 
@@ -630,7 +638,7 @@ exports[`<TextInput /> should render large size 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 8px;
@@ -1245,7 +1253,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 8px;

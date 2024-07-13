@@ -37,6 +37,7 @@ export type TableContextType = {
   backgroundColor: TableBackgroundColors;
   headerRowDensity?: TableHeaderRowProps['rowDensity'];
   setHeaderRowDensity: React.Dispatch<React.SetStateAction<TableHeaderRowProps['rowDensity']>>;
+  showBorderedCells: NonNullable<TableProps<unknown>['showBorderedCells']>;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -60,6 +61,7 @@ const TableContext = React.createContext<TableContextType>({
   setPaginationType: () => {},
   backgroundColor: 'surface.background.gray.intense',
   setHeaderRowDensity: () => {},
+  showBorderedCells: false,
 });
 
 const useTableContext = (): TableContextType => {

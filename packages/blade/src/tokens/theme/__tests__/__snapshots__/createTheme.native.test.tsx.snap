@@ -913,7 +913,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "onSubtle": "hsla(155, 100%, 21%, 1)",
           },
           "primary": {
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "normal": "hsl(332, 100%, 26%)",
           },
           "staticBlack": {
             "disabled": "hsla(0, 0%, 0%, 0.32)",
@@ -2268,7 +2268,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             "onSubtle": "hsla(155, 100%, 21%, 1)",
           },
           "primary": {
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "normal": "hsl(57, 100%, 52%)",
           },
           "staticBlack": {
             "disabled": "hsla(0, 0%, 0%, 0.32)",

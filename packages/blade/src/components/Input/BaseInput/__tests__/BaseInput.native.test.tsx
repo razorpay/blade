@@ -64,6 +64,42 @@ describe('<BaseInput />', () => {
     expect(helpText).toBeTruthy();
   });
 
+  it('should render input with no borders', () => {
+    const { toJSON } = renderWithTheme(
+      <BaseInput isTableInputCell={true} label="Enter name" id="name" />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render input with no borders in error state', () => {
+    const { toJSON } = renderWithTheme(
+      <BaseInput
+        isTableInputCell={true}
+        validationState="error"
+        errorText="Something went wrong"
+        label="Enter name"
+        id="name"
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render input with no borders in success state', () => {
+    const { toJSON } = renderWithTheme(
+      <BaseInput
+        isTableInputCell={false}
+        validationState="success"
+        successText="This seems valid"
+        label="Enter name"
+        id="name"
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render with icons', () => {
     const { toJSON } = renderWithTheme(
       <BaseInput

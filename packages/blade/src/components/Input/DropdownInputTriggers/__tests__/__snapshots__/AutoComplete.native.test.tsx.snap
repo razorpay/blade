@@ -217,6 +217,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
             <View
               currentInteraction="default"
               data-blade-component="base-box"
+              isTableInputCell={false}
               style={
                 [
                   {},
@@ -230,13 +231,14 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               <View
                 currentInteraction="default"
                 isDropdownTrigger={true}
+                isTableInputCell={false}
                 onClick={[Function]}
                 setShowAllTagsWithAnimation={[Function]}
                 size="medium"
                 style={
                   [
                     {
-                      "backgroundColor": "yellow",
+                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
                       "borderColor": "hsla(214, 28%, 84%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
@@ -370,6 +372,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           id="dropdown-7-trigger-1-input-2"
                           isDropdownTrigger={true}
                           isFocused={false}
+                          isTableInputCell={false}
                           isTextArea={false}
                           keyboardType="default"
                           multiline={false}
@@ -385,7 +388,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           style={
                             [
                               {
-                                "backgroundColor": "transparent",
+                                "backgroundColor": "hsla(0, 0%, 100%, 0)",
                                 "color": "hsla(211, 26%, 34%, 1)",
                                 "flexBasis": 0,
                                 "flexGrow": 1,
@@ -896,12 +899,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderColor": "transparent",
                           "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 4,
+                          "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
+                          "flexDirection": "column",
+                          "marginBottom": 2,
+                          "marginTop": 2,
                           "opacity": 1,
                           "paddingBottom": 8,
                           "paddingLeft": 8,
@@ -915,32 +919,34 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       }
                     >
                       <View
-                        alignItems="center"
-                        data-blade-component="base-box"
+                        alignItems="flex-start"
+                        data-blade-component="box"
                         display="flex"
-                        flexDirection="row"
                         justifyContent="center"
                         style={
                           [
                             {
-                              "alignItems": "center",
+                              "alignItems": "flex-start",
                               "display": "flex",
-                              "flexDirection": "row",
                               "justifyContent": "center",
+                              "width": "100%",
                             },
                           ]
                         }
+                        width="100%"
                       >
                         <View
                           alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
+                          height="20px"
                           justifyContent="center"
                           style={
                             [
                               {
                                 "alignItems": "center",
                                 "display": "flex",
+                                "height": 20,
                                 "justifyContent": "center",
                               },
                             ]
@@ -954,7 +960,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             style={
                               [
                                 {
-                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
@@ -1073,60 +1078,84 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           </View>
                         </View>
                         <View
-                          alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
-                          flexDirection="row"
+                          flexDirection="column"
                           style={
                             [
                               {
-                                "alignItems": "center",
                                 "display": "flex",
-                                "flexDirection": "row",
-                                "paddingLeft": 0,
+                                "flexDirection": "column",
+                                "paddingLeft": 8,
                                 "paddingRight": 8,
                               },
                             ]
                           }
                         >
-                          <Text
-                            accessible={true}
-                            color="interactive.text.gray.normal"
-                            data-blade-component="text"
-                            fontFamily="text"
-                            fontSize={100}
-                            fontStyle="normal"
-                            fontWeight="regular"
-                            lineHeight={100}
-                            numberOfLines={1}
+                          <View
+                            alignItems="center"
+                            data-blade-component="box"
+                            display="flex"
+                            flexDirection="row"
+                            height="20px"
                             style={
                               [
                                 {
-                                  "color": "hsla(212, 39%, 16%, 1)",
-                                  "fontFamily": "Inter",
-                                  "fontSize": 14,
-                                  "fontStyle": "normal",
-                                  "fontWeight": "400",
-                                  "letterSpacing": 0,
-                                  "lineHeight": 20,
-                                  "marginBottom": 0,
-                                  "marginLeft": 0,
-                                  "marginRight": 0,
-                                  "marginTop": 0,
-                                  "paddingBottom": 0,
-                                  "paddingLeft": 0,
-                                  "paddingRight": 0,
-                                  "paddingTop": 0,
-                                  "textDecorationLine": "none",
+                                  "alignItems": "center",
+                                  "display": "flex",
+                                  "flexDirection": "row",
+                                  "height": 20,
                                 },
                               ]
                             }
                           >
-                            Mango
-                          </Text>
+                            <Text
+                              accessible={true}
+                              color="interactive.text.gray.normal"
+                              data-blade-component="text"
+                              fontFamily="text"
+                              fontSize={100}
+                              fontStyle="normal"
+                              fontWeight="regular"
+                              lineHeight={100}
+                              numberOfLines={1}
+                              style={
+                                [
+                                  {
+                                    "color": "hsla(212, 39%, 16%, 1)",
+                                    "fontFamily": "Inter",
+                                    "fontSize": 14,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "400",
+                                    "letterSpacing": 0,
+                                    "lineHeight": 20,
+                                    "marginBottom": 0,
+                                    "marginLeft": 0,
+                                    "marginRight": 0,
+                                    "marginTop": 0,
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "textDecorationLine": "none",
+                                  },
+                                ]
+                              }
+                            >
+                              Mango
+                            </Text>
+                          </View>
+                          <View
+                            data-blade-component="box"
+                            style={
+                              [
+                                {},
+                              ]
+                            }
+                          />
                         </View>
                         <View
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           style={
                             [
                               {
@@ -1136,16 +1165,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           }
                         />
                       </View>
-                      <View
-                        data-blade-component="base-box"
-                        style={
-                          [
-                            {
-                              "paddingLeft": 24,
-                            },
-                          ]
-                        }
-                      />
                     </View>
                   </View>
                   <View
@@ -1184,12 +1203,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderColor": "transparent",
                           "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 4,
+                          "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
+                          "flexDirection": "column",
+                          "marginBottom": 2,
+                          "marginTop": 2,
                           "opacity": 1,
                           "paddingBottom": 8,
                           "paddingLeft": 8,
@@ -1203,32 +1223,34 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       }
                     >
                       <View
-                        alignItems="center"
-                        data-blade-component="base-box"
+                        alignItems="flex-start"
+                        data-blade-component="box"
                         display="flex"
-                        flexDirection="row"
                         justifyContent="center"
                         style={
                           [
                             {
-                              "alignItems": "center",
+                              "alignItems": "flex-start",
                               "display": "flex",
-                              "flexDirection": "row",
                               "justifyContent": "center",
+                              "width": "100%",
                             },
                           ]
                         }
+                        width="100%"
                       >
                         <View
                           alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
+                          height="20px"
                           justifyContent="center"
                           style={
                             [
                               {
                                 "alignItems": "center",
                                 "display": "flex",
+                                "height": 20,
                                 "justifyContent": "center",
                               },
                             ]
@@ -1242,7 +1264,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             style={
                               [
                                 {
-                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
@@ -1361,60 +1382,84 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           </View>
                         </View>
                         <View
-                          alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
-                          flexDirection="row"
+                          flexDirection="column"
                           style={
                             [
                               {
-                                "alignItems": "center",
                                 "display": "flex",
-                                "flexDirection": "row",
-                                "paddingLeft": 0,
+                                "flexDirection": "column",
+                                "paddingLeft": 8,
                                 "paddingRight": 8,
                               },
                             ]
                           }
                         >
-                          <Text
-                            accessible={true}
-                            color="interactive.text.gray.normal"
-                            data-blade-component="text"
-                            fontFamily="text"
-                            fontSize={100}
-                            fontStyle="normal"
-                            fontWeight="regular"
-                            lineHeight={100}
-                            numberOfLines={1}
+                          <View
+                            alignItems="center"
+                            data-blade-component="box"
+                            display="flex"
+                            flexDirection="row"
+                            height="20px"
                             style={
                               [
                                 {
-                                  "color": "hsla(212, 39%, 16%, 1)",
-                                  "fontFamily": "Inter",
-                                  "fontSize": 14,
-                                  "fontStyle": "normal",
-                                  "fontWeight": "400",
-                                  "letterSpacing": 0,
-                                  "lineHeight": 20,
-                                  "marginBottom": 0,
-                                  "marginLeft": 0,
-                                  "marginRight": 0,
-                                  "marginTop": 0,
-                                  "paddingBottom": 0,
-                                  "paddingLeft": 0,
-                                  "paddingRight": 0,
-                                  "paddingTop": 0,
-                                  "textDecorationLine": "none",
+                                  "alignItems": "center",
+                                  "display": "flex",
+                                  "flexDirection": "row",
+                                  "height": 20,
                                 },
                               ]
                             }
                           >
-                            Apple
-                          </Text>
+                            <Text
+                              accessible={true}
+                              color="interactive.text.gray.normal"
+                              data-blade-component="text"
+                              fontFamily="text"
+                              fontSize={100}
+                              fontStyle="normal"
+                              fontWeight="regular"
+                              lineHeight={100}
+                              numberOfLines={1}
+                              style={
+                                [
+                                  {
+                                    "color": "hsla(212, 39%, 16%, 1)",
+                                    "fontFamily": "Inter",
+                                    "fontSize": 14,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "400",
+                                    "letterSpacing": 0,
+                                    "lineHeight": 20,
+                                    "marginBottom": 0,
+                                    "marginLeft": 0,
+                                    "marginRight": 0,
+                                    "marginTop": 0,
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "textDecorationLine": "none",
+                                  },
+                                ]
+                              }
+                            >
+                              Apple
+                            </Text>
+                          </View>
+                          <View
+                            data-blade-component="box"
+                            style={
+                              [
+                                {},
+                              ]
+                            }
+                          />
                         </View>
                         <View
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           style={
                             [
                               {
@@ -1424,16 +1469,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           }
                         />
                       </View>
-                      <View
-                        data-blade-component="base-box"
-                        style={
-                          [
-                            {
-                              "paddingLeft": 24,
-                            },
-                          ]
-                        }
-                      />
                     </View>
                   </View>
                   <View
@@ -1472,12 +1507,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderColor": "transparent",
                           "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 4,
+                          "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
+                          "flexDirection": "column",
+                          "marginBottom": 2,
+                          "marginTop": 2,
                           "opacity": 1,
                           "paddingBottom": 8,
                           "paddingLeft": 8,
@@ -1491,32 +1527,34 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       }
                     >
                       <View
-                        alignItems="center"
-                        data-blade-component="base-box"
+                        alignItems="flex-start"
+                        data-blade-component="box"
                         display="flex"
-                        flexDirection="row"
                         justifyContent="center"
                         style={
                           [
                             {
-                              "alignItems": "center",
+                              "alignItems": "flex-start",
                               "display": "flex",
-                              "flexDirection": "row",
                               "justifyContent": "center",
+                              "width": "100%",
                             },
                           ]
                         }
+                        width="100%"
                       >
                         <View
                           alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
+                          height="20px"
                           justifyContent="center"
                           style={
                             [
                               {
                                 "alignItems": "center",
                                 "display": "flex",
+                                "height": 20,
                                 "justifyContent": "center",
                               },
                             ]
@@ -1530,7 +1568,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             style={
                               [
                                 {
-                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
@@ -1649,60 +1686,84 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           </View>
                         </View>
                         <View
-                          alignItems="center"
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           display="flex"
-                          flexDirection="row"
+                          flexDirection="column"
                           style={
                             [
                               {
-                                "alignItems": "center",
                                 "display": "flex",
-                                "flexDirection": "row",
-                                "paddingLeft": 0,
+                                "flexDirection": "column",
+                                "paddingLeft": 8,
                                 "paddingRight": 8,
                               },
                             ]
                           }
                         >
-                          <Text
-                            accessible={true}
-                            color="interactive.text.gray.normal"
-                            data-blade-component="text"
-                            fontFamily="text"
-                            fontSize={100}
-                            fontStyle="normal"
-                            fontWeight="regular"
-                            lineHeight={100}
-                            numberOfLines={1}
+                          <View
+                            alignItems="center"
+                            data-blade-component="box"
+                            display="flex"
+                            flexDirection="row"
+                            height="20px"
                             style={
                               [
                                 {
-                                  "color": "hsla(212, 39%, 16%, 1)",
-                                  "fontFamily": "Inter",
-                                  "fontSize": 14,
-                                  "fontStyle": "normal",
-                                  "fontWeight": "400",
-                                  "letterSpacing": 0,
-                                  "lineHeight": 20,
-                                  "marginBottom": 0,
-                                  "marginLeft": 0,
-                                  "marginRight": 0,
-                                  "marginTop": 0,
-                                  "paddingBottom": 0,
-                                  "paddingLeft": 0,
-                                  "paddingRight": 0,
-                                  "paddingTop": 0,
-                                  "textDecorationLine": "none",
+                                  "alignItems": "center",
+                                  "display": "flex",
+                                  "flexDirection": "row",
+                                  "height": 20,
                                 },
                               ]
                             }
                           >
-                            Banana
-                          </Text>
+                            <Text
+                              accessible={true}
+                              color="interactive.text.gray.normal"
+                              data-blade-component="text"
+                              fontFamily="text"
+                              fontSize={100}
+                              fontStyle="normal"
+                              fontWeight="regular"
+                              lineHeight={100}
+                              numberOfLines={1}
+                              style={
+                                [
+                                  {
+                                    "color": "hsla(212, 39%, 16%, 1)",
+                                    "fontFamily": "Inter",
+                                    "fontSize": 14,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "400",
+                                    "letterSpacing": 0,
+                                    "lineHeight": 20,
+                                    "marginBottom": 0,
+                                    "marginLeft": 0,
+                                    "marginRight": 0,
+                                    "marginTop": 0,
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "textDecorationLine": "none",
+                                  },
+                                ]
+                              }
+                            >
+                              Banana
+                            </Text>
+                          </View>
+                          <View
+                            data-blade-component="box"
+                            style={
+                              [
+                                {},
+                              ]
+                            }
+                          />
                         </View>
                         <View
-                          data-blade-component="base-box"
+                          data-blade-component="box"
                           style={
                             [
                               {
@@ -1712,16 +1773,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           }
                         />
                       </View>
-                      <View
-                        data-blade-component="base-box"
-                        style={
-                          [
-                            {
-                              "paddingLeft": 24,
-                            },
-                          ]
-                        }
-                      />
                     </View>
                   </View>
                   <View

@@ -8,19 +8,37 @@ import { Heading, Text } from '~components/Typography';
 import { getTextColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { IconColor } from '~components/Button/BaseButton/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { BladeElementRef } from '~utils/types';
 
-const AvatarButton = ({
-  href,
-  target,
-  rel,
-  variant = 'circle',
-  color = 'neutral',
-  size = 'medium',
-  icon: Icon,
-  imgProps,
-  children,
-}: AvatarButtonProps): React.ReactElement => {
+const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButtonProps> = (
+  {
+    href,
+    target,
+    rel,
+    variant = 'circle',
+    color = 'neutral',
+    size = 'medium',
+    icon: Icon,
+    imgProps,
+    children,
+    onBlur,
+    onFocus,
+    onClick,
+    onMouseLeave,
+    onMouseMove,
+    onMouseDown,
+    onPointerDown,
+    onPointerEnter,
+    onTouchStart,
+    onTouchEnd,
+    isSelected,
+  },
+  ref,
+): React.ReactElement => {
   const isLink = Boolean(href);
+  const isInteractive = Boolean(onClick || isLink);
+  const as = isInteractive ? (href ? 'a' : 'button') : 'div';
+
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
   const iconColor = getTextColorToken({
     property: 'icon',
@@ -37,7 +55,10 @@ const AvatarButton = ({
 
   return (
     <StyledAvatarButton
-      as={href ? 'a' : 'button'}
+      ref={ref as never}
+      as={as as never}
+      isInteractive={isInteractive}
+      isSelected={isSelected}
       size={size}
       color={color}
       href={href}
@@ -46,9 +67,19 @@ const AvatarButton = ({
       rel={rel ?? defaultRel}
       accessibilityProps={{
         ...makeAccessible({
-          role: isLink ? 'link' : 'button',
+          role: isInteractive ? (isLink ? 'link' : 'button') : 'presentation',
         }),
       }}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onClick={onClick}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onMouseDown={onMouseDown}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       <BaseBox
         display="flex"
@@ -80,5 +111,7 @@ const AvatarButton = ({
     </StyledAvatarButton>
   );
 };
+
+const AvatarButton = React.forwardRef(_AvatarButton);
 
 export { AvatarButton };

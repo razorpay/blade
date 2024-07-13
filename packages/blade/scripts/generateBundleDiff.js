@@ -5,7 +5,7 @@ const generateBundleDiff = async () => {
   // Get the base bundle size report from the master branch
   const baseBundleStatsURL =
     process.env.BASE_BUNDLE_SIZE_STATS_URL ||
-    'https://raw.githubusercontent.com/razorpay/blade/master/packages/blade/baseBundleSizeStats.json';
+    'https://raw.githubusercontent.com/razorpay/blade/bundle-size-stats/packages/blade/baseBundleSizeStats.json';
   const response = await fetch(baseBundleStatsURL);
 
   // Parse the JSON response if the request is successful

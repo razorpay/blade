@@ -86,7 +86,7 @@ const tableRow = {
     backgroundColorSelectedActive: 'interactive.background.primary.faded',
   },
   borderBottomWidth: 'thin',
-  borderBottomColor: 'surface.border.gray.muted',
+  borderColor: 'surface.border.gray.muted',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.xquick',
 } as const;
@@ -119,6 +119,12 @@ const tablePagination = {
   defaultPageSize: 10,
 } as const;
 
+const tableEditableCellRowDensityToInputSizeMap = {
+  compact: 'medium',
+  normal: 'large',
+  comfortable: 'medium',
+} as const;
+
 export {
   tableHeader,
   tableFooter,
@@ -129,4 +135,5 @@ export {
   tableBackgroundColor,
   firstColumnStickyHeaderFooterZIndex,
   checkboxCellWidth,
+  tableEditableCellRowDensityToInputSizeMap,
 };

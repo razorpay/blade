@@ -1,5 +1,80 @@
 # @razorpay/blade
 
+## 11.25.0
+
+### Minor Changes
+
+- 45ed9267: feat: add avatar addons, added new topAddon and bottomAddon props
+
+## 11.24.3
+
+### Patch Changes
+
+- 343d494d: fix(ActionListItem, MenuItem): truncate text without spaces and add htmlTitle
+
+## 11.24.2
+
+### Patch Changes
+
+- 733b9545: fix: change onRemove/onReupload params
+
+## 11.24.1
+
+### Patch Changes
+
+- b38943c0: fix: table multiselect with pagination bug
+- 636952b6: feat: add multiselection-mode prop to Table
+- caee2688: fix: add button type button
+
+## 11.24.0
+
+### Minor Changes
+
+- 03837f9f: feat: add `TableEditableCell` component for Table
+
+## 11.23.3
+
+### Patch Changes
+
+- 5b3c42db: fix: white-labeling issue with surface text primary
+
+## 11.23.2
+
+### Patch Changes
+
+- 59a333b4: fix(FileUpload): correctly update errortText
+- bb06013f: fix(ProgressBar): show percentage with decimal when using as meter
+
+## 11.23.1
+
+### Patch Changes
+
+- 00238183: feat(Menu, Dropdown): add width props on MenuOverlay and allow it in SelectInput Dropdown
+
+## 11.23.0
+
+### Minor Changes
+
+- fe9a0cff: feat(blade): add TopNav component
+
+## 11.22.0
+
+### Minor Changes
+
+- 2cb7668b: feat(Menu): add Menu component
+
+## 11.21.9
+
+### Patch Changes
+
+- d12977d5: fix(FileUpload): correctly udpate state in controlled mode
+
+## 11.21.8
+
+### Patch Changes
+
+- 9b2883f8: feat: add iconColor prop to List & ListItem
+
 ## 11.21.7
 
 ### Patch Changes

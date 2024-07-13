@@ -8,7 +8,7 @@ exports[`SideNav should render 1`] = `
   flex-direction: column;
   position: fixed;
   height: 100%;
-  width: 264px;
+  width: 245px;
   top: 0px;
   left: 0px;
   background-color: hsla(210,40%,98%,1);
@@ -238,7 +238,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c35.c35.c35.c35.c35 {
-  margin-left: 4px;
+  margin-left: 0px;
 }
 
 .c38.c38.c38.c38.c38 {
@@ -755,6 +755,12 @@ exports[`SideNav should render 1`] = `
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c0.c0.c0.c0.c0 {
+    width: 264px;
   }
 }
 

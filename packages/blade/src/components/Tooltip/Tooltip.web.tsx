@@ -90,7 +90,6 @@ const Tooltip = ({
 
   return (
     <TooltipContext.Provider value={true}>
-      {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ref: refs.setReference,
         ...makeAccessible({ label: content }),
@@ -102,7 +101,6 @@ const Tooltip = ({
             ref={refs.setFloating}
             style={floatingStyles}
             pointerEvents="none"
-            // TODO: Tokenize zIndex values
             zIndex={zIndex}
             {...getFloatingProps()}
             {...metaAttribute({ name: MetaConstants.Tooltip })}

@@ -1,0 +1,68 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
+import React from 'react';
+import { footerPaddingTop, headerMarginBottom, overlayPaddingX } from '../tokens';
+import type { MenuFooterProps, MenuHeaderProps } from '../types';
+import { MenuDivider } from './MenuDivider';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute/metaConstants';
+import { Box } from '~components/Box';
+
+const _MenuHeader = ({
+  title,
+  subtitle,
+  leading,
+  titleSuffix,
+  trailing,
+  testID,
+}: MenuHeaderProps): React.ReactElement => {
+  return (
+    <>
+      <BaseHeader
+        title={title}
+        subtitle={subtitle}
+        leading={leading}
+        trailing={trailing}
+        titleSuffix={titleSuffix}
+        metaComponentName={MetaConstants.MenuHeader}
+        testID={testID}
+        // back button
+        showBackButton={false}
+        // close button
+        showCloseButton={false}
+        paddingX={overlayPaddingX}
+        marginTop="spacing.0"
+        marginBottom={headerMarginBottom}
+        showDivider={false}
+      />
+      <MenuDivider />
+    </>
+  );
+};
+
+const MenuHeader = assignWithoutSideEffects(_MenuHeader, {
+  componentId: 'MenuHeader',
+});
+
+const _MenuFooter = ({ children, testID }: MenuFooterProps): React.ReactElement => {
+  return (
+    <Box marginTop="spacing.2">
+      <MenuDivider />
+      <BaseFooter
+        metaComponentName={MetaConstants.MenuFooter}
+        showDivider={false}
+        padding={[footerPaddingTop, overlayPaddingX, 'spacing.0', overlayPaddingX]}
+        testID={testID}
+      >
+        {children}
+      </BaseFooter>
+    </Box>
+  );
+};
+
+const MenuFooter = assignWithoutSideEffects(_MenuFooter, {
+  componentId: 'MenuFooter',
+});
+
+export { MenuHeader, MenuFooter };

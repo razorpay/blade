@@ -235,7 +235,7 @@ ActionListWithSections.parameters = {
 const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.gray.intense">
+      <Box backgroundColor="surface.background.gray.intense" maxWidth="300px">
         <ActionListComponent>
           <ActionListSection title="Account">
             <ActionListItem
@@ -243,7 +243,12 @@ const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = ()
               value="profile"
               leading={<ActionListItemIcon icon={UserIcon} />}
             />
-            <ActionListItem title="Credit" value="credit" description="check your credit here!" />
+            <ActionListItem
+              title="Credit"
+              value="credit"
+              leading={<ActionListItemIcon icon={UserIcon} />}
+              description="check your credit here!"
+            />
             <ActionListItem title="Disabled" value="disabled" isDisabled />
           </ActionListSection>
           <ActionListItem
@@ -273,6 +278,11 @@ const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = ()
                 <ActionListItemBadge>last updated: 2hr ago</ActionListItemBadge>
               </ActionListItemBadgeGroup>
             }
+          />
+          <ActionListItem
+            leading={<ActionListItemIcon icon={UserIcon} />}
+            title="saurabhdaware.razorpay@gmail.com"
+            value="email"
           />
           <ActionListItem
             leading={<ActionListItemIcon icon={LogOutIcon} />}
