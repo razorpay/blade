@@ -1663,7 +1663,6 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components.Table,
   bladeThemeData.components.Drawer,
   bladeThemeData.components.Menu,
-  bladeThemeData.components.MenuItem,
 ]
   .map((component) => component.key)
   .flat();
