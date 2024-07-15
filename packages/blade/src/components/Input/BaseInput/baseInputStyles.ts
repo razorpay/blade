@@ -183,7 +183,6 @@ export const getBaseInputStyles = ({
   hasTags,
   isDropdownTrigger,
   size,
-  isTableInputCell,
   valueComponentType,
 }: GetInputStyles): CSSObject => {
   const {
@@ -204,6 +203,7 @@ export const getBaseInputStyles = ({
 
   const isDropdownWithTags = isDropdownTrigger && hasTags;
   const isReactNative = getPlatformType() === 'react-native';
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const shouldHaveFlexibleHeight = isTextArea || isDropdownWithTags;
 
   return {

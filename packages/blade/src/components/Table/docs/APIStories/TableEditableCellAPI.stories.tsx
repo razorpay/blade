@@ -7,7 +7,6 @@ import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter'
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Code } from '~components/Typography';
-import { Badge } from '~components/Badge';
 import { TableEditableCell, TableEditableDropdownCell } from '~components/Table/TableEditableCell';
 import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
