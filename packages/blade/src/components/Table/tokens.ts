@@ -99,7 +99,6 @@ const tableToolbar = {
 } as const;
 
 const tablePagination = {
-  backgroundColor: 'transparent',
   padding: 'spacing.4',
   pageSelectionButton: {
     backgroundColor: 'transparent',
