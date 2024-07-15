@@ -1,9 +1,17 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import type { TableData } from '../../types';
-import { Table as TableComponent } from '../../Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableBody, TableRow, TableCell } from '../../TableBody';
-import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
+import type { TableProps, TableData, TableEditableCellProps } from '../../index';
+import {
+  Table as TableComponent,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableFooter,
+  TableFooterRow,
+  TableFooterCell,
+} from '../../index';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Code } from '~components/Typography';
@@ -25,6 +33,15 @@ export default {
     headerKey: {
       control: {
         disable: true,
+      },
+    },
+    rowDensity: {
+      options: ['comfortable', 'normal', 'compact'],
+      control: {
+        type: 'radio',
+      },
+      table: {
+        category: 'TableProps',
       },
     },
   },
@@ -81,7 +98,9 @@ const data: TableData<Item> = {
   nodes,
 };
 
-const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
+type TableTemplateProps = TableEditableCellProps & { rowDensity: TableProps<any>['rowDensity'] };
+
+const TableTemplate: StoryFn<TableTemplateProps> = ({ rowDensity, ...args }) => {
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
@@ -89,7 +108,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent showBorderedCells data={data}>
+      <TableComponent showBorderedCells data={data} rowDensity={rowDensity}>
         {(tableData) => (
           <>
             <TableHeader>
@@ -109,9 +128,9 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
                   <TableEditableCell
+                    {...args}
                     accessibilityLabel="Amount"
                     defaultValue={`${tableItem.amount}`}
-                    {...args}
                   />
                   <TableEditableCell
                     accessibilityLabel="Amount"
@@ -122,10 +141,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   <TableEditableDropdownCell selectionType="multiple">
                     <AutoComplete
                       accessibilityLabel="Method"
-                      validationState={
-                        (['none', 'error', 'success'] as const).at(Math.floor(Math.random() * 3)) ??
-                        'none'
-                      }
+                      validationState={args.validationState}
                       errorText="Invalid Method"
                       successText="Valid Method"
                     />
@@ -145,7 +161,12 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                     })}
                   </TableCell>
                   <TableEditableDropdownCell>
-                    <SelectInput accessibilityLabel="Status" />
+                    <SelectInput
+                      validationState={args.validationState}
+                      accessibilityLabel="Status"
+                      errorText="Invalid Status"
+                      successText="Valid Status"
+                    />
                     <DropdownOverlay>
                       <ActionList>
                         <ActionListItem title="Pending" value="pending" />
@@ -175,5 +196,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
 };
 
 export const TableEditableCellStory = TableTemplate.bind({});
+TableEditableCellStory.args = {
+  rowDensity: 'normal',
+};
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 TableEditableCellStory.storyName = 'TableEditableCell';

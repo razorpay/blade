@@ -290,10 +290,10 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
   width: 100%;
 }
 

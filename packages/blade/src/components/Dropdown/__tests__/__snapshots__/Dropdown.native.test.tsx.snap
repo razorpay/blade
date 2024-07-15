@@ -1126,13 +1126,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         alignItems="flex-start"
                         data-blade-component="box"
                         display="flex"
-                        justifyContent="center"
+                        justifyContent="left"
                         style={
                           [
                             {
                               "alignItems": "flex-start",
                               "display": "flex",
-                              "justifyContent": "center",
+                              "justifyContent": "left",
                               "width": "100%",
                             },
                           ]
@@ -1305,13 +1305,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         alignItems="flex-start"
                         data-blade-component="box"
                         display="flex"
-                        justifyContent="center"
+                        justifyContent="left"
                         style={
                           [
                             {
                               "alignItems": "flex-start",
                               "display": "flex",
-                              "justifyContent": "center",
+                              "justifyContent": "left",
                               "width": "100%",
                             },
                           ]
