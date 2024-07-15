@@ -121,7 +121,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                     errorText="Account number is invalid"
                   />
                   <TableEditableDropdownCell selectionType="multiple">
-                    <SelectInput
+                    <AutoComplete
                       accessibilityLabel="Method"
                       validationState={
                         (['none', 'error', 'success'] as const).at(Math.floor(Math.random() * 3)) ??
@@ -145,22 +145,16 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                       day: '2-digit',
                     })}
                   </TableCell>
-                  <TableCell>
-                    <Badge
-                      size="medium"
-                      color={
-                        tableItem.status === 'Completed'
-                          ? 'positive'
-                          : tableItem.status === 'Pending'
-                          ? 'notice'
-                          : tableItem.status === 'Failed'
-                          ? 'negative'
-                          : 'primary'
-                      }
-                    >
-                      {tableItem.status}
-                    </Badge>
-                  </TableCell>
+                  <TableEditableDropdownCell>
+                    <SelectInput accessibilityLabel="Status" />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="Pending" value="pending" />
+                        <ActionListItem title="Completed" value="completed" />
+                        <ActionListItem title="Failed" value="failed" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
                 </TableRow>
               ))}
             </TableBody>

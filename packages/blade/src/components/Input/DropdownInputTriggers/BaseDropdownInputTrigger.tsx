@@ -233,6 +233,9 @@ const _BaseDropdownInputTrigger = (
     trailingIcon: validationStateToInputTrailingIconMap[props.validationState ?? 'none'],
   };
 
+  const isValidationStateNone =
+    props.validationState === 'none' || props.validationState === undefined;
+
   return (
     <BaseInput
       as={props.isSelectInput ? 'button' : 'input'}
@@ -313,8 +316,7 @@ const _BaseDropdownInputTrigger = (
       onKeyDown={props.onTriggerKeydown}
       size={props.size}
       trailingInteractionElement={
-        isAutoCompleteInHeader ||
-        (isInsideTableEditableCell && props.validationState !== 'none') ? null : (
+        isAutoCompleteInHeader || (isInsideTableEditableCell && !isValidationStateNone) ? null : (
           <InputChevronIcon
             onClick={() => {
               if (!props.isDisabled) {

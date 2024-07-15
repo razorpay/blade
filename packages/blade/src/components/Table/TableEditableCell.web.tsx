@@ -8,6 +8,7 @@ import {
   validationStateToInputTrailingIconMap,
 } from './tokens';
 import { ComponentIds } from './componentIds';
+import { TableEditableCellContext } from './TableEditableCellContext';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import type { MarginProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
@@ -17,9 +18,8 @@ import { BaseInput } from '~components/Input/BaseInput';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Dropdown } from '~components/Dropdown';
-import { TableEditableCellContext } from './TableEditableCellContext';
 
-export const StyledEditableCell = styled(StyledCell)<{
+const StyledEditableCell = styled(StyledCell)<{
   rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
 }>(({ theme, rowDensity }) => ({
   '&&&': {
@@ -30,7 +30,7 @@ export const StyledEditableCell = styled(StyledCell)<{
   },
 }));
 
-export const getEditableInputMargin = ({
+const getEditableInputMargin = ({
   rowDensity,
 }: {
   rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;

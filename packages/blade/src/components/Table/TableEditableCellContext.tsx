@@ -1,10 +1,14 @@
 import React from 'react';
 
-const TableEditableCellContext = React.createContext<{ isInsideTableEditableCell: boolean }>({
+type TableEditableCellContextType = {
+  isInsideTableEditableCell: boolean;
+};
+
+const TableEditableCellContext = React.createContext<TableEditableCellContextType>({
   isInsideTableEditableCell: false,
 });
 
-const useTableEditableCell = () => {
+const useTableEditableCell = (): TableEditableCellContextType => {
   const contextValue = React.useContext(TableEditableCellContext);
   return contextValue;
 };

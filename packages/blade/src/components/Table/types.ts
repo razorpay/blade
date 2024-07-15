@@ -1,7 +1,7 @@
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { DropdownProps } from '~components/Dropdown';
+import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
