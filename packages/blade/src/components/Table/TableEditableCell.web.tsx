@@ -121,6 +121,7 @@ const _TableEditableCell = ({
               trailingButton={trailingButton}
               errorText={errorText}
               successText={successText}
+              showHintsAsTooltip={true}
             />
           </Box>
         </CellWrapper>

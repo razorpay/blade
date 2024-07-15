@@ -231,6 +231,7 @@ const _BaseDropdownInputTrigger = (
     id: 'table-editable-cell-input',
     size: tableEditableCellRowDensityToInputSizeMap[rowDensity],
     trailingIcon: validationStateToInputTrailingIconMap[props.validationState ?? 'none'],
+    showHintsAsTooltip: true,
   };
 
   const isValidationStateNone =

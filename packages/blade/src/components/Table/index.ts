@@ -5,4 +5,4 @@ export * from './TableFooter';
 export * from './TablePagination';
 export * from './TableToolbar';
 export * from './types';
-export { TableEditableCell } from './TableEditableCell';
+export { TableEditableCell, TableEditableDropdownCell } from './TableEditableCell';

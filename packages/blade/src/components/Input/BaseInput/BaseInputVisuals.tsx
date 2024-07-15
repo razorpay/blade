@@ -23,7 +23,7 @@ type InputVisuals = Pick<
   | 'validationState'
   | 'size'
   | 'trailingButton'
-  | 'isTableInputCell'
+  | 'showHintsAsTooltip'
   | 'errorText'
   | 'successText'
 > & {
@@ -201,16 +201,16 @@ const ValidationIconTooltip = ({
   validationState,
   errorText,
   successText,
-  isTableInputCell,
+  showHintsAsTooltip,
 }: {
   children: ReactElement;
   validationState: BaseInputProps['validationState'];
   errorText: BaseInputProps['errorText'];
   successText: BaseInputProps['errorText'];
-  isTableInputCell: BaseInputProps['isTableInputCell'];
+  showHintsAsTooltip: BaseInputProps['showHintsAsTooltip'];
 }) => {
   if (
-    (isTableInputCell && validationState === 'error' && errorText) ||
+    (showHintsAsTooltip && validationState === 'error' && errorText) ||
     (validationState === 'success' && successText)
   ) {
     return (
@@ -235,7 +235,7 @@ export const BaseInputVisuals = ({
   isDisabled,
   validationState = 'none',
   size,
-  isTableInputCell,
+  showHintsAsTooltip,
   errorText,
   successText,
   trailingButton: TrailingButton,
@@ -352,7 +352,7 @@ export const BaseInputVisuals = ({
             {...getTrailingIconStyles({ hasTrailingIcon, hasTrailingButton })}
           >
             <ValidationIconTooltip
-              isTableInputCell={isTableInputCell}
+              showHintsAsTooltip={showHintsAsTooltip}
               errorText={errorText}
               successText={successText}
               validationState={validationState}
