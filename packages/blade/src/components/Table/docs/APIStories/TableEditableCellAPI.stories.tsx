@@ -98,7 +98,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-type TableTemplateProps = TableEditableCellProps & { rowDensity: TableProps<any>['rowDensity'] };
+type TableTemplateProps = TableEditableCellProps & { rowDensity: TableProps<never>['rowDensity'] };
 
 const TableTemplate: StoryFn<TableTemplateProps> = ({ rowDensity, ...args }) => {
   return (

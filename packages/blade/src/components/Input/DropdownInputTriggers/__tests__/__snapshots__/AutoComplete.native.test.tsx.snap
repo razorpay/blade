@@ -922,13 +922,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         alignItems="flex-start"
                         data-blade-component="box"
                         display="flex"
-                        justifyContent="left"
+                        justifyContent="flex-start"
                         style={
                           [
                             {
                               "alignItems": "flex-start",
                               "display": "flex",
-                              "justifyContent": "left",
+                              "justifyContent": "flex-start",
                               "width": "100%",
                             },
                           ]
@@ -1226,13 +1226,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         alignItems="flex-start"
                         data-blade-component="box"
                         display="flex"
-                        justifyContent="left"
+                        justifyContent="flex-start"
                         style={
                           [
                             {
                               "alignItems": "flex-start",
                               "display": "flex",
-                              "justifyContent": "left",
+                              "justifyContent": "flex-start",
                               "width": "100%",
                             },
                           ]
@@ -1530,13 +1530,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         alignItems="flex-start"
                         data-blade-component="box"
                         display="flex"
-                        justifyContent="left"
+                        justifyContent="flex-start"
                         style={
                           [
                             {
                               "alignItems": "flex-start",
                               "display": "flex",
-                              "justifyContent": "left",
+                              "justifyContent": "flex-start",
                               "width": "100%",
                             },
                           ]
