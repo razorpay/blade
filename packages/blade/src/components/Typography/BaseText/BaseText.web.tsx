@@ -7,6 +7,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledBaseText = styled.div.withConfig({
   shouldForwardProp: omitPropsFromHTML,
@@ -49,31 +50,35 @@ const StyledBaseText = styled.div.withConfig({
   },
 );
 
-export const BaseText = ({
-  id,
-  color,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  fontStyle,
-  textDecorationLine,
-  lineHeight,
-  letterSpacing,
-  as,
-  textAlign,
-  children,
-  truncateAfterLines,
-  wordBreak,
-  opacity,
-  className,
-  style,
-  accessibilityProps = {},
-  componentName = MetaConstants.BaseText,
-  testID,
-  ...styledProps
-}: BaseTextProps): ReactElement => {
+const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> = (
+  {
+    id,
+    color,
+    fontFamily,
+    fontSize,
+    fontWeight,
+    fontStyle,
+    textDecorationLine,
+    lineHeight,
+    letterSpacing,
+    as,
+    textAlign,
+    children,
+    truncateAfterLines,
+    wordBreak,
+    opacity,
+    className,
+    style,
+    accessibilityProps = {},
+    componentName = MetaConstants.BaseText,
+    testID,
+    ...styledProps
+  },
+  ref,
+): ReactElement => {
   return (
     <StyledBaseText
+      ref={ref as never}
       {...getStyledProps(styledProps)}
       color={color}
       fontFamily={fontFamily}
@@ -98,3 +103,6 @@ export const BaseText = ({
     </StyledBaseText>
   );
 };
+
+const BaseText = React.forwardRef(_BaseText);
+export { BaseText };

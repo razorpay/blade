@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import type { AvatarProps } from '../Avatar';
 import { Avatar as AvatarComponent } from '../Avatar';
+import type { AvatarGroupProps } from '../AvatarGroup';
 import { AvatarGroup as AvatarGroupComponent } from '../AvatarGroup';
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
@@ -52,7 +52,7 @@ export default {
       page: Page,
     },
   },
-} as Meta<AvatarProps>;
+} as Meta<AvatarGroupProps>;
 
 const AvatarGroupTemplate: StoryFn<typeof AvatarGroupComponent> = (args) => {
   const names = [

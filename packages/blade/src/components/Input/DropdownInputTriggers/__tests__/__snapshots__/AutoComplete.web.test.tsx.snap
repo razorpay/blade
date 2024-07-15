@@ -577,6 +577,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .c60.c60.c60.c60.c60 {

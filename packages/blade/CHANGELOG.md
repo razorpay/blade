@@ -1,5 +1,31 @@
 # @razorpay/blade
 
+## 11.25.0
+
+### Minor Changes
+
+- 45ed9267: feat: add avatar addons, added new topAddon and bottomAddon props
+
+## 11.24.3
+
+### Patch Changes
+
+- 343d494d: fix(ActionListItem, MenuItem): truncate text without spaces and add htmlTitle
+
+## 11.24.2
+
+### Patch Changes
+
+- 733b9545: fix: change onRemove/onReupload params
+
+## 11.24.1
+
+### Patch Changes
+
+- b38943c0: fix: table multiselect with pagination bug
+- 636952b6: feat: add multiselection-mode prop to Table
+- caee2688: fix: add button type button
+
 ## 11.24.0
 
 ### Minor Changes

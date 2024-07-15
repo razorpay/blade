@@ -376,9 +376,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 // TODO - Remove this in the next major release
                 // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
                 if (onReupload) {
-                  onReupload({ file: selectedFiles[0] });
+                  onReupload({ file });
                 } else {
-                  onRemove?.({ file: selectedFiles[0] });
+                  onRemove?.({ file });
                 }
                 setIsActive(false);
               }}

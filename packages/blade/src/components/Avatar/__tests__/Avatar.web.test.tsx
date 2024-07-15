@@ -25,9 +25,9 @@ describe('<Avatar />', () => {
   it('should render avatar with correct name initials', () => {
     const { getAllByRole } = renderWithTheme(
       <Box>
-        <Avatar name="Nitin Kumar" />
-        <Avatar name="Anurag" />
-        <Avatar name="Rama Krushna Behra" />
+        <Avatar onClick={() => console.log('click')} name="Nitin Kumar" />
+        <Avatar onClick={() => console.log('click')} name="Anurag" />
+        <Avatar onClick={() => console.log('click')} name="Rama Krushna Behra" />
       </Box>,
     );
     const [avatar1, avatar2, avatar3] = getAllByRole('button');

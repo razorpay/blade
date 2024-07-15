@@ -93,6 +93,20 @@ type AvatarCommonProps = {
    * Click handler for the avatar.
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isSelected?: boolean;
+  /**
+   * Custom icon component to render at bottom of the avatar.
+   * Only accepts:
+   * - IconComponent
+   */
+  bottomAddon?: IconComponent;
+  /**
+   * Custom component to render at top of the avatar.
+   *
+   * Only accepts:
+   * - Indicator
+   */
+  topAddon?: React.ReactElement;
   testID?: string;
 } & BladeCommonEvents &
   StyledPropsBlade;

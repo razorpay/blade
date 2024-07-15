@@ -169,7 +169,13 @@ exports[`TopNav should render 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c29.c29.c29.c29.c29 {
+.c28.c28.c28.c28.c28 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.c30.c30.c30.c30.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -189,7 +195,7 @@ exports[`TopNav should render 1`] = `
   height: 100%;
 }
 
-.c31.c31.c31.c31.c31 {
+.c32.c32.c32.c32.c32 {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -328,7 +334,7 @@ exports[`TopNav should render 1`] = `
   transition-timing-function: 150px;
 }
 
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -528,16 +534,12 @@ exports[`TopNav should render 1`] = `
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c27.c27.c27.c27.c27:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,0.18);
-}
-
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
+  display: block;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
   min-height: 36px;
   height: 36px;
   width: 36px;
@@ -546,23 +548,12 @@ exports[`TopNav should render 1`] = `
   background-color: hsla(211,20%,52%,0.18);
 }
 
-.c28.c28.c28.c28.c28 img {
+.c29.c29.c29.c29.c29 img {
   display: block;
   height: 36px;
   width: 36px;
   border-radius: 9999px;
   object-fit: cover;
-}
-
-.c28.c28.c28.c28.c28:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 @media screen and (min-width:768px) {
@@ -660,31 +651,31 @@ exports[`TopNav should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c31.c31.c31.c31.c31 {
+  .c32.c32.c32.c32.c32 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c31.c31.c31.c31.c31 {
+  .c32.c32.c32.c32.c32 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c31.c31.c31.c31.c31 {
+  .c32.c32.c32.c32.c32 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c31.c31.c31.c31.c31 {
+  .c32.c32.c32.c32.c32 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c31.c31.c31.c31.c31 {
+  .c32.c32.c32.c32.c32 {
     pointer-events: none;
   }
 }
@@ -1034,26 +1025,31 @@ exports[`TopNav should render 1`] = `
           class="c26 c27"
           data-blade-component="avatar"
         >
-          <button
+          <div
             class="c28"
-            color="neutral"
+            data-blade-component="base-box"
           >
             <div
               class="c29"
-              data-blade-component="base-box"
+              color="neutral"
             >
-              <p
+              <div
                 class="c30"
-                data-blade-component="text"
+                data-blade-component="base-box"
               >
-                AH
-              </p>
+                <p
+                  class="c31"
+                  data-blade-component="text"
+                >
+                  AH
+                </p>
+              </div>
             </div>
-          </button>
+          </div>
         </div>
       </div>
       <div
-        class="c31"
+        class="c32"
         data-blade-component="box"
         pointer-events="none"
       >
