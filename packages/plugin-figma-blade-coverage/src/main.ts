@@ -109,7 +109,7 @@ const renderCoverageCard = async ({
     }
     coverageCardInstance.y = mainFrameNode.y - coverageCardComponent.height;
 
-    // import styles for popsitive, negative and notice colors and set their id in BLADE_INTENT_COLOR_KEYS
+    // import styles for positive, negative and notice colors and set their id in BLADE_INTENT_COLOR_KEYS
     for await (const [intent, intentObject] of Object.entries(BLADE_INTENT_COLOR_KEYS)) {
       const colorStyle = await figma.importStyleByKeyAsync(intentObject.key);
       BLADE_INTENT_COLOR_KEYS[intent as 'positive' | 'negative' | 'notice'].id = colorStyle.id;
@@ -418,7 +418,9 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           'root',
           'wrapper',
           'bottom-sheet-container',
-          'accordion-header',
+          'accordion-header container',
+          'overlay', // Drawer Overlay
+          'Marker', // Step Marker
           'Summary Row',
         ];
         if (
