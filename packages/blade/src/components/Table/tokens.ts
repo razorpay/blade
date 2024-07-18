@@ -1,3 +1,4 @@
+import { AlertCircleIcon, CheckIcon } from '~components/Icons';
 import { size } from '~tokens/global';
 
 const firstColumnStickyHeaderFooterZIndex = 2;
@@ -124,6 +125,18 @@ const tableEditableCellRowDensityToInputSizeMap = {
   comfortable: 'medium',
 } as const;
 
+const validationStateToInputTrailingIconMap = {
+  none: undefined,
+  success: CheckIcon,
+  error: AlertCircleIcon,
+};
+
+const rowDensityToIsTableInputCellMapping = {
+  comfortable: false,
+  normal: true,
+  compact: true,
+};
+
 export {
   tableHeader,
   tableFooter,
@@ -135,4 +148,6 @@ export {
   firstColumnStickyHeaderFooterZIndex,
   checkboxCellWidth,
   tableEditableCellRowDensityToInputSizeMap,
+  validationStateToInputTrailingIconMap,
+  rowDensityToIsTableInputCellMapping,
 };

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
 import { useTableContext } from './TableContext';
-import { checkboxCellWidth, tableEditableCellRowDensityToInputSizeMap, tableRow } from './tokens';
+import { checkboxCellWidth, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
 import type {
   TableProps,
@@ -10,22 +10,17 @@ import type {
   TableRowProps,
   TableCellProps,
   TableBackgroundColors,
-  TableEditableCellProps,
 } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
-import { castWebType, makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
-import { BaseInput } from '~components/Input/BaseInput';
-import { Box } from '~components/Box';
-import { AlertCircleIcon, CheckIcon } from '~components/Icons';
-import type { MarginProps } from '~components/Box/BaseBox/types/spacingTypes';
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -152,7 +147,7 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
   componentId: ComponentIds.TableBody,
 });
 
-const StyledCell = styled(Cell)<{
+export const StyledCell = styled(Cell)<{
   $backgroundColor: TableBackgroundColors;
 }>(({ theme, $backgroundColor }) => ({
   '&&&': {
@@ -165,7 +160,7 @@ const StyledCell = styled(Cell)<{
   },
 }));
 
-const CellWrapper = styled(BaseBox)<{
+export const CellWrapper = styled(BaseBox)<{
   rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   showStripedRows?: boolean;
   hasPadding?: boolean;
@@ -182,6 +177,7 @@ const CellWrapper = styled(BaseBox)<{
       paddingRight: hasPadding ? makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])) : '0px',
       minHeight: makeSize(getIn(size, tableRow.minHeight[rowDensity])),
       height: '100%',
+      width: '100%',
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
         borderBottomColor: getIn(theme.colors, tableRow.borderColor),
@@ -224,132 +220,6 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
 
 const TableCell = assignWithoutSideEffects(_TableCell, {
   componentId: ComponentIds.TableCell,
-});
-
-const StyledEditableCell = styled(StyledCell)<{
-  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
-}>(({ theme, rowDensity }) => ({
-  '&&&': {
-    '&:focus-visible': { outline: '1px solid' },
-    '&:focus-within': {
-      ...(rowDensity !== 'comfortable' ? getFocusRingStyles({ theme, negativeOffset: true }) : {}),
-    },
-  },
-}));
-
-const validationStateToInputTrailingIconMap = {
-  none: undefined,
-  success: CheckIcon,
-  error: AlertCircleIcon,
-};
-
-const rowDensityToIsTableInputCellMapping = {
-  comfortable: false,
-  normal: true,
-  compact: true,
-};
-
-const getEditableInputMargin = ({
-  rowDensity,
-}: {
-  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
-}): MarginProps['margin'] => {
-  if (rowDensity === 'comfortable') {
-    return ['spacing.4', 'spacing.4'];
-  }
-
-  return 'spacing.2';
-};
-
-const _TableEditableCell = ({
-  validationState = 'none',
-  accessibilityLabel,
-  autoCapitalize,
-  autoCompleteSuggestionType,
-  autoFocus,
-  defaultValue,
-  isDisabled,
-  isRequired,
-  keyboardReturnKeyType,
-  leadingIcon,
-  maxCharacters,
-  name,
-  onBlur,
-  onChange,
-  onClick,
-  onFocus,
-  onSubmit,
-  placeholder,
-  prefix,
-  suffix,
-  value,
-  testID,
-  trailingButton,
-  errorText,
-  successText,
-}: TableEditableCellProps): React.ReactElement => {
-  const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
-
-  return (
-    <StyledEditableCell
-      role="cell"
-      $backgroundColor={backgroundColor}
-      rowDensity={rowDensity}
-      {...metaAttribute({ name: MetaConstants.TableCell })}
-    >
-      <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
-        <CellWrapper
-          className="cell-wrapper"
-          rowDensity={rowDensity}
-          showStripedRows={showStripedRows}
-          display="flex"
-          alignItems="center"
-          flex={1}
-          hasPadding={false}
-        >
-          <Box margin={getEditableInputMargin({ rowDensity })} width="100%">
-            <BaseInput
-              isTableInputCell={rowDensityToIsTableInputCellMapping[rowDensity]}
-              validationState={validationState}
-              id="table-editable-cell-input"
-              size={tableEditableCellRowDensityToInputSizeMap[rowDensity]}
-              type="text"
-              trailingIcon={validationStateToInputTrailingIconMap[validationState]}
-              accessibilityLabel={accessibilityLabel}
-              autoCapitalize={autoCapitalize}
-              autoCompleteSuggestionType={autoCompleteSuggestionType}
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus={autoFocus}
-              defaultValue={defaultValue}
-              isDisabled={isDisabled}
-              isRequired={isRequired}
-              keyboardReturnKeyType={keyboardReturnKeyType}
-              leadingIcon={leadingIcon}
-              maxCharacters={maxCharacters}
-              name={name}
-              onBlur={onBlur}
-              onChange={onChange}
-              onClick={onClick}
-              onFocus={onFocus}
-              onSubmit={castWebType(onSubmit)}
-              placeholder={placeholder}
-              prefix={prefix}
-              suffix={suffix}
-              value={value}
-              testID={testID}
-              trailingButton={trailingButton}
-              errorText={errorText}
-              successText={successText}
-            />
-          </Box>
-        </CellWrapper>
-      </BaseBox>
-    </StyledEditableCell>
-  );
-};
-
-const TableEditableCell = assignWithoutSideEffects(_TableEditableCell, {
-  componentId: ComponentIds.TableEditableCell,
 });
 
 const TableCheckboxCell = ({
@@ -474,4 +344,4 @@ const TableRow = assignWithoutSideEffects(_TableRow, {
   componentId: ComponentIds.TableRow,
 });
 
-export { TableBody, TableRow, TableCell, TableEditableCell };
+export { TableBody, TableRow, TableCell };

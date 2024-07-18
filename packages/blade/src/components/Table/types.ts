@@ -1,6 +1,7 @@
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
@@ -283,6 +284,11 @@ type TableEditableCellProps = Pick<
   accessibilityLabel: NonNullable<BaseInputProps['accessibilityLabel']>;
 };
 
+type TableEditableDropdownCellProps = Pick<
+  DropdownProps,
+  'children' | 'isOpen' | 'onOpenChange' | 'selectionType' | 'zIndex'
+>;
+
 type TableFooterProps = {
   /**
    * The children of TableFooter should be TableFooterRow
@@ -432,6 +438,7 @@ export type {
   TableRowProps,
   TableCellProps,
   TableEditableCellProps,
+  TableEditableDropdownCellProps,
   TableFooterProps,
   TableFooterRowProps,
   TableFooterCellProps,

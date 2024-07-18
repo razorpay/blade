@@ -326,6 +326,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default true
      **/
     isTableInputCell?: boolean;
+
+    /**
+     * Hides the form hints and shows them as tooltip of trailing
+     */
+    showHintsAsTooltip?: boolean;
   } & TestID &
   Platform.Select<{
     native: {
@@ -819,6 +824,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingButton,
     valueComponentType = 'text',
     isTableInputCell = false,
+    showHintsAsTooltip = false,
     ...styledProps
   },
   ref,
@@ -1056,13 +1062,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               size={size}
               errorText={errorText}
               successText={successText}
-              isTableInputCell={isTableInputCell}
+              showHintsAsTooltip={showHintsAsTooltip}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>
 
-      {hideFormHint || isTableInputCell ? null : (
+      {hideFormHint || showHintsAsTooltip ? null : (
         <BaseBox
           marginLeft={makeSize(
             isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,

@@ -83,7 +83,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c17.c17.c17.c17.c17 {
@@ -290,10 +290,10 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   width: 100%;
 }
 
@@ -1911,7 +1911,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c16.c16.c16.c16.c16 {
@@ -2521,7 +2521,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c16.c16.c16.c16.c16 {

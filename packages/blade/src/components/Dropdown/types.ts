@@ -17,6 +17,12 @@ type DropdownProps = {
   onOpenChange?: (isOpen: boolean) => void;
   selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
+  /**
+   * @private
+   *
+   * width prop for outer relative container of Dropdown. Use width prop on DropdownOverlay to change width of menu
+   */
+  _width?: BoxProps['width'];
 } & TestID &
   StyledPropsBlade;
 

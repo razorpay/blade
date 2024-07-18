@@ -180,6 +180,7 @@ exports[`<Table /> should render table 1`] = `
   padding-right: 12px;
   min-height: 48px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -1593,6 +1594,219 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   transition: opacity 200ms;
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+  border: none;
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+  height: 100%;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18 {
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 0px;
+  padding-right: 0px;
+  min-height: 48px;
+  height: 100%;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .cell-wrapper {
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: hsla(211,20%,52%,0.18);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 td:last-child .cell-wrapper {
+  border-right: none;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 {
+  background-color: hsla(211,20%,52%,0.12);
+}
+
+.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 tr:last-child th {
+  border-bottom: none;
+}
+
+.c25.c25.c25.c25.c25 th {
+  border-right-width: 1px;
+  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-style: solid;
+}
+
+.c25.c25.c25.c25.c25 th:last-child {
+  border-right: none;
+}
+
+.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+}
+
+.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 > div {
+  background-color: hsla(211,20%,52%,0.12);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:first-child th {
+  border-top: none;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+  cursor: auto;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div {
+  background-color: hsla(211,20%,52%,0.12);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6 th {
+  border-right-width: 1px;
+  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-style: solid;
+}
+
+.c6.c6.c6.c6.c6 th:last-child {
+  border-right: none;
+}
+
 .c23.c23.c23.c23.c23 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -1776,84 +1990,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   width: 100%;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
-  border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
-  border-bottom: none;
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
-  height: 100%;
-  background-color: hsla(0,0%,100%,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 > div:first-child {
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: -4px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  background-color: transparent;
-  padding-left: 12px;
-  padding-right: 12px;
-  min-height: 48px;
-  height: 100%;
-  border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  background-color: transparent;
-  padding-left: 0px;
-  padding-right: 0px;
-  min-height: 48px;
-  height: 100%;
-  border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:focus-visible {
   outline: 1px solid;
 }
@@ -1867,139 +2003,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   transition-duration: 70ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
-  background-color: transparent;
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .cell-wrapper {
-  border-right-width: 1px;
-  border-right-style: solid;
-  border-right-color: hsla(211,20%,52%,0.18);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 td:last-child .cell-wrapper {
-  border-right: none;
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: -4px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 {
-  background-color: hsla(211,20%,52%,0.12);
-}
-
-.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 tr:last-child th {
-  border-bottom: none;
-}
-
-.c25.c25.c25.c25.c25 th {
-  border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
-  border-right-style: solid;
-}
-
-.c25.c25.c25.c25.c25 th:last-child {
-  border-right: none;
-}
-
-.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 {
-  height: 100%;
-  background-color: hsla(0,0%,100%,1);
-  border-bottom-width: 1px;
-  border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-  border-top-style: solid;
-}
-
-.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 > div {
-  background-color: hsla(211,20%,52%,0.12);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  height: 100%;
-  padding-left: 12px;
-  padding-right: 12px;
-  min-height: 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:first-child th {
-  border-top: none;
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
-  height: 100%;
-  background-color: hsla(0,0%,100%,1);
-  border-bottom-width: 1px;
-  border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-  border-top-style: solid;
-  cursor: auto;
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div {
-  background-color: hsla(211,20%,52%,0.12);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  padding-left: 12px;
-  padding-right: 12px;
-  min-height: 48px;
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: -4px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6 th {
-  border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
-  border-right-style: solid;
-}
-
-.c6.c6.c6.c6.c6 th:last-child {
-  border-right: none;
 }
 
 @media screen and (min-width:320px) {
@@ -2868,6 +2871,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   padding-right: 12px;
   min-height: 60px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -3734,6 +3738,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   padding-right: 12px;
   min-height: 36px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -4751,6 +4756,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   padding-right: 12px;
   min-height: 48px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -5673,6 +5679,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   padding-right: 12px;
   min-height: 48px;
   height: 100%;
+  width: 100%;
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
@@ -6540,6 +6547,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   padding-right: 12px;
   min-height: 48px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;

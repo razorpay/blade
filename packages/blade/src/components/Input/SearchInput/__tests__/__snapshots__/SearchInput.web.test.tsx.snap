@@ -78,7 +78,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 .c13.c13.c13.c13.c13 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c15.c15.c15.c15.c15 {
@@ -572,7 +572,7 @@ exports[`<SearchInput /> should render 1`] = `
 .c15.c15.c15.c15.c15 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1099,7 +1099,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 .c16.c16.c16.c16.c16 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c18.c18.c18.c18.c18 {
@@ -1659,7 +1659,7 @@ exports[`<SearchInput /> should render large size 1`] = `
 .c15.c15.c15.c15.c15 {
   margin-top: -4px;
   width: 100%;
-  min-width: 60px;
+  min-width: min(20%,60px);
 }
 
 .c17.c17.c17.c17.c17 {
