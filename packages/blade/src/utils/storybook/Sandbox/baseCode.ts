@@ -265,7 +265,7 @@ const getTheme = () => {
   if(${Boolean(brandColor)}){
     return createTheme({
       brandColor: "${brandColor}",
-    });
+    }).theme;
   }
   return ${themeTokenName};
 }

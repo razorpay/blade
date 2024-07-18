@@ -82,7 +82,7 @@ export const parameters = {
       console.log('----', context);
       const getThemeTokens = () => {
         if (context.store.globals.globals.brandColor) {
-          return createTheme({ brandColor: context.store.globals.globals.brandColor });
+          return createTheme({ brandColor: context.store.globals.globals.brandColor }).theme;
         }
         return bladeTheme;
       };
@@ -165,7 +165,7 @@ export const decorators = [
     toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
       if (context.globals.brandColor) {
-        return createTheme({ brandColor: context.globals.brandColor });
+        return createTheme({ brandColor: context.globals.brandColor }).theme;
       }
       return bladeTheme;
     };

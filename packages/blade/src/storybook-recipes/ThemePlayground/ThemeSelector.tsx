@@ -251,7 +251,7 @@ const ThemeSelector = ({
 
               const Wrapper = () => {
               // create your custom theme here with any brand color
-              const customTheme = createTheme({ brandColor: '${selectedColor}' })
+              const { theme: customTheme } = createTheme({ brandColor: '${selectedColor}' })
               
               return (
                   <BladeProvider 
