@@ -430,13 +430,17 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'Menu',
-    status: 'in-development',
+    status: 'released',
+    storybookLink: 'Components/Menu',
+    releasedIn: '11.22.0',
     description:
       'Menu displays a list of actions on temporary surfaces. They allow users to action(s) from multiple options. They appear when users interact with a button, action, or other control.',
   },
   {
     name: 'TopNav',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '11.23.0',
+    storybookLink: 'Components/TopNav',
     description:
       'TopNav is a horizontal navigation component that can be used to navigate between pages.',
   },
