@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 11.26.0
+
+### Minor Changes
+
+- f26cf80d: chore: expose brand colors
+- 39742907: feat(TableEditableCell): refactor TableEditableCell and add TableEditableDropdownCell
+
+### Patch Changes
+
+- e13023de: fix: table footer background color
+- fb58be12: fix: Spinner colors
+
 ## 11.25.0
 
 ### Minor Changes
