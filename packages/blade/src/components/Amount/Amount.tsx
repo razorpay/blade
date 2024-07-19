@@ -116,6 +116,7 @@ const AmountValue = ({
           fontFamily={numberFontFamily}
           as={isReactNative ? undefined : 'span'}
         >
+          {amount.minusSign}
           {amount.integer}
         </BaseText>
         <BaseText
@@ -141,6 +142,7 @@ const AmountValue = ({
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
     >
+      {amount.minusSign}
       {amount.formatted}
     </BaseText>
   );
@@ -179,7 +181,7 @@ export const formatAmountWithSuffix = ({
             maximumFractionDigits: 2,
             minimumFractionDigits: 2,
           },
-        };
+        } as const;
         return {
           ...formatNumberByParts(value, options),
           formatted: formatNumber(value, options),
