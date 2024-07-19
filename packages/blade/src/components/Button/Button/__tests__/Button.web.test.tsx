@@ -157,7 +157,7 @@ describe('<Button />', () => {
 
   it('should render button as link', () => {
     const { getByRole } = renderWithTheme(
-      <Button href="https://youtu.be/iPaBUhIsslA" target="_blank">
+      <Button href="https://youtu.be/iPaBUhIsslA" target="_blank" rel="noreferrer noopener">
         I am Anchor Tag!
       </Button>,
     );

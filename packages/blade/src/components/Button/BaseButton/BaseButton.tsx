@@ -396,7 +396,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
-  const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
   const defaultRole = isLink ? 'link' : 'button';
 
   const handlePointerPressedIn = React.useCallback(() => {
@@ -438,7 +437,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       as={renderElement}
       href={href}
       target={target}
-      rel={rel ?? defaultRel}
+      rel={rel}
       accessibilityProps={{
         ...makeAccessible({
           ...accessibilityProps,
