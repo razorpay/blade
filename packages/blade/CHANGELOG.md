@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.27.0
+
+### Minor Changes
+
+- f036ef58: feat: add EqualsIcon
+
 ## 11.26.1
 
 ### Patch Changes
