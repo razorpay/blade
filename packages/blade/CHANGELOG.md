@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 11.26.1
+
+### Patch Changes
+
+- 5d7317ca: fix: remove default `rel` values
+
+  > [!NOTE]
+  >
+  > While its non-ui-breaking change, you might want to add `rel="noopener noreferrer"` to your Button if that is what you're expecting. This PR removes the defaults in-order to not break analytics that relies on referrer.
+
+- 4dcad016: fix: set min-width on Radio to avoid shrinking
+
 ## 11.26.0
 
 ### Minor Changes
