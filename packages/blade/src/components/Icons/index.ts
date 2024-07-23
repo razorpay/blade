@@ -126,6 +126,7 @@ export { default as EditComposeIcon } from './EditComposeIcon';
 export { default as EditIcon } from './EditIcon';
 export { default as EditInlineIcon } from './EditInlineIcon';
 export { default as EducationIcon } from './EducationIcon';
+export { default as EqualsIcon } from './EqualsIcon';
 export { default as EscrowAccountIcon } from './EscrowAccountIcon';
 export { default as ExportIcon } from './ExportIcon';
 export { default as ExternalLinkIcon } from './ExternalLinkIcon';

@@ -125,6 +125,7 @@ import EditComposeIconComponent from './EditComposeIcon';
 import EditIconComponent from './EditIcon';
 import EditInlineIconComponent from './EditInlineIcon';
 import EducationIconComponent from './EducationIcon';
+import EqualsIconComponent from './EqualsIcon';
 import EscrowAccountIconComponent from './EscrowAccountIcon';
 import ExportIconComponent from './ExportIcon';
 import ExternalLinkIconComponent from './ExternalLinkIcon';
@@ -472,6 +473,7 @@ const iconMap: Record<string, IconComponent> = {
   EditIcon: EditIconComponent,
   EditInlineIcon: EditInlineIconComponent,
   EducationIcon: EducationIconComponent,
+  EqualsIcon: EqualsIconComponent,
   EscrowAccountIcon: EscrowAccountIconComponent,
   ExportIcon: ExportIconComponent,
   ExternalLinkIcon: ExternalLinkIconComponent,
