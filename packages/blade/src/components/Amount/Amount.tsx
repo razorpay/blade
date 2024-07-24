@@ -116,7 +116,6 @@ const AmountValue = ({
           fontFamily={numberFontFamily}
           as={isReactNative ? undefined : 'span'}
         >
-          {amount.minusSign}
           {amount.integer}
         </BaseText>
         <BaseText
@@ -142,7 +141,6 @@ const AmountValue = ({
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
     >
-      {amount.minusSign}
       {amount.formatted}
     </BaseText>
   );
@@ -188,27 +186,29 @@ export const formatAmountWithSuffix = ({
         };
       }
       case 'humanize': {
-        const formatted = formatNumber(value, {
+        const options = {
           intlOptions: {
             notation: 'compact',
             maximumFractionDigits: 2,
             trailingZeroDisplay: 'stripIfInteger',
           },
-        });
+        } as const;
         return {
-          formatted,
+          ...formatNumberByParts(value, options),
+          formatted: formatNumber(value, options),
         };
       }
 
       default: {
-        const formatted = formatNumber(value, {
+        const options = {
           intlOptions: {
             maximumFractionDigits: 0,
             roundingMode: 'floor',
           },
-        });
+        } as const;
         return {
-          formatted,
+          ...formatNumberByParts(value, options),
+          formatted: formatNumber(value, options),
         };
       }
     }
@@ -298,6 +298,8 @@ const _Amount = ({
     : normalAmountSizes[type][size];
   const isReactNative = getPlatformType() === 'react-native';
 
+  console.log(renderedValue);
+
   return (
     <BaseBox
       display={(isReactNative ? 'flex' : 'inline-flex') as never}
@@ -311,6 +313,18 @@ const _Amount = ({
         flexDirection="row"
         position="relative"
       >
+        {renderedValue.minusSign ? (
+          <BaseText
+            fontSize={normalAmountSizes[type][size]}
+            fontWeight={weight}
+            lineHeight={amountLineHeights[type][size]}
+            color={amountValueColor}
+            as={isReactNative ? undefined : 'span'}
+            marginX="spacing.2"
+          >
+            {renderedValue.minusSign}
+          </BaseText>
+        ) : null}
         {currencyPosition === 'left' && (
           <BaseText
             marginRight="spacing.1"
