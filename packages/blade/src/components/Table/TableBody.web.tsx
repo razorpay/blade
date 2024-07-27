@@ -164,7 +164,9 @@ export const CellWrapper = styled(BaseBox)<{
   rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   showStripedRows?: boolean;
   hasPadding?: boolean;
-}>(({ theme, rowDensity, showStripedRows, hasPadding = true }) => {
+  contentAlign?: TableCellProps['contentAlign'];
+  allowMultiline?: TableCellProps['allowMultiline'];
+}>(({ theme, rowDensity, showStripedRows, hasPadding = true, contentAlign, allowMultiline }) => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
@@ -178,6 +180,8 @@ export const CellWrapper = styled(BaseBox)<{
       minHeight: makeSize(getIn(size, tableRow.minHeight[rowDensity])),
       height: '100%',
       width: '100%',
+      justifyContent: contentAlign,
+      whiteSpace: allowMultiline ? 'normal' : 'nowrap',
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
         borderBottomColor: getIn(theme.colors, tableRow.borderColor),
@@ -187,7 +191,11 @@ export const CellWrapper = styled(BaseBox)<{
   };
 });
 
-const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
+const _TableCell = ({
+  children,
+  allowMultiline,
+  contentAlign,
+}: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
@@ -197,6 +205,7 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
       tabIndex={0}
       role="cell"
       $backgroundColor={backgroundColor}
+      allowMultiline={allowMultiline}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
@@ -207,6 +216,8 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
           display="flex"
           alignItems="center"
           flex={1}
+          contentAlign={contentAlign}
+          allowMultiline={allowMultiline}
           // when a direct string child is passed we want to disable pointer events
           // for custom cells components, consumers can handle pointer events themselves
           pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
