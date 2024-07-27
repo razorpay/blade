@@ -205,7 +205,6 @@ const _TableCell = ({
       tabIndex={0}
       role="cell"
       $backgroundColor={backgroundColor}
-      allowMultiline={allowMultiline}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
