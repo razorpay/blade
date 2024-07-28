@@ -181,6 +181,7 @@ exports[`<Table /> should render table 1`] = `
   min-height: 48px;
   height: 100%;
   width: 100%;
+  white-space: nowrap;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -1655,6 +1656,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   min-height: 48px;
   height: 100%;
   width: 100%;
+  white-space: nowrap;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -1669,6 +1671,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   min-height: 48px;
   height: 100%;
   width: 100%;
+  white-space: nowrap;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -2872,6 +2875,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   min-height: 60px;
   height: 100%;
   width: 100%;
+  white-space: nowrap;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -3739,6 +3743,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   min-height: 36px;
   height: 100%;
   width: 100%;
+  white-space: nowrap;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -4757,6 +4762,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   min-height: 48px;
   height: 100%;
   width: 100%;
+  white-space: nowrap;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -5680,6 +5686,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   min-height: 48px;
   height: 100%;
   width: 100%;
+  white-space: nowrap;
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
@@ -6548,6 +6555,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   min-height: 48px;
   height: 100%;
   width: 100%;
+  white-space: nowrap;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
