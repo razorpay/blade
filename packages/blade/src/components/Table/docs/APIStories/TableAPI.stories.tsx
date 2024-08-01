@@ -139,6 +139,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
           METHOD: (array) => array.sort((a, b) => a.method.localeCompare(b.method)),
           STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
         }}
+        selectedIds={['1', '2']}
+        defaultSelectedIds={['3', '4']}
       >
         {(tableData) => (
           <>
