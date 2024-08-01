@@ -40,6 +40,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
+import { useControllableState } from '~utils/useControllable';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -123,6 +124,8 @@ const _Table = <Item,>({
   multiSelectTrigger = 'row',
   selectionType = 'none',
   onSelectionChange,
+  selectedIds: controlledSelectedIds,
+  defaultSelectedIds,
   isHeaderSticky,
   isFooterSticky,
   isFirstColumnSticky,
@@ -140,7 +143,16 @@ const _Table = <Item,>({
   ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
-  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
+  const [selectedRows, setSelectedRows] = useControllableState({
+    value: controlledSelectedIds,
+    defaultValue: defaultSelectedIds,
+    onChange: (newSelectedIds) => {
+      onSelectionChange?.({
+        selectedIds: newSelectedIds,
+        values: data.nodes.filter((node) => newSelectedIds.includes(node.id)),
+      });
+    },
+  });
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
@@ -252,10 +264,6 @@ const _Table = <Item,>({
   const onSelectChange: MiddlewareFunction = (action, state): void => {
     const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
     setSelectedRows(selectedIds);
-    onSelectionChange?.({
-      selectedIds,
-      values: data.nodes.filter((node) => selectedIds.includes(node.id)),
-    });
   };
 
   const rowSelectConfig = useRowSelect(
