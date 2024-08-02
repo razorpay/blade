@@ -8,7 +8,7 @@
   },
   "bin": {
     "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts",
-    "aicodemod": "./codemods/aicodemod/index.mjs"
+    "aicodemod": "./codemods/aicodemod/bin.mjs"
   },
   "repository": {
     "type": "git",

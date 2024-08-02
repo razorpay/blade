@@ -1,7 +1,19 @@
+import fs from 'fs';
+import path from 'path';
+import dotenv from 'dotenv';
 import Fastify from 'fastify';
 import { getChatCompletion } from './getChatCompletion.mjs';
 
-const fastify = Fastify();
+const __dirname = new URL('.', import.meta.url).pathname;
+const envFilePath = path.resolve(__dirname, '../../.env.local');
+
+if (!fs.existsSync(envFilePath)) {
+  throw new Error('.env.local does not exist in blade package root');
+}
+
+dotenv.config({ path: envFilePath });
+
+const fastify = Fastify({ logger: true });
 
 // Declare a route
 fastify.post('/chat/completions', async (request, reply) => {
