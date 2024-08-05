@@ -9,8 +9,10 @@ const getChatCompletion = async (messages) => {
     console.log('messages:');
     console.dir(messages, { depth: Infinity });
     return {
-      answer:
-        'The server is running in TEST_MODE environment. Its not supposed to. Blame @Saurabh for this on slack #design-system channel.',
+      answer: {
+        content:
+          'The server is running in TEST_MODE environment. Its not supposed to. Blame @Saurabh for this on slack #design-system channel.',
+      },
       usage: { total_tokens: 0 },
       inputLength: JSON.stringify(messages).length,
     };
