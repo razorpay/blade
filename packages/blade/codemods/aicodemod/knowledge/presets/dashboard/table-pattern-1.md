@@ -1,4 +1,4 @@
-### Codebase Knowledge
+### 2. Custom Component Definitions
 
 #### EntityItemRow Component
 
@@ -85,7 +85,7 @@ export default (props) => {
 };
 ```
 
-### Migration Patterns
+### 3. Migration Example
 
 #### Original Custom Implimentation Code
 

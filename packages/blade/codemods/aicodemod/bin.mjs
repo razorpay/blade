@@ -13,7 +13,7 @@ const getFlagValue = (flag) => {
 };
 
 // This is for passing ngrok instance URL
-const baseUrl = getFlagValue('--base-url') ?? 'http://localhost:3000';
+const baseUrl = getFlagValue('--base-url') ?? 'https://blade-ds.loca.lt';
 const preset = getFlagValue('--code-knowledge') ?? 'presets/dashboard/table-pattern-1';
 
 const SERVER_ENDPOINT = '/chat/completions';
@@ -71,16 +71,15 @@ I want you to migrate our old codebase code from custom implementation, to use o
 You fill find code snippets of these things below-
 
 1. Blade's Table Documentation: Documentation of our design-system table
-2. Custom Component Definitions and Migration Patterns: 
-  - Custom component implementations to help figure out what they do
-  - Migration patterns for reference to help you use this as reference for migrations
-3. Code to Migrate: Migrate this code to use our design-system components
+2. Custom Component Definitions: Custom component implementations to help figure out what some of the internally used components do
+3. Migration Example: A reference example of migration. How the output migrated code would look like on given certain input.
+4. Code to Migrate: Migrate this code to use our design-system components
 
 Return Format:
-- Refer to Blade's Table documentation and Custom Component Definitons and Migration Patterns and return the migrated code snippet of usage using Blade
+- Refer to Blade's Table documentation and Custom Component Definitons and Migration Example and return the migrated code snippet of usage using Blade
 - Return raw migrated code without additional text
 - Don't change unrelated code and imports
-- Remove variables that are no longer in use
+- Remove unused variables, functions, and imports
 - Make sure Blade's Header and Footer are also used wherever needed.
 - Ignore the code related to mobile responsiveness as Blade components are responsive by default
 
@@ -88,10 +87,9 @@ Return Format:
 ## 1. Blade's Table Documentation
 ${bladeKnowledge}
 
-## 2. Custom Component Definitions and Migration Patterns
 ${codeKnowledge}
 
-## 3. Code to Migrate
+## 4. Code to Migrate
 \`\`\`jsx
 ${usage}
 \`\`\`
@@ -118,7 +116,7 @@ const data = await getChatCompletionFromServer(messages);
 console.log('USAGE STATS', {
   inputLength: data.inputLength,
   openAIUsage: data.usage,
-  v: 7,
+  v: 9,
 });
 
 const out = data.answer.content;
