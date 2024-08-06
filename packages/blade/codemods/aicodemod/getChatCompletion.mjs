@@ -1,7 +1,7 @@
 const aiConfig = {
   temperature: 0.7,
   top_p: 0.95,
-  max_tokens: 1000,
+  max_tokens: 3000,
 };
 
 const getChatCompletion = async (messages) => {
