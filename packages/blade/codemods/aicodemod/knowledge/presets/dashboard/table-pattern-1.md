@@ -85,6 +85,36 @@ export default (props) => {
 };
 ```
 
+#### ShowWhen Component
+
+```jsx
+export const ShowWhen = (props) => {
+  const i18 = useI18Service();
+  // creating an abstraction of just consuming splitz experiment, rest service should not be accessed via RouteGuard
+  const { abExperiments } = useSplitzService();
+
+  const { loader, children, session, ...rest } = props;
+
+  const showWhenUtilResult = validateUtil(
+    {
+      options: rest,
+      session,
+    },
+    {
+      i18,
+      splitz: { abExperiments },
+    },
+  );
+
+  if (showWhenUtilResult === TAGS_API_NOT_RESOLVED_YET) {
+    return loader || <Loader />;
+  } else if (showWhenUtilResult) {
+    return children;
+  }
+  return null;
+};
+```
+
 ### 3. Migration Example
 
 #### Original Custom Implimentation Code

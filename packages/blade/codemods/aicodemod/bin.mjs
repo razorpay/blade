@@ -108,19 +108,30 @@ const messages = [
   },
   {
     role: 'user',
-    content: ultimatePrompt,
+    content: [
+      {
+        type: 'text',
+        text: ultimatePrompt,
+      },
+    ],
   },
 ];
 
 const data = await getChatCompletionFromServer(messages);
-console.log('USAGE STATS', {
-  inputLength: data.inputLength,
-  openAIUsage: data.usage,
-  v: 9,
-});
 
-const out = data.answer.content;
-const cleanOut = out.startsWith('```jsx')
-  ? out.slice(`\`\`\`jsx`.length + 1, -('```'.length + 1))
-  : out;
-fs.writeFileSync(usageFilePath, cleanOut);
+if (data.answer) {
+  console.log('USAGE STATS', {
+    inputLength: data.inputLength,
+    openAIUsage: data.usage,
+    v: 9,
+  });
+
+  const out = data.answer.content;
+  const cleanOut = out.startsWith('```jsx')
+    ? out.slice(`\`\`\`jsx`.length + 1, -('```'.length + 1))
+    : out;
+  fs.writeFileSync(usageFilePath, cleanOut);
+} else {
+  console.log('status=', data.status);
+  console.error(data.error);
+}

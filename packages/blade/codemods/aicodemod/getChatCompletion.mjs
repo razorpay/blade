@@ -40,15 +40,36 @@ const getChatCompletion = async (messages) => {
       body: JSON.stringify(payload),
     }).then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        console.error(`HTTP error! Status: ${response.status}`);
+        return {
+          success: false,
+          status: response.status,
+          error: 'HTTP error!',
+        };
       }
+
       return response.json();
     });
   } catch (error) {
     console.error(`Failed to make the request. Error: ${error}`);
+    return {
+      success: false,
+      status: 500,
+      error,
+    };
   }
 
   console.log('>> USAGE', data.model, data.usage);
+
+  if (data.status === false) {
+    return {
+      answer: undefined,
+      usage: undefined,
+      inputLength: JSON.stringify(messages).length,
+      error: data.error,
+      status: data.status,
+    };
+  }
 
   return {
     answer: data.choices[0].message,
