@@ -120,11 +120,13 @@ describe('<Amount />', () => {
   it('should check if formatAmountWithSuffix is returning the right value for humanize decimals and none', () => {
     setState({ locale: 'en-IN' });
     expect(getAmountByParts({ value: 1000.22, suffix: 'humanize', currency: 'INR' })).toEqual({
-      formatted: '1T',
+      integer: '1000',
+      decimal: '.',
+      fraction: '72',
+      compact: 'T',
     });
     expect(getAmountByParts({ value: 1000000.0, suffix: 'decimals', currency: 'INR' })).toEqual({
       decimal: '.',
-      formatted: '10,00,000.00',
       fraction: '00',
       integer: '10,00,000',
       isPrefixSymbol: false,
@@ -139,12 +141,11 @@ describe('<Amount />', () => {
       ],
     });
     expect(getAmountByParts({ value: 10000000, suffix: 'none', currency: 'INR' })).toEqual({
-      formatted: '1,00,00,000',
+      integer: '1,00,00,000',
     });
     // Related issue - https://github.com/razorpay/blade/issues/1572
     expect(getAmountByParts({ value: 2.07, suffix: 'decimals', currency: 'INR' })).toEqual({
       decimal: '.',
-      formatted: '2.07',
       fraction: '07',
       integer: '2',
       isPrefixSymbol: false,
@@ -156,7 +157,6 @@ describe('<Amount />', () => {
     });
     expect(getAmountByParts({ value: 2.077, suffix: 'decimals', currency: 'INR' })).toEqual({
       decimal: '.',
-      formatted: '2.08',
       fraction: '08',
       integer: '2',
       isPrefixSymbol: false,
@@ -168,7 +168,6 @@ describe('<Amount />', () => {
     });
     expect(getAmountByParts({ value: 2.3, suffix: 'decimals', currency: 'INR' })).toEqual({
       decimal: '.',
-      formatted: '2.30',
       fraction: '30',
       integer: '2',
       isPrefixSymbol: false,
