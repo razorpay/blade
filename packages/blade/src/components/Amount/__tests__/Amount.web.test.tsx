@@ -1,7 +1,7 @@
 import { setState } from '@razorpay/i18nify-js';
 import { I18nProvider } from '@razorpay/i18nify-react';
 import type { AmountProps } from '../Amount';
-import { Amount, formatAmountWithSuffix } from '../Amount';
+import { Amount, getAmountByParts } from '../Amount';
 import { AMOUNT_SUFFIX_TEST_SET } from './mock';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -144,10 +144,10 @@ describe('<Amount />', () => {
 
   it('should check if formatAmountWithSuffix is returning the right value for humanize decimals and none', () => {
     setState({ locale: 'en-IN' });
-    expect(formatAmountWithSuffix({ value: 1000.22, suffix: 'humanize' })).toEqual({
+    expect(getAmountByParts({ value: 1000.22, suffix: 'humanize', currency: 'INR' })).toEqual({
       formatted: '1T',
     });
-    expect(formatAmountWithSuffix({ value: 1000000.0, suffix: 'decimals' })).toEqual({
+    expect(getAmountByParts({ value: 1000000.0, suffix: 'decimals', currency: 'INR' })).toEqual({
       decimal: '.',
       formatted: '10,00,000.00',
       fraction: '00',
@@ -163,11 +163,11 @@ describe('<Amount />', () => {
         { type: 'fraction', value: '00' },
       ],
     });
-    expect(formatAmountWithSuffix({ value: 10000000, suffix: 'none' })).toEqual({
+    expect(getAmountByParts({ value: 10000000, suffix: 'none', currency: 'INR' })).toEqual({
       formatted: '1,00,00,000',
     });
     // Related issue - https://github.com/razorpay/blade/issues/1572
-    expect(formatAmountWithSuffix({ value: 2.07, suffix: 'decimals' })).toEqual({
+    expect(getAmountByParts({ value: 2.07, suffix: 'decimals', currency: 'INR' })).toEqual({
       decimal: '.',
       formatted: '2.07',
       fraction: '07',
@@ -179,7 +179,7 @@ describe('<Amount />', () => {
         { type: 'fraction', value: '07' },
       ],
     });
-    expect(formatAmountWithSuffix({ value: 2.077, suffix: 'decimals' })).toEqual({
+    expect(getAmountByParts({ value: 2.077, suffix: 'decimals', currency: 'INR' })).toEqual({
       decimal: '.',
       formatted: '2.08',
       fraction: '08',
@@ -191,7 +191,7 @@ describe('<Amount />', () => {
         { type: 'fraction', value: '08' },
       ],
     });
-    expect(formatAmountWithSuffix({ value: 2.3, suffix: 'decimals' })).toEqual({
+    expect(getAmountByParts({ value: 2.3, suffix: 'decimals', currency: 'INR' })).toEqual({
       decimal: '.',
       formatted: '2.30',
       fraction: '30',

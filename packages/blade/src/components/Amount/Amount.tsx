@@ -152,6 +152,7 @@ const AmountValue = ({
 type FormatAmountWithSuffixType = {
   suffix: AmountProps['suffix'];
   value: number;
+  currency: AmountProps['currency'];
 };
 
 /**
@@ -168,9 +169,10 @@ type FormatAmountWithSuffixType = {
 }
  * @returns {AmountType}
  */
-export const formatAmountWithSuffix = ({
+export const getAmountByParts = ({
   suffix,
   value,
+  currency,
 }: FormatAmountWithSuffixType): AmountType => {
   try {
     switch (suffix) {
@@ -180,6 +182,7 @@ export const formatAmountWithSuffix = ({
             maximumFractionDigits: 2,
             minimumFractionDigits: 2,
           },
+          currency,
         } as const;
         return formatNumberByParts(value, options);
       }
@@ -190,6 +193,7 @@ export const formatAmountWithSuffix = ({
             maximumFractionDigits: 2,
             trailingZeroDisplay: 'stripIfInteger',
           },
+          currency,
         } as const;
         return formatNumberByParts(value, options);
       }
@@ -200,6 +204,7 @@ export const formatAmountWithSuffix = ({
             maximumFractionDigits: 0,
             roundingMode: 'floor',
           },
+          currency,
         } as const;
         return formatNumberByParts(value, options);
       }
@@ -207,6 +212,7 @@ export const formatAmountWithSuffix = ({
   } catch (err: unknown) {
     return {
       integer: `${value}`,
+      currency,
     };
   }
 };
@@ -269,29 +275,17 @@ const _Amount = ({
     color,
   });
 
-  let isPrefixSymbol, currencySymbol;
-  try {
-    const byParts = formatNumberByParts(value, {
-      currency,
-    });
-    isPrefixSymbol = byParts.isPrefixSymbol;
-    currencySymbol = byParts.currency;
-    // console.log({ value, byParts });
-  } catch (err: unknown) {
-    isPrefixSymbol = true;
-    currencySymbol = currency;
-  }
+  const renderedValue = getAmountByParts({ suffix, value, currency });
+  const isPrefixSymbol = renderedValue.isPrefixSymbol ?? true;
+  const currencySymbol = renderedValue.currency ?? currency;
 
   const currencyPosition = isPrefixSymbol ? 'left' : 'right';
-  const renderedValue = formatAmountWithSuffix({ suffix, value });
   const currencySymbolOrCode = currencyIndicator === 'currency-symbol' ? currencySymbol : currency;
 
   const currencyFontSize = isAffixSubtle
     ? subtleFontSizes[type][size]
     : normalAmountSizes[type][size];
   const isReactNative = getPlatformType() === 'react-native';
-
-  // console.log(renderedValue);
 
   return (
     <BaseBox
