@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
-import { formatNumber, formatNumberByParts } from '@razorpay/i18nify-js/currency';
+import { formatNumberByParts } from '@razorpay/i18nify-js/currency';
 import type { AmountTypeProps } from './amountTokens';
 import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -82,7 +82,7 @@ const getTextColorProps = ({ color }: { color: AmountProps['color'] }): ColorPro
   return props;
 };
 
-type AmountType = Partial<ReturnType<typeof formatNumberByParts>> & { formatted: string };
+type AmountType = Partial<ReturnType<typeof formatNumberByParts>>;
 
 interface AmountValue extends Omit<AmountProps, 'value'> {
   amountValueColor: BaseTextProps['color'];
@@ -141,7 +141,10 @@ const AmountValue = ({
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
     >
-      {amount.formatted}
+      {amount.integer}
+      {amount.decimal}
+      {amount.fraction}
+      {amount.compact}
     </BaseText>
   );
 };
@@ -156,15 +159,13 @@ type FormatAmountWithSuffixType = {
  * === Logic ===
  * value = 12500.45 
  * if suffix === 'decimals' => {
-    "formatted": "12,500.45",
     "integer": "12,500",
     "decimal": ".",
     "fraction": "45",
+    "compact": "K",
     "isPrefixSymbol": false,
     "rawParts": [{"type": "integer","value": "12"},{"type": "group","value": ","},{"type": "integer","value": "500"},{"type": "decimal","value": "."},{"type": "fraction","value": "45"}]
 }
- * else if suffix === 'humanize' => { formatted: "1.2T" }
- * else => { formatted: "1,23,456" }
  * @returns {AmountType}
  */
 export const formatAmountWithSuffix = ({
@@ -180,10 +181,7 @@ export const formatAmountWithSuffix = ({
             minimumFractionDigits: 2,
           },
         } as const;
-        return {
-          ...formatNumberByParts(value, options),
-          formatted: formatNumber(value, options),
-        };
+        return formatNumberByParts(value, options);
       }
       case 'humanize': {
         const options = {
@@ -193,10 +191,7 @@ export const formatAmountWithSuffix = ({
             trailingZeroDisplay: 'stripIfInteger',
           },
         } as const;
-        return {
-          ...formatNumberByParts(value, options),
-          formatted: formatNumber(value, options),
-        };
+        return formatNumberByParts(value, options);
       }
 
       default: {
@@ -206,15 +201,12 @@ export const formatAmountWithSuffix = ({
             roundingMode: 'floor',
           },
         } as const;
-        return {
-          ...formatNumberByParts(value, options),
-          formatted: formatNumber(value, options),
-        };
+        return formatNumberByParts(value, options);
       }
     }
   } catch (err: unknown) {
     return {
-      formatted: `${value}`,
+      integer: `${value}`,
     };
   }
 };
@@ -284,6 +276,7 @@ const _Amount = ({
     });
     isPrefixSymbol = byParts.isPrefixSymbol;
     currencySymbol = byParts.currency;
+    // console.log({ value, byParts });
   } catch (err: unknown) {
     isPrefixSymbol = true;
     currencySymbol = currency;
@@ -298,7 +291,7 @@ const _Amount = ({
     : normalAmountSizes[type][size];
   const isReactNative = getPlatformType() === 'react-native';
 
-  console.log(renderedValue);
+  // console.log(renderedValue);
 
   return (
     <BaseBox
