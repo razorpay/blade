@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.27.1
+
+### Patch Changes
+
+- 8ba3eab7: fix: datepicker necessityIndicator
+
 ## 11.27.0
 
 ### Minor Changes
