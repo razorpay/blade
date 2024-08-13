@@ -43,10 +43,29 @@ const _DateInput = (
 
 const DateInput = React.forwardRef(_DateInput);
 
-const HiddenInput = ({ value, name }: { value: string; name?: string }): React.ReactElement => {
+const HiddenInput = ({
+  value,
+  name,
+  isRequired,
+  isDisabled,
+}: {
+  value: string;
+  name?: string;
+  isRequired?: boolean;
+  isDisabled?: boolean;
+}): React.ReactElement => {
   if (isReactNative()) return <></>;
 
-  return <input hidden={true} name={name} value={value} readOnly />;
+  return (
+    <input
+      hidden={true}
+      name={name}
+      value={value}
+      required={isRequired}
+      disabled={isDisabled}
+      readOnly
+    />
+  );
 };
 
 const iconVerticalMargin = {
@@ -94,7 +113,12 @@ const _DatePickerInput = (
     });
     return (
       <BaseBox width="100%">
-        <HiddenInput value={dateValue} name={name} />
+        <HiddenInput
+          value={dateValue}
+          name={name}
+          isRequired={props.isRequired}
+          isDisabled={props.isDisabled}
+        />
         <DateInput
           ref={ref as never}
           id="start-date"
@@ -107,6 +131,7 @@ const _DatePickerInput = (
           autoFocus={autoFocus}
           value={dateValue}
           componentName="DatePickerInput"
+          necessityIndicator={necessityIndicator}
           successText={successText}
           errorText={errorText}
           helpText={helpText}
@@ -157,7 +182,12 @@ const _DatePickerInput = (
         ref={ref as never}
       >
         <BaseBox flex={1} flexBasis={isLabelPositionLeft ? LEFT_LABEL_WIDTH : '0px'}>
-          <HiddenInput value={startValue} name={name?.start} />
+          <HiddenInput
+            value={startValue}
+            name={name?.start}
+            isRequired={props.isRequired}
+            isDisabled={props.isDisabled}
+          />
           <DateInput
             setInputWrapperRef={(node) => ((inputRef as any)!.current = node)}
             id="start-date"
@@ -193,7 +223,12 @@ const _DatePickerInput = (
           />
         </BaseBox>
         <BaseBox flex={1}>
-          <HiddenInput value={endValue} name={name?.end} />
+          <HiddenInput
+            value={endValue}
+            name={name?.end}
+            isRequired={props.isRequired}
+            isDisabled={props.isDisabled}
+          />
           <DateInput
             id="end-date"
             placeholder={format}
