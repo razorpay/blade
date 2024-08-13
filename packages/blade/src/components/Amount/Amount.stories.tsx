@@ -56,7 +56,11 @@ export default {
 } as Meta<AmountProps>;
 
 const AmountDefaultTemplate: StoryFn<typeof AmountComponent> = (args) => {
-  return <AmountComponent {...args} />;
+  return (
+    <I18nProvider initData={{ locale: 'de-De' }}>
+      <AmountComponent value={1000000.22} suffix="humanize" />
+    </I18nProvider>
+  );
 };
 
 export const Amount = AmountDefaultTemplate.bind({});

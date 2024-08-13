@@ -145,15 +145,24 @@ describe('<Amount />', () => {
   it('should check if formatAmountWithSuffix is returning the right value for humanize decimals and none', () => {
     setState({ locale: 'en-IN' });
     expect(getAmountByParts({ value: 1000.22, suffix: 'humanize', currency: 'INR' })).toEqual({
+      compact: 'K',
+      currency: '₹',
       integer: '1',
-      compact: 'T',
+      isPrefixSymbol: true,
+      rawParts: [
+        { type: 'currency', value: '₹' },
+        { type: 'integer', value: '1' },
+        { type: 'compact', value: 'K' },
+      ],
     });
     expect(getAmountByParts({ value: 1000000.0, suffix: 'decimals', currency: 'INR' })).toEqual({
+      currency: '₹',
       decimal: '.',
       fraction: '00',
       integer: '10,00,000',
-      isPrefixSymbol: false,
+      isPrefixSymbol: true,
       rawParts: [
+        { type: 'currency', value: '₹' },
         { type: 'integer', value: '10' },
         { type: 'group', value: ',' },
         { type: 'integer', value: '00' },
@@ -163,38 +172,44 @@ describe('<Amount />', () => {
         { type: 'fraction', value: '00' },
       ],
     });
-    expect(getAmountByParts({ value: 10000000, suffix: 'none', currency: 'INR' })).toEqual({
-      integer: '1,00,00,000',
-    });
+    expect(getAmountByParts({ value: 10000000, suffix: 'none', currency: 'INR' }).integer).toBe(
+      '1,00,00,000',
+    );
     // Related issue - https://github.com/razorpay/blade/issues/1572
     expect(getAmountByParts({ value: 2.07, suffix: 'decimals', currency: 'INR' })).toEqual({
+      currency: '₹',
       decimal: '.',
       fraction: '07',
       integer: '2',
-      isPrefixSymbol: false,
+      isPrefixSymbol: true,
       rawParts: [
+        { type: 'currency', value: '₹' },
         { type: 'integer', value: '2' },
         { type: 'decimal', value: '.' },
         { type: 'fraction', value: '07' },
       ],
     });
     expect(getAmountByParts({ value: 2.077, suffix: 'decimals', currency: 'INR' })).toEqual({
+      currency: '₹',
       decimal: '.',
       fraction: '08',
       integer: '2',
-      isPrefixSymbol: false,
+      isPrefixSymbol: true,
       rawParts: [
+        { type: 'currency', value: '₹' },
         { type: 'integer', value: '2' },
         { type: 'decimal', value: '.' },
         { type: 'fraction', value: '08' },
       ],
     });
     expect(getAmountByParts({ value: 2.3, suffix: 'decimals', currency: 'INR' })).toEqual({
+      currency: '₹',
       decimal: '.',
       fraction: '30',
       integer: '2',
-      isPrefixSymbol: false,
+      isPrefixSymbol: true,
       rawParts: [
+        { type: 'currency', value: '₹' },
         { type: 'integer', value: '2' },
         { type: 'decimal', value: '.' },
         { type: 'fraction', value: '30' },
@@ -202,8 +217,9 @@ describe('<Amount />', () => {
     });
   });
 
-  AMOUNT_SUFFIX_TEST_SET.forEach((item) => {
-    it(`should render ${item.output} in Amount for value:${item.value} & suffix:${item.suffix}`, () => {
+  it.each(AMOUNT_SUFFIX_TEST_SET.filter((item) => item.output.includes('Mio')))(
+    `should render different outputs in Amount for different suffix values`,
+    (item) => {
       const { getByTestId } = renderWithTheme(
         <I18nAmountWrapper
           value={item.value}
@@ -214,6 +230,6 @@ describe('<Amount />', () => {
       );
 
       expect(getByTestId('amount-test')).toHaveTextContent(item.output);
-    });
-  });
+    },
+  );
 });

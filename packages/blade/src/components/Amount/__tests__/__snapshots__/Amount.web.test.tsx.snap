@@ -542,7 +542,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         class="c3"
         data-blade-component="base-text"
       >
-        1K
+        1
+        K
       </div>
     </div>
   </div>
@@ -2055,7 +2056,9 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
         class="c3"
         data-blade-component="base-text"
       >
-        1,000.00
+        1,000
+        .
+        00
       </div>
     </div>
   </div>
