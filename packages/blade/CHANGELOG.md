@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.28.0
+
+### Minor Changes
+
+- 95f19f49: feat: expose link negative/positive colors
+
 ## 11.27.1
 
 ### Patch Changes
