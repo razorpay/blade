@@ -13,7 +13,7 @@ import type { BladeCommonEvents } from '~components/types';
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
   icon?: IconComponent;
-  color?: 'primary' | 'white' | 'neutral';
+  color?: 'primary' | 'white' | 'neutral' | 'negative' | 'positive';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   onClick?: (event: SyntheticEvent) => void;
