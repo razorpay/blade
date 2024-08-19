@@ -16,7 +16,7 @@ import { TableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import {
   checkboxCellWidth,
-  firstColumnStickyHeaderFooterZIndex,
+  firstColumnStickyZIndex,
   refreshWrapperZIndex,
   tableBackgroundColor,
   tablePagination,
@@ -169,14 +169,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -186,14 +186,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -203,12 +203,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -230,6 +232,7 @@ const _Table = <Item,>({
     `,
     HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
+    
     top: ${shouldHeaderBeSticky ? '0' : undefined};
     ${firstColumnStickyHeaderCellCSS}
     `,
