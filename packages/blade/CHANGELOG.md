@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.28.1
+
+### Patch Changes
+
+- 830c8744: fix(Table): table sticky column overlapping with relative cell
+
 ## 11.28.0
 
 ### Minor Changes
