@@ -37,9 +37,13 @@ Try to focus on explaining the motivation so that if this RFC is not accepted, t
 
 ## POCs
 
-![](./images/motion-presets/hardware-poc-framer-motion.mov)
+### Hardware Accelarated Motion using Framer Motion
 
-[![Edit Framer Motion: Hardware Accelarated Animations](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/framer-motion-enter-animation-forked-rk3tvd?file=%2Fsrc%2FApp.tsx%3A27%2C28)
+https://github.com/user-attachments/assets/5aa7ba3f-666e-449c-ae1d-821f93c12962
+
+<p align="right">
+  <a href="https://codesandbox.io/p/sandbox/framer-motion-enter-animation-forked-rk3tvd?file=%2Fsrc%2FApp.tsx%3A27%2C28"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" /></a>
+</p>
 
 ## Goals
 
