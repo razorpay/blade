@@ -71,7 +71,21 @@ https://github.com/user-attachments/assets/5aa7ba3f-666e-449c-ae1d-821f93c12962
   <a href="https://codesandbox.io/p/sandbox/framer-motion-enter-animation-forked-rk3tvd?file=%2Fsrc%2FApp.tsx%3A27%2C28"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" /></a>
 </p>
 
-### Morph Animations with Framer Motion
+### Hardware Accelarated Motion using GSAP
+
+> [!NOTE]
+>
+> While GSAP does offload some work to hardware using CSS, it still requires javascript to work and stops working if JS thread is blocked
+
+https://github.com/user-attachments/assets/57593b19-3a19-4713-b768-9bcbf69097ee
+
+<p align="right">
+<a href="https://codesandbox.io/p/sandbox/framer-motion-hardware-accelarated-animations-forked-7qjyg9">
+  <img alt="Edit GSAP: Hardware Accelarated Animations " src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</p>
+
+### Morph / Layout Animations with Framer Motion
 
 https://github.com/user-attachments/assets/ad3d4a23-c3b9-4980-a051-a0f44e7224dc
 
@@ -126,7 +140,6 @@ If we implement this proposal, how will existing consumer projects adopt it?
   - [Framer Motion](https://www.framer.com/motion/)
   - [Motion One](https://motion.dev/docs)
   - [GSAP](https://gsap.com/)
-  - [Native Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API)
 
 - ### Design Systems with Motion Presets
 
@@ -144,4 +157,5 @@ If we implement this proposal, how will existing consumer projects adopt it?
     - [Release Date](https://github.com/framer/motion/blob/main/CHANGELOG.md#910-2023-02-23)
     - [Framer Motion Hardware Accelearated Animations POC](https://codesandbox.io/p/sandbox/framer-motion-hardware-accelarated-animations-rk3tvd?file=%2Fsrc%2FApp.tsx%3A17%2C24)
   - [View Transitions API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
+  - [Web Animations API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API)
   - [CSS Triggers - What CSS property triggers which type of render](https://csstriggers.com/)
