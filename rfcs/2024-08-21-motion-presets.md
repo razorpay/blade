@@ -35,6 +35,32 @@ Try to focus on explaining the motivation so that if this RFC is not accepted, t
 
 # Detailed Design
 
+## Library Comparison
+
+### Goals of Ideal Library
+
+1. License (Preferrably free to use)
+2. Hardware Accelarated Animations (Using CSS or [WAAPI](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API))
+3. Easy to implement complex animations
+4. React Router page transition support
+5. Morph Animations / Layout Animations
+6. Small bundle-size
+
+Lets compare some libraries over these ideals-
+
+### Comparison Table
+
+| **Goal**                                 | **Framer Motion**                                                                                                                             | **Motion One**                                | **GSAP**                               | **Vanilla CSS Animations**                    |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | -------------------------------------- | --------------------------------------------- |
+| **License** (Preferrably free to use)    | ✅ MIT                                                                                                                                        | ✅ MIT                                        | ❌ (Commercial License + Paid Plugins) | ✅ No License                                 |
+| **Hardware Accelarated Animations**      | ✅ (Hybrid - WAAPI for some transformations with fallback to JS) [Hardware Accelarated POC](#hardware-accelarated-motion-using-framer-motion) | ✅ (Built on WAAPI)                           | ❌                                     | ✅                                            |
+| **Easy to implement complex animations** | ✅ (Declarative API)                                                                                                                          | ❌                                            | ❌                                     | ❌                                            |
+| **React Router Page Transition**         | ✅                                                                                                                                            | ❌ (No native support but can be implemented) | ✅                                     | ❌ (No native support but can be implemented) |
+| **Morph Animations / Layout Animations** | ✅ [Framer Motion POC](#morph-animations-with-framer-motion)                                                                                  | ❌                                            | ✅                                     | ❌                                            |
+| **Small bundle size**                    | ❌ (4.6kb core + 40kb features that can be lazy loaded)                                                                                       | ✅ (4kb )                                     | ❌ (26kb core + features)              | ✅ (0kb)                                      |
+
+There is also detailed comparison of these libraries at [Motion One Docs - Feature Comparisons](https://motion.dev/docs/feature-comparison#comparison-table)
+
 ## POCs
 
 ### Hardware Accelarated Motion using Framer Motion
@@ -45,13 +71,17 @@ https://github.com/user-attachments/assets/5aa7ba3f-666e-449c-ae1d-821f93c12962
   <a href="https://codesandbox.io/p/sandbox/framer-motion-enter-animation-forked-rk3tvd?file=%2Fsrc%2FApp.tsx%3A27%2C28"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" /></a>
 </p>
 
-## Goals
+### Morph Animations with Framer Motion
 
-1. Performant! Fast transitions
-2. Simple API that makes it easy to implement transitions
-3. React Router Page transition support
-4. Morph transitions support
-5. Small bundle-size
+https://github.com/user-attachments/assets/ad3d4a23-c3b9-4980-a051-a0f44e7224dc
+
+<p align="right">
+  <a href="https://codesandbox.io/p/sandbox/framer-motion-hardware-accelarated-animations-forked-q674t5">
+  <img alt="Edit Framer Motion: Morph Animations" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</p>
+
+## Goals
 
 This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the Design System to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here.
 
