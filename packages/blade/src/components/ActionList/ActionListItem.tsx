@@ -25,7 +25,8 @@ import { Box } from '~components/Box';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { BaseMenuItem, useBaseMenuItem } from '~components/BaseMenu';
 import { Checkbox } from '~components/Checkbox';
-import { Avatar, AvatarProps } from '~components/Avatar';
+import type { AvatarProps } from '~components/Avatar';
+import { Avatar } from '~components/Avatar';
 
 type ActionListItemProps = {
   title: string;
