@@ -590,6 +590,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c0.c0.c0.c0.c0 {

@@ -113,7 +113,6 @@ const FormLabel = ({
       display="flex"
       flexDirection="row"
       alignItems="center"
-      // flexWrap="wrap"
       maxHeight={makeSpace(sizeToken[36])}
     >
       <Text

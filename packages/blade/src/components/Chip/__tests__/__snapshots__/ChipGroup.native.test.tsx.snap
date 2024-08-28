@@ -47,7 +47,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
-          flexWrap="wrap"
           gap="spacing.0"
           maxHeight="36px"
           style={
@@ -56,7 +55,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
-                "flexWrap": "wrap",
                 "gap": 0,
                 "maxHeight": 36,
               },
@@ -920,7 +918,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
-          flexWrap="wrap"
           gap="spacing.0"
           maxHeight="36px"
           style={
@@ -929,7 +926,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
-                "flexWrap": "wrap",
                 "gap": 0,
                 "maxHeight": 36,
               },

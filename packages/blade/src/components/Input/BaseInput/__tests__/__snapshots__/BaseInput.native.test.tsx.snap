@@ -66,7 +66,6 @@ exports[`<BaseInput /> should render 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
-            flexWrap="wrap"
             gap="spacing.0"
             maxHeight="36px"
             style={
@@ -75,7 +74,6 @@ exports[`<BaseInput /> should render 1`] = `
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "flexWrap": "wrap",
                   "gap": 0,
                   "maxHeight": 36,
                 },
@@ -384,7 +382,6 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
-            flexWrap="wrap"
             gap="spacing.0"
             maxHeight="36px"
             style={
@@ -393,7 +390,6 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "flexWrap": "wrap",
                   "gap": 0,
                   "maxHeight": 36,
                 },
@@ -702,7 +698,6 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
-            flexWrap="wrap"
             gap="spacing.0"
             maxHeight="36px"
             style={
@@ -711,7 +706,6 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "flexWrap": "wrap",
                   "gap": 0,
                   "maxHeight": 36,
                 },
@@ -1183,7 +1177,6 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
-            flexWrap="wrap"
             gap="spacing.0"
             maxHeight="36px"
             style={
@@ -1192,7 +1185,6 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "flexWrap": "wrap",
                   "gap": 0,
                   "maxHeight": 36,
                 },
@@ -1636,7 +1628,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
-            flexWrap="wrap"
             gap="spacing.0"
             maxHeight="36px"
             style={
@@ -1645,7 +1636,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "flexWrap": "wrap",
                   "gap": 0,
                   "maxHeight": 36,
                 },
@@ -2157,7 +2147,6 @@ exports[`<BaseInput /> should render with large size input 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
-            flexWrap="wrap"
             gap="spacing.0"
             maxHeight="36px"
             style={
@@ -2166,7 +2155,6 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "flexWrap": "wrap",
                   "gap": 0,
                   "maxHeight": 36,
                 },
@@ -2836,7 +2824,6 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
-            flexWrap="wrap"
             gap="spacing.0"
             maxHeight="36px"
             style={
@@ -2845,7 +2832,6 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "flexWrap": "wrap",
                   "gap": 0,
                   "maxHeight": 36,
                 },
