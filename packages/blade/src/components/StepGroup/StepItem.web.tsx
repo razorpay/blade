@@ -44,13 +44,16 @@ const InteractiveItemHeaderBox = styled.button<InteractiveItemHeaderProps>((prop
     borderRadius: props.theme.border.radius.medium,
     width: '100%',
     transition: `background-color ${props.theme.motion.duration.xquick} ${props.theme.motion.easing.standard.effective}`,
-    ':hover': {
+    ':not([disabled]):hover': {
       backgroundColor: props.isSelected
         ? props.theme.colors.interactive.background.primary.fadedHighlighted
         : props.theme.colors.interactive.background.gray.fadedHighlighted,
     },
-    ':focus-visible': {
+    ':not([disabled]):focus-visible': {
       ...getFocusRingStyles({ theme: props.theme }),
+    },
+    '&[disabled]': {
+      cursor: 'not-allowed',
     },
   };
 });
@@ -87,6 +90,7 @@ const _StepItem = ({
   marker,
   trailing,
   isSelected,
+  isDisabled,
   href,
   target,
   onClick,
@@ -134,7 +138,7 @@ const _StepItem = ({
       <Box>
         <Text
           size={stepItemHeaderTokens[size].title}
-          color="surface.text.gray.subtle"
+          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
           weight="semibold"
         >
           {title}
@@ -142,12 +146,15 @@ const _StepItem = ({
         <Text
           size={stepItemHeaderTokens[size].timestamp}
           marginY="spacing.2"
-          color="surface.text.gray.muted"
+          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
           variant="caption"
         >
           {timestamp}
         </Text>
-        <Text size={stepItemHeaderTokens[size].description} color="surface.text.gray.muted">
+        <Text
+          size={stepItemHeaderTokens[size].description}
+          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
+        >
           {description}
         </Text>
       </Box>
@@ -190,6 +197,7 @@ const _StepItem = ({
             target={target}
             isSelected={isSelected}
             onClick={onClick}
+            disabled={isDisabled}
           >
             {stepItemHeaderJSX}
           </InteractiveItemHeaderBox>
