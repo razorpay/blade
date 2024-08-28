@@ -86,10 +86,18 @@ export type FormHintProps = {
 
 const Icons = {
   error: ({ size }: { size: 'small' | 'medium' | 'large' }): ReactElement => (
-    <InfoIcon display="block" color="feedback.icon.negative.intense" size={hintIconSize[size]} />
+    <InfoIcon
+      display={'block' as never}
+      color="feedback.icon.negative.intense"
+      size={hintIconSize[size]}
+    />
   ),
   success: ({ size }: { size: 'small' | 'medium' | 'large' }): ReactElement => (
-    <CheckIcon display="block" color="feedback.icon.positive.intense" size={hintIconSize[size]} />
+    <CheckIcon
+      display={'block' as never}
+      color="feedback.icon.positive.intense"
+      size={hintIconSize[size]}
+    />
   ),
 };
 
