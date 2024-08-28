@@ -109,6 +109,11 @@ type StepItemProps = {
   isSelected?: boolean;
 
   /**
+   * State for disabling the step item
+   */
+  isDisabled?: boolean;
+
+  /**
    * Anchor tag's href value. Turns StepItem into interactive item and render it as `<a>` tag
    */
   href?: LinkProps['href'];
