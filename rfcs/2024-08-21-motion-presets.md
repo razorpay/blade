@@ -35,6 +35,11 @@ Try to focus on explaining the motivation so that if this RFC is not accepted, t
 
 # Detailed Design
 
+For building presets, we have to figure out few things like
+
+- [Libarary to use for Animations](#library-comparison)
+- [API Decision for Motion Presets]
+
 ## Library Comparison
 
 ### Goals of Ideal Library
@@ -94,6 +99,10 @@ https://github.com/user-attachments/assets/ad3d4a23-c3b9-4980-a051-a0f44e7224dc
   <img alt="Edit Framer Motion: Morph Animations" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </p>
+
+### Other POCs
+
+- [Framer Motion Layout Animations with Blade Components](https://stackblitz.com/edit/framer-motion-blade-poc?file=App.tsx,Logger.tsx)
 
 ## Goals
 
@@ -155,7 +164,8 @@ If we implement this proposal, how will existing consumer projects adopt it?
   - [Motion One & Browser Performance Guide](https://motion.dev/docs/performance)
   - [Framer Motion - Hardware Accelarated Animations](https://www.framer.com/motion/animation/#hardware-accelerated-animations)
     - [Release Date](https://github.com/framer/motion/blob/main/CHANGELOG.md#910-2023-02-23)
-    - [Framer Motion Hardware Accelearated Animations POC](https://codesandbox.io/p/sandbox/framer-motion-hardware-accelarated-animations-rk3tvd?file=%2Fsrc%2FApp.tsx%3A17%2C24)
   - [View Transitions API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
   - [Web Animations API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API)
   - [CSS Triggers - What CSS property triggers which type of render](https://csstriggers.com/)
+  - [Framer Motion Page Transitions Demo](https://codesandbox.io/p/sandbox/framer-motion-react-router-6-page-transitions-2f2olf?file=%2Fsrc%2Ftemplate%2FGallery.tsx%3A18%2C38&from-embed=)
+  - [Framer Motion Scroll Animations](https://codesandbox.io/p/sandbox/framer-motion-whileinview-2hbg5?file=%2Fsrc%2Findex.tsx&from-embed=)
