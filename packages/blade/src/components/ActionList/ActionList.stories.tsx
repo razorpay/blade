@@ -4,6 +4,7 @@ import type { ActionListProps } from './ActionList';
 import { ActionList as ActionListComponent } from './ActionList';
 import {
   ActionListItem,
+  ActionListItemAvatar,
   ActionListItemBadge,
   ActionListItemBadgeGroup,
   ActionListItemIcon,
@@ -241,7 +242,9 @@ const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = ()
             <ActionListItem
               title="Profile"
               value="profile"
-              leading={<ActionListItemIcon icon={UserIcon} />}
+              leading={
+                <ActionListItemAvatar icon={UserIcon} color="primary" name="Saurabh Daware" />
+              }
             />
             <ActionListItem
               title="Credit"
