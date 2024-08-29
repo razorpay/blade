@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.28.2
+
+### Patch Changes
+
+- 12f30712: fix(input): change `wordBreak` behaviour of input hint text & fix alignment
+- 601cedc8: feat(StepItem): add `isDisabled` prop to StepItem
+
 ## 11.28.1
 
 ### Patch Changes

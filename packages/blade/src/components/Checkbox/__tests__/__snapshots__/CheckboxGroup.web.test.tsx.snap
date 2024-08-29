@@ -97,10 +97,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -541,7 +542,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           <span
             class="c16"
             data-blade-component="base-box"
-            style="word-break: break-all;"
           >
             <span
               class="c17"
