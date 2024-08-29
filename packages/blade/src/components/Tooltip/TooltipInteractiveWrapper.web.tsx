@@ -12,7 +12,7 @@ const TooltipInteractiveWrapper = React.forwardRef<HTMLDivElement, Omit<BaseBoxP
       <BaseBox
         ref={ref}
         tabIndex={-1}
-        display={props.display || 'inline-block'}
+        display="inline-block"
         {...metaAttribute({
           testID: 'tooltip-interactive-wrapper',
           name: MetaConstants.TooltipInteractiveWrapper,
