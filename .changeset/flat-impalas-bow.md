@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-fix(Input): hint text and required label break
+fix(Input): required necessity indicator label break
