@@ -40,6 +40,62 @@ For building presets, we have to figure out few things like
 - [Libarary to use for Animations](#library-comparison)
 - [API Decision for Motion Presets]
 
+## API Decisions
+
+### Fade
+
+```jsx
+import { Fade } from '@razorpay/blade/components';
+
+{
+  showCard ? (
+    <Fade>
+      <Card>
+        <CardBody>
+          <Text>Fade In/Out Card</Text>
+        </CardBody>
+      </Card>
+    </Fade>
+  ) : null;
+}
+```
+
+```ts
+type FadeProps = {
+  /**
+   * @default inout
+   */
+  variant: 'in' | 'out' | 'inout';
+};
+```
+
+### Slide
+
+```jsx
+import { Fade } from '@razorpay/blade/components';
+
+{
+  showCard ? (
+    <Slide>
+      <Card>
+        <CardBody>
+          <Text>Fade In/Out Card</Text>
+        </CardBody>
+      </Card>
+    </Slide>
+  ) : null;
+}
+```
+
+```ts
+type SlideProps = {
+  /**
+   * @default inout
+   */
+  variant: 'in' | 'out' | 'inout';
+};
+```
+
 ## Library Comparison
 
 ### Goals of Ideal Library
