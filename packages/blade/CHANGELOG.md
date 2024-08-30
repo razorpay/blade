@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 11.29.0
+
+### Minor Changes
+
+- eaa75c64: feat(ActionList): add ActionListItemAvatar component for leading prop
+
+### Patch Changes
+
+- c6f8bc72: fix(blade): support overriding tooltip interactive wrapper display prop
+
 ## 11.28.2
 
 ### Patch Changes
