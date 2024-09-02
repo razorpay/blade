@@ -7,8 +7,13 @@ import { useIsMobile } from '~utils/useIsMobile';
 type CalendarFooterProps = {
   onApply: () => void;
   onCancel: () => void;
+  isButtonDisabled?: boolean;
 };
-const CalendarFooter = ({ onApply, onCancel }: CalendarFooterProps): React.ReactElement => {
+const CalendarFooter = ({
+  onApply,
+  onCancel,
+  isButtonDisabled,
+}: CalendarFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
 
   return (
@@ -24,7 +29,13 @@ const CalendarFooter = ({ onApply, onCancel }: CalendarFooterProps): React.React
         <Button isFullWidth={isMobile} variant="tertiary" size="medium" onClick={onCancel}>
           Cancel
         </Button>
-        <Button isFullWidth={isMobile} variant="primary" size="medium" onClick={onApply}>
+        <Button
+          isDisabled={isButtonDisabled}
+          isFullWidth={isMobile}
+          variant="primary"
+          size="medium"
+          onClick={onApply}
+        >
           Apply
         </Button>
       </BaseBox>
