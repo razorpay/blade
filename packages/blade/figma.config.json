@@ -1,0 +1,17 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": ["src/components/**"],
+    "exclude": ["__test__/**", "docs/**", "build/**"],
+    "importPaths": {
+      "src/components/*": "@razorpay/blade/components"
+    },
+    "paths": {
+      "~utils": ["src/utils"],
+      "~utils/*": ["src/utils/*"],
+      "~components/*": ["src/components/*"],
+      "~tokens/*": ["src/tokens/*"],
+      "~src/*": ["src/*"]
+    }
+  }
+}
