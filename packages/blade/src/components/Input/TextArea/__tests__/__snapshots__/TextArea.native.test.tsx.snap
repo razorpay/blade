@@ -68,7 +68,6 @@ exports[`<TextArea /> should render 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
-            flexWrap="wrap"
             gap="spacing.0"
             maxHeight="36px"
             style={
@@ -77,7 +76,6 @@ exports[`<TextArea /> should render 1`] = `
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "flexWrap": "wrap",
                   "gap": 0,
                   "maxHeight": 36,
                 },
