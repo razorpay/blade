@@ -41,6 +41,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   value,
   defaultValue,
   onChange,
+  onApply,
   presets,
   isOpen,
   defaultIsOpen,
@@ -110,15 +111,31 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
 
   const currentDate = shiftTimezone('add', new Date());
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
+  const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
+  let applyButtonDisabled = !hasBothDatesSelected;
+  if (isSingle) {
+    applyButtonDisabled = !Boolean(controlledValue);
+  }
 
   const close = React.useCallback(() => {
     controllableSetIsOpen(() => false);
   }, [controllableSetIsOpen]);
 
   const handleApply = (): void => {
-    onChange?.(controlledValue);
-    setOldValue(controlledValue);
-    close();
+    if (isSingle) {
+      onChange?.(controlledValue);
+      setOldValue(controlledValue);
+      onApply?.(controlledValue);
+      close();
+      return;
+    }
+    // only apply if both dates are selected
+    if (hasBothDatesSelected) {
+      onChange?.(controlledValue);
+      setOldValue(controlledValue);
+      onApply?.(controlledValue);
+      close();
+    }
   };
 
   const handleCancel = (): void => {
@@ -218,7 +235,13 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             forceRerender();
           }}
         />
-        {isMobile ? null : <CalendarFooter onApply={handleApply} onCancel={handleCancel} />}
+        {isMobile ? null : (
+          <CalendarFooter
+            isButtonDisabled={applyButtonDisabled}
+            onApply={handleApply}
+            onCancel={handleCancel}
+          />
+        )}
       </BaseBox>
     </>
   );
