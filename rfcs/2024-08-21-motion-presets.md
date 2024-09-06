@@ -202,6 +202,7 @@ import {
     </Morph>
   )
 }
+</AnimatePresence>
 ```
 
   </td>
