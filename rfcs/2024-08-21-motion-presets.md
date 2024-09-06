@@ -158,6 +158,10 @@ type MoveProps = {
 
 #### Morph
 
+> [!Note]
+>
+> Defining morph as preset is a bit tricky and need to make sure the API is feasible with all possible scenarios. Currently we've done a basic feasibility check but we might change / update the API if we come across some animation that can't be built with this API.
+
 ```jsx
 import { Heading, Display, Morph } from '@razorpay/blade/components';
 
@@ -223,7 +227,7 @@ const CardHeading = morph(Heading);
 
 </details>
 
-### AnimateInteractions
+#### AnimateInteractions
 
 When we wrap a certain component in AnimateInteractions wrapper from blade, we can animate the children component on interactions of the parent component.
 
@@ -252,7 +256,7 @@ import { AnimateInteractions, Scale, Box } from '@razorpay/blade/components';
 
 In most cases, we have interaction presets defined that will help you animate things without explicitly defining variants.
 
-### Scale
+#### Scale
 
 Scale animation can be used indepedently to scale item on certain actions but also inside AnimateInteractions.
 
