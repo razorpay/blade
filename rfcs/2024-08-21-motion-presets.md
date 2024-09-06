@@ -277,6 +277,10 @@ Scale animation can be used indepedently to scale item on certain actions but al
 
 E.g. in below example, the text will scale up when its parent container is hovered
 
+<table>
+<tr>
+  <td>
+
 ```jsx
 import { AnimateInteractions, Scale } from '@razorpay/blade/components';
 
@@ -284,18 +288,31 @@ import { AnimateInteractions, Scale } from '@razorpay/blade/components';
   <Card>
     <CardBody>
       <Scale>
-        <Text>
-          This content scales up when AnimateInteractions is hovered (in this case card is hovered)
-        </Text>
+        <img src="./rajorpay.jpeg" />
       </Scale>
     </CardBody>
   </Card>
 </AnimateInteractions>;
 ```
 
+  </td>
+  <td>
+
+https://github.com/user-attachments/assets/5934de65-6d55-4901-a513-a8de21cb56dc
+
+_Previews are just examples of presets. They don't use actual durations and easings yet_
+
+  </td>
+</tr>
+</table>
+
 Few more interaction components will be added. We will update this doc once they are finalised.
 
 ## Staggered Animations
+
+<table>
+<tr>
+  <td>
 
 ```jsx
 import { Stagger, Fade } from '@razorpay/blade/components';
@@ -321,6 +338,17 @@ type StaggerProps = {
   isVisible?: boolean;
 };
 ```
+
+  </td>
+  <td>
+
+https://github.com/user-attachments/assets/392a2aca-a943-49cf-8c94-cb0acd65df97
+
+_Previews are just examples of presets. They don't use actual durations and easings yet_
+
+  </td>
+</tr>
+</table>
 
 - [Stagger Animations POC](https://codesandbox.io/p/sandbox/framer-motion-side-menu-forked-3flyxv)
 
