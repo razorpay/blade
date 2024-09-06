@@ -64,6 +64,10 @@ For building presets, we have to figure out few things like
 
 #### Fade
 
+<table>
+<tr>
+  <td>
+
 ```jsx
 import { Fade } from '@razorpay/blade/components';
 
@@ -89,6 +93,15 @@ type FadeProps = {
   isVisible?: boolean;
 };
 ```
+
+  </td>
+  <td>
+
+https://github.com/user-attachments/assets/65e056e6-e00f-4516-b7b1-4d9b27a5faec
+
+  </td>
+</tr>
+</table>
 
 <details>
 <summary>View API Decision for Slide, Move, and other Entry / Exit Animations</summary>
