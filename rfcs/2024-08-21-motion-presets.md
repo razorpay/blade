@@ -177,20 +177,43 @@ type MoveProps = {
 >
 > Defining morph as preset is a bit tricky and need to make sure the API is feasible with all possible scenarios. Currently we've done a basic feasibility check but we might change / update the API if we come across some animation that can't be built with this API.
 
+<table>
+<tr>
+  <td width="700px">
+In below example, the images scales up when its parent container is hovered<br/><br/>
+
+<!-- prettier-ignore -->
 ```jsx
-import { Heading, Display, Morph } from '@razorpay/blade/components';
+import { AnimatePresence } from 'framer-motion';
+import { 
+  Button, 
+  Morph 
+} from '@razorpay/blade/components';
 
-
-<Morph layoutId="card-heading"><Display>Hello, World!</Display></Morph>
-<Card>
-  <CardBody>
-    <Morph layoutId="card-heading"><Heading>Hello, World!</Heading></Morph>
-    <Box>
-      <Text>Other Text</Text>
-    </Box>
-  </CardBody>
-</Card>
+<AnimatePresence>
+{
+  isChatVisible ? (
+    <Morph key="chat" layoutId="chat-interface">
+      <ChatInterface />
+    </Morph>
+  ) : (
+    <Morph key="chat-button" layoutId="chat-interface">
+      <Button icon={RazorpayIcon} />
+    </Morph>
+  )
+}
 ```
+
+  </td>
+  <td width="400px">
+
+https://github.com/user-attachments/assets/2ec967a5-1e17-443a-a3a9-230962f6bd9a
+
+_Previews are just examples of presets. They don't use actual durations and easings yet_
+
+  </td>
+</tr>
+</table>
 
 <details>
 <summary>Alternate Morph APIs</summary>
