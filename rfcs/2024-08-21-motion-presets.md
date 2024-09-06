@@ -281,8 +281,12 @@ E.g. in below example, the text will scale up when its parent container is hover
 <tr>
   <td>
 
+<!-- prettier-ignore -->
 ```jsx
-import { AnimateInteractions, Scale } from '@razorpay/blade/components';
+import { 
+  AnimateInteractions, 
+  Scale 
+} from '@razorpay/blade/components';
 
 <AnimateInteractions>
   <Card>
@@ -314,8 +318,12 @@ Few more interaction components will be added. We will update this doc once they
 <tr>
   <td>
 
+<!-- prettier-ignore -->
 ```jsx
-import { Stagger, Fade } from '@razorpay/blade/components';
+import { 
+  Stagger, 
+  Fade 
+} from '@razorpay/blade/components';
 
 <Stagger isVisible={showCards}>
   <Fade>
