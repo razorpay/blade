@@ -275,11 +275,10 @@ In most cases, we have interaction presets defined that will help you animate th
 
 Scale animation can be used indepedently to scale item on certain actions but also inside AnimateInteractions.
 
-E.g. in below example, the text will scale up when its parent container is hovered
-
 <table>
 <tr>
-  <td>
+  <td width="700px">
+In below example, the images scales up when its parent container is hovered<br/><br/>
 
 <!-- prettier-ignore -->
 ```jsx
@@ -300,7 +299,7 @@ import {
 ```
 
   </td>
-  <td>
+  <td width="400px">
 
 https://github.com/user-attachments/assets/5934de65-6d55-4901-a513-a8de21cb56dc
 
@@ -316,7 +315,7 @@ Few more interaction components will be added. We will update this doc once they
 
 <table>
 <tr>
-  <td>
+  <td width="600px">
 
 <!-- prettier-ignore -->
 ```jsx
@@ -348,7 +347,7 @@ type StaggerProps = {
 ```
 
   </td>
-  <td>
+  <td width="600px">
 
 https://github.com/user-attachments/assets/392a2aca-a943-49cf-8c94-cb0acd65df97
 
