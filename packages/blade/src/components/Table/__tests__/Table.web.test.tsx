@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
-import { fireEvent, getByRole, waitFor } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
 import { TableBody, TableCell, TableRow } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
