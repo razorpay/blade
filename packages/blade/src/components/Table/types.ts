@@ -188,7 +188,7 @@ type TableProps<Item> = {
   /**
    * An array of default selected row ids. This will be used to set the initial selected rows.
    */
-  defaultSelectedIds: Identifier[];
+  defaultSelectedIds?: Identifier[];
 } & StyledPropsBlade;
 
 type Identifier = string | number;
