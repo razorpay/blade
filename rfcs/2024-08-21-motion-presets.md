@@ -41,7 +41,7 @@ You might have seen our previous [RFC on Motion Foundations](./2022-03-22-motion
 
 As our org grows, we believe our products need to go a bit beyond the functionality. How do we make sure that our consumers really love our products? How do we add that cherry on top, those sprinkles, that pineapple on pizza?
 
-<img src="./images/motion-presets-meme.png" height="200px" /> <img src="./images/motion-presets-consumers-love.gif" height="200px" />
+<img src="./images/motion-presets/motion-presets-meme.png" height="200px" /> <img src="./images/motion-presets/motion-presets-consumers-love.gif" height="200px" />
 
 To solve for consumer delight, us in blade team, are working on simplifying adding motion in our consumer applications and introduce consistent animations to our product.
 
