@@ -23,41 +23,57 @@ Blade Issue: (leave this empty if no issue yet)
 
 # Basic Example
 
-Include a basic code example. Omit this section if it's not applicable.
+```jsx
+import { Fade, Card, CardBody } from '@razorpay/components/blade';
+
+<Fade isVisible={showCard}>
+  <Card>
+    <CardBody>{/* Blade Card */}</CardBody>
+  </Card>
+</Fade>;
+```
+
+Checkout full [API Decisions for Motion Presets](#api-decisions)
 
 # Motivation
 
-- Why are we doing this?
-- What use cases does it support?
-- What is the expected outcome?
+You might have seen our previous [RFC on Motion Foundations](./2022-03-22-motion-rfc.md) we wrote in 2022. In that RFC we defined token structure and foundational principles for motion.
 
-Try to focus on explaining the motivation so that if this RFC is not accepted, the motivation could be used to develop alternative solutions. In other words, try to list down the constraints you are trying to solve without coupling them too closely to the solution you have in mind.
+As our org grows, we believe our products need to go a bit beyond the functionality. How do we make sure that our consumers really love our products? How do we add that cherry on top, those sprinkles, that pineapple on pizza?
+
+<img src="./images/motion-presets-meme.png" height="200px" /> <img src="./images/motion-presets-consumers-love.gif" height="200px" />
+
+To solve for consumer delight, us in blade team, are working on simplifying adding motion in our consumer applications and introduce consistent animations to our product.
+
+You can check our detailed design proposal on [Motion Refresh](https://docs.google.com/document/d/1Vj2E0v2IdLSHuJNRrmX7X-BFSqGpXMFU0jj7LLfoZGk/edit?usp=sharing) (Only accessible to Razorpay Employees)
 
 # Detailed Design
 
 For building presets, we have to figure out few things like
 
+- [API Decision for Motion Presets](#api-decisions)
 - [Libarary to use for Animations](#library-comparison)
-- [API Decision for Motion Presets]
 
 ## API Decisions
 
-### Fade
+> [!NOTE]
+>
+> The API decisions here are only there to give some basic idea on the structure and usage. More accurate props will be updated here later once they are finalised in design.
+
+### Entry / Exit Animation Presets
+
+#### Fade
 
 ```jsx
 import { Fade } from '@razorpay/blade/components';
 
-{
-  showCard ? (
-    <Fade>
-      <Card>
-        <CardBody>
-          <Text>Fade In/Out Card</Text>
-        </CardBody>
-      </Card>
-    </Fade>
-  ) : null;
-}
+<Fade isVisible={showCard}>
+  <Card>
+    <CardBody>
+      <Text>Fade In/Out Card</Text>
+    </CardBody>
+  </Card>
+</Fade>;
 ```
 
 ```ts
@@ -66,25 +82,29 @@ type FadeProps = {
    * @default inout
    */
   variant: 'in' | 'out' | 'inout';
+
+  /**
+   * Visibility state
+   */
+  isVisible?: boolean;
 };
 ```
 
-### Slide
+<details>
+<summary>View API Decision for Slide, Move, and other Entry / Exit Animations</summary>
+
+#### Slide
 
 ```jsx
-import { Fade } from '@razorpay/blade/components';
+import { Slide } from '@razorpay/blade/components';
 
-{
-  showCard ? (
-    <Slide>
-      <Card>
-        <CardBody>
-          <Text>Fade In/Out Card</Text>
-        </CardBody>
-      </Card>
-    </Slide>
-  ) : null;
-}
+<Slide>
+  <Card>
+    <CardBody>
+      <Text>Fade In/Out Card</Text>
+    </CardBody>
+  </Card>
+</Slide>;
 ```
 
 ```ts
@@ -92,9 +112,206 @@ type SlideProps = {
   /**
    * @default inout
    */
-  variant: 'in' | 'out' | 'inout';
+  variant: 'in' | 'out';
+  /**
+   * @default 'bottom'
+   */
+  direction: 'top' | 'right' | 'bottom' | 'left';
 };
 ```
+
+#### Move
+
+```jsx
+import { Move } from '@razorpay/blade/components';
+
+<Move isVisible={showCard}>
+  <Card>
+    <CardBody>
+      <Text>Fade In/Out Card</Text>
+    </CardBody>
+  </Card>
+</Move>;
+```
+
+```ts
+type MoveProps = {
+  /**
+   * @default inout
+   */
+  variant: 'in' | 'out' | 'inout';
+  /**
+   * @default 'bottom'
+   */
+  direction: 'top' | 'right' | 'bottom' | 'left';
+
+  /**
+   * Visibility state
+   */
+  isVisible?: boolean;
+};
+```
+
+</details>
+
+### Highlight Animations
+
+#### Morph
+
+```jsx
+import { Heading, Display, Morph } from '@razorpay/blade/components';
+
+
+<Morph layoutId="card-heading"><Display>Hello, World!</Display></Morph>
+<Card>
+  <CardBody>
+    <Morph layoutId="card-heading"><Heading>Hello, World!</Heading></Morph>
+    <Box>
+      <Text>Other Text</Text>
+    </Box>
+  </CardBody>
+</Card>
+```
+
+<details>
+<summary>Alternate Morph APIs</summary>
+
+#### 2. Using `motion` from framer-motion
+
+```jsx
+import { motion } from 'framer-motion';
+import { Heading } from '@razorpay/blade/components';
+
+const CardHeading = motion(Heading);
+
+<CardHeading layoutId="card-heading" transition={{ duration: theme.motion.duration.slow }}>Hello, World!</CardHeading>
+<CardHeading as="h1" layoutId="card-heading">Hello, World!</CardHeading>
+```
+
+**Cons:**
+
+- We won't be able to preset the animation styles and durations with this approach
+- Can lead to inconsistent animations
+- Inconsistent with other motion presets so not very intuitive and requires learning framer-motion for syntax
+
+#### 3. Exposing `morph` Function from Blade
+
+```jsx
+import { Heading, morph } from '@razorpay/blade/components';
+
+const CardHeading = morph(Heading);
+
+<CardHeading layoutId="card-heading">Hello, World!</CardHeading>
+<Card>
+  <CardBody>
+    <CardHeading as="h1" layoutId="card-heading">Hello, World!</CardHeading>
+    <Box>
+      <Text>Other Text</Text>
+    </Box>
+  </CardBody>
+</Card>
+```
+
+**Pros:**
+
+- Allows presetting animation properties on blade
+
+**Cons:**
+
+- Inconsistent with other motion presets so not very intuitive
+- Comparitively more verbose than suggested API
+
+</details>
+
+### AnimateInteractions
+
+When we wrap a certain component in AnimateInteractions wrapper from blade, we can animate the children component on interactions of the parent component.
+
+Example in below component, we animate div's background colors on hover and tap.
+
+```jsx
+import { motion } from 'framer-motion';
+import { AnimateInteractions, Scale, Box } from '@razorpay/blade/components';
+
+<AnimateInteractions>
+  <Card>
+    <CardBody>
+      <motion.div
+        variants={{
+          initial: { backgroundColor: 'white' },
+          hover: { backgroundColor: 'tomato' },
+          tap: { backgroundColor: 'skyblue' },
+        }}
+      >
+        <Text>The box will change colors based on the interactions defined in variants</Text>
+      </motion.div>
+    </CardBody>
+  </Card>
+</AnimateInteractions>;
+```
+
+In most cases, we have interaction presets defined that will help you animate things without explicitly defining variants.
+
+### Scale
+
+Scale animation can be used indepedently to scale item on certain actions but also inside AnimateInteractions.
+
+E.g. in below example, the text will scale up when its parent container is hovered
+
+```jsx
+import { AnimateInteractions, Scale } from '@razorpay/blade/components';
+
+<AnimateInteractions>
+  <Card>
+    <CardBody>
+      <Scale>
+        <Text>
+          This content scales up when AnimateInteractions is hovered (in this case card is hovered)
+        </Text>
+      </Scale>
+    </CardBody>
+  </Card>
+</AnimateInteractions>;
+```
+
+Few more interaction components will be added. We will update this doc once they are finalised.
+
+## Staggered Animations
+
+```jsx
+import { Stagger, Fade } from '@razorpay/blade/components';
+
+<Stagger isVisible={showCards}>
+  <Fade>
+    <Box />
+  </Fade>
+  <Fade>
+    <Box />
+  </Fade>
+  <Fade>
+    <Box />
+  </Fade>
+</Stagger>;
+```
+
+```ts
+type StaggerProps = {
+  /**
+   * Visibility state
+   */
+  isVisible?: boolean;
+};
+```
+
+- [Stagger Animations POC](https://codesandbox.io/p/sandbox/framer-motion-side-menu-forked-3flyxv)
+
+## Page Transitions
+
+The same presets that we have for Entry / Exit, can be used for page transitions. The exit runs on removal of route, and entry runs on enter of route.
+
+It requires additional wrapper of AnimatePresence around the route. You can check code in [POC: Page Transitions with Framer Motion and React Router](#page-transitions-with-framer-motion-and-react-router).
+
+Detailed docs and examples will be added post implementation.
 
 ## Library Comparison
 
@@ -156,42 +373,43 @@ https://github.com/user-attachments/assets/ad3d4a23-c3b9-4980-a051-a0f44e7224dc
 </a>
 </p>
 
+### Page Transitions with Framer Motion and React Router
+
+Goal of the POC was to make sure if its possible to animate some part of the page while keeping the other part of the page stable. It was success with framer motion
+
+https://github.com/user-attachments/assets/b53779ec-55ec-4ef4-bdca-60b2e46cb3ae
+
+<p align="right">
+  <a href="https://codesandbox.io/p/sandbox/inspiring-stallman-2wn2v5">
+  <img alt="Edit Framer Motion: Morph Animations" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</p>
+
 ### Other POCs
 
 - [Framer Motion Layout Animations with Blade Components](https://stackblitz.com/edit/framer-motion-blade-poc?file=App.tsx,Logger.tsx)
-
-## Goals
-
-This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the Design System to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here.
+- [Enhancer Component POC to check API feasibility](https://stackblitz.com/edit/enhancer-component-poc?file=App.tsx)
 
 # Drawbacks/Constraints
 
-Why should we _not_ do this? Maybe try to consider the following constraints
-
-- Implementation cost, both in terms of code size and complexity.
-- The impact of it on new as well as existing consumer projects.
-- Cost of migration.
-
-There are tradeoffs to choosing any path. Attempt to identify them here.
+- Framer Motion as a library will be introduced in customer projects which might increase their bundle size
 
 # Alternatives
 
-What other designs/patterns/strategies have been considered?
+- Alternative libraries and native CSS solution is compared in [Library Comparison Section](#library-comparison)
+- Other alternative is to let consumers do animations
+  - Since there are less high level primitives available and it has led to inconsistent motion across products, we prefer to simplify building animations while giving out consistency
 
 # Adoption strategy
 
-If we implement this proposal, how will existing consumer projects adopt it?
-
-- Is this a breaking change?
-- Can we write a codemod?
-- How do we prioritise this with business and product folks?
-- How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?
+- We plan to target 1 project this quarter (Q2) to get motion adopted
+- The new projects that are built, should be built with motion presets on design and dev
+- The earlier project that we have should use motion presets when they redesign / revamp
 
 # How do we educate people?
 
-- How should this be taught to other folks?
-- What names and terminology work best for these concepts and why?
-- How is this idea best presented?
+- Interactive documentation will be added on blade.razorpay.com explaining how to use each preset
+- Close-to-real-life examples will be added in documentation to help give idea on how these presets can be used to build complex real-world animations
 
 # Open Questions
 
