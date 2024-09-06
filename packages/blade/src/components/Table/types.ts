@@ -185,6 +185,10 @@ type TableProps<Item> = {
    * The showBorderedCells prop determines whether the table should have bordered cells or not.
    **/
   showBorderedCells?: boolean;
+  /**
+   * An array of default selected row ids. This will be used to set the initial selected rows.
+   */
+  defaultSelectedIds: Identifier[];
 } & StyledPropsBlade;
 
 type Identifier = string | number;

@@ -21,6 +21,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -326,6 +327,7 @@ const _TableRow = <Item,>({
       className={isDisabled ? 'disabled-row' : ''}
       onMouseEnter={() => onHover?.({ item })}
       onClick={() => onClick?.({ item })}
+      {...makeAccessible({ selected: isSelected, multiSelectable: isMultiSelect })}
       {...metaAttribute({ name: MetaConstants.TableRow })}
     >
       {isMultiSelect && (
