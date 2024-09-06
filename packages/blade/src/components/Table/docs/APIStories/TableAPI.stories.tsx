@@ -10,7 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Amount } from '~components/Amount';
-import { Code, Text } from '~components/Typography';
+import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { useTheme } from '~components/BladeProvider';
@@ -104,8 +104,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       minHeight="400px"
     >
       <TableComponent
-        height="200px"
-        showBorderedCells={false}
+        height="400px"
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
         onSortChange={({ sortKey, isSortReversed }) =>
           console.log('Sort Key:', sortKey, 'Sort Reversed:', isSortReversed)
@@ -158,7 +157,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 <TableRow key={index} item={tableItem}>
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
-                    <Text color="surface.text.gray.disabled">Sadasd</Text>
                   </TableCell>
                   <TableCell>
                     <Amount value={tableItem.amount} />
