@@ -40,6 +40,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -499,6 +500,7 @@ const _Table = <Item,>({
               height,
             }}
             pagination={hasPagination ? paginationConfig : null}
+            {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
             {...metaAttribute({ name: MetaConstants.Table })}
           >
             {children}

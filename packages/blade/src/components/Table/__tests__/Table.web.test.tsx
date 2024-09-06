@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
-import { fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, getByRole, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
 import { TableBody, TableCell, TableRow } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
@@ -790,7 +790,7 @@ describe('<Table />', () => {
   it('should render table with multi select', async () => {
     const onSelectionChange = jest.fn();
     const user = userEvent.setup();
-    const { getByText, getAllByRole } = renderWithTheme(
+    const { getByText, getAllByRole, getByRole } = renderWithTheme(
       <Table
         data={{ nodes: nodes.slice(0, 5) }}
         selectionType="multiple"
@@ -828,6 +828,7 @@ describe('<Table />', () => {
       </Table>,
     );
 
+    expect(getByRole('table')).toHaveAttribute('aria-multiselectable', 'true');
     expect(getByText('Showing 1-5 Items')).toBeInTheDocument();
     expect(getAllByRole('checkbox')).toHaveLength(6);
     const firstSelectableRow = getByText('rzp01').closest('td');
@@ -885,7 +886,6 @@ describe('<Table />', () => {
     );
     const firstSelectableRow = getByText('rzp01').closest('tr');
     expect(firstSelectableRow).toHaveAttribute('aria-selected', 'true');
-    expect(firstSelectableRow).toHaveAttribute('aria-multiselectable', 'false');
     const secondSelectableRow = getByText('rzp02').closest('td');
     if (secondSelectableRow) await user.click(secondSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({
@@ -940,10 +940,8 @@ describe('<Table />', () => {
     expect(getAllByRole('checkbox')).toHaveLength(6);
     const firstSelectableRow = getByText('rzp01').closest('tr');
     expect(firstSelectableRow).toHaveAttribute('aria-selected', 'true');
-    expect(firstSelectableRow).toHaveAttribute('aria-multiselectable', 'true');
     const secondSelectableRow = getByText('rzp02').closest('tr');
     expect(secondSelectableRow).toHaveAttribute('aria-selected', 'true');
-    expect(secondSelectableRow).toHaveAttribute('aria-multiselectable', 'true');
     const thirdSelectableRow = getByText('rzp03').closest('td');
     if (thirdSelectableRow) await user.click(thirdSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({

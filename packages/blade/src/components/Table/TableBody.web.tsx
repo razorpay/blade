@@ -327,7 +327,7 @@ const _TableRow = <Item,>({
       className={isDisabled ? 'disabled-row' : ''}
       onMouseEnter={() => onHover?.({ item })}
       onClick={() => onClick?.({ item })}
-      {...makeAccessible({ selected: isSelected, multiSelectable: isMultiSelect })}
+      {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow })}
     >
       {isMultiSelect && (
