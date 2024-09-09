@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 11.30.0
+
+### Minor Changes
+
+- 6e059a68: feat: fix datepicker range selection bug & add onApply handler
+
+### Patch Changes
+
+- 98770d68: fix(Input): required necessity indicator label break
+- 3c31990d: feat(Table): add `defaultSelectedIds` prop
+
 ## 11.29.0
 
 ### Minor Changes
