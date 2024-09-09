@@ -119,6 +119,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       <TableComponent
         {...args}
         data={data}
+        defaultSelectedIds={['1', '3']}
+        onSelectionChange={console.log}
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>

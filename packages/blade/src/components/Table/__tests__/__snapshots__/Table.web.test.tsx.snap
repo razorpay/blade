@@ -368,6 +368,7 @@ exports[`<Table /> should render table 1`] = `
       </div>
     </div>
     <table
+      aria-multiselectable="false"
       class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
@@ -501,6 +502,7 @@ exports[`<Table /> should render table 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -665,6 +667,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -829,6 +832,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -993,6 +997,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -1157,6 +1162,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -2089,6 +2095,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
       </div>
     </div>
     <table
+      aria-multiselectable="false"
       class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
@@ -2222,6 +2229,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -2422,6 +2430,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -3028,6 +3037,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
     data-blade-component="table"
   >
     <table
+      aria-multiselectable="false"
       class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
@@ -3161,6 +3171,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -3325,6 +3336,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -3895,6 +3907,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
     data-blade-component="table"
   >
     <table
+      aria-multiselectable="false"
       class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
@@ -4028,6 +4041,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -4192,6 +4206,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -4961,6 +4976,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
       </div>
     </div>
     <table
+      aria-multiselectable="false"
       class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
@@ -5094,6 +5110,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -5258,6 +5275,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -5833,6 +5851,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
     data-blade-component="table"
   >
     <table
+      aria-multiselectable="false"
       class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
@@ -5966,6 +5985,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -6130,6 +6150,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -6704,6 +6725,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
     data-blade-component="table"
   >
     <table
+      aria-multiselectable="false"
       class="c1 css-j8ql1d-Table"
       data-blade-component="table"
       data-table-library_table=""
@@ -6837,6 +6859,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -7001,6 +7024,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -7165,6 +7189,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -7329,6 +7354,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -7493,6 +7519,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -7657,6 +7684,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -7821,6 +7849,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -7985,6 +8014,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -8149,6 +8179,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -8313,6 +8344,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
