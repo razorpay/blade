@@ -51,7 +51,7 @@ const CardRoot = ({
   const { theme } = useTheme();
   const [isPressed, setIsPressed] = React.useState(false);
   const duration = castNativeType(makeMotionTime(theme.motion.duration.xquick));
-  const easing = castNativeType(theme.motion.easing.standard.effective);
+  const easing = castNativeType(theme.motion.easing.standard);
 
   const styles = useAnimatedStyle(() => {
     return {

@@ -100,7 +100,7 @@ const TabIndicator = ({
     transitionDuration: hasMeasured
       ? castWebType(makeMotionTime(theme.motion.duration.gentle))
       : '0ms',
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard),
   };
 
   if (variant === 'filled') {

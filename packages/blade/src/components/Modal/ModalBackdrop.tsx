@@ -12,8 +12,8 @@ const StyledModalBackdrop = styled(FloatingOverlay)(({ theme }) => {
   return {
     transitionDuration: `${makeMotionTime(theme.motion.duration.xmoderate)}`,
     transitionTimingFunction: isVisible
-      ? castWebType(theme.motion.easing.entrance.revealing)
-      : castWebType(theme.motion.easing.exit.revealing),
+      ? castWebType(theme.motion.easing.entrance)
+      : castWebType(theme.motion.easing.exit),
     transitionProperty: 'opacity',
     opacity: isVisible ? 1 : 0,
     backgroundColor: theme.colors.overlay.background.subtle,

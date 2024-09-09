@@ -1,4 +1,3 @@
-import type { DotNotationMotionStringToken } from '~utils/types';
 import type { Platform } from '~utils';
 import { makeBezier } from '~utils/makeBezier';
 
@@ -51,14 +50,66 @@ export type EasingType<Value extends string> = Platform.Select<{
 
 type Easing = {
   /**
+   * Linear Easing
    *
+   * Use Case: Marquee, Progress Bar, etc
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
    */
   linear: EasingType<'cubic-bezier(0, 0, 0, 0)'>;
+
+  /**
+   * Entrance Animation Easing
+   *
+   * Use Case: Entry of modals, drawer, dropdown, etc
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
   entrance: EasingType<'cubic-bezier(0, 0, 0.2, 1)'>;
+
+  /**
+   * Exit Animation Easing
+   *
+   * Use Case: Exit of modals, drawer, dropdown, etc
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
   exit: EasingType<'cubic-bezier(0.17, 0, 1, 1)'>;
+
+  /**
+   * Standard Easing
+   *
+   * Use Case: Morph
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
   standard: EasingType<'cubic-bezier(0.3, 0, 0.2, 1)'>;
+
+  /**
+   * Emphasized Easing
+   *
+   * Use Case: Hover states of interactive items
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
   emphasized: EasingType<'cubic-bezier(0.5, 0, 0, 1)'>;
+
+  /**
+   * Overshoot Easing
+   *
+   * Use Case: Toast notifications
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
   overshoot: EasingType<'cubic-bezier(0.5, 0, 0.3, 1.5)'>;
+
+  /**
+   * Error Easing
+   *
+   * Use Case: Error States
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
   shake: EasingType<'cubic-bezier(1, 0.5, 0, 0.5)'>;
 };
 

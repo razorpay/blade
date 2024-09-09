@@ -31,7 +31,7 @@ const getOpacity = ({ isExpanded }: { isExpanded: boolean }): number => (isExpan
 const getTransitionDuration = (theme: Theme) => makeMotionTime(theme.motion.duration.xmoderate);
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const getTransitionEasing = (theme: Theme) => theme.motion.easing.standard.effective;
+const getTransitionEasing = (theme: Theme) => theme.motion.easing.standard;
 
 const getCollapsibleChevronIconTransforms = (): {
   transformExpanded: number;

@@ -35,7 +35,7 @@ const TooltipContentWrapper = React.forwardRef<View, TooltipContentWrapperProps>
     const translate = useSharedValue(offset);
     const opacity = useSharedValue(0);
 
-    const easing = (theme.motion.easing.entrance.effective as unknown) as EasingFn;
+    const easing = (theme.motion.easing.entrance as unknown) as EasingFn;
     const duration = theme.motion.duration.quick;
 
     React.useEffect(() => {

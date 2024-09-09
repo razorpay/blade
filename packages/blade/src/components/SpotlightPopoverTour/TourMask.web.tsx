@@ -67,13 +67,13 @@ const FadeRect = React.memo(
     const duration = theme.motion.duration.gentle;
     const enter = css`
       animation: ${scaleIn} ${makeMotionTime(duration)}
-        ${(theme.motion.easing.entrance.effective as unknown) as string};
+        ${(theme.motion.easing.entrance as unknown) as string};
       animation-fill-mode: forwards;
     `;
 
     const exit = css`
       animation: ${fadeOut} ${makeMotionTime(duration)}
-        ${(theme.motion.easing.exit.effective as unknown) as string};
+        ${(theme.motion.easing.exit as unknown) as string};
       animation-fill-mode: forwards;
     `;
 

@@ -40,7 +40,7 @@ const useAnimatedTag = (
     },
     100: {
       opacity: TAG_OPACITY_START,
-      easing: (theme.motion.easing.exit.effective as unknown) as EasingFn,
+      easing: (theme.motion.easing.exit as unknown) as EasingFn,
     },
   }).duration(makeMotionTime(theme.motion.duration.xquick));
 
@@ -49,7 +49,7 @@ const useAnimatedTag = (
       TAG_MAX_WIDTH_END,
       {
         duration: makeMotionTime(theme.motion.duration.xquick),
-        easing: castNativeType(theme.motion.easing.exit.effective),
+        easing: castNativeType(theme.motion.easing.exit),
       },
       (isComplete) => {
         if (isComplete) {

@@ -17,7 +17,7 @@ const getIndicatorButtonStyles = ({
     blue: theme.colors.interactive.icon.primary.subtle,
   };
 
-  const easing = castWebType(theme.motion.easing.standard.effective);
+  const easing = castWebType(theme.motion.easing.standard);
   const duration = castWebType(makeMotionTime(theme.motion.duration.gentle));
 
   return {

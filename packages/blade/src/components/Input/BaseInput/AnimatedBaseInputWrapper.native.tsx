@@ -67,7 +67,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       showAllTags ? baseInputWrapperMaxHeight[rest.size] : baseInputHeight[rest.size],
       {
         duration: theme.motion.duration.xquick,
-        easing: castNativeType(theme.motion.easing.exit.effective),
+        easing: castNativeType(theme.motion.easing.exit),
       },
       (isComplete) => {
         if (isComplete && !showAllTags) {

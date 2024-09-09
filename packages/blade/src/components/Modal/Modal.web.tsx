@@ -61,8 +61,8 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme
     animation: ${isVisible ? entry : exit}
       ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
       ${isVisible
-        ? castWebType(theme.motion.easing.entrance.revealing)
-        : castWebType(theme.motion.easing.exit.revealing)};
+        ? castWebType(theme.motion.easing.entrance)
+        : castWebType(theme.motion.easing.exit)};
   `;
 });
 

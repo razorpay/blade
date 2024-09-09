@@ -22,7 +22,7 @@ const PulseAnimation = (props: SkeletonProps): React.ReactElement => {
   const durationPluseOff = theme.motion.duration.xmoderate;
   const durationPluseOn = theme.motion.duration['2xgentle'];
   const totalDuration = castNativeType(makeMotionTime(durationPluseOn + durationPluseOff));
-  const easing = castNativeType(theme.motion.easing.standard.revealing);
+  const easing = castNativeType(theme.motion.easing.emphasized);
   const progress = useSharedValue(0);
 
   const fadeIn = () => {

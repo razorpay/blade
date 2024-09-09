@@ -43,7 +43,7 @@ const GradientOverlay = styled(BaseBox)<{
     pointerEvents: shouldShow ? 'auto' : 'none',
     transform: shouldShow ? 'scale(1)' : 'scale(0.5)',
     opacity: shouldShow ? 1 : 0,
-    transitionTimingFunction: `${theme.motion.easing.standard.revealing}`,
+    transitionTimingFunction: `${theme.motion.easing.emphasized}`,
     transitionDuration: `${makeMotionTime(theme.motion.duration.xquick)}`,
     transitionProperty: 'opacity, transform',
     zIndex: 1,

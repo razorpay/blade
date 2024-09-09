@@ -64,7 +64,7 @@ const ClickableRow = styled.button(({ theme }) => ({
   width: '100%',
   borderBottom: `2px solid ${theme.colors.surface.border.gray.muted}`,
   transition: `background-color ${makeMotionTime(theme.motion.duration.gentle)} ${
-    theme.motion.easing.standard.revealing
+    theme.motion.easing.emphasized
   }}`,
   padding: `${makeSpace(theme.spacing[4])} ${makeSpace(theme.spacing[4])}`,
   '&:hover': {

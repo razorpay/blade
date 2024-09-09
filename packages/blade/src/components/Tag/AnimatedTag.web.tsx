@@ -61,12 +61,12 @@ const AnimatedTag = ({
 
   const hideTagTransition = css`
     animation: ${tagDissappearKeyframe} ${makeMotionTime(theme.motion.duration.xquick)}
-      ${String(theme.motion.easing.exit.effective)};
+      ${String(theme.motion.easing.exit)};
   `;
 
   const showTagTransition = css`
     animation: ${tagShowKeyframe} ${makeMotionTime(theme.motion.duration.xquick)}
-      ${String(theme.motion.easing.entrance.effective)};
+      ${String(theme.motion.easing.entrance)};
   `;
 
   return (
