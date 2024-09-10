@@ -257,7 +257,7 @@ const getProps = ({
     borderWidth: variant == 'secondary' ? makeBorderSize(theme.border.width.thin) : '0px',
     borderRadius: makeBorderSize(theme.border.radius.medium),
     motionDuration: 'duration.xquick',
-    motionEasing: 'easing.standard.effective',
+    motionEasing: 'easing.standard',
   };
 
   if (isDisabled) {

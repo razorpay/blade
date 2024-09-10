@@ -21,11 +21,6 @@ type Duration = {
 };
 
 type Delay = {
-  // TODO: confirm naming and values with RK once
-  /** `70` milliseconds */
-  // '2xshort': 70;
-  // /** `120` milliseconds */
-  // xshort: 120;
   /** `160` milliseconds */
   xquick: 160;
   /** `280` milliseconds */
