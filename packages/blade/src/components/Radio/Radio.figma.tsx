@@ -16,7 +16,7 @@ figma.connect(
   'https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=71905-62364&m=dev',
   {
     props: {
-      children: figma.boolean('label'),
+      children: figma.string('label'),
       helpText: figma.boolean('showHelpText'),
       size: figma.enum('size', {
         Small: 'small',
