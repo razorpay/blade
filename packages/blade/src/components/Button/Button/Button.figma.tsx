@@ -40,8 +40,7 @@ figma.connect(
         XSmall: 'xsmall',
       }),
       isFullWidth: figma.boolean('isFullWidth'),
-      iconOnly: figma.boolean('iconOnly'),
     },
-    example: ({ children }) => <Button>{children}</Button>,
+    example: ({ children, ...props }) => <Button {...props}>{children}</Button>,
   },
 );

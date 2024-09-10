@@ -7,7 +7,8 @@ figma.connect(
   'https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=59519-143300&m=dev',
   {
     props: {
-      icon: figma.instance('iconLeading'),
+      //TODO: Figure out how to handle iconPosition
+      icon: figma.instance('icon'),
       children: figma.string('label'),
       variant: figma.enum('type', {
         Anchor: 'anchor',
