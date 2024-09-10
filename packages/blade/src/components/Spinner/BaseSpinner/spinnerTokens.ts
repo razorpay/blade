@@ -11,7 +11,7 @@ const motion: {
   easing: EasingString;
 } = {
   duration: 'duration.2xgentle',
-  easing: 'easing.overshoot', // TODO: confirm
+  easing: 'easing.overshoot',
 };
 
 export { dimensions, motion };

@@ -41,8 +41,8 @@ const StyledL1Menu = styled(BaseBox)((props) => {
   const gentle = makeMotionTime(props.theme.motion.duration.gentle);
   const easing = props.theme.motion.easing;
 
-  const l1Expand = `width ${gentle} ${easing.entrance.revealing}`;
-  const l1Collapse = `width ${moderate} ${easing.exit.revealing}`;
+  const l1Expand = `width ${gentle} ${easing.entrance}`;
+  const l1Collapse = `width ${moderate} ${easing.exit}`;
 
   return {
     width: '100%',

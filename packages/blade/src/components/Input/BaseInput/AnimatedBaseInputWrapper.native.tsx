@@ -122,11 +122,10 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       ),
     ),
     easing: castNativeType(
-      getIn(
-        theme.motion.easing,
+      theme.motion.easing[
         baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
-          .easing,
-      ),
+          .easing
+      ],
     ),
   };
 
