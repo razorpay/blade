@@ -3,7 +3,7 @@ const path = require('path');
 const chalk = require('chalk');
 const figures = require('figures');
 
-const exportCategories = ['components', 'tokens', 'utils'];
+const exportCategories = ['components', 'tokens', 'utils', 'motion'];
 const buildDirectory = 'build';
 
 try {

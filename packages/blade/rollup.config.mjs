@@ -74,6 +74,10 @@ const aliases = pluginAlias({
       find: '~tokens',
       replacement: fileURLToPath(new URL(`${inputRootDirectory}/tokens`, import.meta.url)),
     },
+    {
+      find: '~motion',
+      replacement: fileURLToPath(new URL(`${inputRootDirectory}/motion`, import.meta.url)),
+    },
   ],
 });
 
@@ -246,10 +250,13 @@ const config = () => {
   const components = 'src/components/index.ts';
   const tokens = 'src/tokens/index.ts';
   const utils = 'src/utils/index.ts';
+  const motion = 'src/motion/index.ts';
   const bladeCoverage = 'src/utils/bladeCoverage.ts';
+
   if (framework === 'REACT') {
     return [
       getWebConfig(components),
+      getWebConfig(motion),
       getWebConfig(tokens),
       getWebConfig(utils),
       getBladeCoverageConfig(bladeCoverage),
@@ -260,6 +267,7 @@ const config = () => {
       getDeclarationsConfig({ exportCategory: 'components', isNative: false }),
       getDeclarationsConfig({ exportCategory: 'tokens', isNative: false }),
       getDeclarationsConfig({ exportCategory: 'utils', isNative: false }),
+      getDeclarationsConfig({ exportCategory: 'motion', isNative: false }),
     ].flat();
   }
 
@@ -268,9 +276,11 @@ const config = () => {
       getNativeConfig(components),
       getNativeConfig(tokens),
       getNativeConfig(utils),
+      getNativeConfig(motion),
       getDeclarationsConfig({ exportCategory: 'components', isNative: true }),
       getDeclarationsConfig({ exportCategory: 'tokens', isNative: true }),
       getDeclarationsConfig({ exportCategory: 'utils', isNative: true }),
+      getDeclarationsConfig({ exportCategory: 'motion', isNative: true }),
     ].flat();
   }
 };
