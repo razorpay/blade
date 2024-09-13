@@ -490,15 +490,11 @@ export const InternalCardExample = React.forwardRef((_, ref) => {
         <CardHeaderTrailing visual={<CardHeaderBadge color="positive">NEW</CardHeaderBadge>} />
       </CardHeader>
       <CardBody>
-        <Box position="relative" overflow="hidden">
-          <Box maxWidth="200px">
-            <Text position="relative" zIndex={1}>
-              Create Razorpay Payments Links and share them with your customers from the Razorpay
-              Dashboard or using APIs and start accepting payments. Check the advantages, payment
-              methods, international currency support and more.
-            </Text>
-          </Box>
-        </Box>
+        <Text position="relative" zIndex={1}>
+          Create Razorpay Payments Links and share them with your customers from the Razorpay
+          Dashboard or using APIs and start accepting payments. Check the advantages, payment
+          methods, international currency support and more.
+        </Text>
       </CardBody>
       <CardFooter marginTop="spacing.4" paddingTop="spacing.4">
         <CardFooterTrailing
