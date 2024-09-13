@@ -1,9 +1,15 @@
+import React from 'react';
 import { BaseMotionBox } from '~components/BaseMotion';
 import type { BaseEntryExitMotionProps, MotionVariantsType } from '~components/BaseMotion';
 
 export type FadeProps = BaseEntryExitMotionProps;
 
-export const Fade = ({ children, isVisible, variant = 'inout' }: FadeProps) => {
+export const Fade = ({
+  children,
+  isVisible,
+  variant = 'inout',
+  motionTriggers = ['mount'],
+}: FadeProps) => {
   const fadeVariants: MotionVariantsType = {
     initial: {
       opacity: 0,
@@ -22,6 +28,7 @@ export const Fade = ({ children, isVisible, variant = 'inout' }: FadeProps) => {
       variant={variant}
       children={children}
       isVisible={isVisible}
+      motionTriggers={motionTriggers}
     />
   );
 };

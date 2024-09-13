@@ -3,7 +3,7 @@ import type { BaseEntryExitMotionProps, MotionVariantsType } from '~components/B
 
 export type MoveProps = BaseEntryExitMotionProps;
 
-export const Move = ({ children, variant = 'inout', isVisible }: MoveProps) => {
+export const Move = ({ children, variant = 'inout', isVisible, motionTriggers }: MoveProps) => {
   const moveVariants: MotionVariantsType = {
     initial: {
       opacity: 0,
@@ -25,6 +25,7 @@ export const Move = ({ children, variant = 'inout', isVisible }: MoveProps) => {
       children={children}
       variant={variant}
       isVisible={isVisible}
+      motionTriggers={motionTriggers}
     />
   );
 };
