@@ -7,14 +7,14 @@ type BaseEntryExitMotionProps = {
   variant?: 'in' | 'out' | 'inout';
 };
 
-type BaseMotionBoxVariants = {
+type MotionVariantsType = {
   initial: Variant;
   animate: Variant;
   exit: Variant;
 };
 
 type BaseMotionProps = {
-  motionVariants: BaseMotionBoxVariants;
+  motionVariants: MotionVariantsType;
 } & Pick<BaseEntryExitMotionProps, 'children' | 'isVisible' | 'variant'>;
 
-export type { BaseEntryExitMotionProps, BaseMotionProps, BaseMotionBoxVariants };
+export type { BaseEntryExitMotionProps, BaseMotionProps, MotionVariantsType };

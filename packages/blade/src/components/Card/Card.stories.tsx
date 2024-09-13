@@ -476,7 +476,7 @@ export const InternalCardExample = React.forwardRef((_, ref) => {
       borderRadius="medium"
       elevation="lowRaised"
       padding="spacing.7"
-      width="500px"
+      width="300px"
       marginRight="spacing.6"
       href="https://razorpay.com"
     >

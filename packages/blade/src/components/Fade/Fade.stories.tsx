@@ -40,7 +40,7 @@ export default {
 const FadeTemplate: StoryFn<typeof Fade> = (args) => {
   const [isVisible, setIsVisible] = React.useState(true);
   return (
-    <Box>
+    <Box minHeight="350px">
       <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
         Toggle Fade
       </Button>

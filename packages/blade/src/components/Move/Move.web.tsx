@@ -1,23 +1,30 @@
 import { BaseMotionBox } from '~components/BaseMotion';
-import type { BaseEntryExitMotionProps, BaseMotionBoxVariants } from '~components/BaseMotion';
+import type { BaseEntryExitMotionProps, MotionVariantsType } from '~components/BaseMotion';
 
 export type MoveProps = BaseEntryExitMotionProps;
 
-export const Move = ({ children }: MoveProps) => {
-  const moveVariants: BaseMotionBoxVariants = {
+export const Move = ({ children, variant = 'inout', isVisible }: MoveProps) => {
+  const moveVariants: MotionVariantsType = {
     initial: {
       opacity: 0,
-      y: '-10px',
+      transform: 'translateY(20px)',
     },
     animate: {
       opacity: 1,
-      y: '0px',
+      transform: 'translateY(0px)',
     },
     exit: {
       opacity: 0,
-      y: '-10px',
+      transform: 'translateY(20px)',
     },
   };
 
-  return <BaseMotionBox motionVariants={moveVariants} children={children} />;
+  return (
+    <BaseMotionBox
+      motionVariants={moveVariants}
+      children={children}
+      variant={variant}
+      isVisible={isVisible}
+    />
+  );
 };
