@@ -19,22 +19,15 @@ const motionTriggersArrayToGesturePropsMap: Record<MotionTriggersType, Animation
 
 const useAnimationVariables = ({
   variant,
-  isInsideStaggerContainer,
-  isInsideAnimateInteractionsContainer,
+  shouldRenderAnimationVariables,
   motionTriggers,
 }: {
   variant: BaseMotionEntryExitProps['variant'];
   motionTriggers: BaseMotionEntryExitProps['motionTriggers'];
-  isInsideStaggerContainer: boolean;
-  isInsideAnimateInteractionsContainer: boolean;
+  shouldRenderAnimationVariables: BaseMotionBoxProps['shouldRenderAnimationVariables'];
 }) => {
   const animationVariables = React.useMemo(() => {
-    console.log({ isInsideStaggerContainer });
-    if (isInsideStaggerContainer) {
-      return {};
-    }
-
-    if (isInsideAnimateInteractionsContainer) {
+    if (!shouldRenderAnimationVariables) {
       return {};
     }
 
@@ -53,7 +46,7 @@ const useAnimationVariables = ({
       exit: variant === 'out' || variant === 'inout' ? 'exit' : undefined,
       ...triggerProps,
     };
-  }, [variant, isInsideStaggerContainer]);
+  }, [variant, shouldRenderAnimationVariables]);
 
   return animationVariables;
 };
@@ -63,15 +56,13 @@ const BaseMotionBox = ({
   motionVariants,
   variant = 'inout',
   motionTriggers = ['mount'],
+  shouldRenderAnimationVariables,
   speed,
   ...rest
 }: BaseMotionBoxProps) => {
-  const { isInsideStaggerContainer } = useStagger();
-  const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
   const animationVariables = useAnimationVariables({
     variant,
-    isInsideStaggerContainer,
-    isInsideAnimateInteractionsContainer,
+    shouldRenderAnimationVariables,
     motionTriggers,
   });
 
@@ -96,6 +87,9 @@ const BaseMotionEntryExit = ({
   variant = 'inout',
   motionTriggers = ['mount'],
 }: BaseMotionEntryExitProps) => {
+  const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
+  const { isInsideStaggerContainer } = useStagger();
+
   return (
     <AnimatePresence>
       {isVisible ? (
@@ -105,6 +99,9 @@ const BaseMotionEntryExit = ({
           motionVariants={motionVariants}
           motionTriggers={motionTriggers}
           variant={variant}
+          shouldRenderAnimationVariables={
+            !isInsideAnimateInteractionsContainer && !isInsideStaggerContainer
+          }
           // We pass the props of children and not pass the children itself since the `as` prop already renders the children and we don't want to re-render it inside
           {...children.props}
         />

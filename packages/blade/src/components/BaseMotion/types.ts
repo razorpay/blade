@@ -17,6 +17,7 @@ type BaseMotionBoxProps = {
    */
   motionTriggers?: MotionTriggersType[];
   motionVariants?: MotionVariantsType;
+  shouldRenderAnimationVariables?: boolean;
 } & Record<string, any>;
 
 type BaseMotionEntryExitProps = Pick<

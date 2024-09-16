@@ -23,14 +23,18 @@ export const Stagger = ({ children, isVisible, variant = 'inout' }: StaggerProps
   };
 
   return (
-    <AnimatePresence>
-      {isVisible ? (
-        <BaseMotionBox variant={variant} motionVariants={staggerVariants}>
-          <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
+    <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
+      <AnimatePresence>
+        {isVisible ? (
+          <BaseMotionBox
+            shouldRenderAnimationVariables
+            variant={variant}
+            motionVariants={staggerVariants}
+          >
             {children}
-          </StaggerContext.Provider>
-        </BaseMotionBox>
-      ) : null}
-    </AnimatePresence>
+          </BaseMotionBox>
+        ) : null}
+      </AnimatePresence>
+    </StaggerContext.Provider>
   );
 };

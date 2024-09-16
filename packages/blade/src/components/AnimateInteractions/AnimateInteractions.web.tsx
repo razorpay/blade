@@ -8,10 +8,10 @@ export type AnimateInteractionsProps = BaseMotionEntryExitProps & {
 
 export const AnimateInteractions = ({ children }: AnimateInteractionsProps) => {
   return (
-    <BaseMotionBox motionTriggers={['hover']}>
-      <AnimateInteractionsContext.Provider value={{ isInsideAnimateInteractionsContainer: true }}>
+    <AnimateInteractionsContext.Provider value={{ isInsideAnimateInteractionsContainer: true }}>
+      <BaseMotionBox motionTriggers={['hover']} shouldRenderAnimationVariables>
         {children}
-      </AnimateInteractionsContext.Provider>
-    </BaseMotionBox>
+      </BaseMotionBox>
+    </AnimateInteractionsContext.Provider>
   );
 };
