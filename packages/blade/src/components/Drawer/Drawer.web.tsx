@@ -28,11 +28,11 @@ const AnimatedDrawerContainer = styled(BaseBox)<{
   isVisible: boolean;
 }>(({ theme, isFirstDrawerInStack, isVisible }) => {
   const entranceTransition: CSSProperties['transition'] = `all ${castWebType(
-    castWebType(makeMotionTime(theme.motion.duration.gentle)),
+    castWebType(makeMotionTime(theme.motion.duration.xmoderate)),
   )} ${castWebType(theme.motion.easing.entrance)}`;
 
   const exitTransition: CSSProperties['transition'] = `all
-  ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
+  ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
   ${castWebType(theme.motion.easing.exit)}`;
 
   return {
