@@ -1,17 +1,17 @@
-import { MotionDiv } from '~components/BaseMotion';
-import type { BaseEntryExitMotionProps } from '~components/BaseMotion';
+import { BaseMotionBox } from '~components/BaseMotion';
+import type { BaseMotionEntryExitProps } from '~components/BaseMotion';
 import { AnimateInteractionsContext } from './AnimateInteractionsProvider';
 
-export type AnimateInteractionsProps = BaseEntryExitMotionProps & {
+export type AnimateInteractionsProps = BaseMotionEntryExitProps & {
   children: React.ReactElement[] | React.ReactElement;
 };
 
 export const AnimateInteractions = ({ children }: AnimateInteractionsProps) => {
   return (
-    <AnimateInteractionsContext.Provider value={{ isInsideAnimateInteractionsContainer: true }}>
-      <MotionDiv initial="initial" whileHover="animate" exit="exit">
+    <BaseMotionBox motionTriggers={['hover']}>
+      <AnimateInteractionsContext.Provider value={{ isInsideAnimateInteractionsContainer: true }}>
         {children}
-      </MotionDiv>
-    </AnimateInteractionsContext.Provider>
+      </AnimateInteractionsContext.Provider>
+    </BaseMotionBox>
   );
 };

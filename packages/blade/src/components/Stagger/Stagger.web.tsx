@@ -1,9 +1,9 @@
-import { MotionDiv } from '~components/BaseMotion';
-import type { BaseEntryExitMotionProps, MotionVariantsType } from '~components/BaseMotion';
+import { BaseMotionBox } from '~components/BaseMotion';
+import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
 import { AnimatePresence } from 'framer-motion';
 import { StaggerContext } from './StaggerProvider';
 
-export type StaggerProps = BaseEntryExitMotionProps & {
+export type StaggerProps = BaseMotionEntryExitProps & {
   children: React.ReactElement[] | React.ReactElement;
 };
 
@@ -23,14 +23,14 @@ export const Stagger = ({ children, isVisible, variant = 'inout' }: StaggerProps
   };
 
   return (
-    <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
-      <AnimatePresence>
-        {isVisible ? (
-          <MotionDiv initial="initial" animate="animate" exit="exit" variants={staggerVariants}>
+    <AnimatePresence>
+      {isVisible ? (
+        <BaseMotionBox variant={variant} motionVariants={staggerVariants}>
+          <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
             {children}
-          </MotionDiv>
-        ) : null}
-      </AnimatePresence>
-    </StaggerContext.Provider>
+          </StaggerContext.Provider>
+        </BaseMotionBox>
+      ) : null}
+    </AnimatePresence>
   );
 };

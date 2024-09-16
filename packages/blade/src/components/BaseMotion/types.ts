@@ -2,25 +2,31 @@ import { Variant } from 'framer-motion';
 
 type MotionTriggersType = 'hover' | 'tap' | 'focus' | 'inView' | 'mount';
 
-type BaseEntryExitMotionProps = {
-  children: React.ReactElement;
-  speed?: 'slow' | 'medium' | 'fast';
-  isVisible?: boolean;
-  variant?: 'in' | 'out' | 'inout';
-  /**
-   * @default ['mount']
-   */
-  motionTriggers?: MotionTriggersType[];
-};
-
 type MotionVariantsType = {
   initial: Variant;
   animate: Variant;
   exit: Variant;
 };
 
-type BaseMotionProps = {
-  motionVariants: MotionVariantsType;
-} & Pick<BaseEntryExitMotionProps, 'children' | 'isVisible' | 'variant' | 'motionTriggers'>;
+type BaseMotionBoxProps = {
+  children: React.ReactElement;
+  speed?: 'slow' | 'medium' | 'fast';
+  variant?: 'in' | 'out' | 'inout';
+  /**
+   * @default ['mount']
+   */
+  motionTriggers?: MotionTriggersType[];
+  motionVariants?: MotionVariantsType;
+} & Record<string, any>;
 
-export type { BaseEntryExitMotionProps, BaseMotionProps, MotionVariantsType, MotionTriggersType };
+type BaseMotionEntryExitProps = Pick<
+  BaseMotionBoxProps,
+  'children' | 'motionTriggers' | 'motionVariants' | 'variant' | 'speed'
+> & { isVisible?: boolean };
+
+export type {
+  BaseMotionEntryExitProps,
+  MotionVariantsType,
+  MotionTriggersType,
+  BaseMotionBoxProps,
+};

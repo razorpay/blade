@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';
 import { useStagger } from '~components/Stagger/StaggerProvider';
-import type { BaseMotionProps, MotionTriggersType } from './types';
+import type { BaseMotionBoxProps, BaseMotionEntryExitProps, MotionTriggersType } from './types';
 
 // Creating empty styled component so that the final component supports `as` prop
 const StyledDiv = styled.div``;
@@ -23,8 +23,8 @@ const useAnimationVariables = ({
   isInsideAnimateInteractionsContainer,
   motionTriggers,
 }: {
-  variant: BaseMotionProps['variant'];
-  motionTriggers: BaseMotionProps['motionTriggers'];
+  variant: BaseMotionEntryExitProps['variant'];
+  motionTriggers: BaseMotionEntryExitProps['motionTriggers'];
   isInsideStaggerContainer: boolean;
   isInsideAnimateInteractionsContainer: boolean;
 }) => {
@@ -38,8 +38,6 @@ const useAnimationVariables = ({
       return {};
     }
 
-    console.log({ motionTriggers });
-
     const triggerProps = motionTriggers?.reduce<Partial<Record<AnimationType, 'animate'>>>(
       (prevProps, currentTrigger) => {
         prevProps[motionTriggersArrayToGesturePropsMap[currentTrigger]] = 'animate';
@@ -47,8 +45,6 @@ const useAnimationVariables = ({
       },
       {},
     );
-
-    console.log({ triggerProps });
 
     // When component is rendered inside stagger, we remove the initial, animate, exit props
     // otherwise they override the stagger behaviour and stagger does not work
@@ -65,10 +61,11 @@ const useAnimationVariables = ({
 const BaseMotionBox = ({
   children,
   motionVariants,
-  isVisible = true,
   variant = 'inout',
   motionTriggers = ['mount'],
-}: BaseMotionProps) => {
+  speed,
+  ...rest
+}: BaseMotionBoxProps) => {
   const { isInsideStaggerContainer } = useStagger();
   const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
   const animationVariables = useAnimationVariables({
@@ -78,16 +75,36 @@ const BaseMotionBox = ({
     motionTriggers,
   });
 
-  console.log(animationVariables);
+  console.log({ animationVariables, motionTriggers, variant });
 
+  return (
+    <MotionDiv
+      // kinda hack to build it as enhancer component
+      variants={motionVariants}
+      {...animationVariables}
+      {...rest}
+    >
+      {children}
+    </MotionDiv>
+  );
+};
+
+const BaseMotionEntryExit = ({
+  children,
+  motionVariants,
+  isVisible = true,
+  variant = 'inout',
+  motionTriggers = ['mount'],
+}: BaseMotionEntryExitProps) => {
   return (
     <AnimatePresence>
       {isVisible ? (
-        <MotionDiv
+        <BaseMotionBox
           // kinda hack to build it as enhancer component
           as={children.type}
-          variants={motionVariants}
-          {...animationVariables}
+          motionVariants={motionVariants}
+          motionTriggers={motionTriggers}
+          variant={variant}
           // We pass the props of children and not pass the children itself since the `as` prop already renders the children and we don't want to re-render it inside
           {...children.props}
         />
@@ -96,4 +113,4 @@ const BaseMotionBox = ({
   );
 };
 
-export { MotionDiv, BaseMotionBox };
+export { MotionDiv, BaseMotionEntryExit, BaseMotionBox };

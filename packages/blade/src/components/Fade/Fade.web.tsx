@@ -1,8 +1,8 @@
 import React from 'react';
-import { BaseMotionBox } from '~components/BaseMotion';
-import type { BaseEntryExitMotionProps, MotionVariantsType } from '~components/BaseMotion';
+import { BaseMotionEntryExit } from '~components/BaseMotion';
+import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
 
-export type FadeProps = BaseEntryExitMotionProps;
+export type FadeProps = BaseMotionEntryExitProps;
 
 export const Fade = ({
   children,
@@ -23,7 +23,7 @@ export const Fade = ({
   };
 
   return (
-    <BaseMotionBox
+    <BaseMotionEntryExit
       motionVariants={fadeVariants}
       variant={variant}
       children={children}
