@@ -43,7 +43,7 @@ As our org grows, we believe our products need to go a bit beyond the functional
 
 <img src="./images/motion-presets/motion-presets-meme.png" height="200px" /> <img src="./images/motion-presets/motion-presets-consumers-love.gif" height="200px" />
 
-To solve for consumer delight, us in blade team, are working on simplifying adding motion in our consumer applications and introduce consistent animations to our product.
+To solve for consumer delight, the blade team is working on simplifying adding motion in our consumer applications and introduce consistent animations to our product.
 
 You can check our detailed design proposal on [Motion Refresh](https://docs.google.com/document/d/1Vj2E0v2IdLSHuJNRrmX7X-BFSqGpXMFU0jj7LLfoZGk/edit?usp=sharing) (Only accessible to Razorpay Employees)
 
@@ -83,12 +83,23 @@ import { Fade } from '@razorpay/blade/components';
 ```ts
 type FadeProps = {
   /**
+   * whether to animate entry and / or exit
+   *
    * @default inout
    */
   variant: 'in' | 'out' | 'inout';
 
   /**
-   * Visibility state
+   * What should trigger the motion
+   *
+   * @default ['mount']
+   */
+  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
+
+  /**
+   * Visibility state. Only required when motionTriggers is set to mount
+   *
+   * @default true
    */
   isVisible?: boolean;
 };
@@ -180,7 +191,6 @@ type MoveProps = {
 <table>
 <tr>
   <td width="700px">
-In below example, the images scales up when its parent container is hovered<br/><br/>
 
 <!-- prettier-ignore -->
 ```jsx
@@ -193,11 +203,11 @@ import {
 <AnimatePresence>
 {
   isChatVisible ? (
-    <Morph key="chat" layoutId="chat-interface">
+    <Morph layoutId="chat-interface">
       <ChatInterface />
     </Morph>
   ) : (
-    <Morph key="chat-button" layoutId="chat-interface">
+    <Morph layoutId="chat-interface">
       <Button icon={RazorpayIcon} />
     </Morph>
   )
@@ -270,31 +280,6 @@ const CardHeading = morph(Heading);
 
 When we wrap a certain component in AnimateInteractions wrapper from blade, we can animate the children component on interactions of the parent component.
 
-Example in below component, we animate div's background colors on hover and tap.
-
-```jsx
-import { motion } from 'framer-motion';
-import { AnimateInteractions, Scale, Box } from '@razorpay/blade/components';
-
-<AnimateInteractions>
-  <Card>
-    <CardBody>
-      <motion.div
-        variants={{
-          initial: { backgroundColor: 'white' },
-          hover: { backgroundColor: 'tomato' },
-          tap: { backgroundColor: 'skyblue' },
-        }}
-      >
-        <Text>The box will change colors based on the interactions defined in variants</Text>
-      </motion.div>
-    </CardBody>
-  </Card>
-</AnimateInteractions>;
-```
-
-In most cases, we have interaction presets defined that will help you animate things without explicitly defining variants.
-
 #### Scale
 
 Scale animation can be used indepedently to scale item on certain actions but also inside AnimateInteractions.
@@ -311,7 +296,7 @@ import {
   Scale 
 } from '@razorpay/blade/components';
 
-<AnimateInteractions>
+<AnimateInteractions motionTriggers={['hover']}>
   <Card>
     <CardBody>
       <Scale>
@@ -333,7 +318,15 @@ _Previews are just examples of presets. They don't use actual durations and easi
 </tr>
 </table>
 
-Few more interaction components will be added. We will update this doc once they are finalised.
+You can also use `motionTriggers` prop directly on scale to scale up the element on hover / tap, etc.
+
+E.g. in this case, the image scales up on hover of the image
+
+```jsx
+<Scale motionTriggers={['hover']}>
+  <img src="./rajorpay.jpeg" />
+</Scale>
+```
 
 ## Staggered Animations
 
@@ -413,7 +406,7 @@ Lets compare some libraries over these ideals-
 | **Easy to implement complex animations** | ✅ (Declarative API)                                                                                                                          | ❌                                            | ❌                                     | ❌                                            |
 | **React Router Page Transition**         | ✅                                                                                                                                            | ❌ (No native support but can be implemented) | ✅                                     | ❌ (No native support but can be implemented) |
 | **Morph Animations / Layout Animations** | ✅ [Framer Motion POC](#morph-animations-with-framer-motion)                                                                                  | ❌                                            | ✅                                     | ❌                                            |
-| **Small bundle size**                    | ❌ (4.6kb core + 40kb features that can be lazy loaded)                                                                                       | ✅ (4kb )                                     | ❌ (26kb core + features)              | ✅ (0kb)                                      |
+| **Small bundle size**                    | ❌ (4.6kb core + 15kb (for base animations) + 10kb (if Morph preset is used))                                                                 | ✅ (4kb )                                     | ❌ (26kb core + features)              | ✅ (0kb)                                      |
 
 There is also detailed comparison of these libraries at [Motion One Docs - Feature Comparisons](https://motion.dev/docs/feature-comparison#comparison-table)
 
@@ -465,12 +458,49 @@ https://github.com/user-attachments/assets/b53779ec-55ec-4ef4-bdca-60b2e46cb3ae
 
 ### Other POCs
 
+- [Stagger Animations POC](https://codesandbox.io/p/sandbox/framer-motion-side-menu-forked-3flyxv)
 - [Framer Motion Layout Animations with Blade Components](https://stackblitz.com/edit/framer-motion-blade-poc?file=App.tsx,Logger.tsx)
 - [Enhancer Component POC to check API feasibility](https://stackblitz.com/edit/enhancer-component-poc?file=App.tsx)
 
+# Accessibility
+
+On [reduced motion setting](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion), we'll stop the motion (internally set duration to 0 for all animations). The UI will continue to work but without motion.
+
 # Drawbacks/Constraints
 
-- Framer Motion as a library will be introduced in customer projects which might increase their bundle size
+- Framer Motion as a library will be introduced in customer projects which might increase their bundle size.
+
+We'll be using the reduced bundle size version of motion core `m` internally for presets to ensure Blade uses minimal bundle size.
+
+Recommended way to load framer motion would be -
+
+### Lazy Loaded Motion
+
+#### `features.ts`
+
+```js
+// If you're using basic presets like Fade, Move, Slide, Scale, etc
+import { domAnimations } from 'framer-motion';
+export default domAnimations; // 15kb;
+
+// OR
+
+// If you're using previously mentioned presets + `Morph` preset or drag / drop animations from framer-motion
+import { domMax } from 'framer-motion';
+export default domMax; // 25kb
+```
+
+#### App.tsx
+
+```jsx
+// Make sure to return the specific export containing the feature bundle.
+const loadFeatures = () => import('./features').then((res) => res.default);
+
+// This animation will run when loadFeatures resolves.
+function App({ children }) {
+  return <LazyMotion features={loadFeatures}>{children}</LazyMotion>;
+}
+```
 
 # Alternatives
 
@@ -492,7 +522,9 @@ https://github.com/user-attachments/assets/b53779ec-55ec-4ef4-bdca-60b2e46cb3ae
 # Open Questions
 
 - React Native support for presets?
+  - We will continue to use React Native Reanimated for now. Similar presets can be built on top of react native reanimated in future
 - Should motion components be imported from `@razorpay/blade/components` like other components or `@razorpay/blade/motion`
+  - We'll continue to import from components and utils since they are also components only.
 
 # References
 
