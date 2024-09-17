@@ -190,7 +190,7 @@ type MoveProps = {
 
 <table>
 <tr>
-  <td width="700px">
+  <td width="600px">
 
 <!-- prettier-ignore -->
 ```jsx
@@ -216,7 +216,7 @@ import {
 ```
 
   </td>
-  <td width="400px">
+  <td width="500px">
 
 https://github.com/user-attachments/assets/2ec967a5-1e17-443a-a3a9-230962f6bd9a
 
