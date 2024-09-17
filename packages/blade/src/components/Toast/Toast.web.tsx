@@ -108,13 +108,13 @@ const Toast = ({
   const enter = css`
     opacity: 0;
     animation: ${slideIn} ${makeMotionTime(theme.motion.duration.gentle)}
-      ${castWebType(theme.motion.easing.entrance.effective)} forwards;
+      ${castWebType(theme.motion.easing.entrance)} forwards;
   `;
 
   const exit = css`
     opacity: 1;
     animation: ${slideOut} ${makeMotionTime(theme.motion.duration.moderate)}
-      ${castWebType(theme.motion.easing.exit.effective)} forwards;
+      ${castWebType(theme.motion.easing.exit)} forwards;
   `;
 
   return (

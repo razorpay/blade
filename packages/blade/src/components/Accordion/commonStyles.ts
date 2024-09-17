@@ -7,7 +7,7 @@ import { makeMotionTime } from '~utils';
 const getTransitionDuration = (theme: Theme) => makeMotionTime(theme.motion.duration['2xquick']);
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const getTransitionEasing = (theme: Theme) => theme.motion.easing.standard.effective;
+const getTransitionEasing = (theme: Theme) => theme.motion.easing.standard;
 
 const getBackgroundColor = ({
   theme,

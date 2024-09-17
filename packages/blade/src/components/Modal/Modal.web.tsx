@@ -59,10 +59,10 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme
     transform: translate(-50%, -50%);
     opacity: ${isVisible ? 1 : 0};
     animation: ${isVisible ? entry : exit}
-      ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
+      ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
       ${isVisible
-        ? castWebType(theme.motion.easing.entrance.revealing)
-        : castWebType(theme.motion.easing.exit.revealing)};
+        ? castWebType(theme.motion.easing.entrance)
+        : castWebType(theme.motion.easing.exit)};
   `;
 });
 
@@ -77,7 +77,7 @@ const Modal = ({
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {
-    transitionDuration: theme.motion.duration.xmoderate,
+    transitionDuration: theme.motion.duration.moderate,
     initialEnter: true,
   });
 

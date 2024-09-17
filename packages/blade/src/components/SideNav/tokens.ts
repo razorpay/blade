@@ -28,9 +28,7 @@ const HOVER_AGAIN_DELAY = 500;
 const L1_EXIT_HOVER_DELAY = 150;
 
 const getNavItemTransition = ({ motion }: Theme): string => {
-  return `background-color ${makeMotionTime(motion.duration['2xquick'])} ${
-    motion.easing.standard.effective
-  }`;
+  return `background-color ${makeMotionTime(motion.duration['2xquick'])} ${motion.easing.standard}`;
 };
 
 export {

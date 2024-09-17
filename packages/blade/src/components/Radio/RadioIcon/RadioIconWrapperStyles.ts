@@ -44,7 +44,7 @@ const getRadioIconWrapperStyles = ({
     borderColor,
     ...(!isReactNative && {
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
-      transitionTimingFunction: castWebType(theme.motion.easing.exit.attentive),
+      transitionTimingFunction: castWebType(theme.motion.easing.exit),
     }),
   };
 };

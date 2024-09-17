@@ -66,7 +66,7 @@ const getNavigationButtonStyles = (props: {
       : {
           transitionProperty: 'color, box-shadow',
           transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
-          transitionTimingFunction: castWebType(motionToken.easing.standard.effective),
+          transitionTimingFunction: castWebType(motionToken.easing.standard),
           boxShadow: variant === 'filled' ? castWebType(theme.elevation.midRaised) : undefined,
 
           '&:hover': {
