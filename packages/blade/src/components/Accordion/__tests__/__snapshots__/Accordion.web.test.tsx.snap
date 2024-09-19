@@ -438,7 +438,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -586,7 +586,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -734,7 +734,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1228,7 +1228,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1376,7 +1376,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1524,7 +1524,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
