@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.30.1
+
+### Patch Changes
+
+- c050c1d9: fix: AccordionItemHeader to take full width
+
 ## 11.30.0
 
 ### Minor Changes
