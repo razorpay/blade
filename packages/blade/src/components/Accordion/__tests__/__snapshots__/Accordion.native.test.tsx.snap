@@ -1,0 +1,5131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Accordion /> should render 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="accordion"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      maxWidth={
+        {
+          "l": "800px",
+          "m": "640px",
+          "s": "710px",
+        }
+      }
+      minWidth={
+        {
+          "l": "360px",
+          "m": "360px",
+          "s": "200px",
+        }
+      }
+      style={
+        [
+          {
+            "maxWidth": 710,
+            "minWidth": 200,
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-1"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup Route?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-1"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.subtle"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(211, 26%, 34%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                            You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
+                          </Text>
+                        </View>
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-2"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup QR Codes?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-2"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.subtle"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(211, 26%, 34%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                            Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
+                          </Text>
+                        </View>
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-3"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup Subscriptions?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-3"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.subtle"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(211, 26%, 34%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                            Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
+                          </Text>
+                        </View>
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Deprecated <Accordion /> should render 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="accordion"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      maxWidth={
+        {
+          "l": "800px",
+          "m": "640px",
+          "s": "710px",
+        }
+      }
+      minWidth={
+        {
+          "l": "360px",
+          "m": "360px",
+          "s": "200px",
+        }
+      }
+      style={
+        [
+          {
+            "maxWidth": 710,
+            "minWidth": 200,
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-31"
+              accessibilityLabel="How can I setup Route?"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup Route?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-31"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
+                        </Text>
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-32"
+              accessibilityLabel="How can I setup QR Codes?"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup QR Codes?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-32"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
+                        </Text>
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-33"
+              accessibilityLabel="How can I setup Subscriptions?"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup Subscriptions?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-33"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
+                        </Text>
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="accordion"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      maxWidth={
+        {
+          "l": "800px",
+          "m": "640px",
+          "s": "710px",
+        }
+      }
+      minWidth={
+        {
+          "l": "360px",
+          "m": "360px",
+          "s": "200px",
+        }
+      }
+      style={
+        [
+          {
+            "maxWidth": 710,
+            "minWidth": 200,
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-34"
+              accessibilityLabel="How can I setup Route?"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup Route?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-34"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
+                        </Text>
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-35"
+              accessibilityLabel="How can I setup QR Codes?"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup QR Codes?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-35"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
+                        </Text>
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+      <View
+        data-blade-component="accordion-item"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="collapsible"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "minWidth": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityControls="collapsible-body-36"
+              accessibilityLabel="How can I setup Subscriptions?"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  },
+                ]
+              }
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="accordion-item-header"
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginBottom": 16,
+                            "marginTop": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "touchAction": "none",
+                          },
+                        ]
+                      }
+                      touchAction="none"
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "userSelect": "none",
+                            },
+                          ]
+                        }
+                        userSelect="none"
+                      >
+                        <View
+                          alignItems="flex-start"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          style={
+                            [
+                              {
+                                "alignItems": "flex-start",
+                                "display": "flex",
+                                "flexBasis": "auto",
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": "auto",
+                                "paddingRight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            data-blade-component="base-box"
+                            style={
+                              [
+                                {
+                                  "flexBasis": "auto",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="row"
+                              flexShrink={0}
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "flexShrink": 0,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                accessible={true}
+                                color="surface.text.gray.normal"
+                                data-blade-component="text"
+                                fontFamily="text"
+                                fontSize={200}
+                                fontStyle="normal"
+                                fontWeight="semibold"
+                                lineHeight={200}
+                                marginTop="1px"
+                                style={
+                                  [
+                                    {
+                                      "color": "hsla(212, 39%, 16%, 1)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0,
+                                      "lineHeight": 24,
+                                      "marginBottom": 0,
+                                      "marginLeft": 0,
+                                      "marginRight": 0,
+                                      "marginTop": 1,
+                                      "paddingBottom": 0,
+                                      "paddingLeft": 0,
+                                      "paddingRight": 0,
+                                      "paddingTop": 0,
+                                      "textDecorationLine": "none",
+                                    },
+                                  ]
+                                }
+                              >
+                                How can I setup Subscriptions?
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={
+                                    {
+                                      "payload": 4285959847,
+                                      "type": 0,
+                                    }
+                                  }
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <View
+                          data-blade-component="box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-36"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                [
+                  {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {
+                          "marginBottom": 0,
+                          "marginTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="accordion-item-body"
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "marginLeft": 16,
+                              "marginRight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
+                        </Text>
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {
+                                "marginTop": 0,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessibilityElementsHidden={true}
+                          data-blade-component="base-box"
+                          importantForAccessibility="no-hide-descendants"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                             
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          borderBottomColor="surface.border.gray.muted"
+          borderPosition="borderBottom"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={true}
+          style={
+            [
+              {
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
+              },
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderWidth": 0,
+                "flexGrow": 1,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
