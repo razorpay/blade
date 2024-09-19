@@ -399,9 +399,12 @@ exports[`<Accordion /> should render 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
@@ -953,9 +956,12 @@ exports[`<Accordion /> should render 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
@@ -1507,9 +1513,12 @@ exports[`<Accordion /> should render 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
@@ -2110,9 +2119,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
@@ -2664,9 +2676,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
@@ -3218,9 +3233,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
@@ -3820,9 +3838,12 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
@@ -4374,9 +4395,12 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
@@ -4928,9 +4952,12 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                           data-blade-component="box"
                           style={
                             [
-                              {},
+                              {
+                                "width": "100%",
+                              },
                             ]
                           }
+                          width="100%"
                         />
                       </View>
                     </View>
