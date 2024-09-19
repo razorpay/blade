@@ -363,7 +363,7 @@ const _BaseHeader = ({
           alignItems="center"
           justifyContent="space-between"
         >
-          {children}
+          <Box width="100%">{children}</Box>
           {trailingInteractionElement && children ? (
             <Box alignSelf="flex-start" {...centerBoxProps[size]}>
               {trailingInteractionElement}
