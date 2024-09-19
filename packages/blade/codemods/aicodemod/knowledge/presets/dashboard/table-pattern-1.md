@@ -303,9 +303,13 @@ export default (props) => {
             </TableHeaderRow>
           </TableHeader>
           <TableBody>
-            {tableData.map((invoice) => (
-              <InvoiceListItem key={invoice.id} invoice={invoice} columns={columns} />
-            ))}
+            {tableData.length <= 0 ? (
+              <EmptyList />
+            ) : (
+              tableData.map((invoice) => (
+                <InvoiceListItem key={invoice.id} invoice={invoice} columns={columns} />
+              ))
+            )}
           </TableBody>
         </>
       )}
