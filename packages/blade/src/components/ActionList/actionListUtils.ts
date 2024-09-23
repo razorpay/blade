@@ -217,10 +217,11 @@ const validateActionListItemProps = ({
       if (
         !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
         !isValidAllowedChildren(child, componentIds.ActionListItemText) &&
-        !isValidAllowedChildren(child, componentIds.ActionListItemAsset)
+        !isValidAllowedChildren(child, componentIds.ActionListItemAsset) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemAvatar)
       ) {
         throwBladeError({
-          message: `Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
+          message: `Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAvatar}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
           moduleName: 'ActionListItem',
         });
       }

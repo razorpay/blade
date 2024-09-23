@@ -59,6 +59,7 @@ const _Dropdown = ({
   onOpenChange,
   selectionType = 'single',
   testID,
+  _width,
   ...styledProps
 }: DropdownProps): React.ReactElement => {
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
@@ -230,6 +231,7 @@ const _Dropdown = ({
           ref={dropdownContainerRef as any}
           {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
           {...getStyledProps(styledProps)}
+          width={_width}
         >
           <BaseBox position="relative" textAlign={'left' as never}>
             {children}

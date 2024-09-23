@@ -13,8 +13,9 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-type IndicatorCommonProps = {
+type IndicatorProps = {
   /**
    * Sets the color tone
    *
@@ -37,36 +38,18 @@ type IndicatorCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-} & TestID &
-  StyledPropsBlade;
-
-type IndicatorWithoutA11yLabel = {
-  /**
-   * A text label to show alongside the indicator dot
-   */
-  children: StringChildrenType;
-
-  /**
-   * a11y label for screen readers
-   */
-  accessibilityLabel?: string;
-};
-
-type IndicatorWithA11yLabel = {
-  /**
-   * a11y label for screen readers
-   */
-  accessibilityLabel: string;
-
   /**
    * A text label to show alongside the indicator dot
    */
   children?: StringChildrenType;
-};
+  /**
+   * a11y label for screen readers
+   */
+  accessibilityLabel?: string;
+} & TestID &
+  StyledPropsBlade;
 
-type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
-
-const Indicator = ({
+const _Indicator = ({
   accessibilityLabel,
   children,
   size = 'medium',
@@ -115,7 +98,7 @@ const Indicator = ({
             <Circle cx="5" cy="5" r="5" fill={fillColorInner} />
           )}
         </Svg>
-        <BaseBox marginLeft="spacing.2">
+        <BaseBox marginLeft={childrenString ? 'spacing.2' : 'spacing.0'}>
           <Text
             weight="medium"
             color="surface.text.gray.subtle"
@@ -129,6 +112,10 @@ const Indicator = ({
     </BaseBox>
   );
 };
+
+const Indicator = assignWithoutSideEffects(_Indicator, {
+  componentId: 'Indicator',
+});
 
 export type { IndicatorProps };
 export { Indicator };

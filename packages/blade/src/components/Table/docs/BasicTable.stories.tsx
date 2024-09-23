@@ -1,11 +1,21 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData, TableProps } from '../types';
-import { Table as TableComponent } from '../Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../TableHeader';
-import { TableBody, TableRow, TableCell, TableEditableCell } from '../TableBody';
-import { TableToolbar, TableToolbarActions } from '../TableToolbar';
-import { TableFooter, TableFooterRow, TableFooterCell } from '../TableFooter';
-import { TablePagination } from '../TablePagination';
+import {
+  Table as TableComponent,
+  TableEditableCell,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableToolbar,
+  TableToolbarActions,
+  TableFooter,
+  TableFooterRow,
+  TableFooterCell,
+  TablePagination,
+} from '../../Table';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
@@ -109,6 +119,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       <TableComponent
         {...args}
         data={data}
+        defaultSelectedIds={['1', '3']}
+        onSelectionChange={console.log}
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>

@@ -135,6 +135,7 @@ const stepsSampleData: StepItemProps[] = [
     title: 'Business Details',
     timestamp: 'Mon, 17th Oct’23 | 12:00pm',
     description: 'Fill your Business Details for onboarding',
+    isDisabled: true,
   },
   {
     title: 'Complete Onboarding',

@@ -155,6 +155,7 @@ const _TablePagination = ({
     totalItems,
     setPaginationRowSize,
     setPaginationType,
+    backgroundColor,
   } = useTableContext();
   const [currentPageSize, setCurrentPageSize] = React.useState<number>(defaultPageSize);
   const [currentPage, setCurrentPage] = React.useState<number>(
@@ -242,7 +243,7 @@ const _TablePagination = ({
       display="flex"
       flexDirection="row"
       padding={tablePagination.padding}
-      backgroundColor={tablePagination.backgroundColor}
+      backgroundColor={backgroundColor}
     >
       {showLabel && !onMobile && (
         <BaseBox display="flex" justifyContent="center" alignItems="center">

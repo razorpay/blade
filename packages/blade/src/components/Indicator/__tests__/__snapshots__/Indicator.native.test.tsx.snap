@@ -100,7 +100,7 @@ exports[`<Indicator /> should render 1`] = `
         style={
           [
             {
-              "marginLeft": 4,
+              "marginLeft": 0,
             },
           ]
         }
@@ -245,7 +245,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         style={
           [
             {
-              "marginLeft": 4,
+              "marginLeft": 0,
             },
           ]
         }
@@ -379,7 +379,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         style={
           [
             {
-              "marginLeft": 4,
+              "marginLeft": 0,
             },
           ]
         }
@@ -513,7 +513,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         style={
           [
             {
-              "marginLeft": 4,
+              "marginLeft": 0,
             },
           ]
         }
@@ -647,7 +647,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         style={
           [
             {
-              "marginLeft": 4,
+              "marginLeft": 0,
             },
           ]
         }

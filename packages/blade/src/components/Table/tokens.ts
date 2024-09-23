@@ -1,6 +1,7 @@
+import { AlertCircleIcon, CheckIcon } from '~components/Icons';
 import { size } from '~tokens/global';
 
-const firstColumnStickyHeaderFooterZIndex = 2;
+const firstColumnStickyZIndex = 2;
 
 const refreshWrapperZIndex = 3;
 
@@ -99,7 +100,6 @@ const tableToolbar = {
 } as const;
 
 const tablePagination = {
-  backgroundColor: 'transparent',
   padding: 'spacing.4',
   pageSelectionButton: {
     backgroundColor: 'transparent',
@@ -125,6 +125,18 @@ const tableEditableCellRowDensityToInputSizeMap = {
   comfortable: 'medium',
 } as const;
 
+const validationStateToInputTrailingIconMap = {
+  none: undefined,
+  success: CheckIcon,
+  error: AlertCircleIcon,
+};
+
+const rowDensityToIsTableInputCellMapping = {
+  comfortable: false,
+  normal: true,
+  compact: true,
+};
+
 export {
   tableHeader,
   tableFooter,
@@ -133,7 +145,9 @@ export {
   tablePagination,
   refreshWrapperZIndex,
   tableBackgroundColor,
-  firstColumnStickyHeaderFooterZIndex,
+  firstColumnStickyZIndex,
   checkboxCellWidth,
   tableEditableCellRowDensityToInputSizeMap,
+  validationStateToInputTrailingIconMap,
+  rowDensityToIsTableInputCellMapping,
 };

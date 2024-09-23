@@ -3,17 +3,23 @@ export const bladeThemeData = {
     'ActionListItems Group': {
       key: '1e18a66e07ce9830b6a4e440a9b7c02ae55d069b',
     },
-    'Accordion Group': {
-      key: 'f2c9831bc8da8ca8bdfd4594c76099a707c5b9fe',
+    Accordion: {
+      key: 'a14d82171648231f3f121aa1a828161e191fa282',
     },
-    'Accordion Item': {
-      key: 'db5e8797115a4badc366e4bb155f8caca290730c',
+    'Accordion/Item': {
+      key: 'f37213cecb1a4d29ca5872614eebc5ac5a52376b',
     },
-    'AccordionHeader-Base': {
-      key: '4ab4fdf876a4783349814b2fcfa9fab1b7e2d843',
+    'Accordion/Body': {
+      key: '20fa85fbd083dc92ec93669c4d4db0723e34ac42',
     },
-    'AccordionBody-Base': {
-      key: '5e7801218a5c222780ae8ae33a2be71bc3d3b58e',
+    'Accordion/Header': {
+      key: 'b9b9656a3fb01a8f05f57ae2caf45a93768d7842',
+    },
+    'Accordion/Leading Item': {
+      key: 'dea27276a01770b05ac502693d0f76e8266bf4ec',
+    },
+    'Accordion/Trailing Item': {
+      key: '5007e2c022b2927930235c31d770e0e676f60f01',
     },
     Collapsible: {
       key: '0b6944a8171a763631f1aa2cca713c77dd701d89',
@@ -58,13 +64,45 @@ export const bladeThemeData = {
       key: '3942574367676524ab7ea045ece704f751984dae',
     },
 
+    // Drawer
     Drawer: {
       key: '0ac0ef71c3ea1e80df41865c3bedad8de2021c99',
     },
     'Drawer/Header': {
       key: '8e525221266c2d002c28e0bc08310eaefa9fd706',
     },
+    'Drawer/Leading': {
+      key: 'bacc1048d13fde73544c53141e51b420311d1250',
+    },
+    'Drawer/Trailing': {
+      key: 'b8191f2b181f821e4e93c29df319efa8a90bf1bf',
+    },
 
+    // Menu
+    Menu: {
+      key: '5579b346d87f88747c96444d0b042bdcc2348066',
+    },
+    'Menu/Trailing': {
+      key: 'f3433ad2b96c72a9b4d3b07b9d0547328c3f6685',
+    },
+    'Menu/Leading': {
+      key: '0e8422f46f5279c6e1037557d8a5049bea2427ea',
+    },
+    MenuItem: {
+      key: '34e76b11e46e82f64694313432ae88e5901f4f6d',
+    },
+    'MenuItem/Trailing': {
+      key: '9c7a7356118794224990529e4922d8ec89a77b56',
+    },
+    'MenuItem/Leading': {
+      key: 'cbeaaaeb4fbf0a830a97687bf50c50aa2cfe8b2a',
+    },
+    L2SubMenuItem: {
+      key: '06cc9d71153af14dc0ec0cb22835596420fa7c93',
+    },
+    L1SubMenuItem: {
+      key: '5090d1d66a59d0762b38915d3e56946f6617a0ea',
+    },
     'Dropdown Menu': {
       key: '301e099f941f2b4a4c1475779e72659d7caabd4d',
     },
@@ -201,6 +239,9 @@ export const bladeThemeData = {
     Switch: {
       key: '927781eb654ae1e4cdcb0cb79d5840797a7fb8db',
     },
+    'File Upload': {
+      key: '1b6beb7c0ca1bee22e5cb69234c3dc7319368806',
+    },
 
     // Button
     Button: {
@@ -208,6 +249,9 @@ export const bladeThemeData = {
     },
     IconButton: {
       key: 'da16ecb1aaad66d8e93a96a8f01ed231f623f1f9',
+    },
+    'Button Group': {
+      key: '2b3f50d0105fcbce2fc209dacdc4a94bc79d7b5e',
     },
 
     //Table
@@ -269,6 +313,34 @@ export const bladeThemeData = {
     },
     'Avatar Group': {
       key: 'd0391cad4a3c0f944dde0aa5bfde8ff84aa55083',
+    },
+
+    // Step Group
+    'StepGroup/Trailing': {
+      key: '74ed744b51effc5d874c749bc5e88f4be721716e',
+    },
+    'StepGroup/Branch': {
+      key: 'd4479afbb639cfe3cbc9d89d11fec362ca79aa87',
+    },
+
+    // TopNav
+    TopNavigation: {
+      key: '622b115eef2ed77542c0076ce0a34b5f09208fd5',
+    },
+    'TopNavigation Item': {
+      key: '3205630f37ec72d0c71a9760cdb99521bacbbc3a',
+    },
+    'TopNavigation Bar': {
+      key: '81bc989c244d5fa751b9851ad7d69841c78255a2',
+    },
+    'TopNavigation Tabs': {
+      key: '9bc47e8b7d1cfcccd21e680341ca941a676e2e02',
+    },
+    'TopNavigation NavAction': {
+      key: 'c1eb57a062767f1b3c1f7e3cec76297332407aa4',
+    },
+    'TopNavigation/Overflow Handle': {
+      key: 'f369b87f0bb880ace68ef6b743f5557ec576cace',
     },
 
     // Utility Components
@@ -1569,11 +1641,12 @@ export const BLADE_COMPONENT_IDS = Object.values(bladeThemeData.components).map(
   (component) => component.key,
 );
 
-// Carousel, Modal, Bottom Sheet, Card, Dropdown Menu
+// Carousel, Modal, Bottom Sheet, Card, Dropdown Menu, Accordion, Menu
 export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
-  bladeThemeData.components['Accordion Group'],
-  bladeThemeData.components['Accordion Item'],
-  bladeThemeData.components['AccordionBody-Base'],
+  bladeThemeData.components.Accordion,
+  bladeThemeData.components['Accordion/Item'],
+  bladeThemeData.components['Accordion/Body'],
+  bladeThemeData.components['Accordion/Header'],
   bladeThemeData.components['Bottom Sheet'],
   bladeThemeData.components['BottomSheet/Footer'],
   bladeThemeData.components['Dropdown/Header'],
@@ -1589,6 +1662,7 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components.Collapsible,
   bladeThemeData.components.Table,
   bladeThemeData.components.Drawer,
+  bladeThemeData.components.Menu,
 ]
   .map((component) => component.key)
   .flat();

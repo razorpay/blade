@@ -33,6 +33,7 @@ const getRadioIconWrapperStyles = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    minWidth: makeSpace(radioSizes.icon[size].width),
     width: makeSpace(radioSizes.icon[size].width),
     height: makeSpace(radioSizes.icon[size].height),
     borderWidth: makeBorderSize(theme.border.width.thick),

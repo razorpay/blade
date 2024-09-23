@@ -3,12 +3,10 @@
 import React from 'react';
 import { Text } from '~components/Typography';
 
-const TableToolbar = (props: unknown): React.ReactElement => {
+type TablePaginationProps = unknown;
+
+const TablePagination = (props: TablePaginationProps): React.ReactElement => {
   return <Text>Table Component is not available for Native mobile apps.</Text>;
 };
 
-const TableToolbarActions = (props: unknown): React.ReactElement => {
-  return <Text>Table Component is not available for Native mobile apps.</Text>;
-};
-
-export { TableToolbar, TableToolbarActions };
+export { TablePagination };
