@@ -1,0 +1,44 @@
+const { widget } = figma
+const { AutoLayout, Text, useSyncedState } = widget
+import Checkbox from "./components/Checkbox"
+import SectionHeader from "./components/SectionHeader"
+
+function Widget() {
+  const [checkedStates, setCheckedStates] = useSyncedState("checkedStates", Array(10).fill(false));
+  return (
+    <AutoLayout width={465} padding={{horizontal: 32, vertical: 40}} direction="vertical" spacing={24} cornerRadius={16} fill={'#fff'}>
+      <Text fontSize={28} fontWeight={700} fill={'#192839'}>✏️  Handoff checklist</Text>
+      <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+        <SectionHeader title="Reviewed by" />
+        <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+          <Checkbox id={"collab1"} isEditable={true} />
+          <Checkbox id={"collab2"} isEditable={true} />
+          <Checkbox id={"collab3"} isEditable={true} />
+        </AutoLayout>
+      </AutoLayout>
+      <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+        <SectionHeader title="Design system" />
+        <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+          <Checkbox id={"ds1"} optionText="Added Blade coverage card having coverage greater than 90%" />
+          <Checkbox id={"ds2"} optionText="Annotated the reasons with deviation request link if coverage is less than 90%" />
+          <Checkbox id={"ds3"} optionText="Used standard mobile and desktop sizes" />
+          <Checkbox id={"ds4"} optionText="Added a section for the slot replacements & local components" />
+          <Checkbox id={"ds5"} optionText="All the non-Blade components are approved from the Blade team" />
+        </AutoLayout>
+      </AutoLayout>
+      <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+        <SectionHeader title="States" />
+        <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+          <Checkbox id={"state1"} optionText="Empty and loading states are defined properly" />
+          <Checkbox id={"state2"} optionText="Added responsive (desktop and mobile) flows" />
+          <Checkbox id={"state3"} optionText="Used standard mobile and desktop sizes" />
+          <Checkbox id={"state4"} optionText="Designs are light and dark mode compatible" />
+          <Checkbox id={"state5"} optionText="Added Figma's annotations to explain behaviours" />
+          <Checkbox id={"state6"} optionText="Accounted for edge cases and error states" />
+        </AutoLayout>
+      </AutoLayout>
+    </AutoLayout>
+  )
+}
+
+widget.register(Widget)

@@ -1,0 +1,48 @@
+const { AutoLayout, SVG, Text, Input, useSyncedState } = figma.widget
+
+interface CheckboxProps {
+  id: string,
+  optionText?: string,
+  helpText?: string,
+  isEditable?: Boolean,
+}
+
+function Checkbox(
+  {
+    id,
+    optionText = "An option text",
+    helpText,
+    isEditable = false
+  }: CheckboxProps) {
+    const [isChecked, setChecked] = useSyncedState(`${id}_checked`, false);
+    const [optionTextInput, setOptionTextInput] = useSyncedState(`${id}_optionInputText`, "");
+    const [helpTextInput, setHelpTextInput] = useSyncedState(`${id}_helpInputText`, "");
+    const checkIcon = `
+      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    `
+    return (
+      <AutoLayout padding={{horizontal: 4, vertical: 2}} cornerRadius={4} direction="vertical" onClick={() => setChecked(!isChecked)} width="fill-parent" hoverStyle={{fill: {r: 0, g: 0, b: 0, a: 0.04}}}>
+        <AutoLayout padding={{vertical: 2}} direction="horizontal" spacing={4} width="fill-parent">
+          <AutoLayout width={20} height={20} verticalAlignItems={"center"} horizontalAlignItems={"center"}>
+            <AutoLayout verticalAlignItems={"center"} horizontalAlignItems={"center"} width={16} height={16} cornerRadius={2} fill={ isChecked ? "#305EFF" : "#FFFFFF" }  stroke={ isChecked ? "#305EFF" : "#CBD5E2" } strokeWidth={1.5}>
+              {isChecked && (<SVG src={checkIcon} width={12} height={12}></SVG>) }
+            </AutoLayout>
+          </AutoLayout>
+          <AutoLayout direction="vertical" width="fill-parent">
+            { isEditable ?
+              (<Input value={optionTextInput} placeholder={"<Reviewer's Name>"} onTextEditEnd={(e) => setOptionTextInput(e.characters)} fontSize={14} fontWeight={400} lineHeight={20} fill={isChecked ? '#768EA7' : '#40566D'} width="fill-parent" />) :
+              (<Text fontSize={14} fontWeight={400} lineHeight={20} fill={isChecked ? '#768EA7' : '#40566D'} width="fill-parent">{optionText}</Text>)
+            }
+            { (helpText || isEditable) && (isEditable ?
+              (<Input value={helpTextInput} placeholder={"<Attribute> review by <tenative date>"} onTextEditEnd={(e) => setHelpTextInput(e.characters)} fontSize={11} fontWeight={400} lineHeight={16} fill={'#768EA7'} italic={true} width="fill-parent" />) :
+              (<Text fontSize={11} fontWeight={400} lineHeight={16} fill={'#768EA7'} italic={true} width="fill-parent">{helpText}</Text>))
+            }
+          </AutoLayout>
+        </AutoLayout>
+      </AutoLayout>
+    )
+}
+
+export default Checkbox
