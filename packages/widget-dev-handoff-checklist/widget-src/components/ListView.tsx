@@ -21,11 +21,11 @@ function ListView(
       <AutoLayout direction="vertical" width="fill-parent">
         <AutoLayout direction="horizontal" wrap={true} spacing={4} width="fill-parent">
           <Text fontSize={14} fontWeight={400} lineHeight={20} fill={'#40566D'}>{listText} reviewed by </Text>
-          <Input value={listTextInput} placeholder={"<Reviewer's Name>"} onTextEditEnd={(e) => setListTextInput(e.characters)} fontSize={14} fontWeight={400} lineHeight={20} fill={'#768EA7'} width="fill-parent" />
+          <Input value={listTextInput} placeholder={"<Reviewer's Name>"} onTextEditEnd={(e) => setListTextInput(e.characters)} fontSize={14} fontWeight={600} lineHeight={20} fill={'#40566D'} width="fill-parent" hoverStyle={{fill: "#305EFF"}} />
         </AutoLayout>
         <AutoLayout direction="horizontal" wrap={true} spacing={4} width="fill-parent">
-          <Text fontSize={11} fontWeight={400} lineHeight={16} fill={'#768EA7'} italic={true}>on</Text>
-          <Input value={dateTextInput} placeholder={"<Review Date>"} onTextEditEnd={(e) => setDateTextInput(e.characters)} fontSize={11} fontWeight={400} lineHeight={16} italic={true} fill={'#768EA7'} width="fill-parent" />
+          {/* <Text fontSize={11} fontWeight={400} lineHeight={16} fill={'#768EA7'} italic={true}>on</Text> */}
+          <Input value={dateTextInput} placeholder={"<Review Date>"} onTextEditEnd={(e) => setDateTextInput(e.characters)} fontSize={11} fontWeight={400} lineHeight={16} italic={true} fill={'#768EA7'} width="fill-parent" hoverStyle={{fill: "#305EFF"}} />
         </AutoLayout>
       </AutoLayout>
     </AutoLayout>

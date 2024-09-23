@@ -13,8 +13,8 @@ function Widget() {
         <SectionHeader title="Reviewed by" />
         <AutoLayout direction="vertical" spacing={4} width="fill-parent">
           <ListView id={"review1"} listText={"Design"} />
-          <ListView id={"review2"} listText={"Illustration"} />
-          <ListView id={"review3"} listText={"Copy"} />
+          <ListView id={"review2"} listText={"Copy"} />
+          <ListView id={"review3"} listText={"Creatives"} />
         </AutoLayout>
       </AutoLayout>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
