@@ -10,7 +10,7 @@ function Widget() {
     <AutoLayout width={465} padding={{horizontal: 32, vertical: 40}} direction="vertical" spacing={24} cornerRadius={16} fill={'#fff'}>
       <Text fontSize={28} fontWeight={700} fill={'#192839'}>✏️  Handoff checklist</Text>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
-        <SectionHeader title="Reviewed by" />
+        <SectionHeader title="Reviewers" />
         <AutoLayout direction="vertical" spacing={4} width="fill-parent">
           <ListView id={"review1"} listText={"Design"} />
           <ListView id={"review2"} listText={"Copy"} />

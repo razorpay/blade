@@ -1,4 +1,4 @@
-const { AutoLayout, SVG, Text, Input, useSyncedState } = figma.widget
+const { AutoLayout, Text, Input, useSyncedState } = figma.widget
 
 interface ListViewProps {
   id: string,
