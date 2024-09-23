@@ -1,6 +1,7 @@
 const { widget } = figma
-const { AutoLayout, Text, useSyncedState } = widget
+const { AutoLayout, Text, useSyncedState, Input } = widget
 import Checkbox from "./components/Checkbox"
+import ListView from "./components/ListView"
 import SectionHeader from "./components/SectionHeader"
 
 function Widget() {
@@ -11,9 +12,9 @@ function Widget() {
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
         <SectionHeader title="Reviewed by" />
         <AutoLayout direction="vertical" spacing={4} width="fill-parent">
-          <Checkbox id={"collab1"} isEditable={true} />
-          <Checkbox id={"collab2"} isEditable={true} />
-          <Checkbox id={"collab3"} isEditable={true} />
+          <ListView id={"review1"} listText={"Design"} />
+          <ListView id={"review2"} listText={"Illustration"} />
+          <ListView id={"review3"} listText={"Copy"} />
         </AutoLayout>
       </AutoLayout>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
