@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
     "jsxFactory": "figma.widget.h",
     "jsxFragmentFactory": "figma.widget.Fragment",
-    "target": "es2016",
-    "lib": [
-      "es2016"
-    ],
+    "lib": ["DOM", "ES2020"],
+    "module": "ES2020",
+    "moduleResolution": "Node",
     "strict": true,
-    "typeRoots": [
-      "../node_modules/@types",
-      "../node_modules/@figma"
-    ]
+    "skipLibCheck": true,
+    "typeRoots": ["../node_modules/@figma", "../node_modules/@types"],
+    "target": "ESNext"
   }
 }
