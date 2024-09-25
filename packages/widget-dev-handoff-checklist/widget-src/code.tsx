@@ -23,16 +23,44 @@ function Widget() {
       cornerRadius={16}
       fill={'#fff'}
     >
-      <Text fontSize={28} fontWeight={700} fill={'#192839'}>
-        ✏️ Handoff checklist
-      </Text>
-      <SectionHeader title={`${checkedItems}/13`} />
-      <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+      <AutoLayout direction="vertical" spacing={8} width="fill-parent">
+        <Text fontSize={28} fontWeight={700} fill={'#192839'}>
+          ✏️  Handoff checklist
+        </Text>
+        <AutoLayout direction="horizontal" spacing={"auto"} padding={{ horizontal: 8, vertical: 4 }} cornerRadius={4} width="fill-parent" fill={"#ECF1FF"}>
+          <Text fontSize={10} fontWeight={600} fill={'#768EA7'}>😕  Not ready for handoff</Text>
+          <SectionHeader title={`${checkedItems}/16`} />
+        </AutoLayout>
+      </AutoLayout>
+      {/* <AutoLayout direction="vertical" spacing={4} width="fill-parent">
         <SectionHeader title="Reviewers" />
         <AutoLayout direction="vertical" spacing={4} width="fill-parent">
           <ListView id={'review1'} listText={'Design'} />
           <ListView id={'review2'} listText={'Copy'} />
           <ListView id={'review3'} listText={'Creatives'} />
+        </AutoLayout>
+      </AutoLayout> */}
+      <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+        <SectionHeader title="Reviewers" />
+        <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+        <Checkbox
+            id={'review1'}
+            optionText="Design reviewed by "
+            isEditable={true}
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id={'review2'}
+            optionText="Copy reviewed by "
+            isEditable={true}
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id={'review3'}
+            optionText="Creatives reviewed by "
+            isEditable={true}
+            onCheckboxClick={updateChecklist}
+          />
         </AutoLayout>
       </AutoLayout>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
@@ -75,27 +103,37 @@ function Widget() {
           />
           <Checkbox
             id={'state2'}
-            optionText="Added responsive (desktop and mobile) flows"
+            optionText="Accounted for edge cases and error states"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id={'state3'}
-            optionText="Used standard mobile and desktop sizes"
+            optionText="Added responsive (desktop and mobile) flows"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id={'state4'}
-            optionText="Designs are light and dark mode compatible"
+            optionText="Used standard mobile and desktop sizes"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id={'state5'}
-            optionText="Added Figma's annotations to explain behaviours"
+            optionText="Used browser header and footer frames"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id={'state6'}
-            optionText="Accounted for edge cases and error states"
+            optionText="Accounted for safe area and keyboard layout on mobile devices"
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id={'state7'}
+            optionText="Designs are light and dark mode compatible"
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id={'state8'}
+            optionText="Added Figma's annotations to explain behaviours"
             onCheckboxClick={updateChecklist}
           />
         </AutoLayout>

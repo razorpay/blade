@@ -57,16 +57,27 @@ function Checkbox({
         </AutoLayout>
         <AutoLayout direction="vertical" width="fill-parent">
           {isEditable ? (
-            <Input
-              value={optionTextInput}
-              placeholder={"<Reviewer's Name>"}
-              onTextEditEnd={(e) => setOptionTextInput(e.characters)}
-              fontSize={14}
-              fontWeight={400}
-              lineHeight={20}
-              fill={isChecked ? '#768EA7' : '#40566D'}
-              width="fill-parent"
-            />
+            <AutoLayout direction="horizontal" spacing={4} width="fill-parent">
+              <Text
+                fontSize={14}
+                fontWeight={400}
+                lineHeight={20}
+                fill={isChecked ? '#768EA7' : '#40566D'}
+              >
+                {optionText}
+              </Text>
+              <Input
+                value={optionTextInput}
+                placeholder={"<Reviewer's Name>"}
+                onTextEditEnd={(e) => setOptionTextInput(e.characters)}
+                fontSize={14}
+                fontWeight={600}
+                lineHeight={20}
+                fill={isChecked ? '#768EA7' : '#40566D'}
+                width="fill-parent"
+                hoverStyle={{fill: "#305EFF"}}
+              />
+            </AutoLayout>
           ) : (
             <Text
               fontSize={14}
@@ -82,7 +93,7 @@ function Checkbox({
             (isEditable ? (
               <Input
                 value={helpTextInput}
-                placeholder={'<Attribute> review by <tenative date>'}
+                placeholder={'<Review date>'}
                 onTextEditEnd={(e) => setHelpTextInput(e.characters)}
                 fontSize={11}
                 fontWeight={400}
@@ -90,6 +101,7 @@ function Checkbox({
                 fill={'#768EA7'}
                 italic={true}
                 width="fill-parent"
+                hoverStyle={{fill: "#305EFF"}}
               />
             ) : (
               <Text

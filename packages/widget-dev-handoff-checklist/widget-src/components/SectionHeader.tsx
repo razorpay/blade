@@ -7,7 +7,7 @@ interface SectionHeaderProps {
 function SectionHeader({ title }: SectionHeaderProps) {
   return (
     <AutoLayout>
-      <Text fontSize={10} fontWeight={600} fill={'#768EA7'} textCase={'upper'}>
+      <Text fontSize={10} fontWeight={600} fill={'#768EA7'} textCase={"upper"}>
         {title}
       </Text>
     </AutoLayout>
