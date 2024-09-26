@@ -52,7 +52,7 @@ function Widget() {
             fontWeight={600}
             fill={isAllCheckboxesChecked ? '#ffffff' : '#768EA7'}
           >
-            {isAllCheckboxesChecked ? '😃  Ready for handoff!' : '😕  Not ready for handoff'}
+            {isAllCheckboxesChecked ? '🎉  Ready for handoff!' : '😕  Not ready for handoff'}
           </Text>
           <SectionHeader
             title={`${checkedItems}/${numberOfCheckboxes}`}

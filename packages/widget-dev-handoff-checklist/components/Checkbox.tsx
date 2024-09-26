@@ -28,10 +28,6 @@ function Checkbox({
       padding={{ horizontal: 4, vertical: 2 }}
       cornerRadius={4}
       direction="vertical"
-      onClick={(event) => {
-        setChecked(!isChecked);
-        onCheckboxClick(!isChecked);
-      }}
       width="fill-parent"
       hoverStyle={{ fill: { r: 0, g: 0, b: 0, a: 0.04 } }}
     >
@@ -51,6 +47,10 @@ function Checkbox({
             fill={isChecked ? '#305EFF' : '#FFFFFF'}
             stroke={isChecked ? '#305EFF' : '#CBD5E2'}
             strokeWidth={1.5}
+            onClick={(event) => {
+              setChecked(!isChecked);
+              onCheckboxClick(!isChecked);
+            }}
           >
             {isChecked && <Svg src={checkIcon} width={12} height={12} />}
           </AutoLayout>
@@ -63,6 +63,10 @@ function Checkbox({
                 fontWeight={400}
                 lineHeight={20}
                 fill={isChecked ? '#768EA7' : '#40566D'}
+                onClick={(event) => {
+                  setChecked(!isChecked);
+                  onCheckboxClick(!isChecked);
+                }}
               >
                 {optionText}
               </Text>
@@ -85,6 +89,10 @@ function Checkbox({
               lineHeight={20}
               fill={isChecked ? '#768EA7' : '#40566D'}
               width="fill-parent"
+              onClick={(event) => {
+                setChecked(!isChecked);
+                onCheckboxClick(!isChecked);
+              }}
             >
               {optionText}
             </Text>
