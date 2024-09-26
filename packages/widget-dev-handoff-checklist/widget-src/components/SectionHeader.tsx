@@ -2,12 +2,13 @@ const { AutoLayout, Text } = figma.widget;
 
 interface SectionHeaderProps {
   title: string;
+  color?: string;
 }
 
-function SectionHeader({ title }: SectionHeaderProps) {
+function SectionHeader({ title, color = '#768EA7' }: SectionHeaderProps) {
   return (
     <AutoLayout>
-      <Text fontSize={10} fontWeight={600} fill={'#768EA7'} textCase={"upper"}>
+      <Text fontSize={10} fontWeight={600} fill={color} textCase={'upper'}>
         {title}
       </Text>
     </AutoLayout>

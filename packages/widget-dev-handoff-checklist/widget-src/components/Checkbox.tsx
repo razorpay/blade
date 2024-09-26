@@ -29,7 +29,7 @@ function Checkbox({
       cornerRadius={4}
       direction="vertical"
       onClick={(event) => {
-        setChecked(!isChecked)
+        setChecked(!isChecked);
         onCheckboxClick(!isChecked);
       }}
       width="fill-parent"
@@ -75,7 +75,7 @@ function Checkbox({
                 lineHeight={20}
                 fill={isChecked ? '#768EA7' : '#40566D'}
                 width="fill-parent"
-                hoverStyle={{fill: "#305EFF"}}
+                hoverStyle={{ fill: '#305EFF' }}
               />
             </AutoLayout>
           ) : (
@@ -101,7 +101,7 @@ function Checkbox({
                 fill={'#768EA7'}
                 italic={true}
                 width="fill-parent"
-                hoverStyle={{fill: "#305EFF"}}
+                hoverStyle={{ fill: '#305EFF' }}
               />
             ) : (
               <Text
