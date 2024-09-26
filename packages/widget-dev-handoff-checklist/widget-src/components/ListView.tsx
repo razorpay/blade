@@ -5,7 +5,7 @@ interface ListViewProps {
   listText: string;
 }
 
-function ListView({ id, listText }: ListViewProps) {
+function ListView({ id, listText }: ListViewProps): any {
   const [listTextInput, setListTextInput] = useSyncedState(`${id}_listInputText`, '');
   const [dateTextInput, setDateTextInput] = useSyncedState(`${id}_dateInputText`, '');
 

@@ -5,7 +5,7 @@ interface SectionHeaderProps {
   color?: string;
 }
 
-function SectionHeader({ title, color = '#768EA7' }: SectionHeaderProps) {
+function SectionHeader({ title, color = '#768EA7' }: SectionHeaderProps): any {
   return (
     <AutoLayout>
       <Text fontSize={10} fontWeight={600} fill={color} textCase={'upper'}>

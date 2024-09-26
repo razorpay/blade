@@ -1,10 +1,10 @@
-const { AutoLayout, SVG, Text, Input, useSyncedState } = figma.widget;
+const { AutoLayout, SVG: Svg, Text, Input, useSyncedState } = figma.widget;
 
 interface CheckboxProps {
   id: string;
   optionText?: string;
   helpText?: string;
-  isEditable?: Boolean;
+  isEditable?: boolean;
   onCheckboxClick: (checkedState: true | false) => void;
 }
 
@@ -14,7 +14,7 @@ function Checkbox({
   helpText,
   isEditable = false,
   onCheckboxClick,
-}: CheckboxProps) {
+}: CheckboxProps): any {
   const [isChecked, setChecked] = useSyncedState(`${id}_checked`, false);
   const [optionTextInput, setOptionTextInput] = useSyncedState(`${id}_optionInputText`, '');
   const [helpTextInput, setHelpTextInput] = useSyncedState(`${id}_helpInputText`, '');
@@ -52,7 +52,7 @@ function Checkbox({
             stroke={isChecked ? '#305EFF' : '#CBD5E2'}
             strokeWidth={1.5}
           >
-            {isChecked && <SVG src={checkIcon} width={12} height={12}></SVG>}
+            {isChecked && <Svg src={checkIcon} width={12} height={12} />}
           </AutoLayout>
         </AutoLayout>
         <AutoLayout direction="vertical" width="fill-parent">
