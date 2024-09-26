@@ -1,9 +1,9 @@
 {
   "name": "Dev-Handoff-Checklist",
   "version": "1.0.0",
-  "description": "Your Figma widget",
+  "description": "Razorpay's Official Dev Handoff - Figma Widget",
   "scripts": {
-    "build": "esbuild widget-src/code.tsx --bundle --outfile=dist/code.js --target=es6",
+    "build": "esbuild code.tsx --bundle --outfile=dist/code.js --target=es6",
     "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
     "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
     "tsc": "tsc --noEmit -p widget-src",

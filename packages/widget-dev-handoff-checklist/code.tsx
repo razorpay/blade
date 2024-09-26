@@ -98,7 +98,7 @@ function Widget() {
           />
           <Checkbox
             id={'ds3'}
-            optionText="Used standard mobile and desktop sizes"
+            optionText="Used corresponding typography for mobile and desktop screen sizes"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
@@ -144,7 +144,6 @@ function Widget() {
           <Checkbox
             id={'state6'}
             optionText="Ensured responsive design for both desktop and mobile flows, considering standard screen sizes, safe areas, and keyboard layouts on mobile devices."
-            helpText="in case of mWeb"
             onCheckboxClick={updateChecklist}
           />
         </AutoLayout>
