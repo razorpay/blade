@@ -93,17 +93,17 @@ function Widget() {
           />
           <Checkbox
             id={'ds2'}
-            optionText="Annotated the reasons with deviation request link if coverage is less than 90%"
-            onCheckboxClick={updateChecklist}
-          />
-          <Checkbox
-            id={'ds3'}
             optionText="Used corresponding typography for mobile and desktop screen sizes"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
-            id={'ds4'}
+            id={'ds3'}
             optionText="Added a section for the slot replacements & local components"
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id={'ds4'}
+            optionText="Annotated the reasons with deviation request link if coverage is less than 90%"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
