@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
-import { formatNumber, formatNumberByParts } from '@razorpay/i18nify-js/currency';
+import { formatNumberByParts } from '@razorpay/i18nify-js/currency';
 import type { AmountTypeProps } from './amountTokens';
 import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -82,7 +82,7 @@ const getTextColorProps = ({ color }: { color: AmountProps['color'] }): ColorPro
   return props;
 };
 
-type AmountType = Partial<ReturnType<typeof formatNumberByParts>> & { formatted: string };
+type AmountType = Partial<ReturnType<typeof formatNumberByParts>>;
 
 interface AmountValue extends Omit<AmountProps, 'value'> {
   amountValueColor: BaseTextProps['color'];
@@ -141,7 +141,10 @@ const AmountValue = ({
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
     >
-      {amount.formatted}
+      {amount.integer}
+      {amount.decimal}
+      {amount.fraction}
+      {amount.compact}
     </BaseText>
   );
 };
@@ -149,6 +152,7 @@ const AmountValue = ({
 type FormatAmountWithSuffixType = {
   suffix: AmountProps['suffix'];
   value: number;
+  currency: AmountProps['currency'];
 };
 
 /**
@@ -156,20 +160,19 @@ type FormatAmountWithSuffixType = {
  * === Logic ===
  * value = 12500.45 
  * if suffix === 'decimals' => {
-    "formatted": "12,500.45",
     "integer": "12,500",
     "decimal": ".",
     "fraction": "45",
+    "compact": "K",
     "isPrefixSymbol": false,
     "rawParts": [{"type": "integer","value": "12"},{"type": "group","value": ","},{"type": "integer","value": "500"},{"type": "decimal","value": "."},{"type": "fraction","value": "45"}]
 }
- * else if suffix === 'humanize' => { formatted: "1.2T" }
- * else => { formatted: "1,23,456" }
  * @returns {AmountType}
  */
-export const formatAmountWithSuffix = ({
+export const getAmountByParts = ({
   suffix,
   value,
+  currency,
 }: FormatAmountWithSuffixType): AmountType => {
   try {
     switch (suffix) {
@@ -179,40 +182,37 @@ export const formatAmountWithSuffix = ({
             maximumFractionDigits: 2,
             minimumFractionDigits: 2,
           },
-        };
-        return {
-          ...formatNumberByParts(value, options),
-          formatted: formatNumber(value, options),
-        };
+          currency,
+        } as const;
+        return formatNumberByParts(value, options);
       }
       case 'humanize': {
-        const formatted = formatNumber(value, {
+        const options = {
           intlOptions: {
             notation: 'compact',
             maximumFractionDigits: 2,
             trailingZeroDisplay: 'stripIfInteger',
           },
-        });
-        return {
-          formatted,
-        };
+          currency,
+        } as const;
+        return formatNumberByParts(value, options);
       }
 
       default: {
-        const formatted = formatNumber(value, {
+        const options = {
           intlOptions: {
             maximumFractionDigits: 0,
             roundingMode: 'floor',
           },
-        });
-        return {
-          formatted,
-        };
+          currency,
+        } as const;
+        return formatNumberByParts(value, options);
       }
     }
   } catch (err: unknown) {
     return {
-      formatted: `${value}`,
+      integer: `${value}`,
+      currency,
     };
   }
 };
@@ -275,20 +275,11 @@ const _Amount = ({
     color,
   });
 
-  let isPrefixSymbol, currencySymbol;
-  try {
-    const byParts = formatNumberByParts(value, {
-      currency,
-    });
-    isPrefixSymbol = byParts.isPrefixSymbol;
-    currencySymbol = byParts.currency;
-  } catch (err: unknown) {
-    isPrefixSymbol = true;
-    currencySymbol = currency;
-  }
+  const renderedValue = getAmountByParts({ suffix, value, currency });
+  const isPrefixSymbol = renderedValue.isPrefixSymbol ?? true;
+  const currencySymbol = renderedValue.currency ?? currency;
 
   const currencyPosition = isPrefixSymbol ? 'left' : 'right';
-  const renderedValue = formatAmountWithSuffix({ suffix, value });
   const currencySymbolOrCode = currencyIndicator === 'currency-symbol' ? currencySymbol : currency;
 
   const currencyFontSize = isAffixSubtle
@@ -309,6 +300,18 @@ const _Amount = ({
         flexDirection="row"
         position="relative"
       >
+        {renderedValue.minusSign ? (
+          <BaseText
+            fontSize={normalAmountSizes[type][size]}
+            fontWeight={weight}
+            lineHeight={amountLineHeights[type][size]}
+            color={amountValueColor}
+            as={isReactNative ? undefined : 'span'}
+            marginX="spacing.2"
+          >
+            {renderedValue.minusSign}
+          </BaseText>
+        ) : null}
         {currencyPosition === 'left' && (
           <BaseText
             marginRight="spacing.1"

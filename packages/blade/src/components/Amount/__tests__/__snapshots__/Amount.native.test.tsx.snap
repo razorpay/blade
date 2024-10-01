@@ -2507,7 +2507,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
           ]
         }
       >
-        1T
+        1
+        K
       </Text>
     </View>
   </View>
@@ -2973,7 +2974,9 @@ exports[`<Amount /> should render information intent Amount  1`] = `
           ]
         }
       >
-        1,000.00
+        1,000
+        .
+        00
       </Text>
     </View>
   </View>
