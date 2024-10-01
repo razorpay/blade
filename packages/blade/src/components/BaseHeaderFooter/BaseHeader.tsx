@@ -314,6 +314,7 @@ const _BaseHeader = ({
                     marginTop={makeSize(sizeToken['1'])}
                     weight="semibold"
                     color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'}
+                    wordBreak="break-word"
                   >
                     {title}
                   </Text>
