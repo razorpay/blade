@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.30.2
+
+### Patch Changes
+
+- 2f8a5029: fix(BaseHeader): Handle word break on single word. Fixes for AccordionItemHeader, DropdownHeader, etc
+
 ## 11.30.1
 
 ### Patch Changes
