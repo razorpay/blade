@@ -256,6 +256,17 @@ type TableCellProps = {
    * </TableCell>
    **/
   children: React.ReactNode;
+  /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
+  /**
+   * The allowMultiline prop determines whether the table should allow multiline cells or not.
+   * The default value is `false`.
+   **/
+  allowMultiline?: boolean;
 };
 
 type TableEditableCellProps = Pick<
