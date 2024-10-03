@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.30.3
+
+### Patch Changes
+
+- 98482ca9: fix(blade): interactive card cursor
+
 ## 11.30.2
 
 ### Patch Changes
