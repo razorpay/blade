@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 const { AutoLayout, Text, Input, useSyncedState } = figma.widget;
 
 interface ListViewProps {
@@ -5,7 +6,7 @@ interface ListViewProps {
   listText: string;
 }
 
-function ListView({ id, listText }: ListViewProps): any {
+function ListView({ id, listText }: ListViewProps) {
   const [listTextInput, setListTextInput] = useSyncedState(`${id}_listInputText`, '');
   const [dateTextInput, setDateTextInput] = useSyncedState(`${id}_dateInputText`, '');
 
@@ -17,29 +18,24 @@ function ListView({ id, listText }: ListViewProps): any {
       spacing={4}
       width="fill-parent"
     >
-      <AutoLayout
-        verticalAlignItems={'center'}
-        horizontalAlignItems={'center'}
-        width={20}
-        height={20}
-      >
-        <Text fontSize={14} fontWeight={400} lineHeight={20} fill={'#768EA7'}>
+      <AutoLayout verticalAlignItems="center" horizontalAlignItems="center" width={20} height={20}>
+        <Text fontSize={14} fontWeight={400} lineHeight={20} fill="#768EA7">
           →
         </Text>
       </AutoLayout>
       <AutoLayout direction="vertical" width="fill-parent">
         <AutoLayout direction="horizontal" wrap={true} spacing={4} width="fill-parent">
-          <Text fontSize={14} fontWeight={400} lineHeight={20} fill={'#40566D'}>
+          <Text fontSize={14} fontWeight={400} lineHeight={20} fill="#40566D">
             {listText} reviewed by{' '}
           </Text>
           <Input
             value={listTextInput}
             placeholder={"<Reviewer's Name>"}
-            onTextEditEnd={(e) => setListTextInput(e.characters)}
+            onTextEditEnd={(e: any) => setListTextInput(e.characters)}
             fontSize={14}
             fontWeight={600}
             lineHeight={20}
-            fill={'#40566D'}
+            fill="#40566D"
             width="fill-parent"
             hoverStyle={{ fill: '#305EFF' }}
           />
@@ -48,13 +44,13 @@ function ListView({ id, listText }: ListViewProps): any {
           {/* <Text fontSize={11} fontWeight={400} lineHeight={16} fill={'#768EA7'} italic={true}>on</Text> */}
           <Input
             value={dateTextInput}
-            placeholder={'<Review Date>'}
-            onTextEditEnd={(e) => setDateTextInput(e.characters)}
+            placeholder="<Review Date>"
+            onTextEditEnd={(e: any) => setDateTextInput(e.characters)}
             fontSize={11}
             fontWeight={400}
             lineHeight={16}
             italic={true}
-            fill={'#768EA7'}
+            fill="#768EA7"
             width="fill-parent"
             hoverStyle={{ fill: '#305EFF' }}
           />

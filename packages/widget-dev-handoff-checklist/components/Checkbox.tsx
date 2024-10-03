@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-empty-function */
 const { AutoLayout, SVG: Svg, Text, Input, useSyncedState } = figma.widget;
 
 interface CheckboxProps {
@@ -14,7 +16,7 @@ function Checkbox({
   helpText,
   isEditable = false,
   onCheckboxClick,
-}: CheckboxProps): any {
+}: CheckboxProps) {
   const [isChecked, setChecked] = useSyncedState(`${id}_checked`, false);
   const [optionTextInput, setOptionTextInput] = useSyncedState(`${id}_optionInputText`, '');
   const [helpTextInput, setHelpTextInput] = useSyncedState(`${id}_helpInputText`, '');
@@ -42,12 +44,12 @@ function Checkbox({
         <AutoLayout
           width={20}
           height={20}
-          verticalAlignItems={'center'}
-          horizontalAlignItems={'center'}
+          verticalAlignItems="center"
+          horizontalAlignItems="center"
         >
           <AutoLayout
-            verticalAlignItems={'center'}
-            horizontalAlignItems={'center'}
+            verticalAlignItems="center"
+            horizontalAlignItems="center"
             width={16}
             height={16}
             cornerRadius={2}
@@ -74,7 +76,7 @@ function Checkbox({
               <Input
                 value={optionTextInput}
                 placeholder={"<Reviewer's Name>"}
-                onTextEditEnd={(e) => setOptionTextInput(e.characters)}
+                onTextEditEnd={(e: any) => setOptionTextInput(e.characters)}
                 fontSize={14}
                 fontWeight={600}
                 lineHeight={20}
@@ -99,12 +101,12 @@ function Checkbox({
             (isEditable ? (
               <Input
                 value={helpTextInput}
-                placeholder={'<Review date>'}
-                onTextEditEnd={(e) => setHelpTextInput(e.characters)}
+                placeholder="<Review date>"
+                onTextEditEnd={(e: any) => setHelpTextInput(e.characters)}
                 fontSize={11}
                 fontWeight={400}
                 lineHeight={16}
-                fill={'#768EA7'}
+                fill="#768EA7"
                 italic={true}
                 width="fill-parent"
                 hoverStyle={{ fill: '#305EFF' }}
@@ -114,7 +116,7 @@ function Checkbox({
                 fontSize={11}
                 fontWeight={400}
                 lineHeight={16}
-                fill={'#768EA7'}
+                fill="#768EA7"
                 italic={true}
                 width="fill-parent"
               >

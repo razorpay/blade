@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 const { AutoLayout, Text } = figma.widget;
 
 interface SectionHeaderProps {
@@ -5,7 +6,7 @@ interface SectionHeaderProps {
   color?: string;
 }
 
-function SectionHeader({ title, color = '#768EA7' }: SectionHeaderProps): any {
+function SectionHeader({ title, color = '#768EA7' }: SectionHeaderProps) {
   return (
     <AutoLayout>
       <Text fontSize={10} fontWeight={600} fill={color} textCase={'upper'}>
