@@ -76,7 +76,7 @@ function Checkbox({
               <Input
                 value={optionTextInput}
                 placeholder={"<Reviewer's Name>"}
-                onTextEditEnd={(e: any) => setOptionTextInput(e.characters)}
+                onTextEditEnd={(e) => setOptionTextInput(e.characters)}
                 fontSize={14}
                 fontWeight={600}
                 lineHeight={20}
@@ -102,7 +102,7 @@ function Checkbox({
               <Input
                 value={helpTextInput}
                 placeholder="<Review date>"
-                onTextEditEnd={(e: any) => setHelpTextInput(e.characters)}
+                onTextEditEnd={(e) => setHelpTextInput(e.characters)}
                 fontSize={11}
                 fontWeight={400}
                 lineHeight={16}

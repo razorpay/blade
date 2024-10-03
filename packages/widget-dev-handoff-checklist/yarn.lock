@@ -154,7 +154,7 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
-"@figma/eslint-plugin-figma-plugins@*":
+"@figma/eslint-plugin-figma-plugins@0.15.0":
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/@figma/eslint-plugin-figma-plugins/-/eslint-plugin-figma-plugins-0.15.0.tgz#66acadd82865d7f132acbcf0cf6058fe2b258df2"
   integrity sha512-ol/v6qje8sxE2npvjCbOQUGlTx++RdYcq98jKaNokL/qN1IF7Y6Y7jgj2wiAYmT2V+aABvtX7MNtKKJ2fbcfWA==
@@ -163,12 +163,12 @@
     "@typescript-eslint/utils" "^6.12.0"
     typescript "^5.3.2"
 
-"@figma/plugin-typings@*":
+"@figma/plugin-typings@1.100.2":
   version "1.100.2"
   resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.100.2.tgz#a0d3c34f3667042b6d357ee56ef1b5c306966e70"
   integrity sha512-xRlneaT5D6afuzkt8J28DXgHAcglncqNVzh1qe5bJVzTLfniiDQY5N/IVXIJj/u7vXYMY6uqvJt8UBFe5l4FXA==
 
-"@figma/widget-typings@*":
+"@figma/widget-typings@1.9.2":
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/@figma/widget-typings/-/widget-typings-1.9.2.tgz#86aa378c69dfbfb7e2de21b715d64736c470b646"
   integrity sha512-o+fEFC4urfG5M0WtgJ/AbAQVBUHD46CrQZxc+jXoHpVkatrN72b93OggQajnsZuOxNXYvdD1voNmG8rVgcJMew==
@@ -448,7 +448,7 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-esbuild@*:
+esbuild@0.24.0:
   version "0.24.0"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.24.0.tgz#f2d470596885fcb2e91c21eb3da3b3c89c0b55e7"
   integrity sha512-FuLPevChGDshgSicjisSooU0cemp/sGXR841D5LHMB7mTVOmsEHcAxaH3irL53+8YDIeVNQEySh4DaYU/iuPqQ==

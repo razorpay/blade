@@ -31,7 +31,7 @@ function ListView({ id, listText }: ListViewProps) {
           <Input
             value={listTextInput}
             placeholder={"<Reviewer's Name>"}
-            onTextEditEnd={(e: any) => setListTextInput(e.characters)}
+            onTextEditEnd={(e) => setListTextInput(e.characters)}
             fontSize={14}
             fontWeight={600}
             lineHeight={20}
@@ -45,7 +45,7 @@ function ListView({ id, listText }: ListViewProps) {
           <Input
             value={dateTextInput}
             placeholder="<Review Date>"
-            onTextEditEnd={(e: any) => setDateTextInput(e.characters)}
+            onTextEditEnd={(e) => setDateTextInput(e.characters)}
             fontSize={11}
             fontWeight={400}
             lineHeight={16}
