@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.30.4
+
+### Patch Changes
+
+- 68e0ec53: fix(blade): Table cell text truncation
+
 ## 11.30.3
 
 ### Patch Changes
