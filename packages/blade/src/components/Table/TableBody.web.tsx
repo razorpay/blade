@@ -214,7 +214,7 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
           // for custom cells components, consumers can handle pointer events themselves
           pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
           // allow text to wrap, so that if the <Text> overflows it can truncate
-          whiteSpace={isChildrenString ? 'normal' : 'unset'}
+          whiteSpace="normal"
         >
           {isChildrenString ? (
             <Text size="medium" truncateAfterLines={1}>
