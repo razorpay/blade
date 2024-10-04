@@ -1,4 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
+import React from 'react';
+import type { Identifier } from '@table-library/react-table-library';
 import type { TableData, TableProps } from '../types';
 import {
   Table as TableComponent,
@@ -222,3 +224,107 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
 export const Table = TableTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Table.storyName = 'Basic Table';
+
+const ControlledSelectionTableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
+  const [selectedIds, setSelectedIds] = React.useState<Identifier[]>(['1', '3']);
+
+  return (
+    <Box
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <TableComponent
+        {...args}
+        data={data}
+        selectionType="multiple"
+        selectedIds={selectedIds}
+        onSelectionChange={({ selectedIds }) => setSelectedIds(selectedIds)}
+        toolbar={
+          <TableToolbar
+            title="Showing 1-10 [Items]"
+            selectedTitle={`Selected Items: ${selectedIds}`}
+          >
+            <TableToolbarActions>
+              <Button variant="secondary" marginRight="spacing.2">
+                Export
+              </Button>
+              <Button>Refund</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
+        sortFunctions={{
+          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+        }}
+        pagination={
+          <TablePagination
+            onPageChange={console.log}
+            defaultPageSize={10}
+            onPageSizeChange={console.log}
+            showPageSizePicker
+            showPageNumberSelector
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>{tableItem.account}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'primary'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                <TableFooterCell>Total</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>
+                  <Amount value={10} />
+                </TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </TableComponent>
+    </Box>
+  );
+};
+
+export const ControlledSelection = ControlledSelectionTableTemplate.bind({});
+ControlledSelection.storyName = 'Table: Controlled Selection';
