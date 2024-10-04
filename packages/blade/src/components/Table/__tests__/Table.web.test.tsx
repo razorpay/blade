@@ -8,6 +8,7 @@ import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import { TableEditableCell } from '../TableEditableCell';
+import type { Identifier } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Amount } from '~components/Amount';
 
@@ -844,6 +845,91 @@ describe('<Table />', () => {
     const deselectButton = getByText('Deselect');
     await user.click(deselectButton);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [], selectedIds: [] });
+  });
+
+  it('should render table with multi select & controlled state', async () => {
+    const onSelectionChange = jest.fn();
+    const user = userEvent.setup();
+    const TableExample = (): React.ReactElement => {
+      const [selectedIds, setSelectedIds] = useState<Identifier[]>(['1', '2']);
+      return (
+        <Table
+          data={{ nodes: nodes.slice(0, 5) }}
+          selectionType="multiple"
+          selectedIds={selectedIds}
+          onSelectionChange={({ selectedIds, values }) => {
+            setSelectedIds(selectedIds);
+            onSelectionChange({ selectedIds, values });
+          }}
+          toolbar={
+            <TableToolbar
+              title="Showing 1-5 [Items]"
+              selectedTitle={`Selected Items: ${selectedIds}`}
+            />
+          }
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                  <TableHeaderCell>Type</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>
+                      <Amount value={tableItem.amount} />
+                    </TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                    <TableCell>{tableItem.type}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.name}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>
+      );
+    };
+    const { getByText, getAllByRole, getByRole } = renderWithTheme(<TableExample />);
+
+    expect(getByRole('table')).toHaveAttribute('aria-multiselectable', 'true');
+    expect(getByText(/Selected Items: 1,2/i)).toBeInTheDocument();
+    expect(getAllByRole('checkbox')).toHaveLength(6);
+    const firstSelectableRow = getByText('rzp01').closest('td');
+    if (firstSelectableRow) await user.click(firstSelectableRow);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[1]], selectedIds: ['2'] });
+    const secondSelectableRow = getByText('rzp02').closest('td');
+    if (secondSelectableRow) await user.click(secondSelectableRow);
+    expect(onSelectionChange).toHaveBeenCalledWith({
+      values: [],
+      selectedIds: [],
+    });
+    expect(getByText(/Showing 1-5/i)).toBeInTheDocument();
+
+    await user.click(getByText('rzp02').closest('td')!);
+    await user.click(getByText('rzp03').closest('td')!);
+    await user.click(getByText('rzp04').closest('td')!);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({
+      values: [nodes[1], nodes[2], nodes[3]],
+      selectedIds: ['2', '3', '4'],
+    });
+
+    expect(getByText(/Selected Items: 2,3,4/i)).toBeInTheDocument();
+
+    const deselectButton = getByText('Deselect');
+    await user.click(deselectButton);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [], selectedIds: [] });
+    expect(getByText(/Showing 1-5/i)).toBeInTheDocument();
   });
 
   it('should render table with single select and defaultSelectedIds', async () => {
