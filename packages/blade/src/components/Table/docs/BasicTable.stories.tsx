@@ -240,14 +240,19 @@ const ControlledSelectionTableTemplate: StoryFn<typeof TableComponent> = ({ ...a
         data={data}
         selectionType="multiple"
         selectedIds={selectedIds}
-        onSelectionChange={({ selectedIds }) => setSelectedIds(selectedIds)}
         toolbar={
           <TableToolbar
             title="Showing 1-10 [Items]"
             selectedTitle={`Selected Items: ${selectedIds}`}
           >
             <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2">
+              <Button
+                onClick={() => {
+                  setSelectedIds(['3', '6']);
+                }}
+                variant="secondary"
+                marginRight="spacing.2"
+              >
                 Export
               </Button>
               <Button>Refund</Button>

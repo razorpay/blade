@@ -288,6 +288,10 @@ const _Table = <Item,>({
       rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
     },
   );
+  const isControlled = selectedIds !== undefined;
+  if (isControlled && selectionType !== 'none') {
+    rowSelectConfig.state.ids = selectedRows;
+  }
 
   const toggleRowSelectionById = useMemo(
     () => (id: Identifier): void => {
