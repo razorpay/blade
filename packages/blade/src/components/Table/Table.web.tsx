@@ -288,6 +288,8 @@ const _Table = <Item,>({
       rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
     },
   );
+  // If selectedIds is provided, then it is a controlled component
+  // We force the useRowSelect's state to sync with the selectedIds
   const isControlled = selectedIds !== undefined;
   if (isControlled && selectionType !== 'none') {
     rowSelectConfig.state.ids = selectedRows;
