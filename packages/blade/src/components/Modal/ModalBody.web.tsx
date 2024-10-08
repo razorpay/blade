@@ -13,7 +13,7 @@ type ModalBodyProps = {
    * @default `spacing.6`
    *
    * **Links:**
-   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--docs
    */
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.6'>;
 };

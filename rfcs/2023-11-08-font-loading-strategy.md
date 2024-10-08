@@ -54,7 +54,7 @@ Live Example (POC): https://stackblitz.com/~/github.com/saurabhdaware/blade-self
 
 In React Native, people will continue to load the font the way they do right now (Download font files, link them to android and ios projects)
 
-Refer: https://blade.razorpay.com/?path=/docs/guides-installation--page#react-native-projects
+Refer: https://blade.razorpay.com/?path=/docs/guides-installation--docs#react-native-projects
 
 ## Detailed Design
 

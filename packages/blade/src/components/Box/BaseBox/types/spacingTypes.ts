@@ -57,7 +57,7 @@ type PaddingProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    *
    */
   padding: SpacingValueType | ArrayOfMaxLength4<SpacingValueType>;
@@ -87,7 +87,7 @@ type PaddingProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    *
    */
   paddingX: SpacingValueType;
@@ -117,7 +117,7 @@ type PaddingProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    *
    */
   paddingY: SpacingValueType;
@@ -147,7 +147,7 @@ type PaddingProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    */
   paddingTop: SpacingValueType;
   /**
@@ -176,7 +176,7 @@ type PaddingProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    */
   paddingRight: SpacingValueType;
   /**
@@ -205,7 +205,7 @@ type PaddingProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    */
   paddingBottom: SpacingValueType;
   /**
@@ -234,7 +234,7 @@ type PaddingProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    */
   paddingLeft: SpacingValueType;
 }>;
@@ -267,7 +267,7 @@ type MarginProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    *
    */
   margin: SpacingValueType | ArrayOfMaxLength4<SpacingValueType>;
@@ -297,7 +297,7 @@ type MarginProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    *
    */
   marginX: SpacingValueType;
@@ -327,7 +327,7 @@ type MarginProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    *
    */
   marginY: SpacingValueType;
@@ -357,7 +357,7 @@ type MarginProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    */
   marginTop: SpacingValueType;
   /**
@@ -386,7 +386,7 @@ type MarginProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    */
   marginRight: SpacingValueType;
   /**
@@ -415,7 +415,7 @@ type MarginProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    */
   marginBottom: SpacingValueType;
   /**
@@ -444,7 +444,7 @@ type MarginProps = MakeObjectResponsive<{
    * - `spacing.10` - 48px
    * - `spacing.11` - 56px
    *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
+   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--docs&globals=measureEnabled:false Spacing Token Ref}
    */
   marginLeft: SpacingValueType;
 }>;
