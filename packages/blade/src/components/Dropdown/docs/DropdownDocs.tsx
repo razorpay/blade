@@ -36,7 +36,7 @@ const DropdownDocs = (): React.ReactElement => {
         <Text>A Dropdown in Blade is usually a composite of 3 elements -</Text>
         <List variant="ordered-filled" marginY="spacing.5">
           <ListItem>
-            <ListItemLink href="/?path=/docs/components-dropdown-dropdown--page#dropdown">
+            <ListItemLink href="/?path=/docs/components-dropdown-dropdown--docs#dropdown">
               Dropdown
             </ListItemLink>{' '}
             - Handles opening / closing of Dropdown
@@ -56,7 +56,7 @@ const DropdownDocs = (): React.ReactElement => {
             <ListItemLink href="/?path=/docs/components-link--link-button">Link</ListItemLink>)
           </ListItem>
           <ListItem>
-            <ListItemLink href="/?path=/docs/components-dropdown-actionlist--page">
+            <ListItemLink href="/?path=/docs/components-dropdown-actionlist--docs">
               ActionList
             </ListItemLink>{' '}
             - List of Actionable items inside Dropdown
@@ -96,7 +96,7 @@ const DropdownDocs = (): React.ReactElement => {
           </ListItem>
 
           <ListItem>
-            <ListItemLink target="_blank" href="/?path=/docs/components-dropdown-actionlist--page">
+            <ListItemLink target="_blank" href="/?path=/docs/components-dropdown-actionlist--docs">
               ActionList Props
             </ListItemLink>
           </ListItem>
