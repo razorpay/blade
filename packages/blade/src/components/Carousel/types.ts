@@ -1,5 +1,6 @@
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Platform } from '~utils';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
@@ -96,6 +97,7 @@ type CarouselProps = {
    * @default undefined
    */
   accessibilityLabel?: string;
-};
+  height?: BoxProps['height'];
+} & StyledPropsBlade;
 
 export type { CarouselProps };
