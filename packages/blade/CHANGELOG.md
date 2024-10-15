@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.30.5
+
+### Patch Changes
+
+- 9d4f9b85: feat(blade): add height & styled props to carousel
+
 ## 11.30.4
 
 ### Patch Changes
