@@ -230,7 +230,7 @@ const _Table = <Item,>({
       gridTemplateColumns ??
       ` ${
         selectionType === 'multiple' ? 'min-content' : ''
-      } repeat(${columnCount},minmax(100px, 1fr)) !important;`
+      } repeat(${columnCount},minmax(100px, 1fr)) 0px !important;`
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,

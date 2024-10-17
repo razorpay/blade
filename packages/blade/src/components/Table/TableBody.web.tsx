@@ -22,6 +22,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
+import { Button } from '~components/Button';
+import { FloatingPortal, offset, useFloating, useHover, useInteractions } from '@floating-ui/react';
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -190,7 +192,7 @@ export const CellWrapper = styled(BaseBox)<{
   };
 });
 
-const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
+const _TableCell = ({ children }: TableCellProps, ref): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
@@ -202,7 +204,13 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
       $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
-      <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
+      <BaseBox
+        className="cell-wrapper-base"
+        display="flex"
+        alignItems="center"
+        height="100%"
+        ref={ref}
+      >
         <CellWrapper
           className="cell-wrapper"
           $rowDensity={rowDensity}
@@ -215,6 +223,7 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
           pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
           // allow text to wrap, so that if the <Text> overflows it can truncate
           whiteSpace="normal"
+          position="relative"
         >
           {isChildrenString ? (
             <Text size="medium" truncateAfterLines={1}>
@@ -229,7 +238,7 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
   );
 };
 
-const TableCell = assignWithoutSideEffects(_TableCell, {
+const TableCell = assignWithoutSideEffects(React.forwardRef(_TableCell), {
   componentId: ComponentIds.TableCell,
 });
 
@@ -280,6 +289,18 @@ const StyledRow = styled(Row)<{
       '& td:last-child .cell-wrapper': {
         borderRight: 'none',
       },
+      '& td:last-child': {
+        opacity: 0,
+        position: 'sticky !important',
+        zIndex: 2,
+        right: 0,
+        '& > div:first-child': {
+          overflow: 'visible', // TODO: add condition to only add it when there is hover actions
+        },
+      },
+      '&:hover td:last-child': {
+        opacity: 1,
+      },
       ...(($isHoverable || $isSelectable) && {
         '&:hover:not(.disabled-row) .cell-wrapper-base': {
           transition: rowBackgroundTransition,
@@ -304,12 +325,59 @@ const StyledRow = styled(Row)<{
   };
 });
 
+// const useHoverActions = <Item,>({
+//   hoverActions,
+//   children,
+// }: Pick<TableRowProps<Item>, 'children' | 'hoverActions'>) => {
+//   // const [isOpen, setIsOpen] = React.useState(false);
+//   const { refs, floatingStyles, context } = useFloating({
+//     open: true,
+//     // onOpenChange: setIsOpen,
+//     placement: 'top',
+//     strategy: 'absolute',
+//     // middleware: [offset(100)],
+//   });
+
+//   // const hover = useHover(context);
+
+//   // const { getFloatingProps, getReferenceProps } = useInteractions([hover]);
+
+//   const newChildren = React.useMemo(() => {
+//     if (!hoverActions) {
+//       return children;
+//     }
+
+//     const childrenLength = React.Children.count(children);
+
+//     return React.Children.map(children, (child, index) => {
+//       if (React.isValidElement(child) && index >= childrenLength - 1) {
+//         return React.cloneElement(child, {
+//           ...child.props,
+//           ref: refs.setReference,
+//           // ...getReferenceProps(),
+//           children: [
+//             child.props.children,
+//             true ? (
+
+//             ) : null,
+//           ],
+//         });
+//       }
+
+//       return child;
+//     });
+//   }, [children, floatingStyles]);
+
+//   return newChildren;
+// };
+
 const _TableRow = <Item,>({
   children,
   item,
   isDisabled,
   onHover,
   onClick,
+  hoverActions,
 }: TableRowProps<Item>): React.ReactElement => {
   const {
     selectionType,
@@ -326,6 +394,7 @@ const _TableRow = <Item,>({
       setDisabledRows((prev) => [...prev, item.id]);
     }
   }, [isDisabled, item.id, setDisabledRows]);
+  // const newChildren = useHoverActions({ hoverActions, children });
 
   return (
     <StyledRow
@@ -339,6 +408,7 @@ const _TableRow = <Item,>({
       onClick={() => onClick?.({ item })}
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow })}
+      hasHoverActions={Boolean(hoverActions)}
     >
       {isMultiSelect && (
         <TableCheckboxCell
@@ -348,6 +418,28 @@ const _TableRow = <Item,>({
         />
       )}
       {children}
+      {hoverActions ? (
+        <td>
+          <BaseBox
+            className="hover-actions"
+            position="absolute"
+            top="spacing.0"
+            right="spacing.0"
+            height="100%"
+            minWidth="100px"
+            backgroundImage="linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(108, 132, 157, 0.12) 10.08%, rgba(108, 132, 157, 0.12) 100%), linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 10.08%, #FFF 100%)"
+            marginLeft="200px"
+            display="flex"
+            alignItems="center"
+            // ref={refs.setFloating}
+            // style={floatingStyles}
+            // {...getFloatingProps()}
+            // zIndex={10000}
+          >
+            {hoverActions}
+          </BaseBox>
+        </td>
+      ) : null}
     </StyledRow>
   );
 };

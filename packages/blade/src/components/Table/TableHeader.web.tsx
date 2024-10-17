@@ -224,6 +224,7 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
         />
       )}
       {children}
+      {true ? <TableHeaderCell></TableHeaderCell> : null}
     </StyledHeaderRow>
   );
 };

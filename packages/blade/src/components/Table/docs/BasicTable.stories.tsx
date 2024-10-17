@@ -19,7 +19,7 @@ import {
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
-import { Code } from '~components/Typography';
+import { Code, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
@@ -121,6 +121,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         data={data}
         defaultSelectedIds={['1', '3']}
         onSelectionChange={console.log}
+        isFirstColumnSticky
+        hasHoverActions
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
@@ -162,7 +164,18 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
             </TableHeader>
             <TableBody>
               {tableData.map((tableItem, index) => (
-                <TableRow key={index} item={tableItem}>
+                <TableRow
+                  key={index}
+                  item={tableItem}
+                  hoverActions={
+                    <Button variant="tertiary" size="xsmall">
+                      View Details
+                    </Button>
+                  }
+                  onClick={() => {
+                    console.log('where');
+                  }}
+                >
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
