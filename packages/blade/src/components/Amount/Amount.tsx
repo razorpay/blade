@@ -19,6 +19,49 @@ import { Text } from '~components/Typography';
 import { opacity } from '~tokens/global';
 import type { FontFamily } from '~tokens/global';
 
+// /**
+//  * Pollyfill function to get around
+//  */
+// const stripTrailingZerosFromParts = (
+//   parts: ReturnType<typeof formatNumberByParts>,
+// ): ReturnType<typeof formatNumberByParts> => {
+//   const decimalPart = parts.rawParts
+//     .filter(({ type }) => type === 'fraction')
+//     .map(({ value }) => value)
+//     .join('');
+
+//   const hasFraction = parts.rawParts.some(({ type }) => type === 'fraction');
+
+//   if (hasFraction && /^0+$/.test(decimalPart)) {
+//     delete parts.decimal;
+//     delete parts.fraction;
+//     parts.rawParts = parts.rawParts.filter(({ type }) => type !== 'decimal' && type !== 'fraction');
+//   }
+
+//   return parts;
+// };
+
+// const pollyfilledFormatNumberByParts: typeof formatNumberByParts = (value, options) => {
+//   const parts = formatNumberByParts(value, options);
+
+//   // {
+//   //   ...options,
+//   //   intlOptions: {
+//   //     ...options?.intlOptions,
+//   //     trailingZeroDisplay: undefined,
+//   //   }
+
+//   // });
+
+//   console.log({ value, parts });
+
+//   if (options?.intlOptions?.trailingZeroDisplay === 'stripIfInteger') {
+//     return stripTrailingZerosFromParts(parts);
+//   }
+
+//   return parts;
+// };
+
 type AmountCommonProps = {
   /**
    * The value to be rendered within the component.
