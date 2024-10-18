@@ -13,4 +13,6 @@ export const AMOUNT_SUFFIX_TEST_SET: {
   { value: 2.077, suffix: 'decimals', output: '₹2.08', locale: 'en-IN' },
   { value: 2.3, suffix: 'decimals', output: '₹2.30', locale: 'en-IN' },
   { value: 1000000.12, suffix: 'decimals', output: '₹10,00,000.12', locale: 'en-IN' },
+  { value: -1000000.12, suffix: 'decimals', output: '-₹10,00,000.12', locale: 'en-IN' },
+  { value: -1000000.12, suffix: 'humanize', output: '-1Mio.₹', locale: 'de-De' },
 ];

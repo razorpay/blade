@@ -20,6 +20,11 @@ describe('<Amount />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render Amount with negative sign', () => {
+    const { toJSON } = renderWithTheme(<Amount value={-10000} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should throw an error when a string is passed', () => {
     // @ts-expect-error testing failure case when value is passed as a string
     expect(() => renderWithTheme(<Amount value="10000" />)).toThrow(

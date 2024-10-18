@@ -20,6 +20,11 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Amount with negative value', () => {
+    const { container } = renderWithTheme(<Amount value={-10000} />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(<Amount value={1000} testID="amount-test" />);
 
@@ -217,7 +222,7 @@ describe('<Amount />', () => {
     });
   });
 
-  it.each(AMOUNT_SUFFIX_TEST_SET.filter((item) => item.output.includes('Mio')))(
+  it.each(AMOUNT_SUFFIX_TEST_SET)(
     `should render different outputs in Amount for different suffix values`,
     (item) => {
       const { getByTestId } = renderWithTheme(
