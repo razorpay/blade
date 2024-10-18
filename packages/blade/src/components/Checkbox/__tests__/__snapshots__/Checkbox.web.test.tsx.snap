@@ -51,6 +51,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  cursor: pointer;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -339,6 +340,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  cursor: not-allowed;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -534,6 +536,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  cursor: pointer;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -823,6 +826,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  cursor: pointer;
 }
 
 .c7.c7.c7.c7.c7 {

@@ -231,7 +231,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
         inputProps={state.isReactNative ? inputProps : {}}
       >
         <BaseBox display="flex" flexDirection="column">
-          <BaseBox display="flex" flexDirection="row">
+          <BaseBox display="flex" flexDirection="row" cursor={isDisabled ? "not-allowed" :  "pointer"}>
             <SelectorInput
               hoverTokens={checkboxHoverTokens}
               isChecked={state.isChecked || Boolean(isIndeterminate)}
