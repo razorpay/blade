@@ -175,6 +175,7 @@ exports[`<Accordion /> should render 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
   margin-top: 1px;
 }
 
@@ -438,7 +439,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -586,7 +587,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -734,7 +735,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -965,6 +966,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
   margin-top: 1px;
 }
 
@@ -1228,7 +1230,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1376,7 +1378,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>
@@ -1524,7 +1526,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class=""
+                          class="c2"
                           data-blade-component="box"
                         />
                       </div>

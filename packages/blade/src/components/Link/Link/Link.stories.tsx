@@ -172,6 +172,16 @@ const LinkColorsTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = ''
           {children}
         </LinkComponent>
       </BaseBox>
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="negative">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="positive">
+          {children}
+        </LinkComponent>
+      </BaseBox>
     </BaseBox>
   );
 };

@@ -1952,6 +1952,11 @@ import {
   TableBody,
   TableRow,
   TableEditableCell,
+  TableEditableDropdownCell,
+  AutoComplete,
+  DropdownOverlay,
+  ActionList,
+  ActionListItem,
 } from '@razorpay/blade/components';
 import type { TableData } from '@razorpay/blade/components';
 import React from 'react';
@@ -2029,10 +2034,17 @@ function App(): React.ReactElement {
                     validationState="success"
                     successText="Amount is valid"
                   />
-                  <TableEditableCell
-                    placeholder="Enter Method"
-                    accessibilityLabel="Method"
-                  />
+                  <TableEditableDropdownCell>
+                    <AutoComplete accessibilityLabel="Method" />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="UPI" value="upi" />
+                        <ActionListItem title="Credit Card" value="credit" />
+                        <ActionListItem title="Debit Card" value="debit" />
+                        <ActionListItem title="Cash" value="debit" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
                 </TableRow>
               ))}
             </TableBody>

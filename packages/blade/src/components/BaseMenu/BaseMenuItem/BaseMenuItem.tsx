@@ -70,7 +70,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
         {children ? (
           children
         ) : (
-          <Box display="flex" alignItems="flex-start" width="100%" justifyContent="center">
+          <Box display="flex" alignItems="flex-start" width="100%" justifyContent="flex-start">
             <Box
               display="flex"
               justifyContent="center"

@@ -16,7 +16,7 @@ import { TableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import {
   checkboxCellWidth,
-  firstColumnStickyHeaderFooterZIndex,
+  firstColumnStickyZIndex,
   refreshWrapperZIndex,
   tableBackgroundColor,
   tablePagination,
@@ -40,6 +40,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -137,10 +138,13 @@ const _Table = <Item,>({
   isLoading = false,
   isRefreshing = false,
   showBorderedCells = false,
+  defaultSelectedIds = [],
   ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
-  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
+  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
+    selectionType !== 'none' ? defaultSelectedIds : [],
+  );
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
@@ -169,14 +173,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -186,14 +190,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -203,12 +207,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -230,6 +236,7 @@ const _Table = <Item,>({
     `,
     HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
+    
     top: ${shouldHeaderBeSticky ? '0' : undefined};
     ${firstColumnStickyHeaderCellCSS}
     `,
@@ -262,6 +269,13 @@ const _Table = <Item,>({
     data,
     {
       onChange: onSelectChange,
+      state: {
+        ...(selectionType === 'multiple'
+          ? { ids: selectedRows }
+          : selectionType === 'single'
+          ? { id: selectedRows[0] }
+          : {}),
+      },
     },
     {
       clickType:
@@ -486,6 +500,7 @@ const _Table = <Item,>({
               height,
             }}
             pagination={hasPagination ? paginationConfig : null}
+            {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
             {...metaAttribute({ name: MetaConstants.Table })}
           >
             {children}

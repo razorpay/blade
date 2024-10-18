@@ -50,7 +50,7 @@ export const parameters = {
       method: 'alphabetical',
       order: [
         'Guides',
-        ['Intro', 'Installation', 'Local Development', 'How to use?'],
+        ['Intro', 'Installation', 'Contributing', 'How to use?'],
         'Tokens',
         [
           'Colors',
@@ -82,7 +82,7 @@ export const parameters = {
       console.log('----', context);
       const getThemeTokens = () => {
         if (context.store.globals.globals.brandColor) {
-          return createTheme({ brandColor: context.store.globals.globals.brandColor });
+          return createTheme({ brandColor: context.store.globals.globals.brandColor }).theme;
         }
         return bladeTheme;
       };
@@ -165,7 +165,7 @@ export const decorators = [
     toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
       if (context.globals.brandColor) {
-        return createTheme({ brandColor: context.globals.brandColor });
+        return createTheme({ brandColor: context.globals.brandColor }).theme;
       }
       return bladeTheme;
     };

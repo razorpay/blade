@@ -1,5 +1,111 @@
 # @razorpay/blade
 
+## 11.30.5
+
+### Patch Changes
+
+- 9d4f9b85: feat(blade): add height & styled props to carousel
+
+## 11.30.4
+
+### Patch Changes
+
+- 68e0ec53: fix(blade): Table cell text truncation
+
+## 11.30.3
+
+### Patch Changes
+
+- 98482ca9: fix(blade): interactive card cursor
+
+## 11.30.2
+
+### Patch Changes
+
+- 2f8a5029: fix(BaseHeader): Handle word break on single word. Fixes for AccordionItemHeader, DropdownHeader, etc
+
+## 11.30.1
+
+### Patch Changes
+
+- c050c1d9: fix: AccordionItemHeader to take full width
+
+## 11.30.0
+
+### Minor Changes
+
+- 6e059a68: feat: fix datepicker range selection bug & add onApply handler
+
+### Patch Changes
+
+- 98770d68: fix(Input): required necessity indicator label break
+- 3c31990d: feat(Table): add `defaultSelectedIds` prop
+
+## 11.29.0
+
+### Minor Changes
+
+- eaa75c64: feat(ActionList): add ActionListItemAvatar component for leading prop
+
+### Patch Changes
+
+- c6f8bc72: fix(blade): support overriding tooltip interactive wrapper display prop
+
+## 11.28.2
+
+### Patch Changes
+
+- 12f30712: fix(input): change `wordBreak` behaviour of input hint text & fix alignment
+- 601cedc8: feat(StepItem): add `isDisabled` prop to StepItem
+
+## 11.28.1
+
+### Patch Changes
+
+- 830c8744: fix(Table): table sticky column overlapping with relative cell
+
+## 11.28.0
+
+### Minor Changes
+
+- 95f19f49: feat: expose link negative/positive colors
+
+## 11.27.1
+
+### Patch Changes
+
+- 8ba3eab7: fix: datepicker necessityIndicator
+
+## 11.27.0
+
+### Minor Changes
+
+- f036ef58: feat: add EqualsIcon
+
+## 11.26.1
+
+### Patch Changes
+
+- 5d7317ca: fix: remove default `rel` values
+
+  > [!NOTE]
+  >
+  > While its non-ui-breaking change, you might want to add `rel="noopener noreferrer"` to your Button if that is what you're expecting. This PR removes the defaults in-order to not break analytics that relies on referrer.
+
+- 4dcad016: fix: set min-width on Radio to avoid shrinking
+
+## 11.26.0
+
+### Minor Changes
+
+- f26cf80d: chore: expose brand colors
+- 39742907: feat(TableEditableCell): refactor TableEditableCell and add TableEditableDropdownCell
+
+### Patch Changes
+
+- e13023de: fix: table footer background color
+- fb58be12: fix: Spinner colors
+
 ## 11.25.0
 
 ### Minor Changes

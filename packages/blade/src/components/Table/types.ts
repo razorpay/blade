@@ -1,6 +1,7 @@
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
@@ -184,6 +185,10 @@ type TableProps<Item> = {
    * The showBorderedCells prop determines whether the table should have bordered cells or not.
    **/
   showBorderedCells?: boolean;
+  /**
+   * An array of default selected row ids. This will be used to set the initial selected rows.
+   */
+  defaultSelectedIds?: Identifier[];
 } & StyledPropsBlade;
 
 type Identifier = string | number;
@@ -282,6 +287,11 @@ type TableEditableCellProps = Pick<
 > & {
   accessibilityLabel: NonNullable<BaseInputProps['accessibilityLabel']>;
 };
+
+type TableEditableDropdownCellProps = Pick<
+  DropdownProps,
+  'children' | 'isOpen' | 'onOpenChange' | 'selectionType' | 'zIndex'
+>;
 
 type TableFooterProps = {
   /**
@@ -432,6 +442,7 @@ export type {
   TableRowProps,
   TableCellProps,
   TableEditableCellProps,
+  TableEditableDropdownCellProps,
   TableFooterProps,
   TableFooterRowProps,
   TableFooterCellProps,

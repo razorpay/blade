@@ -281,7 +281,7 @@ describe('<BottomSheet />', () => {
     );
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
     mockConsoleError.mockRestore();
-  });
+  }, 10000);
 
   it('should compose with Dropdown multi select', async () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();

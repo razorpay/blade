@@ -157,6 +157,10 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     helpText?: Type extends 'single' ? string : { start: string; end?: string };
     errorText?: Type extends 'single' ? string : { start: string; end?: string };
     successText?: Type extends 'single' ? string : { start: string; end?: string };
+    /**
+     * Callback which fires when apply button is clicked
+     */
+    onApply?: Type extends 'single' ? (value: DateValue) => void : (value: DatesRangeValue) => void;
     labelPosition?: BaseInputProps['labelPosition'];
   };
 
