@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-empty-function */
+import React from 'react';
 const { AutoLayout, SVG: Svg, Text, Input, useSyncedState } = figma.widget;
 
 interface CheckboxProps {

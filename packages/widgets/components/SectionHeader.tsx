@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import React from 'react';
 const { AutoLayout, Text } = figma.widget;
 
 interface SectionHeaderProps {
