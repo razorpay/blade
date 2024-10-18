@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 11.31.0
+
+### Minor Changes
+
+- 234f1083: feat(Amount): add support for negative amount
+  fix(PhoneNumberInput): PhoneNumber input compatibility issues with i18nify
+
+  > [!NOTE]
+  >
+  > Consumers should upgrade to latest version of `@razorpay/i18nify-js` and `@razorpay/i18nify-react` for support of negative amount
+
 ## 11.30.5
 
 ### Patch Changes
