@@ -67,7 +67,7 @@ export type CardProps = {
    * @default `theme.elevation.lowRaised`
    *
    * **Links:**
-   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--page
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--docs
    */
   elevation?: keyof Elevation;
   /**
@@ -75,7 +75,7 @@ export type CardProps = {
    * @default `spacing.7`
    *
    * **Links:**
-   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--docs
    */
   padding?: CardSpacingValueType;
   /**
