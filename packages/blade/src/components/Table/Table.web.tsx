@@ -41,6 +41,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useControllableState } from '~utils/useControllable';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -139,12 +140,20 @@ const _Table = <Item,>({
   isRefreshing = false,
   showBorderedCells = false,
   defaultSelectedIds = [],
+  selectedIds,
   ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
-  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
-    selectionType !== 'none' ? defaultSelectedIds : [],
-  );
+  const [selectedRows, setSelectedRows] = useControllableState({
+    defaultValue: selectionType !== 'none' ? defaultSelectedIds : [],
+    value: selectedIds,
+    onChange: (value) => {
+      onSelectionChange?.({
+        values: data.nodes.filter((node) => value.includes(node.id)),
+        selectedIds: value,
+      });
+    },
+  });
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
@@ -258,11 +267,7 @@ const _Table = <Item,>({
   // Selection Logic
   const onSelectChange: MiddlewareFunction = (action, state): void => {
     const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
-    setSelectedRows(selectedIds);
-    onSelectionChange?.({
-      selectedIds,
-      values: data.nodes.filter((node) => selectedIds.includes(node.id)),
-    });
+    setSelectedRows(() => selectedIds);
   };
 
   const rowSelectConfig = useRowSelect(
@@ -283,6 +288,12 @@ const _Table = <Item,>({
       rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
     },
   );
+  // If selectedIds is provided, then it is a controlled component
+  // We force the useRowSelect's state to sync with the selectedIds
+  const isControlled = selectedIds !== undefined;
+  if (isControlled && selectionType !== 'none') {
+    rowSelectConfig.state.ids = selectedRows;
+  }
 
   const toggleRowSelectionById = useMemo(
     () => (id: Identifier): void => {
