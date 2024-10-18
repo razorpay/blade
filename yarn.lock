@@ -2652,9 +2652,9 @@
   integrity sha512-mtup3wVKia3ZwULPHcbs4Mor8Voi+iIXEWD7wCNbIO6lYR62oPCTQyrddi5OMYVXHzeCSoneZwJuS8sBvlEwDw==
 
 "@internationalized/date@^3.5.2":
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/@internationalized/date/-/date-3.5.2.tgz#d760ace32bb47e869b8c607a4a786c8b208aacc2"
-  integrity sha512-vo1yOMUt2hzp63IutEaTUxROdvQg1qlMRsbCvbay2AK2Gai7wIgCyK5weEX3nHkiLgo4qCXHijFNC/ILhlRpOQ==
+  version "3.5.6"
+  resolved "https://registry.yarnpkg.com/@internationalized/date/-/date-3.5.6.tgz#0833c2fa75efb3573f4e3bf10e3895f1019e87dd"
+  integrity sha512-jLxQjefH9VI5P9UQuqB6qNKnvFt1Ky1TPIzHGsIlCi7sZZoMR8SdYbBGRvM0y+Jtb+ez4ieBzmiAUcpmPYpyOw==
   dependencies:
     "@swc/helpers" "^0.5.0"
 
@@ -4336,14 +4336,14 @@
 
 "@razorpay/i18nify-js@1.12.3":
   version "1.12.3"
-  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.12.3/6fa86ba0f9277a436df5eae1fa1db9ce3d2bbb6a#6fa86ba0f9277a436df5eae1fa1db9ce3d2bbb6a"
+  resolved "https://registry.yarnpkg.com/@razorpay/i18nify-js/-/i18nify-js-1.12.3.tgz#6fa86ba0f9277a436df5eae1fa1db9ce3d2bbb6a"
   integrity sha512-e5WtYcA9LQAJ+9h4Iasyftj3c6qIg9XrieAgl6vvk1JHFOkGHgoM7EQmo0ztttTOLxwkLp38VTdCI4B1H0fiLg==
   dependencies:
     "@internationalized/date" "^3.5.2"
 
 "@razorpay/i18nify-react@4.0.12":
   version "4.0.12"
-  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-react/4.0.12/e440fb70e3034ef314e6fc404f513035b99d7bbf#e440fb70e3034ef314e6fc404f513035b99d7bbf"
+  resolved "https://registry.yarnpkg.com/@razorpay/i18nify-react/-/i18nify-react-4.0.12.tgz#e440fb70e3034ef314e6fc404f513035b99d7bbf"
   integrity sha512-0q573j1bGN3CcF1UCMfg0JTDZlM9wTiiQEUprRMPviS3QG5yhTRFrswkY3K+9CXf0wHV5Fu4SKOCCQoJHueMMg==
 
 "@react-hook/intersection-observer@^3.1.1":
@@ -6787,9 +6787,9 @@
   integrity sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==
 
 "@swc/helpers@^0.5.0":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.8.tgz#65d56b1961487fd99795ffd8c68edb7a591571fb"
-  integrity sha512-lruDGw3pnfM3wmZHeW7JuhkGQaJjPyiKjxeGhdmfoOT53Ic9qb5JLDNaK2HUdl1zLDeX28H221UvKjfdvSLVMg==
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.13.tgz#33e63ff3cd0cade557672bd7888a39ce7d115a8c"
+  integrity sha512-UoKGxQ3r5kYI9dALKJapMmuK+1zWM/H17Z1+iwnNmzcJRnfFuevZs375TA5rW31pu4BS4NoSy1fRsexDXfWn5w==
   dependencies:
     tslib "^2.4.0"
 
