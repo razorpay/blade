@@ -19,48 +19,42 @@ import { Text } from '~components/Typography';
 import { opacity } from '~tokens/global';
 import type { FontFamily } from '~tokens/global';
 
-// /**
-//  * Pollyfill function to get around
-//  */
-// const stripTrailingZerosFromParts = (
-//   parts: ReturnType<typeof formatNumberByParts>,
-// ): ReturnType<typeof formatNumberByParts> => {
-//   const decimalPart = parts.rawParts
-//     .filter(({ type }) => type === 'fraction')
-//     .map(({ value }) => value)
-//     .join('');
+/**
+ * Pollyfill function to get around the node 18 error
+ *
+ * This function is maintained by i18nify team. Reach out to them for any change regarding this.
+ */
+const stripTrailingZerosFromParts = (
+  parts: ReturnType<typeof formatNumberByParts>,
+): ReturnType<typeof formatNumberByParts> => {
+  const decimalPart = parts.rawParts
+    .filter(({ type }) => type === 'fraction')
+    .map(({ value }) => value)
+    .join('');
 
-//   const hasFraction = parts.rawParts.some(({ type }) => type === 'fraction');
+  const hasFraction = parts.rawParts.some(({ type }) => type === 'fraction');
 
-//   if (hasFraction && /^0+$/.test(decimalPart)) {
-//     delete parts.decimal;
-//     delete parts.fraction;
-//     parts.rawParts = parts.rawParts.filter(({ type }) => type !== 'decimal' && type !== 'fraction');
-//   }
+  if (hasFraction && /^0+$/.test(decimalPart)) {
+    delete parts.decimal;
+    delete parts.fraction;
+    parts.rawParts = parts.rawParts.filter(({ type }) => type !== 'decimal' && type !== 'fraction');
+  }
 
-//   return parts;
-// };
+  return parts;
+};
 
-// const pollyfilledFormatNumberByParts: typeof formatNumberByParts = (value, options) => {
-//   const parts = formatNumberByParts(value, options);
+/**
+ * Wrapper that uses pollyfill of i18nify team
+ */
+const pollyfilledFormatNumberByParts: typeof formatNumberByParts = (value, options) => {
+  const parts = formatNumberByParts(value, options);
 
-//   // {
-//   //   ...options,
-//   //   intlOptions: {
-//   //     ...options?.intlOptions,
-//   //     trailingZeroDisplay: undefined,
-//   //   }
+  if (options?.intlOptions?.trailingZeroDisplay === 'stripIfInteger') {
+    return stripTrailingZerosFromParts(parts);
+  }
 
-//   // });
-
-//   console.log({ value, parts });
-
-//   if (options?.intlOptions?.trailingZeroDisplay === 'stripIfInteger') {
-//     return stripTrailingZerosFromParts(parts);
-//   }
-
-//   return parts;
-// };
+  return parts;
+};
 
 type AmountCommonProps = {
   /**
@@ -227,7 +221,7 @@ export const getAmountByParts = ({
           },
           currency,
         } as const;
-        return formatNumberByParts(value, options);
+        return pollyfilledFormatNumberByParts(value, options);
       }
       case 'humanize': {
         const options = {
@@ -238,7 +232,7 @@ export const getAmountByParts = ({
           },
           currency,
         } as const;
-        return formatNumberByParts(value, options);
+        return pollyfilledFormatNumberByParts(value, options);
       }
 
       default: {
@@ -249,7 +243,7 @@ export const getAmountByParts = ({
           },
           currency,
         } as const;
-        return formatNumberByParts(value, options);
+        return pollyfilledFormatNumberByParts(value, options);
       }
     }
   } catch (err: unknown) {
