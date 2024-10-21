@@ -176,7 +176,12 @@ const TableHeaderCellCheckbox = ({
   return (
     <TableHeaderCell headerKey="SELECT">
       <BaseBox display="flex" alignItems="center" justifyContent="center" flex={1}>
-        <Checkbox isChecked={isChecked} isDisabled={isDisabled} isIndeterminate={isIndeterminate} onChange={onChange} />
+        <Checkbox
+          isChecked={isChecked}
+          isDisabled={isDisabled}
+          isIndeterminate={isIndeterminate}
+          onChange={onChange}
+        />
       </BaseBox>
     </TableHeaderCell>
   );
