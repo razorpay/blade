@@ -51,7 +51,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  cursor: pointer;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -199,6 +198,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
     <label
       class="c0"
       data-blade-component="checkbox-label"
+      style="cursor: pointer;"
     >
       <div
         class="c1"
@@ -340,7 +340,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  cursor: not-allowed;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -409,6 +408,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
     <label
       class="c0"
       data-blade-component="checkbox-label"
+      style="cursor: not-allowed;"
     >
       <div
         class="c1"
@@ -536,7 +536,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  cursor: pointer;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -649,6 +648,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     <label
       class="c0"
       data-blade-component="checkbox-label"
+      style="cursor: pointer;"
     >
       <div
         class="c1"
@@ -826,7 +826,6 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  cursor: pointer;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -904,6 +903,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
     <label
       class="c0"
       data-blade-component="checkbox-label"
+      style="cursor: pointer;"
     >
       <div
         class="c1"
