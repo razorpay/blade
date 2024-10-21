@@ -2,6 +2,7 @@
 import Checkbox from '../components/Checkbox';
 import SectionHeader from '../components/SectionHeader';
 import ProgressBar from '../components/ProgressBar';
+import ListView from '../components/ListView';
 const { AutoLayout, Text, useSyncedState } = figma.widget;
 
 function Widget() {
@@ -28,7 +29,36 @@ function Widget() {
         <Text fontSize={28} fontWeight={700} fill="#192839">
           ❄️ Snowflake handoff checklist
         </Text>
-        <ProgressBar cardWidgetWidth={424} numberOfCheckboxes={12} checkedItems={checkedItems} />
+        <ProgressBar cardWidgetWidth={424} numberOfCheckboxes={15} checkedItems={checkedItems} />
+      </AutoLayout>
+      <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+        <SectionHeader title="Project details" />
+        <AutoLayout direction="vertical" spacing={4} width="fill-parent">
+          <Checkbox
+            id="detail1"
+            optionText="Designed by:"
+            isEditable={true}
+            isEditableInputWithDateField={false}
+            isEditablePlaceholderText="Author's Name"
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id="detail2"
+            optionText="Designed for:"
+            isEditable={true}
+            isEditableInputWithDateField={false}
+            isEditablePlaceholderText="Project Name (BU)"
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id="detail3"
+            optionText="Designed on:"
+            isEditable={true}
+            isEditablePlaceholderText="Date"
+            isEditableInputWithDateField={false}
+            onCheckboxClick={updateChecklist}
+          />
+        </AutoLayout>
       </AutoLayout>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
         <SectionHeader title="Raising a request" />

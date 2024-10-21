@@ -37,18 +37,21 @@ function Widget() {
             id="review1"
             optionText="Design reviewed by "
             isEditable={true}
+            isEditableInputWithDateField={true}
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id="review2"
             optionText="Copy reviewed by "
             isEditable={true}
+            isEditableInputWithDateField={true}
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id="review3"
             optionText="Creatives reviewed by "
             isEditable={true}
+            isEditableInputWithDateField={true}
             onCheckboxClick={updateChecklist}
           />
         </AutoLayout>

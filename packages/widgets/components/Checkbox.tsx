@@ -8,6 +8,8 @@ interface CheckboxProps {
   optionText?: string;
   helpText?: string;
   isEditable?: boolean;
+  isEditablePlaceholderText?: string;
+  isEditableInputWithDateField?: boolean;
   onCheckboxClick: (checkedState: true | false) => void;
 }
 
@@ -16,6 +18,8 @@ function Checkbox({
   optionText = 'An option text',
   helpText,
   isEditable = false,
+  isEditablePlaceholderText = "Reviewer's Name",
+  isEditableInputWithDateField = false,
   onCheckboxClick,
 }: CheckboxProps) {
   const [isChecked, setChecked] = useSyncedState(`${id}_checked`, false);
@@ -76,7 +80,7 @@ function Checkbox({
               </Text>
               <Input
                 value={optionTextInput}
-                placeholder={"<Reviewer's Name>"}
+                placeholder={`<${isEditablePlaceholderText}>`}
                 onTextEditEnd={(e) => setOptionTextInput(e.characters)}
                 fontSize={14}
                 fontWeight={600}
@@ -98,7 +102,33 @@ function Checkbox({
               {optionText}
             </Text>
           )}
-          {(helpText || isEditable) &&
+          {isEditable && isEditableInputWithDateField ? (
+            <Input
+              value={helpTextInput}
+              placeholder="<Review date>"
+              onTextEditEnd={(e) => setHelpTextInput(e.characters)}
+              fontSize={11}
+              fontWeight={400}
+              lineHeight={16}
+              fill="#768EA7"
+              italic={true}
+              width="fill-parent"
+              hoverStyle={{ fill: '#305EFF' }}
+            />
+          ) : null}
+          {helpText ? (
+            <Text
+              fontSize={11}
+              fontWeight={400}
+              lineHeight={16}
+              fill="#768EA7"
+              italic={true}
+              width="fill-parent"
+            >
+              {helpText}
+            </Text>
+          ) : null}
+          {/* {(helpText || isEditableInputWithDateField) &&
             (isEditable ? (
               <Input
                 value={helpTextInput}
@@ -123,7 +153,7 @@ function Checkbox({
               >
                 {helpText}
               </Text>
-            ))}
+            ))} */}
         </AutoLayout>
       </AutoLayout>
     </AutoLayout>
