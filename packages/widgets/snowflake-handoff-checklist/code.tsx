@@ -130,7 +130,7 @@ function Widget() {
           />
           <Checkbox
             id="rev2"
-            optionText="Component added to Blade Snowflake file'"
+            optionText="Component added to Blade Snowflake file"
             onCheckboxClick={updateChecklist}
           />
         </AutoLayout>
