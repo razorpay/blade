@@ -1,0 +1,25 @@
+{
+  "name": "Dev-Handoff-Checklist",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Razorpay's Official Dev Handoff - Figma Widget",
+  "scripts": {
+    "build": "esbuild code.tsx --bundle --outfile=dist/code.js --target=es6",
+    "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
+    "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
+    "tsc": "tsc --noEmit -p widget-src",
+    "watch": "npm run build -- --watch"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@figma/eslint-plugin-figma-plugins": "0.15.0",
+    "@figma/plugin-typings": "1.100.2",
+    "@figma/widget-typings": "1.9.2",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "esbuild": "0.24.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  }
+}

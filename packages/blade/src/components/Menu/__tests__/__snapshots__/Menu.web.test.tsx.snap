@@ -339,6 +339,7 @@ exports[`Menu renders a Menu 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
   margin-top: 1px;
 }
 

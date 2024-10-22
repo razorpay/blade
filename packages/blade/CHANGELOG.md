@@ -1,5 +1,40 @@
 # @razorpay/blade
 
+## 11.31.0
+
+### Minor Changes
+
+- 234f1083: feat(Amount): add support for negative amount
+  fix(PhoneNumberInput): PhoneNumber input compatibility issues with i18nify
+
+  > [!NOTE]
+  >
+  > Consumers should upgrade to latest version of `@razorpay/i18nify-js` and `@razorpay/i18nify-react` for support of negative amount
+
+## 11.30.5
+
+### Patch Changes
+
+- 9d4f9b85: feat(blade): add height & styled props to carousel
+
+## 11.30.4
+
+### Patch Changes
+
+- 68e0ec53: fix(blade): Table cell text truncation
+
+## 11.30.3
+
+### Patch Changes
+
+- 98482ca9: fix(blade): interactive card cursor
+
+## 11.30.2
+
+### Patch Changes
+
+- 2f8a5029: fix(BaseHeader): Handle word break on single word. Fixes for AccordionItemHeader, DropdownHeader, etc
+
 ## 11.30.1
 
 ### Patch Changes

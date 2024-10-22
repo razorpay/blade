@@ -162,10 +162,10 @@ export const StyledCell = styled(Cell)<{
 }));
 
 export const CellWrapper = styled(BaseBox)<{
-  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
+  $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   showStripedRows?: boolean;
   hasPadding?: boolean;
-}>(({ theme, rowDensity, showStripedRows, hasPadding = true }) => {
+}>(({ theme, $rowDensity, showStripedRows, hasPadding = true }) => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
@@ -174,9 +174,11 @@ export const CellWrapper = styled(BaseBox)<{
     '&&&': {
       transition: rowBackgroundTransition,
       backgroundColor: tableRow.nonStripeWrapper.backgroundColor,
-      paddingLeft: hasPadding ? makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])) : '0px',
-      paddingRight: hasPadding ? makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])) : '0px',
-      minHeight: makeSize(getIn(size, tableRow.minHeight[rowDensity])),
+      paddingLeft: hasPadding ? makeSpace(getIn(theme, tableRow.paddingLeft[$rowDensity])) : '0px',
+      paddingRight: hasPadding
+        ? makeSpace(getIn(theme, tableRow.paddingRight[$rowDensity]))
+        : '0px',
+      minHeight: makeSize(getIn(size, tableRow.minHeight[$rowDensity])),
       height: '100%',
       width: '100%',
       ...(!showStripedRows && {
@@ -203,7 +205,7 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
         <CellWrapper
           className="cell-wrapper"
-          rowDensity={rowDensity}
+          $rowDensity={rowDensity}
           showStripedRows={showStripedRows}
           display="flex"
           alignItems="center"
@@ -211,8 +213,16 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
           // when a direct string child is passed we want to disable pointer events
           // for custom cells components, consumers can handle pointer events themselves
           pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
+          // allow text to wrap, so that if the <Text> overflows it can truncate
+          whiteSpace="normal"
         >
-          {isChildrenString ? <Text size="medium">{children}</Text> : children}
+          {isChildrenString ? (
+            <Text size="medium" truncateAfterLines={1}>
+              {children}
+            </Text>
+          ) : (
+            children
+          )}
         </CellWrapper>
       </BaseBox>
     </StyledCell>

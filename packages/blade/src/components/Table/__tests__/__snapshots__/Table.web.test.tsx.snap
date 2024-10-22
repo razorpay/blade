@@ -59,6 +59,7 @@ exports[`<Table /> should render table 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -118,6 +119,12 @@ exports[`<Table /> should render table 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
@@ -1506,6 +1513,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1592,6 +1600,12 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2267,7 +2281,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
-            rowdensity="normal"
           >
             <div>
               <div
@@ -2468,7 +2481,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
-            rowdensity="normal"
           >
             <div>
               <div
@@ -2776,6 +2788,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -2818,6 +2831,12 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
@@ -3646,6 +3665,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -3688,6 +3708,12 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
@@ -4648,6 +4674,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -4703,6 +4730,12 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -5585,6 +5618,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -5627,6 +5661,12 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
@@ -6460,6 +6500,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -6502,6 +6543,12 @@ exports[`<Table /> should render table with sticky header, footer & first column
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 {

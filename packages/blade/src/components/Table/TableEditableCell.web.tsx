@@ -20,12 +20,12 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Dropdown } from '~components/Dropdown';
 
 const StyledEditableCell = styled(StyledCell)<{
-  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
-}>(({ theme, rowDensity }) => ({
+  $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
+}>(({ theme, $rowDensity }) => ({
   '&&&': {
     '&:focus-visible': { outline: '1px solid' },
     '&:focus-within': {
-      ...(rowDensity !== 'comfortable' ? getFocusRingStyles({ theme, negativeOffset: true }) : {}),
+      ...($rowDensity !== 'comfortable' ? getFocusRingStyles({ theme, negativeOffset: true }) : {}),
     },
   },
 }));
@@ -75,13 +75,13 @@ const _TableEditableCell = ({
     <StyledEditableCell
       role="cell"
       $backgroundColor={backgroundColor}
-      rowDensity={rowDensity}
+      $rowDensity={rowDensity}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
         <CellWrapper
           className="cell-wrapper"
-          rowDensity={rowDensity}
+          $rowDensity={rowDensity}
           showStripedRows={showStripedRows}
           display="flex"
           alignItems="center"
@@ -140,7 +140,7 @@ const TableEditableDropdownCell = (
       <StyledEditableCell
         role="cell"
         $backgroundColor={backgroundColor}
-        rowDensity={rowDensity}
+        $rowDensity={rowDensity}
         {...metaAttribute({ name: MetaConstants.TableCell })}
       >
         <BaseBox
@@ -152,7 +152,7 @@ const TableEditableDropdownCell = (
         >
           <CellWrapper
             className="cell-wrapper"
-            rowDensity={rowDensity}
+            $rowDensity={rowDensity}
             showStripedRows={showStripedRows}
             display="flex"
             alignItems="center"
