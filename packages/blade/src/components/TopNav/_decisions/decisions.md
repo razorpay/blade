@@ -88,7 +88,7 @@ The navigation bar is positioned at the top of the screen that provides quick ac
 
 Desktop Navigation Bar:
 
-<img src="./top-nav-desktop-example.png" alt="TopNav Desktop Example" />
+<img src="./top-nav-desktop-example-new.png" alt="TopNav Desktop Example" />
 
 Mobile Navigation Bar:
 
