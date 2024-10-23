@@ -2,7 +2,7 @@
 
 The navigation bar is positioned at the top of the screen that provides quick access to different products, search & user profile. 
 
-<img src="./top-nav-bar.png" width="100%" />
+<img src="./top-nav-bar-new.png" width="100%" />
 
 ## Links
 
