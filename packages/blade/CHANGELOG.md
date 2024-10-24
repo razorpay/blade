@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 11.31.1
+
+### Patch Changes
+
+- 94b69155: fix(blade): set isDisabled to checkbox for disabled table rows [DSSUP-157]
+
+  Changed the visual styling of disabled checkbox to have 'not-allowed' cursor.
+
 ## 11.31.0
 
 ### Minor Changes
