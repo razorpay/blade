@@ -1,9 +1,11 @@
 import React from 'react';
+import type { TabNavDataItem } from './types';
 import { throwBladeError } from '~utils/logger';
 
 type TabNavContextProps = {
   containerRef: React.RefObject<HTMLDivElement>;
-  hasOverflow: boolean;
+  controlledItems: TabNavDataItem[];
+  setControlledItems: React.Dispatch<React.SetStateAction<TabNavDataItem[]>>;
 };
 const TabNavContext = React.createContext<TabNavContextProps | null>(null);
 

@@ -63,4 +63,19 @@ type TabNavItemProps = {
   accessibilityLabel?: string;
 } & MenuTriggerProps;
 
-export type { TabNavItemProps };
+type Item = Omit<TabNavItemProps, 'children'> & {
+  label: string;
+  description?: string;
+  isAlwaysOverflowing?: boolean;
+};
+type TabNavDataItem = Item & {
+  isOverflowing?: boolean;
+  tabWidth?: number;
+  offsetX?: number;
+};
+type TabNavProps = {
+  items: Item[];
+  children: (props: { items: TabNavDataItem[]; moreItems: TabNavDataItem[] }) => React.ReactElement;
+};
+
+export type { TabNavItemProps, TabNavDataItem, TabNavProps };
