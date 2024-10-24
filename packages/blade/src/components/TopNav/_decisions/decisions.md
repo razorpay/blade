@@ -24,6 +24,8 @@ The navigation bar is positioned at the top of the screen that provides quick ac
       - Avatar
       - MenuOverlay
 
+<img src="./anatomy.png" alt="Anatomy of TopNav" />
+
 ## Basic Usage
 
 ```jsx
@@ -33,16 +35,38 @@ The navigation bar is positioned at the top of the screen that provides quick ac
     <img src="razorpay-logo" />
   </TopNavBrand>
   <TopNavContent>
-    <TabNav>
-      <TabNavItem as={RouterLink} isActive href="/home" icon={HomeIcon} />
-      <TabNavItem as={RouterLink} href="/money">Money</TabNavItem>
-      <TabNavItem as={RouterLink} href="/payroll">Payroll</TabNavItem>
-      <Menu>
-        <TabNavItem trailingIcon={ChevronDown}>Others</TabNavItem>
-        <MenuOverlay>
-          { /* Other Menu Items */ }
-        </MenuOverlay>
-      </Menu>
+    <TabNav
+      items={[
+        { href: '/home', title: 'Home' },
+        { href: '/payroll', title: 'Payroll' },
+        { href: '/payments', title: 'Payments', isAlwaysInMore: true, },
+      ]}
+    >
+      {({ items, overflowingItems }) => {
+        return (
+          <>
+            <TabNavItems>
+              {items.map((item) => (
+                <TabNavItem href={item.href}>{item.title}</TabNavItem>
+              ))}
+            </TabNavItems>
+            <Menu>
+              <TabNavItem>More</TabNavItem>
+              {overflowingItems.map((item) => {
+                return (
+                  <MenuItem key={item.title}>
+                    <CustomExploreItem
+                      icon={item.icon}
+                      title={item.title}
+                      description={item.description}
+                    />
+                  </MenuItem>
+                );
+              })}
+            </Menu>
+          </>
+        );
+      }}
     </TabNav>
   </TopNavContent>
   <TopNavActions>
@@ -92,7 +116,7 @@ Desktop Navigation Bar:
 
 Mobile Navigation Bar:
 
-<img width="50%" src="./top-nav-mobile-example.png" alt="TopNav Mobile Example" />
+<img width="50%" src="./top-nav-mobile-example-new.png" alt="TopNav Mobile Example" />
 
 ## API
 
@@ -148,7 +172,7 @@ TabNav automatically handles all these edge cases & responsiveness.
     },
   ]}
 >
-  {({ items, moreItems }) => {
+  {({ items, overflowingItems }) => {
     return (
       <>
         <TabNavItems>
@@ -158,7 +182,7 @@ TabNav automatically handles all these edge cases & responsiveness.
         </TabNavItems>
         <Menu>
           <TabNavItem>More</TabNavItem>
-          {moreItems.map((item) => {
+          {overflowingItems.map((item) => {
             return (
               <MenuItem key={item.title}>
                 <CustomExploreItem
@@ -500,7 +524,7 @@ A data driven API where we pass the data for the items and use render props to r
     },
   ]}
 >
-  {({ items, moreItems }) => {
+  {({ items, overflowingItems }) => {
     return (
       <>
         <TabNavItems>
@@ -510,7 +534,7 @@ A data driven API where we pass the data for the items and use render props to r
         </TabNavItems>
         <Menu>
           <TabNavItem>More</TabNavItem>
-          {moreItems.map((item) => {
+          {overflowingItems.map((item) => {
             return (
               <MenuItem key={item.title}>
                 <CustomExploreItem
