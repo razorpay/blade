@@ -1,0 +1,14 @@
+name: Blade Figma Code Connect
+
+on:
+  push:
+    paths:
+      - src/components/**/*.figma.tsx
+    branches:
+      - master
+jobs:
+  code-connect:
+    name: Code Connect
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - run: npx figma connect publish
