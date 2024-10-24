@@ -154,7 +154,7 @@ TabNav's interaction is as follows:
 2. Once the screen size starts getting reduced, more items will start moving into More.
 3. The order of these items would follow a logical order. They keep getting added ahead of the already existing items. So the last item to go into More is the first item that you see when you click on More.
 
-TabNav automatically handles all these edge cases & responsiveness.
+TabNav automatically handles all these edge cases & responsiveness and let's you focus on the rendering of the items via the [render props](https://reactpatterns.js.org/docs/function-as-child-component/) pattern.
 
 ```jsx
 <TabNav
