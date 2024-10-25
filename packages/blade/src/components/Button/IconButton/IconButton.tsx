@@ -47,9 +47,16 @@ type IconButtonProps = {
   Platform.Select<{
     web: {
       onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+      /**
+       * This changes the hover interaction to highlight icon more
+       *
+       * **Only available on web currently**
+       */
+      isHighlighted?: boolean;
     };
     native: {
       onClick: (event: GestureResponderEvent) => void;
+      isHighlighted?: undefined;
     };
   }>;
 
@@ -73,6 +80,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     onPointerEnter,
     onTouchEnd,
     onTouchStart,
+    isHighlighted,
     _tabIndex,
   },
   ref,
@@ -87,6 +95,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       tabIndex={_tabIndex}
       accessibilityLabel={accessibilityLabel}
       isDisabled={isDisabled}
+      isHighlighted={isHighlighted}
       onBlur={onBlur}
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}

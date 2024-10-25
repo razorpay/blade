@@ -10,6 +10,7 @@ export type StyledIconButtonProps = {
   emphasis: SubtleOrIntense;
   accessibilityLabel: string;
   isDisabled?: IconButtonProps['isDisabled'];
+  isHighlighted?: IconButtonProps['isHighlighted'];
   tabIndex?: IconButtonProps['_tabIndex'];
   onClick?: IconButtonProps['onClick'];
 } & TestID &
