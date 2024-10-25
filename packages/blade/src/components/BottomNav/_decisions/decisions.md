@@ -72,6 +72,53 @@ import { NavLink } from 'react-router-dom';
 | onClick   | Click handler on item                                                                                                        | (e: React.MouseEvent) => void |                                                              |
 | icon      | Blade's Icon Component                                                                                                       | IconComponent                 |                                                              |
 
+#### Examples
+
+<table>
+
+<tr>
+<td>
+
+<!--  prettier-ignore -->
+```jsx
+<BottomNavItem 
+  title="Payments" 
+  as={NavLink} 
+  icon={AcceptPaymentsIcon} 
+  href="/payments"
+/>
+```
+
+</td>
+
+<td>
+  <img src="navitem.png" width="48px" />
+</td>
+<tr>
+
+<tr>
+<td>
+
+```jsx
+<BottomNavItem
+  title="Payments"
+  as={NavLink}
+  icon={AcceptPaymentsIcon}
+  href="/payments"
+  // sets item as active
+  isActive
+/>
+```
+
+</td>
+
+<td>
+  <img src="navitem-selected.png" width="48px" />
+</td>
+<tr>
+
+</table>
+
 ## Accessibility
 
 1. All items should be accessible by `TAB`
