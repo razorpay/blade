@@ -23,6 +23,8 @@ import { Code, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
+import { IconButton } from '~components/Button/IconButton';
+import { CheckIcon, CloseIcon } from '~components/Icons';
 
 export default {
   title: 'Components/Table',
@@ -168,9 +170,27 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   key={index}
                   item={tableItem}
                   hoverActions={
-                    <Button variant="tertiary" size="xsmall">
-                      View Details
-                    </Button>
+                    <>
+                      <Button variant="tertiary" size="xsmall">
+                        View Details
+                      </Button>
+                      <IconButton
+                        icon={CheckIcon}
+                        isHighlighted
+                        accessibilityLabel="Approve"
+                        onClick={() => {
+                          console.log('Approved', tableItem.id);
+                        }}
+                      />
+                      <IconButton
+                        icon={CloseIcon}
+                        isHighlighted
+                        accessibilityLabel="Reject"
+                        onClick={() => {
+                          console.log('Rejected', tableItem.id);
+                        }}
+                      />
+                    </>
                   }
                   onClick={() => {
                     console.log('where');
