@@ -41,6 +41,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useIsMobile } from '~utils/useIsMobile';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -158,6 +159,9 @@ const _Table = <Item,>({
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
 
+  const isMobile = useIsMobile();
+  const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
+
   const {
     isEntering: isRefreshSpinnerEntering,
     isMounted: isRefreshSpinnerMounted,
@@ -231,7 +235,9 @@ const _Table = <Item,>({
       gridTemplateColumns ??
       ` ${
         selectionType === 'multiple' ? 'min-content' : ''
-      } repeat(${columnCount},minmax(100px, 1fr)) ${hasHoverActions ? '0px' : ''} !important;`
+      } repeat(${columnCount},minmax(100px, 1fr)) ${
+        hasHoverActions ? lastHoverActionsColWidth : ''
+      } !important;`
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,

@@ -15,7 +15,7 @@ import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
-import { makeMotionTime, makeSize, makeSpace } from '~utils';
+import { getMediaQuery, makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -232,7 +232,7 @@ const _TableCell = ({ children, _hasPadding }: TableCellProps): React.ReactEleme
   );
 };
 
-const TableCell = assignWithoutSideEffects(React.forwardRef(_TableCell), {
+const TableCell = assignWithoutSideEffects(_TableCell, {
   componentId: ComponentIds.TableCell,
 });
 
@@ -266,6 +266,8 @@ const StyledRow = styled(Row)<{
   $isHoverable: boolean;
   $showBorderedCells: boolean;
 }>(({ theme, $isSelectable, $isHoverable, $showBorderedCells }) => {
+  const { hasHoverActions } = useTableContext();
+
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
@@ -283,19 +285,25 @@ const StyledRow = styled(Row)<{
       '& td:last-child .cell-wrapper': {
         borderRight: 'none',
       },
-      '& td:last-child': {
-        opacity: 0, // add these styles on hover interactions only
-        position: 'sticky',
-        zIndex: 2,
-        right: 0,
-        width: '0px',
-        '& > div:first-child': {
-          overflow: 'visible', // TODO: add condition to only add it when there is hover actions
-        },
-      },
-      '&:hover td:last-child': {
-        opacity: 1, // add these styles on hover interactions only
-      },
+      ...(hasHoverActions
+        ? {
+            [`@media ${getMediaQuery({ min: theme.breakpoints.m })}`]: {
+              '& td:last-child': {
+                opacity: 0,
+                position: 'sticky',
+                zIndex: 2,
+                right: 0,
+                width: '0px',
+                '& > div:first-child': {
+                  overflow: 'visible',
+                },
+              },
+              '&:hover td:last-child': {
+                opacity: 1,
+              },
+            },
+          }
+        : {}),
       ...(($isHoverable || $isSelectable) && {
         '&:hover:not(.disabled-row) .cell-wrapper-base': {
           transition: rowBackgroundTransition,
@@ -365,7 +373,6 @@ const _TableRow = <Item,>({
       onClick={() => onClick?.({ item })}
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow })}
-      hasHoverActions={Boolean(hoverActions)}
     >
       {isMultiSelect && (
         <TableCheckboxCell
@@ -378,8 +385,7 @@ const _TableRow = <Item,>({
       {hoverActions ? (
         <TableCell _hasPadding={false}>
           <BaseBox
-            className="hover-actions"
-            position="absolute"
+            position={{ base: 'relative', m: 'absolute' }}
             top="spacing.0"
             right="spacing.0"
             height="100%"
