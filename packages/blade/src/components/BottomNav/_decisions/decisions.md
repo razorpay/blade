@@ -1,5 +1,7 @@
 # BottomNav
 
+Bottom navigation component is a persistent user interface element at the bottom of a mobile app screen, providing quick access to core functionalities through icons and labels.
+
 <img src="bottomnav-title.png" height="300px" />
 
 ## Links
