@@ -1,6 +1,6 @@
 # BottomNav
 
-<img src="bottomnav-title.png" width="100%" />
+<img src="bottomnav-title.png" height="300px" />
 
 ## Links
 
