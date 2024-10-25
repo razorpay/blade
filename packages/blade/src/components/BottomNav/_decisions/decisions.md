@@ -61,16 +61,14 @@ import { NavLink } from 'react-router-dom';
 
 ### BottomNavItem
 
-| **Props** | **Description**                                                                                                              | **Type**                      | **Default Value**                                            |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
-| title     | title of BottomNavItem                                                                                                       | string                        |                                                              |
-| as        | as prop for passing React Router's NavLink                                                                                   | NavLinkComponentType          |                                                              |
-| href      | URL to navigate to. Internally links to `to` attribute of router (Also turns item into anchor tag when passed)               | string                        |                                                              |
-| isActive  | Sets the link as selected / active                                                                                           | boolean                       | undefined                                                    |
-| target    | anchor tag target attribute [target - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target) | AnchorTargetType              | \_self                                                       |
-| rel       | anchor tag rel attribute [rel - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#rel)          | AnchorRelType                 | target === ' \_blank ' ? ' noreferrer noopener ' : undefined |
-| onClick   | Click handler on item                                                                                                        | (e: React.MouseEvent) => void |                                                              |
-| icon      | Blade's Icon Component                                                                                                       | IconComponent                 |                                                              |
+| **Props** | **Description**                                                                                                | **Type**                      | **Default Value** |
+| --------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------------- |
+| title     | Title of BottomNavItem                                                                                         | string                        |                   |
+| as        | as prop for passing React Router's NavLink                                                                     | NavLinkComponentType          |                   |
+| href      | URL to navigate to. Internally links to `to` attribute of router (Also turns item into anchor tag when passed) | string                        |                   |
+| isActive  | Sets the link as selected / active                                                                             | boolean                       | undefined         |
+| onClick   | Click handler on item                                                                                          | (e: React.MouseEvent) => void |                   |
+| icon      | Blade's Icon Component                                                                                         | IconComponent                 |                   |
 
 #### Examples
 
