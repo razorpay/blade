@@ -461,7 +461,7 @@ const _Table = <Item,>({
           {...getStyledProps(styledProps)}
           {...metaAttribute({ name: MetaConstants.Table })}
         >
-          <Spinner accessibilityLabel="Loading Table" size="large" />
+          <Spinner accessibilityLabel="Loading Table" size="large" testID="spinner" />
         </BaseBox>
       ) : (
         <BaseBox
