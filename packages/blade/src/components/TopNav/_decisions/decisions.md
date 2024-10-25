@@ -391,7 +391,43 @@ https://github.com/razorpay/blade/assets/35374649/8a0fb6ae-cedd-4065-80ed-276479
 
 ## Mobile UX
 
-On mobile, the TabNav component will no longer be present and the TopNavContent will contain a single button to toggle the side navigation. The TopNavActions will contain the search input, buttons, and user profile.
+<img width="50%" src="./top-nav-mobile-example-new.png" alt="TopNav Mobile Example" />
+
+On mobile, most of the components from desktop aren't visible due to the lack of screen real estate.
+Thus, we will let consumers decide what components they want to show on mobile and what they want to hide.
+
+Given the simplicity of the mobile navigation bar, consumers can conditionally render the components based on the screen size.
+
+Example: 
+
+```jsx
+const isMobile = useIsMobile();
+
+return (
+  <>
+    <TopNav>
+        <TopNav>
+          {isMobile ? (
+            <>
+              <Link icon={HomeIcon} size="medium" href="/home">
+                Home
+              </Link>
+              <Heading textAlign="center" size="small" weight="semibold">
+                Payments
+              </Heading>
+              <AvatarWithMenu />
+            </>
+          ) : (
+            <>
+              <TopNavBrand />
+              <TopNavContent />
+              <TopNavActions />
+            </>
+          )}
+    </TopNav>
+  </>
+);
+```
 
 **Q:** So where will the product navigation items go? 
 **Ans:** The product navigation items will be moved to the bottom of the screen, but this will be part of a separate component called `BottomNavigation` which we will ship in phase 2.
