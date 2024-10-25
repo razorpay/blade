@@ -39,7 +39,7 @@ The navigation bar is positioned at the top of the screen that provides quick ac
       items={[
         { href: '/home', title: 'Home' },
         { href: '/payroll', title: 'Payroll' },
-        { href: '/payments', title: 'Payments', isAlwaysInOverflowMenu: true, },
+        { href: '/payments', title: 'Payments', isAlwaysOverflowing: true, },
       ]}
     >
       {({ items, overflowingItems }) => {
@@ -168,7 +168,7 @@ TabNav automatically handles all these edge cases & responsiveness and let's you
       description: 'rize description',
       icon: RizeIcon,
       // force this item to always be inside "more" regardless of screen size
-      isAlwaysInOverflowMenu: true,
+      isAlwaysOverflowing: true,
     },
   ]}
 >
@@ -215,7 +215,7 @@ type TabNav = {
       /**
        * force this item to always be inside "more" regardless of screen size
        */
-      isAlwaysInOverflowMenu?: boolean;
+      isAlwaysOverflowing?: boolean;
     }
   >;
 };
@@ -520,7 +520,7 @@ A data driven API where we pass the data for the items and use render props to r
       description: 'rize description',
       icon: RizeIcon,
       // force this item to always be inside "more" regardless of screen size
-      isAlwaysInOverflowMenu: true,
+      isAlwaysOverflowing: true,
     },
   ]}
 >
