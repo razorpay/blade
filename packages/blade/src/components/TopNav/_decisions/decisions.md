@@ -47,11 +47,11 @@ The navigation bar is positioned at the top of the screen that provides quick ac
           <>
             <TabNavItems>
               {items.map((item) => (
-                <TabNavItem href={item.href}>{item.title}</TabNavItem>
+                <TabNavItem href={item.href} title={title} />
               ))}
             </TabNavItems>
             <Menu>
-              <TabNavItem>More</TabNavItem>
+              <TabNavItem title="More" />
               {overflowingItems.map((item) => {
                 return (
                   <MenuItem key={item.title}>
@@ -177,11 +177,11 @@ TabNav automatically handles all these edge cases & responsiveness and let's you
       <>
         <TabNavItems>
           {items.map((item) => (
-            <TabNavItem href={item.href}>{item.title}</TabNavItem>
+            <TabNavItem title={item.title} href={item.href} />
           ))}
         </TabNavItems>
         <Menu>
-          <TabNavItem>More</TabNavItem>
+          <TabNavItem title="More" />
           {overflowingItems.map((item) => {
             return (
               <MenuItem key={item.title}>
@@ -261,11 +261,9 @@ type TabNavItem = {
    */
   icon?: IconComponent;
   /**
-   * Element to render inside the navigation item.
-   *
-   * This can either be a string or JSX element (eg: Menu component)
+   * Title of the navigation item.
    */
-  children?: React.ReactNode;
+  title?: React.ReactNode;
   /**
    * Accessibility label for the navigation item.
    */
@@ -367,10 +365,9 @@ const WithMenu = () => {
       <TabNavItem as={RouterLink} isActive href="/home" icon={HomeIcon} />
       <Menu interactionType="hover">
         <TabNavItem 
+          title={selected ? `More: ${selected}` : "More"}
           trailingIcon={isOpen ? ChevronDown : ChevronUp}
-        >
-          {selected ? `Others: ${selected}` : "Others"}
-        </TabNavItem>
+        />
         <MenuOverlay>
           <MenuItem onClick={() => setSelected("Engage")}>Engage</MenuItem>
           <MenuItem onClick={() => setSelected("Payroll")}>Payroll</MenuItem>
@@ -499,10 +496,10 @@ For example, we want users to:
 ```jsx
 <TabNav>
   <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-  <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
-  <TabNavItemLink href="/payments">Payments</TabNavItemLink>
+  <TabNavItemLink title="Payroll" href="/payroll" />
+  <TabNavItemLink title="Payments" href="/payments" />
   <Menu>
-    <TabNavItemLink href="/more">More</TabNavItemLink>
+    <TabNavItemLink title="More" href="/more" />
     <MenuOverlay>
       {overflowingItems.map((item) => {
         // ??
@@ -565,11 +562,11 @@ A data driven API where we pass the data for the items and use render props to r
       <>
         <TabNavItems>
           {items.map((item) => (
-            <TabNavItem href={item.href}>{item.title}</TabNavItem>
+            <TabNavItem title={item.title} href={item.href} />
           ))}
         </TabNavItems>
         <Menu>
-          <TabNavItem>More</TabNavItem>
+          <TabNavItem title="More" />
           {overflowingItems.map((item) => {
             return (
               <MenuItem key={item.title}>
@@ -606,9 +603,7 @@ We have the data of the item inside the overflowingItems and can render it insid
 
 ```jsx
 const renderTabNavItem = (props) => {
-  <TabNavItemLink icon={props.icon} href={props.href}>
-    {props.title}
-  </TabNavItemLink>
+  return <TabNavItemLink title={props.title} icon={props.icon} href={props.href} />
 }
 
 <TabNav
@@ -628,9 +623,7 @@ const renderTabNavItem = (props) => {
       href: '/more',
       render: (props) => (
         <Menu>
-          <TabNavItemLink trailing={<ChevronDownIcon />}>
-            More
-          </TabNavItemLink>
+          <TabNavItemLink title="More" trailing={<ChevronDownIcon />} />
           <MenuOverlay>
             {props.overflowingItems.map((item) => {
               return (
@@ -689,8 +682,9 @@ const { overflowingItems, setOverflowingItems } = React.useState([]);
     }}
   >
     <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-    <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
+    <TabNavItemLink title="Payroll" href="/payroll" />
     <TabNavItemLink
+      title="Payments"
       href="/payments"
       icon={MagicCheckoutIcon}
       // this meta data will be passed to `items` array
@@ -700,12 +694,10 @@ const { overflowingItems, setOverflowingItems } = React.useState([]);
         title: 'Payments',
         description: 'Some product description',
       }}
-    >
-      Payments
-    </TabNavItemLink>
+    />
   </TabNavItems>
   <Menu>
-    <TabNavItemLink trailing={<ChevronDownIcon />}>More</TabNavItemLink>
+    <TabNavItemLink title="More" trailing={<ChevronDownIcon />} />
     <MenuOverlay>
       // render the overflowing items
       {overflowingItems.map((item) => {
@@ -748,10 +740,10 @@ const [overflowingItems, setOverflowingItems] = useState([]);
 
 <TabNav onOverflow={(items) => setOverflowingItems(items)}>
   <TabNavItemLink icon={HomeIcon} href="/home" />
-  <TabNavItemLink href="/payroll" description="Some product description">Payroll</TabNavItemLink>
-  <TabNavItemLink href="/payments" description="Some product description">Payments</TabNavItemLink>
+  <TabNavItemLink title="Payroll" href="/payroll" description="Some product description" />
+  <TabNavItemLink title="Payments" href="/payments" description="Some product description" />
   <Menu>
-    <TabNavItemLink href="/more">More</TabNavItemLink>
+    <TabNavItemLink title="More" />
     <MenuOverlay>
       {overflowingItems.map((item) => {
         return (
