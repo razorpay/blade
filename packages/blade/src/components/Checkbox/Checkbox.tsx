@@ -229,6 +229,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
       <SelectorLabel
         componentName={MetaConstants.CheckboxLabel}
         inputProps={state.isReactNative ? inputProps : {}}
+        style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}
       >
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" flexDirection="row">

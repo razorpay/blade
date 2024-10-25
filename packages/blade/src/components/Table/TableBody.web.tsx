@@ -335,6 +335,7 @@ const _TableRow = <Item,>({
   onHover,
   onClick,
   hoverActions,
+  testID,
 }: TableRowProps<Item>): React.ReactElement => {
   const {
     selectionType,
@@ -372,7 +373,7 @@ const _TableRow = <Item,>({
       onMouseEnter={() => onHover?.({ item })}
       onClick={() => onClick?.({ item })}
       {...makeAccessible({ selected: isSelected })}
-      {...metaAttribute({ name: MetaConstants.TableRow })}
+      {...metaAttribute({ name: MetaConstants.TableRow, testID })}
     >
       {isMultiSelect && (
         <TableCheckboxCell

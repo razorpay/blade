@@ -4571,6 +4571,7 @@ exports[`<Table /> should render table with isLoading 1`] = `
     <div
       class=""
       data-blade-component="spinner"
+      data-testid="table-spinner"
     >
       <div
         aria-label="Loading Table"

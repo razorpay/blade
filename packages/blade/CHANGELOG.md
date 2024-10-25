@@ -1,5 +1,36 @@
 # @razorpay/blade
 
+## 11.31.2
+
+### Patch Changes
+
+- eef992bd: feat(blade): support test id for table row
+
+## 11.31.1
+
+### Patch Changes
+
+- 94b69155: fix(blade): set isDisabled to checkbox for disabled table rows [DSSUP-157]
+
+  Changed the visual styling of disabled checkbox to have 'not-allowed' cursor.
+
+## 11.31.0
+
+### Minor Changes
+
+- 234f1083: feat(Amount): add support for negative amount
+  fix(PhoneNumberInput): PhoneNumber input compatibility issues with i18nify
+
+  > [!NOTE]
+  >
+  > Consumers should upgrade to latest version of `@razorpay/i18nify-js` and `@razorpay/i18nify-react` for support of negative amount
+
+## 11.30.5
+
+### Patch Changes
+
+- 9d4f9b85: feat(blade): add height & styled props to carousel
+
 ## 11.30.4
 
 ### Patch Changes
