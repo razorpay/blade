@@ -22,8 +22,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
-import { Button } from '~components/Button';
-import { FloatingPortal, offset, useFloating, useHover, useInteractions } from '@floating-ui/react';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -335,15 +334,24 @@ const _TableRow = <Item,>({
     toggleRowSelectionById,
     setDisabledRows,
     showBorderedCells,
+    setHasHoverActions,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
   const isSelected = selectedRows?.includes(item.id);
+  const hasHoverActions = Boolean(hoverActions);
+
   useEffect(() => {
     if (isDisabled) {
       setDisabledRows((prev) => [...prev, item.id]);
     }
   }, [isDisabled, item.id, setDisabledRows]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (hasHoverActions) {
+      setHasHoverActions(true);
+    }
+  }, [hasHoverActions]);
 
   return (
     <StyledRow

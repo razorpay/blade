@@ -153,6 +153,7 @@ const _Table = <Item,>({
   const [headerRowDensity, setHeaderRowDensity] = React.useState<TableHeaderRowProps['rowDensity']>(
     undefined,
   );
+  const [hasHoverActions, setHasHoverActions] = React.useState(false);
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
@@ -230,7 +231,7 @@ const _Table = <Item,>({
       gridTemplateColumns ??
       ` ${
         selectionType === 'multiple' ? 'min-content' : ''
-      } repeat(${columnCount},minmax(100px, 1fr)) 0px !important;`
+      } repeat(${columnCount},minmax(100px, 1fr)) ${hasHoverActions ? '0px' : ''} !important;`
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,
@@ -423,6 +424,8 @@ const _Table = <Item,>({
       headerRowDensity,
       setHeaderRowDensity,
       showBorderedCells,
+      hasHoverActions,
+      setHasHoverActions,
     }),
     [
       selectionType,
@@ -446,6 +449,8 @@ const _Table = <Item,>({
       headerRowDensity,
       setHeaderRowDensity,
       showBorderedCells,
+      hasHoverActions,
+      setHasHoverActions,
     ],
   );
 
@@ -488,6 +493,7 @@ const _Table = <Item,>({
             </RefreshWrapper>
           )}
           {toolbar}
+          {String(hasHoverActions)}
           <StyledReactTable
             role="table"
             layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}

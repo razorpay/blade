@@ -213,6 +213,7 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
     toggleAllRowsSelection,
     setHeaderRowDensity,
     showBorderedCells,
+    hasHoverActions,
   } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
@@ -234,7 +235,7 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
         />
       )}
       {children}
-      {true ? <TableHeaderCell _hasPadding={false}>Actions</TableHeaderCell> : null}
+      {hasHoverActions ? <TableHeaderCell _hasPadding={false}>Actions</TableHeaderCell> : null}
     </StyledHeaderRow>
   );
 };

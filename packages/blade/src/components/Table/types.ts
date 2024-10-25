@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -243,6 +244,8 @@ type TableRowProps<Item> = {
    * Callback triggered when the row is clicked. It is called with the current row item prop.
    */
   onClick?: ({ item }: { item: TableNode<Item> }) => void;
+
+  hoverActions?: React.ReactElement;
 };
 
 type TableCellProps = {

@@ -38,6 +38,8 @@ export type TableContextType = {
   headerRowDensity?: TableHeaderRowProps['rowDensity'];
   setHeaderRowDensity: React.Dispatch<React.SetStateAction<TableHeaderRowProps['rowDensity']>>;
   showBorderedCells: NonNullable<TableProps<unknown>['showBorderedCells']>;
+  hasHoverActions: boolean;
+  setHasHoverActions: (hasHoverActions: boolean) => void;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -62,6 +64,8 @@ const TableContext = React.createContext<TableContextType>({
   backgroundColor: 'surface.background.gray.intense',
   setHeaderRowDensity: () => {},
   showBorderedCells: false,
+  hasHoverActions: false,
+  setHasHoverActions: () => {},
 });
 
 const useTableContext = (): TableContextType => {

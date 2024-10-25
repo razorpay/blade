@@ -124,7 +124,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         defaultSelectedIds={['1', '3']}
         onSelectionChange={console.log}
         isFirstColumnSticky
-        hasHoverActions
+        selectionType="multiple"
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
