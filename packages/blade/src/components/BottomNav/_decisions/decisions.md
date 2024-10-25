@@ -92,7 +92,7 @@ import { NavLink } from 'react-router-dom';
 </td>
 
 <td>
-  <img src="navitem.png" width="48px" />
+  <img src="navitem.png" width="100px" />
 </td>
 <tr>
 
@@ -113,7 +113,7 @@ import { NavLink } from 'react-router-dom';
 </td>
 
 <td>
-  <img src="navitem-selected.png" width="48px" />
+  <img src="navitem-selected.png" width="100px" />
 </td>
 <tr>
 
