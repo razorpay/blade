@@ -48,7 +48,7 @@ const TabNav = ({
   const ref = React.useRef<HTMLDivElement>(null);
   const [controlledItems, setControlledItems] = React.useState<TabNavDataItem[]>(items);
 
-  const moreItems = controlledItems.filter(
+  const overflowingItems = controlledItems.filter(
     (item) => item.isAlwaysOverflowing ?? item.isOverflowing,
   );
   const _items = controlledItems.filter((item) => !item.isAlwaysOverflowing && !item.isOverflowing);
@@ -104,7 +104,7 @@ const TabNav = ({
       >
         <BaseBox display="flex" width="100%" position="relative">
           <BaseBox display="flex" flexDirection="row" width="max-content">
-            {children({ items: _items, moreItems })}
+            {children({ items: _items, overflowingItems })}
           </BaseBox>
         </BaseBox>
       </BaseBox>

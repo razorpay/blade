@@ -52,19 +52,16 @@ type TabNavItemProps = {
    */
   trailing?: React.ReactElement;
   /**
-   * Element to render inside the navigation item.
-   *
-   * This can either be a string or JSX element (eg: Menu component)
+   * Title of the navigation item.
    */
-  children?: React.ReactNode;
+  title?: string;
   /**
    * Accessibility label for the navigation item.
    */
   accessibilityLabel?: string;
 } & MenuTriggerProps;
 
-type Item = Omit<TabNavItemProps, 'children'> & {
-  label: string;
+type Item = TabNavItemProps & {
   description?: string;
   isAlwaysOverflowing?: boolean;
 };
@@ -75,7 +72,10 @@ type TabNavDataItem = Item & {
 };
 type TabNavProps = {
   items: Item[];
-  children: (props: { items: TabNavDataItem[]; moreItems: TabNavDataItem[] }) => React.ReactElement;
+  children: (props: {
+    items: TabNavDataItem[];
+    overflowingItems: TabNavDataItem[];
+  }) => React.ReactElement;
 };
 
 export type { TabNavItemProps, TabNavDataItem, TabNavProps };

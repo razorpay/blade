@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
@@ -191,7 +190,7 @@ const ExploreItem = ({
   description,
 }: {
   icon: IconComponent;
-  title: string;
+  title?: string;
   description: string;
 }): React.ReactElement => {
   return (
@@ -270,55 +269,59 @@ const TopNavFullExample = () => {
               <TopNavContent>
                 <TabNav
                   items={[
-                    { href: '/home', label: 'Home', icon: HomeIcon },
+                    { title: 'Home', href: '/home', icon: HomeIcon },
                     {
                       href: '/payroll',
-                      label: 'Payroll',
+                      title: 'Payroll',
                       icon: RazorpayxPayrollIcon,
                       description: 'Automate payroll with ease.',
                     },
                     {
                       href: '/payments',
-                      label: 'Payments',
+                      title: 'Payments',
                       icon: AcceptPaymentsIcon,
                       description: 'Manage payments effortlessly.',
                     },
                     {
                       href: '/magic-checkout',
-                      label: 'Magic Checkout',
+                      title: 'Magic Checkout',
                       icon: MagicCheckoutIcon,
                       description: 'Fast, one-click checkout.',
                     },
                     {
                       href: '/rize',
-                      label: 'Rize',
+                      title: 'Rize',
                       icon: AwardIcon,
                       isAlwaysOverflowing: true,
                       description: 'Boost your business growth.',
                     },
                   ]}
                 >
-                  {({ items, moreItems }) => {
-                    const activeProduct = moreItems.find((item) => item.href === selectedProduct);
+                  {({ items, overflowingItems }) => {
+                    const activeProduct = overflowingItems.find(
+                      (item) => item.href === selectedProduct,
+                    );
                     return (
                       <>
                         <TabNavItems>
                           {items.map((item) => {
                             return (
-                              <TabNavItemLink key={item.label} href={item.href} icon={item.icon}>
-                                {item.label}
-                              </TabNavItemLink>
+                              <TabNavItemLink
+                                key={item.title}
+                                title={item.title}
+                                href={item.href}
+                                icon={item.icon}
+                              />
                             );
                           })}
                         </TabNavItems>
-                        {moreItems.length ? (
+                        {overflowingItems.length ? (
                           <Menu openInteraction="hover">
                             <TabNavItem
+                              title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
                               trailing={<ChevronDownIcon />}
                               isActive={Boolean(activeProduct)}
-                            >
-                              {activeProduct ? `More: ${activeProduct.label}` : 'More'}
-                            </TabNavItem>
+                            />
                             <MenuOverlay>
                               <MenuHeader
                                 title="Products for you"
@@ -328,7 +331,7 @@ const TopNavFullExample = () => {
                                   </Badge>
                                 }
                               />
-                              {moreItems.map((item) => {
+                              {overflowingItems.map((item) => {
                                 return (
                                   <MenuItem
                                     key={item.href}
@@ -339,7 +342,7 @@ const TopNavFullExample = () => {
                                   >
                                     <ExploreItem
                                       icon={item.icon!}
-                                      title={item.label}
+                                      title={item.title}
                                       description={item.description!}
                                     />
                                   </MenuItem>
@@ -465,9 +468,9 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
           <TopNavContent>
             <TabNav>
               <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-              <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
-              <TabNavItemLink href="/payments">Payments</TabNavItemLink>
-              <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
+              <TabNavItemLink title="Payroll" href="/payroll" />
+              <TabNavItemLink title="Payments" href="/payments" />
+              <TabNavItemLink title="Magic Checkout" href="/magic-checkout" />
             </TabNav>
           </TopNavContent>
           <TopNavActions>
