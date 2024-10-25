@@ -4,6 +4,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { TestID } from '~utils/types';
 
 type TableNode<Item> = Item & {
   id: Identifier;
@@ -241,7 +242,7 @@ type TableRowProps<Item> = {
    * Callback triggered when the row is clicked. It is called with the current row item prop.
    */
   onClick?: ({ item }: { item: TableNode<Item> }) => void;
-};
+} & TestID;
 
 type TableCellProps = {
   /**
