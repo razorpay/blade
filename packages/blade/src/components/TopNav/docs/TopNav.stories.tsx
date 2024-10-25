@@ -466,12 +466,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
             <RazorpayLogo />
           </TopNavBrand>
           <TopNavContent>
-            <TabNav>
-              <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-              <TabNavItemLink title="Payroll" href="/payroll" />
-              <TabNavItemLink title="Payments" href="/payments" />
-              <TabNavItemLink title="Magic Checkout" href="/magic-checkout" />
-            </TabNav>
+            <p>test</p>
           </TopNavContent>
           <TopNavActions>
             <SearchInput
