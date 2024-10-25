@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.31.2
+
+### Patch Changes
+
+- eef992bd: feat(blade): support test id for table row
+
 ## 11.31.1
 
 ### Patch Changes
