@@ -36,6 +36,9 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     paddingLeft: makeSpace(theme.spacing[4]),
     paddingRight: makeSpace(theme.spacing[4]),
     borderRadius: makeBorderSize(theme.border.radius.medium),
+    // reset button styles
+    border: 'none',
+    background: 'none',
     '&:hover': $isActive
       ? {}
       : {
