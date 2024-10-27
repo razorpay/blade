@@ -1,5 +1,4 @@
 import React from 'react';
-import { TopNavContext } from './TopNavContext';
 import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
@@ -10,6 +9,7 @@ import {
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 const TOP_NAV_HEIGHT = size[56];
 const CONTENT_RIGHT_GAP = size[80];
@@ -33,28 +33,27 @@ type TopNavProps = {
   | 'right'
   | 'width'
   | 'zIndex'
->;
+> &
+  StyledPropsBlade;
 
 const TopNav = ({ children, ...styledProps }: TopNavProps): React.ReactElement => {
   return (
-    <TopNavContext.Provider value={{ backgroundColor: styledProps.backgroundColor }}>
-      <Box
-        display="grid"
-        gridTemplateColumns="auto minmax(0, 1fr) auto"
-        alignItems="center"
-        position="sticky"
-        top="0px"
-        width="100%"
-        paddingY={{ base: 'spacing.3', m: 'spacing.0' }}
-        paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
-        height={makeSize(TOP_NAV_HEIGHT)}
-        zIndex={1}
-        {...styledProps}
-        {...metaAttribute({ name: MetaConstants.TopNav })}
-      >
-        {children}
-      </Box>
-    </TopNavContext.Provider>
+    <Box
+      display="grid"
+      gridTemplateColumns="auto minmax(0, 1fr) auto"
+      alignItems="center"
+      position="sticky"
+      top="0px"
+      width="100%"
+      paddingY={{ base: 'spacing.3', m: 'spacing.0' }}
+      paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
+      height={makeSize(TOP_NAV_HEIGHT)}
+      zIndex={1}
+      {...styledProps}
+      {...metaAttribute({ name: MetaConstants.TopNav })}
+    >
+      {children}
+    </Box>
   );
 };
 

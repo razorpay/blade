@@ -16,7 +16,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const TabNavItems = ({ children, ...props }: BaseBoxProps): React.ReactElement => {
   return (
-    <BaseBox {...props} display="flex" width="100%" gap="spacing.0">
+    <BaseBox {...props} display="flex" width="100%" gap="spacing.0" position="relative" left="-1px">
       {React.Children.map(children, (child, index) => {
         return (
           <>

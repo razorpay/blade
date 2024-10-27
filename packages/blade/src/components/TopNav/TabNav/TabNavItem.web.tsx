@@ -3,7 +3,6 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
-import { useTopNavContext } from '../TopNavContext';
 import type { TabNavItemProps } from './types';
 import { useTabNavContext } from './TabNavContext';
 import { MIXED_BG_COLOR } from './utils';
@@ -13,8 +12,6 @@ import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
-import type { BoxProps } from '~components/Box';
-import getIn from '~utils/lodashButBetter/get';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
@@ -49,16 +46,15 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
 
 const StyledTabNavItemWrapper = styled(BaseBox)<{
   isActive?: boolean;
-  dividerHiderColor: BoxProps['backgroundColor'];
-}>(({ theme, isActive, dividerHiderColor }) => {
+}>(({ theme, isActive }) => {
   const dividerHiderStyle = {
     content: '""',
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
     width: makeSize(size[1]),
-    height: '50%',
-    backgroundColor: getIn(theme.colors, dividerHiderColor as never, MIXED_BG_COLOR),
+    height: makeSize(size[16]),
+    backgroundColor: MIXED_BG_COLOR,
   } as const;
 
   return {
@@ -131,7 +127,6 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
   ref,
 ): React.ReactElement => {
   const { setControlledItems } = useTabNavContext();
-  const { backgroundColor } = useTopNavContext();
   const bodyRef = React.useRef<HTMLDivElement>(null);
 
   // Update the controlledItems with the tabWidth and offsetX
@@ -157,7 +152,6 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     <StyledTabNavItemWrapper
       ref={bodyRef}
       isActive={isActive}
-      dividerHiderColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
       <SelectedBar isActive={isActive} />
