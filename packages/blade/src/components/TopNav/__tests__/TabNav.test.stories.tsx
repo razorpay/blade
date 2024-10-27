@@ -71,7 +71,7 @@ const TabNavExample = ({ items }: { items?: TabNavProps['items'] }): React.React
             </TabNavItems>
             {overflowingItems.length ? (
               <Menu openInteraction="hover">
-                <TabNavItem href="#" title="More" trailing={<ChevronDownIcon />} />
+                <TabNavItem as="button" title="More" trailing={<ChevronDownIcon />} />
                 <MenuOverlay>
                   {overflowingItems.map((item) => {
                     return (
@@ -131,7 +131,7 @@ TestOverflow.play = async ({ canvasElement }) => {
   canvasElement.style.width = '600px';
   await sleep(500);
 
-  const moreTab = getByRole('link', { name: 'More' });
+  const moreTab = getByRole('button', { name: 'More' });
   await userEvent.hover(moreTab);
   await sleep(500);
   await expect(queryByRole('menu', { name: 'More' })).toBeVisible();
@@ -173,7 +173,7 @@ ShouldNotShowMore.play = async ({ canvasElement }) => {
   await expect(homeTab).toBeVisible();
   await expect(payrollTab).toBeVisible();
   await expect(paymentsTab).toBeVisible();
-  await expect(queryByRole('link', { name: 'More' })).toBeNull();
+  await expect(queryByRole('button', { name: 'More' })).toBeNull();
 
   await sleep(500);
 
@@ -181,7 +181,7 @@ ShouldNotShowMore.play = async ({ canvasElement }) => {
   canvasElement.style.width = '200px';
   await sleep(500);
 
-  const moreTab = getByRole('link', { name: 'More' });
+  const moreTab = getByRole('button', { name: 'More' });
   await expect(moreTab).toBeVisible();
 
   // hover over the more tab
