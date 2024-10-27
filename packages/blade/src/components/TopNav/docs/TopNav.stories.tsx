@@ -4,6 +4,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
 import storyRouterDecorator from 'storybook-react-router';
 import { Title } from '@storybook/addon-docs';
+import styled from 'styled-components';
 import type { TopNavProps } from '../TopNav';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
 import type { TabNavItemProps } from '../TabNav';
@@ -214,6 +215,13 @@ const ExploreItem = ({
   );
 };
 
+const DashboardBackground = styled.div(() => {
+  return {
+    height: '100vh',
+    background: 'radial-gradient(94.74% 64.44% at 29.03% 15.17%, #FFFFFF 0%, #90A5BB 100%)',
+  };
+});
+
 const TopNavFullExample = () => {
   const isMobile = useIsMobile();
   const history = useHistory();
@@ -226,7 +234,7 @@ const TopNavFullExample = () => {
   }, [activeUrl]);
 
   return (
-    <BaseBox backgroundColor="surface.background.gray.subtle">
+    <DashboardBackground>
       <BaseBox backgroundColor="interactive.background.gray.default">
         <TopNav>
           {isMobile ? (
@@ -452,21 +460,116 @@ const TopNavFullExample = () => {
           </Box>
         </Box>
       </BaseBox>
-    </BaseBox>
+    </DashboardBackground>
   );
 };
 const TopNavFullTemplate: StoryFn<typeof TopNav> = () => <TopNavFullExample />;
 
 const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
+  const history = useHistory();
+  const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
+
   return (
-    <BaseBox height="100vh" backgroundColor="surface.background.gray.subtle">
+    <DashboardBackground>
       <BaseBox backgroundColor="interactive.background.gray.default">
         <TopNav>
           <TopNavBrand>
             <RazorpayLogo />
           </TopNavBrand>
           <TopNavContent>
-            <p>test</p>
+            <TabNav
+              items={[
+                { title: 'Home', href: '/home', icon: HomeIcon },
+                {
+                  href: '/payroll',
+                  title: 'Payroll',
+                  icon: RazorpayxPayrollIcon,
+                  description: 'Automate payroll with ease.',
+                },
+                {
+                  href: '/payments',
+                  title: 'Payments',
+                  icon: AcceptPaymentsIcon,
+                  description: 'Manage payments effortlessly.',
+                },
+                {
+                  href: '/magic-checkout',
+                  title: 'Magic Checkout',
+                  icon: MagicCheckoutIcon,
+                  description: 'Fast, one-click checkout.',
+                },
+                {
+                  href: '/rize',
+                  title: 'Rize',
+                  icon: AwardIcon,
+                  isAlwaysOverflowing: true,
+                  description: 'Boost your business growth.',
+                },
+              ]}
+            >
+              {({ items, overflowingItems }) => {
+                const activeProduct = overflowingItems.find(
+                  (item) => item.href === selectedProduct,
+                );
+                return (
+                  <>
+                    <TabNavItems>
+                      {items.map((item) => {
+                        return (
+                          <TabNavItemLink
+                            key={item.title}
+                            title={item.title}
+                            href={item.href}
+                            icon={item.icon}
+                          />
+                        );
+                      })}
+                    </TabNavItems>
+                    {overflowingItems.length ? (
+                      <Menu openInteraction="hover">
+                        <TabNavItem
+                          title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
+                          trailing={<ChevronDownIcon />}
+                          isActive={Boolean(activeProduct)}
+                        />
+                        <MenuOverlay>
+                          <MenuHeader
+                            title="Products for you"
+                            trailing={
+                              <Badge emphasis="subtle" color="notice">
+                                Recommended
+                              </Badge>
+                            }
+                          />
+                          {overflowingItems.map((item) => {
+                            return (
+                              <MenuItem
+                                key={item.href}
+                                onClick={() => {
+                                  history.push(item.href!);
+                                  setSelectedProduct(item.href!);
+                                }}
+                              >
+                                <ExploreItem
+                                  icon={item.icon!}
+                                  title={item.title}
+                                  description={item.description!}
+                                />
+                              </MenuItem>
+                            );
+                          })}
+                          <MenuFooter>
+                            <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
+                              View all products
+                            </BladeLink>
+                          </MenuFooter>
+                        </MenuOverlay>
+                      </Menu>
+                    ) : null}
+                  </>
+                );
+              }}
+            </TabNav>
           </TopNavContent>
           <TopNavActions>
             <SearchInput
@@ -482,14 +585,15 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
             <Avatar size="medium" name="Anurag Hazra" />
           </TopNavActions>
         </TopNav>
-        <Box>
-          <Text margin="spacing.5">
-            This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
-            other features & integration details.
-          </Text>
-        </Box>
       </BaseBox>
-    </BaseBox>
+
+      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.intense">
+        <Text margin="spacing.5">
+          This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
+          other features & integration details.
+        </Text>
+      </Box>
+    </DashboardBackground>
   );
 };
 
