@@ -32,7 +32,7 @@ type TabNavItemProps = {
    * ```
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  as?: React.ComponentType<any>;
+  as?: React.ComponentType<any> | 'a' | 'button';
   /**
    * Selected state of the navigation item.
    *
