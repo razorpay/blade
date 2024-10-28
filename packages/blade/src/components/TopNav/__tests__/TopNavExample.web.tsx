@@ -1,9 +1,8 @@
-import { TabNav, TabNavItem } from '../TabNav';
 import { TopNav, TopNavActions, TopNavBrand, TopNavContent } from '../TopNav';
 import { Avatar } from '~components/Avatar';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { ActivityIcon, AnnouncementIcon, HomeIcon } from '~components/Icons';
+import { ActivityIcon, AnnouncementIcon } from '~components/Icons';
 import { RazorpayLogo } from '~components/SideNav/docs/RazorpayLogo';
 import { Tooltip } from '~components/Tooltip';
 
@@ -15,12 +14,7 @@ const TopNavExample = (): React.ReactElement => {
           <RazorpayLogo />
         </TopNavBrand>
         <TopNavContent>
-          <TabNav>
-            <TabNavItem icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-            <TabNavItem href="/payroll">Payroll</TabNavItem>
-            <TabNavItem href="/payments">Payments</TabNavItem>
-            <TabNavItem href="/magic-checkout">Magic Checkout</TabNavItem>
-          </TabNav>
+          <p>hi</p>
         </TopNavContent>
         <TopNavActions>
           <Tooltip content="View Ecosystem Health">

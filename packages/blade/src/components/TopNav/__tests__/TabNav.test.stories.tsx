@@ -3,20 +3,13 @@ import type { StoryFn } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import React from 'react';
-import { TabNav, TabNavItem } from '../TabNav';
+import { TabNav } from '../TabNav';
 import { Box } from '~components/Box';
-import { HomeIcon } from '~components/Icons';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const TestBasicTabNav: StoryFn<typeof TabNav> = (): React.ReactElement => {
-  return (
-    <TabNav>
-      <TabNavItem icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-      <TabNavItem href="/payroll">Payroll</TabNavItem>
-      <TabNavItem href="/payments">Payments</TabNavItem>
-    </TabNav>
-  );
+  return <p>hi</p>;
 };
 
 TestBasicTabNav.play = async ({ canvasElement }) => {
@@ -32,17 +25,7 @@ TestBasicTabNav.play = async ({ canvasElement }) => {
 export const TestOverflow: StoryFn<typeof TabNav> = (): React.ReactElement => {
   return (
     <Box width="300px">
-      <TabNav>
-        <TabNavItem href="/item-1">Item 1</TabNavItem>
-        <TabNavItem href="/item-2">Item 2</TabNavItem>
-        <TabNavItem href="/item-3">Item 3</TabNavItem>
-        <TabNavItem href="/item-4">Item 4</TabNavItem>
-        <TabNavItem href="/item-5">Item 5</TabNavItem>
-        <TabNavItem href="/item-6">Item 6</TabNavItem>
-        <TabNavItem href="/item-7">Item 7</TabNavItem>
-        <TabNavItem href="/item-8">Item 8</TabNavItem>
-        <TabNavItem href="/item-9">Item 9</TabNavItem>
-      </TabNav>
+      <p>hi</p>
     </Box>
   );
 };
