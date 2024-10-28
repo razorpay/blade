@@ -25,13 +25,19 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Theme } from '~components/BladeProvider';
 
+const getTableRowBackgroundTransition = (theme: Theme): string => {
+  const rowBackgroundTransition = `background-color ${makeMotionTime(
+    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
+
+  return rowBackgroundTransition;
+};
+
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
   $showStripedRows: boolean;
 }>(({ theme, $showStripedRows, $isSelectable }) => {
-  const rowBackgroundTransition = `background-color ${makeMotionTime(
-    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
+  const rowBackgroundTransition = getTableRowBackgroundTransition(theme);
 
   return {
     '&&&': {
@@ -321,9 +327,7 @@ const getTableActionsHoverStyles = ({
   backgroundGradientColor?: any;
   theme: Theme;
 }): React.CSSProperties => {
-  const rowBackgroundTransition = `background-color ${makeMotionTime(
-    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
+  const rowBackgroundTransition = getTableRowBackgroundTransition(theme);
 
   return {
     // Solid layer 1 background - should match the table background
@@ -355,10 +359,6 @@ const StyledRow = styled(Row)<{
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
 
-  // const hoverActionsOpacityTransition = `opacity ${makeMotionTime(
-  //   getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  // )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
-
   return {
     '&&&': {
       backgroundColor: 'transparent',
@@ -381,13 +381,16 @@ const StyledRow = styled(Row)<{
                 zIndex: 2,
                 right: 0,
                 width: '0px',
-                // transition: hoverActionsOpacityTransition,
                 '& > div:first-child': {
                   overflow: 'visible',
                 },
               },
-              '& td:last-child:focus': {
+              '& td:last-child:focus-within': {
                 opacity: 1,
+                ...getTableActionsHoverStyles({
+                  theme,
+                  hoverColor: tableRow.nonStripe.backgroundColor,
+                }),
               },
               '&:hover td:last-child': {
                 opacity: 1,
@@ -492,7 +495,6 @@ const _TableRow = <Item,>({
         <TableCell _hasPadding={false}>
           <BaseBox
             className={classes.HOVER_ACTIONS}
-            tabIndex={0}
             position={{ base: 'relative', m: 'absolute' }}
             top="spacing.0"
             right="spacing.0"

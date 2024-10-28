@@ -499,7 +499,6 @@ const _Table = <Item,>({
             </RefreshWrapper>
           )}
           {toolbar}
-          {String(hasHoverActions)}
           <StyledReactTable
             role="table"
             layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
