@@ -39,6 +39,11 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     // reset button styles
     border: 'none',
     background: 'none',
+    '&[aria-expanded="true"]': $isActive
+      ? {}
+      : {
+          backgroundColor: theme.colors.interactive.background.gray.default,
+        },
     '&:hover': $isActive
       ? {}
       : {
@@ -160,7 +165,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
       <SelectedBar isActive={isActive} />
       <StyledTabNavItem
         ref={ref}
-        as={as ?? 'a'}
+        as={as ?? (href ? 'a' : 'button')}
         to={href}
         href={as ? undefined : href}
         target={target}
