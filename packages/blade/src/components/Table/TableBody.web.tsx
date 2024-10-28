@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
 import { useTableContext } from './TableContext';
-import { checkboxCellWidth, tableRow } from './tokens';
+import { checkboxCellWidth, classes, tableBackgroundColor, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
 import type {
   TableProps,
@@ -23,6 +23,8 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { makeGradient } from '~utils/makeGradient';
+import { Theme } from '~components/BladeProvider';
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -46,12 +48,24 @@ const StyledBody = styled(Body)<{
       },
       '& .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base': {
         backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedHover),
+        ...getTableActionsHoverStyling({
+          hoverColor: tableRow.nonStripe.backgroundColorSelectedHover,
+          theme,
+        }),
       },
       '& .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base': {
         backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedFocus),
+        ...getTableActionsHoverStyling({
+          hoverColor: tableRow.nonStripe.backgroundColorSelectedFocus,
+          theme,
+        }),
       },
       '& .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:active:not(.disabled-row) .cell-wrapper-base': {
         backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedActive),
+        ...getTableActionsHoverStyling({
+          hoverColor: tableRow.nonStripe.backgroundColorSelectedActive,
+          theme,
+        }),
       },
 
       ...($isSelectable && {
@@ -104,25 +118,60 @@ const StyledBody = styled(Body)<{
 
           '& tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorHover),
+            ...getTableActionsHoverStyling({
+              hoverColor: tableRow.stripe.backgroundColorHover,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorHover,
+            }),
           },
           '& tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorFocus),
+            ...getTableActionsHoverStyling({
+              hoverColor: tableRow.stripe.backgroundColorFocus,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorFocus,
+            }),
           },
           '& tr:nth-child(even):active:not(.disabled-row) .cell-wrapper-base': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorActive),
+            ...getTableActionsHoverStyling({
+              hoverColor: tableRow.stripe.backgroundColorActive,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorActive,
+            }),
           },
 
           '& .row-select-single-selected:nth-child(even) .cell-wrapper-base, .row-select-selected:nth-child(even) .cell-wrapper-base ': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelected),
+            ...getTableActionsHoverStyling({
+              hoverColor: tableRow.stripe.backgroundColorSelected,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelected,
+            }),
           },
           '& .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base ': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedHover),
+            ...getTableActionsHoverStyling({
+              hoverColor: tableRow.stripe.backgroundColorSelectedHover,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedHover,
+            }),
           },
           '& .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base ': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedFocus),
+            ...getTableActionsHoverStyling({
+              hoverColor: tableRow.stripe.backgroundColorSelectedFocus,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedFocus,
+            }),
           },
           '& .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base ': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedActive),
+            ...getTableActionsHoverStyling({
+              hoverColor: tableRow.stripe.backgroundColorSelectedActive,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedActive,
+            }),
           },
         }),
     },
@@ -261,6 +310,62 @@ const TableCheckboxCell = ({
   );
 };
 
+const makeTableActionsGradient = ({
+  hoverColor,
+  theme,
+  backgroundGradientColor,
+}: {
+  hoverColor: any;
+  backgroundGradientColor: any;
+  theme: Theme;
+}) => {
+  return `${makeGradient(
+    '90deg',
+    theme,
+  )({
+    '0%': 'transparent',
+    '10.08%': hoverColor,
+    '100%': hoverColor,
+  })},${makeGradient(
+    '90deg',
+    theme,
+  )({
+    '0%': 'transparent',
+    '10.08%': backgroundGradientColor ?? tableBackgroundColor,
+    '100%': backgroundGradientColor ?? tableBackgroundColor,
+  })}${
+    // In case of stripped row's hover, there are three layers on colors on top of each other
+    // 1. white background, 2. background of stripped row (alpha color), 3. background of hover of stripped row (another alpha color)
+    // By placing three linear-gradients, we try to match that color
+    backgroundGradientColor
+      ? `, ${makeGradient(
+          '90deg',
+          theme,
+        )({
+          '0%': 'transparent',
+          '10.08%': tableBackgroundColor,
+          '100%': tableBackgroundColor,
+        })}`
+      : ''
+  }`;
+};
+
+const getTableActionsHoverStyling = ({
+  hoverColor,
+  theme,
+  backgroundGradientColor,
+}: {
+  hoverColor: any;
+  backgroundGradientColor?: any;
+  theme: Theme;
+}): React.CSSProperties => {
+  return {
+    [`& .${classes.HOVER_ACTIONS}`]: {
+      background: makeTableActionsGradient({ hoverColor, theme, backgroundGradientColor }),
+    },
+  };
+};
+
 const StyledRow = styled(Row)<{
   $isSelectable: boolean;
   $isHoverable: boolean;
@@ -269,6 +374,10 @@ const StyledRow = styled(Row)<{
   const { hasHoverActions } = useTableContext();
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
+    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
+
+  const hoverActionsOpacityTransition = `opacity ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
 
@@ -294,6 +403,7 @@ const StyledRow = styled(Row)<{
                 zIndex: 2,
                 right: 0,
                 width: '0px',
+                transition: hoverActionsOpacityTransition,
                 '& > div:first-child': {
                   overflow: 'visible',
                 },
@@ -309,6 +419,10 @@ const StyledRow = styled(Row)<{
           transition: rowBackgroundTransition,
           cursor: 'pointer',
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
+          ...getTableActionsHoverStyling({
+            hoverColor: tableRow.nonStripe.backgroundColorHover,
+            theme,
+          }),
         },
       }),
       ...($isSelectable && {
@@ -386,14 +500,14 @@ const _TableRow = <Item,>({
       {hoverActions ? (
         <TableCell _hasPadding={false}>
           <BaseBox
+            className={classes.HOVER_ACTIONS}
             position={{ base: 'relative', m: 'absolute' }}
             top="spacing.0"
             right="spacing.0"
             height="100%"
-            backgroundImage="linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(108, 132, 157, 0.12) 10.08%, rgba(108, 132, 157, 0.12) 100%), linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 10.08%, #FFF 100%)"
             display="flex"
             alignItems="center"
-            paddingLeft="spacing.11"
+            paddingLeft={{ base: 'spacing.4', m: 'spacing.11' }}
             paddingRight="spacing.4"
             gap="spacing.3"
             flexShrink={0}

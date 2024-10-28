@@ -137,6 +137,10 @@ const rowDensityToIsTableInputCellMapping = {
   compact: true,
 };
 
+const classes = {
+  HOVER_ACTIONS: 'hover-actions',
+};
+
 export {
   tableHeader,
   tableFooter,
@@ -150,4 +154,5 @@ export {
   tableEditableCellRowDensityToInputSizeMap,
   validationStateToInputTrailingIconMap,
   rowDensityToIsTableInputCellMapping,
+  classes,
 };

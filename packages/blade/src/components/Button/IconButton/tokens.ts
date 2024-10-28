@@ -7,7 +7,7 @@ const highlightedButtonSizeMap = {
 
 const highlightedHoverColorMap = {
   intense: 'interactive.background.gray.fadedHighlighted',
-  subtle: 'interactive.background.staticWhite.fadedHighlighted',
+  subtle: 'interactive.background.staticWhite.faded',
 } as const;
 
 export { highlightedButtonSizeMap, highlightedHoverColorMap };

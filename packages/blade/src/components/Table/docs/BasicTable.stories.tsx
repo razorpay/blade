@@ -19,7 +19,7 @@ import {
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
-import { Code, Text } from '~components/Typography';
+import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
@@ -112,12 +112,7 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
-    <Box
-      backgroundColor={args.backgroundColor ?? 'surface.background.gray.intense'}
-      padding="spacing.5"
-      overflow="auto"
-      minHeight="400px"
-    >
+    <Box padding="spacing.5" overflow="auto" minHeight="400px">
       <TableComponent
         {...args}
         data={data}
@@ -125,6 +120,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         onSelectionChange={console.log}
         isFirstColumnSticky
         selectionType="multiple"
+        backgroundColor="surface.background.cloud.intense"
+        showStripedRows
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
