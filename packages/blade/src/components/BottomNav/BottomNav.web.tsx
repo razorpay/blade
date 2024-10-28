@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
-import { makeSpace } from '~utils';
+import { makeMotionTime, makeSpace } from '~utils';
 import { componentZIndices } from '~utils/componentZIndices';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
@@ -101,11 +101,19 @@ const StyledBottomNavItem = styled(BaseBox)<{ to?: string }>((props) => {
     border: 'none',
     paddingLeft: makeSpace(props.theme.spacing[0]),
     paddingRight: makeSpace(props.theme.spacing[0]),
+    transition: `color,transform ${makeMotionTime(props.theme.motion.duration['2xquick'])} ${
+      props.theme.motion.easing.standard.effective
+    }`,
+    transform: 'scale(1)',
     '&[aria-current="page"]': {
       color: props.theme.colors.interactive.text.primary.subtle,
     },
     '&:focus-visible': {
       ...getFocusRingStyles({ theme: props.theme }),
+    },
+    '&:active': {
+      // @TODO: confirm this with designers once. Its not part of design currently
+      transform: 'scale(0.95)',
     },
   };
 });
@@ -119,9 +127,12 @@ const BottomNavItem = ({
   icon: Icon,
   testID,
 }: BottomNavItemProps) => {
+  const isRouterLink = as && href;
+  const defaultRenderElement = href ? 'a' : 'button';
+
   return (
     <StyledBottomNavItem
-      as={as ?? href ? 'a' : 'button'}
+      as={isRouterLink ? as : defaultRenderElement}
       href={as ? undefined : href}
       to={href} // for react router
       paddingTop="spacing.5"

@@ -6,7 +6,7 @@ type BottomNavProps = {
   /**
    * children slot of BottomNav, accepts BottomNavItem
    */
-  children: React.ReactElement[];
+  children: React.ReactNode;
 
   /**
    * zIndex of BottomNav

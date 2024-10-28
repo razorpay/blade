@@ -1,7 +1,13 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import iconMap from '~components/Icons/iconMap';
 import { BottomNav, BottomNavItem } from '.';
-import { BusinessBankingIcon, MenuDotsIcon, PaymentGatewayIcon } from '~components/Icons';
+import {
+  PaymentButtonIcon,
+  PaymentGatewayIcon,
+  PaymentLinkIcon,
+  PaymentPagesIcon,
+  TransactionsIcon,
+} from '~components/Icons';
 
 export default {
   title: 'Components/BottomNav/BottomNavItem Playground',
@@ -27,29 +33,48 @@ export default {
   },
 } as Meta<typeof BottomNavItem>;
 
+const bottomNavItems = [
+  {
+    title: 'Payments',
+    href: '/payments',
+    icon: PaymentGatewayIcon,
+  },
+  {
+    title: 'Transactions',
+    href: '/transactions',
+    icon: TransactionsIcon,
+  },
+  {
+    title: 'Links',
+    href: '/payment-links',
+    icon: PaymentLinkIcon,
+  },
+  {
+    title: 'Pages',
+    href: '/payment-pages',
+    icon: PaymentPagesIcon,
+  },
+  {
+    title: 'Buttons',
+    href: '/payment-buttons',
+    icon: PaymentButtonIcon,
+  },
+];
+
 const BottomNavItemTemplate: StoryFn<typeof BottomNavItem> = (args) => {
   return (
     <BottomNav>
-      <BottomNavItem title="Payments" href="/payments" icon={PaymentGatewayIcon} />
       <BottomNavItem {...args} />
-      <BottomNavItem title="Wow" href="/payments" icon={PaymentGatewayIcon} />
-      <BottomNavItem title="Wow" href="/payments" icon={PaymentGatewayIcon} />
-      <BottomNavItem
-        title="More"
-        onClick={() => {
-          console.log('More Clicked');
-        }}
-        icon={MenuDotsIcon}
-      />
+      {bottomNavItems.slice(1).map((item, index) => (
+        <BottomNavItem key={index} {...item} />
+      ))}
     </BottomNav>
   );
 };
 
 export const BottomNavItemPlayground = BottomNavItemTemplate.bind({});
 BottomNavItemPlayground.args = {
-  title: 'Banking',
-  href: '/banking',
-  icon: BusinessBankingIcon,
+  ...bottomNavItems[0],
   isActive: true,
 };
 BottomNavItemPlayground.storyName = 'BottomNavItem Playground';
