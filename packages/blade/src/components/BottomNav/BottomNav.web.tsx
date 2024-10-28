@@ -3,9 +3,12 @@ import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
+import { makeSpace } from '~utils';
+import { componentZIndices } from '~utils/componentZIndices';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BottomNavItemProps, BottomNavProps } from './types';
 
 /**
@@ -48,7 +51,12 @@ import type { BottomNavItemProps, BottomNavProps } from './types';
  * Checkout {@link https://blade.razorpay.com/??path=/docs/components-bottomnav--doc BottomNav Documentation}
 
  */
-const BottomNav = ({ children, ...styledProps }: BottomNavProps) => {
+const BottomNav = ({
+  children,
+  zIndex = componentZIndices.bottomNav,
+  testID,
+  ...styledProps
+}: BottomNavProps) => {
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
     if (childrenCount > 5 && childrenCount < 2) {
@@ -68,10 +76,17 @@ const BottomNav = ({ children, ...styledProps }: BottomNavProps) => {
       elevation="midRaised"
       width="100%"
       backgroundColor="surface.background.gray.intense"
+      borderTopWidth="thin"
+      borderTopColor="surface.border.gray.muted"
       paddingX="spacing.2"
       display="flex"
       flexDirection="row"
       {...getStyledProps(styledProps)}
+      zIndex={zIndex}
+      {...metaAttribute({
+        testID,
+        name: MetaConstants.BottomNav,
+      })}
     >
       {children}
     </BaseBox>
@@ -80,7 +95,12 @@ const BottomNav = ({ children, ...styledProps }: BottomNavProps) => {
 
 const StyledBottomNavItem = styled(BaseBox)<{ to?: string }>((props) => {
   return {
+    textDecoration: 'none',
     color: props.theme.colors.interactive.text.gray.subtle,
+    backgroundColor: 'transparent',
+    border: 'none',
+    paddingLeft: makeSpace(props.theme.spacing[0]),
+    paddingRight: makeSpace(props.theme.spacing[0]),
     '&[aria-current="page"]': {
       color: props.theme.colors.interactive.text.primary.subtle,
     },
@@ -90,7 +110,15 @@ const StyledBottomNavItem = styled(BaseBox)<{ to?: string }>((props) => {
   };
 });
 
-const BottomNavItem = ({ title, href, as, isActive, onClick, icon: Icon }: BottomNavItemProps) => {
+const BottomNavItem = ({
+  title,
+  href,
+  as,
+  isActive,
+  onClick,
+  icon: Icon,
+  testID,
+}: BottomNavItemProps) => {
   return (
     <StyledBottomNavItem
       as={as ?? href ? 'a' : 'button'}
@@ -104,12 +132,17 @@ const BottomNavItem = ({ title, href, as, isActive, onClick, icon: Icon }: Botto
       flexDirection="column"
       flex="1"
       cursor="pointer"
+      onClick={onClick}
+      gap="spacing.1"
       {...makeAccessible({
         current: isActive ? 'page' : undefined,
       })}
-      onClick={onClick}
+      {...metaAttribute({
+        name: MetaConstants.BottomNavItem,
+        testID,
+      })}
     >
-      <Icon color="currentColor" />
+      <Icon color="currentColor" size="large" />
       <Text truncateAfterLines={1} color="currentColor" size="xsmall" weight="semibold">
         {title}
       </Text>

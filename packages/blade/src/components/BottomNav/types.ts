@@ -7,6 +7,13 @@ type BottomNavProps = {
    * children slot of BottomNav, accepts BottomNavItem
    */
   children: React.ReactElement[];
+
+  /**
+   * zIndex of BottomNav
+   *
+   * @default 100
+   */
+  zIndex?: number;
 } & StyledPropsBlade &
   TestID;
 
@@ -53,6 +60,6 @@ type BottomNavItemProps = {
    * onClick handler of BottomNavItem
    */
   onClick?: () => void;
-};
+} & TestID;
 
 export type { BottomNavItemProps, BottomNavProps };

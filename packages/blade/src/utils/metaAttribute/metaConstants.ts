@@ -20,6 +20,8 @@ export const MetaConstants = {
   ButtonGroup: 'button-group',
   Breadcrumb: 'breadcrumb',
   BreadcrumbItem: 'breadcrumb-item',
+  BottomNav: 'bottomnav',
+  BottomNavItem: 'bottomnav-item',
   Carousel: 'carousel',
   Checkbox: 'checkbox',
   CheckboxGroup: 'checkbox-group',
