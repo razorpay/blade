@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { BottomNavItemProps, BottomNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
@@ -9,7 +10,6 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BottomNavItemProps, BottomNavProps } from './types';
 
 /**
  * ### BottomNav component
@@ -56,7 +56,7 @@ const BottomNav = ({
   zIndex = componentZIndices.bottomNav,
   testID,
   ...styledProps
-}: BottomNavProps) => {
+}: BottomNavProps): React.ReactElement => {
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
     if (childrenCount > 5 && childrenCount < 2) {
@@ -126,7 +126,7 @@ const BottomNavItem = ({
   onClick,
   icon: Icon,
   testID,
-}: BottomNavItemProps) => {
+}: BottomNavItemProps): React.ReactElement => {
   const isRouterLink = as && href;
   const defaultRenderElement = href ? 'a' : 'button';
 

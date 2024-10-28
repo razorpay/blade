@@ -1,13 +1,16 @@
+import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { NavLink, matchPath, Route, Switch, useLocation } from 'react-router-dom';
+import { BottomNav, BottomNavItem } from '.';
+import type { BottomNavItemProps, BottomNavProps } from '.';
+import { bottomNavWithReactRouter } from './docsCode';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import type { SideNavLinkProps } from '~components/SideNav';
 import { SideNav, SideNavBody, SideNavLink } from '~components/SideNav';
-import { BottomNav, BottomNavItem, BottomNavItemProps, BottomNavProps } from '.';
 import {
   CurrentAccountIcon,
   HomeIcon,
@@ -21,8 +24,6 @@ import {
 } from '~components/Icons';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
-import React from 'react';
-import { bottomNavWithReactRouter } from './docsCode';
 import { Alert } from '~components/Alert';
 
 const Page = (): React.ReactElement => {
@@ -116,6 +117,7 @@ const sideNavItems = [
   },
 ];
 
+// eslint-disable-next-line
 const SamplePage = ({ match }: { match: any }): React.ReactElement => (
   <Box padding={{ base: 'spacing.2', m: 'spacing.6' }}>
     <pre>
@@ -230,7 +232,7 @@ SimpleBottomNav.args = {};
 export const WithRouting = WithRoutingTemplate.bind({});
 WithRouting.args = {};
 
-export const ItemsCount = () => {
+export const ItemsCount = (): React.ReactElement => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.10">
       <Box>
