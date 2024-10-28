@@ -21,7 +21,6 @@ import {
 } from '~components/SideNav';
 import type { IconComponent } from '~components/Icons';
 import {
-  ChevronUpIcon,
   SearchIcon,
   AcceptPaymentsIcon,
   AwardIcon,
@@ -229,7 +228,6 @@ const TopNavFullExample = () => {
   const { matchedBreakpoint } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isTablet = matchedBreakpoint === 'm';
   const isMobile = matchedBreakpoint === 's';
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
@@ -329,16 +327,10 @@ const TopNavFullExample = () => {
                           })}
                         </TabNavItems>
                         {overflowingItems.length ? (
-                          <Menu
-                            openInteraction="hover"
-                            isOpen={isMenuOpen}
-                            onOpenChange={({ isOpen }) => {
-                              setIsMenuOpen(isOpen);
-                            }}
-                          >
+                          <Menu openInteraction="hover">
                             <TabNavItem
                               title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
-                              trailing={isMenuOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                              trailing={<ChevronDownIcon />}
                               isActive={Boolean(activeProduct)}
                             />
                             <MenuOverlay>
