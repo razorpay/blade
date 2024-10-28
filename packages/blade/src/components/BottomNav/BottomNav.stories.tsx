@@ -3,8 +3,16 @@ import { Title } from '@storybook/addon-docs';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { BottomNav, BottomNavItem } from '.';
-import { MenuDotsIcon, PaymentGatewayIcon } from '~components/Icons';
+import { BottomNav, BottomNavItem, BottomNavProps } from '.';
+import {
+  MenuDotsIcon,
+  PaymentGatewayIcon,
+  PaymentLinkIcon,
+  PaymentPagesIcon,
+  TransactionsIcon,
+} from '~components/Icons';
+import { Box } from '~components/Box';
+import { Heading } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
   return (
@@ -48,23 +56,73 @@ export default {
   },
 } as Meta<typeof BottomNav>;
 
-const BottomNavTemplate: StoryFn<typeof BottomNav> = ({ children, ...args }) => {
+const bottomNavItems = [
+  {
+    title: 'Payments',
+    href: '/payments',
+    icon: PaymentGatewayIcon,
+  },
+  {
+    title: 'Transactions',
+    href: '/transactions',
+    icon: TransactionsIcon,
+    isActive: true,
+  },
+  {
+    title: 'Links',
+    href: '/payment-links',
+    icon: PaymentLinkIcon,
+  },
+  {
+    title: 'Pages',
+    href: '/payment-pages',
+    icon: PaymentPagesIcon,
+  },
+  {
+    title: 'More',
+    onClick: () => console.log('More Clicked'),
+    icon: MenuDotsIcon,
+  },
+];
+
+const BottomNavTemplate: StoryFn<BottomNavProps> = ({ children, ...args }) => {
   return (
-    <BottomNav>
-      <BottomNavItem title="Payments" href="/payments" icon={PaymentGatewayIcon} />
-      <BottomNavItem isActive title="Banking" href="/payments" icon={PaymentGatewayIcon} />
-      <BottomNavItem title="Wow" href="/payments" icon={PaymentGatewayIcon} />
-      <BottomNavItem title="Wow" href="/payments" icon={PaymentGatewayIcon} />
-      <BottomNavItem
-        title="More"
-        onClick={() => {
-          console.log('More Clicked');
-        }}
-        icon={MenuDotsIcon}
-      />
+    <BottomNav {...args}>
+      {children ?? bottomNavItems.map((item, index) => <BottomNavItem key={index} {...item} />)}
     </BottomNav>
   );
 };
 
 export const Default = BottomNavTemplate.bind({});
 Default.args = {};
+
+export const ItemsSink = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.10">
+      <Box>
+        <Heading>2 Items</Heading>
+        <BottomNav position="relative">
+          {bottomNavItems.slice(0, 2).map((item, index) => (
+            <BottomNavItem key={index} {...item} />
+          ))}
+        </BottomNav>
+      </Box>
+      <Box>
+        <Heading>4 Items</Heading>
+        <BottomNav position="relative">
+          {bottomNavItems.slice(0, 4).map((item, index) => (
+            <BottomNavItem key={index} {...item} />
+          ))}
+        </BottomNav>
+      </Box>
+      <Box>
+        <Heading>Max Items</Heading>
+        <BottomNav position="relative">
+          {bottomNavItems.map((item, index) => (
+            <BottomNavItem key={index} {...item} />
+          ))}
+        </BottomNav>
+      </Box>
+    </Box>
+  );
+};
