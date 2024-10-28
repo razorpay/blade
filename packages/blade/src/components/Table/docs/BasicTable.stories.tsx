@@ -120,8 +120,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         onSelectionChange={console.log}
         isFirstColumnSticky
         selectionType="multiple"
-        backgroundColor="surface.background.cloud.intense"
-        showStripedRows
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
