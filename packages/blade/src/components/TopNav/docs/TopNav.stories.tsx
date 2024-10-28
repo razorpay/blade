@@ -21,6 +21,8 @@ import {
 } from '~components/SideNav';
 import type { IconComponent } from '~components/Icons';
 import {
+  ChevronUpIcon,
+  SearchIcon,
   AcceptPaymentsIcon,
   AwardIcon,
   MagicCheckoutIcon,
@@ -41,7 +43,6 @@ import { SearchInput } from '~components/Input/SearchInput';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
-import { useIsMobile } from '~utils/useIsMobile';
 import { Heading, Text } from '~components/Typography';
 import { Menu, MenuFooter, MenuHeader, MenuItem, MenuOverlay } from '~components/Menu';
 import { Link as BladeLink } from '~components/Link';
@@ -51,7 +52,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 import { Alert } from '~components/Alert';
 import { List, ListItem } from '~components/List';
-import { makeSize } from '~utils';
+import { makeSize, useBreakpoint, useTheme } from '~utils';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
@@ -223,8 +224,12 @@ const DashboardBackground = styled.div(() => {
 });
 
 const TopNavFullExample = () => {
-  const isMobile = useIsMobile();
   const history = useHistory();
+  const { theme } = useTheme();
+  const { matchedBreakpoint } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isTablet = matchedBreakpoint === 'm';
+  const isMobile = matchedBreakpoint === 's';
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
@@ -324,10 +329,16 @@ const TopNavFullExample = () => {
                           })}
                         </TabNavItems>
                         {overflowingItems.length ? (
-                          <Menu openInteraction="hover">
+                          <Menu
+                            openInteraction="hover"
+                            isOpen={isMenuOpen}
+                            onOpenChange={({ isOpen }) => {
+                              setIsMenuOpen(isOpen);
+                            }}
+                          >
                             <TabNavItem
                               title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
-                              trailing={<ChevronDownIcon />}
+                              trailing={isMenuOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
                               isActive={Boolean(activeProduct)}
                             />
                             <MenuOverlay>
@@ -370,10 +381,20 @@ const TopNavFullExample = () => {
                 </TabNav>
               </TopNavContent>
               <TopNavActions>
-                <SearchInput
-                  placeholder="Search in payments"
-                  accessibilityLabel="Search Across Razorpay"
-                />
+                {isTablet ? (
+                  <Tooltip content="Search in payments">
+                    <Button
+                      size={isMobile ? 'small' : 'medium'}
+                      variant="tertiary"
+                      icon={SearchIcon}
+                    />
+                  </Tooltip>
+                ) : (
+                  <SearchInput
+                    placeholder="Search in payments"
+                    accessibilityLabel="Search Across Razorpay"
+                  />
+                )}
                 <Tooltip content="View Ecosystem Health">
                   <Button
                     size={isMobile ? 'small' : 'medium'}
@@ -447,7 +468,8 @@ const TopNavFullExample = () => {
               backgroundColor="surface.background.gray.intense"
             >
               <Box width={{ base: 'max-content', m: '100%' }} height="200vh">
-                <Text marginBottom="spacing.4">This demo integrates:</Text>
+                <Text weight="semibold">Active URL: {activeUrl}</Text>
+                <Text marginY="spacing.4">This demo integrates:</Text>
                 <List>
                   <ListItem>SideNav</ListItem>
                   <ListItem>Menu (Explore Tab)</ListItem>

@@ -39,6 +39,11 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     // reset button styles
     border: 'none',
     background: 'none',
+    '&[aria-expanded="true"]': $isActive
+      ? {}
+      : {
+          backgroundColor: theme.colors.interactive.background.gray.default,
+        },
     '&:hover': $isActive
       ? {}
       : {
