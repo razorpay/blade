@@ -318,7 +318,6 @@ const TopNavFullExample = () => {
                         {overflowingItems.length ? (
                           <Menu openInteraction="hover">
                             <TabNavItem
-                              as="button"
                               title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
                               trailing={<ChevronDownIcon />}
                               isActive={Boolean(activeProduct)}

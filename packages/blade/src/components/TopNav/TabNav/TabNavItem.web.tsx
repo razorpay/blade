@@ -160,7 +160,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
       <SelectedBar isActive={isActive} />
       <StyledTabNavItem
         ref={ref}
-        as={as ?? 'a'}
+        as={as ?? (href ? 'a' : 'button')}
         to={href}
         href={as ? undefined : href}
         target={target}
