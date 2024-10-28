@@ -7,4 +7,5 @@ export const componentZIndices = {
   tourMask: 1100,
   popover: 1100,
   tooltip: 1100,
+  topnav: 100,
 };

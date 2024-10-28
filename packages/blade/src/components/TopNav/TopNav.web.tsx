@@ -10,6 +10,7 @@ import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const TOP_NAV_HEIGHT = size[56];
 const CONTENT_RIGHT_GAP = size[80];
@@ -36,7 +37,7 @@ type TopNavProps = {
 > &
   StyledPropsBlade;
 
-const TopNav = ({ children, ...styledProps }: TopNavProps): React.ReactElement => {
+const TopNav = ({ children, ...boxProps }: TopNavProps): React.ReactElement => {
   return (
     <Box
       display="grid"
@@ -48,8 +49,8 @@ const TopNav = ({ children, ...styledProps }: TopNavProps): React.ReactElement =
       paddingY={{ base: 'spacing.3', m: 'spacing.0' }}
       paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
       height={makeSize(TOP_NAV_HEIGHT)}
-      zIndex={1}
-      {...styledProps}
+      zIndex={componentZIndices.topnav}
+      {...boxProps}
       {...metaAttribute({ name: MetaConstants.TopNav })}
     >
       {children}
