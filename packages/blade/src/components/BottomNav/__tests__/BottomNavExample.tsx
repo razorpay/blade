@@ -74,7 +74,7 @@ const BottomNavExample = ({
         {bottomNavItems.map((item, index) => (
           <BottomNavRouterItem key={index} {...item} />
         ))}
-        <BottomNavItem title="More" icon={MenuDotsIcon} onClick={moreClick} />
+        <BottomNavItem title="More" icon={MenuDotsIcon} onClick={moreClick as never} />
       </BottomNav>
     </MemoryRouter>
   );
