@@ -1,5 +1,6 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
+import { LinkProps } from '~components/Link';
 import type { TestID } from '~utils/types';
 
 type BottomNavProps = {
@@ -35,7 +36,17 @@ type BottomNavItemProps = {
    *
    * maps to `to` property when react router is being used
    */
-  href?: string;
+  href?: LinkProps['href'];
+
+  /**
+   * HTML's `target` attribute for anchor links
+   */
+  target?: LinkProps['target'];
+
+  /**
+   * HTML's `rel` tag of anchor links
+   */
+  rel?: LinkProps['rel'];
 
   /**
    * as prop to pass ReactRouter's Link component.

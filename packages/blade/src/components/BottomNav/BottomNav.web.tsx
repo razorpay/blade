@@ -121,6 +121,8 @@ const StyledBottomNavItem = styled(BaseBox)<{ to?: string }>((props) => {
 const BottomNavItem = ({
   title,
   href,
+  rel,
+  target,
   as,
   isActive,
   onClick,
@@ -129,12 +131,15 @@ const BottomNavItem = ({
 }: BottomNavItemProps): React.ReactElement => {
   const isRouterLink = as && href;
   const defaultRenderElement = href ? 'a' : 'button';
+  const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
 
   return (
     <StyledBottomNavItem
       as={isRouterLink ? as : defaultRenderElement}
       href={as ? undefined : href}
       to={href} // for react router
+      rel={rel ?? defaultRel}
+      target={target}
       paddingTop="spacing.5"
       paddingBottom="spacing.4"
       display="flex"
