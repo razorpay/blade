@@ -1,5 +1,14 @@
 # @razorpay/blade
 
+## 11.32.0
+
+### Minor Changes
+
+- a4a61681: feat(blade): revamped top-nav component
+
+  > NOTE:
+  > This might be a breaking change for you, if your project uses the older deprecated TopNav.
+
 ## 11.31.2
 
 ### Patch Changes
