@@ -262,7 +262,7 @@ const CustomOverlayMenuTemplate: StoryFn<MenuProps> = (args) => {
           </MenuOverlay>
         </Menu>
 
-        <Menu>
+        <Menu {...args}>
           <MenuTrigger>Banking+</MenuTrigger>
           <MenuOverlay>
             <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap="spacing.3">
