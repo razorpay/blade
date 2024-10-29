@@ -530,7 +530,7 @@ exports[`TopNav should render 1`] = `
             >
               <div
                 class="c8"
-                data-blade-component="base-box"
+                data-blade-component="box"
               >
                 <div
                   class=" c9"

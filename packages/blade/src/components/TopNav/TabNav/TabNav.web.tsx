@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import { TabNavContext } from './TabNavContext';
 import { useResize } from './utils';
 import type { TabNavDataItem, TabNavProps } from './types';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -13,10 +12,12 @@ import { Divider } from '~components/Divider';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BoxProps } from '~components/Box';
+import { Box } from '~components/Box';
 
-const TabNavItems = ({ children, ...props }: BaseBoxProps): React.ReactElement => {
+const TabNavItems = ({ children, ...props }: BoxProps): React.ReactElement => {
   return (
-    <BaseBox {...props} display="flex" width="100%" gap="spacing.0" position="relative" left="-1px">
+    <Box {...props} display="flex" width="100%" gap="spacing.0" position="relative" left="-1px">
       {React.Children.map(children, (child, index) => {
         return (
           <>
@@ -36,7 +37,7 @@ const TabNavItems = ({ children, ...props }: BaseBoxProps): React.ReactElement =
         );
       })}
       <Divider margin="auto" variant="muted" orientation="vertical" height={makeSize(size[16])} />
-    </BaseBox>
+    </Box>
   );
 };
 
