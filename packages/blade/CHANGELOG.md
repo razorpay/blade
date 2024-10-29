@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.33.0
+
+### Minor Changes
+
+- e35355af: feat(Table): add hover actions support on `TableRow`
+
 ## 11.32.0
 
 ### Minor Changes
