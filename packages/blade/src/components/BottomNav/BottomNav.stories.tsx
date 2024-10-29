@@ -3,9 +3,9 @@ import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { NavLink, matchPath, Route, Switch, useLocation } from 'react-router-dom';
+import { bottomNavWithReactRouter } from './docsCode';
 import { BottomNav, BottomNavItem } from '.';
 import type { BottomNavItemProps, BottomNavProps } from '.';
-import { bottomNavWithReactRouter } from './docsCode';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -239,6 +239,14 @@ export const ItemsCount = (): React.ReactElement => {
         <Heading>2 Items</Heading>
         <BottomNav position="relative">
           {bottomNavItems.slice(0, 2).map((item, index) => (
+            <BottomNavItem key={index} {...item} />
+          ))}
+        </BottomNav>
+      </Box>
+      <Box>
+        <Heading>3 Items</Heading>
+        <BottomNav position="relative">
+          {bottomNavItems.slice(0, 3).map((item, index) => (
             <BottomNavItem key={index} {...item} />
           ))}
         </BottomNav>

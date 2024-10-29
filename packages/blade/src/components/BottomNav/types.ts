@@ -1,6 +1,6 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
-import { LinkProps } from '~components/Link';
+import type { LinkProps } from '~components/Link';
 import type { TestID } from '~utils/types';
 
 type BottomNavProps = {

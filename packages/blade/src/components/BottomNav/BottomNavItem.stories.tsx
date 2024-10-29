@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import iconMap from '~components/Icons/iconMap';
 import { BottomNav, BottomNavItem } from '.';
+import iconMap from '~components/Icons/iconMap';
 import {
   PaymentButtonIcon,
   PaymentGatewayIcon,
