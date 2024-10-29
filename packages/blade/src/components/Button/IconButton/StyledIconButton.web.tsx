@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { StyledIconButtonProps } from './types';
+import { highlightedButtonSizeMap, highlightedHoverColorMap } from './tokens';
 import { castWebType, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
@@ -11,7 +12,6 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
 import getIn from '~utils/lodashButBetter/get';
-import { highlightedButtonSizeMap, highlightedHoverColorMap } from './tokens';
 
 type StyledButtonProps = {
   emphasis: SubtleOrIntense;
