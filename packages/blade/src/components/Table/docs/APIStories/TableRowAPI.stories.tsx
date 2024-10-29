@@ -9,6 +9,7 @@ import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Link } from '~components/Link';
 import { CopyIcon, TrashIcon } from '~components/Icons';
+import { IconButton } from '~components/Button/IconButton';
 
 export default {
   title: 'Components/Table/API',
@@ -100,7 +101,27 @@ const TableTemplate: StoryFn<typeof TableRow> = ({ ...args }) => {
             <TableBody>
               {tableData.map((tableItem, index) => {
                 return (
-                  <TableRow key={index} {...args} item={tableItem}>
+                  <TableRow
+                    key={index}
+                    {...args}
+                    item={tableItem}
+                    hoverActions={
+                      <>
+                        <IconButton
+                          accessibilityLabel="Copy"
+                          isHighlighted
+                          icon={CopyIcon}
+                          onClick={() => console.log('copy', tableItem)}
+                        />
+                        <IconButton
+                          accessibilityLabel="Delete"
+                          isHighlighted
+                          icon={TrashIcon}
+                          onClick={() => console.log('delete', tableItem)}
+                        />
+                      </>
+                    }
+                  >
                     <TableCell>
                       <Code size="medium">{tableItem.paymentId}</Code>
                     </TableCell>

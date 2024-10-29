@@ -89,7 +89,8 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $isSortable: boolean;
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
-}>(({ theme, $isSortable, $backgroundColor, $rowDensity }) => ({
+  $hasPadding: boolean;
+}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
@@ -107,15 +108,23 @@ const StyledHeaderCell = styled(HeaderCell)<{
       justifyContent: 'space-between',
       alignItems: 'center',
       height: '100%',
-      paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[$rowDensity])),
-      paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[$rowDensity])),
+      paddingLeft: $hasPadding
+        ? makeSpace(getIn(theme, tableRow.paddingLeft[$rowDensity]))
+        : undefined,
+      paddingRight: $hasPadding
+        ? makeSpace(getIn(theme, tableRow.paddingRight[$rowDensity]))
+        : undefined,
       minHeight: makeSize(getIn(size, tableRow.minHeight[$rowDensity])),
     },
     '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
   },
 }));
 
-const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
+const _TableHeaderCell = ({
+  children,
+  headerKey,
+  _hasPadding = true,
+}: TableHeaderCellProps): React.ReactElement => {
   const {
     toggleSort,
     currentSortedState,
@@ -132,6 +141,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
       $isSortable={isSortable}
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}
+      $hasPadding={_hasPadding}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);
@@ -211,6 +221,7 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
     toggleAllRowsSelection,
     setHeaderRowDensity,
     showBorderedCells,
+    hasHoverActions,
   } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
@@ -234,6 +245,7 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
         />
       )}
       {children}
+      {hasHoverActions ? <TableHeaderCell _hasPadding={false}>Actions</TableHeaderCell> : null}
     </StyledHeaderRow>
   );
 };

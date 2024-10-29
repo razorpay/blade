@@ -363,8 +363,9 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c22.c22.c22.c22.c22:hover {
+.c22.c22.c22.c22.c22:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c22.c22.c22.c22.c22:focus-visible {

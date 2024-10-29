@@ -23,6 +23,8 @@ import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
+import { IconButton } from '~components/Button/IconButton';
+import { CheckIcon, CloseIcon } from '~components/Icons';
 
 export default {
   title: 'Components/Table',
@@ -110,17 +112,14 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
-    <Box
-      backgroundColor={args.backgroundColor ?? 'surface.background.gray.intense'}
-      padding="spacing.5"
-      overflow="auto"
-      minHeight="400px"
-    >
+    <Box padding="spacing.5" overflow="auto" minHeight="400px">
       <TableComponent
         {...args}
         data={data}
         defaultSelectedIds={['1', '3']}
         onSelectionChange={console.log}
+        isFirstColumnSticky
+        selectionType="single"
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
@@ -162,7 +161,36 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
             </TableHeader>
             <TableBody>
               {tableData.map((tableItem, index) => (
-                <TableRow key={index} item={tableItem}>
+                <TableRow
+                  key={index}
+                  item={tableItem}
+                  hoverActions={
+                    <>
+                      <Button variant="tertiary" size="xsmall">
+                        View Details
+                      </Button>
+                      <IconButton
+                        icon={CheckIcon}
+                        isHighlighted
+                        accessibilityLabel="Approve"
+                        onClick={() => {
+                          console.log('Approved', tableItem.id);
+                        }}
+                      />
+                      <IconButton
+                        icon={CloseIcon}
+                        isHighlighted
+                        accessibilityLabel="Reject"
+                        onClick={() => {
+                          console.log('Rejected', tableItem.id);
+                        }}
+                      />
+                    </>
+                  }
+                  onClick={() => {
+                    console.log('where');
+                  }}
+                >
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
