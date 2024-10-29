@@ -232,12 +232,13 @@ const _Table = <Item,>({
       theme.colors.surface.border.gray.muted
     };
     --data-table-library_grid-template-columns: ${
-      gridTemplateColumns ??
-      ` ${
-        selectionType === 'multiple' ? 'min-content' : ''
-      } repeat(${columnCount},minmax(100px, 1fr)) ${
-        hasHoverActions ? lastHoverActionsColWidth : ''
-      } !important;`
+      gridTemplateColumns
+        ? `${gridTemplateColumns} ${hasHoverActions ? lastHoverActionsColWidth : ''}`
+        : ` ${
+            selectionType === 'multiple' ? 'min-content' : ''
+          } repeat(${columnCount},minmax(100px, 1fr)) ${
+            hasHoverActions ? lastHoverActionsColWidth : ''
+          } !important;`
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,
