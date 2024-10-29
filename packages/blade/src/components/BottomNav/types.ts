@@ -1,6 +1,8 @@
+import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
+import { Platform } from '~utils';
 import type { TestID } from '~utils/types';
 
 type BottomNavProps = {
@@ -70,7 +72,7 @@ type BottomNavItemProps = {
   /**
    * onClick handler of BottomNavItem
    */
-  onClick?: () => void;
+  onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
 } & TestID;
 
 export type { BottomNavItemProps, BottomNavProps };
