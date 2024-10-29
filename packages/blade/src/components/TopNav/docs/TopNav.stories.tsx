@@ -225,9 +225,11 @@ const DashboardBackground = styled.div(() => {
 const TopNavFullExample = () => {
   const history = useHistory();
   const { theme } = useTheme();
-  const { matchedBreakpoint } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const { matchedBreakpoint, matchedDeviceType } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
   const isTablet = matchedBreakpoint === 'm';
-  const isMobile = matchedBreakpoint === 's';
+  const isMobile = matchedDeviceType === 'mobile';
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
