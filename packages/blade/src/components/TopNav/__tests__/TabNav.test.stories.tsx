@@ -136,10 +136,13 @@ TestOverflow.play = async ({ canvasElement }) => {
   await sleep(500);
   await expect(queryByRole('menu', { name: 'More' })).toBeVisible();
   await expect(queryByRole('menuitem', { name: 'Rize' })).toBeVisible();
+  await expect(queryByRole('link', { name: 'Magic Checkout' })).toBeNull();
   await expect(queryByRole('menuitem', { name: 'Magic Checkout' })).toBeVisible();
 
   canvasElement.style.width = '300px';
   await sleep(500);
+  await expect(queryByRole('link', { name: 'Payroll' })).toBeNull();
+  await expect(queryByRole('link', { name: 'Payments' })).toBeNull();
   await expect(queryByRole('menuitem', { name: 'Payroll' })).toBeVisible();
   await expect(queryByRole('menuitem', { name: 'Payments' })).toBeVisible();
 
