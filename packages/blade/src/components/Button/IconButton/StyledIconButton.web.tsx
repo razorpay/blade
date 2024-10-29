@@ -31,7 +31,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
         moduleName: 'IconButton',
         message: 'size large is not allowed with isHighlighted true',
       });
-      return;
+      return null;
     }
   }
 

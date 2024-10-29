@@ -11,7 +11,8 @@ import type {
   TableCellProps,
   TableBackgroundColors,
 } from './types';
-import getIn, { DotNotationToken } from '~utils/lodashButBetter/get';
+import getIn from '~utils/lodashButBetter/get';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -23,7 +24,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { Theme } from '~components/BladeProvider';
+import type { Theme } from '~components/BladeProvider';
 
 const getTableRowBackgroundTransition = (theme: Theme): string => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
