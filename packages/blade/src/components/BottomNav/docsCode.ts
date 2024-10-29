@@ -104,14 +104,13 @@ export const bottomNavWithReactRouter = {
   export const bottomNavItems = [
     {
       title: 'Payments',
-      href: '/payments',
+      href: '/',
       icon: PaymentGatewayIcon,
     },
     {
       title: 'Transactions',
       href: '/transactions',
       icon: TransactionsIcon,
-      isActive: true,
     },
     {
       title: 'Links',
