@@ -199,8 +199,9 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16:hover {
+.c16.c16.c16.c16.c16:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c16.c16.c16.c16.c16:focus-visible {
@@ -1077,8 +1078,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c24.c24.c24.c24.c24:hover {
+.c24.c24.c24.c24.c24:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c24.c24.c24.c24.c24:focus-visible {
@@ -1804,8 +1806,9 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:hover {
+.c8.c8.c8.c8.c8:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
