@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { TabNavContext } from './TabNavContext';
 import { useResize } from './utils';
-import type { TabNavDataItem, TabNavProps } from './types';
+import type { TabNavItemData, TabNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -47,7 +47,7 @@ const TabNav = ({
   ...styledProps
 }: TabNavProps & StyledPropsBlade): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const [controlledItems, setControlledItems] = React.useState<TabNavDataItem[]>(items);
+  const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
   const overflowingItems = controlledItems.filter(
     (item) => item.isAlwaysOverflowing ?? item.isOverflowing,

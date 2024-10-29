@@ -1,11 +1,11 @@
 import React from 'react';
-import type { TabNavDataItem } from './types';
+import type { TabNavItemData } from './types';
 import { throwBladeError } from '~utils/logger';
 
 type TabNavContextProps = {
   containerRef: React.RefObject<HTMLDivElement>;
-  controlledItems: TabNavDataItem[];
-  setControlledItems: React.Dispatch<React.SetStateAction<TabNavDataItem[]>>;
+  controlledItems: TabNavItemData[];
+  setControlledItems: React.Dispatch<React.SetStateAction<TabNavItemData[]>>;
 };
 const TabNavContext = React.createContext<TabNavContextProps | null>(null);
 

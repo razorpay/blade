@@ -65,7 +65,7 @@ type Item = TabNavItemProps & {
   description?: string;
   isAlwaysOverflowing?: boolean;
 };
-type TabNavDataItem = Item & {
+type TabNavItemData = Item & {
   isOverflowing?: boolean;
   tabWidth?: number;
   offsetX?: number;
@@ -73,9 +73,9 @@ type TabNavDataItem = Item & {
 type TabNavProps = {
   items: Item[];
   children: (props: {
-    items: TabNavDataItem[];
-    overflowingItems: TabNavDataItem[];
+    items: TabNavItemData[];
+    overflowingItems: TabNavItemData[];
   }) => React.ReactElement;
 };
 
-export type { TabNavItemProps, TabNavDataItem, TabNavProps };
+export type { TabNavItemProps, TabNavItemData, TabNavProps };
