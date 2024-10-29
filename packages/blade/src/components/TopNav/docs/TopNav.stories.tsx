@@ -603,7 +603,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
         </TopNav>
       </BaseBox>
 
-      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.intense">
+      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.intense" height="100%">
         <Text margin="spacing.5">
           This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
           other features & integration details.
