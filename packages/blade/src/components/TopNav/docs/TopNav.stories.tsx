@@ -24,7 +24,7 @@ import {
   SearchIcon,
   AcceptPaymentsIcon,
   AwardIcon,
-  MagicCheckoutIcon,
+  ShoppingBagIcon,
   ChevronDownIcon,
   ActivityIcon,
   AnnouncementIcon,
@@ -296,7 +296,7 @@ const TopNavFullExample = () => {
                     {
                       href: '/magic-checkout',
                       title: 'Magic Checkout',
-                      icon: MagicCheckoutIcon,
+                      icon: ShoppingBagIcon,
                       description: 'Fast, one-click checkout.',
                     },
                     {
@@ -509,7 +509,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                 {
                   href: '/magic-checkout',
                   title: 'Magic Checkout',
-                  icon: MagicCheckoutIcon,
+                  icon: ShoppingBagIcon,
                   description: 'Fast, one-click checkout.',
                 },
                 {
