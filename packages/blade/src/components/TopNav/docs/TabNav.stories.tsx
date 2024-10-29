@@ -13,7 +13,7 @@ import {
   AwardIcon,
   ChevronDownIcon,
   HomeIcon,
-  MagicCheckoutIcon,
+  ShoppingBagIcon,
 } from '~components/Icons';
 import { Menu, MenuItem, MenuOverlay } from '~components/Menu';
 import { Badge } from '~components/Badge';
@@ -199,7 +199,7 @@ const TabNavTemplate: StoryFn<any> = (
           {
             href: '/magic-checkout',
             title: 'Magic Checkout',
-            icon: MagicCheckoutIcon,
+            icon: ShoppingBagIcon,
             description: 'Fast, one-click checkout.',
           },
           {
