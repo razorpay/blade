@@ -101,19 +101,14 @@ const StyledBottomNavItem = styled(BaseBox)<{ to?: string }>((props) => {
     border: 'none',
     paddingLeft: makeSpace(props.theme.spacing[0]),
     paddingRight: makeSpace(props.theme.spacing[0]),
-    transition: `color,transform ${makeMotionTime(props.theme.motion.duration['2xquick'])} ${
+    transition: `color ${makeMotionTime(props.theme.motion.duration['2xquick'])} ${
       props.theme.motion.easing.standard.effective
     }`,
-    transform: 'scale(1)',
     '&[aria-current="page"]': {
       color: props.theme.colors.interactive.text.primary.subtle,
     },
     '&:focus-visible': {
       ...getFocusRingStyles({ theme: props.theme }),
-    },
-    '&:active': {
-      // @TODO: confirm this with designers once. Its not part of design currently
-      transform: 'scale(0.95)',
     },
   };
 });
