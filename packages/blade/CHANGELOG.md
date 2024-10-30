@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 11.34.0
+
+### Minor Changes
+
+- b63190b0: feat(BottomNav): add BottomNav component
+
+### Patch Changes
+
+- 479431ab: feat(BottomNav): remove tap animation
+
 ## 11.33.0
 
 ### Minor Changes
