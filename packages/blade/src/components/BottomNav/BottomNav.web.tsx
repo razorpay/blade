@@ -101,7 +101,7 @@ const StyledBottomNavItem = styled(BaseBox)<{ to?: string }>((props) => {
     border: 'none',
     paddingLeft: makeSpace(props.theme.spacing[0]),
     paddingRight: makeSpace(props.theme.spacing[0]),
-    transition: `color,transform ${makeMotionTime(props.theme.motion.duration['2xquick'])} ${
+    transition: `color ${makeMotionTime(props.theme.motion.duration['2xquick'])} ${
       props.theme.motion.easing.standard.effective
     }`,
     '&[aria-current="page"]': {
