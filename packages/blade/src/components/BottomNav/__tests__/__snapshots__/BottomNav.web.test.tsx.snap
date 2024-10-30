@@ -82,9 +82,6 @@ exports[`BottomNav should render 1`] = `
   -webkit-transition: color,-webkit-transform 70ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition: color,transform 70ms cubic-bezier(0.3,0,0.2,1);
   transition: color,transform 70ms cubic-bezier(0.3,0,0.2,1);
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
 }
 
 .c2.c2.c2.c2.c2[aria-current="page"] {
@@ -100,12 +97,6 @@ exports[`BottomNav should render 1`] = `
   transition-duration: 70ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c2.c2.c2.c2.c2:active {
-  -webkit-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
 }
 
 @media screen and (min-width:320px) {
