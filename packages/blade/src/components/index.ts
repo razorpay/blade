@@ -6,6 +6,7 @@ export * from './Avatar';
 export * from './Badge';
 export * from './BladeProvider';
 export * from './BottomSheet';
+export * from './BottomNav';
 export * from './Breadcrumb';
 export * from './Box';
 export * from './Button';
