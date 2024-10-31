@@ -534,7 +534,7 @@ const Carousel = ({
           flexDirection="row"
           height="100%"
         >
-          {shouldShowPrevButton && shouldNavButtonsFloat ? (
+          {shouldShowPrevButton && shouldNavButtonsFloat && shouldShowControls ? (
             <BaseBox zIndex={2} position="absolute" left="spacing.11">
               <NavigationButton
                 type="previous"
@@ -543,7 +543,7 @@ const Carousel = ({
               />
             </BaseBox>
           ) : null}
-          {isNavButtonsOnSide ? (
+          {isNavButtonsOnSide && shouldShowControls ? (
             <NavigationButton
               type="previous"
               variant={navigationButtonVariant}
@@ -564,7 +564,7 @@ const Carousel = ({
           >
             {children}
           </CarouselBody>
-          {shouldShowNextButton && shouldNavButtonsFloat ? (
+          {shouldShowNextButton && shouldNavButtonsFloat && shouldShowControls ? (
             <BaseBox zIndex={2} position="absolute" right="spacing.11">
               <NavigationButton
                 onClick={goToNextSlide}
@@ -573,7 +573,7 @@ const Carousel = ({
               />
             </BaseBox>
           ) : null}
-          {isNavButtonsOnSide ? (
+          {isNavButtonsOnSide && shouldShowControls ? (
             <NavigationButton
               onClick={goToNextSlide}
               type="next"
