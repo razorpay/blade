@@ -93,7 +93,7 @@ function App(): React.ReactElement {
                     setSelectedFile(fileList[0]);
                   }}
                   onDrop={({ fileList }: FileUploadProps['onDrop']) => {
-                    setSelectedFile(fileList[0]);
+                   console.log('onDrop', fileList);
                   }}
                   isRequired
                   necessityIndicator="required"
@@ -253,7 +253,7 @@ const MultiFileUploadStory = `
                     setSelectedFiles(fileList);
                   }}
                   onDrop={({ fileList }: FileUploadProps['onDrop']) => {
-                    setSelectedFiles(fileList);
+                    console.log("onDrop", fileList);
                   }}
                   isRequired
                   necessityIndicator="required"
@@ -400,7 +400,7 @@ import {
                 accept=".jpg, .jpeg, .png"
                 fileList={uploadedFiles}
                 onChange={({ fileList }: FileUploadProps['onChange']) => handleFileChange({ fileList })}
-                onDrop={({ fileList }: FileUploadProps['onDrop']) => handleFileChange({ fileList })}
+                onDrop={({ fileList }: FileUploadProps['onDrop']) => {console.log("onDrop",fileList)})}
                 isRequired
                 necessityIndicator="required"
               />
@@ -579,7 +579,6 @@ const AutoFileUploadWithProgressStory = `
                 accept=".jpg, .jpeg, .png"
                 fileList={uploadedFiles}
                 onChange={handleFileChange}
-                onDrop={handleFileChange}
                 isRequired
                 necessityIndicator="required"
               />
@@ -772,8 +771,9 @@ import {
                 onChange={({ fileList }: { fileList: BladeFileList }) =>
                   handleFileChange({ fileList })
                 }
-                onDrop={({ fileList }: { fileList: BladeFileList }) =>
-                  handleFileChange({ fileList })
+                onDrop={({ fileList }: { fileList: BladeFileList }) => {
+                 console.log("onDrop", fileList);
+                }
                 }
                 onPreview={({ file }: { file: BladeFile }) => {
                   setIsOpen(true);
