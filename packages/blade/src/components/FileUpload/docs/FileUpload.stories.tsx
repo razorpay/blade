@@ -144,10 +144,13 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
               {...args}
               fileList={uploadedFiles}
               onChange={({ fileList }) => handleFileChange({ fileList })}
-              onDrop={({ fileList }) => handleFileChange({ fileList })}
+              onDrop={({ fileList }) => console.log('onDrop', fileList)}
               onPreview={({ file }) => {
                 setIsOpen(true);
                 setImageFileSource(URL.createObjectURL(file));
+              }}
+              onInput={({ fileList }) => {
+                console.log('onInput', fileList);
               }}
             />
             <Button

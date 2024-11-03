@@ -70,9 +70,13 @@ type FileUploadCommonProps = {
    */
   maxSize?: number;
   /**
-   * Callback function triggered when files are selected
+   * Callback function triggered when files are selected or when a file is dropped into the upload area
    */
   onChange?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
+  /**
+   * Callback function triggered when files are selected or when a file is dropped into the upload area
+   */
+  onInput?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
    * Callback function triggered when the preview icon is clicked
    */

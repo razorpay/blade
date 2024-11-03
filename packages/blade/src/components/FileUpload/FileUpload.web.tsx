@@ -38,6 +38,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     onReupload,
     onDismiss,
     onDrop,
+    onInput,
     isDisabled,
     isRequired,
     necessityIndicator,
@@ -146,6 +147,17 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     setIsActive(false);
   };
 
+  const handleFileChangeEvents = ({
+    fileList,
+    name,
+  }: {
+    fileList: BladeFileList;
+    name?: string;
+  }): void => {
+    onChange?.({ name, fileList });
+    onInput?.({ name, fileList });
+  };
+
   const handleDrop = (event: React.DragEvent): void => {
     event.preventDefault();
     setIsActive(false);
@@ -158,6 +170,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     if (!hasValidationErrors) {
       handleFilesChange(droppedFiles);
       onDrop?.({ name, fileList: allFiles });
+      handleFileChangeEvents({ name, fileList: allFiles });
     }
   };
 
@@ -169,7 +182,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
     if (!hasValidationErrors) {
       handleFilesChange(inputFiles);
-      onChange?.({ name, fileList: allFiles });
+      handleFileChangeEvents({ name, fileList: allFiles });
     }
 
     // Reset the input value to allow re-selecting the same file
@@ -421,6 +434,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             accept=".jpg, .jpeg, .png"
             onChange={({ fileList }) => {
               setSelectedFile(fileList[0]);
+            }}
+            onInput={({ fileList }) => {
+              console.log(fileList);
             }}
             onDrop={({ fileList }) => {
               setSelectedFile(fileList[0]);
