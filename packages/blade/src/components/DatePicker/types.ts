@@ -38,7 +38,13 @@ type MantineInternalProps =
 
 type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   MantineDatePickerProps<SelectionType extends 'single' ? 'default' : 'range'>,
-  MantineInternalProps | 'value' | 'defaultValue' | 'onChange' | 'onMonthSelect' | 'onYearSelect'
+  | MantineInternalProps
+  | 'value'
+  | 'defaultValue'
+  | 'onChange'
+  | 'onMonthSelect'
+  | 'onYearSelect'
+  | 'onInput'
 > & {
   /**
    * Sets the selection mode of the calendar

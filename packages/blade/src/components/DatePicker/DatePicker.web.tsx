@@ -41,6 +41,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   value,
   defaultValue,
   onChange,
+  onInput,
   onApply,
   presets,
   isOpen,
@@ -97,6 +98,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     defaultValue,
     onChange: (date) => {
       onChange?.(date as never);
+      onInput?.(date as never);
       if (isSingle) return;
       // sync selected preset with value
       setSelectedPreset(date as DatesRangeValue);
@@ -124,6 +126,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const handleApply = (): void => {
     if (isSingle) {
       onChange?.(controlledValue);
+      onInput?.(controlledValue);
       setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();
@@ -132,6 +135,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     // only apply if both dates are selected
     if (hasBothDatesSelected) {
       onChange?.(controlledValue);
+      onInput?.(controlledValue);
       setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();

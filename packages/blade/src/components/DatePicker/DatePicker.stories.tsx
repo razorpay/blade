@@ -35,6 +35,7 @@ export default {
     value: baseProp,
     isOpen: baseProp,
     onChange: baseProp,
+    onInput: baseProp,
     selectionType: baseProp,
     presets: baseProp,
     minDate: baseProp,
@@ -122,6 +123,9 @@ const DatePickerTemplate: StoryFn<typeof DatePickerComponent> = ({ ...args }) =>
       onChange={(date) => {
         console.log(date);
       }}
+      onInput={(e) => {
+        console.log(e);
+      }}
       {...args}
     />
   );
@@ -132,6 +136,12 @@ SingleDatePicker.storyName = 'SingleDatePicker';
 SingleDatePicker.args = {
   label: 'Select a date',
   selectionType: 'single',
+  onInput: (e) => {
+    console.log(e);
+  },
+  onChange: (e) => {
+    console.log(e);
+  },
 };
 
 export const RangeDatePicker = DatePickerTemplate.bind({});
@@ -139,6 +149,12 @@ RangeDatePicker.storyName = 'RangeDatePicker';
 RangeDatePicker.args = {
   label: { start: 'Start Date', end: 'End Date' },
   selectionType: 'range',
+  onInput: (e) => {
+    console.log(e);
+  },
+  onChange: (e) => {
+    console.log(e);
+  },
 };
 
 export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
@@ -167,6 +183,20 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
           console.log(date);
         }}
         presets={[
+          {
+            label: 'Today',
+            value: (date) => [
+              dayjs(date).startOf('day').toDate(),
+              dayjs(date).endOf('day').toDate(),
+            ],
+          },
+          {
+            label: 'Tomorrow',
+            value: (date) => [
+              dayjs(date).add(1, 'day').startOf('day').toDate(),
+              dayjs(date).add(1, 'day').endOf('day').toDate(),
+            ],
+          },
           {
             label: 'Past 7 days',
             value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
