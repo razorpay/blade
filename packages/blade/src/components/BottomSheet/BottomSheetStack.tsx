@@ -31,7 +31,11 @@ const BottomSheetStackProvider = ({
     return stack[0] || null;
   }, [stack]);
 
-  const addBottomSheetToStack = React.useCallback((id: string) => {
+  const addBottomSheetToStack = React.useCallback((id?: string) => {
+    // id can be undefined since useId returns `undefined` on first render,
+    // if we push undefined to the stack the `removeBottomSheetFromStack` will break
+    // since it will try to match top of the stack with undefined
+    if (id === undefined) return;
     setStack((prev) => [id, ...prev]);
   }, []);
 
