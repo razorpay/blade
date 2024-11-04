@@ -19,14 +19,15 @@ import throttle from '~utils/lodashButBetter/throttle';
 import debounce from '~utils/lodashButBetter/debounce';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, useInterval, usePrevious } from '~utils';
+import { castWebType, makeMotionTime, useInterval } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { useTheme } from '~components/BladeProvider';
-import { useFirstRender } from '~utils/useFirstRender';
 import { getStyledProps } from '~components/Box/styledProps';
+import { useControllableState } from '~utils/useControllable';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 type ControlsProp = Required<
   Pick<
@@ -226,29 +227,6 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
   },
 );
 
-/**
- * A custom hook which syncs an effect with a state
- * While ignoring the first render & only running the effect when the state changes
- */
-function useSyncUpdateEffect<T>(
-  effect: React.EffectCallback,
-  stateToSyncWith: T,
-  deps: React.DependencyList,
-) {
-  const isFirst = useFirstRender();
-  const prevState = usePrevious<T>(stateToSyncWith);
-
-  React.useEffect(() => {
-    if (!isFirst) {
-      // if the state is the same as the previous state
-      // we don't want to run the effect
-      if (prevState === stateToSyncWith) return;
-      return effect();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stateToSyncWith, ...deps]);
-}
-
 const Carousel = ({
   autoPlay,
   visibleItems = 1,
@@ -264,11 +242,19 @@ const Carousel = ({
   navigationButtonVariant = 'filled',
   carouselItemAlignment = 'start',
   height,
+  defaultActiveSlide,
+  activeSlide: activeSlideProp,
   ...props
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
-  const [activeSlide, setActiveSlide] = React.useState(0);
   const [activeIndicator, setActiveIndicator] = React.useState(0);
+  const [activeSlide, setActiveSlide] = useControllableState({
+    defaultValue: defaultActiveSlide ?? 0,
+    value: activeSlideProp,
+    onChange: (value) => {
+      onChange?.(value);
+    },
+  });
   const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
   const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -331,7 +317,7 @@ const Carousel = ({
     setStartEndMargin(carouselItemLeft - carouselContainerLeft);
   }, [id, isResponsive, shouldAddStartEndSpacing]);
 
-  const goToSlideIndex = (slideIndex: number) => {
+  const goToSlideIndex = (slideIndex: number, shouldAnimate = true) => {
     if (!containerRef.current) return;
 
     const carouselItemId = getCarouselItemId(id, slideIndex * _visibleItems);
@@ -345,9 +331,9 @@ const Carousel = ({
 
     containerRef.current.scroll({
       left: left - startEndMargin,
-      behavior: 'smooth',
+      behavior: shouldAnimate ? 'smooth' : 'auto',
     });
-    setActiveSlide(slideIndex);
+    setActiveSlide(() => slideIndex);
     setActiveIndicator(slideIndex);
   };
 
@@ -431,8 +417,8 @@ const Carousel = ({
 
       const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
       const goTo = Math.ceil(slideIndex / _visibleItems);
+      setActiveSlide(() => goTo);
       setActiveIndicator(goTo);
-      setActiveSlide(goTo);
     }, 50);
 
     carouselContainer.addEventListener('scroll', handleScroll);
@@ -440,6 +426,7 @@ const Carousel = ({
     return () => {
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing]);
 
   // auto play
@@ -453,6 +440,11 @@ const Carousel = ({
       enable: autoPlay && !shouldPauseAutoplay,
     },
   );
+
+  // set initial active slide on mount
+  useIsomorphicLayoutEffect(() => {
+    goToSlideIndex(activeSlide, false);
+  }, []);
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
@@ -477,14 +469,6 @@ const Carousel = ({
     activeSlide,
     shouldAddStartEndSpacing,
   ]);
-
-  useSyncUpdateEffect(
-    () => {
-      onChange?.(activeSlide);
-    },
-    activeSlide,
-    [onChange],
-  );
 
   return (
     <CarouselContext.Provider value={carouselContext}>
