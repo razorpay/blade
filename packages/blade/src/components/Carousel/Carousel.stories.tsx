@@ -14,6 +14,7 @@ import { isReactNative } from '~utils';
 import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';
+import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {
   return (
@@ -475,6 +476,9 @@ export const Controlled: StoryFn<typeof CarouselComponent> = (props) => {
         Setting <Code>activeSlide</Code> & <Code>onChange</Code> you can control the active slide
         and use the carousel in a controlled way. Here the active slide is {activeSlide}
       </Text>
+      <Button marginY="spacing.4" size="small" onClick={() => setActiveSlide(2)}>
+        Go to slide #3
+      </Button>
       <CarouselExample
         {...props}
         activeSlide={activeSlide}
@@ -488,7 +492,7 @@ export const Controlled: StoryFn<typeof CarouselComponent> = (props) => {
 };
 
 Controlled.args = {
-  visibleItems: 2,
+  visibleItems: 1,
 };
 Controlled.argTypes = {
   shouldAddStartEndSpacing: {

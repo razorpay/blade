@@ -28,6 +28,7 @@ import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import { useControllableState } from '~utils/useControllable';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useDidUpdate } from '~utils/useDidUpdate';
 
 type ControlsProp = Required<
   Pick<
@@ -259,7 +260,8 @@ const Carousel = ({
   const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isMobile = platform === 'onMobile';
-  const id = useId('carousel');
+  const id = useId();
+  const carouselId = `carousel-${id}`;
 
   useVerifyAllowedChildren({
     componentName: 'Carousel',
@@ -307,7 +309,7 @@ const Carousel = ({
     if (!isResponsive && !shouldAddStartEndSpacing) return;
     if (!containerRef.current) return;
 
-    const carouselItemId = getCarouselItemId(id, 0);
+    const carouselItemId = getCarouselItemId(carouselId, 0);
     const carouselItem = containerRef.current.querySelector(carouselItemId);
     if (!carouselItem) return;
 
@@ -315,12 +317,12 @@ const Carousel = ({
     const carouselContainerLeft = containerRef.current.getBoundingClientRect().left ?? 0;
 
     setStartEndMargin(carouselItemLeft - carouselContainerLeft);
-  }, [id, isResponsive, shouldAddStartEndSpacing]);
+  }, [carouselId, isResponsive, shouldAddStartEndSpacing]);
 
-  const goToSlideIndex = (slideIndex: number, shouldAnimate = true) => {
+  const scrollToSlide = (slideIndex: number, shouldAnimate = true) => {
     if (!containerRef.current) return;
 
-    const carouselItemId = getCarouselItemId(id, slideIndex * _visibleItems);
+    const carouselItemId = getCarouselItemId(carouselId, slideIndex * _visibleItems);
     const carouselItem = containerRef.current.querySelector(carouselItemId);
     if (!carouselItem) return;
 
@@ -333,6 +335,9 @@ const Carousel = ({
       left: left - startEndMargin,
       behavior: shouldAnimate ? 'smooth' : 'auto',
     });
+  };
+
+  const goToSlideIndex = (slideIndex: number) => {
     setActiveSlide(() => slideIndex);
     setActiveIndicator(slideIndex);
   };
@@ -443,8 +448,15 @@ const Carousel = ({
 
   // set initial active slide on mount
   useIsomorphicLayoutEffect(() => {
-    goToSlideIndex(activeSlide, false);
-  }, []);
+    if (!id) return;
+    goToSlideIndex(activeSlide);
+    scrollToSlide(activeSlide, false);
+  }, [id]);
+
+  // Scroll the carousel to the active slide
+  useDidUpdate(() => {
+    scrollToSlide(activeSlide);
+  }, [activeSlide]);
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
@@ -453,14 +465,14 @@ const Carousel = ({
       carouselItemWidth,
       carouselContainerRef: containerRef,
       setActiveIndicator,
-      carouselId: id,
+      carouselId,
       totalNumberOfSlides,
       activeSlide,
       startEndMargin,
       shouldAddStartEndSpacing,
     };
   }, [
-    id,
+    carouselId,
     startEndMargin,
     isResponsive,
     _visibleItems,
@@ -530,7 +542,7 @@ const Carousel = ({
             />
           ) : null}
           <CarouselBody
-            idPrefix={id}
+            idPrefix={carouselId}
             startEndMargin={startEndMargin}
             totalSlides={totalNumberOfSlides}
             shouldAddStartEndSpacing={shouldAddStartEndSpacing}
