@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.34.1
+
+### Patch Changes
+
+- 421a3a8e: fix(blade): bottomsheet body scroll lock not clearing
+
 ## 11.34.0
 
 ### Minor Changes
