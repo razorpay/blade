@@ -82,12 +82,19 @@ export const bladeThemeData = {
     Menu: {
       key: '5579b346d87f88747c96444d0b042bdcc2348066',
     },
-    'Menu/Trailing': {
-      key: 'f3433ad2b96c72a9b4d3b07b9d0547328c3f6685',
-    },
     'Menu/Leading': {
       key: '0e8422f46f5279c6e1037557d8a5049bea2427ea',
     },
+    'Menu/Trailing': {
+      key: 'f3433ad2b96c72a9b4d3b07b9d0547328c3f6685',
+    },
+    'Menu/Header': {
+      key: 'e70bd033f0fb628e411f017734b266594063c47a',
+    },
+    'Menu/Footer': {
+      key: 'e70bd033f0fb628e411f017734b266594063c47a',
+    },
+
     MenuItem: {
       key: '34e76b11e46e82f64694313432ae88e5901f4f6d',
     },
@@ -97,21 +104,20 @@ export const bladeThemeData = {
     'MenuItem/Leading': {
       key: 'cbeaaaeb4fbf0a830a97687bf50c50aa2cfe8b2a',
     },
-    L2SubMenuItem: {
-      key: '06cc9d71153af14dc0ec0cb22835596420fa7c93',
+
+    L1SubMenu: {
+      key: 'bb790d1a888ea23b023b51c6378bf161efee59a2',
     },
     L1SubMenuItem: {
       key: '5090d1d66a59d0762b38915d3e56946f6617a0ea',
     },
-    'Dropdown Menu': {
-      key: '301e099f941f2b4a4c1475779e72659d7caabd4d',
+    L2SubMenu: {
+      key: 'fa7e637dcf31980ff1da955bc1c5c707e002fc60',
     },
-    'Dropdown/Header': {
-      key: '5acfcd1de0ee3569014590cdede3bd11b5f4b143',
+    L2SubMenuItem: {
+      key: '06cc9d71153af14dc0ec0cb22835596420fa7c93',
     },
-    'Dropdown/Footer': {
-      key: '1568049d40a5c7465dbf686d6e9d5892ec4b69d2',
-    },
+
     'Icon Size': {
       key: '06edcdaff550d4c96534c6d95f968e0e4b3eb224',
     },
@@ -316,39 +322,50 @@ export const bladeThemeData = {
     },
 
     // Step Group
-    'StepGroup/Trailing': {
-      key: '74ed744b51effc5d874c749bc5e88f4be721716e',
+    StepGroup: {
+      key: '5ee106373ceea89b535f54d9f71c722391af488b',
     },
-    'StepGroup/Branch': {
-      key: 'd4479afbb639cfe3cbc9d89d11fec362ca79aa87',
+    StepGroupItem: {
+      key: '2d842865f2a93ae22949f6282d32ed46d1e4b2dd',
+    },
+    StepGroupItemLine: {
+      key: '2af5fa754700573a12d89e78aba099bfc6a933ac',
     },
 
     // TopNav
     TopNavigation: {
-      key: '622b115eef2ed77542c0076ce0a34b5f09208fd5',
-    },
-    'TopNavigation Item': {
-      key: '3205630f37ec72d0c71a9760cdb99521bacbbc3a',
-    },
-    'TopNavigation Bar': {
       key: '81bc989c244d5fa751b9851ad7d69841c78255a2',
     },
-    'TopNavigation Tabs': {
-      key: '9bc47e8b7d1cfcccd21e680341ca941a676e2e02',
+    TopNavigationTabs: {
+      key: '622b115eef2ed77542c0076ce0a34b5f09208fd5',
     },
-    'TopNavigation NavAction': {
-      key: 'c1eb57a062767f1b3c1f7e3cec76297332407aa4',
+    TopNavigationRightSection: {
+      key: 'da9403d1b567187dc06fef8c67817f15d603fc44',
     },
-    'TopNavigation/Overflow Handle': {
-      key: 'f369b87f0bb880ace68ef6b743f5557ec576cace',
+
+    BottomNavigation: {
+      key: 'b548e311c74c71b7bfe16ae8f926ab5689adad3c',
     },
 
     // Utility Components
+    Browser: {
+      key: '89affaa18c972d661e866cb1f5c3882424d539f6',
+    },
+    Keyboard: {
+      key: 'a890ea34953fb832de37c8d9198b262ca301ae1b',
+    },
+    ScrollBar: {
+      key: 'cf94e008d24cb6e47e65ae8a87497a362f6a28fd',
+    },
+    StatusBar: {
+      key: '453e635ac304a50732f3c0a1fe8207af8d517a55',
+    },
+    Cursor: {
+      key: '0f3efaf43d4b967430312b6341cdca3694741176',
+    },
+
     'Dashboard / Sidebar': {
       key: '938574fa23373c6a9a9a75eb19c2224ad40ff238',
-    },
-    Browsers: {
-      key: 'd7daeb3a3138f7534ba377781a966715083a26e1',
     },
     'Wordmarks-Logos': {
       key: 'e792328de5953d34fcbb749c3569fb46061dad6a',
@@ -1641,7 +1658,7 @@ export const BLADE_COMPONENT_IDS = Object.values(bladeThemeData.components).map(
   (component) => component.key,
 );
 
-// Carousel, Modal, Bottom Sheet, Card, Dropdown Menu, Accordion, Menu
+// Carousel, Modal, Bottom Sheet, Card, Dropdown Menu, Accordion, Menu, StepGroup
 export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components.Accordion,
   bladeThemeData.components['Accordion/Item'],
@@ -1649,10 +1666,7 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components['Accordion/Header'],
   bladeThemeData.components['Bottom Sheet'],
   bladeThemeData.components['BottomSheet/Footer'],
-  bladeThemeData.components['Dropdown/Header'],
   bladeThemeData.components['Base - General Header'],
-  bladeThemeData.components['Dropdown Menu'],
-  bladeThemeData.components['Dropdown/Footer'],
   bladeThemeData.components.Card,
   bladeThemeData.components.Carousel,
   bladeThemeData.components.Modal,
@@ -1662,7 +1676,18 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components.Collapsible,
   bladeThemeData.components.Table,
   bladeThemeData.components.Drawer,
+  bladeThemeData.components['Drawer/Leading'],
+  bladeThemeData.components['Drawer/Trailing'],
+  bladeThemeData.components.StepGroup,
+  bladeThemeData.components.StepGroupItem,
   bladeThemeData.components.Menu,
+  bladeThemeData.components['Menu/Leading'],
+  bladeThemeData.components['Menu/Footer'],
+  bladeThemeData.components['MenuItem/Leading'],
+  bladeThemeData.components.L1SubMenuItem,
+  bladeThemeData.components.L2SubMenuItem,
+  bladeThemeData.components.TopNavigation,
+  bladeThemeData.components.TopNavigationRightSection,
 ]
   .map((component) => component.key)
   .flat();
