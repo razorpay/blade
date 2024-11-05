@@ -302,7 +302,7 @@ const Carousel = ({
 
   // calculate the start/end margin so that we can
   // deduct that margin when scrolling to a carousel item with goToSlideIndex
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // Do not calculate if not needed
     if (!isResponsive && !shouldAddStartEndSpacing) return;
     if (!containerRef.current) return;
