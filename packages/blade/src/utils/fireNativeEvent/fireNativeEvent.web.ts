@@ -1,17 +1,5 @@
 import type { DatesRangeValue } from '@mantine/dates';
 
-// interface valueType {
-//   value: DatesRangeValue | null;
-// }
-
-// interface eventType {
-//   eventType: 'change' | 'input' as 'string';
-// }
-
-// interface optionsType {
-//   bubbles?: boolean;
-//   writable?: boolean;
-// }
 export const fireNativeEvent = (
   ref: React.RefObject<HTMLElement> | null,
   value: DatesRangeValue | File[] | string | null,
