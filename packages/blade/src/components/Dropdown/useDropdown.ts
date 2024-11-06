@@ -16,6 +16,7 @@ import { dropdownComponentIds } from './dropdownComponentIds';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
 import type { ContainerElementType } from '~utils/types';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -355,6 +356,11 @@ const useDropdown = (): UseDropdownReturnValue => {
 
     const optionValues = options.map((option) => option.value);
     ensureScrollVisiblity(updatedIndex, rest.actionListItemRef.current, optionValues);
+    fireNativeEvent(
+      rest.actionListItemRef as React.RefObject<HTMLElement>,
+      options[updatedIndex].value,
+      ['change', 'input'],
+    );
   };
 
   /**

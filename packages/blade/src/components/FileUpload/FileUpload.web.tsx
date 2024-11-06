@@ -26,6 +26,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useControllableState } from '~utils/useControllable';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -158,6 +159,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     if (!hasValidationErrors) {
       handleFilesChange(droppedFiles);
       onDrop?.({ name, fileList: allFiles });
+      fireNativeEvent(inputRef, allFiles, ['change', 'input']);
     }
   };
 
@@ -169,6 +171,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
     if (!hasValidationErrors) {
       handleFilesChange(inputFiles);
+      fireNativeEvent(inputRef, inputFiles, ['change', 'input']);
       onChange?.({ name, fileList: allFiles });
     }
 
