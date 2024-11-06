@@ -115,8 +115,9 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover {
+.c11.c11.c11.c11.c11:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c11.c11.c11.c11.c11:focus-visible {

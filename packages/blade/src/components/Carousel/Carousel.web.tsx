@@ -26,6 +26,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { useTheme } from '~components/BladeProvider';
 import { useFirstRender } from '~utils/useFirstRender';
+import { getStyledProps } from '~components/Box/styledProps';
 
 type ControlsProp = Required<
   Pick<
@@ -114,6 +115,7 @@ const CarouselContainer = styled(BaseBox)<{
 
   return {
     width: '100%',
+    height: '100%',
     overflowX: 'scroll',
     display: 'flex',
     flexWrap: 'nowrap',
@@ -261,6 +263,8 @@ const Carousel = ({
   indicatorVariant = 'gray',
   navigationButtonVariant = 'filled',
   carouselItemAlignment = 'start',
+  height,
+  ...props
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
@@ -513,6 +517,8 @@ const Carousel = ({
         display="flex"
         alignItems="center"
         flexDirection="column"
+        height={height}
+        {...getStyledProps(props)}
       >
         <BaseBox
           width="100%"
@@ -521,6 +527,7 @@ const Carousel = ({
           alignItems="center"
           gap="spacing.4"
           flexDirection="row"
+          height="100%"
         >
           {shouldShowPrevButton && shouldNavButtonsFloat ? (
             <BaseBox zIndex={2} position="absolute" left="spacing.11">

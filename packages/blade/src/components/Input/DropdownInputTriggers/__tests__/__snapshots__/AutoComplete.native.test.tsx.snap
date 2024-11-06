@@ -98,7 +98,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
-                  flexWrap="wrap"
                   gap="spacing.0"
                   maxHeight="36px"
                   style={
@@ -107,7 +106,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         "alignItems": "center",
                         "display": "flex",
                         "flexDirection": "row",
-                        "flexWrap": "wrap",
                         "gap": 0,
                         "maxHeight": 36,
                       },

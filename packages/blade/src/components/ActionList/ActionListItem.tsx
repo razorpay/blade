@@ -25,6 +25,8 @@ import { Box } from '~components/Box';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { BaseMenuItem, useBaseMenuItem } from '~components/BaseMenu';
 import { Checkbox } from '~components/Checkbox';
+import type { AvatarProps } from '~components/Avatar/types';
+import { Avatar } from '~components/Avatar';
 
 type ActionListItemProps = {
   title: string;
@@ -208,6 +210,14 @@ const _ActionListItemBadgeGroup = ({
 
 const ActionListItemBadgeGroup = assignWithoutSideEffects(_ActionListItemBadgeGroup, {
   componentId: componentIds.ActionListItemBadgeGroup,
+});
+
+const _ActionListItemAvatar = (avatarProps: Omit<AvatarProps, 'size' | ''>): React.ReactElement => {
+  return <Avatar size="xsmall" {...avatarProps} />;
+};
+
+const ActionListItemAvatar = assignWithoutSideEffects(_ActionListItemAvatar, {
+  componentId: componentIds.ActionListItemAvatar,
 });
 
 const _ActionListItemBadge = (props: BadgeProps): React.ReactElement => {
@@ -406,6 +416,7 @@ export {
   ActionListItem,
   ActionListItemIcon,
   ActionListItemText,
+  ActionListItemAvatar,
   ActionListItemBadge,
   ActionListItemBadgeGroup,
   ActionListSection,

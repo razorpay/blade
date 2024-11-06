@@ -93,6 +93,7 @@ const FormLabel = ({
         variant="body"
         size={isLabelLeftPositioned ? 'medium' : 'small'}
         color="feedback.text.negative.intense"
+        alignSelf="flex-start"
       >
         *
       </Text>
@@ -112,7 +113,7 @@ const FormLabel = ({
       display="flex"
       flexDirection="row"
       alignItems="center"
-      flexWrap="wrap"
+      // flexWrap="wrap"
       maxHeight={makeSpace(sizeToken[36])}
     >
       <Text

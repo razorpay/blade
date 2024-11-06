@@ -58,6 +58,17 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
       </HeaderContainer>
       <HeaderContainer>
         <BaseHeader
+          leading={<StarIcon color="surface.icon.gray.normal" size="large" />}
+          title="When_Title_Does_Not_Break_Word_And_Goes_On_Next_Line"
+          subtitle="When The Subtitle of this BaseHeader is So Largeeeee That It Goes On Next Line"
+          titleSuffix={<Badge color="positive">New</Badge>}
+          trailing={<Link>Apply</Link>}
+          showCloseButton={true}
+          showBackButton={true}
+        />
+      </HeaderContainer>
+      <HeaderContainer>
+        <BaseHeader
           leading={
             isReactNative() ? undefined : (
               <img

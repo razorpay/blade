@@ -50,7 +50,7 @@ export const parameters = {
       method: 'alphabetical',
       order: [
         'Guides',
-        ['Intro', 'Installation', 'Local Development', 'How to use?'],
+        ['Intro', 'Installation', 'Contributing', 'How to use?'],
         'Tokens',
         [
           'Colors',

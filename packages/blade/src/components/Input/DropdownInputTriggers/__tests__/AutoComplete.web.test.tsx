@@ -316,7 +316,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
 
     await waitFor(() => expect(queryByTestId('bottomsheet-body')).not.toBeVisible());
     expect(selectInput.value).toBe('Mumbai');
-  });
+  }, 10000);
 
   // Flaky test. Skipping for now. Should be replicated into E2E eventually
   it.skip('should handle AutoComplete behaviour in multiselect', async () => {

@@ -314,6 +314,7 @@ const _BaseHeader = ({
                     marginTop={makeSize(sizeToken['1'])}
                     weight="semibold"
                     color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'}
+                    wordBreak="break-word"
                   >
                     {title}
                   </Text>
@@ -363,7 +364,7 @@ const _BaseHeader = ({
           alignItems="center"
           justifyContent="space-between"
         >
-          <Box>{children}</Box>
+          <Box width="100%">{children}</Box>
           {trailingInteractionElement && children ? (
             <Box alignSelf="flex-start" {...centerBoxProps[size]}>
               {trailingInteractionElement}

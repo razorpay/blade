@@ -59,6 +59,7 @@ exports[`<Table /> should render table 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -66,6 +67,7 @@ exports[`<Table /> should render table 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -118,6 +120,12 @@ exports[`<Table /> should render table 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
@@ -140,14 +148,77 @@ exports[`<Table /> should render table 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
@@ -368,7 +439,8 @@ exports[`<Table /> should render table 1`] = `
       </div>
     </div>
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -386,7 +458,7 @@ exports[`<Table /> should render table 1`] = `
           role="rowheader"
         >
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -404,7 +476,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -422,7 +494,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -440,7 +512,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -458,7 +530,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -476,7 +548,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -501,6 +573,7 @@ exports[`<Table /> should render table 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -665,6 +738,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -829,6 +903,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -993,6 +1068,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -1157,6 +1233,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -1500,6 +1577,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1507,6 +1585,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -1586,6 +1665,12 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1614,14 +1699,77 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
@@ -2089,7 +2237,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
       </div>
     </div>
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -2107,7 +2256,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
           role="rowheader"
         >
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2125,7 +2274,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2143,7 +2292,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2161,7 +2310,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2179,7 +2328,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2197,7 +2346,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2222,6 +2371,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -2259,7 +2409,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
-            rowdensity="normal"
           >
             <div>
               <div
@@ -2422,6 +2571,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -2459,7 +2609,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
-            rowdensity="normal"
           >
             <div>
               <div
@@ -2767,6 +2916,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -2774,6 +2924,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -2809,6 +2960,12 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
@@ -2831,14 +2988,77 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -3028,7 +3248,8 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -3046,7 +3267,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
           role="rowheader"
         >
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3064,7 +3285,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3082,7 +3303,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3100,7 +3321,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3118,7 +3339,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3136,7 +3357,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3161,6 +3382,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -3325,6 +3547,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -3634,6 +3857,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -3641,6 +3865,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -3676,6 +3901,12 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
@@ -3698,14 +3929,77 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -3895,7 +4189,8 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -3913,7 +4208,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
           role="rowheader"
         >
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3931,7 +4226,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3949,7 +4244,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3967,7 +4262,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3985,7 +4280,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4003,7 +4298,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4028,6 +4323,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -4192,6 +4488,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -4530,6 +4827,7 @@ exports[`<Table /> should render table with isLoading 1`] = `
     <div
       class=""
       data-blade-component="spinner"
+      data-testid="table-spinner"
     >
       <div
         aria-label="Loading Table"
@@ -4633,6 +4931,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -4640,6 +4939,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -4688,6 +4988,12 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -4716,14 +5022,77 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
@@ -4961,7 +5330,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
       </div>
     </div>
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -4979,7 +5349,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
           role="rowheader"
         >
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4997,7 +5367,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5015,7 +5385,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5033,7 +5403,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5051,7 +5421,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5069,7 +5439,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5094,6 +5464,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -5258,6 +5629,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -5567,6 +5939,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -5574,6 +5947,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -5609,6 +5983,12 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
@@ -5631,14 +6011,77 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:nth-child(even) .cell-wrapper {
@@ -5833,7 +6276,8 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -5851,7 +6295,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
           role="rowheader"
         >
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5869,7 +6313,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5887,7 +6331,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5905,7 +6349,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5923,7 +6367,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5941,7 +6385,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5966,6 +6410,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -6130,6 +6575,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -6439,6 +6885,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -6446,6 +6893,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -6481,6 +6929,12 @@ exports[`<Table /> should render table with sticky header, footer & first column
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 {
@@ -6507,14 +6961,77 @@ exports[`<Table /> should render table with sticky header, footer & first column
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
@@ -6704,7 +7221,8 @@ exports[`<Table /> should render table with sticky header, footer & first column
     data-blade-component="table"
   >
     <table
-      class="c1 css-j8ql1d-Table"
+      aria-multiselectable="false"
+      class="c1 css-3izxgm-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -6722,7 +7240,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           role="rowheader"
         >
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6740,7 +7258,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6758,7 +7276,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6776,7 +7294,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6794,7 +7312,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6812,7 +7330,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6837,13 +7355,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6870,7 +7389,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6892,7 +7411,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6919,7 +7438,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6946,7 +7465,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6973,7 +7492,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7001,13 +7520,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7034,7 +7554,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7056,7 +7576,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7083,7 +7603,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7110,7 +7630,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7137,7 +7657,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7165,13 +7685,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7198,7 +7719,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7220,7 +7741,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7247,7 +7768,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7274,7 +7795,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7301,7 +7822,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7329,13 +7850,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7362,7 +7884,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7384,7 +7906,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7411,7 +7933,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7438,7 +7960,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7465,7 +7987,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7493,13 +8015,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7526,7 +8049,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7548,7 +8071,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7575,7 +8098,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7602,7 +8125,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7629,7 +8152,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7657,13 +8180,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7690,7 +8214,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7712,7 +8236,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7739,7 +8263,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7766,7 +8290,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7793,7 +8317,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7821,13 +8345,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7854,7 +8379,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7876,7 +8401,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7903,7 +8428,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7930,7 +8455,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7957,7 +8482,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7985,13 +8510,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8018,7 +8544,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8040,7 +8566,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8067,7 +8593,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8094,7 +8620,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8121,7 +8647,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8149,13 +8675,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8182,7 +8709,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8204,7 +8731,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8231,7 +8758,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8258,7 +8785,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8285,7 +8812,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8313,13 +8840,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8346,7 +8874,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8368,7 +8896,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8395,7 +8923,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8422,7 +8950,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8449,7 +8977,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
