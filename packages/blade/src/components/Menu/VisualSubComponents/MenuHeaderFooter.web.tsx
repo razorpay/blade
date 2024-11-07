@@ -18,7 +18,7 @@ const _MenuHeader = ({
   testID,
 }: MenuHeaderProps): React.ReactElement => {
   return (
-    <>
+    <Box marginBottom="spacing.3">
       <BaseHeader
         title={title}
         subtitle={subtitle}
@@ -37,7 +37,7 @@ const _MenuHeader = ({
         showDivider={false}
       />
       <MenuDivider />
-    </>
+    </Box>
   );
 };
 
@@ -47,7 +47,7 @@ const MenuHeader = assignWithoutSideEffects(_MenuHeader, {
 
 const _MenuFooter = ({ children, testID }: MenuFooterProps): React.ReactElement => {
   return (
-    <Box marginTop="spacing.2">
+    <Box marginTop="spacing.3">
       <MenuDivider />
       <BaseFooter
         metaComponentName={MetaConstants.MenuFooter}

@@ -32,7 +32,7 @@ type TabNavItemProps = {
    * ```
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  as?: React.ComponentType<any>;
+  as?: React.ComponentType<any> | 'a' | 'button';
   /**
    * Selected state of the navigation item.
    *
@@ -52,15 +52,30 @@ type TabNavItemProps = {
    */
   trailing?: React.ReactElement;
   /**
-   * Element to render inside the navigation item.
-   *
-   * This can either be a string or JSX element (eg: Menu component)
+   * Title of the navigation item.
    */
-  children?: React.ReactNode;
+  title?: string;
   /**
    * Accessibility label for the navigation item.
    */
   accessibilityLabel?: string;
 } & MenuTriggerProps;
 
-export type { TabNavItemProps };
+type Item = TabNavItemProps & {
+  description?: string;
+  isAlwaysOverflowing?: boolean;
+};
+type TabNavItemData = Item & {
+  isOverflowing?: boolean;
+  tabWidth?: number;
+  offsetX?: number;
+};
+type TabNavProps = {
+  items: Item[];
+  children: (props: {
+    items: TabNavItemData[];
+    overflowingItems: TabNavItemData[];
+  }) => React.ReactElement;
+};
+
+export type { TabNavItemProps, TabNavItemData, TabNavProps };

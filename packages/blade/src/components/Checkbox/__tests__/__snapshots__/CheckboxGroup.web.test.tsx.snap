@@ -305,6 +305,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               <label
                 class="c7"
                 data-blade-component="checkbox-label"
+                style="cursor: pointer;"
               >
                 <div
                   class="c0"
@@ -385,6 +386,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               <label
                 class="c7"
                 data-blade-component="checkbox-label"
+                style="cursor: pointer;"
               >
                 <div
                   class="c0"
@@ -465,6 +467,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               <label
                 class="c7"
                 data-blade-component="checkbox-label"
+                style="cursor: pointer;"
               >
                 <div
                   class="c0"
@@ -825,6 +828,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               <label
                 class="c7"
                 data-blade-component="checkbox-label"
+                style="cursor: pointer;"
               >
                 <div
                   class="c0"
@@ -905,6 +909,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               <label
                 class="c7"
                 data-blade-component="checkbox-label"
+                style="cursor: pointer;"
               >
                 <div
                   class="c0"
@@ -985,6 +990,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               <label
                 class="c7"
                 data-blade-component="checkbox-label"
+                style="cursor: pointer;"
               >
                 <div
                   class="c0"

@@ -1,9 +1,11 @@
+import type React from 'react';
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { TestID } from '~utils/types';
 
 type TableNode<Item> = Item & {
   id: Identifier;
@@ -60,6 +62,8 @@ type TableHeaderCellProps = {
    * Sorting is enabled only for columns whose key is present in sortableColumns prop of Table.
    **/
   headerKey?: string;
+
+  _hasPadding?: boolean;
 };
 
 type TableProps<Item> = {
@@ -241,7 +245,9 @@ type TableRowProps<Item> = {
    * Callback triggered when the row is clicked. It is called with the current row item prop.
    */
   onClick?: ({ item }: { item: TableNode<Item> }) => void;
-};
+
+  hoverActions?: React.ReactElement;
+} & TestID;
 
 type TableCellProps = {
   /**
@@ -256,6 +262,12 @@ type TableCellProps = {
    * </TableCell>
    **/
   children: React.ReactNode;
+  /**
+   * Removes padding from CellWrapper
+   *
+   * @private
+   */
+  _hasPadding?: boolean;
 };
 
 type TableEditableCellProps = Pick<

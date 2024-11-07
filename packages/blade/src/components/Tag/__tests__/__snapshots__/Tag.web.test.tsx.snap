@@ -82,8 +82,9 @@ exports[`<Tag /> should render tag 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c5.c5.c5.c5.c5:hover {
+.c5.c5.c5.c5.c5:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c5.c5.c5.c5.c5:focus-visible {
