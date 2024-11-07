@@ -372,7 +372,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 setSelectedFiles(() => newFiles);
                 onRemove?.({ file });
                 fireNativeEvent(inputRef, [], ['change', 'input']);
-                console.log('onRemove');
               }}
               onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
@@ -392,7 +391,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 setSelectedFiles(() => newFiles);
                 onDismiss?.({ file });
                 fireNativeEvent(inputRef, [], ['change', 'input']);
-                console.log('onDismiss');
               }}
               onPreview={onPreview}
             />
