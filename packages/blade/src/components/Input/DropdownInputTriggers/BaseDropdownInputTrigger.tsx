@@ -30,8 +30,8 @@ const useControlledDropdownInput = (
     | 'onInputValueChange'
     | 'syncInputValueWithSelection'
     | 'isSelectInput'
+    | 'triggererRef'
   >,
-  triggererRef: React.RefObject<HTMLElement>,
 ): void => {
   const isFirstRender = useFirstRender();
   const {
@@ -172,17 +172,15 @@ const _BaseDropdownInputTrigger = (
     return isOpen;
   }, [hasAutoCompleteInBottomSheetHeader, props.isSelectInput, isOpen]);
 
-  useControlledDropdownInput(
-    {
-      onChange: props.onChange,
-      name: props.name,
-      value: props.value,
-      defaultValue: props.defaultValue,
-      syncInputValueWithSelection: props.syncInputValueWithSelection,
-      isSelectInput: props.isSelectInput,
-    },
+  useControlledDropdownInput({
+    onChange: props.onChange,
+    name: props.name,
+    value: props.value,
+    defaultValue: props.defaultValue,
+    syncInputValueWithSelection: props.syncInputValueWithSelection,
+    isSelectInput: props.isSelectInput,
     triggererRef,
-  );
+  });
 
   const getValue = (): string | undefined => {
     let prefix = '';

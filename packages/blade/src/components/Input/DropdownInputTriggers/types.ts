@@ -125,6 +125,10 @@ export type BaseDropdownInputTriggerProps = Omit<
    * Internal prop to handle click on input trigger
    */
   onTriggerClick: BaseInputProps['onClick'];
+  /**
+   * Internal prop to get ref of trigger element
+   */
+  triggererRef: React.RefObject<HTMLElement>;
 };
 
 export type SelectInputProps = DropdownInputTriggersProps;
