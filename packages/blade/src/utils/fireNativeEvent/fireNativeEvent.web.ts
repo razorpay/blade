@@ -8,7 +8,6 @@ export const fireNativeEvent = (
   if (ref) {
     eventTypes.forEach((eventType) => {
       const event = new Event(eventType, { bubbles: true });
-      Object.defineProperty(event, 'target', { value: { value }, writable: false });
       ref.current?.dispatchEvent(event);
     });
   } else {

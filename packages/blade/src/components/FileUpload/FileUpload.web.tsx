@@ -172,7 +172,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     if (!hasValidationErrors) {
       handleFilesChange(inputFiles);
       onChange?.({ name, fileList: allFiles });
-      fireNativeEvent(inputRef, allFiles, ['change', 'input']);
     }
 
     // Reset the input value to allow re-selecting the same file
@@ -310,6 +309,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(() => newFiles);
               onRemove?.({ file: selectedFiles[0] });
+              fireNativeEvent(inputRef, [], ['change', 'input']);
             }}
             onReupload={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
@@ -371,6 +371,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
                 onRemove?.({ file });
+                fireNativeEvent(inputRef, [], ['change', 'input']);
+                console.log('onRemove');
               }}
               onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
@@ -389,6 +391,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
                 onDismiss?.({ file });
+                fireNativeEvent(inputRef, [], ['change', 'input']);
+                console.log('onDismiss');
               }}
               onPreview={onPreview}
             />
