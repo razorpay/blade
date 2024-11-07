@@ -356,11 +356,7 @@ const useDropdown = (): UseDropdownReturnValue => {
 
     const optionValues = options.map((option) => option.value);
     ensureScrollVisiblity(updatedIndex, rest.actionListItemRef.current, optionValues);
-    fireNativeEvent(
-      rest.actionListItemRef as React.RefObject<HTMLElement>,
-      options[updatedIndex].value,
-      ['change', 'input'],
-    );
+    fireNativeEvent(rest.actionListItemRef as React.RefObject<HTMLElement>, ['change', 'input']);
   };
 
   /**
