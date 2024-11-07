@@ -18,6 +18,7 @@ import {
   validationStateToInputTrailingIconMap,
 } from '~components/Table/tokens';
 import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const useControlledDropdownInput = (
   props: Pick<
@@ -30,6 +31,7 @@ const useControlledDropdownInput = (
     | 'syncInputValueWithSelection'
     | 'isSelectInput'
   >,
+  triggererRef: React.RefObject<HTMLElement>,
 ): void => {
   const isFirstRender = useFirstRender();
   const {
@@ -116,6 +118,7 @@ const useControlledDropdownInput = (
         name: props.name,
         values: getValuesArrayFromIndices(),
       });
+      fireNativeEvent(triggererRef, getValuesArrayFromIndices(), ['change', 'input']);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
@@ -169,14 +172,17 @@ const _BaseDropdownInputTrigger = (
     return isOpen;
   }, [hasAutoCompleteInBottomSheetHeader, props.isSelectInput, isOpen]);
 
-  useControlledDropdownInput({
-    onChange: props.onChange,
-    name: props.name,
-    value: props.value,
-    defaultValue: props.defaultValue,
-    syncInputValueWithSelection: props.syncInputValueWithSelection,
-    isSelectInput: props.isSelectInput,
-  });
+  useControlledDropdownInput(
+    {
+      onChange: props.onChange,
+      name: props.name,
+      value: props.value,
+      defaultValue: props.defaultValue,
+      syncInputValueWithSelection: props.syncInputValueWithSelection,
+      isSelectInput: props.isSelectInput,
+    },
+    triggererRef,
+  );
 
   const getValue = (): string | undefined => {
     let prefix = '';

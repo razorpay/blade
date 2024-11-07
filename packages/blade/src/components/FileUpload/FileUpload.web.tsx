@@ -171,8 +171,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
     if (!hasValidationErrors) {
       handleFilesChange(inputFiles);
-      fireNativeEvent(inputRef, inputFiles, ['change', 'input']);
       onChange?.({ name, fileList: allFiles });
+      fireNativeEvent(inputRef, allFiles, ['change', 'input']);
     }
 
     // Reset the input value to allow re-selecting the same file

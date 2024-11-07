@@ -2,7 +2,7 @@ import type { DatesRangeValue } from '@mantine/dates';
 
 export const fireNativeEvent = (
   ref: React.RefObject<HTMLElement> | null,
-  value: DatesRangeValue | File[] | string | null,
+  value: DatesRangeValue | File[] | string | null | number[] | string[] | number,
   eventTypes: Array<'change' | 'input'>,
 ): void => {
   if (ref) {
@@ -12,6 +12,6 @@ export const fireNativeEvent = (
       ref.current?.dispatchEvent(event);
     });
   } else {
-    console.log('ref is not defined');
+    console.warn('ref is not defined');
   }
 };
