@@ -7,7 +7,6 @@ import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { isReactNative } from '~utils';
-import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const useAutoComplete = ({
   props,
@@ -122,7 +121,6 @@ const useAutoComplete = ({
       props.onInputValueChange?.({ name: props.name, value: '' });
       setActiveTagIndex(-1);
       resetFilters();
-      fireNativeEvent(triggererRef, values, ['input', 'change']);
     } else {
       const displayText = options.find((option) => option.value === values[0])?.title;
       props.onInputValueChange?.({
@@ -133,7 +131,6 @@ const useAutoComplete = ({
       if (typeof props.value === 'undefined') {
         setInputValue(displayText ?? '');
       }
-      fireNativeEvent(triggererRef, displayText ?? '', ['input', 'change']);
     }
     props.onChange?.({ name: props.name, values });
   };

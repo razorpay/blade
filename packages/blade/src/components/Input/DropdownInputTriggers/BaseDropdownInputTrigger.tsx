@@ -118,7 +118,12 @@ const useControlledDropdownInput = (
         name: props.name,
         values: getValuesArrayFromIndices(),
       });
-      fireNativeEvent(triggererRef, getValuesArrayFromIndices(), ['change', 'input']);
+      fireNativeEvent(
+        triggererRef,
+        getValuesArrayFromIndices(),
+        ['change', 'input'],
+        'BaseDropdownInputTrigger-useControlledDropdownInput',
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
