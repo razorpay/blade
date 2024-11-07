@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
-import type { BaseDropdownInputTriggerProps } from './types';
+import type { BaseDropdownInputTriggerProps, useControlledDropdownInputProps } from './types';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { isReactNative } from '~utils';
@@ -20,19 +20,7 @@ import {
 import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 
-const useControlledDropdownInput = (
-  props: Pick<
-    BaseDropdownInputTriggerProps,
-    | 'onChange'
-    | 'name'
-    | 'value'
-    | 'defaultValue'
-    | 'onInputValueChange'
-    | 'syncInputValueWithSelection'
-    | 'isSelectInput'
-    | 'triggererRef'
-  >,
-): void => {
+const useControlledDropdownInput = (props: useControlledDropdownInputProps): void => {
   const isFirstRender = useFirstRender();
   const {
     changeCallbackTriggerer,
