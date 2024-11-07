@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import SectionHeader from './SectionHeader';
-const { AutoLayout, Text, useSyncedState } = figma.widget;
+const { AutoLayout, Text } = figma.widget;
 
 interface ProgressBarProps {
   cardWidgetWidth: number;

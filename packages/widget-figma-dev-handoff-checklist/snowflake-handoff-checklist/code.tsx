@@ -2,7 +2,6 @@
 import Checkbox from '../components/Checkbox';
 import SectionHeader from '../components/SectionHeader';
 import ProgressBar from '../components/ProgressBar';
-import ListView from '../components/ListView';
 const { AutoLayout, Text, useSyncedState } = figma.widget;
 
 function Widget() {
