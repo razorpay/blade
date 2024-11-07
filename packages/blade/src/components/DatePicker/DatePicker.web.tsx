@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DatesProvider } from '@mantine/dates';
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useI18nContext } from '@razorpay/i18nify-react';
 import { MantineProvider } from '@mantine/core';
@@ -73,7 +73,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
   const referenceRef = React.useRef<HTMLButtonElement>(null);
-  const parentRef = useRef<HTMLDivElement>(null);
 
   const [_picker, setPicker] = useControllableState<PickerType>({
     defaultValue: defaultPicker,
@@ -274,17 +273,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       logger({ type: 'warn', message: 'Failed to load dayjs locale' });
     }
   }, [i18nState?.locale]);
-  // TODO: remove this useEffect
-  useEffect(() => {
-    if (parentRef.current) {
-      parentRef.current.addEventListener('change', (e: any) => {
-        console.log('Date changed -> change event', e);
-      });
-      parentRef.current.addEventListener('input', (e: any) => {
-        console.log('Date changed -> input', e);
-      });
-    }
-  }, [parentRef]);
 
   return (
     <MantineProvider>
@@ -293,7 +281,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
           width="100%"
           {...getStyledProps(props)}
           {...metaAttribute({ name: MetaConstants.DatePicker })}
-          ref={parentRef}
         >
           <DatePickerInput
             selectionType={_selectionType}
