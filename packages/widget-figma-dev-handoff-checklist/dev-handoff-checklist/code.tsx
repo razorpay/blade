@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import Checkbox from './components/Checkbox';
-import SectionHeader from './components/SectionHeader';
+import Checkbox from '../components/Checkbox';
+import SectionHeader from '../components/SectionHeader';
+import ProgressBar from '../components/ProgressBar';
 const { AutoLayout, Text, useSyncedState } = figma.widget;
 
 function Widget() {
   const [checkedItems, setCheckedItems] = useSyncedState('checkedStates', 0);
-  const cardWidgetWidth = 401;
-  const numberOfCheckboxes = 14;
-  const isAllCheckboxesChecked = checkedItems === numberOfCheckboxes;
 
   const updateChecklist = (checkedState: true | false): void => {
     if (checkedState) {
@@ -28,37 +26,9 @@ function Widget() {
     >
       <AutoLayout direction="vertical" spacing={8} width="fill-parent">
         <Text fontSize={28} fontWeight={700} fill="#192839">
-          ✏️ Handoff checklist
+          ✏️ Dev handoff checklist
         </Text>
-        <AutoLayout
-          direction="horizontal"
-          spacing="auto"
-          cornerRadius={4}
-          padding={{ horizontal: 8, vertical: 4 }}
-          width="fill-parent"
-          height={20}
-          fill="#ECF1FF"
-        >
-          <AutoLayout
-            positioning="absolute"
-            x={0}
-            y={0}
-            width={checkedItems === 0 ? 1 : checkedItems * (cardWidgetWidth / numberOfCheckboxes)}
-            height={20}
-            fill={isAllCheckboxesChecked ? '#00A251' : '#D0DBFF'}
-          />
-          <Text
-            fontSize={10}
-            fontWeight={600}
-            fill={isAllCheckboxesChecked ? '#ffffff' : '#768EA7'}
-          >
-            {isAllCheckboxesChecked ? '🎉  Ready for handoff!' : '😕  Not ready for handoff'}
-          </Text>
-          <SectionHeader
-            title={`${checkedItems}/${numberOfCheckboxes}`}
-            color={isAllCheckboxesChecked ? '#ffffff' : '#768EA7'}
-          />
-        </AutoLayout>
+        <ProgressBar cardWidgetWidth={401} numberOfCheckboxes={14} checkedItems={checkedItems} />
       </AutoLayout>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
         <SectionHeader title="Reviewers" />
@@ -67,18 +37,21 @@ function Widget() {
             id="review1"
             optionText="Design reviewed by "
             isEditable={true}
+            isEditableInputWithDateField={true}
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id="review2"
             optionText="Copy reviewed by "
             isEditable={true}
+            isEditableInputWithDateField={true}
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id="review3"
             optionText="Creatives reviewed by "
             isEditable={true}
+            isEditableInputWithDateField={true}
             onCheckboxClick={updateChecklist}
           />
         </AutoLayout>

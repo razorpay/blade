@@ -1,14 +1,16 @@
 {
-  "name": "Dev-Handoff-Checklist",
+  "name": "Figma Widgets",
   "private": true,
   "version": "1.0.0",
-  "description": "Razorpay's Official Dev Handoff - Figma Widget",
+  "description": "Razorpay's official widgets - Figma Widget",
   "scripts": {
-    "build": "esbuild code.tsx --bundle --outfile=dist/code.js --target=es6",
+    "build:dev": "esbuild dev-handoff-checklist/code.tsx --bundle --outfile=dev-handoff-checklist/dist/code.js --target=es6",
+    "build:snowflake": "esbuild snowflake-handoff-checklist/code.tsx --bundle --outfile=snowflake-handoff-checklist/dist/code.js --target=es6",
+    "watch:dev": "npm run build:dev -- --watch",
+    "watch:snowflake": "npm run build:snowflake -- --watch",
     "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
     "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
-    "tsc": "tsc --noEmit -p widget-src",
-    "watch": "npm run build -- --watch"
+    "tsc": "tsc --noEmit -p widget-src"
   },
   "author": "",
   "license": "",
