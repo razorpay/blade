@@ -1,1 +1,1 @@
-export * from './fireNativeEvent.web';
+export * from './fireNativeEvent';
