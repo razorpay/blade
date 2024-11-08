@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.35.0
+
+### Minor Changes
+
+- e53905b0: feat(blade): add controlled state to carousel
+
 ## 11.34.1
 
 ### Patch Changes
