@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
-import { useTopNavContext } from '../TopNavContext';
 import type { TabNavItemProps } from './types';
 import { useTabNavContext } from './TabNavContext';
 import { MIXED_BG_COLOR } from './utils';
@@ -10,11 +12,8 @@ import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { mergeRefs } from '~utils/useMergeRefs';
-import type { BoxProps } from '~components/Box';
-import getIn from '~utils/lodashButBetter/get';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
   return {
@@ -37,6 +36,14 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     paddingLeft: makeSpace(theme.spacing[4]),
     paddingRight: makeSpace(theme.spacing[4]),
     borderRadius: makeBorderSize(theme.border.radius.medium),
+    // reset button styles
+    border: 'none',
+    background: 'none',
+    '&[aria-expanded="true"]': $isActive
+      ? {}
+      : {
+          backgroundColor: theme.colors.interactive.background.gray.default,
+        },
     '&:hover': $isActive
       ? {}
       : {
@@ -47,16 +54,15 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
 
 const StyledTabNavItemWrapper = styled(BaseBox)<{
   isActive?: boolean;
-  dividerHiderColor: BoxProps['backgroundColor'];
-}>(({ theme, isActive, dividerHiderColor }) => {
+}>(({ theme, isActive }) => {
   const dividerHiderStyle = {
     content: '""',
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
     width: makeSize(size[1]),
-    height: '50%',
-    backgroundColor: getIn(theme.colors, dividerHiderColor as never, MIXED_BG_COLOR),
+    height: makeSize(size[16]),
+    backgroundColor: MIXED_BG_COLOR,
   } as const;
 
   return {
@@ -66,16 +72,14 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
     backgroundColor: isActive ? theme.colors.surface.background.gray.intense : 'transparent',
     borderColor: isActive ? theme.colors.surface.border.gray.muted : 'transparent',
     borderStyle: 'solid',
-    borderBottomWidth: 0,
     borderWidth: makeBorderSize(theme.border.width.thin),
+    borderBottomWidth: 0,
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
-    // Animation
-    transform: isActive ? `translateY(${makeSize(size[2])})` : 'none',
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${
       theme.motion.easing.standard.effective
     }`,
-    transitionProperty: 'background, transform',
+    transitionProperty: 'background',
 
     // Hide the left and right divider by overlaying them with a pseudo element as same color as the background
     ...(isActive
@@ -113,47 +117,55 @@ const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }
 });
 
 const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemProps> = (
-  { as, children, isActive, icon: Icon, trailing, accessibilityLabel, href, target, ...props },
+  {
+    as,
+    title,
+    isActive,
+    icon: Icon,
+    trailing,
+    accessibilityLabel,
+    href,
+    target,
+    // @ts-expect-error - This prop is only used internally
+    __isInsideTabNavItems,
+    // @ts-expect-error - This prop is only used internally
+    __index,
+    ...props
+  },
   ref,
 ): React.ReactElement => {
-  const { containerRef, hasOverflow } = useTabNavContext();
-  const { backgroundColor } = useTopNavContext();
-  const linkRef = React.useRef<HTMLAnchorElement>(null);
+  const { setControlledItems } = useTabNavContext();
+  const bodyRef = React.useRef<HTMLDivElement>(null);
 
-  // Scroll the active tab into view
-  // Only if the tab is very close to the edge
-  // Or if the tab is out of view
+  // Update the controlledItems with the tabWidth and offsetX
   useIsomorphicLayoutEffect(() => {
-    if (!isActive || !hasOverflow) return;
-    if (!('requestAnimationFrame' in window)) return;
-
-    window.requestAnimationFrame(() => {
-      if (!linkRef.current || !containerRef.current) return;
-
-      const buffer = 100;
-      const container = containerRef.current;
-      const linkElement = linkRef.current;
-      const containerRect = container.getBoundingClientRect();
-      const linkRect = linkElement.getBoundingClientRect();
-      const isCloseToStart = linkRect.left < containerRect.left + buffer;
-      const isCloseToEnd = linkRect.right > containerRect.right - buffer;
-
-      if (isCloseToStart || isCloseToEnd) {
-        linkElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      }
+    if (!bodyRef.current) return;
+    if (!__isInsideTabNavItems) return;
+    setControlledItems((prev) => {
+      return prev.map((item, index) => {
+        if (index !== __index) return item;
+        const bounds = bodyRef?.current?.getBoundingClientRect()!;
+        const tabWidth = bounds.width;
+        const offsetX = bounds.right;
+        return {
+          ...item,
+          tabWidth,
+          offsetX,
+        };
+      });
     });
-  }, [hasOverflow, isActive]);
+  }, [__isInsideTabNavItems, __index, setControlledItems]);
 
   return (
     <StyledTabNavItemWrapper
+      ref={bodyRef}
       isActive={isActive}
-      dividerHiderColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
       <SelectedBar isActive={isActive} />
       <StyledTabNavItem
-        ref={mergeRefs(ref, linkRef)}
-        as={as ?? 'a'}
+        ref={ref}
+        as={as ?? (href ? 'a' : 'button')}
         to={href}
         href={as ? undefined : href}
         target={target}
@@ -167,7 +179,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
             color={isActive ? 'interactive.icon.gray.normal' : 'surface.icon.gray.subtle'}
           />
         ) : null}
-        {children}
+        {title}
         {trailing ? trailing : null}
       </StyledTabNavItem>
     </StyledTabNavItemWrapper>

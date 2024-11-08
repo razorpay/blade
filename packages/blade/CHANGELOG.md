@@ -1,5 +1,50 @@
 # @razorpay/blade
 
+## 11.34.1
+
+### Patch Changes
+
+- 421a3a8e: fix(blade): bottomsheet body scroll lock not clearing
+
+## 11.34.0
+
+### Minor Changes
+
+- b63190b0: feat(BottomNav): add BottomNav component
+
+### Patch Changes
+
+- 479431ab: feat(BottomNav): remove tap animation
+
+## 11.33.0
+
+### Minor Changes
+
+- e35355af: feat(Table): add hover actions support on `TableRow`
+
+## 11.32.0
+
+### Minor Changes
+
+- a4a61681: feat(blade): revamped top-nav component
+
+  > NOTE:
+  > This might be a breaking change for you, if your project uses the older deprecated TopNav.
+
+## 11.31.2
+
+### Patch Changes
+
+- eef992bd: feat(blade): support test id for table row
+
+## 11.31.1
+
+### Patch Changes
+
+- 94b69155: fix(blade): set isDisabled to checkbox for disabled table rows [DSSUP-157]
+
+  Changed the visual styling of disabled checkbox to have 'not-allowed' cursor.
+
 ## 11.31.0
 
 ### Minor Changes

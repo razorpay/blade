@@ -14,10 +14,12 @@ exports[`TopNav should render 1`] = `
   align-items: center;
   position: -webkit-sticky;
   position: sticky;
-  z-index: 1;
-  grid-template-columns: minmax(0,1fr) auto;
-  padding-right: 8px;
-  padding-left: 8px;
+  z-index: 100;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
   height: 56px;
   width: 100%;
   top: 0px;
@@ -25,7 +27,6 @@ exports[`TopNav should render 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  display: none;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -39,20 +40,43 @@ exports[`TopNav should render 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  display: none;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
+  padding-right: 0px;
 }
 
 .c5.c5.c5.c5.c5 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  margin-right: -1px;
-  height: 20px;
-  border-left-color: hsla(211,20%,52%,0.18);
-  border-left-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
+  position: relative;
+  width: 100%;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -60,15 +84,33 @@ exports[`TopNav should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 0px;
-  margin-left: 0px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  gap: 0px;
+  left: -1px;
+}
+
+.c12.c12.c12.c12.c12 {
+  margin: auto;
+  height: 16px;
+  border-left-color: hsla(211,20%,52%,0.18);
+  border-left-style: solid;
+}
+
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,12 +119,18 @@ exports[`TopNav should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  position: relative;
-  margin-bottom: -12px;
-  width: 100%;
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
+  padding: 8px;
+  margin-top: 2px;
+  gap: 8px;
+  background-color: hsla(0,0%,100%,1);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -104,7 +152,7 @@ exports[`TopNav should render 1`] = `
   z-index: 1;
 }
 
-.c14.c14.c14.c14.c14 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -119,63 +167,17 @@ exports[`TopNav should render 1`] = `
   justify-content: center;
 }
 
-.c15.c15.c15.c15.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  position: relative;
-  width: 100%;
-  gap: 0px;
-}
-
-.c17.c17.c17.c17.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-}
-
-.c21.c21.c21.c21.c21 {
-  margin: auto;
-  height: 16px;
-  border-left-color: hsla(211,20%,52%,0.18);
-  border-left-style: solid;
-}
-
-.c24.c24.c24.c24.c24 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-top: 2px;
-  gap: 8px;
-}
-
-.c26.c26.c26.c26.c26 {
+.c20.c20.c20.c20.c20 {
   background-color: hsla(0,0%,100%,1);
 }
 
-.c28.c28.c28.c28.c28 {
+.c22.c22.c22.c22.c22 {
   position: relative;
   height: 100%;
   width: 100%;
 }
 
-.c30.c30.c30.c30.c30 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -195,146 +197,17 @@ exports[`TopNav should render 1`] = `
   height: 100%;
 }
 
-.c32.c32.c32.c32.c32 {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  pointer-events: none;
-}
-
-.c10.c10.c10.c10.c10 {
-  min-height: 28px;
-  height: 28px;
-  width: 28px;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,28%,84%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c10.c10.c10.c10.c10:hover {
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c10.c10.c10.c10.c10:active {
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c10.c10.c10.c10.c10:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c10.c10.c10.c10.c10 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+.c13.c13.c13.c13.c13 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  height: 16px;
 }
 
 .c25.c25.c25.c25.c25 {
-  min-height: 36px;
-  height: 36px;
-  width: 36px;
-  cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,28%,84%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c25.c25.c25.c25.c25:hover {
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c25.c25.c25.c25.c25:active {
-  background-color: hsla(211,20%,52%,0.18);
-}
-
-.c25.c25.c25.c25.c25:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c25.c25.c25.c25.c25 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
-.c31.c31.c31.c31.c31 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -351,93 +224,7 @@ exports[`TopNav should render 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
-  opacity: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  border-width: 0;
-  border-left-style: solid;
-  border-left-width: 1px;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  height: 20px;
-}
-
-.c22.c22.c22.c22.c22 {
-  border-width: 0;
-  border-left-style: solid;
-  border-left-width: 1px;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  height: 16px;
-}
-
-.c16.c16.c16.c16.c16::-webkit-scrollbar {
-  display: none;
-}
-
-.c9.c9.c9.c9.c9 {
-  position: absolute;
-  left: 0;
-  pointer-events: none;
-  -webkit-transform: scale(0.5);
-  -ms-transform: scale(0.5);
-  transform: scale(0.5);
-  opacity: 0;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-property: opacity,-webkit-transform;
-  -webkit-transition-property: opacity,transform;
-  transition-property: opacity,transform;
-  z-index: 1;
-}
-
-.c9.c9.c9.c9.c9:before {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  left: 0;
-  top: -8px;
-  bottom: -8px;
-  width: 54px;
-  background: linear-gradient(to left,transparent 0%,hsla(0,0%,100%,1) 30%,hsla(0,0%,100%,1) 100%);
-}
-
-.c23.c23.c23.c23.c23 {
-  position: absolute;
-  right: 0;
-  pointer-events: none;
-  -webkit-transform: scale(0.5);
-  -ms-transform: scale(0.5);
-  transform: scale(0.5);
-  opacity: 0;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-property: opacity,-webkit-transform;
-  -webkit-transition-property: opacity,transform;
-  transition-property: opacity,transform;
-  z-index: 1;
-}
-
-.c23.c23.c23.c23.c23:before {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: -8px;
-  bottom: -8px;
-  width: 54px;
-  background: linear-gradient(to right,transparent 0%,hsla(0,0%,100%,1) 30%,hsla(0,0%,100%,1) 100%);
-}
-
-.c20.c20.c20.c20.c20 {
+.c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -477,13 +264,19 @@ exports[`TopNav should render 1`] = `
   padding-left: 12px;
   padding-right: 12px;
   border-radius: 4px;
+  border: none;
+  background: none;
 }
 
-.c20.c20.c20.c20.c20:hover {
+.c11.c11.c11.c11.c11[aria-expanded="true"] {
   background-color: hsla(211,20%,52%,0.12);
 }
 
-.c18.c18.c18.c18.c18 {
+.c11.c11.c11.c11.c11:hover {
+  background-color: hsla(211,20%,52%,0.12);
+}
+
+.c9.c9.c9.c9.c9 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -492,21 +285,17 @@ exports[`TopNav should render 1`] = `
   background-color: transparent;
   border-color: transparent;
   border-style: solid;
-  border-bottom-width: 0;
   border-width: 1px;
+  border-bottom-width: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  -webkit-transform: none;
-  -ms-transform: none;
-  transform: none;
   -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
   transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: background,-webkit-transform;
-  -webkit-transition-property: background,transform;
-  transition-property: background,transform;
+  -webkit-transition-property: background;
+  transition-property: background;
 }
 
-.c19.c19.c19.c19.c19 {
+.c10.c10.c10.c10.c10 {
   position: absolute;
   top: 0;
   left: 0;
@@ -523,7 +312,7 @@ exports[`TopNav should render 1`] = `
   transition-property: opacity;
 }
 
-.c27.c27.c27.c27.c27 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -534,7 +323,7 @@ exports[`TopNav should render 1`] = `
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c29.c29.c29.c29.c29 {
+.c23.c23.c23.c23.c23 {
   display: block;
   text-align: center;
   -webkit-text-decoration: none;
@@ -548,7 +337,7 @@ exports[`TopNav should render 1`] = `
   background-color: hsla(211,20%,52%,0.18);
 }
 
-.c29.c29.c29.c29.c29 img {
+.c23.c23.c23.c23.c23 img {
   display: block;
   height: 36px;
   width: 36px;
@@ -556,18 +345,87 @@ exports[`TopNav should render 1`] = `
   object-fit: cover;
 }
 
-@media screen and (min-width:768px) {
-  .c1.c1.c1.c1.c1 {
-    grid-template-columns: auto minmax(0,1fr) auto;
-  }
+.c15.c15.c15.c15.c15 {
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  background-color: hsla(211,20%,52%,0.12);
+  border-color: hsla(214,28%,84%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c15.c15.c15.c15.c15:hover {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c15.c15.c15.c15.c15:active {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c15.c15.c15.c15.c15:focus-visible {
+  background-color: hsla(211,20%,52%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c15.c15.c15.c15.c15 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c16.c16.c16.c16.c16 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c18.c18.c18.c18.c18 {
+  opacity: 1;
 }
 
 @media screen and (min-width:768px) {
-  .c2.c2.c2.c2.c2 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+  .c1.c1.c1.c1.c1 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 8px;
+    padding-left: 8px;
   }
 }
 
@@ -579,104 +437,37 @@ exports[`TopNav should render 1`] = `
 
 @media screen and (min-width:768px) {
   .c4.c4.c4.c4.c4 {
-    display: block;
-  }
-}
-
-@media screen and (min-width:320px) {
-  .c5.c5.c5.c5.c5 {
-    border-left-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c5.c5.c5.c5.c5 {
-    border-left-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c5.c5.c5.c5.c5 {
-    border-left-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c5.c5.c5.c5.c5 {
-    border-left-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c5.c5.c5.c5.c5 {
-    border-left-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c7.c7.c7.c7.c7 {
     padding-right: 80px;
-    margin-left: 12px;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c21.c21.c21.c21.c21 {
+  .c12.c12.c12.c12.c12 {
     border-left-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c21.c21.c21.c21.c21 {
+  .c12.c12.c12.c12.c12 {
     border-left-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c21.c21.c21.c21.c21 {
+  .c12.c12.c12.c12.c12 {
     border-left-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c21.c21.c21.c21.c21 {
+  .c12.c12.c12.c12.c12 {
     border-left-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c21.c21.c21.c21.c21 {
+  .c12.c12.c12.c12.c12 {
     border-left-style: solid;
-  }
-}
-
-@media screen and (min-width:320px) {
-  .c32.c32.c32.c32.c32 {
-    pointer-events: none;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c32.c32.c32.c32.c32 {
-    pointer-events: none;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c32.c32.c32.c32.c32 {
-    pointer-events: none;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c32.c32.c32.c32.c32 {
-    pointer-events: none;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c32.c32.c32.c32.c32 {
-    pointer-events: none;
   }
 }
 
@@ -720,244 +511,173 @@ exports[`TopNav should render 1`] = `
             </g>
           </svg>
         </div>
-        <div
-          class="c4"
-          data-blade-component="box"
-        >
-          <div
-            class="c5 c6"
-            data-blade-component="divider"
-            role="separator"
-          />
-        </div>
       </div>
       <div
-        class="c7"
+        class="c4"
         data-blade-component="top-nav-content"
       >
         <nav
-          class="c8"
+          class="c5"
           data-blade-component="tab-nav"
         >
           <div
-            class=" c9"
-            data-blade-component="base-box"
-          >
-            <button
-              aria-label="Scroll Left"
-              class="c10"
-              data-blade-component="button"
-              role="button"
-              type="button"
-            >
-              <div
-                class=" c11"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c12 c13"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c14"
-                    data-blade-component="base-box"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="Svgweb__StyledSvg-vcmjs8-0"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="16px"
-                      viewBox="0 0 24 24"
-                      width="16px"
-                    >
-                      <path
-                        clip-rule="evenodd"
-                        d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
-                        data-blade-component="svg-path"
-                        fill="hsla(212, 39%, 16%, 1)"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </button>
-          </div>
-          <div
-            class="c15 c16"
+            class="c6"
             data-blade-component="base-box"
           >
             <div
-              class="c17"
+              class="c7"
               data-blade-component="base-box"
             >
               <div
-                class=" c18"
+                class="c8"
+                data-blade-component="box"
+              >
+                <div
+                  class=" c9"
+                  data-blade-component="tab-nav-item"
+                >
+                  <div
+                    class=" c10"
+                    data-blade-component="base-box"
+                  />
+                  <a
+                    class="c11"
+                    href="/home"
+                    to="/home"
+                  >
+                    Home
+                  </a>
+                </div>
+                <div
+                  class="c12 c13"
+                  data-blade-component="divider"
+                  role="separator"
+                />
+                <div
+                  class=" c9"
+                  data-blade-component="tab-nav-item"
+                >
+                  <div
+                    class=" c10"
+                    data-blade-component="base-box"
+                  />
+                  <a
+                    class="c11"
+                    href="/payroll"
+                    to="/payroll"
+                  >
+                    Payroll
+                  </a>
+                </div>
+                <div
+                  class="c12 c13"
+                  data-blade-component="divider"
+                  role="separator"
+                />
+                <div
+                  class=" c9"
+                  data-blade-component="tab-nav-item"
+                >
+                  <div
+                    class=" c10"
+                    data-blade-component="base-box"
+                  />
+                  <a
+                    class="c11"
+                    href="/payments"
+                    to="/payments"
+                  >
+                    Payments
+                  </a>
+                </div>
+                <div
+                  class="c12 c13"
+                  data-blade-component="divider"
+                  role="separator"
+                />
+                <div
+                  class=" c9"
+                  data-blade-component="tab-nav-item"
+                >
+                  <div
+                    class=" c10"
+                    data-blade-component="base-box"
+                  />
+                  <a
+                    class="c11"
+                    href="/magic-checkout"
+                    to="/magic-checkout"
+                  >
+                    Magic Checkout
+                  </a>
+                </div>
+                <div
+                  class="c12 c13"
+                  data-blade-component="divider"
+                  role="separator"
+                />
+              </div>
+              <div
+                class=" c9"
                 data-blade-component="tab-nav-item"
               >
                 <div
-                  class=" c19"
+                  class=" c10"
                   data-blade-component="base-box"
                 />
                 <a
-                  aria-label="Home"
-                  class="c20"
-                  href="/home"
-                  to="/home"
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                  class="c11"
+                  href="#"
+                  id=":r2:"
+                  to="#"
                 >
+                  More
                   <svg
                     aria-hidden="true"
                     class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
-                    height="20px"
+                    height="16px"
                     viewBox="0 0 24 24"
-                    width="20px"
+                    width="16px"
                   >
                     <path
                       clip-rule="evenodd"
-                      d="M12.6139 1.21065C12.2528 0.929784 11.7472 0.929784 11.3861 1.21065L2.38606 8.21065C2.14247 8.4001 2 8.69141 2 9V20C2 21.6569 3.34315 23 5 23H19C20.6569 23 22 21.6569 22 20V9C22 8.69141 21.8575 8.4001 21.6139 8.21065L12.6139 1.21065ZM16 21H19C19.5523 21 20 20.5523 20 20V9.48908L12 3.26686L4 9.48908V20C4 20.5523 4.44772 21 5 21H8V12C8 11.4477 8.44772 11 9 11H15C15.5523 11 16 11.4477 16 12V21ZM10 21V13H14V21H10Z"
+                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                       data-blade-component="svg-path"
-                      fill="hsla(211, 26%, 34%, 1)"
+                      fill="hsla(212, 39%, 16%, 1)"
                       fill-rule="evenodd"
                     />
                   </svg>
                 </a>
               </div>
-              <div
-                class="c21 c22"
-                data-blade-component="divider"
-                role="separator"
-              />
-              <div
-                class=" c18"
-                data-blade-component="tab-nav-item"
-              >
-                <div
-                  class=" c19"
-                  data-blade-component="base-box"
-                />
-                <a
-                  class="c20"
-                  href="/payroll"
-                  to="/payroll"
-                >
-                  Payroll
-                </a>
-              </div>
-              <div
-                class="c21 c22"
-                data-blade-component="divider"
-                role="separator"
-              />
-              <div
-                class=" c18"
-                data-blade-component="tab-nav-item"
-              >
-                <div
-                  class=" c19"
-                  data-blade-component="base-box"
-                />
-                <a
-                  class="c20"
-                  href="/payments"
-                  to="/payments"
-                >
-                  Payments
-                </a>
-              </div>
-              <div
-                class="c21 c22"
-                data-blade-component="divider"
-                role="separator"
-              />
-              <div
-                class=" c18"
-                data-blade-component="tab-nav-item"
-              >
-                <div
-                  class=" c19"
-                  data-blade-component="base-box"
-                />
-                <a
-                  class="c20"
-                  href="/magic-checkout"
-                  to="/magic-checkout"
-                >
-                  Magic Checkout
-                </a>
-              </div>
             </div>
-          </div>
-          <div
-            class=" c23"
-            data-blade-component="base-box"
-          >
-            <button
-              aria-label="Scroll Right"
-              class="c10"
-              data-blade-component="button"
-              role="button"
-              type="button"
-            >
-              <div
-                class=" c11"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c12 c13"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c14"
-                    data-blade-component="base-box"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="Svgweb__StyledSvg-vcmjs8-0"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="16px"
-                      viewBox="0 0 24 24"
-                      width="16px"
-                    >
-                      <path
-                        clip-rule="evenodd"
-                        d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
-                        data-blade-component="svg-path"
-                        fill="hsla(212, 39%, 16%, 1)"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </button>
           </div>
         </nav>
       </div>
       <div
-        class="c24"
+        class="c14"
         data-blade-component="top-nav-actions"
       >
         <button
           aria-label="View Ecosystem Health"
-          class="c25"
+          class="c15"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class=" c11"
+            class=" c16"
             data-blade-component="base-box"
           >
             <div
-              class="c12 c13"
+              class="c17 c18"
               data-blade-component="base-box"
             >
               <div
-                class="c14"
+                class="c19"
                 data-blade-component="base-box"
               >
                 <svg
@@ -983,21 +703,21 @@ exports[`TopNav should render 1`] = `
         </button>
         <button
           aria-label="View Announcements"
-          class="c25"
+          class="c15"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class=" c11"
+            class=" c16"
             data-blade-component="base-box"
           >
             <div
-              class="c12 c13"
+              class="c17 c18"
               data-blade-component="base-box"
             >
               <div
-                class="c14"
+                class="c19"
                 data-blade-component="base-box"
               >
                 <svg
@@ -1022,23 +742,23 @@ exports[`TopNav should render 1`] = `
           </div>
         </button>
         <div
-          class="c26 c27"
+          class="c20 c21"
           data-blade-component="avatar"
         >
           <div
-            class="c28"
+            class="c22"
             data-blade-component="base-box"
           >
             <div
-              class="c29"
+              class="c23"
               color="neutral"
             >
               <div
-                class="c30"
+                class="c24"
                 data-blade-component="base-box"
               >
                 <p
-                  class="c31"
+                  class="c25"
                   data-blade-component="text"
                 >
                   AH
@@ -1047,44 +767,6 @@ exports[`TopNav should render 1`] = `
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="c32"
-        data-blade-component="box"
-        pointer-events="none"
-      >
-        <svg
-          fill="none"
-          height="56"
-          viewBox="0 0 304 56"
-          width="304"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M-20.1729 -528.246L-57.1316 -544.114C-61.2709 -545.885 -65.9797 -543.057 -65.9797 -538.799L-66 -515.846C-66 -511.217 -63.1422 -506.998 -58.6571 -505.045L21.4336 -470.072C23.427 -469.205 25.7255 -469.195 27.729 -470.062L92.7067 -498.197C97.5783 -500.302 103.141 -496.978 103.141 -491.949L103.141 -396.886C103.141 -388.781 98.1173 -381.418 90.2557 -378.018L-10.1145 -334.568C-14.986 -332.463 -20.5492 -335.787 -20.5492 -340.816V-436.66C-20.5492 -442.232 -14.3759 -445.918 -8.97546 -443.575L16.0637 -432.689C19.5724 -431.165 19.5725 -426.488 16.0739 -424.964L-55.067 -393.914C-61.7387 -391 -66 -384.742 -66 -377.847L-65.9695 -119.356C-65.9695 -115.585 -61.7895 -113.089 -58.1384 -114.68L-25.2072 -129.062C-22.0036 -130.462 -18.3015 -130.462 -15.0877 -129.071L106.416 -76.4016C110.393 -74.6777 110.403 -69.3822 106.426 -67.6392L31.7462 -35.047C28.5121 -33.6373 24.8203 -35.847 24.8203 -39.1805V-79.3637C24.8203 -87.4498 29.8342 -94.8027 37.6653 -98.2124L152.65 -148.215C156.993 -150.101 161.956 -147.139 161.956 -142.653L161.956 -56.6672C161.956 -53.9337 163.644 -51.4383 166.299 -50.2859L200.583 -35.3041C203.756 -33.9231 207.386 -36.0851 207.386 -39.3615L207.386 -59.2102C207.386 -67.3154 212.411 -74.6777 220.272 -78.0779L300.297 -112.675C305.169 -114.78 310.732 -111.456 310.732 -106.427L310.732 -11.3648C310.732 -3.25959 305.708 4.10269 297.846 7.50287L217.801 42.0905C212.929 44.1953 207.366 40.8714 207.366 35.8425V14.4604C207.366 10.1649 204.712 6.26945 200.562 4.4503L139.666 -21.9607C135.863 -23.6274 131.5 -21.0273 131.5 -17.0938L131.5 86.7882M166.281 98.6523C118.572 77.8195 44.1159 45.3065 44.1159 45.3065C41.6242 44.2208 41.6242 40.8968 44.1159 39.811L111.034 9.76487C113.2 8.82196 113.2 5.94561 111.034 5.0027L76.8005 -9.94099C73.1494 -11.5411 68.9185 -11.5411 65.2674 -9.94099L-65.3288 47.0907L25.583 86.7882L247.183 -9.55048C250.966 -11.1982 253.387 -14.7413 253.387 -18.6462L253.387 -204.704C253.387 -208.38 251.108 -211.733 247.549 -213.285L213.173 -228.296C210.468 -229.477 207.366 -227.629 207.366 -224.829L207.386 -164.397C207.386 -158.101 214.373 -153.93 220.465 -156.596L380.881 -226.658C384.766 -228.353 389.21 -225.696 389.21 -221.686L389.21 -121.242C389.21 -116.823 384.308 -113.899 380.026 -115.766L309.414 -146.577C302.611 -149.548 298.268 -155.939 298.268 -162.959V-221.752C298.268 -227.277 301.685 -232.296 307.035 -234.629L379.05 -266.079C382.915 -267.765 382.905 -272.908 379.04 -274.593L262.255 -325.234C258.278 -326.958 258.268 -332.254 262.245 -333.997L336.925 -366.589C340.159 -367.999 343.851 -365.789 343.851 -362.455L343.851 -303.224C343.851 -295.137 338.837 -287.785 331.006 -284.375L216.021 -234.372C211.678 -232.486 206.715 -235.448 206.715 -239.934L206.715 -344.969C206.715 -347.702 205.027 -350.198 202.373 -351.35L168.089 -366.332C164.916 -367.713 161.285 -365.551 161.285 -362.275V-342.426C161.285 -334.321 156.261 -326.958 148.399 -323.558L35.3262 -274.593C30.4546 -272.489 24.8915 -275.813 24.8915 -280.841L24.8915 -375.904C24.8915 -384.009 29.9156 -391.371 37.7772 -394.772L150.85 -443.737C155.722 -445.842 161.285 -442.518 161.285 -437.489V-416.106C161.285 -411.811 163.939 -407.915 168.089 -406.096L244.701 -372.599C248.505 -370.932 252.868 -373.532 252.868 -377.466L252.868 -481.348C252.868 -485.653 250.193 -489.568 246.023 -491.378L169.401 -524.56C165.597 -526.208 161.254 -523.608 161.254 -519.684V-496.578C161.254 -491.597 164.336 -487.073 169.157 -484.968L291.322 -431.622C293.813 -430.536 293.813 -427.212 291.322 -426.126L257.617 -411.411C255.451 -410.468 255.451 -407.591 257.617 -406.648L291.85 -391.705C295.502 -390.105 299.732 -390.105 303.383 -391.705L434 -448.699L343.088 -488.397L121.489 -392.076C117.705 -390.428 115.285 -386.885 115.285 -382.98L115.285 -196.923C115.285 -193.246 117.563 -189.894 121.122 -188.341L155.498 -173.331C158.203 -172.15 161.305 -173.997 161.305 -176.798L161.285 -237.23C161.285 -243.525 154.298 -247.697 148.206 -245.03L-12.2096 -174.978C-16.0946 -173.283 -20.539 -175.94 -20.539 -179.95L-20.539 -280.394C-20.539 -284.813 -15.6369 -287.737 -11.3552 -285.87L59.2567 -255.059C66.0606 -252.087 70.4034 -245.697 70.4034 -238.677L70.4034 -179.884C70.4034 -174.359 66.9861 -169.34 61.6366 -167.007L-8.56866 -136.348"
-            opacity="0.17"
-            stroke="url(#paint0_linear_89426_105396)"
-            stroke-miterlimit="10"
-          />
-          <defs>
-            <lineargradient
-              gradientUnits="userSpaceOnUse"
-              id="paint0_linear_89426_105396"
-              x1="162.854"
-              x2="160.504"
-              y1="63.9672"
-              y2="-544.656"
-            >
-              <stop
-                stop-color="#6F9ADA"
-              />
-              <stop
-                offset="1"
-                stop-color="white"
-              />
-            </lineargradient>
-          </defs>
-        </svg>
       </div>
     </div>
   </div>
