@@ -1,6 +1,11 @@
+import { throwBladeError } from '../logger';
 /**
  * FireNativeEvent is not supported on react-native
  */
+
 export const FireNativeEvent = (): void => {
-  throw new Error('FireNativeEvent is not supported on react-native');
+  throwBladeError({
+    message: 'FireNativeEvent is not supported on react-native',
+    moduleName: 'FireNativeEvent',
+  });
 };
