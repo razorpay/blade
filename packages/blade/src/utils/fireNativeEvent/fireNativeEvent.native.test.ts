@@ -1,7 +1,9 @@
 import { fireNativeEvent } from './fireNativeEvent.native';
 
 describe('fireNativeEvent', () => {
-  it('should throw error', () => {
-    expect(() => fireNativeEvent()).toThrowError();
+  it('should throw specific error', () => {
+    expect(() => fireNativeEvent()).toThrowError(
+      '[Blade: FireNativeEvent]: FireNativeEvent is not supported on react-native',
+    );
   });
 });
