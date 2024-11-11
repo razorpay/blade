@@ -10,7 +10,8 @@
     "moduleResolution": "Node",
     "strict": true,
     "skipLibCheck": true,
-    "typeRoots": ["./node_modules/@figma", "./node_modules/@types"],
-    "target": "ESNext"
-  }
+    "typeRoots": ["node_modules/@figma", "node_modules/@types"],
+    "target": "ESNext",
+  },
+  "include": ["./**/*.tsx", "./**/*.tsx"]
 }

@@ -2,10 +2,27 @@
 import Checkbox from '../components/Checkbox';
 import SectionHeader from '../components/SectionHeader';
 import ProgressBar from '../components/ProgressBar';
-const { AutoLayout, Text, useSyncedState } = figma.widget;
+import { sendAnalytics } from '../utils/sendAnalytics';
+const { AutoLayout, Text, useSyncedState, useEffect, waitForTask } = figma.widget;
 
 function Widget() {
   const [checkedItems, setCheckedItems] = useSyncedState('checkedStates', 0);
+  const [isAnalyticsLoadEventSent, setIsAnalyticsLoadEventSent] = useSyncedState(
+    'analytics',
+    false,
+  );
+
+  useEffect(() => {
+    if (!isAnalyticsLoadEventSent) {
+      // send analytics
+      waitForTask(
+        sendAnalytics({
+          eventName: 'Blade Snowflake Handoff Checklist Used',
+        }),
+      );
+      setIsAnalyticsLoadEventSent(true);
+    }
+  });
 
   const updateChecklist = (checkedState: true | false): void => {
     if (checkedState) {
