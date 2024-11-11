@@ -56,10 +56,5 @@ describe('<DatePicker/> ', () => {
     await user.click(applyButton);
     expect(handleChange).toBeCalled();
     expect(handleInput).toBeCalled();
-
-    await waitFor(() => {
-      expect(handleInput).toHaveBeenCalled();
-      expect(handleChange).toHaveBeenCalled();
-    });
   });
 });
