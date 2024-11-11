@@ -350,8 +350,9 @@ exports[`Drawer renders a Drawer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c23.c23.c23.c23.c23:hover {
+.c23.c23.c23.c23.c23:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c23.c23.c23.c23.c23:focus-visible {

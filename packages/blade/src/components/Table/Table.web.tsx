@@ -41,6 +41,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useIsMobile } from '~utils/useIsMobile';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -153,9 +154,13 @@ const _Table = <Item,>({
   const [headerRowDensity, setHeaderRowDensity] = React.useState<TableHeaderRowProps['rowDensity']>(
     undefined,
   );
+  const [hasHoverActions, setHasHoverActions] = React.useState(false);
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
+
+  const isMobile = useIsMobile();
+  const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
 
   const {
     isEntering: isRefreshSpinnerEntering,
@@ -227,10 +232,13 @@ const _Table = <Item,>({
       theme.colors.surface.border.gray.muted
     };
     --data-table-library_grid-template-columns: ${
-      gridTemplateColumns ??
-      ` ${
-        selectionType === 'multiple' ? 'min-content' : ''
-      } repeat(${columnCount},minmax(100px, 1fr)) !important;`
+      gridTemplateColumns
+        ? `${gridTemplateColumns} ${hasHoverActions ? lastHoverActionsColWidth : ''}`
+        : ` ${
+            selectionType === 'multiple' ? 'min-content' : ''
+          } repeat(${columnCount},minmax(100px, 1fr)) ${
+            hasHoverActions ? lastHoverActionsColWidth : ''
+          } !important;`
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,
@@ -423,6 +431,8 @@ const _Table = <Item,>({
       headerRowDensity,
       setHeaderRowDensity,
       showBorderedCells,
+      hasHoverActions,
+      setHasHoverActions,
     }),
     [
       selectionType,
@@ -446,6 +456,8 @@ const _Table = <Item,>({
       headerRowDensity,
       setHeaderRowDensity,
       showBorderedCells,
+      hasHoverActions,
+      setHasHoverActions,
     ],
   );
 
@@ -461,7 +473,7 @@ const _Table = <Item,>({
           {...getStyledProps(styledProps)}
           {...metaAttribute({ name: MetaConstants.Table })}
         >
-          <Spinner accessibilityLabel="Loading Table" size="large" />
+          <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
         </BaseBox>
       ) : (
         <BaseBox

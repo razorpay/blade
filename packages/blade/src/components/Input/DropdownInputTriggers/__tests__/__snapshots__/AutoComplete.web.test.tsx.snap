@@ -651,8 +651,9 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c36.c36.c36.c36.c36:hover {
+.c36.c36.c36.c36.c36:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c36.c36.c36.c36.c36:focus-visible {

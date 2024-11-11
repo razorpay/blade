@@ -42,6 +42,10 @@ exports[`Menu renders a Menu 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
+  margin-bottom: 8px;
+}
+
+.c9.c9.c9.c9.c9 {
   padding-right: 8px;
   padding-left: 8px;
   margin-bottom: 8px;
@@ -49,7 +53,7 @@ exports[`Menu renders a Menu 1`] = `
   touch-action: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,7 +67,7 @@ exports[`Menu renders a Menu 1`] = `
   user-select: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -82,13 +86,13 @@ exports[`Menu renders a Menu 1`] = `
   margin-right: auto;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -101,7 +105,7 @@ exports[`Menu renders a Menu 1`] = `
   flex-shrink: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -120,11 +124,11 @@ exports[`Menu renders a Menu 1`] = `
   width: 100%;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   width: 100%;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   margin-bottom: 2px;
   margin-top: 2px;
   margin-right: -8px;
@@ -133,7 +137,7 @@ exports[`Menu renders a Menu 1`] = `
   border-bottom-style: solid;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -149,7 +153,7 @@ exports[`Menu renders a Menu 1`] = `
   width: 100%;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -165,7 +169,7 @@ exports[`Menu renders a Menu 1`] = `
   height: 20px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -177,7 +181,7 @@ exports[`Menu renders a Menu 1`] = `
   padding-left: 0px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -192,11 +196,11 @@ exports[`Menu renders a Menu 1`] = `
   height: 20px;
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
   margin-left: auto;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -208,15 +212,15 @@ exports[`Menu renders a Menu 1`] = `
   padding-left: 8px;
 }
 
-.c31.c31.c31.c31.c31 {
-  margin-top: 4px;
+.c32.c32.c32.c32.c32 {
+  margin-top: 8px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c33.c33.c33.c33.c33 {
   padding: 8px 8px 0px 8px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   border-width: 0px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -237,12 +241,12 @@ exports[`Menu renders a Menu 1`] = `
   padding: 4px;
 }
 
-.c20.c20.c20.c20.c20:hover:not([aria-disabled=true]),
-.c20.c20.c20.c20.c20[aria-expanded="true"] {
+.c21.c21.c21.c21.c21:hover:not([aria-disabled=true]),
+.c21.c21.c21.c21.c21[aria-expanded="true"] {
   background-color: hsla(211,20%,52%,0.12);
 }
 
-.c20.c20.c20.c20.c20:focus-visible {
+.c21.c21.c21.c21.c21:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -253,15 +257,15 @@ exports[`Menu renders a Menu 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c20.c20.c20.c20.c20[aria-selected=true] {
+.c21.c21.c21.c21.c21[aria-selected=true] {
   background-color: hsla(227,100%,59%,0.09);
 }
 
-.c20.c20.c20.c20.c20[aria-selected=true]:hover {
+.c21.c21.c21.c21.c21[aria-selected=true]:hover {
   background-color: hsla(227,100%,59%,0.18);
 }
 
-.c29.c29.c29.c29.c29 {
+.c30.c30.c30.c30.c30 {
   border-width: 0px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -282,12 +286,12 @@ exports[`Menu renders a Menu 1`] = `
   padding: 4px;
 }
 
-.c29.c29.c29.c29.c29:hover:not([aria-disabled=true]),
-.c29.c29.c29.c29.c29[aria-expanded="true"] {
+.c30.c30.c30.c30.c30:hover:not([aria-disabled=true]),
+.c30.c30.c30.c30.c30[aria-expanded="true"] {
   background-color: hsla(4,74%,49%,0.09);
 }
 
-.c29.c29.c29.c29.c29:focus-visible {
+.c30.c30.c30.c30.c30:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -298,11 +302,11 @@ exports[`Menu renders a Menu 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c29.c29.c29.c29.c29[aria-selected=true] {
+.c30.c30.c30.c30.c30[aria-selected=true] {
   background-color: hsla(227,100%,59%,0.09);
 }
 
-.c29.c29.c29.c29.c29[aria-selected=true]:hover {
+.c30.c30.c30.c30.c30[aria-selected=true]:hover {
   background-color: hsla(227,100%,59%,0.18);
 }
 
@@ -324,7 +328,7 @@ exports[`Menu renders a Menu 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -343,7 +347,7 @@ exports[`Menu renders a Menu 1`] = `
   margin-top: 1px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -360,7 +364,7 @@ exports[`Menu renders a Menu 1`] = `
   padding: 0;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -377,7 +381,7 @@ exports[`Menu renders a Menu 1`] = `
   padding: 0;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -401,7 +405,7 @@ exports[`Menu renders a Menu 1`] = `
   word-break: break-all;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -418,7 +422,7 @@ exports[`Menu renders a Menu 1`] = `
   padding: 0;
 }
 
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -446,7 +450,7 @@ exports[`Menu renders a Menu 1`] = `
   outline: none;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -570,43 +574,43 @@ exports[`Menu renders a Menu 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c20.c20.c20.c20.c20 {
+  .c21.c21.c21.c21.c21 {
     padding: 8px;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c29.c29.c29.c29.c29 {
+  .c30.c30.c30.c30.c30 {
     padding: 8px;
   }
 }
@@ -688,12 +692,12 @@ exports[`Menu renders a Menu 1`] = `
         style="transform: translateY(-8px); opacity: 0;"
       >
         <div
-          class=""
-          data-blade-component="menu-header"
+          class="c8"
+          data-blade-component="box"
         >
           <div
-            class="c8"
-            data-blade-component="base-box"
+            class=""
+            data-blade-component="menu-header"
           >
             <div
               class="c9"
@@ -711,74 +715,79 @@ exports[`Menu renders a Menu 1`] = `
                     class="c12"
                     data-blade-component="base-box"
                   >
-                    <p
+                    <div
                       class="c13"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c14"
+                        data-blade-component="text"
+                      >
+                        Header Title
+                      </p>
+                    </div>
+                    <p
+                      class="c15"
                       data-blade-component="text"
                     >
-                      Header Title
+                      Subtitle
                     </p>
                   </div>
-                  <p
-                    class="c14"
-                    data-blade-component="text"
-                  >
-                    Subtitle
-                  </p>
                 </div>
               </div>
-            </div>
-            <div
-              class="c15"
-              data-blade-component="base-box"
-            >
               <div
                 class="c16"
-                data-blade-component="box"
-              />
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c17"
+                  data-blade-component="box"
+                />
+              </div>
             </div>
           </div>
+          <div
+            class="c18 c19"
+            data-blade-component="divider"
+            role="separator"
+          />
         </div>
-        <div
-          class="c17 c18"
-          data-blade-component="divider"
-          role="separator"
-        />
         <div
           class=""
           data-blade-component="box"
         >
           <p
-            class="c19"
+            class="c20"
             data-blade-component="text"
           >
             Custom Slot
           </p>
         </div>
         <a
-          class=" c20"
+          class=" c21"
           data-blade-component="base-box"
           href="/accounts"
           role="menuitem"
           type="button"
         >
           <div
-            class="c21"
+            class="c22"
             data-blade-component="box"
           >
             <div
-              class="c22"
+              class="c23"
               data-blade-component="box"
             />
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             >
               <div
-                class="c24"
+                class="c25"
                 data-blade-component="box"
               >
                 <p
-                  class="c25"
+                  class="c26"
                   data-blade-component="text"
                 >
                   Account
@@ -789,7 +798,7 @@ exports[`Menu renders a Menu 1`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c14"
+                  class="c15"
                   data-blade-component="text"
                 >
                   Accounts
@@ -797,23 +806,23 @@ exports[`Menu renders a Menu 1`] = `
               </div>
             </div>
             <div
-              class="c26"
+              class="c27"
               data-blade-component="box"
             />
           </div>
         </a>
         <button
-          class=" c20"
+          class=" c21"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c21"
+            class="c22"
             data-blade-component="box"
           >
             <div
-              class="c22"
+              class="c23"
               data-blade-component="box"
             >
               <svg
@@ -840,15 +849,15 @@ exports[`Menu renders a Menu 1`] = `
               </svg>
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             >
               <div
-                class="c24"
+                class="c25"
                 data-blade-component="box"
               >
                 <p
-                  class="c25"
+                  class="c26"
                   data-blade-component="text"
                 >
                   Profile
@@ -860,35 +869,35 @@ exports[`Menu renders a Menu 1`] = `
               />
             </div>
             <div
-              class="c26"
+              class="c27"
               data-blade-component="box"
             />
           </div>
         </button>
         <button
-          class=" c20"
+          class=" c21"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c21"
+            class="c22"
             data-blade-component="box"
           >
             <div
-              class="c22"
+              class="c23"
               data-blade-component="box"
             />
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             >
               <div
-                class="c24"
+                class="c25"
                 data-blade-component="box"
               >
                 <p
-                  class="c25"
+                  class="c26"
                   data-blade-component="text"
                 >
                   Settings
@@ -900,11 +909,11 @@ exports[`Menu renders a Menu 1`] = `
               />
             </div>
             <div
-              class="c26"
+              class="c27"
               data-blade-component="box"
             >
               <p
-                class="c28"
+                class="c29"
                 data-blade-component="text"
               >
                 Cmd + S
@@ -915,30 +924,30 @@ exports[`Menu renders a Menu 1`] = `
         <button
           aria-expanded="false"
           aria-haspopup="menu"
-          class=" c20"
+          class=" c21"
           data-blade-component="base-box"
           id=":r6:"
           role="menuitem"
           type="button"
         >
           <div
-            class="c21"
+            class="c22"
             data-blade-component="box"
           >
             <div
-              class="c22"
+              class="c23"
               data-blade-component="box"
             />
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             >
               <div
-                class="c24"
+                class="c25"
                 data-blade-component="box"
               >
                 <p
-                  class="c25"
+                  class="c26"
                   data-blade-component="text"
                 >
                   Share
@@ -950,7 +959,7 @@ exports[`Menu renders a Menu 1`] = `
               />
             </div>
             <div
-              class="c26"
+              class="c27"
               data-blade-component="box"
             >
               <svg
@@ -974,29 +983,29 @@ exports[`Menu renders a Menu 1`] = `
           </div>
         </button>
         <button
-          class=" c29"
+          class=" c30"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c21"
+            class="c22"
             data-blade-component="box"
           >
             <div
-              class="c22"
+              class="c23"
               data-blade-component="box"
             />
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             >
               <div
-                class="c24"
+                class="c25"
                 data-blade-component="box"
               >
                 <p
-                  class="c30"
+                  class="c31"
                   data-blade-component="text"
                 >
                   Log Out
@@ -1008,26 +1017,26 @@ exports[`Menu renders a Menu 1`] = `
               />
             </div>
             <div
-              class="c26"
+              class="c27"
               data-blade-component="box"
             />
           </div>
         </button>
         <div
-          class="c31"
+          class="c32"
           data-blade-component="box"
         >
           <div
-            class="c17 c18"
+            class="c18 c19"
             data-blade-component="divider"
             role="separator"
           />
           <div
-            class="c32"
+            class="c33"
             data-blade-component="menu-footer"
           >
             <p
-              class="c19"
+              class="c20"
               data-blade-component="text"
             >
               Footer slot

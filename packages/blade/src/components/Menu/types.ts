@@ -114,7 +114,7 @@ type MenuOverlayProps = {
   /**
    * JSX Slot for MenuItem or anything else
    */
-  children: React.ReactElement[] | React.ReactElement;
+  children: React.ReactElement[] | React.ReactElement | React.ReactNode;
 
   /**
    * zIndex override

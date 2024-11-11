@@ -597,7 +597,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
                             alt=""
                             loading="lazy"
                             role="presentation"
-                            src="https://unpkg.com/@razorpay/i18nify-js/lib/assets/flags/IN.svg"
+                            src="https://unpkg.com/@razorpay/i18nify-js/lib/assets/flags/in.svg"
                             width="20px"
                           />
                           <div
@@ -1271,7 +1271,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
                             alt=""
                             loading="lazy"
                             role="presentation"
-                            src="https://unpkg.com/@razorpay/i18nify-js/lib/assets/flags/IN.svg"
+                            src="https://unpkg.com/@razorpay/i18nify-js/lib/assets/flags/in.svg"
                             width="24px"
                           />
                           <div
