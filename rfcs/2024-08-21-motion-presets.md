@@ -384,6 +384,21 @@ It requires additional wrapper of AnimatePresence around the route. You can chec
 
 Detailed docs and examples will be added post implementation.
 
+### View Transitions API for MPA
+
+There is new experimental view transitions API that is available inside a flag in chrome.
+
+Although we explored it, we're not planning to build presets around it yet since
+
+1. Lack of browser support in modern browsers
+2. The syntax being CSS so requires different exploration than our other framer motion presets
+3. Rare usecase because its only valid in cross-application navigations such as navigating to dashboard post login
+4. The syntax of view-transition for MPA has changed in the past and might change again since its not well adopted yet.
+
+https://stackblitz.com/edit/stackblitz-starters-jevyms?description=HTML/CSS/JS%20Starter&file=script.js,styles.css,page2.html&terminalHeight=10&title=Static%20Starter
+
+**Conclusion:** Thus we can wait for some time for it to mature and be supported in browsers. Framer Motion itself might come up with some wrappers on top of their API to support this which will make it easier for us to implement presets
+
 ## Library Comparison
 
 ### Goals of Ideal Library
