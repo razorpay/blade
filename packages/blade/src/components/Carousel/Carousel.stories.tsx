@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title as AddonTitle } from '@storybook/addon-docs';
+import React from 'react';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';
 import { Box } from '~components/Box';
@@ -13,6 +14,7 @@ import { isReactNative } from '~utils';
 import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';
+import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {
   return (
@@ -429,6 +431,70 @@ AutoPlay.args = {
   visibleItems: 2,
 };
 AutoPlay.argTypes = {
+  shouldAddStartEndSpacing: {
+    table: {
+      disable: true,
+    },
+  },
+};
+
+export const Uncontrolled: StoryFn<typeof CarouselComponent> = (props) => {
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Text marginY="spacing.5">
+        Setting `defaultActiveSlide` you can provide the initial active slide and use the carousel
+        in an uncontrolled way.
+      </Text>
+      <CarouselExample
+        {...props}
+        defaultActiveSlide={2}
+        onChange={(slideIndex) => {
+          console.log('slideIndex', slideIndex);
+        }}
+      />
+    </Box>
+  );
+};
+
+Uncontrolled.args = {
+  visibleItems: 2,
+};
+Uncontrolled.argTypes = {
+  shouldAddStartEndSpacing: {
+    table: {
+      disable: true,
+    },
+  },
+};
+
+export const Controlled: StoryFn<typeof CarouselComponent> = (props) => {
+  const [activeSlide, setActiveSlide] = React.useState(0);
+
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Text marginY="spacing.5">
+        Setting <Code>activeSlide</Code> & <Code>onChange</Code> you can control the active slide
+        and use the carousel in a controlled way. Here the active slide is {activeSlide}
+      </Text>
+      <Button marginY="spacing.4" size="small" onClick={() => setActiveSlide(2)}>
+        Go to slide #3
+      </Button>
+      <CarouselExample
+        {...props}
+        activeSlide={activeSlide}
+        onChange={(slideIndex) => {
+          console.log('slideIndex', slideIndex);
+          setActiveSlide(slideIndex);
+        }}
+      />
+    </Box>
+  );
+};
+
+Controlled.args = {
+  visibleItems: 1,
+};
+Controlled.argTypes = {
   shouldAddStartEndSpacing: {
     table: {
       disable: true,
