@@ -1,4 +1,4 @@
-import { opacity } from './opacity';
+import { opacity } from './opacity'
 
 export type ColorChromaticScale = Readonly<{
   50: string;
