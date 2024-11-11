@@ -35,12 +35,18 @@ import BankIconComponent from './BankIcon';
 import BarChartAltIconComponent from './BarChartAltIcon';
 import BarChartIconComponent from './BarChartIcon';
 import BarCodeIconComponent from './BarCodeIcon';
+import Battery100PercentIconComponent from './Battery100PercentIcon';
+import Battery20PercentIconComponent from './Battery20PercentIcon';
+import Battery40PercentIconComponent from './Battery40PercentIcon';
+import Battery60PercentIconComponent from './Battery60PercentIcon';
+import Battery80PercentIconComponent from './Battery80PercentIcon';
 import BatteryChargingIconComponent from './BatteryChargingIcon';
 import BatteryIconComponent from './BatteryIcon';
 import BellIconComponent from './BellIcon';
 import BellOffIconComponent from './BellOffIcon';
 import BfsiIconComponent from './BfsiIcon';
 import BillIconComponent from './BillIcon';
+import BillMeIconComponent from './BillMeIcon';
 import BluetoothIconComponent from './BluetoothIcon';
 import BoldIconComponent from './BoldIcon';
 import BookIconComponent from './BookIcon';
@@ -204,6 +210,7 @@ import MoveIconComponent from './MoveIcon';
 import MusicIconComponent from './MusicIcon';
 import MyAccountIconComponent from './MyAccountIcon';
 import NavigationIconComponent from './NavigationIcon';
+import NoSignalIconComponent from './NoSignalIcon';
 import OctagonIconComponent from './OctagonIcon';
 import OffersIconComponent from './OffersIcon';
 import OptimizerIconComponent from './OptimizerIcon';
@@ -272,6 +279,12 @@ import ShoppingBagIconComponent from './ShoppingBagIcon';
 import ShoppingCartIconComponent from './ShoppingCartIcon';
 import ShuffleIconComponent from './ShuffleIcon';
 import SidebarIconComponent from './SidebarIcon';
+import Signal0BarIconComponent from './Signal0BarIcon';
+import Signal1BarIconComponent from './Signal1BarIcon';
+import Signal2BarIconComponent from './Signal2BarIcon';
+import Signal3BarIconComponent from './Signal3BarIcon';
+import Signal4BarIconComponent from './Signal4BarIcon';
+import SimCardIconComponent from './SimCardIcon';
 import SkipBackIconComponent from './SkipBackIcon';
 import SkipForwardIconComponent from './SkipForwardIcon';
 import SlackIconComponent from './SlackIcon';
@@ -318,6 +331,7 @@ import UmbrellaIconComponent from './UmbrellaIcon';
 import UnderlineIconComponent from './UnderlineIcon';
 import UnlockIconComponent from './UnlockIcon';
 import UpiAutopayIconComponent from './UpiAutopayIcon';
+import UpiIconComponent from './UpiIcon';
 import UploadCloudIconComponent from './UploadCloudIcon';
 import UploadIconComponent from './UploadIcon';
 import UserCheckIconComponent from './UserCheckIcon';
@@ -342,6 +356,7 @@ import WifiOffIconComponent from './WifiOffIcon';
 import WindIconComponent from './WindIcon';
 import XCircleIconComponent from './XCircleIcon';
 import XSquareIconComponent from './XSquareIcon';
+import YoutubeIconComponent from './YoutubeIcon';
 import ZapIconComponent from './ZapIcon';
 import ZoomInIconComponent from './ZoomInIcon';
 import ZoomOutIconComponent from './ZoomOutIcon';
@@ -383,12 +398,18 @@ const iconMap: Record<string, IconComponent> = {
   BarChartAltIcon: BarChartAltIconComponent,
   BarChartIcon: BarChartIconComponent,
   BarCodeIcon: BarCodeIconComponent,
+  Battery100PercentIcon: Battery100PercentIconComponent,
+  Battery20PercentIcon: Battery20PercentIconComponent,
+  Battery40PercentIcon: Battery40PercentIconComponent,
+  Battery60PercentIcon: Battery60PercentIconComponent,
+  Battery80PercentIcon: Battery80PercentIconComponent,
   BatteryChargingIcon: BatteryChargingIconComponent,
   BatteryIcon: BatteryIconComponent,
   BellIcon: BellIconComponent,
   BellOffIcon: BellOffIconComponent,
   BfsiIcon: BfsiIconComponent,
   BillIcon: BillIconComponent,
+  BillMeIcon: BillMeIconComponent,
   BluetoothIcon: BluetoothIconComponent,
   BoldIcon: BoldIconComponent,
   BookIcon: BookIconComponent,
@@ -552,6 +573,7 @@ const iconMap: Record<string, IconComponent> = {
   MusicIcon: MusicIconComponent,
   MyAccountIcon: MyAccountIconComponent,
   NavigationIcon: NavigationIconComponent,
+  NoSignalIcon: NoSignalIconComponent,
   OctagonIcon: OctagonIconComponent,
   OffersIcon: OffersIconComponent,
   OptimizerIcon: OptimizerIconComponent,
@@ -620,6 +642,12 @@ const iconMap: Record<string, IconComponent> = {
   ShoppingCartIcon: ShoppingCartIconComponent,
   ShuffleIcon: ShuffleIconComponent,
   SidebarIcon: SidebarIconComponent,
+  Signal0BarIcon: Signal0BarIconComponent,
+  Signal1BarIcon: Signal1BarIconComponent,
+  Signal2BarIcon: Signal2BarIconComponent,
+  Signal3BarIcon: Signal3BarIconComponent,
+  Signal4BarIcon: Signal4BarIconComponent,
+  SimCardIcon: SimCardIconComponent,
   SkipBackIcon: SkipBackIconComponent,
   SkipForwardIcon: SkipForwardIconComponent,
   SlackIcon: SlackIconComponent,
@@ -666,6 +694,7 @@ const iconMap: Record<string, IconComponent> = {
   UnderlineIcon: UnderlineIconComponent,
   UnlockIcon: UnlockIconComponent,
   UpiAutopayIcon: UpiAutopayIconComponent,
+  UpiIcon: UpiIconComponent,
   UploadCloudIcon: UploadCloudIconComponent,
   UploadIcon: UploadIconComponent,
   UserCheckIcon: UserCheckIconComponent,
@@ -690,6 +719,7 @@ const iconMap: Record<string, IconComponent> = {
   WindIcon: WindIconComponent,
   XCircleIcon: XCircleIconComponent,
   XSquareIcon: XSquareIconComponent,
+  YoutubeIcon: YoutubeIconComponent,
   ZapIcon: ZapIconComponent,
   ZoomInIcon: ZoomInIconComponent,
   ZoomOutIcon: ZoomOutIconComponent,
