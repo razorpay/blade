@@ -8,6 +8,8 @@ import type { CarouselProps } from '../';
 import { Carousel as CarouselComponent } from '../';
 import { CarouselExample } from '../Carousel.stories';
 import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
+import { Button } from '~components/Button';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -189,6 +191,53 @@ TestOnChangeParentUpdate.play = async ({ canvasElement }) => {
   await sleep(1000);
   await expect(multipleOnChange).toBeCalledWith(0);
   await expect(multipleOnChange).toBeCalledTimes(2);
+};
+
+const controlledOnChange = jest.fn();
+export const TestControlledCarousel: StoryFn<typeof CarouselComponent> = (
+  props,
+): React.ReactElement => {
+  const [activeIndex, setActiveIndex] = React.useState(3);
+
+  return (
+    <Box>
+      <Text>Current slide: {activeIndex}</Text>
+      <Button
+        onClick={() => {
+          setActiveIndex(5);
+        }}
+      >
+        Change slide
+      </Button>
+      <BasicCarousel
+        {...props}
+        visibleItems={1}
+        activeSlide={activeIndex}
+        onChange={(index) => {
+          console.log('index', index);
+          setActiveIndex(index);
+          controlledOnChange(index);
+        }}
+      />
+    </Box>
+  );
+};
+
+TestControlledCarousel.play = async ({ canvasElement }) => {
+  const { getByText, getByRole } = within(canvasElement);
+  await sleep(1000);
+  await expect(controlledOnChange).not.toBeCalled();
+  await expect(getByText('Current slide: 3')).toBeInTheDocument();
+  const goToBtn = getByRole('button', { name: 'Change slide' });
+  await userEvent.click(goToBtn);
+  await expect(getByText('Current slide: 5')).toBeInTheDocument();
+  await sleep(1000);
+  await expect(controlledOnChange).not.toBeCalled();
+  const nextButton = getByRole('button', { name: 'Next Slide' });
+  await userEvent.click(nextButton);
+  await sleep(1000);
+  await expect(controlledOnChange).toBeCalledWith(6);
+  await expect(controlledOnChange).toBeCalledTimes(1);
 };
 
 export default {

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "jsxFactory": "figma.widget.h",
     "jsxFragmentFactory": "figma.widget.Fragment",
     "lib": ["DOM", "ES2020"],
