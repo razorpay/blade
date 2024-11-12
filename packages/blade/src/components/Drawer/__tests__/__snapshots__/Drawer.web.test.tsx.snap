@@ -169,11 +169,15 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
+  width: 100%;
+}
+
+.c26.c26.c26.c26.c26 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   overflow: auto;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -233,7 +237,7 @@ exports[`Drawer renders a Drawer 1`] = `
   animation-fill-mode: initial;
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -258,6 +262,7 @@ exports[`Drawer renders a Drawer 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
   margin-top: 1px;
 }
 
@@ -301,7 +306,7 @@ exports[`Drawer renders a Drawer 1`] = `
   padding: 0;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -345,8 +350,9 @@ exports[`Drawer renders a Drawer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c23.c23.c23.c23.c23:hover {
+.c23.c23.c23.c23.c23:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c23.c23.c23.c23.c23:focus-visible {
@@ -477,31 +483,31 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
@@ -692,23 +698,23 @@ exports[`Drawer renders a Drawer 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class=""
+          class="c25"
           data-blade-component="box"
         />
       </div>
     </div>
     <div
-      class="c25 c26"
+      class="c26 c27"
       data-blade-component="divider"
       role="separator"
     />
   </div>
   <div
-    class="c27"
+    class="c28"
     data-blade-component="box"
   >
     <p
-      class="c28"
+      class="c29"
       data-blade-component="text"
     >
       Test Content

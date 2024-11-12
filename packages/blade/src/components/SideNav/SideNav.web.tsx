@@ -37,12 +37,12 @@ const MobileL1Container = styled(BaseBox)(() => {
 });
 
 const StyledL1Menu = styled(BaseBox)((props) => {
-  const moderate = makeMotionTime(props.theme.motion.duration.moderate);
-  const gentle = makeMotionTime(props.theme.motion.duration.gentle);
+  const quick = makeMotionTime(props.theme.motion.duration.quick);
+  const xmoderate = makeMotionTime(props.theme.motion.duration.xmoderate);
   const easing = props.theme.motion.easing;
 
-  const l1Expand = `width ${gentle} ${easing.entrance}`;
-  const l1Collapse = `width ${moderate} ${easing.exit}`;
+  const l1Expand = `width ${xmoderate} ${easing.entrance}`;
+  const l1Collapse = `width ${quick} ${easing.exit}`;
 
   return {
     width: '100%',

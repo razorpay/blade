@@ -33,9 +33,6 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -152,10 +149,11 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -268,6 +266,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -524,7 +523,6 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
           <span
             class="c19"
             data-blade-component="base-box"
-            style="word-break: break-all;"
           >
             <span
               class="c20"
@@ -573,9 +571,6 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -692,10 +687,11 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -808,6 +804,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -1064,7 +1061,6 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
           <span
             class="c19"
             data-blade-component="base-box"
-            style="word-break: break-all;"
           >
             <span
               class="c20"
@@ -1113,9 +1109,6 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1232,10 +1225,11 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1344,6 +1338,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -1592,7 +1587,6 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
           <span
             class="c19"
             data-blade-component="base-box"
-            style="word-break: break-all;"
           >
             <span
               class="c20"

@@ -116,6 +116,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -672,6 +673,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -1042,6 +1044,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -1114,6 +1117,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -1183,6 +1187,7 @@ exports[`<Card /> should render a plain Card 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {

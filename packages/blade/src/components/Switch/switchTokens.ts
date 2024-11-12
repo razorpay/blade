@@ -87,9 +87,9 @@ const switchMotion = {
     track: 'motion.easing.standard',
   },
   duration: {
-    thumb: 'motion.duration.xquick',
-    thumbIcon: 'motion.duration.xquick',
-    track: 'motion.duration.xquick',
+    thumb: 'motion.duration.quick',
+    thumbIcon: 'motion.duration.quick',
+    track: 'motion.duration.quick',
   },
 } as const;
 

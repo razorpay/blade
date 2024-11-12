@@ -36,6 +36,8 @@ const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement 
     [children],
   );
 
+  console.log({ actionListOptions });
+
   React.useEffect(() => {
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps

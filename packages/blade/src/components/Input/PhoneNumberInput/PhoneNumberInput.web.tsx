@@ -109,6 +109,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     }
 
     return (Object.keys(flags) as CountryCodeType[])
+      .filter((countryCode) => !countryCode.includes('-')) // remove the non ISO 3166-1 alpha-2 country codes
       .map((countryCode) => {
         return {
           code: countryCode,

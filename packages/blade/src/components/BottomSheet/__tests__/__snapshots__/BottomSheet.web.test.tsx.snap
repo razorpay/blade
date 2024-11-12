@@ -199,8 +199,9 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16:hover {
+.c16.c16.c16.c16.c16:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c16.c16.c16.c16.c16:focus-visible {
@@ -965,11 +966,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c26.c26.c26.c26.c26 {
+  width: 100%;
+}
+
+.c27.c27.c27.c27.c27 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -980,7 +985,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-shrink: 1;
 }
 
-.c29.c29.c29.c29.c29 {
+.c30.c30.c30.c30.c30 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -988,7 +993,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding-left: 16px;
 }
 
-.c31.c31.c31.c31.c31 {
+.c32.c32.c32.c32.c32 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -999,11 +1004,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   touch-action: none;
 }
 
-.c32.c32.c32.c32.c32 {
+.c33.c33.c33.c33.c33 {
   padding: 16px;
 }
 
-.c35.c35.c35.c35.c35 {
+.c36.c36.c36.c36.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1073,8 +1078,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c24.c24.c24.c24.c24:hover {
+.c24.c24.c24.c24.c24:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c24.c24.c24.c24.c24:focus-visible {
@@ -1093,7 +1099,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   color: hsla(211,26%,34%,1);
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -1118,6 +1124,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
   margin-top: 1px;
 }
 
@@ -1162,7 +1169,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1179,7 +1186,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c37.c37.c37.c37.c37 {
+.c38.c38.c38.c38.c38 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1316,7 +1323,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   width: fit-content;
 }
 
-.c33.c33.c33.c33.c33 {
+.c34.c34.c34.c34.c34 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -1353,24 +1360,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   position: relative;
 }
 
-.c33.c33.c33.c33.c33:hover {
+.c34.c34.c34.c34.c34:hover {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c33.c33.c33.c33.c33:active {
+.c34.c34.c34.c34.c34:active {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c33.c33.c33.c33.c33:focus-visible {
+.c34.c34.c34.c34.c34:focus-visible {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c33.c33.c33.c33.c33 * {
+.c34.c34.c34.c34.c34 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
@@ -1379,7 +1386,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c34.c34.c34.c34.c34 {
+.c35.c35.c35.c35.c35 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1389,7 +1396,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: 150px;
 }
 
-.c36.c36.c36.c36.c36 {
+.c37.c37.c37.c37.c37 {
   opacity: 1;
 }
 
@@ -1418,37 +1425,37 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 @media screen and (min-width:320px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c32.c32.c32.c32.c32 {
+  .c33.c33.c33.c33.c33 {
     padding: 20px;
   }
 }
@@ -1615,30 +1622,30 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                 data-blade-component="base-box"
               >
                 <div
-                  class=""
+                  class="c26"
                   data-blade-component="box"
                 />
               </div>
             </div>
             <div
-              class="c26 c27"
+              class="c27 c28"
               data-blade-component="divider"
               role="separator"
             />
           </div>
         </div>
         <div
-          class="c28"
+          class="c29"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
           style="user-select: auto;"
         >
           <div
-            class="c29"
+            class="c30"
             data-blade-component="base-box"
           >
             <p
-              class="c30"
+              class="c31"
               data-blade-component="text"
             >
               BottomSheet body
@@ -1646,34 +1653,34 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
           </div>
         </div>
         <div
-          class="c31"
+          class="c32"
           data-blade-component="bottom-sheet-footer"
         >
           <div
-            class="c26 c27"
+            class="c27 c28"
             data-blade-component="divider"
             role="separator"
           />
           <div
-            class="c32"
+            class="c33"
             data-blade-component="base-box"
           >
             <button
-              class="c33"
+              class="c34"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c34"
+                class=" c35"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c35 c36"
+                  class="c36 c37"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c37"
+                    class="c38"
                     data-blade-component="base-text"
                   >
                     Remove address
@@ -1799,8 +1806,9 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:hover {
+.c8.c8.c8.c8.c8:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c8.c8.c8.c8.c8:focus-visible {

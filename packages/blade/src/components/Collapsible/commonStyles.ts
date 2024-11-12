@@ -28,7 +28,7 @@ const getCollapsibleBodyContentBoxProps = ({
 const getOpacity = ({ isExpanded }: { isExpanded: boolean }): number => (isExpanded ? 1 : 0.8);
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const getTransitionDuration = (theme: Theme) => makeMotionTime(theme.motion.duration.xmoderate);
+const getTransitionDuration = (theme: Theme) => makeMotionTime(theme.motion.duration.moderate);
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getTransitionEasing = (theme: Theme) => theme.motion.easing.standard;
