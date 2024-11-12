@@ -1,5 +1,6 @@
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Platform } from '~utils';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
@@ -14,6 +15,14 @@ type OverlayColor =
   | `overlay.${OverlayTokens}`;
 
 type CarouselProps = {
+  /**
+   * Sets the initial active slide index
+   */
+  defaultActiveSlide?: number;
+  /**
+   * Active slide index, if provided the carousel will be controlled
+   */
+  activeSlide?: number;
   /**
    * Accepts CarouselItem
    */
@@ -85,7 +94,7 @@ type CarouselProps = {
    */
   carouselItemAlignment?: BoxProps['alignItems'];
   /**
-   * Callback which gets fired everytime a slide changes, useful for analytic events (only runs on user interaction not on autoPlay)
+   * Callback which gets fired everytime a slide changes, can be used to to make the carousel controlled
    *
    * @default undefined
    */
@@ -96,6 +105,10 @@ type CarouselProps = {
    * @default undefined
    */
   accessibilityLabel?: string;
-};
+  /**
+   * Sets the height of the carousel
+   */
+  height?: BoxProps['height'];
+} & StyledPropsBlade;
 
 export type { CarouselProps };

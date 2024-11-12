@@ -356,6 +356,217 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 </View>
 `;
 
+exports[`<Amount /> should render Amount with negative sign 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="amount"
+    display="flex"
+    flexDirection="row"
+    style={
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="baseline"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      position="relative"
+      style={
+        [
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+            "position": "relative",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="regular"
+        lineHeight={100}
+        marginX="spacing.2"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 4,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        -
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={25}
+        fontWeight="regular"
+        marginRight="spacing.1"
+        opacity={0.64}
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 2,
+              "marginTop": 0,
+              "opacity": 0.64,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        ₹
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={100}
+          fontWeight="regular"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          10,000
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={25}
+          fontWeight="regular"
+          opacity={0.64}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "opacity": 0.64,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          .
+          00
+        </Text>
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Amount /> should render MYR currency Amount 1`] = `
 <View
   style={
@@ -2507,7 +2718,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
           ]
         }
       >
-        1T
+        1
+        T
       </Text>
     </View>
   </View>
@@ -2973,7 +3185,9 @@ exports[`<Amount /> should render information intent Amount  1`] = `
           ]
         }
       >
-        1,000.00
+        1,000
+        .
+        00
       </Text>
     </View>
   </View>

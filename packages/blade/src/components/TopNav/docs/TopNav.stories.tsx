@@ -1,14 +1,14 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
 import storyRouterDecorator from 'storybook-react-router';
 import { Title } from '@storybook/addon-docs';
+import styled from 'styled-components';
 import type { TopNavProps } from '../TopNav';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
 import type { TabNavItemProps } from '../TabNav';
-import { TabNav, TabNavItem } from '../TabNav';
+import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
 import { topNavFullExample } from './code';
 import { Box } from '~components/Box';
 import type { SideNavLinkProps, SideNavProps } from '~components/SideNav';
@@ -21,14 +21,16 @@ import {
 } from '~components/SideNav';
 import type { IconComponent } from '~components/Icons';
 import {
+  SearchIcon,
+  AcceptPaymentsIcon,
+  AwardIcon,
+  ShoppingBagIcon,
   ChevronDownIcon,
   ActivityIcon,
   AnnouncementIcon,
-  BulkPayoutsIcon,
   ChevronRightIcon,
   HomeIcon,
   LayoutIcon,
-  MenuIcon,
   PaymentButtonIcon,
   PaymentGatewayIcon,
   PaymentLinkIcon,
@@ -40,8 +42,7 @@ import { SearchInput } from '~components/Input/SearchInput';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
-import { useIsMobile } from '~utils/useIsMobile';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { Menu, MenuFooter, MenuHeader, MenuItem, MenuOverlay } from '~components/Menu';
 import { Link as BladeLink } from '~components/Link';
 import { Badge } from '~components/Badge';
@@ -50,7 +51,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 import { Alert } from '~components/Alert';
 import { List, ListItem } from '~components/List';
-import { makeSize } from '~utils';
+import { makeSize, useBreakpoint, useTheme } from '~utils';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
@@ -190,7 +191,7 @@ const ExploreItem = ({
   description,
 }: {
   icon: IconComponent;
-  title: string;
+  title?: string;
   description: string;
 }): React.ReactElement => {
   return (
@@ -214,134 +215,226 @@ const ExploreItem = ({
   );
 };
 
+const DashboardBackground = styled.div(() => {
+  return {
+    height: '100vh',
+    background: 'radial-gradient(94.74% 64.44% at 29.03% 15.17%, #FFFFFF 0%, #90A5BB 100%)',
+  };
+});
+
 const TopNavFullExample = () => {
-  const isMobile = useIsMobile();
   const history = useHistory();
+  const { theme } = useTheme();
+  const { matchedBreakpoint, matchedDeviceType } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
+  const isTablet = matchedBreakpoint === 'm';
+  const isMobile = matchedDeviceType === 'mobile';
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
+  const activeUrl = useLocation().pathname;
+  React.useEffect(() => {
+    setSelectedProduct(activeUrl);
+  }, [activeUrl]);
+
   return (
-    <BaseBox backgroundColor="surface.background.gray.subtle">
+    <DashboardBackground>
       <BaseBox backgroundColor="interactive.background.gray.default">
         <TopNav>
-          {/* TopNavBrand gets hidden on mobile */}
-          <TopNavBrand>
-            <RazorpayLogo />
-          </TopNavBrand>
-          <TopNavContent>
-            {/* Desktop - render TabNav */}
-            <TabNav display={{ base: 'none', m: 'flex' }}>
-              <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-              <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
-              <TabNavItemLink href="/payments">Payments</TabNavItemLink>
-              <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
-              <Menu openInteraction="hover">
-                <TabNavItemLink href="/explore" trailing={<ChevronDownIcon />}>
-                  {selectedProduct ? `Explore: ${selectedProduct}` : 'Explore'}
-                </TabNavItemLink>
+          {isMobile ? (
+            <>
+              <BladeLink icon={HomeIcon} size="medium" href="/home">
+                Home
+              </BladeLink>
+              <Heading textAlign="center" size="small" weight="semibold">
+                Payments
+              </Heading>
+              <Menu openInteraction="click">
+                <Avatar size="medium" name="Anurag Hazra" />
                 <MenuOverlay>
-                  <MenuHeader
-                    title="Products for you"
-                    trailing={
-                      <Badge emphasis="subtle" color="notice">
-                        Recommended
-                      </Badge>
-                    }
-                  />
-                  <MenuItem
-                    onClick={() => {
-                      history.push('/explore/payroll');
-                      setSelectedProduct('Payroll');
-                    }}
-                  >
-                    <ExploreItem
-                      icon={RazorpayxPayrollIcon}
-                      title="Payroll"
-                      description="Supercharge your process of paying salaries to your employees"
-                    />
+                  <MenuHeader title="Profile" />
+                  <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                    <Avatar size="medium" name="John Doe" />
+                    <Box display="flex" flexDirection="column" gap="spacing.2">
+                      <Text size="medium" weight="semibold">
+                        John Doe
+                      </Text>
+                      <Text size="xsmall" color="surface.text.gray.muted">
+                        Razorpay Trusted Merchant
+                      </Text>
+                    </Box>
+                  </Box>
+                  <MenuItem>
+                    <Text color="surface.text.gray.subtle">Settings</Text>
                   </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      history.push('/explore/payouts');
-                      setSelectedProduct('Payout');
-                    }}
-                  >
-                    <ExploreItem
-                      icon={BulkPayoutsIcon}
-                      title="Payout"
-                      description="Pay your vendors at ease with RazorpayX"
-                    />
+                  <MenuItem color="negative">
+                    <Text color="feedback.text.negative.intense">Logout</Text>
                   </MenuItem>
-                  <MenuFooter>
-                    <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
-                      View all products
-                    </BladeLink>
-                  </MenuFooter>
                 </MenuOverlay>
               </Menu>
-            </TabNav>
-            {/* Mobile - render hamburger button */}
-            <Box display={{ base: 'flex', m: 'none' }} gap="spacing.4" alignItems="center">
-              <Button
-                size="medium"
-                variant="tertiary"
-                icon={MenuIcon}
-                onClick={() => {
-                  setIsSideBarOpen(!isSideBarOpen);
-                }}
-              />
-              <Text>Home</Text>
-            </Box>
-          </TopNavContent>
-          <TopNavActions>
-            {/* Remove searchbar on mobile */}
-            <Box width={{ base: '220px', xl: '264px' }} display={{ base: 'none', m: 'block' }}>
-              <SearchInput
-                placeholder="Search in payments"
-                accessibilityLabel="Search Across Razorpay"
-              />
-            </Box>
-            <Tooltip content="View Ecosystem Health">
-              <Button size={isMobile ? 'small' : 'medium'} variant="tertiary" icon={ActivityIcon} />
-            </Tooltip>
-            <Tooltip content="View Announcements">
-              <Button
-                size={isMobile ? 'small' : 'medium'}
-                variant="tertiary"
-                icon={AnnouncementIcon}
-              />
-            </Tooltip>
-            <Menu openInteraction="click">
-              <Avatar size="medium" name="Anurag Hazra" />
-              <MenuOverlay>
-                <MenuHeader title="Profile" />
-                <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-                  <Avatar size="medium" name="John Doe" />
-                  <Box display="flex" flexDirection="column" gap="spacing.2">
-                    <Text size="medium" weight="semibold">
-                      John Doe
-                    </Text>
-                    <Text size="xsmall" color="surface.text.gray.muted">
-                      Razorpay Trusted Merchant
-                    </Text>
-                  </Box>
-                </Box>
-                <MenuItem>
-                  <Text color="surface.text.gray.subtle">Settings</Text>
-                </MenuItem>
-                <MenuItem color="negative">
-                  <Text color="feedback.text.negative.intense">Logout</Text>
-                </MenuItem>
-              </MenuOverlay>
-            </Menu>
-          </TopNavActions>
+            </>
+          ) : (
+            <>
+              <TopNavBrand>
+                <RazorpayLogo />
+              </TopNavBrand>
+              <TopNavContent>
+                <TabNav
+                  items={[
+                    { title: 'Home', href: '/home', icon: HomeIcon },
+                    {
+                      href: '/payroll',
+                      title: 'Payroll',
+                      icon: RazorpayxPayrollIcon,
+                      description: 'Automate payroll with ease.',
+                    },
+                    {
+                      href: '/payments',
+                      title: 'Payments',
+                      icon: AcceptPaymentsIcon,
+                      description: 'Manage payments effortlessly.',
+                    },
+                    {
+                      href: '/magic-checkout',
+                      title: 'Magic Checkout',
+                      icon: ShoppingBagIcon,
+                      description: 'Fast, one-click checkout.',
+                    },
+                    {
+                      href: '/rize',
+                      title: 'Rize',
+                      icon: AwardIcon,
+                      isAlwaysOverflowing: true,
+                      description: 'Boost your business growth.',
+                    },
+                  ]}
+                >
+                  {({ items, overflowingItems }) => {
+                    const activeProduct = overflowingItems.find(
+                      (item) => item.href === selectedProduct,
+                    );
+                    return (
+                      <>
+                        <TabNavItems>
+                          {items.map((item) => {
+                            return (
+                              <TabNavItemLink
+                                key={item.title}
+                                title={item.title}
+                                href={item.href}
+                                icon={item.icon}
+                              />
+                            );
+                          })}
+                        </TabNavItems>
+                        {overflowingItems.length ? (
+                          <Menu openInteraction="hover">
+                            <TabNavItem
+                              title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
+                              trailing={<ChevronDownIcon />}
+                              isActive={Boolean(activeProduct)}
+                            />
+                            <MenuOverlay>
+                              <MenuHeader
+                                title="Products for you"
+                                trailing={
+                                  <Badge emphasis="subtle" color="notice">
+                                    Recommended
+                                  </Badge>
+                                }
+                              />
+                              {overflowingItems.map((item) => {
+                                return (
+                                  <MenuItem
+                                    key={item.href}
+                                    onClick={() => {
+                                      history.push(item.href!);
+                                      setSelectedProduct(item.href!);
+                                    }}
+                                  >
+                                    <ExploreItem
+                                      icon={item.icon!}
+                                      title={item.title}
+                                      description={item.description!}
+                                    />
+                                  </MenuItem>
+                                );
+                              })}
+                              <MenuFooter>
+                                <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
+                                  View all products
+                                </BladeLink>
+                              </MenuFooter>
+                            </MenuOverlay>
+                          </Menu>
+                        ) : null}
+                      </>
+                    );
+                  }}
+                </TabNav>
+              </TopNavContent>
+              <TopNavActions>
+                {isTablet ? (
+                  <Tooltip content="Search in payments">
+                    <Button
+                      size={isMobile ? 'small' : 'medium'}
+                      variant="tertiary"
+                      icon={SearchIcon}
+                    />
+                  </Tooltip>
+                ) : (
+                  <SearchInput
+                    placeholder="Search in payments"
+                    accessibilityLabel="Search Across Razorpay"
+                  />
+                )}
+                <Tooltip content="View Ecosystem Health">
+                  <Button
+                    size={isMobile ? 'small' : 'medium'}
+                    variant="tertiary"
+                    icon={ActivityIcon}
+                  />
+                </Tooltip>
+                <Tooltip content="View Announcements">
+                  <Button
+                    size={isMobile ? 'small' : 'medium'}
+                    variant="tertiary"
+                    icon={AnnouncementIcon}
+                  />
+                </Tooltip>
+                <Menu openInteraction="click">
+                  <Avatar size="medium" name="Anurag Hazra" />
+                  <MenuOverlay>
+                    <MenuHeader title="Profile" />
+                    <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                      <Avatar size="medium" name="John Doe" />
+                      <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Text size="medium" weight="semibold">
+                          John Doe
+                        </Text>
+                        <Text size="xsmall" color="surface.text.gray.muted">
+                          Razorpay Trusted Merchant
+                        </Text>
+                      </Box>
+                    </Box>
+                    <MenuItem>
+                      <Text color="surface.text.gray.subtle">Settings</Text>
+                    </MenuItem>
+                    <MenuItem color="negative">
+                      <Text color="feedback.text.negative.intense">Logout</Text>
+                    </MenuItem>
+                  </MenuOverlay>
+                </Menu>
+              </TopNavActions>
+            </>
+          )}
         </TopNav>
         <Box
           overflow="hidden"
           position="relative"
-          borderWidth="thin"
-          borderColor="surface.border.gray.muted"
           borderRadius="large"
+          borderTopRightRadius="none"
           borderBottomLeftRadius="none"
           borderBottomRightRadius="none"
           height="100%"
@@ -369,7 +462,8 @@ const TopNavFullExample = () => {
               backgroundColor="surface.background.gray.intense"
             >
               <Box width={{ base: 'max-content', m: '100%' }} height="200vh">
-                <Text marginBottom="spacing.4">This demo integrates:</Text>
+                <Text weight="semibold">Active URL: {activeUrl}</Text>
+                <Text marginY="spacing.4">This demo integrates:</Text>
                 <List>
                   <ListItem>SideNav</ListItem>
                   <ListItem>Menu (Explore Tab)</ListItem>
@@ -382,25 +476,115 @@ const TopNavFullExample = () => {
           </Box>
         </Box>
       </BaseBox>
-    </BaseBox>
+    </DashboardBackground>
   );
 };
 const TopNavFullTemplate: StoryFn<typeof TopNav> = () => <TopNavFullExample />;
 
 const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
+  const history = useHistory();
+  const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
+
   return (
-    <BaseBox height="100vh" backgroundColor="surface.background.gray.subtle">
+    <DashboardBackground>
       <BaseBox backgroundColor="interactive.background.gray.default">
         <TopNav>
           <TopNavBrand>
             <RazorpayLogo />
           </TopNavBrand>
           <TopNavContent>
-            <TabNav>
-              <TabNavItemLink icon={HomeIcon} accessibilityLabel="Home" href="/home" />
-              <TabNavItemLink href="/payroll">Payroll</TabNavItemLink>
-              <TabNavItemLink href="/payments">Payments</TabNavItemLink>
-              <TabNavItemLink href="/magic-checkout">Magic Checkout</TabNavItemLink>
+            <TabNav
+              items={[
+                { title: 'Home', href: '/home', icon: HomeIcon },
+                {
+                  href: '/payroll',
+                  title: 'Payroll',
+                  icon: RazorpayxPayrollIcon,
+                  description: 'Automate payroll with ease.',
+                },
+                {
+                  href: '/payments',
+                  title: 'Payments',
+                  icon: AcceptPaymentsIcon,
+                  description: 'Manage payments effortlessly.',
+                },
+                {
+                  href: '/magic-checkout',
+                  title: 'Magic Checkout',
+                  icon: ShoppingBagIcon,
+                  description: 'Fast, one-click checkout.',
+                },
+                {
+                  href: '/rize',
+                  title: 'Rize',
+                  icon: AwardIcon,
+                  isAlwaysOverflowing: true,
+                  description: 'Boost your business growth.',
+                },
+              ]}
+            >
+              {({ items, overflowingItems }) => {
+                const activeProduct = overflowingItems.find(
+                  (item) => item.href === selectedProduct,
+                );
+                return (
+                  <>
+                    <TabNavItems>
+                      {items.map((item) => {
+                        return (
+                          <TabNavItemLink
+                            key={item.title}
+                            title={item.title}
+                            href={item.href}
+                            icon={item.icon}
+                          />
+                        );
+                      })}
+                    </TabNavItems>
+                    {overflowingItems.length ? (
+                      <Menu openInteraction="hover">
+                        <TabNavItem
+                          title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
+                          trailing={<ChevronDownIcon />}
+                          isActive={Boolean(activeProduct)}
+                        />
+                        <MenuOverlay>
+                          <MenuHeader
+                            title="Products for you"
+                            trailing={
+                              <Badge emphasis="subtle" color="notice">
+                                Recommended
+                              </Badge>
+                            }
+                          />
+                          {overflowingItems.map((item) => {
+                            return (
+                              <MenuItem
+                                key={item.href}
+                                onClick={() => {
+                                  history.push(item.href!);
+                                  setSelectedProduct(item.href!);
+                                }}
+                              >
+                                <ExploreItem
+                                  icon={item.icon!}
+                                  title={item.title}
+                                  description={item.description!}
+                                />
+                              </MenuItem>
+                            );
+                          })}
+                          <MenuFooter>
+                            <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
+                              View all products
+                            </BladeLink>
+                          </MenuFooter>
+                        </MenuOverlay>
+                      </Menu>
+                    ) : null}
+                  </>
+                );
+              }}
             </TabNav>
           </TopNavContent>
           <TopNavActions>
@@ -417,14 +601,15 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
             <Avatar size="medium" name="Anurag Hazra" />
           </TopNavActions>
         </TopNav>
-        <Box>
-          <Text margin="spacing.5">
-            This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
-            other features & integration details.
-          </Text>
-        </Box>
       </BaseBox>
-    </BaseBox>
+
+      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.intense" height="100%">
+        <Text margin="spacing.5">
+          This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
+          other features & integration details.
+        </Text>
+      </Box>
+    </DashboardBackground>
   );
 };
 

@@ -1,181 +1,116 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable consistent-return */
 import React from 'react';
-import styled from 'styled-components';
-import { useTopNavContext } from '../TopNavContext';
-import { approximatelyEqual, MIXED_BG_COLOR, useHasOverflow } from './utils';
+import ReactDOM from 'react-dom';
 import { TabNavContext } from './TabNavContext';
+import { useResize } from './utils';
+import type { TabNavItemData, TabNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
-import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
-import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
-import { makeMotionTime, makeSize } from '~utils';
+import { makeSize } from '~utils';
 import { size } from '~tokens/global';
-import getIn from '~utils/lodashButBetter/get';
-import type { BoxProps } from '~components/Box';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BoxProps } from '~components/Box';
+import { Box } from '~components/Box';
 
-const GRADIENT_WIDTH = 54 as const;
-const GRADIENT_OFFSET = -8 as const;
-const OFFSET_BOTTOM = -12 as const;
-const SCROLL_AMOUNT = 200;
-
-type TabNavProps = {
-  children: React.ReactNode;
+const TabNavItems = ({ children, ...props }: BoxProps): React.ReactElement => {
+  return (
+    <Box {...props} display="flex" width="100%" gap="spacing.0" position="relative" left="-1px">
+      {React.Children.map(children, (child, index) => {
+        return (
+          <>
+            {index > 0 ? (
+              <Divider
+                margin="auto"
+                variant="muted"
+                orientation="vertical"
+                height={makeSize(size[16])}
+              />
+            ) : null}
+            {React.cloneElement(child as React.ReactElement, {
+              __isInsideTabNavItems: true,
+              __index: index,
+            })}
+          </>
+        );
+      })}
+      <Divider margin="auto" variant="muted" orientation="vertical" height={makeSize(size[16])} />
+    </Box>
+  );
 };
-
-const ScrollableArea = styled(BaseBox)(() => {
-  return {
-    '&::-webkit-scrollbar': { display: 'none' },
-  };
-});
-
-const GradientOverlay = styled(BaseBox)<{
-  shouldShow?: boolean;
-  variant: 'left' | 'right';
-  $color: BoxProps['backgroundColor'];
-}>(({ theme, shouldShow, variant, $color }) => {
-  const color = getIn(theme.colors, $color as never, MIXED_BG_COLOR);
-
-  return {
-    position: 'absolute',
-    [variant]: 0,
-    pointerEvents: shouldShow ? 'auto' : 'none',
-    transform: shouldShow ? 'scale(1)' : 'scale(0.5)',
-    opacity: shouldShow ? 1 : 0,
-    transitionTimingFunction: `${theme.motion.easing.emphasized}`,
-    transitionDuration: `${makeMotionTime(theme.motion.duration.xquick)}`,
-    transitionProperty: 'opacity, transform',
-    zIndex: 1,
-    ':before': {
-      content: "''",
-      pointerEvents: 'none',
-      position: 'absolute',
-      [variant]: 0,
-      top: makeSize(GRADIENT_OFFSET),
-      bottom: makeSize(GRADIENT_OFFSET),
-      width: makeSize(GRADIENT_WIDTH),
-      background: `linear-gradient(to ${variant}, transparent 0%, ${color} 30%, ${color} 100%);`,
-    },
-  };
-});
 
 const TabNav = ({
   children,
+  items,
   ...styledProps
 }: TabNavProps & StyledPropsBlade): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const hasOverflow = useHasOverflow(ref);
-  const [scrollStatus, setScrollStatus] = React.useState<'start' | 'end' | 'middle'>('start');
-  const { backgroundColor } = useTopNavContext();
+  const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
-  // Check if the scroll is at start, end or middle
-  const handleScrollStatus = React.useCallback(
-    (e: React.UIEvent<HTMLDivElement, UIEvent>): void => {
-      const target = e.target as HTMLDivElement;
-      const isAtStart = target.scrollLeft === 0;
-      const isAtEnd = approximatelyEqual(
-        target.scrollLeft,
-        target.scrollWidth - target.offsetWidth,
-      );
-
-      if (isAtStart) {
-        setScrollStatus('start');
-      } else if (isAtEnd) {
-        setScrollStatus('end');
-      } else {
-        setScrollStatus('middle');
-      }
-    },
-    [],
+  const overflowingItems = controlledItems.filter(
+    (item) => item.isAlwaysOverflowing ?? item.isOverflowing,
   );
+  const _items = controlledItems.filter((item) => !item.isAlwaysOverflowing && !item.isOverflowing);
 
-  const scrollRight = (): void => {
-    if (!ref.current) return;
-    ref.current.scrollBy({
-      behavior: 'smooth',
-      left: SCROLL_AMOUNT,
-    });
-  };
+  // We need to memoize this callback otherwise it will cause infinite re-renders
+  // Because the ResizeObserver callback will be a new reference on every render
+  // and it will trigger a re-render
+  const resizeCallback = React.useCallback((resizeInfo: ResizeObserverEntry): void => {
+    const target = resizeInfo.target as HTMLElement;
+    const updateItems = (): void => {
+      setControlledItems((items) => {
+        return items.map((item, index) => {
+          // never overflow the first item
+          if (index === 0) return { ...item, isOverflowing: false };
+          // add padding to the offsetX to account the "More" menu's width changing due to the selection state (eg: More:ProdctName)
+          // Currently, hardcoding this to 150, we can make this dynamic too but that's causing layout thrashing
+          // because first we need to calculate the width of the "More" menu and then update the items
+          const padding = 150;
+          const offset = (item.offsetX! + padding)! - target.getBoundingClientRect().left;
+          if (offset > target.offsetWidth) {
+            return { ...item, isOverflowing: true };
+          } else {
+            return { ...item, isOverflowing: false };
+          }
+        });
+      });
+    };
+    // https://github.com/webpack/webpack/issues/14814
+    const flushSync = (ReactDOM as any)['flushSync'.toString()];
+    // Using flushSync to avoid layout thrashing,
+    // this will force React to flush all pending updates and only then update the DOM
+    if (flushSync !== undefined) {
+      flushSync(updateItems);
+    } else {
+      updateItems();
+    }
+  }, []);
 
-  const scrollLeft = (): void => {
-    if (!ref.current) return;
-    ref.current.scrollBy({
-      behavior: 'smooth',
-      left: -SCROLL_AMOUNT,
-    });
-  };
+  useResize(ref, resizeCallback);
 
   return (
-    <TabNavContext.Provider value={{ containerRef: ref, hasOverflow }}>
+    <TabNavContext.Provider value={{ containerRef: ref, controlledItems, setControlledItems }}>
       <BaseBox
         as="nav"
         display="flex"
         width="100%"
         alignItems="center"
+        alignSelf="end"
         position="relative"
-        marginBottom={makeSize(OFFSET_BOTTOM)}
         {...getStyledProps(styledProps)}
         {...metaAttribute({ name: MetaConstants.TabNav })}
+        ref={ref}
       >
-        <GradientOverlay
-          variant="left"
-          $color={backgroundColor}
-          shouldShow={hasOverflow && scrollStatus !== 'start'}
-        >
-          <Button
-            size="xsmall"
-            variant="tertiary"
-            icon={ChevronLeftIcon}
-            accessibilityLabel="Scroll Left"
-            onClick={scrollLeft}
-          />
-        </GradientOverlay>
-        <ScrollableArea
-          ref={ref}
-          onScroll={handleScrollStatus}
-          display="flex"
-          width="100%"
-          position="relative"
-          whiteSpace="nowrap"
-          gap="spacing.0"
-          overflowY="hidden"
-          overflowX="auto"
-        >
+        <BaseBox display="flex" width="100%" position="relative">
           <BaseBox display="flex" flexDirection="row" width="max-content">
-            {React.Children.map(children, (child, index) => {
-              return (
-                <>
-                  {index > 0 ? (
-                    <Divider
-                      margin="auto"
-                      variant="muted"
-                      orientation="vertical"
-                      height={makeSize(size[16])}
-                    />
-                  ) : null}
-                  {child}
-                </>
-              );
-            })}
+            {children({ items: _items, overflowingItems })}
           </BaseBox>
-        </ScrollableArea>
-        <GradientOverlay
-          variant="right"
-          $color={backgroundColor}
-          shouldShow={hasOverflow && scrollStatus !== 'end'}
-        >
-          <Button
-            size="xsmall"
-            variant="tertiary"
-            icon={ChevronRightIcon}
-            accessibilityLabel="Scroll Right"
-            onClick={scrollRight}
-          />
-        </GradientOverlay>
+        </BaseBox>
       </BaseBox>
     </TabNavContext.Provider>
   );
 };
 
-export { TabNav };
+export { TabNav, TabNavItems };

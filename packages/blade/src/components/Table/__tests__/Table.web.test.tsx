@@ -790,7 +790,7 @@ describe('<Table />', () => {
   it('should render table with multi select', async () => {
     const onSelectionChange = jest.fn();
     const user = userEvent.setup();
-    const { getByText, getAllByRole } = renderWithTheme(
+    const { getByText, getAllByRole, getByRole } = renderWithTheme(
       <Table
         data={{ nodes: nodes.slice(0, 5) }}
         selectionType="multiple"
@@ -828,6 +828,7 @@ describe('<Table />', () => {
       </Table>,
     );
 
+    expect(getByRole('table')).toHaveAttribute('aria-multiselectable', 'true');
     expect(getByText('Showing 1-5 Items')).toBeInTheDocument();
     expect(getAllByRole('checkbox')).toHaveLength(6);
     const firstSelectableRow = getByText('rzp01').closest('td');
@@ -840,6 +841,115 @@ describe('<Table />', () => {
       selectedIds: ['1', '2'],
     });
     expect(getByText('2 Items Selected')).toBeInTheDocument();
+    const deselectButton = getByText('Deselect');
+    await user.click(deselectButton);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [], selectedIds: [] });
+  });
+
+  it('should render table with single select and defaultSelectedIds', async () => {
+    const onSelectionChange = jest.fn();
+    const user = userEvent.setup();
+    const { getByText } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        selectionType="single"
+        onSelectionChange={onSelectionChange}
+        defaultSelectedIds={['1']}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const firstSelectableRow = getByText('rzp01').closest('tr');
+    expect(firstSelectableRow).toHaveAttribute('aria-selected', 'true');
+    const secondSelectableRow = getByText('rzp02').closest('td');
+    if (secondSelectableRow) await user.click(secondSelectableRow);
+    expect(onSelectionChange).toHaveBeenCalledWith({
+      values: [nodes[1]],
+      selectedIds: ['2'],
+    });
+  });
+
+  it('should render table with multi select and defaultSelectedIds', async () => {
+    const onSelectionChange = jest.fn();
+    const user = userEvent.setup();
+    const { getByText, getAllByRole } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        selectionType="multiple"
+        onSelectionChange={onSelectionChange}
+        defaultSelectedIds={['1', '2']}
+        toolbar={<TableToolbar />}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    expect(getByText('2 Items Selected')).toBeInTheDocument();
+    expect(getAllByRole('checkbox')).toHaveLength(6);
+    const firstSelectableRow = getByText('rzp01').closest('tr');
+    expect(firstSelectableRow).toHaveAttribute('aria-selected', 'true');
+    const secondSelectableRow = getByText('rzp02').closest('tr');
+    expect(secondSelectableRow).toHaveAttribute('aria-selected', 'true');
+    const thirdSelectableRow = getByText('rzp03').closest('td');
+    if (thirdSelectableRow) await user.click(thirdSelectableRow);
+    expect(onSelectionChange).toHaveBeenCalledWith({
+      values: [nodes[0], nodes[1], nodes[2]],
+      selectedIds: ['1', '2', '3'],
+    });
+
+    expect(getByText('3 Items Selected')).toBeInTheDocument();
     const deselectButton = getByText('Deselect');
     await user.click(deselectButton);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [], selectedIds: [] });

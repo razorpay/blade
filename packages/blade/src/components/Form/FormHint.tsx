@@ -6,11 +6,13 @@ import { hintIconSize, hintMarginTop, hintTextSize } from './formTokens';
 import type { TextProps } from '~components/Typography/Text';
 import { Text } from '~components/Typography/Text';
 import BaseBox from '~components/Box/BaseBox';
+import type { IconComponent } from '~components/Icons';
 import { CheckIcon, InfoIcon } from '~components/Icons';
 import { getPlatformType } from '~utils/getPlatformType';
+import { Box } from '~components/Box';
 
 type HintTextProps = {
-  icon?: React.ElementType;
+  icon?: IconComponent;
   children: string;
   id?: string;
   color: TextProps<{ variant: 'caption' }>['color'];
@@ -23,12 +25,18 @@ const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): Rea
   return (
     <BaseBox marginTop={hintMarginTop[size]} id={id}>
       <FormHintWrapper>
-        {Icon ? <Icon /> : null}
+        {Icon ? (
+          // offset block element 2px down to align with text
+          <Box flexShrink={0} marginTop="spacing.1">
+            <Icon />
+          </Box>
+        ) : null}
         <Text
           as={isReactNative ? undefined : 'span'}
           color={color}
           size={hintTextSize[size]}
           variant="caption"
+          wordBreak="break-word"
         >
           {children}
         </Text>
@@ -79,16 +87,18 @@ export type FormHintProps = {
 
 const Icons = {
   error: ({ size }: { size: 'small' | 'medium' | 'large' }): ReactElement => (
-    <>
-      <InfoIcon color="feedback.icon.negative.intense" size={hintIconSize[size]} />
-      <BaseBox marginRight="spacing.2" />
-    </>
+    <InfoIcon
+      display={'block' as never}
+      color="feedback.icon.negative.intense"
+      size={hintIconSize[size]}
+    />
   ),
   success: ({ size }: { size: 'small' | 'medium' | 'large' }): ReactElement => (
-    <>
-      <CheckIcon color="feedback.icon.positive.intense" size={hintIconSize[size]} />
-      <BaseBox marginRight="spacing.2" />
-    </>
+    <CheckIcon
+      display={'block' as never}
+      color="feedback.icon.positive.intense"
+      size={hintIconSize[size]}
+    />
   ),
 };
 

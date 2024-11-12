@@ -59,6 +59,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -156,6 +157,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -255,6 +257,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -354,6 +357,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
   -webkit-transition-property: -webkit-transform,box-shadow;
   -webkit-transition-property: transform,box-shadow;
   transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1:hover {

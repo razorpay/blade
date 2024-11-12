@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
+import { useCallbackRef } from './useCallbackRef';
 
 type ControllableStateSetter<T> = (
   /**
@@ -27,6 +28,7 @@ type UseControllableStateProps<T> = {
    * The callback fired when the value changes
    */
   onChange?: (value: T) => void;
+  shouldUpdate?: (prev: T, next: T) => boolean;
 };
 
 /**
@@ -39,25 +41,35 @@ type UseControllableStateProps<T> = {
  * In checkbox we want to internally track the checked state to be able to render the correct Icon
  * but also want to provide controlled and uncontrolled behavior to user
  */
-export function useControllableState<T>(props: UseControllableStateProps<T>) {
-  const { value: valueProp, defaultValue, onChange } = props;
+function useControllableState<T>(props: UseControllableStateProps<T>) {
+  const {
+    value: valueProp,
+    defaultValue,
+    onChange,
+    shouldUpdate = (prev, next) => prev !== next,
+  } = props;
+
+  const onChangeProp = useCallbackRef(onChange);
+  const shouldUpdateProp = useCallbackRef(shouldUpdate);
 
   const [valueState, setValue] = React.useState(defaultValue as T);
   const { current: isControlled } = React.useRef(valueProp !== undefined);
   const value = isControlled && typeof valueProp !== 'undefined' ? valueProp : valueState;
 
-  const updateValue: ControllableStateSetter<T> = React.useCallback(
+  const updateValue: ControllableStateSetter<T> = useCallbackRef(
     (next, skipUpdate = false) => {
       const nextValue = next(value);
       if (!isControlled) setValue(nextValue);
-      // We don't want to call onChange if skipUpdate is true
+      // We don't want to call onChange if skipUpdate is true or if the value is not changed
+      if (!shouldUpdateProp(value, nextValue)) return;
       if (skipUpdate) return;
-      onChange?.(nextValue);
+      onChangeProp?.(nextValue);
     },
-    [onChange, value],
+    [isControlled, onChangeProp, value, shouldUpdateProp],
   );
 
   return [value, updateValue] as [T, ControllableStateSetter<T>];
 }
 
+export { useControllableState };
 export type { ControllableStateSetter };

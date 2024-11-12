@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FileUpload /> should render in SSR 1`] = `"<div id="root"><div data-blade-component="file-upload" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><span style="width:auto;flex-shrink:0;margin-right:0px" id="fileuploadinput-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO kCEKIT" data-blade-component="text">Upload GST certificate</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">, Upload .jpg, .jpeg, or .png file only</p></div></div></div></span><label style="cursor:pointer;width:100%" data-blade-component="file-upload-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-comp="f" data-blade-component="base-box" class="BaseBox-bmPWx StyledFileUploadWrapper-sc-1wln1sx-0 guVuJK ktRDSa"><div data-blade-component="box" class="BaseBox-bmPWx cSvwKg"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Drag files here or<!-- --> </p><input id="fileuploadinput-undefined-input-undefined" name="single-file-upload-input" type="file" accept="image/*" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="fileuploadinput-undefined-label-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 cYUiqI"/><div data-blade-component="box" class="BaseBox-bmPWx gTlwBH"><div data-blade-component="box" class="BaseBox-bmPWx jTWYOz"><p class="StyledBaseText-dVBfTO eRPBEA" data-blade-component="text">Upload</p></div></div></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx xgVLl"><div id="fileuploadinput-undefined-helptext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span style="word-break:break-all" data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><span class="StyledBaseText-dVBfTO csXxAx" data-blade-component="text">Upload .jpg, .jpeg, or .png file only</span></span></div></div></div></div></div>"`;
+exports[`<FileUpload /> should render in SSR 1`] = `"<div id="root"><div data-blade-component="file-upload" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><span style="width:auto;flex-shrink:0;margin-right:0px" id="fileuploadinput-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO kCEKIT" data-blade-component="text">Upload GST certificate</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">, Upload .jpg, .jpeg, or .png file only</p></div></div></div></span><label style="cursor:pointer;width:100%" data-blade-component="file-upload-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-comp="f" data-blade-component="base-box" class="BaseBox-bmPWx StyledFileUploadWrapper-sc-1wln1sx-0 guVuJK ktRDSa"><div data-blade-component="box" class="BaseBox-bmPWx cSvwKg"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Drag files here or<!-- --> </p><input id="fileuploadinput-undefined-input-undefined" name="single-file-upload-input" type="file" accept="image/*" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="fileuploadinput-undefined-label-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 cYUiqI"/><div data-blade-component="box" class="BaseBox-bmPWx gTlwBH"><div data-blade-component="box" class="BaseBox-bmPWx jTWYOz"><p class="StyledBaseText-dVBfTO eRPBEA" data-blade-component="text">Upload</p></div></div></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx xgVLl"><div id="fileuploadinput-undefined-helptext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span data-blade-component="base-box" class="BaseBox-bmPWx hnjoEU"><span class="StyledBaseText-dVBfTO kECbDA" data-blade-component="text">Upload .jpg, .jpeg, or .png file only</span></span></div></div></div></div></div>"`;
 
 exports[`<FileUpload /> should render in SSR 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -35,9 +35,6 @@ exports[`<FileUpload /> should render in SSR 2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -154,10 +151,11 @@ exports[`<FileUpload /> should render in SSR 2`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -270,6 +268,7 @@ exports[`<FileUpload /> should render in SSR 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -529,7 +528,6 @@ exports[`<FileUpload /> should render in SSR 2`] = `
           <span
             class="c19"
             data-blade-component="base-box"
-            style="word-break:break-all"
           >
             <span
               class="c20"

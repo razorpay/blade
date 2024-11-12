@@ -1,13 +1,14 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "11.28.0",
+  "version": "11.35.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
   },
   "bin": {
-    "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts"
+    "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts",
+    "aicodemod": "./codemods/aicodemod/bin.mjs"
   },
   "repository": {
     "type": "git",
@@ -235,6 +236,7 @@
     "dedent": "0.7.0",
     "eslint-plugin-mdx": "1.16.0",
     "execa": "5.0.0",
+    "fastify": "4.28.1",
     "figures": "3.2.0",
     "flat": "5.0.2",
     "globby": "14.0.1",
@@ -280,8 +282,8 @@
     "typescript-transform-paths": "3.4.7",
     "@types/body-scroll-lock": "3.1.0",
     "ramda": "0.29.1",
-    "@razorpay/i18nify-js": "1.9.3",
-    "@razorpay/i18nify-react": "4.0.8",
+    "@razorpay/i18nify-js": "1.12.3",
+    "@razorpay/i18nify-react": "4.0.12",
     "plop": "3.1.1",
     "node-plop": "0.32.0",
     "svgson": "5.3.1"
@@ -300,8 +302,8 @@
     "react-hot-toast": "2.4.1",
     "@gorhom/bottom-sheet": "^4.4.6",
     "@gorhom/portal": "^1.0.14",
-    "@razorpay/i18nify-js": "^1.9.3",
-    "@razorpay/i18nify-react": "^4.0.8"
+    "@razorpay/i18nify-js": "^1.12.3",
+    "@razorpay/i18nify-react": "^4.0.12"
   },
   "peerDependenciesMeta": {
     "react-native": {
