@@ -68,7 +68,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
   border-width: 0px;
   border-radius: 4px;
@@ -102,17 +102,17 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 }
 
 .c5.c5.c5.c5.c5:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
 }
 
 .c5.c5.c5.c5.c5:active {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
 }
 
 .c5.c5.c5.c5.c5:focus-visible {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
@@ -213,7 +213,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1393,7 +1393,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
   border-width: 0px;
   border-radius: 4px;
@@ -1427,17 +1427,17 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
@@ -1485,7 +1485,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2999,7 +2999,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
   border-width: 0px;
   border-radius: 4px;
@@ -3033,17 +3033,17 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,0.18);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
@@ -3091,7 +3091,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -3237,7 +3237,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -3291,7 +3291,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
   border-color: hsla(214,40%,92%,1);
   border-width: 0px;
   border-radius: 4px;
@@ -3325,15 +3325,15 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }

@@ -1307,7 +1307,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 }
 
 .c15.c15.c15.c15.c15 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
