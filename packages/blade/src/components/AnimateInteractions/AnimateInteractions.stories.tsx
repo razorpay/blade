@@ -9,8 +9,11 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { InternalCardExample } from '../Card/Card.stories';
 import { Fade } from '~components/Fade';
+import { Scale } from '~components/Scale';
 import { Move } from '~components/Move';
 import { Text } from '~components/Typography';
+import { Card, CardBody } from '~components/Card';
+import { Slide } from '~components/Slide';
 
 const Page = (): React.ReactElement => {
   return (
@@ -58,6 +61,37 @@ Default.args = {
         <b>Some Fade on Hover</b>
       </Fade>
     </Box>
+  ),
+};
+
+export const ScaleChildOnCardHover = AnimateInteractionsTemplate.bind({});
+ScaleChildOnCardHover.args = {
+  children: (
+    <Card
+      padding="spacing.0"
+      width="max-content"
+      backgroundColor="surface.background.gray.moderate"
+    >
+      <CardBody>
+        <Box position="relative" overflow="hidden">
+          <Box padding="spacing.6">
+            <Text>Hi I am text inside card. Hover over this card to see magic</Text>
+          </Box>
+          <Move>
+            <Box
+              display="flex"
+              gap="spacing.4"
+              justifyContent="flex-end"
+              padding={['spacing.4', 'spacing.6']}
+              elevation="highRaised"
+            >
+              <Button variant="secondary">Cancel</Button>
+              <Button>Submit</Button>
+            </Box>
+          </Move>
+        </Box>
+      </CardBody>
+    </Card>
   ),
 };
 

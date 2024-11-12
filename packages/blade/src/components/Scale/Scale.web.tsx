@@ -2,18 +2,18 @@ import React from 'react';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
 
-export type ScaleProps = BaseMotionEntryExitProps;
+export type ScaleProps = Omit<BaseMotionEntryExitProps, 'isVisible'> & {
+  isScaled?: boolean;
+};
 
-export const Scale = ({
-  children,
-  isVisible,
-  variant = 'inout',
-  motionTriggers = ['hover'],
-}: ScaleProps) => {
+export const Scale = ({ children, isScaled, variant = 'inout', motionTriggers }: ScaleProps) => {
+  const isControlledScale = typeof isScaled === 'boolean';
+  const defaultMotionTriggers = isControlledScale ? ['mount' as const] : ['hover' as const];
+
   const fadeVariants: MotionVariantsType = {
     initial: {},
     animate: {
-      scale: '1.1',
+      scale: isScaled || !isControlledScale ? '1.1' : undefined,
     },
     exit: {},
   };
@@ -23,8 +23,8 @@ export const Scale = ({
       motionVariants={fadeVariants}
       variant={variant}
       children={children}
-      isVisible={isVisible}
-      motionTriggers={motionTriggers}
+      isVisible={true}
+      motionTriggers={motionTriggers ?? defaultMotionTriggers}
     />
   );
 };

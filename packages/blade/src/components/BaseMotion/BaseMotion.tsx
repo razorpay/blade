@@ -74,10 +74,15 @@ const BaseMotionBox = ({
       variants={motionVariants}
       {...animationVariables}
       {...rest}
+      tabIndex={0}
     >
       {children}
     </MotionDiv>
   );
+};
+
+const BaseMotionEnhancerBox = ({ children, ...props }) => {
+  return <BaseMotionBox as={children.type} {...props} {...children.props} />;
 };
 
 const BaseMotionEntryExit = ({
@@ -110,4 +115,4 @@ const BaseMotionEntryExit = ({
   );
 };
 
-export { MotionDiv, BaseMotionEntryExit, BaseMotionBox };
+export { MotionDiv, BaseMotionEntryExit, BaseMotionBox, BaseMotionEnhancerBox };

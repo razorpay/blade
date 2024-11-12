@@ -37,19 +37,28 @@ export default {
   },
 } as Meta<ScaleProps>;
 
-const ScaleTemplate: StoryFn<typeof Scale> = (args) => {
-  const [isVisible, setIsVisible] = React.useState(true);
+const ControlledScaleTemplate: StoryFn<typeof Scale> = (args) => {
+  const [isScaled, setIsScaled] = React.useState(false);
   return (
-    <Box minHeight="350px">
-      <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
+    <Box>
+      <Button marginBottom="spacing.4" onClick={() => setIsScaled(!isScaled)}>
         Toggle Scale
       </Button>
-      <Scale {...args} isVisible={isVisible} />
+      <Scale {...args} isScaled={isScaled} />
     </Box>
   );
 };
 
+const ScaleTemplate: StoryFn<typeof Scale> = (args) => {
+  return <Scale {...args} />;
+};
+
 export const Default = ScaleTemplate.bind({});
 Default.args = {
+  children: <InternalCardExample />,
+};
+
+export const Controlled = ControlledScaleTemplate.bind({});
+Controlled.args = {
   children: <InternalCardExample />,
 };

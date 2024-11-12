@@ -1,4 +1,4 @@
-import { BaseMotionBox } from '~components/BaseMotion';
+import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps } from '~components/BaseMotion';
 import { AnimateInteractionsContext } from './AnimateInteractionsProvider';
 
@@ -9,9 +9,9 @@ export type AnimateInteractionsProps = BaseMotionEntryExitProps & {
 export const AnimateInteractions = ({ children }: AnimateInteractionsProps) => {
   return (
     <AnimateInteractionsContext.Provider value={{ isInsideAnimateInteractionsContainer: true }}>
-      <BaseMotionBox motionTriggers={['hover']} shouldRenderAnimationVariables>
+      <BaseMotionEnhancerBox motionTriggers={['hover', 'focus']} shouldRenderAnimationVariables>
         {children}
-      </BaseMotionBox>
+      </BaseMotionEnhancerBox>
     </AnimateInteractionsContext.Provider>
   );
 };

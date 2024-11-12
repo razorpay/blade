@@ -6,13 +6,13 @@ export type SlideProps = BaseMotionEntryExitProps;
 export const Slide = ({ children, variant = 'inout', isVisible, motionTriggers }: SlideProps) => {
   const moveVariants: MotionVariantsType = {
     initial: {
-      transform: 'translateY(100vh)',
+      transform: 'translateY(100%)',
     },
     animate: {
       transform: 'translateY(0%)',
     },
     exit: {
-      transform: 'translateY(100vh)',
+      transform: 'translateY(100%)',
     },
   };
 
