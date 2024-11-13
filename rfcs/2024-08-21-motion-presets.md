@@ -54,6 +54,12 @@ For building presets, we have to figure out few things like
 - [API Decision for Motion Presets](#api-decisions)
 - [Libarary to use for Animations](#library-comparison)
 
+> [!IMPORTANT]
+>
+> Library that you might know by the name of `framer-motion` is now called `motion/react`. It's an independent project from the company Framer now. Check out [the announcement by framer-motion's creator](https://bsky.app/profile/citizenofnowhe.re/post/3lar365ouuk2v).
+>
+> I will be using `motion/react` in this proposal instead of framer-motion. Some older POCs might have references to examples using `framer-motion` imports.
+
 ## API Decisions
 
 > [!NOTE]
@@ -194,7 +200,7 @@ type MoveProps = {
 
 <!-- prettier-ignore -->
 ```jsx
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { 
   Button, 
   Morph 
@@ -229,10 +235,10 @@ _Previews are just examples of presets. They don't use actual durations and easi
 <details>
 <summary>Alternate Morph APIs</summary>
 
-#### 2. Using `motion` from framer-motion
+#### 2. Using `motion` from motion/react
 
 ```jsx
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Heading } from '@razorpay/blade/components';
 
 const CardHeading = motion(Heading);
@@ -245,7 +251,7 @@ const CardHeading = motion(Heading);
 
 - We won't be able to preset the animation styles and durations with this approach
 - Can lead to inconsistent animations
-- Inconsistent with other motion presets so not very intuitive and requires learning framer-motion for syntax
+- Inconsistent with other motion presets so not very intuitive and requires learning motion/react's for syntax
 
 #### 3. Exposing `morph` Function from Blade
 
@@ -380,7 +386,7 @@ _Previews are just examples of presets. They don't use actual durations and easi
 
 The same presets that we have for Entry / Exit, can be used for page transitions. The exit runs on removal of route, and entry runs on enter of route.
 
-It requires additional wrapper of AnimatePresence around the route. You can check code in [POC: Page Transitions with Framer Motion and React Router](#page-transitions-with-framer-motion-and-react-router).
+It requires additional wrapper of AnimatePresence around the route. You can check code in [POC: Page Transitions with Motion React and React Router](#page-transitions-with-framer-motion-and-react-router).
 
 Detailed docs and examples will be added post implementation.
 
@@ -391,13 +397,13 @@ There is new experimental view transitions API that is available inside a flag i
 Although we explored it, we're not planning to build presets around it yet since
 
 1. Lack of browser support in modern browsers
-2. The syntax being CSS so requires different exploration than our other framer motion presets
+2. The syntax being CSS so requires different exploration than our other motion/react's presets
 3. Rare usecase because its only valid in cross-application navigations such as navigating to dashboard post login
 4. The syntax of view-transition for MPA has changed in the past and might change again since its not well adopted yet.
 
 https://stackblitz.com/edit/stackblitz-starters-jevyms?description=HTML/CSS/JS%20Starter&file=script.js,styles.css,page2.html&terminalHeight=10&title=Static%20Starter
 
-**Conclusion:** Thus we can wait for some time for it to mature and be supported in browsers. Framer Motion itself might come up with some wrappers on top of their API to support this which will make it easier for us to implement presets
+**Conclusion:** Thus we can wait for some time for it to mature and be supported in browsers. Motion React itself might come up with some wrappers on top of their API to support this which will make it easier for us to implement presets
 
 ## Library Comparison
 
@@ -414,7 +420,7 @@ Lets compare some libraries over these ideals-
 
 ### Comparison Table
 
-| **Goal**                                 | **Framer Motion**                                                                                                                             | **Motion One**                                | **GSAP**                               | **Vanilla CSS Animations**                    |
+| **Goal**                                 | **Motion React**                                                                                                                              | **Motion One**                                | **GSAP**                               | **Vanilla CSS Animations**                    |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | -------------------------------------- | --------------------------------------------- |
 | **License** (Preferrably free to use)    | ✅ MIT                                                                                                                                        | ✅ MIT                                        | ❌ (Commercial License + Paid Plugins) | ✅ No License                                 |
 | **Hardware Accelarated Animations**      | ✅ (Hybrid - WAAPI for some transformations with fallback to JS) [Hardware Accelarated POC](#hardware-accelarated-motion-using-framer-motion) | ✅ (Built on WAAPI)                           | ❌                                     | ✅                                            |
@@ -427,7 +433,7 @@ There is also detailed comparison of these libraries at [Motion One Docs - Featu
 
 ## POCs
 
-### Hardware Accelarated Motion using Framer Motion
+### Hardware Accelarated Motion using Motion React
 
 https://github.com/user-attachments/assets/5aa7ba3f-666e-449c-ae1d-821f93c12962
 
@@ -449,7 +455,7 @@ https://github.com/user-attachments/assets/57593b19-3a19-4713-b768-9bcbf69097ee
 </a>
 </p>
 
-### Morph / Layout Animations with Framer Motion
+### Morph / Layout Animations with Motion React
 
 https://github.com/user-attachments/assets/ad3d4a23-c3b9-4980-a051-a0f44e7224dc
 
@@ -459,7 +465,7 @@ https://github.com/user-attachments/assets/ad3d4a23-c3b9-4980-a051-a0f44e7224dc
 </a>
 </p>
 
-### Page Transitions with Framer Motion and React Router
+### Page Transitions with Motion React and React Router
 
 Goal of the POC was to make sure if its possible to animate some part of the page while keeping the other part of the page stable. It was success with framer motion
 
@@ -474,7 +480,7 @@ https://github.com/user-attachments/assets/b53779ec-55ec-4ef4-bdca-60b2e46cb3ae
 ### Other POCs
 
 - [Stagger Animations POC](https://codesandbox.io/p/sandbox/framer-motion-side-menu-forked-3flyxv)
-- [Framer Motion Layout Animations with Blade Components](https://stackblitz.com/edit/framer-motion-blade-poc?file=App.tsx,Logger.tsx)
+- [Motion React Layout Animations with Blade Components](https://stackblitz.com/edit/framer-motion-blade-poc?file=App.tsx,Logger.tsx)
 - [Enhancer Component POC to check API feasibility](https://stackblitz.com/edit/enhancer-component-poc?file=App.tsx)
 
 # Accessibility
@@ -483,11 +489,11 @@ On [reduced motion setting](https://developer.mozilla.org/en-US/docs/Web/CSS/@me
 
 # Drawbacks/Constraints
 
-- Framer Motion as a library will be introduced in customer projects which might increase their bundle size.
+- Motion React as a library will be introduced in customer projects which might increase their bundle size.
 
 We'll be using the reduced bundle size version of motion core `m` internally for presets to ensure Blade uses minimal bundle size.
 
-Recommended way to load framer motion would be -
+Recommended way to load `motion/react` would be -
 
 ### Lazy Loaded Motion
 
@@ -495,13 +501,13 @@ Recommended way to load framer motion would be -
 
 ```js
 // If you're using basic presets like Fade, Move, Slide, Scale, etc
-import { domAnimations } from 'framer-motion';
+import { domAnimations } from 'motion/react';
 export default domAnimations; // 15kb;
 
 // OR
 
-// If you're using previously mentioned presets + `Morph` preset or drag / drop animations from framer-motion
-import { domMax } from 'framer-motion';
+// If you're using previously mentioned presets + `Morph` preset or drag / drop animations from motion/react
+import { domMax } from 'motion/react';
 export default domMax; // 25kb
 ```
 
@@ -545,7 +551,7 @@ function App({ children }) {
 
 - ### Libraries
 
-  - [Framer Motion](https://www.framer.com/motion/)
+  - [Motion React (Previously known as Framer Motion)](https://motion.dev/docs/react-quick-start)
   - [Motion One](https://motion.dev/docs)
   - [GSAP](https://gsap.com/)
 
@@ -558,13 +564,13 @@ function App({ children }) {
 
 - ### Other Motion References
 
-  - [Framer Motion vs Motion One by Matt Perry (Creator of both libraries)](https://motion.dev/blog/should-i-use-framer-motion-or-motion-one)
+  - [Motion React vs Motion One by Matt Perry (Creator of both libraries)](https://motion.dev/blog/should-i-use-framer-motion-or-motion-one)
   - [Motion One vs Other Libraries - Feature Comparison](https://motion.dev/docs/feature-comparison)
   - [Motion One & Browser Performance Guide](https://motion.dev/docs/performance)
-  - [Framer Motion - Hardware Accelarated Animations](https://www.framer.com/motion/animation/#hardware-accelerated-animations)
+  - [Motion React - Hardware Accelarated Animations](https://www.framer.com/motion/animation/#hardware-accelerated-animations)
     - [Release Date](https://github.com/framer/motion/blob/main/CHANGELOG.md#910-2023-02-23)
   - [View Transitions API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
   - [Web Animations API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API)
   - [CSS Triggers - What CSS property triggers which type of render](https://csstriggers.com/)
-  - [Framer Motion Page Transitions Demo](https://codesandbox.io/p/sandbox/framer-motion-react-router-6-page-transitions-2f2olf?file=%2Fsrc%2Ftemplate%2FGallery.tsx%3A18%2C38&from-embed=)
-  - [Framer Motion Scroll Animations](https://codesandbox.io/p/sandbox/framer-motion-whileinview-2hbg5?file=%2Fsrc%2Findex.tsx&from-embed=)
+  - [Motion React Page Transitions Demo](https://codesandbox.io/p/sandbox/framer-motion-react-router-6-page-transitions-2f2olf?file=%2Fsrc%2Ftemplate%2FGallery.tsx%3A18%2C38&from-embed=)
+  - [Motion React Scroll Animations](https://codesandbox.io/p/sandbox/framer-motion-whileinview-2hbg5?file=%2Fsrc%2Findex.tsx&from-embed=)
