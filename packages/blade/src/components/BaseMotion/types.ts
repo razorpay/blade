@@ -1,4 +1,4 @@
-import { Variant } from 'framer-motion';
+import type { Variant } from 'motion/react';
 
 type MotionTriggersType = 'hover' | 'tap' | 'focus' | 'inView' | 'mount';
 

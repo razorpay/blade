@@ -1,4 +1,4 @@
-import { AnimatePresence, AnimationType, m as motion } from 'framer-motion';
+import { AnimatePresence, AnimationType, m as motion } from 'motion/react';
 import React from 'react';
 import styled from 'styled-components';
 import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';

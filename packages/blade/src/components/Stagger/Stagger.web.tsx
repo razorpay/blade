@@ -1,6 +1,6 @@
 import { BaseMotionBox } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { StaggerContext } from './StaggerProvider';
 
 export type StaggerProps = BaseMotionEntryExitProps & {
