@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Signal0BarIcon /> should render Signal0BarIcon 1`] = `
+exports[`<SignalBarIcon /> should render SignalBarIcon 1`] = `
 <View
   style={
     {

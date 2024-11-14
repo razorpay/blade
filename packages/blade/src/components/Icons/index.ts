@@ -280,7 +280,7 @@ export { default as ShoppingBagIcon } from './ShoppingBagIcon';
 export { default as ShoppingCartIcon } from './ShoppingCartIcon';
 export { default as ShuffleIcon } from './ShuffleIcon';
 export { default as SidebarIcon } from './SidebarIcon';
-export { default as Signal0BarIcon } from './Signal0BarIcon';
+export { default as SignalBarIcon } from './SignalBarIcon';
 export { default as Signal1BarIcon } from './Signal1BarIcon';
 export { default as Signal2BarIcon } from './Signal2BarIcon';
 export { default as Signal3BarIcon } from './Signal3BarIcon';

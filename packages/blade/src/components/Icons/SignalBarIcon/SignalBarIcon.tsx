@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const Signal0BarIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const SignalBarIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -15,4 +15,4 @@ const Signal0BarIcon: IconComponent = ({ size, color, ...styledProps }) => {
   );
 };
 
-export default Signal0BarIcon;
+export default SignalBarIcon;

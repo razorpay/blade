@@ -279,7 +279,7 @@ import ShoppingBagIconComponent from './ShoppingBagIcon';
 import ShoppingCartIconComponent from './ShoppingCartIcon';
 import ShuffleIconComponent from './ShuffleIcon';
 import SidebarIconComponent from './SidebarIcon';
-import Signal0BarIconComponent from './Signal0BarIcon';
+import SignalBarIconComponent from './SignalBarIcon';
 import Signal1BarIconComponent from './Signal1BarIcon';
 import Signal2BarIconComponent from './Signal2BarIcon';
 import Signal3BarIconComponent from './Signal3BarIcon';
@@ -642,11 +642,11 @@ const iconMap: Record<string, IconComponent> = {
   ShoppingCartIcon: ShoppingCartIconComponent,
   ShuffleIcon: ShuffleIconComponent,
   SidebarIcon: SidebarIconComponent,
-  Signal0BarIcon: Signal0BarIconComponent,
   Signal1BarIcon: Signal1BarIconComponent,
   Signal2BarIcon: Signal2BarIconComponent,
   Signal3BarIcon: Signal3BarIconComponent,
   Signal4BarIcon: Signal4BarIconComponent,
+  SignalBarIcon: SignalBarIconComponent,
   SimCardIcon: SimCardIconComponent,
   SkipBackIcon: SkipBackIconComponent,
   SkipForwardIcon: SkipForwardIconComponent,
