@@ -57,6 +57,7 @@ type TextInputCommonProps = Pick<
   | 'leadingIcon'
   | 'trailingButton'
   | 'trailingIcon'
+  | 'textAlign'
 > & {
   /**
    * Decides whether to render a clear icon button
