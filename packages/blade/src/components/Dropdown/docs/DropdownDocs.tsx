@@ -96,7 +96,10 @@ const DropdownDocs = (): React.ReactElement => {
           </ListItem>
 
           <ListItem>
-            <ListItemLink target="_blank" href="?path=/docs/components-dropdown-actionlist-docs--docs">
+            <ListItemLink
+              target="_blank"
+              href="?path=/docs/components-dropdown-actionlist-docs--docs"
+            >
               ActionList Props
             </ListItemLink>
           </ListItem>
