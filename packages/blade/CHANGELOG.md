@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 11.36.0
+
+### Minor Changes
+
+- e97ec75b: feat: add new icons
+
+### Patch Changes
+
+- 9294580c: feat: expose textAlign prop types in text input
+
 ## 11.35.0
 
 ### Minor Changes
