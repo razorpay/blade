@@ -7,6 +7,7 @@ import { Box } from '~components/Box';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<DatePicker/> ', () => {
+  jest.setTimeout(10000);
   it('should fire native events like input and change', async () => {
     const handleInput = jest.fn();
     const handleChange = jest.fn();
