@@ -2,15 +2,9 @@ import { fireNativeEvent } from './fireNativeEvent.native';
 
 describe('fireNativeEvent', () => {
   const ref: React.RefObject<HTMLElement> = { current: null };
-  it('should log specific error', () => {
-    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-    fireNativeEvent(ref, ['change']);
-
-    expect(consoleErrorSpy).toHaveBeenCalledWith(
+  it('should throw specific error', () => {
+    expect(() => fireNativeEvent(ref, ['change'])).toThrowError(
       '[Blade: FireNativeEvent]: FireNativeEvent is not supported on react-native',
     );
-
-    consoleErrorSpy.mockRestore();
   });
 });

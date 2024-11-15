@@ -5,7 +5,7 @@ import { InputChevronIcon } from './InputChevronIcon';
 import type { BaseDropdownInputTriggerProps, useControlledDropdownInputProps } from './types';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { isReactNative } from '~utils';
+import { isReactNative, isBrowser } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
@@ -106,7 +106,9 @@ const useControlledDropdownInput = (props: useControlledDropdownInputProps): voi
         name: props.name,
         values: getValuesArrayFromIndices(),
       });
-      fireNativeEvent(props.triggererRef, ['change', 'input']);
+      if (isBrowser()) {
+        fireNativeEvent(props.triggererRef, ['change', 'input']);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
