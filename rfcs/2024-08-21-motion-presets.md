@@ -420,7 +420,7 @@ Lets compare some libraries over these ideals-
 
 ### Comparison Table
 
-| **Goal**                                 | **Motion React**                                                                                                                              | **Motion One**                                | **GSAP**                               | **Vanilla CSS Animations**                    |
+| **Goal**                                 | **Motion React** (formerly known as framer-motion)                                                                                            | **Motion One**                                | **GSAP**                               | **Vanilla CSS Animations**                    |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | -------------------------------------- | --------------------------------------------- |
 | **License** (Preferrably free to use)    | ✅ MIT                                                                                                                                        | ✅ MIT                                        | ❌ (Commercial License + Paid Plugins) | ✅ No License                                 |
 | **Hardware Accelarated Animations**      | ✅ (Hybrid - WAAPI for some transformations with fallback to JS) [Hardware Accelarated POC](#hardware-accelarated-motion-using-framer-motion) | ✅ (Built on WAAPI)                           | ❌                                     | ✅                                            |
