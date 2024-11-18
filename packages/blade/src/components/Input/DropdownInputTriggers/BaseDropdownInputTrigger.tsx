@@ -317,7 +317,6 @@ const _BaseDropdownInputTrigger = (
       onKeyDown={props.onTriggerKeydown}
       size={props.size}
       onInputWrapperClick={onTriggerClick}
-      isTrailingInteractionElementDisabled={props.isDisabled}
       onTrailingInteractionElementClick={() => {
         if (!props.isDisabled) {
           // Icon onClicks to the SelectInput itself

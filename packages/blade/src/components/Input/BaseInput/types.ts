@@ -82,7 +82,6 @@ export type StyledBaseInputProps = {
   | 'prefix'
   | 'trailingInteractionElement'
   | 'onTrailingInteractionElementClick'
-  | 'isTrailingInteractionElementDisabled'
   | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'

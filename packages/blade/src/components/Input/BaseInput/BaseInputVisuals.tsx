@@ -18,7 +18,6 @@ type InputVisuals = Pick<
   | 'prefix'
   | 'trailingInteractionElement'
   | 'onTrailingInteractionElementClick'
-  | 'isTrailingInteractionElementDisabled'
   | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'
@@ -232,7 +231,6 @@ export const BaseInputVisuals = ({
   leadingIcon: LeadingIcon,
   prefix,
   trailingInteractionElement,
-  isTrailingInteractionElementDisabled,
   onTrailingInteractionElementClick,
   leadingInteractionElement,
   suffix,
