@@ -329,7 +329,13 @@ export const BaseInputVisuals = ({
             alignItems="stretch"
             alignSelf="stretch"
           >
-            {trailingInteractionElement}
+            <BaseBox
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              {trailingInteractionElement}
+            </BaseBox>
           </BaseBox>
         ) : null}
         {hasSuffix ? (
