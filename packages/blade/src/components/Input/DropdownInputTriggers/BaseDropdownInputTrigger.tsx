@@ -317,21 +317,21 @@ const _BaseDropdownInputTrigger = (
       onKeyDown={props.onTriggerKeydown}
       size={props.size}
       onInputWrapperClick={onTriggerClick}
+      isTrailingInteractionElementDisabled={props.isDisabled}
+      onTrailingInteractionElementClick={(e) => {
+        if (!props.isDisabled) {
+          // Icon onClicks to the SelectInput itself
+          if (!isReactNative()) {
+            triggererRef.current?.focus();
+          }
+          if (e.target === e.currentTarget) {
+            onTriggerClick();
+          }
+        }
+      }}
       trailingInteractionElement={
         isAutoCompleteInHeader || (isInsideTableEditableCell && !isValidationStateNone) ? null : (
-          <InputChevronIcon
-            onClick={() => {
-              if (!props.isDisabled) {
-                // Icon onClicks to the SelectInput itself
-                if (!isReactNative()) {
-                  triggererRef.current?.focus();
-                }
-                onTriggerClick();
-              }
-            }}
-            isDisabled={props.isDisabled}
-            isOpen={isOpen}
-          />
+          <InputChevronIcon isDisabled={props.isDisabled} isOpen={isOpen} />
         )
       }
       {...(isInsideTableEditableCell ? tableInputProps : undefined)}

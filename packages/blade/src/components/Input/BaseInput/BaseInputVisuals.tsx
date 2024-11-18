@@ -16,6 +16,8 @@ type InputVisuals = Pick<
   | 'leadingIcon'
   | 'prefix'
   | 'trailingInteractionElement'
+  | 'onTrailingInteractionElementClick'
+  | 'isTrailingInteractionElementDisabled'
   | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'
@@ -229,6 +231,8 @@ export const BaseInputVisuals = ({
   leadingIcon: LeadingIcon,
   prefix,
   trailingInteractionElement,
+  isTrailingInteractionElementDisabled,
+  onTrailingInteractionElementClick,
   leadingInteractionElement,
   suffix,
   trailingIcon: TrailingIcon,
@@ -328,14 +332,13 @@ export const BaseInputVisuals = ({
             display="flex"
             alignItems="stretch"
             alignSelf="stretch"
+            onClick={(e) => {
+              if (!isTrailingInteractionElementDisabled) {
+                onTrailingInteractionElementClick?.(e);
+              }
+            }}
           >
-            <BaseBox
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              {trailingInteractionElement}
-            </BaseBox>
+            {trailingInteractionElement}
           </BaseBox>
         ) : null}
         {hasSuffix ? (
