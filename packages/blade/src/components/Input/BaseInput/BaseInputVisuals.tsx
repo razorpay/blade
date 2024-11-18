@@ -2,6 +2,7 @@
 import React from 'react';
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
+import { TrailingInteractionElementWrapper } from './trailingInteractionElementWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
@@ -322,7 +323,7 @@ export const BaseInputVisuals = ({
     return (
       <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
         {hasTrailingInteractionElement ? (
-          <BaseBox
+          <TrailingInteractionElementWrapper
             paddingRight={getInteractionElementStyles({
               hasTrailingIcon,
               hasTrailingInteractionElement,
@@ -339,7 +340,7 @@ export const BaseInputVisuals = ({
             }}
           >
             {trailingInteractionElement}
-          </BaseBox>
+          </TrailingInteractionElementWrapper>
         ) : null}
         {hasSuffix ? (
           <BaseBox {...getSuffixStyles({ hasTrailingIcon, hasSuffix, hasTrailingButton })}>
