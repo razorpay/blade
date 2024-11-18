@@ -337,6 +337,7 @@ export const BaseInputVisuals = ({
                 onTrailingInteractionElementClick?.(e);
               }
             }}
+            as="div"
           >
             {trailingInteractionElement}
           </BaseBox>

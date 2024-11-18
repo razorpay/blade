@@ -417,7 +417,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           trailingInteractionElement={
                             <InputChevronIcon
                               isOpen={true}
-                              onClick={[Function]}
                             />
                           }
                           value=""
@@ -479,6 +478,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     alignSelf="stretch"
                     data-blade-component="base-box"
                     display="flex"
+                    onClick={[Function]}
                     style={
                       [
                         {
@@ -511,7 +511,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       }
                       accessible={true}
                       collapsable={false}
-                      focusable={true}
+                      focusable={false}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}

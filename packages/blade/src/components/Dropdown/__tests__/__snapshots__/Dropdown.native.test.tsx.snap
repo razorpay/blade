@@ -500,6 +500,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     alignSelf="stretch"
                     data-blade-component="base-box"
                     display="flex"
+                    onClick={[Function]}
                     style={
                       [
                         {
@@ -532,7 +533,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       }
                       accessible={true}
                       collapsable={false}
-                      focusable={true}
+                      focusable={false}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
