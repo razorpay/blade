@@ -332,9 +332,9 @@ export const BaseInputVisuals = ({
             display="flex"
             alignItems="stretch"
             alignSelf="stretch"
-            onClick={(e) => {
+            onClick={() => {
               if (!isTrailingInteractionElementDisabled) {
-                onTrailingInteractionElementClick?.(e);
+                onTrailingInteractionElementClick?.();
               }
             }}
           >

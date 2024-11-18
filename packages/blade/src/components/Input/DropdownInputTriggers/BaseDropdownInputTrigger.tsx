@@ -318,15 +318,13 @@ const _BaseDropdownInputTrigger = (
       size={props.size}
       onInputWrapperClick={onTriggerClick}
       isTrailingInteractionElementDisabled={props.isDisabled}
-      onTrailingInteractionElementClick={(e) => {
+      onTrailingInteractionElementClick={() => {
         if (!props.isDisabled) {
           // Icon onClicks to the SelectInput itself
           if (!isReactNative()) {
             triggererRef.current?.focus();
           }
-          if (e.target === e.currentTarget) {
-            onTriggerClick();
-          }
+          onTriggerClick();
         }
       }}
       trailingInteractionElement={

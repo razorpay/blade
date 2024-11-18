@@ -162,7 +162,7 @@ type BaseInputCommonProps = FormInputLabelProps &
     /**
      * Callback to be invoked when the TrailingInteractionElement is clicked
      */
-    onTrailingInteractionElementClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+    onTrailingInteractionElementClick?: () => void;
     /**
      * if true then no callback is called when TrailingInteractionElement is clicked
      */
@@ -985,7 +985,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               if (!isReactNative) {
                 inputRef.current?.focus();
               }
-              onInputWrapperClick?.(e);
+              if (e.target === e.currentTarget) {
+                onInputWrapperClick?.(e);
+              }
             }}
             isTableInputCell={isTableInputCell}
           >
