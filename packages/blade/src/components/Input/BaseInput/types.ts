@@ -44,7 +44,7 @@ export type BaseInputWrapperProps = Pick<
   size: NonNullable<BaseInputProps['size']>;
   numberOfLines: BaseInputProps['numberOfLines'];
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
 export type StyledBaseInputProps = {

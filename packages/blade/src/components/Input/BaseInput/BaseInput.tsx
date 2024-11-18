@@ -971,11 +971,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             maxTagRows={maxTagRows}
             size={size}
             numberOfLines={numberOfLines}
-            onClick={() => {
+            onClick={(e) => {
               if (!isReactNative) {
                 inputRef.current?.focus();
               }
-              onInputWrapperClick?.();
+              if (e.currentTarget === e.target) {
+                onInputWrapperClick?.();
+              }
             }}
             isTableInputCell={isTableInputCell}
           >
