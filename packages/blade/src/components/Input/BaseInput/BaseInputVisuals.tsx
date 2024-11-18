@@ -2,7 +2,6 @@
 import React from 'react';
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
-import { TrailingInteractionElementWrapper } from './trailingInteractionElementWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
@@ -11,6 +10,7 @@ import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import { Tooltip } from '~components/Tooltip';
 import { Box } from '~components/Box';
+import { isReactNative } from '~utils';
 
 type InputVisuals = Pick<
   BaseInputProps,
@@ -323,7 +323,7 @@ export const BaseInputVisuals = ({
     return (
       <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
         {hasTrailingInteractionElement ? (
-          <TrailingInteractionElementWrapper
+          <BaseBox
             paddingRight={getInteractionElementStyles({
               hasTrailingIcon,
               hasTrailingInteractionElement,
@@ -333,14 +333,10 @@ export const BaseInputVisuals = ({
             display="flex"
             alignItems="stretch"
             alignSelf="stretch"
-            onClick={() => {
-              if (!isTrailingInteractionElementDisabled) {
-                onTrailingInteractionElementClick?.();
-              }
-            }}
+            onClick={!isReactNative() ? onTrailingInteractionElementClick : undefined}
           >
             {trailingInteractionElement}
-          </TrailingInteractionElementWrapper>
+          </BaseBox>
         ) : null}
         {hasSuffix ? (
           <BaseBox {...getSuffixStyles({ hasTrailingIcon, hasSuffix, hasTrailingButton })}>
