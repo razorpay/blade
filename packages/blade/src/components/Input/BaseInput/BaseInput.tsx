@@ -331,10 +331,6 @@ type BaseInputCommonProps = FormInputLabelProps &
      **/
     isTableInputCell?: boolean;
     /**
-     * Callback to be invoked when the backdrop is clicked
-     */
-    onInputWrapperClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
-    /**
      * Hides the form hints and shows them as tooltip of trailing
      */
     showHintsAsTooltip?: boolean;
@@ -833,7 +829,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     valueComponentType = 'text',
     isTableInputCell = false,
     showHintsAsTooltip = false,
-    onInputWrapperClick,
     ...styledProps
   },
   ref,
@@ -979,9 +974,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             onClick={(e) => {
               if (!isReactNative) {
                 inputRef.current?.focus();
-              }
-              if (e.target === e.currentTarget) {
-                onInputWrapperClick?.(e);
               }
             }}
             isTableInputCell={isTableInputCell}
