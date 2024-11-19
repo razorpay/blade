@@ -331,7 +331,7 @@ export const BaseInputVisuals = ({
             display="flex"
             alignItems="stretch"
             alignSelf="stretch"
-            onClick={!isReactNative() ? onTrailingInteractionElementClick : undefined}
+            {...(!isReactNative() && { onClick: onTrailingInteractionElementClick })}
           >
             {trailingInteractionElement}
           </BaseBox>
