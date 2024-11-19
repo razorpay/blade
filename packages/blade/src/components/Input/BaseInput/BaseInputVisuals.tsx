@@ -319,25 +319,28 @@ export const BaseInputVisuals = ({
 
   if (hasTrailingVisuals && hasTrailingInteractionElement) {
     return (
-      <BaseBox
-        paddingRight={getInteractionElementStyles({
-          hasTrailingIcon,
-          hasTrailingInteractionElement,
-          hasSuffix,
-          hasTrailingButton,
-        })}
-        display="flex"
-        alignItems="center"
-        {...(!isReactNative() && { onClick: onTrailingInteractionElementClick })}
-      >
-        {trailingInteractionElement}
+      <BaseBox {...getVisualContainerStyles()} alignSelf="stretch">
+        <BaseBox
+          paddingRight={getInteractionElementStyles({
+            hasTrailingIcon,
+            hasTrailingInteractionElement,
+            hasSuffix,
+            hasTrailingButton,
+          })}
+          display="flex"
+          alignItems="stretch"
+          alignSelf="stretch"
+          {...(!isReactNative() && { onClick: onTrailingInteractionElementClick })}
+        >
+          {trailingInteractionElement}
+        </BaseBox>
       </BaseBox>
     );
   }
 
   if (hasTrailingVisuals) {
     return (
-      <BaseBox {...getVisualContainerStyles()}>
+      <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
         {hasSuffix ? (
           <BaseBox {...getSuffixStyles({ hasTrailingIcon, hasSuffix, hasTrailingButton })}>
             <Text
