@@ -458,7 +458,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 </View>
                 <View
                   alignItems="center"
-                  alignSelf="center"
+                  alignSelf="stretch"
                   data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
@@ -466,7 +466,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     [
                       {
                         "alignItems": "center",
-                        "alignSelf": "center",
+                        "alignSelf": "stretch",
                         "display": "flex",
                         "flexDirection": "row",
                       },
