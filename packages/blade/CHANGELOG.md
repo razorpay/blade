@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.36.1
+
+### Patch Changes
+
+- 8846293f: fix: dropdown not opening if user clicks on dropdown backdrop
+
 ## 11.36.0
 
 ### Minor Changes
