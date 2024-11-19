@@ -2,7 +2,7 @@ import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 
 export type SelectChevronIconProps = {
-  onClick: () => void;
+  onClick?: () => void;
   isOpen?: boolean;
   isDisabled?: boolean;
 };

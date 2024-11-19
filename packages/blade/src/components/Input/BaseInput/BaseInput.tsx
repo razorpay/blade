@@ -160,6 +160,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     trailingInteractionElement?: ReactNode;
     /**
+     * Callback to be invoked when the TrailingInteractionElement is clicked
+     */
+    onTrailingInteractionElementClick?: () => void;
+    /**
      * Element to be rendered before prefix. This is decided by the component which is extending BaseInput
      *
      * eg: consumers can render a country selector or button
@@ -326,7 +330,6 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default true
      **/
     isTableInputCell?: boolean;
-
     /**
      * Hides the form hints and shows them as tooltip of trailing
      */
@@ -790,6 +793,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     leadingIcon,
     prefix,
     trailingInteractionElement,
+    onTrailingInteractionElementClick,
     leadingInteractionElement,
     suffix,
     trailingIcon,
@@ -1054,6 +1058,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             </BaseInputTagSlot>
             <BaseInputVisuals
               trailingInteractionElement={trailingInteractionElement}
+              onTrailingInteractionElementClick={onTrailingInteractionElementClick}
               suffix={suffix}
               trailingIcon={trailingIcon}
               isDisabled={isDisabled}
