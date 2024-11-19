@@ -33,6 +33,7 @@ const InteractiveItemHeaderBox = styled.button<InteractiveItemHeaderProps>((prop
     padding: `${makeSpace(getIn(props.theme, props.paddingY))} ${makeSpace(
       getIn(props.theme, props.paddingX),
     )}`,
+    paddingBottom: '0px',
     cursor: 'pointer',
     display: 'inline-block',
     textDecoration: 'none',
@@ -84,6 +85,7 @@ const getStepTypeFromIndex = ({
 
 const _StepItem = ({
   title,
+  titleColor,
   timestamp,
   description,
   stepProgress = 'none',
@@ -116,6 +118,7 @@ const _StepItem = ({
   const isLastItem = _totalIndex === totalItemsInParentGroupCount - 1;
   const isInteractive = Boolean(href) || Boolean(onClick);
   const isVertical = orientation === 'vertical';
+  const isNested = _nestingLevel > 0;
 
   if (__DEV__) {
     if (trailing && orientation === 'horizontal') {
@@ -138,8 +141,10 @@ const _StepItem = ({
       <Box>
         <Text
           size={stepItemHeaderTokens[size].title}
-          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
-          weight="semibold"
+          color={
+            isDisabled ? 'surface.text.gray.disabled' : titleColor ?? 'surface.text.gray.subtle'
+          }
+          weight={isNested ? 'regular' : 'semibold'}
         >
           {title}
         </Text>
@@ -202,10 +207,12 @@ const _StepItem = ({
             {stepItemHeaderJSX}
           </InteractiveItemHeaderBox>
         ) : (
-          <Box {...stepItemHeaderPaddings}>{stepItemHeaderJSX}</Box>
+          <Box {...stepItemHeaderPaddings} paddingTop="spacing.0">
+            {stepItemHeaderJSX}
+          </Box>
         )}
         {children ? (
-          <Box paddingX="spacing.4" paddingY="spacing.3">
+          <Box paddingX="spacing.4" paddingTop="spacing.3">
             {children}
           </Box>
         ) : null}
