@@ -971,7 +971,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             maxTagRows={maxTagRows}
             size={size}
             numberOfLines={numberOfLines}
-            onClick={(e) => {
+            onClick={() => {
               if (!isReactNative) {
                 inputRef.current?.focus();
               }
