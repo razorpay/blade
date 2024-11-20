@@ -26,9 +26,25 @@ function Widget() {
 
   const updateChecklist = (checkedState: true | false): void => {
     if (checkedState) {
-      setCheckedItems((prevState: number) => prevState + 1);
+      setCheckedItems((prevState: number) => {
+        waitForTask(
+          sendAnalytics({
+            eventName: 'Snowflake Checklist Item Toggled',
+            properties: { checkedItems: prevState + 1 },
+          }),
+        );
+        return prevState + 1;
+      });
     } else {
-      setCheckedItems((prevState: number) => prevState - 1);
+      setCheckedItems((prevState: number) => {
+        waitForTask(
+          sendAnalytics({
+            eventName: 'Snowflake Checklist Item Toggled',
+            properties: { checkedItems: prevState - 1 },
+          }),
+        );
+        return prevState - 1;
+      });
     }
   };
 

@@ -21,6 +21,7 @@ export const sendAnalytics = async ({
         userName: figma.currentUser?.name,
         fileName: figma.root.name,
         pageName: figma.currentPage.name,
+        pagePath: `${figma.root.name}/${figma.currentPage.name}`,
         pluginUsageCount,
         ...properties,
       },

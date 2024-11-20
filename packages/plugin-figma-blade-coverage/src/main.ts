@@ -611,9 +611,10 @@ const main = async (): Promise<void> => {
             eventName: 'Blade Coverage Plugin Used',
             properties: {
               fileName: figma.root.name,
-              pageName: mainFrameNode.parent?.name,
+              pageName: figma.currentPage.name,
+              pagePath: `${figma.root.name}/${figma.currentPage.name}`,
               nodeName: mainFrameNode.name,
-              nodePath: `${figma.root.name}/${mainFrameNode.parent?.name}/${mainFrameNode.name}`,
+              nodePath: `${figma.root.name}/${figma.currentPage.name}/${mainFrameNode.name}`,
               nodeUrlPath: `https://www.figma.com/file/${figma.fileKey}/${
                 figma.root.name
               }?node-id=${encodeURIComponent(mainFrameNode.id)}`,
