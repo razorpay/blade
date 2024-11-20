@@ -13,6 +13,7 @@ const Path = <Props extends Exact<PathProps, Props>>({
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
+  strokeDasharray,
 }: Props): ReactElement => {
   return (
     <path
@@ -26,6 +27,7 @@ const Path = <Props extends Exact<PathProps, Props>>({
       strokeLinecap={strokeLinecap}
       strokeLinejoin={strokeLinejoin}
       strokeWidth={strokeWidth}
+      strokeDasharray={strokeDasharray}
       {...metaAttribute({ name: 'svg-path' })}
     />
   );

@@ -31,4 +31,5 @@ export type PathProps = {
   strokeLinecap?: 'butt' | 'round' | 'square';
   strokeLinejoin?: 'bevel' | 'miter' | 'round';
   strokeWidth?: string;
+  strokeDasharray?: string;
 };

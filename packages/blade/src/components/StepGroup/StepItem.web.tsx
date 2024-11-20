@@ -212,7 +212,7 @@ const _StepItem = ({
           </Box>
         )}
         {children ? (
-          <Box paddingX="spacing.4" paddingTop="spacing.3">
+          <Box paddingX="spacing.4" paddingTop="spacing.1">
             {children}
           </Box>
         ) : null}
