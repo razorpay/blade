@@ -18,17 +18,17 @@ const getMarkerLineSpacings = (
   markerMargin: number;
   indentationWidth: number;
 } => {
-  const indentationWidth = 33;
-
   const LINE_SPACINGS = {
     large: {
       markerBackgroundSize: sizeTokens['24'],
       markerMargin: sizeTokens['2'],
+      indentationWidth: sizeTokens['33'],
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     },
     medium: {
       markerBackgroundSize: sizeTokens['20'],
       markerMargin: sizeTokens['2'],
+      indentationWidth: 31,
     },
   } as const;
 
@@ -47,7 +47,6 @@ const getMarkerLineSpacings = (
     ...LINE_SPACINGS[size],
     markerLeftAlignment,
     markerTopAlignment,
-    indentationWidth,
   };
 };
 
