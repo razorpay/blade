@@ -273,19 +273,17 @@ const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
       <StepItem
         title="Needs Response"
         timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
-        stepProgress="full"
+        stepProgress="start"
         marker={<StepItemIndicator color="positive" />}
       />
       <StepGroup>
         <StepItem
           title="Personal Documents Submission"
-          stepProgress="full"
           marker={<StepItemIndicator color="positive" />}
         />
         <StepItem
           title="Company Documents Submission"
           titleColor="feedback.text.notice.intense"
-          stepProgress="start"
           marker={<StepItemIndicator color="notice" />}
         >
           <Button size="medium" variant="secondary">

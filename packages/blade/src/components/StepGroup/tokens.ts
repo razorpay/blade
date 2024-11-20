@@ -18,7 +18,7 @@ const getMarkerLineSpacings = (
   markerMargin: number;
   indentationWidth: number;
 } => {
-  const indentationWidth = 31;
+  const indentationWidth = 33;
 
   const LINE_SPACINGS = {
     large: {
