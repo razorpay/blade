@@ -12,14 +12,39 @@ Blade Issue: (leave this empty if no issue yet)
 - [Basic Example](#basic-example)
 - [Motivation](#motivation)
 - [Detailed Design](#detailed-design)
+  - [API Decisions](#api-decisions)
+    - [Entry / Exit Animation Presets](#entry--exit-animation-presets)
+      - [Fade](#fade)
+      - [Slide](#slide)
+      - [Move](#move)
+    - [Highlight Animations](#highlight-animations)
+      - [Scale](#scale)
+      - [Morph](#morph)
+    - [AnimateInteractions](#animateinteractions)
+    - [Staggered Animations](#staggered-animations)
+  - [Library Comparison](#library-comparison)
+    - [Goals of Ideal Library](#goals-of-ideal-library)
+    - [Comparison Table](#comparison-table)
+  - [Explorations, Research, and POCs](#explorations-research-and-pocs)
+    - [Page Transitions](#page-transitions)
+      - [Page Transitions with Motion React and React Router](#page-transitions-with-motion-react-and-react-router)
+      - [View Transitions API for MPA](#view-transitions-api-for-mpa)
+    - [Hardware Accelerated Motion using Motion React](#hardware-accelerated-motion-using-motion-react)
+    - [Hardware Accelerated Motion using GSAP](#hardware-accelerated-motion-using-gsap)
+    - [Morph / Layout Animations with Motion React](#morph--layout-animations-with-motion-react)
+    - [Other POCs](#other-pocs)
+- [Accessibility](#accessibility)
 - [Drawbacks/Constraints](#drawbacksconstraints)
+  - [Lazy Loaded Motion](#lazy-loaded-motion)
 - [Alternatives](#alternatives)
-- [Adoption strategy](#adoption-strategy)
-- [How do we educate people?](#how-do-we-educate-people)
+- [Adoption Strategy](#adoption-strategy)
+  - [How do we educate people?](#how-do-we-educate-people)
 - [Open Questions](#open-questions)
-- [References](#references)
+- [References](#ref)
 
 # Summary
+
+This RFC covers the API Decisions, Library Comparisons, and Research that the design-system team has done for the motion presets. To know more about why we are doing this, checkout [Motivation section](#motivation) below.
 
 # Basic Example
 
@@ -93,7 +118,7 @@ type FadeProps = {
    *
    * @default inout
    */
-  variant: 'in' | 'out' | 'inout';
+  transition: 'in' | 'out' | 'inout';
 
   /**
    * What should trigger the motion
@@ -144,11 +169,24 @@ type SlideProps = {
   /**
    * @default inout
    */
-  variant: 'in' | 'out';
+  transition: 'in' | 'out';
+
+  /**
+   * What should trigger the motion
+   *
+   * @default ['mount']
+   */
+  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
+
   /**
    * @default 'bottom'
    */
   direction: 'top' | 'right' | 'bottom' | 'left';
+
+  /**
+   * Visibility state
+   */
+  isVisible?: boolean;
 };
 ```
 
@@ -171,11 +209,19 @@ type MoveProps = {
   /**
    * @default inout
    */
-  variant: 'in' | 'out' | 'inout';
+  transition: 'in' | 'out' | 'inout';
+
   /**
    * @default 'bottom'
    */
   direction: 'top' | 'right' | 'bottom' | 'left';
+
+  /**
+   * What should trigger the motion
+   *
+   * @default ['mount']
+   */
+  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
 
   /**
    * Visibility state
@@ -187,6 +233,41 @@ type MoveProps = {
 </details>
 
 ### Highlight Animations
+
+#### Scale
+
+```jsx
+import { Scale } from '@razorpay/blade/components';
+
+<Scale isHighlighted>
+  <Box />
+</Scale>;
+```
+
+```ts
+type ScaleProps = {
+  /**
+   * @default scale-down
+   */
+  transition: 'scale-up' | 'scale-down';
+
+  /**
+   * What should trigger the motion
+   *
+   * @default ['hover']
+   */
+  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
+
+  /**
+   * Controlled state of highlighting.
+   *
+   * Only applicable when motionTriggers is no defined
+   *
+   * @default undefined - uses motionTriggers to trigger highlight
+   */
+  isHighlighted?: boolean;
+};
+```
 
 #### Morph
 
@@ -366,6 +447,13 @@ type StaggerProps = {
    * Visibility state
    */
   isVisible?: boolean;
+
+  /**
+   * What should trigger the motion
+   *
+   * @default ['mount']
+   */
+  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
 };
 ```
 
@@ -381,29 +469,6 @@ _Previews are just examples of presets. They don't use actual durations and easi
 </table>
 
 - [Stagger Animations POC](https://codesandbox.io/p/sandbox/framer-motion-side-menu-forked-3flyxv)
-
-## Page Transitions
-
-The same presets that we have for Entry / Exit, can be used for page transitions. The exit runs on removal of route, and entry runs on enter of route.
-
-It requires additional wrapper of AnimatePresence around the route. You can check code in [POC: Page Transitions with Motion React and React Router](#page-transitions-with-framer-motion-and-react-router).
-
-Detailed docs and examples will be added post implementation.
-
-### View Transitions API for MPA
-
-There is new experimental view transitions API that is available inside a flag in chrome.
-
-Although we explored it, we're not planning to build presets around it yet since
-
-1. Lack of browser support in modern browsers
-2. The syntax being CSS so requires different exploration than our other motion/react's presets
-3. Rare usecase because its only valid in cross-application navigations such as navigating to dashboard post login
-4. The syntax of view-transition for MPA has changed in the past and might change again since its not well adopted yet.
-
-https://stackblitz.com/edit/stackblitz-starters-jevyms?description=HTML/CSS/JS%20Starter&file=script.js,styles.css,page2.html&terminalHeight=10&title=Static%20Starter
-
-**Conclusion:** Thus we can wait for some time for it to mature and be supported in browsers. Motion React itself might come up with some wrappers on top of their API to support this which will make it easier for us to implement presets
 
 ## Library Comparison
 
@@ -431,7 +496,40 @@ Lets compare some libraries over these ideals-
 
 There is also detailed comparison of these libraries at [Motion One Docs - Feature Comparisons](https://motion.dev/docs/feature-comparison#comparison-table)
 
-## POCs
+## Explorations, Research, and POCs
+
+### Page Transitions
+
+The same presets that we have for Entry / Exit, can be used for page transitions. The exit runs on removal of route, and entry runs on enter of route.
+
+It requires additional wrapper of AnimatePresence around the route. You can check code in [POC: Page Transitions with Motion React and React Router](#page-transitions-with-framer-motion-and-react-router).
+
+#### Page Transitions with Motion React and React Router
+
+Goal of the POC was to make sure if its possible to animate some part of the page while keeping the other part of the page stable. It was success with framer motion
+
+https://github.com/user-attachments/assets/b53779ec-55ec-4ef4-bdca-60b2e46cb3ae
+
+<p align="right">
+  <a href="https://codesandbox.io/p/sandbox/inspiring-stallman-2wn2v5">
+  <img alt="Edit Framer Motion: Morph Animations" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</p>
+
+#### View Transitions API for MPA
+
+There is new experimental view transitions API that is available inside a flag in chrome.
+
+Although we explored it, we're not planning to build presets around it yet since
+
+1. Lack of browser support in modern browsers
+2. The syntax being CSS so requires different exploration than our other motion/react's presets
+3. Rare usecase because its only valid in cross-application navigations such as navigating to dashboard post login
+4. The syntax of view-transition for MPA has changed in the past and might change again since its not well adopted yet.
+
+https://stackblitz.com/edit/stackblitz-starters-jevyms?description=HTML/CSS/JS%20Starter&file=script.js,styles.css,page2.html&terminalHeight=10&title=Static%20Starter
+
+**Conclusion:** Thus we can wait for some time for it to mature and be supported in browsers. Motion React itself might come up with some wrappers on top of their API to support this which will make it easier for us to implement presets
 
 ### Hardware Accelarated Motion using Motion React
 
@@ -465,18 +563,6 @@ https://github.com/user-attachments/assets/ad3d4a23-c3b9-4980-a051-a0f44e7224dc
 </a>
 </p>
 
-### Page Transitions with Motion React and React Router
-
-Goal of the POC was to make sure if its possible to animate some part of the page while keeping the other part of the page stable. It was success with framer motion
-
-https://github.com/user-attachments/assets/b53779ec-55ec-4ef4-bdca-60b2e46cb3ae
-
-<p align="right">
-  <a href="https://codesandbox.io/p/sandbox/inspiring-stallman-2wn2v5">
-  <img alt="Edit Framer Motion: Morph Animations" src="https://codesandbox.io/static/img/play-codesandbox.svg">
-</a>
-</p>
-
 ### Other POCs
 
 - [Stagger Animations POC](https://codesandbox.io/p/sandbox/framer-motion-side-menu-forked-3flyxv)
@@ -495,9 +581,9 @@ We'll be using the reduced bundle size version of motion core `m` internally for
 
 Recommended way to load `motion/react` would be -
 
-### Lazy Loaded Motion
+## Lazy Loaded Motion
 
-#### `features.ts`
+### `features.ts`
 
 ```js
 // If you're using basic presets like Fade, Move, Slide, Scale, etc
@@ -508,10 +594,10 @@ export default domAnimations; // 15kb;
 
 // If you're using previously mentioned presets + `Morph` preset or drag / drop animations from motion/react
 import { domMax } from 'motion/react';
-export default domMax; // 25kb
+export default domMax; // 25kb (includes the 15kb of domAnimations)
 ```
 
-#### App.tsx
+### App.tsx
 
 ```jsx
 // Make sure to return the specific export containing the feature bundle.
@@ -529,23 +615,39 @@ function App({ children }) {
 - Other alternative is to let consumers do animations
   - Since there are less high level primitives available and it has led to inconsistent motion across products, we prefer to simplify building animations while giving out consistency
 
-# Adoption strategy
+# Adoption Strategy
 
-- We plan to target 1 project this quarter (Q2) to get motion adopted
+- We plan to target 1 project this quarter (Q4) to get motion adopted
 - The new projects that are built, should be built with motion presets on design and dev
-- The earlier project that we have should use motion presets when they redesign / revamp
+- The earlier project that we have, should use motion presets when they redesign / revamp
 
-# How do we educate people?
+## How do we educate people?
 
 - Interactive documentation will be added on blade.razorpay.com explaining how to use each preset
 - Close-to-real-life examples will be added in documentation to help give idea on how these presets can be used to build complex real-world animations
 
 # Open Questions
 
-- React Native support for presets?
+- ## React Native support for presets?
+
   - We will continue to use React Native Reanimated for now. Similar presets can be built on top of react native reanimated in future
-- Should motion components be imported from `@razorpay/blade/components` like other components or `@razorpay/blade/motion`
+
+- ## Should motion components be imported from `@razorpay/blade/components` like other components or `@razorpay/blade/motion`
+
   - We'll continue to import from components and utils since they are also components only.
+
+- ## Why low-level presets like `Fade`, `Move`, etc and not high-level presets like `Appear`, `Disappear`?
+
+  - We had a long discussion on whether we want to exopse low-level presets or high-level presets. What we realised was that how an element appears depends on a lot of things like which element is it, how big / small is it, what is the context of the product, etc. So we can't define that all elements should fade in or all elements should slide in. It highly depends on the context of the product.
+  - We realised that consistency on that level, can be brought by building patterns that incorporate motion internally (e.g. Wizard pattern that comes with animation of going from one step to other)
+
+- ## Why not page transition and section transition?
+
+  - We earlier had an idea of dividing transitions between. 1. page transition, 2. section transition, 3. element transition. The idea was to bring consistency in high level motion like page, section, and thus reduce variations needed in element transition
+  - Although after exploring this idea, we realised that there is nothing called as "page transition" in most modern application. Here's examples of problems we ran into-
+    - If you have topnav, sidenav, and only switch between items inside sidenav, your entire page shouldn't transition. Only the workspace part should
+    - If your page has tabs with every tab routing to different URL, your page (or even your workspace) shouldn't transition. Only the content inside of the tab panels should
+  - Thus we realised that in the context of transition, everything is an element that have appear and disappear transitions. E.g. SideNav, whenever it comes up whether after reloading the page, going from full page screen to sidenav screen, or after moving from login -> dashboard, should have appear transition. If we move between pages where sidenav stays constant, it shouldn't transition.
 
 # References
 
