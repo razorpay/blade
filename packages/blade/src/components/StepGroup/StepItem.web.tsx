@@ -33,7 +33,6 @@ const InteractiveItemHeaderBox = styled.button<InteractiveItemHeaderProps>((prop
     padding: `${makeSpace(getIn(props.theme, props.paddingY))} ${makeSpace(
       getIn(props.theme, props.paddingX),
     )}`,
-    paddingBottom: '0px',
     cursor: 'pointer',
     display: 'inline-block',
     textDecoration: 'none',
@@ -193,7 +192,7 @@ const _StepItem = ({
         marker={marker}
         stepProgress={stepProgress}
       />
-      <Box marginTop="spacing.3" flex="1" marginRight={isVertical ? undefined : undefined}>
+      <Box flex="1" marginRight={isVertical ? undefined : undefined}>
         {isInteractive ? (
           <InteractiveItemHeaderBox
             {...stepItemHeaderPaddings}
@@ -207,9 +206,7 @@ const _StepItem = ({
             {stepItemHeaderJSX}
           </InteractiveItemHeaderBox>
         ) : (
-          <Box {...stepItemHeaderPaddings} paddingTop="spacing.0">
-            {stepItemHeaderJSX}
-          </Box>
+          <Box {...stepItemHeaderPaddings}>{stepItemHeaderJSX}</Box>
         )}
         {children ? (
           <Box paddingX="spacing.4" paddingTop="spacing.1">
