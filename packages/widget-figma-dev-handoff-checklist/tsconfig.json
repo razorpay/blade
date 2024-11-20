@@ -13,5 +13,6 @@
     "typeRoots": ["node_modules/@figma", "node_modules/@types"],
     "target": "ESNext",
   },
-  "include": ["./**/*.tsx", "./**/*.tsx"]
+  "include": ["components/**/*.tsx", "dev-handoff-checklist/**/*.tsx", "snowflake-handoff-checklist/**/*.tsx"],
+  "exclude": ["node_modules"]
 }

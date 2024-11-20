@@ -24,13 +24,19 @@ function Widget() {
     }
   });
 
-  const updateChecklist = (isChecked: true | false): void => {
+  const updateChecklist = ({
+    isChecked,
+    optionText,
+  }: {
+    isChecked: boolean;
+    optionText: string;
+  }): void => {
     if (isChecked) {
       setCheckedItems((prevState: number) => {
         waitForTask(
           sendAnalytics({
             eventName: 'Dev Checklist Item Toggled',
-            properties: { checkedItems: prevState + 1 },
+            properties: { checkedItems: prevState + 1, checkedItemName: optionText },
           }),
         );
         return prevState + 1;
@@ -40,7 +46,7 @@ function Widget() {
         waitForTask(
           sendAnalytics({
             eventName: 'Dev Checklist Item Toggled',
-            properties: { checkedItems: prevState - 1 },
+            properties: { checkedItems: prevState - 1, unCheckedItemName: optionText },
           }),
         );
         return prevState - 1;
@@ -61,7 +67,7 @@ function Widget() {
         <Text fontSize={28} fontWeight={700} fill="#192839">
           ✏️ Dev handoff checklist
         </Text>
-        <ProgressBar cardWidgetWidth={401} numberOfCheckboxes={14} checkedItems={checkedItems} />
+        <ProgressBar cardWidgetWidth={401} numberOfCheckboxes={15} checkedItems={checkedItems} />
       </AutoLayout>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
         <SectionHeader title="Reviewers" />
@@ -129,27 +135,32 @@ function Widget() {
           />
           <Checkbox
             id="state2"
-            optionText="Accounted for edge cases and error states"
+            optionText="Created end-to-end prototype for the flow"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id="state3"
-            optionText="Used browser header and footer frames"
+            optionText="Accounted for edge cases and error states"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id="state4"
-            optionText="Designs are light and dark mode compatible"
+            optionText="Used browser header and footer frames"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id="state5"
-            optionText="Added Figma's annotations to explain behaviours"
+            optionText="Designs are light and dark mode compatible"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
             id="state6"
-            optionText="Ensured responsive design for both desktop and mobile flows, considering standard screen sizes, safe areas, and keyboard layouts on mobile devices."
+            optionText="Added Figma's annotations to explain behaviours"
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id="state7"
+            optionText="Ensured responsive design for both desktop and mobile flows, considering standard screen sizes, safe areas, and keyboard layouts on mobile devices"
             onCheckboxClick={updateChecklist}
           />
         </AutoLayout>
