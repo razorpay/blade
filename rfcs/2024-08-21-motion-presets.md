@@ -367,7 +367,7 @@ const CardHeading = morph(Heading);
 
 When we wrap a certain component in AnimateInteractions wrapper from blade, we can animate the children component on interactions of the parent component.
 
-#### Scale
+#### Scale on Parent Hover
 
 Scale animation can be used indepedently to scale item on certain actions but also inside AnimateInteractions.
 
@@ -597,7 +597,7 @@ import { domMax } from 'motion/react';
 export default domMax; // 25kb (includes the 15kb of domAnimations)
 ```
 
-### App.tsx
+### `App.tsx`
 
 ```jsx
 // Make sure to return the specific export containing the feature bundle.
