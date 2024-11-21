@@ -901,7 +901,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
   });
 
-  const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
+  const willRenderHintText =
+    Boolean(helpText) ||
+    (validationState === 'success' && Boolean(successText)) ||
+    (validationState === 'error' && Boolean(errorText));
 
   if (__DEV__) {
     if (
