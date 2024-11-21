@@ -139,7 +139,7 @@ type FadeProps = {
   </td>
   <td>
 
-https://github.com/user-attachments/assets/65e056e6-e00f-4516-b7b1-4d9b27a5faec
+./images/motion-presets/fade.mov
 
 _Previews are just examples of presets. They don't use actual durations and easings yet_
 
