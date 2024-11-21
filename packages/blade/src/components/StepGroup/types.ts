@@ -2,7 +2,7 @@ import type React from 'react';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { LinkProps } from '~components/Link';
-import { FeedbackColors } from '~tokens/theme/theme';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 
 type StepGroupProps = {

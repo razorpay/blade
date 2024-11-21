@@ -127,8 +127,6 @@ const StepBottomCurveVertical = ({
   const { theme } = useTheme();
   const { size } = useStepGroup();
 
-  console.log({ size });
-
   if (size === 'medium') {
     return isDotted ? (
       <Svg

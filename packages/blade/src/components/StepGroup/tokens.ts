@@ -28,7 +28,7 @@ const getMarkerLineSpacings = (
     medium: {
       markerBackgroundSize: sizeTokens['20'],
       markerMargin: sizeTokens['2'],
-      indentationWidth: 31,
+      indentationWidth: sizeTokens['31'],
     },
   } as const;
 
