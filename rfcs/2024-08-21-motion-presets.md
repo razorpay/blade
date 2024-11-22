@@ -118,7 +118,7 @@ type FadeProps = {
    *
    * @default inout
    */
-  transition: 'in' | 'out' | 'inout';
+  type: 'in' | 'out' | 'inout';
 
   /**
    * What should trigger the motion
@@ -169,14 +169,14 @@ type SlideProps = {
   /**
    * @default inout
    */
-  transition: 'in' | 'out';
+  type: 'in' | 'out' | 'inout';
 
   /**
    * What should trigger the motion
    *
    * @default ['mount']
    */
-  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
+  motionTriggers: ('mount' | 'inView')[];
 
   /**
    * @default 'bottom'
@@ -209,19 +209,14 @@ type MoveProps = {
   /**
    * @default inout
    */
-  transition: 'in' | 'out' | 'inout';
-
-  /**
-   * @default 'bottom'
-   */
-  direction: 'top' | 'right' | 'bottom' | 'left';
+  type: 'in' | 'out' | 'inout';
 
   /**
    * What should trigger the motion
    *
    * @default ['mount']
    */
-  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
+  motionTriggers: ('mount' | 'inView')[];
 
   /**
    * Visibility state
@@ -249,7 +244,7 @@ type ScaleProps = {
   /**
    * @default scale-down
    */
-  transition: 'scale-up' | 'scale-down';
+  type: 'scale-up' | 'scale-down';
 
   /**
    * What should trigger the motion
