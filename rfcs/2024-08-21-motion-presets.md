@@ -631,6 +631,11 @@ function App({ children }) {
 
   - We'll continue to import from components and utils since they are also components only.
 
+- ## Will this be a breaking change?
+
+  - Yes. Although a small one. We're changing the structure of motion easing tokens that we have inorder to make them more scalable and consistent for future usecases.
+  - We'll be writing a codemod that migrates and maps to the new tokens so almost no to minimal manual changes will be required for this migration. More information will be added in the codemod documentation
+
 - ## Why low-level presets like `Fade`, `Move`, etc and not high-level presets like `Appear`, `Disappear`?
 
   - We had a long discussion on whether we want to exopse low-level presets or high-level presets. What we realised was that how an element appears depends on a lot of things like which element is it, how big / small is it, what is the context of the product, etc. So we can't define that all elements should fade in or all elements should slide in. It highly depends on the context of the product.
