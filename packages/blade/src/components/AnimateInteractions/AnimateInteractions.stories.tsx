@@ -47,7 +47,7 @@ const AnimateInteractionsTemplate: StoryFn<typeof AnimateInteractions> = (args) 
   const [isVisible, setIsVisible] = React.useState(true);
   return (
     <Box minHeight="350px">
-      <AnimateInteractions>{args.children}</AnimateInteractions>
+      <AnimateInteractions motionTriggers={['mount', 'hover']}>{args.children}</AnimateInteractions>
     </Box>
   );
 };
@@ -73,22 +73,26 @@ ScaleChildOnCardHover.args = {
       backgroundColor="surface.background.gray.moderate"
     >
       <CardBody>
-        <Box position="relative" overflow="hidden">
-          <Box padding="spacing.6">
-            <Text>Hi I am text inside card. Hover over this card to see magic</Text>
-          </Box>
-          <Move>
-            <Box
-              display="flex"
-              gap="spacing.4"
-              justifyContent="flex-end"
-              padding={['spacing.4', 'spacing.6']}
-              elevation="highRaised"
-            >
-              <Button variant="secondary">Cancel</Button>
-              <Button>Submit</Button>
+        <Box position="relative" overflow="hidden" paddingBottom="50px">
+          <Move motionTriggers={['mount']}>
+            <Box padding="spacing.4">
+              <Text>Hi I am text inside card. Hover over this card to see magic</Text>
             </Box>
           </Move>
+          <Box position="absolute" left="spacing.0" bottom="spacing.0" width="100%">
+            <Move motionTriggers={['on-animate-interactions']}>
+              <Box
+                display="flex"
+                gap="spacing.4"
+                justifyContent="flex-end"
+                padding={['spacing.4', 'spacing.6']}
+                elevation="highRaised"
+              >
+                <Button variant="secondary">Cancel</Button>
+                <Button>Submit</Button>
+              </Box>
+            </Move>
+          </Box>
         </Box>
       </CardBody>
     </Card>

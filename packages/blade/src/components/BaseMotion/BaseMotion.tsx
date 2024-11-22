@@ -6,10 +6,15 @@ import { useStagger } from '~components/Stagger/StaggerProvider';
 import type { BaseMotionBoxProps, BaseMotionEntryExitProps, MotionTriggersType } from './types';
 
 // Creating empty styled component so that the final component supports `as` prop
-const StyledDiv = styled.div``;
+const StyledDiv = styled.div`
+  display: inline-block;
+`;
 const MotionDiv = motion(StyledDiv);
 
-const motionTriggersArrayToGesturePropsMap: Record<MotionTriggersType, AnimationType> = {
+const motionTriggersArrayToGesturePropsMap: Record<
+  Exclude<MotionTriggersType, 'on-animate-interactions'>,
+  AnimationType
+> = {
   mount: 'animate',
   hover: 'whileHover',
   inView: 'whileInView',
@@ -23,7 +28,7 @@ const useAnimationVariables = ({
   motionTriggers,
 }: {
   type: BaseMotionEntryExitProps['type'];
-  motionTriggers: BaseMotionBoxProps['motionTriggers'];
+  motionTriggers?: Exclude<MotionTriggersType, 'on-animate-interactions'>[];
   shouldRenderAnimationVariables: BaseMotionBoxProps['shouldRenderAnimationVariables'];
 }) => {
   const animationVariables = React.useMemo(() => {
@@ -51,15 +56,18 @@ const useAnimationVariables = ({
   return animationVariables;
 };
 
-const BaseMotionBox = ({
-  children,
-  motionVariants,
-  type = 'inout',
-  motionTriggers = ['mount'],
-  shouldRenderAnimationVariables,
-  speed,
-  ...rest
-}: BaseMotionBoxProps) => {
+const _BaseMotionBox: React.ForwardRefRenderFunction<HTMLDivElement, BaseMotionBoxProps> = (
+  {
+    children,
+    motionVariants,
+    type = 'inout',
+    motionTriggers = ['mount'],
+    shouldRenderAnimationVariables,
+    speed,
+    ...rest
+  },
+  ref,
+) => {
   const animationVariables = useAnimationVariables({
     type,
     shouldRenderAnimationVariables,
@@ -67,21 +75,13 @@ const BaseMotionBox = ({
   });
 
   return (
-    <MotionDiv
-      // kinda hack to build it as enhancer component
-      variants={motionVariants}
-      {...animationVariables}
-      {...rest}
-      tabIndex={0}
-    >
+    <MotionDiv ref={ref} variants={motionVariants} {...animationVariables} {...rest}>
       {children}
     </MotionDiv>
   );
 };
 
-const BaseMotionEnhancerBox = ({ children, ...props }) => {
-  return <BaseMotionBox as={children.type} {...props} {...children.props} />;
-};
+const BaseMotionBox = React.forwardRef(_BaseMotionBox);
 
 const BaseMotionEntryExit = ({
   children,
@@ -92,6 +92,12 @@ const BaseMotionEntryExit = ({
 }: BaseMotionEntryExitProps) => {
   const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
   const { isInsideStaggerContainer } = useStagger();
+  const skipMotionOnCurrentElement =
+    (isInsideAnimateInteractionsContainer && motionTriggers.includes('on-animate-interactions')) ||
+    isInsideStaggerContainer;
+
+  const shouldRenderAnimationVariables = !skipMotionOnCurrentElement;
+  console.log({ motionTriggers, shouldRenderAnimationVariables });
 
   return (
     <AnimatePresence>
@@ -100,11 +106,9 @@ const BaseMotionEntryExit = ({
           // kinda hack to build it as enhancer component
           as={children.type}
           motionVariants={motionVariants}
-          motionTriggers={motionTriggers}
+          motionTriggers={shouldRenderAnimationVariables ? motionTriggers : undefined}
           type={type}
-          shouldRenderAnimationVariables={
-            !isInsideAnimateInteractionsContainer && !isInsideStaggerContainer
-          }
+          shouldRenderAnimationVariables={shouldRenderAnimationVariables}
           // We pass the props of children and not pass the children itself since the `as` prop already renders the children and we don't want to re-render it inside
           {...children.props}
         />
@@ -113,4 +117,4 @@ const BaseMotionEntryExit = ({
   );
 };
 
-export { MotionDiv, BaseMotionEntryExit, BaseMotionBox, BaseMotionEnhancerBox };
+export { MotionDiv, BaseMotionEntryExit, BaseMotionBox };

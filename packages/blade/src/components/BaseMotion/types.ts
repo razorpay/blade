@@ -24,7 +24,10 @@ type BaseMotionBoxProps = {
 type BaseMotionEntryExitProps = Pick<
   BaseMotionBoxProps,
   'children' | 'motionVariants' | 'type' | 'speed'
-> & { isVisible?: boolean; motionTriggers?: MotionTriggerEntryExitType[] };
+> & {
+  isVisible?: boolean;
+  motionTriggers?: (MotionTriggerEntryExitType | 'on-animate-interactions')[];
+};
 
 export type {
   BaseMotionEntryExitProps,

@@ -1,9 +1,10 @@
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
+import React from 'react';
 
 export type MoveProps = BaseMotionEntryExitProps;
 
-export const Move = ({ children, variant = 'inout', isVisible, motionTriggers }: MoveProps) => {
+export const Move = ({ children, type = 'inout', isVisible, motionTriggers }: MoveProps) => {
   const moveVariants: MotionVariantsType = {
     initial: {
       opacity: 0,
@@ -23,7 +24,7 @@ export const Move = ({ children, variant = 'inout', isVisible, motionTriggers }:
     <BaseMotionEntryExit
       motionVariants={moveVariants}
       children={children}
-      variant={variant}
+      type={type}
       isVisible={isVisible}
       motionTriggers={motionTriggers}
     />
