@@ -24,13 +24,19 @@ function Widget() {
     }
   });
 
-  const updateChecklist = (checkedState: true | false): void => {
-    if (checkedState) {
+  const updateChecklist = ({
+    isChecked,
+    optionText,
+  }: {
+    isChecked: boolean;
+    optionText: string;
+  }): void => {
+    if (isChecked) {
       setCheckedItems((prevState: number) => {
         waitForTask(
           sendAnalytics({
             eventName: 'Snowflake Checklist Item Toggled',
-            properties: { checkedItems: prevState + 1 },
+            properties: { checkedItems: prevState + 1, checkedItemName: optionText },
           }),
         );
         return prevState + 1;
@@ -40,7 +46,7 @@ function Widget() {
         waitForTask(
           sendAnalytics({
             eventName: 'Snowflake Checklist Item Toggled',
-            properties: { checkedItems: prevState - 1 },
+            properties: { checkedItems: prevState - 1, unCheckedItemName: optionText },
           }),
         );
         return prevState - 1;
