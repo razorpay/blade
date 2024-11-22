@@ -128,7 +128,7 @@ function Widget() {
           />
           <Checkbox
             id="hygiene2"
-            optionText="Has all the states of the component'"
+            optionText="Has all the states of the component"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
