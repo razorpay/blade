@@ -381,7 +381,7 @@ import {
 <AnimateInteractions motionTriggers={['hover']}>
   <Card>
     <CardBody>
-      <Scale>
+      <Scale motionTriggers={['on-animate-interactions']}>
         <img src="./rajorpay.jpeg" />
       </Scale>
     </CardBody>
@@ -671,3 +671,4 @@ function App({ children }) {
   - [CSS Triggers - What CSS property triggers which type of render](https://csstriggers.com/)
   - [Motion React Page Transitions Demo](https://codesandbox.io/p/sandbox/framer-motion-react-router-6-page-transitions-2f2olf?file=%2Fsrc%2Ftemplate%2FGallery.tsx%3A18%2C38&from-embed=)
   - [Motion React Scroll Animations](https://codesandbox.io/p/sandbox/framer-motion-whileinview-2hbg5?file=%2Fsrc%2Findex.tsx&from-embed=)
+  - [Tailwind `group` animations](https://play.tailwindcss.com/wh3VWalCTs)
