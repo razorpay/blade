@@ -1,6 +1,6 @@
 ---
 Start Date: 21-08-2024
-RFC PR: [#2336](https://github.com/razorpay/blade/pull/2336)
+RFC PR: https://github.com/razorpay/blade/pull/2336
 Blade Issue: (leave this empty if no issue yet)
 ---
 
