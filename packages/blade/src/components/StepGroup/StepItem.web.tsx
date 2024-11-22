@@ -209,7 +209,7 @@ const _StepItem = ({
           <Box {...stepItemHeaderPaddings}>{stepItemHeaderJSX}</Box>
         )}
         {children ? (
-          <Box paddingX="spacing.4" paddingTop="spacing.1">
+          <Box paddingX="spacing.4" paddingBottom="spacing.3">
             {children}
           </Box>
         ) : null}
