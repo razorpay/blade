@@ -1,6 +1,7 @@
 import type { Variant } from 'motion/react';
 
-type MotionTriggersType = 'hover' | 'tap' | 'focus' | 'inView' | 'mount';
+type MotionTriggerEntryExitType = 'mount' | 'inView' | 'focus';
+type MotionTriggersType = MotionTriggerEntryExitType | 'hover' | 'tap';
 
 type MotionVariantsType = {
   initial: Variant;
@@ -11,7 +12,7 @@ type MotionVariantsType = {
 type BaseMotionBoxProps = {
   children: React.ReactElement;
   speed?: 'slow' | 'medium' | 'fast';
-  variant?: 'in' | 'out' | 'inout';
+  type?: 'in' | 'out' | 'inout';
   /**
    * @default ['mount']
    */
@@ -22,8 +23,8 @@ type BaseMotionBoxProps = {
 
 type BaseMotionEntryExitProps = Pick<
   BaseMotionBoxProps,
-  'children' | 'motionTriggers' | 'motionVariants' | 'variant' | 'speed'
-> & { isVisible?: boolean };
+  'children' | 'motionVariants' | 'type' | 'speed'
+> & { isVisible?: boolean; motionTriggers?: MotionTriggerEntryExitType[] };
 
 export type {
   BaseMotionEntryExitProps,

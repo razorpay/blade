@@ -18,12 +18,12 @@ const motionTriggersArrayToGesturePropsMap: Record<MotionTriggersType, Animation
 };
 
 const useAnimationVariables = ({
-  variant,
+  type,
   shouldRenderAnimationVariables,
   motionTriggers,
 }: {
-  variant: BaseMotionEntryExitProps['variant'];
-  motionTriggers: BaseMotionEntryExitProps['motionTriggers'];
+  type: BaseMotionEntryExitProps['type'];
+  motionTriggers: BaseMotionBoxProps['motionTriggers'];
   shouldRenderAnimationVariables: BaseMotionBoxProps['shouldRenderAnimationVariables'];
 }) => {
   const animationVariables = React.useMemo(() => {
@@ -42,11 +42,11 @@ const useAnimationVariables = ({
     // When component is rendered inside stagger, we remove the initial, animate, exit props
     // otherwise they override the stagger behaviour and stagger does not work
     return {
-      initial: variant === 'in' || variant === 'inout' ? 'initial' : undefined,
-      exit: variant === 'out' || variant === 'inout' ? 'exit' : undefined,
+      initial: type === 'in' || type === 'inout' ? 'initial' : undefined,
+      exit: type === 'out' || type === 'inout' ? 'exit' : undefined,
       ...triggerProps,
     };
-  }, [variant, shouldRenderAnimationVariables]);
+  }, [type, shouldRenderAnimationVariables]);
 
   return animationVariables;
 };
@@ -54,19 +54,17 @@ const useAnimationVariables = ({
 const BaseMotionBox = ({
   children,
   motionVariants,
-  variant = 'inout',
+  type = 'inout',
   motionTriggers = ['mount'],
   shouldRenderAnimationVariables,
   speed,
   ...rest
 }: BaseMotionBoxProps) => {
   const animationVariables = useAnimationVariables({
-    variant,
+    type,
     shouldRenderAnimationVariables,
     motionTriggers,
   });
-
-  console.log({ animationVariables, motionTriggers, variant });
 
   return (
     <MotionDiv
@@ -89,7 +87,7 @@ const BaseMotionEntryExit = ({
   children,
   motionVariants,
   isVisible = true,
-  variant = 'inout',
+  type = 'inout',
   motionTriggers = ['mount'],
 }: BaseMotionEntryExitProps) => {
   const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
@@ -103,7 +101,7 @@ const BaseMotionEntryExit = ({
           as={children.type}
           motionVariants={motionVariants}
           motionTriggers={motionTriggers}
-          variant={variant}
+          type={type}
           shouldRenderAnimationVariables={
             !isInsideAnimateInteractionsContainer && !isInsideStaggerContainer
           }
