@@ -1,13 +1,10 @@
 import React from 'react';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
-import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
 import { makeSecondsDuration } from '~utils/makeSecondsDuration';
 import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
 import { castWebType, useTheme } from '~utils';
-
-export type SlideProps = BaseMotionEntryExitProps & {
-  direction?: 'top' | 'right' | 'bottom' | 'left';
-};
+import type { SlideProps } from './types';
 
 const getFromTransform = (direction: SlideProps['direction']): `translate${string}` => {
   if (direction === 'top') {

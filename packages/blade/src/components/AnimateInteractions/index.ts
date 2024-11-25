@@ -1,2 +1,2 @@
 export { AnimateInteractions } from './AnimateInteractions';
-export type { AnimateInteractionsProps } from './AnimateInteractions';
+export type { AnimateInteractionsProps } from './types';

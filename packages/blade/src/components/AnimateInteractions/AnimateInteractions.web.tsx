@@ -1,13 +1,9 @@
-import { BaseMotionBoxProps, BaseMotionEnhancerBox } from '~components/BaseMotion';
+import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 import { AnimateInteractionsContext } from './AnimateInteractionsProvider';
 import { useFocusWithin } from './useFocusWithin';
 import React from 'react';
 import { useAnimationControls } from 'motion/react';
-
-export type AnimateInteractionsProps = {
-  children: React.ReactElement;
-  motionTriggers: BaseMotionBoxProps['motionTriggers'];
-};
+import type { AnimateInteractionsProps } from './types';
 
 export const AnimateInteractions = ({
   children,

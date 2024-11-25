@@ -204,7 +204,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     <CardProvider>
       <CardRoot
         as={as}
-        ref={ref as any}
+        ref={ref as never}
         display={'block' as never}
         borderRadius="medium"
         onMouseEnter={onHover as never}

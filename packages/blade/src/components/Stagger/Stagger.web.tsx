@@ -1,11 +1,8 @@
 import { BaseMotionBox } from '~components/BaseMotion';
-import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
 import { AnimatePresence } from 'motion/react';
 import { StaggerContext } from './StaggerProvider';
-
-export type StaggerProps = BaseMotionEntryExitProps & {
-  children: React.ReactElement[] | React.ReactElement;
-};
+import { StaggerProps } from './types';
 
 export const Stagger = ({ children, isVisible, type = 'inout' }: StaggerProps) => {
   const staggerVariants: MotionVariantsType = {

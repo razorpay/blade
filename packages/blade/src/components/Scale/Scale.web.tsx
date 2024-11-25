@@ -1,17 +1,10 @@
 import React from 'react';
 import { BaseMotionBox } from '~components/BaseMotion';
-import type { BaseMotionBoxProps, MotionVariantsType } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
 import { makeSecondsDuration } from '~utils/makeSecondsDuration';
 import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
 import { castWebType, useTheme } from '~utils';
-
-export type ScaleProps = {
-  isHighlighted?: boolean;
-  variant?: 'scale-up' | 'scale-down';
-  type?: BaseMotionBoxProps['type'];
-  motionTriggers?: BaseMotionBoxProps['motionTriggers'];
-  children: BaseMotionBoxProps['children'];
-};
+import type { ScaleProps } from './types';
 
 export const Scale = ({
   children,
