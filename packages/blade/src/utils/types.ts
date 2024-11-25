@@ -138,10 +138,17 @@ type ContainerElementType = Platform.Select<{
   native: View;
 }>;
 
+type DataAnalyticsKey = `data-analytics-${string}`;
+
+interface DataAnalyticsAttribute {
+  [key: DataAnalyticsKey]: string;
+}
+
 export type {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
   DotNotationSpacingStringToken,
+  DataAnalyticsAttribute,
   KeysRequired,
   StringChildrenType,
   StringWithAutocomplete,

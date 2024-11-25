@@ -11,8 +11,9 @@ import type { BaseInputProps } from '~components/Input/BaseInput';
 import { BaseInput } from '~components/Input/BaseInput';
 import { size as sizeTokens } from '~tokens/global';
 import { isReactNative, makeSize } from '~utils';
-import type { BladeElementRef } from '~utils/types';
+import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import { useIsMobile } from '~utils/useIsMobile';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _DateInput = (
   props: BaseInputProps,
@@ -48,12 +49,13 @@ const HiddenInput = ({
   name,
   isRequired,
   isDisabled,
+  ...props
 }: {
   value: string;
   name?: string;
   isRequired?: boolean;
   isDisabled?: boolean;
-}): React.ReactElement => {
+} & DataAnalyticsAttribute): React.ReactElement => {
   if (isReactNative()) return <></>;
 
   return (
@@ -64,6 +66,7 @@ const HiddenInput = ({
       required={isRequired}
       disabled={isDisabled}
       readOnly
+      {...makeAnalyticsAttribute(props)}
     />
   );
 };
@@ -228,6 +231,7 @@ const _DatePickerInput = (
             name={name?.end}
             isRequired={props.isRequired}
             isDisabled={props.isDisabled}
+            {...makeAnalyticsAttribute(props)}
           />
           <DateInput
             id="end-date"
