@@ -1,18 +1,89 @@
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
+import { makeSecondsDuration } from '~utils/makeSecondsDuration';
+import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
+import { castWebType, useTheme } from '~utils';
 
-export type SlideProps = BaseMotionEntryExitProps;
+export type SlideProps = BaseMotionEntryExitProps & {
+  direction?: 'top' | 'right' | 'bottom' | 'left';
+};
 
-export const Slide = ({ children, variant = 'inout', isVisible, motionTriggers }: SlideProps) => {
+const getFromTransform = (direction: SlideProps['direction']): `translate${string}` => {
+  if (direction === 'top') {
+    return 'translateY(-100vh)';
+  }
+
+  if (direction === 'left') {
+    return 'translateX(-100vh)';
+  }
+
+  if (direction === 'right') {
+    return 'translateX(100vh)';
+  }
+
+  return 'translateY(100vh)';
+};
+
+// const useSlideVariants = (direction: SlideProps['direction']) => {
+//   const { theme } = useTheme();
+//   let slideFromTransform = 'translateY(100vh)';
+//   let slideTransition = {
+//     duration: makeSecondsDuration(theme.motion.duration.xquick),
+//     easings: cssBezierToMotionFn(castWebType(theme.motion.easing.emphasized)),
+//   }
+
+//   if (direction === 'top') {
+
+//   }
+
+//   return {
+//     slideFromTransform: '',
+//     slideDuration: '',
+//   };
+// };
+
+export const Slide = ({
+  children,
+  type = 'inout',
+  direction = 'bottom',
+  isVisible,
+  motionTriggers,
+}: SlideProps) => {
+  const { theme } = useTheme();
+  const transformFrom = getFromTransform(direction);
+  const isDirectionLeftOrRight = ['left', 'right'].includes(direction);
+
   const moveVariants: MotionVariantsType = {
     initial: {
-      transform: 'translateY(100%)',
+      transform: transformFrom,
     },
     animate: {
       transform: 'translateY(0%)',
+      transition: {
+        duration: makeSecondsDuration(
+          isDirectionLeftOrRight
+            ? theme.motion.duration.xmoderate
+            : theme.motion.duration['2xgentle'],
+        ),
+        easings: cssBezierToMotionFn(
+          isDirectionLeftOrRight
+            ? castWebType(theme.motion.easing.entrance)
+            : castWebType(theme.motion.easing.emphasized),
+        ),
+      },
     },
     exit: {
-      transform: 'translateY(100%)',
+      transform: transformFrom,
+      transition: {
+        duration: makeSecondsDuration(
+          isDirectionLeftOrRight ? theme.motion.duration.moderate : theme.motion.duration.xgentle,
+        ),
+        easings: cssBezierToMotionFn(
+          isDirectionLeftOrRight
+            ? castWebType(theme.motion.easing.exit)
+            : castWebType(theme.motion.easing.emphasized),
+        ),
+      },
     },
   };
 
@@ -20,7 +91,7 @@ export const Slide = ({ children, variant = 'inout', isVisible, motionTriggers }
     <BaseMotionEntryExit
       motionVariants={moveVariants}
       children={children}
-      variant={variant}
+      type={type}
       isVisible={isVisible}
       motionTriggers={motionTriggers}
     />
