@@ -1,15 +1,18 @@
-import { BaseMotionBox } from '~components/BaseMotion';
-import type { BaseMotionEntryExitProps } from '~components/BaseMotion';
+import { BaseMotionBoxProps, BaseMotionEnhancerBox } from '~components/BaseMotion';
 import { AnimateInteractionsContext } from './AnimateInteractionsProvider';
 import { useFocusWithin } from './useFocusWithin';
 import React from 'react';
 import { useAnimationControls } from 'motion/react';
 
-export type AnimateInteractionsProps = BaseMotionEntryExitProps & {
-  children: React.ReactElement[] | React.ReactElement;
+export type AnimateInteractionsProps = {
+  children: React.ReactElement;
+  motionTriggers: BaseMotionBoxProps['motionTriggers'];
 };
 
-export const AnimateInteractions = ({ children, motionTriggers }: AnimateInteractionsProps) => {
+export const AnimateInteractions = ({
+  children,
+  motionTriggers = ['hover'],
+}: AnimateInteractionsProps) => {
   const baseMotionRef = React.useRef<HTMLDivElement | null>(null);
   const controls = useAnimationControls();
 
@@ -24,14 +27,14 @@ export const AnimateInteractions = ({ children, motionTriggers }: AnimateInterac
 
   return (
     <AnimateInteractionsContext.Provider value={{ isInsideAnimateInteractionsContainer: true }}>
-      <BaseMotionBox
+      <BaseMotionEnhancerBox
         ref={baseMotionRef}
         motionTriggers={motionTriggers}
         shouldRenderAnimationVariables
         animate={controls}
       >
         {children}
-      </BaseMotionBox>
+      </BaseMotionEnhancerBox>
     </AnimateInteractionsContext.Provider>
   );
 };

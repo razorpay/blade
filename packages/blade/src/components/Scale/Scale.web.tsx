@@ -1,29 +1,51 @@
 import React from 'react';
-import { BaseMotionEntryExit } from '~components/BaseMotion';
-import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
+import { BaseMotionBox } from '~components/BaseMotion';
+import type { BaseMotionBoxProps, MotionVariantsType } from '~components/BaseMotion';
+import { makeSecondsDuration } from '~utils/makeSecondsDuration';
+import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
+import { castWebType, useTheme } from '~utils';
 
-export type ScaleProps = Omit<BaseMotionEntryExitProps, 'isVisible'> & {
-  isScaled?: boolean;
+export type ScaleProps = {
+  isHighlighted?: boolean;
+  variant?: 'scale-up' | 'scale-down';
+  type?: BaseMotionBoxProps['type'];
+  motionTriggers?: BaseMotionBoxProps['motionTriggers'];
+  children: BaseMotionBoxProps['children'];
 };
 
-export const Scale = ({ children, isScaled, variant = 'inout', motionTriggers }: ScaleProps) => {
-  const isControlledScale = typeof isScaled === 'boolean';
-  const defaultMotionTriggers = isControlledScale ? ['mount' as const] : ['hover' as const];
+export const Scale = ({
+  children,
+  isHighlighted,
+  type = 'inout',
+  variant = 'scale-up',
+  motionTriggers,
+}: ScaleProps) => {
+  const isControlledHighlighted = typeof isHighlighted === 'boolean';
+  const defaultMotionTriggers = isControlledHighlighted ? ['mount' as const] : ['hover' as const];
+  const { theme } = useTheme();
 
   const fadeVariants: MotionVariantsType = {
     initial: {},
     animate: {
-      scale: isScaled || !isControlledScale ? '1.1' : undefined,
+      scale:
+        isHighlighted || !isControlledHighlighted
+          ? variant === 'scale-up'
+            ? 1.05
+            : 0.98
+          : undefined,
+      transition: {
+        duration: makeSecondsDuration(theme.motion.duration.gentle),
+        easings: cssBezierToMotionFn(castWebType(theme.motion.easing.standard)),
+      },
     },
     exit: {},
   };
 
   return (
-    <BaseMotionEntryExit
+    <BaseMotionBox
       motionVariants={fadeVariants}
-      variant={variant}
+      type={type}
       children={children}
-      isVisible={true}
       motionTriggers={motionTriggers ?? defaultMotionTriggers}
     />
   );

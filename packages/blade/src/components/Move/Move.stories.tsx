@@ -7,6 +7,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
+import { InternalCardExample } from '../Card/Card.stories';
 
 const Page = (): React.ReactElement => {
   return (
@@ -36,15 +37,19 @@ export default {
   },
 } as Meta<MoveProps>;
 
-const MoveTemplate: StoryFn<typeof Move> = ({ children }) => {
+const MoveTemplate: StoryFn<typeof Move> = (args) => {
+  const [isVisible, setIsVisible] = React.useState(true);
   return (
-    <Box>
-      <Move>
-        <Button>Hi from blade button</Button>
-      </Move>
-      <Button>another button with no fade</Button>
+    <Box minHeight="350px">
+      <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
+        Toggle Move
+      </Button>
+      <Move {...args} isVisible={isVisible} />
     </Box>
   );
 };
 
 export const Default = MoveTemplate.bind({});
+Default.args = {
+  children: <InternalCardExample />,
+};

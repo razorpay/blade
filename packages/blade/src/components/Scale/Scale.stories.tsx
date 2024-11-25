@@ -38,13 +38,13 @@ export default {
 } as Meta<ScaleProps>;
 
 const ControlledScaleTemplate: StoryFn<typeof Scale> = (args) => {
-  const [isScaled, setIsScaled] = React.useState(false);
+  const [isHighlighted, setIsHighlighted] = React.useState(false);
   return (
     <Box>
-      <Button marginBottom="spacing.4" onClick={() => setIsScaled(!isScaled)}>
+      <Button marginBottom="spacing.4" onClick={() => setIsHighlighted(!isHighlighted)}>
         Toggle Scale
       </Button>
-      <Scale {...args} isScaled={isScaled} />
+      <Scale {...args} motionTriggers={['mount']} isHighlighted={isHighlighted} />
     </Box>
   );
 };

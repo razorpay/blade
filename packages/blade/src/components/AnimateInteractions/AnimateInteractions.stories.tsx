@@ -7,13 +7,10 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { InternalCardExample } from '../Card/Card.stories';
 import { Fade } from '~components/Fade';
-import { Scale } from '~components/Scale';
 import { Move } from '~components/Move';
 import { Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
-import { Slide } from '~components/Slide';
 
 const Page = (): React.ReactElement => {
   return (
@@ -44,10 +41,11 @@ export default {
 } as Meta<AnimateInteractionsProps>;
 
 const AnimateInteractionsTemplate: StoryFn<typeof AnimateInteractions> = (args) => {
-  const [isVisible, setIsVisible] = React.useState(true);
   return (
     <Box minHeight="350px">
-      <AnimateInteractions motionTriggers={['mount', 'hover']}>{args.children}</AnimateInteractions>
+      <AnimateInteractions motionTriggers={args.motionTriggers}>
+        {args.children}
+      </AnimateInteractions>
     </Box>
   );
 };
@@ -56,9 +54,9 @@ export const Default = AnimateInteractionsTemplate.bind({});
 Default.args = {
   children: (
     <Box display="flex" flexDirection="row" gap="spacing.4">
-      <Text>Some Text in Box</Text>
-      <Fade>
-        <b>Some Fade on Hover</b>
+      <Text>Hover me for magic</Text>
+      <Fade motionTriggers={['on-animate-interactions']}>
+        <b>I appear depending on interaction on parent container</b>
       </Fade>
     </Box>
   ),
@@ -96,22 +94,5 @@ ScaleChildOnCardHover.args = {
         </Box>
       </CardBody>
     </Card>
-  ),
-};
-
-export const MoveAnimateInteractions = AnimateInteractionsTemplate.bind({});
-MoveAnimateInteractions.args = {
-  children: (
-    <Box display="flex" flexDirection="row" gap="spacing.4">
-      <Move>
-        <InternalCardExample />
-      </Move>
-      <Move>
-        <InternalCardExample />
-      </Move>
-      <Move>
-        <InternalCardExample />
-      </Move>
-    </Box>
   ),
 };

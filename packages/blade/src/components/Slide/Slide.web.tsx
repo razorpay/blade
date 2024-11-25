@@ -1,3 +1,4 @@
+import React from 'react';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
 import { makeSecondsDuration } from '~utils/makeSecondsDuration';
@@ -24,24 +25,6 @@ const getFromTransform = (direction: SlideProps['direction']): `translate${strin
   return 'translateY(100vh)';
 };
 
-// const useSlideVariants = (direction: SlideProps['direction']) => {
-//   const { theme } = useTheme();
-//   let slideFromTransform = 'translateY(100vh)';
-//   let slideTransition = {
-//     duration: makeSecondsDuration(theme.motion.duration.xquick),
-//     easings: cssBezierToMotionFn(castWebType(theme.motion.easing.emphasized)),
-//   }
-
-//   if (direction === 'top') {
-
-//   }
-
-//   return {
-//     slideFromTransform: '',
-//     slideDuration: '',
-//   };
-// };
-
 export const Slide = ({
   children,
   type = 'inout',
@@ -50,8 +33,16 @@ export const Slide = ({
   motionTriggers,
 }: SlideProps) => {
   const { theme } = useTheme();
-  const transformFrom = getFromTransform(direction);
-  const isDirectionLeftOrRight = ['left', 'right'].includes(direction);
+
+  const { transformFrom, isDirectionLeftOrRight } = React.useMemo(() => {
+    const transformFrom = getFromTransform(direction);
+    const isDirectionLeftOrRight = ['left', 'right'].includes(direction);
+
+    return {
+      transformFrom,
+      isDirectionLeftOrRight,
+    };
+  }, [direction]);
 
   const moveVariants: MotionVariantsType = {
     initial: {

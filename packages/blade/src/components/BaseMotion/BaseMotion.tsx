@@ -1,3 +1,4 @@
+import { mergeRefs } from '@mantine/hooks';
 import { AnimatePresence, AnimationType, m as motion } from 'motion/react';
 import React from 'react';
 import styled from 'styled-components';
@@ -24,25 +25,37 @@ const motionTriggersArrayToGesturePropsMap: Record<
 
 const useAnimationVariables = ({
   type,
-  shouldRenderAnimationVariables,
   motionTriggers,
 }: {
   type: BaseMotionEntryExitProps['type'];
-  motionTriggers?: Exclude<MotionTriggersType, 'on-animate-interactions'>[];
-  shouldRenderAnimationVariables: BaseMotionBoxProps['shouldRenderAnimationVariables'];
+  motionTriggers: MotionTriggersType[];
 }) => {
+  const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
+  const { isInsideStaggerContainer } = useStagger();
+  const skipMotionOnCurrentElement =
+    (isInsideAnimateInteractionsContainer && motionTriggers.includes('on-animate-interactions')) ||
+    isInsideStaggerContainer;
+
+  const shouldRenderAnimationVariables = !skipMotionOnCurrentElement;
+
   const animationVariables = React.useMemo(() => {
     if (!shouldRenderAnimationVariables) {
       return {};
     }
 
-    const triggerProps = motionTriggers?.reduce<Partial<Record<AnimationType, 'animate'>>>(
-      (prevProps, currentTrigger) => {
-        prevProps[motionTriggersArrayToGesturePropsMap[currentTrigger]] = 'animate';
-        return prevProps;
-      },
-      {},
-    );
+    const triggerProps = shouldRenderAnimationVariables
+      ? motionTriggers?.reduce<Partial<Record<AnimationType, 'animate'>>>(
+          (prevProps, currentTrigger) => {
+            prevProps[
+              motionTriggersArrayToGesturePropsMap[
+                currentTrigger as Exclude<MotionTriggersType, 'on-animate-interactions'>
+              ]
+            ] = 'animate';
+            return prevProps;
+          },
+          {},
+        )
+      : {};
 
     // When component is rendered inside stagger, we remove the initial, animate, exit props
     // otherwise they override the stagger behaviour and stagger does not work
@@ -57,21 +70,18 @@ const useAnimationVariables = ({
 };
 
 const _BaseMotionBox: React.ForwardRefRenderFunction<HTMLDivElement, BaseMotionBoxProps> = (
-  {
-    children,
-    motionVariants,
-    type = 'inout',
-    motionTriggers = ['mount'],
-    shouldRenderAnimationVariables,
-    speed,
-    ...rest
-  },
+  { children, motionVariants, type = 'inout', motionTriggers = ['mount'], ...rest },
   ref,
 ) => {
   const animationVariables = useAnimationVariables({
     type,
-    shouldRenderAnimationVariables,
     motionTriggers,
+  });
+
+  console.log({
+    motionVariants,
+    motionTriggers,
+    animationVariables,
   });
 
   return (
@@ -83,6 +93,23 @@ const _BaseMotionBox: React.ForwardRefRenderFunction<HTMLDivElement, BaseMotionB
 
 const BaseMotionBox = React.forwardRef(_BaseMotionBox);
 
+const _BaseMotionEnhancerBox: React.ForwardRefRenderFunction<HTMLDivElement, BaseMotionBoxProps> = (
+  { children, ...motionBoxArgs },
+  ref,
+) => {
+  return (
+    <BaseMotionBox
+      ref={mergeRefs(children.props.ref, ref)}
+      as={children.type}
+      {...motionBoxArgs}
+      // We pass the props of children and not pass the children itself since the `as` prop already renders the children and we don't want to re-render it inside
+      {...children.props}
+    />
+  );
+};
+
+const BaseMotionEnhancerBox = React.forwardRef(_BaseMotionEnhancerBox);
+
 const BaseMotionEntryExit = ({
   children,
   motionVariants,
@@ -90,15 +117,6 @@ const BaseMotionEntryExit = ({
   type = 'inout',
   motionTriggers = ['mount'],
 }: BaseMotionEntryExitProps) => {
-  const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
-  const { isInsideStaggerContainer } = useStagger();
-  const skipMotionOnCurrentElement =
-    (isInsideAnimateInteractionsContainer && motionTriggers.includes('on-animate-interactions')) ||
-    isInsideStaggerContainer;
-
-  const shouldRenderAnimationVariables = !skipMotionOnCurrentElement;
-  console.log({ motionTriggers, shouldRenderAnimationVariables });
-
   return (
     <AnimatePresence>
       {isVisible ? (
@@ -106,9 +124,8 @@ const BaseMotionEntryExit = ({
           // kinda hack to build it as enhancer component
           as={children.type}
           motionVariants={motionVariants}
-          motionTriggers={shouldRenderAnimationVariables ? motionTriggers : undefined}
+          motionTriggers={motionTriggers}
           type={type}
-          shouldRenderAnimationVariables={shouldRenderAnimationVariables}
           // We pass the props of children and not pass the children itself since the `as` prop already renders the children and we don't want to re-render it inside
           {...children.props}
         />
@@ -117,4 +134,4 @@ const BaseMotionEntryExit = ({
   );
 };
 
-export { MotionDiv, BaseMotionEntryExit, BaseMotionBox };
+export { MotionDiv, BaseMotionEntryExit, BaseMotionBox, BaseMotionEnhancerBox };

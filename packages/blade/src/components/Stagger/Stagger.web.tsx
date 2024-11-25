@@ -7,7 +7,7 @@ export type StaggerProps = BaseMotionEntryExitProps & {
   children: React.ReactElement[] | React.ReactElement;
 };
 
-export const Stagger = ({ children, isVisible, variant = 'inout' }: StaggerProps) => {
+export const Stagger = ({ children, isVisible, type = 'inout' }: StaggerProps) => {
   const staggerVariants: MotionVariantsType = {
     initial: {},
     animate: {
@@ -23,18 +23,14 @@ export const Stagger = ({ children, isVisible, variant = 'inout' }: StaggerProps
   };
 
   return (
-    <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
-      <AnimatePresence>
-        {isVisible ? (
-          <BaseMotionBox
-            shouldRenderAnimationVariables
-            variant={variant}
-            motionVariants={staggerVariants}
-          >
+    <AnimatePresence>
+      {isVisible ? (
+        <BaseMotionBox shouldRenderAnimationVariables type={type} motionVariants={staggerVariants}>
+          <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
             {children}
-          </BaseMotionBox>
-        ) : null}
-      </AnimatePresence>
-    </StaggerContext.Provider>
+          </StaggerContext.Provider>
+        </BaseMotionBox>
+      ) : null}
+    </AnimatePresence>
   );
 };
