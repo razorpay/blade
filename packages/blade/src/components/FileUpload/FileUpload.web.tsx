@@ -26,6 +26,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useControllableState } from '~utils/useControllable';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -52,7 +53,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     maxCount,
     maxSize,
     size = 'medium',
-    ...styledProps
+    ...props
   },
   ref,
 ): React.ReactElement => {
@@ -182,7 +183,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       flexDirection="column"
       width="100%"
       {...metaAttribute({ name: MetaConstants.FileUpload, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(props)}
     >
       <BaseBox
         display="flex"
@@ -266,6 +267,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     ...accessibilityProps,
                   }}
                   ref={mergedRef}
+                  {...makeAnalyticsAttribute(props)}
                 />
 
                 <Box
