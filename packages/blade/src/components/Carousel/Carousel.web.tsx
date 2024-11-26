@@ -29,6 +29,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { useControllableState } from '~utils/useControllable';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useDidUpdate } from '~utils/useDidUpdate';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ControlsProp = Required<
   Pick<
@@ -515,6 +516,7 @@ const Carousel = ({
         flexDirection="column"
         height={height}
         {...getStyledProps(props)}
+        {...makeAnalyticsAttribute(props)}
       >
         <BaseBox
           width="100%"
