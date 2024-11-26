@@ -8,11 +8,14 @@ import { BaseLink } from '~components/Link/BaseLink';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CollapsibleLinkProps = Pick<
   LinkProps,
   'color' | 'size' | 'isDisabled' | 'testID' | 'accessibilityLabel' | 'children'
 > &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const _CollapsibleLink = ({
@@ -22,7 +25,7 @@ const _CollapsibleLink = ({
   isDisabled,
   testID,
   accessibilityLabel,
-  ...styledProps
+  ...props
 }: CollapsibleLinkProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
@@ -46,7 +49,8 @@ const _CollapsibleLink = ({
         controls: collapsibleBodyId,
         expanded: isExpanded,
       }}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(props)}
+      {...makeAnalyticsAttribute(props)}
     >
       {children}
     </BaseLink>

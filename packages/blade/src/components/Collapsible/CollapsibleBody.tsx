@@ -6,12 +6,14 @@ import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _CollapsibleBody = ({
   children,
   testID,
   width,
   _hasMargin = true,
+  ...props
 }: CollapsibleBodyProps): ReactElement => {
   const { collapsibleBodyId, isExpanded } = useCollapsible();
   return (
@@ -20,6 +22,7 @@ const _CollapsibleBody = ({
       width={width}
       {...makeAccessible({ role: 'region', hidden: !isExpanded })}
       {...metaAttribute({ name: MetaConstants.CollapsibleBody, testID })}
+      {...makeAnalyticsAttribute(props)}
     >
       <CollapsibleBodyContent _hasMargin={_hasMargin}>{children}</CollapsibleBodyContent>
     </BaseBox>

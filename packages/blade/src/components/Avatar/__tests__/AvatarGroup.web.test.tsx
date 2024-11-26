@@ -52,7 +52,7 @@ describe('<AvatarGroup />', () => {
     expect(getByTestId('avatar-group-test')).toBeTruthy();
   });
   it('should accept data-analytics attribute', () => {
-    const { getByTestId } = renderWithTheme(
+    const { getByTestId, container } = renderWithTheme(
       <AvatarGroup data-analytics-avatar-group="blade-team" testID="data-analytics-test">
         <Avatar name="Nitin Kumar" color="information" />
         <Avatar name="Anurag" color="positive" />
@@ -63,6 +63,6 @@ describe('<AvatarGroup />', () => {
       'data-analytics-avatar-group',
       'blade-team',
     );
-    // expect(container).toHaveAttribute('data-analytics-avatar-group', 'blade-team');
+    expect(container).toMatchSnapshot();
   });
 });

@@ -259,7 +259,11 @@ const _CardBody = ({ height, children, testID, ...props }: CardBodyProps): React
   useVerifyInsideCard('CardBody');
 
   return (
-    <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })} {...makeAnalyticsAttribute(props)} height={height}>
+    <BaseBox
+      {...metaAttribute({ name: MetaConstants.CardBody, testID })}
+      {...makeAnalyticsAttribute(props)}
+      height={height}
+    >
       {children}
     </BaseBox>
   );
