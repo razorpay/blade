@@ -3,6 +3,7 @@ import type { SnapPoints } from './utils';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type BottomSheetProps = {
   /**
@@ -37,7 +38,7 @@ type BottomSheetProps = {
    * @default 100
    */
   zIndex?: number;
-};
+} & DataAnalyticsAttribute;
 
 type BottomSheetHeaderProps = Pick<
   BaseHeaderProps,
@@ -55,9 +56,9 @@ type BottomSheetHeaderProps = Pick<
    * Accepts `Counter`
    */
   titleSuffix?: BaseHeaderProps['titleSuffix'];
-};
+} & DataAnalyticsAttribute;
 
-type BottomSheetFooterProps = Pick<BaseFooterProps, 'children'>;
+type BottomSheetFooterProps = Pick<BaseFooterProps, 'children'> & DataAnalyticsAttribute;
 
 type BottomSheetBodyProps = {
   children: React.ReactNode;
@@ -70,7 +71,7 @@ type BottomSheetBodyProps = {
    */
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.5'>;
   overflow?: BaseBoxProps['overflow'];
-};
+} & DataAnalyticsAttribute;
 
 export type {
   BottomSheetProps,
