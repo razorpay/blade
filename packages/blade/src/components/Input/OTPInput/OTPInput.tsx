@@ -13,6 +13,8 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -43,6 +45,7 @@ export type OTPInputCommonProps = Pick<
   | 'placeholder'
   | 'testID'
   | 'size'
+  | keyof DataAnalyticsAttribute
 > & {
   /**
    * Determines the number of input fields to show for the OTP
@@ -160,7 +163,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
     autoCompleteSuggestionType = 'oneTimeCode',
     testID,
     size = 'medium',
-    ...styledProps
+    ...props
   },
   incomingRef,
 ) => {
@@ -382,7 +385,8 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.OTPInput, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(props)}
+      {...makeAnalyticsAttribute(props)}
     >
       <BaseBox
         display="flex"
