@@ -295,4 +295,35 @@ describe('<Card />', () => {
     );
     expect(getByTestId('card-test')).toBeTruthy();
   });
+
+  it('should support adding data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <Card data-analytics-card-test="card-test">
+        <CardBody data-analytics-card-body="card-body">
+          <Text>Plain Card</Text>
+        </CardBody>
+        <CardFooter data-analytics-card-footer="card-footer">
+          {/* TODO: check for card footer leading and trailing */}
+          <CardFooterLeading title="Card Footer" />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Save',
+                onClick: () => {},
+              },
+              secondary: {
+                text: 'Delete',
+                onClick: () => {},
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>,
+    );
+    expect(container.querySelector('[data-analytics-card-test="card-test"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-analytics-card-body="card-body"]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-analytics-card-footer="card-footer"]'),
+    ).toBeInTheDocument();
+  });
 });

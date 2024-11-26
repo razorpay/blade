@@ -10,7 +10,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { Elevation } from '~tokens/global';
 import type { BoxProps } from '~components/Box';
@@ -20,6 +20,7 @@ import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -153,6 +154,7 @@ export type CardProps = {
    */
   as?: 'label';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const Card = ({
@@ -175,7 +177,7 @@ const Card = ({
   target,
   rel,
   as,
-  ...styledProps
+  ...rest
 }: CardProps): React.ReactElement => {
   const [isFocused, setIsFocused] = React.useState(false);
 
@@ -216,7 +218,8 @@ const Card = ({
         href={href}
         accessibilityLabel={accessibilityLabel}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <CardSurface
           height={height}
@@ -249,13 +252,14 @@ const Card = ({
 type CardBodyProps = {
   children: React.ReactNode;
   height?: BoxProps['height'];
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
-const _CardBody = ({ height, children, testID }: CardBodyProps): React.ReactElement => {
+const _CardBody = ({ height, children, testID, ...props }: CardBodyProps): React.ReactElement => {
   useVerifyInsideCard('CardBody');
 
   return (
-    <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })} height={height}>
+    <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })} {...makeAnalyticsAttribute(props)} height={height}>
       {children}
     </BaseBox>
   );

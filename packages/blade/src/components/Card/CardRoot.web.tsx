@@ -6,6 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
   ({ as, theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
@@ -74,6 +75,7 @@ const CardRoot = ({
       {...makeAccessible({
         label: as === 'label' ? accessibilityLabel : undefined,
       })}
+      {...makeAnalyticsAttribute(props)}
     >
       {children}
     </StyledCardRoot>

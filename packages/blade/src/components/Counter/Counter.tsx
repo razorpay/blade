@@ -9,9 +9,10 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { isReactNative, makeSize } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 export type CounterProps = {
   /**
@@ -42,6 +43,7 @@ export type CounterProps = {
    */
   size?: 'small' | 'medium' | 'large';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type ColorProps = {
@@ -82,7 +84,7 @@ const _Counter = ({
   emphasis = 'subtle',
   size = 'medium',
   testID,
-  ...styledProps
+  ...props
 }: CounterProps): React.ReactElement => {
   let content = `${value}`;
   if (max && value > max) {
@@ -114,7 +116,8 @@ const _Counter = ({
     <BaseBox
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(props)}
+      {...makeAnalyticsAttribute(props)}
     >
       <StyledCounter
         minHeight={makeSize(counterHeight[size])}

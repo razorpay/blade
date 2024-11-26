@@ -10,11 +10,12 @@ import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -37,7 +38,8 @@ type CardFooterProps = {
    * @default true
    */
   showDivider?: boolean;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 const _CardFooter = ({
   children,
@@ -45,6 +47,7 @@ const _CardFooter = ({
   marginTop = 'spacing.4',
   paddingTop = 'spacing.4',
   showDivider = true,
+  ...props
 }: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
@@ -74,7 +77,11 @@ const _CardFooter = ({
       : 'flex-end';
 
   return (
-    <BaseBox marginTop={marginTop} {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
+    <BaseBox
+      marginTop={marginTop}
+      {...metaAttribute({ name: MetaConstants.CardFooter, testID })}
+      {...makeAnalyticsAttribute(props)}
+    >
       {showDivider ? <Divider /> : null}
       <BaseBox
         paddingTop={paddingTop}

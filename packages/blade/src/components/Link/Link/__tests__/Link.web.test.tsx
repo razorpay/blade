@@ -153,4 +153,10 @@ describe('<Link />', () => {
     const { getByTestId } = renderWithTheme(<Link testID="link-test">{linkText}</Link>);
     expect(getByTestId('link-test')).toBeTruthy();
   });
+
+  it('should accept data-analytics attributes', () => {
+    const linkText = 'Learn More';
+    const { getByRole } = renderWithTheme(<Link data-analytics-link="learn-more">{linkText}</Link>);
+    expect(getByRole('link')).toHaveAttribute('data-analytics-link', 'learn-more');
+  });
 });
