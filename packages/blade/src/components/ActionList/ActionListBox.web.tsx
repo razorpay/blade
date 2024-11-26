@@ -5,6 +5,8 @@ import type { SectionData } from './actionListUtils';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -12,10 +14,10 @@ type ActionListBoxProps = {
   actionListItemWrapperRole: 'listbox' | 'menu' | undefined;
   isMultiSelectable: boolean;
   isInBottomSheet: boolean;
-};
+} & DataAnalyticsAttribute;
 
 const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
-  ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable }, ref) => {
+  ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...props }, ref) => {
     const { isInBottomSheet } = useBottomSheetContext();
 
     return (
@@ -26,6 +28,7 @@ const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
           role: actionListItemWrapperRole,
           multiSelectable: actionListItemWrapperRole === 'listbox' ? isMultiSelectable : undefined,
         })}
+        {...makeAnalyticsAttribute(props)}
       >
         {childrenWithId}
       </StyledListBoxWrapper>

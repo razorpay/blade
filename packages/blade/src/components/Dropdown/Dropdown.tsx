@@ -14,6 +14,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
 import type { ContainerElementType } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const validDropdownChildren = [
   // TODO: Remove Box once CountrySelector's button sizing is fixed
@@ -60,7 +61,7 @@ const _Dropdown = ({
   selectionType = 'single',
   testID,
   _width,
-  ...styledProps
+  ...props
 }: DropdownProps): React.ReactElement => {
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
@@ -230,7 +231,8 @@ const _Dropdown = ({
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ref={dropdownContainerRef as any}
           {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(props)}
+          {...makeAnalyticsAttribute(props)}
           width={_width}
         >
           <BaseBox position="relative" textAlign={'left' as never}>

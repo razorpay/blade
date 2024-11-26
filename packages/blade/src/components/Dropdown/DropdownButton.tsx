@@ -6,6 +6,7 @@ import type { ButtonProps } from '~components/Button';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type DropdownButtonProps = ButtonProps & {
   onBlur?: BaseButtonProps['onBlur'];
@@ -27,7 +28,7 @@ const _DropdownButton = ({
   variant = 'primary',
   accessibilityLabel,
   testID,
-  ...styledProps
+  ...props
 }: DropdownButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
@@ -43,7 +44,7 @@ const _DropdownButton = ({
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
     <BaseButton
-      {...styledProps}
+      {...props}
       {...(icon ? { icon, children } : { children })}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
@@ -62,6 +63,7 @@ const _DropdownButton = ({
         controls: `${dropdownBaseId}-actionlist`,
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
       }}
+      {...makeAnalyticsAttribute(props)}
       onClick={(e) => {
         onTriggerClick();
         // Setting it for web fails it on native typecheck and vice versa

@@ -10,10 +10,18 @@ import { isReactNative } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { MetaConstants } from '~utils/metaAttribute/metaConstants';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type DropdownHeaderProps = Pick<
   BaseHeaderProps,
-  'title' | 'subtitle' | 'leading' | 'trailing' | 'titleSuffix' | 'testID'
+  | 'title'
+  | 'subtitle'
+  | 'leading'
+  | 'trailing'
+  | 'titleSuffix'
+  | 'testID'
+  | keyof DataAnalyticsAttribute
 >;
 
 const _DropdownHeader = ({
@@ -23,6 +31,7 @@ const _DropdownHeader = ({
   titleSuffix,
   trailing,
   testID,
+  ...props
 }: DropdownHeaderProps): React.ReactElement => {
   return (
     <BaseBox
@@ -49,6 +58,7 @@ const _DropdownHeader = ({
         showBackButton={false}
         // close button
         showCloseButton={false}
+        {...makeAnalyticsAttribute(props)}
       />
     </BaseBox>
   );
