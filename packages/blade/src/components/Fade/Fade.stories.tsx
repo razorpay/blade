@@ -8,8 +8,6 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { InternalCardExample } from '../Card/Card.stories';
-import { Checkbox } from '~components/Checkbox';
-import { Alert } from '~components/Alert';
 
 const Page = (): React.ReactElement => {
   return (
@@ -39,48 +37,20 @@ export default {
   },
 } as Meta<FadeProps>;
 
-// ref={inputRef} -> inputRef={children.props.ref}
-// ref= divRef
-
-const CustomButton = React.forwardRef((props, ref) => {
-  // ref -> div
-  // ref -> input
-  console.log(ref.current, props._innerRef);
-  return (
-    <div ref={props._innerRef ? ref : null}>
-      <label>something</label>
-      <input ref={props._innerRef ?? ref} />
-    </div>
-  );
-});
-
-// Goals
-// 1. framer motion should have access to the ref - div
-// 2. inputRef ->
-
 const FadeTemplate: StoryFn<typeof Fade> = (args) => {
   const [isVisible, setIsVisible] = React.useState(true);
-  const inputRef = React.useRef(null);
-  React.useEffect(() => {
-    if (isVisible) {
-      console.log(inputRef.current);
-      inputRef.current?.focus();
-    }
-  }, [isVisible]);
 
   return (
     <Box minHeight="350px">
       <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
         Toggle Fade
       </Button>
-      <Fade {...args} isVisible={isVisible}>
-        <Checkbox>Hii</Checkbox>
-      </Fade>
+      <Fade {...args} isVisible={isVisible} />
     </Box>
   );
 };
 
 export const Default = FadeTemplate.bind({});
-// Default.args = {
-//   children: ,
-// };
+Default.args = {
+  children: <InternalCardExample />,
+};
