@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseMotionBox } from '~components/BaseMotion';
+import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { makeSecondsDuration } from '~utils/makeSecondsDuration';
 import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
@@ -35,7 +35,7 @@ export const Scale = ({
   };
 
   return (
-    <BaseMotionBox
+    <BaseMotionEnhancerBox
       motionVariants={fadeVariants}
       type={type}
       children={children}

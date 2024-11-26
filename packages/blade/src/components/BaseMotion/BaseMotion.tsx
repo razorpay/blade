@@ -12,10 +12,8 @@ import type {
 } from './types';
 
 // Creating empty styled component so that the final component supports `as` prop
-const StyledDiv = styled.div`
-  display: inline-block;
-`;
-const MotionDiv = motion(StyledDiv);
+const StyledDiv = styled.div``;
+const MotionDiv = motion.create(StyledDiv);
 
 const motionTriggersArrayToGesturePropsMap: Record<
   Exclude<MotionTriggersType, 'on-animate-interactions'>,
@@ -122,6 +120,7 @@ const BaseMotionEntryExit = ({
   type = 'inout',
   motionTriggers = ['mount'],
 }: BaseMotionEntryExitProps) => {
+  console.count('BaseMotionEntryExit');
   return (
     <AnimatePresence>
       {isVisible ? (

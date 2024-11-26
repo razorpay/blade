@@ -44,13 +44,13 @@ const ControlledScaleTemplate: StoryFn<typeof Scale> = (args) => {
       <Button marginBottom="spacing.4" onClick={() => setIsHighlighted(!isHighlighted)}>
         Toggle Scale
       </Button>
-      <>{args.children}</>
+      <Scale {...args} isHighlighted={isHighlighted} />
     </Box>
   );
 };
 
 const ScaleTemplate: StoryFn<typeof Scale> = (args) => {
-  return <>{args.children}</>;
+  return <Scale {...args} />;
 };
 
 export const Default = ScaleTemplate.bind({});
