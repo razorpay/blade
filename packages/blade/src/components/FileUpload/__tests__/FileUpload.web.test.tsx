@@ -102,4 +102,19 @@ describe('<FileUpload />', () => {
 
     expect(getByTestId('file-upload-test')).toBeTruthy();
   });
+
+  it('should accept data-analytics attribute', () => {
+    const { container } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        helpText="Upload .jpg, .jpeg, or .png file only"
+        accept="image/*"
+        name="single-file-upload-input"
+        isDisabled
+        data-analytics-file-upload="Upload gst certificate"
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });
