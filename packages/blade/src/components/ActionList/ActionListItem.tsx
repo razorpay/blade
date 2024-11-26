@@ -392,7 +392,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
           props.onClick?.({ name: props.value, value: isSelected, event: castWebType(e) });
         }
       })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute({ ...props })}
       {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
       onMouseDown={() => {
         // We want to keep focus on Dropdown's trigger while option is being clicked
