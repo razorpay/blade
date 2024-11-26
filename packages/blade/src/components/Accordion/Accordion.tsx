@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ReactElement } from 'react';
 import { useCallback, useMemo, useState, cloneElement, Children } from 'react';
 import type { AccordionContextState } from './AccordionContext';
@@ -10,6 +11,7 @@ import type { BoxProps } from '~components/Box';
 import { size as sizeTokens } from '~tokens/global';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
 
 const MIN_WIDTH: BoxProps['minWidth'] = {
   s: makeSize(sizeTokens[200]),
@@ -61,18 +63,21 @@ const getVariantStyles = (variant: AccordionProps['variant']): BoxProps => {
  * Checkout https://blade.razorpay.com/?path=/docs/components-accordion--docs
  *
  */
-const Accordion = ({
-  defaultExpandedIndex,
-  expandedIndex,
-  onExpandChange,
-  showNumberPrefix = false,
-  children,
-  variant = 'transparent',
-  size = 'large',
-  maxWidth,
-  testID,
-  ...styledProps
-}: AccordionProps): ReactElement => {
+const _Accordion = (
+  {
+    defaultExpandedIndex,
+    expandedIndex,
+    onExpandChange,
+    showNumberPrefix = false,
+    children,
+    variant = 'transparent',
+    size = 'large',
+    maxWidth,
+    testID,
+    ...styledProps
+  }: AccordionProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
     defaultExpandedIndex,
   );
@@ -118,6 +123,7 @@ const Accordion = ({
   return (
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
+        ref={ref as never}
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(styledProps)}
       >
@@ -135,5 +141,7 @@ const Accordion = ({
     </AccordionContext.Provider>
   );
 };
+
+const Accordion = React.forwardRef(_Accordion);
 
 export { Accordion };

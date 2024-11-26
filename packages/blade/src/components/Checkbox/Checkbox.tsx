@@ -20,6 +20,8 @@ import type { BladeElementRef, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { makeSize, useTheme } from '~utils';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import type { MotionMetaProp } from '~components/BaseMotion';
 
 type OnChange = ({
   isChecked,
@@ -110,7 +112,8 @@ type CheckboxProps = {
    */
   tabIndex?: number;
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  MotionMetaProp;
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
   {
@@ -129,6 +132,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     size = 'medium',
     tabIndex,
     testID,
+    _motionMeta,
     ...styledProps
   },
   ref,
@@ -223,6 +227,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
 
   return (
     <BaseBox
+      ref={getOuterMotionRef({ _motionMeta, ref })}
       {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
       {...getStyledProps(styledProps)}
     >
@@ -240,7 +245,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               hasError={_hasError}
               inputProps={inputProps}
               tabIndex={tabIndex}
-              ref={ref}
+              ref={getInnerMotionRef({ _motionMeta, ref })}
             />
             <CheckboxIcon
               size={_size}

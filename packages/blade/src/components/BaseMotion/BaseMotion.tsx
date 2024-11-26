@@ -4,7 +4,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';
 import { useStagger } from '~components/Stagger/StaggerProvider';
-import type { BaseMotionBoxProps, BaseMotionEntryExitProps, MotionTriggersType } from './types';
+import type {
+  BaseMotionBoxProps,
+  BaseMotionEntryExitProps,
+  MotionMeta,
+  MotionTriggersType,
+} from './types';
 
 // Creating empty styled component so that the final component supports `as` prop
 const StyledDiv = styled.div`
@@ -121,13 +126,19 @@ const BaseMotionEntryExit = ({
     <AnimatePresence>
       {isVisible ? (
         <BaseMotionBox
-          // kinda hack to build it as enhancer component
           as={children.type}
           motionVariants={motionVariants}
           motionTriggers={motionTriggers}
           type={type}
           // We pass the props of children and not pass the children itself since the `as` prop already renders the children and we don't want to re-render it inside
           {...children.props}
+          _motionMeta={
+            {
+              isEnhanced: true,
+              // @ts-expect-error: ref does exist on children prop
+              innerRef: children.ref,
+            } as MotionMeta
+          }
         />
       ) : null}
     </AnimatePresence>

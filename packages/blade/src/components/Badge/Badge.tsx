@@ -10,11 +10,12 @@ import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative, makeSize } from '~utils';
 import { throwBladeError } from '~utils/logger';
+import React from 'react';
 
 type BadgeProps = {
   /**
@@ -87,15 +88,18 @@ const getColorProps = ({
   return props;
 };
 
-const _Badge = ({
-  children,
-  emphasis = 'subtle',
-  icon: Icon,
-  size = 'medium',
-  color = 'neutral',
-  testID,
-  ...styledProps
-}: BadgeProps): ReactElement => {
+const _Badge = (
+  {
+    children,
+    emphasis = 'subtle',
+    icon: Icon,
+    size = 'medium',
+    color = 'neutral',
+    testID,
+    ...styledProps
+  }: BadgeProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   const childrenString = getStringFromReactText(children);
   if (__DEV__) {
     if (!childrenString?.trim()) {
@@ -128,6 +132,7 @@ const _Badge = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
@@ -160,7 +165,7 @@ const _Badge = ({
   );
 };
 
-const Badge = assignWithoutSideEffects(_Badge, {
+const Badge = assignWithoutSideEffects(React.forwardRef(_Badge), {
   displayName: 'Badge',
   componentId: 'Badge',
 });

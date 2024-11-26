@@ -25,9 +25,20 @@ type BaseMotionEntryExitProps = Pick<BaseMotionBoxProps, 'children' | 'motionVar
   motionTriggers?: MotionTriggerEntryExitType[];
 };
 
+type MotionMeta = {
+  innerRef: React.Ref<HTMLElement>;
+  isEnhanced: boolean;
+};
+
+type MotionMetaProp = {
+  _motionMeta?: MotionMeta;
+};
+
 export type {
   BaseMotionEntryExitProps,
   MotionVariantsType,
   MotionTriggersType,
   BaseMotionBoxProps,
+  MotionMeta,
+  MotionMetaProp,
 };

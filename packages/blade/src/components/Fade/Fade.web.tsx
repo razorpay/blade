@@ -39,9 +39,10 @@ export const Fade = ({
     <BaseMotionEntryExit
       motionVariants={fadeVariants}
       type={type}
-      children={children}
       isVisible={isVisible}
       motionTriggers={motionTriggers}
-    />
+    >
+      {children}
+    </BaseMotionEntryExit>
   );
 };

@@ -10,6 +10,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
 
 /**
  * ### BottomNav component
@@ -51,12 +52,10 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
  * Checkout {@link https://blade.razorpay.com/??path=/docs/components-bottomnav--doc BottomNav Documentation}
 
  */
-const BottomNav = ({
-  children,
-  zIndex = componentZIndices.bottomNav,
-  testID,
-  ...styledProps
-}: BottomNavProps): React.ReactElement => {
+const _BottomNav = (
+  { children, zIndex = componentZIndices.bottomNav, testID, ...styledProps }: BottomNavProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
     if (childrenCount > 5 && childrenCount < 2) {
@@ -69,6 +68,7 @@ const BottomNav = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       role="navigation"
       position="fixed"
       bottom="spacing.0"
@@ -160,5 +160,7 @@ const BottomNavItem = ({
     </StyledBottomNavItem>
   );
 };
+
+const BottomNav = React.forwardRef(_BottomNav);
 
 export { BottomNav, BottomNavItem };
