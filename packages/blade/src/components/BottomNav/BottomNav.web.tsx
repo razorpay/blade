@@ -10,6 +10,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 /**
  * ### BottomNav component
@@ -55,7 +56,7 @@ const BottomNav = ({
   children,
   zIndex = componentZIndices.bottomNav,
   testID,
-  ...styledProps
+  ...props
 }: BottomNavProps): React.ReactElement => {
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
@@ -81,12 +82,13 @@ const BottomNav = ({
       paddingX="spacing.2"
       display="flex"
       flexDirection="row"
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(props)}
       zIndex={zIndex}
       {...metaAttribute({
         testID,
         name: MetaConstants.BottomNav,
       })}
+      {...makeAnalyticsAttribute(props)}
     >
       {children}
     </BaseBox>
@@ -123,6 +125,7 @@ const BottomNavItem = ({
   onClick,
   icon: Icon,
   testID,
+  ...props
 }: BottomNavItemProps): React.ReactElement => {
   const isRouterLink = as && href;
   const defaultRenderElement = href ? 'a' : 'button';
@@ -152,6 +155,7 @@ const BottomNavItem = ({
         name: MetaConstants.BottomNavItem,
         testID,
       })}
+      {...makeAnalyticsAttribute(props)}
     >
       <Icon color="currentColor" size="large" />
       <Text truncateAfterLines={1} color="currentColor" size="xsmall" weight="semibold">
