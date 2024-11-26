@@ -15,8 +15,13 @@ import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import type { BladeElementRef, BladeElementRefWithValue } from '~utils/types';
+import type {
+  BladeElementRef,
+  BladeElementRefWithValue,
+  DataAnalyticsAttribute,
+} from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type TextAreaCommonProps = Pick<
   BaseInputProps,
@@ -43,6 +48,7 @@ type TextAreaCommonProps = Pick<
   | 'numberOfLines'
   | 'testID'
   | 'size'
+  | keyof DataAnalyticsAttribute
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -121,7 +127,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     isTaggedInput,
     tags,
     onTagChange,
-    ...styledProps
+    ...props
   },
   ref,
 ) => {
@@ -250,7 +256,8 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       testID={testID}
       size={size}
-      {...styledProps}
+      {...props}
+      {...makeAnalyticsAttribute(props)}
     />
   );
 };
