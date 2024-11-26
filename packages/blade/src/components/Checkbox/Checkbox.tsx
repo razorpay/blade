@@ -16,10 +16,11 @@ import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { BladeElementRef, DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { makeSize, useTheme } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type OnChange = ({
   isChecked,
@@ -110,6 +111,7 @@ type CheckboxProps = {
    */
   tabIndex?: number;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
@@ -129,7 +131,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     size = 'medium',
     tabIndex,
     testID,
-    ...styledProps
+    ...props
   },
   ref,
 ) => {
@@ -224,7 +226,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(props)}
     >
       <SelectorLabel
         componentName={MetaConstants.CheckboxLabel}
@@ -241,6 +243,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               inputProps={inputProps}
               tabIndex={tabIndex}
               ref={ref}
+              {...makeAnalyticsAttribute(props)}
             />
             <CheckboxIcon
               size={_size}

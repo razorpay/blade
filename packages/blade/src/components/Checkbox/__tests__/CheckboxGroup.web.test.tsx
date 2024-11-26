@@ -356,4 +356,16 @@ describe('<CheckboxGroup /> integration tests', () => {
     );
     expect(getByTestId('checkbox-group-test')).toBeTruthy();
   });
+  it('should accept data-analytics attribute', () => {
+    const labelText = 'Select fruits';
+    const { container } = renderWithTheme(
+      <CheckboxGroup label={labelText} data-analytics-checkbox-group="select fruits">
+        <Checkbox value="apple">Apple</Checkbox>
+        <Checkbox value="mango">Mango</Checkbox>
+      </CheckboxGroup>,
+    );
+    expect(
+      container.querySelector('[data-analytics-checkbox-group="select fruits"]'),
+    ).toBeInTheDocument();
+  });
 });
