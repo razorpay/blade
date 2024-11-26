@@ -2,7 +2,7 @@ import type React from 'react';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type AccordionVariantType = 'filled' | 'transparent';
 
@@ -17,7 +17,7 @@ type AccordionButtonProps = {
   isDeprecatedAPI: boolean;
   header: React.ReactNode;
   isDisabled?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type AccordionProps = {
   /**

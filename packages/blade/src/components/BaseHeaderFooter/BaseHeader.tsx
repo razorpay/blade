@@ -6,7 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -15,6 +15,7 @@ import { isReactNative, makeSize } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { logger, throwBladeError } from '~utils/logger';
 import { size as sizeToken } from '~tokens/global';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type BaseHeaderProps = {
   title?: string;
@@ -87,7 +88,8 @@ type BaseHeaderProps = {
   | 'onPointerMove'
   | 'onPointerUp'
 > &
-  TestID;
+  TestID &
+  DataAnalyticsAttribute;
 
 type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text' | 'Amount';
 
@@ -244,6 +246,7 @@ const _BaseHeader = ({
   isDisabled,
   children,
   trailingInteractionElement,
+  ...props
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
@@ -270,6 +273,7 @@ const _BaseHeader = ({
         marginBottom={marginBottom}
         touchAction="none"
         {...webOnlyEventHandlers}
+        {...makeAnalyticsAttribute(props)}
       >
         <BaseBox display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (

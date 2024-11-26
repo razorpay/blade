@@ -6,7 +6,9 @@ import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { DataAnalyticsAttribute } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _AccordionItemHeader = ({
   title,
@@ -15,10 +17,12 @@ const _AccordionItemHeader = ({
   children,
   trailing,
   titleSuffix,
+  ...props
 }: Pick<
   BaseHeaderProps,
   'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
->): React.ReactElement => {
+> &
+  DataAnalyticsAttribute): React.ReactElement => {
   const { size, showNumberPrefix } = useAccordion();
   const { index, isDisabled } = useAccordionItemIndex();
 
@@ -52,6 +56,7 @@ const _AccordionItemHeader = ({
             size="large"
           />
         }
+        {...makeAnalyticsAttribute(props)}
       >
         {children}
       </BaseHeader>

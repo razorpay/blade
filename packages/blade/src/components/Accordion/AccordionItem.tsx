@@ -11,9 +11,10 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { isReactNative } from '~utils';
 import { Collapsible } from '~components/Collapsible/Collapsible';
 import { CollapsibleBody } from '~components/Collapsible';
-import type { TestID } from '~utils/types';
+import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type AccordionItemProps = {
   /**
@@ -60,7 +61,8 @@ type AccordionItemProps = {
    * instead pass `showNumberPrefix` to root `Accordion`
    */
   _index?: number;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 const AccordionItem = ({
   title,
@@ -70,6 +72,7 @@ const AccordionItem = ({
   isDisabled,
   _index,
   testID,
+  ...props
 }: AccordionItemProps): ReactElement => {
   const {
     expandedIndex,
@@ -117,7 +120,10 @@ const AccordionItem = ({
         isDisabled,
       }}
     >
-      <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>
+      <BaseBox
+        {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}
+        {...makeAnalyticsAttribute(props)}
+      >
         <Collapsible
           isExpanded={isExpanded}
           defaultIsExpanded={isDefaultExpanded}
