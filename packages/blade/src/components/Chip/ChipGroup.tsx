@@ -10,6 +10,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const ChipGroup = ({
   accessibilityLabel,
@@ -30,7 +31,7 @@ const ChipGroup = ({
   color = 'primary',
   testID,
   selectionType = 'single',
-  ...styledProps
+  ...props
 }: ChipGroupProps): React.ReactElement => {
   const { contextValue, ids } = useChipGroup({
     defaultValue,
@@ -66,13 +67,14 @@ const ChipGroup = ({
 
   return (
     <ChipGroupProvider value={contextValue}>
-      <BaseBox {...getStyledProps(styledProps)}>
+      <BaseBox {...getStyledProps(props)}>
         <SelectorGroupField
           position={labelPosition}
           accessibilityRole={selectionType === 'single' ? 'radiogroup' : 'group'}
           labelledBy={ids.labelId}
           componentName="chip-group"
           testID={testID}
+          {...makeAnalyticsAttribute(props)}
         >
           {label ? (
             <FormLabel

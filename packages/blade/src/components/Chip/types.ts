@@ -1,7 +1,7 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 type ChipProps = {
@@ -33,6 +33,7 @@ type ChipProps = {
    */
   value?: string;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type ChipGroupCommonProps = {
@@ -121,6 +122,7 @@ type ChipGroupCommonProps = {
    */
   color?: 'primary' | 'positive' | 'negative';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 /*
