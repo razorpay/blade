@@ -1,5 +1,5 @@
 import type { ButtonProps } from '~components/Button/Button';
-import { DataAnalyticsAttribute } from '~utils/types';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type ButtonGroupProps = {
   /**
