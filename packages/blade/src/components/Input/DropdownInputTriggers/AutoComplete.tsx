@@ -7,6 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { isReactNative } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const useAutoComplete = ({
   props,
@@ -216,6 +217,7 @@ const _AutoComplete = (
           }
           props?.onClick?.(triggerEvent);
         }}
+        {...makeAnalyticsAttribute(props)}
       />
     </BaseBox>
   );

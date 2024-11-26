@@ -1,5 +1,6 @@
 import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 export type SelectChevronIconProps = {
   onClick?: () => void;
@@ -28,6 +29,7 @@ type DropdownInputTriggersCommonProps = Pick<
   | 'placeholder'
   | 'testID'
   | 'size'
+  | keyof DataAnalyticsAttribute
 > & {
   icon?: IconComponent;
   /**
