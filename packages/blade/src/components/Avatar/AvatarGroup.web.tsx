@@ -9,13 +9,14 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _AvatarGroup = ({
   children,
   size = 'medium',
   maxCount,
   testID,
-  ...styledProps
+  ...props
 }: AvatarGroupProps): React.ReactElement => {
   const contextValue: AvatarGroupContextType = {
     size,
@@ -26,7 +27,8 @@ const _AvatarGroup = ({
     <AvatarGroupProvider value={contextValue}>
       <StyledAvatarGroup
         {...metaAttribute({ name: MetaConstants.AvatarGroup, testID })}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(props)}
+        {...makeAnalyticsAttribute(props)}
         role="group"
         size={size}
       >
