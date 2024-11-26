@@ -127,7 +127,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
   return props;
 };
 
-const _Text = <T extends { variant: TextVariant }>(
+const _Text = <T extends { variant: TextVariant }, _Ref>(
   {
     as = 'p',
     variant = 'body',

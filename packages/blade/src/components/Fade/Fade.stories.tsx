@@ -8,6 +8,8 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { InternalCardExample } from '../Card/Card.stories';
+import { TextInput } from '~components/Input/TextInput';
+import { Text } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
   return (
@@ -53,4 +55,31 @@ const FadeTemplate: StoryFn<typeof Fade> = (args) => {
 export const Default = FadeTemplate.bind({});
 Default.args = {
   children: <InternalCardExample />,
+};
+
+export const WithRef = (args: typeof Fade): React.ReactElement => {
+  const [isVisible, setIsVisible] = React.useState(true);
+
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  React.useEffect(() => {
+    if (isVisible) {
+      inputRef.current?.focus();
+    }
+  }, [isVisible]);
+
+  return (
+    <Box minHeight="350px">
+      <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
+        Toggle Fade
+      </Button>
+      <Fade {...args} isVisible={isVisible}>
+        <TextInput
+          ref={inputRef}
+          label="My Text Input"
+          helpText="This is an example to showcase how you can continue to use ref like you normally do
+            inside Fade as well"
+        />
+      </Fade>
+    </Box>
+  );
 };
