@@ -12,6 +12,7 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type StyledButtonProps = {
   emphasis: SubtleOrIntense;
@@ -96,6 +97,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onTouchEnd,
       onTouchStart,
       tabIndex,
+      ...rest
     },
     ref,
   ): ReactElement => (
@@ -118,6 +120,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       tabIndex={tabIndex}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <Icon size={size} color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'} />
     </StyledButton>
