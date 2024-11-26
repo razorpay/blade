@@ -3,7 +3,7 @@ import type { CSSObject } from 'styled-components';
 import type { BaseLinkProps } from './BaseLink';
 import type { DurationString, EasingString } from '~tokens/global';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
 import type { ActionStates } from '~utils/useInteraction';
 
@@ -29,4 +29,5 @@ export type StyledBaseLinkProps = {
   hitSlop?: BaseLinkProps['hitSlop'];
 } & TestID &
   StyledPropsBlade &
+  DataAnalyticsAttribute &
   Omit<BladeCommonEvents, 'onBlur' | 'onMouseLeave'>;
