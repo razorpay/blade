@@ -12,6 +12,7 @@ export const Fade = ({
   isVisible,
   type = 'inout',
   motionTriggers = ['mount'],
+  shouldUnmountWhenHidden,
 }: FadeProps) => {
   const { theme } = useTheme();
 
@@ -41,6 +42,7 @@ export const Fade = ({
       type={type}
       isVisible={isVisible}
       motionTriggers={motionTriggers}
+      shouldUnmountWhenHidden={shouldUnmountWhenHidden}
     >
       {children}
     </BaseMotionEntryExit>

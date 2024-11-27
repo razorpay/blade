@@ -1,100 +1,8 @@
 import { mergeRefs } from '@mantine/hooks';
-import { AnimatePresence, AnimationType, m as motion } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 import React from 'react';
-import styled from 'styled-components';
-import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';
-import { useStagger } from '~components/Stagger/StaggerProvider';
-import type {
-  BaseMotionBoxProps,
-  BaseMotionEntryExitProps,
-  MotionMeta,
-  MotionTriggersType,
-} from './types';
-
-// Creating empty styled component so that the final component supports `as` prop
-const StyledDiv = styled.div``;
-const MotionDiv = motion.create(StyledDiv);
-
-const motionTriggersArrayToGesturePropsMap: Record<
-  Exclude<MotionTriggersType, 'on-animate-interactions'>,
-  AnimationType
-> = {
-  mount: 'animate',
-  hover: 'whileHover',
-  inView: 'whileInView',
-  tap: 'whileTap',
-  focus: 'whileFocus',
-};
-
-const useAnimationVariables = ({
-  type,
-  motionTriggers,
-}: {
-  type: BaseMotionEntryExitProps['type'];
-  motionTriggers: MotionTriggersType[];
-}) => {
-  const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
-  const { isInsideStaggerContainer } = useStagger();
-  const skipMotionOnCurrentElement =
-    (isInsideAnimateInteractionsContainer && motionTriggers.includes('on-animate-interactions')) ||
-    isInsideStaggerContainer;
-
-  const shouldRenderAnimationVariables = !skipMotionOnCurrentElement;
-
-  const animationVariables = React.useMemo(() => {
-    if (!shouldRenderAnimationVariables) {
-      return {};
-    }
-
-    const triggerProps = shouldRenderAnimationVariables
-      ? motionTriggers?.reduce<Partial<Record<AnimationType, 'animate'>>>(
-          (prevProps, currentTrigger) => {
-            prevProps[
-              motionTriggersArrayToGesturePropsMap[
-                currentTrigger as Exclude<MotionTriggersType, 'on-animate-interactions'>
-              ]
-            ] = 'animate';
-            return prevProps;
-          },
-          {},
-        )
-      : {};
-
-    // When component is rendered inside stagger, we remove the initial, animate, exit props
-    // otherwise they override the stagger behaviour and stagger does not work
-    return {
-      initial: type === 'in' || type === 'inout' ? 'initial' : undefined,
-      exit: type === 'out' || type === 'inout' ? 'exit' : undefined,
-      ...triggerProps,
-    };
-  }, [type, shouldRenderAnimationVariables]);
-
-  return animationVariables;
-};
-
-const _BaseMotionBox: React.ForwardRefRenderFunction<HTMLDivElement, BaseMotionBoxProps> = (
-  { children, motionVariants, type = 'inout', motionTriggers = ['mount'], ...rest },
-  ref,
-) => {
-  const animationVariables = useAnimationVariables({
-    type,
-    motionTriggers,
-  });
-
-  console.log({
-    motionVariants,
-    motionTriggers,
-    animationVariables,
-  });
-
-  return (
-    <MotionDiv ref={ref} variants={motionVariants} {...animationVariables} {...rest}>
-      {children}
-    </MotionDiv>
-  );
-};
-
-const BaseMotionBox = React.forwardRef(_BaseMotionBox);
+import { BaseMotionBox } from './BaseMotionBox';
+import type { BaseMotionBoxProps, BaseMotionEntryExitProps, MotionMeta } from './types';
 
 const _BaseMotionEnhancerBox: React.ForwardRefRenderFunction<HTMLDivElement, BaseMotionBoxProps> = (
   { children, ...motionBoxArgs },
@@ -119,11 +27,25 @@ const BaseMotionEntryExit = ({
   isVisible = true,
   type = 'inout',
   motionTriggers = ['mount'],
+  shouldUnmountWhenHidden = false,
 }: BaseMotionEntryExitProps) => {
-  console.count('BaseMotionEntryExit');
+  // Only need AnimatePresence when we have to unmount the component
+  const AnimateWrapper = shouldUnmountWhenHidden ? AnimatePresence : React.Fragment;
+  // keep it always mounted when shouldUnmountWhenHidden is false
+  const isMounted = shouldUnmountWhenHidden ? isVisible : true;
+
+  const motionMeta: MotionMeta = React.useMemo(() => {
+    return {
+      isEnhanced: true,
+      // @ts-expect-error: ref does exist on children prop
+      innerRef: children.ref,
+    };
+    // @ts-expect-error: ref does exist on children prop
+  }, [children.ref]);
+
   return (
-    <AnimatePresence>
-      {isVisible ? (
+    <AnimateWrapper>
+      {isMounted ? (
         <BaseMotionBox
           as={children.type}
           motionVariants={motionVariants}
@@ -131,17 +53,14 @@ const BaseMotionEntryExit = ({
           type={type}
           // We pass the props of children and not pass the children itself since the `as` prop already renders the children and we don't want to re-render it inside
           {...children.props}
-          _motionMeta={
-            {
-              isEnhanced: true,
-              // @ts-expect-error: ref does exist on children prop
-              innerRef: children.ref,
-            } as MotionMeta
-          }
+          _motionMeta={motionMeta}
+          {...(shouldUnmountWhenHidden
+            ? {}
+            : { conditionalAnimate: isVisible ? 'animate' : 'exit' })}
         />
       ) : null}
-    </AnimatePresence>
+    </AnimateWrapper>
   );
 };
 
-export { MotionDiv, BaseMotionEntryExit, BaseMotionBox, BaseMotionEnhancerBox };
+export { BaseMotionEntryExit, BaseMotionBox, BaseMotionEnhancerBox };

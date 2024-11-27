@@ -1,5 +1,12 @@
 import type { BaseMotionEntryExitProps } from '~components/BaseMotion';
 
+type SlideDirections = 'top' | 'right' | 'bottom' | 'left';
+
 export type SlideProps = BaseMotionEntryExitProps & {
-  direction?: 'top' | 'right' | 'bottom' | 'left';
+  direction?:
+    | SlideDirections
+    | {
+        enter: SlideDirections;
+        exit: SlideDirections;
+      };
 };

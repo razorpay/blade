@@ -41,7 +41,7 @@ const SlideTemplate: StoryFn<typeof Slide> = (args) => {
   const [isVisible, setIsVisible] = React.useState(true);
 
   return (
-    <Box minHeight="350px">
+    <Box backgroundColor="surface.background.gray.intense">
       <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
         Toggle Slide
       </Button>
@@ -53,4 +53,5 @@ const SlideTemplate: StoryFn<typeof Slide> = (args) => {
 export const Default = SlideTemplate.bind({});
 Default.args = {
   children: <InternalCardExample />,
+  direction: { enter: 'bottom', exit: 'left' },
 };

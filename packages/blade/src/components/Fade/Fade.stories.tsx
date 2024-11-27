@@ -43,7 +43,7 @@ const FadeTemplate: StoryFn<typeof Fade> = (args) => {
   const [isVisible, setIsVisible] = React.useState(true);
 
   return (
-    <Box minHeight="350px">
+    <Box backgroundColor="surface.background.gray.intense">
       <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
         Toggle Fade
       </Button>
@@ -55,6 +55,14 @@ const FadeTemplate: StoryFn<typeof Fade> = (args) => {
 export const Default = FadeTemplate.bind({});
 Default.args = {
   children: <InternalCardExample />,
+};
+
+export const InitialFade = () => {
+  return (
+    <Fade>
+      <InternalCardExample />
+    </Fade>
+  );
 };
 
 export const WithRef = (args: typeof Fade): React.ReactElement => {
