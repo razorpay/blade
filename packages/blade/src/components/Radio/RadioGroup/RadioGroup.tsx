@@ -9,8 +9,9 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type RadioGroupProps = {
   /**
@@ -88,6 +89,7 @@ type RadioGroupProps = {
    */
   size?: 'small' | 'medium' | 'large';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const RadioGroup = ({
@@ -106,7 +108,7 @@ const RadioGroup = ({
   value,
   size = 'medium',
   testID,
-  ...styledProps
+  ...props
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
     defaultValue,
@@ -131,13 +133,14 @@ const RadioGroup = ({
 
   return (
     <RadioGroupProvider value={contextValue}>
-      <BaseBox {...getStyledProps(styledProps)}>
+      <BaseBox {...getStyledProps(props)}>
         <SelectorGroupField
           position={labelPosition}
           labelledBy={ids.labelId}
           accessibilityRole="radiogroup"
           componentName="radio-group"
           testID={testID}
+          {...makeAnalyticsAttribute(props)}
         >
           {label ? (
             <FormLabel
