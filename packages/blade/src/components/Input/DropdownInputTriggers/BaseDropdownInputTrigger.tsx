@@ -2,10 +2,10 @@ import React from 'react';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
-import type { BaseDropdownInputTriggerProps } from './types';
+import type { BaseDropdownInputTriggerProps, useControlledDropdownInputProps } from './types';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { isReactNative } from '~utils';
+import { isReactNative, isBrowser } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
@@ -18,19 +18,9 @@ import {
   validationStateToInputTrailingIconMap,
 } from '~components/Table/tokens';
 import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
-const useControlledDropdownInput = (
-  props: Pick<
-    BaseDropdownInputTriggerProps,
-    | 'onChange'
-    | 'name'
-    | 'value'
-    | 'defaultValue'
-    | 'onInputValueChange'
-    | 'syncInputValueWithSelection'
-    | 'isSelectInput'
-  >,
-): void => {
+const useControlledDropdownInput = (props: useControlledDropdownInputProps): void => {
   const isFirstRender = useFirstRender();
   const {
     changeCallbackTriggerer,
@@ -116,6 +106,9 @@ const useControlledDropdownInput = (
         name: props.name,
         values: getValuesArrayFromIndices(),
       });
+      if (isBrowser()) {
+        fireNativeEvent(props.triggererRef, ['change', 'input']);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
@@ -176,6 +169,7 @@ const _BaseDropdownInputTrigger = (
     defaultValue: props.defaultValue,
     syncInputValueWithSelection: props.syncInputValueWithSelection,
     isSelectInput: props.isSelectInput,
+    triggererRef,
   });
 
   const getValue = (): string | undefined => {
