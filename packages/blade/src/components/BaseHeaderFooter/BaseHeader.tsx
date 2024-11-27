@@ -265,7 +265,10 @@ const _BaseHeader = ({
       };
 
   return (
-    <BaseBox {...metaAttribute({ name: metaComponentName, testID })}>
+    <BaseBox
+      {...metaAttribute({ name: metaComponentName, testID })}
+      {...makeAnalyticsAttribute(props)}
+    >
       <BaseBox
         marginY={marginY ?? { base: 'spacing.5', m: 'spacing.6' }}
         paddingX={paddingX ?? { base: 'spacing.5', m: 'spacing.6' }}
@@ -273,7 +276,6 @@ const _BaseHeader = ({
         marginBottom={marginBottom}
         touchAction="none"
         {...webOnlyEventHandlers}
-        {...makeAnalyticsAttribute(props)}
       >
         <BaseBox display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (

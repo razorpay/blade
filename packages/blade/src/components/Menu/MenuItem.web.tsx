@@ -45,7 +45,6 @@ const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
         ref={useMergeRefs([item.ref, forwardedRef])}
         isDisabled={isDisabled}
         {...props}
-        {...makeAnalyticsAttribute(props)}
         {...(_isMenuTrigger
           ? {}
           : menu.getItemProps({

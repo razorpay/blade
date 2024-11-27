@@ -305,7 +305,8 @@ type BoxProps = Partial<
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
       id?: string;
-    } & TestID
+    } & TestID &
+    DataAnalyticsAttribute
 >;
 
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.

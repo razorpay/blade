@@ -29,6 +29,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const entry = keyframes`
   from {
@@ -74,6 +75,7 @@ const Modal = ({
   size = 'small',
   accessibilityLabel,
   zIndex = componentZIndices.modal,
+  ...props
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {
@@ -134,7 +136,12 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
+            <Box
+              zIndex={zIndex}
+              position="fixed"
+              testID="modal-wrapper"
+              {...makeAnalyticsAttribute(props)}
+            >
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({
