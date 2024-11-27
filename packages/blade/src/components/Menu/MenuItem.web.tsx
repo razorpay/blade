@@ -4,7 +4,6 @@ import type { MenuItemProps } from './types';
 import { useMenu } from './useMenu';
 import { BaseMenuItem } from '~components/BaseMenu';
 import { ChevronRightIcon } from '~components/Icons';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
   (
