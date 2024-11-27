@@ -12,11 +12,11 @@ const getFromTransform = (direction: SlideProps['direction']): `translate${strin
   }
 
   if (direction === 'left') {
-    return 'translateX(-100vh)';
+    return 'translateX(-100vw)';
   }
 
   if (direction === 'right') {
-    return 'translateX(100vh)';
+    return 'translateX(100vw)';
   }
 
   return 'translateY(100vh)';
@@ -28,46 +28,62 @@ export const Slide = ({
   direction = 'bottom',
   isVisible,
   motionTriggers,
+  shouldUnmountWhenHidden,
 }: SlideProps) => {
   const { theme } = useTheme();
 
-  const { transformFrom, isDirectionLeftOrRight } = React.useMemo(() => {
-    const transformFrom = getFromTransform(direction);
-    const isDirectionLeftOrRight = ['left', 'right'].includes(direction);
+  const {
+    enterTransform,
+    exitTransform,
+    isEnterDirectionHorizontal,
+    isExitDirectionHorizontal,
+  } = React.useMemo(() => {
+    const enterDirection = typeof direction === 'object' ? direction.enter : direction;
+    const exitDirection = typeof direction === 'object' ? direction.exit : direction;
+
+    const enterTransform = getFromTransform(enterDirection);
+    const exitTransform = getFromTransform(exitDirection);
+
+    const isEnterDirectionHorizontal = ['left', 'right'].includes(enterDirection);
+    const isExitDirectionHorizontal = ['left', 'right'].includes(exitDirection);
 
     return {
-      transformFrom,
-      isDirectionLeftOrRight,
+      enterTransform,
+      exitTransform,
+      isEnterDirectionHorizontal,
+      isExitDirectionHorizontal,
     };
   }, [direction]);
 
   const moveVariants: MotionVariantsType = {
     initial: {
-      transform: transformFrom,
+      transform: enterTransform,
     },
     animate: {
-      transform: 'translateY(0%)',
+      transform: [enterTransform, 'translateY(0%)'],
       transition: {
         duration: makeSecondsDuration(
-          isDirectionLeftOrRight
+          isEnterDirectionHorizontal
             ? theme.motion.duration.xmoderate
             : theme.motion.duration['2xgentle'],
         ),
         easings: cssBezierToMotionFn(
-          isDirectionLeftOrRight
+          isEnterDirectionHorizontal
             ? castWebType(theme.motion.easing.entrance)
             : castWebType(theme.motion.easing.emphasized),
         ),
       },
     },
     exit: {
-      transform: transformFrom,
+      transform: exitTransform,
       transition: {
         duration: makeSecondsDuration(
-          isDirectionLeftOrRight ? theme.motion.duration.moderate : theme.motion.duration.xgentle,
+          isExitDirectionHorizontal
+            ? theme.motion.duration.moderate
+            : theme.motion.duration.xgentle,
         ),
         easings: cssBezierToMotionFn(
-          isDirectionLeftOrRight
+          isExitDirectionHorizontal
             ? castWebType(theme.motion.easing.exit)
             : castWebType(theme.motion.easing.emphasized),
         ),
@@ -82,6 +98,7 @@ export const Slide = ({
       type={type}
       isVisible={isVisible}
       motionTriggers={motionTriggers}
+      shouldUnmountWhenHidden={shouldUnmountWhenHidden}
     />
   );
 };

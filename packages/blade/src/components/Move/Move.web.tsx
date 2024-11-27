@@ -7,7 +7,13 @@ import { castWebType, makeSpace, useTheme } from '~utils';
 
 export type MoveProps = BaseMotionEntryExitProps;
 
-export const Move = ({ children, type = 'inout', isVisible, motionTriggers }: MoveProps) => {
+export const Move = ({
+  children,
+  type = 'inout',
+  isVisible,
+  motionTriggers,
+  shouldUnmountWhenHidden,
+}: MoveProps) => {
   const { theme } = useTheme();
 
   const movePx = makeSpace(theme.spacing[5]);
@@ -42,6 +48,7 @@ export const Move = ({ children, type = 'inout', isVisible, motionTriggers }: Mo
       type={type}
       isVisible={isVisible}
       motionTriggers={motionTriggers}
+      shouldUnmountWhenHidden={shouldUnmountWhenHidden}
     />
   );
 };

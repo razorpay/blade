@@ -44,7 +44,12 @@ const AnimateInteractionsTemplate: StoryFn<typeof AnimateInteractions> = (args) 
   return (
     <Box minHeight="350px">
       <AnimateInteractions motionTriggers={args.motionTriggers}>
-        {args.children}
+        <Box display="flex" flexDirection="row" gap="spacing.4">
+          <Text>Hover me for magic</Text>
+          <Fade motionTriggers={['on-animate-interactions']}>
+            <b>I appear depending on interaction on parent container</b>
+          </Fade>
+        </Box>
       </AnimateInteractions>
     </Box>
   );
@@ -52,14 +57,7 @@ const AnimateInteractionsTemplate: StoryFn<typeof AnimateInteractions> = (args) 
 
 export const Default = AnimateInteractionsTemplate.bind({});
 Default.args = {
-  children: (
-    <Box display="flex" flexDirection="row" gap="spacing.4">
-      <Text>Hover me for magic</Text>
-      <Fade motionTriggers={['on-animate-interactions']}>
-        <b>I appear depending on interaction on parent container</b>
-      </Fade>
-    </Box>
-  ),
+  motionTriggers: ['hover'],
 };
 
 export const ScaleChildOnCardHover = AnimateInteractionsTemplate.bind({});

@@ -22,7 +22,7 @@ export const Stagger = ({ children, isVisible, type = 'inout' }: StaggerProps) =
   return (
     <AnimatePresence>
       {isVisible ? (
-        <BaseMotionBox shouldRenderAnimationVariables type={type} motionVariants={staggerVariants}>
+        <BaseMotionBox type={type} motionVariants={staggerVariants}>
           <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
             {children}
           </StaggerContext.Provider>
