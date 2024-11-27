@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.36.2
+
+### Patch Changes
+
+- f294a414: fix(blade): maxCharacters alignment in Input field
+- fa487f1e: fix(blade): Trigger native select events in dropdown/ file upload / Date picker
+
 ## 11.36.1
 
 ### Patch Changes
