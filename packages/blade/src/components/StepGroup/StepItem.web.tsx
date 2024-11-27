@@ -21,6 +21,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -98,6 +99,7 @@ const _StepItem = ({
   _index = 0,
   _totalIndex = 0,
   _nestingLevel = 0,
+  ...rest
 }: StepItemProps): React.ReactElement => {
   const {
     itemsInGroupCount: itemsCount,
@@ -179,6 +181,7 @@ const _StepItem = ({
       width={isVertical ? '100%' : undefined}
       flex={isVertical ? undefined : '1'}
       {...metaAttribute({ name: MetaConstants.StepItem })}
+      {...makeAnalyticsAttribute(rest)}
       ref={itemRef}
     >
       <StepLine

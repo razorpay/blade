@@ -105,4 +105,14 @@ describe('<StepGroup />', () => {
     }
     console.error = tempConsoleError;
   });
+  describe('should support adding data-analytics attribute', () => {
+    it('should accept data-analytics attribute', () => {
+      const { container } = renderWithTheme(
+        <StepGroup data-analytics-step-group="StepGroup">
+          <StepItem title="Introduction" data-analytics-step-item="Introduction" />
+        </StepGroup>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
