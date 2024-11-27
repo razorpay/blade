@@ -1,15 +1,22 @@
 {
   "name": "Dev Handoff Checklist",
-  "id": "",
+  "id": "1418629124817655875",
   "api": "1.0.0",
-  "main": "dist/code.js",
+  "main": "./dist/code.js",
   "capabilities": [],
   "enableProposedApi": false,
   "documentAccess": "dynamic-page",
-  "editorType": ["figma"],
+  "editorType": [
+    "figma"
+  ],
   "containsWidget": true,
   "widgetApi": "1.0.0",
+  "permissions": [
+    "currentuser"
+  ],
   "networkAccess": {
-    "allowedDomains": ["none"]
+    "allowedDomains": [
+      "https://api.segment.io"
+    ]
   }
 }

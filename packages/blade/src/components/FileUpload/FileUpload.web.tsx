@@ -27,6 +27,7 @@ import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInp
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useControllableState } from '~utils/useControllable';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -159,6 +160,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     if (!hasValidationErrors) {
       handleFilesChange(droppedFiles);
       onDrop?.({ name, fileList: allFiles });
+      fireNativeEvent(inputRef, ['change', 'input']);
     }
   };
 
@@ -309,6 +311,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(() => newFiles);
               onRemove?.({ file: selectedFiles[0] });
+              fireNativeEvent(inputRef, ['change', 'input']);
             }}
             onReupload={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
@@ -370,6 +373,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
                 onRemove?.({ file });
+                fireNativeEvent(inputRef, ['change', 'input']);
               }}
               onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
@@ -388,6 +392,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
                 onDismiss?.({ file });
+                fireNativeEvent(inputRef, ['change', 'input']);
               }}
               onPreview={onPreview}
             />
