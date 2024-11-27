@@ -57,10 +57,12 @@ export const Slide = ({
 
   const moveVariants: MotionVariantsType = {
     initial: {
-      transform: enterTransform,
+      // We keep element in view with opacity 0 initially so that it works with `inView` trigger as expected
+      opacity: 0,
     },
     animate: {
       transform: [enterTransform, 'translateY(0%)'],
+      opacity: [1, 1],
       transition: {
         duration: makeSecondsDuration(
           isEnterDirectionHorizontal

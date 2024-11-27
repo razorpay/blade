@@ -5,34 +5,12 @@ import { AnimatePresence } from 'motion/react';
 import { Box } from '~components/Box';
 import React from 'react';
 
-const stepsSampleData: StepItemProps[] = [
-  {
-    title: 'Introduction',
-    timestamp: 'Mon, 15th Oct’23 | 12:00pm',
-    description: 'Introduction to Razorpay Payment Gateway',
-  },
-  {
-    title: 'Personal Details',
-    timestamp: 'Mon, 16th Oct’23 | 12:00pm',
-    description: 'Fill your Personal Details for onboarding',
-  },
-  {
-    title: 'Business Details',
-    timestamp: 'Mon, 17th Oct’23 | 12:00pm',
-    description: 'Fill your Business Details for onboarding',
-    isDisabled: true,
-  },
-  {
-    title: 'Complete Onboarding',
-    timestamp: 'Mon, 20th Oct’23 | 12:00pm',
-    description: 'Complete your onboarding to start',
-  },
-];
-
 const StepperRouterExample = ({
   routeComponent,
+  stepsSampleData,
 }: {
   routeComponent: (_props: any) => React.ReactElement;
+  stepsSampleData: StepItemProps[];
 }): React.ReactElement => {
   const history = useHistory();
   const navigateTo = (e: React.MouseEvent, url: string) => {
@@ -42,18 +20,12 @@ const StepperRouterExample = ({
 
   const location = useLocation();
 
-  const getPathnameFromTitle = (title: string): string => {
-    return `/onboarding/${title.toLowerCase().replace(/ /g, '-')}`;
-  };
-
   const getSelectedItemIndex = (pathname: string) => {
-    return stepsSampleData.findIndex((stepInfo) =>
-      matchPath(pathname, getPathnameFromTitle(stepInfo.title)),
-    );
+    return stepsSampleData.findIndex((stepInfo) => matchPath(pathname, stepInfo.href!));
   };
 
   return (
-    <Box display="flex" flexDirection="row" minHeight="500px">
+    <Box minHeight="500px">
       <Box
         backgroundColor="surface.background.gray.intense"
         padding="spacing.7"
@@ -66,7 +38,7 @@ const StepperRouterExample = ({
       >
         <StepGroup width="100%">
           {stepsSampleData.map((stepInfo, index) => {
-            const stepPathname = getPathnameFromTitle(stepInfo.title);
+            const stepPathname = stepInfo.href!.replace('/onboarding/', '');
             const selectedIndex = getSelectedItemIndex(location.pathname);
 
             const isBeforeSelectedItem = index < selectedIndex;

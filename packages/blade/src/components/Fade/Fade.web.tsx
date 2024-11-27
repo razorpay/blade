@@ -1,11 +1,10 @@
 import React from 'react';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
-import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
 import { castWebType, useTheme } from '~utils';
 import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
 import { makeSecondsDuration } from '~utils/makeSecondsDuration';
-
-export type FadeProps = BaseMotionEntryExitProps;
+import type { FadeProps } from './types';
 
 export const Fade = ({
   children,

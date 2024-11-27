@@ -10,9 +10,11 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { InternalCardExample } from '../Card/Card.stories';
 import { TextInput } from '~components/Input/TextInput';
-import { Heading, Text } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Chip, ChipGroup } from '~components/Chip';
 import { StepperRouterExample } from '~components/BaseMotion/docs/StepperRouterExample';
+import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
+import { StepItemProps } from '~components/StepGroup';
 
 const Page = (): React.ReactElement => {
   return (
@@ -49,6 +51,18 @@ export default {
   tags: ['autodocs'],
   // eslint-disable-next-line babel/new-cap
   decorators: [StoryRouter(undefined, { initialEntries: ['/onboarding/introduction'] })] as unknown,
+  args: {
+    motionTriggers: ['mount'],
+    type: 'inout',
+    shouldUnmountWhenHidden: false,
+  },
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     docs: {
       page: Page,
@@ -70,7 +84,7 @@ const FadeTemplate: StoryFn<typeof Fade> = (args) => {
       <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
         Toggle Fade
       </Button>
-      <Fade {...args} isVisible={isVisible} />
+      <Fade {...args} isVisible={args.isVisible ?? isVisible} />
     </Box>
   );
 };
@@ -136,8 +150,17 @@ export const WithDifferentComponents = (args: typeof Fade): React.ReactElement =
 
 export const FadeWhenInView = (args: typeof Fade): React.ReactElement => {
   return (
-    <Box minHeight="350px">
-      <Box height="700px" width="100%">
+    <Box
+      maxHeight="400px"
+      overflowX="hidden"
+      overflow="auto"
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.8"
+      borderRadius="medium"
+      borderWidth="thin"
+      borderColor="surface.border.gray.muted"
+    >
+      <Box height="500px" width="100%">
         <Text>Scroll down</Text>
       </Box>
       <Fade {...args}>
@@ -151,6 +174,33 @@ FadeWhenInView.args = {
   motionTriggers: ['inView'],
 };
 
+const stepsSampleData: StepItemProps[] = [
+  {
+    title: 'Introduction',
+    timestamp: 'Mon, 15th Oct’23 | 12:00pm',
+    description: 'Introduction to Razorpay Payment Gateway',
+    href: '/onboarding/introduction',
+  },
+  {
+    title: 'Personal Details',
+    timestamp: 'Mon, 16th Oct’23 | 12:00pm',
+    description: 'Fill your Personal Details for onboarding',
+    href: '/onboarding/personal-details',
+  },
+  {
+    title: 'Business Details',
+    timestamp: 'Mon, 17th Oct’23 | 12:00pm',
+    description: 'Fill your Business Details for onboarding',
+    href: '/onboarding/business-details',
+  },
+  {
+    title: 'Complete Onboarding',
+    timestamp: 'Mon, 20th Oct’23 | 12:00pm',
+    description: 'Complete your onboarding to start',
+    href: '/onboarding/complete-onboarding',
+  },
+];
+
 const OnboardingRoute = ({
   match,
 }: {
@@ -159,16 +209,48 @@ const OnboardingRoute = ({
       id: string;
     };
   };
-}) => (
-  <Fade>
-    <Text weight="semibold" marginY="spacing.4">
-      React Router param: {match.params.id}
-    </Text>
-  </Fade>
-);
+}) => {
+  const stepDataIndex = stepsSampleData.findIndex((stepInfo) =>
+    stepInfo.href?.includes(match.params.id),
+  );
+  const stepData = stepsSampleData[stepDataIndex];
+
+  if (!stepData) {
+    return (
+      <Fade>
+        <Text>Unknown Route</Text>
+      </Fade>
+    );
+  }
+
+  return (
+    <Fade>
+      <Card width="100%">
+        <CardHeader>
+          <CardHeaderLeading
+            title={`${stepDataIndex + 1}. ${stepData.title}`}
+            subtitle={stepData.description}
+          />
+        </CardHeader>
+        <CardBody>
+          <Code size="medium" isHighlighted={false}>
+            {stepData.href ?? ''}
+          </Code>
+
+          <Text marginTop="spacing.4">
+            This is an example of <Code size="medium">Fade</Code> component used for Page
+            Transition.
+          </Text>
+        </CardBody>
+      </Card>
+    </Fade>
+  );
+};
 
 export const OnRouteChange: StoryFn<(props: typeof Fade) => React.ReactElement> = (props) => {
-  return <StepperRouterExample routeComponent={OnboardingRoute} />;
+  return (
+    <StepperRouterExample stepsSampleData={stepsSampleData} routeComponent={OnboardingRoute} />
+  );
 };
 
 export const WithRef = (args: typeof Fade): React.ReactElement => {

@@ -69,7 +69,7 @@ const useAnimationVariables = ({
       exit: type === 'out' || type === 'inout' ? 'exit' : undefined,
       ...triggerProps,
     };
-  }, [type, skipMotionOnCurrentElement, motionTriggers]);
+  }, [type, skipMotionOnCurrentElement, motionTriggers, conditionalAnimate]);
 
   return animationVariables;
 };
@@ -91,10 +91,14 @@ const _BaseMotionBox = (
     conditionalAnimate,
   });
 
-  console.log({ motionVariants, animationVariables, rest });
-
   return (
-    <MotionDiv ref={ref} variants={motionVariants} {...animationVariables} {...rest}>
+    <MotionDiv
+      ref={ref}
+      variants={motionVariants}
+      viewport={{ amount: 0.8, once: true }}
+      {...animationVariables}
+      {...rest}
+    >
       {children}
     </MotionDiv>
   );
