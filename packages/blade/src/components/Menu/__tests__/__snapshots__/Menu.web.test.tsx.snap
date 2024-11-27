@@ -1755,11 +1755,11 @@ exports[`Menu should support data-analytics attribute 1`] = `
         >
           <div
             class=""
+            data-analytics-menu-header="header title"
             data-blade-component="menu-header"
           >
             <div
               class="c9"
-              data-analytics-menu-header="header title"
               data-blade-component="base-box"
             >
               <div
