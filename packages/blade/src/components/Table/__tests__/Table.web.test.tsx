@@ -1163,4 +1163,37 @@ describe('<Table />', () => {
       }
     }
   });
+  it('should accept data-analytics-* props', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 5) }} data-analytics-table="test">
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell data-analytics-table-header="table-header-cell-test">
+                  Payment ID
+                </TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody data-analytics-body="table-body-test">
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index} data-analytics-row="table-row-test">
+                  <TableCell data-analytics-cell="table-cell-test">{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

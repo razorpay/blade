@@ -17,6 +17,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
 import { size } from '~tokens/global';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const StyledFooter = styled(Footer)(({ theme }) => ({
   '&&&': {
@@ -27,9 +28,13 @@ const StyledFooter = styled(Footer)(({ theme }) => ({
   },
 }));
 
-const _TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
+const _TableFooter = ({ children, ...rest }: TableFooterProps): React.ReactElement => {
   return (
-    <StyledFooter isFooter {...metaAttribute({ name: MetaConstants.TableFooter })}>
+    <StyledFooter
+      isFooter
+      {...metaAttribute({ name: MetaConstants.TableFooter })}
+      {...makeAnalyticsAttribute(rest)}
+    >
       {children}
     </StyledFooter>
   );
@@ -54,11 +59,12 @@ const StyledFooterRow = styled(FooterRow)<{ $showBorderedCells: boolean }>(
   }),
 );
 
-const _TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
+const _TableFooterRow = ({ children, ...rest }: TableFooterRowProps): React.ReactElement => {
   const { showBorderedCells } = useTableContext();
   return (
     <StyledFooterRow
       {...metaAttribute({ name: MetaConstants.TableFooterRow })}
+      {...makeAnalyticsAttribute(rest)}
       $showBorderedCells={showBorderedCells}
     >
       {children}
@@ -96,7 +102,7 @@ const StyledFooterCell = styled(FooterCell)<{
   },
 }));
 
-const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
+const _TableFooterCell = ({ children, ...rest }: TableFooterCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { backgroundColor, rowDensity } = useTableContext();
 
@@ -105,6 +111,7 @@ const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElemen
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
       {...metaAttribute({ name: MetaConstants.TableFooterCell })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {isChildrenString ? (
         <Text size="medium" weight="medium">
