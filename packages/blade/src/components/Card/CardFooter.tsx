@@ -100,12 +100,16 @@ const CardFooter = assignWithoutSideEffects(_CardFooter, { componentId: Componen
 type CardFooterLeadingProps = {
   title?: string;
   subtitle?: string;
-};
-const _CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.ReactElement => {
+} & DataAnalyticsAttribute;
+const _CardFooterLeading = ({
+  title,
+  subtitle,
+  ...rest
+}: CardFooterLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardFooterLeading');
 
   return (
-    <BaseBox textAlign={'left' as never}>
+    <BaseBox textAlign={'left' as never} {...makeAnalyticsAttribute(rest)}>
       {title && (
         <Text color="surface.text.gray.normal" size="medium" weight="semibold">
           {title}
@@ -128,8 +132,8 @@ type CardFooterTrailingProps = {
     primary?: CardFooterAction;
     secondary?: CardFooterAction;
   };
-};
-const _CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactElement => {
+} & DataAnalyticsAttribute;
+const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooterTrailing');
 
@@ -140,6 +144,7 @@ const _CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactE
       alignSelf={isMobile ? 'auto' : 'center'}
       marginTop={isMobile ? 'spacing.5' : 'spacing.0'}
       marginLeft={isMobile ? 'spacing.0' : 'spacing.5'}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox flexGrow={1}>
         {actions?.secondary ? (

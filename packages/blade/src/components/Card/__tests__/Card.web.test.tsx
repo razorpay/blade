@@ -303,8 +303,10 @@ describe('<Card />', () => {
           <Text>Plain Card</Text>
         </CardBody>
         <CardFooter data-analytics-card-footer="card-footer">
-          {/* TODO: check for card footer leading and trailing */}
-          <CardFooterLeading title="Card Footer" />
+          <CardFooterLeading
+            title="Card Footer"
+            data-analytics-card-footer-leading="card-footer-leading"
+          />
           <CardFooterTrailing
             actions={{
               primary: {
@@ -316,6 +318,7 @@ describe('<Card />', () => {
                 onClick: () => {},
               },
             }}
+            data-analytics-card-footer-trailing="card-footer-trailing"
           />
         </CardFooter>
       </Card>,
@@ -325,5 +328,12 @@ describe('<Card />', () => {
     expect(
       container.querySelector('[data-analytics-card-footer="card-footer"]'),
     ).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-analytics-card-footer-leading="card-footer-leading"]'),
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-analytics-card-footer-trailing="card-footer-trailing"]'),
+    ).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });
