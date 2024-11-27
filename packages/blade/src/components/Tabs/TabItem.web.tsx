@@ -13,6 +13,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { breakpoints } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
@@ -106,6 +107,7 @@ const TabItem = ({
   isDisabled = false,
   href,
   onClick,
+  ...rest
 }: TabItemProps): React.ReactElement => {
   const {
     size,
@@ -157,6 +159,7 @@ const TabItem = ({
             controls: panelId,
           })}
           {...metaAttribute({ name: MetaConstants.TabItem })}
+          {...makeAnalyticsAttribute(rest)}
         >
           {Leading ? (
             <Leading size={iconSizeMap[size!]} color={iconColor[selectedState][interaction]} />
