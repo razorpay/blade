@@ -15,4 +15,9 @@ describe('TopNav', () => {
 
     await assertAccessible(container);
   });
+
+  test('should support data analytics attributes', () => {
+    const { container } = renderWithTheme(<TopNavExample />);
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -11,6 +11,8 @@ import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { componentZIndices } from '~utils/componentZIndices';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const TOP_NAV_HEIGHT = size[56];
 const CONTENT_RIGHT_GAP = size[80];
@@ -34,10 +36,11 @@ type TopNavProps = {
   | 'right'
   | 'width'
   | 'zIndex'
+  | keyof DataAnalyticsAttribute
 > &
   StyledPropsBlade;
 
-const TopNav = ({ children, ...boxProps }: TopNavProps): React.ReactElement => {
+const TopNav = ({ children, ...rest }: TopNavProps): React.ReactElement => {
   return (
     <Box
       display="grid"
@@ -50,8 +53,9 @@ const TopNav = ({ children, ...boxProps }: TopNavProps): React.ReactElement => {
       paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
       height={makeSize(TOP_NAV_HEIGHT)}
       zIndex={componentZIndices.topnav}
-      {...boxProps}
+      {...rest}
       {...metaAttribute({ name: MetaConstants.TopNav })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </Box>
