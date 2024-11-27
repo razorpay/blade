@@ -40,4 +40,11 @@ describe('SideNav', () => {
 
     await assertAccessible(container);
   });
+
+  test('it should support passing data-analytics attribute', () => {
+    const { getByRole } = renderWithTheme(<SideNavExample display="block" />);
+
+    expect(getByRole('navigation')).toHaveAttribute('data-analytics-side-nav', 'demo-item');
+    expect(getByRole('link', { name: 'Home' })).toHaveAttribute('data-analytics-nav-link', 'home');
+  });
 });
