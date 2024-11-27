@@ -2,6 +2,7 @@
 import type { Side, UseFloatingOptions } from '@floating-ui/react';
 import type { CSSProperties } from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type TooltipProps = {
   /**
@@ -28,7 +29,7 @@ type TooltipProps = {
    * @default 1100
    */
   zIndex?: number;
-};
+} & DataAnalyticsAttribute;
 
 type TooltipContentProps = {
   title?: string;
