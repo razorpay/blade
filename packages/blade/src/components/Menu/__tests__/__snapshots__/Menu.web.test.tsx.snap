@@ -1056,3 +1056,1003 @@ exports[`Menu renders a Menu 1`] = `
   </div>
 </body>
 `;
+
+exports[`Menu should support data-analytics attribute 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c5.c5.c5.c5.c5 {
+  z-index: 1234;
+  min-width: 200px;
+}
+
+.c7.c7.c7.c7.c7 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+}
+
+.c8.c8.c8.c8.c8 {
+  margin-bottom: 8px;
+}
+
+.c9.c9.c9.c9.c9 {
+  padding-right: 8px;
+  padding-left: 8px;
+  margin-bottom: 8px;
+  margin-top: 0px;
+  touch-action: none;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  padding-right: 16px;
+  margin-right: auto;
+}
+
+.c12.c12.c12.c12.c12 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c13.c13.c13.c13.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c16.c16.c16.c16.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c17.c17.c17.c17.c17 {
+  width: 100%;
+}
+
+.c18.c18.c18.c18.c18 {
+  margin-bottom: 2px;
+  margin-top: 2px;
+  margin-right: -8px;
+  margin-left: -8px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.c23.c23.c23.c23.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 20px;
+}
+
+.c24.c24.c24.c24.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-right: 8px;
+  padding-left: 0px;
+}
+
+.c25.c25.c25.c25.c25 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 20px;
+}
+
+.c27.c27.c27.c27.c27 {
+  margin-left: auto;
+}
+
+.c28.c28.c28.c28.c28 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c32.c32.c32.c32.c32 {
+  margin-top: 8px;
+}
+
+.c33.c33.c33.c33.c33 {
+  padding: 8px 8px 0px 8px;
+}
+
+.c21.c21.c21.c21.c21 {
+  border-width: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: left;
+  background-color: transparent;
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 4px;
+}
+
+.c21.c21.c21.c21.c21:hover:not([aria-disabled=true]),
+.c21.c21.c21.c21.c21[aria-expanded="true"] {
+  background-color: hsla(211,20%,52%,0.12);
+}
+
+.c21.c21.c21.c21.c21:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c21.c21.c21.c21.c21[aria-selected=true] {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c21.c21.c21.c21.c21[aria-selected=true]:hover {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c30.c30.c30.c30.c30 {
+  border-width: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: left;
+  background-color: transparent;
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 4px;
+}
+
+.c30.c30.c30.c30.c30:hover:not([aria-disabled=true]),
+.c30.c30.c30.c30.c30[aria-expanded="true"] {
+  background-color: hsla(4,74%,49%,0.09);
+}
+
+.c30.c30.c30.c30.c30:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c30.c30.c30.c30.c30[aria-selected=true] {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c30.c30.c30.c30.c30[aria-selected=true]:hover {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+  margin-top: 1px;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c20.c20.c20.c20.c20 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c26.c26.c26.c26.c26 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.c29.c29.c29.c29.c29 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c31.c31.c31.c31.c31 {
+  color: hsla(4,74%,49%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  outline: none;
+}
+
+.c19.c19.c19.c19.c19 {
+  border-width: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+@media screen and (min-width:480px) {
+  .c5.c5.c5.c5.c5 {
+    min-width: 240px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c7.c7.c7.c7.c7 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c7.c7.c7.c7.c7 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c7.c7.c7.c7.c7 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c7.c7.c7.c7.c7 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c7.c7.c7.c7.c7 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c18.c18.c18.c18.c18 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c18.c18.c18.c18.c18 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c18.c18.c18.c18.c18 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c18.c18.c18.c18.c18 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c18.c18.c18.c18.c18 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c21.c21.c21.c21.c21 {
+    padding: 8px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c30.c30.c30.c30.c30 {
+    padding: 8px;
+  }
+}
+
+<body>
+  <div
+    data-floating-ui-inert=""
+  >
+    <button
+      aria-expanded="true"
+      aria-haspopup="menu"
+      class="c0"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c1"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c2 c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            Open Menu
+          </div>
+        </div>
+      </div>
+    </button>
+    <span
+      data-floating-ui-focus-guard=""
+      data-type="outside"
+      role="button"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+      tabindex="0"
+    />
+    <span
+      aria-owns=":rv:"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+    />
+    <span
+      data-floating-ui-focus-guard=""
+      data-type="outside"
+      role="button"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+      tabindex="0"
+    />
+  </div>
+  <div
+    data-floating-ui-portal=""
+    id=":rv:"
+  >
+    <span
+      data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
+      data-type="inside"
+      role="button"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+      tabindex="0"
+    />
+    <div
+      aria-labelledby=":ru:"
+      aria-orientation="vertical"
+      class="c5 c6"
+      data-analytics-menu="user"
+      data-blade-component="menu"
+      id=":rt:"
+      role="menu"
+      style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -8px;"
+      tabindex="-1"
+    >
+      <div
+        class="c7"
+        data-blade-component="base-box"
+        elevation="midRaised"
+        style="transition-property: transform,opacity; transition-duration: 200ms;"
+      >
+        <div
+          class="c8"
+          data-blade-component="box"
+        >
+          <div
+            class=""
+            data-blade-component="menu-header"
+          >
+            <div
+              class="c9"
+              data-analytics-menu-header="header title"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c10"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c11"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c12"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c13"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c14"
+                        data-blade-component="text"
+                      >
+                        Header Title
+                      </p>
+                    </div>
+                    <p
+                      class="c15"
+                      data-blade-component="text"
+                    >
+                      Subtitle
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c16"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c17"
+                  data-blade-component="box"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="c18 c19"
+            data-blade-component="divider"
+            role="separator"
+          />
+        </div>
+        <div
+          class=""
+          data-blade-component="box"
+        >
+          <p
+            class="c20"
+            data-blade-component="text"
+          >
+            Custom Slot
+          </p>
+        </div>
+        <a
+          class=" c21"
+          data-analytics-menu-item="account"
+          data-blade-component="base-box"
+          href="/accounts"
+          role="menuitem"
+          type="button"
+        >
+          <div
+            class="c22"
+            data-blade-component="box"
+          >
+            <div
+              class="c23"
+              data-blade-component="box"
+            />
+            <div
+              class="c24"
+              data-blade-component="box"
+            >
+              <div
+                class="c25"
+                data-blade-component="box"
+              >
+                <p
+                  class="c26"
+                  data-blade-component="text"
+                >
+                  Account
+                </p>
+              </div>
+              <div
+                class=""
+                data-blade-component="box"
+              >
+                <p
+                  class="c15"
+                  data-blade-component="text"
+                >
+                  Accounts
+                </p>
+              </div>
+            </div>
+            <div
+              class="c27"
+              data-blade-component="box"
+            />
+          </div>
+        </a>
+        <button
+          class=" c21"
+          data-blade-component="base-box"
+          role="menuitem"
+          type="button"
+        >
+          <div
+            class="c22"
+            data-blade-component="box"
+          >
+            <div
+              class="c23"
+              data-blade-component="box"
+            >
+              <svg
+                aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
+                data-blade-component="icon"
+                fill="none"
+                height="12px"
+                viewBox="0 0 24 24"
+                width="12px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7Z"
+                  data-blade-component="svg-path"
+                  fill="hsla(212, 39%, 16%, 1)"
+                  fill-rule="evenodd"
+                />
+                <path
+                  d="M8 14C5.23858 14 3 16.2386 3 19V21C3 21.5523 3.44772 22 4 22C4.55228 22 5 21.5523 5 21V19C5 17.3431 6.34315 16 8 16H16C17.6569 16 19 17.3431 19 19V21C19 21.5523 19.4477 22 20 22C20.5523 22 21 21.5523 21 21V19C21 16.2386 18.7614 14 16 14H8Z"
+                  data-blade-component="svg-path"
+                  fill="hsla(212, 39%, 16%, 1)"
+                />
+              </svg>
+            </div>
+            <div
+              class="c28"
+              data-blade-component="box"
+            >
+              <div
+                class="c25"
+                data-blade-component="box"
+              >
+                <p
+                  class="c26"
+                  data-blade-component="text"
+                >
+                  Profile
+                </p>
+              </div>
+              <div
+                class=""
+                data-blade-component="box"
+              />
+            </div>
+            <div
+              class="c27"
+              data-blade-component="box"
+            />
+          </div>
+        </button>
+        <button
+          class=" c21"
+          data-blade-component="base-box"
+          role="menuitem"
+          type="button"
+        >
+          <div
+            class="c22"
+            data-blade-component="box"
+          >
+            <div
+              class="c23"
+              data-blade-component="box"
+            />
+            <div
+              class="c24"
+              data-blade-component="box"
+            >
+              <div
+                class="c25"
+                data-blade-component="box"
+              >
+                <p
+                  class="c26"
+                  data-blade-component="text"
+                >
+                  Settings
+                </p>
+              </div>
+              <div
+                class=""
+                data-blade-component="box"
+              />
+            </div>
+            <div
+              class="c27"
+              data-blade-component="box"
+            >
+              <p
+                class="c29"
+                data-blade-component="text"
+              >
+                Cmd + S
+              </p>
+            </div>
+          </div>
+        </button>
+        <button
+          class=" c30"
+          data-blade-component="base-box"
+          role="menuitem"
+          type="button"
+        >
+          <div
+            class="c22"
+            data-blade-component="box"
+          >
+            <div
+              class="c23"
+              data-blade-component="box"
+            />
+            <div
+              class="c24"
+              data-blade-component="box"
+            >
+              <div
+                class="c25"
+                data-blade-component="box"
+              >
+                <p
+                  class="c31"
+                  data-blade-component="text"
+                >
+                  Log Out
+                </p>
+              </div>
+              <div
+                class=""
+                data-blade-component="box"
+              />
+            </div>
+            <div
+              class="c27"
+              data-blade-component="box"
+            />
+          </div>
+        </button>
+        <div
+          class="c32"
+          data-blade-component="box"
+        >
+          <div
+            class="c18 c19"
+            data-blade-component="divider"
+            role="separator"
+          />
+          <div
+            class="c33"
+            data-analytics-menu-footer="true"
+            data-blade-component="menu-footer"
+          >
+            <p
+              class="c20"
+              data-blade-component="text"
+            >
+              Footer slot
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
+      data-type="inside"
+      role="button"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+      tabindex="0"
+    />
+  </div>
+</body>
+`;

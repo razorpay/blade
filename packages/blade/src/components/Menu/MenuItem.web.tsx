@@ -4,6 +4,7 @@ import type { MenuItemProps } from './types';
 import { useMenu } from './useMenu';
 import { BaseMenuItem } from '~components/BaseMenu';
 import { ChevronRightIcon } from '~components/Icons';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
   (
@@ -44,6 +45,7 @@ const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
         ref={useMergeRefs([item.ref, forwardedRef])}
         isDisabled={isDisabled}
         {...props}
+        {...makeAnalyticsAttribute(props)}
         {...(_isMenuTrigger
           ? {}
           : menu.getItemProps({
