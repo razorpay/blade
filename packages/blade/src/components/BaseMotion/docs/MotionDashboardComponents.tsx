@@ -168,7 +168,7 @@ export const DashboardWithRoutingExample = ({
 
   return (
     <>
-      <Slide isVisible={isLoading} type="out" shouldUnmountWhenHidden>
+      <Slide direction="top" isVisible={isLoading} type="out" shouldUnmountWhenHidden>
         <Box
           position="fixed"
           display="flex"
@@ -183,120 +183,19 @@ export const DashboardWithRoutingExample = ({
         </Box>
       </Slide>
 
-      <DashboardBackground>
-        <BaseBox backgroundColor="interactive.background.gray.default">
-          <Slide direction="top" fromOffset="100%">
-            <TopNav>
-              {isMobile ? (
-                <>
-                  <BladeLink icon={HomeIcon} size="medium" href="/home">
-                    Home
-                  </BladeLink>
-                  <Heading textAlign="center" size="small" weight="semibold">
-                    Payments
-                  </Heading>
-                  <Menu openInteraction="click">
-                    <Avatar size="medium" name="Anurag Hazra" />
-                    <MenuOverlay>
-                      <MenuHeader title="Profile" />
-                      <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-                        <Avatar size="medium" name="John Doe" />
-                        <Box display="flex" flexDirection="column" gap="spacing.2">
-                          <Text size="medium" weight="semibold">
-                            John Doe
-                          </Text>
-                          <Text size="xsmall" color="surface.text.gray.muted">
-                            Razorpay Trusted Merchant
-                          </Text>
-                        </Box>
-                      </Box>
-                      <MenuItem>
-                        <Text color="surface.text.gray.subtle">Settings</Text>
-                      </MenuItem>
-                      <MenuItem color="negative">
-                        <Text color="feedback.text.negative.intense">Logout</Text>
-                      </MenuItem>
-                    </MenuOverlay>
-                  </Menu>
-                </>
-              ) : (
-                <>
-                  <TopNavBrand>
-                    <RazorpayLogo />
-                  </TopNavBrand>
-                  <TopNavContent>
-                    <TabNav
-                      items={[
-                        { title: 'Home', href: '/app/home', icon: HomeIcon },
-                        {
-                          href: '/app/payroll',
-                          title: 'Payroll',
-                          icon: RazorpayxPayrollIcon,
-                          description: 'Automate payroll with ease.',
-                        },
-                        {
-                          href: '/app/payments',
-                          title: 'Payments',
-                          icon: AcceptPaymentsIcon,
-                          description: 'Manage payments effortlessly.',
-                        },
-                        {
-                          href: '/app/magic-checkout',
-                          title: 'Magic Checkout',
-                          icon: ShoppingBagIcon,
-                          description: 'Fast, one-click checkout.',
-                        },
-                      ]}
-                    >
-                      {({ items }) => {
-                        return (
-                          <>
-                            <TabNavItems>
-                              {items.map((item) => {
-                                return (
-                                  <TabNavItemLink
-                                    key={item.title}
-                                    title={item.title}
-                                    href={item.href}
-                                    icon={item.icon}
-                                  />
-                                );
-                              })}
-                            </TabNavItems>
-                          </>
-                        );
-                      }}
-                    </TabNav>
-                  </TopNavContent>
-                  <TopNavActions>
-                    {isTablet ? (
-                      <Tooltip content="Search in payments">
-                        <Button
-                          size={isMobile ? 'small' : 'medium'}
-                          variant="tertiary"
-                          icon={SearchIcon}
-                        />
-                      </Tooltip>
-                    ) : (
-                      <SearchInput
-                        placeholder="Search in payments"
-                        accessibilityLabel="Search Across Razorpay"
-                      />
-                    )}
-                    <Tooltip content="View Ecosystem Health">
-                      <Button
-                        size={isMobile ? 'small' : 'medium'}
-                        variant="tertiary"
-                        icon={ActivityIcon}
-                      />
-                    </Tooltip>
-                    <Tooltip content="View Announcements">
-                      <Button
-                        size={isMobile ? 'small' : 'medium'}
-                        variant="tertiary"
-                        icon={AnnouncementIcon}
-                      />
-                    </Tooltip>
+      {isLoading ? null : (
+        <DashboardBackground>
+          <BaseBox backgroundColor="interactive.background.gray.default">
+            <Slide direction="top" fromOffset="100%">
+              <TopNav>
+                {isMobile ? (
+                  <>
+                    <BladeLink icon={HomeIcon} size="medium" href="/home">
+                      Home
+                    </BladeLink>
+                    <Heading textAlign="center" size="small" weight="semibold">
+                      Payments
+                    </Heading>
                     <Menu openInteraction="click">
                       <Avatar size="medium" name="Anurag Hazra" />
                       <MenuOverlay>
@@ -320,49 +219,157 @@ export const DashboardWithRoutingExample = ({
                         </MenuItem>
                       </MenuOverlay>
                     </Menu>
-                  </TopNavActions>
-                </>
-              )}
-            </TopNav>
-          </Slide>
-          <Box
-            overflow="hidden"
-            position="relative"
-            borderRadius="large"
-            borderTopRightRadius="none"
-            borderBottomLeftRadius="none"
-            borderBottomRightRadius="none"
-            height="100%"
-            marginX={{ base: 'spacing.0', m: 'spacing.3' }}
-          >
-            <SideNavExample
-              isOpen={isSideBarOpen}
-              onDismiss={() => {
-                setIsSideBarOpen(false);
-              }}
-            />
-            <Move>
-              <Box
-                marginLeft={{
-                  base: '100%',
-                  m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
-                  xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
+                  </>
+                ) : (
+                  <>
+                    <TopNavBrand>
+                      <RazorpayLogo />
+                    </TopNavBrand>
+                    <TopNavContent>
+                      <TabNav
+                        items={[
+                          { title: 'Home', href: '/app/home', icon: HomeIcon },
+                          {
+                            href: '/app/payroll',
+                            title: 'Payroll',
+                            icon: RazorpayxPayrollIcon,
+                            description: 'Automate payroll with ease.',
+                          },
+                          {
+                            href: '/app/payments',
+                            title: 'Payments',
+                            icon: AcceptPaymentsIcon,
+                            description: 'Manage payments effortlessly.',
+                          },
+                          {
+                            href: '/app/magic-checkout',
+                            title: 'Magic Checkout',
+                            icon: ShoppingBagIcon,
+                            description: 'Fast, one-click checkout.',
+                          },
+                        ]}
+                      >
+                        {({ items }) => {
+                          return (
+                            <>
+                              <TabNavItems>
+                                {items.map((item) => {
+                                  return (
+                                    <TabNavItemLink
+                                      key={item.title}
+                                      title={item.title}
+                                      href={item.href}
+                                      icon={item.icon}
+                                    />
+                                  );
+                                })}
+                              </TabNavItems>
+                            </>
+                          );
+                        }}
+                      </TabNav>
+                    </TopNavContent>
+                    <TopNavActions>
+                      {isTablet ? (
+                        <Tooltip content="Search in payments">
+                          <Button
+                            size={isMobile ? 'small' : 'medium'}
+                            variant="tertiary"
+                            icon={SearchIcon}
+                          />
+                        </Tooltip>
+                      ) : (
+                        <SearchInput
+                          placeholder="Search in payments"
+                          accessibilityLabel="Search Across Razorpay"
+                        />
+                      )}
+                      <Tooltip content="View Ecosystem Health">
+                        <Button
+                          size={isMobile ? 'small' : 'medium'}
+                          variant="tertiary"
+                          icon={ActivityIcon}
+                        />
+                      </Tooltip>
+                      <Tooltip content="View Announcements">
+                        <Button
+                          size={isMobile ? 'small' : 'medium'}
+                          variant="tertiary"
+                          icon={AnnouncementIcon}
+                        />
+                      </Tooltip>
+                      <Menu openInteraction="click">
+                        <Avatar size="medium" name="Anurag Hazra" />
+                        <MenuOverlay>
+                          <MenuHeader title="Profile" />
+                          <Box
+                            display="flex"
+                            gap="spacing.4"
+                            padding="spacing.4"
+                            alignItems="center"
+                          >
+                            <Avatar size="medium" name="John Doe" />
+                            <Box display="flex" flexDirection="column" gap="spacing.2">
+                              <Text size="medium" weight="semibold">
+                                John Doe
+                              </Text>
+                              <Text size="xsmall" color="surface.text.gray.muted">
+                                Razorpay Trusted Merchant
+                              </Text>
+                            </Box>
+                          </Box>
+                          <MenuItem>
+                            <Text color="surface.text.gray.subtle">Settings</Text>
+                          </MenuItem>
+                          <MenuItem color="negative">
+                            <Text color="feedback.text.negative.intense">Logout</Text>
+                          </MenuItem>
+                        </MenuOverlay>
+                      </Menu>
+                    </TopNavActions>
+                  </>
+                )}
+              </TopNav>
+            </Slide>
+            <Box
+              overflow="hidden"
+              position="relative"
+              borderRadius="large"
+              borderTopRightRadius="none"
+              borderBottomLeftRadius="none"
+              borderBottomRightRadius="none"
+              height="100%"
+              marginX={{ base: 'spacing.0', m: 'spacing.3' }}
+            >
+              <SideNavExample
+                isOpen={isSideBarOpen}
+                onDismiss={() => {
+                  setIsSideBarOpen(false);
                 }}
-                // 100vh - (topnav height [56px] + border [2px])
-                height="calc(100vh - 58px)"
-                padding="spacing.6"
-                backgroundColor="surface.background.gray.intense"
-              >
-                <AnimatePresence mode="wait">
-                  <Switch location={location} key={location.pathname}>
-                    <Route path="/app/:id" component={routeComponent} />
-                  </Switch>
-                </AnimatePresence>
-              </Box>
-            </Move>
-          </Box>
-        </BaseBox>
-      </DashboardBackground>
+              />
+              <Move>
+                <Box
+                  marginLeft={{
+                    base: '100%',
+                    m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
+                    xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
+                  }}
+                  // 100vh - (topnav height [56px] + border [2px])
+                  height="calc(100vh - 58px)"
+                  padding="spacing.6"
+                  backgroundColor="surface.background.gray.intense"
+                >
+                  <AnimatePresence mode="wait">
+                    <Switch location={location} key={location.pathname}>
+                      <Route path="/app/:id" component={routeComponent} />
+                    </Switch>
+                  </AnimatePresence>
+                </Box>
+              </Move>
+            </Box>
+          </BaseBox>
+        </DashboardBackground>
+      )}
     </>
   );
 };

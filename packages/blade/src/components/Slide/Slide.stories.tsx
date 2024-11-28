@@ -233,7 +233,7 @@ const OnboardingRoute = ({
   }
 
   return (
-    <Slide direction={{ enter: 'bottom', exit: 'top' }}>
+    <Slide direction={{ enter: 'bottom', exit: 'top' }} fromOffset="100vh">
       <Card width="100%" height="100%">
         <CardHeader>
           <CardHeaderLeading
