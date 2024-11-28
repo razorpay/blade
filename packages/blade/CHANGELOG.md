@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.37.0
+
+### Minor Changes
+
+- 778e388b: feat(blade): add new icons - IndiaFlag, MagicKonnect, WorldWide
+
 ## 11.36.2
 
 ### Patch Changes
