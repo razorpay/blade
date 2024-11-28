@@ -39,6 +39,8 @@ const _BaseMotionBox = (
 
   const motionVariants = useMotionVariants(userMotionVariants, type);
 
+  console.count('BaseMotionBox');
+
   return (
     <MotionDiv
       ref={ref}

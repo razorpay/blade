@@ -88,6 +88,6 @@ const DashboardRoute = ({
   );
 };
 
-export const OnRouteChange: StoryFn<() => React.ReactElement> = (props) => {
+export const DashboardMotionRecipe: StoryFn<() => React.ReactElement> = (props) => {
   return <DashboardWithRoutingExample routeComponent={DashboardRoute} />;
 };

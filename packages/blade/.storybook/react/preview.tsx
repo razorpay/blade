@@ -233,7 +233,6 @@ export const globalTypes = {
       showName: true,
     },
   },
-  // TODO: Rebranding - Uncomment this when we fix white-labeling
   brandColor: {
     name: 'Brand Color',
     description: 'Brand Color (You can pass any valid color to BladeProvider)',
