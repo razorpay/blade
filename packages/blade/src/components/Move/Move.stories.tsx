@@ -8,6 +8,20 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { InternalCardExample } from '../Card/Card.stories';
+import { Text } from '~components/Typography';
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardFooterTrailing,
+  CardHeader,
+  CardHeaderBadge,
+  CardHeaderCounter,
+  CardHeaderIcon,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+} from '~components/Card';
+import { CheckCircleIcon } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (

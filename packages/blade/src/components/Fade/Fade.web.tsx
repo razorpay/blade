@@ -24,14 +24,14 @@ export const Fade = ({
       opacity: 1,
       transition: {
         duration: makeSecondsDuration(theme.motion.duration.xquick),
-        easings: cssBezierToMotionFn(castWebType(theme.motion.easing.entrance)),
+        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.entrance)),
       },
     },
     exit: {
       opacity: 0,
       transition: {
         duration: makeSecondsDuration(theme.motion.duration.xquick),
-        easings: cssBezierToMotionFn(castWebType(theme.motion.easing.exit)),
+        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.exit)),
       },
     },
   };
@@ -43,8 +43,7 @@ export const Fade = ({
       isVisible={isVisible}
       motionTriggers={motionTriggers}
       shouldUnmountWhenHidden={shouldUnmountWhenHidden}
-    >
-      {children}
-    </BaseMotionEntryExit>
+      children={children}
+    />
   );
 };

@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from 'react';
+import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Fade } from './';
@@ -9,7 +9,6 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { InternalCardExample } from '../Card/Card.stories';
 import { TextInput } from '~components/Input/TextInput';
-import { Text } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
   return (
