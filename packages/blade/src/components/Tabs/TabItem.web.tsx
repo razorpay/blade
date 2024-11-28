@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import styled from 'styled-components';
 import React from 'react';
