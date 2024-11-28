@@ -185,7 +185,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       flexDirection="column"
       width="100%"
       {...metaAttribute({ name: MetaConstants.FileUpload, testID })}
-      {...getStyledProps(props)}
+      {...getStyledProps(rest)}
     >
       <BaseBox
         display="flex"

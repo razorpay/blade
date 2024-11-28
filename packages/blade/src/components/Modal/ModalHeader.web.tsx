@@ -65,7 +65,7 @@ const _ModalHeader = ({
       closeButtonRef={defaultInitialFocusRef}
       showCloseButton={true}
       onCloseButtonClick={close}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     />
   );
 };

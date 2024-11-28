@@ -108,7 +108,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const helpTextLeftSpacing = makeSize(radioSizes.icon[size].width + theme.spacing[3]);
 
   return (
-    <BaseBox {...getStyledProps(props)}>
+    <BaseBox {...getStyledProps(rest)}>
       <SelectorLabel
         componentName={MetaConstants.RadioLabel}
         inputProps={isReactNative ? inputProps : {}}

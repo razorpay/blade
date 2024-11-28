@@ -224,10 +224,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   const helpTextLeftSpacing = makeSize(checkboxSizes.icon[size].width + theme.spacing[3]);
 
   return (
-    <BaseBox
-      {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
-      {...getStyledProps(props)}
-    >
+    <BaseBox {...metaAttribute({ name: MetaConstants.Checkbox, testID })} {...getStyledProps(rest)}>
       <SelectorLabel
         componentName={MetaConstants.CheckboxLabel}
         inputProps={state.isReactNative ? inputProps : {}}
