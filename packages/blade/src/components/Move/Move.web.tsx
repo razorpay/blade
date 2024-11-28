@@ -28,7 +28,7 @@ export const Move = ({
       transform: `translateY(${makeSpace(theme.spacing[0])})`,
       transition: {
         duration: makeSecondsDuration(theme.motion.duration.xmoderate),
-        easings: cssBezierToMotionFn(castWebType(theme.motion.easing.entrance)),
+        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.entrance)),
       },
     },
     exit: {
@@ -36,7 +36,7 @@ export const Move = ({
       transform: `translateY(${movePx})`,
       transition: {
         duration: makeSecondsDuration(theme.motion.duration.quick),
-        easings: cssBezierToMotionFn(castWebType(theme.motion.easing.exit)),
+        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.exit)),
       },
     },
   };

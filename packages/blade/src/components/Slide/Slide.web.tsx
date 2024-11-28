@@ -75,7 +75,7 @@ export const Slide = ({
             ? theme.motion.duration.xmoderate
             : theme.motion.duration['2xgentle'],
         ),
-        easings: cssBezierToMotionFn(
+        ease: cssBezierToMotionFn(
           isEnterDirectionHorizontal
             ? castWebType(theme.motion.easing.entrance)
             : castWebType(theme.motion.easing.emphasized),
@@ -90,7 +90,7 @@ export const Slide = ({
             ? theme.motion.duration.moderate
             : theme.motion.duration.xgentle,
         ),
-        easings: cssBezierToMotionFn(
+        ease: cssBezierToMotionFn(
           isExitDirectionHorizontal
             ? castWebType(theme.motion.easing.exit)
             : castWebType(theme.motion.easing.emphasized),

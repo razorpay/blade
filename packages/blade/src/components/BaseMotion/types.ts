@@ -1,15 +1,23 @@
-import type { AnimationControls, Variant } from 'motion/react';
+import type { AnimationControls, TargetAndTransition, Tween } from 'motion/react';
+import React from 'react';
 
 type MotionTriggerEntryExitType = 'mount' | 'inView' | 'focus' | 'on-animate-interactions';
 type MotionTriggersType = MotionTriggerEntryExitType | 'hover' | 'tap';
 
 type MotionVariantsType = {
-  initial: Variant;
-  animate: Variant;
-  exit: Variant;
+  initial: TargetAndTransition & {
+    transition?: Tween;
+  };
+  animate: TargetAndTransition & {
+    transition?: Tween;
+  };
+  exit: TargetAndTransition & {
+    transition?: Tween;
+  };
 };
 
 type BaseMotionBoxProps = {
+  as?: React.ReactElement;
   children: React.ReactElement;
   type?: 'in' | 'out' | 'inout';
   /**

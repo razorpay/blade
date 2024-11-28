@@ -30,7 +30,7 @@ export const Scale = ({
           : undefined,
       transition: {
         duration: makeSecondsDuration(theme.motion.duration.gentle),
-        easings: cssBezierToMotionFn(castWebType(theme.motion.easing.standard)),
+        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.standard)),
       },
     },
     exit: {
