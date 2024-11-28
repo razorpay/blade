@@ -6,20 +6,23 @@ import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
 import { castWebType, useTheme } from '~utils';
 import type { SlideProps } from './types';
 
-const getFromTransform = (direction: SlideProps['direction']): `translate${string}` => {
+const getFromTransform = (
+  direction: SlideProps['direction'],
+  fromOffset: SlideProps['fromOffset'],
+): `translate${string}` => {
   if (direction === 'top') {
-    return 'translateY(-100vh)';
+    return `translateY(-${fromOffset})`;
   }
 
   if (direction === 'left') {
-    return 'translateX(-100vw)';
+    return `translateX(-${fromOffset})`;
   }
 
   if (direction === 'right') {
-    return 'translateX(100vw)';
+    return `translateX(${fromOffset})`;
   }
 
-  return 'translateY(100vh)';
+  return `translateY(${fromOffset})`;
 };
 
 export const Slide = ({
@@ -29,6 +32,7 @@ export const Slide = ({
   isVisible,
   motionTriggers,
   shouldUnmountWhenHidden,
+  fromOffset,
 }: SlideProps) => {
   const { theme } = useTheme();
 
@@ -41,11 +45,13 @@ export const Slide = ({
     const enterDirection = typeof direction === 'object' ? direction.enter : direction;
     const exitDirection = typeof direction === 'object' ? direction.exit : direction;
 
-    const enterTransform = getFromTransform(enterDirection);
-    const exitTransform = getFromTransform(exitDirection);
-
     const isEnterDirectionHorizontal = ['left', 'right'].includes(enterDirection);
     const isExitDirectionHorizontal = ['left', 'right'].includes(exitDirection);
+
+    const defaultOffset: SlideProps['fromOffset'] = isEnterDirectionHorizontal ? '100vw' : '100vh';
+
+    const enterTransform = getFromTransform(enterDirection, fromOffset ?? defaultOffset);
+    const exitTransform = getFromTransform(exitDirection, fromOffset ?? defaultOffset);
 
     return {
       enterTransform,
@@ -53,7 +59,7 @@ export const Slide = ({
       isEnterDirectionHorizontal,
       isExitDirectionHorizontal,
     };
-  }, [direction]);
+  }, [direction, fromOffset]);
 
   const moveVariants: MotionVariantsType = {
     initial: {
