@@ -9,4 +9,6 @@ export type SlideProps = BaseMotionEntryExitProps & {
         enter: SlideDirections;
         exit: SlideDirections;
       };
+
+  fromOffset?: `100vh` | `100vw` | `${number}%`;
 };
