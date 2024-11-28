@@ -84,6 +84,7 @@ const MorphTemplate: StoryFn<typeof Morph> = (args) => {
           <Morph {...args}>
             <Box display="block" width="240px">
               <TextInput
+                autoFocus
                 accessibilityLabel="Name"
                 placeholder="Enter your Name"
                 trailingButton={

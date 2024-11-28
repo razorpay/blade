@@ -13,16 +13,12 @@ import {
   SideNavLink,
   SideNavSection,
 } from '~components/SideNav';
-import type { IconComponent } from '~components/Icons';
 import {
   SearchIcon,
   AcceptPaymentsIcon,
-  AwardIcon,
   ShoppingBagIcon,
-  ChevronDownIcon,
   ActivityIcon,
   AnnouncementIcon,
-  ChevronRightIcon,
   HomeIcon,
   LayoutIcon,
   PaymentButtonIcon,
@@ -39,7 +35,6 @@ import { Avatar } from '~components/Avatar';
 import { Heading, Text } from '~components/Typography';
 import { Menu, MenuHeader, MenuItem, MenuOverlay } from '~components/Menu';
 import { Link as BladeLink } from '~components/Link';
-import { Badge } from '~components/Badge';
 
 import { makeSize, useBreakpoint, useTheme } from '~utils';
 import {
@@ -49,6 +44,7 @@ import {
 import BaseBox from '~components/Box/BaseBox';
 import { AnimatePresence } from 'motion/react';
 import { Slide } from '~components/Slide';
+import { Move } from '~components/Move';
 
 const isItemActive = (
   location: { pathname: string },
@@ -320,23 +316,25 @@ export const DashboardWithRoutingExample = ({
               setIsSideBarOpen(false);
             }}
           />
-          <Box
-            marginLeft={{
-              base: '100%',
-              m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
-              xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
-            }}
-            // 100vh - (topnav height [56px] + border [2px])
-            height="calc(100vh - 58px)"
-            backgroundColor="surface.background.gray.intense"
-            padding="spacing.6"
-          >
-            <AnimatePresence mode="wait">
-              <Switch location={location} key={location.pathname}>
-                <Route path="/app/:id" component={routeComponent} />
-              </Switch>
-            </AnimatePresence>
-          </Box>
+          <Move>
+            <Box
+              marginLeft={{
+                base: '100%',
+                m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
+                xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
+              }}
+              // 100vh - (topnav height [56px] + border [2px])
+              height="calc(100vh - 58px)"
+              padding="spacing.6"
+              backgroundColor="surface.background.gray.intense"
+            >
+              <AnimatePresence mode="wait">
+                <Switch location={location} key={location.pathname}>
+                  <Route path="/app/:id" component={routeComponent} />
+                </Switch>
+              </AnimatePresence>
+            </Box>
+          </Move>
         </Box>
       </BaseBox>
     </DashboardBackground>
