@@ -72,7 +72,7 @@ const Accordion = ({
   size = 'large',
   maxWidth,
   testID,
-  ...props
+  ...rest
 }: AccordionProps): ReactElement => {
   const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
     defaultExpandedIndex,
@@ -120,8 +120,8 @@ const Accordion = ({
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
-        {...getStyledProps(props)}
-        {...makeAnalyticsAttribute(props)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <BaseBox
           {...getVariantStyles(variant)}
