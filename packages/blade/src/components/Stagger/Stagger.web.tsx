@@ -3,8 +3,19 @@ import type { MotionVariantsType } from '~components/BaseMotion';
 import { AnimatePresence } from 'motion/react';
 import { StaggerContext } from './StaggerProvider';
 import { StaggerProps } from './types';
+import React from 'react';
 
-export const Stagger = ({ children, isVisible, type = 'inout' }: StaggerProps) => {
+export const Stagger = ({
+  children,
+  isVisible = true,
+  type = 'inout',
+  shouldUnmountWhenHidden = false,
+}: StaggerProps) => {
+  // Only need AnimatePresence when we have to unmount the component
+  const AnimateWrapper = shouldUnmountWhenHidden ? AnimatePresence : React.Fragment;
+  // keep it always mounted when shouldUnmountWhenHidden is false
+  const isMounted = shouldUnmountWhenHidden ? isVisible : true;
+
   const staggerVariants: MotionVariantsType = {
     initial: {},
     animate: {
@@ -20,14 +31,20 @@ export const Stagger = ({ children, isVisible, type = 'inout' }: StaggerProps) =
   };
 
   return (
-    <AnimatePresence>
-      {isVisible ? (
-        <BaseMotionBox type={type} motionVariants={staggerVariants}>
+    <AnimateWrapper>
+      {isMounted ? (
+        <BaseMotionBox
+          type={type}
+          motionVariants={staggerVariants}
+          {...(shouldUnmountWhenHidden
+            ? {}
+            : { conditionalAnimate: isVisible ? 'animate' : 'exit' })}
+        >
           <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
             {children}
           </StaggerContext.Provider>
         </BaseMotionBox>
       ) : null}
-    </AnimatePresence>
+    </AnimateWrapper>
   );
 };
