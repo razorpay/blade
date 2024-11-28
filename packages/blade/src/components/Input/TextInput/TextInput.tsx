@@ -24,7 +24,6 @@ import type {
   DataAnalyticsAttribute,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -179,7 +178,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isTaggedInput,
     tags,
     onTagChange,
-    ...props
+    ...rest
   },
   ref,
 ): ReactElement => {
@@ -325,8 +324,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         autoCapitalize,
       })}
       size={size}
-      {...props}
-      {...makeAnalyticsAttribute(props)}
+      {...rest}
     />
   );
 };

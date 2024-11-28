@@ -21,7 +21,6 @@ import type {
   DataAnalyticsAttribute,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type TextAreaCommonProps = Pick<
   BaseInputProps,
@@ -127,7 +126,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     isTaggedInput,
     tags,
     onTagChange,
-    ...props
+    ...rest
   },
   ref,
 ) => {
@@ -256,8 +255,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       testID={testID}
       size={size}
-      {...props}
-      {...makeAnalyticsAttribute(props)}
+      {...rest}
     />
   );
 };

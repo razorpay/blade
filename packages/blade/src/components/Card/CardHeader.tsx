@@ -126,7 +126,7 @@ const _CardHeader = ({
   marginBottom = 'spacing.4',
   paddingBottom = 'spacing.4',
   showDivider = true,
-  ...props
+  ...rest
 }: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
   useVerifyAllowedChildren({
@@ -139,7 +139,7 @@ const _CardHeader = ({
     <BaseBox
       marginBottom={marginBottom}
       {...metaAttribute({ name: MetaConstants.CardHeader, testID })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox
         paddingBottom={paddingBottom}
@@ -176,7 +176,7 @@ const _CardHeaderLeading = ({
   subtitle,
   prefix,
   suffix,
-  ...props
+  ...rest
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
 
@@ -197,7 +197,7 @@ const _CardHeaderLeading = ({
   }
 
   return (
-    <BaseBox {...makeAnalyticsAttribute(props)} flex={1} display="flex" flexDirection="row">
+    <BaseBox {...makeAnalyticsAttribute(rest)} flex={1} display="flex" flexDirection="row">
       <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
         {prefix}
       </BaseBox>

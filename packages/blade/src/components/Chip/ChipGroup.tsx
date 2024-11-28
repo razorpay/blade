@@ -31,7 +31,7 @@ const ChipGroup = ({
   color = 'primary',
   testID,
   selectionType = 'single',
-  ...props
+  ...rest
 }: ChipGroupProps): React.ReactElement => {
   const { contextValue, ids } = useChipGroup({
     defaultValue,
@@ -67,14 +67,14 @@ const ChipGroup = ({
 
   return (
     <ChipGroupProvider value={contextValue}>
-      <BaseBox {...getStyledProps(props)}>
+      <BaseBox {...getStyledProps(rest)}>
         <SelectorGroupField
           position={labelPosition}
           accessibilityRole={selectionType === 'single' ? 'radiogroup' : 'group'}
           labelledBy={ids.labelId}
           componentName="chip-group"
           testID={testID}
-          {...makeAnalyticsAttribute(props)}
+          {...makeAnalyticsAttribute(rest)}
         >
           {label ? (
             <FormLabel

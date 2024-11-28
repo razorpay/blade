@@ -57,7 +57,7 @@ type RadioProps = {
   StyledPropsBlade;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium', testID, ...props },
+  { value, children, helpText, isDisabled, size = 'medium', testID, ...rest },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -123,7 +123,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               hasError={hasError}
               inputProps={inputProps}
               ref={ref}
-              {...makeAnalyticsAttribute(props)}
+              {...makeAnalyticsAttribute(rest)}
             />
             <RadioIcon
               size={_size}

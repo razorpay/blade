@@ -49,7 +49,7 @@ const HiddenInput = ({
   name,
   isRequired,
   isDisabled,
-  ...props
+  ...rest
 }: {
   value: string;
   name?: string;
@@ -66,7 +66,7 @@ const HiddenInput = ({
       required={isRequired}
       disabled={isDisabled}
       readOnly
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     />
   );
 };

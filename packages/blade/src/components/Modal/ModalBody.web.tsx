@@ -23,7 +23,7 @@ type ModalBodyProps = {
 const _ModalBody = ({
   children,
   padding = 'spacing.6',
-  ...props
+  ...rest
 }: ModalBodyProps): React.ReactElement => {
   const contentRef = React.useRef<any>(null);
 
@@ -34,7 +34,7 @@ const _ModalBody = ({
       ref={contentRef}
       overflowY="auto"
       overflowX="hidden"
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </BaseBox>

@@ -31,7 +31,7 @@ const _DropdownHeader = ({
   titleSuffix,
   trailing,
   testID,
-  ...props
+  ...rest
 }: DropdownHeaderProps): React.ReactElement => {
   return (
     <BaseBox
@@ -58,7 +58,7 @@ const _DropdownHeader = ({
         showBackButton={false}
         // close button
         showCloseButton={false}
-        {...makeAnalyticsAttribute(props)}
+        {...makeAnalyticsAttribute(rest)}
       />
     </BaseBox>
   );

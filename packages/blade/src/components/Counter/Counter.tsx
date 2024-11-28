@@ -84,7 +84,7 @@ const _Counter = ({
   emphasis = 'subtle',
   size = 'medium',
   testID,
-  ...props
+  ...rest
 }: CounterProps): React.ReactElement => {
   let content = `${value}`;
   if (max && value > max) {
@@ -116,8 +116,8 @@ const _Counter = ({
     <BaseBox
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <StyledCounter
         minHeight={makeSize(counterHeight[size])}

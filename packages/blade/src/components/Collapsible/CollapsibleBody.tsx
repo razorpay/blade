@@ -13,7 +13,7 @@ const _CollapsibleBody = ({
   testID,
   width,
   _hasMargin = true,
-  ...props
+  ...rest
 }: CollapsibleBodyProps): ReactElement => {
   const { collapsibleBodyId, isExpanded } = useCollapsible();
   return (
@@ -22,7 +22,7 @@ const _CollapsibleBody = ({
       width={width}
       {...makeAccessible({ role: 'region', hidden: !isExpanded })}
       {...metaAttribute({ name: MetaConstants.CollapsibleBody, testID })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <CollapsibleBodyContent _hasMargin={_hasMargin}>{children}</CollapsibleBodyContent>
     </BaseBox>

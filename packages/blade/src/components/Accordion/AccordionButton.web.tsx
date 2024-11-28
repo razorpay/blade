@@ -19,7 +19,7 @@ const _AccordionButton = ({
   isDeprecatedAPI,
   header,
   isDisabled,
-  ...props
+  ...rest
 }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex, size } = useAccordion();
@@ -52,7 +52,7 @@ const _AccordionButton = ({
     <BaseBox
       // a11y guidelines suggest having an apt heading surround a button but heading level is hardcoded here
       {...makeAccessible({ role: 'heading', level: 3 })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
       width="100%"
     >
       <StyledAccordionButton

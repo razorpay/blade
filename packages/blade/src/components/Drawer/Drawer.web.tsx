@@ -75,7 +75,7 @@ const _Drawer = ({
   initialFocusRef,
   isLazy = true,
   testID,
-  ...props
+  ...rest
 }: DrawerProps): React.ReactElement => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
   const [zIndexState, setZIndexState] = React.useState<number>(zIndex);
@@ -152,7 +152,7 @@ const _Drawer = ({
                 name: MetaConstants.Drawer,
                 testID,
               })}
-              {...makeAnalyticsAttribute(props)}
+              {...makeAnalyticsAttribute(rest)}
               zIndex={zIndexState}
             >
               {showOverlay || stackingLevel === 2 ? (

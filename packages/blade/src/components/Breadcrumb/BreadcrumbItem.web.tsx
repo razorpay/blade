@@ -14,7 +14,7 @@ const BreadcrumbItem = ({
   isCurrentPage,
   onClick,
   accessibilityLabel,
-  ...props
+  ...rest
 }: BreadcrumbItemProps): React.ReactElement => {
   const { color, size } = React.useContext(BreadcrumbContext);
 
@@ -48,7 +48,7 @@ const BreadcrumbItem = ({
       href={href}
       onClick={onClick}
       accessibilityProps={{ label: accessibilityLabel }}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children ?? ''}
     </BaseLink>

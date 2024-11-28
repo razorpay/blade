@@ -21,7 +21,6 @@ import type {
 } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -122,7 +121,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     testID,
     size = 'medium',
     showSearchIcon = true,
-    ...props
+    ...rest
   },
   ref,
 ): ReactElement => {
@@ -235,8 +234,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
           autoCapitalize,
         })}
         size={size}
-        {...makeAnalyticsAttribute(props)}
-        {...props}
+        {...rest}
       />
     </BaseBox>
   );

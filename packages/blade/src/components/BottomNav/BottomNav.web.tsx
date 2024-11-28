@@ -56,7 +56,7 @@ const BottomNav = ({
   children,
   zIndex = componentZIndices.bottomNav,
   testID,
-  ...props
+  ...rest
 }: BottomNavProps): React.ReactElement => {
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
@@ -82,13 +82,13 @@ const BottomNav = ({
       paddingX="spacing.2"
       display="flex"
       flexDirection="row"
-      {...getStyledProps(props)}
+      {...getStyledProps(rest)}
       zIndex={zIndex}
       {...metaAttribute({
         testID,
         name: MetaConstants.BottomNav,
       })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </BaseBox>
@@ -125,7 +125,7 @@ const BottomNavItem = ({
   onClick,
   icon: Icon,
   testID,
-  ...props
+  ...rest
 }: BottomNavItemProps): React.ReactElement => {
   const isRouterLink = as && href;
   const defaultRenderElement = href ? 'a' : 'button';
@@ -155,7 +155,7 @@ const BottomNavItem = ({
         name: MetaConstants.BottomNavItem,
         testID,
       })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <Icon color="currentColor" size="large" />
       <Text truncateAfterLines={1} color="currentColor" size="xsmall" weight="semibold">

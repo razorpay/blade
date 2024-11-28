@@ -108,7 +108,7 @@ const RadioGroup = ({
   value,
   size = 'medium',
   testID,
-  ...props
+  ...rest
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
     defaultValue,
@@ -133,14 +133,14 @@ const RadioGroup = ({
 
   return (
     <RadioGroupProvider value={contextValue}>
-      <BaseBox {...getStyledProps(props)}>
+      <BaseBox {...getStyledProps(rest)}>
         <SelectorGroupField
           position={labelPosition}
           labelledBy={ids.labelId}
           accessibilityRole="radiogroup"
           componentName="radio-group"
           testID={testID}
-          {...makeAnalyticsAttribute(props)}
+          {...makeAnalyticsAttribute(rest)}
         >
           {label ? (
             <FormLabel

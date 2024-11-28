@@ -163,7 +163,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
     autoCompleteSuggestionType = 'oneTimeCode',
     testID,
     size = 'medium',
-    ...props
+    ...rest
   },
   incomingRef,
 ) => {
@@ -385,8 +385,8 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.OTPInput, testID })}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox
         display="flex"

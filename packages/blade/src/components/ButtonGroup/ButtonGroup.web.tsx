@@ -60,7 +60,7 @@ const _ButtonGroup = ({
   variant = 'primary',
   isFullWidth = false,
   testID,
-  ...props
+  ...rest
 }: ButtonGroupProps): React.ReactElement => {
   const contextValue = {
     isDisabled,
@@ -78,8 +78,8 @@ const _ButtonGroup = ({
         isDisabled={isDisabled}
         isFullWidth={isFullWidth}
         {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
-        {...getStyledProps(props)}
-        {...makeAnalyticsAttribute(props)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
         role="group"
       >
         {React.Children.map(children, (child, index) => {

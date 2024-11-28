@@ -291,7 +291,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     onTouchEnd,
     onMouseDown,
     onMouseUp,
-    ...props
+    ...rest
   },
   ref,
 ) => {
@@ -388,8 +388,8 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
       // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}

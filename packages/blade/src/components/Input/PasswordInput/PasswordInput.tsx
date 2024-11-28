@@ -9,7 +9,6 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
 import type { DataAnalyticsAttribute, BladeElementRef } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type PasswordInputExtraProps = {
   /**
@@ -135,7 +134,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
     autoCompleteSuggestionType,
     testID,
     size = 'medium',
-    ...props
+    ...rest
   },
   ref,
 ) => {
@@ -202,8 +201,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       autoCapitalize="none"
       testID={testID}
       size={size}
-      {...props}
-      {...makeAnalyticsAttribute(props)}
+      {...rest}
     />
   );
 };

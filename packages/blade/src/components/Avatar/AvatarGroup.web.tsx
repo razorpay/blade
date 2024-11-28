@@ -16,7 +16,7 @@ const _AvatarGroup = ({
   size = 'medium',
   maxCount,
   testID,
-  ...props
+  ...rest
 }: AvatarGroupProps): React.ReactElement => {
   const contextValue: AvatarGroupContextType = {
     size,
@@ -27,8 +27,8 @@ const _AvatarGroup = ({
     <AvatarGroupProvider value={contextValue}>
       <StyledAvatarGroup
         {...metaAttribute({ name: MetaConstants.AvatarGroup, testID })}
-        {...getStyledProps(props)}
-        {...makeAnalyticsAttribute(props)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
         role="group"
         size={size}
       >

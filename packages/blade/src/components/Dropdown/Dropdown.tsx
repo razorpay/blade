@@ -61,7 +61,7 @@ const _Dropdown = ({
   selectionType = 'single',
   testID,
   _width,
-  ...props
+  ...rest
 }: DropdownProps): React.ReactElement => {
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
@@ -231,8 +231,8 @@ const _Dropdown = ({
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ref={dropdownContainerRef as any}
           {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
-          {...getStyledProps(props)}
-          {...makeAnalyticsAttribute(props)}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
           width={_width}
         >
           <BaseBox position="relative" textAlign={'left' as never}>

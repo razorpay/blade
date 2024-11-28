@@ -17,7 +17,7 @@ type ActionListBoxProps = {
 } & DataAnalyticsAttribute;
 
 const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
-  ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...props }, ref) => {
+  ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...rest }, ref) => {
     const { isInBottomSheet } = useBottomSheetContext();
 
     return (
@@ -28,7 +28,7 @@ const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
           role: actionListItemWrapperRole,
           multiSelectable: actionListItemWrapperRole === 'listbox' ? isMultiSelectable : undefined,
         })}
-        {...makeAnalyticsAttribute(props)}
+        {...makeAnalyticsAttribute(rest)}
       >
         {childrenWithId}
       </StyledListBoxWrapper>

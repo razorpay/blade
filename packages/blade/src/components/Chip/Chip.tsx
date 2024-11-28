@@ -38,7 +38,7 @@ type OnChange = ({
 }) => void;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, color, testID, ...props },
+  { isDisabled, value, children, icon: Icon, color, testID, ...rest },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -142,8 +142,8 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
     >
       <SelectorLabel

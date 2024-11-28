@@ -137,7 +137,7 @@ const Alert = ({
   actions,
   testID,
   icon,
-  ...props
+  ...rest
 }: AlertProps): ReactElement | null => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -302,8 +302,8 @@ const Alert = ({
     <BaseBox
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <StyledAlert
         color={color}

@@ -14,7 +14,7 @@ const _DrawerHeader = ({
   leading,
   trailing,
   titleSuffix,
-  ...props
+  ...rest
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef, stackingLevel, isExiting } = React.useContext(DrawerContext);
   const { drawerStack } = useDrawerStack();
@@ -43,7 +43,7 @@ const _DrawerHeader = ({
       subtitle={subtitle}
       leading={leading}
       trailing={trailing}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     />
   );
 };

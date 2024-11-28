@@ -17,7 +17,7 @@ const _AccordionItemHeader = ({
   children,
   trailing,
   titleSuffix,
-  ...props
+  ...rest
 }: Pick<
   BaseHeaderProps,
   'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
@@ -56,7 +56,7 @@ const _AccordionItemHeader = ({
             size="large"
           />
         }
-        {...makeAnalyticsAttribute(props)}
+        {...makeAnalyticsAttribute(rest)}
       >
         {children}
       </BaseHeader>

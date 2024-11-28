@@ -131,7 +131,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     size = 'medium',
     tabIndex,
     testID,
-    ...props
+    ...rest
   },
   ref,
 ) => {
@@ -243,7 +243,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               inputProps={inputProps}
               tabIndex={tabIndex}
               ref={ref}
-              {...makeAnalyticsAttribute(props)}
+              {...makeAnalyticsAttribute(rest)}
             />
             <CheckboxIcon
               size={_size}

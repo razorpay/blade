@@ -33,7 +33,7 @@ const descriptionSizeToken = {
 const _AccordionItemBody = ({
   children,
   _description,
-  ...props
+  ...rest
 }: {
   children?: React.ReactNode | StringChildrenType;
   _description?: string;
@@ -79,7 +79,7 @@ const _AccordionItemBody = ({
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.AccordionItemBody })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       {collapsibleBodyContent}
     </BaseBox>

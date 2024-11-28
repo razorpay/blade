@@ -25,7 +25,7 @@ const _ModalHeader = ({
   title,
   titleSuffix,
   trailing,
-  ...props
+  ...rest
 }: ModalHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useModalContext();
 
@@ -44,7 +44,7 @@ const _ModalHeader = ({
       backgroundColor="popup.background.subtle"
       borderRadius="max"
       zIndex={componentZIndices.modal}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <IconButton
         ref={defaultInitialFocusRef}

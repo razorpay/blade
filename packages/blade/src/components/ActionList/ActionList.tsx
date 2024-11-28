@@ -20,7 +20,7 @@ type ActionListProps = {
 } & TestID &
   DataAnalyticsAttribute;
 
-const _ActionList = ({ children, testID, ...props }: ActionListProps): React.ReactElement => {
+const _ActionList = ({ children, testID, ...rest }: ActionListProps): React.ReactElement => {
   const {
     setOptions,
     actionListItemRef,
@@ -70,7 +70,7 @@ const _ActionList = ({ children, testID, ...props }: ActionListProps): React.Rea
       sectionData={sectionData}
       isMultiSelectable={isMultiSelectable}
       ref={actionListItemRef as any}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     />
   ) : (
     <BaseBox
@@ -81,7 +81,7 @@ const _ActionList = ({ children, testID, ...props }: ActionListProps): React.Rea
         labelledBy: `${dropdownBaseId}-label`,
       })}
       {...metaAttribute({ name: MetaConstants.ActionList, testID })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <ActionListBox
         isInBottomSheet={isInBottomSheet}

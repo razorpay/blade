@@ -255,13 +255,13 @@ type CardBodyProps = {
 } & TestID &
   DataAnalyticsAttribute;
 
-const _CardBody = ({ height, children, testID, ...props }: CardBodyProps): React.ReactElement => {
+const _CardBody = ({ height, children, testID, ...rest }: CardBodyProps): React.ReactElement => {
   useVerifyInsideCard('CardBody');
 
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.CardBody, testID })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
       height={height}
     >
       {children}

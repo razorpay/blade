@@ -59,7 +59,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
     onPointerEnter,
     onTouchStart,
     onTouchEnd,
-    ...props
+    ...rest
   },
   ref,
 ) => {
@@ -134,8 +134,8 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
   return (
     <StyledAvatar
       {...metaAttribute({ name: MetaConstants.Avatar, testID })}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
       backgroundColor="surface.background.gray.intense"
       variant={variant}
       size={avatarSize}

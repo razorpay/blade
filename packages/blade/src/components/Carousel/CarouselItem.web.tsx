@@ -59,7 +59,7 @@ const _CarouselItem = ({
   shouldHaveEndSpacing,
   id,
   index,
-  ...props
+  ...rest
 }: CarouselItemProps): React.ReactElement => {
   const itemRef = React.useRef<HTMLDivElement>(null);
   const {
@@ -89,7 +89,7 @@ const _CarouselItem = ({
       shouldAddStartEndSpacing={shouldAddStartEndSpacing}
       shouldHaveStartSpacing={shouldHaveStartSpacing}
       shouldHaveEndSpacing={shouldHaveEndSpacing}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </StyledCarouselItem>

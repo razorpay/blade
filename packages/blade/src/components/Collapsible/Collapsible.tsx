@@ -74,7 +74,7 @@ const Collapsible = ({
   testID,
   _shouldApplyWidthRestrictions = true,
   _dangerouslyDisableValidations = false,
-  ...props
+  ...rest
 }: CollapsibleProps): ReactElement => {
   const [isBodyExpanded, setIsBodyExpanded] = useState(isExpanded ?? defaultIsExpanded);
   const collapsibleBodyId = useId(MetaConstants.CollapsibleBody);
@@ -133,8 +133,8 @@ const Collapsible = ({
     <CollapsibleContext.Provider value={contextValue}>
       <BaseBox
         {...metaAttribute({ name: MetaConstants.Collapsible, testID })}
-        {...getStyledProps(props)}
-        {...makeAnalyticsAttribute(props)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <BaseBox
           display="flex"

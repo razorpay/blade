@@ -836,7 +836,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     valueComponentType = 'text',
     isTableInputCell = false,
     showHintsAsTooltip = false,
-    ...props
+    ...rest
   },
   ref,
 ) => {
@@ -1064,7 +1064,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
-                {...makeAnalyticsAttribute(props)}
+                {...makeAnalyticsAttribute(rest)}
               />
             </BaseInputTagSlot>
             <BaseInputVisuals

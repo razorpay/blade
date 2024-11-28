@@ -18,7 +18,6 @@ import type { BladeElementRef } from '~utils/types';
 import { CloseIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
 import { useControllableState } from '~utils/useControllable';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNumberInputProps> = (
   {
@@ -54,7 +53,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     autoCompleteSuggestionType,
     allowedCountries,
     placeholder,
-    ...props
+    ...rest
   },
   ref,
 ): React.ReactElement => {
@@ -214,8 +213,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         autoCapitalize: 'none',
       })}
       type="telephone"
-      {...props}
-      {...makeAnalyticsAttribute(props)}
+      {...rest}
     />
   );
 };

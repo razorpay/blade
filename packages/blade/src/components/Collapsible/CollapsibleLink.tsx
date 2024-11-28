@@ -25,7 +25,7 @@ const _CollapsibleLink = ({
   isDisabled,
   testID,
   accessibilityLabel,
-  ...props
+  ...rest
 }: CollapsibleLinkProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
@@ -49,8 +49,8 @@ const _CollapsibleLink = ({
         controls: collapsibleBodyId,
         expanded: isExpanded,
       }}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </BaseLink>

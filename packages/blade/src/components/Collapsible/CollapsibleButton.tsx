@@ -27,7 +27,7 @@ const _CollapsibleButton: React.ForwardRefRenderFunction<
   BladeElementRef,
   CollapsibleButtonProps
 > = (
-  { children, variant, size, icon, iconPosition, isDisabled, testID, accessibilityLabel, ...props },
+  { children, variant, size, icon, iconPosition, isDisabled, testID, accessibilityLabel, ...rest },
   ref,
 ): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
@@ -54,7 +54,7 @@ const _CollapsibleButton: React.ForwardRefRenderFunction<
         controls: collapsibleBodyId,
         expanded: isExpanded,
       }}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </BaseButton>

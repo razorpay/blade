@@ -120,7 +120,7 @@ const _ActionListSection = ({
   testID,
   _hideDivider,
   _sectionChildValues,
-  ...props
+  ...rest
 }: ActionListSectionProps): React.ReactElement => {
   const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
   const hasAutoComplete =
@@ -151,7 +151,7 @@ const _ActionListSection = ({
         label: title,
       })}
       {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
-      {...makeAnalyticsAttribute(props as Record<string, unknown>)}
+      {...makeAnalyticsAttribute(rest as Record<string, unknown>)}
     >
       {/* We're announcing title as group label so we can hide this */}
       {isSectionVisible ? (

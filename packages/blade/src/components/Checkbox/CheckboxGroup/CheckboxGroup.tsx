@@ -109,7 +109,7 @@ const CheckboxGroup = ({
   value,
   size = 'medium',
   testID,
-  ...props
+  ...rest
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
     defaultValue,
@@ -134,13 +134,13 @@ const CheckboxGroup = ({
 
   return (
     <CheckboxGroupProvider value={contextValue}>
-      <BaseBox {...getStyledProps(props)}>
+      <BaseBox {...getStyledProps(rest)}>
         <SelectorGroupField
           position={labelPosition}
           labelledBy={ids.labelId}
           componentName="checkbox-group"
           testID={testID}
-          {...makeAnalyticsAttribute(props)}
+          {...makeAnalyticsAttribute(rest)}
         >
           {label ? (
             <FormLabel

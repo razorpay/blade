@@ -58,7 +58,7 @@ const _Indicator = ({
   color = 'neutral',
   emphasis = 'subtle',
   testID,
-  ...props
+  ...rest
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
@@ -87,8 +87,8 @@ const _Indicator = ({
       display={(isWeb ? 'inline-flex' : 'flex') as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox display="flex" flexDirection="row" alignItems="center">
         <Svg width={String(svgSize)} height={String(svgSize)} viewBox="0 0 10 10" fill="none">

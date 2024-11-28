@@ -268,7 +268,7 @@ const _Amount = ({
   currencyIndicator = 'currency-symbol',
   currency = 'INR',
   testID,
-  ...props
+  ...rest
 }: AmountProps): ReactElement => {
   if (__DEV__) {
     if (typeof value !== 'number') {
@@ -331,8 +331,8 @@ const _Amount = ({
       display={(isReactNative ? 'flex' : 'inline-flex') as never}
       flexDirection="row"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
-      {...getStyledProps(props)}
-      {...makeAnalyticsAttribute(props)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox
         display={(isReactNative ? 'flex' : 'inline-flex') as never}

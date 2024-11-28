@@ -246,7 +246,7 @@ const Carousel = ({
   height,
   defaultActiveSlide,
   activeSlide: activeSlideProp,
-  ...props
+  ...rest
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeIndicator, setActiveIndicator] = React.useState(0);
@@ -515,8 +515,8 @@ const Carousel = ({
         alignItems="center"
         flexDirection="column"
         height={height}
-        {...getStyledProps(props)}
-        {...makeAnalyticsAttribute(props)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <BaseBox
           width="100%"

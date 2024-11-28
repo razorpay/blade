@@ -59,7 +59,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
     hoverTokens,
     tabIndex,
     accessibilityLabel,
-    ...props
+    ...rest
   },
   ref,
 ) => {
@@ -78,7 +78,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
       hoverTokens={hoverTokens}
       {...inputProps}
       {...makeAccessible({ label: accessibilityLabel })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
       ref={mergedRef}
     />
   );

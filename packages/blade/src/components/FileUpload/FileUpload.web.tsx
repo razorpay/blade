@@ -54,7 +54,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     maxCount,
     maxSize,
     size = 'medium',
-    ...props
+    ...rest
   },
   ref,
 ): React.ReactElement => {
@@ -269,7 +269,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     ...accessibilityProps,
                   }}
                   ref={mergedRef}
-                  {...makeAnalyticsAttribute(props)}
+                  {...makeAnalyticsAttribute(rest)}
                 />
 
                 <Box

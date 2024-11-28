@@ -33,16 +33,16 @@ const Breadcrumb = ({
   showLastSeparator = false,
   accessibilityLabel = 'Breadcrumb',
   children,
-  ...props
+  ...rest
 }: BreadcrumbProps): React.ReactElement => {
   const contextValue = React.useMemo(() => ({ size, color }), [size, color]);
 
   return (
     <BaseBox
       as="nav"
-      {...getStyledProps(props)}
+      {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.Breadcrumb })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BreadcrumbContext.Provider value={contextValue}>
         <BaseBox

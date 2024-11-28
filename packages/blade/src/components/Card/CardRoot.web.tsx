@@ -57,7 +57,7 @@ const CardRoot = ({
   as,
   accessibilityLabel,
   children,
-  ...props
+  ...rest
 }: CardRootProps): React.ReactElement => {
   const isMobile = useIsMobile();
   const [isPressed, setIsPressed] = React.useState(false);
@@ -65,7 +65,7 @@ const CardRoot = ({
   return (
     <StyledCardRoot
       as={as}
-      {...props}
+      {...rest}
       isMobile={isMobile}
       isPressed={props.shouldScaleOnHover ? isPressed : false}
       onTouchStart={() => setIsPressed(true)}

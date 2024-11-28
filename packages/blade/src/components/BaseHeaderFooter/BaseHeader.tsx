@@ -246,7 +246,7 @@ const _BaseHeader = ({
   isDisabled,
   children,
   trailingInteractionElement,
-  ...props
+  ...rest
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
@@ -267,7 +267,7 @@ const _BaseHeader = ({
   return (
     <BaseBox
       {...metaAttribute({ name: metaComponentName, testID })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox
         marginY={marginY ?? { base: 'spacing.5', m: 'spacing.6' }}

@@ -72,7 +72,7 @@ const AccordionItem = ({
   isDisabled,
   _index,
   testID,
-  ...props
+  ...rest
 }: AccordionItemProps): ReactElement => {
   const {
     expandedIndex,
@@ -122,7 +122,7 @@ const AccordionItem = ({
     >
       <BaseBox
         {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}
-        {...makeAnalyticsAttribute(props)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <Collapsible
           isExpanded={isExpanded}

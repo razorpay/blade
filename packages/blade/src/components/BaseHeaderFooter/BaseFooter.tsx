@@ -21,14 +21,14 @@ const _BaseFooter = ({
   metaComponentName,
   padding,
   testID,
-  ...props
+  ...rest
 }: BaseFooterProps): React.ReactElement => {
   return (
     <>
       {showDivider && <Divider />}
       <BaseBox
         {...metaAttribute({ name: metaComponentName, testID })}
-        {...makeAnalyticsAttribute(props)}
+        {...makeAnalyticsAttribute(rest)}
         padding={padding ?? { base: 'spacing.5', m: 'spacing.6' }}
       >
         {children}

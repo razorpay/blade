@@ -122,7 +122,7 @@ const ProgressBar = ({
   min = 0,
   max = 100,
   testID,
-  ...props
+  ...rest
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
   const progressType = !type && (variant === 'meter' || variant === 'progress') ? variant : type;
@@ -200,9 +200,9 @@ const ProgressBar = ({
 
   return (
     <BaseBox
-      {...getStyledProps(props)}
+      {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
-      {...makeAnalyticsAttribute(props)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox display="flex" flexDirection="column" width="100%">
         {!isCircular ? (

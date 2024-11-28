@@ -75,7 +75,7 @@ const Modal = ({
   size = 'small',
   accessibilityLabel,
   zIndex = componentZIndices.modal,
-  ...props
+  ...rest
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {
@@ -140,7 +140,7 @@ const Modal = ({
               zIndex={zIndex}
               position="fixed"
               testID="modal-wrapper"
-              {...makeAnalyticsAttribute(props)}
+              {...makeAnalyticsAttribute(rest)}
             >
               <ModalBackdrop />
               <ModalContent

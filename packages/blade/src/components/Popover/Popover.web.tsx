@@ -45,7 +45,7 @@ const Popover = ({
   isOpen,
   defaultIsOpen,
   initialFocusRef,
-  ...props
+  ...rest
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
@@ -153,7 +153,7 @@ const Popover = ({
               {...getFloatingProps()}
               {...metaAttribute({ name: MetaConstants.Popover })}
               {...makeAccessible({ labelledBy: titleId })}
-              {...makeAnalyticsAttribute(props)}
+              {...makeAnalyticsAttribute(rest)}
             >
               <PopoverContent
                 title={title}
