@@ -311,7 +311,7 @@ describe('<Popover />', () => {
       await act(async () => {
         jest.advanceTimersByTime(2000);
       });
-      expect(getByRole('dialog')).toMatchSnapshot();
+      expect(getByRole('dialog')).toHaveAttribute('data-analytics-popover', 'demo');
     });
   });
 });
