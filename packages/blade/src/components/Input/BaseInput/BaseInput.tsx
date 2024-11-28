@@ -929,7 +929,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
 
   const isTextArea = as === 'textarea';
   return (
-    <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(props)}>
+    <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(rest)}>
       <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
