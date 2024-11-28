@@ -18,7 +18,9 @@ export const Scale = ({
   const { theme } = useTheme();
 
   const fadeVariants: MotionVariantsType = {
-    initial: {},
+    initial: {
+      scale: 1,
+    },
     animate: {
       scale:
         isHighlighted || !isControlledHighlighted
@@ -31,7 +33,9 @@ export const Scale = ({
         easings: cssBezierToMotionFn(castWebType(theme.motion.easing.standard)),
       },
     },
-    exit: {},
+    exit: {
+      scale: 1,
+    },
   };
 
   return (

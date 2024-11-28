@@ -148,7 +148,8 @@ const StoryCanvas = styled.div<{ context }>(
         context.kind.includes('/Carousel') ||
         context.kind.includes('/TopNav') ||
         context.kind.includes('/Examples') ||
-        context.kind.includes('/SideNav')
+        context.kind.includes('/SideNav') ||
+        context.kind.includes('/Recipes')
           ? '0rem'
           : '2rem'
       };

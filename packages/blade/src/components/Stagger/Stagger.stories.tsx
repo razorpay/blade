@@ -74,7 +74,7 @@ const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
       <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
         Toggle Stagger
       </Button>
-      <Stagger {...args} isVisible={isVisible}>
+      <Stagger {...args} isVisible={args.isVisible ?? isVisible}>
         {args.children}
       </Stagger>
     </Box>
@@ -208,8 +208,8 @@ const OnboardingRoute = ({
         />
       </CardHeader>
       <CardBody>
-        <Stagger>
-          <ChipGroup label="Account Information" selectionType="single">
+        <Stagger type="in">
+          <ChipGroup label="Account Information" selectionType="multiple">
             {[
               'Business Type: Freelance',
               'Account Status: Activated',
