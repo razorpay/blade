@@ -5,7 +5,7 @@ import type React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Platform } from '~utils';
-import { DataAnalyticsAttribute } from '~utils/types';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type PopoverProps = {
   /**
