@@ -238,7 +238,7 @@ const meta: Meta<PhoneNumberInputProps> = {
             {`
               import { PhoneNumberInput } from '@razorpay/blade/components';
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   <PhoneNumberInput 
                     label="Enter phone number" 

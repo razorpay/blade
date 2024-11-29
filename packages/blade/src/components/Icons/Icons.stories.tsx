@@ -24,7 +24,7 @@ const Page = (): ReactElement => {
         {`
         import { Button, ArrowRightIcon } from '@razorpay/blade/components';
 
-        function App(): React.ReactElement {
+        function App() {
           // Icon component is meant to be used inside \`icon\` prop 
           // along with other components like \`Button\`, \`Badge\`, etc
           return (

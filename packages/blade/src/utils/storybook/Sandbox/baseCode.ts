@@ -63,7 +63,7 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
   };
 };
 
-const getViteReactTSDependencies = (): Dependencies => {
+export const getViteReactTSDependencies = (): Dependencies => {
   return {
     dependencies: {
       react: '^18',
@@ -232,6 +232,7 @@ export const getIndexTSX = ({
   colorScheme: any;
   showConsole?: boolean;
 }): string => dedent`
+import React from 'react';
 import { createRoot } from "react-dom/client";
 import { createGlobalStyle } from "styled-components";
 

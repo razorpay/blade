@@ -42,7 +42,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
@@ -139,7 +139,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
@@ -319,7 +319,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
@@ -444,7 +444,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(undefined);
   return (
     <Box
@@ -575,7 +575,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   const [selectedItems, setSelectedItems] = useState<Item[]>([]);
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
@@ -721,7 +721,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
   return (
@@ -856,7 +856,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   const totalAmount = nodes.reduce((acc, curr) => acc + curr.amount, 0);
 
   return (
@@ -998,7 +998,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
@@ -1122,7 +1122,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
 
@@ -1274,7 +1274,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
 
@@ -1415,7 +1415,7 @@ const data: TableData<Item> = {
 
 type Emphasis = 'subtle' | 'intense' | 'moderate'
 
-function App(): React.ReactElement {
+function App() {
   const [emphasis, setEmphasis] = useState<Emphasis>('subtle');
   return (
     <Box
@@ -1538,7 +1538,7 @@ const nodes: Item[] = [
   })),
 ];
 
-function App(): React.ReactElement {
+function App() {
   const { platform } = useTheme();
   const [showData, setShowData] = useState(false);
   useEffect(() => {
@@ -1704,7 +1704,7 @@ const data: TableProps<Item>['data'] = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   const { platform } = useTheme();
   const [currentPage, setCurrentPage] = useState(0);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -1859,7 +1859,7 @@ const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
   return result as APIResult;
 };
 
-function App(): React.ReactElement {
+function App() {
   const [apiData, setApiData] = useState<{ nodes: APIResult['results'] }>({
     nodes: [],
   });
@@ -1990,7 +1990,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-function App(): React.ReactElement {
+function App() {
   return (
     <Box
       backgroundColor="surface.background.gray.intense"

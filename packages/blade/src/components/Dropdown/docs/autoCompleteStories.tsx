@@ -13,7 +13,7 @@ export const getSimpleAutoComplete = (
     ActionListItem,
   } from '@razorpay/blade/components';
 
-  function App(): React.ReactElement {
+  function App() {
     return (
       <Dropdown 
         selectionType="${selectionType}"
@@ -265,7 +265,7 @@ export const tagsOutside = `
     Tag,
   } from '@razorpay/blade/components';
 
-  function App(): React.ReactElement {
+  function App() {
     const [selections, setSelections] = React.useState([]);
 
     return (
@@ -354,7 +354,7 @@ export const responsiveBottomSheet = `
     )
   }
 
-  function App(): React.ReactElement {
+  function App() {
     return (
       <Box>
         <Text textAlign="center" marginBottom="spacing.8">Change the <Code>isMobile</Code> flag in code and refresh the sandbox preview</Text>
@@ -592,7 +592,7 @@ export const withErrorState = `
 
   const cities = ['Mumbai', 'Pune', 'Bangalore', 'Mysore'];
 
-  function App(): React.ReactElement {
+  function App() {
     const [isError, setIsError] = React.useState(false);
     const [currentInputValue, setCurrentInputValue] = React.useState('');
     const [isDismissed, setIsDismissed] = React.useState(false);
@@ -655,7 +655,7 @@ import {
   Box,
 } from '@razorpay/blade/components';
 
-function App(): React.ReactElement {
+function App() {
   return (
     <Box>
       <Heading size="medium" marginBottom="spacing.3">

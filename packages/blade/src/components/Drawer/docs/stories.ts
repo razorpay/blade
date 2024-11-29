@@ -435,7 +435,7 @@ const DrawerWithTableStory = `import React, { useState } from 'react';
     );
   };
 
-  function App(): React.ReactElement {
+  function App() {
     const [selectedItem, setSelectedItem] = useState<Item | undefined>(undefined);
     const [showDrawer, setShowDrawer] = useState(false);
     const { theme } = useTheme();

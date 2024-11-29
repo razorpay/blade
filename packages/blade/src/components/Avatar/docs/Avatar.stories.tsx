@@ -25,7 +25,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Avatar } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Avatar name="Nitin Kumar" src="https://avatars.githubusercontent.com/u/46647141?v=4" />
           )

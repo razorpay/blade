@@ -6,14 +6,7 @@ import { DocsContext } from '@storybook/addon-docs';
 
 import type { Project } from '@stackblitz/sdk';
 import styled from 'styled-components';
-import {
-  getIndexTSX,
-  indexHTML,
-  logger,
-  tsConfigJSON,
-  viteConfigTS,
-  vitePackageJSON,
-} from '../baseCode';
+import { getIndexTSX, getViteReactTSDependencies, indexHTML, logger } from '../baseCode';
 import type { SandboxStackBlitzProps } from '../types';
 import BaseBox from '~components/Box/BaseBox';
 
@@ -45,7 +38,7 @@ const useStackblitzSetup = ({
     return {
       title: 'Blade Example by Razorpay',
       description: "Example of Razorpay's Design System, Blade",
-      template: 'node',
+      template: 'javascript',
       files: {
         '.vscode/settings.json': JSON.stringify(
           {
@@ -60,20 +53,18 @@ const useStackblitzSetup = ({
           4,
         ),
         'index.html': indexHTML,
-        'index.tsx': getIndexTSX({
+        'index.js': getIndexTSX({
           themeTokenName: 'bladeTheme',
           colorScheme,
           brandColor,
           showConsole,
         }),
-        'App.tsx': code ? dedent(code) : '',
-        'Logger.tsx': logger,
-        'vite.config.ts': viteConfigTS,
-        'tsconfig.json': tsConfigJSON,
-        'package.json': vitePackageJSON,
+        'App.js': code ? `import React from 'react';\n${dedent(code)}` : '',
+        'Logger.js': logger,
         '.npmrc': `auto-install-peers = false`,
         ...files,
       },
+      dependencies: getViteReactTSDependencies().dependencies,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorScheme, brandColor]);
@@ -117,7 +108,7 @@ export const Sandbox = ({
   editorHeight = 500,
   showConsole = false,
   files,
-  openFile = 'App.tsx',
+  openFile = 'App.js',
   padding = ['spacing.5', 'spacing.0', 'spacing.8'],
   hideNavigation = true,
 }: SandboxStackBlitzProps): JSX.Element => {
