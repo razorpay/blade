@@ -188,7 +188,7 @@ ShowOverlayOnImageHover.args = {
           height="100%"
           alignItems="center"
           justifyContent="center"
-          backgroundColor="surface.background.gray.subtle"
+          backgroundColor="overlay.background.subtle"
         >
           <Button
             icon={ExternalLinkIcon}

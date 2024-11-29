@@ -15,6 +15,8 @@ import { Chip, ChipGroup } from '~components/Chip';
 import { StepperRouterExample } from '~components/BaseMotion/docs/StepperRouterExample';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 import { StepItemProps } from '~components/StepGroup';
+import { Alert } from '~components/Alert';
+import { Link } from '~components/Link';
 
 const Page = (): React.ReactElement => {
   return (
@@ -23,6 +25,19 @@ const Page = (): React.ReactElement => {
       componentDescription="The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the UI visually engaging."
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85897&t=CvaYT53LNc4OYVKa-1&scaling=min-zoom&page-id=21689%3A381614&mode=design"
     >
+      <Alert
+        marginY="spacing.5"
+        title="Followed the Motion React Installation?"
+        description={
+          <Text>
+            Make sure you've followed the installation and setup of Motion React from our{' '}
+            <Link href="/?path=/docs/guides-installation--docs">Installation Doc</Link> (Step 3)
+          </Text>
+        }
+        isDismissible={false}
+        isFullWidth
+      />
+
       <Title>Usage</Title>
       <Sandbox>
         {`
