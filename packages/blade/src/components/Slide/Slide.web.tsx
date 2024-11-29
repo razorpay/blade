@@ -36,68 +36,63 @@ export const Slide = ({
 }: SlideProps) => {
   const { theme } = useTheme();
 
-  const {
-    enterTransform,
-    exitTransform,
-    isEnterDirectionHorizontal,
-    isExitDirectionHorizontal,
-  } = React.useMemo(() => {
-    const enterDirection = typeof direction === 'object' ? direction.enter : direction;
-    const exitDirection = typeof direction === 'object' ? direction.exit : direction;
+  const enterDirection = typeof direction === 'object' ? direction.enter : direction;
+  const exitDirection = typeof direction === 'object' ? direction.exit : direction;
 
-    const isEnterDirectionHorizontal = ['left', 'right'].includes(enterDirection);
-    const isExitDirectionHorizontal = ['left', 'right'].includes(exitDirection);
+  const isEnterDirectionHorizontal = ['left', 'right'].includes(enterDirection);
+  const isExitDirectionHorizontal = ['left', 'right'].includes(exitDirection);
 
-    const defaultOffset: SlideProps['fromOffset'] = isEnterDirectionHorizontal ? '100vw' : '100vh';
+  const defaultOffset: SlideProps['fromOffset'] = isEnterDirectionHorizontal ? '100vw' : '100vh';
 
-    const enterTransform = getFromTransform(enterDirection, fromOffset ?? defaultOffset);
-    const exitTransform = getFromTransform(exitDirection, fromOffset ?? defaultOffset);
+  const enterTransform = getFromTransform(enterDirection, fromOffset ?? defaultOffset);
+  const exitTransform = getFromTransform(exitDirection, fromOffset ?? defaultOffset);
 
-    return {
-      enterTransform,
-      exitTransform,
+  const moveVariants: MotionVariantsType = React.useMemo(
+    () => ({
+      initial: {
+        // We keep element in view with opacity 0 initially so that it works with `inView` trigger as expected
+        opacity: 0,
+      },
+      animate: {
+        transform: [enterTransform, 'translateY(0%)'],
+        opacity: [1, 1],
+        transition: {
+          duration: makeSecondsDuration(
+            isEnterDirectionHorizontal
+              ? theme.motion.duration.xmoderate
+              : theme.motion.duration['2xgentle'],
+          ),
+          ease: cssBezierToMotionFn(
+            isEnterDirectionHorizontal
+              ? castWebType(theme.motion.easing.entrance)
+              : castWebType(theme.motion.easing.emphasized),
+          ),
+        },
+      },
+      exit: {
+        transform: exitTransform,
+        transition: {
+          duration: makeSecondsDuration(
+            isExitDirectionHorizontal
+              ? theme.motion.duration.moderate
+              : theme.motion.duration.xgentle,
+          ),
+          ease: cssBezierToMotionFn(
+            isExitDirectionHorizontal
+              ? castWebType(theme.motion.easing.exit)
+              : castWebType(theme.motion.easing.emphasized),
+          ),
+        },
+      },
+    }),
+    [
+      enterDirection,
+      exitDirection,
       isEnterDirectionHorizontal,
       isExitDirectionHorizontal,
-    };
-  }, [direction, fromOffset]);
-
-  const moveVariants: MotionVariantsType = {
-    initial: {
-      // We keep element in view with opacity 0 initially so that it works with `inView` trigger as expected
-      opacity: 0,
-    },
-    animate: {
-      transform: [enterTransform, 'translateY(0%)'],
-      opacity: [1, 1],
-      transition: {
-        duration: makeSecondsDuration(
-          isEnterDirectionHorizontal
-            ? theme.motion.duration.xmoderate
-            : theme.motion.duration['2xgentle'],
-        ),
-        ease: cssBezierToMotionFn(
-          isEnterDirectionHorizontal
-            ? castWebType(theme.motion.easing.entrance)
-            : castWebType(theme.motion.easing.emphasized),
-        ),
-      },
-    },
-    exit: {
-      transform: exitTransform,
-      transition: {
-        duration: makeSecondsDuration(
-          isExitDirectionHorizontal
-            ? theme.motion.duration.moderate
-            : theme.motion.duration.xgentle,
-        ),
-        ease: cssBezierToMotionFn(
-          isExitDirectionHorizontal
-            ? castWebType(theme.motion.easing.exit)
-            : castWebType(theme.motion.easing.emphasized),
-        ),
-      },
-    },
-  };
+      theme.name,
+    ],
+  );
 
   return (
     <BaseMotionEntryExit

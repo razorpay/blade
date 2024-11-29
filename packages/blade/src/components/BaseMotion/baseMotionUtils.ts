@@ -16,14 +16,12 @@ const motionTriggersArrayToGesturePropsMap: Record<
 type AnimationVariablesType = Partial<
   Record<Exclude<AnimationType, 'animate'>, keyof MotionVariantsType>
 > & {
-  animate?: BaseMotionBoxProps['conditionalAnimate'] | BaseMotionBoxProps['animate'];
+  animate?: BaseMotionBoxProps['animateVisibility'] | BaseMotionBoxProps['animate'];
 };
 
 const makeAnimationVariables = (
   motionTriggers: MotionTriggersType[],
-  {
-    animate: animateOverride,
-  }: { animate: BaseMotionBoxProps['conditionalAnimate'] | BaseMotionBoxProps['animate'] },
+  { animateVisibility }: { animateVisibility: BaseMotionBoxProps['animateVisibility'] },
 ) => {
   const interactionVariables = motionTriggers.reduce<AnimationVariablesType>(
     (prevProps, currentTrigger) => {
@@ -31,8 +29,9 @@ const makeAnimationVariables = (
         return prevProps;
       }
 
-      if (currentTrigger === 'mount' && animateOverride) {
-        prevProps.animate = animateOverride;
+      // Sometimes animations are conditional. In those cases we use those conditional values in animate
+      if (currentTrigger === 'mount' && animateVisibility) {
+        prevProps.animate = animateVisibility;
         return prevProps;
       }
 

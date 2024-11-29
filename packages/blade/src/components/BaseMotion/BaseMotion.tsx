@@ -19,8 +19,7 @@ const _BaseMotionBox = (
     motionVariants: userMotionVariants,
     type = 'inout',
     motionTriggers = ['mount'],
-    conditionalAnimate,
-    animate,
+    animateVisibility,
     ...rest
   }: BaseMotionBoxProps,
   ref: React.Ref<BladeElementRef>,
@@ -34,7 +33,7 @@ const _BaseMotionBox = (
   const animationVariables = shouldSkipAnimationVariables
     ? {}
     : makeAnimationVariables(motionTriggers, {
-        animate: animate ?? conditionalAnimate,
+        animateVisibility,
       });
 
   const motionVariants = useMotionVariants(userMotionVariants, type);
@@ -118,7 +117,7 @@ const BaseMotionEntryExit = ({
           type={type}
           {...(shouldUnmountWhenHidden
             ? {}
-            : { conditionalAnimate: isVisible ? 'animate' : 'exit' })}
+            : { animateVisibility: isVisible ? 'animate' : 'exit' })}
           // We pass the props of children and not pass the children itself since the `as` prop already renders the children and we don't want to re-render it inside
           {...children.props}
           _motionMeta={motionMeta}
