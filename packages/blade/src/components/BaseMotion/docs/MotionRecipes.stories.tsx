@@ -3,7 +3,7 @@ import type { StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 import { Code, Text } from '~components/Typography';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
-import { DashboardWithRoutingExample } from './MotionDashboardComponents';
+import { DashboardWithRoutingExample } from './MotionDashboardComponents.web';
 import { Move } from '~components/Move';
 
 export default {
