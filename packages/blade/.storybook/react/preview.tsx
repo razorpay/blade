@@ -74,6 +74,17 @@ export const parameters = {
         ],
         'Components',
         ['*', 'Interaction Tests', 'KitchenSink'],
+        'Motion',
+        [
+          'Introduction to Motion',
+          'Fade',
+          'Move',
+          'Slide',
+          '*',
+          'AnimateInteractions',
+          'Stagger',
+          'Recipes',
+        ],
         'Recipes',
       ],
     },
@@ -96,13 +107,15 @@ export const parameters = {
       }
       return (
         <DocsContainer context={context}>
-          <BladeProvider
-            key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
-            themeTokens={getThemeTokens()}
-            colorScheme={context.store.globals.globals.colorScheme}
-          >
-            {children}
-          </BladeProvider>
+          <LazyMotion strict features={domMax}>
+            <BladeProvider
+              key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.store.globals.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </LazyMotion>
         </DocsContainer>
       );
     },

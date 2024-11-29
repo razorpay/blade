@@ -1,0 +1,143 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import {
+  Alert,
+  StepGroup,
+  StepItem,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemLink,
+  Text,
+  InfoIcon,
+  Tooltip,
+  TooltipInteractiveWrapper,
+  Accordion,
+  AccordionItem,
+  AccordionItemHeader,
+  AccordionItemBody,
+  Heading,
+  Tabs,
+  TabList,
+  TabItem,
+  TabPanel,
+  Box,
+  Link,
+  Move,
+  Display,
+  Divider,
+} from '../../index';
+import MotionInstallation from './MotionInstallation.mdx';
+
+import { HeadingTitle } from './MotionIntroUtils';
+
+<Meta title="Motion/Introduction to Motion" />
+
+<Move>
+  <Box>
+    <Display>Introduction to Motion Presets at Razorpay</Display>
+
+    [Motion Presets RFC](https://github.com/razorpay/blade/blob/master/rfcs/2024-08-21-motion-presets.md)
+
+    We offer several easy-to-use motion presets to simplify integrating motion in your projects. This doc is one-stop documentation for everything related to motion presets. Checkout stories of individual motion components from storybook's sidebar to learn in details about each preset.
+
+<Box marginTop="spacing.8" marginBottom="spacing.5">
+  <Heading size="2xlarge">Motion React Installation and Setup 📚</Heading>
+</Box>
+
+<Alert
+  title="Note"
+  description="If you've followed Step 3 from our Installation Guide, you can skip this-"
+  isFullWidth
+  isDismissible={false}
+  marginBottom="spacing.5"
+/>
+
+<Accordion maxWidth="100%" variant="filled" marginBottom="spacing.8">
+  <AccordionItem>
+    <AccordionItemHeader title="Setting Up Motion React" />
+    <AccordionItemBody>
+      <MotionInstallation />
+    </AccordionItemBody>
+  </AccordionItem>
+</Accordion>
+
+<Box marginTop="spacing.11" marginBottom="spacing.5">
+  <Heading size="2xlarge">Motion Preset Components ✨</Heading>
+</Box>
+
+<Box marginTop="spacing.8" marginBottom="spacing.5">
+  <Heading size="xlarge">Enter / Exit Presets</Heading>
+</Box>
+
+<Heading size="large">1. Fade</Heading>
+
+<table style={{ width: '100%' }}>
+  <tr>
+    <th>Rough Code</th>
+    <th>Preview</th>
+  </tr>
+  <tr>
+    <td>
+      ```jsx
+      import { 
+        Fade,
+        Card, 
+        CardBody, 
+        Text 
+      } from '@razorpay/blade/components';
+
+      <Fade isVisible={isVisible}>
+        <Card>
+          <CardBody>
+            <Text>This card fades on mount</Text>
+          </CardBody>
+        </Card>
+      </Fade>;
+      ```
+    </td>
+    <td>
+      <Story id="motion-fade--default" />
+    </td>
+
+  </tr>
+</table>
+
+<p align="right">[View Fade Documentation](/?path=/docs/motion-fade--docs#default)</p>
+
+<Heading size="large">2. Move</Heading>
+
+<table style={{ width: '100%' }}>
+  <tr>
+    <th>Rough Code</th>
+    <th>Preview</th>
+  </tr>
+  <tr>
+    <td>
+      ```jsx
+      import { 
+        Move,
+        Card, 
+        CardBody, 
+        Text 
+      } from '@razorpay/blade/components';
+
+      <Move isVisible={isVisible}>
+        <Card>
+          <CardBody>
+            <Text>This card move on mount</Text>
+          </CardBody>
+        </Card>
+      </Move>;
+      ```
+    </td>
+    <td>
+      <Story id="motion-move--default" />
+    </td>
+
+  </tr>
+</table>
+
+<p align="right">[View Move Documentation](/?path=/docs/motion-move--docs#default)</p>
+
+  </Box>
+</Move>
