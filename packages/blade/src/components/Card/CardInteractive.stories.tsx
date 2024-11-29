@@ -70,7 +70,7 @@ const Page = (): React.ReactElement => {
           );
         };
 
-        const App = (): React.ReactElement => {
+        const App = () => {
           const [selected, setSelected] = React.useState('free');
 
           return (

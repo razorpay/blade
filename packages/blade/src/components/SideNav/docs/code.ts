@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 
 export const sideNavWithReactRouter = {
-  'App.tsx': dedent`import React from 'react';
+  'App.js': dedent`import React from 'react';
   import { BrowserRouter } from 'react-router-dom';
   import SideNavExample from './SideNavExample';
   
@@ -15,7 +15,7 @@ export const sideNavWithReactRouter = {
 
   export default App;
   `,
-  'SideNavExample.tsx': dedent`import React from 'react';
+  'SideNavExample.js': dedent`import React from 'react';
   import {
     matchPath,
     useLocation,
@@ -41,11 +41,9 @@ export const sideNavWithReactRouter = {
     UserIcon,
     MenuIcon,
   } from '@razorpay/blade/components';
-  import type { SideNavLinkProps } from '@razorpay/blade/components';
   import { navItemsJSON } from './navItemsJSON';
-  import type {  NavItemsJSONType, ItemsType } from './navItemsJSON';
 
-  const Page = ({ match }: { match: any }): React.ReactElement => (
+  const Page = ({ match }) => (
     <Box padding={{ base: 'spacing.2', m: 'spacing.6' }}>
       <pre>
         <code>{JSON.stringify(match, null, 4)}</code>
@@ -57,9 +55,9 @@ export const sideNavWithReactRouter = {
    * Returns all hrefs in child tree for given item
    */ 
   const getAllChildHrefs = (
-    items: (ItemsType & { items?: ItemsType[] })[] | undefined
-  ): string[] => {
-    const hrefs: string[] = [];
+    items
+  ) => {
+    const hrefs = [];
 
     if (!items) {
       return [];
@@ -80,8 +78,8 @@ export const sideNavWithReactRouter = {
   /**
    * Loops over JSON to return all routes including child routes 
    */ 
-  const getAllRoutesFromJSON = (): string[] => {
-    let allHrefs: string[] = [];
+  const getAllRoutesFromJSON = () => {
+    let allHrefs = [];
 
     navItemsJSON.forEach((section) => {
       if (section.items) {
@@ -96,9 +94,9 @@ export const sideNavWithReactRouter = {
    * Returns if the given href or one of the items from activeOnLinks are active
    */ 
   const isItemActive = (
-    location: { pathname: string },
-    { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] }
-  ): boolean => {
+    location,
+    { href, activeOnLinks }
+  ) => {
     const isCurrentPathActive = Boolean(matchPath(location.pathname, href ?? ''));
 
     const isSubItemActive = Boolean(
@@ -111,11 +109,7 @@ export const sideNavWithReactRouter = {
   /**
    * React Router v6 Wrapper around Blade's SideNavLink that passes active state of item based on react router state
    */ 
-  const NavLink = (
-    props: Omit<SideNavLinkProps, 'as'> & {
-      activeOnLinks?: string[];
-    }
-  ): React.ReactElement => {
+  const NavLink = (props) => {
     const location = useLocation();
 
     return (
@@ -138,7 +132,7 @@ export const sideNavWithReactRouter = {
     /**
      * Keeps the section expanded on load if one if the items are active
      */ 
-    const getDefaultSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
+    const getDefaultSectionExpanded = (items) => {
       const activeItem = items.find((l1Item) =>
         isItemActive(location, {
           href: l1Item.href,
@@ -288,7 +282,8 @@ export const sideNavWithReactRouter = {
 
   export default SideNavExample;
   `,
-  'navItemsJSON.tsx': dedent`import {
+  'navItemsJSON.js': dedent`import React from 'react';
+  import {
     ArrowUpRightIcon,
     BillIcon,
     BuildingIcon,
@@ -310,26 +305,8 @@ export const sideNavWithReactRouter = {
     Button,
   } from '@razorpay/blade/components';
 
-  import type {
-    SideNavLinkProps,
-    SideNavSectionProps,
-  } from '@razorpay/blade/components';
 
-  export type ItemsType = Pick<
-    SideNavLinkProps,
-    'icon' | 'title' | 'href' | 'trailing' | 'tooltip'
-  >;
-
-  export type NavItemsJSONType = {
-    type: 'section';
-    title?: SideNavSectionProps['title'];
-    maxItemsVisible?: SideNavSectionProps['maxVisibleItems'];
-    items: (ItemsType & {
-      items?: (ItemsType & { items?: ItemsType[] })[];
-    })[];
-  };
-
-  export const navItemsJSON: NavItemsJSONType[] = [
+  export const navItemsJSON = [
     {
       type: 'section',
       title: undefined,

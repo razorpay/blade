@@ -81,7 +81,7 @@ export const controlledFiltering = `
     },
   ];
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     const cityValues = cities.map((city) => city.value);
     const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
@@ -188,7 +188,7 @@ export const controlledFilteringWithBottomSheet = `
     },
   ];
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     const cityValues = cities.map((city) => city.value);
     const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
@@ -406,7 +406,7 @@ export const creatableItems = `
   } from '@razorpay/blade/components';
 
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     const [items, setItems] = React.useState(['Mumbai', 'Pune', 'Bangalore']);
     const [inputValue, setInputValue] = React.useState('');
     const autoCompleteRef = React.useRef<HTMLInputElement>(null);
@@ -467,7 +467,7 @@ export const clearOnDismiss = `
   } from '@razorpay/blade/components';
 
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     const [inputValue, setInputValue] = React.useState('');
 
     return (
@@ -510,7 +510,7 @@ export const maxRowsStates = `
   } from '@razorpay/blade/components';
 
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     return (
       <Box maxWidth="300px" paddingBottom="400px" display="flex" flexDirection="column" gap="300px">
         <Dropdown selectionType="multiple">
