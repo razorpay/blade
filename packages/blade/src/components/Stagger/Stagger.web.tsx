@@ -38,7 +38,7 @@ export const Stagger = ({
           motionVariants={staggerVariants}
           {...(shouldUnmountWhenHidden
             ? {}
-            : { conditionalAnimate: isVisible ? 'animate' : 'exit' })}
+            : { animateVisibility: isVisible ? 'animate' : 'exit' })}
         >
           <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
             {children}

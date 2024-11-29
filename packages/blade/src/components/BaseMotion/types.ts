@@ -45,10 +45,10 @@ type BaseMotionBoxProps = {
    * E.g. In scenarios where your motion component is always mounted, you can use this to switch visibility
    *
    * ```js
-   * conditionalAnimate={isVisible ? 'animate' : 'exit'}
+   * animateVisibility={isVisible ? 'animate' : 'exit'}
    * ```
    */
-  conditionalAnimate?: keyof MotionVariantsType;
+  animateVisibility?: keyof MotionVariantsType;
 };
 
 type BaseMotionEntryExitProps = Pick<BaseMotionBoxProps, 'children' | 'motionVariants' | 'type'> & {
