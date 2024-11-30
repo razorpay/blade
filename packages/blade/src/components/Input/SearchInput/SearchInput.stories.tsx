@@ -70,6 +70,7 @@ export default {
     labelPosition: 'top',
     helpText: undefined,
     autoCapitalize: undefined,
+    hideClearButton: false,
   },
   tags: ['autodocs'],
   argTypes: {
@@ -185,6 +186,14 @@ export default {
         category: propsCategory.KEYBOARD_PROPS,
       },
     },
+     hideClearButton: { 
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
     ...getStyledPropsArgTypes(),
   },
   parameters: {
@@ -256,6 +265,11 @@ const SearchInputTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
 export const Default = SearchInputTemplate.bind({});
 Default.storyName = 'Default';
 
+export const SearchInputWithClearButtonHidden = SearchInputTemplate.bind({});
+SearchInputWithClearButtonHidden.storyName = 'SearchInput with Clear Button Hidden';
+SearchInputWithClearButtonHidden.args = {
+  hideClearButton: true, // Set the new prop to true
+};
 export const SearchInputHelpText = SearchInputTemplate.bind({});
 SearchInputHelpText.storyName = 'SearchInput with Help Text';
 SearchInputHelpText.args = {
