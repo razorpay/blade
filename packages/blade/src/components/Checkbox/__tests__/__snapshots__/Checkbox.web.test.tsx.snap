@@ -29,8 +29,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -137,8 +137,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -148,8 +148,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -166,8 +166,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c8.c8.c8.c8.c8 .content-container {
@@ -186,8 +186,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 <div>
@@ -318,8 +318,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -394,8 +394,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -510,8 +510,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -634,8 +634,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -799,13 +799,13 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  -webkit-animation: byNIqG-450290765 150ms cubic-bezier(0,0,0.2,1);
-  animation: byNIqG-450290765 150ms cubic-bezier(0,0,0.2,1);
+  -webkit-animation: byNIqG-450290765 160ms cubic-bezier(0,0,0.2,1);
+  animation: byNIqG-450290765 160ms cubic-bezier(0,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6 {
-  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -880,8 +880,8 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -891,8 +891,8 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   background-color: hsla(227,71%,51%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 <div>

@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Switch /> should render switch ssr 1`] = `"<div id="root"><div data-blade-component="switch" class="BaseBox-bmPWx diLchY"><label style="cursor:pointer" data-blade-component="switch-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><input type="checkbox" role="switch" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-label="Toggle Darkmode" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 gjyBTr"/><div aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx SwitchTrackweb__SwitchTrack-t4l0ax-0  eCfGty"><div data-blade-component="base-box" class="BaseBox-bmPWx Thumb-jf4wbz-0  iVfsLD"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedThumbweb__AnimatedThumb-i5qu0o-0  ebxSki"><svg aria-hidden="true" data-blade-component="icon" height="8px" viewBox="0 0 11 8" width="8px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 AnimatedThumbIconweb__AnimatedThumbIcon-sc-3hk5w7-0 fYQKxF"><path d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z" clip-rule="evenodd" fill="hsla(0, 0%, 0%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div></label></div></div>"`;
+exports[`<Switch /> should render switch ssr 1`] = `"<div id="root"><div data-blade-component="switch" class="BaseBox-bmPWx diLchY"><label style="cursor:pointer" data-blade-component="switch-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><input type="checkbox" role="switch" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-label="Toggle Darkmode" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 KCWJj"/><div aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx SwitchTrackweb__SwitchTrack-t4l0ax-0  iLDZYJ"><div data-blade-component="base-box" class="BaseBox-bmPWx Thumb-jf4wbz-0  iVfsLD"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedThumbweb__AnimatedThumb-i5qu0o-0  gFUjsy"><svg aria-hidden="true" data-blade-component="icon" height="8px" viewBox="0 0 11 8" width="8px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 AnimatedThumbIconweb__AnimatedThumbIcon-sc-3hk5w7-0 ffFvAv"><path d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z" clip-rule="evenodd" fill="hsla(0, 0%, 0%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div></label></div></div>"`;
 
 exports[`<Switch /> should render switch ssr 2`] = `
 .c6.c6.c6.c6.c6 {
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-delay: 0ms;
@@ -59,11 +59,11 @@ exports[`<Switch /> should render switch ssr 2`] = `
   -webkit-transform: translateX(0%);
   -ms-transform: translateX(0%);
   transform: translateX(0%);
-  -webkit-transition: 150ms;
-  transition: 150ms;
+  -webkit-transition: 200ms;
+  transition: 200ms;
   border-radius: 9999px;
-  -webkit-animation-duration: 150ms;
-  animation-duration: 150ms;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
   background-color: hsla(0,0%,100%,1);
 }
 
@@ -86,8 +86,8 @@ exports[`<Switch /> should render switch ssr 2`] = `
   background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -112,8 +112,8 @@ exports[`<Switch /> should render switch ssr 2`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -122,8 +122,8 @@ exports[`<Switch /> should render switch ssr 2`] = `
   background-color: hsla(211,20%,52%,0.18);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {

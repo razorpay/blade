@@ -169,8 +169,8 @@ exports[`Tabs should render 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -194,8 +194,8 @@ exports[`Tabs should render 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -571,8 +571,8 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -596,8 +596,8 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -636,8 +636,8 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -661,8 +661,8 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -1075,8 +1075,8 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -1100,8 +1100,8 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1470,8 +1470,8 @@ exports[`Tabs should render with size 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -1495,8 +1495,8 @@ exports[`Tabs should render with size 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1859,8 +1859,8 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -1884,8 +1884,8 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1923,8 +1923,8 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c8.c8.c8.c8.c8:hover {
@@ -1948,8 +1948,8 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
