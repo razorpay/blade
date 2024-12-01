@@ -367,5 +367,6 @@ describe('<CheckboxGroup /> integration tests', () => {
     expect(
       container.querySelector('[data-analytics-checkbox-group="select fruits"]'),
     ).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });
