@@ -11,7 +11,7 @@ import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { componentZIndices } from '~utils/componentZIndices';
-import type { DataAnalyticsAttribute } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const TOP_NAV_HEIGHT = size[56];
@@ -38,6 +38,7 @@ type TopNavProps = {
   | 'zIndex'
   | keyof DataAnalyticsAttribute
 > &
+  TestID &
   StyledPropsBlade;
 
 const TopNav = ({ children, ...rest }: TopNavProps): React.ReactElement => {
@@ -54,7 +55,7 @@ const TopNav = ({ children, ...rest }: TopNavProps): React.ReactElement => {
       height={makeSize(TOP_NAV_HEIGHT)}
       zIndex={componentZIndices.topnav}
       {...rest}
-      {...metaAttribute({ name: MetaConstants.TopNav })}
+      {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}

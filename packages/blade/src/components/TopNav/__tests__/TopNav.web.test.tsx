@@ -20,4 +20,9 @@ describe('TopNav', () => {
     const { container } = renderWithTheme(<TopNavExample />);
     expect(container).toMatchSnapshot();
   });
+
+  test('it shpuld support adding test Id', () => {
+    const { container } = renderWithTheme(<TopNavExample />);
+    expect(container).toMatchSnapshot();
+  });
 });
