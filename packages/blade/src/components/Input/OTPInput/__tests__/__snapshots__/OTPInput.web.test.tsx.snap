@@ -331,8 +331,6 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 <div>
   <div
     class=""
-    data-analytics-event="change"
-    data-analytics-type="otp"
     data-blade-component="otp-input"
   >
     <div
@@ -408,6 +406,8 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     aria-required="true"
                     autocomplete="one-time-code"
                     class="c11"
+                    data-analytics-event="change"
+                    data-analytics-type="otp"
                     data-blade-component="styled-base-input"
                     id="otp-4399-input-4400-0-4405-input-4406"
                     inputmode="decimal"
@@ -449,6 +449,8 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     aria-required="true"
                     autocomplete="one-time-code"
                     class="c11"
+                    data-analytics-event="change"
+                    data-analytics-type="otp"
                     data-blade-component="styled-base-input"
                     id="otp-4399-input-4400-1-4411-input-4412"
                     inputmode="decimal"
@@ -490,6 +492,8 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     aria-required="true"
                     autocomplete="one-time-code"
                     class="c11"
+                    data-analytics-event="change"
+                    data-analytics-type="otp"
                     data-blade-component="styled-base-input"
                     id="otp-4399-input-4400-2-4417-input-4418"
                     inputmode="decimal"
@@ -531,6 +535,8 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     aria-required="true"
                     autocomplete="one-time-code"
                     class="c11"
+                    data-analytics-event="change"
+                    data-analytics-type="otp"
                     data-blade-component="styled-base-input"
                     id="otp-4399-input-4400-3-4423-input-4424"
                     inputmode="decimal"

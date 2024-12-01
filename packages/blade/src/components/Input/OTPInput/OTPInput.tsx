@@ -375,6 +375,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
             type={currentInputType}
             size={size}
             valueComponentType="heading"
+            {...makeAnalyticsAttribute(rest)}
           />
         </BaseBox>,
       );
@@ -383,11 +384,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   };
 
   return (
-    <BaseBox
-      {...metaAttribute({ name: MetaConstants.OTPInput, testID })}
-      {...getStyledProps(rest)}
-      {...makeAnalyticsAttribute(rest)}
-    >
+    <BaseBox {...metaAttribute({ name: MetaConstants.OTPInput, testID })} {...getStyledProps(rest)}>
       <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
