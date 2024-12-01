@@ -3,12 +3,12 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Scale } from './';
 import type { ScaleProps } from './';
-import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { InternalCardExample } from '../Card/Card.stories';
 import qrCodesImage from './docs-qrcodes.svg';
+import { ScaleSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
   return (
@@ -19,23 +19,7 @@ const Page = (): React.ReactElement => {
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/rfcs/2024-08-21-motion-presets.md"
     >
       <Title>Usage</Title>
-      <Sandbox>
-        {`
-          import { Badge, InfoIcon, Scale } from '@razorpay/blade/components';
-    
-          function App(): React.ReactElement {
-            return (
-              <Scale motionTriggers={['hover']}>
-                <Badge color="neutral" icon={InfoIcon}>
-                  Boop
-                </Badge>
-              </Scale>
-            )
-          }
-  
-          export default App;
-        `}
-      </Sandbox>
+      <ScaleSandbox />
     </StoryPageWrapper>
   );
 };

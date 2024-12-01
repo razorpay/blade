@@ -4,7 +4,6 @@ import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { Slide } from './';
 import type { SlideProps } from './';
-import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -15,33 +14,18 @@ import { Chip, ChipGroup } from '~components/Chip';
 import { StepperRouterExample } from '~components/BaseMotion/docs/StepperRouterExample';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 import { StepItemProps } from '~components/StepGroup';
+import { SlideSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Slide"
-      componentDescription="The Slide component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the UI visually engaging."
+      componentDescription="The Slide component is a motion preset that animates the children by sliding them in from outside of viewport, allowing them to smoothly appear or disappear. Unlike Move, Slide is meant to animate components from outside of viewport"
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85897&t=CvaYT53LNc4OYVKa-1&scaling=min-zoom&page-id=21689%3A381614&mode=design"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/rfcs/2024-08-21-motion-presets.md"
     >
       <Title>Usage</Title>
-      <Sandbox>
-        {`
-        import { Badge, InfoIcon, Slide } from '@razorpay/blade/components';
-        
-        function App(): React.ReactElement {
-          return (
-            <Slide>
-              <Badge color="neutral" icon={InfoIcon}>
-                Boop
-              </Badge>
-            </Slide>
-          )
-        }
-
-        export default App;
-      `}
-      </Sandbox>
+      <SlideSandbox />
     </StoryPageWrapper>
   );
 };
@@ -268,7 +252,7 @@ OnRouteChange.args = {
 };
 
 export const WithRef = (args: typeof Slide): React.ReactElement => {
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isVisible, setIsVisible] = React.useState(false);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
   React.useEffect(() => {

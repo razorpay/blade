@@ -3,7 +3,6 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Morph } from './';
 import type { MorphProps } from './';
-import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -12,6 +11,7 @@ import { TextInput } from '~components/Input/TextInput';
 import { Link } from '~components/Link';
 import { Display, Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
+import { MorphSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
   return (
@@ -21,41 +21,7 @@ const Page = (): React.ReactElement => {
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85897&t=CvaYT53LNc4OYVKa-1&scaling=min-zoom&page-id=21689%3A381614&mode=design"
     >
       <Title>Usage</Title>
-      <Sandbox>
-        {`
-          import { Morph, Box, TextInput } from '@razorpay/blade/components';
-
-          const App = () => {
-            const [showNameButton, setShowNameButton] = React.useState(true);
-
-            return (
-              <AnimatePresence>
-                {showNameButton ? (
-                  <Morph {...args}>
-                    <Button onClick={() => setShowNameButton(false)}>Click to Enter Name</Button>
-                  </Morph>
-                ) : (
-                  <Morph {...args}>
-                    <Box display="block" width="240px">
-                      <TextInput
-                        accessibilityLabel="Name"
-                        placeholder="Enter your Name"
-                        trailingButton={
-                          <Link onClick={() => setShowNameButton(true)} variant="button">
-                            Submit
-                          </Link>
-                        }
-                      />
-                    </Box>
-                  </Morph>
-                )}
-              </AnimatePresence>
-            )
-          }
-
-          export default App;
-        `}
-      </Sandbox>
+      <MorphSandbox />
     </StoryPageWrapper>
   );
 };

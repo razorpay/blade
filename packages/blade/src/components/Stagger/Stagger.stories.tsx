@@ -4,7 +4,6 @@ import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { Stagger } from './';
 import type { StaggerProps } from './';
-import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -18,20 +17,16 @@ import { StepperRouterExample } from '~components/BaseMotion/docs/StepperRouterE
 import type { StepItemProps } from '~components/StepGroup';
 import { ChipGroup } from '~components/Chip';
 import { Chip } from '~components/Chip';
+import { StaggerSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Stagger"
-      componentDescription="Stagger Motion Component (TODO)"
-      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85897&t=CvaYT53LNc4OYVKa-1&scaling=min-zoom&page-id=21689%3A381614&mode=design"
+      componentDescription="Stagger component allows you to stagger children (make them appear one after the other). Its a utility preset. You can use any of the base presets like Move, Fade, Slide inside of it"
     >
       <Title>Usage</Title>
-      <Sandbox>
-        {`
-        const todo = 'todo';
-        `}
-      </Sandbox>
+      <StaggerSandbox />
     </StoryPageWrapper>
   );
 };

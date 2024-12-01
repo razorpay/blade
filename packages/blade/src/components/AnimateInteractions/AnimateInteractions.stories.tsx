@@ -3,7 +3,6 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { AnimateInteractions } from './';
 import type { AnimateInteractionsProps } from './';
-import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -13,6 +12,7 @@ import { Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 import { ExternalLinkIcon } from '~components/Icons';
 import { Scale } from '~components/Scale';
+import { AnimateInteractionsSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
   return (
@@ -21,66 +21,7 @@ const Page = (): React.ReactElement => {
       componentDescription="AnimateInteractions is a component that allows you to animate child components based on interactions on parent. This is similar to doing `.parent:hover .child {}` styling in CSS."
     >
       <Title>Usage</Title>
-      <Sandbox>
-        {`
-          import { 
-            AnimateInteractions,
-            Move,
-            Card, 
-            CardBody,
-            Box,
-            Heading,
-            Text,
-            Button,
-            ExternalLinkIcon,
-          } from '@razorpay/blade/components';
-      
-          function App(): React.ReactElement {
-            return (
-              <AnimateInteractions motionTriggers={['hover']}>
-                <Card width="400px" padding="spacing.0" backgroundColor="surface.background.gray.moderate">
-                  <CardBody>
-                    <Box overflow="auto">
-                      <Box padding="spacing.6">
-                        <Heading as="h2" weight="regular">
-                          Payment Pages
-                        </Heading>
-                        <Heading marginY="spacing.4" size="large" as="h3">
-                          Accept payments{' '}
-                          <Heading size="large" as="span" color="surface.text.primary.normal">
-                            without coding on a custom branded store
-                          </Heading>
-                        </Heading>
-                        <Text>
-                          Hover over this card to see how AnimateInteractions component helps in animating child
-                          based on interactions on parent
-                        </Text>
-                      </Box>
-
-                      <Move motionTriggers={['on-animate-interactions']}>
-                        <Box
-                          display="flex"
-                          gap="spacing.4"
-                          justifyContent="flex-end"
-                          padding={['spacing.4', 'spacing.6']}
-                          elevation="highRaised"
-                        >
-                          <Button variant="secondary" icon={ExternalLinkIcon} iconPosition="right">
-                            Know More
-                          </Button>
-                          <Button>Sign Up</Button>
-                        </Box>
-                      </Move>
-                    </Box>
-                  </CardBody>
-                </Card>
-              </AnimateInteractions>
-            )
-          }
-
-          export default App;
-        `}
-      </Sandbox>
+      <AnimateInteractionsSandbox />
     </StoryPageWrapper>
   );
 };

@@ -4,7 +4,6 @@ import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { Fade } from './';
 import type { FadeProps } from './';
-import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -17,6 +16,7 @@ import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card'
 import { StepItemProps } from '~components/StepGroup';
 import { Alert } from '~components/Alert';
 import { Link } from '~components/Link';
+import { FadeSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
   return (
@@ -40,23 +40,7 @@ const Page = (): React.ReactElement => {
       />
 
       <Title>Usage</Title>
-      <Sandbox>
-        {`
-        import { Badge, InfoIcon, Fade } from '@razorpay/blade/components';
-        
-        function App(): React.ReactElement {
-          return (
-            <Fade>
-              <Badge color="neutral" icon={InfoIcon}>
-                Boop
-              </Badge>
-            </Fade>
-          )
-        }
-
-        export default App;
-      `}
-      </Sandbox>
+      <FadeSandbox />
     </StoryPageWrapper>
   );
 };
@@ -270,7 +254,7 @@ export const OnRouteChange: StoryFn<(props: typeof Fade) => React.ReactElement> 
 };
 
 export const WithRef = (args: typeof Fade): React.ReactElement => {
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isVisible, setIsVisible] = React.useState(false);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
   React.useEffect(() => {

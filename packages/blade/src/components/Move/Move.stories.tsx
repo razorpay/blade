@@ -4,7 +4,6 @@ import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { Move } from './';
 import type { MoveProps } from './';
-import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -15,33 +14,18 @@ import { Chip, ChipGroup } from '~components/Chip';
 import { StepperRouterExample } from '~components/BaseMotion/docs/StepperRouterExample';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 import { StepItemProps } from '~components/StepGroup';
+import { MoveSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Move"
-      componentDescription="The Move component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the UI visually engaging."
+      componentDescription=" The Move component is a motion preset that animates the opacity and position of its children, allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the UI visually engaging."
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85897&t=CvaYT53LNc4OYVKa-1&scaling=min-zoom&page-id=21689%3A381614&mode=design"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/rfcs/2024-08-21-motion-presets.md"
     >
       <Title>Usage</Title>
-      <Sandbox>
-        {`
-        import { Badge, InfoIcon, Move } from '@razorpay/blade/components';
-        
-        function App(): React.ReactElement {
-          return (
-            <Move>
-              <Badge color="neutral" icon={InfoIcon}>
-                Boop
-              </Badge>
-            </Move>
-          )
-        }
-
-        export default App;
-      `}
-      </Sandbox>
+      <MoveSandbox />
     </StoryPageWrapper>
   );
 };
@@ -255,7 +239,7 @@ export const OnRouteChange: StoryFn<(props: typeof Move) => React.ReactElement> 
 };
 
 export const WithRef = (args: typeof Move): React.ReactElement => {
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isVisible, setIsVisible] = React.useState(false);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
   React.useEffect(() => {
