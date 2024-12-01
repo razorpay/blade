@@ -168,6 +168,7 @@ import HistoryIconComponent from './HistoryIcon';
 import HomeIconComponent from './HomeIcon';
 import ImageIconComponent from './ImageIcon';
 import InboxIconComponent from './InboxIcon';
+import IndiaFlagIconComponent from './IndiaFlagIcon';
 import InfoIconComponent from './InfoIcon';
 import InstagramIconComponent from './InstagramIcon';
 import InstantSettlementIconComponent from './InstantSettlementIcon';
@@ -185,6 +186,7 @@ import LockIconComponent from './LockIcon';
 import LogInIconComponent from './LogInIcon';
 import LogOutIconComponent from './LogOutIcon';
 import MagicCheckoutIconComponent from './MagicCheckoutIcon';
+import MagicKonnectIconComponent from './MagicKonnectIcon';
 import MailIconComponent from './MailIcon';
 import MailOpenIconComponent from './MailOpenIcon';
 import MapIconComponent from './MapIcon';
@@ -354,6 +356,7 @@ import WatchIconComponent from './WatchIcon';
 import WifiIconComponent from './WifiIcon';
 import WifiOffIconComponent from './WifiOffIcon';
 import WindIconComponent from './WindIcon';
+import WorldwideIconComponent from './WorldwideIcon';
 import XCircleIconComponent from './XCircleIcon';
 import XSquareIconComponent from './XSquareIcon';
 import YoutubeIconComponent from './YoutubeIcon';
@@ -531,6 +534,7 @@ const iconMap: Record<string, IconComponent> = {
   HomeIcon: HomeIconComponent,
   ImageIcon: ImageIconComponent,
   InboxIcon: InboxIconComponent,
+  IndiaFlagIcon: IndiaFlagIconComponent,
   InfoIcon: InfoIconComponent,
   InstagramIcon: InstagramIconComponent,
   InstantSettlementIcon: InstantSettlementIconComponent,
@@ -548,6 +552,7 @@ const iconMap: Record<string, IconComponent> = {
   LogInIcon: LogInIconComponent,
   LogOutIcon: LogOutIconComponent,
   MagicCheckoutIcon: MagicCheckoutIconComponent,
+  MagicKonnectIcon: MagicKonnectIconComponent,
   MailIcon: MailIconComponent,
   MailOpenIcon: MailOpenIconComponent,
   MapIcon: MapIconComponent,
@@ -717,6 +722,7 @@ const iconMap: Record<string, IconComponent> = {
   WifiIcon: WifiIconComponent,
   WifiOffIcon: WifiOffIconComponent,
   WindIcon: WindIconComponent,
+  WorldwideIcon: WorldwideIconComponent,
   XCircleIcon: XCircleIconComponent,
   XSquareIcon: XSquareIconComponent,
   YoutubeIcon: YoutubeIconComponent,

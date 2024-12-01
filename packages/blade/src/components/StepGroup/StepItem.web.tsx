@@ -85,6 +85,7 @@ const getStepTypeFromIndex = ({
 
 const _StepItem = ({
   title,
+  titleColor,
   timestamp,
   description,
   stepProgress = 'none',
@@ -118,6 +119,7 @@ const _StepItem = ({
   const isLastItem = _totalIndex === totalItemsInParentGroupCount - 1;
   const isInteractive = Boolean(href) || Boolean(onClick);
   const isVertical = orientation === 'vertical';
+  const isNested = _nestingLevel > 0;
 
   if (__DEV__) {
     if (trailing && orientation === 'horizontal') {
@@ -140,8 +142,10 @@ const _StepItem = ({
       <Box>
         <Text
           size={stepItemHeaderTokens[size].title}
-          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
-          weight="semibold"
+          color={
+            isDisabled ? 'surface.text.gray.disabled' : titleColor ?? 'surface.text.gray.subtle'
+          }
+          weight={isNested ? 'regular' : 'semibold'}
         >
           {title}
         </Text>
@@ -191,7 +195,7 @@ const _StepItem = ({
         marker={marker}
         stepProgress={stepProgress}
       />
-      <Box marginTop="spacing.3" flex="1" marginRight={isVertical ? undefined : undefined}>
+      <Box flex="1" marginRight={isVertical ? undefined : undefined}>
         {isInteractive ? (
           <InteractiveItemHeaderBox
             {...stepItemHeaderPaddings}
@@ -208,7 +212,7 @@ const _StepItem = ({
           <Box {...stepItemHeaderPaddings}>{stepItemHeaderJSX}</Box>
         )}
         {children ? (
-          <Box paddingX="spacing.4" paddingY="spacing.3">
+          <Box paddingX="spacing.4" paddingBottom="spacing.3">
             {children}
           </Box>
         ) : null}

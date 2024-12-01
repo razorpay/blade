@@ -4,7 +4,7 @@ import { size as sizeTokens } from '~tokens/global';
 const markerLineDotWidth = sizeTokens['2'];
 const markerLineDotSpacing = sizeTokens['4'];
 const markerLineWidth = sizeTokens['2'];
-const itemTopMargin = sizeTokens['16'];
+const itemTopMargin = sizeTokens['6'];
 
 /**
  * Returns the tokens that are related to marker line alignment and spacing
@@ -18,17 +18,17 @@ const getMarkerLineSpacings = (
   markerMargin: number;
   indentationWidth: number;
 } => {
-  const indentationWidth = sizeTokens['33'];
-
   const LINE_SPACINGS = {
     large: {
       markerBackgroundSize: sizeTokens['24'],
       markerMargin: sizeTokens['2'],
+      indentationWidth: sizeTokens['33'],
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     },
     medium: {
       markerBackgroundSize: sizeTokens['20'],
       markerMargin: sizeTokens['2'],
+      indentationWidth: sizeTokens['31'],
     },
   } as const;
 
@@ -47,7 +47,6 @@ const getMarkerLineSpacings = (
     ...LINE_SPACINGS[size],
     markerLeftAlignment,
     markerTopAlignment,
-    indentationWidth,
   };
 };
 

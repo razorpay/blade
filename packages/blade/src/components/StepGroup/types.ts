@@ -2,6 +2,7 @@ import type React from 'react';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { LinkProps } from '~components/Link';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import type { DataAnalyticsAttribute, DotNotationSpacingStringToken, TestID } from '~utils/types';
 
 type StepGroupProps = {
@@ -67,6 +68,11 @@ type StepItemProps = {
    * title of StepItem
    */
   title: string;
+
+  /**
+   * color of StepItem title
+   */
+  titleColor?: `feedback.text.${FeedbackColors}.intense` | `surface.text.primary.normal`;
 
   /**
    * A string that renders in italic font. Made for adding timestamp values.
