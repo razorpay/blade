@@ -209,5 +209,6 @@ describe('<Checkbox />', () => {
     expect(
       container.querySelector('[data-analytics-label="Remember password"]'),
     ).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });
