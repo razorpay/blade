@@ -8,7 +8,7 @@ const motionTriggersArrayToGesturePropsMap: Record<
 > = {
   mount: 'animate',
   hover: 'whileHover',
-  inView: 'whileInView',
+  'in-view': 'whileInView',
   tap: 'whileTap',
   focus: 'whileFocus',
 };

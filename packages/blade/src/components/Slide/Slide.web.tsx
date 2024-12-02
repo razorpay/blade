@@ -1,8 +1,8 @@
 import React from 'react';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
-import { makeSecondsDuration } from '~utils/makeSecondsDuration';
-import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
+import { msToSeconds } from '~utils/msToSeconds';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
 import type { SlideProps } from './types';
 
@@ -33,12 +33,12 @@ export const Slide = ({
   motionTriggers,
   shouldUnmountWhenHidden,
   fromOffset,
+  delay = 'none',
 }: SlideProps) => {
   const { theme } = useTheme();
 
   const enterDirection = typeof direction === 'object' ? direction.enter : direction;
   const exitDirection = typeof direction === 'object' ? direction.exit : direction;
-
   const isEnterDirectionHorizontal = ['left', 'right'].includes(enterDirection);
   const isExitDirectionHorizontal = ['left', 'right'].includes(exitDirection);
 
@@ -47,22 +47,26 @@ export const Slide = ({
   const enterTransform = getFromTransform(enterDirection, fromOffset ?? defaultOffset);
   const exitTransform = getFromTransform(exitDirection, fromOffset ?? defaultOffset);
 
+  const enterDelay = typeof delay === 'object' ? delay.enter : delay;
+  const exitDelay = typeof delay === 'object' ? delay.exit : delay;
+
   const moveVariants: MotionVariantsType = React.useMemo(
     () => ({
       initial: {
-        // We keep element in view with opacity 0 initially so that it works with `inView` trigger as expected
+        // We keep element in view with opacity 0 initially so that it works with `in-view` trigger as expected
         opacity: 0,
       },
       animate: {
         transform: [enterTransform, 'translateY(0%)'],
-        opacity: [1, 1],
+        opacity: 1,
         transition: {
-          duration: makeSecondsDuration(
+          delay: msToSeconds(theme.motion.delay[enterDelay]),
+          duration: msToSeconds(
             isEnterDirectionHorizontal
               ? theme.motion.duration.xmoderate
               : theme.motion.duration['2xgentle'],
           ),
-          ease: cssBezierToMotionFn(
+          ease: cssBezierToArray(
             isEnterDirectionHorizontal
               ? castWebType(theme.motion.easing.entrance)
               : castWebType(theme.motion.easing.emphasized),
@@ -70,14 +74,16 @@ export const Slide = ({
         },
       },
       exit: {
+        opacity: 0,
         transform: exitTransform,
         transition: {
-          duration: makeSecondsDuration(
+          delay: msToSeconds(theme.motion.delay[exitDelay]),
+          duration: msToSeconds(
             isExitDirectionHorizontal
               ? theme.motion.duration.moderate
               : theme.motion.duration.xgentle,
           ),
-          ease: cssBezierToMotionFn(
+          ease: cssBezierToArray(
             isExitDirectionHorizontal
               ? castWebType(theme.motion.easing.exit)
               : castWebType(theme.motion.easing.emphasized),

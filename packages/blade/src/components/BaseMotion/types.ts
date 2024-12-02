@@ -1,7 +1,8 @@
 import type { AnimationControls, TargetAndTransition, Tween } from 'motion/react';
-import React from 'react';
+import type React from 'react';
+import type { Delay } from '~tokens/global/motion';
 
-type MotionTriggerEntryExitType = 'mount' | 'inView' | 'focus' | 'on-animate-interactions';
+type MotionTriggerEntryExitType = 'mount' | 'in-view' | 'focus' | 'on-animate-interactions';
 type MotionTriggersType = MotionTriggerEntryExitType | 'hover' | 'tap';
 
 type MotionVariantsType = {
@@ -15,6 +16,8 @@ type MotionVariantsType = {
     transition?: Tween;
   };
 };
+
+type MotionDelay = keyof Delay | { enter: keyof Delay; exit: keyof Delay };
 
 type BaseMotionBoxProps = {
   as?: React.ReactElement;
@@ -55,6 +58,7 @@ type BaseMotionEntryExitProps = Pick<BaseMotionBoxProps, 'children' | 'motionVar
   isVisible?: boolean;
   motionTriggers?: MotionTriggerEntryExitType[];
   shouldUnmountWhenHidden?: boolean;
+  delay?: MotionDelay;
 };
 
 type MotionMeta = {
@@ -63,6 +67,14 @@ type MotionMeta = {
 };
 
 type MotionMetaProp = {
+  /**
+   * @private
+   *
+   * This prop is internally injected when Motion Preset enhances some component.
+   *
+   * You only need to add this prop to component that requires you to pass ref to some internal component. E.g. in checkbox, we need ref on internal input component but we also need one ref on outer component.
+   * Use this in combination with `getOuterMotionRef` and `getInnerMotionRef` utilities
+   */
   _motionMeta?: MotionMeta;
 };
 
@@ -73,4 +85,5 @@ export type {
   BaseMotionBoxProps,
   MotionMeta,
   MotionMetaProp,
+  MotionDelay,
 };
