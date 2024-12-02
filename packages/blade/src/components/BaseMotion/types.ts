@@ -63,6 +63,14 @@ type MotionMeta = {
 };
 
 type MotionMetaProp = {
+  /**
+   * @private
+   *
+   * This prop is internally injected when Motion Preset enhances some component.
+   *
+   * You only need to add this prop to component that requires you to pass ref to some internal component. E.g. in checkbox, we need ref on internal input component but we also need one ref on outer component.
+   * Use this in combination with `getOuterMotionRef` and `getInnerMotionRef` utilities
+   */
   _motionMeta?: MotionMeta;
 };
 
