@@ -33,7 +33,7 @@ export const Slide = ({
   motionTriggers,
   shouldUnmountWhenHidden,
   fromOffset,
-  delay = 'none',
+  delay,
 }: SlideProps) => {
   const { theme } = useTheme();
 
@@ -60,7 +60,9 @@ export const Slide = ({
         transform: [enterTransform, 'translateY(0%)'],
         opacity: 1,
         transition: {
-          delay: msToSeconds(theme.motion.delay[enterDelay]),
+          // We have to make sure we don't add delay prop because if we define it, it takes precedence in stagger.
+          // Even setting `undefined` would break the stagger
+          ...(enterDelay ? { delay: msToSeconds(theme.motion.delay[enterDelay]) } : {}),
           duration: msToSeconds(
             isEnterDirectionHorizontal
               ? theme.motion.duration.xmoderate
@@ -77,7 +79,9 @@ export const Slide = ({
         opacity: 0,
         transform: exitTransform,
         transition: {
-          delay: msToSeconds(theme.motion.delay[exitDelay]),
+          // We have to make sure we don't add delay prop because if we define it, it takes precedence in stagger.
+          // Even setting `undefined` would break the stagger
+          ...(exitDelay ? { delay: msToSeconds(theme.motion.delay[exitDelay]) } : {}),
           duration: msToSeconds(
             isExitDirectionHorizontal
               ? theme.motion.duration.moderate

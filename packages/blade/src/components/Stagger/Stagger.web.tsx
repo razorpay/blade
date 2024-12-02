@@ -28,13 +28,13 @@ export const Stagger = ({
     initial: {},
     animate: {
       transition: {
-        delay: msToSeconds(theme.motion.delay[enterDelay]),
+        delayChildren: msToSeconds(theme.motion.delay[enterDelay]),
         staggerChildren: msToSeconds(theme.motion.duration['2xquick']),
       },
     },
     exit: {
       transition: {
-        delay: msToSeconds(theme.motion.delay[exitDelay]),
+        delayChildren: msToSeconds(theme.motion.delay[exitDelay]),
         staggerChildren: msToSeconds(theme.motion.duration['2xquick']),
       },
     },
@@ -50,7 +50,7 @@ export const Stagger = ({
             ? {}
             : { animateVisibility: isVisible ? 'animate' : 'exit' })}
         >
-          <StaggerContext.Provider value={{ isInsideStaggerContainer: true }}>
+          <StaggerContext.Provider value={{ isInsideStaggerContainer: true, staggerType: type }}>
             {children}
           </StaggerContext.Provider>
         </BaseMotionBox>

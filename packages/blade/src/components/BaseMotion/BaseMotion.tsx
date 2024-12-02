@@ -25,7 +25,7 @@ const _BaseMotionBox = (
   ref: React.Ref<BladeElementRef>,
 ) => {
   const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
-  const { isInsideStaggerContainer } = useStagger();
+  const { isInsideStaggerContainer, staggerType } = useStagger();
   const shouldSkipAnimationVariables =
     (isInsideAnimateInteractionsContainer && motionTriggers.includes('on-animate-interactions')) ||
     isInsideStaggerContainer;
@@ -36,7 +36,10 @@ const _BaseMotionBox = (
         animateVisibility,
       });
 
-  const motionVariants = useMotionVariants(userMotionVariants, type);
+  const motionVariants = useMotionVariants(
+    userMotionVariants,
+    isInsideStaggerContainer ? staggerType : type,
+  );
 
   return (
     <MotionDiv ref={ref} variants={motionVariants} {...animationVariables} {...rest}>

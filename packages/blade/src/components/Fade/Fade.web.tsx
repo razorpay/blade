@@ -13,7 +13,7 @@ export const Fade = ({
   type = 'inout',
   motionTriggers = ['mount'],
   shouldUnmountWhenHidden,
-  delay = 'none',
+  delay,
 }: FadeProps) => {
   const { theme } = useTheme();
   const enterDelay = typeof delay === 'object' ? delay.enter : delay;
@@ -26,7 +26,9 @@ export const Fade = ({
     animate: {
       opacity: 1,
       transition: {
-        delay: msToSeconds(theme.motion.delay[enterDelay]),
+        // We have to make sure we don't add delay prop because if we define it, it takes precedence in stagger.
+        // Even setting `undefined` would break the stagger
+        ...(enterDelay ? { delay: msToSeconds(theme.motion.delay[enterDelay]) } : {}),
         duration: msToSeconds(theme.motion.duration.xquick),
         ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
       },
@@ -34,7 +36,7 @@ export const Fade = ({
     exit: {
       opacity: 0,
       transition: {
-        delay: msToSeconds(theme.motion.delay[exitDelay]),
+        ...(exitDelay ? { delay: msToSeconds(theme.motion.delay[exitDelay]) } : {}),
         duration: msToSeconds(theme.motion.duration.xquick),
         ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
       },
