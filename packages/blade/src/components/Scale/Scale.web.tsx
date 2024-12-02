@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { makeSecondsDuration } from '~utils/makeSecondsDuration';
-import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
 import type { ScaleProps } from './types';
 
@@ -28,7 +28,7 @@ export const Scale = ({
           : undefined,
       transition: {
         duration: makeSecondsDuration(theme.motion.duration.gentle),
-        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.standard)),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.standard)),
       },
     },
     exit: {},

@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { makeSecondsDuration } from '~utils/makeSecondsDuration';
-import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
 import type { SlideProps } from './types';
 
@@ -50,7 +50,7 @@ export const Slide = ({
   const moveVariants: MotionVariantsType = React.useMemo(
     () => ({
       initial: {
-        // We keep element in view with opacity 0 initially so that it works with `inView` trigger as expected
+        // We keep element in view with opacity 0 initially so that it works with `in-view` trigger as expected
         opacity: 0,
       },
       animate: {
@@ -62,7 +62,7 @@ export const Slide = ({
               ? theme.motion.duration.xmoderate
               : theme.motion.duration['2xgentle'],
           ),
-          ease: cssBezierToMotionFn(
+          ease: cssBezierToArray(
             isEnterDirectionHorizontal
               ? castWebType(theme.motion.easing.entrance)
               : castWebType(theme.motion.easing.emphasized),
@@ -77,7 +77,7 @@ export const Slide = ({
               ? theme.motion.duration.moderate
               : theme.motion.duration.xgentle,
           ),
-          ease: cssBezierToMotionFn(
+          ease: cssBezierToArray(
             isExitDirectionHorizontal
               ? castWebType(theme.motion.easing.exit)
               : castWebType(theme.motion.easing.emphasized),

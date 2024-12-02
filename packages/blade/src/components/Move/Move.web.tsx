@@ -2,7 +2,7 @@ import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
 import React from 'react';
 import { makeSecondsDuration } from '~utils/makeSecondsDuration';
-import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, makeSpace, useTheme } from '~utils';
 
 export type MoveProps = BaseMotionEntryExitProps;
@@ -28,7 +28,7 @@ export const Move = ({
       transform: `translateY(${makeSpace(theme.spacing[0])})`,
       transition: {
         duration: makeSecondsDuration(theme.motion.duration.xmoderate),
-        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.entrance)),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
       },
     },
     exit: {
@@ -36,7 +36,7 @@ export const Move = ({
       transform: `translateY(${movePx})`,
       transition: {
         duration: makeSecondsDuration(theme.motion.duration.quick),
-        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.exit)),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
       },
     },
   };

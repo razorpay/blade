@@ -56,6 +56,7 @@ const _BaseMotionEnhancerBox: React.ForwardRefRenderFunction<HTMLDivElement, Bas
 ) => {
   return (
     <BaseMotionBox
+      // we need the ref of this item in AnimateInteractions to pass down ref that adds focusWithin logic
       ref={mergeRefs(children.props.ref, ref)}
       as={children.type}
       {...motionBoxArgs}

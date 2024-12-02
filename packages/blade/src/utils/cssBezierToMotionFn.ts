@@ -1,4 +1,4 @@
-const cssBezierToMotionFn = <
+const cssBezierToArray = <
   X1 extends number,
   Y1 extends number,
   X2 extends number,
@@ -21,4 +21,4 @@ const cssBezierToMotionFn = <
   return bezierValuesArray;
 };
 
-export { cssBezierToMotionFn };
+export { cssBezierToArray };

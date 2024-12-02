@@ -1,7 +1,7 @@
 import type { AnimationControls, TargetAndTransition, Tween } from 'motion/react';
 import React from 'react';
 
-type MotionTriggerEntryExitType = 'mount' | 'inView' | 'focus' | 'on-animate-interactions';
+type MotionTriggerEntryExitType = 'mount' | 'in-view' | 'focus' | 'on-animate-interactions';
 type MotionTriggersType = MotionTriggerEntryExitType | 'hover' | 'tap';
 
 type MotionVariantsType = {

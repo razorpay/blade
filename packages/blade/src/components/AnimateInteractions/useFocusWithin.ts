@@ -14,13 +14,13 @@ export function useFocusWithin<T extends HTMLElement>(
     if (!element) return;
 
     const handleFocusIn = () => {
-      if (onFocusWithin) onFocusWithin();
+      onFocusWithin?.();
     };
 
     const handleFocusOut = (event: FocusEvent) => {
       // Ensure that focus is not still within the container
       if (element && !element.contains(event.relatedTarget as Node)) {
-        if (onBlurWithin) onBlurWithin();
+        onBlurWithin?.();
       }
     };
 
