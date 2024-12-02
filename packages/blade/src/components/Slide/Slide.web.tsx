@@ -1,7 +1,7 @@
 import React from 'react';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
-import { makeSecondsDuration } from '~utils/makeSecondsDuration';
+import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
 import type { SlideProps } from './types';
@@ -33,12 +33,12 @@ export const Slide = ({
   motionTriggers,
   shouldUnmountWhenHidden,
   fromOffset,
+  delay = 'none',
 }: SlideProps) => {
   const { theme } = useTheme();
 
   const enterDirection = typeof direction === 'object' ? direction.enter : direction;
   const exitDirection = typeof direction === 'object' ? direction.exit : direction;
-
   const isEnterDirectionHorizontal = ['left', 'right'].includes(enterDirection);
   const isExitDirectionHorizontal = ['left', 'right'].includes(exitDirection);
 
@@ -46,6 +46,9 @@ export const Slide = ({
 
   const enterTransform = getFromTransform(enterDirection, fromOffset ?? defaultOffset);
   const exitTransform = getFromTransform(exitDirection, fromOffset ?? defaultOffset);
+
+  const enterDelay = typeof delay === 'object' ? delay.enter : delay;
+  const exitDelay = typeof delay === 'object' ? delay.exit : delay;
 
   const moveVariants: MotionVariantsType = React.useMemo(
     () => ({
@@ -55,9 +58,10 @@ export const Slide = ({
       },
       animate: {
         transform: [enterTransform, 'translateY(0%)'],
-        opacity: [1, 1],
+        opacity: 1,
         transition: {
-          duration: makeSecondsDuration(
+          delay: msToSeconds(theme.motion.delay[enterDelay]),
+          duration: msToSeconds(
             isEnterDirectionHorizontal
               ? theme.motion.duration.xmoderate
               : theme.motion.duration['2xgentle'],
@@ -70,9 +74,11 @@ export const Slide = ({
         },
       },
       exit: {
+        opacity: 0,
         transform: exitTransform,
         transition: {
-          duration: makeSecondsDuration(
+          delay: msToSeconds(theme.motion.delay[exitDelay]),
+          duration: msToSeconds(
             isExitDirectionHorizontal
               ? theme.motion.duration.moderate
               : theme.motion.duration.xgentle,

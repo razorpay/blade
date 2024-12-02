@@ -1,5 +1,6 @@
 import type { AnimationControls, TargetAndTransition, Tween } from 'motion/react';
-import React from 'react';
+import type React from 'react';
+import type { Delay } from '~tokens/global/motion';
 
 type MotionTriggerEntryExitType = 'mount' | 'in-view' | 'focus' | 'on-animate-interactions';
 type MotionTriggersType = MotionTriggerEntryExitType | 'hover' | 'tap';
@@ -15,6 +16,8 @@ type MotionVariantsType = {
     transition?: Tween;
   };
 };
+
+type MotionDelay = keyof Delay | { enter: keyof Delay; exit: keyof Delay };
 
 type BaseMotionBoxProps = {
   as?: React.ReactElement;
@@ -55,6 +58,7 @@ type BaseMotionEntryExitProps = Pick<BaseMotionBoxProps, 'children' | 'motionVar
   isVisible?: boolean;
   motionTriggers?: MotionTriggerEntryExitType[];
   shouldUnmountWhenHidden?: boolean;
+  delay?: MotionDelay;
 };
 
 type MotionMeta = {
@@ -81,4 +85,5 @@ export type {
   BaseMotionBoxProps,
   MotionMeta,
   MotionMetaProp,
+  MotionDelay,
 };

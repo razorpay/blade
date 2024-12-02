@@ -1,7 +1,7 @@
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
 import React from 'react';
-import { makeSecondsDuration } from '~utils/makeSecondsDuration';
+import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, makeSpace, useTheme } from '~utils';
 
@@ -13,8 +13,11 @@ export const Move = ({
   isVisible,
   motionTriggers,
   shouldUnmountWhenHidden,
+  delay = 'none',
 }: MoveProps) => {
   const { theme } = useTheme();
+  const enterDelay = typeof delay === 'object' ? delay.enter : delay;
+  const exitDelay = typeof delay === 'object' ? delay.exit : delay;
 
   const movePx = makeSpace(theme.spacing[5]);
 
@@ -27,7 +30,8 @@ export const Move = ({
       opacity: 1,
       transform: `translateY(${makeSpace(theme.spacing[0])})`,
       transition: {
-        duration: makeSecondsDuration(theme.motion.duration.xmoderate),
+        delay: msToSeconds(theme.motion.delay[enterDelay]),
+        duration: msToSeconds(theme.motion.duration.xmoderate),
         ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
       },
     },
@@ -35,7 +39,8 @@ export const Move = ({
       opacity: 0,
       transform: `translateY(${movePx})`,
       transition: {
-        duration: makeSecondsDuration(theme.motion.duration.quick),
+        delay: msToSeconds(theme.motion.delay[exitDelay]),
+        duration: msToSeconds(theme.motion.duration.quick),
         ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
       },
     },

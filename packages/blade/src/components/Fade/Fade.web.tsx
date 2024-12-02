@@ -3,7 +3,7 @@ import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
 import { castWebType, useTheme } from '~utils';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
-import { makeSecondsDuration } from '~utils/makeSecondsDuration';
+import { msToSeconds } from '~utils/msToSeconds';
 
 export type FadeProps = BaseMotionEntryExitProps;
 
@@ -13,8 +13,11 @@ export const Fade = ({
   type = 'inout',
   motionTriggers = ['mount'],
   shouldUnmountWhenHidden,
+  delay = 'none',
 }: FadeProps) => {
   const { theme } = useTheme();
+  const enterDelay = typeof delay === 'object' ? delay.enter : delay;
+  const exitDelay = typeof delay === 'object' ? delay.exit : delay;
 
   const fadeVariants: MotionVariantsType = {
     initial: {
@@ -23,14 +26,16 @@ export const Fade = ({
     animate: {
       opacity: 1,
       transition: {
-        duration: makeSecondsDuration(theme.motion.duration.xquick),
+        delay: msToSeconds(theme.motion.delay[enterDelay]),
+        duration: msToSeconds(theme.motion.duration.xquick),
         ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
       },
     },
     exit: {
       opacity: 0,
       transition: {
-        duration: makeSecondsDuration(theme.motion.duration.xquick),
+        delay: msToSeconds(theme.motion.delay[exitDelay]),
+        duration: msToSeconds(theme.motion.duration.xquick),
         ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
       },
     },
