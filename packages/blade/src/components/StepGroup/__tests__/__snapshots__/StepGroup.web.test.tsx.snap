@@ -945,7 +945,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
 }
 
 .c3.c3.c3.c3.c3 {
-  height: 16px;
+  height: 6px;
   width: 2px;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
   background-size: 2px 6px;
@@ -1020,7 +1020,6 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  margin-top: 8px;
 }
 
 .c12.c12.c12.c12.c12 {
