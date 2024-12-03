@@ -13,7 +13,7 @@ export const Move = ({
   isVisible,
   motionTriggers,
   shouldUnmountWhenHidden,
-  delay = 'none',
+  delay,
 }: MoveProps) => {
   const { theme } = useTheme();
   const enterDelay = typeof delay === 'object' ? delay.enter : delay;
@@ -30,7 +30,9 @@ export const Move = ({
       opacity: 1,
       transform: `translateY(${makeSpace(theme.spacing[0])})`,
       transition: {
-        delay: msToSeconds(theme.motion.delay[enterDelay]),
+        // We have to make sure we don't add delay prop because if we define it, it takes precedence in stagger.
+        // Even setting `undefined` would break the stagger
+        ...(enterDelay ? { delay: msToSeconds(theme.motion.delay[enterDelay]) } : {}),
         duration: msToSeconds(theme.motion.duration.xmoderate),
         ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
       },
@@ -39,7 +41,7 @@ export const Move = ({
       opacity: 0,
       transform: `translateY(${movePx})`,
       transition: {
-        delay: msToSeconds(theme.motion.delay[exitDelay]),
+        ...(exitDelay ? { delay: msToSeconds(theme.motion.delay[exitDelay]) } : {}),
         duration: msToSeconds(theme.motion.duration.quick),
         ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
       },

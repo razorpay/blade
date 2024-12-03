@@ -1,8 +1,17 @@
 import React from 'react';
+import type { BaseMotionBoxProps } from '~components/BaseMotion';
 
-const StaggerContext = React.createContext({ isInsideStaggerContainer: false });
+type StaggerContextType = {
+  isInsideStaggerContainer: boolean;
+  staggerType: BaseMotionBoxProps['type'];
+};
 
-const useStagger = () => {
+const StaggerContext = React.createContext<StaggerContextType>({
+  isInsideStaggerContainer: false,
+  staggerType: 'inout',
+});
+
+const useStagger = (): StaggerContextType => {
   const staggerContextValue = React.useContext(StaggerContext);
   return staggerContextValue;
 };
