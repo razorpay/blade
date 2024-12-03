@@ -2,7 +2,7 @@ import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 import { AnimateInteractionsContext } from './AnimateInteractionsProvider';
 import { useFocusWithin } from './useFocusWithin';
 import React from 'react';
-import { useAnimationControls } from 'motion/react';
+import { useAnimation } from 'framer-motion';
 import type { AnimateInteractionsProps } from './types';
 
 export const AnimateInteractions = ({
@@ -10,7 +10,7 @@ export const AnimateInteractions = ({
   motionTriggers = ['hover'],
 }: AnimateInteractionsProps) => {
   const baseMotionRef = React.useRef<HTMLDivElement | null>(null);
-  const controls = useAnimationControls();
+  const controls = useAnimation();
 
   useFocusWithin(baseMotionRef, {
     onFocusWithin: () => {

@@ -78,6 +78,9 @@ export const Slide = ({
       exit: {
         opacity: 0,
         transform: exitTransform,
+        transitionEnd: {
+          transform: enterTransform,
+        },
         transition: {
           // We have to make sure we don't add delay prop because if we define it, it takes precedence in stagger.
           // Even setting `undefined` would break the stagger
