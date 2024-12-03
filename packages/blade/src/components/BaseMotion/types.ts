@@ -1,4 +1,4 @@
-import type { AnimationControls, TargetAndTransition, Tween } from 'motion/react';
+import type { AnimationControls, TargetAndTransition, Tween } from 'framer-motion';
 import type React from 'react';
 import type { Delay } from '~tokens/global/motion';
 

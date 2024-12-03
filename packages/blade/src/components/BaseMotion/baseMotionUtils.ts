@@ -1,6 +1,8 @@
-import type { AnimationType } from 'motion/react';
-import { useReducedMotion } from 'motion/react';
+import { useReducedMotion } from 'framer-motion';
 import type { BaseMotionBoxProps, MotionTriggersType, MotionVariantsType } from './types';
+
+// This type is exported in new framer-motion versions but does not exist in earlier versions so adding it manually here
+type AnimationType = 'animate' | 'whileHover' | 'whileInView' | 'whileTap' | 'whileFocus';
 
 const motionTriggersArrayToGesturePropsMap: Record<
   Exclude<MotionTriggersType, 'on-animate-interactions'>,

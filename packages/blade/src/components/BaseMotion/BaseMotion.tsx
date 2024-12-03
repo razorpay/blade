@@ -1,8 +1,7 @@
-import { m as motion } from 'motion/react';
 import React from 'react';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { mergeRefs } from '@mantine/hooks';
-import { AnimatePresence } from 'motion/react';
 import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';
 import { useStagger } from '~components/Stagger/StaggerProvider';
 import type { BladeElementRef } from '~utils/types';
@@ -11,7 +10,7 @@ import { makeAnimationVariables, useMotionVariants } from './baseMotionUtils';
 
 // Creating empty styled component so that the final component supports `as` prop
 const StyledDiv = styled.div``;
-const MotionDiv = motion.create(StyledDiv);
+const MotionDiv = motion(StyledDiv);
 
 const _BaseMotionBox = (
   {
@@ -45,7 +44,7 @@ const _BaseMotionBox = (
 
   return (
     <MotionDiv
-      ref={ref}
+      ref={ref as never}
       viewport={{ amount: 0.8, once: true }}
       variants={motionVariants}
       {...animationVariables}
