@@ -19,6 +19,7 @@ import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const {
   COLLAPSED,
@@ -109,7 +110,7 @@ const SideNav = ({
   onDismiss,
   banner,
   testID,
-  ...styledProps
+  ...rest
 }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
@@ -251,7 +252,8 @@ const SideNav = ({
             name: MetaConstants.SideNav,
             testID,
           })}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
         >
           {banner ? (
             <BaseBox

@@ -12,7 +12,11 @@ import { Text } from '~components/Typography';
 const TopNavExample = (): React.ReactElement => {
   return (
     <Box height="100vh" backgroundColor="surface.background.gray.intense">
-      <TopNav backgroundColor="surface.background.gray.intense">
+      <TopNav
+        backgroundColor="surface.background.gray.intense"
+        data-analytics-topnav="demo"
+        testID="demo"
+      >
         <TopNavBrand>
           <RazorpayLogo />
         </TopNavBrand>
@@ -52,6 +56,7 @@ const TopNavExample = (): React.ReactElement => {
                           icon={item.icon}
                           isActive={item.isActive}
                           trailing={item.trailing}
+                          data-analytics-tabnavitem={item.title}
                         />
                       );
                     })}

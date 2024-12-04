@@ -11,6 +11,8 @@ import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
   Pick<CarouselItemProps, 'shouldHaveEndSpacing' | 'shouldHaveStartSpacing'> & {
@@ -49,7 +51,7 @@ type CarouselItemProps = {
   children: React.ReactNode;
   shouldHaveStartSpacing?: boolean;
   shouldHaveEndSpacing?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 const _CarouselItem = ({
   children,
@@ -57,6 +59,7 @@ const _CarouselItem = ({
   shouldHaveEndSpacing,
   id,
   index,
+  ...rest
 }: CarouselItemProps): React.ReactElement => {
   const itemRef = React.useRef<HTMLDivElement>(null);
   const {
@@ -86,6 +89,7 @@ const _CarouselItem = ({
       shouldAddStartEndSpacing={shouldAddStartEndSpacing}
       shouldHaveStartSpacing={shouldHaveStartSpacing}
       shouldHaveEndSpacing={shouldHaveEndSpacing}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </StyledCarouselItem>

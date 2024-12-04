@@ -9,6 +9,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _BottomSheetHeader = ({
   title,
@@ -19,6 +20,7 @@ const _BottomSheetHeader = ({
   showBackButton = false,
   onBackButtonClick,
   children,
+  ...dataAnalyticsProps
 }: BottomSheetHeaderProps): React.ReactElement => {
   const {
     setHeaderHeight,
@@ -49,6 +51,7 @@ const _BottomSheetHeader = ({
       overflow={isHeaderEmpty ? 'visible' : 'auto'}
       flexShrink={0}
       {...metaAttribute({ name: MetaConstants.BottomSheetHeader })}
+      {...makeAnalyticsAttribute(dataAnalyticsProps)}
     >
       {isHeaderEmpty ? (
         <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />

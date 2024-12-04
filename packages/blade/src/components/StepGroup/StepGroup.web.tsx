@@ -7,6 +7,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const useChildrenWithIndexes = ({
   _nestingLevel,
@@ -68,7 +69,7 @@ const _StepGroup = ({
   width,
   minWidth,
   maxWidth,
-  ...styledProps
+  ...rest
 }: StepGroupProps): React.ReactElement => {
   const itemsInGroupCount = React.Children.count(children);
   const { childrenWithIndex, totalItemsInParentGroupCount } = useChildrenWithIndexes({
@@ -93,7 +94,7 @@ const _StepGroup = ({
   return (
     <StepGroupContext.Provider value={contextValue}>
       <BaseBox
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
         display="inline-flex"
         maxWidth={maxWidth ?? '100%'}
         minWidth={minWidth}
@@ -102,6 +103,7 @@ const _StepGroup = ({
         overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
         {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
+        {...makeAnalyticsAttribute(rest)}
       >
         {childrenWithIndex}
       </BaseBox>

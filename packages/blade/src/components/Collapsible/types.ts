@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type CollapsibleBodyProps = {
   children: ReactNode;
@@ -11,7 +11,8 @@ type CollapsibleBodyProps = {
    * Set to false to remove margin of CollapsibleBody
    */
   _hasMargin?: boolean;
-} & TestID;
+} & DataAnalyticsAttribute &
+  TestID;
 
 type CollapsibleBodyContentProps = {
   children: ReactNode;

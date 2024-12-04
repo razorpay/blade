@@ -1,4 +1,5 @@
 import type { ButtonProps } from '~components/Button/Button';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type ButtonGroupProps = {
   /**
@@ -37,7 +38,7 @@ type ButtonGroupProps = {
    * Test ID for automation
    */
   testID?: string;
-};
+} & DataAnalyticsAttribute;
 
 type StyledButtonGroupProps = Pick<
   ButtonGroupProps,

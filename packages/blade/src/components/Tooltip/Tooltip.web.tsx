@@ -30,6 +30,7 @@ import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const Tooltip = ({
   title,
@@ -38,6 +39,7 @@ const Tooltip = ({
   placement = 'top',
   onOpenChange,
   zIndex = componentZIndices.tooltip,
+  ...rest
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const id = useId();
@@ -104,6 +106,7 @@ const Tooltip = ({
             zIndex={zIndex}
             {...getFloatingProps()}
             {...metaAttribute({ name: MetaConstants.Tooltip })}
+            {...makeAnalyticsAttribute(rest)}
           >
             <TooltipContent
               title={title}

@@ -4,7 +4,7 @@ import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border, Elevation } from '~tokens/global';
-import type { PickCSSByPlatform, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, PickCSSByPlatform, TestID } from '~utils/types';
 import type { Platform } from '~utils';
 import type { BladeCommonEvents } from '~components/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
@@ -305,7 +305,8 @@ type BoxProps = Partial<
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
       id?: string;
-    } & TestID
+    } & TestID &
+    DataAnalyticsAttribute
 >;
 
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.
@@ -313,11 +314,12 @@ type BoxProps = Partial<
 // Then we append BaseBoxVisualProps and some other props for styled-components like class and id
 type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
   Partial<
-    BaseBoxVisualProps & {
-      className?: string;
-      id?: string;
-      tabIndex?: number;
-    }
+    DataAnalyticsAttribute &
+      BaseBoxVisualProps & {
+        className?: string;
+        id?: string;
+        tabIndex?: number;
+      }
   > &
   BladeCommonEvents;
 

@@ -5,6 +5,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 /**
  * ### Tabs
@@ -46,6 +47,7 @@ const Tabs = ({
   variant = 'bordered',
   isFullWidthTabItem = false,
   isLazy = false,
+  ...rest
 }: TabsProps): React.ReactElement => {
   const baseId = useId('tabs');
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -86,6 +88,7 @@ const Tabs = ({
         display="flex"
         flexDirection={isVertical ? 'row' : 'column'}
         {...metaAttribute({ name: MetaConstants.Tabs })}
+        {...makeAnalyticsAttribute(rest)}
       >
         {children}
       </BaseBox>

@@ -1,5 +1,1027 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Table /> should accept data-analytics-* props 1`] = `
+.c0.c0.c0.c0.c0 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: normal;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  pointer-events: auto;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
+  border: none;
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected .cell-wrapper-base,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+  height: 100%;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
+  background-color: transparent;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 td:last-child .cell-wrapper {
+  border-right: none;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 tr:first-child th {
+  border-top: none;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+  cursor: auto;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div {
+  background-color: hsla(211,20%,52%,0.12);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 th:last-child {
+  border-right: none;
+}
+
+@media screen and (min-width:320px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="table"
+  >
+    <table
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
+      data-analytics-table="test"
+      data-blade-component="table"
+      data-table-library_table=""
+      role="table"
+      style="--data-table-library_grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr) minmax(0px, 1fr) minmax(0px, 1fr) minmax(0px, 1fr) minmax(0px, 1fr);"
+    >
+      <thead
+        class="c1 css-1a28xfp-Header"
+        data-blade-component="table-header"
+        role="rowgroup"
+      >
+        <tr
+          class="tr c2 tr-header css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
+          data-blade-component="table-header-row"
+          data-table-library_tr-header=""
+          role="rowheader"
+        >
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-analytics-table-header="table-header-cell-test"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Payment ID
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Amount
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Status
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Type
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Method
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Name
+              </p>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="c5 css-8eb0m3-Body"
+        data-analytics-body="table-body-test"
+        data-blade-component="table-body"
+        data-table-library_body=""
+      >
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp01
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  100
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp02
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  240
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp03
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  120
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    failed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    debit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp04
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  300
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp05
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  200
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
 exports[`<Table /> should render table 1`] = `
 .c0.c0.c0.c0.c0 {
   -webkit-flex: 1;

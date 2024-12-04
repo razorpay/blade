@@ -861,6 +861,7 @@ exports[`SideNav should render 1`] = `
 <div>
   <nav
     class="c0"
+    data-analytics-side-nav="demo-item"
     data-blade-component="sidenav"
   >
     <div
@@ -912,6 +913,7 @@ exports[`SideNav should render 1`] = `
             <a
               aria-current="page"
               class="styled-nav-link"
+              data-analytics-nav-link="home"
               data-blade-component="base-box"
               data-l2trigger="false"
               data-level="1"
@@ -958,6 +960,7 @@ exports[`SideNav should render 1`] = `
           >
             <a
               class="styled-nav-link"
+              data-analytics-nav-link="l2 Trigger"
               data-blade-component="base-box"
               data-l2trigger="true"
               data-level="1"
@@ -1022,6 +1025,7 @@ exports[`SideNav should render 1`] = `
           </div>
           <div
             class="c16"
+            data-analytics-side-nav-section="Products"
             data-blade-component="box"
           >
             <div

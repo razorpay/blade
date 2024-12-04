@@ -18,6 +18,7 @@ import {
   validationStateToInputTrailingIconMap,
 } from '~components/Table/tokens';
 import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const useControlledDropdownInput = (props: useControlledDropdownInputProps): void => {
@@ -310,6 +311,7 @@ const _BaseDropdownInputTrigger = (
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
       size={props.size}
+      {...makeAnalyticsAttribute(props)}
       onTrailingInteractionElementClick={() => {
         if (!props.isDisabled) {
           // Icon onClicks to the SelectInput itself

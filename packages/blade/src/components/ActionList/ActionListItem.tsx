@@ -14,7 +14,7 @@ import { Text } from '~components/Typography';
 import type { Platform } from '~utils';
 import { castWebType, isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -27,6 +27,7 @@ import { BaseMenuItem, useBaseMenuItem } from '~components/BaseMenu';
 import { Checkbox } from '~components/Checkbox';
 import type { AvatarProps } from '~components/Avatar/types';
 import { Avatar } from '~components/Avatar';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ActionListItemProps = {
   title: string;
@@ -86,7 +87,8 @@ type ActionListItemProps = {
    * @private
    */
   _index?: number;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
   // @TODO: replace this styled-component with new layout box when we have padding shorthand
@@ -110,13 +112,15 @@ type ActionListSectionProps = {
    * @private
    */
   _sectionChildValues?: string[];
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 const _ActionListSection = ({
   title,
   children,
   testID,
   _hideDivider,
   _sectionChildValues,
+  ...rest
 }: ActionListSectionProps): React.ReactElement => {
   const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
   const hasAutoComplete =
@@ -147,6 +151,7 @@ const _ActionListSection = ({
         label: title,
       })}
       {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
+      {...makeAnalyticsAttribute(rest as Record<string, unknown>)}
     >
       {/* We're announcing title as group label so we can hide this */}
       {isSectionVisible ? (
@@ -387,6 +392,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
           props.onClick?.({ name: props.value, value: isSelected, event: castWebType(e) });
         }
       })}
+      {...makeAnalyticsAttribute({ ...props })}
       {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
       onMouseDown={() => {
         // We want to keep focus on Dropdown's trigger while option is being clicked

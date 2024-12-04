@@ -1,6 +1,7 @@
 import type React from 'react';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type TabsProps = {
   /**
@@ -52,7 +53,7 @@ type TabsProps = {
    * @default false
    */
   isLazy?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type TabItemProps = {
   /**
@@ -102,6 +103,6 @@ type TabPanelProps = {
    * The content of the tab panel.
    */
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 export type { TabsProps, TabItemProps, TabPanelProps };

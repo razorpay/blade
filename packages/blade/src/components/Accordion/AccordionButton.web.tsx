@@ -10,6 +10,7 @@ import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _AccordionButton = ({
   index,
@@ -18,6 +19,7 @@ const _AccordionButton = ({
   isDeprecatedAPI,
   header,
   isDisabled,
+  ...rest
 }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex, size } = useAccordion();
@@ -50,6 +52,7 @@ const _AccordionButton = ({
     <BaseBox
       // a11y guidelines suggest having an apt heading surround a button but heading level is hardcoded here
       {...makeAccessible({ role: 'heading', level: 3 })}
+      {...makeAnalyticsAttribute(rest)}
       width="100%"
     >
       <StyledAccordionButton

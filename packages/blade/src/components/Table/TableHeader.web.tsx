@@ -22,6 +22,7 @@ import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -75,9 +76,14 @@ const StyledHeader = styled(Header)({
   },
 });
 
-const _TableHeader = ({ children }: TableHeaderRowProps): React.ReactElement => {
+const _TableHeader = ({ children, ...rest }: TableHeaderRowProps): React.ReactElement => {
   return (
-    <StyledHeader {...metaAttribute({ name: MetaConstants.TableHeader })}>{children}</StyledHeader>
+    <StyledHeader
+      {...metaAttribute({ name: MetaConstants.TableHeader })}
+      {...makeAnalyticsAttribute(rest)}
+    >
+      {children}
+    </StyledHeader>
   );
 };
 
@@ -124,6 +130,7 @@ const _TableHeaderCell = ({
   children,
   headerKey,
   _hasPadding = true,
+  ...rest
 }: TableHeaderCellProps): React.ReactElement => {
   const {
     toggleSort,
@@ -148,6 +155,7 @@ const _TableHeaderCell = ({
         }
       }}
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {isChildrenString ? (
         <Text size="medium" weight="medium" color="surface.text.gray.normal">
@@ -212,7 +220,11 @@ const StyledHeaderRow = styled(HeaderRow)<{ $showBorderedCells: boolean }>(
   }),
 );
 
-const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.ReactElement => {
+const _TableHeaderRow = ({
+  children,
+  rowDensity,
+  ...rest
+}: TableHeaderRowProps): React.ReactElement => {
   const {
     disabledRows,
     selectionType,
@@ -234,6 +246,7 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
     <StyledHeaderRow
       role="rowheader"
       {...metaAttribute({ name: MetaConstants.TableHeaderRow })}
+      {...makeAnalyticsAttribute(rest)}
       $showBorderedCells={showBorderedCells}
     >
       {isMultiSelect && (

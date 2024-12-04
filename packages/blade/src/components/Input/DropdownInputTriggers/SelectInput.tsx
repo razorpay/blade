@@ -8,6 +8,7 @@ import { isReactNative } from '~utils';
 import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _SelectInput = (
   props: SelectInputProps,
@@ -29,6 +30,7 @@ const _SelectInput = (
             required={props.isRequired}
             name={props.name}
             value={value}
+            {...makeAnalyticsAttribute(props)}
             // Adding onChange to surpass no onChange on controlled component warning
             // eslint-disable-next-line @typescript-eslint/no-empty-function
             onChange={() => {}}

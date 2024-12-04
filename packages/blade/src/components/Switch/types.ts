@@ -1,5 +1,5 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type OnChange = ({
   isChecked,
@@ -60,6 +60,7 @@ type SwitchProps = {
    */
   id?: string;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type ThumbProps = {

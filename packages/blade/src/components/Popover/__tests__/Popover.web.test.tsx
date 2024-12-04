@@ -296,4 +296,22 @@ describe('<Popover />', () => {
     expect(getByRole('dialog')).toHaveAccessibleName(title);
     await assertAccessible(getByRole('dialog'));
   });
+
+  describe('<Popover />', () => {
+    it('should accept DataAnalyticsAttribute', async () => {
+      const buttonText = 'Click me';
+      const { getByRole } = renderWithTheme(
+        <Popover content={<Text>Hello world</Text>} data-analytics-popover="demo">
+          <Button>{buttonText}</Button>
+        </Popover>,
+      );
+
+      fireEvent.click(getByRole('button', { name: buttonText }));
+
+      await act(async () => {
+        jest.advanceTimersByTime(2000);
+      });
+      expect(getByRole('dialog')).toHaveAttribute('data-analytics-popover', 'demo');
+    });
+  });
 });

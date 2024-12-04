@@ -763,3 +763,209 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   </div>
 </div>
 `;
+
+exports[`<Collapsible /> should support adding data-analytics attributes 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 200px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c1.c1.c1.c1.c1 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c1.c1.c1.c1.c1 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c1.c1.c1.c1.c1:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+@media screen and (min-width:480px) {
+  .c0.c0.c0.c0.c0 {
+    max-width: calc(100vw - 40px);
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c0.c0.c0.c0.c0 {
+    max-width: 640px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c0.c0.c0.c0.c0 {
+    max-width: 1136px;
+  }
+}
+
+<div>
+  <div
+    class=""
+    data-analytics-collapsible="View Breakdown"
+    data-blade-component="collapsible"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <button
+        aria-controls="collapsible-body-13"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="c1"
+        data-analytics-collapsible-link="view price breakdown"
+        data-blade-component="link"
+        role="button"
+        type="button"
+      >
+        <span
+          class="c2 content-container"
+          data-blade-component="base-box"
+        >
+          <span
+            class="c3"
+            data-blade-component="base-text"
+          >
+            View Price Breakdown
+          </span>
+          <span
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <div
+              aria-hidden="true"
+              class=" c5"
+              data-blade-component="base-box"
+              direction="bottom"
+            >
+              <svg
+                aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
+                data-blade-component="icon"
+                fill="none"
+                height="16px"
+                viewBox="0 0 24 24"
+                width="16px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                  data-blade-component="svg-path"
+                  fill="hsla(227, 71%, 51%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

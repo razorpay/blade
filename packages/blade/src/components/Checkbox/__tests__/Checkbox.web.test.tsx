@@ -201,4 +201,14 @@ describe('<Checkbox />', () => {
     );
     expect(getByTestId('checkbox-test')).toBeTruthy();
   });
+  it('should accept data-analytics attributes', () => {
+    const labelText = 'Remember password';
+    const { container } = renderWithTheme(
+      <Checkbox data-analytics-label="Remember password">{labelText}</Checkbox>,
+    );
+    expect(
+      container.querySelector('[data-analytics-label="Remember password"]'),
+    ).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
 });

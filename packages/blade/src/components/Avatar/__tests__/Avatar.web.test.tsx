@@ -138,4 +138,10 @@ describe('<Avatar />', () => {
 
     await assertAccessible(container);
   });
+  it('should pass with data-analytics attribute', () => {
+    const { getByTestId } = renderWithTheme(
+      <Avatar name="Nitin Kumar" testID="avatar-test" data-analytics-test="test" />,
+    );
+    expect(getByTestId('avatar-test')).toHaveAttribute('data-analytics-test', 'test');
+  });
 });
