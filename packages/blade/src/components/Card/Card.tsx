@@ -127,7 +127,23 @@ export type CardProps = {
    *
    * On mobile devices it will scale down on press
    *
+   * **This prop is deprecated in favour of motion presets released in v12**
+   *
+   * ### Migration
+   *
+   * ```diff
+   * - <Card
+   * -  shouldScaleOnHover
+   * - />
+   *
+   * + <Scale motionTriggers={['hover']}>
+   * +   <Card />
+   * + </Scale>
+   * ```
+   *
    * @default false
+   *
+   * @deprecated This prop is deprecated in favour of motion presets released in v12
    */
   shouldScaleOnHover?: boolean;
   /**

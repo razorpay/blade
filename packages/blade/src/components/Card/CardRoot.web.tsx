@@ -20,9 +20,6 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
     return {
       // Selected state
       boxShadow: `${selectedBorder}${focusRing}`,
-      transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
-      transitionTimingFunction: castWebType(theme.motion.easing.standard),
-      transitionProperty: 'transform, box-shadow',
       cursor: as === 'label' ? 'pointer' : 'initial',
 
       // pressed state for mobile only
@@ -34,6 +31,10 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
       // Hover state for desktop only
       ...(!isMobile &&
         shouldScaleOnHover && {
+          transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
+          transitionTimingFunction: castWebType(theme.motion.easing.standard),
+          transitionProperty: 'transform, box-shadow',
+
           '&:hover': {
             transform: `scale(${CARD_SCALE_UP_VALUE})`,
           },

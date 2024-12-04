@@ -60,9 +60,5 @@ Default.args = {
 
 export const Controlled = ControlledScaleTemplate.bind({});
 Controlled.args = {
-  children: (
-    <Box display="inline-block">
-      <InternalCardExample />
-    </Box>
-  ),
+  children: <InternalCardExample />,
 };
