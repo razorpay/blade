@@ -3,6 +3,8 @@ import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
 
+export const isPR = Boolean(process.env.GITHUB_SHA);
+
 const getBladeVersion = (): string => {
   // We don't publish codesandbox ci on master so version is not present
   const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
@@ -71,7 +73,7 @@ export const getViteReactTSDependencies = (): Dependencies => {
       'react-router-dom': '^6',
       '@types/react': '^18',
       '@types/react-dom': '^18',
-      '@razorpay/blade': getBladeVersion(),
+      '@razorpay/blade': 'https://pkg.csb.dev/razorpay/blade/commit/06db577a/@razorpay/blade',
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
       '@razorpay/i18nify-react': packageJson.peerDependencies['@razorpay/i18nify-react'],
@@ -134,7 +136,7 @@ export const indexHTML = dedent`
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.js"></script>
   </body>
 </html>
 `;

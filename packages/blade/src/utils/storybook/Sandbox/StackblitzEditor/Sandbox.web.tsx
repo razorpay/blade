@@ -6,7 +6,14 @@ import { DocsContext } from '@storybook/addon-docs';
 
 import type { Project } from '@stackblitz/sdk';
 import styled from 'styled-components';
-import { getIndexTSX, getViteReactTSDependencies, indexHTML, logger } from '../baseCode';
+import {
+  getIndexTSX,
+  getViteReactTSDependencies,
+  indexHTML,
+  isPR,
+  logger,
+  vitePackageJSON,
+} from '../baseCode';
 import type { SandboxStackBlitzProps } from '../types';
 import BaseBox from '~components/Box/BaseBox';
 
@@ -33,12 +40,11 @@ const useStackblitzSetup = ({
   const colorScheme = docsContext?.store?.globals?.globals?.colorScheme ?? 'light';
   // @ts-expect-error docsContext.store exists
   const brandColor = docsContext?.store?.globals?.globals?.brandColor;
-
   const stackblitzProject: Project = React.useMemo(() => {
     return {
       title: 'Blade Example by Razorpay',
       description: "Example of Razorpay's Design System, Blade",
-      template: 'javascript',
+      template: isPR ? 'node' : 'javascript',
       files: {
         '.vscode/settings.json': JSON.stringify(
           {
@@ -62,12 +68,13 @@ const useStackblitzSetup = ({
         'App.js': code ? `import React from 'react';\n${dedent(code)}` : '',
         'Logger.js': logger,
         '.npmrc': `auto-install-peers = false`,
+        ...(isPR ? { 'package.json': vitePackageJSON } : {}),
         ...files,
       },
       dependencies: getViteReactTSDependencies().dependencies,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorScheme, brandColor]);
+  }, [colorScheme, brandColor, isPR]);
 
   React.useEffect(() => {
     if (sandboxRef.current) {
