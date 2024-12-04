@@ -73,7 +73,7 @@ export const getViteReactTSDependencies = (): Dependencies => {
       'react-router-dom': '^6',
       '@types/react': '^18',
       '@types/react-dom': '^18',
-      '@razorpay/blade': 'https://pkg.csb.dev/razorpay/blade/commit/06db577a/@razorpay/blade',
+      '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
       '@razorpay/i18nify-react': packageJson.peerDependencies['@razorpay/i18nify-react'],
@@ -92,7 +92,7 @@ export const vitePackageJSON = JSON.stringify(
       build: 'vite build',
     },
     stackblitz: {
-      startCommand: 'yarn install && yarn dev',
+      startCommand: 'pnpm install && pnpm dev',
       installDependencies: false,
     },
     ...getViteReactTSDependencies(),

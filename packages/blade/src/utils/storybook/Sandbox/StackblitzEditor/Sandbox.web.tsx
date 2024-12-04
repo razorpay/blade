@@ -12,6 +12,7 @@ import {
   indexHTML,
   isPR,
   logger,
+  viteConfigTS,
   vitePackageJSON,
 } from '../baseCode';
 import type { SandboxStackBlitzProps } from '../types';
@@ -40,6 +41,10 @@ const useStackblitzSetup = ({
   const colorScheme = docsContext?.store?.globals?.globals?.colorScheme ?? 'light';
   // @ts-expect-error docsContext.store exists
   const brandColor = docsContext?.store?.globals?.globals?.brandColor;
+
+  const fileExtension = isPR ? 'jsx' : 'js';
+  const filesObj = files ?? {};
+
   const stackblitzProject: Project = React.useMemo(() => {
     return {
       title: 'Blade Example by Razorpay',
@@ -58,18 +63,23 @@ const useStackblitzSetup = ({
           null,
           4,
         ),
-        'index.html': indexHTML,
-        'index.js': getIndexTSX({
+        'index.html': indexHTML.replace(/\.js/g, `.${fileExtension}`),
+        [`index.${fileExtension}`]: getIndexTSX({
           themeTokenName: 'bladeTheme',
           colorScheme,
           brandColor,
           showConsole,
         }),
-        'App.js': code ? `import React from 'react';\n${dedent(code)}` : '',
-        'Logger.js': logger,
+        [`App.${fileExtension}`]: code ? `import React from 'react';\n${dedent(code)}` : '',
+        [`Logger.${fileExtension}`]: logger,
+        ...(isPR ? { 'package.json': vitePackageJSON, 'vite.config.js': viteConfigTS } : {}),
         '.npmrc': `auto-install-peers = false`,
-        ...(isPR ? { 'package.json': vitePackageJSON } : {}),
-        ...files,
+        ...Object.fromEntries(
+          Object.entries(filesObj).map(([fileKey, fileValue]) => [
+            fileKey.replace('.js', `.${fileExtension}`),
+            fileValue,
+          ]),
+        ),
       },
       dependencies: getViteReactTSDependencies().dependencies,
     };
@@ -81,7 +91,7 @@ const useStackblitzSetup = ({
       sdk
         .embedProject(sandboxRef.current, stackblitzProject, {
           height: editorHeight,
-          openFile,
+          openFile: openFile ? openFile.replace(/\.js/g, `.${fileExtension}`) : undefined,
           terminalHeight: 0,
           hideDevTools: true,
           hideNavigation,
