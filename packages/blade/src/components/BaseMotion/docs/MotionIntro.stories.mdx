@@ -165,40 +165,5 @@ Checkout [Tokens - Motion](/?path=/docs/tokens-motion--docs) for full documentat
 
 You can learn more about each preset by checking individual documentation from storybook's sidebar. Razorpay employees can reach out to us on #design-system channel for any help. Checkout [Recipes](/?path=/story/motion-recipes) for more usecase level examples of motion.
 
-<Box marginTop="spacing.11" marginBottom="spacing.8">
-  <Heading size="2xlarge">Migration from Blade v11 to v12</Heading>
-</Box>
-
-TODO:
-
-<Heading size="xlarge">Changes</Heading>
-
-- Token Changes
-- Motion React Setup (previously known as Framer Motion)
-
-## Migration with Codemod
-
-**Step 1:** Install this version of Blade as `yarn add @razorpay/blade-rebranded@npm:@razorpay/blade@v11.0.0`.
-
-**Step 2:** Install new fonts (Inter & Tasa) by following [this file](https://blade.razorpay.com/?path=/docs/guides-installation--docs#-installing-fonts).
-
-**Step 3:** The codemod will update the components to the new version of Blade. Execute the codemod on the file/directory that needs to be migrated for the page via the following command:
-
-> Need help? Check out [jscodeshift docs](https://github.com/facebook/jscodeshift) for CLI usage tips.
-
-```sh
-npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade-rebranded/codemods/brand-refresh/transformers/index.ts --ignore-pattern="**/node_modules/**"
-```
-
-theme.motion.easing.entrance.effective -> theme.motion.easing.entrance
-theme.motion.easing.standard.effective -> theme.motion.easing.standard
-theme.motion.easing.exit.effective -> theme.motion.easing.exit
-theme.motion.easing.entrance.revealing -> theme.motion.easing.entrance
-theme.motion.easing.standard.revealing -> theme.motion.easing.emphasized
-theme.motion.easing.exit.revealing -> theme.motion.easing.exit
-theme.motion.easing.entrance.attentive -> theme.motion.easing.overshoot
-theme.motion.easing.exit.attentive -> theme.motion.easing.exit
-theme.motion.easing.standard.wary -> theme.motion.easing.shake
-
   </Box>
 </Move>
