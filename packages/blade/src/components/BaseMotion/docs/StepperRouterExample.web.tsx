@@ -1,7 +1,7 @@
 import { Route, useHistory, useLocation, matchPath, Switch } from 'react-router-dom';
 import type { StepItemProps } from '~components/StepGroup';
 import { StepGroup, StepItem, StepItemIndicator } from '~components/StepGroup';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence } from 'framer-motion';
 import { Box } from '~components/Box';
 import React from 'react';
 

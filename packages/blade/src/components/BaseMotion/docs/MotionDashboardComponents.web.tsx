@@ -42,7 +42,7 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence } from 'framer-motion';
 import { Slide } from '~components/Slide';
 import { Move } from '~components/Move';
 import { Spinner } from '~components/Spinner';
