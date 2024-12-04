@@ -292,7 +292,7 @@ export const InViewAnimation: StoryFn = (): React.ReactElement => {
     >
       <Box height="600px">Scroll</Box>
       <Box id="slide-container">
-        <Slide direction="right" motionTriggers={['inView']}>
+        <Slide direction="right" motionTriggers={['in-view']}>
           <Card testID="card">
             <CardBody>
               <Text>Slide Card</Text>

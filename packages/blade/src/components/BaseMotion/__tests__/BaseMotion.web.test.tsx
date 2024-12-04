@@ -5,16 +5,14 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 let mockMotionProps: Record<string, any> = {};
 let mockReducedMotion = false;
-jest.mock('motion/react', () => ({
-  m: {
-    create: jest.fn().mockImplementation(() => (props: any) => {
-      mockMotionProps = props;
-      const propsLowerCased = Object.fromEntries(
-        Object.entries(props).map(([propName, propValue]) => [propName.toLowerCase(), propValue]),
-      );
-      return <div {...propsLowerCased} />;
-    }),
-  },
+jest.mock('framer-motion', () => ({
+  m: jest.fn().mockImplementation(() => (props: any) => {
+    mockMotionProps = props;
+    const propsLowerCased = Object.fromEntries(
+      Object.entries(props).map(([propName, propValue]) => [propName.toLowerCase(), propValue]),
+    );
+    return <div {...propsLowerCased} />;
+  }),
   useReducedMotion: jest.fn(() => mockReducedMotion),
 }));
 
@@ -121,6 +119,8 @@ describe('<BaseMotionBox />', () => {
       </BaseMotionBox>,
     );
 
+    console.log({ mockMotionProps });
+
     expect(mockMotionProps.variants.exit.transition.duration).toBe(0.0001);
     expect(mockMotionProps.variants.animate.transition.duration).toBe(0.0001);
     mockReducedMotion = false;
@@ -137,7 +137,7 @@ describe('<BaseMotionBox />', () => {
           },
           exit: { color: 'yellow', transition: { duration: 0.3, ease: [0, 0, 0.4, 0] } },
         }}
-        motionTriggers={['hover', 'focus', 'inView']}
+        motionTriggers={['hover', 'focus', 'in-view']}
       >
         <div>hi</div>
       </BaseMotionBox>,
