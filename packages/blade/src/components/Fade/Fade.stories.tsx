@@ -171,7 +171,7 @@ export const FadeWhenInView = (args: typeof Fade): React.ReactElement => {
 };
 
 FadeWhenInView.args = {
-  motionTriggers: ['inView'],
+  motionTriggers: ['in-view'],
 };
 
 const stepsSampleData: StepItemProps[] = [

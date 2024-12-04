@@ -6,7 +6,7 @@ import type { MorphProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence } from 'framer-motion';
 import { TextInput } from '~components/Input/TextInput';
 import { Link } from '~components/Link';
 import { Display, Heading, Text } from '~components/Typography';

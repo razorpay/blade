@@ -11,7 +11,7 @@ import { DocsContainer } from '@storybook/addon-docs';
 import React from 'react';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import './global.css';
-import { domMax, LazyMotion } from 'motion/react';
+import { domMax, LazyMotion } from 'framer-motion';
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink

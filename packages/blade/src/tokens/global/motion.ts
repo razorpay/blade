@@ -20,7 +20,9 @@ type Duration = {
   '2xgentle': 960;
 };
 
-type Delay = {
+export type Delay = {
+  /** `0` milliseconds  */
+  none: 0;
   /** `80` milliseconds */
   '2xquick': 80;
   /** `160` milliseconds */
@@ -121,6 +123,7 @@ export type DurationString = `duration.${keyof Duration}`;
 export type DelayString = `delay.${keyof Delay}`;
 
 const delay: Delay = {
+  none: 0,
   '2xquick': 80,
   xquick: 160,
   moderate: 280,

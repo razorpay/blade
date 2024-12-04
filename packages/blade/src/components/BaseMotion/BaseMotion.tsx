@@ -1,17 +1,24 @@
-import { m as motion } from 'motion/react';
 import React from 'react';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { mergeRefs } from '@mantine/hooks';
-import { AnimatePresence } from 'motion/react';
 import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';
 import { useStagger } from '~components/Stagger/StaggerProvider';
 import type { BladeElementRef } from '~utils/types';
 import type { BaseMotionBoxProps, MotionMeta, BaseMotionEntryExitProps } from './types';
 import { makeAnimationVariables, useMotionVariants } from './baseMotionUtils';
+import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
+import type { BoxProps } from '~components/Box';
+import type { Theme } from '~components/BladeProvider';
 
 // Creating empty styled component so that the final component supports `as` prop
-const StyledDiv = styled.div``;
-const MotionDiv = motion.create(StyledDiv);
+const StyledDiv = styled.div((props: BoxProps & { theme: Theme }) => {
+  // We're turning normal div into Box here because our BaseBox does not forward the props to next component which is needed for enhancer component wrapper
+  const boxStyles = useMemoizedStyles(props);
+  return boxStyles;
+});
+
+const MotionDiv = motion(StyledDiv);
 
 const _BaseMotionBox = (
   {
@@ -25,7 +32,7 @@ const _BaseMotionBox = (
   ref: React.Ref<BladeElementRef>,
 ) => {
   const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
-  const { isInsideStaggerContainer } = useStagger();
+  const { isInsideStaggerContainer, staggerType } = useStagger();
   const shouldSkipAnimationVariables =
     (isInsideAnimateInteractionsContainer && motionTriggers.includes('on-animate-interactions')) ||
     isInsideStaggerContainer;
@@ -36,11 +43,14 @@ const _BaseMotionBox = (
         animateVisibility,
       });
 
-  const motionVariants = useMotionVariants(userMotionVariants, type);
+  const motionVariants = useMotionVariants(
+    userMotionVariants,
+    isInsideStaggerContainer ? staggerType : type,
+  );
 
   return (
     <MotionDiv
-      ref={ref}
+      ref={ref as never}
       viewport={{ amount: 0.8, once: true }}
       variants={motionVariants}
       {...animationVariables}
@@ -62,6 +72,7 @@ const _BaseMotionEnhancerBox: React.ForwardRefRenderFunction<HTMLDivElement, Bas
 ) => {
   return (
     <BaseMotionBox
+      // we need the ref of this item in AnimateInteractions to pass down ref that adds focusWithin logic
       ref={mergeRefs(children.props.ref, ref)}
       as={children.type}
       {...motionBoxArgs}

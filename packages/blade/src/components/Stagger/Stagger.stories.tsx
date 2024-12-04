@@ -69,7 +69,13 @@ const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
       <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
         Toggle Stagger
       </Button>
-      <Stagger {...args} isVisible={args.isVisible ?? isVisible}>
+      <Stagger
+        {...args}
+        display="flex"
+        flexDirection="row"
+        gap="spacing.4"
+        isVisible={args.isVisible ?? isVisible}
+      >
         {args.children}
       </Stagger>
     </Box>
@@ -79,7 +85,7 @@ const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
 export const Default = StaggerTemplate.bind({});
 Default.args = {
   children: (
-    <Box display="flex" flexDirection="row" gap="spacing.4">
+    <>
       <Fade>
         <InternalCardExample />
       </Fade>
@@ -89,14 +95,14 @@ Default.args = {
       <Fade>
         <InternalCardExample />
       </Fade>
-    </Box>
+    </>
   ),
 };
 
 export const MoveStagger = StaggerTemplate.bind({});
 MoveStagger.args = {
   children: (
-    <Box display="flex" flexDirection="row" gap="spacing.4">
+    <>
       <Move>
         <InternalCardExample />
       </Move>
@@ -106,14 +112,14 @@ MoveStagger.args = {
       <Move>
         <InternalCardExample />
       </Move>
-    </Box>
+    </>
   ),
 };
 
 export const SlideStagger = StaggerTemplate.bind({});
 SlideStagger.args = {
   children: (
-    <Box display="flex" flexDirection="row" gap="spacing.4">
+    <>
       <Slide>
         <InternalCardExample />
       </Slide>
@@ -123,24 +129,22 @@ SlideStagger.args = {
       <Slide>
         <InternalCardExample />
       </Slide>
-    </Box>
+    </>
   ),
 };
 
 export const OnMount = () => {
   return (
-    <Stagger>
-      <Box display="flex" flexDirection="row" gap="spacing.4">
-        <Move>
-          <InternalCardExample />
-        </Move>
-        <Move>
-          <InternalCardExample />
-        </Move>
-        <Move>
-          <InternalCardExample />
-        </Move>
-      </Box>
+    <Stagger display="flex" flexDirection="row" gap="spacing.4">
+      <Move>
+        <InternalCardExample />
+      </Move>
+      <Move>
+        <InternalCardExample />
+      </Move>
+      <Move>
+        <InternalCardExample />
+      </Move>
     </Stagger>
   );
 };

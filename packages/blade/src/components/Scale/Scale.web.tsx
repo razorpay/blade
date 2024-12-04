@@ -1,12 +1,43 @@
 import React from 'react';
 import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
-import { makeSecondsDuration } from '~utils/makeSecondsDuration';
-import { cssBezierToMotionFn } from '~utils/cssBezierToMotionFn';
+import { msToSeconds } from '~utils/msToSeconds';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
 import type { ScaleProps } from './types';
 
-export const Scale = ({
+/**
+ * ## Scale
+ *
+ * Scale is one of the highlight presets that we expose from blade to help you scale up or scale down components based on interactions
+ *
+ * ### Usage
+ *
+ * #### Scale up on hover
+ *
+ * ```jsx
+ * <Scale motionTriggers={['hover']}>
+ *  <Card />
+ * </Scale>
+ * ```
+ *
+ * #### Scale down on tap
+ *
+ * ```jsx
+ * <Scale variant="scale-down" motionTriggers={['tap']}>
+ *   <Card />
+ * </Scale>
+ * ```
+ *
+ * #### Conditionally scale
+ *
+ * ```jsx
+ * <Scale isHighlighted={isHighlightedState}>
+ *   <MyComponent />
+ * </Scale>
+ * ```
+ */
+const Scale = ({
   children,
   isHighlighted,
   type = 'inout',
@@ -29,8 +60,8 @@ export const Scale = ({
             : 0.98
           : undefined,
       transition: {
-        duration: makeSecondsDuration(theme.motion.duration.gentle),
-        ease: cssBezierToMotionFn(castWebType(theme.motion.easing.standard)),
+        duration: msToSeconds(theme.motion.duration.moderate),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.standard)),
       },
     },
     exit: {
@@ -47,3 +78,5 @@ export const Scale = ({
     />
   );
 };
+
+export { Scale };
