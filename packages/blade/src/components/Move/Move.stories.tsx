@@ -156,7 +156,7 @@ export const MoveWhenInView = (args: typeof Move): React.ReactElement => {
 };
 
 MoveWhenInView.args = {
-  motionTriggers: ['inView'],
+  motionTriggers: ['in-view'],
 };
 
 const stepsSampleData: StepItemProps[] = [

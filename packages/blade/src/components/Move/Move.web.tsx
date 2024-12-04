@@ -1,13 +1,35 @@
-import { BaseMotionEntryExit } from '~components/BaseMotion';
-import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
 import React from 'react';
+import { BaseMotionEntryExit } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, makeSpace, useTheme } from '~utils';
+import type { MoveProps } from './types';
 
-export type MoveProps = BaseMotionEntryExitProps;
-
-export const Move = ({
+/**
+ * ## Move
+ *
+ * Move is one of the motion presets that we expose from blade to help you make components appear / disappear with move
+ *
+ * ### Usage
+ *
+ * #### Move in on mount
+ *
+ * ```jsx
+ * <Move>
+ *   <Card />
+ * </Move>
+ * ```
+ *
+ * #### Conditionally move based on state
+ *
+ * ```jsx
+ * <Move isVisible={isVisibleState}>
+ *   <Card />
+ * </Move>
+ * ```
+ */
+const Move = ({
   children,
   type = 'inout',
   isVisible,
@@ -59,3 +81,5 @@ export const Move = ({
     />
   );
 };
+
+export { Move };

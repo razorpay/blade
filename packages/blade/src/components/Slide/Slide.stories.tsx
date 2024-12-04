@@ -164,7 +164,7 @@ export const SlideWhenInView = (args: typeof Slide): React.ReactElement => {
 };
 
 SlideWhenInView.args = {
-  motionTriggers: ['inView'],
+  motionTriggers: ['in-view'],
   direction: 'right',
 };
 

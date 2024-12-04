@@ -5,7 +5,33 @@ import React from 'react';
 import { useAnimation } from 'framer-motion';
 import type { AnimateInteractionsProps } from './types';
 
-export const AnimateInteractions = ({
+/**
+ * ## AnimateInteractions
+ *
+ * AnimateInteractions is the utility preset that we offer to help you animate children when the parent is interacted.
+ *
+ * This is in a way equivalent to following CSS-
+ * ```css
+ * .parent:hover .child { }
+ * ```
+ *
+ * ### Usage
+ *
+ * ```jsx
+ * <AnimateInteractions
+ *    motionTriggers={['hover']}
+ *  > // <-- When this is hovered
+ *  <Box>
+ *    <Move
+ *      motionTriggers={['on-animate-interactions']}
+ *    > // <-- this animates in
+ *      <Box />
+ *    </Move>
+ *  </Box>
+ * </AnimateInteractions>
+ * ```
+ */
+const AnimateInteractions = ({
   children,
   motionTriggers = ['hover'],
 }: AnimateInteractionsProps) => {
@@ -29,3 +55,5 @@ export const AnimateInteractions = ({
     </AnimateInteractionsContext.Provider>
   );
 };
+
+export { AnimateInteractions };
