@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.38.0
+
+### Minor Changes
+
+- a51e8f70: feat(StepGroup): spacing enhancements, support for titleColor prop
+- 7117bfbc: feat: add support for data-analytics attribute
+
 ## 11.37.0
 
 ### Minor Changes
