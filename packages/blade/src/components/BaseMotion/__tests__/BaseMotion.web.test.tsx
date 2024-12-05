@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import '@testing-library/jest-dom';
 import { BaseMotionBox, BaseMotionEnhancerBox } from '../index';

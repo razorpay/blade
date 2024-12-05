@@ -1,5 +1,5 @@
 import type { BaseMotionEntryExitProps } from '~components/BaseMotion';
-import { BoxProps } from '~components/Box';
+import type { BoxProps } from '~components/Box';
 
 type StaggerProps = Pick<
   BaseMotionEntryExitProps,

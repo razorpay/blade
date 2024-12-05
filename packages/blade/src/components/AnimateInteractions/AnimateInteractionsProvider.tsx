@@ -1,10 +1,14 @@
 import React from 'react';
 
-const AnimateInteractionsContext = React.createContext({
+type AnimateInteractionsContextType = {
+  isInsideAnimateInteractionsContainer: boolean;
+};
+
+const AnimateInteractionsContext = React.createContext<AnimateInteractionsContextType>({
   isInsideAnimateInteractionsContainer: false,
 });
 
-const useAnimateInteractions = () => {
+const useAnimateInteractions = (): AnimateInteractionsContextType => {
   const animateInteractionsContextValue = React.useContext(AnimateInteractionsContext);
   return animateInteractionsContextValue;
 };

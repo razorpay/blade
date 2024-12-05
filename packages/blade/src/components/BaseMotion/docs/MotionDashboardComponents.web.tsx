@@ -1,9 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { TopNav, TopNavActions, TopNavContent, TopNavBrand, TabNavItems } from '~components/TopNav';
+import {
+  TopNav,
+  TopNavActions,
+  TopNavContent,
+  TopNavBrand,
+  TabNavItems,
+  TabNavItem,
+  TabNav,
+} from '~components/TopNav';
 import type { TabNavItemProps } from '~components/TopNav';
-import { TabNav, TabNavItem } from '~components/TopNav';
 import { Box } from '~components/Box';
 import type { SideNavLinkProps, SideNavProps } from '~components/SideNav';
 import {
@@ -42,7 +51,6 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { AnimatePresence } from 'framer-motion';
 import { Slide } from '~components/Slide';
 import { Move } from '~components/Move';
 import { Spinner } from '~components/Spinner';
@@ -148,7 +156,7 @@ export const DashboardWithRoutingExample = ({
   routeComponent,
 }: {
   routeComponent: (props: any) => React.ReactElement;
-}) => {
+}): React.ReactElement => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -251,20 +259,18 @@ export const DashboardWithRoutingExample = ({
                       >
                         {({ items }) => {
                           return (
-                            <>
-                              <TabNavItems>
-                                {items.map((item) => {
-                                  return (
-                                    <TabNavItemLink
-                                      key={item.title}
-                                      title={item.title}
-                                      href={item.href}
-                                      icon={item.icon}
-                                    />
-                                  );
-                                })}
-                              </TabNavItems>
-                            </>
+                            <TabNavItems>
+                              {items.map((item) => {
+                                return (
+                                  <TabNavItemLink
+                                    key={item.title}
+                                    title={item.title}
+                                    href={item.href}
+                                    icon={item.icon}
+                                  />
+                                );
+                              })}
+                            </TabNavItems>
                           );
                         }}
                       </TabNav>

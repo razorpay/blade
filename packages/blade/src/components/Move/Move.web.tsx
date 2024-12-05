@@ -1,10 +1,10 @@
 import React from 'react';
+import type { MoveProps } from './types';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, makeSpace, useTheme } from '~utils';
-import type { MoveProps } from './types';
 
 /**
  * ## Move
@@ -36,7 +36,7 @@ const Move = ({
   motionTriggers,
   shouldUnmountWhenHidden,
   delay,
-}: MoveProps) => {
+}: MoveProps): React.ReactElement => {
   const { theme } = useTheme();
   const enterDelay = typeof delay === 'object' ? delay.enter : delay;
   const exitDelay = typeof delay === 'object' ? delay.exit : delay;

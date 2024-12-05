@@ -1,10 +1,10 @@
 import React from 'react';
+import type { ScaleProps } from './types';
 import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
-import type { ScaleProps } from './types';
 
 /**
  * ## Scale
@@ -43,7 +43,7 @@ const Scale = ({
   type = 'inout',
   variant = 'scale-up',
   motionTriggers,
-}: ScaleProps) => {
+}: ScaleProps): React.ReactElement => {
   const isControlledHighlighted = typeof isHighlighted === 'boolean';
   const defaultMotionTriggers = isControlledHighlighted ? ['mount' as const] : ['hover' as const];
   const { theme } = useTheme();

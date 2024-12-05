@@ -24,7 +24,10 @@ type AnimationVariablesType = Partial<
 const makeAnimationVariables = (
   motionTriggers: MotionTriggersType[],
   { animateVisibility }: { animateVisibility: BaseMotionBoxProps['animateVisibility'] },
-) => {
+): AnimationVariablesType & {
+  initial: string;
+  exit: string;
+} => {
   const interactionVariables = motionTriggers.reduce<AnimationVariablesType>(
     (prevProps, currentTrigger) => {
       if (currentTrigger === 'on-animate-interactions') {
@@ -56,7 +59,9 @@ const useMotionVariants = (
     return undefined;
   }
 
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const shouldSkipEntryAnimation = shouldReduceMotion || type === 'out';
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const shouldSkipExitAnimation = shouldReduceMotion || type === 'in';
 
   // We override durations to stop animations but still continue with the expected position changes

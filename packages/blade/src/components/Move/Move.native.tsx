@@ -1,6 +1,6 @@
+import type { MoveProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
-import type { MoveProps } from './types';
 
 const Move = (_props: MoveProps): React.ReactElement => {
   throwBladeError({

@@ -135,9 +135,9 @@ OnlyInAnimation.play = async ({ canvasElement }) => {
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
   // we're not adding waitFor here and kept sleep timer smaller than animation duration to ensure elements are not animating out
   await sleep(10);
-  expect(getByTestId('badge')).toHaveStyle('opacity: 0');
-  expect(getByTestId('button').style.transform).toBe('translateY(16px)');
-  expect(getByTestId('card').style.transform).toBe('translateY(100vh)');
+  await expect(getByTestId('badge')).toHaveStyle('opacity: 0');
+  await expect(getByTestId('button').style.transform).toBe('translateY(16px)');
+  await expect(getByTestId('card').style.transform).toBe('translateY(100vh)');
 };
 
 export const OnlyOutAnimation: StoryFn = (): React.ReactElement => {
@@ -174,9 +174,9 @@ OnlyOutAnimation.play = async ({ canvasElement }) => {
 
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
   await sleep(10);
-  expect(getByTestId('badge')).toHaveStyle('opacity: 1');
-  expect(getByTestId('button').style.transform).toBe('translateY(0px)');
-  expect(getByTestId('card').style.transform).toBe('translateY(0%)');
+  await expect(getByTestId('badge')).toHaveStyle('opacity: 1');
+  await expect(getByTestId('button').style.transform).toBe('translateY(0px)');
+  await expect(getByTestId('card').style.transform).toBe('translateY(0%)');
 
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
   await waitFor(() => expect(getByTestId('badge')).toHaveStyle('opacity: 0'));
@@ -215,7 +215,7 @@ UnmountOnHidden.play = async ({ canvasElement }) => {
   await waitFor(() => expect(queryByTestId('badge')).not.toBeInTheDocument());
   await waitFor(() => expect(queryByTestId('button')).not.toBeInTheDocument());
   await waitFor(() => expect(queryByTestId('card')).not.toBeInTheDocument());
-  expect(getByTestId('layout').clientHeight).toBeLessThan(50);
+  await expect(getByTestId('layout').clientHeight).toBeLessThan(50);
 
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
   await waitFor(() => expect(getByTestId('badge')).toHaveStyle('opacity: 1'));
@@ -438,7 +438,7 @@ export const StaggerChildren: StoryFn = (): React.ReactElement => {
             'Primary Product: Banking',
           ].map((chipLabel, index) => {
             return (
-              <Fade>
+              <Fade key={index}>
                 <Chip
                   testID={`chip-testid-${index}`}
                   value={chipLabel.toLowerCase().replace(/ /g, '-')}

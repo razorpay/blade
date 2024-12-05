@@ -1,6 +1,6 @@
+import type { SlideProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
-import type { SlideProps } from './types';
 
 const Slide = (_props: SlideProps): React.ReactElement => {
   throwBladeError({

@@ -1,6 +1,6 @@
 import type React from 'react';
-import type { MotionMetaProp } from '~components/BaseMotion';
 import type { BladeElementRef } from './types';
+import type { MotionMetaProp } from '~components/BaseMotion';
 
 type MotionRefsType = {
   ref: React.Ref<BladeElementRef>;
@@ -41,7 +41,7 @@ type MotionRefsType = {
  *
  * - When you want to forward ref to component on inner element instead of outer element (e.g. passing down the ref to input in checkbox)
  */
-const getOuterMotionRef = ({ _motionMeta, ref }: MotionRefsType): any => {
+const getOuterMotionRef = ({ _motionMeta, ref }: MotionRefsType): MotionRefsType['ref'] => {
   return _motionMeta?.isEnhanced ? ref : null;
 };
 
@@ -80,7 +80,7 @@ const getOuterMotionRef = ({ _motionMeta, ref }: MotionRefsType): any => {
  *
  * - When you want to forward ref to component on inner element instead of outer element (e.g. passing down the ref to input in checkbox)
  */
-const getInnerMotionRef = ({ _motionMeta, ref }: MotionRefsType): any => {
+const getInnerMotionRef = ({ _motionMeta, ref }: MotionRefsType): MotionRefsType['ref'] => {
   return _motionMeta?.isEnhanced ? _motionMeta.innerRef : ref;
 };
 

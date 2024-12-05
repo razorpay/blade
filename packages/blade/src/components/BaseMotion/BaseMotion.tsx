@@ -2,11 +2,11 @@ import React from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { mergeRefs } from '@mantine/hooks';
+import type { BaseMotionBoxProps, MotionMeta, BaseMotionEntryExitProps } from './types';
+import { makeAnimationVariables, useMotionVariants } from './baseMotionUtils';
 import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';
 import { useStagger } from '~components/Stagger/StaggerProvider';
 import type { BladeElementRef } from '~utils/types';
-import type { BaseMotionBoxProps, MotionMeta, BaseMotionEntryExitProps } from './types';
-import { makeAnimationVariables, useMotionVariants } from './baseMotionUtils';
 import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
 import type { BoxProps } from '~components/Box';
 import type { Theme } from '~components/BladeProvider';
@@ -30,7 +30,7 @@ const _BaseMotionBox = (
     ...rest
   }: BaseMotionBoxProps,
   ref: React.Ref<BladeElementRef>,
-) => {
+): React.ReactElement => {
   const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
   const { isInsideStaggerContainer, staggerType } = useStagger();
   const shouldSkipAnimationVariables =
@@ -101,7 +101,7 @@ const BaseMotionEntryExit = ({
   type = 'inout',
   motionTriggers = ['mount'],
   shouldUnmountWhenHidden = false,
-}: BaseMotionEntryExitProps) => {
+}: BaseMotionEntryExitProps): React.ReactElement => {
   // Only need AnimatePresence when we have to unmount the component
   const AnimateWrapper = shouldUnmountWhenHidden ? AnimatePresence : React.Fragment;
   // keep it always mounted when shouldUnmountWhenHidden is false

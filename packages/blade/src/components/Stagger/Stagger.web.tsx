@@ -1,9 +1,9 @@
-import { BaseMotionBox } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
+import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { StaggerContext } from './StaggerProvider';
-import { StaggerProps } from './types';
-import React from 'react';
+import type { StaggerProps } from './types';
+import { BaseMotionBox } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { useTheme } from '~utils';
 
@@ -49,7 +49,7 @@ const Stagger = ({
   delay = 'none',
   motionTriggers,
   ...boxProps
-}: StaggerProps) => {
+}: StaggerProps): React.ReactElement => {
   const { theme } = useTheme();
   // Only need AnimatePresence when we have to unmount the component
   const AnimateWrapper = shouldUnmountWhenHidden ? AnimatePresence : React.Fragment;

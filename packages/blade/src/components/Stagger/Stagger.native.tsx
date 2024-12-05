@@ -1,6 +1,6 @@
+import type { StaggerProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
-import type { StaggerProps } from './types';
 
 const Stagger = (_props: StaggerProps): React.ReactElement => {
   throwBladeError({
