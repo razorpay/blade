@@ -1,7 +1,8 @@
 import type { FileInfo } from 'jscodeshift';
+// eslint-disable-next-line import/extensions
 import * as tokenMapping from './motionTokenMapping.json';
 
-export default function transformer(file: FileInfo) {
+const transformer = (file: FileInfo): string => {
   // Fairly simple usecases of motion tokens in razorpay files so this works.
   // .replace has also worked well during rebranding
   const newSource = file.source.replace(/motion\.easing\.[\w\.]+/g, (matchingToken) => {
@@ -17,4 +18,6 @@ export default function transformer(file: FileInfo) {
   });
 
   return newSource;
-}
+};
+
+export default transformer;

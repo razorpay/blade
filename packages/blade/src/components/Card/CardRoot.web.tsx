@@ -6,7 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
-import { BladeElementRef } from '~utils/types';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
   ({ as, theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
@@ -63,7 +63,7 @@ const _CardRoot: React.ForwardRefRenderFunction<BladeElementRef, CardRootProps> 
 
   return (
     <StyledCardRoot
-      ref={ref as any}
+      ref={ref as never}
       as={as}
       {...props}
       isMobile={isMobile}

@@ -19,7 +19,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType, makeSize, useTheme } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
-import { MotionMetaProp } from '~components/BaseMotion';
+import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 
 type RadioProps = {

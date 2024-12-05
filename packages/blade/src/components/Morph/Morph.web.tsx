@@ -1,8 +1,8 @@
 import React from 'react';
+import type { MorphProps } from './types';
 import { MotionDiv } from '~components/BaseMotion';
-import { MorphProps } from './types';
 
-const Morph = ({ children, layoutId }: MorphProps) => {
+const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
   return (
     <MotionDiv
       as={children.type}
