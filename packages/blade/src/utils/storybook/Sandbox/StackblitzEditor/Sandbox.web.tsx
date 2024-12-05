@@ -46,6 +46,9 @@ const useStackblitzSetup = ({
   const filesObj = files ?? {};
 
   const stackblitzProject: Project = React.useMemo(() => {
+    // since its javascript template, it doesn't autoimport react in examples. Here I'm just injecting react if its not imported
+    const reactImport = code?.includes('import React') ? '' : "import React from 'react'";
+
     return {
       title: 'Blade Example by Razorpay',
       description: "Example of Razorpay's Design System, Blade",
@@ -70,7 +73,7 @@ const useStackblitzSetup = ({
           brandColor,
           showConsole,
         }),
-        [`App.${fileExtension}`]: code ? `import React from 'react';\n${dedent(code)}` : '',
+        [`App.${fileExtension}`]: code ? `${reactImport};\n${dedent(code)}` : '',
         [`Logger.${fileExtension}`]: logger,
         ...(isPR ? { 'package.json': vitePackageJSON, 'vite.config.js': viteConfigTS } : {}),
         '.npmrc': `auto-install-peers = false`,
