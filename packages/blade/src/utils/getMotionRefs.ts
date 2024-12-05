@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type React from 'react';
 import type { BladeElementRef } from './types';
 import type { MotionMetaProp } from '~components/BaseMotion';
@@ -41,7 +42,7 @@ type MotionRefsType = {
  *
  * - When you want to forward ref to component on inner element instead of outer element (e.g. passing down the ref to input in checkbox)
  */
-const getOuterMotionRef = ({ _motionMeta, ref }: MotionRefsType): MotionRefsType['ref'] => {
+const getOuterMotionRef = ({ _motionMeta, ref }: MotionRefsType): any => {
   return _motionMeta?.isEnhanced ? ref : null;
 };
 
@@ -80,7 +81,7 @@ const getOuterMotionRef = ({ _motionMeta, ref }: MotionRefsType): MotionRefsType
  *
  * - When you want to forward ref to component on inner element instead of outer element (e.g. passing down the ref to input in checkbox)
  */
-const getInnerMotionRef = ({ _motionMeta, ref }: MotionRefsType): MotionRefsType['ref'] => {
+const getInnerMotionRef = ({ _motionMeta, ref }: MotionRefsType): any => {
   return _motionMeta?.isEnhanced ? _motionMeta.innerRef : ref;
 };
 

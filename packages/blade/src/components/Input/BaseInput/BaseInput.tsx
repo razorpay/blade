@@ -1015,7 +1015,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               <StyledBaseInput
                 as={as}
                 id={inputId}
-                ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any })}
+                ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any }) as never}
                 name={name}
                 type={type}
                 defaultValue={defaultValue}
