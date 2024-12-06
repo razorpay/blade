@@ -249,13 +249,13 @@ export const SlideDirection: StoryFn = (): React.ReactElement => {
 
 SlideDirection.play = async ({ canvasElement }) => {
   const { getByRole, getByTestId } = within(canvasElement);
-  await waitFor(() => expect(getByTestId('card').style.transform).toBe('translateY(-100%)'));
+  await waitFor(() => expect(getByTestId('card').style.transform).toBe('translateX(100%)'));
 
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
   await waitFor(() => expect(getByTestId('card').style.transform).toBe('translateY(0%)'));
 
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
-  await waitFor(() => expect(getByTestId('card').style.transform).toBe('translateY(-100%)'));
+  await waitFor(() => expect(getByTestId('card').style.transform).toBe('translateX(100%)'));
 };
 
 export const ScaleOnHover: StoryFn = (): React.ReactElement => {
@@ -436,6 +436,14 @@ export const StaggerChildren: StoryFn = (): React.ReactElement => {
             'Account Status: Activated',
             'Test Mode: Disabled',
             'Primary Product: Banking',
+            'Business Type: Freelance 2',
+            'Account Status: Activated 2',
+            'Test Mode: Disabled 2',
+            'Primary Product: Banking 2',
+            'Business Type: Freelance 3',
+            'Account Status: Activated 3',
+            'Test Mode: Disabled 3',
+            'Primary Product: Banking 3',
           ].map((chipLabel, index) => {
             return (
               <Fade key={index}>
@@ -458,8 +466,8 @@ StaggerChildren.play = async ({ canvasElement }) => {
   const { getByTestId, getByRole } = within(canvasElement);
   // tests that last element was still invisible when first element appeared
   await waitFor(() => expect(getByTestId('chip-testid-0')).toHaveStyle('opacity: 1'));
-  await expect(getByTestId('chip-testid-3')).toHaveStyle('opacity: 0');
-  await waitFor(() => expect(getByTestId('chip-testid-3')).toHaveStyle('opacity: 1'));
+  await expect(getByTestId('chip-testid-11')).toHaveStyle('opacity: 0');
+  await waitFor(() => expect(getByTestId('chip-testid-11')).toHaveStyle('opacity: 1'));
 
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
 
