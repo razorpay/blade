@@ -20,7 +20,7 @@ const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
 
 const fileUploadMotionTokens: Record<'duration' | 'easing', DurationString | EasingString> = {
   duration: 'duration.2xquick',
-  easing: 'easing.standard.effective',
+  easing: 'easing.standard',
 };
 
 const fileUploadHeightTokens = {

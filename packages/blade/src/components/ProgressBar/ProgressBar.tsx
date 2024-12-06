@@ -251,7 +251,7 @@ const ProgressBar = ({
               pulseMotionDuration="duration.2xgentle"
               fillMotionDuration="duration.2xgentle"
               pulseMotionDelay="delay.long"
-              motionEasing="easing.standard.revealing"
+              motionEasing="easing.emphasized"
             />
           ) : (
             <BaseBox
@@ -267,7 +267,7 @@ const ProgressBar = ({
                 pulseMotionDuration="duration.2xgentle"
                 indeterminateMotionDuration="duration.2xgentle"
                 pulseMotionDelay="delay.long"
-                motionEasing="easing.standard.revealing"
+                motionEasing="easing.emphasized"
                 type={progressType}
                 isIndeterminate={isIndeterminate}
               />

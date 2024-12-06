@@ -8,7 +8,7 @@ describe('makeMotionTime', () => {
   });
 
   it('should return the delay value in `number`', () => {
-    const delay = makeMotionTime(motion.delay.short);
-    expect(delay).toEqual(180);
+    const delay = makeMotionTime(motion.delay.xquick);
+    expect(delay).toEqual(160);
   });
 });

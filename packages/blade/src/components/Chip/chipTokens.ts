@@ -195,7 +195,7 @@ const chipTextSizes = {
 
 const chipMotionTokens: Record<'duration' | 'easing', DurationString | EasingString> = {
   duration: 'duration.xquick',
-  easing: 'easing.standard.effective',
+  easing: 'easing.standard',
 };
 
 export {

@@ -57,7 +57,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
       : theme.colors.interactive.icon[emphasisColor].muted,
     transitionProperty: 'color, box-shadow',
     transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
-    transitionTimingFunction: motionToken.easing.standard.effective as string,
+    transitionTimingFunction: motionToken.easing.standard as string,
 
     '&:hover:not([disabled])': {
       color: theme.colors.interactive.icon[emphasisColor].subtle,

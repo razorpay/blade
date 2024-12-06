@@ -325,37 +325,75 @@ export const InternalAutoCompleteControlledSelection = (): React.ReactElement =>
   );
 };
 
-const cities = [
-  {
-    title: 'Mumbai',
-    value: 'mumbai',
-    keywords: ['maharashtra'],
-  },
-  {
-    title: 'Pune',
-    value: 'pune',
-    keywords: ['maharashtra'],
-  },
-  {
-    title: 'Bengaluru',
-    value: 'bengaluru',
-    keywords: ['karnataka', 'bangalore'],
-  },
-  {
-    title: 'Ooty',
-    value: 'ooty',
-    keywords: ['tamil nadu'],
-  },
-];
+const getCities = () => {
+  const cities = [
+    {
+      title: 'Mumbai',
+      value: 'mumbai',
+      keywords: ['maharashtra'],
+    },
+    {
+      title: 'Pune',
+      value: 'pune',
+      keywords: ['maharashtra'],
+    },
+    {
+      title: 'Bengaluru',
+      value: 'bengaluru',
+      keywords: ['karnataka', 'bangalore'],
+    },
+    {
+      title: 'Ooty',
+      value: 'ooty',
+      keywords: ['tamil nadu'],
+    },
+  ];
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(cities);
+    }, 500);
+  });
+};
+
 export const InternalAutoCompleteControlled = (): React.ReactElement => {
+  const [cities, setCities] = React.useState([]);
+  React.useEffect(() => {
+    getCities().then((data) => {
+      setCities(data);
+      setFilteredValues(data);
+    });
+
+    // setTimeout(() => {
+    //   setFilteredValues(['mumbai', 'bengaluru']);
+    // }, 5000);
+  }, []);
+
+  console.log(cities);
+
   const cityValues = cities.map((city) => city.value);
   const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
+  const [inputValue, setInputValue] = React.useState('Pune');
+  const [selectedValue, setSelectedValue] = React.useState('pune');
 
   return (
-    <Dropdown selectionType="multiple">
+    <Dropdown
+      selectionType="single"
+      onOpenChange={(isOpen) => {
+        // if (isOpen) {
+        //   setFilteredValues(cities);
+        // }
+        // console.log(filteredValues);
+      }}
+    >
       <AutoComplete
         label="City"
+        value={selectedValue}
+        inputValue={inputValue}
         onInputValueChange={({ value }) => {
+          console.log('onInputValueChange called');
+          setInputValue(value ?? '');
+
           if (value) {
             const filteredItems = cities
               .filter(
@@ -375,6 +413,10 @@ export const InternalAutoCompleteControlled = (): React.ReactElement => {
           } else {
             setFilteredValues(cityValues);
           }
+        }}
+        onChange={({ values }) => {
+          console.log('onChange called');
+          setSelectedValue(values[0]);
         }}
         filteredValues={filteredValues}
         helpText="Try typing 'maharashtra' in input"

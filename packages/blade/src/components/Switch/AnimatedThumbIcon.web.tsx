@@ -11,7 +11,7 @@ const AnimatedThumbIcon = styled(Svg)<{ isChecked?: boolean }>(({ isChecked, the
   return {
     transitionDuration: `${makeMotionTime(duration)}`,
     transitionTimingFunction: easing,
-    transitionDelay: isChecked ? `${makeMotionTime(theme.motion.delay['2xshort'])}` : `0ms`,
+    transitionDelay: isChecked ? `${makeMotionTime(theme.motion.delay['2xquick'])}` : `0ms`,
     opacity: isChecked ? 1 : 0,
   };
 });
