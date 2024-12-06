@@ -7,9 +7,17 @@ import { useStagger } from '~components/Stagger/StaggerProvider';
 import type { BladeElementRef } from '~utils/types';
 import type { BaseMotionBoxProps, MotionMeta, BaseMotionEntryExitProps } from './types';
 import { makeAnimationVariables, useMotionVariants } from './baseMotionUtils';
+import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
+import type { BoxProps } from '~components/Box';
+import type { Theme } from '~components/BladeProvider';
 
 // Creating empty styled component so that the final component supports `as` prop
-const StyledDiv = styled.div``;
+const StyledDiv = styled.div((props: BoxProps & { theme: Theme }) => {
+  // We're turning normal div into Box here because our BaseBox does not forward the props to next component which is needed for enhancer component wrapper
+  const boxStyles = useMemoizedStyles(props);
+  return boxStyles;
+});
+
 const MotionDiv = motion(StyledDiv);
 
 const _BaseMotionBox = (
@@ -40,8 +48,16 @@ const _BaseMotionBox = (
     isInsideStaggerContainer ? staggerType : type,
   );
 
+  console.count('BaseMotionBox');
+
   return (
-    <MotionDiv ref={ref as never} variants={motionVariants} {...animationVariables} {...rest}>
+    <MotionDiv
+      ref={ref as never}
+      viewport={{ amount: 0.8, once: true }}
+      variants={motionVariants}
+      {...animationVariables}
+      {...rest}
+    >
       {children}
     </MotionDiv>
   );

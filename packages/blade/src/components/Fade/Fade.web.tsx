@@ -1,13 +1,35 @@
 import React from 'react';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
-import type { BaseMotionEntryExitProps, MotionVariantsType } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
 import { castWebType, useTheme } from '~utils';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { msToSeconds } from '~utils/msToSeconds';
+import type { FadeProps } from './types';
 
-export type FadeProps = BaseMotionEntryExitProps;
-
-export const Fade = ({
+/**
+ * ## Fade
+ *
+ * Fade is one of the motion presets that we expose from blade to help you fade in / fade out components easily.
+ *
+ * ### Usage
+ *
+ * #### Fade in on mount
+ *
+ * ```jsx
+ * <Fade>
+ *   <Card />
+ * </Fade>
+ * ```
+ *
+ * #### Conditionally fade based on state
+ *
+ * ```jsx
+ * <Fade isVisible={isVisibleState}>
+ *   <Card />
+ * </Fade>
+ * ```
+ */
+const Fade = ({
   children,
   isVisible,
   type = 'inout',
@@ -54,3 +76,5 @@ export const Fade = ({
     />
   );
 };
+
+export { Fade };

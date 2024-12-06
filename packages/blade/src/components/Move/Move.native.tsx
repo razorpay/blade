@@ -1,8 +1,8 @@
-import { BaseMotionEntryExitProps } from '~components/BaseMotion';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+import type { MoveProps } from './types';
 
-const Move = (_props: BaseMotionEntryExitProps): React.ReactElement => {
+const Move = (_props: MoveProps): React.ReactElement => {
   throwBladeError({
     message: 'Move is not yet implemented for native',
     moduleName: 'Move',
@@ -12,4 +12,3 @@ const Move = (_props: BaseMotionEntryExitProps): React.ReactElement => {
 };
 
 export { Move };
-export type { BaseMotionEntryExitProps as MoveProps };

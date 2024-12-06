@@ -25,7 +25,32 @@ const getFromTransform = (
   return `translateY(${fromOffset})`;
 };
 
-export const Slide = ({
+/**
+ * ## Slide
+ *
+ * Slide is one of the motion presets that we expose from blade to help you make components slide in from outside of viewport
+ *
+ * If you're looking for subtle movement on enter in the viewport itself, checkout `Move` preset instead.
+ *
+ * ### Usage
+ *
+ * #### Slide in on mount
+ *
+ * ```jsx
+ * <Slide direction="bottom">
+ *   <Card />
+ * </Slide>
+ * ```
+ *
+ * #### Conditionally slide based on state
+ *
+ * ```jsx
+ * <Slide isVisible={isVisibleState}>
+ *   <Card />
+ * </Slide>
+ * ```
+ */
+const Slide = ({
   children,
   type = 'inout',
   direction = 'bottom',
@@ -118,3 +143,5 @@ export const Slide = ({
     />
   );
 };
+
+export { Slide };
