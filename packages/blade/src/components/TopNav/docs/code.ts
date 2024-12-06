@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 
 export const topNavFullExample = {
-  'App.tsx': dedent`import React from 'react';
+  'App.js': dedent`import React from 'react';
   import { BrowserRouter } from 'react-router-dom';
   import { TopNavExample } from './TopNavExample';
   
@@ -15,7 +15,7 @@ export const topNavFullExample = {
 
   export default App;
   `,
-  'TopNavExample.tsx': dedent`import React from "react";
+  'TopNavExample.js': dedent`import React from "react";
   import styled from "styled-components";
   import { Link, useLocation, useNavigate } from "react-router-dom";
   import { SideNavExample } from "./SideNavExample";
@@ -58,17 +58,9 @@ export const topNavFullExample = {
     SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   } from "@razorpay/blade/components";
   import { makeSize } from "@razorpay/blade/utils";
-  import type {
-    TabNavItemProps,
-    IconComponent,
-  } from "@razorpay/blade/components";
 
-  const TabNavItemLink = React.forwardRef<
-    HTMLAnchorElement,
-    Omit<TabNavItemProps, "as"> & {
-      activeOnLinks?: string[];
-    }
-  >((props, ref) => {
+
+  const TabNavItemLink = React.forwardRef((props, ref) => {
     const location = useLocation();
     return (
       <TabNavItem
@@ -87,11 +79,7 @@ export const topNavFullExample = {
     icon: Icon,
     title,
     description,
-  }: {
-    icon: IconComponent;
-    title?: string;
-    description: string;
-  }): React.ReactElement => {
+  }) => {
     return (
       <Box display="flex" gap="spacing.4">
         <Box
@@ -121,12 +109,12 @@ export const topNavFullExample = {
     };
   });
 
-  const TopNavExample = (): React.ReactElement => {
+  const TopNavExample = () => {
     const { platform } = useTheme();
     const navigate = useNavigate();
     const isMobile = platform === "onMobile";
     const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
-    const [selectedProduct, setSelectedProduct] = React.useState<string | null>(
+    const [selectedProduct, setSelectedProduct] = React.useState(
       null
     );
 
@@ -255,14 +243,14 @@ export const topNavFullExample = {
                                     <MenuItem
                                       key={item.href}
                                       onClick={() => {
-                                        navigate(item.href!);
-                                        setSelectedProduct(item.href!);
+                                        navigate(item.href);
+                                        setSelectedProduct(item.href);
                                       }}
                                     >
                                       <ExploreItem
-                                        icon={item.icon!}
+                                        icon={item.icon}
                                         title={item.title}
-                                        description={item.description!}
+                                        description={item.description}
                                       />
                                     </MenuItem>
                                   );
@@ -390,13 +378,9 @@ export const topNavFullExample = {
 
   export { TopNavExample };
   `,
-  'SideNavExample.tsx': dedent`import React from "react";
+  'SideNavExample.js': dedent`import React from "react";
   import { Link, useLocation } from "react-router-dom";
   import { isItemActive } from "./utils";
-  import type {
-    SideNavProps,
-    SideNavLinkProps,
-  } from "@razorpay/blade/components";
   import {
     SideNav,
     SideNavBody,
@@ -412,10 +396,8 @@ export const topNavFullExample = {
   } from "@razorpay/blade/components";
 
   const NavLink = (
-    props: Omit<SideNavLinkProps, "as"> & {
-      activeOnLinks?: string[];
-    }
-  ): React.ReactElement => {
+    props
+  ) => {
     const location = useLocation();
 
     return (
@@ -433,7 +415,7 @@ export const topNavFullExample = {
   const SideNavExample = ({
     isOpen,
     onDismiss,
-  }: Pick<SideNavProps, "isOpen" | "onDismiss">): React.ReactElement => {
+  }) => {
     return (
       <SideNav isOpen={isOpen} onDismiss={onDismiss} position="absolute">
         <SideNavBody>
@@ -472,22 +454,23 @@ export const topNavFullExample = {
 
   export { SideNavExample };
 `,
-  'utils.tsx': dedent`import { matchPath } from "react-router-dom";
+  'utils.js': dedent`import React from 'react';
+  import { matchPath } from "react-router-dom";
 
   const isItemActive = (
-    location: { pathname: string },
-    { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] }
-  ): boolean => {
-    const isCurrentPathActive = Boolean(matchPath(location.pathname, href!));
+    location,
+    { href, activeOnLinks }
+  ) => {
+    const isCurrentPathActive = Boolean(matchPath(location.pathname, href));
 
     const isSubItemActive = Boolean(
-      activeOnLinks?.find((href) => matchPath(location.pathname, href!))
+      activeOnLinks?.find((href) => matchPath(location.pathname, href))
     );
 
     return isCurrentPathActive || isSubItemActive;
   };
 
-  const RazorpayLogo = (): React.ReactElement => {
+  const RazorpayLogo = () => {
     return (
       <svg
         width="116"
@@ -517,11 +500,12 @@ export const topNavFullExample = {
 };
 
 export const tabNavExample = {
-  'App.tsx': dedent`import React from 'react';
+  'App.js': dedent`import React from 'react';
   import { 
     Box, 
     TabNav, 
     TabNavItem,
+    TabNavItems,
     Text,
     HomeIcon,
     RazorpayxPayrollIcon,

@@ -30,7 +30,7 @@ const Page = (): React.ReactElement => {
           DownloadIcon,
         } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <ButtonGroup>
               <Button icon={RefreshIcon}>Sync</Button>

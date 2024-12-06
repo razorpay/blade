@@ -41,7 +41,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Popover, Button } from '@razorpay/blade/components'
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Popover content="Hello world" placement="bottom">
               <Button>Hover over me</Button>
