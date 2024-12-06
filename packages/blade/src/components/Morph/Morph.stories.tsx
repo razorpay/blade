@@ -164,21 +164,17 @@ export const DangerousButton = (): React.ReactElement => {
   const [shouldConfirm, setShouldConfirm] = React.useState(false);
 
   return (
-    <Box width="200px">
+    <Box>
       <AnimatePresence>
         {shouldConfirm ? (
           <Morph layoutId="box-shape">
-            <Button isFullWidth color="negative" onClick={() => setShouldConfirm(!shouldConfirm)}>
+            <Button color="negative" onClick={() => setShouldConfirm(!shouldConfirm)}>
               Confirm Deletion
             </Button>
           </Morph>
         ) : (
           <Morph layoutId="box-shape">
-            <Button
-              isFullWidth
-              variant="secondary"
-              onClick={() => setShouldConfirm(!shouldConfirm)}
-            >
+            <Button variant="secondary" onClick={() => setShouldConfirm(!shouldConfirm)}>
               Delete This
             </Button>
           </Morph>
