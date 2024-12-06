@@ -70,9 +70,10 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
 export const getViteReactTSDependencies = (): Dependencies => {
   return {
     dependencies: {
-      react: '19.0.0',
-      'react-dom': '19.0.0',
+      react: '^19',
+      'react-dom': '^19',
       'react-router-dom': '^6',
+      'react-scripts': '4.0.3',
       '@types/react': '^19',
       '@types/react-dom': '^19',
       '@razorpay/blade': getBladeVersion(),

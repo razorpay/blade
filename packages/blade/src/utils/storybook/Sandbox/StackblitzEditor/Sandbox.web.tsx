@@ -52,7 +52,7 @@ const useStackblitzSetup = ({
     return {
       title: 'Blade Example by Razorpay',
       description: "Example of Razorpay's Design System, Blade",
-      template: isPR ? 'node' : 'javascript',
+      template: isPR ? 'node' : 'create-react-app',
       files: {
         '.vscode/settings.json': JSON.stringify(
           {
@@ -76,6 +76,7 @@ const useStackblitzSetup = ({
         [`App.${fileExtension}`]: code ? `${reactImport}${dedent(code)}` : '',
         [`Logger.${fileExtension}`]: logger,
         ...(isPR ? { 'package.json': vitePackageJSON, 'vite.config.js': viteConfigTS } : {}),
+        'package.json': vitePackageJSON,
         '.npmrc': `auto-install-peers = false`,
         ...Object.fromEntries(
           Object.entries(filesObj).map(([fileKey, fileValue]) => [
