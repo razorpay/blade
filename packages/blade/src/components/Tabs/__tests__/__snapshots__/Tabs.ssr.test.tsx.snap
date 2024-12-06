@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tabs /> should render tabs ssr 1`] = `"<div id="root"><div data-blade-component="tabs" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="box" class="BaseBox-bmPWx bTmnOt"><div data-blade-component="base-box" class="BaseBox-bmPWx TabListweb__ScrollableArea-sc-1evjc5b-0 cIMjwK bOfmyA"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><div role="tablist" data-blade-component="base-box" class="BaseBox-bmPWx ionHzf"><button type="button" id="tabs-undefined-payments-tabitem" role="tab" aria-selected="false" aria-controls="tabs-undefined-payments-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 egeFCr"><p class="StyledBaseText-dVBfTO dBbFZp" data-blade-component="text">Payments</p></button><button type="button" id="tabs-undefined-refunds-tabitem" role="tab" aria-selected="true" aria-controls="tabs-undefined-refunds-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 egeFCr"><p class="StyledBaseText-dVBfTO juAXIO" data-blade-component="text">Refunds</p></button></div></div><div pointer-events="none" style="transition-property:transform, width, background-color;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);width:0px;transform:translate(0px, 0px)" data-blade-component="tab-indicator" class="BaseBox-bmPWx TabIndicatorweb__StyledTabIndicator-sc-1kc65o8-0 itSyci cRvRoB"></div></div><div style="transform:translateY(-1px)" data-blade-component="base-box" class="BaseBox-bmPWx fNJCJA"></div></div><div id="tabs-undefined-payments-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-payments-tabitem" aria-hidden="true" class="BaseBox-bmPWx kukYOz"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Payments</p></div><div id="tabs-undefined-refunds-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-refunds-tabitem" aria-hidden="false" class="BaseBox-bmPWx eTTyBE"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Refunds</p></div></div></div>"`;
+exports[`<Tabs /> should render tabs ssr 1`] = `"<div id="root"><div data-blade-component="tabs" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="box" class="BaseBox-bmPWx bTmnOt"><div data-blade-component="base-box" class="BaseBox-bmPWx TabListweb__ScrollableArea-sc-1evjc5b-0 cIMjwK bOfmyA"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><div role="tablist" data-blade-component="base-box" class="BaseBox-bmPWx ionHzf"><button type="button" id="tabs-undefined-payments-tabitem" role="tab" aria-selected="false" aria-controls="tabs-undefined-payments-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 dsxGFU"><p class="StyledBaseText-dVBfTO dBbFZp" data-blade-component="text">Payments</p></button><button type="button" id="tabs-undefined-refunds-tabitem" role="tab" aria-selected="true" aria-controls="tabs-undefined-refunds-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 dsxGFU"><p class="StyledBaseText-dVBfTO juAXIO" data-blade-component="text">Refunds</p></button></div></div><div pointer-events="none" style="transition-property:transform, width, background-color;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);width:0px;transform:translate(0px, 0px)" data-blade-component="tab-indicator" class="BaseBox-bmPWx TabIndicatorweb__StyledTabIndicator-sc-1kc65o8-0 itSyci cRvRoB"></div></div><div style="transform:translateY(-1px)" data-blade-component="base-box" class="BaseBox-bmPWx fNJCJA"></div></div><div id="tabs-undefined-payments-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-payments-tabitem" aria-hidden="true" class="BaseBox-bmPWx kukYOz"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Payments</p></div><div id="tabs-undefined-refunds-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-refunds-tabitem" aria-hidden="false" class="BaseBox-bmPWx eTTyBE"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Refunds</p></div></div></div>"`;
 
 exports[`<Tabs /> should render tabs ssr 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -171,8 +171,8 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -196,8 +196,8 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {

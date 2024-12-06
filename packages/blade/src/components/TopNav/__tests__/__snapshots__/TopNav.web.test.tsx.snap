@@ -289,8 +289,8 @@ exports[`TopNav should render 1`] = `
   border-bottom-width: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  transition: 250ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
+  transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: background;
   transition-property: background;
 }
@@ -306,8 +306,8 @@ exports[`TopNav should render 1`] = `
   background-color: hsla(212,39%,16%,1);
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  transition: 250ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
+  transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
 }
@@ -378,8 +378,8 @@ exports[`TopNav should render 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -400,8 +400,8 @@ exports[`TopNav should render 1`] = `
 .c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -412,8 +412,8 @@ exports[`TopNav should render 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c18.c18.c18.c18.c18 {

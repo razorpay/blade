@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBar /> should render linear ProgressBar with default properties 1`] = `"<div id="root"><div data-blade-component="progress-bar" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><p class="StyledBaseText-dVBfTO eETJTC" data-blade-component="text">20%</p></div></div><div id="progress-linear-undefined" role="progressbar" aria-valuenow="20" aria-valuetext="20%" aria-valuemin="0" aria-valuemax="100" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx ArQWZ"><div data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 LpXTJ ddQlxd lGSZY"><div type="progress" data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  fHMPZy yGOYl"></div></div></div></div></div></div></div>"`;
+exports[`<ProgressBar /> should render linear ProgressBar with default properties 1`] = `"<div id="root"><div data-blade-component="progress-bar" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><p class="StyledBaseText-dVBfTO eETJTC" data-blade-component="text">20%</p></div></div><div id="progress-linear-undefined" role="progressbar" aria-valuenow="20" aria-valuetext="20%" aria-valuemin="0" aria-valuemax="100" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx ArQWZ"><div data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 LpXTJ lFJnf lGSZY"><div type="progress" data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  kbDAvE dVVGWu"></div></div></div></div></div></div></div>"`;
 
 exports[`<ProgressBar /> should render linear ProgressBar with default properties 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -46,15 +46,15 @@ exports[`<ProgressBar /> should render linear ProgressBar with default propertie
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -70,10 +70,10 @@ exports[`<ProgressBar /> should render linear ProgressBar with default propertie
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {

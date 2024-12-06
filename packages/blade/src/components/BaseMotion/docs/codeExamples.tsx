@@ -1,7 +1,7 @@
-import { BoxProps } from '~components/Box';
+import type { BoxProps } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
-export const FadeSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => {
+export const FadeSandbox = ({ padding }: { padding?: BoxProps['padding'] }): React.ReactElement => {
   return (
     <Sandbox padding={padding}>{`import React from 'react';
       import { 
@@ -32,7 +32,7 @@ export const FadeSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => {
   );
 };
 
-export const MoveSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => {
+export const MoveSandbox = ({ padding }: { padding?: BoxProps['padding'] }): React.ReactElement => {
   return (
     <Sandbox padding={padding}>{`import React from 'react';
     import { 
@@ -66,7 +66,11 @@ export const MoveSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => {
   );
 };
 
-export const SlideSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => {
+export const SlideSandbox = ({
+  padding,
+}: {
+  padding?: BoxProps['padding'];
+}): React.ReactElement => {
   return (
     <Sandbox padding={padding}>{`import React from 'react';
     import { 
@@ -100,7 +104,11 @@ export const SlideSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => 
   );
 };
 
-export const ScaleSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => {
+export const ScaleSandbox = ({
+  padding,
+}: {
+  padding?: BoxProps['padding'];
+}): React.ReactElement => {
   return (
     <Sandbox padding={padding}>{`import { 
       Scale,
@@ -129,7 +137,11 @@ export const ScaleSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => 
   );
 };
 
-export const MorphSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => {
+export const MorphSandbox = ({
+  padding,
+}: {
+  padding?: BoxProps['padding'];
+}): React.ReactElement => {
   return (
     <Sandbox padding={padding}>
       {`
@@ -169,7 +181,11 @@ export const MorphSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => 
   );
 };
 
-export const AnimateInteractionsSandbox = ({ padding }: { padding?: BoxProps['padding'] }) => {
+export const AnimateInteractionsSandbox = ({
+  padding,
+}: {
+  padding?: BoxProps['padding'];
+}): React.ReactElement => {
   return (
     <Sandbox padding={padding}>
       {`
@@ -234,9 +250,13 @@ export const AnimateInteractionsSandbox = ({ padding }: { padding?: BoxProps['pa
   );
 };
 
-export const StaggerSandbox = () => {
+export const StaggerSandbox = ({
+  padding,
+}: {
+  padding?: BoxProps['padding'];
+}): React.ReactElement => {
   return (
-    <Sandbox>
+    <Sandbox padding={padding}>
       {`
       import React from 'react';
       import { 

@@ -153,6 +153,7 @@ ScaleOnParentHoverAndFocus.args = {
       width="400px"
       padding="spacing.0"
       backgroundColor="surface.background.gray.moderate"
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       onClick={() => {}}
     >
       <CardBody>

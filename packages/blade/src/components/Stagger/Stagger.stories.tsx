@@ -2,12 +2,12 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
+import { InternalCardExample } from '../Card/Card.stories';
 import { Stagger } from './';
 import type { StaggerProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { InternalCardExample } from '../Card/Card.stories';
 import { Fade } from '~components/Fade';
 import { Move } from '~components/Move';
 import { Slide } from '~components/Slide';
@@ -15,8 +15,7 @@ import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card'
 import { Text } from '~components/Typography';
 import { StepperRouterExample } from '~components/BaseMotion/docs/StepperRouterExample';
 import type { StepItemProps } from '~components/StepGroup';
-import { ChipGroup } from '~components/Chip';
-import { Chip } from '~components/Chip';
+import { ChipGroup, Chip } from '~components/Chip';
 import { StaggerSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
@@ -133,7 +132,7 @@ SlideStagger.args = {
   ),
 };
 
-export const OnMount = () => {
+export const OnMount = (): React.ReactElement => {
   return (
     <Stagger display="flex" flexDirection="row" gap="spacing.4">
       <Move>
@@ -184,7 +183,7 @@ const OnboardingRoute = ({
       id: string;
     };
   };
-}) => {
+}): React.ReactElement => {
   const stepDataIndex = stepsSampleData.findIndex((stepInfo) =>
     stepInfo.href?.includes(match.params.id),
   );
@@ -214,9 +213,9 @@ const OnboardingRoute = ({
               'Account Status: Activated',
               'Test Mode: Disabled',
               'Primary Product: Banking',
-            ].map((chipLabel) => {
+            ].map((chipLabel, index) => {
               return (
-                <Move>
+                <Move key={index}>
                   <Chip value={chipLabel.toLowerCase().replace(/ /g, '-')}>{chipLabel}</Chip>
                 </Move>
               );
@@ -228,7 +227,7 @@ const OnboardingRoute = ({
   );
 };
 
-export const OnRouteChange: StoryFn<(props: typeof Move) => React.ReactElement> = (props) => {
+export const OnRouteChange: StoryFn<(props: typeof Move) => React.ReactElement> = () => {
   return (
     <StepperRouterExample stepsSampleData={stepsSampleData} routeComponent={OnboardingRoute} />
   );

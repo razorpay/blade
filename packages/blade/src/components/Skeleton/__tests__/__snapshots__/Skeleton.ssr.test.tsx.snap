@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 kTtuUt jGqMfN"></div></div>"`;
+exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 kTtuUt eEEkGO"></div></div>"`;
 
 exports[`<Skeleton /> should render 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -14,10 +14,10 @@ exports[`<Skeleton /> should render 2`] = `
   background-color: hsla(211,20%,52%,0.12);
   -webkit-animation-name: lbWRkT-450290765,jiGbVi-450290765;
   animation-name: lbWRkT-450290765,jiGbVi-450290765;
-  -webkit-animation-duration: 900ms,1200ms;
-  animation-duration: 900ms,1200ms;
-  -webkit-animation-delay: 0ms,900ms;
-  animation-delay: 0ms,900ms;
+  -webkit-animation-duration: 960ms,1320ms;
+  animation-duration: 960ms,1320ms;
+  -webkit-animation-delay: 0ms,960ms;
+  animation-delay: 0ms,960ms;
   -webkit-animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
   animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
   -webkit-animation-iteration-count: 1,infinite;

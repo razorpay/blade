@@ -1,9 +1,9 @@
-import { BaseMotionEnhancerBox } from '~components/BaseMotion';
-import { AnimateInteractionsContext } from './AnimateInteractionsProvider';
-import { useFocusWithin } from './useFocusWithin';
 import React from 'react';
 import { useAnimation } from 'framer-motion';
+import { AnimateInteractionsContext } from './AnimateInteractionsProvider';
+import { useFocusWithin } from './useFocusWithin';
 import type { AnimateInteractionsProps } from './types';
+import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 
 /**
  * ## AnimateInteractions
@@ -34,16 +34,16 @@ import type { AnimateInteractionsProps } from './types';
 const AnimateInteractions = ({
   children,
   motionTriggers = ['hover'],
-}: AnimateInteractionsProps) => {
+}: AnimateInteractionsProps): React.ReactElement => {
   const baseMotionRef = React.useRef<HTMLDivElement | null>(null);
   const controls = useAnimation();
 
   useFocusWithin(baseMotionRef, {
     onFocusWithin: () => {
-      controls.start('animate');
+      void controls.start('animate');
     },
     onBlurWithin: () => {
-      controls.start('exit');
+      void controls.start('exit');
     },
   });
 

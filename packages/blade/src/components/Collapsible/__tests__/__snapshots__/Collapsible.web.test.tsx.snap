@@ -80,8 +80,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: height,opacity;
@@ -124,8 +124,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -149,8 +149,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 .c1.c1.c1.c1.c1 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -161,8 +161,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -459,8 +459,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: height,opacity;
@@ -575,8 +575,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: -webkit-transform;
@@ -598,8 +598,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 .content-container {
@@ -618,8 +618,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 @media screen and (min-width:480px) {

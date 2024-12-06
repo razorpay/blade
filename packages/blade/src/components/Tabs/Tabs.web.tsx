@@ -5,7 +5,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { BladeElementRef } from '~utils/types';
+import type { BladeElementRef } from '~utils/types';
 
 const _Tabs = (
   {

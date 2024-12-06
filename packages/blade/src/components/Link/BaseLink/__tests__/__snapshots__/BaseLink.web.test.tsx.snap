@@ -15,8 +15,8 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -35,8 +35,8 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -111,8 +111,8 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -131,8 +131,8 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -205,8 +205,8 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -225,8 +225,8 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -299,8 +299,8 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -319,8 +319,8 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -394,8 +394,8 @@ exports[`<BaseLink /> should render disabled information color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -414,8 +414,8 @@ exports[`<BaseLink /> should render disabled information color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -487,8 +487,8 @@ exports[`<BaseLink /> should render disabled negative color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -507,8 +507,8 @@ exports[`<BaseLink /> should render disabled negative color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -580,8 +580,8 @@ exports[`<BaseLink /> should render disabled neutral color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -600,8 +600,8 @@ exports[`<BaseLink /> should render disabled neutral color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -673,8 +673,8 @@ exports[`<BaseLink /> should render disabled notice color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -693,8 +693,8 @@ exports[`<BaseLink /> should render disabled notice color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -766,8 +766,8 @@ exports[`<BaseLink /> should render disabled positive color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -786,8 +786,8 @@ exports[`<BaseLink /> should render disabled positive color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -859,8 +859,8 @@ exports[`<BaseLink /> should render disabled primary color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -879,8 +879,8 @@ exports[`<BaseLink /> should render disabled primary color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -952,8 +952,8 @@ exports[`<BaseLink /> should render disabled white color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -972,8 +972,8 @@ exports[`<BaseLink /> should render disabled white color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1045,8 +1045,8 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1065,8 +1065,8 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1180,8 +1180,8 @@ exports[`<BaseLink /> should render information color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1200,8 +1200,8 @@ exports[`<BaseLink /> should render information color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1273,8 +1273,8 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1293,8 +1293,8 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1366,8 +1366,8 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1386,8 +1386,8 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1503,8 +1503,8 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1523,8 +1523,8 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1640,8 +1640,8 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1660,8 +1660,8 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1777,8 +1777,8 @@ exports[`<BaseLink /> should render negative color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1797,8 +1797,8 @@ exports[`<BaseLink /> should render negative color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1870,8 +1870,8 @@ exports[`<BaseLink /> should render neutral color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1890,8 +1890,8 @@ exports[`<BaseLink /> should render neutral color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1963,8 +1963,8 @@ exports[`<BaseLink /> should render notice color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -1983,8 +1983,8 @@ exports[`<BaseLink /> should render notice color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -2056,8 +2056,8 @@ exports[`<BaseLink /> should render positive color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -2076,8 +2076,8 @@ exports[`<BaseLink /> should render positive color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -2149,8 +2149,8 @@ exports[`<BaseLink /> should render primary color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -2169,8 +2169,8 @@ exports[`<BaseLink /> should render primary color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -2242,8 +2242,8 @@ exports[`<BaseLink /> should render white color link 1`] = `
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -2262,8 +2262,8 @@ exports[`<BaseLink /> should render white color link 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {

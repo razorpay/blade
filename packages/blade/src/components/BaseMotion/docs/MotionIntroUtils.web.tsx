@@ -1,6 +1,7 @@
 import React from 'react';
 import { AnimateInteractions } from '~components/AnimateInteractions';
-import { Box, BoxProps } from '~components/Box';
+import type { BoxProps } from '~components/Box';
+import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Fade } from '~components/Fade';
 import { Link } from '~components/Link';
@@ -11,7 +12,7 @@ import { Slide } from '~components/Slide';
 import { Stagger } from '~components/Stagger';
 import { Heading, Text } from '~components/Typography';
 
-const ShowcaseBox = ({ children }: { children: React.ReactNode }) => {
+const ShowcaseBox = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
     <Box
       borderWidth="thin"
@@ -53,7 +54,13 @@ const MotionExampleBox = React.forwardRef(
   },
 );
 
-const ShowcaseLinkBox = ({ children, name }: { children: React.ReactElement; name: string }) => {
+const ShowcaseLinkBox = ({
+  children,
+  name,
+}: {
+  children: React.ReactElement;
+  name: string;
+}): React.ReactElement => {
   const linkHash = name.toLowerCase();
   return (
     <Box textAlign="center">
@@ -72,21 +79,21 @@ const ShowcaseLinkBox = ({ children, name }: { children: React.ReactElement; nam
   );
 };
 
-export const Showcase = () => {
+export const Showcase = (): React.ReactElement => {
   const [isVisible, setIsVisible] = React.useState(true);
   const [isAnimating, setIsAnimating] = React.useState(false);
   const intervalRef: React.MutableRefObject<ReturnType<typeof setInterval> | null> = React.useRef(
     null,
   );
 
-  const stopAnimations = () => {
+  const stopAnimations = (): void => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
     setIsAnimating(false);
   };
 
-  const startAnimations = () => {
+  const startAnimations = (): void => {
     setIsAnimating(true);
     intervalRef.current = setInterval(() => {
       setIsVisible((prev) => !prev);

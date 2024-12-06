@@ -24,10 +24,10 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(214,28%,84%,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.5,1);
-  transition-timing-function: cubic-bezier(0.7,0,0.5,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
 .c7.c7.c7.c7.c7 {
@@ -228,8 +228,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -239,8 +239,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 <div>
@@ -495,10 +495,10 @@ exports[`<RadioGroup /> should render with label 1`] = `
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(214,28%,84%,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.5,1);
-  transition-timing-function: cubic-bezier(0.7,0,0.5,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
 .c7.c7.c7.c7.c7 {
@@ -662,8 +662,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -673,8 +673,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 <div>

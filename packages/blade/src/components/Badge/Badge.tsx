@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ReactElement } from 'react';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
@@ -15,7 +16,6 @@ import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative, makeSize } from '~utils';
 import { throwBladeError } from '~utils/logger';
-import React from 'react';
 
 type BadgeProps = {
   /**

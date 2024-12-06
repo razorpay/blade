@@ -14,9 +14,9 @@ Blade v12 introduces `motion` (prev `framer-motion`) as peer dependency and requ
 
 - **Step 1:** Upgrade to latest `@razorpay/blade` package in your project
 - **Step 2:** [Perform Tokens Changes](#token-changes) using Codemod or manually
-- **Step 3:** Setup `motion/react` (or `framer-motion`)
+- **Step 3:** [Setup `motion/react` (or `framer-motion`)](#motion-react-framer-motion-setup)
 
-### Token Changes
+## Token Changes
 
 We have codemod to help you do the required token changes. You can run the codemod with following command (Replace `./PATH_TO_YOUR_DIR` with glob path of files / directories you want to migrate)-
 
@@ -43,7 +43,7 @@ You can skip this if you've run the codemod but in case not or you see some edge
 
 </details>
 
-### Motion React (Framer Motion) Setup
+## Motion React (Framer Motion) Setup
 
 > [!IMPORTANT]
 >
@@ -51,10 +51,10 @@ You can skip this if you've run the codemod but in case not or you see some edge
 >
 > Checkout the [announcement by creator of framer-motion](https://bsky.app/profile/citizenofnowhe.re/post/3lar365ouuk2v)
 
+### Version Compatibility for Consumers already using Framer Motion's Older Version
+
 <details>
   <summary>Version Compatibility Note for consumers already using framer-motion with older version</summary>
-
-#### Version Compatibility Note for consumers already using framer-motion with older version
 
 We realised that several projects in razorpay are already using `framer-motion` and are on older versions.
 To give some time to consumers to upgrade to framer-motion v11+, we'll be supporting framer-motion v4+ from blade. Although we will be dropping this support in next major version of blade so we recommend planning out framer-motion upgrade in coming quarter.
@@ -62,7 +62,7 @@ To give some time to consumers to upgrade to framer-motion v11+, we'll be suppor
 - **If you're on React 18**, migrating to framer-motion v11 should be fairly simple and low-effort. Checkout [Migrating from framer-motion v4+ to motion/react v11+](#migrating-from-framer-motion-v4-to-motionreact-aka-framer-motion-v11)
 - **For projects not on React 18 yet**, do plan out the upgrade soon to make sure future blade upgrades don't become blocker
 
-### Migrating from `framer-motion` v4+ to `motion/react` (aka `framer-motion` v11)
+#### Migrating from `framer-motion` v4+ to `motion/react` (aka `framer-motion` v11)
 
 1. Ensure you're on React 18 as `framer-motion` v7 makes React 18 a minimum supported version.
    a. [Checkout React 18 upgrade guide](https://react.dev/blog/2022/03/08/react-18-upgrade-guide) or use [React's official codemod for upgrading](https://github.com/reactjs/react-codemod)
@@ -73,10 +73,12 @@ These are mostly the changes you'll need if you're using core API. But if you're
 
 </details>
 
-- #### Install `motion
+### Setting Up Motion in New Projects
+
+- #### Install `motion`
 
   ```sh
-  yarn add `motion` --dev
+  yarn add motion --dev # or pnpm install motion --save-dev
   ```
 
 - #### Setup reduced bundle version of `motion/react
@@ -131,3 +133,7 @@ These are mostly the changes you'll need if you're using core API. But if you're
     );
   }
   ```
+
+---
+
+Got stuck somewhere or have some doubts? reach out to `@blade-developers` on `#design-system` channel

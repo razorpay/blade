@@ -9,7 +9,7 @@ import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { logger } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
-import { BladeElementRef } from '~utils/types';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps>(({ isSelected, ...props }) => {
   const selectedColor = isSelected

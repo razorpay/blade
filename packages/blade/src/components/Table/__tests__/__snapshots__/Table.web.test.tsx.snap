@@ -130,8 +130,8 @@ exports[`<Table /> should render table 1`] = `
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 tr:last-child .cell-wrapper {
@@ -151,22 +151,22 @@ exports[`<Table /> should render table 1`] = `
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
@@ -177,22 +177,22 @@ exports[`<Table /> should render table 1`] = `
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
@@ -203,22 +203,22 @@ exports[`<Table /> should render table 1`] = `
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
@@ -237,15 +237,15 @@ exports[`<Table /> should render table 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
@@ -270,8 +270,8 @@ exports[`<Table /> should render table 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -362,8 +362,8 @@ exports[`<Table /> should render table 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -373,8 +373,8 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 @media screen and (min-width:320px) {
@@ -1629,8 +1629,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1681,8 +1681,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
@@ -1702,22 +1702,22 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
@@ -1728,22 +1728,22 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
@@ -1754,22 +1754,22 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
@@ -1788,15 +1788,15 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
@@ -1809,8 +1809,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 0px;
   padding-right: 0px;
@@ -1841,8 +1841,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1939,8 +1939,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2077,8 +2077,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2101,8 +2101,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2127,8 +2127,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2147,8 +2147,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2970,8 +2970,8 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:last-child .cell-wrapper {
@@ -2991,22 +2991,22 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
@@ -3017,22 +3017,22 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
@@ -3043,22 +3043,22 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -3077,15 +3077,15 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
@@ -3110,8 +3110,8 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -3202,8 +3202,8 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -3911,8 +3911,8 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:last-child .cell-wrapper {
@@ -3932,22 +3932,22 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
@@ -3958,22 +3958,22 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
@@ -3984,22 +3984,22 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -4018,15 +4018,15 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
@@ -4051,8 +4051,8 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -4143,8 +4143,8 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -4815,8 +4815,8 @@ exports[`<Table /> should render table with isLoading 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -4952,8 +4952,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -5004,8 +5004,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
@@ -5025,22 +5025,22 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
@@ -5051,22 +5051,22 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
@@ -5077,22 +5077,22 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
@@ -5111,15 +5111,15 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
@@ -5144,8 +5144,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -5236,8 +5236,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -5993,8 +5993,8 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:last-child .cell-wrapper {
@@ -6014,22 +6014,22 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
@@ -6040,22 +6040,22 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
@@ -6066,22 +6066,22 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:nth-child(even) .cell-wrapper {
@@ -6108,15 +6108,15 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
@@ -6138,8 +6138,8 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -6230,8 +6230,8 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -6943,8 +6943,8 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 tr:last-child .cell-wrapper {
@@ -6964,22 +6964,22 @@ exports[`<Table /> should render table with sticky header, footer & first column
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
@@ -6990,22 +6990,22 @@ exports[`<Table /> should render table with sticky header, footer & first column
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
@@ -7016,22 +7016,22 @@ exports[`<Table /> should render table with sticky header, footer & first column
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
   background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
   background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
   background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
@@ -7050,15 +7050,15 @@ exports[`<Table /> should render table with sticky header, footer & first column
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
@@ -7083,8 +7083,8 @@ exports[`<Table /> should render table with sticky header, footer & first column
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -7175,8 +7175,8 @@ exports[`<Table /> should render table with sticky header, footer & first column
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }

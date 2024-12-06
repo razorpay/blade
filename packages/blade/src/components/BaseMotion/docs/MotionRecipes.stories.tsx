@@ -1,9 +1,9 @@
 import React from 'react';
 import type { StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
+import { DashboardWithRoutingExample } from './MotionDashboardComponents';
 import { Code, Text } from '~components/Typography';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
-import { DashboardWithRoutingExample } from './MotionDashboardComponents.web';
 import { Move } from '~components/Move';
 
 export default {
@@ -37,7 +37,7 @@ const DashboardRoute = ({
       id: string;
     };
   };
-}) => {
+}): React.ReactElement => {
   return (
     <Move>
       <Card width="100%">
@@ -55,6 +55,6 @@ const DashboardRoute = ({
   );
 };
 
-export const DashboardMotionRecipe: StoryFn<() => React.ReactElement> = (props) => {
+export const DashboardMotionRecipe: StoryFn<() => React.ReactElement> = () => {
   return <DashboardWithRoutingExample routeComponent={DashboardRoute} />;
 };

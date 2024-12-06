@@ -2,18 +2,18 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
+import { InternalCardExample } from '../Card/Card.stories';
 import { Move } from './';
 import type { MoveProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { InternalCardExample } from '../Card/Card.stories';
 import { TextInput } from '~components/Input/TextInput';
 import { Code, Heading, Text } from '~components/Typography';
 import { Chip, ChipGroup } from '~components/Chip';
 import { StepperRouterExample } from '~components/BaseMotion/docs/StepperRouterExample';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
-import { StepItemProps } from '~components/StepGroup';
+import type { StepItemProps } from '~components/StepGroup';
 import { MoveSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
@@ -194,7 +194,7 @@ const OnboardingRoute = ({
       id: string;
     };
   };
-}) => {
+}): React.ReactElement => {
   const stepDataIndex = stepsSampleData.findIndex((stepInfo) =>
     stepInfo.href?.includes(match.params.id),
   );
@@ -232,7 +232,7 @@ const OnboardingRoute = ({
   );
 };
 
-export const OnRouteChange: StoryFn<(props: typeof Move) => React.ReactElement> = (props) => {
+export const OnRouteChange: StoryFn<(props: typeof Move) => React.ReactElement> = () => {
   return (
     <StepperRouterExample stepsSampleData={stepsSampleData} routeComponent={OnboardingRoute} />
   );

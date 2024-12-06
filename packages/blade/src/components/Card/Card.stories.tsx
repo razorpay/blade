@@ -471,7 +471,7 @@ CardWithoutPadding.parameters = {
 export const InternalCardExample = React.forwardRef((_, ref) => {
   return (
     <Card
-      ref={ref as any}
+      ref={ref as never}
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       elevation="lowRaised"
@@ -505,7 +505,8 @@ export const InternalCardExample = React.forwardRef((_, ref) => {
               iconPosition: undefined,
               isDisabled: false,
               isLoading: false,
-              onClick: function noRefCheck() {},
+              // eslint-disable-next-line @typescript-eslint/no-empty-function
+              onClick: () => {},
               text: 'Learn More',
               type: undefined,
             },
