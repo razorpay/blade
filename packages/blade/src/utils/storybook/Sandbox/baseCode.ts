@@ -70,11 +70,11 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
 export const getViteReactTSDependencies = (): Dependencies => {
   return {
     dependencies: {
-      react: '^18',
-      'react-dom': '^18',
+      react: '19.0.0',
+      'react-dom': '19.0.0',
       'react-router-dom': '^6',
-      '@types/react': '^18',
-      '@types/react-dom': '^18',
+      '@types/react': '^19',
+      '@types/react-dom': '^19',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
