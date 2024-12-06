@@ -138,7 +138,7 @@ const CircularProgressBarFilled = ({
           strokeDashoffset={dashOffset}
           pulseMotionDuration="duration.2xgentle"
           pulseMotionDelay="delay.long"
-          motionEasing="easing.standard.revealing"
+          motionEasing="easing.emphasized"
         />
         {showPercentage && size !== 'small' && (
           <StyledSVGText

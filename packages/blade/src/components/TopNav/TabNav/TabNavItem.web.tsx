@@ -76,9 +76,7 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
     borderBottomWidth: 0,
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
-    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${
-      theme.motion.easing.standard.effective
-    }`,
+    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
     transitionProperty: 'background',
 
     // Hide the left and right divider by overlaying them with a pseudo element as same color as the background
@@ -109,9 +107,7 @@ const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }
     pointerEvents: 'none',
     // Animation
     opacity: isActive ? 1 : 0,
-    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${
-      theme.motion.easing.standard.effective
-    }`,
+    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
     transitionProperty: 'opacity',
   };
 });

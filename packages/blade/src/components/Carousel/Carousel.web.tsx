@@ -111,7 +111,7 @@ const CarouselContainer = styled(BaseBox)<{
     width: '100px',
     height: '100%',
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration.gentle)),
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard),
     transitionProperty: 'opacity',
   };
 

@@ -17,8 +17,8 @@ const StyledFade = styled(Animated.View)<{ styles: CSSObject }>(({ styles }) => 
 const Fade = ({ children, show, styles }: FadeProps) => {
   const { theme } = useTheme();
 
-  const fadeInEasing = (theme.motion.easing.entrance.effective as unknown) as EasingFn;
-  const fadeOutEasing = (theme.motion.easing.exit.effective as unknown) as EasingFn;
+  const fadeInEasing = (theme.motion.easing.entrance as unknown) as EasingFn;
+  const fadeOutEasing = (theme.motion.easing.exit as unknown) as EasingFn;
   const fadeIn = new Keyframe({
     from: {
       transform: [{ scale: 0.6 }],

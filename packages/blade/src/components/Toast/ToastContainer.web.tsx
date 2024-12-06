@@ -77,9 +77,7 @@ const getPositionStyle = (
     display: 'flex',
     position: 'absolute',
     transformOrigin: 'center',
-    transition: `${makeMotionTime(theme.motion.duration.gentle)} ${
-      theme.motion.easing.standard.effective
-    }`,
+    transition: `${makeMotionTime(theme.motion.duration.gentle)} ${theme.motion.easing.standard}`,
     transitionProperty: 'transform, opacity, height',
     transform: `translateY(${offset * (top ? 1 : -1)}px) scale(${scale})`,
     ...verticalStyle,

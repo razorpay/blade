@@ -20,7 +20,7 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
       // Selected state
       boxShadow: `${selectedBorder}${focusRing}`,
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
-      transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+      transitionTimingFunction: castWebType(theme.motion.easing.standard),
       transitionProperty: 'transform, box-shadow',
       cursor: as === 'label' ? 'pointer' : 'initial',
 

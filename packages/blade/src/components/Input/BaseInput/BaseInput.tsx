@@ -752,11 +752,10 @@ const FocusRingWrapper = styled(BaseBox)<{
           ),
         ),
         transitionTimingFunction: castWebType(
-          getIn(
-            theme.motion.easing,
+          theme.motion.easing[
             baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-              .easing,
-          ),
+              .easing
+          ],
         ),
       }
     : {},

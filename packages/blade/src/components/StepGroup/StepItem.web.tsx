@@ -43,7 +43,7 @@ const InteractiveItemHeaderBox = styled.button<InteractiveItemHeaderProps>((prop
       : props.theme.colors.transparent,
     borderRadius: props.theme.border.radius.medium,
     width: '100%',
-    transition: `background-color ${props.theme.motion.duration.xquick} ${props.theme.motion.easing.standard.effective}`,
+    transition: `background-color ${props.theme.motion.duration.xquick} ${props.theme.motion.easing.standard}`,
     ':not([disabled]):hover': {
       backgroundColor: props.isSelected
         ? props.theme.colors.interactive.background.primary.fadedHighlighted
