@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.38.1
+
+### Patch Changes
+
+- 65431583: feat: update use-presence hook to latest for react 19 support
+
 ## 11.38.0
 
 ### Minor Changes
