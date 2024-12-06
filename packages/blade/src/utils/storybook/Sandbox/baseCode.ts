@@ -3,11 +3,13 @@ import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
 
-export const isPR = Boolean(process.env.GITHUB_SHA);
+const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
+
+export const isPR = Boolean(process.env.GITHUB_SHA) && !isMaster;
 
 const getBladeVersion = (): string => {
   // We don't publish codesandbox ci on master so version is not present
-  const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
+
   const sha = process.env.GITHUB_SHA;
   if (sha && !isMaster) {
     const shortSha = sha.slice(0, 8);
