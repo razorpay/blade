@@ -11,6 +11,7 @@ import { DocsContainer } from '@storybook/addon-docs';
 import React from 'react';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import './global.css';
+import { domMax, LazyMotion } from 'framer-motion';
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
@@ -180,15 +181,18 @@ export const decorators = [
     return (
       <ErrorBoundary>
         <GlobalStyle />
-        <BladeProvider
-          key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
-          themeTokens={getThemeTokens()}
-          colorScheme={context.globals.colorScheme}
-        >
-          <StoryCanvas context={context}>
-            <Story />
-          </StoryCanvas>
-        </BladeProvider>
+        {/* strict in LazyMotion will make sure we don't use excessive `motion` component in blade components and instead use light weight `m` */}
+        <LazyMotion strict features={domMax}>
+          <BladeProvider
+            key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+            themeTokens={getThemeTokens()}
+            colorScheme={context.globals.colorScheme}
+          >
+            <StoryCanvas context={context}>
+              <Story />
+            </StoryCanvas>
+          </BladeProvider>
+        </LazyMotion>
       </ErrorBoundary>
     );
   },

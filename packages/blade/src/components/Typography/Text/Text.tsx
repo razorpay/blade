@@ -6,7 +6,7 @@ import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
@@ -40,13 +40,7 @@ type TextCaptionVariant = TextCommonProps & {
   size?: Extract<BaseTextSizes, 'small' | 'medium'>;
 };
 
-/**
- * Conditionally changing props based on variant.
- * Overloads or union gives wrong intellisense.
- */
-export type TextProps<T> = T extends {
-  variant: infer Variant;
-}
+export type TextProps<T> = T extends { variant: infer Variant }
   ? Variant extends 'caption'
     ? TextCaptionVariant
     : Variant extends 'body'
@@ -133,20 +127,23 @@ const getTextProps = <T extends { variant: TextVariant }>({
   return props;
 };
 
-const _Text = <T extends { variant: TextVariant }>({
-  as = 'p',
-  variant = 'body',
-  weight = 'regular',
-  size,
-  truncateAfterLines,
-  children,
-  color,
-  testID,
-  textAlign,
-  textDecorationLine,
-  wordBreak,
-  ...styledProps
-}: TextProps<T>): ReactElement => {
+const _Text = <T extends { variant: TextVariant }, _Ref>(
+  {
+    as = 'p',
+    variant = 'body',
+    weight = 'regular',
+    size,
+    truncateAfterLines,
+    children,
+    color,
+    testID,
+    textAlign,
+    textDecorationLine,
+    wordBreak,
+    ...styledProps
+  }: TextProps<T>,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> = {
     as,
     truncateAfterLines,
@@ -165,13 +162,13 @@ const _Text = <T extends { variant: TextVariant }>({
   useValidateAsProp({ componentName: 'Text', as, validAsValues });
 
   return (
-    <BaseText {...props} {...getStyledProps(styledProps)}>
+    <BaseText ref={ref} {...props} {...getStyledProps(styledProps)}>
       {children}
     </BaseText>
   );
 };
 
-const Text = assignWithoutSideEffects(_Text, {
+const Text = assignWithoutSideEffects(React.forwardRef(_Text), {
   displayName: 'Text',
   componentId: 'Text',
 });

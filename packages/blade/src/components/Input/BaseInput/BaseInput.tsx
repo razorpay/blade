@@ -49,6 +49,8 @@ import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { MotionMetaProp } from '~components/BaseMotion';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -368,7 +370,8 @@ type BaseInputCommonProps = FormInputLabelProps &
       autoCompleteSuggestionType?: WebAutoCompleteSuggestionType;
     };
   }> &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  MotionMetaProp;
 
 /*
   Mandatory accessibilityLabel prop when label is not provided
@@ -824,6 +827,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     valueComponentType = 'text',
     isTableInputCell = false,
     showHintsAsTooltip = false,
+    _motionMeta,
     ...styledProps
   },
   ref,
@@ -914,7 +918,11 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
 
   const isTextArea = as === 'textarea';
   return (
-    <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
+    <BaseBox
+      ref={getOuterMotionRef({ _motionMeta, ref })}
+      {...metaAttribute({ name: componentName, testID })}
+      {...getStyledProps(styledProps)}
+    >
       <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -986,8 +994,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               isDisabled={isDisabled}
               showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
-                if (ref && !isReactNative && 'current' in ref) {
-                  ref.current?.focus();
+                const innerRef = getInnerMotionRef({ _motionMeta, ref });
+                if (innerRef && !isReactNative && 'current' in innerRef) {
+                  innerRef.current?.focus();
                 }
               }}
               labelPrefix={isLabelInsideInput ? label : undefined}
@@ -1006,7 +1015,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               <StyledBaseInput
                 as={as}
                 id={inputId}
-                ref={mergedInputRef as any}
+                ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any })}
                 name={name}
                 type={type}
                 defaultValue={defaultValue}

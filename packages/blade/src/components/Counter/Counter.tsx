@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyledCounter } from './StyledCounter';
 import type { StyledCounterProps } from './types';
 import { counterHeight, horizontalPadding } from './counterTokens';
@@ -9,7 +10,7 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { isReactNative, makeSize } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
@@ -75,15 +76,18 @@ const getColorProps = ({
   return props;
 };
 
-const _Counter = ({
-  value,
-  max,
-  color = 'neutral',
-  emphasis = 'subtle',
-  size = 'medium',
-  testID,
-  ...styledProps
-}: CounterProps): React.ReactElement => {
+const _Counter = (
+  {
+    value,
+    max,
+    color = 'neutral',
+    emphasis = 'subtle',
+    size = 'medium',
+    testID,
+    ...styledProps
+  }: CounterProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   let content = `${value}`;
   if (max && value > max) {
     content = `${max}+`;
@@ -112,6 +116,7 @@ const _Counter = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
@@ -145,7 +150,7 @@ const _Counter = ({
   );
 };
 
-const Counter = assignWithoutSideEffects(_Counter, {
+const Counter = assignWithoutSideEffects(React.forwardRef(_Counter), {
   displayName: 'Counter',
   componentId: 'Counter',
 });

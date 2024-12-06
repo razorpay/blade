@@ -3,6 +3,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 import type { StringChildrenType, TestID } from '~utils/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { MotionMetaProp } from '~components/BaseMotion';
 
 type ChipProps = {
   /**
@@ -33,7 +34,8 @@ type ChipProps = {
    */
   value?: string;
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  MotionMetaProp;
 
 type ChipGroupCommonProps = {
   /**

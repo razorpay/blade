@@ -1,4 +1,5 @@
-import type { ReactElement } from 'react';
+import React from 'react';
+import type { ReactElement, Ref } from 'react';
 import { indicatorDotSizes, textSizeMapping } from './indicatorTokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -6,7 +7,7 @@ import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -49,15 +50,18 @@ type IndicatorProps = {
 } & TestID &
   StyledPropsBlade;
 
-const _Indicator = ({
-  accessibilityLabel,
-  children,
-  size = 'medium',
-  color = 'neutral',
-  emphasis = 'subtle',
-  testID,
-  ...styledProps
-}: IndicatorProps): ReactElement => {
+const _Indicator = (
+  {
+    accessibilityLabel,
+    children,
+    size = 'medium',
+    color = 'neutral',
+    emphasis = 'subtle',
+    testID,
+    ...styledProps
+  }: IndicatorProps,
+  ref: Ref<BladeElementRef>,
+): ReactElement => {
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
   const isIntense = emphasis === 'intense';
@@ -82,6 +86,7 @@ const _Indicator = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       display={(isWeb ? 'inline-flex' : 'flex') as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
@@ -113,7 +118,7 @@ const _Indicator = ({
   );
 };
 
-const Indicator = assignWithoutSideEffects(_Indicator, {
+const Indicator = assignWithoutSideEffects(React.forwardRef(_Indicator), {
   componentId: 'Indicator',
 });
 

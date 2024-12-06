@@ -6,7 +6,7 @@ import type { AmountTypeProps } from './amountTokens';
 import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -254,20 +254,23 @@ export const getAmountByParts = ({
   }
 };
 
-const _Amount = ({
-  value,
-  suffix = 'decimals',
-  type = 'body',
-  size = 'medium',
-  weight = 'regular',
-  isAffixSubtle = true,
-  isStrikethrough = false,
-  color,
-  currencyIndicator = 'currency-symbol',
-  currency = 'INR',
-  testID,
-  ...styledProps
-}: AmountProps): ReactElement => {
+const _Amount = (
+  {
+    value,
+    suffix = 'decimals',
+    type = 'body',
+    size = 'medium',
+    weight = 'regular',
+    isAffixSubtle = true,
+    isStrikethrough = false,
+    color,
+    currencyIndicator = 'currency-symbol',
+    currency = 'INR',
+    testID,
+    ...styledProps
+  }: AmountProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   if (__DEV__) {
     if (typeof value !== 'number') {
       throwBladeError({
@@ -326,6 +329,7 @@ const _Amount = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       display={(isReactNative ? 'flex' : 'inline-flex') as never}
       flexDirection="row"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
@@ -402,7 +406,7 @@ const _Amount = ({
   );
 };
 
-const Amount = assignWithoutSideEffects(_Amount, {
+const Amount = assignWithoutSideEffects(React.forwardRef(_Amount), {
   displayName: 'Amount',
   componentId: 'Amount',
 });

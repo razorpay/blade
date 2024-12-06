@@ -42,6 +42,7 @@ import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
+// import type { BladeElementRef } from '~utils/types';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -477,6 +478,7 @@ const _Table = <Item,>({
         </BaseBox>
       ) : (
         <BaseBox
+          // ref={ref as never}
           flex={1}
           position="relative"
           {...getStyledProps(styledProps)}

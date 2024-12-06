@@ -19,6 +19,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType, makeSize, useTheme } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import { MotionMetaProp } from '~components/BaseMotion';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 
 type RadioProps = {
   /**
@@ -47,10 +49,11 @@ type RadioProps = {
    */
   size?: 'small' | 'medium' | 'large';
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  MotionMetaProp;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium', testID, ...styledProps },
+  { value, children, helpText, isDisabled, size = 'medium', testID, _motionMeta, ...styledProps },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -101,7 +104,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const helpTextLeftSpacing = makeSize(radioSizes.icon[size].width + theme.spacing[3]);
 
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
+    <BaseBox ref={getOuterMotionRef({ _motionMeta, ref })} {...getStyledProps(styledProps)}>
       <SelectorLabel
         componentName={MetaConstants.RadioLabel}
         inputProps={isReactNative ? inputProps : {}}
@@ -115,7 +118,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               isDisabled={_isDisabled}
               hasError={hasError}
               inputProps={inputProps}
-              ref={ref}
+              ref={getInnerMotionRef({ _motionMeta, ref })}
             />
             <RadioIcon
               size={_size}

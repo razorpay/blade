@@ -8,7 +8,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { FontSize, Typography } from '~tokens/global';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { makeSpace } from '~utils/makeSpace';
 import { makeTypographySize } from '~utils/makeTypographySize';
 import { throwBladeError } from '~utils/logger';
@@ -123,6 +123,48 @@ const getCodeColor = ({
 
   return 'surface.text.gray.normal';
 };
+
+const _Code = (
+  {
+    children,
+    size = 'small',
+    weight = 'regular',
+    isHighlighted = true,
+    color,
+    testID,
+    ...styledProps
+  }: CodeProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
+  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size)!;
+  const codeTextColor = React.useMemo<CodeProps['color']>(
+    () => getCodeColor({ isHighlighted, color }),
+    [isHighlighted, color],
+  );
+
+  return (
+    <CodeContainer
+      ref={ref as never}
+      size={size}
+      isHighlighted={isHighlighted}
+      as={isPlatformWeb ? 'span' : undefined}
+      {...metaAttribute({ name: MetaConstants.Code, testID })}
+      {...getStyledProps(styledProps)}
+    >
+      <BaseText
+        color={codeTextColor}
+        fontFamily="code"
+        fontSize={fontSize}
+        fontWeight={weight}
+        as={isPlatformWeb ? 'code' : undefined}
+        lineHeight={lineHeight}
+      >
+        {children}
+      </BaseText>
+    </CodeContainer>
+  );
+};
+
 /**
  * Code component can be used for displaying token, variable names, or inlined code snippets.
  *
@@ -149,41 +191,6 @@ const getCodeColor = ({
  * </Box>
  * ```
  */
-const Code = ({
-  children,
-  size = 'small',
-  weight = 'regular',
-  isHighlighted = true,
-  color,
-  testID,
-  ...styledProps
-}: CodeProps): React.ReactElement => {
-  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size)!;
-  const codeTextColor = React.useMemo<CodeProps['color']>(
-    () => getCodeColor({ isHighlighted, color }),
-    [isHighlighted, color],
-  );
-
-  return (
-    <CodeContainer
-      size={size}
-      isHighlighted={isHighlighted}
-      as={isPlatformWeb ? 'span' : undefined}
-      {...metaAttribute({ name: MetaConstants.Code, testID })}
-      {...getStyledProps(styledProps)}
-    >
-      <BaseText
-        color={codeTextColor}
-        fontFamily="code"
-        fontSize={fontSize}
-        fontWeight={weight}
-        as={isPlatformWeb ? 'code' : undefined}
-        lineHeight={lineHeight}
-      >
-        {children}
-      </BaseText>
-    </CodeContainer>
-  );
-};
+const Code = React.forwardRef(_Code);
 
 export { Code };

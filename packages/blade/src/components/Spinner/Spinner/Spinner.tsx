@@ -1,5 +1,7 @@
+import React from 'react';
 import { BaseSpinner } from '../BaseSpinner';
 import type { BaseSpinnerProps } from '../BaseSpinner';
+import type { BladeElementRef } from '~utils/types';
 
 type SpinnerProps = BaseSpinnerProps & {
   /**
@@ -10,17 +12,21 @@ type SpinnerProps = BaseSpinnerProps & {
   color?: 'primary' | 'neutral' | 'white';
 };
 
-const Spinner = ({
-  label,
-  labelPosition,
-  accessibilityLabel,
-  color = 'neutral',
-  size = 'medium',
-  testID,
-  ...styledProps
-}: SpinnerProps): React.ReactElement => {
+const _Spinner = (
+  {
+    label,
+    labelPosition,
+    accessibilityLabel,
+    color = 'neutral',
+    size = 'medium',
+    testID,
+    ...styledProps
+  }: SpinnerProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   return (
     <BaseSpinner
+      ref={ref as never}
       label={label}
       labelPosition={labelPosition}
       accessibilityLabel={accessibilityLabel ?? label ?? 'Loading'}
@@ -31,6 +37,8 @@ const Spinner = ({
     />
   );
 };
+
+const Spinner = React.forwardRef(_Spinner);
 
 export type { SpinnerProps };
 export { Spinner };

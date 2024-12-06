@@ -6,7 +6,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { isReactNative, makeBorderSize } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 
 type DividerProps = {
@@ -61,16 +61,19 @@ const StyledDivider = styled(BaseBox)<{
   ...(isDividerHorizontal ? { flexGrow: 1, width } : { alignSelf: 'stretch', height }),
 }));
 
-const Divider = ({
-  orientation = 'horizontal',
-  dividerStyle = 'solid',
-  variant = 'muted',
-  thickness = 'thin',
-  height,
-  width,
-  testID,
-  ...styledProps
-}: DividerProps): React.ReactElement => {
+const _Divider = (
+  {
+    orientation = 'horizontal',
+    dividerStyle = 'solid',
+    variant = 'muted',
+    thickness = 'thin',
+    height,
+    width,
+    testID,
+    ...styledProps
+  }: DividerProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const isDividerHorizontal = orientation === 'horizontal';
   const borderPosition = isDividerHorizontal ? 'borderBottom' : 'borderLeft';
   const borderColor = { [`${borderPosition}Color`]: `surface.border.gray.${variant}` };
@@ -82,6 +85,7 @@ const Divider = ({
 
   return (
     <StyledDivider
+      ref={ref as never}
       borderPosition={borderPosition}
       isDividerHorizontal={isDividerHorizontal}
       dividerStyle={dividerStyle}
@@ -95,6 +99,8 @@ const Divider = ({
     />
   );
 };
+
+const Divider = React.forwardRef(_Divider);
 
 export { Divider };
 export type { DividerProps };

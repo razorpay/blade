@@ -1,5 +1,5 @@
 import type { ReactChild, ReactElement } from 'react';
-import { Fragment, useState } from 'react';
+import React, { Fragment, useState, forwardRef } from 'react';
 
 import { StyledAlert } from './StyledAlert';
 import type { IconComponent } from '~components/Icons';
@@ -21,7 +21,7 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
+import type { BladeElementRef, DotNotationSpacingStringToken, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 
 type PrimaryAction = {
@@ -124,19 +124,22 @@ const intentIconMap = {
   notice: AlertTriangleIcon,
 };
 
-const Alert = ({
-  description,
-  title,
-  isDismissible = true,
-  onDismiss,
-  emphasis = 'subtle',
-  isFullWidth = false,
-  color = 'neutral',
-  actions,
-  testID,
-  icon,
-  ...styledProps
-}: AlertProps): ReactElement | null => {
+const _Alert = (
+  {
+    description,
+    title,
+    isDismissible = true,
+    onDismiss,
+    emphasis = 'subtle',
+    isFullWidth = false,
+    color = 'neutral',
+    actions,
+    testID,
+    icon,
+    ...styledProps
+  }: AlertProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement | null => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const [isVisible, setIsVisible] = useState(true);
@@ -298,6 +301,7 @@ const Alert = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
       {...getStyledProps(styledProps)}
@@ -325,6 +329,8 @@ const Alert = ({
     </BaseBox>
   );
 };
+
+const Alert = forwardRef(_Alert);
 
 export type { AlertProps };
 export { Alert };
