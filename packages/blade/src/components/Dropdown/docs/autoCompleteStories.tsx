@@ -13,7 +13,7 @@ export const getSimpleAutoComplete = (
     ActionListItem,
   } from '@razorpay/blade/components';
 
-  function App(): React.ReactElement {
+  function App() {
     return (
       <Dropdown 
         selectionType="${selectionType}"
@@ -81,7 +81,7 @@ export const controlledFiltering = `
     },
   ];
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     const cityValues = cities.map((city) => city.value);
     const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
@@ -188,7 +188,7 @@ export const controlledFilteringWithBottomSheet = `
     },
   ];
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     const cityValues = cities.map((city) => city.value);
     const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
@@ -265,7 +265,7 @@ export const tagsOutside = `
     Tag,
   } from '@razorpay/blade/components';
 
-  function App(): React.ReactElement {
+  function App() {
     const [selections, setSelections] = React.useState([]);
 
     return (
@@ -354,7 +354,7 @@ export const responsiveBottomSheet = `
     )
   }
 
-  function App(): React.ReactElement {
+  function App() {
     return (
       <Box>
         <Text textAlign="center" marginBottom="spacing.8">Change the <Code>isMobile</Code> flag in code and refresh the sandbox preview</Text>
@@ -406,7 +406,7 @@ export const creatableItems = `
   } from '@razorpay/blade/components';
 
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     const [items, setItems] = React.useState(['Mumbai', 'Pune', 'Bangalore']);
     const [inputValue, setInputValue] = React.useState('');
     const autoCompleteRef = React.useRef<HTMLInputElement>(null);
@@ -467,7 +467,7 @@ export const clearOnDismiss = `
   } from '@razorpay/blade/components';
 
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     const [inputValue, setInputValue] = React.useState('');
 
     return (
@@ -510,7 +510,7 @@ export const maxRowsStates = `
   } from '@razorpay/blade/components';
 
 
-  const App = (): React.ReactElement => {
+  const App = () => {
     return (
       <Box maxWidth="300px" paddingBottom="400px" display="flex" flexDirection="column" gap="300px">
         <Dropdown selectionType="multiple">
@@ -592,7 +592,7 @@ export const withErrorState = `
 
   const cities = ['Mumbai', 'Pune', 'Bangalore', 'Mysore'];
 
-  function App(): React.ReactElement {
+  function App() {
     const [isError, setIsError] = React.useState(false);
     const [currentInputValue, setCurrentInputValue] = React.useState('');
     const [isDismissed, setIsDismissed] = React.useState(false);
@@ -655,7 +655,7 @@ import {
   Box,
 } from '@razorpay/blade/components';
 
-function App(): React.ReactElement {
+function App() {
   return (
     <Box>
       <Heading size="medium" marginBottom="spacing.3">

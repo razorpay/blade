@@ -32,7 +32,7 @@ const Page = (): ReactElement => {
         {`
           import { VisuallyHidden, Checkbox, Text, Box } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               <Box>
                 <Text>If you focus on checkbox below with voice over enabled, you will hear "Hidden Label" announcement</Text>

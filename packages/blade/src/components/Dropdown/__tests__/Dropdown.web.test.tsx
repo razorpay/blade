@@ -354,6 +354,37 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     expect(getByText('selection: settings')).toBeInTheDocument();
   });
 
+  it('should support data-analytics-attribute', async () => {
+    const user = userEvent.setup();
+    const profileClickHandler = jest.fn();
+
+    const { container, getByRole } = renderWithTheme(
+      <Dropdown>
+        <DropdownButton data-analytics-attribute="profile" onClick={profileClickHandler}>
+          My Account
+        </DropdownButton>
+        <DropdownOverlay>
+          <ActionList data-analytics-list="user-setting">
+            <ActionListItem data-analytics-item="user-profile" title="Profile" value="profile" />
+            <ActionListItem title="Settings" value="settings" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const dropdownTrigger = getByRole('button', { name: 'My Account' });
+
+    expect(dropdownTrigger).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+    await user.click(dropdownTrigger);
+    expect(getByRole('menuitem', { name: 'Profile' })).toHaveAttribute(
+      'data-analytics-item',
+      'user-profile',
+    );
+    await user.click(getByRole('menuitem', { name: 'Profile' }));
+    expect(profileClickHandler).toBeCalled();
+  });
+
   it('should handle controlled selection in link trigger menu', async () => {
     const user = userEvent.setup();
 

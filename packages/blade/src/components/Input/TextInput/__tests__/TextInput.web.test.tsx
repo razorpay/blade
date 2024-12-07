@@ -583,4 +583,12 @@ describe('<TextInput />', () => {
 
     expect(getByTestId('text-input-test-id')).toBeTruthy();
   });
+  it('should accept data-analytics attribute', () => {
+    const { getByLabelText, container } = renderWithTheme(
+      <TextInput label="Enter name" data-analytics-name="Enter name" />,
+    );
+
+    expect(container).toMatchSnapshot();
+    expect(getByLabelText('Enter name')).toHaveAttribute('data-analytics-name', 'Enter name');
+  });
 });

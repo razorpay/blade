@@ -10,6 +10,7 @@ import type { BoxProps } from '~components/Box';
 import { size as sizeTokens } from '~tokens/global';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const MIN_WIDTH: BoxProps['minWidth'] = {
   s: makeSize(sizeTokens[200]),
@@ -71,7 +72,7 @@ const Accordion = ({
   size = 'large',
   maxWidth,
   testID,
-  ...styledProps
+  ...rest
 }: AccordionProps): ReactElement => {
   const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
     defaultExpandedIndex,
@@ -119,7 +120,8 @@ const Accordion = ({
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <BaseBox
           {...getVariantStyles(variant)}

@@ -281,4 +281,15 @@ describe('<PasswordInput />', () => {
 
     expect(getByTestId('password-input-test')).toBeTruthy();
   });
+  it('should accept data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <PasswordInput
+        label="Enter password"
+        data-analytics-type="password"
+        data-analytics-event="change"
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });

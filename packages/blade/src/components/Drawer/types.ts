@@ -1,4 +1,4 @@
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type DrawerProps = {
   /**
@@ -46,7 +46,8 @@ type DrawerProps = {
    * @default true
    */
   isLazy?: boolean;
-} & TestID;
+} & DataAnalyticsAttribute &
+  TestID;
 
 type DrawerHeaderProps = {
   /**
@@ -79,6 +80,6 @@ type DrawerHeaderProps = {
    * Link, Button[]
    */
   trailing?: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps };

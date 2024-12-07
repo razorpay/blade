@@ -6,7 +6,7 @@ import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -14,6 +14,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type IndicatorProps = {
   /**
@@ -47,6 +48,7 @@ type IndicatorProps = {
    */
   accessibilityLabel?: string;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const _Indicator = ({
@@ -56,7 +58,7 @@ const _Indicator = ({
   color = 'neutral',
   emphasis = 'subtle',
   testID,
-  ...styledProps
+  ...rest
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
@@ -85,7 +87,8 @@ const _Indicator = ({
       display={(isWeb ? 'inline-flex' : 'flex') as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox display="flex" flexDirection="row" alignItems="center">
         <Svg width={String(svgSize)} height={String(svgSize)} viewBox="0 0 10 10" fill="none">

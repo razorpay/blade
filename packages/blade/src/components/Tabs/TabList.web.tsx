@@ -11,6 +11,8 @@ import { Box } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 const ScrollableArea = styled(BaseBox)(() => {
   return {
@@ -20,8 +22,9 @@ const ScrollableArea = styled(BaseBox)(() => {
 
 const TabList = ({
   children,
-  ...props
-}: { children: React.ReactNode } & StyledPropsBlade): React.ReactElement => {
+  ...rest
+}: { children: React.ReactNode } & StyledPropsBlade &
+  DataAnalyticsAttribute): React.ReactElement => {
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
@@ -39,8 +42,9 @@ const TabList = ({
 
   return (
     <Box
-      {...getStyledProps(props)}
+      {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.TabList })}
+      {...makeAnalyticsAttribute(rest)}
       display={isVertical ? 'flex' : 'block'}
       flexShrink={0}
       overflow="hidden"

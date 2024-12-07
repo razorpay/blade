@@ -50,7 +50,7 @@ describe('<DatePicker/> ', () => {
     await waitFor(() => expect(queryByText('Sun')).toBeVisible());
 
     const dateToSelect = dayjs().add(1, 'day');
-    const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
+    const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
     await user.click(date);
 
     const applyButton = getByRole('button', { name: /Apply/i });

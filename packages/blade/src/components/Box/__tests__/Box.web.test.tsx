@@ -220,4 +220,12 @@ describe('<Box />', () => {
     );
     expect(container).toMatchSnapshot();
   });
+  it('should support passing data-analytics  attributes', () => {
+    const { container } = renderWithTheme(<Box data-analytics-name="demo" />);
+    expect(container).toMatchSnapshot();
+  });
+  it('should support passing data-analytics  attributes', () => {
+    const { container } = renderWithTheme(<Box data-analytics-name="section" as="section" />);
+    expect(container).toMatchSnapshot();
+  });
 });

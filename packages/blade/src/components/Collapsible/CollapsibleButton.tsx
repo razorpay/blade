@@ -4,10 +4,11 @@ import { useCollapsible } from './CollapsibleContext';
 import type { ButtonProps } from '~components/Button';
 import type { IconComponent } from '~components/Icons';
 import BaseButton from '~components/Button/BaseButton';
-import type { BladeElementRef } from '~utils/types';
+import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CollapsibleButtonProps = Pick<
   ButtonProps,
@@ -19,13 +20,14 @@ type CollapsibleButtonProps = Pick<
   | 'accessibilityLabel'
   | 'icon'
   | 'children'
->;
+> &
+  DataAnalyticsAttribute;
 
 const _CollapsibleButton: React.ForwardRefRenderFunction<
   BladeElementRef,
   CollapsibleButtonProps
 > = (
-  { children, variant, size, icon, iconPosition, isDisabled, testID, accessibilityLabel },
+  { children, variant, size, icon, iconPosition, isDisabled, testID, accessibilityLabel, ...rest },
   ref,
 ): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
@@ -52,6 +54,7 @@ const _CollapsibleButton: React.ForwardRefRenderFunction<
         controls: collapsibleBodyId,
         expanded: isExpanded,
       }}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </BaseButton>

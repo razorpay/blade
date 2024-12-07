@@ -15,6 +15,7 @@ import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButto
 import type { Theme } from '~components/BladeProvider';
 import { throwBladeError } from '~utils/logger';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getDividerColorToken = ({
   color,
@@ -59,7 +60,7 @@ const _ButtonGroup = ({
   variant = 'primary',
   isFullWidth = false,
   testID,
-  ...styledProps
+  ...rest
 }: ButtonGroupProps): React.ReactElement => {
   const contextValue = {
     isDisabled,
@@ -77,7 +78,8 @@ const _ButtonGroup = ({
         isDisabled={isDisabled}
         isFullWidth={isFullWidth}
         {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
         role="group"
       >
         {React.Children.map(children, (child, index) => {

@@ -287,7 +287,7 @@ export default {
             {`
               import { TextInput } from '@razorpay/blade/components';
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   <TextInput 
                     label="Name" 

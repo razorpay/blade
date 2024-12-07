@@ -21,7 +21,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Avatar, AvatarGroup } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <AvatarGroup>
               <Avatar color="primary" name="Kamlesh Chandnani" />

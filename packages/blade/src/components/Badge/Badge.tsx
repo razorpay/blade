@@ -10,11 +10,12 @@ import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative, makeSize } from '~utils';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type BadgeProps = {
   /**
@@ -47,7 +48,8 @@ type BadgeProps = {
    */
   icon?: IconComponent;
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  DataAnalyticsAttribute;
 
 type ColorProps = {
   iconColor: IconProps['color'];
@@ -94,7 +96,7 @@ const _Badge = ({
   size = 'medium',
   color = 'neutral',
   testID,
-  ...styledProps
+  ...props
 }: BadgeProps): ReactElement => {
   const childrenString = getStringFromReactText(children);
   if (__DEV__) {
@@ -130,7 +132,8 @@ const _Badge = ({
     <BaseBox
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(props)}
+      {...makeAnalyticsAttribute(props)}
     >
       <StyledBadge
         height={makeSize(badgeHeight[size])}

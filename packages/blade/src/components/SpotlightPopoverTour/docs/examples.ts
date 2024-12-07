@@ -76,7 +76,7 @@ export const BasicExample = `
     },
   ];
 
-  function App(): React.ReactElement {
+  function App() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
 

@@ -29,6 +29,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { useControllableState } from '~utils/useControllable';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useDidUpdate } from '~utils/useDidUpdate';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ControlsProp = Required<
   Pick<
@@ -245,7 +246,7 @@ const Carousel = ({
   height,
   defaultActiveSlide,
   activeSlide: activeSlideProp,
-  ...props
+  ...rest
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeIndicator, setActiveIndicator] = React.useState(0);
@@ -514,7 +515,8 @@ const Carousel = ({
         alignItems="center"
         flexDirection="column"
         height={height}
-        {...getStyledProps(props)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <BaseBox
           width="100%"

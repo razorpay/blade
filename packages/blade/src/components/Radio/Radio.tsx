@@ -14,11 +14,17 @@ import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportTe
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
+import type {
+  BladeElementRef,
+  DataAnalyticsAttribute,
+  StringChildrenType,
+  TestID,
+} from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType, makeSize, useTheme } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type RadioProps = {
   /**
@@ -47,10 +53,11 @@ type RadioProps = {
    */
   size?: 'small' | 'medium' | 'large';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium', testID, ...styledProps },
+  { value, children, helpText, isDisabled, size = 'medium', testID, ...rest },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -101,7 +108,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const helpTextLeftSpacing = makeSize(radioSizes.icon[size].width + theme.spacing[3]);
 
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
+    <BaseBox {...getStyledProps(rest)}>
       <SelectorLabel
         componentName={MetaConstants.RadioLabel}
         inputProps={isReactNative ? inputProps : {}}
@@ -116,6 +123,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               hasError={hasError}
               inputProps={inputProps}
               ref={ref}
+              {...makeAnalyticsAttribute(rest)}
             />
             <RadioIcon
               size={_size}

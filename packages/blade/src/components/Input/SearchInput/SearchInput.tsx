@@ -14,7 +14,11 @@ import { Spinner } from '~components/Spinner';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import type { BladeElementRef, BladeElementRefWithValue } from '~utils/types';
+import type {
+  BladeElementRef,
+  BladeElementRefWithValue,
+  DataAnalyticsAttribute,
+} from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 
@@ -38,6 +42,7 @@ type SearchInputCommonProps = Pick<
   | 'testID'
   | 'onClick'
   | 'size'
+  | keyof DataAnalyticsAttribute
 > & {
   /**
    * Event handler to handle the onClick event for clear button.
@@ -124,8 +129,12 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     testID,
     size = 'medium',
     showSearchIcon = true,
+
     hideClearButton = false,
     ...styledProps
+
+    ...rest
+
   },
   ref,
 ): ReactElement => {
@@ -238,7 +247,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
           autoCapitalize,
         })}
         size={size}
-        {...styledProps}
+        {...rest}
       />
     </BaseBox>
   );

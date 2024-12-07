@@ -426,6 +426,43 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should support data-analytics attributes', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetHeader
+            title="Address Details"
+            subtitle="Saving addresses will improve your checkout experience"
+            trailing={<Badge color="positive">Action Needed</Badge>}
+            titleSuffix={<Counter color="positive" value={2} />}
+            data-analytics-sheet-header="address-details"
+          />
+          <BottomSheetBody data-analytics-sheet-body="sheet-body">
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+          <BottomSheetFooter data-analytics-sheet-footer="sheet-action">
+            <Button isFullWidth variant="secondary">
+              Remove address
+            </Button>
+          </BottomSheetFooter>
+        </BottomSheet>
+      );
+    };
+    const { container } = renderWithTheme(<Example />);
+    //check if container have data attributes
+    expect(
+      container.querySelector('[data-analytics-sheet-header="address-details"]'),
+    ).toBeInTheDocument();
+    expect(container.querySelector('[data-analytics-sheet-body="sheet-body"]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-analytics-sheet-footer="sheet-action"]'),
+    ).toBeInTheDocument();
+
+    mockConsoleError.mockRestore();
+  });
+
   test('BottomSheetHeader trailing should not allow any random component', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const Example = (): React.ReactElement => {

@@ -14,10 +14,19 @@ import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const TabNavItems = ({ children, ...props }: BoxProps): React.ReactElement => {
+const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
   return (
-    <Box {...props} display="flex" width="100%" gap="spacing.0" position="relative" left="-1px">
+    <Box
+      {...rest}
+      display="flex"
+      width="100%"
+      gap="spacing.0"
+      position="relative"
+      left="-1px"
+      {...makeAnalyticsAttribute(rest)}
+    >
       {React.Children.map(children, (child, index) => {
         return (
           <>

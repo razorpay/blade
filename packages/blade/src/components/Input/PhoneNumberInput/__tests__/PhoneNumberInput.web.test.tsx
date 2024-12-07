@@ -134,4 +134,14 @@ describe('<PhoneNumberInput />', () => {
 
     expect(getByTestId('phone-input-test')).toBeTruthy();
   });
+  it('should accept data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <PhoneNumberInput
+        label="Enter phone number"
+        data-analytics-name="phone-input"
+        data-analytics-value="phone-input-value"
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

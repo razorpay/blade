@@ -6,6 +6,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 const StyledPopoverInteractiveWrapper = styled.button((props) => {
   const cssObject = useMemoizedStyles(props as never);
@@ -33,7 +34,8 @@ type PopoverInteractiveWrapper = {
   children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-} & Omit<BaseBoxProps, 'as'>;
+} & Omit<BaseBoxProps, 'as'> &
+  DataAnalyticsAttribute;
 
 const PopoverInteractiveWrapper = React.forwardRef<HTMLButtonElement, PopoverInteractiveWrapper>(
   ({ accessibilityLabel, ...props }, ref) => {

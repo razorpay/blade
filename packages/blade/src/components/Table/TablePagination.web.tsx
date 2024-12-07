@@ -25,6 +25,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import { throwBladeError } from '~utils/logger';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const pageSizeOptions: NonNullable<TablePaginationCommonProps['defaultPageSize']>[] = [10, 25, 50];
 
@@ -148,6 +149,7 @@ const _TablePagination = ({
   label,
   totalItemCount,
   paginationType = 'client',
+  ...rest
 }: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
@@ -244,6 +246,7 @@ const _TablePagination = ({
       flexDirection="row"
       padding={tablePagination.padding}
       backgroundColor={backgroundColor}
+      {...makeAnalyticsAttribute(rest)}
     >
       {showLabel && !onMobile && (
         <BaseBox display="flex" justifyContent="center" alignItems="center">

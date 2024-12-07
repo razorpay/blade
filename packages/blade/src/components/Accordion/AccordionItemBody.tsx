@@ -4,9 +4,10 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
-import type { StringChildrenType } from '~utils/types';
+import type { DataAnalyticsAttribute, StringChildrenType } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const BLANK_SPACE = ' ';
 
@@ -32,10 +33,11 @@ const descriptionSizeToken = {
 const _AccordionItemBody = ({
   children,
   _description,
+  ...rest
 }: {
   children?: React.ReactNode | StringChildrenType;
   _description?: string;
-}): React.ReactElement => {
+} & DataAnalyticsAttribute): React.ReactElement => {
   const { size } = useAccordion();
 
   const childrenElement =
@@ -75,7 +77,10 @@ const _AccordionItemBody = ({
   );
 
   return (
-    <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItemBody })}>
+    <BaseBox
+      {...metaAttribute({ name: MetaConstants.AccordionItemBody })}
+      {...makeAnalyticsAttribute(rest)}
+    >
       {collapsibleBodyContent}
     </BaseBox>
   );

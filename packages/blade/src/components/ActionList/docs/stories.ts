@@ -17,7 +17,7 @@ const Playground = `
     Button 
   } from '@razorpay/blade/components';
 
-  function App(): React.ReactElement {
+  function App() {
     return (
     <Box backgroundColor="surface.background.gray.intense">
       <ActionList>
@@ -62,7 +62,7 @@ const Playground = `
 const ActionList = `
   import { Box, ActionList, ActionListItem } from '@razorpay/blade/components';
 
-  function App(): React.ReactElement {
+  function App() {
     return (
     <Box backgroundColor="surface.background.gray.intense">
       <ActionList>
@@ -88,7 +88,7 @@ const ActionListItem = `
     HomeIcon 
   } from '@razorpay/blade/components';
 
-  function App(): React.ReactElement {
+  function App() {
     return (
     <Box backgroundColor="surface.background.gray.intense">
       <ActionList>
@@ -121,7 +121,7 @@ const ActionListSection = `
     ActionListSection,
   } from '@razorpay/blade/components';
 
-  function App(): React.ReactElement {
+  function App() {
     return (
     <Box backgroundColor="surface.background.gray.intense">
       <ActionList>

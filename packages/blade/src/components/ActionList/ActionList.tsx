@@ -9,16 +9,18 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ActionListProps = {
   children: React.ReactNode[];
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
-const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement => {
+const _ActionList = ({ children, testID, ...rest }: ActionListProps): React.ReactElement => {
   const {
     setOptions,
     actionListItemRef,
@@ -68,6 +70,7 @@ const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement 
       sectionData={sectionData}
       isMultiSelectable={isMultiSelectable}
       ref={actionListItemRef as any}
+      {...makeAnalyticsAttribute(rest)}
     />
   ) : (
     <BaseBox
@@ -78,6 +81,7 @@ const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement 
         labelledBy: `${dropdownBaseId}-label`,
       })}
       {...metaAttribute({ name: MetaConstants.ActionList, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <ActionListBox
         isInBottomSheet={isInBottomSheet}

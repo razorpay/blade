@@ -18,7 +18,11 @@ import { Spinner } from '~components/Spinner';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import type { BladeElementRef, BladeElementRefWithValue } from '~utils/types';
+import type {
+  BladeElementRef,
+  BladeElementRefWithValue,
+  DataAnalyticsAttribute,
+} from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
 
 // Users should use PasswordInput for input type password
@@ -58,6 +62,7 @@ type TextInputCommonProps = Pick<
   | 'trailingButton'
   | 'trailingIcon'
   | 'textAlign'
+  | keyof DataAnalyticsAttribute
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -173,7 +178,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isTaggedInput,
     tags,
     onTagChange,
-    ...styledProps
+    ...rest
   },
   ref,
 ): ReactElement => {
@@ -319,7 +324,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         autoCapitalize,
       })}
       size={size}
-      {...styledProps}
+      {...rest}
     />
   );
 };

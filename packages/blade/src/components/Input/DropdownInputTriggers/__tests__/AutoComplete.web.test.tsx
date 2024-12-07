@@ -369,6 +369,27 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(getTag('Mango')).toBeVisible();
   });
 
+  it('it should accept data-analytics attributes', async () => {
+    const { getByRole, container } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Fruits" data-analytics-name="dropdown-fruits" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" data-analytics-value="apple" />
+            <ActionListItem title="Mango" value="mango" data-analytics-value="mango" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+    expect(container).toMatchSnapshot();
+    const selectInput = getByRole('combobox', { name: 'Fruits' });
+    expect(selectInput).toHaveAttribute('data-analytics-name', 'dropdown-fruits');
+    // you need to click on selectInput to make the list visible
+    await userEvent.click(selectInput);
+    expect(getByRole('option', { name: 'Apple' })).toHaveAttribute('data-analytics-value', 'apple');
+    expect(getByRole('option', { name: 'Mango' })).toHaveAttribute('data-analytics-value', 'mango');
+  });
+
   it('should handle controlled filtering', async () => {
     const cities = [
       {

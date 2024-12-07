@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 11.38.1
+
+### Patch Changes
+
+- 65431583: feat: update use-presence hook to latest for react 19 support
+
+## 11.38.0
+
+### Minor Changes
+
+- a51e8f70: feat(StepGroup): spacing enhancements, support for titleColor prop
+- 7117bfbc: feat: add support for data-analytics attribute
+
 ## 11.37.0
 
 ### Minor Changes

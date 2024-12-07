@@ -20,6 +20,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const SHOW_DRAWER = 'show-drawer';
 
@@ -74,6 +75,7 @@ const _Drawer = ({
   initialFocusRef,
   isLazy = true,
   testID,
+  ...rest
 }: DrawerProps): React.ReactElement => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
   const [zIndexState, setZIndexState] = React.useState<number>(zIndex);
@@ -150,6 +152,7 @@ const _Drawer = ({
                 name: MetaConstants.Drawer,
                 testID,
               })}
+              {...makeAnalyticsAttribute(rest)}
               zIndex={zIndexState}
             >
               {showOverlay || stackingLevel === 2 ? (

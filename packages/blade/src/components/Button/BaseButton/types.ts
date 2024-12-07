@@ -8,7 +8,7 @@ import type { BladeCommonEvents } from '~components/types';
 import type { IconProps, IconSize } from '~components/Icons';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import type { Theme } from '~components/BladeProvider';
-import type { DotNotationSpacingStringToken } from '~utils/types';
+import type { DataAnalyticsAttribute, DotNotationSpacingStringToken } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 /**
@@ -47,7 +47,7 @@ export type BaseButtonStyleProps = {
 
 export type StyledBaseButtonProps = Omit<
   BaseButtonProps,
-  'icon' | 'children' | 'accessibilityLabel'
+  'icon' | 'children' | 'accessibilityLabel' | keyof DataAnalyticsAttribute
 > & {
   defaultBorderColor: string;
   minHeight: `${ButtonMinHeight}px`;

@@ -46,7 +46,7 @@ const Page = (): React.ReactElement => {
           HeartIcon,
         } from '@razorpay/blade/components';
 
-        function App(): React.ReactElement {
+        function App() {
           return (
             // Check console
             <StepGroup orientation="vertical" size="medium">

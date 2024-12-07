@@ -405,6 +405,28 @@ describe('Tabs', () => {
     await assertAccessible(container);
   });
 
+  it('should support adding data-analytics attribute', () => {
+    const { container } = renderWithTheme(
+      <Tabs data-analytics-tab="userOptions">
+        <TabList>
+          <TabItem value="payments" data-analytics-tab-item="payments">
+            Payments
+          </TabItem>
+          <TabItem value="refunds" data-analytics-tab-item="refunds" isDisabled>
+            Refunds
+          </TabItem>
+        </TabList>
+        <TabPanel value="payments" data-analytics-tab-panel="payments">
+          <Text>Payments</Text>
+        </TabPanel>
+        <TabPanel value="refunds" data-analytics-tab-panel="refunds">
+          <Text>Refunds</Text>
+        </TabPanel>
+      </Tabs>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   test('TabItems should respond to click events', async () => {
     const onClick = jest.fn();
     const { getByRole } = renderWithTheme(
