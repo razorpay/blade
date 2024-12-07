@@ -131,9 +131,8 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     showSearchIcon = true,
 
     hideClearButton = false,
-    ...styledProps
-
-    ...rest
+    
+     ...rest
 
   },
   ref,
