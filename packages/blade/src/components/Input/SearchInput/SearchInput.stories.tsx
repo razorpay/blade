@@ -268,7 +268,7 @@ Default.storyName = 'Default';
 export const SearchInputWithClearButtonHidden = SearchInputTemplate.bind({});
 SearchInputWithClearButtonHidden.storyName = 'SearchInput with Clear Button Hidden';
 SearchInputWithClearButtonHidden.args = {
-  hideClearButton: true, // Set the new prop to true
+  hideClearButton: true, 
 };
 export const SearchInputHelpText = SearchInputTemplate.bind({});
 SearchInputHelpText.storyName = 'SearchInput with Help Text';
