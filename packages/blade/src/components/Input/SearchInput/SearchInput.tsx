@@ -64,7 +64,7 @@ type SearchInputCommonProps = Pick<
    *
    * @default false
    */
-  hideClearButton?: boolean; // New prop
+  hideClearButton?: boolean; 
 } & StyledPropsBlade;
 
 /*
@@ -97,7 +97,7 @@ type SearchInputPropsWithLabel = {
 
 type SearchInputProps = (SearchInputPropsWithA11yLabel | SearchInputPropsWithLabel) &
   SearchInputCommonProps & {
-    hideClearButton?: boolean; // Add a line to include the new prop
+    hideClearButton?: boolean; 
   }
 
 // need to do this to tell TS to infer type as SearchInput of React Native and make it believe that `ref.current.clear()` exists
