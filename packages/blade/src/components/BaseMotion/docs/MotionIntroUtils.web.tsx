@@ -153,31 +153,15 @@ export const Showcase = (): React.ReactElement => {
           </ShowcaseLinkBox>
           <ShowcaseLinkBox name="Morph">
             <ShowcaseBox>
-              {!isVisible ? (
-                <Morph layoutId="text-morph">
-                  <Text display="inline-block" weight="medium" size="large">
-                    Morph
-                  </Text>
+              {isVisible ? (
+                <Morph layoutId="morph-border-radius">
+                  <MotionExampleBox name="Morph" />
                 </Morph>
-              ) : null}
-              <Box
-                backgroundColor="surface.background.gray.intense"
-                elevation="midRaised"
-                height="100%"
-                width="100%"
-                borderColor="surface.border.gray.muted"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                {isVisible ? (
-                  <Morph layoutId="text-morph">
-                    <Text display="inline-block" weight="medium" size="large">
-                      Morph
-                    </Text>
-                  </Morph>
-                ) : null}
-              </Box>
+              ) : (
+                <Morph layoutId="morph-border-radius">
+                  <MotionExampleBox name="Morph" borderRadius="round" />
+                </Morph>
+              )}
             </ShowcaseBox>
           </ShowcaseLinkBox>
         </Box>
