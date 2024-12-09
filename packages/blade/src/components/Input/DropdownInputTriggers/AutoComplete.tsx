@@ -134,7 +134,6 @@ const useAutoComplete = ({
     }
     props.onChange?.({ name: props.name, values });
   };
-
   return {
     onSelectionChange,
     onTriggerKeydown,

@@ -44,7 +44,7 @@ export type BaseInputWrapperProps = Pick<
   size: NonNullable<BaseInputProps['size']>;
   numberOfLines: BaseInputProps['numberOfLines'];
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
 };
 
 export type StyledBaseInputProps = {
@@ -81,6 +81,7 @@ export type StyledBaseInputProps = {
   | 'leadingIcon'
   | 'prefix'
   | 'trailingInteractionElement'
+  | 'onTrailingInteractionElementClick'
   | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'

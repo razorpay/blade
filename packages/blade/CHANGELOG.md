@@ -1,5 +1,34 @@
 # @razorpay/blade
 
+## 11.37.0
+
+### Minor Changes
+
+- 778e388b: feat(blade): add new icons - IndiaFlag, MagicKonnect, WorldWide
+
+## 11.36.2
+
+### Patch Changes
+
+- f294a414: fix(blade): maxCharacters alignment in Input field
+- fa487f1e: fix(blade): Trigger native select events in dropdown/ file upload / Date picker
+
+## 11.36.1
+
+### Patch Changes
+
+- 8846293f: fix: dropdown not opening if user clicks on dropdown backdrop
+
+## 11.36.0
+
+### Minor Changes
+
+- e97ec75b: feat: add new icons
+
+### Patch Changes
+
+- 9294580c: feat: expose textAlign prop types in text input
+
 ## 11.35.0
 
 ### Minor Changes

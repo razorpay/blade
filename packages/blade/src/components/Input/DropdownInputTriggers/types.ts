@@ -2,7 +2,7 @@ import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 
 export type SelectChevronIconProps = {
-  onClick: () => void;
+  onClick?: () => void;
   isOpen?: boolean;
   isDisabled?: boolean;
 };
@@ -125,6 +125,19 @@ export type BaseDropdownInputTriggerProps = Omit<
    * Internal prop to handle click on input trigger
    */
   onTriggerClick: BaseInputProps['onClick'];
+};
+
+export type useControlledDropdownInputProps = Pick<
+  BaseDropdownInputTriggerProps,
+  | 'onChange'
+  | 'name'
+  | 'value'
+  | 'defaultValue'
+  | 'onInputValueChange'
+  | 'syncInputValueWithSelection'
+  | 'isSelectInput'
+> & {
+  triggererRef: React.RefObject<HTMLElement>;
 };
 
 export type SelectInputProps = DropdownInputTriggersProps;

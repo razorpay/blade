@@ -50,14 +50,12 @@ const useMotionVariants = (
   motionVariants: BaseMotionBoxProps['motionVariants'],
   type: BaseMotionBoxProps['type'],
 ): BaseMotionBoxProps['motionVariants'] => {
-  const shouldReduceMotion = useReducedMotion();
-
   if (!motionVariants) {
     return undefined;
   }
 
-  const shouldSkipEntryAnimation = shouldReduceMotion || type === 'out';
-  const shouldSkipExitAnimation = shouldReduceMotion || type === 'in';
+  const shouldSkipEntryAnimation = type === 'out';
+  const shouldSkipExitAnimation = type === 'in';
 
   // We override durations to stop animations but still continue with the expected position changes
   const newMotionVariants: BaseMotionBoxProps['motionVariants'] = {

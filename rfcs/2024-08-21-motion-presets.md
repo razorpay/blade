@@ -1,6 +1,6 @@
 ---
 Start Date: 21-08-2024
-RFC PR: (leave this empty if no PR yet)
+RFC PR: https://github.com/razorpay/blade/pull/2336
 Blade Issue: (leave this empty if no issue yet)
 ---
 
@@ -118,7 +118,7 @@ type FadeProps = {
    *
    * @default inout
    */
-  transition: 'in' | 'out' | 'inout';
+  type: 'in' | 'out' | 'inout';
 
   /**
    * What should trigger the motion
@@ -169,14 +169,14 @@ type SlideProps = {
   /**
    * @default inout
    */
-  transition: 'in' | 'out';
+  type: 'in' | 'out' | 'inout';
 
   /**
    * What should trigger the motion
    *
    * @default ['mount']
    */
-  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
+  motionTriggers: ('mount' | 'inView')[];
 
   /**
    * @default 'bottom'
@@ -209,19 +209,14 @@ type MoveProps = {
   /**
    * @default inout
    */
-  transition: 'in' | 'out' | 'inout';
-
-  /**
-   * @default 'bottom'
-   */
-  direction: 'top' | 'right' | 'bottom' | 'left';
+  type: 'in' | 'out' | 'inout';
 
   /**
    * What should trigger the motion
    *
    * @default ['mount']
    */
-  motionTriggers: ('mount' | 'hover' | 'tap' | 'inView')[];
+  motionTriggers: ('mount' | 'inView')[];
 
   /**
    * Visibility state
@@ -249,7 +244,7 @@ type ScaleProps = {
   /**
    * @default scale-down
    */
-  transition: 'scale-up' | 'scale-down';
+  type: 'scale-up' | 'scale-down';
 
   /**
    * What should trigger the motion
@@ -386,7 +381,7 @@ import {
 <AnimateInteractions motionTriggers={['hover']}>
   <Card>
     <CardBody>
-      <Scale>
+      <Scale motionTriggers={['on-animate-interactions']}>
         <img src="./rajorpay.jpeg" />
       </Scale>
     </CardBody>
@@ -636,6 +631,11 @@ function App({ children }) {
 
   - We'll continue to import from components and utils since they are also components only.
 
+- ## Will this be a breaking change?
+
+  - Yes. Although a small one. We're changing the structure of motion easing tokens that we have inorder to make them more scalable and consistent for future usecases.
+  - We'll be writing a codemod that migrates and maps to the new tokens so almost no to minimal manual changes will be required for this migration. More information will be added in the codemod documentation
+
 - ## Why low-level presets like `Fade`, `Move`, etc and not high-level presets like `Appear`, `Disappear`?
 
   - We had a long discussion on whether we want to exopse low-level presets or high-level presets. What we realised was that how an element appears depends on a lot of things like which element is it, how big / small is it, what is the context of the product, etc. So we can't define that all elements should fade in or all elements should slide in. It highly depends on the context of the product.
@@ -676,3 +676,4 @@ function App({ children }) {
   - [CSS Triggers - What CSS property triggers which type of render](https://csstriggers.com/)
   - [Motion React Page Transitions Demo](https://codesandbox.io/p/sandbox/framer-motion-react-router-6-page-transitions-2f2olf?file=%2Fsrc%2Ftemplate%2FGallery.tsx%3A18%2C38&from-embed=)
   - [Motion React Scroll Animations](https://codesandbox.io/p/sandbox/framer-motion-whileinview-2hbg5?file=%2Fsrc%2Findex.tsx&from-embed=)
+  - [Tailwind `group` animations](https://play.tailwindcss.com/wh3VWalCTs)
