@@ -7,15 +7,50 @@ import React from 'react';
 import { msToSeconds } from '~utils/msToSeconds';
 import { useTheme } from '~utils';
 
-export const Stagger = ({
+/**
+ * ## Stagger
+ *
+ * Stagger is a utility motion preset we expose from blade to help you implement stagger animations.
+ *
+ * You can use any of the base entry / exit presets like `Fade`, `Move`, `Slide` inside of it and the components will appear one after the other instead of all at once.
+ *
+ * **Note:** Unlike other motion presets, Stagger is not an enhancer components and renders a Box instead. You can use BoxProps on this component.
+ *
+ * ### Usage
+ *
+ * #### Move with Stagger
+ *
+ * ```jsx
+ * <Stagger>
+ *  <Move><Chip /></Move>
+ *  <Move><Chip /></Move>
+ *  <Move><Chip /></Move>
+ * </Stagger>
+ * ```
+ *
+ * #### Conditionally make the parent visible or invisible
+ *
+ * `isVisible` prop in this case should be on Stagger instead of children preset component
+ *
+ * ```jsx
+ * <Stagger isVisible={isVisibleState}>
+ *  <Move><Chip /></Move>
+ *  <Move><Chip /></Move>
+ *  <Move><Chip /></Move>
+ * </Stagger>
+ * ```
+ *
+ */
+const Stagger = ({
   children,
   isVisible = true,
   type = 'inout',
   shouldUnmountWhenHidden = false,
   delay = 'none',
+  motionTriggers,
+  ...boxProps
 }: StaggerProps) => {
   const { theme } = useTheme();
-
   // Only need AnimatePresence when we have to unmount the component
   const AnimateWrapper = shouldUnmountWhenHidden ? AnimatePresence : React.Fragment;
   // keep it always mounted when shouldUnmountWhenHidden is false
@@ -46,9 +81,11 @@ export const Stagger = ({
         <BaseMotionBox
           type={type}
           motionVariants={staggerVariants}
+          motionTriggers={motionTriggers}
           {...(shouldUnmountWhenHidden
             ? {}
             : { animateVisibility: isVisible ? 'animate' : 'exit' })}
+          {...boxProps}
         >
           <StaggerContext.Provider value={{ isInsideStaggerContainer: true, staggerType: type }}>
             {children}
@@ -58,3 +95,5 @@ export const Stagger = ({
     </AnimateWrapper>
   );
 };
+
+export { Stagger };

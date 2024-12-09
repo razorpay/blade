@@ -74,6 +74,17 @@ export const parameters = {
         ],
         'Components',
         ['*', 'Interaction Tests', 'KitchenSink'],
+        'Motion',
+        [
+          'Introduction to Motion',
+          'Fade',
+          'Move',
+          'Slide',
+          '*',
+          'AnimateInteractions',
+          'Stagger',
+          'Recipes',
+        ],
         'Recipes',
       ],
     },
@@ -96,13 +107,15 @@ export const parameters = {
       }
       return (
         <DocsContainer context={context}>
-          <BladeProvider
-            key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
-            themeTokens={getThemeTokens()}
-            colorScheme={context.store.globals.globals.colorScheme}
-          >
-            {children}
-          </BladeProvider>
+          <LazyMotion strict features={domMax}>
+            <BladeProvider
+              key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.store.globals.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </LazyMotion>
         </DocsContainer>
       );
     },
@@ -148,7 +161,8 @@ const StoryCanvas = styled.div<{ context }>(
         context.kind.includes('/Carousel') ||
         context.kind.includes('/TopNav') ||
         context.kind.includes('/Examples') ||
-        context.kind.includes('/SideNav')
+        context.kind.includes('/SideNav') ||
+        context.kind.includes('/Recipes')
           ? '0rem'
           : '2rem'
       };
@@ -232,7 +246,6 @@ export const globalTypes = {
       showName: true,
     },
   },
-  // TODO: Rebranding - Uncomment this when we fix white-labeling
   brandColor: {
     name: 'Brand Color',
     description: 'Brand Color (You can pass any valid color to BladeProvider)',

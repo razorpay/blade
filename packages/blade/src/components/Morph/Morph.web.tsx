@@ -1,7 +1,9 @@
 import React from 'react';
 import { MotionDiv } from '~components/BaseMotion';
 import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles.web';
-import { useTheme } from '~utils';
+import { castWebType, useTheme } from '~utils';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
+import { msToSeconds } from '~utils/msToSeconds';
 import { MorphProps } from './types';
 
 const Morph = ({ children, layoutId }: MorphProps) => {
@@ -18,6 +20,10 @@ const Morph = ({ children, layoutId }: MorphProps) => {
       layoutId={layoutId}
       // The animations that are not supported by layout animation are animated using `animate` prop here
       animate={cssProps}
+      transition={{
+        duration: msToSeconds(theme.motion.duration.moderate),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.standard)),
+      }}
     />
   );
 };

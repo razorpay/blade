@@ -13,6 +13,7 @@ import {
   tsConfigJSON,
   viteConfigTS,
   vitePackageJSON,
+  featuresJS,
 } from '../baseCode';
 import type { SandboxStackBlitzProps } from '../types';
 import BaseBox from '~components/Box/BaseBox';
@@ -68,6 +69,7 @@ const useStackblitzSetup = ({
         }),
         'App.tsx': code ? dedent(code) : '',
         'Logger.tsx': logger,
+        'features.js': featuresJS,
         'vite.config.ts': viteConfigTS,
         'tsconfig.json': tsConfigJSON,
         'package.json': vitePackageJSON,

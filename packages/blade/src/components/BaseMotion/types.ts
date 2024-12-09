@@ -22,12 +22,28 @@ type MotionDelay = keyof Delay | { enter: keyof Delay; exit: keyof Delay };
 type BaseMotionBoxProps = {
   as?: React.ReactElement;
   children: React.ReactElement;
+
+  /**
+   * Whether component should animate in, animate out, or animate both in and out
+   *
+   * With type="in", component will only animate in but immediately be removed on exit without animation
+   * With type="out", component will only animate out but immediately mount on enter without animation
+   * With type="inout", component animates in and out both
+   *
+   * @default 'inout'
+   */
   type?: 'in' | 'out' | 'inout';
+
   /**
    * @default ['mount']
    */
   motionTriggers?: MotionTriggersType[];
+
+  /**
+   * This internally maps to `variants` of motion/react
+   */
   motionVariants?: MotionVariantsType;
+
   /**
    * Option to override the animate
    *
@@ -55,9 +71,72 @@ type BaseMotionBoxProps = {
 };
 
 type BaseMotionEntryExitProps = Pick<BaseMotionBoxProps, 'children' | 'motionVariants' | 'type'> & {
+  /**
+   * Handle visibility of motion component.
+   *
+   * By default components animate on mount but if you want to mount/unmount them, use this prop instead
+   *
+   * ### ❌ Incorrect way to handle visibility of components
+   *
+   * ```jsx
+   * isVisible ? <Fade><MyComponent /></Fade> : null
+   * ```
+   *
+   * ### ✅ Correct way
+   *
+   * ```jsx
+   * <Fade isVisible={isVisible}><MyComponent />
+   * ```
+   *
+   * This prop allows us to handle exit animations before the component unmounts
+   */
   isVisible?: boolean;
+
+  /**
+   * ### Usage
+   *
+   * ```jsx
+   * <Fade motionTriggers={['in-view']}>
+   *   <Text>I appear when the component is in view of the scroll</Text>
+   * </Fade>
+   * ```
+   *
+   * Values:
+   * - mount: Component animates when it mounts
+   * - in-view: Component animates when its in view of the scroll
+   * - focus: Component animates in when its in focus
+   * - on-animate-interactions: Component animates based on motionTriggers of <AnimateInteractions /> component
+   *
+   * @default ['mount']
+   */
   motionTriggers?: MotionTriggerEntryExitType[];
+
+  /**
+   * By default components are only made opacity: 0. When this prop is set to true, components will unmount and be removed from the page.
+   *
+   * **Warn:** Setting this true might cause layout shifts in your page since component will be removed so do check it once and add minHeight to its container
+   *
+   * @default false
+   */
   shouldUnmountWhenHidden?: boolean;
+
+  /**
+   * Handles delay of animations
+   *
+   * ## Usage
+   *
+   * ```jsx
+   * <Fade delay="quick"></Fade>
+   * ```
+   *
+   * ### Different delays for enter and exit
+   *
+   * ```jsx
+   * <Fade delay={{ enter: 'quick', exit: 'gentle' }}></Fade>
+   * ```
+   *
+   * @default undefined
+   */
   delay?: MotionDelay;
 };
 

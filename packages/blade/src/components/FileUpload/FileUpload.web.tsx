@@ -27,7 +27,6 @@ import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInp
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useControllableState } from '~utils/useControllable';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
-import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
