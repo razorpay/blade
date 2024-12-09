@@ -46,7 +46,7 @@ const Stagger = ({
   isVisible = true,
   type = 'inout',
   shouldUnmountWhenHidden = false,
-  delay = 'none',
+  delay,
   motionTriggers,
   ...boxProps
 }: StaggerProps): React.ReactElement => {
@@ -63,13 +63,13 @@ const Stagger = ({
     initial: {},
     animate: {
       transition: {
-        delayChildren: msToSeconds(theme.motion.delay[enterDelay]),
+        ...(enterDelay ? { delayChildren: msToSeconds(theme.motion.delay[enterDelay]) } : {}),
         staggerChildren: msToSeconds(theme.motion.duration['2xquick']),
       },
     },
     exit: {
       transition: {
-        delayChildren: msToSeconds(theme.motion.delay[exitDelay]),
+        ...(exitDelay ? { delayChildren: msToSeconds(theme.motion.delay[exitDelay]) } : {}),
         staggerChildren: msToSeconds(theme.motion.duration['2xquick']),
       },
     },

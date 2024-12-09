@@ -1,4 +1,3 @@
-import { useReducedMotion } from 'framer-motion';
 import type { BaseMotionBoxProps, MotionTriggersType, MotionVariantsType } from './types';
 
 // This type is exported in new framer-motion versions but does not exist in earlier versions so adding it manually here

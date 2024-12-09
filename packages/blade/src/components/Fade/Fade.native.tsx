@@ -1,8 +1,6 @@
 import type { FadeProps } from './types';
-import type { BaseMotionEntryExitProps } from '~components/BaseMotion';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
-import type { FadeProps } from './types';
 
 const Fade = (_props: FadeProps): React.ReactElement => {
   throwBladeError({
@@ -14,4 +12,3 @@ const Fade = (_props: FadeProps): React.ReactElement => {
 };
 
 export { Fade };
-export type { BaseMotionEntryExitProps as FadeProps };
