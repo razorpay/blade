@@ -357,8 +357,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -373,8 +373,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(211,26%,34%,1);
@@ -385,10 +385,10 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
-  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
@@ -402,8 +402,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
 }
 
 .c20.c20.c20.c20.c20 {
@@ -469,8 +469,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -494,8 +494,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 .c30.c30.c30.c30.c30 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -506,8 +506,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c33.c33.c33.c33.c33 {
@@ -827,10 +827,10 @@ exports[`Modal renders a basic Modal 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
-  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
@@ -844,8 +844,8 @@ exports[`Modal renders a basic Modal 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
 }
 
 <div
@@ -933,10 +933,10 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
-  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
@@ -950,8 +950,8 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
 }
 
 <div
@@ -1039,10 +1039,10 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
-  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
@@ -1056,8 +1056,8 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
 }
 
 <div

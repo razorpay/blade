@@ -1,26 +1,27 @@
+import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Route, useHistory, useLocation, matchPath, Switch } from 'react-router-dom';
 import type { StepItemProps } from '~components/StepGroup';
 import { StepGroup, StepItem, StepItemIndicator } from '~components/StepGroup';
-import { AnimatePresence } from 'motion/react';
 import { Box } from '~components/Box';
-import React from 'react';
 
 const StepperRouterExample = ({
   routeComponent,
   stepsSampleData,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   routeComponent: (_props: any) => React.ReactElement;
   stepsSampleData: StepItemProps[];
 }): React.ReactElement => {
   const history = useHistory();
-  const navigateTo = (e: React.MouseEvent, url: string) => {
+  const navigateTo = (e: React.MouseEvent, url: string): void => {
     e.preventDefault();
     history.push(url);
   };
 
   const location = useLocation();
 
-  const getSelectedItemIndex = (pathname: string) => {
+  const getSelectedItemIndex = (pathname: string): number => {
     return stepsSampleData.findIndex((stepInfo) => matchPath(pathname, stepInfo.href!));
   };
 

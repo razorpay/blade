@@ -70,7 +70,7 @@ const _ChipGroup = (
 
   return (
     <ChipGroupProvider value={contextValue}>
-      <BaseBox ref={ref as any} {...getStyledProps(styledProps)}>
+      <BaseBox ref={ref as never} {...getStyledProps(styledProps)}>
         <SelectorGroupField
           position={labelPosition}
           accessibilityRole={selectionType === 'single' ? 'radiogroup' : 'group'}

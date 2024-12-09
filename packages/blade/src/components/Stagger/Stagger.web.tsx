@@ -1,9 +1,9 @@
-import { BaseMotionBox } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
+import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { StaggerContext } from './StaggerProvider';
-import { StaggerProps } from './types';
-import React from 'react';
+import type { StaggerProps } from './types';
+import { BaseMotionBox } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { useTheme } from '~utils';
 
@@ -46,10 +46,10 @@ const Stagger = ({
   isVisible = true,
   type = 'inout',
   shouldUnmountWhenHidden = false,
-  delay = 'none',
+  delay,
   motionTriggers,
   ...boxProps
-}: StaggerProps) => {
+}: StaggerProps): React.ReactElement => {
   const { theme } = useTheme();
   // Only need AnimatePresence when we have to unmount the component
   const AnimateWrapper = shouldUnmountWhenHidden ? AnimatePresence : React.Fragment;
@@ -63,13 +63,13 @@ const Stagger = ({
     initial: {},
     animate: {
       transition: {
-        delayChildren: msToSeconds(theme.motion.delay[enterDelay]),
+        ...(enterDelay ? { delayChildren: msToSeconds(theme.motion.delay[enterDelay]) } : {}),
         staggerChildren: msToSeconds(theme.motion.duration['2xquick']),
       },
     },
     exit: {
       transition: {
-        delayChildren: msToSeconds(theme.motion.delay[exitDelay]),
+        ...(exitDelay ? { delayChildren: msToSeconds(theme.motion.delay[exitDelay]) } : {}),
         staggerChildren: msToSeconds(theme.motion.duration['2xquick']),
       },
     },

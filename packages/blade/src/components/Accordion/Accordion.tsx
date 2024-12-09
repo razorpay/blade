@@ -1,6 +1,5 @@
-import React from 'react';
 import type { ReactElement } from 'react';
-import { useCallback, useMemo, useState, cloneElement, Children } from 'react';
+import React, { useCallback, useMemo, useState, cloneElement, Children } from 'react';
 import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
 import { MAX_WIDTH } from './styles';

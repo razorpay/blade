@@ -173,7 +173,7 @@ const _Carousel = (
 
   return (
     <CarouselContext.Provider value={carouselContext}>
-      <BaseBox display="flex" alignItems="center" flexDirection="column">
+      <BaseBox ref={ref as never} display="flex" alignItems="center" flexDirection="column">
         <BaseBox
           width="100%"
           position="relative"

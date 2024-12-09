@@ -1,10 +1,10 @@
 import React from 'react';
+import type { SlideProps } from './types';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
-import type { SlideProps } from './types';
 
 const getFromTransform = (
   direction: SlideProps['direction'],
@@ -59,7 +59,7 @@ const Slide = ({
   shouldUnmountWhenHidden,
   fromOffset,
   delay,
-}: SlideProps) => {
+}: SlideProps): React.ReactElement => {
   const { theme } = useTheme();
 
   const enterDirection = typeof direction === 'object' ? direction.enter : direction;
@@ -123,6 +123,7 @@ const Slide = ({
         },
       },
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       enterDirection,
       exitDirection,

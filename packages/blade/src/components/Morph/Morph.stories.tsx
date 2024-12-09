@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Morph } from './';
@@ -6,16 +7,11 @@ import type { MorphProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { AnimatePresence } from 'framer-motion';
 import { TextInput } from '~components/Input/TextInput';
 import { Link } from '~components/Link';
 import { Display, Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 import { MorphSandbox } from '~components/BaseMotion/docs/codeExamples';
-import { CloseIcon, SearchIcon } from '~components/Icons';
-import { SearchInput } from '~components/Input/SearchInput';
-import { IconButton } from '~components/Button/IconButton';
-import { Modal, ModalBody } from '~components/Modal';
 import { Alert } from '~components/Alert';
 
 const Page = (): React.ReactElement => {
@@ -63,6 +59,7 @@ const MorphTemplate: StoryFn<typeof Morph> = (args) => {
           <Morph {...args}>
             <Box display="block" width="240px">
               <TextInput
+                // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 accessibilityLabel="Name"
                 placeholder="Enter your Name"

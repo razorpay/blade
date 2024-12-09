@@ -1,6 +1,6 @@
+import type { MorphProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
-import type { MorphProps } from './types';
 
 const Morph = (_props: MorphProps): React.ReactElement => {
   throwBladeError({

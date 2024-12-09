@@ -49,7 +49,7 @@ import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import { MotionMetaProp } from '~components/BaseMotion';
+import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 
 type CommonAutoCompleteSuggestionTypes =
@@ -1022,7 +1022,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               <StyledBaseInput
                 as={as}
                 id={inputId}
-                ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any })}
+                ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any }) as never}
                 name={name}
                 type={type}
                 defaultValue={defaultValue}

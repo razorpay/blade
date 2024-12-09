@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type React from 'react';
-import type { MotionMetaProp } from '~components/BaseMotion';
 import type { BladeElementRef } from './types';
+import type { MotionMetaProp } from '~components/BaseMotion';
 
 type MotionRefsType = {
   ref: React.Ref<BladeElementRef>;

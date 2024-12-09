@@ -146,7 +146,7 @@ const _ButtonGroup = (
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-buttongroup FileUpload Documentation}
  * 
  */
-const ButtonGroup = assignWithoutSideEffects(_ButtonGroup, {
+const ButtonGroup = assignWithoutSideEffects(React.forwardRef(_ButtonGroup), {
   displayName: 'ButtonGroup',
   componentId: 'ButtonGroup',
 });

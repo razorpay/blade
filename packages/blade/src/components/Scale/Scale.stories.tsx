@@ -1,13 +1,13 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import { InternalCardExample } from '../Card/Card.stories';
+import qrCodesImage from './docs-qrcodes.svg';
 import { Scale } from './';
 import type { ScaleProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { InternalCardExample } from '../Card/Card.stories';
-import qrCodesImage from './docs-qrcodes.svg';
 import { ScaleSandbox } from '~components/BaseMotion/docs/codeExamples';
 
 const Page = (): React.ReactElement => {
@@ -55,7 +55,7 @@ const ScaleTemplate: StoryFn<typeof Scale> = (args) => {
 
 export const Default = ScaleTemplate.bind({});
 Default.args = {
-  children: <img src={qrCodesImage} alt="QR Codes Image" width="300px" />,
+  children: <img src={qrCodesImage} alt="QR Codes" width="300px" />,
 };
 
 export const Controlled = ControlledScaleTemplate.bind({});

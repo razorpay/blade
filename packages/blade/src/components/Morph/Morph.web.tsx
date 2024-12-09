@@ -1,12 +1,12 @@
 import React from 'react';
+import type { MorphProps } from './types';
 import { MotionDiv } from '~components/BaseMotion';
 import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles.web';
 import { castWebType, useTheme } from '~utils';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { msToSeconds } from '~utils/msToSeconds';
-import { MorphProps } from './types';
 
-const Morph = ({ children, layoutId }: MorphProps) => {
+const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
   // Apart from framer-motion's layout morphing, we also support morph of backgroundColor and borderRadius
   const { borderRadius, backgroundColor, ...rest } = children.props;
   const { theme } = useTheme();
