@@ -284,8 +284,8 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -309,8 +309,8 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -336,8 +336,8 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -387,8 +387,8 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }

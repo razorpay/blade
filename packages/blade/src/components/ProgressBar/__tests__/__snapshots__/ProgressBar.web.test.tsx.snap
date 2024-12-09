@@ -44,15 +44,15 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -68,10 +68,10 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c2.c2.c2.c2.c2 {
