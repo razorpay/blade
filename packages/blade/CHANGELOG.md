@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.39.0
+
+### Minor Changes
+
+- 583900a1: feat(blade): add ray icon
+
 ## 11.38.1
 
 ### Patch Changes
