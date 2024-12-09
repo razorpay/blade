@@ -253,6 +253,7 @@ import PowerIconComponent from './PowerIcon';
 import PrinterIconComponent from './PrinterIcon';
 import QRCodeIconComponent from './QRCodeIcon';
 import RadioIconComponent from './RadioIcon';
+import RayIconComponent from './RayIcon';
 import RazorpayIconComponent from './RazorpayIcon';
 import RazorpayXIconComponent from './RazorpayXIcon';
 import RazorpayxPayrollIconComponent from './RazorpayxPayrollIcon';
@@ -619,6 +620,7 @@ const iconMap: Record<string, IconComponent> = {
   PrinterIcon: PrinterIconComponent,
   QRCodeIcon: QRCodeIconComponent,
   RadioIcon: RadioIconComponent,
+  RayIcon: RayIconComponent,
   RazorpayIcon: RazorpayIconComponent,
   RazorpayXIcon: RazorpayXIconComponent,
   RazorpayxPayrollIcon: RazorpayxPayrollIconComponent,
