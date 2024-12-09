@@ -10,7 +10,7 @@ interface CheckboxProps {
   isEditable?: boolean;
   isEditablePlaceholderText?: string;
   isEditableInputWithDateField?: boolean;
-  onCheckboxClick: (checkedState: true | false) => void;
+  onCheckboxClick: ({ isChecked, optionText }: { isChecked: boolean; optionText: string }) => void;
 }
 
 function Checkbox({
@@ -31,9 +31,9 @@ function Checkbox({
       </svg>
     `;
 
-  const handleOnClick = () => {
+  const handleOnClick = ({ optionText }: { optionText: string }) => {
     setChecked(!isChecked);
-    onCheckboxClick(!isChecked);
+    onCheckboxClick({ isChecked: !isChecked, optionText });
   };
 
   return (
@@ -42,7 +42,7 @@ function Checkbox({
       cornerRadius={4}
       direction="vertical"
       width="fill-parent"
-      onClick={isEditable ? () => {} : handleOnClick}
+      onClick={isEditable ? () => {} : () => handleOnClick({ optionText })}
       hoverStyle={{ fill: { r: 0, g: 0, b: 0, a: 0.04 } }}
     >
       <AutoLayout padding={{ vertical: 2 }} direction="horizontal" spacing={4} width="fill-parent">
@@ -61,7 +61,7 @@ function Checkbox({
             fill={isChecked ? '#305EFF' : '#FFFFFF'}
             stroke={isChecked ? '#305EFF' : '#CBD5E2'}
             strokeWidth={1.5}
-            onClick={isEditable ? handleOnClick : () => {}}
+            onClick={isEditable ? () => handleOnClick({ optionText }) : () => {}}
           >
             {isChecked && <Svg src={checkIcon} width={12} height={12} />}
           </AutoLayout>
@@ -74,7 +74,7 @@ function Checkbox({
                 fontWeight={400}
                 lineHeight={20}
                 fill={isChecked ? '#768EA7' : '#40566D'}
-                onClick={isEditable ? handleOnClick : () => {}}
+                onClick={isEditable ? () => handleOnClick({ optionText }) : () => {}}
               >
                 {optionText}
               </Text>
@@ -97,7 +97,7 @@ function Checkbox({
               lineHeight={20}
               fill={isChecked ? '#768EA7' : '#40566D'}
               width="fill-parent"
-              onClick={isEditable ? handleOnClick : () => {}}
+              onClick={isEditable ? () => handleOnClick({ optionText }) : () => {}}
             >
               {optionText}
             </Text>

@@ -2,16 +2,55 @@
 import Checkbox from '../components/Checkbox';
 import SectionHeader from '../components/SectionHeader';
 import ProgressBar from '../components/ProgressBar';
-const { AutoLayout, Text, useSyncedState } = figma.widget;
+import { sendAnalytics } from '../utils/sendAnalytics';
+const { AutoLayout, Text, useSyncedState, useEffect, waitForTask } = figma.widget;
 
 function Widget() {
   const [checkedItems, setCheckedItems] = useSyncedState('checkedStates', 0);
+  const [isAnalyticsLoadEventSent, setIsAnalyticsLoadEventSent] = useSyncedState(
+    'analytics',
+    false,
+  );
 
-  const updateChecklist = (checkedState: true | false): void => {
-    if (checkedState) {
-      setCheckedItems((prevState: number) => prevState + 1);
+  useEffect(() => {
+    if (!isAnalyticsLoadEventSent) {
+      // send analytics
+      waitForTask(
+        sendAnalytics({
+          eventName: 'Blade Snowflake Handoff Checklist Used',
+        }),
+      );
+      setIsAnalyticsLoadEventSent(true);
+    }
+  });
+
+  const updateChecklist = ({
+    isChecked,
+    optionText,
+  }: {
+    isChecked: boolean;
+    optionText: string;
+  }): void => {
+    if (isChecked) {
+      setCheckedItems((prevState: number) => {
+        waitForTask(
+          sendAnalytics({
+            eventName: 'Snowflake Checklist Item Toggled',
+            properties: { checkedItems: prevState + 1, checkedItemName: optionText },
+          }),
+        );
+        return prevState + 1;
+      });
     } else {
-      setCheckedItems((prevState: number) => prevState - 1);
+      setCheckedItems((prevState: number) => {
+        waitForTask(
+          sendAnalytics({
+            eventName: 'Snowflake Checklist Item Toggled',
+            properties: { checkedItems: prevState - 1, unCheckedItemName: optionText },
+          }),
+        );
+        return prevState - 1;
+      });
     }
   };
 
@@ -89,7 +128,7 @@ function Widget() {
           />
           <Checkbox
             id="hygiene2"
-            optionText="Has all the states of the component'"
+            optionText="Has all the states of the component"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox

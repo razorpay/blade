@@ -501,7 +501,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
             </ListItemLink>
           </ListItem>
           <ListItem>
-            <ListItemLink href="/?path=/docs/tokens-breakpoints--page">
+            <ListItemLink href="/?path=/docs/tokens-breakpoints--docs">
               Breakpoint Tokens Reference
             </ListItemLink>
           </ListItem>

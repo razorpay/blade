@@ -170,6 +170,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
   let nonBladeColorStyles = 0;
   // let nonBladeEffectStyles = 0;
   let totalLayers = 0;
+  let bladeCoverage = 0;
 
   try {
     // if there are non-frame nodes as direct children of a page, ignore them
@@ -408,12 +409,6 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           }
         }
 
-        /** check if frame is being used as a custom component
-         * has fills?
-         * has strokes?
-         * has effects?
-         * if any of the above is true then it's a custom component
-         * */
         const ignoreInstanceFrameNodeNames = [
           'root',
           'wrapper',
@@ -422,33 +417,42 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           'overlay', // Drawer Overlay
           'Marker', // Step Marker
           'Summary Row',
+          'card-body',
+          'card-content-holder',
         ];
-        if (
-          traversedNode.type === 'FRAME' &&
-          !ignoreInstanceFrameNodeNames.includes(traversedNode.name) &&
-          getParentNode(traversedNode)?.type !== 'PAGE'
-        ) {
-          const hasStrokes =
-            traversedNode?.boundVariables?.strokes?.length ?? traversedNode.strokes.length;
-          const hasEffects = traversedNode.effects?.length || traversedNode.effectStyleId;
-          const hasNonMixedFills =
-            traversedNode.fills !== figma.mixed && traversedNode.fills.length;
-          const hasFills =
-            traversedNode?.boundVariables?.fills?.length ??
-            hasNonMixedFills ??
-            traversedNode.fillStyleId;
-          if (
-            Boolean(hasStrokes || hasEffects || hasFills) &&
-            !Boolean(traversedNode.fills === figma.mixed)
-          ) {
-            // this is non-blade component error
-            // push the frame layer to be included in component count
-            nonBladeComponents++;
-            highlightNonBladeNode(traversedNode, 'Use relevant Blade component');
-          } else {
-            NODES_SKIP_FROM_COVERAGE.push('FRAME');
-          }
-        }
+
+        /** check if frame is being used as a custom component
+         * has fills?
+         * has strokes?
+         * has effects?
+         * if any of the above is true then it's a custom component
+         * */
+        // if (
+        //   traversedNode.type === 'FRAME' &&
+        //   !ignoreInstanceFrameNodeNames.includes(traversedNode.name) &&
+        //   getParentNode(traversedNode)?.type !== 'PAGE'
+        // ) {
+        //   const hasStrokes =
+        //     traversedNode?.boundVariables?.strokes?.length ?? traversedNode.strokes.length;
+        //   const hasEffects = traversedNode.effects?.length || traversedNode.effectStyleId;
+        //   const hasNonMixedFills =
+        //     traversedNode.fills !== figma.mixed && traversedNode.fills.length;
+        //   const hasFills =
+        //     traversedNode?.boundVariables?.fills?.length ??
+        //     hasNonMixedFills ??
+        //     traversedNode.fillStyleId;
+        //   if (
+        //     Boolean(hasStrokes || hasEffects || hasFills) &&
+        //     !Boolean(traversedNode.fills === figma.mixed)
+        //   ) {
+        //     // this is non-blade component error
+        //     // push the frame layer to be included in component count
+        //     nonBladeComponents++;
+        //     highlightNonBladeNode(traversedNode, 'Use relevant Blade component');
+        //   } else {
+        //     NODES_SKIP_FROM_COVERAGE.push('FRAME');
+        //   }
+        // }
 
         if (
           ![...NODES_SKIP_FROM_COVERAGE, 'TEXT', 'LINE', 'RECTANGLE', 'FRAME'].includes(
@@ -472,6 +476,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         // remove rectangle node index for next iteration because we don't want to remove all the rectangle nodes, only the image ones
         // remove frame node index for next iteration because we don't want to remove layout frame nodes, only the one that has being used as card
         const nodesToBeRemoved = ['RECTANGLE', 'FRAME'];
+        // const nodesToBeRemoved = ['RECTANGLE'];
         nodesToBeRemoved.forEach((nodeName) => {
           const nodeIndex = NODES_SKIP_FROM_COVERAGE.findIndex((node) => node === nodeName);
           if (nodeIndex !== -1) {
@@ -508,6 +513,15 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     figma.closePlugin();
   }
 
+  if (bladeComponents === 0 && totalLayers === 0) {
+    bladeCoverage = 0;
+  } else if (nonBladeComponents === 0) {
+    // we need to do this because when everything is from blade there are still outer frames and things like that are non-blade and not flagged as well
+    bladeCoverage = 100;
+  } else {
+    bladeCoverage = Number((bladeComponents / totalLayers) * 100);
+  }
+
   return {
     bladeComponents,
     bladeTextStyles,
@@ -516,10 +530,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     nonBladeTextStyles,
     nonBladeColorStyles,
     totalLayers,
-    bladeCoverage:
-      bladeComponents === 0 && totalLayers === 0
-        ? 0
-        : Number((bladeComponents / totalLayers) * 100),
+    bladeCoverage,
   };
 };
 
@@ -600,9 +611,10 @@ const main = async (): Promise<void> => {
             eventName: 'Blade Coverage Plugin Used',
             properties: {
               fileName: figma.root.name,
-              pageName: mainFrameNode.parent?.name,
+              pageName: figma.currentPage.name,
+              pagePath: `${figma.root.name}/${figma.currentPage.name}`,
               nodeName: mainFrameNode.name,
-              nodePath: `${figma.root.name}/${mainFrameNode.parent?.name}/${mainFrameNode.name}`,
+              nodePath: `${figma.root.name}/${figma.currentPage.name}/${mainFrameNode.name}`,
               nodeUrlPath: `https://www.figma.com/file/${figma.fileKey}/${
                 figma.root.name
               }?node-id=${encodeURIComponent(mainFrameNode.id)}`,
