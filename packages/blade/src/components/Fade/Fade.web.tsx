@@ -5,6 +5,7 @@ import type { MotionVariantsType } from '~components/BaseMotion';
 import { castWebType, useTheme } from '~utils';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { msToSeconds } from '~utils/msToSeconds';
+import type { FadeProps } from './types';
 
 /**
  * ## Fade

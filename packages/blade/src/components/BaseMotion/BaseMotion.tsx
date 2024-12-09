@@ -48,6 +48,8 @@ const _BaseMotionBox = (
     isInsideStaggerContainer ? staggerType : type,
   );
 
+  console.count('BaseMotionBox');
+
   return (
     <MotionDiv
       ref={ref as never}
