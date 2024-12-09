@@ -5,6 +5,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { BladeElementRef } from '~utils/types';
 
 /**
  * ### Tabs
@@ -36,17 +37,20 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
  * </Tabs>
  * ```
  */
-const Tabs = ({
-  children,
-  defaultValue,
-  value,
-  onChange,
-  orientation = 'horizontal',
-  size = 'medium',
-  variant = 'bordered',
-  isFullWidthTabItem = false,
-  isLazy = false,
-}: TabsProps): React.ReactElement => {
+const _Tabs = (
+  {
+    children,
+    defaultValue,
+    value,
+    onChange,
+    orientation = 'horizontal',
+    size = 'medium',
+    variant = 'bordered',
+    isFullWidthTabItem = false,
+    isLazy = false,
+  }: TabsProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const baseId = useId('tabs');
   const [selectedValue, setSelectedValue] = useControllableState({
     defaultValue,
@@ -83,6 +87,7 @@ const Tabs = ({
   return (
     <TabsContext.Provider value={contextValue}>
       <BaseBox
+        ref={ref as never}
         display="flex"
         flexDirection={isVertical ? 'row' : 'column'}
         {...metaAttribute({ name: MetaConstants.Tabs })}
@@ -92,5 +97,7 @@ const Tabs = ({
     </TabsContext.Provider>
   );
 };
+
+const Tabs = React.forwardRef(_Tabs);
 
 export { Tabs };

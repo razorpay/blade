@@ -20,7 +20,7 @@ type Duration = {
   '2xgentle': 960;
 };
 
-type Delay = {
+export type Delay = {
   /** `80` milliseconds */
   '2xquick': 80;
   /** `160` milliseconds */

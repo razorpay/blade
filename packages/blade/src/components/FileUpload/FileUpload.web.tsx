@@ -26,6 +26,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useControllableState } from '~utils/useControllable';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
@@ -53,6 +54,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     maxCount,
     maxSize,
     size = 'medium',
+    _motionMeta,
     ...styledProps
   },
   ref,
@@ -180,6 +182,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
   return (
     <BaseBox
+      ref={getOuterMotionRef({ _motionMeta, ref })}
       display="flex"
       flexDirection="column"
       width="100%"
@@ -267,7 +270,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     onBlur: () => setIsActive(false),
                     ...accessibilityProps,
                   }}
-                  ref={mergedRef}
+                  ref={getInnerMotionRef({ _motionMeta, ref: mergedRef })}
                 />
 
                 <Box

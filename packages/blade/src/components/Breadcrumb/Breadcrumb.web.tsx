@@ -7,6 +7,7 @@ import { Text } from '~components/Typography';
 import { makeAccessible } from '~utils/makeAccessible';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
 
 const Separator = ({
   size,
@@ -26,18 +27,22 @@ const Separator = ({
 
 const listStyleNone = { listStyle: 'none' };
 
-const Breadcrumb = ({
-  size = 'medium',
-  color = 'primary',
-  showLastSeparator = false,
-  accessibilityLabel = 'Breadcrumb',
-  children,
-  ...styledProps
-}: BreadcrumbProps): React.ReactElement => {
+const _Breadcrumb = (
+  {
+    size = 'medium',
+    color = 'primary',
+    showLastSeparator = false,
+    accessibilityLabel = 'Breadcrumb',
+    children,
+    ...styledProps
+  }: BreadcrumbProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const contextValue = React.useMemo(() => ({ size, color }), [size, color]);
 
   return (
     <BaseBox
+      ref={ref as never}
       as="nav"
       {...getStyledProps(styledProps)}
       {...metaAttribute({ name: MetaConstants.Breadcrumb })}
@@ -84,5 +89,7 @@ const Breadcrumb = ({
     </BaseBox>
   );
 };
+
+const Breadcrumb = React.forwardRef(_Breadcrumb);
 
 export { Breadcrumb };

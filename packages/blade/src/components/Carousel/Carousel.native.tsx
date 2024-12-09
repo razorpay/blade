@@ -16,6 +16,7 @@ import { logger } from '~utils/logger';
 import { size } from '~tokens/global';
 import { useDidUpdate } from '~utils/useDidUpdate';
 import { getResponsiveValue } from '~components/Box/BaseBox/getResponsiveValue';
+import type { BladeElementRef } from '~utils/types';
 
 const percentageStringToNumber = (percentage: string): number => {
   if (!percentage.endsWith('%')) {
@@ -83,16 +84,19 @@ const Controls = ({
   );
 };
 
-const Carousel = ({
-  autoPlay,
-  showIndicators = true,
-  children,
-  carouselItemWidth = '100%',
-  accessibilityLabel,
-  onChange,
-  indicatorVariant = 'gray',
-  navigationButtonVariant = 'filled',
-}: CarouselProps): React.ReactElement => {
+const _Carousel = (
+  {
+    autoPlay,
+    showIndicators = true,
+    children,
+    carouselItemWidth = '100%',
+    accessibilityLabel,
+    onChange,
+    indicatorVariant = 'gray',
+    navigationButtonVariant = 'filled',
+  }: CarouselProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const containerRef = React.useRef<ScrollView>(null);
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [scrollViewWidth, setScrollViewWidth] = React.useState(0);
@@ -236,5 +240,7 @@ const Carousel = ({
     </CarouselContext.Provider>
   );
 };
+
+const Carousel = React.forwardRef(_Carousel);
 
 export { Carousel };
