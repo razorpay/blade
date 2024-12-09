@@ -5,7 +5,6 @@ import { BaseMotionBox, BaseMotionEnhancerBox } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 let mockMotionProps: Record<string, any> = {};
-let mockReducedMotion = false;
 jest.mock('framer-motion', () => ({
   m: jest.fn().mockImplementation(() => (props: any) => {
     mockMotionProps = props;
@@ -14,7 +13,6 @@ jest.mock('framer-motion', () => ({
     );
     return <div {...propsLowerCased} />;
   }),
-  useReducedMotion: jest.fn(() => mockReducedMotion),
 }));
 
 describe('<BaseMotionBox />', () => {
@@ -99,32 +97,6 @@ describe('<BaseMotionBox />', () => {
 
     expect(mockMotionProps.variants.exit.transition.duration).toBe(0.3);
     expect(mockMotionProps.variants.animate.transition.duration).toBe(0.0001);
-  });
-
-  it('should disable all durations on reducedMotion', () => {
-    mockReducedMotion = true;
-    renderWithTheme(
-      <BaseMotionBox
-        type="inout"
-        motionVariants={{
-          initial: { color: 'red' },
-          animate: {
-            color: ['blue', 'green'],
-            transition: { duration: 0.8, ease: [0, 0, 0.1, 0] },
-          },
-          exit: { color: 'yellow', transition: { duration: 0.3, ease: [0, 0, 0.4, 0] } },
-        }}
-        motionTriggers={['mount']}
-      >
-        <div>hi</div>
-      </BaseMotionBox>,
-    );
-
-    console.log({ mockMotionProps });
-
-    expect(mockMotionProps.variants.exit.transition.duration).toBe(0.0001);
-    expect(mockMotionProps.variants.animate.transition.duration).toBe(0.0001);
-    mockReducedMotion = false;
   });
 
   it('should render correct animation variables on hover / focus', () => {

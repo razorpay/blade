@@ -95,9 +95,9 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -1416,47 +1416,52 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c18"
+                    class="c17"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c19"
+                      class="c18"
                       data-blade-component="base-box"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="c20"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
+                      <div
+                        class="c19"
+                        data-blade-component="base-box"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        class="c21"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c21"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1925,9 +1930,9 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -2393,47 +2398,52 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c17"
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c18"
+                      class="c17"
                       data-blade-component="base-box"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="c19"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
+                      <div
+                        class="c18"
+                        data-blade-component="base-box"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        class="c20"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c19"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2532,9 +2542,9 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -3024,47 +3034,52 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c17"
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c18"
+                      class="c17"
                       data-blade-component="base-box"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="c19"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
+                      <div
+                        class="c18"
+                        data-blade-component="base-box"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        class="c20"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c19"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>

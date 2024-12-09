@@ -10,7 +10,13 @@
     "moduleResolution": "Node",
     "strict": true,
     "skipLibCheck": true,
-    "typeRoots": ["./node_modules/@figma", "./node_modules/@types"],
+    "typeRoots": ["node_modules/@figma", "node_modules/@types"],
     "target": "ESNext"
-  }
+  },
+  "include": [
+    "components/**/*.tsx",
+    "dev-handoff-checklist/**/*.tsx",
+    "snowflake-handoff-checklist/**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
 }

@@ -21,8 +21,6 @@ type Duration = {
 };
 
 export type Delay = {
-  /** `0` milliseconds  */
-  none: 0;
   /** `80` milliseconds */
   '2xquick': 80;
   /** `160` milliseconds */
@@ -123,7 +121,6 @@ export type DurationString = `duration.${keyof Duration}`;
 export type DelayString = `delay.${keyof Delay}`;
 
 const delay: Delay = {
-  none: 0,
   '2xquick': 80,
   xquick: 160,
   moderate: 280,
@@ -147,7 +144,6 @@ const duration: Duration = {
 
 /* makeBezier returns a string of `cubic-bezier()` for web & a react-native-reanimated Easing Function of type `EasingFactoryFn` for native */
 const easing: Easing = {
-  // Should we expose raw values now instead of cubiz-bezier.
   linear: makeBezier(0, 0, 0, 0),
   entrance: makeBezier(0, 0, 0.2, 1),
   exit: makeBezier(0.17, 0, 1, 1),
