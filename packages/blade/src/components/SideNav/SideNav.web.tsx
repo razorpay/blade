@@ -20,6 +20,7 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const {
   COLLAPSED,
@@ -105,7 +106,7 @@ const getL1MenuClassName = ({
  *
  */
 const _SideNav = (
-  { children, isOpen, onDismiss, banner, testID, ...styledProps }: SideNavProps,
+  { children, isOpen, onDismiss, banner, testID, ...rest }: SideNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
@@ -249,7 +250,8 @@ const _SideNav = (
             name: MetaConstants.SideNav,
             testID,
           })}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
         >
           {banner ? (
             <BaseBox

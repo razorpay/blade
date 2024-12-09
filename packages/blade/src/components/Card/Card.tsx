@@ -10,7 +10,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { Elevation } from '~tokens/global';
 import type { BoxProps } from '~components/Box';
@@ -20,6 +20,7 @@ import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -169,6 +170,7 @@ export type CardProps = {
    */
   as?: 'label';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
@@ -192,7 +194,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     target,
     rel,
     as,
-    ...styledProps
+    ...rest
   },
   ref,
 ): React.ReactElement => {
@@ -236,7 +238,8 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         href={href}
         accessibilityLabel={accessibilityLabel}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <CardSurface
           height={height}
@@ -269,13 +272,18 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
 type CardBodyProps = {
   children: React.ReactNode;
   height?: BoxProps['height'];
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
-const _CardBody = ({ height, children, testID }: CardBodyProps): React.ReactElement => {
+const _CardBody = ({ height, children, testID, ...rest }: CardBodyProps): React.ReactElement => {
   useVerifyInsideCard('CardBody');
 
   return (
-    <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })} height={height}>
+    <BaseBox
+      {...metaAttribute({ name: MetaConstants.CardBody, testID })}
+      {...makeAnalyticsAttribute(rest)}
+      height={height}
+    >
       {children}
     </BaseBox>
   );

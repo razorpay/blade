@@ -113,4 +113,21 @@ describe('Drawer', () => {
       }),
     );
   });
+
+  it('Should support adding data-analytics attribute', () => {
+    const { getByTestId } = renderWithTheme(
+      <Drawer
+        isOpen={true}
+        onDismiss={() => {}}
+        accessibilityLabel="Test Drawer"
+        testID="drawer"
+        data-analytics-drawer="drawer-analytics"
+      >
+        <DrawerBody>
+          <Text>Test Content</Text>
+        </DrawerBody>
+      </Drawer>,
+    );
+    expect(getByTestId('drawer')).toHaveAttribute('data-analytics-drawer', 'drawer-analytics');
+  });
 });

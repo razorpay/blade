@@ -78,7 +78,7 @@ const Page = (): React.ReactElement => {
           UserIcon
         } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Box>
               <Menu>

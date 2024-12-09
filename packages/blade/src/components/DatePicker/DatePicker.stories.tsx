@@ -87,7 +87,7 @@ export default {
             {`
               import { DatePicker } from '@razorpay/blade/components';
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   <DatePicker 
                     label="Name"

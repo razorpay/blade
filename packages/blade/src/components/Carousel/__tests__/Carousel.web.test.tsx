@@ -195,4 +195,20 @@ describe('Carousel Snapshots', () => {
     expect(container).toMatchSnapshot();
     viewport.cleanup();
   });
+  it('should support data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <Carousel data-analytics-carousel="carousel">
+        <CarouselItem data-analytics-carousel-slide="1">
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem data-analytics-carousel-slide="2">
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container.querySelector('[data-analytics-carousel="carousel"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-analytics-carousel-slide="1"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-analytics-carousel-slide="2"]')).toBeInTheDocument();
+  });
 });

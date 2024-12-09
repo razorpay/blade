@@ -146,6 +146,17 @@ describe('<ButtonGroup />', () => {
     );
     expect(getByTestId('button-group-test')).toBeInTheDocument();
   });
+  it('should support data-analytics', () => {
+    const { container } = renderWithTheme(
+      <ButtonGroup data-analytics-test="test">
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>,
+    );
+
+    expect(container.querySelector('[data-analytics-test="test"]')).toBeInTheDocument();
+  });
 
   it('should throw error for invalid children', () => {
     expect(() =>

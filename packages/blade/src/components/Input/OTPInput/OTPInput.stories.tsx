@@ -182,7 +182,7 @@ export default {
             {`
               import { OTPInput } from '@razorpay/blade/components';
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   // Fill OTP and check console
                   <OTPInput 

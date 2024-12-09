@@ -3,9 +3,13 @@ import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
 
+const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
+
+export const isPR = Boolean(process.env.GITHUB_SHA) && !isMaster;
+
 const getBladeVersion = (): string => {
   // We don't publish codesandbox ci on master so version is not present
-  const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
+
   const sha = process.env.GITHUB_SHA;
   if (sha && !isMaster) {
     const shortSha = sha.slice(0, 8);
@@ -64,15 +68,16 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
   };
 };
 
-const getViteReactTSDependencies = (): Dependencies => {
+export const getViteReactTSDependencies = (): Dependencies => {
   return {
     dependencies: {
-      react: '^18',
-      'react-dom': '^18',
+      react: '^19',
+      'react-dom': '^19',
       'react-router-dom': '^6',
       motion: '11.12.0',
-      '@types/react': '^18',
-      '@types/react-dom': '^18',
+      'react-scripts': '4.0.3',
+      '@types/react': '^19',
+      '@types/react-dom': '^19',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
@@ -92,7 +97,7 @@ export const vitePackageJSON = JSON.stringify(
       build: 'vite build',
     },
     stackblitz: {
-      startCommand: 'yarn install && yarn dev',
+      startCommand: 'pnpm install && pnpm dev',
       installDependencies: false,
     },
     ...getViteReactTSDependencies(),
@@ -125,10 +130,24 @@ export const indexHTML = dedent`
     <link rel="icon" href="https://raw.githubusercontent.com/razorpay/blade/1e77f0b35172654037a431a916b3190b545fd232/branding/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blade Example</title>
+    <style>
+    /* 
+      You should ideally write these styles in styled-component's createGlobalStyles.
+      We're adding it here because that is not working in stackblitz example
+    */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0px;
+      padding: 0px;
+    }
+    </style>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.js"></script>
   </body>
 </html>
 `;
@@ -140,7 +159,7 @@ import React from 'react';
 const overrideConsoleLog = () => {
   const actualConsoleLog = console.log;
   const customConsole = {
-    log: function (message: any) {
+    log: function (message) {
       const logMessage = document.createElement('p');
       logMessage.style.fontSize = '14px';
       logMessage.textContent = '> ' + JSON.stringify(message, null, 4);
@@ -240,6 +259,7 @@ export const getIndexTSX = ({
   colorScheme: any;
   showConsole?: boolean;
 }): string => dedent`
+import React from 'react';
 import { createRoot } from "react-dom/client";
 import { createGlobalStyle } from "styled-components";
 import { LazyMotion } from 'motion/react';
@@ -252,18 +272,6 @@ import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
 import App from "./App";
 ${showConsole ? 'import { Logger } from "./Logger";' : ''}
 import '@razorpay/blade/fonts.css';
-
-
-const GlobalStyles = createGlobalStyle\`
-  * { 
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Lato', sans-serif;
-  }
-\`;
 
 const rootElement = document.getElementById("root");
 

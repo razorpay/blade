@@ -22,7 +22,7 @@ const Page = (): ReactElement => {
         {`
           import { ProgressBar } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               <ProgressBar 
                 label="Label" 

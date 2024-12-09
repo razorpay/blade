@@ -32,7 +32,7 @@ const Page = (): ReactElement => {
         {`
         import { Button } from '@razorpay/blade/components'
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             // Try changing variant here to secondary
             <Button 

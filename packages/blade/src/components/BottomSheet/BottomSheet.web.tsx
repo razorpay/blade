@@ -32,6 +32,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 const AUTOCOMPLETE_DEFAULT_SNAPPOINT = 0.85;
@@ -75,6 +76,7 @@ const _BottomSheet = ({
   initialFocusRef,
   snapPoints = [0.35, 0.5, 0.85],
   zIndex = componentZIndices.bottomSheet,
+  ...dataAnalyticsProps
 }: BottomSheetProps): React.ReactElement => {
   const { theme } = useTheme();
   const dimensions = useWindowSize();
@@ -473,6 +475,7 @@ const _BottomSheet = ({
           top: 'auto',
           zIndex: bottomSheetZIndex,
         }}
+        {...makeAnalyticsAttribute(dataAnalyticsProps)}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
           <BottomSheetGrabHandle

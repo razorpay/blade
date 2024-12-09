@@ -11,6 +11,7 @@ import { throwBladeError } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 /**
  * ### BottomNav component
@@ -53,7 +54,7 @@ import type { BladeElementRef } from '~utils/types';
 
  */
 const _BottomNav = (
-  { children, zIndex = componentZIndices.bottomNav, testID, ...styledProps }: BottomNavProps,
+  { children, zIndex = componentZIndices.bottomNav, testID, ...rest }: BottomNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   if (__DEV__) {
@@ -81,12 +82,13 @@ const _BottomNav = (
       paddingX="spacing.2"
       display="flex"
       flexDirection="row"
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
       zIndex={zIndex}
       {...metaAttribute({
         testID,
         name: MetaConstants.BottomNav,
       })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </BaseBox>
@@ -123,6 +125,7 @@ const BottomNavItem = ({
   onClick,
   icon: Icon,
   testID,
+  ...rest
 }: BottomNavItemProps): React.ReactElement => {
   const isRouterLink = as && href;
   const defaultRenderElement = href ? 'a' : 'button';
@@ -152,6 +155,7 @@ const BottomNavItem = ({
         name: MetaConstants.BottomNavItem,
         testID,
       })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <Icon color="currentColor" size="large" />
       <Text truncateAfterLines={1} color="currentColor" size="xsmall" weight="semibold">

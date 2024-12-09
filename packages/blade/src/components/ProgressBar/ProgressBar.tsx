@@ -13,11 +13,12 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { size } from '~tokens/global';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ProgressBarCommonProps = {
   /**
@@ -59,6 +60,7 @@ type ProgressBarCommonProps = {
    */
   max?: number;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type ProgressBarVariant = 'progress' | 'meter' | 'linear' | 'circular';
@@ -122,7 +124,7 @@ const _ProgressBar = (
     min = 0,
     max = 100,
     testID,
-    ...styledProps
+    ...rest
   }: ProgressBarProps,
   ref: Ref<BladeElementRef>,
 ): ReactElement => {
@@ -203,8 +205,9 @@ const _ProgressBar = (
   return (
     <BaseBox
       ref={ref as never}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox display="flex" flexDirection="column" width="100%">
         {!isCircular ? (

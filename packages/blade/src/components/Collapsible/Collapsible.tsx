@@ -5,7 +5,7 @@ import type { CollapsibleContextState } from './CollapsibleContext';
 import { CollapsibleContext } from './CollapsibleContext';
 import { MAX_WIDTH, MAX_WIDTH_NO_RESTRICTIONS } from './styles';
 import BaseBox from '~components/Box/BaseBox';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
@@ -15,6 +15,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CollapsibleProps = {
   /**
@@ -59,6 +60,7 @@ type CollapsibleProps = {
    */
   _shouldApplyWidthRestrictions?: boolean;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const MIN_WIDTH: BoxProps['minWidth'] = makeSize(size[200]);
@@ -73,7 +75,7 @@ const _Collapsible = (
     testID,
     _shouldApplyWidthRestrictions = true,
     _dangerouslyDisableValidations = false,
-    ...styledProps
+    ...rest
   }: CollapsibleProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
@@ -135,7 +137,8 @@ const _Collapsible = (
       <BaseBox
         ref={ref as never}
         {...metaAttribute({ name: MetaConstants.Collapsible, testID })}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <BaseBox
           display="flex"

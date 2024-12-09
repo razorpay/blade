@@ -8,6 +8,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const Separator = ({
   size,
@@ -34,7 +35,7 @@ const _Breadcrumb = (
     showLastSeparator = false,
     accessibilityLabel = 'Breadcrumb',
     children,
-    ...styledProps
+    ...rest
   }: BreadcrumbProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
@@ -44,8 +45,9 @@ const _Breadcrumb = (
     <BaseBox
       ref={ref as never}
       as="nav"
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.Breadcrumb })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BreadcrumbContext.Provider value={contextValue}>
         <BaseBox

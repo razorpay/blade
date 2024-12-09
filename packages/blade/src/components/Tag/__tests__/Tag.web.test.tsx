@@ -46,4 +46,18 @@ describe('<Tag />', () => {
     await user.click(getByRole('button', { name: 'Close in:User tag', hidden: false }));
     expect(dismissHandler).not.toBeCalled();
   });
+
+  it('should support data analytics attribute', () => {
+    const { container } = renderWithTheme(
+      <Tag
+        onDismiss={() => {
+          console.log('tag dismissed');
+        }}
+        data-analytics-tag="test"
+      >
+        in:User
+      </Tag>,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

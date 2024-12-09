@@ -27,7 +27,7 @@ const Page = (): React.ReactElement => {
         {`
         import { ToastContainer, useToast } from '@razorpay/blade/components';
 
-        function App(): React.ReactElement {
+        function App() {
           const toast = useToast();
 
           // Integrating Blade Toast in your App

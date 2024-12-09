@@ -11,6 +11,7 @@ import { size as sizeTokens } from '~tokens/global';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const MIN_WIDTH: BoxProps['minWidth'] = {
   s: makeSize(sizeTokens[200]),
@@ -73,7 +74,7 @@ const _Accordion = (
     size = 'large',
     maxWidth,
     testID,
-    ...styledProps
+    ...rest
   }: AccordionProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
@@ -124,7 +125,8 @@ const _Accordion = (
       <BaseBox
         ref={ref as never}
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <BaseBox
           {...getVariantStyles(variant)}

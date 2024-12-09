@@ -11,6 +11,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import type { BladeElementRef } from '~utils/types';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _ChipGroup = (
   {
@@ -32,7 +33,7 @@ const _ChipGroup = (
     color = 'primary',
     testID,
     selectionType = 'single',
-    ...styledProps
+    ...rest
   }: ChipGroupProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
@@ -70,13 +71,14 @@ const _ChipGroup = (
 
   return (
     <ChipGroupProvider value={contextValue}>
-      <BaseBox ref={ref as never} {...getStyledProps(styledProps)}>
+      <BaseBox ref={ref as never} {...getStyledProps(rest)}>
         <SelectorGroupField
           position={labelPosition}
           accessibilityRole={selectionType === 'single' ? 'radiogroup' : 'group'}
           labelledBy={ids.labelId}
           componentName="chip-group"
           testID={testID}
+          {...makeAnalyticsAttribute(rest)}
         >
           {label ? (
             <FormLabel

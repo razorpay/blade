@@ -8,6 +8,7 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const useChildrenWithIndexes = ({
   _nestingLevel,
@@ -70,7 +71,7 @@ const _StepGroup = (
     width,
     minWidth,
     maxWidth,
-    ...styledProps
+    ...rest
   }: StepGroupProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
@@ -98,7 +99,7 @@ const _StepGroup = (
     <StepGroupContext.Provider value={contextValue}>
       <BaseBox
         ref={ref as never}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
         display="inline-flex"
         maxWidth={maxWidth ?? '100%'}
         minWidth={minWidth}
@@ -107,6 +108,7 @@ const _StepGroup = (
         overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
         {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
+        {...makeAnalyticsAttribute(rest)}
       >
         {childrenWithIndex}
       </BaseBox>

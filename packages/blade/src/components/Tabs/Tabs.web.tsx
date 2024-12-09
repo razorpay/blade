@@ -6,6 +6,7 @@ import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _Tabs = (
   {
@@ -18,6 +19,7 @@ const _Tabs = (
     variant = 'bordered',
     isFullWidthTabItem = false,
     isLazy = false,
+    ...rest
   }: TabsProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
@@ -61,6 +63,7 @@ const _Tabs = (
         display="flex"
         flexDirection={isVertical ? 'row' : 'column'}
         {...metaAttribute({ name: MetaConstants.Tabs })}
+        {...makeAnalyticsAttribute(rest)}
       >
         {children}
       </BaseBox>

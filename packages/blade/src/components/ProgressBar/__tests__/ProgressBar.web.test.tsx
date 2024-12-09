@@ -176,4 +176,11 @@ describe('<ProgressBar />', () => {
     );
     expect(getByTestId('progress-bar-test')).toBeTruthy();
   });
+
+  it('should accept data-analytics attribute', () => {
+    const { container } = renderWithTheme(
+      <ProgressBar label="Label" value={20} data-analytics-progress-value="20" />,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

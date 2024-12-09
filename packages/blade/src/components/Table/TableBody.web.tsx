@@ -25,6 +25,7 @@ import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import type { Theme } from '~components/BladeProvider';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getTableRowBackgroundTransition = (theme: Theme): string => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
@@ -217,7 +218,7 @@ const StyledBody = styled(Body)<{
   };
 });
 
-const _TableBody = ({ children }: TableBodyProps): React.ReactElement => {
+const _TableBody = ({ children, ...rest }: TableBodyProps): React.ReactElement => {
   const { showStripedRows, selectionType } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
@@ -227,6 +228,7 @@ const _TableBody = ({ children }: TableBodyProps): React.ReactElement => {
       $showStripedRows={showStripedRows}
       $showBorderedCells={true}
       {...metaAttribute({ name: MetaConstants.TableBody })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </StyledBody>
@@ -279,7 +281,7 @@ export const CellWrapper = styled(BaseBox)<{
   };
 });
 
-const _TableCell = ({ children, _hasPadding }: TableCellProps): React.ReactElement => {
+const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
@@ -290,6 +292,7 @@ const _TableCell = ({ children, _hasPadding }: TableCellProps): React.ReactEleme
       role="cell"
       $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
         <CellWrapper
@@ -445,6 +448,7 @@ const _TableRow = <Item,>({
   onClick,
   hoverActions,
   testID,
+  ...rest
 }: TableRowProps<Item>): React.ReactElement => {
   const {
     selectionType,
@@ -483,6 +487,7 @@ const _TableRow = <Item,>({
       onClick={() => onClick?.({ item })}
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {isMultiSelect && (
         <TableCheckboxCell

@@ -200,4 +200,22 @@ describe('<Collapsible />', () => {
 
     await assertAccessible(container);
   });
+  it('should support adding data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <Collapsible data-analytics-collapsible="View Breakdown">
+        <CollapsibleLink data-analytics-collapsible-link="view price breakdown">
+          View Price Breakdown
+        </CollapsibleLink>
+      </Collapsible>,
+    );
+    const collapsibleDataAnalyticsAttribute = container.querySelector(
+      '[data-analytics-collapsible="View Breakdown"]',
+    );
+    const collapsibleLinkDataAnalyticsAttribute = container.querySelector(
+      '[data-analytics-collapsible-link="view price breakdown"]',
+    );
+    expect(collapsibleDataAnalyticsAttribute).toBeInTheDocument();
+    expect(collapsibleLinkDataAnalyticsAttribute).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -30,6 +30,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useDidUpdate } from '~utils/useDidUpdate';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ControlsProp = Required<
   Pick<
@@ -247,7 +248,7 @@ const _Carousel = (
     height,
     defaultActiveSlide,
     activeSlide: activeSlideProp,
-    ...props
+    ...rest
   }: CarouselProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
@@ -519,7 +520,8 @@ const _Carousel = (
         alignItems="center"
         flexDirection="column"
         height={height}
-        {...getStyledProps(props)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
       >
         <BaseBox
           width="100%"

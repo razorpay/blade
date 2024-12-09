@@ -16,12 +16,13 @@ import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { BladeElementRef, DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { makeSize, useTheme } from '~utils';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import type { MotionMetaProp } from '~components/BaseMotion';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type OnChange = ({
   isChecked,
@@ -112,6 +113,7 @@ type CheckboxProps = {
    */
   tabIndex?: number;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade &
   MotionMetaProp;
 
@@ -133,7 +135,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     tabIndex,
     testID,
     _motionMeta,
-    ...styledProps
+    ...rest
   },
   ref,
 ) => {
@@ -229,7 +231,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     <BaseBox
       ref={getOuterMotionRef({ _motionMeta, ref })}
       {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
     >
       <SelectorLabel
         componentName={MetaConstants.CheckboxLabel}
@@ -246,6 +248,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               inputProps={inputProps}
               tabIndex={tabIndex}
               ref={getInnerMotionRef({ _motionMeta, ref })}
+              {...makeAnalyticsAttribute(rest)}
             />
             <CheckboxIcon
               size={_size}

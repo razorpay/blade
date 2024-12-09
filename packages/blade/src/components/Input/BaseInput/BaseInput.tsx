@@ -38,7 +38,12 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
-import type { BladeElementRef, ContainerElementType, TestID } from '~utils/types';
+import type {
+  BladeElementRef,
+  ContainerElementType,
+  DataAnalyticsAttribute,
+  TestID,
+} from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -51,6 +56,7 @@ import getIn from '~utils/lodashButBetter/get';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -72,6 +78,7 @@ type CommonAutoCompleteSuggestionTypes =
 type WebAutoCompleteSuggestionType = CommonAutoCompleteSuggestionTypes | 'on';
 
 type BaseInputCommonProps = FormInputLabelProps &
+  DataAnalyticsAttribute &
   FormInputValidationProps & {
     /**
      * Determines if it needs to be rendered as input, textarea or button
@@ -832,7 +839,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isTableInputCell = false,
     showHintsAsTooltip = false,
     _motionMeta,
-    ...styledProps
+    ...rest
   },
   ref,
 ) => {
@@ -928,7 +935,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     <BaseBox
       ref={getOuterMotionRef({ _motionMeta, ref })}
       {...metaAttribute({ name: componentName, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
     >
       <BaseBox
         display="flex"
@@ -1065,6 +1072,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
+                {...makeAnalyticsAttribute(rest)}
               />
             </BaseInputTagSlot>
             <BaseInputVisuals

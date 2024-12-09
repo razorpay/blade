@@ -26,6 +26,7 @@ import { isReactNative, makeSize, useBreakpoint } from '~utils';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type OnChange = ({
   isChecked,
@@ -38,7 +39,7 @@ type OnChange = ({
 }) => void;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, color, testID, _motionMeta, ...styledProps },
+  { isDisabled, value, children, icon: Icon, color, testID, _motionMeta, ...rest },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -142,7 +143,8 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       ref={getOuterMotionRef({ _motionMeta, ref })}
     >

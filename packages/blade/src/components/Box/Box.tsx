@@ -7,6 +7,7 @@ import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (__DEV__) {
@@ -256,6 +257,7 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
       id={props.id}
       {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
       {...makeBoxProps(props)}
+      {...makeAnalyticsAttribute(props)}
     />
   );
 };

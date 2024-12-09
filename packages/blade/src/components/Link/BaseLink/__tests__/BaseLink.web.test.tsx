@@ -222,6 +222,14 @@ describe('<BaseLink />', () => {
     expect(getByTestId('base-link-test')).toBeTruthy();
   });
 
+  it('should accpet data-analytics', () => {
+    const linkText = 'Learn More';
+    const { getByRole } = renderWithTheme(
+      <BaseLink data-analytics-link="learn-more">{linkText}</BaseLink>,
+    );
+    expect(getByRole('link')).toHaveAttribute('data-analytics-link', 'learn-more');
+  });
+
   it('should handle styles for all interactions', () => {
     const textContent = 'Slash';
     const { getByText } = renderWithTheme(<BaseLink variant="button">{textContent}</BaseLink>);

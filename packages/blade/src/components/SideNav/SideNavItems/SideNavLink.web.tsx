@@ -17,6 +17,7 @@ import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
@@ -182,6 +183,7 @@ const SideNavLink = ({
   tooltip,
   as,
   target,
+  ...rest
 }: SideNavLinkProps): React.ReactElement => {
   const {
     l2PortalContainerRef,
@@ -275,6 +277,7 @@ const SideNavLink = ({
                 aria-current={isActive ? 'page' : undefined}
                 data-level={currentLevel}
                 data-l2trigger={isL2Trigger}
+                {...makeAnalyticsAttribute(rest)}
               >
                 <NavLinkIconTitle
                   icon={icon}

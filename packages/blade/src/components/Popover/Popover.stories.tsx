@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { StoryFn, Meta } from '@storybook/react';
@@ -40,7 +41,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Popover, Button } from '@razorpay/blade/components'
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Popover content="Hello world" placement="bottom">
               <Button>Hover over me</Button>

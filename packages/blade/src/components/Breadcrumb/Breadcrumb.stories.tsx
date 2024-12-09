@@ -31,7 +31,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Box, Breadcrumb, BreadcrumbItem, HomeIcon } from '@razorpay/blade/components';
 
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Box padding="spacing.4">
               <Breadcrumb>

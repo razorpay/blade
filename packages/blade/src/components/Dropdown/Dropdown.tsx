@@ -15,6 +15,7 @@ import { throwBladeError } from '~utils/logger';
 import type { BladeElementRef, ContainerElementType } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
 import { mergeRefs } from '~utils/useMergeRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const validDropdownChildren = [
   // TODO: Remove Box once CountrySelector's button sizing is fixed
@@ -62,7 +63,7 @@ const _Dropdown = (
     selectionType = 'single',
     testID,
     _width,
-    ...styledProps
+    ...rest
   }: DropdownProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
@@ -234,7 +235,8 @@ const _Dropdown = (
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ref={mergeRefs(ref, dropdownContainerRef as any)}
           {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
           width={_width}
         >
           <BaseBox position="relative" textAlign={'left' as never}>

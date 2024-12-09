@@ -3,7 +3,7 @@ import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { LinkProps } from '~components/Link';
 import type { FeedbackColors } from '~tokens/theme/theme';
-import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, DotNotationSpacingStringToken, TestID } from '~utils/types';
 
 type StepGroupProps = {
   /**
@@ -51,6 +51,7 @@ type StepGroupProps = {
    */
   _nestingLevel?: number;
 } & StyledPropsBlade &
+  DataAnalyticsAttribute &
   TestID;
 
 type StepGroupContextType = Required<Pick<StepGroupProps, 'size' | 'orientation'>> & {
@@ -138,7 +139,7 @@ type StepItemProps = {
    * Children slot for adding additional custom elements to item
    */
   children?: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type InteractiveItemHeaderProps = {
   isSelected: StepItemProps['isSelected'];

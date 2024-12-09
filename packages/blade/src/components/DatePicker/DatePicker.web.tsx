@@ -34,6 +34,8 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
@@ -65,7 +67,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   onPickerChange,
   zIndex = componentZIndices.popover,
   ...props
-}: DatePickerProps<Type> & StyledPropsBlade): React.ReactElement => {
+}: DatePickerProps<Type> & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
@@ -301,6 +303,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             validationState={validationState}
             autoFocus={autoFocus}
             necessityIndicator={necessityIndicator}
+            {...makeAnalyticsAttribute(props)}
           />
           {isMobile ? (
             <BottomSheet

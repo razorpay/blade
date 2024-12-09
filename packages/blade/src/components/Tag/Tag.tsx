@@ -13,6 +13,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { useIsMobile } from '~utils/useIsMobile';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtuallyFocused'] }>(
   (props) => {
@@ -39,7 +40,7 @@ const _Tag = (
     testID,
     _isVirtuallyFocused,
     _isTagInsideInput,
-    ...styledProps
+    ...rest
   }: TagProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement | null => {
@@ -73,8 +74,9 @@ const _Tag = (
     <BaseBox
       ref={ref as never}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <FocussableTag
         display={(isReactNative() ? 'flex' : 'inline-flex') as never}

@@ -6,6 +6,7 @@ import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const SideNavItemContainer = styled(BaseBox)((props) => {
   return {
@@ -20,6 +21,7 @@ const SideNavItem = ({
   backgroundColor,
   tooltip,
   as = 'div',
+  ...rest
 }: SideNavItemProps): React.ReactElement => {
   return (
     <TooltipifyNavItem tooltip={tooltip}>
@@ -34,6 +36,7 @@ const SideNavItem = ({
         borderRadius="medium"
         as={as}
         cursor={as === 'label' ? 'pointer' : undefined}
+        {...makeAnalyticsAttribute(rest)}
       >
         <Box display="inline-flex" alignItems="center" gap="spacing.3">
           {leading}

@@ -42,3 +42,23 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
   />
 </div>
 `;
+
+exports[`<BaseBox /> should support passing data-analytics  attributes 1`] = `
+<div>
+  <div
+    class="BaseBox-bmPWx"
+    data-analytics-name="demo"
+    data-blade-component="base-box"
+  />
+</div>
+`;
+
+exports[`<BaseBox /> should support passing data-analytics  attributes 2`] = `
+<div>
+  <section
+    class="BaseBox-bmPWx"
+    data-analytics-name="section"
+    data-blade-component="base-box"
+  />
+</div>
+`;

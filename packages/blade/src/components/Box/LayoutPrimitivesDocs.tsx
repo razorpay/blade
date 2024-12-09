@@ -118,7 +118,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
           {`
             import { Box, Text } from '@razorpay/blade/components'
 
-            function App(): React.ReactElement {
+            function App() {
               return (
                 <Box 
                   as="section" // renders as <section> tag instead of <div>
@@ -185,7 +185,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
             {`
               import { Box, Text } from '@razorpay/blade/components'
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   <>
                     <Box 
@@ -238,7 +238,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
             code={`
              import { Box, Text } from '@razorpay/blade/components';
 
-             function App(): React.ReactElement {
+             function App() {
                return (
                 <>
                   <Box display={{ base: 'none', m: 'block' }}><Text>🖥 Desktop View</Text></Box>
@@ -310,7 +310,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
           {`
                 import { Text } from '@razorpay/blade/components'
 
-                function App(): React.ReactElement {
+                function App() {
                   return (
                     <>
                       {/** ❌ No need of Box wrappers */}

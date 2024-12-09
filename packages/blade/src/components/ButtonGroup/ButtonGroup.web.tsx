@@ -16,6 +16,7 @@ import type { Theme } from '~components/BladeProvider';
 import { throwBladeError } from '~utils/logger';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getDividerColorToken = ({
   color,
@@ -61,7 +62,7 @@ const _ButtonGroup = (
     variant = 'primary',
     isFullWidth = false,
     testID,
-    ...styledProps
+    ...rest
   }: ButtonGroupProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
@@ -82,7 +83,8 @@ const _ButtonGroup = (
         isDisabled={isDisabled}
         isFullWidth={isFullWidth}
         {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
         role="group"
       >
         {React.Children.map(children, (child, index) => {

@@ -21,8 +21,14 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { BladeElementRef, DotNotationSpacingStringToken, TestID } from '~utils/types';
+import type {
+  DataAnalyticsAttribute,
+  BladeElementRef,
+  DotNotationSpacingStringToken,
+  TestID,
+} from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type PrimaryAction = {
   text: string;
@@ -109,7 +115,8 @@ type AlertProps = {
     secondary?: SecondaryAction;
   };
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  DataAnalyticsAttribute;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -136,7 +143,7 @@ const _Alert = (
     actions,
     testID,
     icon,
-    ...styledProps
+    ...rest
   }: AlertProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement | null => {
@@ -304,7 +311,8 @@ const _Alert = (
       ref={ref as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <StyledAlert
         color={color}

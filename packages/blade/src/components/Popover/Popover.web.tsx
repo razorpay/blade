@@ -31,6 +31,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const Popover = ({
   content,
@@ -44,6 +45,7 @@ const Popover = ({
   isOpen,
   defaultIsOpen,
   initialFocusRef,
+  ...rest
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
@@ -151,6 +153,7 @@ const Popover = ({
               {...getFloatingProps()}
               {...metaAttribute({ name: MetaConstants.Popover })}
               {...makeAccessible({ labelledBy: titleId })}
+              {...makeAnalyticsAttribute(rest)}
             >
               <PopoverContent
                 title={title}

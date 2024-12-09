@@ -131,4 +131,10 @@ describe('<Counter />', () => {
     const { getByTestId } = renderWithTheme(<Counter value={20} testID="counter-test" />);
     expect(getByTestId('counter-test')).toBeTruthy();
   });
+  it('should support data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <Counter value={20} data-analytics-counter="counter" data-analytics-value="20" />,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

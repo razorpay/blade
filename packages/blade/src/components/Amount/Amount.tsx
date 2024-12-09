@@ -6,7 +6,7 @@ import type { AmountTypeProps } from './amountTokens';
 import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -18,6 +18,7 @@ import { BaseText } from '~components/Typography/BaseText';
 import { Text } from '~components/Typography';
 import { opacity } from '~tokens/global';
 import type { FontFamily } from '~tokens/global';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 /**
  * Pollyfill function to get around the node 18 error
@@ -102,6 +103,7 @@ type AmountCommonProps = {
    */
   isStrikethrough?: boolean;
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type ColorProps = {
@@ -267,7 +269,7 @@ const _Amount = (
     currencyIndicator = 'currency-symbol',
     currency = 'INR',
     testID,
-    ...styledProps
+    ...rest
   }: AmountProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
@@ -333,7 +335,8 @@ const _Amount = (
       display={(isReactNative ? 'flex' : 'inline-flex') as never}
       flexDirection="row"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox
         display={(isReactNative ? 'flex' : 'inline-flex') as never}

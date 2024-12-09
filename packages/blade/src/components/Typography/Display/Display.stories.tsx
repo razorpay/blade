@@ -24,7 +24,7 @@ const Page = (): ReactElement => {
         {`
           import { Display } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               <Display size="large">Blade by Razorpay</Display>
             )

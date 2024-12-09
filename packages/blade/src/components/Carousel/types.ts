@@ -3,6 +3,7 @@ import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Platform } from '~utils';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type InteractiveTokens = DotNotationToken<Theme['colors']['interactive']['background']>;
 type FeedbackTokens = DotNotationToken<Theme['colors']['feedback']['background']>;
@@ -109,6 +110,7 @@ type CarouselProps = {
    * Sets the height of the carousel
    */
   height?: BoxProps['height'];
-} & StyledPropsBlade;
+} & StyledPropsBlade &
+  DataAnalyticsAttribute;
 
 export type { CarouselProps };

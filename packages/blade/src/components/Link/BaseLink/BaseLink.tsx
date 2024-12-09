@@ -37,6 +37,7 @@ import type { BladeCommonEvents } from '~components/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import type { ActionStates } from '~utils/useInteraction';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type BaseLinkCommonProps = {
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -290,7 +291,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     onTouchEnd,
     onMouseDown,
     onMouseUp,
-    ...styledProps
+    ...rest
   },
   ref,
 ) => {
@@ -387,7 +388,8 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
       // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}
