@@ -254,6 +254,7 @@ export { default as PowerIcon } from './PowerIcon';
 export { default as PrinterIcon } from './PrinterIcon';
 export { default as QRCodeIcon } from './QRCodeIcon';
 export { default as RadioIcon } from './RadioIcon';
+export { default as RayIcon } from './RayIcon';
 export { default as RazorpayIcon } from './RazorpayIcon';
 export { default as RazorpayXIcon } from './RazorpayXIcon';
 export { default as RazorpayxPayrollIcon } from './RazorpayxPayrollIcon';
