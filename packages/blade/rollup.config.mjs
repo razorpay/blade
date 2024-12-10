@@ -51,7 +51,11 @@ const nativeExtensions = [
 const packageJsonDeps = Object.keys(packagejson.dependencies).filter(
   (name) => name !== 'patch-package',
 );
-const externalDependencies = packageJsonDeps;
+
+// `framer-motion` was renamed to `motion`. To support the older versions of framer-motion, we have kept `framer-motion` as peer dependency right now.
+// Although we also want to make sure that if someone installs `motion` instead, it should externalize correctly
+// We cannot mark `motion` and `framer-motion` both as peer dependencies because `motion` might end up installing different `framer-motion` version internally which can end up clashing (TLDR: I tried and it didn't work)
+const externalDependencies = [...packageJsonDeps, 'motion'];
 
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
