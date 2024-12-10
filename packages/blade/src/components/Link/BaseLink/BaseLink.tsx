@@ -247,7 +247,7 @@ const getProps = ({
     }) as BaseTextProps['color'],
     focusRingColor: getIn(theme.colors, 'interactive.background.primary.faded'),
     motionDuration: 'duration.2xquick',
-    motionEasing: 'easing.standard.effective',
+    motionEasing: 'easing.standard',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
     disabled: isButton && isDisabled,
     role: isButton ? 'button' : 'link',

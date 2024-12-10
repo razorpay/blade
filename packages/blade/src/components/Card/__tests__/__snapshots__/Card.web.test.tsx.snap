@@ -109,13 +109,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
   cursor: initial;
 }
 
@@ -248,8 +241,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -273,8 +266,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c14.c14.c14.c14.c14 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -311,8 +304,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -336,8 +329,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c20.c20.c20.c20.c20 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -348,8 +341,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -666,13 +659,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
   cursor: initial;
 }
 
@@ -1037,13 +1023,6 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
   cursor: initial;
 }
 
@@ -1110,13 +1089,6 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
   cursor: initial;
 }
 
@@ -1180,13 +1152,6 @@ exports[`<Card /> should render a plain Card 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
   cursor: initial;
 }
 
@@ -1330,13 +1295,6 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
   cursor: initial;
 }
 
@@ -1452,8 +1410,8 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -1477,8 +1435,8 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 .c13.c13.c13.c13.c13 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1515,8 +1473,8 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -1540,8 +1498,8 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 .c19.c19.c19.c19.c19 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1552,8 +1510,8 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c16.c16.c16.c16.c16 {

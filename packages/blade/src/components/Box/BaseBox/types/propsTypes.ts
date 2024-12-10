@@ -201,7 +201,10 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 // Visual props that are specific to Box
 type BoxVisualProps = MakeObjectResponsive<{
-  backgroundColor: BackgroundColorString<'surface'> | 'transparent';
+  backgroundColor:
+    | BackgroundColorString<'surface'>
+    | BackgroundColorString<'overlay'>
+    | 'transparent';
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object

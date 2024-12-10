@@ -88,14 +88,14 @@ const tableRow = {
   },
   borderBottomWidth: 'thin',
   borderColor: 'surface.border.gray.muted',
-  backgroundColorMotionEasing: 'easing.standard.effective',
+  backgroundColorMotionEasing: 'easing.standard',
   backgroundColorMotionDuration: 'duration.xquick',
 } as const;
 
 const tableToolbar = {
   backgroundColor: 'transparent',
   backgroundColorSelected: 'interactive.background.primary.faded',
-  backgroundColorMotionEasing: 'easing.standard.effective',
+  backgroundColorMotionEasing: 'easing.standard',
   backgroundColorMotionDuration: 'duration.xquick',
 } as const;
 

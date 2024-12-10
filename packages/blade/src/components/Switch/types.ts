@@ -1,3 +1,4 @@
+import type { MotionMetaProp } from '~components/BaseMotion';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
@@ -61,7 +62,8 @@ type SwitchProps = {
   id?: string;
 } & TestID &
   DataAnalyticsAttribute &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  MotionMetaProp;
 
 type ThumbProps = {
   children: React.ReactNode;

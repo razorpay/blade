@@ -1,4 +1,5 @@
-import type { ReactElement } from 'react';
+import React from 'react';
+import type { ReactElement, Ref } from 'react';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { CircularProgressBarFilled } from './CircularProgressBar';
 import clamp from '~utils/lodashButBetter/clamp';
@@ -12,7 +13,7 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { size } from '~tokens/global';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -109,21 +110,24 @@ const progressBarHeight: Record<NonNullable<ProgressBarProps['size']>, 2 | 4 | 0
   large: size[0],
 };
 
-const ProgressBar = ({
-  accessibilityLabel,
-  color,
-  type,
-  isIndeterminate = false,
-  label,
-  showPercentage = true,
-  size = 'small',
-  value = 0,
-  variant = 'progress',
-  min = 0,
-  max = 100,
-  testID,
-  ...rest
-}: ProgressBarProps): ReactElement => {
+const _ProgressBar = (
+  {
+    accessibilityLabel,
+    color,
+    type,
+    isIndeterminate = false,
+    label,
+    showPercentage = true,
+    size = 'small',
+    value = 0,
+    variant = 'progress',
+    min = 0,
+    max = 100,
+    testID,
+    ...rest
+  }: ProgressBarProps,
+  ref: Ref<BladeElementRef>,
+): ReactElement => {
   const { theme } = useTheme();
   const progressType = !type && (variant === 'meter' || variant === 'progress') ? variant : type;
   const progressVariant = variant === 'meter' || variant === 'progress' ? 'linear' : variant;
@@ -200,6 +204,7 @@ const ProgressBar = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
       {...makeAnalyticsAttribute(rest)}
@@ -251,7 +256,7 @@ const ProgressBar = ({
               pulseMotionDuration="duration.2xgentle"
               fillMotionDuration="duration.2xgentle"
               pulseMotionDelay="delay.long"
-              motionEasing="easing.standard.revealing"
+              motionEasing="easing.emphasized"
             />
           ) : (
             <BaseBox
@@ -267,7 +272,7 @@ const ProgressBar = ({
                 pulseMotionDuration="duration.2xgentle"
                 indeterminateMotionDuration="duration.2xgentle"
                 pulseMotionDelay="delay.long"
-                motionEasing="easing.standard.revealing"
+                motionEasing="easing.emphasized"
                 type={progressType}
                 isIndeterminate={isIndeterminate}
               />
@@ -278,6 +283,8 @@ const ProgressBar = ({
     </BaseBox>
   );
 };
+
+const ProgressBar = React.forwardRef(_ProgressBar);
 
 export type { ProgressBarProps, ProgressBarVariant };
 export { ProgressBar };

@@ -1,4 +1,6 @@
+import type { MotionMetaProp } from '~components/BaseMotion';
 import type { Theme } from '~components/BladeProvider';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
 
@@ -116,7 +118,8 @@ type FileUploadCommonProps = {
    * Test ID for automation
    */
   testID?: string;
-};
+} & StyledPropsBlade &
+  MotionMetaProp;
 
 /*
   Mandatory accessibilityLabel prop when label is not provided

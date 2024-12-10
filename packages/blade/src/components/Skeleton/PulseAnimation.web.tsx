@@ -33,7 +33,7 @@ const PulseAnimation = styled(BaseBox)(({ theme }) => {
   const durationPulseOn = theme.motion.duration['2xgentle'];
   const totalDuration = castWebType(makeMotionTime(durationPulseOn + durationPluseOff));
   const duration = castWebType(makeMotionTime(theme.motion.duration['2xgentle']));
-  const easing = castWebType(theme.motion.easing.standard.effective);
+  const easing = castWebType(theme.motion.easing.standard);
 
   return css`
     opacity: 0;

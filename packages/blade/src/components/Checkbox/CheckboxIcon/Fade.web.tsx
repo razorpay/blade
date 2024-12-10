@@ -46,13 +46,11 @@ const Fade = ({ show, children, styles }: FadeProps) => {
 
   const duration = theme.motion.duration.xquick;
   const enter = css`
-    animation: ${fadeIn} ${makeMotionTime(duration)}
-      ${theme.motion.easing.entrance.effective as string};
+    animation: ${fadeIn} ${makeMotionTime(duration)} ${theme.motion.easing.entrance as string};
   `;
 
   const exit = css`
-    animation: ${fadeOut} ${makeMotionTime(duration)}
-      ${theme.motion.easing.exit.effective as string};
+    animation: ${fadeOut} ${makeMotionTime(duration)} ${theme.motion.easing.exit as string};
   `;
 
   // if show is undefined do not initialize the animation to prevent flash of animation

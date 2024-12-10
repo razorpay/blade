@@ -29,6 +29,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { useControllableState } from '~utils/useControllable';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useDidUpdate } from '~utils/useDidUpdate';
+import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ControlsProp = Required<
@@ -112,7 +113,7 @@ const CarouselContainer = styled(BaseBox)<{
     width: '100px',
     height: '100%',
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration.gentle)),
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard),
     transitionProperty: 'opacity',
   };
 
@@ -229,25 +230,28 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
   },
 );
 
-const Carousel = ({
-  autoPlay,
-  visibleItems = 1,
-  showIndicators = true,
-  navigationButtonPosition = 'bottom',
-  children,
-  shouldAddStartEndSpacing = false,
-  carouselItemWidth,
-  scrollOverlayColor,
-  accessibilityLabel,
-  onChange,
-  indicatorVariant = 'gray',
-  navigationButtonVariant = 'filled',
-  carouselItemAlignment = 'start',
-  height,
-  defaultActiveSlide,
-  activeSlide: activeSlideProp,
-  ...rest
-}: CarouselProps): React.ReactElement => {
+const _Carousel = (
+  {
+    autoPlay,
+    visibleItems = 1,
+    showIndicators = true,
+    navigationButtonPosition = 'bottom',
+    children,
+    shouldAddStartEndSpacing = false,
+    carouselItemWidth,
+    scrollOverlayColor,
+    accessibilityLabel,
+    onChange,
+    indicatorVariant = 'gray',
+    navigationButtonVariant = 'filled',
+    carouselItemAlignment = 'start',
+    height,
+    defaultActiveSlide,
+    activeSlide: activeSlideProp,
+    ...rest
+  }: CarouselProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const { platform } = useTheme();
   const [activeIndicator, setActiveIndicator] = React.useState(0);
   const [activeSlide, setActiveSlide] = useControllableState({
@@ -486,6 +490,7 @@ const Carousel = ({
   return (
     <CarouselContext.Provider value={carouselContext}>
       <BaseBox
+        ref={ref as never}
         {...metaAttribute({ name: MetaConstants.Carousel })}
         // stop autoplaying when any elements in carousel is in focus
         onFocus={(e: React.FocusEvent) => {
@@ -589,5 +594,7 @@ const Carousel = ({
     </CarouselContext.Provider>
   );
 };
+
+const Carousel = React.forwardRef(_Carousel);
 
 export { Carousel };

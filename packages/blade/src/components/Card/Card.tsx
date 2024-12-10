@@ -10,7 +10,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { Elevation } from '~tokens/global';
 import type { BoxProps } from '~components/Box';
@@ -128,7 +128,23 @@ export type CardProps = {
    *
    * On mobile devices it will scale down on press
    *
+   * **This prop is deprecated in favour of motion presets released in v12**
+   *
+   * ### Migration
+   *
+   * ```diff
+   * - <Card
+   * -  shouldScaleOnHover
+   * - />
+   *
+   * + <Scale motionTriggers={['hover']}>
+   * +   <Card />
+   * + </Scale>
+   * ```
+   *
    * @default false
+   *
+   * @deprecated This prop is deprecated in favour of motion presets released in v12
    */
   shouldScaleOnHover?: boolean;
   /**
@@ -157,28 +173,31 @@ export type CardProps = {
   DataAnalyticsAttribute &
   StyledPropsBlade;
 
-const Card = ({
-  children,
-  backgroundColor = 'surface.background.gray.intense',
-  borderRadius = 'medium',
-  elevation = 'lowRaised',
-  testID,
-  padding = 'spacing.7',
-  width,
-  height,
-  minHeight,
-  minWidth,
-  onClick,
-  isSelected = false,
-  accessibilityLabel,
-  shouldScaleOnHover = false,
-  onHover,
-  href,
-  target,
-  rel,
-  as,
-  ...rest
-}: CardProps): React.ReactElement => {
+const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
+  {
+    children,
+    backgroundColor = 'surface.background.gray.intense',
+    borderRadius = 'medium',
+    elevation = 'lowRaised',
+    testID,
+    padding = 'spacing.7',
+    width,
+    height,
+    minHeight,
+    minWidth,
+    onClick,
+    isSelected = false,
+    accessibilityLabel,
+    shouldScaleOnHover = false,
+    onHover,
+    href,
+    target,
+    rel,
+    as,
+    ...rest
+  },
+  ref,
+): React.ReactElement => {
   const [isFocused, setIsFocused] = React.useState(false);
 
   useVerifyAllowedChildren({
@@ -203,6 +222,7 @@ const Card = ({
     <CardProvider>
       <CardRoot
         as={as}
+        ref={ref as never}
         display={'block' as never}
         borderRadius="medium"
         onMouseEnter={onHover as never}
@@ -269,6 +289,7 @@ const _CardBody = ({ height, children, testID, ...rest }: CardBodyProps): React.
   );
 };
 
+const Card = React.forwardRef(_Card);
 const CardBody = assignWithoutSideEffects(_CardBody, { componentId: ComponentIds.CardBody });
 
 export { Card, CardBody };

@@ -85,11 +85,12 @@ describe('<Text />', () => {
     const displayText = 'Displaying some text';
     expect(() =>
       renderWithTheme(
+        // TODO: something broke on ts after changing types. Check with Anurag on why this is happening
+        // @ts-expect-error testing failure case when size='medium' is passed with variant='caption'
         <Text
           color="surface.text.gray.normal"
           variant="caption"
           truncateAfterLines={3}
-          // @ts-expect-error testing failure case when size='medium' is passed with variant='caption'
           size="large"
         >
           {displayText}

@@ -1,0 +1,11 @@
+{
+  "motion.easing.entrance.effective": "motion.easing.entrance",
+  "motion.easing.standard.effective": "motion.easing.standard",
+  "motion.easing.exit.effective": "motion.easing.exit",
+  "motion.easing.entrance.revealing": "motion.easing.entrance",
+  "motion.easing.standard.revealing": "motion.easing.emphasized",
+  "motion.easing.exit.revealing": "motion.easing.exit",
+  "motion.easing.entrance.attentive": "motion.easing.overshoot",
+  "motion.easing.exit.attentive": "motion.easing.exit",
+  "motion.easing.standard.wary": "motion.easing.shake"
+}

@@ -29,8 +29,8 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
 }
 
 .c11.c11.c11.c11.c11 {
-  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -190,8 +190,8 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -201,8 +201,8 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 <div>
@@ -456,8 +456,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -654,8 +654,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -665,8 +665,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 <div>
@@ -1016,8 +1016,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -1177,8 +1177,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1188,8 +1188,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 <div>

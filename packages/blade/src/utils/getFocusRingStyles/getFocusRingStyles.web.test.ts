@@ -14,7 +14,7 @@ describe('getFocusRingStyles', () => {
     expect(result).toMatchObject({
       outline: '4px solid hsla(227, 100%, 59%, 0.18)',
       outlineOffset: '1px',
-      transitionDuration: '70ms',
+      transitionDuration: '80ms',
       transitionProperty: 'outline-width',
       transitionTimingFunction: 'cubic-bezier(0.3, 0, 0.2, 1)',
     });

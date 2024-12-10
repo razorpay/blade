@@ -112,9 +112,9 @@ const RefreshWrapper = styled(BaseBox)<{
     opacity: isRefreshSpinnerVisible ? 1 : 0,
     transition: `opacity ${makeMotionTime(theme.motion.duration.quick)} ${
       isRefreshSpinnerEntering
-        ? theme.motion.easing.entrance.effective
+        ? theme.motion.easing.entrance
         : isRefreshSpinnerExiting
-        ? theme.motion.easing.exit.effective
+        ? theme.motion.easing.exit
         : ''
     }`,
   };
@@ -479,6 +479,7 @@ const _Table = <Item,>({
         </BaseBox>
       ) : (
         <BaseBox
+          // ref={ref as never}
           flex={1}
           position="relative"
           {...getStyledProps(rest)}
