@@ -59,7 +59,7 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
       react: '^18',
       'react-dom': '^18',
       'react-scripts': '4.0.3',
-      motion: '11.12.0',
+      'framer-motion': '11.13.3',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
@@ -74,7 +74,7 @@ export const getViteReactTSDependencies = (): Dependencies => {
       react: '^19',
       'react-dom': '^19',
       'react-router-dom': '^6',
-      motion: '11.12.0',
+      'framer-motion': '11.13.3',
       'react-scripts': '4.0.3',
       '@types/react': '^19',
       '@types/react-dom': '^19',
@@ -107,7 +107,7 @@ export const vitePackageJSON = JSON.stringify(
 );
 
 export const featuresJS = dedent`// features.js
-import { domMax } from 'motion/react';
+import { domMax } from 'framer-motion';
 // ~25kb (Only expose domAnimations instead of domMax if you're not using Morph preset or layout animations in your project)
 export default domMax; 
 `;
@@ -262,7 +262,7 @@ export const getIndexTSX = ({
 import React from 'react';
 import { createRoot } from "react-dom/client";
 import { createGlobalStyle } from "styled-components";
-import { LazyMotion } from 'motion/react';
+import { LazyMotion } from 'framer-motion';
 
 const loadFeatures = () => import('./features.js').then((res) => res.default);
 
