@@ -291,7 +291,6 @@ const getTheme = () => {
 
 root.render(
   <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
-    <GlobalStyles />
     <LazyMotion strict features={loadFeatures}>
       <Box 
         backgroundColor="surface.background.gray.subtle"
