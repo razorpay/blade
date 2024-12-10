@@ -76,7 +76,7 @@ const useStackblitzSetup = ({
         }),
         [`App.${fileExtension}`]: code ? `${reactImport}${dedent(code)}` : '',
         [`Logger.${fileExtension}`]: logger,
-        [`features.${fileExtension}`]: featuresJS,
+        'features.js': featuresJS,
         ...(isPR ? { 'package.json': vitePackageJSON, 'vite.config.js': viteConfigTS } : {}),
         'package.json': vitePackageJSON,
         '.npmrc': `auto-install-peers = false`,
