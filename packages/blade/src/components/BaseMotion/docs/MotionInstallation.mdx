@@ -6,7 +6,7 @@ This setup is taken from [Motion React - Reduce Bundle Size Docs](https://motion
 
 ```ts
 // features.js
-import { domAnimation } from 'motion/react';
+import { domAnimation } from 'framer-motion';
 export default domAnimation; // ~15kb
 ```
 
@@ -14,15 +14,14 @@ export default domAnimation; // ~15kb
 
 ```ts
 // features.js
-import { domMax } from 'motion/react';
+import { domMax } from 'framer-motion';
 export default domMax; // ~25kb (This includes domAnimation bundle as well so no need to import domAnimation again)
 ```
 
 ### 2. Lazy load into your App.js
 
 ```tsx
-import { LazyMotion } from 'motion/react';
-import { m } from 'motion';
+import { LazyMotion, m } from 'framer-motion';
 
 // Make sure to return the specific export containing the feature bundle.
 const loadFeatures = () => import('./features.js').then((res) => res.default);

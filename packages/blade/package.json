@@ -294,7 +294,6 @@
     "react-dom": ">=18",
     "styled-components": "^5",
     "framer-motion": ">=4",
-    "motion": ">=11.12.0",
     "react-native": "^0.72",
     "@floating-ui/react-native": "^0.10.0",
     "react-native-reanimated": "^3.4.1",

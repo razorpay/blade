@@ -51,6 +51,7 @@ const nativeExtensions = [
 const packageJsonDeps = Object.keys(packagejson.dependencies).filter(
   (name) => name !== 'patch-package',
 );
+
 const externalDependencies = packageJsonDeps;
 
 const inputRootDirectory = 'src';

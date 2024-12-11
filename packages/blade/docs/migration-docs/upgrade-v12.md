@@ -8,13 +8,13 @@ We've changed the structure of motion easing tokens inorder to simplify the stru
 
 2. Motion React Setup
 
-Blade v12 introduces `motion` (prev `framer-motion`) as peer dependency and requires you to set it up in your projects.
+Blade v12 introduces `framer-motion` as peer dependency and requires you to set it up in your projects.
 
 ## Steps to Migrate
 
 - **Step 1:** Upgrade to latest `@razorpay/blade` package in your project
 - **Step 2:** [Perform Tokens Changes](#token-changes) using Codemod or manually
-- **Step 3:** [Setup `motion/react` (or `framer-motion`)](#motion-react-framer-motion-setup)
+- **Step 3:** [Setup framer-motion](#motion-react-framer-motion-setup)
 
 ## Token Changes
 
@@ -47,7 +47,7 @@ You can skip this if you've run the codemod but in case not or you see some edge
 
 > [!IMPORTANT]
 >
-> `framer-motion` library is now known as `motion/react`
+> `framer-motion` library is now known as `motion/react`. We still use `framer-motion` imports in blade to support older versions.
 >
 > Checkout the [announcement by creator of framer-motion](https://bsky.app/profile/citizenofnowhe.re/post/3lar365ouuk2v)
 
@@ -59,10 +59,10 @@ You can skip this if you've run the codemod but in case not or you see some edge
 We realised that several projects in razorpay are already using `framer-motion` and are on older versions.
 To give some time to consumers to upgrade to framer-motion v11+, we'll be supporting framer-motion v4+ from blade. Although we will be dropping this support in next major version of blade so we recommend planning out framer-motion upgrade in coming quarter.
 
-- **If you're on React 18**, migrating to framer-motion v11 should be fairly simple and low-effort. Checkout [Migrating from framer-motion v4+ to motion/react v11+](#migrating-from-framer-motion-v4-to-motionreact-aka-framer-motion-v11)
+- **If you're on React 18**, migrating to framer-motion v11 should be fairly simple and low-effort. Checkout [Migrating from framer-motion v4+ to framer-motion v11+](#migrating-from-framer-motion-v4-to-motionreact-aka-framer-motion-v11)
 - **For projects not on React 18 yet**, do plan out the upgrade soon to make sure future blade upgrades don't become blocker
 
-#### Migrating from `framer-motion` v4+ to `motion/react` (aka `framer-motion` v11)
+#### Migrating from `framer-motion` v4+ to `framer-motion` v11+
 
 1. Ensure you're on React 18 as `framer-motion` v7 makes React 18 a minimum supported version.
    a. [Checkout React 18 upgrade guide](https://react.dev/blog/2022/03/08/react-18-upgrade-guide) or use [React's official codemod for upgrading](https://github.com/reactjs/react-codemod)
@@ -75,19 +75,19 @@ These are mostly the changes you'll need if you're using core API. But if you're
 
 ### Setting Up Motion in New Projects
 
-- #### Install `motion`
+- #### Install `framer-motion`
 
   ```sh
-  yarn add motion --dev # or pnpm install motion --save-dev
+  yarn add framer-motion@^11 --dev # or pnpm install framer-motion --save-dev
   ```
 
-- #### Setup reduced bundle version of `motion/react
+- #### Setup reduced bundle version of `framer-motion`
 
   ##### If you're only using basic presets like `Fade`, `Move`, `Slide`, `Stagger`, `AnimateInteractions`, etc
 
   ```ts
   // features.js
-  import { domAnimation } from 'motion/react';
+  import { domAnimation } from 'framer-motion';
   export default domAnimation; // ~15kb
   ```
 
@@ -95,15 +95,14 @@ These are mostly the changes you'll need if you're using core API. But if you're
 
   ```ts
   // features.js
-  import { domMax } from 'motion/react';
+  import { domMax } from 'framer-motion';
   export default domMax; // ~25kb (This includes domAnimation bundle as well so no need to import domAnimation again)
   ```
 
   ##### Lazy load into your App.js
 
   ```tsx
-  import { LazyMotion } from 'motion/react';
-  import { m } from 'motion';
+  import { LazyMotion, m } from 'framer-motion';
 
   // Make sure to return the specific export containing the feature bundle.
   const loadFeatures = () => import('./features.js').then((res) => res.default);
