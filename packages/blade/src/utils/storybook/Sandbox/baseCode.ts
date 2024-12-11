@@ -59,6 +59,7 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
       react: '^18',
       'react-dom': '^18',
       'react-scripts': '4.0.3',
+      'framer-motion': '11.13.3',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
@@ -73,6 +74,7 @@ export const getViteReactTSDependencies = (): Dependencies => {
       react: '^19',
       'react-dom': '^19',
       'react-router-dom': '^6',
+      'framer-motion': '11.13.3',
       'react-scripts': '4.0.3',
       '@types/react': '^19',
       '@types/react-dom': '^19',
@@ -103,6 +105,12 @@ export const vitePackageJSON = JSON.stringify(
   null,
   4,
 );
+
+export const featuresJS = dedent`// features.js
+import { domMax } from 'framer-motion';
+// ~25kb (Only expose domAnimations instead of domMax if you're not using Morph preset or layout animations in your project)
+export default domMax; 
+`;
 
 export const viteConfigTS = dedent`
 import { defineConfig } from 'vite'
@@ -253,6 +261,10 @@ export const getIndexTSX = ({
 }): string => dedent`
 import React from 'react';
 import { createRoot } from "react-dom/client";
+import { createGlobalStyle } from "styled-components";
+import { LazyMotion } from 'framer-motion';
+
+const loadFeatures = () => import('./features.js').then((res) => res.default);
 
 import { BladeProvider, Box } from "@razorpay/blade/components";
 import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
@@ -279,18 +291,20 @@ const getTheme = () => {
 
 root.render(
   <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
-    <Box 
-      backgroundColor="surface.background.gray.subtle"
-      minHeight="100vh"
-      padding={['spacing.4', 'spacing.7']}
-      display="flex"
-      flexDirection="column"
-    >
-      <Box>
-        <App />
+    <LazyMotion strict features={loadFeatures}>
+      <Box 
+        backgroundColor="surface.background.gray.subtle"
+        minHeight="100vh"
+        padding={['spacing.4', 'spacing.7']}
+        display="flex"
+        flexDirection="column"
+      >
+        <Box>
+          <App />
+        </Box>
+        ${showConsole ? '<Logger />' : ''}
       </Box>
-      ${showConsole ? '<Logger />' : ''}
-    </Box>
+    </LazyMotion>
   </BladeProvider>
 );
 

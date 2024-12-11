@@ -90,11 +90,11 @@ const StyledTabButton = styled.button<{
     },
 
     transitionProperty: 'all',
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard),
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration.gentle)),
     '*': {
       transitionProperty: 'color, fill',
-      transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+      transitionTimingFunction: castWebType(theme.motion.easing.standard),
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
     },
   };

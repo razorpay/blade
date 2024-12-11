@@ -1,11 +1,11 @@
 import type { ReactElement, ReactNode } from 'react';
-import { Children, useCallback, useRef, useState, useMemo } from 'react';
+import { Children, useCallback, useRef, useState, useMemo, forwardRef } from 'react';
 
 import type { CollapsibleContextState } from './CollapsibleContext';
 import { CollapsibleContext } from './CollapsibleContext';
 import { MAX_WIDTH, MAX_WIDTH_NO_RESTRICTIONS } from './styles';
 import BaseBox from '~components/Box/BaseBox';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
@@ -65,17 +65,20 @@ type CollapsibleProps = {
 
 const MIN_WIDTH: BoxProps['minWidth'] = makeSize(size[200]);
 
-const Collapsible = ({
-  children,
-  direction = 'bottom',
-  defaultIsExpanded = false,
-  isExpanded,
-  onExpandChange,
-  testID,
-  _shouldApplyWidthRestrictions = true,
-  _dangerouslyDisableValidations = false,
-  ...rest
-}: CollapsibleProps): ReactElement => {
+const _Collapsible = (
+  {
+    children,
+    direction = 'bottom',
+    defaultIsExpanded = false,
+    isExpanded,
+    onExpandChange,
+    testID,
+    _shouldApplyWidthRestrictions = true,
+    _dangerouslyDisableValidations = false,
+    ...rest
+  }: CollapsibleProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   const [isBodyExpanded, setIsBodyExpanded] = useState(isExpanded ?? defaultIsExpanded);
   const collapsibleBodyId = useId(MetaConstants.CollapsibleBody);
 
@@ -132,6 +135,7 @@ const Collapsible = ({
   return (
     <CollapsibleContext.Provider value={contextValue}>
       <BaseBox
+        ref={ref as never}
         {...metaAttribute({ name: MetaConstants.Collapsible, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
@@ -149,6 +153,8 @@ const Collapsible = ({
     </CollapsibleContext.Provider>
   );
 };
+
+const Collapsible = forwardRef(_Collapsible);
 
 export type { CollapsibleProps };
 export { Collapsible };

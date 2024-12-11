@@ -380,7 +380,7 @@ const _BottomSheet = ({
   }, [isReady]);
 
   // usePresence hook waits for the animation to finish before unmounting the component
-  // It's similar to framer-motions usePresence hook
+  // It's similar to motion/react's usePresence hook
   // https://www.framer.com/docs/animate-presence/#usepresence
   const { isMounted, isVisible } = usePresence(Boolean(_isOpen), {
     transitionDuration: theme.motion.duration.moderate,

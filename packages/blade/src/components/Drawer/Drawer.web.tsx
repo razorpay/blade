@@ -29,12 +29,12 @@ const AnimatedDrawerContainer = styled(BaseBox)<{
   isVisible: boolean;
 }>(({ theme, isFirstDrawerInStack, isVisible }) => {
   const entranceTransition: CSSProperties['transition'] = `all ${castWebType(
-    castWebType(makeMotionTime(theme.motion.duration.gentle)),
-  )} ${castWebType(theme.motion.easing.entrance.revealing)}`;
+    castWebType(makeMotionTime(theme.motion.duration.xmoderate)),
+  )} ${castWebType(theme.motion.easing.entrance)}`;
 
   const exitTransition: CSSProperties['transition'] = `all
-  ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
-  ${castWebType(theme.motion.easing.exit.revealing)}`;
+  ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
+  ${castWebType(theme.motion.easing.exit)}`;
 
   return {
     opacity: isVisible ? 1 : 0,
@@ -53,13 +53,13 @@ const DrawerOverlay = styled(FloatingOverlay)(({ theme }) => {
     opacity: 0,
     transition: `opacity
       ${makeMotionTime(theme.motion.duration.xmoderate)}
-      ${castWebType(theme.motion.easing.exit.revealing)}`,
+      ${castWebType(theme.motion.easing.exit)}`,
     backgroundColor: theme.colors.overlay.background.subtle,
 
     [`&.${SHOW_DRAWER}`]: {
       opacity: 1,
       transition: `opacity ${makeMotionTime(theme.motion.duration.gentle)} ${castWebType(
-        theme.motion.easing.entrance.revealing,
+        theme.motion.easing.entrance,
       )}`,
     },
   };

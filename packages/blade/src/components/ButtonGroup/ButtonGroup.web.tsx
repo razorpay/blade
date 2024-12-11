@@ -15,6 +15,7 @@ import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButto
 import type { Theme } from '~components/BladeProvider';
 import { throwBladeError } from '~utils/logger';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getDividerColorToken = ({
@@ -52,16 +53,19 @@ const StyledDivider = styled(BaseBox)<Pick<ButtonGroupProps, 'color' | 'isDisabl
   },
 );
 
-const _ButtonGroup = ({
-  children,
-  isDisabled = false,
-  size = 'medium',
-  color = 'primary',
-  variant = 'primary',
-  isFullWidth = false,
-  testID,
-  ...rest
-}: ButtonGroupProps): React.ReactElement => {
+const _ButtonGroup = (
+  {
+    children,
+    isDisabled = false,
+    size = 'medium',
+    color = 'primary',
+    variant = 'primary',
+    isFullWidth = false,
+    testID,
+    ...rest
+  }: ButtonGroupProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const contextValue = {
     isDisabled,
     size,
@@ -73,6 +77,7 @@ const _ButtonGroup = ({
   return (
     <ButtonGroupProvider value={contextValue}>
       <StyledButtonGroup
+        ref={ref as never}
         color={color}
         variant={variant}
         isDisabled={isDisabled}
@@ -143,7 +148,7 @@ const _ButtonGroup = ({
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-buttongroup FileUpload Documentation}
  * 
  */
-const ButtonGroup = assignWithoutSideEffects(_ButtonGroup, {
+const ButtonGroup = assignWithoutSideEffects(React.forwardRef(_ButtonGroup), {
   displayName: 'ButtonGroup',
   componentId: 'ButtonGroup',
 });

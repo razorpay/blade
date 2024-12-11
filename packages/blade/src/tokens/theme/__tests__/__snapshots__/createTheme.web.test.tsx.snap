@@ -948,39 +948,33 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
   },
   "motion": {
     "delay": {
-      "2xshort": 70,
-      "long": 3000,
-      "short": 180,
-      "xlong": 5000,
-      "xshort": 120,
+      "2xlong": 5000,
+      "2xquick": 80,
+      "gentle": 480,
+      "long": 2000,
+      "moderate": 280,
+      "xgentle": 960,
+      "xlong": 3000,
+      "xquick": 160,
     },
     "duration": {
-      "2xgentle": 900,
-      "2xquick": 70,
-      "gentle": 400,
-      "moderate": 250,
+      "2xgentle": 960,
+      "2xquick": 80,
+      "gentle": 480,
+      "moderate": 280,
       "quick": 200,
-      "xgentle": 600,
-      "xmoderate": 300,
-      "xquick": 150,
+      "xgentle": 640,
+      "xmoderate": 360,
+      "xquick": 160,
     },
     "easing": {
-      "entrance": {
-        "attentive": "cubic-bezier(0.5, 0, 0.3, 1.5)",
-        "effective": "cubic-bezier(0, 0, 0.2, 1)",
-        "revealing": "cubic-bezier(0, 0, 0, 1)",
-      },
-      "exit": {
-        "attentive": "cubic-bezier(0.7, 0, 0.5, 1)",
-        "effective": "cubic-bezier(0.17, 0, 1, 1)",
-        "revealing": "cubic-bezier(0.5, 0, 1, 1)",
-      },
-      "standard": {
-        "attentive": "cubic-bezier(0.5, 0, 0.3, 1.5)",
-        "effective": "cubic-bezier(0.3, 0, 0.2, 1)",
-        "revealing": "cubic-bezier(0.5, 0, 0, 1)",
-        "wary": "cubic-bezier(1, 0.5, 0, 0.5)",
-      },
+      "emphasized": "cubic-bezier(0.5, 0, 0, 1)",
+      "entrance": "cubic-bezier(0, 0, 0.2, 1)",
+      "exit": "cubic-bezier(0.17, 0, 1, 1)",
+      "linear": "cubic-bezier(0, 0, 0, 0)",
+      "overshoot": "cubic-bezier(0.5, 0, 0.3, 1.5)",
+      "shake": "cubic-bezier(1, 0.5, 0, 0.5)",
+      "standard": "cubic-bezier(0.3, 0, 0.2, 1)",
     },
   },
   "name": "custom-83003d",
@@ -1160,8 +1154,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -1185,8 +1179,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
 .c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1219,8 +1213,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2218,39 +2212,33 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   },
   "motion": {
     "delay": {
-      "2xshort": 70,
-      "long": 3000,
-      "short": 180,
-      "xlong": 5000,
-      "xshort": 120,
+      "2xlong": 5000,
+      "2xquick": 80,
+      "gentle": 480,
+      "long": 2000,
+      "moderate": 280,
+      "xgentle": 960,
+      "xlong": 3000,
+      "xquick": 160,
     },
     "duration": {
-      "2xgentle": 900,
-      "2xquick": 70,
-      "gentle": 400,
-      "moderate": 250,
+      "2xgentle": 960,
+      "2xquick": 80,
+      "gentle": 480,
+      "moderate": 280,
       "quick": 200,
-      "xgentle": 600,
-      "xmoderate": 300,
-      "xquick": 150,
+      "xgentle": 640,
+      "xmoderate": 360,
+      "xquick": 160,
     },
     "easing": {
-      "entrance": {
-        "attentive": "cubic-bezier(0.5, 0, 0.3, 1.5)",
-        "effective": "cubic-bezier(0, 0, 0.2, 1)",
-        "revealing": "cubic-bezier(0, 0, 0, 1)",
-      },
-      "exit": {
-        "attentive": "cubic-bezier(0.7, 0, 0.5, 1)",
-        "effective": "cubic-bezier(0.17, 0, 1, 1)",
-        "revealing": "cubic-bezier(0.5, 0, 1, 1)",
-      },
-      "standard": {
-        "attentive": "cubic-bezier(0.5, 0, 0.3, 1.5)",
-        "effective": "cubic-bezier(0.3, 0, 0.2, 1)",
-        "revealing": "cubic-bezier(0.5, 0, 0, 1)",
-        "wary": "cubic-bezier(1, 0.5, 0, 0.5)",
-      },
+      "emphasized": "cubic-bezier(0.5, 0, 0, 1)",
+      "entrance": "cubic-bezier(0, 0, 0.2, 1)",
+      "exit": "cubic-bezier(0.17, 0, 1, 1)",
+      "linear": "cubic-bezier(0, 0, 0, 0)",
+      "overshoot": "cubic-bezier(0.5, 0, 0.3, 1.5)",
+      "shake": "cubic-bezier(1, 0.5, 0, 0.5)",
+      "standard": "cubic-bezier(0.3, 0, 0.2, 1)",
     },
   },
   "name": "custom-fff10a",
@@ -2430,8 +2418,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -2455,8 +2443,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
 .c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2489,8 +2477,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c4.c4.c4.c4.c4 {

@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { useCallback, useMemo, useState, cloneElement, Children } from 'react';
+import React, { useCallback, useMemo, useState, cloneElement, Children } from 'react';
 import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
 import { MAX_WIDTH } from './styles';
@@ -10,6 +10,7 @@ import type { BoxProps } from '~components/Box';
 import { size as sizeTokens } from '~tokens/global';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const MIN_WIDTH: BoxProps['minWidth'] = {
@@ -62,18 +63,21 @@ const getVariantStyles = (variant: AccordionProps['variant']): BoxProps => {
  * Checkout https://blade.razorpay.com/?path=/docs/components-accordion--docs
  *
  */
-const Accordion = ({
-  defaultExpandedIndex,
-  expandedIndex,
-  onExpandChange,
-  showNumberPrefix = false,
-  children,
-  variant = 'transparent',
-  size = 'large',
-  maxWidth,
-  testID,
-  ...rest
-}: AccordionProps): ReactElement => {
+const _Accordion = (
+  {
+    defaultExpandedIndex,
+    expandedIndex,
+    onExpandChange,
+    showNumberPrefix = false,
+    children,
+    variant = 'transparent',
+    size = 'large',
+    maxWidth,
+    testID,
+    ...rest
+  }: AccordionProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
     defaultExpandedIndex,
   );
@@ -119,6 +123,7 @@ const Accordion = ({
   return (
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
+        ref={ref as never}
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
@@ -137,5 +142,7 @@ const Accordion = ({
     </AccordionContext.Provider>
   );
 };
+
+const Accordion = React.forwardRef(_Accordion);
 
 export { Accordion };

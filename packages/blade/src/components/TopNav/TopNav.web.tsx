@@ -11,7 +11,7 @@ import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { componentZIndices } from '~utils/componentZIndices';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const TOP_NAV_HEIGHT = size[56];
@@ -41,9 +41,13 @@ type TopNavProps = {
   TestID &
   StyledPropsBlade;
 
-const TopNav = ({ children, ...rest }: TopNavProps): React.ReactElement => {
+const _TopNav = (
+  { children, ...rest }: TopNavProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   return (
     <Box
+      ref={ref as never}
       display="grid"
       gridTemplateColumns="auto minmax(0, 1fr) auto"
       alignItems="center"
@@ -62,6 +66,8 @@ const TopNav = ({ children, ...rest }: TopNavProps): React.ReactElement => {
     </Box>
   );
 };
+
+const TopNav = React.forwardRef(_TopNav);
 
 const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (

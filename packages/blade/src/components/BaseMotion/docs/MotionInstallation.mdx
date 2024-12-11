@@ -1,0 +1,55 @@
+### 1. Reduced bundle size setup
+
+This setup is taken from [Motion React - Reduce Bundle Size Docs](https://motion.dev/docs/react-reduce-bundle-size)
+
+#### If you're only using basic presets like `Fade`, `Move`, `Slide`, `Stagger`, `AnimateInteractions`, etc
+
+```ts
+// features.js
+import { domAnimation } from 'framer-motion';
+export default domAnimation; // ~15kb
+```
+
+#### If you're using `Morph` or Layout animations of Motion React
+
+```ts
+// features.js
+import { domMax } from 'framer-motion';
+export default domMax; // ~25kb (This includes domAnimation bundle as well so no need to import domAnimation again)
+```
+
+### 2. Lazy load into your App.js
+
+```tsx
+import { LazyMotion, m } from 'framer-motion';
+
+// Make sure to return the specific export containing the feature bundle.
+const loadFeatures = () => import('./features.js').then((res) => res.default);
+
+function App() {
+  return (
+    // `strict` ensures that you only use `m` and not `motion` in your components
+    // Blade presets always use `m` while animating
+    <LazyMotion strict features={loadFeatures}>
+      {/* The animations run when loadFeatures resolves. */}
+      <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} />
+    </LazyMotion>
+  );
+}
+```
+
+### 3. Go ahead and enjoy the Blade Motion Presets
+
+```ts
+import { Fade, Badge } from '@razorpay/blade/components';
+
+function MyComponent() {
+  return (
+    <Fade>
+      <Badge color="positive">Motion Approved</Badge>
+    </Fade>
+  );
+}
+```
+
+Checkout [Motion - Fade Documentation](/?path=/docs/motion-fade--docs) and get started

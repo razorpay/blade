@@ -25,6 +25,7 @@ import { useRadio } from '~components/Radio/useRadio';
 import { isReactNative, makeSize, useBreakpoint } from '~utils';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type OnChange = ({
@@ -38,7 +39,7 @@ type OnChange = ({
 }) => void;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, color, testID, ...rest },
+  { isDisabled, value, children, icon: Icon, color, testID, _motionMeta, ...rest },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -145,6 +146,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+      ref={getOuterMotionRef({ _motionMeta, ref })}
     >
       <SelectorLabel
         componentName={MetaConstants.ChipLabel}
@@ -166,7 +168,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isDisabled={_isDisabled}
               inputProps={inputProps}
               hasError={hasError}
-              ref={ref}
+              ref={getInnerMotionRef({ _motionMeta, ref })}
             />
             <AnimatedChip
               borderColor={chipBorderColor}
