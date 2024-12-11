@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.0.1
+
+### Patch Changes
+
+- 4178c595: docs: remove stackblitz and add story code
+  fix: export Stagger and AnimateInteractions
+
 ## 12.0.0
 
 ### Major Changes
