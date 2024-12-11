@@ -18,11 +18,14 @@ export const FadeSandbox = ({ padding }: { padding?: BoxProps['padding'] }): Rea
         return (
           <Box>
             <Button marginBottom="spacing.3" onClick={() => setIsVisible(!isVisible)}>Toggle Fade</Button>
-            <Fade isVisible={isVisible}>
-              <Badge color="neutral" icon={InfoIcon}>
-                Boop
-              </Badge>
-            </Fade>
+
+            <Box>
+              <Fade isVisible={isVisible}>
+                <Badge color="neutral" icon={InfoIcon}>
+                  Boop
+                </Badge>
+              </Fade>
+            </Box>
           </Box>
         )
       }
@@ -201,7 +204,7 @@ export const AnimateInteractionsSandbox = ({
         ExternalLinkIcon,
       } from '@razorpay/blade/components';
   
-      function App(): React.ReactElement {
+      function App() {
         return (
           <AnimateInteractions motionTriggers={['hover']}>
             <Card width="400px" padding="spacing.0" backgroundColor="surface.background.gray.moderate">
