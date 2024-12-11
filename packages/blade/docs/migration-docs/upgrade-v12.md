@@ -21,7 +21,7 @@ Blade v12 introduces `framer-motion` as peer dependency and requires you to set 
 We have codemod to help you do the required token changes. You can run the codemod with following command (Replace `./PATH_TO_YOUR_DIR` with glob path of files / directories you want to migrate)-
 
 ```sh
-npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/migrate-motion-tokens/transformers/index.ts --ignore-pattern="**/node_modules/**
+npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/migrate-motion-tokens/transformers/index.ts --ignore-pattern="**/node_modules/**"
 ```
 
 <details>
@@ -59,7 +59,7 @@ You can skip this if you've run the codemod but in case not or you see some edge
 We realised that several projects in razorpay are already using `framer-motion` and are on older versions.
 To give some time to consumers to upgrade to framer-motion v11+, we'll be supporting framer-motion v4+ from blade. Although we will be dropping this support in next major version of blade so we recommend planning out framer-motion upgrade in coming quarter.
 
-- **If you're on React 18**, migrating to framer-motion v11 should be fairly simple and low-effort. Checkout [Migrating from framer-motion v4+ to framer-motion v11+](#migrating-from-framer-motion-v4-to-motionreact-aka-framer-motion-v11)
+- **If you're on React 18**, migrating to framer-motion v11 should be fairly simple and low-effort. Checkout [Migrating from framer-motion v4+ to framer-motion v11+](#migrating-from-framer-motion-v4-to-framer-motion-v11)
 - **For projects not on React 18 yet**, do plan out the upgrade soon to make sure future blade upgrades don't become blocker
 
 #### Migrating from `framer-motion` v4+ to `framer-motion` v11+
