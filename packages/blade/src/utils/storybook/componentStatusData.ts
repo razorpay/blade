@@ -542,7 +542,7 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Motion Preset - Fade',
+    name: 'Fade',
     status: 'released',
     releasedIn: '12.0.0',
     storybookLink: 'Motion/Fade/Docs',
@@ -551,7 +551,7 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Motion Preset - Move',
+    name: 'Move',
     status: 'released',
     releasedIn: '12.0.0',
     storybookLink: 'Motion/Move/Docs',
@@ -560,7 +560,7 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Motion Preset - Slide',
+    name: 'Slide',
     status: 'released',
     releasedIn: '12.0.0',
     storybookLink: 'Motion/Slide/Docs',
@@ -569,7 +569,7 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Motion Preset - Morph',
+    name: 'Morph',
     status: 'released',
     releasedIn: '12.0.0',
     storybookLink: 'Motion/Morph/Docs',
@@ -578,7 +578,7 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Motion Preset - Scale',
+    name: 'Scale',
     status: 'released',
     releasedIn: '12.0.0',
     storybookLink: 'Motion/Scale/Docs',
@@ -587,7 +587,7 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Motion Preset - AnimateInteractions',
+    name: 'AnimateInteractions',
     status: 'released',
     releasedIn: '12.0.0',
     storybookLink: 'Motion/AnimateInteractions/Docs',
@@ -596,7 +596,7 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Motion Preset - Stagger',
+    name: 'Stagger',
     status: 'released',
     releasedIn: '12.0.0',
     storybookLink: 'Motion/Stagger/Docs',
