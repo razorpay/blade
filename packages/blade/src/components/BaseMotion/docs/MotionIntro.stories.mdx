@@ -17,14 +17,14 @@ import MotionInstallation from './MotionInstallation.mdx';
 
 import { Showcase } from './MotionIntroUtils';
 import {
-  FadeSandbox,
-  MoveSandbox,
-  SlideSandbox,
-  ScaleSandbox,
-  MorphSandbox,
-  AnimateInteractionsSandbox,
-  StaggerSandbox,
-} from './codeExamples';
+  FadeIntro,
+  MoveIntro,
+  SlideIntro,
+  ScaleIntro,
+  MorphIntro,
+  StaggerIntro,
+  AnimateInteractionsIntro,
+} from './introExamples';
 
 <Meta title="Motion/Introduction to Motion" />
 
@@ -70,7 +70,7 @@ We offer several easy-to-use motion presets to simplify integrating motion in yo
     The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the UI visually engaging.
   </Text>
 
-  <FadeSandbox padding={['spacing.4', 'spacing.0']} />
+  <FadeIntro  />
   <p align="right">[View Fade Documentation](/?path=/docs/motion-fade--docs)</p>
 </Box>
 
@@ -81,7 +81,7 @@ We offer several easy-to-use motion presets to simplify integrating motion in yo
     allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the
     UI visually engaging.
   </Text>
-  <MoveSandbox padding={['spacing.4', 'spacing.0']} />
+  <MoveIntro />
   <p align="right">[View Move Documentation](/?path=/docs/motion-move--docs)</p>
 </Box>
 
@@ -92,7 +92,7 @@ We offer several easy-to-use motion presets to simplify integrating motion in yo
     outside of viewport, allowing them to smoothly appear or disappear. Unlike Move, Slide is meant
     to animate components from outside of viewport
   </Text>
-  <SlideSandbox padding={['spacing.4', 'spacing.0']} />
+  <SlideIntro />
   <p align="right">[View Slide Documentation](/?path=/docs/motion-slide--docs)</p>
 </Box>
 
@@ -102,7 +102,7 @@ We offer several easy-to-use motion presets to simplify integrating motion in yo
     Scale component animates over CSS `scale` property and allows you to enlarge or shrink element
     on certain interactions
   </Text>
-  <ScaleSandbox padding={['spacing.4', 'spacing.0']} />
+  <ScaleIntro />
   <p align="right">[View Scale Documentation](/?path=/docs/motion-scale--docs)</p>
 </Box>
 
@@ -112,7 +112,7 @@ We offer several easy-to-use motion presets to simplify integrating motion in yo
     Morph component is a abstraction on motion react's layout animations. It allows you to morph
     between 2 elements
   </Text>
-  <MorphSandbox padding={['spacing.4', 'spacing.0']} />
+  <MorphIntro />
   <p align="right">[View Morph Documentation](/?path=/docs/motion-morph--docs)</p>
 </Box>
 
@@ -122,7 +122,7 @@ We offer several easy-to-use motion presets to simplify integrating motion in yo
     AnimateInteractions is a component that allows you to animate child components based on
     interactions on parent. This is similar to doing `.parent:hover .child {}` styling in CSS.
   </Text>
-  <AnimateInteractionsSandbox padding={['spacing.4', 'spacing.0']} />
+  <AnimateInteractionsIntro />
   <p align="right">
     [View AnimateInterations Documentation](/?path=/docs/motion-animateinteractions--docs)
   </p>
@@ -134,7 +134,7 @@ We offer several easy-to-use motion presets to simplify integrating motion in yo
     Stagger component allows you to stagger children (make them appear one after the other). Its a
     utility preset. You can use any of the base presets like Move, Fade, Slide inside of it
   </Text>
-  <StaggerSandbox padding={['spacing.4', 'spacing.0']} />
+  <StaggerIntro />
   <p align="right">[View Stagger Documentation](/?path=/docs/motion-stagger--docs)</p>
 </Box>
 
