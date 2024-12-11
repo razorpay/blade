@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.0.0
+
+### Major Changes
+
+- 663da58e: feat(Motion): Release Motion Presets
+
+  - Check out [Blade v12 Upgrade Guide](https://github.com/razorpay/blade/blob/master/packages/blade/docs/migration-docs/upgrade-v12.md) for codemod and migration steps
+
 ## 11.39.0
 
 ### Minor Changes
