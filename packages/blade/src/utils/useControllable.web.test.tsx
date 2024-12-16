@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import renderWithTheme from './testing/renderWithTheme.web';
@@ -10,18 +11,20 @@ const Example = ({
 }: {
   value?: number;
   defaultValue?: number;
-  onChange?: (value: number) => void;
+  onChange?: (value: number, extra: any) => void;
 }): React.ReactElement => {
   const [_value, setValue] = useControllableState({
     value,
     defaultValue: defaultValue ?? 0,
-    onChange,
+    onChange: (value, extraData) => {
+      onChange?.(value, extraData);
+    },
   });
 
   return (
     <button
       onClick={() => {
-        setValue((prev) => prev + 1);
+        setValue((prev) => prev + 1, false, 'extra');
       }}
     >
       {_value}
@@ -87,11 +90,11 @@ describe('useControllableState', () => {
     const user = userEvent.setup();
     await user.click(getByRole('button'));
 
-    expect(onChange).toHaveBeenCalledWith(2);
+    expect(onChange).toHaveBeenCalledWith(2, 'extra');
     expect(onChange).toHaveBeenCalledTimes(1);
 
     await user.click(getByRole('button'));
-    expect(onChange).toHaveBeenCalledWith(3);
+    expect(onChange).toHaveBeenCalledWith(3, 'extra');
     expect(onChange).toHaveBeenCalledTimes(2);
   });
 });
