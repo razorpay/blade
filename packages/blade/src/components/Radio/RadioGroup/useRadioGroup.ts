@@ -22,7 +22,7 @@ type UseRadioGroupProps = Pick<
 
 export type State = {
   value: string;
-  setValue(value: string): void;
+  setValue(value: string, event: React.ChangeEvent<Element>): void;
   removeValue(): void;
   isChecked(value: string): boolean;
 };
@@ -52,18 +52,20 @@ const useRadioGroup = ({
   const [checkedValue, setValue] = useControllableState({
     value,
     defaultValue,
-    onChange: (v: string) => onChange?.({ value: v, name: fallbackName }),
+    onChange: (v, event) => {
+      onChange?.({ value: v, name: fallbackName, event });
+    },
   });
 
   const state = React.useMemo<State>(() => {
     return {
       value: checkedValue,
-      setValue(v: string): void {
+      setValue(v, event): void {
         if (isDisabled) {
           return;
         }
 
-        setValue(() => v);
+        setValue(() => v, false, event);
       },
       removeValue(): void {
         if (isDisabled) {
