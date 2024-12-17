@@ -183,6 +183,7 @@ const SideNavLink = ({
   tooltip,
   as,
   target,
+  onClick,
   ...rest
 }: SideNavLinkProps): React.ReactElement => {
   const {
@@ -249,7 +250,7 @@ const SideNavLink = ({
                 href={as ? undefined : href}
                 target={target}
                 ref={refs.setReference}
-                onClick={() => {
+                onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
                   // Close the mobile nav when item is clicked and its not trigger for next menu
                   if (!isL2Trigger) {
                     closeMobileNav?.();
@@ -264,6 +265,8 @@ const SideNavLink = ({
                       isFirstRender: false,
                     });
                   }
+
+                  onClick?.(e);
                 }}
                 onFocus={(e: { target: HTMLDivElement }) => {
                   // FloatinFocusManager by default focusses on last clicked element when you move to different tab and come back to the original tab
