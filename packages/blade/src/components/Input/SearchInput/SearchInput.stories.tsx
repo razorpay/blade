@@ -186,7 +186,7 @@ export default {
         category: propsCategory.KEYBOARD_PROPS,
       },
     },
-     hideClearButton:{ 
+    hideClearButton: {
       control: {
         type: 'boolean',
       },
@@ -268,7 +268,7 @@ Default.storyName = 'Default';
 export const SearchInputWithClearButtonHidden = SearchInputTemplate.bind({});
 SearchInputWithClearButtonHidden.storyName = 'SearchInput with Clear Button Hidden';
 SearchInputWithClearButtonHidden.args = {
-  hideClearButton:true, 
+  hideClearButton: true,
 };
 export const SearchInputHelpText = SearchInputTemplate.bind({});
 SearchInputHelpText.storyName = 'SearchInput with Help Text';
