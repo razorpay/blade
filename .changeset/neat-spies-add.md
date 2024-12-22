@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': major
+'@razorpay/blade': patch
 ---
 
-"DatePicker range icon's margin top fixed"
+fix(blade): DatePicker range icon's alignment

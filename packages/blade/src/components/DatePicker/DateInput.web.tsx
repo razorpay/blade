@@ -218,14 +218,6 @@ const _DatePickerInput = (
         <BaseBox flexShrink={0} alignSelf="center">
           <ArrowRightIcon
             size="medium"
-            // marginTop={
-            //   // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
-            //   hasLabel && (!isLabelPositionLeft || isMobile)
-            //     ? `calc(${makeSize(iconVerticalMargin[size])} + ${makeSize(
-            //         isLarge ? sizeTokens[20] : sizeTokens[15],
-            //       )})`
-            //     : makeSize(iconVerticalMargin[size])
-            // }
             marginTop={
               // Label present ? add label height : remove label height; align basebox to center
               hasLabel && (!isLabelPositionLeft || isMobile)
