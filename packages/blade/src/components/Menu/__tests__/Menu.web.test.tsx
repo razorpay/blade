@@ -98,4 +98,40 @@ describe('Menu', () => {
     expect(getByRole('menuitem', { name: 'Account Accounts' }).tagName).toBe('A');
     expect(getByRole('menuitem', { name: 'Profile' }).tagName).toBe('BUTTON');
   });
+  it('should support data-analytics attribute', async () => {
+    const user = userEvents.setup();
+    const { getByRole } = renderWithTheme(
+      <Menu>
+        <Button>Open Menu</Button>
+        <MenuOverlay zIndex={1234} data-analytics-menu="user">
+          <MenuHeader
+            title="Header Title"
+            subtitle="Subtitle"
+            data-analytics-menu-header="header title"
+          />
+          <Box>
+            <Text>Custom Slot</Text>
+          </Box>
+          <MenuItem
+            href="/accounts"
+            title="Account"
+            description="Accounts"
+            data-analytics-menu-item="account"
+          />
+          <MenuItem title="Profile" leading={<UserIcon size="small" />} />
+          <MenuItem
+            title="Settings"
+            trailing={<Text color="surface.text.gray.muted">Cmd + S</Text>}
+          />
+          <MenuItem title="Log Out" color="negative" />
+          <MenuFooter data-analytics-menu-footer>
+            <Text>Footer slot</Text>
+          </MenuFooter>
+        </MenuOverlay>
+      </Menu>,
+    );
+    await act(() => user.click(getByRole('button', { name: 'Open Menu' })));
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    expect(document.body).toMatchSnapshot();
+  });
 });

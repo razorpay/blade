@@ -48,10 +48,76 @@ const avatarBorderRadiusTokens = {
   square: 'medium',
 } as const;
 
+const avatarToBottomAddonSize = {
+  xsmall: 'xsmall',
+  small: 'xsmall',
+  medium: 'small',
+  large: 'medium',
+  xlarge: 'large',
+} as const;
+
+const avatarToIndicatorSize = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
+  xlarge: 'large',
+} as const;
+
+const avatarTopAddonOffsets = {
+  circle: {
+    xsmall: {
+      right: '0px',
+      top: '0px',
+    },
+    small: {
+      right: '1px',
+      top: '1px',
+    },
+    medium: {
+      right: '1px',
+      top: '2px',
+    },
+    large: {
+      right: '4px',
+      top: '2px',
+    },
+    xlarge: {
+      right: '4px',
+      top: '2px',
+    },
+  },
+  square: {
+    xsmall: {
+      right: '-2px',
+      top: '-2px',
+    },
+    small: {
+      right: '-2px',
+      top: '-2px',
+    },
+    medium: {
+      right: '-2px',
+      top: '-2px',
+    },
+    large: {
+      right: '-3px',
+      top: '-3px',
+    },
+    xlarge: {
+      right: '-4px',
+      top: '-4px',
+    },
+  },
+} as const;
+
 export {
   avatarSizeTokens,
   avatarIconSizeTokens,
   avatarTextSizeMapping,
   avatarColorTokens,
   avatarBorderRadiusTokens,
+  avatarToBottomAddonSize,
+  avatarToIndicatorSize,
+  avatarTopAddonOffsets,
 };

@@ -18,7 +18,7 @@ import { Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
@@ -26,6 +26,7 @@ import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import type { AmountProps } from '~components/Amount';
 import { Amount } from '~components/Amount';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -116,7 +117,8 @@ type CardHeaderProps = {
    * @default true
    */
   showDivider?: boolean;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 const _CardHeader = ({
   children,
@@ -124,6 +126,7 @@ const _CardHeader = ({
   marginBottom = 'spacing.4',
   paddingBottom = 'spacing.4',
   showDivider = true,
+  ...rest
 }: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
   useVerifyAllowedChildren({
@@ -136,6 +139,7 @@ const _CardHeader = ({
     <BaseBox
       marginBottom={marginBottom}
       {...metaAttribute({ name: MetaConstants.CardHeader, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox
         paddingBottom={paddingBottom}
@@ -166,12 +170,13 @@ type CardHeaderLeadingProps = {
    * Accepts: `CardHeaderCounter` component
    */
   suffix?: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 const _CardHeaderLeading = ({
   title,
   subtitle,
   prefix,
   suffix,
+  ...rest
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
 
@@ -192,7 +197,7 @@ const _CardHeaderLeading = ({
   }
 
   return (
-    <BaseBox flex={1} display="flex" flexDirection="row">
+    <BaseBox {...makeAnalyticsAttribute(rest)} flex={1} display="flex" flexDirection="row">
       <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
         {prefix}
       </BaseBox>

@@ -207,7 +207,7 @@ export default {
             {`
               import { AutoComplete, Dropdown, DropdownOverlay, ActionList, ActionListItem } from '@razorpay/blade/components';
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   // Only works inside Dropdown component
                   <Dropdown>
@@ -274,7 +274,7 @@ export const InternalAutoCompleteUncontrolled = (): React.ReactElement => {
   return (
     <Box maxWidth="200px">
       <Dropdown selectionType="multiple">
-        <AutoComplete maxRows="single" label="City" />
+        <AutoComplete maxRows="single" label="City" size="large" />
         <DropdownOverlay>
           <ActionList>
             <ActionListItem title="Mumbai" value="mumbai" />

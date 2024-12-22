@@ -1,5 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Indicator /> should accept data-analytics attribute 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2.c2.c2.c2.c2 {
+  margin-left: 0px;
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    aria-label="Success"
+    class="c0"
+    data-analytics-indicator="Success"
+    data-blade-component="indicator"
+    role="status"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <svg
+        aria-hidden="true"
+        class="Svgweb__StyledSvg-vcmjs8-0"
+        data-blade-component="icon"
+        fill="none"
+        height="8"
+        viewBox="0 0 10 10"
+        width="8"
+      >
+        <circle
+          cx="5"
+          cy="5"
+          data-blade-component="svg-circle"
+          fill="hsla(211, 33%, 21%, 1)"
+          r="5"
+        />
+      </svg>
+      <div
+        class="c2"
+        data-blade-component="base-box"
+      >
+        <p
+          class="c3"
+          data-blade-component="text"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Indicator /> should render 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
@@ -23,7 +110,7 @@ exports[`<Indicator /> should render 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  margin-left: 4px;
+  margin-left: 0px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -109,7 +196,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
 }
 
 .c2.c2.c2.c2.c2 {
-  margin-left: 4px;
+  margin-left: 0px;
 }
 
 .c3.c3.c3.c3.c3 {

@@ -46,7 +46,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
-    transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
+    transitionTimingFunction: castWebType(props.theme.motion.easing.standard),
   },
   ':focus-within': {
     ...getInputBackgroundAndBorderStyles({
@@ -69,7 +69,7 @@ const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
   isDropdownTrigger: BaseInputWrapperProps['isDropdownTrigger'];
   size: NonNullable<BaseInputWrapperProps['size']>;
 }>((props) =>
-  props.isDropdownTrigger
+  props.isDropdownTrigger && !props.isTableInputCell
     ? css`
         ${props.transition};
         max-height: ${makeSize(
@@ -113,12 +113,12 @@ to {
 
   const expandTransition = css`
     animation: ${expandAnimation} ${makeMotionTime(motion.duration.quick)}
-      ${String(motion.easing.entrance.effective)};
+      ${String(motion.easing.entrance)};
   `;
 
   const collapseTransition = css`
     animation: ${collapseAnimation} ${makeMotionTime(motion.duration.quick)}
-      ${String(motion.easing.exit.effective)};
+      ${String(motion.easing.exit)};
   `;
 
   const noTransition = css`

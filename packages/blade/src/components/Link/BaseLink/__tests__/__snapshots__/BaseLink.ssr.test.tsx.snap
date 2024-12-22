@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id="root"><a data-blade-component="link" href="https://www.google.com/" target="_blank" rel="noreferrer noopener" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eEDbkf" role="link" aria-disabled="false"><span class="BaseBox-bmPWx fAEwZa content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO dDCWUZ" data-blade-component="base-text">Learn More</span></span></a></div>"`;
+exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id="root"><a data-blade-component="link" href="https://www.google.com/" target="_blank" rel="noreferrer noopener" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 cqYCST" role="link" aria-disabled="false"><span class="BaseBox-bmPWx fAEwZa content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO dDCWUZ" data-blade-component="base-text">Learn More</span></span></a></div>"`;
 
 exports[`<BaseLink /> should render link with a default rel set when target is _blank 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -17,8 +17,8 @@ exports[`<BaseLink /> should render link with a default rel set when target is _
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c0.c0.c0.c0.c0 .content-container {
@@ -37,8 +37,8 @@ exports[`<BaseLink /> should render link with a default rel set when target is _
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {

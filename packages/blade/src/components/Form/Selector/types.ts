@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
@@ -23,12 +23,13 @@ type SelectorLabelProps = {
   style?: React.CSSProperties;
 } & TestID;
 
-type SelectorInputProps = HoverProps & {
-  id?: string;
-  inputProps: any;
-  tabIndex?: number;
-  accessibilityLabel?: string;
-};
+type SelectorInputProps = HoverProps &
+  DataAnalyticsAttribute & {
+    id?: string;
+    inputProps: any;
+    tabIndex?: number;
+    accessibilityLabel?: string;
+  };
 
 type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}`;
 type SelectorInputHoverTokens = {

@@ -1,0 +1,154 @@
+import { Meta } from '@storybook/addon-docs';
+import {
+  Alert,
+  Text,
+  Accordion,
+  AccordionItem,
+  AccordionItemHeader,
+  AccordionItemBody,
+  Heading,
+  Box,
+  Move,
+  Display,
+  Divider,
+} from '../../index';
+import { Motion as MotionTokensTable } from '../../../../docs/tokens/Motion.stories.mdx';
+import MotionInstallation from './MotionInstallation.mdx';
+
+import { Showcase } from './MotionIntroUtils';
+import {
+  FadeIntro,
+  MoveIntro,
+  SlideIntro,
+  ScaleIntro,
+  MorphIntro,
+  StaggerIntro,
+  AnimateInteractionsIntro,
+} from './introExamples';
+
+<Meta title="Motion/Introduction to Motion" />
+
+<Move>
+  <Box>
+
+<Display>Introduction to Motion Presets at Razorpay</Display>
+
+[Motion Presets RFC](https://github.com/razorpay/blade/blob/master/rfcs/2024-08-21-motion-presets.md)
+
+We offer several easy-to-use motion presets to simplify integrating motion in your projects. This doc is one-stop documentation for everything related to motion presets. Checkout stories of individual motion components from storybook's sidebar to learn in details about each preset.
+
+<Showcase />
+
+<Box marginTop="spacing.8" marginBottom="spacing.5">
+  <Heading size="2xlarge">Motion React Installation and Setup 📚</Heading>
+</Box>
+
+<Alert
+  title="Note"
+  description="If you've followed Step 3 from our Installation Guide and already have Motion React setup, you can skip this-"
+  isFullWidth
+  isDismissible={false}
+  marginBottom="spacing.5"
+/>
+
+<Accordion maxWidth="100%" variant="filled" marginBottom="spacing.8">
+  <AccordionItem>
+    <AccordionItemHeader title="Setting Up Motion React" />
+    <AccordionItemBody>
+      <MotionInstallation />
+    </AccordionItemBody>
+  </AccordionItem>
+</Accordion>
+
+<Box marginTop="spacing.11" marginBottom="spacing.8">
+  <Heading size="2xlarge">Motion Preset Components ✨</Heading>
+</Box>
+
+<Box id="fade">
+  <Heading size="large">1. Fade</Heading>
+  <Text marginTop="spacing.1">
+    The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the UI visually engaging.
+  </Text>
+
+  <FadeIntro  />
+  <p align="right">[View Fade Documentation](/?path=/docs/motion-fade--docs)</p>
+</Box>
+
+<Box id="move">
+  <Heading size="large">2. Move</Heading>
+  <Text marginTop="spacing.1">
+    The Move component is a motion preset that animates the opacity and position of its children,
+    allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the
+    UI visually engaging.
+  </Text>
+  <MoveIntro />
+  <p align="right">[View Move Documentation](/?path=/docs/motion-move--docs)</p>
+</Box>
+
+<Box id="move">
+  <Heading size="large">3. Slide</Heading>
+  <Text marginTop="spacing.1">
+    The Slide component is a motion preset that animates the children by sliding them in from
+    outside of viewport, allowing them to smoothly appear or disappear. Unlike Move, Slide is meant
+    to animate components from outside of viewport
+  </Text>
+  <SlideIntro />
+  <p align="right">[View Slide Documentation](/?path=/docs/motion-slide--docs)</p>
+</Box>
+
+<Box id="scale">
+  <Heading size="large">4. Scale</Heading>
+  <Text marginTop="spacing.1">
+    Scale component animates over CSS `scale` property and allows you to enlarge or shrink element
+    on certain interactions
+  </Text>
+  <ScaleIntro />
+  <p align="right">[View Scale Documentation](/?path=/docs/motion-scale--docs)</p>
+</Box>
+
+<Box id="morph">
+  <Heading size="large">5. Morph</Heading>
+  <Text marginTop="spacing.1">
+    Morph component is a abstraction on motion react's layout animations. It allows you to morph
+    between 2 elements
+  </Text>
+  <MorphIntro />
+  <p align="right">[View Morph Documentation](/?path=/docs/motion-morph--docs)</p>
+</Box>
+
+<Box id="animateinteractions">
+  <Heading size="large">6. AnimateInteractions</Heading>
+  <Text marginTop="spacing.1">
+    AnimateInteractions is a component that allows you to animate child components based on
+    interactions on parent. This is similar to doing `.parent:hover .child {}` styling in CSS.
+  </Text>
+  <AnimateInteractionsIntro />
+  <p align="right">
+    [View AnimateInterations Documentation](/?path=/docs/motion-animateinteractions--docs)
+  </p>
+</Box>
+
+<Box id="stagger">
+  <Heading size="large">7. Stagger</Heading>
+  <Text marginTop="spacing.1">
+    Stagger component allows you to stagger children (make them appear one after the other). Its a
+    utility preset. You can use any of the base presets like Move, Fade, Slide inside of it
+  </Text>
+  <StaggerIntro />
+  <p align="right">[View Stagger Documentation](/?path=/docs/motion-stagger--docs)</p>
+</Box>
+
+<Box marginTop="spacing.11" marginBottom="spacing.8">
+  <Heading size="2xlarge">Motion Tokens 🏗️</Heading>
+</Box>
+
+<MotionTokensTable />
+
+Checkout [Tokens - Motion](/?path=/docs/tokens-motion--docs) for full documentation on motion tokens
+
+<Divider />
+
+You can learn more about each preset by checking individual documentation from storybook's sidebar. Razorpay employees can reach out to us on #design-system channel for any help. Checkout [Recipes](/?path=/story/motion-recipes) for more usecase level examples of motion.
+
+  </Box>
+</Move>

@@ -25,9 +25,9 @@ describe('<Avatar />', () => {
   it('should render avatar with correct name initials', () => {
     const { getAllByRole } = renderWithTheme(
       <Box>
-        <Avatar name="Nitin Kumar" />
-        <Avatar name="Anurag" />
-        <Avatar name="Rama Krushna Behra" />
+        <Avatar onClick={() => console.log('click')} name="Nitin Kumar" />
+        <Avatar onClick={() => console.log('click')} name="Anurag" />
+        <Avatar onClick={() => console.log('click')} name="Rama Krushna Behra" />
       </Box>,
     );
     const [avatar1, avatar2, avatar3] = getAllByRole('button');
@@ -137,5 +137,11 @@ describe('<Avatar />', () => {
     );
 
     await assertAccessible(container);
+  });
+  it('should pass with data-analytics attribute', () => {
+    const { getByTestId } = renderWithTheme(
+      <Avatar name="Nitin Kumar" testID="avatar-test" data-analytics-test="test" />,
+    );
+    expect(getByTestId('avatar-test')).toHaveAttribute('data-analytics-test', 'test');
   });
 });

@@ -5,15 +5,21 @@ import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID, BladeElementRef } from '~utils/types';
+import type {
+  StringChildrenType,
+  TestID,
+  BladeElementRef,
+  DataAnalyticsAttribute,
+} from '~utils/types';
 import type { Platform } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
   icon?: IconComponent;
-  color?: 'primary' | 'white' | 'neutral';
+  color?: 'primary' | 'white' | 'neutral' | 'negative' | 'positive';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   onClick?: (event: SyntheticEvent) => void;
@@ -97,7 +103,7 @@ type LinkAnchorVariantProps = LinkPropsWithOrWithoutIcon & {
   target?: string;
   rel?: string;
   isDisabled?: undefined;
-};
+} & DataAnalyticsAttribute;
 
 /*
   Link Props when variant is button
@@ -108,7 +114,7 @@ export type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
   href?: undefined;
   target?: undefined;
   rel?: undefined;
-};
+} & DataAnalyticsAttribute;
 
 /*
   Link Props when variant is anchor or button
@@ -170,6 +176,7 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     />
   );
 };

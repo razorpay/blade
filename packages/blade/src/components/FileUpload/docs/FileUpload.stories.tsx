@@ -53,7 +53,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
         if (f.id === file.id) {
           f.status = 'uploading';
         }
-        return file;
+        return f;
       }),
     );
     const data = new FormData();
@@ -71,7 +71,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
             if (f.id === file.id) {
               f.status = 'success';
             }
-            return file;
+            return f;
           }),
         );
 
@@ -85,7 +85,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
                 f.status = 'error';
                 f.errorText = `Oops! Something went wrong. ${data.error.message}`;
               }
-              return file;
+              return f;
             }),
           );
         }
@@ -98,7 +98,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
               f.status = 'error';
               f.errorText = `Oops! Something went wrong. ${error.message}`;
             }
-            return file;
+            return f;
           }),
         );
       });

@@ -1,0 +1,16 @@
+{
+  "name": "Snowflake Handoff Checklist",
+  "id": "1428702173901973283",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "documentAccess": "dynamic-page",
+  "editorType": ["figma"],
+  "containsWidget": true,
+  "widgetApi": "1.0.0",
+  "permissions": ["currentuser"],
+  "networkAccess": {
+    "allowedDomains": ["https://api.segment.io"]
+  }
+}

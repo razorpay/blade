@@ -2,8 +2,8 @@
 
 exports[`<Switch /> should render switch 1`] = `
 .c6.c6.c6.c6.c6 {
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-delay: 0ms;
@@ -57,11 +57,11 @@ exports[`<Switch /> should render switch 1`] = `
   -webkit-transform: translateX(0%);
   -ms-transform: translateX(0%);
   transform: translateX(0%);
-  -webkit-transition: 150ms;
-  transition: 150ms;
+  -webkit-transition: 200ms;
+  transition: 200ms;
   border-radius: 9999px;
-  -webkit-animation-duration: 150ms;
-  animation-duration: 150ms;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
   background-color: hsla(0,0%,100%,1);
 }
 
@@ -84,8 +84,8 @@ exports[`<Switch /> should render switch 1`] = `
   background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -110,8 +110,8 @@ exports[`<Switch /> should render switch 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -120,8 +120,8 @@ exports[`<Switch /> should render switch 1`] = `
   background-color: hsla(211,20%,52%,0.18);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -194,8 +194,8 @@ exports[`<Switch /> should render switch 1`] = `
 
 exports[`<Switch /> should set disabled state with isDisabled 1`] = `
 .c6.c6.c6.c6.c6 {
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-delay: 0ms;
@@ -249,11 +249,11 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   -webkit-transform: translateX(0%);
   -ms-transform: translateX(0%);
   transform: translateX(0%);
-  -webkit-transition: 150ms;
-  transition: 150ms;
+  -webkit-transition: 200ms;
+  transition: 200ms;
   border-radius: 9999px;
-  -webkit-animation-duration: 150ms;
-  animation-duration: 150ms;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
   background-color: hsla(0,0%,100%,0.18);
 }
 
@@ -276,8 +276,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   background-color: hsla(211,20%,52%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -302,8 +302,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -366,6 +366,200 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
                 data-blade-component="svg-path"
                 fill="hsla(0, 0%, 0%, 0.32)"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Switch /> should support adding data-analytics attribute 1`] = `
+.c6.c6.c6.c6.c6 {
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-delay: 0ms;
+  transition-delay: 0ms;
+  opacity: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: inline-block;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  will-change: transform,left;
+  width: 100%;
+  left: 0%;
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
+  -webkit-transition: 200ms;
+  transition: 200ms;
+  border-radius: 9999px;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c3.c3.c3.c3.c3 {
+  pointer-events: none;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  width: 36px;
+  height: 20px;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+}
+
+.c2.c2.c2.c2.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c2.c2.c2.c2.c2:focus-visible + div {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2:hover + div {
+  background-color: hsla(211,20%,52%,0.18);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+<div>
+  <div
+    class="c0"
+    data-analytics-switch="darkmode-switch"
+    data-blade-component="switch"
+    data-testid="darkmode-switch"
+  >
+    <label
+      class="c1"
+      data-blade-component="switch-label"
+      style="cursor: pointer;"
+    >
+      <input
+        aria-checked="false"
+        aria-disabled="false"
+        aria-invalid="false"
+        aria-label="Toggle Darkmode"
+        aria-required="false"
+        class="c2"
+        role="switch"
+        type="checkbox"
+        value=""
+      />
+      <div
+        aria-hidden="true"
+        class=" c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class=" c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class=" c5"
+            data-blade-component="base-box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0 c6"
+              data-blade-component="icon"
+              fill="none"
+              height="8px"
+              viewBox="0 0 11 8"
+              width="8px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
+                data-blade-component="svg-path"
+                fill="hsla(0, 0%, 0%, 1)"
                 fill-rule="evenodd"
               />
             </svg>

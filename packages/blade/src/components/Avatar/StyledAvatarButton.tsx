@@ -5,16 +5,28 @@ import { makeBorderSize, makeSize } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
-const StyledAvatarButton = styled.button<AvatarButtonProps>(
-  ({ theme, size = 'medium', variant = 'circle', color = 'neutral' }) => {
+const StyledAvatarButton = styled.button<AvatarButtonProps & { isInteractive?: boolean }>(
+  ({
+    theme,
+    size = 'medium',
+    variant = 'circle',
+    color = 'neutral',
+    isSelected,
+    isInteractive,
+  }) => {
     return {
+      display: 'block',
       textAlign: 'center',
       textDecoration: 'none',
-      cursor: 'pointer',
+      cursor: isInteractive ? 'pointer' : 'default',
       minHeight: makeSize(avatarSizeTokens[size]),
       height: makeSize(avatarSizeTokens[size]),
       width: makeSize(avatarSizeTokens[size]),
-      border: 'none',
+      border: isSelected
+        ? `${makeBorderSize(theme.border.width.thicker)} solid ${
+            theme.colors.surface.border.primary.normal
+          }`
+        : 'none',
       borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
       backgroundColor: getIn(theme.colors, avatarColorTokens.background[color]),
 
@@ -26,9 +38,13 @@ const StyledAvatarButton = styled.button<AvatarButtonProps>(
         objectFit: 'cover',
       },
 
-      '&:focus-visible': {
-        ...getFocusRingStyles({ theme }),
-      },
+      ...(isInteractive
+        ? {
+            '&:focus-visible': {
+              ...getFocusRingStyles({ theme }),
+            },
+          }
+        : {}),
     };
   },
 );

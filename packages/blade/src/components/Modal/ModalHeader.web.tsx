@@ -11,10 +11,12 @@ import { CloseIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentZIndices } from '~utils/componentZIndices';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ModalHeaderProps = Pick<
   BaseHeaderProps,
-  'title' | 'subtitle' | 'leading' | 'trailing' | 'titleSuffix'
+  'title' | 'subtitle' | 'leading' | 'trailing' | 'titleSuffix' | keyof DataAnalyticsAttribute
 >;
 
 const _ModalHeader = ({
@@ -23,6 +25,7 @@ const _ModalHeader = ({
   title,
   titleSuffix,
   trailing,
+  ...rest
 }: ModalHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useModalContext();
 
@@ -41,6 +44,7 @@ const _ModalHeader = ({
       backgroundColor="popup.background.subtle"
       borderRadius="max"
       zIndex={componentZIndices.modal}
+      {...makeAnalyticsAttribute(rest)}
     >
       <IconButton
         ref={defaultInitialFocusRef}
@@ -61,6 +65,7 @@ const _ModalHeader = ({
       closeButtonRef={defaultInitialFocusRef}
       showCloseButton={true}
       onCloseButtonClick={close}
+      {...makeAnalyticsAttribute(rest)}
     />
   );
 };

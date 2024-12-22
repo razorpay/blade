@@ -1,182 +1,299 @@
 import { Meta } from '@storybook/addon-docs';
+import {
+  StepGroup,
+  StepItem,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemLink,
+  Text,
+  InfoIcon,
+  Tooltip,
+  TooltipInteractiveWrapper,
+  Accordion,
+  AccordionItem,
+  AccordionItemHeader,
+  AccordionItemBody,
+  Heading,
+  Tabs,
+  TabList,
+  TabItem,
+  TabPanel,
+  Box,
+} from '../../src/components';
+
+import MotionInstallation from '../../src/components/BaseMotion/docs/MotionInstallation.mdx';
 
 <Meta title="Guides/Installation" />
 
-# ⚙️ Installation
+# Installation
 
 <br />
-<br />
 
-## ✍🏻 Pre-requisite
+<Heading size="large">Pre-requisite</Heading>
 
 Before you install the package, make sure that you have performed the following steps:
 
-- You must be running Node version >=14.19.0
+<List marginBottom="spacing.5">
+  <ListItem>
+    <ListItemText>You must be running Node version >=14.19.0</ListItemText>
+  </ListItem>
+</List>
 
-<details>
-<summary>Razorpay Employees have to point @razorpay scope to GitHub Package Registry. Follow the steps below</summary>
+<Accordion maxWidth="100%" variant="filled" defaultExpandedIndex={0}>
+  <AccordionItem>
+    <AccordionItemHeader><Text size="small">Razorpay Employees have to point @razorpay scope to GitHub Package Registry. Follow the steps below</Text></AccordionItemHeader>
+    <AccordionItemBody>
 
-- Generate a Personal Access Token on GitHub by [visiting this link](https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages) (Enable SSO by clicking `Authorize` button next to Razorpay logo.)
-- Run `code ~/.bashrc` or `code ~/.zshrc` in your editor and add this line
+      - Generate a Personal Access Token on GitHub by [visiting this link](https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages) (Enable SSO by clicking `Authorize` button next to Razorpay logo.)
+      - Run `code ~/.bashrc` or `code ~/.zshrc` in your editor and add this line
 
-  ```
-  export GITHUB_ACCESS_TOKEN="<YOUR_TO  KEN>"
-  ```
+        ```
+        export GITHUB_ACCESS_TOKEN="<YOUR_TOKEN>"
+        ```
 
-  > **Note**
-  >
-  > Replace `<YOUR_TOKEN>` with your actual GitHub Personal Access Token
+        > **Note**
+        >
+        > Replace `<YOUR_TOKEN>` with your actual GitHub Personal Access Token
 
-- Run `source ~/.bashrc` or `source ~/.zshrc` based on the file you added your token.
-- Run `code ~/.npmrc` and append the following
-  ```bash
-  # add following to your .npmrc
-  @razorpay:registry=https://npm.pkg.github.com/
-  //npm.pkg.github.com/:always-auth=true
-  //npm.pkg.github.com/:_authToken=${GITHUB_ACCESS_TOKEN}
-  ```
+      - Run `source ~/.bashrc` or `source ~/.zshrc` based on the file you added your token.
+      - Run `code ~/.npmrc` and append the following
+        ```bash
+        # add following to your .npmrc
+        @razorpay:registry=https://npm.pkg.github.com/
+        //npm.pkg.github.com/:always-auth=true
+        //npm.pkg.github.com/:_authToken=${GITHUB_ACCESS_TOKEN}
+        ```
 
-</details>
+    </AccordionItemBody>
 
-## ⬇ Add blade to your application
+  </AccordionItem>
+</Accordion>
 
-1. Install blade as a dependency.
-   Blade has a peer dependency on a few libraries, you can skip adding it if you already have it installed in your project.
+<br />
 
-```shell
-yarn add @razorpay/blade styled-components@5.3.11 @razorpay/i18nify-js @razorpay/i18nify-react
-```
+<Text marginY="spacing.4">Follow these 3 steps to get started!</Text>
 
-- `styled-components`
-  > **Note**
-  >
-  > Currently, blade only supports styled-components v5 only
-- `@razorpay/i18nify-js`
-  - Blade uses this library for formatting capabilities in [Amount](https://blade.razorpay.com/?path=/docs/components-amount--docs) and other components based on the locale. Follow [this guide](https://www.npmjs.com/package/@razorpay/i18nify-js) to install it.
-- `@razorpay/i18nify-react`
-  - A state management React wrapper for `@razorpay/i18nify-js` that maintains locale state of your page. Follow [this guide](https://www.npmjs.com/package/@razorpay/i18nify-react) to configure and install it.
+<Tabs marginTop="spacing.8" variant="bordered" orientation="horizontal">
+  <Box position="sticky" top="0px" zIndex={1} backgroundColor="surface.background.gray.intense">
+    <TabList>
+      <TabItem value="basic">1. Basic Setup</TabItem>
+      <TabItem value="fonts">2. Install Fonts</TabItem>
+      <TabItem value="motion">3. Setup Motion React</TabItem>
+      <TabItem value="ts">4. TypeScript</TabItem>
+    </TabList>
+  </Box>
+  <TabPanel value="basic">
+    <Heading size="large" marginTop="spacing.7">Add blade to your application</Heading>
 
-2. Follow [this guide](#-install-fonts) to install the fonts.
+    <StepGroup orientation="vertical" size="medium">
+      <StepItem
+        title="1. Install @razorpay/blade as a dependency."
+      >
+        <Text>Blade has a few peer dependencies that you may already have installed in your project. If so, you can skip adding them again.</Text>
 
-3. For **React Native** projects you need to do additional setup for the peer dependencies:
+        ```shell
+        yarn add @razorpay/blade styled-components@5.3.11 @razorpay/i18nify-js@1.9.3 @razorpay/i18nify-react@4.0.8 framer-motion@11.13.3
+        ```
+        <List>
+          <ListItem>
+            <ListItemLink href="https://www.npmjs.com/package/styled-components/v/5.3.11">styled-components@5</ListItemLink>
+            <ListItemText>
+              <Tooltip content="Currently blade only supports version 5">
+                <TooltipInteractiveWrapper position="relative" left="2px" top="2px">
+                  <InfoIcon size="small" />
+                </TooltipInteractiveWrapper>
+              </Tooltip>
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemLink href="https://www.npmjs.com/package/@razorpay/i18nify-js">@razorpay/i18nify-js</ListItemLink>
+            <ListItemText>
+              <Tooltip content="i18n library that blade depends on. Follow their installation guide for more info">
+                <TooltipInteractiveWrapper position="relative" left="2px" top="2px">
+                  <InfoIcon size="small" />
+                </TooltipInteractiveWrapper>
+              </Tooltip>
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemLink href="https://www.npmjs.com/package/@razorpay/i18nify-react">@razorpay/i18nify-react</ListItemLink>
+            <ListItemText>
+              <Tooltip content="A state management React wrapper for @razorpay/i18nify-js that maintains locale state of your page">
+                <TooltipInteractiveWrapper position="relative" left="2px" top="2px">
+                  <InfoIcon size="small" />
+                </TooltipInteractiveWrapper>
+              </Tooltip>
+            </ListItemText>
+          </ListItem>
+        </List>
+      </StepItem>
+      <StepItem title="2. Add ReactNative Dependencies [Optional for web projects]">
+        ```shell
+        yarn add @floating-ui/react-native@0.10.0 react-native-reanimated@3.4.1 react-native-tab-view@3.5.2 react-native-pager-view@6.2.1 react-native-svg@12.3.0 react-native-gesture-handler@2.9.0 @gorhom/bottom-sheet@4.4.6 @gorhom/portal@1.0.1
+        ```
+        - `react-native-reanimated`
+          - Follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to install it on Android & iOS which is required by Blade.
+        - `react-native-svg`
+          - Follow [this guide](https://github.com/react-native-svg/react-native-svg#with-react-native-cli) to install it on Android & iOS which is required by Blade.
+        - `react-native-gesture-handler`
+          - Follow [this guide](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) to install it, note that you don't need to add `<GestureHandlerRootView style={{ flex: 1 }}>` again on the root because BladeProvider already adds that out of the box.
+        - `@gorhom/bottom-sheet`
+          - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
+        - `@gorhom/portal`
+          - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
+        - `@floating-ui/react-native`
+          - Add this as peer dependency, no need to do additional setup.
+        - `react-native-tab-view`
+          - Add this as peer dependency, no need to do additional setup. This is needed for react-native Tabs component as per [this guide](https://reactnavigation.org/docs/tab-view/#installation).
+        - `react-native-pager-view`
+          - Add this as peer dependency, no need to do additional setup. This is needed for react-native Tabs component as per [this guide](https://reactnavigation.org/docs/tab-view/#installation).
 
-```shell
-yarn add @floating-ui/react-native@0.10.0 react-native-reanimated@3.4.1 react-native-tab-view@3.5.2 react-native-pager-view@6.2.1 react-native-svg@12.3.0 react-native-gesture-handler@2.9.0 @gorhom/bottom-sheet@4.4.6 @gorhom/portal@1.0.1
-```
+        And finally run `pod install` command so that blade's RN dependencies are linked to your project:
 
-- `react-native-reanimated`
-  - Follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to install it on Android & iOS which is required by Blade.
-- `react-native-svg`
-  - Follow [this guide](https://github.com/react-native-svg/react-native-svg#with-react-native-cli) to install it on Android & iOS which is required by Blade.
-- `react-native-gesture-handler`
-  - Follow [this guide](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) to install it, note that you don't need to add `<GestureHandlerRootView style={{ flex: 1 }}>` again on the root because BladeProvider already adds that out of the box.
-- `@gorhom/bottom-sheet`
-  - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
-- `@gorhom/portal`
-  - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
-- `@floating-ui/react-native`
-  - Add this as peer dependency, no need to do additional setup.
-- `react-native-tab-view`
-  - Add this as peer dependency, no need to do additional setup. This is needed for react-native Tabs component as per [this guide](https://reactnavigation.org/docs/tab-view/#installation).
-- `react-native-pager-view`
-  - Add this as peer dependency, no need to do additional setup. This is needed for react-native Tabs component as per [this guide](https://reactnavigation.org/docs/tab-view/#installation).
+        ```shell
+        cd ios && pod install
+        ```
+      </StepItem>
+      <StepItem title="Next: Install Fonts" />
+    </StepGroup>
 
-And finally run `pod install` command so that blade's RN dependencies are linked to your project:
+  </TabPanel>
+  <TabPanel value="fonts">
+    <Heading size="large" marginTop="spacing.7">Installing Fonts</Heading>
 
-```shell
- cd ios && pod install
-```
+    We use 2 fonts. [TASA Orbiter](https://tasatype.localremote.co/) (for our headings), and [Inter](https://rsms.me/inter/) (for other text elements).
 
-## 🔜 Add blade libraries to your Figma project
+    ### Web
 
-Coming Soon
+    - To add these fonts to your project, import them from the blade package in your root entry file.
 
-## 🔡 Installing Fonts
+      ```ts
+      // Somewhere in root index.ts or entryBrowser.tsx file
+      import '@razorpay/blade/fonts.css';
+      ```
 
-We use 2 fonts. [TASA Orbiter](https://tasatype.localremote.co/) (for our headings), and [Inter](https://rsms.me/inter/) (for other text elements).
+    - While Blade handles the `font-family` for its components, you can set the `font-family` globally in your project's global styles for any custom components or exceptions.
 
-### Web Projects
+      ```ts
+      import { createGlobalStyle } from 'styled-components';
 
-- To add these fonts to your project, you can import them from blade package in your root entry file.
+      const GlobalStyles = createGlobalStyle`
+      * {
+        box-sizing: border-box;
+      }
 
-  ```ts
-  // Somewhere in root index.ts or entryBrowser.tsx file
-  import '@razorpay/blade/fonts.css';
-  ```
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: ${(props) => props.theme.typography.fonts.family.text}
+      }
 
-- While Blade handles setting font-family for its own components, you can set font-family globally as well in your global styles for any custom components or exceptions
+      h1, h2, h3, h4, h5, h6 {
+        font-family: ${(props) => props.theme.typography.fonts.family.heading};
+      }
+      `;
+      ```
 
-  ```ts
-  import { createGlobalStyle } from 'styled-components';
+    ##### No Bundler Setups or No Code Tools
 
-  const GlobalStyles = createGlobalStyle`
-  * { 
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: ${(props) => props.theme.typography.fonts.family.text}
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: ${(props) => props.theme.typography.fonts.family.heading};
-  }
-  `;
-  ```
+    If your project uses a no-bundler setup or is a no-code tool, you can install fonts with the `unpkg` link
 
-#### No Bundler Setups or No Code Tools
-
-If your project uses a no-bundler setup or is a no-code tool, you can install fonts with `unpkg` link
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@razorpay/blade@<blade-version>/fonts.css" />
-<!-- 
-  Replace <blade-version> in the URL with the version of Blade you're using
-  E.g. https://unpkg.com/@razorpay/blade@11.3.1/fonts.css 
--->
-```
-
-### React Native Projects
-
-- Download fonts from <a href="https://github.com/razorpay/blade/tree/master/packages/blade/fonts/blade-fonts-react-native.zip">blade-fonts-react-native.zip</a> and unzip.
-
-- #### For iOS
-
-  - Copy all font files from the `ios-fonts` directory to `<project_root>/public/fonts` (**create the directory if it doesn't exist**)
-  - Create a React Native config file at the root of your project - `<project_root>/react-native.config.js` and add the following content to it
-
-    ```js
-    module.exports = {
-      // ... rest of the config
-      assets: ['./public/fonts/'],
-    };
+    ```html
+    <link rel="stylesheet" href="https://unpkg.com/@razorpay/blade@<blade-version>/fonts.css" />
+    <!--
+      Replace <blade-version> in the URL with the version of Blade you're using
+      E.g. https://unpkg.com/@razorpay/blade@11.3.1/fonts.css
+    -->
     ```
 
-  - Run the following command to link fonts in ios
+    ### React Native
+
+    - Download fonts from <a href="https://github.com/razorpay/blade/tree/master/packages/blade/fonts/blade-fonts-react-native.zip">blade-fonts-react-native.zip</a> and unzip.
+
+    - #### For iOS
+
+      - Copy all font files from the `ios-fonts` directory to `<project_root>/public/fonts` (**create the directory if it doesn't exist**)
+      - Create a React Native config file at the root of your project - `<project_root>/react-native.config.js` and add the following content to it
+
+        ```js
+        module.exports = {
+          // ... rest of the config
+          assets: ['./public/fonts/'],
+        };
+        ```
+
+      - Run the following command to link fonts in ios
+
+        ```shell
+        npx react-native-asset -ios-a
+        ```
+
+    - #### For Android
+
+      - Copy all files from `android-fonts` to `/android/app/src/main/res/font`
+      - Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add the following contents to it
+
+        ```js
+        // add the below import statement after all the import statements
+        import com.facebook.react.views.text.ReactFontManager;
+        ```
+
+      - Now search for the `onCreate` method and add the following line to it
+
+        ```js
+        public void onCreate() {
+          // add the below lines as the first lines
+          ReactFontManager.getInstance().addCustomFont(this, "Inter", R.font.inter);
+          ReactFontManager.getInstance().addCustomFont(this, "TASA Orbiter Display", R.font.tasa);
+          // rest of the content of the method
+        }
+        ```
+
+  </TabPanel>
+
+  <TabPanel value="motion">
+    <Heading size="large" marginTop="spacing.7">Add motion to your application</Heading>
+
+    Assuming you've followed the first step and installed `framer-motion` in your project, Here's how we recommend you to setup the project-
+
+    <MotionInstallation />
+
+  </TabPanel>
+
+  <TabPanel value="ts">
+    <Heading size="large" marginY="spacing.7">TypeScript Setup</Heading>
+
+    ### Web
+
+    If you're using TypeScript in your project, first make sure you have `@types/styled-components` installed.
 
     ```shell
-    npx react-native-asset -ios-a
+    yarn add -D @types/styled-components
     ```
 
-- #### For Android
+    Now, you can extend the theme interface to include your custom theme properties to `styled-components`.
 
-  - Copy all files from `android-fonts` to `/android/app/src/main/res/font`
-  - Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add the following contents to it
+    ```ts
+    // file: index.d.ts
+    import { Theme } from '@razorpay/blade/components';
 
-    ```js
-    // add the below import statement after all the import statements
-    import com.facebook.react.views.text.ReactFontManager;
-    ```
-
-  - Now search for `onCreate` method and add the following line to it
-
-    ```js
-    public void onCreate() {
-      // add the below lines as the first lines
-      ReactFontManager.getInstance().addCustomFont(this, "Inter", R.font.inter);
-      ReactFontManager.getInstance().addCustomFont(this, "TASA Orbiter Display", R.font.tasa);
-      // rest of the content of the method
+    declare module 'styled-components' {
+      export interface DefaultTheme extends Theme {}
     }
     ```
+
+    ### React Native
+
+    To get ReactNative specific type hints for the blade components, you can switch the `moduleSuffixes` in your `tsconfig.json` to include `.native` files.
+
+    ```json
+    {
+      "compilerOptions": {
+        "moduleSuffixes": [".native", ""]
+      }
+    }
+    ```
+
+  </TabPanel>
+</Tabs>

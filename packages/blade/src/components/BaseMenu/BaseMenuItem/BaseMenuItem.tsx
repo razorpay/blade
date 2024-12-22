@@ -3,11 +3,13 @@ import type { BaseMenuItemProps } from '../types';
 import { BaseMenuItemContext } from '../BaseMenuContext';
 import { StyledMenuItemContainer } from './StyledMenuItemContainer';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { getTextProps, Text } from '~components/Typography';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeElementRef } from '~utils/types';
+import { BaseText } from '~components/Typography/BaseText';
+import { useTruncationTitle } from '~utils/useTruncationTitle';
 
 const menuItemTitleColor = {
   negative: {
@@ -44,6 +46,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
   },
   ref,
 ): React.ReactElement => {
+  const { containerRef, textRef } = useTruncationTitle({ content: title });
   return (
     <BaseMenuItemContext.Provider value={{ color, isDisabled }}>
       <StyledMenuItemContainer
@@ -67,54 +70,59 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
         {children ? (
           children
         ) : (
-          <>
-            <Box display="flex" alignItems="flex-start" width="100%" justifyContent="center">
+          <Box display="flex" alignItems="flex-start" width="100%" justifyContent="flex-start">
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              height={itemFirstRowHeight}
+            >
+              {leading}
+            </Box>
+            <Box
+              paddingLeft={leading ? 'spacing.3' : 'spacing.0'}
+              paddingRight="spacing.3"
+              display="flex"
+              flexDirection="column"
+            >
               <Box
                 display="flex"
-                justifyContent="center"
                 alignItems="center"
+                flexDirection="row"
                 height={itemFirstRowHeight}
+                ref={containerRef as never}
               >
-                {leading}
-              </Box>
-              <Box
-                paddingLeft={leading ? 'spacing.3' : 'spacing.0'}
-                paddingRight="spacing.3"
-                display="flex"
-                flexDirection="column"
-              >
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  flexDirection="row"
-                  height={itemFirstRowHeight}
-                >
-                  <Text
-                    truncateAfterLines={1}
-                    color={
+                <BaseText
+                  as="p"
+                  ref={textRef as never}
+                  truncateAfterLines={1}
+                  wordBreak="break-all"
+                  {...getTextProps({
+                    size: 'medium',
+                    color:
                       menuItemTitleColor[color === 'negative' ? 'negative' : 'normal'][
                         isDisabled ? 'disabled' : 'default'
-                      ]
-                    }
-                  >
-                    {title}
-                  </Text>
-                  {titleSuffix}
-                </Box>
-                <Box>
-                  {description ? (
-                    <Text
-                      color={menuItemDescriptionColor[isDisabled ? 'disabled' : 'default']}
-                      size="small"
-                    >
-                      {description}
-                    </Text>
-                  ) : null}
-                </Box>
+                      ],
+                    weight: 'regular',
+                  })}
+                >
+                  {title}
+                </BaseText>
+                {titleSuffix}
               </Box>
-              <Box marginLeft="auto">{trailing}</Box>
+              <Box>
+                {description ? (
+                  <Text
+                    color={menuItemDescriptionColor[isDisabled ? 'disabled' : 'default']}
+                    size="small"
+                  >
+                    {description}
+                  </Text>
+                ) : null}
+              </Box>
             </Box>
-          </>
+            <Box marginLeft="auto">{trailing}</Box>
+          </Box>
         )}
       </StyledMenuItemContainer>
     </BaseMenuItemContext.Provider>

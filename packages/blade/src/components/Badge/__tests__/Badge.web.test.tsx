@@ -204,4 +204,13 @@ describe('<Badge />', () => {
     const { getByTestId } = renderWithTheme(<Badge testID="badge-test">{label}</Badge>);
     expect(getByTestId('badge-test')).toBeTruthy();
   });
+  it('should accept data-analytic', () => {
+    const label = 'Label';
+    const { getByTestId } = renderWithTheme(
+      <Badge data-analytic-test="badge-test" testID="badge-test">
+        {label}
+      </Badge>,
+    );
+    expect(getByTestId('badge-test')).toBeTruthy();
+  });
 });

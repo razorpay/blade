@@ -1,6 +1,6 @@
 import type { IconButtonProps } from './IconButton';
 import type { IconComponent } from '~components/Icons';
-import type { RemoveUndefinedFromUnion, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, RemoveUndefinedFromUnion, TestID } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
 
@@ -10,7 +10,9 @@ export type StyledIconButtonProps = {
   emphasis: SubtleOrIntense;
   accessibilityLabel: string;
   isDisabled?: IconButtonProps['isDisabled'];
+  isHighlighted?: IconButtonProps['isHighlighted'];
   tabIndex?: IconButtonProps['_tabIndex'];
   onClick?: IconButtonProps['onClick'];
 } & TestID &
-  BladeCommonEvents;
+  BladeCommonEvents &
+  DataAnalyticsAttribute;

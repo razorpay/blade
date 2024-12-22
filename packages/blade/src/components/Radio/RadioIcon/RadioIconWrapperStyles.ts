@@ -33,6 +33,7 @@ const getRadioIconWrapperStyles = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    minWidth: makeSpace(radioSizes.icon[size].width),
     width: makeSpace(radioSizes.icon[size].width),
     height: makeSpace(radioSizes.icon[size].height),
     borderWidth: makeBorderSize(theme.border.width.thick),
@@ -43,7 +44,7 @@ const getRadioIconWrapperStyles = ({
     borderColor,
     ...(!isReactNative && {
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
-      transitionTimingFunction: castWebType(theme.motion.easing.exit.attentive),
+      transitionTimingFunction: castWebType(theme.motion.easing.exit),
     }),
   };
 };

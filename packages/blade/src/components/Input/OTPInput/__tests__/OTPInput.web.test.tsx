@@ -282,4 +282,16 @@ describe('<OTPInput />', () => {
 
     expect(getByTestId('otp-input-test')).toBeTruthy();
   });
+  it('should accept data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <OTPInput
+        label="Enter OTP"
+        data-analytics-type="otp"
+        data-analytics-event="change"
+        otpLength={4}
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });

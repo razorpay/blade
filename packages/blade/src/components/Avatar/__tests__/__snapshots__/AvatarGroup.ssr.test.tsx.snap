@@ -1,13 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AvatarGroup /> should render AvatarGroup  1`] = `"<div id="root"><div data-blade-component="avatar-group" role="group" class="BaseBox-bmPWx StyledAvatarGroup-sc-1fkrhuq-0  bOeoht"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="information" class="StyledAvatarButton-sc-1w6qflj-0 jpQFpy"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO ljtOIr" data-blade-component="text">NK</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="positive" class="StyledAvatarButton-sc-1w6qflj-0 klKsIg"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fXPbSJ" data-blade-component="text">AN</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="negative" class="StyledAvatarButton-sc-1w6qflj-0 fWHsma"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fPQctD" data-blade-component="text">RB</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="primary" class="StyledAvatarButton-sc-1w6qflj-0 bXOAPS"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fcPkRn" data-blade-component="text">CH</p></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="positive" class="StyledAvatarButton-sc-1w6qflj-0 klKsIg"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fXPbSJ" data-blade-component="text">SA</p></div></button></div></div></div>"`;
+exports[`<AvatarGroup /> should render AvatarGroup  1`] = `"<div id="root"><div data-blade-component="avatar-group" role="group" class="BaseBox-bmPWx StyledAvatarGroup-sc-1fkrhuq-0  bOeoht"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iOFpkz"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="information" class="StyledAvatarButton-sc-1w6qflj-0 eXPnJl"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO ljtOIr" data-blade-component="text">NK</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iOFpkz"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="positive" class="StyledAvatarButton-sc-1w6qflj-0 gBTHbj"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fXPbSJ" data-blade-component="text">AN</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iOFpkz"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="negative" class="StyledAvatarButton-sc-1w6qflj-0 dFPkDV"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fPQctD" data-blade-component="text">RB</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iOFpkz"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="primary" class="StyledAvatarButton-sc-1w6qflj-0 iKWfBx"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fcPkRn" data-blade-component="text">CH</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iOFpkz"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="positive" class="StyledAvatarButton-sc-1w6qflj-0 gBTHbj"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO fXPbSJ" data-blade-component="text">SA</p></div></div></div></div></div></div>"`;
 
 exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
 .c1.c1.c1.c1.c1 {
   background-color: hsla(0,0%,100%,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,16 +44,12 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c2.c2.c2.c2.c2:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,0.18);
-}
-
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
+  display: block;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
   min-height: 36px;
   height: 36px;
   width: 36px;
@@ -56,7 +58,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   background-color: hsla(200,84%,44%,0.09);
 }
 
-.c3.c3.c3.c3.c3 img {
+.c4.c4.c4.c4.c4 img {
   display: block;
   height: 36px;
   width: 36px;
@@ -64,22 +66,12 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   object-fit: cover;
 }
 
-.c3.c3.c3.c3.c3:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
+  display: block;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
   min-height: 36px;
   height: 36px;
   width: 36px;
@@ -88,7 +80,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   background-color: hsla(150,100%,32%,0.09);
 }
 
-.c6.c6.c6.c6.c6 img {
+.c7.c7.c7.c7.c7 img {
   display: block;
   height: 36px;
   width: 36px;
@@ -96,22 +88,12 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   object-fit: cover;
 }
 
-.c6.c6.c6.c6.c6:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
+  display: block;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
   min-height: 36px;
   height: 36px;
   width: 36px;
@@ -120,7 +102,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   background-color: hsla(4,74%,49%,0.09);
 }
 
-.c8.c8.c8.c8.c8 img {
+.c9.c9.c9.c9.c9 img {
   display: block;
   height: 36px;
   width: 36px;
@@ -128,22 +110,12 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   object-fit: cover;
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
+  display: block;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
   min-height: 36px;
   height: 36px;
   width: 36px;
@@ -152,7 +124,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   background-color: hsla(227,100%,59%,0.09);
 }
 
-.c10.c10.c10.c10.c10 img {
+.c11.c11.c11.c11.c11 img {
   display: block;
   height: 36px;
   width: 36px;
@@ -160,18 +132,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   object-fit: cover;
 }
 
-.c10.c10.c10.c10.c10:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(200,84%,37%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -188,7 +149,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -205,7 +166,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -222,7 +183,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -266,106 +227,131 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
       class="c1 c2"
       data-blade-component="avatar"
     >
-      <button
+      <div
         class="c3"
-        color="information"
+        data-blade-component="base-box"
       >
         <div
           class="c4"
-          data-blade-component="base-box"
+          color="information"
         >
-          <p
+          <div
             class="c5"
-            data-blade-component="text"
+            data-blade-component="base-box"
           >
-            NK
-          </p>
+            <p
+              class="c6"
+              data-blade-component="text"
+            >
+              NK
+            </p>
+          </div>
         </div>
-      </button>
+      </div>
     </div>
     <div
       class="c1 c2"
       data-blade-component="avatar"
     >
-      <button
-        class="c6"
-        color="positive"
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-box"
+          class="c7"
+          color="positive"
         >
-          <p
-            class="c7"
-            data-blade-component="text"
+          <div
+            class="c5"
+            data-blade-component="base-box"
           >
-            AN
-          </p>
+            <p
+              class="c8"
+              data-blade-component="text"
+            >
+              AN
+            </p>
+          </div>
         </div>
-      </button>
+      </div>
     </div>
     <div
       class="c1 c2"
       data-blade-component="avatar"
     >
-      <button
-        class="c8"
-        color="negative"
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-box"
+          class="c9"
+          color="negative"
         >
-          <p
-            class="c9"
-            data-blade-component="text"
+          <div
+            class="c5"
+            data-blade-component="base-box"
           >
-            RB
-          </p>
+            <p
+              class="c10"
+              data-blade-component="text"
+            >
+              RB
+            </p>
+          </div>
         </div>
-      </button>
+      </div>
     </div>
     <div
       class="c1 c2"
       data-blade-component="avatar"
     >
-      <button
-        class="c10"
-        color="primary"
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-box"
+          class="c11"
+          color="primary"
         >
-          <p
-            class="c11"
-            data-blade-component="text"
+          <div
+            class="c5"
+            data-blade-component="base-box"
           >
-            CH
-          </p>
+            <p
+              class="c12"
+              data-blade-component="text"
+            >
+              CH
+            </p>
+          </div>
         </div>
-      </button>
+      </div>
     </div>
     <div
       class="c1 c2"
       data-blade-component="avatar"
     >
-      <button
-        class="c6"
-        color="positive"
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-box"
+          class="c7"
+          color="positive"
         >
-          <p
-            class="c7"
-            data-blade-component="text"
+          <div
+            class="c5"
+            data-blade-component="base-box"
           >
-            SA
-          </p>
+            <p
+              class="c8"
+              data-blade-component="text"
+            >
+              SA
+            </p>
+          </div>
         </div>
-      </button>
+      </div>
     </div>
   </div>
 </div>

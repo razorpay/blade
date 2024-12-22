@@ -2,28 +2,26 @@ import React from 'react';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
-import type { BaseDropdownInputTriggerProps } from './types';
+import type { BaseDropdownInputTriggerProps, useControlledDropdownInputProps } from './types';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { isReactNative } from '~utils';
+import { isReactNative, isBrowser } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import type { BladeElementRef } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
+import { useTableContext } from '~components/Table/TableContext';
+import {
+  rowDensityToIsTableInputCellMapping,
+  tableEditableCellRowDensityToInputSizeMap,
+  validationStateToInputTrailingIconMap,
+} from '~components/Table/tokens';
+import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
-const useControlledDropdownInput = (
-  props: Pick<
-    BaseDropdownInputTriggerProps,
-    | 'onChange'
-    | 'name'
-    | 'value'
-    | 'defaultValue'
-    | 'onInputValueChange'
-    | 'syncInputValueWithSelection'
-    | 'isSelectInput'
-  >,
-): void => {
+const useControlledDropdownInput = (props: useControlledDropdownInputProps): void => {
   const isFirstRender = useFirstRender();
   const {
     changeCallbackTriggerer,
@@ -109,6 +107,9 @@ const useControlledDropdownInput = (
         name: props.name,
         values: getValuesArrayFromIndices(),
       });
+      if (isBrowser()) {
+        fireNativeEvent(props.triggererRef, ['change', 'input']);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
@@ -142,6 +143,8 @@ const _BaseDropdownInputTrigger = (
     setChangeCallbackTriggerer,
     changeCallbackTriggerer,
   } = useDropdown();
+  const { rowDensity } = useTableContext();
+  const { isInsideTableEditableCell } = useTableEditableCell();
 
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
   const isAutoCompleteInHeader = !props.isSelectInput && hasAutoCompleteInBottomSheetHeader;
@@ -167,6 +170,7 @@ const _BaseDropdownInputTrigger = (
     defaultValue: props.defaultValue,
     syncInputValueWithSelection: props.syncInputValueWithSelection,
     isSelectInput: props.isSelectInput,
+    triggererRef,
   });
 
   const getValue = (): string | undefined => {
@@ -216,6 +220,17 @@ const _BaseDropdownInputTrigger = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedIndices, selectionType, activeTagIndex, changeCallbackTriggerer, options],
   );
+
+  const tableInputProps: Partial<BaseInputProps> = {
+    isTableInputCell: rowDensityToIsTableInputCellMapping[rowDensity],
+    id: 'table-editable-cell-input',
+    size: tableEditableCellRowDensityToInputSizeMap[rowDensity],
+    trailingIcon: validationStateToInputTrailingIconMap[props.validationState ?? 'none'],
+    showHintsAsTooltip: true,
+  };
+
+  const isValidationStateNone =
+    props.validationState === 'none' || props.validationState === undefined;
 
   return (
     <BaseInput
@@ -296,23 +311,22 @@ const _BaseDropdownInputTrigger = (
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
       size={props.size}
+      {...makeAnalyticsAttribute(props)}
+      onTrailingInteractionElementClick={() => {
+        if (!props.isDisabled) {
+          // Icon onClicks to the SelectInput itself
+          if (!isReactNative()) {
+            triggererRef.current?.focus();
+          }
+          onTriggerClick();
+        }
+      }}
       trailingInteractionElement={
-        isAutoCompleteInHeader ? null : (
-          <InputChevronIcon
-            onClick={() => {
-              if (!props.isDisabled) {
-                // Icon onClicks to the SelectInput itself
-                if (!isReactNative()) {
-                  triggererRef.current?.focus();
-                }
-                onTriggerClick();
-              }
-            }}
-            isDisabled={props.isDisabled}
-            isOpen={isOpen}
-          />
+        isAutoCompleteInHeader || (isInsideTableEditableCell && !isValidationStateNone) ? null : (
+          <InputChevronIcon isDisabled={props.isDisabled} isOpen={isOpen} />
         )
       }
+      {...(isInsideTableEditableCell ? tableInputProps : undefined)}
     />
   );
 };

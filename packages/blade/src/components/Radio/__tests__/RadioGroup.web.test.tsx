@@ -196,4 +196,20 @@ describe('<RadioGroup />', () => {
     );
     expect(getByTestId('radio-group-test')).toBeTruthy();
   });
+
+  it('should accepnt data-analytics attribute', () => {
+    const labelText = 'Select fruit';
+    const { container, getByRole } = renderWithTheme(
+      <RadioGroup label={labelText} data-analytics-radio-group="fruits">
+        <Radio value="apple" data-analytics-radio-value="apple">
+          Apple
+        </Radio>
+      </RadioGroup>,
+    );
+    expect(getByRole('radio', { name: 'Apple' })).toHaveAttribute(
+      'data-analytics-radio-value',
+      'apple',
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

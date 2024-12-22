@@ -52,13 +52,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -149,13 +143,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -248,13 +236,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -347,8 +329,9 @@ exports[`<Card /> should render an interactive Card 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px hsla(227,100%,59%,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  cursor: initial;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: -webkit-transform,box-shadow;

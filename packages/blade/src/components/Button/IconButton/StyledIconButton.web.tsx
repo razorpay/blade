@@ -3,15 +3,21 @@ import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { StyledIconButtonProps } from './types';
-import { castWebType } from '~utils';
+import { highlightedButtonSizeMap, highlightedHoverColorMap } from './tokens';
+import { castWebType, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { throwBladeError } from '~utils/logger';
+import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type StyledButtonProps = {
   emphasis: SubtleOrIntense;
+  $isHighlighted: StyledIconButtonProps['isHighlighted'];
+  $size: StyledIconButtonProps['size'];
 };
 
 const StyledButton = styled.button<StyledButtonProps>((props) => {
@@ -20,11 +26,28 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
 
   const emphasisColor = emphasis === 'intense' ? 'gray' : 'staticWhite';
 
+  if (__DEV__) {
+    if (props.$size === 'large' && props.$isHighlighted) {
+      throwBladeError({
+        moduleName: 'IconButton',
+        message: 'size large is not allowed with isHighlighted true',
+      });
+      return null;
+    }
+  }
+
   return {
     border: 'none',
     cursor: props.disabled ? 'not-allowed' : 'pointer',
     padding: 0,
-    borderRadius: theme.border.radius.small,
+    height: props.$isHighlighted
+      ? // We throw error for size large on top
+        makeSize(highlightedButtonSizeMap[props.$size as 'small' | 'medium'])
+      : undefined,
+    width: props.$isHighlighted
+      ? makeSize(highlightedButtonSizeMap[props.$size as 'small' | 'medium'])
+      : undefined,
+    borderRadius: props.$isHighlighted ? theme.border.radius.round : theme.border.radius.small,
     background: 'transparent',
     display: 'flex',
     alignItems: 'center',
@@ -34,10 +57,13 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
       : theme.colors.interactive.icon[emphasisColor].muted,
     transitionProperty: 'color, box-shadow',
     transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
-    transitionTimingFunction: motionToken.easing.standard.effective as string,
+    transitionTimingFunction: motionToken.easing.standard as string,
 
-    '&:hover': {
+    '&:hover:not([disabled])': {
       color: theme.colors.interactive.icon[emphasisColor].subtle,
+      backgroundColor: props.$isHighlighted
+        ? getIn(theme.colors, highlightedHoverColorMap[emphasis])
+        : 'transparent',
     },
 
     '&:focus-visible': {
@@ -60,6 +86,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       emphasis,
       accessibilityLabel,
       isDisabled,
+      isHighlighted,
       testID,
       onBlur,
       onFocus,
@@ -70,6 +97,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onTouchEnd,
       onTouchStart,
       tabIndex,
+      ...rest
     },
     ref,
   ): ReactElement => (
@@ -87,9 +115,12 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
       disabled={isDisabled}
+      $isHighlighted={isHighlighted}
+      $size={size}
       tabIndex={tabIndex}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <Icon size={size} color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'} />
     </StyledButton>

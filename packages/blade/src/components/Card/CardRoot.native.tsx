@@ -9,6 +9,7 @@ import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { logger } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps>(({ isSelected, ...props }) => {
   const selectedColor = isSelected
@@ -38,20 +39,14 @@ const openURL = async (href: string): Promise<void> => {
   }
 };
 
-const CardRoot = ({
-  children,
-  onClick,
-  isSelected,
-  shouldScaleOnHover,
-  href,
-  as,
-  accessibilityLabel,
-  ...props
-}: CardRootProps): React.ReactElement => {
+const _CardRoot: React.ForwardRefRenderFunction<BladeElementRef, CardRootProps> = (
+  { children, onClick, isSelected, shouldScaleOnHover, href, as, accessibilityLabel, ...props },
+  ref,
+): React.ReactElement => {
   const { theme } = useTheme();
   const [isPressed, setIsPressed] = React.useState(false);
   const duration = castNativeType(makeMotionTime(theme.motion.duration.xquick));
-  const easing = castNativeType(theme.motion.easing.standard.effective);
+  const easing = castNativeType(theme.motion.easing.standard);
 
   const styles = useAnimatedStyle(() => {
     return {
@@ -67,6 +62,7 @@ const CardRoot = ({
   if (onClick || shouldScaleOnHover || href) {
     return (
       <AnimatedPressable
+        ref={ref as never}
         {...makeAccessible({
           role: href ? 'link' : undefined,
           label: accessibilityLabel,
@@ -99,5 +95,7 @@ const CardRoot = ({
     </StyledCardRoot>
   );
 };
+
+const CardRoot = React.forwardRef(_CardRoot);
 
 export { CardRoot };

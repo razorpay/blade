@@ -74,4 +74,19 @@ describe('<IconButton />', () => {
 
     await assertAccessible(iconButton);
   });
+
+  it('should support data-analytics attribute', () => {
+    const noop = () => {};
+    const { getByRole } = renderWithTheme(
+      <IconButton
+        accessibilityLabel="Close"
+        icon={CloseIcon}
+        onClick={noop}
+        data-analytics-icon-button="close"
+      />,
+    );
+    const iconButton = getByRole('button');
+
+    expect(iconButton).toHaveAttribute('data-analytics-icon-button', 'close');
+  });
 });

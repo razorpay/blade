@@ -11,7 +11,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 
@@ -51,24 +51,28 @@ const getColor = ({ color, theme }: { color: BaseSpinnerProps['color']; theme: T
   if (color && color === 'white') {
     return getIn(theme.colors, 'interactive.icon.staticWhite.subtle');
   }
-  if (color && color !== 'primary') {
-    return getIn(theme.colors, `feedback.background.${color}.intense`);
+  if (color && color !== 'neutral') {
+    return getIn(theme.colors, `interactive.icon.${color}.subtle`);
   }
-  return getIn(theme.colors, 'surface.background.primary.intense');
+  return getIn(theme.colors, 'interactive.icon.gray.subtle');
 };
 
-const BaseSpinner = ({
-  label,
-  labelPosition = 'right',
-  accessibilityLabel,
-  color = 'neutral',
-  size = 'medium',
-  testID,
-  ...styledProps
-}: BaseSpinnerProps): React.ReactElement => {
+const _BaseSpinner = (
+  {
+    label,
+    labelPosition = 'right',
+    accessibilityLabel,
+    color = 'neutral',
+    size = 'medium',
+    testID,
+    ...styledProps
+  }: BaseSpinnerProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const { theme } = useTheme();
   return (
     <BaseBox
+      ref={ref as never}
       {...metaAttribute({ name: MetaConstants.Spinner, testID })}
       {...getStyledProps(styledProps)}
     >
@@ -98,6 +102,8 @@ const BaseSpinner = ({
     </BaseBox>
   );
 };
+
+const BaseSpinner = React.forwardRef(_BaseSpinner);
 
 export type { BaseSpinnerProps };
 export { BaseSpinner };

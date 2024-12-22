@@ -84,7 +84,7 @@ const Page = (): React.ReactElement => {
             Text,
           } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             const [isOpen, setIsOpen] = React.useState(false);
 
             return (

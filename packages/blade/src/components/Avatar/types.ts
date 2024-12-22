@@ -5,6 +5,7 @@ import type { ButtonProps } from '~components/Button/Button';
 import type { IconComponent } from '~components/Icons';
 import type { BladeCommonEvents } from '~components/types';
 import type { FeedbackColors } from '~tokens/theme/theme';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type AvatarSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 
@@ -46,7 +47,7 @@ type AvatarGroupProps = {
    */
   maxCount?: number;
   testID?: string;
-};
+} & DataAnalyticsAttribute;
 
 type AvatarCommonProps = {
   /**
@@ -93,11 +94,25 @@ type AvatarCommonProps = {
    * Click handler for the avatar.
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isSelected?: boolean;
+  /**
+   * Custom icon component to render at bottom of the avatar.
+   * Only accepts:
+   * - IconComponent
+   */
+  bottomAddon?: IconComponent;
+  /**
+   * Custom component to render at top of the avatar.
+   *
+   * Only accepts:
+   * - Indicator
+   */
+  topAddon?: React.ReactElement;
   testID?: string;
 } & BladeCommonEvents &
   StyledPropsBlade;
 
-type AvatarProps = AvatarCommonProps & AvatarImgProps;
+type AvatarProps = AvatarCommonProps & AvatarImgProps & DataAnalyticsAttribute;
 
 type AvatarButtonProps = AvatarCommonProps & {
   imgProps?: AvatarImgProps;

@@ -948,39 +948,33 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
   },
   "motion": {
     "delay": {
-      "2xshort": 70,
-      "long": 3000,
-      "short": 180,
-      "xlong": 5000,
-      "xshort": 120,
+      "2xlong": 5000,
+      "2xquick": 80,
+      "gentle": 480,
+      "long": 2000,
+      "moderate": 280,
+      "xgentle": 960,
+      "xlong": 3000,
+      "xquick": 160,
     },
     "duration": {
-      "2xgentle": 900,
-      "2xquick": 70,
-      "gentle": 400,
-      "moderate": 250,
+      "2xgentle": 960,
+      "2xquick": 80,
+      "gentle": 480,
+      "moderate": 280,
       "quick": 200,
-      "xgentle": 600,
-      "xmoderate": 300,
-      "xquick": 150,
+      "xgentle": 640,
+      "xmoderate": 360,
+      "xquick": 160,
     },
     "easing": {
-      "entrance": {
-        "attentive": "cubic-bezier(0.5, 0, 0.3, 1.5)",
-        "effective": "cubic-bezier(0, 0, 0.2, 1)",
-        "revealing": "cubic-bezier(0, 0, 0, 1)",
-      },
-      "exit": {
-        "attentive": "cubic-bezier(0.7, 0, 0.5, 1)",
-        "effective": "cubic-bezier(0.17, 0, 1, 1)",
-        "revealing": "cubic-bezier(0.5, 0, 1, 1)",
-      },
-      "standard": {
-        "attentive": "cubic-bezier(0.5, 0, 0.3, 1.5)",
-        "effective": "cubic-bezier(0.3, 0, 0.2, 1)",
-        "revealing": "cubic-bezier(0.5, 0, 0, 1)",
-        "wary": "cubic-bezier(1, 0.5, 0, 0.5)",
-      },
+      "emphasized": "cubic-bezier(0.5, 0, 0, 1)",
+      "entrance": "cubic-bezier(0, 0, 0.2, 1)",
+      "exit": "cubic-bezier(0.17, 0, 1, 1)",
+      "linear": "cubic-bezier(0, 0, 0, 0)",
+      "overshoot": "cubic-bezier(0.5, 0, 0.3, 1.5)",
+      "shake": "cubic-bezier(1, 0.5, 0, 0.5)",
+      "standard": "cubic-bezier(0.3, 0, 0.2, 1)",
     },
   },
   "name": "custom-83003d",
@@ -1108,6 +1102,26 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
 `;
 
 exports[`createTheme should create a theme with the correct brand colors 2`] = `
+{
+  "100": "hsl(332, 57%, 55%)",
+  "1000": "hsl(332, 100%, 14%)",
+  "200": "hsl(332, 52%, 49%)",
+  "300": "hsl(332, 59%, 43%)",
+  "400": "hsl(332, 69%, 37%)",
+  "50": "hsl(332, 66%, 61%)",
+  "500": "hsl(332, 81%, 32%)",
+  "600": "hsl(332, 100%, 26%)",
+  "700": "hsl(332, 100%, 23%)",
+  "800": "hsl(332, 100%, 20%)",
+  "900": "hsl(332, 100%, 17%)",
+  "a100": "hsla(332, 100%, 26%, 0.12)",
+  "a150": "hsla(332, 100%, 26%, 0.09)",
+  "a200": "hsla(332, 100%, 26%, 0.18)",
+  "a50": "hsla(332, 100%, 26%, 0.09)",
+}
+`;
+
+exports[`createTheme should create a theme with the correct brand colors 3`] = `
 .c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
@@ -1140,8 +1154,8 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -1165,8 +1179,8 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
 .c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1199,8 +1213,8 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1250,7 +1264,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
 </button>
 `;
 
-exports[`createTheme should create a theme with the correct brand colors 3`] = `
+exports[`createTheme should create a theme with the correct brand colors 4`] = `
 {
   "border": {
     "radius": {
@@ -2198,39 +2212,33 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
   },
   "motion": {
     "delay": {
-      "2xshort": 70,
-      "long": 3000,
-      "short": 180,
-      "xlong": 5000,
-      "xshort": 120,
+      "2xlong": 5000,
+      "2xquick": 80,
+      "gentle": 480,
+      "long": 2000,
+      "moderate": 280,
+      "xgentle": 960,
+      "xlong": 3000,
+      "xquick": 160,
     },
     "duration": {
-      "2xgentle": 900,
-      "2xquick": 70,
-      "gentle": 400,
-      "moderate": 250,
+      "2xgentle": 960,
+      "2xquick": 80,
+      "gentle": 480,
+      "moderate": 280,
       "quick": 200,
-      "xgentle": 600,
-      "xmoderate": 300,
-      "xquick": 150,
+      "xgentle": 640,
+      "xmoderate": 360,
+      "xquick": 160,
     },
     "easing": {
-      "entrance": {
-        "attentive": "cubic-bezier(0.5, 0, 0.3, 1.5)",
-        "effective": "cubic-bezier(0, 0, 0.2, 1)",
-        "revealing": "cubic-bezier(0, 0, 0, 1)",
-      },
-      "exit": {
-        "attentive": "cubic-bezier(0.7, 0, 0.5, 1)",
-        "effective": "cubic-bezier(0.17, 0, 1, 1)",
-        "revealing": "cubic-bezier(0.5, 0, 1, 1)",
-      },
-      "standard": {
-        "attentive": "cubic-bezier(0.5, 0, 0.3, 1.5)",
-        "effective": "cubic-bezier(0.3, 0, 0.2, 1)",
-        "revealing": "cubic-bezier(0.5, 0, 0, 1)",
-        "wary": "cubic-bezier(1, 0.5, 0, 0.5)",
-      },
+      "emphasized": "cubic-bezier(0.5, 0, 0, 1)",
+      "entrance": "cubic-bezier(0, 0, 0.2, 1)",
+      "exit": "cubic-bezier(0.17, 0, 1, 1)",
+      "linear": "cubic-bezier(0, 0, 0, 0)",
+      "overshoot": "cubic-bezier(0.5, 0, 0.3, 1.5)",
+      "shake": "cubic-bezier(1, 0.5, 0, 0.5)",
+      "standard": "cubic-bezier(0.3, 0, 0.2, 1)",
     },
   },
   "name": "custom-fff10a",
@@ -2357,7 +2365,27 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
 }
 `;
 
-exports[`createTheme should create a theme with the correct brand colors 4`] = `
+exports[`createTheme should create a theme with the correct brand colors 5`] = `
+{
+  "100": "hsl(60, 100%, 60%)",
+  "1000": "hsl(57, 100%, 32%)",
+  "200": "hsl(60, 100%, 58%)",
+  "300": "hsl(60, 100%, 57%)",
+  "400": "hsl(60, 100%, 55%)",
+  "50": "hsl(60, 100%, 61%)",
+  "500": "hsl(58, 100%, 54%)",
+  "600": "hsl(57, 100%, 52%)",
+  "700": "hsl(57, 100%, 47%)",
+  "800": "hsl(57, 100%, 42%)",
+  "900": "hsl(57, 100%, 37%)",
+  "a100": "hsla(57, 100%, 52%, 0.12)",
+  "a150": "hsla(57, 100%, 52%, 0.09)",
+  "a200": "hsla(57, 100%, 52%, 0.18)",
+  "a50": "hsla(57, 100%, 52%, 0.09)",
+}
+`;
+
+exports[`createTheme should create a theme with the correct brand colors 6`] = `
 .c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
@@ -2390,8 +2418,8 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -2415,8 +2443,8 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
 .c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2449,8 +2477,8 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c4.c4.c4.c4.c4 {

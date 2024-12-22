@@ -1,12 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import type {
-  TableBodyProps,
-  TableCellProps,
-  TableEditableCellProps,
-  TableRowProps,
-} from './types';
+import type { TableBodyProps, TableCellProps, TableRowProps } from './types';
 import { Text } from '~components/Typography';
 
 const TableBody = (props: TableBodyProps): React.ReactElement => {
@@ -21,8 +16,12 @@ const TableCell = (props: TableCellProps): React.ReactElement => {
   return <Text>Table Component is not available for Native mobile apps.</Text>;
 };
 
-const TableEditableCell = (props: TableEditableCellProps): React.ReactElement => {
+const StyledCell = (props: TableCellProps): React.ReactElement => {
   return <Text>Table Component is not available for Native mobile apps.</Text>;
 };
 
-export { TableBody, TableRow, TableCell, TableEditableCell };
+const CellWrapper = (props: TableCellProps): React.ReactElement => {
+  return <Text>Table Component is not available for Native mobile apps.</Text>;
+};
+
+export { TableBody, TableRow, TableCell, StyledCell, CellWrapper };

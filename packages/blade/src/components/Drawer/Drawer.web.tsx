@@ -20,6 +20,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const SHOW_DRAWER = 'show-drawer';
 
@@ -28,12 +29,12 @@ const AnimatedDrawerContainer = styled(BaseBox)<{
   isVisible: boolean;
 }>(({ theme, isFirstDrawerInStack, isVisible }) => {
   const entranceTransition: CSSProperties['transition'] = `all ${castWebType(
-    castWebType(makeMotionTime(theme.motion.duration.gentle)),
-  )} ${castWebType(theme.motion.easing.entrance.revealing)}`;
+    castWebType(makeMotionTime(theme.motion.duration.xmoderate)),
+  )} ${castWebType(theme.motion.easing.entrance)}`;
 
   const exitTransition: CSSProperties['transition'] = `all
-  ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
-  ${castWebType(theme.motion.easing.exit.revealing)}`;
+  ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
+  ${castWebType(theme.motion.easing.exit)}`;
 
   return {
     opacity: isVisible ? 1 : 0,
@@ -52,13 +53,13 @@ const DrawerOverlay = styled(FloatingOverlay)(({ theme }) => {
     opacity: 0,
     transition: `opacity
       ${makeMotionTime(theme.motion.duration.xmoderate)}
-      ${castWebType(theme.motion.easing.exit.revealing)}`,
+      ${castWebType(theme.motion.easing.exit)}`,
     backgroundColor: theme.colors.overlay.background.subtle,
 
     [`&.${SHOW_DRAWER}`]: {
       opacity: 1,
       transition: `opacity ${makeMotionTime(theme.motion.duration.gentle)} ${castWebType(
-        theme.motion.easing.entrance.revealing,
+        theme.motion.easing.entrance,
       )}`,
     },
   };
@@ -74,6 +75,7 @@ const _Drawer = ({
   initialFocusRef,
   isLazy = true,
   testID,
+  ...rest
 }: DrawerProps): React.ReactElement => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
   const [zIndexState, setZIndexState] = React.useState<number>(zIndex);
@@ -150,6 +152,7 @@ const _Drawer = ({
                 name: MetaConstants.Drawer,
                 testID,
               })}
+              {...makeAnalyticsAttribute(rest)}
               zIndex={zIndexState}
             >
               {showOverlay || stackingLevel === 2 ? (

@@ -27,7 +27,7 @@ const _DropdownButton = ({
   variant = 'primary',
   accessibilityLabel,
   testID,
-  ...styledProps
+  ...rest
 }: DropdownButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
@@ -43,7 +43,7 @@ const _DropdownButton = ({
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
     <BaseButton
-      {...styledProps}
+      {...rest}
       {...(icon ? { icon, children } : { children })}
       iconPosition={iconPosition}
       isDisabled={isDisabled}

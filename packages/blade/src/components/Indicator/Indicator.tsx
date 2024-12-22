@@ -1,4 +1,5 @@
-import type { ReactElement } from 'react';
+import React from 'react';
+import type { ReactElement, Ref } from 'react';
 import { indicatorDotSizes, textSizeMapping } from './indicatorTokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -6,15 +7,22 @@ import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type {
+  DataAnalyticsAttribute,
+  BladeElementRef,
+  StringChildrenType,
+  TestID,
+} from '~utils/types';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-type IndicatorCommonProps = {
+type IndicatorProps = {
   /**
    * Sets the color tone
    *
@@ -37,44 +45,30 @@ type IndicatorCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-} & TestID &
-  StyledPropsBlade;
-
-type IndicatorWithoutA11yLabel = {
-  /**
-   * A text label to show alongside the indicator dot
-   */
-  children: StringChildrenType;
-
-  /**
-   * a11y label for screen readers
-   */
-  accessibilityLabel?: string;
-};
-
-type IndicatorWithA11yLabel = {
-  /**
-   * a11y label for screen readers
-   */
-  accessibilityLabel: string;
-
   /**
    * A text label to show alongside the indicator dot
    */
   children?: StringChildrenType;
-};
+  /**
+   * a11y label for screen readers
+   */
+  accessibilityLabel?: string;
+} & TestID &
+  DataAnalyticsAttribute &
+  StyledPropsBlade;
 
-type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
-
-const Indicator = ({
-  accessibilityLabel,
-  children,
-  size = 'medium',
-  color = 'neutral',
-  emphasis = 'subtle',
-  testID,
-  ...styledProps
-}: IndicatorProps): ReactElement => {
+const _Indicator = (
+  {
+    accessibilityLabel,
+    children,
+    size = 'medium',
+    color = 'neutral',
+    emphasis = 'subtle',
+    testID,
+    ...rest
+  }: IndicatorProps,
+  ref: Ref<BladeElementRef>,
+): ReactElement => {
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
   const isIntense = emphasis === 'intense';
@@ -99,10 +93,12 @@ const Indicator = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       display={(isWeb ? 'inline-flex' : 'flex') as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox display="flex" flexDirection="row" alignItems="center">
         <Svg width={String(svgSize)} height={String(svgSize)} viewBox="0 0 10 10" fill="none">
@@ -115,7 +111,7 @@ const Indicator = ({
             <Circle cx="5" cy="5" r="5" fill={fillColorInner} />
           )}
         </Svg>
-        <BaseBox marginLeft="spacing.2">
+        <BaseBox marginLeft={childrenString ? 'spacing.2' : 'spacing.0'}>
           <Text
             weight="medium"
             color="surface.text.gray.subtle"
@@ -129,6 +125,10 @@ const Indicator = ({
     </BaseBox>
   );
 };
+
+const Indicator = assignWithoutSideEffects(React.forwardRef(_Indicator), {
+  componentId: 'Indicator',
+});
 
 export type { IndicatorProps };
 export { Indicator };

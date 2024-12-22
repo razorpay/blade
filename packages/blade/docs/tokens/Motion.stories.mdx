@@ -13,11 +13,7 @@ import MovingDiv from '../components/MovingDiv';
         const colorScheme = context.store.globals.globals.colorScheme;
         return (
           <DocsContainer context={context}>
-            <BladeProvider
-              key={colorScheme}
-              themeTokens={bladeTheme}
-              colorScheme={colorScheme}
-            >
+            <BladeProvider key={colorScheme} themeTokens={bladeTheme} colorScheme={colorScheme}>
               {children}
             </BladeProvider>
           </DocsContainer>
@@ -27,9 +23,9 @@ import MovingDiv from '../components/MovingDiv';
   }}
 />
 
-# 🎬 Motion
+# 🎬 Motion Tokens
 
-> These tokens should be used along with the [makeMotionTime util](?path=/story/utils-makemotiontime--page).
+> These tokens should be used along with the [makeMotionTime util](?path=/story/utils-makemotiontime--docs).
 
 export const Motion = () => {
   const { theme } = useTheme();
@@ -58,43 +54,14 @@ export const Motion = () => {
         </tbody>
       </table>
       <h3>Easing</h3>
-      <h4>standard</h4>
       <table>
         <tbody>
-          {Object.entries(theme.motion.easing.standard).map(([key, value]) => (
+          {Object.entries(theme.motion.easing).map(([key, value]) => (
             <tr key={key}>
-              <td>{`theme.motion.easing.standard.${key}`}</td>
+              <td>{`theme.motion.easing.${key}`}</td>
               <td>{value}</td>
               <td style={{ width: '150px' }}>
-                <MovingDiv theme={theme} easing={theme.motion.easing.standard[key]} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h4>entrance</h4>
-      <table>
-        <tbody>
-          {Object.entries(theme.motion.easing.entrance).map(([key, value]) => (
-            <tr key={key}>
-              <td>{`theme.motion.easing.entrance.${key}`}</td>
-              <td>{value}</td>
-              <td style={{ width: '150px' }}>
-                <MovingDiv theme={theme} easing={theme.motion.easing.entrance[key]} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h4>exit</h4>
-      <table>
-        <tbody>
-          {Object.entries(theme.motion.easing.exit).map(([key, value]) => (
-            <tr key={key}>
-              <td>{`theme.motion.easing.exit.${key}`}</td>
-              <td>{value}</td>
-              <td style={{ width: '150px' }}>
-                <MovingDiv theme={theme} easing={theme.motion.easing.exit[key]} />
+                <MovingDiv theme={theme} easing={theme.motion.easing[key]} />
               </td>
             </tr>
           ))}
@@ -113,7 +80,7 @@ export const MotionExample = () => {
     background-color: ${(props) => props.theme.colors.surface.background.primary.subtle};
     animation: ${(props) =>
       `resize ${makeMotionTime(props.theme.motion.duration.xgentle)} ${
-        props.theme.motion.easing.standard.effective
+        props.theme.motion.easing.standard
       } infinite`};
     @keyframes resize {
       0% {
@@ -127,7 +94,7 @@ export const MotionExample = () => {
       }
     }
   `;
-  return <ExampleDiv theme={theme} easing={theme.motion.easing.standard.effective} />;
+  return <ExampleDiv theme={theme} easing={theme.motion.easing.standard} />;
 };
 
 <Motion />
@@ -136,7 +103,7 @@ export const MotionExample = () => {
 
 If we want to create a circle that scales up and down with a **duration** of `xgentle` and an **easing** of `standard.effective`
 
-1. Ensure you've followed all the steps under ["Guides/Usage"](https://master--61c19ee8d3d282003ac1d81c.chromatic.com//?path=/story/guides-usage--page&globals=measureEnabled:false) to setup your theme with `<BladeProvider>`
+1. Ensure you've followed all the steps under ["Guides/Usage"](https://blade.razorpay.com/?path=/docs/guides-how-to-use--docs) to setup your theme with `<BladeProvider>`
 2. Your theme tokens will be automatically available to `styled-components` as a `theme` prop
 3. Create a component using `styled-components` that looks like this:
 
@@ -153,7 +120,7 @@ const ExampleDiv = styled.div`
     props.theme.colors.surface.background.primary.subtle};
   animation: ${(props) =>
     `resize ${makeMotionTime(props.theme.motion.duration.xgentle)} ${
-      props.theme.motion.easing.standard.effective
+      props.theme.motion.easing.standard
     } infinite`};
   @keyframes resize {
     0% {
@@ -177,7 +144,7 @@ import { makeMotionTime } from '@razorpay/blade/utils';
 
 const CustomComponent = () => {
   const { theme } = useTheme();
-  const easing = theme.motion.easing.standard.effective;
+  const easing = theme.motion.easing.standard;
   const duration = makeMotionTime(theme.motion.duration.xgentle);
   const delay = makeMotionTime(theme.motion.delay.short);
 

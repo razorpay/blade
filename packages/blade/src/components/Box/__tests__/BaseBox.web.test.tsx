@@ -85,4 +85,12 @@ describe('<BaseBox />', () => {
     );
     expect(getByText('hello')).toHaveAttribute('data-blade-component', 'test');
   });
+  it('should support passing data-analytics  attributes', () => {
+    const { container } = renderWithTheme(<BaseBox data-analytics-name="demo" />);
+    expect(container).toMatchSnapshot();
+  });
+  it('should support passing data-analytics  attributes', () => {
+    const { container } = renderWithTheme(<BaseBox data-analytics-name="section" as="section" />);
+    expect(container).toMatchSnapshot();
+  });
 });

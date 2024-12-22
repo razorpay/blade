@@ -98,7 +98,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
-                  flexWrap="wrap"
                   gap="spacing.0"
                   maxHeight="36px"
                   style={
@@ -107,7 +106,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         "alignItems": "center",
                         "display": "flex",
                         "flexDirection": "row",
-                        "flexWrap": "wrap",
                         "gap": 0,
                         "maxHeight": 36,
                       },
@@ -419,7 +417,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           trailingInteractionElement={
                             <InputChevronIcon
                               isOpen={true}
-                              onClick={[Function]}
                             />
                           }
                           value=""
@@ -461,7 +458,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 </View>
                 <View
                   alignItems="center"
-                  alignSelf="center"
+                  alignSelf="stretch"
                   data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
@@ -469,7 +466,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     [
                       {
                         "alignItems": "center",
-                        "alignSelf": "center",
+                        "alignSelf": "stretch",
                         "display": "flex",
                         "flexDirection": "row",
                       },
@@ -477,188 +474,206 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   }
                 >
                   <View
-                    alignItems="stretch"
+                    alignItems="center"
                     alignSelf="stretch"
                     data-blade-component="base-box"
                     display="flex"
+                    flexDirection="row"
                     style={
                       [
                         {
-                          "alignItems": "stretch",
+                          "alignItems": "center",
                           "alignSelf": "stretch",
                           "display": "flex",
-                          "paddingRight": 12,
+                          "flexDirection": "row",
                         },
                       ]
                     }
                   >
                     <View
-                      accessibilityLabel="Chevron Icon"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
+                      alignItems="stretch"
+                      alignSelf="stretch"
+                      data-blade-component="base-box"
+                      display="flex"
                       style={
-                        {
-                          "display": "flex",
-                          "justifyContent": "center",
-                          "marginBottom": "auto",
-                          "marginLeft": "auto",
-                          "marginRight": "auto",
-                          "marginTop": "auto",
-                          "opacity": 1,
-                        }
+                        [
+                          {
+                            "alignItems": "stretch",
+                            "alignSelf": "stretch",
+                            "display": "flex",
+                            "paddingRight": 12,
+                          },
+                        ]
                       }
                     >
-                      <RNSVGSvgView
-                        accessibilityElementsHidden={true}
-                        align="xMidYMid"
-                        bbHeight="16px"
-                        bbWidth="16px"
-                        data-blade-component="icon"
-                        display="none"
-                        fill="none"
+                      <View
+                        accessibilityLabel="Chevron Icon"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
                         focusable={false}
-                        height="16px"
-                        importantForAccessibility="no-hide-descendants"
-                        meetOrSlice={0}
-                        minX={0}
-                        minY={0}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
                         style={
-                          [
-                            {
-                              "backgroundColor": "transparent",
-                              "borderWidth": 0,
-                            },
+                          {
+                            "display": "flex",
+                            "justifyContent": "center",
+                            "marginBottom": "auto",
+                            "marginLeft": "auto",
+                            "marginRight": "auto",
+                            "marginTop": "auto",
+                            "opacity": 1,
+                          }
+                        }
+                      >
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="16px"
+                          bbWidth="16px"
+                          data-blade-component="icon"
+                          display="none"
+                          fill="none"
+                          focusable={false}
+                          height="16px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
                             [
                               {
-                                "display": "none",
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
                               },
-                            ],
-                            {
-                              "flex": 0,
-                              "height": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                        vbHeight={24}
-                        vbWidth={24}
-                        width="16px"
-                      >
-                        <RNSVGGroup
-                          fill={null}
-                          propList={
-                            [
-                              "fill",
+                              [
+                                {
+                                  "display": "none",
+                                },
+                              ],
+                              {
+                                "flex": 0,
+                                "height": 16,
+                                "width": 16,
+                              },
                             ]
                           }
+                          vbHeight={24}
+                          vbWidth={24}
+                          width="16px"
                         >
-                          <RNSVGPath
-                            clipRule={0}
-                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                            fill={
-                              {
-                                "payload": 4285959847,
-                                "type": 0,
-                              }
-                            }
-                            fillRule={0}
+                          <RNSVGGroup
+                            fill={null}
                             propList={
                               [
                                 "fill",
-                                "fillRule",
                               ]
                             }
-                          />
-                        </RNSVGGroup>
-                      </RNSVGSvgView>
-                      <RNSVGSvgView
-                        accessibilityElementsHidden={true}
-                        align="xMidYMid"
-                        bbHeight="16px"
-                        bbWidth="16px"
-                        data-blade-component="icon"
-                        display="flex"
-                        fill="none"
-                        focusable={false}
-                        height="16px"
-                        importantForAccessibility="no-hide-descendants"
-                        meetOrSlice={0}
-                        minX={0}
-                        minY={0}
-                        style={
-                          [
-                            {
-                              "backgroundColor": "transparent",
-                              "borderWidth": 0,
-                            },
+                          >
+                            <RNSVGPath
+                              clipRule={0}
+                              d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                              fill={
+                                {
+                                  "payload": 4285959847,
+                                  "type": 0,
+                                }
+                              }
+                              fillRule={0}
+                              propList={
+                                [
+                                  "fill",
+                                  "fillRule",
+                                ]
+                              }
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="16px"
+                          bbWidth="16px"
+                          data-blade-component="icon"
+                          display="flex"
+                          fill="none"
+                          focusable={false}
+                          height="16px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
                             [
                               {
-                                "display": "flex",
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
                               },
-                            ],
-                            {
-                              "flex": 0,
-                              "height": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                        vbHeight={24}
-                        vbWidth={24}
-                        width="16px"
-                      >
-                        <RNSVGGroup
-                          fill={null}
-                          propList={
-                            [
-                              "fill",
+                              [
+                                {
+                                  "display": "flex",
+                                },
+                              ],
+                              {
+                                "flex": 0,
+                                "height": 16,
+                                "width": 16,
+                              },
                             ]
                           }
+                          vbHeight={24}
+                          vbWidth={24}
+                          width="16px"
                         >
-                          <RNSVGPath
-                            clipRule={0}
-                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                            fill={
-                              {
-                                "payload": 4285959847,
-                                "type": 0,
-                              }
-                            }
-                            fillRule={0}
+                          <RNSVGGroup
+                            fill={null}
                             propList={
                               [
                                 "fill",
-                                "fillRule",
                               ]
                             }
-                          />
-                        </RNSVGGroup>
-                      </RNSVGSvgView>
+                          >
+                            <RNSVGPath
+                              clipRule={0}
+                              d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                              fill={
+                                {
+                                  "payload": 4285959847,
+                                  "type": 0,
+                                }
+                              }
+                              fillRule={0}
+                              propList={
+                                [
+                                  "fill",
+                                  "fillRule",
+                                ]
+                              }
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -922,13 +937,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         alignItems="flex-start"
                         data-blade-component="box"
                         display="flex"
-                        justifyContent="center"
+                        justifyContent="flex-start"
                         style={
                           [
                             {
                               "alignItems": "flex-start",
                               "display": "flex",
-                              "justifyContent": "center",
+                              "justifyContent": "flex-start",
                               "width": "100%",
                             },
                           ]
@@ -1226,13 +1241,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         alignItems="flex-start"
                         data-blade-component="box"
                         display="flex"
-                        justifyContent="center"
+                        justifyContent="flex-start"
                         style={
                           [
                             {
                               "alignItems": "flex-start",
                               "display": "flex",
-                              "justifyContent": "center",
+                              "justifyContent": "flex-start",
                               "width": "100%",
                             },
                           ]
@@ -1530,13 +1545,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         alignItems="flex-start"
                         data-blade-component="box"
                         display="flex"
-                        justifyContent="center"
+                        justifyContent="flex-start"
                         style={
                           [
                             {
                               "alignItems": "flex-start",
                               "display": "flex",
-                              "justifyContent": "center",
+                              "justifyContent": "flex-start",
                               "width": "100%",
                             },
                           ]
@@ -1868,7 +1883,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   isPressed={false}
                   minHeight="36px"
                   motionDuration="duration.xquick"
-                  motionEasing="easing.standard.effective"
+                  motionEasing="easing.standard"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}

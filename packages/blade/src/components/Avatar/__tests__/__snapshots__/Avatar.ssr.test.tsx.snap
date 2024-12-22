@@ -1,13 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Avatar /> should render  avatar 1`] = `"<div id="root"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG juBAiU"><button color="neutral" class="StyledAvatarButton-sc-1w6qflj-0 hjKtBr"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO zobLE" data-blade-component="text">NK</p></div></button></div></div>"`;
+exports[`<Avatar /> should render  avatar 1`] = `"<div id="root"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG iOFpkz"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="neutral" class="StyledAvatarButton-sc-1w6qflj-0 huyNs"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO zobLE" data-blade-component="text">NK</p></div></div></div></div></div>"`;
 
 exports[`<Avatar /> should render  avatar 2`] = `
 .c0.c0.c0.c0.c0 {
   background-color: hsla(0,0%,100%,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,16 +44,12 @@ exports[`<Avatar /> should render  avatar 2`] = `
   outline: 0.5px solid hsla(214,28%,84%,1);
 }
 
-.c1.c1.c1.c1.c1:hover {
-  outline: 1.5px solid hsla(211,20%,52%,0.18);
-  border-color: hsla(211,20%,52%,0.18);
-}
-
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
+  display: block;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
   min-height: 36px;
   height: 36px;
   width: 36px;
@@ -56,7 +58,7 @@ exports[`<Avatar /> should render  avatar 2`] = `
   background-color: hsla(211,20%,52%,0.18);
 }
 
-.c2.c2.c2.c2.c2 img {
+.c3.c3.c3.c3.c3 img {
   display: block;
   height: 36px;
   width: 36px;
@@ -64,18 +66,7 @@ exports[`<Avatar /> should render  avatar 2`] = `
   object-fit: cover;
 }
 
-.c2.c2.c2.c2.c2:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -99,22 +90,27 @@ exports[`<Avatar /> should render  avatar 2`] = `
     class="c0 c1"
     data-blade-component="avatar"
   >
-    <button
+    <div
       class="c2"
-      color="neutral"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
-        data-blade-component="base-box"
+        color="neutral"
       >
-        <p
+        <div
           class="c4"
-          data-blade-component="text"
+          data-blade-component="base-box"
         >
-          NK
-        </p>
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            NK
+          </p>
+        </div>
       </div>
-    </button>
+    </div>
   </div>
 </div>
 `;

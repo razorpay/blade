@@ -38,7 +38,12 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
-import type { BladeElementRef, ContainerElementType, TestID } from '~utils/types';
+import type {
+  BladeElementRef,
+  ContainerElementType,
+  DataAnalyticsAttribute,
+  TestID,
+} from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -49,6 +54,9 @@ import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import type { MotionMetaProp } from '~components/BaseMotion';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -70,6 +78,7 @@ type CommonAutoCompleteSuggestionTypes =
 type WebAutoCompleteSuggestionType = CommonAutoCompleteSuggestionTypes | 'on';
 
 type BaseInputCommonProps = FormInputLabelProps &
+  DataAnalyticsAttribute &
   FormInputValidationProps & {
     /**
      * Determines if it needs to be rendered as input, textarea or button
@@ -159,6 +168,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * eg: consumers can render a loader or they could render a clear button
      */
     trailingInteractionElement?: ReactNode;
+    /**
+     * Callback to be invoked when the TrailingInteractionElement is clicked
+     */
+    onTrailingInteractionElementClick?: () => void;
     /**
      * Element to be rendered before prefix. This is decided by the component which is extending BaseInput
      *
@@ -326,6 +339,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default true
      **/
     isTableInputCell?: boolean;
+    /**
+     * Hides the form hints and shows them as tooltip of trailing
+     */
+    showHintsAsTooltip?: boolean;
   } & TestID &
   Platform.Select<{
     native: {
@@ -363,7 +380,8 @@ type BaseInputCommonProps = FormInputLabelProps &
       autoCompleteSuggestionType?: WebAutoCompleteSuggestionType;
     };
   }> &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  MotionMetaProp;
 
 /*
   Mandatory accessibilityLabel prop when label is not provided
@@ -744,11 +762,10 @@ const FocusRingWrapper = styled(BaseBox)<{
           ),
         ),
         transitionTimingFunction: castWebType(
-          getIn(
-            theme.motion.easing,
+          theme.motion.easing[
             baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-              .easing,
-          ),
+              .easing
+          ],
         ),
       }
     : {},
@@ -785,6 +802,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     leadingIcon,
     prefix,
     trailingInteractionElement,
+    onTrailingInteractionElementClick,
     leadingInteractionElement,
     suffix,
     trailingIcon,
@@ -819,7 +837,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingButton,
     valueComponentType = 'text',
     isTableInputCell = false,
-    ...styledProps
+    showHintsAsTooltip = false,
+    _motionMeta,
+    ...rest
   },
   ref,
 ) => {
@@ -891,7 +911,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
   });
 
-  const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
+  const willRenderHintText =
+    Boolean(helpText) ||
+    (validationState === 'success' && Boolean(successText)) ||
+    (validationState === 'error' && Boolean(errorText));
 
   if (__DEV__) {
     if (
@@ -909,7 +932,11 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
 
   const isTextArea = as === 'textarea';
   return (
-    <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
+    <BaseBox
+      ref={getOuterMotionRef({ _motionMeta, ref })}
+      {...metaAttribute({ name: componentName, testID })}
+      {...getStyledProps(rest)}
+    >
       <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -981,8 +1008,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               isDisabled={isDisabled}
               showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
-                if (ref && !isReactNative && 'current' in ref) {
-                  ref.current?.focus();
+                const innerRef = getInnerMotionRef({ _motionMeta, ref });
+                if (innerRef && !isReactNative && 'current' in innerRef) {
+                  innerRef.current?.focus();
                 }
               }}
               labelPrefix={isLabelInsideInput ? label : undefined}
@@ -1001,7 +1029,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               <StyledBaseInput
                 as={as}
                 id={inputId}
-                ref={mergedInputRef as any}
+                ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any }) as never}
                 name={name}
                 type={type}
                 defaultValue={defaultValue}
@@ -1044,10 +1072,12 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
+                {...makeAnalyticsAttribute(rest)}
               />
             </BaseInputTagSlot>
             <BaseInputVisuals
               trailingInteractionElement={trailingInteractionElement}
+              onTrailingInteractionElementClick={onTrailingInteractionElementClick}
               suffix={suffix}
               trailingIcon={trailingIcon}
               isDisabled={isDisabled}
@@ -1056,13 +1086,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               size={size}
               errorText={errorText}
               successText={successText}
-              isTableInputCell={isTableInputCell}
+              showHintsAsTooltip={showHintsAsTooltip}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>
 
-      {hideFormHint || isTableInputCell ? null : (
+      {hideFormHint || showHintsAsTooltip ? null : (
         <BaseBox
           marginLeft={makeSize(
             isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,

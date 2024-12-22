@@ -5,7 +5,7 @@ import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
 import type { TooltipProps } from '~components/Tooltip';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type SideNavProps = {
   /**
@@ -116,7 +116,7 @@ type SideNavLinkProps = {
    * ```
    */
   tooltip?: Pick<TooltipProps, 'title' | 'content' | 'onOpenChange'>;
-};
+} & DataAnalyticsAttribute;
 
 type SideNavSectionProps = {
   title?: string;
@@ -139,7 +139,7 @@ type SideNavSectionProps = {
    * Children slot for SideNavLink
    */
   children: React.ReactElement[];
-};
+} & DataAnalyticsAttribute;
 
 type SideNavFooterProps = {
   /**
@@ -216,7 +216,7 @@ type SideNavItemProps = {
    * ```
    */
   tooltip?: SideNavLinkProps['tooltip'];
-};
+} & DataAnalyticsAttribute;
 
 type SideNavBodyProps = {
   children: React.ReactElement | React.ReactElement[];

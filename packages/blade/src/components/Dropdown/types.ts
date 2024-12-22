@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { Placement } from '@floating-ui/react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { ContainerElementType, TestID } from '~utils/types';
+import type { ContainerElementType, DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 
 type DropdownProps = {
@@ -17,7 +17,14 @@ type DropdownProps = {
   onOpenChange?: (isOpen: boolean) => void;
   selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
+  /**
+   * @private
+   *
+   * width prop for outer relative container of Dropdown. Use width prop on DropdownOverlay to change width of menu
+   */
+  _width?: BoxProps['width'];
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type DropdownOverlayProps = {

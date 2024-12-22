@@ -1020,39 +1020,33 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
   },
   "motion": {
     "delay": {
-      "2xshort": 70,
-      "long": 3000,
-      "short": 180,
-      "xlong": 5000,
-      "xshort": 120,
+      "2xlong": 5000,
+      "2xquick": 80,
+      "gentle": 480,
+      "long": 2000,
+      "moderate": 280,
+      "xgentle": 960,
+      "xlong": 3000,
+      "xquick": 160,
     },
     "duration": {
-      "2xgentle": 900,
-      "2xquick": 70,
-      "gentle": 400,
-      "moderate": 250,
+      "2xgentle": 960,
+      "2xquick": 80,
+      "gentle": 480,
+      "moderate": 280,
       "quick": 200,
-      "xgentle": 600,
-      "xmoderate": 300,
-      "xquick": 150,
+      "xgentle": 640,
+      "xmoderate": 360,
+      "xquick": 160,
     },
     "easing": {
-      "entrance": {
-        "attentive": "0.5 0 0.3 1.5",
-        "effective": "0 0 0.2 1",
-        "revealing": "0 0 0 1",
-      },
-      "exit": {
-        "attentive": "0.7 0 0.5 1",
-        "effective": "0.17 0 1 1",
-        "revealing": "0.5 0 1 1",
-      },
-      "standard": {
-        "attentive": "0.5 0 0.3 1.5",
-        "effective": "0.3 0 0.2 1",
-        "revealing": "0.5 0 0 1",
-        "wary": "1 0.5 0 0.5",
-      },
+      "emphasized": "0.5 0 0 1",
+      "entrance": "0 0 0.2 1",
+      "exit": "0.17 0 1 1",
+      "linear": "0 0 0 0",
+      "overshoot": "0.5 0 0.3 1.5",
+      "shake": "1 0.5 0 0.5",
+      "standard": "0.3 0 0.2 1",
     },
   },
   "name": "custom-83003d",
@@ -1180,6 +1174,26 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
 `;
 
 exports[`createTheme should create a theme with the correct brand colors 2`] = `
+{
+  "100": "hsl(332, 57%, 55%)",
+  "1000": "hsl(332, 100%, 14%)",
+  "200": "hsl(332, 52%, 49%)",
+  "300": "hsl(332, 59%, 43%)",
+  "400": "hsl(332, 69%, 37%)",
+  "50": "hsl(332, 66%, 61%)",
+  "500": "hsl(332, 81%, 32%)",
+  "600": "hsl(332, 100%, 26%)",
+  "700": "hsl(332, 100%, 23%)",
+  "800": "hsl(332, 100%, 20%)",
+  "900": "hsl(332, 100%, 17%)",
+  "a100": "hsla(332, 100%, 26%, 0.12)",
+  "a150": "hsla(332, 100%, 26%, 0.09)",
+  "a200": "hsla(332, 100%, 26%, 0.18)",
+  "a50": "hsla(332, 100%, 26%, 0.09)",
+}
+`;
+
+exports[`createTheme should create a theme with the correct brand colors 3`] = `
 <View
   style={
     {
@@ -1228,7 +1242,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -1355,7 +1369,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
 </View>
 `;
 
-exports[`createTheme should create a theme with the correct brand colors 3`] = `
+exports[`createTheme should create a theme with the correct brand colors 4`] = `
 {
   "border": {
     "radius": {
@@ -2375,39 +2389,33 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
   },
   "motion": {
     "delay": {
-      "2xshort": 70,
-      "long": 3000,
-      "short": 180,
-      "xlong": 5000,
-      "xshort": 120,
+      "2xlong": 5000,
+      "2xquick": 80,
+      "gentle": 480,
+      "long": 2000,
+      "moderate": 280,
+      "xgentle": 960,
+      "xlong": 3000,
+      "xquick": 160,
     },
     "duration": {
-      "2xgentle": 900,
-      "2xquick": 70,
-      "gentle": 400,
-      "moderate": 250,
+      "2xgentle": 960,
+      "2xquick": 80,
+      "gentle": 480,
+      "moderate": 280,
       "quick": 200,
-      "xgentle": 600,
-      "xmoderate": 300,
-      "xquick": 150,
+      "xgentle": 640,
+      "xmoderate": 360,
+      "xquick": 160,
     },
     "easing": {
-      "entrance": {
-        "attentive": "0.5 0 0.3 1.5",
-        "effective": "0 0 0.2 1",
-        "revealing": "0 0 0 1",
-      },
-      "exit": {
-        "attentive": "0.7 0 0.5 1",
-        "effective": "0.17 0 1 1",
-        "revealing": "0.5 0 1 1",
-      },
-      "standard": {
-        "attentive": "0.5 0 0.3 1.5",
-        "effective": "0.3 0 0.2 1",
-        "revealing": "0.5 0 0 1",
-        "wary": "1 0.5 0 0.5",
-      },
+      "emphasized": "0.5 0 0 1",
+      "entrance": "0 0 0.2 1",
+      "exit": "0.17 0 1 1",
+      "linear": "0 0 0 0",
+      "overshoot": "0.5 0 0.3 1.5",
+      "shake": "1 0.5 0 0.5",
+      "standard": "0.3 0 0.2 1",
     },
   },
   "name": "custom-fff10a",
@@ -2534,7 +2542,27 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
 }
 `;
 
-exports[`createTheme should create a theme with the correct brand colors 4`] = `
+exports[`createTheme should create a theme with the correct brand colors 5`] = `
+{
+  "100": "hsl(60, 100%, 60%)",
+  "1000": "hsl(57, 100%, 32%)",
+  "200": "hsl(60, 100%, 58%)",
+  "300": "hsl(60, 100%, 57%)",
+  "400": "hsl(60, 100%, 55%)",
+  "50": "hsl(60, 100%, 61%)",
+  "500": "hsl(58, 100%, 54%)",
+  "600": "hsl(57, 100%, 52%)",
+  "700": "hsl(57, 100%, 47%)",
+  "800": "hsl(57, 100%, 42%)",
+  "900": "hsl(57, 100%, 37%)",
+  "a100": "hsla(57, 100%, 52%, 0.12)",
+  "a150": "hsla(57, 100%, 52%, 0.09)",
+  "a200": "hsla(57, 100%, 52%, 0.18)",
+  "a50": "hsla(57, 100%, 52%, 0.09)",
+}
+`;
+
+exports[`createTheme should create a theme with the correct brand colors 6`] = `
 <View
   style={
     {
@@ -2583,7 +2611,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}

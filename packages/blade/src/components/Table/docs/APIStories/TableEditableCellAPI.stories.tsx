@@ -1,13 +1,24 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import type { TableData } from '../../types';
-import { Table as TableComponent } from '../../Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableBody, TableRow, TableCell, TableEditableCell } from '../../TableBody';
-import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
+import type { TableProps, TableData, TableEditableCellProps } from '../../index';
+import {
+  Table as TableComponent,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableFooter,
+  TableFooterRow,
+  TableFooterCell,
+} from '../../index';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Code } from '~components/Typography';
-import { Badge } from '~components/Badge';
+import { TableEditableCell, TableEditableDropdownCell } from '~components/Table/TableEditableCell';
+import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { DropdownOverlay } from '~components/Dropdown';
 
 export default {
   title: 'Components/Table/API',
@@ -22,6 +33,15 @@ export default {
     headerKey: {
       control: {
         disable: true,
+      },
+    },
+    rowDensity: {
+      options: ['comfortable', 'normal', 'compact'],
+      control: {
+        type: 'radio',
+      },
+      table: {
+        category: 'TableProps',
       },
     },
   },
@@ -78,7 +98,9 @@ const data: TableData<Item> = {
   nodes,
 };
 
-const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
+type TableTemplateProps = TableEditableCellProps & { rowDensity: TableProps<never>['rowDensity'] };
+
+const TableTemplate: StoryFn<TableTemplateProps> = ({ rowDensity, ...args }) => {
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
@@ -86,7 +108,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent showBorderedCells data={data}>
+      <TableComponent showBorderedCells data={data} rowDensity={rowDensity}>
         {(tableData) => (
           <>
             <TableHeader>
@@ -106,9 +128,9 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
                   <TableEditableCell
+                    {...args}
                     accessibilityLabel="Amount"
                     defaultValue={`${tableItem.amount}`}
-                    {...args}
                   />
                   <TableEditableCell
                     accessibilityLabel="Amount"
@@ -116,12 +138,21 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                     placeholder="Account number"
                     errorText="Account number is invalid"
                   />
-                  <TableEditableCell
-                    accessibilityLabel="Account"
-                    defaultValue={`${tableItem.method}`}
-                    validationState="success"
-                    successText="Method  is valid"
-                  />
+                  <TableEditableDropdownCell selectionType="multiple">
+                    <AutoComplete
+                      accessibilityLabel="Method"
+                      validationState={args.validationState}
+                      errorText="Invalid Method"
+                      successText="Valid Method"
+                    />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="Mumbai" value="mumbai" />
+                        <ActionListItem title="Pune" value="pune" />
+                        <ActionListItem title="Bangalore" value="bangalore" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
                   <TableCell>
                     {tableItem.date?.toLocaleDateString('en-IN', {
                       year: 'numeric',
@@ -129,22 +160,21 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                       day: '2-digit',
                     })}
                   </TableCell>
-                  <TableCell>
-                    <Badge
-                      size="medium"
-                      color={
-                        tableItem.status === 'Completed'
-                          ? 'positive'
-                          : tableItem.status === 'Pending'
-                          ? 'notice'
-                          : tableItem.status === 'Failed'
-                          ? 'negative'
-                          : 'default'
-                      }
-                    >
-                      {tableItem.status}
-                    </Badge>
-                  </TableCell>
+                  <TableEditableDropdownCell>
+                    <SelectInput
+                      validationState={args.validationState}
+                      accessibilityLabel="Status"
+                      errorText="Invalid Status"
+                      successText="Valid Status"
+                    />
+                    <DropdownOverlay>
+                      <ActionList>
+                        <ActionListItem title="Pending" value="pending" />
+                        <ActionListItem title="Completed" value="completed" />
+                        <ActionListItem title="Failed" value="failed" />
+                      </ActionList>
+                    </DropdownOverlay>
+                  </TableEditableDropdownCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -166,5 +196,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
 };
 
 export const TableEditableCellStory = TableTemplate.bind({});
+TableEditableCellStory.args = {
+  rowDensity: 'normal',
+};
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 TableEditableCellStory.storyName = 'TableEditableCell';

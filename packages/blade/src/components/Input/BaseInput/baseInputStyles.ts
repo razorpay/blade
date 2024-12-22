@@ -203,6 +203,8 @@ export const getBaseInputStyles = ({
 
   const isDropdownWithTags = isDropdownTrigger && hasTags;
   const isReactNative = getPlatformType() === 'react-native';
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  const shouldHaveFlexibleHeight = isTextArea || isDropdownWithTags;
 
   return {
     ...(valueComponentType === 'heading'
@@ -239,8 +241,8 @@ export const getBaseInputStyles = ({
 
     textAlign,
     width: '100%',
-    height: isTextArea || isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
-    minHeight: isTextArea || isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
+    height: shouldHaveFlexibleHeight ? undefined : makeSpace(baseInputHeight[size]),
+    minHeight: shouldHaveFlexibleHeight ? undefined : makeSpace(baseInputHeight[size]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

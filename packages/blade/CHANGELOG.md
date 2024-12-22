@@ -1,5 +1,254 @@
 # @razorpay/blade
 
+## 12.0.1
+
+### Patch Changes
+
+- 4178c595: docs: remove stackblitz and add story code
+  fix: export Stagger and AnimateInteractions
+
+## 12.0.0
+
+### Major Changes
+
+- 663da58e: feat(Motion): Release Motion Presets
+
+  - Check out [Blade v12 Upgrade Guide](https://github.com/razorpay/blade/blob/master/packages/blade/docs/migration-docs/upgrade-v12.md) for codemod and migration steps
+
+## 11.39.0
+
+### Minor Changes
+
+- 583900a1: feat(blade): add ray icon
+
+## 11.38.1
+
+### Patch Changes
+
+- 65431583: feat: update use-presence hook to latest for react 19 support
+
+## 11.38.0
+
+### Minor Changes
+
+- a51e8f70: feat(StepGroup): spacing enhancements, support for titleColor prop
+- 7117bfbc: feat: add support for data-analytics attribute
+
+## 11.37.0
+
+### Minor Changes
+
+- 778e388b: feat(blade): add new icons - IndiaFlag, MagicKonnect, WorldWide
+
+## 11.36.2
+
+### Patch Changes
+
+- f294a414: fix(blade): maxCharacters alignment in Input field
+- fa487f1e: fix(blade): Trigger native select events in dropdown/ file upload / Date picker
+
+## 11.36.1
+
+### Patch Changes
+
+- 8846293f: fix: dropdown not opening if user clicks on dropdown backdrop
+
+## 11.36.0
+
+### Minor Changes
+
+- e97ec75b: feat: add new icons
+
+### Patch Changes
+
+- 9294580c: feat: expose textAlign prop types in text input
+
+## 11.35.0
+
+### Minor Changes
+
+- e53905b0: feat(blade): add controlled state to carousel
+
+## 11.34.1
+
+### Patch Changes
+
+- 421a3a8e: fix(blade): bottomsheet body scroll lock not clearing
+
+## 11.34.0
+
+### Minor Changes
+
+- b63190b0: feat(BottomNav): add BottomNav component
+
+### Patch Changes
+
+- 479431ab: feat(BottomNav): remove tap animation
+
+## 11.33.0
+
+### Minor Changes
+
+- e35355af: feat(Table): add hover actions support on `TableRow`
+
+## 11.32.0
+
+### Minor Changes
+
+- a4a61681: feat(blade): revamped top-nav component
+
+  > NOTE:
+  > This might be a breaking change for you, if your project uses the older deprecated TopNav.
+
+## 11.31.2
+
+### Patch Changes
+
+- eef992bd: feat(blade): support test id for table row
+
+## 11.31.1
+
+### Patch Changes
+
+- 94b69155: fix(blade): set isDisabled to checkbox for disabled table rows [DSSUP-157]
+
+  Changed the visual styling of disabled checkbox to have 'not-allowed' cursor.
+
+## 11.31.0
+
+### Minor Changes
+
+- 234f1083: feat(Amount): add support for negative amount
+  fix(PhoneNumberInput): PhoneNumber input compatibility issues with i18nify
+
+  > [!NOTE]
+  >
+  > Consumers should upgrade to latest version of `@razorpay/i18nify-js` and `@razorpay/i18nify-react` for support of negative amount
+
+## 11.30.5
+
+### Patch Changes
+
+- 9d4f9b85: feat(blade): add height & styled props to carousel
+
+## 11.30.4
+
+### Patch Changes
+
+- 68e0ec53: fix(blade): Table cell text truncation
+
+## 11.30.3
+
+### Patch Changes
+
+- 98482ca9: fix(blade): interactive card cursor
+
+## 11.30.2
+
+### Patch Changes
+
+- 2f8a5029: fix(BaseHeader): Handle word break on single word. Fixes for AccordionItemHeader, DropdownHeader, etc
+
+## 11.30.1
+
+### Patch Changes
+
+- c050c1d9: fix: AccordionItemHeader to take full width
+
+## 11.30.0
+
+### Minor Changes
+
+- 6e059a68: feat: fix datepicker range selection bug & add onApply handler
+
+### Patch Changes
+
+- 98770d68: fix(Input): required necessity indicator label break
+- 3c31990d: feat(Table): add `defaultSelectedIds` prop
+
+## 11.29.0
+
+### Minor Changes
+
+- eaa75c64: feat(ActionList): add ActionListItemAvatar component for leading prop
+
+### Patch Changes
+
+- c6f8bc72: fix(blade): support overriding tooltip interactive wrapper display prop
+
+## 11.28.2
+
+### Patch Changes
+
+- 12f30712: fix(input): change `wordBreak` behaviour of input hint text & fix alignment
+- 601cedc8: feat(StepItem): add `isDisabled` prop to StepItem
+
+## 11.28.1
+
+### Patch Changes
+
+- 830c8744: fix(Table): table sticky column overlapping with relative cell
+
+## 11.28.0
+
+### Minor Changes
+
+- 95f19f49: feat: expose link negative/positive colors
+
+## 11.27.1
+
+### Patch Changes
+
+- 8ba3eab7: fix: datepicker necessityIndicator
+
+## 11.27.0
+
+### Minor Changes
+
+- f036ef58: feat: add EqualsIcon
+
+## 11.26.1
+
+### Patch Changes
+
+- 5d7317ca: fix: remove default `rel` values
+
+  > [!NOTE]
+  >
+  > While its non-ui-breaking change, you might want to add `rel="noopener noreferrer"` to your Button if that is what you're expecting. This PR removes the defaults in-order to not break analytics that relies on referrer.
+
+- 4dcad016: fix: set min-width on Radio to avoid shrinking
+
+## 11.26.0
+
+### Minor Changes
+
+- f26cf80d: chore: expose brand colors
+- 39742907: feat(TableEditableCell): refactor TableEditableCell and add TableEditableDropdownCell
+
+### Patch Changes
+
+- e13023de: fix: table footer background color
+- fb58be12: fix: Spinner colors
+
+## 11.25.0
+
+### Minor Changes
+
+- 45ed9267: feat: add avatar addons, added new topAddon and bottomAddon props
+
+## 11.24.3
+
+### Patch Changes
+
+- 343d494d: fix(ActionListItem, MenuItem): truncate text without spaces and add htmlTitle
+
+## 11.24.2
+
+### Patch Changes
+
+- 733b9545: fix: change onRemove/onReupload params
+
 ## 11.24.1
 
 ### Patch Changes

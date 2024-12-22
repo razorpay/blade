@@ -1,37 +1,42 @@
-import type { DotNotationMotionStringToken } from '~utils/types';
 import type { Platform } from '~utils';
 import { makeBezier } from '~utils/makeBezier';
 
 type Duration = {
-  /** `70` milliseconds */
-  '2xquick': 70;
-  /** `150` milliseconds */
-  xquick: 150;
+  /** `80` milliseconds */
+  '2xquick': 80;
+  /** `160` milliseconds */
+  xquick: 160;
   /** `200` milliseconds */
   quick: 200;
-  /** `250` milliseconds */
-  moderate: 250;
-  /** `300` milliseconds */
-  xmoderate: 300;
-  /** `400` milliseconds */
-  gentle: 400;
-  /** `600` milliseconds */
-  xgentle: 600;
-  /** `900` milliseconds */
-  '2xgentle': 900;
+  /** `280` milliseconds */
+  moderate: 280;
+  /** `360` milliseconds */
+  xmoderate: 360;
+  /** `480` milliseconds */
+  gentle: 480;
+  /** `640` milliseconds */
+  xgentle: 640;
+  /** `960` milliseconds */
+  '2xgentle': 960;
 };
 
-type Delay = {
-  /** `70` milliseconds */
-  '2xshort': 70;
-  /** `120` milliseconds */
-  xshort: 120;
-  /** `180` milliseconds */
-  short: 180;
+export type Delay = {
+  /** `80` milliseconds */
+  '2xquick': 80;
+  /** `160` milliseconds */
+  xquick: 160;
+  /** `280` milliseconds */
+  moderate: 280;
+  /** `480` milliseconds */
+  gentle: 480;
+  /** `960` milliseconds */
+  xgentle: 960;
+  /** `2000` milliseconds */
+  long: 2000;
   /** `3000` milliseconds */
-  long: 3000;
+  xlong: 3000;
   /** `5000` milliseconds */
-  xlong: 5000;
+  '2xlong': 5000;
 };
 
 export type EasingFactoryFn = { factory: () => (value: number) => number }; // similar to EasingFactoryFn of `react-native-reanimated`
@@ -41,55 +46,68 @@ export type EasingType<Value extends string> = Platform.Select<{
 }>;
 
 type Easing = {
-  /** Easings for all standard animations*/
-  standard: {
-    /** `cubic-bezier(0.5, 0, 0.3, 1.5)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    attentive: EasingType<'cubic-bezier(0.5, 0, 0.3, 1.5)'>;
-    /** `cubic-bezier(0.3, 0, 0.2, 1)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    effective: EasingType<'cubic-bezier(0.3, 0, 0.2, 1)'>;
-    /** `cubic-bezier(0.5, 0, 0, 1)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    revealing: EasingType<'cubic-bezier(0.5, 0, 0, 1)'>;
-    /** `cubic-bezier(1, 0.5, 0, 0.5)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    wary: EasingType<'cubic-bezier(1, 0.5, 0, 0.5)'>;
-  };
-  /** Easings for all entrance animations*/
-  entrance: {
-    /** `cubic-bezier(0.5, 0, 0.3, 1.5)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    attentive: EasingType<'cubic-bezier(0.5, 0, 0.3, 1.5)'>;
-    /** `cubic-bezier(0, 0, 0.2, 1)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    effective: EasingType<'cubic-bezier(0, 0, 0.2, 1)'>;
-    /** `cubic-bezier(0, 0, 0, 1)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    revealing: EasingType<'cubic-bezier(0, 0, 0, 1)'>;
-  };
-  /** Easings for all exit animations*/
-  exit: {
-    /** `cubic-bezier(0.7, 0, 0.5, 1)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    attentive: EasingType<'cubic-bezier(0.7, 0, 0.5, 1)'>;
-    /** `cubic-bezier(0.17, 0, 1, 1)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    effective: EasingType<'cubic-bezier(0.17, 0, 1, 1)'>;
-    /** `cubic-bezier(0.5, 0, 1, 1)`
-     *
-     *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFactoryFn` for native */
-    revealing: EasingType<'cubic-bezier(0.5, 0, 1, 1)'>;
-  };
+  /**
+   * Linear Easing
+   *
+   * Use Case: Marquee, Progress Bar, etc
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
+  linear: EasingType<'cubic-bezier(0, 0, 0, 0)'>;
+
+  /**
+   * Entrance Animation Easing
+   *
+   * Use Case: Entry of modals, drawer, dropdown, etc
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
+  entrance: EasingType<'cubic-bezier(0, 0, 0.2, 1)'>;
+
+  /**
+   * Exit Animation Easing
+   *
+   * Use Case: Exit of modals, drawer, dropdown, etc
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
+  exit: EasingType<'cubic-bezier(0.17, 0, 1, 1)'>;
+
+  /**
+   * Standard Easing
+   *
+   * Use Case: Morph
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
+  standard: EasingType<'cubic-bezier(0.3, 0, 0.2, 1)'>;
+
+  /**
+   * Emphasized Easing
+   *
+   * Use Case: Hover states of interactive items
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
+  emphasized: EasingType<'cubic-bezier(0.5, 0, 0, 1)'>;
+
+  /**
+   * Overshoot Easing
+   *
+   * Use Case: Toast notifications
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
+  overshoot: EasingType<'cubic-bezier(0.5, 0, 0.3, 1.5)'>;
+
+  /**
+   * Error Easing
+   *
+   * Use Case: Error States
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
+  shake: EasingType<'cubic-bezier(1, 0.5, 0, 0.5)'>;
 };
 
 export type Motion = Readonly<{
@@ -98,47 +116,41 @@ export type Motion = Readonly<{
   easing: Easing;
 }>;
 
-export type EasingString = `easing.${DotNotationMotionStringToken<Easing>}`;
+export type EasingString = `easing.${keyof Easing}`;
 export type DurationString = `duration.${keyof Duration}`;
 export type DelayString = `delay.${keyof Delay}`;
 
 const delay: Delay = {
-  '2xshort': 70,
-  xshort: 120,
-  short: 180,
-  long: 3000,
-  xlong: 5000,
+  '2xquick': 80,
+  xquick: 160,
+  moderate: 280,
+  gentle: 480,
+  xgentle: 960,
+  long: 2000,
+  xlong: 3000,
+  '2xlong': 5000,
 };
 
 const duration: Duration = {
-  '2xquick': 70,
-  xquick: 150,
+  '2xquick': 80,
+  xquick: 160,
   quick: 200,
-  moderate: 250,
-  xmoderate: 300,
-  gentle: 400,
-  xgentle: 600,
-  '2xgentle': 900,
+  moderate: 280,
+  xmoderate: 360,
+  gentle: 480,
+  xgentle: 640,
+  '2xgentle': 960,
 };
 
 /* makeBezier returns a string of `cubic-bezier()` for web & a react-native-reanimated Easing Function of type `EasingFactoryFn` for native */
 const easing: Easing = {
-  standard: {
-    attentive: makeBezier(0.5, 0, 0.3, 1.5),
-    effective: makeBezier(0.3, 0, 0.2, 1),
-    revealing: makeBezier(0.5, 0, 0, 1),
-    wary: makeBezier(1, 0.5, 0, 0.5),
-  },
-  entrance: {
-    attentive: makeBezier(0.5, 0, 0.3, 1.5),
-    effective: makeBezier(0, 0, 0.2, 1),
-    revealing: makeBezier(0, 0, 0, 1),
-  },
-  exit: {
-    attentive: makeBezier(0.7, 0, 0.5, 1),
-    effective: makeBezier(0.17, 0, 1, 1),
-    revealing: makeBezier(0.5, 0, 1, 1),
-  },
+  linear: makeBezier(0, 0, 0, 0),
+  entrance: makeBezier(0, 0, 0.2, 1),
+  exit: makeBezier(0.17, 0, 1, 1),
+  standard: makeBezier(0.3, 0, 0.2, 1),
+  emphasized: makeBezier(0.5, 0, 0, 1),
+  overshoot: makeBezier(0.5, 0, 0.3, 1.5),
+  shake: makeBezier(1, 0.5, 0, 0.5),
 };
 
 export const motion: Motion = {

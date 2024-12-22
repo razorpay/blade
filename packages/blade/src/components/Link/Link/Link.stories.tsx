@@ -27,7 +27,7 @@ const Page = (): ReactElement => {
         {`
           import { Link } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               <Link 
                 href="https://razorpay.com" 
@@ -169,6 +169,16 @@ const LinkColorsTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = ''
       </BaseBox>
       <BaseBox padding="spacing.2">
         <LinkComponent {...args} color="neutral">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="negative">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="positive">
           {children}
         </LinkComponent>
       </BaseBox>

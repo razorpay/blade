@@ -4,6 +4,7 @@ import type { ActionListProps } from './ActionList';
 import { ActionList as ActionListComponent } from './ActionList';
 import {
   ActionListItem,
+  ActionListItemAvatar,
   ActionListItemBadge,
   ActionListItemBadgeGroup,
   ActionListItemIcon,
@@ -49,7 +50,7 @@ const Page = (): React.ReactElement => {
               Button 
           } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
               return (
                   <Box backgroundColor="surface.background.gray.intense">
                   <ActionList>
@@ -235,13 +236,15 @@ ActionListWithSections.parameters = {
 const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.gray.intense">
+      <Box backgroundColor="surface.background.gray.intense" maxWidth="300px">
         <ActionListComponent>
           <ActionListSection title="Account">
             <ActionListItem
               title="Profile"
               value="profile"
-              leading={<ActionListItemIcon icon={UserIcon} />}
+              leading={
+                <ActionListItemAvatar icon={UserIcon} color="primary" name="Saurabh Daware" />
+              }
             />
             <ActionListItem
               title="Credit"
@@ -278,6 +281,11 @@ const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = ()
                 <ActionListItemBadge>last updated: 2hr ago</ActionListItemBadge>
               </ActionListItemBadgeGroup>
             }
+          />
+          <ActionListItem
+            leading={<ActionListItemIcon icon={UserIcon} />}
+            title="saurabhdaware.razorpay@gmail.com"
+            value="email"
           />
           <ActionListItem
             leading={<ActionListItemIcon icon={LogOutIcon} />}

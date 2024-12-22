@@ -1,8 +1,11 @@
+import type React from 'react';
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type TableNode<Item> = Item & {
   id: Identifier;
@@ -46,7 +49,7 @@ type TableHeaderRowProps = {
    * The default value is `normal`.
    **/
   rowDensity?: TableProps<unknown>['rowDensity'];
-};
+} & DataAnalyticsAttribute;
 
 type TableHeaderCellProps = {
   /**
@@ -59,7 +62,9 @@ type TableHeaderCellProps = {
    * Sorting is enabled only for columns whose key is present in sortableColumns prop of Table.
    **/
   headerKey?: string;
-};
+
+  _hasPadding?: boolean;
+} & DataAnalyticsAttribute;
 
 type TableProps<Item> = {
   /**
@@ -184,7 +189,12 @@ type TableProps<Item> = {
    * The showBorderedCells prop determines whether the table should have bordered cells or not.
    **/
   showBorderedCells?: boolean;
-} & StyledPropsBlade;
+  /**
+   * An array of default selected row ids. This will be used to set the initial selected rows.
+   */
+  defaultSelectedIds?: Identifier[];
+} & DataAnalyticsAttribute &
+  StyledPropsBlade;
 
 type Identifier = string | number;
 
@@ -199,7 +209,7 @@ type TableBodyProps = {
    * </TableBody>
    **/
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TableRowProps<Item> = {
   /**
@@ -236,7 +246,10 @@ type TableRowProps<Item> = {
    * Callback triggered when the row is clicked. It is called with the current row item prop.
    */
   onClick?: ({ item }: { item: TableNode<Item> }) => void;
-};
+
+  hoverActions?: React.ReactElement;
+} & TestID &
+  DataAnalyticsAttribute;
 
 type TableCellProps = {
   /**
@@ -251,7 +264,13 @@ type TableCellProps = {
    * </TableCell>
    **/
   children: React.ReactNode;
-};
+  /**
+   * Removes padding from CellWrapper
+   *
+   * @private
+   */
+  _hasPadding?: boolean;
+} & DataAnalyticsAttribute;
 
 type TableEditableCellProps = Pick<
   BaseInputProps,
@@ -283,6 +302,11 @@ type TableEditableCellProps = Pick<
   accessibilityLabel: NonNullable<BaseInputProps['accessibilityLabel']>;
 };
 
+type TableEditableDropdownCellProps = Pick<
+  DropdownProps,
+  'children' | 'isOpen' | 'onOpenChange' | 'selectionType' | 'zIndex'
+>;
+
 type TableFooterProps = {
   /**
    * The children of TableFooter should be TableFooterRow
@@ -294,7 +318,7 @@ type TableFooterProps = {
    * </TableFooter>
    **/
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TableFooterRowProps = {
   /**
@@ -307,14 +331,14 @@ type TableFooterRowProps = {
    * </TableFooter>
    **/
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TableFooterCellProps = {
   /**
    * The children of TableHeaderCell can be a string or a ReactNode.
    **/
   children: string | React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TablePaginationCommonProps = {
   /**
@@ -354,7 +378,7 @@ type TablePaginationCommonProps = {
    * @default false
    */
   showLabel?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type TablePaginationType = 'client' | 'server';
 
@@ -414,11 +438,12 @@ type TableToolbarProps = {
    * @default `${selectedRows.length} 'Items'} Selected`
    */
   selectedTitle?: string;
-};
+} & DataAnalyticsAttribute;
 
 type TableToolbarActionsProps = {
   children?: React.ReactNode;
-} & StyledPropsBlade;
+} & StyledPropsBlade &
+  DataAnalyticsAttribute;
 
 export type {
   TableProps,
@@ -432,6 +457,7 @@ export type {
   TableRowProps,
   TableCellProps,
   TableEditableCellProps,
+  TableEditableDropdownCellProps,
   TableFooterProps,
   TableFooterRowProps,
   TableFooterCellProps,

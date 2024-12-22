@@ -1,0 +1,37 @@
+{
+  "name": "handoff-widget",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Razorpay's official widgets - Figma Widget",
+  "scripts": {
+    "build:dev": "node build-dev-handoff.js",
+    "build:snowflake": "node build-snowflake-handoff.js",
+    "watch:dev": "npm run build:dev -- --watch",
+    "watch:snowflake": "npm run build:snowflake -- --watch",
+    "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
+    "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
+    "tsc": "tsc --noEmit -p widget-src"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@create-figma-plugin/utilities": "2.5.0",
+    "dotenv": "16.3.1",
+    "fs": "0.0.1-security",
+    "path": "0.12.7"
+  },
+  "devDependencies": {
+    "@figma/eslint-plugin-figma-plugins": "0.15.0",
+    "@figma/plugin-typings": "1.100.2",
+    "@figma/widget-typings": "1.9.2",
+    "@segment/analytics-next": "1.53.0",
+    "@types/node": "22.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "cross-env": "7.0.3",
+    "dotenv-cli": "7.4.2",
+    "esbuild": "0.24.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  }
+}

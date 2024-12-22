@@ -1,6 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import type { AvatarProps } from '../Avatar';
 import { Avatar as AvatarComponent } from '../Avatar';
+import { TrustedBadgeIcon } from '../TrustedBadgeIcon';
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -8,6 +9,8 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { BuildingIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
+import { Indicator } from '~components/Indicator';
+import { Text } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
   return (
@@ -22,7 +25,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Avatar } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Avatar name="Nitin Kumar" src="https://avatars.githubusercontent.com/u/46647141?v=4" />
           )
@@ -43,7 +46,7 @@ export default {
     ...getStyledPropsArgTypes(),
     icon: {
       name: 'icon',
-      type: 'select',
+      type: 'select' as string,
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
@@ -92,6 +95,20 @@ IconAvatars.args = {
   icon: BuildingIcon,
   variant: 'square',
 };
+
+const InteractiveNonInteractiveTemplate: StoryFn<typeof AvatarComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Text>We can make the Avatar interactive by adding an onClick or setting the href prop</Text>
+      <AvatarComponent href="https://razorpay.com" size="large" />
+      <Text>If we omit these props, the avatar will render as a plain div element</Text>
+      <AvatarComponent size="large" />
+    </Box>
+  );
+};
+
+export const InteractiveNonInteractive = InteractiveNonInteractiveTemplate.bind({});
+InteractiveNonInteractive.storyName = 'Interactive and NonInteractive Avatar';
 
 const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
@@ -185,3 +202,32 @@ const AvatarVariantsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
 
 export const AllVariants = AvatarVariantsTemplate.bind({});
 AllVariants.storyName = 'All Variants';
+
+const AvatarWithAddonsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
+  const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      {sizes.map((size) => (
+        <Box key={size} width="100%" display="flex" gap="spacing.5">
+          <AvatarComponent
+            {...args}
+            size={size}
+            topAddon={<Indicator color="negative" />}
+            bottomAddon={TrustedBadgeIcon}
+          />
+          <AvatarComponent
+            {...args}
+            variant="square"
+            size={size}
+            topAddon={<Indicator color="negative" />}
+            bottomAddon={TrustedBadgeIcon}
+          />
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export const WithAddons = AvatarWithAddonsTemplate.bind({});
+WithAddons.storyName = 'With Addons';

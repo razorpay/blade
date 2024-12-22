@@ -1,5 +1,1027 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Table /> should accept data-analytics-* props 1`] = `
+.c0.c0.c0.c0.c0 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: normal;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  pointer-events: auto;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
+  border: none;
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected .cell-wrapper-base,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+  height: 100%;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
+  background-color: transparent;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 td:last-child .cell-wrapper {
+  border-right: none;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 tr:first-child th {
+  border-top: none;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+  cursor: auto;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div {
+  background-color: hsla(211,20%,52%,0.12);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 th:last-child {
+  border-right: none;
+}
+
+@media screen and (min-width:320px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: auto;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="table"
+  >
+    <table
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
+      data-analytics-table="test"
+      data-blade-component="table"
+      data-table-library_table=""
+      role="table"
+      style="--data-table-library_grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr) minmax(0px, 1fr) minmax(0px, 1fr) minmax(0px, 1fr) minmax(0px, 1fr);"
+    >
+      <thead
+        class="c1 css-1a28xfp-Header"
+        data-blade-component="table-header"
+        role="rowgroup"
+      >
+        <tr
+          class="tr c2 tr-header css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
+          data-blade-component="table-header-row"
+          data-table-library_tr-header=""
+          role="rowheader"
+        >
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-analytics-table-header="table-header-cell-test"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Payment ID
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Amount
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Status
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Type
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Method
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Name
+              </p>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="c5 css-8eb0m3-Body"
+        data-analytics-body="table-body-test"
+        data-blade-component="table-body"
+        data-table-library_body=""
+      >
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp01
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  100
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp02
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  240
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp03
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  120
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    failed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    debit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp04
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  300
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-analytics-row="table-row-test"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-analytics-cell="table-cell-test"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp05
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  200
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
 exports[`<Table /> should render table 1`] = `
 .c0.c0.c0.c0.c0 {
   -webkit-flex: 1;
@@ -59,6 +1081,7 @@ exports[`<Table /> should render table 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -66,6 +1089,7 @@ exports[`<Table /> should render table 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -118,12 +1142,18 @@ exports[`<Table /> should render table 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 tr:last-child .cell-wrapper {
@@ -140,14 +1170,77 @@ exports[`<Table /> should render table 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
@@ -166,20 +1259,21 @@ exports[`<Table /> should render table 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
   min-height: 48px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -198,8 +1292,8 @@ exports[`<Table /> should render table 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -290,8 +1384,8 @@ exports[`<Table /> should render table 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -301,8 +1395,8 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 @media screen and (min-width:320px) {
@@ -367,7 +1461,8 @@ exports[`<Table /> should render table 1`] = `
       </div>
     </div>
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -385,7 +1480,7 @@ exports[`<Table /> should render table 1`] = `
           role="rowheader"
         >
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -403,7 +1498,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -421,7 +1516,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -439,7 +1534,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -457,7 +1552,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -475,7 +1570,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c8 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c8 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -500,6 +1595,7 @@ exports[`<Table /> should render table 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -664,6 +1760,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -828,6 +1925,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -992,6 +2090,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -1156,6 +2255,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c11 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -1499,6 +2599,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1506,6 +2607,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -1549,8 +2651,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1585,12 +2687,294 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c2.c2.c2.c2.c2 {
   opacity: 1;
   -webkit-transition: opacity 200ms;
   transition: opacity 200ms;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+  border: none;
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+  height: 100%;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18 {
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 0px;
+  padding-right: 0px;
+  min-height: 48px;
+  height: 100%;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .cell-wrapper {
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: hsla(211,20%,52%,0.18);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 td:last-child .cell-wrapper {
+  border-right: none;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 {
+  background-color: hsla(211,20%,52%,0.12);
+}
+
+.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 tr:last-child th {
+  border-bottom: none;
+}
+
+.c25.c25.c25.c25.c25 th {
+  border-right-width: 1px;
+  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-style: solid;
+}
+
+.c25.c25.c25.c25.c25 th:last-child {
+  border-right: none;
+}
+
+.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+}
+
+.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 > div {
+  background-color: hsla(211,20%,52%,0.12);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:first-child th {
+  border-top: none;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+  cursor: auto;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div {
+  background-color: hsla(211,20%,52%,0.12);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 48px;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6 th {
+  border-right-width: 1px;
+  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-style: solid;
+}
+
+.c6.c6.c6.c6.c6 th:last-child {
+  border-right: none;
 }
 
 .c23.c23.c23.c23.c23 {
@@ -1715,8 +3099,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1739,8 +3123,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1765,8 +3149,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   box-shadow: hsla(0,0%,100%,0) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1774,84 +3158,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 .c21.c21.c21.c21.c21 {
   border-radius: 0px;
   width: 100%;
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
-  border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
-  border-bottom: none;
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
-  height: 100%;
-  background-color: hsla(0,0%,100%,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 > div:first-child {
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: -4px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  background-color: transparent;
-  padding-left: 12px;
-  padding-right: 12px;
-  min-height: 48px;
-  height: 100%;
-  border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  background-color: transparent;
-  padding-left: 0px;
-  padding-right: 0px;
-  min-height: 48px;
-  height: 100%;
-  border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:focus-visible {
@@ -1863,143 +3169,10 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
-  background-color: transparent;
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .cell-wrapper {
-  border-right-width: 1px;
-  border-right-style: solid;
-  border-right-color: hsla(211,20%,52%,0.18);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 td:last-child .cell-wrapper {
-  border-right: none;
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: -4px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 {
-  background-color: hsla(211,20%,52%,0.12);
-}
-
-.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 tr:last-child th {
-  border-bottom: none;
-}
-
-.c25.c25.c25.c25.c25 th {
-  border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
-  border-right-style: solid;
-}
-
-.c25.c25.c25.c25.c25 th:last-child {
-  border-right: none;
-}
-
-.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 {
-  height: 100%;
-  background-color: hsla(0,0%,100%,1);
-  border-bottom-width: 1px;
-  border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-  border-top-style: solid;
-}
-
-.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 > div {
-  background-color: hsla(211,20%,52%,0.12);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  height: 100%;
-  padding-left: 12px;
-  padding-right: 12px;
-  min-height: 48px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:first-child th {
-  border-top: none;
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
-  height: 100%;
-  background-color: hsla(0,0%,100%,1);
-  border-bottom-width: 1px;
-  border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-  border-top-style: solid;
-  cursor: auto;
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div {
-  background-color: hsla(211,20%,52%,0.12);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  padding-left: 12px;
-  padding-right: 12px;
-  min-height: 48px;
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: -4px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6 th {
-  border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
-  border-right-style: solid;
-}
-
-.c6.c6.c6.c6.c6 th:last-child {
-  border-right: none;
 }
 
 @media screen and (min-width:320px) {
@@ -2086,7 +3259,8 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
       </div>
     </div>
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -2104,7 +3278,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
           role="rowheader"
         >
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2122,7 +3296,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2140,7 +3314,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2158,7 +3332,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2176,7 +3350,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2194,7 +3368,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -2219,6 +3393,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -2256,7 +3431,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
-            rowdensity="normal"
           >
             <div>
               <div
@@ -2419,6 +3593,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -2456,7 +3631,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
-            rowdensity="normal"
           >
             <div>
               <div
@@ -2764,6 +3938,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -2771,6 +3946,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -2806,12 +3982,18 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:last-child .cell-wrapper {
@@ -2828,14 +4010,77 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -2854,20 +4099,21 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
   min-height: 60px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -2886,8 +4132,8 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2978,8 +4224,8 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -3024,7 +4270,8 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -3042,7 +4289,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
           role="rowheader"
         >
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3060,7 +4307,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3078,7 +4325,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3096,7 +4343,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3114,7 +4361,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3132,7 +4379,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3157,6 +4404,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -3321,6 +4569,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -3630,6 +4879,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -3637,6 +4887,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -3672,12 +4923,18 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:last-child .cell-wrapper {
@@ -3694,14 +4951,77 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -3720,20 +5040,21 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
   min-height: 36px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -3752,8 +5073,8 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -3844,8 +5165,8 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -3890,7 +5211,8 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -3908,7 +5230,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
           role="rowheader"
         >
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3926,7 +5248,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3944,7 +5266,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3962,7 +5284,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3980,7 +5302,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -3998,7 +5320,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4023,6 +5345,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -4187,6 +5510,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -4513,8 +5837,8 @@ exports[`<Table /> should render table with isLoading 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -4525,6 +5849,7 @@ exports[`<Table /> should render table with isLoading 1`] = `
     <div
       class=""
       data-blade-component="spinner"
+      data-testid="table-spinner"
     >
       <div
         aria-label="Loading Table"
@@ -4548,18 +5873,18 @@ exports[`<Table /> should render table with isLoading 1`] = `
             <path
               d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 29%, 26%, 1)"
+              fill="hsla(211, 26%, 34%, 1)"
               fill-opacity="0.2"
             />
             <path
               d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 29%, 26%, 1)"
+              fill="hsla(211, 26%, 34%, 1)"
             />
             <path
               d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 29%, 26%, 1)"
+              fill="hsla(211, 26%, 34%, 1)"
             />
           </svg>
         </div>
@@ -4628,6 +5953,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -4635,6 +5961,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -4647,8 +5974,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -4683,6 +6010,12 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -4693,8 +6026,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
@@ -4711,14 +6044,77 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
@@ -4737,20 +6133,21 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
   min-height: 48px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -4769,8 +6166,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -4861,8 +6258,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -4955,7 +6352,8 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
       </div>
     </div>
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -4973,7 +6371,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
           role="rowheader"
         >
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4991,7 +6389,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5009,7 +6407,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5027,7 +6425,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5045,7 +6443,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5063,7 +6461,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             </div>
           </th>
           <th
-            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5088,6 +6486,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -5252,6 +6651,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -5561,6 +6961,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -5568,6 +6969,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -5603,12 +7005,18 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:last-child .cell-wrapper {
@@ -5625,14 +7033,77 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 tr:nth-child(even) .cell-wrapper {
@@ -5659,20 +7130,21 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
   min-height: 48px;
   height: 100%;
+  width: 100%;
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
@@ -5688,8 +7160,8 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -5780,8 +7252,8 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -5826,7 +7298,8 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-8lcbdy-Table"
+      aria-multiselectable="false"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -5844,7 +7317,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
           role="rowheader"
         >
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5862,7 +7335,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5880,7 +7353,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5898,7 +7371,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5916,7 +7389,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5934,7 +7407,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             </div>
           </th>
           <th
-            class="th c3 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c3 css-1wcdrq7-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -5959,6 +7432,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -6123,6 +7597,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
@@ -6432,6 +7907,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  white-space: normal;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -6439,6 +7915,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
   pointer-events: auto;
 }
 
@@ -6474,6 +7951,12 @@ exports[`<Table /> should render table with sticky header, footer & first column
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 {
@@ -6482,8 +7965,8 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
   border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 tr:last-child .cell-wrapper {
@@ -6500,14 +7983,77 @@ exports[`<Table /> should render table with sticky header, footer & first column
   background-color: hsla(227,100%,59%,0.18);
 }
 
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.09);
 }
 
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(227,100%,59%,0.18);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
@@ -6526,20 +8072,21 @@ exports[`<Table /> should render table with sticky header, footer & first column
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
   padding-left: 12px;
   padding-right: 12px;
   min-height: 48px;
   height: 100%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
@@ -6558,8 +8105,8 @@ exports[`<Table /> should render table with sticky header, footer & first column
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -6650,8 +8197,8 @@ exports[`<Table /> should render table with sticky header, footer & first column
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -6696,7 +8243,8 @@ exports[`<Table /> should render table with sticky header, footer & first column
     data-blade-component="table"
   >
     <table
-      class="c1 css-j8ql1d-Table"
+      aria-multiselectable="false"
+      class="c1 css-3izxgm-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -6714,7 +8262,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           role="rowheader"
         >
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6732,7 +8280,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6750,7 +8298,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6768,7 +8316,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6786,7 +8334,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6804,7 +8352,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -6829,13 +8377,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
         data-table-library_body=""
       >
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6862,7 +8411,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6884,7 +8433,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6911,7 +8460,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6938,7 +8487,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6965,7 +8514,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -6993,13 +8542,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7026,7 +8576,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7048,7 +8598,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7075,7 +8625,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7102,7 +8652,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7129,7 +8679,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7157,13 +8707,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7190,7 +8741,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7212,7 +8763,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7239,7 +8790,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7266,7 +8817,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7293,7 +8844,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7321,13 +8872,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7354,7 +8906,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7376,7 +8928,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7403,7 +8955,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7430,7 +8982,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7457,7 +9009,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7485,13 +9037,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7518,7 +9071,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7540,7 +9093,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7567,7 +9120,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7594,7 +9147,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7621,7 +9174,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7649,13 +9202,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7682,7 +9236,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7704,7 +9258,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7731,7 +9285,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7758,7 +9312,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7785,7 +9339,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7813,13 +9367,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7846,7 +9401,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7868,7 +9423,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7895,7 +9450,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7922,7 +9477,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7949,7 +9504,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -7977,13 +9532,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8010,7 +9566,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8032,7 +9588,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8059,7 +9615,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8086,7 +9642,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8113,7 +9669,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8141,13 +9697,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8174,7 +9731,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8196,7 +9753,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8223,7 +9780,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8250,7 +9807,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8277,7 +9834,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8305,13 +9862,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
+          aria-selected="false"
           class="tr tr-body c7 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8338,7 +9896,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8360,7 +9918,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8387,7 +9945,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8414,7 +9972,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -8441,7 +9999,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </td>
           <td
-            class="td c8 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            class="td c8 css-gbagn9-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"

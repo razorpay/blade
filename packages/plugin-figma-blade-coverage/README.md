@@ -6,14 +6,9 @@ It calculates the coverage and puts a tiny coverage card on top of each frame wi
 
 ![blade-coverage-cover](https://github.com/razorpay/blade/assets/11384858/2e89d51f-a5f9-4733-ac15-006656336741)
 
-
-
 ## The Intro
+
 [![Watch the video]](https://github.com/razorpay/blade/assets/11384858/5fe0f3de-37c4-4967-9024-e798ea8ff0f0)
-
-
-
-
 
 <br/>
 
@@ -80,6 +75,32 @@ It excludes the following nodes from coverage calculation:
 - **Color Styles:** Number of color styles not used from Blade.
 
 <br/>
+
+## Local Development
+
+### Setup
+
+- Clone the Repository: `git clone https://github.com/razorpay/blade`
+- Install Dependencies: `yarn install`
+- Navigate to the Plugin Directory: `cd packages/plugin-figma-blade-coverage`
+- Start the Development Server: `yarn watch`
+- Open The Figma Desktop App:
+  - Go to `Plugins` -> `Development` -> `New Plugin`
+  - Click on `Click to choose a manifest.json file` and select the `manifest.json` file from the repo.
+  - The plugin will now be listed under **Development** section.
+
+### Running the Plugin
+
+- Open the Figma desktop app, create a new file and enable Blade library.
+- Import the components to be tested from the assets panel.
+- Import components to be tested from the assets panel.
+- Run the plugin: Go to `Plugins -> Development -> Blade Coverage`.
+
+### Getting Component IDs
+
+- We provide a utility script to get the component IDs from the Blade library.
+- Navigate to the `getComponentKeyToNameMap.ts` file.
+- Refer to the `getComponentKeyToNameMap`` function's JSDoc for detailed instructions on how to use it.
 
 ## TODO
 

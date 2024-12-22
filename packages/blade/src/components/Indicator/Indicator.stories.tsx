@@ -98,7 +98,7 @@ export const Composition: StoryFn<typeof IndicatorComponent> = ({ ...args }) => 
         {...args}
         position="absolute"
         top={isReactNative ? '-8px' : '-4px'}
-        right="-8px"
+        right="-4px"
         zIndex={10}
       />
       <Button>Get started</Button>

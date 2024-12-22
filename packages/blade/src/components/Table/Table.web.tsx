@@ -16,7 +16,7 @@ import { TableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import {
   checkboxCellWidth,
-  firstColumnStickyHeaderFooterZIndex,
+  firstColumnStickyZIndex,
   refreshWrapperZIndex,
   tableBackgroundColor,
   tablePagination,
@@ -40,6 +40,9 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAccessible } from '~utils/makeAccessible';
+import { useIsMobile } from '~utils/useIsMobile';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -109,9 +112,9 @@ const RefreshWrapper = styled(BaseBox)<{
     opacity: isRefreshSpinnerVisible ? 1 : 0,
     transition: `opacity ${makeMotionTime(theme.motion.duration.quick)} ${
       isRefreshSpinnerEntering
-        ? theme.motion.easing.entrance.effective
+        ? theme.motion.easing.entrance
         : isRefreshSpinnerExiting
-        ? theme.motion.easing.exit.effective
+        ? theme.motion.easing.exit
         : ''
     }`,
   };
@@ -137,10 +140,13 @@ const _Table = <Item,>({
   isLoading = false,
   isRefreshing = false,
   showBorderedCells = false,
-  ...styledProps
+  defaultSelectedIds = [],
+  ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
-  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
+  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
+    selectionType !== 'none' ? defaultSelectedIds : [],
+  );
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
@@ -149,9 +155,13 @@ const _Table = <Item,>({
   const [headerRowDensity, setHeaderRowDensity] = React.useState<TableHeaderRowProps['rowDensity']>(
     undefined,
   );
+  const [hasHoverActions, setHasHoverActions] = React.useState(false);
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
+
+  const isMobile = useIsMobile();
+  const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
 
   const {
     isEntering: isRefreshSpinnerEntering,
@@ -169,14 +179,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -186,14 +196,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -203,12 +213,14 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
+    z-index: ${firstColumnStickyZIndex} !important;
   }
   `
   }`
@@ -221,15 +233,19 @@ const _Table = <Item,>({
       theme.colors.surface.border.gray.muted
     };
     --data-table-library_grid-template-columns: ${
-      gridTemplateColumns ??
-      ` ${
-        selectionType === 'multiple' ? 'min-content' : ''
-      } repeat(${columnCount},minmax(100px, 1fr)) !important;`
+      gridTemplateColumns
+        ? `${gridTemplateColumns} ${hasHoverActions ? lastHoverActionsColWidth : ''}`
+        : ` ${
+            selectionType === 'multiple' ? 'min-content' : ''
+          } repeat(${columnCount},minmax(100px, 1fr)) ${
+            hasHoverActions ? lastHoverActionsColWidth : ''
+          } !important;`
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,
     HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
+    
     top: ${shouldHeaderBeSticky ? '0' : undefined};
     ${firstColumnStickyHeaderCellCSS}
     `,
@@ -262,6 +278,13 @@ const _Table = <Item,>({
     data,
     {
       onChange: onSelectChange,
+      state: {
+        ...(selectionType === 'multiple'
+          ? { ids: selectedRows }
+          : selectionType === 'single'
+          ? { id: selectedRows[0] }
+          : {}),
+      },
     },
     {
       clickType:
@@ -409,6 +432,8 @@ const _Table = <Item,>({
       headerRowDensity,
       setHeaderRowDensity,
       showBorderedCells,
+      hasHoverActions,
+      setHasHoverActions,
     }),
     [
       selectionType,
@@ -432,6 +457,8 @@ const _Table = <Item,>({
       headerRowDensity,
       setHeaderRowDensity,
       showBorderedCells,
+      hasHoverActions,
+      setHasHoverActions,
     ],
   );
 
@@ -444,16 +471,18 @@ const _Table = <Item,>({
           alignItems="center"
           justifyContent="center"
           height={height}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
+          {...makeAnalyticsAttribute(rest)}
         >
-          <Spinner accessibilityLabel="Loading Table" size="large" />
+          <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
         </BaseBox>
       ) : (
         <BaseBox
+          // ref={ref as never}
           flex={1}
           position="relative"
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
         >
           {isRefreshSpinnerMounted && (
@@ -486,7 +515,9 @@ const _Table = <Item,>({
               height,
             }}
             pagination={hasPagination ? paginationConfig : null}
+            {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
             {...metaAttribute({ name: MetaConstants.Table })}
+            {...makeAnalyticsAttribute(rest)}
           >
             {children}
           </StyledReactTable>

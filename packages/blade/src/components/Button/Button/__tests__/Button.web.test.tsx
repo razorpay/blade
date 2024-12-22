@@ -157,7 +157,7 @@ describe('<Button />', () => {
 
   it('should render button as link', () => {
     const { getByRole } = renderWithTheme(
-      <Button href="https://youtu.be/iPaBUhIsslA" target="_blank">
+      <Button href="https://youtu.be/iPaBUhIsslA" target="_blank" rel="noreferrer noopener">
         I am Anchor Tag!
       </Button>,
     );
@@ -174,5 +174,13 @@ describe('<Button />', () => {
       </Button>,
     );
     expect(getByRole('link')).toHaveAttribute('rel', 'noopener');
+  });
+  it('should support data-analytics attribute ', () => {
+    const buttonText = 'Pay Now';
+    const { getByRole } = renderWithTheme(
+      <Button data-analytics-button="pay-now">{buttonText}</Button>,
+    );
+    const button = getByRole('button');
+    expect(button).toHaveAttribute('data-analytics-button', 'pay-now');
   });
 });

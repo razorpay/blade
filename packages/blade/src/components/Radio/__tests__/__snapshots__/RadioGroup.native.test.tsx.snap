@@ -48,7 +48,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
-          flexWrap="wrap"
           gap="spacing.0"
           maxHeight="36px"
           style={
@@ -57,7 +56,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
-                "flexWrap": "wrap",
                 "gap": 0,
                 "maxHeight": 36,
               },
@@ -301,6 +299,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "minWidth": 16,
                             "position": "relative",
                             "width": 16,
                           },
@@ -471,6 +470,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "minWidth": 16,
                             "position": "relative",
                             "width": 16,
                           },
@@ -641,6 +641,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "minWidth": 16,
                             "position": "relative",
                             "width": 16,
                           },
@@ -812,7 +813,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
-          flexWrap="wrap"
           gap="spacing.0"
           maxHeight="36px"
           style={
@@ -821,7 +821,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
-                "flexWrap": "wrap",
                 "gap": 0,
                 "maxHeight": 36,
               },
@@ -1063,6 +1062,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "minWidth": 16,
                             "position": "relative",
                             "width": 16,
                           },
@@ -1233,6 +1233,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "minWidth": 16,
                             "position": "relative",
                             "width": 16,
                           },
@@ -1403,6 +1404,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "minWidth": 16,
                             "position": "relative",
                             "width": 16,
                           },

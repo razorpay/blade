@@ -4,10 +4,11 @@ import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
-import type { BladeElementRef } from '~utils/types';
+import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type IconButtonProps = {
   /**
@@ -43,13 +44,21 @@ type IconButtonProps = {
    * Sets tabindex property on button element
    */
   _tabIndex?: number;
-} & BladeCommonEvents &
+} & DataAnalyticsAttribute &
+  BladeCommonEvents &
   Platform.Select<{
     web: {
       onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+      /**
+       * This changes the hover interaction to highlight icon more
+       *
+       * **Only available on web currently**
+       */
+      isHighlighted?: boolean;
     };
     native: {
       onClick: (event: GestureResponderEvent) => void;
+      isHighlighted?: undefined;
     };
   }>;
 
@@ -73,7 +82,9 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     onPointerEnter,
     onTouchEnd,
     onTouchStart,
+    isHighlighted,
     _tabIndex,
+    ...rest
   },
   ref,
 ) => {
@@ -87,6 +98,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       tabIndex={_tabIndex}
       accessibilityLabel={accessibilityLabel}
       isDisabled={isDisabled}
+      isHighlighted={isHighlighted}
       onBlur={onBlur}
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}
@@ -95,6 +107,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       onPointerEnter={onPointerEnter}
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
+      {...makeAnalyticsAttribute(rest)}
     />
   );
 };

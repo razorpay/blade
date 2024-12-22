@@ -11,6 +11,7 @@ import { DocsContainer } from '@storybook/addon-docs';
 import React from 'react';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import './global.css';
+import { domMax, LazyMotion } from 'framer-motion';
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
@@ -50,7 +51,7 @@ export const parameters = {
       method: 'alphabetical',
       order: [
         'Guides',
-        ['Intro', 'Installation', 'Local Development', 'How to use?'],
+        ['Intro', 'Installation', 'Contributing', 'How to use?'],
         'Tokens',
         [
           'Colors',
@@ -73,6 +74,17 @@ export const parameters = {
         ],
         'Components',
         ['*', 'Interaction Tests', 'KitchenSink'],
+        'Motion',
+        [
+          'Introduction to Motion',
+          'Fade',
+          'Move',
+          'Slide',
+          '*',
+          'AnimateInteractions',
+          'Stagger',
+          'Recipes',
+        ],
         'Recipes',
       ],
     },
@@ -82,7 +94,7 @@ export const parameters = {
       console.log('----', context);
       const getThemeTokens = () => {
         if (context.store.globals.globals.brandColor) {
-          return createTheme({ brandColor: context.store.globals.globals.brandColor });
+          return createTheme({ brandColor: context.store.globals.globals.brandColor }).theme;
         }
         return bladeTheme;
       };
@@ -95,13 +107,15 @@ export const parameters = {
       }
       return (
         <DocsContainer context={context}>
-          <BladeProvider
-            key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
-            themeTokens={getThemeTokens()}
-            colorScheme={context.store.globals.globals.colorScheme}
-          >
-            {children}
-          </BladeProvider>
+          <LazyMotion strict features={domMax}>
+            <BladeProvider
+              key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.store.globals.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </LazyMotion>
         </DocsContainer>
       );
     },
@@ -147,7 +161,8 @@ const StoryCanvas = styled.div<{ context }>(
         context.kind.includes('/Carousel') ||
         context.kind.includes('/TopNav') ||
         context.kind.includes('/Examples') ||
-        context.kind.includes('/SideNav')
+        context.kind.includes('/SideNav') ||
+        context.kind.includes('/Recipes')
           ? '0rem'
           : '2rem'
       };
@@ -165,7 +180,7 @@ export const decorators = [
     toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
       if (context.globals.brandColor) {
-        return createTheme({ brandColor: context.globals.brandColor });
+        return createTheme({ brandColor: context.globals.brandColor }).theme;
       }
       return bladeTheme;
     };
@@ -180,15 +195,18 @@ export const decorators = [
     return (
       <ErrorBoundary>
         <GlobalStyle />
-        <BladeProvider
-          key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
-          themeTokens={getThemeTokens()}
-          colorScheme={context.globals.colorScheme}
-        >
-          <StoryCanvas context={context}>
-            <Story />
-          </StoryCanvas>
-        </BladeProvider>
+        {/* strict in LazyMotion will make sure we don't use excessive `motion` component in blade components and instead use light weight `m` */}
+        <LazyMotion strict features={domMax}>
+          <BladeProvider
+            key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+            themeTokens={getThemeTokens()}
+            colorScheme={context.globals.colorScheme}
+          >
+            <StoryCanvas context={context}>
+              <Story />
+            </StoryCanvas>
+          </BladeProvider>
+        </LazyMotion>
       </ErrorBoundary>
     );
   },
@@ -228,7 +246,6 @@ export const globalTypes = {
       showName: true,
     },
   },
-  // TODO: Rebranding - Uncomment this when we fix white-labeling
   brandColor: {
     name: 'Brand Color',
     description: 'Brand Color (You can pass any valid color to BladeProvider)',

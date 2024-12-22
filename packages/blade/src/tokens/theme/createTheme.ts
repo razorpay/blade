@@ -293,9 +293,13 @@ const getOnDarkOverrides = (
  * Creates a Blade Theme based on the custom brand color
  * @returns The Theme Tokens with the custom brand colors
  * @example
- * const theme = createTheme({ brandColor: '#19BEA2'})
+ * const { theme, brandColors } = createTheme({ brandColor: '#19BEA2'})
  **/
-export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTokens => {
+export const createTheme = ({
+  brandColor,
+}: {
+  brandColor: ColorInput;
+}): { theme: ThemeTokens; brandColors: ColorChromaticScale } => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
   // Get onLight overrides
   const brandedLightTheme = getOnLightOverrides(chromaticBrandColors);
@@ -317,5 +321,5 @@ export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTo
     },
   });
 
-  return brandedThemeTokens;
+  return { theme: brandedThemeTokens, brandColors: chromaticBrandColors };
 };

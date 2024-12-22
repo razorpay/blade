@@ -366,4 +366,38 @@ describe('Deprecated <Accordion />', () => {
     expect(getByRole('button', { name: button2 })).toHaveAttribute('aria-expanded', 'false');
     expect(getAllByRole('region', { hidden: true })[1]).toHaveAttribute('aria-hidden', 'true');
   });
+  it('should render data attributes with correct values', () => {
+    const { container } = renderWithTheme(
+      <Accordion data-analytics-accordion-name="razorpay-faq">
+        <AccordionItem data-analytics-accordion-item="first">
+          <AccordionItemHeader
+            data-analytics-accordion-header="setup route query"
+            title="How can I setup Route?"
+          />
+          <AccordionItemBody data-analytics-item-body="router query answer">
+            You can use Razorpay Route from the Dashboard or using APIs to transfer money to
+            customers. You may also check our docs for detailed instructions.
+          </AccordionItemBody>
+        </AccordionItem>
+      </Accordion>,
+    );
+
+    // Check presence and values of data attributes
+    expect(container.querySelector('[data-analytics-accordion-header]')).toHaveAttribute(
+      'data-analytics-accordion-header',
+      'setup route query',
+    );
+    expect(container.querySelector('[data-analytics-item-body]')).toHaveAttribute(
+      'data-analytics-item-body',
+      'router query answer',
+    );
+    expect(container.querySelector('[data-analytics-accordion-item]')).toHaveAttribute(
+      'data-analytics-accordion-item',
+      'first',
+    );
+    expect(container.querySelector('[data-analytics-accordion-name]')).toHaveAttribute(
+      'data-analytics-accordion-name',
+      'razorpay-faq',
+    );
+  });
 });

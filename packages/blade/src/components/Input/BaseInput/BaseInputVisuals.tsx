@@ -10,12 +10,14 @@ import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import { Tooltip } from '~components/Tooltip';
 import { Box } from '~components/Box';
+import { isReactNative } from '~utils';
 
 type InputVisuals = Pick<
   BaseInputProps,
   | 'leadingIcon'
   | 'prefix'
   | 'trailingInteractionElement'
+  | 'onTrailingInteractionElementClick'
   | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'
@@ -23,21 +25,22 @@ type InputVisuals = Pick<
   | 'validationState'
   | 'size'
   | 'trailingButton'
-  | 'isTableInputCell'
+  | 'showHintsAsTooltip'
   | 'errorText'
   | 'successText'
 > & {
   size: NonNullable<BaseInputProps['size']>;
 };
 
-const getVisualContainerStyles = (): Pick<
-  BaseBoxProps,
-  'display' | 'flexDirection' | 'alignItems' | 'alignSelf'
-> => ({
+const getVisualContainerStyles = ({
+  shouldStretchTrailingBox,
+}: {
+  shouldStretchTrailingBox?: boolean;
+} = {}): Pick<BaseBoxProps, 'display' | 'flexDirection' | 'alignItems' | 'alignSelf'> => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  alignSelf: 'center',
+  alignSelf: shouldStretchTrailingBox ? 'stretch' : 'center',
 });
 
 const trailingIconColor: Record<NonNullable<InputVisuals['validationState']>, IconColors> = {
@@ -201,16 +204,16 @@ const ValidationIconTooltip = ({
   validationState,
   errorText,
   successText,
-  isTableInputCell,
+  showHintsAsTooltip,
 }: {
   children: ReactElement;
   validationState: BaseInputProps['validationState'];
   errorText: BaseInputProps['errorText'];
   successText: BaseInputProps['errorText'];
-  isTableInputCell: BaseInputProps['isTableInputCell'];
+  showHintsAsTooltip: BaseInputProps['showHintsAsTooltip'];
 }) => {
   if (
-    (isTableInputCell && validationState === 'error' && errorText) ||
+    (showHintsAsTooltip && validationState === 'error' && errorText) ||
     (validationState === 'success' && successText)
   ) {
     return (
@@ -229,13 +232,14 @@ export const BaseInputVisuals = ({
   leadingIcon: LeadingIcon,
   prefix,
   trailingInteractionElement,
+  onTrailingInteractionElementClick,
   leadingInteractionElement,
   suffix,
   trailingIcon: TrailingIcon,
   isDisabled,
   validationState = 'none',
   size,
-  isTableInputCell,
+  showHintsAsTooltip,
   errorText,
   successText,
   trailingButton: TrailingButton,
@@ -316,20 +320,33 @@ export const BaseInputVisuals = ({
 
   if (hasTrailingVisuals) {
     return (
-      <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
+      <BaseBox
+        {...getVisualContainerStyles({
+          shouldStretchTrailingBox:
+            hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick),
+        })}
+      >
         {hasTrailingInteractionElement ? (
           <BaseBox
-            paddingRight={getInteractionElementStyles({
-              hasTrailingIcon,
-              hasTrailingInteractionElement,
-              hasSuffix,
-              hasTrailingButton,
+            {...getVisualContainerStyles({
+              shouldStretchTrailingBox:
+                hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick),
             })}
-            display="flex"
-            alignItems="stretch"
-            alignSelf="stretch"
           >
-            {trailingInteractionElement}
+            <BaseBox
+              paddingRight={getInteractionElementStyles({
+                hasTrailingIcon,
+                hasTrailingInteractionElement,
+                hasSuffix,
+                hasTrailingButton,
+              })}
+              display="flex"
+              alignItems="stretch"
+              alignSelf="stretch"
+              {...(!isReactNative() && { onClick: onTrailingInteractionElementClick })}
+            >
+              {trailingInteractionElement}
+            </BaseBox>
           </BaseBox>
         ) : null}
         {hasSuffix ? (
@@ -352,7 +369,7 @@ export const BaseInputVisuals = ({
             {...getTrailingIconStyles({ hasTrailingIcon, hasTrailingButton })}
           >
             <ValidationIconTooltip
-              isTableInputCell={isTableInputCell}
+              showHintsAsTooltip={showHintsAsTooltip}
               errorText={errorText}
               successText={successText}
               validationState={validationState}

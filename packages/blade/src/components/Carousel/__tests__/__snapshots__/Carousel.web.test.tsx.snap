@@ -11,8 +11,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -28,8 +28,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -44,8 +44,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -61,8 +61,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -94,6 +94,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  height: 100%;
   width: 100%;
   gap: 12px;
 }
@@ -162,8 +163,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   align-self: center;
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
@@ -179,8 +180,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(0,0%,0%,0.72);
@@ -194,6 +195,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 
 .c3.c3.c3.c3.c3 {
   width: 100%;
+  height: 100%;
   overflow-x: scroll;
   display: -webkit-box;
   display: -webkit-flex;
@@ -234,8 +236,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   top: 0;
   width: 100px;
   height: 100%;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
@@ -252,8 +254,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   top: 0;
   width: 100px;
   height: 100%;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
@@ -308,7 +310,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-15-carousel-item-0"
+          id="carousel-16-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -325,7 +327,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-15-carousel-item-1"
+          id="carousel-16-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -376,7 +378,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-15-carousel-item-0"
+          aria-controls="carousel-16-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c9"
@@ -384,7 +386,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-15-carousel-item-1"
+          aria-controls="carousel-16-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c10"
@@ -431,8 +433,8 @@ exports[`Carousel Snapshots should render 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -448,8 +450,8 @@ exports[`Carousel Snapshots should render 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -464,8 +466,8 @@ exports[`Carousel Snapshots should render 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -481,8 +483,8 @@ exports[`Carousel Snapshots should render 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -514,6 +516,7 @@ exports[`Carousel Snapshots should render 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  height: 100%;
   width: 100%;
   gap: 12px;
 }
@@ -578,8 +581,8 @@ exports[`Carousel Snapshots should render 1`] = `
   align-self: center;
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
@@ -595,8 +598,8 @@ exports[`Carousel Snapshots should render 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(0,0%,0%,0.72);
@@ -610,6 +613,7 @@ exports[`Carousel Snapshots should render 1`] = `
 
 .c3.c3.c3.c3.c3 {
   width: 100%;
+  height: 100%;
   overflow-x: scroll;
   display: -webkit-box;
   display: -webkit-flex;
@@ -688,7 +692,7 @@ exports[`Carousel Snapshots should render 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-5-carousel-item-0"
+          id="carousel-6-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -705,7 +709,7 @@ exports[`Carousel Snapshots should render 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-5-carousel-item-1"
+          id="carousel-6-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -752,7 +756,7 @@ exports[`Carousel Snapshots should render 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-5-carousel-item-0"
+          aria-controls="carousel-6-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c8"
@@ -760,7 +764,7 @@ exports[`Carousel Snapshots should render 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-5-carousel-item-1"
+          aria-controls="carousel-6-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c9"
@@ -807,8 +811,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -824,8 +828,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -840,8 +844,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -857,8 +861,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -890,6 +894,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  height: 100%;
   width: 100%;
   gap: 12px;
 }
@@ -945,8 +950,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   align-self: center;
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
@@ -962,8 +967,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(0,0%,0%,0.72);
@@ -977,6 +982,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 
 .c4.c4.c4.c4.c4 {
   width: 100%;
+  height: 100%;
   overflow-x: scroll;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1078,7 +1084,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           class=" c5"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-13-carousel-item-0"
+          id="carousel-14-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -1095,7 +1101,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           class=" c5"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-13-carousel-item-1"
+          id="carousel-14-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -1142,7 +1148,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
         role="tablist"
       >
         <button
-          aria-controls="carousel-13-carousel-item-0"
+          aria-controls="carousel-14-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c8"
@@ -1150,7 +1156,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           role="tab"
         />
         <button
-          aria-controls="carousel-13-carousel-item-1"
+          aria-controls="carousel-14-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c9"
@@ -1174,8 +1180,8 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1191,8 +1197,8 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1207,8 +1213,8 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1224,8 +1230,8 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1257,6 +1263,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  height: 100%;
   width: 100%;
   gap: 12px;
 }
@@ -1329,8 +1336,8 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   align-self: center;
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
@@ -1346,8 +1353,8 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(0,0%,0%,0.72);
@@ -1361,6 +1368,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 
 .c3.c3.c3.c3.c3 {
   width: 100%;
+  height: 100%;
   overflow-x: scroll;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1445,7 +1453,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           class="c4 c5"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-9-carousel-item-0"
+          id="carousel-10-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -1462,7 +1470,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           class="c4 c5"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-9-carousel-item-1"
+          id="carousel-10-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -1479,7 +1487,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           class="c4 c5"
           data-blade-component="base-box"
           data-slide-index="2"
-          id="carousel-9-carousel-item-2"
+          id="carousel-10-carousel-item-2"
           role="tabpanel"
         >
           <div>
@@ -1530,7 +1538,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-9-carousel-item-0"
+          aria-controls="carousel-10-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c10"
@@ -1538,7 +1546,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-9-carousel-item-1"
+          aria-controls="carousel-10-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c11"
@@ -1546,7 +1554,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-9-carousel-item-2"
+          aria-controls="carousel-10-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
           class="c11"
@@ -1593,8 +1601,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1610,8 +1618,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1626,8 +1634,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1643,8 +1651,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1676,6 +1684,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  height: 100%;
   width: 100%;
   gap: 12px;
 }
@@ -1744,8 +1753,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   align-self: center;
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
@@ -1761,8 +1770,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(0,0%,0%,0.72);
@@ -1776,6 +1785,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 
 .c3.c3.c3.c3.c3 {
   width: 100%;
+  height: 100%;
   overflow-x: scroll;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1816,8 +1826,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   top: 0;
   width: 100px;
   height: 100%;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
@@ -1834,8 +1844,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   top: 0;
   width: 100px;
   height: 100%;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
@@ -1890,7 +1900,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-11-carousel-item-0"
+          id="carousel-12-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -1907,7 +1917,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-11-carousel-item-1"
+          id="carousel-12-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -1924,7 +1934,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="2"
-          id="carousel-11-carousel-item-2"
+          id="carousel-12-carousel-item-2"
           role="tabpanel"
         >
           <div>
@@ -1975,7 +1985,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-11-carousel-item-0"
+          aria-controls="carousel-12-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c9"
@@ -1983,7 +1993,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-11-carousel-item-1"
+          aria-controls="carousel-12-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c10"
@@ -1991,7 +2001,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-11-carousel-item-2"
+          aria-controls="carousel-12-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
           class="c10"
@@ -2038,8 +2048,8 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2055,8 +2065,8 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2071,8 +2081,8 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2088,8 +2098,8 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2121,6 +2131,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  height: 100%;
   width: 100%;
   gap: 12px;
 }
@@ -2185,8 +2196,8 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   align-self: center;
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
@@ -2202,8 +2213,8 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(0,0%,0%,0.72);
@@ -2217,6 +2228,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 
 .c3.c3.c3.c3.c3 {
   width: 100%;
+  height: 100%;
   overflow-x: scroll;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2295,7 +2307,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-7-carousel-item-0"
+          id="carousel-8-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -2312,7 +2324,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-7-carousel-item-1"
+          id="carousel-8-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -2329,7 +2341,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="2"
-          id="carousel-7-carousel-item-2"
+          id="carousel-8-carousel-item-2"
           role="tabpanel"
         >
           <div>
@@ -2376,7 +2388,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-7-carousel-item-0"
+          aria-controls="carousel-8-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c8"
@@ -2384,7 +2396,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-7-carousel-item-2"
+          aria-controls="carousel-8-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
           class="c9"
