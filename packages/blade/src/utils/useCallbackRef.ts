@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useCallback, useInsertionEffect, useRef } from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+
+const useInsertionEffectFallback = useInsertionEffect || useIsomorphicLayoutEffect;
 
 /**
  * This hook is user-land implementation of the experimental `useEffectEvent` hook.
@@ -11,11 +14,9 @@ function useCallbackRef<Args extends unknown[], Return>(
   callback: ((...args: Args) => Return) | undefined,
   deps: React.DependencyList = [],
 ) {
-  const callbackRef = useRef<typeof callback>(() => {
-    throw new Error('Cannot call an event handler while rendering.');
-  });
+  const callbackRef = useRef<typeof callback>(callback);
 
-  useInsertionEffect(() => {
+  useInsertionEffectFallback(() => {
     callbackRef.current = callback;
   });
 
