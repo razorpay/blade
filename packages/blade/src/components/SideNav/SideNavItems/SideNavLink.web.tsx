@@ -117,13 +117,17 @@ const L3Trigger = ({
   target,
   titleSuffix,
   tooltip,
+  onClick,
 }: Pick<
   SideNavLinkProps,
-  'title' | 'icon' | 'as' | 'href' | 'titleSuffix' | 'tooltip' | 'target'
+  'title' | 'icon' | 'as' | 'href' | 'titleSuffix' | 'tooltip' | 'target' | 'onClick'
 >): React.ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
-  const toggleCollapse = (): void => onExpandChange(!isExpanded);
+  const toggleCollapse = (e: React.MouseEvent): void => {
+    onClick?.(e);
+    onExpandChange(!isExpanded);
+  };
   const iconProps = {
     size: 'medium',
     color: 'currentColor',
@@ -137,7 +141,7 @@ const L3Trigger = ({
           as={href ? as : 'button'}
           to={href}
           target={target}
-          onClick={toggleCollapse}
+          onClick={(e: React.MouseEvent) => toggleCollapse(e)}
           {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
         >
           <NavLinkIconTitle title={title} icon={icon} isL1Item={false} titleSuffix={titleSuffix} />
@@ -234,7 +238,14 @@ const SideNavLink = ({
           _dangerouslyDisableValidations={true}
           _shouldApplyWidthRestrictions={false}
         >
-          <L3Trigger title={title} icon={icon} as={as} href={href} titleSuffix={titleSuffix} />
+          <L3Trigger
+            title={title}
+            icon={icon}
+            as={as}
+            href={href}
+            titleSuffix={titleSuffix}
+            onClick={onClick}
+          />
           <CollapsibleBody width="100%" _hasMargin={false}>
             <Box position="relative">{children}</Box>
           </CollapsibleBody>
