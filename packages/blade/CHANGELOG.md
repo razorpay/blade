@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.0.2
+
+### Patch Changes
+
+- 95a58247: fix(blade): Add backwards compat for React17 - fallback for useInsertionEffect
+
 ## 12.0.1
 
 ### Patch Changes
