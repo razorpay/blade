@@ -16,18 +16,13 @@ While it helps our end-users for having consistent experience on "how to do thin
 
 ## What are patterns though?
 
-Patterns
-
 ## Component Changes
 
-- Searchable Dropdown
-- New Filter Chip component with support to be trigger of Dropdown and DatePicker
+- Enhancement: Searchable Dropdown
+- New Component: New Filter Chip component with support to be trigger of Dropdown and DatePicker
+- New Component / Quick filter card (TODO: see if existing card can be used)
 
 ## API
-
-### Rough API
-
-#### Mostly Controlled on Consumer
 
 ```jsx
 const tableDefaultData = [
@@ -42,7 +37,7 @@ const [filteredTableData, setFilteredTableData] = React.useState(tableDefaultDat
 const filterTable = () => {};
 
 <ListView>
-  <ListViewQuickActions
+  <ListViewFilterGroup
     quickFilters={[
       {
         title: 'All',
@@ -61,9 +56,7 @@ const filterTable = () => {};
         tableDefaultData.filter((tableData) => searchValue.includes(tableData[searchColumn])),
       );
     }}
-  />
-
-  <ListViewFilterGroup>
+  >
     <Dropdown>
       <ListViewFilter title="Status" />
       <DropdownOverlay>
@@ -79,7 +72,7 @@ const filterTable = () => {};
       <ListViewFilter title="Customer Email" />
       <MenuOverlay>
         <Box display="flex" gap="spacing.4">
-          <TextInput onChange={({ value }) => setEmailFilterText(value)} />
+          <TextInput type="email" onChange={({ value }) => setEmailFilterText(value)} />
           <Button
             icon={CheckIcon}
             onClick={() => {
@@ -97,6 +90,74 @@ const filterTable = () => {};
   <Table data={{ nodes: filteredTableData }} />
 </ListView>;
 ```
+
+### Alternate APIs
+
+#### Config-driven filters
+
+```jsx
+<ListView>
+  <ListViewFilterGroup
+    quickFilters={[
+      {
+        title: 'All',
+        onClick: () => setFilteredTableData(tableDefaultData),
+      },
+      {
+        title: 'Pending',
+        onClick: () =>
+          setFilteredTableData(
+            tableDefaultData.filter((tableData) => tableData.status === 'Pending'),
+          ),
+      },
+    ]}
+    filters={[
+      {
+        label: 'Status',
+        options: ['All', 'Pending', 'Completed'],
+        trigger: 'select-input',
+        onChange: ({ name, value }) => {
+          // filter on select
+        },
+      },
+      {
+        label: 'Customer Email',
+        trigger: 'text-input',
+        type: 'email',
+        onBlur: () => {
+          // filter on email change
+        },
+      },
+      {
+        label: 'Date',
+        trigger: 'date-range',
+        onChange: ({ name, value }) => {
+          // filter on date range
+        },
+      },
+    ]}
+    onSearch={(searchValue, searchColumn = 'name') => {
+      setFilteredTableData(
+        tableDefaultData.filter((tableData) => searchValue.includes(tableData[searchColumn])),
+      );
+    }}
+  />
+
+  <Table data={{ nodes: filteredTableData }} />
+</ListView>
+```
+
+This API is similar to above one except here we use defined config for adding filters
+
+##### Pros
+
+- Less verbose compared to using dropdown and menu inside ListViewFilterGroup
+
+##### Cons
+
+- Very strict API which might cause missing edge cases and rework on blade-side for every product change
+- Will have bundle of Dropdown, Menu, DatePicker, BottomSheet, etc even if that particular filter is not used
+- Less intuitive because it'll introduce new config. Compared to previous API where consumers will use filters using the components that they already know how to use.
 
 ## References
 
