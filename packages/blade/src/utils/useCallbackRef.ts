@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useCallback, useInsertionEffect, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
-const useInsertionEffectFallback = useInsertionEffect || useIsomorphicLayoutEffect;
+// Prevent webpack from importing this:
+// https://github.com/webpack/webpack/issues/14814#issuecomment-1536757985
+// https://github.com/radix-ui/primitives/issues/2796
+const useReactInsertionEffect = (React as any)[' useInsertionEffect '.trim().toString()];
+const useInsertionEffectFallback = useReactInsertionEffect || useIsomorphicLayoutEffect;
 
 /**
  * This hook is user-land implementation of the experimental `useEffectEvent` hook.
