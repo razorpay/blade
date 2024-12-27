@@ -16,6 +16,32 @@ While it helps our end-users for having consistent experience on "how to do thin
 
 ## What are patterns though?
 
+> 7. Start building your first patterns: This is the task that will never end. Patterns should always either reflect the truth about the product, or reflect the aspirational state of the product in the near future.
+>
+> ~ [Design System vs Pattern Libraries](https://www.uxpin.com/studio/blog/design-systems-vs-pattern-libraries-vs-style-guides-whats-difference/#:~:text=7.%20Start%20building%20your%20first%20patterns%3A%C2%A0%20This%20is%20the%20task%20that%20will%20never%20end.%20Patterns%20should%20always%20either%20reflect%20the%20truth%20about%20the%20product%2C%20or%20reflect%20the%20aspirational%20state%20of%20the%20product%20in%20the%20near%20future.)
+
+> "The elements of this language are entities called patterns. Each pattern describes a problem that occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over..."
+>
+> ~ Christopher Alexander, Author of a Pattern Language
+
+- [As per BBC](https://www.bbc.com/gel/guidelines/category/design-patterns), Accordion, Card, BottomNav are patterns
+- [As per GOV.UK](https://design-system.service.gov.uk/patterns/), Phone Number Confirmation Screen, Finding Service, Contact Support, etc are patterns
+- [Salesforce Design System](https://www.lightningdesignsystem.com/guidelines/builder/zoom/) on the other hand, calls it Design Guidelines instead of patterns and only has it as guidelines
+
+**Goals of Patterns**
+
+- ✅ To bring consistency in the UI
+- ✅ To simplify building and designing reusable patterns in UI
+
+**Goals of Templates**
+
+- ⚠️ To bring consistency in the UI
+- ✅ To simplify building and designing reusable patterns in UI
+
+### Patterns vs Templates
+
+### Patterns vs Components
+
 ## Component Changes
 
 - Enhancement: Searchable Dropdown
