@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.0.3
+
+### Patch Changes
+
+- 0b5dc72d: fix: interactive card selected borderRadius
+
 ## 12.0.2
 
 ### Patch Changes
