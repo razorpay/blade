@@ -10,6 +10,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { RefreshIcon, ShareIcon, DownloadIcon, ChevronDownIcon, PlusIcon } from '~components/Icons';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import { Tooltip } from '~components/Tooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -76,7 +77,9 @@ const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args)
   return (
     <Box display="flex" alignItems="center" justifyContent="center">
       <ButtonGroupComponent {...args}>
-        <Button icon={PlusIcon}>Payout</Button>
+        <Tooltip content="Create a new payout">
+          <Button icon={PlusIcon}>Payout</Button>
+        </Tooltip>
         <Dropdown>
           <DropdownButton icon={ChevronDownIcon} />
           <DropdownOverlay defaultPlacement="bottom-end">

@@ -116,6 +116,7 @@ type SideNavLinkProps = {
    * ```
    */
   tooltip?: Pick<TooltipProps, 'title' | 'content' | 'onOpenChange'>;
+  onClick?: (event: React.MouseEvent) => void;
 } & DataAnalyticsAttribute;
 
 type SideNavSectionProps = {

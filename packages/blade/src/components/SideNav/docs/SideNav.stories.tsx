@@ -149,7 +149,10 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
   );
 };
 
-type ItemsType = Pick<SideNavLinkProps, 'icon' | 'title' | 'href' | 'trailing' | 'tooltip'>;
+type ItemsType = Pick<
+  SideNavLinkProps,
+  'icon' | 'title' | 'href' | 'trailing' | 'tooltip' | 'onClick'
+>;
 type NavItemsJSONType = {
   type: 'section';
   title?: SideNavSectionProps['title'];

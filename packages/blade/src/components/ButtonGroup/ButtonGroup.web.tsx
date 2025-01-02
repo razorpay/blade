@@ -1,4 +1,3 @@
-import type { ReactElement } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import type { ButtonGroupProps } from './types';
@@ -13,10 +12,9 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { Theme } from '~components/BladeProvider';
-import { throwBladeError } from '~utils/logger';
-import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
 const getDividerColorToken = ({
   color,
@@ -74,6 +72,12 @@ const _ButtonGroup = (
     isFullWidth,
   };
 
+  useVerifyAllowedChildren({
+    allowedComponents: ['Button', 'Dropdown', 'Tooltip', 'Popover'],
+    componentName: 'ButtonGroup',
+    children,
+  });
+
   return (
     <ButtonGroupProvider value={contextValue}>
       <StyledButtonGroup
@@ -88,26 +92,6 @@ const _ButtonGroup = (
         role="group"
       >
         {React.Children.map(children, (child, index) => {
-          if (__DEV__) {
-            // throw error if child is not a button or dropdown with button trigger
-            /* eslint-disable no-restricted-properties */
-            if (
-              !isValidAllowedChildren(child, 'Button') &&
-              !(
-                isValidAllowedChildren(child, 'Dropdown') &&
-                (child as ReactElement).props.children.some((c: ReactElement) =>
-                  isValidAllowedChildren(c, 'DropdownButton'),
-                )
-              )
-            ) {
-              throwBladeError({
-                moduleName: 'ButtonGroup',
-                message: `Only "Button" or "Dropdown" component with Button trigger are allowed as children.`,
-              });
-            }
-            /* eslint-enable no-restricted-properties */
-          }
-
           return (
             <>
               {child}
