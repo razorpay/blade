@@ -34,16 +34,16 @@ By defining patterns, our goal is to bring consistent User Experience for our en
 
 But at the end, the way we build components, the way we create APIs won't change just because something is called as a pattern now.
 
-#### Lets put this definition on some of the patterns that we are building
+Lets put this definition on some of the patterns that we are building
 
-##### Pattern: List View
+#### Pattern: List View
 
 - **Components:**
   - QuickFilter
   - Filter
   - ListView (ListView can be built as parent component to control layout if we want to control layout otherwise be skipped)
 
-##### Pattern: Quick View
+#### Pattern: Quick View
 
 - **Components:**
   - StepGroup ✅
@@ -51,20 +51,22 @@ But at the end, the way we build components, the way we create APIs won't change
   - Drawer ✅
   - QuickView (QuickView can built as layout component to control layout of what is placed where)
 
-Whether we want to build layout components like QuickView, ListView depends on the pros and cons of controlling layout from design-system. That call is independent of "pattern" terminology and can be taken case-by-case basis for each pattern.
+### Layout Components
 
 "Layout component" is the term that is now used for components that don't have visual contribution to UI but decide which items is placed where. E.g. our TopNav can be called as layout component because it defines slots where TabNav and other items can be placed.
 
-## Pros and Cons of building Layout Components
+Whether we want to build layout components like QuickView, ListView depends on the pros and cons of controlling layout from design-system. That call is independent of "pattern" terminology and can be taken case-by-case basis for each pattern. E.g. it might make sense to control layout in ListView but not in QuickView.
 
-### Pros
+#### Pros and Cons of building Layout Components
+
+##### Pros
 
 - Layout components like ListView, QuickView give us (design system team) capability to define which item is placed where. E.g. it strictly enforces that SearchInput is always placed on right side of quick filters
 - Gives us control over responsiveness
 - Less verbose API for consumer
 - Consistent spacings and paddings on all pages
 
-## Cons
+##### Cons
 
 - Strict API so no flexibility over placing items somewhere else
 - Introduces new API
