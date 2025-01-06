@@ -1,3 +1,4 @@
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { ButtonProps } from '~components/Button/Button';
 import type { DataAnalyticsAttribute } from '~utils/types';
 
@@ -38,7 +39,8 @@ type ButtonGroupProps = {
    * Test ID for automation
    */
   testID?: string;
-} & DataAnalyticsAttribute;
+} & DataAnalyticsAttribute &
+  StyledPropsBlade;
 
 type StyledButtonGroupProps = Pick<
   ButtonGroupProps,

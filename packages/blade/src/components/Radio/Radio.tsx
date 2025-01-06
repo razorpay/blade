@@ -88,9 +88,9 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const isReactNative = getPlatformType() === 'react-native';
   const _size = groupProps.size ?? size;
 
-  const handleChange: OnChange = ({ isChecked, value }) => {
+  const handleChange: OnChange = ({ isChecked, value, event }) => {
     if (isChecked) {
-      groupProps?.state?.setValue(value!);
+      groupProps?.state?.setValue(value!, event);
     } else {
       groupProps?.state?.removeValue();
     }
