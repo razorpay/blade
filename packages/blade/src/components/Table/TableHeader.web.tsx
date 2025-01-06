@@ -130,6 +130,7 @@ const _TableHeaderCell = ({
   children,
   headerKey,
   _hasPadding = true,
+  textAlign,
   ...rest
 }: TableHeaderCellProps): React.ReactElement => {
   const {
@@ -158,7 +159,7 @@ const _TableHeaderCell = ({
       {...makeAnalyticsAttribute(rest)}
     >
       {isChildrenString ? (
-        <Text size="medium" weight="medium" color="surface.text.gray.normal">
+        <Text size="medium" weight="medium" color="surface.text.gray.normal" textAlign={textAlign}>
           {children}
         </Text>
       ) : (
