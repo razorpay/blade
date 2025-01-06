@@ -271,11 +271,6 @@ type TableCellProps = {
    **/
   textAlign?: 'left' | 'center' | 'right';
   /**
-   * The allowMultiline prop determines whether the table should allow multiline cells or not.
-   * The default value is `false`.
-   **/
-  allowMultiline?: boolean;
-  /**
    * Removes padding from CellWrapper
    *
    * @private

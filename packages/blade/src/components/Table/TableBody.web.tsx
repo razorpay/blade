@@ -257,8 +257,7 @@ export const CellWrapper = styled(BaseBox)<{
   showStripedRows?: boolean;
   hasPadding?: boolean;
   textAlign?: TableCellProps['textAlign'];
-  allowMultiline?: TableCellProps['allowMultiline'];
-}>(({ theme, $rowDensity, showStripedRows, hasPadding = true, textAlign, allowMultiline }) => {
+}>(({ theme, $rowDensity, showStripedRows, hasPadding = true, textAlign }) => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
@@ -275,7 +274,6 @@ export const CellWrapper = styled(BaseBox)<{
       height: '100%',
       width: '100%',
       justifyContent: textAlign,
-      whiteSpace: allowMultiline ? 'normal' : 'nowrap',
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
         borderBottomColor: getIn(theme.colors, tableRow.borderColor),
@@ -287,7 +285,6 @@ export const CellWrapper = styled(BaseBox)<{
 
 const _TableCell = ({
   children,
-  allowMultiline,
   textAlign,
   _hasPadding,
   ...rest
@@ -314,7 +311,6 @@ const _TableCell = ({
           hasPadding={_hasPadding}
           flex={1}
           textAlign={textAlign}
-          allowMultiline={allowMultiline}
           // when a direct string child is passed we want to disable pointer events
           // for custom cells components, consumers can handle pointer events themselves
           pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
