@@ -46,17 +46,15 @@ const Fade = ({ show, children, styles }: FadeProps) => {
 
   const duration = theme.motion.duration.xquick;
   const enter = css`
-    animation: ${scaleIn} ${makeMotionTime(duration)}
-      ${theme.motion.easing.entrance.effective as string};
+    animation: ${scaleIn} ${makeMotionTime(duration)} ${theme.motion.easing.entrance as string};
   `;
 
   const exit = css`
-    animation: ${fadeOut} ${makeMotionTime(duration)}
-      ${theme.motion.easing.exit.effective as string};
+    animation: ${fadeOut} ${makeMotionTime(duration)} ${theme.motion.easing.exit as string};
   `;
 
   // usePresence hook waits for the animation to finish before unmounting the component
-  // It's similar to framer-motions usePresence hook
+  // It's similar to motion/react's usePresence hook
   // https://www.framer.com/docs/animate-presence/#usepresence
   const { isMounted, isVisible } = usePresence(!!show, {
     transitionDuration: duration,

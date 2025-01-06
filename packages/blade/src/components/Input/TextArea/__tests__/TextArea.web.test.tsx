@@ -449,4 +449,13 @@ describe('<TextArea />', () => {
 
     expect(getByTestId('text-area-test-id')).toBeTruthy();
   });
+
+  it("should support adding data-analytics attribute to the textarea's container", () => {
+    const { getByLabelText, container } = renderWithTheme(
+      <TextArea label="Enter name" data-analytics-name="text-area" />,
+    );
+
+    expect(container).toMatchSnapshot();
+    expect(getByLabelText('Enter name')).toHaveAttribute('data-analytics-name', 'text-area');
+  });
 });

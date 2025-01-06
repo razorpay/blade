@@ -283,7 +283,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     isPressed={false}
                     minHeight="36px"
                     motionDuration="duration.xquick"
-                    motionEasing="easing.standard.effective"
+                    motionEasing="easing.standard"
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
@@ -1053,9 +1053,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     data-blade-component="box"
                     style={
                       [
-                        {},
+                        {
+                          "width": "100%",
+                        },
                       ]
                     }
+                    width="100%"
                   />
                 </View>
               </View>
@@ -1373,7 +1376,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     isPressed={false}
                     minHeight="36px"
                     motionDuration="duration.xquick"
-                    motionEasing="easing.standard.effective"
+                    motionEasing="easing.standard"
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}

@@ -175,4 +175,12 @@ describe('<Button />', () => {
     );
     expect(getByRole('link')).toHaveAttribute('rel', 'noopener');
   });
+  it('should support data-analytics attribute ', () => {
+    const buttonText = 'Pay Now';
+    const { getByRole } = renderWithTheme(
+      <Button data-analytics-button="pay-now">{buttonText}</Button>,
+    );
+    const button = getByRole('button');
+    expect(button).toHaveAttribute('data-analytics-button', 'pay-now');
+  });
 });

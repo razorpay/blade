@@ -10,8 +10,9 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CheckboxGroupProps = {
   /**
@@ -89,6 +90,7 @@ type CheckboxGroupProps = {
    */
   size?: 'small' | 'medium' | 'large';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const CheckboxGroup = ({
@@ -107,7 +109,7 @@ const CheckboxGroup = ({
   value,
   size = 'medium',
   testID,
-  ...styledProps
+  ...rest
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
     defaultValue,
@@ -132,12 +134,13 @@ const CheckboxGroup = ({
 
   return (
     <CheckboxGroupProvider value={contextValue}>
-      <BaseBox {...getStyledProps(styledProps)}>
+      <BaseBox {...getStyledProps(rest)}>
         <SelectorGroupField
           position={labelPosition}
           labelledBy={ids.labelId}
           componentName="checkbox-group"
           testID={testID}
+          {...makeAnalyticsAttribute(rest)}
         >
           {label ? (
             <FormLabel

@@ -22,6 +22,7 @@ import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -75,9 +76,14 @@ const StyledHeader = styled(Header)({
   },
 });
 
-const _TableHeader = ({ children }: TableHeaderRowProps): React.ReactElement => {
+const _TableHeader = ({ children, ...rest }: TableHeaderRowProps): React.ReactElement => {
   return (
-    <StyledHeader {...metaAttribute({ name: MetaConstants.TableHeader })}>{children}</StyledHeader>
+    <StyledHeader
+      {...metaAttribute({ name: MetaConstants.TableHeader })}
+      {...makeAnalyticsAttribute(rest)}
+    >
+      {children}
+    </StyledHeader>
   );
 };
 
@@ -89,7 +95,8 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $isSortable: boolean;
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
-}>(({ theme, $isSortable, $backgroundColor, $rowDensity }) => ({
+  $hasPadding: boolean;
+}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
@@ -107,15 +114,24 @@ const StyledHeaderCell = styled(HeaderCell)<{
       justifyContent: 'space-between',
       alignItems: 'center',
       height: '100%',
-      paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[$rowDensity])),
-      paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[$rowDensity])),
+      paddingLeft: $hasPadding
+        ? makeSpace(getIn(theme, tableRow.paddingLeft[$rowDensity]))
+        : undefined,
+      paddingRight: $hasPadding
+        ? makeSpace(getIn(theme, tableRow.paddingRight[$rowDensity]))
+        : undefined,
       minHeight: makeSize(getIn(size, tableRow.minHeight[$rowDensity])),
     },
     '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
   },
 }));
 
-const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
+const _TableHeaderCell = ({
+  children,
+  headerKey,
+  _hasPadding = true,
+  ...rest
+}: TableHeaderCellProps): React.ReactElement => {
   const {
     toggleSort,
     currentSortedState,
@@ -132,12 +148,14 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
       $isSortable={isSortable}
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}
+      $hasPadding={_hasPadding}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);
         }
       }}
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {isChildrenString ? (
         <Text size="medium" weight="medium" color="surface.text.gray.normal">
@@ -164,17 +182,24 @@ const TableHeaderCell = assignWithoutSideEffects(_TableHeaderCell, {
 
 const TableHeaderCellCheckbox = ({
   isChecked,
+  isDisabled,
   isIndeterminate,
   onChange,
 }: {
   isChecked: CheckboxProps['isChecked'];
+  isDisabled: CheckboxProps['isDisabled'];
   isIndeterminate?: CheckboxProps['isIndeterminate'];
   onChange: CheckboxProps['onChange'];
 }): React.ReactElement => {
   return (
     <TableHeaderCell headerKey="SELECT">
       <BaseBox display="flex" alignItems="center" justifyContent="center" flex={1}>
-        <Checkbox isChecked={isChecked} isIndeterminate={isIndeterminate} onChange={onChange} />
+        <Checkbox
+          isChecked={isChecked}
+          isDisabled={isDisabled}
+          isIndeterminate={isIndeterminate}
+          onChange={onChange}
+        />
       </BaseBox>
     </TableHeaderCell>
   );
@@ -195,18 +220,25 @@ const StyledHeaderRow = styled(HeaderRow)<{ $showBorderedCells: boolean }>(
   }),
 );
 
-const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.ReactElement => {
+const _TableHeaderRow = ({
+  children,
+  rowDensity,
+  ...rest
+}: TableHeaderRowProps): React.ReactElement => {
   const {
+    disabledRows,
     selectionType,
     selectedRows,
     totalItems,
     toggleAllRowsSelection,
     setHeaderRowDensity,
     showBorderedCells,
+    hasHoverActions,
   } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
   const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
+  const isDisabled = disabledRows && disabledRows.length === totalItems;
   if (rowDensity) {
     setHeaderRowDensity(rowDensity);
   }
@@ -214,16 +246,19 @@ const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.R
     <StyledHeaderRow
       role="rowheader"
       {...metaAttribute({ name: MetaConstants.TableHeaderRow })}
+      {...makeAnalyticsAttribute(rest)}
       $showBorderedCells={showBorderedCells}
     >
       {isMultiSelect && (
         <TableHeaderCellCheckbox
           isChecked={isAllSelected}
+          isDisabled={isDisabled}
           isIndeterminate={isIndeterminate}
           onChange={() => toggleAllRowsSelection()}
         />
       )}
       {children}
+      {hasHoverActions ? <TableHeaderCell _hasPadding={false}>Actions</TableHeaderCell> : null}
     </StyledHeaderRow>
   );
 };

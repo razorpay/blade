@@ -247,4 +247,14 @@ describe('<BaseButton />', () => {
     );
     await assertAccessible(container);
   });
+  it('should support passing data-analytics attribute', () => {
+    const buttonText = 'Pay Now';
+    const { getByRole } = renderWithTheme(
+      <BaseButton data-analytics-name="pay-now" onClick={jest.fn()}>
+        {buttonText}
+      </BaseButton>,
+    );
+    const button = getByRole('button');
+    expect(button).toHaveAttribute('data-analytics-name', 'pay-now');
+  });
 });

@@ -23,7 +23,7 @@ const Page = (): ReactElement => {
           import { useEffect, useState } from 'react';
           import { Spinner, Text } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             const [isLoading, setIsLoading] = useState(true);
 
             useEffect(() => {

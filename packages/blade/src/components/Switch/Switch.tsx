@@ -18,6 +18,8 @@ import type { BladeElementRef } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStyledProps } from '~components/Box/styledProps';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
   {
@@ -30,7 +32,8 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
     value,
     accessibilityLabel,
     testID,
-    ...styledProps
+    _motionMeta,
+    ...rest
   },
   ref,
 ): React.ReactElement => {
@@ -83,10 +86,12 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
 
   return (
     <BaseBox
+      ref={getOuterMotionRef({ _motionMeta, ref })}
       {...metaAttribute({ testID, name: MetaConstants.Switch })}
       // @ts-ignore on rn inline-block is not valid but type here will be `flex | inline-block`
       display={state.isReactNative ? 'flex' : 'inline-block'}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <SelectorLabel
         componentName={MetaConstants.SwitchLabel}
@@ -108,7 +113,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
       >
         <SelectorInput
           hoverTokens={switchHoverTokens}
-          ref={ref}
+          ref={getInnerMotionRef({ _motionMeta, ref })}
           isChecked={state.isChecked}
           isDisabled={isDisabled}
           hasError={false}

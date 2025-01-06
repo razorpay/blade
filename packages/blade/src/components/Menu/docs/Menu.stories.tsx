@@ -78,7 +78,7 @@ const Page = (): React.ReactElement => {
           UserIcon
         } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Box>
               <Menu>
@@ -170,7 +170,7 @@ type TemplateProps = MenuProps & { trigger: React.ReactElement };
 const accountsMenuOverlayContent = (
   <>
     <MenuHeader title="Saurabh Daware" subtitle="Admin" leading={<UserIcon />} />
-    <Box paddingY="spacing.4" paddingX="spacing.3">
+    <Box paddingBottom="spacing.4" paddingX="spacing.3">
       <Text display="block" size="medium" weight="semibold">
         Razorpay Pvt Ltd
       </Text>
@@ -182,7 +182,7 @@ const accountsMenuOverlayContent = (
     <Button variant="tertiary" isFullWidth size="xsmall">
       Switch Merchant
     </Button>
-    <MenuDivider marginTop="spacing.3" />
+    <MenuDivider marginY="spacing.3" />
     <MenuItem
       title="Enable Test Mode"
       leading={<TestIcon size="small" />}

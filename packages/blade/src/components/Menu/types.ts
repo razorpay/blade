@@ -7,7 +7,7 @@ import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BaseMenuItemProps } from '~components/BaseMenu/types';
 import type { BoxProps } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 // EXPOSED TYPES
 type MenuProps = {
@@ -108,13 +108,13 @@ type MenuItemProps = {
   _hasFocusInside?: boolean;
   _isMenuTrigger?: boolean;
   _isSubmenuOpen?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type MenuOverlayProps = {
   /**
    * JSX Slot for MenuItem or anything else
    */
-  children: React.ReactElement[] | React.ReactElement;
+  children: React.ReactElement[] | React.ReactElement | React.ReactNode;
 
   /**
    * zIndex override
@@ -142,13 +142,20 @@ type MenuOverlayProps = {
    * @private Internal Prop. Do not override or you'll be fired
    */
   _transitionStyle?: React.CSSProperties;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
-type MenuFooterProps = Pick<BaseFooterProps, 'children' | 'testID'>;
+type MenuFooterProps = Pick<BaseFooterProps, 'children' | 'testID' | keyof DataAnalyticsAttribute>;
 
 type MenuHeaderProps = Pick<
   BaseHeaderProps,
-  'title' | 'subtitle' | 'leading' | 'trailing' | 'titleSuffix' | 'testID'
+  | 'title'
+  | 'subtitle'
+  | 'leading'
+  | 'trailing'
+  | 'titleSuffix'
+  | 'testID'
+  | keyof DataAnalyticsAttribute
 >;
 
 // INTERNAL TYPES

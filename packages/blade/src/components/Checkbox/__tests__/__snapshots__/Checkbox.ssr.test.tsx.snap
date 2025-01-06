@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Checkbox /> should render checkbox with error validationState 1`] = `"<div id="root"><div data-blade-component="checkbox" class="BaseBox-bmPWx"><label data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="true" aria-disabled="false" aria-checked="true" aria-errormessage="checkbox-undefined-errortext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bJPbHG" checked=""/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 lgvKoe"><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:1;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0 klzUIs"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Remember password</p></div></div></label><div id="checkbox-undefined-errortext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span style="word-break:break-all" data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(4, 74%, 49%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><div data-blade-component="base-box" class="BaseBox-bmPWx eLBOzs"></div><span class="StyledBaseText-dVBfTO gvbiie" data-blade-component="text">This has to be checked</span></span></div></div></div>"`;
+exports[`<Checkbox /> should render checkbox with error validationState 1`] = `"<div id="root"><div data-blade-component="checkbox" class="BaseBox-bmPWx"><label style="cursor:pointer" data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="true" aria-disabled="false" aria-checked="true" aria-errormessage="checkbox-undefined-errortext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bBJvVp" checked=""/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 lgvKoe"><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:1;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0 GlLWj"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Remember password</p></div></div></label><div id="checkbox-undefined-errortext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span data-blade-component="base-box" class="BaseBox-bmPWx hnjoEU"><div data-blade-component="box" class="BaseBox-bmPWx gbqqUn"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 hARGwv"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(4, 74%, 49%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><span class="StyledBaseText-dVBfTO iYSZZz" data-blade-component="text">This has to be checked</span></span></div></div></div>"`;
 
 exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
 .c4.c4.c4.c4.c4 {
@@ -31,8 +31,12 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  -webkit-animation: byNIqG-450290765 150ms cubic-bezier(0,0,0.2,1);
-  animation: byNIqG-450290765 150ms cubic-bezier(0,0,0.2,1);
+  -webkit-animation: byNIqG-450290765 160ms cubic-bezier(0,0,0.2,1);
+  animation: byNIqG-450290765 160ms cubic-bezier(0,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11 {
+  display: block;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -71,14 +75,18 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .c10.c10.c10.c10.c10 {
-  margin-right: 4px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -98,7 +106,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -113,6 +121,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -146,8 +155,8 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -162,6 +171,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
     <label
       class="c0"
       data-blade-component="checkbox-label"
+      style="cursor:pointer"
     >
       <div
         class="c1"
@@ -193,7 +203,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
             >
               <svg
                 aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
+                class=""
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -219,7 +229,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
             >
               <svg
                 aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
+                class=""
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -261,41 +271,41 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
       <span
         class="c9"
         data-blade-component="base-box"
-        style="word-break:break-all"
       >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="12px"
-          viewBox="0 0 24 24"
-          width="12px"
-        >
-          <path
-            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-            data-blade-component="svg-path"
-            fill="hsla(4, 74%, 49%, 1)"
-          />
-          <path
-            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-            data-blade-component="svg-path"
-            fill="hsla(4, 74%, 49%, 1)"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-            data-blade-component="svg-path"
-            fill="hsla(4, 74%, 49%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
         <div
           class="c10"
-          data-blade-component="base-box"
-        />
+          data-blade-component="box"
+        >
+          <svg
+            aria-hidden="true"
+            class="c11"
+            data-blade-component="icon"
+            fill="none"
+            height="12px"
+            viewBox="0 0 24 24"
+            width="12px"
+          >
+            <path
+              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+              data-blade-component="svg-path"
+              fill="hsla(4, 74%, 49%, 1)"
+            />
+            <path
+              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+              data-blade-component="svg-path"
+              fill="hsla(4, 74%, 49%, 1)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+              data-blade-component="svg-path"
+              fill="hsla(4, 74%, 49%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
         <span
-          class="c11"
+          class="c12"
           data-blade-component="text"
         >
           This has to be checked

@@ -34,6 +34,9 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -41,6 +44,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   value,
   defaultValue,
   onChange,
+  onApply,
   presets,
   isOpen,
   defaultIsOpen,
@@ -63,13 +67,14 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   onPickerChange,
   zIndex = componentZIndices.popover,
   ...props
-}: DatePickerProps<Type> & StyledPropsBlade): React.ReactElement => {
+}: DatePickerProps<Type> & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
   const isSingle = _selectionType === 'single';
   const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
+  const referenceRef = React.useRef<HTMLButtonElement>(null);
 
   const [_picker, setPicker] = useControllableState<PickerType>({
     defaultValue: defaultPicker,
@@ -96,6 +101,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     defaultValue,
     onChange: (date) => {
       onChange?.(date as never);
+      fireNativeEvent(referenceRef, ['input']);
       if (isSingle) return;
       // sync selected preset with value
       setSelectedPreset(date as DatesRangeValue);
@@ -110,19 +116,38 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
 
   const currentDate = shiftTimezone('add', new Date());
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
+  const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
+  let applyButtonDisabled = !hasBothDatesSelected;
+  if (isSingle) {
+    applyButtonDisabled = !Boolean(controlledValue);
+  }
 
   const close = React.useCallback(() => {
     controllableSetIsOpen(() => false);
   }, [controllableSetIsOpen]);
 
   const handleApply = (): void => {
-    onChange?.(controlledValue);
-    setOldValue(controlledValue);
-    close();
+    if (isSingle) {
+      onChange?.(controlledValue);
+      fireNativeEvent(referenceRef, ['change']);
+      setOldValue(controlledValue);
+      onApply?.(controlledValue);
+      close();
+      return;
+    }
+    // only apply if both dates are selected
+    if (hasBothDatesSelected) {
+      onChange?.(controlledValue);
+      fireNativeEvent(referenceRef, ['change']);
+      setOldValue(controlledValue);
+      onApply?.(controlledValue);
+      close();
+    }
   };
 
   const handleCancel = (): void => {
     setControlledValue(oldValue);
+    fireNativeEvent(referenceRef, ['change']);
     setPickedDate(null);
     close();
   };
@@ -130,7 +155,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const isMobile = useIsMobile();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const titleId = useId('datepicker-title');
-  const referenceRef = React.useRef<HTMLButtonElement>(null);
   const {
     context,
     refs,
@@ -218,7 +242,13 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             forceRerender();
           }}
         />
-        {isMobile ? null : <CalendarFooter onApply={handleApply} onCancel={handleCancel} />}
+        {isMobile ? null : (
+          <CalendarFooter
+            isButtonDisabled={applyButtonDisabled}
+            onApply={handleApply}
+            onCancel={handleCancel}
+          />
+        )}
       </BaseBox>
     </>
   );
@@ -273,6 +303,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             validationState={validationState}
             autoFocus={autoFocus}
             necessityIndicator={necessityIndicator}
+            {...makeAnalyticsAttribute(props)}
           />
           {isMobile ? (
             <BottomSheet

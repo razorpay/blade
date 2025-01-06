@@ -1,6 +1,6 @@
 import type { Theme } from '~components/BladeProvider';
 import type { AccessibilityProps } from '~utils/makeAccessible/types';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
@@ -57,6 +57,7 @@ export type BaseTextProps = {
   numberOfLines?: number;
   componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code' | 'display';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 export type StyledBaseTextProps = Pick<

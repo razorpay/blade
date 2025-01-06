@@ -207,7 +207,7 @@ export default {
             {`
               import { AutoComplete, Dropdown, DropdownOverlay, ActionList, ActionListItem } from '@razorpay/blade/components';
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   // Only works inside Dropdown component
                   <Dropdown>

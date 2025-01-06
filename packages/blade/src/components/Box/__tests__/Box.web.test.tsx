@@ -71,7 +71,7 @@ describe('<Box />', () => {
       );
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(`
-        [Error: [Blade: Box]: Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
+        [Error: [Blade: Box]: Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, \`overlay.*\` and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
 
          Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
       `);
@@ -218,6 +218,14 @@ describe('<Box />', () => {
     const { container } = renderWithTheme(
       <Box borderColor="surface.border.gray.normal">I am Visible</Box>,
     );
+    expect(container).toMatchSnapshot();
+  });
+  it('should support passing data-analytics  attributes', () => {
+    const { container } = renderWithTheme(<Box data-analytics-name="demo" />);
+    expect(container).toMatchSnapshot();
+  });
+  it('should support passing data-analytics  attributes', () => {
+    const { container } = renderWithTheme(<Box data-analytics-name="section" as="section" />);
     expect(container).toMatchSnapshot();
   });
 });

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "jsxFactory": "figma.widget.h",
+    "jsxFragmentFactory": "figma.widget.Fragment",
+    "lib": ["DOM", "ES2020"],
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "strict": true,
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@figma", "node_modules/@types"],
+    "target": "ESNext"
+  },
+  "include": [
+    "components/**/*.tsx",
+    "dev-handoff-checklist/**/*.tsx",
+    "snowflake-handoff-checklist/**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
+}

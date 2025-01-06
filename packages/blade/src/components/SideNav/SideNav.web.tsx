@@ -19,6 +19,8 @@ import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const {
   COLLAPSED,
@@ -37,12 +39,12 @@ const MobileL1Container = styled(BaseBox)(() => {
 });
 
 const StyledL1Menu = styled(BaseBox)((props) => {
-  const moderate = makeMotionTime(props.theme.motion.duration.moderate);
-  const gentle = makeMotionTime(props.theme.motion.duration.gentle);
+  const quick = makeMotionTime(props.theme.motion.duration.quick);
+  const xmoderate = makeMotionTime(props.theme.motion.duration.xmoderate);
   const easing = props.theme.motion.easing;
 
-  const l1Expand = `width ${gentle} ${easing.entrance.revealing}`;
-  const l1Collapse = `width ${moderate} ${easing.exit.revealing}`;
+  const l1Expand = `width ${xmoderate} ${easing.entrance}`;
+  const l1Collapse = `width ${quick} ${easing.exit}`;
 
   return {
     width: '100%',
@@ -103,14 +105,10 @@ const getL1MenuClassName = ({
  * SideNav requires handling active state with React Router, Checkout Usage with React Router v6 at - [SideNav Documentation](https://blade.razorpay.com/?path=/docs/components-sidenav--docs)
  *
  */
-const SideNav = ({
-  children,
-  isOpen,
-  onDismiss,
-  banner,
-  testID,
-  ...styledProps
-}: SideNavProps): React.ReactElement => {
+const _SideNav = (
+  { children, isOpen, onDismiss, banner, testID, ...rest }: SideNavProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const timeoutIdsRef = React.useRef<NodeJS.Timeout[]>([]);
@@ -235,6 +233,7 @@ const SideNav = ({
         </>
       ) : (
         <BaseBox
+          ref={ref as never}
           position="fixed"
           backgroundColor="surface.background.gray.moderate"
           height="100%"
@@ -251,7 +250,8 @@ const SideNav = ({
             name: MetaConstants.SideNav,
             testID,
           })}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
         >
           {banner ? (
             <BaseBox
@@ -339,5 +339,7 @@ const SideNav = ({
     </SideNavContext.Provider>
   );
 };
+
+const SideNav = React.forwardRef(_SideNav);
 
 export { SideNav };

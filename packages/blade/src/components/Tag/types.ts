@@ -1,6 +1,6 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 
 type TagProps = {
   /**
@@ -52,6 +52,7 @@ type TagProps = {
    */
   _isTagInsideInput?: boolean;
 } & StyledPropsBlade &
+  DataAnalyticsAttribute &
   TestID;
 
 type TagsGroupProps = {

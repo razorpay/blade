@@ -430,15 +430,19 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'Menu',
-    status: 'in-development',
+    status: 'released',
     description:
       'Menu displays a list of actions on temporary surfaces. They allow users to action(s) from multiple options. They appear when users interact with a button, action, or other control.',
+    releasedIn: '11.22.0',
+    platform: 'web',
   },
   {
     name: 'TopNav',
-    status: 'in-development',
+    status: 'released',
     description:
       'TopNav is a horizontal navigation component that can be used to navigate between pages.',
+    releasedIn: '11.23.0',
+    platform: 'web',
   },
   {
     name: 'SideNav',
@@ -489,7 +493,7 @@ const componentData: ComponentStatusDataType = [
     description: 'A stepper component is used to indicate progress through a multi-step process.',
     platform: 'web',
     storybookLink: 'Components/StepGroup',
-    releasedIn: '11.5.0',
+    releasedIn: '11.15.0',
   },
   {
     name: 'ButtonGroup',

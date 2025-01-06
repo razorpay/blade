@@ -22,6 +22,8 @@ import {
   Box,
 } from '../../src/components';
 
+import MotionInstallation from '../../src/components/BaseMotion/docs/MotionInstallation.mdx';
+
 <Meta title="Guides/Installation" />
 
 # Installation
@@ -38,7 +40,7 @@ Before you install the package, make sure that you have performed the following 
   </ListItem>
 </List>
 
-<Accordion maxWidth="100%" variant="filled">
+<Accordion maxWidth="100%" variant="filled" defaultExpandedIndex={0}>
   <AccordionItem>
     <AccordionItemHeader><Text size="small">Razorpay Employees have to point @razorpay scope to GitHub Package Registry. Follow the steps below</Text></AccordionItemHeader>
     <AccordionItemBody>
@@ -77,7 +79,8 @@ Before you install the package, make sure that you have performed the following 
     <TabList>
       <TabItem value="basic">1. Basic Setup</TabItem>
       <TabItem value="fonts">2. Install Fonts</TabItem>
-      <TabItem value="ts">3. TypeScript</TabItem>
+      <TabItem value="motion">3. Setup Motion React</TabItem>
+      <TabItem value="ts">4. TypeScript</TabItem>
     </TabList>
   </Box>
   <TabPanel value="basic">
@@ -90,7 +93,7 @@ Before you install the package, make sure that you have performed the following 
         <Text>Blade has a few peer dependencies that you may already have installed in your project. If so, you can skip adding them again.</Text>
 
         ```shell
-        yarn add @razorpay/blade styled-components@5.3.11 @razorpay/i18nify-js @razorpay/i18nify-react
+        yarn add @razorpay/blade styled-components@5.3.11 @razorpay/i18nify-js@1.9.3 @razorpay/i18nify-react@4.0.8 framer-motion@11.13.3
         ```
         <List>
           <ListItem>
@@ -248,6 +251,16 @@ Before you install the package, make sure that you have performed the following 
         ```
 
   </TabPanel>
+
+  <TabPanel value="motion">
+    <Heading size="large" marginTop="spacing.7">Add motion to your application</Heading>
+
+    Assuming you've followed the first step and installed `framer-motion` in your project, Here's how we recommend you to setup the project-
+
+    <MotionInstallation />
+
+  </TabPanel>
+
   <TabPanel value="ts">
     <Heading size="large" marginY="spacing.7">TypeScript Setup</Heading>
 

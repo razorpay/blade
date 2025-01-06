@@ -10,6 +10,7 @@ import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { makeBorderSize } from '~utils';
 import { BaseLink } from '~components/Link/BaseLink';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const SideNavTitleDivider = styled(BaseBox)(({ theme }) => {
   return {
@@ -81,12 +82,13 @@ const SideNavSection = ({
   defaultIsExpanded,
   maxVisibleItems,
   onExpandChange,
+  ...rest
 }: SideNavSectionProps): React.ReactElement => {
   const totalItemsCount = React.Children.count(children);
   const collapsedItemsCount = maxVisibleItems ? totalItemsCount - maxVisibleItems : undefined;
 
   return (
-    <Box paddingY="spacing.3">
+    <Box paddingY="spacing.3" {...makeAnalyticsAttribute(rest)}>
       {title ? (
         <StyledSectionTitleContainer position="relative" padding={['spacing.2', 'spacing.4']}>
           <Text

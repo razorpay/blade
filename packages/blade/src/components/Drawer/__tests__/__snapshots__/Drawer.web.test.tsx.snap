@@ -169,11 +169,15 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
+  width: 100%;
+}
+
+.c26.c26.c26.c26.c26 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   overflow: auto;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -227,13 +231,13 @@ exports[`Drawer renders a Drawer 1`] = `
   -webkit-transform: translateX(0%);
   -ms-transform: translateX(0%);
   transform: translateX(0%);
-  -webkit-transition: all 300ms cubic-bezier(0.5,0,1,1);
-  transition: all 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-transition: all 280ms cubic-bezier(0.17,0,1,1);
+  transition: all 280ms cubic-bezier(0.17,0,1,1);
   -webkit-animation-fill-mode: initial;
   animation-fill-mode: initial;
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -258,6 +262,7 @@ exports[`Drawer renders a Drawer 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
   margin-top: 1px;
 }
 
@@ -301,7 +306,7 @@ exports[`Drawer renders a Drawer 1`] = `
   padding: 0;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -339,14 +344,15 @@ exports[`Drawer renders a Drawer 1`] = `
   color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c23.c23.c23.c23.c23:hover {
+.c23.c23.c23.c23.c23:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c23.c23.c23.c23.c23:focus-visible {
@@ -354,8 +360,8 @@ exports[`Drawer renders a Drawer 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(211,26%,34%,1);
@@ -413,8 +419,8 @@ exports[`Drawer renders a Drawer 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -435,8 +441,8 @@ exports[`Drawer renders a Drawer 1`] = `
 .c18.c18.c18.c18.c18 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -447,8 +453,8 @@ exports[`Drawer renders a Drawer 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c21.c21.c21.c21.c21 {
@@ -477,31 +483,31 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
@@ -692,23 +698,23 @@ exports[`Drawer renders a Drawer 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class=""
+          class="c25"
           data-blade-component="box"
         />
       </div>
     </div>
     <div
-      class="c25 c26"
+      class="c26 c27"
       data-blade-component="divider"
       role="separator"
     />
   </div>
   <div
-    class="c27"
+    class="c28"
     data-blade-component="box"
   >
     <p
-      class="c28"
+      class="c29"
       data-blade-component="text"
     >
       Test Content

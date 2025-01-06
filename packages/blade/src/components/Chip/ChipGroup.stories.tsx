@@ -46,7 +46,7 @@ const Page = (): React.ReactElement => {
         {`
           import { Box, Chip, ChipGroup, Text } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               <Box>
                 <ChipGroup

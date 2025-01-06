@@ -109,13 +109,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -247,8 +241,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -272,8 +266,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c14.c14.c14.c14.c14 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -310,8 +304,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -335,8 +329,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c20.c20.c20.c20.c20 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -347,8 +341,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -665,13 +659,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -1035,13 +1023,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -1107,13 +1089,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -1176,13 +1152,7 @@ exports[`<Card /> should render a plain Card 1`] = `
 
 .c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform,box-shadow;
-  -webkit-transition-property: transform,box-shadow;
-  transition-property: transform,box-shadow;
+  cursor: initial;
 }
 
 .c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
@@ -1210,6 +1180,500 @@ exports[`<Card /> should render a plain Card 1`] = `
         data-blade-component="card-body"
       >
         Plain Card
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Card /> should support adding data-analytics attributes 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: block;
+  border-radius: 4px;
+}
+
+.c2.c2.c2.c2.c2 {
+  text-align: left;
+  padding: 24px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+}
+
+.c5.c5.c5.c5.c5 {
+  margin-top: 12px;
+}
+
+.c6.c6.c6.c6.c6 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-top: 12px;
+}
+
+.c9.c9.c9.c9.c9 {
+  text-align: left;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  margin-top: 0px;
+  margin-left: 16px;
+}
+
+.c12.c12.c12.c12.c12 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c15.c15.c15.c15.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c18.c18.c18.c18.c18 {
+  margin-left: 16px;
+}
+
+.c3.c3.c3.c3.c3 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.c1.c1.c1.c1.c1 {
+  box-shadow: 0px 0px 0px 2px transparent;
+  cursor: initial;
+}
+
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c10.c10.c10.c10.c10 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c17.c17.c17.c17.c17 {
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c20.c20.c20.c20.c20 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c13.c13.c13.c13.c13:hover {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c13.c13.c13.c13.c13:active {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c13.c13.c13.c13.c13:focus-visible {
+  background-color: hsla(227,100%,59%,0.09);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c13.c13.c13.c13.c13 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c19.c19.c19.c19.c19 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c19.c19.c19.c19.c19:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c19.c19.c19.c19.c19:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c19.c19.c19.c19.c19:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c19.c19.c19.c19.c19 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c14.c14.c14.c14.c14 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
+}
+
+.c16.c16.c16.c16.c16 {
+  opacity: 1;
+}
+
+.c7.c7.c7.c7.c7 {
+  border-width: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+@media screen and (min-width:320px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+<div>
+  <div
+    class="c0 c1"
+    data-analytics-card-test="card-test"
+    data-blade-component="card"
+  >
+    <div
+      class="c2 c3"
+      data-blade-component="base-box"
+      elevation="lowRaised"
+    >
+      <div
+        class=""
+        data-analytics-card-body="card-body"
+        data-blade-component="card-body"
+      >
+        <p
+          class="c4"
+          data-blade-component="text"
+        >
+          Plain Card
+        </p>
+      </div>
+      <div
+        class="c5"
+        data-analytics-card-footer="card-footer"
+        data-blade-component="card-footer"
+      >
+        <div
+          class="c6 c7"
+          data-blade-component="divider"
+          role="separator"
+        />
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c9"
+            data-analytics-card-footer-leading="card-footer-leading"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c10"
+              data-blade-component="text"
+            >
+              Card Footer
+            </p>
+          </div>
+          <div
+            class="c11"
+            data-analytics-card-footer-trailing="card-footer-trailing"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c12"
+              data-blade-component="base-box"
+            >
+              <button
+                class="c13"
+                data-blade-component="button"
+                role="button"
+                type="button"
+              >
+                <div
+                  class=" c14"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c15 c16"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c17"
+                      data-blade-component="base-text"
+                    >
+                      Delete
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div
+              class="c18"
+              data-blade-component="base-box"
+            />
+            <div
+              class="c12"
+              data-blade-component="base-box"
+            >
+              <button
+                class="c19"
+                data-blade-component="button"
+                role="button"
+                type="button"
+              >
+                <div
+                  class=" c14"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c15 c16"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c20"
+                      data-blade-component="base-text"
+                    >
+                      Save
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

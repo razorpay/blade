@@ -67,7 +67,7 @@ const getRouteIndexFromValue = ({ value, routes }: { value?: string; routes: Rou
 const getRouteValueFromIndex = ({ index, routes }: { index?: number; routes: Route[] }) =>
   routes.find((route) => route.index === index)?.value!;
 
-const Tabs = ({
+const _Tabs = ({
   children,
   defaultValue,
   value,
@@ -242,5 +242,7 @@ const Tabs = ({
     </TabsContext.Provider>
   );
 };
+
+const Tabs = React.forwardRef(_Tabs);
 
 export { Tabs };

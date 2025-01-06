@@ -67,7 +67,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       showAllTags ? baseInputWrapperMaxHeight[rest.size] : baseInputHeight[rest.size],
       {
         duration: theme.motion.duration.xquick,
-        easing: castNativeType(theme.motion.easing.exit.effective),
+        easing: castNativeType(theme.motion.easing.exit),
       },
       (isComplete) => {
         if (isComplete && !showAllTags) {
@@ -122,11 +122,10 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       ),
     ),
     easing: castNativeType(
-      getIn(
-        theme.motion.easing,
+      theme.motion.easing[
         baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
-          .easing,
-      ),
+          .easing
+      ],
     ),
   };
 

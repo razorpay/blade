@@ -1,5 +1,609 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept data-analytics attributes 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 {
+  position: relative;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.c4.c4.c4.c4.c4 {
+  margin-bottom: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c14.c14.c14.c14.c14 {
+  margin-top: -4px;
+  width: 100%;
+  min-width: min(20%,60px);
+}
+
+.c16.c16.c16.c16.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c18.c18.c18.c18.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c21.c21.c21.c21.c21 {
+  margin-left: 0px;
+}
+
+.c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c19.c19.c19.c19.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c20.c20.c20.c20.c20 {
+  display: none;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c15.c15.c15.c15.c15::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15:focus {
+  outline: none;
+}
+
+.c10.c10.c10.c10.c10 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 36px;
+}
+
+.c13.c13.c13.c13.c13 {
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+}
+
+.c13.c13.c13.c13.c13::-webkit-scrollbar {
+  display: none;
+}
+
+.c7.c7.c7.c7.c7 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c9.c9.c9.c9.c9 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c9.c9.c9.c9.c9:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <div
+          class=""
+          data-blade-component="autocomplete"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c3"
+              data-blade-component="base-box"
+            >
+              <label
+                data-blade-component="form-label"
+                for="dropdown-123"
+                id="dropdown-123-label"
+                style="width: auto; flex-shrink: 0; margin-right: 0px;"
+              >
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c5"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c6"
+                      data-blade-component="text"
+                    >
+                      Fruits
+                    </p>
+                    <div
+                      class="c7"
+                      data-blade-component="visually-hidden"
+                    >
+                      <p
+                        class="c8"
+                        data-blade-component="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class=" c9"
+              data-blade-component="base-box"
+            >
+              <div
+                class=" c10 c11"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c12 c13 tags-slot"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c14"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-controls="dropdown-123-actionlist"
+                      aria-describedby=""
+                      aria-disabled="false"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocomplete="off"
+                      class="c15"
+                      data-analytics-name="dropdown-fruits"
+                      data-blade-component="styled-base-input"
+                      id="dropdown-123"
+                      placeholder="Select Option"
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div
+                  class="c16"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c16"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c17"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c18"
+                        data-blade-component="base-box"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="c19"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="c21"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c22"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render BottomSheet and make it visible on click 1`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
@@ -47,9 +651,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -98,9 +699,9 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -265,12 +866,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   width: 100%;
 }
 
-.c42.c42.c42.c42.c42 {
+.c38.c38.c38.c38.c38 {
+  width: 100%;
+}
+
+.c43.c43.c43.c43.c43 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c44.c44.c44.c44.c44 {
+.c45.c45.c45.c45.c45 {
   overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -281,7 +886,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-shrink: 1;
 }
 
-.c48.c48.c48.c48.c48 {
+.c49.c49.c49.c49.c49 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -297,7 +902,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   width: 100%;
 }
 
-.c49.c49.c49.c49.c49 {
+.c50.c50.c50.c50.c50 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -313,7 +918,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 20px;
 }
 
-.c50.c50.c50.c50.c50 {
+.c51.c51.c51.c51.c51 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -325,7 +930,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-left: 0px;
 }
 
-.c51.c51.c51.c51.c51 {
+.c52.c52.c52.c52.c52 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -340,11 +945,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 20px;
 }
 
-.c53.c53.c53.c53.c53 {
+.c54.c54.c54.c54.c54 {
   margin-left: auto;
 }
 
-.c54.c54.c54.c54.c54 {
+.c55.c55.c55.c55.c55 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -355,11 +960,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   touch-action: none;
 }
 
-.c55.c55.c55.c55.c55 {
+.c56.c56.c56.c56.c56 {
   padding: 16px;
 }
 
-.c58.c58.c58.c58.c58 {
+.c59.c59.c59.c59.c59 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -381,7 +986,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   z-index: 1;
 }
 
-.c45.c45.c45.c45.c45 {
+.c46.c46.c46.c46.c46 {
   overflow: auto;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -389,7 +994,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-left: 8px;
 }
 
-.c40.c40.c40.c40.c40 {
+.c41.c41.c41.c41.c41 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -419,7 +1024,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   opacity: 1;
 }
 
-.c56.c56.c56.c56.c56 {
+.c57.c57.c57.c57.c57 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -451,45 +1056,45 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
-.c56.c56.c56.c56.c56:hover {
+.c57.c57.c57.c57.c57:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c56.c56.c56.c56.c56:active {
+.c57.c57.c57.c57.c57:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c56.c56.c56.c56.c56:focus-visible {
+.c57.c57.c57.c57.c57:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c56.c56.c56.c56.c56 * {
+.c57.c57.c57.c57.c57 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c57.c57.c57.c57.c57 {
+.c58.c58.c58.c58.c58 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -556,7 +1161,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   overflow-wrap: break-word;
 }
 
-.c52.c52.c52.c52.c52 {
+.c53.c53.c53.c53.c53 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -580,7 +1185,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   word-break: break-all;
 }
 
-.c60.c60.c60.c60.c60 {
+.c61.c61.c61.c61.c61 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -609,11 +1214,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   display: none;
 }
 
-.c59.c59.c59.c59.c59 {
+.c60.c60.c60.c60.c60 {
   opacity: 1;
 }
 
-.c43.c43.c43.c43.c43 {
+.c44.c44.c44.c44.c44 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -644,14 +1249,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c36.c36.c36.c36.c36:hover {
+.c36.c36.c36.c36.c36:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
+  background-color: transparent;
 }
 
 .c36.c36.c36.c36.c36:focus-visible {
@@ -659,8 +1265,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(211,26%,34%,1);
@@ -670,7 +1276,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   color: hsla(211,26%,34%,1);
 }
 
-.c41.c41.c41.c41.c41 {
+.c42.c42.c42.c42.c42 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -703,7 +1309,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   cursor: auto;
 }
 
-.c41.c41.c41.c41.c41::-webkit-input-placeholder {
+.c42.c42.c42.c42.c42::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -721,7 +1327,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c41.c41.c41.c41.c41::-moz-placeholder {
+.c42.c42.c42.c42.c42::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -739,7 +1345,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c41.c41.c41.c41.c41:-ms-input-placeholder {
+.c42.c42.c42.c42.c42:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -757,7 +1363,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c41.c41.c41.c41.c41::placeholder {
+.c42.c42.c42.c42.c42::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -775,7 +1381,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c41.c41.c41.c41.c41:focus {
+.c42.c42.c42.c42.c42:focus {
   outline: none;
 }
 
@@ -907,8 +1513,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -932,8 +1538,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -959,13 +1565,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c39.c39.c39.c39.c39 {
+.c40.c40.c40.c40.c40 {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -984,13 +1590,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c39.c39.c39.c39.c39:hover {
+.c40.c40.c40.c40.c40:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1009,15 +1615,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c39.c39.c39.c39.c39:focus-within {
+.c40.c40.c40.c40.c40:focus-within {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1036,8 +1642,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
@@ -1087,37 +1693,37 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c38.c38.c38.c38.c38 {
+.c39.c39.c39.c39.c39 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c38.c38.c38.c38.c38:focus-within {
+.c39.c39.c39.c39.c39:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c46.c46.c46.c46.c46 {
+.c47.c47.c47.c47.c47 {
   overflow-y: auto;
 }
 
-.c46.c46.c46.c46.c46 [role=group]:last-child > [role=separator]:last-child {
+.c47.c47.c47.c47.c47 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c47.c47.c47.c47.c47 {
+.c48.c48.c48.c48.c48 {
   border-width: 0px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1138,35 +1744,35 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 4px;
 }
 
-.c47.c47.c47.c47.c47:hover:not([aria-disabled=true]),
-.c47.c47.c47.c47.c47[aria-expanded="true"] {
+.c48.c48.c48.c48.c48:hover:not([aria-disabled=true]),
+.c48.c48.c48.c48.c48[aria-expanded="true"] {
   background-color: hsla(211,20%,52%,0.12);
 }
 
-.c47.c47.c47.c47.c47:focus-visible {
+.c48.c48.c48.c48.c48:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c47.c47.c47.c47.c47[aria-selected=true] {
+.c48.c48.c48.c48.c48[aria-selected=true] {
   background-color: hsla(227,100%,59%,0.09);
 }
 
-.c47.c47.c47.c47.c47[aria-selected=true]:hover {
+.c48.c48.c48.c48.c48[aria-selected=true]:hover {
   background-color: hsla(227,100%,59%,0.18);
 }
 
 .c25.c25.c25.c25.c25 {
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
-  transition-timing-function: cubic-bezier(0,0,0,1);
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
   pointer-events: all;
   -webkit-transition-property: opacity;
   transition-property: opacity;
@@ -1216,8 +1822,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
   transition-timing-function: cubic-bezier(.15,0,.24,.97);
   will-change: transform,opacity,height;
@@ -1252,43 +1858,43 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 @media screen and (min-width:320px) {
-  .c42.c42.c42.c42.c42 {
+  .c43.c43.c43.c43.c43 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c42.c42.c42.c42.c42 {
+  .c43.c43.c43.c43.c43 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c42.c42.c42.c42.c42 {
+  .c43.c43.c43.c43.c43 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c42.c42.c42.c42.c42 {
+  .c43.c43.c43.c43.c43 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c42.c42.c42.c42.c42 {
+  .c43.c43.c43.c43.c43 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c55.c55.c55.c55.c55 {
+  .c56.c56.c56.c56.c56 {
     padding: 20px;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c47.c47.c47.c47.c47 {
+  .c48.c48.c48.c48.c48 {
     padding: 8px;
   }
 }
@@ -1414,47 +2020,52 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c18"
+                    class="c17"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c19"
+                      class="c18"
                       data-blade-component="base-box"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="c20"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
+                      <div
+                        class="c19"
+                        data-blade-component="base-box"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        class="c21"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c21"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1557,7 +2168,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="base-box"
                 >
                   <div
-                    class=""
+                    class="c38"
                     data-blade-component="box"
                   >
                     <div
@@ -1611,15 +2222,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             </label>
                           </div>
                           <div
-                            class=" c38"
+                            class=" c39"
                             data-blade-component="base-box"
                           >
                             <div
-                              class=" c39 c11"
+                              class=" c40 c11"
                               data-blade-component="base-box"
                             >
                               <div
-                                class="c40 c13 tags-slot"
+                                class="c41 c13 tags-slot"
                                 data-blade-component="base-box"
                               >
                                 <div
@@ -1637,7 +2248,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                                     aria-required="false"
                                     autocomplete="off"
                                     autofocus=""
-                                    class="c41"
+                                    class="c42"
                                     data-blade-component="styled-base-input"
                                     id="dropdown-123"
                                     placeholder="Select Option"
@@ -1665,29 +2276,29 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 </div>
               </div>
               <div
-                class="c42 c43"
+                class="c43 c44"
                 data-blade-component="divider"
                 role="separator"
               />
             </div>
           </div>
           <div
-            class="c44"
+            class="c45"
             data-blade-component="bottom-sheet-body"
             data-testid="bottomsheet-body"
             style="user-select: auto;"
           >
             <div
-              class="c45"
+              class="c46"
               data-blade-component="base-box"
             >
               <div
-                class=" c46"
+                class=" c47"
                 data-blade-component="base-box"
               >
                 <button
                   aria-selected="false"
-                  class=" c47 active-focus"
+                  class=" c48 active-focus"
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
@@ -1697,23 +2308,23 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c48"
+                    class="c49"
                     data-blade-component="box"
                   >
                     <div
-                      class="c49"
+                      class="c50"
                       data-blade-component="box"
                     />
                     <div
-                      class="c50"
+                      class="c51"
                       data-blade-component="box"
                     >
                       <div
-                        class="c51"
+                        class="c52"
                         data-blade-component="box"
                       >
                         <p
-                          class="c52"
+                          class="c53"
                           data-blade-component="text"
                         >
                           Apple
@@ -1725,14 +2336,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       />
                     </div>
                     <div
-                      class="c53"
+                      class="c54"
                       data-blade-component="box"
                     />
                   </div>
                 </button>
                 <button
                   aria-selected="false"
-                  class=" c47"
+                  class=" c48"
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
@@ -1742,23 +2353,23 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c48"
+                    class="c49"
                     data-blade-component="box"
                   >
                     <div
-                      class="c49"
+                      class="c50"
                       data-blade-component="box"
                     />
                     <div
-                      class="c50"
+                      class="c51"
                       data-blade-component="box"
                     >
                       <div
-                        class="c51"
+                        class="c52"
                         data-blade-component="box"
                       >
                         <p
-                          class="c52"
+                          class="c53"
                           data-blade-component="text"
                         >
                           Mango
@@ -1770,7 +2381,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       />
                     </div>
                     <div
-                      class="c53"
+                      class="c54"
                       data-blade-component="box"
                     />
                   </div>
@@ -1779,16 +2390,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             </div>
           </div>
           <div
-            class="c54"
+            class="c55"
             data-blade-component="bottom-sheet-footer"
           >
             <div
-              class="c42 c43"
+              class="c43 c44"
               data-blade-component="divider"
               role="separator"
             />
             <div
-              class="c55"
+              class="c56"
               data-blade-component="base-box"
             >
               <div
@@ -1796,21 +2407,21 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 data-blade-component="box"
               >
                 <button
-                  class="c56"
+                  class="c57"
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
-                    class=" c57"
+                    class=" c58"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c58 c59"
+                      class="c59 c60"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c60"
+                        class="c61"
                         data-blade-component="base-text"
                       >
                         Apply
@@ -1875,9 +2486,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1926,9 +2534,9 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -2159,8 +2767,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2184,8 +2792,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2211,8 +2819,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2262,8 +2870,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -2394,47 +3002,52 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c17"
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c18"
+                      class="c17"
                       data-blade-component="base-box"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="c19"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
+                      <div
+                        class="c18"
+                        data-blade-component="base-box"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        class="c20"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c19"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2504,9 +3117,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2536,9 +3146,9 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -2788,8 +3398,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
@@ -2813,8 +3423,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2840,8 +3450,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
@@ -2891,8 +3501,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -3028,47 +3638,52 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c17"
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c18"
+                      class="c17"
                       data-blade-component="base-box"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="c19"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
+                      <div
+                        class="c18"
+                        data-blade-component="base-box"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        class="c20"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c19"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>

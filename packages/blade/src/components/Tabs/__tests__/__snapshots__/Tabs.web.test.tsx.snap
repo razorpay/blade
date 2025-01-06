@@ -169,8 +169,8 @@ exports[`Tabs should render 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -194,8 +194,8 @@ exports[`Tabs should render 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -571,8 +571,8 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -596,8 +596,8 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -636,8 +636,8 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -661,8 +661,8 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -1075,8 +1075,8 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -1100,8 +1100,8 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1470,8 +1470,8 @@ exports[`Tabs should render with size 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -1495,8 +1495,8 @@ exports[`Tabs should render with size 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1859,8 +1859,8 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -1884,8 +1884,8 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1923,8 +1923,8 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c8.c8.c8.c8.c8:hover {
@@ -1948,8 +1948,8 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -2106,4 +2106,403 @@ exports[`Tabs should render with vertical orientation 1`] = `
     </div>
   </div>
 </body>
+`;
+
+exports[`Tabs should support adding data-analytics attribute 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: block;
+  overflow: hidden;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c2.c2.c2.c2.c2 {
+  overflow: auto hidden;
+  white-space: nowrap;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  position: relative;
+  width: 100%;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  gap: 24px;
+}
+
+.c9.c9.c9.c9.c9 {
+  position: absolute;
+  height: 2px;
+  top: -0.5px;
+  left: 0%;
+  background-color: hsla(227,100%,59%,1);
+  pointer-events: none;
+}
+
+.c11.c11.c11.c11.c11 {
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c14.c14.c14.c14.c14 {
+  display: none;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: block;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c6.c6.c6.c6.c6 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: hsla(0,0%,100%,0);
+  border-radius: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: transparent;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+}
+
+.c6.c6.c6.c6.c6:hover {
+  border-bottom-color: hsla(214,28%,84%,1);
+  background-color: hsla(0,0%,100%,0);
+}
+
+.c6.c6.c6.c6.c6:disabled {
+  cursor: not-allowed;
+  background-color: hsla(0,0%,100%,0);
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  border-radius: 4px;
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0);
+}
+
+.c6.c6.c6.c6.c6 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+}
+
+.c10.c10.c10.c10.c10 {
+  cursor: pointer;
+}
+
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width:768px) {
+  .c5.c5.c5.c5.c5 {
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9.c9.c9.c9.c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c11.c11.c11.c11.c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c11.c11.c11.c11.c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c11.c11.c11.c11.c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c11.c11.c11.c11.c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c11.c11.c11.c11.c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:0px) and (max-width:768px) {
+  .c6.c6.c6.c6.c6 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+    data-analytics-tab="userOptions"
+    data-blade-component="tabs"
+  >
+    <div
+      class="c1"
+      data-blade-component="box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-box"
+            role="tablist"
+          >
+            <button
+              aria-controls="tabs-27-payments-tabpanel"
+              aria-selected="true"
+              class="c6"
+              data-active=""
+              data-analytics-tab-item="payments"
+              data-blade-component="tab-item"
+              id="tabs-27-payments-tabitem"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              <p
+                class="c7"
+                data-blade-component="text"
+              >
+                Payments
+              </p>
+            </button>
+            <button
+              aria-controls="tabs-27-refunds-tabpanel"
+              aria-selected="false"
+              class="c6"
+              data-analytics-tab-item="refunds"
+              data-blade-component="tab-item"
+              disabled=""
+              id="tabs-27-refunds-tabitem"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              <p
+                class="c8"
+                data-blade-component="text"
+              >
+                Refunds
+              </p>
+            </button>
+          </div>
+        </div>
+        <div
+          class="c9 c10"
+          data-blade-component="tab-indicator"
+          pointer-events="none"
+          style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; transform: translate(0px, -1.5px);"
+        />
+      </div>
+      <div
+        class="c11"
+        data-blade-component="base-box"
+        style="transform: translateY(-1px);"
+      />
+    </div>
+    <div
+      aria-hidden="false"
+      aria-labelledby="tabs-27-payments-tabitem"
+      class="c12"
+      data-analytics-tab-panel="payments"
+      data-blade-component="tab-panel"
+      id="tabs-27-payments-tabpanel"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <p
+        class="c13"
+        data-blade-component="text"
+      >
+        Payments
+      </p>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="tabs-27-refunds-tabitem"
+      class="c14"
+      data-analytics-tab-panel="refunds"
+      data-blade-component="tab-panel"
+      id="tabs-27-refunds-tabpanel"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <p
+        class="c13"
+        data-blade-component="text"
+      >
+        Refunds
+      </p>
+    </div>
+  </div>
+</div>
 `;

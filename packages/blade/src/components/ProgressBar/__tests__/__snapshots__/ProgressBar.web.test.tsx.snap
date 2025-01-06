@@ -1,5 +1,160 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c3.c3.c3.c3.c3 {
+  margin-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  overflow: hidden;
+  position: relative;
+  height: 2px;
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c5.c5.c5.c5.c5 {
+  background-color: hsla(227,100%,59%,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
+}
+
+.c8.c8.c8.c8.c8 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c7.c7.c7.c7.c7 {
+  background-color: hsla(227,100%,59%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c9.c9.c9.c9.c9 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class=""
+    data-analytics-progress-value="20"
+    data-blade-component="progress-bar"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <label
+          class="c2"
+          data-blade-component="text"
+        >
+          Label
+        </label>
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c2"
+            data-blade-component="text"
+          >
+            20%
+          </p>
+        </div>
+      </div>
+      <div
+        aria-label="Label"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        aria-valuetext="20%"
+        class=""
+        data-blade-component="base-box"
+        id="progress-linear-99"
+        role="progressbar"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5 c6 c7"
+            data-blade-component="base-box"
+          >
+            <div
+              class=" c8 c9"
+              data-blade-component="base-box"
+              type="progress"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
@@ -40,15 +195,15 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 .c4.c4.c4.c4.c4 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -151,10 +306,10 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -306,10 +461,10 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -476,10 +631,10 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -649,10 +804,10 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -822,10 +977,10 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 <div>
@@ -951,15 +1106,15 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -975,10 +1130,10 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1098,15 +1253,15 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -1122,10 +1277,10 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1245,15 +1400,15 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -1269,10 +1424,10 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1392,15 +1547,15 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -1416,10 +1571,10 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1539,15 +1694,15 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -1563,10 +1718,10 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1686,15 +1841,15 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -1710,10 +1865,10 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1833,15 +1988,15 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -1857,10 +2012,10 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1980,15 +2135,15 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -2004,10 +2159,10 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2127,15 +2282,15 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -2151,10 +2306,10 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2274,15 +2429,15 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -2298,10 +2453,10 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  -webkit-animation-delay: 3000ms;
-  animation-delay: 3000ms;
+  -webkit-animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2421,15 +2576,15 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -2563,15 +2718,15 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -2705,15 +2860,15 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -2843,15 +2998,15 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 .c4.c4.c4.c4.c4 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -2971,8 +3126,8 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
 .c2.c2.c2.c2.c2 {
   height: 100%;
   width: 100%;
-  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
+  -webkit-transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
 }
 
 <div>
@@ -3113,15 +3268,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 .c11.c11.c11.c11.c11 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c13.c13.c13.c13.c13 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -3199,8 +3354,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -3224,8 +3379,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 .c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -3236,8 +3391,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -3395,15 +3550,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 .c11.c11.c11.c11.c11 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
 }
 
 .c13.c13.c13.c13.c13 {
   -webkit-transition-property: width;
   transition-property: width;
-  -webkit-transition-duration: 900ms;
-  transition-duration: 900ms;
+  -webkit-transition-duration: 960ms;
+  transition-duration: 960ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -3481,8 +3636,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -3506,8 +3661,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 .c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -3518,8 +3673,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -3736,10 +3891,10 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -3774,8 +3929,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -3799,8 +3954,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
 .c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -3811,8 +3966,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -4046,10 +4201,10 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.5,0,0,1);
-  -webkit-animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: dorXNl-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  transition: stroke-dashoffset 960ms cubic-bezier(0.5,0,0,1);
+  -webkit-animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: dorXNl-450290765 960ms cubic-bezier(0.5,0,0,1) infinite;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -4084,8 +4239,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -4109,8 +4264,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
 .c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -4121,8 +4276,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c3.c3.c3.c3.c3 {
