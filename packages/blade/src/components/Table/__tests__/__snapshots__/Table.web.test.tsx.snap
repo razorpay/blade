@@ -269,6 +269,23 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   min-height: 48px;
 }
 
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div > .text {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div > .sortIcon {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -350,12 +367,16 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Payment ID
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Payment ID
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -368,12 +389,16 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Amount
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Amount
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -386,12 +411,16 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Status
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Status
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -404,12 +433,16 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Type
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Type
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -422,12 +455,16 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Method
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Method
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -440,12 +477,16 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Name
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Name
+                </p>
+              </div>
             </div>
           </th>
         </tr>
@@ -1389,6 +1430,23 @@ exports[`<Table /> should render table 1`] = `
   min-height: 48px;
 }
 
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 > div > .text {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 > div > .sortIcon {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -1499,12 +1557,16 @@ exports[`<Table /> should render table 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c9"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Payment ID
-              </p>
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  Payment ID
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -1517,12 +1579,16 @@ exports[`<Table /> should render table 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c9"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Amount
-              </p>
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  Amount
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -1535,12 +1601,16 @@ exports[`<Table /> should render table 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c9"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Status
-              </p>
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  Status
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -1553,12 +1623,16 @@ exports[`<Table /> should render table 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c9"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Type
-              </p>
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  Type
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -1571,12 +1645,16 @@ exports[`<Table /> should render table 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c9"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Method
-              </p>
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  Method
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -1589,12 +1667,16 @@ exports[`<Table /> should render table 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c9"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Name
-              </p>
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  Name
+                </p>
+              </div>
             </div>
           </th>
         </tr>
@@ -2971,6 +3053,23 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   min-height: 48px;
 }
 
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div > .text {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div > .sortIcon {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -3302,12 +3401,16 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Payment ID
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Payment ID
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -3320,12 +3423,16 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Amount
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Amount
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -3338,12 +3445,16 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Status
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Status
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -3356,12 +3467,16 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Type
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Type
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -3374,12 +3489,16 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Method
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Method
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -3392,12 +3511,16 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Name
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Name
+                </p>
+              </div>
             </div>
           </th>
         </tr>
@@ -4239,6 +4362,23 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   min-height: 60px;
 }
 
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div > .text {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div > .sortIcon {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -4318,12 +4458,16 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Payment ID
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Payment ID
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -4336,12 +4480,16 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Amount
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Amount
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -4354,12 +4502,16 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Status
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Status
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -4372,12 +4524,16 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Type
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Type
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -4390,12 +4546,16 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Method
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Method
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -4408,12 +4568,16 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Name
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Name
+                </p>
+              </div>
             </div>
           </th>
         </tr>
@@ -5185,6 +5349,23 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   min-height: 36px;
 }
 
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div > .text {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div > .sortIcon {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -5264,12 +5445,16 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Payment ID
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Payment ID
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -5282,12 +5467,16 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Amount
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Amount
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -5300,12 +5489,16 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Status
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Status
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -5318,12 +5511,16 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Type
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Type
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -5336,12 +5533,16 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Method
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Method
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -5354,12 +5555,16 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Name
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Name
+                </p>
+              </div>
             </div>
           </th>
         </tr>
@@ -6283,6 +6488,23 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   min-height: 48px;
 }
 
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div > .text {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div > .sortIcon {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -6410,12 +6632,16 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Payment ID
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Payment ID
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -6428,12 +6654,16 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Amount
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Amount
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -6446,12 +6676,16 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Status
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Status
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -6464,12 +6698,16 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Type
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Type
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -6482,12 +6720,16 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Method
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Method
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -6500,12 +6742,16 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c8"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Name
-              </p>
+                <p
+                  class="c8"
+                  data-blade-component="text"
+                >
+                  Name
+                </p>
+              </div>
             </div>
           </th>
         </tr>
@@ -7282,6 +7528,23 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   min-height: 48px;
 }
 
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div > .text {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div > .sortIcon {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -7361,12 +7624,16 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Payment ID
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Payment ID
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -7379,12 +7646,16 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Amount
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Amount
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -7397,12 +7668,16 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Status
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Status
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -7415,12 +7690,16 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Type
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Type
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -7433,12 +7712,16 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Method
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Method
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -7451,12 +7734,16 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
             tabindex="0"
           >
             <div>
-              <p
-                class="c4"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Name
-              </p>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Name
+                </p>
+              </div>
             </div>
           </th>
         </tr>
@@ -8232,6 +8519,23 @@ exports[`<Table /> should render table with sticky header, footer & first column
   min-height: 48px;
 }
 
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div > .text {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div > .sortIcon {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -8311,12 +8615,16 @@ exports[`<Table /> should render table with sticky header, footer & first column
             tabindex="0"
           >
             <div>
-              <p
-                class="c5"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Payment ID
-              </p>
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Payment ID
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -8329,12 +8637,16 @@ exports[`<Table /> should render table with sticky header, footer & first column
             tabindex="0"
           >
             <div>
-              <p
-                class="c5"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Amount
-              </p>
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Amount
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -8347,12 +8659,16 @@ exports[`<Table /> should render table with sticky header, footer & first column
             tabindex="0"
           >
             <div>
-              <p
-                class="c5"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Status
-              </p>
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Status
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -8365,12 +8681,16 @@ exports[`<Table /> should render table with sticky header, footer & first column
             tabindex="0"
           >
             <div>
-              <p
-                class="c5"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Type
-              </p>
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Type
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -8383,12 +8703,16 @@ exports[`<Table /> should render table with sticky header, footer & first column
             tabindex="0"
           >
             <div>
-              <p
-                class="c5"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Method
-              </p>
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Method
+                </p>
+              </div>
             </div>
           </th>
           <th
@@ -8401,12 +8725,16 @@ exports[`<Table /> should render table with sticky header, footer & first column
             tabindex="0"
           >
             <div>
-              <p
-                class="c5"
-                data-blade-component="text"
+              <div
+                class="text"
               >
-                Name
-              </p>
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Name
+                </p>
+              </div>
             </div>
           </th>
         </tr>
