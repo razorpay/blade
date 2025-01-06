@@ -96,7 +96,8 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $hasPadding: boolean;
-}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding }) => ({
+  $textAlign: 'left' | 'center' | 'right';
+}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
@@ -111,7 +112,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      justifyContent: $textAlign ? $textAlign : 'space-between',
       alignItems: 'center',
       height: '100%',
       paddingLeft: $hasPadding
@@ -150,6 +151,7 @@ const _TableHeaderCell = ({
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}
       $hasPadding={_hasPadding}
+      $textAlign={textAlign}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);
@@ -159,7 +161,7 @@ const _TableHeaderCell = ({
       {...makeAnalyticsAttribute(rest)}
     >
       {isChildrenString ? (
-        <Text size="medium" weight="medium" color="surface.text.gray.normal" textAlign={textAlign}>
+        <Text size="medium" weight="medium" color="surface.text.gray.normal">
           {children}
         </Text>
       ) : (
