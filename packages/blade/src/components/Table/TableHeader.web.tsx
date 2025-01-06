@@ -99,6 +99,8 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $textAlign: 'left' | 'center' | 'right';
 }>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign }) => ({
   '&&&': {
+    display: $textAlign ? 'flex' : 'block',
+    justifyContent: $textAlign ? 'space-between' : 'initial',
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
