@@ -1,5 +1,37 @@
 # @razorpay/blade
 
+## 12.1.0
+
+### Minor Changes
+
+- e00172bf: feat(blade): Changes in components for X migration
+
+  **Drawer:**
+
+  - Changed the drawer's showOverlay behaviour to not mandate the overlay on level2 stacking
+  - Exposed ref
+
+  **RadioGroup:**
+
+  - Exposed event in onChange
+
+  **ButtonGroup:**
+
+  - Added styled props
+  - Added support for Tooltip inside ButtonGroup
+
+  **IconButton:**
+
+  - Added styledProps
+
+  **SideNavLink:**
+
+  - Added onClick
+
+### Patch Changes
+
+- 41354f63: fix(blade): cleanup bodyscroll locks if bottomsheet is force unmounted
+
 ## 12.0.3
 
 ### Patch Changes
