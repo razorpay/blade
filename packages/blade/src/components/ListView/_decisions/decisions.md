@@ -65,6 +65,9 @@ Questions like what is pattern, why are we building these patterns, and scope of
 
 ### Alternate APIs
 
+<details>
+<summary>View alternate APIs like - API Without Layout Component, Config-driven filters, etc</summary>
+
 #### Without Layout Component
 
 ```jsx
@@ -235,6 +238,8 @@ Similar to [react-data-grid](https://mui.com/x/react-data-grid/filtering/quick-f
 
 - Too strict with very little flexibility
 - Adds up more things in tables which can make table difficult to maintain and will contain bundle of filters even when they are not used
+
+</details>
 
 ## Enhancements / Components
 
