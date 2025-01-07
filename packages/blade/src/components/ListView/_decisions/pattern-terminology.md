@@ -81,3 +81,16 @@ So one question is, what is the scope of patterns then. Based on pros and cons a
 - To define strict guidelines on which item should be placed where but not put restrictions from dev-side
 
 ![](./list-view-scope-diagram.svg)
+
+## References
+
+- #### Patterns as Guideline
+
+  - Some design-systems like Atlassian, Carbon, build patterns as guidelines for designers
+  - https://atlassian.design/patterns
+
+  For Atlassian, patterns are reusable combinations of components. It's more of a guidelines on how to build certain reusable combinations like Forms, or First Impressions than an actual reusable examples or react component
+
+- #### Different types of Patterns
+
+  This articles on [Patterns in Design Systems](https://iknowdavehouse.medium.com/patterns-in-design-systems-0afc4249bae6) by Dave House talks about how the distinction between patterns and component is not very clear and talks about different types of patterns like UI patterns, functional patterns,
