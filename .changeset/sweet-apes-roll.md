@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-feat: add header alignment
+feat: ability to align individual table column items 
