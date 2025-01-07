@@ -62,6 +62,7 @@ Whether we want to build layout components like QuickView, ListView depends on t
 ##### Pros
 
 - Layout components like ListView, QuickView give us (design system team) capability to define which item is placed where. E.g. it strictly enforces that SearchInput is always placed on right side of quick filters
+  - If we change the layout of some pattern in future, consumers would only have to upgrade blade version to have new layout reflected on all their pages. As opposed to having consumers to go and replace all their pattern instances everytime we update the layout of pattern.
 - Gives us control over responsiveness
 - Less verbose API for consumer
 - Consistent spacings and paddings on all pages
@@ -71,6 +72,7 @@ Whether we want to build layout components like QuickView, ListView depends on t
 - Strict API so no flexibility over placing items somewhere else
 - Introduces new API
 - Layout might be dependent on overall page in some cases (e.g. if some page has sidebar in ipad and other ui does not, its the product that has the right context to take call on how UI looks on ipad)
+
 
 ## Conclusion
 
