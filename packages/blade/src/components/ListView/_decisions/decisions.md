@@ -17,7 +17,7 @@ Questions like what is pattern, why are we building these patterns, and scope of
 
 ```jsx
 <ListView>
-  <ListViewFilterGroup
+  <ListViewFilters
     quickFilters={[
       {
         title: 'All',
@@ -28,7 +28,7 @@ Questions like what is pattern, why are we building these patterns, and scope of
         onClick: () => {},
       },
     ]}
-    onSearch={() => {
+    onSearchChange={() => {
       /* filter on search */
     }}
   >
@@ -45,7 +45,7 @@ Questions like what is pattern, why are we building these patterns, and scope of
         </MenuOverlay>
       </Menu>
     </FilterChipGroup>
-  </ListViewFilterGroup>
+  </ListViewFilters>
   <Table data={{ nodes: filteredNodes }} />
 </ListView>
 ```
@@ -176,7 +176,7 @@ Questions like what is pattern, why are we building these patterns, and scope of
 
 **Pros**
 
-- Less verbose compared to using dropdown and menu inside ListViewFilterGroup
+- Less verbose compared to using dropdown and menu inside ListViewFilters
 
 **Cons**
 
@@ -243,8 +243,207 @@ Similar to [react-data-grid](https://mui.com/x/react-data-grid/filtering/quick-f
 
 ## Enhancements / Components
 
-### Dropdown with Search
+### Dropdown with AutoComplete in Overlay
 
-- #### List View References
+![alt text](image-1.png)
 
-  - [Material UI Data Grid](https://mui.com/x/react-data-grid/filtering-recipes/)
+```jsx
+<Dropdown>
+  <SelectInput />
+  <DropdownOverlay>
+    <DropdownHeader>
+      <AutoComplete />
+    </DropdownHeader>
+    <ActionList>
+      <ActionListItem />
+      <ActionListItem />
+      <ActionListItem />
+    </ActionList>
+</Dropdown>
+```
+
+### FilterChipGroup
+
+![alt text](image-3.png)
+
+#### Usage
+
+```jsx
+const [duration, setDuration] = React.useState();
+const [utrNumber, setUtrNumber] = React.useState();
+const utrNumberInputValueRef = React.useRef(null);
+
+<FilterChipGroup>
+  <Dropdown>
+    <FilterChip value={duration} onClearButtonClick={({ value }) => setDuration(undefined)}>
+      Duration
+    </FilterChip>
+    <DropdownOverlay>
+      <ActionList>
+        <ActionListItem
+          title="2 days"
+          value="2d"
+          onClick={({ name, value }) => setDuration(name)}
+        />
+        <ActionListItem
+          title="1 week"
+          value="1w"
+          onClick={({ name, value }) => setDuration(name)}
+        />
+        <ActionListItem
+          title="1 month"
+          value="1m"
+          onClick={({ name, value }) => setDuration(name)}
+        />
+      </ActionList>
+    </DropdownOverlay>
+  </Dropdown>
+
+  <Menu>
+    <FilterChip value={utrNumber} onClearButtonClick={({ value }) => setUtrNumber(undefined)}>
+      UTR Number
+    </FilterChip>
+    <MenuOverlay>
+      <TextInput ref={utrNumberInputValueRef} />
+      <Button onClick={() => setUtrNumber(utrNumberInputValueRef.current.value)}>Submit</Button>
+    </MenuOverlay>
+  </Menu>
+
+  <Dropdown>
+    <FilterChip
+      value={status}
+      defaultValue="Initiated"
+      onClearButtonClick={({ value }) => setStatus(undefined)}
+    >
+      Status
+    </FilterChip>
+    <DropdownOverlay>
+      <ActionList>
+        <ActionListItem title="All" onClick={({ name, value }) => setStatus(name)} />
+        <ActionListItem title="Pending" onClick={({ name, value }) => setStatus(name)} />
+        <ActionListItem title="Completed" onClick={({ name, value }) => setStatus(name)} />
+      </ActionList>
+    </DropdownOverlay>
+  </Dropdown>
+</FilterChipGroup>;
+```
+
+#### Props
+
+##### FilterChipGroup
+
+```ts
+type FilterChipGroupProps = {
+  /**
+   * Children prop. Supports Dropdown, Menu components
+   *
+   */
+  children: React.ReactNode;
+};
+```
+
+##### FilterChip
+
+FilterChip can be used as a trigger for Dropdown and Menu
+
+```ts
+type FilterChipProps = {
+  /**
+   * Controlled value of FilterChip.
+   *
+   * FilterChip is always a controlled component since selected state of it comes from other components like Menu, Dropdown.
+   */
+  value: string;
+
+  /**
+   * Change handler when FilterChip's value is cleared
+   */
+  onClearButtonClick: ({ value }: { value: string }) => void;
+
+  /**
+   * Children. Title of the Chip
+   */
+  children: string;
+
+  /**
+   * Disabled state for Chip
+   */
+  isDisabled?: boolean;
+};
+```
+
+### ListView (Layout Component)
+
+Layout Component for handling the overall layout of ListView and Filters
+
+```jsx
+<ListView>
+  <ListViewFilters
+    quickFilters={[
+      {
+        title: 'All',
+        onClick: () => {},
+      },
+      {
+        title: 'Pending',
+        onClick: () => {},
+      },
+    ]}
+    onSearch={({ value, searchType }) => {
+      /* filter on search */
+    }}
+  >
+    <FilterGroup />
+  </ListViewFilters>
+  <Table />
+</ListView>
+```
+
+#### Props
+
+##### ListView
+
+```ts
+type ListViewProps = {
+  children: React.ReactNode;
+};
+```
+
+##### ListViewFilters
+
+![alt text](image-4.png)
+
+```ts
+type QuickFilter = {
+  title: string;
+  onClick: (e: React.MouseEvent) => void;
+};
+
+type OnSearchArgs = {
+  /**
+   * Value of the search input field
+   */
+  value: string;
+
+  /**
+   * Value of the Dropdown next to search input
+   */
+  searchType: string;
+};
+
+type ListViewFiltersProps = {
+  /**
+   * Config of QuickFilters
+   */
+  quickFilters: QuickFilter[];
+
+  /**
+   * Callback when user clicks search button
+   */
+  onSearch: ({ value, searchType }: OnSearchArgs) => void;
+};
+```
+
+## References
+
+- [Material UI Data Grid](https://mui.com/x/react-data-grid/filtering-recipes/)
