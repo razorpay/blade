@@ -3,6 +3,7 @@ import { Table as ReactTable } from '@table-library/react-table-library/table';
 import { useTheme as useTableTheme } from '@table-library/react-table-library/theme';
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
 import { useSort } from '@table-library/react-table-library/sort';
+import { Virtualized } from '@table-library/react-table-library/virtualized';
 import { usePagination } from '@table-library/react-table-library/pagination';
 import {
   SelectClickTypes,
@@ -31,7 +32,7 @@ import type {
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
-import type { BoxProps } from '~components/Box';
+import { Box, BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
@@ -503,24 +504,26 @@ const _Table = <Item,>({
             </RefreshWrapper>
           )}
           {toolbar}
-          <StyledReactTable
-            role="table"
-            layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
-            data={data}
-            // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
-            theme={tableTheme}
-            select={selectionType !== 'none' ? rowSelectConfig : null}
-            sort={sortFunctions ? sort : null}
-            $styledProps={{
-              height,
-            }}
-            pagination={hasPagination ? paginationConfig : null}
-            {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
-            {...metaAttribute({ name: MetaConstants.Table })}
-            {...makeAnalyticsAttribute(rest)}
-          >
-            {children}
-          </StyledReactTable>
+          <Box height="300px">
+            <StyledReactTable
+              role="table"
+              layout={{ fixedHeader: true, horizontalScroll: true, isDiv: true }}
+              data={data}
+              // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
+              theme={tableTheme}
+              select={selectionType !== 'none' ? rowSelectConfig : null}
+              sort={sortFunctions ? sort : null}
+              $styledProps={{
+                height,
+              }}
+              pagination={hasPagination ? paginationConfig : null}
+              {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
+              {...metaAttribute({ name: MetaConstants.Table })}
+              {...makeAnalyticsAttribute(rest)}
+            >
+              {children}
+            </StyledReactTable>
+          </Box>
           {pagination}
         </BaseBox>
       )}
@@ -532,4 +535,10 @@ const Table = assignWithoutSideEffects(_Table, {
   componentId: ComponentIds.Table,
 });
 
-export { Table };
+const TableVirtulized = ({ header, body, tableData }) => {
+  console.log({ header, body });
+
+  return <Virtualized tableList={tableData} rowHeight={57} header={() => header} body={body} />;
+};
+
+export { Table, TableVirtulized };

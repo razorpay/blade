@@ -25,6 +25,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { CheckIcon, CloseIcon } from '~components/Icons';
+import { TableVirtulized } from '../Table.web';
 
 export default {
   title: 'Components/Table',
@@ -71,7 +72,7 @@ export default {
 } as Meta<TableProps<unknown>>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 100 }, (_, i) => ({
+  ...Array.from({ length: 50 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -112,6 +113,79 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
+    <Box padding="spacing.5" overflow="auto" height="200px">
+      <TableComponent
+        {...args}
+        data={data}
+        onSelectionChange={console.log}
+        selectionType="single"
+        height="100%"
+      >
+        {(tableData) => (
+          <TableVirtulized
+            tableData={tableData}
+            header={() => (
+              <TableHeaderRow>
+                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+              </TableHeaderRow>
+            )}
+            body={(tableItem, index) => (
+              <TableRow
+                key={index}
+                item={tableItem}
+                onClick={() => {
+                  console.log('where');
+                }}
+              >
+                <TableCell>
+                  <Code size="medium">{tableItem.paymentId}</Code>
+                </TableCell>
+                <TableEditableCell
+                  accessibilityLabel="Amount"
+                  placeholder="Enter text"
+                  successText="Amount is valid"
+                />
+                <TableCell>{tableItem.account}</TableCell>
+                <TableCell>
+                  {tableItem.date?.toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  })}
+                </TableCell>
+                <TableCell>{tableItem.method}</TableCell>
+                <TableCell>
+                  <Badge
+                    size="medium"
+                    color={
+                      tableItem.status === 'Completed'
+                        ? 'positive'
+                        : tableItem.status === 'Pending'
+                        ? 'notice'
+                        : tableItem.status === 'Failed'
+                        ? 'negative'
+                        : 'primary'
+                    }
+                  >
+                    {tableItem.status}
+                  </Badge>
+                </TableCell>
+              </TableRow>
+            )}
+          />
+        )}
+      </TableComponent>
+    </Box>
+  );
+};
+
+export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
+  return (
     <Box padding="spacing.5" overflow="auto" minHeight="400px">
       <TableComponent
         {...args}
@@ -120,6 +194,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         onSelectionChange={console.log}
         isFirstColumnSticky
         selectionType="single"
+        height="100%"
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
@@ -137,15 +212,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
           DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
           STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
         }}
-        pagination={
-          <TablePagination
-            onPageChange={console.log}
-            defaultPageSize={10}
-            onPageSizeChange={console.log}
-            showPageSizePicker
-            showPageNumberSelector
-          />
-        }
       >
         {(tableData) => (
           <>
@@ -227,19 +293,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 </TableRow>
               ))}
             </TableBody>
-            <TableFooter>
-              <TableFooterRow>
-                <TableFooterCell>Total</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                {args.selectionType === 'multiple' ? <TableFooterCell>-</TableFooterCell> : null}
-                <TableFooterCell>
-                  <Amount value={10} />
-                </TableFooterCell>
-              </TableFooterRow>
-            </TableFooter>
           </>
         )}
       </TableComponent>
