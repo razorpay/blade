@@ -236,8 +236,9 @@ const _BaseDropdownInputTrigger = (
     <BaseInput
       as={props.isSelectInput ? 'button' : 'input'}
       ref={
-        (!isReactNative()
-          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (isReactNative() || hasAutoCompleteInBottomSheetHeader
+          ? null
+          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (node: any) => {
               triggererRef.current = node;
               if (ref) {
@@ -247,12 +248,14 @@ const _BaseDropdownInputTrigger = (
                   ref.current = node;
                 }
               }
-            }
-          : null) as never
+            }) as never
       }
       isDropdownTrigger={true}
       setInputWrapperRef={(wrapperNode) => {
-        triggererWrapperRef.current = wrapperNode;
+        // when autocomplete is in header, its not a trigger but a component inside of DropdownOverlay
+        if (!hasAutoCompleteInBottomSheetHeader) {
+          triggererWrapperRef.current = wrapperNode;
+        }
       }}
       maxTagRows={props.maxRows ?? 'single'}
       tags={getTags({ size: props.size || 'medium' })}

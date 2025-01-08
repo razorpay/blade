@@ -21,6 +21,7 @@ type DropdownHeaderProps = Pick<
   | 'trailing'
   | 'titleSuffix'
   | 'testID'
+  | 'children'
   | keyof DataAnalyticsAttribute
 >;
 
@@ -31,6 +32,7 @@ const _DropdownHeader = ({
   titleSuffix,
   trailing,
   testID,
+  children,
   ...rest
 }: DropdownHeaderProps): React.ReactElement => {
   return (
@@ -59,7 +61,9 @@ const _DropdownHeader = ({
         // close button
         showCloseButton={false}
         {...makeAnalyticsAttribute(rest)}
-      />
+      >
+        {children}
+      </BaseHeader>
     </BaseBox>
   );
 };
