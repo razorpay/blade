@@ -1,15 +1,12 @@
 # List View Pattern API Decision
 
-Questions like what is pattern, why are we building these patterns, and scope of pattern are answered in [pattern-terminology.md](./pattern-terminology.md)
+> [!NOTE]
+>
+> Questions like what is pattern, why are we building these patterns, and scope of pattern are answered in [pattern-terminology.md](./pattern-terminology.md)
 
-## Component Changes
+List View Pattern is a UI pattern that includes Table, Filters, and Search of the table. It is a commonly used pattern on Razorpay dashboards to visualize data and help consumers filter / search through that data.
 
-- Enhancements:
-  - Searchable Dropdown
-  - InputGroup (TBD)
-- New Components
-  - ListView (Layout Component)
-  - FilterChip
+![alt text](image-5.png)
 
 ## API
 
@@ -243,6 +240,13 @@ Similar to [react-data-grid](https://mui.com/x/react-data-grid/filtering/quick-f
 
 ## Enhancements / Components
 
+- Enhancements:
+  - Searchable Dropdown
+  - InputGroup (TBD)
+- New Components
+  - ListView (Layout Component)
+  - FilterChip
+
 ### Dropdown with AutoComplete in Overlay
 
 <img src="image-1.png" width="300px" />
@@ -444,7 +448,34 @@ type ListViewFiltersProps = {
 };
 ```
 
+## Accessibility
+
+- All interactive items like Filters, Search, Button should be focussable
+- Dropdown's keyboard navigation should continue to work the same way for FilterChip as it does for other triggers like Select
+
+## Open Questions
+
+- ### Naming `ListView` vs `TableFilterView`
+
+  Currently we're calling it ListView because the terminology was used in Razorpay although this terminology is not really used anywhere outside of Razorpay and can cause confusion to new people who join.
+
+  Alternate Options
+
+  - ListView
+  - FilterView
+  - TableFilterView
+
+- ### Do we want to control layout or not?
+
+  Currently proposed API assumes that we are controlling which item is placed where and thus proposes a Layout Component of ListView. I've mentioned the pros and cons of layout component where the API and alternate api is proposed above.
+
+- ### InputGroup
+
+  Current designs have search input clubbed with the select input which is part of the scope of InputGroup component. Do we want to build InputGroup right now or leave that for later and go with intermediate UI?
+
 ## References
 
-- [Material UI Data Grid](https://mui.com/x/react-data-grid/filtering-recipes/)
+- [Filtering - Carbon](https://carbondesignsystem.com/patterns/filtering/)
+- [Data Grid - Material UI ](https://mui.com/x/react-data-grid/filtering-recipes/)
+- [Filter Pattern - Dell Design System](https://www.delldesignsystem.com/patterns/filter/)
 - References for Patterns in [pattern-terminology.md#references](./pattern-terminology.md#references)
