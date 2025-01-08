@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo, useRef, forwardRef } from 'react';
+import { flushSync } from 'react-dom';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
@@ -312,10 +313,11 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             size={size}
             onRemove={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
-              setSelectedFiles(() => newFiles);
+              flushSync(() => {
+                setSelectedFiles(() => newFiles);
+              });
               onRemove?.({ file: selectedFiles[0] });
-              onChange?.({ fileList: newFiles });
-              fireNativeEvent(getOuterMotionRef({ _motionMeta, ref }), ['change', 'input']);
+              fireNativeEvent(inputRef, ['change', 'input']);
             }}
             onReupload={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
@@ -375,10 +377,11 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               size={size}
               onRemove={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
-                setSelectedFiles(() => newFiles);
+                flushSync(() => {
+                  setSelectedFiles(() => newFiles);
+                });
                 onRemove?.({ file });
-                onChange?.({ fileList: newFiles });
-                fireNativeEvent(getOuterMotionRef({ _motionMeta, ref }), ['change', 'input']);
+                fireNativeEvent(inputRef, ['change', 'input']);
               }}
               onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
