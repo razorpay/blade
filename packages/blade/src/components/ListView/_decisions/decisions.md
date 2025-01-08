@@ -6,9 +6,9 @@ Questions like what is pattern, why are we building these patterns, and scope of
 
 - Enhancements:
   - Searchable Dropdown
-  - InputGroup
+  - InputGroup (TBD)
 - New Components
-  - QuickFilter
+  - ListView (Layout Component)
   - FilterChip
 
 ## API
@@ -245,7 +245,7 @@ Similar to [react-data-grid](https://mui.com/x/react-data-grid/filtering/quick-f
 
 ### Dropdown with AutoComplete in Overlay
 
-![alt text](image-1.png)
+<img src="image-1.png" width="300px" />
 
 ```jsx
 <Dropdown>
@@ -264,7 +264,7 @@ Similar to [react-data-grid](https://mui.com/x/react-data-grid/filtering/quick-f
 
 ### FilterChipGroup
 
-![alt text](image-3.png)
+<img src="image-3.png" width="600px" />
 
 #### Usage
 
@@ -374,7 +374,7 @@ type FilterChipProps = {
 
 ### ListView (Layout Component)
 
-Layout Component for handling the overall layout of ListView and Filters
+Layout Component for handling the overall layout of ListView and Filters. More about layout components at [pattern-terminology.md](./pattern-terminology.md)
 
 ```jsx
 <ListView>
@@ -411,7 +411,7 @@ type ListViewProps = {
 
 ##### ListViewFilters
 
-![alt text](image-4.png)
+<img src="image-4.png" width="600px" />
 
 ```ts
 type QuickFilter = {
@@ -447,3 +447,4 @@ type ListViewFiltersProps = {
 ## References
 
 - [Material UI Data Grid](https://mui.com/x/react-data-grid/filtering-recipes/)
+- References for Patterns in [pattern-terminology.md#references](./pattern-terminology.md#references)
