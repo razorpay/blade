@@ -93,6 +93,22 @@ const getL1MenuClassName = ({
   return '';
 };
 
+const BannerContainer = styled(BaseBox)((props) => {
+  return {
+    '&:not(:empty)': {
+      borderBottom: props.theme.border.width.thin,
+      borderBottomStyle: 'solid',
+      borderBottomColor: props.theme.colors.surface.border.gray.muted,
+      borderRight: props.theme.border.width.thin,
+      borderRightStyle: 'solid',
+      borderRightColor: props.theme.colors.surface.border.gray.muted,
+      padding: props.theme.spacing[3],
+      maxHeight: '100px',
+      width: '100%',
+    },
+  };
+});
+
 /**
  * ### SideNav component
  *
@@ -200,6 +216,8 @@ const _SideNav = (
     };
   }, []);
 
+  // const hasBanner = banner?.type && typeof banner.type === 'function' ? banner.type() : banner;
+
   return (
     <SideNavContext.Provider value={contextValue}>
       {isMobile && onDismiss ? (
@@ -253,19 +271,7 @@ const _SideNav = (
           {...getStyledProps(rest)}
           {...makeAnalyticsAttribute(rest)}
         >
-          {banner ? (
-            <BaseBox
-              borderBottom="thin"
-              borderBottomColor="surface.border.gray.muted"
-              borderRight="thin"
-              borderRightColor="surface.border.gray.muted"
-              padding="spacing.3"
-              maxHeight="100px"
-              width="100%"
-            >
-              {banner}
-            </BaseBox>
-          ) : null}
+          {banner ? <BannerContainer>{banner}</BannerContainer> : null}
           <BaseBox position="relative" display="block" flex="1" width="100%">
             <BaseBox
               position="absolute"
