@@ -216,8 +216,6 @@ const _SideNav = (
     };
   }, []);
 
-  // const hasBanner = banner?.type && typeof banner.type === 'function' ? banner.type() : banner;
-
   return (
     <SideNavContext.Provider value={contextValue}>
       {isMobile && onDismiss ? (
