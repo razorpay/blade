@@ -479,12 +479,12 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
     <div
       class="c1"
       data-analytics-topnav="demo"
-      data-blade-component="box"
+      data-blade-component="top-nav"
       data-testid="demo"
     >
       <div
         class="c2"
-        data-blade-component="box"
+        data-blade-component="top-nav-brand"
       >
         <div
           class="c3"
@@ -532,7 +532,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
             >
               <div
                 class="c8"
-                data-blade-component="box"
+                data-blade-component="tab-nav-items"
               >
                 <div
                   class=" c9"
@@ -545,6 +545,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Home"
+                    data-blade-component="tab-nav-item-link"
                     href="/home"
                     to="/home"
                   >
@@ -567,6 +568,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payroll"
+                    data-blade-component="tab-nav-item-link"
                     href="/payroll"
                     to="/payroll"
                   >
@@ -589,6 +591,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payments"
+                    data-blade-component="tab-nav-item-link"
                     href="/payments"
                     to="/payments"
                   >
@@ -611,6 +614,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Magic Checkout"
+                    data-blade-component="tab-nav-item-link"
                     href="/magic-checkout"
                     to="/magic-checkout"
                   >
@@ -635,6 +639,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   aria-expanded="false"
                   aria-haspopup="menu"
                   class="c11"
+                  data-blade-component="tab-nav-item-link"
                   href="#"
                   id=":rn:"
                   to="#"
@@ -1258,12 +1263,12 @@ exports[`TopNav should render 1`] = `
     <div
       class="c1"
       data-analytics-topnav="demo"
-      data-blade-component="box"
+      data-blade-component="top-nav"
       data-testid="demo"
     >
       <div
         class="c2"
-        data-blade-component="box"
+        data-blade-component="top-nav-brand"
       >
         <div
           class="c3"
@@ -1311,7 +1316,7 @@ exports[`TopNav should render 1`] = `
             >
               <div
                 class="c8"
-                data-blade-component="box"
+                data-blade-component="tab-nav-items"
               >
                 <div
                   class=" c9"
@@ -1324,6 +1329,7 @@ exports[`TopNav should render 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Home"
+                    data-blade-component="tab-nav-item-link"
                     href="/home"
                     to="/home"
                   >
@@ -1346,6 +1352,7 @@ exports[`TopNav should render 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payroll"
+                    data-blade-component="tab-nav-item-link"
                     href="/payroll"
                     to="/payroll"
                   >
@@ -1368,6 +1375,7 @@ exports[`TopNav should render 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payments"
+                    data-blade-component="tab-nav-item-link"
                     href="/payments"
                     to="/payments"
                   >
@@ -1390,6 +1398,7 @@ exports[`TopNav should render 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Magic Checkout"
+                    data-blade-component="tab-nav-item-link"
                     href="/magic-checkout"
                     to="/magic-checkout"
                   >
@@ -1414,6 +1423,7 @@ exports[`TopNav should render 1`] = `
                   aria-expanded="false"
                   aria-haspopup="menu"
                   class="c11"
+                  data-blade-component="tab-nav-item-link"
                   href="#"
                   id=":r2:"
                   to="#"
@@ -2037,12 +2047,12 @@ exports[`TopNav should support data analytics attributes 1`] = `
     <div
       class="c1"
       data-analytics-topnav="demo"
-      data-blade-component="box"
+      data-blade-component="top-nav"
       data-testid="demo"
     >
       <div
         class="c2"
-        data-blade-component="box"
+        data-blade-component="top-nav-brand"
       >
         <div
           class="c3"
@@ -2090,7 +2100,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
             >
               <div
                 class="c8"
-                data-blade-component="box"
+                data-blade-component="tab-nav-items"
               >
                 <div
                   class=" c9"
@@ -2103,6 +2113,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Home"
+                    data-blade-component="tab-nav-item-link"
                     href="/home"
                     to="/home"
                   >
@@ -2125,6 +2136,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payroll"
+                    data-blade-component="tab-nav-item-link"
                     href="/payroll"
                     to="/payroll"
                   >
@@ -2147,6 +2159,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payments"
+                    data-blade-component="tab-nav-item-link"
                     href="/payments"
                     to="/payments"
                   >
@@ -2169,6 +2182,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Magic Checkout"
+                    data-blade-component="tab-nav-item-link"
                     href="/magic-checkout"
                     to="/magic-checkout"
                   >
@@ -2193,6 +2207,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   aria-expanded="false"
                   aria-haspopup="menu"
                   class="c11"
+                  data-blade-component="tab-nav-item-link"
                   href="#"
                   id=":rg:"
                   to="#"

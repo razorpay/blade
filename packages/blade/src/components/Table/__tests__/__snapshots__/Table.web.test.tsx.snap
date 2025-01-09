@@ -474,7 +474,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -501,7 +501,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   100
@@ -523,7 +523,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -550,7 +550,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -587,7 +587,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -614,7 +614,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -636,7 +636,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -663,7 +663,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -700,7 +700,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -727,7 +727,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   120
@@ -749,7 +749,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -776,7 +776,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -813,7 +813,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -840,7 +840,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   300
@@ -862,7 +862,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -889,7 +889,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -926,7 +926,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -953,7 +953,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   200
@@ -975,7 +975,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1002,7 +1002,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1615,7 +1615,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1642,7 +1642,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   100
@@ -1664,7 +1664,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1691,7 +1691,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1718,7 +1718,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1745,7 +1745,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1780,7 +1780,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1807,7 +1807,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -1829,7 +1829,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1856,7 +1856,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1883,7 +1883,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1910,7 +1910,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1945,7 +1945,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -1972,7 +1972,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   120
@@ -1994,7 +1994,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2021,7 +2021,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2048,7 +2048,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2075,7 +2075,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2110,7 +2110,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2137,7 +2137,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   300
@@ -2159,7 +2159,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2186,7 +2186,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2213,7 +2213,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2240,7 +2240,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2275,7 +2275,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2302,7 +2302,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   200
@@ -2324,7 +2324,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2351,7 +2351,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2378,7 +2378,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -2405,7 +2405,7 @@ exports[`<Table /> should render table 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3413,7 +3413,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3497,7 +3497,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3524,7 +3524,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3551,7 +3551,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3578,7 +3578,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3613,7 +3613,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3697,7 +3697,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3724,7 +3724,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3751,7 +3751,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -3778,7 +3778,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4424,7 +4424,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4451,7 +4451,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   100
@@ -4473,7 +4473,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4500,7 +4500,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4527,7 +4527,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4554,7 +4554,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4589,7 +4589,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4616,7 +4616,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -4638,7 +4638,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4665,7 +4665,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4692,7 +4692,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -4719,7 +4719,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5365,7 +5365,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5392,7 +5392,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   100
@@ -5414,7 +5414,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5441,7 +5441,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5468,7 +5468,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5495,7 +5495,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5530,7 +5530,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5557,7 +5557,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -5579,7 +5579,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5606,7 +5606,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5633,7 +5633,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -5660,7 +5660,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6506,7 +6506,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6533,7 +6533,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   100
@@ -6555,7 +6555,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6582,7 +6582,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6609,7 +6609,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6636,7 +6636,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6671,7 +6671,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6698,7 +6698,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -6720,7 +6720,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6747,7 +6747,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6774,7 +6774,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6801,7 +6801,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c13 c14 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7452,7 +7452,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7479,7 +7479,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   100
@@ -7501,7 +7501,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7528,7 +7528,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7555,7 +7555,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7582,7 +7582,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7617,7 +7617,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7644,7 +7644,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -7666,7 +7666,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7693,7 +7693,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7720,7 +7720,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7747,7 +7747,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
               >
                 <div
                   class="c9 c10 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8397,7 +8397,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8424,7 +8424,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   100
@@ -8446,7 +8446,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8473,7 +8473,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8500,7 +8500,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8527,7 +8527,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8562,7 +8562,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8589,7 +8589,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -8611,7 +8611,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8638,7 +8638,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8665,7 +8665,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8692,7 +8692,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8727,7 +8727,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8754,7 +8754,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   120
@@ -8776,7 +8776,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8803,7 +8803,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8830,7 +8830,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8857,7 +8857,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8892,7 +8892,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8919,7 +8919,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   300
@@ -8941,7 +8941,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8968,7 +8968,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -8995,7 +8995,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9022,7 +9022,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9057,7 +9057,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9084,7 +9084,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   200
@@ -9106,7 +9106,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9133,7 +9133,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9160,7 +9160,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9187,7 +9187,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9222,7 +9222,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9249,7 +9249,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -9271,7 +9271,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9298,7 +9298,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9325,7 +9325,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9352,7 +9352,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9387,7 +9387,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9414,7 +9414,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   120
@@ -9436,7 +9436,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9463,7 +9463,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9490,7 +9490,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9517,7 +9517,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9552,7 +9552,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9579,7 +9579,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   300
@@ -9601,7 +9601,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9628,7 +9628,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9655,7 +9655,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9682,7 +9682,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9717,7 +9717,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9744,7 +9744,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   200
@@ -9766,7 +9766,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9793,7 +9793,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9820,7 +9820,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9847,7 +9847,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9882,7 +9882,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9909,7 +9909,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -9931,7 +9931,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9958,7 +9958,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -9985,7 +9985,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -10012,7 +10012,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
               >
                 <div
                   class="c10 c11 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p

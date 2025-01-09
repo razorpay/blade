@@ -26,10 +26,15 @@ import { useTheme } from '~components/BladeProvider';
 import { throwBladeError } from '~utils/logger';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const pageSizeOptions: NonNullable<TablePaginationCommonProps['defaultPageSize']>[] = [10, 25, 50];
 
-const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
+const PageSelectionButton = styled.button.attrs(() => {
+  return {
+    ...metaAttribute({ name: MetaConstants.TablePageSelectionButton }),
+  };
+})<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
     ? getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorSelected)
     : 'transparent',
