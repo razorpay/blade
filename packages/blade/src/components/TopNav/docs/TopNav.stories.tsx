@@ -459,7 +459,7 @@ const TopNavFullExample = () => {
               height="100vh"
               padding="spacing.5"
               overflowY="scroll"
-              backgroundColor="surface.background.gray.intense"
+              backgroundColor="surface.background.gray.moderate"
             >
               <Box width={{ base: 'max-content', m: '100%' }} height="200vh">
                 <Text weight="semibold">Active URL: {activeUrl}</Text>
@@ -603,7 +603,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
         </TopNav>
       </BaseBox>
 
-      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.intense" height="100%">
+      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.moderate" height="100%">
         <Text margin="spacing.5">
           This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
           other features & integration details.
