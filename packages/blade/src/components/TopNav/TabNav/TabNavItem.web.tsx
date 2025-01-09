@@ -69,7 +69,7 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
     position: 'relative',
     flexShrink: 0,
     padding: `${makeSpace(theme.spacing[2])} ${makeSpace(theme.spacing[1])}`,
-    backgroundColor: isActive ? theme.colors.surface.background.gray.intense : 'transparent',
+    backgroundColor: isActive ? theme.colors.surface.background.gray.moderate : 'transparent',
     borderColor: isActive ? theme.colors.surface.border.gray.muted : 'transparent',
     borderStyle: 'solid',
     borderWidth: makeBorderSize(theme.border.width.thin),
