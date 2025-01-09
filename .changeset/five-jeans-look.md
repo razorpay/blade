@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-chore(blade): change TabNavItem background color
+chore(blade): change TabNavItem,TopNavActions background color & update examples
