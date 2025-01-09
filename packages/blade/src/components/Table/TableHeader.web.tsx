@@ -23,6 +23,7 @@ import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import useWhyDidYouRender from '~utils/useWhyDidYouRender';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -77,6 +78,10 @@ const StyledHeader = styled(Header)({
 });
 
 const _TableHeader = ({ children, ...rest }: TableHeaderRowProps): React.ReactElement => {
+  useWhyDidYouRender('TableHeader', {
+    children,
+    ...rest,
+  });
   return (
     <StyledHeader
       {...metaAttribute({ name: MetaConstants.TableHeader })}

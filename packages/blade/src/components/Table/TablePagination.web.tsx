@@ -27,7 +27,13 @@ import { throwBladeError } from '~utils/logger';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const pageSizeOptions: NonNullable<TablePaginationCommonProps['defaultPageSize']>[] = [10, 25, 50];
+const pageSizeOptions: NonNullable<TablePaginationCommonProps['defaultPageSize']>[] = [
+  10,
+  25,
+  50,
+  100,
+  200,
+];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected

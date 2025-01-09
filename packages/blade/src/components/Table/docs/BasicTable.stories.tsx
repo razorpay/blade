@@ -1,4 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
+import React, { useState, useCallback, useMemo, memo } from 'react';
 import type { TableData, TableProps } from '../types';
 import {
   Table as TableComponent,
@@ -25,6 +26,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { CheckIcon, CloseIcon } from '~components/Icons';
+import useWhyDidYouRender from '~utils/useWhyDidYouRender';
 
 export default {
   title: 'Components/Table',
@@ -71,7 +73,7 @@ export default {
 } as Meta<TableProps<unknown>>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 100 }, (_, i) => ({
+  ...Array.from({ length: 160 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -110,138 +112,194 @@ const data: TableData<Item> = {
   nodes,
 };
 
+const TableRowContent = memo(({ tableItem }) => {
+  return (
+    <>
+      <TableCell>
+        <Code size="medium">{tableItem.paymentId}</Code>
+      </TableCell>
+      <TableEditableCell
+        accessibilityLabel="Amount"
+        placeholder="Enter text"
+        successText="Amount is valid"
+      />
+      <TableCell>{tableItem.account}</TableCell>
+      <TableCell>
+        {tableItem.date?.toLocaleDateString('en-IN', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        })}
+      </TableCell>
+      <TableCell>{tableItem.method}</TableCell>
+      <TableCell>
+        <Badge
+          size="medium"
+          color={
+            tableItem.status === 'Completed'
+              ? 'positive'
+              : tableItem.status === 'Pending'
+              ? 'notice'
+              : tableItem.status === 'Failed'
+              ? 'negative'
+              : 'primary'
+          }
+        >
+          {tableItem.status}
+        </Badge>
+      </TableCell>
+    </>
+  );
+});
+const MemoizedTableRow = memo(({ tableItem, index, onClick, hoverActions }) => (
+  <TableRow key={index} item={tableItem} hoverActions={hoverActions} onClick={onClick}>
+    <TableRowContent tableItem={tableItem} />
+  </TableRow>
+));
+
+const MemoizedTableBody = memo(({ tableData, callbackedOnClick, memomizedHoverActions }) => {
+  useWhyDidYouRender('TableBody', { tableData, callbackedOnClick, memomizedHoverActions });
+  const memoizedRows = useMemo(() => {
+    return tableData.map((tableItem, index) => (
+      <MemoizedTableRow
+        key={`${tableItem.id}-${index}`}
+        tableItem={tableItem as any}
+        index={index}
+        onClick={callbackedOnClick}
+        hoverActions={memomizedHoverActions}
+      />
+    ));
+  }, [tableData, callbackedOnClick, memomizedHoverActions]);
+  return <TableBody>{memoizedRows}</TableBody>;
+});
+
+const MemoziedToolbar = memo(() => {
+  return (
+    <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
+      <TableToolbarActions>
+        <Button variant="secondary" marginRight="spacing.2">
+          Export
+        </Button>
+        <Button>Refund</Button>
+      </TableToolbarActions>
+    </TableToolbar>
+  );
+});
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
+  const [selectedValues, setSelected] = React.useState<Item[]>([]);
+  const callbackedOnClick = useCallback(() => {
+    console.log('clicked');
+  }, []);
+  const memomizedHoverActions = useMemo(
+    () => (
+      <>
+        <Button variant="tertiary" size="xsmall">
+          View Details
+        </Button>
+        <IconButton
+          icon={CheckIcon}
+          isHighlighted
+          accessibilityLabel="Approve"
+          onClick={() => {
+            console.log('Approved');
+          }}
+        />
+        <IconButton
+          icon={CloseIcon}
+          isHighlighted
+          accessibilityLabel="Reject"
+          onClick={() => {
+            console.log('Rejected');
+          }}
+        />
+      </>
+    ),
+    [],
+  );
+  const memorizedTableData = useMemo(() => [...data.nodes], []);
+
+  const memorizedTableHeaderRows = useMemo(
+    () => (
+      <TableHeaderRow>
+        <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+        <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+        <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+        <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+        <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+        <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+      </TableHeaderRow>
+    ),
+    [],
+  );
+  const memoizedRenderFunction = useMemo(() => {
+    return (
+      <>
+        <TableHeader>{memorizedTableHeaderRows}</TableHeader>
+        <MemoizedTableBody
+          tableData={memorizedTableData}
+          callbackedOnClick={callbackedOnClick}
+          memomizedHoverActions={memomizedHoverActions}
+        />
+      </>
+    );
+  }, [memorizedTableHeaderRows, memorizedTableData, callbackedOnClick, memomizedHoverActions]);
+
+  const memorziedSortFunctions = useMemo(
+    () => ({
+      ID: (array: Item[]) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+      AMOUNT: (array: Item[]) => array.sort((a, b) => a.amount - b.amount),
+      PAYMENT_ID: (array: Item[]) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+      DATE: (array: Item[]) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+      STATUS: (array: Item[]) => array.sort((a, b) => a.status.localeCompare(b.status)),
+    }),
+    [],
+  );
+
+  const memorizedPagination = useMemo(() => {
+    return (
+      <TablePagination
+        onPageChange={console.log}
+        defaultPageSize={200}
+        onPageSizeChange={console.log}
+        showPageSizePicker
+        showPageNumberSelector
+      />
+    );
+  }, []);
+
+  const memoziedDefaultSelectedIds = useMemo(() => ['1', '3'], []);
+  const onSelectionChangeCallback = useCallback(({ values }) => {
+    setSelected(values);
+  }, []);
+  const tableComponentCallback = useCallback(() => {
+    return (
+      <>
+        <TableHeader>{memorizedTableHeaderRows}</TableHeader>
+        <MemoizedTableBody
+          tableData={memorizedTableData}
+          callbackedOnClick={callbackedOnClick}
+          memomizedHoverActions={memomizedHoverActions}
+        />
+      </>
+    );
+  }, [callbackedOnClick, memomizedHoverActions, memorizedTableData, memorizedTableHeaderRows]);
+
   return (
     <Box padding="spacing.5" overflow="auto" minHeight="400px">
       <TableComponent
         {...args}
         data={data}
-        defaultSelectedIds={['1', '3']}
-        onSelectionChange={console.log}
+        defaultSelectedIds={memoziedDefaultSelectedIds}
+        onSelectionChange={onSelectionChangeCallback}
         isFirstColumnSticky
         selectionType="single"
-        toolbar={
-          <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
-            <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2">
-                Export
-              </Button>
-              <Button>Refund</Button>
-            </TableToolbarActions>
-          </TableToolbar>
-        }
-        sortFunctions={{
-          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
-          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
-          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
-        }}
-        pagination={
-          <TablePagination
-            onPageChange={console.log}
-            defaultPageSize={10}
-            onPageSizeChange={console.log}
-            showPageSizePicker
-            showPageNumberSelector
-          />
-        }
+        // onSelectionChange={({ values }) => setSelected(values)}
+        selectionType="multiple"
+        // toolbar={<MemoziedToolbar />}
+        sortFunctions={memorziedSortFunctions}
+        pagination={memorizedPagination}
       >
-        {(tableData) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {tableData.map((tableItem, index) => (
-                <TableRow
-                  key={index}
-                  item={tableItem}
-                  hoverActions={
-                    <>
-                      <Button variant="tertiary" size="xsmall">
-                        View Details
-                      </Button>
-                      <IconButton
-                        icon={CheckIcon}
-                        isHighlighted
-                        accessibilityLabel="Approve"
-                        onClick={() => {
-                          console.log('Approved', tableItem.id);
-                        }}
-                      />
-                      <IconButton
-                        icon={CloseIcon}
-                        isHighlighted
-                        accessibilityLabel="Reject"
-                        onClick={() => {
-                          console.log('Rejected', tableItem.id);
-                        }}
-                      />
-                    </>
-                  }
-                  onClick={() => {
-                    console.log('where');
-                  }}
-                >
-                  <TableCell>
-                    <Code size="medium">{tableItem.paymentId}</Code>
-                  </TableCell>
-                  <TableEditableCell
-                    accessibilityLabel="Amount"
-                    placeholder="Enter text"
-                    successText="Amount is valid"
-                  />
-                  <TableCell>{tableItem.account}</TableCell>
-                  <TableCell>
-                    {tableItem.date?.toLocaleDateString('en-IN', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>{tableItem.method}</TableCell>
-                  <TableCell>
-                    <Badge
-                      size="medium"
-                      color={
-                        tableItem.status === 'Completed'
-                          ? 'positive'
-                          : tableItem.status === 'Pending'
-                          ? 'notice'
-                          : tableItem.status === 'Failed'
-                          ? 'negative'
-                          : 'primary'
-                      }
-                    >
-                      {tableItem.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            <TableFooter>
-              <TableFooterRow>
-                <TableFooterCell>Total</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                {args.selectionType === 'multiple' ? <TableFooterCell>-</TableFooterCell> : null}
-                <TableFooterCell>
-                  <Amount value={10} />
-                </TableFooterCell>
-              </TableFooterRow>
-            </TableFooter>
-          </>
-        )}
+        {tableComponentCallback}
       </TableComponent>
     </Box>
   );

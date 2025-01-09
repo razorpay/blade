@@ -1,4 +1,4 @@
-export { Table } from './Table';
+export { Table, TableVirtulized } from './Table';
 export { TableHeader, TableHeaderCell, TableHeaderRow } from './TableHeader';
 export { TableBody, TableCell, TableRow } from './TableBody';
 export { TableFooter, TableFooterCell, TableFooterRow } from './TableFooter';
