@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.1.1
+
+### Patch Changes
+
+- 6aae282a: chore(blade): change TabNavItem,TopNavActions background color & update examples
+- c676f3ed: fix(SideNav): empty padding in banner when banner component returns null
+
 ## 12.1.0
 
 ### Minor Changes
