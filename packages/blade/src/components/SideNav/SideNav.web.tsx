@@ -13,7 +13,7 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
 } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
@@ -21,6 +21,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { size as sizeTokens } from '~tokens/global';
 
 const {
   COLLAPSED,
@@ -96,14 +97,14 @@ const getL1MenuClassName = ({
 const BannerContainer = styled(BaseBox)((props) => {
   return {
     '&:not(:empty)': {
-      borderBottom: props.theme.border.width.thin,
+      borderBottom: makeBorderSize(props.theme.border.width.thin),
       borderBottomStyle: 'solid',
       borderBottomColor: props.theme.colors.surface.border.gray.muted,
-      borderRight: props.theme.border.width.thin,
+      borderRight: makeBorderSize(props.theme.border.width.thin),
       borderRightStyle: 'solid',
       borderRightColor: props.theme.colors.surface.border.gray.muted,
-      padding: props.theme.spacing[3],
-      maxHeight: '100px',
+      padding: makeSpace(props.theme.spacing[3]),
+      maxHeight: makeSize(sizeTokens['100']),
       width: '100%',
     },
   };
