@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': minor
+'@razorpay/blade': patch
 ---
 
-chore: change tabNavItem background color
+chore(blade): change TabNavItem background color
