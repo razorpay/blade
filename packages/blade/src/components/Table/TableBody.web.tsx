@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
 import { useTableContext } from './TableContext';
@@ -12,6 +12,7 @@ import type {
   TableBackgroundColors,
 } from './types';
 import getIn from '~utils/lodashButBetter/get';
+import isEqual from 'lodash/isEqual';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
@@ -26,6 +27,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import type { Theme } from '~components/BladeProvider';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import useWhyDidYouRender from '~utils/useWhyDidYouRender';
 
 const getTableRowBackgroundTransition = (theme: Theme): string => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
@@ -218,22 +220,31 @@ const StyledBody = styled(Body)<{
   };
 });
 
-const _TableBody = ({ children, ...rest }: TableBodyProps): React.ReactElement => {
-  const { showStripedRows, selectionType } = useTableContext();
-  const isSelectable = selectionType !== 'none';
+const _TableBody = memo(
+  ({ children, ...rest }: TableBodyProps): React.ReactElement => {
+    const { showStripedRows, selectionType } = useTableContext();
+    const isSelectable = selectionType !== 'none';
+    useWhyDidYouRender('TableBody', {
+      children,
+      ...rest,
+    });
 
-  return (
-    <StyledBody
-      $isSelectable={isSelectable}
-      $showStripedRows={showStripedRows}
-      $showBorderedCells={true}
-      {...metaAttribute({ name: MetaConstants.TableBody })}
-      {...makeAnalyticsAttribute(rest)}
-    >
-      {children}
-    </StyledBody>
-  );
-};
+    return (
+      <StyledBody
+        $isSelectable={isSelectable}
+        $showStripedRows={showStripedRows}
+        $showBorderedCells={true}
+        {...metaAttribute({ name: MetaConstants.TableBody })}
+        {...makeAnalyticsAttribute(rest)}
+      >
+        {children}
+      </StyledBody>
+    );
+  },
+  (prevProps, nextProps) => {
+    return isEqual(prevProps.children, nextProps.children);
+  },
+);
 
 const TableBody = assignWithoutSideEffects(_TableBody, {
   componentId: ComponentIds.TableBody,
@@ -440,101 +451,116 @@ const StyledRow = styled(Row)<{
   };
 });
 
-const _TableRow = <Item,>({
-  children,
-  item,
-  isDisabled,
-  onHover,
-  onClick,
-  hoverActions,
-  testID,
-  ...rest
-}: TableRowProps<Item>): React.ReactElement => {
-  const {
-    selectionType,
-    selectedRows,
-    toggleRowSelectionById,
-    setDisabledRows,
-    showBorderedCells,
-    setHasHoverActions,
-  } = useTableContext();
-  const isSelectable = selectionType !== 'none';
-  const isMultiSelect = selectionType === 'multiple';
-  const isSelected = selectedRows?.includes(item.id);
-  const hasHoverActions = Boolean(hoverActions);
+const _TableRow = memo(
+  <Item,>({
+    children,
+    item,
+    isDisabled,
+    onHover,
+    onClick,
+    hoverActions,
+    testID,
+    ...rest
+  }: TableRowProps<Item>): React.ReactElement => {
+    useWhyDidYouRender('TableRow', {
+      children,
+      item,
+      isDisabled,
+      onHover,
+      onClick,
+      hoverActions,
+      testID,
+      ...rest,
+    });
+    const {
+      selectionType,
+      selectedRows,
+      toggleRowSelectionById,
+      setDisabledRows,
+      showBorderedCells,
+      setHasHoverActions,
+    } = useTableContext();
+    const isSelectable = selectionType !== 'none';
+    const isMultiSelect = selectionType === 'multiple';
+    const isSelected = selectedRows?.includes(item.id);
+    const hasHoverActions = Boolean(hoverActions);
 
-  useEffect(() => {
-    if (isDisabled) {
-      setDisabledRows((prev) => [...prev, item.id]);
-    }
-  }, [isDisabled, item.id, setDisabledRows]);
+    useEffect(() => {
+      if (isDisabled) {
+        setDisabledRows((prev) => [...prev, item.id]);
+      }
+    }, [isDisabled, item.id, setDisabledRows]);
 
-  useIsomorphicLayoutEffect(() => {
-    if (hasHoverActions) {
-      setHasHoverActions(true);
-    }
-  }, [hasHoverActions]);
+    useIsomorphicLayoutEffect(() => {
+      if (hasHoverActions) {
+        setHasHoverActions(true);
+      }
+    }, [hasHoverActions]);
 
-  return (
-    <StyledRow
-      disabled={isDisabled}
-      $isSelectable={isDisabled ? false : isSelectable}
-      $isHoverable={isDisabled ? false : Boolean(onHover) || Boolean(onClick)}
-      $showBorderedCells={showBorderedCells}
-      item={item}
-      className={isDisabled ? 'disabled-row' : ''}
-      onMouseEnter={() => onHover?.({ item })}
-      onClick={() => onClick?.({ item })}
-      {...makeAccessible({ selected: isSelected })}
-      {...metaAttribute({ name: MetaConstants.TableRow, testID })}
-      {...makeAnalyticsAttribute(rest)}
-    >
-      {isMultiSelect && (
-        <TableCheckboxCell
-          isChecked={isSelected}
-          onChange={() => !isDisabled && toggleRowSelectionById(item.id)}
-          isDisabled={isDisabled}
-        />
-      )}
-      {children}
-      {hoverActions ? (
-        <TableCell _hasPadding={false}>
-          <BaseBox
-            className={classes.HOVER_ACTIONS}
-            position={{ base: 'relative', m: 'absolute' }}
-            top="spacing.0"
-            right="spacing.0"
-            height="100%"
-            flexShrink={0}
-            flexGrow={1}
-            width="max-content"
-          >
+    return (
+      <StyledRow
+        disabled={isDisabled}
+        $isSelectable={isDisabled ? false : isSelectable}
+        $isHoverable={isDisabled ? false : Boolean(onHover) || Boolean(onClick)}
+        $showBorderedCells={showBorderedCells}
+        item={item}
+        className={isDisabled ? 'disabled-row' : ''}
+        onMouseEnter={() => onHover?.({ item })}
+        onClick={() => onClick?.({ item })}
+        {...makeAccessible({ selected: isSelected })}
+        {...metaAttribute({ name: MetaConstants.TableRow, testID })}
+        {...makeAnalyticsAttribute(rest)}
+      >
+        {isMultiSelect && (
+          <TableCheckboxCell
+            isChecked={isSelected}
+            onChange={() => !isDisabled && toggleRowSelectionById(item.id)}
+            isDisabled={isDisabled}
+          />
+        )}
+        {children}
+        {hoverActions ? (
+          <TableCell _hasPadding={false}>
             <BaseBox
-              className={classes.HOVER_ACTIONS_LAYER2}
+              className={classes.HOVER_ACTIONS}
+              position={{ base: 'relative', m: 'absolute' }}
+              top="spacing.0"
+              right="spacing.0"
               height="100%"
+              flexShrink={0}
+              flexGrow={1}
               width="max-content"
-              display="flex"
-              alignItems="center"
             >
               <BaseBox
+                className={classes.HOVER_ACTIONS_LAYER2}
                 height="100%"
                 width="max-content"
-                className={classes.HOVER_ACTIONS_LAYER3}
                 display="flex"
                 alignItems="center"
-                paddingLeft={{ base: 'spacing.4', m: 'spacing.6' }}
-                paddingRight="spacing.4"
-                gap="spacing.3"
               >
-                {hoverActions}
+                <BaseBox
+                  height="100%"
+                  width="max-content"
+                  className={classes.HOVER_ACTIONS_LAYER3}
+                  display="flex"
+                  alignItems="center"
+                  paddingLeft={{ base: 'spacing.4', m: 'spacing.6' }}
+                  paddingRight="spacing.4"
+                  gap="spacing.3"
+                >
+                  {hoverActions}
+                </BaseBox>
               </BaseBox>
             </BaseBox>
-          </BaseBox>
-        </TableCell>
-      ) : null}
-    </StyledRow>
-  );
-};
+          </TableCell>
+        ) : null}
+      </StyledRow>
+    );
+  },
+  (prevProps, nextProps) => {
+    return isEqual(prevProps, nextProps);
+  },
+);
 
 const TableRow = assignWithoutSideEffects(_TableRow, {
   componentId: ComponentIds.TableRow,
