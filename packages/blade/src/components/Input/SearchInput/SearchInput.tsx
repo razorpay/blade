@@ -59,6 +59,12 @@ type SearchInputCommonProps = Pick<
    * @default true
    */
   showSearchIcon?: boolean;
+  /**
+   * Toggle the visibility of the clear button.
+   *
+   * @default false
+   */
+  hideClearButton?: boolean;
 } & StyledPropsBlade;
 
 /*
@@ -90,7 +96,9 @@ type SearchInputPropsWithLabel = {
 };
 
 type SearchInputProps = (SearchInputPropsWithA11yLabel | SearchInputPropsWithLabel) &
-  SearchInputCommonProps;
+  SearchInputCommonProps & {
+    hideClearButton?: boolean;
+  };
 
 // need to do this to tell TS to infer type as SearchInput of React Native and make it believe that `ref.current.clear()` exists
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -121,6 +129,9 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     testID,
     size = 'medium',
     showSearchIcon = true,
+
+    hideClearButton = false,
+
     ...rest
   },
   ref,
@@ -145,7 +156,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
       return <Spinner accessibilityLabel="Loading Content" color="primary" />;
     }
 
-    if (shouldShowClearButton) {
+    if (!hideClearButton && shouldShowClearButton) {
       return (
         <IconButton
           size="medium"
