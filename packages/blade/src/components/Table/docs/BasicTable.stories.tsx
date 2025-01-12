@@ -72,7 +72,7 @@ export default {
 } as Meta<TableProps<unknown>>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 50 }, (_, i) => ({
+  ...Array.from({ length: 400 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -193,8 +193,13 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
         defaultSelectedIds={['1', '3']}
         onSelectionChange={console.log}
         isFirstColumnSticky
-        selectionType="single"
         height="100%"
+        selectionType="multiple"
+        // eslint-disable-next-line react/jsx-no-duplicate-props
+        onSelectionChange={({ selectedIds }) => {
+          console.log(selectedIds);
+          // setSelectedItems(data.nodes.filter((node) => selectedIds.includes(node.id)));
+        }}
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
