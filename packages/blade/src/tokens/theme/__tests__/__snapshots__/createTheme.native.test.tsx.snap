@@ -1189,6 +1189,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   "a100": "hsla(332, 100%, 26%, 0.12)",
   "a150": "hsla(332, 100%, 26%, 0.09)",
   "a200": "hsla(332, 100%, 26%, 0.18)",
+  "a400": "hsla(332, 100%, 26%, 0.24)",
   "a50": "hsla(332, 100%, 26%, 0.09)",
 }
 `;
@@ -2558,6 +2559,7 @@ exports[`createTheme should create a theme with the correct brand colors 5`] = `
   "a100": "hsla(57, 100%, 52%, 0.12)",
   "a150": "hsla(57, 100%, 52%, 0.09)",
   "a200": "hsla(57, 100%, 52%, 0.18)",
+  "a400": "hsla(57, 100%, 52%, 0.24)",
   "a50": "hsla(57, 100%, 52%, 0.09)",
 }
 `;
