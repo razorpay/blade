@@ -476,7 +476,6 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
               <ActionListItem
                 trailing={<ActionListItemText>⌘ + S</ActionListItemText>}
                 leading={<ActionListItemIcon icon={HomeIcon} />}
-                description={fruit.description}
                 key={fruit.name}
                 title={fruit.name}
                 value={fruit.name}

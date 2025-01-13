@@ -148,7 +148,8 @@
     "@mantine/core": "6.0.21",
     "@mantine/dates": "6.0.21",
     "@mantine/hooks": "6.0.21",
-    "dayjs": "1.11.10"
+    "dayjs": "1.11.10",
+    "react-window": "1.8.6"
   },
   "devDependencies": {
     "http-server": "14.1.1",

@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import React from 'react';
+import { FixedSizeList as VirtualizedList } from 'react-window';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import type { SectionData } from './actionListUtils';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
@@ -18,6 +19,7 @@ type ActionListBoxProps = {
 
 const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
   ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...rest }, ref) => {
+    const items = React.Children.toArray(childrenWithId); // Convert children to an array
     const { isInBottomSheet } = useBottomSheetContext();
 
     return (
@@ -30,12 +32,21 @@ const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
         })}
         {...makeAnalyticsAttribute(rest)}
       >
-        {childrenWithId}
+        {/* {childrenWithId} */}
+        <VirtualizedList height={284} width="100%" itemSize={40} itemCount={items.length}>
+          {({ index, style }) => (
+            <div style={style} key={`virtual-item-${index}`}>
+              {items[index]}
+            </div>
+          )}
+        </VirtualizedList>
       </StyledListBoxWrapper>
     );
   },
 );
 
-const ActionListBox = assignWithoutSideEffects(_ActionListBox, { displayName: 'ActionListBox' });
+const ActionListBox = assignWithoutSideEffects(React.memo(_ActionListBox), {
+  displayName: 'ActionListBox',
+});
 
 export { ActionListBox };
