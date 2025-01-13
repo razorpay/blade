@@ -381,7 +381,7 @@ export const InternalSectionListPerformance = (): React.ReactElement => {
     <Dropdown selectionType="multiple">
       <SelectInput label="Select fruits" />
       <DropdownOverlay>
-        <ActionList>
+        <ActionList isVirtualized>
           <ActionListItem title="Apples" value="Apples" />
           <ActionListItem title="Appricots" value="Appricots" />
           <ActionListItem title="Abc" value="Abc" />
@@ -466,7 +466,7 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
     <Dropdown selectionType="multiple">
       <SelectInput label="Select fruits" />
       <DropdownOverlay>
-        <ActionList>
+        <ActionList isVirtualized>
           {fruits.map((fruit) => {
             if (typeof fruit === 'string') {
               return <ActionListItem key={fruit} title={fruit} value={fruit} />;

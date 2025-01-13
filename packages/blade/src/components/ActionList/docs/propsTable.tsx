@@ -19,6 +19,7 @@ const actionListPropsTables: {
         <ScrollLink href="#actionlistsection">&lt;ActionListSection[] /&gt;</ScrollLink>
       </>
     ),
+    isVirtualized: 'boolean',
   },
   ActionListItem: {
     title: 'string',

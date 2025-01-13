@@ -2,7 +2,7 @@
 import React from 'react';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
-import { ActionListBox } from './ActionListBox';
+import { ActionListBox as ActionListNormalBox, ActionListVirtualizedBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { ActionListNoResults } from './ActionListNoResults';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -17,10 +17,16 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ActionListProps = {
   children: React.ReactNode[];
+  isVirtualized?: boolean;
 } & TestID &
   DataAnalyticsAttribute;
 
-const _ActionList = ({ children, testID, ...rest }: ActionListProps): React.ReactElement => {
+const _ActionList = ({
+  children,
+  testID,
+  isVirtualized,
+  ...rest
+}: ActionListProps): React.ReactElement => {
   const {
     setOptions,
     actionListItemRef,
@@ -30,6 +36,8 @@ const _ActionList = ({ children, testID, ...rest }: ActionListProps): React.Reac
     hasFooterAction,
     filteredValues,
   } = useDropdown();
+
+  const ActionListBox = isVirtualized ? ActionListVirtualizedBox : ActionListNormalBox;
 
   const { isInBottomSheet } = useBottomSheetContext();
 
