@@ -16,6 +16,7 @@ export type ColorChromaticScale = Readonly<{
   a100: string;
   a150: string;
   a200: string;
+  a400: string;
 }>;
 
 export type ColorNeutralGrayScale = Readonly<{
@@ -64,6 +65,9 @@ export type Color = Readonly<{
     sea: ColorChromaticScale;
     cloud: ColorChromaticScale;
     forest: ColorChromaticScale;
+    orchid: ColorChromaticScale;
+    magenta: ColorChromaticScale;
+    topaz: ColorChromaticScale;
   };
   neutral: {
     blueGrayLight: ColorNeutralGrayScale;
