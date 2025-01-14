@@ -87,6 +87,13 @@ type ActionListItemProps = {
    * @private
    */
   _index?: number;
+
+  /**
+   * Internal prop used in virtulization. It can be removed / changed without notice so do not use
+   *
+   * @private
+   */
+  _style?: React.CSSProperties;
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -348,10 +355,11 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     }
   }, [props.intent, dropdownTriggerer]);
 
+  const isVisible = hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true;
+
   return (
-    // We use this context to change the color of subcomponents like ActionListItemIcon, ActionListItemText, etc
     <BaseMenuItem
-      isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
+      isVisible={isVisible}
       as={!isReactNative() ? renderOnWebAs : undefined}
       id={`${dropdownBaseId}-${props._index}`}
       tabIndex={-1}
@@ -408,6 +416,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       selectionType={selectionType}
       color={props.intent}
       isKeydownPressed={isKeydownPressed}
+      style={props._style}
     />
   );
 };
