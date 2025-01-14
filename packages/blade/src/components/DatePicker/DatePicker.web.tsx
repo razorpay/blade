@@ -66,7 +66,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   picker,
   onPickerChange,
   zIndex = componentZIndices.popover,
-  dateFormat,
+  format,
   inputPlaceHolder,
   ...props
 }: DatePickerProps<Type> & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
@@ -85,9 +85,9 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       onPickerChange?.(picker);
     },
   });
-  const finalDateFormat = React.useMemo(() => {
-    if (dateFormat) {
-      return dateFormat;
+  const finalFormat = React.useMemo(() => {
+    if (format) {
+      return format;
     }
     if (picker === 'day') {
       return 'DD';
@@ -99,7 +99,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       return 'YYYY';
     }
     return 'DD/MM/YYYY';
-  }, [dateFormat, picker]);
+  }, [format, picker]);
 
   const finalInputPlaceHolder = React.useMemo(() => {
     if (inputPlaceHolder) {
@@ -337,7 +337,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             validationState={validationState}
             autoFocus={autoFocus}
             necessityIndicator={necessityIndicator}
-            dateFormat={finalDateFormat}
+            format={finalFormat}
             placeholder={finalInputPlaceHolder}
             {...makeAnalyticsAttribute(props)}
           />

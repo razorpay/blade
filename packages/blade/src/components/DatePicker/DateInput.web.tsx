@@ -92,7 +92,7 @@ const _DatePickerInput = (
     successText,
     errorText,
     helpText,
-    dateFormat,
+    format,
     placeholder,
     ...props
   }: DatePickerInputProps,
@@ -110,7 +110,7 @@ const _DatePickerInput = (
   if (selectionType == 'single') {
     const dateValue = getFormattedDate({
       date,
-      format: dateFormat,
+      format,
       labelSeparator: '-',
       locale,
       type: 'default',
@@ -128,7 +128,7 @@ const _DatePickerInput = (
           id="start-date"
           labelPosition={labelPosition}
           label={label}
-          placeholder={placeholder || dateFormat}
+          placeholder={placeholder || format}
           popupId={referenceProps['aria-controls']}
           isPopupExpanded={referenceProps['aria-expanded']}
           size={size}
@@ -165,14 +165,14 @@ const _DatePickerInput = (
     const startValue = getFormattedDate({
       type: 'default',
       date: date[0],
-      format: dateFormat,
+      format,
       labelSeparator: '-',
       locale,
     });
     const endValue = getFormattedDate({
       type: 'default',
       date: date[1],
-      format: dateFormat,
+      format,
       labelSeparator: '-',
       locale,
     });
@@ -198,7 +198,7 @@ const _DatePickerInput = (
             leadingIcon={CalendarIcon}
             label={label?.start}
             labelPosition={labelPosition}
-            placeholder={placeholder || dateFormat}
+            placeholder={placeholder}
             popupId={referenceProps['aria-controls']}
             isPopupExpanded={referenceProps['aria-expanded']}
             size={size}
@@ -236,7 +236,7 @@ const _DatePickerInput = (
           />
           <DateInput
             id="end-date"
-            placeholder={placeholder || dateFormat}
+            placeholder={placeholder}
             leadingIcon={CalendarIcon}
             label={shouldRenderEndLabel()}
             labelPosition={isLabelPositionLeft ? undefined : labelPosition}
