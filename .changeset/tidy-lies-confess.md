@@ -9,6 +9,6 @@ feat(ActionList): add Virtualization in ActionList
 </ActionList>
 ```
 
-> **Note**
+> [!NOTE]
 >
 > Current version only supports virtulization of fixed height list where items do not have descriptions. We'll be adding support for dynamic height lists in future versions
