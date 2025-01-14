@@ -162,6 +162,14 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      */
     onApply?: Type extends 'single' ? (value: DateValue) => void : (value: DatesRangeValue) => void;
     labelPosition?: BaseInputProps['labelPosition'];
+    /**
+     * Sets the date format to be displayed in the input field.
+     */
+    dateFormat?: string;
+    /**
+     *  Placeholder text for the datepicker input , when no date is selected. Default value is formatType.
+     */
+    inputPlaceHolder?: string;
   };
 
 type DatePickerRangeInputProps = {
@@ -195,7 +203,10 @@ type DatePickerCommonInputProps = {
   FormInputValidationProps;
 
 type DatePickerInputProps = DatePickerCommonInputProps &
-  (DatePickerRangeInputProps | DatePickerSingleInputProps);
+  (DatePickerRangeInputProps | DatePickerSingleInputProps) & {
+    dateFormat: string;
+    placeholder?: string;
+  };
 
 export type {
   CalendarProps,

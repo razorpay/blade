@@ -66,6 +66,8 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   picker,
   onPickerChange,
   zIndex = componentZIndices.popover,
+  dateFormat = 'DD/MM/YYYY',
+  inputPlaceHolder,
   ...props
 }: DatePickerProps<Type> & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const { i18nState } = useI18nContext();
@@ -304,6 +306,8 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             validationState={validationState}
             autoFocus={autoFocus}
             necessityIndicator={necessityIndicator}
+            dateFormat={dateFormat}
+            placeholder={inputPlaceHolder}
             {...makeAnalyticsAttribute(props)}
           />
           {isMobile ? (
