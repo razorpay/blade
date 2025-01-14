@@ -164,10 +164,12 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     labelPosition?: BaseInputProps['labelPosition'];
     /**
      * Sets the date format to be displayed in the input field.
+     * @default 'DD/MM/YYYY' if pickerType is 'date' then 'DD', if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
      */
     dateFormat?: string;
     /**
-     *  Placeholder text for the datepicker input , when no date is selected. Default value is formatType.
+     *  Placeholder text for the datepicker input , when no date is selected.
+     * @default 'DD/MM/YYYY' if pickerType is 'date' then 'DD', if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
      */
     inputPlaceHolder?: string;
   };
