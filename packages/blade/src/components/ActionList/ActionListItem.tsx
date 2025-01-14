@@ -87,13 +87,6 @@ type ActionListItemProps = {
    * @private
    */
   _index?: number;
-
-  /**
-   * Internal prop used in virtulization. It can be removed / changed without notice so do not use
-   *
-   * @private
-   */
-  _style?: React.CSSProperties;
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -416,7 +409,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       selectionType={selectionType}
       color={props.intent}
       isKeydownPressed={isKeydownPressed}
-      style={props._style}
     />
   );
 };

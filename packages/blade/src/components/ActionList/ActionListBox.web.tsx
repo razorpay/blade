@@ -70,14 +70,53 @@ const getVirtualItemParams = ({
   };
 };
 
+const useFilteredItems = (
+  children: React.ReactNode[],
+): {
+  itemData: React.ReactNode[];
+  itemCount: number;
+} => {
+  const childrenArray = React.Children.toArray(children); // Convert children to an array
+
+  const { filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer } = useDropdown();
+
+  const items = React.useMemo(() => {
+    const hasAutoComplete =
+      hasAutoCompleteInBottomSheetHeader ||
+      dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+
+    if (!hasAutoComplete) {
+      return childrenArray;
+    }
+
+    // @ts-expect-error: props does exist
+    const filteredItems = childrenArray.filter((item) => filteredValues.includes(item.props.value));
+    return filteredItems;
+  }, [filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, childrenArray]);
+
+  return {
+    itemData: items,
+    itemCount: items.length,
+  };
+};
+
+const VirtualListItem = ({
+  index,
+  style,
+  data,
+}: {
+  index: number;
+  style: React.CSSProperties;
+  data: React.ReactNode[];
+}): React.ReactElement => {
+  return <div style={style}>{data[index]}</div>;
+};
+
 const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
   ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...rest }, ref) => {
     const items = React.Children.toArray(childrenWithId); // Convert children to an array
     const { isInBottomSheet } = useBottomSheetContext();
-    const { filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer } = useDropdown();
-    const hasAutoComplete =
-      hasAutoCompleteInBottomSheetHeader ||
-      dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+    const { itemData, itemCount } = useFilteredItems(items);
 
     const isMobile = useIsMobile();
     const { theme } = useTheme();
@@ -86,12 +125,6 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [theme.name, isMobile],
     );
-
-    const isVisible = (itemValue) =>
-      hasAutoComplete && filteredValues ? filteredValues.includes(itemValue) : true;
-
-    // const filteredItems = filteredValues.map((value) => items.find((item) => item.props.value === value));
-    const filteredItems = items.filter((item) => isVisible(item.props.value));
 
     return (
       <StyledListBoxWrapper
@@ -103,17 +136,21 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
         })}
         {...makeAnalyticsAttribute(rest)}
       >
-        <VirtualizedList
-          height={actionListBoxHeight}
-          width="100%"
-          itemSize={itemHeight}
-          itemCount={hasAutoComplete ? filteredItems.length : items.length}
-          itemData={hasAutoComplete ? filteredItems : items}
-        >
-          {({ index, style, data }) =>
-            React.cloneElement(data[index], { _style: style, key: `virtual-item-${index}` })
-          }
-        </VirtualizedList>
+        {itemCount < 30 ? (
+          childrenWithId
+        ) : (
+          <VirtualizedList
+            height={actionListBoxHeight}
+            width="100%"
+            itemSize={itemHeight}
+            itemCount={itemCount}
+            itemData={itemData}
+            // @ts-expect-error: props does exist
+            itemKey={(index) => itemData[index]?.props.value}
+          >
+            {VirtualListItem}
+          </VirtualizedList>
+        )}
       </StyledListBoxWrapper>
     );
   },
