@@ -13,6 +13,8 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { getItemHeight } from '~components/BaseMenu/BaseMenuItem/tokens';
 import { useTheme } from '~utils';
 import type { Theme } from '~components/BladeProvider';
+import { useDropdown } from '~components/Dropdown/useDropdown';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -72,6 +74,11 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
   ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...rest }, ref) => {
     const items = React.Children.toArray(childrenWithId); // Convert children to an array
     const { isInBottomSheet } = useBottomSheetContext();
+    const { filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer } = useDropdown();
+    const hasAutoComplete =
+      hasAutoCompleteInBottomSheetHeader ||
+      dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+
     const isMobile = useIsMobile();
     const { theme } = useTheme();
     const { itemHeight, actionListBoxHeight } = React.useMemo(
@@ -80,7 +87,11 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       [theme.name, isMobile],
     );
 
-    console.log({ itemHeight, actionListBoxHeight });
+    const isVisible = (itemValue) =>
+      hasAutoComplete && filteredValues ? filteredValues.includes(itemValue) : true;
+
+    // const filteredItems = filteredValues.map((value) => items.find((item) => item.props.value === value));
+    const filteredItems = items.filter((item) => isVisible(item.props.value));
 
     return (
       <StyledListBoxWrapper
@@ -96,13 +107,12 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
           height={actionListBoxHeight}
           width="100%"
           itemSize={itemHeight}
-          itemCount={items.length}
+          itemCount={hasAutoComplete ? filteredItems.length : items.length}
+          itemData={hasAutoComplete ? filteredItems : items}
         >
-          {({ index, style }) => (
-            <div style={style} key={`virtual-item-${index}`}>
-              {items[index]}
-            </div>
-          )}
+          {({ index, style, data }) =>
+            React.cloneElement(data[index], { _style: style, key: `virtual-item-${index}` })
+          }
         </VirtualizedList>
       </StyledListBoxWrapper>
     );

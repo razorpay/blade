@@ -16,7 +16,7 @@ import {
 } from './stories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
 import {
   ActionList,
   ActionListItem,
@@ -464,7 +464,7 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
 
   return (
     <Dropdown selectionType="multiple">
-      <SelectInput label="Select fruits" />
+      <AutoComplete label="Select fruits" />
       <DropdownOverlay>
         <ActionList isVirtualized>
           {fruits.map((fruit) => {
