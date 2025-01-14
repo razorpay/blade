@@ -120,25 +120,28 @@ const data: TableData<Item> = {
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box padding="spacing.5" overflow="auto" height="600px" width="800px">
+      <> total rows : {nodes.length}</>
       <TableComponent
         {...args}
         data={data}
         onSelectionChange={console.log}
-        selectionType="single"
+        selectionType="multiple"
         height="100%"
       >
         {(tableData) => (
           <TableVirtulized
             tableData={tableData}
             header={() => (
-              <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                <TableHeaderCell headerKey="STATUS">Status demo</TableHeaderCell>
-              </TableHeaderRow>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                  <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                  <TableHeaderCell headerKey="STATUS">Status demo</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
             )}
             body={(tableItem, index) => (
               <TableRow

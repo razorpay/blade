@@ -542,7 +542,7 @@ const TableVirtulized = ({ header, body, tableData }) => {
     <Virtualized
       tableList={tableData}
       rowHeight={57}
-      header={() => header}
+      header={header}
       body={body}
     />
   );

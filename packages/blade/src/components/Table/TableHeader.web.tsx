@@ -70,8 +70,12 @@ const SortIcon = ({
 
 const StyledHeader = styled(Header)({
   '&&&': {
+    display: 'flex',
+    justifyContent: 'space-between',
     '& tr:first-child th': {
       borderTop: 'none',
+      display: 'flex',
+      justifyContent: 'space-between',
     },
   },
 });
