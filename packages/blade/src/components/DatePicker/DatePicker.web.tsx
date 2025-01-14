@@ -237,6 +237,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             forceRerender();
           }}
           picker={_picker}
+          showLevelChangeLink={!picker}
           onPickerChange={(picker) => {
             setPicker(() => picker);
             forceRerender();
