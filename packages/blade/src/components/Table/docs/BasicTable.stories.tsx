@@ -26,6 +26,12 @@ import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { CheckIcon, CloseIcon } from '~components/Icons';
 import { TableVirtulized } from '../Table.web';
+// import {
+//   HeaderCellSelect,
+//   useRowSelect,
+//   CellSelect,
+//   SelectTypes,
+// } from '@table-library/react-table-library/select';
 
 export default {
   title: 'Components/Table',
@@ -113,7 +119,7 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
-    <Box padding="spacing.5" overflow="auto" height="200px">
+    <Box padding="spacing.5" overflow="auto" height="600px" width="800px">
       <TableComponent
         {...args}
         data={data}
@@ -131,7 +137,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
                 <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
                 <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                <TableHeaderCell headerKey="STATUS">Status demo</TableHeaderCell>
               </TableHeaderRow>
             )}
             body={(tableItem, index) => (

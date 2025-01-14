@@ -366,11 +366,13 @@ const StyledRow = styled(Row)<{
   return {
     '&&&': {
       backgroundColor: 'transparent',
+      display: 'flex',
       '& .cell-wrapper': $showBorderedCells
         ? {
             borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
             borderRightStyle: 'solid',
             borderRightColor: getIn(theme.colors, tableRow.borderColor),
+            display: 'flex',
           }
         : undefined,
       '& td:last-child .cell-wrapper': {
@@ -462,6 +464,13 @@ const _TableRow = <Item,>({
   const isMultiSelect = selectionType === 'multiple';
   const isSelected = selectedRows?.includes(item.id);
   const hasHoverActions = Boolean(hoverActions);
+  console.log({
+    isSelectable,
+    isMultiSelect,
+    isSelected,
+    hasHoverActions,
+    hoverActions,
+  });
 
   useEffect(() => {
     if (isDisabled) {

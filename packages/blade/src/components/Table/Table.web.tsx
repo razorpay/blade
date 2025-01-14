@@ -538,7 +538,14 @@ const Table = assignWithoutSideEffects(_Table, {
 const TableVirtulized = ({ header, body, tableData }) => {
   console.log({ header, body });
 
-  return <Virtualized tableList={tableData} rowHeight={57} header={() => header} body={body} />;
+  return (
+    <Virtualized
+      tableList={tableData}
+      rowHeight={57}
+      header={() => header}
+      body={body}
+    />
+  );
 };
 
 export { Table, TableVirtulized };

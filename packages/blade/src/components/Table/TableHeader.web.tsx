@@ -212,6 +212,8 @@ const StyledHeaderRow = styled(HeaderRow)<{ $showBorderedCells: boolean }>(
           borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
           borderRightColor: getIn(theme.colors, tableRow.borderColor),
           borderRightStyle: 'solid',
+          display: 'flex',
+          justifyContent: 'space-between',
         }
       : undefined,
     '& th:last-child ': {
