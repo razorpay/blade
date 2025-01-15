@@ -48,6 +48,9 @@ const ActionListBox = assignWithoutSideEffects(React.memo(_ActionListBox), {
   displayName: 'ActionListBox',
 });
 
+/**
+ * Returns the height of item and height of container based on theme and device
+ */
 const getVirtualItemParams = ({
   theme,
   isMobile,
@@ -70,6 +73,9 @@ const getVirtualItemParams = ({
   };
 };
 
+/**
+ * Takes the children (ActionListItem) and returns the filtered items based on `filteredValues` state
+ */
 const useFilteredItems = (
   children: React.ReactNode[],
 ): {
@@ -136,7 +142,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
         })}
         {...makeAnalyticsAttribute(rest)}
       >
-        {itemCount < 30 ? (
+        {itemCount < 10 ? (
           childrenWithId
         ) : (
           <VirtualizedList
