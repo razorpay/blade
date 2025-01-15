@@ -66,7 +66,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   picker,
   onPickerChange,
   zIndex = componentZIndices.popover,
-  format,
+  format = 'DD/MM/YYYY',
   inputPlaceHolder,
   ...props
 }: DatePickerProps<Type> & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
@@ -88,9 +88,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const finalFormat = React.useMemo(() => {
     if (format) {
       return format;
-    }
-    if (picker === 'day') {
-      return 'DD';
     }
     if (picker === 'month') {
       return 'MMMM';
