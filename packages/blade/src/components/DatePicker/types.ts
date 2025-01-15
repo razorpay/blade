@@ -169,7 +169,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     format?: 'DD/MM/YYYY' | 'MMM' | 'MMMM' | 'YYYY';
     /**
      *  Placeholder text for the datepicker input , when no date is selected.
-     * @default 'DD/MM/YYYY' if pickerType is 'date' then 'DD', if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
+     * @default 'DD/MM/YYYY'  if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
      */
     inputPlaceHolder?: string;
   };
