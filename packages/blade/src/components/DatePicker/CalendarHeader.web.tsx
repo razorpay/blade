@@ -14,6 +14,7 @@ type CalendarHeaderProps = {
   isRange: boolean;
   date: DateValue | DatesRangeValue;
   pickerType: PickerType;
+  showLevelChangeLink?: boolean;
   onNextMonth: () => void;
   onPreviousMonth: () => void;
   onNextYear: () => void;
@@ -21,6 +22,35 @@ type CalendarHeaderProps = {
   onNextDecade: () => void;
   onPreviousDecade: () => void;
   onLevelChange: (level: MantineCalendarLevel) => void;
+};
+const CalendarLevelIndicator = ({
+  onClick,
+  showLevelChangeLink,
+  accessibilityLabel,
+  text,
+}: {
+  onClick: () => void;
+  showLevelChangeLink?: boolean;
+  accessibilityLabel: string;
+  text: string;
+}): React.ReactElement => {
+  return showLevelChangeLink ? (
+    <Link
+      onClick={onClick}
+      size="large"
+      variant="button"
+      color="neutral"
+      iconPosition="right"
+      icon={ChevronDownIcon}
+      accessibilityLabel={accessibilityLabel}
+    >
+      {text}
+    </Link>
+  ) : (
+    <Text size="large" weight="medium" color="interactive.text.neutral.normal">
+      {text}
+    </Text>
+  );
 };
 
 const CalendarHeader = ({
@@ -34,7 +64,10 @@ const CalendarHeader = ({
   onPreviousYear,
   onPreviousDecade,
   onLevelChange,
-}: CalendarHeaderProps): React.ReactElement => {
+  showLevelChangeLink,
+}: CalendarHeaderProps & {
+  showLevelChangeLink?: boolean;
+}): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
 
@@ -135,34 +168,21 @@ const CalendarHeader = ({
       ) : (
         <Box display="flex" gap="spacing.5" alignItems="center">
           {pickerType === 'day' && (
-            <Link
-              onClick={() => {
-                onLevelChange('year');
-              }}
-              size="large"
-              variant="button"
-              color="neutral"
-              iconPosition="right"
-              icon={ChevronDownIcon}
+            <CalendarLevelIndicator
+              onClick={() => onLevelChange('month')}
+              showLevelChangeLink={showLevelChangeLink}
               accessibilityLabel="Change month"
-            >
-              {month} {year}
-            </Link>
+              text={`${month} ${year}`}
+            />
           )}
+
           {pickerType === 'month' && (
-            <Link
-              onClick={() => {
-                onLevelChange('decade');
-              }}
-              size="large"
-              variant="button"
-              color="neutral"
-              iconPosition="right"
-              icon={ChevronDownIcon}
+            <CalendarLevelIndicator
+              onClick={() => onLevelChange('decade')}
+              showLevelChangeLink={showLevelChangeLink}
               accessibilityLabel="Change decade"
-            >
-              {year}
-            </Link>
+              text={year}
+            />
           )}
           {pickerType === 'year' && (
             <Text size="large" weight="medium" color="interactive.text.neutral.normal">
