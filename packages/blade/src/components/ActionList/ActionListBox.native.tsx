@@ -74,4 +74,4 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
 
 const ActionListBox = assignWithoutSideEffects(_ActionListBox, { displayName: 'ActionListBox' });
 
-export { ActionListBox };
+export { ActionListBox, ActionListBox as ActionListVirtualizedBox };

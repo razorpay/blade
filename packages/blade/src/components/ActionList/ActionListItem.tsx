@@ -348,10 +348,11 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     }
   }, [props.intent, dropdownTriggerer]);
 
+  const isVisible = hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true;
+
   return (
-    // We use this context to change the color of subcomponents like ActionListItemIcon, ActionListItemText, etc
     <BaseMenuItem
-      isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
+      isVisible={isVisible}
       as={!isReactNative() ? renderOnWebAs : undefined}
       id={`${dropdownBaseId}-${props._index}`}
       tabIndex={-1}
