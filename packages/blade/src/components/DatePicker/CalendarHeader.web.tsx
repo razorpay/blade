@@ -169,7 +169,7 @@ const CalendarHeader = ({
         <Box display="flex" gap="spacing.5" alignItems="center">
           {pickerType === 'day' && (
             <CalendarLevelIndicator
-              onClick={() => onLevelChange('month')}
+              onClick={() => onLevelChange('year')}
               showLevelChangeLink={showLevelChangeLink}
               accessibilityLabel="Change month"
               text={`${month} ${year}`}
