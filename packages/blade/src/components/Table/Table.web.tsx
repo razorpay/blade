@@ -3,7 +3,6 @@ import { Table as ReactTable } from '@table-library/react-table-library/table';
 import { useTheme as useTableTheme } from '@table-library/react-table-library/theme';
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
 import { useSort } from '@table-library/react-table-library/sort';
-import { Virtualized } from '@table-library/react-table-library/virtualized';
 import { usePagination } from '@table-library/react-table-library/pagination';
 import {
   SelectClickTypes,
@@ -44,6 +43,7 @@ import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { Virtualized } from '@table-library/react-table-library/virtualized';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -57,8 +57,26 @@ const rowSelectType: Record<
 // Get the number of TableHeaderCell components.
 // This is very complicated but the only way to iterate through the structure and get number of header cells.
 // Assuming number of header cells is the same as number of columns
-const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): number => {
+const getTableHeaderCellCount = (
+  children: (data: []) => React.ReactElement,
+  isVirtualized: boolean,
+): number => {
   const tableRootComponent = children([]);
+  if (isVirtualized) {
+    if (React.isValidElement(tableRootComponent)) {
+      console.log('tableRootComponent', tableRootComponent);
+      if (React.isValidElement(tableRootComponent.props.header())) {
+        const tableHeaderRow = tableRootComponent.props.header().props.children;
+        if (React.isValidElement(tableHeaderRow)) {
+          const tableHeaderCells = tableHeaderRow.props.children;
+          return tableHeaderCells.length;
+        }
+      }
+      // const tableHeaderArray = tableRootComponent.props.header().props.children;
+      // return tableHeaderArray;
+    }
+  }
+
   if (tableRootComponent && React.isValidElement(tableRootComponent)) {
     const tableComponentArray = React.Children.toArray(tableRootComponent);
     if (React.isValidElement(tableComponentArray[0])) {
@@ -174,7 +192,7 @@ const _Table = <Item,>({
   });
 
   // Table Theme
-  const columnCount = getTableHeaderCellCount(children);
+  const columnCount = getTableHeaderCellCount(children, true);
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
     ? `
   &:nth-of-type(1) {
@@ -435,6 +453,8 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      columnCount,
+      gridTemplateColumns,
     }),
     [
       selectionType,
@@ -443,8 +463,10 @@ const _Table = <Item,>({
       toggleRowSelectionById,
       toggleAllRowsSelection,
       deselectAllRows,
+      gridTemplateColumns,
       rowDensity,
       toggleSort,
+      columnCount,
       currentSortedState,
       setPaginationPage,
       setPaginationRowSize,
@@ -535,17 +557,8 @@ const Table = assignWithoutSideEffects(_Table, {
   componentId: ComponentIds.Table,
 });
 
-const TableVirtulized = ({ header, body, tableData }) => {
-  console.log({ header, body });
+const VirtualizedTable = assignWithoutSideEffects(_Table, {
+  componentId: ComponentIds.Table,
+});
 
-  return (
-    <Virtualized
-      tableList={tableData}
-      rowHeight={57}
-      header={header}
-      body={body}
-    />
-  );
-};
-
-export { Table, TableVirtulized };
+export { Table, VirtualizedTable };

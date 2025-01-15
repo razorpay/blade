@@ -25,7 +25,8 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { CheckIcon, CloseIcon } from '~components/Icons';
-import { TableVirtulized } from '../Table.web';
+import { TableVirtulized } from '../TableBody.web';
+import { VirtualizedTable } from "../Table.web";
 // import {
 //   HeaderCellSelect,
 //   useRowSelect,
@@ -119,9 +120,9 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
-    <Box padding="spacing.5" overflow="auto" height="600px" width="800px">
+    <Box padding="spacing.5" overflow="auto" height="1000px" width="1000px">
       <> total rows : {nodes.length}</>
-      <TableComponent
+      <VirtualizedTable
         {...args}
         data={data}
         onSelectionChange={console.log}
@@ -141,6 +142,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         {(tableData) => (
           <TableVirtulized
             tableData={tableData}
+            rowHeight={57}
+            // header={()=>{}}
             header={() => (
               <TableHeader>
                 <TableHeaderRow>
@@ -198,7 +201,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
             )}
           />
         )}
-      </TableComponent>
+      </VirtualizedTable>
     </Box>
   );
 };

@@ -70,8 +70,6 @@ const SortIcon = ({
 
 const StyledHeader = styled(Header)({
   '&&&': {
-    display: 'flex',
-    justifyContent: 'space-between',
     '& tr:first-child th': {
       borderTop: 'none',
       display: 'flex',
@@ -209,15 +207,35 @@ const TableHeaderCellCheckbox = ({
   );
 };
 
-const StyledHeaderRow = styled(HeaderRow)<{ $showBorderedCells: boolean }>(
-  ({ theme, $showBorderedCells }) => ({
+const StyledHeaderRow = styled(HeaderRow)<{
+  $showBorderedCells: boolean;
+  $gridTemplateColumns: string | undefined;
+  $hasHoverActions: boolean;
+  $selectionType: TableProps<unknown>['selectionType'];
+  $columnCount: number;
+}>(
+  ({
+    theme,
+    $showBorderedCells,
+    $gridTemplateColumns,
+    $hasHoverActions,
+    $selectionType,
+    $columnCount,
+  }) => ({
     '& th': $showBorderedCells
       ? {
           borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
           borderRightColor: getIn(theme.colors, tableRow.borderColor),
           borderRightStyle: 'solid',
-          display: 'flex',
-          justifyContent: 'space-between',
+          //TODO: add check to only add this for virtalized tables
+          display: 'grid',
+          gridTemplateColumns: $gridTemplateColumns
+            ? `${$gridTemplateColumns} ${$hasHoverActions ? 'min-content' : ''}`
+            : ` ${
+                $selectionType === 'multiple' ? 'min-content' : ''
+              } repeat(${$columnCount},minmax(100px, 1fr)) ${
+                $hasHoverActions ? 'min-content' : ''
+              } !important;`,
         }
       : undefined,
     '& th:last-child ': {
@@ -240,6 +258,8 @@ const _TableHeaderRow = ({
     setHeaderRowDensity,
     showBorderedCells,
     hasHoverActions,
+    gridTemplateColumns,
+    columnCount,
   } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
@@ -254,6 +274,10 @@ const _TableHeaderRow = ({
       {...metaAttribute({ name: MetaConstants.TableHeaderRow })}
       {...makeAnalyticsAttribute(rest)}
       $showBorderedCells={showBorderedCells}
+      $gridTemplateColumns={gridTemplateColumns}
+      $hasHoverActions={hasHoverActions}
+      $selectionType={selectionType}
+      $columnCount={columnCount}
     >
       {isMultiSelect && (
         <TableHeaderCellCheckbox
