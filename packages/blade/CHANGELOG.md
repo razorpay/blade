@@ -1,5 +1,21 @@
 # @razorpay/blade
 
+## 11.40.0
+
+### Minor Changes
+
+- 583900a1: feat(blade): add ray icon
+- 9817d1e4: fix(blade): Add backwards compat for React17 - fallback for useInsertionEffect
+- dcbcc75a: feat(ActionList): add Virtualization in ActionList
+
+  ```jsx
+  <ActionList isVirtualized></ActionList>
+  ```
+
+  > [!NOTE]
+  >
+  > Current version only supports virtulization of fixed height list where items do not have descriptions. We'll be adding support for dynamic height lists in future versions
+
 ## 11.38.1
 
 ### Patch Changes
