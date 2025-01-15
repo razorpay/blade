@@ -200,7 +200,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
         style={
           [
             {
-              "color": "hsla(227, 100%, 59%, 0.18)",
+              "color": "hsla(227, 100%, 59%, 0.32)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",

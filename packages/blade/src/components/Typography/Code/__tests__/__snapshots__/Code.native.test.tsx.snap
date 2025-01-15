@@ -40,7 +40,7 @@ exports[`<Code /> should render Code with color 1`] = `
       style={
         [
           {
-            "color": "hsla(227, 100%, 59%, 0.18)",
+            "color": "hsla(227, 100%, 59%, 0.32)",
             "fontFamily": "Menlo",
             "fontSize": 10,
             "fontStyle": "normal",

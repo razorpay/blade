@@ -229,14 +229,14 @@ const colors: ColorsWithModes = {
         gray: {
           default: globalColors.neutral.blueGrayLight.a75,
           highlighted: globalColors.neutral.blueGrayLight.a100,
-          disabled: globalColors.neutral.blueGrayLight.a50,
+          disabled: globalColors.neutral.blueGrayLight.a100,
           faded: globalColors.neutral.blueGrayLight.a25,
           fadedHighlighted: globalColors.neutral.blueGrayLight.a75,
         },
         primary: {
           default: globalColors.chromatic.azure[500],
           highlighted: globalColors.chromatic.azure[600],
-          disabled: globalColors.chromatic.azure.a50,
+          disabled: globalColors.chromatic.azure.a100,
           faded: globalColors.chromatic.azure.a50,
           fadedHighlighted: globalColors.chromatic.azure.a100,
         },
@@ -352,7 +352,7 @@ const colors: ColorsWithModes = {
           normal: globalColors.chromatic.azure[600],
           subtle: globalColors.chromatic.azure[500],
           muted: globalColors.chromatic.azure[400],
-          disabled: globalColors.chromatic.azure.a100,
+          disabled: globalColors.chromatic.azure.a200,
         },
         onPrimary: {
           normal: globalColors.neutral.white[500],
@@ -414,7 +414,7 @@ const colors: ColorsWithModes = {
           normal: globalColors.chromatic.azure[600],
           subtle: globalColors.chromatic.azure[500],
           muted: globalColors.chromatic.azure[400],
-          disabled: globalColors.chromatic.azure.a100,
+          disabled: globalColors.chromatic.azure.a200,
         },
         onPrimary: {
           normal: globalColors.neutral.white[500],
@@ -605,7 +605,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.chromatic.sapphire[400],
         },
         neutral: {
-          subtle: globalColors.neutral.blueGrayDark[700],
+          subtle: globalColors.neutral.blueGrayDark[400],
           intense: globalColors.neutral.blueGrayDark[50],
         },
       },
@@ -672,14 +672,14 @@ const colors: ColorsWithModes = {
         gray: {
           default: globalColors.neutral.blueGrayDark.a75,
           highlighted: globalColors.neutral.blueGrayDark.a100,
-          disabled: globalColors.neutral.blueGrayDark.a50,
+          disabled: globalColors.neutral.blueGrayDark.a100,
           faded: globalColors.neutral.blueGrayDark.a25,
           fadedHighlighted: globalColors.neutral.blueGrayDark.a75,
         },
         primary: {
           default: globalColors.chromatic.azure[400],
           highlighted: globalColors.chromatic.azure[500],
-          disabled: globalColors.chromatic.azure.a100,
+          disabled: globalColors.chromatic.azure.a150,
           faded: globalColors.chromatic.azure.a150,
           fadedHighlighted: globalColors.chromatic.azure.a200,
         },
@@ -732,7 +732,7 @@ const colors: ColorsWithModes = {
         gray: {
           default: globalColors.neutral.blueGrayDark[600],
           highlighted: globalColors.neutral.blueGrayDark[600],
-          disabled: globalColors.neutral.blueGrayDark[800],
+          disabled: globalColors.neutral.blueGrayDark[700],
           faded: globalColors.neutral.blueGrayDark.a100,
         },
         primary: {
@@ -795,7 +795,7 @@ const colors: ColorsWithModes = {
           normal: globalColors.chromatic.azure[300],
           subtle: globalColors.chromatic.azure[400],
           muted: globalColors.chromatic.azure[600],
-          disabled: globalColors.chromatic.azure.a200,
+          disabled: globalColors.chromatic.azure.a400,
         },
         onPrimary: {
           normal: globalColors.neutral.white[500],
@@ -857,7 +857,7 @@ const colors: ColorsWithModes = {
           normal: globalColors.chromatic.azure[300],
           subtle: globalColors.chromatic.azure[400],
           muted: globalColors.chromatic.azure[600],
-          disabled: globalColors.chromatic.azure.a200,
+          disabled: globalColors.chromatic.azure.a400,
         },
         onPrimary: {
           normal: globalColors.neutral.white[500],
@@ -888,14 +888,14 @@ const colors: ColorsWithModes = {
     popup: {
       background: {
         subtle: globalColors.neutral.blueGrayDark[1000],
-        intense: globalColors.neutral.blueGrayDark[1000],
+        intense: globalColors.neutral.blueGrayDark[700],
       },
       border: {
         subtle: globalColors.neutral.blueGrayDark.a100,
         intense: globalColors.neutral.blueGrayDark.a100,
       },
     },
-    transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
+    transparent: `hsla(217, 27%, 15%, ${opacity[0]})`,
   },
 };
 
