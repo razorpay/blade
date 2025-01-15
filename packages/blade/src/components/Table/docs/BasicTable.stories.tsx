@@ -127,6 +127,16 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         onSelectionChange={console.log}
         selectionType="multiple"
         height="100%"
+        toolbar={
+          <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
+            <TableToolbarActions>
+              <Button variant="secondary" marginRight="spacing.2">
+                Export
+              </Button>
+              <Button>Refund</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
       >
         {(tableData) => (
           <TableVirtulized
