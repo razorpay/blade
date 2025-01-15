@@ -102,9 +102,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     if (inputPlaceHolder) {
       return inputPlaceHolder;
     }
-    if (picker === 'day') {
-      return 'Day';
-    }
     if (picker === 'month') {
       return 'Month';
     }
