@@ -26,7 +26,6 @@ jobs:
       - name: Create Release Pull Request & Publish packages
         id: changesets
         uses: changesets/action@v1
-        if: github.event_name != 'workflow_dispatch' # only run on master merges
         env:
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
         with:
