@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-feat(blade): add flask,keyboard and listSearch icons
+feat(blade): add flask,keyboard and list-search icons
