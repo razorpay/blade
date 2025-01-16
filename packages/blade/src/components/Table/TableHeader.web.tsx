@@ -124,14 +124,6 @@ const StyledHeaderCell = styled(HeaderCell)<{
         ? makeSpace(getIn(theme, tableRow.paddingRight[$rowDensity]))
         : undefined,
       minHeight: makeSize(getIn(size, tableRow.minHeight[$rowDensity])),
-      '> .text': {
-        flexGrow: 1,
-        display: 'flex',
-        justifyContent: $textAlign,
-      },
-      '> .sortIcon': {
-        flexShrink: 0,
-      },
     },
     '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
   },
@@ -170,7 +162,7 @@ const _TableHeaderCell = ({
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
       {...makeAnalyticsAttribute(rest)}
     >
-      <div className="text">
+      <BaseBox display="flex" flexGrow={1} justifyContent={textAlign}>
         {isChildrenString ? (
           <Text size="medium" weight="medium" color="surface.text.gray.normal">
             {children}
@@ -178,16 +170,14 @@ const _TableHeaderCell = ({
         ) : (
           children
         )}
-      </div>
+      </BaseBox>
       {isSortable && (
-        <div className="sortIcon">
-          <BaseBox paddingLeft="spacing.2" backgroundColor="transparent">
-            <SortIcon
-              isSorted={currentSortedState.sortKey === headerKey}
-              isSortReversed={currentSortedState.isSortReversed}
-            />
-          </BaseBox>
-        </div>
+        <BaseBox paddingLeft="spacing.2" backgroundColor="transparent" flexShrink={0}>
+          <SortIcon
+            isSorted={currentSortedState.sortKey === headerKey}
+            isSortReversed={currentSortedState.isSortReversed}
+          />
+        </BaseBox>
       )}
     </StyledHeaderCell>
   );

@@ -350,6 +350,12 @@ type TableFooterCellProps = {
    * The children of TableHeaderCell can be a string or a ReactNode.
    **/
   children: string | React.ReactNode;
+  /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
 } & DataAnalyticsAttribute;
 
 type TablePaginationCommonProps = {
