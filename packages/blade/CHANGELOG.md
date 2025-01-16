@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.2.1
+
+### Patch Changes
+
+- dbd53024: fix(blade): date picker on level change typo
+
 ## 12.2.0
 
 ### Minor Changes
