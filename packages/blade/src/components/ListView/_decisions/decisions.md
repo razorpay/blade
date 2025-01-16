@@ -467,7 +467,12 @@ type ListViewFiltersProps = {
 
 - ### Do we want to control layout or not?
 
-  Currently proposed API assumes that we are controlling which item is placed where and thus proposes a Layout Component of ListView. I've mentioned the pros and cons of layout component where the API and alternate api is proposed above.
+  Currently proposed API assumes that we are controlling which item is placed where and thus proposes a Layout Component of ListView. I've mentioned the pros and cons of layout component. The API and alternate api is proposed above.
+
+  #### Tradeoffs of Layout Component
+
+  - If we go with Layout component, then the tradeoff is the educational effort of teaching consumer which part of the UI comes directly from blade as layout component.
+  - If we go without Layout component, tradeoff is not being able to update the layout changes on consumer if something updates in dev.
 
 - ### InputGroup
 
