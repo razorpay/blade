@@ -148,7 +148,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(227,100%,59%,0.18);
+  color: hsla(227,100%,59%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
