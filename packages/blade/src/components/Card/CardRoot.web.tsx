@@ -50,6 +50,14 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
         zIndex: 2,
         position: 'relative',
       },
+      [`& label:not(a[data-blade-component="${CARD_LINK_OVERLAY_ID}"])`]: {
+        zIndex: 2,
+        position: 'relative',
+      },
+      [`& label:not(button[data-blade-component="${CARD_LINK_OVERLAY_ID}"])`]: {
+        zIndex: 2,
+        position: 'relative',
+      },
     };
   },
 );
