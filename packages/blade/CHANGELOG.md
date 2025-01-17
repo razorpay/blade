@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 12.3.0
+
+### Minor Changes
+
+- c228d8ca: feat(blade): add flask,keyboard and list-search icons
+
+### Patch Changes
+
+- 2326fa27: feat(tokens): change token values to match figma
+
 ## 12.2.1
 
 ### Patch Changes
