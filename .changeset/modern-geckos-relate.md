@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-fix: fileupload on remove clashes with onchage
+fix(FileUpload): fileupload on remove clashes with onchage
