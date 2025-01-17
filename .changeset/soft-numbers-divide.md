@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-fix(blade): remove file aligment while uploading
+fix(blade): remove file icon aligment while uploading
