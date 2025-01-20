@@ -493,7 +493,7 @@ const TableCheckboxCell = ({
 }): React.ReactElement => {
   return (
     // false in case of virtualization
-    <TableCell _hasPadding={false}>
+    <TableCell>
       <BaseBox
         display="flex"
         alignItems="center"
