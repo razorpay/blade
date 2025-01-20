@@ -6,7 +6,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
-import { clearAllBodyScrollLocks } from 'body-scroll-lock-upgrade';
+import { clearAllBodyScrollLocks, enableBodyScroll } from 'body-scroll-lock-upgrade';
 import { BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
@@ -432,6 +432,22 @@ const _BottomSheet = ({
       removeBottomSheetFromStack(id);
     }
   }, [addBottomSheetToStack, id, isMounted, removeBottomSheetFromStack]);
+
+  // Remove the bottomsheet from the stack, if it's unmounted forcefully
+  React.useEffect(() => {
+    return () => {
+      if (id === undefined) return;
+      removeBottomSheetFromStack(id);
+    };
+  }, [id, removeBottomSheetFromStack]);
+
+  // Disable body scroll lock when the component is unmounted forcefully
+  React.useEffect(() => {
+    const lockTarget = scrollRef.current!;
+    return () => {
+      enableBodyScroll(lockTarget);
+    };
+  }, []);
 
   // We will need to reset these values otherwise the next time the bottomsheet opens
   // this will be populated and the animations won't run

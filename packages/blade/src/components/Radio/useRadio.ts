@@ -14,7 +14,7 @@ export type OnChange = ({
   value,
 }: {
   isChecked: boolean;
-  event?: React.ChangeEvent;
+  event: React.ChangeEvent;
   value?: string;
 }) => void;
 

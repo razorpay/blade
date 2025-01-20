@@ -13,7 +13,7 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
 } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
@@ -21,6 +21,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { size as sizeTokens } from '~tokens/global';
 
 const {
   COLLAPSED,
@@ -92,6 +93,22 @@ const getL1MenuClassName = ({
 
   return '';
 };
+
+const BannerContainer = styled(BaseBox)((props) => {
+  return {
+    '&:not(:empty)': {
+      borderBottom: makeBorderSize(props.theme.border.width.thin),
+      borderBottomStyle: 'solid',
+      borderBottomColor: props.theme.colors.surface.border.gray.muted,
+      borderRight: makeBorderSize(props.theme.border.width.thin),
+      borderRightStyle: 'solid',
+      borderRightColor: props.theme.colors.surface.border.gray.muted,
+      padding: makeSpace(props.theme.spacing[3]),
+      maxHeight: makeSize(sizeTokens['100']),
+      width: '100%',
+    },
+  };
+});
 
 /**
  * ### SideNav component
@@ -253,19 +270,7 @@ const _SideNav = (
           {...getStyledProps(rest)}
           {...makeAnalyticsAttribute(rest)}
         >
-          {banner ? (
-            <BaseBox
-              borderBottom="thin"
-              borderBottomColor="surface.border.gray.muted"
-              borderRight="thin"
-              borderRightColor="surface.border.gray.muted"
-              padding="spacing.3"
-              maxHeight="100px"
-              width="100%"
-            >
-              {banner}
-            </BaseBox>
-          ) : null}
+          {banner ? <BannerContainer>{banner}</BannerContainer> : null}
           <BaseBox position="relative" display="block" flex="1" width="100%">
             <BaseBox
               position="absolute"
