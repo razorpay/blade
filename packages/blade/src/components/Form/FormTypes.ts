@@ -8,7 +8,15 @@ export type FormInputHandleOnEvent = ({
   value?: React.ChangeEvent<HTMLInputElement> | string;
 }) => void;
 
-export type FormInputOnEvent = ({ name, value }: { name?: string; value?: string }) => void;
+export type FormInputOnEvent = ({
+  name,
+  value,
+  event,
+}: {
+  name?: string;
+  value?: string;
+  event?: React.MouseEvent<HTMLInputElement>;
+}) => void;
 
 export type FormInputHandleOnKeyDownEvent = ({
   name,
@@ -27,9 +35,10 @@ export type FormInputOnKeyDownEvent = {
 export type FormInputOnClickEvent = {
   name?: string;
   value?: React.MouseEvent<HTMLInputElement> | string;
+  event?: React.MouseEvent<HTMLInputElement>;
 };
 
-export type FormInputHandleOnClickEvent = ({ name, value }: FormInputOnClickEvent) => void;
+export type FormInputHandleOnClickEvent = ({ name, value, event }: FormInputOnClickEvent) => void;
 
 export type FormInputValidationProps = {
   /**

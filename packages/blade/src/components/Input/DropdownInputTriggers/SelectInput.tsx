@@ -41,6 +41,7 @@ const _SelectInput = (
       ) : null}
       <BaseDropdownInputTrigger
         {...props}
+        referenceProps={props._referenceProps}
         isSelectInput={true}
         onTriggerKeydown={onTriggerKeydown}
         onTriggerClick={(e) => {

@@ -145,6 +145,14 @@ const _BaseDropdownInputTrigger = (
   } = useDropdown();
   const { rowDensity } = useTableContext();
   const { isInsideTableEditableCell } = useTableEditableCell();
+  const {
+    onClick: onFloatingClick,
+    onFocus: onFloatingFocus,
+    onBlur: onFloatingBlur,
+    onKeyDown: onFloatingKeyDown,
+    ref: floatingRef,
+    ...floatingReferenceProps
+  } = props.referenceProps;
 
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
   const isAutoCompleteInHeader =
@@ -233,24 +241,28 @@ const _BaseDropdownInputTrigger = (
   const isValidationStateNone =
     props.validationState === 'none' || props.validationState === undefined;
 
+  const refMemo = React.useMemo(() => {
+    return (isReactNative() || isAutoCompleteInHeader
+      ? null
+      : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (node: any) => {
+          triggererRef.current = node;
+          const elementRef = ref ?? floatingRef;
+          if (elementRef) {
+            if (typeof elementRef === 'function') {
+              elementRef(node);
+            } else {
+              elementRef.current = node;
+            }
+          }
+        }) as never;
+  }, [ref, isReactNative, isAutoCompleteInHeader]);
+
   return (
     <BaseInput
+      {...floatingReferenceProps}
       as={props.isSelectInput ? 'button' : 'input'}
-      ref={
-        (isReactNative() || isAutoCompleteInHeader
-          ? null
-          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (node: any) => {
-              triggererRef.current = node;
-              if (ref) {
-                if (typeof ref === 'function') {
-                  ref(node);
-                } else {
-                  ref.current = node;
-                }
-              }
-            }) as never
-      }
+      ref={refMemo}
       isDropdownTrigger={true}
       setInputWrapperRef={(wrapperNode) => {
         // when autocomplete is in header, its not a trigger but a component inside of DropdownOverlay
@@ -295,10 +307,15 @@ const _BaseDropdownInputTrigger = (
           return;
         }
         props.onTriggerClick?.(e);
+        onFloatingClick?.(e.event);
       }}
-      onFocus={props.onFocus}
-      onBlur={({ name }) => {
+      onFocus={(e) => {
+        props.onFocus?.(e);
+        onFloatingFocus?.(e.event);
+      }}
+      onBlur={({ name, event }) => {
         props.onBlur?.({ name, value });
+        onFloatingBlur?.(event);
       }}
       leadingIcon={props.icon}
       // Meta Props
@@ -313,7 +330,10 @@ const _BaseDropdownInputTrigger = (
       popupId={`${dropdownBaseId}-actionlist`}
       // Special Props for Unique behaviour between Select and AutoComplete
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
-      onKeyDown={props.onTriggerKeydown}
+      onKeyDown={(e) => {
+        props.onTriggerKeydown?.(e);
+        onFloatingKeyDown?.(e.event);
+      }}
       size={props.size}
       {...makeAnalyticsAttribute(props)}
       onTrailingInteractionElementClick={() => {

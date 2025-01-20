@@ -258,7 +258,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       value={value}
       name={name}
       maxCharacters={maxCharacters}
-      isDropdownTrigger={isTaggedInput}
+      isDropdownTrigger={true ?? isTaggedInput}
       tags={isTaggedInput ? getTags({ size }) : undefined}
       showAllTags={isInputFocussed}
       maxTagRows="single"

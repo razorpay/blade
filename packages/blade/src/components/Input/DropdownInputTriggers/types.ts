@@ -43,6 +43,10 @@ type DropdownInputTriggersCommonProps = Pick<
    */
   defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
+
+  /** @todo */
+  referenceProps?: any;
+
   /**
    * Syncs the selected value to inputValue in AutoComplete
    *

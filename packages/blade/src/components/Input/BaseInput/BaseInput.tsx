@@ -576,6 +576,7 @@ const useInput = ({
       onClick?.({
         name,
         value: _value,
+        event: typeof value !== 'string' ? value : undefined,
       });
     },
     [onClick],
