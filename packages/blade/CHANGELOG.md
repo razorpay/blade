@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.3.1
+
+### Patch Changes
+
+- 3a87bd69: fix(blade): unable to use switch inside card body
+
 ## 12.3.0
 
 ### Minor Changes
