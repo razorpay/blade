@@ -25,6 +25,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Amount } from '~components/Amount';
 import { isReactNative } from '~utils';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Switch } from '~components/Switch';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Badge } from '~components/Badge';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -315,6 +316,7 @@ export const Default = CardTemplate.bind({});
 export const ClickableCard = (): React.ReactElement => {
   const [cardClickCount, setCardClickCount] = React.useState(0);
   const [buttonClickCount, setButtonClickCount] = React.useState(0);
+  const [switchToggleCounter, setSwitchToggleCounter] = React.useState(0);
 
   return (
     <Box>
@@ -352,6 +354,12 @@ export const ClickableCard = (): React.ReactElement => {
               {buttonClickCount}
             </Text>
           </Text>
+          <Text marginY="spacing.2">
+            Switch Toggled:{' '}
+            <Text as="span" weight="semibold">
+              {switchToggleCounter}
+            </Text>
+          </Text>
           <Button
             size="small"
             marginTop="spacing.5"
@@ -361,6 +369,13 @@ export const ClickableCard = (): React.ReactElement => {
           >
             Get Demo
           </Button>
+          <Switch
+            accessibilityLabel="switch"
+            size="small"
+            onChange={() => {
+              setSwitchToggleCounter((prev) => prev + 1);
+            }}
+          />
         </CardBody>
       </Card>
     </Box>
