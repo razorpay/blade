@@ -166,6 +166,11 @@ type TableProps<Item> = {
    **/
   height?: BoxProps['height'];
   /**
+   * The prop width is a prop used to determine the width of the table.
+   */
+  width?: BoxProps['width'];
+
+  /**
    * The showStripedRows prop determines whether the table should have striped rows or not.
    * The default value is `false`.
    **/

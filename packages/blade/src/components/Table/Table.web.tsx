@@ -106,21 +106,36 @@ const getTableHeaderCellCount = (
   return 0;
 };
 
-const StyledReactTable = styled(ReactTable)<{ $styledProps?: { height?: BoxProps['height'] } }>(
-  ({ $styledProps }) => {
-    const { theme } = useTheme();
-    const styledPropsCSSObject = getBaseBoxStyles({
-      theme,
-      height: $styledProps?.height,
-    });
+const StyledReactTable = styled(ReactTable)<{
+  $styledProps?: { height?: BoxProps['height']; width?: BoxProps['width'] };
+}>(({ $styledProps }) => {
+  const { theme } = useTheme();
+  const styledPropsCSSObject = getBaseBoxStyles({
+    theme,
+    height: $styledProps?.height,
+    //Todo : virtualized table
+    width: $styledProps?.width,
+    // auto is isVirtualized ? 'scroll' : 'auto',
+  });
 
-    return {
-      '&&&': {
-        ...styledPropsCSSObject,
-      },
-    };
-  },
-);
+  return {
+    '&&&': {
+      ...styledPropsCSSObject,
+    },
+    // applying style to 1st child of table
+    // apply these styles in case of isVisible
+    // virtualized table adds some styles which should be overridden
+    '& > div ': {
+      overflow: 'auto !important',
+      height: `${$styledProps?.height} !important`,
+      width: `${$styledProps?.width} !important`,
+    },
+    // and remove scroll from the main table element
+    '&': {
+      overflow: 'hidden !important',
+    },
+  };
+});
 
 const RefreshWrapper = styled(BaseBox)<{
   isRefreshSpinnerVisible: boolean;
@@ -154,6 +169,7 @@ const _Table = <Item,>({
   toolbar,
   pagination,
   height,
+  width,
   showStripedRows,
   gridTemplateColumns,
   isLoading = false,
@@ -494,6 +510,7 @@ const _Table = <Item,>({
           alignItems="center"
           justifyContent="center"
           height={height}
+          width={width}
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           {...makeAnalyticsAttribute(rest)}
@@ -507,6 +524,7 @@ const _Table = <Item,>({
           position="relative"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
+          width={width}
         >
           {isRefreshSpinnerMounted && (
             <RefreshWrapper
@@ -536,6 +554,7 @@ const _Table = <Item,>({
             sort={sortFunctions ? sort : null}
             $styledProps={{
               height,
+              width,
             }}
             pagination={hasPagination ? paginationConfig : null}
             {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}

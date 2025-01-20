@@ -121,14 +121,15 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
-    <Box padding="spacing.5" overflow="auto" height="1000px" width="1000px">
+    <Box padding="spacing.5">
       <> total rows : {nodes.length}</>
       <VirtualizedTable
         {...args}
         data={data}
         onSelectionChange={console.log}
         selectionType="multiple"
-        height={'500px'}
+        height="500px"
+        width="500px"
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
