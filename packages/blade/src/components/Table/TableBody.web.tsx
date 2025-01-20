@@ -27,51 +27,24 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import type { Theme } from '~components/BladeProvider';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-
-const getTableRowBackgroundTransition = (theme: Theme): string => {
-  const rowBackgroundTransition = `background-color ${makeMotionTime(
-    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
-
-  return rowBackgroundTransition;
-};
-
-const getTableActionsHoverStyles = ({
-  hoverColor,
-  theme,
-  backgroundGradientColor,
-}: {
-  hoverColor: DotNotationToken<Theme['colors']>;
-  backgroundGradientColor?: DotNotationToken<Omit<Theme['colors'], 'name'>>;
-  theme: Theme;
-}): React.CSSProperties => {
-  const rowBackgroundTransition = getTableRowBackgroundTransition(theme);
-
-  return {
-    // Solid layer 1 background - should match the table background
-    [`& .${classes.HOVER_ACTIONS}`]: {
-      backgroundColor: getIn(theme.colors, tableBackgroundColor),
-      transition: rowBackgroundTransition,
-    },
-    // Alpha layer 2 background - Stripped row background, Hover background in selected state, etc
-    [`& .${classes.HOVER_ACTIONS_LAYER2}`]: {
-      backgroundColor: getIn(theme.colors, backgroundGradientColor ?? 'transparent'),
-      transition: rowBackgroundTransition,
-    },
-    // Alpha layer 3 background - Hover, selection, active background
-    [`& .${classes.HOVER_ACTIONS_LAYER3}`]: {
-      backgroundColor: getIn(theme.colors, hoverColor),
-      transition: rowBackgroundTransition,
-    },
-  };
-};
+import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
 
 const StyledVirtualized = styled(Virtualized)<{
   $isSelectable: boolean;
   $showStripedRows: boolean;
 }>(({ theme, $showStripedRows, $isSelectable }) => {
   const rowBackgroundTransition = getTableRowBackgroundTransition(theme);
-  return {};
+  return {
+    // '&': {
+    //   backgroundColor: 'yellow !important',
+    //   border: '1px solid black',
+    // },
+    // change backgroundColor to yellow
+    '& .cell-wrapper': {
+      backgroundColor: 'yellow !important',
+    },
+  };
+
   // return {
   //   '&&&': {
   //     border: 'none',
@@ -514,6 +487,7 @@ const StyledRow = styled(Row)<{
   $showBorderedCells: boolean;
 }>(({ theme, $isSelectable, $isHoverable, $showBorderedCells }) => {
   const { hasHoverActions } = useTableContext();
+  console.log({ hasHoverActions });
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
@@ -522,8 +496,6 @@ const StyledRow = styled(Row)<{
   return {
     '&&&': {
       backgroundColor: 'transparent',
-      // display: 'grid',
-      // gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))',
       '& .cell-wrapper': $showBorderedCells
         ? {
             borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
@@ -673,6 +645,7 @@ const _TableRow = <Item,>({
             flexShrink={0}
             flexGrow={1}
             width="max-content"
+            border="1px solid black"
           >
             <BaseBox
               className={classes.HOVER_ACTIONS_LAYER2}

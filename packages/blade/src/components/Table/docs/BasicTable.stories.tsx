@@ -28,12 +28,13 @@ import { CheckIcon, CloseIcon } from '~components/Icons';
 import { TableVirtulized } from '../TableBody.web';
 import { VirtualizedTable } from '../Table.web';
 import { spacing } from '~tokens/global';
-// import {
-//   HeaderCellSelect,
-//   useRowSelect,
-//   CellSelect,
-//   SelectTypes,
-// } from '@table-library/react-table-library/select';
+import {
+  HeaderCellSelect,
+  useRowSelect,
+  CellSelect,
+  SelectTypes,
+} from '@table-library/react-table-library/select';
+import { useRef } from 'react';
 
 export default {
   title: 'Components/Table',
@@ -80,7 +81,7 @@ export default {
 } as Meta<TableProps<unknown>>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 400 }, (_, i) => ({
+  ...Array.from({ length: 4 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -120,16 +121,17 @@ const data: TableData<Item> = {
 };
 
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
+  const tableRef = useRef<HTMLDivElement>(null);
   return (
-    <Box padding="spacing.5">
+    <Box padding="spacing.5" ref={tableRef}>
       <> total rows : {nodes.length}</>
       <TableComponent
         {...args}
         data={data}
         onSelectionChange={console.log}
-        selectionType="multiple"
-        height="500px"
-        width="800px"
+        // selectionType="multiple"
+        // height="500px"
+        // width="800px"
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
@@ -140,6 +142,14 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
             </TableToolbarActions>
           </TableToolbar>
         }
+        sortFunctions={{
+          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+        }}
+        ref={tableRef}
         isVirtualized
       >
         {(tableData) => (
@@ -155,7 +165,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
                   <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
                   <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                  <TableHeaderCell headerKey="STATUS">Status demo</TableHeaderCell>
+                  <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
                 </TableHeaderRow>
               </TableHeader>
             )}
@@ -166,6 +176,29 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 onClick={() => {
                   console.log('where');
                 }}
+                hoverActions={
+                  <>
+                    <Button variant="tertiary" size="xsmall">
+                      View Details
+                    </Button>
+                    <IconButton
+                      icon={CheckIcon}
+                      isHighlighted
+                      accessibilityLabel="Approve"
+                      onClick={() => {
+                        console.log('Approved', tableItem.id);
+                      }}
+                    />
+                    <IconButton
+                      icon={CloseIcon}
+                      isHighlighted
+                      accessibilityLabel="Reject"
+                      onClick={() => {
+                        console.log('Rejected', tableItem.id);
+                      }}
+                    />
+                  </>
+                }
               >
                 <TableCell>
                   <Code size="medium">{tableItem.paymentId}</Code>

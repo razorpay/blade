@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo } from 'react';
 import { Table as ReactTable } from '@table-library/react-table-library/table';
 import { useTheme as useTableTheme } from '@table-library/react-table-library/theme';
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
@@ -20,6 +20,7 @@ import {
   refreshWrapperZIndex,
   tableBackgroundColor,
   tablePagination,
+  tableRow,
 } from './tokens';
 import type {
   TableProps,
@@ -43,6 +44,8 @@ import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
+import { Virtualized } from '@table-library/react-table-library/virtualized';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -120,6 +123,8 @@ const StyledReactTable = styled(ReactTable)<{
     width: $styledProps?.width,
     // auto is isVirtualized ? 'scroll' : 'auto',
   });
+  const $isSelectable = true;
+  const $showStripedRows = true;
 
   return {
     '&&&': {
@@ -138,6 +143,144 @@ const StyledReactTable = styled(ReactTable)<{
       '&': {
         overflow: 'hidden !important',
       },
+      '.tbody tr:last-child .cell-wrapper': {
+        borderBottom: 'none',
+      },
+
+      '.tbody .row-select-single-selected .cell-wrapper-base, .row-select-selected .cell-wrapper-base': {
+        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelected),
+      },
+      '.tbody .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base': {
+        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedHover),
+        ...getTableActionsHoverStyles({
+          hoverColor: tableRow.nonStripe.backgroundColorSelectedHover,
+          backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedHover,
+          theme,
+        }),
+      },
+      '.tbody .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base': {
+        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedFocus),
+        ...getTableActionsHoverStyles({
+          hoverColor: tableRow.nonStripe.backgroundColorSelectedFocus,
+          backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedFocus,
+          theme,
+        }),
+      },
+      '.tbody .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:active:not(.disabled-row) .cell-wrapper-base': {
+        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedActive),
+        ...getTableActionsHoverStyles({
+          hoverColor: tableRow.nonStripe.backgroundColorSelectedActive,
+          backgroundGradientColor: tableRow.nonStripe.backgroundColorHover,
+          theme,
+        }),
+      },
+
+      ...($isSelectable && {
+        '.tbody tr:active:not(.disabled-row) .cell-wrapper': {
+          backgroundColor: getIn(theme.colors, tableRow.nonStripeWrapper.backgroundColorActive),
+        },
+      }),
+
+      ...($showStripedRows && {
+        '.tbody tr:nth-child(even) .cell-wrapper': {
+          backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColor),
+        },
+        '.tbody tr:nth-child(even) .cell-wrapper-base': {
+          backgroundColor: tableRow.stripe.backgroundColor,
+        },
+      }),
+
+      ...($showStripedRows &&
+        $isSelectable && {
+          '.tbody tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
+            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorHover),
+          },
+          '.tbody tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper': {
+            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorFocus),
+          },
+          '.tbody tr:nth-child(even):active:not(.disabled-row) .cell-wrapper': {
+            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorActive),
+          },
+          '.tbody .row-select-single-selected:nth-child(even) .cell-wrapper, .row-select-selected:nth-child(even) .cell-wrapper': {
+            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorSelected),
+          },
+          '.tbody .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
+            backgroundColor: getIn(
+              theme.colors,
+              tableRow.stripeWrapper.backgroundColorSelectedHover,
+            ),
+          },
+          '.tbody .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper': {
+            backgroundColor: getIn(
+              theme.colors,
+              tableRow.stripeWrapper.backgroundColorSelectedFocus,
+            ),
+          },
+          '.tbody .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper': {
+            backgroundColor: getIn(
+              theme.colors,
+              tableRow.stripeWrapper.backgroundColorSelectedActive,
+            ),
+          },
+
+          '.tbody tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base': {
+            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorHover),
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.stripe.backgroundColorHover,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorHover,
+            }),
+          },
+          '.tbody tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base': {
+            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorFocus),
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.stripe.backgroundColorFocus,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorFocus,
+            }),
+          },
+          '.tbody tr:nth-child(even):active:not(.disabled-row) .cell-wrapper-base': {
+            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorActive),
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.stripe.backgroundColorActive,
+              backgroundGradientColor: tableRow.stripe.backgroundColorHover,
+              theme,
+            }),
+          },
+
+          '.tbody .row-select-single-selected:nth-child(even) .cell-wrapper-base, .row-select-selected:nth-child(even) .cell-wrapper-base ': {
+            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelected),
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.stripe.backgroundColorSelected,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelected,
+            }),
+          },
+          '.tbody .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base ': {
+            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedHover),
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.stripe.backgroundColorSelectedHover,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedHover,
+            }),
+          },
+          '.tbody .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base ': {
+            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedFocus),
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.stripe.backgroundColorSelectedFocus,
+              theme,
+              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedFocus,
+            }),
+          },
+          '.tbody .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base ': {
+            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedActive),
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.stripe.backgroundColorSelectedActive,
+              theme,
+              backgroundGradientColor: tableRow.stripe.backgroundColorHover,
+            }),
+          },
+        }),
     }),
   };
 });
@@ -159,64 +302,73 @@ const RefreshWrapper = styled(BaseBox)<{
   };
 });
 
-const _Table = <Item,>({
-  children,
-  data,
-  multiSelectTrigger = 'row',
-  selectionType = 'none',
-  onSelectionChange,
-  isHeaderSticky,
-  isFooterSticky,
-  isFirstColumnSticky,
-  rowDensity = 'normal',
-  onSortChange,
-  sortFunctions,
-  toolbar,
-  pagination,
-  height,
-  width,
-  showStripedRows,
-  gridTemplateColumns,
-  isLoading = false,
-  isRefreshing = false,
-  showBorderedCells = false,
-  defaultSelectedIds = [],
-  isVirtualized = false,
-  ...rest
-}: TableProps<Item>): React.ReactElement => {
-  const { theme } = useTheme();
-  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
-    selectionType !== 'none' ? defaultSelectedIds : [],
-  );
-  const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
-  const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
-  const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
-    'client',
-  );
-  const [headerRowDensity, setHeaderRowDensity] = React.useState<TableHeaderRowProps['rowDensity']>(
-    undefined,
-  );
-  const [hasHoverActions, setHasHoverActions] = React.useState(false);
-  // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-  const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
-  const backgroundColor = tableBackgroundColor;
+const _Table = forwardRef(
+  <Item,>(
+    {
+      children,
+      data,
+      multiSelectTrigger = 'row',
+      selectionType = 'none',
+      onSelectionChange,
+      isHeaderSticky,
+      isFooterSticky,
+      isFirstColumnSticky,
+      rowDensity = 'normal',
+      onSortChange,
+      sortFunctions,
+      toolbar,
+      pagination,
+      height,
+      width,
+      showStripedRows,
+      gridTemplateColumns,
+      isLoading = false,
+      isRefreshing = false,
+      showBorderedCells = false,
+      defaultSelectedIds = [],
+      isVirtualized = false,
+      ...rest
+    }: TableProps<Item>,
+    ref: React.Ref<HTMLDivElement> | undefined,
+  ): React.ReactElement => {
+    const { theme } = useTheme();
+    const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
+      selectionType !== 'none' ? defaultSelectedIds : [],
+    );
+    const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
+    const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
+    const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
+      'client',
+    );
+    const [headerRowDensity, setHeaderRowDensity] = React.useState<
+      TableHeaderRowProps['rowDensity']
+    >(undefined);
+    const [hasHoverActions, setHasHoverActions] = React.useState(false);
+    const [VirtualizedTableDimensions, setVirtualizedTableDimensions] = React.useState({
+      width: 0,
+      height: 0,
+    });
 
-  const isMobile = useIsMobile();
-  const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
+    // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
+    const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
+    const backgroundColor = tableBackgroundColor;
 
-  const {
-    isEntering: isRefreshSpinnerEntering,
-    isMounted: isRefreshSpinnerMounted,
-    isExiting: isRefreshSpinnerExiting,
-    isVisible: isRefreshSpinnerVisible,
-  } = usePresence(isRefreshing, {
-    transitionDuration: theme.motion.duration.quick,
-  });
+    const isMobile = useIsMobile();
+    const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
 
-  // Table Theme
-  const columnCount = getTableHeaderCellCount(children, isVirtualized);
-  const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
-    ? `
+    const {
+      isEntering: isRefreshSpinnerEntering,
+      isMounted: isRefreshSpinnerMounted,
+      isExiting: isRefreshSpinnerExiting,
+      isVisible: isRefreshSpinnerVisible,
+    } = usePresence(isRefreshing, {
+      transitionDuration: theme.motion.duration.quick,
+    });
+
+    // Table Theme
+    const columnCount = getTableHeaderCellCount(children, isVirtualized);
+    const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
+      ? `
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
@@ -231,9 +383,9 @@ const _Table = <Item,>({
   }
   `
   }`
-    : '';
-  const firstColumnStickyFooterCellCSS = isFirstColumnSticky
-    ? `
+      : '';
+    const firstColumnStickyFooterCellCSS = isFirstColumnSticky
+      ? `
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
@@ -248,9 +400,9 @@ const _Table = <Item,>({
   }
   `
   }`
-    : '';
-  const firstColumnStickyBodyCellCSS = isFirstColumnSticky
-    ? `
+      : '';
+    const firstColumnStickyBodyCellCSS = isFirstColumnSticky
+      ? `
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
@@ -265,14 +417,14 @@ const _Table = <Item,>({
   }
   `
   }`
-    : '';
+      : '';
 
-  const tableTheme = useTableTheme({
-    Table: `
+    const tableTheme = useTableTheme({
+      Table: `
     height:${isFooterSticky ? `100%` : undefined};
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
-      theme.colors.surface.border.gray.muted
-    };
+        theme.colors.surface.border.gray.muted
+      };
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns
         ? `${gridTemplateColumns} ${hasHoverActions ? lastHoverActionsColWidth : ''}`
@@ -284,298 +436,309 @@ const _Table = <Item,>({
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,
-    HeaderCell: `
+      HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
     
     top: ${shouldHeaderBeSticky ? '0' : undefined};
     ${firstColumnStickyHeaderCellCSS}
     `,
-    Cell: `
+      Cell: `
     ${firstColumnStickyBodyCellCSS}
     `,
-    FooterCell: `
+      FooterCell: `
     position: ${isFooterSticky ? 'sticky' : 'relative'};
     bottom: ${isFooterSticky ? '0' : undefined};
     ${firstColumnStickyFooterCellCSS}
     `,
-  });
-
-  useEffect(() => {
-    // Get the total number of items
-    setTotalItems(data.nodes.length);
-  }, [data.nodes]);
-
-  // Selection Logic
-  const onSelectChange: MiddlewareFunction = (action, state): void => {
-    const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
-    setSelectedRows(selectedIds);
-    onSelectionChange?.({
-      selectedIds,
-      values: data.nodes.filter((node) => selectedIds.includes(node.id)),
     });
-  };
 
-  const rowSelectConfig = useRowSelect(
-    data,
-    {
-      onChange: onSelectChange,
-      state: {
-        ...(selectionType === 'multiple'
-          ? { ids: selectedRows }
-          : selectionType === 'single'
-          ? { id: selectedRows[0] }
-          : {}),
-      },
-    },
-    {
-      clickType:
-        multiSelectTrigger === 'row' ? SelectClickTypes.RowClick : SelectClickTypes.ButtonClick,
-      rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
-    },
-  );
-
-  const toggleRowSelectionById = useMemo(
-    () => (id: Identifier): void => {
-      rowSelectConfig.fns.onToggleById(id);
-    },
-    [rowSelectConfig.fns],
-  );
-
-  const deselectAllRows = useMemo(
-    () => (): void => {
-      rowSelectConfig.fns.onRemoveAll();
-    },
-    [rowSelectConfig.fns],
-  );
-
-  const toggleAllRowsSelection = useMemo(
-    () => (): void => {
-      if (selectedRows.length > 0) {
-        rowSelectConfig.fns.onRemoveAll();
-      } else {
-        const ids = data.nodes
-          .map((item: TableNode<Item>) => (disabledRows.includes(item.id) ? null : item.id))
-          .filter(Boolean) as Identifier[];
-
-        rowSelectConfig.fns.onAddAll(ids);
+    useEffect(() => {
+      console.log('ref', ref);
+      if (ref?.current && !height && !width) {
+        const { width, height } = ref?.current.getBoundingClientRect();
+        setVirtualizedTableDimensions({ width, height });
+        console.log('Parent dimensions:', { width, height });
+        // You can use the width and height to set your table dimensions
       }
-    },
-    [rowSelectConfig.fns, data.nodes, selectedRows, disabledRows],
-  );
+    }, [ref]);
 
-  // Sort Logic
-  const handleSortChange: MiddlewareFunction = (action, state) => {
-    onSortChange?.({
-      sortKey: state.sortKey,
-      isSortReversed: state.reverse,
-    });
-  };
+    useEffect(() => {
+      // Get the total number of items
+      setTotalItems(data.nodes.length);
+    }, [data.nodes]);
 
-  const sort = useSort(
-    data,
-    {
-      onChange: handleSortChange,
-    },
-    {
-      // @ts-expect-error ignore this, if sortFunctions is undefined, it will be ignored
-      sortFns: sortFunctions,
-    },
-  );
-
-  const currentSortedState: TableContextType['currentSortedState'] = useMemo(() => {
-    return {
-      sortKey: sort.state.sortKey,
-      isSortReversed: sort.state.reverse,
-      sortableColumns: Object.keys(sortFunctions ?? {}),
+    // Selection Logic
+    const onSelectChange: MiddlewareFunction = (action, state): void => {
+      const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
+      setSelectedRows(selectedIds);
+      onSelectionChange?.({
+        selectedIds,
+        values: data.nodes.filter((node) => selectedIds.includes(node.id)),
+      });
     };
-  }, [sort.state, sortFunctions]);
 
-  const toggleSort = useCallback(
-    (sortKey: string): void => {
-      sort.fns.onToggleSort({
-        sortKey,
-      });
-    },
-    [sort.fns],
-  );
-
-  // Pagination
-
-  const hasPagination = Boolean(pagination);
-
-  const paginationConfig = usePagination(
-    data,
-    {
-      state: {
-        page: 0,
-        size: tablePagination.defaultPageSize,
+    const rowSelectConfig = useRowSelect(
+      data,
+      {
+        onChange: onSelectChange,
+        state: {
+          ...(selectionType === 'multiple'
+            ? { ids: selectedRows }
+            : selectionType === 'single'
+            ? { id: selectedRows[0] }
+            : {}),
+        },
       },
-    },
-    {
-      isServer: paginationType === 'server',
-    },
-  );
+      {
+        clickType:
+          multiSelectTrigger === 'row' ? SelectClickTypes.RowClick : SelectClickTypes.ButtonClick,
+        rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
+      },
+    );
 
-  const currentPaginationState = useMemo(() => {
-    return hasPagination
-      ? {
-          page: paginationConfig.state.page,
-          size: paginationConfig.state.size,
+    const toggleRowSelectionById = useMemo(
+      () => (id: Identifier): void => {
+        rowSelectConfig.fns.onToggleById(id);
+      },
+      [rowSelectConfig.fns],
+    );
+
+    const deselectAllRows = useMemo(
+      () => (): void => {
+        rowSelectConfig.fns.onRemoveAll();
+      },
+      [rowSelectConfig.fns],
+    );
+
+    const toggleAllRowsSelection = useMemo(
+      () => (): void => {
+        if (selectedRows.length > 0) {
+          rowSelectConfig.fns.onRemoveAll();
+        } else {
+          const ids = data.nodes
+            .map((item: TableNode<Item>) => (disabledRows.includes(item.id) ? null : item.id))
+            .filter(Boolean) as Identifier[];
+
+          rowSelectConfig.fns.onAddAll(ids);
         }
-      : undefined;
-  }, [paginationConfig.state, hasPagination]);
+      },
+      [rowSelectConfig.fns, data.nodes, selectedRows, disabledRows],
+    );
 
-  const setPaginationPage = useCallback(
-    (page: number): void => {
-      paginationConfig.fns.onSetPage(page);
-    },
-    [paginationConfig.fns],
-  );
-
-  const setPaginationRowSize = useCallback(
-    (size: number): void => {
-      paginationConfig.fns.onSetSize(size);
-    },
-    [paginationConfig.fns],
-  );
-
-  // Toolbar Component
-  if (__DEV__) {
-    if (toolbar && !isValidAllowedChildren(toolbar, ComponentIds.TableToolbar)) {
-      throwBladeError({
-        message: 'Only TableToolbar component is allowed in the `toolbar` prop',
-        moduleName: 'Table',
+    // Sort Logic
+    const handleSortChange: MiddlewareFunction = (action, state) => {
+      onSortChange?.({
+        sortKey: state.sortKey,
+        isSortReversed: state.reverse,
       });
+    };
+
+    const sort = useSort(
+      data,
+      {
+        onChange: handleSortChange,
+      },
+      {
+        // @ts-expect-error ignore this, if sortFunctions is undefined, it will be ignored
+        sortFns: sortFunctions,
+      },
+    );
+
+    const currentSortedState: TableContextType['currentSortedState'] = useMemo(() => {
+      return {
+        sortKey: sort.state.sortKey,
+        isSortReversed: sort.state.reverse,
+        sortableColumns: Object.keys(sortFunctions ?? {}),
+      };
+    }, [sort.state, sortFunctions]);
+
+    const toggleSort = useCallback(
+      (sortKey: string): void => {
+        sort.fns.onToggleSort({
+          sortKey,
+        });
+      },
+      [sort.fns],
+    );
+
+    // Pagination
+
+    const hasPagination = Boolean(pagination);
+
+    const paginationConfig = usePagination(
+      data,
+      {
+        state: {
+          page: 0,
+          size: tablePagination.defaultPageSize,
+        },
+      },
+      {
+        isServer: paginationType === 'server',
+      },
+    );
+
+    const currentPaginationState = useMemo(() => {
+      return hasPagination
+        ? {
+            page: paginationConfig.state.page,
+            size: paginationConfig.state.size,
+          }
+        : undefined;
+    }, [paginationConfig.state, hasPagination]);
+
+    const setPaginationPage = useCallback(
+      (page: number): void => {
+        paginationConfig.fns.onSetPage(page);
+      },
+      [paginationConfig.fns],
+    );
+
+    const setPaginationRowSize = useCallback(
+      (size: number): void => {
+        paginationConfig.fns.onSetSize(size);
+      },
+      [paginationConfig.fns],
+    );
+
+    // Toolbar Component
+    if (__DEV__) {
+      if (toolbar && !isValidAllowedChildren(toolbar, ComponentIds.TableToolbar)) {
+        throwBladeError({
+          message: 'Only TableToolbar component is allowed in the `toolbar` prop',
+          moduleName: 'Table',
+        });
+      }
     }
-  }
 
-  // Table Context
-  const tableContext: TableContextType = useMemo(
-    () => ({
-      selectionType,
-      selectedRows,
-      totalItems,
-      toggleRowSelectionById,
-      toggleAllRowsSelection,
-      deselectAllRows,
-      rowDensity,
-      toggleSort,
-      currentSortedState,
-      setPaginationPage,
-      setPaginationRowSize,
-      currentPaginationState,
-      showStripedRows,
-      disabledRows,
-      setDisabledRows,
-      paginationType,
-      setPaginationType,
-      backgroundColor,
-      headerRowDensity,
-      setHeaderRowDensity,
-      showBorderedCells,
-      hasHoverActions,
-      setHasHoverActions,
-      columnCount,
-      gridTemplateColumns,
-    }),
-    [
-      selectionType,
-      selectedRows,
-      totalItems,
-      toggleRowSelectionById,
-      toggleAllRowsSelection,
-      deselectAllRows,
-      gridTemplateColumns,
-      rowDensity,
-      toggleSort,
-      columnCount,
-      currentSortedState,
-      setPaginationPage,
-      setPaginationRowSize,
-      currentPaginationState,
-      showStripedRows,
-      disabledRows,
-      setDisabledRows,
-      paginationType,
-      setPaginationType,
-      backgroundColor,
-      headerRowDensity,
-      setHeaderRowDensity,
-      showBorderedCells,
-      hasHoverActions,
-      setHasHoverActions,
-    ],
-  );
+    // Table Context
+    const tableContext: TableContextType = useMemo(
+      () => ({
+        selectionType,
+        selectedRows,
+        totalItems,
+        toggleRowSelectionById,
+        toggleAllRowsSelection,
+        deselectAllRows,
+        rowDensity,
+        toggleSort,
+        currentSortedState,
+        setPaginationPage,
+        setPaginationRowSize,
+        currentPaginationState,
+        showStripedRows,
+        disabledRows,
+        setDisabledRows,
+        paginationType,
+        setPaginationType,
+        backgroundColor,
+        headerRowDensity,
+        setHeaderRowDensity,
+        showBorderedCells,
+        hasHoverActions,
+        setHasHoverActions,
+        columnCount,
+        gridTemplateColumns,
+      }),
+      [
+        selectionType,
+        selectedRows,
+        totalItems,
+        toggleRowSelectionById,
+        toggleAllRowsSelection,
+        deselectAllRows,
+        gridTemplateColumns,
+        rowDensity,
+        toggleSort,
+        columnCount,
+        currentSortedState,
+        setPaginationPage,
+        setPaginationRowSize,
+        currentPaginationState,
+        showStripedRows,
+        disabledRows,
+        setDisabledRows,
+        paginationType,
+        setPaginationType,
+        backgroundColor,
+        headerRowDensity,
+        setHeaderRowDensity,
+        showBorderedCells,
+        hasHoverActions,
+        setHasHoverActions,
+      ],
+    );
 
-  return (
-    <TableContext.Provider value={tableContext}>
-      {isLoading ? (
-        <BaseBox
-          display="flex"
-          flex={1}
-          alignItems="center"
-          justifyContent="center"
-          height={height}
-          width={width}
-          {...getStyledProps(rest)}
-          {...metaAttribute({ name: MetaConstants.Table })}
-          {...makeAnalyticsAttribute(rest)}
-        >
-          <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
-        </BaseBox>
-      ) : (
-        <BaseBox
-          // ref={ref as never}
-          flex={1}
-          position="relative"
-          {...getStyledProps(rest)}
-          {...metaAttribute({ name: MetaConstants.Table })}
-          width={width}
-        >
-          {isRefreshSpinnerMounted && (
-            <RefreshWrapper
-              position="absolute"
-              width="100%"
-              height="100%"
-              zIndex={refreshWrapperZIndex}
-              backgroundColor="overlay.background.subtle"
-              justifyContent="center"
-              alignItems="center"
-              display="flex"
-              isRefreshSpinnerEntering={isRefreshSpinnerEntering}
-              isRefreshSpinnerExiting={isRefreshSpinnerExiting}
-              isRefreshSpinnerVisible={isRefreshSpinnerVisible}
-            >
-              <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
-            </RefreshWrapper>
-          )}
-          {toolbar}
-          <StyledReactTable
-            role="table"
-            layout={{ fixedHeader: true, horizontalScroll: true, isDiv: true }}
-            data={data}
-            // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
-            theme={tableTheme}
-            select={selectionType !== 'none' ? rowSelectConfig : null}
-            sort={sortFunctions ? sort : null}
-            $styledProps={{
-              height,
-              width,
-              isVirtualized,
-            }}
-            pagination={hasPagination ? paginationConfig : null}
-            {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
+    return (
+      <TableContext.Provider value={tableContext}>
+        {isLoading ? (
+          <BaseBox
+            display="flex"
+            flex={1}
+            alignItems="center"
+            justifyContent="center"
+            height={height}
+            width={width}
+            {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
             {...makeAnalyticsAttribute(rest)}
           >
-            {children}
-          </StyledReactTable>
-          {pagination}
-        </BaseBox>
-      )}
-    </TableContext.Provider>
-  );
-};
+            <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
+          </BaseBox>
+        ) : (
+          <BaseBox
+            // ref={ref as never}
+            flex={1}
+            position="relative"
+            {...getStyledProps(rest)}
+            {...metaAttribute({ name: MetaConstants.Table })}
+            width={width || `${VirtualizedTableDimensions.width}px`}
+          >
+            {isRefreshSpinnerMounted && (
+              <RefreshWrapper
+                position="absolute"
+                width="100%"
+                height="100%"
+                zIndex={refreshWrapperZIndex}
+                backgroundColor="overlay.background.subtle"
+                justifyContent="center"
+                alignItems="center"
+                display="flex"
+                isRefreshSpinnerEntering={isRefreshSpinnerEntering}
+                isRefreshSpinnerExiting={isRefreshSpinnerExiting}
+                isRefreshSpinnerVisible={isRefreshSpinnerVisible}
+              >
+                <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
+              </RefreshWrapper>
+            )}
+            {toolbar}
+            <StyledReactTable
+              role="table"
+              layout={{ fixedHeader: true, horizontalScroll: true, isDiv: true }}
+              data={data}
+              // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
+              theme={tableTheme}
+              select={selectionType !== 'none' ? rowSelectConfig : null}
+              sort={sortFunctions ? sort : null}
+              $styledProps={{
+                height: height || `${VirtualizedTableDimensions.height}px`,
+                width: width || `${VirtualizedTableDimensions.width}px`,
+                isVirtualized,
+              }}
+              pagination={hasPagination ? paginationConfig : null}
+              {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
+              {...metaAttribute({ name: MetaConstants.Table })}
+              {...makeAnalyticsAttribute(rest)}
+            >
+              {children}
+            </StyledReactTable>
+            {pagination}
+          </BaseBox>
+        )}
+      </TableContext.Provider>
+    );
+  },
+);
 
 const Table = assignWithoutSideEffects(_Table, {
   componentId: ComponentIds.Table,
