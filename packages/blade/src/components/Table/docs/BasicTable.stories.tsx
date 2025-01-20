@@ -26,7 +26,8 @@ import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { CheckIcon, CloseIcon } from '~components/Icons';
 import { TableVirtulized } from '../TableBody.web';
-import { VirtualizedTable } from "../Table.web";
+import { VirtualizedTable } from '../Table.web';
+import { spacing } from '~tokens/global';
 // import {
 //   HeaderCellSelect,
 //   useRowSelect,
@@ -127,7 +128,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         data={data}
         onSelectionChange={console.log}
         selectionType="multiple"
-        height="100%"
+        height={'500px'}
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>

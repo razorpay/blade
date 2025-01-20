@@ -526,26 +526,24 @@ const _Table = <Item,>({
             </RefreshWrapper>
           )}
           {toolbar}
-          <Box height="300px">
-            <StyledReactTable
-              role="table"
-              layout={{ fixedHeader: true, horizontalScroll: true, isDiv: true }}
-              data={data}
-              // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
-              theme={tableTheme}
-              select={selectionType !== 'none' ? rowSelectConfig : null}
-              sort={sortFunctions ? sort : null}
-              $styledProps={{
-                height,
-              }}
-              pagination={hasPagination ? paginationConfig : null}
-              {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
-              {...metaAttribute({ name: MetaConstants.Table })}
-              {...makeAnalyticsAttribute(rest)}
-            >
-              {children}
-            </StyledReactTable>
-          </Box>
+          <StyledReactTable
+            role="table"
+            layout={{ fixedHeader: true, horizontalScroll: true, isDiv: true }}
+            data={data}
+            // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
+            theme={tableTheme}
+            select={selectionType !== 'none' ? rowSelectConfig : null}
+            sort={sortFunctions ? sort : null}
+            $styledProps={{
+              height,
+            }}
+            pagination={hasPagination ? paginationConfig : null}
+            {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
+            {...metaAttribute({ name: MetaConstants.Table })}
+            {...makeAnalyticsAttribute(rest)}
+          >
+            {children}
+          </StyledReactTable>
           {pagination}
         </BaseBox>
       )}
