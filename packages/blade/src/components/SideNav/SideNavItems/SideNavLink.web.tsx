@@ -18,10 +18,11 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { Text } from '~components/Typography';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
-const StyledNavLinkContainer = styled(BaseBox)((props) => {
+const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((props) => {
   return {
     width: '100%',
     [`.${SHOW_ON_LINK_HOVER}`]: {
@@ -46,13 +47,15 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      height: makeSize(NAV_ITEM_HEIGHT),
+      height: props.$hasDescription ? undefined : makeSize(NAV_ITEM_HEIGHT),
       width: '100%',
       textDecoration: 'none',
       overflow: 'hidden',
       flexWrap: 'nowrap',
       cursor: 'pointer',
-      padding: `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[4])}`,
+      padding: `${makeSpace(props.theme.spacing[props.$hasDescription ? 3 : 0])} ${makeSpace(
+        props.theme.spacing[4],
+      )}`,
       margin: `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[0])}`,
       color: props.theme.colors.interactive.text.gray.subtle,
       borderRadius: props.theme.border.radius.medium,
@@ -77,29 +80,43 @@ const StyledNavLinkContainer = styled(BaseBox)((props) => {
 const NavLinkIconTitle = ({
   icon: Icon,
   title,
+  description,
   titleSuffix,
   isL1Item,
-}: Pick<SideNavLinkProps, 'title' | 'icon' | 'titleSuffix'> & {
+}: Pick<SideNavLinkProps, 'title' | 'description' | 'icon' | 'titleSuffix'> & {
   isL1Item: boolean;
 }): React.ReactElement => {
   return (
     <Box display="flex" flexDirection="row" gap="spacing.3">
       {Icon ? (
-        <BaseBox display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+        <BaseBox
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          alignSelf="start"
+          justifyContent="center"
+        >
           <Icon size="medium" color="currentColor" />
         </BaseBox>
       ) : null}
-      <BaseText
-        truncateAfterLines={1}
-        color="currentColor"
-        fontWeight="medium"
-        fontSize={100}
-        lineHeight={100}
-        as="p"
-        className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
-      >
-        {title}
-      </BaseText>
+      <Box>
+        <BaseText
+          truncateAfterLines={1}
+          color="currentColor"
+          fontWeight="medium"
+          fontSize={100}
+          lineHeight={100}
+          as="p"
+          className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
+        >
+          {title}
+        </BaseText>
+        {!isL1Item && description ? (
+          <Text size="small" weight="medium" color="currentColor">
+            {description}
+          </Text>
+        ) : null}
+      </Box>
       {titleSuffix ? (
         <BaseBox display="flex" alignItems="center">
           {titleSuffix}
@@ -111,6 +128,7 @@ const NavLinkIconTitle = ({
 
 const L3Trigger = ({
   title,
+  description,
   icon,
   as,
   href,
@@ -120,7 +138,15 @@ const L3Trigger = ({
   onClick,
 }: Pick<
   SideNavLinkProps,
-  'title' | 'icon' | 'as' | 'href' | 'titleSuffix' | 'tooltip' | 'target' | 'onClick'
+  | 'title'
+  | 'description'
+  | 'icon'
+  | 'as'
+  | 'href'
+  | 'titleSuffix'
+  | 'tooltip'
+  | 'target'
+  | 'onClick'
 >): React.ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
@@ -144,7 +170,13 @@ const L3Trigger = ({
           onClick={(e: React.MouseEvent) => toggleCollapse(e)}
           {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
         >
-          <NavLinkIconTitle title={title} icon={icon} isL1Item={false} titleSuffix={titleSuffix} />
+          <NavLinkIconTitle
+            title={title}
+            description={description}
+            icon={icon}
+            isL1Item={false}
+            titleSuffix={titleSuffix}
+          />
           <BaseBox display="flex" alignItems="center">
             {isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />}
           </BaseBox>
@@ -178,6 +210,7 @@ const CurvedVerticalLine = styled(BaseBox)((props) => {
 
 const SideNavLink = ({
   title,
+  description,
   href,
   children,
   titleSuffix,
@@ -240,6 +273,7 @@ const SideNavLink = ({
         >
           <L3Trigger
             title={title}
+            description={description}
             icon={icon}
             as={as}
             href={href}
@@ -252,7 +286,12 @@ const SideNavLink = ({
         </Collapsible>
       ) : (
         <>
-          <StyledNavLinkContainer position="relative">
+          /** @TODO: - [ ] Fix alignment of icon and name - [ ] Fix alignment of trailing content -
+          [ ] Fix description color */
+          <StyledNavLinkContainer
+            $hasDescription={currentLevel !== 1 && Boolean(description)}
+            position="relative"
+          >
             <TooltipifyNavItem tooltip={tooltip}>
               <BaseBox
                 className={STYLED_NAV_LINK}
@@ -296,6 +335,7 @@ const SideNavLink = ({
                 <NavLinkIconTitle
                   icon={icon}
                   title={title}
+                  description={description}
                   isL1Item={currentLevel === 1}
                   titleSuffix={titleSuffix}
                 />
@@ -321,7 +361,6 @@ const SideNavLink = ({
             ) : null}
             {currentLevel === 3 && isActive ? <CurvedVerticalLine /> : null}
           </StyledNavLinkContainer>
-
           {children ? (
             <FloatingPortal root={l2PortalContainerRef}>
               {isActive && isL1Collapsed ? (

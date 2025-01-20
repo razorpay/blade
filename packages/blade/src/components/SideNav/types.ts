@@ -27,6 +27,10 @@ type SideNavProps = {
    */
   onDismiss?: DrawerProps['onDismiss'];
 
+  onLevelChange?: ({ visibleLevel }: { visibleLevel: number }) => void;
+
+  // onLevelChange?: ({ activeLevel,  }) => void;
+
   /**
    * Banner slot for usecases like adding Activation Panel
    *
@@ -41,6 +45,13 @@ type SideNavLinkProps = {
    * title of the Link
    */
   title: string;
+
+  /**
+   * description of the Link
+   *
+   * **Note**: Only applicable for L2 items
+   */
+  description?: string;
 
   /**
    * Slot after the title.
