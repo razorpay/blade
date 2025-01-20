@@ -123,13 +123,13 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box padding="spacing.5">
       <> total rows : {nodes.length}</>
-      <VirtualizedTable
+      <TableComponent
         {...args}
         data={data}
         onSelectionChange={console.log}
         selectionType="multiple"
         height="500px"
-        width="500px"
+        width="800px"
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
@@ -140,6 +140,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
             </TableToolbarActions>
           </TableToolbar>
         }
+        isVirtualized
       >
         {(tableData) => (
           <TableVirtulized
@@ -203,7 +204,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
             )}
           />
         )}
-      </VirtualizedTable>
+      </TableComponent>
     </Box>
   );
 };

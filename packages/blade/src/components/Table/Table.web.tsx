@@ -43,7 +43,6 @@ import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { Virtualized } from '@table-library/react-table-library/virtualized';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -107,7 +106,11 @@ const getTableHeaderCellCount = (
 };
 
 const StyledReactTable = styled(ReactTable)<{
-  $styledProps?: { height?: BoxProps['height']; width?: BoxProps['width'] };
+  $styledProps?: {
+    height?: BoxProps['height'];
+    width?: BoxProps['width'];
+    isVirtualized?: boolean;
+  };
 }>(({ $styledProps }) => {
   const { theme } = useTheme();
   const styledPropsCSSObject = getBaseBoxStyles({
@@ -122,18 +125,20 @@ const StyledReactTable = styled(ReactTable)<{
     '&&&': {
       ...styledPropsCSSObject,
     },
-    // applying style to 1st child of table
-    // apply these styles in case of isVisible
-    // virtualized table adds some styles which should be overridden
-    '& > div ': {
-      overflow: 'auto !important',
-      height: `${$styledProps?.height} !important`,
-      width: `${$styledProps?.width} !important`,
-    },
-    // and remove scroll from the main table element
-    '&': {
-      overflow: 'hidden !important',
-    },
+    ...($styledProps?.isVirtualized && {
+      // applying style to 1st child of table
+      // apply these styles in case of isVisible
+      // virtualized table adds some styles which should be overridden
+      '& > div ': {
+        overflow: 'auto !important',
+        height: `${$styledProps?.height} !important`,
+        width: `${$styledProps?.width} !important`,
+      },
+      // and remove scroll from the main table element
+      '&': {
+        overflow: 'hidden !important',
+      },
+    }),
   };
 });
 
@@ -176,6 +181,7 @@ const _Table = <Item,>({
   isRefreshing = false,
   showBorderedCells = false,
   defaultSelectedIds = [],
+  isVirtualized = false,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -208,7 +214,7 @@ const _Table = <Item,>({
   });
 
   // Table Theme
-  const columnCount = getTableHeaderCellCount(children, true);
+  const columnCount = getTableHeaderCellCount(children, isVirtualized);
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
     ? `
   &:nth-of-type(1) {
@@ -555,6 +561,7 @@ const _Table = <Item,>({
             $styledProps={{
               height,
               width,
+              isVirtualized,
             }}
             pagination={hasPagination ? paginationConfig : null}
             {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
