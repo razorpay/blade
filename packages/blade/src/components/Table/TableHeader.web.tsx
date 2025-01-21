@@ -72,8 +72,6 @@ const StyledHeader = styled(Header)({
   '&&&': {
     '& tr:first-child th': {
       borderTop: 'none',
-      display: 'flex',
-      justifyContent: 'space-between',
     },
   },
 });
