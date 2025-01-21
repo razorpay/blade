@@ -99,8 +99,11 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $hasPadding: boolean;
-}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding }) => ({
+  $textAlign: 'left' | 'center' | 'right';
+}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign }) => ({
   '&&&': {
+    display: $textAlign ? 'flex' : 'block',
+    justifyContent: $textAlign ? 'space-between' : 'initial',
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
@@ -114,7 +117,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      justifyContent: $textAlign ? $textAlign : 'space-between',
       alignItems: 'center',
       height: '100%',
       paddingLeft: $hasPadding
@@ -133,6 +136,7 @@ const _TableHeaderCell = ({
   children,
   headerKey,
   _hasPadding = true,
+  textAlign,
   ...rest
 }: TableHeaderCellProps): React.ReactElement => {
   const {
@@ -152,6 +156,7 @@ const _TableHeaderCell = ({
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}
       $hasPadding={_hasPadding}
+      $textAlign={textAlign}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);
@@ -160,15 +165,17 @@ const _TableHeaderCell = ({
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
       {...makeAnalyticsAttribute(rest)}
     >
-      {isChildrenString ? (
-        <Text size="medium" weight="medium" color="surface.text.gray.normal">
-          {children}
-        </Text>
-      ) : (
-        children
-      )}
+      <BaseBox display="flex" flexGrow={1} justifyContent={textAlign}>
+        {isChildrenString ? (
+          <Text size="medium" weight="medium" color="surface.text.gray.normal">
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </BaseBox>
       {isSortable && (
-        <BaseBox paddingLeft="spacing.2" backgroundColor="transparent">
+        <BaseBox paddingLeft="spacing.2" backgroundColor="transparent" flexShrink={0}>
           <SortIcon
             isSorted={currentSortedState.sortKey === headerKey}
             isSortReversed={currentSortedState.isSortReversed}
