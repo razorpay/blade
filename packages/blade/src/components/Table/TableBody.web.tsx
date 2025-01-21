@@ -260,14 +260,20 @@ export const CellWrapper = styled(BaseBox)<{
 
 const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
+  const {
+    selectionType,
+    rowDensity,
+    showStripedRows,
+    backgroundColor,
+    isVirtualized,
+  } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
   return (
     <StyledCell
       tabIndex={0}
       role="cell"
-      as="td"
+      as={isVirtualized ? 'td' : undefined}
       $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
@@ -437,6 +443,7 @@ const _TableRow = <Item,>({
     setDisabledRows,
     showBorderedCells,
     setHasHoverActions,
+    isVirtualized,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
@@ -475,8 +482,8 @@ const _TableRow = <Item,>({
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
-      role="row"
-      as="tr"
+      role={isVirtualized ? 'row' : undefined}
+      as={isVirtualized ? 'tr' : undefined}
     >
       {isMultiSelect && (
         <TableCheckboxCell

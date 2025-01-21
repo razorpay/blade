@@ -69,12 +69,12 @@ const _TableEditableCell = ({
   errorText,
   successText,
 }: TableEditableCellProps): React.ReactElement => {
-  const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
+  const { rowDensity, showStripedRows, backgroundColor, isVirtualized } = useTableContext();
 
   return (
     <StyledEditableCell
       role="cell"
-      as="td"
+      as={isVirtualized ? 'td' : undefined}
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
       {...metaAttribute({ name: MetaConstants.TableCell })}
@@ -134,13 +134,13 @@ const _TableEditableCell = ({
 const TableEditableDropdownCell = (
   dropdownProps: TableEditableDropdownCellProps,
 ): React.ReactElement => {
-  const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
+  const { rowDensity, showStripedRows, backgroundColor, isVirtualized } = useTableContext();
 
   return (
     <TableEditableCellContext.Provider value={{ isInsideTableEditableCell: true }}>
       <StyledEditableCell
         role="cell"
-        as="td"
+        as={isVirtualized ? 'td' : undefined}
         $backgroundColor={backgroundColor}
         $rowDensity={rowDensity}
         {...metaAttribute({ name: MetaConstants.TableCell })}
