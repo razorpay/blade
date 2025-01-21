@@ -418,6 +418,7 @@ const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.R
     <StyledCell
       tabIndex={0}
       role="cell"
+      as="td"
       $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
@@ -625,6 +626,8 @@ const _TableRow = <Item,>({
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
+      role="row"
+      as="tr"
     >
       {isMultiSelect && (
         <TableCheckboxCell
@@ -645,7 +648,6 @@ const _TableRow = <Item,>({
             flexShrink={0}
             flexGrow={1}
             width="max-content"
-            border="1px solid black"
           >
             <BaseBox
               className={classes.HOVER_ACTIONS_LAYER2}

@@ -143,6 +143,15 @@ const StyledReactTable = styled(ReactTable)<{
       '&': {
         overflow: 'hidden !important',
       },
+      // for virtualized table, we need to apply some styles to tbody
+      '.tbody > div': {
+        display: 'block !important',
+      },
+      // for virtualized table, we need to apply some styles to tbody
+      tr: {
+        display: 'grid',
+        gridTemplateColumns: 'var(--data-table-library_grid-template-columns)',
+      },
       '.tbody tr:last-child .cell-wrapper': {
         borderBottom: 'none',
       },
@@ -157,6 +166,7 @@ const StyledReactTable = styled(ReactTable)<{
           backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedHover,
           theme,
         }),
+        border: '1px solid red',
       },
       '.tbody .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base': {
         backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedFocus),
@@ -713,7 +723,7 @@ const _Table = forwardRef(
             )}
             {toolbar}
             <StyledReactTable
-              role="table"
+              role="grid"
               layout={{ fixedHeader: true, horizontalScroll: true, isDiv: true }}
               data={data}
               // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
