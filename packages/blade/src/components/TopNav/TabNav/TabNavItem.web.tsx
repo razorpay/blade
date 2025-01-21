@@ -167,6 +167,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
         target={target}
         $isActive={isActive}
         {...props}
+        {...metaAttribute({ name: MetaConstants.TabNavItemLink })}
         {...makeAccessible({ label: accessibilityLabel, current: isActive })}
       >
         {Icon ? (
