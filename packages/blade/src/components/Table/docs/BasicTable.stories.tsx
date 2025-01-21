@@ -153,13 +153,14 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         }}
         ref={tableRef}
         isVirtualized
+        defaultSelectedIds={['1', '3']}
       >
         {(tableData) => (
           <TableVirtulized
             tableData={tableData}
             rowHeight={(item, index) => {
               // header height and row height
-              return index === 0 ? 50 : 58;
+              return index === 0 ? 50 : 57.5;
             }}
             // header={()=>{}}
             header={() => (
