@@ -1,5 +1,21 @@
 # @razorpay/blade
 
+## 12.4.0
+
+### Minor Changes
+
+- 964ee14c: feat: ability to align individual table column items
+
+### Patch Changes
+
+- 455e9651: fix(FileUpload): fileupload on remove clashes with onchage
+
+  > [!NOTE]
+  >
+  > Previously, onChange did not provide an updated value when a file was removed. Now, when a file is removed from FileUpload, onChange will return the updated value.
+
+- a87a200b: chore(blade): add data attributes in TabNav & Table components
+
 ## 12.3.1
 
 ### Patch Changes
