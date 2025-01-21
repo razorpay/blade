@@ -157,7 +157,10 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         {(tableData) => (
           <TableVirtulized
             tableData={tableData}
-            rowHeight={59}
+            rowHeight={(item, index) => {
+              // header height and row height
+              return index === 0 ? 50 : 58;
+            }}
             // header={()=>{}}
             header={() => (
               <TableHeader>
