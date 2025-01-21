@@ -74,8 +74,6 @@ const getTableHeaderCellCount = (
           return tableHeaderCells.length;
         }
       }
-      // const tableHeaderArray = tableRootComponent.props.header().props.children;
-      // return tableHeaderArray;
     }
   }
 
@@ -121,13 +119,10 @@ const StyledReactTable = styled(ReactTable)<{
   const styledPropsCSSObject = getBaseBoxStyles({
     theme,
     height: $styledProps?.height,
-    //Todo : virtualized table
     ...($styledProps?.isVirtualized && {
       width: $styledProps?.width,
     }),
-    // auto is isVirtualized ? 'scroll' : 'auto',
   });
-  //TODO: fix this
   const $isSelectable = $styledProps?.isSelectable;
   const $showStripedRows = $styledProps?.showStripedRows;
 
@@ -136,9 +131,6 @@ const StyledReactTable = styled(ReactTable)<{
       ...styledPropsCSSObject,
     },
     ...($styledProps?.isVirtualized && {
-      // applying style to 1st child of table
-      // apply these styles in case of isVisible
-      // virtualized table adds some styles which should be overridden
       '& > div ': {
         overflow: 'auto !important',
         height: `${$styledProps?.height} !important`,
