@@ -113,6 +113,8 @@ const StyledReactTable = styled(ReactTable)<{
     height?: BoxProps['height'];
     width?: BoxProps['width'];
     isVirtualized?: boolean;
+    isSelectable?: boolean;
+    showStripedRows?: boolean;
   };
 }>(({ $styledProps }) => {
   const { theme } = useTheme();
@@ -126,8 +128,8 @@ const StyledReactTable = styled(ReactTable)<{
     // auto is isVirtualized ? 'scroll' : 'auto',
   });
   //TODO: fix this
-  const $isSelectable = true;
-  const $showStripedRows = true;
+  const $isSelectable = $styledProps?.isSelectable;
+  const $showStripedRows = $styledProps?.showStripedRows;
 
   return {
     '&&&': {
@@ -740,6 +742,8 @@ const _Table = forwardRef(
                 height: height || `${VirtualizedTableDimensions.height}px`,
                 width: width || `${VirtualizedTableDimensions.width}px`,
                 isVirtualized,
+                isSelectable: selectionType !== 'none',
+                showStripedRows,
               }}
               pagination={hasPagination ? paginationConfig : null}
               {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
