@@ -35,6 +35,8 @@ import {
   SelectTypes,
 } from '@table-library/react-table-library/select';
 import { useRef } from 'react';
+import { isBackgroundColorToken } from '../../../../../razorsharp/src/code/blade/utils/color';
+import { getBackgroundColorToken } from '../../Button/BaseButton/BaseButton';
 
 export default {
   title: 'Components/Table',
@@ -123,7 +125,7 @@ const data: TableData<Item> = {
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   const tableRef = useRef<HTMLDivElement>(null);
   return (
-    <Box padding="spacing.5" ref={tableRef}>
+    <Box padding="spacing.5" ref={tableRef} height="500px">
       <> total rows : {nodes.length}</>
       <TableComponent
         {...args}
@@ -155,7 +157,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         {(tableData) => (
           <TableVirtulized
             tableData={tableData}
-            rowHeight={57}
+            rowHeight={59}
             // header={()=>{}}
             header={() => (
               <TableHeader>

@@ -120,7 +120,9 @@ const StyledReactTable = styled(ReactTable)<{
     theme,
     height: $styledProps?.height,
     //Todo : virtualized table
-    width: $styledProps?.width,
+    ...($styledProps?.isVirtualized && {
+      width: $styledProps?.width,
+    }),
     // auto is isVirtualized ? 'scroll' : 'auto',
   });
   const $isSelectable = true;
