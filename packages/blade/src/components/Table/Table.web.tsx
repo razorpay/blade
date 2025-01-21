@@ -478,7 +478,7 @@ const _Table = forwardRef(
         console.log('Parent dimensions:', { width, height });
         // You can use the width and height to set your table dimensions
       }
-    }, [ref]);
+    }, [height, ref, width]);
 
     useEffect(() => {
       // Get the total number of items
@@ -657,6 +657,7 @@ const _Table = forwardRef(
         setHasHoverActions,
         columnCount,
         gridTemplateColumns,
+        isVirtualized,
       }),
       [
         selectionType,
@@ -684,6 +685,7 @@ const _Table = forwardRef(
         showBorderedCells,
         hasHoverActions,
         setHasHoverActions,
+        isVirtualized,
       ],
     );
 
@@ -696,7 +698,7 @@ const _Table = forwardRef(
             alignItems="center"
             justifyContent="center"
             height={height}
-            width={width}
+            width={isVirtualized ? width : undefined}
             {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
             {...makeAnalyticsAttribute(rest)}
@@ -710,7 +712,7 @@ const _Table = forwardRef(
             position="relative"
             {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
-            width={width || `${VirtualizedTableDimensions.width}px`}
+            width={isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined}
           >
             {isRefreshSpinnerMounted && (
               <RefreshWrapper
@@ -740,7 +742,7 @@ const _Table = forwardRef(
               sort={sortFunctions ? sort : null}
               $styledProps={{
                 height: height || `${VirtualizedTableDimensions.height}px`,
-                width: width || `${VirtualizedTableDimensions.width}px`,
+                width: isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined,
                 isVirtualized,
                 isSelectable: selectionType !== 'none',
                 showStripedRows,

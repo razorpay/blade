@@ -42,6 +42,7 @@ export type TableContextType = {
   setHasHoverActions: (hasHoverActions: boolean) => void;
   columnCount: number;
   gridTemplateColumns: string | undefined;
+  isVirtualized?: boolean;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -70,6 +71,7 @@ const TableContext = React.createContext<TableContextType>({
   setHasHoverActions: () => {},
   columnCount: 0,
   gridTemplateColumns: undefined,
+  isVirtualized: false,
 });
 
 const useTableContext = (): TableContextType => {

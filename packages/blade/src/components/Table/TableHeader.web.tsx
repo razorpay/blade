@@ -213,6 +213,7 @@ const StyledHeaderRow = styled(HeaderRow)<{
   $hasHoverActions: boolean;
   $selectionType: TableProps<unknown>['selectionType'];
   $columnCount: number;
+  $isVirtualized?: boolean;
 }>(
   ({
     theme,
@@ -221,21 +222,23 @@ const StyledHeaderRow = styled(HeaderRow)<{
     $hasHoverActions,
     $selectionType,
     $columnCount,
+    $isVirtualized,
   }) => ({
     '& th': $showBorderedCells
       ? {
           borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
           borderRightColor: getIn(theme.colors, tableRow.borderColor),
           borderRightStyle: 'solid',
-          //TODO: add check to only add this for virtalized tables
-          display: 'grid',
-          gridTemplateColumns: $gridTemplateColumns
-            ? `${$gridTemplateColumns} ${$hasHoverActions ? 'min-content' : ''}`
-            : ` ${
-                $selectionType === 'multiple' ? 'min-content' : ''
-              } repeat(${$columnCount},minmax(100px, 1fr)) ${
-                $hasHoverActions ? 'min-content' : ''
-              } !important;`,
+          ...($isVirtualized && {
+            display: 'grid',
+            gridTemplateColumns: $gridTemplateColumns
+              ? `${$gridTemplateColumns} ${$hasHoverActions ? 'min-content' : ''}`
+              : ` ${
+                  $selectionType === 'multiple' ? 'min-content' : ''
+                } repeat(${$columnCount},minmax(100px, 1fr)) ${
+                  $hasHoverActions ? 'min-content' : ''
+                } !important;`,
+          }),
         }
       : undefined,
     '& th:last-child ': {
@@ -260,6 +263,7 @@ const _TableHeaderRow = ({
     hasHoverActions,
     gridTemplateColumns,
     columnCount,
+    isVirtualized,
   } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
@@ -285,6 +289,7 @@ const _TableHeaderRow = ({
       $hasHoverActions={hasHoverActions}
       $selectionType={selectionType}
       $columnCount={columnCount}
+      $isVirtualized={isVirtualized}
     >
       {isMultiSelect && (
         <TableHeaderCellCheckbox
