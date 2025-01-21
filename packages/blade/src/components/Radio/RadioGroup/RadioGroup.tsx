@@ -76,7 +76,15 @@ type RadioGroupProps = {
   /**
    * The callback invoked when any of the radio's state changes
    */
-  onChange?: ({ name, value }: { name: string | undefined; value: string }) => void;
+  onChange?: ({
+    name,
+    value,
+    event,
+  }: {
+    name: string | undefined;
+    value: string;
+    event: React.ChangeEvent<HTMLInputElement>;
+  }) => void;
   /**
    * The name of the input field in a radio
    * (Useful for form submission).

@@ -1,6 +1,5 @@
 import React from 'react';
 import type { BoxProps } from '~components/Box';
-import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
@@ -46,7 +45,7 @@ const _TopNav = (
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   return (
-    <Box
+    <BaseBox
       ref={ref as never}
       display="grid"
       gridTemplateColumns="auto minmax(0, 1fr) auto"
@@ -63,7 +62,7 @@ const _TopNav = (
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -71,7 +70,7 @@ const TopNav = React.forwardRef(_TopNav);
 
 const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box
+    <BaseBox
       flexDirection="row"
       marginTop="spacing.4"
       width={{
@@ -83,7 +82,7 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
       <BaseBox width="100%" textAlign="center">
         {children}
       </BaseBox>
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -110,7 +109,7 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
       alignItems="center"
       marginTop="spacing.1"
       padding="spacing.3"
-      backgroundColor="surface.background.gray.intense"
+      backgroundColor="surface.background.gray.moderate"
       borderTopLeftRadius="medium"
       borderTopRightRadius="medium"
       {...metaAttribute({ name: MetaConstants.TopNavActions })}

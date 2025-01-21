@@ -53,7 +53,10 @@ const SortIcon = ({
   const upArrowColor = isSorted && isSortReversed ? activeColor : defaultColor;
   const downArrowColor = isSorted && !isSortReversed ? activeColor : defaultColor;
   return (
-    <SortButton {...makeAccessible({ label: 'Toggle Sort', role: 'button' })}>
+    <SortButton
+      {...metaAttribute({ name: MetaConstants.TableSortButton })}
+      {...makeAccessible({ label: 'Toggle Sort', role: 'button' })}
+    >
       <svg width={20} height={20} fill="none">
         <path
           fill={upArrowColor}

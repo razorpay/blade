@@ -299,7 +299,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           [
             {
               "alignItems": "center",
-              "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+              "backgroundColor": "hsla(211, 20%, 52%, 0.18)",
               "borderRadius": 9999,
               "display": "flex",
               "height": 24,

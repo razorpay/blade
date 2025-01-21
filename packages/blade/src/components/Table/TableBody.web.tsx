@@ -317,6 +317,7 @@ const _TableCell = ({
           // allow text to wrap, so that if the <Text> overflows it can truncate
           whiteSpace="normal"
           position="relative"
+          {...metaAttribute({ name: MetaConstants.TableCellWrapper })}
         >
           {isChildrenString ? (
             <Text size="medium" truncateAfterLines={1}>

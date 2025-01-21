@@ -149,6 +149,7 @@ import FileZipIconComponent from './FileZipIcon';
 import FilmIconComponent from './FilmIcon';
 import FilterIconComponent from './FilterIcon';
 import FlagIconComponent from './FlagIcon';
+import FlaskIconComponent from './FlaskIcon';
 import FolderIconComponent from './FolderIcon';
 import ForexManagementIconComponent from './ForexManagementIcon';
 import FreelanceIconComponent from './FreelanceIcon';
@@ -175,11 +176,13 @@ import InstantSettlementIconComponent from './InstantSettlementIcon';
 import InternationalPaymentsIconComponent from './InternationalPaymentsIcon';
 import InvoicesIconComponent from './InvoicesIcon';
 import ItalicIconComponent from './ItalicIcon';
+import KeyboardIconComponent from './KeyboardIcon';
 import LayersIconComponent from './LayersIcon';
 import LayoutIconComponent from './LayoutIcon';
 import LifeBuoyIconComponent from './LifeBuoyIcon';
 import LinkIconComponent from './LinkIcon';
 import ListIconComponent from './ListIcon';
+import ListSearchIconComponent from './ListSearchIcon';
 import LoaderIconComponent from './LoaderIcon';
 import LoansForBusinessesIconComponent from './LoansForBusinessesIcon';
 import LockIconComponent from './LockIcon';
@@ -516,6 +519,7 @@ const iconMap: Record<string, IconComponent> = {
   FilmIcon: FilmIconComponent,
   FilterIcon: FilterIconComponent,
   FlagIcon: FlagIconComponent,
+  FlaskIcon: FlaskIconComponent,
   FolderIcon: FolderIconComponent,
   ForexManagementIcon: ForexManagementIconComponent,
   FreelanceIcon: FreelanceIconComponent,
@@ -542,11 +546,13 @@ const iconMap: Record<string, IconComponent> = {
   InternationalPaymentsIcon: InternationalPaymentsIconComponent,
   InvoicesIcon: InvoicesIconComponent,
   ItalicIcon: ItalicIconComponent,
+  KeyboardIcon: KeyboardIconComponent,
   LayersIcon: LayersIconComponent,
   LayoutIcon: LayoutIconComponent,
   LifeBuoyIcon: LifeBuoyIconComponent,
   LinkIcon: LinkIconComponent,
   ListIcon: ListIconComponent,
+  ListSearchIcon: ListSearchIconComponent,
   LoaderIcon: LoaderIconComponent,
   LoansForBusinessesIcon: LoansForBusinessesIconComponent,
   LockIcon: LockIconComponent,

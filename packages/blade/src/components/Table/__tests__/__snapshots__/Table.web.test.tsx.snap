@@ -6802,7 +6802,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6829,7 +6829,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   100
@@ -6851,7 +6851,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6878,7 +6878,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6905,7 +6905,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6932,7 +6932,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6967,7 +6967,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -6994,7 +6994,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   240
@@ -7016,7 +7016,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7043,7 +7043,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7070,7 +7070,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p
@@ -7097,7 +7097,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
               >
                 <div
                   class="c14 c15 cell-wrapper"
-                  data-blade-component="base-box"
+                  data-blade-component="table-cell-wrapper"
                   pointer-events="auto"
                 >
                   <p

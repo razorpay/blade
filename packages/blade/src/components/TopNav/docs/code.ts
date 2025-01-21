@@ -356,7 +356,7 @@ export const topNavFullExample = {
                 height="100vh"
                 padding="spacing.5"
                 overflowY="scroll"
-                backgroundColor="surface.background.gray.intense"
+                backgroundColor="surface.background.gray.moderate"
               >
                 <Box width={{ base: "max-content", m: "100%" }} height="200vh">
                   <Text marginBottom="spacing.4">This demo integrates:</Text>

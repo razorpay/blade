@@ -21,6 +21,8 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { mergeRefs } from '~utils/useMergeRefs';
 
 const SHOW_DRAWER = 'show-drawer';
 
@@ -65,18 +67,21 @@ const DrawerOverlay = styled(FloatingOverlay)(({ theme }) => {
   };
 });
 
-const _Drawer = ({
-  isOpen,
-  onDismiss,
-  zIndex = componentZIndices.drawer,
-  children,
-  accessibilityLabel,
-  showOverlay = true,
-  initialFocusRef,
-  isLazy = true,
-  testID,
-  ...rest
-}: DrawerProps): React.ReactElement => {
+const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
+  {
+    isOpen,
+    onDismiss,
+    zIndex = componentZIndices.drawer,
+    children,
+    accessibilityLabel,
+    showOverlay = true,
+    initialFocusRef,
+    isLazy = true,
+    testID,
+    ...rest
+  },
+  ref,
+) => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
   const [zIndexState, setZIndexState] = React.useState<number>(zIndex);
 
@@ -155,7 +160,7 @@ const _Drawer = ({
               {...makeAnalyticsAttribute(rest)}
               zIndex={zIndexState}
             >
-              {showOverlay || stackingLevel === 2 ? (
+              {showOverlay ? (
                 <DrawerOverlay
                   onClick={() => {
                     onDismiss();
@@ -184,7 +189,7 @@ const _Drawer = ({
                 height="100%"
                 display="flex"
                 flexDirection="column"
-                ref={refs.setFloating}
+                ref={mergeRefs(ref, refs.setFloating)}
                 onKeyDown={(event) => {
                   if (event?.key === 'Escape' || event?.code === 'Escape') {
                     onDismiss();
@@ -238,7 +243,8 @@ const _Drawer = ({
  * 
  * 
  */
-const Drawer = assignWithoutSideEffects(_Drawer, {
+const Drawer = assignWithoutSideEffects(React.forwardRef(_Drawer), {
+  displayName: 'Drawer',
   componentId: drawerComponentIds.Drawer,
 });
 
