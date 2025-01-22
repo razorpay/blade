@@ -46,7 +46,6 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
       height: props.$hasDescription ? undefined : makeSize(NAV_ITEM_HEIGHT),
       width: '100%',
       textDecoration: 'none',
@@ -82,45 +81,56 @@ const NavLinkIconTitle = ({
   title,
   description,
   titleSuffix,
+  isActive,
+  trailing,
   isL1Item,
-}: Pick<SideNavLinkProps, 'title' | 'description' | 'icon' | 'titleSuffix'> & {
+}: Pick<
+  SideNavLinkProps,
+  'title' | 'isActive' | 'trailing' | 'description' | 'icon' | 'titleSuffix'
+> & {
   isL1Item: boolean;
 }): React.ReactElement => {
   return (
-    <Box display="flex" flexDirection="row" gap="spacing.3">
-      {Icon ? (
-        <BaseBox
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          alignSelf="start"
-          justifyContent="center"
-        >
-          <Icon size="medium" color="currentColor" />
-        </BaseBox>
-      ) : null}
-      <Box>
-        <BaseText
-          truncateAfterLines={1}
-          color="currentColor"
-          fontWeight="medium"
-          fontSize={100}
-          lineHeight={100}
-          as="p"
-          className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
-        >
-          {title}
-        </BaseText>
-        {!isL1Item && description ? (
-          <Text size="small" weight="medium" color="currentColor">
-            {description}
-          </Text>
-        ) : null}
+    <Box width="100%" textAlign="left">
+      <Box display="flex" justifyContent="space-between" width="100%">
+        <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+          {Icon ? (
+            <BaseBox display="flex" flexDirection="row" alignItems="center">
+              <Icon size="medium" color="currentColor" />
+            </BaseBox>
+          ) : null}
+          <BaseText
+            truncateAfterLines={1}
+            color="currentColor"
+            fontWeight="medium"
+            fontSize={100}
+            lineHeight={100}
+            as="p"
+            className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
+          >
+            {title}
+          </BaseText>
+          {titleSuffix ? (
+            <BaseBox display="flex" alignItems="center">
+              {titleSuffix}
+            </BaseBox>
+          ) : null}
+        </Box>
+        <Box display="flex" alignItems="center">
+          {trailing}
+        </Box>
       </Box>
-      {titleSuffix ? (
-        <BaseBox display="flex" alignItems="center">
-          {titleSuffix}
-        </BaseBox>
+      {!isL1Item && description ? (
+        <Text
+          size="small"
+          marginLeft="spacing.7"
+          textAlign="left"
+          weight="medium"
+          color={isActive ? 'interactive.text.primary.muted' : 'interactive.text.gray.muted'}
+          truncateAfterLines={1}
+        >
+          {description}
+        </Text>
       ) : null}
     </Box>
   );
@@ -161,7 +171,7 @@ const L3Trigger = ({
 
   return (
     <TooltipifyNavItem tooltip={tooltip}>
-      <StyledNavLinkContainer>
+      <StyledNavLinkContainer $hasDescription={Boolean(description)}>
         <BaseBox
           className={STYLED_NAV_LINK}
           as={href ? as : 'button'}
@@ -176,10 +186,10 @@ const L3Trigger = ({
             icon={icon}
             isL1Item={false}
             titleSuffix={titleSuffix}
+            trailing={
+              isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />
+            }
           />
-          <BaseBox display="flex" alignItems="center">
-            {isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />}
-          </BaseBox>
         </BaseBox>
       </StyledNavLinkContainer>
     </TooltipifyNavItem>
@@ -286,8 +296,6 @@ const SideNavLink = ({
         </Collapsible>
       ) : (
         <>
-          /** @TODO: - [ ] Fix alignment of icon and name - [ ] Fix alignment of trailing content -
-          [ ] Fix description color */
           <StyledNavLinkContainer
             $hasDescription={currentLevel !== 1 && Boolean(description)}
             position="relative"
@@ -336,6 +344,7 @@ const SideNavLink = ({
                   icon={icon}
                   title={title}
                   description={description}
+                  isActive={isActive}
                   isL1Item={currentLevel === 1}
                   titleSuffix={titleSuffix}
                 />
