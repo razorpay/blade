@@ -354,8 +354,9 @@ type TablePaginationCommonProps = {
    * The default page size.
    * Page size controls how rows are shown per page.
    * @default 10
+   * consider using virtualization for large page sizes
    **/
-  defaultPageSize?: 10 | 25 | 50;
+  defaultPageSize?: 10 | 25 | 50 | 100 | 200;
   /**
    * The current page. Passing this prop will make the component controlled and will not update the page on its own.
    **/

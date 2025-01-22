@@ -369,7 +369,6 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 // header height and row height
                 return index === 0 ? 50 : 57.5;
               }}
-              // header={()=>{}}
               header={() => (
                 <TableHeader>
                   <TableHeaderRow>
