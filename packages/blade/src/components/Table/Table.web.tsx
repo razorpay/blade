@@ -145,7 +145,7 @@ const StyledReactTable = styled(ReactTable)<{
         display: 'block !important',
       },
       // for virtualized table, we need to apply some styles to tbody
-      tr: {
+      '.tbody > div > .tr': {
         display: 'grid',
         gridTemplateColumns: 'var(--data-table-library_grid-template-columns)',
         columnGap: '0',

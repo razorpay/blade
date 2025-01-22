@@ -74,7 +74,7 @@ const _TableEditableCell = ({
   return (
     <StyledEditableCell
       role="cell"
-      as={isVirtualized ? 'td' : undefined}
+      // as={isVirtualized ? 'td' : undefined}
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
       {...metaAttribute({ name: MetaConstants.TableCell })}
@@ -140,7 +140,7 @@ const TableEditableDropdownCell = (
     <TableEditableCellContext.Provider value={{ isInsideTableEditableCell: true }}>
       <StyledEditableCell
         role="cell"
-        as={isVirtualized ? 'td' : undefined}
+        // as={isVirtualized ? 'td' : undefined}
         $backgroundColor={backgroundColor}
         $rowDensity={rowDensity}
         {...metaAttribute({ name: MetaConstants.TableCell })}

@@ -273,7 +273,7 @@ const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.R
     <StyledCell
       tabIndex={0}
       role="cell"
-      as={isVirtualized ? 'td' : undefined}
+      // as={isVirtualized ? 'td' : undefined}
       $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
@@ -482,8 +482,8 @@ const _TableRow = <Item,>({
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
-      role={isVirtualized ? 'row' : undefined}
-      as={isVirtualized ? 'tr' : undefined}
+      // role={isVirtualized ? 'row' : undefined}
+      // as={isVirtualized ? 'tr' : undefined}
     >
       {isMultiSelect && (
         <TableCheckboxCell

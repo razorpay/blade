@@ -249,56 +249,184 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
 };
 
 export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
+  const ref = useRef<HTMLDivElement>(null);
   return (
-    <Box padding="spacing.5" overflow="auto" minHeight="400px">
-      <TableComponent
-        {...args}
-        data={data}
-        defaultSelectedIds={['1', '3']}
-        onSelectionChange={console.log}
-        isFirstColumnSticky
-        height="100%"
-        selectionType="multiple"
-        // eslint-disable-next-line react/jsx-no-duplicate-props
-        onSelectionChange={({ selectedIds }) => {
-          console.log(selectedIds);
-          // setSelectedItems(data.nodes.filter((node) => selectedIds.includes(node.id)));
-        }}
-        toolbar={
-          <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
-            <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2">
-                Export
-              </Button>
-              <Button>Refund</Button>
-            </TableToolbarActions>
-          </TableToolbar>
-        }
-        sortFunctions={{
-          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
-          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
-          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
-        }}
-      >
-        {(tableData) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {tableData.map((tableItem, index) => (
+    <Box>
+      Normal Table-
+      <Box padding="spacing.5" overflow="auto" minHeight="400px">
+        <TableComponent
+          {...args}
+          data={data}
+          defaultSelectedIds={['1', '3']}
+          onSelectionChange={console.log}
+          isFirstColumnSticky
+          height="100%"
+          selectionType="multiple"
+          // eslint-disable-next-line react/jsx-no-duplicate-props
+          onSelectionChange={({ selectedIds }) => {
+            console.log(selectedIds);
+            // setSelectedItems(data.nodes.filter((node) => selectedIds.includes(node.id)));
+          }}
+          toolbar={
+            <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
+              <TableToolbarActions>
+                <Button variant="secondary" marginRight="spacing.2">
+                  Export
+                </Button>
+                <Button>Refund</Button>
+              </TableToolbarActions>
+            </TableToolbar>
+          }
+          sortFunctions={{
+            ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+            AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+            PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+            DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+            STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+          }}
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                  <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow
+                    key={index}
+                    item={tableItem}
+                    hoverActions={
+                      <>
+                        <Button variant="tertiary" size="xsmall">
+                          View Details
+                        </Button>
+                        <IconButton
+                          icon={CheckIcon}
+                          isHighlighted
+                          accessibilityLabel="Approve"
+                          onClick={() => {
+                            console.log('Approved', tableItem.id);
+                          }}
+                        />
+                        <IconButton
+                          icon={CloseIcon}
+                          isHighlighted
+                          accessibilityLabel="Reject"
+                          onClick={() => {
+                            console.log('Rejected', tableItem.id);
+                          }}
+                        />
+                      </>
+                    }
+                    onClick={() => {
+                      console.log('where');
+                    }}
+                  >
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableEditableCell
+                      accessibilityLabel="Amount"
+                      placeholder="Enter text"
+                      successText="Amount is valid"
+                    />
+                    <TableCell>{tableItem.account}</TableCell>
+                    <TableCell>
+                      {tableItem.date?.toLocaleDateString('en-IN', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>
+                      <Badge
+                        size="medium"
+                        color={
+                          tableItem.status === 'Completed'
+                            ? 'positive'
+                            : tableItem.status === 'Pending'
+                            ? 'notice'
+                            : tableItem.status === 'Failed'
+                            ? 'negative'
+                            : 'primary'
+                        }
+                      >
+                        {tableItem.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </TableComponent>
+      </Box>
+      Virtualized Table-
+      <Box padding="spacing.5" ref={ref} minHeight="400px">
+        <> total rows : {nodes.length}</>
+        <TableComponent
+          {...args}
+          data={data}
+          onSelectionChange={console.log}
+          selectionType="multiple"
+          // height="500px"
+          // width="800px"
+          toolbar={
+            <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
+              <TableToolbarActions>
+                <Button variant="secondary" marginRight="spacing.2">
+                  Export
+                </Button>
+                <Button>Refund</Button>
+              </TableToolbarActions>
+            </TableToolbar>
+          }
+          sortFunctions={{
+            ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+            AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+            PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+            DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+            STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+          }}
+          ref={ref}
+          isVirtualized
+          defaultSelectedIds={['1', '3']}
+        >
+          {(tableData) => (
+            <TableVirtulized
+              tableData={tableData}
+              rowHeight={(item, index) => {
+                // header height and row height
+                return index === 0 ? 50 : 57.5;
+              }}
+              // header={()=>{}}
+              header={() => (
+                <TableHeader>
+                  <TableHeaderRow>
+                    <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                    <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                    <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                    <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                    <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                    <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
+                  </TableHeaderRow>
+                </TableHeader>
+              )}
+              body={(tableItem, index) => (
                 <TableRow
                   key={index}
                   item={tableItem}
+                  onClick={() => {
+                    console.log('where');
+                  }}
                   hoverActions={
                     <>
                       <Button variant="tertiary" size="xsmall">
@@ -322,9 +450,6 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
                       />
                     </>
                   }
-                  onClick={() => {
-                    console.log('where');
-                  }}
                 >
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
@@ -360,11 +485,11 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
                     </Badge>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </>
-        )}
-      </TableComponent>
+              )}
+            />
+          )}
+        </TableComponent>
+      </Box>
     </Box>
   );
 };
