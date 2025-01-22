@@ -29,10 +29,11 @@ import type {
   TablePaginationType,
   TableHeaderRowProps,
 } from './types';
+import { getTableActionsHoverStyles } from './utils';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
-import { Box, BoxProps } from '~components/Box';
+import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
@@ -44,8 +45,6 @@ import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
-import { Virtualized } from '@table-library/react-table-library/virtualized';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -65,12 +64,17 @@ const getTableHeaderCellCount = (
 ): number => {
   const tableRootComponent = children([]);
   if (isVirtualized) {
-    if (React.isValidElement(tableRootComponent)) {
-      console.log('tableRootComponent', tableRootComponent);
-      if (React.isValidElement(tableRootComponent.props.header())) {
+    if (
+      React.isValidElement<{ header?: () => React.ReactElement }>(tableRootComponent) &&
+      tableRootComponent?.props.header
+    ) {
+      if (React.isValidElement(tableRootComponent?.props.header())) {
         const tableHeaderRow = tableRootComponent.props.header().props.children;
-        if (React.isValidElement(tableHeaderRow)) {
-          const tableHeaderCells = tableHeaderRow.props.children;
+        if (
+          React.isValidElement<{ children?: React.ReactNode }>(tableHeaderRow) &&
+          tableHeaderRow.props.children
+        ) {
+          const tableHeaderCells = React.Children.toArray(tableHeaderRow.props.children);
           return tableHeaderCells.length;
         }
       }
@@ -463,22 +467,26 @@ const _Table = forwardRef(
     });
 
     useEffect(() => {
-      if (ref?.current && !height && !width) {
-        const { width, height } = ref?.current.getBoundingClientRect();
-        setVirtualizedTableDimensions({ width, height });
+      if (ref && 'current' in ref && ref.current && !height && !width) {
+        if (ref?.current) {
+          const { width, height } = ref.current.getBoundingClientRect();
+          setVirtualizedTableDimensions({ width, height });
+        }
 
-        // can we react to width and height changes?
         const resizeObserver = new ResizeObserver((entries) => {
-          for (let entry of entries) {
+          for (const entry of entries) {
             const { width } = entry.contentRect;
             setVirtualizedTableDimensions((prev) => ({ ...prev, width }));
           }
         });
-        resizeObserver.observe(ref.current);
+        if (ref && 'current' in ref && ref.current) {
+          resizeObserver.observe(ref.current);
+        }
         return () => {
           resizeObserver.disconnect();
         };
       }
+      return undefined;
     }, [height, ref, width]);
 
     useEffect(() => {

@@ -13,6 +13,11 @@ import type {
   TableBackgroundColors,
   VirtualizedWrapperProps,
 } from './types';
+import {
+  getTableActionsHoverStyles,
+  getTableRowBackgroundTransition,
+  getTableDataSelector,
+} from './utils';
 import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
@@ -25,13 +30,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import type { Theme } from '~components/BladeProvider';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import {
-  getTableActionsHoverStyles,
-  getTableRowBackgroundTransition,
-  getTableDataSelector,
-} from './utils';
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -252,13 +251,7 @@ export const CellWrapper = styled(BaseBox)<{
 
 const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const {
-    selectionType,
-    rowDensity,
-    showStripedRows,
-    backgroundColor,
-    isVirtualized,
-  } = useTableContext();
+  const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
   return (
