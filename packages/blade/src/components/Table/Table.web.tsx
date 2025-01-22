@@ -621,6 +621,13 @@ const _Table = forwardRef(
       }
     }
 
+    if (selectionType !== 'none' && hasHoverActions) {
+      throwBladeError({
+        message: 'Hover actions are not supported with selectionType',
+        moduleName: 'Table',
+      });
+    }
+
     // Table Context
     const tableContext: TableContextType = useMemo(
       () => ({

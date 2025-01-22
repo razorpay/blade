@@ -82,8 +82,8 @@ export default {
   },
 } as Meta<TableProps<unknown>>;
 
-const nodes: Item[] = [
-  ...Array.from({ length: 4 }, (_, i) => ({
+const getNodes = (number: number): Item[] => [
+  ...Array.from({ length: number }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -106,6 +106,9 @@ const nodes: Item[] = [
   })),
 ];
 
+const nodes: Item[] = getNodes(20);
+
+const largeNodes: Item[] = getNodes(500);
 type Item = {
   id: string;
   paymentId: string;
@@ -122,14 +125,18 @@ const data: TableData<Item> = {
   nodes,
 };
 
+const largeData: TableData<Item> = {
+  nodes: largeNodes,
+};
+
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   const tableRef = useRef<HTMLDivElement>(null);
   return (
     <Box padding="spacing.5" ref={tableRef} height="500px">
-      <> total rows : {nodes.length}</>
+      <> total rows : {largeNodes.length}</>
       <TableComponent
         {...args}
-        data={data}
+        data={largeData}
         onSelectionChange={console.log}
         // selectionType="multiple"
         // height="500px"
@@ -182,29 +189,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 onClick={() => {
                   console.log('where');
                 }}
-                hoverActions={
-                  <>
-                    <Button variant="tertiary" size="xsmall">
-                      View Details
-                    </Button>
-                    <IconButton
-                      icon={CheckIcon}
-                      isHighlighted
-                      accessibilityLabel="Approve"
-                      onClick={() => {
-                        console.log('Approved', tableItem.id);
-                      }}
-                    />
-                    <IconButton
-                      icon={CloseIcon}
-                      isHighlighted
-                      accessibilityLabel="Reject"
-                      onClick={() => {
-                        console.log('Rejected', tableItem.id);
-                      }}
-                    />
-                  </>
-                }
               >
                 <TableCell>
                   <Code size="medium">{tableItem.paymentId}</Code>
@@ -302,29 +286,6 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   <TableRow
                     key={index}
                     item={tableItem}
-                    hoverActions={
-                      <>
-                        <Button variant="tertiary" size="xsmall">
-                          View Details
-                        </Button>
-                        <IconButton
-                          icon={CheckIcon}
-                          isHighlighted
-                          accessibilityLabel="Approve"
-                          onClick={() => {
-                            console.log('Approved', tableItem.id);
-                          }}
-                        />
-                        <IconButton
-                          icon={CloseIcon}
-                          isHighlighted
-                          accessibilityLabel="Reject"
-                          onClick={() => {
-                            console.log('Rejected', tableItem.id);
-                          }}
-                        />
-                      </>
-                    }
                     onClick={() => {
                       console.log('where');
                     }}
@@ -371,14 +332,12 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
       </Box>
       Virtualized Table-
       <Box padding="spacing.5" ref={ref} minHeight="400px">
-        <> total rows : {nodes.length}</>
+        <> total rows : {largeNodes.length}</>
         <TableComponent
           {...args}
-          data={data}
+          data={largeData}
           onSelectionChange={console.log}
           selectionType="multiple"
-          // height="500px"
-          // width="800px"
           toolbar={
             <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
               <TableToolbarActions>
@@ -399,6 +358,8 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
           ref={ref}
           isVirtualized
           defaultSelectedIds={['1', '3']}
+          rowDensity="normal"
+          isFirstColumnSticky
         >
           {(tableData) => (
             <TableVirtulized
@@ -427,29 +388,6 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   onClick={() => {
                     console.log('where');
                   }}
-                  hoverActions={
-                    <>
-                      <Button variant="tertiary" size="xsmall">
-                        View Details
-                      </Button>
-                      <IconButton
-                        icon={CheckIcon}
-                        isHighlighted
-                        accessibilityLabel="Approve"
-                        onClick={() => {
-                          console.log('Approved', tableItem.id);
-                        }}
-                      />
-                      <IconButton
-                        icon={CloseIcon}
-                        isHighlighted
-                        accessibilityLabel="Reject"
-                        onClick={() => {
-                          console.log('Rejected', tableItem.id);
-                        }}
-                      />
-                    </>
-                  }
                 >
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>

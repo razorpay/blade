@@ -541,8 +541,6 @@ const _TableRow = <Item,>({
 };
 
 const TableVirtulized = ({ header, body, tableData, rowHeight }) => {
-  console.log({ header, body });
-
   return (
     <StyledVirtualized tableList={tableData} rowHeight={rowHeight} header={header} body={body} />
   );
