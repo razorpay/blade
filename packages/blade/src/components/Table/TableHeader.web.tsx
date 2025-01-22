@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
-import { tableHeader, tableRow } from './tokens';
+import { checkboxCellWidth, tableHeader, tableRow } from './tokens';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import type {
@@ -193,7 +193,14 @@ const TableHeaderCellCheckbox = ({
 }): React.ReactElement => {
   return (
     <TableHeaderCell headerKey="SELECT">
-      <BaseBox display="flex" alignItems="center" justifyContent="center" flex={1}>
+      <BaseBox
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flex={1}
+        width={makeSize(checkboxCellWidth)}
+        {...metaAttribute({ name: 'checkbox-container' })}
+      >
         <Checkbox
           isChecked={isChecked}
           isDisabled={isDisabled}
