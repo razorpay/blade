@@ -316,73 +316,71 @@ const RefreshWrapper = styled(BaseBox)<{
   };
 });
 
-const _Table = forwardRef(
-  <Item,>(
-    {
-      children,
-      data,
-      multiSelectTrigger = 'row',
-      selectionType = 'none',
-      onSelectionChange,
-      isHeaderSticky,
-      isFooterSticky,
-      isFirstColumnSticky,
-      rowDensity = 'normal',
-      onSortChange,
-      sortFunctions,
-      toolbar,
-      pagination,
-      height,
-      width,
-      showStripedRows,
-      gridTemplateColumns,
-      isLoading = false,
-      isRefreshing = false,
-      showBorderedCells = false,
-      defaultSelectedIds = [],
-      isVirtualized = false,
-      ...rest
-    }: TableProps<Item>,
-    ref: React.Ref<HTMLDivElement> | undefined,
-  ): React.ReactElement => {
-    const { theme } = useTheme();
-    const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
-      selectionType !== 'none' ? defaultSelectedIds : [],
-    );
-    const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
-    const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
-    const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
-      'client',
-    );
-    const [headerRowDensity, setHeaderRowDensity] = React.useState<
-      TableHeaderRowProps['rowDensity']
-    >(undefined);
-    const [hasHoverActions, setHasHoverActions] = React.useState(false);
-    const [VirtualizedTableDimensions, setVirtualizedTableDimensions] = React.useState({
-      width: 0,
-      height: 0,
-    });
+const _Table = <Item,>({ 
+    children,
+    data,
+    multiSelectTrigger = 'row',
+    selectionType = 'none',
+    onSelectionChange,
+    isHeaderSticky,
+    isFooterSticky,
+    isFirstColumnSticky,
+    rowDensity = 'normal',
+    onSortChange,
+    sortFunctions,
+    toolbar,
+    pagination,
+    height,
+    width,
+    showStripedRows,
+    gridTemplateColumns,
+    isLoading = false,
+    isRefreshing = false,
+    showBorderedCells = false,
+    defaultSelectedIds = [],
+    isVirtualized = false,
+    ...rest
+  }: TableProps<Item>,
+  ref: React.Ref<HTMLDivElement> | undefined,
+): React.ReactElement => {
+  const { theme } = useTheme();
+  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
+    selectionType !== 'none' ? defaultSelectedIds : [],
+  );
+  const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
+  const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
+  const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
+    'client',
+  );
+  const [headerRowDensity, setHeaderRowDensity] = React.useState<TableHeaderRowProps['rowDensity']>(
+    undefined,
+  );
+  const [hasHoverActions, setHasHoverActions] = React.useState(false);
+  const [VirtualizedTableDimensions, setVirtualizedTableDimensions] = React.useState({
+    width: 0,
+    height: 0,
+  });
 
-    // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-    const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
-    const backgroundColor = tableBackgroundColor;
+  // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
+  const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
+  const backgroundColor = tableBackgroundColor;
 
-    const isMobile = useIsMobile();
-    const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
+  const isMobile = useIsMobile();
+  const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
 
-    const {
-      isEntering: isRefreshSpinnerEntering,
-      isMounted: isRefreshSpinnerMounted,
-      isExiting: isRefreshSpinnerExiting,
-      isVisible: isRefreshSpinnerVisible,
-    } = usePresence(isRefreshing, {
-      transitionDuration: theme.motion.duration.quick,
-    });
+  const {
+    isEntering: isRefreshSpinnerEntering,
+    isMounted: isRefreshSpinnerMounted,
+    isExiting: isRefreshSpinnerExiting,
+    isVisible: isRefreshSpinnerVisible,
+  } = usePresence(isRefreshing, {
+    transitionDuration: theme.motion.duration.quick,
+  });
 
-    // Table Theme
-    const columnCount = getTableHeaderCellCount(children, isVirtualized);
-    const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
-      ? `
+  // Table Theme
+  const columnCount = getTableHeaderCellCount(children, isVirtualized);
+  const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
+    ? `
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
@@ -397,9 +395,9 @@ const _Table = forwardRef(
   }
   `
   }`
-      : '';
-    const firstColumnStickyFooterCellCSS = isFirstColumnSticky
-      ? `
+    : '';
+  const firstColumnStickyFooterCellCSS = isFirstColumnSticky
+    ? `
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
@@ -414,9 +412,9 @@ const _Table = forwardRef(
   }
   `
   }`
-      : '';
-    const firstColumnStickyBodyCellCSS = isFirstColumnSticky
-      ? `
+    : '';
+  const firstColumnStickyBodyCellCSS = isFirstColumnSticky
+    ? `
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
@@ -431,14 +429,14 @@ const _Table = forwardRef(
   }
   `
   }`
-      : '';
+    : '';
 
-    const tableTheme = useTableTheme({
-      Table: `
+  const tableTheme = useTableTheme({
+    Table: `
     height:${isFooterSticky ? `100%` : undefined};
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
-        theme.colors.surface.border.gray.muted
-      };
+      theme.colors.surface.border.gray.muted
+    };
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns
         ? `${gridTemplateColumns} ${hasHoverActions ? lastHoverActionsColWidth : ''}`
@@ -450,341 +448,335 @@ const _Table = forwardRef(
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,
-      HeaderCell: `
+    HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
     
     top: ${shouldHeaderBeSticky ? '0' : undefined};
     ${firstColumnStickyHeaderCellCSS}
     `,
-      Cell: `
+    Cell: `
     ${firstColumnStickyBodyCellCSS}
     `,
-      FooterCell: `
+    FooterCell: `
     position: ${isFooterSticky ? 'sticky' : 'relative'};
     bottom: ${isFooterSticky ? '0' : undefined};
     ${firstColumnStickyFooterCellCSS}
     `,
-    });
+  });
 
-    useEffect(() => {
-      if (ref && 'current' in ref && ref.current && !height && !width) {
-        if (ref?.current) {
-          const { width, height } = ref.current.getBoundingClientRect();
-          setVirtualizedTableDimensions({ width, height });
-        }
-
-        const resizeObserver = new ResizeObserver((entries) => {
-          for (const entry of entries) {
-            const { width } = entry.contentRect;
-            setVirtualizedTableDimensions((prev) => ({ ...prev, width }));
-          }
-        });
-        if (ref && 'current' in ref && ref.current) {
-          resizeObserver.observe(ref.current);
-        }
-        return () => {
-          resizeObserver.disconnect();
-        };
+  useEffect(() => {
+    if (ref && 'current' in ref && ref.current && !height && !width) {
+      if (ref?.current) {
+        const { width, height } = ref.current.getBoundingClientRect();
+        setVirtualizedTableDimensions({ width, height });
       }
-      return undefined;
-    }, [height, ref, width]);
 
-    useEffect(() => {
-      // Get the total number of items
-      setTotalItems(data.nodes.length);
-    }, [data.nodes]);
-
-    // Selection Logic
-    const onSelectChange: MiddlewareFunction = (action, state): void => {
-      const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
-      setSelectedRows(selectedIds);
-      onSelectionChange?.({
-        selectedIds,
-        values: data.nodes.filter((node) => selectedIds.includes(node.id)),
-      });
-    };
-
-    const rowSelectConfig = useRowSelect(
-      data,
-      {
-        onChange: onSelectChange,
-        state: {
-          ...(selectionType === 'multiple'
-            ? { ids: selectedRows }
-            : selectionType === 'single'
-            ? { id: selectedRows[0] }
-            : {}),
-        },
-      },
-      {
-        clickType:
-          multiSelectTrigger === 'row' ? SelectClickTypes.RowClick : SelectClickTypes.ButtonClick,
-        rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
-      },
-    );
-
-    const toggleRowSelectionById = useMemo(
-      () => (id: Identifier): void => {
-        rowSelectConfig.fns.onToggleById(id);
-      },
-      [rowSelectConfig.fns],
-    );
-
-    const deselectAllRows = useMemo(
-      () => (): void => {
-        rowSelectConfig.fns.onRemoveAll();
-      },
-      [rowSelectConfig.fns],
-    );
-
-    const toggleAllRowsSelection = useMemo(
-      () => (): void => {
-        if (selectedRows.length > 0) {
-          rowSelectConfig.fns.onRemoveAll();
-        } else {
-          const ids = data.nodes
-            .map((item: TableNode<Item>) => (disabledRows.includes(item.id) ? null : item.id))
-            .filter(Boolean) as Identifier[];
-
-          rowSelectConfig.fns.onAddAll(ids);
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const { width } = entry.contentRect;
+          setVirtualizedTableDimensions((prev) => ({ ...prev, width }));
         }
-      },
-      [rowSelectConfig.fns, data.nodes, selectedRows, disabledRows],
-    );
-
-    // Sort Logic
-    const handleSortChange: MiddlewareFunction = (action, state) => {
-      onSortChange?.({
-        sortKey: state.sortKey,
-        isSortReversed: state.reverse,
       });
-    };
-
-    const sort = useSort(
-      data,
-      {
-        onChange: handleSortChange,
-      },
-      {
-        // @ts-expect-error ignore this, if sortFunctions is undefined, it will be ignored
-        sortFns: sortFunctions,
-      },
-    );
-
-    const currentSortedState: TableContextType['currentSortedState'] = useMemo(() => {
-      return {
-        sortKey: sort.state.sortKey,
-        isSortReversed: sort.state.reverse,
-        sortableColumns: Object.keys(sortFunctions ?? {}),
+      if (ref && 'current' in ref && ref.current) {
+        resizeObserver.observe(ref.current);
+      }
+      return () => {
+        resizeObserver.disconnect();
       };
-    }, [sort.state, sortFunctions]);
-
-    const toggleSort = useCallback(
-      (sortKey: string): void => {
-        sort.fns.onToggleSort({
-          sortKey,
-        });
-      },
-      [sort.fns],
-    );
-
-    // Pagination
-
-    const hasPagination = Boolean(pagination);
-
-    const paginationConfig = usePagination(
-      data,
-      {
-        state: {
-          page: 0,
-          size: tablePagination.defaultPageSize,
-        },
-      },
-      {
-        isServer: paginationType === 'server',
-      },
-    );
-
-    const currentPaginationState = useMemo(() => {
-      return hasPagination
-        ? {
-            page: paginationConfig.state.page,
-            size: paginationConfig.state.size,
-          }
-        : undefined;
-    }, [paginationConfig.state, hasPagination]);
-
-    const setPaginationPage = useCallback(
-      (page: number): void => {
-        paginationConfig.fns.onSetPage(page);
-      },
-      [paginationConfig.fns],
-    );
-
-    const setPaginationRowSize = useCallback(
-      (size: number): void => {
-        paginationConfig.fns.onSetSize(size);
-      },
-      [paginationConfig.fns],
-    );
-
-    // Toolbar Component
-    if (__DEV__) {
-      if (toolbar && !isValidAllowedChildren(toolbar, ComponentIds.TableToolbar)) {
-        throwBladeError({
-          message: 'Only TableToolbar component is allowed in the `toolbar` prop',
-          moduleName: 'Table',
-        });
-      }
     }
+    return undefined;
+  }, [height, ref, width]);
 
-    if (selectionType !== 'none' && hasHoverActions && __DEV__) {
-      // their is no point of using hover actions with selectionType
+  useEffect(() => {
+    // Get the total number of items
+    setTotalItems(data.nodes.length);
+  }, [data.nodes]);
+
+  // Selection Logic
+  const onSelectChange: MiddlewareFunction = (_, state): void => {
+    const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
+    setSelectedRows(selectedIds);
+    onSelectionChange?.({
+      selectedIds,
+      values: data.nodes.filter((node) => selectedIds.includes(node.id)),
+    });
+  };
+
+  const rowSelectConfig = useRowSelect(
+    data,
+    {
+      onChange: onSelectChange,
+      state: {
+        ...(selectionType === 'multiple'
+          ? { ids: selectedRows }
+          : selectionType === 'single'
+          ? { id: selectedRows[0] }
+          : {}),
+      },
+    },
+    {
+      clickType:
+        multiSelectTrigger === 'row' ? SelectClickTypes.RowClick : SelectClickTypes.ButtonClick,
+      rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
+    },
+  );
+
+  const toggleRowSelectionById = useMemo(
+    () => (id: Identifier): void => {
+      rowSelectConfig.fns.onToggleById(id);
+    },
+    [rowSelectConfig.fns],
+  );
+
+  const deselectAllRows = useMemo(
+    () => (): void => {
+      rowSelectConfig.fns.onRemoveAll();
+    },
+    [rowSelectConfig.fns],
+  );
+
+  const toggleAllRowsSelection = useMemo(
+    () => (): void => {
+      if (selectedRows.length > 0) {
+        rowSelectConfig.fns.onRemoveAll();
+      } else {
+        const ids = data.nodes
+          .map((item: TableNode<Item>) => (disabledRows.includes(item.id) ? null : item.id))
+          .filter(Boolean) as Identifier[];
+
+        rowSelectConfig.fns.onAddAll(ids);
+      }
+    },
+    [rowSelectConfig.fns, data.nodes, selectedRows, disabledRows],
+  );
+
+  // Sort Logic
+  const handleSortChange: MiddlewareFunction = (_, state) => {
+    onSortChange?.({
+      sortKey: state.sortKey,
+      isSortReversed: state.reverse,
+    });
+  };
+
+  const sort = useSort(
+    data,
+    {
+      onChange: handleSortChange,
+    },
+    {
+      // @ts-expect-error ignore this, if sortFunctions is undefined, it will be ignored
+      sortFns: sortFunctions,
+    },
+  );
+
+  const currentSortedState: TableContextType['currentSortedState'] = useMemo(() => {
+    return {
+      sortKey: sort.state.sortKey,
+      isSortReversed: sort.state.reverse,
+      sortableColumns: Object.keys(sortFunctions ?? {}),
+    };
+  }, [sort.state, sortFunctions]);
+
+  const toggleSort = useCallback(
+    (sortKey: string): void => {
+      sort.fns.onToggleSort({
+        sortKey,
+      });
+    },
+    [sort.fns],
+  );
+
+  // Pagination
+
+  const hasPagination = Boolean(pagination);
+
+  const paginationConfig = usePagination(
+    data,
+    {
+      state: {
+        page: 0,
+        size: tablePagination.defaultPageSize,
+      },
+    },
+    {
+      isServer: paginationType === 'server',
+    },
+  );
+
+  const currentPaginationState = useMemo(() => {
+    return hasPagination
+      ? {
+          page: paginationConfig.state.page,
+          size: paginationConfig.state.size,
+        }
+      : undefined;
+  }, [paginationConfig.state, hasPagination]);
+
+  const setPaginationPage = useCallback(
+    (page: number): void => {
+      paginationConfig.fns.onSetPage(page);
+    },
+    [paginationConfig.fns],
+  );
+
+  const setPaginationRowSize = useCallback(
+    (size: number): void => {
+      paginationConfig.fns.onSetSize(size);
+    },
+    [paginationConfig.fns],
+  );
+
+  // Toolbar Component
+  if (__DEV__) {
+    if (toolbar && !isValidAllowedChildren(toolbar, ComponentIds.TableToolbar)) {
       throwBladeError({
-        message: 'Consider removing hover actions when selectionType is set',
+        message: 'Only TableToolbar component is allowed in the `toolbar` prop',
         moduleName: 'Table',
       });
     }
+  }
 
-    // Table Context
-    const tableContext: TableContextType = useMemo(
-      () => ({
-        selectionType,
-        selectedRows,
-        totalItems,
-        toggleRowSelectionById,
-        toggleAllRowsSelection,
-        deselectAllRows,
-        rowDensity,
-        toggleSort,
-        currentSortedState,
-        setPaginationPage,
-        setPaginationRowSize,
-        currentPaginationState,
-        showStripedRows,
-        disabledRows,
-        setDisabledRows,
-        paginationType,
-        setPaginationType,
-        backgroundColor,
-        headerRowDensity,
-        setHeaderRowDensity,
-        showBorderedCells,
-        hasHoverActions,
-        setHasHoverActions,
-        columnCount,
-        gridTemplateColumns,
-        isVirtualized,
-      }),
-      [
-        selectionType,
-        selectedRows,
-        totalItems,
-        toggleRowSelectionById,
-        toggleAllRowsSelection,
-        deselectAllRows,
-        gridTemplateColumns,
-        rowDensity,
-        toggleSort,
-        columnCount,
-        currentSortedState,
-        setPaginationPage,
-        setPaginationRowSize,
-        currentPaginationState,
-        showStripedRows,
-        disabledRows,
-        setDisabledRows,
-        paginationType,
-        setPaginationType,
-        backgroundColor,
-        headerRowDensity,
-        setHeaderRowDensity,
-        showBorderedCells,
-        hasHoverActions,
-        setHasHoverActions,
-        isVirtualized,
-      ],
-    );
+  if (selectionType !== 'none' && hasHoverActions && __DEV__) {
+    // their is no point of using hover actions with selectionType
+    throwBladeError({
+      message: 'Consider removing hover actions when selectionType is set',
+      moduleName: 'Table',
+    });
+  }
 
-    return (
-      <TableContext.Provider value={tableContext}>
-        {isLoading ? (
-          <BaseBox
-            display="flex"
-            flex={1}
-            alignItems="center"
-            justifyContent="center"
-            height={height}
-            width={isVirtualized ? width : undefined}
-            {...getStyledProps(rest)}
+  // Table Context
+  const tableContext: TableContextType = useMemo(
+    () => ({
+      selectionType,
+      selectedRows,
+      totalItems,
+      toggleRowSelectionById,
+      toggleAllRowsSelection,
+      deselectAllRows,
+      rowDensity,
+      toggleSort,
+      currentSortedState,
+      setPaginationPage,
+      setPaginationRowSize,
+      currentPaginationState,
+      showStripedRows,
+      disabledRows,
+      setDisabledRows,
+      paginationType,
+      setPaginationType,
+      backgroundColor,
+      headerRowDensity,
+      setHeaderRowDensity,
+      showBorderedCells,
+      hasHoverActions,
+      setHasHoverActions,
+      columnCount,
+      gridTemplateColumns,
+      isVirtualized,
+    }),
+    [
+      selectionType,
+      selectedRows,
+      totalItems,
+      toggleRowSelectionById,
+      toggleAllRowsSelection,
+      deselectAllRows,
+      gridTemplateColumns,
+      rowDensity,
+      toggleSort,
+      columnCount,
+      currentSortedState,
+      setPaginationPage,
+      setPaginationRowSize,
+      currentPaginationState,
+      showStripedRows,
+      disabledRows,
+      setDisabledRows,
+      paginationType,
+      setPaginationType,
+      backgroundColor,
+      headerRowDensity,
+      setHeaderRowDensity,
+      showBorderedCells,
+      hasHoverActions,
+      setHasHoverActions,
+      isVirtualized,
+    ],
+  );
+
+  return (
+    <TableContext.Provider value={tableContext}>
+      {isLoading ? (
+        <BaseBox
+          display="flex"
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          height={height}
+          width={isVirtualized ? width : undefined}
+          {...getStyledProps(rest)}
+          {...metaAttribute({ name: MetaConstants.Table })}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
+        </BaseBox>
+      ) : (
+        <BaseBox
+          // ref={ref as never}
+          flex={1}
+          position="relative"
+          {...getStyledProps(rest)}
+          {...metaAttribute({ name: MetaConstants.Table })}
+          width={isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined}
+        >
+          {isRefreshSpinnerMounted && (
+            <RefreshWrapper
+              position="absolute"
+              width="100%"
+              height="100%"
+              zIndex={refreshWrapperZIndex}
+              backgroundColor="overlay.background.subtle"
+              justifyContent="center"
+              alignItems="center"
+              display="flex"
+              isRefreshSpinnerEntering={isRefreshSpinnerEntering}
+              isRefreshSpinnerExiting={isRefreshSpinnerExiting}
+              isRefreshSpinnerVisible={isRefreshSpinnerVisible}
+            >
+              <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
+            </RefreshWrapper>
+          )}
+          {toolbar}
+          <StyledReactTable
+            role={isVirtualized ? 'grid' : 'table'}
+            layout={{ fixedHeader: true, horizontalScroll: true, isDiv: true }}
+            data={data}
+            // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
+            theme={tableTheme}
+            select={selectionType !== 'none' ? rowSelectConfig : null}
+            sort={sortFunctions ? sort : null}
+            $styledProps={{
+              height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
+              width: isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined,
+              isVirtualized,
+              isSelectable: selectionType !== 'none',
+              showStripedRows,
+            }}
+            pagination={hasPagination ? paginationConfig : null}
+            {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
             {...metaAttribute({ name: MetaConstants.Table })}
             {...makeAnalyticsAttribute(rest)}
           >
-            <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
-          </BaseBox>
-        ) : (
-          <BaseBox
-            // ref={ref as never}
-            flex={1}
-            position="relative"
-            {...getStyledProps(rest)}
-            {...metaAttribute({ name: MetaConstants.Table })}
-            width={isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined}
-          >
-            {isRefreshSpinnerMounted && (
-              <RefreshWrapper
-                position="absolute"
-                width="100%"
-                height="100%"
-                zIndex={refreshWrapperZIndex}
-                backgroundColor="overlay.background.subtle"
-                justifyContent="center"
-                alignItems="center"
-                display="flex"
-                isRefreshSpinnerEntering={isRefreshSpinnerEntering}
-                isRefreshSpinnerExiting={isRefreshSpinnerExiting}
-                isRefreshSpinnerVisible={isRefreshSpinnerVisible}
-              >
-                <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
-              </RefreshWrapper>
-            )}
-            {toolbar}
-            <StyledReactTable
-              role={isVirtualized ? 'grid' : 'table'}
-              layout={{ fixedHeader: true, horizontalScroll: true, isDiv: true }}
-              data={data}
-              // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
-              theme={tableTheme}
-              select={selectionType !== 'none' ? rowSelectConfig : null}
-              sort={sortFunctions ? sort : null}
-              $styledProps={{
-                height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
-                width: isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined,
-                isVirtualized,
-                isSelectable: selectionType !== 'none',
-                showStripedRows,
-              }}
-              pagination={hasPagination ? paginationConfig : null}
-              {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
-              {...metaAttribute({ name: MetaConstants.Table })}
-              {...makeAnalyticsAttribute(rest)}
-            >
-              {children}
-            </StyledReactTable>
-            {pagination}
-          </BaseBox>
-        )}
-      </TableContext.Provider>
-    );
-  },
-);
-
-const Table = assignWithoutSideEffects(_Table, {
+            {children}
+          </StyledReactTable>
+          {pagination}
+        </BaseBox>
+      )}
+    </TableContext.Provider>
+  );
+};
+const Table = assignWithoutSideEffects(forwardRef(_Table), {
   componentId: ComponentIds.Table,
 });
 
-const VirtualizedTable = assignWithoutSideEffects(_Table, {
-  componentId: ComponentIds.Table,
-});
-
-export { Table, VirtualizedTable };
+export { Table };

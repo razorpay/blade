@@ -1,4 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
+import { useRef } from 'react';
 import type { TableData, TableProps } from '../types';
 import {
   Table as TableComponent,
@@ -11,32 +12,14 @@ import {
   TableCell,
   TableToolbar,
   TableToolbarActions,
-  TableFooter,
-  TableFooterRow,
-  TableFooterCell,
-  TablePagination,
 } from '../../Table';
+import { VirtulizedWrapper } from '../TableBody.web';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
-import { Amount } from '~components/Amount';
 import { Code, Heading } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
-import { IconButton } from '~components/Button/IconButton';
-import { CheckIcon, CloseIcon } from '~components/Icons';
-import { VirtulizedWrapper } from '../TableBody.web';
-import { VirtualizedTable } from '../Table.web';
-import { spacing } from '~tokens/global';
-import {
-  HeaderCellSelect,
-  useRowSelect,
-  CellSelect,
-  SelectTypes,
-} from '@table-library/react-table-library/select';
-import { useRef } from 'react';
-import { isBackgroundColorToken } from '../../../../../razorsharp/src/code/blade/utils/color';
-import { getBackgroundColorToken } from '../../Button/BaseButton/BaseButton';
 
 export default {
   title: 'Components/Table',

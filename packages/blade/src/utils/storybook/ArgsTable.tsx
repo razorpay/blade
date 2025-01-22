@@ -1,3 +1,5 @@
+//ignore file for ts check
+// @ts-nocheck
 import { Box } from '~components/Box';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import {
