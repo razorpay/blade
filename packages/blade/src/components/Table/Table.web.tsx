@@ -463,12 +463,21 @@ const _Table = forwardRef(
     });
 
     useEffect(() => {
-      console.log('ref', ref);
       if (ref?.current && !height && !width) {
         const { width, height } = ref?.current.getBoundingClientRect();
         setVirtualizedTableDimensions({ width, height });
-        console.log('Parent dimensions:', { width, height });
-        // You can use the width and height to set your table dimensions
+
+        // can we react to width and height changes?
+        const resizeObserver = new ResizeObserver((entries) => {
+          for (let entry of entries) {
+            const { width } = entry.contentRect;
+            setVirtualizedTableDimensions((prev) => ({ ...prev, width }));
+          }
+        });
+        resizeObserver.observe(ref.current);
+        return () => {
+          resizeObserver.disconnect();
+        };
       }
     }, [height, ref, width]);
 
