@@ -3,7 +3,7 @@ import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import { Virtualized } from '@table-library/react-table-library/virtualized';
 import styled from 'styled-components';
 import { useTableContext } from './TableContext';
-import { checkboxCellWidth, classes, tableBackgroundColor, tableRow } from './tokens';
+import { checkboxCellWidth, classes, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
 import type {
   TableProps,
@@ -11,9 +11,9 @@ import type {
   TableRowProps,
   TableCellProps,
   TableBackgroundColors,
+  VirtualizedWrapperProps,
 } from './types';
 import getIn from '~utils/lodashButBetter/get';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -32,18 +32,6 @@ import {
   getTableRowBackgroundTransition,
   getTableDataSelector,
 } from './utils';
-
-const StyledVirtualized = styled(Virtualized)<{
-  $isSelectable: boolean;
-  $showStripedRows: boolean;
-}>(({ theme, $showStripedRows, $isSelectable }) => {
-  const rowBackgroundTransition = getTableRowBackgroundTransition(theme);
-  return {
-    '& .cell-wrapper': {
-      backgroundColor: 'yellow !important',
-    },
-  };
-});
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -540,14 +528,20 @@ const _TableRow = <Item,>({
   );
 };
 
-const TableVirtulized = ({ header, body, tableData, rowHeight }) => {
-  return (
-    <StyledVirtualized tableList={tableData} rowHeight={rowHeight} header={header} body={body} />
-  );
+const _Virtulized = <Item,>({
+  header,
+  body,
+  tableData,
+  rowHeight,
+}: VirtualizedWrapperProps<Item>): React.ReactElement => {
+  return <Virtualized tableList={tableData} rowHeight={rowHeight} header={header} body={body} />;
 };
 
 const TableRow = assignWithoutSideEffects(_TableRow, {
   componentId: ComponentIds.TableRow,
 });
 
-export { TableBody, TableRow, TableCell, TableVirtulized };
+const VirtulizedWrapper = assignWithoutSideEffects(_Virtulized, {
+  componentId: ComponentIds.VirtualizedTable,
+});
+export { TableBody, TableRow, TableCell, VirtulizedWrapper };

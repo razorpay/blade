@@ -3,7 +3,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableRow, TableCell, TableVirtulized } from '../../TableBody';
+import { TableRow, TableCell, VirtulizedWrapper } from '../../TableBody';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
@@ -87,7 +87,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
     >
       <TableComponent data={data} isVirtualized ref={parentRef}>
         {(tableData) => (
-          <TableVirtulized
+          <VirtulizedWrapper
             tableData={tableData}
             rowHeight={(item, index) => {
               // header height and row height

@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { TableNode as TableLibraryTableNode } from '@table-library/react-table-library/types/table';
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -18,6 +19,8 @@ type TableData<Item> = {
 type TableBackgroundColors = `surface.background.gray.${DotNotationToken<
   Theme['colors']['surface']['background']['gray']
 >}`;
+
+type RowHeight = number | ((item: TableLibraryTableNode, index: number) => number);
 
 type TableHeaderProps = {
   /**
@@ -455,6 +458,69 @@ type TableToolbarActionsProps = {
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
 
+type VirtualizedWrapperProps<Item> = {
+  /**
+   * * @example
+   *     <TableVirtulized
+   *        tableData={tableData}
+   *        rowHeight={(item, index) => {
+   *          // header height and row height
+   *          return index === 0 ? 50 : 57.5;
+   *        }}
+   *        header={() => (
+   *          <TableHeader>
+   *            <TableHeaderRow>
+   *               <TableHeaderCell>ID</TableHeaderCell>
+   *               <TableHeaderCell>Amount</TableHeaderCell>
+   *               <TableHeaderCell>Account</TableHeaderCell>
+   *               <TableHeaderCell>Date</TableHeaderCell>
+   *               <TableHeaderCell>Method</TableHeaderCell>
+   *               <TableHeaderCell>Status</TableHeaderCell>
+   *            </TableHeaderRow>
+   *          </TableHeader>
+   *        )}
+   *        body={(tableItem, index) => (
+   *          <TableRow key={index} item={tableItem}>
+   *            <TableCell>
+   *              <Code size="medium">{tableItem.paymentId}</Code>
+   *            </TableCell>
+   *            <TableCell>
+   *              <Amount value={tableItem.amount} />
+   *            </TableCell>
+   *            <TableCell>{tableItem.account}</TableCell>
+   *            <TableCell>
+   *              <Text>{tableItem.date}</Text>
+   *            </TableCell>
+   *            <TableCell>{tableItem.method}</TableCell>
+   *            <TableCell>{tableItem.status}</TableCell>
+   *          </TableRow>
+   *        )}
+   *     />
+   *
+   **/
+  /**
+   *
+   *  should be a function that returns TableHeader,
+   *
+   **/
+  header: () => React.ReactElement;
+  /**
+   *
+   *  should be a function that returns TableBody
+   *
+   * */
+  body: (tableItem: TableNode<Item>, index: number) => React.ReactElement;
+  /**
+   *
+   */
+  tableData: TableNode<Item>[];
+  /**
+   * should be a function that returns the height of the row
+   * index 0 is the header height
+   **/
+  rowHeight: RowHeight;
+};
+
 export type {
   TableProps,
   Identifier,
@@ -477,4 +543,5 @@ export type {
   TableBackgroundColors,
   TablePaginationType,
   TablePaginationCommonProps,
+  VirtualizedWrapperProps,
 };

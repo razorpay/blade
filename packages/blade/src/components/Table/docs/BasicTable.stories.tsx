@@ -25,7 +25,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { CheckIcon, CloseIcon } from '~components/Icons';
-import { TableVirtulized } from '../TableBody.web';
+import { VirtulizedWrapper } from '../TableBody.web';
 import { VirtualizedTable } from '../Table.web';
 import { spacing } from '~tokens/global';
 import {
@@ -163,7 +163,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         defaultSelectedIds={['1', '3']}
       >
         {(tableData) => (
-          <TableVirtulized
+          <VirtulizedWrapper
             tableData={tableData}
             rowHeight={(item, index) => {
               // header height and row height
@@ -363,7 +363,7 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
           isFirstColumnSticky
         >
           {(tableData) => (
-            <TableVirtulized
+            <VirtulizedWrapper
               tableData={tableData}
               rowHeight={(item, index) => {
                 // header height and row height

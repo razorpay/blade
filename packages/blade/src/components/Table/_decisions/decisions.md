@@ -650,3 +650,102 @@ While evaluating multiple libraries we identified 3 categories:
 ## Accessibility
 - We will be following the [WAI-ARIA Table Practices](https://www.w3.org/WAI/ARIA/apg/patterns/table/) to ensure our table is accessible
 - We will be using native HTML elements like `<table>`, `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>` & `<td>` to ensure our table is accessible
+
+
+# Virtualization
+
+
+Virtaulized table is a table component that renders only the visible rows and columns. This is useful when you have a large dataset and you want to render only the visible rows and columns to improve the performance of the table.
+
+## Approach
+Out implementation of virtualized table is an wrapper on top of react-table-library 's implementation. It provides a simple API to create a virtualized table.
+alternatively we can use react-window or react-virtualized to create a virtualized table wrapper. but that would require more effort to create a virtualized table. plus their is a lot of boilerplate code to create a virtualized table using react-window or react-virtualized.
+also their is high chance of bugs and performance issues in the implementation of virtualized table using react-window or react-virtualized. if we need more features in the future then we can expore react-window or react-virtualized.
+
+
+## Decision
+1. We have made a wrapper on top of react-table-library's implementation to create a virtualized table.
+2. if virtualization is enabled we have a wrapper component and we are not passing TableBody, so this breaks a lot of existing styles and features of the table component like hoverAction, rowSelection, etc. so we have to move these styles to table component. 
+3. we have to pass a ref to the table container to calculate the height and width of the table to render only the visible rows and columns.
+
+
+## Props
+most of props are same as Table component. we have added following table component.
+
+```ts
+
+isVirtualized = false, // default value is false , it is used to enable virtualization in table
+
+ref = React.Ref<HTMLDivElement> | undefined, // ref to the table container  , since in virtualized table we need to calculate the height and width of the table to render only the visible rows and columns
+
+
+```
+but their is a change in children prop of Table component. In virtualized table we need to pass a component named TableVirtulized  that  takes TableHeader, TableBody components. 
+VirtualizedTable is a wrapper on top of react-table-library's [Virtualized](https://github.com/table-library/react-table-library/blob/master/src/virtualized/Virtualized.tsx) component. It provides a simple API to create a virtualized table.
+
+
+```ts
+type VirtualizedWrapperProps<Item> = {
+  /**
+   * * @example
+   *     <TableVirtulized
+   *        tableData={tableData}
+   *        rowHeight={(item, index) => {
+   *          // header height and row height
+   *          return index === 0 ? 50 : 57.5;
+   *        }}
+   *        header={() => (
+   *          <TableHeader>
+   *            <TableHeaderRow>
+   *               <TableHeaderCell>ID</TableHeaderCell>
+   *               <TableHeaderCell>Amount</TableHeaderCell>
+   *               <TableHeaderCell>Account</TableHeaderCell>
+   *               <TableHeaderCell>Date</TableHeaderCell>
+   *               <TableHeaderCell>Method</TableHeaderCell>
+   *               <TableHeaderCell>Status</TableHeaderCell>
+   *            </TableHeaderRow>
+   *          </TableHeader>
+   *        )}
+   *        body={(tableItem, index) => (
+   *          <TableRow key={index} item={tableItem}>
+   *            <TableCell>
+   *              <Code size="medium">{tableItem.paymentId}</Code>
+   *            </TableCell>
+   *            <TableCell>
+   *              <Amount value={tableItem.amount} />
+   *            </TableCell>
+   *            <TableCell>{tableItem.account}</TableCell>
+   *            <TableCell>
+   *              <Text>{tableItem.date}</Text>
+   *            </TableCell>
+   *            <TableCell>{tableItem.method}</TableCell>
+   *            <TableCell>{tableItem.status}</TableCell>
+   *          </TableRow>
+   *        )}
+   *     />
+   *
+   **/
+  /**
+   *
+   *  should be a function that returns TableHeader,
+   *
+   **/
+  header: () => React.ReactElement;
+  /**
+   *
+   *  should be a function that returns TableBody
+   *
+   * */
+  body: (tableItem: TableNode<Item>, index: number) => React.ReactElement;
+  /**
+   *
+   */
+  tableData: TableNode<Item>[];
+  /**
+   * should be a function that returns the height of the row
+   * index 0 is the header height
+   **/
+  rowHeight: RowHeight;
+};
+
+```
