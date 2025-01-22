@@ -621,7 +621,7 @@ const _Table = forwardRef(
       }
     }
 
-    if (selectionType !== 'none' && hasHoverActions) {
+    if (selectionType !== 'none' && hasHoverActions && __DEV__) {
       throwBladeError({
         message: 'Hover actions are not supported with selectionType',
         moduleName: 'Table',
