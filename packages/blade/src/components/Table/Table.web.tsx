@@ -733,7 +733,7 @@ const _Table = forwardRef(
               select={selectionType !== 'none' ? rowSelectConfig : null}
               sort={sortFunctions ? sort : null}
               $styledProps={{
-                height: height || `${VirtualizedTableDimensions.height}px`,
+                height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
                 width: isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined,
                 isVirtualized,
                 isSelectable: selectionType !== 'none',
