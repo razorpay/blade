@@ -19,7 +19,7 @@ import {
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
-import { Code } from '~components/Typography';
+import { Code, Heading } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
@@ -133,7 +133,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   const tableRef = useRef<HTMLDivElement>(null);
   return (
     <Box padding="spacing.5" ref={tableRef} height="500px">
-      <> total rows : {largeNodes.length}</>
+      <Heading> Total rows : {largeNodes.length}</Heading>
       <TableComponent
         {...args}
         data={largeData}
@@ -236,7 +236,7 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
   const ref = useRef<HTMLDivElement>(null);
   return (
     <Box>
-      Normal Table-
+      <Heading>Normal Table-</Heading>
       <Box padding="spacing.5" overflow="auto" minHeight="400px">
         <TableComponent
           {...args}
@@ -330,9 +330,10 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
           )}
         </TableComponent>
       </Box>
-      Virtualized Table-
-      <Box padding="spacing.5" ref={ref} minHeight="400px">
-        <> total rows : {largeNodes.length}</>
+
+      <Heading>Virtualized Table-</Heading>
+      <Box padding="spacing.5" ref={ref} minHeight="600px">
+        <Heading> Total rows : {largeNodes.length}</Heading>
         <TableComponent
           {...args}
           data={largeData}
@@ -434,4 +435,4 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
 
 export const Table = TableTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Table.storyName = 'Basic Table';
+Table.storyName = 'Virtualized Table';
