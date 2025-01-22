@@ -622,8 +622,9 @@ const _Table = forwardRef(
     }
 
     if (selectionType !== 'none' && hasHoverActions && __DEV__) {
+      // their is no point of using hover actions with selectionType
       throwBladeError({
-        message: 'Hover actions are not supported with selectionType',
+        message: 'Consider removing hover actions when selectionType is set',
         moduleName: 'Table',
       });
     }
