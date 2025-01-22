@@ -27,7 +27,11 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import type { Theme } from '~components/BladeProvider';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
+import {
+  getTableActionsHoverStyles,
+  getTableRowBackgroundTransition,
+  getTableDataSelector,
+} from './utils';
 
 const StyledVirtualized = styled(Virtualized)<{
   $isSelectable: boolean;
@@ -341,7 +345,8 @@ const StyledRow = styled(Row)<{
   $isSelectable: boolean;
   $isHoverable: boolean;
   $showBorderedCells: boolean;
-}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells }) => {
+  $isVirtualized: boolean;
+}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isVirtualized }) => {
   const { hasHoverActions } = useTableContext();
   console.log({ hasHoverActions });
 
@@ -359,13 +364,13 @@ const StyledRow = styled(Row)<{
             borderRightColor: getIn(theme.colors, tableRow.borderColor),
           }
         : undefined,
-      '& td:last-child .cell-wrapper': {
+      [`& ${getTableDataSelector({ isVirtualized: $isVirtualized })}:last-child .cell-wrapper`]: {
         borderRight: 'none',
       },
       ...(hasHoverActions
         ? {
             [`@media ${getMediaQuery({ min: theme.breakpoints.m })}`]: {
-              '& td:last-child': {
+              [`& ${getTableDataSelector({ isVirtualized: $isVirtualized })}:last-child`]: {
                 opacity: 0,
                 position: 'sticky',
                 zIndex: 2,
@@ -375,14 +380,16 @@ const StyledRow = styled(Row)<{
                   overflow: 'visible',
                 },
               },
-              '& td:last-child:focus-within': {
+              [`& ${getTableDataSelector({
+                isVirtualized: $isVirtualized,
+              })}:last-child:focus-within`]: {
                 opacity: 1,
                 ...getTableActionsHoverStyles({
                   theme,
                   hoverColor: tableRow.nonStripe.backgroundColor,
                 }),
               },
-              '&:hover td:last-child': {
+              [`&:hover ${getTableDataSelector({ isVirtualized: $isVirtualized })}:last-child`]: {
                 opacity: 1,
               },
             },
@@ -482,6 +489,7 @@ const _TableRow = <Item,>({
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
+      $isVirtualized={isVirtualized}
       // role={isVirtualized ? 'row' : undefined}
       // as={isVirtualized ? 'tr' : undefined}
     >

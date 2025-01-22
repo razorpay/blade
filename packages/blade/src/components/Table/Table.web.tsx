@@ -145,16 +145,16 @@ const StyledReactTable = styled(ReactTable)<{
         display: 'block !important',
       },
       // for virtualized table, we need to apply some styles to tbody
-      '.tbody > div > .tr': {
+      '.tbody  div  .tr': {
         display: 'grid',
         gridTemplateColumns: 'var(--data-table-library_grid-template-columns)',
         columnGap: '0',
       },
-      '.tbody div tr:last-child .cell-wrapper': {
+      '.tbody div .tr:last-child .cell-wrapper': {
         borderBottom: 'none',
       },
 
-      '.tbody div.row-select-single-selected .cell-wrapper-base, .row-select-selected .cell-wrapper-base': {
+      '.tbody div .row-select-single-selected .cell-wrapper-base, .row-select-selected .cell-wrapper-base': {
         backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelected),
       },
       '.tbody div td': {
@@ -186,29 +186,29 @@ const StyledReactTable = styled(ReactTable)<{
       },
 
       ...($isSelectable && {
-        '.tbody div tr:active:not(.disabled-row) .cell-wrapper': {
+        '.tbody div .tr:active:not(.disabled-row) .cell-wrapper': {
           backgroundColor: getIn(theme.colors, tableRow.nonStripeWrapper.backgroundColorActive),
         },
       }),
 
       ...($showStripedRows && {
-        '.tbody div tr:nth-child(even) .cell-wrapper': {
+        '.tbody div .tr:nth-child(even) .cell-wrapper': {
           backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColor),
         },
-        '.tbody div tr:nth-child(even) .cell-wrapper-base': {
+        '.tbody div .tr:nth-child(even) .cell-wrapper-base': {
           backgroundColor: tableRow.stripe.backgroundColor,
         },
       }),
 
       ...($showStripedRows &&
         $isSelectable && {
-          '.tbody div tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
+          '.tbody div .tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorHover),
           },
-          '.tbody div tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper': {
+          '.tbody div .tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper': {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorFocus),
           },
-          '.tbody div tr:nth-child(even):active:not(.disabled-row) .cell-wrapper': {
+          '.tbody div.tr:nth-child(even):active:not(.disabled-row) .cell-wrapper': {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorActive),
           },
           '.tbody div .row-select-single-selected:nth-child(even) .cell-wrapper, .row-select-selected:nth-child(even) .cell-wrapper': {
@@ -233,7 +233,7 @@ const StyledReactTable = styled(ReactTable)<{
             ),
           },
 
-          '.tbody div tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base': {
+          '.tbody div .tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorHover),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorHover,
@@ -241,7 +241,7 @@ const StyledReactTable = styled(ReactTable)<{
               backgroundGradientColor: tableRow.stripeWrapper.backgroundColorHover,
             }),
           },
-          '.tbody div tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base': {
+          '.tbody div .tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorFocus),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorFocus,
@@ -249,7 +249,7 @@ const StyledReactTable = styled(ReactTable)<{
               backgroundGradientColor: tableRow.stripeWrapper.backgroundColorFocus,
             }),
           },
-          '.tbody div tr:nth-child(even):active:not(.disabled-row) .cell-wrapper-base': {
+          '.tbody div .tr:nth-child(even):active:not(.disabled-row) .cell-wrapper-base': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorActive),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorActive,
@@ -258,7 +258,7 @@ const StyledReactTable = styled(ReactTable)<{
             }),
           },
 
-          '.tbody div .row-select-single-selected:nth-child(even) .cell-wrapper-base, .row-select-selected:nth-child(even) .cell-wrapper-base ': {
+          '.tbody div .tr.row-select-single-selected:nth-child(even) .cell-wrapper-base, .row-select-selected:nth-child(even) .cell-wrapper-base ': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelected),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorSelected,
@@ -266,7 +266,7 @@ const StyledReactTable = styled(ReactTable)<{
               backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelected,
             }),
           },
-          '.tbody div .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base ': {
+          '.tbody div .tr.row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base ': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedHover),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorSelectedHover,
@@ -274,7 +274,7 @@ const StyledReactTable = styled(ReactTable)<{
               backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedHover,
             }),
           },
-          '.tbody div .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base ': {
+          '.tbody div .tr.row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base ': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedFocus),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorSelectedFocus,
@@ -282,7 +282,7 @@ const StyledReactTable = styled(ReactTable)<{
               backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedFocus,
             }),
           },
-          '.tbody div .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base ': {
+          '.tbody div .tr.row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base ': {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedActive),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorSelectedActive,

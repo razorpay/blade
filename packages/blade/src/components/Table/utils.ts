@@ -43,4 +43,17 @@ const getTableActionsHoverStyles = ({
   };
 };
 
-export { getTableActionsHoverStyles, getTableRowBackgroundTransition };
+const getTableRowSelector = ({ isVirtualized }: { isVirtualized: boolean }): string => {
+  return isVirtualized ? '.tr' : 'tr';
+};
+
+const getTableDataSelector = ({ isVirtualized }: { isVirtualized: boolean }): string => {
+  return isVirtualized ? '.td' : 'td';
+};
+
+export {
+  getTableActionsHoverStyles,
+  getTableRowBackgroundTransition,
+  getTableRowSelector,
+  getTableDataSelector,
+};
