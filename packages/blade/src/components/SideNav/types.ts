@@ -34,7 +34,7 @@ type SideNavProps = {
    * - Select the active link changes between L1 and L2 which can collapse or expand the L1
    * - When you hover / unhover L1 in collapsed state which can temporarily expand the L1
    */
-  onLevelChange?: ({ visibleLevel }: { visibleLevel: number }) => void;
+  onVisibleLevelChange?: ({ visibleLevel }: { visibleLevel: number }) => void;
 
   /**
    * Banner slot for usecases like adding Activation Panel

@@ -123,7 +123,7 @@ const BannerContainer = styled(BaseBox)((props) => {
  *
  */
 const _SideNav = (
-  { children, isOpen, onDismiss, onLevelChange, banner, testID, ...rest }: SideNavProps,
+  { children, isOpen, onDismiss, onVisibleLevelChange, banner, testID, ...rest }: SideNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
@@ -143,7 +143,7 @@ const _SideNav = (
     if (isMobile) {
       setIsMobileL2Open(false);
       onDismiss?.();
-      onLevelChange?.({ visibleLevel: 0 });
+      onVisibleLevelChange?.({ visibleLevel: 0 });
     }
   };
 
@@ -160,26 +160,29 @@ const _SideNav = (
     if (isMobile) {
       setL2DrawerTitle(title);
       setIsMobileL2Open(true);
-      onLevelChange?.({ visibleLevel: 2 });
+      onVisibleLevelChange?.({ visibleLevel: 2 });
       return;
     }
 
     if (!isL1Collapsed) {
       setIsL1Collapsed(true);
-      onLevelChange?.({ visibleLevel: 2 });
+      onVisibleLevelChange?.({ visibleLevel: 2 });
     }
   };
 
   const expandL1 = (): void => {
     if (isMobile) {
       setIsMobileL2Open(false);
-      onLevelChange?.({ visibleLevel: 1 });
+      onVisibleLevelChange?.({ visibleLevel: 1 });
       return;
     }
     // Ensures that if Normal L1 item is clicked, the L1 stays expanded
     if (isL1Collapsed) {
       setIsL1Collapsed(false);
-      onLevelChange?.({ visibleLevel: 1 });
+      // We want to avoid calling onVisibleLevelChange twice when L1 is hovered and then item on L1 is selected
+      if (!isL1Hovered) {
+        onVisibleLevelChange?.({ visibleLevel: 1 });
+      }
     }
   };
 
@@ -222,7 +225,7 @@ const _SideNav = (
       setIsL1Collapsed,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isL1Collapsed, isMobile, isMobileL2Open],
+    [isL1Collapsed, isMobile, isMobileL2Open, isL1Hovered],
   );
 
   React.useEffect(() => {
@@ -339,7 +342,7 @@ const _SideNav = (
                 }
                 if (isL1Collapsed && isHoverAgainEnabled && !isL1Hovered) {
                   setIsL1Hovered(true);
-                  onLevelChange?.({ visibleLevel: 1 });
+                  onVisibleLevelChange?.({ visibleLevel: 1 });
                 }
               }}
               onMouseLeave={() => {
@@ -348,7 +351,7 @@ const _SideNav = (
                     setIsL1Hovered(false);
                     setIsTransitioning(true);
                     cleanupTransition();
-                    onLevelChange?.({ visibleLevel: 2 });
+                    onVisibleLevelChange?.({ visibleLevel: 2 });
                   }, L1_EXIT_HOVER_DELAY);
                 }
               }}

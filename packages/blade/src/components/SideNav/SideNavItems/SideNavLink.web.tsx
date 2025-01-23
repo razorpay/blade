@@ -254,6 +254,13 @@ const SideNavLink = ({
         moduleName: 'SideNavLink',
       });
     }
+
+    if (currentLevel === 1 && Boolean(description)) {
+      throwBladeError({
+        message: 'Description is not supported for L1 items',
+        moduleName: 'SideNavLink',
+      });
+    }
   }
 
   const isFirstRender = useFirstRender();

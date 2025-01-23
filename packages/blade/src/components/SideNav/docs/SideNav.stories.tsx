@@ -373,7 +373,7 @@ const SideNavExample = ({
         {...args}
         isOpen={isMobileOpen}
         onDismiss={() => setIsMobileOpen(false)}
-        onLevelChange={({ visibleLevel }) => console.log({ visibleLevel })}
+        onVisibleLevelChange={({ visibleLevel }) => console.log({ visibleLevel })}
       >
         <SideNavBody>
           {navItemsJSON.map((l1Sections) => {
