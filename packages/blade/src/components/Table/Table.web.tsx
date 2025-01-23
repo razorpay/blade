@@ -29,6 +29,7 @@ import type {
   TableHeaderRowProps,
 } from './types';
 import { getTableBodyStyles } from './commonStyles';
+import type { BladeElementRef } from '~utils/types';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -189,7 +190,7 @@ const _Table = <Item,>(
     isVirtualized = false,
     ...rest
   }: TableProps<Item>,
-  ref: React.Ref<HTMLDivElement> | undefined,
+  ref: React.Ref<BladeElementRef> | undefined,
 ): React.ReactElement => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
@@ -315,7 +316,7 @@ const _Table = <Item,>(
   useEffect(() => {
     if (ref && 'current' in ref && ref.current && !height && !width) {
       if (ref?.current) {
-        const { width, height } = ref.current.getBoundingClientRect();
+        const { width, height } = (ref.current as HTMLElement).getBoundingClientRect();
         setVirtualizedTableDimensions({ width, height });
       }
 
@@ -326,7 +327,7 @@ const _Table = <Item,>(
         }
       });
       if (ref && 'current' in ref && ref.current) {
-        resizeObserver.observe(ref.current);
+        resizeObserver.observe(ref.current as HTMLElement);
       }
       return () => {
         resizeObserver.disconnect();
@@ -627,7 +628,7 @@ const Table = assignWithoutSideEffects(
   forwardRef(_Table) as <Item>(
     // https://oida.dev/typescript-react-generic-forward-refs/
     // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-    props: TableProps<Item> & { ref?: React.ForwardedRef<HTMLElement> },
+    props: TableProps<Item> & { ref?: React.ForwardedRef<BladeElementRef> },
   ) => React.ReactElement,
   {
     componentId: ComponentIds.Table,
