@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.4.1
+
+### Patch Changes
+
+- 2692d5b6: fix(blade): remove file icon aligment while uploading
+
 ## 12.4.0
 
 ### Minor Changes
