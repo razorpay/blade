@@ -1,4 +1,4 @@
-// Hidden example. It is reused in motion stories
+// Hidden example. It is  used in motion stories
 import React from 'react';
 import {
   CardBody,
@@ -15,8 +15,6 @@ import {
 import { Text } from '~components/Typography';
 import { CheckCircleIcon } from '~components/Icons';
 
-// Hidden example. It is reused in motion stories
-//how avoid this example to be shown in storybook
 export const InternalCardExample = React.forwardRef((_, ref) => {
   return (
     <Card

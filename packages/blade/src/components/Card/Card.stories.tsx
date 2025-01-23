@@ -466,4 +466,3 @@ CardWithoutPadding.parameters = {
     disable: true,
   },
 };
-
