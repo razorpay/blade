@@ -1,4 +1,3 @@
-// @ts-nocheck
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
@@ -248,7 +247,7 @@ const nodes: Item[] = [
     method: 'Netbanking',
     name: 'John Doe',
   },
-];
+]
 
 describe('<Table />', () => {
   it('should render table', () => {

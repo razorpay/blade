@@ -1,5 +1,4 @@
 //ignore file for ts check
-// @ts-nocheck
 import React from 'react';
 import { BasicExample } from './examples';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

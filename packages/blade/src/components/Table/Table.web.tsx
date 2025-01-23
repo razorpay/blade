@@ -316,7 +316,8 @@ const RefreshWrapper = styled(BaseBox)<{
   };
 });
 
-const _Table = <Item,>({ 
+const _Table = <Item,>(
+  {
     children,
     data,
     multiSelectTrigger = 'row',
@@ -775,8 +776,15 @@ const _Table = <Item,>({
     </TableContext.Provider>
   );
 };
-const Table = assignWithoutSideEffects(forwardRef(_Table), {
-  componentId: ComponentIds.Table,
-});
+const Table = assignWithoutSideEffects(
+  forwardRef(_Table) as <Item>(
+    // https://oida.dev/typescript-react-generic-forward-refs/
+    // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+    props: TableProps<Item> & { ref?: React.ForwardedRef<HTMLElement> },
+  ) => React.ReactElement,
+  {
+    componentId: ComponentIds.Table,
+  },
+);
 
 export { Table };
