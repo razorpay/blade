@@ -574,6 +574,7 @@ describe('<Table />', () => {
         isHeaderSticky
         isFooterSticky
         isFirstColumnSticky
+        gridTemplateColumns=""
       >
         {(tableData) => (
           <>
