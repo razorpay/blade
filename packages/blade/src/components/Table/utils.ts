@@ -43,11 +43,11 @@ const getTableActionsHoverStyles = ({
   };
 };
 
-const getTableRowSelector = ({ isVirtualized }: { isVirtualized: boolean }): string => {
+const getTableRowSelector = ({ isVirtualized }: { isVirtualized?: boolean }): string => {
   return isVirtualized ? '.tr' : 'tr';
 };
 
-const getTableDataSelector = ({ isVirtualized }: { isVirtualized: boolean }): string => {
+const getTableDataSelector = ({ isVirtualized }: { isVirtualized?: boolean }): string => {
   return isVirtualized ? '.td' : 'td';
 };
 
