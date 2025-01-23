@@ -88,7 +88,6 @@ export const StyledCell = styled(Cell)<{
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
-    // todo:  add check only in case of virtulizatoin
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
@@ -134,7 +133,6 @@ const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.R
     <StyledCell
       tabIndex={0}
       role="cell"
-      // as={isVirtualized ? 'td' : undefined}
       $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
@@ -182,7 +180,6 @@ const TableCheckboxCell = ({
   isDisabled?: boolean;
 }): React.ReactElement => {
   return (
-    // false in case of virtualization
     <TableCell>
       <BaseBox
         display="flex"
@@ -313,13 +310,6 @@ const _TableRow = <Item,>({
   const isMultiSelect = selectionType === 'multiple';
   const isSelected = selectedRows?.includes(item.id);
   const hasHoverActions = Boolean(hoverActions);
-  console.log({
-    isSelectable,
-    isMultiSelect,
-    isSelected,
-    hasHoverActions,
-    hoverActions,
-  });
 
   useEffect(() => {
     if (isDisabled) {
@@ -347,8 +337,6 @@ const _TableRow = <Item,>({
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
       $isVirtualized={isVirtualized}
-      // role={isVirtualized ? 'row' : undefined}
-      // as={isVirtualized ? 'tr' : undefined}
     >
       {isMultiSelect && (
         <TableCheckboxCell
