@@ -74,7 +74,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
+const TableTemplate: StoryFn<typeof TableComponent> = () => {
   const parentRef = React.useRef<HTMLDivElement>(null);
   return (
     <Box

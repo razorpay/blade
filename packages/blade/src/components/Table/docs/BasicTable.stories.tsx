@@ -13,7 +13,7 @@ import {
   TableToolbar,
   TableToolbarActions,
 } from '../../Table';
-import { VirtulizedWrapper } from '../TableBody.web';
+import { VirtulizedWrapper } from '../TableBody';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Code, Heading } from '~components/Typography';

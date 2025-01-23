@@ -247,7 +247,7 @@ const nodes: Item[] = [
     method: 'Netbanking',
     name: 'John Doe',
   },
-]
+];
 
 describe('<Table />', () => {
   it('should render table', () => {
