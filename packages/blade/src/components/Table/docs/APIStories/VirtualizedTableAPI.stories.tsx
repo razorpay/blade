@@ -12,7 +12,7 @@ import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/Table/API',
-  component: TableVirtulized,
+  component: VirtulizedWrapper,
   args: {},
   argTypes: {
     children: {
@@ -32,7 +32,7 @@ export default {
       ),
     },
   },
-} as Meta<typeof TableVirtulized>;
+} as Meta<typeof VirtulizedWrapper>;
 
 const nodes: Item[] = [
   ...Array.from({ length: 5000 }, (_, i) => ({
