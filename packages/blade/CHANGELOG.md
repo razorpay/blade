@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.5.0
+
+### Minor Changes
+
+- 194fffc5: feat(SideNav): add `description` on SideNavLink and `onVisibleLevelChange` callback on `SideNav`
+
 ## 12.4.1
 
 ### Patch Changes
