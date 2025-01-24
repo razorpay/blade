@@ -28,6 +28,15 @@ type SideNavProps = {
   onDismiss?: DrawerProps['onDismiss'];
 
   /**
+   * Callback that gets triggered when L1 is collapsed or expanded.
+   *
+   * This callback gets triggered when you-
+   * - Select the active link changes between L1 and L2 which can collapse or expand the L1
+   * - When you hover / unhover L1 in collapsed state which can temporarily expand the L1
+   */
+  onVisibleLevelChange?: ({ visibleLevel }: { visibleLevel: number }) => void;
+
+  /**
    * Banner slot for usecases like adding Activation Panel
    *
    * **IMPORTANT** Avoid adding promotional items in this
@@ -41,6 +50,13 @@ type SideNavLinkProps = {
    * title of the Link
    */
   title: string;
+
+  /**
+   * description of the Link
+   *
+   * **Note**: Only applicable for L2 items
+   */
+  description?: string;
 
   /**
    * Slot after the title.
