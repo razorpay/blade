@@ -204,10 +204,8 @@ const StyledRow = styled(Row)<{
   $isSelectable: boolean;
   $isHoverable: boolean;
   $showBorderedCells: boolean;
-  $isVirtualized: boolean;
-}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isVirtualized }) => {
+}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells }) => {
   const { hasHoverActions } = useTableContext();
-  console.log({ hasHoverActions });
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
