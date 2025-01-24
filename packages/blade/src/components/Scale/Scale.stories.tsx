@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import { InternalCardExample } from '../Card/Card.stories';
+import { InternalCardExample } from '../Card/InternalCardExample';
 import qrCodesImage from './docs-qrcodes.svg';
 import { Scale } from './';
 import type { ScaleProps } from './';

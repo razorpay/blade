@@ -65,6 +65,12 @@ type TableHeaderCellProps = {
    * Sorting is enabled only for columns whose key is present in sortableColumns prop of Table.
    **/
   headerKey?: string;
+  /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
 
   _hasPadding?: boolean;
 } & DataAnalyticsAttribute;
@@ -277,6 +283,12 @@ type TableCellProps = {
    **/
   children: React.ReactNode;
   /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
+  /**
    * Removes padding from CellWrapper
    *
    * @private
@@ -350,6 +362,12 @@ type TableFooterCellProps = {
    * The children of TableHeaderCell can be a string or a ReactNode.
    **/
   children: string | React.ReactNode;
+  /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
 } & DataAnalyticsAttribute;
 
 type TablePaginationCommonProps = {

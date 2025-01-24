@@ -92,12 +92,13 @@ const _DatePickerInput = (
     successText,
     errorText,
     helpText,
+    format,
+    placeholder,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
 ): React.ReactElement => {
   const isMobile = useIsMobile();
-  const format = 'DD/MM/YYYY';
   const isLarge = size === 'large';
   const hasLabel = typeof label === 'string' ? Boolean(label) : Boolean(label?.start || label?.end);
   const isLabelPositionLeft = labelPosition === 'left';
@@ -127,7 +128,7 @@ const _DatePickerInput = (
           id="start-date"
           labelPosition={labelPosition}
           label={label}
-          placeholder={format}
+          placeholder={placeholder || format}
           popupId={referenceProps['aria-controls']}
           isPopupExpanded={referenceProps['aria-expanded']}
           size={size}
@@ -197,7 +198,7 @@ const _DatePickerInput = (
             leadingIcon={CalendarIcon}
             label={label?.start}
             labelPosition={labelPosition}
-            placeholder={format}
+            placeholder={placeholder}
             popupId={referenceProps['aria-controls']}
             isPopupExpanded={referenceProps['aria-expanded']}
             size={size}
@@ -235,7 +236,7 @@ const _DatePickerInput = (
           />
           <DateInput
             id="end-date"
-            placeholder={format}
+            placeholder={placeholder}
             leadingIcon={CalendarIcon}
             label={shouldRenderEndLabel()}
             labelPosition={isLabelPositionLeft ? undefined : labelPosition}

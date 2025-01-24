@@ -99,7 +99,8 @@ export const CellWrapper = styled(BaseBox)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   showStripedRows?: boolean;
   hasPadding?: boolean;
-}>(({ theme, $rowDensity, showStripedRows, hasPadding = true }) => {
+  textAlign?: TableCellProps['textAlign'];
+}>(({ theme, $rowDensity, showStripedRows, hasPadding = true, textAlign }) => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
@@ -115,6 +116,7 @@ export const CellWrapper = styled(BaseBox)<{
       minHeight: makeSize(getIn(size, tableRow.minHeight[$rowDensity])),
       height: '100%',
       width: '100%',
+      justifyContent: textAlign,
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
         borderBottomColor: getIn(theme.colors, tableRow.borderColor),
@@ -124,7 +126,12 @@ export const CellWrapper = styled(BaseBox)<{
   };
 });
 
-const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.ReactElement => {
+const _TableCell = ({
+  children,
+  textAlign,
+  _hasPadding,
+  ...rest
+}: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
@@ -146,12 +153,14 @@ const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.R
           alignItems="center"
           hasPadding={_hasPadding}
           flex={1}
+          textAlign={textAlign}
           // when a direct string child is passed we want to disable pointer events
           // for custom cells components, consumers can handle pointer events themselves
           pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
           // allow text to wrap, so that if the <Text> overflows it can truncate
           whiteSpace="normal"
           position="relative"
+          {...metaAttribute({ name: MetaConstants.TableCellWrapper })}
         >
           {isChildrenString ? (
             <Text size="medium" truncateAfterLines={1}>

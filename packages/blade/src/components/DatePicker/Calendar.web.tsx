@@ -28,11 +28,13 @@ const Calendar = <Type extends DateSelectionType>({
   onNext,
   onPrevious,
   presets,
+  showLevelChangeLink,
   ...props
 }: CalendarProps<Type> & {
   date?: Date;
   defaultDate?: Date;
   onDateChange?: (date: DateValue) => void;
+  showLevelChangeLink?: boolean;
 }): React.ReactElement => {
   const isRange = selectionType === 'range';
 
@@ -125,6 +127,7 @@ const Calendar = <Type extends DateSelectionType>({
         onPreviousDecade={handlePreviousDecade}
         onNextYear={handleNextYear}
         onPreviousYear={handlePreviousYear}
+        showLevelChangeLink={showLevelChangeLink}
       />
       <CalendarGradientStyles isRange={isRange} date={currentDate}>
         <DatePicker
