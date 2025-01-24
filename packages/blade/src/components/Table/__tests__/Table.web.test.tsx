@@ -1201,6 +1201,7 @@ describe('<Table />', () => {
   });
   it('should render virtualized table', () => {
     const ReactVirtualTable = (): React.ReactElement => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const [apiData, _] = useState({ nodes: nodes.slice(0, 10) });
       const boxRef = useRef<HTMLElement>(null);
       return (
@@ -1213,7 +1214,6 @@ describe('<Table />', () => {
               ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
               AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
               PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-              DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
               STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
             }}
             ref={boxRef}
