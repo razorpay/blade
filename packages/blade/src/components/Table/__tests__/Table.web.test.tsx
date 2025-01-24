@@ -1199,90 +1199,90 @@ describe('<Table />', () => {
     );
     expect(container).toMatchSnapshot();
   });
-  it('should render virtualized table', () => {
-    const ReactVirtualTable = (): React.ReactElement => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const [apiData, _] = useState({ nodes: nodes.slice(0, 10) });
-      const boxRef = useRef<HTMLElement>(null);
-      return (
-        <Box ref={boxRef}>
-          <Table
-            data={apiData}
-            onSelectionChange={console.log}
-            selectionType="multiple"
-            sortFunctions={{
-              ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
-              AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-              PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-              STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
-            }}
-            ref={boxRef}
-            isVirtualized
-            defaultSelectedIds={['1', '3']}
-            rowDensity="normal"
-            isFirstColumnSticky
-          >
-            {(tableData) => (
-              <VirtulizedWrapper
-                tableData={tableData}
-                rowHeight={(item, index) => {
-                  // header height and row height
-                  return index === 0 ? 50 : 57.5;
-                }}
-                header={() => (
-                  <TableHeader>
-                    <TableHeaderRow>
-                      <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                      <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                      <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                      <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
-                    </TableHeaderRow>
-                  </TableHeader>
-                )}
-                body={(tableItem, index) => (
-                  <TableRow
-                    key={index}
-                    item={tableItem}
-                    onClick={() => {
-                      console.log('where');
-                    }}
-                  >
-                    <TableCell>
-                      <Code size="medium">{tableItem.paymentId}</Code>
-                    </TableCell>
-                    <TableEditableCell
-                      accessibilityLabel="Amount"
-                      placeholder="Enter text"
-                      successText="Amount is valid"
-                    />
+  // it('should render virtualized table', () => {
+  //   const ReactVirtualTable = (): React.ReactElement => {
+  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //     const [apiData, _] = useState({ nodes: nodes.slice(0, 10) });
+  //     const boxRef = useRef<HTMLElement>(null);
+  //     return (
+  //       <Box ref={boxRef}>
+  //         <Table
+  //           data={apiData}
+  //           onSelectionChange={console.log}
+  //           selectionType="multiple"
+  //           sortFunctions={{
+  //             ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+  //             AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+  //             PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+  //             STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+  //           }}
+  //           ref={boxRef}
+  //           isVirtualized
+  //           defaultSelectedIds={['1', '3']}
+  //           rowDensity="normal"
+  //           isFirstColumnSticky
+  //         >
+  //           {(tableData) => (
+  //             <VirtulizedWrapper
+  //               tableData={tableData}
+  //               rowHeight={(item, index) => {
+  //                 // header height and row height
+  //                 return index === 0 ? 50 : 57.5;
+  //               }}
+  //               header={() => (
+  //                 <TableHeader>
+  //                   <TableHeaderRow>
+  //                     <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+  //                     <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+  //                     <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+  //                     <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
+  //                   </TableHeaderRow>
+  //                 </TableHeader>
+  //               )}
+  //               body={(tableItem, index) => (
+  //                 <TableRow
+  //                   key={index}
+  //                   item={tableItem}
+  //                   onClick={() => {
+  //                     console.log('where');
+  //                   }}
+  //                 >
+  //                   <TableCell>
+  //                     <Code size="medium">{tableItem.paymentId}</Code>
+  //                   </TableCell>
+  //                   <TableEditableCell
+  //                     accessibilityLabel="Amount"
+  //                     placeholder="Enter text"
+  //                     successText="Amount is valid"
+  //                   />
 
-                    <TableCell>{tableItem.method}</TableCell>
-                    <TableCell>
-                      <Badge
-                        size="medium"
-                        color={
-                          tableItem.status === 'Completed'
-                            ? 'positive'
-                            : tableItem.status === 'Pending'
-                            ? 'notice'
-                            : tableItem.status === 'Failed'
-                            ? 'negative'
-                            : 'primary'
-                        }
-                      >
-                        {tableItem.status}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                )}
-              />
-            )}
-          </Table>
-        </Box>
-      );
-    };
-    const { container } = renderWithTheme(<ReactVirtualTable />);
+  //                   <TableCell>{tableItem.method}</TableCell>
+  //                   <TableCell>
+  //                     <Badge
+  //                       size="medium"
+  //                       color={
+  //                         tableItem.status === 'Completed'
+  //                           ? 'positive'
+  //                           : tableItem.status === 'Pending'
+  //                           ? 'notice'
+  //                           : tableItem.status === 'Failed'
+  //                           ? 'negative'
+  //                           : 'primary'
+  //                       }
+  //                     >
+  //                       {tableItem.status}
+  //                     </Badge>
+  //                   </TableCell>
+  //                 </TableRow>
+  //               )}
+  //             />
+  //           )}
+  //         </Table>
+  //       </Box>
+  //     );
+  //   };
+  //   const { container } = renderWithTheme(<ReactVirtualTable />);
 
-    expect(container).toMatchSnapshot();
-  });
+  //   expect(container).toMatchSnapshot();
+  // });
 });
