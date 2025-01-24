@@ -287,13 +287,6 @@ const _TableHeaderRow = ({
   if (rowDensity) {
     setHeaderRowDensity(rowDensity);
   }
-  console.log({
-    showBorderedCells,
-    hasHoverActions,
-    gridTemplateColumns,
-    columnCount,
-    selectionType,
-  });
   return (
     <StyledHeaderRow
       role="rowheader"
