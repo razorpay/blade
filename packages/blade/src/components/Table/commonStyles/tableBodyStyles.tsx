@@ -1,5 +1,5 @@
 import { tableRow } from '../tokens';
-import { getTableActionsHoverStyles, getTableRowSelector } from '../utils';
+import { getTableActionsHoverStyles } from '../utils';
 import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
@@ -13,7 +13,7 @@ const addTableRowSelectorIFVirtualized = ({
 }: {
   isVirtualized?: boolean;
 }): string => {
-  return isVirtualized ? '.tr' : '';
+  return isVirtualized ? 'tr' : '';
 };
 
 const getTableBodyStyles = ({
@@ -49,12 +49,12 @@ const getTableBodyStyles = ({
       '.tbody > div': {
         display: 'block !important',
       },
-      '.tbody  div  .tr': {
+      '.tbody  div  tr': {
         display: 'grid',
         gridTemplateColumns: 'var(--data-table-library_grid-template-columns)',
         columnGap: '0',
       },
-      '.tbody div .tr:last-child .cell-wrapper': {
+      '.tbody div tr:last-child .cell-wrapper': {
         borderBottom: 'none',
       },
       '.tbody div td': {
@@ -102,9 +102,7 @@ const getTableBodyStyles = ({
       ...(isSelectable && {
         [`${getRowWrapperSelector({
           isVirtualized,
-        })} ${getTableRowSelector({
-          isVirtualized,
-        })}:active:not(.disabled-row) .cell-wrapper`]: {
+        })} tr:active:not(.disabled-row) .cell-wrapper`]: {
           backgroundColor: getIn(theme.colors, tableRow.nonStripeWrapper.backgroundColorActive),
         },
       }),
@@ -112,16 +110,12 @@ const getTableBodyStyles = ({
       ...(showStripedRows && {
         [`${getRowWrapperSelector({
           isVirtualized,
-        })}  ${getTableRowSelector({
-          isVirtualized,
-        })}:nth-child(even) .cell-wrapper`]: {
+        })}  tr:nth-child(even) .cell-wrapper`]: {
           backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColor),
         },
         [`${getRowWrapperSelector({
           isVirtualized,
-        })} ${getTableRowSelector({
-          isVirtualized,
-        })}:nth-child(even) .cell-wrapper-base`]: {
+        })} tr:nth-child(even) .cell-wrapper-base`]: {
           backgroundColor: tableRow.stripe.backgroundColor,
         },
       }),
@@ -130,23 +124,17 @@ const getTableBodyStyles = ({
         isSelectable && {
           [`${getRowWrapperSelector({
             isVirtualized,
-          })} ${getTableRowSelector({
-            isVirtualized,
-          })}:nth-child(even):hover:not(.disabled-row) .cell-wrapper`]: {
+          })} tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper`]: {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorHover),
           },
           [`${getRowWrapperSelector({
             isVirtualized,
-          })} ${getTableRowSelector({
-            isVirtualized,
-          })}:nth-child(even):focus:not(.disabled-row) .cell-wrapper`]: {
+          })} tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper`]: {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorFocus),
           },
           [`${getRowWrapperSelector({
             isVirtualized,
-          })} ${getTableRowSelector({
-            isVirtualized,
-          })}:nth-child(even):active:not(.disabled-row) .cell-wrapper`]: {
+          })} tr:nth-child(even):active:not(.disabled-row) .cell-wrapper`]: {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorActive),
           },
           [`${getRowWrapperSelector({
@@ -181,9 +169,7 @@ const getTableBodyStyles = ({
 
           [`${getRowWrapperSelector({
             isVirtualized,
-          })} ${getTableRowSelector({
-            isVirtualized,
-          })}:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base`]: {
+          })} tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base`]: {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorHover),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorHover,
@@ -193,9 +179,7 @@ const getTableBodyStyles = ({
           },
           [`${getRowWrapperSelector({
             isVirtualized,
-          })} ${getTableRowSelector({
-            isVirtualized,
-          })}:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base`]: {
+          })} tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base`]: {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorFocus),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorFocus,
@@ -205,9 +189,7 @@ const getTableBodyStyles = ({
           },
           [`${getRowWrapperSelector({
             isVirtualized,
-          })} ${getTableRowSelector({
-            isVirtualized,
-          })}:nth-child(even):active:not(.disabled-row) .cell-wrapper-base`]: {
+          })} tr:nth-child(even):active:not(.disabled-row) .cell-wrapper-base`]: {
             backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorActive),
             ...getTableActionsHoverStyles({
               hoverColor: tableRow.stripe.backgroundColorActive,

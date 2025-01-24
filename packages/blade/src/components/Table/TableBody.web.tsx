@@ -218,13 +218,13 @@ const StyledRow = styled(Row)<{
             borderRightColor: getIn(theme.colors, tableRow.borderColor),
           }
         : undefined,
-      [`& ${getTableDataSelector({ isVirtualized: $isVirtualized })}:last-child .cell-wrapper`]: {
+      [`& td:last-child .cell-wrapper`]: {
         borderRight: 'none',
       },
       ...(hasHoverActions
         ? {
             [`@media ${getMediaQuery({ min: theme.breakpoints.m })}`]: {
-              [`& ${getTableDataSelector({ isVirtualized: $isVirtualized })}:last-child`]: {
+              [`& td:last-child`]: {
                 opacity: 0,
                 position: 'sticky',
                 zIndex: 2,
@@ -234,16 +234,14 @@ const StyledRow = styled(Row)<{
                   overflow: 'visible',
                 },
               },
-              [`& ${getTableDataSelector({
-                isVirtualized: $isVirtualized,
-              })}:last-child:focus-within`]: {
+              [`& td:last-child:focus-within`]: {
                 opacity: 1,
                 ...getTableActionsHoverStyles({
                   theme,
                   hoverColor: tableRow.nonStripe.backgroundColor,
                 }),
               },
-              [`&:hover ${getTableDataSelector({ isVirtualized: $isVirtualized })}:last-child`]: {
+              [`&:hover td:last-child`]: {
                 opacity: 1,
               },
             },

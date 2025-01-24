@@ -44,11 +44,11 @@ const getTableActionsHoverStyles = ({
 };
 
 const getTableRowSelector = ({ isVirtualized }: { isVirtualized?: boolean }): string => {
-  return isVirtualized ? '.tr' : 'tr';
+  return isVirtualized ? 'tr' : 'tr';
 };
 
 const getTableDataSelector = ({ isVirtualized }: { isVirtualized?: boolean }): string => {
-  return isVirtualized ? '.td' : 'td';
+  return isVirtualized ? 'td' : 'td';
 };
 
 export {
