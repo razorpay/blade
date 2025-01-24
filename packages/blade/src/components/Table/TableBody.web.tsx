@@ -13,11 +13,7 @@ import type {
   TableBackgroundColors,
   VirtualizedWrapperProps,
 } from './types';
-import {
-  getTableActionsHoverStyles,
-  getTableRowBackgroundTransition,
-  getTableDataSelector,
-} from './utils';
+import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
 import { getTableBodyStyles } from './commonStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
