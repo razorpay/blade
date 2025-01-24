@@ -22,6 +22,14 @@ import ArrowDownLeftIconComponent from './ArrowDownLeftIcon';
 import ArrowDownRightIconComponent from './ArrowDownRightIcon';
 import ArrowLeftIconComponent from './ArrowLeftIcon';
 import ArrowRightIconComponent from './ArrowRightIcon';
+import ArrowSquareDownIconComponent from './ArrowSquareDownIcon';
+import ArrowSquareDownLeftIconComponent from './ArrowSquareDownLeftIcon';
+import ArrowSquareDownRightIconComponent from './ArrowSquareDownRightIcon';
+import ArrowSquareLeftIconComponent from './ArrowSquareLeftIcon';
+import ArrowSquareRightIconComponent from './ArrowSquareRightIcon';
+import ArrowSquareUpIconComponent from './ArrowSquareUpIcon';
+import ArrowSquareUpLeftIconComponent from './ArrowSquareUpLeftIcon';
+import ArrowSquareUpRightIconComponent from './ArrowSquareUpRightIcon';
 import ArrowUpIconComponent from './ArrowUpIcon';
 import ArrowUpLeftIconComponent from './ArrowUpLeftIcon';
 import ArrowUpRightIconComponent from './ArrowUpRightIcon';
@@ -77,6 +85,7 @@ import ChevronsRightIconComponent from './ChevronsRightIcon';
 import ChevronsUpIconComponent from './ChevronsUpIcon';
 import ChromeIconComponent from './ChromeIcon';
 import CircleIconComponent from './CircleIcon';
+import CircularCornerIconComponent from './CircularCornerIcon';
 import ClipboardIconComponent from './ClipboardIcon';
 import ClockIconComponent from './ClockIcon';
 import CloseIconComponent from './CloseIcon';
@@ -267,6 +276,7 @@ import ResizerIconComponent from './ResizerIcon';
 import RewindIconComponent from './RewindIcon';
 import RotateClockWiseIconComponent from './RotateClockWiseIcon';
 import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
+import RoundedCornerIconComponent from './RoundedCornerIcon';
 import RouteIconComponent from './RouteIcon';
 import RoutesIconComponent from './RoutesIcon';
 import RupeeIconComponent from './RupeeIcon';
@@ -280,6 +290,7 @@ import ServerIconComponent from './ServerIcon';
 import SettingsIconComponent from './SettingsIcon';
 import SettlementsIconComponent from './SettlementsIcon';
 import ShareIconComponent from './ShareIcon';
+import SharpCornerIconComponent from './SharpCornerIcon';
 import ShieldIconComponent from './ShieldIcon';
 import ShoppingBagIconComponent from './ShoppingBagIcon';
 import ShoppingCartIconComponent from './ShoppingCartIcon';
@@ -392,6 +403,14 @@ const iconMap: Record<string, IconComponent> = {
   ArrowDownRightIcon: ArrowDownRightIconComponent,
   ArrowLeftIcon: ArrowLeftIconComponent,
   ArrowRightIcon: ArrowRightIconComponent,
+  ArrowSquareDownIcon: ArrowSquareDownIconComponent,
+  ArrowSquareDownLeftIcon: ArrowSquareDownLeftIconComponent,
+  ArrowSquareDownRightIcon: ArrowSquareDownRightIconComponent,
+  ArrowSquareLeftIcon: ArrowSquareLeftIconComponent,
+  ArrowSquareRightIcon: ArrowSquareRightIconComponent,
+  ArrowSquareUpIcon: ArrowSquareUpIconComponent,
+  ArrowSquareUpLeftIcon: ArrowSquareUpLeftIconComponent,
+  ArrowSquareUpRightIcon: ArrowSquareUpRightIconComponent,
   ArrowUpIcon: ArrowUpIconComponent,
   ArrowUpLeftIcon: ArrowUpLeftIconComponent,
   ArrowUpRightIcon: ArrowUpRightIconComponent,
@@ -447,6 +466,7 @@ const iconMap: Record<string, IconComponent> = {
   ChevronsUpIcon: ChevronsUpIconComponent,
   ChromeIcon: ChromeIconComponent,
   CircleIcon: CircleIconComponent,
+  CircularCornerIcon: CircularCornerIconComponent,
   ClipboardIcon: ClipboardIconComponent,
   ClockIcon: ClockIconComponent,
   CloseIcon: CloseIconComponent,
@@ -637,6 +657,7 @@ const iconMap: Record<string, IconComponent> = {
   RewindIcon: RewindIconComponent,
   RotateClockWiseIcon: RotateClockWiseIconComponent,
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
+  RoundedCornerIcon: RoundedCornerIconComponent,
   RouteIcon: RouteIconComponent,
   RoutesIcon: RoutesIconComponent,
   RupeeIcon: RupeeIconComponent,
@@ -650,6 +671,7 @@ const iconMap: Record<string, IconComponent> = {
   SettingsIcon: SettingsIconComponent,
   SettlementsIcon: SettlementsIconComponent,
   ShareIcon: ShareIconComponent,
+  SharpCornerIcon: SharpCornerIconComponent,
   ShieldIcon: ShieldIconComponent,
   ShoppingBagIcon: ShoppingBagIconComponent,
   ShoppingCartIcon: ShoppingCartIconComponent,
