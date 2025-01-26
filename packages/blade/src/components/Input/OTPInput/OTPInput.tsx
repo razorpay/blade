@@ -1,4 +1,4 @@
-import React, { useEffect, useImperativeHandle, useState } from 'react';
+import React, { memo, useEffect, useImperativeHandle, useState } from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getHintType } from '../BaseInput/BaseInput';
@@ -419,7 +419,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   );
 };
 
-const OTPInput = React.forwardRef<HTMLInputElement[], OTPInputProps>(_OTPInput);
+const OTPInput = memo(React.forwardRef<HTMLInputElement[], OTPInputProps>(_OTPInput));
 
 export type { OTPInputProps };
 export { OTPInput };

@@ -293,6 +293,40 @@ const OTPInputControlledTemplate: StoryFn<typeof OTPInputComponent> = () => {
 };
 export const OTPInputControlled = OTPInputControlledTemplate.bind({});
 
+export const onOtpFilled = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {` 
+      import React, { memo, useCallback, useState } from 'react';
+      import { OTPInput } from '@razorpay/blade/components';
+
+       function App() {
+         const [state, setState] = useState('');
+       
+         // consider wrapping this function in useCallback.
+         // since this case we are updating state which will cause App to re-render and hence the function reference will change.
+         // which will cause the OTPInput to re-render. 
+         const sendOtpToServer = useCallback(({ value }) => {
+           setState(Math.random().toString());
+         }, []); // Dependency array ensures the function reference remains stable.
+       
+         console.log(state);
+       
+       
+         return (
+           <>
+             <OTPInput label="Enter OTP" onOTPFilled={sendOtpToServer} />
+           </>
+         );
+       }
+       
+       export default App;
+
+      `}
+    </Sandbox>
+  );
+};
+
 export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [focusOn, setFocusOn] = React.useState(0);
