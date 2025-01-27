@@ -59,7 +59,7 @@ type TabItemProps = {
   /**
    * The label of the tab item.
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * The value of the tab item.
    */
