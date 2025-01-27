@@ -85,7 +85,7 @@ const TabList = ({
                     ? {
                         borderRadius: 'medium',
                         borderWidth: 'thin',
-                        borderColor: 'interactive.border.gray.faded',
+                        borderColor: 'interactive.border.gray.default',
                         padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
                         backgroundColor: 'surface.background.gray.intense',
