@@ -6,7 +6,6 @@ import { TabIndicator } from './TabIndicator';
 import { trackColor } from './tabTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { Divider } from '~components/Divider';
 import { Box } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -97,20 +96,8 @@ const TabList = ({
                       })}
                 >
                   {variant === 'filled' && !isVertical
-                    ? React.Children.map(children, (child, index) => {
-                        return (
-                          <>
-                            {index > 0 ? (
-                              <Divider
-                                margin="auto"
-                                height="20px"
-                                variant="subtle"
-                                orientation="vertical"
-                              />
-                            ) : null}
-                            {child}
-                          </>
-                        );
+                    ? React.Children.map(children, (child) => {
+                        return <>{child}</>;
                       })
                     : children}
                 </BaseBox>
