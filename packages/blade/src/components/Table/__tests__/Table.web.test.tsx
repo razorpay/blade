@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
-import { TableBody, TableCell, TableRow } from '../TableBody';
+import { TableBody, TableCell, TableRow, VirtulizedWrapper } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
@@ -10,6 +10,9 @@ import { TablePagination } from '../TablePagination';
 import { TableEditableCell } from '../TableEditableCell';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Amount } from '~components/Amount';
+import { Box } from '~components/Box';
+import { Code } from '~components/Typography';
+import { Badge } from '~components/Badge';
 
 type Item = {
   id: string;
@@ -1196,90 +1199,90 @@ describe('<Table />', () => {
     );
     expect(container).toMatchSnapshot();
   });
-  // it('should render virtualized table', () => {
-  //   const ReactVirtualTable = (): React.ReactElement => {
-  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //     const [apiData, _] = useState({ nodes: nodes.slice(0, 10) });
-  //     const boxRef = useRef<HTMLElement>(null);
-  //     return (
-  //       <Box ref={boxRef}>
-  //         <Table
-  //           data={apiData}
-  //           onSelectionChange={console.log}
-  //           selectionType="multiple"
-  //           sortFunctions={{
-  //             ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
-  //             AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-  //             PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-  //             STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
-  //           }}
-  //           ref={boxRef}
-  //           isVirtualized
-  //           defaultSelectedIds={['1', '3']}
-  //           rowDensity="normal"
-  //           isFirstColumnSticky
-  //         >
-  //           {(tableData) => (
-  //             <VirtulizedWrapper
-  //               tableData={tableData}
-  //               rowHeight={(item, index) => {
-  //                 // header height and row height
-  //                 return index === 0 ? 50 : 57.5;
-  //               }}
-  //               header={() => (
-  //                 <TableHeader>
-  //                   <TableHeaderRow>
-  //                     <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-  //                     <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-  //                     <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-  //                     <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
-  //                   </TableHeaderRow>
-  //                 </TableHeader>
-  //               )}
-  //               body={(tableItem, index) => (
-  //                 <TableRow
-  //                   key={index}
-  //                   item={tableItem}
-  //                   onClick={() => {
-  //                     console.log('where');
-  //                   }}
-  //                 >
-  //                   <TableCell>
-  //                     <Code size="medium">{tableItem.paymentId}</Code>
-  //                   </TableCell>
-  //                   <TableEditableCell
-  //                     accessibilityLabel="Amount"
-  //                     placeholder="Enter text"
-  //                     successText="Amount is valid"
-  //                   />
+  it('should render virtualized table', () => {
+    const ReactVirtualTable = (): React.ReactElement => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const [apiData, _] = useState({ nodes: nodes.slice(0, 10) });
+      const boxRef = useRef<HTMLElement>(null);
+      return (
+        <Box ref={boxRef}>
+          <Table
+            data={apiData}
+            onSelectionChange={console.log}
+            selectionType="multiple"
+            sortFunctions={{
+              ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+              AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+              PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+              STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+            }}
+            ref={boxRef}
+            isVirtualized
+            defaultSelectedIds={['1', '3']}
+            rowDensity="normal"
+            isFirstColumnSticky
+          >
+            {(tableData) => (
+              <VirtulizedWrapper
+                tableData={tableData}
+                rowHeight={(item, index) => {
+                  // header height and row height
+                  return index === 0 ? 50 : 57.5;
+                }}
+                header={() => (
+                  <TableHeader>
+                    <TableHeaderRow>
+                      <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                      <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                      <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                      <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
+                    </TableHeaderRow>
+                  </TableHeader>
+                )}
+                body={(tableItem, index) => (
+                  <TableRow
+                    key={index}
+                    item={tableItem}
+                    onClick={() => {
+                      console.log('where');
+                    }}
+                  >
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableEditableCell
+                      accessibilityLabel="Amount"
+                      placeholder="Enter text"
+                      successText="Amount is valid"
+                    />
 
-  //                   <TableCell>{tableItem.method}</TableCell>
-  //                   <TableCell>
-  //                     <Badge
-  //                       size="medium"
-  //                       color={
-  //                         tableItem.status === 'Completed'
-  //                           ? 'positive'
-  //                           : tableItem.status === 'Pending'
-  //                           ? 'notice'
-  //                           : tableItem.status === 'Failed'
-  //                           ? 'negative'
-  //                           : 'primary'
-  //                       }
-  //                     >
-  //                       {tableItem.status}
-  //                     </Badge>
-  //                   </TableCell>
-  //                 </TableRow>
-  //               )}
-  //             />
-  //           )}
-  //         </Table>
-  //       </Box>
-  //     );
-  //   };
-  //   const { container } = renderWithTheme(<ReactVirtualTable />);
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>
+                      <Badge
+                        size="medium"
+                        color={
+                          tableItem.status === 'Completed'
+                            ? 'positive'
+                            : tableItem.status === 'Pending'
+                            ? 'notice'
+                            : tableItem.status === 'Failed'
+                            ? 'negative'
+                            : 'primary'
+                        }
+                      >
+                        {tableItem.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                )}
+              />
+            )}
+          </Table>
+        </Box>
+      );
+    };
+    const { container } = renderWithTheme(<ReactVirtualTable />);
 
-  //   expect(container).toMatchSnapshot();
-  // });
+    expect(container).toMatchSnapshot();
+  });
 });

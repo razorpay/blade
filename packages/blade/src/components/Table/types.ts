@@ -174,10 +174,6 @@ type TableProps<Item> = {
    * The height prop is a responsive styled prop that determines the height of the table.
    **/
   height?: BoxProps['height'];
-  /**
-   * The prop width is a prop used to determine the width of the table.
-   */
-  width?: BoxProps['width'];
 
   /**
    * The showStripedRows prop determines whether the table should have striped rows or not.

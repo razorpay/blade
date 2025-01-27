@@ -209,7 +209,6 @@ const TableHeaderCellCheckbox = ({
         justifyContent="center"
         flex={1}
         width={makeSize(checkboxCellWidth)}
-        {...metaAttribute({ name: 'checkbox-container' })}
       >
         <Checkbox
           isChecked={isChecked}

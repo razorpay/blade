@@ -180,7 +180,6 @@ const _Table = <Item,>(
     toolbar,
     pagination,
     height,
-    width,
     showStripedRows,
     gridTemplateColumns,
     isLoading = false,
@@ -314,7 +313,7 @@ const _Table = <Item,>(
   });
 
   useEffect(() => {
-    if (ref && 'current' in ref && ref.current && !height && !width) {
+    if (ref && 'current' in ref && ref.current && !height) {
       if (ref?.current) {
         const { width, height } = (ref.current as HTMLElement).getBoundingClientRect();
         setVirtualizedTableDimensions({ width, height });
@@ -334,7 +333,7 @@ const _Table = <Item,>(
       };
     }
     return undefined;
-  }, [height, ref, width]);
+  }, [height, ref]);
 
   useEffect(() => {
     // Get the total number of items
@@ -562,7 +561,6 @@ const _Table = <Item,>(
           alignItems="center"
           justifyContent="center"
           height={height}
-          width={isVirtualized ? width : undefined}
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           {...makeAnalyticsAttribute(rest)}
@@ -576,7 +574,7 @@ const _Table = <Item,>(
           position="relative"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
-          width={isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined}
+          width={isVirtualized ? `${VirtualizedTableDimensions.width}px` : undefined}
         >
           {isRefreshSpinnerMounted && (
             <RefreshWrapper
@@ -606,7 +604,7 @@ const _Table = <Item,>(
             sort={sortFunctions ? sort : null}
             $styledProps={{
               height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
-              width: isVirtualized ? width || `${VirtualizedTableDimensions.width}px` : undefined,
+              width: isVirtualized ? `${VirtualizedTableDimensions.width}px` : undefined,
               isVirtualized,
               isSelectable: selectionType !== 'none',
               showStripedRows,
