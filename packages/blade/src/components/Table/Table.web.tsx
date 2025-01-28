@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo } from 'react';
 import { Table as ReactTable } from '@table-library/react-table-library/table';
 import { useTheme as useTableTheme } from '@table-library/react-table-library/theme';
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
@@ -28,6 +28,8 @@ import type {
   TablePaginationType,
   TableHeaderRowProps,
 } from './types';
+import { getTableBodyStyles } from './commonStyles';
+import type { BladeElementRef } from '~utils/types';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -56,8 +58,29 @@ const rowSelectType: Record<
 // Get the number of TableHeaderCell components.
 // This is very complicated but the only way to iterate through the structure and get number of header cells.
 // Assuming number of header cells is the same as number of columns
-const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): number => {
+const getTableHeaderCellCount = (
+  children: (data: []) => React.ReactElement,
+  isVirtualized: boolean,
+): number => {
   const tableRootComponent = children([]);
+  if (isVirtualized) {
+    if (
+      React.isValidElement<{ header?: () => React.ReactElement }>(tableRootComponent) &&
+      tableRootComponent?.props.header
+    ) {
+      if (React.isValidElement(tableRootComponent?.props.header())) {
+        const tableHeaderRow = tableRootComponent.props.header().props.children;
+        if (
+          React.isValidElement<{ children?: React.ReactNode }>(tableHeaderRow) &&
+          tableHeaderRow.props.children
+        ) {
+          const tableHeaderCells = React.Children.toArray(tableHeaderRow.props.children);
+          return tableHeaderCells.length;
+        }
+      }
+    }
+  }
+
   if (tableRootComponent && React.isValidElement(tableRootComponent)) {
     const tableComponentArray = React.Children.toArray(tableRootComponent);
     if (React.isValidElement(tableComponentArray[0])) {
@@ -87,21 +110,42 @@ const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): nu
   return 0;
 };
 
-const StyledReactTable = styled(ReactTable)<{ $styledProps?: { height?: BoxProps['height'] } }>(
-  ({ $styledProps }) => {
-    const { theme } = useTheme();
-    const styledPropsCSSObject = getBaseBoxStyles({
-      theme,
-      height: $styledProps?.height,
-    });
+const StyledReactTable = styled(ReactTable)<{
+  $styledProps?: {
+    height?: BoxProps['height'];
+    width?: BoxProps['width'];
+    isVirtualized?: boolean;
+    isSelectable?: boolean;
+    showStripedRows?: boolean;
+  };
+}>(({ $styledProps }) => {
+  const { theme } = useTheme();
+  const styledPropsCSSObject = getBaseBoxStyles({
+    theme,
+    height: $styledProps?.height,
+    ...($styledProps?.isVirtualized && {
+      width: $styledProps?.width,
+    }),
+  });
+  const $isSelectable = $styledProps?.isSelectable;
+  const $showStripedRows = $styledProps?.showStripedRows;
 
-    return {
-      '&&&': {
-        ...styledPropsCSSObject,
-      },
-    };
-  },
-);
+  return {
+    '&&&': {
+      ...styledPropsCSSObject,
+    },
+    ...($styledProps?.isVirtualized && {
+      ...getTableBodyStyles({
+        isVirtualized: $styledProps?.isVirtualized,
+        theme,
+        height: $styledProps?.height,
+        width: $styledProps?.width,
+        isSelectable: $isSelectable,
+        showStripedRows: $showStripedRows,
+      }),
+    }),
+  };
+});
 
 const RefreshWrapper = styled(BaseBox)<{
   isRefreshSpinnerVisible: boolean;
@@ -120,29 +164,33 @@ const RefreshWrapper = styled(BaseBox)<{
   };
 });
 
-const _Table = <Item,>({
-  children,
-  data,
-  multiSelectTrigger = 'row',
-  selectionType = 'none',
-  onSelectionChange,
-  isHeaderSticky,
-  isFooterSticky,
-  isFirstColumnSticky,
-  rowDensity = 'normal',
-  onSortChange,
-  sortFunctions,
-  toolbar,
-  pagination,
-  height,
-  showStripedRows,
-  gridTemplateColumns,
-  isLoading = false,
-  isRefreshing = false,
-  showBorderedCells = false,
-  defaultSelectedIds = [],
-  ...rest
-}: TableProps<Item>): React.ReactElement => {
+const _Table = <Item,>(
+  {
+    children,
+    data,
+    multiSelectTrigger = 'row',
+    selectionType = 'none',
+    onSelectionChange,
+    isHeaderSticky,
+    isFooterSticky,
+    isFirstColumnSticky,
+    rowDensity = 'normal',
+    onSortChange,
+    sortFunctions,
+    toolbar,
+    pagination,
+    height,
+    showStripedRows,
+    gridTemplateColumns,
+    isLoading = false,
+    isRefreshing = false,
+    showBorderedCells = false,
+    defaultSelectedIds = [],
+    isVirtualized = false,
+    ...rest
+  }: TableProps<Item>,
+  ref: React.Ref<BladeElementRef> | undefined,
+): React.ReactElement => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
     selectionType !== 'none' ? defaultSelectedIds : [],
@@ -156,6 +204,11 @@ const _Table = <Item,>({
     undefined,
   );
   const [hasHoverActions, setHasHoverActions] = React.useState(false);
+  const [VirtualizedTableDimensions, setVirtualizedTableDimensions] = React.useState({
+    width: 0,
+    height: 0,
+  });
+
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
@@ -173,7 +226,7 @@ const _Table = <Item,>({
   });
 
   // Table Theme
-  const columnCount = getTableHeaderCellCount(children);
+  const columnCount = getTableHeaderCellCount(children, isVirtualized);
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
     ? `
   &:nth-of-type(1) {
@@ -260,12 +313,35 @@ const _Table = <Item,>({
   });
 
   useEffect(() => {
+    if (ref && 'current' in ref && ref.current && !height) {
+      if (ref?.current) {
+        const { width, height } = (ref.current as HTMLElement).getBoundingClientRect();
+        setVirtualizedTableDimensions({ width, height });
+      }
+
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const { width } = entry.contentRect;
+          setVirtualizedTableDimensions((prev) => ({ ...prev, width }));
+        }
+      });
+      if (ref && 'current' in ref && ref.current) {
+        resizeObserver.observe(ref.current as HTMLElement);
+      }
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }
+    return undefined;
+  }, [height, ref]);
+
+  useEffect(() => {
     // Get the total number of items
     setTotalItems(data.nodes.length);
   }, [data.nodes]);
 
   // Selection Logic
-  const onSelectChange: MiddlewareFunction = (action, state): void => {
+  const onSelectChange: MiddlewareFunction = (_, state): void => {
     const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
     setSelectedRows(selectedIds);
     onSelectionChange?.({
@@ -323,7 +399,7 @@ const _Table = <Item,>({
   );
 
   // Sort Logic
-  const handleSortChange: MiddlewareFunction = (action, state) => {
+  const handleSortChange: MiddlewareFunction = (_, state) => {
     onSortChange?.({
       sortKey: state.sortKey,
       isSortReversed: state.reverse,
@@ -408,6 +484,14 @@ const _Table = <Item,>({
     }
   }
 
+  if (selectionType !== 'none' && hasHoverActions && __DEV__) {
+    // their is no point of using hover actions with selectionType
+    throwBladeError({
+      message: 'Consider removing hover actions when selectionType is set',
+      moduleName: 'Table',
+    });
+  }
+
   // Table Context
   const tableContext: TableContextType = useMemo(
     () => ({
@@ -434,6 +518,9 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      columnCount,
+      gridTemplateColumns,
+      isVirtualized,
     }),
     [
       selectionType,
@@ -442,8 +529,10 @@ const _Table = <Item,>({
       toggleRowSelectionById,
       toggleAllRowsSelection,
       deselectAllRows,
+      gridTemplateColumns,
       rowDensity,
       toggleSort,
+      columnCount,
       currentSortedState,
       setPaginationPage,
       setPaginationRowSize,
@@ -459,6 +548,7 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      isVirtualized,
     ],
   );
 
@@ -484,6 +574,7 @@ const _Table = <Item,>({
           position="relative"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
+          width={isVirtualized ? `${VirtualizedTableDimensions.width}px` : undefined}
         >
           {isRefreshSpinnerMounted && (
             <RefreshWrapper
@@ -504,15 +595,19 @@ const _Table = <Item,>({
           )}
           {toolbar}
           <StyledReactTable
-            role="table"
-            layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
+            role={isVirtualized ? 'grid' : 'table'}
+            layout={{ fixedHeader: true, horizontalScroll: true }}
             data={data}
             // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
             theme={tableTheme}
             select={selectionType !== 'none' ? rowSelectConfig : null}
             sort={sortFunctions ? sort : null}
             $styledProps={{
-              height,
+              height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
+              width: isVirtualized ? `${VirtualizedTableDimensions.width}px` : undefined,
+              isVirtualized,
+              isSelectable: selectionType !== 'none',
+              showStripedRows,
             }}
             pagination={hasPagination ? paginationConfig : null}
             {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
@@ -527,9 +622,15 @@ const _Table = <Item,>({
     </TableContext.Provider>
   );
 };
-
-const Table = assignWithoutSideEffects(_Table, {
-  componentId: ComponentIds.Table,
-});
+const Table = assignWithoutSideEffects(
+  forwardRef(_Table) as <Item>(
+    // https://oida.dev/typescript-react-generic-forward-refs/
+    // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+    props: TableProps<Item> & { ref?: React.ForwardedRef<BladeElementRef> },
+  ) => React.ReactElement,
+  {
+    componentId: ComponentIds.Table,
+  },
+);
 
 export { Table };

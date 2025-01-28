@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
+import { Virtualized } from '@table-library/react-table-library/virtualized';
 import styled from 'styled-components';
 import { useTableContext } from './TableContext';
-import { checkboxCellWidth, classes, tableBackgroundColor, tableRow } from './tokens';
+import { checkboxCellWidth, classes, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
 import type {
   TableProps,
@@ -10,9 +11,11 @@ import type {
   TableRowProps,
   TableCellProps,
   TableBackgroundColors,
+  VirtualizedWrapperProps,
 } from './types';
+import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
+import { getTableBodyStyles } from './commonStyles';
 import getIn from '~utils/lodashButBetter/get';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -24,46 +27,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import type { Theme } from '~components/BladeProvider';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-
-const getTableRowBackgroundTransition = (theme: Theme): string => {
-  const rowBackgroundTransition = `background-color ${makeMotionTime(
-    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
-
-  return rowBackgroundTransition;
-};
-
-const getTableActionsHoverStyles = ({
-  hoverColor,
-  theme,
-  backgroundGradientColor,
-}: {
-  hoverColor: DotNotationToken<Theme['colors']>;
-  backgroundGradientColor?: DotNotationToken<Omit<Theme['colors'], 'name'>>;
-  theme: Theme;
-}): React.CSSProperties => {
-  const rowBackgroundTransition = getTableRowBackgroundTransition(theme);
-
-  return {
-    // Solid layer 1 background - should match the table background
-    [`& .${classes.HOVER_ACTIONS}`]: {
-      backgroundColor: getIn(theme.colors, tableBackgroundColor),
-      transition: rowBackgroundTransition,
-    },
-    // Alpha layer 2 background - Stripped row background, Hover background in selected state, etc
-    [`& .${classes.HOVER_ACTIONS_LAYER2}`]: {
-      backgroundColor: getIn(theme.colors, backgroundGradientColor ?? 'transparent'),
-      transition: rowBackgroundTransition,
-    },
-    // Alpha layer 3 background - Hover, selection, active background
-    [`& .${classes.HOVER_ACTIONS_LAYER3}`]: {
-      backgroundColor: getIn(theme.colors, hoverColor),
-      transition: rowBackgroundTransition,
-    },
-  };
-};
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -80,140 +44,15 @@ const StyledBody = styled(Body)<{
         borderBottom: 'none',
       },
 
-      '& .row-select-single-selected .cell-wrapper-base, .row-select-selected .cell-wrapper-base': {
-        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelected),
-      },
-      '& .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base': {
-        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedHover),
-        ...getTableActionsHoverStyles({
-          hoverColor: tableRow.nonStripe.backgroundColorSelectedHover,
-          backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedHover,
+      ...{
+        ...getTableBodyStyles({
+          addCommonStyles: true,
           theme,
+          isSelectable: $isSelectable,
+          showStripedRows: $showStripedRows,
+          isVirtualized: false,
         }),
       },
-      '& .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base': {
-        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedFocus),
-        ...getTableActionsHoverStyles({
-          hoverColor: tableRow.nonStripe.backgroundColorSelectedFocus,
-          backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedFocus,
-          theme,
-        }),
-      },
-      '& .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:active:not(.disabled-row) .cell-wrapper-base': {
-        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedActive),
-        ...getTableActionsHoverStyles({
-          hoverColor: tableRow.nonStripe.backgroundColorSelectedActive,
-          backgroundGradientColor: tableRow.nonStripe.backgroundColorHover,
-          theme,
-        }),
-      },
-
-      ...($isSelectable && {
-        '& tr:active:not(.disabled-row) .cell-wrapper': {
-          backgroundColor: getIn(theme.colors, tableRow.nonStripeWrapper.backgroundColorActive),
-        },
-      }),
-
-      ...($showStripedRows && {
-        '& tr:nth-child(even) .cell-wrapper': {
-          backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColor),
-        },
-        '& tr:nth-child(even) .cell-wrapper-base': {
-          backgroundColor: tableRow.stripe.backgroundColor,
-        },
-      }),
-
-      ...($showStripedRows &&
-        $isSelectable && {
-          '& tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorHover),
-          },
-          '& tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorFocus),
-          },
-          '& tr:nth-child(even):active:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorActive),
-          },
-          '& .row-select-single-selected:nth-child(even) .cell-wrapper, .row-select-selected:nth-child(even) .cell-wrapper': {
-            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorSelected),
-          },
-          '& .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(
-              theme.colors,
-              tableRow.stripeWrapper.backgroundColorSelectedHover,
-            ),
-          },
-          '& .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(
-              theme.colors,
-              tableRow.stripeWrapper.backgroundColorSelectedFocus,
-            ),
-          },
-          '& .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(
-              theme.colors,
-              tableRow.stripeWrapper.backgroundColorSelectedActive,
-            ),
-          },
-
-          '& tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorHover),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorHover,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorHover,
-            }),
-          },
-          '& tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorFocus),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorFocus,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorFocus,
-            }),
-          },
-          '& tr:nth-child(even):active:not(.disabled-row) .cell-wrapper-base': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorActive),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorActive,
-              backgroundGradientColor: tableRow.stripe.backgroundColorHover,
-              theme,
-            }),
-          },
-
-          '& .row-select-single-selected:nth-child(even) .cell-wrapper-base, .row-select-selected:nth-child(even) .cell-wrapper-base ': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelected),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorSelected,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelected,
-            }),
-          },
-          '& .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base ': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedHover),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorSelectedHover,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedHover,
-            }),
-          },
-          '& .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base ': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedFocus),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorSelectedFocus,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedFocus,
-            }),
-          },
-          '& .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base ': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedActive),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorSelectedActive,
-              theme,
-              backgroundGradientColor: tableRow.stripe.backgroundColorHover,
-            }),
-          },
-        }),
     },
   };
 });
@@ -382,13 +221,13 @@ const StyledRow = styled(Row)<{
             borderRightColor: getIn(theme.colors, tableRow.borderColor),
           }
         : undefined,
-      '& td:last-child .cell-wrapper': {
+      [`& td:last-child .cell-wrapper`]: {
         borderRight: 'none',
       },
       ...(hasHoverActions
         ? {
             [`@media ${getMediaQuery({ min: theme.breakpoints.m })}`]: {
-              '& td:last-child': {
+              [`& td:last-child`]: {
                 opacity: 0,
                 position: 'sticky',
                 zIndex: 2,
@@ -398,14 +237,14 @@ const StyledRow = styled(Row)<{
                   overflow: 'visible',
                 },
               },
-              '& td:last-child:focus-within': {
+              [`& td:last-child:focus-within`]: {
                 opacity: 1,
                 ...getTableActionsHoverStyles({
                   theme,
                   hoverColor: tableRow.nonStripe.backgroundColor,
                 }),
               },
-              '&:hover td:last-child': {
+              [`&:hover td:last-child`]: {
                 opacity: 1,
               },
             },
@@ -466,6 +305,7 @@ const _TableRow = <Item,>({
     setDisabledRows,
     showBorderedCells,
     setHasHoverActions,
+    isVirtualized,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
@@ -497,6 +337,7 @@ const _TableRow = <Item,>({
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
+      $isVirtualized={isVirtualized}
     >
       {isMultiSelect && (
         <TableCheckboxCell
@@ -545,8 +386,20 @@ const _TableRow = <Item,>({
   );
 };
 
+const _Virtulized = <Item,>({
+  header,
+  body,
+  tableData,
+  rowHeight,
+}: VirtualizedWrapperProps<Item>): React.ReactElement => {
+  return <Virtualized tableList={tableData} rowHeight={rowHeight} header={header} body={body} />;
+};
+
 const TableRow = assignWithoutSideEffects(_TableRow, {
   componentId: ComponentIds.TableRow,
 });
 
-export { TableBody, TableRow, TableCell };
+const VirtulizedWrapper = assignWithoutSideEffects(_Virtulized, {
+  componentId: ComponentIds.VirtualizedTable,
+});
+export { TableBody, TableRow, TableCell, VirtulizedWrapper };

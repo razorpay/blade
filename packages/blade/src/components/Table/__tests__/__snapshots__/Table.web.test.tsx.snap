@@ -98,89 +98,6 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   border-bottom: none;
 }
 
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
@@ -332,7 +249,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   >
     <table
       aria-multiselectable="false"
-      class="css-ad7aew-Table"
+      class="css-woti3e-Table"
       data-analytics-table="test"
       data-blade-component="table"
       data-table-library_table=""
@@ -1217,89 +1134,6 @@ exports[`<Table /> should render table 1`] = `
   border-bottom: none;
 }
 
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected .cell-wrapper-base,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
@@ -1528,7 +1362,7 @@ exports[`<Table /> should render table 1`] = `
     </div>
     <table
       aria-multiselectable="false"
-      class="css-ad7aew-Table"
+      class="css-woti3e-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -2818,89 +2652,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   border-bottom: none;
 }
 
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected .cell-wrapper-base,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
@@ -3376,7 +3127,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
     </div>
     <table
       aria-multiselectable="false"
-      class="css-ad7aew-Table"
+      class="css-woti3e-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -4157,89 +3908,6 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   border-bottom: none;
 }
 
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
@@ -4437,7 +4105,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   >
     <table
       aria-multiselectable="false"
-      class="css-ad7aew-Table"
+      class="css-woti3e-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -5148,89 +4816,6 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   border-bottom: none;
 }
 
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
@@ -5428,7 +5013,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   >
     <table
       aria-multiselectable="false"
-      class="css-ad7aew-Table"
+      class="css-woti3e-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -6291,89 +5876,6 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   border-bottom: none;
 }
 
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected .cell-wrapper-base,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
@@ -6619,7 +6121,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
     </div>
     <table
       aria-multiselectable="false"
-      class="css-ad7aew-Table"
+      class="css-woti3e-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -7330,97 +6832,6 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   border-bottom: none;
 }
 
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 tr:nth-child(even) .cell-wrapper {
-  background-color: hsla(211,20%,52%,0.12);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 tr:nth-child(even) .cell-wrapper-base {
-  background-color: transparent;
-}
-
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
@@ -7615,7 +7026,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   >
     <table
       aria-multiselectable="false"
-      class="css-ad7aew-Table"
+      class="css-woti3e-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -8328,89 +7739,6 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 tr:last-child .cell-wrapper {
   border-bottom: none;
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
-  background-color: hsla(0,0%,100%,1);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
-.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
@@ -10539,6 +9867,175 @@ exports[`<Table /> should render table with sticky header, footer & first column
         </tr>
       </tfoot>
     </table>
+  </div>
+</div>
+`;
+
+exports[`<Table /> should render virtualized table 1`] = `
+.c0.c0.c0.c0.c0 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+  width: 0px;
+}
+
+.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 {
+  height: 0px;
+  width: 0px;
+}
+
+.c1.c1.c1.c1.c1 > div {
+  overflow: auto !important;
+  height: 0px !important;
+  width: 0px !important;
+}
+
+.c1.c1.c1.c1.c1 {
+  overflow: hidden !important;
+}
+
+.c1.c1.c1.c1.c1 .tbody > div {
+  display: block !important;
+}
+
+.c1.c1.c1.c1.c1 .tbody div tr {
+  display: grid;
+  grid-template-columns: var(--data-table-library_grid-template-columns);
+  -webkit-column-gap: 0;
+  column-gap: 0;
+}
+
+.c1.c1.c1.c1.c1 .tbody div tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c1.c1.c1.c1.c1 .tbody div td {
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected .cell-wrapper-base,
+.c1.c1.c1.c1.c1 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c1.c1.c1.c1.c1 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c1.c1.c1.c1.c1 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c1.c1.c1.c1.c1 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c1.c1.c1.c1.c1 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c1.c1.c1.c1.c1 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c1.c1.c1.c1.c1 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c1.c1.c1.c1.c1 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c1.c1.c1.c1.c1 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.09);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c1.c1.c1.c1.c1 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
+.c1.c1.c1.c1.c1 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background-color: hsla(0,0%,100%,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
+.c1.c1.c1.c1.c1 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background-color: hsla(211,20%,52%,0.12);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
+.c1.c1.c1.c1.c1 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c1.c1.c1.c1.c1 .tbody div tr:active:not(.disabled-row) .cell-wrapper {
+  background-color: hsla(211,20%,52%,0.12);
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="box"
+  >
+    <div
+      class="c0"
+      data-blade-component="table"
+    >
+      <table
+        aria-multiselectable="true"
+        class="c1 css-oiy9me-Table"
+        data-blade-component="table"
+        data-table-library_table=""
+        role="grid"
+      >
+        <div
+          style="overflow: visible; height: 0px; width: 0px;"
+        />
+        <div
+          class="resize-triggers"
+        >
+          <div
+            class="expand-trigger"
+          >
+            <div
+              style="width: 1px; height: 1px;"
+            />
+          </div>
+          <div
+            class="contract-trigger"
+          />
+        </div>
+      </table>
+    </div>
   </div>
 </div>
 `;
