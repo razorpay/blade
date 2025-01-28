@@ -20,6 +20,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
 import { useIsMobile } from '~utils/useIsMobile';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CalculateYPositionProps = {
   toast: Toast;
@@ -77,9 +78,7 @@ const getPositionStyle = (
     display: 'flex',
     position: 'absolute',
     transformOrigin: 'center',
-    transition: `${makeMotionTime(theme.motion.duration.gentle)} ${
-      theme.motion.easing.standard.effective
-    }`,
+    transition: `${makeMotionTime(theme.motion.duration.gentle)} ${theme.motion.easing.standard}`,
     transitionProperty: 'transform, opacity, height',
     transform: `translateY(${offset * (top ? 1 : -1)}px) scale(${scale})`,
     ...verticalStyle,
@@ -97,6 +96,7 @@ const Toaster: React.FC<ToasterProps> = ({
   position = 'top-center',
   toastOptions,
   containerClassName,
+  ...rest
 }) => {
   const { toasts, handlers } = useToaster(toastOptions);
   const { theme } = useTheme();
@@ -231,6 +231,7 @@ const Toaster: React.FC<ToasterProps> = ({
       pointerEvents="none"
       className={containerClassName}
       {...metaAttribute({ name: MetaConstants.ToastContainer })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {/*
        * Mouseover container,

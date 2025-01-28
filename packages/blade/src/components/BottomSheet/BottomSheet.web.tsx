@@ -6,7 +6,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
-import { clearAllBodyScrollLocks } from 'body-scroll-lock-upgrade';
+import { clearAllBodyScrollLocks, enableBodyScroll } from 'body-scroll-lock-upgrade';
 import { BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
@@ -32,6 +32,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 const AUTOCOMPLETE_DEFAULT_SNAPPOINT = 0.85;
@@ -75,6 +76,7 @@ const _BottomSheet = ({
   initialFocusRef,
   snapPoints = [0.35, 0.5, 0.85],
   zIndex = componentZIndices.bottomSheet,
+  ...dataAnalyticsProps
 }: BottomSheetProps): React.ReactElement => {
   const { theme } = useTheme();
   const dimensions = useWindowSize();
@@ -378,7 +380,7 @@ const _BottomSheet = ({
   }, [isReady]);
 
   // usePresence hook waits for the animation to finish before unmounting the component
-  // It's similar to framer-motions usePresence hook
+  // It's similar to motion/react's usePresence hook
   // https://www.framer.com/docs/animate-presence/#usepresence
   const { isMounted, isVisible } = usePresence(Boolean(_isOpen), {
     transitionDuration: theme.motion.duration.moderate,
@@ -431,6 +433,22 @@ const _BottomSheet = ({
     }
   }, [addBottomSheetToStack, id, isMounted, removeBottomSheetFromStack]);
 
+  // Remove the bottomsheet from the stack, if it's unmounted forcefully
+  React.useEffect(() => {
+    return () => {
+      if (id === undefined) return;
+      removeBottomSheetFromStack(id);
+    };
+  }, [id, removeBottomSheetFromStack]);
+
+  // Disable body scroll lock when the component is unmounted forcefully
+  React.useEffect(() => {
+    const lockTarget = scrollRef.current!;
+    return () => {
+      enableBodyScroll(lockTarget);
+    };
+  }, []);
+
   // We will need to reset these values otherwise the next time the bottomsheet opens
   // this will be populated and the animations won't run
   // why?: because how the usePresence hook works, we actually just unmount the
@@ -473,6 +491,7 @@ const _BottomSheet = ({
           top: 'auto',
           zIndex: bottomSheetZIndex,
         }}
+        {...makeAnalyticsAttribute(dataAnalyticsProps)}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
           <BottomSheetGrabHandle

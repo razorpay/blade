@@ -1,9 +1,9 @@
 import dedent from 'dedent';
 
 export const topNavFullExample = {
-  'App.tsx': dedent`import React from 'react';
+  'App.js': dedent`import React from 'react';
   import { BrowserRouter } from 'react-router-dom';
-  import TopNavExample from './TopNavExample';
+  import { TopNavExample } from './TopNavExample';
   
   const App = () => {
     return (
@@ -15,10 +15,11 @@ export const topNavFullExample = {
 
   export default App;
   `,
-  'TopNavExample.tsx': dedent`import React from 'react';
-  import { Link, useLocation, useHistory } from 'react-router-dom';
-  import { SideNavExample } from './SideNavExample';
-  import { isItemActive, RazorpayLogo } from './utils';
+  'TopNavExample.js': dedent`import React from "react";
+  import styled from "styled-components";
+  import { Link, useLocation, useNavigate } from "react-router-dom";
+  import { SideNavExample } from "./SideNavExample";
+  import { isItemActive, RazorpayLogo } from "./utils";
   import {
     Box,
     Text,
@@ -29,6 +30,7 @@ export const topNavFullExample = {
     TopNavActions,
     TabNav,
     TabNavItem,
+    TabNavItems,
     Menu,
     MenuItem,
     MenuOverlay,
@@ -42,48 +44,42 @@ export const topNavFullExample = {
     SearchInput,
     Avatar,
     Tooltip,
-    MenuIcon,
     ActivityIcon,
     AnnouncementIcon,
     ChevronDownIcon,
     ChevronRightIcon,
     RazorpayxPayrollIcon,
-    BulkPayoutsIcon,
     List,
     ListItem,
-    SIDE_NAV_EXPANDED_L1_WIDTH_DESKTOP,
-    SIDE_NAV_EXPANDED_L1_WIDTH_MOBILE,
-  } from '@razorpay/blade/components';
-  import { makeSize } from '@razorpay/blade/utils';
-  import type { TabNavItemProps, IconComponent } from '@razorpay/blade/components';
+    AcceptPaymentsIcon,
+    MagicCheckoutIcon,
+    AwardIcon,
+    SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
+    SIDE_NAV_EXPANDED_L1_WIDTH_XL,
+  } from "@razorpay/blade/components";
+  import { makeSize } from "@razorpay/blade/utils";
 
-  const TabNavItemLink = React.forwardRef<
-    HTMLAnchorElement,
-    Omit<TabNavItemProps, 'as'> & {
-      activeOnLinks?: string[];
-    }
-  >((props, ref) => {
+
+  const TabNavItemLink = React.forwardRef((props, ref) => {
     const location = useLocation();
     return (
       <TabNavItem
         ref={ref}
         {...props}
         as={Link}
-        isActive={isItemActive(location, { href: props.href, activeOnLinks: props.activeOnLinks })}
+        isActive={isItemActive(location, {
+          href: props.href,
+          activeOnLinks: props.activeOnLinks,
+        })}
       />
     );
   });
-
 
   const ExploreItem = ({
     icon: Icon,
     title,
     description,
-  }: {
-    icon: IconComponent;
-    title?: string;
-    description: string;
-  }): React.ReactElement => {
+  }) => {
     return (
       <Box display="flex" gap="spacing.4">
         <Box
@@ -107,17 +103,20 @@ export const topNavFullExample = {
 
   const DashboardBackground = styled.div(() => {
     return {
-      height: '100vh',
-      background: 'radial-gradient(94.74% 64.44% at 29.03% 15.17%, #FFFFFF 0%, #90A5BB 100%)',
+      height: "100vh",
+      background:
+        "radial-gradient(94.74% 64.44% at 29.03% 15.17%, #FFFFFF 0%, #90A5BB 100%)",
     };
   });
-  
-  const TopNavExample = (): React.ReactElement => {
+
+  const TopNavExample = () => {
     const { platform } = useTheme();
-    const history = useHistory();
-    const isMobile = platform === 'onMobile';
+    const navigate = useNavigate();
+    const isMobile = platform === "onMobile";
     const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
-    const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
+    const [selectedProduct, setSelectedProduct] = React.useState(
+      null
+    );
 
     const activeUrl = useLocation().pathname;
     React.useEffect(() => {
@@ -126,7 +125,7 @@ export const topNavFullExample = {
 
     return (
       <DashboardBackground>
-        <Box backgroundColor="interactive.background.gray.default">
+        <Box backgroundColor="surface.background.gray.subtle">
           <TopNav>
             {isMobile ? (
               <>
@@ -140,7 +139,12 @@ export const topNavFullExample = {
                   <Avatar size="medium" name="Anurag Hazra" />
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
-                    <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                    <Box
+                      display="flex"
+                      gap="spacing.4"
+                      padding="spacing.4"
+                      alignItems="center"
+                    >
                       <Avatar size="medium" name="John Doe" />
                       <Box display="flex" flexDirection="column" gap="spacing.2">
                         <Text size="medium" weight="semibold">
@@ -168,37 +172,37 @@ export const topNavFullExample = {
                 <TopNavContent>
                   <TabNav
                     items={[
-                      { title: 'Home', href: '/home', icon: HomeIcon },
+                      { title: "Home", href: "/home", icon: HomeIcon },
                       {
-                        href: '/payroll',
-                        title: 'Payroll',
+                        href: "/payroll",
+                        title: "Payroll",
                         icon: RazorpayxPayrollIcon,
-                        description: 'Automate payroll with ease.',
+                        description: "Automate payroll with ease.",
                       },
                       {
-                        href: '/payments',
-                        title: 'Payments',
+                        href: "/payments",
+                        title: "Payments",
                         icon: AcceptPaymentsIcon,
-                        description: 'Manage payments effortlessly.',
+                        description: "Manage payments effortlessly.",
                       },
                       {
-                        href: '/magic-checkout',
-                        title: 'Magic Checkout',
+                        href: "/magic-checkout",
+                        title: "Magic Checkout",
                         icon: MagicCheckoutIcon,
-                        description: 'Fast, one-click checkout.',
+                        description: "Fast, one-click checkout.",
                       },
                       {
-                        href: '/rize',
-                        title: 'Rize',
+                        href: "/rize",
+                        title: "Rize",
                         icon: AwardIcon,
                         isAlwaysOverflowing: true,
-                        description: 'Boost your business growth.',
+                        description: "Boost your business growth.",
                       },
                     ]}
                   >
                     {({ items, overflowingItems }) => {
                       const activeProduct = overflowingItems.find(
-                        (item) => item.href === selectedProduct,
+                        (item) => item.href === selectedProduct
                       );
                       return (
                         <>
@@ -217,7 +221,11 @@ export const topNavFullExample = {
                           {overflowingItems.length ? (
                             <Menu openInteraction="hover">
                               <TabNavItem
-                                title={activeProduct ? \`More: \${activeProduct.title}\` : 'More'}
+                                title={
+                                  activeProduct
+                                    ? \`More: $\{activeProduct.title}\`
+                                    : "More"
+                                }
                                 trailing={<ChevronDownIcon />}
                                 isActive={Boolean(activeProduct)}
                               />
@@ -235,20 +243,24 @@ export const topNavFullExample = {
                                     <MenuItem
                                       key={item.href}
                                       onClick={() => {
-                                        history.push(item.href!);
-                                        setSelectedProduct(item.href!);
+                                        navigate(item.href);
+                                        setSelectedProduct(item.href);
                                       }}
                                     >
                                       <ExploreItem
-                                        icon={item.icon!}
+                                        icon={item.icon}
                                         title={item.title}
-                                        description={item.description!}
+                                        description={item.description}
                                       />
                                     </MenuItem>
                                   );
                                 })}
                                 <MenuFooter>
-                                  <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
+                                  <BladeLink
+                                    href=""
+                                    icon={ChevronRightIcon}
+                                    iconPosition="right"
+                                  >
                                     View all products
                                   </BladeLink>
                                 </MenuFooter>
@@ -267,14 +279,14 @@ export const topNavFullExample = {
                   />
                   <Tooltip content="View Ecosystem Health">
                     <Button
-                      size={isMobile ? 'small' : 'medium'}
+                      size={isMobile ? "small" : "medium"}
                       variant="tertiary"
                       icon={ActivityIcon}
                     />
                   </Tooltip>
                   <Tooltip content="View Announcements">
                     <Button
-                      size={isMobile ? 'small' : 'medium'}
+                      size={isMobile ? "small" : "medium"}
                       variant="tertiary"
                       icon={AnnouncementIcon}
                     />
@@ -283,9 +295,18 @@ export const topNavFullExample = {
                     <Avatar size="medium" name="Anurag Hazra" />
                     <MenuOverlay>
                       <MenuHeader title="Profile" />
-                      <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                      <Box
+                        display="flex"
+                        gap="spacing.4"
+                        padding="spacing.4"
+                        alignItems="center"
+                      >
                         <Avatar size="medium" name="John Doe" />
-                        <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Box
+                          display="flex"
+                          flexDirection="column"
+                          gap="spacing.2"
+                        >
                           <Text size="medium" weight="semibold">
                             John Doe
                           </Text>
@@ -314,7 +335,7 @@ export const topNavFullExample = {
             borderBottomLeftRadius="none"
             borderBottomRightRadius="none"
             height="100%"
-            marginX={{ base: 'spacing.0', m: 'spacing.3' }}
+            marginX={{ base: "spacing.0", m: "spacing.3" }}
           >
             <SideNavExample
               isOpen={isSideBarOpen}
@@ -324,7 +345,7 @@ export const topNavFullExample = {
             />
             <Box
               marginLeft={{
-                base: '100%',
+                base: "100%",
                 m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
                 xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
               }}
@@ -335,9 +356,9 @@ export const topNavFullExample = {
                 height="100vh"
                 padding="spacing.5"
                 overflowY="scroll"
-                backgroundColor="surface.background.gray.intense"
+                backgroundColor="surface.background.gray.moderate"
               >
-                <Box width={{ base: 'max-content', m: '100%' }} height="200vh">
+                <Box width={{ base: "max-content", m: "100%" }} height="200vh">
                   <Text marginBottom="spacing.4">This demo integrates:</Text>
                   <List>
                     <ListItem>SideNav</ListItem>
@@ -357,38 +378,36 @@ export const topNavFullExample = {
 
   export { TopNavExample };
   `,
-  'SideNavExample.tsx': dedent`import React from 'react';
-  import { Link, useLocation } from 'react-router-dom';
-  import { isItemActive } from './utils';
-  import type { SideNavProps, SideNavLinkProps } from '@razorpay/blade/components';
+  'SideNavExample.js': dedent`import React from "react";
+  import { Link, useLocation } from "react-router-dom";
+  import { isItemActive } from "./utils";
   import {
     SideNav,
     SideNavBody,
     SideNavLevel,
     SideNavLink,
     SideNavSection,
-  } from '@razorpay/blade/components';
-  import {
     HomeIcon,
     LayoutIcon,
     PaymentButtonIcon,
     PaymentGatewayIcon,
     PaymentLinkIcon,
     PaymentPagesIcon,
-  } from '~components/Icons';
+  } from "@razorpay/blade/components";
 
   const NavLink = (
-    props: Omit<SideNavLinkProps, 'as'> & {
-      activeOnLinks?: string[];
-    },
-  ): React.ReactElement => {
+    props
+  ) => {
     const location = useLocation();
 
     return (
       <SideNavLink
         {...props}
         as={Link}
-        isActive={isItemActive(location, { href: props.href, activeOnLinks: props.activeOnLinks })}
+        isActive={isItemActive(location, {
+          href: props.href,
+          activeOnLinks: props.activeOnLinks,
+        })}
       />
     );
   };
@@ -396,7 +415,7 @@ export const topNavFullExample = {
   const SideNavExample = ({
     isOpen,
     onDismiss,
-  }: Pick<SideNavProps, 'isOpen' | 'onDismiss'>): React.ReactElement => {
+  }) => {
     return (
       <SideNav isOpen={isOpen} onDismiss={onDismiss} position="absolute">
         <SideNavBody>
@@ -405,12 +424,15 @@ export const topNavFullExample = {
             icon={LayoutIcon}
             title="L2 Trigger"
             href="/l2-item"
-            activeOnLinks={['/l2-item', '/l2-item-2', '/l3-item', '/l3-item-2']}
+            activeOnLinks={["/l2-item", "/l2-item-2", "/l3-item", "/l3-item-2"]}
           >
             <SideNavLevel>
               <NavLink title="L2 Item" href="/l2-item" />
               <NavLink title="L2 Item 2" href="/l2-item-2" />
-              <NavLink title="L3 Trigger" activeOnLinks={['/l3-item', '/l3-item-2']}>
+              <NavLink
+                title="L3 Trigger"
+                activeOnLinks={["/l3-item", "/l3-item-2"]}
+              >
                 <SideNavLevel>
                   <NavLink title="L3 Item" href="/l3-item" />
                   <NavLink title="L3 Item 2" href="/l3-item-2" />
@@ -432,27 +454,23 @@ export const topNavFullExample = {
 
   export { SideNavExample };
 `,
-  'utils.tsx': dedent`import { matchPath } from 'react-router-dom';
+  'utils.js': dedent`import React from 'react';
+  import { matchPath } from "react-router-dom";
 
   const isItemActive = (
-    location: { pathname: string },
-    { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] },
-  ): boolean => {
-    const isCurrentPathActive = Boolean(
-      matchPath(location.pathname, {
-        path: href,
-        exact: false,
-      }),
-    );
+    location,
+    { href, activeOnLinks }
+  ) => {
+    const isCurrentPathActive = Boolean(matchPath(location.pathname, href));
 
     const isSubItemActive = Boolean(
-      activeOnLinks?.find((href) => matchPath(location.pathname, { path: href, exact: false })),
+      activeOnLinks?.find((href) => matchPath(location.pathname, href))
     );
 
     return isCurrentPathActive || isSubItemActive;
   };
 
-  const RazorpayLogo = (): React.ReactElement => {
+  const RazorpayLogo = () => {
     return (
       <svg
         width="116"
@@ -482,11 +500,12 @@ export const topNavFullExample = {
 };
 
 export const tabNavExample = {
-  'App.tsx': dedent`import React from 'react';
+  'App.js': dedent`import React from 'react';
   import { 
     Box, 
     TabNav, 
     TabNavItem,
+    TabNavItems,
     Text,
     HomeIcon,
     RazorpayxPayrollIcon,

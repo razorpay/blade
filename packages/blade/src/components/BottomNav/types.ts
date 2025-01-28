@@ -3,7 +3,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
 import type { Platform } from '~utils';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type BottomNavProps = {
   /**
@@ -18,7 +18,8 @@ type BottomNavProps = {
    */
   zIndex?: number;
 } & StyledPropsBlade &
-  TestID;
+  TestID &
+  DataAnalyticsAttribute;
 
 type BottomNavItemProps = {
   /**
@@ -73,6 +74,7 @@ type BottomNavItemProps = {
    * onClick handler of BottomNavItem
    */
   onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 export type { BottomNavItemProps, BottomNavProps };

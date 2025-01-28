@@ -7,6 +7,8 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const useChildrenWithIndexes = ({
   _nestingLevel,
@@ -59,17 +61,20 @@ const useChildrenWithIndexes = ({
   return { childrenWithIndex, totalItemsInParentGroupCount };
 };
 
-const _StepGroup = ({
-  size = 'medium',
-  orientation = 'vertical',
-  children,
-  testID,
-  _nestingLevel = 0,
-  width,
-  minWidth,
-  maxWidth,
-  ...styledProps
-}: StepGroupProps): React.ReactElement => {
+const _StepGroup = (
+  {
+    size = 'medium',
+    orientation = 'vertical',
+    children,
+    testID,
+    _nestingLevel = 0,
+    width,
+    minWidth,
+    maxWidth,
+    ...rest
+  }: StepGroupProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const itemsInGroupCount = React.Children.count(children);
   const { childrenWithIndex, totalItemsInParentGroupCount } = useChildrenWithIndexes({
     children,
@@ -93,7 +98,8 @@ const _StepGroup = ({
   return (
     <StepGroupContext.Provider value={contextValue}>
       <BaseBox
-        {...getStyledProps(styledProps)}
+        ref={ref as never}
+        {...getStyledProps(rest)}
         display="inline-flex"
         maxWidth={maxWidth ?? '100%'}
         minWidth={minWidth}
@@ -102,6 +108,7 @@ const _StepGroup = ({
         overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
         {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
+        {...makeAnalyticsAttribute(rest)}
       >
         {childrenWithIndex}
       </BaseBox>
@@ -127,7 +134,7 @@ const _StepGroup = ({
  *
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-stepgroup--docs StepGroup Documentation}
  */
-const StepGroup = assignWithoutSideEffects(_StepGroup, {
+const StepGroup = assignWithoutSideEffects(React.forwardRef(_StepGroup), {
   componentId: componentIds.StepGroup,
   displayName: componentIds.StepGroup,
 });

@@ -10,6 +10,8 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 /**
  * ### BottomNav component
@@ -51,12 +53,10 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
  * Checkout {@link https://blade.razorpay.com/??path=/docs/components-bottomnav--doc BottomNav Documentation}
 
  */
-const BottomNav = ({
-  children,
-  zIndex = componentZIndices.bottomNav,
-  testID,
-  ...styledProps
-}: BottomNavProps): React.ReactElement => {
+const _BottomNav = (
+  { children, zIndex = componentZIndices.bottomNav, testID, ...rest }: BottomNavProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
     if (childrenCount > 5 && childrenCount < 2) {
@@ -69,6 +69,7 @@ const BottomNav = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       role="navigation"
       position="fixed"
       bottom="spacing.0"
@@ -81,12 +82,13 @@ const BottomNav = ({
       paddingX="spacing.2"
       display="flex"
       flexDirection="row"
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
       zIndex={zIndex}
       {...metaAttribute({
         testID,
         name: MetaConstants.BottomNav,
       })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </BaseBox>
@@ -102,7 +104,7 @@ const StyledBottomNavItem = styled(BaseBox)<{ to?: string }>((props) => {
     paddingLeft: makeSpace(props.theme.spacing[0]),
     paddingRight: makeSpace(props.theme.spacing[0]),
     transition: `color ${makeMotionTime(props.theme.motion.duration['2xquick'])} ${
-      props.theme.motion.easing.standard.effective
+      props.theme.motion.easing.standard
     }`,
     '&[aria-current="page"]': {
       color: props.theme.colors.interactive.text.primary.subtle,
@@ -123,6 +125,7 @@ const BottomNavItem = ({
   onClick,
   icon: Icon,
   testID,
+  ...rest
 }: BottomNavItemProps): React.ReactElement => {
   const isRouterLink = as && href;
   const defaultRenderElement = href ? 'a' : 'button';
@@ -152,6 +155,7 @@ const BottomNavItem = ({
         name: MetaConstants.BottomNavItem,
         testID,
       })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <Icon color="currentColor" size="large" />
       <Text truncateAfterLines={1} color="currentColor" size="xsmall" weight="semibold">
@@ -160,5 +164,7 @@ const BottomNavItem = ({
     </StyledBottomNavItem>
   );
 };
+
+const BottomNav = React.forwardRef(_BottomNav);
 
 export { BottomNav, BottomNavItem };

@@ -1,5 +1,8 @@
+import type { MotionMetaProp } from '~components/BaseMotion';
 import type { Theme } from '~components/BladeProvider';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 interface BladeFile extends File {
   /**
@@ -115,7 +118,8 @@ type FileUploadCommonProps = {
    * Test ID for automation
    */
   testID?: string;
-};
+} & StyledPropsBlade &
+  MotionMetaProp;
 
 /*
   Mandatory accessibilityLabel prop when label is not provided
@@ -153,7 +157,7 @@ type FileUploadItemProps = Pick<
   'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
 > & {
   file: BladeFile;
-};
+} & DataAnalyticsAttribute;
 
 type StyledFileUploadWrapperProps = {
   isDisabled?: boolean;

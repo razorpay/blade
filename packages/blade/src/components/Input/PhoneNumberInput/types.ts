@@ -1,6 +1,7 @@
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BaseInputProps } from '~components/Input/BaseInput';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type CommonProps = Pick<
   BaseInputProps,
@@ -27,6 +28,7 @@ type CommonProps = Pick<
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
   | 'placeholder'
+  | keyof DataAnalyticsAttribute
 >;
 
 type PhoneNumberInputProps = StyledPropsBlade &

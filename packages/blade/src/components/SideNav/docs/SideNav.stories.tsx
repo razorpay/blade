@@ -74,7 +74,7 @@ const DocsPage = (): React.ReactElement => {
         files={sideNavWithReactRouter}
         editorHeight={600}
         hideNavigation={false}
-        openFile="App.tsx,navItemsJSON.tsx,SideNavExample.tsx"
+        openFile="App.js,navItemsJSON.js,SideNavExample.js"
       />
     </StoryPageWrapper>
   );
@@ -149,7 +149,10 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
   );
 };
 
-type ItemsType = Pick<SideNavLinkProps, 'icon' | 'title' | 'href' | 'trailing' | 'tooltip'>;
+type ItemsType = Pick<
+  SideNavLinkProps,
+  'icon' | 'title' | 'href' | 'trailing' | 'tooltip' | 'onClick'
+>;
 type NavItemsJSONType = {
   type: 'section';
   title?: SideNavSectionProps['title'];
@@ -366,7 +369,12 @@ const SideNavExample = ({
 
   return (
     <Box minHeight="500px">
-      <SideNav {...args} isOpen={isMobileOpen} onDismiss={() => setIsMobileOpen(false)}>
+      <SideNav
+        {...args}
+        isOpen={isMobileOpen}
+        onDismiss={() => setIsMobileOpen(false)}
+        onVisibleLevelChange={({ visibleLevel }) => console.log({ visibleLevel })}
+      >
         <SideNavBody>
           {navItemsJSON.map((l1Sections) => {
             return (
@@ -393,7 +401,9 @@ const SideNavExample = ({
                       <SideNavLevel key={l1Item.title}>
                         {l1Item.items?.map((l2Item) => {
                           if (!l2Item.items) {
-                            return <NavItem key={l2Item.title} {...l2Item} />;
+                            return (
+                              <NavItem key={l2Item.title} {...l2Item} description="RBL20I43" />
+                            );
                           }
 
                           return (

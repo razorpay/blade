@@ -25,6 +25,7 @@ import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import type { Theme } from '~components/BladeProvider';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getTableRowBackgroundTransition = (theme: Theme): string => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
@@ -217,7 +218,7 @@ const StyledBody = styled(Body)<{
   };
 });
 
-const _TableBody = ({ children }: TableBodyProps): React.ReactElement => {
+const _TableBody = ({ children, ...rest }: TableBodyProps): React.ReactElement => {
   const { showStripedRows, selectionType } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
@@ -227,6 +228,7 @@ const _TableBody = ({ children }: TableBodyProps): React.ReactElement => {
       $showStripedRows={showStripedRows}
       $showBorderedCells={true}
       {...metaAttribute({ name: MetaConstants.TableBody })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </StyledBody>
@@ -254,7 +256,8 @@ export const CellWrapper = styled(BaseBox)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   showStripedRows?: boolean;
   hasPadding?: boolean;
-}>(({ theme, $rowDensity, showStripedRows, hasPadding = true }) => {
+  textAlign?: TableCellProps['textAlign'];
+}>(({ theme, $rowDensity, showStripedRows, hasPadding = true, textAlign }) => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
@@ -270,6 +273,7 @@ export const CellWrapper = styled(BaseBox)<{
       minHeight: makeSize(getIn(size, tableRow.minHeight[$rowDensity])),
       height: '100%',
       width: '100%',
+      justifyContent: textAlign,
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
         borderBottomColor: getIn(theme.colors, tableRow.borderColor),
@@ -279,7 +283,12 @@ export const CellWrapper = styled(BaseBox)<{
   };
 });
 
-const _TableCell = ({ children, _hasPadding }: TableCellProps): React.ReactElement => {
+const _TableCell = ({
+  children,
+  textAlign,
+  _hasPadding,
+  ...rest
+}: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
@@ -290,6 +299,7 @@ const _TableCell = ({ children, _hasPadding }: TableCellProps): React.ReactEleme
       role="cell"
       $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
         <CellWrapper
@@ -300,12 +310,14 @@ const _TableCell = ({ children, _hasPadding }: TableCellProps): React.ReactEleme
           alignItems="center"
           hasPadding={_hasPadding}
           flex={1}
+          textAlign={textAlign}
           // when a direct string child is passed we want to disable pointer events
           // for custom cells components, consumers can handle pointer events themselves
           pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
           // allow text to wrap, so that if the <Text> overflows it can truncate
           whiteSpace="normal"
           position="relative"
+          {...metaAttribute({ name: MetaConstants.TableCellWrapper })}
         >
           {isChildrenString ? (
             <Text size="medium" truncateAfterLines={1}>
@@ -445,6 +457,7 @@ const _TableRow = <Item,>({
   onClick,
   hoverActions,
   testID,
+  ...rest
 }: TableRowProps<Item>): React.ReactElement => {
   const {
     selectionType,
@@ -483,6 +496,7 @@ const _TableRow = <Item,>({
       onClick={() => onClick?.({ item })}
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {isMultiSelect && (
         <TableCheckboxCell

@@ -1,7 +1,7 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
-import type { StringChildrenType } from '~utils/types';
+import type { DataAnalyticsAttribute, StringChildrenType } from '~utils/types';
 
 type BreadcrumbProps = StyledPropsBlade & {
   /**
@@ -28,7 +28,7 @@ type BreadcrumbProps = StyledPropsBlade & {
    * aria-label for breadcrumb
    */
   accessibilityLabel?: string;
-};
+} & DataAnalyticsAttribute;
 
 type BreadcrumbItemProps = {
   /**
@@ -60,6 +60,6 @@ type BreadcrumbItemProps = {
    * Accessibility label for the BreadcrumbItem, can be used in icon only variant
    */
   accessibilityLabel?: string;
-};
+} & DataAnalyticsAttribute;
 
 export type { BreadcrumbProps, BreadcrumbItemProps };

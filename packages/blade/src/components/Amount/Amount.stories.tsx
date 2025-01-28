@@ -33,7 +33,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Amount } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return <Amount value={10000} />;
         }
         export default App;

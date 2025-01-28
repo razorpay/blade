@@ -49,7 +49,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -225,7 +225,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -401,7 +401,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -682,7 +682,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -963,7 +963,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -1245,7 +1245,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -1480,20 +1480,20 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     focusBorderColor="hsla(227, 100%, 59%, 0.18)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -1515,7 +1515,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -1536,7 +1536,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
         },
       ]
@@ -1590,7 +1590,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 0.18)",
+                "color": "hsla(227, 100%, 59%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1669,7 +1669,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -1845,7 +1845,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -2021,7 +2021,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -2197,7 +2197,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -2373,7 +2373,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -2549,7 +2549,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -2725,7 +2725,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -2901,7 +2901,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -3077,7 +3077,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -3253,7 +3253,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -3416,20 +3416,20 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     focusBorderColor="hsla(227, 100%, 59%, 0.18)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -3451,7 +3451,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -3472,7 +3472,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
         },
       ]
@@ -3526,7 +3526,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 0.18)",
+                "color": "hsla(227, 100%, 59%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -3605,7 +3605,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -3702,7 +3702,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 0.18)",
+                "color": "hsla(227, 100%, 59%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -3768,20 +3768,20 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(211, 20%, 52%, 0.09)"
+    defaultBackgroundColor="hsla(211, 20%, 52%, 0.18)"
     defaultBorderColor="hsla(214, 40%, 92%, 1)"
-    focusBackgroundColor="hsla(211, 20%, 52%, 0.09)"
+    focusBackgroundColor="hsla(211, 20%, 52%, 0.18)"
     focusBorderColor="hsla(214, 40%, 92%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(211, 20%, 52%, 0.09)"
+    hoverBackgroundColor="hsla(211, 20%, 52%, 0.18)"
     hoverBorderColor="hsla(214, 40%, 92%, 1)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -3803,7 +3803,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.18)",
           "borderColor": "hsla(214, 40%, 92%, 1)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -3824,7 +3824,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.18)",
         },
       ]
     }
@@ -3956,7 +3956,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -4132,7 +4132,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -4308,7 +4308,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -4483,7 +4483,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -4659,7 +4659,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -4835,7 +4835,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
     isPressed={false}
     minHeight="48px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -4998,20 +4998,20 @@ exports[`<BaseButton /> should render loading button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     focusBorderColor="hsla(227, 100%, 59%, 0.18)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
     isFullWidth={false}
     isLoading={true}
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -5033,7 +5033,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -5054,7 +5054,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
         },
       ]
@@ -5275,7 +5275,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 0.18)",
+                "color": "hsla(227, 100%, 59%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -5354,7 +5354,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -5530,7 +5530,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -5706,7 +5706,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -5882,7 +5882,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -6058,7 +6058,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -6234,7 +6234,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -6410,7 +6410,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -6586,7 +6586,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -6762,7 +6762,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -6938,7 +6938,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -7114,7 +7114,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -7290,7 +7290,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -7465,7 +7465,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
     isPressed={false}
     minHeight="32px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -7641,7 +7641,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -7817,7 +7817,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -7993,7 +7993,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -8168,7 +8168,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     isPressed={false}
     minHeight="28px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}

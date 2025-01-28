@@ -16,6 +16,7 @@ export type ColorChromaticScale = Readonly<{
   a100: string;
   a150: string;
   a200: string;
+  a400: string;
 }>;
 
 export type ColorNeutralGrayScale = Readonly<{
@@ -64,6 +65,9 @@ export type Color = Readonly<{
     sea: ColorChromaticScale;
     cloud: ColorChromaticScale;
     forest: ColorChromaticScale;
+    orchid: ColorChromaticScale;
+    magenta: ColorChromaticScale;
+    topaz: ColorChromaticScale;
   };
   neutral: {
     blueGrayLight: ColorNeutralGrayScale;
@@ -111,6 +115,7 @@ export const colors: Color = {
       a100: `hsla(150, 100%, 32%, ${opacity[300]})`,
       a150: `hsla(150, 100%, 32%, ${opacity[400]})`,
       a200: `hsla(150, 100%, 32%, ${opacity[500]})`,
+      a400: `hsla(150, 100%, 32%, ${opacity[800]})`,
     },
     crimson: {
       50: `hsla(0, 100%, 98%, ${opacity[1200]})`,
@@ -128,6 +133,7 @@ export const colors: Color = {
       a100: `hsla(4, 74%, 49%, ${opacity[300]})`,
       a150: `hsla(4, 74%, 49%, ${opacity[400]})`,
       a200: `hsla(4, 74%, 49%, ${opacity[500]})`,
+      a400: `hsla(4, 74%, 49%, ${opacity[800]})`,
     },
     cider: {
       50: `hsla(24, 100%, 96%, ${opacity[1200]})`,
@@ -145,6 +151,7 @@ export const colors: Color = {
       a100: `hsla(25, 90%, 48%, ${opacity[300]})`,
       a150: `hsla(25, 90%, 48%, ${opacity[400]})`,
       a200: `hsla(25, 90%, 48%, ${opacity[500]})`,
+      a400: `hsla(25, 90%, 48%, ${opacity[800]})`,
     },
     sapphire: {
       50: `hsla(201, 92%, 95%, ${opacity[1200]})`,
@@ -162,6 +169,7 @@ export const colors: Color = {
       a100: `hsla(200, 84%, 44%, ${opacity[300]})`,
       a150: `hsla(200, 84%, 44%, ${opacity[400]})`,
       a200: `hsla(200, 84%, 44%, ${opacity[500]})`,
+      a400: `hsla(200, 84%, 44%, ${opacity[800]})`,
     },
     sea: {
       50: `hsla(180, 39%, 95%, ${opacity[1200]})`,
@@ -179,6 +187,7 @@ export const colors: Color = {
       a100: `hsla(180, 60%, 30%, ${opacity[300]})`,
       a150: `hsla(180, 60%, 30%, ${opacity[400]})`,
       a200: `hsla(180, 60%, 30%, ${opacity[500]})`,
+      a400: `hsla(180, 60%, 30%, ${opacity[800]})`,
     },
     cloud: {
       50: `hsla(198, 39%, 95%, ${opacity[1200]})`,
@@ -196,6 +205,7 @@ export const colors: Color = {
       a100: `hsla(200, 60%, 30%, ${opacity[300]})`,
       a150: `hsla(200, 60%, 30%, ${opacity[400]})`,
       a200: `hsla(200, 60%, 30%, ${opacity[500]})`,
+      a400: `hsla(200, 60%, 30%, ${opacity[800]})`,
     },
     forest: {
       50: `hsla(152, 60%, 95%, ${opacity[1200]})`,
@@ -213,6 +223,61 @@ export const colors: Color = {
       a100: `hsla(155, 100%, 31%, ${opacity[300]})`,
       a150: `hsla(155, 100%, 31%, ${opacity[400]})`,
       a200: `hsla(155, 100%, 31%, ${opacity[500]})`,
+      a400: `hsla(155, 100%, 31%, ${opacity[800]})`,
+    },
+    orchid: {
+      50: `hsla(249, 100%, 98%, ${opacity[1200]})`,
+      100: `hsla(252, 100%, 95%, ${opacity[1200]})`,
+      200: `hsla(252, 100%, 88%, ${opacity[1200]})`,
+      300: `hsla(252, 100%, 80%, ${opacity[1200]})`,
+      400: `hsla(252, 100%, 74%, ${opacity[1200]})`,
+      500: `hsla(252, 100%, 67%, ${opacity[1200]})`,
+      600: `hsla(252, 57%, 54%, ${opacity[1200]})`,
+      700: `hsla(251, 49%, 41%, ${opacity[1200]})`,
+      800: `hsla(251, 49%, 32%, ${opacity[1200]})`,
+      900: `hsla(252, 50%, 24%, ${opacity[1200]})`,
+      1000: `hsla(252, 50%, 17%, ${opacity[1200]})`,
+      a50: `hsla(252, 100%, 67%, ${opacity[100]})`,
+      a100: `hsla(252, 100%, 67%, ${opacity[300]})`,
+      a150: `hsla(252, 100%, 67%, ${opacity[400]})`,
+      a200: `hsla(252, 100%, 67%, ${opacity[500]})`,
+      a400: `hsla(252, 100%, 67%, ${opacity[800]})`,
+    },
+    magenta: {
+      50: `hsla(330, 78%, 97%, ${opacity[1200]})`,
+      100: `hsla(331, 83%, 93%, ${opacity[1200]})`,
+      200: `hsla(330, 83%, 84%, ${opacity[1200]})`,
+      300: `hsla(331, 82%, 74%, ${opacity[1200]})`,
+      400: `hsla(331, 82%, 65%, ${opacity[1200]})`,
+      500: `hsla(331, 82%, 56%, ${opacity[1200]})`,
+      600: `hsla(331, 64%, 45%, ${opacity[1200]})`,
+      700: `hsla(331, 64%, 34%, ${opacity[1200]})`,
+      800: `hsla(331, 65%, 27%, ${opacity[1200]})`,
+      900: `hsla(331, 65%, 21%, ${opacity[1200]})`,
+      1000: `hsla(331, 65%, 15%, ${opacity[1200]})`,
+      a50: `hsla(331, 82%, 56%, ${opacity[100]})`,
+      a100: `hsla(331, 82%, 56%, ${opacity[300]})`,
+      a150: `hsla(331, 82%, 56%, ${opacity[400]})`,
+      a200: `hsla(331, 82%, 56%, ${opacity[500]})`,
+      a400: `hsla(331, 82%, 56%, ${opacity[800]})`,
+    },
+    topaz: {
+      50: `hsla(51, 100%, 92%, ${opacity[1200]})`,
+      100: `hsla(51, 100%, 80%, ${opacity[1200]})`,
+      200: `hsla(51, 100%, 68%, ${opacity[1200]})`,
+      300: `hsla(51, 100%, 60%, ${opacity[1200]})`,
+      400: `hsla(51, 100%, 50%, ${opacity[1200]})`,
+      500: `hsla(50, 100%, 46%, ${opacity[1200]})`,
+      600: `hsla(50, 100%, 40%, ${opacity[1200]})`,
+      700: `hsla(50, 100%, 32%, ${opacity[1200]})`,
+      800: `hsla(50, 100%, 28%, ${opacity[1200]})`,
+      900: `hsla(50, 100%, 24%, ${opacity[1200]})`,
+      1000: `hsla(50, 97%, 19%, ${opacity[1200]})`,
+      a50: `hsla(50, 100%, 46%, ${opacity[100]})`,
+      a100: `hsla(50, 100%, 46%, ${opacity[300]})`,
+      a150: `hsla(50, 100%, 46%, ${opacity[400]})`,
+      a200: `hsla(50, 100%, 46%, ${opacity[500]})`,
+      a400: `hsla(50, 100%, 46%, ${opacity[800]})`,
     },
   },
   neutral: {
@@ -280,7 +345,7 @@ export const colors: Color = {
       1300: `hsla(214, 24%, 6%, ${opacity[1200]})`,
       a25: `hsla(214, 6%, 55%, ${opacity[50]})`,
       a50: `hsla(214, 6%, 55%, ${opacity[100]})`,
-      a75: `hsla(214, 6%, 55%, ${opacity[100]})`,
+      a75: `hsla(214, 6%, 55%, ${opacity[200]})`,
       a100: `hsla(214, 6%, 55%, ${opacity[300]})`,
       a200: `hsla(214, 6%, 55%, ${opacity[500]})`,
       a400: `hsla(214, 6%, 55%, ${opacity[500]})`,
@@ -303,7 +368,7 @@ export const colors: Color = {
       1300: `hsla(240, 5%, 4%, ${opacity[1200]})`,
       a25: `hsla(228, 4%, 76%, ${opacity[50]})`,
       a50: `hsla(228, 4%, 76%, ${opacity[100]})`,
-      a75: `hsla(228, 4%, 76%, ${opacity[100]})`,
+      a75: `hsla(228, 4%, 76%, ${opacity[200]})`,
       a100: `hsla(228, 4%, 76%, ${opacity[300]})`,
       a200: `hsla(228, 4%, 76%, ${opacity[500]})`,
       a400: `hsla(228, 4%, 76%, ${opacity[500]})`,

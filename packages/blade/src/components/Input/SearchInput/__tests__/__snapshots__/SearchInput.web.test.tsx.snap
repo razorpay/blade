@@ -1,5 +1,524 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
+.c0.c0.c0.c0.c0 {
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.c3.c3.c3.c3.c3 {
+  margin-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 12px;
+}
+
+.c13.c13.c13.c13.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c15.c15.c15.c15.c15 {
+  margin-top: -4px;
+  width: 100%;
+  min-width: min(20%,60px);
+}
+
+.c17.c17.c17.c17.c17 {
+  margin-left: 0px;
+}
+
+.c18.c18.c18.c18.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 12px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c16.c16.c16.c16.c16::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16:focus {
+  outline: none;
+}
+
+.c9.c9.c9.c9.c9 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 36px;
+}
+
+.c14.c14.c14.c14.c14 {
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+}
+
+.c14.c14.c14.c14.c14::-webkit-scrollbar {
+  display: none;
+}
+
+.c6.c6.c6.c6.c6 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c8.c8.c8.c8.c8:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="base-box"
+  >
+    <div
+      class=""
+      data-blade-component="search-input"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <label
+            data-blade-component="form-label"
+            for="searchinput-738-input-739"
+            style="width: auto; flex-shrink: 0; margin-right: 0px;"
+          >
+            <div
+              class="c3"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c4"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Search here
+                </p>
+                <div
+                  class="c6"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c7"
+                    data-blade-component="text"
+                  />
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div
+          class=" c8"
+          data-blade-component="base-box"
+        >
+          <div
+            class=" c9 c10"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c11"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c12"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
+                    data-blade-component="svg-path"
+                    fill="hsla(211, 22%, 56%, 1)"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              class="c13 c14 tags-slot"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c15"
+                data-blade-component="base-box"
+              >
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-required="false"
+                  autocomplete="off"
+                  class="c16"
+                  data-analytics-name="search-input"
+                  data-blade-component="styled-base-input"
+                  enterkeyhint="search"
+                  id="searchinput-738-input-739"
+                  inputmode="search"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c17"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c18"
+          data-blade-component="base-box"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<SearchInput /> should hide search icon 1`] = `
 .c0.c0.c0.c0.c0 {
   position: relative;
@@ -259,8 +778,8 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -284,8 +803,8 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -311,8 +830,8 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -362,8 +881,8 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -750,8 +1269,8 @@ exports[`<SearchInput /> should render 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -775,8 +1294,8 @@ exports[`<SearchInput /> should render 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -802,8 +1321,8 @@ exports[`<SearchInput /> should render 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -853,8 +1372,8 @@ exports[`<SearchInput /> should render 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1274,8 +1793,8 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
@@ -1299,8 +1818,8 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1326,8 +1845,8 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
@@ -1377,8 +1896,8 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -1868,8 +2387,8 @@ exports[`<SearchInput /> should render large size 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1893,8 +2412,8 @@ exports[`<SearchInput /> should render large size 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1920,8 +2439,8 @@ exports[`<SearchInput /> should render large size 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1971,8 +2490,8 @@ exports[`<SearchInput /> should render large size 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }

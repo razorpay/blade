@@ -6,6 +6,7 @@ import type { LinkButtonVariantProps } from '../Link';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
   onBlur?: BaseLinkProps['onBlur'];
@@ -28,7 +29,7 @@ const _DropdownLink = ({
   testID,
   hitSlop,
   htmlTitle,
-  ...styledProps
+  ...props
 }: DropdownLinkProps): React.ReactElement => {
   const {
     onTriggerClick,
@@ -52,7 +53,8 @@ const _DropdownLink = ({
       hitSlop={hitSlop}
       htmlTitle={htmlTitle}
       isDisabled={isDisabled}
-      {...styledProps}
+      {...props}
+      {...makeAnalyticsAttribute(props)}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={triggererRef as any}
       accessibilityProps={{

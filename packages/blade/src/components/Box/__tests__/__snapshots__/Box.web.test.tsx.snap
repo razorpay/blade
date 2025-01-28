@@ -91,3 +91,23 @@ exports[`<Box /> should apply borderColor prop to all borders 1`] = `
   </div>
 </div>
 `;
+
+exports[`<Box /> should support passing data-analytics  attributes 1`] = `
+<div>
+  <div
+    class="BaseBox-bmPWx"
+    data-analytics-name="demo"
+    data-blade-component="box"
+  />
+</div>
+`;
+
+exports[`<Box /> should support passing data-analytics  attributes 2`] = `
+<div>
+  <section
+    class="BaseBox-bmPWx"
+    data-analytics-name="section"
+    data-blade-component="box"
+  />
+</div>
+`;

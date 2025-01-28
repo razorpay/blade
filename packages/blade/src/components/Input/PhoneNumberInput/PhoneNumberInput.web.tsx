@@ -53,7 +53,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     autoCompleteSuggestionType,
     allowedCountries,
     placeholder,
-    ...styledProps
+    ...rest
   },
   ref,
 ): React.ReactElement => {
@@ -213,7 +213,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         autoCapitalize: 'none',
       })}
       type="telephone"
-      {...styledProps}
+      {...rest}
     />
   );
 };

@@ -1,5 +1,450 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Chip /> should accept data-analytics-* 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c4.c4.c4.c4.c4 {
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9.c9.c9.c9.c9 {
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 12px;
+  padding-left: 12px;
+  height: 28px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 9999px;
+  border-width: 0.5px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+}
+
+.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+  border-radius: 9999px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-width: 1px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: left;
+  text-overflow: ellipsis;
+  max-width: 420px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-color: transparent;
+}
+
+.c12.c12.c12.c12.c12:hover {
+  background-color: hsla(211,20%,52%,0.06);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8:focus-visible + div {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8.c8.c8.c8.c8:hover + div {
+  border-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+@media screen and (min-width:320px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <div
+      aria-labelledby="chip-group-233-label"
+      class="c0"
+      data-analytics-chip-group="fruits"
+      data-blade-component="chip-group"
+      role="radiogroup"
+    >
+      <div
+        class=""
+        data-blade-component="base-box"
+      >
+        <div
+          class="c1"
+          data-blade-component="visually-hidden"
+        >
+          <p
+            class="c2"
+            data-blade-component="text"
+          >
+            Select fruits
+          </p>
+        </div>
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c5"
+              data-analytics-chip="apple"
+              data-blade-component="chip"
+            >
+              <label
+                class="c6"
+                data-blade-component="chip-label"
+                style="cursor: pointer;"
+              >
+                <div
+                  class="c0"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c7"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-234-helptext-235"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      role="radio"
+                      type="radio"
+                      value="apple"
+                    />
+                    <div
+                      class="c9 c10"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c11 c12"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c13"
+                          data-blade-component="text"
+                        >
+                          Apple
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c5"
+              data-analytics-chip="mango"
+              data-blade-component="chip"
+            >
+              <label
+                class="c6"
+                data-blade-component="chip-label"
+                style="cursor: pointer;"
+              >
+                <div
+                  class="c0"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c7"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-236-helptext-237"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      role="radio"
+                      type="radio"
+                      value="mango"
+                    />
+                    <div
+                      class="c9 c10"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c11 c12"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c13"
+                          data-blade-component="text"
+                        >
+                          Mango
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Chip /> should render chip 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
@@ -114,8 +559,8 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -132,8 +577,8 @@ exports[`<Chip /> should render chip 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -184,8 +629,8 @@ exports[`<Chip /> should render chip 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -195,8 +640,8 @@ exports[`<Chip /> should render chip 1`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -564,8 +1009,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -582,8 +1027,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -634,8 +1079,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -645,8 +1090,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1102,8 +1547,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1140,8 +1585,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1166,8 +1611,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1218,8 +1663,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1246,8 +1691,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1257,8 +1702,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {

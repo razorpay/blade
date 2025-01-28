@@ -5,8 +5,12 @@ import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const BottomSheetFooter = ({ children }: BaseFooterProps): React.ReactElement => {
+const BottomSheetFooter = ({
+  children,
+  ...dataAnalyticsProps
+}: BaseFooterProps): React.ReactElement => {
   const { setFooterHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -31,6 +35,7 @@ const BottomSheetFooter = ({ children }: BaseFooterProps): React.ReactElement =>
       zIndex={2}
       {...metaAttribute({ name: MetaConstants.BottomSheetFooter })}
       {...bind?.()}
+      {...makeAnalyticsAttribute(dataAnalyticsProps)}
     >
       <BaseFooter>{children}</BaseFooter>
     </BaseBox>

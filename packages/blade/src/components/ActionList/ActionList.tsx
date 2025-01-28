@@ -2,23 +2,31 @@
 import React from 'react';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
-import { ActionListBox } from './ActionListBox';
+import { ActionListBox as ActionListNormalBox, ActionListVirtualizedBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { ActionListNoResults } from './ActionListNoResults';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ActionListProps = {
   children: React.ReactNode[];
-} & TestID;
+  isVirtualized?: boolean;
+} & TestID &
+  DataAnalyticsAttribute;
 
-const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement => {
+const _ActionList = ({
+  children,
+  testID,
+  isVirtualized,
+  ...rest
+}: ActionListProps): React.ReactElement => {
   const {
     setOptions,
     actionListItemRef,
@@ -28,6 +36,8 @@ const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement 
     hasFooterAction,
     filteredValues,
   } = useDropdown();
+
+  const ActionListBox = isVirtualized ? ActionListVirtualizedBox : ActionListNormalBox;
 
   const { isInBottomSheet } = useBottomSheetContext();
 
@@ -68,6 +78,7 @@ const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement 
       sectionData={sectionData}
       isMultiSelectable={isMultiSelectable}
       ref={actionListItemRef as any}
+      {...makeAnalyticsAttribute(rest)}
     />
   ) : (
     <BaseBox
@@ -78,6 +89,7 @@ const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement 
         labelledBy: `${dropdownBaseId}-label`,
       })}
       {...metaAttribute({ name: MetaConstants.ActionList, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       <ActionListBox
         isInBottomSheet={isInBottomSheet}

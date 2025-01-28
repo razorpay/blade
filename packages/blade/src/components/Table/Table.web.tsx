@@ -42,6 +42,7 @@ import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -111,9 +112,9 @@ const RefreshWrapper = styled(BaseBox)<{
     opacity: isRefreshSpinnerVisible ? 1 : 0,
     transition: `opacity ${makeMotionTime(theme.motion.duration.quick)} ${
       isRefreshSpinnerEntering
-        ? theme.motion.easing.entrance.effective
+        ? theme.motion.easing.entrance
         : isRefreshSpinnerExiting
-        ? theme.motion.easing.exit.effective
+        ? theme.motion.easing.exit
         : ''
     }`,
   };
@@ -140,7 +141,7 @@ const _Table = <Item,>({
   isRefreshing = false,
   showBorderedCells = false,
   defaultSelectedIds = [],
-  ...styledProps
+  ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
@@ -470,16 +471,18 @@ const _Table = <Item,>({
           alignItems="center"
           justifyContent="center"
           height={height}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
+          {...makeAnalyticsAttribute(rest)}
         >
           <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
         </BaseBox>
       ) : (
         <BaseBox
+          // ref={ref as never}
           flex={1}
           position="relative"
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
         >
           {isRefreshSpinnerMounted && (
@@ -514,6 +517,7 @@ const _Table = <Item,>({
             pagination={hasPagination ? paginationConfig : null}
             {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
             {...metaAttribute({ name: MetaConstants.Table })}
+            {...makeAnalyticsAttribute(rest)}
           >
             {children}
           </StyledReactTable>

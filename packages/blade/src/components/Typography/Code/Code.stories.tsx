@@ -21,7 +21,7 @@ const Page = (): ReactElement => {
         {`
           import { Code, Text } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               // For React Native, you will have to use flex layout to align Code component properly
               <Text>You can use <Code>Code</Code> component to add inlined Code, token names, variable names, etc</Text>

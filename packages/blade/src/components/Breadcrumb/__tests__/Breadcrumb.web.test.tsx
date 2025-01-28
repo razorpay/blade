@@ -68,4 +68,19 @@ describe('<Breadcrumb />', () => {
 
     await assertAccessible(container);
   });
+  it('should support data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <Breadcrumb data-analytics-breadcrumb="basicRoutes">
+        <BreadcrumbItem href="/" data-analytics-breadcrumb-item="home">
+          Home
+        </BreadcrumbItem>
+        <BreadcrumbItem href="/about">About</BreadcrumbItem>
+        <BreadcrumbItem href="/contact">Contact</BreadcrumbItem>
+      </Breadcrumb>,
+    );
+    expect(
+      container.querySelector('[data-analytics-breadcrumb="basicRoutes"]'),
+    ).toBeInTheDocument();
+    expect(container.querySelector('[data-analytics-breadcrumb-item="home"]')).toBeInTheDocument();
+  });
 });

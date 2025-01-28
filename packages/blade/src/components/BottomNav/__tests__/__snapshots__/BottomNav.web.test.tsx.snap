@@ -79,8 +79,8 @@ exports[`BottomNav should render 1`] = `
   border: none;
   padding-left: 0px;
   padding-right: 0px;
-  -webkit-transition: color 70ms cubic-bezier(0.3,0,0.2,1);
-  transition: color 70ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: color 80ms cubic-bezier(0.3,0,0.2,1);
+  transition: color 80ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c2.c2.c2.c2.c2[aria-current="page"] {
@@ -92,8 +92,8 @@ exports[`BottomNav should render 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }

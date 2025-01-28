@@ -1,5 +1,195 @@
 # @razorpay/blade
 
+## 12.5.1
+
+### Patch Changes
+
+- 3a7f55f8: fix(codemod-v12): add missing token map for `standard.attentive` to codemod and manual migration
+- 08c5a4ae: fix(blade): fix: data analytics attribute from another external module
+
+## 12.5.0
+
+### Minor Changes
+
+- 194fffc5: feat(SideNav): add `description` on SideNavLink and `onVisibleLevelChange` callback on `SideNav`
+
+## 12.4.1
+
+### Patch Changes
+
+- 2692d5b6: fix(blade): remove file icon aligment while uploading
+
+## 12.4.0
+
+### Minor Changes
+
+- 964ee14c: feat: ability to align individual table column items
+
+### Patch Changes
+
+- 455e9651: fix(FileUpload): fileupload on remove clashes with onchage
+
+  > [!NOTE]
+  >
+  > Previously, onChange did not provide an updated value when a file was removed. Now, when a file is removed from FileUpload, onChange will return the updated value.
+
+- a87a200b: chore(blade): add data attributes in TabNav & Table components
+
+## 12.3.1
+
+### Patch Changes
+
+- 3a87bd69: fix(blade): unable to use switch inside card body
+
+## 12.3.0
+
+### Minor Changes
+
+- c228d8ca: feat(blade): add flask,keyboard and list-search icons
+
+### Patch Changes
+
+- 2326fa27: feat(tokens): change token values to match figma
+
+## 12.2.1
+
+### Patch Changes
+
+- dbd53024: fix(blade): date picker on level change typo
+
+## 12.2.0
+
+### Minor Changes
+
+- a9e46afb: feat(ActionList): add Virtualization in ActionList
+
+  ```jsx
+  <ActionList isVirtualized></ActionList>
+  ```
+
+  > [!NOTE]
+  >
+  > Current version only supports virtulization of fixed height list where items do not have descriptions. We'll be adding support for dynamic height lists in future versions
+
+### Patch Changes
+
+- 70259329: feat(blade): add dateformat and placeholder prop for datepicker input
+  fix(blade): Removed the chevron icon when the picker prop is used.
+
+## 12.1.1
+
+### Patch Changes
+
+- 6aae282a: chore(blade): change TabNavItem,TopNavActions background color & update examples
+- c676f3ed: fix(SideNav): empty padding in banner when banner component returns null
+
+## 12.1.0
+
+### Minor Changes
+
+- e00172bf: feat(blade): Changes in components for X migration
+
+  **Drawer:**
+
+  - Changed the drawer's showOverlay behaviour to not mandate the overlay on level2 stacking
+  - Exposed ref
+
+  **RadioGroup:**
+
+  - Exposed event in onChange
+
+  **ButtonGroup:**
+
+  - Added styled props
+  - Added support for Tooltip inside ButtonGroup
+
+  **IconButton:**
+
+  - Added styledProps
+
+  **SideNavLink:**
+
+  - Added onClick
+
+### Patch Changes
+
+- 41354f63: fix(blade): cleanup bodyscroll locks if bottomsheet is force unmounted
+
+## 12.0.3
+
+### Patch Changes
+
+- 0b5dc72d: fix: interactive card selected borderRadius
+
+## 12.0.2
+
+### Patch Changes
+
+- 95a58247: fix(blade): Add backwards compat for React17 - fallback for useInsertionEffect
+
+## 12.0.1
+
+### Patch Changes
+
+- 4178c595: docs: remove stackblitz and add story code
+  fix: export Stagger and AnimateInteractions
+
+## 12.0.0
+
+### Major Changes
+
+- 663da58e: feat(Motion): Release Motion Presets
+
+  - Check out [Blade v12 Upgrade Guide](https://github.com/razorpay/blade/blob/master/packages/blade/docs/migration-docs/upgrade-v12.md) for codemod and migration steps
+
+## 11.39.0
+
+### Minor Changes
+
+- 583900a1: feat(blade): add ray icon
+
+## 11.38.1
+
+### Patch Changes
+
+- 65431583: feat: update use-presence hook to latest for react 19 support
+
+## 11.38.0
+
+### Minor Changes
+
+- a51e8f70: feat(StepGroup): spacing enhancements, support for titleColor prop
+- 7117bfbc: feat: add support for data-analytics attribute
+
+## 11.37.0
+
+### Minor Changes
+
+- 778e388b: feat(blade): add new icons - IndiaFlag, MagicKonnect, WorldWide
+
+## 11.36.2
+
+### Patch Changes
+
+- f294a414: fix(blade): maxCharacters alignment in Input field
+- fa487f1e: fix(blade): Trigger native select events in dropdown/ file upload / Date picker
+
+## 11.36.1
+
+### Patch Changes
+
+- 8846293f: fix: dropdown not opening if user clicks on dropdown backdrop
+
+## 11.36.0
+
+### Minor Changes
+
+- e97ec75b: feat: add new icons
+
+### Patch Changes
+
+- 9294580c: feat: expose textAlign prop types in text input
+
 ## 11.35.0
 
 ### Minor Changes

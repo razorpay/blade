@@ -412,4 +412,12 @@ describe('<SearchInput />', () => {
 
     expect(getByTestId('search-input-test-id')).toBeTruthy();
   });
+  it('should accept data-analytics attribute', () => {
+    const { getByLabelText, container } = renderWithTheme(
+      <SearchInput label="Search here" data-analytics-name="search-input" />,
+    );
+
+    expect(container).toMatchSnapshot();
+    expect(getByLabelText('Search here')).toHaveAttribute('data-analytics-name', 'search-input');
+  });
 });

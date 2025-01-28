@@ -30,7 +30,7 @@ const Page = (): ReactElement => {
         {`
           import { List, ListItem } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               <List>
                 <ListItem>

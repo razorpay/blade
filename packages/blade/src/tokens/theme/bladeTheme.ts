@@ -605,7 +605,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.chromatic.sapphire[400],
         },
         neutral: {
-          subtle: globalColors.neutral.blueGrayDark[700],
+          subtle: globalColors.neutral.blueGrayDark[400],
           intense: globalColors.neutral.blueGrayDark[50],
         },
       },
@@ -887,7 +887,7 @@ const colors: ColorsWithModes = {
     },
     popup: {
       background: {
-        subtle: globalColors.neutral.blueGrayDark[700],
+        subtle: globalColors.neutral.blueGrayDark[1000],
         intense: globalColors.neutral.blueGrayDark[700],
       },
       border: {
@@ -895,7 +895,7 @@ const colors: ColorsWithModes = {
         intense: globalColors.neutral.blueGrayDark.a100,
       },
     },
-    transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
+    transparent: `hsla(217, 27%, 15%, ${opacity[0]})`,
   },
 };
 

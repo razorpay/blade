@@ -2,7 +2,7 @@
 
 exports[`<Code /> should render Code with color 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(227,100%,59%,0.18);
+  color: hsla(227,100%,59%,0.32);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;

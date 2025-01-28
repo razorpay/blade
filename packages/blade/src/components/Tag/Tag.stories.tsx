@@ -27,7 +27,7 @@ const Page = (): React.ReactElement => {
         import React from 'react';
         import { Tag, FileTextIcon } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           const [isTagVisible, setIsTagVisible] = React.useState(true);
 
           return (

@@ -12,6 +12,8 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { throwBladeError } from '~utils/logger';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useStyledProps } from '~components/Box/styledProps';
 
 type StyledButtonProps = {
   emphasis: SubtleOrIntense;
@@ -22,7 +24,7 @@ type StyledButtonProps = {
 const StyledButton = styled.button<StyledButtonProps>((props) => {
   const { theme, emphasis } = props;
   const motionToken = theme.motion;
-
+  const styledPropsCSSObject = useStyledProps(props);
   const emphasisColor = emphasis === 'intense' ? 'gray' : 'staticWhite';
 
   if (__DEV__) {
@@ -56,7 +58,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
       : theme.colors.interactive.icon[emphasisColor].muted,
     transitionProperty: 'color, box-shadow',
     transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
-    transitionTimingFunction: motionToken.easing.standard.effective as string,
+    transitionTimingFunction: motionToken.easing.standard as string,
 
     '&:hover:not([disabled])': {
       color: theme.colors.interactive.icon[emphasisColor].subtle,
@@ -73,6 +75,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
     '&:active': {
       color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
+    ...styledPropsCSSObject,
   };
 });
 
@@ -96,6 +99,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onTouchEnd,
       onTouchStart,
       tabIndex,
+      ...rest
     },
     ref,
   ): ReactElement => (
@@ -118,6 +122,8 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       tabIndex={tabIndex}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
+      {...makeAnalyticsAttribute(rest)}
+      {...rest}
     >
       <Icon size={size} color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'} />
     </StyledButton>

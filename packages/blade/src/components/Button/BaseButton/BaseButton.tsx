@@ -35,7 +35,12 @@ import { announce } from '~components/LiveAnnouncer';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
-import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
+import type {
+  BladeElementRef,
+  DataAnalyticsAttribute,
+  StringChildrenType,
+  TestID,
+} from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';
@@ -48,6 +53,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -82,7 +88,7 @@ Mandatory children prop when icon is not provided
 type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
   icon?: undefined;
   children: StringChildrenType;
-};
+} & DataAnalyticsAttribute;
 
 /*
  Optional children prop when icon is provided
@@ -90,7 +96,7 @@ type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
   icon: IconComponent;
   children?: StringChildrenType;
-};
+} & DataAnalyticsAttribute;
 
 /*
  With or without icon prop. We need at least an icon or a children prop present.
@@ -257,7 +263,7 @@ const getProps = ({
     borderWidth: variant == 'secondary' ? makeBorderSize(theme.border.width.thin) : '0px',
     borderRadius: makeBorderSize(theme.border.radius.medium),
     motionDuration: 'duration.xquick',
-    motionEasing: 'easing.standard.effective',
+    motionEasing: 'easing.standard',
   };
 
   if (isDisabled) {
@@ -498,6 +504,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onKeyUp={handleKeyboardPressedOut}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <AnimatedButtonContent
         motionDuration={motionDuration}

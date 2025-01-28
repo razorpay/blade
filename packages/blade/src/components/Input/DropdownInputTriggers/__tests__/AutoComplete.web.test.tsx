@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import userEvent from '@testing-library/user-event';
 import { waitFor, screen, act } from '@testing-library/react';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
@@ -369,6 +369,27 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(getTag('Mango')).toBeVisible();
   });
 
+  it('it should accept data-analytics attributes', async () => {
+    const { getByRole, container } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Fruits" data-analytics-name="dropdown-fruits" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" data-analytics-value="apple" />
+            <ActionListItem title="Mango" value="mango" data-analytics-value="mango" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+    expect(container).toMatchSnapshot();
+    const selectInput = getByRole('combobox', { name: 'Fruits' });
+    expect(selectInput).toHaveAttribute('data-analytics-name', 'dropdown-fruits');
+    // you need to click on selectInput to make the list visible
+    await userEvent.click(selectInput);
+    expect(getByRole('option', { name: 'Apple' })).toHaveAttribute('data-analytics-value', 'apple');
+    expect(getByRole('option', { name: 'Mango' })).toHaveAttribute('data-analytics-value', 'mango');
+  });
+
   it('should handle controlled filtering', async () => {
     const cities = [
       {
@@ -469,5 +490,123 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'false');
     await user.click(getByRole('option', { name: 'Pune' }));
     expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'true');
+  }, 10000);
+  it('should fire native events like input and change', async () => {
+    const cities = [
+      {
+        title: 'Mumbai',
+        value: 'mumbai',
+        keywords: ['maharashtra'],
+      },
+      {
+        title: 'Pune',
+        value: 'pune',
+        keywords: ['maharashtra'],
+      },
+      {
+        title: 'Bengaluru',
+        value: 'bengaluru',
+        keywords: ['karnataka', 'bangalore'],
+      },
+    ];
+    const handleInput = jest.fn();
+    const handleChange = jest.fn();
+
+    const ControlledFiltering = (): React.ReactElement => {
+      const cityValues = cities.map((city) => city.value);
+      const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
+      const ref = React.useRef<HTMLElement>(null);
+
+      useEffect(() => {
+        if (ref?.current) {
+          ref.current.addEventListener('input', () => {
+            handleInput();
+          });
+          ref.current.addEventListener('change', () => {
+            handleChange();
+          });
+        }
+        return () => {
+          if (ref?.current) {
+            ref.current.removeEventListener('input', () => {
+              handleInput();
+            });
+            ref.current.removeEventListener('change', () => {
+              handleChange();
+            });
+          }
+        };
+      }, []);
+
+      return (
+        <Box ref={ref}>
+          <Dropdown selectionType="multiple">
+            <SelectInput label="Cities" />
+            <BottomSheet>
+              <BottomSheetHeader>
+                <AutoComplete
+                  label="Cities"
+                  testID="cities-autocomplete"
+                  onInputValueChange={({ value }) => {
+                    if (value) {
+                      const filteredItems = cities
+                        .filter(
+                          (city) =>
+                            city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                            city.keywords.find((keyword) =>
+                              keyword.toLowerCase().includes(value.toLowerCase()),
+                            ),
+                        )
+                        .map((city) => city.value);
+
+                      if (filteredItems.length > 0) {
+                        setFilteredValues(filteredItems);
+                      } else {
+                        setFilteredValues([]);
+                      }
+                    } else {
+                      setFilteredValues(cityValues);
+                    }
+                  }}
+                  filteredValues={filteredValues}
+                  helpText="Try typing 'maharashtra' in input"
+                />
+              </BottomSheetHeader>
+              <BottomSheetBody>
+                <ActionList>
+                  {cities.map((city) => (
+                    <ActionListItem key={city.value} title={city.title} value={city.value} />
+                  ))}
+                </ActionList>
+              </BottomSheetBody>
+            </BottomSheet>
+          </Dropdown>
+        </Box>
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole, getByLabelText, queryByTestId } = renderWithTheme(<ControlledFiltering />);
+
+    const selectInput = getByLabelText('Cities') as HTMLInputElement;
+    const autoComplete = queryByTestId('cities-autocomplete') as HTMLInputElement;
+
+    expect(selectInput).toBeInTheDocument();
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+
+    await user.click(selectInput);
+    await waitFor(() => expect(queryByTestId('bottomsheet-body')).toBeVisible());
+
+    act(() => {
+      autoComplete.focus();
+    });
+
+    expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
+    expect(getByRole('option', { name: 'Pune' })).toBeVisible();
+    expect(getByRole('option', { name: 'Bengaluru' })).toBeVisible();
+
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(handleInput).toBeCalled();
+    expect(handleChange).toBeCalled();
   }, 10000);
 });

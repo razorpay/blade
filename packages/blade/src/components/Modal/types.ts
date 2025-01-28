@@ -1,3 +1,5 @@
+import type { DataAnalyticsAttribute } from '~utils/types';
+
 export type ModalProps = {
   /**
    *  Children of Modal
@@ -32,4 +34,4 @@ export type ModalProps = {
    * @default 1000
    */
   zIndex?: number;
-};
+} & DataAnalyticsAttribute;

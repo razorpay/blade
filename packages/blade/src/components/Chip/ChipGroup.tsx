@@ -9,29 +9,34 @@ import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField
 import { getStyledProps } from '~components/Box/styledProps';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
+import type { BladeElementRef } from '~utils/types';
 import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const ChipGroup = ({
-  accessibilityLabel,
-  label,
-  labelPosition = 'top',
-  necessityIndicator = 'none',
-  validationState = 'none',
-  errorText,
-  helpText,
-  isRequired = false,
-  children,
-  isDisabled = false,
-  name,
-  defaultValue,
-  onChange,
-  value,
-  size = 'small',
-  color = 'primary',
-  testID,
-  selectionType = 'single',
-  ...styledProps
-}: ChipGroupProps): React.ReactElement => {
+const _ChipGroup = (
+  {
+    accessibilityLabel,
+    label,
+    labelPosition = 'top',
+    necessityIndicator = 'none',
+    validationState = 'none',
+    errorText,
+    helpText,
+    isRequired = false,
+    children,
+    isDisabled = false,
+    name,
+    defaultValue,
+    onChange,
+    value,
+    size = 'small',
+    color = 'primary',
+    testID,
+    selectionType = 'single',
+    ...rest
+  }: ChipGroupProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const { contextValue, ids } = useChipGroup({
     defaultValue,
     onChange,
@@ -66,13 +71,14 @@ const ChipGroup = ({
 
   return (
     <ChipGroupProvider value={contextValue}>
-      <BaseBox {...getStyledProps(styledProps)}>
+      <BaseBox ref={ref as never} {...getStyledProps(rest)}>
         <SelectorGroupField
           position={labelPosition}
           accessibilityRole={selectionType === 'single' ? 'radiogroup' : 'group'}
           labelledBy={ids.labelId}
           componentName="chip-group"
           testID={testID}
+          {...makeAnalyticsAttribute(rest)}
         >
           {label ? (
             <FormLabel
@@ -115,6 +121,8 @@ const ChipGroup = ({
     </ChipGroupProvider>
   );
 };
+
+const ChipGroup = React.forwardRef(_ChipGroup);
 
 export { ChipGroup };
 export type { ChipGroupProps };

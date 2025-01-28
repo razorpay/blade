@@ -76,9 +76,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -352,8 +352,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
@@ -377,8 +377,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -404,8 +404,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
@@ -455,8 +455,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
@@ -608,47 +608,52 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c18"
+                    class="c17"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c19"
+                      class="c18"
                       data-blade-component="base-box"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="c20"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
+                      <div
+                        class="c19"
+                        data-blade-component="base-box"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        class="c21"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c21"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -766,9 +771,9 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -1023,8 +1028,8 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1048,8 +1053,8 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1075,8 +1080,8 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1126,8 +1131,8 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1279,47 +1284,52 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c18"
+                    class="c17"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c19"
+                      class="c18"
                       data-blade-component="base-box"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="c20"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
+                      <div
+                        class="c19"
+                        data-blade-component="base-box"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        class="c21"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="16px"
-                        viewBox="0 0 24 24"
-                        width="16px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          data-blade-component="svg-path"
-                          fill="hsla(211, 22%, 56%, 1)"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c21"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1696,6 +1706,174 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu 1`] = `
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Dropdown /> with <DropdownButton /> should support data-analytics-attribute 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <button
+        aria-controls="dropdown-474-actionlist"
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="c1"
+        data-analytics-attribute="profile"
+        data-blade-component="button"
+        role="button"
+        type="button"
+      >
+        <div
+          class=" c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3 c4"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c5"
+              data-blade-component="base-text"
+            >
+              My Account
+            </div>
+          </div>
+        </div>
+      </button>
     </div>
   </div>
 </div>

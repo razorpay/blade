@@ -5,7 +5,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type TableNode<Item> = Item & {
   id: Identifier;
@@ -49,7 +49,7 @@ type TableHeaderRowProps = {
    * The default value is `normal`.
    **/
   rowDensity?: TableProps<unknown>['rowDensity'];
-};
+} & DataAnalyticsAttribute;
 
 type TableHeaderCellProps = {
   /**
@@ -62,9 +62,15 @@ type TableHeaderCellProps = {
    * Sorting is enabled only for columns whose key is present in sortableColumns prop of Table.
    **/
   headerKey?: string;
+  /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
 
   _hasPadding?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type TableProps<Item> = {
   /**
@@ -193,7 +199,8 @@ type TableProps<Item> = {
    * An array of default selected row ids. This will be used to set the initial selected rows.
    */
   defaultSelectedIds?: Identifier[];
-} & StyledPropsBlade;
+} & DataAnalyticsAttribute &
+  StyledPropsBlade;
 
 type Identifier = string | number;
 
@@ -208,7 +215,7 @@ type TableBodyProps = {
    * </TableBody>
    **/
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TableRowProps<Item> = {
   /**
@@ -247,7 +254,8 @@ type TableRowProps<Item> = {
   onClick?: ({ item }: { item: TableNode<Item> }) => void;
 
   hoverActions?: React.ReactElement;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 type TableCellProps = {
   /**
@@ -263,12 +271,18 @@ type TableCellProps = {
    **/
   children: React.ReactNode;
   /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
+  /**
    * Removes padding from CellWrapper
    *
    * @private
    */
   _hasPadding?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type TableEditableCellProps = Pick<
   BaseInputProps,
@@ -316,7 +330,7 @@ type TableFooterProps = {
    * </TableFooter>
    **/
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TableFooterRowProps = {
   /**
@@ -329,14 +343,20 @@ type TableFooterRowProps = {
    * </TableFooter>
    **/
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TableFooterCellProps = {
   /**
    * The children of TableHeaderCell can be a string or a ReactNode.
    **/
   children: string | React.ReactNode;
-};
+  /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
+} & DataAnalyticsAttribute;
 
 type TablePaginationCommonProps = {
   /**
@@ -376,7 +396,7 @@ type TablePaginationCommonProps = {
    * @default false
    */
   showLabel?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type TablePaginationType = 'client' | 'server';
 
@@ -436,11 +456,12 @@ type TableToolbarProps = {
    * @default `${selectedRows.length} 'Items'} Selected`
    */
   selectedTitle?: string;
-};
+} & DataAnalyticsAttribute;
 
 type TableToolbarActionsProps = {
   children?: React.ReactNode;
-} & StyledPropsBlade;
+} & StyledPropsBlade &
+  DataAnalyticsAttribute;
 
 export type {
   TableProps,

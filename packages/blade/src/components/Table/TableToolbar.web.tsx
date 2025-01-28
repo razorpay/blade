@@ -13,6 +13,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 /**
  * TableToolbarActions is a component that is used to render actions in the TableToolbar.
@@ -22,7 +23,7 @@ import getIn from '~utils/lodashButBetter/get';
  */
 const _TableToolbarActions = ({
   children,
-  ...styledProps
+  ...rest
 }: TableToolbarActionsProps): React.ReactElement => {
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
@@ -31,7 +32,8 @@ const _TableToolbarActions = ({
       display="flex"
       flex={onMobile ? 1 : 0}
       justifyContent={onMobile ? 'flex-start' : 'flex-end'}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </BaseBox>
@@ -52,6 +54,7 @@ const _TableToolbar = ({
   children,
   title,
   selectedTitle: controlledSelectedTitle,
+  ...rest
 }: TableToolbarProps): React.ReactElement => {
   const {
     selectedRows,
@@ -83,7 +86,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor={backgroundColor}>
+    <BaseBox backgroundColor={backgroundColor} {...makeAnalyticsAttribute(rest)}>
       <ToolbarWrapper
         display="flex"
         backgroundColor={

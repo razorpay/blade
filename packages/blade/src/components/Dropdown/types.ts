@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { Placement } from '@floating-ui/react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { ContainerElementType, TestID } from '~utils/types';
+import type { ContainerElementType, DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 
 type DropdownProps = {
@@ -24,6 +24,7 @@ type DropdownProps = {
    */
   _width?: BoxProps['width'];
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type DropdownOverlayProps = {

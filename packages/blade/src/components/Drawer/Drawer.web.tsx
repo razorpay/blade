@@ -20,6 +20,9 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { mergeRefs } from '~utils/useMergeRefs';
 
 const SHOW_DRAWER = 'show-drawer';
 
@@ -28,12 +31,12 @@ const AnimatedDrawerContainer = styled(BaseBox)<{
   isVisible: boolean;
 }>(({ theme, isFirstDrawerInStack, isVisible }) => {
   const entranceTransition: CSSProperties['transition'] = `all ${castWebType(
-    castWebType(makeMotionTime(theme.motion.duration.gentle)),
-  )} ${castWebType(theme.motion.easing.entrance.revealing)}`;
+    castWebType(makeMotionTime(theme.motion.duration.xmoderate)),
+  )} ${castWebType(theme.motion.easing.entrance)}`;
 
   const exitTransition: CSSProperties['transition'] = `all
-  ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
-  ${castWebType(theme.motion.easing.exit.revealing)}`;
+  ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
+  ${castWebType(theme.motion.easing.exit)}`;
 
   return {
     opacity: isVisible ? 1 : 0,
@@ -52,29 +55,33 @@ const DrawerOverlay = styled(FloatingOverlay)(({ theme }) => {
     opacity: 0,
     transition: `opacity
       ${makeMotionTime(theme.motion.duration.xmoderate)}
-      ${castWebType(theme.motion.easing.exit.revealing)}`,
+      ${castWebType(theme.motion.easing.exit)}`,
     backgroundColor: theme.colors.overlay.background.subtle,
 
     [`&.${SHOW_DRAWER}`]: {
       opacity: 1,
       transition: `opacity ${makeMotionTime(theme.motion.duration.gentle)} ${castWebType(
-        theme.motion.easing.entrance.revealing,
+        theme.motion.easing.entrance,
       )}`,
     },
   };
 });
 
-const _Drawer = ({
-  isOpen,
-  onDismiss,
-  zIndex = componentZIndices.drawer,
-  children,
-  accessibilityLabel,
-  showOverlay = true,
-  initialFocusRef,
-  isLazy = true,
-  testID,
-}: DrawerProps): React.ReactElement => {
+const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
+  {
+    isOpen,
+    onDismiss,
+    zIndex = componentZIndices.drawer,
+    children,
+    accessibilityLabel,
+    showOverlay = true,
+    initialFocusRef,
+    isLazy = true,
+    testID,
+    ...rest
+  },
+  ref,
+) => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
   const [zIndexState, setZIndexState] = React.useState<number>(zIndex);
 
@@ -150,9 +157,10 @@ const _Drawer = ({
                 name: MetaConstants.Drawer,
                 testID,
               })}
+              {...makeAnalyticsAttribute(rest)}
               zIndex={zIndexState}
             >
-              {showOverlay || stackingLevel === 2 ? (
+              {showOverlay ? (
                 <DrawerOverlay
                   onClick={() => {
                     onDismiss();
@@ -181,7 +189,7 @@ const _Drawer = ({
                 height="100%"
                 display="flex"
                 flexDirection="column"
-                ref={refs.setFloating}
+                ref={mergeRefs(ref, refs.setFloating)}
                 onKeyDown={(event) => {
                   if (event?.key === 'Escape' || event?.code === 'Escape') {
                     onDismiss();
@@ -235,7 +243,8 @@ const _Drawer = ({
  * 
  * 
  */
-const Drawer = assignWithoutSideEffects(_Drawer, {
+const Drawer = assignWithoutSideEffects(React.forwardRef(_Drawer), {
+  displayName: 'Drawer',
   componentId: drawerComponentIds.Drawer,
 });
 

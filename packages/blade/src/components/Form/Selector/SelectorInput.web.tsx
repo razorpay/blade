@@ -14,6 +14,7 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getHoverStyles = ({
   theme,
@@ -31,7 +32,7 @@ const getHoverStyles = ({
   return {
     borderColor: borderColor ? getIn(theme, borderColor) : undefined,
     backgroundColor: getIn(theme, backgroundColor),
-    transitionTimingFunction: theme.motion.easing.standard.effective as string,
+    transitionTimingFunction: theme.motion.easing.standard as string,
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
   };
 };
@@ -49,7 +50,17 @@ const StyledInput = styled.input<HoverProps>(
 );
 
 const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorInputProps> = (
-  { id, inputProps, isChecked, isDisabled, hasError, hoverTokens, tabIndex, accessibilityLabel },
+  {
+    id,
+    inputProps,
+    isChecked,
+    isDisabled,
+    hasError,
+    hoverTokens,
+    tabIndex,
+    accessibilityLabel,
+    ...rest
+  },
   ref,
 ) => {
   // merging both refs because inputProps.ref needs to have access to indeterminate state
@@ -67,6 +78,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
       hoverTokens={hoverTokens}
       {...inputProps}
       {...makeAccessible({ label: accessibilityLabel })}
+      {...makeAnalyticsAttribute(rest)}
       ref={mergedRef}
     />
   );

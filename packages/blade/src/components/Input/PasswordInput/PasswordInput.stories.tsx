@@ -26,7 +26,7 @@ const Page = (): ReactElement => {
         {`
           import { PasswordInput } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               <PasswordInput 
                 label="Enter Password" 

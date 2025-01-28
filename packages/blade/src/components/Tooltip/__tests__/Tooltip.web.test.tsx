@@ -324,4 +324,18 @@ describe('<Tooltip />', () => {
     expect(getByLabelText('Email Address')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
+
+  it('it should support passing data analytics attributes', async () => {
+    jest.useRealTimers();
+    const tooltipContent = 'Hello world';
+    const buttonText = 'Hover me';
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Tooltip content={tooltipContent} data-analytics-tooltip="tooltip">
+        <Button>{buttonText}</Button>
+      </Tooltip>,
+    );
+    fireEvent.focus(getByRole('button', { name: buttonText }));
+    expect(queryByRole('tooltip')).toBeInTheDocument();
+    expect(queryByRole('tooltip')).toHaveAttribute('data-analytics-tooltip', 'tooltip');
+  });
 });

@@ -21,6 +21,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -43,7 +44,7 @@ const InteractiveItemHeaderBox = styled.button<InteractiveItemHeaderProps>((prop
       : props.theme.colors.transparent,
     borderRadius: props.theme.border.radius.medium,
     width: '100%',
-    transition: `background-color ${props.theme.motion.duration.xquick} ${props.theme.motion.easing.standard.effective}`,
+    transition: `background-color ${props.theme.motion.duration.xquick} ${props.theme.motion.easing.standard}`,
     ':not([disabled]):hover': {
       backgroundColor: props.isSelected
         ? props.theme.colors.interactive.background.primary.fadedHighlighted
@@ -84,6 +85,7 @@ const getStepTypeFromIndex = ({
 
 const _StepItem = ({
   title,
+  titleColor,
   timestamp,
   description,
   stepProgress = 'none',
@@ -98,6 +100,7 @@ const _StepItem = ({
   _index = 0,
   _totalIndex = 0,
   _nestingLevel = 0,
+  ...rest
 }: StepItemProps): React.ReactElement => {
   const {
     itemsInGroupCount: itemsCount,
@@ -116,6 +119,7 @@ const _StepItem = ({
   const isLastItem = _totalIndex === totalItemsInParentGroupCount - 1;
   const isInteractive = Boolean(href) || Boolean(onClick);
   const isVertical = orientation === 'vertical';
+  const isNested = _nestingLevel > 0;
 
   if (__DEV__) {
     if (trailing && orientation === 'horizontal') {
@@ -138,8 +142,10 @@ const _StepItem = ({
       <Box>
         <Text
           size={stepItemHeaderTokens[size].title}
-          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
-          weight="semibold"
+          color={
+            isDisabled ? 'surface.text.gray.disabled' : titleColor ?? 'surface.text.gray.subtle'
+          }
+          weight={isNested ? 'regular' : 'semibold'}
         >
           {title}
         </Text>
@@ -179,6 +185,7 @@ const _StepItem = ({
       width={isVertical ? '100%' : undefined}
       flex={isVertical ? undefined : '1'}
       {...metaAttribute({ name: MetaConstants.StepItem })}
+      {...makeAnalyticsAttribute(rest)}
       ref={itemRef}
     >
       <StepLine
@@ -188,7 +195,7 @@ const _StepItem = ({
         marker={marker}
         stepProgress={stepProgress}
       />
-      <Box marginTop="spacing.3" flex="1" marginRight={isVertical ? undefined : undefined}>
+      <Box flex="1" marginRight={isVertical ? undefined : undefined}>
         {isInteractive ? (
           <InteractiveItemHeaderBox
             {...stepItemHeaderPaddings}
@@ -205,7 +212,7 @@ const _StepItem = ({
           <Box {...stepItemHeaderPaddings}>{stepItemHeaderJSX}</Box>
         )}
         {children ? (
-          <Box paddingX="spacing.4" paddingY="spacing.3">
+          <Box paddingX="spacing.4" paddingBottom="spacing.3">
             {children}
           </Box>
         ) : null}

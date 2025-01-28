@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseMotionBox /> should render enhance the child component 1`] = `
+<div>
+  <div
+    animate="animate"
+    as="div"
+    exit="exit"
+    initial="initial"
+    variants="[object Object]"
+    viewport="[object Object]"
+  >
+    hi
+  </div>
+</div>
+`;
+
+exports[`<BaseMotionBox /> should render with correct motion react props on motion element 1`] = `
+{
+  "animate": "animate",
+  "children": <div>
+    hi
+  </div>,
+  "exit": "exit",
+  "initial": "initial",
+  "variants": {
+    "animate": {
+      "color": [
+        "blue",
+        "green",
+      ],
+      "transition": {
+        "duration": 0.8,
+        "ease": [
+          0,
+          0,
+          0.1,
+          0,
+        ],
+      },
+    },
+    "exit": {
+      "color": "yellow",
+      "transition": {
+        "duration": 0.3,
+        "ease": [
+          0,
+          0,
+          0.4,
+          0,
+        ],
+      },
+    },
+    "initial": {
+      "color": "red",
+    },
+  },
+  "viewport": {
+    "amount": 0.8,
+    "once": true,
+  },
+}
+`;
+
+exports[`<BaseMotionBox /> should render with correct motion react props on motion element 2`] = `
+<div>
+  <div
+    animate="animate"
+    exit="exit"
+    initial="initial"
+    variants="[object Object]"
+    viewport="[object Object]"
+  >
+    <div>
+      hi
+    </div>
+  </div>
+</div>
+`;
