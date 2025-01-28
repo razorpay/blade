@@ -22,6 +22,14 @@ import ArrowDownLeftIconComponent from './ArrowDownLeftIcon';
 import ArrowDownRightIconComponent from './ArrowDownRightIcon';
 import ArrowLeftIconComponent from './ArrowLeftIcon';
 import ArrowRightIconComponent from './ArrowRightIcon';
+import ArrowSquareDownIconComponent from './ArrowSquareDownIcon';
+import ArrowSquareDownLeftIconComponent from './ArrowSquareDownLeftIcon';
+import ArrowSquareDownRightIconComponent from './ArrowSquareDownRightIcon';
+import ArrowSquareLeftIconComponent from './ArrowSquareLeftIcon';
+import ArrowSquareRightIconComponent from './ArrowSquareRightIcon';
+import ArrowSquareUpIconComponent from './ArrowSquareUpIcon';
+import ArrowSquareUpLeftIconComponent from './ArrowSquareUpLeftIcon';
+import ArrowSquareUpRightIconComponent from './ArrowSquareUpRightIcon';
 import ArrowUpIconComponent from './ArrowUpIcon';
 import ArrowUpLeftIconComponent from './ArrowUpLeftIcon';
 import ArrowUpRightIconComponent from './ArrowUpRightIcon';
@@ -179,6 +187,7 @@ import ItalicIconComponent from './ItalicIcon';
 import KeyboardIconComponent from './KeyboardIcon';
 import LayersIconComponent from './LayersIcon';
 import LayoutIconComponent from './LayoutIcon';
+import LeftCircularCornerIconComponent from './LeftCircularCornerIcon';
 import LifeBuoyIconComponent from './LifeBuoyIcon';
 import LinkIconComponent from './LinkIcon';
 import ListIconComponent from './ListIcon';
@@ -323,6 +332,8 @@ import TicketIconComponent from './TicketIcon';
 import ToggleLeftIconComponent from './ToggleLeftIcon';
 import ToggleRightIconComponent from './ToggleRightIcon';
 import TokenHqIconComponent from './TokenHqIcon';
+import TopLeftRoundedCornerIconComponent from './TopLeftRoundedCornerIcon';
+import TopLeftSharpCornerIconComponent from './TopLeftSharpCornerIcon';
 import TrademarkIconComponent from './TrademarkIcon';
 import TrademarkRegisteredIconComponent from './TrademarkRegisteredIcon';
 import TransactionsIconComponent from './TransactionsIcon';
@@ -392,6 +403,14 @@ const iconMap: Record<string, IconComponent> = {
   ArrowDownRightIcon: ArrowDownRightIconComponent,
   ArrowLeftIcon: ArrowLeftIconComponent,
   ArrowRightIcon: ArrowRightIconComponent,
+  ArrowSquareDownIcon: ArrowSquareDownIconComponent,
+  ArrowSquareDownLeftIcon: ArrowSquareDownLeftIconComponent,
+  ArrowSquareDownRightIcon: ArrowSquareDownRightIconComponent,
+  ArrowSquareLeftIcon: ArrowSquareLeftIconComponent,
+  ArrowSquareRightIcon: ArrowSquareRightIconComponent,
+  ArrowSquareUpIcon: ArrowSquareUpIconComponent,
+  ArrowSquareUpLeftIcon: ArrowSquareUpLeftIconComponent,
+  ArrowSquareUpRightIcon: ArrowSquareUpRightIconComponent,
   ArrowUpIcon: ArrowUpIconComponent,
   ArrowUpLeftIcon: ArrowUpLeftIconComponent,
   ArrowUpRightIcon: ArrowUpRightIconComponent,
@@ -549,6 +568,7 @@ const iconMap: Record<string, IconComponent> = {
   KeyboardIcon: KeyboardIconComponent,
   LayersIcon: LayersIconComponent,
   LayoutIcon: LayoutIconComponent,
+  LeftCircularCornerIcon: LeftCircularCornerIconComponent,
   LifeBuoyIcon: LifeBuoyIconComponent,
   LinkIcon: LinkIconComponent,
   ListIcon: ListIconComponent,
@@ -693,6 +713,8 @@ const iconMap: Record<string, IconComponent> = {
   ToggleLeftIcon: ToggleLeftIconComponent,
   ToggleRightIcon: ToggleRightIconComponent,
   TokenHqIcon: TokenHqIconComponent,
+  TopLeftRoundedCornerIcon: TopLeftRoundedCornerIconComponent,
+  TopLeftSharpCornerIcon: TopLeftSharpCornerIconComponent,
   TrademarkIcon: TrademarkIconComponent,
   TrademarkRegisteredIcon: TrademarkRegisteredIconComponent,
   TransactionsIcon: TransactionsIconComponent,
