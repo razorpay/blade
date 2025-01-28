@@ -619,55 +619,30 @@ VirtualizedTable is a wrapper on top of react-table-library's [Virtualized](http
 type VirtualizedWrapperProps<Item> = {
   /**
    * * @example
-   *     <TableVirtulized
+    *     <TableVirtulized
    *        tableData={tableData}
    *        rowHeight={(item, index) => {
-   *          // header height and row height
-   *          return index === 0 ? 50 : 57.5;
+   *          return  57.5;
    *        }}
-   *        header={() => (
-   *          <TableHeader>
-   *            <TableHeaderRow>
-   *               <TableHeaderCell>ID</TableHeaderCell>
-   *               <TableHeaderCell>Amount</TableHeaderCell>
-   *               <TableHeaderCell>Account</TableHeaderCell>
-   *               <TableHeaderCell>Date</TableHeaderCell>
-   *               <TableHeaderCell>Method</TableHeaderCell>
-   *               <TableHeaderCell>Status</TableHeaderCell>
-   *            </TableHeaderRow>
-   *          </TableHeader>
-   *        )}
-   *        body={(tableItem, index) => (
-   *          <TableRow key={index} item={tableItem}>
-   *            <TableCell>
-   *              <Code size="medium">{tableItem.paymentId}</Code>
-   *            </TableCell>
-   *            <TableCell>
-   *              <Amount value={tableItem.amount} />
-   *            </TableCell>
-   *            <TableCell>{tableItem.account}</TableCell>
-   *            <TableCell>
-   *              <Text>{tableItem.date}</Text>
-   *            </TableCell>
-   *            <TableCell>{tableItem.method}</TableCell>
-   *            <TableCell>{tableItem.status}</TableCell>
-   *          </TableRow>
-   *        )}
-   *     />
+   *      >
+   *       
+   *        <Table tableData={tableData} >
+   *          {(tableData) => (
+   *           <TableVirtualizedContainer tableData={tableData}>
+   *              <TableHeader>
+   *                <TableHeaderRow>
+   *                </TableHeaderRow>
+   *              </TableHeader>           
+   *              <TableBody>
+   *                 {(tableItem, index) => <TableRow key={index} item={tableItem} />}
+   *               </TableBody>
+   *             </TableVirtualizedContainer>
+   *          )}
+   *          </Table>
+   *     </TableVirtulized>
    *
    **/
   /**
-   *
-   *  should be a function that returns TableHeader,
-   *
-   **/
-  header: () => React.ReactElement;
-  /**
-   *
-   *  should be a function that returns TableBody
-   *
-   * */
-  body: (tableItem: TableNode<Item>, index: number) => React.ReactElement;
   /**
    *
    */
@@ -677,6 +652,10 @@ type VirtualizedWrapperProps<Item> = {
    * index 0 is the header height
    **/
   rowHeight: RowHeight;
+  /**
+   *  should contain the TableHeader and TableBody components
+   **/
+  children: React.ReactNode;  
 };
 
 ```
