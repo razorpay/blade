@@ -1,5 +1,24 @@
 # @razorpay/blade
 
+## 12.5.1
+
+### Patch Changes
+
+- 3a7f55f8: fix(codemod-v12): add missing token map for `standard.attentive` to codemod and manual migration
+- 08c5a4ae: fix(blade): fix: data analytics attribute from another external module
+
+## 12.5.0
+
+### Minor Changes
+
+- 194fffc5: feat(SideNav): add `description` on SideNavLink and `onVisibleLevelChange` callback on `SideNav`
+
+## 12.4.1
+
+### Patch Changes
+
+- 2692d5b6: fix(blade): remove file icon aligment while uploading
+
 ## 12.4.0
 
 ### Minor Changes

@@ -123,7 +123,7 @@ const BannerContainer = styled(BaseBox)((props) => {
  *
  */
 const _SideNav = (
-  { children, isOpen, onDismiss, banner, testID, ...rest }: SideNavProps,
+  { children, isOpen, onDismiss, onVisibleLevelChange, banner, testID, ...rest }: SideNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
@@ -143,6 +143,7 @@ const _SideNav = (
     if (isMobile) {
       setIsMobileL2Open(false);
       onDismiss?.();
+      onVisibleLevelChange?.({ visibleLevel: 0 });
     }
   };
 
@@ -155,6 +156,36 @@ const _SideNav = (
     timeoutIdsRef.current.push(clearTransitionTimeout);
   };
 
+  const collapseL1 = (title: string): void => {
+    if (isMobile) {
+      setL2DrawerTitle(title);
+      setIsMobileL2Open(true);
+      onVisibleLevelChange?.({ visibleLevel: 2 });
+      return;
+    }
+
+    if (!isL1Collapsed) {
+      setIsL1Collapsed(true);
+      onVisibleLevelChange?.({ visibleLevel: 2 });
+    }
+  };
+
+  const expandL1 = (): void => {
+    if (isMobile) {
+      setIsMobileL2Open(false);
+      onVisibleLevelChange?.({ visibleLevel: 1 });
+      return;
+    }
+    // Ensures that if Normal L1 item is clicked, the L1 stays expanded
+    if (isL1Collapsed) {
+      setIsL1Collapsed(false);
+      // We want to avoid calling onVisibleLevelChange twice when L1 is hovered and then item on L1 is selected
+      if (!isL1Hovered) {
+        onVisibleLevelChange?.({ visibleLevel: 1 });
+      }
+    }
+  };
+
   /**
    * Handles L1 -> L2 menu changes based on active item
    */
@@ -164,13 +195,7 @@ const _SideNav = (
     if (isL1ItemActive) {
       if (args.isL2Trigger) {
         // Click on L2 Trigger
-        if (isMobile) {
-          setL2DrawerTitle(args.title);
-          setIsMobileL2Open(true);
-          return;
-        }
-
-        setIsL1Collapsed(true);
+        collapseL1(args.title);
 
         // `args.isFirstRender` checks if the item that triggered this change, triggered it during first render or during subsequent change
         if (!args.isFirstRender) {
@@ -186,12 +211,7 @@ const _SideNav = (
         }
       } else {
         // Click on normal L1 Item
-        // eslint-disable-next-line no-lonely-if
-        if (isMobile) {
-          setIsMobileL2Open(false);
-        }
-        // Ensures that if Normal L1 item is clicked, the L1 stays expanded
-        setIsL1Collapsed(false);
+        expandL1();
       }
     }
   };
@@ -205,7 +225,7 @@ const _SideNav = (
       setIsL1Collapsed,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isL1Collapsed, isMobile, isMobileL2Open],
+    [isL1Collapsed, isMobile, isMobileL2Open, isL1Hovered],
   );
 
   React.useEffect(() => {
@@ -222,7 +242,7 @@ const _SideNav = (
       {isMobile && onDismiss ? (
         <>
           {/* L1 */}
-          <Drawer isOpen={isOpen ?? false} onDismiss={onDismiss}>
+          <Drawer isOpen={isOpen ?? false} onDismiss={closeMobileNav}>
             <DrawerHeader title="Main Menu" />
             <DrawerBody>
               <MobileL1Container
@@ -241,7 +261,7 @@ const _SideNav = (
             </DrawerBody>
           </Drawer>
           {/* L2 */}
-          <Drawer isOpen={isMobileL2Open} onDismiss={() => setIsMobileL2Open(false)} isLazy={false}>
+          <Drawer isOpen={isMobileL2Open} onDismiss={() => expandL1()} isLazy={false}>
             <DrawerHeader title={l2DrawerTitle} />
             <DrawerBody>
               <BaseBox ref={l2PortalContainerRef} />
@@ -320,8 +340,9 @@ const _SideNav = (
                 if (mouseOverTimeoutRef.current) {
                   clearTimeout(mouseOverTimeoutRef.current);
                 }
-                if (isL1Collapsed && isHoverAgainEnabled) {
+                if (isL1Collapsed && isHoverAgainEnabled && !isL1Hovered) {
                   setIsL1Hovered(true);
+                  onVisibleLevelChange?.({ visibleLevel: 1 });
                 }
               }}
               onMouseLeave={() => {
@@ -330,6 +351,7 @@ const _SideNav = (
                     setIsL1Hovered(false);
                     setIsTransitioning(true);
                     cleanupTransition();
+                    onVisibleLevelChange?.({ visibleLevel: 2 });
                   }, L1_EXIT_HOVER_DELAY);
                 }
               }}
