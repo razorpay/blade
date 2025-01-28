@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.6.0
+
+### Minor Changes
+
+- f48096b2: feat(blade): add corner and arrow icons
+
 ## 12.5.1
 
 ### Patch Changes
