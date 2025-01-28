@@ -231,7 +231,7 @@ type TableBodyProps<Item> = {
    *   )}
    * </TableBody>
    **/
-  children: React.ReactNode | ((tableItem: TableNode<Item>, index: number) => React.ReactElement);
+  children: React.ReactNode | ((tableItem: Item, index: number) => React.ReactElement);
 } & DataAnalyticsAttribute;
 
 type TableRowProps<Item> = {

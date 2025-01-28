@@ -105,7 +105,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
                 <TableHeaderCell>Status</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
-            <TableBody>
+            <TableBody<Item>>
               {(tableItem, index) => (
                 <TableRow key={index} item={tableItem}>
                   <TableCell>

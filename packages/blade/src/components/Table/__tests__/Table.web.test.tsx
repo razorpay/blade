@@ -1241,7 +1241,7 @@ describe('<Table />', () => {
                     <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
                   </TableHeaderRow>
                 </TableHeader>
-                <TableBody>
+                <TableBody<Item>>
                   {(tableItem, index) => (
                     <TableRow
                       key={index}
