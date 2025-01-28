@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ArrowSquareLeftIcon /> should render ArrowSquareLeftIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  >
+    <path
+      d="M8.25 11C7.69772 11 7.25 11.4477 7.25 12C7.25 12.5523 7.69772 13 8.25 13H15.75C16.3023 13 16.75 12.5523 16.75 12C16.75 11.4477 16.3023 11 15.75 11H8.25Z"
+      data-blade-component="svg-path"
+      fill="hsla(211, 33%, 21%, 1)"
+    />
+    <path
+      clip-rule="evenodd"
+      d="M21.25 4.5C21.25 3.5335 20.4665 2.75 19.5 2.75H4.5C3.5335 2.75 2.75 3.5335 2.75 4.5V19.5C2.75 20.4665 3.5335 21.25 4.5 21.25H19.5C20.4665 21.25 21.25 20.4665 21.25 19.5V4.5ZM4.75 4.75H19.25V19.25H4.75V4.75Z"
+      data-blade-component="svg-path"
+      fill="hsla(211, 33%, 21%, 1)"
+      fill-rule="evenodd"
+    />
+    <path
+      clip-rule="evenodd"
+      d="M11.9571 8.29289C12.3476 8.68342 12.3476 9.31658 11.9571 9.70711L9.66421 12L11.9571 14.2929C12.3476 14.6834 12.3476 15.3166 11.9571 15.7071C11.5666 16.0976 10.9334 16.0976 10.5429 15.7071L7.54289 12.7071C7.15237 12.3166 7.15237 11.6834 7.54289 11.2929L10.5429 8.29289C10.9334 7.90237 11.5666 7.90237 11.9571 8.29289Z"
+      data-blade-component="svg-path"
+      fill="hsla(211, 33%, 21%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
+</div>
+`;
