@@ -249,7 +249,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   >
     <table
       aria-multiselectable="false"
-      class="css-woti3e-Table"
+      class="css-ad7aew-Table"
       data-analytics-table="test"
       data-blade-component="table"
       data-table-library_table=""
@@ -1362,7 +1362,7 @@ exports[`<Table /> should render table 1`] = `
     </div>
     <table
       aria-multiselectable="false"
-      class="css-woti3e-Table"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -3127,7 +3127,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
     </div>
     <table
       aria-multiselectable="false"
-      class="css-woti3e-Table"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -4105,7 +4105,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   >
     <table
       aria-multiselectable="false"
-      class="css-woti3e-Table"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -5013,7 +5013,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   >
     <table
       aria-multiselectable="false"
-      class="css-woti3e-Table"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -6121,7 +6121,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
     </div>
     <table
       aria-multiselectable="false"
-      class="css-woti3e-Table"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -7026,7 +7026,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   >
     <table
       aria-multiselectable="false"
-      class="css-woti3e-Table"
+      class="css-ad7aew-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -7938,7 +7938,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   >
     <table
       aria-multiselectable="false"
-      class="c1 css-3izxgm-Table"
+      class="c1 css-1ki2ozv-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -7956,7 +7956,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           role="rowheader"
         >
           <th
-            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1sttzcw-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -7979,7 +7979,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1sttzcw-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -8002,7 +8002,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1sttzcw-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -8025,7 +8025,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1sttzcw-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -8048,7 +8048,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1sttzcw-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -8071,7 +8071,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-12vcau2-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1sttzcw-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
