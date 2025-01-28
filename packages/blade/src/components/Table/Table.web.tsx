@@ -484,14 +484,6 @@ const _Table = <Item,>(
     }
   }
 
-  if (selectionType !== 'none' && hasHoverActions && __DEV__) {
-    // their is no point of using hover actions with selectionType
-    throwBladeError({
-      message: 'Consider removing hover actions when selectionType is set',
-      moduleName: 'Table',
-    });
-  }
-
   // Table Context
   const tableContext: TableContextType = useMemo(
     () => ({
@@ -603,7 +595,7 @@ const _Table = <Item,>(
             select={selectionType !== 'none' ? rowSelectConfig : null}
             sort={sortFunctions ? sort : null}
             $styledProps={{
-              height: height ?? `${VirtualizedTableDimensions.height}px`,
+              height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
               width: isVirtualized ? `${VirtualizedTableDimensions.width}px` : undefined,
               isVirtualized,
               isSelectable: selectionType !== 'none',
