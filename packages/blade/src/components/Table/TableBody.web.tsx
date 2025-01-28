@@ -28,6 +28,7 @@ import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { throwBladeError } from '~utils/logger';
 
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
@@ -57,7 +58,7 @@ const StyledBody = styled(Body)<{
   };
 });
 
-const _TableBody = ({ children, ...rest }: TableBodyProps): React.ReactElement => {
+const _TableBody = <Item,>({ children, ...rest }: TableBodyProps<Item>): React.ReactElement => {
   const { showStripedRows, selectionType } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
@@ -387,12 +388,28 @@ const _TableRow = <Item,>({
 };
 
 const _Virtulized = <Item,>({
-  header,
-  body,
   tableData,
   rowHeight,
+  children,
 }: VirtualizedWrapperProps<Item>): React.ReactElement => {
-  return <Virtualized tableList={tableData} rowHeight={rowHeight} header={header} body={body} />;
+  const [parsedHeader = null, parsedBody = null] = React.Children.toArray(children);
+
+  const bodyFunction =
+    React.isValidElement(parsedBody) &&
+    parsedBody.props &&
+    typeof parsedBody.props === 'object' &&
+    'children' in parsedBody.props
+      ? parsedBody.props.children
+      : null;
+
+  return (
+    <Virtualized
+      tableList={tableData}
+      rowHeight={rowHeight}
+      header={() => parsedHeader}
+      body={bodyFunction}
+    />
+  );
 };
 
 const TableRow = assignWithoutSideEffects(_TableRow, {

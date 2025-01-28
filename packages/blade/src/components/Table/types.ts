@@ -212,7 +212,7 @@ type TableProps<Item> = {
 
 type Identifier = string | number;
 
-type TableBodyProps = {
+type TableBodyProps<Item> = {
   /**
    * The children of the TableBody component should be TableRow components.
    * @example
@@ -221,8 +221,17 @@ type TableBodyProps = {
    *     <TableCell>...</TableCell>
    *   </TableRow>
    * </TableBody>
+   * if you are using TableBody inside VirtulizedWrapper then you can pass the children as a function
+   * @example
+   * <TableBody>
+   *  {(tableItem, index) => (
+   *   <TableRow key={index} item={tableItem}>
+   *    <TableCell>...</TableCell>
+   *   </TableRow>
+   *   )}
+   * </TableBody>
    **/
-  children: React.ReactNode;
+  children: React.ReactNode | ((tableItem: TableNode<Item>, index: number) => React.ReactElement);
 } & DataAnalyticsAttribute;
 
 type TableRowProps<Item> = {
@@ -514,18 +523,6 @@ type VirtualizedWrapperProps<Item> = {
    **/
   /**
    *
-   *  should be a function that returns TableHeader,
-   *
-   **/
-  header: () => React.ReactElement;
-  /**
-   *
-   *  should be a function that returns TableBody
-   *
-   * */
-  body: (tableItem: TableNode<Item>, index: number) => React.ReactElement;
-  /**
-   *
    */
   tableData: TableNode<Item>[];
   /**
@@ -533,6 +530,7 @@ type VirtualizedWrapperProps<Item> = {
    * index 0 is the header height
    **/
   rowHeight: RowHeight;
+  children: React.ReactNode;
 };
 
 export type {

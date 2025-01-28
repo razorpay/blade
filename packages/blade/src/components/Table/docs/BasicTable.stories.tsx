@@ -152,63 +152,63 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
               // header height and row height
               return index === 0 ? 50 : 57.5;
             }}
-            // header={()=>{}}
-            header={() => (
-              <TableHeader>
-                <TableHeaderRow>
-                  <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                  <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
-                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                  <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
-                </TableHeaderRow>
-              </TableHeader>
-            )}
-            body={(tableItem, index) => (
-              <TableRow
-                key={index}
-                item={tableItem}
-                onClick={() => {
-                  console.log('where');
-                }}
-              >
-                <TableCell>
-                  <Code size="medium">{tableItem.paymentId}</Code>
-                </TableCell>
-                <TableEditableCell
-                  accessibilityLabel="Amount"
-                  placeholder="Enter text"
-                  successText="Amount is valid"
-                />
-                <TableCell>{tableItem.account}</TableCell>
-                <TableCell>
-                  {tableItem.date?.toLocaleDateString('en-IN', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                  })}
-                </TableCell>
-                <TableCell>{tableItem.method}</TableCell>
-                <TableCell>
-                  <Badge
-                    size="medium"
-                    color={
-                      tableItem.status === 'Completed'
-                        ? 'positive'
-                        : tableItem.status === 'Pending'
-                        ? 'notice'
-                        : tableItem.status === 'Failed'
-                        ? 'negative'
-                        : 'primary'
-                    }
-                  >
-                    {tableItem.status}
-                  </Badge>
-                </TableCell>
-              </TableRow>
-            )}
-          />
+          >
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {(tableItem, index) => (
+                <TableRow
+                  key={index}
+                  item={tableItem}
+                  onClick={() => {
+                    console.log('where');
+                  }}
+                >
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableEditableCell
+                    accessibilityLabel="Amount"
+                    placeholder="Enter text"
+                    successText="Amount is valid"
+                  />
+                  <TableCell>{tableItem.account}</TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'primary'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </VirtulizedWrapper>
         )}
       </TableComponent>
     </Box>
@@ -352,62 +352,63 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 // header height and row height
                 return index === 0 ? 50 : 57.5;
               }}
-              header={() => (
-                <TableHeader>
-                  <TableHeaderRow>
-                    <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                    <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                    <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
-                    <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                    <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                    <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
-                  </TableHeaderRow>
-                </TableHeader>
-              )}
-              body={(tableItem, index) => (
-                <TableRow
-                  key={index}
-                  item={tableItem}
-                  onClick={() => {
-                    console.log('where');
-                  }}
-                >
-                  <TableCell>
-                    <Code size="medium">{tableItem.paymentId}</Code>
-                  </TableCell>
-                  <TableEditableCell
-                    accessibilityLabel="Amount"
-                    placeholder="Enter text"
-                    successText="Amount is valid"
-                  />
-                  <TableCell>{tableItem.account}</TableCell>
-                  <TableCell>
-                    {tableItem.date?.toLocaleDateString('en-IN', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>{tableItem.method}</TableCell>
-                  <TableCell>
-                    <Badge
-                      size="medium"
-                      color={
-                        tableItem.status === 'Completed'
-                          ? 'positive'
-                          : tableItem.status === 'Pending'
-                          ? 'notice'
-                          : tableItem.status === 'Failed'
-                          ? 'negative'
-                          : 'primary'
-                      }
-                    >
-                      {tableItem.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
-              )}
-            />
+            >
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                  <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                  <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {(tableItem, index) => (
+                  <TableRow
+                    key={index}
+                    item={tableItem}
+                    onClick={() => {
+                      console.log('where');
+                    }}
+                  >
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableEditableCell
+                      accessibilityLabel="Amount"
+                      placeholder="Enter text"
+                      successText="Amount is valid"
+                    />
+                    <TableCell>{tableItem.account}</TableCell>
+                    <TableCell>
+                      {tableItem.date?.toLocaleDateString('en-IN', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>
+                      <Badge
+                        size="medium"
+                        color={
+                          tableItem.status === 'Completed'
+                            ? 'positive'
+                            : tableItem.status === 'Pending'
+                            ? 'notice'
+                            : tableItem.status === 'Failed'
+                            ? 'negative'
+                            : 'primary'
+                        }
+                      >
+                        {tableItem.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </VirtulizedWrapper>
           )}
         </TableComponent>
       </Box>
