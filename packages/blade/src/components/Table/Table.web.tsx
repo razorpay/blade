@@ -134,16 +134,16 @@ const StyledReactTable = styled(ReactTable)<{
     '&&&': {
       ...styledPropsCSSObject,
     },
-    ...($styledProps?.isVirtualized && {
-      ...getTableBodyStyles({
-        isVirtualized: $styledProps?.isVirtualized,
-        theme,
-        height: $styledProps?.height,
-        width: $styledProps?.width,
-        isSelectable: $isSelectable,
-        showStripedRows: $showStripedRows,
-      }),
-    }),
+    ...($styledProps?.isVirtualized
+      ? getTableBodyStyles({
+          isVirtualized: $styledProps?.isVirtualized,
+          theme,
+          height: $styledProps?.height,
+          width: $styledProps?.width,
+          isSelectable: $isSelectable,
+          showStripedRows: $showStripedRows,
+        })
+      : null),
   };
 });
 
