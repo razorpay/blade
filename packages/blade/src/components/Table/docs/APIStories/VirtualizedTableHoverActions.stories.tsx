@@ -71,7 +71,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
+const TableTemplate: StoryFn<typeof TableComponent> = () => {
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
 
