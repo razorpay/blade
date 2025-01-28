@@ -134,6 +134,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 <TableRow
                   key={index}
                   item={tableItem}
+                  isDisabled={index === 3}
                   hoverActions={
                     <>
                       <IconButton

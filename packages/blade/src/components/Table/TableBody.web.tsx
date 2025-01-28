@@ -222,13 +222,13 @@ const StyledRow = styled(Row)<{
             borderRightColor: getIn(theme.colors, tableRow.borderColor),
           }
         : undefined,
-      [`& td:last-child .cell-wrapper`]: {
+      '& td:last-child .cell-wrapper': {
         borderRight: 'none',
       },
       ...(hasHoverActions
         ? {
             [`@media ${getMediaQuery({ min: theme.breakpoints.m })}`]: {
-              [`& td:last-child`]: {
+              '& td:last-child': {
                 opacity: 0,
                 position: 'sticky',
                 zIndex: 2,
@@ -238,7 +238,7 @@ const StyledRow = styled(Row)<{
                   overflow: 'visible',
                 },
               },
-              [`& td:last-child:focus-within`]: {
+              '& td:last-child:focus-within': {
                 opacity: 1,
                 ...getTableActionsHoverStyles({
                   theme,
@@ -277,11 +277,6 @@ const StyledRow = styled(Row)<{
           transition: rowBackgroundTransition,
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
           cursor: 'pointer',
-          ...getTableActionsHoverStyles({
-            hoverColor: tableRow.nonStripe.backgroundColorActive,
-            backgroundGradientColor: tableRow.nonStripe.backgroundColorHover,
-            theme,
-          }),
         },
       }),
       '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
