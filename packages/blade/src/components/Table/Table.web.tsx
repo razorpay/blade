@@ -210,7 +210,7 @@ const _Table = <Item,>(
   });
 
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-  const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
+  const shouldHeaderBeSticky = isVirtualized ?? isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
 
   const isMobile = useIsMobile();
@@ -596,14 +596,14 @@ const _Table = <Item,>(
           {toolbar}
           <StyledReactTable
             role={isVirtualized ? 'grid' : 'table'}
-            layout={{ fixedHeader: true, horizontalScroll: true }}
+            layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
             data={data}
             // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
             theme={tableTheme}
             select={selectionType !== 'none' ? rowSelectConfig : null}
             sort={sortFunctions ? sort : null}
             $styledProps={{
-              height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
+              height: height ?? `${VirtualizedTableDimensions.height}px`,
               width: isVirtualized ? `${VirtualizedTableDimensions.width}px` : undefined,
               isVirtualized,
               isSelectable: selectionType !== 'none',

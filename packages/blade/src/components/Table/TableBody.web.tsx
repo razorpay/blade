@@ -244,7 +244,7 @@ const StyledRow = styled(Row)<{
                   hoverColor: tableRow.nonStripe.backgroundColor,
                 }),
               },
-              [`&:hover td:last-child`]: {
+              '&:hover td:last-child': {
                 opacity: 1,
               },
             },
