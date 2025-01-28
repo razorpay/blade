@@ -39,7 +39,7 @@ const Elevate = ({
   const defaultMotionTriggers = isControlledHighlighted ? ['mount' as const] : ['hover' as const];
   const { theme } = useTheme();
 
-  const fadeVariants: MotionVariantsType = {
+  const elevateVariants: MotionVariantsType = {
     initial: {
       boxShadow: 'none',
     },
@@ -60,7 +60,7 @@ const Elevate = ({
 
   return (
     <BaseMotionEnhancerBox
-      motionVariants={fadeVariants}
+      motionVariants={elevateVariants}
       type={type}
       children={children}
       motionTriggers={motionTriggers ?? defaultMotionTriggers}
