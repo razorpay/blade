@@ -20,7 +20,7 @@ type TableBackgroundColors = `surface.background.gray.${DotNotationToken<
   Theme['colors']['surface']['background']['gray']
 >}`;
 
-type RowHeight = number | ((item: TableLibraryTableNode, index: number) => number);
+type RowHeightType = number | ((item: TableLibraryTableNode, index: number) => number);
 
 type TableHeaderProps = {
   /**
@@ -529,7 +529,7 @@ type VirtualizedWrapperProps<Item> = {
    * should be a function that returns the height of the row
    * index 0 is the header height
    **/
-  rowHeight: RowHeight;
+  rowHeight: (item: TableLibraryTableNode, index: number) => number;
   children: React.ReactNode;
 };
 
@@ -556,4 +556,5 @@ export type {
   TablePaginationType,
   TablePaginationCommonProps,
   VirtualizedWrapperProps,
+  RowHeightType,
 };

@@ -3,7 +3,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableRow, TableCell, VirtulizedWrapper } from '../../TableBody';
+import { TableRow, TableCell, VirtulizedWrapper, TableBody } from '../../TableBody';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
@@ -85,62 +85,64 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
       paddingX="0"
       paddingY="0"
     >
-      <TableComponent data={data} isVirtualized ref={parentRef}>
+      <TableComponent data={data} isVirtualized ref={parentRef} rowDensity="compact">
         {(tableData) => (
           <VirtulizedWrapper
             tableData={tableData}
             rowHeight={(item, index) => {
-              // header height and row height
-              return index === 0 ? 50 : 57.5;
+              console.log('item', item);
+              console.log('index', index);
+              return 36;
             }}
-            header={() => (
-              <TableHeader>
-                <TableHeaderRow>
-                  <TableHeaderCell>ID</TableHeaderCell>
-                  <TableHeaderCell>Amount</TableHeaderCell>
-                  <TableHeaderCell>Account</TableHeaderCell>
-                  <TableHeaderCell>Date</TableHeaderCell>
-                  <TableHeaderCell>Method</TableHeaderCell>
-                  <TableHeaderCell>Status</TableHeaderCell>
-                </TableHeaderRow>
-              </TableHeader>
-            )}
-            body={(tableItem, index) => (
-              <TableRow key={index} item={tableItem}>
-                <TableCell>
-                  <Code size="medium">{tableItem.paymentId}</Code>
-                </TableCell>
-                <TableCell>
-                  <Amount value={tableItem.amount} />
-                </TableCell>
-                <TableCell>{tableItem.account}</TableCell>
-                <TableCell>
-                  {tableItem.date?.toLocaleDateString('en-IN', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                  })}
-                </TableCell>
-                <TableCell>{tableItem.method}</TableCell>
-                <TableCell>
-                  <Badge
-                    size="medium"
-                    color={
-                      tableItem.status === 'Completed'
-                        ? 'positive'
-                        : tableItem.status === 'Pending'
-                        ? 'notice'
-                        : tableItem.status === 'Failed'
-                        ? 'negative'
-                        : 'default'
-                    }
-                  >
-                    {tableItem.status}
-                  </Badge>
-                </TableCell>
-              </TableRow>
-            )}
-          />
+          >
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Account</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {(tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>{tableItem.account}</TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'default'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </VirtulizedWrapper>
         )}
       </TableComponent>
     </Box>

@@ -12,6 +12,8 @@ import type {
   TableCellProps,
   TableBackgroundColors,
   VirtualizedWrapperProps,
+  RowHeightType,
+  TableNode,
 } from './types';
 import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
 import { getTableBodyStyles } from './commonStyles';
@@ -28,8 +30,6 @@ import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { throwBladeError } from '~utils/logger';
-
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
   $showStripedRows: boolean;
@@ -393,6 +393,14 @@ const _Virtulized = <Item,>({
   children,
 }: VirtualizedWrapperProps<Item>): React.ReactElement => {
   const [parsedHeader = null, parsedBody = null] = React.Children.toArray(children);
+  const { rowDensity } = useTableContext();
+  const headerHeight = Number(tableRow.minHeight[rowDensity]);
+  console.log('rowDensity', rowDensity);
+  console.log('headerHeight', headerHeight);
+
+  const _rowHeight = (item: TableNode<Item>, index: number): number => {
+    return index === 0 ? headerHeight : rowHeight(item, index);
+  };
 
   const bodyFunction =
     React.isValidElement(parsedBody) &&
@@ -405,9 +413,9 @@ const _Virtulized = <Item,>({
   return (
     <Virtualized
       tableList={tableData}
-      rowHeight={rowHeight}
+      rowHeight={_rowHeight as RowHeightType}
       header={() => parsedHeader}
-      body={bodyFunction}
+      body={bodyFunction as (node: Item, index: number) => React.ReactNode}
     />
   );
 };
