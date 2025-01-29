@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.7.0
+
+### Minor Changes
+
+- 214b2121: feat(Motion / Elevate): add `Elevate` component to motion presets
+
+  Docs: https://blade.razorpay.com/?path=/docs/motion-elevate--docs
+
 ## 12.6.0
 
 ### Minor Changes
