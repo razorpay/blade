@@ -35,7 +35,7 @@ type ChatBubbleProps = {
   cardBody?: ReactNode;
 }
 ```
-** API **
+## API 
 ```tsx
 // with message
 <ChatBubble message="Hello" isLastMessage isUserMessage />
