@@ -20,7 +20,7 @@ This will be our main component that will be used to render the chat bubble.
 | ------------- | --------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | message       | String    | Default | No       | The message that will be displayed in the chat bubble                                                                             |
 | isLastMessage | Boolean   | false   | No       | If the message is the last message in the chat bubble , if this prop is enabled we will add decoration like tail in messageBubble |
-|               | Boolean   | false   | No       | If the message is from the user, we will add a different styles to the chat bubble                                                |
+| isUserMessage | Boolean   | false   | No       | If the message is from the user, we will add a different styles to the chat bubble                                                |
 | isLoading     | Boolean   | false   | No       | If the message is loading, we will add a loading animation to the chat bubble                                                     |
 | isError       | Boolean   | false   | No       | If the message is an error, we will add a different style to the chat bubble                                                      |
 | cardBody      | ReactNode | null    | No       | If their is no message and isLoading is false, we will render the card body in the chat bubble|
