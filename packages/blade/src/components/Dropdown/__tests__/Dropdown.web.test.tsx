@@ -10,6 +10,9 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
+import { Tooltip } from '~components/Tooltip';
+import { IconButton } from '~components/Button/IconButton';
+import { ChevronDownIcon } from '~components/Icons';
 
 const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
@@ -464,5 +467,58 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     window.open = jest.fn();
     await user.keyboard('[Space]');
     expect(window.open).toBeCalledWith('/settings', '_blank');
+  });
+
+  it('should render dropdown with IconButton', () => {
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <IconButton
+          icon={ChevronDownIcon}
+          accessibilityLabel="Open dropdown"
+          onClick={() => {
+            console.log('clicked');
+          }}
+        />
+        <DropdownOverlay zIndex={1002}>
+          <DropdownHeader title="Recent Searches" />
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+          <DropdownFooter>
+            <Box>
+              <Button isFullWidth>Apply</Button>
+            </Box>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render dropdown with Tooltip', () => {
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <Tooltip
+          content="Amount reversed to customer bank account"
+          onOpenChange={() => {
+            console.log('open changed');
+          }}
+          placement="bottom"
+        >
+          <IconButton
+            icon={ChevronDownIcon}
+            accessibilityLabel="Open dropdown"
+            onClick={() => {
+              console.log('clicked');
+            }}
+          />
+        </Tooltip>
+        <DropdownOverlay zIndex={1002}>
+          <DropdownHeader title="Recent Searches" />
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+    expect(container).toMatchSnapshot();
   });
 });

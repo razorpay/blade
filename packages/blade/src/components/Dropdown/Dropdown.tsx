@@ -27,6 +27,8 @@ const validDropdownChildren = [
   dropdownComponentIds.DropdownOverlay,
   dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
+  dropdownComponentIds.triggers.Tooltip,
+  dropdownComponentIds.triggers.IconButton,
 ];
 
 /**

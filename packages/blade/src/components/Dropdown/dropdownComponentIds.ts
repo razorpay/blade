@@ -8,5 +8,7 @@ export const dropdownComponentIds = {
     DropdownLink: 'DropdownLink',
     AutoComplete: 'AutoComplete',
     SearchInput: 'SearchInput',
+    Tooltip: 'Tooltip',
+    IconButton: 'IconButton',
   },
 };
