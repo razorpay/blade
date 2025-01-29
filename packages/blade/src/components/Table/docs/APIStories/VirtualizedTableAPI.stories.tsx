@@ -4,11 +4,13 @@ import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
 import { TableRow, TableCell, TableVirtualizedWrapper, TableBody } from '../../TableBody';
+import { TableToolbarActions, TableToolbar } from '../../TableToolbar';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { Button } from '~components/Button';
 
 export default {
   title: 'Components/Table/API',
@@ -85,7 +87,24 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
       paddingX="0"
       paddingY="0"
     >
-      <TableComponent data={data} isVirtualized ref={parentRef} rowDensity="compact">
+      <TableComponent
+        data={data}
+        isVirtualized
+        ref={parentRef}
+        height={'500px'}
+        rowDensity="compact"
+        selectionType="multiple"
+        toolbar={
+          <TableToolbar>
+            <TableToolbarActions>
+              <Button variant="secondary" marginRight="spacing.2">
+                Export
+              </Button>
+              <Button>Payout</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
+      >
         {(tableData) => (
           <TableVirtualizedWrapper tableData={tableData}>
             <TableHeader>

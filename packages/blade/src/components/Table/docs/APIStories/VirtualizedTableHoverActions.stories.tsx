@@ -1,4 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
+import { useRef } from 'react';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
@@ -73,39 +74,31 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = () => {
   const { platform } = useTheme();
-  const onMobile = platform === 'onMobile';
+  const parentRef = useRef<HTMLDivElement>(null);
 
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
-      overflow="auto"
-      minHeight="400px"
+      minHeight="700px"
+      ref={parentRef}
+      paddingX="0"
+      paddingY="0"
     >
       <TableComponent
-        height="400px"
         data={data}
-        onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
-        sortFunctions={{
-          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
-          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-          ACCOUNT: (array) => array.sort((a, b) => Number(a.account) - Number(b.account)),
-          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
-          METHOD: (array) => array.sort((a, b) => a.method.localeCompare(b.method)),
-          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
-        }}
-        onSortChange={({ sortKey, isSortReversed }) =>
-          console.log('Sort Key:', sortKey, 'Sort Reversed:', isSortReversed)
-        }
+        isVirtualized
+        ref={parentRef}
+        rowDensity="compact"
         selectionType="multiple"
+        height="700px"
         toolbar={
           <TableToolbar>
             <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2" isFullWidth={onMobile}>
+              <Button variant="secondary" marginRight="spacing.2">
                 Export
               </Button>
-              <Button isFullWidth={onMobile}>Payout</Button>
+              <Button>Payout</Button>
             </TableToolbarActions>
           </TableToolbar>
         }
@@ -127,7 +120,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
                 <TableRow
                   key={index}
                   item={tableItem}
-                  isDisabled={index === 3}
                   hoverActions={
                     <>
                       <IconButton

@@ -121,9 +121,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         {...args}
         data={largeData}
         onSelectionChange={console.log}
-        // selectionType="multiple"
-        // height="500px"
-        // width="800px"
+        selectionType="multiple"
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
@@ -141,9 +139,11 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
           DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
           STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
         }}
-        ref={tableRef}
-        isVirtualized
         defaultSelectedIds={['1', '3']}
+        rowDensity="normal"
+        height="600px"
+        isFirstColumnSticky
+        isVirtualized
       >
         {(tableData) => (
           <TableVirtualizedWrapper tableData={tableData}>
@@ -214,15 +214,15 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box>
       <Heading>Normal Table-</Heading>
-      <Box padding="spacing.5" overflow="auto" minHeight="400px">
+      <Box padding="spacing.5" minHeight="400px">
         <TableComponent
           {...args}
           data={data}
           defaultSelectedIds={['1', '3']}
           onSelectionChange={console.log}
           isFirstColumnSticky
-          height="100%"
           selectionType="multiple"
+          height="400px"
           // eslint-disable-next-line react/jsx-no-duplicate-props
           onSelectionChange={({ selectedIds }) => {
             console.log(selectedIds);
@@ -334,9 +334,9 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
             STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
           }}
           ref={ref}
-          isVirtualized
           defaultSelectedIds={['1', '3']}
           rowDensity="normal"
+          height="600px"
           isFirstColumnSticky
         >
           {(tableData) => (

@@ -124,22 +124,22 @@ const StyledReactTable = styled(ReactTable)<{
     theme,
     height: $styledProps?.height,
     ...($styledProps?.isVirtualized && {
-      width: $styledProps?.width,
+      width: '100%',
     }),
   });
   const $isSelectable = $styledProps?.isSelectable;
   const $showStripedRows = $styledProps?.showStripedRows;
-
   return {
     '&&&': {
       ...styledPropsCSSObject,
+      overflow: `${$styledProps?.isVirtualized ? 'unset' : 'auto'} !important`,
     },
     ...($styledProps?.isVirtualized
       ? getTableBodyStyles({
           isVirtualized: $styledProps?.isVirtualized,
           theme,
           height: $styledProps?.height,
-          width: $styledProps?.width,
+          width: '100%',
           isSelectable: $isSelectable,
           showStripedRows: $showStripedRows,
         })
@@ -224,6 +224,8 @@ const _Table = <Item,>(
   } = usePresence(isRefreshing, {
     transitionDuration: theme.motion.duration.quick,
   });
+
+  console.log('isVirtualized', isVirtualized);
 
   // Table Theme
   const columnCount = getTableHeaderCellCount(children, isVirtualized);
@@ -566,7 +568,7 @@ const _Table = <Item,>(
           position="relative"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
-          width={isVirtualized ? `${VirtualizedTableDimensions.width}px` : undefined}
+          width={isVirtualized ? `100%` : undefined}
         >
           {isRefreshSpinnerMounted && (
             <RefreshWrapper
@@ -596,7 +598,7 @@ const _Table = <Item,>(
             sort={sortFunctions ? sort : null}
             $styledProps={{
               height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
-              width: isVirtualized ? `${VirtualizedTableDimensions.width}px` : undefined,
+              width: isVirtualized ? `100%` : undefined,
               isVirtualized,
               isSelectable: selectionType !== 'none',
               showStripedRows,

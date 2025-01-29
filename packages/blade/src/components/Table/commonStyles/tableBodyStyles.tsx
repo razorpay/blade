@@ -5,7 +5,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 
 const getRowWrapperSelector = ({ isVirtualized }: { isVirtualized?: boolean }): string => {
-  return isVirtualized ? '.tbody div' : '&';
+  return isVirtualized ? 'tbody div' : '&';
 };
 
 const addTableRowSelectorIFVirtualized = ({
@@ -46,18 +46,18 @@ const getTableBodyStyles = ({
         overflow: 'hidden !important',
       },
       // for virtualized table, we need to apply some styles to tbody
-      '.tbody > div': {
+      'tbody > div': {
         display: 'block !important',
       },
-      '.tbody  div  tr': {
+      'tbody  div  tr': {
         display: 'grid',
         gridTemplateColumns: 'var(--data-table-library_grid-template-columns)',
         columnGap: '0',
       },
-      '.tbody div tr:last-child .cell-wrapper': {
+      'tbody div tr:last-child .cell-wrapper': {
         borderBottom: 'none',
       },
-      '.tbody div td': {
+      'tbody div td': {
         padding: '0',
       },
     }),
