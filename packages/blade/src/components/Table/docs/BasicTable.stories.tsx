@@ -144,7 +144,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         isVirtualized
       >
         {(tableData) => (
-          <TableVirtualizedWrapper tableData={tableData}>
+          <TableVirtualizedWrapper tableData={tableData} rowHeight={() => 57}>
             <TableHeader>
               <TableHeaderRow>
                 <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
@@ -336,7 +336,7 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
           isFirstColumnSticky
         >
           {(tableData) => (
-            <TableVirtualizedWrapper tableData={tableData}>
+            <TableVirtualizedWrapper tableData={tableData} rowHeight={() => 58}>
               <TableHeader>
                 <TableHeaderRow>
                   <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>

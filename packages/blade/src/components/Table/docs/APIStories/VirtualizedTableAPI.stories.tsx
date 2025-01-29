@@ -89,7 +89,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
         data={data}
         isVirtualized
         height={'500px'}
-        rowDensity="compact"
+        rowDensity="comfortable"
         selectionType="multiple"
         toolbar={
           <TableToolbar>
