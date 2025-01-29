@@ -529,7 +529,8 @@ type VirtualizedWrapperProps<Item> = {
    * should be a function that returns the height of the row
    * index 0 is the header height
    **/
-  rowHeight: (item: TableLibraryTableNode, index: number) => number;
+  headerHeight?: number;
+  rowHeight?: (item: TableLibraryTableNode, index: number) => number;
   children: React.ReactNode;
 };
 

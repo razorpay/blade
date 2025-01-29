@@ -87,14 +87,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
     >
       <TableComponent data={data} isVirtualized ref={parentRef} rowDensity="compact">
         {(tableData) => (
-          <TableVirtualizedWrapper
-            tableData={tableData}
-            rowHeight={(item, index) => {
-              console.log('item', item);
-              console.log('index', index);
-              return 36;
-            }}
-          >
+          <TableVirtualizedWrapper tableData={tableData}>
             <TableHeader>
               <TableHeaderRow>
                 <TableHeaderCell>ID</TableHeaderCell>

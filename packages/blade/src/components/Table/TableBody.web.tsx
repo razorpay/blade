@@ -384,17 +384,19 @@ const _TableRow = <Item,>({
 
 const _Virtulized = <Item,>({
   tableData,
+  headerHeight,
   rowHeight,
   children,
 }: VirtualizedWrapperProps<Item>): React.ReactElement => {
   const [parsedHeader = null, parsedBody = null] = React.Children.toArray(children);
   const { rowDensity } = useTableContext();
-  const headerHeight = Number(tableRow.minHeight[rowDensity]);
-  console.log('rowDensity', rowDensity);
-  console.log('headerHeight', headerHeight);
+  const _tableRow = Number(tableRow.minHeight[rowDensity]);
 
   const _rowHeight = (item: TableNode<Item>, index: number): number => {
-    return index === 0 ? headerHeight : rowHeight(item, index);
+    if (index === 0) {
+      return headerHeight ?? _tableRow;
+    }
+    return rowHeight ? rowHeight(item, index - 1) : _tableRow;
   };
 
   const bodyFunction =
