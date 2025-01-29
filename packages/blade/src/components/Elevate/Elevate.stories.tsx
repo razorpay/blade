@@ -33,6 +33,13 @@ export default {
   title: 'Motion/Elevate',
   component: Elevate,
   tags: ['autodocs'],
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     docs: {
       page: Page,
