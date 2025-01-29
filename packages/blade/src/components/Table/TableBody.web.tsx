@@ -419,7 +419,7 @@ const TableRow = assignWithoutSideEffects(_TableRow, {
   componentId: ComponentIds.TableRow,
 });
 
-const VirtulizedWrapper = assignWithoutSideEffects(_Virtulized, {
+const TableVirtualizedWrapper = assignWithoutSideEffects(_Virtulized, {
   componentId: ComponentIds.VirtualizedTable,
 });
-export { TableBody, TableRow, TableCell, VirtulizedWrapper };
+export { TableBody, TableRow, TableCell, TableVirtualizedWrapper };

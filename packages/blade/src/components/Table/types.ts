@@ -221,7 +221,7 @@ type TableBodyProps<Item> = {
    *     <TableCell>...</TableCell>
    *   </TableRow>
    * </TableBody>
-   * if you are using TableBody inside VirtulizedWrapper then you can pass the children as a function
+   * if you are using TableBody inside TableVirtualizedWrapper then you can pass the children as a function
    * @example
    * <TableBody>
    *  {(tableItem, index) => (

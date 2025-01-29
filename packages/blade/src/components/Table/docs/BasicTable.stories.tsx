@@ -13,7 +13,7 @@ import {
   TableToolbar,
   TableToolbarActions,
 } from '../../Table';
-import { VirtulizedWrapper } from '../TableBody';
+import { TableVirtualizedWrapper } from '../TableBody';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Code, Heading } from '~components/Typography';
@@ -146,7 +146,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         defaultSelectedIds={['1', '3']}
       >
         {(tableData) => (
-          <VirtulizedWrapper
+          <TableVirtualizedWrapper
             tableData={tableData}
             rowHeight={(item, index) => {
               // header height and row height
@@ -208,7 +208,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 </TableRow>
               )}
             </TableBody>
-          </VirtulizedWrapper>
+          </TableVirtualizedWrapper>
         )}
       </TableComponent>
     </Box>
@@ -346,7 +346,7 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
           isFirstColumnSticky
         >
           {(tableData) => (
-            <VirtulizedWrapper
+            <TableVirtualizedWrapper
               tableData={tableData}
               rowHeight={(item, index) => {
                 // header height and row height
@@ -408,7 +408,7 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   </TableRow>
                 )}
               </TableBody>
-            </VirtulizedWrapper>
+            </TableVirtualizedWrapper>
           )}
         </TableComponent>
       </Box>

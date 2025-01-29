@@ -2,7 +2,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableBody, TableRow, TableCell, VirtulizedWrapper } from '../../TableBody';
+import { TableBody, TableRow, TableCell, TableVirtualizedWrapper } from '../../TableBody';
 import { TablePagination } from '../../TablePagination';
 import { TableToolbarActions, TableToolbar } from '../../TableToolbar';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -111,7 +111,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
         }
       >
         {(tableData) => (
-          <VirtulizedWrapper
+          <TableVirtualizedWrapper
             tableData={tableData}
             rowHeight={(item, index) => {
               console.log('item', item);
@@ -186,7 +186,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
                 </TableRow>
               )}
             </TableBody>
-          </VirtulizedWrapper>
+          </TableVirtualizedWrapper>
         )}
       </TableComponent>
     </Box>

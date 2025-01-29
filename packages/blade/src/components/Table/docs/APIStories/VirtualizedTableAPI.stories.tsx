@@ -3,7 +3,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableRow, TableCell, VirtulizedWrapper, TableBody } from '../../TableBody';
+import { TableRow, TableCell, TableVirtualizedWrapper, TableBody } from '../../TableBody';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
@@ -12,7 +12,7 @@ import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/Table/API',
-  component: VirtulizedWrapper,
+  component: TableVirtualizedWrapper,
   args: {},
   argTypes: {
     children: {
@@ -32,7 +32,7 @@ export default {
       ),
     },
   },
-} as Meta<typeof VirtulizedWrapper>;
+} as Meta<typeof TableVirtualizedWrapper>;
 
 const nodes: Item[] = [
   ...Array.from({ length: 5000 }, (_, i) => ({
@@ -87,7 +87,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
     >
       <TableComponent data={data} isVirtualized ref={parentRef} rowDensity="compact">
         {(tableData) => (
-          <VirtulizedWrapper
+          <TableVirtualizedWrapper
             tableData={tableData}
             rowHeight={(item, index) => {
               console.log('item', item);
@@ -142,7 +142,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
                 </TableRow>
               )}
             </TableBody>
-          </VirtulizedWrapper>
+          </TableVirtualizedWrapper>
         )}
       </TableComponent>
     </Box>

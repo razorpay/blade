@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { useState, useRef } from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
-import { TableBody, TableCell, TableRow, VirtulizedWrapper } from '../TableBody';
+import { TableBody, TableCell, TableRow, TableVirtualizedWrapper } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
@@ -1223,7 +1223,7 @@ describe('<Table />', () => {
             isFirstColumnSticky
           >
             {(tableData) => (
-              <VirtulizedWrapper
+              <TableVirtualizedWrapper
                 tableData={tableData}
                 rowHeight={(item, index) => {
                   console.log({
@@ -1279,7 +1279,7 @@ describe('<Table />', () => {
                     </TableRow>
                   )}
                 </TableBody>
-              </VirtulizedWrapper>
+              </TableVirtualizedWrapper>
             )}
           </Table>
         </Box>
