@@ -53,8 +53,8 @@ A table component helps in displaying data in a grid format, through rows and co
     - [Comparison](#comparison-1)
 - [Accessibility](#accessibility)
 
-
 ## Features
+
 - Column Sorting
 - Row Selection - Single & Multiple
 - Pagination
@@ -66,6 +66,7 @@ A table component helps in displaying data in a grid format, through rows and co
 - Cell Density - Normal & Comfortable
 
 ## Out of scope
+
 We don't have enough use-cases for the following features at Razorpay and hence scoped them out of our Table component. If you are aware of any of these features being used at Razorpay, please let us know by creating an issue - we will evaluate it and scope it for future releases.
 
 - Column Reordering
@@ -80,6 +81,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
   - Mobile Apps will be using Lists instead of Tables to convey information
 
 ## Anatomy
+
 <img src="./table-anatomy.png" width="760" alt="Table thumbnail" />
 
 ## API
@@ -87,11 +89,11 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 ### Example Usage
 
 ```jsx
-<Table 
+<Table
     data={data} // This contains the actual data to be rendered in the table which would be retrieved from some API
-    selectionType='single' 
-    onSelectionChange={onSelectionChange} 
-    sortFunctions={sortFunctions} 
+    selectionType='single'
+    onSelectionChange={onSelectionChange}
+    sortFunctions={sortFunctions}
     onSortChange={onSortChange}
     isLoading={false}
     isStickyHeader={true}
@@ -171,12 +173,15 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 ```
 
 ### Detailed API
+
 > We will be using Composable API for Table
+
 #### Table
+
 | Prop               | Type                                          | Default     | Description                                                                                                                                                                                                                                                                                                                              | Required |
 | ------------------ | --------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| data               | TableData                                     | `undefined` | This contains the actual data to be rendered in the table which would be retrieved from some API                                                                                                                                                                                                                                         | ✅        |
-| children           | `(tableData: TableData) => React.ReactNode[]` | undefined   | Expects a function that returns Table composition components like `TableHeader`, `TableBody` & `TableFooter`. The function provides the tableData as an argument which can be used to render the table. The provided tableData will update based on pagination and sort states.                                                          | ✅        |
+| data               | TableData                                     | `undefined` | This contains the actual data to be rendered in the table which would be retrieved from some API                                                                                                                                                                                                                                         | ✅       |
+| children           | `(tableData: TableData) => React.ReactNode[]` | undefined   | Expects a function that returns Table composition components like `TableHeader`, `TableBody` & `TableFooter`. The function provides the tableData as an argument which can be used to render the table. The provided tableData will update based on pagination and sort states.                                                          | ✅       |
 | selectionType      | `single`, `multiple`                          | `single`    | This defines the type of selection that is allowed in the table. Possible values are 'single' & 'multiple'                                                                                                                                                                                                                               |
 | onSelectionChange  | `SelectionChangeEvent`                        | `undefined` | This is a callback function that is called when the selection changes. It is called with the selected items as an array                                                                                                                                                                                                                  |
 | sortFunctions      | `SortFunctionsType`                           | `undefined` | This is an object that contains the sort functions for each column. The key of the object should be the `headerKey` of the column and the value is a function that takes in an array of items and returns a sorted array of items. A column will be made automatically sortable by adding its headerKey along with a sort function here. |
@@ -193,6 +198,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 | surfaceLevel       | `1`, `2`, `3`                                 | `2`         | This defines the surface level of the table. Possible values are `1`, `2` & `3`                                                                                                                                                                                                                                                          |
 
 ##### `TableData`
+
 ```ts
 type TableNode = {
   id: Identifier;
@@ -207,6 +213,7 @@ type TableData = {
 ```
 
 ##### `SortFunctionsType`
+
 ```ts
 type SortFunctionsType = {
   [key: string]: (array: TableNode[]) => TableNode[];
@@ -214,6 +221,7 @@ type SortFunctionsType = {
 ```
 
 ##### `SortChangeEvent`
+
 ```ts
 type SortChangeEvent = {
   sortKey: string;
@@ -222,13 +230,13 @@ type SortChangeEvent = {
 ```
 
 ##### `SelectionChangeEvent`
+
 ```ts
 type SelectionChangeEvent = (selectedItems: TableNode[]) => void;
 ```
 
-
-
 #### TableToolbar
+
 | Prop               | Type              | Default   | Description                                                         | Required |
 | ------------------ | ----------------- | --------- | ------------------------------------------------------------------- | -------- |
 | title              | `string`          | undefined | This defines the title of the table toolbar                         |          |
@@ -236,60 +244,69 @@ type SelectionChangeEvent = (selectedItems: TableNode[]) => void;
 | children           | `React.ReactNode` | undefined | This defines the actions to be shown in the table toolbar           |          |
 
 #### TableToolbarActions
+
 | Prop     | Type              | Default   | Description                                               | Required |
 | -------- | ----------------- | --------- | --------------------------------------------------------- | -------- |
 | children | `React.ReactNode` | undefined | This defines the actions to be shown in the table toolbar |
 
 #### TableHeader
+
 | Prop     | Type              | Default   | Description                        | Required |
 | -------- | ----------------- | --------- | ---------------------------------- | -------- |
-| children | `React.ReactNode` | undefined | This defines the table header rows | ✅        |
-
+| children | `React.ReactNode` | undefined | This defines the table header rows | ✅       |
 
 #### TableHeaderRow
+
 | Prop     | Type              | Default   | Description                         | Required |
 | -------- | ----------------- | --------- | ----------------------------------- | -------- |
-| children | `React.ReactNode` | undefined | This defines the table header cells | ✅        |
+| children | `React.ReactNode` | undefined | This defines the table header cells | ✅       |
 
 #### TableHeaderCell
+
 | Prop      | Type                         | Default   | Description                                                                  | Required |
 | --------- | ---------------------------- | --------- | ---------------------------------------------------------------------------- | -------- |
-| headerKey | `string`                     | undefined | This defines the header key of the column                                    | ✅        |
-| children  | `React.ReactNode` , `string` | undefined | This defines the content of the table header cell. Can be a JSX or a string. | ✅        |
+| headerKey | `string`                     | undefined | This defines the header key of the column                                    | ✅       |
+| children  | `React.ReactNode` , `string` | undefined | This defines the content of the table header cell. Can be a JSX or a string. | ✅       |
 
 #### TableBody
+
 | Prop     | Type              | Default   | Description                      | Required |
 | -------- | ----------------- | --------- | -------------------------------- | -------- |
-| children | `React.ReactNode` | undefined | This defines the table body rows | ✅        |
+| children | `React.ReactNode` | undefined | This defines the table body rows | ✅       |
 
 #### TableRow
+
 | Prop       | Type              | Default   | Description                                     | Required |
 | ---------- | ----------------- | --------- | ----------------------------------------------- | -------- |
-| children   | `React.ReactNode` | undefined | This defines the table body cells               | ✅        |
+| children   | `React.ReactNode` | undefined | This defines the table body cells               | ✅       |
 | isDisabled | `boolean`         | false     | This defines whether the row is disabled or not |
 
 #### TableCell
+
 | Prop     | Type                        | Default   | Description                                                    | Required |
 | -------- | --------------------------- | --------- | -------------------------------------------------------------- | -------- |
-| children | `React.ReactNode`, `string` | undefined | This defines the content of the cell. Can be a JSX or a string | ✅        |
+| children | `React.ReactNode`, `string` | undefined | This defines the content of the cell. Can be a JSX or a string | ✅       |
 
 #### TableFooter
+
 | Prop     | Type              | Default   | Description                        | Required |
 | -------- | ----------------- | --------- | ---------------------------------- | -------- |
-| children | `React.ReactNode` | undefined | This defines the table footer rows | ✅        |
-
+| children | `React.ReactNode` | undefined | This defines the table footer rows | ✅       |
 
 #### TableFooterRow
+
 | Prop     | Type              | Default   | Description                         | Required |
 | -------- | ----------------- | --------- | ----------------------------------- | -------- |
-| children | `React.ReactNode` | undefined | This defines the table footer cells | ✅        |
+| children | `React.ReactNode` | undefined | This defines the table footer cells | ✅       |
 
 #### TableFooterCell
+
 | Prop     | Type                        | Default   | Description                                                                  | Required |
 | -------- | --------------------------- | --------- | ---------------------------------------------------------------------------- | -------- |
-| children | `React.ReactNode`, `string` | undefined | This defines the content of the table footer cell. Can be a JSX or a string. | ✅        |
+| children | `React.ReactNode`, `string` | undefined | This defines the content of the table footer cell. Can be a JSX or a string. | ✅       |
 
 #### TablePagination
+
 | Prop               | Type                  | Default                          | Description                                                                                                                                                           | Required |
 | ------------------ | --------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | currentPage        | `number`              | undefined                        | This defines the current page of the table. If you pass currentPage, this becomes a controlled component and you will have to manage page selection state on your own |          |
@@ -301,37 +318,43 @@ type SelectionChangeEvent = (selectedItems: TableNode[]) => void;
 | onPageSizeChange   | `PageSizeChangeEvent` | undefined                        | This is a callback function that is called when the pageSize changes                                                                                                  |
 
 ##### `PageChangeEvent`
+
 ```ts
-type PageChangeEvent = ({page: number}) => void;
+type PageChangeEvent = ({ page: number }) => void;
 ```
 
 ##### `onPageSizeChange`
+
 ```ts
-type PageSizeChangeEvent = ({pageSize: number}) => void;
+type PageSizeChangeEvent = ({ pageSize: number }) => void;
 ```
 
-### API Design Decisions 
+### API Design Decisions
+
 > You can skip this section and go to [Table Library Evaluation](#table-library-evaluation) if you are not interested in the API design process. The [Final API](#api) has already been documented above.
 > The decision was made to go ahead with Composable API after consulting with the frontend leads
 
 While evaluating what kind of API we want for our table, we discovered 2 approaches:
 
 #### 1. Composable API
+
 Composable API is a pattern where we have a set of components that can be composed together to create a table. This approach allows us to stitch together a table very similar to how you would do it with native HTML. However, it is also more verbose and requires more effort to create a table.
 
 ```jsx
 // Mock data & functions
 
-const data = [{
+const data = [
+  {
     firstName: 'John',
     lastName: 'Doe',
-    balance: 1000
-},
-{
+    balance: 1000,
+  },
+  {
     firstName: 'Jane',
     lastName: 'Doe',
-    balance: 2000
-}];
+    balance: 2000,
+  },
+];
 
 const sortFunctions = {
   firstName: (array) => array.sort((a, b) => a.name.localeCompare(b.name)),
@@ -342,19 +365,18 @@ const onSelectionChange = (selectedItems) => {
 };
 
 const onSortChange = ({ headerKey, sortType }) => {
-  console.log({headerKey, sortType});
+  console.log({ headerKey, sortType });
 };
 ```
-
 
 ```jsx
 // Composable Table
 
-<Table 
+<Table
     data={data} // This contains the actual data to be rendered in the table which would be retrieved from some API
-    selectionType='single' 
-    onSelectionChange={onSelectionChange} 
-    sortFunctions={sortFunctions} 
+    selectionType='single'
+    onSelectionChange={onSelectionChange}
+    sortFunctions={sortFunctions}
     onSortChange={onSortChange}
     isLoading={false}
     rowDensity='normal'
@@ -431,16 +453,19 @@ const onSortChange = ({ headerKey, sortType }) => {
 ```
 
 ##### Pros
+
 - Composable API is more intuitive and resembles the native HTML structure of a table
 - It is easier to understand since the API design is similar to rest of the Blade components
 - It is easier to extend and add new feature to individual table components
 - We could leverage tree-shaking to only import the components that are being used in the consumer's table
 
 ##### Cons
+
 - Composable API is more verbose and requires more effort to create a table by composing together multiple components
 - Most popular table libraries like AG Grid, React Table, etc. use a compact API which is battle tested and developers are more familiar with the same
 
 #### 2. Compact API
+
 Compact API is a pattern where we have a single component that takes in all the data and renders a table. This approach is more concise and requires less effort to create a table. However, it is also less intuitive and does not resemble the native HTML structure of a table.
 
 ```jsx
@@ -518,37 +543,40 @@ const pagination = {
 // Compact Table
 
 <Table
-    data={data} // This contains the actual data to be rendered in the table which would be retrieved from some API
-    columns={columns} // This contains the column definition for the table
-    footerRow={footerRow} // This contains the footer definition for the table
-    selectionType='single'
-    onSelectionChange={onSelectionChange}
-    sortFunctions={sortFunctions}
-    onSortChange={onSortChange}
-    isLoading={false}
-    rowDensity='normal'
-    showStripedRows={true}
-    toolbarTitle="Users"
-    toolbarItemsSelectedTitle={`${selectedUsersCount} Users selected`}
-    toolbarActions={<Button>Export</Button>}
-    isStickyHeader={true}
-    isStickyFooter={true}
-    isStickyFistColumn={true}
+  data={data} // This contains the actual data to be rendered in the table which would be retrieved from some API
+  columns={columns} // This contains the column definition for the table
+  footerRow={footerRow} // This contains the footer definition for the table
+  selectionType="single"
+  onSelectionChange={onSelectionChange}
+  sortFunctions={sortFunctions}
+  onSortChange={onSortChange}
+  isLoading={false}
+  rowDensity="normal"
+  showStripedRows={true}
+  toolbarTitle="Users"
+  toolbarItemsSelectedTitle={`${selectedUsersCount} Users selected`}
+  toolbarActions={<Button>Export</Button>}
+  isStickyHeader={true}
+  isStickyFooter={true}
+  isStickyFistColumn={true}
 />
 ```
 
 ##### Pros
+
 - Compact API is more concise and requires less effort to create a table
 - Most popular table libraries like AG Grid, React Table, etc. use a compact API which is battle tested and developers are more familiar with the same
 - It would be relatively easier to swap out the table library in the future if we decide to do so since the API design is similar to other popular table libraries
 
 ##### Cons
+
 - Compact API is less intuitive and does not resemble the native HTML structure of a table
 - It is harder to extend and add new feature to the table component since it is a single component
 - We would have to import the entire table component even if we are using only a few features of the table resulting in a higher bundle size for the consumer
 - Internally, we would have to use a composable API to create the compact API anyway since the library we have chosen has a composable API
 
 #### Comparison
+
 | Aspect                  | Composable API                                                                                                                                     | Compact API                                                                                    |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | **API Design**          | Multipe components composed together                                                                                                               | Single component that takes all data                                                           |
@@ -559,15 +587,17 @@ const pagination = {
 | **Bundle Size**         | Can leverage tree-shaking for smaller bundles (Only components like Pagination & Footer could be omitted, rest of it might still always be needed) | Bundle size would be unaffected regardless of features used within the table by consumer       |
 | **Future Library Swap** | May require reworking with different library                                                                                                       | Easier to swap out the library in the future                                                   |
 
-
 #### Decision
+
 ##### 1. Only Composable API
-- We could expose only the Composable API to the consumers 
+
+- We could expose only the Composable API to the consumers
 - This would take the least amount of implementation time and effort
 - Strong reasons to go with this approach would be the composability and tree-shaking benefits
 - Strong reasons to not go with this approach would be the verbosity and the fact that it is not the most popular approach within Table libraries ecosystem
 
 ##### 2. Only Compact API
+
 - We could expose only the Compact API to the consumers
 - This would take the relatively more time and effort since internally we will have to build individual components and stitch them together to create the compact API
 - Internally we might not need to put in heavy efforts to ensure composable API is very well structured since we will not be exposing it to the consumers. We would use the composable API internally only to derive the final outcome of a compact API.
@@ -575,6 +605,7 @@ const pagination = {
 - Strong reasons to not go with this approach would be the lack of composability and tree-shaking benefits
 
 ##### 3. Both Composable & Compact API
+
 - We could expose both the Composable & Compact API to the consumers
 - This would take the most amount of implementation time and effort since we will have to build both the APIs
 - This will add a lot of complexity to the library and will make it harder to maintain. Any changes to the Table component, we will have to ensure both APIs are updated accordingly and always maintain parity
@@ -583,28 +614,32 @@ const pagination = {
 - Strong reasons to not go with this approach would be the complexity and maintainability issues as well as education efforts required to educate the consumers about both the APIs
 
 ##### Current API Usage Across Razorpay Projects
+
 > This is an approximate usage count. We identified this by searching through the codebase. Actual numbers may vary slightly.
- 
+
 | Project         | Composable API Table Instances | Compact API Table Instances |
 | --------------- | ------------------------------ | --------------------------- |
 | PG Dashboard    | 101                            | 81                          |
 | Admin Dashboard | 19                             | 196                         |
 | X Dashboard     | 6                              | 11                          |
 
-
-
 ##### Conclusion
+
 - We took inputs from Frontend Leads across the org and the majority of them were in favour of the **Composable API** for its **composability** and **tree-shaking benefits**
 - Compact API can be built on top of composable API if needed in the future
 - We will be going ahead with the **Composable API** for now and will evaluate the need for Compact API in the future
 
 ## Table Library Evaluation
+
 ### Why a library?
+
 - The primary reason for using a library is to use a battle-tested solution that has been used by a lot of people and has been proven to work well instead of figuring out all the edge cases ourselves
 - On a long term we could evaluate swapping it out and building our own solution when the bandwidth and requirements align but until then using an open source library would be the best option
 
 ### What are we looking for in a library?
+
 We had a few requirements that we were looking for in a library:
+
 - Well maintained and has a good community around it
 - Reasonable bundle size
 - Supports all the features that we need today and in the future (including features marked out of scope)
@@ -612,26 +647,31 @@ We had a few requirements that we were looking for in a library:
 - Flexible API to ensure we can build both the Composable & Compact APIs
 
 ### Libraries evaluated
-While evaluating multiple libraries we identified 3 categories: 
+
+While evaluating multiple libraries we identified 3 categories:
+
 - **Heavy sized library** with every feature under the sun
 - **Medium size library** with all of the features we could need plus some more
 - **Small size library** with all the core features we could need
 
 #### Heavy sized library - AG Grid
+
 - [AG Grid](https://www.ag-grid.com/) is the best example of a heavy sized library. It has a lot of features and is very well maintained. However, it is also very heavy and has a lot of features that we don't need.
 - As of today, AG Grid's bundle size is 75kb (15kb gzipped) but along with this we also need to install some additional dependency libraries like ag-grid-community which would eventually increase the overall bundle size
 - Replicating the Composable API would be a challenging task with React Table since it internally uses API similar to the Compact API. We would have to build a lot of abstractions to ensure we can build the Composable API on top of the Compact API.
 - AG Grid is possibly the most battle-tested library but has a ton of features that we won't need and hence would be an overkill for us as of now
 
 #### Medium sized library - Tanstack's React Table
+
 - [Tanstack's React Table](https://react-table.tanstack.com/) is the best example of a medium sized library. It has all the features we need and is very well maintained. However, it is also relatively heavy and has a lot of features that we don't need.
 - As of today, React Table's bundle size is 60kb (14kb gzipped).
-- Tanstack's React  Table has been around for a longer duration and is extremely well maintained. It has relatively less features than AG Grid but also has a lot of features that we don't need.
+- Tanstack's React Table has been around for a longer duration and is extremely well maintained. It has relatively less features than AG Grid but also has a lot of features that we don't need.
 - Tanstack's React Table is built in a framework agnostic manner which meant they had to use a lot of abstractions to ensure it works well with all the frameworks. This makes it harder to understand, maintain and extend the library.
 - Replicating the Composable API would be a challenging task with React Table since it internally uses API similar to the Compact API. We would have to build a lot of abstractions to ensure we can build the Composable API on top of the Compact API.
 - React Table is possibly our 2nd best option if we ever need more complex tables in the future but as of now it would be an overkill for us
 
 #### Small sized library - React Table Library
+
 - [React Table Library (@table-library/react-table-library)](https://github.com/table-library/react-table-library) is the best example of a small sized library. It has all the features we need and is relatively well maintained.
 - It contains all the features we need today as well as the ones we can forsee needing in the future
 - As of today, React Table Library's bundle size is 23kb (7kb gzipped).
@@ -640,36 +680,36 @@ While evaluating multiple libraries we identified 3 categories:
 - React Table Library is our best option as of today since it has all the features we could need and is relatively lightweight
 
 #### Comparison
+
 | Library                                                                     | Features                                                      | Bundle Size                                             | Composable API       | Compact API   | Maintenance                                             | Our Choice |
 | --------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------- | -------------------- | ------------- | ------------------------------------------------------- | ---------- |
 | [AG Grid](https://www.ag-grid.com/)                                         | Very heavy and has a lot of features we don't need            | 75kb (15kb gzipped) (+ additional supporting libraries) | Challenging to build | Easy to build | Extremely well maintained. Has paid Enterprise support. |
 | [Tanstack's React Table](https://react-table.tanstack.com/)                 | Relatively heavy and has a lot of features we don't need      | 60kb (14kb gzipped)                                     | Challenging to build | Easy to build | Very well maintained                                    |
-| [React Table Library](https://github.com/table-library/react-table-library) | Relatively lightweight and has all the features we could need | 23kb (7kb gzipped)                                      | Easy to build        | Easy to build | Relatively well maintained                              | ✅          |
-
+| [React Table Library](https://github.com/table-library/react-table-library) | Relatively lightweight and has all the features we could need | 23kb (7kb gzipped)                                      | Easy to build        | Easy to build | Relatively well maintained                              | ✅         |
 
 ## Accessibility
+
 - We will be following the [WAI-ARIA Table Practices](https://www.w3.org/WAI/ARIA/apg/patterns/table/) to ensure our table is accessible
 - We will be using native HTML elements like `<table>`, `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>` & `<td>` to ensure our table is accessible
 
-
 # Virtualization
-
 
 Virtaulized table is a table component that renders only the visible rows and columns. This is useful when you have a large dataset and you want to render only the visible rows and columns to improve the performance of the table.
 
 ## Approach
+
 Out implementation of virtualized table is an wrapper on top of react-table-library 's implementation. It provides a simple API to create a virtualized table.
 alternatively we can use react-window or react-virtualized to create a virtualized table wrapper. but that would require more effort to create a virtualized table. plus their is a lot of boilerplate code to create a virtualized table using react-window or react-virtualized.
 also their is high chance of bugs and performance issues in the implementation of virtualized table using react-window or react-virtualized. if we need more features in the future then we can expore react-window or react-virtualized.
 
-
 ## Decision
+
 1. We have made a wrapper on top of react-table-library's implementation to create a virtualized table.
-2. if virtualization is enabled we have a wrapper component and we are not passing TableBody, so this breaks a lot of existing styles and features of the table component like hoverAction, rowSelection, etc. so we have to move these styles to table component. 
+2. if virtualization is enabled we have a wrapper component and we are not passing TableBody, so this breaks a lot of existing styles and features of the table component like hoverAction, rowSelection, etc. so we have to move these styles to table component.
 3. we have to pass a ref to the table container to calculate the height and width of the table to render only the visible rows and columns.
 
-
 ## Props
+
 most of props are same as Table component. we have added following table component.
 
 ```ts
@@ -680,51 +720,114 @@ ref = React.Ref<HTMLDivElement> | undefined, // ref to the table container  , si
 
 
 ```
-but their is a change in children prop of Table component. In virtualized table we need to pass a component named TableVirtulized  that  takes TableHeader, TableBody components. 
-VirtualizedTable is a wrapper on top of react-table-library's [Virtualized](https://github.com/table-library/react-table-library/blob/master/src/virtualized/Virtualized.tsx) component. It provides a simple API to create a virtualized table.
 
+but their is a change in children prop of Table component. In virtualized table we need to pass a component named TableVirtulized that takes TableHeader, TableBody components.
+VirtualizedTable is a wrapper on top of react-table-library's [Virtualized](https://github.com/table-library/react-table-library/blob/master/src/virtualized/Virtualized.tsx) component. It provides a simple API to create a virtualized table.
 
 ```ts
 type VirtualizedWrapperProps<Item> = {
   /**
-   * * @example
-   *     <TableVirtulized
-   *        tableData={tableData}
-   *        rowHeight={(item, index) => {
-   *          // header height and row height
-   *          return index === 0 ? 50 : 57.5;
-   *        }}
-   *      >
-   *       
-   *        <Table tableData={tableData} >
-   *          {(tableData) => (
-   *           <TableVirtualizedContainer tableData={tableData}>
-   *              <TableHeader>
-   *                <TableHeaderRow>
-   *                </TableHeaderRow>
-   *              </TableHeader>           
-   *              <TableBody>
-   *                 {(tableItem, index) => <TableRow key={index} item={tableItem} />}
-   *               </TableBody>
-   *             </TableVirtualizedContainer>
-   *          )}
-   *          </Table>
-   *     </TableVirtulized>
+   *   <TableComponent
+   *      data={data}
+   *      isVirtualized
+   *      rowDensity="compact"
+   *      selectionType="multiple"
+   *      height="700px"
+   *      toolbar={
+   *        <TableToolbar>
+   *          <TableToolbarActions>
+   *            <Button variant="secondary" marginRight="spacing.2">
+   *              Export
+   *            </Button>
+   *            <Button>Payout</Button>
+   *          </TableToolbarActions>
+   *        </TableToolbar>
+   *      }
+   *    >
+   *      {(tableData) => (
+   *        <TableVirtualizedWrapper tableData={tableData}>
+   *          <TableHeader>
+   *            <TableHeaderRow>
+   *              <TableHeaderCell>ID</TableHeaderCell>
+   *              <TableHeaderCell>Amount</TableHeaderCell>
+   *              <TableHeaderCell>Account</TableHeaderCell>
+   *              <TableHeaderCell>Date</TableHeaderCell>
+   *              <TableHeaderCell>Method</TableHeaderCell>
+   *              <TableHeaderCell>Status</TableHeaderCell>
+   *            </TableHeaderRow>
+   *          </TableHeader>
+   *          <TableBody<Item>>
+   *            {(tableItem, index) => (
+   *              <TableRow
+   *                key={index}
+   *                item={tableItem}
+   *                hoverActions={
+   *                  <>
+   *                    <IconButton
+   *                      accessibilityLabel="Copy"
+   *                      isHighlighted
+   *                      icon={CopyIcon}
+   *                      onClick={() => console.log('copy', tableItem)}
+   *                    />
+   *                    <IconButton
+   *                      accessibilityLabel="Delete"
+   *                      isHighlighted
+   *                      icon={TrashIcon}
+   *                      onClick={() => console.log('delete', tableItem)}
+   *                    />
+   *                  </>
+   *                }
+   *              >
+   *                <TableCell>
+   *                  <Code size="medium">{tableItem.paymentId}</Code>
+   *                </TableCell>
+   *                <TableCell>
+   *                  <Amount value={tableItem.amount} />
+   *                </TableCell>
+   *                <TableCell>{tableItem.account}</TableCell>
+   *                <TableCell>
+   *                  {tableItem.date?.toLocaleDateString('en-IN', {
+   *                    year: 'numeric',
+   *                    month: '2-digit',
+   *                    day: '2-digit',
+   *                  })}
+   *                </TableCell>
+   *                <TableCell>{tableItem.method}</TableCell>
+   *                <TableCell>
+   *                  <Badge
+   *                    size="medium"
+   *                    color={
+   *                      tableItem.status === 'Completed'
+   *                        ? 'positive'
+   *                        : tableItem.status === 'Pending'
+   *                        ? 'notice'
+   *                        : tableItem.status === 'Failed'
+   *                        ? 'negative'
+   *                        : 'default'
+   *                    }
+   *                  >
+   *                    {tableItem.status}
+   *                  </Badge>
+   *                </TableCell>
+   *              </TableRow>
+   *            )}
+   *          </TableBody>
+   *        </TableVirtualizedWrapper>
+   *      )}
+   *    </TableComponent>
    *
-   **/
-   /**
-   *
+    /**
+   * The tableData prop is an array of objects.
    */
   tableData: TableNode<Item>[];
   /**
-   * should be a function that returns the height of the row
-   * for header we are internally adding height
+   * headerHeight is the height of the header
    **/
-  rowHeight: RowHeight;
+  headerHeight?: number;
   /**
-   *  should contain the TableHeader and TableBody components
+   * rowHeight is the height of each row, it can be a fixed number or a function that returns a number
    **/
-  children: React.ReactNode;  
+  rowHeight?: (item: TableLibraryTableNode, index: number) => number;
+  children: React.ReactNode;
 };
-
 ```

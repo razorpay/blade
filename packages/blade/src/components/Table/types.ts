@@ -483,53 +483,107 @@ type TableToolbarActionsProps = {
 
 type VirtualizedWrapperProps<Item> = {
   /**
-   * * @example
-   *     <TableVirtulized
-   *        tableData={tableData}
-   *        rowHeight={(item, index) => {
-   *          // header height and row height
-   *          return index === 0 ? 50 : 57.5;
-   *        }}
-   *        header={() => (
+   *   <TableComponent
+   *      data={data}
+   *      isVirtualized
+   *      rowDensity="compact"
+   *      selectionType="multiple"
+   *      height="700px"
+   *      toolbar={
+   *        <TableToolbar>
+   *          <TableToolbarActions>
+   *            <Button variant="secondary" marginRight="spacing.2">
+   *              Export
+   *            </Button>
+   *            <Button>Payout</Button>
+   *          </TableToolbarActions>
+   *        </TableToolbar>
+   *      }
+   *    >
+   *      {(tableData) => (
+   *        <TableVirtualizedWrapper tableData={tableData}>
    *          <TableHeader>
    *            <TableHeaderRow>
-   *               <TableHeaderCell>ID</TableHeaderCell>
-   *               <TableHeaderCell>Amount</TableHeaderCell>
-   *               <TableHeaderCell>Account</TableHeaderCell>
-   *               <TableHeaderCell>Date</TableHeaderCell>
-   *               <TableHeaderCell>Method</TableHeaderCell>
-   *               <TableHeaderCell>Status</TableHeaderCell>
+   *              <TableHeaderCell>ID</TableHeaderCell>
+   *              <TableHeaderCell>Amount</TableHeaderCell>
+   *              <TableHeaderCell>Account</TableHeaderCell>
+   *              <TableHeaderCell>Date</TableHeaderCell>
+   *              <TableHeaderCell>Method</TableHeaderCell>
+   *              <TableHeaderCell>Status</TableHeaderCell>
    *            </TableHeaderRow>
    *          </TableHeader>
-   *        )}
-   *        body={(tableItem, index) => (
-   *          <TableRow key={index} item={tableItem}>
-   *            <TableCell>
-   *              <Code size="medium">{tableItem.paymentId}</Code>
-   *            </TableCell>
-   *            <TableCell>
-   *              <Amount value={tableItem.amount} />
-   *            </TableCell>
-   *            <TableCell>{tableItem.account}</TableCell>
-   *            <TableCell>
-   *              <Text>{tableItem.date}</Text>
-   *            </TableCell>
-   *            <TableCell>{tableItem.method}</TableCell>
-   *            <TableCell>{tableItem.status}</TableCell>
-   *          </TableRow>
-   *        )}
-   *     />
+   *          <TableBody<Item>>
+   *            {(tableItem, index) => (
+   *              <TableRow
+   *                key={index}
+   *                item={tableItem}
+   *                hoverActions={
+   *                  <>
+   *                    <IconButton
+   *                      accessibilityLabel="Copy"
+   *                      isHighlighted
+   *                      icon={CopyIcon}
+   *                      onClick={() => console.log('copy', tableItem)}
+   *                    />
+   *                    <IconButton
+   *                      accessibilityLabel="Delete"
+   *                      isHighlighted
+   *                      icon={TrashIcon}
+   *                      onClick={() => console.log('delete', tableItem)}
+   *                    />
+   *                  </>
+   *                }
+   *              >
+   *                <TableCell>
+   *                  <Code size="medium">{tableItem.paymentId}</Code>
+   *                </TableCell>
+   *                <TableCell>
+   *                  <Amount value={tableItem.amount} />
+   *                </TableCell>
+   *                <TableCell>{tableItem.account}</TableCell>
+   *                <TableCell>
+   *                  {tableItem.date?.toLocaleDateString('en-IN', {
+   *                    year: 'numeric',
+   *                    month: '2-digit',
+   *                    day: '2-digit',
+   *                  })}
+   *                </TableCell>
+   *                <TableCell>{tableItem.method}</TableCell>
+   *                <TableCell>
+   *                  <Badge
+   *                    size="medium"
+   *                    color={
+   *                      tableItem.status === 'Completed'
+   *                        ? 'positive'
+   *                        : tableItem.status === 'Pending'
+   *                        ? 'notice'
+   *                        : tableItem.status === 'Failed'
+   *                        ? 'negative'
+   *                        : 'default'
+   *                    }
+   *                  >
+   *                    {tableItem.status}
+   *                  </Badge>
+   *                </TableCell>
+   *              </TableRow>
+   *            )}
+   *          </TableBody>
+   *        </TableVirtualizedWrapper>
+   *      )}
+   *    </TableComponent>
    *
    **/
   /**
-   *
+   * The tableData prop is an array of objects.
    */
   tableData: TableNode<Item>[];
   /**
-   * should be a function that returns the height of the row
-   * index 0 is the header height
+   * headerHeight is the height of the header
    **/
   headerHeight?: number;
+  /**
+   * rowHeight is the height of each row, it can be a fixed number or a function that returns a number
+   **/
   rowHeight?: (item: TableLibraryTableNode, index: number) => number;
   children: React.ReactNode;
 };

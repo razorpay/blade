@@ -611,51 +611,118 @@ isVirtualized = false, // default value is false , it is used to enable virtuali
 
 ref = React.Ref<HTMLDivElement> | undefined, // ref to the table container  , since in virtualized table we need to calculate the height and width of the table to render only the visible rows and columns
 ```
-but their is a change in children prop of Table component. In virtualized table we need to pass a component named TableVirtulized  that  takes TableHeader, TableBody components. 
-VirtualizedTable is a wrapper on top of react-table-library's [Virtualized](https://github.com/table-library/react-table-library/blob/master/src/virtualized/Virtualized.tsx) component. It provides a simple API to create a virtualized table.
 
+but their is a change in children prop of Table component. In virtualized table we need to pass a component named TableVirtulized that takes TableHeader, TableBody components.
+VirtualizedTable is a wrapper on top of react-table-library's [Virtualized](https://github.com/table-library/react-table-library/blob/master/src/virtualized/Virtualized.tsx) component. It provides a simple API to create a virtualized table.
 
 ```ts
 type VirtualizedWrapperProps<Item> = {
   /**
    * * @example
-    *     <TableVirtulized
-   *        tableData={tableData}
-   *        rowHeight={(item, index) => {
-   *          return  57.5;
-   *        }}
-   *      >
-   *       
-   *        <Table tableData={tableData} >
-   *          {(tableData) => (
-   *           <TableVirtualizedContainer tableData={tableData}>
-   *              <TableHeader>
-   *                <TableHeaderRow>
-   *                </TableHeaderRow>
-   *              </TableHeader>           
-   *              <TableBody>
-   *                 {(tableItem, index) => <TableRow key={index} item={tableItem} />}
-   *               </TableBody>
-   *             </TableVirtualizedContainer>
-   *          )}
-   *          </Table>
-   *     </TableVirtulized>
+   *   <TableComponent
+   *      data={data}
+   *      isVirtualized
+   *      rowDensity="compact"
+   *      selectionType="multiple"
+   *      height="700px"
+   *      toolbar={
+   *        <TableToolbar>
+   *          <TableToolbarActions>
+   *            <Button variant="secondary" marginRight="spacing.2">
+   *              Export
+   *            </Button>
+   *            <Button>Payout</Button>
+   *          </TableToolbarActions>
+   *        </TableToolbar>
+   *      }
+   *    >
+   *      {(tableData) => (
+   *        <TableVirtualizedWrapper tableData={tableData}>
+   *          <TableHeader>
+   *            <TableHeaderRow>
+   *              <TableHeaderCell>ID</TableHeaderCell>
+   *              <TableHeaderCell>Amount</TableHeaderCell>
+   *              <TableHeaderCell>Account</TableHeaderCell>
+   *              <TableHeaderCell>Date</TableHeaderCell>
+   *              <TableHeaderCell>Method</TableHeaderCell>
+   *              <TableHeaderCell>Status</TableHeaderCell>
+   *            </TableHeaderRow>
+   *          </TableHeader>
+   *          <TableBody<Item>>
+   *            {(tableItem, index) => (
+   *              <TableRow
+   *                key={index}
+   *                item={tableItem}
+   *                hoverActions={
+   *                  <>
+   *                    <IconButton
+   *                      accessibilityLabel="Copy"
+   *                      isHighlighted
+   *                      icon={CopyIcon}
+   *                      onClick={() => console.log('copy', tableItem)}
+   *                    />
+   *                    <IconButton
+   *                      accessibilityLabel="Delete"
+   *                      isHighlighted
+   *                      icon={TrashIcon}
+   *                      onClick={() => console.log('delete', tableItem)}
+   *                    />
+   *                  </>
+   *                }
+   *              >
+   *                <TableCell>
+   *                  <Code size="medium">{tableItem.paymentId}</Code>
+   *                </TableCell>
+   *                <TableCell>
+   *                  <Amount value={tableItem.amount} />
+   *                </TableCell>
+   *                <TableCell>{tableItem.account}</TableCell>
+   *                <TableCell>
+   *                  {tableItem.date?.toLocaleDateString('en-IN', {
+   *                    year: 'numeric',
+   *                    month: '2-digit',
+   *                    day: '2-digit',
+   *                  })}
+   *                </TableCell>
+   *                <TableCell>{tableItem.method}</TableCell>
+   *                <TableCell>
+   *                  <Badge
+   *                    size="medium"
+   *                    color={
+   *                      tableItem.status === 'Completed'
+   *                        ? 'positive'
+   *                        : tableItem.status === 'Pending'
+   *                        ? 'notice'
+   *                        : tableItem.status === 'Failed'
+   *                        ? 'negative'
+   *                        : 'default'
+   *                    }
+   *                  >
+   *                    {tableItem.status}
+   *                  </Badge>
+   *                </TableCell>
+   *              </TableRow>
+   *            )}
+   *          </TableBody>
+   *        </TableVirtualizedWrapper>
+   *      )}
+   *    </TableComponent>
    *
    **/
   /**
-  /**
-   *
+   /**
+   * The tableData prop is an array of objects.
    */
   tableData: TableNode<Item>[];
   /**
-   * should be a function that returns the height of the row
-   * index 0 is the header height
+   * headerHeight is the height of the header
    **/
-  rowHeight: RowHeight;
+  headerHeight?: number;
   /**
-   *  should contain the TableHeader and TableBody components
+   * rowHeight is the height of each row, it can be a fixed number or a function that returns a number
    **/
-  children: React.ReactNode;  
+  rowHeight?: (item: TableLibraryTableNode, index: number) => number;
+  children: React.ReactNode;
+  children: React.ReactNode;
 };
-
 ```
