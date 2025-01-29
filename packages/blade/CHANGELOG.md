@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.40.1
+
+### Patch Changes
+
+- bc076693: fix(blade): fix: data analytics attribute from another external module
+
 ## 11.40.0
 
 ### Minor Changes
