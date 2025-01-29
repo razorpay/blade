@@ -203,10 +203,6 @@ type TableProps<Item> = {
    * An array of default selected row ids. This will be used to set the initial selected rows.
    */
   defaultSelectedIds?: Identifier[];
-  /**
-   * isVirtualized prop determines whether the table is virutalized or not.
-   */
-  isVirtualized?: boolean;
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 
@@ -485,7 +481,6 @@ type VirtualizedWrapperProps<Item> = {
   /**
    *   <TableComponent
    *      data={data}
-   *      isVirtualized
    *      rowDensity="compact"
    *      selectionType="multiple"
    *      height="700px"

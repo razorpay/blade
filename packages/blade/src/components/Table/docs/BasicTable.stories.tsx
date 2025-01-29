@@ -141,7 +141,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         rowDensity="normal"
         height="600px"
         isFirstColumnSticky
-        isVirtualized
       >
         {(tableData) => (
           <TableVirtualizedWrapper tableData={tableData} rowHeight={() => 57}>

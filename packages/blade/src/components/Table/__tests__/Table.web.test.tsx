@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
 import { TableBody, TableCell, TableRow, TableVirtualizedWrapper } from '../TableBody';
@@ -1203,7 +1203,6 @@ describe('<Table />', () => {
     const ReactVirtualTable = (): React.ReactElement => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const [apiData, _] = useState({ nodes: nodes.slice(0, 10) });
-      const boxRef = useRef<HTMLElement>(null);
       return (
         <Box ref={boxRef}>
           <Table
@@ -1216,8 +1215,6 @@ describe('<Table />', () => {
               PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
               STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
             }}
-            ref={boxRef}
-            isVirtualized
             defaultSelectedIds={['1', '3']}
             rowDensity="normal"
             isFirstColumnSticky

@@ -185,7 +185,6 @@ const _Table = <Item,>({
   isRefreshing = false,
   showBorderedCells = false,
   defaultSelectedIds = [],
-  isVirtualized = false,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -201,6 +200,15 @@ const _Table = <Item,>({
     undefined,
   );
   const [hasHoverActions, setHasHoverActions] = React.useState(false);
+  const tableRootComponent = children([]);
+  const isVirtualized = (React.isValidElement<{
+    header?: () => React.ReactElement;
+    children?: React.ReactNode;
+  }>(tableRootComponent) &&
+    Array.isArray(tableRootComponent.props?.children) &&
+    tableRootComponent.props.children?.length &&
+    React.isValidElement<{ children?: React.ReactNode }>(tableRootComponent.props?.children[1]) &&
+    typeof tableRootComponent.props?.children[1]?.props.children === 'function') as boolean;
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isVirtualized ?? isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
@@ -216,8 +224,6 @@ const _Table = <Item,>({
   } = usePresence(isRefreshing, {
     transitionDuration: theme.motion.duration.quick,
   });
-
-  console.log('isVirtualized', isVirtualized);
 
   // Table Theme
   const columnCount = getTableHeaderCellCount(children, isVirtualized);

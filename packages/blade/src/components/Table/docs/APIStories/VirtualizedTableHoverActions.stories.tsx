@@ -84,7 +84,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
     >
       <TableComponent
         data={data}
-        isVirtualized
         rowDensity="compact"
         selectionType="multiple"
         height="700px"

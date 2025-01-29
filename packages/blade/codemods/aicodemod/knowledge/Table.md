@@ -605,12 +605,6 @@ Out implementation of virtualized table is an wrapper on top of react-table-libr
 
 most of props are same as Table component. we have added following table component.
 
-```ts
-
-isVirtualized = false, // default value is false , it is used to enable virtualization in table
-
-ref = React.Ref<HTMLDivElement> | undefined, // ref to the table container  , since in virtualized table we need to calculate the height and width of the table to render only the visible rows and columns
-```
 
 but their is a change in children prop of Table component. In virtualized table we need to pass a component named TableVirtulized that takes TableHeader, TableBody components.
 VirtualizedTable is a wrapper on top of react-table-library's [Virtualized](https://github.com/table-library/react-table-library/blob/master/src/virtualized/Virtualized.tsx) component. It provides a simple API to create a virtualized table.
