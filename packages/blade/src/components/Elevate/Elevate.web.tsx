@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ScaleProps } from './types';
+import type { ElevateProps } from './types';
 import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
@@ -7,57 +7,46 @@ import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
 
 /**
- * ## Scale
+ * ## Elevate
  *
- * Scale is one of the highlight presets that we expose from blade to help you scale up or scale down components based on interactions
+ * Elevate is one of the highlight presets that we expose from blade to help you elevate (add shadow) components based on interactions
  *
  * ### Usage
  *
- * #### Scale up on hover
+ * #### Elevate up on hover
  *
  * ```jsx
- * <Scale motionTriggers={['hover']}>
+ * <Elevate motionTriggers={['hover']}>
  *  <Card />
- * </Scale>
+ * </Elevate>
  * ```
  *
- * #### Scale down on tap
+ * #### Conditionally elevateF
  *
  * ```jsx
- * <Scale variant="scale-down" motionTriggers={['tap']}>
- *   <Card />
- * </Scale>
- * ```
- *
- * #### Conditionally scale
- *
- * ```jsx
- * <Scale isHighlighted={isHighlightedState}>
+ * <Elevate isHighlighted={isHighlightedState}>
  *   <MyComponent />
- * </Scale>
+ * </Elevate>
  * ```
  */
-const Scale = ({
+const Elevate = ({
   children,
   isHighlighted,
   type = 'inout',
-  variant = 'scale-up',
   motionTriggers,
-}: ScaleProps): React.ReactElement => {
+}: ElevateProps): React.ReactElement => {
   const isControlledHighlighted = typeof isHighlighted === 'boolean';
   const defaultMotionTriggers = isControlledHighlighted ? ['mount' as const] : ['hover' as const];
   const { theme } = useTheme();
 
-  const scaleVariants: MotionVariantsType = {
+  const elevateVariants: MotionVariantsType = {
     initial: {
-      scale: 1,
+      boxShadow: 'none',
     },
     animate: {
-      scale:
+      boxShadow:
         isHighlighted || !isControlledHighlighted
-          ? variant === 'scale-up'
-            ? 1.05
-            : 0.98
+          ? castWebType(theme.elevation.lowRaised)
           : undefined,
       transition: {
         duration: msToSeconds(theme.motion.duration.moderate),
@@ -65,13 +54,13 @@ const Scale = ({
       },
     },
     exit: {
-      scale: 1,
+      boxShadow: 'none',
     },
   };
 
   return (
     <BaseMotionEnhancerBox
-      motionVariants={scaleVariants}
+      motionVariants={elevateVariants}
       type={type}
       children={children}
       motionTriggers={motionTriggers ?? defaultMotionTriggers}
@@ -79,4 +68,4 @@ const Scale = ({
   );
 };
 
-export { Scale };
+export { Elevate };
