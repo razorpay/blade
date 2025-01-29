@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { Table as ReactTable } from '@table-library/react-table-library/table';
 import { useTheme as useTableTheme } from '@table-library/react-table-library/theme';
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
@@ -164,33 +164,30 @@ const RefreshWrapper = styled(BaseBox)<{
   };
 });
 
-const _Table = <Item,>(
-  {
-    children,
-    data,
-    multiSelectTrigger = 'row',
-    selectionType = 'none',
-    onSelectionChange,
-    isHeaderSticky,
-    isFooterSticky,
-    isFirstColumnSticky,
-    rowDensity = 'normal',
-    onSortChange,
-    sortFunctions,
-    toolbar,
-    pagination,
-    height,
-    showStripedRows,
-    gridTemplateColumns,
-    isLoading = false,
-    isRefreshing = false,
-    showBorderedCells = false,
-    defaultSelectedIds = [],
-    isVirtualized = false,
-    ...rest
-  }: TableProps<Item>,
-  ref: React.Ref<BladeElementRef> | undefined,
-): React.ReactElement => {
+const _Table = <Item,>({
+  children,
+  data,
+  multiSelectTrigger = 'row',
+  selectionType = 'none',
+  onSelectionChange,
+  isHeaderSticky,
+  isFooterSticky,
+  isFirstColumnSticky,
+  rowDensity = 'normal',
+  onSortChange,
+  sortFunctions,
+  toolbar,
+  pagination,
+  height,
+  showStripedRows,
+  gridTemplateColumns,
+  isLoading = false,
+  isRefreshing = false,
+  showBorderedCells = false,
+  defaultSelectedIds = [],
+  isVirtualized = false,
+  ...rest
+}: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
     selectionType !== 'none' ? defaultSelectedIds : [],
@@ -204,11 +201,6 @@ const _Table = <Item,>(
     undefined,
   );
   const [hasHoverActions, setHasHoverActions] = React.useState(false);
-  const [VirtualizedTableDimensions, setVirtualizedTableDimensions] = React.useState({
-    width: 0,
-    height: 0,
-  });
-
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isVirtualized ?? isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
@@ -313,29 +305,6 @@ const _Table = <Item,>(
     ${firstColumnStickyFooterCellCSS}
     `,
   });
-
-  useEffect(() => {
-    if (ref && 'current' in ref && ref.current && !height) {
-      if (ref?.current) {
-        const { width, height } = (ref.current as HTMLElement).getBoundingClientRect();
-        setVirtualizedTableDimensions({ width, height });
-      }
-
-      const resizeObserver = new ResizeObserver((entries) => {
-        for (const entry of entries) {
-          const { width } = entry.contentRect;
-          setVirtualizedTableDimensions((prev) => ({ ...prev, width }));
-        }
-      });
-      if (ref && 'current' in ref && ref.current) {
-        resizeObserver.observe(ref.current as HTMLElement);
-      }
-      return () => {
-        resizeObserver.disconnect();
-      };
-    }
-    return undefined;
-  }, [height, ref]);
 
   useEffect(() => {
     // Get the total number of items
@@ -597,7 +566,7 @@ const _Table = <Item,>(
             select={selectionType !== 'none' ? rowSelectConfig : null}
             sort={sortFunctions ? sort : null}
             $styledProps={{
-              height: isVirtualized ? height || `${VirtualizedTableDimensions.height}px` : height,
+              height,
               width: isVirtualized ? `100%` : undefined,
               isVirtualized,
               isSelectable: selectionType !== 'none',
@@ -616,15 +585,8 @@ const _Table = <Item,>(
     </TableContext.Provider>
   );
 };
-const Table = assignWithoutSideEffects(
-  forwardRef(_Table) as <Item>(
-    // https://oida.dev/typescript-react-generic-forward-refs/
-    // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-    props: TableProps<Item> & { ref?: React.ForwardedRef<BladeElementRef> },
-  ) => React.ReactElement,
-  {
-    componentId: ComponentIds.Table,
-  },
-);
+const Table = assignWithoutSideEffects(_Table, {
+  componentId: ComponentIds.Table,
+});
 
 export { Table };

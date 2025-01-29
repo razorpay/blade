@@ -1,5 +1,4 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { useRef } from 'react';
 import type { TableData, TableProps } from '../types';
 import {
   Table as TableComponent,
@@ -113,9 +112,8 @@ const largeData: TableData<Item> = {
 };
 
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
-  const tableRef = useRef<HTMLDivElement>(null);
   return (
-    <Box padding="spacing.5" ref={tableRef} height="500px">
+    <Box padding="spacing.5" height="500px">
       <Heading> Total rows : {largeNodes.length}</Heading>
       <TableComponent
         {...args}
@@ -210,7 +208,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
 };
 
 export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
-  const ref = useRef<HTMLDivElement>(null);
   return (
     <Box>
       <Heading>Normal Table-</Heading>
@@ -309,7 +306,7 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
       </Box>
 
       <Heading>Virtualized Table-</Heading>
-      <Box padding="spacing.5" ref={ref} minHeight="600px">
+      <Box padding="spacing.5" minHeight="600px">
         <Heading> Total rows : {largeNodes.length}</Heading>
         <TableComponent
           {...args}
@@ -333,7 +330,6 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
             DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
             STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
           }}
-          ref={ref}
           defaultSelectedIds={['1', '3']}
           rowDensity="normal"
           height="600px"

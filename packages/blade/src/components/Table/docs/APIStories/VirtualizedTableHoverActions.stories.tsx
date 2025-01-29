@@ -1,5 +1,4 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { useRef } from 'react';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
@@ -74,21 +73,18 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = () => {
   const { platform } = useTheme();
-  const parentRef = useRef<HTMLDivElement>(null);
 
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       minHeight="700px"
-      ref={parentRef}
       paddingX="0"
       paddingY="0"
     >
       <TableComponent
         data={data}
         isVirtualized
-        ref={parentRef}
         rowDensity="compact"
         selectionType="multiple"
         height="700px"

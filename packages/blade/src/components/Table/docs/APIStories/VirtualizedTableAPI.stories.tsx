@@ -77,20 +77,17 @@ const data: TableData<Item> = {
 };
 
 const TableTemplate: StoryFn<typeof TableComponent> = () => {
-  const parentRef = React.useRef<HTMLDivElement>(null);
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       minHeight="700px"
-      ref={parentRef}
       paddingX="0"
       paddingY="0"
     >
       <TableComponent
         data={data}
         isVirtualized
-        ref={parentRef}
         height={'500px'}
         rowDensity="compact"
         selectionType="multiple"
