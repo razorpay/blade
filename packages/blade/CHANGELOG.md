@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.7.1
+
+### Patch Changes
+
+- 3b9d4cdd: feat(Elevate): add missing reexport for `Elevate`
+
 ## 12.7.0
 
 ### Minor Changes
