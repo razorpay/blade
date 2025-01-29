@@ -146,13 +146,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         defaultSelectedIds={['1', '3']}
       >
         {(tableData) => (
-          <TableVirtualizedWrapper
-            tableData={tableData}
-            rowHeight={(item, index) => {
-              // header height and row height
-              return index === 0 ? 50 : 57.5;
-            }}
-          >
+          <TableVirtualizedWrapper tableData={tableData}>
             <TableHeader>
               <TableHeaderRow>
                 <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
@@ -346,13 +340,7 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
           isFirstColumnSticky
         >
           {(tableData) => (
-            <TableVirtualizedWrapper
-              tableData={tableData}
-              rowHeight={(item, index) => {
-                // header height and row height
-                return index === 0 ? 50 : 57.5;
-              }}
-            >
+            <TableVirtualizedWrapper tableData={tableData}>
               <TableHeader>
                 <TableHeaderRow>
                   <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>

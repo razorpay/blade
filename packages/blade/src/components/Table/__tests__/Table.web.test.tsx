@@ -1223,16 +1223,7 @@ describe('<Table />', () => {
             isFirstColumnSticky
           >
             {(tableData) => (
-              <TableVirtualizedWrapper
-                tableData={tableData}
-                rowHeight={(item, index) => {
-                  console.log({
-                    item,
-                    index,
-                  });
-                  return 57.5;
-                }}
-              >
+              <TableVirtualizedWrapper tableData={tableData}>
                 <TableHeader>
                   <TableHeaderRow>
                     <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
