@@ -16,6 +16,7 @@ export * from './ButtonGroup';
 export * from './Card';
 export * from './Carousel';
 export * from './Checkbox';
+export * from './ChatBubble';
 export * from './Chip';
 export * from './Collapsible';
 export * from './Counter';

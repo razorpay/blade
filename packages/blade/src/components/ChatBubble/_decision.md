@@ -18,38 +18,54 @@ This will be our main component that will be used to render the chat bubble.
 
 | Prop          | Type      | Default | Required | Description                                                                                                                       |
 | ------------- | --------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| message       | String    | Default | No       | The message that will be displayed in the chat bubble                                                                             |
 | isLastMessage | Boolean   | false   | No       | If the message is the last message in the chat bubble , if this prop is enabled we will add decoration like tail in messageBubble |
 | isUserMessage | Boolean   | false   | No       | If the message is from the user, we will add a different styles to the chat bubble                                                |
 | isLoading     | Boolean   | false   | No       | If the message is loading, we will add a loading animation to the chat bubble                                                     |
 | isError       | Boolean   | false   | No       | If the message is an error, we will add a different style to the chat bubble                                                      |
 | ErrorText    | String    | null    | No       | If the message is an error, we will show the error message in the chat bubble                                                     |
-| onErrorClick | Function | null    | No       | this callback will be called when ever you click error bubble with Error message          |
-| cardBody      | ReactNode | null    | No       | If their is no message and isLoading is false, we will render the card body in the chat bubble|
+| onErrorClick | Function | null    | No       | callback to be called onErrorClick          |
 | feedbackOptions | Array<{icon: ReactNode, onClick: Function}> | null | No | if this is passed as an array, we will show feedbacOptions, otherwise not        |
+| children      | ReactNode | string | null    | yes       | The children that will be rendered inside the chat bubble. can  be react node or a string                                                                      |
+| avatarIcon        | ReactNode | null    | No       | it will be an Icon that will be rendered inside avatar                                      |
 ```tsx
 type ChatBubbleProps = {
-  message?: string;
   isLastMessage?: boolean;
   isUserMessage?: boolean;
   isLoading?: boolean;
-  isError?: boolean;
-  cardBody?: ReactNode;
+  isError?: boolean;  
   feedbackOptions?: Array<{icon: ReactNode, onClick: Function}>;
   ErrorText?: string;
   onErrorClick?: Function;
+  children?: ReactNode | string;
+  avatarIcon?: ReactNode; 
 }
 ```
+
 ## API 
 ```tsx
-// with message
-<ChatBubble message="Hello" isLastMessage isUserMessage />
-// with card body
-<ChatBubble  isLastMessage cardBody={<CustomComponent/>} />
-//  with loading
-<ChatBubble isLoading />
+
+// for animation
+<Move>
+  <ChatBubble>Demo Text</ChatBubble>
+</Move>
+
+// with card
+<ChatBubble><Card></Card></ChatBubble>
+
+//Feedback Options 
+<ChatBubble feedbackOptions={[{icon: <Icon />, onClick: () => {},}]}>
+  <Text> Demo Text</Text>
+  <ChipGroup></ChipGroup>
+</ChatBubble>
+
+<ChatBubble><Markdown>  Demo Text </Markdown></ChatBubble>
+<ChatBubble trailing={} end><Markdown> Demo Text </Markdown></ChatBubble>
+
 ````
 
 
 ## Open Questions
-- In case of Error what should we provide an trailing element for showing error message?
+- should we have validation state for chat bubble?
+- should their be an animation in case of error?
+- do we really need feedback options?
+- should we add an prop to disable the animation?

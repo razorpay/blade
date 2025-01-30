@@ -1,24 +1,26 @@
-// import chatBubble and create a basic story 
-import { ChatBubble } from './ChatBubble';
+// import chatBubble and create a basic story
 import React from 'react';
 import { Story } from '@storybook/react';
-import { ChatBubbleProps } from './ChatBubble.types';
+import { ChatBubble } from './ChatBubble';
+import type { ChatBubbleProps } from './ChatBubble';
+import { Box } from '~components/Box';
 
 export default {
   title: 'ChatBubble',
   component: ChatBubble,
 };
 
-const Template: Story<ChatBubbleProps> = (args) => <ChatBubble {...args} />;
+const Template = (args) => (
+  <Box display="flex" flexDirection="column" gap={'spacing.10'}>
+    <ChatBubble> Demo</ChatBubble>
+    <ChatBubble isLastMessage> this is a demo message </ChatBubble>
+    <ChatBubble isUserMessage isLastMessage>
+      message
+    </ChatBubble>
+    <ChatBubble isError onErrorTextClick={() => {}}>
+      {' '}
+      Hi, can you tell me how can i join fight club?{' '}
+    </ChatBubble>
+  </Box>
+);
 export const Default = Template.bind({});
-Default.args = {
-  message: 'Hello',
-  isLastMessage: false,
-  isUserMessage: false,
-  isLoading: false,
-  isError: false,
-  cardBody: null,
-  feedbackOptions: [],
-  ErrorText: '',
-  onErrorTextClick: () => {},
-};
