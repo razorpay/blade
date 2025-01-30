@@ -1,4 +1,4 @@
-# CatBubble Decisions
+# ChatBubble Decisions
 
 - [Design](#design)
 - [ChatBubble Component](#ChatBubble-component)
@@ -8,11 +8,11 @@
 
 ## Design
 
-[Figma Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0) to all variants of the Button component
+[Figma Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0) to ChatBubble component
 
 ## ChatBubble Component
 
-This will be our main component that will be used to render the chat bubble.
+This will be our main component that will be used to render the ChatBubble.
 
 ## ChatBubble API
 
