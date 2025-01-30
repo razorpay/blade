@@ -40,6 +40,9 @@ export type TableContextType = {
   showBorderedCells: NonNullable<TableProps<unknown>['showBorderedCells']>;
   hasHoverActions: boolean;
   setHasHoverActions: (hasHoverActions: boolean) => void;
+  columnCount: number;
+  gridTemplateColumns: string | undefined;
+  isVirtualized?: boolean;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -66,6 +69,9 @@ const TableContext = React.createContext<TableContextType>({
   showBorderedCells: false,
   hasHoverActions: false,
   setHasHoverActions: () => {},
+  columnCount: 0,
+  gridTemplateColumns: undefined,
+  isVirtualized: false,
 });
 
 const useTableContext = (): TableContextType => {

@@ -28,6 +28,7 @@ import type {
   TablePaginationType,
   TableHeaderRowProps,
 } from './types';
+import { getTableBodyStyles } from './commonStyles';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -56,8 +57,29 @@ const rowSelectType: Record<
 // Get the number of TableHeaderCell components.
 // This is very complicated but the only way to iterate through the structure and get number of header cells.
 // Assuming number of header cells is the same as number of columns
-const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): number => {
+const getTableHeaderCellCount = (
+  children: (data: []) => React.ReactElement,
+  isVirtualized: boolean,
+): number => {
   const tableRootComponent = children([]);
+  if (isVirtualized) {
+    if (
+      React.isValidElement<{ header?: () => React.ReactElement }>(tableRootComponent) &&
+      tableRootComponent?.props.header
+    ) {
+      if (React.isValidElement(tableRootComponent?.props.header())) {
+        const tableHeaderRow = tableRootComponent.props.header().props.children;
+        if (
+          React.isValidElement<{ children?: React.ReactNode }>(tableHeaderRow) &&
+          tableHeaderRow.props.children
+        ) {
+          const tableHeaderCells = React.Children.toArray(tableHeaderRow.props.children);
+          return tableHeaderCells.length;
+        }
+      }
+    }
+  }
+
   if (tableRootComponent && React.isValidElement(tableRootComponent)) {
     const tableComponentArray = React.Children.toArray(tableRootComponent);
     if (React.isValidElement(tableComponentArray[0])) {
@@ -87,21 +109,42 @@ const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): nu
   return 0;
 };
 
-const StyledReactTable = styled(ReactTable)<{ $styledProps?: { height?: BoxProps['height'] } }>(
-  ({ $styledProps }) => {
-    const { theme } = useTheme();
-    const styledPropsCSSObject = getBaseBoxStyles({
-      theme,
-      height: $styledProps?.height,
-    });
-
-    return {
-      '&&&': {
-        ...styledPropsCSSObject,
-      },
-    };
-  },
-);
+const StyledReactTable = styled(ReactTable)<{
+  $styledProps?: {
+    height?: BoxProps['height'];
+    width?: BoxProps['width'];
+    isVirtualized?: boolean;
+    isSelectable?: boolean;
+    showStripedRows?: boolean;
+  };
+}>(({ $styledProps }) => {
+  const { theme } = useTheme();
+  const styledPropsCSSObject = getBaseBoxStyles({
+    theme,
+    height: $styledProps?.height,
+    ...($styledProps?.isVirtualized && {
+      width: '100%',
+    }),
+  });
+  const $isSelectable = $styledProps?.isSelectable;
+  const $showStripedRows = $styledProps?.showStripedRows;
+  return {
+    '&&&': {
+      ...styledPropsCSSObject,
+      overflow: `${$styledProps?.isVirtualized ? 'unset' : 'auto'} !important`,
+    },
+    ...($styledProps?.isVirtualized
+      ? getTableBodyStyles({
+          isVirtualized: $styledProps?.isVirtualized,
+          theme,
+          height: $styledProps?.height,
+          width: '100%',
+          isSelectable: $isSelectable,
+          showStripedRows: $showStripedRows,
+        })
+      : null),
+  };
+});
 
 const RefreshWrapper = styled(BaseBox)<{
   isRefreshSpinnerVisible: boolean;
@@ -156,8 +199,17 @@ const _Table = <Item,>({
     undefined,
   );
   const [hasHoverActions, setHasHoverActions] = React.useState(false);
+  const tableRootComponent = children([]);
+  const isVirtualized = (React.isValidElement<{
+    header?: () => React.ReactElement;
+    children?: React.ReactNode;
+  }>(tableRootComponent) &&
+    Array.isArray(tableRootComponent.props?.children) &&
+    tableRootComponent.props.children?.length &&
+    React.isValidElement<{ children?: React.ReactNode }>(tableRootComponent.props?.children[1]) &&
+    typeof tableRootComponent.props?.children[1]?.props.children === 'function') as boolean;
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-  const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
+  const shouldHeaderBeSticky = isVirtualized ?? isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
 
   const isMobile = useIsMobile();
@@ -173,7 +225,7 @@ const _Table = <Item,>({
   });
 
   // Table Theme
-  const columnCount = getTableHeaderCellCount(children);
+  const columnCount = getTableHeaderCellCount(children, isVirtualized);
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
     ? `
   &:nth-of-type(1) {
@@ -265,7 +317,7 @@ const _Table = <Item,>({
   }, [data.nodes]);
 
   // Selection Logic
-  const onSelectChange: MiddlewareFunction = (action, state): void => {
+  const onSelectChange: MiddlewareFunction = (_, state): void => {
     const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
     setSelectedRows(selectedIds);
     onSelectionChange?.({
@@ -323,7 +375,7 @@ const _Table = <Item,>({
   );
 
   // Sort Logic
-  const handleSortChange: MiddlewareFunction = (action, state) => {
+  const handleSortChange: MiddlewareFunction = (_, state) => {
     onSortChange?.({
       sortKey: state.sortKey,
       isSortReversed: state.reverse,
@@ -434,6 +486,9 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      columnCount,
+      gridTemplateColumns,
+      isVirtualized,
     }),
     [
       selectionType,
@@ -442,8 +497,10 @@ const _Table = <Item,>({
       toggleRowSelectionById,
       toggleAllRowsSelection,
       deselectAllRows,
+      gridTemplateColumns,
       rowDensity,
       toggleSort,
+      columnCount,
       currentSortedState,
       setPaginationPage,
       setPaginationRowSize,
@@ -459,6 +516,7 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      isVirtualized,
     ],
   );
 
@@ -484,6 +542,7 @@ const _Table = <Item,>({
           position="relative"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
+          width={isVirtualized ? `100%` : undefined}
         >
           {isRefreshSpinnerMounted && (
             <RefreshWrapper
@@ -504,7 +563,7 @@ const _Table = <Item,>({
           )}
           {toolbar}
           <StyledReactTable
-            role="table"
+            role={isVirtualized ? 'grid' : 'table'}
             layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
             data={data}
             // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
@@ -513,6 +572,10 @@ const _Table = <Item,>({
             sort={sortFunctions ? sort : null}
             $styledProps={{
               height,
+              width: isVirtualized ? `100%` : undefined,
+              isVirtualized,
+              isSelectable: selectionType !== 'none',
+              showStripedRows,
             }}
             pagination={hasPagination ? paginationConfig : null}
             {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
@@ -527,7 +590,6 @@ const _Table = <Item,>({
     </TableContext.Provider>
   );
 };
-
 const Table = assignWithoutSideEffects(_Table, {
   componentId: ComponentIds.Table,
 });
