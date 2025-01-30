@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.8.0
+
+### Minor Changes
+
+- 98be8f05: feat(blade): add prompt and sort icon
+
 ## 12.7.1
 
 ### Patch Changes
