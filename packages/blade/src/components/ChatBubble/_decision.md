@@ -24,7 +24,7 @@ This will be our main component that will be used to render the chat bubble.
 | isLoading     | Boolean   | false   | No       | If the message is loading, we will add a loading animation to the chat bubble                                                     |
 | isError       | Boolean   | false   | No       | If the message is an error, we will add a different style to the chat bubble                                                      |
 | ErrorText    | String    | null    | No       | If the message is an error, we will show the error message in the chat bubble                                                     |
-| onErrorTextClick | Function | null    | No       | If the message is an error, we will show the error message in the chat bubble                                                     |
+| onErrorClick | Function | null    | No       | this callback will be called when ever you click error bubble with Error message          |
 | cardBody      | ReactNode | null    | No       | If their is no message and isLoading is false, we will render the card body in the chat bubble|
 | feedbackOptions | Array<{icon: ReactNode, onClick: Function}> | null | No | if this is passed as an array, we will show feedbacOptions, otherwise not        |
 ```tsx
@@ -37,7 +37,7 @@ type ChatBubbleProps = {
   cardBody?: ReactNode;
   feedbackOptions?: Array<{icon: ReactNode, onClick: Function}>;
   ErrorText?: string;
-  onErrorTextClick?: Function;
+  onErrorClick?: Function;
 }
 ```
 ## API 
