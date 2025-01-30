@@ -35,6 +35,9 @@ type ChatBubbleProps = {
   isLoading?: boolean;
   isError?: boolean;
   cardBody?: ReactNode;
+  feedbackOptions?: Array<{icon: ReactNode, onClick: Function}>;
+  ErrorText?: string;
+  onErrorTextClick?: Function;
 }
 ```
 ## API 
