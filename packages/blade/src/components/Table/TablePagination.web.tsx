@@ -28,13 +28,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
-const pageSizeOptions: NonNullable<TablePaginationCommonProps['defaultPageSize']>[] = [
-  10,
-  25,
-  50,
-  100,
-  200,
-];
+const pageSizeOptions: NonNullable<TablePaginationCommonProps['defaultPageSize']>[] = [10, 25, 50];
 
 const PageSelectionButton = styled.button.attrs(() => {
   return {

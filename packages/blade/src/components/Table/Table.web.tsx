@@ -29,7 +29,6 @@ import type {
   TableHeaderRowProps,
 } from './types';
 import { getTableBodyStyles } from './commonStyles';
-import type { BladeElementRef } from '~utils/types';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
