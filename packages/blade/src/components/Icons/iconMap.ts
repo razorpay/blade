@@ -263,6 +263,7 @@ import PocketIconComponent from './PocketIcon';
 import PosIconComponent from './PosIcon';
 import PowerIconComponent from './PowerIcon';
 import PrinterIconComponent from './PrinterIcon';
+import PromptIconComponent from './PromptIcon';
 import QRCodeIconComponent from './QRCodeIcon';
 import RadioIconComponent from './RadioIcon';
 import RayIconComponent from './RayIcon';
@@ -308,6 +309,7 @@ import SlidersIconComponent from './SlidersIcon';
 import SmartCollectIconComponent from './SmartCollectIcon';
 import SmartphoneIconComponent from './SmartphoneIcon';
 import SolutionsIconComponent from './SolutionsIcon';
+import SortIconComponent from './SortIcon';
 import SourceToPayIconComponent from './SourceToPayIcon';
 import SparklesIconComponent from './SparklesIcon';
 import SpeakerIconComponent from './SpeakerIcon';
@@ -644,6 +646,7 @@ const iconMap: Record<string, IconComponent> = {
   PosIcon: PosIconComponent,
   PowerIcon: PowerIconComponent,
   PrinterIcon: PrinterIconComponent,
+  PromptIcon: PromptIconComponent,
   QRCodeIcon: QRCodeIconComponent,
   RadioIcon: RadioIconComponent,
   RayIcon: RayIconComponent,
@@ -689,6 +692,7 @@ const iconMap: Record<string, IconComponent> = {
   SmartCollectIcon: SmartCollectIconComponent,
   SmartphoneIcon: SmartphoneIconComponent,
   SolutionsIcon: SolutionsIconComponent,
+  SortIcon: SortIconComponent,
   SourceToPayIcon: SourceToPayIconComponent,
   SparklesIcon: SparklesIconComponent,
   SpeakerIcon: SpeakerIconComponent,
