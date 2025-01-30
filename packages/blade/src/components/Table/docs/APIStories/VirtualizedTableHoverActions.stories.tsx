@@ -11,7 +11,6 @@ import { Button } from '~components/Button';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
-import { useTheme } from '~components/BladeProvider';
 import { IconButton } from '~components/Button/IconButton';
 import { CopyIcon, TrashIcon } from '~components/Icons';
 
@@ -72,7 +71,6 @@ const data: TableData<Item> = {
 };
 
 const TableTemplate: StoryFn<typeof TableComponent> = () => {
-  const { platform } = useTheme();
 
   return (
     <Box
