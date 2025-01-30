@@ -1,22 +1,63 @@
-import React from "react";
-import { Box } from "~components/Box";
+import React from 'react';
+import { UserMessageBubble } from './UserMessageBubble';
+import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
+import { AlertCircleIcon } from '~components/Icons';
+import { Text } from '~components/Typography';
 
-type ChatBubbleProps = {
-    message?: string;
-    isLastMessage?: boolean;
-    isUserMessage?: boolean;
-    isLoading?: boolean;
-    isError?: boolean;
-    cardBody?: React.ReactNode;
-    feedbackOptions?: Array<{icon: React.ReactNode, onClick: Function}>;
-    ErrorText?: string;
-    onErrorTextClick?: Function;
-  }
-const ChatBubble = ({ message, isLastMessage,isUserMessage,isLoading,isError,cardBody,feedbackOptions,ErrorText,onErrorTextClick }:ChatBubbleProps) => {
-  console.log({ message, isLastMessage,isUserMessage,isLoading,isError,cardBody,feedbackOptions,ErrorText,onErrorTextClick });
-    return <Box maxWidth="240px"></Box>;
+export type ChatBubbleProps = {
+  isLastMessage?: boolean;
+  isUserMessage?: boolean;
+  isLoading?: boolean;
+  isError?: boolean;
+  feedbackOptions?: Array<{ icon: React.ReactNode; onClick: () => void }>;
+  errorText?: string;
+  onErrorTextClick?: () => void;
+  children: React.ReactNode | string;
+  avatarIcon?: React.ReactNode;
 };
-
-
+const ChatBubble = ({
+  isLastMessage,
+  isUserMessage,
+  isLoading,
+  isError,
+  feedbackOptions,
+  errorText,
+  onErrorTextClick,
+  children,
+  avatarIcon,
+}: ChatBubbleProps): React.ReactElement => {
+  console.log({
+    isLastMessage,
+    isUserMessage,
+    isLoading,
+    isError,
+    feedbackOptions,
+    errorText,
+    onErrorTextClick,
+    children,
+    avatarIcon,
+  });
+  const childrenToRender = (): React.ReactElement => {
+    if (typeof children === 'string') {
+      return (
+        <Text color="surface.text.gray.normal" weight="regular" variant="body" size="medium">
+          {children}
+        </Text>
+      );
+    }
+    return children;
+  };
+  return (
+    <UserMessageBubble
+      isError={isError}
+      onErrorTextClick={onErrorTextClick}
+      isLastMessage={isLastMessage}
+      isUserMessage={isUserMessage}
+      errorText={errorText}
+      children={childrenToRender()}
+    />
+  );
+};
 
 export { ChatBubble };
