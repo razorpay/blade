@@ -525,11 +525,11 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
 
         if (
           getParentNode(traversedNode)?.type !== 'PAGE' &&
+          getParentNode(traversedNode)?.type !== 'SECTION' &&
           !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type) &&
           // if the frame instances are from Blade's components then we don't want to include them in the count because these are components with slots
           !ignoreInstanceFrameNodeNames.includes(traversedNode.name)
         ) {
-          console.log({ type: traversedNode.type, name: traversedNode.name });
           // exclude the main frame itself from the count to remove false negatives
           totalLayers++;
         }
