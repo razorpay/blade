@@ -1,9 +1,8 @@
 import React from 'react';
 import { UserMessageBubble } from './UserMessageBubble';
-import { Box } from '~components/Box';
-import BaseBox from '~components/Box/BaseBox';
-import { AlertCircleIcon } from '~components/Icons';
+import { ResponseMessageBubble } from './ResponseMessageBubble';
 import { Text } from '~components/Typography';
+import type { IconComponent } from '~components/Icons';
 
 export type ChatBubbleProps = {
   isLastMessage?: boolean;
@@ -14,7 +13,8 @@ export type ChatBubbleProps = {
   errorText?: string;
   onErrorTextClick?: () => void;
   children: React.ReactNode | string;
-  avatarIcon?: React.ReactNode;
+  avatarIcon?: IconComponent;
+  avatarColor?: string;
 };
 const ChatBubble = ({
   isLastMessage,
@@ -26,6 +26,7 @@ const ChatBubble = ({
   onErrorTextClick,
   children,
   avatarIcon,
+  avatarColor,
 }: ChatBubbleProps): React.ReactElement => {
   console.log({
     isLastMessage,
@@ -39,16 +40,28 @@ const ChatBubble = ({
     avatarIcon,
   });
   const childrenToRender = (): React.ReactElement => {
-    if (typeof children === 'string') {
+    // their can be a case where childrens are passed like  "{' '} some text" so we need to check if children is string or not
+    const shouldWrapInText =
+      typeof children === 'string' ||
+      (Array.isArray(children) && children.every((child) => typeof child === 'string'));
+    // console.log(children.every((child) => typeof child === 'string'));
+    // convert children to an array if it is not an array
+
+    if (shouldWrapInText) {
       return (
-        <Text color="surface.text.gray.normal" weight="regular" variant="body" size="medium">
+        <Text
+          color={isLoading ? 'surface.text.gray.muted' : 'surface.text.gray.normal'}
+          weight="regular"
+          variant="body"
+          size="medium"
+        >
           {children}
         </Text>
       );
     }
     return children;
   };
-  return (
+  return isUserMessage ? (
     <UserMessageBubble
       isError={isError}
       onErrorTextClick={onErrorTextClick}
@@ -56,6 +69,12 @@ const ChatBubble = ({
       isUserMessage={isUserMessage}
       errorText={errorText}
       children={childrenToRender()}
+    />
+  ) : (
+    <ResponseMessageBubble
+      children={childrenToRender()}
+      avatarIcon={avatarIcon}
+      avatarColor={avatarColor}
     />
   );
 };

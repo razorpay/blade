@@ -27,6 +27,7 @@ This will be our main component that will be used to render the chat bubble.
 | feedbackOptions | Array<{icon: ReactNode, onClick: Function}> | null | No | if this is passed as an array, we will show feedbacOptions, otherwise not        |
 | children      | ReactNode | string | null    | yes       | The children that will be rendered inside the chat bubble. can  be react node or a string                                                                      |
 | avatarIcon        | ReactNode | null    | No       | it will be an Icon that will be rendered inside avatar                                      |
+| avatarIconColor        | string | null    | No       | it will be the color of the avatarIcon                                      |
 ```tsx
 type ChatBubbleProps = {
   isLastMessage?: boolean;
@@ -37,7 +38,8 @@ type ChatBubbleProps = {
   ErrorText?: string;
   onErrorClick?: Function;
   children?: ReactNode | string;
-  avatarIcon?: ReactNode; 
+  avatarIcon?: IconComponent; 
+  avatarIconColor?: string;
 }
 ```
 
