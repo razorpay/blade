@@ -492,10 +492,12 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           getParentNode(traversedNode)?.type !== 'PAGE'
         ) {
           const hasStrokes =
-            traversedNode?.boundVariables?.strokes?.length ?? traversedNode.strokes.length;
+            traversedNode?.boundVariables?.strokes?.length ??
+            traversedNode.strokes.filter((stroke) => stroke.visible !== false).length; // remove the hidden strokes from traversing
           const hasEffects = traversedNode.effects?.length || traversedNode.effectStyleId;
           const hasNonMixedFills =
-            traversedNode.fills !== figma.mixed && traversedNode.fills.length;
+            traversedNode.fills !== figma.mixed &&
+            traversedNode.fills.filter((fill) => fill.visible !== false).length; // remove the hidden fills from traversing
           const hasFills =
             traversedNode?.boundVariables?.fills?.length ??
             hasNonMixedFills ??
