@@ -91,6 +91,5 @@ type ChatBubbleProps = {
 - should we have validation state for chat bubble?
 - should their be an animation in case of error?
 - do we really need feedback options?
-- should we add an prop to disable the animation?
-- should we add a trailing option to the chat bubble?
+- we add a trailing option to the chat bubble?
 - Still need to think about the name ?
