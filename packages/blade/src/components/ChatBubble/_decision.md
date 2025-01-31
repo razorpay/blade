@@ -24,7 +24,7 @@ This will be our main component that will be used to render the chat bubble.
 | errorText    | String    | null    | No       | If the message is an error, we will show the error message in the chat bubble                                                     |
 | onErrorClick | Function | null    | No       | callback to be called onErrorClick          |
 | feedbackOptions | Array<{icon: ReactNode, onClick: Function}> | null | No | if this is passed as an array, we will show feedbacOptions, otherwise not        |
-| children      | ReactNode | string | null    | yes       | The children that will be rendered inside the chat bubble. can  be react node or a string                                                                      |
+| children      | ReactNode | null     | yes       | The children that will be rendered inside the chat bubble. can  be react node or a string                                                                      |
 | avatarIcon        | ReactNode | null    | No       | it will be an Icon that will be rendered inside avatar                                      |
 | avatarIconColor        | string | null    | No       | it will be the color of the avatarIcon                                      |
 
