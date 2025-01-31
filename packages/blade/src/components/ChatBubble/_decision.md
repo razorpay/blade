@@ -64,6 +64,22 @@ type ChatBubbleProps = {
 <ChatBubble><Markdown>  Demo Text </Markdown></ChatBubble>
 <ChatBubble><Markdown> Demo Text </Markdown></ChatBubble>
 
+# Alternative API
+
+// for animation
+<Move>
+<ChatBubble message="Demo Text"/>
+</Move>
+
+// with card
+<ChatBubble cardBody={<SomeComponent/>} />
+
+//Feedback Options 
+<ChatBubble feedbackOptions={[{icon: <Icon />, onClick: () => {},}]} message="Demo text"/>
+
+
+// Markdown
+<ChatBubble markdown="# this is markdown" />
 ````
 
 
@@ -73,3 +89,4 @@ type ChatBubbleProps = {
 - do we really need feedback options?
 - should we add an prop to disable the animation?
 - should we add a trailing option to the chat bubble?
+- Still need to think about the name ?
