@@ -6,15 +6,14 @@ import { useTheme } from '~components/BladeProvider';
 const Rotate = ({ children }: { children: React.ReactElement }): React.ReactElement => {
   const { theme } = useTheme();
   return (
+    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <LazyMotion features={domAnimation}>
+      {/* //TODO: use blade tokens for duration and repeat */}
       <m.div
         style={{
-          display: 'inline-block', // Ensures the box wraps around its children
-          backgroundColor: 'pink',
-          //   height: '24px',
-          //   width: '24px',
+          display: 'flex',
         }}
-        // animate={{ rotate: 360 }}
+        animate={{ rotate: 360 }}
         transition={{
           duration: 2,
           repeat: Infinity,
