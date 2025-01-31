@@ -2,6 +2,7 @@ import React from 'react';
 import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownLink, DropdownOverlay } from '..';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
+import { DropdownIconButton } from '../DropdownIconButton';
 import {
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
@@ -13,6 +14,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
 import {
+  BoxIcon,
   CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
@@ -96,7 +98,9 @@ export const InternalMenu = (): React.ReactElement => {
   return (
     <Box minHeight="200px" padding="spacing.10">
       <Dropdown>
-        <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
+        <DropdownButton tooltip={{ content: 'Change Status' }} variant="tertiary">
+          Status: {status ?? ''}
+        </DropdownButton>
         <DropdownOverlay>
           <DropdownHeader
             leading={<StarIcon color="surface.icon.gray.normal" size="large" />}
@@ -269,6 +273,55 @@ InternalLinkDropdown.parameters = {
   chromatic: {
     disableSnapshot: false,
   },
+};
+
+export const InternalIconButtonDropdown = (): React.ReactElement => {
+  const [status, setStatus] = React.useState<string | undefined>('latest-added');
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  return (
+    <Box padding="spacing.10">
+      <Dropdown onOpenChange={setIsDropdownOpen} isOpen={isDropdownOpen}>
+        <DropdownIconButton
+          icon={BoxIcon}
+          tooltip={{ content: 'Check status' }}
+          accessibilityLabel="Status Dropdown"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              isSelected={status === 'latest-added'}
+              title="Latest Added"
+              value="latest-added"
+            />
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              isSelected={status === 'latest-invoice'}
+              title="Latest Invoice"
+              value="latest-invoice"
+            />
+
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              isSelected={status === 'oldest-due-date'}
+              title="Oldest Due Date"
+              value="oldest-due-date"
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
 };
 
 export default DropdownStoryMeta;

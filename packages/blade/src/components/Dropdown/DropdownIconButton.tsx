@@ -1,39 +1,33 @@
 import React from 'react';
-import { getActionListContainerRole } from '../ActionList/getA11yRoles';
-import { BaseLink } from '../Link/BaseLink';
-import type { BaseLinkProps } from '../Link/BaseLink';
-import type { LinkButtonVariantProps } from '../Link';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { TooltipifyComponent, TooltipifyComponentProps } from '~utils/TooltipifyComponent';
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { IconButtonProps } from '~components/Button/IconButton';
+import StyledIconButton from '~components/Button/IconButton/StyledIconButton';
+import type { TooltipifyComponentProps } from '~utils/TooltipifyComponent';
+import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 
-type DropdownLinkProps = LinkButtonVariantProps & {
-  onBlur?: BaseLinkProps['onBlur'];
-  onKeyDown?: BaseLinkProps['onKeyDown'];
+type DropdownIconButtonProps = Omit<IconButtonProps, 'onClick'> & {
+  onBlur?: BaseButtonProps['onBlur'];
+  onKeyDown?: BaseButtonProps['onKeyDown'];
+  onClick?: IconButtonProps['onClick'];
   tooltip?: TooltipifyComponentProps['tooltip'];
 };
 
-const _DropdownLink = ({
-  children,
+const _DropdownIconButton = ({
   icon,
-  iconPosition = 'left',
+  isDisabled = false,
   onClick,
   onBlur,
   onKeyDown,
-  isDisabled,
-  href,
-  target,
-  rel,
-  accessibilityLabel,
   size = 'medium',
-  testID,
-  hitSlop,
-  htmlTitle,
+  accessibilityLabel,
+  emphasis = 'intense',
   tooltip,
-  ...props
-}: DropdownLinkProps): React.ReactElement => {
+  ...rest
+}: DropdownIconButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -45,25 +39,20 @@ const _DropdownLink = ({
   } = useDropdown();
 
   return (
-    // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
-    // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
+    // Using StyledIconButton here to avoid exporting onKeydown, and accessibiltiyProps object
     <TooltipifyComponent tooltip={tooltip}>
-      <BaseLink
-        variant="button"
-        {...(icon ? { icon, children } : { children })}
-        iconPosition={iconPosition}
-        size={size}
-        testID={testID}
-        hitSlop={hitSlop}
-        htmlTitle={htmlTitle}
+      <StyledIconButton
+        {...rest}
+        icon={icon}
         isDisabled={isDisabled}
-        {...props}
-        {...makeAnalyticsAttribute(props)}
+        size={size}
+        emphasis={emphasis}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={triggererRef as any}
+        accessibilityLabel={accessibilityLabel}
         accessibilityProps={{
           label: accessibilityLabel,
-          hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
+          hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownIconButton'),
           expanded: isOpen,
           controls: `${dropdownBaseId}-actionlist`,
           activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
@@ -75,6 +64,7 @@ const _DropdownLink = ({
           onClick?.(e as any);
         }}
         onBlur={(e) => {
+          // With button trigger, there is no "value" as such. It's just clickable items
           // Setting it for web fails it on native typecheck and vice versa
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
           onBlur?.(e as any);
@@ -91,8 +81,8 @@ const _DropdownLink = ({
   );
 };
 
-const DropdownLink = assignWithoutSideEffects(_DropdownLink, {
-  componentId: dropdownComponentIds.triggers.DropdownLink,
+const DropdownIconButton = assignWithoutSideEffects(_DropdownIconButton, {
+  componentId: dropdownComponentIds.triggers.DropdownIconButton,
 });
 
-export { DropdownLink };
+export { DropdownIconButton };
