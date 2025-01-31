@@ -62,9 +62,12 @@ type ChatBubbleProps = {
 
 <ChatBubble><Markdown>  Demo Text </Markdown></ChatBubble>
 <ChatBubble><Markdown> Demo Text </Markdown></ChatBubble>
+````
 
-# Alternative API
 
+## Alternative API
+
+```tsx
 // for animation
 <Move>
 <ChatBubble message="Demo Text"/>
@@ -79,7 +82,7 @@ type ChatBubbleProps = {
 
 // Markdown
 <ChatBubble markdown="# this is markdown" />
-````
+```
 
 
 ## Open Questions
