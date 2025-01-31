@@ -12,7 +12,7 @@ export type ChatBubbleProps = {
   errorText?: string;
   onClick?: () => void;
   footerActions?: React.ReactNode;
-  children: React.ReactNode | string;
+  children?: React.ReactNode | string;
   leading?: React.ReactNode;
   loadingText?: string;
 };
@@ -32,7 +32,8 @@ const ChatBubble = ({
     // their can be a case where childrens are passed like  "{' '} some text" so we need to check if children is string or not
     const shouldWrapInText =
       typeof children === 'string' ||
-      (Array.isArray(children) && children.every((child) => typeof child === 'string'));
+      (Array.isArray(children) && children.every((child) => typeof child === 'string')) ||
+      isLoading;
     // console.log(children.every((child) => typeof child === 'string'));
     // convert children to an array if it is not an array
 
@@ -44,7 +45,7 @@ const ChatBubble = ({
           variant="body"
           size="medium"
         >
-          {children}
+          {isLoading ? loadingText : children}
         </Text>
       );
     }

@@ -15,7 +15,12 @@ const Template = (args) => (
       {' '}
       Demo
     </ChatBubble>
-    <ChatBubble senderType="other">this is a demo message</ChatBubble>
+    <ChatBubble
+      senderType="other"
+      leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
+    >
+      this is a demo message
+    </ChatBubble>
     <ChatBubble messageType="self" senderType="self">
       message
     </ChatBubble>
@@ -23,10 +28,14 @@ const Template = (args) => (
     <ChatBubble
       senderType="other"
       leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
+      isLoading
+      loadingText="Analyzing your response..."
+    />
+
+    <ChatBubble
+      senderType="other"
+      leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
     >
-      Yo! i am the bot
-    </ChatBubble>
-    <ChatBubble isLoading>
       {' '}
       Yo! i am the bot. this is a very very very big chat bubble yo yo
     </ChatBubble>
