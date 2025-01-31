@@ -3,7 +3,6 @@
 - [Design](#design)
 - [ChatBubble Component](#ChatBubble-component)
   - [ChatBubble API](#ChatBubble-api)
-- [Component Breakdown](#component-breakdown)
 - [Open Questions](#open-questions)
 
 ## Design
