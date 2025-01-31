@@ -17,10 +17,10 @@ This will be our main component that will be used to render the chat bubble.
 
 | Prop          | Type      | Default | Required | Description                                                                                                                       |
 | ------------- | --------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| isLastMessage | Boolean   | false   | No       | If the message is the last message in the chat bubble , if this prop is enabled we will add decoration like tail in messageBubble |
+| isLastMessage | Boolean   | false   | No       | If the message is the last message in the chat  and if this prop is enabled we will add decorations messageBubble |
 | isUserMessage | Boolean   | false   | No       | If the message is from the user, we will add a different styles to the chat bubble                                                |
 | isLoading     | Boolean   | false   | No       | If the message is loading, we will add a loading animation to the chat bubble                                                     |
-| isError       | Boolean   | false   | No       | If the message is an error, we will add a different style to the chat bubble                                                      |
+| isError       | Boolean   | false   | No       | If the message is an error, we will add a different style to the chat bubble ,  will show error test and onErrorClick can only be called when isError is Enabled                                                 |
 | ErrorText    | String    | null    | No       | If the message is an error, we will show the error message in the chat bubble                                                     |
 | onErrorClick | Function | null    | No       | callback to be called onErrorClick          |
 | feedbackOptions | Array<{icon: ReactNode, onClick: Function}> | null | No | if this is passed as an array, we will show feedbacOptions, otherwise not        |
