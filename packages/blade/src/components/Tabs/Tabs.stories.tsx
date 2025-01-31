@@ -16,6 +16,8 @@ import {
   BankIcon,
   CreditCardIcon,
   ZapIcon,
+  MonitorIcon,
+  SmartphoneIcon,
 } from '~components/Icons';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
@@ -621,9 +623,16 @@ Large.args = {
   size: 'large',
 };
 
-export const Filled = TabsTemplate.bind({});
-Filled.args = {
+export const FilledMedium = TabsTemplate.bind({});
+FilledMedium.args = {
   variant: 'filled',
+  size: 'medium',
+};
+
+export const FilledLarge = TabsTemplate.bind({});
+FilledLarge.args = {
+  variant: 'filled',
+  size: 'large',
 };
 
 export const FilledVertical = TabsTemplate.bind({});
@@ -911,3 +920,65 @@ const ProductUseCase3Template: StoryFn<(props: StoryControlProps) => React.React
 
 export const ProductUseCase3 = ProductUseCase3Template.bind({});
 ProductUseCase3.storyName = 'Product Usecase: React Router';
+
+const ProductUseCase4Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
+  return (
+    <Box height={isReactNative() ? '100%' : undefined}>
+      <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
+        <CardBody height="100%">
+          <Tabs isFullWidthTabItem={false} variant="filled" defaultValue="desktop">
+            <Box
+              padding="spacing.6"
+              minHeight="300px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              paddingBottom="spacing.6"
+            >
+              <TabPanel value="desktop">
+                <Box
+                  elevation="midRaised"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="400px"
+                  height="200px"
+                  borderRadius="large"
+                  borderColor="surface.border.gray.muted"
+                  borderWidth="thin"
+                >
+                  <Text>Desktop Preview</Text>
+                </Box>
+              </TabPanel>
+              <TabPanel value="mobile">
+                <Box
+                  elevation="midRaised"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="140px"
+                  height="200px"
+                  borderRadius="large"
+                  borderColor="surface.border.gray.muted"
+                  borderWidth="thin"
+                >
+                  <Text>Mobile Preview</Text>
+                </Box>
+              </TabPanel>
+            </Box>
+
+            <Box width="200px" padding="spacing.6">
+              <TabList>
+                <TabItem value="desktop" leading={MonitorIcon} />
+                <TabItem value="mobile" leading={SmartphoneIcon} />
+              </TabList>
+            </Box>
+          </Tabs>
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+export const ProductUseCase4 = ProductUseCase4Template.bind({});
+ProductUseCase4.storyName = 'Product Usecase: Icon only tabs';
