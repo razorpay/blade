@@ -9,6 +9,7 @@ import {
   WithLinkStory,
   WithAutoPositioningMenuStory,
   WithSimpleMenuStory,
+  WithIconButtonStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
@@ -63,6 +64,14 @@ export const WithLink = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithLinkStory}
+    </Sandbox>
+  );
+};
+
+export const WithIconButton = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {WithIconButtonStory}
     </Sandbox>
   );
 };

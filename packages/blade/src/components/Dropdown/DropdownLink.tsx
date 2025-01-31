@@ -7,7 +7,8 @@ import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { TooltipifyComponent, TooltipifyComponentProps } from '~utils/TooltipifyComponent';
+import type { TooltipifyComponentProps } from '~utils/TooltipifyComponent';
+import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
   onBlur?: BaseLinkProps['onBlur'];
