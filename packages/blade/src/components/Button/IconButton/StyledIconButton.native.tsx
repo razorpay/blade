@@ -39,6 +39,7 @@ const StyledIconButton = React.forwardRef<View, StyledIconButtonProps>(
       size,
       emphasis,
       accessibilityLabel,
+      accessibilityProps,
     },
     ref,
   ) => {
@@ -72,7 +73,11 @@ const StyledIconButton = React.forwardRef<View, StyledIconButtonProps>(
         onPointerEnter={onPointerEnter}
         onTouchEnd={onTouchEnd}
         onTouchStart={onTouchStart}
-        {...makeAccessible({ label: accessibilityLabel, role: 'button' })}
+        {...makeAccessible({
+          ...accessibilityProps,
+          label: accessibilityLabel ?? accessibilityProps?.label,
+          role: accessibilityProps?.role ?? 'button',
+        })}
       >
         <Icon size={size} color={iconColorToken} />
       </StyledPressable>

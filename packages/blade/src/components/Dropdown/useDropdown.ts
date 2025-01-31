@@ -76,6 +76,7 @@ type DropdownContextType = {
   dropdownTriggerer?:
     | 'SelectInput'
     | 'DropdownButton'
+    | 'DropdownIconButton'
     | 'AutoComplete'
     | 'DropdownLink'
     | 'SearchInput';

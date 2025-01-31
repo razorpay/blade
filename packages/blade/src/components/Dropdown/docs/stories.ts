@@ -800,6 +800,80 @@ const WithLinkStory = `
   export default App;
 `;
 
+const WithIconButtonStory = `
+  import React from 'react';
+  import {
+    Dropdown,
+    DropdownOverlay,
+    DropdownIconButton,
+    ActionList,
+    ActionListItem,
+    Box,
+    ChevronDownIcon,
+    ChevronUpIcon,
+    Text,
+  } from '@razorpay/blade/components';
+
+  function App (): React.ReactElement {
+    const [status, setStatus] = React.useState<string | undefined>('latest-added');
+    const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  
+    return (
+      <Box padding="spacing.10">
+        <Dropdown 
+          onOpenChange={(isOpen) => {
+            if (!isOpen) {
+              setIsDropdownOpen(false)
+            }
+          }>
+          <DropdownIconButton
+            icon={BoxIcon}
+            accessibilityLabel="Set Status"
+            tooltip={{ content: 'Select Status' }}
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            {status ?? ''}
+          </DropdownLink>
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                isSelected={status === 'latest-added'}
+                title="Latest Added"
+                value="latest-added"
+              />
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                isSelected={status === 'latest-invoice'}
+                title="Latest Invoice"
+                value="latest-invoice"
+              />
+
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                isSelected={status === 'oldest-due-date'}
+                title="Oldest Due Date"
+                value="oldest-due-date"
+              />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    );
+  }
+
+  export default App;
+`;
+
 const WithControlledMenuStory = `
   import React from 'react';
   import {
@@ -1091,6 +1165,7 @@ export {
   WithControlledMultiSelectStory,
   WithSimpleMenuStory,
   WithLinkStory,
+  WithIconButtonStory,
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
   WithAutoPositioningSelectStory,

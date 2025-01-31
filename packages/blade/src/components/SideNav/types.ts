@@ -4,7 +4,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
-import type { TooltipProps } from '~components/Tooltip';
+import type { TooltipifyComponentProps } from '~utils/TooltipifyComponent';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type SideNavProps = {
@@ -131,7 +131,7 @@ type SideNavLinkProps = {
    * />
    * ```
    */
-  tooltip?: Pick<TooltipProps, 'title' | 'content' | 'onOpenChange'>;
+  tooltip?: TooltipifyComponentProps['tooltip'];
   onClick?: (event: React.MouseEvent) => void;
 } & DataAnalyticsAttribute;
 
