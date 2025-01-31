@@ -249,11 +249,6 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 isOverridden = true;
               }
               if (node.overriddenFields.includes('cornerRadius')) {
-                console.log(
-                  'card corner radius',
-                  traversedNode.mainComponent?.key,
-                  bladeThemeData.components.Card.key,
-                );
                 isOverridden = true;
                 const isCardBorderRadiusValid = [
                   traversedNode.boundVariables?.topLeftRadius?.id,
@@ -489,7 +484,8 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 ) || BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? '')
               ))) &&
           !ignoreInstanceFrameNodeNames.includes(traversedNode.name) &&
-          getParentNode(traversedNode)?.type !== 'PAGE'
+          getParentNode(traversedNode)?.type !== 'PAGE' &&
+          getParentNode(traversedNode)?.type !== 'SECTION'
         ) {
           const hasStrokes =
             traversedNode?.boundVariables?.strokes?.length ??
