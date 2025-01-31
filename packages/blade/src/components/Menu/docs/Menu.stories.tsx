@@ -323,6 +323,11 @@ Default.args = {
   trigger: <Avatar name="Saurabh Daware" size="large" color="primary" />,
 };
 
+export const WithAvatarIcon = MenuTemplate.bind({});
+WithAvatarIcon.args = {
+  trigger: <Avatar size="large" color="primary" />,
+};
+
 export const CustomItems = CustomOverlayMenuTemplate.bind({});
 CustomItems.args = {
   openInteraction: 'hover',
