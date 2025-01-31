@@ -2,43 +2,32 @@ import React from 'react';
 import { UserMessageBubble } from './UserMessageBubble';
 import { ResponseMessageBubble } from './ResponseMessageBubble';
 import { Text } from '~components/Typography';
-import type { IconComponent } from '~components/Icons';
+import BaseBox from '~components/Box/BaseBox';
 
 export type ChatBubbleProps = {
-  isLastMessage?: boolean;
-  isUserMessage?: boolean;
+  messageType?: 'last' | 'default';
+  senderType?: 'self' | 'other';
   isLoading?: boolean;
-  isError?: boolean;
-  feedbackOptions?: Array<{ icon: React.ReactNode; onClick: () => void }>;
+  validationState?: 'error' | 'none';
   errorText?: string;
-  onErrorTextClick?: () => void;
+  onClick?: () => void;
+  footerActions?: React.ReactNode;
   children: React.ReactNode | string;
-  avatarIcon?: IconComponent;
-  avatarColor?: string;
+  leading?: React.ReactNode;
+  loadingText?: string;
 };
 const ChatBubble = ({
-  isLastMessage,
-  isUserMessage,
-  isLoading,
-  isError,
-  feedbackOptions,
-  errorText,
-  onErrorTextClick,
+  messageType = 'default',
+  senderType = 'self',
+  isLoading = false,
+  validationState = 'none',
+  errorText = '',
+  onClick,
+  footerActions,
   children,
-  avatarIcon,
-  avatarColor,
+  leading,
+  loadingText,
 }: ChatBubbleProps): React.ReactElement => {
-  console.log({
-    isLastMessage,
-    isUserMessage,
-    isLoading,
-    isError,
-    feedbackOptions,
-    errorText,
-    onErrorTextClick,
-    children,
-    avatarIcon,
-  });
   const childrenToRender = (): React.ReactElement => {
     // their can be a case where childrens are passed like  "{' '} some text" so we need to check if children is string or not
     const shouldWrapInText =
@@ -61,21 +50,27 @@ const ChatBubble = ({
     }
     return children;
   };
-  return isUserMessage ? (
-    <UserMessageBubble
-      isError={isError}
-      onErrorTextClick={onErrorTextClick}
-      isLastMessage={isLastMessage}
-      isUserMessage={isUserMessage}
-      errorText={errorText}
-      children={childrenToRender()}
-    />
-  ) : (
-    <ResponseMessageBubble
-      children={childrenToRender()}
-      avatarIcon={avatarIcon}
-      avatarColor={avatarColor}
-    />
+  return (
+    <BaseBox>
+      {senderType === 'self' ? (
+        <UserMessageBubble
+          isError={validationState === 'error'}
+          onClick={onClick}
+          errorText={errorText}
+          children={childrenToRender()}
+          messageType={messageType}
+        />
+      ) : (
+        <ResponseMessageBubble
+          children={childrenToRender()}
+          leading={leading}
+          onClick={onClick}
+          loadingText={loadingText}
+          isLoading={isLoading}
+        />
+      )}
+      {footerActions}
+    </BaseBox>
   );
 };
 

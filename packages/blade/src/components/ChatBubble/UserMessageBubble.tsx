@@ -6,24 +6,22 @@ import { Text } from '~components/Typography';
 const UserMessageBubble = ({
   children,
   isError,
-  onErrorTextClick,
-  isLastMessage,
-  isUserMessage,
   errorText = 'Message not sent. Tap to retry.',
+  onClick,
+  messageType,
 }: {
   children: React.ReactNode | string;
   isError?: boolean;
-  onErrorTextClick?: () => void;
-  isLastMessage?: boolean;
-  isUserMessage?: boolean;
   errorText?: string;
+  onClick?: () => void;
+  messageType: 'last' | 'default';
 }): React.ReactElement => {
   return (
     <BaseBox
       display="flex"
       gap="10px"
       flexDirection="column"
-      onClick={isError ? onErrorTextClick : () => {}}
+      onClick={onClick}
       cursor={isError ? 'pointer' : 'default'}
     >
       <BaseBox
@@ -35,7 +33,7 @@ const UserMessageBubble = ({
         borderTopLeftRadius="large"
         borderTopRightRadius="large"
         borderBottomLeftRadius="large"
-        borderBottomRightRadius={isLastMessage && isUserMessage ? 'none' : 'large'}
+        borderBottomRightRadius={messageType === 'last' ? 'none' : 'large'}
         width="fit-content"
         height="auto"
         word-break="break-word"
