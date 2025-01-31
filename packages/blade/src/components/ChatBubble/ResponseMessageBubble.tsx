@@ -19,10 +19,10 @@ const ResponseMessageBubble = ({
     <BaseBox maxWidth="296px" onClick={onClick}>
       <BaseBox display="flex" gap="spacing.4" justifyContent="left">
         <BaseBox>
-          <Rotate>{leading}</Rotate>
+          <Rotate animate={isLoading}>{leading}</Rotate>
         </BaseBox>
         <BaseBox display="flex" alignItems="center" maxWidth="256px">
-          {isLoading ? loadingText : children}
+          {children}
         </BaseBox>
       </BaseBox>
     </BaseBox>

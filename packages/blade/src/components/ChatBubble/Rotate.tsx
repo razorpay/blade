@@ -1,23 +1,32 @@
 import React from 'react';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { makeMotionTime } from '~utils';
+import { castWebType } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import { msToSeconds } from '~utils/msToSeconds';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 
-const Rotate = ({ children }: { children: React.ReactElement }): React.ReactElement => {
+const Rotate = ({
+  children,
+  animate,
+}: {
+  children: React.ReactElement;
+  animate: boolean;
+}): React.ReactElement => {
   const { theme } = useTheme();
+
   return (
-    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <LazyMotion features={domAnimation}>
-      {/* //TODO: use blade tokens for duration and repeat */}
       <m.div
         style={{
           display: 'flex',
         }}
-        animate={{ rotate: 360 }}
+        // use animate prop to control the animation
+        animate={{ rotate: animate ? 90 : 0 }}
         transition={{
-          duration: 2,
+          duration: msToSeconds(theme.motion.duration.gentle),
           repeat: Infinity,
-          ease: 'linear',
+          ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
+          delay: msToSeconds(theme.motion.delay.gentle),
         }}
       >
         {children}
