@@ -61,6 +61,19 @@ type ChatMessageProps = {
 
 <ChatMessage><Markdown>  Demo Text </Markdown></ChatMessage>
 <ChatMessage><Markdown> Demo Text </Markdown></ChatMessage>
+
+
+// with footer actions
+   <ChatMessage
+     footerActions={
+       <ChipGroup>
+         <Chip value="value1">value1</Chip>
+         <Chip value="value2">value2</Chip>
+       </ChipGroup>
+     }
+   >
+   demo message
+   </ChatMessage>
 ```
 
 ## Alternative API
@@ -78,6 +91,8 @@ type ChatMessageProps = {
 
 // Markdown
 <ChatMessage markdown="# this is markdown" />
+
+// 
 ```
 
 ## Open Questions
