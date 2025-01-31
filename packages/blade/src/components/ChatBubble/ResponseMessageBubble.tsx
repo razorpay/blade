@@ -1,4 +1,5 @@
 import React from 'react';
+import Rotate from './Rotate';
 import BaseBox from '~components/Box/BaseBox';
 
 const ResponseMessageBubble = ({
@@ -18,9 +19,7 @@ const ResponseMessageBubble = ({
     <BaseBox maxWidth="296px" onClick={onClick}>
       <BaseBox display="flex" gap="spacing.4" justifyContent="left">
         <BaseBox>
-          {/* <Rotate> */}
-          {leading}
-          {/* </Rotate> */}
+          <Rotate>{leading}</Rotate>
         </BaseBox>
         <BaseBox display="flex" alignItems="center" maxWidth="256px">
           {isLoading ? loadingText : children}
