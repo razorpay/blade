@@ -27,6 +27,7 @@ const ChatBubble = ({
   children,
   leading,
   loadingText,
+  ...props
 }: ChatBubbleProps): React.ReactElement => {
   const childrenToRender = (): React.ReactElement => {
     // their can be a case where childrens are passed like  "{' '} some text" so we need to check if children is string or not
@@ -52,7 +53,7 @@ const ChatBubble = ({
     return children;
   };
   return (
-    <BaseBox>
+    <BaseBox {...props}>
       {senderType === 'self' ? (
         <SelfMessageBubble
           isError={validationState === 'error'}
