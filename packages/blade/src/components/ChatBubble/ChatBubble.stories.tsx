@@ -3,7 +3,7 @@ import React from 'react';
 import { ChatBubble } from './ChatBubble';
 import { Box } from '~components/Box';
 import { RayIcon } from '~components/Icons';
-import { Card, CardHeaderLeading, CardHeader, CardFooter, CardBody } from '~components/Card';
+import { Card, CardBody } from '~components/Card';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Rotate from './Rotate';
+import type { DefaultMessageBubbleProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 
 const DefaultMessageBubble = ({
@@ -7,12 +8,7 @@ const DefaultMessageBubble = ({
   leading,
   isLoading,
   onClick,
-}: {
-  children: React.ReactNode | string;
-  leading?: React.ReactNode;
-  isLoading?: boolean;
-  onClick?: () => void;
-}): React.ReactElement => {
+}: DefaultMessageBubbleProps): React.ReactElement => {
   return (
     <BaseBox maxWidth="296px" onClick={onClick}>
       <BaseBox display="flex" gap="spacing.4" justifyContent="left">

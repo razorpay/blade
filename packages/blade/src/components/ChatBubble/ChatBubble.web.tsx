@@ -1,21 +1,10 @@
 import React from 'react';
 import { SelfMessageBubble } from './SelfMessageBubble';
 import { DefaultMessageBubble } from './DefaultMessageBubble';
+import type { ChatBubbleProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 
-export type ChatBubbleProps = {
-  messageType?: 'last' | 'default';
-  senderType?: 'self' | 'other';
-  isLoading?: boolean;
-  validationState?: 'error' | 'none';
-  errorText?: string;
-  onClick?: () => void;
-  footerActions?: React.ReactNode;
-  children?: React.ReactNode | string;
-  leading?: React.ReactNode;
-  loadingText?: string;
-};
 const ChatBubble = ({
   messageType = 'default',
   senderType = 'self',
