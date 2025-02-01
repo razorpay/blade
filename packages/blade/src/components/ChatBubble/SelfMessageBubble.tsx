@@ -3,7 +3,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { AlertCircleIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 
-const UserMessageBubble = ({
+const SelfMessageBubble = ({
   children,
   isError,
   errorText = 'Message not sent. Tap to retry.',
@@ -63,4 +63,4 @@ const UserMessageBubble = ({
   );
 };
 
-export { UserMessageBubble };
+export { SelfMessageBubble };

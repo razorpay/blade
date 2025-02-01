@@ -9,8 +9,8 @@ const Rotate = ({
   children,
   animate,
 }: {
-  children: React.ReactElement;
-  animate: boolean;
+  children: React.ReactElement | string;
+  animate?: boolean;
 }): React.ReactElement => {
   const { theme } = useTheme();
 
