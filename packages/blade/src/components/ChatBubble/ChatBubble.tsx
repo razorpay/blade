@@ -1,6 +1,6 @@
 import React from 'react';
-import { UserMessageBubble } from './UserMessageBubble';
-import { ResponseMessageBubble } from './ResponseMessageBubble';
+import { SelfMessageBubble } from './SelfMessageBubble';
+import { DefaultMessageBubble } from './DefaultMessageBubble';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 
@@ -54,7 +54,7 @@ const ChatBubble = ({
   return (
     <BaseBox>
       {senderType === 'self' ? (
-        <UserMessageBubble
+        <SelfMessageBubble
           isError={validationState === 'error'}
           onClick={onClick}
           errorText={errorText}
@@ -62,7 +62,7 @@ const ChatBubble = ({
           messageType={messageType}
         />
       ) : (
-        <ResponseMessageBubble
+        <DefaultMessageBubble
           children={childrenToRender()}
           leading={leading}
           onClick={onClick}

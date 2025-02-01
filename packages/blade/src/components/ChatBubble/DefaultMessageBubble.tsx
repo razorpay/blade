@@ -2,15 +2,13 @@ import React from 'react';
 import Rotate from './Rotate';
 import BaseBox from '~components/Box/BaseBox';
 
-const ResponseMessageBubble = ({
+const DefaultMessageBubble = ({
   children,
-  loadingText,
   leading,
   isLoading,
   onClick,
 }: {
   children: React.ReactNode | string;
-  loadingText?: string;
   leading?: React.ReactNode;
   isLoading?: boolean;
   onClick?: () => void;
@@ -29,4 +27,4 @@ const ResponseMessageBubble = ({
   );
 };
 
-export { ResponseMessageBubble };
+export { DefaultMessageBubble };
