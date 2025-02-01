@@ -13,7 +13,7 @@ export default {
 };
 
 const Template = (args) => (
-  <Box width="300px" display="flex" flexDirection="column" gap="12px">
+  <Box width="350px" display="flex" flexDirection="column" gap="12px">
     <ChatBubble
       senderType="other"
       leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
