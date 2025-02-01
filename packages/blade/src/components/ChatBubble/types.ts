@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { StringChildrenType } from '~utils/types';
 type ChatBubbleProps = {
   messageType?: 'last' | 'default';
   senderType?: 'self' | 'other';
@@ -7,7 +8,7 @@ type ChatBubbleProps = {
   errorText?: string;
   onClick?: () => void;
   footerActions?: React.ReactNode;
-  children?: React.ReactNode | string;
+  children?: React.ReactNode | StringChildrenType;
   leading?: React.ReactNode;
   loadingText?: string;
 };

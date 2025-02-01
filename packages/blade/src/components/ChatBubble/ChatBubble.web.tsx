@@ -4,6 +4,7 @@ import { DefaultMessageBubble } from './DefaultMessageBubble';
 import type { ChatBubbleProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+import { getStringFromReactText } from '~utils/getStringChildren';
 
 const ChatBubble = ({
   messageType = 'default',
@@ -24,9 +25,6 @@ const ChatBubble = ({
       typeof children === 'string' ||
       (Array.isArray(children) && children.every((child) => typeof child === 'string')) ||
       isLoading;
-    // console.log(children.every((child) => typeof child === 'string'));
-    // convert children to an array if it is not an array
-
     if (shouldWrapInText) {
       return (
         <Text
@@ -35,7 +33,7 @@ const ChatBubble = ({
           variant="body"
           size="medium"
         >
-          {isLoading ? loadingText : children}
+          {isLoading ? loadingText : getStringFromReactText(children)}
         </Text>
       );
     }
@@ -56,7 +54,6 @@ const ChatBubble = ({
           children={childrenToRender()}
           leading={leading}
           onClick={onClick}
-          loadingText={loadingText}
           isLoading={isLoading}
         />
       )}
