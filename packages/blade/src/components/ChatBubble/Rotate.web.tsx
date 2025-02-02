@@ -20,7 +20,6 @@ const Rotate = ({
         style={{
           display: 'flex',
         }}
-        // use animate prop to control the animation
         animate={{ rotate: animate ? 90 : 0 }}
         transition={{
           duration: msToSeconds(theme.motion.duration.gentle),

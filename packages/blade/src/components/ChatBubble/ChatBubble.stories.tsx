@@ -17,11 +17,11 @@ const Template = (args) => (
     <ChatBubble
       senderType="other"
       leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
-      style={{ alignSelf: 'flex-start' }}
+      alignSelf="flex-start"
     >
       Hi, my name is Ray. How can I help you today?
     </ChatBubble>
-    <ChatBubble senderType="self" style={{ alignSelf: 'flex-end' }}>
+    <ChatBubble senderType="self" alignSelf="flex-end">
       Can you help me with payment intregation?
     </ChatBubble>
     <ChatBubble
@@ -45,7 +45,7 @@ const Template = (args) => (
     </ChatBubble>
     <ChatBubble
       senderType="self"
-      style={{ alignSelf: 'flex-end' }}
+      alignSelf="flex-end"
       validationState="error"
       errorText="Unable to send the message"
       messageType="last"
