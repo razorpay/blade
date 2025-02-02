@@ -11,7 +11,7 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="ChatBubble"
-      componentDescription="A chat bubble is a visual representation of a message in a chat application. It is used to distinguish between messages sent by the user and messages received from other users."
+      componentDescription="A chat bubble is a visual representation of a message in a chat application."
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
     >
