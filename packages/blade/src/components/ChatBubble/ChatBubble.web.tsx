@@ -5,20 +5,25 @@ import type { ChatBubbleProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { getStringFromReactText } from '~utils/getStringChildren';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { BladeElementRef } from '~utils/types';
 
-const ChatBubble = ({
-  messageType = 'default',
-  senderType = 'self',
-  isLoading = false,
-  validationState = 'none',
-  errorText = '',
-  onClick,
-  footerActions,
-  children,
-  leading,
-  loadingText,
-  ...props
-}: ChatBubbleProps): React.ReactElement => {
+const _ChatBubble = (
+  {
+    messageType = 'default',
+    senderType = 'self',
+    isLoading = false,
+    validationState = 'none',
+    errorText = '',
+    onClick,
+    footerActions,
+    children,
+    leading,
+    loadingText,
+    ...props
+  }: ChatBubbleProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const childrenToRender = (): React.ReactElement => {
     // their can be a case where childrens are passed like  "{' '} some text" so we need to check if children is string or not
     const shouldWrapInText =
@@ -40,7 +45,7 @@ const ChatBubble = ({
     return children;
   };
   return (
-    <BaseBox {...props}>
+    <BaseBox {...props} ref={ref as never}>
       {senderType === 'self' ? (
         <SelfMessageBubble
           isError={validationState === 'error'}
@@ -62,4 +67,8 @@ const ChatBubble = ({
   );
 };
 
+const ChatBubble = assignWithoutSideEffects(React.forwardRef(_ChatBubble), {
+  displayName: 'ChatBubble',
+  componentId: 'ChatBubble',
+});
 export { ChatBubble };
