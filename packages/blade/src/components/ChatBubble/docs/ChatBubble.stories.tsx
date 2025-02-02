@@ -44,9 +44,9 @@ export default {
   },
 } as Meta<ChatBubbleProps>;
 
-const ChatBubbleTemplate: StoryFn<typeof ChatBubble> = (args) => {
+const ChatBubbleTemplate: StoryFn<typeof ChatBubble> = () => {
   return (
-    <ChatBubble {...args} messageType="last">
+    <ChatBubble senderType="self" messageType="last">
       Hi, Can you help me with the docs?
     </ChatBubble>
   );
@@ -55,12 +55,12 @@ const ChatBubbleTemplate: StoryFn<typeof ChatBubble> = (args) => {
 export const Default = ChatBubbleTemplate.bind({});
 Default.storyName = 'Default';
 
-const ChatBubbleMessageTypeTemplates: StoryFn<typeof ChatBubble> = (args) => {
+const ChatBubbleMessageTypeTemplates: StoryFn<typeof ChatBubble> = () => {
   const messageTypes = ['last', 'default'] as const;
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
       {messageTypes.map((message, index) => (
-        <ChatBubble {...args} messageType={message} key={index}>
+        <ChatBubble senderType="self" messageType={message} key={index}>
           Hi, Can you help me with the docs?
         </ChatBubble>
       ))}
@@ -72,14 +72,13 @@ export const MessageTypes = ChatBubbleMessageTypeTemplates.bind({});
 MessageTypes.storyName = 'Message Types';
 MessageTypes.args = {};
 
-const ChatBubbleSenderTypeTemplates: StoryFn<typeof ChatBubble> = (args) => {
+const ChatBubbleSenderTypeTemplates: StoryFn<typeof ChatBubble> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
-      <ChatBubble {...args} senderType="self" messageType="default">
+      <ChatBubble senderType="self" messageType="default">
         Hi, Can you help me with the docs?
       </ChatBubble>
       <ChatBubble
-        {...args}
         senderType="other"
         leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
       >
@@ -92,11 +91,10 @@ const ChatBubbleSenderTypeTemplates: StoryFn<typeof ChatBubble> = (args) => {
 export const SenderTypes = ChatBubbleSenderTypeTemplates.bind({});
 SenderTypes.storyName = 'Sender Types';
 
-const ChatBubbleLoadingTemplates: StoryFn<typeof ChatBubble> = (args) => {
+const ChatBubbleLoadingTemplates: StoryFn<typeof ChatBubble> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
       <ChatBubble
-        {...args}
         isLoading
         senderType="other"
         loadingText="Analyzing your response..."
@@ -109,11 +107,10 @@ const ChatBubbleLoadingTemplates: StoryFn<typeof ChatBubble> = (args) => {
 export const Loading = ChatBubbleLoadingTemplates.bind({});
 Loading.storyName = 'Loading Chat Bubble';
 
-const ChatBubbleErrorTemplates: StoryFn<typeof ChatBubble> = (args) => {
+const ChatBubbleErrorTemplates: StoryFn<typeof ChatBubble> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
       <ChatBubble
-        {...args}
         validationState="error"
         senderType="self"
         messageType="last"

@@ -13,7 +13,7 @@ const DefaultMessageBubble = ({
     <BaseBox maxWidth="296px" onClick={onClick}>
       <BaseBox display="flex" gap="spacing.4" justifyContent="left">
         <BaseBox>
-          <Rotate animate={isLoading}>{leading} </Rotate>
+          <Rotate animate={isLoading}>{leading as React.ReactElement}</Rotate>
         </BaseBox>
         <BaseBox display="flex" alignItems="center" maxWidth="256px">
           {children}

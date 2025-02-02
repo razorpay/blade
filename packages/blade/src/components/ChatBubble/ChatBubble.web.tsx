@@ -38,12 +38,13 @@ const _ChatBubble = (
           variant="body"
           size="medium"
         >
-          {isLoading ? loadingText : getStringFromReactText(children)}
+          {isLoading ? loadingText : getStringFromReactText(children as string | string[])}
         </Text>
       );
     }
-    return children;
+    return children as React.ReactElement;
   };
+
   return (
     <BaseBox {...props} ref={ref as never}>
       {senderType === 'self' ? (

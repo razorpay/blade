@@ -20,19 +20,23 @@ type DefaultMessageBubbleProps = {
   onClick?: () => void;
 };
 
-type SenderChatBubbleProps = {
+type SenderChatBubbleProps = CommonChatBubbleProps & {
   senderType: 'self';
   messageType: 'default' | 'last';
   errorText?: string;
+  isLoading?: undefined;
+  loadingText?: undefined;
+  leading?: undefined;
 };
 
-type OtherChatBubbleProps = {
+type OtherChatBubbleProps = CommonChatBubbleProps & {
   senderType: 'other';
+  messageType?: undefined;
   isLoading?: boolean;
   loadingText?: string;
   leading: React.ReactNode;
 };
 
-type ChatBubbleProps = CommonChatBubbleProps & (SenderChatBubbleProps | OtherChatBubbleProps);
+type ChatBubbleProps = SenderChatBubbleProps | OtherChatBubbleProps;
 
 export type { ChatBubbleProps, DefaultMessageBubbleProps };
