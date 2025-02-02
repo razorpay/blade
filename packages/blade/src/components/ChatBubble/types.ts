@@ -1,8 +1,7 @@
 import type React from 'react';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
-import type { StringChildrenType } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 
-type ChatBubbleStyleProps = BaseBoxProps;
 type ChatBubbleProps = {
   messageType?: 'last' | 'default';
   senderType?: 'self' | 'other';
@@ -14,7 +13,9 @@ type ChatBubbleProps = {
   children?: React.ReactNode | StringChildrenType;
   leading?: React.ReactNode;
   loadingText?: string;
-} & ChatBubbleStyleProps;
+} & TestID &
+  StyledPropsBlade &
+  DataAnalyticsAttribute;
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
   leading?: React.ReactNode;
