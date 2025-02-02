@@ -80,7 +80,7 @@ const ChatBubbleSenderTypeTemplates: StoryFn<typeof ChatBubble> = () => {
       </ChatBubble>
       <ChatBubble
         senderType="other"
-        leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
       >
         Hi, Can you help me with the docs?
       </ChatBubble>
@@ -98,7 +98,7 @@ const ChatBubbleLoadingTemplates: StoryFn<typeof ChatBubble> = () => {
         isLoading
         senderType="other"
         loadingText="Analyzing your response..."
-        leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
       />
     </Box>
   );

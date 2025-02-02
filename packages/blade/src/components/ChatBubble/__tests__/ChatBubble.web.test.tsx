@@ -30,7 +30,7 @@ describe('<ChatBubble/>', () => {
     const { container } = renderWithTheme(
       <ChatBubble
         senderType="other"
-        leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
       >
         {' '}
         This is another demo message{' '}
@@ -42,7 +42,7 @@ describe('<ChatBubble/>', () => {
     const { container } = renderWithTheme(
       <ChatBubble
         senderType="other"
-        leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
         loadingText="Analyzing your response..."
       >
         <Card>
