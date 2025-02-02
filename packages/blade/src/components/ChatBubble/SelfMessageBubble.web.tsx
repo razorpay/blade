@@ -44,7 +44,7 @@ const SelfMessageBubble = ({
         <BaseBox
           maxWidth="240px"
           display="flex"
-          justifyContent="center"
+          justifyContent="flex-start"
           alignItems="center"
           gap="4px"
         >
