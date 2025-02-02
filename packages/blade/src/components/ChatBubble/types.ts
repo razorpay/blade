@@ -2,20 +2,17 @@ import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 
-type ChatBubbleProps = {
-  messageType?: 'last' | 'default';
-  senderType?: 'self' | 'other';
+type CommonChatBubbleProps = {
   isLoading?: boolean;
   validationState?: 'error' | 'none';
   errorText?: string;
   onClick?: () => void;
   footerActions?: React.ReactNode;
   children?: React.ReactNode | StringChildrenType;
-  leading?: React.ReactNode;
-  loadingText?: string;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;
+
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
   leading?: React.ReactNode;
@@ -23,12 +20,19 @@ type DefaultMessageBubbleProps = {
   onClick?: () => void;
 };
 
-type SelfMessageBubbleProps = {
-  children: React.ReactNode | string;
-  isError?: boolean;
+type SenderChatBubbleProps = {
+  senderType: 'self';
+  messageType: 'default' | 'last';
   errorText?: string;
-  onClick?: () => void;
-  messageType: 'last' | 'default';
 };
 
-export type { ChatBubbleProps, DefaultMessageBubbleProps, SelfMessageBubbleProps };
+type OtherChatBubbleProps = {
+  senderType: 'other';
+  isLoading?: boolean;
+  loadingText?: string;
+  leading: React.ReactNode;
+};
+
+type ChatBubbleProps = CommonChatBubbleProps & (SenderChatBubbleProps | OtherChatBubbleProps);
+
+export type { ChatBubbleProps, DefaultMessageBubbleProps };

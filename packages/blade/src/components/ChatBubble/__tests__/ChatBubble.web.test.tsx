@@ -19,7 +19,10 @@ describe('<ChatBubble/>', () => {
   });
   it('should render last message correctly', () => {
     const { container } = renderWithTheme(
-      <ChatBubble senderType="self"> This is another demo message </ChatBubble>,
+      <ChatBubble messageType="default" senderType="self">
+        {' '}
+        This is another demo message{' '}
+      </ChatBubble>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -40,6 +43,7 @@ describe('<ChatBubble/>', () => {
       <ChatBubble
         senderType="other"
         leading={<RayIcon size="xlarge" color="surface.background.sea.intense" />}
+        loadingText="Analyzing your response..."
       >
         <Card>
           <CardBody>

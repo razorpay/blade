@@ -75,7 +75,7 @@ MessageTypes.args = {};
 const ChatBubbleSenderTypeTemplates: StoryFn<typeof ChatBubble> = (args) => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
-      <ChatBubble {...args} senderType="self">
+      <ChatBubble {...args} senderType="self" messageType="default">
         Hi, Can you help me with the docs?
       </ChatBubble>
       <ChatBubble
@@ -116,7 +116,8 @@ const ChatBubbleErrorTemplates: StoryFn<typeof ChatBubble> = (args) => {
         {...args}
         validationState="error"
         senderType="self"
-        errorText="Error in processing your request"
+        messageType="last"
+        errorText="Message not sent. Tap to retry."
       >
         Can you help me with the docs?
       </ChatBubble>
