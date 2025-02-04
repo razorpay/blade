@@ -86,7 +86,6 @@ type DefaultChatMessageProps = CommonChatMessageProps & {
   messageType?: undefined;
   isLoading?: boolean;
   loadingText?: string;
-  leading: React.ReactNode;
 };
 
 type ChatMessageProps = SelfChatMessageProps | DefaultChatMessageProps;

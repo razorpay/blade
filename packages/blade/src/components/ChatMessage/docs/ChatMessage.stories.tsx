@@ -83,7 +83,7 @@ MessageTypes.args = {};
 const ChatMessageSenderTypeTemplates: StoryFn<typeof ChatMessage> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
-      <ChatMessage senderType="self" messageType="default">
+      <ChatMessage senderType="self" messageType="last">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
         laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
@@ -100,12 +100,45 @@ const ChatMessageSenderTypeTemplates: StoryFn<typeof ChatMessage> = () => {
         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </ChatMessage>
+      <ChatMessage senderType="other" marginLeft="24px">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </ChatMessage>
     </Box>
   );
 };
 
 export const SenderTypes = ChatMessageSenderTypeTemplates.bind({});
 SenderTypes.storyName = 'Sender Types';
+
+const SenderTypeWithAndWithoutIconsTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <ChatMessage
+        senderType="other"
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </ChatMessage>
+      <ChatMessage senderType="other" marginLeft="24px">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </ChatMessage>
+    </Box>
+  );
+};
+export const SenderTypeWithAndWithoutIcons = SenderTypeWithAndWithoutIconsTemplate.bind({});
+SenderTypeWithAndWithoutIcons.storyName = 'Sender Type With and Without Icons';
 
 const ChatMessageLoadingTemplates: StoryFn<typeof ChatMessage> = () => {
   return (
