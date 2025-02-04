@@ -22,7 +22,6 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  max-width: 240px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -499,7 +498,6 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  max-width: 240px;
   background-color: hsla(4,74%,49%,0.09);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -662,7 +660,6 @@ exports[`<ChatMessage/> should render last message correctly 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  max-width: 240px;
   background-color: hsla(227,100%,59%,0.09);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -729,7 +726,6 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  max-width: 240px;
   background-color: hsla(227,100%,59%,0.09);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -801,7 +797,6 @@ exports[`<ChatMessage/> should render last message correctly 3`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  max-width: 240px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -897,7 +892,6 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  max-width: 240px;
 }
 
 .c2.c2.c2.c2.c2 {
