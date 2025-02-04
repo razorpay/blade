@@ -1,5 +1,6 @@
 import React from 'react';
 import type { CommonChatMessageProps } from './types';
+import { chatMessageToken } from './token';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form/FormHint';
 
@@ -22,15 +23,21 @@ const SelfMessageBubble = ({
       cursor={isError ? 'pointer' : 'default'}
     >
       <BaseBox
-        maxWidth="240px"
+        maxWidth={chatMessageToken.self.maxWidth}
         backgroundColor={
-          isError ? 'feedback.background.negative.subtle' : 'surface.background.primary.subtle'
+          isError
+            ? chatMessageToken.self.backgroundColor.error
+            : chatMessageToken.self.backgroundColor.default
         }
         padding="spacing.4"
-        borderTopLeftRadius="large"
-        borderTopRightRadius="large"
-        borderBottomLeftRadius="large"
-        borderBottomRightRadius={messageType === 'last' ? 'none' : 'large'}
+        borderTopLeftRadius={chatMessageToken.self.borderTopLeftRadius}
+        borderTopRightRadius={chatMessageToken.self.borderTopRightRadius}
+        borderBottomLeftRadius={chatMessageToken.self.borderBottomLeftRadius}
+        borderBottomRightRadius={
+          messageType === 'last'
+            ? chatMessageToken.self.borderBottomRightRadiusForLastMessage
+            : chatMessageToken.self.borderBottomRightRadius
+        }
         width="fit-content"
         height="auto"
       >
