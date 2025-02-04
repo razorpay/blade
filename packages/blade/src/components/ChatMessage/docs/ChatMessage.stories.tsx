@@ -1,6 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { m } from 'framer-motion';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessageProps } from '../types';
 import { Heading } from '~components/Typography/Heading';
@@ -13,6 +12,8 @@ import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Chip, ChipGroup } from '~components/Chip';
+import { Stagger } from '~components/Stagger';
+import { Fade } from '~components/Fade';
 
 const Page = (): React.ReactElement => {
   return (
@@ -231,21 +232,21 @@ ChatMessageWithFooterActions.storyName = 'Chat Message with Footer Actions';
 
 const TypingText = ({ text }: { text: string }): React.ReactElement => {
   return (
-    <div className="typing-container">
-      {text.split('').map((char: string, index: number) => (
-        <m.span
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.1,
-            delay: index * 0.1, // Staggered delay based on index
-          }}
-        >
-          {char}
-        </m.span>
+    <Stagger>
+      {text.split(' ').map((letter, index) => (
+        <Fade key={index}>
+          <Text
+            display="inline"
+            color="surface.text.gray.normal"
+            weight="regular"
+            variant="body"
+            size="medium"
+          >
+            {letter}{' '}
+          </Text>
+        </Fade>
       ))}
-    </div>
+    </Stagger>
   );
 };
 const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> = () => {
@@ -257,7 +258,7 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
           leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
         >
           <Box>
-            <TypingText text="This is a demo message" />
+            <TypingText text="This is a demo message." />
           </Box>
         </ChatMessage>
       </Box>

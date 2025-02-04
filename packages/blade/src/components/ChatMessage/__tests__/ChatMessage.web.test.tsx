@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/react';
-import { ChatMessage } from '../ChatMessage';
+import { ChatMessage } from '../ChatMessage.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { RayIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
