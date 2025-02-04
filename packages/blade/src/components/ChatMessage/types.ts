@@ -2,7 +2,7 @@ import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 
-type CommonChatBubbleProps = {
+type CommonChatMessageProps = {
   isLoading?: boolean;
   validationState?: 'error' | 'none';
   errorText?: string;
@@ -20,7 +20,7 @@ type DefaultMessageBubbleProps = {
   onClick?: () => void;
 };
 
-type SenderChatBubbleProps = CommonChatBubbleProps & {
+type SenderChatMessageProps = CommonChatMessageProps & {
   senderType: 'self';
   messageType: 'default' | 'last';
   errorText?: string;
@@ -29,7 +29,7 @@ type SenderChatBubbleProps = CommonChatBubbleProps & {
   leading?: undefined;
 };
 
-type OtherChatBubbleProps = CommonChatBubbleProps & {
+type OtherChatMessageProps = CommonChatMessageProps & {
   senderType: 'other';
   messageType?: undefined;
   isLoading?: boolean;
@@ -37,6 +37,6 @@ type OtherChatBubbleProps = CommonChatBubbleProps & {
   leading: React.ReactNode;
 };
 
-type ChatBubbleProps = SenderChatBubbleProps | OtherChatBubbleProps;
+type ChatMessageProps = SenderChatMessageProps | OtherChatMessageProps;
 
-export type { ChatBubbleProps, DefaultMessageBubbleProps };
+export type { ChatMessageProps, DefaultMessageBubbleProps };

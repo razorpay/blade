@@ -1,11 +1,11 @@
 import { composeStories } from '@storybook/react';
-import * as chatBubble from './ChatBubble.stories';
+import * as chatMessage from './ChatMessage.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
-const allStories = [...Object.values(composeStories(chatBubble))];
+const allStories = [...Object.values(composeStories(chatMessage))];
 
-export const ChatBubble = (): JSX.Element => {
+export const ChatMessage = (): JSX.Element => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
       {allStories.map((Story) => {
@@ -21,8 +21,8 @@ export const ChatBubble = (): JSX.Element => {
 };
 
 export default {
-  title: 'Components/KitchenSink/ChatBubble',
-  component: ChatBubble,
+  title: 'Components/KitchenSink/ChatMessage',
+  component: ChatMessage,
   parameters: {
     // enable Chromatic's snapshots only for kitchen sink
     chromatic: { disableSnapshot: false },

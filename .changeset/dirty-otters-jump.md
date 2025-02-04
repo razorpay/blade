@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-feat(blade): add chat bubble component
+feat(blade): add Chat Message component

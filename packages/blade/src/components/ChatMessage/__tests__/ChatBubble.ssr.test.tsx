@@ -1,5 +1,5 @@
-// test case for ChatBubble component
-import { ChatBubble } from '../ChatBubble';
+// test case for ChatMessage component
+import { ChatMessage } from '../ChatMessage.all';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { RayIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
@@ -7,40 +7,40 @@ import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
 
-describe('<ChatBubble/>', () => {
+describe('<ChatMessage/>', () => {
   it('should render last message correctly', () => {
     const { container } = renderWithSSR(
-      <ChatBubble senderType="self" messageType="last">
+      <ChatMessage senderType="self" messageType="last">
         {' '}
         This is a demo message{' '}
-      </ChatBubble>,
+      </ChatMessage>,
     );
     expect(container).toMatchSnapshot();
   });
   it('should render last message correctly', () => {
     const { container } = renderWithSSR(
-      <ChatBubble messageType="default" senderType="self">
+      <ChatMessage messageType="default" senderType="self">
         {' '}
         This is another demo message{' '}
-      </ChatBubble>,
+      </ChatMessage>,
     );
     expect(container).toMatchSnapshot();
   });
   it('should render last message correctly', () => {
     const { container } = renderWithSSR(
-      <ChatBubble
+      <ChatMessage
         senderType="other"
         leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
       >
         {' '}
         This is another demo message{' '}
-      </ChatBubble>,
+      </ChatMessage>,
     );
     expect(container).toMatchSnapshot();
   });
   it('should render last message correctly', () => {
     const { container } = renderWithSSR(
-      <ChatBubble
+      <ChatMessage
         senderType="other"
         leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
         loadingText="Analyzing your response..."
@@ -59,7 +59,7 @@ describe('<ChatBubble/>', () => {
             </Box>
           </CardBody>
         </Card>
-      </ChatBubble>,
+      </ChatMessage>,
     );
     expect(container).toMatchSnapshot();
   });

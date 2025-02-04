@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { ChatBubble } from '../ChatBubble';
-import type { ChatBubbleProps } from '../types';
+import { ChatMessage } from '../ChatMessage';
+import type { ChatMessageProps } from '../types';
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -10,19 +10,19 @@ import { RayIcon } from '~components/Icons';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="ChatBubble"
-      componentDescription="A chat bubble is a visual representation of a message in a chat application."
+      componentName="ChatMessage"
+      componentDescription="A Chat Message is a visual representation of a message in a chat application."
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { ChatBubble } from '@razorpay/blade/components';
+        import { ChatMessage } from '@razorpay/blade/components';
         
         function App() {
           return (
-            <ChatBubble > Hi, from ray! </ChatBubble>
+            <ChatMessage > Hi, from ray! </ChatMessage>
           )
         }
 
@@ -34,67 +34,67 @@ const Page = (): React.ReactElement => {
 };
 
 export default {
-  title: 'Components/ChatBubble',
-  component: ChatBubble,
+  title: 'Components/ChatMessage',
+  component: ChatMessage,
   tags: ['autodocs'],
   parameters: {
     docs: {
       page: Page,
     },
   },
-} as Meta<ChatBubbleProps>;
+} as Meta<ChatMessageProps>;
 
-const ChatBubbleTemplate: StoryFn<typeof ChatBubble> = () => {
+const ChatMessageTemplate: StoryFn<typeof ChatMessage> = () => {
   return (
-    <ChatBubble senderType="self" messageType="last">
+    <ChatMessage senderType="self" messageType="last">
       Hi, Can you help me with the docs?
-    </ChatBubble>
+    </ChatMessage>
   );
 };
 
-export const Default = ChatBubbleTemplate.bind({});
+export const Default = ChatMessageTemplate.bind({});
 Default.storyName = 'Default';
 
-const ChatBubbleMessageTypeTemplates: StoryFn<typeof ChatBubble> = () => {
+const ChatMessageMessageTypeTemplates: StoryFn<typeof ChatMessage> = () => {
   const messageTypes = ['last', 'default'] as const;
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
       {messageTypes.map((message, index) => (
-        <ChatBubble senderType="self" messageType={message} key={index}>
+        <ChatMessage senderType="self" messageType={message} key={index}>
           Hi, Can you help me with the docs?
-        </ChatBubble>
+        </ChatMessage>
       ))}
     </Box>
   );
 };
 
-export const MessageTypes = ChatBubbleMessageTypeTemplates.bind({});
+export const MessageTypes = ChatMessageMessageTypeTemplates.bind({});
 MessageTypes.storyName = 'Message Types';
 MessageTypes.args = {};
 
-const ChatBubbleSenderTypeTemplates: StoryFn<typeof ChatBubble> = () => {
+const ChatMessageSenderTypeTemplates: StoryFn<typeof ChatMessage> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
-      <ChatBubble senderType="self" messageType="default">
+      <ChatMessage senderType="self" messageType="default">
         Hi, Can you help me with the docs?
-      </ChatBubble>
-      <ChatBubble
+      </ChatMessage>
+      <ChatMessage
         senderType="other"
         leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
       >
         Hi, Can you help me with the docs?
-      </ChatBubble>
+      </ChatMessage>
     </Box>
   );
 };
 
-export const SenderTypes = ChatBubbleSenderTypeTemplates.bind({});
+export const SenderTypes = ChatMessageSenderTypeTemplates.bind({});
 SenderTypes.storyName = 'Sender Types';
 
-const ChatBubbleLoadingTemplates: StoryFn<typeof ChatBubble> = () => {
+const ChatMessageLoadingTemplates: StoryFn<typeof ChatMessage> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
-      <ChatBubble
+      <ChatMessage
         isLoading
         senderType="other"
         loadingText="Analyzing your response..."
@@ -104,23 +104,23 @@ const ChatBubbleLoadingTemplates: StoryFn<typeof ChatBubble> = () => {
   );
 };
 
-export const Loading = ChatBubbleLoadingTemplates.bind({});
-Loading.storyName = 'Loading Chat Bubble';
+export const Loading = ChatMessageLoadingTemplates.bind({});
+Loading.storyName = 'Loading Chat Message';
 
-const ChatBubbleErrorTemplates: StoryFn<typeof ChatBubble> = () => {
+const ChatMessageErrorTemplates: StoryFn<typeof ChatMessage> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
-      <ChatBubble
+      <ChatMessage
         validationState="error"
         senderType="self"
         messageType="last"
         errorText="Message not sent. Tap to retry."
       >
         Can you help me with the docs?
-      </ChatBubble>
+      </ChatMessage>
     </Box>
   );
 };
 
-export const Error = ChatBubbleErrorTemplates.bind({});
-Error.storyName = 'Error Chat Bubble';
+export const Error = ChatMessageErrorTemplates.bind({});
+Error.storyName = 'Error Chat Message';

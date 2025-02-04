@@ -1,27 +1,27 @@
 import React from 'react';
-import { SelfMessageBubble } from './SelfMessageBubble';
-import { DefaultMessageBubble } from './DefaultMessageBubble';
-import type { ChatBubbleProps } from './types';
+import { SelfMessageBubble } from './SelfMessageBubble.web';
+import { DefaultMessageBubble } from './DefaultMessageBubble.web';
+import type { ChatMessageProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { getStringFromReactText } from '~utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 
-const _ChatBubble = (
+const _ChatMessage = (
   {
     messageType = 'default',
     senderType = 'self',
     isLoading = false,
     validationState = 'none',
-    errorText = '',
+    errorText,
     onClick,
     footerActions,
     children,
     leading,
     loadingText,
     ...props
-  }: ChatBubbleProps,
+  }: ChatMessageProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const childrenToRender = (): React.ReactElement => {
@@ -68,8 +68,8 @@ const _ChatBubble = (
   );
 };
 
-const ChatBubble = assignWithoutSideEffects(React.forwardRef(_ChatBubble), {
-  displayName: 'ChatBubble',
-  componentId: 'ChatBubble',
+const ChatMessage = assignWithoutSideEffects(React.forwardRef(_ChatMessage), {
+  displayName: 'ChatMessage',
+  componentId: 'ChatMessage',
 });
-export { ChatBubble };
+export { ChatMessage };

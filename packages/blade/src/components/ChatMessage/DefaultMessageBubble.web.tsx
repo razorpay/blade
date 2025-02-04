@@ -1,5 +1,5 @@
 import React from 'react';
-import Rotate from './Rotate';
+import Rotate from './Rotate.web';
 import type { DefaultMessageBubbleProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 

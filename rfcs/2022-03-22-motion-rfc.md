@@ -590,7 +590,7 @@ Eg) Multi-step keyframe
 - To use spring animations, we need to use some 3rd party library like `framer-motion` or `react-spring` since it is not natively supported by CSS.
 - **Non-realtime** motion include a bunch of actions like scale, move, fade, fill, etc. All of which can be achieved using **spring animations as well as easing animations**.
 - **Realtime** motion is a lot more complex and we would **not be able to achieve** the same fluid animations **just** by **using easing** animations.
-- Spring animations make the most sense for animations that are dependent on user interactions like dragging chat bubbles, dragging bottom sheet to open and close, swiping cards to dismiss them, swiping to another tab
+- Spring animations make the most sense for animations that are dependent on user interactions like dragging Chat Messages, dragging bottom sheet to open and close, swiping cards to dismiss them, swiping to another tab
 - **We will dive deeper** into whether or not we want to use **spring animations** when we explore **realtime motion** **in the future**. As of the scope of this RFC which is only Non-realtime motion, we will continue using easing animations.
 - You can read more about spring based animations here:
   - [react-spring.io](https://react-spring.io/)

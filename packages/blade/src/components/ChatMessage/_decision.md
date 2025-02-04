@@ -11,7 +11,7 @@
 
 ## ChatMessage Component
 
-This will be our main component that will be used to render the chat bubble.
+This will be our main component that will be used to render the Chat Message.
 
 ## ChatMessage API
 
@@ -19,14 +19,14 @@ This will be our main component that will be used to render the chat bubble.
 | ---------------------- | ------------------------------------------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | messageType          | 'last' or  'default'                                | default   | No       | If  messageType is  lastmessage in the chat we will add different styles in chat message. currently we have different borderRadius if messageType is last or default                                                |
 | senderType          | 'self' or 'other'                              | self   | No       | we will add  different styles based on this bubble                              |
-| isLoading              | Boolean                                     | false   | No       | If the message is loading, we will add a loading animation to the chat bubble                                                                                   |
+| isLoading              | Boolean                                     | false   | No       | If the message is loading, we will add a loading animation to the Chat Message                                                                                   |
 | validationState                | 'error' or 'none'                              | none   | No       |  if validation state is error we will show error decoration and message|
-| errorText              | String                                      | null    | No       | If the message is an error message, we will show the error message in the chat bubble                                                                                   |
+| errorText              | String                                      | null    | No       | If the message is an error message, we will show the error message in the Chat Message                                                                                   |
 | onClick           | Function                                    | null    | No       | callback to be called when ever component is clicked.                                                                                                                          |
-| footerActions        | ReactNode | null    | No       | if this is passed we will render this at the end of chat bubble                               |
-| children               |  'ReactNode' or 'string'                          | null    | yes      | The children that will be rendered inside the chat bubble. can be react node or a string                                                                        |
+| footerActions        | ReactNode | null    | No       | if this is passed we will render this at the end of Chat Message                               |
+| children               |  'ReactNode' or 'string'                          | null    | yes      | The children that will be rendered inside the Chat Message. can be react node or a string                                                                        |
 | leading             | ReactNode                                   | null    | No       | will be displayed only in case  if message is other and also, will contain animation by default                                   |
-|loadingText | String | null | No | if loading is true, we will show this text in the chat bubble |
+|loadingText | String | null | No | if loading is true, we will show this text in the Chat Message |
 
 ```tsx
 type ChatMessageProps = {

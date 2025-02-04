@@ -1,7 +1,6 @@
 import React from 'react';
 import BaseBox from '~components/Box/BaseBox';
-import { AlertCircleIcon } from '~components/Icons';
-import { Text } from '~components/Typography';
+import { FormHint } from '~components/Form/FormHint';
 
 const SelfMessageBubble = ({
   children,
@@ -19,7 +18,6 @@ const SelfMessageBubble = ({
   return (
     <BaseBox
       display="flex"
-      gap="10px"
       flexDirection="column"
       onClick={onClick}
       cursor={isError ? 'pointer' : 'default'}
@@ -36,29 +34,10 @@ const SelfMessageBubble = ({
         borderBottomRightRadius={messageType === 'last' ? 'none' : 'large'}
         width="fit-content"
         height="auto"
-        word-break="break-word"
       >
         {children}
       </BaseBox>
-      {isError && (
-        <BaseBox
-          maxWidth="240px"
-          display="flex"
-          justifyContent="flex-start"
-          alignItems="center"
-          gap="4px"
-        >
-          <AlertCircleIcon size="small" color="feedback.icon.negative.intense" />
-          <Text
-            color="feedback.text.negative.intense"
-            weight="regular"
-            variant="caption"
-            size="medium"
-          >
-            {errorText}
-          </Text>
-        </BaseBox>
-      )}
+      {isError && <FormHint type="error" errorText={errorText} size="small" />}
     </BaseBox>
   );
 };
