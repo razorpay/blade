@@ -23,24 +23,18 @@ const ChatMessageButton = styled.button`
   appearance: none;
 `;
 
-const _ChatMessageWrapper: React.ForwardRefRenderFunction<
-  BladeElementRef,
-  Pick<ChatMessageProps, 'children' | 'onClick'>
-> = (
-  { onClick, children, ...props }: Pick<ChatMessageProps, 'children' | 'onClick'>,
-  ref: React.Ref<BladeElementRef>,
-) => {
-  return onClick ? (
-    <ChatMessageButton {...props} onClick={onClick} ref={ref as never}>
-      {children}
-    </ChatMessageButton>
-  ) : (
-    <BaseBox {...props} ref={ref as never}>
-      {children}
-    </BaseBox>
-  );
+const ButtonResetCss = {
+  background: 'none',
+  border: 'none',
+  padding: undefined,
+  cursor: 'pointer',
+  color: 'inherit',
+  font: 'inherit',
+  textAlign: 'left' as const,
+  outline: 'inherit',
+  appearance: 'none',
+  backgroundColor: 'inherit',
 };
-const ChatMessageWrapper = React.forwardRef(_ChatMessageWrapper);
 
 const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageProps> = (
   {
@@ -79,7 +73,13 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   );
 
   return (
-    <ChatMessageWrapper onClick={onClick} {...props} ref={ref as never}>
+    <BaseBox
+      onClick={onClick}
+      {...(onClick ? { ...ButtonResetCss } : {})}
+      {...props}
+      ref={ref as never}
+      as={onClick ? 'button' : undefined}
+    >
       {senderType === 'self' ? (
         <SelfMessageBubble
           validationState={validationState}
@@ -92,7 +92,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
         <DefaultMessageBubble children={finalChildren} leading={leading} isLoading={isLoading} />
       )}
       {footerActions}
-    </ChatMessageWrapper>
+    </BaseBox>
   );
 };
 
