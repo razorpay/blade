@@ -223,6 +223,7 @@ const _SideNav = (
       closeMobileNav,
       isL1Collapsed: isMobile ? isMobileL2Open : isL1Collapsed,
       setIsL1Collapsed,
+      isL1Hovered,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [isL1Collapsed, isMobile, isMobileL2Open, isL1Hovered],
