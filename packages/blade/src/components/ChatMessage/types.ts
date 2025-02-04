@@ -44,7 +44,7 @@ type CommonChatMessageProps = {
    * self: chat message will be shown as self. you can show error state and footer actions.
    * other: chat message will be shown as other. you can show loading state and leading icon.
    */
-  SenderType?: 'self' | 'other';
+  senderType?: 'self' | 'other';
   /**
    * messageType prop is used to show chat message as default or last.
    * default: chat message will be shown as default.
