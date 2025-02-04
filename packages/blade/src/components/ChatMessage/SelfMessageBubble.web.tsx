@@ -18,7 +18,6 @@ const SelfMessageBubble = ({
   return (
     <BaseBox display="flex" flexDirection="column">
       <BaseBox
-        maxWidth={chatMessageToken.self.maxWidth}
         backgroundColor={
           isError
             ? chatMessageToken.self.backgroundColor.error

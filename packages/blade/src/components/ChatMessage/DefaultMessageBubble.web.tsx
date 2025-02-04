@@ -1,7 +1,6 @@
 import React from 'react';
 import Rotate from './Rotate.web';
 import type { CommonChatMessageProps } from './types';
-import { chatMessageToken } from './token';
 import BaseBox from '~components/Box/BaseBox';
 
 const DefaultMessageBubble = ({
@@ -15,7 +14,7 @@ const DefaultMessageBubble = ({
         <BaseBox>
           <Rotate animate={isLoading}>{leading as React.ReactElement}</Rotate>
         </BaseBox>
-        <BaseBox display="flex" alignItems="center" maxWidth={chatMessageToken.self.maxWidth}>
+        <BaseBox display="flex" alignItems="center">
           {children}
         </BaseBox>
       </BaseBox>

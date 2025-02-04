@@ -1,6 +1,7 @@
 import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
@@ -63,6 +64,10 @@ type CommonChatMessageProps = {
    * leading will be animated when isLoading is true.
    * */
   leading?: React.ReactNode;
+  /**
+   * maxWidth prop is used to set max width of chat message.
+   */
+  maxWidth?: BaseBoxProps['maxWidth'];
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;
