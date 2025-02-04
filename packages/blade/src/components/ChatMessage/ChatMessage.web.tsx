@@ -8,7 +8,7 @@ import { getStringFromReactText } from '~utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 
-const _ChatMessage = (
+const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageProps> = (
   {
     messageType = 'default',
     senderType = 'self',
@@ -24,7 +24,6 @@ const _ChatMessage = (
   }: ChatMessageProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-
   const childrenToRender = (): React.ReactElement => {
     // their can be a case where childrens are passed like  "{' '} some text" so we need to check if children is string or not
     const shouldWrapInText =
@@ -50,7 +49,7 @@ const _ChatMessage = (
     <BaseBox {...props} ref={ref as never}>
       {senderType === 'self' ? (
         <SelfMessageBubble
-          isError={validationState === 'error'}
+          validationState={validationState}
           onClick={onClick}
           errorText={errorText}
           children={childrenToRender()}

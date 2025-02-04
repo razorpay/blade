@@ -1,6 +1,6 @@
 import React from 'react';
 import Rotate from './Rotate.web';
-import type { DefaultMessageBubbleProps } from './types';
+import type { CommonChatMessageProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 
 const DefaultMessageBubble = ({
@@ -8,7 +8,10 @@ const DefaultMessageBubble = ({
   leading,
   isLoading,
   onClick,
-}: DefaultMessageBubbleProps): React.ReactElement => {
+}: Pick<
+  CommonChatMessageProps,
+  'children' | 'leading' | 'isLoading' | 'onClick'
+>): React.ReactElement => {
   return (
     <BaseBox maxWidth="296px" onClick={onClick}>
       <BaseBox display="flex" gap="spacing.4" justifyContent="left">

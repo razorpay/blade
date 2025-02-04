@@ -2,17 +2,6 @@ import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 
-type CommonChatMessageProps = {
-  isLoading?: boolean;
-  validationState?: 'error' | 'none';
-  errorText?: string;
-  onClick?: () => void;
-  footerActions?: React.ReactNode;
-  children?: React.ReactNode | StringChildrenType;
-} & TestID &
-  StyledPropsBlade &
-  DataAnalyticsAttribute;
-
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
   leading?: React.ReactNode;
@@ -20,7 +9,22 @@ type DefaultMessageBubbleProps = {
   onClick?: () => void;
 };
 
-type SenderChatMessageProps = CommonChatMessageProps & {
+type CommonChatMessageProps = {
+  isLoading?: boolean;
+  validationState?: 'error' | 'none';
+  errorText?: string;
+  onClick?: () => void;
+  footerActions?: React.ReactNode;
+  children?: React.ReactNode | StringChildrenType;
+  SenderType?: 'self' | 'other';
+  messageType?: 'default' | 'last';
+  loadingText?: string;
+  leading?: React.ReactNode;
+} & TestID &
+  StyledPropsBlade &
+  DataAnalyticsAttribute;
+
+type SelfChatMessageProps = CommonChatMessageProps & {
   senderType: 'self';
   messageType: 'default' | 'last';
   errorText?: string;
@@ -29,7 +33,7 @@ type SenderChatMessageProps = CommonChatMessageProps & {
   leading?: undefined;
 };
 
-type OtherChatMessageProps = CommonChatMessageProps & {
+type DefaultChatMessageProps = CommonChatMessageProps & {
   senderType: 'other';
   messageType?: undefined;
   isLoading?: boolean;
@@ -37,6 +41,12 @@ type OtherChatMessageProps = CommonChatMessageProps & {
   leading: React.ReactNode;
 };
 
-type ChatMessageProps = SenderChatMessageProps | OtherChatMessageProps;
+type ChatMessageProps = SelfChatMessageProps | DefaultChatMessageProps;
 
-export type { ChatMessageProps, DefaultMessageBubbleProps };
+export type {
+  CommonChatMessageProps,
+  ChatMessageProps,
+  DefaultMessageBubbleProps,
+  SelfChatMessageProps,
+  DefaultChatMessageProps,
+};

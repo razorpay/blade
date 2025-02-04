@@ -1,20 +1,19 @@
 import React from 'react';
+import type { CommonChatMessageProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form/FormHint';
 
 const SelfMessageBubble = ({
   children,
-  isError,
+  validationState,
   errorText = 'Message not sent. Tap to retry.',
   onClick,
   messageType,
-}: {
-  children: React.ReactNode | string;
-  isError?: boolean;
-  errorText?: string;
-  onClick?: () => void;
-  messageType: 'last' | 'default';
-}): React.ReactElement => {
+}: Pick<
+  CommonChatMessageProps,
+  'children' | 'validationState' | 'errorText' | 'onClick' | 'messageType'
+>): React.ReactElement => {
+  const isError = validationState === 'error';
   return (
     <BaseBox
       display="flex"
