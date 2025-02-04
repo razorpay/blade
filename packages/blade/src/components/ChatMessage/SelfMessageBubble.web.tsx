@@ -15,7 +15,7 @@ const SelfMessageBubble = ({
 >): React.ReactElement => {
   const isError = validationState === 'error';
   return (
-    <BaseBox display="flex" flexDirection="column" cursor={isError ? 'pointer' : 'default'}>
+    <BaseBox display="flex" flexDirection="column">
       <BaseBox
         maxWidth={chatMessageToken.self.maxWidth}
         backgroundColor={

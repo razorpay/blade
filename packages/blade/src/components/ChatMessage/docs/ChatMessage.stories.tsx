@@ -1,3 +1,4 @@
+import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessageProps } from '../types';
@@ -9,6 +10,7 @@ import { RayIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
+import { Move } from '~components/Move';
 
 const Page = (): React.ReactElement => {
   return (
@@ -118,6 +120,9 @@ const ChatMessageErrorTemplates: StoryFn<typeof ChatMessage> = () => {
         senderType="self"
         messageType="last"
         errorText="Message not sent. Tap to retry."
+        onClick={() => {
+          console.log('Retrying...');
+        }}
       >
         Can you help me with the docs?
       </ChatMessage>
@@ -156,3 +161,38 @@ const ChatMessageBodyTemplates: StoryFn<typeof ChatMessage> = () => {
 
 export const ChatMessageBody = ChatMessageBodyTemplates.bind({});
 ChatMessageBody.storyName = 'Chat Message Body';
+
+const AnimatedChatMessageTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="4px">
+      <Box display="flex" flexDirection="column" alignContent="end" gap="4px" width="300px">
+        <Move isVisible motionTriggers={['mount']} type="inout">
+          <ChatMessage senderType="self" messageType="last">
+            This is a demo message
+          </ChatMessage>
+        </Move>
+      </Box>
+    </Box>
+  );
+};
+
+export const AnimatedChatMessage = AnimatedChatMessageTemplate.bind({});
+AnimatedChatMessage.storyName = 'Animated Chat Message';
+
+export const ChatMessageWithClickTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="4px">
+      <Box display="flex" flexDirection="column" alignContent="end" gap="4px" width="300px">
+        <ChatMessage
+          senderType="self"
+          messageType="last"
+          onClick={() => {
+            console.log('this is a demo message');
+          }}
+        >
+          This is a demo message
+        </ChatMessage>
+      </Box>
+    </Box>
+  );
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { SelfMessageBubble } from './SelfMessageBubble.web';
 import { DefaultMessageBubble } from './DefaultMessageBubble.web';
 import type { ChatMessageProps } from './types';
@@ -9,6 +10,19 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 import { MetaConstants } from '~utils/metaAttribute';
 
+// reset button css
+const ChatMessageButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  outline: inherit;
+  appearance: none;
+`;
+
 const _ChatMessageWrapper: React.ForwardRefRenderFunction<
   BladeElementRef,
   Pick<ChatMessageProps, 'children' | 'onClick'>
@@ -17,9 +31,9 @@ const _ChatMessageWrapper: React.ForwardRefRenderFunction<
   ref: React.Ref<BladeElementRef>,
 ) => {
   return onClick ? (
-    <button {...props} onClick={onClick} ref={ref as never}>
+    <ChatMessageButton {...props} onClick={onClick} ref={ref as never}>
       {children}
-    </button>
+    </ChatMessageButton>
   ) : (
     <BaseBox {...props} ref={ref as never}>
       {children}
@@ -65,7 +79,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   );
 
   return (
-    <ChatMessageWrapper {...props} ref={ref as never}>
+    <ChatMessageWrapper onClick={onClick} {...props} ref={ref as never}>
       {senderType === 'self' ? (
         <SelfMessageBubble
           validationState={validationState}
