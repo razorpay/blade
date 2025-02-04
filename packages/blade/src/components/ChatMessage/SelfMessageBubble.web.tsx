@@ -8,20 +8,14 @@ const SelfMessageBubble = ({
   children,
   validationState,
   errorText = 'Message not sent. Tap to retry.',
-  onClick,
   messageType,
 }: Pick<
   CommonChatMessageProps,
-  'children' | 'validationState' | 'errorText' | 'onClick' | 'messageType'
+  'children' | 'validationState' | 'errorText' | 'messageType'
 >): React.ReactElement => {
   const isError = validationState === 'error';
   return (
-    <BaseBox
-      display="flex"
-      flexDirection="column"
-      onClick={onClick}
-      cursor={isError ? 'pointer' : 'default'}
-    >
+    <BaseBox display="flex" flexDirection="column" cursor={isError ? 'pointer' : 'default'}>
       <BaseBox
         maxWidth={chatMessageToken.self.maxWidth}
         backgroundColor={

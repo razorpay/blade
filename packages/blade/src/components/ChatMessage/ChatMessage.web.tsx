@@ -9,6 +9,25 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 import { MetaConstants } from '~utils/metaAttribute';
 
+const _ChatMessageWrapper: React.ForwardRefRenderFunction<
+  BladeElementRef,
+  Pick<ChatMessageProps, 'children' | 'onClick'>
+> = (
+  { onClick, children, ...props }: Pick<ChatMessageProps, 'children' | 'onClick'>,
+  ref: React.Ref<BladeElementRef>,
+) => {
+  return onClick ? (
+    <button {...props} onClick={onClick} ref={ref as never}>
+      {children}
+    </button>
+  ) : (
+    <BaseBox {...props} ref={ref as never}>
+      {children}
+    </BaseBox>
+  );
+};
+const ChatMessageWrapper = React.forwardRef(_ChatMessageWrapper);
+
 const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageProps> = (
   {
     messageType = 'default',
@@ -46,25 +65,19 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   );
 
   return (
-    <BaseBox {...props} ref={ref as never}>
+    <ChatMessageWrapper {...props} ref={ref as never}>
       {senderType === 'self' ? (
         <SelfMessageBubble
           validationState={validationState}
-          onClick={onClick}
           errorText={errorText}
           children={finalChildren}
           messageType={messageType}
         />
       ) : (
-        <DefaultMessageBubble
-          children={finalChildren}
-          leading={leading}
-          onClick={onClick}
-          isLoading={isLoading}
-        />
+        <DefaultMessageBubble children={finalChildren} leading={leading} isLoading={isLoading} />
       )}
       {footerActions}
-    </BaseBox>
+    </ChatMessageWrapper>
   );
 };
 

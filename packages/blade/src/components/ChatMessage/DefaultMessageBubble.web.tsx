@@ -8,13 +8,9 @@ const DefaultMessageBubble = ({
   children,
   leading,
   isLoading,
-  onClick,
-}: Pick<
-  CommonChatMessageProps,
-  'children' | 'leading' | 'isLoading' | 'onClick'
->): React.ReactElement => {
+}: Pick<CommonChatMessageProps, 'children' | 'leading' | 'isLoading'>): React.ReactElement => {
   return (
-    <BaseBox onClick={onClick}>
+    <BaseBox>
       <BaseBox display="flex" gap="spacing.4" justifyContent="left">
         <BaseBox>
           <Rotate animate={isLoading}>{leading as React.ReactElement}</Rotate>
