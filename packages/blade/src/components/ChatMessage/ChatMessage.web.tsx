@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { SelfMessageBubble } from './SelfMessageBubble.web';
 import { DefaultMessageBubble } from './DefaultMessageBubble.web';
 import type { ChatMessageProps } from './types';
@@ -9,19 +8,6 @@ import { getStringFromReactText } from '~utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 import { MetaConstants } from '~utils/metaAttribute';
-
-// reset button css
-const ChatMessageButton = styled.button`
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: inherit;
-  font: inherit;
-  text-align: inherit;
-  outline: inherit;
-  appearance: none;
-`;
 
 const ButtonResetCss = {
   background: 'none',
