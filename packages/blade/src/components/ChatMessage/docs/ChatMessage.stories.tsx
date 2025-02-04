@@ -52,16 +52,16 @@ export default {
   },
 } as Meta<ChatMessageProps>;
 
-const ChatMessageTemplate: StoryFn<typeof ChatMessage> = () => {
-  return (
-    <ChatMessage senderType="self" messageType="last">
-      Hi, Can you help me with the docs?
-    </ChatMessage>
-  );
+const ChatMessageTemplate: StoryFn<typeof ChatMessage> = (args) => {
+  return <ChatMessage {...args}>Hi, Can you help me with the docs?</ChatMessage>;
 };
 
 export const Default = ChatMessageTemplate.bind({});
 Default.storyName = 'Default';
+Default.args = {
+  senderType: 'self',
+  messageType: 'default',
+};
 
 const ChatMessageMessageTypeTemplates: StoryFn<typeof ChatMessage> = () => {
   const messageTypes = ['last', 'default'] as const;
