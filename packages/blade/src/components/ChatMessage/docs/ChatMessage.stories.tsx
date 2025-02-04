@@ -263,6 +263,21 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
         >
           This is a demo message
         </ChatMessage>
+        <ChatMessage
+          senderType="other"
+          footerActions={
+            <Box margin="4px">
+              {/* TODO: replace with icon only one */}
+              <ChipGroup label="">
+                <Chip>Option 1</Chip>
+                <Chip>Option 2</Chip>
+              </ChipGroup>
+            </Box>
+          }
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+        >
+          This is a demo message
+        </ChatMessage>
       </Box>
     </Box>
   );
