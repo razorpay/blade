@@ -1,5 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
+import { m } from 'framer-motion';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessageProps } from '../types';
 import { Heading } from '~components/Typography/Heading';
@@ -227,3 +228,43 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
 
 export const ChatMessageWithFooterActions = ChatMessageWithFooterActionsTemplate.bind({});
 ChatMessageWithFooterActions.storyName = 'Chat Message with Footer Actions';
+
+const TypingText = ({ text }: { text: string }): React.ReactElement => {
+  return (
+    <div className="typing-container">
+      {text.split('').map((char: string, index: number) => (
+        <m.span
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.1,
+            delay: index * 0.1, // Staggered delay based on index
+          }}
+        >
+          {char}
+        </m.span>
+      ))}
+    </div>
+  );
+};
+const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="4px">
+      <Box display="flex" flexDirection="column" alignContent="end" gap="4px" width="300px">
+        <ChatMessage
+          senderType="other"
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+        >
+          <Box>
+            <TypingText text="This is a demo message" />
+          </Box>
+        </ChatMessage>
+      </Box>
+    </Box>
+  );
+};
+export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
+  {},
+);
+ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
