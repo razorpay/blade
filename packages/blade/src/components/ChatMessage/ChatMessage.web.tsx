@@ -7,6 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStringFromReactText } from '~utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
+import { MetaConstants } from '~utils/metaAttribute';
 
 const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageProps> = (
   {
@@ -70,6 +71,6 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
 
 const ChatMessage = assignWithoutSideEffects(React.forwardRef(_ChatMessage), {
   displayName: 'ChatMessage',
-  componentId: 'ChatMessage',
+  componentId: MetaConstants.ChatMessage,
 });
 export { ChatMessage };
