@@ -1,5 +1,5 @@
 // test case for ChatMessage component
-import { ChatMessage } from '../ChatMessage.all';
+import { ChatMessage } from '../ChatMessage';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { RayIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
