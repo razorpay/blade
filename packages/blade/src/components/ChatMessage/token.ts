@@ -1,6 +1,6 @@
 const chatMessageToken = {
   default: {
-    maxWidth: '240px',
+    maxWidth: '256px',
   },
   self: {
     maxWidth: '240px',

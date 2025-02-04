@@ -25,26 +25,25 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   }: ChatMessageProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  const childrenToRender = (): React.ReactElement => {
-    // their can be a case where childrens are passed like  "{' '} some text" so we need to check if children is string or not
-    const shouldWrapInText =
-      typeof children === 'string' ||
-      (Array.isArray(children) && children.every((child) => typeof child === 'string')) ||
-      isLoading;
-    if (shouldWrapInText) {
-      return (
-        <Text
-          color={isLoading ? 'surface.text.gray.muted' : 'surface.text.gray.normal'}
-          weight="regular"
-          variant="body"
-          size="medium"
-        >
-          {isLoading ? loadingText : getStringFromReactText(children as string | string[])}
-        </Text>
-      );
-    }
-    return children as React.ReactElement;
-  };
+  // since we can pass both string and Card component as children, we need to check if children is string or Card component
+  // if children is string or array of string, we need to wrap it in Text component otherwise we will pass children as it is
+  const shouldWrapInText =
+    typeof children === 'string' ||
+    (Array.isArray(children) && children.every((child) => typeof child === 'string')) ||
+    isLoading;
+
+  const finalChildren = shouldWrapInText ? (
+    <Text
+      color={isLoading ? 'surface.text.gray.muted' : 'surface.text.gray.normal'}
+      weight="regular"
+      variant="body"
+      size="medium"
+    >
+      {isLoading ? loadingText : getStringFromReactText(children as string | string[])}
+    </Text>
+  ) : (
+    (children as React.ReactElement)
+  );
 
   return (
     <BaseBox {...props} ref={ref as never}>
@@ -53,12 +52,12 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
           validationState={validationState}
           onClick={onClick}
           errorText={errorText}
-          children={childrenToRender()}
+          children={finalChildren}
           messageType={messageType}
         />
       ) : (
         <DefaultMessageBubble
-          children={childrenToRender()}
+          children={finalChildren}
           leading={leading}
           onClick={onClick}
           isLoading={isLoading}
