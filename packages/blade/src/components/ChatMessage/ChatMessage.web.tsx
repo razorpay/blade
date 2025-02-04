@@ -86,6 +86,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
           errorText={errorText}
           children={finalChildren}
           messageType={messageType}
+          isChildText={shouldWrapInText}
         />
       ) : (
         <DefaultMessageBubble children={finalChildren} leading={leading} isLoading={isLoading} />

@@ -9,10 +9,11 @@ const SelfMessageBubble = ({
   validationState,
   errorText = 'Message not sent. Tap to retry.',
   messageType,
-}: Pick<
-  CommonChatMessageProps,
-  'children' | 'validationState' | 'errorText' | 'messageType'
->): React.ReactElement => {
+  isChildText,
+}: Pick<CommonChatMessageProps, 'children' | 'validationState' | 'errorText' | 'messageType'> & {
+  // is child is text then only add padding otherwise no need to add padding
+  isChildText: boolean;
+}): React.ReactElement => {
   const isError = validationState === 'error';
   return (
     <BaseBox display="flex" flexDirection="column">
@@ -23,7 +24,7 @@ const SelfMessageBubble = ({
             ? chatMessageToken.self.backgroundColor.error
             : chatMessageToken.self.backgroundColor.default
         }
-        padding="spacing.4"
+        padding={isChildText ? 'spacing.4' : 'spacing.0'}
         borderTopLeftRadius={chatMessageToken.self.borderTopLeftRadius}
         borderTopRightRadius={chatMessageToken.self.borderTopRightRadius}
         borderBottomLeftRadius={chatMessageToken.self.borderBottomLeftRadius}

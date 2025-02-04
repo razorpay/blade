@@ -210,7 +210,8 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
           messageType="last"
           footerActions={
             <Box margin="4px">
-              <ChipGroup label="Options">
+              {/* TODO: replace with icon only one */}
+              <ChipGroup label="">
                 <Chip>Option 1</Chip>
                 <Chip>Option 2</Chip>
               </ChipGroup>
