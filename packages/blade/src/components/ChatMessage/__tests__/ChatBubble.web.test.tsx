@@ -66,7 +66,6 @@ describe('<ChatMessage/>', () => {
     const { container } = renderWithTheme(
       <ChatMessage
         senderType="other"
-        messageType="last"
         leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
       >
         <Card>

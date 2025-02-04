@@ -1,6 +1,6 @@
 import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
@@ -38,7 +38,7 @@ type CommonChatMessageProps = {
    * children prop is used to show content in chat message.
    * can be string or react node.
    * */
-  children?: React.ReactNode | StringChildrenType;
+  children?: React.ReactNode;
   /**
    * SenderType prop is used to show chat message as self or other.
    * self: chat message will be shown as self. you can show error state and footer actions.
