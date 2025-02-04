@@ -95,6 +95,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
+  gap: 8px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;
@@ -659,6 +660,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
+  gap: 8px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;

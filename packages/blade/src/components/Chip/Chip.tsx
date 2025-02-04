@@ -200,15 +200,18 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                   ]
                 }
                 height={makeSize(chipHeightTokens[_size])}
+                gap="spacing.3"
               >
                 {Icon ? (
-                  <BaseBox paddingRight="spacing.3" display="flex">
+                  <BaseBox display="flex">
                     <Icon color={chipIconColor} size={chipIconSizes[_size]} />
                   </BaseBox>
                 ) : null}
-                <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
-                  {children}
-                </Text>
+                {children ? (
+                  <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
+                    {children}
+                  </Text>
+                ) : null}
               </StyledChipWrapper>
             </AnimatedChip>
           </BaseBox>
