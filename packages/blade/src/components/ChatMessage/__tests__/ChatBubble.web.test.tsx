@@ -1,5 +1,4 @@
-// test case for ChatMessage component
-import { ChatMessage } from '../ChatMessage.all';
+import { ChatMessage } from '../ChatMessage';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { RayIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
@@ -84,6 +83,19 @@ describe('<ChatMessage/>', () => {
             </Box>
           </CardBody>
         </Card>
+      </ChatMessage>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+  it('should render error message correctly', () => {
+    const { container } = renderWithTheme(
+      <ChatMessage
+        senderType="self"
+        messageType="last"
+        validationState="error"
+        errorText="Message not sent. Tap to retry."
+      >
+        Can you help me with the docs?
       </ChatMessage>,
     );
     expect(container).toMatchSnapshot();
