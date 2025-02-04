@@ -63,4 +63,29 @@ describe('<ChatMessage/>', () => {
     );
     expect(container).toMatchSnapshot();
   });
+  it('should render body correctly', () => {
+    const { container } = renderWithTheme(
+      <ChatMessage
+        senderType="other"
+        messageType="last"
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+      >
+        <Card>
+          <CardBody>
+            <Box display="flex" gap="8px" flexDirection="column">
+              <Text variant="body" size="medium">
+                Where do you want to collect payments?
+              </Text>
+              <RadioGroup>
+                <Radio value="website">Website</Radio>
+                <Radio value="android">Android App</Radio>
+                <Radio value="ios">iOS App</Radio>
+              </RadioGroup>
+            </Box>
+          </CardBody>
+        </Card>
+      </ChatMessage>,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

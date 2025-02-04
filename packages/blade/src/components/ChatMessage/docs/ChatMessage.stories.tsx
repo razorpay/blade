@@ -6,6 +6,9 @@ import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { RayIcon } from '~components/Icons';
+import { Card, CardBody } from '~components/Card';
+import { Text } from '~components/Typography';
+import { Radio, RadioGroup } from '~components/Radio';
 
 const Page = (): React.ReactElement => {
   return (
@@ -124,3 +127,32 @@ const ChatMessageErrorTemplates: StoryFn<typeof ChatMessage> = () => {
 
 export const Error = ChatMessageErrorTemplates.bind({});
 Error.storyName = 'Error Chat Message';
+
+const ChatMessageBodyTemplates: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box>
+      <ChatMessage
+        senderType="other"
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+      >
+        <Card>
+          <CardBody>
+            <Box display="flex" gap="8px" flexDirection="column">
+              <Text variant="body" size="medium">
+                Where do you want to collect payments?
+              </Text>
+              <RadioGroup>
+                <Radio value="website">Website</Radio>
+                <Radio value="android">Android App</Radio>
+                <Radio value="ios">iOS App</Radio>
+              </RadioGroup>
+            </Box>
+          </CardBody>
+        </Card>
+      </ChatMessage>
+    </Box>
+  );
+};
+
+export const ChatMessageBody = ChatMessageBodyTemplates.bind({});
+ChatMessageBody.storyName = 'Chat Message Body';

@@ -24,6 +24,7 @@ const _ChatMessage = (
   }: ChatMessageProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
+
   const childrenToRender = (): React.ReactElement => {
     // their can be a case where childrens are passed like  "{' '} some text" so we need to check if children is string or not
     const shouldWrapInText =
