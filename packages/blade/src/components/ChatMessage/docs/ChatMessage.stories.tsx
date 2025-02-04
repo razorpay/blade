@@ -1,5 +1,5 @@
-import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
+import React from 'react';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessageProps } from '../types';
 import { Heading } from '~components/Typography/Heading';
@@ -11,6 +11,7 @@ import { Card, CardBody } from '~components/Card';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
+import { Chip, ChipGroup } from '~components/Chip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -179,7 +180,7 @@ const AnimatedChatMessageTemplate: StoryFn<typeof ChatMessage> = () => {
 export const AnimatedChatMessage = AnimatedChatMessageTemplate.bind({});
 AnimatedChatMessage.storyName = 'Animated Chat Message';
 
-export const ChatMessageWithClickTemplate: StoryFn<typeof ChatMessage> = () => {
+const ChatMessageWithClickTemplate: StoryFn<typeof ChatMessage> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="4px">
       <Box display="flex" flexDirection="column" alignContent="end" gap="4px" width="300px">
@@ -196,3 +197,32 @@ export const ChatMessageWithClickTemplate: StoryFn<typeof ChatMessage> = () => {
     </Box>
   );
 };
+
+export const ChatMessageWithClick = ChatMessageWithClickTemplate.bind({});
+ChatMessageWithClick.storyName = 'Chat Message with Click';
+
+const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="4px">
+      <Box display="flex" flexDirection="column" alignContent="end" gap="4px" width="300px">
+        <ChatMessage
+          senderType="self"
+          messageType="last"
+          footerActions={
+            <Box margin="4px">
+              <ChipGroup label="Options">
+                <Chip>Option 1</Chip>
+                <Chip>Option 2</Chip>
+              </ChipGroup>
+            </Box>
+          }
+        >
+          This is a demo message
+        </ChatMessage>
+      </Box>
+    </Box>
+  );
+};
+
+export const ChatMessageWithFooterActions = ChatMessageWithFooterActionsTemplate.bind({});
+ChatMessageWithFooterActions.storyName = 'Chat Message with Footer Actions';
