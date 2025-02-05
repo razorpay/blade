@@ -829,7 +829,6 @@ const WithIconButtonStory = `
           <DropdownIconButton
             icon={BoxIcon}
             accessibilityLabel="Set Status"
-            tooltip={{ content: 'Select Status' }}
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             {status ?? ''}
@@ -1152,6 +1151,85 @@ function App() {
 export default App;
 `;
 
+const WithTooltipStory = `
+  import React from 'react';
+  import {
+    Dropdown,
+    DropdownOverlay,
+    DropdownIconButton,
+    Tooltip,
+    TooltipInteractiveWrapper,
+    ActionList,
+    ActionListItem,
+    Box,
+    ChevronDownIcon,
+    ChevronUpIcon,
+    Text,
+  } from '@razorpay/blade/components';
+
+  function App (): React.ReactElement {
+    const [status, setStatus] = React.useState<string | undefined>('latest-added');
+    const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  
+    return (
+      <Box padding="spacing.10">
+        <Tooltip content="Change Status">
+          <TooltipInteractiveWrapper>
+            <Dropdown 
+              onOpenChange={(isOpen) => {
+                if (!isOpen) {
+                  setIsDropdownOpen(false)
+                }
+              }>
+              <DropdownIconButton
+                icon={BoxIcon}
+                accessibilityLabel="Set Status"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                {status ?? ''}
+              </DropdownLink>
+              <DropdownOverlay>
+                <ActionList>
+                  <ActionListItem
+                    onClick={({ name, value }) => {
+                      console.log({ name, value });
+                      setStatus(name);
+                    }}
+                    isSelected={status === 'latest-added'}
+                    title="Latest Added"
+                    value="latest-added"
+                  />
+                  <ActionListItem
+                    onClick={({ name, value }) => {
+                      console.log({ name, value });
+                      setStatus(name);
+                    }}
+                    isSelected={status === 'latest-invoice'}
+                    title="Latest Invoice"
+                    value="latest-invoice"
+                  />
+
+                  <ActionListItem
+                    onClick={({ name, value }) => {
+                      console.log({ name, value });
+                      setStatus(name);
+                    }}
+                    isSelected={status === 'oldest-due-date'}
+                    title="Oldest Due Date"
+                    value="oldest-due-date"
+                  />
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          </TooltipInteractiveWrapper>
+        </Tooltip>
+      </Box>
+    );
+  }
+
+  export default App;
+`;
+
 export {
   Playground,
   getSimpleSelectCode,
@@ -1171,4 +1249,5 @@ export {
   WithAutoPositioningSelectStory,
   WithAutoPositioningMenuStory,
   WithSizesStory,
+  WithTooltipStory,
 };

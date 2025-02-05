@@ -56,7 +56,6 @@ const _DropdownButton = ({
       type={type}
       variant={variant}
       testID={testID}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={triggererRef as any}
       accessibilityProps={{
         label: accessibilityLabel,

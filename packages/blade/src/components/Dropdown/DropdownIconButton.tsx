@@ -45,7 +45,6 @@ const _DropdownIconButton = ({
       isDisabled={isDisabled}
       size={size}
       emphasis={emphasis}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={triggererRef as any}
       accessibilityLabel={accessibilityLabel}
       accessibilityProps={{
