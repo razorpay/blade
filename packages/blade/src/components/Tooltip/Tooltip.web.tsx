@@ -33,6 +33,7 @@ import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { mergeRefs } from '~utils/useMergeRefs';
 
 const _Tooltip = ({
   title,
@@ -95,7 +96,8 @@ const _Tooltip = ({
   return (
     <TooltipContext.Provider value={true}>
       {React.cloneElement(children, {
-        ref: refs.setReference,
+        // @ts-expect-error: ref does exist on children prop
+        ref: mergeRefs(refs.setReference, children.ref),
         ...makeAccessible({ label: content }),
         ...mergeProps(children.props, getReferenceProps()),
       })}

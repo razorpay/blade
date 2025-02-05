@@ -4,7 +4,6 @@ import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
 import type { SideNavLinkProps } from '../types';
 import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
-import { TooltipifyNavItem } from './TooltipifyNavItem';
 import { Box } from '~components/Box';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
@@ -19,6 +18,7 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Text } from '~components/Typography';
+import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
@@ -170,7 +170,7 @@ const L3Trigger = ({
   } as const;
 
   return (
-    <TooltipifyNavItem tooltip={tooltip}>
+    <TooltipifyComponent tooltip={tooltip}>
       <StyledNavLinkContainer $hasDescription={Boolean(description)}>
         <BaseBox
           className={STYLED_NAV_LINK}
@@ -192,7 +192,7 @@ const L3Trigger = ({
           />
         </BaseBox>
       </StyledNavLinkContainer>
-    </TooltipifyNavItem>
+    </TooltipifyComponent>
   );
 };
 
@@ -307,7 +307,7 @@ const SideNavLink = ({
             $hasDescription={currentLevel !== 1 && Boolean(description)}
             position="relative"
           >
-            <TooltipifyNavItem tooltip={tooltip}>
+            <TooltipifyComponent tooltip={tooltip}>
               <BaseBox
                 className={STYLED_NAV_LINK}
                 as={as ?? 'a'}
@@ -361,7 +361,7 @@ const SideNavLink = ({
                   </BaseBox>
                 ) : null}
               </BaseBox>
-            </TooltipifyNavItem>
+            </TooltipifyComponent>
             {trailing && !isL2Trigger ? (
               <BaseBox
                 position="absolute"

@@ -67,7 +67,7 @@ function Widget() {
         <Text fontSize={28} fontWeight={700} fill="#192839">
           ❄️ Snowflake handoff checklist
         </Text>
-        <ProgressBar cardWidgetWidth={424} numberOfCheckboxes={15} checkedItems={checkedItems} />
+        <ProgressBar cardWidgetWidth={424} numberOfCheckboxes={16} checkedItems={checkedItems} />
       </AutoLayout>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
         <SectionHeader title="Project details" />
@@ -93,6 +93,14 @@ function Widget() {
             optionText="Designed on:"
             isEditable={true}
             isEditablePlaceholderText="Date"
+            isEditableInputWithDateField={false}
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id="detail4"
+            optionText="Ticket link:"
+            isEditable={true}
+            isEditablePlaceholderText="https://ticket-link.com/"
             isEditableInputWithDateField={false}
             onCheckboxClick={updateChecklist}
           />

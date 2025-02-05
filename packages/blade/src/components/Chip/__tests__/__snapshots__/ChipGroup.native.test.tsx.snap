@@ -380,6 +380,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -396,6 +397,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -586,6 +588,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -602,6 +605,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -792,6 +796,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -808,6 +813,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -1252,6 +1258,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -1268,6 +1275,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -1459,6 +1467,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -1475,6 +1484,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -1666,6 +1676,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -1682,6 +1693,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",

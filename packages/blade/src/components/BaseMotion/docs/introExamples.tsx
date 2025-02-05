@@ -98,6 +98,29 @@ export const ScaleIntro = (): React.ReactElement => {
   );
 };
 
+export const ElevateIntro = (): React.ReactElement => {
+  return (
+    <Box display="flex" gap="spacing.10" alignItems="center" justifyContent="space-between">
+      <Box flex="1" padding="spacing.4" elevation="lowRaised" borderRadius="medium" width="100%">
+        <SandboxHighlighter>{`import { 
+        Elevate, 
+      } from '@razorpay/blade/components';
+
+
+      <Elevate motionTriggers={['hover']}>
+        <Card>
+          <CardBody>Card that drops shadow on hover</CardBody>
+        </Card>
+      </Elevate>
+      `}</SandboxHighlighter>
+      </Box>
+      <Box flex="1">
+        <Story id="motion-elevate--default" />
+      </Box>
+    </Box>
+  );
+};
+
 export const MorphIntro = (): React.ReactElement => {
   return (
     <Box display="flex" gap="spacing.10" alignItems="center" justifyContent="space-between">

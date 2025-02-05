@@ -28,6 +28,13 @@ export default {
   title: 'Motion/Scale',
   component: Scale,
   tags: ['autodocs'],
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     docs: {
       page: Page,
