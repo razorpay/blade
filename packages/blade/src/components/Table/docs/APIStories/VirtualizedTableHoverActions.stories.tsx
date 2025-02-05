@@ -71,7 +71,6 @@ const data: TableData<Item> = {
 };
 
 const TableTemplate: StoryFn<typeof TableComponent> = () => {
-
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
