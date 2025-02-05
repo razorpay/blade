@@ -579,6 +579,33 @@ ChipWithColor.parameters = {
   },
 };
 
+const ChipIconOnlyTemplate: StoryFn<typeof ChipGroupComponent> = (args) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" weight="semibold" marginBottom="spacing.3">
+        Is the result helpful?
+      </Text>
+
+      <ChipGroupComponent defaultValue="yes" {...args}>
+        <ChipComponent color="positive" value="yes" icon={ThumbsUpIcon} />
+        <ChipComponent color="negative" value="no" icon={ThumbsDownIcon} />
+      </ChipGroupComponent>
+    </Box>
+  );
+};
+
+export const ChipIconOnly = ChipIconOnlyTemplate.bind({});
+ChipIconOnly.storyName = 'Icon Only';
+ChipIconOnly.args = {
+  selectionType: 'single',
+  accessibilityLabel: 'Is the result helpful? Please select either yer or no',
+};
+ChipIconOnly.parameters = {
+  controls: {
+    exclude: ['icon', 'children'],
+  },
+};
+
 const TextTransformationTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args }) => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   return (

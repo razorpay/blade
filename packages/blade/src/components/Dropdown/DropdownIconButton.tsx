@@ -4,34 +4,29 @@
 import React from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
-import BaseButton from '~components/Button/BaseButton';
-import type { ButtonProps } from '~components/Button';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { IconButtonProps } from '~components/Button/IconButton';
+import StyledIconButton from '~components/Button/IconButton/StyledIconButton';
 
-type DropdownButtonProps = ButtonProps & {
+type DropdownIconButtonProps = Omit<IconButtonProps, 'onClick'> & {
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
+  onClick?: IconButtonProps['onClick'];
 };
 
-const _DropdownButton = ({
-  children,
+const _DropdownIconButton = ({
   icon,
-  iconPosition = 'left',
   isDisabled = false,
-  isFullWidth = false,
-  isLoading = false,
   onClick,
   onBlur,
   onKeyDown,
   size = 'medium',
-  type = 'button',
-  variant = 'primary',
   accessibilityLabel,
-  testID,
+  emphasis = 'intense',
   ...rest
-}: DropdownButtonProps): React.ReactElement => {
+}: DropdownIconButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -43,23 +38,18 @@ const _DropdownButton = ({
   } = useDropdown();
 
   return (
-    // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
-    // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
-    <BaseButton
+    // Using StyledIconButton here to avoid exporting onKeydown, and accessibiltiyProps object
+    <StyledIconButton
       {...rest}
-      {...(icon ? { icon, children } : { children })}
-      iconPosition={iconPosition}
+      icon={icon}
       isDisabled={isDisabled}
-      isFullWidth={isFullWidth}
-      isLoading={isLoading}
       size={size}
-      type={type}
-      variant={variant}
-      testID={testID}
+      emphasis={emphasis}
       ref={triggererRef as any}
+      accessibilityLabel={accessibilityLabel}
       accessibilityProps={{
         label: accessibilityLabel,
-        hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
+        hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownIconButton'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
@@ -83,8 +73,8 @@ const _DropdownButton = ({
   );
 };
 
-const DropdownButton = assignWithoutSideEffects(_DropdownButton, {
-  componentId: dropdownComponentIds.triggers.DropdownButton,
+const DropdownIconButton = assignWithoutSideEffects(_DropdownIconButton, {
+  componentId: dropdownComponentIds.triggers.DropdownIconButton,
 });
 
-export { DropdownButton };
+export { DropdownIconButton };
