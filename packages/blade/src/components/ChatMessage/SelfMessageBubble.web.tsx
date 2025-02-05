@@ -34,10 +34,13 @@ const SelfMessageBubble = ({
         }
         width="fit-content"
         height="auto"
+        alignSelf="flex-end"
       >
         {children}
       </BaseBox>
-      {isError && <FormHint type="error" errorText={errorText} size="small" />}
+      <BaseBox alignSelf="flex-end">
+        {isError && <FormHint type="error" errorText={errorText} size="small" />}
+      </BaseBox>
     </BaseBox>
   );
 };

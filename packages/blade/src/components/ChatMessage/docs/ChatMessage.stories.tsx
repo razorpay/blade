@@ -6,7 +6,7 @@ import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { RayIcon } from '~components/Icons';
+import { RayIcon, ThumbsDownIcon, ThumbsUpIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -252,11 +252,10 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
           senderType="self"
           messageType="last"
           footerActions={
-            <Box margin="4px">
-              {/* TODO: replace with icon only one */}
+            <Box margin="4px" display="flex" justifyContent="flex-end">
               <ChipGroup label="">
-                <Chip>Option 1</Chip>
-                <Chip>Option 2</Chip>
+                <Chip value="yes" icon={ThumbsUpIcon} />
+                <Chip value="no" icon={ThumbsDownIcon} />
               </ChipGroup>
             </Box>
           }
@@ -267,10 +266,9 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
           senderType="other"
           footerActions={
             <Box margin="4px">
-              {/* TODO: replace with icon only one */}
               <ChipGroup label="">
-                <Chip>Option 1</Chip>
-                <Chip>Option 2</Chip>
+                <Chip value="yes" icon={ThumbsUpIcon} />
+                <Chip value="no" icon={ThumbsDownIcon} />
               </ChipGroup>
             </Box>
           }
