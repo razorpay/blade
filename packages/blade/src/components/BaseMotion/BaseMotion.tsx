@@ -48,6 +48,8 @@ const _BaseMotionBox = (
     isInsideStaggerContainer ? staggerType : type,
   );
 
+  console.log('BaseMotionBox', { motionVariants, animationVariables, rest, ref, children });
+
   return (
     <MotionDiv
       ref={ref as never}
@@ -70,6 +72,8 @@ const _BaseMotionEnhancerBox: React.ForwardRefRenderFunction<HTMLDivElement, Bas
   { children, ...motionBoxArgs },
   ref,
 ) => {
+  console.log('BaseMotionEnhancerBox', { motionBoxArgs, children });
+
   return (
     <BaseMotionBox
       // we need the ref of this item in AnimateInteractions to pass down ref that adds focusWithin logic
@@ -115,6 +119,17 @@ const BaseMotionEntryExit = ({
     };
     // @ts-expect-error: ref does exist on children prop
   }, [children.ref]);
+
+  console.log('BaseMotionEntryExit', {
+    motionVariants,
+    motionTriggers,
+    type,
+    isVisible,
+    shouldUnmountWhenHidden,
+    children,
+    isMounted,
+    motionMeta,
+  });
 
   return (
     <AnimateWrapper>
