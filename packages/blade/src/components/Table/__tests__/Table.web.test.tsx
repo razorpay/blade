@@ -1204,7 +1204,7 @@ describe('<Table />', () => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const [apiData, _] = useState({ nodes: nodes.slice(0, 10) });
       return (
-        <Box ref={boxRef}>
+        <Box>
           <Table
             data={apiData}
             onSelectionChange={console.log}
