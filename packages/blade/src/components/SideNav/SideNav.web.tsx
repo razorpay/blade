@@ -355,6 +355,11 @@ const _SideNav = (
                     onVisibleLevelChange?.({ visibleLevel: 2 });
                   }, L1_EXIT_HOVER_DELAY);
                 }
+                // If L1 is collapsed and not hovered we want to change visible level to 2
+                // This state/edgecase happens when user clicks on a nested nav and it collapses the L1 causing isL1Hovered to be false
+                if (isL1Collapsed && !isL1Hovered) {
+                  onVisibleLevelChange?.({ visibleLevel: 2 });
+                }
               }}
             >
               <SkipNavLink id={SKIP_NAV_ID} _hasBackground={true} />
