@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.9.0
+
+### Minor Changes
+
+- e035b38b: feat(DropdownIconButton): add support for DropdownIconButton and tooltip for Dropdown triggers
+
 ## 12.8.2
 
 ### Patch Changes
