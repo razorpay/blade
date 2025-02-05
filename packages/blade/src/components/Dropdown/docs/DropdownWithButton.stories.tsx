@@ -28,6 +28,7 @@ import { Checkbox } from '~components/Checkbox';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { Amount } from '~components/Amount';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Button and Link',
@@ -106,64 +107,66 @@ export const InternalMenu = (): React.ReactElement => {
 
   return (
     <Box minHeight="200px" padding="spacing.10">
-      <Dropdown>
-        <DropdownButton tooltip={{ content: 'Change Status' }} variant="tertiary">
-          Status: {status ?? ''}
-        </DropdownButton>
-        <DropdownOverlay>
-          <DropdownHeader
-            leading={<StarIcon color="surface.icon.gray.normal" size="large" />}
-            title="Header Title Header Title Header Title Header Title Header Title"
-            subtitle="Header Subtitle"
-            titleSuffix={<Badge color="positive">New</Badge>}
-            trailing={<Amount value={1000} />}
-          />
-          <ActionList>
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              leading={<ActionListItemIcon icon={CheckIcon} />}
-              isSelected={status === 'approve'}
-              title="Approve"
-              value="approve"
-            />
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              leading={<ActionListItemIcon icon={ClockIcon} />}
-              isSelected={status === 'in-progress'}
-              title="In Progress"
-              value="in-progress"
-            />
+      <Tooltip content="Check Status">
+        <TooltipInteractiveWrapper>
+          <Dropdown>
+            <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
+            <DropdownOverlay>
+              <DropdownHeader
+                leading={<StarIcon color="surface.icon.gray.normal" size="large" />}
+                title="Header Title Header Title Header Title Header Title Header Title"
+                subtitle="Header Subtitle"
+                titleSuffix={<Badge color="positive">New</Badge>}
+                trailing={<Amount value={1000} />}
+              />
+              <ActionList>
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  leading={<ActionListItemIcon icon={CheckIcon} />}
+                  isSelected={status === 'approve'}
+                  title="Approve"
+                  value="approve"
+                />
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  leading={<ActionListItemIcon icon={ClockIcon} />}
+                  isSelected={status === 'in-progress'}
+                  title="In Progress"
+                  value="in-progress"
+                />
 
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              leading={<ActionListItemIcon icon={CloseIcon} />}
-              isSelected={status === 'reject'}
-              title="Reject"
-              value="reject"
-              intent="negative"
-            />
-          </ActionList>
-          <DropdownFooter>
-            <Box display="flex" alignItems="center" justifyContent="center" minWidth="300px">
-              <Box flex="5" display="flex">
-                <Checkbox>I agree terms and conditions</Checkbox>
-              </Box>
-              <Box flex="2">
-                <Button isFullWidth>Apply</Button>
-              </Box>
-            </Box>
-          </DropdownFooter>
-        </DropdownOverlay>
-      </Dropdown>
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  leading={<ActionListItemIcon icon={CloseIcon} />}
+                  isSelected={status === 'reject'}
+                  title="Reject"
+                  value="reject"
+                  intent="negative"
+                />
+              </ActionList>
+              <DropdownFooter>
+                <Box display="flex" alignItems="center" justifyContent="center" minWidth="300px">
+                  <Box flex="5" display="flex">
+                    <Checkbox>I agree terms and conditions</Checkbox>
+                  </Box>
+                  <Box flex="2">
+                    <Button isFullWidth>Apply</Button>
+                  </Box>
+                </Box>
+              </DropdownFooter>
+            </DropdownOverlay>
+          </Dropdown>
+        </TooltipInteractiveWrapper>
+      </Tooltip>
     </Box>
   );
 };
@@ -290,45 +293,45 @@ export const InternalIconButtonDropdown = (): React.ReactElement => {
 
   return (
     <Box padding="spacing.10">
-      <Dropdown onOpenChange={setIsDropdownOpen} isOpen={isDropdownOpen}>
-        <DropdownIconButton
-          icon={BoxIcon}
-          tooltip={{ content: 'Check status' }}
-          accessibilityLabel="Status Dropdown"
-        />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              isSelected={status === 'latest-added'}
-              title="Latest Added"
-              value="latest-added"
-            />
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              isSelected={status === 'latest-invoice'}
-              title="Latest Invoice"
-              value="latest-invoice"
-            />
+      <Tooltip content="Check Status">
+        <TooltipInteractiveWrapper>
+          <Dropdown onOpenChange={setIsDropdownOpen} isOpen={isDropdownOpen}>
+            <DropdownIconButton icon={BoxIcon} accessibilityLabel="Status Dropdown" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'latest-added'}
+                  title="Latest Added"
+                  value="latest-added"
+                />
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'latest-invoice'}
+                  title="Latest Invoice"
+                  value="latest-invoice"
+                />
 
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              isSelected={status === 'oldest-due-date'}
-              title="Oldest Due Date"
-              value="oldest-due-date"
-            />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'oldest-due-date'}
+                  title="Oldest Due Date"
+                  value="oldest-due-date"
+                />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </TooltipInteractiveWrapper>
+      </Tooltip>
     </Box>
   );
 };

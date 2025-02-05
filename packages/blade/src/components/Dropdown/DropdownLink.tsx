@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+
 import React from 'react';
 import { getActionListContainerRole } from '../ActionList/getA11yRoles';
 import { BaseLink } from '../Link/BaseLink';
@@ -7,13 +10,10 @@ import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { TooltipifyComponentProps } from '~utils/TooltipifyComponent';
-import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
   onBlur?: BaseLinkProps['onBlur'];
   onKeyDown?: BaseLinkProps['onKeyDown'];
-  tooltip?: TooltipifyComponentProps['tooltip'];
 };
 
 const _DropdownLink = ({
@@ -32,7 +32,6 @@ const _DropdownLink = ({
   testID,
   hitSlop,
   htmlTitle,
-  tooltip,
   ...props
 }: DropdownLinkProps): React.ReactElement => {
   const {
@@ -48,47 +47,40 @@ const _DropdownLink = ({
   return (
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
-    <TooltipifyComponent tooltip={tooltip}>
-      <BaseLink
-        variant="button"
-        {...(icon ? { icon, children } : { children })}
-        iconPosition={iconPosition}
-        size={size}
-        testID={testID}
-        hitSlop={hitSlop}
-        htmlTitle={htmlTitle}
-        isDisabled={isDisabled}
-        {...props}
-        {...makeAnalyticsAttribute(props)}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={triggererRef as any}
-        accessibilityProps={{
-          label: accessibilityLabel,
-          hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
-          expanded: isOpen,
-          controls: `${dropdownBaseId}-actionlist`,
-          activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
-        }}
-        onClick={(e) => {
-          onTriggerClick();
-          // Setting it for web fails it on native typecheck and vice versa
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-          onClick?.(e as any);
-        }}
-        onBlur={(e) => {
-          // Setting it for web fails it on native typecheck and vice versa
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-          onBlur?.(e as any);
-        }}
-        onKeyDown={(e) => {
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-          onTriggerKeydown?.({ event: e as any });
-          // Setting it for web fails it on native typecheck and vice versa
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-          onKeyDown?.(e as any);
-        }}
-      />
-    </TooltipifyComponent>
+    <BaseLink
+      variant="button"
+      {...(icon ? { icon, children } : { children })}
+      iconPosition={iconPosition}
+      size={size}
+      testID={testID}
+      hitSlop={hitSlop}
+      htmlTitle={htmlTitle}
+      isDisabled={isDisabled}
+      {...props}
+      {...makeAnalyticsAttribute(props)}
+      ref={triggererRef as any}
+      accessibilityProps={{
+        label: accessibilityLabel,
+        hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
+        expanded: isOpen,
+        controls: `${dropdownBaseId}-actionlist`,
+        activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
+      }}
+      onClick={(e) => {
+        onTriggerClick();
+        // Setting it for web fails it on native typecheck and vice versa
+        onClick?.(e as any);
+      }}
+      onBlur={(e) => {
+        // Setting it for web fails it on native typecheck and vice versa
+        onBlur?.(e as any);
+      }}
+      onKeyDown={(e) => {
+        onTriggerKeydown?.({ event: e as any });
+        // Setting it for web fails it on native typecheck and vice versa
+        onKeyDown?.(e as any);
+      }}
+    />
   );
 };
 
