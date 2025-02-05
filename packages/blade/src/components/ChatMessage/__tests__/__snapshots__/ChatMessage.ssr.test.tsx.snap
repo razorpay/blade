@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChatMessage/> it should fire onClick event when user clicks on message button 1`] = `"<div id="root"><button data-blade-component="base-box" class="BaseBox-bmPWx jivytg"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx cnLTiR"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Can you help me with the docs?</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span data-blade-component="base-box" class="BaseBox-bmPWx hnjoEU"><div data-blade-component="box" class="BaseBox-bmPWx gbqqUn"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 hARGwv"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(4, 74%, 49%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><span class="StyledBaseText-dVBfTO iYSZZz" data-blade-component="text">Message not sent. Tap to retry.</span></span></div></div></button></div>"`;
+exports[`<ChatMessage/> it should fire onClick event when user clicks on message button 1`] = `"<div id="root"><button data-blade-component="base-box" class="BaseBox-bmPWx jivytg"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx cfoEJx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Can you help me with the docs?</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx lnuYaG"><div data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span data-blade-component="base-box" class="BaseBox-bmPWx hnjoEU"><div data-blade-component="box" class="BaseBox-bmPWx gbqqUn"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 hARGwv"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(4, 74%, 49%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><span class="StyledBaseText-dVBfTO iYSZZz" data-blade-component="text">Message not sent. Tap to retry.</span></span></div></div></div></button></div>"`;
 
-exports[`<ChatMessage/> should render footer actions correctly when footerActions prop is passed as an array of JSX elements 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx dmEjyB"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Can you help me with the docs?</p></div></div><div data-blade-component="box" class="BaseBox-bmPWx"><div data-blade-component="box" class="BaseBox-bmPWx">Action 1</div>,<div data-blade-component="box" class="BaseBox-bmPWx">Action 2</div>,<div data-blade-component="box" class="BaseBox-bmPWx">Action 3</div>,</div></div></div>"`;
+exports[`<ChatMessage/> should render footer actions correctly when footerActions prop is passed as an array of JSX elements 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx eeQQLF"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Can you help me with the docs?</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx lnuYaG"></div></div><div data-blade-component="box" class="BaseBox-bmPWx"><div data-blade-component="box" class="BaseBox-bmPWx">Action 1</div>,<div data-blade-component="box" class="BaseBox-bmPWx">Action 2</div>,<div data-blade-component="box" class="BaseBox-bmPWx">Action 3</div>,</div></div></div>"`;
 
-exports[`<ChatMessage/> should render last message correctly 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx dmEjyB"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"> This is a demo message </p></div></div></div></div>"`;
+exports[`<ChatMessage/> should render last message correctly 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx eeQQLF"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"> This is a demo message </p></div><div data-blade-component="base-box" class="BaseBox-bmPWx lnuYaG"></div></div></div></div>"`;
 
 exports[`<ChatMessage/> should render last message correctly 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -18,6 +18,9 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
   padding: 12px;
   height: auto;
   width: -webkit-fit-content;
@@ -28,6 +31,12 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
   border-top-right-radius: 8px;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 8px;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -69,12 +78,16 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
            This is a demo message 
         </p>
       </div>
+      <div
+        class="c3"
+        data-blade-component="base-box"
+      />
     </div>
   </div>
 </div>
 `;
 
-exports[`<ChatMessage/> should render last message correctly 3`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx QcuiJ"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"> This is another demo message </p></div></div></div></div>"`;
+exports[`<ChatMessage/> should render last message correctly 3`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx dQijMd"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"> This is another demo message </p></div><div data-blade-component="base-box" class="BaseBox-bmPWx lnuYaG"></div></div></div></div>"`;
 
 exports[`<ChatMessage/> should render last message correctly 4`] = `
 .c0.c0.c0.c0.c0 {
@@ -88,6 +101,9 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
   padding: 12px;
   height: auto;
   width: -webkit-fit-content;
@@ -98,6 +114,12 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -139,6 +161,10 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
            This is another demo message 
         </p>
       </div>
+      <div
+        class="c3"
+        data-blade-component="base-box"
+      />
     </div>
   </div>
 </div>
