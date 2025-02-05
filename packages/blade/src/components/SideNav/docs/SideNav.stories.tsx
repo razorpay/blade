@@ -14,7 +14,7 @@ import {
   SideNavFooter,
   SideNavItem,
 } from '..';
-import { RazorpayLinesSvg, RazorpayLogo, RazorpayWordmarkLogo } from './RazorpayLogo';
+import { RazorpayLinesSvg, RazorpayLogo } from './RazorpayLogo';
 import { sideNavWithReactRouter } from './code';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
@@ -348,29 +348,12 @@ const NavItem = (
   );
 };
 
-const Logo = ({ isNavCollapsed }: { isNavCollapsed?: boolean }): React.ReactElement => {
-  return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      width="100%"
-      height="56px"
-      padding="spacing.2"
-      flexShrink={0}
-    >
-      {isNavCollapsed ? <RazorpayWordmarkLogo /> : <RazorpayLogo />}
-    </Box>
-  );
-};
-
 const SideNavExample = ({
   showExampleContentPadding = true,
   ...args
 }: SideNavProps & { showExampleContentPadding?: boolean }): React.ReactElement => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
   const [isTestModeActive, setIsTestModeActive] = React.useState(false);
-  const [visibleLevel, setVisibleLevel] = React.useState(1);
   const location = useLocation();
 
   const getSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
@@ -384,71 +367,67 @@ const SideNavExample = ({
     return Boolean(activeItem);
   };
 
-  const isExpanded = visibleLevel === 2;
   return (
     <Box minHeight="500px">
       <SideNav
         {...args}
         isOpen={isMobileOpen}
         onDismiss={() => setIsMobileOpen(false)}
-        onVisibleLevelChange={({ visibleLevel }) => setVisibleLevel(visibleLevel)}
+        onVisibleLevelChange={({ visibleLevel }) => console.log(visibleLevel)}
       >
         <SideNavBody>
-          <Logo isNavCollapsed={isExpanded} />
-          <>
-            {navItemsJSON.map((l1Sections) => {
-              return (
-                <SideNavSection
-                  key={l1Sections.title}
-                  title={l1Sections.title}
-                  maxVisibleItems={l1Sections.maxItemsVisible}
-                  defaultIsExpanded={getSectionExpanded(
-                    l1Sections.items.slice(l1Sections.maxItemsVisible),
-                  )}
-                >
-                  {l1Sections.items.map((l1Item) => {
-                    if (!l1Item.items) {
-                      return <NavItem key={l1Item.title} {...l1Item} />;
-                    }
+          {navItemsJSON.map((l1Sections) => {
+            return (
+              <SideNavSection
+                key={l1Sections.title}
+                title={l1Sections.title}
+                maxVisibleItems={l1Sections.maxItemsVisible}
+                defaultIsExpanded={getSectionExpanded(
+                  l1Sections.items.slice(l1Sections.maxItemsVisible),
+                )}
+              >
+                {l1Sections.items.map((l1Item) => {
+                  if (!l1Item.items) {
+                    return <NavItem key={l1Item.title} {...l1Item} />;
+                  }
 
-                    return (
-                      <NavItem
-                        key={l1Item.title}
-                        {...l1Item}
-                        activeOnLinks={getAllChildHrefs(l1Item.items)}
-                        href={l1Item.items[0].href}
-                      >
-                        <SideNavLevel key={l1Item.title}>
-                          {l1Item.items?.map((l2Item) => {
-                            if (!l2Item.items) {
-                              return (
-                                <NavItem key={l2Item.title} {...l2Item} description="RBL20I43" />
-                              );
-                            }
-
+                  return (
+                    <NavItem
+                      key={l1Item.title}
+                      {...l1Item}
+                      activeOnLinks={getAllChildHrefs(l1Item.items)}
+                      href={l1Item.items[0].href}
+                    >
+                      <SideNavLevel key={l1Item.title}>
+                        {l1Item.items?.map((l2Item) => {
+                          if (!l2Item.items) {
                             return (
-                              <NavItem
-                                key={l2Item.title}
-                                {...l2Item}
-                                activeOnLinks={getAllChildHrefs(l2Item.items)}
-                                href={undefined}
-                              >
-                                <SideNavLevel key={l2Item.title}>
-                                  {l2Item.items?.map((l3Item) => {
-                                    return <NavItem key={l3Item.title} {...l3Item} />;
-                                  })}
-                                </SideNavLevel>
-                              </NavItem>
+                              <NavItem key={l2Item.title} {...l2Item} description="RBL20I43" />
                             );
-                          })}
-                        </SideNavLevel>
-                      </NavItem>
-                    );
-                  })}
-                </SideNavSection>
-              );
-            })}
-          </>
+                          }
+
+                          return (
+                            <NavItem
+                              key={l2Item.title}
+                              {...l2Item}
+                              activeOnLinks={getAllChildHrefs(l2Item.items)}
+                              href={undefined}
+                            >
+                              <SideNavLevel key={l2Item.title}>
+                                {l2Item.items?.map((l3Item) => {
+                                  return <NavItem key={l3Item.title} {...l3Item} />;
+                                })}
+                              </SideNavLevel>
+                            </NavItem>
+                          );
+                        })}
+                      </SideNavLevel>
+                    </NavItem>
+                  );
+                })}
+              </SideNavSection>
+            );
+          })}
         </SideNavBody>
         <SideNavFooter>
           <SideNavItem

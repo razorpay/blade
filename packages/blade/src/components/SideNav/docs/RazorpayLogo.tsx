@@ -23,28 +23,6 @@ const RazorpayLogo = (): React.ReactElement => {
   );
 };
 
-const RazorpayWordmarkLogo = (): React.ReactElement => {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clipPath="url(#clip0_297_142778)">
-        <path
-          d="M10.4993 7.772L9.33594 12.0539L15.9948 7.74763L11.6398 23.9963L16.0628 24L22.4963 0"
-          fill="#3395FF"
-        />
-        <path
-          d="M3.33184 17.1686L1.5 23.9996H10.5654L14.2748 10.1035L3.33184 17.1686Z"
-          fill="#192839"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_297_142778">
-          <rect width="24" height="24" fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
-  );
-};
-
 const RazorpayLinesSvg = (): React.ReactElement => {
   return (
     <svg
@@ -77,4 +55,4 @@ const RazorpayLinesSvg = (): React.ReactElement => {
   );
 };
 
-export { RazorpayLogo, RazorpayWordmarkLogo, RazorpayLinesSvg };
+export { RazorpayLogo, RazorpayLinesSvg };
