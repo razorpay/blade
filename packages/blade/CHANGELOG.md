@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.40.2
+
+### Patch Changes
+
+- bd8d98bd: fix(Avatar): misalignment of Menu on Avatar with icon
+
 ## 11.40.1
 
 ### Patch Changes
