@@ -72,17 +72,17 @@ type CommonChatMessageProps = {
   DataAnalyticsAttribute;
 
 type SelfChatMessageProps = CommonChatMessageProps & {
-  senderType: 'self';
-  messageType: 'default' | 'last';
+  senderType: 'self' | 'other';
+  messageType?: 'default' | 'last';
   errorText?: string;
-  isLoading?: undefined;
-  loadingText?: undefined;
+  isLoading?: boolean;
+  loadingText?: string;
   leading?: undefined;
 };
 
 type DefaultChatMessageProps = CommonChatMessageProps & {
-  senderType: 'other';
-  messageType?: undefined;
+  senderType: 'self' | 'other';
+  messageType?: 'default' | 'last';
   isLoading?: boolean;
   loadingText?: string;
 };
