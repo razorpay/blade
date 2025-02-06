@@ -252,7 +252,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
           senderType="self"
           messageType="last"
           footerActions={
-            <Box margin="4px" display="flex" justifyContent="flex-end">
+            <Box marginY="8px" marginRight="4px" display="flex" justifyContent="flex-end">
               <ChipGroup label="">
                 <Chip value="yes" icon={ThumbsUpIcon} />
                 <Chip value="no" icon={ThumbsDownIcon} />
@@ -265,7 +265,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
         <ChatMessage
           senderType="other"
           footerActions={
-            <Box margin="4px">
+            <Box marginY="8px" marginLeft="32px">
               <ChipGroup label="">
                 <Chip value="yes" icon={ThumbsUpIcon} />
                 <Chip value="no" icon={ThumbsDownIcon} />
