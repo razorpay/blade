@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import { BoxProps } from '~components/Box';
+import type { BoxProps } from '~components/Box';
 
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
