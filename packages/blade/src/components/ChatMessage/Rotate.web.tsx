@@ -14,12 +14,16 @@ const Rotate = ({
 }): React.ReactElement => {
   const { theme } = useTheme();
 
+  if (!animate) {
+    return children;
+  }
+
   return (
     <m.div
       style={{
         display: 'flex',
       }}
-      animate={{ rotate: animate ? 90 : 0 }}
+      animate={{ rotate: 90 }}
       transition={{
         duration: msToSeconds(theme.motion.duration.gentle),
         repeat: Infinity,
