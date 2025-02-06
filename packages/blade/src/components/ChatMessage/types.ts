@@ -1,5 +1,4 @@
 import type React from 'react';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 
@@ -69,7 +68,7 @@ type CommonChatMessageProps = {
    */
   maxWidth?: BaseBoxProps['maxWidth'];
 } & TestID &
-  StyledPropsBlade &
+  BaseBoxProps &
   DataAnalyticsAttribute;
 
 type SelfChatMessageProps = CommonChatMessageProps & {
