@@ -147,8 +147,7 @@ describe('<ChatMessage/>', () => {
   it('should render footer actions correctly when footerActions prop is passed as an array of JSX elements', () => {
     const { getByText } = renderWithTheme(
       <ChatMessage
-        senderType="self"
-        messageType="last"
+        senderType="other"
         footerActions={
           <Box>
             <Box key={1}>Action 1</Box>,<Box key={2}>Action 2</Box>,<Box key={3}>Action 3</Box>,
