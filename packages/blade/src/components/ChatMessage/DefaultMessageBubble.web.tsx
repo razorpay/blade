@@ -7,16 +7,32 @@ const DefaultMessageBubble = ({
   children,
   leading,
   isLoading,
-}: Pick<CommonChatMessageProps, 'children' | 'leading' | 'isLoading'>): React.ReactElement => {
+  footerActions,
+  isChildText,
+}: Pick<CommonChatMessageProps, 'children' | 'leading' | 'isLoading' | 'footerActions'> & {
+  isChildText: boolean;
+}): React.ReactElement => {
   return (
     <BaseBox>
-      <BaseBox display="flex" gap="spacing.4" justifyContent="left">
-        <BaseBox>
+      <BaseBox
+        display="grid"
+        gridTemplateColumns="auto 1fr"
+        gridTemplateRows="auto auto"
+        columnGap="spacing.4"
+      >
+        <BaseBox padding="spacing.2">
           <Rotate animate={isLoading}>{leading as React.ReactElement}</Rotate>
         </BaseBox>
-        <BaseBox display="flex" alignItems="center">
+
+        <BaseBox
+          display="flex"
+          alignItems="center"
+          paddingY={isChildText ? 'spacing.2' : 'spacing.0'}
+        >
           {children}
         </BaseBox>
+
+        <BaseBox gridColumn="2">{footerActions}</BaseBox>
       </BaseBox>
     </BaseBox>
   );

@@ -14,6 +14,7 @@ import { Move } from '~components/Move';
 import { Chip, ChipGroup } from '~components/Chip';
 import { Stagger } from '~components/Stagger';
 import { Fade } from '~components/Fade';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -45,6 +46,9 @@ export default {
   title: 'Components/ChatMessage',
   component: ChatMessage,
   tags: ['autodocs'],
+  argTypes: {
+    ...getStyledPropsArgTypes(),
+  },
   parameters: {
     docs: {
       page: Page,
@@ -252,7 +256,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
           senderType="self"
           messageType="last"
           footerActions={
-            <Box marginY="8px" marginRight="4px" display="flex" justifyContent="flex-end">
+            <Box display="flex" justifyContent="flex-end">
               <ChipGroup label="">
                 <Chip value="yes" icon={ThumbsUpIcon} />
                 <Chip value="no" icon={ThumbsDownIcon} />
@@ -265,7 +269,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
         <ChatMessage
           senderType="other"
           footerActions={
-            <Box marginY="8px" marginLeft="32px">
+            <Box>
               <ChipGroup label="">
                 <Chip value="yes" icon={ThumbsUpIcon} />
                 <Chip value="no" icon={ThumbsDownIcon} />

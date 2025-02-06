@@ -7,7 +7,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStringFromReactText } from '~utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
-import { MetaConstants } from '~utils/metaAttribute';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const ButtonResetCss = {
   background: 'none',
@@ -62,7 +63,8 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     <BaseBox
       onClick={onClick}
       {...(onClick ? { ...ButtonResetCss } : {})}
-      {...props}
+      {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
+      {...makeAnalyticsAttribute(props)}
       ref={ref as never}
       as={onClick ? 'button' : undefined}
     >
@@ -75,9 +77,14 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
           isChildText={shouldWrapInText}
         />
       ) : (
-        <DefaultMessageBubble children={finalChildren} leading={leading} isLoading={isLoading} />
+        <DefaultMessageBubble
+          children={finalChildren}
+          leading={leading}
+          isLoading={isLoading}
+          footerActions={footerActions}
+          isChildText={shouldWrapInText}
+        />
       )}
-      {footerActions}
     </BaseBox>
   );
 };

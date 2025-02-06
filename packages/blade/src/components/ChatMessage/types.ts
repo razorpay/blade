@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import type { BoxProps } from '~components/Box';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
@@ -69,7 +69,7 @@ type CommonChatMessageProps = {
    */
   maxWidth?: BaseBoxProps['maxWidth'];
 } & TestID &
-  BoxProps &
+  StyledPropsBlade &
   DataAnalyticsAttribute;
 
 type SelfChatMessageProps = CommonChatMessageProps & {
