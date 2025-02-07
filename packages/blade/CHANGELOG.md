@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 12.10.0
+
+### Minor Changes
+
+- 142afcdf: feat(TextArea): expose `onKeydown` on TextArea and allow `numOfLines={1}`
+
+### Patch Changes
+
+- 6cf03ea3: feat: Improve OTPInput field value clear behaviour
+
 ## 12.9.1
 
 ### Patch Changes
