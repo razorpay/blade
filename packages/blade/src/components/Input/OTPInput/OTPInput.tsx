@@ -294,8 +294,15 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   }: FormInputOnKeyDownEvent & { currentOtpIndex: number }): void => {
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       event.preventDefault?.();
-      handleOnChange({ value: '', currentOtpIndex });
-      focusOnOtpByIndex(--currentOtpIndex);
+      if (otpValue[currentOtpIndex]) {
+        // Clear the value at the current index if value exists
+        handleOnChange({ value: '', currentOtpIndex });
+      } else {
+        // Move focus to the previous input if the current input is empty
+        // and clear the value at the new active (previous) index
+        focusOnOtpByIndex(--currentOtpIndex);
+        handleOnChange({ value: '', currentOtpIndex });
+      }
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
       event.preventDefault?.();
       focusOnOtpByIndex(--currentOtpIndex);
