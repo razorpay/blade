@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.11.0
+
+### Minor Changes
+
+- d906838f: feat(blade): add Chat Message component
+
 ## 12.10.0
 
 ### Minor Changes
