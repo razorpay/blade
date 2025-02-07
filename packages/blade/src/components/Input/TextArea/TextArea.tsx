@@ -21,6 +21,7 @@ import type {
   DataAnalyticsAttribute,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 type TextAreaCommonProps = Pick<
   BaseInputProps,
@@ -39,7 +40,6 @@ type TextAreaCommonProps = Pick<
   | 'onFocus'
   | 'onBlur'
   | 'onSubmit'
-  | 'onKeyDown'
   | 'value'
   | 'isDisabled'
   | 'isRequired'
@@ -58,6 +58,16 @@ type TextAreaCommonProps = Pick<
    * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
+
+  onKeyDown?: ({
+    name,
+    value,
+    event,
+  }: {
+    name?: FormInputOnKeyDownEvent['name'];
+    value: string;
+    event: FormInputOnKeyDownEvent['event'];
+  }) => void;
 } & TaggedInputProps &
   StyledPropsBlade;
 
@@ -246,7 +256,11 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       onKeyDown={(e) => {
         handleTaggedInputKeydown(e);
-        onKeyDown?.(e);
+        onKeyDown?.({
+          name: e.name,
+          value: e.event.currentTarget.value,
+          event: e.event,
+        });
       }}
       onSubmit={onSubmit}
       trailingFooterSlot={(value) => {

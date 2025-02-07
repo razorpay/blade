@@ -472,10 +472,10 @@ export const TextAreaWithEnterSubmit: StoryFn<typeof TextAreaComponent> = ({ ...
         {...args}
         numberOfLines={3}
         placeholder="Press Shift + Enter for next line and Enter for submit"
-        onKeyDown={({ event }) => {
+        onKeyDown={({ event, value }) => {
           if (!event.shiftKey && event.key === 'Enter') {
             event.preventDefault();
-            toast.show({ content: 'Submit', color: 'positive', type: 'informational' });
+            toast.show({ content: `Submit: ${value}`, color: 'positive', type: 'informational' });
           }
         }}
       />
