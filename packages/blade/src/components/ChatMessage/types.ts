@@ -71,7 +71,8 @@ type CommonChatMessageProps = {
   maxWidth?: BaseBoxProps['maxWidth'];
   /**
    * wordBreak prop is used to set word break of chat message.
-   * this will only work when children is string.
+   *
+   * *this will only work when children is string*
    */
   wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &

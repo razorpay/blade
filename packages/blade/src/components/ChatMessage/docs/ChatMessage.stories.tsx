@@ -57,7 +57,11 @@ export default {
 } as Meta<ChatMessageProps>;
 
 const ChatMessageTemplate: StoryFn<typeof ChatMessage> = (args) => {
-  return <ChatMessage {...args}>Hi, Can you help me with the docs?</ChatMessage>;
+  return (
+    <ChatMessage wordBreak="normal" {...args}>
+      Hi, Can you help me with the docs?
+    </ChatMessage>
+  );
 };
 
 export const Default = ChatMessageTemplate.bind({});
