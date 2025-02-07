@@ -229,7 +229,7 @@ type BaseInputCommonProps = FormInputLabelProps &
     /**
      * Sets the textarea's number of lines
      */
-    numberOfLines?: 2 | 3 | 4 | 5;
+    numberOfLines?: 1 | 2 | 3 | 4 | 5;
     /**
      * Sets the accessibility label for the input
      */

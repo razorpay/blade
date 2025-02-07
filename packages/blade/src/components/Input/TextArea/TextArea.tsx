@@ -39,6 +39,7 @@ type TextAreaCommonProps = Pick<
   | 'onFocus'
   | 'onBlur'
   | 'onSubmit'
+  | 'onKeyDown'
   | 'value'
   | 'isDisabled'
   | 'isRequired'
@@ -114,6 +115,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onFocus,
     onBlur,
     onSubmit,
+    onKeyDown,
     placeholder,
     value,
     maxCharacters,
@@ -244,6 +246,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       onKeyDown={(e) => {
         handleTaggedInputKeydown(e);
+        onKeyDown?.(e);
       }}
       onSubmit={onSubmit}
       trailingFooterSlot={(value) => {
