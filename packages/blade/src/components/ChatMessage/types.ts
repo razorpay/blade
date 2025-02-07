@@ -2,6 +2,7 @@ import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
@@ -68,6 +69,11 @@ type CommonChatMessageProps = {
    * maxWidth prop is used to set max width of chat message.
    */
   maxWidth?: BaseBoxProps['maxWidth'];
+  /**
+   * wordBreak prop is used to set word break of chat message.
+   * this will only work when children is string.
+   */
+  wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;

@@ -9,7 +9,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { makeBoxProps } from '~components/Box/Box';
+import { getStyledProps } from '~components/Box/styledProps';
 
 const ButtonResetCss = {
   background: 'none',
@@ -36,6 +36,8 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     children,
     leading,
     loadingText,
+    wordBreak = 'break-word',
+    maxWidth,
     ...props
   }: ChatMessageProps,
   ref: React.Ref<BladeElementRef>,
@@ -53,6 +55,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
       weight="regular"
       variant="body"
       size="medium"
+      wordBreak={wordBreak}
     >
       {isLoading ? loadingText : getStringFromReactText(children as string | string[])}
     </Text>
@@ -64,9 +67,10 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     <BaseBox
       onClick={onClick}
       {...(onClick ? { ...ButtonResetCss } : {})}
-      {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
+      {...metaAttribute({ name: MetaConstants.ChatMessage, testID: props.testID })}
       {...makeAnalyticsAttribute(props)}
-      {...makeBoxProps(props)}
+      {...getStyledProps(props)}
+      maxWidth={maxWidth}
       ref={ref as never}
       as={onClick ? 'button' : undefined}
     >

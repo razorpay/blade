@@ -240,7 +240,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="box"
+    data-blade-component="chat-message"
   >
     <div
       class=""
@@ -561,6 +561,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -588,7 +589,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="box"
+    data-blade-component="chat-message"
   >
     <div
       class="c0"
@@ -711,12 +712,13 @@ exports[`<ChatMessage/> should render last message correctly 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 <div>
   <div
     class=""
-    data-blade-component="box"
+    data-blade-component="chat-message"
   >
     <div
       class="c0"
@@ -790,12 +792,13 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 <div>
   <div
     class=""
-    data-blade-component="box"
+    data-blade-component="chat-message"
   >
     <div
       class="c0"
@@ -866,12 +869,13 @@ exports[`<ChatMessage/> should render last message correctly 3`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 <div>
   <div
     class=""
-    data-blade-component="box"
+    data-blade-component="chat-message"
   >
     <div
       class=""
@@ -1162,7 +1166,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 <div>
   <div
     class=""
-    data-blade-component="box"
+    data-blade-component="chat-message"
   >
     <div
       class=""
