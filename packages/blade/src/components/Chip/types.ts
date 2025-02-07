@@ -5,11 +5,7 @@ import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { MotionMetaProp } from '~components/BaseMotion';
 
-type ChipProps = {
-  /**
-   * Sets the label of the Chip
-   */
-  children: StringChildrenType;
+type ChipCommonProps = {
   /**
    * Displays the Blade Icon component within the Chip
    * Accepts a component of type `IconComponent` from Blade.
@@ -37,6 +33,24 @@ type ChipProps = {
   DataAnalyticsAttribute &
   StyledPropsBlade &
   MotionMetaProp;
+
+/*
+  Mandatory children prop when icon is not provided
+*/
+type ChipWithoutIconProps = ChipCommonProps & {
+  icon?: undefined;
+  children: StringChildrenType;
+};
+
+/*
+  Optional children prop when icon is provided
+*/
+type ChipWithIconProps = ChipCommonProps & {
+  icon: IconComponent;
+  children?: StringChildrenType;
+};
+
+type ChipProps = ChipWithoutIconProps | ChipWithIconProps;
 
 type ChipGroupCommonProps = {
   /**

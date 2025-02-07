@@ -48,7 +48,7 @@ const Scale = ({
   const defaultMotionTriggers = isControlledHighlighted ? ['mount' as const] : ['hover' as const];
   const { theme } = useTheme();
 
-  const fadeVariants: MotionVariantsType = {
+  const scaleVariants: MotionVariantsType = {
     initial: {
       scale: 1,
     },
@@ -71,7 +71,7 @@ const Scale = ({
 
   return (
     <BaseMotionEnhancerBox
-      motionVariants={fadeVariants}
+      motionVariants={scaleVariants}
       type={type}
       children={children}
       motionTriggers={motionTriggers ?? defaultMotionTriggers}

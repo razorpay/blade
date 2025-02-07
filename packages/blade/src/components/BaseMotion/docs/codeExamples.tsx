@@ -140,6 +140,39 @@ export const ScaleSandbox = ({
   );
 };
 
+export const ElevateSandbox = ({
+  padding,
+}: {
+  padding?: BoxProps['padding'];
+}): React.ReactElement => {
+  return (
+    <Sandbox padding={padding}>{`import { 
+      Elevate,
+      Card, 
+      CardBody,
+      Text, 
+      Box,
+    } from '@razorpay/blade/components';
+
+    function App() {
+      return (
+        <Box>
+          <Elevate motionTriggers={['hover']}>
+            <Card>
+              <CardBody>
+                <Text>Card that drops shadow on hover</Text>
+              </CardBody>
+            </Card>
+          </Elevate>
+        </Box>
+      )
+    }
+
+    export default App;
+    `}</Sandbox>
+  );
+};
+
 export const MorphSandbox = ({
   padding,
 }: {

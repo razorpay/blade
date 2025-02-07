@@ -147,9 +147,9 @@ type DataAnalyticsKey = `data-analytics-${string}`;
  * eg: `data-analytics-action="click"`
  * eg: `data-analytics-section="header"`
  */
-interface DataAnalyticsAttribute {
+type DataAnalyticsAttribute = {
   [key: DataAnalyticsKey]: string;
-}
+};
 
 export type {
   DotNotationColorStringToken,

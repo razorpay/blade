@@ -2,17 +2,21 @@ import React from 'react';
 import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownLink, DropdownOverlay } from '..';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
+import { DropdownIconButton } from '../DropdownIconButton';
 import {
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
   WithLinkStory,
   WithAutoPositioningMenuStory,
   WithSimpleMenuStory,
+  WithIconButtonStory,
+  WithTooltipStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
 import {
+  BoxIcon,
   CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
@@ -25,6 +29,7 @@ import { Checkbox } from '~components/Checkbox';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { Amount } from '~components/Amount';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Button and Link',
@@ -65,6 +70,14 @@ export const WithLink = (): React.ReactElement => {
   );
 };
 
+export const WithIconButton = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {WithIconButtonStory}
+    </Sandbox>
+  );
+};
+
 export const WithAutoPositioning = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
@@ -85,6 +98,14 @@ export const WithControlledMultiSelect = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithControlledMultiSelectMenuStory}
+    </Sandbox>
+  );
+};
+
+export const WithTooltip = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {WithTooltipStory}
     </Sandbox>
   );
 };
@@ -269,6 +290,55 @@ InternalLinkDropdown.parameters = {
   chromatic: {
     disableSnapshot: false,
   },
+};
+
+export const InternalIconButtonDropdown = (): React.ReactElement => {
+  const [status, setStatus] = React.useState<string | undefined>('latest-added');
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  return (
+    <Box padding="spacing.10">
+      <Tooltip content="Check Status">
+        <TooltipInteractiveWrapper>
+          <Dropdown onOpenChange={setIsDropdownOpen} isOpen={isDropdownOpen}>
+            <DropdownIconButton icon={BoxIcon} accessibilityLabel="Status Dropdown" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'latest-added'}
+                  title="Latest Added"
+                  value="latest-added"
+                />
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'latest-invoice'}
+                  title="Latest Invoice"
+                  value="latest-invoice"
+                />
+
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'oldest-due-date'}
+                  title="Oldest Due Date"
+                  value="oldest-due-date"
+                />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </TooltipInteractiveWrapper>
+      </Tooltip>
+    </Box>
+  );
 };
 
 export default DropdownStoryMeta;

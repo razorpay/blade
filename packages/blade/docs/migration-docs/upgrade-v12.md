@@ -38,6 +38,7 @@ You can skip this if you've run the codemod but in case not or you see some edge
 | theme.motion.easing.standard.revealing | theme.motion.easing.emphasized |
 | theme.motion.easing.exit.revealing     | theme.motion.easing.exit       |
 | theme.motion.easing.entrance.attentive | theme.motion.easing.overshoot  |
+| theme.motion.easing.standard.attentive | theme.motion.easing.overshoot  |
 | theme.motion.easing.exit.attentive     | theme.motion.easing.exit       |
 | theme.motion.easing.standard.wary      | theme.motion.easing.shake      |
 

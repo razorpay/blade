@@ -255,6 +255,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={true}
@@ -271,6 +272,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -462,6 +464,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -478,6 +481,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -795,6 +799,7 @@ exports[`<Chip /> should render chip 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -811,6 +816,7 @@ exports[`<Chip /> should render chip 1`] = `
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -1002,6 +1008,7 @@ exports[`<Chip /> should render chip 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -1018,6 +1025,7 @@ exports[`<Chip /> should render chip 1`] = `
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -1335,6 +1343,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -1351,6 +1360,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -1371,7 +1381,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             [
                               {
                                 "display": "flex",
-                                "paddingRight": 8,
                               },
                             ]
                           }
@@ -1643,6 +1652,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -1659,6 +1669,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -1679,7 +1690,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             [
                               {
                                 "display": "flex",
-                                "paddingRight": 8,
                               },
                             ]
                           }
@@ -2077,6 +2087,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={true}
@@ -2093,6 +2104,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",
@@ -2284,6 +2296,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        gap="spacing.3"
                         height="28px"
                         isChecked={false}
                         isDisabled={false}
@@ -2300,6 +2313,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                               "borderWidth": 0.5,
                               "display": "flex",
                               "flexDirection": "row",
+                              "gap": 8,
                               "height": 28,
                               "justifyContent": "center",
                               "overflow": "hidden",

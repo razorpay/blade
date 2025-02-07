@@ -87,6 +87,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       size,
       emphasis,
       accessibilityLabel,
+      accessibilityProps,
       isDisabled,
       isHighlighted,
       testID,
@@ -98,6 +99,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onPointerEnter,
       onTouchEnd,
       onTouchStart,
+      onKeyDown,
       tabIndex,
       ...rest
     },
@@ -116,11 +118,15 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onPointerEnter={onPointerEnter}
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
+      onKeyDown={onKeyDown}
       disabled={isDisabled}
       $isHighlighted={isHighlighted}
       $size={size}
       tabIndex={tabIndex}
-      {...makeAccessible({ label: accessibilityLabel })}
+      {...makeAccessible({
+        ...accessibilityProps,
+        label: accessibilityLabel ?? accessibilityProps?.label,
+      })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
       {...makeAnalyticsAttribute(rest)}
       {...rest}
