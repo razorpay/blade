@@ -43,16 +43,16 @@ const StyledTabButton = styled.button<{
     width: isFullWidthTabItem ? '100%' : undefined,
 
     // Padding
-    paddingTop: makeSpace(getIn(theme, paddingY[_variant][orientation].desktop.top[size!])),
-    paddingBottom: makeSpace(getIn(theme, paddingY[_variant][orientation].desktop.bottom[size!])),
-    paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation].desktop.left[size!])),
-    paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation].desktop.right[size!])),
+    paddingTop: makeSpace(getIn(theme, paddingY[_variant][orientation].desktop[size!])),
+    paddingBottom: makeSpace(getIn(theme, paddingY[_variant][orientation].desktop[size!])),
+    paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation].desktop[size!])),
+    paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation].desktop[size!])),
 
     [`@media ${getMediaQuery({ min: breakpoints.base, max: breakpoints.m })}`]: {
-      paddingTop: makeSpace(getIn(theme, paddingY[_variant][orientation].mobile.top[size!])),
-      paddingBottom: makeSpace(getIn(theme, paddingY[_variant][orientation].mobile.bottom[size!])),
-      paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation].mobile.left[size!])),
-      paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation].mobile.right[size!])),
+      paddingTop: makeSpace(getIn(theme, paddingY[_variant][orientation].mobile[size!])),
+      paddingBottom: makeSpace(getIn(theme, paddingY[_variant][orientation].mobile[size!])),
+      paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation].mobile[size!])),
+      paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation].mobile[size!])),
     },
 
     // colors

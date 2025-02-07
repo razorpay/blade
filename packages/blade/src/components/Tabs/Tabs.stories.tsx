@@ -623,16 +623,9 @@ Large.args = {
   size: 'large',
 };
 
-export const FilledMedium = TabsTemplate.bind({});
-FilledMedium.args = {
+export const Filled = TabsTemplate.bind({});
+Filled.args = {
   variant: 'filled',
-  size: 'medium',
-};
-
-export const FilledLarge = TabsTemplate.bind({});
-FilledLarge.args = {
-  variant: 'filled',
-  size: 'large',
 };
 
 export const FilledVertical = TabsTemplate.bind({});
