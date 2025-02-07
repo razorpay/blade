@@ -9,6 +9,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { makeBoxProps } from '~components/Box/Box';
 
 const ButtonResetCss = {
   background: 'none',
@@ -65,6 +66,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
       {...(onClick ? { ...ButtonResetCss } : {})}
       {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
       {...makeAnalyticsAttribute(props)}
+      {...makeBoxProps(props)}
       ref={ref as never}
       as={onClick ? 'button' : undefined}
     >
