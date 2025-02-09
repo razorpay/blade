@@ -3,6 +3,7 @@ import { chipGroupGapTokens, chipGroupLabelSizeTokens } from './chipTokens';
 import { ChipGroupProvider } from './ChipGroupContext';
 import { useChipGroup } from './useChipGroup';
 import type { ChipGroupProps } from './types';
+import { getLayOutProps } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
@@ -33,6 +34,7 @@ const _ChipGroup = (
     color = 'primary',
     testID,
     selectionType = 'single',
+    chipGroupContainerLayout = {},
     ...rest
   }: ChipGroupProps,
   ref: React.Ref<BladeElementRef>,
@@ -69,6 +71,9 @@ const _ChipGroup = (
     }
   }
 
+  console.log('chipGroupContainerLayout', chipGroupContainerLayout);
+  console.log('stylesProps', getStyledProps(chipGroupContainerLayout));
+
   return (
     <ChipGroupProvider value={contextValue}>
       <BaseBox ref={ref as never} {...getStyledProps(rest)}>
@@ -96,7 +101,12 @@ const _ChipGroup = (
             <VisuallyHidden>
               <Text>{accessibilityLabel}</Text>
             </VisuallyHidden>
-            <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
+            <BaseBox
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              {...getLayOutProps(chipGroupContainerLayout)}
+            >
               {React.Children.map(children, (child, index) => {
                 return (
                   <BaseBox

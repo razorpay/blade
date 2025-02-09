@@ -1,9 +1,20 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
+import type {
+  DataAnalyticsAttribute,
+  PickCSSByPlatform,
+  StringChildrenType,
+  TestID,
+} from '~utils/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { MotionMetaProp } from '~components/BaseMotion';
+import type { FlexboxProps, GridProps } from '~components/Box/BaseBox/types/propsTypes';
+
+type ChipGroupContainerLayoutProps = Omit<
+  Partial<PickCSSByPlatform<'display'> & FlexboxProps & GridProps>,
+  '__brand__'
+>;
 
 type ChipCommonProps = {
   /**
@@ -137,6 +148,13 @@ type ChipGroupCommonProps = {
    * @default "primary"
    */
   color?: 'primary' | 'positive' | 'negative';
+  /**
+   * Layout properties for the ChipGroup container
+   * currently supports `display`, flex and grid properties
+   * @default { display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }
+   *
+   */
+  chipGroupContainerLayout?: ChipGroupContainerLayoutProps;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -246,4 +264,5 @@ export type {
   StyledChipWrapperProps,
   ChipBorderColors,
   ChipBackgroundColors,
+  ChipGroupContainerLayoutProps,
 };

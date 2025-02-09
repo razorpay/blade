@@ -727,3 +727,78 @@ chipRef.parameters = {
     exclude: ['icon'],
   },
 };
+
+export const MultiChipStory: StoryFn<typeof ChipGroupComponent> = (args) => {
+  const chipArray = [
+    {
+      value: '100',
+      label: '₹100',
+    },
+    {
+      value: '500',
+      label: '₹500',
+    },
+    {
+      value: '1000',
+      label: '₹1000',
+    },
+    {
+      value: '2000',
+      label: '₹2000',
+    },
+    {
+      value: '5000',
+      label: '₹5000',
+    },
+    {
+      value: '10000',
+      label: '₹10000',
+    },
+    {
+      value: '20000',
+      label: '₹20000',
+    },
+    {
+      value: '50000',
+      label: '₹50000',
+    },
+    {
+      value: '100000',
+      label: '₹100000',
+    },
+    {
+      value: '200000',
+      label: '₹200000',
+    },
+  ];
+
+  return (
+    <Box gap="spacing.3" display="flex" flexDirection="column">
+      <ChipGroupComponent
+        selectionType="single"
+        label="Select a gift card with value (without custom chipGroupContainerLayout)"
+      >
+        {chipArray.map((chip, index) => (
+          <ChipComponent key={index} value={chip.value}>
+            {chip.label}
+          </ChipComponent>
+        ))}
+      </ChipGroupComponent>
+      <ChipGroupComponent
+        selectionType="single"
+        label="Select a gift card with value (custom chipGroupContainerLayout)"
+        chipGroupContainerLayout={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, minmax(0,80px))',
+          gap: 'spacing.3',
+        }}
+      >
+        {chipArray.map((chip, index) => (
+          <ChipComponent key={index} value={chip.value}>
+            {chip.label}
+          </ChipComponent>
+        ))}
+      </ChipGroupComponent>
+    </Box>
+  );
+};
