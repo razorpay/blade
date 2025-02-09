@@ -728,7 +728,7 @@ chipRef.parameters = {
   },
 };
 
-export const MultiChipStory: StoryFn<typeof ChipGroupComponent> = (args) => {
+export const MultiChipStory: StoryFn<typeof ChipGroupComponent> = () => {
   const chipArray = [
     {
       value: '100',
