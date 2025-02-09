@@ -139,6 +139,7 @@ import EditComposeIconComponent from './EditComposeIcon';
 import EditIconComponent from './EditIcon';
 import EditInlineIconComponent from './EditInlineIcon';
 import EducationIconComponent from './EducationIcon';
+import EngageIconComponent from './EngageIcon';
 import EqualsIconComponent from './EqualsIcon';
 import EscrowAccountIconComponent from './EscrowAccountIcon';
 import ExportIconComponent from './ExportIcon';
@@ -339,6 +340,7 @@ import TopLeftSharpCornerIconComponent from './TopLeftSharpCornerIcon';
 import TrademarkIconComponent from './TrademarkIcon';
 import TrademarkRegisteredIconComponent from './TrademarkRegisteredIcon';
 import TransactionsIconComponent from './TransactionsIcon';
+import TranslateIconComponent from './TranslateIcon';
 import TrashIconComponent from './TrashIcon';
 import TrendingDownIconComponent from './TrendingDownIcon';
 import TrendingUpIconComponent from './TrendingUpIcon';
@@ -522,6 +524,7 @@ const iconMap: Record<string, IconComponent> = {
   EditIcon: EditIconComponent,
   EditInlineIcon: EditInlineIconComponent,
   EducationIcon: EducationIconComponent,
+  EngageIcon: EngageIconComponent,
   EqualsIcon: EqualsIconComponent,
   EscrowAccountIcon: EscrowAccountIconComponent,
   ExportIcon: ExportIconComponent,
@@ -722,6 +725,7 @@ const iconMap: Record<string, IconComponent> = {
   TrademarkIcon: TrademarkIconComponent,
   TrademarkRegisteredIcon: TrademarkRegisteredIconComponent,
   TransactionsIcon: TransactionsIconComponent,
+  TranslateIcon: TranslateIconComponent,
   TrashIcon: TrashIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
