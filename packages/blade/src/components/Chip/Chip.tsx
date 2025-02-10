@@ -39,7 +39,7 @@ type OnChange = ({
 }) => void;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, color, testID, _motionMeta, ...rest },
+  { isDisabled, value, children, icon: Icon, color, testID, _motionMeta, width, ...rest },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -201,6 +201,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 }
                 height={makeSize(chipHeightTokens[_size])}
                 gap="spacing.3"
+                width={width}
               >
                 {Icon ? (
                   <BaseBox display="flex">

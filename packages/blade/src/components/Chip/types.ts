@@ -9,7 +9,11 @@ import type {
 } from '~utils/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { MotionMetaProp } from '~components/BaseMotion';
-import type { FlexboxProps, GridProps } from '~components/Box/BaseBox/types/propsTypes';
+import type {
+  BaseBoxProps,
+  FlexboxProps,
+  GridProps,
+} from '~components/Box/BaseBox/types/propsTypes';
 
 type ChipGroupContainerLayoutProps = Omit<
   Partial<PickCSSByPlatform<'display'> & FlexboxProps & GridProps>,
@@ -40,6 +44,10 @@ type ChipCommonProps = {
    * Use `onChange` to update its value
    */
   value?: string;
+  /**
+   * width prop sets the width of the Chip
+   */
+  width?: BaseBoxProps['width'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade &

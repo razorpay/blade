@@ -789,12 +789,12 @@ export const MultiChipStory: StoryFn<typeof ChipGroupComponent> = () => {
         label="Select a gift card with value (custom chipGroupContainerLayout)"
         chipGroupContainerLayout={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, minmax(0,80px))',
+          gridTemplateColumns: 'repeat(3, minmax(0,120px))',
           gap: 'spacing.3',
         }}
       >
         {chipArray.map((chip, index) => (
-          <ChipComponent key={index} value={chip.value}>
+          <ChipComponent key={index} value={chip.value} width="120px">
             {chip.label}
           </ChipComponent>
         ))}
