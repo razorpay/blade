@@ -13,6 +13,7 @@ import { Text } from '~components/Typography';
 import type { BladeElementRef } from '~utils/types';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const _ChipGroup = (
   {
@@ -34,7 +35,6 @@ const _ChipGroup = (
     color = 'primary',
     testID,
     selectionType = 'single',
-    chipGroupContainerLayout = {},
     ...rest
   }: ChipGroupProps,
   ref: React.Ref<BladeElementRef>,
@@ -70,9 +70,24 @@ const _ChipGroup = (
       });
     }
   }
-
-  console.log('chipGroupContainerLayout', chipGroupContainerLayout);
-  console.log('stylesProps', getStyledProps(chipGroupContainerLayout));
+  const isWrapperLayoutControlled =
+    typeof children === 'object' && getComponentId(children) === 'Box';
+  const getChipGroupWrapperStyles = (): Record<string, unknown> => {
+    if (isWrapperLayoutControlled) {
+      return {
+        ...(React.isValidElement(children) ? getLayOutProps(children.props) : {}),
+      };
+    }
+    return {};
+  };
+  const getChipWrapperChildren = (): React.ReactNode => {
+    if (isWrapperLayoutControlled) {
+      if (React.isValidElement(children) && children.props) {
+        return children.props.children;
+      }
+    }
+    return children;
+  };
 
   return (
     <ChipGroupProvider value={contextValue}>
@@ -105,9 +120,9 @@ const _ChipGroup = (
               display="flex"
               flexDirection="row"
               flexWrap="wrap"
-              {...getLayOutProps(chipGroupContainerLayout)}
+              {...(isWrapperLayoutControlled ? getChipGroupWrapperStyles() : {})}
             >
-              {React.Children.map(children, (child, index) => {
+              {React.Children.map(getChipWrapperChildren(), (child, index) => {
                 return (
                   <BaseBox
                     key={index}

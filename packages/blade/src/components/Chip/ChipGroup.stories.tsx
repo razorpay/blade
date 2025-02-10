@@ -787,17 +787,19 @@ export const MultiChipStory: StoryFn<typeof ChipGroupComponent> = () => {
       <ChipGroupComponent
         selectionType="single"
         label="Select a gift card with value (custom chipGroupContainerLayout)"
-        chipGroupContainerLayout={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, minmax(0,120px))',
-          gap: 'spacing.3',
-        }}
       >
-        {chipArray.map((chip, index) => (
-          <ChipComponent key={index} value={chip.value} width="120px">
-            {chip.label}
-          </ChipComponent>
-        ))}
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(3, minmax(0,120px))"
+          gridTemplateRows="repeat(3, minmax(0,30px))"
+          gap="spacing.3"
+        >
+          {chipArray.map((chip, index) => (
+            <ChipComponent key={index} value={chip.value} width="120px">
+              {chip.label}
+            </ChipComponent>
+          ))}
+        </Box>
       </ChipGroupComponent>
     </Box>
   );
