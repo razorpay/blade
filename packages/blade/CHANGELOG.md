@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.12.0
+
+### Minor Changes
+
+- 7e155b6f: feat(blade): add engage and translate icons
+
 ## 12.11.0
 
 ### Minor Changes
