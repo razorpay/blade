@@ -7,6 +7,7 @@ import {
   getChipInputHoverTokens,
   chipHeightTokens,
   chipHorizontalPaddingTokens,
+  chipGroupGapTokens,
 } from './chipTokens';
 import type { ChipProps } from './types';
 import { AnimatedChip } from './AnimatedChip';
@@ -142,6 +143,8 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
 
   return (
     <BaseBox
+      marginBottom={chipGroupGapTokens[_size].bottom}
+      marginRight={chipGroupGapTokens[_size].right}
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}

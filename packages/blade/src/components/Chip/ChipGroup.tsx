@@ -1,9 +1,8 @@
 import React from 'react';
-import { chipGroupGapTokens, chipGroupLabelSizeTokens } from './chipTokens';
+import { chipGroupLabelSizeTokens } from './chipTokens';
 import { ChipGroupProvider } from './ChipGroupContext';
 import { useChipGroup } from './useChipGroup';
 import type { ChipGroupProps } from './types';
-import { getLayOutProps } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
@@ -13,7 +12,6 @@ import { Text } from '~components/Typography';
 import type { BladeElementRef } from '~utils/types';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const _ChipGroup = (
   {
@@ -70,24 +68,6 @@ const _ChipGroup = (
       });
     }
   }
-  const isWrapperLayoutControlled =
-    typeof children === 'object' && getComponentId(children) === 'Box';
-  const getChipGroupWrapperStyles = (): Record<string, unknown> => {
-    if (isWrapperLayoutControlled) {
-      return {
-        ...(React.isValidElement(children) ? getLayOutProps(children.props) : {}),
-      };
-    }
-    return {};
-  };
-  const getChipWrapperChildren = (): React.ReactNode => {
-    if (isWrapperLayoutControlled) {
-      if (React.isValidElement(children) && children.props) {
-        return children.props.children;
-      }
-    }
-    return children;
-  };
 
   return (
     <ChipGroupProvider value={contextValue}>
@@ -116,23 +96,8 @@ const _ChipGroup = (
             <VisuallyHidden>
               <Text>{accessibilityLabel}</Text>
             </VisuallyHidden>
-            <BaseBox
-              display="flex"
-              flexDirection="row"
-              flexWrap="wrap"
-              {...(isWrapperLayoutControlled ? getChipGroupWrapperStyles() : {})}
-            >
-              {React.Children.map(getChipWrapperChildren(), (child, index) => {
-                return (
-                  <BaseBox
-                    key={index}
-                    marginBottom={chipGroupGapTokens[size].bottom}
-                    marginRight={chipGroupGapTokens[size].right}
-                  >
-                    {child}
-                  </BaseBox>
-                );
-              })}
+            <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
+              {React.Children.map(children, (child) => child)}
             </BaseBox>
             <FormHint
               size={chipGroupLabelSizeTokens[size]}
