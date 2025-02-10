@@ -1,5 +1,37 @@
 # @razorpay/blade
 
+## 12.12.0
+
+### Minor Changes
+
+- 7e155b6f: feat(blade): add engage and translate icons
+
+## 12.11.0
+
+### Minor Changes
+
+- d906838f: feat(blade): add Chat Message component
+
+## 12.10.0
+
+### Minor Changes
+
+- 142afcdf: feat(TextArea): expose `onKeydown` on TextArea and allow `numOfLines={1}`
+
+### Patch Changes
+
+- 6cf03ea3: feat: Improve OTPInput field value clear behaviour
+
+## 12.9.1
+
+### Patch Changes
+
+- 5531ef3f: feat: remove overflowY if L1 sidenav is collapsed
+- 5531ef3f: feat: SideNav improvements & fixes for X migration
+
+  1. Removed overflowY if L1 sidenav is collapsed
+  2. Fixed onVisibleLevelChange not getting called when clicking on a nested submenu
+
 ## 12.9.0
 
 ### Minor Changes
