@@ -45,18 +45,15 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c7.c7.c7.c7.c7 {
-  margin-bottom: 8px;
-  margin-right: 8px;
-}
-
-.c8.c8.c8.c8.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-bottom: 8px;
+  margin-right: 8px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -70,12 +67,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   align-items: center;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -103,7 +100,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   border-style: solid;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   background-color: transparent;
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
@@ -141,7 +138,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -149,7 +146,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   border-color: transparent;
 }
 
-.c15.c15.c15.c15.c15:hover {
+.c14.c14.c14.c14.c14:hover {
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -157,7 +154,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   transition-duration: 160ms;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -183,7 +180,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   word-wrap: normal;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -200,7 +197,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   word-wrap: normal;
 }
 
-.c11.c11.c11.c11.c11:focus-visible + div {
+.c10.c10.c10.c10.c10:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -211,7 +208,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover + div {
+.c10.c10.c10.c10.c10:hover + div {
   border-color: hsla(211,20%,52%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -260,7 +257,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -284,61 +281,61 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
@@ -404,159 +401,144 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
         >
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c8"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer;"
             >
-              <label
-                class="c9"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+              <div
+                class="c0"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c9"
                   data-blade-component="base-box"
                 >
-                  <div
+                  <input
+                    aria-checked="false"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
                     class="c10"
+                    role="checkbox"
+                    type="checkbox"
+                    value="apple"
+                  />
+                  <div
+                    class="c11 c12"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c11"
-                      role="checkbox"
-                      type="checkbox"
-                      value="apple"
-                    />
                     <div
-                      class="c12 c13"
+                      class="c13 c14"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c14 c15"
-                        data-blade-component="base-box"
+                      <p
+                        class="c15"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c16"
-                          data-blade-component="text"
-                        >
-                          Apple
-                        </p>
-                      </div>
+                        Apple
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c8"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer;"
             >
-              <label
-                class="c9"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+              <div
+                class="c0"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c9"
                   data-blade-component="base-box"
                 >
-                  <div
+                  <input
+                    aria-checked="false"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
                     class="c10"
+                    role="checkbox"
+                    type="checkbox"
+                    value="mango"
+                  />
+                  <div
+                    class="c11 c12"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c11"
-                      role="checkbox"
-                      type="checkbox"
-                      value="mango"
-                    />
                     <div
-                      class="c12 c13"
+                      class="c13 c14"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c14 c15"
-                        data-blade-component="base-box"
+                      <p
+                        class="c15"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c16"
-                          data-blade-component="text"
-                        >
-                          Mango
-                        </p>
-                      </div>
+                        Mango
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c8"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer;"
             >
-              <label
-                class="c9"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+              <div
+                class="c0"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c9"
                   data-blade-component="base-box"
                 >
-                  <div
+                  <input
+                    aria-checked="false"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
                     class="c10"
+                    role="checkbox"
+                    type="checkbox"
+                    value="orange"
+                  />
+                  <div
+                    class="c11 c12"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c11"
-                      role="checkbox"
-                      type="checkbox"
-                      value="orange"
-                    />
                     <div
-                      class="c12 c13"
+                      class="c13 c14"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c14 c15"
-                        data-blade-component="base-box"
+                      <p
+                        class="c15"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c16"
-                          data-blade-component="text"
-                        >
-                          Orange
-                        </p>
-                      </div>
+                        Orange
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
         </div>
       </div>
@@ -610,18 +592,15 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c7.c7.c7.c7.c7 {
-  margin-bottom: 8px;
-  margin-right: 8px;
-}
-
-.c8.c8.c8.c8.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-bottom: 8px;
+  margin-right: 8px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -635,12 +614,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   align-items: center;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -668,7 +647,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   border-style: solid;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   background-color: transparent;
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
@@ -706,7 +685,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -714,7 +693,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   border-color: transparent;
 }
 
-.c15.c15.c15.c15.c15:hover {
+.c14.c14.c14.c14.c14:hover {
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -722,7 +701,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   transition-duration: 160ms;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -748,7 +727,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   word-wrap: normal;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -765,7 +744,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   word-wrap: normal;
 }
 
-.c11.c11.c11.c11.c11:focus-visible + div {
+.c10.c10.c10.c10.c10:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -776,7 +755,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover + div {
+.c10.c10.c10.c10.c10:hover + div {
   border-color: hsla(211,20%,52%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -825,7 +804,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -849,61 +828,61 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c14.c14.c14.c14.c14 {
+  .c13.c13.c13.c13.c13 {
     border-style: solid;
   }
 }
@@ -969,162 +948,147 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
         >
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c8"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer;"
             >
-              <label
-                class="c9"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+              <div
+                class="c0"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c9"
                   data-blade-component="base-box"
                 >
-                  <div
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-1-helptext-2"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
                     class="c10"
+                    role="radio"
+                    type="radio"
+                    value="apple"
+                  />
+                  <div
+                    class="c11 c12"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-1-helptext-2"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c11"
-                      role="radio"
-                      type="radio"
-                      value="apple"
-                    />
                     <div
-                      class="c12 c13"
+                      class="c13 c14"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c14 c15"
-                        data-blade-component="base-box"
+                      <p
+                        class="c15"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c16"
-                          data-blade-component="text"
-                        >
-                          Apple
-                        </p>
-                      </div>
+                        Apple
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c8"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer;"
             >
-              <label
-                class="c9"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+              <div
+                class="c0"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c9"
                   data-blade-component="base-box"
                 >
-                  <div
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-3-helptext-4"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
                     class="c10"
+                    role="radio"
+                    type="radio"
+                    value="mango"
+                  />
+                  <div
+                    class="c11 c12"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-3-helptext-4"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c11"
-                      role="radio"
-                      type="radio"
-                      value="mango"
-                    />
                     <div
-                      class="c12 c13"
+                      class="c13 c14"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c14 c15"
-                        data-blade-component="base-box"
+                      <p
+                        class="c15"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c16"
-                          data-blade-component="text"
-                        >
-                          Mango
-                        </p>
-                      </div>
+                        Mango
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c8"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer;"
             >
-              <label
-                class="c9"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+              <div
+                class="c0"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c9"
                   data-blade-component="base-box"
                 >
-                  <div
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-5-helptext-6"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
                     class="c10"
+                    role="radio"
+                    type="radio"
+                    value="orange"
+                  />
+                  <div
+                    class="c11 c12"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-5-helptext-6"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c11"
-                      role="radio"
-                      type="radio"
-                      value="orange"
-                    />
                     <div
-                      class="c12 c13"
+                      class="c13 c14"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c14 c15"
-                        data-blade-component="base-box"
+                      <p
+                        class="c15"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c16"
-                          data-blade-component="text"
-                        >
-                          Orange
-                        </p>
-                      </div>
+                        Orange
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
         </div>
       </div>

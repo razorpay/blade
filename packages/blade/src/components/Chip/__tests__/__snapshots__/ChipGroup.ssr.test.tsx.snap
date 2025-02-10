@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChipGroup /> should render with selectionType="single" 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuMdod"><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Apple</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Mango</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="orange"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Orange</p></div></div></div></div></label></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="group" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Select flowers</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuMdod"><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="Rose"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Rose</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="Sunflower"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Sunflower</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="Lily"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Lily</p></div></div></div></div></label></div></div></div></div></div></div></div></div>"`;
+exports[`<ChipGroup /> should render with selectionType="single" 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuMdod"><div data-blade-component="chip" class="BaseBox-bmPWx ewkvtd"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Apple</p></div></div></div></div></label></div><div data-blade-component="chip" class="BaseBox-bmPWx ewkvtd"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Mango</p></div></div></div></div></label></div><div data-blade-component="chip" class="BaseBox-bmPWx ewkvtd"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="orange"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Orange</p></div></div></div></div></label></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="group" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Select flowers</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuMdod"><div data-blade-component="chip" class="BaseBox-bmPWx ewkvtd"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="Rose"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Rose</p></div></div></div></div></label></div><div data-blade-component="chip" class="BaseBox-bmPWx ewkvtd"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="Sunflower"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Sunflower</p></div></div></div></div></label></div><div data-blade-component="chip" class="BaseBox-bmPWx ewkvtd"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ghSKMk" value="Lily"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD bcnShb"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 iYczQJ cpbSXx"><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Lily</p></div></div></div></div></label></div></div></div></div></div></div></div>"`;
 
 exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -27,18 +27,15 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  margin-bottom: 8px;
-  margin-right: 8px;
-}
-
-.c5.c5.c5.c5.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-bottom: 8px;
+  margin-right: 8px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,12 +49,12 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   align-items: center;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,7 +82,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   border-style: solid;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   background-color: transparent;
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
@@ -123,7 +120,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -131,7 +128,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   border-color: transparent;
 }
 
-.c12.c12.c12.c12.c12:hover {
+.c11.c11.c11.c11.c11:hover {
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -139,7 +136,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   transition-duration: 160ms;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -165,7 +162,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   word-wrap: normal;
 }
 
-.c8.c8.c8.c8.c8 {
+.c7.c7.c7.c7.c7 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -182,7 +179,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   word-wrap: normal;
 }
 
-.c8.c8.c8.c8.c8:focus-visible + div {
+.c7.c7.c7.c7.c7:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -193,7 +190,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:hover + div {
+.c7.c7.c7.c7.c7:hover + div {
   border-color: hsla(211,20%,52%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -219,7 +216,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -243,61 +240,61 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c9.c9.c9.c9.c9 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c11.c11.c11.c11.c11 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11.c11.c11.c11.c11 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c11.c11.c11.c11.c11 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c11.c11.c11.c11.c11 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c11.c11.c11.c11.c11 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
@@ -340,162 +337,147 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
           >
             <div
               class="c4"
-              data-blade-component="base-box"
+              data-blade-component="chip"
             >
-              <div
+              <label
                 class="c5"
-                data-blade-component="chip"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
               >
-                <label
-                  class="c6"
-                  data-blade-component="chip-label"
-                  style="cursor:pointer"
+                <div
+                  class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
-                    class="c0"
+                    class="c6"
                     data-blade-component="base-box"
                   >
-                    <div
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-1-helptext-2"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
                       class="c7"
+                      role="radio"
+                      type="radio"
+                      value="apple"
+                    />
+                    <div
+                      class="c8 c9"
                       data-blade-component="base-box"
                     >
-                      <input
-                        aria-checked="false"
-                        aria-describedby="radio-1-helptext-2"
-                        aria-disabled="false"
-                        aria-invalid="false"
-                        aria-required="false"
-                        class="c8"
-                        role="radio"
-                        type="radio"
-                        value="apple"
-                      />
                       <div
-                        class="c9 c10"
+                        class="c10 c11"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c11 c12"
-                          data-blade-component="base-box"
+                        <p
+                          class="c12"
+                          data-blade-component="text"
                         >
-                          <p
-                            class="c13"
-                            data-blade-component="text"
-                          >
-                            Apple
-                          </p>
-                        </div>
+                          Apple
+                        </p>
                       </div>
                     </div>
                   </div>
-                </label>
-              </div>
+                </div>
+              </label>
             </div>
             <div
               class="c4"
-              data-blade-component="base-box"
+              data-blade-component="chip"
             >
-              <div
+              <label
                 class="c5"
-                data-blade-component="chip"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
               >
-                <label
-                  class="c6"
-                  data-blade-component="chip-label"
-                  style="cursor:pointer"
+                <div
+                  class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
-                    class="c0"
+                    class="c6"
                     data-blade-component="base-box"
                   >
-                    <div
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-3-helptext-4"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
                       class="c7"
+                      role="radio"
+                      type="radio"
+                      value="mango"
+                    />
+                    <div
+                      class="c8 c9"
                       data-blade-component="base-box"
                     >
-                      <input
-                        aria-checked="false"
-                        aria-describedby="radio-3-helptext-4"
-                        aria-disabled="false"
-                        aria-invalid="false"
-                        aria-required="false"
-                        class="c8"
-                        role="radio"
-                        type="radio"
-                        value="mango"
-                      />
                       <div
-                        class="c9 c10"
+                        class="c10 c11"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c11 c12"
-                          data-blade-component="base-box"
+                        <p
+                          class="c12"
+                          data-blade-component="text"
                         >
-                          <p
-                            class="c13"
-                            data-blade-component="text"
-                          >
-                            Mango
-                          </p>
-                        </div>
+                          Mango
+                        </p>
                       </div>
                     </div>
                   </div>
-                </label>
-              </div>
+                </div>
+              </label>
             </div>
             <div
               class="c4"
-              data-blade-component="base-box"
+              data-blade-component="chip"
             >
-              <div
+              <label
                 class="c5"
-                data-blade-component="chip"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
               >
-                <label
-                  class="c6"
-                  data-blade-component="chip-label"
-                  style="cursor:pointer"
+                <div
+                  class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
-                    class="c0"
+                    class="c6"
                     data-blade-component="base-box"
                   >
-                    <div
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-5-helptext-6"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
                       class="c7"
+                      role="radio"
+                      type="radio"
+                      value="orange"
+                    />
+                    <div
+                      class="c8 c9"
                       data-blade-component="base-box"
                     >
-                      <input
-                        aria-checked="false"
-                        aria-describedby="radio-5-helptext-6"
-                        aria-disabled="false"
-                        aria-invalid="false"
-                        aria-required="false"
-                        class="c8"
-                        role="radio"
-                        type="radio"
-                        value="orange"
-                      />
                       <div
-                        class="c9 c10"
+                        class="c10 c11"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c11 c12"
-                          data-blade-component="base-box"
+                        <p
+                          class="c12"
+                          data-blade-component="text"
                         >
-                          <p
-                            class="c13"
-                            data-blade-component="text"
-                          >
-                            Orange
-                          </p>
-                        </div>
+                          Orange
+                        </p>
                       </div>
                     </div>
                   </div>
-                </label>
-              </div>
+                </div>
+              </label>
             </div>
           </div>
         </div>
@@ -532,159 +514,144 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
           >
             <div
               class="c4"
-              data-blade-component="base-box"
+              data-blade-component="chip"
             >
-              <div
+              <label
                 class="c5"
-                data-blade-component="chip"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
               >
-                <label
-                  class="c6"
-                  data-blade-component="chip-label"
-                  style="cursor:pointer"
+                <div
+                  class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
-                    class="c0"
+                    class="c6"
                     data-blade-component="base-box"
                   >
-                    <div
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
                       class="c7"
+                      role="checkbox"
+                      type="checkbox"
+                      value="Rose"
+                    />
+                    <div
+                      class="c8 c9"
                       data-blade-component="base-box"
                     >
-                      <input
-                        aria-checked="false"
-                        aria-disabled="false"
-                        aria-invalid="false"
-                        aria-required="false"
-                        class="c8"
-                        role="checkbox"
-                        type="checkbox"
-                        value="Rose"
-                      />
                       <div
-                        class="c9 c10"
+                        class="c10 c11"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c11 c12"
-                          data-blade-component="base-box"
+                        <p
+                          class="c12"
+                          data-blade-component="text"
                         >
-                          <p
-                            class="c13"
-                            data-blade-component="text"
-                          >
-                            Rose
-                          </p>
-                        </div>
+                          Rose
+                        </p>
                       </div>
                     </div>
                   </div>
-                </label>
-              </div>
+                </div>
+              </label>
             </div>
             <div
               class="c4"
-              data-blade-component="base-box"
+              data-blade-component="chip"
             >
-              <div
+              <label
                 class="c5"
-                data-blade-component="chip"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
               >
-                <label
-                  class="c6"
-                  data-blade-component="chip-label"
-                  style="cursor:pointer"
+                <div
+                  class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
-                    class="c0"
+                    class="c6"
                     data-blade-component="base-box"
                   >
-                    <div
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
                       class="c7"
+                      role="checkbox"
+                      type="checkbox"
+                      value="Sunflower"
+                    />
+                    <div
+                      class="c8 c9"
                       data-blade-component="base-box"
                     >
-                      <input
-                        aria-checked="false"
-                        aria-disabled="false"
-                        aria-invalid="false"
-                        aria-required="false"
-                        class="c8"
-                        role="checkbox"
-                        type="checkbox"
-                        value="Sunflower"
-                      />
                       <div
-                        class="c9 c10"
+                        class="c10 c11"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c11 c12"
-                          data-blade-component="base-box"
+                        <p
+                          class="c12"
+                          data-blade-component="text"
                         >
-                          <p
-                            class="c13"
-                            data-blade-component="text"
-                          >
-                            Sunflower
-                          </p>
-                        </div>
+                          Sunflower
+                        </p>
                       </div>
                     </div>
                   </div>
-                </label>
-              </div>
+                </div>
+              </label>
             </div>
             <div
               class="c4"
-              data-blade-component="base-box"
+              data-blade-component="chip"
             >
-              <div
+              <label
                 class="c5"
-                data-blade-component="chip"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
               >
-                <label
-                  class="c6"
-                  data-blade-component="chip-label"
-                  style="cursor:pointer"
+                <div
+                  class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
-                    class="c0"
+                    class="c6"
                     data-blade-component="base-box"
                   >
-                    <div
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
                       class="c7"
+                      role="checkbox"
+                      type="checkbox"
+                      value="Lily"
+                    />
+                    <div
+                      class="c8 c9"
                       data-blade-component="base-box"
                     >
-                      <input
-                        aria-checked="false"
-                        aria-disabled="false"
-                        aria-invalid="false"
-                        aria-required="false"
-                        class="c8"
-                        role="checkbox"
-                        type="checkbox"
-                        value="Lily"
-                      />
                       <div
-                        class="c9 c10"
+                        class="c10 c11"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c11 c12"
-                          data-blade-component="base-box"
+                        <p
+                          class="c12"
+                          data-blade-component="text"
                         >
-                          <p
-                            class="c13"
-                            data-blade-component="text"
-                          >
-                            Lily
-                          </p>
-                        </div>
+                          Lily
+                        </p>
                       </div>
                     </div>
                   </div>
-                </label>
-              </div>
+                </div>
+              </label>
             </div>
           </div>
         </div>
