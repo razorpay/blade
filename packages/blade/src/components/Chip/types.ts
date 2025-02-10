@@ -156,13 +156,6 @@ type ChipGroupCommonProps = {
    * @default "primary"
    */
   color?: 'primary' | 'positive' | 'negative';
-  /**
-   * Layout properties for the ChipGroup container
-   * currently supports `display`, flex and grid properties
-   * @default { display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }
-   *
-   */
-  chipGroupContainerLayout?: ChipGroupContainerLayoutProps;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
