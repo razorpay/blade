@@ -1,24 +1,10 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import type {
-  DataAnalyticsAttribute,
-  PickCSSByPlatform,
-  StringChildrenType,
-  TestID,
-} from '~utils/types';
+import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { MotionMetaProp } from '~components/BaseMotion';
-import type {
-  BaseBoxProps,
-  FlexboxProps,
-  GridProps,
-} from '~components/Box/BaseBox/types/propsTypes';
-
-type ChipGroupContainerLayoutProps = Omit<
-  Partial<PickCSSByPlatform<'display'> & FlexboxProps & GridProps>,
-  '__brand__'
->;
+import type { BaseBoxProps } from '~components/Box/BaseBox/types/propsTypes';
 
 type ChipCommonProps = {
   /**
