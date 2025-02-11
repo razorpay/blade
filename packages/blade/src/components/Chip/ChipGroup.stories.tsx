@@ -795,7 +795,7 @@ export const MultiChipStory: StoryFn<typeof ChipGroupComponent> = () => {
           gap="spacing.3"
         >
           {chipArray.map((chip, index) => (
-            <ChipComponent key={index} value={chip.value} width="120px">
+            <ChipComponent key={index} value={chip.value}>
               {chip.label}
             </ChipComponent>
           ))}

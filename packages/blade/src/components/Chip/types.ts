@@ -37,11 +37,11 @@ type ChipCommonProps = {
   /**
    * maxWidth prop sets the maxWidth of the Chip
    */
-  maxWidth: BaseBoxProps['maxWidth'];
+  maxWidth?: BaseBoxProps['maxWidth'];
   /**
    * min prop sets the minWidth of the Chip
    */
-  minWidth: BaseBoxProps['minWidth'];
+  minWidth?: BaseBoxProps['minWidth'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade &
