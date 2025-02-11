@@ -105,16 +105,21 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
           </Text>
         </View>
         <View
+          columnGap="spacing.3"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
+          rowGap="spacing.3"
           style={
             [
               {
+                "columnGap": 8,
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "marginBottom": 8,
+                "rowGap": 8,
               },
             ]
           }
@@ -126,8 +131,6 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -325,8 +328,6 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -629,16 +630,21 @@ exports[`<Chip /> should render chip 1`] = `
           </Text>
         </View>
         <View
+          columnGap="spacing.3"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
+          rowGap="spacing.3"
           style={
             [
               {
+                "columnGap": 8,
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "marginBottom": 8,
+                "rowGap": 8,
               },
             ]
           }
@@ -650,8 +656,6 @@ exports[`<Chip /> should render chip 1`] = `
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -849,8 +853,6 @@ exports[`<Chip /> should render chip 1`] = `
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -1153,16 +1155,21 @@ exports[`<Chip /> should render chip with icon 1`] = `
           </Text>
         </View>
         <View
+          columnGap="spacing.3"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
+          rowGap="spacing.3"
           style={
             [
               {
+                "columnGap": 8,
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "marginBottom": 8,
+                "rowGap": 8,
               },
             ]
           }
@@ -1174,8 +1181,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -1473,8 +1478,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -1877,16 +1880,21 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
           </Text>
         </View>
         <View
+          columnGap="spacing.3"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
+          rowGap="spacing.3"
           style={
             [
               {
+                "columnGap": 8,
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "marginBottom": 8,
+                "rowGap": 8,
               },
             ]
           }
@@ -1898,8 +1906,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -2097,8 +2103,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }

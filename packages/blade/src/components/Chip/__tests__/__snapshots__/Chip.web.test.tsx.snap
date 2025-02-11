@@ -22,6 +22,10 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -29,8 +33,6 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-bottom: 8px;
-  margin-right: 8px;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -455,6 +457,10 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -462,8 +468,6 @@ exports[`<Chip /> should render chip 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-bottom: 8px;
-  margin-right: 8px;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -885,6 +889,10 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -892,8 +900,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-bottom: 8px;
-  margin-right: 8px;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1386,6 +1392,10 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1393,8 +1403,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-bottom: 8px;
-  margin-right: 8px;
 }
 
 .c6.c6.c6.c6.c6 {

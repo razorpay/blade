@@ -231,16 +231,21 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
           />
         </View>
         <View
+          columnGap="spacing.3"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
+          rowGap="spacing.3"
           style={
             [
               {
+                "columnGap": 8,
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "marginBottom": 8,
+                "rowGap": 8,
               },
             ]
           }
@@ -252,8 +257,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -450,8 +453,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -648,8 +649,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -1078,16 +1077,21 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
           />
         </View>
         <View
+          columnGap="spacing.3"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
+          rowGap="spacing.3"
           style={
             [
               {
+                "columnGap": 8,
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "marginBottom": 8,
+                "rowGap": 8,
               },
             ]
           }
@@ -1099,8 +1103,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -1298,8 +1300,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }
@@ -1497,8 +1497,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               [
                 {
                   "display": "flex",
-                  "marginBottom": 8,
-                  "marginRight": 8,
                 },
               ]
             }

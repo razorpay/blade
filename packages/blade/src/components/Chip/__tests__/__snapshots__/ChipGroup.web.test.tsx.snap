@@ -42,6 +42,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -49,8 +53,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-bottom: 8px;
-  margin-right: 8px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -589,6 +591,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -596,8 +602,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-bottom: 8px;
-  margin-right: 8px;
 }
 
 .c9.c9.c9.c9.c9 {
