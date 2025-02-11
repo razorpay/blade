@@ -104,7 +104,7 @@ const _ChipGroup = (
               columnGap={chipGroupGapTokens[size].right}
               marginBottom={chipGroupGapTokens[size].bottom}
             >
-              {React.Children.map(children, (child) => child)}
+              {children}
             </BaseBox>
             <FormHint
               size={chipGroupLabelSizeTokens[size]}
