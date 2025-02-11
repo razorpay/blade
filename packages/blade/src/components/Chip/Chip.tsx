@@ -159,9 +159,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       {...makeAnalyticsAttribute(rest)}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       ref={getOuterMotionRef({ _motionMeta, ref })}
-      width={width}
-      maxWidth={maxWidth}
-      minWidth={minWidth}
     >
       <SelectorLabel
         componentName={MetaConstants.ChipLabel}
@@ -187,14 +184,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
           maxWidth={maxWidth}
           minWidth={minWidth}
         >
-          <BaseBox
-            display="flex"
-            alignItems="center"
-            flexDirection="row"
-            width={width}
-            maxWidth={maxWidth}
-            minWidth={minWidth}
-          >
+          <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
               hoverTokens={getChipInputHoverTokens(chipColor)}
               isChecked={state.isChecked}
