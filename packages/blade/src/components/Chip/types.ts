@@ -251,5 +251,4 @@ export type {
   StyledChipWrapperProps,
   ChipBorderColors,
   ChipBackgroundColors,
-  ChipGroupContainerLayoutProps,
 };
