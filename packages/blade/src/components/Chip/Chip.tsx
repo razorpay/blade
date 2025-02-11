@@ -159,6 +159,9 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       {...makeAnalyticsAttribute(rest)}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       ref={getOuterMotionRef({ _motionMeta, ref })}
+      width={width}
+      maxWidth={maxWidth}
+      minWidth={minWidth}
     >
       <SelectorLabel
         componentName={MetaConstants.ChipLabel}
@@ -170,10 +173,28 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         onKeyDown={handleKeyboardPressedIn}
         onKeyUp={handleKeyboardPressedOut}
         inputProps={isReactNative() ? inputProps : {}}
-        style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
+        style={{
+          cursor: _isDisabled ? 'not-allowed' : 'pointer',
+          width: width as string | number,
+          maxWidth: maxWidth as string | number,
+          minWidth: minWidth as string | number,
+        }}
       >
-        <BaseBox display="flex" flexDirection="column">
-          <BaseBox display="flex" alignItems="center" flexDirection="row">
+        <BaseBox
+          display="flex"
+          flexDirection="column"
+          width={width}
+          maxWidth={maxWidth}
+          minWidth={minWidth}
+        >
+          <BaseBox
+            display="flex"
+            alignItems="center"
+            flexDirection="row"
+            width={width}
+            maxWidth={maxWidth}
+            minWidth={minWidth}
+          >
             <SelectorInput
               hoverTokens={getChipInputHoverTokens(chipColor)}
               isChecked={state.isChecked}
@@ -187,6 +208,9 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isDisabled={_isDisabled}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
+              width={width}
+              maxWidth={maxWidth}
+              minWidth={minWidth}
             >
               <StyledChipWrapper
                 borderColor={chipBorderColor}

@@ -14,7 +14,9 @@ const AnimatedChip = styled(BaseBox)<AnimatedChipProps>((props) => {
   );
   return {
     ...getAnimatedChipStyles(props),
-    width: 'fit-content',
+    width: props?.width ? (props.width as string | number) : 'fit-content',
+    maxWidth: props?.maxWidth as string | number,
+    minWidth: props?.minWidth as string | number,
     transform: `scale(${props.isPressed ? '0.92' : '1'})`,
     transitionDuration: duration,
     transitionTimingFunction: easing,

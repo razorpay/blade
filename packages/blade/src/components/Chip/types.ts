@@ -239,6 +239,9 @@ type AnimatedChipProps = {
   isDesktop?: boolean;
   theme: Theme;
   children: React.ReactNode;
+  width?: BaseBoxProps['width'];
+  maxWidth?: BaseBoxProps['maxWidth'];
+  minWidth?: BaseBoxProps['minWidth'];
 };
 
 type StyledChipWrapperProps = {
