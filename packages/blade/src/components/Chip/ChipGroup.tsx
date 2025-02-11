@@ -1,5 +1,5 @@
 import React from 'react';
-import { chipGroupLabelSizeTokens } from './chipTokens';
+import { chipGroupLabelSizeTokens, chipGroupGapTokens } from './chipTokens';
 import { ChipGroupProvider } from './ChipGroupContext';
 import { useChipGroup } from './useChipGroup';
 import type { ChipGroupProps } from './types';
@@ -96,7 +96,14 @@ const _ChipGroup = (
             <VisuallyHidden>
               <Text>{accessibilityLabel}</Text>
             </VisuallyHidden>
-            <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
+            <BaseBox
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              rowGap={chipGroupGapTokens[size].bottom}
+              columnGap={chipGroupGapTokens[size].right}
+              marginBottom={chipGroupGapTokens[size].bottom}
+            >
               {React.Children.map(children, (child) => child)}
             </BaseBox>
             <FormHint
