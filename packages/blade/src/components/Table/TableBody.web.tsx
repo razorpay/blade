@@ -388,7 +388,7 @@ const _Virtulized = <Item,>({
   children,
 }: VirtualizedWrapperProps<Item>): React.ReactElement => {
   const [parsedHeader = null, parsedBody = null] = React.Children.toArray(children);
-  const { rowDensity, tableData } = useTableContext();
+  const { rowDensity, tableData } = useTableContext<Item>();
   const _tableRow = Number(tableRow.minHeight[rowDensity]);
 
   const _rowHeight = (item: TableNode<Item>, index: number): number => {

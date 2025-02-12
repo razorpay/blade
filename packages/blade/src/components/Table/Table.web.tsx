@@ -393,7 +393,7 @@ const _Table = <Item,>({
     },
   );
 
-  const currentSortedState: TableContextType['currentSortedState'] = useMemo(() => {
+  const currentSortedState: TableContextType<Item>['currentSortedState'] = useMemo(() => {
     return {
       sortKey: sort.state.sortKey,
       isSortReversed: sort.state.reverse,
@@ -461,7 +461,7 @@ const _Table = <Item,>({
   }
 
   // Table Context
-  const tableContext: TableContextType = useMemo(
+  const tableContext: TableContextType<Item> = useMemo(
     () => ({
       selectionType,
       selectedRows,
