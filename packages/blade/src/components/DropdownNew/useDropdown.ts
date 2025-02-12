@@ -35,6 +35,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setHasFocusInside: () => {},
   isOpen: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  select: () => {},
+  selectedIndices: [],
 });
 
 const useDropdown = (): DropdownContextType => {

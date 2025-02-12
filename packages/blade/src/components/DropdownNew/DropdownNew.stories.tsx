@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react';
 import { ActionList, ActionListItem } from './ActionList/ActionList';
 import { Dropdown, DropdownOverlay } from './index';
 
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { SelectInput } from './SelectInput/SelectInput';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { TextInput } from '~components/Input/TextInput';
@@ -27,23 +27,15 @@ const DropdownStoryMeta: Meta = {
 
 export const InternalSelect = (): React.ReactElement => {
   return (
-    <Box
-      padding="spacing.5"
-      backgroundColor="surface.background.gray.moderate"
-      width="100%"
-      minHeight="100px"
-      overflow="scroll"
-    >
-      <Dropdown selectionType="multiple">
-        <SelectInput label="Search" />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Apples" value="Apples" />
-            <ActionListItem title="Appricots" value="Appricots" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-    </Box>
+    <Dropdown>
+      <SelectInput label="Search" />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Apples" value="Apples" />
+          <ActionListItem title="Appricots" value="Appricots" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
   );
 };
 

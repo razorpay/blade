@@ -166,6 +166,8 @@ type DropdownContextType = {
   getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>;
   setHasFocusInside: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
+  selectedIndices: number[];
+  select: (index: number) => void;
 };
 
 type UseFloatingDropdownProps = Pick<

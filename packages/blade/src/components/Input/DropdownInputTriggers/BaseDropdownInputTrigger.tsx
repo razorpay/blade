@@ -3,14 +3,14 @@ import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
 import type { BaseDropdownInputTriggerProps, useControlledDropdownInputProps } from './types';
-import isEmpty from '~utils/lodashButBetter/isEmpty';
+// import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { isReactNative, isBrowser } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import type { BladeElementRef } from '~utils/types';
-import { useFirstRender } from '~utils/useFirstRender';
+// import { useFirstRender } from '~utils/useFirstRender';
 import { useTableContext } from '~components/Table/TableContext';
 import {
   rowDensityToIsTableInputCellMapping,
@@ -19,102 +19,103 @@ import {
 } from '~components/Table/tokens';
 import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { fireNativeEvent } from '~utils/fireNativeEvent';
+// import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { useSelection } from '~components/DropdownNew/useDropdown';
 
-const useControlledDropdownInput = (props: useControlledDropdownInputProps): void => {
-  const isFirstRender = useFirstRender();
-  const {
-    changeCallbackTriggerer,
-    isControlled,
-    options,
-    selectedIndices,
-    controlledValueIndices,
-    setSelectedIndices,
-    selectionType,
-    setIsControlled,
-  } = useDropdown();
+// const useControlledDropdownInput = (props: useControlledDropdownInputProps): void => {
+//   // const isFirstRender = useFirstRender();
+//   const {
+//     // changeCallbackTriggerer,
+//     isControlled,
+//     options,
+//     selectedIndices,
+//     controlledValueIndices,
+//     // setSelectedIndices,
+//     // selectionType,
+//     // setIsControlled,
+//   } = useDropdown();
 
-  const getValuesArrayFromIndices = (): string[] => {
-    let indices: number[] = [];
-    if (isControlled) {
-      indices = controlledValueIndices;
-    } else {
-      indices = selectedIndices;
-    }
+//   const getValuesArrayFromIndices = (): string[] => {
+//     let indices: number[] = [];
+//     if (isControlled) {
+//       indices = controlledValueIndices;
+//     } else {
+//       indices = selectedIndices;
+//     }
 
-    return indices.map((selectionIndex) => options[selectionIndex].value);
-  };
+//     return indices.map((selectionIndex) => options[selectionIndex].value);
+//   };
 
-  const selectValues = (valuesToSelect: string | string[]): void => {
-    if (options.length > 0) {
-      // we use empty `''` for clearing the input
-      if (isEmpty(valuesToSelect)) {
-        setSelectedIndices([]);
-      } else if (typeof valuesToSelect === 'string') {
-        // single select control
-        const selectedItemIndex = options.findIndex((option) => option.value === valuesToSelect);
-        if (selectedItemIndex >= 0) {
-          setSelectedIndices([selectedItemIndex]);
-        }
-      } else {
-        // multiselect control
+//   // const selectValues = (valuesToSelect: string | string[]): void => {
+//   //   if (options.length > 0) {
+//   //     // we use empty `''` for clearing the input
+//   //     if (isEmpty(valuesToSelect)) {
+//   //       setSelectedIndices([]);
+//   //     } else if (typeof valuesToSelect === 'string') {
+//   //       // single select control
+//   //       const selectedItemIndex = options.findIndex((option) => option.value === valuesToSelect);
+//   //       if (selectedItemIndex >= 0) {
+//   //         setSelectedIndices([selectedItemIndex]);
+//   //       }
+//   //     } else {
+//   //       // multiselect control
 
-        // Handles repeated values in user state
-        const uniqueValues = Array.from(new Set(valuesToSelect));
-        // Handle selectionType single with multiselect values
-        const userValues = selectionType === 'single' ? [valuesToSelect?.[0]] : uniqueValues;
+//   //       // Handles repeated values in user state
+//   //       const uniqueValues = Array.from(new Set(valuesToSelect));
+//   //       // Handle selectionType single with multiselect values
+//   //       const userValues = selectionType === 'single' ? [valuesToSelect?.[0]] : uniqueValues;
 
-        const selectedItemIndices = userValues
-          .map((optionValue) => options.findIndex((option) => option.value === optionValue))
-          .filter((value) => value >= 0);
+//   //       const selectedItemIndices = userValues
+//   //         .map((optionValue) => options.findIndex((option) => option.value === optionValue))
+//   //         .filter((value) => value >= 0);
 
-        setSelectedIndices(selectedItemIndices);
-      }
-    }
-  };
+//   //       setSelectedIndices(selectedItemIndices);
+//   //     }
+//   //   }
+//   // };
 
-  // Handles `defaultValue` prop
-  React.useEffect(() => {
-    if (options.length > 0 && props.defaultValue) {
-      selectValues(props.defaultValue);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options.length]);
+//   // // Handles `defaultValue` prop
+//   // React.useEffect(() => {
+//   //   if (options.length > 0 && props.defaultValue) {
+//   //     selectValues(props.defaultValue);
+//   //   }
+//   //   // eslint-disable-next-line react-hooks/exhaustive-deps
+//   // }, [options.length]);
 
-  // Handles `value` prop
-  React.useEffect(() => {
-    if (options.length > 0 && props.value !== undefined) {
-      if (!isControlled) {
-        setIsControlled(true);
-      }
+//   // // Handles `value` prop
+//   // React.useEffect(() => {
+//   //   if (options.length > 0 && props.value !== undefined) {
+//   //     if (!isControlled) {
+//   //       setIsControlled(true);
+//   //     }
 
-      selectValues(props.value);
+//   //     selectValues(props.value);
 
-      // in single select AutoComplete, we have to set inputValue of autocomplete according to the new selection.
-      if (selectionType === 'single' && !Array.isArray(props.value) && !props.isSelectInput) {
-        props.syncInputValueWithSelection?.(props.value);
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.value, options]);
+//   //     // in single select AutoComplete, we have to set inputValue of autocomplete according to the new selection.
+//   //     if (selectionType === 'single' && !Array.isArray(props.value) && !props.isSelectInput) {
+//   //       props.syncInputValueWithSelection?.(props.value);
+//   //     }
+//   //   }
+//   //   // eslint-disable-next-line react-hooks/exhaustive-deps
+//   // }, [props.value, options]);
 
-  // onChange behaviour
-  React.useEffect(() => {
-    // Ignore calling onChange on mount
+//   // onChange behaviour
+// //   React.useEffect(() => {
+// //     // Ignore calling onChange on mount
 
-    if (!isFirstRender) {
-      props.onChange?.({
-        name: props.name,
-        values: getValuesArrayFromIndices(),
-      });
-      if (isBrowser()) {
-        fireNativeEvent(props.triggererRef, ['change', 'input']);
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changeCallbackTriggerer]);
-};
+// //     if (!isFirstRender) {
+// //       props.onChange?.({
+// //         name: props.name,
+// //         values: getValuesArrayFromIndices(),
+// //       });
+// //       if (isBrowser()) {
+// //         fireNativeEvent(props.triggererRef, ['change', 'input']);
+// //       }
+// //     }
+// //     // eslint-disable-next-line react-hooks/exhaustive-deps
+// //   }, [changeCallbackTriggerer]);
+// };
 
 const _BaseDropdownInputTrigger = (
   props: BaseDropdownInputTriggerProps,
@@ -128,7 +129,6 @@ const _BaseDropdownInputTrigger = (
     selectionType,
     dropdownTriggerer,
     dropdownBaseId,
-    selectedIndices,
     triggererRef,
     triggererWrapperRef,
     isTagDismissedRef,
@@ -143,7 +143,9 @@ const _BaseDropdownInputTrigger = (
     setChangeCallbackTriggerer,
     changeCallbackTriggerer,
   } = useDropdown();
-  const { rowDensity } = useTableContext();
+
+  const { selectedIndices } = useSelection();
+  // const { rowDensity } = useTableContext();
   const { isInsideTableEditableCell } = useTableEditableCell();
   const {
     onClick: onFloatingClick,
@@ -172,15 +174,15 @@ const _BaseDropdownInputTrigger = (
     return isOpen;
   }, [isAutoCompleteInHeader, props.isSelectInput, isOpen]);
 
-  useControlledDropdownInput({
-    onChange: props.onChange,
-    name: props.name,
-    value: props.value,
-    defaultValue: props.defaultValue,
-    syncInputValueWithSelection: props.syncInputValueWithSelection,
-    isSelectInput: props.isSelectInput,
-    triggererRef,
-  });
+  // useControlledDropdownInput({
+  //   onChange: props.onChange,
+  //   name: props.name,
+  //   value: props.value,
+  //   defaultValue: props.defaultValue,
+  //   syncInputValueWithSelection: props.syncInputValueWithSelection,
+  //   isSelectInput: props.isSelectInput,
+  //   triggererRef,
+  // });
 
   const getValue = (): string | undefined => {
     let prefix = '';
@@ -230,13 +232,13 @@ const _BaseDropdownInputTrigger = (
     [selectedIndices, selectionType, activeTagIndex, changeCallbackTriggerer, options],
   );
 
-  const tableInputProps: Partial<BaseInputProps> = {
-    isTableInputCell: rowDensityToIsTableInputCellMapping[rowDensity],
-    id: 'table-editable-cell-input',
-    size: tableEditableCellRowDensityToInputSizeMap[rowDensity],
-    trailingIcon: validationStateToInputTrailingIconMap[props.validationState ?? 'none'],
-    showHintsAsTooltip: true,
-  };
+  // const tableInputProps: Partial<BaseInputProps> = {
+  //   isTableInputCell: rowDensityToIsTableInputCellMapping[rowDensity],
+  //   id: 'table-editable-cell-input',
+  //   size: tableEditableCellRowDensityToInputSizeMap[rowDensity],
+  //   trailingIcon: validationStateToInputTrailingIconMap[props.validationState ?? 'none'],
+  //   showHintsAsTooltip: true,
+  // };
 
   const isValidationStateNone =
     props.validationState === 'none' || props.validationState === undefined;
@@ -247,7 +249,7 @@ const _BaseDropdownInputTrigger = (
       : // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (node: any) => {
           triggererRef.current = node;
-          const elementRef = ref ?? floatingRef;
+          const elementRef = ref;
           if (elementRef) {
             if (typeof elementRef === 'function') {
               elementRef(node);
@@ -257,6 +259,8 @@ const _BaseDropdownInputTrigger = (
           }
         }) as never;
   }, [ref, isReactNative, isAutoCompleteInHeader]);
+
+  console.count('render basedropdowninputtrigger', props.referenceProps);
 
   return (
     <BaseInput
@@ -268,6 +272,7 @@ const _BaseDropdownInputTrigger = (
         // when autocomplete is in header, its not a trigger but a component inside of DropdownOverlay
         if (!isAutoCompleteInHeader) {
           triggererWrapperRef.current = wrapperNode;
+          floatingRef?.(wrapperNode);
         }
       }}
       maxTagRows={props.maxRows ?? 'single'}
@@ -350,7 +355,7 @@ const _BaseDropdownInputTrigger = (
           <InputChevronIcon isDisabled={props.isDisabled} isOpen={isOpen} />
         )
       }
-      {...(isInsideTableEditableCell ? tableInputProps : undefined)}
+      // {...(isInsideTableEditableCell ? tableInputProps : undefined)}
     />
   );
 };

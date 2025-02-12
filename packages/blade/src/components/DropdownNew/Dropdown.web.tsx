@@ -16,6 +16,7 @@ const Dropdown = ({
   isOpen: isOpenControlled,
 }: DropdownProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
+  // const [selectedIndices, setSelectedIndices] = React.useState<number[]>([]);
 
   const elementsRef = React.useRef<(HTMLButtonElement | null)[]>([]);
   const labelsRef = React.useRef<(string | null)[]>([]);
@@ -41,18 +42,31 @@ const Dropdown = ({
     isOpen: isOpenControlled,
   });
 
-  const referenceProps = {
-    ref: useMergeRefs([refs.setReference, item.ref]),
-    ...getReferenceProps(
-      parent.getItemProps({
-        onFocus() {
-          setHasFocusInside(false);
-          parent.setHasFocusInside(true);
-        },
-      }),
-    ),
-  };
+  const mergedRefs = useMergeRefs([refs.setReference, item.ref]);
 
+  const referenceProps = React.useMemo(() => {
+    return {
+      ref: mergedRefs,
+      ...getReferenceProps(
+        parent.getItemProps({
+          onFocus() {
+            setHasFocusInside(false);
+            parent.setHasFocusInside(true);
+          },
+        }),
+      ),
+    };
+  }, []);
+
+  // const floatingProps = React.useMemo(() => {
+  //   return {
+  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //     ref: refs.setFloating as any,
+  //     style: floatingStyles,
+  //     _transitionStyle: floatingTransitionStyles,
+  //     ...getFloatingProps(),
+  //   };
+  // }, [floatingStyles, floatingTransitionStyles]);
   const floatingProps = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref: refs.setFloating as any,
@@ -77,6 +91,10 @@ const Dropdown = ({
     ...dropdownOverlayChild.props,
     ...floatingProps,
   });
+
+  // const select = (index: number): void => {
+  //   setSelectedIndices(() => [index]);
+  // };
 
   const contextValue = React.useMemo(() => {
     return {
