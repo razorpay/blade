@@ -477,7 +477,7 @@ type TableToolbarActionsProps = {
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
 
-type VirtualizedWrapperProps<Item> = {
+type VirtualizedWrapperProps = {
   /**
    *   <TableComponent
    *      data={data}
