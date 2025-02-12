@@ -101,8 +101,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
           </TableToolbar>
         }
       >
-        {(tableData) => (
-          <TableVirtualizedWrapper tableData={tableData}>
+        {() => (
+          <TableVirtualizedWrapper>
             <TableHeader>
               <TableHeaderRow>
                 <TableHeaderCell>ID</TableHeaderCell>

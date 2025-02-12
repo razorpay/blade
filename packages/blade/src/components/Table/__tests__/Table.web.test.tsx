@@ -1219,8 +1219,8 @@ describe('<Table />', () => {
             rowDensity="normal"
             isFirstColumnSticky
           >
-            {(tableData) => (
-              <TableVirtualizedWrapper tableData={tableData}>
+            {() => (
+              <TableVirtualizedWrapper>
                 <TableHeader>
                   <TableHeaderRow>
                     <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
