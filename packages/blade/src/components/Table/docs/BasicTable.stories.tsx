@@ -154,8 +154,8 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
-            <TableBody<Item>>
-              {(tableItem, index) => (
+            <TableBody>
+              {(tableItem: Item, index) => (
                 <TableRow
                   key={index}
                   item={tableItem}
@@ -346,8 +346,8 @@ export const NormalTable: StoryFn<typeof TableComponent> = ({ ...args }) => {
                   <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
                 </TableHeaderRow>
               </TableHeader>
-              <TableBody<Item>>
-                {(tableItem, index) => (
+              <TableBody>
+                {(tableItem: Item, index) => (
                   <TableRow
                     key={index}
                     item={tableItem}
