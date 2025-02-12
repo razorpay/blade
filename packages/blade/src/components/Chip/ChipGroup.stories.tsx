@@ -728,7 +728,7 @@ chipRef.parameters = {
   },
 };
 
-export const MultiChipStory: StoryFn<typeof ChipGroupComponent> = () => {
+export const CutomLayoutInChipGroup: StoryFn<typeof ChipGroupComponent> = () => {
   const chipArray = [
     {
       value: '100',
@@ -804,3 +804,5 @@ export const MultiChipStory: StoryFn<typeof ChipGroupComponent> = () => {
     </Box>
   );
 };
+
+CutomLayoutInChipGroup.storyName = 'ChipGroup with Custom layout';
