@@ -574,6 +574,11 @@ type VirtualizedWrapperProps = {
   headerHeight?: number;
   /**
    * rowHeight is the height of each row, it can be a fixed number or a function that returns a number
+   * @default rowHeight values
+   * compact: '36'
+   * normal: '48'
+   * comfortable: '60'
+   *
    **/
   rowHeight?: (item: TableLibraryTableNode, index: number) => number;
   children: React.ReactNode;
