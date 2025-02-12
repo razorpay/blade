@@ -182,13 +182,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
           ...selectorLabelStyles,
         }}
       >
-        <BaseBox
-          display="flex"
-          flexDirection="column"
-          width={width}
-          maxWidth={maxWidth}
-          minWidth={minWidth}
-        >
+        <BaseBox display="flex" flexDirection="column" width="100%">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
               hoverTokens={getChipInputHoverTokens(chipColor)}
@@ -203,9 +197,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isDisabled={_isDisabled}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
-              width={width}
-              maxWidth={maxWidth}
-              minWidth={minWidth}
+              width="100%"
             >
               <StyledChipWrapper
                 borderColor={chipBorderColor}
@@ -232,9 +224,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 }
                 height={makeSize(chipHeightTokens[_size])}
                 gap="spacing.3"
-                width={width}
-                maxWidth={maxWidth}
-                minWidth={minWidth}
+                width="100%"
               >
                 {Icon ? (
                   <BaseBox display="flex">
