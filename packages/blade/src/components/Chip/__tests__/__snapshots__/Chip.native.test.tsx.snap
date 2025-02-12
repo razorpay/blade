@@ -190,9 +190,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
+                width="100%"
               >
                 <View
                   alignItems="center"
@@ -272,6 +274,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             "overflow": "hidden",
                             "paddingLeft": 12,
                             "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
@@ -279,6 +282,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <Text
                         accessible={true}
@@ -387,9 +391,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
+                width="100%"
               >
                 <View
                   alignItems="center"
@@ -469,6 +475,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             "overflow": "hidden",
                             "paddingLeft": 12,
                             "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
@@ -476,6 +483,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <Text
                         accessible={true}
@@ -715,9 +723,11 @@ exports[`<Chip /> should render chip 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
+                width="100%"
               >
                 <View
                   alignItems="center"
@@ -797,6 +807,7 @@ exports[`<Chip /> should render chip 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 12,
                             "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
@@ -804,6 +815,7 @@ exports[`<Chip /> should render chip 1`] = `
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <Text
                         accessible={true}
@@ -912,9 +924,11 @@ exports[`<Chip /> should render chip 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
+                width="100%"
               >
                 <View
                   alignItems="center"
@@ -994,6 +1008,7 @@ exports[`<Chip /> should render chip 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 12,
                             "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
@@ -1001,6 +1016,7 @@ exports[`<Chip /> should render chip 1`] = `
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <Text
                         accessible={true}
@@ -1240,9 +1256,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
+                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1322,6 +1340,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 12,
                             "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
@@ -1329,6 +1348,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1537,9 +1557,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
+                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1619,6 +1641,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 12,
                             "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
@@ -1626,6 +1649,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1965,9 +1989,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
+                width="100%"
               >
                 <View
                   alignItems="center"
@@ -2047,6 +2073,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 12,
                             "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
@@ -2054,6 +2081,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <Text
                         accessible={true}
@@ -2162,9 +2190,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
+                width="100%"
               >
                 <View
                   alignItems="center"
@@ -2244,6 +2274,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 12,
                             "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
@@ -2251,6 +2282,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                           },
                         ]
                       }
+                      width="100%"
                     >
                       <Text
                         accessible={true}
