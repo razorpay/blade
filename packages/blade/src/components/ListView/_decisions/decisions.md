@@ -15,16 +15,12 @@ List View Pattern is a UI pattern that includes Table, Filters, and Search of th
 ```jsx
 <ListView>
   <ListViewFilters
-    quickFilters={[
-      {
-        title: 'All',
-        onClick: () => {},
-      },
-      {
-        title: 'Pending',
-        onClick: () => {},
-      },
-    ]}
+    quickFilters={
+      <QuickFilterGroup onChange={({ values }) => console.log(values)}>
+        <QuickFilter title="Status: Completed" value="completed" />
+        <QuickFilter title="Status: Pending" value="pending" />
+      </QuickFilterGroup>
+    }
     onSearchChange={() => {
       /* filter on search */
     }}
@@ -242,10 +238,11 @@ Similar to [react-data-grid](https://mui.com/x/react-data-grid/filtering/quick-f
 
 - Enhancements:
   - Searchable Dropdown
-  - InputGroup (TBD)
+  - InputGroup (Deprioritised for later)
 - New Components
   - ListView (Layout Component)
   - FilterChip
+  - QuickFilter
 
 ### Dropdown with AutoComplete in Overlay
 
@@ -278,31 +275,13 @@ const [utrNumber, setUtrNumber] = React.useState();
 const utrNumberInputValueRef = React.useRef(null);
 
 <FilterChipGroup>
-  <Dropdown>
-    <FilterChip value={duration} onClearButtonClick={({ value }) => setDuration(undefined)}>
-      Duration
-    </FilterChip>
-    <DropdownOverlay>
-      <ActionList>
-        <ActionListItem
-          title="2 days"
-          value="2d"
-          onClick={({ name, value }) => setDuration(name)}
-        />
-        <ActionListItem
-          title="1 week"
-          value="1w"
-          onClick={({ name, value }) => setDuration(name)}
-        />
-        <ActionListItem
-          title="1 month"
-          value="1m"
-          onClick={({ name, value }) => setDuration(name)}
-        />
-      </ActionList>
-    </DropdownOverlay>
-  </Dropdown>
+  <FilterChipDatePicker
+    label="Duration"
+    selectionType="range"
+    onChange={(date) => setDuration(date)}
+  />
 
+  {/* FilterChip as trigger for Menu will be released in future and not as part of initial development */}
   <Menu>
     <FilterChip value={utrNumber} onClearButtonClick={({ value }) => setUtrNumber(undefined)}>
       UTR Number
@@ -314,13 +293,12 @@ const utrNumberInputValueRef = React.useRef(null);
   </Menu>
 
   <Dropdown>
-    <FilterChip
+    <FilterChipSelectInput
       value={status}
       defaultValue="Initiated"
       onClearButtonClick={({ value }) => setStatus(undefined)}
-    >
-      Status
-    </FilterChip>
+      label="Status"
+    />
     <DropdownOverlay>
       <ActionList>
         <ActionListItem title="All" onClick={({ name, value }) => setStatus(name)} />
@@ -383,21 +361,17 @@ Layout Component for handling the overall layout of ListView and Filters. More a
 ```jsx
 <ListView>
   <ListViewFilters
-    quickFilters={[
-      {
-        title: 'All',
-        onClick: () => {},
-      },
-      {
-        title: 'Pending',
-        onClick: () => {},
-      },
-    ]}
+    quickFilters={
+      <QuickFilterGroup onChange={({ values }) => console.log(values)}>
+        <QuickFilter title="Status: Completed" value="completed" />
+        <QuickFilter title="Status: Pending" value="pending" />
+      </QuickFilterGroup>
+    }
     onSearch={({ value, searchType }) => {
       /* filter on search */
     }}
   >
-    <FilterGroup />
+    <FilterChipGroup></FilterChipGroup>
   </ListViewFilters>
   <Table />
 </ListView>
@@ -437,14 +411,62 @@ type OnSearchArgs = {
 
 type ListViewFiltersProps = {
   /**
-   * Config of QuickFilters
+   * Slot for QuickFilterGroup
    */
-  quickFilters: QuickFilter[];
+  quickFilters: React.ReactElement;
 
   /**
    * Callback when user clicks search button
    */
   onSearch: ({ value, searchType }: OnSearchArgs) => void;
+};
+```
+
+### QuickFilterGroup
+
+```jsx
+<QuickFilterGroup onChange={({ values }) => console.log(values)}>
+  <QuickFilter title="Status: Completed" value="completed" />
+  <QuickFilter title="Status: Pending" value="pending" />
+</QuickFilterGroup>
+```
+
+#### Props
+
+##### QuickFilterGroup
+
+```ts
+export type QuickFilterGroupProps = {
+  /**
+   * Handler that returns selected values
+   */
+  onChange: ({ values }: { values: string[] }) => void;
+
+  /**
+   * Decides whether the filters are single select with radio or multiselect with checkboxes
+   */
+  selectionType?: 'single' | 'multiple';
+};
+```
+
+##### QuickFilter
+
+```ts
+export type QuickFilterProps = {
+  /**
+   * Visible title
+   */
+  title: string;
+
+  /**
+   * Value that is returned in onChange callback of QuickFilterGroup
+   */
+  value: string;
+
+  /**
+   * Slot that comes after title. For Badge and Counter
+   */
+  titleSuffix: React.ReactElement;
 };
 ```
 
