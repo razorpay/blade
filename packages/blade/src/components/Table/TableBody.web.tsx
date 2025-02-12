@@ -411,7 +411,7 @@ const _Virtulized = <Item,>({
       tableList={tableData}
       rowHeight={_rowHeight as RowHeightType}
       header={() => parsedHeader}
-      body={bodyFunction as (node: Item, index: number) => React.ReactNode}
+      body={bodyFunction as (node: TableNode<Item>, index: number) => React.ReactNode}
     />
   );
 };
