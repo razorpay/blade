@@ -27,6 +27,7 @@ import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 
 type OnChange = ({
   isChecked,
@@ -84,6 +85,12 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size || 'small';
   const chipColor = color ?? groupProps?.color ?? 'primary';
+  const selectorLabelStyles = getBaseBoxStyles({
+    width,
+    minWidth,
+    maxWidth,
+    theme,
+  });
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -172,9 +179,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         inputProps={isReactNative() ? inputProps : {}}
         style={{
           cursor: _isDisabled ? 'not-allowed' : 'pointer',
-          width: width as string | number,
-          maxWidth: maxWidth as string | number,
-          minWidth: minWidth as string | number,
+          ...selectorLabelStyles,
         }}
       >
         <BaseBox
