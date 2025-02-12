@@ -383,13 +383,12 @@ const _TableRow = <Item,>({
 };
 
 const _Virtulized = <Item,>({
-  tableData,
   headerHeight,
   rowHeight,
   children,
 }: VirtualizedWrapperProps<Item>): React.ReactElement => {
   const [parsedHeader = null, parsedBody = null] = React.Children.toArray(children);
-  const { rowDensity } = useTableContext();
+  const { rowDensity, tableData } = useTableContext();
   const _tableRow = Number(tableRow.minHeight[rowDensity]);
 
   const _rowHeight = (item: TableNode<Item>, index: number): number => {

@@ -569,10 +569,6 @@ type VirtualizedWrapperProps<Item> = {
    *
    **/
   /**
-   * The tableData prop is an array of objects.
-   */
-  tableData: TableNode<Item>[];
-  /**
    * headerHeight is the height of the header
    **/
   headerHeight?: number;

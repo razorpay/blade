@@ -489,6 +489,7 @@ const _Table = <Item,>({
       columnCount,
       gridTemplateColumns,
       isVirtualized,
+      tableData: data.nodes,
     }),
     [
       selectionType,
@@ -517,6 +518,7 @@ const _Table = <Item,>({
       hasHoverActions,
       setHasHoverActions,
       isVirtualized,
+      data,
     ],
   );
 

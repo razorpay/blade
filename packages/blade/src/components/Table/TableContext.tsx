@@ -43,9 +43,10 @@ export type TableContextType = {
   columnCount: number;
   gridTemplateColumns: string | undefined;
   isVirtualized?: boolean;
+  tableData: TableNode[];
 };
 
-const TableContext = React.createContext<TableContextType>({
+const TableContext = React.createContext({
   selectionType: 'none',
   selectedRows: undefined,
   totalItems: 0,
@@ -72,11 +73,12 @@ const TableContext = React.createContext<TableContextType>({
   columnCount: 0,
   gridTemplateColumns: undefined,
   isVirtualized: false,
+  tableData: [],
 });
 
 const useTableContext = (): TableContextType => {
   const context = React.useContext(TableContext);
-  return context;
+  return context as TableContextType;
 };
 
 export { useTableContext, TableContext };
