@@ -15,6 +15,7 @@ const StyledButtonGroup = styled(BaseBox)<StyledButtonGroupProps>(
       overflow: 'hidden',
       'button[role="button"]': {
         flex: isFullWidth ? 1 : 'auto',
+        borderRadius: 0,
       },
 
       ...(variant === 'secondary' && {

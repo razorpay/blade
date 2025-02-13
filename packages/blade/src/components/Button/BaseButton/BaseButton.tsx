@@ -184,7 +184,6 @@ const getProps = ({
   variant,
   color,
   hasIcon,
-  borderRadiusToken,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -194,7 +193,6 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
-  borderRadiusToken: string;
 }): BaseButtonStyleProps => {
   if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
@@ -263,9 +261,7 @@ const getProps = ({
     ),
     focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
     borderWidth: variant == 'secondary' ? makeBorderSize(theme.border.width.thin) : '0px',
-    borderRadius: borderRadiusToken
-      ? makeBorderSize(borderRadiusToken)
-      : makeBorderSize(theme.border.radius.medium),
+    borderRadius: makeBorderSize(theme.border.radius.medium),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
   };
@@ -405,7 +401,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     theme,
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
-    borderRadiusToken: buttonGroupProps.borderRadiusToken,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
