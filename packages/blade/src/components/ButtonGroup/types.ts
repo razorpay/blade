@@ -50,6 +50,8 @@ type StyledButtonGroupProps = Pick<
 type ButtonGroupContextType = Pick<
   ButtonGroupProps,
   'isDisabled' | 'isFullWidth' | 'size' | 'color' | 'variant'
->;
+> & {
+  borderRadiusToken: string;
+};
 
 export type { ButtonGroupProps, StyledButtonGroupProps, ButtonGroupContextType };

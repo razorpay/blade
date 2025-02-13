@@ -78,7 +78,6 @@ type BaseButtonCommonProps = {
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-  borderRadius?: BaseBoxProps['borderRadius'];
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -185,7 +184,7 @@ const getProps = ({
   variant,
   color,
   hasIcon,
-  borderRadius,
+  borderRadiusToken,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -195,7 +194,7 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
-  borderRadius: BaseButtonProps['borderRadius'];
+  borderRadiusToken: string;
 }): BaseButtonStyleProps => {
   if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
@@ -264,8 +263,8 @@ const getProps = ({
     ),
     focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
     borderWidth: variant == 'secondary' ? makeBorderSize(theme.border.width.thin) : '0px',
-    borderRadius: borderRadius
-      ? makeBorderSize(borderRadius)
+    borderRadius: borderRadiusToken
+      ? makeBorderSize(borderRadiusToken)
       : makeBorderSize(theme.border.radius.medium),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
@@ -406,7 +405,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     theme,
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
-    borderRadius: buttonGroupProps.borderRadius,
+    borderRadiusToken: buttonGroupProps.borderRadiusToken,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
