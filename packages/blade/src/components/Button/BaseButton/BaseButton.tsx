@@ -184,6 +184,7 @@ const getProps = ({
   variant,
   color,
   hasIcon,
+  borderRadius,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -193,6 +194,7 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
+  borderRadius: BaseButtonProps['borderRadius'];
 }): BaseButtonStyleProps => {
   if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
@@ -261,7 +263,9 @@ const getProps = ({
     ),
     focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
     borderWidth: variant == 'secondary' ? makeBorderSize(theme.border.width.thin) : '0px',
-    borderRadius: makeBorderSize(theme.border.radius.medium),
+    borderRadius: borderRadius
+      ? makeBorderSize(borderRadius)
+      : makeBorderSize(theme.border.radius.medium),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
   };
@@ -344,7 +348,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const isChildrenComponent = React.isValidElement(children);
 
   // Button cannot be disabled when its rendered as Link
-  const disabled = buttonGroupProps.isDisabled ?? (isLoading || (isDisabled && !isLink));
+  // button should be allowed to be disabled in any case...
+  // either through button group or we should allow to disable an individual button
+  const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -399,6 +405,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     theme,
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
+    borderRadius: buttonGroupProps.borderRadius,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);

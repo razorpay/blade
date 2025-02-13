@@ -70,6 +70,8 @@ const _ButtonGroup = (
     color,
     variant,
     isFullWidth,
+    // In case of buttonGroup we don't need borderRadius in internal buttons
+    borderRadius: 'theme.border.radius.none',
   };
 
   useVerifyAllowedChildren({
