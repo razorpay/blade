@@ -197,7 +197,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isDisabled={_isDisabled}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
-              width="100%"
             >
               <StyledChipWrapper
                 borderColor={chipBorderColor}
