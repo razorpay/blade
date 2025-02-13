@@ -78,6 +78,7 @@ type BaseButtonCommonProps = {
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  borderRadius?: BaseBoxProps['borderRadius'];
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
