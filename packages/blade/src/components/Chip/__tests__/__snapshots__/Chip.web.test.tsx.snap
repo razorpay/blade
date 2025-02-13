@@ -61,7 +61,6 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  width: 100%;
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
@@ -121,6 +120,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -504,7 +504,6 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  width: 100%;
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
@@ -564,6 +563,7 @@ exports[`<Chip /> should render chip 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -944,7 +944,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  width: 100%;
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
@@ -1011,6 +1010,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1455,7 +1455,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  width: 100%;
   border-color: hsla(214,40%,92%,1);
   border-style: solid;
 }
@@ -1490,7 +1489,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c15.c15.c15.c15.c15 {
-  width: 100%;
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
@@ -1550,6 +1548,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1585,6 +1584,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);

@@ -81,7 +81,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c12.c12.c12.c12.c12 {
-  width: 100%;
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
@@ -141,6 +140,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -637,7 +637,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c12.c12.c12.c12.c12 {
-  width: 100%;
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
@@ -697,6 +696,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
