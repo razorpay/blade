@@ -95,11 +95,7 @@ const TabList = ({
                         gap: isVertical ? 'spacing.0' : { base: 'spacing.7', m: 'spacing.8' },
                       })}
                 >
-                  {variant === 'filled' && !isVertical
-                    ? React.Children.map(children, (child) => {
-                        return <>{child}</>;
-                      })
-                    : children}
+                  {children}
                 </BaseBox>
               </BaseBox>
             );
