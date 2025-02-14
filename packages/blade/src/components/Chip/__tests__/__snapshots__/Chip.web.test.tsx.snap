@@ -348,6 +348,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
             <label
               class="c5"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c6"
@@ -396,6 +397,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
             <label
               class="c5"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c6"
@@ -789,6 +791,7 @@ exports[`<Chip /> should render chip 1`] = `
             <label
               class="c5"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c6"
@@ -836,6 +839,7 @@ exports[`<Chip /> should render chip 1`] = `
             <label
               class="c5"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c6"
@@ -1236,6 +1240,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
             <label
               class="c5"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c6"
@@ -1315,6 +1320,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
             <label
               class="c5"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c6"
@@ -1929,6 +1935,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
             <label
               class="c5"
               data-blade-component="chip-label"
+              style="cursor: not-allowed; width: 100%;"
             >
               <div
                 class="c6"
@@ -1977,6 +1984,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
             <label
               class="c5"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c6"

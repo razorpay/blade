@@ -418,6 +418,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             <label
               class="c8"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c9"
@@ -464,6 +465,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             <label
               class="c8"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c9"
@@ -510,6 +512,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             <label
               class="c8"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c9"
@@ -974,6 +977,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             <label
               class="c8"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c9"
@@ -1021,6 +1025,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             <label
               class="c8"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c9"
@@ -1068,6 +1073,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             <label
               class="c8"
               data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
               <div
                 class="c9"
