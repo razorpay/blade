@@ -776,7 +776,7 @@ export const CutomLayoutInChipGroup: StoryFn<typeof ChipGroupComponent> = () => 
     <Box gap="spacing.3" display="flex" flexDirection="column">
       <ChipGroupComponent
         selectionType="single"
-        label="Select a gift card with value (without custom chipGroupContainerLayout)"
+        label="Select a gift card with value (with default layout)"
       >
         {chipArray.map((chip, index) => (
           <ChipComponent key={index} value={chip.value}>
@@ -786,7 +786,7 @@ export const CutomLayoutInChipGroup: StoryFn<typeof ChipGroupComponent> = () => 
       </ChipGroupComponent>
       <ChipGroupComponent
         selectionType="single"
-        label="Select a gift card with value (custom chipGroupContainerLayout)"
+        label="Select a gift card with value (with custom layout)"
       >
         <Box
           display="grid"
