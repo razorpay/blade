@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.12.1
+
+### Patch Changes
+
+- 9dda1513: fix: remove js check that allows brand token for Box backgroundColor
+- 18fe5390: fix(blade): allow consumers to align chips in chipgroup
+- ba66b346: fix(blade): loading single button in buttonGroup
+
 ## 12.12.0
 
 ### Minor Changes
