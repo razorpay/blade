@@ -9,7 +9,7 @@ const QuickFilterWrapper = ({
   selectionType,
   children,
 }: Pick<QuickFilterGroupProps, 'selectionType' | 'children'>): React.ReactElement => {
-  const { selectedQuickFilters, setSelectedQuickFilters } = useQuickFilterGroupContext();
+  const { selectedQuickFilters, setSelectedQuickFilters, onChange } = useQuickFilterGroupContext();
 
   if (selectionType === 'single') {
     return (
@@ -17,11 +17,11 @@ const QuickFilterWrapper = ({
         value={selectedQuickFilters[0]}
         onChange={({ value }) => {
           setSelectedQuickFilters([value]);
+          onChange?.({ value });
         }}
         size="small"
       >
-        {' '}
-        {children}{' '}
+        {children}
       </RadioGroup>
     );
   }
@@ -30,10 +30,10 @@ const QuickFilterWrapper = ({
       value={selectedQuickFilters}
       onChange={({ values }) => {
         setSelectedQuickFilters(values);
+        onChange?.({ values });
       }}
       size="small"
     >
-      {' '}
       {children}
     </CheckboxGroup>
   );

@@ -1,7 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-//TODO: change this
-import { QuickFilterGroup } from '../QuickFilterGroup/QuickFilterGroup';
+import { QuickFilterGroup } from '../QuickFilterGroup';
 import type { QuickFilterGroupProps } from '../types';
 import { QuickFilter } from '../QuickFilter';
 import { Heading } from '~components/Typography/Heading';
@@ -14,7 +13,7 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="QuickFilterGroup"
-      componentDescription="A Chat Message is a visual representation of a message in a chat application."
+      componentDescription="QuickFilterGroup is a component that is used to group QuickFilter components."
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
     >
@@ -51,14 +50,22 @@ export default {
 } as Meta<QuickFilterGroupProps>;
 
 const QuickFilterTemplate: StoryFn<typeof QuickFilterGroup> = (args) => {
-  return <div> yo yo</div>;
+  return (
+    <QuickFilterGroup {...args}>
+      {' '}
+      <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />{' '}
+      <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />{' '}
+    </QuickFilterGroup>
+  );
 };
 
 export const Default = QuickFilterTemplate.bind({});
 Default.storyName = 'Default';
-Default.args = {};
+Default.args = {
+  selectionType: 'single',
+};
 
-const QuickFilterTemplate1: StoryFn<typeof QuickFilterGroup> = () => {
+const QuickFilterSingle: StoryFn<typeof QuickFilterGroup> = () => {
   return (
     <QuickFilterGroup selectionType="single">
       {' '}
@@ -68,10 +75,10 @@ const QuickFilterTemplate1: StoryFn<typeof QuickFilterGroup> = () => {
   );
 };
 
-export const Default1 = QuickFilterTemplate1.bind({});
-Default1.storyName = 'Default1';
+export const QuickFilterSingleStory = QuickFilterSingle.bind({});
+QuickFilterSingleStory.storyName = 'QuickFilter Single Selection';
 
-const QuickFilterTemplate2: StoryFn<typeof QuickFilterGroup> = () => {
+const QuickFilterMultiple: StoryFn<typeof QuickFilterGroup> = () => {
   return (
     <QuickFilterGroup selectionType="multiple">
       {' '}
@@ -81,5 +88,5 @@ const QuickFilterTemplate2: StoryFn<typeof QuickFilterGroup> = () => {
   );
 };
 
-export const Default2 = QuickFilterTemplate2.bind({});
-Default1.storyName = 'Default2';
+export const QuickFilterMultipleStory = QuickFilterMultiple.bind({});
+QuickFilterMultipleStory.storyName = 'QuickFilter Multiple Selection';

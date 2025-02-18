@@ -1,6 +1,6 @@
 import React from 'react';
 import type { QuickFilterProps } from './types';
-import { useQuickFilterGroupContext } from './QuickFilterGroup/QuickFilterContext';
+import { useQuickFilterGroupContext } from './QuickFilterGroup';
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
@@ -19,7 +19,7 @@ const QuickFilterCard = ({
   trailingElement?: React.ReactNode;
   selectionType?: 'single' | 'multiple';
   isSelected?: boolean;
-}): React.ReactNode => {
+}): React.ReactElement => {
   return (
     <Box
       display="flex"
