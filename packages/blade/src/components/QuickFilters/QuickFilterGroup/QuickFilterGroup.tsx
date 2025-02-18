@@ -18,6 +18,7 @@ const QuickFilterWrapper = ({
         onChange={({ value }) => {
           setSelectedQuickFilters([value]);
         }}
+        size="small"
       >
         {' '}
         {children}{' '}
@@ -30,6 +31,7 @@ const QuickFilterWrapper = ({
       onChange={({ values }) => {
         setSelectedQuickFilters(values);
       }}
+      size="small"
     >
       {' '}
       {children}

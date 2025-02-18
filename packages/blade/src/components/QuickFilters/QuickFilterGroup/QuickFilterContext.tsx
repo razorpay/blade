@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import type { QuickFilterGroupProps } from '../types';
 
@@ -8,9 +6,8 @@ export type QuickFilterGroupContextType = Pick<
   'selectionType' | 'onChange'
 > & {
   selectedQuickFilters: string[];
-  setSelectedQuickFilters: React.Dispatch<React.SetStateAction<string[]>>;
+  setSelectedQuickFilters: React.Dispatch<React.SetStateAction<NonNullable<string[]>>>;
 };
-
 const QuickFilterGroupContext = React.createContext<QuickFilterGroupContextType>({
   selectionType: 'single',
   onChange: undefined,

@@ -12,17 +12,19 @@ const QuickFilterCard = ({
   label,
   trailingElement,
   selectionType = 'single',
+  isSelected = false,
 }: {
   value: string;
   label: string;
   trailingElement?: React.ReactNode;
   selectionType?: 'single' | 'multiple';
+  isSelected?: boolean;
 }): React.ReactNode => {
   return (
     <Box
       display="flex"
       flexDirection="row"
-      gap="spacing.4"
+      gap="spacing.3"
       width="fit-content"
       justifyContent="center"
       alignItems="center"
@@ -35,7 +37,12 @@ const QuickFilterCard = ({
         alignItems="center"
       >
         {selectionType === 'single' ? <Radio value={value} /> : <Checkbox value={value} />}
-        <Text size="medium" weight="medium" color="interactive.text.gray.subtle">
+        <Text
+          variant="body"
+          size="medium"
+          color={isSelected ? 'interactive.text.primary.subtle' : 'interactive.text.gray.subtle'}
+          weight="medium"
+        >
           {label}
         </Text>
       </Box>
@@ -63,6 +70,7 @@ const QuickFilter = ({ title, value, trailingElement }: QuickFilterProps): React
           label={title}
           trailingElement={trailingElement}
           selectionType={selectionType}
+          isSelected={isQuickFilterSelected}
         />
       </CardBody>
     </Card>
