@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-feat(blade): quick filters
+feat(QuickFilter): Add QuickFilters component
