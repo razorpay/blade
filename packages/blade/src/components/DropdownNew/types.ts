@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
+import type { UseFloatingReturn, UseInteractionsReturn } from '@floating-ui/react';
 import type React from 'react';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
@@ -52,6 +52,11 @@ type DropdownItemProps = {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as?: BaseMenuItemProps['as'];
+
+  /**
+   * Unique identifier
+   */
+  value?: string;
 
   /**
    * Click handler for DropdownItem
@@ -164,17 +169,17 @@ type DropdownHeaderProps = Pick<
 // INTERNAL TYPES
 type DropdownContextType = {
   getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>;
-  setHasFocusInside: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
   selectedIndices: number[];
   select: (index: number) => void;
+  elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
 };
 
 type UseFloatingDropdownProps = Pick<
   DropdownProps,
   'openInteraction' | 'onOpenChange' | 'isOpen'
 > & {
-  elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
+  elementsRef: DropdownContextType['elementsRef'];
 };
 
 type UseFloatingDropdownReturnType = Pick<
@@ -182,9 +187,8 @@ type UseFloatingDropdownReturnType = Pick<
   'getFloatingProps' | 'getItemProps' | 'getReferenceProps'
 > &
   Pick<UseFloatingReturn<HTMLButtonElement>, 'context' | 'floatingStyles' | 'refs'> & {
-    item: ReturnType<typeof useListItem>;
-    nodeId: string;
     isOpen: boolean;
+    setIsOpen: (state: () => boolean) => void;
     isNested?: boolean;
     isMounted?: boolean;
     floatingTransitionStyles?: DropdownOverlayProps['_transitionStyle'];

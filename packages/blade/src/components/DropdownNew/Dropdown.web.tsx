@@ -1,12 +1,6 @@
-import {
-  FloatingFocusManager,
-  FloatingList,
-  FloatingNode,
-  FloatingPortal,
-  useMergeRefs,
-} from '@floating-ui/react';
+import { FloatingFocusManager, FloatingList, FloatingPortal } from '@floating-ui/react';
 import * as React from 'react';
-import { DropdownContext, useFloatingDropdownSetup, useDropdown } from './useDropdown';
+import { DropdownContext, useFloatingDropdownSetup } from './useDropdown';
 import type { DropdownProps } from './types';
 
 const Dropdown = ({
@@ -16,21 +10,19 @@ const Dropdown = ({
   isOpen: isOpenControlled,
 }: DropdownProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
-  // const [selectedIndices, setSelectedIndices] = React.useState<number[]>([]);
+  const [selectedIndices, setSelectedIndices] = React.useState<number[]>([]);
 
   const elementsRef = React.useRef<(HTMLButtonElement | null)[]>([]);
   const labelsRef = React.useRef<(string | null)[]>([]);
-  const parent = useDropdown();
 
   const {
     getReferenceProps,
     getFloatingProps,
     getItemProps,
-    item,
     refs,
     floatingStyles,
     isOpen,
-    nodeId,
+    setIsOpen,
     isNested,
     context,
     isMounted,
@@ -42,31 +34,11 @@ const Dropdown = ({
     isOpen: isOpenControlled,
   });
 
-  const mergedRefs = useMergeRefs([refs.setReference, item.ref]);
+  const referenceProps = {
+    ref: refs.setReference,
+    ...getReferenceProps(),
+  };
 
-  const referenceProps = React.useMemo(() => {
-    return {
-      ref: mergedRefs,
-      ...getReferenceProps(
-        parent.getItemProps({
-          onFocus() {
-            setHasFocusInside(false);
-            parent.setHasFocusInside(true);
-          },
-        }),
-      ),
-    };
-  }, []);
-
-  // const floatingProps = React.useMemo(() => {
-  //   return {
-  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //     ref: refs.setFloating as any,
-  //     style: floatingStyles,
-  //     _transitionStyle: floatingTransitionStyles,
-  //     ...getFloatingProps(),
-  //   };
-  // }, [floatingStyles, floatingTransitionStyles]);
   const floatingProps = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref: refs.setFloating as any,
@@ -92,38 +64,40 @@ const Dropdown = ({
     ...floatingProps,
   });
 
-  // const select = (index: number): void => {
-  //   setSelectedIndices(() => [index]);
-  // };
+  const select = (index: number): void => {
+    setSelectedIndices(() => [index]);
+    setIsOpen(() => false);
+  };
 
   const contextValue = React.useMemo(() => {
     return {
       getItemProps,
       setHasFocusInside,
       isOpen,
+      select,
+      selectedIndices,
+      elementsRef,
     };
-  }, [isOpen]);
+  }, [isOpen, selectedIndices]);
 
   return (
-    <FloatingNode id={nodeId}>
-      <DropdownContext.Provider value={contextValue}>
-        {triggerWithReferenceProps}
-        <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-          {isMounted && (
-            <FloatingPortal>
-              <FloatingFocusManager
-                context={context}
-                modal={false}
-                initialFocus={0}
-                returnFocus={!isNested}
-              >
-                {overlayWithFloatingProps}
-              </FloatingFocusManager>
-            </FloatingPortal>
-          )}
-        </FloatingList>
-      </DropdownContext.Provider>
-    </FloatingNode>
+    <DropdownContext.Provider value={contextValue}>
+      {triggerWithReferenceProps}
+      <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+        {isMounted && (
+          <FloatingPortal>
+            <FloatingFocusManager
+              context={context}
+              modal={false}
+              initialFocus={0}
+              returnFocus={!isNested}
+            >
+              {overlayWithFloatingProps}
+            </FloatingFocusManager>
+          </FloatingPortal>
+        )}
+      </FloatingList>
+    </DropdownContext.Provider>
   );
 };
 

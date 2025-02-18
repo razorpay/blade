@@ -7,6 +7,8 @@ import { SelectInput } from './SelectInput/SelectInput';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { TextInput } from '~components/Input/TextInput';
+import { useDropdown } from './useDropdown';
+import { Select } from '@mantine/core';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/DropdownNew',
@@ -25,14 +27,23 @@ const DropdownStoryMeta: Meta = {
   },
 };
 
+// const Trigger = ({ _referenceProps }) => {
+//   const { selectedIndices, elementsRef } = useDropdown();
+
+//   const selectedValue =
+//     selectedIndices.length > 0 ? elementsRef.current[selectedIndices[0]]?.dataset.title : '';
+
+//   return <input type="text" value={selectedValue} {..._referenceProps} />;
+// };
+
 export const InternalSelect = (): React.ReactElement => {
   return (
     <Dropdown>
-      <SelectInput label="Search" />
+      <SelectInput label="Fruits" />
       <DropdownOverlay>
         <ActionList>
-          <ActionListItem title="Apples" value="Apples" />
-          <ActionListItem title="Appricots" value="Appricots" />
+          <ActionListItem title="Apples" value="apples" />
+          <ActionListItem title="Appricots" value="appricots" />
         </ActionList>
       </DropdownOverlay>
     </Dropdown>

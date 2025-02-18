@@ -4,19 +4,13 @@ import {
   autoUpdate,
   flip,
   offset,
-  safePolygon,
   shift,
   size,
   useClick,
   useDismiss,
   useFloating,
-  useFloatingNodeId,
-  useFloatingParentNodeId,
-  useFloatingTree,
-  useHover,
   useInteractions,
   useListNavigation,
-  useListItem,
   useRole,
   useTransitionStyles,
 } from '@floating-ui/react';
@@ -32,12 +26,13 @@ import { size as sizeTokens } from '~tokens/global';
 
 const DropdownContext = React.createContext<DropdownContextType>({
   getItemProps: () => ({}),
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setHasFocusInside: () => {},
   isOpen: false,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   select: () => {},
   selectedIndices: [],
+  elementsRef: {
+    current: [],
+  },
 });
 
 const useDropdown = (): DropdownContextType => {
@@ -47,7 +42,6 @@ const useDropdown = (): DropdownContextType => {
 
 const useFloatingDropdownSetup = ({
   elementsRef,
-  openInteraction,
   onOpenChange,
   isOpen,
 }: UseFloatingDropdownProps): UseFloatingDropdownReturnType => {
@@ -58,10 +52,6 @@ const useFloatingDropdownSetup = ({
   });
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
 
-  const tree = useFloatingTree();
-  const nodeId = useFloatingNodeId();
-  const parentId = useFloatingParentNodeId();
-  const item = useListItem();
   const { theme } = useTheme();
 
   const isMenu = false;
@@ -70,9 +60,11 @@ const useFloatingDropdownSetup = ({
   const maxWidth = undefined;
 
   const { floatingStyles, refs, context } = useFloating<HTMLButtonElement>({
-    nodeId,
     open: isControllableOpen,
-    onOpenChange: (_isOpen) => setIsControllableOpen(() => _isOpen),
+    onOpenChange: (_isOpen) => {
+      console.log('onOpenChange', _isOpen);
+      setIsControllableOpen(() => _isOpen);
+    },
     placement: 'bottom-start',
     middleware: [
       offset({ mainAxis: OVERLAY_OFFSET, alignmentAxis: 0 }),
@@ -98,18 +90,10 @@ const useFloatingDropdownSetup = ({
     whileElementsMounted: autoUpdate,
   });
 
-  const hover = useHover(context, {
-    enabled: openInteraction === 'hover',
-    delay: { open: 75 },
-    handleClose: safePolygon({ blockPointerEvents: true }),
-  });
-  const click = useClick(context, {
-    event: 'mousedown',
-    toggle: true,
-    ignoreMouse: false,
-  });
-  const role = useRole(context, { role: 'menu' });
-  const dismiss = useDismiss(context, { bubbles: true });
+  const click = useClick(context);
+  const role = useRole(context, { role: 'listbox' });
+  const dismiss = useDismiss(context);
+
   const listNavigation = useListNavigation(context, {
     listRef: elementsRef,
     activeIndex,
@@ -119,7 +103,6 @@ const useFloatingDropdownSetup = ({
   });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-    hover,
     click,
     role,
     dismiss,
@@ -144,40 +127,13 @@ const useFloatingDropdownSetup = ({
     },
   });
 
-  // Event emitter allows you to communicate across tree components.
-  // This effect closes all menus when an item gets clicked anywhere
-  // in the tree.
-  React.useEffect(() => {
-    if (!tree) return;
-
-    const handleTreeClick = (): void => {
-      setIsControllableOpen(() => false);
-    };
-
-    tree.events.on('click', handleTreeClick);
-
-    // eslint-disable-next-line consistent-return
-    return () => {
-      // Cleanup
-      tree.events.off('click', handleTreeClick);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tree, nodeId, parentId]);
-
-  React.useEffect(() => {
-    if (isOpen && tree) {
-      tree.events.emit('menuopen', { parentId, nodeId });
-    }
-  }, [tree, isOpen, nodeId, parentId]);
-
   return {
     getReferenceProps,
     getFloatingProps,
     getItemProps,
-    item,
     context,
-    nodeId,
     isOpen: isControllableOpen,
+    setIsOpen: setIsControllableOpen,
     floatingStyles,
     refs,
     isMounted,

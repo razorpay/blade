@@ -14,8 +14,6 @@ const _SelectInput = (
   props: SelectInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
-  const { value, triggererRef, onTriggerKeydown, onTriggerClick } = useDropdown();
-
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <BaseBox position="relative">
@@ -23,11 +21,6 @@ const _SelectInput = (
         label={props.label}
         referenceProps={props._referenceProps}
         isSelectInput={true}
-        onTriggerKeydown={onTriggerKeydown}
-        onTriggerClick={(e) => {
-          onTriggerClick();
-          props?.onClick?.(e);
-        }}
       />
     </BaseBox>
   );

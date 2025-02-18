@@ -18,7 +18,7 @@ const _BaseDropdownInputTrigger = (
   props: BaseDropdownInputTriggerProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
-  const { selectedIndices, isOpen } = useDropdown();
+  const { selectedIndices, isOpen, elementsRef } = useDropdown();
   // const { rowDensity } = useTableContext();
   const {
     onClick: onFloatingClick,

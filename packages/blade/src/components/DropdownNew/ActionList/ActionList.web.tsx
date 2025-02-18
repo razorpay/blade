@@ -1,4 +1,4 @@
-import { useFloatingTree, useListItem, useMergeRefs } from '@floating-ui/react';
+import { useListItem, useMergeRefs } from '@floating-ui/react';
 import React from 'react';
 import type { DropdownItemProps } from '../types';
 import { useDropdown } from '../useDropdown';
@@ -15,6 +15,7 @@ const ActionListItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
   (
     {
       title,
+      value,
       isDisabled,
       description,
       leading,
@@ -31,7 +32,6 @@ const ActionListItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
   ) => {
     const dropdown = useDropdown();
     const item = useListItem({ label: isDisabled && Boolean(children) ? null : title });
-    const tree = useFloatingTree();
 
     const isLink = Boolean(href);
 
@@ -48,18 +48,20 @@ const ActionListItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
         as={as ?? defaultAs}
         href={href}
         ref={useMergeRefs([item.ref, forwardedRef])}
+        isSelected={dropdown.selectedIndices.includes(item.index)}
         isDisabled={isDisabled}
+        data-value={value}
+        data-title={title}
         {...props}
         {...(_isDropdownTrigger
           ? {}
           : dropdown.getItemProps({
               onClick(event: React.MouseEvent<HTMLButtonElement>) {
                 props.onClick?.(event);
-                tree?.events.emit('click');
+                dropdown.select(item.index);
               },
               onFocus(event: React.FocusEvent<HTMLButtonElement>) {
                 props.onFocus?.(event);
-                dropdown.setHasFocusInside(true);
               },
             }))}
       >
