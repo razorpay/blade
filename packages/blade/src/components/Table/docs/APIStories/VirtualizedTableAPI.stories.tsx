@@ -78,13 +78,7 @@ const data: TableData<Item> = {
 
 const TableTemplate: StoryFn<typeof TableComponent> = () => {
   return (
-    <Box
-      backgroundColor="surface.background.gray.intense"
-      padding="spacing.5"
-      minHeight="700px"
-      paddingX="0"
-      paddingY="0"
-    >
+    <Box backgroundColor="surface.background.gray.intense" padding="spacing.5" minHeight="700px">
       <TableComponent
         data={data}
         height={'500px'}
