@@ -22,7 +22,7 @@ const QuickFilterWrapper = ({
         value={selectedQuickFilters[0]}
         onChange={({ value }) => {
           setSelectedQuickFilters([value]);
-          onChange?.({ value });
+          onChange?.({ values: value });
         }}
         size="small"
         {...rest}
