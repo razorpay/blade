@@ -56,61 +56,30 @@ const QuickFilterTemplate: StoryFn<typeof QuickFilterGroup> = (args) => {
 
 export const Default = QuickFilterTemplate.bind({});
 Default.storyName = 'Default';
-Default.args = {
-  senderType: 'self',
-  messageType: 'default',
-};
+Default.args = {};
 
-const QuickFilterTemplate1: StoryFn<typeof QuickFilterGroup> = (args) => {
+const QuickFilterTemplate1: StoryFn<typeof QuickFilterGroup> = () => {
   return (
     <QuickFilterGroup selectionType="single">
       {' '}
-      <QuickFilter
-        title="Title1"
-        value="value1"
-        onClick={() => {}}
-        trailingElement={<Counter value={234} />}
-      />{' '}
-      <QuickFilter
-        title="Title2"
-        value="value2"
-        onClick={() => {}}
-        trailingElement={<Counter value={234} />}
-      />{' '}
+      <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />{' '}
+      <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />{' '}
     </QuickFilterGroup>
   );
 };
 
 export const Default1 = QuickFilterTemplate1.bind({});
 Default1.storyName = 'Default1';
-Default1.args = {
-  senderType: 'self',
-  messageType: 'default',
-};
 
-const QuickFilterTemplate2: StoryFn<typeof QuickFilterGroup> = (args) => {
+const QuickFilterTemplate2: StoryFn<typeof QuickFilterGroup> = () => {
   return (
     <QuickFilterGroup selectionType="multiple">
       {' '}
-      <QuickFilter
-        title="Title1"
-        value="value1"
-        onClick={() => {}}
-        trailingElement={<Counter value={234} />}
-      />{' '}
-      <QuickFilter
-        title="Title2"
-        value="value2"
-        onClick={() => {}}
-        trailingElement={<Counter value={234} />}
-      />{' '}
+      <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />{' '}
+      <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />{' '}
     </QuickFilterGroup>
   );
 };
 
 export const Default2 = QuickFilterTemplate2.bind({});
 Default1.storyName = 'Default2';
-Default1.args = {
-  senderType: 'self',
-  messageType: 'default',
-};
