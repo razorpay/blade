@@ -23,10 +23,6 @@ interface QuickFilterProps {
   */
   value: string;
   /*
-        onClick is a function that is called when the quick filter is clicked.
-  */
-  onClick?: () => void;
-  /*
         trailingElement is a React node that is displayed after the quick filter.
   */
   trailingElement?: React.ReactNode;

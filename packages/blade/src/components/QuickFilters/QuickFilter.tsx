@@ -44,18 +44,12 @@ const QuickFilterCard = ({
     </Box>
   );
 };
-const QuickFilter = ({
-  title,
-  value,
-  onClick,
-  trailingElement,
-}: QuickFilterProps): React.ReactNode => {
+const QuickFilter = ({ title, value, trailingElement }: QuickFilterProps): React.ReactNode => {
   const { selectedQuickFilters, selectionType } = useQuickFilterGroupContext();
 
   const isQuickFilterSelected = selectedQuickFilters.includes(value);
   return (
     <Card
-      onClick={onClick}
       padding="spacing.3"
       as="label"
       accessibilityLabel={title}
