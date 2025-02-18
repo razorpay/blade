@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import type { QuickFilterGroupProps } from '../types';
 import { QuickFilterGroupProvider, useQuickFilterGroupContext } from './QuickFilterContext';
 import { RadioGroup } from '~components/Radio';
-import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { CheckboxGroup } from '~components/Checkbox';
 
 const QuickFilterWrapper = ({
   selectionType,
   children,
+  ...rest
 }: Pick<QuickFilterGroupProps, 'selectionType' | 'children'>): React.ReactElement => {
   const { selectedQuickFilters, setSelectedQuickFilters, onChange } = useQuickFilterGroupContext();
 
@@ -20,6 +21,7 @@ const QuickFilterWrapper = ({
           onChange?.({ value });
         }}
         size="small"
+        {...rest}
       >
         {children}
       </RadioGroup>
@@ -33,6 +35,7 @@ const QuickFilterWrapper = ({
         onChange?.({ values });
       }}
       size="small"
+      {...rest}
     >
       {children}
     </CheckboxGroup>
@@ -43,16 +46,17 @@ const QuickFilterGroup = ({
   onChange,
   selectionType,
   children,
+  ...rest
 }: QuickFilterGroupProps): React.ReactElement => {
   const [selectedQuickFilters, setSelectedQuickFilters] = useState<string[]>([]);
   return (
     <QuickFilterGroupProvider
       value={{ selectionType, onChange, selectedQuickFilters, setSelectedQuickFilters }}
     >
-      <QuickFilterWrapper selectionType={selectionType}>
-        <Box display="flex" flexDirection="row" gap="spacing.3">
+      <QuickFilterWrapper selectionType={selectionType} {...rest}>
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {children}
-        </Box>
+        </BaseBox>
       </QuickFilterWrapper>
     </QuickFilterGroupProvider>
   );

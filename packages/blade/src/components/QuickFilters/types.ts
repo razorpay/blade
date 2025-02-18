@@ -1,4 +1,6 @@
-interface QuickFilterGroupProps {
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+
+type QuickFilterGroupProps = {
   /*
    onChange is a function that is called when the selected quick filter changes.
    it returns an object with either value or values.
@@ -14,9 +16,10 @@ interface QuickFilterGroupProps {
          children is an array of QuickFilter components.
   */
   children: React.ReactNode;
-}
+} & TestID &
+  DataAnalyticsAttribute;
 
-interface QuickFilterProps {
+type QuickFilterProps = {
   /*
       title is a string that is displayed as the title of the quick filter.
   */
@@ -29,6 +32,14 @@ interface QuickFilterProps {
         trailingElement is a React node that is displayed after the quick filter.
   */
   trailingElement?: React.ReactNode;
-}
+} & TestID &
+  DataAnalyticsAttribute;
 
-export type { QuickFilterGroupProps, QuickFilterProps };
+type QuickFilterCardProps = Pick<QuickFilterProps, 'trailingElement' | 'value' | 'title'> &
+  Pick<QuickFilterGroupProps, 'selectionType'> &
+  TestID &
+  DataAnalyticsAttribute & {
+    isSelected?: boolean;
+  };
+
+export type { QuickFilterGroupProps, QuickFilterProps, QuickFilterCardProps };

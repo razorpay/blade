@@ -1,33 +1,34 @@
 import React from 'react';
-import type { QuickFilterProps } from './types';
+import type { QuickFilterProps, QuickFilterCardProps } from './types';
 import { useQuickFilterGroupContext } from './QuickFilterGroup';
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Radio } from '~components/Radio';
 import { Checkbox } from '~components/Checkbox';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute } from '~utils/metaAttribute';
+import BaseBox from '~components/Box/BaseBox';
 
 const QuickFilterCard = ({
   value,
-  label,
+  title,
   trailingElement,
   selectionType = 'single',
   isSelected = false,
-}: {
-  value: string;
-  label: string;
-  trailingElement?: React.ReactNode;
-  selectionType?: 'single' | 'multiple';
-  isSelected?: boolean;
-}): React.ReactElement => {
+  testID,
+  ...rest
+}: QuickFilterCardProps): React.ReactElement => {
   return (
-    <Box
+    <BaseBox
       display="flex"
       flexDirection="row"
       gap="spacing.3"
       width="fit-content"
       justifyContent="center"
       alignItems="center"
+      {...makeAnalyticsAttribute(rest)}
+      {...metaAttribute({ testID })}
     >
       <Box
         display="flex"
@@ -43,15 +44,20 @@ const QuickFilterCard = ({
           color={isSelected ? 'interactive.text.primary.subtle' : 'interactive.text.gray.subtle'}
           weight="medium"
         >
-          {label}
+          {title}
         </Text>
       </Box>
 
       {trailingElement}
-    </Box>
+    </BaseBox>
   );
 };
-const QuickFilter = ({ title, value, trailingElement }: QuickFilterProps): React.ReactNode => {
+const QuickFilter = ({
+  title,
+  value,
+  trailingElement,
+  ...rest
+}: QuickFilterProps): React.ReactNode => {
   const { selectedQuickFilters, selectionType } = useQuickFilterGroupContext();
 
   const isQuickFilterSelected = selectedQuickFilters.includes(value);
@@ -67,10 +73,11 @@ const QuickFilter = ({ title, value, trailingElement }: QuickFilterProps): React
       <CardBody>
         <QuickFilterCard
           value={value}
-          label={title}
+          title={title}
           trailingElement={trailingElement}
           selectionType={selectionType}
           isSelected={isQuickFilterSelected}
+          {...rest}
         />
       </CardBody>
     </Card>
