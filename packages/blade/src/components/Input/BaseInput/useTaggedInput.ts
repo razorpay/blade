@@ -145,8 +145,7 @@ const useTaggedInput = ({
     const inputValue = isControlledValue ? value?.trim() : inputValueUncontrolled.trim();
     if (e.key === 'Enter' || e.key === ',') {
       e.event.preventDefault?.(); // we don't want textarea to treat enter as line break in tagged inputs
-      const isDuplicateTag = currentTags?.includes(inputValue);
-      if (inputValue && !isDuplicateTag) {
+      if (inputValue) {
         if (!isTagsControlled) {
           setTagsValue(() => [...currentTags, inputValue]);
         } else {
