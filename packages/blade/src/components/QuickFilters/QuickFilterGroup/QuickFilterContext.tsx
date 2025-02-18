@@ -12,6 +12,7 @@ const QuickFilterGroupContext = React.createContext<QuickFilterGroupContextType>
   selectionType: 'single',
   onChange: undefined,
   selectedQuickFilters: [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setSelectedQuickFilters: () => {},
 });
 const QuickFilterGroupProvider = QuickFilterGroupContext.Provider;
