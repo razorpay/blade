@@ -26,10 +26,6 @@ interface QuickFilterProps {
         trailingElement is a React node that is displayed after the quick filter.
   */
   trailingElement?: React.ReactNode;
-  /*
-        leadingElement is a React node that is displayed before the quick filter.
-  */
-  leadingElement?: React.ReactNode;
 }
 
 export type { QuickFilterGroupProps, QuickFilterProps };
