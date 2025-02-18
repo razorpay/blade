@@ -1218,6 +1218,7 @@ describe('<Table />', () => {
             defaultSelectedIds={['1', '3']}
             rowDensity="normal"
             isFirstColumnSticky
+            height="500px"
           >
             {() => (
               <TableVirtualizedWrapper>

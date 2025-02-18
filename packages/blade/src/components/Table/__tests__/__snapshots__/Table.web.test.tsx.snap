@@ -9911,12 +9911,13 @@ exports[`<Table /> should render virtualized table 1`] = `
 
 .c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 {
   overflow: unset !important;
+  height: 500px;
   width: 100%;
 }
 
 .c1.c1.c1.c1.c1 > div {
   overflow: auto !important;
-  height: undefined !important;
+  height: 500px !important;
   width: 100% !important;
 }
 
