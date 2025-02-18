@@ -18,7 +18,7 @@ const QuickFilterCard = ({
   isSelected = false,
   testID,
   ...rest
-}: QuickFilterCardProps): React.ReactElement => {
+}: QuickFilterCardProps): JSX.Element => {
   return (
     <BaseBox
       display="flex"
