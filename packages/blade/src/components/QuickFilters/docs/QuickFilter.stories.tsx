@@ -55,9 +55,16 @@ export default {
 const QuickFilterTemplate: StoryFn<typeof QuickFilterGroup> = (args) => {
   return (
     <QuickFilterGroup {...args}>
-      {' '}
-      <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />{' '}
-      <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />{' '}
+      <QuickFilter
+        title="Older than 1 year"
+        value="older_than_1_year"
+        trailingElement={<Counter value={234} color="information" />}
+      />
+      <QuickFilter
+        title="Older than 2 year"
+        value="older_than_2_year"
+        trailingElement={<Counter value={234} color="positive" />}
+      />
     </QuickFilterGroup>
   );
 };
@@ -71,9 +78,21 @@ Default.args = {
 const QuickFilterSingle: StoryFn<typeof QuickFilterGroup> = () => {
   return (
     <QuickFilterGroup selectionType="single">
-      {' '}
-      <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />{' '}
-      <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />{' '}
+      <QuickFilter
+        title="Unresolved"
+        value="unresolved"
+        trailingElement={<Counter value={234} color="information" />}
+      />
+      <QuickFilter
+        title="Resolved"
+        value="resolved"
+        trailingElement={<Counter value={234} color="positive" />}
+      />
+      <QuickFilter
+        title="In Progress"
+        value="in_progress"
+        trailingElement={<Counter value={234} color="neutral" />}
+      />
     </QuickFilterGroup>
   );
 };
@@ -84,9 +103,16 @@ QuickFilterSingleStory.storyName = 'QuickFilter Single Selection';
 const QuickFilterMultiple: StoryFn<typeof QuickFilterGroup> = () => {
   return (
     <QuickFilterGroup selectionType="multiple">
-      {' '}
-      <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />{' '}
-      <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />{' '}
+      <QuickFilter
+        title="Older than 1 year"
+        value="older_than_1_year"
+        trailingElement={<Counter value={234} color="information" />}
+      />
+      <QuickFilter
+        title="Older than 2 year"
+        value="older_than_2_year"
+        trailingElement={<Counter value={234} color="positive" />}
+      />
     </QuickFilterGroup>
   );
 };
