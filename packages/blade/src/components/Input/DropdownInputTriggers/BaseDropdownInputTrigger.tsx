@@ -130,6 +130,7 @@ const _BaseDropdownInputTrigger = (
     dropdownBaseId,
     selectedIndices,
     triggererRef,
+    headerAutoCompleteRef,
     triggererWrapperRef,
     isTagDismissedRef,
     onTriggerClick,
@@ -237,11 +238,16 @@ const _BaseDropdownInputTrigger = (
     <BaseInput
       as={props.isSelectInput ? 'button' : 'input'}
       ref={
-        (isReactNative() || isAutoCompleteInHeader
+        (isReactNative()
           ? null
           : // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (node: any) => {
-              triggererRef.current = node;
+              if (isAutoCompleteInHeader) {
+                headerAutoCompleteRef.current = node;
+              } else {
+                triggererRef.current = node;
+              }
+
               if (ref) {
                 if (typeof ref === 'function') {
                   ref(node);

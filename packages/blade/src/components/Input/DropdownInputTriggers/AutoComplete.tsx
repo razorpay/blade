@@ -39,7 +39,7 @@ const useAutoComplete = ({
     filteredValues: globalFilteredValues,
     selectionType,
     triggererRef,
-    hasAutoCompleteInBottomSheetHeader,
+    hasAutoCompleteInHeader,
   } = useDropdown();
 
   const resetFilters = (): void => setGlobalFilteredValues(getOptionValues());
@@ -71,7 +71,7 @@ const useAutoComplete = ({
 
     // Just setting autoFocus is setting the input in focus state but its not showing keyboard active.
     // We do this in web to get around that
-    if (hasAutoCompleteInBottomSheetHeader && isOpen && !isReactNative()) {
+    if (hasAutoCompleteInHeader && isOpen && !isReactNative()) {
       triggererRef.current?.focus();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -151,8 +151,8 @@ const _AutoComplete = (
   const {
     options,
     setFilteredValues: setGlobalFilteredValues,
-    hasAutoCompleteInBottomSheetHeader,
-    setHasAutoCompleteInBottomSheetHeader,
+    hasAutoCompleteInHeader,
+    setHasAutoCompleteInHeader,
     onTriggerClick,
     dropdownTriggerer,
   } = useDropdown();
@@ -172,7 +172,7 @@ const _AutoComplete = (
     if (dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete) {
       // When AutoComplete is mounted but not as trigger,
       // it has to be somewhere in the BottomSheet (most likely header based on UI but works in other parts too)
-      setHasAutoCompleteInBottomSheetHeader(true);
+      setHasAutoCompleteInHeader(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -185,7 +185,7 @@ const _AutoComplete = (
   }, [props.filteredValues, setGlobalFilteredValues]);
 
   // set autoFocus to true when used inside bottomsheet
-  const defaultAutoFocusState = hasAutoCompleteInBottomSheetHeader ? true : undefined;
+  const defaultAutoFocusState = hasAutoCompleteInHeader ? true : undefined;
 
   return (
     <BaseBox position="relative">
@@ -209,7 +209,7 @@ const _AutoComplete = (
         onTriggerKeydown={onTriggerKeydown}
         onInputValueChange={onInputValueChange}
         onTriggerClick={(triggerEvent) => {
-          if (!hasAutoCompleteInBottomSheetHeader) {
+          if (!hasAutoCompleteInHeader) {
             // we don't want clicking on autocomplete to open / close Dropdown when it is used inside BottomSheet's header
             onTriggerClick();
           }

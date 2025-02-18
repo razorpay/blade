@@ -117,8 +117,7 @@ const _BottomSheet = ({
   const setPositionY = React.useCallback(
     (value: number, limit = true) => {
       // In AutoComplete, we want BottomSheet to be docked to top snappoint so we remove the limits
-      const shouldLimitPositionY =
-        limit && !bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader;
+      const shouldLimitPositionY = limit && !bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader;
 
       const maxValue = computeMaxContent({
         contentHeight,
@@ -129,7 +128,7 @@ const _BottomSheet = ({
       _setPositionY(shouldLimitPositionY ? maxValue : value);
     },
     [
-      bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader,
+      bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader,
       contentHeight,
       footerHeight,
       grabHandleHeight,
@@ -164,7 +163,7 @@ const _BottomSheet = ({
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
   useIsomorphicLayoutEffect(() => {
-    if (bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader) {
+    if (bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader) {
       initialSnapPoint.current = AUTOCOMPLETE_DEFAULT_SNAPPOINT;
     } else {
       const middleSnapPoint = snapPoints[1] * dimensions.height;
