@@ -57,29 +57,8 @@ const rowSelectType: Record<
 // Get the number of TableHeaderCell components.
 // This is very complicated but the only way to iterate through the structure and get number of header cells.
 // Assuming number of header cells is the same as number of columns
-const getTableHeaderCellCount = (
-  children: (data: []) => React.ReactElement,
-  isVirtualized: boolean,
-): number => {
+const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): number => {
   const tableRootComponent = children([]);
-  if (isVirtualized) {
-    if (
-      React.isValidElement<{ header?: () => React.ReactElement }>(tableRootComponent) &&
-      tableRootComponent?.props.header
-    ) {
-      if (React.isValidElement(tableRootComponent?.props.header())) {
-        const tableHeaderRow = tableRootComponent.props.header().props.children;
-        if (
-          React.isValidElement<{ children?: React.ReactNode }>(tableHeaderRow) &&
-          tableHeaderRow.props.children
-        ) {
-          const tableHeaderCells = React.Children.toArray(tableHeaderRow.props.children);
-          return tableHeaderCells.length;
-        }
-      }
-    }
-  }
-
   if (tableRootComponent && React.isValidElement(tableRootComponent)) {
     const tableComponentArray = React.Children.toArray(tableRootComponent);
     if (React.isValidElement(tableComponentArray[0])) {
@@ -225,7 +204,7 @@ const _Table = <Item,>({
   });
 
   // Table Theme
-  const columnCount = getTableHeaderCellCount(children, isVirtualized);
+  const columnCount = getTableHeaderCellCount(children);
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
     ? `
   &:nth-of-type(1) {
