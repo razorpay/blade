@@ -179,14 +179,7 @@ const _Table = <Item,>({
   );
   const [hasHoverActions, setHasHoverActions] = React.useState(false);
   const tableRootComponent = children([]);
-  const isVirtualized = (React.isValidElement<{
-    header?: () => React.ReactElement;
-    children?: React.ReactNode;
-  }>(tableRootComponent) &&
-    Array.isArray(tableRootComponent.props?.children) &&
-    tableRootComponent.props.children?.length &&
-    React.isValidElement<{ children?: React.ReactNode }>(tableRootComponent.props?.children[1]) &&
-    typeof tableRootComponent.props?.children[1]?.props.children === 'function') as boolean;
+  const isVirtualized = getComponentId(tableRootComponent) === ComponentIds.VirtualizedTable;
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isVirtualized ?? isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
