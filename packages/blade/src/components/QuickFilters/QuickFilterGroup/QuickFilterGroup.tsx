@@ -6,11 +6,15 @@ import BaseBox from '~components/Box/BaseBox';
 import { CheckboxGroup } from '~components/Checkbox';
 
 const QuickFilterWrapper = ({
-  selectionType,
   children,
   ...rest
-}: Pick<QuickFilterGroupProps, 'selectionType' | 'children'>): React.ReactElement => {
-  const { selectedQuickFilters, setSelectedQuickFilters, onChange } = useQuickFilterGroupContext();
+}: Pick<QuickFilterGroupProps, 'children'>): React.ReactElement => {
+  const {
+    selectedQuickFilters,
+    setSelectedQuickFilters,
+    selectionType,
+    onChange,
+  } = useQuickFilterGroupContext();
 
   if (selectionType === 'single') {
     return (
@@ -53,7 +57,7 @@ const QuickFilterGroup = ({
     <QuickFilterGroupProvider
       value={{ selectionType, onChange, selectedQuickFilters, setSelectedQuickFilters }}
     >
-      <QuickFilterWrapper selectionType={selectionType} {...rest}>
+      <QuickFilterWrapper {...rest}>
         <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {children}
         </BaseBox>

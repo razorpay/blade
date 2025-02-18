@@ -1,3 +1,2 @@
-import { QuickFilterGroup } from './QuickFilterGroup';
-import { useQuickFilterGroupContext, QuickFilterGroupProvider } from './QuickFilterContext';
-export { QuickFilterGroup, useQuickFilterGroupContext, QuickFilterGroupProvider };
+export { QuickFilterGroup } from './QuickFilterGroup';
+export { useQuickFilterGroupContext, QuickFilterGroupProvider } from './QuickFilterContext';
