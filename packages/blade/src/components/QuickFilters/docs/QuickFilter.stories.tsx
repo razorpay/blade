@@ -56,14 +56,19 @@ const QuickFilterTemplate: StoryFn<typeof QuickFilterGroup> = (args) => {
   return (
     <QuickFilterGroup {...args}>
       <QuickFilter
-        title="Older than 1 year"
-        value="older_than_1_year"
-        trailingElement={<Counter value={234} color="information" />}
+        title="All"
+        value="All"
+        trailingElement={<Counter value={400} color="information" />}
       />
       <QuickFilter
-        title="Older than 2 year"
-        value="older_than_2_year"
+        title="Captured"
+        value="Captured"
         trailingElement={<Counter value={234} color="positive" />}
+      />
+      <QuickFilter
+        title="Failed"
+        value="Failed"
+        trailingElement={<Counter value={234} color="negative" />}
       />
     </QuickFilterGroup>
   );
@@ -104,14 +109,19 @@ const QuickFilterMultiple: StoryFn<typeof QuickFilterGroup> = () => {
   return (
     <QuickFilterGroup selectionType="multiple">
       <QuickFilter
-        title="Older than 1 year"
-        value="older_than_1_year"
-        trailingElement={<Counter value={234} color="information" />}
+        title="Captured"
+        value="Captured"
+        trailingElement={<Counter value={234} color="positive" />}
       />
       <QuickFilter
-        title="Older than 2 year"
-        value="older_than_2_year"
-        trailingElement={<Counter value={234} color="positive" />}
+        title="Failed"
+        value="Failed"
+        trailingElement={<Counter value={234} color="negative" />}
+      />
+      <QuickFilter
+        title="Pending"
+        value="Pending"
+        trailingElement={<Counter value={234} color="neutral" />}
       />
     </QuickFilterGroup>
   );

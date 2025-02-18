@@ -29,6 +29,9 @@ const QuickFilterCard = ({
       alignItems="center"
       {...makeAnalyticsAttribute(rest)}
       {...metaAttribute({ testID })}
+      paddingY="spacing.3"
+      paddingLeft="spacing.3"
+      paddingRight="spacing.4"
     >
       <Box
         display="flex"
@@ -63,7 +66,7 @@ const QuickFilter = ({
   const isQuickFilterSelected = selectedQuickFilters.includes(value);
   return (
     <Card
-      padding="spacing.3"
+      padding="spacing.0"
       as="label"
       accessibilityLabel={title}
       borderRadius="medium"
