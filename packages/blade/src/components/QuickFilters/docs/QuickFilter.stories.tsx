@@ -12,19 +12,22 @@ import { Counter } from '~components/Counter';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="QuickFilterGroup"
-      componentDescription="QuickFilterGroup is a component that is used to group QuickFilter components."
+      componentName="QuickFilter"
+      componentDescription="QuickFilter & QuickFilterGroups can be used to show a list of filters that can be selected by the user."
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { QuickFilterGroup } from '@razorpay/blade/components';
+        import { QuickFilterGroup,QuickFilter  } from '@razorpay/blade/components';
         
         function App() {
           return (
-            <QuickFilterGroup > Hi, from ray! </QuickFilterGroup>
+            <QuickFilterGroup >
+             <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />{' '}
+             <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />{' '}
+           </QuickFilterGroup>
           )
         }
 
@@ -36,7 +39,7 @@ const Page = (): React.ReactElement => {
 };
 
 export default {
-  title: 'Components/QuickFilters',
+  title: 'Components/QuickFilter & QuickFilterGroup',
   component: QuickFilterGroup,
   tags: ['autodocs'],
   argTypes: {

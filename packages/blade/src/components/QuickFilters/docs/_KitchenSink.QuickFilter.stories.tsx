@@ -21,7 +21,7 @@ export const QuickFilter = (): JSX.Element => {
 };
 
 export default {
-  title: 'Components/KitchenSink/QuickFilter',
+  title: 'Components/KitchenSink/QuickFilter & QuickFilterGroup',
   component: QuickFilter,
   parameters: {
     // enable Chromatic's snapshots only for kitchen sink
