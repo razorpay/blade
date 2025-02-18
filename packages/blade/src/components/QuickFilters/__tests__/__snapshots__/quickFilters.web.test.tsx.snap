@@ -325,7 +325,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
           >
             <div
               class="c2"
-              data-blade-component="box"
+              data-blade-component="base-box"
             >
               <label
                 aria-label="Title1"
@@ -343,7 +343,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                   >
                     <div
                       class="c7"
-                      data-blade-component="box"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c8"
@@ -433,7 +433,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                   >
                     <div
                       class="c7"
-                      data-blade-component="box"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c8"
