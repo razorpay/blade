@@ -16,8 +16,6 @@ const QuickFilterContent = ({
   trailingElement,
   selectionType = 'single',
   isSelected = false,
-  testID,
-  ...rest
 }: QuickFilterContentProps): React.ReactElement => {
   return (
     <BaseBox
@@ -27,8 +25,6 @@ const QuickFilterContent = ({
       width="fit-content"
       justifyContent="center"
       alignItems="center"
-      {...makeAnalyticsAttribute(rest)}
-      {...metaAttribute({ testID })}
       paddingY="spacing.3"
       paddingLeft="spacing.3"
       paddingRight="spacing.4"
@@ -59,6 +55,7 @@ const QuickFilter = ({
   title,
   value,
   trailingElement,
+  testID,
   ...rest
 }: QuickFilterProps): React.ReactElement => {
   const { selectedQuickFilters, selectionType } = useQuickFilterGroupContext();
@@ -72,6 +69,8 @@ const QuickFilter = ({
       borderRadius="medium"
       elevation="none"
       isSelected={isQuickFilterSelected}
+      {...makeAnalyticsAttribute(rest)}
+      {...metaAttribute({ testID })}
     >
       <CardBody>
         <QuickFilterContent
