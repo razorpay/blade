@@ -18,7 +18,7 @@ const QuickFilterCard = ({
   isSelected = false,
   testID,
   ...rest
-}: QuickFilterCardProps): JSX.Element => {
+}: QuickFilterCardProps): React.ReactElement => {
   return (
     <BaseBox
       display="flex"
@@ -57,7 +57,7 @@ const QuickFilter = ({
   value,
   trailingElement,
   ...rest
-}: QuickFilterProps): React.ReactNode => {
+}: QuickFilterProps): React.ReactElement => {
   const { selectedQuickFilters, selectionType } = useQuickFilterGroupContext();
 
   const isQuickFilterSelected = selectedQuickFilters.includes(value);
