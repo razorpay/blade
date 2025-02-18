@@ -417,8 +417,10 @@ type ListViewFiltersProps = {
 
   /**
    * Callback when user clicks search button
+   *
+   * This prop also controls whether search should be shown or not. When this is undefined, search is removed from layout
    */
-  onSearch: ({ value, searchType }: OnSearchArgs) => void;
+  onSearch?: ({ value, searchType }: OnSearchArgs) => void;
 };
 ```
 
@@ -487,6 +489,9 @@ export type QuickFilterProps = {
   - FilterView
   - TableFilterView
 
+  - **Conclusion:**
+    - We decided to call it ListView due to its familiarity in Razorpay and confusion it can cause to existing developers and designers in razorpay
+
 - ### Do we want to control layout or not?
 
   Currently proposed API assumes that we are controlling which item is placed where and thus proposes a Layout Component of ListView. I've mentioned the pros and cons of layout component. The API and alternate api is proposed above.
@@ -496,9 +501,16 @@ export type QuickFilterProps = {
   - If we go with Layout component, then the tradeoff is the educational effort of teaching consumer which part of the UI comes directly from blade as layout component.
   - If we go without Layout component, tradeoff is not being able to update the layout changes on consumer if something updates in dev.
 
+  - **Conclusion:**
+    - We decided to go ahead with layout components in this case because we see near-future usecases where we might have to move items / change visuals of internal components (e.g. going from 2 inputs to search to InputGroup component). Doing this without layout components would cause dev efforts on consumer-side everytime we decide to change the layout.
+    - We discussed it against the tradeoff of introducing new components vs letting people use the existing components like SearchInput etc. Although technical limitations of not being able to ship layout changes takes more priority over the educational effort of teaching these new components.
+
 - ### InputGroup
 
   Current designs have search input clubbed with the select input which is part of the scope of InputGroup component. Do we want to build InputGroup right now or leave that for later and go with intermediate UI?
+
+  - **Conclusion:**
+    - We will be building this later. Currently we'll ship it with 2 inputs instead.
 
 ## References
 
