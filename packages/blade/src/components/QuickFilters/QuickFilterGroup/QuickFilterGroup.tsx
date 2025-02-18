@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { QuickFilterGroupProps } from '../types';
+import type { QuickFilterGroupProps, QuickFilterWrapperProps } from '../types';
 import { QuickFilterGroupProvider, useQuickFilterGroupContext } from './QuickFilterContext';
 import { RadioGroup } from '~components/Radio';
 import BaseBox from '~components/Box/BaseBox';
@@ -7,13 +7,14 @@ import { CheckboxGroup } from '~components/Checkbox';
 
 const QuickFilterWrapper = ({
   children,
+  onChange,
+  setSelectedQuickFilters,
   ...rest
-}: Pick<QuickFilterGroupProps, 'children'>): React.ReactElement => {
+}: QuickFilterWrapperProps): React.ReactElement => {
   const {
     selectedQuickFilters,
-    setSelectedQuickFilters,
+
     selectionType,
-    onChange,
   } = useQuickFilterGroupContext();
 
   if (selectionType === 'single') {
@@ -54,10 +55,12 @@ const QuickFilterGroup = ({
 }: QuickFilterGroupProps): React.ReactElement => {
   const [selectedQuickFilters, setSelectedQuickFilters] = useState<string[]>([]);
   return (
-    <QuickFilterGroupProvider
-      value={{ selectionType, onChange, selectedQuickFilters, setSelectedQuickFilters }}
-    >
-      <QuickFilterWrapper {...rest}>
+    <QuickFilterGroupProvider value={{ selectionType, selectedQuickFilters }}>
+      <QuickFilterWrapper
+        onChange={onChange}
+        setSelectedQuickFilters={setSelectedQuickFilters}
+        {...rest}
+      >
         <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {children}
         </BaseBox>

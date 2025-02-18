@@ -42,4 +42,17 @@ type QuickFilterContentProps = Pick<QuickFilterProps, 'trailingElement' | 'value
     isSelected?: boolean;
   };
 
-export type { QuickFilterGroupProps, QuickFilterProps, QuickFilterContentProps };
+type QuickFilterGroupContextType = Pick<QuickFilterGroupProps, 'selectionType'> & {
+  selectedQuickFilters: string[];
+};
+
+type QuickFilterWrapperProps = Pick<QuickFilterGroupProps, 'children' | 'onChange'> & {
+  setSelectedQuickFilters: React.Dispatch<React.SetStateAction<NonNullable<string[]>>>;
+};
+export type {
+  QuickFilterGroupProps,
+  QuickFilterProps,
+  QuickFilterContentProps,
+  QuickFilterGroupContextType,
+  QuickFilterWrapperProps,
+};
