@@ -1,5 +1,5 @@
 import React from 'react';
-import type { QuickFilterProps, QuickFilterCardProps } from './types';
+import type { QuickFilterProps, QuickFilterContentProps } from './types';
 import { useQuickFilterGroupContext } from './QuickFilterGroup';
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
@@ -10,7 +10,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 
-const QuickFilterCard = ({
+const QuickFilterContent = ({
   value,
   title,
   trailingElement,
@@ -18,7 +18,7 @@ const QuickFilterCard = ({
   isSelected = false,
   testID,
   ...rest
-}: QuickFilterCardProps): React.ReactElement => {
+}: QuickFilterContentProps): React.ReactElement => {
   return (
     <BaseBox
       display="flex"
@@ -74,7 +74,7 @@ const QuickFilter = ({
       isSelected={isQuickFilterSelected}
     >
       <CardBody>
-        <QuickFilterCard
+        <QuickFilterContent
           value={value}
           title={title}
           trailingElement={trailingElement}

@@ -35,11 +35,11 @@ type QuickFilterProps = {
 } & TestID &
   DataAnalyticsAttribute;
 
-type QuickFilterCardProps = Pick<QuickFilterProps, 'trailingElement' | 'value' | 'title'> &
+type QuickFilterContentProps = Pick<QuickFilterProps, 'trailingElement' | 'value' | 'title'> &
   Pick<QuickFilterGroupProps, 'selectionType'> &
   TestID &
   DataAnalyticsAttribute & {
     isSelected?: boolean;
   };
 
-export type { QuickFilterGroupProps, QuickFilterProps, QuickFilterCardProps };
+export type { QuickFilterGroupProps, QuickFilterProps, QuickFilterContentProps };
