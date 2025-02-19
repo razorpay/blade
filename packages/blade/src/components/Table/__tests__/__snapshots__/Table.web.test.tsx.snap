@@ -10045,7 +10045,7 @@ exports[`<Table /> should render virtualized table 1`] = `
         class="c1 css-oiy9me-Table"
         data-blade-component="table"
         data-table-library_table=""
-        role="grid"
+        role="table"
       >
         <div
           style="overflow: visible; height: 0px; width: 0px;"

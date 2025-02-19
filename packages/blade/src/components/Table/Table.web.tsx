@@ -537,7 +537,7 @@ const _Table = <Item,>({
           )}
           {toolbar}
           <StyledReactTable
-            role={isVirtualized ? 'grid' : 'table'}
+            role="table"
             layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
             data={data}
             // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
