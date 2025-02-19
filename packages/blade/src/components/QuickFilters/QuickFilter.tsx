@@ -54,7 +54,7 @@ const QuickFilterContent = ({
 const QuickFilter = ({
   title,
   value,
-  trailingElement,
+  trailing,
   testID,
   ...rest
 }: QuickFilterProps): React.ReactElement => {
@@ -76,7 +76,7 @@ const QuickFilter = ({
         <QuickFilterContent
           value={value}
           title={title}
-          trailingElement={trailingElement}
+          trailing={trailing}
           selectionType={selectionType}
           isSelected={isQuickFilterSelected}
           {...rest}

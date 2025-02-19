@@ -29,13 +29,13 @@ type QuickFilterProps = {
   */
   value: string;
   /*
-        trailingElement is a React node that is displayed after the quick filter.
+        trailing is a React node that is displayed after the quick filter.
   */
-  trailingElement?: React.ReactNode;
+  trailing?: React.ReactNode;
 } & TestID &
   DataAnalyticsAttribute;
 
-type QuickFilterContentProps = Pick<QuickFilterProps, 'trailingElement' | 'value' | 'title'> &
+type QuickFilterContentProps = Pick<QuickFilterProps, 'trailing' | 'value' | 'title'> &
   Pick<QuickFilterGroupProps, 'selectionType'> &
   TestID &
   DataAnalyticsAttribute & {
