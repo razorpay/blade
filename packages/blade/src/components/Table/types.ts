@@ -479,95 +479,79 @@ type TableToolbarActionsProps = {
 
 type VirtualizedWrapperProps = {
   /**
-   *   <TableComponent
-   *      data={data}
-   *      rowDensity="compact"
-   *      selectionType="multiple"
-   *      height="700px"
-   *      toolbar={
-   *        <TableToolbar>
-   *          <TableToolbarActions>
-   *            <Button variant="secondary" marginRight="spacing.2">
-   *              Export
-   *            </Button>
-   *            <Button>Payout</Button>
-   *          </TableToolbarActions>
-   *        </TableToolbar>
-   *      }
-   *    >
-   *      {(tableData) => (
-   *        <TableVirtualizedWrapper tableData={tableData}>
-   *          <TableHeader>
-   *            <TableHeaderRow>
-   *              <TableHeaderCell>ID</TableHeaderCell>
-   *              <TableHeaderCell>Amount</TableHeaderCell>
-   *              <TableHeaderCell>Account</TableHeaderCell>
-   *              <TableHeaderCell>Date</TableHeaderCell>
-   *              <TableHeaderCell>Method</TableHeaderCell>
-   *              <TableHeaderCell>Status</TableHeaderCell>
-   *            </TableHeaderRow>
-   *          </TableHeader>
-   *          <TableBody<Item>>
-   *            {(tableItem, index) => (
-   *              <TableRow
-   *                key={index}
-   *                item={tableItem}
-   *                hoverActions={
-   *                  <>
-   *                    <IconButton
-   *                      accessibilityLabel="Copy"
-   *                      isHighlighted
-   *                      icon={CopyIcon}
-   *                      onClick={() => console.log('copy', tableItem)}
-   *                    />
-   *                    <IconButton
-   *                      accessibilityLabel="Delete"
-   *                      isHighlighted
-   *                      icon={TrashIcon}
-   *                      onClick={() => console.log('delete', tableItem)}
-   *                    />
-   *                  </>
-   *                }
-   *              >
-   *                <TableCell>
-   *                  <Code size="medium">{tableItem.paymentId}</Code>
-   *                </TableCell>
-   *                <TableCell>
-   *                  <Amount value={tableItem.amount} />
-   *                </TableCell>
-   *                <TableCell>{tableItem.account}</TableCell>
-   *                <TableCell>
-   *                  {tableItem.date?.toLocaleDateString('en-IN', {
-   *                    year: 'numeric',
-   *                    month: '2-digit',
-   *                    day: '2-digit',
-   *                  })}
-   *                </TableCell>
-   *                <TableCell>{tableItem.method}</TableCell>
-   *                <TableCell>
-   *                  <Badge
-   *                    size="medium"
-   *                    color={
-   *                      tableItem.status === 'Completed'
-   *                        ? 'positive'
-   *                        : tableItem.status === 'Pending'
-   *                        ? 'notice'
-   *                        : tableItem.status === 'Failed'
-   *                        ? 'negative'
-   *                        : 'default'
-   *                    }
-   *                  >
-   *                    {tableItem.status}
-   *                  </Badge>
-   *                </TableCell>
-   *              </TableRow>
-   *            )}
-   *          </TableBody>
-   *        </TableVirtualizedWrapper>
-   *      )}
-   *    </TableComponent>
+   *
+   * @example
+   *      <TableComponent
+   *     data={data}
+   *     height={'500px'}
+   *     rowDensity="comfortable"
+   *     selectionType="multiple"
+   *     toolbar={
+   *       <TableToolbar>
+   *         <TableToolbarActions>
+   *           <Button variant="secondary" marginRight="spacing.2">
+   *             Export
+   *           </Button>
+   *           <Button>Payout</Button>
+   *         </TableToolbarActions>
+   *       </TableToolbar>
+   *     }
+   *   >
+   *     {() => (
+   *       <TableVirtualizedWrapper >
+   *         <TableHeader>
+   *           <TableHeaderRow>
+   *             <TableHeaderCell>ID</TableHeaderCell>
+   *             <TableHeaderCell>Amount</TableHeaderCell>
+   *             <TableHeaderCell>Account</TableHeaderCell>
+   *             <TableHeaderCell>Date</TableHeaderCell>
+   *             <TableHeaderCell>Method</TableHeaderCell>
+   *             <TableHeaderCell>Status</TableHeaderCell>
+   *           </TableHeaderRow>
+   *         </TableHeader>
+   *         <TableBody>
+   *           {(tableItem: Item, index) => (
+   *             <TableRow key={index} item={tableItem}>
+   *               <TableCell>
+   *                 <Code size="medium">{tableItem.paymentId}</Code>
+   *               </TableCell>
+   *               <TableCell>
+   *                 <Amount value={tableItem.amount} />
+   *               </TableCell>
+   *               <TableCell>{tableItem.account}</TableCell>
+   *               <TableCell>
+   *                 {tableItem.date?.toLocaleDateString('en-IN', {
+   *                   year: 'numeric',
+   *                   month: '2-digit',
+   *                   day: '2-digit',
+   *                 })}
+   *               </TableCell>
+   *               <TableCell>{tableItem.method}</TableCell>
+   *               <TableCell>
+   *                 <Badge
+   *                   size="medium"
+   *                   color={
+   *                     tableItem.status === 'Completed'
+   *                       ? 'positive'
+   *                       : tableItem.status === 'Pending'
+   *                       ? 'notice'
+   *                       : tableItem.status === 'Failed'
+   *                       ? 'negative'
+   *                       : 'default'
+   *                   }
+   *                 >
+   *                   {tableItem.status}
+   *                 </Badge>
+   *               </TableCell>
+   *             </TableRow>
+   *           )}
+   *         </TableBody>
+   *       </TableVirtualizedWrapper>
+   *     )}
+   *   </TableComponent>
    *
    **/
+  children: React.ReactNode;
   /**
    * headerHeight is the height of the header
    **/
@@ -581,7 +565,6 @@ type VirtualizedWrapperProps = {
    *
    **/
   rowHeight?: (item: TableLibraryTableNode, index: number) => number;
-  children: React.ReactNode;
 };
 
 export type {
