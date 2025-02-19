@@ -110,6 +110,13 @@ type CarouselProps = {
    * Sets the height of the carousel
    */
   height?: BoxProps['height'];
+  /**
+   * should show navigation buttons in mobile
+   *
+   * @default true
+   *
+   */
+  showNavigationButtonsInMobile?: boolean;
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
 
