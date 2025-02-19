@@ -13,7 +13,6 @@ const QuickFilterWrapper = ({
 }: QuickFilterWrapperProps): React.ReactElement => {
   const {
     selectedQuickFilters,
-
     selectionType,
   } = useQuickFilterGroupContext();
 
