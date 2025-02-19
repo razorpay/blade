@@ -7,7 +7,7 @@ import type {
   TableProps,
   TablePaginationType,
   TableHeaderRowProps,
-  TableNode as localTableNode,
+  TableNode as LocalTableNode,
 } from './types';
 
 export type TableContextType<Item> = {
@@ -44,7 +44,7 @@ export type TableContextType<Item> = {
   columnCount: number;
   gridTemplateColumns: string | undefined;
   isVirtualized?: boolean;
-  tableData: localTableNode<Item>[];
+  tableData: LocalTableNode<Item>[];
 };
 
 const TableContext = React.createContext<TableContextType<unknown>>({
