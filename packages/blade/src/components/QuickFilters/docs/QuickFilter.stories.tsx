@@ -8,6 +8,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Counter } from '~components/Counter';
+import { Tooltip } from '~components/Tooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -55,20 +56,16 @@ export default {
 const QuickFilterTemplate: StoryFn<typeof QuickFilterGroup> = (args) => {
   return (
     <QuickFilterGroup {...args}>
-      <QuickFilter
-        title="All"
-        value="All"
-        trailingElement={<Counter value={400} color="information" />}
-      />
+      <QuickFilter title="All" value="All" trailing={<Counter value={400} color="information" />} />
       <QuickFilter
         title="Captured"
         value="Captured"
-        trailingElement={<Counter value={234} color="positive" />}
+        trailing={<Counter value={234} color="positive" />}
       />
       <QuickFilter
         title="Failed"
         value="Failed"
-        trailingElement={<Counter value={234} color="negative" />}
+        trailing={<Counter value={234} color="negative" />}
       />
     </QuickFilterGroup>
   );
@@ -86,17 +83,17 @@ const QuickFilterSingle: StoryFn<typeof QuickFilterGroup> = () => {
       <QuickFilter
         title="Unresolved"
         value="unresolved"
-        trailingElement={<Counter value={234} color="information" />}
+        trailing={<Counter value={234} color="information" />}
       />
       <QuickFilter
         title="Resolved"
         value="resolved"
-        trailingElement={<Counter value={234} color="positive" />}
+        trailing={<Counter value={234} color="positive" />}
       />
       <QuickFilter
         title="In Progress"
         value="in_progress"
-        trailingElement={<Counter value={234} color="neutral" />}
+        trailing={<Counter value={234} color="neutral" />}
       />
     </QuickFilterGroup>
   );
@@ -111,17 +108,17 @@ const QuickFilterMultiple: StoryFn<typeof QuickFilterGroup> = () => {
       <QuickFilter
         title="Captured"
         value="Captured"
-        trailingElement={<Counter value={234} color="positive" />}
+        trailing={<Counter value={234} color="positive" />}
       />
       <QuickFilter
         title="Failed"
         value="Failed"
-        trailingElement={<Counter value={234} color="negative" />}
+        trailing={<Counter value={234} color="negative" />}
       />
       <QuickFilter
         title="Pending"
         value="Pending"
-        trailingElement={<Counter value={234} color="neutral" />}
+        trailing={<Counter value={234} color="neutral" />}
       />
     </QuickFilterGroup>
   );
@@ -129,3 +126,88 @@ const QuickFilterMultiple: StoryFn<typeof QuickFilterGroup> = () => {
 
 export const QuickFilterMultipleStory = QuickFilterMultiple.bind({});
 QuickFilterMultipleStory.storyName = 'QuickFilter Multiple Selection';
+
+const QuickFilterWithDefault: StoryFn<typeof QuickFilterGroup> = () => {
+  return (
+    <QuickFilterGroup selectionType="single" defaultValue="Captured">
+      <QuickFilter
+        title="Captured"
+        value="Captured"
+        trailing={<Counter value={234} color="positive" />}
+      />
+      <QuickFilter
+        title="Failed"
+        value="Failed"
+        trailing={<Counter value={234} color="negative" />}
+      />
+      <QuickFilter
+        title="Pending"
+        value="Pending"
+        trailing={<Counter value={234} color="neutral" />}
+      />
+    </QuickFilterGroup>
+  );
+};
+export const QuickFilterWithDefaultStory = QuickFilterWithDefault.bind({});
+QuickFilterWithDefaultStory.storyName = 'QuickFilter with default value';
+
+const QuickFilterControlled: StoryFn<typeof QuickFilterGroup> = () => {
+  const [value, setValue] = React.useState<string | string[]>(['Captured']);
+  return (
+    <QuickFilterGroup
+      selectionType="multiple"
+      value={value}
+      onChange={({ values }) => setValue(values ?? [])}
+    >
+      <QuickFilter
+        title="Captured"
+        value="Captured"
+        trailing={<Counter value={234} color="positive" />}
+      />
+      <QuickFilter
+        title="Failed"
+        value="Failed"
+        trailing={<Counter value={234} color="negative" />}
+      />
+      <QuickFilter
+        title="Pending"
+        value="Pending"
+        trailing={<Counter value={234} color="neutral" />}
+      />
+    </QuickFilterGroup>
+  );
+};
+
+export const QuickFilterControlledStory = QuickFilterControlled.bind({});
+QuickFilterControlledStory.storyName = 'QuickFilter Controlled';
+
+const QuickFiltersWithTooltip: StoryFn<typeof QuickFilterGroup> = () => {
+  return (
+    <QuickFilterGroup selectionType="single">
+      <Tooltip content="Filter all captured tickets" placement="top">
+        <QuickFilter
+          title="Captured"
+          value="Captured"
+          trailing={<Counter value={234} color="positive" />}
+        />
+      </Tooltip>
+      <Tooltip content="Filter all failed tickets" placement="top">
+        <QuickFilter
+          title="Failed"
+          value="Failed"
+          trailing={<Counter value={234} color="negative" />}
+        />
+      </Tooltip>
+      <Tooltip content="Filter all pending tickets" placement="top">
+        <QuickFilter
+          title="Pending"
+          value="Pending"
+          trailing={<Counter value={234} color="neutral" />}
+        />
+      </Tooltip>
+    </QuickFilterGroup>
+  );
+};
+
+export const QuickFiltersWithTooltipStory = QuickFiltersWithTooltip.bind({});
+QuickFiltersWithTooltipStory.storyName = 'QuickFilters with Tooltip';

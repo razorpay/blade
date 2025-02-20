@@ -1,23 +1,6 @@
+import type { BladeCommonEvents } from '~components/types';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-
-type QuickFilterGroupProps = {
-  /*
-   onChange is a function that is called when the selected quick filter changes.
-   it returns an object with either value or values.
-   values is an array of strings that are the selected quick filters if the selectionType is 'multiple'.
-   value is a string that is the selected quick filter if the selectionType is 'single'. 
-*/
-  onChange?: (params: { values?: string[] | string }) => void;
-  /*
-       selectionType is a string that can be either 'single' or 'multiple'.
- */
-  selectionType: 'single' | 'multiple';
-  /*
-         children is an array of QuickFilter components.
-  */
-  children: React.ReactNode;
-} & TestID &
-  DataAnalyticsAttribute;
+import type { ControllableStateSetter } from '~utils/useControllable';
 
 type QuickFilterProps = {
   /*
@@ -33,26 +16,95 @@ type QuickFilterProps = {
   */
   trailing?: React.ReactNode;
 } & TestID &
+  BladeCommonEvents &
   DataAnalyticsAttribute;
 
+type QuickFilterGroupCommomProps = {
+  /**
+   * Sets the position of the label
+   *
+   * @default 'top'
+   */
+  labelPosition?: 'top' | 'left';
+  /**
+   * Help text of the chip group
+   */
+  helpText?: string;
+  /**
+   * Error text of the chip group
+   * Renders when `validationState` is set to 'error'
+   *
+   * Overrides helpText
+   */
+  errorText?: string;
+  /**
+   * Sets the validation state of the ChipGroup
+   */
+  validationState?: 'error' | 'none';
+  /**
+   * Specifies the name attribute for the  component.
+   * When provided, this attribute ensures that the QuickFilter elements within the group are semantically associated, allowing them to be grouped logically for form submission.
+   * This can be particularly useful in scenarios where the QuickFilter is part of a larger form and needs to be identified as a distinct entity when the form is submitted.
+   * If not provided, a default unique identifier will be generated internally.
+   */
+  name?: string;
+  /**
+   * Sets the initial value of the QuickFilter component.
+   */
+  defaultValue?: string | string[];
+  /**
+   * Value of the QuickFilter group
+   * Acts as a controlled component by specifying the QuickFilter value
+   * Use `onChange` to update its value
+   */
+  value?: string | string[];
+  /*
+   onChange is a function that is called when the selected quick filter changes.
+   it returns an object with either value or values.
+   values is an array of strings that are the selected quick filters if the selectionType is 'multiple'.
+   value is a string that is the selected quick filter if the selectionType is 'single'. 
+*/
+  onChange?: (params: { name: string; values?: string[] | string }) => void;
+  /*
+     selectionType is a string that can be either 'single' or 'multiple'.
+*/
+  selectionType: 'single' | 'multiple';
+  /*
+       children is an array of QuickFilter components.
+*/
+  children: React.ReactNode;
+};
+
+type QuickFilterGroupProps = QuickFilterGroupCommomProps & TestID & DataAnalyticsAttribute;
+
 type QuickFilterContentProps = Pick<QuickFilterProps, 'trailing' | 'value' | 'title'> &
-  Pick<QuickFilterGroupProps, 'selectionType'> &
+  Pick<QuickFilterGroupCommomProps, 'selectionType'> &
   TestID &
   DataAnalyticsAttribute & {
     isSelected?: boolean;
   };
 
-type QuickFilterGroupContextType = Pick<QuickFilterGroupProps, 'selectionType'> & {
+type QuickFilterGroupContextType = Pick<QuickFilterGroupCommomProps, 'selectionType'> & {
   selectedQuickFilters: string[];
 };
 
-type QuickFilterWrapperProps = Pick<QuickFilterGroupProps, 'children' | 'onChange'> & {
-  setSelectedQuickFilters: React.Dispatch<React.SetStateAction<NonNullable<string[]>>>;
+type QuickFilterWrapperProps = Pick<QuickFilterGroupCommomProps, 'children' | 'onChange'> & {
+  setSelectedQuickFilters: ControllableStateSetter<string[]>;
 };
+
+type State = {
+  value: string[];
+  isChecked(value: string): boolean;
+  addValue(value: string): void;
+  removeValue(value: string): void;
+};
+
 export type {
+  State,
   QuickFilterGroupProps,
   QuickFilterProps,
   QuickFilterContentProps,
   QuickFilterGroupContextType,
   QuickFilterWrapperProps,
+  QuickFilterGroupCommomProps,
 };

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { QuickFilterGroupProps, QuickFilterWrapperProps } from '../types';
 import { QuickFilterGroupProvider, useQuickFilterGroupContext } from './QuickFilterContext';
 import { RadioGroup } from '~components/Radio';
 import BaseBox from '~components/Box/BaseBox';
 import { CheckboxGroup } from '~components/Checkbox';
+import { useControllableState } from '~utils/useControllable';
 
 const QuickFilterWrapper = ({
   children,
@@ -11,18 +12,14 @@ const QuickFilterWrapper = ({
   setSelectedQuickFilters,
   ...rest
 }: QuickFilterWrapperProps): React.ReactElement => {
-  const {
-    selectedQuickFilters,
-    selectionType,
-  } = useQuickFilterGroupContext();
+  const { selectedQuickFilters, selectionType } = useQuickFilterGroupContext();
 
   if (selectionType === 'single') {
     return (
       <RadioGroup
         value={selectedQuickFilters[0]}
         onChange={({ value }) => {
-          setSelectedQuickFilters([value]);
-          onChange?.({ values: value });
+          setSelectedQuickFilters(() => [value]);
         }}
         size="small"
         {...rest}
@@ -35,8 +32,7 @@ const QuickFilterWrapper = ({
     <CheckboxGroup
       value={selectedQuickFilters}
       onChange={({ values }) => {
-        setSelectedQuickFilters(values);
-        onChange?.({ values });
+        setSelectedQuickFilters(() => values);
       }}
       size="small"
       {...rest}
@@ -47,12 +43,25 @@ const QuickFilterWrapper = ({
 };
 
 const QuickFilterGroup = ({
-  onChange,
-  selectionType,
   children,
+  testID,
+  value,
+  defaultValue,
+  onChange,
+  name,
+  selectionType,
+  validationState,
   ...rest
 }: QuickFilterGroupProps): React.ReactElement => {
-  const [selectedQuickFilters, setSelectedQuickFilters] = useState<string[]>([]);
+  const [selectedQuickFilters, setSelectedQuickFilters] = useControllableState({
+    value: (value && selectionType === 'single' ? [value] : value) as string[] | undefined,
+    // If selectionType is single, we need to convert the value to an array
+    defaultValue: (defaultValue && selectionType === 'single'
+      ? [defaultValue]
+      : defaultValue ?? []) as string[] | undefined,
+    //TODO: Fix this
+    onChange: (values: string[]) => onChange?.({ values, name: '' }),
+  });
   return (
     <QuickFilterGroupProvider value={{ selectionType, selectedQuickFilters }}>
       <QuickFilterWrapper
