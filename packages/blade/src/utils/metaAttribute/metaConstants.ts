@@ -56,6 +56,7 @@ export const MetaConstants = {
   ListItemLink: 'list-item-link',
   ListItemText: 'list-item-text',
   ListView: 'list-view',
+  ListViewFilter: 'list-view-filter',
   OTPInput: 'otp-input',
   PasswordInput: 'password-input',
   SearchInput: 'search-input',
