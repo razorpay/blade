@@ -133,6 +133,7 @@ import DollarsIconComponent from './DollarsIcon';
 import DotIconComponent from './DotIcon';
 import DownloadCloudIconComponent from './DownloadCloudIcon';
 import DownloadIconComponent from './DownloadIcon';
+import DragHandleIconComponent from './DragHandleIcon';
 import DropletIconComponent from './DropletIcon';
 import EcommerceIconComponent from './EcommerceIcon';
 import EditComposeIconComponent from './EditComposeIcon';
@@ -518,6 +519,7 @@ const iconMap: Record<string, IconComponent> = {
   DotIcon: DotIconComponent,
   DownloadCloudIcon: DownloadCloudIconComponent,
   DownloadIcon: DownloadIconComponent,
+  DragHandleIcon: DragHandleIconComponent,
   DropletIcon: DropletIconComponent,
   EcommerceIcon: EcommerceIconComponent,
   EditComposeIcon: EditComposeIconComponent,
