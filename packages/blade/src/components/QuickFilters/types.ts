@@ -21,27 +21,6 @@ type QuickFilterProps = {
 
 type QuickFilterGroupCommomProps = {
   /**
-   * Sets the position of the label
-   *
-   * @default 'top'
-   */
-  labelPosition?: 'top' | 'left';
-  /**
-   * Help text of the chip group
-   */
-  helpText?: string;
-  /**
-   * Error text of the chip group
-   * Renders when `validationState` is set to 'error'
-   *
-   * Overrides helpText
-   */
-  errorText?: string;
-  /**
-   * Sets the validation state of the ChipGroup
-   */
-  validationState?: 'error' | 'none';
-  /**
    * Specifies the name attribute for the  component.
    * When provided, this attribute ensures that the QuickFilter elements within the group are semantically associated, allowing them to be grouped logically for form submission.
    * This can be particularly useful in scenarios where the QuickFilter is part of a larger form and needs to be identified as a distinct entity when the form is submitted.
