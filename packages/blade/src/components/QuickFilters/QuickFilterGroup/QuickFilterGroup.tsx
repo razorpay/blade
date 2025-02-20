@@ -5,6 +5,7 @@ import { RadioGroup } from '~components/Radio';
 import BaseBox from '~components/Box/BaseBox';
 import { CheckboxGroup } from '~components/Checkbox';
 import { useControllableState } from '~utils/useControllable';
+import { useId } from '~utils/useId';
 
 const QuickFilterWrapper = ({
   children,
@@ -53,14 +54,14 @@ const QuickFilterGroup = ({
   validationState,
   ...rest
 }: QuickFilterGroupProps): React.ReactElement => {
+  const idBase = useId('quick-filter-group');
   const [selectedQuickFilters, setSelectedQuickFilters] = useControllableState({
     value: (value && selectionType === 'single' ? [value] : value) as string[] | undefined,
     // If selectionType is single, we need to convert the value to an array
     defaultValue: (defaultValue && selectionType === 'single'
       ? [defaultValue]
       : defaultValue ?? []) as string[] | undefined,
-    //TODO: Fix this
-    onChange: (values: string[]) => onChange?.({ values, name: '' }),
+    onChange: (values: string[]) => onChange?.({ values, name: name ?? idBase }),
   });
   return (
     <QuickFilterGroupProvider value={{ selectionType, selectedQuickFilters }}>

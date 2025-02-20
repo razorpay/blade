@@ -6,8 +6,8 @@ describe('<QuickFilters/>', () => {
   it('should render Values Correctly', () => {
     const { container } = renderWithTheme(
       <QuickFilterGroup selectionType="single">
-        <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />
-        <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />
+        <QuickFilter title="Title1" value="value1" trailing={<Counter value={234} />} />
+        <QuickFilter title="Title2" value="value2" trailing={<Counter value={234} />} />
       </QuickFilterGroup>,
     );
     expect(container).toMatchSnapshot();
@@ -16,8 +16,8 @@ describe('<QuickFilters/>', () => {
     const onChange = jest.fn();
     const { getByLabelText } = renderWithTheme(
       <QuickFilterGroup selectionType="single" onChange={onChange}>
-        <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />
-        <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />
+        <QuickFilter title="Title1" value="value1" trailing={<Counter value={234} />} />
+        <QuickFilter title="Title2" value="value2" trailing={<Counter value={234} />} />
       </QuickFilterGroup>,
     );
     getByLabelText('Title1').click();
@@ -27,8 +27,8 @@ describe('<QuickFilters/>', () => {
     const onChange = jest.fn();
     const { getByLabelText } = renderWithTheme(
       <QuickFilterGroup selectionType="multiple" onChange={onChange}>
-        <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />
-        <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />
+        <QuickFilter title="Title1" value="value1" trailing={<Counter value={234} />} />
+        <QuickFilter title="Title2" value="value2" trailing={<Counter value={234} />} />
       </QuickFilterGroup>,
     );
     getByLabelText('Title1').click();
@@ -38,8 +38,8 @@ describe('<QuickFilters/>', () => {
     const onChange = jest.fn();
     const { getByLabelText } = renderWithTheme(
       <QuickFilterGroup selectionType="single" onChange={onChange}>
-        <QuickFilter title="Title1" value="value1" trailingElement={<Counter value={234} />} />
-        <QuickFilter title="Title2" value="value2" trailingElement={<Counter value={234} />} />
+        <QuickFilter title="Title1" value="value1" trailing={<Counter value={234} />} />
+        <QuickFilter title="Title2" value="value2" trailing={<Counter value={234} />} />
       </QuickFilterGroup>,
     );
     getByLabelText('Title1').click();
