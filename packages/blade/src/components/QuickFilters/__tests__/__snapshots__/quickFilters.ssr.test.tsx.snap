@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<QuickFilters/> should render Values Correctly 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="radio-group-undefined-label" data-blade-component="radio-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx hlbQIL"><div data-blade-component="base-box" class="BaseBox-bmPWx ddXfJl"><label data-blade-component="card" aria-label="Title1" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA bSKwTg"><div elevation="none" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kEkwuc loZzuA"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx QGvNR"><div data-blade-component="box" class="BaseBox-bmPWx hyIXUp"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="value1"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 eyKxEd"></div></div></div></label></div><p class="StyledBaseText-dVBfTO jZmEIW" data-blade-component="text">Title1</p></div><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">234</p></div></div></div></div></div></div></label><label data-blade-component="card" aria-label="Title2" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA bSKwTg"><div elevation="none" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kEkwuc loZzuA"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx QGvNR"><div data-blade-component="box" class="BaseBox-bmPWx hyIXUp"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="value2"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 eyKxEd"></div></div></div></label></div><p class="StyledBaseText-dVBfTO jZmEIW" data-blade-component="text">Title2</p></div><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">234</p></div></div></div></div></div></div></label></div></div></div></div></div></div></div>"`;
+exports[`<QuickFilters/> should render Values Correctly 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="radio-group-undefined-label" data-blade-component="radio-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx hlbQIL"><div data-blade-component="base-box" class="BaseBox-bmPWx ddXfJl"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="card" aria-label="Title1" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA bSKwTg"><div elevation="none" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kEkwuc loZzuA"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx QGvNR"><div data-blade-component="box" class="BaseBox-bmPWx hyIXUp"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="value1"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 eyKxEd"></div></div></div></label></div><p class="StyledBaseText-dVBfTO jZmEIW" data-blade-component="text">Title1</p></div><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">234</p></div></div></div></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="card" aria-label="Title2" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA bSKwTg"><div elevation="none" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kEkwuc loZzuA"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx QGvNR"><div data-blade-component="box" class="BaseBox-bmPWx hyIXUp"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="value2"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 eyKxEd"></div></div></div></label></div><p class="StyledBaseText-dVBfTO jZmEIW" data-blade-component="text">Title2</p></div><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">234</p></div></div></div></div></div></div></label></div></div></div></div></div></div></div></div>"`;
 
 exports[`<QuickFilters/> should render Values Correctly 2`] = `
 .c12.c12.c12.c12.c12 {
@@ -335,186 +335,196 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
               class="c2"
               data-blade-component="base-box"
             >
-              <label
-                aria-label="Title1"
-                class="c3 c4"
-                data-blade-component="card"
+              <div
+                class=""
+                data-blade-component="base-box"
               >
-                <div
-                  class="c5 c6"
-                  data-blade-component="base-box"
-                  elevation="none"
+                <label
+                  aria-label="Title1"
+                  class="c3 c4"
+                  data-blade-component="card"
                 >
                   <div
-                    class=""
-                    data-blade-component="card-body"
+                    class="c5 c6"
+                    data-blade-component="base-box"
+                    elevation="none"
                   >
                     <div
-                      class="c7"
-                      data-blade-component="base-box"
+                      class=""
+                      data-blade-component="card-body"
                     >
                       <div
-                        class="c8"
-                        data-blade-component="box"
+                        class="c7"
+                        data-blade-component="base-box"
                       >
                         <div
-                          class=""
-                          data-blade-component="base-box"
-                        >
-                          <label
-                            class="c9"
-                            data-blade-component="radio-label"
-                          >
-                            <div
-                              class="c0"
-                              data-blade-component="base-box"
-                            >
-                              <div
-                                class="c10"
-                                data-blade-component="base-box"
-                              >
-                                <input
-                                  aria-checked="false"
-                                  aria-describedby="radio-1-helptext-2"
-                                  aria-disabled="false"
-                                  aria-invalid="false"
-                                  aria-required="false"
-                                  class="c11"
-                                  name="radio-group-5"
-                                  role="radio"
-                                  type="radio"
-                                  value="value1"
-                                />
-                                <div
-                                  class="c12"
-                                  data-blade-component="radio-icon-wrapper"
-                                />
-                              </div>
-                            </div>
-                          </label>
-                        </div>
-                        <p
-                          class="c13"
-                          data-blade-component="text"
-                        >
-                          Title1
-                        </p>
-                      </div>
-                      <div
-                        class="c14"
-                        data-blade-component="counter"
-                      >
-                        <div
-                          class="c15 c16"
-                          data-blade-component="base-box"
+                          class="c8"
+                          data-blade-component="box"
                         >
                           <div
-                            class="c17"
+                            class=""
                             data-blade-component="base-box"
                           >
-                            <p
-                              class="c18"
-                              data-blade-component="text"
+                            <label
+                              class="c9"
+                              data-blade-component="radio-label"
                             >
-                              234
-                            </p>
+                              <div
+                                class="c0"
+                                data-blade-component="base-box"
+                              >
+                                <div
+                                  class="c10"
+                                  data-blade-component="base-box"
+                                >
+                                  <input
+                                    aria-checked="false"
+                                    aria-describedby="radio-1-helptext-2"
+                                    aria-disabled="false"
+                                    aria-invalid="false"
+                                    aria-required="false"
+                                    class="c11"
+                                    name="radio-group-5"
+                                    role="radio"
+                                    type="radio"
+                                    value="value1"
+                                  />
+                                  <div
+                                    class="c12"
+                                    data-blade-component="radio-icon-wrapper"
+                                  />
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <p
+                            class="c13"
+                            data-blade-component="text"
+                          >
+                            Title1
+                          </p>
+                        </div>
+                        <div
+                          class="c14"
+                          data-blade-component="counter"
+                        >
+                          <div
+                            class="c15 c16"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              class="c17"
+                              data-blade-component="base-box"
+                            >
+                              <p
+                                class="c18"
+                                data-blade-component="text"
+                              >
+                                234
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </label>
-              <label
-                aria-label="Title2"
-                class="c3 c4"
-                data-blade-component="card"
+                </label>
+              </div>
+              <div
+                class=""
+                data-blade-component="base-box"
               >
-                <div
-                  class="c5 c6"
-                  data-blade-component="base-box"
-                  elevation="none"
+                <label
+                  aria-label="Title2"
+                  class="c3 c4"
+                  data-blade-component="card"
                 >
                   <div
-                    class=""
-                    data-blade-component="card-body"
+                    class="c5 c6"
+                    data-blade-component="base-box"
+                    elevation="none"
                   >
                     <div
-                      class="c7"
-                      data-blade-component="base-box"
+                      class=""
+                      data-blade-component="card-body"
                     >
                       <div
-                        class="c8"
-                        data-blade-component="box"
+                        class="c7"
+                        data-blade-component="base-box"
                       >
                         <div
-                          class=""
-                          data-blade-component="base-box"
-                        >
-                          <label
-                            class="c9"
-                            data-blade-component="radio-label"
-                          >
-                            <div
-                              class="c0"
-                              data-blade-component="base-box"
-                            >
-                              <div
-                                class="c10"
-                                data-blade-component="base-box"
-                              >
-                                <input
-                                  aria-checked="false"
-                                  aria-describedby="radio-3-helptext-4"
-                                  aria-disabled="false"
-                                  aria-invalid="false"
-                                  aria-required="false"
-                                  class="c11"
-                                  name="radio-group-5"
-                                  role="radio"
-                                  type="radio"
-                                  value="value2"
-                                />
-                                <div
-                                  class="c12"
-                                  data-blade-component="radio-icon-wrapper"
-                                />
-                              </div>
-                            </div>
-                          </label>
-                        </div>
-                        <p
-                          class="c13"
-                          data-blade-component="text"
-                        >
-                          Title2
-                        </p>
-                      </div>
-                      <div
-                        class="c14"
-                        data-blade-component="counter"
-                      >
-                        <div
-                          class="c15 c16"
-                          data-blade-component="base-box"
+                          class="c8"
+                          data-blade-component="box"
                         >
                           <div
-                            class="c17"
+                            class=""
                             data-blade-component="base-box"
                           >
-                            <p
-                              class="c18"
-                              data-blade-component="text"
+                            <label
+                              class="c9"
+                              data-blade-component="radio-label"
                             >
-                              234
-                            </p>
+                              <div
+                                class="c0"
+                                data-blade-component="base-box"
+                              >
+                                <div
+                                  class="c10"
+                                  data-blade-component="base-box"
+                                >
+                                  <input
+                                    aria-checked="false"
+                                    aria-describedby="radio-3-helptext-4"
+                                    aria-disabled="false"
+                                    aria-invalid="false"
+                                    aria-required="false"
+                                    class="c11"
+                                    name="radio-group-5"
+                                    role="radio"
+                                    type="radio"
+                                    value="value2"
+                                  />
+                                  <div
+                                    class="c12"
+                                    data-blade-component="radio-icon-wrapper"
+                                  />
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <p
+                            class="c13"
+                            data-blade-component="text"
+                          >
+                            Title2
+                          </p>
+                        </div>
+                        <div
+                          class="c14"
+                          data-blade-component="counter"
+                        >
+                          <div
+                            class="c15 c16"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              class="c17"
+                              data-blade-component="base-box"
+                            >
+                              <p
+                                class="c18"
+                                data-blade-component="text"
+                              >
+                                234
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </label>
+                </label>
+              </div>
             </div>
           </div>
         </div>

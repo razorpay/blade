@@ -21,7 +21,12 @@ describe('<QuickFilters/>', () => {
       </QuickFilterGroup>,
     );
     getByLabelText('Title1').click();
-    expect(onChange).toHaveBeenCalledWith({ value: 'value1' });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: expect.stringMatching(/^quick-filter-group-\d+$/),
+        values: expect.arrayContaining(['value1']),
+      }),
+    );
   });
   it('should fire onChange correctly for multiple selection', () => {
     const onChange = jest.fn();
@@ -32,7 +37,19 @@ describe('<QuickFilters/>', () => {
       </QuickFilterGroup>,
     );
     getByLabelText('Title1').click();
-    expect(onChange).toHaveBeenCalledWith({ values: ['value1'] });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: expect.stringMatching(/^quick-filter-group-\d+$/),
+        values: expect.arrayContaining(['value1']),
+      }),
+    );
+    getByLabelText('Title2').click();
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: expect.stringMatching(/^quick-filter-group-\d+$/),
+        values: expect.arrayContaining(['value1', 'value2']),
+      }),
+    );
   });
   it('should not fire onChange if the same value is clicked again', () => {
     const onChange = jest.fn();
