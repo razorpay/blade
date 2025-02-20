@@ -79,7 +79,12 @@ Default.args = {
 
 const QuickFilterSingle: StoryFn<typeof QuickFilterGroup> = () => {
   return (
-    <QuickFilterGroup selectionType="single">
+    <QuickFilterGroup
+      selectionType="single"
+      onChange={({ name, values }) => {
+        console.log(name, values);
+      }}
+    >
       <QuickFilter
         title="Unresolved"
         value="unresolved"
@@ -104,7 +109,12 @@ QuickFilterSingleStory.storyName = 'QuickFilter Single Selection';
 
 const QuickFilterMultiple: StoryFn<typeof QuickFilterGroup> = () => {
   return (
-    <QuickFilterGroup selectionType="multiple">
+    <QuickFilterGroup
+      selectionType="multiple"
+      onChange={({ name, values }) => {
+        console.log(name, values);
+      }}
+    >
       <QuickFilter
         title="Captured"
         value="Captured"

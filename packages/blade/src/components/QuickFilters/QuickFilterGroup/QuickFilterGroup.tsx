@@ -51,7 +51,6 @@ const QuickFilterGroup = ({
   onChange,
   name,
   selectionType,
-  validationState,
   ...rest
 }: QuickFilterGroupProps): React.ReactElement => {
   const idBase = useId('quick-filter-group');

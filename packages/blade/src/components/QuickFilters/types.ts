@@ -39,11 +39,9 @@ type QuickFilterGroupCommomProps = {
   value?: string | string[];
   /*
    onChange is a function that is called when the selected quick filter changes.
-   it returns an object with either value or values.
-   values is an array of strings that are the selected quick filters if the selectionType is 'multiple'.
-   value is a string that is the selected quick filter if the selectionType is 'single'. 
+   it returns an object with the name of the quick filter group and the values of the selected quick filters.
 */
-  onChange?: (params: { name: string; values?: string[] | string }) => void;
+  onChange?: ({ name, values }: { name: string; values: string[] }) => void;
   /*
      selectionType is a string that can be either 'single' or 'multiple'.
 */
