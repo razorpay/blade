@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.13.0
+
+### Minor Changes
+
+- 19119623: feat(blade): add drag handle icon
+
 ## 12.12.1
 
 ### Patch Changes
