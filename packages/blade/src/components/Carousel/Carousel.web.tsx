@@ -43,7 +43,7 @@ type ControlsProp = Required<
   onIndicatorButtonClick: (index: number) => void;
   onNextButtonClick: () => void;
   onPreviousButtonClick: () => void;
-  shouldShowNavigationButton: boolean;
+  showNavigationButtons: boolean;
 };
 
 const Controls = ({
@@ -56,12 +56,12 @@ const Controls = ({
   onPreviousButtonClick,
   indicatorVariant,
   navigationButtonVariant,
-  shouldShowNavigationButton,
+  showNavigationButtons,
 }: ControlsProp): React.ReactElement => {
   if (navigationButtonPosition === 'bottom') {
     return (
       <Box marginTop="spacing.7" display="flex" alignItems="center" gap="spacing.4">
-        {shouldShowNavigationButton ? (
+        {showNavigationButtons ? (
           <NavigationButton
             type="previous"
             variant={navigationButtonVariant}
@@ -76,7 +76,7 @@ const Controls = ({
             variant={indicatorVariant}
           />
         ) : null}
-        {shouldShowNavigationButton ? (
+        {showNavigationButtons ? (
           <NavigationButton
             onClick={onNextButtonClick}
             type="next"
@@ -303,7 +303,7 @@ const _Carousel = (
   if (isResponsive && !shouldAddStartEndSpacing && !isMobile) {
     showIndicators = false;
   }
-  const shouldShowNavigationButton = showNavigationButtonsInMobile || !isMobile;
+  const showNavigationButtons = showNavigationButtonsInMobile || !isMobile;
 
   const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
   const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
@@ -597,7 +597,7 @@ const _Carousel = (
           onPreviousButtonClick={goToPreviousSlide}
           indicatorVariant={indicatorVariant}
           navigationButtonVariant={navigationButtonVariant}
-          shouldShowNavigationButton={shouldShowNavigationButton}
+          showNavigationButtons={showNavigationButtons}
         />
       </BaseBox>
     </CarouselContext.Provider>
