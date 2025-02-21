@@ -116,7 +116,7 @@ type CarouselProps = {
    * @default true
    *
    */
-  showNavigationButtonsInMobile?: boolean;
+  showNavigationButtons?: boolean;
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
 

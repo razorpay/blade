@@ -254,7 +254,7 @@ const _Carousel = (
     height,
     defaultActiveSlide,
     activeSlide: activeSlideProp,
-    showNavigationButtonsInMobile = true,
+    showNavigationButtons: showNavigationButtonProp = true,
     ...rest
   }: CarouselProps,
   ref: React.Ref<BladeElementRef>,
@@ -303,7 +303,7 @@ const _Carousel = (
   if (isResponsive && !shouldAddStartEndSpacing && !isMobile) {
     showIndicators = false;
   }
-  const showNavigationButtons = showNavigationButtonsInMobile || !isMobile;
+  const showNavigationButtons = showNavigationButtonProp || !isMobile;
 
   const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
   const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
