@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.13.1
+
+### Patch Changes
+
+- 37392871: feat(blade): add should showNavigationButtons prop in carousel
+
 ## 12.13.0
 
 ### Minor Changes
