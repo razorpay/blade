@@ -111,7 +111,9 @@ type CarouselProps = {
    */
   height?: BoxProps['height'];
   /**
-   * should show navigation buttons in mobile
+   * If set to true, shows the navigation buttons.
+   *
+   * Note: This prop has no effect on desktop, we only hide navigation buttons on mobile.
    *
    * @default true
    *
