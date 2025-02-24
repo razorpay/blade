@@ -1276,10 +1276,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.17.19.tgz#8cfaf2ff603e9aabb910e9c0558c26cf32744061"
   integrity sha512-lAhycmKnVOuRYNtRtatQR1LPQf2oYCkRGkSFnseDAKPl8lu5SOsK/e1sXe5a0Pc5kHIHe6P2I/ilntNv2xf3cA==
 
-"@figma/plugin-typings@1.85.0":
-  version "1.85.0"
-  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.85.0.tgz#dfbe722ebffd3e84e070b3a75c62ba0a932c7c56"
-  integrity sha512-o6oJ4FrjBIVbwteJ6DbCvjU8UXbN9QzA5FgjNosTE+HpwntPSEbpVFPkgEFuI1G/GhJXrhXR8/QcuBabwZ+JLw==
+"@figma/plugin-typings@1.107.0-beta.2":
+  version "1.107.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.107.0-beta.2.tgz#c5030a43d634e47bec78fac0581720010bd95698"
+  integrity sha512-EFTasm6l3p4QtmnUgCGb0Neeczizk62CqTSNcVh9vYybpctY65kO1w/Da0yuT/WfrdrxD9QZjO8i/ePcZIrqzw==
 
 "@floating-ui/core@^1.2.6", "@floating-ui/core@^1.6.0":
   version "1.6.4"
