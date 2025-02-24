@@ -1,4 +1,3 @@
-import type { BladeCommonEvents } from '~components/types';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { ControllableStateSetter } from '~utils/useControllable';
 
@@ -16,7 +15,6 @@ type QuickFilterProps = {
   */
   trailing?: React.ReactNode;
 } & TestID &
-  BladeCommonEvents &
   DataAnalyticsAttribute;
 
 type QuickFilterGroupCommomProps = {
