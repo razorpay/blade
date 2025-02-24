@@ -65,6 +65,16 @@ exports[`<Card /> should render a clickable Card 1`] = `
   position: relative;
 }
 
+.c1.c1.c1.c1.c1 label:not(a[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 label:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
 <div>
   <div
     class="c0 c1"
@@ -152,6 +162,16 @@ exports[`<Card /> should render a linkable Card 1`] = `
 }
 
 .c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 label:not(a[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 label:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
@@ -245,6 +265,16 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 }
 
 .c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 label:not(a[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 label:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
@@ -351,6 +381,16 @@ exports[`<Card /> should render an interactive Card 1`] = `
 }
 
 .c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 label:not(a[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 label:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
-import { InternalCardExample } from '../Card/Card.stories';
+import { InternalCardExample } from '../Card/InternalCardExample';
 import { Fade } from './';
 import type { FadeProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

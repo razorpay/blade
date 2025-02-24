@@ -76,7 +76,7 @@ const FileUploadItem = memo(
               </Text>
             </BaseBox>
             {status === 'uploading' ? (
-              <BaseBox>
+              <BaseBox display="flex" alignItems="center">
                 <IconButton
                   accessibilityLabel="Remove File"
                   icon={CloseIcon}

@@ -1,5 +1,165 @@
 # @razorpay/blade
 
+## 12.13.1
+
+### Patch Changes
+
+- 37392871: feat(blade): add should showNavigationButtons prop in carousel
+
+## 12.13.0
+
+### Minor Changes
+
+- 19119623: feat(blade): add drag handle icon
+
+## 12.12.1
+
+### Patch Changes
+
+- 9dda1513: fix: remove js check that allows brand token for Box backgroundColor
+- 18fe5390: fix(blade): allow consumers to align chips in chipgroup
+- ba66b346: fix(blade): loading single button in buttonGroup
+
+## 12.12.0
+
+### Minor Changes
+
+- 7e155b6f: feat(blade): add engage and translate icons
+
+## 12.11.0
+
+### Minor Changes
+
+- d906838f: feat(blade): add Chat Message component
+
+## 12.10.0
+
+### Minor Changes
+
+- 142afcdf: feat(TextArea): expose `onKeydown` on TextArea and allow `numOfLines={1}`
+
+### Patch Changes
+
+- 6cf03ea3: feat: Improve OTPInput field value clear behaviour
+
+## 12.9.1
+
+### Patch Changes
+
+- 5531ef3f: feat: remove overflowY if L1 sidenav is collapsed
+- 5531ef3f: feat: SideNav improvements & fixes for X migration
+
+  1. Removed overflowY if L1 sidenav is collapsed
+  2. Fixed onVisibleLevelChange not getting called when clicking on a nested submenu
+
+## 12.9.0
+
+### Minor Changes
+
+- e035b38b: feat(DropdownIconButton): add support for DropdownIconButton and tooltip for Dropdown triggers
+
+## 12.8.2
+
+### Patch Changes
+
+- 3be3f0f9: fix(FileUpload): revert to not calling onChange on file remove
+
+  > [!NOTE]
+  >
+  > Check the below timeline if you're upgrading from 11.34.1+ version to this version
+
+  **Timeline of FileUpload changes**
+
+  - In 11.34.1: We did not call onChange on removing of file. Only onRemove was called
+  - In 11:36.2: We added dispatchEvent call which started calling onChange on onRemove (since React treats `input type="file"` differently than `input type="text"` - [CodeSandbox Link](https://codesandbox.io/p/sandbox/friendly-ishizaka-yk7mm3))
+  - In 12.4.0: We released a fix thinking onChange call was expected behaviour and we just updated the state value for it
+  - **This version:** Reverts back to 11.34.1 behaviour. If you're upgrading to this version from 11.34.1 or previous versions, the behaviour will stay same. If you're upgrading from 11.34.1+ and use FileUpload component, its recommended to test out FileUpload instances.
+
+- 3c040f66: feat: add icon only chip
+
+## 12.8.1
+
+### Patch Changes
+
+- 8b5602ba: fix(Avatar): misaligned menu on Avatar with icon
+
+## 12.8.0
+
+### Minor Changes
+
+- 98be8f05: feat(blade): add prompt and sort icon
+
+## 12.7.1
+
+### Patch Changes
+
+- 3b9d4cdd: feat(Elevate): add missing reexport for `Elevate`
+
+## 12.7.0
+
+### Minor Changes
+
+- 214b2121: feat(Motion / Elevate): add `Elevate` component to motion presets
+
+  Docs: https://blade.razorpay.com/?path=/docs/motion-elevate--docs
+
+## 12.6.0
+
+### Minor Changes
+
+- f48096b2: feat(blade): add corner and arrow icons
+
+## 12.5.1
+
+### Patch Changes
+
+- 3a7f55f8: fix(codemod-v12): add missing token map for `standard.attentive` to codemod and manual migration
+- 08c5a4ae: fix(blade): fix: data analytics attribute from another external module
+
+## 12.5.0
+
+### Minor Changes
+
+- 194fffc5: feat(SideNav): add `description` on SideNavLink and `onVisibleLevelChange` callback on `SideNav`
+
+## 12.4.1
+
+### Patch Changes
+
+- 2692d5b6: fix(blade): remove file icon aligment while uploading
+
+## 12.4.0
+
+### Minor Changes
+
+- 964ee14c: feat: ability to align individual table column items
+
+### Patch Changes
+
+- 455e9651: fix(FileUpload): fileupload on remove clashes with onchage
+
+  > [!NOTE]
+  >
+  > Previously, onChange did not provide an updated value when a file was removed. Now, when a file is removed from FileUpload, onChange will return the updated value.
+
+- a87a200b: chore(blade): add data attributes in TabNav & Table components
+
+## 12.3.1
+
+### Patch Changes
+
+- 3a87bd69: fix(blade): unable to use switch inside card body
+
+## 12.3.0
+
+### Minor Changes
+
+- c228d8ca: feat(blade): add flask,keyboard and list-search icons
+
+### Patch Changes
+
+- 2326fa27: feat(tokens): change token values to match figma
+
 ## 12.2.1
 
 ### Patch Changes

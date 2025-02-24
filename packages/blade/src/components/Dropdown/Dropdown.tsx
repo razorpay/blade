@@ -23,6 +23,7 @@ const validDropdownChildren = [
   dropdownComponentIds.triggers.SelectInput,
   dropdownComponentIds.triggers.SearchInput,
   dropdownComponentIds.triggers.DropdownButton,
+  dropdownComponentIds.triggers.DropdownIconButton,
   dropdownComponentIds.triggers.DropdownLink,
   dropdownComponentIds.DropdownOverlay,
   dropdownComponentIds.triggers.AutoComplete,
@@ -149,6 +150,10 @@ const _Dropdown = (
 
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownButton)) {
         dropdownTriggerer.current = 'DropdownButton';
+      }
+
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownIconButton)) {
+        dropdownTriggerer.current = 'DropdownIconButton';
       }
 
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopLeftRoundedCornerIcon /> should render TopLeftRoundedCornerIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  >
+    <path
+      clip-rule="evenodd"
+      d="M4 13C4 8.02944 8.02944 4 13 4H20C20.5523 4 21 4.44772 21 5C21 5.55228 20.5523 6 20 6H13C9.13401 6 6 9.13401 6 13V20C6 20.5523 5.55228 21 5 21C4.44772 21 4 20.5523 4 20V13Z"
+      data-blade-component="svg-path"
+      fill="hsla(211, 33%, 21%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
+</div>
+`;

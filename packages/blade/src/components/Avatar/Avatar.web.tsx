@@ -127,7 +127,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
       );
     }
 
-    return <AvatarButton {...commonButtonProps} icon={icon ?? UserIcon} />;
+    return <AvatarButton ref={ref as never} {...commonButtonProps} icon={icon ?? UserIcon} />;
   };
 
   const isSquare = variant === 'square';

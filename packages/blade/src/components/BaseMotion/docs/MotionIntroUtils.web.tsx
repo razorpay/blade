@@ -3,6 +3,7 @@ import { AnimateInteractions } from '~components/AnimateInteractions';
 import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import { Elevate } from '~components/Elevate';
 import { Fade } from '~components/Fade';
 import { Link } from '~components/Link';
 import { Morph } from '~components/Morph';
@@ -35,7 +36,7 @@ const MotionExampleBox = React.forwardRef(
       <Box
         ref={ref as never}
         backgroundColor="surface.background.gray.intense"
-        elevation="midRaised"
+        elevation="none"
         height="100%"
         width="100%"
         borderColor="surface.border.gray.muted"
@@ -151,6 +152,13 @@ export const Showcase = (): React.ReactElement => {
               </Scale>
             </ShowcaseBox>
           </ShowcaseLinkBox>
+          <ShowcaseLinkBox name="Elevate">
+            <ShowcaseBox>
+              <Elevate isHighlighted={isVisible}>
+                <MotionExampleBox name="Elevate" />
+              </Elevate>
+            </ShowcaseBox>
+          </ShowcaseLinkBox>
           <ShowcaseLinkBox name="Morph">
             <ShowcaseBox>
               {isVisible ? (
@@ -195,7 +203,7 @@ export const Showcase = (): React.ReactElement => {
               <AnimateInteractions motionTriggers={['hover', 'focus']}>
                 <Box
                   backgroundColor="surface.background.gray.intense"
-                  elevation="midRaised"
+                  elevation="none"
                   height="100%"
                   width="100%"
                   borderColor="surface.border.gray.muted"

@@ -369,7 +369,12 @@ const SideNavExample = ({
 
   return (
     <Box minHeight="500px">
-      <SideNav {...args} isOpen={isMobileOpen} onDismiss={() => setIsMobileOpen(false)}>
+      <SideNav
+        {...args}
+        isOpen={isMobileOpen}
+        onDismiss={() => setIsMobileOpen(false)}
+        onVisibleLevelChange={({ visibleLevel }) => console.log(visibleLevel)}
+      >
         <SideNavBody>
           {navItemsJSON.map((l1Sections) => {
             return (
@@ -396,7 +401,9 @@ const SideNavExample = ({
                       <SideNavLevel key={l1Item.title}>
                         {l1Item.items?.map((l2Item) => {
                           if (!l2Item.items) {
-                            return <NavItem key={l2Item.title} {...l2Item} />;
+                            return (
+                              <NavItem key={l2Item.title} {...l2Item} description="RBL20I43" />
+                            );
                           }
 
                           return (
