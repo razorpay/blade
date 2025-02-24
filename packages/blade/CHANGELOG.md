@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.15.0
+
+### Minor Changes
+
+- bbf24c99: feat(blade): add support for table virtualization
+
 ## 12.14.0
 
 ### Minor Changes
