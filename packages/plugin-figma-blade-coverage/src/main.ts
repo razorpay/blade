@@ -507,7 +507,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             nonBladeComponents++;
             highlightNonBladeNode(
               traversedNode,
-              `Use relevant Blade component. You're using a Frame with fill/strokes/effects`,
+              `You might want to use Card with Slot. You're using a Frame with fill/strokes/effects.`,
             );
           } else {
             NODES_SKIP_FROM_COVERAGE.push('FRAME');
