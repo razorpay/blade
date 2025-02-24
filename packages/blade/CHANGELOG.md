@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.14.0
+
+### Minor Changes
+
+- 0b79d985: feat(QuickFilter): Add QuickFilters component
+
 ## 12.13.1
 
 ### Patch Changes
