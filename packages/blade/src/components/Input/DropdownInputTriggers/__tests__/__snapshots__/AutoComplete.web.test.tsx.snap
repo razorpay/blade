@@ -1218,16 +1218,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   opacity: 1;
 }
 
-.c44.c44.c44.c44.c44 {
-  border-width: 0;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
 .c36.c36.c36.c36.c36 {
   border: none;
   cursor: pointer;
@@ -1274,6 +1264,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 
 .c36.c36.c36.c36.c36:active {
   color: hsla(211,26%,34%,1);
+}
+
+.c44.c44.c44.c44.c44 {
+  border-width: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .c42.c42.c42.c42.c42 {

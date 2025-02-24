@@ -579,6 +579,33 @@ ChipWithColor.parameters = {
   },
 };
 
+const ChipIconOnlyTemplate: StoryFn<typeof ChipGroupComponent> = (args) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" weight="semibold" marginBottom="spacing.3">
+        Is the result helpful?
+      </Text>
+
+      <ChipGroupComponent defaultValue="yes" {...args}>
+        <ChipComponent color="positive" value="yes" icon={ThumbsUpIcon} />
+        <ChipComponent color="negative" value="no" icon={ThumbsDownIcon} />
+      </ChipGroupComponent>
+    </Box>
+  );
+};
+
+export const ChipIconOnly = ChipIconOnlyTemplate.bind({});
+ChipIconOnly.storyName = 'Icon Only';
+ChipIconOnly.args = {
+  selectionType: 'single',
+  accessibilityLabel: 'Is the result helpful? Please select either yer or no',
+};
+ChipIconOnly.parameters = {
+  controls: {
+    exclude: ['icon', 'children'],
+  },
+};
+
 const TextTransformationTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args }) => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   return (
@@ -700,3 +727,82 @@ chipRef.parameters = {
     exclude: ['icon'],
   },
 };
+
+export const CutomLayoutInChipGroup: StoryFn<typeof ChipGroupComponent> = () => {
+  const chipArray = [
+    {
+      value: '100',
+      label: '₹100',
+    },
+    {
+      value: '500',
+      label: '₹500',
+    },
+    {
+      value: '1000',
+      label: '₹1000',
+    },
+    {
+      value: '2000',
+      label: '₹2000',
+    },
+    {
+      value: '5000',
+      label: '₹5000',
+    },
+    {
+      value: '10000',
+      label: '₹10000',
+    },
+    {
+      value: '20000',
+      label: '₹20000',
+    },
+    {
+      value: '50000',
+      label: '₹50000',
+    },
+    {
+      value: '100000',
+      label: '₹100000',
+    },
+    {
+      value: '200000',
+      label: '₹200000',
+    },
+  ];
+
+  return (
+    <Box gap="spacing.3" display="flex" flexDirection="column">
+      <ChipGroupComponent
+        selectionType="single"
+        label="Select a gift card with value (with default layout)"
+      >
+        {chipArray.map((chip, index) => (
+          <ChipComponent key={index} value={chip.value}>
+            {chip.label}
+          </ChipComponent>
+        ))}
+      </ChipGroupComponent>
+      <ChipGroupComponent
+        selectionType="single"
+        label="Select a gift card with value (with custom layout)"
+      >
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(3, 1fr)"
+          gridTemplateRows="repeat(3, minmax(0, 30px))"
+          gap="spacing.3"
+        >
+          {chipArray.map((chip, index) => (
+            <ChipComponent key={index} value={chip.value} width="100%">
+              {chip.label}
+            </ChipComponent>
+          ))}
+        </Box>
+      </ChipGroupComponent>
+    </Box>
+  );
+};
+
+CutomLayoutInChipGroup.storyName = 'ChipGroup with Custom layout';

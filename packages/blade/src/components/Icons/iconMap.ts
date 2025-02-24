@@ -133,12 +133,14 @@ import DollarsIconComponent from './DollarsIcon';
 import DotIconComponent from './DotIcon';
 import DownloadCloudIconComponent from './DownloadCloudIcon';
 import DownloadIconComponent from './DownloadIcon';
+import DragHandleIconComponent from './DragHandleIcon';
 import DropletIconComponent from './DropletIcon';
 import EcommerceIconComponent from './EcommerceIcon';
 import EditComposeIconComponent from './EditComposeIcon';
 import EditIconComponent from './EditIcon';
 import EditInlineIconComponent from './EditInlineIcon';
 import EducationIconComponent from './EducationIcon';
+import EngageIconComponent from './EngageIcon';
 import EqualsIconComponent from './EqualsIcon';
 import EscrowAccountIconComponent from './EscrowAccountIcon';
 import ExportIconComponent from './ExportIcon';
@@ -263,6 +265,7 @@ import PocketIconComponent from './PocketIcon';
 import PosIconComponent from './PosIcon';
 import PowerIconComponent from './PowerIcon';
 import PrinterIconComponent from './PrinterIcon';
+import PromptIconComponent from './PromptIcon';
 import QRCodeIconComponent from './QRCodeIcon';
 import RadioIconComponent from './RadioIcon';
 import RayIconComponent from './RayIcon';
@@ -308,6 +311,7 @@ import SlidersIconComponent from './SlidersIcon';
 import SmartCollectIconComponent from './SmartCollectIcon';
 import SmartphoneIconComponent from './SmartphoneIcon';
 import SolutionsIconComponent from './SolutionsIcon';
+import SortIconComponent from './SortIcon';
 import SourceToPayIconComponent from './SourceToPayIcon';
 import SparklesIconComponent from './SparklesIcon';
 import SpeakerIconComponent from './SpeakerIcon';
@@ -337,6 +341,7 @@ import TopLeftSharpCornerIconComponent from './TopLeftSharpCornerIcon';
 import TrademarkIconComponent from './TrademarkIcon';
 import TrademarkRegisteredIconComponent from './TrademarkRegisteredIcon';
 import TransactionsIconComponent from './TransactionsIcon';
+import TranslateIconComponent from './TranslateIcon';
 import TrashIconComponent from './TrashIcon';
 import TrendingDownIconComponent from './TrendingDownIcon';
 import TrendingUpIconComponent from './TrendingUpIcon';
@@ -514,12 +519,14 @@ const iconMap: Record<string, IconComponent> = {
   DotIcon: DotIconComponent,
   DownloadCloudIcon: DownloadCloudIconComponent,
   DownloadIcon: DownloadIconComponent,
+  DragHandleIcon: DragHandleIconComponent,
   DropletIcon: DropletIconComponent,
   EcommerceIcon: EcommerceIconComponent,
   EditComposeIcon: EditComposeIconComponent,
   EditIcon: EditIconComponent,
   EditInlineIcon: EditInlineIconComponent,
   EducationIcon: EducationIconComponent,
+  EngageIcon: EngageIconComponent,
   EqualsIcon: EqualsIconComponent,
   EscrowAccountIcon: EscrowAccountIconComponent,
   ExportIcon: ExportIconComponent,
@@ -644,6 +651,7 @@ const iconMap: Record<string, IconComponent> = {
   PosIcon: PosIconComponent,
   PowerIcon: PowerIconComponent,
   PrinterIcon: PrinterIconComponent,
+  PromptIcon: PromptIconComponent,
   QRCodeIcon: QRCodeIconComponent,
   RadioIcon: RadioIconComponent,
   RayIcon: RayIconComponent,
@@ -689,6 +697,7 @@ const iconMap: Record<string, IconComponent> = {
   SmartCollectIcon: SmartCollectIconComponent,
   SmartphoneIcon: SmartphoneIconComponent,
   SolutionsIcon: SolutionsIconComponent,
+  SortIcon: SortIconComponent,
   SourceToPayIcon: SourceToPayIconComponent,
   SparklesIcon: SparklesIconComponent,
   SpeakerIcon: SpeakerIconComponent,
@@ -718,6 +727,7 @@ const iconMap: Record<string, IconComponent> = {
   TrademarkIcon: TrademarkIconComponent,
   TrademarkRegisteredIcon: TrademarkRegisteredIconComponent,
   TransactionsIcon: TransactionsIconComponent,
+  TranslateIcon: TranslateIconComponent,
   TrashIcon: TrashIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
