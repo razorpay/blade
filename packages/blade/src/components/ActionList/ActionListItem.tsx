@@ -122,10 +122,9 @@ const _ActionListSection = ({
   _sectionChildValues,
   ...rest
 }: ActionListSectionProps): React.ReactElement => {
-  const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
+  const { hasAutoCompleteInHeader, dropdownTriggerer, filteredValues } = useDropdown();
   const hasAutoComplete =
-    hasAutoCompleteInBottomSheetHeader ||
-    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+    hasAutoCompleteInHeader || dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const isSectionVisible = React.useMemo(() => {
     if (hasAutoComplete) {
@@ -296,12 +295,11 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     dropdownTriggerer,
     isKeydownPressed,
     filteredValues,
-    hasAutoCompleteInBottomSheetHeader,
+    hasAutoCompleteInHeader,
   } = useDropdown();
 
   const hasAutoComplete =
-    hasAutoCompleteInBottomSheetHeader ||
-    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+    hasAutoCompleteInHeader || dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const renderOnWebAs = props.href ? 'a' : 'button';
 

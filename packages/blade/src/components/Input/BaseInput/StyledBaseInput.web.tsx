@@ -199,6 +199,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...commonProps}
       {...props}
       {...accessibilityProps}
+      tabIndex={0}
     />
   );
 };

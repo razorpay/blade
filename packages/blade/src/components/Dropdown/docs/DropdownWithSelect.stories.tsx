@@ -27,6 +27,7 @@ import {
 import { HomeIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
+import { SearchInput } from '~components/Input/SearchInput';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With Select',
@@ -407,6 +408,26 @@ InternalSectionListPerformance.parameters = {
   chromatic: {
     disableSnapshot: false,
   },
+};
+
+export const InternalDropdownWithSearch = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Select fruits" />
+      <DropdownOverlay>
+        <DropdownHeader>
+          <AutoComplete label="Search Fruits" />
+        </DropdownHeader>
+        <ActionList>
+          <ActionListItem title="Apples" value="Apples" />
+          <ActionListItem title="Appricots" value="Appricots" />
+          <ActionListItem title="Cherries" value="Cherries" />
+          <ActionListItem title="Crab apples" value="Crab apples" />
+          <ActionListItem title="Jambolan" value="Jambolan" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
 };
 
 export const InternalDropdownPerformance = (): React.ReactElement => {
