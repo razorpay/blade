@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
-import { tableHeader, tableRow } from './tokens';
+import { checkboxCellWidth, tableHeader, tableRow } from './tokens';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import type {
@@ -203,7 +203,13 @@ const TableHeaderCellCheckbox = ({
 }): React.ReactElement => {
   return (
     <TableHeaderCell headerKey="SELECT">
-      <BaseBox display="flex" alignItems="center" justifyContent="center" flex={1}>
+      <BaseBox
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flex={1}
+        width={makeSize(checkboxCellWidth)}
+      >
         <Checkbox
           isChecked={isChecked}
           isDisabled={isDisabled}
@@ -215,13 +221,38 @@ const TableHeaderCellCheckbox = ({
   );
 };
 
-const StyledHeaderRow = styled(HeaderRow)<{ $showBorderedCells: boolean }>(
-  ({ theme, $showBorderedCells }) => ({
+const StyledHeaderRow = styled(HeaderRow)<{
+  $showBorderedCells: boolean;
+  $gridTemplateColumns: string | undefined;
+  $hasHoverActions: boolean;
+  $selectionType: TableProps<unknown>['selectionType'];
+  $columnCount: number;
+  $isVirtualized?: boolean;
+}>(
+  ({
+    theme,
+    $showBorderedCells,
+    $gridTemplateColumns,
+    $hasHoverActions,
+    $selectionType,
+    $columnCount,
+    $isVirtualized,
+  }) => ({
     '& th': $showBorderedCells
       ? {
           borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
           borderRightColor: getIn(theme.colors, tableRow.borderColor),
           borderRightStyle: 'solid',
+          ...($isVirtualized && {
+            display: 'grid',
+            gridTemplateColumns: $gridTemplateColumns
+              ? `${$gridTemplateColumns} ${$hasHoverActions ? 'min-content' : ''}`
+              : ` ${
+                  $selectionType === 'multiple' ? 'min-content' : ''
+                } repeat(${$columnCount},minmax(100px, 1fr)) ${
+                  $hasHoverActions ? 'min-content' : ''
+                } !important;`,
+          }),
         }
       : undefined,
     '& th:last-child ': {
@@ -244,6 +275,9 @@ const _TableHeaderRow = ({
     setHeaderRowDensity,
     showBorderedCells,
     hasHoverActions,
+    gridTemplateColumns,
+    columnCount,
+    isVirtualized,
   } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
@@ -258,6 +292,11 @@ const _TableHeaderRow = ({
       {...metaAttribute({ name: MetaConstants.TableHeaderRow })}
       {...makeAnalyticsAttribute(rest)}
       $showBorderedCells={showBorderedCells}
+      $gridTemplateColumns={gridTemplateColumns}
+      $hasHoverActions={hasHoverActions}
+      $selectionType={selectionType}
+      $columnCount={columnCount}
+      $isVirtualized={isVirtualized}
     >
       {isMultiSelect && (
         <TableHeaderCellCheckbox
