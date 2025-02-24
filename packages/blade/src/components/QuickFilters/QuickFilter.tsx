@@ -54,24 +54,7 @@ const QuickFilterContent = ({
 };
 
 const QuickFilter = forwardRef<BladeElementRef, QuickFilterProps>(
-  (
-    {
-      title,
-      value,
-      trailing,
-      testID,
-      onBlur,
-      onFocus,
-      onMouseLeave,
-      onMouseMove,
-      onPointerDown,
-      onPointerEnter,
-      onTouchStart,
-      onTouchEnd,
-      ...rest
-    },
-    ref,
-  ): React.ReactElement => {
+  ({ title, value, trailing, testID, ...rest }, ref): React.ReactElement => {
     const { selectedQuickFilters, selectionType } = useQuickFilterGroupContext();
 
     const isQuickFilterSelected = selectedQuickFilters.includes(value);
