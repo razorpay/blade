@@ -331,196 +331,186 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
               class="c2"
               data-blade-component="base-box"
             >
-              <div
-                class=""
-                data-blade-component="base-box"
+              <label
+                aria-label="Title1"
+                class="c3 c4"
+                data-blade-component="card"
               >
-                <label
-                  aria-label="Title1"
-                  class="c3 c4"
-                  data-blade-component="card"
+                <div
+                  class="c5 c6"
+                  data-blade-component="base-box"
+                  elevation="none"
                 >
                   <div
-                    class="c5 c6"
-                    data-blade-component="base-box"
-                    elevation="none"
+                    class=""
+                    data-blade-component="card-body"
                   >
                     <div
-                      class=""
-                      data-blade-component="card-body"
+                      class="c7"
+                      data-blade-component="base-box"
                     >
                       <div
-                        class="c7"
-                        data-blade-component="base-box"
+                        class="c8"
+                        data-blade-component="box"
                       >
                         <div
-                          class="c8"
-                          data-blade-component="box"
+                          class=""
+                          data-blade-component="base-box"
                         >
-                          <div
-                            class=""
-                            data-blade-component="base-box"
-                          >
-                            <label
-                              class="c9"
-                              data-blade-component="radio-label"
-                            >
-                              <div
-                                class="c0"
-                                data-blade-component="base-box"
-                              >
-                                <div
-                                  class="c10"
-                                  data-blade-component="base-box"
-                                >
-                                  <input
-                                    aria-checked="false"
-                                    aria-describedby="radio-1-helptext-2"
-                                    aria-disabled="false"
-                                    aria-invalid="false"
-                                    aria-required="false"
-                                    class="c11"
-                                    name="radio-group-5"
-                                    role="radio"
-                                    type="radio"
-                                    value="value1"
-                                  />
-                                  <div
-                                    class="c12"
-                                    data-blade-component="radio-icon-wrapper"
-                                  />
-                                </div>
-                              </div>
-                            </label>
-                          </div>
-                          <p
-                            class="c13"
-                            data-blade-component="text"
-                          >
-                            Title1
-                          </p>
-                        </div>
-                        <div
-                          class="c14"
-                          data-blade-component="counter"
-                        >
-                          <div
-                            class="c15 c16"
-                            data-blade-component="base-box"
+                          <label
+                            class="c9"
+                            data-blade-component="radio-label"
                           >
                             <div
-                              class="c17"
+                              class="c0"
                               data-blade-component="base-box"
                             >
-                              <p
-                                class="c18"
-                                data-blade-component="text"
+                              <div
+                                class="c10"
+                                data-blade-component="base-box"
                               >
-                                234
-                              </p>
+                                <input
+                                  aria-checked="false"
+                                  aria-describedby="radio-1-helptext-2"
+                                  aria-disabled="false"
+                                  aria-invalid="false"
+                                  aria-required="false"
+                                  class="c11"
+                                  name="radio-group-5"
+                                  role="radio"
+                                  type="radio"
+                                  value="value1"
+                                />
+                                <div
+                                  class="c12"
+                                  data-blade-component="radio-icon-wrapper"
+                                />
+                              </div>
                             </div>
+                          </label>
+                        </div>
+                        <p
+                          class="c13"
+                          data-blade-component="text"
+                        >
+                          Title1
+                        </p>
+                      </div>
+                      <div
+                        class="c14"
+                        data-blade-component="counter"
+                      >
+                        <div
+                          class="c15 c16"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="c17"
+                            data-blade-component="base-box"
+                          >
+                            <p
+                              class="c18"
+                              data-blade-component="text"
+                            >
+                              234
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </label>
-              </div>
-              <div
-                class=""
-                data-blade-component="base-box"
+                </div>
+              </label>
+              <label
+                aria-label="Title2"
+                class="c3 c4"
+                data-blade-component="card"
               >
-                <label
-                  aria-label="Title2"
-                  class="c3 c4"
-                  data-blade-component="card"
+                <div
+                  class="c5 c6"
+                  data-blade-component="base-box"
+                  elevation="none"
                 >
                   <div
-                    class="c5 c6"
-                    data-blade-component="base-box"
-                    elevation="none"
+                    class=""
+                    data-blade-component="card-body"
                   >
                     <div
-                      class=""
-                      data-blade-component="card-body"
+                      class="c7"
+                      data-blade-component="base-box"
                     >
                       <div
-                        class="c7"
-                        data-blade-component="base-box"
+                        class="c8"
+                        data-blade-component="box"
                       >
                         <div
-                          class="c8"
-                          data-blade-component="box"
+                          class=""
+                          data-blade-component="base-box"
                         >
-                          <div
-                            class=""
-                            data-blade-component="base-box"
-                          >
-                            <label
-                              class="c9"
-                              data-blade-component="radio-label"
-                            >
-                              <div
-                                class="c0"
-                                data-blade-component="base-box"
-                              >
-                                <div
-                                  class="c10"
-                                  data-blade-component="base-box"
-                                >
-                                  <input
-                                    aria-checked="false"
-                                    aria-describedby="radio-3-helptext-4"
-                                    aria-disabled="false"
-                                    aria-invalid="false"
-                                    aria-required="false"
-                                    class="c11"
-                                    name="radio-group-5"
-                                    role="radio"
-                                    type="radio"
-                                    value="value2"
-                                  />
-                                  <div
-                                    class="c12"
-                                    data-blade-component="radio-icon-wrapper"
-                                  />
-                                </div>
-                              </div>
-                            </label>
-                          </div>
-                          <p
-                            class="c13"
-                            data-blade-component="text"
-                          >
-                            Title2
-                          </p>
-                        </div>
-                        <div
-                          class="c14"
-                          data-blade-component="counter"
-                        >
-                          <div
-                            class="c15 c16"
-                            data-blade-component="base-box"
+                          <label
+                            class="c9"
+                            data-blade-component="radio-label"
                           >
                             <div
-                              class="c17"
+                              class="c0"
                               data-blade-component="base-box"
                             >
-                              <p
-                                class="c18"
-                                data-blade-component="text"
+                              <div
+                                class="c10"
+                                data-blade-component="base-box"
                               >
-                                234
-                              </p>
+                                <input
+                                  aria-checked="false"
+                                  aria-describedby="radio-3-helptext-4"
+                                  aria-disabled="false"
+                                  aria-invalid="false"
+                                  aria-required="false"
+                                  class="c11"
+                                  name="radio-group-5"
+                                  role="radio"
+                                  type="radio"
+                                  value="value2"
+                                />
+                                <div
+                                  class="c12"
+                                  data-blade-component="radio-icon-wrapper"
+                                />
+                              </div>
                             </div>
+                          </label>
+                        </div>
+                        <p
+                          class="c13"
+                          data-blade-component="text"
+                        >
+                          Title2
+                        </p>
+                      </div>
+                      <div
+                        class="c14"
+                        data-blade-component="counter"
+                      >
+                        <div
+                          class="c15 c16"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="c17"
+                            data-blade-component="base-box"
+                          >
+                            <p
+                              class="c18"
+                              data-blade-component="text"
+                            >
+                              234
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </label>
-              </div>
+                </div>
+              </label>
             </div>
           </div>
         </div>

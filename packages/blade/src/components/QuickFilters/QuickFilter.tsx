@@ -76,39 +76,28 @@ const QuickFilter = forwardRef<BladeElementRef, QuickFilterProps>(
 
     const isQuickFilterSelected = selectedQuickFilters.includes(value);
     return (
-      <BaseBox
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onMouseLeave={onMouseLeave}
-        onMouseMove={onMouseMove}
-        onPointerDown={onPointerDown}
-        onPointerEnter={onPointerEnter}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
+      <Card
+        padding="spacing.0"
+        as="label"
+        accessibilityLabel={title}
+        borderRadius="medium"
+        elevation="none"
+        isSelected={isQuickFilterSelected}
+        ref={ref}
+        {...makeAnalyticsAttribute(rest)}
+        {...metaAttribute({ testID })}
       >
-        <Card
-          padding="spacing.0"
-          as="label"
-          accessibilityLabel={title}
-          borderRadius="medium"
-          elevation="none"
-          isSelected={isQuickFilterSelected}
-          ref={ref}
-          {...makeAnalyticsAttribute(rest)}
-          {...metaAttribute({ testID })}
-        >
-          <CardBody>
-            <QuickFilterContent
-              value={value}
-              title={title}
-              trailing={trailing}
-              selectionType={selectionType}
-              isSelected={isQuickFilterSelected}
-              {...rest}
-            />
-          </CardBody>
-        </Card>
-      </BaseBox>
+        <CardBody>
+          <QuickFilterContent
+            value={value}
+            title={title}
+            trailing={trailing}
+            selectionType={selectionType}
+            isSelected={isQuickFilterSelected}
+            {...rest}
+          />
+        </CardBody>
+      </Card>
     );
   },
 );
