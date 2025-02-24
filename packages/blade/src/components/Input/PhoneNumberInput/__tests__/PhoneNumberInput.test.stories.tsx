@@ -37,7 +37,9 @@ SelectACountry.play = async () => {
   await expect(queryByRole('menu')).not.toBeInTheDocument();
 
   // expect albania to be selected
-  await expect(getByRole('button', { name: /select country/i })).toHaveAccessibleName(/Albania/i);
+  await expect(getByRole('button', { name: /select country/i })).toHaveAccessibleName(
+    /Åland Islands - Select Country/i,
+  );
 
   await sleep(300);
   // Ensure that input is in focus, input is tel type;
