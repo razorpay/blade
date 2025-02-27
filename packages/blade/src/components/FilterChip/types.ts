@@ -1,6 +1,4 @@
-import type { GestureResponderEvent } from 'react-native';
 import type { TestID } from '~utils/types';
-import type { Platform } from '~utils';
 import type { AccessibilityProps } from '~utils/makeAccessible';
 
 type BaseFilterChipProps = {
@@ -35,18 +33,9 @@ type BaseFilterChipProps = {
    */
   selectionType?: 'single' | 'multiple';
 
-  onKeyDown?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
-    web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  }>;
-  onClick?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
-    web: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  }>;
-  onBlur?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
-    web: (event: React.FocusEvent<HTMLButtonElement>) => void;
-  }>;
+  onKeyDown?: (e: React.KeyboardEventHandler) => void;
+  onClick?: (e: React.MouseEventHandler) => void;
+  onBlur?: (e: React.FocusEventHandler) => void;
   accessibilityProps?: Partial<AccessibilityProps>;
 } & TestID;
 
