@@ -80,7 +80,7 @@ const _DropdownFilterChip = ({
 };
 
 const DropdownFilterChip = assignWithoutSideEffects(_DropdownFilterChip, {
-  componentId: dropdownComponentIds.triggers.DropdownButton,
+  componentId: dropdownComponentIds.triggers.DropdownFilterChip,
 });
 
 export { DropdownFilterChip };
