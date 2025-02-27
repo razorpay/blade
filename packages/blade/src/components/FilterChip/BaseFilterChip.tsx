@@ -148,7 +148,6 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
           <StyledFilterCloseButton
             aria-label={`Clear ${label} value`}
             // value can never be undefined because when it's undefined the button itself doesn't render/
-            //TODO: check for event buble
             onClick={() => onClearButtonClick?.({ value: value ?? '' })}
             disabled={isDisabled}
           >
