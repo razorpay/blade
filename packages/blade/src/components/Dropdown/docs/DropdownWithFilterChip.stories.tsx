@@ -1,7 +1,7 @@
 import React from 'react';
 import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownOverlay } from '..';
-import { DropdownFilterChip } from '../DropdownFilterChip';
+import { FilterChipSelectInput } from '../FilterChipSelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 
 const DropdownStoryMeta = {
@@ -28,7 +28,7 @@ export const Default = (): React.ReactElement => {
 
   return (
     <Dropdown>
-      <DropdownFilterChip
+      <FilterChipSelectInput
         label="Filter"
         value={value}
         onClearButtonClick={() => {
@@ -83,7 +83,7 @@ export const SelectionTypeMultiple = (): React.ReactElement => {
   const isSelected = (name: string): boolean => value.includes(name);
   return (
     <Dropdown selectionType="multiple">
-      <DropdownFilterChip
+      <FilterChipSelectInput
         label="Filter Chip"
         value={value}
         onClearButtonClick={(value) => {

@@ -9,7 +9,7 @@ import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseFilterChipProps } from '~components/FilterChip/types';
 
-type DropdownFilterChipProps = Pick<
+type FilterChipSelectInput = Pick<
   BaseFilterChipProps,
   | 'onKeyDown'
   | 'value'
@@ -23,7 +23,7 @@ type DropdownFilterChipProps = Pick<
   accessibilityLabel?: string;
 };
 
-const _DropdownFilterChip = ({
+const _FilterChipSelectInput = ({
   onClick,
   onBlur,
   onKeyDown,
@@ -33,7 +33,7 @@ const _DropdownFilterChip = ({
   onClearButtonClick,
   label,
   ...rest
-}: DropdownFilterChipProps): React.ReactElement => {
+}: FilterChipSelectInput): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -79,8 +79,8 @@ const _DropdownFilterChip = ({
   );
 };
 
-const DropdownFilterChip = assignWithoutSideEffects(_DropdownFilterChip, {
-  componentId: dropdownComponentIds.triggers.DropdownFilterChip,
+const FilterChipSelectInput = assignWithoutSideEffects(_FilterChipSelectInput, {
+  componentId: dropdownComponentIds.triggers.FilterChipSelectInput,
 });
 
-export { DropdownFilterChip };
+export { FilterChipSelectInput };

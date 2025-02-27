@@ -28,7 +28,7 @@ const validDropdownChildren = [
   dropdownComponentIds.DropdownOverlay,
   dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
-  dropdownComponentIds.triggers.DropdownFilterChip,
+  dropdownComponentIds.triggers.FilterChipSelectInput,
 ];
 
 /**
@@ -162,8 +162,8 @@ const _Dropdown = (
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {
         dropdownTriggerer.current = 'AutoComplete';
       }
-      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownFilterChip)) {
-        dropdownTriggerer.current = 'DropdownFilterChip';
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.FilterChipSelectInput)) {
+        dropdownTriggerer.current = 'FilterChipSelectInput';
       }
     }
   });
