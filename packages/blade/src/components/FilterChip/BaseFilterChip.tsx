@@ -1,3 +1,4 @@
+import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import { FILTER_CHIP_HEIGHT } from './tokens';
@@ -12,6 +13,10 @@ import { makeBorderSize, makeSpace } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const getInteractiveFilterItemStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
@@ -45,6 +50,7 @@ const StyledFilterChip = styled(BaseBox)<{ $isSelected?: boolean; $isDisabled?: 
       borderStyle: $isSelected ? 'solid' : 'dashed',
       backgroundColor: theme.colors.surface.background.gray.intense,
       color: theme.colors.interactive.text.gray[$isDisabled ? 'disabled' : 'normal'],
+      width: 'fit-content',
     };
   },
 );
@@ -94,19 +100,36 @@ const renderValue = (
   );
 };
 
-const BaseFilterChip = ({
-  value,
-  onClearButtonClick,
-  label,
-  isDisabled,
-  selectionType = 'single',
-  ...rest
-}: BaseFilterChipProps): React.ReactElement => {
+const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilterChipProps> = (
+  {
+    value,
+    onClearButtonClick,
+    label,
+    isDisabled,
+    selectionType = 'single',
+    onClick,
+    onKeyDown,
+    accessibilityProps,
+    ...rest
+  }: BaseFilterChipProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const isSelected = Boolean(value) && !isDisabled;
 
   return (
-    <StyledFilterChip $isDisabled={isDisabled} $isSelected={isSelected} {...getStyledProps(rest)}>
-      <StyledFilterTrigger $isSelected={isSelected} disabled={isDisabled}>
+    <StyledFilterChip $isDisabled={isDisabled} $isSelected={isSelected}>
+      <StyledFilterTrigger
+        $isSelected={isSelected}
+        disabled={isDisabled}
+        onClick={onClick}
+        onKeyDown={onKeyDown}
+        {...makeAccessible({
+          ...accessibilityProps,
+          role: accessibilityProps?.role ?? 'button',
+        })}
+        {...getStyledProps(rest)}
+        ref={ref as React.Ref<HTMLButtonElement>}
+      >
         <Box display="flex" gap="spacing.2" whiteSpace="nowrap">
           <Text size="small" weight="medium" color="currentColor" truncateAfterLines={1}>
             {label}
@@ -123,7 +146,8 @@ const BaseFilterChip = ({
           <Divider orientation="vertical" variant={isDisabled ? 'muted' : 'subtle'} />
           <StyledFilterCloseButton
             aria-label={`Clear ${label} value`}
-            // value can never be undefined because when it's undefined the button itself doesn't render
+            // value can never be undefined because when it's undefined the button itself doesn't render/
+            //TODO: check for event buble
             onClick={() => onClearButtonClick?.({ value: value ?? '' })}
             disabled={isDisabled}
           >
@@ -134,5 +158,9 @@ const BaseFilterChip = ({
     </StyledFilterChip>
   );
 };
+
+const BaseFilterChip = assignWithoutSideEffects(React.forwardRef(_BaseFilterChip), {
+  componentId: MetaConstants.BaseFilterChip,
+});
 
 export { BaseFilterChip };

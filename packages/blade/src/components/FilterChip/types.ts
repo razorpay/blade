@@ -1,4 +1,7 @@
-import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { GestureResponderEvent } from 'react-native';
+import type { TestID } from '~utils/types';
+import type { Platform } from '~utils';
+import type { AccessibilityProps } from '~utils/makeAccessible';
 
 type BaseFilterChipProps = {
   /**
@@ -31,6 +34,20 @@ type BaseFilterChipProps = {
    * When using inside Dropdown, this prop is internally taken from Dropdown.
    */
   selectionType?: 'single' | 'multiple';
-} & StyledPropsBlade;
+
+  onKeyDown?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  }>;
+  onClick?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  }>;
+  onBlur?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  }>;
+  accessibilityProps?: Partial<AccessibilityProps>;
+} & TestID;
 
 export type { BaseFilterChipProps };
