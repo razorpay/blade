@@ -131,7 +131,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
         {...getStyledProps(rest)}
         ref={ref as React.Ref<HTMLButtonElement>}
       >
-        <Box display="flex" gap="spacing.2" whiteSpace="nowrap">
+        <Box display="flex" gap="spacing.2" whiteSpace={'nowrap'}>
           <Text size="small" weight="medium" color="currentColor" truncateAfterLines={1}>
             {label}
             {isSelected ? ':' : null}
