@@ -8,6 +8,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseFilterChipProps } from '~components/FilterChip/types';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type FilterChipSelectInput = Pick<
   BaseFilterChipProps,
@@ -21,7 +22,7 @@ type FilterChipSelectInput = Pick<
   | 'onBlur'
 > & {
   accessibilityLabel?: string;
-};
+} & DataAnalyticsAttribute;
 
 const _FilterChipSelectInput = ({
   onClick,

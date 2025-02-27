@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
-import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
+import { Dropdown, DropdownLink, DropdownOverlay, FilterChipSelectInput } from '../index';
 import { DropdownButton } from '../DropdownButton';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -464,5 +464,67 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     window.open = jest.fn();
     await user.keyboard('[Space]');
     expect(window.open).toBeCalledWith('/settings', '_blank');
+  });
+});
+
+describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
+  it('should render dropdown with FilterChipSelectInput', async () => {
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="Fruits" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+  it('should make items clickable', async () => {
+    const user = userEvent.setup();
+    const appleClickHandler = jest.fn();
+
+    const { getByRole } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="Fruits" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" onClick={appleClickHandler} />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+    const dropdownTrigger = getByRole('button', { name: 'Fruits' });
+
+    expect(dropdownTrigger).toBeInTheDocument();
+    await user.click(dropdownTrigger);
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+    expect(appleClickHandler).toBeCalled();
+  });
+  it('should support data-analytics-attribute', async () => {
+    const { container, getByRole } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="profile" data-analytics-attribute="profile" />
+        <DropdownOverlay>
+          <ActionList data-analytics-list="user-setting">
+            <ActionListItem data-analytics-item="user-profile" title="Profile" value="profile" />
+            <ActionListItem title="Settings" value="settings" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const dropdownTrigger = getByRole('button', { name: 'profile' });
+
+    expect(dropdownTrigger).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+    expect(getByRole('button', { name: 'profile' })).toHaveAttribute(
+      'data-analytics-attribute',
+      'profile',
+    );
   });
 });

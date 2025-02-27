@@ -14,9 +14,10 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { MetaConstants } from '~utils/metaAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getInteractiveFilterItemStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
@@ -133,6 +134,8 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
           role: accessibilityProps?.role ?? 'button',
         })}
         {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
+        {...metaAttribute({ testID: rest.testID })}
         ref={ref as React.Ref<HTMLButtonElement>}
       >
         <Box display="flex" gap="spacing.2" whiteSpace="nowrap">
