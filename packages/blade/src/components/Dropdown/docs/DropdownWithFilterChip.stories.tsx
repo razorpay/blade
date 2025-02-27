@@ -25,8 +25,30 @@ const DropdownStoryMeta = {
 
 export const Default = (): React.ReactElement => {
   return (
-    <Dropdown selectionType="multiple">
+    <Dropdown>
       <DropdownFilterChip label="Filter Chip" />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Item 1" value="item-1" />
+          <ActionListItem title="Item 2" value="item-2" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+export const SelectionTypeMultiple = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <DropdownFilterChip
+        label="Filter Chip"
+        // onFilterValueChange={(value) => {
+        //   console.log('value', value);
+        // }}
+        onClearButtonClick={(value) => {
+          console.log(value);
+        }}
+      />
       <DropdownOverlay>
         <ActionList>
           <ActionListItem title="Item 1" value="item-1" />
