@@ -21,7 +21,6 @@ type DropdownFilterChipProps = Pick<
   | 'onBlur'
 > & {
   accessibilityLabel?: string;
-  defaultValue?: string;
 };
 
 const _DropdownFilterChip = ({
@@ -31,7 +30,6 @@ const _DropdownFilterChip = ({
   accessibilityLabel,
   testID,
   value,
-  // defaultValue,
   onClearButtonClick,
   label,
   ...rest
@@ -44,6 +42,7 @@ const _DropdownFilterChip = ({
     activeIndex,
     hasFooterAction,
     triggererRef,
+    selectionType,
   } = useDropdown();
 
   return (
@@ -51,6 +50,7 @@ const _DropdownFilterChip = ({
       label={label}
       value={value}
       onClearButtonClick={onClearButtonClick}
+      selectionType={selectionType}
       {...rest}
       ref={triggererRef as any}
       accessibilityProps={{

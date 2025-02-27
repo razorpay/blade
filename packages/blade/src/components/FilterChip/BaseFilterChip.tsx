@@ -114,7 +114,8 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
   }: BaseFilterChipProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  const isSelected = Boolean(value) && !isDisabled;
+  const isSelected =
+    selectionType === 'multiple' ? Array.isArray(value) && value.length > 0 : !!value;
 
   return (
     <StyledFilterChip $isDisabled={isDisabled} $isSelected={isSelected}>
