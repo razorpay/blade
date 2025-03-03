@@ -125,6 +125,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     setPickedDate,
     controlledValue,
     setControlledValue,
+    handleReset,
   } = useDatesState({
     level: _picker,
     type: isSingle ? 'default' : 'range',
@@ -186,9 +187,8 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   };
 
   const handleClear = (): void => {
-    setControlledValue(null);
     fireNativeEvent(referenceRef, ['change']);
-    setPickedDate(null);
+    handleReset();
     close();
   };
 

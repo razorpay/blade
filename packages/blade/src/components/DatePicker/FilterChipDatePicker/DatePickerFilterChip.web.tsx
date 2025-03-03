@@ -5,6 +5,36 @@ import { getFormattedDate } from '../utils';
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import type { BladeElementRef } from '~utils/types';
 
+const formatDateRange = (
+  date: Date | [Date, Date],
+  format: string,
+  locale: string,
+  selectionType: 'single' | 'range',
+): string => {
+  const formatOptions = {
+    date,
+    format,
+    labelSeparator: '-',
+    locale,
+    type: 'default' as const,
+  };
+
+  if (selectionType === 'single' && date instanceof Date) {
+    return getFormattedDate(formatOptions);
+  }
+
+  if (Array.isArray(date)) {
+    const [startDate, endDate] = date;
+    if (startDate && endDate) {
+      return `${getFormattedDate({ ...formatOptions, date: startDate })} - ${getFormattedDate({
+        ...formatOptions,
+        date: endDate,
+      })}`;
+    }
+  }
+  return '';
+};
+
 const _DatePickerFilterChip: React.ForwardRefRenderFunction<
   BladeElementRef,
   DatePickerFilterChipProps
@@ -27,13 +57,8 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
     format,
   } = props;
   const { locale } = useDatesContext();
-  const dateValue = getFormattedDate({
-    date,
-    format,
-    labelSeparator: '-',
-    locale,
-    type: 'default',
-  });
+
+  const dateValue = formatDateRange(date, format, locale, selectionType);
 
   return (
     <BaseFilterChip
