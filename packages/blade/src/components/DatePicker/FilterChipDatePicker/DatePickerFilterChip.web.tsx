@@ -70,16 +70,12 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
       label={label}
       value={dateValue}
       onClearButtonClick={onClearButtonChange}
-      //   selectionType={selectionType}
-      //   id="start-date"
       accessibilityProps={{
         label: accessibilityLabel ?? label,
         hasPopup: referenceProps['aria-haspopup'],
         expanded: referenceProps['aria-expanded'],
         controls: referenceProps['aria-controls'],
         role: 'combobox',
-        // controls: `${dropdownBaseId}-actionlist`,
-        // activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
       }}
       {...referenceProps}
     />
