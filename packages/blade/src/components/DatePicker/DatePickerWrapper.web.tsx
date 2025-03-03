@@ -5,12 +5,11 @@
 import React from 'react';
 import type { DatePickerProps, DateSelectionType } from './types';
 import { DatePicker } from './DatePicker.web';
-import { DatePickerInput } from './DateInput.web';
 
 const DatePickerWrapper = <Type extends DateSelectionType = 'single'>(
   props: DatePickerProps<Type>,
 ) => {
-  return <DatePicker {...props} inputElement={<DatePickerInput />} />;
+  return <DatePicker {...props} inputElementType="datePickerInput" />;
 };
 
 export { DatePickerWrapper as DatePicker };

@@ -16,6 +16,8 @@ import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter';
 import { convertIntlToDayjsLocale, loadScript } from './utils';
 import { shiftTimezone } from './shiftTimezone';
+import { DatePickerInput } from './DateInput.web';
+import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -67,12 +69,12 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   zIndex = componentZIndices.popover,
   format = 'DD/MM/YYYY',
   inputPlaceHolder,
-  inputElement,
+  inputElementType = 'datePickerInput',
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
   DataAnalyticsAttribute & {
-    inputElement: React.ReactElement;
+    inputElementType: 'chip' | 'datePickerInput';
   }): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
@@ -323,31 +325,33 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
           {...getStyledProps(props)}
           {...metaAttribute({ name: MetaConstants.DatePicker })}
         >
-          {React.cloneElement(inputElement, {
-            ref: referenceRef,
-            selectionType: _selectionType,
-            date: controlledValue,
-            inputRef: refs.reference,
-            referenceProps: getReferenceProps(),
-            name: name as never,
-            label: label as never,
-            labelPosition,
-            accessibilityLabel,
-            size,
-            errorText: errorText as never,
-            helpText: helpText as never,
-            successText: successText as never,
-            isDisabled,
-            isRequired,
-            validationState,
-            autoFocus,
-            necessityIndicator,
-            format: finalFormat,
-            placeholder: finalInputPlaceHolder,
-            onClearButtonChange: handleClear,
-            ...makeAnalyticsAttribute(props),
-          })}
-          {/* <DatePickerInput
+          {inputElementType === 'chip' ? (
+            <DatePickerFilterChip
+              selectionType={_selectionType}
+              date={controlledValue}
+              ref={referenceRef}
+              inputRef={refs.reference}
+              referenceProps={getReferenceProps()}
+              name={name as never}
+              label={label as never}
+              labelPosition={labelPosition}
+              accessibilityLabel={accessibilityLabel}
+              size={size}
+              errorText={errorText as never}
+              helpText={helpText as never}
+              successText={successText as never}
+              isDisabled={isDisabled}
+              isRequired={isRequired}
+              validationState={validationState}
+              autoFocus={autoFocus}
+              necessityIndicator={necessityIndicator}
+              format={finalFormat}
+              placeholder={finalInputPlaceHolder}
+              onClearButtonChange={handleClear}
+              {...makeAnalyticsAttribute(props)}
+            />
+          ) : (
+            <DatePickerInput
               selectionType={_selectionType}
               date={controlledValue}
               ref={referenceRef}
@@ -369,7 +373,8 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
               format={finalFormat}
               placeholder={finalInputPlaceHolder}
               {...makeAnalyticsAttribute(props)}
-          /> */}
+            />
+          )}
           {isMobile ? (
             <BottomSheet
               snapPoints={[0.9, 0.9, 1]}
