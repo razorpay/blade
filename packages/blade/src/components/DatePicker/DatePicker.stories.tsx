@@ -382,7 +382,7 @@ export const Localization: StoryFn<typeof DatePickerComponent> = () => {
 
 Localization.storyName = 'Localization';
 
-export const FilterChipDatePickerStory: StoryFn<typeof FilterChipDatePicker> = () => {
+export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDatePicker> = () => {
   return (
     <Box>
       <FilterChipDatePicker label="Select a date" selectionType="single" />
@@ -390,4 +390,16 @@ export const FilterChipDatePickerStory: StoryFn<typeof FilterChipDatePicker> = (
   );
 };
 
-FilterChipDatePickerStory.storyName = 'FilterChipDatePicker';
+FilterChipDatePickerStorySingleStory.storyName = 'FilterChipDatePicker (Single Selection)';
+
+export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
+  typeof FilterChipDatePicker
+> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker label="Select a date" selectionType="multiple" />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
