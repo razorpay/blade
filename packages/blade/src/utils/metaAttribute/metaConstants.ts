@@ -13,6 +13,7 @@ export const MetaConstants = {
   Avatar: 'avatar',
   AvatarGroup: 'avatar-group',
   Badge: 'badge',
+  BaseFilterChip: 'base-filter-chip',
   Box: 'box',
   BaseBox: 'base-box',
   BaseText: 'base-text',
