@@ -385,7 +385,7 @@ Localization.storyName = 'Localization';
 export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDatePicker> = () => {
   return (
     <Box>
-      <FilterChipDatePicker label="Select a date" selectionType="single" />
+      <FilterChipDatePicker label="Date" selectionType="single" />
     </Box>
   );
 };
@@ -397,7 +397,7 @@ export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
 > = () => {
   return (
     <Box>
-      <FilterChipDatePicker label="Select a date" selectionType="multiple" />
+      <FilterChipDatePicker label="Date" selectionType="multiple" />
     </Box>
   );
 };
