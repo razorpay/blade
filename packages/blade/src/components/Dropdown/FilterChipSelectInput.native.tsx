@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { throwBladeError } from '~utils/logger';
 
 const BaseFilterChip = (_props: any): React.ReactElement => {
