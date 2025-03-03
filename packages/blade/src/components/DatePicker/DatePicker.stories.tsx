@@ -397,7 +397,7 @@ export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
 > = () => {
   return (
     <Box>
-      <FilterChipDatePicker label="Date" selectionType="multiple" />
+      <FilterChipDatePicker label="Date" selectionType="range" />
     </Box>
   );
 };
@@ -411,7 +411,7 @@ export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
     <Box>
       <FilterChipDatePicker
         label="Date"
-        selectionType="multiple"
+        selectionType="range"
         presets={[
           { label: 'In 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date] },
           {
