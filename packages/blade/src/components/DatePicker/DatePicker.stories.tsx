@@ -4,7 +4,7 @@ import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { I18nProvider } from '@razorpay/i18nify-react';
 import type { DatePickerProps, DatesRangeValue } from './types';
-import { DatePicker as DatePickerComponent } from './';
+import { DatePicker as DatePickerComponent, FilterChipDatePicker } from './';
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -380,3 +380,48 @@ export const Localization: StoryFn<typeof DatePickerComponent> = () => {
 };
 
 Localization.storyName = 'Localization';
+
+export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDatePicker> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker label="Date" selectionType="single" />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStorySingleStory.storyName = 'FilterChipDatePicker (Single Selection)';
+
+export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
+  typeof FilterChipDatePicker
+> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker label="Date" selectionType="range" />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
+
+export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
+  typeof FilterChipDatePicker
+> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        presets={[
+          { label: 'In 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date] },
+          {
+            label: 'In a month',
+            value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+          },
+        ]}
+      />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStorySingleStoryWithPreset.storyName =
+  'FilterChipDatePicker (Single Selection) with Presets';

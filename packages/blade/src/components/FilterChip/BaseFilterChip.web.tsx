@@ -111,6 +111,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
     onClick,
     onKeyDown,
     accessibilityProps,
+    id,
     ...rest
   }: BaseFilterChipProps,
   ref: React.Ref<BladeElementRef>,
@@ -123,6 +124,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
       <StyledFilterTrigger
         $isSelected={isSelected}
         disabled={isDisabled}
+        id={id}
         onClick={(e) => {
           onClick?.(e as any);
         }}
