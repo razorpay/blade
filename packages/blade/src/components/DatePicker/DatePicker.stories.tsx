@@ -403,3 +403,26 @@ export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
 };
 
 FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
+
+export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
+  typeof FilterChipDatePicker
+> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="multiple"
+        presets={[
+          { label: 'In 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date] },
+          {
+            label: 'In a month',
+            value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+          },
+        ]}
+      />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStorySingleStoryWithPreset.storyName =
+  'FilterChipDatePicker (Single Selection) with Presets';
