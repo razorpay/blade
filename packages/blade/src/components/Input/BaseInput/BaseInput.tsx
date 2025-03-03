@@ -884,11 +884,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     onKeyDown,
     onInputKeydownTagHandler,
   });
-  const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
+  const { helpTextId, errorTextId, successTextId } = useFormId(id);
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
   const { currentInteraction, setCurrentInteraction } = useInteraction();
   const _isRequired = isRequired || necessityIndicator === 'required';
+
+  const inputId = 'inputId';
 
   const accessibilityProps = makeAccessible({
     required: Boolean(_isRequired),

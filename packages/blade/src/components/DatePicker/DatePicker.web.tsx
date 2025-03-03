@@ -37,6 +37,7 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
+import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -68,8 +69,13 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   zIndex = componentZIndices.popover,
   format = 'DD/MM/YYYY',
   inputPlaceHolder,
+  inputElement,
   ...props
-}: DatePickerProps<Type> & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
+}: DatePickerProps<Type> &
+  StyledPropsBlade &
+  DataAnalyticsAttribute & {
+    inputElement: React.ReactElement;
+  }): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
@@ -312,29 +318,52 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
           {...getStyledProps(props)}
           {...metaAttribute({ name: MetaConstants.DatePicker })}
         >
-          <DatePickerInput
-            selectionType={_selectionType}
-            date={controlledValue}
-            ref={referenceRef}
-            inputRef={refs.reference}
-            referenceProps={getReferenceProps()}
-            name={name as never}
-            label={label as never}
-            labelPosition={labelPosition}
-            accessibilityLabel={accessibilityLabel}
-            size={size}
-            errorText={errorText as never}
-            helpText={helpText as never}
-            successText={successText as never}
-            isDisabled={isDisabled}
-            isRequired={isRequired}
-            validationState={validationState}
-            autoFocus={autoFocus}
-            necessityIndicator={necessityIndicator}
-            format={finalFormat}
-            placeholder={finalInputPlaceHolder}
-            {...makeAnalyticsAttribute(props)}
-          />
+          {React.cloneElement(inputElement, {
+            ref: referenceRef,
+            selectionType: _selectionType,
+            date: controlledValue,
+            inputRef: refs.reference,
+            referenceProps: getReferenceProps(),
+            name: name as never,
+            label: label as never,
+            labelPosition,
+            accessibilityLabel,
+            size,
+            errorText: errorText as never,
+            helpText: helpText as never,
+            successText: successText as never,
+            isDisabled,
+            isRequired,
+            validationState,
+            autoFocus,
+            necessityIndicator,
+            format: finalFormat,
+            placeholder: finalInputPlaceHolder,
+            ...makeAnalyticsAttribute(props),
+          })}
+          {/* <DatePickerInput
+              selectionType={_selectionType}
+              date={controlledValue}
+              ref={referenceRef}
+              inputRef={refs.reference}
+              referenceProps={getReferenceProps()}
+              name={name as never}
+              label={label as never}
+              labelPosition={labelPosition}
+              accessibilityLabel={accessibilityLabel}
+              size={size}
+              errorText={errorText as never}
+              helpText={helpText as never}
+              successText={successText as never}
+              isDisabled={isDisabled}
+              isRequired={isRequired}
+              validationState={validationState}
+              autoFocus={autoFocus}
+              necessityIndicator={necessityIndicator}
+              format={finalFormat}
+              placeholder={finalInputPlaceHolder}
+              {...makeAnalyticsAttribute(props)}
+          /> */}
           {isMobile ? (
             <BottomSheet
               snapPoints={[0.9, 0.9, 1]}

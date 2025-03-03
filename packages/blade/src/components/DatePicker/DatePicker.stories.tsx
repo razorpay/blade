@@ -4,7 +4,7 @@ import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { I18nProvider } from '@razorpay/i18nify-react';
 import type { DatePickerProps, DatesRangeValue } from './types';
-import { DatePicker as DatePickerComponent } from './';
+import { DatePicker as DatePickerComponent, FilterChipDatePicker } from './';
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -86,6 +86,7 @@ export default {
           <Sandbox>
             {`
               import { DatePicker } from '@razorpay/blade/components';
+import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 
               function App() {
                 return (
@@ -380,3 +381,13 @@ export const Localization: StoryFn<typeof DatePickerComponent> = () => {
 };
 
 Localization.storyName = 'Localization';
+
+export const FilterChipDatePickerStory: StoryFn<typeof FilterChipDatePicker> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker label="Select a date" selectionType="single" />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStory.storyName = 'FilterChipDatePicker';
