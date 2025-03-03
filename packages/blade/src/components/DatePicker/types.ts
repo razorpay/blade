@@ -204,12 +204,11 @@ type DatePickerCommonInputProps = {
 > &
   FormInputValidationProps;
 
-type DatePickerInputProps =
-  | (DatePickerCommonInputProps & DatePickerRangeInputProps)
-  | (DatePickerSingleInputProps & {
-      format?: string;
-      placeholder?: string;
-    });
+type DatePickerInputProps = DatePickerCommonInputProps &
+  (DatePickerRangeInputProps | DatePickerSingleInputProps) & {
+    format: string;
+    placeholder?: string;
+  };
 
 type FilterChipDatePickerProps = {};
 type DatePickerFilterChipProps = DatePickerInputProps;
