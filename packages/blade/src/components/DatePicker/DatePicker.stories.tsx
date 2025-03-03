@@ -86,7 +86,6 @@ export default {
           <Sandbox>
             {`
               import { DatePicker } from '@razorpay/blade/components';
-import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 
               function App() {
                 return (
