@@ -50,7 +50,6 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
   },
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
-  console.log('DatePickerFilterChip', props);
   const {
     referenceProps,
     label,
