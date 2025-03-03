@@ -211,7 +211,8 @@ type DatePickerInputProps =
       placeholder?: string;
     });
 
-type DatePickerFilterChipProps = Partial<DatePickerInputProps>;
+type FilterChipDatePickerProps = {};
+type DatePickerFilterChipProps = DatePickerInputProps;
 export type {
   CalendarProps,
   DatePickerProps,
