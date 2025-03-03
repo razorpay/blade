@@ -119,8 +119,6 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
   const isSelected =
     selectionType === 'multiple' ? Array.isArray(value) && value.length > 0 : !!value;
 
-  console.log('accessibilityProps', accessibilityProps);
-
   return (
     <StyledFilterChip $isDisabled={isDisabled} $isSelected={isSelected}>
       <StyledFilterTrigger
