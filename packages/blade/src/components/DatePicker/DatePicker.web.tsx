@@ -12,7 +12,6 @@ import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } 
 import { Calendar } from './Calendar';
 import { PresetSideBar } from './QuickSelection/PresetSideBar';
 import { useDatesState } from './useDatesState';
-import { DatePickerInput } from './DateInput';
 import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter';
 import { convertIntlToDayjsLocale, loadScript } from './utils';
@@ -37,7 +36,6 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
-import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,

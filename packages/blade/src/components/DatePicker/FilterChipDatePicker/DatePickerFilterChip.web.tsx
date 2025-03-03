@@ -37,7 +37,9 @@ const formatDateRange = (
 
 const _DatePickerFilterChip: React.ForwardRefRenderFunction<
   BladeElementRef,
-  DatePickerFilterChipProps
+  DatePickerFilterChipProps & {
+    onClearButtonChange: (value: string) => void;
+  }
 > = (
   {
     ...props
