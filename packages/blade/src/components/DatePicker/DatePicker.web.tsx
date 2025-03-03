@@ -185,6 +185,13 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     close();
   };
 
+  const handleClear = (): void => {
+    setControlledValue(null);
+    fireNativeEvent(referenceRef, ['change']);
+    setPickedDate(null);
+    close();
+  };
+
   const isMobile = useIsMobile();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const titleId = useId('datepicker-title');
@@ -339,6 +346,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             necessityIndicator,
             format: finalFormat,
             placeholder: finalInputPlaceHolder,
+            onClearButtonChange: handleClear,
             ...makeAnalyticsAttribute(props),
           })}
           {/* <DatePickerInput

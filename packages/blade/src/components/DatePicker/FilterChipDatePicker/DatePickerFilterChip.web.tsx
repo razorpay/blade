@@ -1,5 +1,7 @@
 import { forwardRef } from 'react';
+import { useDatesContext } from '@mantine/dates';
 import type { DatePickerFilterChipProps } from '../types';
+import { getFormattedDate } from '../utils';
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import type { BladeElementRef } from '~utils/types';
 
@@ -7,17 +9,40 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
   BladeElementRef,
   DatePickerFilterChipProps
 > = (
-  { ...props }: DatePickerFilterChipProps,
+  {
+    ...props
+  }: DatePickerFilterChipProps & {
+    onClearButtonChange: (value: string) => void;
+  },
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
   console.log('DatePickerFilterChip', props);
-  const { referenceProps, label, selectionType, accessibilityLabel } = props;
+  const {
+    referenceProps,
+    label,
+    selectionType,
+    onClearButtonChange,
+    accessibilityLabel,
+    date,
+    format,
+  } = props;
+  const { locale } = useDatesContext();
+  const dateValue = getFormattedDate({
+    date,
+    format,
+    labelSeparator: '-',
+    locale,
+    type: 'default',
+  });
+
   return (
     <BaseFilterChip
       ref={ref}
       label={label}
-      selectionType={selectionType}
-      id="start-date"
+      value={dateValue}
+      onClearButtonClick={onClearButtonChange}
+      //   selectionType={selectionType}
+      //   id="start-date"
       accessibilityProps={{
         label: accessibilityLabel ?? label,
         hasPopup: referenceProps['aria-haspopup'],
