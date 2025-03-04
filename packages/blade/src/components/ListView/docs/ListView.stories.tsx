@@ -40,10 +40,6 @@ import {
   SearchIcon,
   CheckIcon,
   CloseIcon,
-  SettingsIcon,
-  MenuIcon,
-  UserIcon,
-  BoxIcon,
   LayoutIcon,
   PaymentGatewayIcon,
   PaymentLinkIcon,
@@ -102,14 +98,228 @@ const Page = (): React.ReactElement => {
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { ListView } from '@razorpay/blade/components';
-import { Table } from '../../Table/docs/BasicTable.stories';
-import type { TableData from '~components/Table';
-import { CheckIcon } from '~components/Icons';
+        import { ListView , ListViewFilters, BaseBox,QuickFilterGroup, QuickFilter, FilterChipGroup,Dropdown,DropdownOverlay} from '@razorpay/blade/components';
         
         function App() {
           return (
-            <ListView > Hi, from ray! </ListView>
+                     <BaseBox height="100%">
+               <ListView>
+                 <ListViewFilters
+                   quickFilters={
+                     <QuickFilterGroup selectionType="single" defaultValue="Captured">
+                       <QuickFilter
+                         title="Captured"
+                         value="Captured"
+                         trailing={<Counter value={234} color="positive" />}
+                       />
+                       <QuickFilter
+                         title="Failed"
+                         value="Failed"
+                         trailing={<Counter value={234} color="negative" />}
+                       />
+                       <QuickFilter
+                         title="Pending"
+                         value="Pending"
+                         trailing={<Counter value={234} color="neutral" />}
+                       />
+                     </QuickFilterGroup>
+                   }
+                   onSearchChange={(value) => console.log(value)}
+                   numberOfSelectedFilters={2}
+                 >
+                   <FilterChipGroup
+                     onClearButtonClick={() => {
+                       console.log('clear button clear');
+                     }}
+                     clearButtonText="Clear Filters"
+                   >
+                     <Dropdown selectionType="multiple">
+                       <FilterChipSelectInput
+                         label="Filter Chip"
+                         value={value}
+                         onClearButtonClick={(value) => {
+                           console.log('value', value);
+                           setSelectedValue([]);
+                         }}
+                       />
+                       <DropdownOverlay>
+                         <ActionList>
+                           <ActionListItem
+                             onClick={({ name }) => {
+                               handleOnClick(name);
+                             }}
+                             isSelected={isSelected('latest-added')}
+                             title="Latest Added"
+                             value="latest-added"
+                           />
+                           <ActionListItem
+                             onClick={({ name }) => {
+                               handleOnClick(name);
+                             }}
+                             isSelected={isSelected('latest-invoice')}
+                             title="Latest Invoice"
+                             value="latest-invoice"
+                           />
+         
+                           <ActionListItem
+                             onClick={({ name }) => {
+                               handleOnClick(name);
+                             }}
+                             isSelected={isSelected('oldest-due-date')}
+                             title="Oldest Due Date"
+                             value="oldest-due-date"
+                           />
+                         </ActionList>
+                       </DropdownOverlay>
+                     </Dropdown>
+                     <FilterChipDatePicker label="Date" selectionType="range" />
+                     <Dropdown selectionType="multiple">
+                       <FilterChipSelectInput
+                         label="Filter Chip"
+                         value={value}
+                         onClearButtonClick={(value) => {
+                           console.log('value', value);
+                           setSelectedValue([]);
+                         }}
+                       />
+                       <DropdownOverlay>
+                         <ActionList>
+                           <ActionListItem
+                             onClick={({ name }) => {
+                               handleOnClick(name);
+                             }}
+                             isSelected={isSelected('latest-added')}
+                             title="Latest Added"
+                             value="latest-added"
+                           />
+                           <ActionListItem
+                             onClick={({ name }) => {
+                               handleOnClick(name);
+                             }}
+                             isSelected={isSelected('latest-invoice')}
+                             title="Latest Invoice"
+                             value="latest-invoice"
+                           />
+         
+                           <ActionListItem
+                             onClick={({ name }) => {
+                               handleOnClick(name);
+                             }}
+                             isSelected={isSelected('oldest-due-date')}
+                             title="Oldest Due Date"
+                             value="oldest-due-date"
+                           />
+                         </ActionList>
+                       </DropdownOverlay>
+                     </Dropdown>
+                   </FilterChipGroup>
+                 </ListViewFilters>
+                 <Table
+                   {...args}
+                   data={data}
+                   defaultSelectedIds={['1', '3']}
+                   onSelectionChange={console.log}
+                   isFirstColumnSticky
+                   selectionType="single"
+                 >
+                   {(tableData) => (
+                     <>
+                       <TableHeader>
+                         <TableHeaderRow>
+                           <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                           <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                           <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                           <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                           <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                           <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                         </TableHeaderRow>
+                       </TableHeader>
+                       <TableBody>
+                         {tableData.map((tableItem, index) => (
+                           <TableRow
+                             key={index}
+                             item={tableItem}
+                             hoverActions={
+                               <>
+                                 <Button variant="tertiary" size="xsmall">
+                                   View Details
+                                 </Button>
+                                 <IconButton
+                                   icon={CheckIcon}
+                                   isHighlighted
+                                   accessibilityLabel="Approve"
+                                   onClick={() => {
+                                     console.log('Approved', tableItem.id);
+                                   }}
+                                 />
+                                 <IconButton
+                                   icon={CloseIcon}
+                                   isHighlighted
+                                   accessibilityLabel="Reject"
+                                   onClick={() => {
+                                     console.log('Rejected', tableItem.id);
+                                   }}
+                                 />
+                               </>
+                             }
+                             onClick={() => {
+                               console.log('where');
+                             }}
+                           >
+                             <TableCell>
+                               <Code size="medium">{tableItem.paymentId}</Code>
+                             </TableCell>
+                             <TableEditableCell
+                               accessibilityLabel="Amount"
+                               placeholder="Enter text"
+                               successText="Amount is valid"
+                             />
+                             <TableCell>{tableItem.account}</TableCell>
+                             <TableCell>
+                               {tableItem.date?.toLocaleDateString('en-IN', {
+                                 year: 'numeric',
+                                 month: '2-digit',
+                                 day: '2-digit',
+                               })}
+                             </TableCell>
+                             <TableCell>{tableItem.method}</TableCell>
+                             <TableCell>
+                               <Badge
+                                 size="medium"
+                                 color={
+                                   tableItem.status === 'Completed'
+                                     ? 'positive'
+                                     : tableItem.status === 'Pending'
+                                     ? 'notice'
+                                     : tableItem.status === 'Failed'
+                                     ? 'negative'
+                                     : 'primary'
+                                 }
+                               >
+                                 {tableItem.status}
+                               </Badge>
+                             </TableCell>
+                           </TableRow>
+                         ))}
+                       </TableBody>
+                       <TableFooter>
+                         <TableFooterRow>
+                           <TableFooterCell>Total</TableFooterCell>
+                           <TableFooterCell>-</TableFooterCell>
+                           <TableFooterCell>-</TableFooterCell>
+                           <TableFooterCell>-</TableFooterCell>
+                           <TableFooterCell>-</TableFooterCell>
+                           <TableFooterCell>-</TableFooterCell>
+                           <TableFooterCell>
+                             <Amount value={10} />
+                           </TableFooterCell>
+                         </TableFooterRow>
+                       </TableFooter>
+                     </>
+                   )}
+                 </Table>
+               </ListView>
+               </BaseBox>
           )
         }
 
@@ -220,121 +430,6 @@ const TabNavItemLink = React.forwardRef<
 >((props, ref) => {
   return <TabNavItem ref={ref} {...props} isActive={props.href === '/home'} />;
 });
-const DashBoardTopNav = (): React.ReactElement => {
-  const history = useHistory();
-  const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
-
-  return (
-    <TopNav>
-      <TopNavBrand>
-        <RazorpayLogo />
-      </TopNavBrand>
-      <TopNavContent>
-        <TabNav
-          items={[
-            { title: 'Home', href: '/home', icon: HomeIcon },
-            {
-              href: '/payroll',
-              title: 'Payroll',
-              icon: RazorpayxPayrollIcon,
-              description: 'Automate payroll with ease.',
-            },
-            {
-              href: '/payments',
-              title: 'Payments',
-              icon: AcceptPaymentsIcon,
-              description: 'Manage payments effortlessly.',
-            },
-            {
-              href: '/magic-checkout',
-              title: 'Magic Checkout',
-              icon: ShoppingBagIcon,
-              description: 'Fast, one-click checkout.',
-            },
-            {
-              href: '/rize',
-              title: 'Rize',
-              icon: AwardIcon,
-              isAlwaysOverflowing: true,
-              description: 'Boost your business growth.',
-            },
-          ]}
-        >
-          {({ items, overflowingItems }) => {
-            const activeProduct = overflowingItems.find((item) => item.href === selectedProduct);
-            return (
-              <>
-                <TabNavItems>
-                  {items.map((item) => {
-                    return (
-                      <TabNavItemLink
-                        key={item.title}
-                        title={item.title}
-                        href={item.href}
-                        icon={item.icon}
-                      />
-                    );
-                  })}
-                </TabNavItems>
-                {overflowingItems.length ? (
-                  <Menu openInteraction="hover">
-                    <TabNavItem
-                      title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
-                      trailing={<ChevronDownIcon />}
-                      isActive={Boolean(activeProduct)}
-                    />
-                    <MenuOverlay>
-                      <MenuHeader
-                        title="Products for you"
-                        trailing={
-                          <Badge emphasis="subtle" color="notice">
-                            Recommended
-                          </Badge>
-                        }
-                      />
-                      {overflowingItems.map((item) => {
-                        return (
-                          <MenuItem
-                            key={item.href}
-                            onClick={() => {
-                              history.push(item.href!);
-                              setSelectedProduct(item.href!);
-                            }}
-                          >
-                            <ExploreItem
-                              icon={item.icon!}
-                              title={item.title}
-                              description={item.description!}
-                            />
-                          </MenuItem>
-                        );
-                      })}
-                      <MenuFooter>
-                        <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
-                          View all products
-                        </BladeLink>
-                      </MenuFooter>
-                    </MenuOverlay>
-                  </Menu>
-                ) : null}
-              </>
-            );
-          }}
-        </TabNav>
-      </TopNavContent>
-      <TopNavActions>
-        <SearchInput placeholder="Search in payments" accessibilityLabel="Search Across Razorpay" />
-        <Tooltip content="View Ecosystem Health">
-          <Button size="medium" variant="tertiary" icon={ActivityIcon} />
-        </Tooltip>
-        <Tooltip content="View Announcements">
-          <Button variant="tertiary" icon={AnnouncementIcon} />
-        </Tooltip>
-        <Avatar size="medium" name="Anurag Hazra" />
-      </TopNavActions>
-    </TopNav>
-  );
-};
 
 const SideNavExample = ({
   isOpen,
@@ -603,7 +698,7 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
 export const Default = ListViewTemplate.bind({});
 Default.storyName = 'List View Example';
 
-const ListViewFullExample = (args): React.ReactElement => {
+const ListViewFullExample: StoryFn<typeof ListView> = (args): React.ReactElement => {
   const history = useHistory();
   const { theme } = useTheme();
   const { matchedBreakpoint, matchedDeviceType } = useBreakpoint({
