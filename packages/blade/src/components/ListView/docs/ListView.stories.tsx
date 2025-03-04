@@ -152,6 +152,7 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
             </QuickFilterGroup>
           }
           onSearchChange={(value) => console.log(value)}
+          numberOfSelectedFilters={2}
         >
           <FilterChipGroup>
             <Dropdown selectionType="multiple">

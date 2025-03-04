@@ -13,6 +13,7 @@ const ListViewFilters = ({
   children,
   quickFilters,
   onSearchChange,
+  numberOfSelectedFilters,
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
   const [showFilters, setShowFilters] = useState(false);
@@ -37,8 +38,13 @@ const ListViewFilters = ({
               }}
               icon={FilterIcon}
             />
-            <Box position="absolute" top="0" right="0" transform="translate(50%, -50%)">
-              <Counter value={20} color="primary" emphasis="intense" />
+            <Box
+              position="absolute"
+              top="spacing.0"
+              right="spacing.0"
+              transform="translate(50%, -50%)"
+            >
+              <Counter value={numberOfSelectedFilters} color="primary" emphasis="intense" />
             </Box>
           </Box>
           <Box display="flex">Searchable DropDown</Box>

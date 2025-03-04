@@ -21,5 +21,7 @@ type ListViewFiltersCommonProps = {
 type ListViewFilterProps = ListViewFiltersCommonProps &
   TestID &
   DataAnalyticsAttribute &
-  ListViewCommonProps;
+  ListViewCommonProps & {
+    numberOfSelectedFilters: number;
+  };
 export type { ListViewProps, ListViewFilterProps, FilterChipProps };
