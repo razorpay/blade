@@ -43,6 +43,7 @@ type ControlsProp = Required<
   onIndicatorButtonClick: (index: number) => void;
   onNextButtonClick: () => void;
   onPreviousButtonClick: () => void;
+  showNavigationButtons: boolean;
 };
 
 const Controls = ({
@@ -55,15 +56,18 @@ const Controls = ({
   onPreviousButtonClick,
   indicatorVariant,
   navigationButtonVariant,
+  showNavigationButtons,
 }: ControlsProp): React.ReactElement => {
   if (navigationButtonPosition === 'bottom') {
     return (
       <Box marginTop="spacing.7" display="flex" alignItems="center" gap="spacing.4">
-        <NavigationButton
-          type="previous"
-          variant={navigationButtonVariant}
-          onClick={onPreviousButtonClick}
-        />
+        {showNavigationButtons ? (
+          <NavigationButton
+            type="previous"
+            variant={navigationButtonVariant}
+            onClick={onPreviousButtonClick}
+          />
+        ) : null}
         {showIndicators ? (
           <Indicators
             onClick={onIndicatorButtonClick}
@@ -72,11 +76,13 @@ const Controls = ({
             variant={indicatorVariant}
           />
         ) : null}
-        <NavigationButton
-          onClick={onNextButtonClick}
-          type="next"
-          variant={navigationButtonVariant}
-        />
+        {showNavigationButtons ? (
+          <NavigationButton
+            onClick={onNextButtonClick}
+            type="next"
+            variant={navigationButtonVariant}
+          />
+        ) : null}
       </Box>
     );
   }
@@ -248,6 +254,7 @@ const _Carousel = (
     height,
     defaultActiveSlide,
     activeSlide: activeSlideProp,
+    showNavigationButtons: showNavigationButtonProp = true,
     ...rest
   }: CarouselProps,
   ref: React.Ref<BladeElementRef>,
@@ -296,6 +303,7 @@ const _Carousel = (
   if (isResponsive && !shouldAddStartEndSpacing && !isMobile) {
     showIndicators = false;
   }
+  const showNavigationButtons = showNavigationButtonProp || !isMobile;
 
   const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
   const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
@@ -589,6 +597,7 @@ const _Carousel = (
           onPreviousButtonClick={goToPreviousSlide}
           indicatorVariant={indicatorVariant}
           navigationButtonVariant={navigationButtonVariant}
+          showNavigationButtons={showNavigationButtons}
         />
       </BaseBox>
     </CarouselContext.Provider>

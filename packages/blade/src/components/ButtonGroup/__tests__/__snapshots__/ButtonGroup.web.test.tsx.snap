@@ -23,6 +23,28 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -116,28 +138,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -281,6 +281,28 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   position: relative;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -374,28 +396,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -550,6 +550,26 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: 100%;
@@ -643,26 +663,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -785,6 +785,28 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 48px;
   width: auto;
@@ -878,28 +900,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1022,6 +1022,28 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -1115,28 +1137,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1259,6 +1259,28 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 32px;
   width: auto;
@@ -1352,28 +1374,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1496,6 +1496,28 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 28px;
   width: auto;
@@ -1589,28 +1611,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1733,6 +1733,28 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -1826,28 +1848,6 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,0.18);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -3427,6 +3427,28 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -3520,28 +3542,6 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(4,74%,49%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -3664,6 +3664,45 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:first-child {
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:not(:first-child):not(:last-child) {
+  border-left: none;
+  border-right: none;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:last-child {
+  border-left: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -3757,28 +3796,6 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(4,74%,49%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -3901,6 +3918,28 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -3994,28 +4033,6 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(150,100%,32%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -4138,6 +4155,45 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:first-child {
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:not(:first-child):not(:last-child) {
+  border-left: none;
+  border-right: none;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:last-child {
+  border-left: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -4231,28 +4287,6 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(150,100%,32%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -4375,6 +4409,28 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -4468,28 +4524,6 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -4612,6 +4646,45 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:first-child {
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:not(:first-child):not(:last-child) {
+  border-left: none;
+  border-right: none;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:last-child {
+  border-left: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -4705,28 +4778,6 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -4849,6 +4900,28 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -4942,28 +5015,6 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(211,20%,52%,0.12);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -5086,6 +5137,28 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -5179,28 +5252,6 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(0,0%,100%,1);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -5323,6 +5374,45 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:first-child {
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:not(:first-child):not(:last-child) {
+  border-left: none;
+  border-right: none;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"]:last-child {
+  border-left: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -5416,28 +5506,6 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(0,0%,100%,0.8);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -5560,6 +5628,28 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   z-index: 1;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  border-radius: 0;
+}
+
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
@@ -5653,28 +5743,6 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
 
 .c4.c4.c4.c4.c4 {
   opacity: 1;
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsla(0,0%,100%,0.18);
-}
-
-.c0.c0.c0.c0.c0 button[role="button"] {
-  border-radius: 0;
-  border: none;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
 }
 
 .c6.c6.c6.c6.c6 {

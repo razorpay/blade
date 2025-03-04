@@ -7,9 +7,10 @@ import type {
   TableProps,
   TablePaginationType,
   TableHeaderRowProps,
+  TableNode as LocalTableNode,
 } from './types';
 
-export type TableContextType = {
+export type TableContextType<Item> = {
   selectionType?: TableProps<unknown>['selectionType'];
   selectedRows?: TableNode['id'][];
   totalItems: number;
@@ -40,9 +41,13 @@ export type TableContextType = {
   showBorderedCells: NonNullable<TableProps<unknown>['showBorderedCells']>;
   hasHoverActions: boolean;
   setHasHoverActions: (hasHoverActions: boolean) => void;
+  columnCount: number;
+  gridTemplateColumns: string | undefined;
+  isVirtualized?: boolean;
+  tableData: LocalTableNode<Item>[];
 };
 
-const TableContext = React.createContext<TableContextType>({
+const TableContext = React.createContext<TableContextType<unknown>>({
   selectionType: 'none',
   selectedRows: undefined,
   totalItems: 0,
@@ -66,10 +71,14 @@ const TableContext = React.createContext<TableContextType>({
   showBorderedCells: false,
   hasHoverActions: false,
   setHasHoverActions: () => {},
+  columnCount: 0,
+  gridTemplateColumns: undefined,
+  isVirtualized: false,
+  tableData: [],
 });
 
-const useTableContext = (): TableContextType => {
-  const context = React.useContext(TableContext);
+const useTableContext = <Item,>(): TableContextType<Item> => {
+  const context = React.useContext(TableContext as React.Context<TableContextType<Item>>);
   return context;
 };
 
