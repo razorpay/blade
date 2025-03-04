@@ -154,7 +154,12 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
           onSearchChange={(value) => console.log(value)}
           numberOfSelectedFilters={2}
         >
-          <FilterChipGroup>
+          <FilterChipGroup
+            onClearButtonClick={() => {
+              console.log('clear button clear');
+            }}
+            clearButtonText="Clear Filters"
+          >
             <Dropdown selectionType="multiple">
               <FilterChipSelectInput
                 label="Filter Chip"
@@ -195,6 +200,45 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
               </DropdownOverlay>
             </Dropdown>
             <FilterChipDatePicker label="Date" selectionType="range" />
+            <Dropdown selectionType="multiple">
+              <FilterChipSelectInput
+                label="Filter Chip"
+                value={value}
+                onClearButtonClick={(value) => {
+                  console.log('value', value);
+                  setSelectedValue([]);
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  <ActionListItem
+                    onClick={({ name }) => {
+                      handleOnClick(name);
+                    }}
+                    isSelected={isSelected('latest-added')}
+                    title="Latest Added"
+                    value="latest-added"
+                  />
+                  <ActionListItem
+                    onClick={({ name }) => {
+                      handleOnClick(name);
+                    }}
+                    isSelected={isSelected('latest-invoice')}
+                    title="Latest Invoice"
+                    value="latest-invoice"
+                  />
+
+                  <ActionListItem
+                    onClick={({ name }) => {
+                      handleOnClick(name);
+                    }}
+                    isSelected={isSelected('oldest-due-date')}
+                    title="Oldest Due Date"
+                    value="oldest-due-date"
+                  />
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
           </FilterChipGroup>
         </ListViewFilters>
         <Table

@@ -7,9 +7,12 @@ type ListViewCommonProps = {
 
 type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute & ListViewCommonProps;
 
-type FilterChipProps = TestID &
+type FilterChipGroupProps = TestID &
   DataAnalyticsAttribute & {
     children: React.ReactNode;
+    onClearButtonClick: () => void;
+    clearButtonText: string;
+    showClearButton?: boolean;
   };
 
 type ListViewFiltersCommonProps = {
@@ -24,4 +27,4 @@ type ListViewFilterProps = ListViewFiltersCommonProps &
   ListViewCommonProps & {
     numberOfSelectedFilters: number;
   };
-export type { ListViewProps, ListViewFilterProps, FilterChipProps };
+export type { ListViewProps, ListViewFilterProps, FilterChipGroupProps };

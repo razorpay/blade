@@ -50,7 +50,7 @@ const ListViewFilters = ({
           <Box display="flex">Searchable DropDown</Box>
         </BaseBox>
       </BaseBox>
-      {showFilters ? children : null}
+      <BaseBox display="flex">{showFilters ? children : null} </BaseBox>
     </BaseBox>
   );
 };

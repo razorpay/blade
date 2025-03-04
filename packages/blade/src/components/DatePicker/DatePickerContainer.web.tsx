@@ -321,7 +321,7 @@ const DatePickerContainer = <Type extends DateSelectionType = 'single'>({
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
         <BaseBox
-          width="100%"
+          width={inputElementType === 'chip' ? 'fit-content' : '100%'}
           {...getStyledProps(props)}
           {...metaAttribute({ name: MetaConstants.DatePicker })}
         >
