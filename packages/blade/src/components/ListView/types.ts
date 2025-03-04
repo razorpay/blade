@@ -7,9 +7,14 @@ type ListViewCommonProps = {
 
 type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute & ListViewCommonProps;
 
+type FilterChipProps = TestID &
+  DataAnalyticsAttribute & {
+    children: React.ReactNode;
+  };
+
 type ListViewFiltersCommonProps = {
   children: React.ReactNode;
-  quickFilter: React.ReactNode;
+  quickFilters: React.ReactNode;
   onSearchChange: (value: string) => void;
 };
 
@@ -17,4 +22,4 @@ type ListViewFilterProps = ListViewFiltersCommonProps &
   TestID &
   DataAnalyticsAttribute &
   ListViewCommonProps;
-export type { ListViewProps, ListViewFilterProps };
+export type { ListViewProps, ListViewFilterProps, FilterChipProps };
