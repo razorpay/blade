@@ -45,6 +45,7 @@ export * from './Morph';
 export * from './Menu';
 export * from './Popover';
 export * from './ProgressBar';
+export * from './QuickFilters';
 export * from './Radio';
 export * from './Scale';
 export * from './SideNav';
