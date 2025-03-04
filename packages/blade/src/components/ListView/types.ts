@@ -10,8 +10,17 @@ type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute & Lis
 type FilterChipGroupProps = TestID &
   DataAnalyticsAttribute & {
     children: React.ReactNode;
+    /**
+     * Callback which is called when clear button is clicked
+     */
     onClearButtonClick: () => void;
+    /**
+     * Title of clear button
+     */
     clearButtonText: string;
+    /**
+     * Boolean to decide if we should show clear button or not
+     */
     showClearButton?: boolean;
   };
 
@@ -25,6 +34,9 @@ type ListViewFilterProps = ListViewFiltersCommonProps &
   TestID &
   DataAnalyticsAttribute &
   ListViewCommonProps & {
+    /**
+     *  Number of Selected Filters
+     */
     numberOfSelectedFilters: number;
   };
 export type { ListViewProps, ListViewFilterProps, FilterChipGroupProps };
