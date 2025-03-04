@@ -124,9 +124,11 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
         $isSelected={isSelected}
         disabled={isDisabled}
         onClick={(e) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onClick?.(e as any);
         }}
         onKeyDown={(e) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onClick?.(e as any);
         }}
         {...makeAccessible({

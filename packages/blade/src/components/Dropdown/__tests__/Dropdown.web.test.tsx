@@ -468,7 +468,7 @@ describe('<Dropdown /> with <DropdownButton />', () => {
 });
 
 describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
-  it('should render dropdown with FilterChipSelectInput', async () => {
+  it('should render dropdown with FilterChipSelectInput', () => {
     const { container } = renderWithTheme(
       <Dropdown>
         <FilterChipSelectInput label="Fruits" />
@@ -505,7 +505,7 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
     await user.click(getByRole('menuitem', { name: 'Apple' }));
     expect(appleClickHandler).toBeCalled();
   });
-  it('should support data-analytics-attribute', async () => {
+  it('should support data-analytics-attribute', () => {
     const { container, getByRole } = renderWithTheme(
       <Dropdown>
         <FilterChipSelectInput label="profile" data-analytics-attribute="profile" />
