@@ -1,2 +1,2 @@
 export { ListView } from './ListView';
-export { ListViewFilter } from './ListViewFilters';
+export { ListViewFilters } from './ListViewFilters';
