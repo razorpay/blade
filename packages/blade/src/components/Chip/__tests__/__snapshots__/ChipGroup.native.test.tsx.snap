@@ -231,222 +231,219 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
           />
         </View>
         <View
+          columnGap="spacing.3"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
+          rowGap="spacing.3"
           style={
             [
               {
+                "columnGap": 8,
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "marginBottom": 8,
+                "rowGap": 8,
               },
             ]
           }
         >
           <View
-            data-blade-component="base-box"
+            data-blade-component="chip"
+            display="flex"
             style={
               [
                 {
-                  "marginBottom": 8,
-                  "marginRight": 8,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
-              data-blade-component="chip"
-              display="flex"
+              accessibilityInvalid={false}
+              accessibilityRequired={false}
+              accessibilityRole="checkbox"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
                     "display": "flex",
+                    "flexDirection": "row",
+                    "marginBottom": 2,
+                    "marginTop": 2,
                   },
                 ]
               }
+              value="apple"
             >
               <View
-                accessibilityInvalid={false}
-                accessibilityRequired={false}
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
                 style={
                   [
                     {
                       "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 2,
-                      "marginTop": 2,
+                      "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
-                value="apple"
+                width="100%"
               >
                 <View
+                  alignItems="center"
                   data-blade-component="base-box"
                   display="flex"
-                  flexDirection="column"
+                  flexDirection="row"
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "display": "flex",
-                        "flexDirection": "column",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
+                    borderColor="interactive.border.gray.faded"
+                    isDisabled={false}
                     style={
                       [
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderRadius": 9999,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
+                          "flexWrap": "nowrap",
+                          "justifyContent": "center",
+                          "maxWidth": 280,
+                          "textAlign": "left",
+                          "textOverflow": "ellipsis",
+                        },
+                        {
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
                         },
                       ]
                     }
                   >
                     <View
+                      alignItems="center"
+                      backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
+                      borderRadius="max"
+                      borderWidth="thinner"
+                      color="primary"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.3"
+                      height="28px"
+                      isChecked={false}
                       isDisabled={false}
+                      justifyContent="center"
+                      overflow="hidden"
                       style={
                         [
                           {
                             "alignItems": "center",
-                            "alignSelf": "center",
-                            "backgroundColor": "transparent",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
-                            "borderWidth": 1,
+                            "borderStyle": "solid",
+                            "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "flexWrap": "nowrap",
+                            "gap": 8,
+                            "height": 28,
                             "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
+                            "overflow": "hidden",
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
-                            "transform": [
-                              {
-                                "scale": 1,
-                              },
-                            ],
+                            "borderColor": "transparent",
+                            "display": "flex",
                           },
                         ]
                       }
+                      width="100%"
                     >
-                      <View
-                        alignItems="center"
-                        backgroundColor="surface.background.gray.intense"
-                        borderColor="interactive.border.gray.faded"
-                        borderRadius="max"
-                        borderWidth="thinner"
-                        color="primary"
-                        data-blade-component="base-box"
-                        display="flex"
-                        flexDirection="row"
-                        gap="spacing.3"
-                        height="28px"
-                        isChecked={false}
-                        isDisabled={false}
-                        justifyContent="center"
-                        overflow="hidden"
+                      <Text
+                        accessible={true}
+                        color="interactive.text.gray.subtle"
+                        data-blade-component="text"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight={100}
+                        numberOfLines={1}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "gap": 8,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
-                            {
-                              "borderColor": "transparent",
-                              "display": "flex",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": 0,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
                             },
                           ]
                         }
                       >
-                        <Text
-                          accessible={true}
-                          color="interactive.text.gray.subtle"
-                          data-blade-component="text"
-                          fontFamily="text"
-                          fontSize={100}
-                          fontStyle="normal"
-                          fontWeight="regular"
-                          lineHeight={100}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "hsla(211, 26%, 34%, 1)",
-                                "fontFamily": "Inter",
-                                "fontSize": 14,
-                                "fontStyle": "normal",
-                                "fontWeight": "400",
-                                "letterSpacing": 0,
-                                "lineHeight": 20,
-                                "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
-                                "marginTop": 0,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "textDecorationLine": "none",
-                              },
-                            ]
-                          }
-                        >
-                          Apple
-                        </Text>
-                      </View>
+                        Apple
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -454,207 +451,199 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             </View>
           </View>
           <View
-            data-blade-component="base-box"
+            data-blade-component="chip"
+            display="flex"
             style={
               [
                 {
-                  "marginBottom": 8,
-                  "marginRight": 8,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
-              data-blade-component="chip"
-              display="flex"
+              accessibilityInvalid={false}
+              accessibilityRequired={false}
+              accessibilityRole="checkbox"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
                     "display": "flex",
+                    "flexDirection": "row",
+                    "marginBottom": 2,
+                    "marginTop": 2,
                   },
                 ]
               }
+              value="mango"
             >
               <View
-                accessibilityInvalid={false}
-                accessibilityRequired={false}
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
                 style={
                   [
                     {
                       "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 2,
-                      "marginTop": 2,
+                      "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
-                value="mango"
+                width="100%"
               >
                 <View
+                  alignItems="center"
                   data-blade-component="base-box"
                   display="flex"
-                  flexDirection="column"
+                  flexDirection="row"
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "display": "flex",
-                        "flexDirection": "column",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
+                    borderColor="interactive.border.gray.faded"
+                    isDisabled={false}
                     style={
                       [
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderRadius": 9999,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
+                          "flexWrap": "nowrap",
+                          "justifyContent": "center",
+                          "maxWidth": 280,
+                          "textAlign": "left",
+                          "textOverflow": "ellipsis",
+                        },
+                        {
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
                         },
                       ]
                     }
                   >
                     <View
+                      alignItems="center"
+                      backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
+                      borderRadius="max"
+                      borderWidth="thinner"
+                      color="primary"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.3"
+                      height="28px"
+                      isChecked={false}
                       isDisabled={false}
+                      justifyContent="center"
+                      overflow="hidden"
                       style={
                         [
                           {
                             "alignItems": "center",
-                            "alignSelf": "center",
-                            "backgroundColor": "transparent",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
-                            "borderWidth": 1,
+                            "borderStyle": "solid",
+                            "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "flexWrap": "nowrap",
+                            "gap": 8,
+                            "height": 28,
                             "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
+                            "overflow": "hidden",
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
-                            "transform": [
-                              {
-                                "scale": 1,
-                              },
-                            ],
+                            "borderColor": "transparent",
+                            "display": "flex",
                           },
                         ]
                       }
+                      width="100%"
                     >
-                      <View
-                        alignItems="center"
-                        backgroundColor="surface.background.gray.intense"
-                        borderColor="interactive.border.gray.faded"
-                        borderRadius="max"
-                        borderWidth="thinner"
-                        color="primary"
-                        data-blade-component="base-box"
-                        display="flex"
-                        flexDirection="row"
-                        gap="spacing.3"
-                        height="28px"
-                        isChecked={false}
-                        isDisabled={false}
-                        justifyContent="center"
-                        overflow="hidden"
+                      <Text
+                        accessible={true}
+                        color="interactive.text.gray.subtle"
+                        data-blade-component="text"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight={100}
+                        numberOfLines={1}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "gap": 8,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
-                            {
-                              "borderColor": "transparent",
-                              "display": "flex",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": 0,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
                             },
                           ]
                         }
                       >
-                        <Text
-                          accessible={true}
-                          color="interactive.text.gray.subtle"
-                          data-blade-component="text"
-                          fontFamily="text"
-                          fontSize={100}
-                          fontStyle="normal"
-                          fontWeight="regular"
-                          lineHeight={100}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "hsla(211, 26%, 34%, 1)",
-                                "fontFamily": "Inter",
-                                "fontSize": 14,
-                                "fontStyle": "normal",
-                                "fontWeight": "400",
-                                "letterSpacing": 0,
-                                "lineHeight": 20,
-                                "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
-                                "marginTop": 0,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "textDecorationLine": "none",
-                              },
-                            ]
-                          }
-                        >
-                          Mango
-                        </Text>
-                      </View>
+                        Mango
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -662,207 +651,199 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             </View>
           </View>
           <View
-            data-blade-component="base-box"
+            data-blade-component="chip"
+            display="flex"
             style={
               [
                 {
-                  "marginBottom": 8,
-                  "marginRight": 8,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
-              data-blade-component="chip"
-              display="flex"
+              accessibilityInvalid={false}
+              accessibilityRequired={false}
+              accessibilityRole="checkbox"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
                     "display": "flex",
+                    "flexDirection": "row",
+                    "marginBottom": 2,
+                    "marginTop": 2,
                   },
                 ]
               }
+              value="orange"
             >
               <View
-                accessibilityInvalid={false}
-                accessibilityRequired={false}
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
                 style={
                   [
                     {
                       "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 2,
-                      "marginTop": 2,
+                      "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
-                value="orange"
+                width="100%"
               >
                 <View
+                  alignItems="center"
                   data-blade-component="base-box"
                   display="flex"
-                  flexDirection="column"
+                  flexDirection="row"
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "display": "flex",
-                        "flexDirection": "column",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
+                    borderColor="interactive.border.gray.faded"
+                    isDisabled={false}
                     style={
                       [
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderRadius": 9999,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
+                          "flexWrap": "nowrap",
+                          "justifyContent": "center",
+                          "maxWidth": 280,
+                          "textAlign": "left",
+                          "textOverflow": "ellipsis",
+                        },
+                        {
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
                         },
                       ]
                     }
                   >
                     <View
+                      alignItems="center"
+                      backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
+                      borderRadius="max"
+                      borderWidth="thinner"
+                      color="primary"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.3"
+                      height="28px"
+                      isChecked={false}
                       isDisabled={false}
+                      justifyContent="center"
+                      overflow="hidden"
                       style={
                         [
                           {
                             "alignItems": "center",
-                            "alignSelf": "center",
-                            "backgroundColor": "transparent",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
-                            "borderWidth": 1,
+                            "borderStyle": "solid",
+                            "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "flexWrap": "nowrap",
+                            "gap": 8,
+                            "height": 28,
                             "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
+                            "overflow": "hidden",
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
-                            "transform": [
-                              {
-                                "scale": 1,
-                              },
-                            ],
+                            "borderColor": "transparent",
+                            "display": "flex",
                           },
                         ]
                       }
+                      width="100%"
                     >
-                      <View
-                        alignItems="center"
-                        backgroundColor="surface.background.gray.intense"
-                        borderColor="interactive.border.gray.faded"
-                        borderRadius="max"
-                        borderWidth="thinner"
-                        color="primary"
-                        data-blade-component="base-box"
-                        display="flex"
-                        flexDirection="row"
-                        gap="spacing.3"
-                        height="28px"
-                        isChecked={false}
-                        isDisabled={false}
-                        justifyContent="center"
-                        overflow="hidden"
+                      <Text
+                        accessible={true}
+                        color="interactive.text.gray.subtle"
+                        data-blade-component="text"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight={100}
+                        numberOfLines={1}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "gap": 8,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
-                            {
-                              "borderColor": "transparent",
-                              "display": "flex",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": 0,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
                             },
                           ]
                         }
                       >
-                        <Text
-                          accessible={true}
-                          color="interactive.text.gray.subtle"
-                          data-blade-component="text"
-                          fontFamily="text"
-                          fontSize={100}
-                          fontStyle="normal"
-                          fontWeight="regular"
-                          lineHeight={100}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "hsla(211, 26%, 34%, 1)",
-                                "fontFamily": "Inter",
-                                "fontSize": 14,
-                                "fontStyle": "normal",
-                                "fontWeight": "400",
-                                "letterSpacing": 0,
-                                "lineHeight": 20,
-                                "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
-                                "marginTop": 0,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "textDecorationLine": "none",
-                              },
-                            ]
-                          }
-                        >
-                          Orange
-                        </Text>
-                      </View>
+                        Orange
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -1108,223 +1089,220 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
           />
         </View>
         <View
+          columnGap="spacing.3"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
+          rowGap="spacing.3"
           style={
             [
               {
+                "columnGap": 8,
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "marginBottom": 8,
+                "rowGap": 8,
               },
             ]
           }
         >
           <View
-            data-blade-component="base-box"
+            data-blade-component="chip"
+            display="flex"
             style={
               [
                 {
-                  "marginBottom": 8,
-                  "marginRight": 8,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
-              data-blade-component="chip"
-              display="flex"
+              accessibilityDescribedBy="radio-1-helptext-2"
+              accessibilityInvalid={false}
+              accessibilityRequired={false}
+              accessibilityRole="radio"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
                     "display": "flex",
+                    "flexDirection": "row",
+                    "marginBottom": 2,
+                    "marginTop": 2,
                   },
                 ]
               }
+              value="apple"
             >
               <View
-                accessibilityDescribedBy="radio-1-helptext-2"
-                accessibilityInvalid={false}
-                accessibilityRequired={false}
-                accessibilityRole="radio"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
                 style={
                   [
                     {
                       "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 2,
-                      "marginTop": 2,
+                      "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
-                value="apple"
+                width="100%"
               >
                 <View
+                  alignItems="center"
                   data-blade-component="base-box"
                   display="flex"
-                  flexDirection="column"
+                  flexDirection="row"
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "display": "flex",
-                        "flexDirection": "column",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
+                    borderColor="interactive.border.gray.faded"
+                    isDisabled={false}
                     style={
                       [
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderRadius": 9999,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
+                          "flexWrap": "nowrap",
+                          "justifyContent": "center",
+                          "maxWidth": 280,
+                          "textAlign": "left",
+                          "textOverflow": "ellipsis",
+                        },
+                        {
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
                         },
                       ]
                     }
                   >
                     <View
+                      alignItems="center"
+                      backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
+                      borderRadius="max"
+                      borderWidth="thinner"
+                      color="primary"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.3"
+                      height="28px"
+                      isChecked={false}
                       isDisabled={false}
+                      justifyContent="center"
+                      overflow="hidden"
                       style={
                         [
                           {
                             "alignItems": "center",
-                            "alignSelf": "center",
-                            "backgroundColor": "transparent",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
-                            "borderWidth": 1,
+                            "borderStyle": "solid",
+                            "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "flexWrap": "nowrap",
+                            "gap": 8,
+                            "height": 28,
                             "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
+                            "overflow": "hidden",
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
-                            "transform": [
-                              {
-                                "scale": 1,
-                              },
-                            ],
+                            "borderColor": "transparent",
+                            "display": "flex",
                           },
                         ]
                       }
+                      width="100%"
                     >
-                      <View
-                        alignItems="center"
-                        backgroundColor="surface.background.gray.intense"
-                        borderColor="interactive.border.gray.faded"
-                        borderRadius="max"
-                        borderWidth="thinner"
-                        color="primary"
-                        data-blade-component="base-box"
-                        display="flex"
-                        flexDirection="row"
-                        gap="spacing.3"
-                        height="28px"
-                        isChecked={false}
-                        isDisabled={false}
-                        justifyContent="center"
-                        overflow="hidden"
+                      <Text
+                        accessible={true}
+                        color="interactive.text.gray.subtle"
+                        data-blade-component="text"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight={100}
+                        numberOfLines={1}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "gap": 8,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
-                            {
-                              "borderColor": "transparent",
-                              "display": "flex",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": 0,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
                             },
                           ]
                         }
                       >
-                        <Text
-                          accessible={true}
-                          color="interactive.text.gray.subtle"
-                          data-blade-component="text"
-                          fontFamily="text"
-                          fontSize={100}
-                          fontStyle="normal"
-                          fontWeight="regular"
-                          lineHeight={100}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "hsla(211, 26%, 34%, 1)",
-                                "fontFamily": "Inter",
-                                "fontSize": 14,
-                                "fontStyle": "normal",
-                                "fontWeight": "400",
-                                "letterSpacing": 0,
-                                "lineHeight": 20,
-                                "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
-                                "marginTop": 0,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "textDecorationLine": "none",
-                              },
-                            ]
-                          }
-                        >
-                          Apple
-                        </Text>
-                      </View>
+                        Apple
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -1332,208 +1310,200 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             </View>
           </View>
           <View
-            data-blade-component="base-box"
+            data-blade-component="chip"
+            display="flex"
             style={
               [
                 {
-                  "marginBottom": 8,
-                  "marginRight": 8,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
-              data-blade-component="chip"
-              display="flex"
+              accessibilityDescribedBy="radio-3-helptext-4"
+              accessibilityInvalid={false}
+              accessibilityRequired={false}
+              accessibilityRole="radio"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
                     "display": "flex",
+                    "flexDirection": "row",
+                    "marginBottom": 2,
+                    "marginTop": 2,
                   },
                 ]
               }
+              value="mango"
             >
               <View
-                accessibilityDescribedBy="radio-3-helptext-4"
-                accessibilityInvalid={false}
-                accessibilityRequired={false}
-                accessibilityRole="radio"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
                 style={
                   [
                     {
                       "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 2,
-                      "marginTop": 2,
+                      "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
-                value="mango"
+                width="100%"
               >
                 <View
+                  alignItems="center"
                   data-blade-component="base-box"
                   display="flex"
-                  flexDirection="column"
+                  flexDirection="row"
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "display": "flex",
-                        "flexDirection": "column",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
+                    borderColor="interactive.border.gray.faded"
+                    isDisabled={false}
                     style={
                       [
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderRadius": 9999,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
+                          "flexWrap": "nowrap",
+                          "justifyContent": "center",
+                          "maxWidth": 280,
+                          "textAlign": "left",
+                          "textOverflow": "ellipsis",
+                        },
+                        {
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
                         },
                       ]
                     }
                   >
                     <View
+                      alignItems="center"
+                      backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
+                      borderRadius="max"
+                      borderWidth="thinner"
+                      color="primary"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.3"
+                      height="28px"
+                      isChecked={false}
                       isDisabled={false}
+                      justifyContent="center"
+                      overflow="hidden"
                       style={
                         [
                           {
                             "alignItems": "center",
-                            "alignSelf": "center",
-                            "backgroundColor": "transparent",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
-                            "borderWidth": 1,
+                            "borderStyle": "solid",
+                            "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "flexWrap": "nowrap",
+                            "gap": 8,
+                            "height": 28,
                             "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
+                            "overflow": "hidden",
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
-                            "transform": [
-                              {
-                                "scale": 1,
-                              },
-                            ],
+                            "borderColor": "transparent",
+                            "display": "flex",
                           },
                         ]
                       }
+                      width="100%"
                     >
-                      <View
-                        alignItems="center"
-                        backgroundColor="surface.background.gray.intense"
-                        borderColor="interactive.border.gray.faded"
-                        borderRadius="max"
-                        borderWidth="thinner"
-                        color="primary"
-                        data-blade-component="base-box"
-                        display="flex"
-                        flexDirection="row"
-                        gap="spacing.3"
-                        height="28px"
-                        isChecked={false}
-                        isDisabled={false}
-                        justifyContent="center"
-                        overflow="hidden"
+                      <Text
+                        accessible={true}
+                        color="interactive.text.gray.subtle"
+                        data-blade-component="text"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight={100}
+                        numberOfLines={1}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "gap": 8,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
-                            {
-                              "borderColor": "transparent",
-                              "display": "flex",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": 0,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
                             },
                           ]
                         }
                       >
-                        <Text
-                          accessible={true}
-                          color="interactive.text.gray.subtle"
-                          data-blade-component="text"
-                          fontFamily="text"
-                          fontSize={100}
-                          fontStyle="normal"
-                          fontWeight="regular"
-                          lineHeight={100}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "hsla(211, 26%, 34%, 1)",
-                                "fontFamily": "Inter",
-                                "fontSize": 14,
-                                "fontStyle": "normal",
-                                "fontWeight": "400",
-                                "letterSpacing": 0,
-                                "lineHeight": 20,
-                                "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
-                                "marginTop": 0,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "textDecorationLine": "none",
-                              },
-                            ]
-                          }
-                        >
-                          Mango
-                        </Text>
-                      </View>
+                        Mango
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -1541,208 +1511,200 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             </View>
           </View>
           <View
-            data-blade-component="base-box"
+            data-blade-component="chip"
+            display="flex"
             style={
               [
                 {
-                  "marginBottom": 8,
-                  "marginRight": 8,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
-              data-blade-component="chip"
-              display="flex"
+              accessibilityDescribedBy="radio-5-helptext-6"
+              accessibilityInvalid={false}
+              accessibilityRequired={false}
+              accessibilityRole="radio"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
                     "display": "flex",
+                    "flexDirection": "row",
+                    "marginBottom": 2,
+                    "marginTop": 2,
                   },
                 ]
               }
+              value="orange"
             >
               <View
-                accessibilityDescribedBy="radio-5-helptext-6"
-                accessibilityInvalid={false}
-                accessibilityRequired={false}
-                accessibilityRole="radio"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
                 style={
                   [
                     {
                       "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 2,
-                      "marginTop": 2,
+                      "flexDirection": "column",
+                      "width": "100%",
                     },
                   ]
                 }
-                value="orange"
+                width="100%"
               >
                 <View
+                  alignItems="center"
                   data-blade-component="base-box"
                   display="flex"
-                  flexDirection="column"
+                  flexDirection="row"
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "display": "flex",
-                        "flexDirection": "column",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
+                    borderColor="interactive.border.gray.faded"
+                    isDisabled={false}
                     style={
                       [
                         {
                           "alignItems": "center",
+                          "alignSelf": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderRadius": 9999,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
+                          "flexWrap": "nowrap",
+                          "justifyContent": "center",
+                          "maxWidth": 280,
+                          "textAlign": "left",
+                          "textOverflow": "ellipsis",
+                        },
+                        {
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
                         },
                       ]
                     }
                   >
                     <View
+                      alignItems="center"
+                      backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
+                      borderRadius="max"
+                      borderWidth="thinner"
+                      color="primary"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.3"
+                      height="28px"
+                      isChecked={false}
                       isDisabled={false}
+                      justifyContent="center"
+                      overflow="hidden"
                       style={
                         [
                           {
                             "alignItems": "center",
-                            "alignSelf": "center",
-                            "backgroundColor": "transparent",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
-                            "borderWidth": 1,
+                            "borderStyle": "solid",
+                            "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "flexWrap": "nowrap",
+                            "gap": 8,
+                            "height": 28,
                             "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
+                            "overflow": "hidden",
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                            "width": "100%",
                           },
                           {
-                            "transform": [
-                              {
-                                "scale": 1,
-                              },
-                            ],
+                            "borderColor": "transparent",
+                            "display": "flex",
                           },
                         ]
                       }
+                      width="100%"
                     >
-                      <View
-                        alignItems="center"
-                        backgroundColor="surface.background.gray.intense"
-                        borderColor="interactive.border.gray.faded"
-                        borderRadius="max"
-                        borderWidth="thinner"
-                        color="primary"
-                        data-blade-component="base-box"
-                        display="flex"
-                        flexDirection="row"
-                        gap="spacing.3"
-                        height="28px"
-                        isChecked={false}
-                        isDisabled={false}
-                        justifyContent="center"
-                        overflow="hidden"
+                      <Text
+                        accessible={true}
+                        color="interactive.text.gray.subtle"
+                        data-blade-component="text"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight={100}
+                        numberOfLines={1}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "gap": 8,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
-                            {
-                              "borderColor": "transparent",
-                              "display": "flex",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": 0,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
                             },
                           ]
                         }
                       >
-                        <Text
-                          accessible={true}
-                          color="interactive.text.gray.subtle"
-                          data-blade-component="text"
-                          fontFamily="text"
-                          fontSize={100}
-                          fontStyle="normal"
-                          fontWeight="regular"
-                          lineHeight={100}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "hsla(211, 26%, 34%, 1)",
-                                "fontFamily": "Inter",
-                                "fontSize": 14,
-                                "fontStyle": "normal",
-                                "fontWeight": "400",
-                                "letterSpacing": 0,
-                                "lineHeight": 20,
-                                "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
-                                "marginTop": 0,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "textDecorationLine": "none",
-                              },
-                            ]
-                          }
-                        >
-                          Orange
-                        </Text>
-                      </View>
+                        Orange
+                      </Text>
                     </View>
                   </View>
                 </View>

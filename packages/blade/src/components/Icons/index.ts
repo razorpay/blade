@@ -134,6 +134,7 @@ export { default as DollarsIcon } from './DollarsIcon';
 export { default as DotIcon } from './DotIcon';
 export { default as DownloadCloudIcon } from './DownloadCloudIcon';
 export { default as DownloadIcon } from './DownloadIcon';
+export { default as DragHandleIcon } from './DragHandleIcon';
 export { default as DropletIcon } from './DropletIcon';
 export { default as EcommerceIcon } from './EcommerceIcon';
 export { default as EditComposeIcon } from './EditComposeIcon';

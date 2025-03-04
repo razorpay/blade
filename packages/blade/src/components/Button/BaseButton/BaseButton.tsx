@@ -344,7 +344,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const isChildrenComponent = React.isValidElement(children);
 
   // Button cannot be disabled when its rendered as Link
-  const disabled = buttonGroupProps.isDisabled ?? (isLoading || (isDisabled && !isLink));
+  // button should be allowed to be disabled in any case...
+  // either through button group or we should allow to disable an individual button
+  const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {

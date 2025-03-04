@@ -1,5 +1,37 @@
 # @razorpay/blade
 
+## 12.15.0
+
+### Minor Changes
+
+- bbf24c99: feat(blade): add support for table virtualization
+
+## 12.14.0
+
+### Minor Changes
+
+- 0b79d985: feat(QuickFilter): Add QuickFilters component
+
+## 12.13.1
+
+### Patch Changes
+
+- 37392871: feat(blade): add should showNavigationButtons prop in carousel
+
+## 12.13.0
+
+### Minor Changes
+
+- 19119623: feat(blade): add drag handle icon
+
+## 12.12.1
+
+### Patch Changes
+
+- 9dda1513: fix: remove js check that allows brand token for Box backgroundColor
+- 18fe5390: fix(blade): allow consumers to align chips in chipgroup
+- ba66b346: fix(blade): loading single button in buttonGroup
+
 ## 12.12.0
 
 ### Minor Changes

@@ -165,13 +165,17 @@ const TabItem = ({
           {Leading ? (
             <Leading size={iconSizeMap[size!]} color={iconColor[selectedState][interaction]} />
           ) : null}
-          <Text
-            color={textColor[selectedState][interaction]}
-            size={size === 'medium' ? 'medium' : 'large'}
-            weight="semibold"
-          >
-            {children}
-          </Text>
+
+          {children ? (
+            <Text
+              color={textColor[selectedState][interaction]}
+              size={size === 'medium' ? 'medium' : 'large'}
+              weight="semibold"
+            >
+              {children}
+            </Text>
+          ) : null}
+
           {validatedTrailingComponent}
         </StyledTabButton>
       }
