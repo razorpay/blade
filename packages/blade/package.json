@@ -169,6 +169,7 @@
     "@babel/preset-env": "7.26.9",
     "@babel/preset-react": "7.26.3",
     "@babel/preset-typescript": "7.26.0",
+    "@babel/helper-split-export-declaration": "7.24.7",
     "@codesandbox/sandpack-react": "1.16.0",
     "@gorhom/bottom-sheet": "4.4.6",
     "@gorhom/portal": "1.0.14",
