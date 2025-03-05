@@ -109,7 +109,7 @@
     "react-native:storybook:android": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-android",
     "react-native:storybook:ios": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-ios",
     "react-native:storybook:start": "yarn react-native:get-stories && cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
-    "react": "yarn run react:storybook --debug-webpack",
+    "react": "yarn run react:storybook",
     "react:storybook": "cross-env FRAMEWORK=REACT storybook dev -c ./.storybook/react -p 9009",
     "react:storybook:build": "cross-env FRAMEWORK=REACT storybook build -c ./.storybook/react -o storybook-site --quiet",
     "react:storybook:serve": "http-server storybook-site --port 9009 --silent",
