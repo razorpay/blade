@@ -149,7 +149,9 @@
     "@mantine/dates": "6.0.21",
     "@mantine/hooks": "6.0.21",
     "dayjs": "1.11.10",
-    "react-window": "1.8.11"
+    "react-window": "1.8.11",
+    "@babel/helper-hoist-variables": "7.24.7",
+    "@babel/helper-function-name": "7.24.7"
   },
   "devDependencies": {
     "http-server": "14.1.1",
