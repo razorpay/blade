@@ -82,7 +82,7 @@ const config: StorybookConfig = {
       loader: 'babel-loader',
       options: {
         presets: ['@babel/preset-env'],
-        plugins: ['@babel/plugin-transform-optional-chaining'],
+        plugins: ['@babel/plugin-proposal-optional-chaining'],
       },
     });
 

@@ -166,7 +166,6 @@
     "@babel/traverse": "7.23.7",
     "@babel/plugin-transform-react-jsx": "7.16.5",
     "@babel/plugin-transform-runtime": "7.25.9",
-    "@babel/plugin-transform-optional-chaining": "7.25.9",
     "@babel/preset-env": "7.26.9",
     "@babel/preset-react": "7.16.5",
     "@babel/preset-typescript": "7.16.5",

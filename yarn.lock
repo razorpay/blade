@@ -1521,14 +1521,6 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.25.9"
 
-"@babel/plugin-transform-optional-chaining@7.25.9", "@babel/plugin-transform-optional-chaining@^7.25.9":
-  version "7.25.9"
-  resolved "https://registry.npmjs.org/@babel/plugin-transform-optional-chaining/-/plugin-transform-optional-chaining-7.25.9.tgz#e142eb899d26ef715435f201ab6e139541eee7dd"
-  integrity sha512-6AvV0FsLULbpnXeBjrY4dmWF8F7gf8QnvTEoO/wX/5xm/xE1Xo8oPuD3MPS+KS9f9XBEAWN7X1aWr4z9HdOr7A==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.25.9"
-    "@babel/helper-skip-transparent-expression-wrappers" "^7.25.9"
-
 "@babel/plugin-transform-optional-chaining@^7.24.1":
   version "7.24.1"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-optional-chaining/-/plugin-transform-optional-chaining-7.24.1.tgz#26e588acbedce1ab3519ac40cc748e380c5291e6"
@@ -1537,6 +1529,14 @@
     "@babel/helper-plugin-utils" "^7.24.0"
     "@babel/helper-skip-transparent-expression-wrappers" "^7.22.5"
     "@babel/plugin-syntax-optional-chaining" "^7.8.3"
+
+"@babel/plugin-transform-optional-chaining@^7.25.9":
+  version "7.25.9"
+  resolved "https://registry.npmjs.org/@babel/plugin-transform-optional-chaining/-/plugin-transform-optional-chaining-7.25.9.tgz#e142eb899d26ef715435f201ab6e139541eee7dd"
+  integrity sha512-6AvV0FsLULbpnXeBjrY4dmWF8F7gf8QnvTEoO/wX/5xm/xE1Xo8oPuD3MPS+KS9f9XBEAWN7X1aWr4z9HdOr7A==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.25.9"
+    "@babel/helper-skip-transparent-expression-wrappers" "^7.25.9"
 
 "@babel/plugin-transform-parameters@^7.0.0", "@babel/plugin-transform-parameters@^7.12.1", "@babel/plugin-transform-parameters@^7.20.7", "@babel/plugin-transform-parameters@^7.24.1":
   version "7.24.1"
