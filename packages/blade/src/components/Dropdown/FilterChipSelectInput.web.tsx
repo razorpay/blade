@@ -56,7 +56,7 @@ const _FilterChipSelectInput = ({
       ref={triggererRef as any}
       accessibilityProps={{
         label: accessibilityLabel ?? label,
-        hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
+        hasPopup: getActionListContainerRole(hasFooterAction, 'FilterChipSelectInput'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
