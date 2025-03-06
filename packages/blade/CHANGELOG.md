@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.15.0
+
+### Minor Changes
+
+- bbf24c99: feat(blade): add support for table virtualization
+
+## 12.14.0
+
+### Minor Changes
+
+- 0b79d985: feat(QuickFilter): Add QuickFilters component
+
 ## 12.13.1
 
 ### Patch Changes
