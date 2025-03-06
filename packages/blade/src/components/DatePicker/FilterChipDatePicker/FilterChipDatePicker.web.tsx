@@ -1,8 +1,8 @@
 import type { FilterChipDatePickerProps } from '../types';
-import { DatePickerContainer } from '../DatePickerContainer.web';
+import { BaseDatePicker } from '../BaseDatePicker.web';
 
 const FilterChipDatePicker = (props: FilterChipDatePickerProps): React.ReactElement => {
-  return <DatePickerContainer {...props} inputElementType="chip" />;
+  return <BaseDatePicker {...props} inputElementType="chip" />;
 };
 
 export { FilterChipDatePicker };
