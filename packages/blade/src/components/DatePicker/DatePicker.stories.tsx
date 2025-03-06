@@ -384,7 +384,13 @@ Localization.storyName = 'Localization';
 export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDatePicker> = () => {
   return (
     <Box>
-      <FilterChipDatePicker label="Date" selectionType="single" />
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="single"
+        onChange={(date) => {
+          console.log('date', date);
+        }}
+      />
     </Box>
   );
 };
@@ -396,7 +402,13 @@ export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
 > = () => {
   return (
     <Box>
-      <FilterChipDatePicker label="Date" selectionType="range" />
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        onChange={(date) => {
+          console.log(date);
+        }}
+      />
     </Box>
   );
 };
@@ -418,6 +430,9 @@ export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
             value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
           },
         ]}
+        onChange={(date) => {
+          console.log(date);
+        }}
       />
     </Box>
   );
@@ -425,3 +440,31 @@ export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
 
 FilterChipDatePickerStorySingleStoryWithPreset.storyName =
   'FilterChipDatePicker (Single Selection) with Presets';
+
+export const ControlledFilterChipDatePicker: StoryFn<typeof FilterChipDatePicker> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">isOpen</Code>, <Code size="medium">value</Code> and associated
+        event handlers you can control the FilterChipDatePicker.
+      </Text>
+      <Box marginBottom="spacing.5">
+        <Text>Selected: {dayjs(date).format('DD-MM-YYYY')}</Text>
+        <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
+      </Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="single"
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        value={date}
+        onChange={(date) => {
+          setDate(date);
+        }}
+      />
+    </Box>
+  );
+};
