@@ -10,7 +10,7 @@ import { getActionListContainerRole } from '~components/ActionList/getA11yRoles'
 import type { BaseFilterChipProps } from '~components/FilterChip/types';
 import type { DataAnalyticsAttribute } from '~utils/types';
 
-type FilterChipSelectInput = Pick<
+type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
   | 'onKeyDown'
   | 'value'
@@ -34,7 +34,7 @@ const _FilterChipSelectInput = ({
   onClearButtonClick,
   label,
   ...rest
-}: FilterChipSelectInput): React.ReactElement => {
+}: FilterChipSelectInputProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
