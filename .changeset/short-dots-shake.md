@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-feat(blade): add filter chip date picker
+feat(DatePicker): add `FilterChipDatePicker` component
