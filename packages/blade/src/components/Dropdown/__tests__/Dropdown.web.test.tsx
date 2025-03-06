@@ -10,6 +10,7 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
+import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 
 const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
@@ -26,6 +27,40 @@ describe('<Dropdown />', () => {
         <SelectInput label="Fruits" />
         <DropdownOverlay zIndex={1002}>
           <DropdownHeader title="Recent Searches" />
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+          <DropdownFooter>
+            <Box>
+              <Button isFullWidth>Apply</Button>
+            </Box>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const selectInput = getByRole('combobox', { name: 'Fruits' });
+
+    expect(selectInput).toBeInTheDocument();
+    // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
+    // the node becomes accessible after click on selectInput
+    expect(queryByRole('dialog')).toBeNull();
+    await user.click(selectInput);
+    await waitFor(() => expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible());
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render autocomplete inside dropdown', async () => {
+    const user = userEvent.setup();
+
+    const { container, getByRole, queryByRole } = renderWithTheme(
+      <Dropdown>
+        <SelectInput label="Fruits" />
+        <DropdownOverlay zIndex={1002}>
+          <DropdownHeader title="Recent Searches">
+            <AutoComplete label="Fruits" />
+          </DropdownHeader>
           <ActionList>
             <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Mango" value="mango" />
