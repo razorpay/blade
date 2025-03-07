@@ -1,6 +1,5 @@
 import React from 'react';
 import type { BoxProps } from '~components/Box';
-import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
@@ -11,6 +10,8 @@ import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { componentZIndices } from '~utils/componentZIndices';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const TOP_NAV_HEIGHT = size[56];
 const CONTENT_RIGHT_GAP = size[80];
@@ -34,12 +35,18 @@ type TopNavProps = {
   | 'right'
   | 'width'
   | 'zIndex'
+  | keyof DataAnalyticsAttribute
 > &
+  TestID &
   StyledPropsBlade;
 
-const TopNav = ({ children, ...boxProps }: TopNavProps): React.ReactElement => {
+const _TopNav = (
+  { children, ...rest }: TopNavProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   return (
-    <Box
+    <BaseBox
+      ref={ref as never}
       display="grid"
       gridTemplateColumns="auto minmax(0, 1fr) auto"
       alignItems="center"
@@ -50,17 +57,20 @@ const TopNav = ({ children, ...boxProps }: TopNavProps): React.ReactElement => {
       paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
       height={makeSize(TOP_NAV_HEIGHT)}
       zIndex={componentZIndices.topnav}
-      {...boxProps}
-      {...metaAttribute({ name: MetaConstants.TopNav })}
+      {...rest}
+      {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
-    </Box>
+    </BaseBox>
   );
 };
 
+const TopNav = React.forwardRef(_TopNav);
+
 const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box
+    <BaseBox
       flexDirection="row"
       marginTop="spacing.4"
       width={{
@@ -72,7 +82,7 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
       <BaseBox width="100%" textAlign="center">
         {children}
       </BaseBox>
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -99,7 +109,7 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
       alignItems="center"
       marginTop="spacing.1"
       padding="spacing.3"
-      backgroundColor="surface.background.gray.intense"
+      backgroundColor="surface.background.gray.moderate"
       borderTopLeftRadius="medium"
       borderTopRightRadius="medium"
       {...metaAttribute({ name: MetaConstants.TopNavActions })}

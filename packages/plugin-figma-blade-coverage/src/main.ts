@@ -1,3 +1,8 @@
+// List for Coverage Plugin:
+// [x] Add Card check for border radius
+// [x] Add tokens to coverage % - done
+// [x] Add card check for frames for custom components - done
+// [x] Add check for override of tokens - done
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import {
   getParentNode,
@@ -13,6 +18,7 @@ import {
   BLADE_TEXT_COLOR_STYLE_IDS,
   BLADE_TEXT_TYPEFACE_STYLE_IDS,
   BLADE_EFFECT_STYLE_IDS,
+  bladeThemeData,
 } from './bladeLibraryConstants';
 import { sendAnalytics } from './utils/sendAnalytics';
 
@@ -30,7 +36,15 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'ELLIPSE', 'INSTANCE'];
+const NODES_SKIP_FROM_COVERAGE = [
+  'GROUP',
+  'SECTION',
+  'VECTOR',
+  'ELLIPSE',
+  'INSTANCE',
+  'COMPONENT',
+  'COMPONENT_SET',
+];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
 
@@ -170,6 +184,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
   let nonBladeColorStyles = 0;
   // let nonBladeEffectStyles = 0;
   let totalLayers = 0;
+  let bladeCoverage = 0;
 
   try {
     // if there are non-frame nodes as direct children of a page, ignore them
@@ -183,16 +198,21 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         if (!traversedNode.visible) {
           return;
         }
+        // this condition is required to run coverage on component sets which are components built locally using Blade components
+        const isLocalComponent =
+          traversedNode.type === 'COMPONENT' || traversedNode.type === 'COMPONENT_SET';
 
         if (
-          traversedNode.type === 'INSTANCE' &&
-          (BLADE_COMPONENT_IDS.includes(
-            (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
-          ) ||
-            BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? ''))
+          (traversedNode.type === 'INSTANCE' &&
+            (BLADE_COMPONENT_IDS.includes(
+              (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
+            ) ||
+              BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? ''))) ||
+          isLocalComponent
         ) {
           // few components that have slots we need to check if the children are valid Blade instances
           if (
+            !isLocalComponent &&
             BLADE_COMPONENT_IDS_HAVING_SLOT.includes(
               (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
             )
@@ -212,7 +232,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               }
             });
           }
-          if (traversedNode.overrides.length) {
+          if (!isLocalComponent && traversedNode.overrides.length) {
             // flag the instance if its overridden
             let isOverridden = false;
             traversedNode.overrides.forEach((node) => {
@@ -228,6 +248,28 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               ) {
                 isOverridden = true;
               }
+              if (node.overriddenFields.includes('cornerRadius')) {
+                isOverridden = true;
+                const isCardBorderRadiusValid = [
+                  traversedNode.boundVariables?.topLeftRadius?.id,
+                  traversedNode.boundVariables?.topRightRadius?.id,
+                  traversedNode.boundVariables?.bottomLeftRadius?.id,
+                  traversedNode.boundVariables?.bottomRightRadius?.id,
+                ].every((variableId) =>
+                  Object.values(bladeThemeData.variables.CardBorderRadius).includes(
+                    variableId ?? '',
+                  ),
+                );
+                if (
+                  // (traversedNode.mainComponent?.parent as ComponentSetNode)?.key
+                  (traversedNode.mainComponent?.parent as ComponentSetNode)?.key.includes(
+                    bladeThemeData.components.Card.key,
+                  ) &&
+                  isCardBorderRadiusValid
+                ) {
+                  isOverridden = false;
+                }
+              }
             });
             if (isOverridden) {
               nonBladeComponents++;
@@ -238,10 +280,14 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             } else {
               bladeComponents++;
             }
-          } else {
+          } else if (!isLocalComponent) {
             bladeComponents++;
           }
-          totalLayers++;
+
+          // we want to ignore the count of all the COMPONENT and COMPONENT_SET node types from the total layer count
+          if (!isLocalComponent) {
+            totalLayers++;
+          }
         }
         // else if (traversedNode.type === 'INSTANCE') {
         //   nonBladeComponents++;
@@ -278,7 +324,6 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             }
           } else {
             traversedNodeTextStyleId = traversedNode?.textStyleId?.split(',')[0];
-
             if (BLADE_TEXT_TYPEFACE_STYLE_IDS.includes(traversedNodeTextStyleId ?? '')) {
               bladeTextStyles++;
             } else {
@@ -299,7 +344,11 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 'Text Color Style should only use surface/text or feedback/text tokens',
               );
             }
+          } else {
+            nonBladeColorStyles++;
+            highlightNonBladeNode(traversedNode, 'Text Color Style is not using Blade Tokens');
           }
+
           // check if text is using blade text styles
           // textRangeFills is used when the text has different colors for different characters
           if (traversedNode.boundVariables?.textRangeFills?.length) {
@@ -408,12 +457,6 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           }
         }
 
-        /** check if frame is being used as a custom component
-         * has fills?
-         * has strokes?
-         * has effects?
-         * if any of the above is true then it's a custom component
-         * */
         const ignoreInstanceFrameNodeNames = [
           'root',
           'wrapper',
@@ -422,17 +465,35 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           'overlay', // Drawer Overlay
           'Marker', // Step Marker
           'Summary Row',
+          'card-body',
+          'card-content-holder',
         ];
+
+        /** check if a frame/custom instance created using frame is being used as a custom component
+         * has fills?
+         * has strokes?
+         * has effects?
+         * if any of the above is true then it's a custom component
+         * */
         if (
-          traversedNode.type === 'FRAME' &&
+          (traversedNode.type === 'FRAME' ||
+            (traversedNode.type === 'INSTANCE' &&
+              !(
+                BLADE_COMPONENT_IDS.includes(
+                  (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
+                ) || BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? '')
+              ))) &&
           !ignoreInstanceFrameNodeNames.includes(traversedNode.name) &&
-          getParentNode(traversedNode)?.type !== 'PAGE'
+          getParentNode(traversedNode)?.type !== 'PAGE' &&
+          getParentNode(traversedNode)?.type !== 'SECTION'
         ) {
           const hasStrokes =
-            traversedNode?.boundVariables?.strokes?.length ?? traversedNode.strokes.length;
+            traversedNode?.boundVariables?.strokes?.length ??
+            traversedNode.strokes.filter((stroke) => stroke.visible !== false).length; // remove the hidden strokes from traversing
           const hasEffects = traversedNode.effects?.length || traversedNode.effectStyleId;
           const hasNonMixedFills =
-            traversedNode.fills !== figma.mixed && traversedNode.fills.length;
+            traversedNode.fills !== figma.mixed &&
+            traversedNode.fills.filter((fill) => fill.visible !== false).length; // remove the hidden fills from traversing
           const hasFills =
             traversedNode?.boundVariables?.fills?.length ??
             hasNonMixedFills ??
@@ -444,7 +505,10 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             // this is non-blade component error
             // push the frame layer to be included in component count
             nonBladeComponents++;
-            highlightNonBladeNode(traversedNode, 'Use relevant Blade component');
+            highlightNonBladeNode(
+              traversedNode,
+              `You might want to use Card with Slot. You're using a Frame with fill/strokes/effects.`,
+            );
           } else {
             NODES_SKIP_FROM_COVERAGE.push('FRAME');
           }
@@ -461,6 +525,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
 
         if (
           getParentNode(traversedNode)?.type !== 'PAGE' &&
+          getParentNode(traversedNode)?.type !== 'SECTION' &&
           !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type) &&
           // if the frame instances are from Blade's components then we don't want to include them in the count because these are components with slots
           !ignoreInstanceFrameNodeNames.includes(traversedNode.name)
@@ -472,6 +537,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         // remove rectangle node index for next iteration because we don't want to remove all the rectangle nodes, only the image ones
         // remove frame node index for next iteration because we don't want to remove layout frame nodes, only the one that has being used as card
         const nodesToBeRemoved = ['RECTANGLE', 'FRAME'];
+        // const nodesToBeRemoved = ['RECTANGLE'];
         nodesToBeRemoved.forEach((nodeName) => {
           const nodeIndex = NODES_SKIP_FROM_COVERAGE.findIndex((node) => node === nodeName);
           if (nodeIndex !== -1) {
@@ -508,6 +574,19 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     figma.closePlugin();
   }
 
+  if (bladeComponents === 0 && totalLayers === 0) {
+    bladeCoverage = 0;
+  } else if (bladeComponents <= 0) {
+    bladeCoverage = 0;
+  } else if (nonBladeComponents === 0 && nonBladeTextStyles === 0 && nonBladeColorStyles === 0) {
+    // we need to do this because when everything is from blade there could still be outer frames and things like that are non-blade and not flagged as well
+    bladeCoverage = 100;
+  } else {
+    bladeCoverage = Number(
+      (bladeComponents / (totalLayers + nonBladeTextStyles + nonBladeColorStyles)) * 100,
+    );
+  }
+
   return {
     bladeComponents,
     bladeTextStyles,
@@ -516,10 +595,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     nonBladeTextStyles,
     nonBladeColorStyles,
     totalLayers,
-    bladeCoverage:
-      bladeComponents === 0 && totalLayers === 0
-        ? 0
-        : Number((bladeComponents / totalLayers) * 100),
+    bladeCoverage,
   };
 };
 
@@ -600,9 +676,10 @@ const main = async (): Promise<void> => {
             eventName: 'Blade Coverage Plugin Used',
             properties: {
               fileName: figma.root.name,
-              pageName: mainFrameNode.parent?.name,
+              pageName: figma.currentPage.name,
+              pagePath: `${figma.root.name}/${figma.currentPage.name}`,
               nodeName: mainFrameNode.name,
-              nodePath: `${figma.root.name}/${mainFrameNode.parent?.name}/${mainFrameNode.name}`,
+              nodePath: `${figma.root.name}/${figma.currentPage.name}/${mainFrameNode.name}`,
               nodeUrlPath: `https://www.figma.com/file/${figma.fileKey}/${
                 figma.root.name
               }?node-id=${encodeURIComponent(mainFrameNode.id)}`,

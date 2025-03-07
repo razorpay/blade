@@ -38,7 +38,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  height: 16px;
+  height: 6px;
   width: 2px;
   border-left-width: 2px;
   border-left-color: hsla(214,28%,84%,1);
@@ -111,7 +111,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  margin-top: 8px;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -137,7 +136,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  height: 16px;
+  height: 6px;
   width: 2px;
   border-left-width: 2px;
   border-left-color: hsla(214,28%,84%,1);
@@ -158,7 +157,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 
 .c20.c20.c20.c20.c20 {
   margin-top: -13px;
-  margin-left: 22px;
+  margin-left: 20px;
 }
 
 .c21.c21.c21.c21.c21 {
@@ -185,18 +184,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  margin-left: 33px;
-  width: 2px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
-  background-size: 2px 6px;
-  background-position: top;
-  background-repeat: no-repeat round;
-  visibility: visible;
-}
-
-.c23.c23.c23.c23.c23 {
-  margin-left: 33px;
-  height: 16px;
+  margin-left: 31px;
   width: 2px;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
   background-size: 2px 6px;
@@ -206,14 +194,25 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 }
 
 .c24.c24.c24.c24.c24 {
-  margin-left: 22px;
+  margin-left: 31px;
+  height: 6px;
+  width: 2px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
+  background-size: 2px 6px;
+  background-position: top;
+  background-repeat: no-repeat round;
+  visibility: visible;
 }
 
 .c25.c25.c25.c25.c25 {
+  margin-left: 20px;
+}
+
+.c26.c26.c26.c26.c26 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  margin-left: 33px;
+  margin-left: 31px;
   width: 2px;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
   background-size: 2px 6px;
@@ -224,6 +223,10 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 
 .c19.c19.c19.c19.c19 {
   visibility: visible;
+}
+
+.c27.c27.c27.c27.c27 {
+  visibility: hidden;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -289,6 +292,23 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c23.c23.c23.c23.c23 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -635,7 +655,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
             width="20"
           >
             <path
-              d="M1 0V1C1 7.62742 6.37258 13 13 13H20"
+              d="M1 0V5C1 9.41828 4.58172 13 9 13H20"
               data-blade-component="svg-path"
               stroke="hsla(214, 28%, 84%, 1)"
               stroke-width="2"
@@ -711,7 +731,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c14"
+                  class="c23"
                   data-blade-component="text"
                 >
                   Address
@@ -744,11 +764,11 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
           data-blade-component="box"
         >
           <div
-            class="c23"
+            class="c24"
             data-blade-component="base-box"
           />
           <div
-            class="c24"
+            class="c25"
             data-blade-component="box"
           >
             <div
@@ -796,48 +816,45 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
             </div>
           </div>
           <div
-            class="c25"
+            class="c26"
             data-blade-component="base-box"
           />
           <svg
             aria-hidden="true"
-            class=""
+            class="c27"
             data-blade-component="icon"
             fill="hsla(214, 28%, 84%, 1)"
-            height="26"
-            viewBox="0 0 35 26"
-            width="35"
+            height="5"
+            viewBox="0 0 42 5"
+            visibility="hidden"
+            width="42"
           >
             <path
-              d="M34.7603 1.93457C34.5767 2.14844 34.3042 2.28418 34 2.28418C33.4478 2.28418 33 1.83691 33 1.28418C33 0.731445 33.4478 0.28418 34 0.28418C34.5522 0.28418 35 0.731445 35 1.28418C35 1.53223 34.9097 1.75977 34.7603 1.93457Z"
+              d="M32 1C32 1.55228 31.5523 2 31 2C30.4477 2 30 1.55228 30 1C30 0.447715 30.4477 0 31 0C31.5523 0 32 0.447715 32 1Z"
               data-blade-component="svg-path"
             />
             <path
-              d="M2 18.7803C2.3042 18.7803 2.57666 18.6445 2.76025 18.4307C2.90967 18.2559 3 18.0283 3 17.7803C3 17.2275 2.55225 16.7803 2 16.7803C1.44775 16.7803 1 17.2275 1 17.7803C1 18.333 1.44775 18.7803 2 18.7803Z"
+              d="M2 4C2 4.55228 1.55228 5 1 5C0.447715 5 0 4.55228 0 4C0 3.44772 0.447715 3 1 3C1.55228 3 2 3.44772 2 4Z"
               data-blade-component="svg-path"
             />
             <path
-              d="M1 25.2842C1.3042 25.2842 1.57666 25.1484 1.76025 24.9346C1.90967 24.7598 2 24.5322 2 24.2842C2 23.7314 1.55225 23.2842 1 23.2842C0.447754 23.2842 0 23.7314 0 24.2842C0 24.8369 0.447754 25.2842 1 25.2842Z"
+              d="M27.5 3.5C28.0523 3.5 28.5 3.05228 28.5 2.5C28.5 1.94772 28.0523 1.5 27.5 1.5C26.9477 1.5 26.5 1.94772 26.5 2.5C26.5 3.05228 26.9477 3.5 27.5 3.5Z"
               data-blade-component="svg-path"
             />
             <path
-              d="M7.30127 14.7842C7.60547 14.7842 7.87793 14.6484 8.06152 14.4346C8.21094 14.2598 8.30127 14.0322 8.30127 13.7842C8.30127 13.2314 7.85352 12.7842 7.30127 12.7842C6.74902 12.7842 6.30127 13.2314 6.30127 13.7842C6.30127 14.3369 6.74902 14.7842 7.30127 14.7842Z"
+              d="M5.5 2.5C5.5 3.05228 5.05228 3.5 4.5 3.5C3.94772 3.5 3.5 3.05228 3.5 2.5C3.5 1.94772 3.94772 1.5 4.5 1.5C5.05228 1.5 5.5 1.94772 5.5 2.5Z"
               data-blade-component="svg-path"
             />
             <path
-              d="M14.7188 13.1338C14.5352 13.3477 14.2627 13.4834 13.9585 13.4834C13.4062 13.4834 12.9585 13.0361 12.9585 12.4834C12.9585 11.9307 13.4062 11.4834 13.9585 11.4834C14.5107 11.4834 14.9585 11.9307 14.9585 12.4834C14.9585 12.7314 14.8682 12.959 14.7188 13.1338Z"
+              d="M16.5 3.5C17.0523 3.5 17.5 3.05228 17.5 2.5C17.5 1.94772 17.0523 1.5 16.5 1.5C15.9477 1.5 15.5 1.94772 15.5 2.5C15.5 3.05228 15.9477 3.5 16.5 3.5Z"
               data-blade-component="svg-path"
             />
             <path
-              d="M20.5698 12.2119C20.874 12.2119 21.1465 12.0762 21.3301 11.8623C21.4795 11.6875 21.5698 11.46 21.5698 11.2119C21.5698 10.6592 21.1221 10.2119 20.5698 10.2119C20.0176 10.2119 19.5698 10.6592 19.5698 11.2119C19.5698 11.7646 20.0176 12.2119 20.5698 12.2119Z"
+              d="M11.5 2.5C11.5 3.05228 11.0523 3.5 10.5 3.5C9.94771 3.5 9.5 3.05228 9.5 2.5C9.5 1.94772 9.94771 1.5 10.5 1.5C11.0523 1.5 11.5 1.94772 11.5 2.5Z"
               data-blade-component="svg-path"
             />
             <path
-              d="M27.6211 10.6523C27.4375 10.8662 27.165 11.002 26.8608 11.002C26.3086 11.002 25.8608 10.5547 25.8608 10.002C25.8608 9.44922 26.3086 9.00195 26.8608 9.00195C27.4131 9.00195 27.8608 9.44922 27.8608 10.002C27.8608 10.25 27.7705 10.4775 27.6211 10.6523Z"
-              data-blade-component="svg-path"
-            />
-            <path
-              d="M32.0879 8.2002C32.3921 8.2002 32.6646 8.06445 32.8481 7.85059C32.9976 7.67578 33.0879 7.44824 33.0879 7.2002C33.0879 6.64746 32.6401 6.2002 32.0879 6.2002C31.5356 6.2002 31.0879 6.64746 31.0879 7.2002C31.0879 7.75293 31.5356 8.2002 32.0879 8.2002Z"
+              d="M22.5 3.5C23.0523 3.5 23.5 3.05228 23.5 2.5C23.5 1.94772 23.0523 1.5 22.5 1.5C21.9477 1.5 21.5 1.94772 21.5 2.5C21.5 3.05228 21.9477 3.5 22.5 3.5Z"
               data-blade-component="svg-path"
             />
           </svg>
@@ -859,7 +876,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c14"
+                  class="c23"
                   data-blade-component="text"
                 >
                   Bank Details
@@ -882,6 +899,329 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 data-blade-component="box"
               />
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<StepGroup /> should support adding data-analytics attribute should accept data-analytics attribute 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 12px;
+  max-width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  gap: 4px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3 {
+  height: 6px;
+  width: 2px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
+  background-size: 2px 6px;
+  background-position: top;
+  background-repeat: no-repeat round;
+  visibility: hidden;
+}
+
+.c4.c4.c4.c4.c4 {
+  margin-left: -11px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 2px;
+  height: 20px;
+  width: 20px;
+  background-color: hsla(211,20%,52%,0.09);
+  border-radius: 50%;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8.c8.c8.c8.c8 {
+  margin-left: 0px;
+}
+
+.c10.c10.c10.c10.c10 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 2px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
+  background-size: 2px 6px;
+  background-position: top;
+  background-repeat: no-repeat round;
+  visibility: hidden;
+}
+
+.c11.c11.c11.c11.c11 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c12.c12.c12.c12.c12 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.c13.c13.c13.c13.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.c16.c16.c16.c16.c16 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    data-analytics-step-group="StepGroup"
+    data-blade-component="step-group"
+  >
+    <div
+      class="c1 step-item step-index-0 step-nesting-level-0"
+      data-analytics-step-item="Introduction"
+      data-blade-component="step-item"
+    >
+      <div
+        class="c2"
+        data-blade-component="box"
+      >
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        />
+        <div
+          class="c4"
+          data-blade-component="box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-box"
+          >
+            <div
+              aria-label="neutral indicator"
+              class="c6"
+              data-blade-component="indicator"
+              role="status"
+            >
+              <div
+                class="c7"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="8"
+                  viewBox="0 0 10 10"
+                  width="8"
+                >
+                  <circle
+                    cx="5"
+                    cy="5"
+                    data-blade-component="svg-circle"
+                    fill="hsla(211, 33%, 21%, 1)"
+                    r="5"
+                  />
+                </svg>
+                <div
+                  class="c8"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c9"
+                    data-blade-component="text"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        />
+      </div>
+      <div
+        class="c11"
+        data-blade-component="box"
+      >
+        <div
+          class="c12"
+          data-blade-component="box"
+        >
+          <div
+            class="c13"
+            data-blade-component="box"
+          >
+            <div
+              class=""
+              data-blade-component="box"
+            >
+              <p
+                class="c14"
+                data-blade-component="text"
+              >
+                Introduction
+              </p>
+              <p
+                class="c15"
+                data-blade-component="text"
+              />
+              <p
+                class="c16"
+                data-blade-component="text"
+              />
+            </div>
+            <div
+              class=""
+              data-blade-component="box"
+            />
           </div>
         </div>
       </div>

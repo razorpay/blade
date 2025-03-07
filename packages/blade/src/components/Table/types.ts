@@ -1,11 +1,12 @@
 import type React from 'react';
+import type { TableNode as TableLibraryTableNode } from '@table-library/react-table-library/types/table';
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type TableNode<Item> = Item & {
   id: Identifier;
@@ -18,6 +19,8 @@ type TableData<Item> = {
 type TableBackgroundColors = `surface.background.gray.${DotNotationToken<
   Theme['colors']['surface']['background']['gray']
 >}`;
+
+type RowHeightType = number | ((item: TableLibraryTableNode, index: number) => number);
 
 type TableHeaderProps = {
   /**
@@ -49,7 +52,7 @@ type TableHeaderRowProps = {
    * The default value is `normal`.
    **/
   rowDensity?: TableProps<unknown>['rowDensity'];
-};
+} & DataAnalyticsAttribute;
 
 type TableHeaderCellProps = {
   /**
@@ -62,9 +65,15 @@ type TableHeaderCellProps = {
    * Sorting is enabled only for columns whose key is present in sortableColumns prop of Table.
    **/
   headerKey?: string;
+  /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
 
   _hasPadding?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type TableProps<Item> = {
   /**
@@ -165,6 +174,7 @@ type TableProps<Item> = {
    * The height prop is a responsive styled prop that determines the height of the table.
    **/
   height?: BoxProps['height'];
+
   /**
    * The showStripedRows prop determines whether the table should have striped rows or not.
    * The default value is `false`.
@@ -193,11 +203,12 @@ type TableProps<Item> = {
    * An array of default selected row ids. This will be used to set the initial selected rows.
    */
   defaultSelectedIds?: Identifier[];
-} & StyledPropsBlade;
+} & DataAnalyticsAttribute &
+  StyledPropsBlade;
 
 type Identifier = string | number;
 
-type TableBodyProps = {
+type TableBodyProps<Item> = {
   /**
    * The children of the TableBody component should be TableRow components.
    * @example
@@ -206,9 +217,18 @@ type TableBodyProps = {
    *     <TableCell>...</TableCell>
    *   </TableRow>
    * </TableBody>
+   * if you are using TableBody inside TableVirtualizedWrapper then you can pass the children as a function
+   * @example
+   * <TableBody>
+   *  {(tableItem, index) => (
+   *   <TableRow key={index} item={tableItem}>
+   *    <TableCell>...</TableCell>
+   *   </TableRow>
+   *   )}
+   * </TableBody>
    **/
-  children: React.ReactNode;
-};
+  children: React.ReactNode | ((tableItem: Item, index: number) => React.ReactElement);
+} & DataAnalyticsAttribute;
 
 type TableRowProps<Item> = {
   /**
@@ -247,7 +267,8 @@ type TableRowProps<Item> = {
   onClick?: ({ item }: { item: TableNode<Item> }) => void;
 
   hoverActions?: React.ReactElement;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 type TableCellProps = {
   /**
@@ -263,12 +284,18 @@ type TableCellProps = {
    **/
   children: React.ReactNode;
   /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
+  /**
    * Removes padding from CellWrapper
    *
    * @private
    */
   _hasPadding?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type TableEditableCellProps = Pick<
   BaseInputProps,
@@ -316,7 +343,7 @@ type TableFooterProps = {
    * </TableFooter>
    **/
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TableFooterRowProps = {
   /**
@@ -329,20 +356,27 @@ type TableFooterRowProps = {
    * </TableFooter>
    **/
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type TableFooterCellProps = {
   /**
    * The children of TableHeaderCell can be a string or a ReactNode.
    **/
   children: string | React.ReactNode;
-};
+  /**
+   * The textAlign prop determines the content alignment of the table.
+   * The textAlign prop can be 'left', 'center', or 'right'.
+   * The default value is `left`.
+   **/
+  textAlign?: 'left' | 'center' | 'right';
+} & DataAnalyticsAttribute;
 
 type TablePaginationCommonProps = {
   /**
    * The default page size.
    * Page size controls how rows are shown per page.
    * @default 10
+   * consider using virtualization for large page sizes
    **/
   defaultPageSize?: 10 | 25 | 50;
   /**
@@ -376,7 +410,7 @@ type TablePaginationCommonProps = {
    * @default false
    */
   showLabel?: boolean;
-};
+} & DataAnalyticsAttribute;
 
 type TablePaginationType = 'client' | 'server';
 
@@ -436,11 +470,102 @@ type TableToolbarProps = {
    * @default `${selectedRows.length} 'Items'} Selected`
    */
   selectedTitle?: string;
-};
+} & DataAnalyticsAttribute;
 
 type TableToolbarActionsProps = {
   children?: React.ReactNode;
-} & StyledPropsBlade;
+} & StyledPropsBlade &
+  DataAnalyticsAttribute;
+
+type VirtualizedWrapperProps = {
+  /**
+   *
+   * @example
+   *      <TableComponent
+   *     data={data}
+   *     height={'500px'}
+   *     rowDensity="comfortable"
+   *     selectionType="multiple"
+   *     toolbar={
+   *       <TableToolbar>
+   *         <TableToolbarActions>
+   *           <Button variant="secondary" marginRight="spacing.2">
+   *             Export
+   *           </Button>
+   *           <Button>Payout</Button>
+   *         </TableToolbarActions>
+   *       </TableToolbar>
+   *     }
+   *   >
+   *     {() => (
+   *       <TableVirtualizedWrapper >
+   *         <TableHeader>
+   *           <TableHeaderRow>
+   *             <TableHeaderCell>ID</TableHeaderCell>
+   *             <TableHeaderCell>Amount</TableHeaderCell>
+   *             <TableHeaderCell>Account</TableHeaderCell>
+   *             <TableHeaderCell>Date</TableHeaderCell>
+   *             <TableHeaderCell>Method</TableHeaderCell>
+   *             <TableHeaderCell>Status</TableHeaderCell>
+   *           </TableHeaderRow>
+   *         </TableHeader>
+   *         <TableBody>
+   *           {(tableItem: Item, index) => (
+   *             <TableRow key={index} item={tableItem}>
+   *               <TableCell>
+   *                 <Code size="medium">{tableItem.paymentId}</Code>
+   *               </TableCell>
+   *               <TableCell>
+   *                 <Amount value={tableItem.amount} />
+   *               </TableCell>
+   *               <TableCell>{tableItem.account}</TableCell>
+   *               <TableCell>
+   *                 {tableItem.date?.toLocaleDateString('en-IN', {
+   *                   year: 'numeric',
+   *                   month: '2-digit',
+   *                   day: '2-digit',
+   *                 })}
+   *               </TableCell>
+   *               <TableCell>{tableItem.method}</TableCell>
+   *               <TableCell>
+   *                 <Badge
+   *                   size="medium"
+   *                   color={
+   *                     tableItem.status === 'Completed'
+   *                       ? 'positive'
+   *                       : tableItem.status === 'Pending'
+   *                       ? 'notice'
+   *                       : tableItem.status === 'Failed'
+   *                       ? 'negative'
+   *                       : 'default'
+   *                   }
+   *                 >
+   *                   {tableItem.status}
+   *                 </Badge>
+   *               </TableCell>
+   *             </TableRow>
+   *           )}
+   *         </TableBody>
+   *       </TableVirtualizedWrapper>
+   *     )}
+   *   </TableComponent>
+   *
+   **/
+  children: React.ReactNode;
+  /**
+   * headerHeight is the height of the header
+   **/
+  headerHeight?: number;
+  /**
+   * rowHeight is the height of each row, it can be a fixed number or a function that returns a number
+   * @default rowHeight values
+   * compact: '36'
+   * normal: '48'
+   * comfortable: '60'
+   *
+   **/
+  rowHeight?: (item: TableLibraryTableNode, index: number) => number;
+};
 
 export type {
   TableProps,
@@ -464,4 +589,6 @@ export type {
   TableBackgroundColors,
   TablePaginationType,
   TablePaginationCommonProps,
+  VirtualizedWrapperProps,
+  RowHeightType,
 };

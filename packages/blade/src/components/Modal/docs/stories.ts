@@ -13,7 +13,7 @@ import {
 } from "@razorpay/blade/components";
 import React from "react";
 
-function App(): React.ReactElement {
+function App() {
   const buttonRef = React.useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
   return (
@@ -64,7 +64,7 @@ import {
 } from "@razorpay/blade/components";
 import React from "react";
 
-function App(): React.ReactElement {
+function App() {
   const buttonRef = React.useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
   return (
@@ -103,7 +103,7 @@ import {
 } from "@razorpay/blade/components";
 import React from "react";
 
-function App(): React.ReactElement {
+function App() {
   const buttonRef = React.useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
   return (
@@ -158,7 +158,7 @@ import {
 } from "@razorpay/blade/components";
 import React from "react";
 
-function App(): React.ReactElement {
+function App() {
   const buttonRef = React.useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
   return (
@@ -220,7 +220,7 @@ import {
 } from "@razorpay/blade/components";
 import React from "react";
 
-function App(): React.ReactElement {
+function App() {
   const buttonRef = React.useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
   return (
@@ -342,7 +342,7 @@ import {
 } from "@razorpay/blade/components";
 import React from "react";
 
-function App(): React.ReactElement {
+function App() {
   const buttonRef = React.useRef(null);
   const [is1stOpen, set1stIsOpen] = React.useState(false);
   const [is2ndOpen, setIs2ndOpen] = React.useState(false);
@@ -505,7 +505,7 @@ import {
 } from "@razorpay/blade/components";
 import React from "react";
 
-function App(): React.ReactElement {
+function App() {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>

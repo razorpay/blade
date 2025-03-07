@@ -1,6 +1,7 @@
 import type { LinkProps } from '~components/Link';
 import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type BaseMenuItemProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,7 +30,8 @@ type BaseMenuItemProps = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     native: undefined | ((event: any) => void);
   }>;
-} & BladeCommonEvents;
+} & BladeCommonEvents &
+  DataAnalyticsAttribute;
 
 type StyledBaseMenuItemContainerProps = Pick<
   BaseMenuItemProps,

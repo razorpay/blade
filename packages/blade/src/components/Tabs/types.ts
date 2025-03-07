@@ -1,6 +1,7 @@
 import type React from 'react';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type TabsProps = {
   /**
@@ -52,22 +53,13 @@ type TabsProps = {
    * @default false
    */
   isLazy?: boolean;
-};
+} & DataAnalyticsAttribute;
 
-type TabItemProps = {
-  /**
-   * The label of the tab item.
-   */
-  children: React.ReactNode;
+type TabItemCommonProps = {
   /**
    * The value of the tab item.
    */
   value: string;
-  /**
-   * Leading element of the tab item.
-   * Can be used to render an Icon.
-   */
-  leading?: IconComponent;
   /**
    * Trailing element of the tab item.
    * Can be used to render a Badge/Counter component.
@@ -93,6 +85,32 @@ type TabItemProps = {
   onClick?: (event: React.MouseEvent) => void;
 };
 
+type TabItemWithoutLeadingProps = TabItemCommonProps & {
+  /**
+   * The content of the tab item.
+   */
+  children: React.ReactNode;
+  /**
+   * Leading element of the tab item.
+   * Can be used to render an Icon.
+   */
+  leading?: undefined;
+};
+
+type TabItemWithOutChildrenProps = TabItemCommonProps & {
+  /**
+   * Leading element of the tab item.
+   * Can be used to render an Icon.
+   */
+  leading: IconComponent;
+  /**
+   * The content of the tab item.
+   */
+  children?: React.ReactNode;
+};
+
+type TabItemProps = TabItemWithoutLeadingProps | TabItemWithOutChildrenProps;
+
 type TabPanelProps = {
   /**
    * The value of the tab panel. This will be used to match the selected tab.
@@ -102,6 +120,6 @@ type TabPanelProps = {
    * The content of the tab panel.
    */
   children: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 export type { TabsProps, TabItemProps, TabPanelProps };

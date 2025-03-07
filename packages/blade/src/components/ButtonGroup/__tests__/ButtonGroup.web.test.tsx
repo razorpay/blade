@@ -7,7 +7,6 @@ import { Button } from '~components/Button/Button';
 import { ChevronDownIcon, PlusIcon } from '~components/Icons';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
-import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -146,6 +145,17 @@ describe('<ButtonGroup />', () => {
     );
     expect(getByTestId('button-group-test')).toBeInTheDocument();
   });
+  it('should support data-analytics', () => {
+    const { container } = renderWithTheme(
+      <ButtonGroup data-analytics-test="test">
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>,
+    );
+
+    expect(container.querySelector('[data-analytics-test="test"]')).toBeInTheDocument();
+  });
 
   it('should throw error for invalid children', () => {
     expect(() =>
@@ -157,40 +167,7 @@ describe('<ButtonGroup />', () => {
         </ButtonGroup>,
       ),
     ).toThrowError(
-      '[Blade: ButtonGroup]: Only "Button" or "Dropdown" component with Button trigger are allowed as children.',
-    );
-  });
-
-  it('should throw error with invalid dropdown children', () => {
-    expect(() =>
-      renderWithTheme(
-        <ButtonGroup>
-          <Button icon={PlusIcon}>Payout</Button>
-          <Dropdown selectionType="single">
-            <AutoComplete
-              label="City"
-              placeholder="Select your City"
-              name="action"
-              onChange={({ name, values }) => {
-                console.log({ name, values });
-              }}
-              onInputValueChange={({ name, value }) => {
-                console.log({ name, value });
-              }}
-            />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListItem title="Mumbai" value="mumbai" />
-                <ActionListItem title="Pune" value="pune" />
-                <ActionListItem title="Bangalore" value="bangalore" />
-                <ActionListItem title="Mysore" value="mysore" />
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        </ButtonGroup>,
-      ),
-    ).toThrowError(
-      '[Blade: ButtonGroup]: Only "Button" or "Dropdown" component with Button trigger are allowed as children.',
+      '[Blade: ButtonGroup]: Only `Button, Dropdown, Tooltip, Popover` components are accepted in `ButtonGroup` children',
     );
   });
 });

@@ -78,7 +78,7 @@ const Page = (): React.ReactElement => {
           UserIcon
         } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Box>
               <Menu>
@@ -321,6 +321,11 @@ const ControlledMenuTemplate: StoryFn<TemplateProps> = ({ trigger, ...args }) =>
 export const Default = MenuTemplate.bind({});
 Default.args = {
   trigger: <Avatar name="Saurabh Daware" size="large" color="primary" />,
+};
+
+export const WithAvatarIcon = MenuTemplate.bind({});
+WithAvatarIcon.args = {
+  trigger: <Avatar size="large" color="primary" />,
 };
 
 export const CustomItems = CustomOverlayMenuTemplate.bind({});

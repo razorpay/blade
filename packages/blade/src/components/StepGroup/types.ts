@@ -2,7 +2,8 @@ import type React from 'react';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { LinkProps } from '~components/Link';
-import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
+import type { FeedbackColors } from '~tokens/theme/theme';
+import type { DataAnalyticsAttribute, DotNotationSpacingStringToken, TestID } from '~utils/types';
 
 type StepGroupProps = {
   /**
@@ -50,6 +51,7 @@ type StepGroupProps = {
    */
   _nestingLevel?: number;
 } & StyledPropsBlade &
+  DataAnalyticsAttribute &
   TestID;
 
 type StepGroupContextType = Required<Pick<StepGroupProps, 'size' | 'orientation'>> & {
@@ -66,6 +68,11 @@ type StepItemProps = {
    * title of StepItem
    */
   title: string;
+
+  /**
+   * color of StepItem title
+   */
+  titleColor?: `feedback.text.${FeedbackColors}.intense` | `surface.text.primary.normal`;
 
   /**
    * A string that renders in italic font. Made for adding timestamp values.
@@ -132,7 +139,7 @@ type StepItemProps = {
    * Children slot for adding additional custom elements to item
    */
   children?: React.ReactNode;
-};
+} & DataAnalyticsAttribute;
 
 type InteractiveItemHeaderProps = {
   isSelected: StepItemProps['isSelected'];

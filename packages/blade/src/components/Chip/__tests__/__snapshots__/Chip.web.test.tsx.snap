@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Chip /> should render chip 1`] = `
+exports[`<Chip /> should accept data-analytics-* 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -22,18 +22,28 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
-  margin-bottom: 8px;
-  margin-right: 8px;
-}
-
-.c5.c5.c5.c5.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -75,6 +85,8 @@ exports[`<Chip /> should render chip 1`] = `
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
+  width: 100%;
+  gap: 8px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;
@@ -108,14 +120,12 @@ exports[`<Chip /> should render chip 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -132,11 +142,11 @@ exports[`<Chip /> should render chip 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -184,8 +194,8 @@ exports[`<Chip /> should render chip 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -195,8 +205,453 @@ exports[`<Chip /> should render chip 1`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+@media screen and (min-width:320px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9.c9.c9.c9.c9 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c11.c11.c11.c11.c11 {
+    border-style: solid;
+  }
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <div
+      aria-labelledby="chip-group-233-label"
+      class="c0"
+      data-analytics-chip-group="fruits"
+      data-blade-component="chip-group"
+      role="radiogroup"
+    >
+      <div
+        class=""
+        data-blade-component="base-box"
+      >
+        <div
+          class="c1"
+          data-blade-component="visually-hidden"
+        >
+          <p
+            class="c2"
+            data-blade-component="text"
+          >
+            Select fruits
+          </p>
+        </div>
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-analytics-chip="apple"
+            data-blade-component="chip"
+          >
+            <label
+              class="c5"
+              data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
+            >
+              <div
+                class="c6"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-234-helptext-235"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    role="radio"
+                    type="radio"
+                    value="apple"
+                  />
+                  <div
+                    class="c9 c10"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c11 c12"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c13"
+                        data-blade-component="text"
+                      >
+                        Apple
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="c4"
+            data-analytics-chip="mango"
+            data-blade-component="chip"
+          >
+            <label
+              class="c5"
+              data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
+            >
+              <div
+                class="c6"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-236-helptext-237"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    role="radio"
+                    type="radio"
+                    value="mango"
+                  />
+                  <div
+                    class="c9 c10"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c11 c12"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c13"
+                        data-blade-component="text"
+                      >
+                        Mango
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Chip /> should render chip 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9.c9.c9.c9.c9 {
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 12px;
+  padding-left: 12px;
+  height: 28px;
+  width: 100%;
+  gap: 8px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 9999px;
+  border-width: 0.5px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+}
+
+.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+  border-radius: 9999px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-width: 1px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: left;
+  text-overflow: ellipsis;
+  max-width: 420px;
+  width: 100%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-color: transparent;
+}
+
+.c12.c12.c12.c12.c12:hover {
+  background-color: hsla(211,20%,52%,0.06);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8:focus-visible + div {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8.c8.c8.c8.c8:hover + div {
+  border-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -331,109 +786,99 @@ exports[`<Chip /> should render chip 1`] = `
         >
           <div
             class="c4"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c5"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
-              <label
+              <div
                 class="c6"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c7"
                   data-blade-component="base-box"
                 >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-1-helptext-2"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    role="radio"
+                    type="radio"
+                    value="apple"
+                  />
                   <div
-                    class="c7"
+                    class="c9 c10"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-1-helptext-2"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c8"
-                      role="radio"
-                      type="radio"
-                      value="apple"
-                    />
                     <div
-                      class="c9 c10"
+                      class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c11 c12"
-                        data-blade-component="base-box"
+                      <p
+                        class="c13"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c13"
-                          data-blade-component="text"
-                        >
-                          Apple
-                        </p>
-                      </div>
+                        Apple
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
           <div
             class="c4"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c5"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
-              <label
+              <div
                 class="c6"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c7"
                   data-blade-component="base-box"
                 >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-3-helptext-4"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    role="radio"
+                    type="radio"
+                    value="mango"
+                  />
                   <div
-                    class="c7"
+                    class="c9 c10"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-3-helptext-4"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c8"
-                      role="radio"
-                      type="radio"
-                      value="mango"
-                    />
                     <div
-                      class="c9 c10"
+                      class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c11 c12"
-                        data-blade-component="base-box"
+                      <p
+                        class="c13"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c13"
-                          data-blade-component="text"
-                        >
-                          Mango
-                        </p>
-                      </div>
+                        Mango
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
         </div>
       </div>
@@ -464,18 +909,28 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
-  margin-bottom: 8px;
-  margin-right: 8px;
-}
-
-.c5.c5.c5.c5.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -517,6 +972,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
+  width: 100%;
+  gap: 8px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;
@@ -529,7 +986,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 8px;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -558,14 +1014,12 @@ exports[`<Chip /> should render chip with icon 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -582,11 +1036,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -634,8 +1088,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -645,8 +1099,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -781,173 +1235,163 @@ exports[`<Chip /> should render chip with icon 1`] = `
         >
           <div
             class="c4"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c5"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
-              <label
+              <div
                 class="c6"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c7"
                   data-blade-component="base-box"
                 >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-12-helptext-13"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    role="radio"
+                    type="radio"
+                    value="apple"
+                  />
                   <div
-                    class="c7"
+                    class="c9 c10"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-12-helptext-13"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c8"
-                      role="radio"
-                      type="radio"
-                      value="apple"
-                    />
                     <div
-                      class="c9 c10"
+                      class="c11 c12"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c11 c12"
+                        class="c13"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c13"
-                          data-blade-component="base-box"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 24 24"
+                          width="12px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="Svgweb__StyledSvg-vcmjs8-0"
-                            data-blade-component="icon"
-                            fill="none"
-                            height="12px"
-                            viewBox="0 0 24 24"
-                            width="12px"
-                          >
-                            <path
-                              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                            />
-                            <path
-                              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                            />
-                            <path
-                              clip-rule="evenodd"
-                              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                              fill-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <p
-                          class="c14"
-                          data-blade-component="text"
-                        >
-                          Apple
-                        </p>
+                          <path
+                            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                          />
+                          <path
+                            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                          />
+                          <path
+                            clip-rule="evenodd"
+                            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                       </div>
+                      <p
+                        class="c14"
+                        data-blade-component="text"
+                      >
+                        Apple
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
           <div
             class="c4"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c5"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
-              <label
+              <div
                 class="c6"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c7"
                   data-blade-component="base-box"
                 >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-14-helptext-15"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    role="radio"
+                    type="radio"
+                    value="mango"
+                  />
                   <div
-                    class="c7"
+                    class="c9 c10"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-14-helptext-15"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c8"
-                      role="radio"
-                      type="radio"
-                      value="mango"
-                    />
                     <div
-                      class="c9 c10"
+                      class="c11 c12"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c11 c12"
+                        class="c13"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c13"
-                          data-blade-component="base-box"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 24 24"
+                          width="12px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="Svgweb__StyledSvg-vcmjs8-0"
-                            data-blade-component="icon"
-                            fill="none"
-                            height="12px"
-                            viewBox="0 0 24 24"
-                            width="12px"
-                          >
-                            <path
-                              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                            />
-                            <path
-                              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                            />
-                            <path
-                              clip-rule="evenodd"
-                              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                              fill-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <p
-                          class="c14"
-                          data-blade-component="text"
-                        >
-                          Mango
-                        </p>
+                          <path
+                            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                          />
+                          <path
+                            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                          />
+                          <path
+                            clip-rule="evenodd"
+                            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                       </div>
+                      <p
+                        class="c14"
+                        data-blade-component="text"
+                      >
+                        Mango
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
         </div>
       </div>
@@ -978,18 +1422,28 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
-  margin-bottom: 8px;
-  margin-right: 8px;
-}
-
-.c5.c5.c5.c5.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -1031,6 +1485,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
+  width: 100%;
+  gap: 8px;
   background-color: hsla(0,0%,100%,0);
   border-radius: 9999px;
   border-width: 0.5px;
@@ -1063,6 +1519,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
+  width: 100%;
+  gap: 8px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;
@@ -1096,14 +1554,12 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1134,14 +1590,12 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1166,11 +1620,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1218,8 +1672,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1246,8 +1700,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1257,8 +1711,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1476,110 +1930,100 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
         >
           <div
             class="c4"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c5"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: not-allowed; width: 100%;"
             >
-              <label
+              <div
                 class="c6"
-                data-blade-component="chip-label"
-                style="cursor: not-allowed;"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c7"
                   data-blade-component="base-box"
                 >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-30-helptext-31"
+                    aria-disabled="true"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    disabled=""
+                    role="radio"
+                    type="radio"
+                    value="apple"
+                  />
                   <div
-                    class="c7"
+                    class="c9 c10"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-30-helptext-31"
-                      aria-disabled="true"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c8"
-                      disabled=""
-                      role="radio"
-                      type="radio"
-                      value="apple"
-                    />
                     <div
-                      class="c9 c10"
+                      class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c11 c12"
-                        data-blade-component="base-box"
+                      <p
+                        class="c13"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c13"
-                          data-blade-component="text"
-                        >
-                          Apple
-                        </p>
-                      </div>
+                        Apple
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
           <div
             class="c4"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c5"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor: pointer; width: 100%;"
             >
-              <label
+              <div
                 class="c6"
-                data-blade-component="chip-label"
-                style="cursor: pointer;"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c7"
                   data-blade-component="base-box"
                 >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-32-helptext-33"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c14"
+                    role="radio"
+                    type="radio"
+                    value="mango"
+                  />
                   <div
-                    class="c7"
+                    class="c15 c16"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-32-helptext-33"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c14"
-                      role="radio"
-                      type="radio"
-                      value="mango"
-                    />
                     <div
-                      class="c15 c16"
+                      class="c17 c18"
                       data-blade-component="base-box"
                     >
-                      <div
-                        class="c17 c18"
-                        data-blade-component="base-box"
+                      <p
+                        class="c19"
+                        data-blade-component="text"
                       >
-                        <p
-                          class="c19"
-                          data-blade-component="text"
-                        >
-                          Mango
-                        </p>
-                      </div>
+                        Mango
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
         </div>
       </div>

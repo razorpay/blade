@@ -14,8 +14,9 @@ import type { DropdownProps } from './types';
 
 import { dropdownComponentIds } from './dropdownComponentIds';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
-import { isReactNative } from '~utils';
+import { isReactNative, isBrowser } from '~utils';
 import type { ContainerElementType } from '~utils/types';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -75,6 +76,7 @@ type DropdownContextType = {
   dropdownTriggerer?:
     | 'SelectInput'
     | 'DropdownButton'
+    | 'DropdownIconButton'
     | 'AutoComplete'
     | 'DropdownLink'
     | 'SearchInput';
@@ -355,6 +357,9 @@ const useDropdown = (): UseDropdownReturnValue => {
 
     const optionValues = options.map((option) => option.value);
     ensureScrollVisiblity(updatedIndex, rest.actionListItemRef.current, optionValues);
+    if (isBrowser()) {
+      fireNativeEvent(rest.actionListItemRef as React.RefObject<HTMLElement>, ['change', 'input']);
+    }
   };
 
   /**

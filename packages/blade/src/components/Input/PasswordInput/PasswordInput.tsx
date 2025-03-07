@@ -8,7 +8,7 @@ import { IconButton } from '~components/Button/IconButton';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef } from '~utils/types';
 
 type PasswordInputExtraProps = {
   /**
@@ -71,6 +71,7 @@ type PasswordInputCommonProps = Pick<
   | 'autoCompleteSuggestionType'
   | 'testID'
   | 'size'
+  | keyof DataAnalyticsAttribute
 > &
   PasswordInputExtraProps &
   StyledPropsBlade;
@@ -133,7 +134,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
     autoCompleteSuggestionType,
     testID,
     size = 'medium',
-    ...styledProps
+    ...rest
   },
   ref,
 ) => {
@@ -200,7 +201,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       autoCapitalize="none"
       testID={testID}
       size={size}
-      {...styledProps}
+      {...rest}
     />
   );
 };

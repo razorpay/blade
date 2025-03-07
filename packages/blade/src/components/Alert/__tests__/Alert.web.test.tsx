@@ -109,4 +109,11 @@ describe('<Alert />', () => {
 
     expect(getByTestId('alert-test')).toBeTruthy();
   });
+  it('it should accept data-analytics attributes', () => {
+    const { getByTestId } = renderWithTheme(
+      <Alert description="Test" testID="alert-test" data-analytics-action="click" />,
+    );
+
+    expect(getByTestId('alert-test')).toHaveAttribute('data-analytics-action', 'click');
+  });
 });

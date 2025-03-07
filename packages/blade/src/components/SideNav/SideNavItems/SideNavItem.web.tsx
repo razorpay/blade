@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import type { SideNavItemProps } from '../types';
-import { TooltipifyNavItem } from './TooltipifyNavItem';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 
 const SideNavItemContainer = styled(BaseBox)((props) => {
   return {
@@ -20,9 +21,10 @@ const SideNavItem = ({
   backgroundColor,
   tooltip,
   as = 'div',
+  ...rest
 }: SideNavItemProps): React.ReactElement => {
   return (
-    <TooltipifyNavItem tooltip={tooltip}>
+    <TooltipifyComponent tooltip={tooltip}>
       <SideNavItemContainer
         display="flex"
         flexDirection="row"
@@ -34,6 +36,7 @@ const SideNavItem = ({
         borderRadius="medium"
         as={as}
         cursor={as === 'label' ? 'pointer' : undefined}
+        {...makeAnalyticsAttribute(rest)}
       >
         <Box display="inline-flex" alignItems="center" gap="spacing.3">
           {leading}
@@ -50,7 +53,7 @@ const SideNavItem = ({
         </Box>
         <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>{trailing}</BaseBox>
       </SideNavItemContainer>
-    </TooltipifyNavItem>
+    </TooltipifyComponent>
   );
 };
 

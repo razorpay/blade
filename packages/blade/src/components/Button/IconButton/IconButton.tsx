@@ -4,10 +4,12 @@ import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
-import type { BladeElementRef } from '~utils/types';
+import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type IconButtonProps = {
   /**
@@ -43,7 +45,9 @@ type IconButtonProps = {
    * Sets tabindex property on button element
    */
   _tabIndex?: number;
-} & BladeCommonEvents &
+} & DataAnalyticsAttribute &
+  BladeCommonEvents &
+  StyledPropsBlade &
   Platform.Select<{
     web: {
       onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -82,6 +86,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     onTouchStart,
     isHighlighted,
     _tabIndex,
+    ...rest
   },
   ref,
 ) => {
@@ -104,6 +109,8 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       onPointerEnter={onPointerEnter}
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
+      {...makeAnalyticsAttribute(rest)}
+      {...rest}
     />
   );
 };

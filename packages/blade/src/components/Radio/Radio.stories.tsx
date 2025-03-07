@@ -25,7 +25,7 @@ const Page = (): React.ReactElement => {
         {`
           import { RadioGroup, Radio } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
             return (
               <RadioGroup
                 helpText="Select only one"

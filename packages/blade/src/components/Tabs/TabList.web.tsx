@@ -6,11 +6,12 @@ import { TabIndicator } from './TabIndicator';
 import { trackColor } from './tabTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { Divider } from '~components/Divider';
 import { Box } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 const ScrollableArea = styled(BaseBox)(() => {
   return {
@@ -20,8 +21,9 @@ const ScrollableArea = styled(BaseBox)(() => {
 
 const TabList = ({
   children,
-  ...props
-}: { children: React.ReactNode } & StyledPropsBlade): React.ReactElement => {
+  ...rest
+}: { children: React.ReactNode } & StyledPropsBlade &
+  DataAnalyticsAttribute): React.ReactElement => {
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
@@ -39,8 +41,9 @@ const TabList = ({
 
   return (
     <Box
-      {...getStyledProps(props)}
+      {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.TabList })}
+      {...makeAnalyticsAttribute(rest)}
       display={isVertical ? 'flex' : 'block'}
       flexShrink={0}
       overflow="hidden"
@@ -80,9 +83,9 @@ const TabList = ({
                   overflow={isVertical ? 'hidden' : undefined}
                   {...(isFilled
                     ? {
-                        borderRadius: 'small',
+                        borderRadius: 'medium',
                         borderWidth: 'thin',
-                        borderColor: 'interactive.border.gray.faded',
+                        borderColor: 'interactive.border.gray.default',
                         padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
                         backgroundColor: 'surface.background.gray.intense',
@@ -92,23 +95,7 @@ const TabList = ({
                         gap: isVertical ? 'spacing.0' : { base: 'spacing.7', m: 'spacing.8' },
                       })}
                 >
-                  {variant === 'filled' && !isVertical
-                    ? React.Children.map(children, (child, index) => {
-                        return (
-                          <>
-                            {index > 0 ? (
-                              <Divider
-                                margin="auto"
-                                height="20px"
-                                variant="subtle"
-                                orientation="vertical"
-                              />
-                            ) : null}
-                            {child}
-                          </>
-                        );
-                      })
-                    : children}
+                  {children}
                 </BaseBox>
               </BaseBox>
             );

@@ -30,7 +30,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Switch } from '@razorpay/blade/components';
 
-        function App(): React.ReactElement {
+        function App() {
           return (
             // Check console
             <Switch

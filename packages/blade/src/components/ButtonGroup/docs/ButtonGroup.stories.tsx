@@ -10,6 +10,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { RefreshIcon, ShareIcon, DownloadIcon, ChevronDownIcon, PlusIcon } from '~components/Icons';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import { Tooltip } from '~components/Tooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -30,7 +31,7 @@ const Page = (): React.ReactElement => {
           DownloadIcon,
         } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <ButtonGroup>
               <Button icon={RefreshIcon}>Sync</Button>
@@ -76,7 +77,9 @@ const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args)
   return (
     <Box display="flex" alignItems="center" justifyContent="center">
       <ButtonGroupComponent {...args}>
-        <Button icon={PlusIcon}>Payout</Button>
+        <Tooltip content="Create a new payout">
+          <Button icon={PlusIcon}>Payout</Button>
+        </Tooltip>
         <Dropdown>
           <DropdownButton icon={ChevronDownIcon} />
           <DropdownOverlay defaultPlacement="bottom-end">
@@ -117,6 +120,29 @@ const ButtonGroupVariantsTemplate: StoryFn<typeof ButtonGroupComponent> = (args)
 export const AllVariants = ButtonGroupVariantsTemplate.bind({});
 AllVariants.storyName = 'All Variants';
 
+const ButtonGroupVariantsTemplateWithLoading: StoryFn<typeof ButtonGroupComponent> = (args) => {
+  const variants: ButtonGroupProps['variant'][] = ['primary', 'secondary', 'tertiary'];
+  return (
+    <>
+      {variants.map((variant) => (
+        <Box key={variant} marginBottom="spacing.8">
+          <Heading marginBottom="spacing.3">{variant}</Heading>
+          <ButtonGroupComponent {...args} variant={variant}>
+            <Button icon={RefreshIcon} isLoading>
+              Sync
+            </Button>
+            <Button icon={ShareIcon}>Share</Button>
+            <Button icon={DownloadIcon}>Download</Button>
+          </ButtonGroupComponent>
+        </Box>
+      ))}
+    </>
+  );
+};
+
+export const AllVariantsWithLoading = ButtonGroupVariantsTemplateWithLoading.bind({});
+AllVariantsWithLoading.storyName = 'All Variants With Loading';
+
 const ButtonGroupSizesTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   const sizes: ButtonGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
   return (
@@ -126,7 +152,9 @@ const ButtonGroupSizesTemplate: StoryFn<typeof ButtonGroupComponent> = (args) =>
           <Heading marginBottom="spacing.3">{size}</Heading>
           <ButtonGroupComponent {...args} size={size}>
             <Button icon={RefreshIcon}>Sync</Button>
-            <Button icon={ShareIcon}>Share</Button>
+            <Button isLoading icon={ShareIcon}>
+              Share
+            </Button>
             <Button icon={DownloadIcon}>Download</Button>
           </ButtonGroupComponent>
         </Box>

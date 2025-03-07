@@ -15,8 +15,13 @@ import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import type { BladeElementRef, BladeElementRefWithValue } from '~utils/types';
+import type {
+  BladeElementRef,
+  BladeElementRefWithValue,
+  DataAnalyticsAttribute,
+} from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 type TextAreaCommonProps = Pick<
   BaseInputProps,
@@ -43,6 +48,7 @@ type TextAreaCommonProps = Pick<
   | 'numberOfLines'
   | 'testID'
   | 'size'
+  | keyof DataAnalyticsAttribute
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -52,6 +58,16 @@ type TextAreaCommonProps = Pick<
    * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
+
+  onKeyDown?: ({
+    name,
+    value,
+    event,
+  }: {
+    name?: FormInputOnKeyDownEvent['name'];
+    value: string;
+    event: FormInputOnKeyDownEvent['event'];
+  }) => void;
 } & TaggedInputProps &
   StyledPropsBlade;
 
@@ -109,6 +125,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onFocus,
     onBlur,
     onSubmit,
+    onKeyDown,
     placeholder,
     value,
     maxCharacters,
@@ -121,7 +138,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     isTaggedInput,
     tags,
     onTagChange,
-    ...styledProps
+    ...rest
   },
   ref,
 ) => {
@@ -239,6 +256,11 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       onKeyDown={(e) => {
         handleTaggedInputKeydown(e);
+        onKeyDown?.({
+          name: e.name,
+          value: e.event.currentTarget.value,
+          event: e.event,
+        });
       }}
       onSubmit={onSubmit}
       trailingFooterSlot={(value) => {
@@ -250,7 +272,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       testID={testID}
       size={size}
-      {...styledProps}
+      {...rest}
     />
   );
 };

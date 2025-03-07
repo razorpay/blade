@@ -10,6 +10,7 @@ import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+import { ToastContainer, useToast } from '~components/Toast';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -197,7 +198,7 @@ export default {
             {`
               import { TextArea } from '@razorpay/blade/components';
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   <TextArea 
                     label="Description" 
@@ -456,6 +457,26 @@ export const TextAreaWithTags: StoryFn<typeof TextAreaComponent> = ({ ...args })
         onTagChange={({ tags }) => {
           console.log({ tags });
           setTags(tags);
+        }}
+      />
+    </Box>
+  );
+};
+
+export const TextAreaWithEnterSubmit: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const toast = useToast();
+  return (
+    <Box display="flex" flexDirection="column">
+      <ToastContainer />
+      <TextAreaComponent
+        {...args}
+        numberOfLines={3}
+        placeholder="Press Shift + Enter for next line and Enter for submit"
+        onKeyDown={({ event, value }) => {
+          if (!event.shiftKey && event.key === 'Enter') {
+            event.preventDefault();
+            toast.show({ content: `Submit: ${value}`, color: 'positive', type: 'informational' });
+          }
         }}
       />
     </Box>

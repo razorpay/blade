@@ -68,4 +68,10 @@ describe('<Indicator />', () => {
 
     expect(getByTestId('indicator-test')).toBeTruthy();
   });
+  it('should accept data-analytics attribute', () => {
+    const { container } = renderWithTheme(
+      <Indicator accessibilityLabel="Success" data-analytics-indicator="Success" />,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

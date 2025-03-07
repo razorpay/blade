@@ -9,6 +9,7 @@ import { componentIds } from '~components/ActionList/componentIds';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',
@@ -24,6 +25,7 @@ const _BottomSheetBody = ({
   children,
   padding = 'spacing.5',
   overflow = 'auto',
+  ...dataAnalyticsProps
 }: BottomSheetBodyProps): React.ReactElement => {
   const { scrollRef, setContentHeight, setHasBodyPadding, isOpen, bind } = useBottomSheetContext();
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -56,6 +58,7 @@ const _BottomSheetBody = ({
         testID: 'bottomsheet-body',
         name: MetaConstants.BottomSheetBody,
       })}
+      {...makeAnalyticsAttribute(dataAnalyticsProps)}
       ref={scrollRef}
       flexGrow={1}
       flexShrink={1}

@@ -50,7 +50,7 @@ const Page = (): React.ReactElement => {
               Button 
           } from '@razorpay/blade/components';
 
-          function App(): React.ReactElement {
+          function App() {
               return (
                   <Box backgroundColor="surface.background.gray.intense">
                   <ActionList>

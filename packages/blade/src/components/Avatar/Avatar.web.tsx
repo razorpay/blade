@@ -16,6 +16,7 @@ import { UserIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getInitials = (name: string): string => {
   // Combine first and last name initials
@@ -58,7 +59,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
     onPointerEnter,
     onTouchStart,
     onTouchEnd,
-    ...styledProps
+    ...rest
   },
   ref,
 ) => {
@@ -126,14 +127,15 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
       );
     }
 
-    return <AvatarButton {...commonButtonProps} icon={icon ?? UserIcon} />;
+    return <AvatarButton ref={ref as never} {...commonButtonProps} icon={icon ?? UserIcon} />;
   };
 
   const isSquare = variant === 'square';
   return (
     <StyledAvatar
       {...metaAttribute({ name: MetaConstants.Avatar, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
       backgroundColor="surface.background.gray.intense"
       variant={variant}
       size={avatarSize}

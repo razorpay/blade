@@ -12,8 +12,10 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
-import type { ContainerElementType } from '~utils/types';
+import type { BladeElementRef, ContainerElementType } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
+import { mergeRefs } from '~utils/useMergeRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const validDropdownChildren = [
   // TODO: Remove Box once CountrySelector's button sizing is fixed
@@ -21,6 +23,7 @@ const validDropdownChildren = [
   dropdownComponentIds.triggers.SelectInput,
   dropdownComponentIds.triggers.SearchInput,
   dropdownComponentIds.triggers.DropdownButton,
+  dropdownComponentIds.triggers.DropdownIconButton,
   dropdownComponentIds.triggers.DropdownLink,
   dropdownComponentIds.DropdownOverlay,
   dropdownComponentIds.triggers.AutoComplete,
@@ -53,15 +56,18 @@ const validDropdownChildren = [
  *
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select Dropdown Documentation}
  */
-const _Dropdown = ({
-  children,
-  isOpen: isOpenControlled,
-  onOpenChange,
-  selectionType = 'single',
-  testID,
-  _width,
-  ...styledProps
-}: DropdownProps): React.ReactElement => {
+const _Dropdown = (
+  {
+    children,
+    isOpen: isOpenControlled,
+    onOpenChange,
+    selectionType = 'single',
+    testID,
+    _width,
+    ...rest
+  }: DropdownProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
@@ -148,6 +154,10 @@ const _Dropdown = ({
         dropdownTriggerer.current = 'DropdownButton';
       }
 
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownIconButton)) {
+        dropdownTriggerer.current = 'DropdownIconButton';
+      }
+
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {
         dropdownTriggerer.current = 'AutoComplete';
       }
@@ -228,9 +238,10 @@ const _Dropdown = ({
       <DropdownContext.Provider value={contextValue}>
         <BaseBox
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref={dropdownContainerRef as any}
+          ref={mergeRefs(ref, dropdownContainerRef as any)}
           {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
           width={_width}
         >
           <BaseBox position="relative" textAlign={'left' as never}>
@@ -242,7 +253,7 @@ const _Dropdown = ({
   );
 };
 
-const Dropdown = assignWithoutSideEffects(_Dropdown, {
+const Dropdown = assignWithoutSideEffects(React.forwardRef(_Dropdown), {
   componentId: dropdownComponentIds.Dropdown,
 });
 

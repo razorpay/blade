@@ -69,16 +69,14 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
     position: 'relative',
     flexShrink: 0,
     padding: `${makeSpace(theme.spacing[2])} ${makeSpace(theme.spacing[1])}`,
-    backgroundColor: isActive ? theme.colors.surface.background.gray.intense : 'transparent',
+    backgroundColor: isActive ? theme.colors.surface.background.gray.moderate : 'transparent',
     borderColor: isActive ? theme.colors.surface.border.gray.muted : 'transparent',
     borderStyle: 'solid',
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderBottomWidth: 0,
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
-    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${
-      theme.motion.easing.standard.effective
-    }`,
+    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
     transitionProperty: 'background',
 
     // Hide the left and right divider by overlaying them with a pseudo element as same color as the background
@@ -109,9 +107,7 @@ const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }
     pointerEvents: 'none',
     // Animation
     opacity: isActive ? 1 : 0,
-    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${
-      theme.motion.easing.standard.effective
-    }`,
+    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
     transitionProperty: 'opacity',
   };
 });
@@ -171,6 +167,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
         target={target}
         $isActive={isActive}
         {...props}
+        {...metaAttribute({ name: MetaConstants.TabNavItemLink })}
         {...makeAccessible({ label: accessibilityLabel, current: isActive })}
       >
         {Icon ? (

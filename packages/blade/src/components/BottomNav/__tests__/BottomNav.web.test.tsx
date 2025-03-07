@@ -41,4 +41,9 @@ describe('BottomNav', () => {
 
     await assertAccessible(container);
   });
+  test('should support data-analytics attributes', () => {
+    const { getByRole } = renderWithTheme(<BottomNavExample data-analytics-test="test" />);
+
+    expect(getByRole('navigation')).toHaveAttribute('data-analytics-test', 'test');
+  });
 });

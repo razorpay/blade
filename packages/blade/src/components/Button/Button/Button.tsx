@@ -6,10 +6,16 @@ import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
+import type {
+  BladeElementRef,
+  DataAnalyticsAttribute,
+  StringChildrenType,
+  TestID,
+} from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ButtonCommonProps = {
   /**
@@ -75,6 +81,7 @@ type ButtonCommonProps = {
   }>;
 } & TestID &
   StyledPropsBlade &
+  DataAnalyticsAttribute &
   BladeCommonEvents;
 
 /*
@@ -132,6 +139,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
       {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
       ref={ref}
       href={href}
       target={target}

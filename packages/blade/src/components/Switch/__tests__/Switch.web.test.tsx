@@ -184,4 +184,20 @@ describe('<Switch />', () => {
       },
     });
   });
+
+  it('should support adding data-analytics attribute', () => {
+    const name = 'Toggle Darkmode';
+    const { container, getByTestId } = renderWithTheme(
+      <Switch
+        data-analytics-switch="darkmode-switch"
+        testID="darkmode-switch"
+        accessibilityLabel={name}
+      />,
+    );
+    expect(container).toMatchSnapshot();
+    expect(getByTestId('darkmode-switch')).toHaveAttribute(
+      'data-analytics-switch',
+      'darkmode-switch',
+    );
+  });
 });

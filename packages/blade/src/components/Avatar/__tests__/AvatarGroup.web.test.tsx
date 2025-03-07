@@ -51,4 +51,18 @@ describe('<AvatarGroup />', () => {
     );
     expect(getByTestId('avatar-group-test')).toBeTruthy();
   });
+  it('should accept data-analytics attribute', () => {
+    const { getByTestId, container } = renderWithTheme(
+      <AvatarGroup data-analytics-avatar-group="blade-team" testID="data-analytics-test">
+        <Avatar name="Nitin Kumar" color="information" />
+        <Avatar name="Anurag" color="positive" />
+        <Avatar name="Rama Krushna Behra" color="negative" />
+      </AvatarGroup>,
+    );
+    expect(getByTestId('data-analytics-test')).toHaveAttribute(
+      'data-analytics-avatar-group',
+      'blade-team',
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

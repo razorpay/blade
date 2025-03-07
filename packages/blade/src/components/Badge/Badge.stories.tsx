@@ -22,7 +22,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Badge, InfoIcon } from '@razorpay/blade/components';
         
-        function App(): React.ReactElement {
+        function App() {
           return (
             <Badge color="neutral" icon={InfoIcon}>
               Boop

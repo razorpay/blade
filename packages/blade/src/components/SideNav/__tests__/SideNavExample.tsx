@@ -60,14 +60,15 @@ const SideNavExample = ({
 }: Omit<SideNavProps, 'children'> & { initialEntries?: string[] }): React.ReactElement => {
   return (
     <MemoryRouter initialEntries={initialEntries}>
-      <SideNav {...args}>
+      <SideNav {...args} data-analytics-side-nav="demo-item">
         <SideNavBody>
-          <NavLink icon={HomeIcon} title="Home" href="/home" />
+          <NavLink icon={HomeIcon} data-analytics-nav-link="home" title="Home" href="/home" />
           <NavLink
             icon={LayoutIcon}
             title="L2 Trigger"
             href="/l2-item"
             activeOnLinks={['/l2-item', '/l2-item-2', '/l3-item', '/l3-item-2']}
+            data-analytics-nav-link="l2 Trigger"
           >
             <SideNavLevel>
               <NavLink title="L2 Item" href="/l2-item" />
@@ -81,7 +82,11 @@ const SideNavExample = ({
             </SideNavLevel>
           </NavLink>
 
-          <SideNavSection title="Products" maxVisibleItems={2}>
+          <SideNavSection
+            title="Products"
+            maxVisibleItems={2}
+            data-analytics-side-nav-section="Products"
+          >
             <NavLink icon={PaymentGatewayIcon} title="Gateway" href="/gateway" />
             <NavLink icon={PaymentLinkIcon} title="Links" href="/links" />
             <NavLink icon={PaymentPagesIcon} title="Pages" href="/pages" />

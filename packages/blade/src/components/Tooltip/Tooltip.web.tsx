@@ -20,6 +20,7 @@ import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { TooltipContext } from './TooltipContext';
+import { componentIds } from './componentIds';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -30,14 +31,18 @@ import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { mergeRefs } from '~utils/useMergeRefs';
 
-const Tooltip = ({
+const _Tooltip = ({
   title,
   content,
   children,
   placement = 'top',
   onOpenChange,
   zIndex = componentZIndices.tooltip,
+  ...rest
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const id = useId();
@@ -91,7 +96,8 @@ const Tooltip = ({
   return (
     <TooltipContext.Provider value={true}>
       {React.cloneElement(children, {
-        ref: refs.setReference,
+        // @ts-expect-error: ref does exist on children prop
+        ref: mergeRefs(refs.setReference, children.ref),
         ...makeAccessible({ label: content }),
         ...mergeProps(children.props, getReferenceProps()),
       })}
@@ -104,6 +110,7 @@ const Tooltip = ({
             zIndex={zIndex}
             {...getFloatingProps()}
             {...metaAttribute({ name: MetaConstants.Tooltip })}
+            {...makeAnalyticsAttribute(rest)}
           >
             <TooltipContent
               title={title}
@@ -127,5 +134,9 @@ const Tooltip = ({
     </TooltipContext.Provider>
   );
 };
+
+const Tooltip = assignWithoutSideEffects(_Tooltip, {
+  componentId: componentIds.Tooltip,
+});
 
 export { Tooltip };

@@ -26,6 +26,8 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { useControllableState } from '~utils/useControllable';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -52,7 +54,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     maxCount,
     maxSize,
     size = 'medium',
-    ...styledProps
+    _motionMeta,
+    ...rest
   },
   ref,
 ): React.ReactElement => {
@@ -178,11 +181,12 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
   return (
     <BaseBox
+      ref={getOuterMotionRef({ _motionMeta, ref })}
       display="flex"
       flexDirection="column"
       width="100%"
       {...metaAttribute({ name: MetaConstants.FileUpload, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
     >
       <BaseBox
         display="flex"
@@ -265,7 +269,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     onBlur: () => setIsActive(false),
                     ...accessibilityProps,
                   }}
-                  ref={mergedRef}
+                  ref={getInnerMotionRef({ _motionMeta, ref: mergedRef })}
+                  {...makeAnalyticsAttribute(rest)}
                 />
 
                 <Box
@@ -306,6 +311,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             onRemove={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(() => newFiles);
+
               onRemove?.({ file: selectedFiles[0] });
             }}
             onReupload={() => {

@@ -330,4 +330,12 @@ describe('<BaseInput />', () => {
 
     expect(getByTestId('base-input-test')).toBeTruthy();
   });
+  it('should support passing data-analytics-* attributes to the input field', () => {
+    const { getByLabelText, container } = renderWithTheme(
+      <BaseInput id="name" label="Enter name" data-analytics-name="base-input" />,
+    );
+
+    expect(container).toMatchSnapshot();
+    expect(getByLabelText('Enter name')).toHaveAttribute('data-analytics-name', 'base-input');
+  });
 });

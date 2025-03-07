@@ -295,4 +295,45 @@ describe('<Card />', () => {
     );
     expect(getByTestId('card-test')).toBeTruthy();
   });
+
+  it('should support adding data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <Card data-analytics-card-test="card-test">
+        <CardBody data-analytics-card-body="card-body">
+          <Text>Plain Card</Text>
+        </CardBody>
+        <CardFooter data-analytics-card-footer="card-footer">
+          <CardFooterLeading
+            title="Card Footer"
+            data-analytics-card-footer-leading="card-footer-leading"
+          />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Save',
+                onClick: () => {},
+              },
+              secondary: {
+                text: 'Delete',
+                onClick: () => {},
+              },
+            }}
+            data-analytics-card-footer-trailing="card-footer-trailing"
+          />
+        </CardFooter>
+      </Card>,
+    );
+    expect(container.querySelector('[data-analytics-card-test="card-test"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-analytics-card-body="card-body"]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-analytics-card-footer="card-footer"]'),
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-analytics-card-footer-leading="card-footer-leading"]'),
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-analytics-card-footer-trailing="card-footer-trailing"]'),
+    ).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
 });

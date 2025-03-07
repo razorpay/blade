@@ -6,6 +6,7 @@ import { useDrawerStack } from './StackProvider';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _DrawerHeader = ({
   title,
@@ -13,6 +14,7 @@ const _DrawerHeader = ({
   leading,
   trailing,
   titleSuffix,
+  ...rest
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef, stackingLevel, isExiting } = React.useContext(DrawerContext);
   const { drawerStack } = useDrawerStack();
@@ -41,6 +43,7 @@ const _DrawerHeader = ({
       subtitle={subtitle}
       leading={leading}
       trailing={trailing}
+      {...makeAnalyticsAttribute(rest)}
     />
   );
 };

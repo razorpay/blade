@@ -13,12 +13,15 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
 } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { size as sizeTokens } from '~tokens/global';
 
 const {
   COLLAPSED,
@@ -37,12 +40,12 @@ const MobileL1Container = styled(BaseBox)(() => {
 });
 
 const StyledL1Menu = styled(BaseBox)((props) => {
-  const moderate = makeMotionTime(props.theme.motion.duration.moderate);
-  const gentle = makeMotionTime(props.theme.motion.duration.gentle);
+  const quick = makeMotionTime(props.theme.motion.duration.quick);
+  const xmoderate = makeMotionTime(props.theme.motion.duration.xmoderate);
   const easing = props.theme.motion.easing;
 
-  const l1Expand = `width ${gentle} ${easing.entrance.revealing}`;
-  const l1Collapse = `width ${moderate} ${easing.exit.revealing}`;
+  const l1Expand = `width ${xmoderate} ${easing.entrance}`;
+  const l1Collapse = `width ${quick} ${easing.exit}`;
 
   return {
     width: '100%',
@@ -91,6 +94,22 @@ const getL1MenuClassName = ({
   return '';
 };
 
+const BannerContainer = styled(BaseBox)((props) => {
+  return {
+    '&:not(:empty)': {
+      borderBottom: makeBorderSize(props.theme.border.width.thin),
+      borderBottomStyle: 'solid',
+      borderBottomColor: props.theme.colors.surface.border.gray.muted,
+      borderRight: makeBorderSize(props.theme.border.width.thin),
+      borderRightStyle: 'solid',
+      borderRightColor: props.theme.colors.surface.border.gray.muted,
+      padding: makeSpace(props.theme.spacing[3]),
+      maxHeight: makeSize(sizeTokens['100']),
+      width: '100%',
+    },
+  };
+});
+
 /**
  * ### SideNav component
  *
@@ -103,14 +122,10 @@ const getL1MenuClassName = ({
  * SideNav requires handling active state with React Router, Checkout Usage with React Router v6 at - [SideNav Documentation](https://blade.razorpay.com/?path=/docs/components-sidenav--docs)
  *
  */
-const SideNav = ({
-  children,
-  isOpen,
-  onDismiss,
-  banner,
-  testID,
-  ...styledProps
-}: SideNavProps): React.ReactElement => {
+const _SideNav = (
+  { children, isOpen, onDismiss, onVisibleLevelChange, banner, testID, ...rest }: SideNavProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const timeoutIdsRef = React.useRef<NodeJS.Timeout[]>([]);
@@ -128,6 +143,7 @@ const SideNav = ({
     if (isMobile) {
       setIsMobileL2Open(false);
       onDismiss?.();
+      onVisibleLevelChange?.({ visibleLevel: 0 });
     }
   };
 
@@ -140,6 +156,36 @@ const SideNav = ({
     timeoutIdsRef.current.push(clearTransitionTimeout);
   };
 
+  const collapseL1 = (title: string): void => {
+    if (isMobile) {
+      setL2DrawerTitle(title);
+      setIsMobileL2Open(true);
+      onVisibleLevelChange?.({ visibleLevel: 2 });
+      return;
+    }
+
+    if (!isL1Collapsed) {
+      setIsL1Collapsed(true);
+      onVisibleLevelChange?.({ visibleLevel: 2 });
+    }
+  };
+
+  const expandL1 = (): void => {
+    if (isMobile) {
+      setIsMobileL2Open(false);
+      onVisibleLevelChange?.({ visibleLevel: 1 });
+      return;
+    }
+    // Ensures that if Normal L1 item is clicked, the L1 stays expanded
+    if (isL1Collapsed) {
+      setIsL1Collapsed(false);
+      // We want to avoid calling onVisibleLevelChange twice when L1 is hovered and then item on L1 is selected
+      if (!isL1Hovered) {
+        onVisibleLevelChange?.({ visibleLevel: 1 });
+      }
+    }
+  };
+
   /**
    * Handles L1 -> L2 menu changes based on active item
    */
@@ -149,13 +195,7 @@ const SideNav = ({
     if (isL1ItemActive) {
       if (args.isL2Trigger) {
         // Click on L2 Trigger
-        if (isMobile) {
-          setL2DrawerTitle(args.title);
-          setIsMobileL2Open(true);
-          return;
-        }
-
-        setIsL1Collapsed(true);
+        collapseL1(args.title);
 
         // `args.isFirstRender` checks if the item that triggered this change, triggered it during first render or during subsequent change
         if (!args.isFirstRender) {
@@ -171,12 +211,7 @@ const SideNav = ({
         }
       } else {
         // Click on normal L1 Item
-        // eslint-disable-next-line no-lonely-if
-        if (isMobile) {
-          setIsMobileL2Open(false);
-        }
-        // Ensures that if Normal L1 item is clicked, the L1 stays expanded
-        setIsL1Collapsed(false);
+        expandL1();
       }
     }
   };
@@ -188,9 +223,10 @@ const SideNav = ({
       closeMobileNav,
       isL1Collapsed: isMobile ? isMobileL2Open : isL1Collapsed,
       setIsL1Collapsed,
+      isL1Hovered,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isL1Collapsed, isMobile, isMobileL2Open],
+    [isL1Collapsed, isMobile, isMobileL2Open, isL1Hovered],
   );
 
   React.useEffect(() => {
@@ -207,7 +243,7 @@ const SideNav = ({
       {isMobile && onDismiss ? (
         <>
           {/* L1 */}
-          <Drawer isOpen={isOpen ?? false} onDismiss={onDismiss}>
+          <Drawer isOpen={isOpen ?? false} onDismiss={closeMobileNav}>
             <DrawerHeader title="Main Menu" />
             <DrawerBody>
               <MobileL1Container
@@ -226,7 +262,7 @@ const SideNav = ({
             </DrawerBody>
           </Drawer>
           {/* L2 */}
-          <Drawer isOpen={isMobileL2Open} onDismiss={() => setIsMobileL2Open(false)} isLazy={false}>
+          <Drawer isOpen={isMobileL2Open} onDismiss={() => expandL1()} isLazy={false}>
             <DrawerHeader title={l2DrawerTitle} />
             <DrawerBody>
               <BaseBox ref={l2PortalContainerRef} />
@@ -235,6 +271,7 @@ const SideNav = ({
         </>
       ) : (
         <BaseBox
+          ref={ref as never}
           position="fixed"
           backgroundColor="surface.background.gray.moderate"
           height="100%"
@@ -251,21 +288,10 @@ const SideNav = ({
             name: MetaConstants.SideNav,
             testID,
           })}
-          {...getStyledProps(styledProps)}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
         >
-          {banner ? (
-            <BaseBox
-              borderBottom="thin"
-              borderBottomColor="surface.border.gray.muted"
-              borderRight="thin"
-              borderRightColor="surface.border.gray.muted"
-              padding="spacing.3"
-              maxHeight="100px"
-              width="100%"
-            >
-              {banner}
-            </BaseBox>
-          ) : null}
+          {banner ? <BannerContainer>{banner}</BannerContainer> : null}
           <BaseBox position="relative" display="block" flex="1" width="100%">
             <BaseBox
               position="absolute"
@@ -315,8 +341,9 @@ const SideNav = ({
                 if (mouseOverTimeoutRef.current) {
                   clearTimeout(mouseOverTimeoutRef.current);
                 }
-                if (isL1Collapsed && isHoverAgainEnabled) {
+                if (isL1Collapsed && isHoverAgainEnabled && !isL1Hovered) {
                   setIsL1Hovered(true);
+                  onVisibleLevelChange?.({ visibleLevel: 1 });
                 }
               }}
               onMouseLeave={() => {
@@ -325,7 +352,13 @@ const SideNav = ({
                     setIsL1Hovered(false);
                     setIsTransitioning(true);
                     cleanupTransition();
+                    onVisibleLevelChange?.({ visibleLevel: 2 });
                   }, L1_EXIT_HOVER_DELAY);
+                }
+                // If L1 is collapsed and not hovered we want to change visible level to 2
+                // This state/edgecase happens when user clicks on a nested nav and it collapses the L1 causing isL1Hovered to be false
+                if (isL1Collapsed && !isL1Hovered) {
+                  onVisibleLevelChange?.({ visibleLevel: 2 });
                 }
               }}
             >
@@ -339,5 +372,7 @@ const SideNav = ({
     </SideNavContext.Provider>
   );
 };
+
+const SideNav = React.forwardRef(_SideNav);
 
 export { SideNav };

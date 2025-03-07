@@ -2771,3 +2771,104 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
   </div>
 </div>
 `;
+
+exports[`<Counter /> should support data-analytics attributes 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 20px;
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  background-color: hsla(211,20%,52%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,33%,21%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+<div>
+  <div
+    class="c0"
+    data-analytics-counter="counter"
+    data-analytics-value="20"
+    data-blade-component="counter"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c3"
+        data-blade-component="base-box"
+      >
+        <p
+          class="c4"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

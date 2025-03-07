@@ -13,6 +13,8 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -43,6 +45,7 @@ export type OTPInputCommonProps = Pick<
   | 'placeholder'
   | 'testID'
   | 'size'
+  | keyof DataAnalyticsAttribute
 > & {
   /**
    * Determines the number of input fields to show for the OTP
@@ -160,7 +163,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
     autoCompleteSuggestionType = 'oneTimeCode',
     testID,
     size = 'medium',
-    ...styledProps
+    ...rest
   },
   incomingRef,
 ) => {
@@ -291,8 +294,15 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   }: FormInputOnKeyDownEvent & { currentOtpIndex: number }): void => {
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       event.preventDefault?.();
-      handleOnChange({ value: '', currentOtpIndex });
-      focusOnOtpByIndex(--currentOtpIndex);
+      if (otpValue[currentOtpIndex]) {
+        // Clear the value at the current index if value exists
+        handleOnChange({ value: '', currentOtpIndex });
+      } else {
+        // Move focus to the previous input if the current input is empty
+        // and clear the value at the new active (previous) index
+        focusOnOtpByIndex(--currentOtpIndex);
+        handleOnChange({ value: '', currentOtpIndex });
+      }
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
       event.preventDefault?.();
       focusOnOtpByIndex(--currentOtpIndex);
@@ -372,6 +382,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
             type={currentInputType}
             size={size}
             valueComponentType="heading"
+            {...makeAnalyticsAttribute(rest)}
           />
         </BaseBox>,
       );
@@ -380,10 +391,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   };
 
   return (
-    <BaseBox
-      {...metaAttribute({ name: MetaConstants.OTPInput, testID })}
-      {...getStyledProps(styledProps)}
-    >
+    <BaseBox {...metaAttribute({ name: MetaConstants.OTPInput, testID })} {...getStyledProps(rest)}>
       <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}

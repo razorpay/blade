@@ -183,4 +183,20 @@ describe('<Chip />', () => {
     expect(getByTestId('chip-apple-test')).toBeTruthy();
     expect(getByTestId('chip-mango-test')).toBeTruthy();
   });
+  it('should accept data-analytics-*', () => {
+    const { container } = renderWithTheme(
+      <ChipGroup accessibilityLabel="Select fruits" data-analytics-chip-group="fruits">
+        <Chip value="apple" data-analytics-chip="apple">
+          Apple
+        </Chip>
+        <Chip value="mango" data-analytics-chip="mango">
+          Mango
+        </Chip>
+      </ChipGroup>,
+    );
+    expect(container.querySelector('[data-analytics-chip-group="fruits"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-analytics-chip="apple"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-analytics-chip="mango"]')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -17,6 +17,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
 import { size } from '~tokens/global';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const StyledFooter = styled(Footer)(({ theme }) => ({
   '&&&': {
@@ -27,9 +28,13 @@ const StyledFooter = styled(Footer)(({ theme }) => ({
   },
 }));
 
-const _TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
+const _TableFooter = ({ children, ...rest }: TableFooterProps): React.ReactElement => {
   return (
-    <StyledFooter isFooter {...metaAttribute({ name: MetaConstants.TableFooter })}>
+    <StyledFooter
+      isFooter
+      {...metaAttribute({ name: MetaConstants.TableFooter })}
+      {...makeAnalyticsAttribute(rest)}
+    >
       {children}
     </StyledFooter>
   );
@@ -54,11 +59,12 @@ const StyledFooterRow = styled(FooterRow)<{ $showBorderedCells: boolean }>(
   }),
 );
 
-const _TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
+const _TableFooterRow = ({ children, ...rest }: TableFooterRowProps): React.ReactElement => {
   const { showBorderedCells } = useTableContext();
   return (
     <StyledFooterRow
       {...metaAttribute({ name: MetaConstants.TableFooterRow })}
+      {...makeAnalyticsAttribute(rest)}
       $showBorderedCells={showBorderedCells}
     >
       {children}
@@ -73,7 +79,8 @@ const TableFooterRow = assignWithoutSideEffects(_TableFooterRow, {
 const StyledFooterCell = styled(FooterCell)<{
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
-}>(({ theme, $backgroundColor, $rowDensity }) => ({
+  $textAlign?: string;
+}>(({ theme, $backgroundColor, $rowDensity, $textAlign }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
@@ -92,11 +99,16 @@ const StyledFooterCell = styled(FooterCell)<{
       paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[$rowDensity])),
       minHeight: makeSize(getIn(size, tableRow.minHeight[$rowDensity])),
       alignItems: 'center',
+      justifyContent: $textAlign ? $textAlign : 'left',
     },
   },
 }));
 
-const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
+const _TableFooterCell = ({
+  children,
+  textAlign,
+  ...rest
+}: TableFooterCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { backgroundColor, rowDensity } = useTableContext();
 
@@ -104,7 +116,9 @@ const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElemen
     <StyledFooterCell
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
+      $textAlign={textAlign}
       {...metaAttribute({ name: MetaConstants.TableFooterCell })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {isChildrenString ? (
         <Text size="medium" weight="medium">

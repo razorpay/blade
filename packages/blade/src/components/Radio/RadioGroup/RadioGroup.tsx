@@ -9,8 +9,9 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import type { TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type RadioGroupProps = {
   /**
@@ -75,7 +76,15 @@ type RadioGroupProps = {
   /**
    * The callback invoked when any of the radio's state changes
    */
-  onChange?: ({ name, value }: { name: string | undefined; value: string }) => void;
+  onChange?: ({
+    name,
+    value,
+    event,
+  }: {
+    name: string | undefined;
+    value: string;
+    event: React.ChangeEvent<HTMLInputElement>;
+  }) => void;
   /**
    * The name of the input field in a radio
    * (Useful for form submission).
@@ -88,6 +97,7 @@ type RadioGroupProps = {
    */
   size?: 'small' | 'medium' | 'large';
 } & TestID &
+  DataAnalyticsAttribute &
   StyledPropsBlade;
 
 const RadioGroup = ({
@@ -106,7 +116,7 @@ const RadioGroup = ({
   value,
   size = 'medium',
   testID,
-  ...styledProps
+  ...rest
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
     defaultValue,
@@ -131,13 +141,14 @@ const RadioGroup = ({
 
   return (
     <RadioGroupProvider value={contextValue}>
-      <BaseBox {...getStyledProps(styledProps)}>
+      <BaseBox {...getStyledProps(rest)}>
         <SelectorGroupField
           position={labelPosition}
           labelledBy={ids.labelId}
           accessibilityRole="radiogroup"
           componentName="radio-group"
           testID={testID}
+          {...makeAnalyticsAttribute(rest)}
         >
           {label ? (
             <FormLabel

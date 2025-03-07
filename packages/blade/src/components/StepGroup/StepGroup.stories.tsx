@@ -46,7 +46,7 @@ const Page = (): React.ReactElement => {
           HeartIcon,
         } from '@razorpay/blade/components';
 
-        function App(): React.ReactElement {
+        function App() {
           return (
             // Check console
             <StepGroup orientation="vertical" size="medium">
@@ -205,6 +205,7 @@ const StepGroupStaticTemplate: StoryFn<typeof StepGroup> = (args) => {
       />
       <StepItem
         title="Needs Response"
+        titleColor="feedback.text.notice.intense"
         timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
         stepProgress="start"
         marker={<StepItemIndicator color="notice" />}
@@ -272,18 +273,17 @@ const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
       <StepItem
         title="Needs Response"
         timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
-        stepProgress="full"
+        stepProgress="start"
         marker={<StepItemIndicator color="positive" />}
       />
       <StepGroup>
         <StepItem
           title="Personal Documents Submission"
-          stepProgress="full"
           marker={<StepItemIndicator color="positive" />}
         />
         <StepItem
           title="Company Documents Submission"
-          stepProgress="start"
+          titleColor="feedback.text.notice.intense"
           marker={<StepItemIndicator color="notice" />}
         >
           <Button size="medium" variant="secondary">

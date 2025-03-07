@@ -1,5 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useCallback, useInsertionEffect, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+
+// Prevent webpack from importing this:
+// https://github.com/webpack/webpack/issues/14814#issuecomment-1536757985
+// https://github.com/radix-ui/primitives/issues/2796
+const useReactInsertionEffect = (React as any)[' useInsertionEffect '.trim().toString()];
+const useInsertionEffectFallback = useReactInsertionEffect || useIsomorphicLayoutEffect;
 
 /**
  * This hook is user-land implementation of the experimental `useEffectEvent` hook.
@@ -11,11 +19,9 @@ function useCallbackRef<Args extends unknown[], Return>(
   callback: ((...args: Args) => Return) | undefined,
   deps: React.DependencyList = [],
 ) {
-  const callbackRef = useRef<typeof callback>(() => {
-    throw new Error('Cannot call an event handler while rendering.');
-  });
+  const callbackRef = useRef<typeof callback>(callback);
 
-  useInsertionEffect(() => {
+  useInsertionEffectFallback(() => {
     callbackRef.current = callback;
   });
 

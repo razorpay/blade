@@ -34,6 +34,9 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -63,14 +66,17 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   picker,
   onPickerChange,
   zIndex = componentZIndices.popover,
+  format = 'DD/MM/YYYY',
+  inputPlaceHolder,
   ...props
-}: DatePickerProps<Type> & StyledPropsBlade): React.ReactElement => {
+}: DatePickerProps<Type> & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
   const isSingle = _selectionType === 'single';
   const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
+  const referenceRef = React.useRef<HTMLButtonElement>(null);
 
   const [_picker, setPicker] = useControllableState<PickerType>({
     defaultValue: defaultPicker,
@@ -79,6 +85,31 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       onPickerChange?.(picker);
     },
   });
+  const finalFormat = React.useMemo(() => {
+    if (format) {
+      return format;
+    }
+    if (picker === 'month') {
+      return 'MMMM';
+    }
+    if (picker === 'year') {
+      return 'YYYY';
+    }
+    return 'DD/MM/YYYY';
+  }, [format, picker]);
+
+  const finalInputPlaceHolder = React.useMemo(() => {
+    if (inputPlaceHolder) {
+      return inputPlaceHolder;
+    }
+    if (picker === 'month') {
+      return 'Month';
+    }
+    if (picker === 'year') {
+      return 'Year';
+    }
+    return 'DD/MM/YYYY';
+  }, [inputPlaceHolder, picker]);
 
   const {
     onDateChange,
@@ -97,6 +128,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     defaultValue,
     onChange: (date) => {
       onChange?.(date as never);
+      fireNativeEvent(referenceRef, ['input']);
       if (isSingle) return;
       // sync selected preset with value
       setSelectedPreset(date as DatesRangeValue);
@@ -124,6 +156,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const handleApply = (): void => {
     if (isSingle) {
       onChange?.(controlledValue);
+      fireNativeEvent(referenceRef, ['change']);
       setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();
@@ -132,6 +165,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     // only apply if both dates are selected
     if (hasBothDatesSelected) {
       onChange?.(controlledValue);
+      fireNativeEvent(referenceRef, ['change']);
       setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();
@@ -140,6 +174,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
 
   const handleCancel = (): void => {
     setControlledValue(oldValue);
+    fireNativeEvent(referenceRef, ['change']);
     setPickedDate(null);
     close();
   };
@@ -147,7 +182,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   const isMobile = useIsMobile();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const titleId = useId('datepicker-title');
-  const referenceRef = React.useRef<HTMLButtonElement>(null);
   const {
     context,
     refs,
@@ -230,6 +264,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             forceRerender();
           }}
           picker={_picker}
+          showLevelChangeLink={!picker}
           onPickerChange={(picker) => {
             setPicker(() => picker);
             forceRerender();
@@ -296,6 +331,9 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             validationState={validationState}
             autoFocus={autoFocus}
             necessityIndicator={necessityIndicator}
+            format={finalFormat}
+            placeholder={finalInputPlaceHolder}
+            {...makeAnalyticsAttribute(props)}
           />
           {isMobile ? (
             <BottomSheet

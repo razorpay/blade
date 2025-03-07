@@ -247,10 +247,10 @@ describe('<OTPInput />', () => {
     expect(allInputs[5]).toHaveFocus();
     await user.keyboard('{Backspace}');
     expect(allInputs[5]).toHaveValue('');
-    expect(allInputs[4]).toHaveFocus();
+    expect(allInputs[5]).toHaveFocus();
     await user.keyboard('{Delete}');
     expect(allInputs[4]).toHaveValue('');
-    expect(allInputs[3]).toHaveFocus();
+    expect(allInputs[4]).toHaveFocus();
   });
 
   it('should pass a11y', async () => {
@@ -281,5 +281,17 @@ describe('<OTPInput />', () => {
     const { getByTestId } = renderWithTheme(<OTPInput label="Enter OTP" testID="otp-input-test" />);
 
     expect(getByTestId('otp-input-test')).toBeTruthy();
+  });
+  it('should accept data-analytics attributes', () => {
+    const { container } = renderWithTheme(
+      <OTPInput
+        label="Enter OTP"
+        data-analytics-type="otp"
+        data-analytics-event="change"
+        otpLength={4}
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 });

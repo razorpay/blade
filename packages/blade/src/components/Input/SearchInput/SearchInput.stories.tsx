@@ -201,7 +201,7 @@ export default {
             {`
               import { SearchInput } from '@razorpay/blade/components';
 
-              function App(): React.ReactElement {
+              function App() {
                 return (
                   <SearchInput 
                     label="Name" 

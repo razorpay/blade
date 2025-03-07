@@ -237,4 +237,11 @@ describe('<Amount />', () => {
       expect(getByTestId('amount-test')).toHaveTextContent(item.output);
     },
   );
+  it('should render amount with data-analytics attributes', () => {
+    const { getByTestId } = renderWithTheme(
+      <Amount value={1000} testID="amount-test" data-analytics-test="dummy" />,
+    );
+
+    expect(getByTestId('amount-test')).toHaveAttribute('data-analytics-test', 'dummy');
+  });
 });

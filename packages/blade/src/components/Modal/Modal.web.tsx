@@ -29,6 +29,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const entry = keyframes`
   from {
@@ -59,10 +60,10 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme
     transform: translate(-50%, -50%);
     opacity: ${isVisible ? 1 : 0};
     animation: ${isVisible ? entry : exit}
-      ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
+      ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
       ${isVisible
-        ? castWebType(theme.motion.easing.entrance.revealing)
-        : castWebType(theme.motion.easing.exit.revealing)};
+        ? castWebType(theme.motion.easing.entrance)
+        : castWebType(theme.motion.easing.exit)};
   `;
 });
 
@@ -74,10 +75,11 @@ const Modal = ({
   size = 'small',
   accessibilityLabel,
   zIndex = componentZIndices.modal,
+  ...rest
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {
-    transitionDuration: theme.motion.duration.xmoderate,
+    transitionDuration: theme.motion.duration.moderate,
     initialEnter: true,
   });
 
@@ -134,7 +136,12 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
+            <Box
+              zIndex={zIndex}
+              position="fixed"
+              testID="modal-wrapper"
+              {...makeAnalyticsAttribute(rest)}
+            >
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({

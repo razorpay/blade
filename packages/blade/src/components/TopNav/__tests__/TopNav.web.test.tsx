@@ -15,4 +15,14 @@ describe('TopNav', () => {
 
     await assertAccessible(container);
   });
+
+  test('should support data analytics attributes', () => {
+    const { container } = renderWithTheme(<TopNavExample />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test('it shpuld support adding test Id', () => {
+    const { container } = renderWithTheme(<TopNavExample />);
+    expect(container).toMatchSnapshot();
+  });
 });

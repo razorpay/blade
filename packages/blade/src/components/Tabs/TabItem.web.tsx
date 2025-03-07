@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import styled from 'styled-components';
 import React from 'react';
@@ -13,6 +14,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { breakpoints } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
@@ -88,11 +90,11 @@ const StyledTabButton = styled.button<{
     },
 
     transitionProperty: 'all',
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard),
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration.gentle)),
     '*': {
       transitionProperty: 'color, fill',
-      transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+      transitionTimingFunction: castWebType(theme.motion.easing.standard),
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
     },
   };
@@ -106,6 +108,7 @@ const TabItem = ({
   isDisabled = false,
   href,
   onClick,
+  ...rest
 }: TabItemProps): React.ReactElement => {
   const {
     size,
@@ -157,17 +160,22 @@ const TabItem = ({
             controls: panelId,
           })}
           {...metaAttribute({ name: MetaConstants.TabItem })}
+          {...makeAnalyticsAttribute(rest)}
         >
           {Leading ? (
             <Leading size={iconSizeMap[size!]} color={iconColor[selectedState][interaction]} />
           ) : null}
-          <Text
-            color={textColor[selectedState][interaction]}
-            size={size === 'medium' ? 'medium' : 'large'}
-            weight="semibold"
-          >
-            {children}
-          </Text>
+
+          {children ? (
+            <Text
+              color={textColor[selectedState][interaction]}
+              size={size === 'medium' ? 'medium' : 'large'}
+              weight="semibold"
+            >
+              {children}
+            </Text>
+          ) : null}
+
           {validatedTrailingComponent}
         </StyledTabButton>
       }

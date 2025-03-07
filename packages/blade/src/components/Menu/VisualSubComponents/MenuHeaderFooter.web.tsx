@@ -8,6 +8,7 @@ import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute/metaConstants';
 import { Box } from '~components/Box';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _MenuHeader = ({
   title,
@@ -16,6 +17,7 @@ const _MenuHeader = ({
   titleSuffix,
   trailing,
   testID,
+  ...rest
 }: MenuHeaderProps): React.ReactElement => {
   return (
     <Box marginBottom="spacing.3">
@@ -35,6 +37,7 @@ const _MenuHeader = ({
         marginTop="spacing.0"
         marginBottom={headerMarginBottom}
         showDivider={false}
+        {...makeAnalyticsAttribute(rest)}
       />
       <MenuDivider />
     </Box>
@@ -45,7 +48,7 @@ const MenuHeader = assignWithoutSideEffects(_MenuHeader, {
   componentId: 'MenuHeader',
 });
 
-const _MenuFooter = ({ children, testID }: MenuFooterProps): React.ReactElement => {
+const _MenuFooter = ({ children, testID, ...rest }: MenuFooterProps): React.ReactElement => {
   return (
     <Box marginTop="spacing.3">
       <MenuDivider />
@@ -54,6 +57,7 @@ const _MenuFooter = ({ children, testID }: MenuFooterProps): React.ReactElement 
         showDivider={false}
         padding={[footerPaddingTop, overlayPaddingX, 'spacing.0', overlayPaddingX]}
         testID={testID}
+        {...makeAnalyticsAttribute(rest)}
       >
         {children}
       </BaseFooter>

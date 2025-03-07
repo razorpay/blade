@@ -13,7 +13,7 @@ const SingleFileUploadStory = `
   } from '@razorpay/blade/components';
   import React, { useState } from 'react';
 
-function App(): React.ReactElement {
+function App() {
     const [selectedFile, setSelectedFile] = useState<BladeFile>();
     const [isLoading, setIsLoading] = useState(false);
     const [responseData, setResponseData] = useState<{
@@ -132,7 +132,7 @@ const MultiFileUploadStory = `
   } from '@razorpay/blade/components';
   import React, { useState } from 'react';
   
-  function App(): React.ReactElement {
+  function App() {
     const [selectedFiles, setSelectedFiles] = useState<BladeFileList>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [responseData, setResponseData] = useState<
@@ -295,7 +295,7 @@ import {
   } from '@razorpay/blade/components';
   import React, { useState } from 'react';
 
-  function App(): React.ReactElement {
+  function App() {
     const [productName, setProductName] = useState<string>();
     const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>([]);
     const [responseData, setResponseData] = useState([]);
@@ -453,7 +453,7 @@ const AutoFileUploadWithProgressStory = `
   } from '@razorpay/blade/components';
   import React, { useState } from 'react';
   
-  function App(): React.ReactElement {
+  function App() {
     const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>();
     const [productName, setProductName] = useState<string | undefined>();
     const [responseData, setResponseData] = useState([]);
@@ -650,7 +650,7 @@ import {
   } from '@razorpay/blade/components';
   import React, { useState } from 'react';
   
-  function App(): React.ReactElement {
+  function App() {
     const [productName, setProductName] = useState<string>();
     const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>([]);
     const [responseData, setResponseData] = useState([]);

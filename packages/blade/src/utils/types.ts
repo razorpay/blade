@@ -138,10 +138,24 @@ type ContainerElementType = Platform.Select<{
   native: View;
 }>;
 
+type DataAnalyticsKey = `data-analytics-${string}`;
+
+/**
+ * This type is used to add data-analytics attributes to components.
+ * This is used to track user interactions on the components.
+ * The key is always `data-analytics-` followed by the attribute name.
+ * eg: `data-analytics-action="click"`
+ * eg: `data-analytics-section="header"`
+ */
+type DataAnalyticsAttribute = {
+  [key: DataAnalyticsKey]: string;
+};
+
 export type {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
   DotNotationSpacingStringToken,
+  DataAnalyticsAttribute,
   KeysRequired,
   StringChildrenType,
   StringWithAutocomplete,
