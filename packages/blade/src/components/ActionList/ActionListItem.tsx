@@ -256,13 +256,11 @@ const BaseMenuLeadingItem = ({
   leading,
   selectionType,
   isDisabled,
-  key,
 }: {
   isSelected?: boolean;
   leading?: React.ReactNode;
   selectionType: string | undefined;
   isDisabled?: boolean;
-  key: string;
 }): React.ReactElement | null => {
   if (selectionType === 'multiple') {
     return (
@@ -273,7 +271,7 @@ const BaseMenuLeadingItem = ({
           hidden: true,
         })}
       >
-        <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled} key={key}>
+        <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
           {/*
         Checkbox requires children. Didn't want to make it optional because its helpful for consumers
         But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
