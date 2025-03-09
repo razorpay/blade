@@ -263,7 +263,7 @@ const BaseMenuLeadingItem = ({
   selectionType: string | undefined;
   isDisabled?: boolean;
   key: string;
-}): React.ReactNode => {
+}): React.ReactElement | null => {
   if (selectionType === 'multiple') {
     return (
       <BaseBox
@@ -283,7 +283,7 @@ const BaseMenuLeadingItem = ({
       </BaseBox>
     );
   }
-  return leading;
+  return React.isValidElement(leading) ? leading : null;
 };
 
 type ClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;

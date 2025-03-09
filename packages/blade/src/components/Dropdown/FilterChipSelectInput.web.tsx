@@ -14,18 +14,12 @@ import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
-  | 'onKeyDown'
-  | 'value'
-  | 'onClearButtonClick'
-  | 'label'
-  | 'testID'
-  | 'onClick'
-  | 'selectionType'
-  | 'onBlur'
+  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur'
 > & {
   accessibilityLabel?: string;
   onChange?: (props: { name: string; values: string[] }) => void;
   name?: string;
+  onClearButtonClick?: (props: { name: string; values: string[] }) => void;
 } & DataAnalyticsAttribute;
 
 const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactElement => {
@@ -100,7 +94,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   };
 
   const handleClearButtonClick = (): void => {
-    props.onClearButtonClick?.({ value: value ?? '' });
+    props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
     if (isUnControlled) {
       setUncontrolledInputValue([]);
       setSelectedIndices([]);
