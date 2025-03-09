@@ -5,7 +5,7 @@ type ListViewCommonProps = {
   children: React.ReactNode;
 };
 
-type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute & ListViewCommonProps;
+type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute;
 
 type FilterChipGroupProps = TestID &
   DataAnalyticsAttribute & {
