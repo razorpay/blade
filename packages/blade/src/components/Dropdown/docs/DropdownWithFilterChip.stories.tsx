@@ -3,6 +3,9 @@ import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownOverlay } from '..';
 import { FilterChipSelectInput } from '../FilterChipSelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
+import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Filter Chip',
@@ -121,6 +124,55 @@ export const SelectionTypeMultiple = (): React.ReactElement => {
         </ActionList>
       </DropdownOverlay>
     </Dropdown>
+  );
+};
+
+export const UncontrolledFilterChipSelectInput = (): React.ReactElement => {
+  return (
+    <Box>
+      <Text size="small" weight="semibold" color="interactive.text.primary.normal">
+        Uncontrolled Filter Chip Select Input - Single
+      </Text>
+      <Dropdown selectionType="single">
+        <FilterChipSelectInput
+          label="Filter Chip"
+          onChange={(value) => {
+            console.log('value', value);
+          }}
+          onClearButtonClick={(value) => {
+            console.log('value', value);
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Latest Added" value="latest-added" />
+            <ActionListItem title="Latest Invoice" value="latest-invoice" />
+            <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Text size="small" weight="semibold" color="interactive.text.primary.normal">
+        Uncontrolled Filter Chip Select Input - Multiple
+      </Text>
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput
+          label="Filter Chip"
+          onChange={(value) => {
+            console.log('value', value);
+          }}
+          onClearButtonClick={(value) => {
+            console.log('value', value);
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Latest Added" value="latest-added" />
+            <ActionListItem title="Latest Invoice" value="latest-invoice" />
+            <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 

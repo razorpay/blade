@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -9,6 +9,8 @@ import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseFilterChipProps } from '~components/FilterChip/types';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import { useId } from '~utils/useId';
+import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
@@ -22,20 +24,31 @@ type FilterChipSelectInputProps = Pick<
   | 'onBlur'
 > & {
   accessibilityLabel?: string;
+  onChange?: (props: { name: string; values: string[] }) => void;
+  name?: string;
 } & DataAnalyticsAttribute;
 
-const _FilterChipSelectInput = ({
-  onClick,
-  onBlur,
-  onKeyDown,
-  accessibilityLabel,
-  testID,
-  value,
-  onClearButtonClick,
-  label,
-  ...rest
-}: FilterChipSelectInputProps): React.ReactElement => {
+const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactElement => {
+  const idBase = useId('filter-chip-select-input');
   const {
+    onClick,
+    onBlur,
+    onKeyDown,
+    accessibilityLabel,
+    testID,
+    value,
+    onClearButtonClick,
+    label,
+    onChange,
+    name,
+    ...rest
+  } = props;
+  const [uncontrolledInputValue, setUncontrolledInputValue] = React.useState<string[]>([]);
+  const isFirstRender = useFirstRender();
+
+  const {
+    options,
+    selectedIndices,
     onTriggerClick,
     onTriggerKeydown,
     dropdownBaseId,
@@ -44,13 +57,74 @@ const _FilterChipSelectInput = ({
     hasFooterAction,
     triggererRef,
     selectionType,
+    isControlled,
+    setHasUnControlledFilterChipSelectInput,
+    setSelectedIndices,
+    controlledValueIndices,
+    changeCallbackTriggerer,
   } = useDropdown();
+
+  const isUnControlled = options.length > 0 && props.value === undefined;
+
+  useEffect(() => {
+    if (isUnControlled) {
+      setHasUnControlledFilterChipSelectInput(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUnControlled]);
+
+  const getValuesArrayFromIndices = (): string[] => {
+    let indices: number[] = [];
+    if (isControlled) {
+      indices = controlledValueIndices;
+    } else {
+      indices = selectedIndices;
+    }
+
+    return indices.map((selectionIndex) => options[selectionIndex].value);
+  };
+
+  const getTitleFromValue = (value: string): string => {
+    const option = options.find((option) => option.value === value);
+    return option ? option.title : '';
+  };
+
+  const getUnControlledFilterChipValue = (): string | string[] => {
+    if (selectionType === 'single') {
+      if (uncontrolledInputValue.length > 0) {
+        return getTitleFromValue(uncontrolledInputValue[0]);
+      }
+      return '';
+    }
+    return uncontrolledInputValue;
+  };
+
+  const handleClearButtonClick = (): void => {
+    props.onClearButtonClick?.({ value: value ?? '' });
+    if (isUnControlled) {
+      setUncontrolledInputValue([]);
+      setSelectedIndices([]);
+    }
+  };
+
+  useEffect(() => {
+    if (!isFirstRender) {
+      props.onChange?.({
+        name: props.name || idBase,
+        values: getValuesArrayFromIndices(),
+      });
+      if (isUnControlled) {
+        setUncontrolledInputValue(getValuesArrayFromIndices());
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changeCallbackTriggerer]);
 
   return (
     <BaseFilterChip
       label={label}
-      value={value}
-      onClearButtonClick={onClearButtonClick}
+      value={value ?? getUnControlledFilterChipValue()}
+      onClearButtonClick={handleClearButtonClick}
       selectionType={selectionType}
       {...rest}
       ref={triggererRef as any}

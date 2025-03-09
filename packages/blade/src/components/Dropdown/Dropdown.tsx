@@ -85,6 +85,10 @@ const _Dropdown = (
     hasAutoCompleteInBottomSheetHeader,
     setHasAutoCompleteInBottomSheetHeader,
   ] = React.useState(false);
+  const [
+    hasUnControlledFilterChipSelectInput,
+    setHasUnControlledFilterChipSelectInput,
+  ] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
   const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
     DropdownContextType['changeCallbackTriggerer']
@@ -199,6 +203,8 @@ const _Dropdown = (
       setHasFooterAction,
       hasAutoCompleteInBottomSheetHeader,
       setHasAutoCompleteInBottomSheetHeader,
+      hasUnControlledFilterChipSelectInput,
+      setHasUnControlledFilterChipSelectInput,
       dropdownTriggerer: dropdownTriggerer.current,
       changeCallbackTriggerer,
       setChangeCallbackTriggerer,
