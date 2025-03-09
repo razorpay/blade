@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import dayjs from 'dayjs';
 import React from 'react';
-import type { CalendarLevel } from '@mantine/dates';
+import type { CalendarLevel, DatesRangeValue } from '@mantine/dates';
 import { useDatesContext, DatePicker } from '@mantine/dates';
 import type { CalendarProps, DateSelectionType, PickerType, DateValue } from './types';
 import { CalendarHeader } from './CalendarHeader';
@@ -29,12 +29,14 @@ const Calendar = <Type extends DateSelectionType>({
   onPrevious,
   presets,
   showLevelChangeLink,
+  oldValue,
   ...props
 }: CalendarProps<Type> & {
   date?: Date;
   defaultDate?: Date;
   onDateChange?: (date: DateValue) => void;
   showLevelChangeLink?: boolean;
+  oldValue: DatesRangeValue | null;
 }): React.ReactElement => {
   const isRange = selectionType === 'range';
 
@@ -64,36 +66,47 @@ const Calendar = <Type extends DateSelectionType>({
 
   const dateContext = useDatesContext();
   const isMobile = useIsMobile();
-  const currentDate = _date ?? shiftTimezone('add', new Date());
+  const currentDate = () => {
+    if (_date) {
+      return _date;
+    }
+    if (Array.isArray(oldValue) && oldValue[1]) {
+      return oldValue[1];
+    }
+    if (!Array.isArray(oldValue) && oldValue) {
+      return oldValue;
+    }
+    return shiftTimezone('add', new Date());
+  };
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
 
   const handleNextMonth = () => {
-    const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();
+    const nextDate = dayjs(currentDate()).add(columnsToScroll, 'month').toDate();
     onNext?.({ date: nextDate, type: 'month' });
     setDate(nextDate);
   };
 
   const handlePreviousMonth = () => {
-    const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'month').toDate();
+    const nextDate = dayjs(currentDate()).subtract(columnsToScroll, 'month').toDate();
     onPrevious?.({ date: nextDate, type: 'month' });
     setDate(nextDate);
   };
 
   const handleNextYear = () => {
-    const nextDate = dayjs(currentDate).add(columnsToScroll, 'year').toDate();
+    const nextDate = dayjs(currentDate()).add(columnsToScroll, 'year').toDate();
     onNext?.({ date: nextDate, type: 'year' });
     setDate(nextDate);
   };
 
   const handlePreviousYear = () => {
-    const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'year').toDate();
+    const nextDate = dayjs(currentDate()).subtract(columnsToScroll, 'year').toDate();
     onPrevious?.({ date: nextDate, type: 'year' });
     setDate(nextDate);
   };
 
   const handleNextDecade = () => {
-    const nextDate = dayjs(currentDate)
+    const nextDate = dayjs(currentDate())
       .add(10 * columnsToScroll, 'year')
       .toDate();
     onNext?.({ date: nextDate, type: 'decade' });
@@ -101,7 +114,7 @@ const Calendar = <Type extends DateSelectionType>({
   };
 
   const handlePreviousDecade = () => {
-    const nextDate = dayjs(currentDate)
+    const nextDate = dayjs(currentDate())
       .subtract(10 * columnsToScroll, 'year')
       .toDate();
     onPrevious?.({ date: nextDate, type: 'decade' });
@@ -118,7 +131,7 @@ const Calendar = <Type extends DateSelectionType>({
     >
       <CalendarHeader
         isRange={isRange}
-        date={currentDate}
+        date={currentDate()}
         onLevelChange={(level) => setLevel(() => level)}
         pickerType={levelToPicker[level] as PickerType}
         onNextMonth={handleNextMonth}
@@ -129,11 +142,11 @@ const Calendar = <Type extends DateSelectionType>({
         onPreviousYear={handlePreviousYear}
         showLevelChangeLink={showLevelChangeLink}
       />
-      <CalendarGradientStyles isRange={isRange} date={currentDate}>
+      <CalendarGradientStyles isRange={isRange} date={currentDate()}>
         <DatePicker
           withCellSpacing={false}
           type={isRange ? 'range' : 'default'}
-          date={_date}
+          date={currentDate()}
           locale={dateContext.locale}
           level={level}
           onDateChange={setDate}
