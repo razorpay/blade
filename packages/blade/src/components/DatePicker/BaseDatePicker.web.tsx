@@ -39,7 +39,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 
-const DatePickerContainer = <Type extends DateSelectionType = 'single'>({
+const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
   allowSingleDateInRange,
   value,
@@ -443,4 +443,4 @@ const DatePickerContainer = <Type extends DateSelectionType = 'single'>({
   );
 };
 
-export { DatePickerContainer };
+export { BaseDatePicker };
