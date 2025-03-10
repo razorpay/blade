@@ -210,6 +210,11 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     placeholder?: string;
   };
 
+type DatePickerFilterChipProps = DatePickerInputProps;
+
+type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'label'> & {
+  label: string;
+};
 export type {
   CalendarProps,
   DatePickerProps,
@@ -218,4 +223,6 @@ export type {
   DateValue,
   DateSelectionType,
   DatePickerInputProps,
+  DatePickerFilterChipProps,
+  FilterChipDatePickerProps,
 };
