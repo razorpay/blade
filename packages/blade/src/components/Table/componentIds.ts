@@ -12,6 +12,7 @@ const ComponentIds = {
   TableFooter: 'TableFooter',
   TableFooterRow: 'TableFooterRow',
   TableFooterCell: 'TableFooterCell',
+  VirtualizedTable: 'VirtualizedTable',
   TablePagination: 'TablePagination',
 };
 

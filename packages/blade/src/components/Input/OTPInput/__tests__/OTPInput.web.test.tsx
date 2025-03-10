@@ -247,10 +247,10 @@ describe('<OTPInput />', () => {
     expect(allInputs[5]).toHaveFocus();
     await user.keyboard('{Backspace}');
     expect(allInputs[5]).toHaveValue('');
-    expect(allInputs[4]).toHaveFocus();
+    expect(allInputs[5]).toHaveFocus();
     await user.keyboard('{Delete}');
     expect(allInputs[4]).toHaveValue('');
-    expect(allInputs[3]).toHaveFocus();
+    expect(allInputs[4]).toHaveFocus();
   });
 
   it('should pass a11y', async () => {
