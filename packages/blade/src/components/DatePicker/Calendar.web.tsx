@@ -66,7 +66,7 @@ const Calendar = <Type extends DateSelectionType>({
 
   const dateContext = useDatesContext();
   const isMobile = useIsMobile();
-  const currentDate = () => {
+  const currentDate = React.useMemo(() => {
     if (_date) {
       return _date;
     }
@@ -77,36 +77,36 @@ const Calendar = <Type extends DateSelectionType>({
       return oldValue;
     }
     return shiftTimezone('add', new Date());
-  };
+  }, [_date, oldValue]);
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
 
   const handleNextMonth = () => {
-    const nextDate = dayjs(currentDate()).add(columnsToScroll, 'month').toDate();
+    const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();
     onNext?.({ date: nextDate, type: 'month' });
     setDate(nextDate);
   };
 
   const handlePreviousMonth = () => {
-    const nextDate = dayjs(currentDate()).subtract(columnsToScroll, 'month').toDate();
+    const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'month').toDate();
     onPrevious?.({ date: nextDate, type: 'month' });
     setDate(nextDate);
   };
 
   const handleNextYear = () => {
-    const nextDate = dayjs(currentDate()).add(columnsToScroll, 'year').toDate();
+    const nextDate = dayjs(currentDate).add(columnsToScroll, 'year').toDate();
     onNext?.({ date: nextDate, type: 'year' });
     setDate(nextDate);
   };
 
   const handlePreviousYear = () => {
-    const nextDate = dayjs(currentDate()).subtract(columnsToScroll, 'year').toDate();
+    const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'year').toDate();
     onPrevious?.({ date: nextDate, type: 'year' });
     setDate(nextDate);
   };
 
   const handleNextDecade = () => {
-    const nextDate = dayjs(currentDate())
+    const nextDate = dayjs(currentDate)
       .add(10 * columnsToScroll, 'year')
       .toDate();
     onNext?.({ date: nextDate, type: 'decade' });
@@ -114,7 +114,7 @@ const Calendar = <Type extends DateSelectionType>({
   };
 
   const handlePreviousDecade = () => {
-    const nextDate = dayjs(currentDate())
+    const nextDate = dayjs(currentDate)
       .subtract(10 * columnsToScroll, 'year')
       .toDate();
     onPrevious?.({ date: nextDate, type: 'decade' });
@@ -131,7 +131,7 @@ const Calendar = <Type extends DateSelectionType>({
     >
       <CalendarHeader
         isRange={isRange}
-        date={currentDate()}
+        date={currentDate}
         onLevelChange={(level) => setLevel(() => level)}
         pickerType={levelToPicker[level] as PickerType}
         onNextMonth={handleNextMonth}
@@ -142,11 +142,11 @@ const Calendar = <Type extends DateSelectionType>({
         onPreviousYear={handlePreviousYear}
         showLevelChangeLink={showLevelChangeLink}
       />
-      <CalendarGradientStyles isRange={isRange} date={currentDate()}>
+      <CalendarGradientStyles isRange={isRange} date={currentDate}>
         <DatePicker
           withCellSpacing={false}
           type={isRange ? 'range' : 'default'}
-          date={currentDate()}
+          date={currentDate}
           locale={dateContext.locale}
           level={level}
           onDateChange={setDate}
