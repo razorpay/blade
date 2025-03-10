@@ -70,8 +70,8 @@ const Calendar = <Type extends DateSelectionType>({
     if (_date) {
       return _date;
     }
-    if (Array.isArray(oldValue) && oldValue[1]) {
-      return oldValue[1];
+    if (Array.isArray(oldValue) && oldValue[0]) {
+      return oldValue[0];
     }
     if (!Array.isArray(oldValue) && oldValue) {
       return oldValue;
