@@ -1184,7 +1184,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               {
                                 "display": "flex",
                                 "flexDirection": "column",
-                                "paddingLeft": 0,
+                                "paddingLeft": 8,
                                 "paddingRight": 8,
                               },
                             ]
@@ -1363,7 +1363,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               {
                                 "display": "flex",
                                 "flexDirection": "column",
-                                "paddingLeft": 0,
+                                "paddingLeft": 8,
                                 "paddingRight": 8,
                               },
                             ]

@@ -120,7 +120,11 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
     selectionType === 'multiple' ? Array.isArray(value) && value.length > 0 : !!value;
 
   return (
-    <StyledFilterChip $isDisabled={isDisabled} $isSelected={isSelected}>
+    <StyledFilterChip
+      $isDisabled={isDisabled}
+      $isSelected={isSelected}
+      ref={ref as React.Ref<HTMLDivElement>}
+    >
       <StyledFilterTrigger
         $isSelected={isSelected}
         disabled={isDisabled}
@@ -140,7 +144,6 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
         {...metaAttribute({ testID: rest.testID })}
-        ref={ref as React.Ref<HTMLButtonElement>}
       >
         <Box display="flex" gap="spacing.2" whiteSpace="nowrap">
           <Text size="small" weight="medium" color="currentColor" truncateAfterLines={1}>
