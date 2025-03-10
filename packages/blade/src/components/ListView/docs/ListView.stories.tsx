@@ -966,7 +966,6 @@ const ListViewFullExample: StoryFn<typeof ListView> = (args): React.ReactElement
                         </QuickFilterGroup>
                       }
                       onSearchChange={(value) => console.log(value)}
-                      numberOfSelectedFilters={2}
                     >
                       <FilterChipGroup
                         onClearButtonClick={() => {

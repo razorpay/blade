@@ -10,6 +10,7 @@ import { getActionListContainerRole } from '~components/ActionList/getA11yRoles'
 import type { BaseFilterChipProps } from '~components/FilterChip/types';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { useId } from '~utils/useId';
+import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
@@ -60,6 +61,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   const isUnControlled = options.length > 0 && props.value === undefined;
 
+  const { setSelectedFilters, clearFiltersCallbackTriggerer } = useListViewFilterContext();
+
   useEffect(() => {
     if (isUnControlled) {
       setHasUnControlledFilterChipSelectInput(true);
@@ -95,11 +98,20 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
+
     if (isUnControlled) {
       setUncontrolledInputValue([]);
       setSelectedIndices([]);
     }
+    setSelectedFilters((prev) => {
+      return prev.filter((filter) => filter !== label);
+    });
   };
+
+  useEffect(() => {
+    handleClearButtonClick();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clearFiltersCallbackTriggerer]);
 
   useEffect(() => {
     if (!isFirstRender) {
@@ -110,6 +122,22 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       if (isUnControlled) {
         setUncontrolledInputValue(getValuesArrayFromIndices());
       }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changeCallbackTriggerer]);
+  useEffect(() => {
+    const isValueEmpty = Array.isArray(value) ? value.length === 0 : !value;
+    if (!isFirstRender && !isValueEmpty) {
+      setSelectedFilters((prev) => {
+        if (!prev.includes(label)) {
+          return [...prev, label];
+        }
+        return prev;
+      });
+    } else if (!isFirstRender && isValueEmpty) {
+      setSelectedFilters((prev) => {
+        return prev.filter((filter) => filter !== label);
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);

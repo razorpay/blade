@@ -33,10 +33,14 @@ type ListViewFiltersCommonProps = {
 type ListViewFilterProps = ListViewFiltersCommonProps &
   TestID &
   DataAnalyticsAttribute &
-  ListViewCommonProps & {
-    /**
-     *  Number of Selected Filters
-     */
-    numberOfSelectedFilters: number;
-  };
-export type { ListViewProps, ListViewFilterProps, FilterChipGroupProps };
+  ListViewCommonProps;
+
+type ListViewContextType = {
+  /**
+   *  Number of Selected Filters
+   */
+  setSelectedFilters: React.Dispatch<React.SetStateAction<string[]>>;
+  clearFiltersCallbackTriggerer: number;
+  setClearFiltersCallbackTriggerer: React.Dispatch<React.SetStateAction<number>>;
+};
+export type { ListViewContextType, ListViewProps, ListViewFilterProps, FilterChipGroupProps };

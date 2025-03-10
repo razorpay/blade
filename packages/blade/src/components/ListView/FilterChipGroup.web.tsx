@@ -1,4 +1,5 @@
 import type { FilterChipGroupProps } from './types';
+import { useListViewFilterContext } from './ListViewFiltersContext.web';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
@@ -12,6 +13,11 @@ const FilterChipGroup = ({
   clearButtonText,
   ...rest
 }: FilterChipGroupProps): React.ReactElement => {
+  const { setClearFiltersCallbackTriggerer } = useListViewFilterContext();
+  const handleClearButtonClick = (): void => {
+    onClearButtonClick?.();
+    setClearFiltersCallbackTriggerer((prev) => prev + 1);
+  };
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.ListView, testID })}
@@ -27,7 +33,7 @@ const FilterChipGroup = ({
       width="100%"
     >
       {children}
-      {showClearButton ? <Link onClick={onClearButtonClick}>{clearButtonText}</Link> : null}
+      {showClearButton ? <Link onClick={handleClearButtonClick}>{clearButtonText}</Link> : null}
     </BaseBox>
   );
 };
