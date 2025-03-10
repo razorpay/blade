@@ -98,6 +98,11 @@ type DropdownContextType = {
   setHasFooterAction: (value: boolean) => void;
 
   /**
+   * Whether the FilterChipSelectInput is uncontrolled
+   */
+  hasUnControlledFilterChipSelectInput: boolean;
+  setHasUnControlledFilterChipSelectInput: (value: boolean) => void;
+  /**
    * Apart from dropdownTriggerer prop, we also set this boolean because in BottomSheet, the initial trigger can be Select but also have autocomplete inside of it
    */
   hasAutoCompleteInBottomSheetHeader: boolean;
@@ -151,6 +156,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setChangeCallbackTriggerer: noop,
   isControlled: false,
   setIsControlled: noop,
+  hasUnControlledFilterChipSelectInput: false,
+  setHasUnControlledFilterChipSelectInput: noop,
   dropdownBaseId: '',
   actionListItemRef: {
     current: null,
