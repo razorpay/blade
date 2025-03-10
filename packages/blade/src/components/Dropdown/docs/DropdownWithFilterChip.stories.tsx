@@ -5,7 +5,6 @@ import { FilterChipSelectInput } from '../FilterChipSelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
-import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Filter Chip',
