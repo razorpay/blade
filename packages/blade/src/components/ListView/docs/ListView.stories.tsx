@@ -125,7 +125,6 @@ const Page = (): React.ReactElement => {
                      </QuickFilterGroup>
                    }
                    onSearchChange={(value) => console.log(value)}
-                   numberOfSelectedFilters={2}
                  >
                    <FilterChipGroup
                      onClearButtonClick={() => {
@@ -497,7 +496,6 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
             </QuickFilterGroup>
           }
           onSearchChange={(value) => console.log(value)}
-          numberOfSelectedFilters={2}
         >
           <FilterChipGroup
             onClearButtonClick={() => {
