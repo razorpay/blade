@@ -70,10 +70,11 @@ const Calendar = <Type extends DateSelectionType>({
     if (_date) {
       return _date;
     }
-    if (Array.isArray(oldValue) && oldValue[0]) {
+    const isRangeSelection = Array.isArray(oldValue);
+    if (isRangeSelection && oldValue[0]) {
       return oldValue[0];
     }
-    if (!Array.isArray(oldValue) && oldValue) {
+    if (!isRangeSelection && oldValue) {
       return oldValue;
     }
     return shiftTimezone('add', new Date());
