@@ -3,9 +3,9 @@ import React from 'react';
 import type { StoryFn } from '@storybook/react';
 import { within, userEvent, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import { Dropdown, DropdownOverlay, DropdownFooter } from '../';
+import { Dropdown, DropdownOverlay, DropdownFooter, DropdownHeader } from '../';
 import type { DropdownProps } from '../';
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 
@@ -309,6 +309,49 @@ ControlledDropdownMultiSelect.play = async () => {
   // dropdown open test
   await userEvent.click(getByRole('button', { name: 'Open Dropdown' }));
   await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
+};
+
+export const DropdownWithSearch: StoryFn<typeof Dropdown> = (): React.ReactElement => {
+  return (
+    <Dropdown>
+      <SelectInput label="Fruits" />
+      <DropdownOverlay testID="dropdown-overlay">
+        <DropdownHeader>
+          <AutoComplete label="Fruits" />
+        </DropdownHeader>
+        <ActionList>
+          <ActionListItem title="Apple" value="apple" />
+          <ActionListItem title="Mango" value="mango" />
+        </ActionList>
+        <DropdownFooter>
+          {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
+          <Button marginLeft="spacing.4" variant="primary">
+            Next
+          </Button>
+        </DropdownFooter>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+DropdownWithSearch.play = async () => {
+  const { getByRole, getAllByRole } = within(document.body);
+  const selectInput = getByRole('combobox', { name: 'Fruits' });
+  await userEvent.click(selectInput);
+  await waitFor(() => expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible());
+  const autoComplete = getByRole('searchbox', { name: 'Fruits' });
+  await userEvent.click(autoComplete);
+  await expect(getAllByRole('option')).toHaveLength(2);
+  await userEvent.keyboard('a');
+  await userEvent.keyboard('p');
+  await expect(autoComplete).toHaveValue('ap');
+  await expect(getAllByRole('option')).toHaveLength(1);
+  await userEvent.keyboard('{Enter}');
+  await expect(selectInput).toHaveTextContent('Apple');
+  await userEvent.click(selectInput);
+  await expect(autoComplete).toHaveValue('');
+  await expect(selectInput).toHaveTextContent('Apple');
+  await userEvent.click(selectInput);
 };
 
 export default {

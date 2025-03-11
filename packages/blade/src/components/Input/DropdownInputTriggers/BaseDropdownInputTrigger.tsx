@@ -313,6 +313,7 @@ const _BaseDropdownInputTrigger = (
       // a11y Props
       id={`${dropdownBaseId}-trigger`}
       labelId={`${dropdownBaseId}-label`}
+      role={props.isSelectInput ? 'combobox' : 'searchbox'}
       hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
       isPopupExpanded={isOpen}
       activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}

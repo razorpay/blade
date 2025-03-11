@@ -343,6 +343,8 @@ type BaseInputCommonProps = FormInputLabelProps &
      * Hides the form hints and shows them as tooltip of trailing
      */
     showHintsAsTooltip?: boolean;
+
+    role?: AriaAttributes['role'];
   } & TestID &
   Platform.Select<{
     native: {
@@ -839,6 +841,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isTableInputCell = false,
     showHintsAsTooltip = false,
     _motionMeta,
+    role,
     ...rest
   },
   ref,
@@ -854,6 +857,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   );
   const [showAllTagsWithAnimation, setShowAllTagsWithAnimation] = React.useState(false);
   const isReactNative = getPlatformType() === 'react-native';
+  const defaultRole = hasPopup ? 'combobox' : undefined;
 
   React.useEffect(() => {
     if (showAllTags) {
@@ -907,7 +911,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     hasPopup,
     expanded: hasPopup ? isPopupExpanded : undefined,
     controls: hasPopup ? popupId : undefined,
-    role: hasPopup ? 'combobox' : undefined,
+    role: role ?? defaultRole,
     activeDescendant,
   });
 

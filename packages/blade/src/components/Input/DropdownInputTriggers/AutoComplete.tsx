@@ -116,6 +116,7 @@ const useAutoComplete = ({
   };
 
   const onSelectionChange: BaseDropdownInputTriggerProps['onChange'] = ({ values }) => {
+    console.log('selection change', values);
     if (selectionType === 'multiple') {
       setInputValue('');
       props.onInputValueChange?.({ name: props.name, value: '' });
@@ -128,7 +129,9 @@ const useAutoComplete = ({
         value: displayText,
       });
       // Use displayText as inputValue only if its not controlled by user
-      if (typeof props.value === 'undefined') {
+      if (hasAutoCompleteInHeader) {
+        setInputValue('');
+      } else if (typeof props.value === 'undefined') {
         setInputValue(displayText ?? '');
       }
     }
