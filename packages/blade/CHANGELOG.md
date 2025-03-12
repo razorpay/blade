@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.15.1
+
+### Patch Changes
+
+- 1419c1f5: fix(blade): focus on selected date by default in datepicker
+
 ## 12.15.0
 
 ### Minor Changes
