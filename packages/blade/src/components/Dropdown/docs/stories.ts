@@ -523,7 +523,7 @@ const WithControlledSelectStory = `
     Button,
   } from '@razorpay/blade/components';
 
-  function App(args): React.ReactElement {
+  function App(args) {
     const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
   
     return (
@@ -566,7 +566,7 @@ const WithControlledMultiSelectStory = `
     Button,
   } from '@razorpay/blade/components';
 
-  function App(args): React.ReactElement {
+  function App(args) {
     const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);  
 
     return (
@@ -678,7 +678,7 @@ const WithSimpleMenuStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App (): React.ReactElement {
+  function App () {
     return (
       <Box minHeight="200px" width={{ base: '100%', m: '500px' }}>
         <Dropdown>
@@ -738,7 +738,7 @@ const WithLinkStory = `
     Text,
   } from '@razorpay/blade/components';
 
-  function App (): React.ReactElement {
+  function App () {
     const [status, setStatus] = React.useState<string | undefined>('latest-added');
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   
@@ -814,7 +814,7 @@ const WithIconButtonStory = `
     Text,
   } from '@razorpay/blade/components';
 
-  function App (): React.ReactElement {
+  function App () {
     const [status, setStatus] = React.useState<string | undefined>('latest-added');
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   
@@ -1033,7 +1033,7 @@ const WithAutoPositioningMenuStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App (): React.ReactElement {
+  function App () {
     return (
       <Box>
         <Box display="inline-flex" position="fixed" left="spacing.5" top="spacing.5">
@@ -1167,7 +1167,7 @@ const WithTooltipStory = `
     Text,
   } from '@razorpay/blade/components';
 
-  function App (): React.ReactElement {
+  function App () {
     const [status, setStatus] = React.useState<string | undefined>('latest-added');
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   
