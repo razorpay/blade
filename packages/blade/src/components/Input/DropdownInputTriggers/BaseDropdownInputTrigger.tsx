@@ -314,10 +314,14 @@ const _BaseDropdownInputTrigger = (
       id={`${dropdownBaseId}-trigger`}
       labelId={`${dropdownBaseId}-label`}
       role={isAutoCompleteInHeader ? 'searchbox' : 'combobox'}
-      hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
+      hasPopup={
+        isAutoCompleteInHeader
+          ? false
+          : getActionListContainerRole(hasFooterAction, dropdownTriggerer)
+      }
       isPopupExpanded={isOpen}
       activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
-      popupId={`${dropdownBaseId}-actionlist`}
+      popupId={isAutoCompleteInHeader ? undefined : `${dropdownBaseId}-actionlist`}
       // Special Props for Unique behaviour between Select and AutoComplete
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}

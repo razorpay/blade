@@ -2220,11 +2220,9 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                                 >
                                   <input
                                     aria-activedescendant="dropdown-123-0"
-                                    aria-controls="dropdown-123-actionlist"
                                     aria-describedby=""
                                     aria-disabled="false"
-                                    aria-expanded="true"
-                                    aria-haspopup="listbox"
+                                    aria-haspopup="false"
                                     aria-invalid="false"
                                     aria-required="false"
                                     autocomplete="off"
