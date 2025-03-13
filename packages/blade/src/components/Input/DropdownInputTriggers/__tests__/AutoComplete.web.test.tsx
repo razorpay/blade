@@ -272,7 +272,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
   it('should handle AutoComplete behaviour in single select', async () => {
     const user = userEvent.setup();
 
-    const { getByRole, queryByRole, getByLabelText, queryByTestId, getByTestId } = renderWithTheme(
+    const { getByRole, queryByRole, getByLabelText, queryByTestId } = renderWithTheme(
       <Dropdown>
         <SelectInput testID="select" label="Cities" />
         <BottomSheet>
