@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.16.0
+
+### Minor Changes
+
+- 87d37ebf: feat(blade): add table background color prop
+
 ## 12.15.1
 
 ### Patch Changes
