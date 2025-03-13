@@ -313,7 +313,7 @@ const _BaseDropdownInputTrigger = (
       // a11y Props
       id={`${dropdownBaseId}-trigger`}
       labelId={`${dropdownBaseId}-label`}
-      role={props.isSelectInput ? 'combobox' : 'searchbox'}
+      role={isAutoCompleteInHeader ? 'searchbox' : 'combobox'}
       hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
       isPopupExpanded={isOpen}
       activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
@@ -338,6 +338,8 @@ const _BaseDropdownInputTrigger = (
         )
       }
       {...(isInsideTableEditableCell ? tableInputProps : undefined)}
+      // When AutoComplete is present inside DropdownOverlay, the floating ui adds tabIndex -1 internally. We override it with tabIndex 0 here
+      tabIndex={isAutoCompleteInHeader ? 0 : undefined}
     />
   );
 };

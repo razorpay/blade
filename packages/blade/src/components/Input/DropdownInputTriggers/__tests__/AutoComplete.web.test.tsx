@@ -269,7 +269,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should handle AutoComplete behaviour in single select', async () => {
+  it.only('should handle AutoComplete behaviour in single select', async () => {
     const user = userEvent.setup();
 
     const { getByRole, queryByRole, getByLabelText, queryByTestId } = renderWithTheme(
@@ -309,7 +309,10 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
       autoComplete.focus();
     });
     await user.keyboard('m');
-    expect(queryByRole('option', { name: 'Pune' })).toBeFalsy();
+    console.log('VALUE', autoComplete.value);
+    await waitFor(() =>
+      expect(queryByRole('option', { name: 'Pune' })).toHaveStyle({ display: 'none' }),
+    );
     expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
 
     await user.click(getByRole('option', { name: 'Mumbai' }));

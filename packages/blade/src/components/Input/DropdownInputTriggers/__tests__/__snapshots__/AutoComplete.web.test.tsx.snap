@@ -526,7 +526,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
                       id="dropdown-123"
                       placeholder="Select Option"
                       role="combobox"
-                      tabindex="0"
                       type="text"
                       value=""
                     />
@@ -2234,7 +2233,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                                     data-blade-component="styled-base-input"
                                     id="dropdown-123"
                                     placeholder="Select Option"
-                                    role="combobox"
+                                    role="searchbox"
                                     tabindex="0"
                                     type="text"
                                     value=""
@@ -2975,7 +2974,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                       id="dropdown-123"
                       placeholder="Select Option"
                       role="combobox"
-                      tabindex="0"
                       type="text"
                       value=""
                     />
@@ -3612,7 +3610,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                       id="dropdown-123"
                       placeholder="Select Option"
                       role="combobox"
-                      tabindex="0"
                       type="text"
                       value=""
                     />

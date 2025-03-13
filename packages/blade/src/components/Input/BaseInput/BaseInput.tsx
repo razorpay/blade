@@ -345,6 +345,13 @@ type BaseInputCommonProps = FormInputLabelProps &
     showHintsAsTooltip?: boolean;
 
     role?: AriaAttributes['role'];
+
+    /**
+     * Tab Index of the input field
+     *
+     * @default undefined
+     */
+    tabIndex?: number;
   } & TestID &
   Platform.Select<{
     native: {
@@ -842,6 +849,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     showHintsAsTooltip = false,
     _motionMeta,
     role,
+    tabIndex,
     ...rest
   },
   ref,
@@ -1075,6 +1083,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 $size={size}
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
+                tabIndex={tabIndex}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                 {...makeAnalyticsAttribute(rest)}
               />
