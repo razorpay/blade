@@ -27,7 +27,6 @@ import {
 import { HomeIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { SearchInput } from '~components/Input/SearchInput';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With Select',
