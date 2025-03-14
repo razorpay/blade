@@ -39,8 +39,7 @@ type ListViewContextType = {
   /**
    *  Number of Selected Filters
    */
+  selectedFilters: string[];
   setSelectedFilters: React.Dispatch<React.SetStateAction<string[]>>;
-  clearFiltersCallbackTriggerer: number;
-  setClearFiltersCallbackTriggerer: React.Dispatch<React.SetStateAction<number>>;
 };
 export type { ListViewContextType, ListViewProps, ListViewFilterProps, FilterChipGroupProps };

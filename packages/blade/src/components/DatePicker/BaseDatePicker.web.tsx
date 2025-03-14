@@ -152,7 +152,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const currentDate = shiftTimezone('add', new Date());
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
-  const { setSelectedFilters, clearFiltersCallbackTriggerer } = useListViewFilterContext();
+  const { selectedFilters, setSelectedFilters } = useListViewFilterContext();
   let applyButtonDisabled = !hasBothDatesSelected;
   if (isSingle) {
     applyButtonDisabled = !Boolean(controlledValue);
@@ -201,9 +201,11 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   };
 
   useEffect(() => {
-    handleClear();
+    if (selectedFilters.length === 0) {
+      handleClear();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clearFiltersCallbackTriggerer]);
+  }, [selectedFilters.length]);
 
   const isMobile = useIsMobile();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);

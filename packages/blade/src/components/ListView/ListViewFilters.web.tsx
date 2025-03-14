@@ -18,14 +18,12 @@ const ListViewFilters = ({
 }: ListViewFilterProps): React.ReactElement => {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  const [clearFiltersCallbackTriggerer, setClearFiltersCallbackTriggerer] = useState<number>(0);
 
   return (
     <ListViewFiltersProvider
       value={{
+        selectedFilters,
         setSelectedFilters,
-        clearFiltersCallbackTriggerer,
-        setClearFiltersCallbackTriggerer,
       }}
     >
       <BaseBox>

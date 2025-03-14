@@ -61,7 +61,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   const isUnControlled = options.length > 0 && props.value === undefined;
 
-  const { setSelectedFilters, clearFiltersCallbackTriggerer } = useListViewFilterContext();
+  const { selectedFilters, setSelectedFilters } = useListViewFilterContext();
 
   useEffect(() => {
     if (isUnControlled) {
@@ -109,9 +109,11 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   };
 
   useEffect(() => {
-    handleClearButtonClick();
+    if (selectedFilters.length === 0) {
+      handleClearButtonClick();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clearFiltersCallbackTriggerer]);
+  }, [selectedFilters.length]);
 
   useEffect(() => {
     if (!isFirstRender) {

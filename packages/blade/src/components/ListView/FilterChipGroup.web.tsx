@@ -13,10 +13,10 @@ const FilterChipGroup = ({
   clearButtonText,
   ...rest
 }: FilterChipGroupProps): React.ReactElement => {
-  const { setClearFiltersCallbackTriggerer } = useListViewFilterContext();
+  const { setSelectedFilters } = useListViewFilterContext();
   const handleClearButtonClick = (): void => {
     onClearButtonClick?.();
-    setClearFiltersCallbackTriggerer((prev) => prev + 1);
+    setSelectedFilters([]);
   };
   return (
     <BaseBox
