@@ -20,7 +20,7 @@ const FilterChipGroup = ({
   };
   return (
     <BaseBox
-      {...metaAttribute({ name: MetaConstants.ListView, testID })}
+      {...metaAttribute({ name: MetaConstants.FilterChipGroup, testID })}
       {...makeAnalyticsAttribute(rest)}
       display="flex"
       padding="spacing.4"
