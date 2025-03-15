@@ -7,17 +7,16 @@ type ListViewCommonProps = {
 
 type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute;
 
-type ListViewFiltersCommonProps = {
+type ListViewFilterProps = {
   children: React.ReactNode;
   quickFilters: React.ReactNode;
   searchValue: string;
   searchValuePlaceholder?: string;
   searchName?: string;
   onSearchChange?: ({ name, value }: { name?: string; value?: string }) => void;
-};
-
-type ListViewFilterProps = ListViewFiltersCommonProps &
-  TestID &
+  showQuickFilters?: boolean;
+  onShowQuickFiltersChange?: (showQuickFilters: boolean) => void;
+} & TestID &
   DataAnalyticsAttribute &
   ListViewCommonProps;
 

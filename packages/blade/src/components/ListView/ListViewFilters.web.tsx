@@ -10,6 +10,7 @@ import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
 import { SearchInput } from '~components/Input/SearchInput';
 import { useId } from '~utils/useId';
+import { useControllableState } from '~utils/useControllable';
 
 const ListViewFilters = ({
   testID,
@@ -19,9 +20,15 @@ const ListViewFilters = ({
   searchValue,
   searchValuePlaceholder,
   searchName,
+  showQuickFilters,
+  onShowQuickFiltersChange,
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useControllableState({
+    defaultValue: showQuickFilters,
+    value: showQuickFilters,
+    onChange: onShowQuickFiltersChange,
+  });
   const [listViewSelectedFilters, setListViewSelectedFilters] = useState<string[]>([]);
   const searchId = useId('search-input');
   const searchNameValue = searchName || searchId;

@@ -1137,6 +1137,7 @@ FullExample.storyName = 'Full example';
 
 const ListViewControledTemplate: StoryFn<typeof ListView> = (args) => {
   const [value, setSelectedValue] = React.useState<string[]>([]);
+  const [showQuickFilters, setShowQuickFilters] = React.useState(true);
   const handleOnClick = (name: string): void => {
     if (value.includes(name)) {
       setSelectedValue(value.filter((val) => val !== name));
@@ -1150,6 +1151,8 @@ const ListViewControledTemplate: StoryFn<typeof ListView> = (args) => {
     <BrowserRouter>
       <ListView>
         <ListViewFilters
+          showQuickFilters={showQuickFilters}
+          onShowQuickFiltersChange={setShowQuickFilters}
           quickFilters={
             <QuickFilterGroup selectionType="single" defaultValue="Captured">
               <QuickFilter
