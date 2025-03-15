@@ -27,7 +27,10 @@ type FilterChipGroupProps = TestID &
 type ListViewFiltersCommonProps = {
   children: React.ReactNode;
   quickFilters: React.ReactNode;
-  onSearchChange: (value: string) => void;
+  searchValue: string;
+  searchValuePlaceholder?: string;
+  searchName?: string;
+  onSearchChange?: ({ name, value }: { name?: string; value?: string }) => void;
 };
 
 type ListViewFilterProps = ListViewFiltersCommonProps &
