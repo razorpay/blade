@@ -6,7 +6,6 @@ import storyRouterDecorator from 'storybook-react-router';
 import { ListView } from '../ListView';
 import type { ListViewProps } from '../types';
 import { ListViewFilters } from '../ListViewFilters';
-import { FilterChipGroup } from '../FilterChipGroup';
 import {
   TopNav,
   TopNavActions,
@@ -69,7 +68,12 @@ import { TableEditableCell } from '~components/Table/TableEditableCell';
 import { Amount } from '~components/Amount';
 import { QuickFilter, QuickFilterGroup } from '~components/QuickFilters';
 import { Counter } from '~components/Counter';
-import { FilterChipSelectInput, Dropdown, DropdownOverlay } from '~components/Dropdown';
+import {
+  FilterChipSelectInput,
+  Dropdown,
+  DropdownOverlay,
+  FilterChipGroup,
+} from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { FilterChipDatePicker } from '~components/DatePicker';
 import {
@@ -174,7 +178,7 @@ const Page = (): React.ReactElement => {
                      <FilterChipDatePicker label="Date" selectionType="range" />
                      <Dropdown selectionType="multiple">
                        <FilterChipSelectInput
-                         label="Filter Chip"
+                         label="Filter Chip - 2"
                          value={value}
                          onClearButtonClick={(value) => {
                            console.log('value', value);
@@ -545,7 +549,7 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
             <FilterChipDatePicker label="Date" selectionType="range" />
             <Dropdown selectionType="multiple">
               <FilterChipSelectInput
-                label="Filter Chip"
+                label="Filter Chip 2"
                 value={value}
                 onClearButtonClick={(value) => {
                   console.log('value', value);

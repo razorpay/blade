@@ -2,8 +2,8 @@ import React from 'react';
 import type { ListViewContextType } from './types';
 
 const ListViewFiltersGroupContext = React.createContext<ListViewContextType>({
-  selectedFilters: [],
-  setSelectedFilters: () => {},
+  listViewSelectedFilters: [],
+  setListViewSelectedFilters: () => {},
 });
 const ListViewFiltersProvider = ListViewFiltersGroupContext.Provider;
 

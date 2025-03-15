@@ -71,4 +71,29 @@ type DropdownOverlayProps = {
   defaultPlacement?: Placement;
 } & TestID;
 
-export type { DropdownProps, DropdownOverlayProps };
+type FilterChipGroupProps = TestID &
+  DataAnalyticsAttribute & {
+    children: React.ReactNode;
+    /**
+     * Callback which is called when clear button is clicked
+     */
+    onClearButtonClick?: () => void;
+    /**
+     * Boolean to decide if we should show clear button or not
+     */
+    showClearButton?: boolean;
+  };
+
+type FilterChipGroupContextType = {
+  /**
+   *  Number of Selected Filters
+   */
+  filterChipGroupSelectedFilters: string[];
+  setFilterChipGroupSelectedFilters: React.Dispatch<React.SetStateAction<string[]>>;
+};
+export type {
+  DropdownProps,
+  DropdownOverlayProps,
+  FilterChipGroupProps,
+  FilterChipGroupContextType,
+};

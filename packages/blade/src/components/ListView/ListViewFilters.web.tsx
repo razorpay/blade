@@ -22,15 +22,15 @@ const ListViewFilters = ({
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
   const [showFilters, setShowFilters] = useState(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [listViewSelectedFilters, setListViewSelectedFilters] = useState<string[]>([]);
   const searchId = useId('search-input');
   const searchNameValue = searchName || searchId;
 
   return (
     <ListViewFiltersProvider
       value={{
-        selectedFilters,
-        setSelectedFilters,
+        listViewSelectedFilters,
+        setListViewSelectedFilters,
       }}
     >
       <BaseBox>
@@ -59,7 +59,11 @@ const ListViewFilters = ({
                 right="spacing.0"
                 transform="translate(50%, -50%)"
               >
-                <Counter value={selectedFilters.length} color="primary" emphasis="intense" />
+                <Counter
+                  value={listViewSelectedFilters.length}
+                  color="primary"
+                  emphasis="intense"
+                />
               </Box>
             </Box>
             <Box display="flex">
@@ -73,7 +77,14 @@ const ListViewFilters = ({
             </Box>
           </BaseBox>
         </BaseBox>
-        <BaseBox display="flex">{showFilters ? children : null} </BaseBox>
+        <BaseBox
+          display="flex"
+          backgroundColor="surface.background.gray.moderate"
+          borderTop="1px solid"
+          borderTopColor="surface.border.gray.muted"
+        >
+          {showFilters ? children : null}{' '}
+        </BaseBox>
       </BaseBox>
     </ListViewFiltersProvider>
   );

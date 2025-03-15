@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
+import { useFilterChipGroupContext } from './FilterChipGroupContext.web';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
@@ -60,8 +61,12 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   } = useDropdown();
 
   const isUnControlled = options.length > 0 && props.value === undefined;
-
-  const { selectedFilters, setSelectedFilters } = useListViewFilterContext();
+  // Currently we are having 2 context for selectedFilters. One is for FilterChipGroup and other is for  ListView
+  const { setListViewSelectedFilters } = useListViewFilterContext();
+  const {
+    filterChipGroupSelectedFilters,
+    setFilterChipGroupSelectedFilters,
+  } = useFilterChipGroupContext();
 
   useEffect(() => {
     if (isUnControlled) {
@@ -103,17 +108,22 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       setUncontrolledInputValue([]);
       setSelectedIndices([]);
     }
-    setSelectedFilters((prev) => {
-      return prev.filter((filter) => filter !== label);
-    });
+    const updateSelectedFilters = (
+      setter: React.Dispatch<React.SetStateAction<string[]>>,
+      label: string,
+    ): void => {
+      setter((prev) => prev.filter((filter) => filter !== label));
+    };
+    updateSelectedFilters(setFilterChipGroupSelectedFilters, label);
+    updateSelectedFilters(setListViewSelectedFilters, label);
   };
 
   useEffect(() => {
-    if (selectedFilters.length === 0) {
+    if (filterChipGroupSelectedFilters.length === 0) {
       handleClearButtonClick();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFilters.length]);
+  }, [filterChipGroupSelectedFilters.length]);
 
   useEffect(() => {
     if (!isFirstRender) {
@@ -130,16 +140,23 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   useEffect(() => {
     const isValueEmpty = Array.isArray(value) ? value.length === 0 : !value;
     if (!isFirstRender && !isValueEmpty) {
-      setSelectedFilters((prev) => {
-        if (!prev.includes(label)) {
-          return [...prev, label];
-        }
-        return prev;
-      });
+      const updateSelectedFilters = (
+        setter: React.Dispatch<React.SetStateAction<string[]>>,
+        label: string,
+      ): void => {
+        setter((prev) => (prev.includes(label) ? prev : [...prev, label]));
+      };
+      updateSelectedFilters(setFilterChipGroupSelectedFilters, label);
+      updateSelectedFilters(setListViewSelectedFilters, label);
     } else if (!isFirstRender && isValueEmpty) {
-      setSelectedFilters((prev) => {
-        return prev.filter((filter) => filter !== label);
-      });
+      const updateSelectedFilters = (
+        setter: React.Dispatch<React.SetStateAction<string[]>>,
+        label: string,
+      ): void => {
+        setter((prev) => prev.filter((filter) => filter !== label));
+      };
+      updateSelectedFilters(setFilterChipGroupSelectedFilters, label);
+      updateSelectedFilters(setListViewSelectedFilters, label);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
