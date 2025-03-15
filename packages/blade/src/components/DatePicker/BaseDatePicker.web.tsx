@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DatesProvider } from '@mantine/dates';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useI18nContext } from '@razorpay/i18nify-react';
 import { MantineProvider } from '@mantine/core';
@@ -38,6 +38,8 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
+import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
+import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
 
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -151,6 +153,11 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const currentDate = shiftTimezone('add', new Date());
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
+  const { setListViewSelectedFilters } = useListViewFilterContext();
+  const {
+    filterChipGroupSelectedFilters,
+    setFilterChipGroupSelectedFilters,
+  } = useFilterChipGroupContext();
   let applyButtonDisabled = !hasBothDatesSelected;
   if (isSingle) {
     applyButtonDisabled = !Boolean(controlledValue);
@@ -177,6 +184,12 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       onApply?.(controlledValue);
       close();
     }
+    const updateSelectedFilters = (setFilters: React.Dispatch<React.SetStateAction<string[]>>) => {
+      setFilters((prev: string[]) => [...prev, label as string]);
+    };
+
+    updateSelectedFilters(setListViewSelectedFilters);
+    updateSelectedFilters(setFilterChipGroupSelectedFilters);
   };
 
   const handleCancel = (): void => {
@@ -190,7 +203,20 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     fireNativeEvent(referenceRef, ['change']);
     handleReset();
     close();
+    const removeFilter = (setFilters: React.Dispatch<React.SetStateAction<string[]>>) => {
+      setFilters((prev: string[]) => prev.filter((filter) => filter !== label));
+    };
+
+    removeFilter(setListViewSelectedFilters);
+    removeFilter(setFilterChipGroupSelectedFilters);
   };
+
+  useEffect(() => {
+    if (filterChipGroupSelectedFilters.length === 0) {
+      handleClear();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterChipGroupSelectedFilters.length]);
 
   const isMobile = useIsMobile();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
@@ -321,7 +347,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
         <BaseBox
-          width="100%"
+          width={inputElementType === 'chip' ? 'fit-content' : '100%'}
           {...getStyledProps(props)}
           {...metaAttribute({ name: MetaConstants.DatePicker })}
         >
