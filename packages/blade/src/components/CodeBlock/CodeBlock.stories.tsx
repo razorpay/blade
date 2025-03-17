@@ -90,15 +90,28 @@ export default App;
 export default {
   title: 'Components/CodeBlock',
   component: CodeBlock,
+  tags: ['autodocs'],
   parameters: {
     docs: {
       page: Page,
     },
   },
+  args: {
+    lang: 'json',
+    showBackground: true,
+    showLineNumbers: true,
+  }
 } as Meta<typeof CodeBlock>;
 
-export const JsonExample: StoryFn = () => {
-  const jsonExample = `{
+// Template for code block stories
+const CodeBlockTemplate: StoryFn<typeof CodeBlock> = (args) => {
+  return <CodeBlock {...args}>{args.children}</CodeBlock>;
+};
+
+// JSON Example
+export const JSONExample = CodeBlockTemplate.bind({});
+JSONExample.args = {
+  children: `{
   "name": "John Doe",
   "age": 30,
   "isActive": true,
@@ -109,17 +122,22 @@ export const JsonExample: StoryFn = () => {
   },
   "tags": ["developer", "designer", "product"],
   "projects": null
-}`;
-
-  return (
-    <CodeBlock lang="json">{jsonExample}</CodeBlock>
-  );
+}`,
+  lang: 'json'
+};
+JSONExample.storyName = 'JSON';
+JSONExample.parameters = {
+  docs: {
+    description: {
+      story: 'CodeBlock with JSON syntax highlighting',
+    },
+  },
 };
 
-JsonExample.storyName = 'Lang: JSON';
-
-export const ProtobufExample: StoryFn = () => {
-  const protobufExample = `syntax = "proto3";
+// Protobuf Example
+export const ProtobufExample = CodeBlockTemplate.bind({});
+ProtobufExample.args = {
+  children: `syntax = "proto3";
 
 package example;
 
@@ -150,50 +168,22 @@ message User {
 service UserService {
   rpc GetUser(GetUserRequest) returns (User);
   rpc ListUsers(ListUsersRequest) returns (stream User);
-}`;
-
-  return (
-    <CodeBlock lang="protobuf">{protobufExample}</CodeBlock>
-  );
+}`,
+  lang: 'protobuf'
+};
+ProtobufExample.storyName = 'Protobuf';
+ProtobufExample.parameters = {
+  docs: {
+    description: {
+      story: 'CodeBlock with Protobuf syntax highlighting',
+    },
+  },
 };
 
-ProtobufExample.storyName = 'Lang: Protobuf';
-
-export const WithoutBackground: StoryFn = () => {
-  const jsonExample = `{
-  "name": "John Doe",
-  "age": 30,
-  "isActive": true
-}`;
-
-  return (
-    <CodeBlock lang="json" showBackground={false}>{jsonExample}</CodeBlock>
-  );
-};
-
-WithoutBackground.storyName = 'Feature: Without Background';
-
-export const WithoutLineNumbers: StoryFn = () => {
-  const jsonExample = `{
-  "name": "John Doe",
-  "age": 30,
-  "isActive": true,
-  "address": {
-    "street": "123 Main St",
-    "city": "Anytown",
-    "zipCode": 12345
-  }
-}`;
-
-  return (
-    <CodeBlock lang="json" showLineNumbers={false}>{jsonExample}</CodeBlock>
-  );
-};
-
-WithoutLineNumbers.storyName = 'Feature: Without Line Numbers';
-
-export const JavaScriptExample: StoryFn = () => {
-  const jsExample = `// A simple function
+// JavaScript Example
+export const JavaScriptExample = CodeBlockTemplate.bind({});
+JavaScriptExample.args = {
+  children: `// A simple function
 function calculateTotal(items) {
   return items
     .map(item => item.price * item.quantity)
@@ -219,11 +209,59 @@ class ShoppingCart {
 const cart = new ShoppingCart();
 cart.addItem({ name: 'Product 1', price: 10, quantity: 2 });
 cart.addItem({ name: 'Product 2', price: 5, quantity: 4 });
-console.log(\`Total: $\${cart.getTotal()}\`);`;
-
-  return (
-    <CodeBlock lang="javascript">{jsExample}</CodeBlock>
-  );
+console.log(\`Total: $\${cart.getTotal()}\`);`,
+  lang: 'javascript'
+};
+JavaScriptExample.storyName = 'JavaScript';
+JavaScriptExample.parameters = {
+  docs: {
+    description: {
+      story: 'CodeBlock with JavaScript syntax highlighting',
+    },
+  },
 };
 
-JavaScriptExample.storyName = 'Lang: JavaScript'; 
+// Without Background
+export const WithoutBackground = CodeBlockTemplate.bind({});
+WithoutBackground.args = {
+  children: `{
+  "name": "John Doe",
+  "age": 30,
+  "isActive": true
+}`,
+  lang: 'json',
+  showBackground: false
+};
+WithoutBackground.storyName = 'Without Background';
+WithoutBackground.parameters = {
+  docs: {
+    description: {
+      story: 'CodeBlock without a background, useful for inline code display',
+    },
+  },
+};
+
+// Without Line Numbers
+export const WithoutLineNumbers = CodeBlockTemplate.bind({});
+WithoutLineNumbers.args = {
+  children: `{
+  "name": "John Doe",
+  "age": 30,
+  "isActive": true,
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "zipCode": 12345
+  }
+}`,
+  lang: 'json',
+  showLineNumbers: false
+};
+WithoutLineNumbers.storyName = 'Without Line Numbers';
+WithoutLineNumbers.parameters = {
+  docs: {
+    description: {
+      story: 'CodeBlock without line numbers for cleaner display of short snippets',
+    },
+  },
+}; 
