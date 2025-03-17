@@ -91,3 +91,5 @@ buck-out/
 
 # CocoaPods
 **/ios/Pods/
+# npm lockfile
+package-lock.json
