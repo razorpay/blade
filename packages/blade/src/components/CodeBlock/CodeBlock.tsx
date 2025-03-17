@@ -27,6 +27,12 @@ type CodeBlockProps = {
      * @default true
      */
     showBackground?: boolean;
+    /**
+     * Whether to show line numbers
+     * 
+     * @default true
+     */
+    showLineNumbers?: boolean;
 } & TestID &
     StyledPropsBlade;
 
@@ -35,18 +41,11 @@ type CodeBlockContainerProps = {
 };
 
 const CodeBlockContainer = styled(BaseBox)<CodeBlockContainerProps>((props) => {
-    const padding = makeSpace(props.theme.spacing[4]);
     return {
-        padding,
-        backgroundColor: props.showBackground
-            ? props.theme.colors.surface.background.gray.subtle
-            : undefined,
+        // No padding here - the CodePre component already has padding
+        backgroundColor: undefined, // Background handled by CodePre
         borderRadius: props.theme.border.radius.medium,
-        fontFamily: props.theme.typography.fonts.family.code,
-        fontSize: '0.875rem',
-        lineHeight: '1.5',
         overflowX: 'auto',
-        whiteSpace: 'pre',
     };
 });
 
@@ -55,13 +54,14 @@ const _CodeBlock = ({
     lang = 'json',
     testID,
     showBackground = true,
+    showLineNumbers = true,
     ...rest
 }: CodeBlockProps) => {
     // Get the formatter for the specified language
     const formatter = codeFormatters[lang] || codeFormatters.json;
 
     // Format the code using the formatters from the formatters directory
-    const formattedCode = formatter.format(children);
+    const formattedCode = formatter.format(children, showBackground, showLineNumbers);
 
     return (
         <CodeBlockContainer

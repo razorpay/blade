@@ -1,3 +1,56 @@
+/**
+ * Code Formatters for Syntax Highlighting
+ * 
+ * This module provides syntax highlighting formatters for various programming languages.
+ * 
+ * Features:
+ * - Theme-aware GitHub-like syntax highlighting for light and dark modes
+ * - Preserves line breaks and formatting
+ * - Currently supports JSON and Protobuf formats
+ * 
+ * Usage example:
+ * ```tsx
+ * import { formatters } from '~/components/CodeBlock/formatters';
+ * 
+ * const CodeBlock: React.FC<{ code: string, language: SupportedLanguages }> = ({ code, language }) => {
+ *   const formatter = formatters[language];
+ *   if (!formatter) {
+ *     return <pre>{code}</pre>; // Fallback if language not supported
+ *   }
+ *   
+ *   return formatter.format(code);
+ * };
+ * ```
+ * 
+ * Theming:
+ * The formatters automatically adapt to the current theme (light/dark) by using the theme context.
+ * They use GitHub-inspired colors for syntax elements:
+ * - Light theme uses GitHub's light syntax colors
+ * - Dark theme uses GitHub's dark syntax colors
+ * 
+ * Styled Components:
+ * The module provides several styled components for syntax highlighting:
+ * - PropertyName: For object property names
+ * - StringValue: For string literals
+ * - NumberValue: For numeric values
+ * - KeywordValue: For language keywords
+ * - CommentValue: For code comments
+ * - TypeValue: For type definitions
+ * - CodePre: Container for formatted code blocks
+ * 
+ * Parsing & Highlighting Process:
+ * 1. Code is parsed line by line to maintain proper spacing and structure
+ * 2. Each line is analyzed to identify different syntax elements using regular expressions
+ * 3. Elements are wrapped in styled components that apply the appropriate colors
+ * 4. The resulting React elements are combined to form the final formatted output
+ * 5. Empty lines are preserved with proper spacing to maintain code layout
+ * 
+ * Adding new formatters:
+ * 1. Create a new formatter that implements the LanguageFormatter interface
+ * 2. Add the formatter to the formatters registry
+ * 3. Update the SupportedLanguages type to include the new language
+ */
+
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -13,9 +66,11 @@ export interface LanguageFormatter {
     /**
      * Format the provided code string with syntax highlighting
      * @param code The code string to format
+     * @param showBackground Whether to show background color or not
+     * @param showLineNumbers Whether to show line numbers or not
      * @returns React nodes with syntax highlighting
      */
-    format: (code: string) => React.ReactNode;
+    format: (code: string, showBackground?: boolean, showLineNumbers?: boolean) => React.ReactNode;
 }
 
 // Define types for matched parts to ensure type safety
@@ -39,7 +94,7 @@ const getThemeColors = (theme: any) => {
         keywordValue: isDarkTheme ? '#ff7b72' : '#cf222e',      // Red
         commentValue: isDarkTheme ? '#8b949e' : '#6e7781',      // Gray
         typeValue: isDarkTheme ? '#ffa657' : '#953800',         // Brown
-        background: isDarkTheme ? '#0d1117' : '#f6f8fa',        // GitHub bg color
+        background: isDarkTheme ? '#0d1117' : '#ffffff',        // Pure white for light theme
         text: isDarkTheme ? '#c9d1d9' : '#24292f',              // Text
         border: isDarkTheme ? '#30363d' : '#d0d7de',            // Border
         lineNumberColor: isDarkTheme ? '#6e7681' : '#6e7781',   // Line number color
@@ -115,8 +170,8 @@ export const TypeValue = styled.span`
 `;
 
 // Styled pre element for code blocks that exactly matches GitHub styling
-export const CodePre = styled.pre`
-  ${({ theme }) => {
+export const CodePre = styled.pre<{ showBackground?: boolean, showLineNumbers?: boolean }>`
+  ${({ theme, showBackground = true, showLineNumbers = true }) => {
         const colors = getThemeColors(theme);
         return css`
       margin: 0;
@@ -124,21 +179,37 @@ export const CodePre = styled.pre`
       font-family: ${theme.typography.fonts.family.code};
       font-size: 0.875rem;
       line-height: 1.5;
-      background-color: ${colors.background};
+      background-color: ${showBackground ? colors.background : 'transparent'};
       color: ${colors.text};
       padding: 1rem;
       border-radius: 6px;
-      border: 1px solid ${colors.border};
+      border: ${showBackground ? `1px solid ${colors.border}` : 'none'};
+      counter-reset: line;
+      
+      /* Style for line numbers */
+      ${showLineNumbers ? `
+        display: table;
+        width: 100%;
+      ` : ''}
       
       /* Ensure line spacing is consistent */
       & > div {
         min-height: 1.5em;
-      }
-      
-      /* Add extra spacing for empty lines */
-      & > div:empty:before {
-        content: "\\00a0"; /* Non-breaking space to preserve empty lines */
-        display: inline-block;
+        ${showLineNumbers ? `
+          display: table-row;
+          
+          &::before {
+            counter-increment: line;
+            content: counter(line);
+            display: table-cell;
+            padding-right: 1.5em;
+            text-align: right;
+            color: ${colors.lineNumberColor};
+            user-select: none;
+            width: 1%;
+            opacity: 0.5;
+          }
+        ` : 'padding: 0;'}
       }
     `;
     }}
@@ -148,7 +219,7 @@ export const CodePre = styled.pre`
  * Enhanced JSON formatter with GitHub-like syntax highlighting
  */
 export const jsonFormatter: LanguageFormatter = {
-    format: (code: string): React.ReactNode => {
+    format: (code: string, showBackground = true, showLineNumbers = true): React.ReactNode => {
         try {
             // Parse the JSON and re-format it with proper indentation
             const parsedJSON = JSON.parse(code);
@@ -315,10 +386,10 @@ export const jsonFormatter: LanguageFormatter = {
             }
 
             // Combine all lines into the final output
-            return React.createElement(CodePre, null, outputLines);
+            return React.createElement(CodePre, { showBackground, showLineNumbers }, outputLines);
         } catch (error) {
             // Return the original code if parsing fails
-            return React.createElement(CodePre, null, code);
+            return React.createElement(CodePre, { showBackground, showLineNumbers }, code);
         }
     }
 };
@@ -327,7 +398,7 @@ export const jsonFormatter: LanguageFormatter = {
  * Enhanced Protobuf formatter with syntax highlighting
  */
 export const protobufFormatter: LanguageFormatter = {
-    format: (code: string): React.ReactNode => {
+    format: (code: string, showBackground = true, showLineNumbers = true): React.ReactNode => {
         // Split the code into lines for line-by-line processing
         const lines = code.split('\n');
         const outputLines: React.ReactElement[] = [];
@@ -336,7 +407,7 @@ export const protobufFormatter: LanguageFormatter = {
         const keywords = [
             'syntax', 'package', 'import', 'option', 'message', 'enum', 'service',
             'rpc', 'returns', 'stream', 'oneof', 'reserved', 'extend', 'extensions',
-            'repeated', 'map', 'Config', 'map', 'string', 'MerchantConfig', 'BillConfig'
+            'repeated', 'map', 'Config', 'MerchantConfig', 'BillConfig'
         ];
 
         const types = [
@@ -383,7 +454,7 @@ export const protobufFormatter: LanguageFormatter = {
 
             // Process the rest of the line (excluding comments)
             if (lineWithoutComment.length > 0) {
-                // Process keywords
+                // Process keywords with word boundaries to avoid partial matches
                 for (const keyword of keywords) {
                     const keywordRegex = new RegExp(`\\b${keyword}\\b`, 'g');
                     let match: RegExpExecArray | null;
@@ -400,19 +471,6 @@ export const protobufFormatter: LanguageFormatter = {
                             length: match[0].length
                         });
                     }
-                }
-
-                // Process = and ; symbols with regular text color
-                const operatorRegex = /[=;]/g;
-                let operatorMatch: RegExpExecArray | null;
-
-                while ((operatorMatch = operatorRegex.exec(lineWithoutComment)) !== null) {
-                    // Use regular text for operators (no special highlighting)
-                    parts.push({
-                        index: operatorMatch.index,
-                        element: React.createElement('span', { key: `op-${i}-${operatorMatch.index}` }, operatorMatch[0]),
-                        length: operatorMatch[0].length
-                    });
                 }
 
                 // Process types
@@ -451,20 +509,49 @@ export const protobufFormatter: LanguageFormatter = {
                     });
                 }
 
-                // Process numbers
-                const numberRegex = /\b\d+\b/g;
+                // Process numbers (including field numbers like "= 1;" and enum values like "= 0;")
+                const numberRegex = /\b\d+\b|=\s*\d+\s*;/g;
                 let numberMatch: RegExpExecArray | null;
 
                 while ((numberMatch = numberRegex.exec(lineWithoutComment)) !== null) {
+                    // Extract just the number part if it includes "= " or " ;"
+                    let matchText = numberMatch[0];
+                    let startIndex = numberMatch.index;
+
+                    // If it's a field assignment like "= 1;"
+                    if (matchText.includes('=')) {
+                        // Highlight just the number
+                        const numMatch = matchText.match(/\d+/);
+                        if (numMatch) {
+                            const numIndex = matchText.indexOf(numMatch[0]);
+                            startIndex += numIndex;
+                            matchText = numMatch[0];
+                        }
+                    }
+
                     const numberElement = React.createElement(
                         NumberValue,
-                        { key: `number-${i}-${numberMatch.index}` },
-                        numberMatch[0]
+                        { key: `number-${i}-${startIndex}` },
+                        matchText
                     );
+
                     parts.push({
-                        index: numberMatch.index,
+                        index: startIndex,
                         element: numberElement,
-                        length: numberMatch[0].length
+                        length: matchText.length
+                    });
+                }
+
+                // Process = and ; symbols with regular text color
+                const operatorRegex = /[=;]/g;
+                let operatorMatch: RegExpExecArray | null;
+
+                while ((operatorMatch = operatorRegex.exec(lineWithoutComment)) !== null) {
+                    // Use regular text for operators (no special highlighting)
+                    parts.push({
+                        index: operatorMatch.index,
+                        element: React.createElement('span', { key: `op-${i}-${operatorMatch.index}` }, operatorMatch[0]),
+                        length: operatorMatch[0].length
                     });
                 }
             }
@@ -513,7 +600,7 @@ export const protobufFormatter: LanguageFormatter = {
         }
 
         // Combine all lines into the final output
-        return React.createElement(CodePre, null, outputLines);
+        return React.createElement(CodePre, { showBackground, showLineNumbers }, outputLines);
     }
 };
 
