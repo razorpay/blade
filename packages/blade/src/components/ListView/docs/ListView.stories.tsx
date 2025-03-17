@@ -1134,16 +1134,18 @@ export const FullExample = ListViewFullExample.bind({});
 FullExample.storyName = 'Full example';
 
 const ListViewControledTemplate: StoryFn<typeof ListView> = (args) => {
-  const [value, setSelectedValue] = React.useState<string[]>([]);
   const [showQuickFilters, setShowQuickFilters] = React.useState(true);
+  const [filterChipInputValue, setFilterChipInputValue] = React.useState<string[]>([]);
+  const [filterChipDate, setFilterChipDate] = React.useState<Date | undefined>(undefined);
+  const [isDatePickerOpen, setIsDatePickerOpen] = React.useState(false);
   const handleOnClick = (name: string): void => {
-    if (value.includes(name)) {
-      setSelectedValue(value.filter((val) => val !== name));
+    if (filterChipInputValue.includes(name)) {
+      setFilterChipInputValue(filterChipInputValue.filter((val) => val !== name));
     } else {
-      setSelectedValue([...value, name]);
+      setFilterChipInputValue([...filterChipInputValue, name]);
     }
   };
-  const isSelected = (name: string): boolean => value.includes(name);
+  const isSelected = (name: string): boolean => filterChipInputValue.includes(name);
 
   return (
     <BrowserRouter>
@@ -1175,16 +1177,16 @@ const ListViewControledTemplate: StoryFn<typeof ListView> = (args) => {
         >
           <FilterChipGroup
             onClearButtonClick={() => {
-              console.log('clear button clear');
+              setFilterChipInputValue([]);
+              setFilterChipDate(undefined);
             }}
           >
             <Dropdown selectionType="multiple">
               <FilterChipSelectInput
                 label="Filter Chip"
-                value={value}
-                onClearButtonClick={(value) => {
-                  console.log('value', value);
-                  setSelectedValue([]);
+                value={filterChipInputValue}
+                onClearButtonClick={() => {
+                  setFilterChipInputValue([]);
                 }}
               />
               <DropdownOverlay>
@@ -1217,46 +1219,16 @@ const ListViewControledTemplate: StoryFn<typeof ListView> = (args) => {
                 </ActionList>
               </DropdownOverlay>
             </Dropdown>
-            <FilterChipDatePicker label="Date" selectionType="range" />
-            <Dropdown selectionType="multiple">
-              <FilterChipSelectInput
-                label="Filter Chip"
-                value={value}
-                onClearButtonClick={(value) => {
-                  console.log('value', value);
-                  setSelectedValue([]);
-                }}
-              />
-              <DropdownOverlay>
-                <ActionList>
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('latest-added')}
-                    title="Latest Added"
-                    value="latest-added"
-                  />
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('latest-invoice')}
-                    title="Latest Invoice"
-                    value="latest-invoice"
-                  />
-
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('oldest-due-date')}
-                    title="Oldest Due Date"
-                    value="oldest-due-date"
-                  />
-                </ActionList>
-              </DropdownOverlay>
-            </Dropdown>
+            <FilterChipDatePicker
+              label="Date"
+              selectionType="single"
+              isOpen={isDatePickerOpen}
+              onOpenChange={({ isOpen }) => setIsDatePickerOpen(isOpen)}
+              value={filterChipDate}
+              onChange={(date) => {
+                setFilterChipDate(date);
+              }}
+            />
           </FilterChipGroup>
         </ListViewFilters>
         <Table
