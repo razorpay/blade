@@ -116,7 +116,7 @@ export const JsonExample: StoryFn = () => {
   );
 };
 
-JsonExample.storyName = 'JSON';
+JsonExample.storyName = 'Lang: JSON';
 
 export const ProtobufExample: StoryFn = () => {
   const protobufExample = `syntax = "proto3";
@@ -157,7 +157,7 @@ service UserService {
   );
 };
 
-ProtobufExample.storyName = 'Protobuf';
+ProtobufExample.storyName = 'Lang: Protobuf';
 
 export const WithoutBackground: StoryFn = () => {
   const jsonExample = `{
@@ -171,7 +171,7 @@ export const WithoutBackground: StoryFn = () => {
   );
 };
 
-WithoutBackground.storyName = 'Without Background';
+WithoutBackground.storyName = 'Feature: Without Background';
 
 export const WithoutLineNumbers: StoryFn = () => {
   const jsonExample = `{
@@ -190,7 +190,7 @@ export const WithoutLineNumbers: StoryFn = () => {
   );
 };
 
-WithoutLineNumbers.storyName = 'Without Line Numbers';
+WithoutLineNumbers.storyName = 'Feature: Without Line Numbers';
 
 export const JavaScriptExample: StoryFn = () => {
   const jsExample = `// A simple function
@@ -226,4 +226,4 @@ console.log(\`Total: $\${cart.getTotal()}\`);`;
   );
 };
 
-JavaScriptExample.storyName = 'JavaScript'; 
+JavaScriptExample.storyName = 'Lang: JavaScript'; 
