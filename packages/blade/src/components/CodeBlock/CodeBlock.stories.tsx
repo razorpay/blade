@@ -95,7 +95,6 @@ export default {
       page: Page,
     },
   },
-  tags: ['autodocs'],
 } as Meta<typeof CodeBlock>;
 
 export const JsonExample: StoryFn = () => {
