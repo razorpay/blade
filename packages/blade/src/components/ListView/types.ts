@@ -10,7 +10,7 @@ type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute;
 type ListViewFilterProps = {
   children: React.ReactNode;
   quickFilters: React.ReactNode;
-  searchValue: string;
+  searchValue?: string;
   searchValuePlaceholder?: string;
   searchName?: string;
   onSearchChange?: ({ name, value }: { name?: string; value?: string }) => void;

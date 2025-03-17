@@ -505,7 +505,6 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
             onClearButtonClick={() => {
               console.log('clear button clear');
             }}
-            clearButtonText="Clear Filters"
           >
             <Dropdown selectionType="multiple">
               <FilterChipSelectInput
@@ -974,7 +973,6 @@ const ListViewFullExample: StoryFn<typeof ListView> = (args): React.ReactElement
                         onClearButtonClick={() => {
                           console.log('clear button clear');
                         }}
-                        clearButtonText="Clear Filters"
                       >
                         <FilterChipDatePicker label="Date" selectionType="range" />
                         <Dropdown selectionType="multiple">
@@ -1179,7 +1177,6 @@ const ListViewControledTemplate: StoryFn<typeof ListView> = (args) => {
             onClearButtonClick={() => {
               console.log('clear button clear');
             }}
-            clearButtonText="Clear Filters"
           >
             <Dropdown selectionType="multiple">
               <FilterChipSelectInput
