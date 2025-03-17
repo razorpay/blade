@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card, CardBody } from '~components/Card';
 import { StoryFn, Meta } from '@storybook/react';
 import { CodeBlock } from './CodeBlock';
 import { Title } from '@storybook/addon-docs';
@@ -8,20 +7,20 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 // Documentation page component
 const Page = (): React.ReactElement => {
-    return (
-        <StoryPageWrapper
-            componentName="CodeBlock"
-            componentDescription="CodeBlock is a component used to display and highlight code snippets with proper syntax highlighting. It automatically adapts to the current theme (light or dark) using GitHub-like syntax highlighting colors."
-            figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL"
-        >
-            <Title>Usage</Title>
-            <Sandbox editorHeight={500}>
-                {`
+  return (
+    <StoryPageWrapper
+      componentName="CodeBlock"
+      componentDescription="CodeBlock is a component used to display and highlight code snippets with proper syntax highlighting powered by Prism.js. It automatically adapts to the current theme (light or dark) using GitHub-like syntax highlighting colors."
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL"
+    >
+      <Title>Usage</Title>
+      <Sandbox editorHeight={500}>
+        {`
 import React from 'react';
 import { CodeBlock } from '@razorpay/blade/components';
 
 function App() {
-  // Sample JSON data
+  // Sample code examples
   const jsonExample = \`{
   "name": "John Doe",
   "age": 30,
@@ -31,6 +30,21 @@ function App() {
     "city": "Anytown"
   },
   "tags": ["developer", "designer"]
+}\`;
+
+  const protobufExample = \`syntax = "proto3";
+
+package example;
+
+message User {
+  string name = 1;
+  int32 age = 2;
+  bool is_active = 3;
+  
+  enum Role {
+    ADMIN = 0;
+    MEMBER = 1;
+  }
 }\`;
 
   return (
@@ -43,14 +57,21 @@ function App() {
       </div>
       
       <div>
-        <h3>JSON Example without Line Numbers</h3>
+        <h3>Protobuf Example</h3>
+        <CodeBlock lang="protobuf">
+          {protobufExample}
+        </CodeBlock>
+      </div>
+      
+      <div>
+        <h3>Without Line Numbers</h3>
         <CodeBlock lang="json" showLineNumbers={false}>
           {jsonExample}
         </CodeBlock>
       </div>
       
       <div>
-        <h3>JSON Example without Background</h3>
+        <h3>Without Background</h3>
         <CodeBlock lang="json" showBackground={false}>
           {jsonExample}
         </CodeBlock>
@@ -61,24 +82,24 @@ function App() {
 
 export default App;
                 `}
-            </Sandbox>
-        </StoryPageWrapper>
-    );
+      </Sandbox>
+    </StoryPageWrapper>
+  );
 };
 
 export default {
-    title: 'Components/CodeBlock',
-    component: CodeBlock,
-    parameters: {
-        docs: {
-            page: Page,
-        },
+  title: 'Components/CodeBlock',
+  component: CodeBlock,
+  parameters: {
+    docs: {
+      page: Page,
     },
-    tags: ['autodocs'],
+  },
+  tags: ['autodocs'],
 } as Meta<typeof CodeBlock>;
 
 export const JsonExample: StoryFn = () => {
-    const jsonExample = `{
+  const jsonExample = `{
   "name": "John Doe",
   "age": 30,
   "isActive": true,
@@ -91,15 +112,15 @@ export const JsonExample: StoryFn = () => {
   "projects": null
 }`;
 
-    return (
-        <CodeBlock lang="json">{jsonExample}</CodeBlock>
-    );
+  return (
+    <CodeBlock lang="json">{jsonExample}</CodeBlock>
+  );
 };
 
 JsonExample.storyName = 'JSON';
 
 export const ProtobufExample: StoryFn = () => {
-    const protobufExample = `syntax = "proto3";
+  const protobufExample = `syntax = "proto3";
 
 package example;
 
@@ -132,29 +153,29 @@ service UserService {
   rpc ListUsers(ListUsersRequest) returns (stream User);
 }`;
 
-    return (
-        <CodeBlock lang="protobuf">{protobufExample}</CodeBlock>
-    );
+  return (
+    <CodeBlock lang="protobuf">{protobufExample}</CodeBlock>
+  );
 };
 
 ProtobufExample.storyName = 'Protobuf';
 
 export const WithoutBackground: StoryFn = () => {
-    const jsonExample = `{
+  const jsonExample = `{
   "name": "John Doe",
   "age": 30,
   "isActive": true
 }`;
 
-    return (
-        <CodeBlock lang="json" showBackground={false}>{jsonExample}</CodeBlock>
-    );
+  return (
+    <CodeBlock lang="json" showBackground={false}>{jsonExample}</CodeBlock>
+  );
 };
 
 WithoutBackground.storyName = 'Without Background';
 
 export const WithoutLineNumbers: StoryFn = () => {
-    const jsonExample = `{
+  const jsonExample = `{
   "name": "John Doe",
   "age": 30,
   "isActive": true,
@@ -165,9 +186,45 @@ export const WithoutLineNumbers: StoryFn = () => {
   }
 }`;
 
-    return (
-        <CodeBlock lang="json" showLineNumbers={false}>{jsonExample}</CodeBlock>
-    );
+  return (
+    <CodeBlock lang="json" showLineNumbers={false}>{jsonExample}</CodeBlock>
+  );
 };
 
-WithoutLineNumbers.storyName = 'Without Line Numbers'; 
+WithoutLineNumbers.storyName = 'Without Line Numbers';
+
+export const JavaScriptExample: StoryFn = () => {
+  const jsExample = `// A simple function
+function calculateTotal(items) {
+  return items
+    .map(item => item.price * item.quantity)
+    .reduce((total, value) => total + value, 0);
+}
+
+// ES6 class
+class ShoppingCart {
+  constructor() {
+    this.items = [];
+  }
+  
+  addItem(item) {
+    this.items.push(item);
+  }
+  
+  getTotal() {
+    return calculateTotal(this.items);
+  }
+}
+
+// Sample usage
+const cart = new ShoppingCart();
+cart.addItem({ name: 'Product 1', price: 10, quantity: 2 });
+cart.addItem({ name: 'Product 2', price: 5, quantity: 4 });
+console.log(\`Total: $\${cart.getTotal()}\`);`;
+
+  return (
+    <CodeBlock lang="javascript">{jsExample}</CodeBlock>
+  );
+};
+
+JavaScriptExample.storyName = 'JavaScript'; 

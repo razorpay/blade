@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CodeBlock /> SSR should render without crashing on server 1`] = `
+"<div id="root"><div data-blade-component="code-block" class="BaseBox-bmPWx CodeBlock__CodeBlockContainer-sc-10dyjaa-0  unqoY"><div class="CodeBlock__PrismContainer-sc-10dyjaa-1 gYihXI"><pre class="line-numbers"><code class="language-json">{
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;age&quot;: 30,
+  &quot;isActive&quot;: true
+}</code></pre></div></div></div>"
+`;
+
+exports[`<CodeBlock /> SSR should render without crashing on server 2`] = `
+.c0.c0.c0.c0.c0 {
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.c1.c1.c1.c1.c1 {
+  margin: 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.c1.c1.c1.c1.c1 pre[class*="language-"] {
+  margin: 0;
+  padding: 1rem;
+  background-color: #ffffff;
+  color: #24292f;
+  font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-shadow: none;
+  border: 1px solid #d0d7de;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  tab-size: 2;
+  white-space: pre-wrap;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+}
+
+.c1.c1.c1.c1.c1 pre.line-numbers {
+  padding-left: 3.8rem;
+  counter-reset: linenumber;
+}
+
+.c1.c1.c1.c1.c1 .line-numbers .line-numbers-rows {
+  border-right: 1px solid #d0d7de;
+  opacity: 0.5;
+}
+
+.c1.c1.c1.c1.c1 .line-numbers-rows > span:before {
+  color: #6e7781;
+  padding-right: 0.8rem;
+}
+
+.c1.c1.c1.c1.c1 .token.comment,
+.c1.c1.c1.c1.c1 .token.prolog,
+.c1.c1.c1.c1.c1 .token.doctype,
+.c1.c1.c1.c1.c1 .token.cdata {
+  color: #6e7781;
+  font-style: italic;
+}
+
+.c1.c1.c1.c1.c1 .token.punctuation {
+  color: #24292f;
+}
+
+.c1.c1.c1.c1.c1 .token.namespace {
+  opacity: 0.7;
+}
+
+.c1.c1.c1.c1.c1 .token.property,
+.c1.c1.c1.c1.c1 .token.tag,
+.c1.c1.c1.c1.c1 .token.boolean,
+.c1.c1.c1.c1.c1 .token.number,
+.c1.c1.c1.c1.c1 .token.constant,
+.c1.c1.c1.c1.c1 .token.symbol,
+.c1.c1.c1.c1.c1 .token.deleted {
+  color: #0550ae;
+}
+
+.c1.c1.c1.c1.c1 .token.string,
+.c1.c1.c1.c1.c1 .token.char,
+.c1.c1.c1.c1.c1 .token.attr-value,
+.c1.c1.c1.c1.c1 .token.builtin,
+.c1.c1.c1.c1.c1 .token.inserted {
+  color: #0a3069;
+}
+
+.c1.c1.c1.c1.c1 .token.operator,
+.c1.c1.c1.c1.c1 .token.entity,
+.c1.c1.c1.c1.c1 .token.url,
+.c1.c1.c1.c1.c1 .language-css .token.string,
+.c1.c1.c1.c1.c1 .style .token.string {
+  color: #24292f;
+  background: transparent;
+}
+
+.c1.c1.c1.c1.c1 .token.atrule,
+.c1.c1.c1.c1.c1 .token.attr-name,
+.c1.c1.c1.c1.c1 .token.keyword {
+  color: #cf222e;
+  font-weight: bold;
+}
+
+.c1.c1.c1.c1.c1 .token.function,
+.c1.c1.c1.c1.c1 .token.class-name {
+  color: #0550ae;
+}
+
+.c1.c1.c1.c1.c1 .token.regex,
+.c1.c1.c1.c1.c1 .token.important,
+.c1.c1.c1.c1.c1 .token.variable {
+  color: #953800;
+}
+
+.c1.c1.c1.c1.c1 .token.important,
+.c1.c1.c1.c1.c1 .token.bold {
+  font-weight: bold;
+}
+
+.c1.c1.c1.c1.c1 .token.italic {
+  font-style: italic;
+}
+
+<div
+  id="root"
+>
+  <div
+    class="BaseBox-bmPWx  c0"
+    data-blade-component="code-block"
+  >
+    <div
+      class="c1"
+    >
+      <pre
+        class="line-numbers"
+      >
+        <code
+          class="language-json"
+        >
+          {
+  "name": "John Doe",
+  "age": 30,
+  "isActive": true
+}
+        </code>
+      </pre>
+    </div>
+  </div>
+</div>
+`;

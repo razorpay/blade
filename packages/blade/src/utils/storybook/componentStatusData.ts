@@ -604,6 +604,14 @@ const componentData: ComponentStatusDataType = [
       'Stagger component allows you to stagger children (make them appear one after the other). Its a utility preset. You can use any of the base presets like Move, Fade, Slide inside of it',
     platform: 'web',
   },
+  {
+    name: 'CodeBlock',
+    status: 'released',
+    releasedIn: '0.0.0',
+    storybookLink: 'Components/CodeBlock',
+    description: 'CodeBlock displays code with syntax highlighting powered by Prism.js. Supports multiple languages including JSON, Protobuf, and JavaScript with automatic theme adaptation.',
+    platform: 'web',
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType };

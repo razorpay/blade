@@ -1,23 +1,51 @@
 import React from 'react';
-import { CodeBlock } from '../CodeBlock';
+import { _CodeBlock as CodeBlock } from '../CodeBlock';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import 'jest-styled-components';
 
-describe('<CodeBlock />', () => {
-    it('should render CodeBlock with default properties', () => {
-        const { container } = renderWithTheme(<CodeBlock>{`{"test": "json"}`}</CodeBlock>);
-        expect(container).toMatchSnapshot();
-    });
+// Mock Prism.js
+jest.mock('prismjs', () => ({
+    highlightElement: jest.fn(),
+    plugins: {
+        lineNumbers: {
+            init: jest.fn(),
+        },
+    },
+}));
 
-    it('should render CodeBlock without background', () => {
+describe('<CodeBlock />', () => {
+    const jsonExample = `{
+    "name": "John Doe",
+    "age": 30,
+    "isActive": true
+  }`;
+
+    it('should render JSON code correctly', () => {
         const { container } = renderWithTheme(
-            <CodeBlock showBackground={false}>{`{"test": "json"}`}</CodeBlock>,
+            <CodeBlock lang="json">{jsonExample}</CodeBlock>,
         );
         expect(container).toMatchSnapshot();
     });
 
-    it('should handle invalid JSON gracefully', () => {
-        const { container } = renderWithTheme(<CodeBlock>This is not valid JSON</CodeBlock>);
+    it('should render without line numbers', () => {
+        const { container } = renderWithTheme(
+            <CodeBlock lang="json" showLineNumbers={false}>{jsonExample}</CodeBlock>,
+        );
         expect(container).toMatchSnapshot();
+    });
+
+    it('should render without background', () => {
+        const { container } = renderWithTheme(
+            <CodeBlock lang="json" showBackground={false}>{jsonExample}</CodeBlock>,
+        );
+        expect(container).toMatchSnapshot();
+    });
+
+    it('should apply testID correctly', () => {
+        const testID = 'test-code-block';
+        const { getByTestId } = renderWithTheme(
+            <CodeBlock lang="json" testID={testID}>{jsonExample}</CodeBlock>,
+        );
+        expect(getByTestId(testID)).toBeInTheDocument();
     });
 }); 
