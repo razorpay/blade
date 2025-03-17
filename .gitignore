@@ -93,5 +93,3 @@ buck-out/
 **/ios/Pods/
 # npm lockfile
 package-lock.json
-# yarn lockfile
-yarn.lock
