@@ -18,6 +18,8 @@ export * from './Carousel';
 export * from './Checkbox';
 export * from './ChatMessage';
 export * from './Chip';
+export { Code } from './Code';
+export type { CodeProps } from './Code/types';
 export * from './Collapsible';
 export * from './Counter';
 export * from './Divider';
