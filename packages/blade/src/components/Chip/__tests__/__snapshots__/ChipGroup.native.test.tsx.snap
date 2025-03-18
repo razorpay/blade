@@ -63,7 +63,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
         >
           <Text
             accessible={true}
-            color="surface.text.gray.subtle"
+            color="surface.text.gray.muted"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
@@ -74,7 +74,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(211, 22%, 56%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
@@ -921,7 +921,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
         >
           <Text
             accessible={true}
-            color="surface.text.gray.subtle"
+            color="surface.text.gray.muted"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
@@ -932,7 +932,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(211, 22%, 56%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",

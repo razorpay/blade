@@ -152,7 +152,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -828,7 +828,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1502,7 +1502,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
