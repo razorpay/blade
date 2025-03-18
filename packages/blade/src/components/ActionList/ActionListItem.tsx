@@ -113,10 +113,6 @@ type ActionListSectionProps = {
    * @private
    */
   _sectionChildValues?: string[];
-  /**
-   * Internally used to determine if ActionList is inside Virtualized List
-   */
-  _isVirtualizationEnabled?: boolean;
 } & TestID &
   DataAnalyticsAttribute;
 const _ActionListSection = ({
@@ -127,10 +123,8 @@ const _ActionListSection = ({
   _sectionChildValues,
   ...rest
 }: ActionListSectionProps): React.ReactElement => {
-  console.log('_hideDivider', _hideDivider);
   const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
   const { isVirtualized } = useActionListContext();
-  console.log('isVirtualized', isVirtualized);
   const hasAutoComplete =
     hasAutoCompleteInBottomSheetHeader ||
     dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
