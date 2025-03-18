@@ -488,6 +488,112 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
   );
 };
 
+export const LargeDropDownData = (): React.ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  function getRandomString(length: number) {
+    const chars = 'abcdefghijklmnopqrstuvwxyz';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  function generateDropdownData(numEntries: number) {
+    const dropdownData: Record<string, { value: string; label: string }[]> = {};
+
+    for (let i = 0; i < numEntries; i++) {
+      const city = `${getRandomString(Math.floor(Math.random() * 5) + 5)}ville`; // Random city name
+      const state = `${getRandomString(Math.floor(Math.random() * 7) + 3)}land`; // Random state name
+      const country = 'GibberishLand';
+
+      const areas = [];
+      const numAreas = Math.floor(Math.random() * 2) + 2; // 2 or 3 areas per city
+
+      for (let j = 0; j < numAreas; j++) {
+        const area = `Area-${Math.floor(Math.random() * 1000)}`;
+        areas.push({
+          value: `${country.toLowerCase()}-${state.toLowerCase()}-${city.toLowerCase()}-${area.toLowerCase()}`,
+          label: area,
+        });
+      }
+
+      dropdownData[city] = areas;
+    }
+
+    return dropdownData;
+  }
+  const dropdownData = generateDropdownData(500); // Generates data for 500 cities
+  const smallDropdownData = generateDropdownData(5); // Generates data for 5 cities
+
+  return (
+    <Box padding={'8px'}>
+      <Box> Virtualized with ActionListSection </Box>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList isVirtualized={true}>
+            {Object.keys(dropdownData).map((sectionKey) => {
+              const section = dropdownData[sectionKey];
+              return (
+                <ActionListSection title={sectionKey} key={sectionKey}>
+                  {section.map((item) => (
+                    <ActionListItem title={item.label} value={item.value} key={item.value} />
+                  ))}
+                </ActionListSection>
+              );
+            })}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box> ActionList without Virtualization</Box>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            {Object.keys(smallDropdownData).map((sectionKey) => {
+              const section = smallDropdownData[sectionKey];
+              return (
+                <ActionListSection title={sectionKey} key={sectionKey}>
+                  {section.map((item) => (
+                    <ActionListItem title={item.label} value={item.value} key={item.value} />
+                  ))}
+                </ActionListSection>
+              );
+            })}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box> Virtualized</Box>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList isVirtualized={true}>
+            {[...Array(1000)].map((_, index) => (
+              <ActionListItem
+                title={`Item ${index}`}
+                value={`Item ${index}`}
+                key={`Item ${index}`}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
 InternalDropdownPerformance.parameters = {
   chromatic: {
     disableSnapshot: false,
