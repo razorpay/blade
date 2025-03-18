@@ -142,7 +142,10 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   });
 
   const currentDate = shiftTimezone('add', new Date());
-  const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
+  const [oldValue, setOldValue] = useControllableState({
+    value: controlledValue,
+    defaultValue: controlledValue,
+  });
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   let applyButtonDisabled = !hasBothDatesSelected;
   if (isSingle) {
