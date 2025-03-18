@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.16.1
+
+### Patch Changes
+
+- 20f744ab: fix(blade): datepicker height change issue
+
 ## 12.16.0
 
 ### Minor Changes
