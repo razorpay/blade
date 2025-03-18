@@ -5,7 +5,7 @@ import { getBaseListBoxWrapperStyles } from './getBaseListBoxWrapperStyles';
 import BaseBox from '~components/Box/BaseBox';
 
 const StyledListBoxWrapper = styled(BaseBox)<
-  Partial<SectionListProps<any, any>> & { isInBottomSheet: boolean; hideLastDivider: boolean }
+  Partial<SectionListProps<any, any>> & { isInBottomSheet: boolean; hideLastDivider?: boolean }
 >((props) => {
   const { hideLastDivider = true } = props;
   return {
