@@ -5,6 +5,7 @@ import { getActionListProperties } from './actionListUtils';
 import { ActionListBox as ActionListNormalBox, ActionListVirtualizedBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { ActionListNoResults } from './ActionListNoResults';
+import { ActionListProvider } from './ActionListContext';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -70,36 +71,40 @@ const _ActionList = ({
   // 1. We don't render the box wrapper styles which includes shadows, padding, border etc
   // 2. to ensure GorhomBottomSheetSectionList works as expected, if we add extra wrappers GorhomBottomSheet won't render the content inside
   // NOTE: That this also means inside BottomSheet, ActionList won't render any ActionListHeader or Footer.
-  return isInBottomSheet ? (
-    <ActionListBox
-      isInBottomSheet={isInBottomSheet}
-      actionListItemWrapperRole={actionListItemWrapperRole}
-      childrenWithId={childrenWithId}
-      sectionData={sectionData}
-      isMultiSelectable={isMultiSelectable}
-      ref={actionListItemRef as any}
-      {...makeAnalyticsAttribute(rest)}
-    />
-  ) : (
-    <BaseBox
-      id={`${dropdownBaseId}-actionlist`}
-      {...makeAccessible({
-        role: actionListContainerRole,
-        multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
-        labelledBy: `${dropdownBaseId}-label`,
-      })}
-      {...metaAttribute({ name: MetaConstants.ActionList, testID })}
-      {...makeAnalyticsAttribute(rest)}
-    >
-      <ActionListBox
-        isInBottomSheet={isInBottomSheet}
-        actionListItemWrapperRole={actionListItemWrapperRole}
-        childrenWithId={childrenWithId}
-        sectionData={sectionData}
-        isMultiSelectable={isMultiSelectable}
-        ref={actionListItemRef as any}
-      />
-    </BaseBox>
+  return (
+    <ActionListProvider value={{ isVirtualized }}>
+      {isInBottomSheet ? (
+        <ActionListBox
+          isInBottomSheet={isInBottomSheet}
+          actionListItemWrapperRole={actionListItemWrapperRole}
+          childrenWithId={childrenWithId}
+          sectionData={sectionData}
+          isMultiSelectable={isMultiSelectable}
+          ref={actionListItemRef as any}
+          {...makeAnalyticsAttribute(rest)}
+        />
+      ) : (
+        <BaseBox
+          id={`${dropdownBaseId}-actionlist`}
+          {...makeAccessible({
+            role: actionListContainerRole,
+            multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
+            labelledBy: `${dropdownBaseId}-label`,
+          })}
+          {...metaAttribute({ name: MetaConstants.ActionList, testID })}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          <ActionListBox
+            isInBottomSheet={isInBottomSheet}
+            actionListItemWrapperRole={actionListItemWrapperRole}
+            childrenWithId={childrenWithId}
+            sectionData={sectionData}
+            isMultiSelectable={isMultiSelectable}
+            ref={actionListItemRef as any}
+          />
+        </BaseBox>
+      )}
+    </ActionListProvider>
   );
 };
 
