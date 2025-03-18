@@ -97,7 +97,7 @@ type DropdownContextType = {
   setHasFooterAction: (value: boolean) => void;
 
   /**
-   * Apart from dropdownTriggerer prop, we also set this boolean because in BottomSheet, the initial trigger can be Select but also have autocomplete inside of it
+   * Apart from dropdownTriggerer prop, we also set this boolean because in BottomSheetHeader and DropdownHeader, the trigger can be Select but they can also have autocomplete inside of header
    */
   hasAutoCompleteInHeader: boolean;
   setHasAutoCompleteInHeader: (value: boolean) => void;
