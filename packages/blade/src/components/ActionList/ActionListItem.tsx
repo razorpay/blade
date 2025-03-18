@@ -99,9 +99,9 @@ type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
   /**
-   * Internally used to hide the divider on final item in React Native.
+   * Internally used to hide the divider on final item in React Native / Virtualized List in web.
    *
-   * Should not be used by consumers (also won't work on web)
+   * Should not be used by consumers
    *
    * @private
    */
@@ -161,6 +161,7 @@ const _ActionListSection = ({
           </Text>
         </StyledActionListSectionTitle>
       ) : null}
+
       <BaseBox
         {...makeAccessible({
           // On web, we just wrap it in another listbox to announce item count properly for particular group.
@@ -177,7 +178,7 @@ const _ActionListSection = ({
   );
 };
 
-const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
+const ActionListSection = assignWithoutSideEffects(React.memo(_ActionListSection), {
   componentId: componentIds.ActionListSection,
 });
 
