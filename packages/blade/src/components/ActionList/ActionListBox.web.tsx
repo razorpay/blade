@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { useCallback } from 'react';
+import React from 'react';
 import { VariableSizeList as VirtualizedList } from 'react-window';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import type { SectionData } from './actionListUtils';
@@ -11,7 +11,10 @@ import { makeAccessible } from '~utils/makeAccessible';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsMobile } from '~utils/useIsMobile';
-import { getItemHeight } from '~components/BaseMenu/BaseMenuItem/tokens';
+import {
+  actionListSectionTitleHeight,
+  getItemHeight,
+} from '~components/BaseMenu/BaseMenuItem/tokens';
 import { useTheme } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -97,23 +100,14 @@ const useFilteredItems = (
       return childrenArray;
     }
 
-    // const filteredItems = childrenArray.filter((item, index) => {
-    //   if (index === childrenArray.length - 1) {
-    //     // @ts-expect-error: props does exist
-    //     // item.props = { ...item.props, _hideDivider: true };
-    //     console.log(Object.isFrozen(item.props)); // true or false
-    //     console.log('last item', item);
-    //   }
-    //   return (
-    //     // @ts-expect-error: props does exist
-    //     filteredValues.includes(item.props.value) ||
-    //     getComponentId(item) === componentIds.ActionListSection
-    //   );
-    // });
     const filteredItems = childrenArray
       .map((item, index) => {
         if (index === childrenArray.length - 1) {
-          return React.cloneElement(item, { _hideDivider: true });
+          return React.isValidElement(item)
+            ? React.cloneElement(item as React.ReactElement<{ _hideDivider?: boolean }>, {
+                _hideDivider: true,
+              })
+            : item;
         }
         return item;
       })
@@ -162,6 +156,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
     return (
       <StyledListBoxWrapper
         isInBottomSheet={isInBottomSheet}
+        // in case of virtualized list, we only render visible items. so css will hide divider for every last item visible. instead of hiding the last divider of the list.
         hideLastDivider={false}
         ref={ref}
         {...makeAccessible({
@@ -179,7 +174,9 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
             itemSize={(index) =>
               getComponentId(itemData[index]) === componentIds.ActionListSection
                 ? // @ts-expect-error: props does exist
-                  itemData[index]?.props?.children.length * itemHeight + 32
+                  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                  itemData[index]?.props?.children.length * itemHeight +
+                  actionListSectionTitleHeight
                 : itemHeight
             }
             itemCount={itemCount}

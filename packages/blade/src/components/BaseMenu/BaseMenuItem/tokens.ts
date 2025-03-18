@@ -2,6 +2,7 @@ import type { Theme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 
 const itemFirstRowHeight = size[20];
+const actionListSectionTitleHeight = size[20];
 
 const getItemPadding = (
   theme: Theme,
@@ -35,4 +36,10 @@ const getItemHeight = (
   };
 };
 
-export { itemFirstRowHeight, getItemPadding, getItemMargin, getItemHeight };
+export {
+  actionListSectionTitleHeight,
+  itemFirstRowHeight,
+  getItemPadding,
+  getItemMargin,
+  getItemHeight,
+};
