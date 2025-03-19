@@ -143,7 +143,6 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
     const items = React.Children.toArray(childrenWithId); // Convert children to an array
     const { isInBottomSheet } = useBottomSheetContext();
     const { itemData, itemCount } = useFilteredItems(items);
-    console.log('itemData', itemData);
 
     const isMobile = useIsMobile();
     const { theme } = useTheme();
