@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.16.2
+
+### Patch Changes
+
+- 89391f8b: fix(Input): fix color differences of label between figma and code
+
 ## 12.16.1
 
 ### Patch Changes
