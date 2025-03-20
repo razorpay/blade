@@ -29,14 +29,14 @@ const Calendar = <Type extends DateSelectionType>({
   onPrevious,
   presets,
   showLevelChangeLink,
-  oldValue,
+  selectedValue,
   ...props
 }: CalendarProps<Type> & {
   date?: Date;
   defaultDate?: Date;
   onDateChange?: (date: DateValue) => void;
   showLevelChangeLink?: boolean;
-  oldValue: DatesRangeValue | null;
+  selectedValue: DatesRangeValue | null;
 }): React.ReactElement => {
   const isRange = selectionType === 'range';
 
@@ -70,15 +70,15 @@ const Calendar = <Type extends DateSelectionType>({
     if (_date) {
       return _date;
     }
-    const isRangeSelection = Array.isArray(oldValue);
-    if (isRangeSelection && oldValue[0]) {
-      return oldValue[0];
+    const isRangeSelection = Array.isArray(selectedValue);
+    if (isRangeSelection && selectedValue[0]) {
+      return selectedValue[0];
     }
-    if (!isRangeSelection && oldValue) {
-      return oldValue;
+    if (!isRangeSelection && selectedValue) {
+      return selectedValue;
     }
     return shiftTimezone('add', new Date());
-  }, [_date, oldValue]);
+  }, [_date, selectedValue]);
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
 

@@ -273,7 +273,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             setPicker(() => picker);
             forceRerender();
           }}
-          oldValue={oldValue}
+          selectedValue={controlledValue}
         />
         {isMobile ? null : (
           <CalendarFooter
