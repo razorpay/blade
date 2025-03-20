@@ -5,6 +5,7 @@ import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import type { SectionData } from './actionListUtils';
 import { actionListMaxHeight, getActionListPadding } from './styles/getBaseListBoxWrapperStyles';
 import { componentIds } from './componentIds';
+import { ActionListSectionTitle } from './ActionListItem';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -20,6 +21,9 @@ import type { Theme } from '~components/BladeProvider';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { Divider } from '~components/Divider';
+import { BaseBox } from '~components/Box/BaseBox';
+import { metaAttribute } from '~utils/metaAttribute';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -102,20 +106,37 @@ const useFilteredItems = (
 
     const filteredItems = childrenArray
       .map((item, index) => {
-        if (index === childrenArray.length - 1) {
-          return React.isValidElement(item)
-            ? React.cloneElement(item as React.ReactElement<{ _hideDivider?: boolean }>, {
-                _hideDivider: true,
-              })
-            : item;
+        if (getComponentId(item) === componentIds.ActionListSection) {
+          const itemsToRender = [];
+          // add ActionListSectionTitle the items to render
+          itemsToRender.push(
+            <ActionListSectionTitle
+              key={index}
+              // @ts-expect-error: props does exist
+              title={item?.props.title}
+              isInsideVirtualizedList
+            />,
+          );
+          // @ts-expect-error: props does exist
+          itemsToRender.push(item?.props.children);
+          if (index !== childrenArray.length - 1) {
+            itemsToRender.push(
+              <BaseBox {...metaAttribute({ name: 'DividerContainer' })}>
+                <Divider marginX="spacing.3" marginY="spacing.1" />
+              </BaseBox>,
+            );
+          }
+          console.log('itemsToRender', itemsToRender);
+          return itemsToRender;
         }
         return item;
       })
+      .flat(Infinity)
       .filter(
         (item) =>
-          // @ts-expect-error: props does exist
           filteredValues.includes(item.props.value) ||
-          getComponentId(item) === componentIds.ActionListSection,
+          getComponentId(item) === componentIds.ActionListSectionTitle ||
+          item.props['data-blade-component'] === 'DividerContainer',
       );
     return filteredItems;
   }, [filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, childrenArray]);
@@ -170,18 +191,21 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
           <VirtualizedList
             height={actionListBoxHeight}
             width="100%"
-            itemSize={(index) =>
-              getComponentId(itemData[index]) === componentIds.ActionListSection
-                ? // @ts-expect-error: props does exist
-                  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-                  itemData[index]?.props?.children.length * itemHeight +
-                  actionListSectionTitleHeight
-                : itemHeight
-            }
+            itemSize={(index) => {
+              if (getComponentId(itemData[index]) === componentIds.ActionListItem) {
+                return itemHeight;
+              }
+
+              if (getComponentId(itemData[index]) === componentIds.ActionListSectionTitle) {
+                return actionListSectionTitleHeight;
+              }
+
+              return 1;
+            }}
             itemCount={itemCount}
             itemData={itemData}
             // @ts-expect-error: props does exist
-            itemKey={(index) => itemData[index]?.props.value || itemData[index]?.props.title}
+            itemKey={(index) => itemData[index]?.props?.value || itemData[index]?.props?.title}
           >
             {VirtualListItem}
           </VirtualizedList>

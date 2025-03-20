@@ -115,6 +115,31 @@ type ActionListSectionProps = {
   _sectionChildValues?: string[];
 } & TestID &
   DataAnalyticsAttribute;
+
+const _ActionListSectionTitle = ({
+  title,
+  isInsideVirtualizedList = false,
+}: {
+  title: string;
+  isInsideVirtualizedList?: boolean;
+}): React.ReactElement => {
+  return (
+    <StyledActionListSectionTitle
+      {...makeAccessible({
+        hidden: !isInsideVirtualizedList,
+        role: isInsideVirtualizedList ? 'heading' : undefined,
+      })}
+    >
+      <Text color="surface.text.gray.muted" size="small" weight="semibold">
+        {title}
+      </Text>
+    </StyledActionListSectionTitle>
+  );
+};
+
+const ActionListSectionTitle = assignWithoutSideEffects(_ActionListSectionTitle, {
+  componentId: componentIds.ActionListSectionTitle,
+});
 const _ActionListSection = ({
   title,
   children,
@@ -157,13 +182,7 @@ const _ActionListSection = ({
       {...makeAnalyticsAttribute(rest as Record<string, unknown>)}
     >
       {/* We're announcing title as group label so we can hide this */}
-      {isSectionVisible ? (
-        <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-          <Text color="surface.text.gray.muted" size="small" weight="semibold">
-            {title}
-          </Text>
-        </StyledActionListSectionTitle>
-      ) : null}
+      {isSectionVisible ? <ActionListSectionTitle title={title} /> : null}
 
       <BaseBox
         {...makeAccessible({
@@ -431,4 +450,5 @@ export {
   ActionListItemBadge,
   ActionListItemBadgeGroup,
   ActionListSection,
+  ActionListSectionTitle,
 };
