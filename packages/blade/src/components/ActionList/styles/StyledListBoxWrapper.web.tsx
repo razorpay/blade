@@ -5,16 +5,13 @@ import { getBaseListBoxWrapperStyles } from './getBaseListBoxWrapperStyles';
 import BaseBox from '~components/Box/BaseBox';
 
 const StyledListBoxWrapper = styled(BaseBox)<
-  Partial<SectionListProps<any, any>> & { isInBottomSheet: boolean; hideLastDivider?: boolean }
+  Partial<SectionListProps<any, any>> & { isInBottomSheet: boolean }
 >((props) => {
-  const { hideLastDivider = true } = props;
   return {
-    ...(hideLastDivider && {
-      // Hides the last Divider (we don't want divider on last section)
-      [`& [role=group]:last-child > [role=separator]:last-child`]: {
-        display: 'none',
-      },
-    }),
+    // Hides the last Divider (we don't want divider on last section)
+    [`& [role=group]:last-child > [role=separator]:last-child`]: {
+      display: 'none',
+    },
     overflowY: 'auto',
     ...getBaseListBoxWrapperStyles({
       theme: props.theme,

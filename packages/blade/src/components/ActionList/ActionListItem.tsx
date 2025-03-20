@@ -99,9 +99,9 @@ type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
   /**
-   * Internally used to hide the divider on final item in React Native / Virtualized List in web.
+   * Internally used to hide the divider on final item in React Native
    *
-   * Should not be used by consumers
+   * Should not be used by consumers (also won't work on web)
    *
    * @private
    */
