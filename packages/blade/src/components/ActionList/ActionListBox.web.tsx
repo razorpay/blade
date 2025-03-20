@@ -16,7 +16,6 @@ import {
   actionListSectionTitleHeight,
   actionListDividerHeight,
   getItemHeight,
-  dividerContainer,
 } from '~components/BaseMenu/BaseMenuItem/tokens';
 import { useTheme } from '~utils';
 import type { Theme } from '~components/BladeProvider';
@@ -24,8 +23,6 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
-import { BaseBox } from '~components/Box/BaseBox';
-import { metaAttribute } from '~utils/metaAttribute';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
