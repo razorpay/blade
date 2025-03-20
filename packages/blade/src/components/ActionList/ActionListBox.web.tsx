@@ -106,38 +106,34 @@ const useFilteredItems = (
       return childrenArray;
     }
 
-    const filteredItems = childrenArray
-      .map((item, index) => {
-        if (getComponentId(item) === componentIds.ActionListSection) {
-          const sectionTitle = (
-            <ActionListSectionTitle
-              key={index}
-              // @ts-expect-error: props does exist
-              title={item?.props.title}
-              isInsideVirtualizedList
-            />
-          );
-          // @ts-expect-error: props does exist
-          const sectionChildren = item?.props.children;
+    const filteredItems = childrenArray.reduce<React.ReactNode[]>((acc, item, index) => {
+      if (getComponentId(item) === componentIds.ActionListSection) {
+        const sectionTitle = (
+          <ActionListSectionTitle
+            key={index}
+            // @ts-expect-error: props does exist
+            title={item?.props.title}
+            isInsideVirtualizedList
+          />
+        );
+        // @ts-expect-error: props does exist
+        const sectionChildren = item?.props.children;
 
-          const divider =
-            index !== childrenArray.length - 1 ? (
-              <BaseBox {...metaAttribute({ name: dividerContainer })} key={`divider-${index}`}>
-                <Divider marginX="spacing.3" marginY="spacing.1" />
-              </BaseBox>
-            ) : null;
+        const divider =
+          index !== childrenArray.length - 1 ? (
+            <Divider marginX="spacing.3" marginY="spacing.1" key={`divider-${index}`} />
+          ) : null;
+        const filteredSectionChildren = sectionChildren.filter(
+          (item: { props: { value: string } }) => filteredValues.includes(item.props.value),
+        );
 
-          return [sectionTitle, sectionChildren, divider].filter(Boolean);
-        }
-        return item;
-      })
-      .flat(2)
-      .filter(
-        (item) =>
-          filteredValues.includes(item.props.value) ||
-          getComponentId(item) === componentIds.ActionListSectionTitle ||
-          item.props['data-blade-component'] === dividerContainer,
-      );
+        acc.push(sectionTitle, ...filteredSectionChildren, divider);
+      } else {
+        acc.push(item);
+      }
+      return acc;
+    }, []);
+
     return filteredItems;
   }, [filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, childrenArray]);
 
