@@ -488,7 +488,7 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
   );
 };
 
-export const LargeDropDownData = (): React.ReactElement => {
+export const WithVirtualization = (): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   function getRandomString(length: number) {
     const chars = 'abcdefghijklmnopqrstuvwxyz';
@@ -505,10 +505,10 @@ export const LargeDropDownData = (): React.ReactElement => {
       const country = 'GibberishLand';
 
       const areas = [];
-      const numAreas = Math.floor(Math.random() * 2) + 2; // 2 or 3 areas per city
+      const numAreas = Math.floor(Math.random() * 2) + 60;
 
       for (let j = 0; j < numAreas; j++) {
-        const area = `Area-${Math.floor(Math.random() * 1000)}`;
+        const area = `Area-${city}-${Math.floor(Math.random() * 1000)}`;
         areas.push({
           value: `${country.toLowerCase()}-${state.toLowerCase()}-${city.toLowerCase()}-${area.toLowerCase()}`,
           label: area,
@@ -520,8 +520,7 @@ export const LargeDropDownData = (): React.ReactElement => {
 
     return dropdownData;
   }
-  const dropdownData = generateDropdownData(500); // Generates data for 500 cities
-  const smallDropdownData = generateDropdownData(5); // Generates data for 5 cities
+  const dropdownData = generateDropdownData(50); // Generates data for 500 cities
 
   return (
     <Box padding={'8px'}>
@@ -537,29 +536,6 @@ export const LargeDropDownData = (): React.ReactElement => {
           <ActionList isVirtualized={true}>
             {Object.keys(dropdownData).map((sectionKey) => {
               const section = dropdownData[sectionKey];
-              return (
-                <ActionListSection title={sectionKey} key={sectionKey}>
-                  {section.map((item) => (
-                    <ActionListItem title={item.label} value={item.value} key={item.value} />
-                  ))}
-                </ActionListSection>
-              );
-            })}
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-      <Box> ActionList without Virtualization</Box>
-      <Dropdown selectionType="multiple">
-        <AutoComplete
-          label="Hierarchy Level"
-          placeholder="Select your location"
-          name="action"
-          maxRows="multiple"
-        />
-        <DropdownOverlay>
-          <ActionList>
-            {Object.keys(smallDropdownData).map((sectionKey) => {
-              const section = smallDropdownData[sectionKey];
               return (
                 <ActionListSection title={sectionKey} key={sectionKey}>
                   {section.map((item) => (
