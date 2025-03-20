@@ -4,20 +4,57 @@ import sdk from '@stackblitz/sdk';
 import dedent from 'dedent';
 import { DocsContext } from '@storybook/addon-docs';
 
-import type { Project } from '@stackblitz/sdk';
+import type { Project, VM } from '@stackblitz/sdk';
 import styled from 'styled-components';
 import {
   getIndexTSX,
-  getViteReactTSDependencies,
   indexHTML,
-  isPR,
   logger,
   viteConfigTS,
   vitePackageJSON,
   featuresJS,
+  tsConfigJSON,
 } from '../baseCode';
 import type { SandboxStackBlitzProps } from '../types';
 import BaseBox from '~components/Box/BaseBox';
+import { Box } from '~components/Box';
+import { BoxIcon } from '~components/Icons';
+import { ToastContainer, useToast } from '~components/Toast';
+
+const StyledForkButton = styled.button`
+  background-color: hsl(0 0% 91%);
+  height: 100%;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 0px 0px 0px 4px;
+
+  & > span {
+    font-size: 12px;
+  }
+
+  &:hover {
+    background-color: hsl(0 0% 86%);
+  }
+`;
+
+const ForkButton = ({ onClick }: { onClick: () => void }): React.ReactElement => {
+  return (
+    <StyledForkButton onClick={onClick}>
+      <BoxIcon size="small" />
+      <span>
+        Fork on <b>StackBlitz</b>
+      </span>
+    </StyledForkButton>
+  );
+};
+
+const lockFilePath = `${window.location.origin}/docs-yarn-lock.yaml`;
+let lockFileContentGlobal = '';
 
 const useStackblitzSetup = ({
   code,
@@ -35,7 +72,10 @@ const useStackblitzSetup = ({
   editorHeight: SandboxStackBlitzProps['editorHeight'];
   showConsole: SandboxStackBlitzProps['showConsole'];
   sandboxRef: React.RefObject<HTMLDivElement>;
-}): Project => {
+}): {
+  embedProject: (lockFileContent?: string) => Promise<VM | null>;
+  openProject: (lockFileContent: string) => void;
+} => {
   const docsContext = React.useContext(DocsContext);
 
   // @ts-expect-error docsContext.store exists
@@ -43,88 +83,120 @@ const useStackblitzSetup = ({
   // @ts-expect-error docsContext.store exists
   const brandColor = docsContext?.store?.globals?.globals?.brandColor;
 
-  const fileExtension = isPR ? 'jsx' : 'js';
+  const fileExtension = 'tsx';
   const filesObj = files ?? {};
 
-  const stackblitzProject: Project = React.useMemo(() => {
-    // since its javascript template, it doesn't autoimport react in examples. Here I'm just injecting react if its not imported
-    const reactImport = code?.includes('import React') ? '' : "import React from 'react';\n";
+  const getStackblitzProject = React.useCallback(
+    (lockFileContent?: string): Project => {
+      // since its javascript template, it doesn't autoimport react in examples. Here I'm just injecting react if its not imported
+      const reactImport = code?.includes('import React') ? '' : "import React from 'react';\n";
 
-    return {
-      title: 'Blade Example by Razorpay',
-      description: "Example of Razorpay's Design System, Blade",
-      template: isPR ? 'node' : 'create-react-app',
-      files: {
-        '.vscode/settings.json': JSON.stringify(
-          {
-            'editor.fontFamily': 'Menlo, monospace, Cascadia Code, Consolas, Liberation Mono',
-            'editor.fontSize': 13,
-            'editor.lineHeight': 2,
-            'editor.lineNumbers': 'off',
-            'editor.renderLineHighlight': 'none',
-            'editor.renderIndentGuides': false,
-          },
-          null,
-          4,
-        ),
-        'index.html': indexHTML.replace(/\.js/g, `.${fileExtension}`),
-        [`index.${fileExtension}`]: getIndexTSX({
-          themeTokenName: 'bladeTheme',
-          colorScheme,
-          brandColor,
-          showConsole,
-        }),
-        [`App.${fileExtension}`]: code ? `${reactImport}${dedent(code)}` : '',
-        [`Logger.${fileExtension}`]: logger,
-        'features.js': featuresJS,
-        ...(isPR ? { 'package.json': vitePackageJSON, 'vite.config.js': viteConfigTS } : {}),
-        'package.json': vitePackageJSON,
-        '.npmrc': `auto-install-peers = false`,
-        ...Object.fromEntries(
-          Object.entries(filesObj).map(([fileKey, fileValue]) => [
-            fileKey.replace('.js', `.${fileExtension}`),
-            fileValue,
-          ]),
-        ),
-      },
-      dependencies: getViteReactTSDependencies().dependencies,
-    };
+      return {
+        title: 'Blade Example by Razorpay',
+        description: "Example of Razorpay's Design System, Blade",
+        template: 'node',
+        files: {
+          '.vscode/settings.json': JSON.stringify(
+            {
+              'editor.fontFamily': 'Menlo, monospace, Cascadia Code, Consolas, Liberation Mono',
+              'editor.fontSize': 13,
+              'editor.lineHeight': 2,
+              'editor.lineNumbers': 'off',
+              'editor.renderLineHighlight': 'none',
+              'editor.renderIndentGuides': false,
+            },
+            null,
+            4,
+          ),
+          'index.html': indexHTML.replace(/\.js/g, `.${fileExtension}`),
+          [`index.${fileExtension}`]: getIndexTSX({
+            themeTokenName: 'bladeTheme',
+            colorScheme,
+            brandColor,
+            showConsole,
+          }),
+          [`App.${fileExtension}`]: code ? `${reactImport}${dedent(code)}` : '',
+          [`Logger.${fileExtension}`]: logger,
+          'features.js': featuresJS,
+          'package.json': vitePackageJSON,
+          'vite.config.ts': viteConfigTS,
+          'tsconfig.json': tsConfigJSON,
+          ...(lockFileContent ? { 'yarn.lock': lockFileContent } : {}),
+          '.npmrc': `auto-install-peers = false`,
+          ...Object.fromEntries(
+            Object.entries(filesObj).map(([fileKey, fileValue]) => [
+              fileKey.replace('.js', `.${fileExtension}`),
+              fileValue,
+            ]),
+          ),
+        },
+      };
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorScheme, brandColor, isPR]);
+    [colorScheme, brandColor],
+  );
 
-  React.useEffect(() => {
-    if (sandboxRef.current) {
-      sdk
-        .embedProject(sandboxRef.current, stackblitzProject, {
-          height: editorHeight,
-          openFile: openFile ? openFile.replace(/\.js/g, `.${fileExtension}`) : undefined,
-          terminalHeight: 0,
-          hideDevTools: true,
-          hideNavigation,
-          hideExplorer: true,
-          theme: 'light',
-          showSidebar: false,
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+  const config = {
+    height: editorHeight,
+    openFile: openFile ? openFile.replace(/\.js/g, `.${fileExtension}`) : undefined,
+    terminalHeight: 0,
+    hideDevTools: true,
+    hideNavigation,
+    hideExplorer: true,
+    theme: 'light',
+    showSidebar: false,
+  } as const;
+
+  const embedProject = async (lockFileContent?: string): Promise<VM | null> => {
+    if (!sandboxRef.current) {
+      return null;
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorScheme, brandColor]);
+    const sb = await sdk.embedProject(
+      sandboxRef.current,
+      getStackblitzProject(lockFileContent),
+      config,
+    );
 
-  return stackblitzProject;
+    return sb;
+  };
+
+  const openProject = (lockFileContent: string): void => {
+    if (sandboxRef.current) {
+      sdk.openProject(getStackblitzProject(lockFileContent), {
+        openFile: config.openFile,
+      });
+    }
+  };
+
+  return { embedProject, openProject };
 };
 
 const StyledEmbed = styled(BaseBox)<{ editorHeight: SandboxStackBlitzProps['editorHeight'] }>(
   (props) => `
-  & iframe {
+  position: relative;
+  & > .sb-iframe  {
     border: 1px solid #efefef !important;
     border-radius: 4px;
     height: ${props.editorHeight}
   }
 `,
 );
+
+const loadLockFileContent = async ({ onLoad }: { onLoad: () => void }): Promise<void> => {
+  if (lockFileContentGlobal) {
+    return;
+  }
+
+  console.log('DATA FETCH STARTED');
+  const res = await fetch(lockFilePath);
+  if (res.status !== 200) {
+    throw new Error(`Failed to fetch. Status: ${res.status}`);
+  }
+
+  lockFileContentGlobal = await res.text();
+  onLoad();
+};
 
 export const Sandbox = ({
   children,
@@ -136,8 +208,9 @@ export const Sandbox = ({
   hideNavigation = true,
 }: SandboxStackBlitzProps): JSX.Element => {
   const sandboxRef = React.useRef<HTMLDivElement>(null);
+  const [isDataFetched, setIsDataFetched] = React.useState(false);
 
-  useStackblitzSetup({
+  const { openProject, embedProject } = useStackblitzSetup({
     code: children,
     editorHeight,
     showConsole,
@@ -146,14 +219,52 @@ export const Sandbox = ({
     sandboxRef,
     hideNavigation,
   });
+  const toast = useToast();
+
+  void loadLockFileContent({
+    onLoad: () => setIsDataFetched(true),
+  });
+
+  React.useEffect(() => {
+    if (isDataFetched) {
+      console.log('DATA FETCHED');
+      void (async () => {
+        await embedProject(lockFileContentGlobal);
+      })();
+    }
+  }, [isDataFetched]);
+
+  // React.useEffect(() => {
+  //   void (async () => {
+  //     try {
+
+  //     } catch (err: unknown) {
+  //       await embedProject('');
+  //       toast.show({
+  //         content: 'Failed to fetch yarn.lock. Loading unoptimized version of live code-editor',
+  //         color: 'notice',
+  //       });
+  //       console.log(
+  //         '[lock-file-generation]: Failed to fetch pre-generated yarn.lock. Check error below: \n',
+  //         err,
+  //       );
+  //       lockFileContentGlobal = '';
+  //     }
+  //   })();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <StyledEmbed
       padding={padding}
       // Stackblitz is unable to handle string types of height correctly so we set them on styled-components
-      editorHeight={typeof editorHeight !== 'number' ? editorHeight : undefined}
+      editorHeight={typeof editorHeight === 'number' ? `${editorHeight}px` : editorHeight}
     >
-      <div ref={sandboxRef} />
+      <div className="sb-iframe" ref={sandboxRef} />
+      <Box position="absolute" bottom="36px" left="spacing.0" display="inline-block" height="32px">
+        <ForkButton onClick={() => openProject(lockFileContentGlobal)} />
+      </Box>
+      <ToastContainer />
     </StyledEmbed>
   );
 };
