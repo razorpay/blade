@@ -112,14 +112,18 @@ const ListViewFilters = ({
             )}
           </BaseBox>
         </BaseBox>
-        <BaseBox
-          display="flex"
-          backgroundColor="surface.background.gray.moderate"
-          borderTop="1px solid"
-          borderTopColor="surface.border.gray.muted"
-        >
-          {showFilters ? children : null}{' '}
-        </BaseBox>
+        {showFilters && (
+          <BaseBox
+            display="flex"
+            backgroundColor={
+              isMobile ? 'surface.background.white' : 'surface.background.gray.moderate'
+            }
+            borderTop={!isMobile ? '1ps solid' : undefined}
+            borderTopColor={!isMobile ? 'surface.border.gray.muted' : undefined}
+          >
+            {children}
+          </BaseBox>
+        )}
       </BaseBox>
     </ListViewFiltersProvider>
   );

@@ -35,10 +35,11 @@ const FilterChipGroup = ({
         {...makeAnalyticsAttribute(rest)}
         display="flex"
         padding="spacing.4"
-        gap="spacing.3"
         alignItems="center"
         justifyContent="flex-start"
         width="100%"
+        gap="spacing.3"
+        flexWrap="wrap"
       >
         {children}
         {showClearButton ? <Link onClick={handleClearButtonClick}>Clear Filters</Link> : null}
