@@ -505,7 +505,7 @@ export const WithVirtualization = (): React.ReactElement => {
       const country = 'GibberishLand';
 
       const areas = [];
-      const numAreas = Math.floor(Math.random() * 2) + 60;
+      const numAreas = Math.floor(Math.random() * 2) + 50;
 
       for (let j = 0; j < numAreas; j++) {
         const area = `Area-${city}-${Math.floor(Math.random() * 1000)}`;
@@ -520,7 +520,7 @@ export const WithVirtualization = (): React.ReactElement => {
 
     return dropdownData;
   }
-  const dropdownData = generateDropdownData(50); // Generates data for 500 cities
+  const dropdownData = generateDropdownData(20);
 
   return (
     <Box padding={'8px'}>
