@@ -121,7 +121,7 @@ const useFilteredItems = (
           itemsToRender.push(item?.props.children);
           if (index !== childrenArray.length - 1) {
             itemsToRender.push(
-              <BaseBox {...metaAttribute({ name: 'DividerContainer' })}>
+              <BaseBox {...metaAttribute({ name: 'DividerContainer' })} key={`divider-${index}`}>
                 <Divider marginX="spacing.3" marginY="spacing.1" />
               </BaseBox>,
             );
@@ -203,8 +203,14 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
             }}
             itemCount={itemCount}
             itemData={itemData}
-            // @ts-expect-error: props does exist
-            itemKey={(index) => itemData[index]?.props?.value || itemData[index]?.props?.title}
+            itemKey={(index) =>
+              // @ts-expect-error: props does exist
+              itemData[index]?.props.value ||
+              // @ts-expect-error: props does exist
+              itemData[index]?.props.title ||
+              // @ts-expect-error: props does exist
+              itemData[index]?.props.key
+            }
           >
             {VirtualListItem}
           </VirtualizedList>
