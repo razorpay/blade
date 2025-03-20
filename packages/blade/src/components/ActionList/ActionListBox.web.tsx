@@ -126,7 +126,6 @@ const useFilteredItems = (
               </BaseBox>,
             );
           }
-          console.log('itemsToRender', itemsToRender);
           return itemsToRender;
         }
         return item;

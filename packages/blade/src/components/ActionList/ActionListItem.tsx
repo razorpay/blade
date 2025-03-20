@@ -5,7 +5,6 @@ import type { TouchableOpacity } from 'react-native';
 import { componentIds } from './componentIds';
 import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
 import { getActionListItemRole, getActionListSectionRole } from './getA11yRoles';
-import { useActionListContext } from './ActionListContext';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
@@ -149,7 +148,6 @@ const _ActionListSection = ({
   ...rest
 }: ActionListSectionProps): React.ReactElement => {
   const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
-  const { isVirtualized } = useActionListContext();
   const hasAutoComplete =
     hasAutoCompleteInBottomSheetHeader ||
     dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
@@ -166,8 +164,7 @@ const _ActionListSection = ({
     return true;
   }, [_sectionChildValues, hasAutoComplete, filteredValues]);
 
-  // decides to show divider in React Native or in Virtualized List
-  const showDivider = !(_hideDivider && (isVirtualized || isReactNative()));
+  const showDividerInRN = !(_hideDivider && isReactNative());
   const showDividerInAutoComplete = hasAutoComplete
     ? isSectionVisible && filteredValues.length > 1
     : true;
@@ -193,7 +190,7 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {showDividerInAutoComplete && showDivider ? (
+      {showDividerInAutoComplete && showDividerInRN ? (
         <Divider marginX="spacing.3" marginY="spacing.1" />
       ) : null}
     </BaseBox>
