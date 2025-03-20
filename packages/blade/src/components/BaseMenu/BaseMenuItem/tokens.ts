@@ -2,7 +2,11 @@ import type { Theme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 
 const itemFirstRowHeight = size[20];
-const actionListSectionTitleHeight = size[20];
+const actionListItemPadding = 8;
+// eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+const actionListSectionTitleHeight = size[18] + actionListItemPadding * 2;
+const actionListDividerHeight = size[1];
+const dividerContainer = 'DividerContainer';
 
 const getItemPadding = (
   theme: Theme,
@@ -38,7 +42,9 @@ const getItemHeight = (
 
 export {
   actionListSectionTitleHeight,
+  actionListDividerHeight,
   itemFirstRowHeight,
+  dividerContainer,
   getItemPadding,
   getItemMargin,
   getItemHeight,

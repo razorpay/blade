@@ -14,7 +14,9 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsMobile } from '~utils/useIsMobile';
 import {
   actionListSectionTitleHeight,
+  actionListDividerHeight,
   getItemHeight,
+  dividerContainer,
 } from '~components/BaseMenu/BaseMenuItem/tokens';
 import { useTheme } from '~utils';
 import type { Theme } from '~components/BladeProvider';
@@ -120,7 +122,7 @@ const useFilteredItems = (
 
           const divider =
             index !== childrenArray.length - 1 ? (
-              <BaseBox {...metaAttribute({ name: 'DividerContainer' })} key={`divider-${index}`}>
+              <BaseBox {...metaAttribute({ name: dividerContainer })} key={`divider-${index}`}>
                 <Divider marginX="spacing.3" marginY="spacing.1" />
               </BaseBox>
             ) : null;
@@ -129,12 +131,12 @@ const useFilteredItems = (
         }
         return item;
       })
-      .flat(3)
+      .flat(2)
       .filter(
         (item) =>
           filteredValues.includes(item.props.value) ||
           getComponentId(item) === componentIds.ActionListSectionTitle ||
-          item.props['data-blade-component'] === 'DividerContainer',
+          item.props['data-blade-component'] === dividerContainer,
       );
     return filteredItems;
   }, [filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, childrenArray]);
@@ -175,7 +177,6 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       <StyledListBoxWrapper
         isInBottomSheet={isInBottomSheet}
         // in case of virtualized list, we only render visible items. so css will hide divider for every last item visible. instead of hiding the last divider of the list.
-        hideLastDivider={false}
         ref={ref}
         {...makeAccessible({
           role: actionListItemWrapperRole,
@@ -198,7 +199,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
                 return actionListSectionTitleHeight;
               }
 
-              return 1;
+              return actionListDividerHeight;
             }}
             itemCount={itemCount}
             itemData={itemData}
