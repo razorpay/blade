@@ -107,30 +107,29 @@ const useFilteredItems = (
     const filteredItems = childrenArray
       .map((item, index) => {
         if (getComponentId(item) === componentIds.ActionListSection) {
-          const itemsToRender = [];
-          // add ActionListSectionTitle the items to render
-          itemsToRender.push(
+          const sectionTitle = (
             <ActionListSectionTitle
               key={index}
               // @ts-expect-error: props does exist
               title={item?.props.title}
               isInsideVirtualizedList
-            />,
+            />
           );
           // @ts-expect-error: props does exist
-          itemsToRender.push(item?.props.children);
-          if (index !== childrenArray.length - 1) {
-            itemsToRender.push(
+          const sectionChildren = item?.props.children;
+
+          const divider =
+            index !== childrenArray.length - 1 ? (
               <BaseBox {...metaAttribute({ name: 'DividerContainer' })} key={`divider-${index}`}>
                 <Divider marginX="spacing.3" marginY="spacing.1" />
-              </BaseBox>,
-            );
-          }
-          return itemsToRender;
+              </BaseBox>
+            ) : null;
+
+          return [sectionTitle, sectionChildren, divider].filter(Boolean);
         }
         return item;
       })
-      .flat(Infinity)
+      .flat(3)
       .filter(
         (item) =>
           filteredValues.includes(item.props.value) ||
