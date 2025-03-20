@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.17.0
+
+### Minor Changes
+
+- 3afdadf3: fix(blade): datepicker autofocus not working on programmatically changing date
+
 ## 12.16.2
 
 ### Patch Changes
