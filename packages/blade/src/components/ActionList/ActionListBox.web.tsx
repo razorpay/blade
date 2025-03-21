@@ -211,6 +211,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
             itemCount={itemCount}
             itemData={itemData}
             itemKey={(index) =>
+              // @ts-expect-error: props does exist
               itemData[index]?.props.value ??
               // @ts-expect-error: props does exist
               itemData[index]?.props.title ??
