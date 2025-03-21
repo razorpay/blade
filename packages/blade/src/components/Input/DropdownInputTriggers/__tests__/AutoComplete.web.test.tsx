@@ -292,7 +292,6 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     );
 
     const selectInput = getByLabelText('Cities') as HTMLInputElement;
-    const autoComplete = queryByTestId('cities-autocomplete') as HTMLInputElement;
     expect(selectInput).toBeVisible();
 
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
@@ -304,10 +303,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
 
     // // Start typing to filter, only filtered elements should be visible
-
-    act(() => {
-      autoComplete.focus();
-    });
+    await user.click(getByRole('searchbox'));
     await user.keyboard('m');
     expect(queryByRole('option', { name: 'Pune' })).toBeFalsy();
     expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
@@ -464,7 +460,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     );
 
     const selectInput = getByLabelText('Cities') as HTMLInputElement;
-    const autoComplete = queryByTestId('cities-autocomplete') as HTMLInputElement;
+    const autoComplete = getByRole('searchbox') as HTMLInputElement;
 
     expect(selectInput).toBeInTheDocument();
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
@@ -472,9 +468,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     await user.click(selectInput);
     await waitFor(() => expect(queryByTestId('bottomsheet-body')).toBeVisible());
 
-    act(() => {
-      autoComplete.focus();
-    });
+    await user.click(autoComplete);
 
     expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
     expect(getByRole('option', { name: 'Pune' })).toBeVisible();
