@@ -19,7 +19,7 @@ import type { SandboxStackBlitzProps } from '../types';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { BoxIcon } from '~components/Icons';
-import { ToastContainer, useToast } from '~components/Toast';
+import { ToastContainer } from '~components/Toast';
 
 const StyledForkButton = styled.button`
   background-color: hsl(0 0% 91%);
@@ -219,7 +219,6 @@ export const Sandbox = ({
     sandboxRef,
     hideNavigation,
   });
-  const toast = useToast();
 
   void loadLockFileContent({
     onLoad: () => setIsDataFetched(true),
