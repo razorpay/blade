@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import React from 'react';
+import type { VariableSizeList } from 'react-window';
 import { VariableSizeList as VirtualizedList } from 'react-window';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import type { SectionData } from './actionListUtils';
@@ -158,6 +159,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
     const items = React.Children.toArray(childrenWithId); // Convert children to an array
     const { isInBottomSheet } = useBottomSheetContext();
     const { itemData, itemCount } = useFilteredItems(items);
+    const virtualizedListRef = React.useRef<VariableSizeList>(null);
 
     const isMobile = useIsMobile();
     const { theme } = useTheme();
@@ -166,6 +168,9 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [theme.name, isMobile],
     );
+    React.useEffect(() => {
+      virtualizedListRef?.current?.resetAfterIndex(0);
+    }, [itemCount]);
 
     return (
       <StyledListBoxWrapper
@@ -182,6 +187,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
           childrenWithId
         ) : (
           <VirtualizedList
+            ref={virtualizedListRef}
             height={actionListBoxHeight}
             width="100%"
             itemSize={(index) => {
@@ -192,15 +198,18 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
               if (getComponentId(itemData[index]) === componentIds.ActionListSectionTitle) {
                 return actionListSectionTitleHeight;
               }
-              return actionListDividerHeight;
+              // @ts-expect-error: key does exist
+              if (itemData[index]?.key.includes('divider')) {
+                return actionListDividerHeight;
+              }
+              return 0;
             }}
             itemCount={itemCount}
             itemData={itemData}
             itemKey={(index) =>
+              itemData[index]?.props.value ??
               // @ts-expect-error: props does exist
-              itemData[index]?.props.value ||
-              // @ts-expect-error: props does exist
-              itemData[index]?.props.title ||
+              itemData[index]?.props.title ??
               // @ts-expect-error: props does exist
               itemData[index]?.props.key
             }

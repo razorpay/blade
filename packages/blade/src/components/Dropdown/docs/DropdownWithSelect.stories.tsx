@@ -500,15 +500,15 @@ export const WithVirtualization = (): React.ReactElement => {
     const dropdownData: Record<string, { value: string; label: string }[]> = {};
 
     for (let i = 0; i < numEntries; i++) {
-      const city = `${getRandomString(Math.floor(Math.random() * 5) + 5)}ville`; // Random city name
-      const state = `${getRandomString(Math.floor(Math.random() * 7) + 3)}land`; // Random state name
-      const country = 'GibberishLand';
+      const city = `${getRandomString(Math.floor(Math.random() * 5) + 5)}ville-${1}`; // Random city name
+      const state = `${getRandomString(Math.floor(Math.random() * 7) + 3)}land-${2}`; // Random state name
+      const country = 'GibberishLand'; // Random country name
 
       const areas = [];
-      const numAreas = Math.floor(Math.random() * 2) + 50;
+      const numAreas = Math.floor(Math.random() * 2) + 100;
 
       for (let j = 0; j < numAreas; j++) {
-        const area = `Area-${city}-${Math.floor(Math.random() * 1000)}`;
+        const area = `Area-${city}-${j}`;
         areas.push({
           value: `${country.toLowerCase()}-${state.toLowerCase()}-${city.toLowerCase()}-${area.toLowerCase()}`,
           label: area,
