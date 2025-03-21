@@ -123,8 +123,9 @@ const useFilteredItems = (
         const filteredSectionChildren = sectionChildren.filter(
           (item: { props: { value: string } }) => filteredValues.includes(item.props.value),
         );
-
-        acc.push(sectionTitle, ...filteredSectionChildren, divider);
+        if (filteredSectionChildren.length !== 0) {
+          acc.push(sectionTitle, ...filteredSectionChildren, divider);
+        }
       } else {
         acc.push(item);
       }
@@ -191,7 +192,6 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
               if (getComponentId(itemData[index]) === componentIds.ActionListSectionTitle) {
                 return actionListSectionTitleHeight;
               }
-
               return actionListDividerHeight;
             }}
             itemCount={itemCount}
