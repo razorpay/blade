@@ -128,7 +128,11 @@ const useFilteredItems = (
           acc.push(sectionTitle, ...filteredSectionChildren, divider);
         }
       } else {
-        acc.push(item);
+        // @ts-expect-error: props does exist
+        const value = item?.props.value;
+        if (filteredValues.includes(value)) {
+          acc.push(item);
+        }
       }
       return acc;
     }, []);
