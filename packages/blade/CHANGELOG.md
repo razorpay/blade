@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.17.1
+
+### Patch Changes
+
+- c28b9182: fix(Modal): remove clashing position of modal on module federated apps
+
 ## 12.17.0
 
 ### Minor Changes
