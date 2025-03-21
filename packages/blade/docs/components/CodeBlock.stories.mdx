@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/CodeBlock/Docs" />
+
+# CodeBlock
+
+CodeBlock is a component used to display and highlight code snippets with proper syntax highlighting. It automatically adapts to the current theme (light or dark) using GitHub-like syntax highlighting colors.
+
+## Overview
+
+The CodeBlock component provides a clean and readable way to present code snippets in your application. It currently supports the following languages:
+
+- JSON
+- Protobuf
+
+CodeBlock automatically applies syntax highlighting based on the language specified, making it easier for users to read and understand the code.
+
+## Features
+
+- GitHub-like syntax highlighting
+- Theme adaptation (light/dark mode)
+- Support for JSON and Protobuf languages
+- Configurable background display
+- Clean, readable code formatting
+
+## Props
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| children | string | - | The code content to display and highlight |
+| lang | 'json' \| 'protobuf' | 'json' | The language for syntax highlighting |
+| showBackground | boolean | true | Whether to show a background color |
+| testID | string | - | Test ID for testing frameworks |
+
+## Theme Support
+
+CodeBlock automatically adapts to the current theme (light or dark) using the Blade design system's theme variables. The syntax highlighting colors are derived from GitHub-like color schemes:
+
+- **Light Theme**: 
+  - Uses GitHub's light syntax highlighting colors for a clean, readable appearance
+  - Background color is pure white (#ffffff) to match GitHub's code display
+  - Property names and numbers are blue (#0550ae)
+  - Strings are dark blue (#0a3069)
+  - Keywords (true, false, null) are red (#cf222e)
+  - Comments are gray (#6e7781)
+
+- **Dark Theme**: 
+  - Uses GitHub's dark syntax highlighting colors for reduced eye strain in dark environments
+  - Background color is GitHub's dark mode code background (#0d1117)
+  - Property names and numbers are light blue (#75beff)
+  - Strings are light blue (#a5d6ff)
+  - Keywords are red-orange (#ff7b72)
+  - Comments are muted gray (#8b949e)
+
+## Guidelines
+
+- Use CodeBlock when you need to present code snippets to users
+- Always provide meaningful and properly formatted code for better readability
+- Consider using the `showBackground` prop to visually separate the code from surrounding content
+- Ensure the code is syntactically correct for the selected language
+- For long code snippets, consider using CodeBlock within a scrollable container 
