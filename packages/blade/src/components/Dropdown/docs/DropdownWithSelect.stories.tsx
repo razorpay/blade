@@ -557,7 +557,27 @@ export const WithVirtualization = (): React.ReactElement => {
         />
         <DropdownOverlay>
           <ActionList isVirtualized={true}>
-            {[...Array(1000)].map((_, index) => (
+            {[...Array(500)].map((_, index) => (
+              <ActionListItem
+                title={`Item ${index}`}
+                value={`Item ${index}`}
+                key={`Item ${index}`}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box> Non Virtualized</Box>
+      <Dropdown selectionType="single">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            {[...Array(300)].map((_, index) => (
               <ActionListItem
                 title={`Item ${index}`}
                 value={`Item ${index}`}
