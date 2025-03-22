@@ -99,7 +99,7 @@ type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
   /**
-   * Internally used to hide the divider on final item in React Native.
+   * Internally used to hide the divider on final item in React Native
    *
    * Should not be used by consumers (also won't work on web)
    *
@@ -114,6 +114,31 @@ type ActionListSectionProps = {
   _sectionChildValues?: string[];
 } & TestID &
   DataAnalyticsAttribute;
+
+const _ActionListSectionTitle = ({
+  title,
+  isInsideVirtualizedList = false,
+}: {
+  title: string;
+  isInsideVirtualizedList?: boolean;
+}): React.ReactElement => {
+  return (
+    <StyledActionListSectionTitle
+      {...makeAccessible({
+        hidden: !isInsideVirtualizedList,
+        role: isInsideVirtualizedList ? 'heading' : undefined,
+      })}
+    >
+      <Text color="surface.text.gray.muted" size="small" weight="semibold">
+        {title}
+      </Text>
+    </StyledActionListSectionTitle>
+  );
+};
+
+const ActionListSectionTitle = assignWithoutSideEffects(_ActionListSectionTitle, {
+  componentId: componentIds.ActionListSectionTitle,
+});
 const _ActionListSection = ({
   title,
   children,
@@ -154,13 +179,8 @@ const _ActionListSection = ({
       {...makeAnalyticsAttribute(rest as Record<string, unknown>)}
     >
       {/* We're announcing title as group label so we can hide this */}
-      {isSectionVisible ? (
-        <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-          <Text color="surface.text.gray.muted" size="small" weight="semibold">
-            {title}
-          </Text>
-        </StyledActionListSectionTitle>
-      ) : null}
+      {isSectionVisible ? <ActionListSectionTitle title={title} /> : null}
+
       <BaseBox
         {...makeAccessible({
           // On web, we just wrap it in another listbox to announce item count properly for particular group.
@@ -177,7 +197,7 @@ const _ActionListSection = ({
   );
 };
 
-const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
+const ActionListSection = assignWithoutSideEffects(React.memo(_ActionListSection), {
   componentId: componentIds.ActionListSection,
 });
 
@@ -427,4 +447,5 @@ export {
   ActionListItemBadge,
   ActionListItemBadgeGroup,
   ActionListSection,
+  ActionListSectionTitle,
 };

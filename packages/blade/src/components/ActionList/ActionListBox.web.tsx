@@ -1,20 +1,29 @@
 /* eslint-disable react/display-name */
 import React from 'react';
-import { FixedSizeList as VirtualizedList } from 'react-window';
+import type { VariableSizeList } from 'react-window';
+import { VariableSizeList as VirtualizedList } from 'react-window';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import type { SectionData } from './actionListUtils';
 import { actionListMaxHeight, getActionListPadding } from './styles/getBaseListBoxWrapperStyles';
+import { componentIds } from './componentIds';
+import { ActionListSectionTitle } from './ActionListItem';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsMobile } from '~utils/useIsMobile';
-import { getItemHeight } from '~components/BaseMenu/BaseMenuItem/tokens';
+import {
+  actionListSectionTitleHeight,
+  actionListDividerHeight,
+  getActionListItemHeight,
+} from '~components/BaseMenu/BaseMenuItem/tokens';
 import { useTheme } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { Divider } from '~components/Divider';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -49,27 +58,66 @@ const ActionListBox = assignWithoutSideEffects(React.memo(_ActionListBox), {
 });
 
 /**
+ *  get the height of the item based on the componentId
+ */
+const getItemHeight = ({
+  index,
+  itemData,
+  actionListItemHeight,
+}: {
+  index: number;
+  itemData: React.ReactNode[];
+  actionListItemHeight: number;
+}): number => {
+  if (getComponentId(itemData[index]) === componentIds.ActionListItem) {
+    return actionListItemHeight;
+  }
+
+  if (getComponentId(itemData[index]) === componentIds.ActionListSectionTitle) {
+    return actionListSectionTitleHeight;
+  }
+  // @ts-expect-error: key does exist
+  if (itemData[index]?.key.includes('divider')) {
+    return actionListDividerHeight;
+  }
+  return 0;
+};
+
+/**
  * Returns the height of item and height of container based on theme and device
  */
 const getVirtualItemParams = ({
   theme,
   isMobile,
+  itemCount,
+  itemData,
 }: {
   theme: Theme;
   isMobile: boolean;
+  itemCount: number;
+  itemData: React.ReactNode[];
 }): {
-  itemHeight: number;
+  actionListItemHeight: number;
   actionListBoxHeight: number;
 } => {
-  const itemHeightResponsive = getItemHeight(theme);
+  const itemHeightResponsive = getActionListItemHeight(theme);
   const actionListPadding = getActionListPadding(theme);
+  const actionListItemHeight = isMobile
+    ? itemHeightResponsive.itemHeightMobile
+    : itemHeightResponsive.itemHeightDesktop;
+  const shouldCalculateMinimumHeight = itemCount <= 10;
   const actionListBoxHeight = actionListMaxHeight - actionListPadding * 2;
+  const actionListBoxMinHeight = shouldCalculateMinimumHeight
+    ? itemData.reduce<number>((acc, _, index) => {
+        const itemHeight = getItemHeight({ index, itemData, actionListItemHeight });
+        return acc + itemHeight;
+      }, 0)
+    : actionListBoxHeight;
+  const finalActionListBoxHeight = Math.min(actionListBoxHeight, actionListBoxMinHeight);
 
   return {
-    itemHeight: isMobile
-      ? itemHeightResponsive.itemHeightMobile
-      : itemHeightResponsive.itemHeightDesktop,
-    actionListBoxHeight,
+    actionListItemHeight,
+    actionListBoxHeight: finalActionListBoxHeight,
   };
 };
 
@@ -95,8 +143,39 @@ const useFilteredItems = (
       return childrenArray;
     }
 
-    // @ts-expect-error: props does exist
-    const filteredItems = childrenArray.filter((item) => filteredValues.includes(item.props.value));
+    const filteredItems = childrenArray.reduce<React.ReactNode[]>((acc, item, index) => {
+      if (getComponentId(item) === componentIds.ActionListSection) {
+        const sectionTitle = (
+          <ActionListSectionTitle
+            key={index}
+            // @ts-expect-error: props does exist
+            title={item?.props.title}
+            isInsideVirtualizedList
+          />
+        );
+        // @ts-expect-error: props does exist
+        const sectionChildren = item?.props.children;
+
+        const divider =
+          index !== childrenArray.length - 1 ? (
+            <Divider marginX="spacing.3" marginY="spacing.1" key={`divider-${index}`} />
+          ) : null;
+        const filteredSectionChildren = sectionChildren.filter(
+          (item: { props: { value: string } }) => filteredValues.includes(item.props.value),
+        );
+        if (filteredSectionChildren.length !== 0) {
+          acc.push(sectionTitle, ...filteredSectionChildren, divider);
+        }
+      } else {
+        // @ts-expect-error: props does exist
+        const value = item?.props.value;
+        if (filteredValues.includes(value)) {
+          acc.push(item);
+        }
+      }
+      return acc;
+    }, []);
+
     return filteredItems;
   }, [filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, childrenArray]);
 
@@ -123,18 +202,24 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
     const items = React.Children.toArray(childrenWithId); // Convert children to an array
     const { isInBottomSheet } = useBottomSheetContext();
     const { itemData, itemCount } = useFilteredItems(items);
+    const virtualizedListRef = React.useRef<VariableSizeList>(null);
 
     const isMobile = useIsMobile();
     const { theme } = useTheme();
-    const { itemHeight, actionListBoxHeight } = React.useMemo(
-      () => getVirtualItemParams({ theme, isMobile }),
+    const { actionListItemHeight, actionListBoxHeight } = React.useMemo(
+      () => getVirtualItemParams({ theme, isMobile, itemCount, itemData }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [theme.name, isMobile],
+      [theme.name, isMobile, itemCount, itemData],
     );
+    React.useEffect(() => {
+      virtualizedListRef?.current?.resetAfterIndex(0);
+      virtualizedListRef?.current?.scrollToItem(0);
+    }, [itemCount]);
 
     return (
       <StyledListBoxWrapper
         isInBottomSheet={isInBottomSheet}
+        // in case of virtualized list, we only render visible items. so css will hide divider for every last item visible. instead of hiding the last divider of the list.
         ref={ref}
         {...makeAccessible({
           role: actionListItemWrapperRole,
@@ -142,21 +227,24 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
         })}
         {...makeAnalyticsAttribute(rest)}
       >
-        {itemCount < 10 ? (
-          childrenWithId
-        ) : (
-          <VirtualizedList
-            height={actionListBoxHeight}
-            width="100%"
-            itemSize={itemHeight}
-            itemCount={itemCount}
-            itemData={itemData}
+        <VirtualizedList
+          ref={virtualizedListRef}
+          height={actionListBoxHeight}
+          width="100%"
+          itemSize={(index) => getItemHeight({ index, itemData, actionListItemHeight })}
+          itemCount={itemCount}
+          itemData={itemData}
+          itemKey={(index) =>
             // @ts-expect-error: props does exist
-            itemKey={(index) => itemData[index]?.props.value}
-          >
-            {VirtualListItem}
-          </VirtualizedList>
-        )}
+            itemData[index]?.props.value ??
+            // @ts-expect-error: props does exist
+            itemData[index]?.props.title ??
+            // @ts-expect-error: props does exist
+            itemData[index]?.props.key
+          }
+        >
+          {VirtualListItem}
+        </VirtualizedList>
       </StyledListBoxWrapper>
     );
   },
