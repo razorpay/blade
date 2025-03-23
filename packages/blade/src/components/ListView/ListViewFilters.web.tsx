@@ -1,5 +1,6 @@
 import { useState } from 'react';
 // import styled from 'styled-components';
+import { AnimatePresence, m } from 'framer-motion';
 import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
 import { ListViewFiltersProvider } from './ListViewFiltersContext.web';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -13,6 +14,11 @@ import { SearchInput } from '~components/Input/SearchInput';
 import { useId } from '~utils/useId';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
+import { msToSeconds } from '~utils/msToSeconds';
+import { useTheme } from '~components/BladeProvider';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
+import { castWebType } from '~utils';
+
 // import { Divider } from '~components/Divider';
 
 // const FadeContainer = styled.div`
@@ -45,6 +51,7 @@ const ListViewFilters = ({
   const searchId = useId('search-input');
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
+  const { theme } = useTheme();
 
   return (
     <ListViewFiltersProvider
@@ -115,18 +122,30 @@ const ListViewFilters = ({
             )}
           </BaseBox>
         </BaseBox>
-        {showFilters && (
-          <BaseBox
-            display="flex"
-            backgroundColor={
-              isMobile ? 'surface.background.white' : 'surface.background.gray.moderate'
-            }
-            borderTop={!isMobile ? '1ps solid' : undefined}
-            borderTopColor={!isMobile ? 'surface.border.gray.muted' : undefined}
-          >
-            {children}
-          </BaseBox>
-        )}
+        <AnimatePresence>
+          {showFilters && (
+            <m.div
+              initial={{ height: 0 }}
+              animate={{ height: showFilters ? 'auto' : 0 }}
+              transition={{
+                duration: msToSeconds(theme.motion.duration.moderate),
+                ease: cssBezierToArray(castWebType(theme.motion.easing.standard)),
+              }}
+              exit={{ height: 0 }}
+            >
+              <BaseBox
+                display="flex"
+                backgroundColor={
+                  isMobile ? 'surface.background.white' : 'surface.background.gray.moderate'
+                }
+                borderTop={!isMobile ? '1ps solid' : undefined}
+                borderTopColor={!isMobile ? 'surface.border.gray.muted' : undefined}
+              >
+                {children}
+              </BaseBox>
+            </m.div>
+          )}
+        </AnimatePresence>
       </BaseBox>
     </ListViewFiltersProvider>
   );
