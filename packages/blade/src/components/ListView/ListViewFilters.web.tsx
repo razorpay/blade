@@ -80,6 +80,7 @@ const ListViewFilters = ({
             overflow={isMobile ? 'scroll' : 'visible'}
             width={isMobile ? '100%' : 'auto'}
             marginRight={isMobile ? 'spacing.2' : 'spacing.0'}
+            paddingLeft={isMobile ? 'spacing.2' : 'spacing.0'}
             paddingY="spacing.5"
           >
             {quickFilters}
