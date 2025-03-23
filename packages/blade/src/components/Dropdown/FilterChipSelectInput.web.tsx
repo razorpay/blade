@@ -62,18 +62,11 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   const isUnControlled = options.length > 0 && props.value === undefined;
   // Currently we are having 2 context for selectedFilters. One is for FilterChipGroup and other is for  ListView
-  const { setListViewSelectedFilters } = useListViewFilterContext();
+  const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
   const {
-    filterChipGroupSelectedFilters,
+    clearFilterCallbackTriggerer,
     setFilterChipGroupSelectedFilters,
   } = useFilterChipGroupContext();
-
-  useEffect(() => {
-    if (isUnControlled) {
-      setHasUnControlledFilterChipSelectInput(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUnControlled]);
 
   const getValuesArrayFromIndices = (): string[] => {
     let indices: number[] = [];
@@ -85,6 +78,23 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
     return indices.map((selectionIndex) => options[selectionIndex].value);
   };
+
+  useEffect(() => {
+    if (isUnControlled) {
+      setHasUnControlledFilterChipSelectInput(true);
+      if (listViewSelectedFilters[label]) {
+        const value = (listViewSelectedFilters[label] as unknown) as number[];
+        setSelectedIndices(value);
+        const inputValue = value.map((selectionIndex) => options[selectionIndex].value);
+        console.log('inputValue', inputValue);
+        setUncontrolledInputValue(inputValue);
+        setFilterChipGroupSelectedFilters((prev) =>
+          prev.includes(label) ? prev : [...prev, label],
+        );
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUnControlled]);
 
   const getTitleFromValue = (value: string): string => {
     const option = options.find((option) => option.value === value);
@@ -103,27 +113,23 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
-
     if (isUnControlled) {
       setUncontrolledInputValue([]);
       setSelectedIndices([]);
     }
-    const updateSelectedFilters = (
-      setter: React.Dispatch<React.SetStateAction<string[]>>,
-      label: string,
-    ): void => {
-      setter((prev) => prev.filter((filter) => filter !== label));
-    };
-    updateSelectedFilters(setFilterChipGroupSelectedFilters, label);
-    updateSelectedFilters(setListViewSelectedFilters, label);
+    setFilterChipGroupSelectedFilters((prev) => prev.filter((filter) => filter !== label));
+    setListViewSelectedFilters((prev) => {
+      const { [label]: _, ...updatedFilters } = prev;
+      return updatedFilters;
+    });
   };
 
   useEffect(() => {
-    if (filterChipGroupSelectedFilters.length === 0) {
+    if (clearFilterCallbackTriggerer) {
       handleClearButtonClick();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterChipGroupSelectedFilters.length]);
+  }, [clearFilterCallbackTriggerer]);
 
   useEffect(() => {
     if (!isFirstRender) {
@@ -138,25 +144,20 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
   useEffect(() => {
-    const isValueEmpty = Array.isArray(value) ? value.length === 0 : !value;
+    const isValueEmpty = selectedIndices.length === 0;
     if (!isFirstRender && !isValueEmpty) {
-      const updateSelectedFilters = (
-        setter: React.Dispatch<React.SetStateAction<string[]>>,
-        label: string,
-      ): void => {
-        setter((prev) => (prev.includes(label) ? prev : [...prev, label]));
-      };
-      updateSelectedFilters(setFilterChipGroupSelectedFilters, label);
-      updateSelectedFilters(setListViewSelectedFilters, label);
+      setFilterChipGroupSelectedFilters((prev) => (prev.includes(label) ? prev : [...prev, label]));
+      // const value = selectedIndices.map((selectionIndex) => options[selectionIndex].value);
+      setListViewSelectedFilters((prev) => ({
+        ...prev,
+        [label]: selectedIndices as number[],
+      }));
     } else if (!isFirstRender && isValueEmpty) {
-      const updateSelectedFilters = (
-        setter: React.Dispatch<React.SetStateAction<string[]>>,
-        label: string,
-      ): void => {
-        setter((prev) => prev.filter((filter) => filter !== label));
-      };
-      updateSelectedFilters(setFilterChipGroupSelectedFilters, label);
-      updateSelectedFilters(setListViewSelectedFilters, label);
+      setFilterChipGroupSelectedFilters((prev) => prev.filter((filter) => filter !== label));
+      setListViewSelectedFilters((prev) => {
+        const { [label]: _, ...updatedFilters } = prev;
+        return updatedFilters;
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);

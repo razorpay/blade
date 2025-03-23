@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // import styled from 'styled-components';
-import type { ListViewFilterProps } from './types';
+import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
 import { ListViewFiltersProvider } from './ListViewFiltersContext.web';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import BaseBox from '~components/Box/BaseBox';
@@ -38,7 +38,10 @@ const ListViewFilters = ({
     value: showQuickFilters,
     onChange: onShowQuickFiltersChange,
   });
-  const [listViewSelectedFilters, setListViewSelectedFilters] = useState<string[]>([]);
+  const [
+    listViewSelectedFilters,
+    setListViewSelectedFilters,
+  ] = useState<ListViewSelectedFiltersType>({});
   const searchId = useId('search-input');
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
@@ -93,7 +96,7 @@ const ListViewFilters = ({
                 transform="translate(50%, -50%)"
               >
                 <Counter
-                  value={listViewSelectedFilters.length}
+                  value={Object.keys(listViewSelectedFilters).length}
                   color="primary"
                   emphasis="intense"
                 />

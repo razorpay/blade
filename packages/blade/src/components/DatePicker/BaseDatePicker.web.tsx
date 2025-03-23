@@ -153,9 +153,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const currentDate = shiftTimezone('add', new Date());
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
-  const { setListViewSelectedFilters } = useListViewFilterContext();
+  const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
   const {
-    filterChipGroupSelectedFilters,
+    clearFilterCallbackTriggerer,
     setFilterChipGroupSelectedFilters,
   } = useFilterChipGroupContext();
   let applyButtonDisabled = !hasBothDatesSelected;
@@ -168,8 +168,16 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   }, [controllableSetIsOpen]);
 
   const handleApply = (): void => {
-    const updateSelectedFilters = (setFilters: React.Dispatch<React.SetStateAction<string[]>>) => {
-      setFilters((prev: string[]) => [...prev, label as string]);
+    const updateSelectedFilters = () => {
+      setFilterChipGroupSelectedFilters((prev: string[]) => [...prev, label as string]);
+    };
+    const storeSelectedFiltersAndValueInListViewContext = () => {
+      setListViewSelectedFilters((prev) => {
+        if (isSingle) {
+          return { ...prev, [label as string]: [controlledValue as string] };
+        }
+        return { ...prev, [label as string]: controlledValue as string[] };
+      });
     };
     if (isSingle) {
       onChange?.(controlledValue);
@@ -177,8 +185,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();
-      updateSelectedFilters(setListViewSelectedFilters);
-      updateSelectedFilters(setFilterChipGroupSelectedFilters);
+      storeSelectedFiltersAndValueInListViewContext();
+      updateSelectedFilters();
       return;
     }
     // only apply if both dates are selected
@@ -190,8 +198,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       close();
     }
 
-    updateSelectedFilters(setListViewSelectedFilters);
-    updateSelectedFilters(setFilterChipGroupSelectedFilters);
+    storeSelectedFiltersAndValueInListViewContext();
+    updateSelectedFilters();
   };
 
   const handleCancel = (): void => {
@@ -205,20 +213,34 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     fireNativeEvent(referenceRef, ['change']);
     handleReset();
     close();
-    const removeFilter = (setFilters: React.Dispatch<React.SetStateAction<string[]>>) => {
-      setFilters((prev: string[]) => prev.filter((filter) => filter !== label));
-    };
 
-    removeFilter(setListViewSelectedFilters);
-    removeFilter(setFilterChipGroupSelectedFilters);
+    setFilterChipGroupSelectedFilters((prev: string[]) =>
+      prev.filter((filter) => filter !== label),
+    );
+
+    setListViewSelectedFilters((prev) => {
+      const { [label as string]: _, ...rest } = prev;
+      return rest;
+    });
   };
 
-  useEffect(() => {
-    if (filterChipGroupSelectedFilters.length === 0) {
+  React.useEffect(() => {
+    if (listViewSelectedFilters[label as string]) {
+      setControlledValue(
+        (listViewSelectedFilters[
+          label as keyof typeof listViewSelectedFilters
+        ] as unknown) as DatesRangeValue,
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  React.useEffect(() => {
+    if (clearFilterCallbackTriggerer) {
       handleClear();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterChipGroupSelectedFilters.length]);
+  }, [clearFilterCallbackTriggerer]);
 
   const isMobile = useIsMobile();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);

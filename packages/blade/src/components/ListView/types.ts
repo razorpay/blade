@@ -20,11 +20,24 @@ type ListViewFilterProps = {
   DataAnalyticsAttribute &
   ListViewCommonProps;
 
+type ListViewSelectedFiltersType = {
+  [key: string]: string[] | string;
+};
+
 type ListViewContextType = {
   /**
    *  Number of Selected Filters
    */
-  listViewSelectedFilters: string[];
-  setListViewSelectedFilters: React.Dispatch<React.SetStateAction<string[]>>;
+  listViewSelectedFilters: ListViewSelectedFiltersType;
+  setListViewSelectedFilters: React.Dispatch<
+    React.SetStateAction<{
+      [key: string]: string[] | string | number[];
+    }>
+  >;
 };
-export type { ListViewContextType, ListViewProps, ListViewFilterProps };
+export type {
+  ListViewContextType,
+  ListViewProps,
+  ListViewFilterProps,
+  ListViewSelectedFiltersType,
+};

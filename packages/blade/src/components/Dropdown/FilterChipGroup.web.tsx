@@ -17,17 +17,21 @@ const FilterChipGroup = ({
   const [filterChipGroupSelectedFilters, setFilterChipGroupSelectedFilters] = useState<string[]>(
     [],
   );
+  const [clearFilterCallbackTriggerer, setClearFilterCallbackTriggerer] = useState<number>(0);
   const { setListViewSelectedFilters } = useListViewFilterContext();
   const handleClearButtonClick = (): void => {
     onClearButtonClick?.();
-    setListViewSelectedFilters([]);
+    setListViewSelectedFilters({});
     setFilterChipGroupSelectedFilters([]);
+    setClearFilterCallbackTriggerer((prev) => prev + 1);
   };
   return (
     <FilterChipGroupProvider
       value={{
         filterChipGroupSelectedFilters,
         setFilterChipGroupSelectedFilters,
+        clearFilterCallbackTriggerer,
+        setClearFilterCallbackTriggerer,
       }}
     >
       <BaseBox

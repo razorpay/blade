@@ -466,16 +466,6 @@ const SideNavExample = ({
   );
 };
 const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
-  const [value, setSelectedValue] = React.useState<string[]>([]);
-  const handleOnClick = (name: string): void => {
-    if (value.includes(name)) {
-      setSelectedValue(value.filter((val) => val !== name));
-    } else {
-      setSelectedValue([...value, name]);
-    }
-  };
-  const isSelected = (name: string): boolean => value.includes(name);
-
   return (
     <BaseBox height="100%">
       <ListView>
@@ -507,81 +497,27 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
             }}
           >
             <Dropdown selectionType="multiple">
-              <FilterChipSelectInput
-                label="Filter Chip"
-                value={value}
-                onClearButtonClick={(value) => {
-                  console.log('value', value);
-                  setSelectedValue([]);
-                }}
-              />
+              <FilterChipSelectInput label="Filter Chip" />
               <DropdownOverlay>
                 <ActionList>
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('latest-added')}
-                    title="Latest Added"
-                    value="latest-added"
-                  />
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('latest-invoice')}
-                    title="Latest Invoice"
-                    value="latest-invoice"
-                  />
+                  <ActionListItem title="Latest Added" value="latest-added" />
+                  <ActionListItem title="Latest Invoice" value="latest-invoice" />
 
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('oldest-due-date')}
-                    title="Oldest Due Date"
-                    value="oldest-due-date"
-                  />
+                  <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
                 </ActionList>
               </DropdownOverlay>
             </Dropdown>
-            <FilterChipDatePicker label="Date" selectionType="range" />
-            <Dropdown selectionType="multiple">
-              <FilterChipSelectInput
-                label="Filter Chip 2"
-                value={value}
-                onClearButtonClick={(value) => {
-                  console.log('value', value);
-                  setSelectedValue([]);
-                }}
-              />
+            <FilterChipDatePicker label="Date - range" selectionType="range" />
+            <FilterChipDatePicker label="Date - single" selectionType="single" />
+
+            <Dropdown selectionType="single">
+              <FilterChipSelectInput label="Filter Chip - single" />
               <DropdownOverlay>
                 <ActionList>
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('latest-added')}
-                    title="Latest Added"
-                    value="latest-added"
-                  />
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('latest-invoice')}
-                    title="Latest Invoice"
-                    value="latest-invoice"
-                  />
+                  <ActionListItem title="Latest Added" value="latest-added" />
+                  <ActionListItem title="Latest Invoice" value="latest-invoice" />
 
-                  <ActionListItem
-                    onClick={({ name }) => {
-                      handleOnClick(name);
-                    }}
-                    isSelected={isSelected('oldest-due-date')}
-                    title="Oldest Due Date"
-                    value="oldest-due-date"
-                  />
+                  <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
                 </ActionList>
               </DropdownOverlay>
             </Dropdown>

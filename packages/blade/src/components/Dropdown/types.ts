@@ -90,6 +90,8 @@ type FilterChipGroupContextType = {
    */
   filterChipGroupSelectedFilters: string[];
   setFilterChipGroupSelectedFilters: React.Dispatch<React.SetStateAction<string[]>>;
+  clearFilterCallbackTriggerer: number;
+  setClearFilterCallbackTriggerer: React.Dispatch<React.SetStateAction<number>>;
 };
 export type {
   DropdownProps,
