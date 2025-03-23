@@ -168,12 +168,17 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   }, [controllableSetIsOpen]);
 
   const handleApply = (): void => {
+    const updateSelectedFilters = (setFilters: React.Dispatch<React.SetStateAction<string[]>>) => {
+      setFilters((prev: string[]) => [...prev, label as string]);
+    };
     if (isSingle) {
       onChange?.(controlledValue);
       fireNativeEvent(referenceRef, ['change']);
       setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();
+      updateSelectedFilters(setListViewSelectedFilters);
+      updateSelectedFilters(setFilterChipGroupSelectedFilters);
       return;
     }
     // only apply if both dates are selected
@@ -184,9 +189,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       onApply?.(controlledValue);
       close();
     }
-    const updateSelectedFilters = (setFilters: React.Dispatch<React.SetStateAction<string[]>>) => {
-      setFilters((prev: string[]) => [...prev, label as string]);
-    };
 
     updateSelectedFilters(setListViewSelectedFilters);
     updateSelectedFilters(setFilterChipGroupSelectedFilters);
