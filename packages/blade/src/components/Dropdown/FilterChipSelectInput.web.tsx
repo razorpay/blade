@@ -86,12 +86,14 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
         const value = (listViewSelectedFilters[label] as unknown) as number[];
         setSelectedIndices(value);
         const inputValue = value.map((selectionIndex) => options[selectionIndex].value);
-        console.log('inputValue', inputValue);
         setUncontrolledInputValue(inputValue);
         setFilterChipGroupSelectedFilters((prev) =>
           prev.includes(label) ? prev : [...prev, label],
         );
       }
+    } else if (listViewSelectedFilters[label]) {
+      const value = (listViewSelectedFilters[label] as unknown) as number[];
+      setSelectedIndices(value);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUnControlled]);
@@ -147,7 +149,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     const isValueEmpty = selectedIndices.length === 0;
     if (!isFirstRender && !isValueEmpty) {
       setFilterChipGroupSelectedFilters((prev) => (prev.includes(label) ? prev : [...prev, label]));
-      // const value = selectedIndices.map((selectionIndex) => options[selectionIndex].value);
       setListViewSelectedFilters((prev) => ({
         ...prev,
         [label]: selectedIndices as number[],

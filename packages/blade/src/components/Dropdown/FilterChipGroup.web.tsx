@@ -46,7 +46,11 @@ const FilterChipGroup = ({
         flexWrap="wrap"
       >
         {children}
-        {showClearButton ? <Link onClick={handleClearButtonClick}>Clear Filters</Link> : null}
+        {showClearButton && filterChipGroupSelectedFilters.length > 0 ? (
+          <Link onClick={handleClearButtonClick}>{`Clear Filter${
+            filterChipGroupSelectedFilters.length > 1 ? 's' : ''
+          }`}</Link>
+        ) : null}
       </BaseBox>
     </FilterChipGroupProvider>
   );

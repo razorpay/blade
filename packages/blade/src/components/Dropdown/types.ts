@@ -79,7 +79,7 @@ type FilterChipGroupProps = TestID &
      */
     onClearButtonClick?: () => void;
     /**
-     * Boolean to decide if we should show clear button or not
+     * Boolean to decide if we should show clear button or not. only works if selectedFilters are present
      */
     showClearButton?: boolean;
   };
