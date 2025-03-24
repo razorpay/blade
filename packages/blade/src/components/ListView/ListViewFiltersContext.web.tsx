@@ -3,6 +3,7 @@ import type { ListViewContextType } from './types';
 
 const ListViewFiltersGroupContext = React.createContext<ListViewContextType>({
   listViewSelectedFilters: {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setListViewSelectedFilters: () => {},
 });
 const ListViewFiltersProvider = ListViewFiltersGroupContext.Provider;
