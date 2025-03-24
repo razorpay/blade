@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-feat(blade): add FilterChipSelectInput component
+feat(blade): add `FilterChipSelectInput` component
