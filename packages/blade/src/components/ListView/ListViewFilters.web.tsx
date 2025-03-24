@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import styled from 'styled-components';
 import { AnimatePresence, m } from 'framer-motion';
 import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
 import { ListViewFiltersProvider } from './ListViewFiltersContext.web';
@@ -18,14 +17,6 @@ import { msToSeconds } from '~utils/msToSeconds';
 import { useTheme } from '~components/BladeProvider';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
-
-// import { Divider } from '~components/Divider';
-
-// const FadeContainer = styled.div`
-//   width: 20px;
-//   height: 36px;
-//   background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
-// `;
 
 const ListViewFilters = ({
   testID,
