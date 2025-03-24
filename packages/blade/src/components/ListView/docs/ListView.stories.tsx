@@ -103,231 +103,354 @@ const Page = (): React.ReactElement => {
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { ListView , ListViewFilters, BaseBox,QuickFilterGroup, QuickFilter, FilterChipGroup,Dropdown,DropdownOverlay} from '@razorpay/blade/components';
-        
-        function App() {
-          return (
-                     <BaseBox height="100%">
-               <ListView>
-                 <ListViewFilters
-                   quickFilters={
-                     <QuickFilterGroup selectionType="single" defaultValue="Captured">
-                       <QuickFilter
-                         title="Captured"
-                         value="Captured"
-                         trailing={<Counter value={234} color="positive" />}
-                       />
-                       <QuickFilter
-                         title="Failed"
-                         value="Failed"
-                         trailing={<Counter value={234} color="negative" />}
-                       />
-                       <QuickFilter
-                         title="Pending"
-                         value="Pending"
-                         trailing={<Counter value={234} color="neutral" />}
-                       />
-                     </QuickFilterGroup>
-                   }
-                   onSearchChange={(value) => console.log(value)}
-                 >
-                   <FilterChipGroup
-                     onClearButtonClick={() => {
-                       console.log('clear button clear');
+       import React, { useState } from 'react';
+       import {
+         ListView,
+         ListViewFilters,
+         BaseBox,
+         QuickFilterGroup,
+         QuickFilter,
+         FilterChipGroup,
+         Dropdown,
+         DropdownOverlay,
+         Counter,
+         FilterChipSelectInput,
+         ActionList,
+         ActionListItem,
+         FilterChipDatePicker,
+         Table,
+       } from '@razorpay/blade/components';
+       
+       const nodes = [
+         ...Array.from({ length: 30 }, (_, i) => ({
+           id: (i + 1).toString(),
+           paymentId: Math.floor(Math.random() * 1000000)},
+           amount: Number((Math.random() * 10000).toFixed(2)),
+           status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+           date: new Date(
+             2025,
+             Math.floor(Math.random() * 12),
+             Math.floor(Math.random() * 28) + 1
+           ),
+           type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
+           method: ['Bank Transfer', 'Credit Card', 'PayPal'][
+             Math.floor(Math.random() * 3)
+           ],
+           bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
+           account: Math.floor(Math.random() * 1000000000).toString(),
+           name: [
+             'John Doe',
+             'Jane Doe',
+             'Bob Smith',
+             'Alice Smith',
+             'John Smith',
+             'Jane Smith',
+             'Bob Doe',
+             'Alice Doe',
+           ][Math.floor(Math.random() * 8)],
+         })),
+       ];
+       
+       const data = {
+         nodes,
+       };
+       
+       function App() {
+         const [listViewTableData, setListViewTableData] = useState(data);
+         const [selectedQuickFilter, setSelectedQuickFilter] = useState('Pending');
+         const [searchValue, setSearchValue] = useState('');
+         const [methodFilter, setMethodFilter] = useState('');
+         const [filterDateRange, setFilterDateRange] = useState(undefined);
+       
+         const getQuickFilterValueCount = (value) => {
+           return data.nodes.filter((node) => node.status === value).length;
+         };
+         const getQuickFilterData = (data, value) => {
+           if (!value) {
+             return { nodes: data.nodes };
+           }
+           return { nodes: data.nodes.filter((node) => node.status === value) };
+         };
+         const getSearchedData = (data, value) => {
+           if (!value) {
+             return { nodes: data.nodes };
+           }
+           return {
+             nodes: data.nodes.filter((node) => node.paymentId.includes(value)),
+           };
+         };
+         const getMethodFilterData = (data, value) => {
+           if (!value) {
+             return { nodes: data.nodes };
+           }
+           return { nodes: data.nodes.filter((node) => node.method === value) };
+         };
+       
+         const getFilterRangeData = (data, value) => {
+           if (!value?.[0]) {
+             return { nodes: data.nodes };
+           }
+           return {
+             nodes: data.nodes.filter(
+               (node) => node.date >= value[0] && node.date <= value[1]
+             ),
+           };
+         };
+         return (
+           <BaseBox height="100%">
+             <ListView>
+               <ListViewFilters
+                 quickFilters={
+                   <QuickFilterGroup
+                     selectionType="single"
+                     onChange={({ values }) => {
+                       const value = values[0];
+                       const quickFilterData = getQuickFilterData(data, value);
+                       const searchValueData = getSearchedData(
+                         quickFilterData,
+                         searchValue
+                       );
+                       const methodFilterData = getMethodFilterData(
+                         searchValueData,
+                         methodFilter
+                       );
+                       const dateRangeFilterData = getFilterRangeData(
+                         methodFilterData,
+                         filterDateRange
+                       );
+       
+                       setListViewTableData(dateRangeFilterData);
+                       setSelectedQuickFilter(value);
                      }}
-                     clearButtonText="Clear Filters"
                    >
-                     <Dropdown selectionType="multiple">
-                       <FilterChipSelectInput
-                         label="Filter Chip"
-                         value={value}
-                         onClearButtonClick={(value) => {
-                           console.log('value', value);
-                           setSelectedValue([]);
-                         }}
-                       />
-                       <DropdownOverlay>
-                         <ActionList>
-                           <ActionListItem
-                             onClick={({ name }) => {
-                               handleOnClick(name);
-                             }}
-                             isSelected={isSelected('latest-added')}
-                             title="Latest Added"
-                             value="latest-added"
-                           />
-                           <ActionListItem
-                             onClick={({ name }) => {
-                               handleOnClick(name);
-                             }}
-                             isSelected={isSelected('latest-invoice')}
-                             title="Latest Invoice"
-                             value="latest-invoice"
-                           />
-         
-                           <ActionListItem
-                             onClick={({ name }) => {
-                               handleOnClick(name);
-                             }}
-                             isSelected={isSelected('oldest-due-date')}
-                             title="Oldest Due Date"
-                             value="oldest-due-date"
-                           />
-                         </ActionList>
-                       </DropdownOverlay>
-                     </Dropdown>
-                     <FilterChipDatePicker label="Date" selectionType="range" />
-                     <Dropdown selectionType="multiple">
-                       <FilterChipSelectInput
-                         label="Filter Chip - 2"
-                         value={value}
-                         onClearButtonClick={(value) => {
-                           console.log('value', value);
-                           setSelectedValue([]);
-                         }}
-                       />
-                       <DropdownOverlay>
-                         <ActionList>
-                           <ActionListItem
-                             onClick={({ name }) => {
-                               handleOnClick(name);
-                             }}
-                             isSelected={isSelected('latest-added')}
-                             title="Latest Added"
-                             value="latest-added"
-                           />
-                           <ActionListItem
-                             onClick={({ name }) => {
-                               handleOnClick(name);
-                             }}
-                             isSelected={isSelected('latest-invoice')}
-                             title="Latest Invoice"
-                             value="latest-invoice"
-                           />
-         
-                           <ActionListItem
-                             onClick={({ name }) => {
-                               handleOnClick(name);
-                             }}
-                             isSelected={isSelected('oldest-due-date')}
-                             title="Oldest Due Date"
-                             value="oldest-due-date"
-                           />
-                         </ActionList>
-                       </DropdownOverlay>
-                     </Dropdown>
-                   </FilterChipGroup>
-                 </ListViewFilters>
-                 <Table
-                   {...args}
-                   data={data}
-                   defaultSelectedIds={['1', '3']}
-                   onSelectionChange={console.log}
-                   isFirstColumnSticky
-                   selectionType="single"
-                 >
-                   {(tableData) => (
-                     <>
-                       <TableHeader>
-                         <TableHeaderRow>
-                           <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                           <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                           <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
-                           <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                           <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                           <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
-                         </TableHeaderRow>
-                       </TableHeader>
-                       <TableBody>
-                         {tableData.map((tableItem, index) => (
-                           <TableRow
-                             key={index}
-                             item={tableItem}
-                             hoverActions={
-                               <>
-                                 <Button variant="tertiary" size="xsmall">
-                                   View Details
-                                 </Button>
-                                 <IconButton
-                                   icon={CheckIcon}
-                                   isHighlighted
-                                   accessibilityLabel="Approve"
-                                   onClick={() => {
-                                     console.log('Approved', tableItem.id);
-                                   }}
-                                 />
-                                 <IconButton
-                                   icon={CloseIcon}
-                                   isHighlighted
-                                   accessibilityLabel="Reject"
-                                   onClick={() => {
-                                     console.log('Rejected', tableItem.id);
-                                   }}
-                                 />
-                               </>
-                             }
-                             onClick={() => {
-                               console.log('where');
-                             }}
-                           >
-                             <TableCell>
-                               <Code size="medium">{tableItem.paymentId}</Code>
-                             </TableCell>
-                             <TableEditableCell
-                               accessibilityLabel="Amount"
-                               placeholder="Enter text"
-                               successText="Amount is valid"
+                     <QuickFilter
+                       title="Pending"
+                       value="Pending"
+                       trailing={
+                         <Counter
+                           value={getQuickFilterValueCount('Pending')}
+                           color="positive"
+                         />
+                       }
+                     />
+                     <QuickFilter
+                       title="Failed"
+                       value="Failed"
+                       trailing={
+                         <Counter
+                           value={getQuickFilterValueCount('Failed')}
+                           color="negative"
+                         />
+                       }
+                     />
+                     <QuickFilter
+                       title="Completed"
+                       value="Completed"
+                       trailing={
+                         <Counter
+                           value={getQuickFilterValueCount('Completed')}
+                           color="neutral"
+                         />
+                       }
+                     />
+                   </QuickFilterGroup>
+                 }
+                 onSearchChange={({ value }) => {
+                   const quickFilterData = getQuickFilterData(
+                     data,
+                     selectedQuickFilter
+                   );
+                   const searchValueData = getSearchedData(quickFilterData, value);
+                   const methodFilterData = getMethodFilterData(
+                     searchValueData,
+                     methodFilter
+                   );
+                   const dateRangeFilterData = getFilterRangeData(
+                     methodFilterData,
+                     filterDateRange
+                   );
+                   setListViewTableData(dateRangeFilterData);
+                   setSearchValue(value);
+                 }}
+                 searchValuePlaceholder="Search for Payment Id"
+               >
+                 <FilterChipGroup onClearButtonClick={() => {}}>
+                   <Dropdown selectionType="single">
+                     <FilterChipSelectInput
+                       label="Method"
+                       onChange={({ values }) => {
+                         const value = values[0];
+                         const quickFilterData = getQuickFilterData(
+                           data,
+                           selectedQuickFilter
+                         );
+                         const searchValueData = getSearchedData(
+                           quickFilterData,
+                           searchValue
+                         );
+                         const methodFilterData = getMethodFilterData(
+                           searchValueData,
+                           value
+                         );
+                         const dateRangeFilterData = getFilterRangeData(
+                           methodFilterData,
+                           filterDateRange
+                         );
+       
+                         setListViewTableData(dateRangeFilterData);
+                         setMethodFilter(value);
+                       }}
+                     />
+                     <DropdownOverlay>
+                       <ActionList>
+                         {['Bank Transfer', 'Credit Card', 'PayPal'].map(
+                           (method, index) => (
+                             <ActionListItem
+                               key={index}
+                               title={method}
+                               value={method}
                              />
-                             <TableCell>{tableItem.account}</TableCell>
-                             <TableCell>
-                               {tableItem.date?.toLocaleDateString('en-IN', {
-                                 year: 'numeric',
-                                 month: '2-digit',
-                                 day: '2-digit',
-                               })}
-                             </TableCell>
-                             <TableCell>{tableItem.method}</TableCell>
-                             <TableCell>
-                               <Badge
-                                 size="medium"
-                                 color={
-                                   tableItem.status === 'Completed'
-                                     ? 'positive'
-                                     : tableItem.status === 'Pending'
-                                     ? 'notice'
-                                     : tableItem.status === 'Failed'
-                                     ? 'negative'
-                                     : 'primary'
-                                 }
-                               >
-                                 {tableItem.status}
-                               </Badge>
-                             </TableCell>
-                           </TableRow>
-                         ))}
-                       </TableBody>
-                       <TableFooter>
-                         <TableFooterRow>
-                           <TableFooterCell>Total</TableFooterCell>
-                           <TableFooterCell>-</TableFooterCell>
-                           <TableFooterCell>-</TableFooterCell>
-                           <TableFooterCell>-</TableFooterCell>
-                           <TableFooterCell>-</TableFooterCell>
-                           <TableFooterCell>-</TableFooterCell>
-                           <TableFooterCell>
-                             <Amount value={10} />
-                           </TableFooterCell>
-                         </TableFooterRow>
-                       </TableFooter>
-                     </>
-                   )}
-                 </Table>
-               </ListView>
-               </BaseBox>
-          )
-        }
-
-        export default App;
+                           )
+                         )}
+                       </ActionList>
+                     </DropdownOverlay>
+                   </Dropdown>
+                   <FilterChipDatePicker
+                     label="Date Range"
+                     selectionType="range"
+                     onChange={(value) => {
+                       const quickFilterData = getQuickFilterData(
+                         data,
+                         selectedQuickFilter
+                       );
+                       const searchValueData = getSearchedData(
+                         quickFilterData,
+                         searchValue
+                       );
+                       const methodFilterData = getMethodFilterData(
+                         searchValueData,
+                         methodFilter
+                       );
+                       const dateRangeFilterData = getFilterRangeData(
+                         methodFilterData,
+                         value
+                       );
+                       setListViewTableData(dateRangeFilterData);
+                       setFilterDateRange(value);
+                     }}
+                   />
+                 </FilterChipGroup>
+               </ListViewFilters>
+               <Table
+                 data={listViewTableData}
+                 defaultSelectedIds={['1', '3']}
+                 onSelectionChange={console.log}
+                 isFirstColumnSticky
+                 selectionType="single"
+               >
+                 {(tableData) => (
+                   <>
+                     <TableHeader>
+                       <TableHeaderRow>
+                         <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                         <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                         <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                         <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                         <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                         <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                       </TableHeaderRow>
+                     </TableHeader>
+                     <TableBody>
+                       {tableData.map((tableItem, index) => (
+                         <TableRow
+                           key={index}
+                           item={tableItem}
+                           hoverActions={
+                             <>
+                               <Button variant="tertiary" size="xsmall">
+                                 View Details
+                               </Button>
+                               <IconButton
+                                 icon={CheckIcon}
+                                 isHighlighted
+                                 accessibilityLabel="Approve"
+                                 onClick={() => {
+                                   console.log('Approved', tableItem.id);
+                                 }}
+                               />
+                               <IconButton
+                                 icon={CloseIcon}
+                                 isHighlighted
+                                 accessibilityLabel="Reject"
+                                 onClick={() => {
+                                   console.log('Rejected', tableItem.id);
+                                 }}
+                               />
+                             </>
+                           }
+                           onClick={() => {
+                             console.log('where');
+                           }}
+                         >
+                           <TableCell>
+                             <Code size="medium">{tableItem.paymentId}</Code>
+                           </TableCell>
+                           <TableEditableCell
+                             accessibilityLabel="Amount"
+                             placeholder="Enter text"
+                             successText="Amount is valid"
+                           />
+                           <TableCell>{tableItem.account}</TableCell>
+                           <TableCell>
+                             {tableItem.date?.toLocaleDateString('en-IN', {
+                               year: 'numeric',
+                               month: '2-digit',
+                               day: '2-digit',
+                             })}
+                           </TableCell>
+                           <TableCell>{tableItem.method}</TableCell>
+                           <TableCell>
+                             <Badge
+                               size="medium"
+                               color={
+                                 tableItem.status === 'Completed'
+                                   ? 'positive'
+                                   : tableItem.status === 'Pending'
+                                   ? 'notice'
+                                   : tableItem.status === 'Failed'
+                                   ? 'negative'
+                                   : 'primary'
+                               }
+                             >
+                               {tableItem.status}
+                             </Badge>
+                           </TableCell>
+                         </TableRow>
+                       ))}
+                     </TableBody>
+                     <TableFooter>
+                       <TableFooterRow>
+                         <TableFooterCell>Total</TableFooterCell>
+                         <TableFooterCell>-</TableFooterCell>
+                         <TableFooterCell>-</TableFooterCell>
+                         <TableFooterCell>-</TableFooterCell>
+                         <TableFooterCell>-</TableFooterCell>
+                         <TableFooterCell>-</TableFooterCell>
+                         <TableFooterCell>
+                           <Amount value={10} />
+                         </TableFooterCell>
+                       </TableFooterRow>
+                     </TableFooter>
+                   </>
+                 )}
+               </Table>
+             </ListView>
+           </BaseBox>
+         );
+       }
+       
+       export default App;
+       
       `}
       </Sandbox>
     </StoryPageWrapper>
