@@ -18,7 +18,7 @@ const FilterChipGroup = ({
     [],
   );
   const [clearFilterCallbackTriggerer, setClearFilterCallbackTriggerer] = useState<number>(0);
-  const { setListViewSelectedFilters } = useListViewFilterContext();
+  const { selectedFiltersCount, setListViewSelectedFilters } = useListViewFilterContext();
   const handleClearButtonClick = (): void => {
     onClearButtonClick?.();
     setListViewSelectedFilters({});
@@ -46,9 +46,10 @@ const FilterChipGroup = ({
         flexWrap="wrap"
       >
         {children}
-        {showClearButton && filterChipGroupSelectedFilters.length > 0 ? (
+        {showClearButton &&
+        (filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0) ? (
           <Link onClick={handleClearButtonClick}>{`Clear Filter${
-            filterChipGroupSelectedFilters.length > 1 ? 's' : ''
+            filterChipGroupSelectedFilters.length > 1 || selectedFiltersCount > 1 ? 's' : ''
           }`}</Link>
         ) : null}
       </BaseBox>

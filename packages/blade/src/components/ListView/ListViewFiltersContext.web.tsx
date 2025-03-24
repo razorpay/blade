@@ -2,6 +2,7 @@ import React from 'react';
 import type { ListViewContextType } from './types';
 
 const ListViewFiltersGroupContext = React.createContext<ListViewContextType>({
+  selectedFiltersCount: 0,
   listViewSelectedFilters: {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setListViewSelectedFilters: () => {},

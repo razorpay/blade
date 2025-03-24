@@ -28,6 +28,7 @@ const ListViewFilters = ({
   searchName,
   showQuickFilters,
   onShowQuickFiltersChange,
+  selectedFiltersCount = 0,
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
   const [showFilters, setShowFilters] = useControllableState({
@@ -49,6 +50,7 @@ const ListViewFilters = ({
       value={{
         listViewSelectedFilters,
         setListViewSelectedFilters,
+        selectedFiltersCount,
       }}
     >
       {isMobile && (
@@ -76,7 +78,6 @@ const ListViewFilters = ({
           >
             {quickFilters}
           </BaseBox>
-          {/* <Divider orientation="vertical" /> */}
 
           <BaseBox display="flex" gap="spacing.8" alignItems="center">
             <Box position="relative" display="inline-block">
@@ -95,7 +96,7 @@ const ListViewFilters = ({
                 transform="translate(50%, -50%)"
               >
                 <Counter
-                  value={Object.keys(listViewSelectedFilters).length}
+                  value={selectedFiltersCount || Object.keys(listViewSelectedFilters).length}
                   color="primary"
                   emphasis="intense"
                 />
