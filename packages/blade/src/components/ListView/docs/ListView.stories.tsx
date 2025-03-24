@@ -690,7 +690,7 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
           }}
           searchValuePlaceholder="Search for Payment Id"
         >
-          <FilterChipGroup onClearButtonClick={() => {}}>
+          <FilterChipGroup>
             <Dropdown selectionType="single">
               <FilterChipSelectInput
                 label="Method"
@@ -1184,7 +1184,7 @@ const ListViewFullExample: StoryFn<typeof ListView> = (args): React.ReactElement
                         }}
                         searchValuePlaceholder="Search for Payment Id"
                       >
-                        <FilterChipGroup onClearButtonClick={() => {}}>
+                        <FilterChipGroup>
                           <Dropdown selectionType="single">
                             <FilterChipSelectInput
                               label="Method"
