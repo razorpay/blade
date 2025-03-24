@@ -115,6 +115,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
+    props.onChange?.({ name: name ?? idBase, values: [] });
     if (isUnControlled) {
       setUncontrolledInputValue([]);
       setSelectedIndices([]);
