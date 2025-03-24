@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
+import styled from 'styled-components';
 import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
 import { ListViewFiltersProvider } from './ListViewFiltersContext.web';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -17,6 +18,37 @@ import { msToSeconds } from '~utils/msToSeconds';
 import { useTheme } from '~components/BladeProvider';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
+import { Divider } from '~components/Divider';
+
+const gradientOverlyContainerWidth = '21px'; // 20px + 1px divider width
+const gradientOverlyContainerHeight = '38px';
+
+const StyledQuickFilterContainer = styled(BaseBox)({
+  /* For Webkit (Chrome, Safari) */
+  '::-webkit-scrollbar': {
+    display: 'none',
+  },
+  /* For Firefox */
+  scrollbarWidth: 'none',
+  /* For Edge */
+  msOverflowStyle: 'none',
+});
+
+const GradientOverlay = styled.div`
+  height: 100%;
+  width: 20px;
+  background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #e4e9ed;
+  }
+`;
 
 const ListViewFilters = ({
   testID,
@@ -31,6 +63,9 @@ const ListViewFilters = ({
   selectedFiltersCount = 0,
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
+  const [shouldShowDecorationInQuickFilters, setShouldShowDecorationInQuickFilters] = useState(
+    false,
+  );
   const [showFilters, setShowFilters] = useControllableState({
     defaultValue: showQuickFilters,
     value: showQuickFilters,
@@ -44,6 +79,7 @@ const ListViewFilters = ({
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
   const { theme } = useTheme();
+  console.log('shouldShowDecorationInQuickFilters', shouldShowDecorationInQuickFilters);
 
   return (
     <ListViewFiltersProvider
@@ -69,21 +105,46 @@ const ListViewFilters = ({
           display="flex"
           justifyContent="space-between"
         >
-          <BaseBox
-            overflow={isMobile ? 'scroll' : 'visible'}
-            width={isMobile ? '100%' : 'auto'}
+          <Box
+            position="relative"
+            display="flex"
+            flexDirection="column"
+            width={isMobile ? '88%' : 'auto'}
             marginRight={isMobile ? 'spacing.2' : 'spacing.0'}
-            paddingLeft={isMobile ? 'spacing.2' : 'spacing.0'}
-            paddingY="spacing.5"
           >
-            {quickFilters}
-          </BaseBox>
+            <StyledQuickFilterContainer
+              overflow={isMobile ? 'scroll' : 'visible'}
+              width={isMobile ? '100%' : 'auto'}
+              ref={(node) => {
+                if (node instanceof HTMLElement && quickFilters) {
+                  setShouldShowDecorationInQuickFilters(node.scrollWidth > node.offsetWidth);
+                }
+              }}
+              paddingY="spacing.4"
+              paddingLeft={isMobile ? 'spacing.2' : 'spacing.0'}
+            >
+              {quickFilters}
+            </StyledQuickFilterContainer>
+            {isMobile && shouldShowDecorationInQuickFilters ? (
+              <Box
+                position="absolute"
+                right="-1px"
+                top="spacing.4"
+                width={gradientOverlyContainerWidth}
+                height={gradientOverlyContainerHeight}
+              >
+                <GradientOverlay />
+                <Divider orientation="vertical" />
+              </Box>
+            ) : null}
+          </Box>
 
-          <BaseBox display="flex" gap="spacing.8" alignItems="center">
+          <BaseBox display="flex" gap="spacing.4" alignItems="center">
             <Box position="relative" display="inline-block">
               <Button
                 variant="tertiary"
-                size="small"
+                size="medium"
+                color="primary"
                 onClick={() => {
                   setShowFilters((prev) => !prev);
                 }}
@@ -91,14 +152,15 @@ const ListViewFilters = ({
               />
               <Box
                 position="absolute"
-                top="spacing.0"
                 right="spacing.0"
+                top="spacing.0"
                 transform="translate(50%, -50%)"
               >
                 <Counter
                   value={selectedFiltersCount || Object.keys(listViewSelectedFilters).length}
                   color="primary"
                   emphasis="intense"
+                  size="small"
                 />
               </Box>
             </Box>
