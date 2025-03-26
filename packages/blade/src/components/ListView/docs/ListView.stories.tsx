@@ -353,7 +353,11 @@ const Page = (): React.ReactElement => {
                           value
                         );
                         setListViewTableData(dateRangeFilterData);
-                        setFilterDateRange(value);
+                        setFilterDateRange(
+                          Array.isArray(value) && value.every((date) => date instanceof Date)
+                            ? (value as [Date, Date])
+                            : undefined
+                        );
                       }}
                     />
                   </FilterChipGroup>
@@ -612,7 +616,7 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('Pending');
   const [searchValue, setSearchValue] = useState<string | undefined>('');
   const [methodFilter, setMethodFilter] = useState<string | undefined>('');
-  const [filterDateRange, setFilterDateRange] = useState<Date[] | undefined>(undefined);
+  const [filterDateRange, setFilterDateRange] = useState<[Date, Date] | undefined>(undefined);
 
   const getQuickFilterValueCount = (value: string): number => {
     return data.nodes.filter((node) => node.status === value).length;
@@ -641,7 +645,10 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
       return { nodes: data.nodes };
     }
     return {
-      nodes: data.nodes.filter((node) => node.date >= value[0] && node.date <= value[1]),
+      nodes:
+        data?.nodes?.filter(
+          (node) => node.date >= (value?.[0] ?? 0) && node.date <= (value?.[1] ?? Infinity),
+        ) ?? [],
     };
   };
 
@@ -720,9 +727,16 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
                 const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
                 const searchValueData = getSearchedData(quickFilterData, searchValue);
                 const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
-                const dateRangeFilterData = getFilterRangeData(methodFilterData, value);
+                const dateRangeFilterData = getFilterRangeData(
+                  methodFilterData,
+                  Array.isArray(value) ? value : undefined,
+                );
                 setListViewTableData(dateRangeFilterData);
-                setFilterDateRange(value);
+                setFilterDateRange(
+                  Array.isArray(value) && value.every((date) => date instanceof Date)
+                    ? (value as [Date, Date])
+                    : undefined,
+                );
               }}
             />
           </FilterChipGroup>
@@ -853,7 +867,7 @@ const ListViewFullExample: StoryFn<typeof ListView> = (args): React.ReactElement
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('');
   const [searchValue, setSearchValue] = useState<string | undefined>('');
   const [methodFilter, setMethodFilter] = useState<string | undefined>('PayPal');
-  const [filterDateRange, setFilterDateRange] = useState<Date[] | undefined>(undefined);
+  const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
 
   const getQuickFilterValueCount = (value: string): number => {
     return data.nodes.filter((node) => node.status === value).length;
@@ -882,7 +896,10 @@ const ListViewFullExample: StoryFn<typeof ListView> = (args): React.ReactElement
       return { nodes: data.nodes };
     }
     return {
-      nodes: data.nodes.filter((node) => node.date >= value[0] && node.date <= value[1]),
+      nodes:
+        data?.nodes?.filter(
+          (node) => node.date >= (value?.[0] ?? 0) && node.date <= (value?.[1] ?? Infinity),
+        ) ?? [],
     };
   };
 
@@ -1232,10 +1249,14 @@ const ListViewFullExample: StoryFn<typeof ListView> = (args): React.ReactElement
                               );
                               const dateRangeFilterData = getFilterRangeData(
                                 methodFilterData,
-                                value,
+                                Array.isArray(value) ? value : undefined,
                               );
                               setListViewTableData(dateRangeFilterData);
-                              setFilterDateRange(value);
+                              setFilterDateRange(
+                                Array.isArray(value) && value.length === 2
+                                  ? (value as DatesRangeValue)
+                                  : undefined,
+                              );
                             }}
                           />
                         </FilterChipGroup>
