@@ -79,7 +79,6 @@ const ListViewFilters = ({
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
   const { theme } = useTheme();
-  console.log('shouldShowDecorationInQuickFilters', shouldShowDecorationInQuickFilters);
 
   return (
     <ListViewFiltersProvider

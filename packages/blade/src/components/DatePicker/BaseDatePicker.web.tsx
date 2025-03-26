@@ -72,11 +72,13 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   format = 'DD/MM/YYYY',
   inputPlaceHolder,
   inputElementType = 'datePickerInput',
+  onClearButtonClick,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
   DataAnalyticsAttribute & {
     inputElementType: 'chip' | 'datePickerInput';
+    onClearButtonClick?: () => void;
   }): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
@@ -213,7 +215,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     fireNativeEvent(referenceRef, ['change']);
     handleReset();
     close();
-
     setFilterChipGroupSelectedFilters((prev: string[]) =>
       prev.filter((filter) => filter !== label),
     );
@@ -222,6 +223,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       const { [label as string]: _, ...rest } = prev;
       return rest;
     });
+    onClearButtonClick?.();
   };
 
   React.useEffect(() => {
