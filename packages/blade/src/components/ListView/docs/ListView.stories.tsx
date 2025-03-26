@@ -742,7 +742,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
     return data.nodes.filter((node) => node.status === value).length;
   };
   const getQuickFilterData = (data: TableData<Item>, values?: string[]): TableData<Item> => {
-    if (!values?.length || values.includes('All')) {
+    if (!values?.length) {
       return { nodes: data.nodes };
     }
     return { nodes: data.nodes.filter((node) => values?.includes(node.status)) };
@@ -789,11 +789,6 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                 setSelectedQuickFilter(values);
               }}
             >
-              <QuickFilter
-                title="All"
-                value="All"
-                trailing={<Counter value={data.nodes.length} color="primary" />}
-              />
               <QuickFilter
                 title="Pending"
                 value="Pending"
