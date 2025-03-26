@@ -16,10 +16,10 @@ import {
   tsConfigJSON,
 } from '../baseCode';
 import type { SandboxStackBlitzProps } from '../types';
+import useEarlyFetch from './useEarlyFetch';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { BoxIcon } from '~components/Icons';
-import { ToastContainer } from '~components/Toast';
 
 const StyledForkButton = styled.button`
   background-color: hsl(0 0% 91%);
@@ -88,9 +88,6 @@ const useStackblitzSetup = ({
 
   const getStackblitzProject = React.useCallback(
     (lockFileContent?: string): Project => {
-      // since its javascript template, it doesn't autoimport react in examples. Here I'm just injecting react if its not imported
-      const reactImport = code?.includes('import React') ? '' : "import React from 'react';\n";
-
       return {
         title: 'Blade Example by Razorpay',
         description: "Example of Razorpay's Design System, Blade",
@@ -108,14 +105,14 @@ const useStackblitzSetup = ({
             null,
             4,
           ),
-          'index.html': indexHTML.replace(/\.js/g, `.${fileExtension}`),
+          'index.html': indexHTML,
           [`index.${fileExtension}`]: getIndexTSX({
             themeTokenName: 'bladeTheme',
             colorScheme,
             brandColor,
             showConsole,
           }),
-          [`App.${fileExtension}`]: code ? `${reactImport}${dedent(code)}` : '',
+          [`App.${fileExtension}`]: code ? dedent(code) : '',
           [`Logger.${fileExtension}`]: logger,
           'features.js': featuresJS,
           'package.json': vitePackageJSON,
@@ -123,12 +120,7 @@ const useStackblitzSetup = ({
           'tsconfig.json': tsConfigJSON,
           ...(lockFileContent ? { 'yarn.lock': lockFileContent } : {}),
           '.npmrc': `auto-install-peers = false`,
-          ...Object.fromEntries(
-            Object.entries(filesObj).map(([fileKey, fileValue]) => [
-              fileKey.replace('.js', `.${fileExtension}`),
-              fileValue,
-            ]),
-          ),
+          ...filesObj,
         },
       };
     },
@@ -138,7 +130,7 @@ const useStackblitzSetup = ({
 
   const config = {
     height: editorHeight,
-    openFile: openFile ? openFile.replace(/\.js/g, `.${fileExtension}`) : undefined,
+    openFile,
     terminalHeight: 0,
     hideDevTools: true,
     hideNavigation,
@@ -152,13 +144,18 @@ const useStackblitzSetup = ({
       return null;
     }
 
-    const sb = await sdk.embedProject(
-      sandboxRef.current,
-      getStackblitzProject(lockFileContent),
-      config,
-    );
+    try {
+      const sb = await sdk.embedProject(
+        sandboxRef.current,
+        getStackblitzProject(lockFileContent),
+        config,
+      );
 
-    return sb;
+      return sb;
+    } catch (err: unknown) {
+      console.log('[stackblitz sandbox]: Error while embedding project', err);
+      return null;
+    }
   };
 
   const openProject = (lockFileContent: string): void => {
@@ -183,9 +180,9 @@ const StyledEmbed = styled(BaseBox)<{ editorHeight: SandboxStackBlitzProps['edit
 `,
 );
 
-const loadLockFileContent = async ({ onLoad }: { onLoad: () => void }): Promise<void> => {
+const lockFileFetchFn = async (): Promise<string> => {
   if (lockFileContentGlobal) {
-    return;
+    return lockFileContentGlobal;
   }
 
   console.log('DATA FETCH STARTED');
@@ -195,7 +192,8 @@ const loadLockFileContent = async ({ onLoad }: { onLoad: () => void }): Promise<
   }
 
   lockFileContentGlobal = await res.text();
-  onLoad();
+
+  return lockFileContentGlobal;
 };
 
 export const Sandbox = ({
@@ -203,12 +201,11 @@ export const Sandbox = ({
   editorHeight = 500,
   showConsole = false,
   files,
-  openFile = 'App.js',
+  openFile = 'App.tsx',
   padding = ['spacing.5', 'spacing.0', 'spacing.8'],
   hideNavigation = true,
 }: SandboxStackBlitzProps): JSX.Element => {
   const sandboxRef = React.useRef<HTMLDivElement>(null);
-  const [isDataFetched, setIsDataFetched] = React.useState(false);
 
   const { openProject, embedProject } = useStackblitzSetup({
     code: children,
@@ -220,38 +217,17 @@ export const Sandbox = ({
     hideNavigation,
   });
 
-  void loadLockFileContent({
-    onLoad: () => setIsDataFetched(true),
+  useEarlyFetch(lockFileFetchFn, '', {
+    onSuccess: async (result) => {
+      await embedProject(result);
+    },
+    onError: async () => {
+      console.warn(
+        '[stackblitz sandbox]: Failed to load optimized sandbox. Falling back to slower editor version.',
+      );
+      await embedProject('');
+    },
   });
-
-  React.useEffect(() => {
-    if (isDataFetched) {
-      console.log('DATA FETCHED');
-      void (async () => {
-        await embedProject(lockFileContentGlobal);
-      })();
-    }
-  }, [isDataFetched]);
-
-  // React.useEffect(() => {
-  //   void (async () => {
-  //     try {
-
-  //     } catch (err: unknown) {
-  //       await embedProject('');
-  //       toast.show({
-  //         content: 'Failed to fetch yarn.lock. Loading unoptimized version of live code-editor',
-  //         color: 'notice',
-  //       });
-  //       console.log(
-  //         '[lock-file-generation]: Failed to fetch pre-generated yarn.lock. Check error below: \n',
-  //         err,
-  //       );
-  //       lockFileContentGlobal = '';
-  //     }
-  //   })();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   return (
     <StyledEmbed
@@ -260,10 +236,15 @@ export const Sandbox = ({
       editorHeight={typeof editorHeight === 'number' ? `${editorHeight}px` : editorHeight}
     >
       <div className="sb-iframe" ref={sandboxRef} />
-      <Box position="absolute" bottom="36px" left="spacing.0" display="inline-block" height="32px">
+      <Box
+        position="absolute"
+        bottom={editorHeight === '100vh' ? '4px' : '36px'}
+        left="spacing.0"
+        display="inline-block"
+        height="32px"
+      >
         <ForkButton onClick={() => openProject(lockFileContentGlobal)} />
       </Box>
-      <ToastContainer />
     </StyledEmbed>
   );
 };

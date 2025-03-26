@@ -3,7 +3,7 @@ import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
-import dependencies from './dependencies.json'; // eslint-disable-line
+import deps from './dependencies.json'; // eslint-disable-line
 
 const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
 
@@ -80,7 +80,11 @@ export const vitePackageJSON = JSON.stringify(
       startCommand: 'yarn && yarn dev',
       installDependencies: false,
     },
-    ...dependencies,
+    dependencies: {
+      ...deps.dependencies,
+      '@razorpay/blade': getBladeVersion(),
+    },
+    devDependencies: deps.devDependencies,
   },
   null,
   4,
@@ -127,7 +131,7 @@ export const indexHTML = dedent`
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.js"></script>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
 `;
