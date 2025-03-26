@@ -622,7 +622,7 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
     return data.nodes.filter((node) => node.status === value).length;
   };
   const getQuickFilterData = (data: TableData<Item>, value?: string): TableData<Item> => {
-    if (!value) {
+    if (!value || value === 'All') {
       return { nodes: data.nodes };
     }
     return { nodes: data.nodes.filter((node) => node.status === value) };
@@ -670,6 +670,11 @@ const ListViewTemplate: StoryFn<typeof ListView> = (args) => {
                 setSelectedQuickFilter(value);
               }}
             >
+              <QuickFilter
+                title="All"
+                value="All"
+                trailing={<Counter value={data.nodes.length} color="primary" />}
+              />
               <QuickFilter
                 title="Pending"
                 value="Pending"
