@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React from 'react';
+import React, { useCallback } from 'react';
 import type { VariableSizeList } from 'react-window';
 import { VariableSizeList as VirtualizedList } from 'react-window';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
@@ -24,6 +24,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
+import type { ActionListItemProps } from '~components/ActionList';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -185,24 +186,56 @@ const useFilteredItems = (
   };
 };
 
-const VirtualListItem = ({
-  index,
-  style,
-  data,
-}: {
-  index: number;
-  style: React.CSSProperties;
-  data: React.ReactNode[];
-}): React.ReactElement => {
-  return <div style={style}>{data[index]}</div>;
-};
+const VirtualListItem = React.memo(
+  ({
+    index,
+    style,
+    data,
+    onVirtualizedFocus,
+  }: {
+    index: number;
+    style: React.CSSProperties;
+    data: React.ReactNode[];
+    onVirtualizedFocus: (index: number) => void;
+  }): React.ReactElement | null => {
+    const currentItem = data[index];
+
+    if (
+      React.isValidElement(currentItem) &&
+      getComponentId(currentItem) === componentIds.ActionListItem
+    ) {
+      // Clone the element passed via `data` and add the `_virtualizedIndex` prop
+      const elementWithIndex = React.cloneElement(
+        currentItem as React.ReactElement<ActionListItemProps>,
+        {
+          _virtualizedIndex: index,
+          _onVirtualizedFocus: onVirtualizedFocus,
+        },
+      );
+
+      return <div style={style}>{elementWithIndex}</div>;
+    }
+
+    return <div style={style}>{data[index]}</div>;
+  },
+  (prevProps, nextProps) => {
+    // Custom comparison function to determine if component should update
+    return (
+      prevProps.index === nextProps.index &&
+      prevProps.style === nextProps.style &&
+      prevProps.data[prevProps.index] === nextProps.data[nextProps.index]
+    );
+  },
+);
 
 const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
   ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...rest }, ref) => {
+    const virtualizedListRef = React.useRef<VariableSizeList>(null);
+    const [visibleStartIndex, setVisibleStartIndex] = React.useState(0);
+    const [visibleStopIndex, setVisibleStopIndex] = React.useState(0);
     const items = React.Children.toArray(childrenWithId); // Convert children to an array
     const { isInBottomSheet } = useBottomSheetContext();
     const { itemData, itemCount } = useFilteredItems(items);
-    const virtualizedListRef = React.useRef<VariableSizeList>(null);
 
     const isMobile = useIsMobile();
     const { theme } = useTheme();
@@ -242,8 +275,39 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
             // @ts-expect-error: props does exist
             itemData[index]?.props.key
           }
+          onItemsRendered={({ visibleStartIndex, visibleStopIndex }) => {
+            setVisibleStartIndex(visibleStartIndex);
+            setVisibleStopIndex(visibleStopIndex);
+          }}
         >
-          {VirtualListItem}
+          {useCallback(
+            ({ index, style, data }) => {
+              return (
+                <VirtualListItem
+                  index={index}
+                  style={style}
+                  data={data as React.ReactNode[]}
+                  onVirtualizedFocus={(index) => {
+                    // We need scroll Direction to determine the index to focus
+                    const scrollDirection =
+                      Math.round((visibleStartIndex + visibleStopIndex) / 2) > index
+                        ? 'top'
+                        : 'bottom';
+                    virtualizedListRef?.current?.resetAfterIndex(0);
+                    /**
+                     * we are scrolling to the item which is 3 items away from the current item.
+                     * since we can have 2 item sectoin header and divider which are not focusable.
+                     */
+                    virtualizedListRef?.current?.scrollToItem(
+                      index + (scrollDirection === 'top' ? -3 : 3),
+                      'smart',
+                    );
+                  }}
+                />
+              );
+            },
+            [visibleStartIndex, visibleStopIndex],
+          )}
         </VirtualizedList>
       </StyledListBoxWrapper>
     );

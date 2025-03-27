@@ -505,7 +505,7 @@ export const WithVirtualization = (): React.ReactElement => {
       const country = 'GibberishLand'; // Random country name
 
       const areas = [];
-      const numAreas = Math.floor(Math.random() * 2) + 100;
+      const numAreas = Math.floor(Math.random() * 10);
 
       for (let j = 0; j < numAreas; j++) {
         const area = `Area-${city}-${j}`;

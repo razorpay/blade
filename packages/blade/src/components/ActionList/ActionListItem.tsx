@@ -87,6 +87,14 @@ type ActionListItemProps = {
    * @private
    */
   _index?: number;
+  /**
+   * Internally used to pass index for virtualized lists
+   */
+  _virtualizedIndex?: number;
+  /**
+   * Internally used to focus on virtualized list
+   */
+  _onVirtualizedFocus?: (_virtuazedIndex: number) => void;
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -318,6 +326,13 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     filteredValues,
     hasAutoCompleteInBottomSheetHeader,
   } = useDropdown();
+
+  React.useEffect(() => {
+    if (activeIndex === props._index && props._virtualizedIndex !== undefined) {
+      props._onVirtualizedFocus?.(props._virtualizedIndex as number);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIndex]);
 
   const hasAutoComplete =
     hasAutoCompleteInBottomSheetHeader ||
