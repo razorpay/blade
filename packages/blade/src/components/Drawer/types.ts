@@ -80,6 +80,11 @@ type DrawerHeaderProps = {
    * Link, Button[]
    */
   trailing?: React.ReactNode;
+
+  /**
+   * Children elements to be rendered inside the header
+   */
+  children?: React.ReactElement | React.ReactElement[];
 } & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps };
