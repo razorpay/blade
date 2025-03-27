@@ -89,10 +89,14 @@ type ActionListItemProps = {
   _index?: number;
   /**
    * Internally used to pass index for virtualized lists
+   *
+   * @private
    */
   _virtualizedIndex?: number;
   /**
    * Internally used to focus on virtualized list
+   *
+   * @private
    */
   _onVirtualizedFocus?: (_virtuazedIndex: number) => void;
 } & TestID &
