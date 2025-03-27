@@ -489,14 +489,14 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
 };
 
 export const WithVirtualization = (): React.ReactElement => {
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  function getRandomString(length: number) {
+  function getRandomString(length: number): string {
     const chars = 'abcdefghijklmnopqrstuvwxyz';
     return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  function generateDropdownData(numEntries: number) {
+  function generateDropdownData(
+    numEntries: number,
+  ): Record<string, { value: string; label: string }[]> {
     const dropdownData: Record<string, { value: string; label: string }[]> = {};
 
     for (let i = 0; i < numEntries; i++) {
