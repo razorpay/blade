@@ -399,6 +399,7 @@ export const StepGroupWithIcons = (args: StepGroupProps) => {
 
 export const CollapsibleStepGroup = (args: StepGroupProps) => {
   const isVertical = args.orientation === 'vertical';
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
     <StepGroup {...args}>
@@ -415,8 +416,11 @@ export const CollapsibleStepGroup = (args: StepGroupProps) => {
         stepProgress="full"
         marker={<StepItemIcon icon={UserIcon} color="positive" />}
       />
-      <Collapsible direction="top" _shouldApplyWidthRestrictions={false}>
-        <CollapsibleLink>Hide</CollapsibleLink>
+      <Collapsible
+        onExpandChange={({ isExpanded: _isExpanded }) => setIsExpanded(_isExpanded)}
+        direction="top"
+      >
+        <CollapsibleLink>{isExpanded ? 'Hide' : 'Show'}</CollapsibleLink>
         <CollapsibleBody>
           <StepItem
             title="Business Details"
