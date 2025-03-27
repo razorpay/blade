@@ -260,7 +260,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
         })}
         {...makeAnalyticsAttribute(rest)}
       >
-        <VirtualizedList
+        <VirtualizedList<React.ReactNode[]>
           ref={virtualizedListRef}
           height={actionListBoxHeight}
           width="100%"
@@ -286,7 +286,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
                 <VirtualListItem
                   index={index}
                   style={style}
-                  data={data as React.ReactNode[]}
+                  data={data}
                   onVirtualizedFocus={(index) => {
                     // We need scroll Direction to determine the index to focus
                     const scrollDirection =
