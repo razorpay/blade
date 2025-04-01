@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.18.0
+
+### Minor Changes
+
+- fa1800c4: feat(storybook): pre-generate lock file for documentation examples
+- f211134b: feat(blade) : add keyicon , appleicon, androidicon
+
 ## 12.17.1
 
 ### Patch Changes
