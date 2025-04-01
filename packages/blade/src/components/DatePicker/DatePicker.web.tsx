@@ -157,7 +157,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     if (isSingle) {
       onChange?.(controlledValue);
       fireNativeEvent(referenceRef, ['change']);
-      setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();
       return;
@@ -166,7 +165,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
     if (hasBothDatesSelected) {
       onChange?.(controlledValue);
       fireNativeEvent(referenceRef, ['change']);
-      setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();
     }
@@ -292,6 +290,11 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       locale,
     };
   }, [i18nState?.locale]);
+  // we need to update old value everytime datepicker is opened or closed
+  React.useEffect(() => {
+    setOldValue(controlledValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [controllableIsOpen]);
 
   // Dynamically load dayjs locales
   React.useLayoutEffect(() => {
