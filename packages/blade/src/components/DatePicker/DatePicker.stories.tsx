@@ -84,7 +84,7 @@ export default {
           figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88832-1762629&t=oSH8pSWjSoiOUnXo-0"
         >
           <Title>Usage</Title>
-          <Sandbox>
+          <Sandbox editorHeight={600}>
             {`
               import { DatePicker } from '@razorpay/blade/components';
 import { m } from 'framer-motion';

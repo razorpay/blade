@@ -71,7 +71,7 @@ const Page = (): React.ReactElement => {
                   prefix={<CardHeaderIcon icon={InfoIcon} />}
                   suffix={<CardHeaderCounter value={12} />}
                 />
-                <CardHeaderTrailing visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} />
+                <CardHeaderTrailing visual={<CardHeaderBadge color="positive">NEW</CardHeaderBadge>} />
               </CardHeader>
               <CardBody>
                 <Text>
