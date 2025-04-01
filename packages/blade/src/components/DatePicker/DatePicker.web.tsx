@@ -134,15 +134,19 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       setSelectedPreset(date as DatesRangeValue);
     },
   });
+  const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
 
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,
     defaultValue: defaultIsOpen,
-    onChange: (isOpen) => onOpenChange?.({ isOpen }),
+    onChange: (isOpen) => {
+      onOpenChange?.({ isOpen });
+      // we need to update old value everytime datepicker is opened or closed
+      setOldValue(controlledValue);
+    },
   });
 
   const currentDate = shiftTimezone('add', new Date());
-  const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   let applyButtonDisabled = !hasBothDatesSelected;
   if (isSingle) {
@@ -290,12 +294,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
       locale,
     };
   }, [i18nState?.locale]);
-  // we need to update old value everytime datepicker is opened or closed
-  React.useEffect(() => {
-    setOldValue(controlledValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controllableIsOpen]);
-
   // Dynamically load dayjs locales
   React.useLayoutEffect(() => {
     try {
