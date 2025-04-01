@@ -1,7 +1,9 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
+import { waitFor } from '@testing-library/react';
 import { StepGroup, StepItem, StepItemIndicator } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { Collapsible, CollapsibleLink, CollapsibleBody } from '~components/Collapsible';
 import { Badge } from '~components/Badge';
 
 describe('<StepGroup />', () => {
@@ -105,6 +107,44 @@ describe('<StepGroup />', () => {
     }
     console.error = tempConsoleError;
   });
+
+  it('should render collapsible step group correctly', async () => {
+    const user = userEvents.setup();
+    const { getByText, getByRole } = renderWithTheme(
+      <StepGroup>
+        <StepItem title="Introduction" />
+        <StepItem title="Personal Details" />
+        <Collapsible>
+          <CollapsibleLink>Toggle Show</CollapsibleLink>
+          <CollapsibleBody>
+            <StepItem title="Business Details" />
+            <StepItem title="Needs Response" />
+            <StepItem title="Complete Onboarding" />
+          </CollapsibleBody>
+        </Collapsible>
+      </StepGroup>,
+    );
+
+    // Initial state - collapsed
+    expect(getByText('Introduction')).toBeVisible();
+    expect(getByText('Personal Details')).toBeVisible();
+    expect(getByText('Toggle Show')).toBeVisible();
+    expect(getByText('Business Details')).not.toBeVisible();
+
+    // Click to expand
+    await user.click(getByRole('button', { name: 'Toggle Show' }));
+
+    // Expanded state
+    expect(getByText('Toggle Show')).toBeVisible();
+    expect(getByText('Business Details')).toBeVisible();
+
+    // Click to collapse
+    await user.click(getByRole('button', { name: 'Toggle Show' }));
+
+    // Back to collapsed state
+    await waitFor(() => expect(getByText('Business Details')).not.toBeVisible());
+  });
+
   describe('should support adding data-analytics attribute', () => {
     it('should accept data-analytics attribute', () => {
       const { container } = renderWithTheme(
