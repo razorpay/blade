@@ -34,10 +34,18 @@ const StyledQuickFilterContainer = styled(BaseBox)({
   msOverflowStyle: 'none',
 });
 
-const GradientOverlay = styled.div`
+const GradientOverlay = styled.div<{
+  gradientColorLeft: string;
+  dividerColor: string;
+  gradientColorRight: string;
+}>`
   height: 100%;
   width: 20px;
-  background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    270deg,
+    ${({ gradientColorRight }) => gradientColorRight} 0%,
+    ${({ gradientColorLeft }) => gradientColorLeft} 100%
+  );
   pointer-events: none;
   &::after {
     content: '';
@@ -46,7 +54,7 @@ const GradientOverlay = styled.div`
     top: 0;
     height: 100%;
     width: 1px;
-    background-color: #e4e9ed;
+    background-color: ${({ dividerColor }) => dividerColor};
   }
 `;
 
@@ -132,7 +140,11 @@ const ListViewFilters = ({
                 width={gradientOverlyContainerWidth}
                 height={gradientOverlyContainerHeight}
               >
-                <GradientOverlay />
+                <GradientOverlay
+                  gradientColorLeft={theme.colors.transparent}
+                  gradientColorRight={theme.colors.surface.background.gray.intense}
+                  dividerColor={theme.colors.surface.border.gray.normal}
+                />
                 <Divider orientation="vertical" />
               </Box>
             ) : null}
