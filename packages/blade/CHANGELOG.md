@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.19.0
+
+### Minor Changes
+
+- 9284a1f9: feat(blade): feat: add virtualization in section list
+
 ## 12.18.0
 
 ### Minor Changes
