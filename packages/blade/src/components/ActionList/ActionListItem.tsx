@@ -333,11 +333,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   } = useDropdown();
 
   React.useEffect(() => {
-<<<<<<< HEAD
     if (activeIndex === props._index && props._virtualizedIndex !== undefined && !isMouseHover) {
-=======
-    if (activeIndex === props._index && props._virtualizedIndex !== undefined) {
->>>>>>> origin
       props._onVirtualizedFocus?.(props._virtualizedIndex as number);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
