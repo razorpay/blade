@@ -14,6 +14,7 @@ import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BoxProps } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { DataAnalyticsAttribute } from '~utils/types';
 
 const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
   return (
@@ -53,8 +54,8 @@ const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
 const TabNav = ({
   children,
   items,
-  ...styledProps
-}: TabNavProps & StyledPropsBlade): React.ReactElement => {
+  ...rest
+}: TabNavProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
@@ -108,7 +109,8 @@ const TabNav = ({
         alignItems="center"
         alignSelf="end"
         position="relative"
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
         {...metaAttribute({ name: MetaConstants.TabNav })}
         ref={ref}
       >
