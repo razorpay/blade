@@ -241,7 +241,17 @@ const Page = (): React.ReactElement => {
                  }}
                  searchValuePlaceholder="Search for Payment Id"
                >
-                 <FilterChipGroup onClearButtonClick={() => {}}>
+                 <FilterChipGroup 
+                  onClearButtonClick={() => {
+                   const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+                   const searchValueData = getSearchedData(quickFilterData, searchValue);
+                   const methodFilterData = getMethodFilterData(searchValueData, '');
+                   const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
+                   setListViewTableData(dateRangeFilterData);
+                   setMethodFilter('');
+                   setFilterDateRange(undefined);
+                   }}
+                 >
                    <Dropdown selectionType="single">
                      <FilterChipSelectInput
                        label="Method"
@@ -569,7 +579,17 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
           }}
           searchValuePlaceholder="Search for Payment Id"
         >
-          <FilterChipGroup>
+          <FilterChipGroup
+            onClearButtonClick={() => {
+              const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+              const searchValueData = getSearchedData(quickFilterData, searchValue);
+              const methodFilterData = getMethodFilterData(searchValueData, '');
+              const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
+              setListViewTableData(dateRangeFilterData);
+              setMethodFilter('');
+              setFilterDateRange(undefined);
+            }}
+          >
             <Dropdown selectionType="single">
               <FilterChipSelectInput
                 label="Method"
@@ -818,7 +838,17 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
           }}
           searchValuePlaceholder="Search for Payment Id"
         >
-          <FilterChipGroup>
+          <FilterChipGroup
+            onClearButtonClick={() => {
+              const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+              const searchValueData = getSearchedData(quickFilterData, searchValue);
+              const methodFilterData = getMethodFilterData(searchValueData, '');
+              const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
+              setListViewTableData(dateRangeFilterData);
+              setMethodFilter('');
+              setFilterDateRange(undefined);
+            }}
+          >
             <Dropdown selectionType="single">
               <FilterChipSelectInput
                 label="Method"
@@ -1064,7 +1094,17 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
           }}
           searchValuePlaceholder="Search for Payment Id"
         >
-          <FilterChipGroup>
+          <FilterChipGroup
+            onClearButtonClick={() => {
+              const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+              const searchValueData = getSearchedData(quickFilterData, searchValue);
+              const methodFilterData = getMethodFilterData(searchValueData, '');
+              const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
+              setListViewTableData(dateRangeFilterData);
+              setMethodFilter('');
+              setFilterDateRange(undefined);
+            }}
+          >
             <Dropdown selectionType="single">
               <FilterChipSelectInput
                 label="Method"
