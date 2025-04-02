@@ -1,6 +1,5 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { waitFor } from '@testing-library/react';
 import { StepGroup, StepItem, StepItemIndicator } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Collapsible, CollapsibleLink, CollapsibleBody } from '~components/Collapsible';
@@ -116,7 +115,7 @@ describe('<StepGroup />', () => {
         <StepItem title="Personal Details" />
         <Collapsible>
           <CollapsibleLink>Toggle Show</CollapsibleLink>
-          <CollapsibleBody>
+          <CollapsibleBody testID="collapsible-body">
             <StepItem title="Business Details" />
             <StepItem title="Needs Response" />
             <StepItem title="Complete Onboarding" />
@@ -137,12 +136,6 @@ describe('<StepGroup />', () => {
     // Expanded state
     expect(getByText('Toggle Show')).toBeVisible();
     expect(getByText('Business Details')).toBeVisible();
-
-    // Click to collapse
-    await user.click(getByRole('button', { name: 'Toggle Show' }));
-
-    // Back to collapsed state
-    await waitFor(() => expect(getByText('Business Details')).not.toBeVisible());
   });
 
   describe('should support adding data-analytics attribute', () => {

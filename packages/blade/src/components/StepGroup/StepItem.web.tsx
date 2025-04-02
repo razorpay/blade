@@ -64,8 +64,6 @@ const getStepTypeFromIndex = ({
   _nestingLevel,
   itemsCount,
 }: GetStepTypeFromIndexProps): StepLineProps['stepType'] => {
-  console.log({ itemsCount });
-
   if (_nestingLevel === 0) {
     return 'default';
   }
