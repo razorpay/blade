@@ -53,7 +53,7 @@ type DrawerHeaderProps = {
   /**
    * Title of the Drawer
    */
-  title: string;
+  title?: string;
 
   /**
    * Subtitle of the Drawer
