@@ -722,12 +722,6 @@ export const Default = DefaultExample.bind({});
 Default.storyName = 'Default';
 
 const ControlledExample: StoryFn<typeof ListView> = (args) => {
-  const [listViewTableData, setListViewTableData] = useState(data);
-  const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('Pending');
-  const [searchValue, setSearchValue] = useState<string | undefined>('');
-  const [methodFilter, setMethodFilter] = useState<string | undefined>('PayPal');
-  const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
-
   const getQuickFilterValueCount = (value: string): number => {
     return data.nodes.filter((node) => node.status === value).length;
   };
@@ -761,6 +755,15 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
       }),
     };
   };
+  const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('Completed');
+  const [searchValue, setSearchValue] = useState<string | undefined>('');
+  const [methodFilter, setMethodFilter] = useState<string | undefined>('PayPal');
+  const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
+  const [listViewTableData, setListViewTableData] = useState(() => {
+    const filteredQuickFilterData = getQuickFilterData(data, selectedQuickFilter);
+    const methodFilterData = getMethodFilterData(filteredQuickFilterData, methodFilter);
+    return methodFilterData;
+  });
 
   return (
     <BaseBox height="100%">
