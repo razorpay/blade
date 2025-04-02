@@ -164,13 +164,14 @@ const ListViewFilters = ({
               </Box>
             </Box>
             {!isMobile && (
-              <Box display="flex">
+              <Box width="200px">
                 <SearchInput
                   label=""
                   value={searchValue}
                   placeholder={searchValuePlaceholder}
                   name={searchNameValue || searchId}
                   onChange={({ name, value }) => onSearchChange?.({ name, value })}
+                  size="medium"
                 />
               </Box>
             )}
