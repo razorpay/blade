@@ -225,7 +225,11 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
         flexDirection="column"
         gap="spacing.5"
         padding={{ m: 'spacing.6', s: 'spacing.0' }}
+        /* We only need to set height for day picker, for year picker
+         or month  it should be auto. */
+        height={_picker === 'day' ? '447px' : 'auto'}
         backgroundColor="surface.background.gray.intense"
+        justifyContent="space-between"
       >
         <Calendar
           {...props}
@@ -269,7 +273,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             setPicker(() => picker);
             forceRerender();
           }}
-          oldValue={oldValue}
+          selectedValue={controlledValue}
         />
         {isMobile ? null : (
           <CalendarFooter
