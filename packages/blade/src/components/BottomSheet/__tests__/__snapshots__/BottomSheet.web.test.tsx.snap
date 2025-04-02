@@ -849,6 +849,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
