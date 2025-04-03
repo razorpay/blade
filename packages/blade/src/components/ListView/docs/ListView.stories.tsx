@@ -789,7 +789,9 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
     <BaseBox height="100%">
       <ListView>
         <ListViewFilters
-          selectedFiltersCount={(methodFilter ? 1 : 0) + (filterDateRange ? 1 : 0)}
+          selectedFiltersCount={
+            (methodFilter ? 1 : 0) + (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0)
+          }
           quickFilters={
             <QuickFilterGroup
               selectionType="single"
@@ -884,7 +886,6 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
               selectionType="range"
               value={filterDateRange}
               onChange={(value) => {
-                console.log(value);
                 const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
                 const searchValueData = getSearchedData(quickFilterData, searchValue);
                 const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
@@ -946,9 +947,6 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
                         />
                       </>
                     }
-                    onClick={() => {
-                      console.log('where');
-                    }}
                   >
                     <TableCell>
                       <Code size="medium">{tableItem.paymentId}</Code>
@@ -1192,9 +1190,6 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                         />
                       </>
                     }
-                    onClick={() => {
-                      console.log('where');
-                    }}
                   >
                     <TableCell>
                       <Code size="medium">{tableItem.paymentId}</Code>
