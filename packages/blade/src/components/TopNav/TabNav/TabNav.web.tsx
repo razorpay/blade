@@ -14,7 +14,7 @@ import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BoxProps } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { DataAnalyticsAttribute } from '~utils/types';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
   return (
