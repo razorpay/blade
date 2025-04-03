@@ -318,6 +318,7 @@ const makeActionListItemClickable = (
  * ```
  */
 const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
+  const [isMouseHover, setIsMouseHover] = React.useState<boolean>();
   const {
     activeIndex,
     dropdownBaseId,
@@ -332,7 +333,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   } = useDropdown();
 
   React.useEffect(() => {
-    if (activeIndex === props._index && props._virtualizedIndex !== undefined) {
+    if (activeIndex === props._index && props._virtualizedIndex !== undefined && !isMouseHover) {
       props._onVirtualizedFocus?.(props._virtualizedIndex as number);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -448,6 +449,12 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       selectionType={selectionType}
       color={props.intent}
       isKeydownPressed={isKeydownPressed}
+      onMouseLeave={() => {
+        setIsMouseHover(false);
+      }}
+      onMouseEnter={() => {
+        setIsMouseHover(true);
+      }}
     />
   );
 };
