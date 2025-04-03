@@ -10,7 +10,10 @@ type BladeCommonEvents = {
     native: undefined | ((event: any) => void);
     web: React.FocusEventHandler;
   }>;
-  onMouseLeave?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onMouseLeave?: Platform.Select<{
+    web: React.MouseEventHandler;
+    native: undefined | ((event: any) => void);
+  }>;
   onMouseEnter?: Platform.Select<{
     web: React.MouseEventHandler;
     native: undefined | ((event: any) => void);
