@@ -6,3 +6,4 @@ export * from './DropdownIconButton';
 export * from './DropdownHeaderFooter';
 export * from './types';
 export * from './FilterChipSelectInput';
+export * from './FilterChipGroup';

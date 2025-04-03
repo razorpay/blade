@@ -213,7 +213,15 @@ type DatePickerInputProps = DatePickerCommonInputProps &
 type DatePickerFilterChipProps = DatePickerInputProps;
 
 type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'label'> & {
+  /**
+   * Sets the label for the input element.
+   */
   label: string;
+  /**
+   *
+   * Callback which fires when clear button is clicked
+   */
+  onClearButtonClick?: () => void;
 };
 export type {
   CalendarProps,

@@ -38,6 +38,8 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
+import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
+import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
 
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -70,11 +72,13 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   format = 'DD/MM/YYYY',
   inputPlaceHolder,
   inputElementType = 'datePickerInput',
+  onClearButtonClick,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
   DataAnalyticsAttribute & {
     inputElementType: 'chip' | 'datePickerInput';
+    onClearButtonClick?: () => void;
   }): React.ReactElement => {
   const { i18nState } = useI18nContext();
   const _selectionType = selectionType ?? 'single';
@@ -151,6 +155,11 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const currentDate = shiftTimezone('add', new Date());
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
+  const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
+  const {
+    clearFilterCallbackTriggerer,
+    setFilterChipGroupSelectedFilters,
+  } = useFilterChipGroupContext();
   let applyButtonDisabled = !hasBothDatesSelected;
   if (isSingle) {
     applyButtonDisabled = !Boolean(controlledValue);
@@ -161,12 +170,25 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   }, [controllableSetIsOpen]);
 
   const handleApply = (): void => {
+    const updateSelectedFilters = () => {
+      setFilterChipGroupSelectedFilters((prev: string[]) => [...prev, label as string]);
+    };
+    const storeSelectedFiltersAndValueInListViewContext = () => {
+      setListViewSelectedFilters((prev) => {
+        if (isSingle) {
+          return { ...prev, [label as string]: [controlledValue as string] };
+        }
+        return { ...prev, [label as string]: controlledValue as string[] };
+      });
+    };
     if (isSingle) {
       onChange?.(controlledValue);
       fireNativeEvent(referenceRef, ['change']);
       setOldValue(controlledValue);
       onApply?.(controlledValue);
       close();
+      storeSelectedFiltersAndValueInListViewContext();
+      updateSelectedFilters();
       return;
     }
     // only apply if both dates are selected
@@ -177,6 +199,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       onApply?.(controlledValue);
       close();
     }
+
+    storeSelectedFiltersAndValueInListViewContext();
+    updateSelectedFilters();
   };
 
   const handleCancel = (): void => {
@@ -190,7 +215,34 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     fireNativeEvent(referenceRef, ['change']);
     handleReset();
     close();
+    setFilterChipGroupSelectedFilters((prev: string[]) =>
+      prev.filter((filter) => filter !== label),
+    );
+
+    setListViewSelectedFilters((prev) => {
+      const { [label as string]: _, ...rest } = prev;
+      return rest;
+    });
+    onClearButtonClick?.();
   };
+
+  React.useEffect(() => {
+    if (listViewSelectedFilters[label as string]) {
+      setControlledValue(
+        (listViewSelectedFilters[
+          label as keyof typeof listViewSelectedFilters
+        ] as unknown) as DatesRangeValue,
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  React.useEffect(() => {
+    if (clearFilterCallbackTriggerer) {
+      handleClear();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clearFilterCallbackTriggerer]);
 
   const isMobile = useIsMobile();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
@@ -321,7 +373,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
         <BaseBox
-          width="100%"
+          width={inputElementType === 'chip' ? 'fit-content' : '100%'}
           {...getStyledProps(props)}
           {...metaAttribute({ name: MetaConstants.DatePicker })}
         >
