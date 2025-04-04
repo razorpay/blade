@@ -45,7 +45,23 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
   );
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
 
-  const onDateChange = (date: Date) => {
+  const onDateChange = (date: Date, changeValue: 'day' | 'month' | 'year') => {
+    // // Get the previous value to modify
+    const shouldChangeValue =
+      (changeValue === 'month' || changeValue === 'year') && type === 'default';
+    if (shouldChangeValue) {
+      const prevDate = _value?.[0] || new Date();
+
+      const newDate = new Date(prevDate);
+      if (changeValue === 'month') {
+        newDate.setMonth(date.getMonth());
+      } else if (changeValue === 'year') {
+        newDate.setFullYear(date.getFullYear());
+      }
+
+      date = newDate;
+    }
+
     if (type === 'range') {
       if (pickedDate instanceof Date && !_value[1]) {
         if (dayjs(date).isSame(pickedDate, level) && !allowSingleDateInRange) {
