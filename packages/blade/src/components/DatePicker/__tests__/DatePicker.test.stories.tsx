@@ -251,7 +251,7 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.click(applyButton);
   await sleep(400);
   // assert inputs value
-  await expect(input).toHaveValue(dayjs('02/02/2025').format('DD/MM/YYYY'));
+  await expect(input).toHaveValue(dayjs('02/02/2026').format('DD/MM/YYYY'));
 };
 
 export const DatePickerRangeSelect: StoryFn<

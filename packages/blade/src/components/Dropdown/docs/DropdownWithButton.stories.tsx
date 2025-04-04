@@ -29,6 +29,7 @@ import { Checkbox } from '~components/Checkbox';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { Amount } from '~components/Amount';
+import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const DropdownStoryMeta = {
@@ -230,6 +231,34 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         </Dropdown>
       </Box>
     </Box>
+  );
+};
+
+const items = ['Apples', 'Appricots', 'Cherries', 'Crab apples', 'Jambolan'];
+
+export const InternalDropdownWithSearch = (): React.ReactElement => {
+  const [selected, setSelected] = React.useState<string[]>([]);
+
+  return (
+    <Dropdown selectionType="multiple" margin="spacing.4">
+      <DropdownButton variant="tertiary">Fruits: {selected.length}</DropdownButton>
+      <DropdownOverlay width="500px" maxWidth="500px">
+        <DropdownHeader>
+          <AutoComplete label="Search Fruits" />
+        </DropdownHeader>
+        <ActionList>
+          {items.map((item) => (
+            <ActionListItem
+              key={item}
+              title={item}
+              value={item}
+              onClick={() => setSelected(Array.from(new Set([...selected, item])))}
+              isSelected={selected.includes(item)}
+            />
+          ))}
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
   );
 };
 
