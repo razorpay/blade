@@ -114,6 +114,12 @@ const centerBoxProps: { large: BoxProps; medium: BoxProps } = {
   },
 };
 
+const absolutePositionedButton = {
+  position: 'absolute',
+  top: 'spacing.0',
+  right: 'spacing.0',
+} as const;
+
 const sizeTokensMapping = {
   large: {
     title: 'large',
@@ -250,6 +256,7 @@ const _BaseHeader = ({
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
+  const hasOnlyChildren = children && !(title || subtitle || titleSuffix || leading);
 
   const webOnlyEventHandlers: Record<string, any> = isReactNative()
     ? {}
@@ -277,7 +284,7 @@ const _BaseHeader = ({
         touchAction="none"
         {...webOnlyEventHandlers}
       >
-        <BaseBox display="flex" flexDirection="row" userSelect="none">
+        <BaseBox position="relative" display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (
             <BaseBox overflow="visible" marginRight="spacing.5">
               <Box {...centerBoxProps[size]}>
@@ -291,65 +298,67 @@ const _BaseHeader = ({
               </Box>
             </BaseBox>
           ) : null}
-          <BaseBox
-            paddingRight="spacing.5"
-            marginRight="auto"
-            flex="auto"
-            display="flex"
-            flexDirection="row"
-            alignItems="flex-start"
-          >
-            {leading ? (
-              <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
-                {leading}
-              </BaseBox>
-            ) : null}
-            <BaseBox flex="auto">
-              <BaseBox
-                // Explicitly setting maxWidth in React Native because text is not being wrapped properly when multiple fix width components are rendered in header
-                // In web, flex containers seem to work a expected
-                // @todo: resolve this if we figure out some better solution later
-                maxWidth={isReactNative() && shouldWrapTitle ? '100px' : undefined}
-                flexShrink={0}
-                display="flex"
-                flexDirection="row"
-              >
-                {title ? (
+          {hasOnlyChildren ? null : (
+            <BaseBox
+              paddingRight="spacing.5"
+              marginRight="auto"
+              flex="auto"
+              display="flex"
+              flexDirection="row"
+              alignItems="flex-start"
+            >
+              {leading ? (
+                <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
+                  {leading}
+                </BaseBox>
+              ) : null}
+              <BaseBox flex="auto">
+                <BaseBox
+                  // Explicitly setting maxWidth in React Native because text is not being wrapped properly when multiple fix width components are rendered in header
+                  // In web, flex containers seem to work a expected
+                  // @todo: resolve this if we figure out some better solution later
+                  maxWidth={isReactNative() && shouldWrapTitle ? '100px' : undefined}
+                  flexShrink={0}
+                  display="flex"
+                  flexDirection="row"
+                >
+                  {title ? (
+                    <Text
+                      size={sizeTokensMapping[size].title}
+                      marginTop={makeSize(sizeToken['1'])}
+                      weight="semibold"
+                      color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'}
+                      wordBreak="break-word"
+                    >
+                      {title}
+                    </Text>
+                  ) : null}
+                  {titleSuffix && (
+                    <BaseBox marginLeft="spacing.3">
+                      <Box {...centerBoxProps[size]}>{titleSuffix}</Box>
+                    </BaseBox>
+                  )}
+                </BaseBox>
+                {subtitle ? (
                   <Text
-                    size={sizeTokensMapping[size].title}
-                    marginTop={makeSize(sizeToken['1'])}
-                    weight="semibold"
-                    color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'}
-                    wordBreak="break-word"
+                    variant="body"
+                    size="small"
+                    weight="regular"
+                    color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
                   >
-                    {title}
+                    {subtitle}
                   </Text>
                 ) : null}
-                {titleSuffix && (
-                  <BaseBox marginLeft="spacing.3">
-                    <Box {...centerBoxProps[size]}>{titleSuffix}</Box>
-                  </BaseBox>
-                )}
               </BaseBox>
-              {subtitle ? (
-                <Text
-                  variant="body"
-                  size="small"
-                  weight="regular"
-                  color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
-                >
-                  {subtitle}
-                </Text>
-              ) : null}
             </BaseBox>
-          </BaseBox>
+          )}
           {validatedTrailingComponent ? (
             <BaseBox marginRight="spacing.5">
               <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
             </BaseBox>
           ) : null}
           {showCloseButton ? (
-            <Box {...centerBoxProps[size]}>
+            <Box {...(hasOnlyChildren ? absolutePositionedButton : centerBoxProps[size])}>
               <IconButton
                 ref={closeButtonRef}
                 size="large"

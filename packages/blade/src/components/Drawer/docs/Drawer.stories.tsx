@@ -6,7 +6,7 @@ import { Drawer, DrawerBody, DrawerHeader } from '../';
 import { DrawerStackingStory } from './stories';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
+import { AnnouncementIcon, DownloadIcon, LinkIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Heading, Text } from '~components/Typography';
@@ -20,6 +20,7 @@ import {
   CardHeader,
   CardHeaderLeading,
 } from '~components/Card';
+import { Amount } from '~components/Amount';
 
 const Page = (): React.ReactElement => {
   return (
@@ -209,6 +210,62 @@ export const InitialFocus = (args: DrawerProps): React.ReactElement => {
           </Box>
           <Box>
             <Button ref={drawerInitialFocusRef}>Payout</Button>{' '}
+            <Button marginLeft="spacing.2" variant="tertiary">
+              Invite Vendor
+            </Button>
+          </Box>
+        </DrawerBody>
+      </Drawer>
+    </Box>
+  );
+};
+
+export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  return (
+    <Box>
+      <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
+      <Drawer
+        {...args}
+        isOpen={args.isOpen ?? isDrawerOpen}
+        onDismiss={() => setIsDrawerOpen(false)}
+      >
+        <DrawerHeader>
+          <Box display="flex" alignItems="center" gap="spacing.2" marginBottom="spacing.3">
+            <Badge icon={LinkIcon} color="primary">
+              Standard Payment Link
+            </Badge>
+            <Badge color="positive">Created</Badge>
+          </Box>
+
+          <Box display="flex" flexDirection="column" gap="spacing.1">
+            <Amount weight="semibold" value={5999.0} currency="INR" size="xlarge" type="heading" />
+            <Text size="small" color="surface.text.gray.muted">
+              https://rzp.io/rzp/jepsdse
+            </Text>
+            <Text size="small" color="surface.text.gray.muted">
+              Created on Jan 11, 2025
+            </Text>
+          </Box>
+        </DrawerHeader>
+        <DrawerBody>
+          <Box display="flex" alignItems="center">
+            <Heading>Starters{"'"} CFP Private Limited </Heading>
+            <Badge size="small" color="primary" marginLeft="spacing.3">
+              Vendor
+            </Badge>
+          </Box>
+          <Box marginTop="spacing.6" marginBottom="spacing.8">
+            <TextInput label="Email" type="email" placeholder="Enter your email" />
+            <TextInput
+              marginTop="spacing.4"
+              label="Phone Number"
+              type="telephone"
+              placeholder="Enter your phone number"
+            />
+          </Box>
+          <Box>
+            <Button>Payout</Button>{' '}
             <Button marginLeft="spacing.2" variant="tertiary">
               Invite Vendor
             </Button>

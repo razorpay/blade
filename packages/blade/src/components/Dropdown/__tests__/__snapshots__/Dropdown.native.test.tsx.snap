@@ -864,11 +864,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
+                    position="relative"
                     style={
                       [
                         {
                           "display": "flex",
                           "flexDirection": "row",
+                          "position": "relative",
                           "userSelect": "none",
                         },
                       ]
