@@ -1,11 +1,11 @@
 import type { ReactElement } from 'react';
 import { forwardRef, useCallback } from 'react';
 import { useCollapsible } from './CollapsibleContext';
+import { componentIds } from './componentIds';
 import type { ButtonProps } from '~components/Button';
 import type { IconComponent } from '~components/Icons';
 import BaseButton from '~components/Button/BaseButton';
 import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
-import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -63,7 +63,7 @@ const _CollapsibleButton: React.ForwardRefRenderFunction<
 
 const CollapsibleButton = assignWithoutSideEffects(forwardRef(_CollapsibleButton), {
   displayName: 'CollapsibleButton',
-  componentId: MetaConstants.CollapsibleButton,
+  componentId: componentIds.CollapsibleButton,
 });
 
 export type { CollapsibleButtonProps };

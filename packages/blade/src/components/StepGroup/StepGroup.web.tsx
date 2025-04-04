@@ -9,6 +9,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { componentIds as collapsibleComponentIds } from '~components/Collapsible/componentIds';
 
 const useChildrenWithIndexes = ({
   _nestingLevel,
@@ -24,8 +25,8 @@ const useChildrenWithIndexes = ({
   const traverseGroupAndAddIndex = (
     groupChildrenProp: StepGroupProps['children'],
     nestingLevelOfGroup = 0,
+    stepItemIndex = 0,
   ): React.ReactNode => {
-    let stepItemIndex = 0;
     return React.Children.map(groupChildrenProp, (child, index) => {
       const componentId = getComponentId(child);
       if (componentId === componentIds.StepItem) {
@@ -34,6 +35,27 @@ const useChildrenWithIndexes = ({
           _totalIndex: totalIndex++,
           _nestingLevel: nestingLevelOfGroup,
           key: index,
+        });
+      }
+
+      if (componentId === collapsibleComponentIds.Collapsible) {
+        return React.cloneElement(child, {
+          children: React.Children.map(child.props.children, (nestedChild) => {
+            if (
+              React.isValidElement(nestedChild) &&
+              getComponentId(nestedChild) === collapsibleComponentIds.CollapsibleBody
+            ) {
+              return React.cloneElement(nestedChild as React.ReactElement, {
+                children: traverseGroupAndAddIndex(
+                  (nestedChild.props as { children: React.ReactElement }).children,
+                  nestingLevelOfGroup,
+                  stepItemIndex,
+                ),
+                key: totalIndex,
+              });
+            }
+            return nestedChild;
+          }),
         });
       }
 
@@ -104,7 +126,7 @@ const _StepGroup = (
         maxWidth={maxWidth ?? '100%'}
         minWidth={minWidth}
         width={width ?? defaultWidth}
-        padding={_nestingLevel === 0 ? 'spacing.4' : undefined}
+        paddingY={_nestingLevel === 0 ? 'spacing.4' : undefined}
         overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
         {...metaAttribute({ name: MetaConstants.StepGroup, testID })}

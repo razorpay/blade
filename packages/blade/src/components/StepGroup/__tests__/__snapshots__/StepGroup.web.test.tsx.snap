@@ -9,7 +9,8 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   max-width: 100%;
 }
 
@@ -22,6 +23,8 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-right: 12px;
+  margin-left: 12px;
   width: 100%;
   gap: 4px;
 }
@@ -916,7 +919,8 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   max-width: 100%;
 }
 
@@ -929,6 +933,8 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-right: 12px;
+  margin-left: 12px;
   width: 100%;
   gap: 4px;
 }

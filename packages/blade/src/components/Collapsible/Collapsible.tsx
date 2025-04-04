@@ -4,6 +4,7 @@ import { Children, useCallback, useRef, useState, useMemo, forwardRef } from 're
 import type { CollapsibleContextState } from './CollapsibleContext';
 import { CollapsibleContext } from './CollapsibleContext';
 import { MAX_WIDTH, MAX_WIDTH_NO_RESTRICTIONS } from './styles';
+import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -16,6 +17,7 @@ import { useId } from '~utils/useId';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type CollapsibleProps = {
   /**
@@ -118,9 +120,9 @@ const _Collapsible = (
     Children.forEach(children, (child) => {
       if (
         !(
-          isValidAllowedChildren(child, MetaConstants.CollapsibleBody) ||
-          isValidAllowedChildren(child, MetaConstants.CollapsibleButton) ||
-          isValidAllowedChildren(child, MetaConstants.CollapsibleLink)
+          isValidAllowedChildren(child, componentIds.CollapsibleBody) ||
+          isValidAllowedChildren(child, componentIds.CollapsibleButton) ||
+          isValidAllowedChildren(child, componentIds.CollapsibleLink)
         ) &&
         !_dangerouslyDisableValidations
       ) {
@@ -154,7 +156,9 @@ const _Collapsible = (
   );
 };
 
-const Collapsible = forwardRef(_Collapsible);
+const Collapsible = assignWithoutSideEffects(forwardRef(_Collapsible), {
+  componentId: componentIds.Collapsible,
+});
 
 export type { CollapsibleProps };
 export { Collapsible };
