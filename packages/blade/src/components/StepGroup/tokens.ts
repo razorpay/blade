@@ -23,7 +23,6 @@ const getMarkerLineSpacings = (
       markerBackgroundSize: sizeTokens['24'],
       markerMargin: sizeTokens['2'],
       indentationWidth: sizeTokens['33'],
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     },
     medium: {
       markerBackgroundSize: sizeTokens['20'],
@@ -33,12 +32,10 @@ const getMarkerLineSpacings = (
   } as const;
 
   const markerLeftAlignment =
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     (LINE_SPACINGS[size].markerBackgroundSize + LINE_SPACINGS[size].markerMargin) / 2;
 
   const markerTopAlignment =
     (-1 *
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       (LINE_SPACINGS[size].markerBackgroundSize +
         LINE_SPACINGS[size].markerMargin * 2 +
         markerLineWidth)) /

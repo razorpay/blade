@@ -70,7 +70,6 @@ const _DropdownOverlay = ({
         mainAxis: OVERLAY_OFFSET,
       }),
       flip({
-        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
         padding: OVERLAY_OFFSET + OVERLAY_PADDING,
       }),
       sizeMiddleware({

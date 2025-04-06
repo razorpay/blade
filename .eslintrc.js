@@ -135,6 +135,7 @@ module.exports = {
       ],
       plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests', 'blade'],
       rules: {
+        '@typescript-eslint/restrict-plus-operands': 'off',
         'blade/no-cross-platform-imports': ['error', { ignoreImportsPattern: 'renderWithSSR' }],
         'import/no-cycle': ['error', { maxDepth: 4, ignoreExternal: false }],
         'import/no-deprecated': 'off',

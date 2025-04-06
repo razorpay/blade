@@ -102,7 +102,6 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
   });
 
   const { stackingLevel, isFirstDrawerInStack } = React.useMemo(() => {
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     const level = Object.keys(drawerStack).indexOf(drawerId) + 1;
     return {
       stackingLevel: level,
@@ -126,7 +125,6 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
   // When z-index is not defined by user, we use default drawer z index and add stackingLevel to ensure
   // new drawer that opens, always opens on top of previous one.
   React.useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     setZIndexState(zIndex + stackingLevel);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);

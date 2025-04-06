@@ -32,10 +32,8 @@ const getActionListItemHeight = (
 } => {
   return {
     itemHeightMobile:
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       itemFirstRowHeight + getItemPadding(theme).itemPaddingMobile * 2 + getItemMargin(theme) * 2,
     itemHeightDesktop:
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       itemFirstRowHeight + getItemPadding(theme).itemPaddingDesktop * 2 + getItemMargin(theme) * 2,
   };
 };

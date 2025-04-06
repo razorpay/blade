@@ -409,7 +409,6 @@ const useDropdown = (): UseDropdownReturnValue => {
     searchTimeout = window.setTimeout(() => {
       searchString = '';
     }, 500);
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     searchString = searchString + letter;
     const optionTitles = options.map((option) => option.title);
     const searchIndex = getIndexByLetter(optionTitles, searchString, activeIndex + 1);
