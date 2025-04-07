@@ -40,6 +40,7 @@ import {
   TableFooterCell,
 } from '~components/Table';
 import { IconButton } from '~components/Button/IconButton';
+import type { FeedbackColors } from '~tokens/theme/theme';
 
 const Page = (): React.ReactElement => {
   return (
@@ -488,6 +489,15 @@ const data: TableData<Item> = {
   nodes,
 };
 
+const quickFilters = ['All', 'Pending', 'Failed', 'Completed'];
+const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
+const quickFilterColorMapping = {
+  All: 'primary',
+  Pending: 'positive',
+  Failed: 'negative',
+  Completed: 'neutral',
+};
+
 const DefaultExample: StoryFn<typeof ListView> = (args) => {
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
@@ -496,6 +506,9 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
   const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
 
   const getQuickFilterValueCount = (value: string): number => {
+    if (value === 'All') {
+      return data.nodes.length;
+    }
     return data.nodes.filter((node) => node.status === value).length;
   };
   const getQuickFilterData = (data: TableData<Item>, value?: string): TableData<Item> => {
@@ -546,27 +559,25 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
                 setSelectedQuickFilter(value);
               }}
               defaultValue="All"
+              value={selectedQuickFilter}
             >
-              <QuickFilter
-                title="All"
-                value="All"
-                trailing={<Counter value={data.nodes.length} color="primary" />}
-              />
-              <QuickFilter
-                title="Pending"
-                value="Pending"
-                trailing={<Counter value={getQuickFilterValueCount('Pending')} color="positive" />}
-              />
-              <QuickFilter
-                title="Failed"
-                value="Failed"
-                trailing={<Counter value={getQuickFilterValueCount('Failed')} color="negative" />}
-              />
-              <QuickFilter
-                title="Completed"
-                value="Completed"
-                trailing={<Counter value={getQuickFilterValueCount('Completed')} color="neutral" />}
-              />
+              {quickFilters.map((status, index) => (
+                <QuickFilter
+                  title={status}
+                  value={status}
+                  trailing={
+                    <Counter
+                      value={getQuickFilterValueCount(status)}
+                      color={
+                        quickFilterColorMapping[
+                          status as keyof typeof quickFilterColorMapping
+                        ] as FeedbackColors
+                      }
+                    />
+                  }
+                  key={`${index}-${status}`}
+                />
+              ))}
             </QuickFilterGroup>
           }
           onSearchChange={({ value }) => {
@@ -578,16 +589,22 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
             setSearchValue(value);
           }}
           searchValuePlaceholder="Search for Payment Id"
+          selectedFiltersCount={
+            (methodFilter ? 1 : 0) +
+            (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
+            (selectedQuickFilter !== 'All' ? 1 : 0)
+          }
         >
           <FilterChipGroup
             onClearButtonClick={() => {
-              const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+              const quickFilterData = getQuickFilterData(data, 'All');
               const searchValueData = getSearchedData(quickFilterData, searchValue);
               const methodFilterData = getMethodFilterData(searchValueData, '');
               const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
               setListViewTableData(dateRangeFilterData);
               setMethodFilter('');
               setFilterDateRange(undefined);
+              setSelectedQuickFilter('All');
             }}
           >
             <Dropdown selectionType="single">
@@ -627,6 +644,41 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
                 setFilterDateRange(value as DatesRangeValue);
               }}
             />
+            <Dropdown selectionType="single">
+              <FilterChipSelectInput
+                label="Status"
+                value={selectedQuickFilter !== 'All' ? selectedQuickFilter : undefined}
+                onChange={({ values }) => {
+                  const value = values[0];
+                  const quickFilterData = getQuickFilterData(data, value);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter(value ? value : 'All');
+                }}
+                onClearButtonClick={() => {
+                  const quickFilterData = getQuickFilterData(data, 'All');
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter('All');
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {filterChipQuickFilters.map((method, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={method}
+                      value={method}
+                      isSelected={selectedQuickFilter === method}
+                    />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
           </FilterChipGroup>
         </ListViewFilters>
         <Table
@@ -743,6 +795,9 @@ Default.storyName = 'Default';
 
 const ControlledExample: StoryFn<typeof ListView> = (args) => {
   const getQuickFilterValueCount = (value: string): number => {
+    if (value === 'All') {
+      return data.nodes.length;
+    }
     return data.nodes.filter((node) => node.status === value).length;
   };
   const getQuickFilterData = (data: TableData<Item>, value?: string): TableData<Item> => {
@@ -790,7 +845,9 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
       <ListView>
         <ListViewFilters
           selectedFiltersCount={
-            (methodFilter ? 1 : 0) + (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0)
+            (methodFilter ? 1 : 0) +
+            (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
+            (selectedQuickFilter !== 'All' ? 1 : 0)
           }
           quickFilters={
             <QuickFilterGroup
@@ -808,26 +865,23 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
               defaultValue="All"
               value={selectedQuickFilter}
             >
-              <QuickFilter
-                title="All"
-                value="All"
-                trailing={<Counter value={data.nodes.length} color="primary" />}
-              />
-              <QuickFilter
-                title="Pending"
-                value="Pending"
-                trailing={<Counter value={getQuickFilterValueCount('Pending')} color="positive" />}
-              />
-              <QuickFilter
-                title="Failed"
-                value="Failed"
-                trailing={<Counter value={getQuickFilterValueCount('Failed')} color="negative" />}
-              />
-              <QuickFilter
-                title="Completed"
-                value="Completed"
-                trailing={<Counter value={getQuickFilterValueCount('Completed')} color="neutral" />}
-              />
+              {quickFilters.map((status, index) => (
+                <QuickFilter
+                  title={status}
+                  value={status}
+                  trailing={
+                    <Counter
+                      value={getQuickFilterValueCount(status)}
+                      color={
+                        quickFilterColorMapping[
+                          status as keyof typeof quickFilterColorMapping
+                        ] as FeedbackColors
+                      }
+                    />
+                  }
+                  key={`${index}-${status}`}
+                />
+              ))}
             </QuickFilterGroup>
           }
           onSearchChange={({ value }) => {
@@ -842,13 +896,14 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
         >
           <FilterChipGroup
             onClearButtonClick={() => {
-              const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+              const quickFilterData = getQuickFilterData(data, 'All');
               const searchValueData = getSearchedData(quickFilterData, searchValue);
               const methodFilterData = getMethodFilterData(searchValueData, '');
               const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
               setListViewTableData(dateRangeFilterData);
               setMethodFilter('');
               setFilterDateRange(undefined);
+              setSelectedQuickFilter('All');
             }}
           >
             <Dropdown selectionType="single">
@@ -897,6 +952,41 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
                 setFilterDateRange(value as DatesRangeValue);
               }}
             />
+            <Dropdown selectionType="single">
+              <FilterChipSelectInput
+                label="Status"
+                value={selectedQuickFilter !== 'All' ? selectedQuickFilter : undefined}
+                onChange={({ values }) => {
+                  const value = values[0];
+                  const quickFilterData = getQuickFilterData(data, value);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter(value ? value : 'All');
+                }}
+                onClearButtonClick={() => {
+                  const quickFilterData = getQuickFilterData(data, 'All');
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter('All');
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {filterChipQuickFilters.map((method, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={method}
+                      value={method}
+                      isSelected={selectedQuickFilter === method}
+                    />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
           </FilterChipGroup>
         </ListViewFilters>
         <Table
@@ -1015,6 +1105,9 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
   const [methodFilter, setMethodFilter] = useState<string | undefined>('');
   const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
   const getQuickFilterValueCount = (value: string): number => {
+    if (value === 'All') {
+      return data.nodes.length;
+    }
     return data.nodes.filter((node) => node.status === value).length;
   };
   const getQuickFilterData = (data: TableData<Item>, values?: string[]): TableData<Item> => {
@@ -1052,6 +1145,11 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
     <BaseBox height="100%">
       <ListView>
         <ListViewFilters
+          selectedFiltersCount={
+            (methodFilter ? 1 : 0) +
+            (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
+            (selectedQuickFilter.length !== 0 ? 1 : 0)
+          }
           quickFilters={
             <QuickFilterGroup
               selectionType="multiple"
@@ -1064,22 +1162,25 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                 setListViewTableData(dateRangeFilterData);
                 setSelectedQuickFilter(values);
               }}
+              value={selectedQuickFilter}
             >
-              <QuickFilter
-                title="Pending"
-                value="Pending"
-                trailing={<Counter value={getQuickFilterValueCount('Pending')} color="positive" />}
-              />
-              <QuickFilter
-                title="Failed"
-                value="Failed"
-                trailing={<Counter value={getQuickFilterValueCount('Failed')} color="negative" />}
-              />
-              <QuickFilter
-                title="Completed"
-                value="Completed"
-                trailing={<Counter value={getQuickFilterValueCount('Completed')} color="neutral" />}
-              />
+              {filterChipQuickFilters.map((status, index) => (
+                <QuickFilter
+                  title={status}
+                  value={status}
+                  trailing={
+                    <Counter
+                      value={getQuickFilterValueCount(status)}
+                      color={
+                        quickFilterColorMapping[
+                          status as keyof typeof quickFilterColorMapping
+                        ] as FeedbackColors
+                      }
+                    />
+                  }
+                  key={`${index}-${status}`}
+                />
+              ))}
             </QuickFilterGroup>
           }
           onSearchChange={({ value }) => {
@@ -1140,6 +1241,40 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                 setFilterDateRange(value as DatesRangeValue);
               }}
             />
+            <Dropdown selectionType="multiple">
+              <FilterChipSelectInput
+                label="Status"
+                value={selectedQuickFilter}
+                onChange={({ values }) => {
+                  const quickFilterData = getQuickFilterData(data, values);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter(values);
+                }}
+                onClearButtonClick={() => {
+                  const quickFilterData = getQuickFilterData(data, []);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter([]);
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {filterChipQuickFilters.map((method, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={method}
+                      value={method}
+                      isSelected={selectedQuickFilter.includes(method)}
+                    />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
           </FilterChipGroup>
         </ListViewFilters>
         <Table
