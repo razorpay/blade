@@ -495,7 +495,7 @@ const quickFilters = ['All', 'Pending', 'Failed', 'Completed'];
 const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
 const quickFilterColorMapping = {
   All: 'primary',
-  Pending: 'positive',
+  Pending: 'notice',
   Failed: 'negative',
   Completed: 'neutral',
 };
@@ -1286,6 +1286,9 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                 );
                 setListViewTableData(dateRangeFilterData);
                 setFilterDateRange(value as DatesRangeValue);
+              }}
+              onClearButtonClick={() => {
+                setSelectedQuickFilter((prev) => prev.filter((filter) => filter !== 'LastWeek'));
               }}
             />
             <Dropdown selectionType="multiple">
