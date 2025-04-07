@@ -52,7 +52,7 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
     const shouldChangeValue =
       (changeValue === 'month' || changeValue === 'year') && type === 'default';
     if (shouldChangeValue) {
-      const prevDate = _value?.[0] || new Date();
+      const prevDate = _value || new Date();
 
       const newDate = new Date(prevDate);
       if (changeValue === 'month') {
