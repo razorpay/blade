@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-fix(blade): autoshifting of datepicker
+fix: auto-shifting of the date picker on picker change. 
