@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import type { StoryFn, Meta } from '@storybook/react';
 import React, { useState } from 'react';
 import storyRouterDecorator from 'storybook-react-router';
@@ -40,6 +41,7 @@ import {
   TableFooterCell,
 } from '~components/Table';
 import { IconButton } from '~components/Button/IconButton';
+import { Box } from '~components/Box';
 import type { FeedbackColors } from '~tokens/theme/theme';
 
 const Page = (): React.ReactElement => {
@@ -450,7 +452,7 @@ export default {
 } as Meta<ListViewProps>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 30 }, (_, i) => ({
+  ...Array.from({ length: 50 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -1141,6 +1143,23 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
     };
   };
 
+  const getLastWeekDateRange = (): DatesRangeValue => {
+    const lastWeek = new Date();
+    lastWeek.setDate(lastWeek.getDate() - 7);
+    return [lastWeek, new Date()];
+  };
+  const compareDateRangeValues = (
+    dateRange1: DatesRangeValue,
+    dateRange2: DatesRangeValue,
+  ): boolean => {
+    if (!dateRange1?.[0] || !dateRange2?.[0]) {
+      return false;
+    }
+    return (
+      dayjs(dateRange1[0]).isSame(dayjs(dateRange2[0]), 'day') &&
+      dayjs(dateRange1[1]).isSame(dayjs(dateRange2[1]), 'day')
+    );
+  };
   return (
     <BaseBox height="100%">
       <ListView>
@@ -1148,40 +1167,67 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
           selectedFiltersCount={
             (methodFilter ? 1 : 0) +
             (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
-            (selectedQuickFilter.length !== 0 ? 1 : 0)
+            (selectedQuickFilter.filter((filter) => filter !== 'LastWeek').length !== 0 ? 1 : 0)
           }
           quickFilters={
-            <QuickFilterGroup
-              selectionType="multiple"
-              onChange={({ values }) => {
-                const quickFilterData = getQuickFilterData(data, values);
-                const searchValueData = getSearchedData(quickFilterData, searchValue);
-                const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
-                const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
-
-                setListViewTableData(dateRangeFilterData);
-                setSelectedQuickFilter(values);
-              }}
-              value={selectedQuickFilter}
-            >
-              {filterChipQuickFilters.map((status, index) => (
-                <QuickFilter
-                  title={status}
-                  value={status}
-                  trailing={
-                    <Counter
-                      value={getQuickFilterValueCount(status)}
-                      color={
-                        quickFilterColorMapping[
-                          status as keyof typeof quickFilterColorMapping
-                        ] as FeedbackColors
-                      }
-                    />
+            <Box display="flex" gap="spacing.3">
+              <QuickFilterGroup
+                selectionType="multiple"
+                onChange={({ values }) => {
+                  const lastWeekDateRange = getLastWeekDateRange();
+                  const shouldChangeValue = values.includes('LastWeek');
+                  if (!shouldChangeValue) {
+                    const quickFilterData = getQuickFilterData(data, values);
+                    const searchValueData = getSearchedData(quickFilterData, searchValue);
+                    const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                    const rangeToUse = compareDateRangeValues(
+                      lastWeekDateRange,
+                      filterDateRange as DatesRangeValue,
+                    )
+                      ? undefined
+                      : filterDateRange;
+                    const dateRangeFilterData = getFilterRangeData(methodFilterData, rangeToUse);
+                    setListViewTableData(dateRangeFilterData);
+                    setFilterDateRange(undefined);
+                    setSelectedQuickFilter(values.filter((value) => value !== 'LastWeek'));
+                  } else {
+                    const quickFilterData = getQuickFilterData(
+                      data,
+                      values.filter((value) => value !== 'LastWeek'),
+                    );
+                    const searchValueData = getSearchedData(quickFilterData, searchValue);
+                    const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                    const dateRangeFilterData = getFilterRangeData(
+                      methodFilterData,
+                      lastWeekDateRange,
+                    );
+                    setFilterDateRange(lastWeekDateRange);
+                    setSelectedQuickFilter(values);
+                    setListViewTableData(dateRangeFilterData);
                   }
-                  key={`${index}-${status}`}
-                />
-              ))}
-            </QuickFilterGroup>
+                }}
+                value={selectedQuickFilter}
+              >
+                {filterChipQuickFilters.map((status, index) => (
+                  <QuickFilter
+                    title={status}
+                    value={status}
+                    trailing={
+                      <Counter
+                        value={getQuickFilterValueCount(status)}
+                        color={
+                          quickFilterColorMapping[
+                            status as keyof typeof quickFilterColorMapping
+                          ] as FeedbackColors
+                        }
+                      />
+                    }
+                    key={`${index}-${status}`}
+                  />
+                ))}
+                <QuickFilter title="Last Week" value="LastWeek" />
+              </QuickFilterGroup>
+            </Box>
           }
           onSearchChange={({ value }) => {
             const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
@@ -1229,6 +1275,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
             <FilterChipDatePicker
               label="Date Range"
               selectionType="range"
+              value={filterDateRange}
               onChange={(value) => {
                 const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
                 const searchValueData = getSearchedData(quickFilterData, searchValue);
@@ -1244,14 +1291,17 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
             <Dropdown selectionType="multiple">
               <FilterChipSelectInput
                 label="Status"
-                value={selectedQuickFilter}
+                value={selectedQuickFilter.filter((filters) => filters !== 'LastWeek')}
                 onChange={({ values }) => {
                   const quickFilterData = getQuickFilterData(data, values);
                   const searchValueData = getSearchedData(quickFilterData, searchValue);
                   const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
                   const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
                   setListViewTableData(dateRangeFilterData);
-                  setSelectedQuickFilter(values);
+                  setSelectedQuickFilter((prev) => [
+                    ...prev.filter((filter) => filter === 'LastWeek'),
+                    ...values,
+                  ]);
                 }}
                 onClearButtonClick={() => {
                   const quickFilterData = getQuickFilterData(data, []);
@@ -1259,7 +1309,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                   const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
                   const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
                   setListViewTableData(dateRangeFilterData);
-                  setSelectedQuickFilter([]);
+                  setSelectedQuickFilter((prev) => prev.filter((filter) => filter === 'LastWeek'));
                 }}
               />
               <DropdownOverlay>
