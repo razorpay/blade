@@ -10,6 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Code, Text } from '~components/Typography';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Button } from '~components/Button';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
@@ -83,9 +84,10 @@ export default {
           figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88832-1762629&t=oSH8pSWjSoiOUnXo-0"
         >
           <Title>Usage</Title>
-          <Sandbox>
+          <Sandbox editorHeight={600}>
             {`
               import { DatePicker } from '@razorpay/blade/components';
+import { m } from 'framer-motion';
 
               function App() {
                 return (
@@ -197,10 +199,11 @@ DatePickerPresets.args = {
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [date, setDate] = React.useState<DatesRangeValue>([
-    new Date(),
-    dayjs().add(3, 'day').toDate(),
+  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
+    dayjs().subtract(3, 'months').toDate(),
+    dayjs().add(3, 'day').subtract(3, 'months').toDate(),
   ]);
+  const [date, setDate] = React.useState(dayjs().subtract(3, 'months').toDate());
 
   return (
     <Box>
@@ -210,7 +213,8 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
       </Text>
       <Box marginBottom="spacing.5">
         <Text>
-          Selected: [{dayjs(date[0]).format('DD-MM-YYYY')}, {dayjs(date[1]).format('DD-MM-YYYY')}]
+          Selected: [{dayjs(dateRange[0]).format('DD-MM-YYYY')},{' '}
+          {dayjs(dateRange[1]).format('DD-MM-YYYY')}]
         </Text>
         <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
       </Box>
@@ -219,11 +223,37 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
         selectionType="range"
         isOpen={isOpen}
         onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
-        value={date}
+        value={dateRange}
         onChange={(date) => {
-          setDate(date);
+          setDateRange(date);
         }}
       />
+      <Box marginTop="spacing.5">
+        <Text marginBottom="spacing.5">Single Date Picker</Text>
+        <Text>Selected: {dayjs(date).format('DD-MM-YYYY')}</Text>
+        <DatePickerComponent
+          label="Select a date"
+          selectionType="single"
+          value={date}
+          onChange={(date) => {
+            setDate(date);
+          }}
+        />
+      </Box>
+
+      <Button
+        onClick={() => {
+          setDate(
+            dayjs()
+              .subtract(Math.round(Math.random() * 10), 'month')
+              .toDate(),
+          );
+        }}
+        marginTop="spacing.5"
+      >
+        {' '}
+        Change Date
+      </Button>
     </Box>
   );
 };

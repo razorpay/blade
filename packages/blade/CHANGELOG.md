@@ -1,5 +1,54 @@
 # @razorpay/blade
 
+## 12.19.0
+
+### Minor Changes
+
+- 9284a1f9: feat(blade): feat: add virtualization in section list
+
+## 12.18.0
+
+### Minor Changes
+
+- fa1800c4: feat(storybook): pre-generate lock file for documentation examples
+- f211134b: feat(blade) : add keyicon , appleicon, androidicon
+
+## 12.17.1
+
+### Patch Changes
+
+- c28b9182: fix(Modal): remove clashing position of modal on module federated apps
+
+## 12.17.0
+
+### Minor Changes
+
+- 3afdadf3: fix(blade): datepicker autofocus not working on programmatically changing date
+
+## 12.16.2
+
+### Patch Changes
+
+- 89391f8b: fix(Input): fix color differences of label between figma and code
+
+## 12.16.1
+
+### Patch Changes
+
+- 20f744ab: fix(blade): datepicker height change issue
+
+## 12.16.0
+
+### Minor Changes
+
+- 87d37ebf: feat(blade): add table background color prop
+
+## 12.15.1
+
+### Patch Changes
+
+- 1419c1f5: fix(blade): focus on selected date by default in datepicker
+
 ## 12.15.0
 
 ### Minor Changes

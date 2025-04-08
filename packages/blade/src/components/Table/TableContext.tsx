@@ -35,7 +35,7 @@ export type TableContextType<Item> = {
   setDisabledRows: React.Dispatch<React.SetStateAction<TableNode['id'][]>>;
   paginationType: NonNullable<TablePaginationType>;
   setPaginationType: React.Dispatch<React.SetStateAction<NonNullable<TablePaginationType>>>;
-  backgroundColor: TableBackgroundColors;
+  backgroundColor: TableBackgroundColors | 'transparent';
   headerRowDensity?: TableHeaderRowProps['rowDensity'];
   setHeaderRowDensity: React.Dispatch<React.SetStateAction<TableHeaderRowProps['rowDensity']>>;
   showBorderedCells: NonNullable<TableProps<unknown>['showBorderedCells']>;
