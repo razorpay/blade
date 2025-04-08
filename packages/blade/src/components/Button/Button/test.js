@@ -1,9 +1,9 @@
 const staticViolationBorderColor = '1px solid orange';
-const focusViolationBorderColor = '1px solid red';
+const focusViolationBorderColor = '2px solid red';
 const interactiveElements = ['button', 'a', 'input', 'label', 'textarea', 'select', 'option'];
 const nonInteractiveElements = ['div', 'span', 'section', 'article', 'p', 'main'];
 
-const staticA11yChecks = {
+const a11yChecks = {
   focus: {
     violations: [],
     passes: [],
@@ -114,7 +114,7 @@ function getFocusViolations() {
     ) {
       const issue = `${element.tagName.toLowerCase()} cannot be interactive (found cursor: pointer)`;
       markViolation(element, issue, focusViolationBorderColor);
-      staticA11yChecks.focus.violations.push({ element, issue });
+      a11yChecks.focus.violations.push({ element, issue });
     }
   });
 
@@ -122,9 +122,9 @@ function getFocusViolations() {
     if (element.tagName.toLowerCase() === 'a' && !element.hasAttribute('href')) {
       const issue = 'Link without href';
       markViolation(element, issue, focusViolationBorderColor);
-      staticA11yChecks.focus.violations.push({ element, issue });
+      a11yChecks.focus.violations.push({ element, issue });
     } else {
-      staticA11yChecks.focus.passes.push({ element });
+      a11yChecks.focus.passes.push({ element });
     }
   });
 }
@@ -136,20 +136,27 @@ function getStaticAccessibilityViolations() {
     if (!img.hasAttribute('alt')) {
       const issue = 'Image without alt';
       markViolation(img, issue);
-      staticA11yChecks.imagesWithAlt.violations.push({ element: img, issue });
+      a11yChecks.imagesWithAlt.violations.push({ element: img, issue });
     } else {
-      staticA11yChecks.imagesWithAlt.passes.push({ element: img });
+      a11yChecks.imagesWithAlt.passes.push({ element: img });
     }
   });
 
   // Check for button icons with accessibility label
   document.querySelectorAll('button, a, [role="menuitem"]').forEach((element) => {
-    if (!element.getAttribute('aria-label') && !element.textContent.trim()) {
+    const hasImageWithAlt = element.querySelector('img[alt]');
+    if (
+      !hasImageWithAlt &&
+      !element.getAttribute('aria-label') &&
+      !element.getAttribute('aria-labelledby') &&
+      !element.getAttribute('title') &&
+      !element.textContent.trim()
+    ) {
       const issue = 'Button/icon without accessible name';
       markViolation(element, issue);
-      staticA11yChecks.buttonsWithLabels.violations.push({ element, issue });
+      a11yChecks.buttonsWithLabels.violations.push({ element, issue });
     } else {
-      staticA11yChecks.buttonsWithLabels.passes.push({ element });
+      a11yChecks.buttonsWithLabels.passes.push({ element });
     }
   });
 
@@ -161,9 +168,9 @@ function getStaticAccessibilityViolations() {
     ) {
       const issue = 'Has tabIndex but no role';
       markViolation(element, issue);
-      staticA11yChecks.elementsWithRole.violations.push({ element, issue });
+      a11yChecks.elementsWithRole.violations.push({ element, issue });
     } else {
-      staticA11yChecks.elementsWithRole.passes.push({ element });
+      a11yChecks.elementsWithRole.passes.push({ element });
     }
   });
 
@@ -174,9 +181,9 @@ function getStaticAccessibilityViolations() {
       if (!element.getAttribute('aria-label') && !element.getAttribute('aria-labelledby')) {
         const issue = 'ARIA input field without accessible name';
         markViolation(element, issue);
-        staticA11yChecks.ariaInputsWithNames.violations.push({ element, issue });
+        a11yChecks.ariaInputsWithNames.violations.push({ element, issue });
       } else {
-        staticA11yChecks.ariaInputsWithNames.passes.push({ element });
+        a11yChecks.ariaInputsWithNames.passes.push({ element });
       }
     });
 
@@ -185,9 +192,9 @@ function getStaticAccessibilityViolations() {
   if (!htmlElement.hasAttribute('lang')) {
     const issue = '<html> element missing [lang] attribute';
     markViolation(htmlElement, issue);
-    staticA11yChecks.html.violations.push({ element: htmlElement, issue });
+    a11yChecks.html.violations.push({ element: htmlElement, issue });
   } else {
-    staticA11yChecks.html.passes.push({ element: htmlElement });
+    a11yChecks.html.passes.push({ element: htmlElement });
   }
 
   // Check for elements with [tabindex] value of 0
@@ -195,9 +202,9 @@ function getStaticAccessibilityViolations() {
     if (parseInt(element.getAttribute('tabindex'), 10) > 0) {
       const issue = 'Element with [tabindex] > 0';
       markViolation(element, issue);
-      staticA11yChecks.elementsWithTabindexZero.violations.push({ element, issue });
+      a11yChecks.elementsWithTabindexZero.violations.push({ element, issue });
     } else {
-      staticA11yChecks.elementsWithTabindexZero.passes.push({ element });
+      a11yChecks.elementsWithTabindexZero.passes.push({ element });
     }
   });
 
@@ -206,9 +213,7 @@ function getStaticAccessibilityViolations() {
     if (element.textContent.includes('Skip') && !element.closest('[role="navigation"], nav')) {
       const issue = 'Skip link/button without navigation role';
       markViolation(element, issue);
-      staticA11yChecks.skipLinksWithNavigationRole.violations.push({ element, issue });
-    } else {
-      staticA11yChecks.skipLinksWithNavigationRole.passes.push({ element });
+      a11yChecks.skipLinksWithNavigationRole.violations.push({ element, issue });
     }
   });
 
@@ -224,9 +229,9 @@ function getStaticAccessibilityViolations() {
       markViolation(element, issue);
       element.dataset.textColor = color;
       element.dataset.bgColor = bgColor;
-      staticA11yChecks.highContrastElements.violations.push({ element, issue });
+      a11yChecks.highContrastElements.violations.push({ element, issue });
     } else {
-      staticA11yChecks.highContrastElements.passes.push({ element });
+      a11yChecks.highContrastElements.passes.push({ element });
     }
   });
 
@@ -235,9 +240,9 @@ function getStaticAccessibilityViolations() {
     if (!li.closest('ul, ol, menu')) {
       const issue = 'List item not in <ul>, <ol>, or <menu>';
       markViolation(li, issue);
-      staticA11yChecks.listItemsInProperParents.violations.push({ element: li, issue });
+      a11yChecks.listItemsInProperParents.violations.push({ element: li, issue });
     } else {
-      staticA11yChecks.listItemsInProperParents.passes.push({ element: li });
+      a11yChecks.listItemsInProperParents.passes.push({ element: li });
     }
   });
 
@@ -252,9 +257,9 @@ function getStaticAccessibilityViolations() {
     if (!hasLabel) {
       const issue = 'Form element without associated label';
       markViolation(element, issue);
-      staticA11yChecks.formElementsWithLabels.violations.push({ element, issue });
+      a11yChecks.formElementsWithLabels.violations.push({ element, issue });
     } else {
-      staticA11yChecks.formElementsWithLabels.passes.push({ element });
+      a11yChecks.formElementsWithLabels.passes.push({ element });
     }
   });
 
@@ -266,9 +271,9 @@ function getStaticAccessibilityViolations() {
     if (level > lastLevel + 1) {
       const issue = 'Skipped heading level';
       markViolation(heading, issue);
-      staticA11yChecks.correctHeadingOrder.violations.push({ element: heading, issue });
+      a11yChecks.correctHeadingOrder.violations.push({ element: heading, issue });
     } else {
-      staticA11yChecks.correctHeadingOrder.passes.push({ element: heading });
+      a11yChecks.correctHeadingOrder.passes.push({ element: heading });
     }
     lastLevel = level;
   });
@@ -276,17 +281,14 @@ function getStaticAccessibilityViolations() {
 
 const getA11yScoreForEachRule = () => {
   return Object.fromEntries(
-    Object.keys(staticA11yChecks).map((key) => {
-      if (
-        staticA11yChecks[key].passes.length === 0 &&
-        staticA11yChecks[key].violations.length === 0
-      ) {
+    Object.keys(a11yChecks).map((key) => {
+      if (a11yChecks[key].passes.length === 0 && a11yChecks[key].violations.length === 0) {
         // Rules not applicable on this page
         return [
           key,
           {
-            passes: staticA11yChecks[key].passes,
-            violations: staticA11yChecks[key].violations,
+            passes: a11yChecks[key].passes,
+            violations: a11yChecks[key].violations,
             score: NaN,
           },
         ];
@@ -295,22 +297,20 @@ const getA11yScoreForEachRule = () => {
       return [
         key,
         {
-          passes: staticA11yChecks[key].passes,
-          violations: staticA11yChecks[key].violations,
+          passes: a11yChecks[key].passes,
+          violations: a11yChecks[key].violations,
           score:
             100 -
-            (staticA11yChecks[key].violations.length *
-              staticA11yChecks[key].violationWeight *
-              100) /
-              (staticA11yChecks[key].passes.length +
-                staticA11yChecks[key].violations.length * staticA11yChecks[key].violationWeight),
+            (a11yChecks[key].violations.length * a11yChecks[key].violationWeight * 100) /
+              (a11yChecks[key].passes.length +
+                a11yChecks[key].violations.length * a11yChecks[key].violationWeight),
         },
       ];
     }),
   );
 };
 
-const getFinalStaticA11yScore = (a11yScoreForEachRule) => {
+const getA11yScore = (a11yScoreForEachRule) => {
   // Loop through the a11yScoreForEachRule and calculate the final score
   const applicableRulesKeys = Object.keys(a11yScoreForEachRule).filter(
     (key) => !isNaN(a11yScoreForEachRule[key].score) && key !== 'focus',
@@ -325,22 +325,15 @@ const getFinalStaticA11yScore = (a11yScoreForEachRule) => {
   return (staticA11yScore + focusA11yScore) / 2;
 };
 
-const script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/tinycolor2@1.6.0/dist/tinycolor-min.js';
-document.head.appendChild(script);
-script.onload = () => {
+const tinyColorScript = document.createElement('script');
+tinyColorScript.src = 'https://cdn.jsdelivr.net/npm/tinycolor2@1.6.0/dist/tinycolor-min.js';
+document.head.appendChild(tinyColorScript);
+tinyColorScript.onload = () => {
   getStaticAccessibilityViolations();
   getFocusViolations();
 
-  console.log('Static Accessibility Checks:', getA11yScoreForEachRule(staticA11yChecks));
-  // console.log('Focus Violations:', focusViolations);
-
-  const finalStaticA11yScore = getFinalStaticA11yScore(getA11yScoreForEachRule(staticA11yChecks));
-  // const finalFocusScore = getFinalFocusScore(focusPasses, focusViolations);
-
-  console.log('Final Static A11y Score:', finalStaticA11yScore);
-  // console.log('Focus Passes:', focusPasses);
-  // console.log('Focus Violations:', focusViolations);
-  // console.log('Final Focus Score:', finalFocusScore);
-  // console.log('Final A11y Score:', (finalStaticA11yScore + finalFocusScore) / 2);
+  const a11yScoreForEachRule = getA11yScoreForEachRule();
+  console.log('Static Accessibility Checks:', a11yScoreForEachRule);
+  const finalA11yScore = getA11yScore(a11yScoreForEachRule);
+  console.log('Final A11y Score:', finalA11yScore);
 };
