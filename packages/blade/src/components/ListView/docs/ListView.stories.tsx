@@ -603,6 +603,13 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
             setListViewTableData(dateRangeFilterData);
             setSearchValue(value);
           }}
+          onSearchClear={() => {
+            const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+            const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
+            const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+            setListViewTableData(dateRangeFilterData);
+            setSearchValue('');
+          }}
           searchValuePlaceholder="Search for Payment Id"
           selectedFiltersCount={
             (methodFilter ? 1 : 0) +
@@ -906,6 +913,13 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
             const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
             setListViewTableData(dateRangeFilterData);
             setSearchValue(value);
+          }}
+          onSearchClear={() => {
+            const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+            const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
+            const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+            setListViewTableData(dateRangeFilterData);
+            setSearchValue('');
           }}
           searchValuePlaceholder="Search for Payment Id"
         >
@@ -1249,6 +1263,13 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
             const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
             setListViewTableData(dateRangeFilterData);
             setSearchValue(value);
+          }}
+          onSearchClear={() => {
+            const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+            const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
+            const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+            setListViewTableData(dateRangeFilterData);
+            setSearchValue('');
           }}
           searchValuePlaceholder="Search for Payment Id"
         >
