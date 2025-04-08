@@ -488,6 +488,108 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
   );
 };
 
+export const WithVirtualization = (): React.ReactElement => {
+  function getRandomString(length: number): string {
+    const chars = 'abcdefghijklmnopqrstuvwxyz';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
+  function generateDropdownData(
+    numEntries: number,
+  ): Record<string, { value: string; label: string }[]> {
+    const dropdownData: Record<string, { value: string; label: string }[]> = {};
+
+    for (let i = 0; i < numEntries; i++) {
+      const city = `${getRandomString(Math.floor(Math.random() * 5) + 5)}ville-${1}`; // Random city name
+      const state = `${getRandomString(Math.floor(Math.random() * 7) + 3)}land-${2}`; // Random state name
+      const country = 'GibberishLand'; // Random country name
+
+      const areas = [];
+      const numAreas = Math.floor(Math.random() * 10);
+
+      for (let j = 0; j < numAreas; j++) {
+        const area = `Area-${city}-${j}`;
+        areas.push({
+          value: `${country.toLowerCase()}-${state.toLowerCase()}-${city.toLowerCase()}-${area.toLowerCase()}`,
+          label: area,
+        });
+      }
+
+      dropdownData[city] = areas;
+    }
+
+    return dropdownData;
+  }
+  const dropdownData = generateDropdownData(20);
+
+  return (
+    <Box padding={'8px'}>
+      <Box> Virtualized with ActionListSection </Box>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList isVirtualized={true}>
+            {Object.keys(dropdownData).map((sectionKey) => {
+              const section = dropdownData[sectionKey];
+              return (
+                <ActionListSection title={sectionKey} key={sectionKey}>
+                  {section.map((item) => (
+                    <ActionListItem title={item.label} value={item.value} key={item.value} />
+                  ))}
+                </ActionListSection>
+              );
+            })}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box> Virtualized</Box>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList isVirtualized={true}>
+            {[...Array(500)].map((_, index) => (
+              <ActionListItem
+                title={`Item ${index}`}
+                value={`Item ${index}`}
+                key={`Item ${index}`}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box> Non Virtualized</Box>
+      <Dropdown selectionType="single">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            {[...Array(300)].map((_, index) => (
+              <ActionListItem
+                title={`Item ${index}`}
+                value={`Item ${index}`}
+                key={`Item ${index}`}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
 InternalDropdownPerformance.parameters = {
   chromatic: {
     disableSnapshot: false,
