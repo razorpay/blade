@@ -471,7 +471,7 @@ export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
 FilterChipDatePickerStorySingleStoryWithPreset.storyName =
   'FilterChipDatePicker (Single Selection) with Presets';
 
-export const ControlledFilterChipDatePicker: StoryFn<typeof FilterChipDatePicker> = () => {
+export const ControlledFilterChipDatePickerSingle: StoryFn<typeof FilterChipDatePicker> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date | undefined>(new Date());
 
@@ -492,7 +492,43 @@ export const ControlledFilterChipDatePicker: StoryFn<typeof FilterChipDatePicker
         onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
         value={date}
         onChange={(date) => {
-          setDate(date);
+          setDate(date as Date);
+        }}
+      />
+    </Box>
+  );
+};
+
+export const ControlledFilterChipDatePickerRange: StoryFn<typeof FilterChipDatePicker> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [date, setDate] = React.useState<DatesRangeValue>([
+    new Date(),
+    dayjs().add(3, 'day').toDate(),
+  ]);
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">isOpen</Code>, <Code size="medium">value</Code> and associated
+        event handlers you can control the FilterChipDatePicker.
+      </Text>
+      <Box marginBottom="spacing.5">
+        <Text>
+          Selected: [{dayjs(date[0]).format('DD-MM-YYYY')}, {dayjs(date[1]).format('DD-MM-YYYY')}]
+        </Text>
+        <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
+      </Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        value={date}
+        onChange={(date) => {
+          setDate(date as DatesRangeValue);
+        }}
+        onClearButtonClick={() => {
+          setDate([null, null]);
         }}
       />
     </Box>
