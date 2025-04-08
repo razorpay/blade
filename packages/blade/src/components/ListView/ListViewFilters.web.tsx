@@ -176,7 +176,7 @@ const ListViewFilters = ({
               </Box>
             </Box>
             {!isMobile && (
-              <Box width="200px">
+              <Box width="256px">
                 <SearchInput
                   label=""
                   value={searchValue}
