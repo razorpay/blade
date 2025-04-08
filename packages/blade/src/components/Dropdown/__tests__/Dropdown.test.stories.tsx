@@ -324,7 +324,6 @@ export const DropdownWithSearch: StoryFn<typeof Dropdown> = (): React.ReactEleme
           <ActionListItem title="Mango" value="mango" />
         </ActionList>
         <DropdownFooter>
-          {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
           <Button marginLeft="spacing.4" variant="primary">
             Next
           </Button>
