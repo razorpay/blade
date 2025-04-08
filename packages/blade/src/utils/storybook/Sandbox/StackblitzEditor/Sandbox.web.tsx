@@ -185,10 +185,9 @@ const lockFileFetchFn = async (): Promise<string> => {
     return lockFileContentGlobal;
   }
 
-  console.log('DATA FETCH STARTED');
   const res = await fetch(lockFilePath);
   if (res.status !== 200) {
-    throw new Error(`Failed to fetch. Status: ${res.status}`);
+    return '';
   }
 
   lockFileContentGlobal = await res.text();

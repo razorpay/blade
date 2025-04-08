@@ -74,7 +74,7 @@ const DocsPage = (): React.ReactElement => {
         files={sideNavWithReactRouter}
         editorHeight={600}
         hideNavigation={false}
-        openFile="App.js,navItemsJSON.js,SideNavExample.js"
+        openFile="App.tsx,navItemsJSON.tsx,SideNavExample.tsx"
       />
     </StoryPageWrapper>
   );
