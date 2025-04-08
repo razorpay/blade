@@ -485,7 +485,7 @@ const nodes: Item[] = [
     bank: 'HDFC',
     account: '1234567890',
     name: 'John Doe',
-  }
+  },
 ];
 
 type Item = {
