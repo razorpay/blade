@@ -1241,13 +1241,11 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
         >
           <FilterChipGroup
             onClearButtonClick={() => {
-              const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
-              const searchValueData = getSearchedData(quickFilterData, searchValue);
-              const methodFilterData = getMethodFilterData(searchValueData, '');
-              const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
-              setListViewTableData(dateRangeFilterData);
               setMethodFilter('');
               setFilterDateRange(undefined);
+              setSelectedQuickFilter([]);
+              const searchValueData = getSearchedData(data, searchValue);
+              setListViewTableData(searchValueData);
             }}
           >
             <Dropdown selectionType="single">
@@ -1288,7 +1286,13 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                 setFilterDateRange(value as DatesRangeValue);
               }}
               onClearButtonClick={() => {
-                setSelectedQuickFilter((prev) => prev.filter((filter) => filter !== 'LastWeek'));
+                const quickFilters = selectedQuickFilter.filter((value) => value !== 'LastWeek');
+                const quickFilterData = getQuickFilterData(data, quickFilters);
+                const searchValueData = getSearchedData(quickFilterData, searchValue);
+                const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
+                setListViewTableData(dateRangeFilterData);
+                setSelectedQuickFilter(quickFilters);
               }}
             />
             <Dropdown selectionType="multiple">
