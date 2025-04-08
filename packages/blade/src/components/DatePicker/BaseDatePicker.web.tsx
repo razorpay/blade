@@ -12,12 +12,12 @@ import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } 
 import { Calendar } from './Calendar.web';
 import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
 import { useDatesState } from './useDatesState';
-import { usePopup } from './usePopup';
-import { CalendarFooter } from './CalendarFooter.web';
-import { convertIntlToDayjsLocale, loadScript } from './utils';
-import { shiftTimezone } from './shiftTimezone';
 import { DatePickerInput } from './DateInput.web';
 import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
+import { usePopup } from './usePopup';
+import { CalendarFooter } from './CalendarFooter';
+import { convertIntlToDayjsLocale, loadScript } from './utils';
+import { shiftTimezone } from './shiftTimezone';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -141,15 +141,19 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       setSelectedPreset(date as DatesRangeValue);
     },
   });
+  const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
 
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,
     defaultValue: defaultIsOpen,
-    onChange: (isOpen) => onOpenChange?.({ isOpen }),
+    onChange: (isOpen) => {
+      onOpenChange?.({ isOpen });
+      // we need to update old value everytime datepicker is opened or closed
+      setOldValue(controlledValue);
+    },
   });
 
   const currentDate = shiftTimezone('add', new Date());
-  const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   let applyButtonDisabled = !hasBothDatesSelected;
   if (isSingle) {
@@ -238,7 +242,11 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         flexDirection="column"
         gap="spacing.5"
         padding={{ m: 'spacing.6', s: 'spacing.0' }}
+        /* We only need to set height for day picker, for year picker
+         or month  it should be auto. */
+        height={_picker === 'day' ? '447px' : 'auto'}
         backgroundColor="surface.background.gray.intense"
+        justifyContent="space-between"
       >
         <Calendar
           {...props}
@@ -282,6 +290,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             setPicker(() => picker);
             forceRerender();
           }}
+          selectedValue={controlledValue}
         />
         {isMobile ? null : (
           <CalendarFooter
