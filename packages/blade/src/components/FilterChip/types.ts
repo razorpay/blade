@@ -33,6 +33,7 @@ type BaseFilterChipProps = {
    */
   selectionType?: 'single' | 'multiple';
 
+  id?: string;
   onKeyDown?: (e: React.KeyboardEventHandler) => void;
   onClick?: (e: React.MouseEventHandler) => void;
   onBlur?: (e: React.FocusEventHandler) => void;

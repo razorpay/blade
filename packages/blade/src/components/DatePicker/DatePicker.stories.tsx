@@ -4,7 +4,7 @@ import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { I18nProvider } from '@razorpay/i18nify-react';
 import type { DatePickerProps, DatesRangeValue } from './types';
-import { DatePicker as DatePickerComponent } from './';
+import { DatePicker as DatePickerComponent, FilterChipDatePicker } from './';
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -410,3 +410,91 @@ export const Localization: StoryFn<typeof DatePickerComponent> = () => {
 };
 
 Localization.storyName = 'Localization';
+
+export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDatePicker> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="single"
+        onChange={(date) => {
+          console.log('date', date);
+        }}
+      />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStorySingleStory.storyName = 'FilterChipDatePicker (Single Selection)';
+
+export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
+  typeof FilterChipDatePicker
+> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        onChange={(date) => {
+          console.log(date);
+        }}
+      />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
+
+export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
+  typeof FilterChipDatePicker
+> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        presets={[
+          { label: 'In 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date] },
+          {
+            label: 'In a month',
+            value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+          },
+        ]}
+        onChange={(date) => {
+          console.log(date);
+        }}
+      />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStorySingleStoryWithPreset.storyName =
+  'FilterChipDatePicker (Single Selection) with Presets';
+
+export const ControlledFilterChipDatePicker: StoryFn<typeof FilterChipDatePicker> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">isOpen</Code>, <Code size="medium">value</Code> and associated
+        event handlers you can control the FilterChipDatePicker.
+      </Text>
+      <Box marginBottom="spacing.5">
+        <Text>Selected: {dayjs(date).format('DD-MM-YYYY')}</Text>
+        <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
+      </Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="single"
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        value={date}
+        onChange={(date) => {
+          setDate(date);
+        }}
+      />
+    </Box>
+  );
+};
