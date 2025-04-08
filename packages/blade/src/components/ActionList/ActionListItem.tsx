@@ -283,6 +283,39 @@ const ActionListItemText = assignWithoutSideEffects(_ActionListItemText, {
   componentId: componentIds.ActionListItemText,
 });
 
+const BaseMenuLeadingItem = ({
+  isSelected,
+  leading,
+  selectionType,
+  isDisabled,
+}: {
+  isSelected?: boolean;
+  leading?: React.ReactNode;
+  selectionType: string | undefined;
+  isDisabled?: boolean;
+}): React.ReactElement | null => {
+  if (selectionType === 'multiple') {
+    return (
+      <BaseBox
+        pointerEvents="none"
+        // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+        {...makeAccessible({
+          hidden: true,
+        })}
+      >
+        <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
+          {/*
+        Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+        But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+      */}
+          {null}
+        </Checkbox>
+      </BaseBox>
+    );
+  }
+  return React.isValidElement(leading) ? leading : null;
+};
+
 type ClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;
 
 const makeActionListItemClickable = (
@@ -329,6 +362,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     isKeydownPressed,
     filteredValues,
     hasAutoCompleteInBottomSheetHeader,
+    hasUnControlledFilterChipSelectInput,
   } = useDropdown();
 
   React.useEffect(() => {
@@ -343,7 +377,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const renderOnWebAs = props.href ? 'a' : 'button';
-
   /**
    * In SelectInput, returns the isSelected according to selected indexes in the state
    *
@@ -351,11 +384,14 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
    * isSelected prop explicitly is the only way to select item in menu
    */
   const getIsSelected = (): boolean | undefined => {
-    if (dropdownTriggerer === dropdownComponentIds.triggers.SelectInput || hasAutoComplete) {
+    if (
+      dropdownTriggerer === dropdownComponentIds.triggers.SelectInput ||
+      hasAutoComplete ||
+      hasUnControlledFilterChipSelectInput
+    ) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);
       }
-
       return undefined;
     }
 
@@ -398,25 +434,13 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       title={props.title}
       description={props.description}
       leading={
-        selectionType === 'multiple' ? (
-          <BaseBox
-            pointerEvents="none"
-            // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-            {...makeAccessible({
-              hidden: true,
-            })}
-          >
-            <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={props.isDisabled}>
-              {/* 
-      Checkbox requires children. Didn't want to make it optional because its helpful for consumers
-      But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
-    */}
-              {null}
-            </Checkbox>
-          </BaseBox>
-        ) : (
-          props.leading
-        )
+        <BaseMenuLeadingItem
+          key={`${dropdownBaseId}-${props._index}-leading-${isSelected}`}
+          isSelected={isSelected}
+          leading={props.leading}
+          selectionType={selectionType}
+          isDisabled={props.isDisabled}
+        />
       }
       trailing={props.trailing}
       titleSuffix={props.titleSuffix}
