@@ -15,7 +15,7 @@ import { useDatesState } from './useDatesState';
 import { DatePickerInput } from './DateInput.web';
 import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
 import { usePopup } from './usePopup';
-import { CalendarFooter } from './CalendarFooter';
+import { CalendarFooter } from './CalendarFooter.web';
 import { convertIntlToDayjsLocale, loadScript } from './utils';
 import { shiftTimezone } from './shiftTimezone';
 import BaseBox from '~components/Box/BaseBox';
