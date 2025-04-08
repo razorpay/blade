@@ -452,7 +452,7 @@ export default {
 } as Meta<ListViewProps>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 50 }, (_, i) => ({
+  ...Array.from({ length: 20 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -473,6 +473,19 @@ const nodes: Item[] = [
       'Alice Doe',
     ][Math.floor(Math.random() * 8)],
   })),
+  // to make sure one item from last week's date is always present
+  {
+    id: 21,
+    paymentId: 'rzp123456',
+    amount: 1000,
+    status: 'Pending',
+    date: new Date(new Date().setDate(new Date().getDate() - 4)),
+    type: 'Payout',
+    method: 'Bank Transfer',
+    bank: 'HDFC',
+    account: '1234567890',
+    name: 'John Doe',
+  }
 ];
 
 type Item = {
