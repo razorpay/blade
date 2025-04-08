@@ -68,6 +68,7 @@ const ListViewFilters = ({
   searchName,
   showQuickFilters,
   onShowQuickFiltersChange,
+  onSearchClear,
   selectedFiltersCount = 0,
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
@@ -103,6 +104,7 @@ const ListViewFilters = ({
           placeholder={searchValuePlaceholder}
           name={searchNameValue || searchId}
           onChange={({ name, value }) => onSearchChange?.({ name, value })}
+          onClearButtonClick={onSearchClear}
         />
       )}
       <BaseBox>
@@ -183,6 +185,7 @@ const ListViewFilters = ({
                   placeholder={searchValuePlaceholder}
                   name={searchNameValue || searchId}
                   onChange={({ name, value }) => onSearchChange?.({ name, value })}
+                  onClearButtonClick={onSearchClear}
                   size="medium"
                 />
               </Box>

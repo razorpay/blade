@@ -30,6 +30,10 @@ type ListViewFilterProps = {
    */
   onSearchChange?: ({ name, value }: { name?: string; value?: string }) => void;
   /**
+   *  onClear handler for search input
+   */
+  onSearchClear?: () => void;
+  /**
    * it will show/hide the quick filters
    */
   showQuickFilters?: boolean;
