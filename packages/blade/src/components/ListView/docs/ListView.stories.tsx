@@ -251,7 +251,7 @@ const Page = (): React.ReactElement => {
                    const methodFilterData = getMethodFilterData(searchValueData, '');
                    const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
                    setListViewTableData(dateRangeFilterData);
-                   setMethodFilter('');
+                   setMethodFilter(undefined);
                    setFilterDateRange(undefined);
                    }}
                  >
@@ -624,7 +624,7 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
               const methodFilterData = getMethodFilterData(searchValueData, '');
               const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
               setListViewTableData(dateRangeFilterData);
-              setMethodFilter('');
+              setMethodFilter(undefined);
               setFilterDateRange(undefined);
               setSelectedQuickFilter('All');
             }}
@@ -927,10 +927,10 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
             onClearButtonClick={() => {
               const quickFilterData = getQuickFilterData(data, 'All');
               const searchValueData = getSearchedData(quickFilterData, searchValue);
-              const methodFilterData = getMethodFilterData(searchValueData, '');
+              const methodFilterData = getMethodFilterData(searchValueData, undefined);
               const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
               setListViewTableData(dateRangeFilterData);
-              setMethodFilter('');
+              setMethodFilter(undefined);
               setFilterDateRange(undefined);
               setSelectedQuickFilter('All');
             }}
@@ -960,7 +960,12 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
               <DropdownOverlay>
                 <ActionList>
                   {['Bank Transfer', 'Credit Card', 'PayPal'].map((method, index) => (
-                    <ActionListItem key={index} title={method} value={method} />
+                    <ActionListItem
+                      key={index}
+                      title={method}
+                      value={method}
+                      isSelected={methodFilter?.includes(method)}
+                    />
                   ))}
                 </ActionList>
               </DropdownOverlay>
@@ -1275,7 +1280,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
         >
           <FilterChipGroup
             onClearButtonClick={() => {
-              setMethodFilter('');
+              setMethodFilter(undefined);
               setFilterDateRange(undefined);
               setSelectedQuickFilter([]);
               const searchValueData = getSearchedData(data, searchValue);
