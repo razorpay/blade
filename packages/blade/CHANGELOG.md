@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.19.1
+
+### Patch Changes
+
+- 08ad3279: fix(blade): date picker resetting to prev value
+
 ## 12.19.0
 
 ### Minor Changes
