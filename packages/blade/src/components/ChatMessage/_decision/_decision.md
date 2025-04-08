@@ -1,5 +1,11 @@
 # ChatMessage Decisions
 
+A Chat Message is a visual representation of a message in a chat application.
+
+<img src="./chatMessage-thumbnail.png" width="380" alt="chatMessage-thumbnail" />
+
+
+
 - [Design](#design)
 - [ChatMessage Component](#ChatMessage-component)
   - [ChatMessage API](#ChatMessage-api)
@@ -95,6 +101,6 @@ type ChatMessageProps = {
 // 
 ```
 
-## Open Questions
 
-- should their be an animation in case of error?
+## Open Questions
+N/A

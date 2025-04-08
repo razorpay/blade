@@ -21,6 +21,7 @@
     "publish-npm": "lerna run --scope @razorpay/blade publish-npm",
     "release": "lerna run --scope @razorpay/blade generate-github-npmrc && changeset publish",
     "build": "lerna run --scope @razorpay/blade build",
+    "generate-docs-lockfile": "node packages/blade/scripts/generateDocsLockFile.mjs",
     "postinstall": "lerna run --scope eslint-plugin-blade build",
     "aicodemod:serve": "node packages/blade/codemods/aicodemod/server.mjs",
     "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds"

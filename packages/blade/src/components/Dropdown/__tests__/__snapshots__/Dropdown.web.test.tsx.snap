@@ -150,7 +150,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -826,7 +826,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
