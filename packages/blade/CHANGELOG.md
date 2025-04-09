@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.20.0
+
+### Minor Changes
+
+- 65142216: feat(blade): add `FilterChipSelectInput` & `FilterChipDatePicker` components
+- 65142216: feat(blade): add list view pattern
+
 ## 12.19.1
 
 ### Patch Changes

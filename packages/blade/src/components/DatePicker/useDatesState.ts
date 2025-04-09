@@ -118,6 +118,11 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
     return false;
   };
 
+  const handleReset = () => {
+    setPickedDate(null);
+    setHoveredDate(null);
+    setValue([null, null]);
+  };
   const onRootMouseLeave =
     type === 'range'
       ? (event: React.MouseEvent<HTMLDivElement>) => {
@@ -191,5 +196,6 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
     pickedDate,
     controlledValue: _value,
     setControlledValue: setValue,
+    handleReset,
   } as const;
 }
