@@ -1,4 +1,3 @@
-// .storybook/manager.js
 import React from 'react';
 import { create } from '@storybook/theming';
 import { useGlobals } from '@storybook/api';
