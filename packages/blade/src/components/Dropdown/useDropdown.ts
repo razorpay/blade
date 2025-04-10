@@ -79,7 +79,9 @@ type DropdownContextType = {
     | 'DropdownIconButton'
     | 'AutoComplete'
     | 'DropdownLink'
-    | 'SearchInput';
+    | 'SearchInput'
+    | 'FilterChipSelectInput';
+
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.MutableRefObject<HTMLButtonElement | null>;
   headerAutoCompleteRef: React.MutableRefObject<HTMLButtonElement | null>;
@@ -96,6 +98,11 @@ type DropdownContextType = {
   hasFooterAction: boolean;
   setHasFooterAction: (value: boolean) => void;
 
+  /**
+   * Whether the FilterChipSelectInput is uncontrolled
+   */
+  hasUnControlledFilterChipSelectInput: boolean;
+  setHasUnControlledFilterChipSelectInput: (value: boolean) => void;
   /**
    * Apart from dropdownTriggerer prop, we also set this boolean because in BottomSheetHeader and DropdownHeader, the trigger can be Select but they can also have autocomplete inside of header
    */
@@ -150,6 +157,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setChangeCallbackTriggerer: noop,
   isControlled: false,
   setIsControlled: noop,
+  hasUnControlledFilterChipSelectInput: false,
+  setHasUnControlledFilterChipSelectInput: noop,
   dropdownBaseId: '',
   actionListItemRef: {
     current: null,

@@ -28,6 +28,7 @@ const validDropdownChildren = [
   dropdownComponentIds.DropdownOverlay,
   dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
+  dropdownComponentIds.triggers.FilterChipSelectInput,
 ];
 
 /**
@@ -81,6 +82,10 @@ const _Dropdown = (
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasAutoCompleteInHeader, setHasAutoCompleteInHeader] = React.useState(false);
+  const [
+    hasUnControlledFilterChipSelectInput,
+    setHasUnControlledFilterChipSelectInput,
+  ] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
   const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
     DropdownContextType['changeCallbackTriggerer']
@@ -159,6 +164,9 @@ const _Dropdown = (
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {
         dropdownTriggerer.current = 'AutoComplete';
       }
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.FilterChipSelectInput)) {
+        dropdownTriggerer.current = 'FilterChipSelectInput';
+      }
     }
   });
 
@@ -194,6 +202,8 @@ const _Dropdown = (
       setHasFooterAction,
       hasAutoCompleteInHeader,
       setHasAutoCompleteInHeader,
+      hasUnControlledFilterChipSelectInput,
+      setHasUnControlledFilterChipSelectInput,
       dropdownTriggerer: dropdownTriggerer.current,
       changeCallbackTriggerer,
       setChangeCallbackTriggerer,

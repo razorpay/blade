@@ -8,4 +8,5 @@ export const componentIds = {
   ActionListItemAvatar: 'ActionListItemAvatar',
   ActionListItemText: 'ActionListItemText',
   ActionListSection: 'ActionListSection',
+  ActionListSectionTitle: 'ActionListSectionTitle',
 };

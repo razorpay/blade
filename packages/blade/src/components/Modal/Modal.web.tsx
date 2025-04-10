@@ -158,7 +158,6 @@ const Modal = ({
                 width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
                 borderRadius={modalBorderRadius}
                 backgroundColor="popup.background.subtle"
-                position="absolute"
                 display="flex"
                 flexDirection="column"
                 top="50%"

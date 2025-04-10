@@ -163,6 +163,7 @@ const _Table = <Item,>({
   isRefreshing = false,
   showBorderedCells = false,
   defaultSelectedIds = [],
+  backgroundColor = tableBackgroundColor,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -182,7 +183,6 @@ const _Table = <Item,>({
   const isVirtualized = getComponentId(tableRootComponent) === ComponentIds.VirtualizedTable;
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isVirtualized ?? isHeaderSticky ?? isFirstColumnSticky;
-  const backgroundColor = tableBackgroundColor;
 
   const isMobile = useIsMobile();
   const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
