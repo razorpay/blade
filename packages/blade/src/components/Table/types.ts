@@ -203,6 +203,10 @@ type TableProps<Item> = {
    * An array of default selected row ids. This will be used to set the initial selected rows.
    */
   defaultSelectedIds?: Identifier[];
+  /**
+   * The backgroundColor prop determines the background color of the table.
+   **/
+  backgroundColor?: TableBackgroundColors | 'transparent';
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 

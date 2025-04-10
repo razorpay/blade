@@ -150,7 +150,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -826,7 +826,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1874,6 +1874,353 @@ exports[`<Dropdown /> with <DropdownButton /> should support data-analytics-attr
           </div>
         </div>
       </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with FilterChipSelectInput 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+  gap: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 2px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: currentColor;
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c1.c1.c1.c1.c1 {
+  border-width: 1px;
+  border-color: hsla(214,28%,84%,1);
+  height: 28px;
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-style: dashed;
+  background-color: hsla(0,0%,100%,1);
+  color: hsla(212,39%,16%,1);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c2.c2.c2.c2.c2 {
+  background-color: hsla(0,0%,100%,0);
+  border-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+  padding-left: 12px;
+  padding-right: 8px;
+  gap: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  color: currentcolor;
+}
+
+.c2.c2.c2.c2.c2:not([disabled]):hover {
+  background-color: hsla(211,20%,52%,0.06);
+}
+
+.c2.c2.c2.c2.c2[disabled] {
+  cursor: not-allowed;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 2px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class=" c1"
+        data-blade-component="base-box"
+      >
+        <button
+          aria-controls="dropdown-495-actionlist"
+          aria-expanded="false"
+          aria-haspopup="menu"
+          aria-label="Fruits"
+          class="c2"
+          role="button"
+        >
+          <div
+            class="c3"
+            data-blade-component="box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              Fruits
+            </p>
+          </div>
+          <div
+            class="c5"
+            data-blade-component="box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                data-blade-component="svg-path"
+                fill="currentColor"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytics-attribute 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+  gap: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 2px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: currentColor;
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c1.c1.c1.c1.c1 {
+  border-width: 1px;
+  border-color: hsla(214,28%,84%,1);
+  height: 28px;
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-style: dashed;
+  background-color: hsla(0,0%,100%,1);
+  color: hsla(212,39%,16%,1);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c2.c2.c2.c2.c2 {
+  background-color: hsla(0,0%,100%,0);
+  border-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+  padding-left: 12px;
+  padding-right: 8px;
+  gap: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  color: currentcolor;
+}
+
+.c2.c2.c2.c2.c2:not([disabled]):hover {
+  background-color: hsla(211,20%,52%,0.06);
+}
+
+.c2.c2.c2.c2.c2[disabled] {
+  cursor: not-allowed;
+}
+
+.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 2px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class=" c1"
+        data-blade-component="base-box"
+      >
+        <button
+          aria-controls="dropdown-514-actionlist"
+          aria-expanded="false"
+          aria-haspopup="menu"
+          aria-label="profile"
+          class="c2"
+          data-analytics-attribute="profile"
+          role="button"
+        >
+          <div
+            class="c3"
+            data-blade-component="box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              profile
+            </p>
+          </div>
+          <div
+            class="c5"
+            data-blade-component="box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                data-blade-component="svg-path"
+                fill="currentColor"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 </div>
