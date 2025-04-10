@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.20.1
+
+### Patch Changes
+
+- 7fdb6598: fix(SideNav): scroll issue in L2 menu
+
 ## 12.20.0
 
 ### Minor Changes
