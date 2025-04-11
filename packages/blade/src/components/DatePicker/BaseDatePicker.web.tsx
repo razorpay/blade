@@ -154,6 +154,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       onOpenChange?.({ isOpen });
       // we need to update old value everytime datepicker is opened or closed
       setOldValue(controlledValue);
+      setPicker(() => defaultPicker);
     },
   });
 
