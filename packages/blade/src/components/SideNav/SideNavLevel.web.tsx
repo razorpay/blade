@@ -27,6 +27,9 @@ const SideNavLevel = ({ children }: SideNavLevelProps): React.ReactElement => {
       onMouseOut={(e) => {
         e.stopPropagation();
       }}
+      height="100%"
+      display="flex"
+      flexDirection="column"
     >
       {currentLevel === 2 && headingTitle ? (
         <BaseBox
@@ -41,7 +44,9 @@ const SideNavLevel = ({ children }: SideNavLevelProps): React.ReactElement => {
           </Text>
         </BaseBox>
       ) : null}
-      <BaseBox padding={{ base: 'spacing.0', m: 'spacing.3' }}>{children}</BaseBox>
+      <BaseBox padding={{ base: 'spacing.0', m: 'spacing.3' }} overflowY="auto">
+        {children}
+      </BaseBox>
     </BaseBox>
   );
 };
