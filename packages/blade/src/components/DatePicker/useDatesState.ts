@@ -13,6 +13,9 @@ interface UseDatesRangeInput<Type extends DatePickerType = 'default'>
   applyTimezone?: boolean;
 }
 
+type ChangeValue = 'day' | 'month' | 'year';
+type OnDateChange = (date: Date, changeValue: ChangeValue) => void;
+
 function isInRange(date: Date, range: [Date, Date]) {
   const _range = [...range].sort((a, b) => a.getTime() - b.getTime());
   return (
@@ -45,7 +48,22 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
   );
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
 
-  const onDateChange = (date: Date) => {
+  const onDateChange: OnDateChange = (date, changeValue) => {
+    const shouldChangeValue =
+      (changeValue === 'month' || changeValue === 'year') && type === 'default';
+    if (shouldChangeValue) {
+      const prevDate = _value || new Date();
+
+      const newDate = new Date(prevDate);
+      if (changeValue === 'month') {
+        newDate.setMonth(date.getMonth());
+      } else if (changeValue === 'year') {
+        newDate.setFullYear(date.getFullYear());
+      }
+
+      date = newDate;
+    }
+
     if (type === 'range') {
       if (pickedDate instanceof Date && !_value[1]) {
         if (dayjs(date).isSame(pickedDate, level) && !allowSingleDateInRange) {

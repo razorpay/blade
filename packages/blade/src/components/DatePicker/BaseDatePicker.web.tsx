@@ -310,7 +310,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             onHoveredDateChange(date);
           }}
           __onDayClick={(_event, date) => {
-            onDateChange(date);
+            onDateChange(date, 'day');
           }}
           getMonthControlProps={(date) => {
             return getControlProps(date);
@@ -323,11 +323,11 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           }}
           onMonthSelect={(date) => {
             props?.onMonthSelect?.(date);
-            onDateChange(date);
+            onDateChange(date, 'month');
           }}
           onYearSelect={(date) => {
             props?.onYearSelect?.(date);
-            onDateChange(date);
+            onDateChange(date, 'year');
           }}
           onNext={(data) => {
             props?.onNext?.(data);
