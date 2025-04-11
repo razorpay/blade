@@ -81,7 +81,7 @@ const config: StorybookConfig = {
       test: /@stackblitz\/sdk[\\/].*\.m?js$/,
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env'],
+        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
         plugins: ['@babel/plugin-proposal-optional-chaining'],
       },
     });
