@@ -1,5 +1,19 @@
 # @razorpay/blade
 
+## 12.21.0
+
+### Minor Changes
+
+- c874d904: feat(StepGroup): support integrating stepgroup and collapsible
+- b64e93ed: feat(Drawer): add children support to DrawerHeader
+- 234b50ca: feat(Dropdown): support AutoComplete in DropdownHeader
+
+### Patch Changes
+
+- da5663e9: fix: reset datepicker to default picker value on close
+- 6345fc04: fix: auto-shifting of the date picker on picker change.
+- d9294055: fix: persists datevalues in case of month and year change
+
 ## 12.20.1
 
 ### Patch Changes
