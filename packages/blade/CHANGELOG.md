@@ -1,5 +1,49 @@
 # @razorpay/blade
 
+## 12.20.1
+
+### Patch Changes
+
+- 7fdb6598: fix(SideNav): scroll issue in L2 menu
+
+## 12.20.0
+
+### Minor Changes
+
+- 65142216: feat(blade): add `FilterChipSelectInput` & `FilterChipDatePicker` components
+- 65142216: feat(blade): add list view pattern
+
+## 12.19.1
+
+### Patch Changes
+
+- 08ad3279: fix(blade): date picker resetting to prev value
+
+## 12.19.0
+
+### Minor Changes
+
+- 9284a1f9: feat(blade): feat: add virtualization in section list
+
+## 12.18.0
+
+### Minor Changes
+
+- fa1800c4: feat(storybook): pre-generate lock file for documentation examples
+- f211134b: feat(blade) : add keyicon , appleicon, androidicon
+
+## 12.17.1
+
+### Patch Changes
+
+- c28b9182: fix(Modal): remove clashing position of modal on module federated apps
+
+## 12.17.0
+
+### Minor Changes
+
+- 3afdadf3: fix(blade): datepicker autofocus not working on programmatically changing date
+
 ## 12.16.2
 
 ### Patch Changes

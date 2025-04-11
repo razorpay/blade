@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type DrawerProps = {
@@ -23,7 +23,7 @@ type DrawerProps = {
    *
    * Supports DrawerHeader and DrawerBody
    */
-  children: ReactNode;
+  children: React.ReactNode;
   /**
    * zIndex property of drawer
    *
@@ -54,7 +54,7 @@ type DrawerHeaderProps = {
   /**
    * Title of the Drawer
    */
-  title: string;
+  title?: string;
 
   /**
    * Subtitle of the Drawer
@@ -66,26 +66,26 @@ type DrawerHeaderProps = {
    *
    * DrawerHeaderIcon or DrawerHeaderAsset
    */
-  leading?: ReactNode;
+  leading?: React.ReactNode;
 
   /**
    * Title suffix element
    *
    * DrawerHeaderBadge
    */
-  titleSuffix?: ReactNode;
+  titleSuffix?: React.ReactNode;
 
   /**
    * Trailing element
    *
    * Link, Button[]
    */
-  trailing?: ReactNode;
+  trailing?: React.ReactNode;
 
   /**
    * Children elements to be rendered inside the header
    */
-  children?: ReactNode;
+  children?: React.ReactElement | React.ReactElement[];
 } & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps };

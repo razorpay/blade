@@ -31,7 +31,7 @@ const Page = (): React.ReactElement => {
         
         function App() {
           return (
-            <ChatMessage > Hi, from ray! </ChatMessage>
+            <ChatMessage senderType="self">Hi, from ray!</ChatMessage>
           )
         }
 

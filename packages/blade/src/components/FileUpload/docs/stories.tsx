@@ -5,7 +5,8 @@ const SingleFileUploadStory = `
     FileUpload,
     TextInput,
     Heading,
-    ProgressBar
+    ProgressBar,
+    Text,
   } from '@razorpay/blade/components';
   import type {
     FileUploadProps,

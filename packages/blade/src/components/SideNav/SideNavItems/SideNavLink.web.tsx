@@ -381,7 +381,9 @@ const SideNavLink = ({
             <FloatingPortal root={l2PortalContainerRef}>
               {isActive && isL1Collapsed ? (
                 <FloatingFocusManager modal={false} context={context} initialFocus={-1} returnFocus>
-                  <BaseBox ref={refs.setFloating}>{children}</BaseBox>
+                  <BaseBox ref={refs.setFloating} height="100%">
+                    {children}
+                  </BaseBox>
                 </FloatingFocusManager>
               ) : null}
             </FloatingPortal>

@@ -14,7 +14,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  position: absolute;
   max-height: 80vh;
   width: calc(100vw - 48px);
   min-width: 320px;
@@ -41,6 +40,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -792,7 +792,6 @@ exports[`Modal renders a basic Modal 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  position: absolute;
   max-height: 80vh;
   width: calc(100vw - 48px);
   min-width: 320px;
@@ -898,7 +897,6 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  position: absolute;
   max-height: 80vh;
   width: calc(100vw - 48px);
   min-width: 320px;
@@ -1004,7 +1002,6 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  position: absolute;
   max-height: 80vh;
   width: calc(100vw - 48px);
   min-width: 320px;

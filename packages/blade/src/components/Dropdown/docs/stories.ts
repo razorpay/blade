@@ -809,30 +809,29 @@ const WithIconButtonStory = `
     ActionList,
     ActionListItem,
     Box,
-    ChevronDownIcon,
-    ChevronUpIcon,
-    Text,
+    BoxIcon,
   } from '@razorpay/blade/components';
 
-  function App (): React.ReactElement {
-    const [status, setStatus] = React.useState<string | undefined>('latest-added');
+  function App(): React.ReactElement {
+    const [status, setStatus] = React.useState<string | undefined>(
+      'latest-added'
+    );
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  
+
     return (
       <Box padding="spacing.10">
-        <Dropdown 
+        <Dropdown
           onOpenChange={(isOpen) => {
             if (!isOpen) {
-              setIsDropdownOpen(false)
+              setIsDropdownOpen(false);
             }
-          }>
+          }}
+        >
           <DropdownIconButton
             icon={BoxIcon}
             accessibilityLabel="Set Status"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
-            {status ?? ''}
-          </DropdownLink>
+          />
           <DropdownOverlay>
             <ActionList>
               <ActionListItem
