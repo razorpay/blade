@@ -184,7 +184,7 @@ const _StepItem = ({
       minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['120'])}, 100%)`}
       width={isVertical ? '100%' : undefined}
       flex={isVertical ? undefined : '1'}
-      marginX="spacing.4"
+      marginX={isVertical ? 'spacing.4' : 'spacing.0'}
       {...metaAttribute({ name: MetaConstants.StepItem })}
       {...makeAnalyticsAttribute(rest)}
       ref={itemRef}

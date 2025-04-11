@@ -10,6 +10,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { componentIds as collapsibleComponentIds } from '~components/Collapsible/componentIds';
+import { throwBladeError } from '~utils/logger';
 
 const useChildrenWithIndexes = ({
   _nestingLevel,
@@ -39,6 +40,13 @@ const useChildrenWithIndexes = ({
       }
 
       if (componentId === collapsibleComponentIds.Collapsible) {
+        if (parentStepGroupProps.orientation !== 'vertical' && __DEV__) {
+          throwBladeError({
+            message: 'Collapsible is not supported in horizontal orientation',
+            moduleName: 'StepGroup',
+          });
+        }
+
         return React.cloneElement(child, {
           children: React.Children.map(child.props.children, (nestedChild) => {
             if (
@@ -127,8 +135,8 @@ const _StepGroup = (
         minWidth={minWidth}
         width={width ?? defaultWidth}
         paddingY={_nestingLevel === 0 ? 'spacing.4' : undefined}
-        overflowX={orientation === 'horizontal' ? 'auto' : undefined}
-        flexDirection={orientation === 'vertical' ? 'column' : 'row'}
+        overflowX={isHorizontal ? 'auto' : undefined}
+        flexDirection={isHorizontal ? 'row' : 'column'}
         {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
         {...makeAnalyticsAttribute(rest)}
       >
