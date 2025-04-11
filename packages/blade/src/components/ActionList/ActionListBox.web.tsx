@@ -133,12 +133,11 @@ const useFilteredItems = (
 } => {
   const childrenArray = React.Children.toArray(children); // Convert children to an array
 
-  const { filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer } = useDropdown();
+  const { filteredValues, hasAutoCompleteInHeader, dropdownTriggerer } = useDropdown();
 
   const items = React.useMemo(() => {
     const hasAutoComplete =
-      hasAutoCompleteInBottomSheetHeader ||
-      dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+      hasAutoCompleteInHeader || dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
     if (!hasAutoComplete) {
       return childrenArray;
@@ -178,7 +177,7 @@ const useFilteredItems = (
     }, []);
 
     return filteredItems;
-  }, [filteredValues, hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, childrenArray]);
+  }, [filteredValues, hasAutoCompleteInHeader, dropdownTriggerer, childrenArray]);
 
   return {
     itemData: items,

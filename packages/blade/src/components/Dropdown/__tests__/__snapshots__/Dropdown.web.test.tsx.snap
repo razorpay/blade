@@ -1,5 +1,686 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 {
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.c5.c5.c5.c5.c5 {
+  margin-bottom: 4px;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c14.c14.c14.c14.c14 {
+  margin-top: -4px;
+  width: 100%;
+  min-width: min(20%,60px);
+}
+
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c18.c18.c18.c18.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c19.c19.c19.c19.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c22.c22.c22.c22.c22 {
+  margin-left: 0px;
+}
+
+.c23.c23.c23.c23.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16 {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c21.c21.c21.c21.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c20.c20.c20.c20.c20 {
+  display: none;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c15.c15.c15.c15.c15::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15:focus {
+  outline: none;
+}
+
+.c10.c10.c10.c10.c10 {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10:focus-within {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c11.c11.c11.c11.c11 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 36px;
+}
+
+.c13.c13.c13.c13.c13 {
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+}
+
+.c13.c13.c13.c13.c13::-webkit-scrollbar {
+  display: none;
+}
+
+.c2.c2.c2.c2.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c9.c9.c9.c9.c9 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c9.c9.c9.c9.c9:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:320px) {
+
+}
+
+@media screen and (min-width:480px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c2"
+          data-blade-component="visually-hidden"
+        >
+          <input
+            aria-hidden="true"
+            tabindex="-1"
+            value=""
+          />
+        </div>
+        <div
+          class=""
+          data-blade-component="select-input"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c4"
+              data-blade-component="base-box"
+            >
+              <label
+                data-blade-component="form-label"
+                for="dropdown-55-trigger-56-input-57"
+                id="dropdown-55-label"
+                style="width: auto; flex-shrink: 0; margin-right: 0px;"
+              >
+                <div
+                  class="c5"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c6"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                    >
+                      Fruits
+                    </p>
+                    <div
+                      class="c2"
+                      data-blade-component="visually-hidden"
+                    >
+                      <p
+                        class="c8"
+                        data-blade-component="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class=" c9"
+              data-blade-component="base-box"
+            >
+              <div
+                class=" c10 c11"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c12 c13 tags-slot"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c14"
+                    data-blade-component="base-box"
+                  >
+                    <button
+                      aria-activedescendant="dropdown-55-0"
+                      aria-controls="dropdown-55-actionlist"
+                      aria-describedby=""
+                      aria-disabled="false"
+                      aria-expanded="true"
+                      aria-haspopup="dialog"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocomplete="off"
+                      class="c15"
+                      data-blade-component="styled-base-input"
+                      id="dropdown-55-trigger-56-input-57"
+                      placeholder="Select Option"
+                      role="combobox"
+                      type="button"
+                      value=""
+                    >
+                      <p
+                        class="c16"
+                        data-blade-component="text"
+                      >
+                        Select Option
+                      </p>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="c17"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c17"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c18"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c19"
+                        data-blade-component="base-box"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="c20"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c21"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="c22"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c23"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
@@ -1206,8 +1887,8 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
             >
               <label
                 data-blade-component="form-label"
-                for="dropdown-55-trigger-56-input-57"
-                id="dropdown-55-label"
+                for="dropdown-164-trigger-165-input-166"
+                id="dropdown-164-label"
                 style="width: auto; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
@@ -1254,7 +1935,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                     data-blade-component="base-box"
                   >
                     <button
-                      aria-controls="dropdown-55-actionlist"
+                      aria-controls="dropdown-164-actionlist"
                       aria-describedby=""
                       aria-disabled="false"
                       aria-expanded="false"
@@ -1264,7 +1945,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                       autocomplete="off"
                       class="c15"
                       data-blade-component="styled-base-input"
-                      id="dropdown-55-trigger-56-input-57"
+                      id="dropdown-164-trigger-165-input-166"
                       placeholder="Select Option"
                       role="combobox"
                       type="button"
@@ -1848,7 +2529,7 @@ exports[`<Dropdown /> with <DropdownButton /> should support data-analytics-attr
       data-blade-component="base-box"
     >
       <button
-        aria-controls="dropdown-474-actionlist"
+        aria-controls="dropdown-583-actionlist"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c1"
@@ -2005,7 +2686,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
         data-blade-component="base-box"
       >
         <button
-          aria-controls="dropdown-495-actionlist"
+          aria-controls="dropdown-604-actionlist"
           aria-expanded="false"
           aria-haspopup="menu"
           aria-label="Fruits"
@@ -2178,7 +2859,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
         data-blade-component="base-box"
       >
         <button
-          aria-controls="dropdown-514-actionlist"
+          aria-controls="dropdown-623-actionlist"
           aria-expanded="false"
           aria-haspopup="menu"
           aria-label="profile"

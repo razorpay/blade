@@ -84,6 +84,7 @@ type DropdownContextType = {
 
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.MutableRefObject<HTMLButtonElement | null>;
+  headerAutoCompleteRef: React.MutableRefObject<HTMLButtonElement | null>;
   triggererWrapperRef: React.MutableRefObject<ContainerElementType | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
   isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
@@ -103,10 +104,10 @@ type DropdownContextType = {
   hasUnControlledFilterChipSelectInput: boolean;
   setHasUnControlledFilterChipSelectInput: (value: boolean) => void;
   /**
-   * Apart from dropdownTriggerer prop, we also set this boolean because in BottomSheet, the initial trigger can be Select but also have autocomplete inside of it
+   * Apart from dropdownTriggerer prop, we also set this boolean because in BottomSheetHeader and DropdownHeader, the trigger can be Select but they can also have autocomplete inside of header
    */
-  hasAutoCompleteInBottomSheetHeader: boolean;
-  setHasAutoCompleteInBottomSheetHeader: (value: boolean) => void;
+  hasAutoCompleteInHeader: boolean;
+  setHasAutoCompleteInHeader: (value: boolean) => void;
 
   /**
    * A value that can be used in dependency array to know when Dropdown value is changed.
@@ -148,8 +149,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setShouldIgnoreBlurAnimation: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
-  hasAutoCompleteInBottomSheetHeader: false,
-  setHasAutoCompleteInBottomSheetHeader: noop,
+  hasAutoCompleteInHeader: false,
+  setHasAutoCompleteInHeader: noop,
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
   changeCallbackTriggerer: 0,
@@ -163,6 +164,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
     current: null,
   },
   triggererRef: {
+    current: null,
+  },
+  headerAutoCompleteRef: {
     current: null,
   },
   isTagDismissedRef: {
@@ -338,7 +342,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     const newIndex = index ?? activeIndex;
     let updatedIndex: number;
     const hasAutoComplete =
-      rest.hasAutoCompleteInBottomSheetHeader ||
+      rest.hasAutoCompleteInHeader ||
       dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
     if (hasAutoComplete && filteredValues.length > 0) {
       // When its autocomplete, we don't loop over all options. We only loop on filtered options
@@ -383,13 +387,20 @@ const useDropdown = (): UseDropdownReturnValue => {
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ): void => {
+    setIsKeydownPressed(false);
     const actionType = getActionFromKey(e, isOpen, dropdownTriggerer);
     if (typeof actionType === 'number') {
       onOptionChange(actionType, index);
     }
     selectOption(index);
+
     if (!isReactNative()) {
-      rest.triggererRef.current?.focus();
+      if (rest.hasAutoCompleteInHeader) {
+        // move focus to autocomplete
+        rest.headerAutoCompleteRef.current?.focus();
+      } else {
+        rest.triggererRef.current?.focus();
+      }
     }
   };
 
@@ -405,7 +416,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsOpen(true);
 
     if (
-      rest.hasAutoCompleteInBottomSheetHeader ||
+      rest.hasAutoCompleteInHeader ||
       dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete
     ) {
       return;

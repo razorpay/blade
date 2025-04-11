@@ -21,6 +21,7 @@ type DropdownHeaderProps = Pick<
   | 'trailing'
   | 'titleSuffix'
   | 'testID'
+  | 'children'
   | keyof DataAnalyticsAttribute
 >;
 
@@ -31,8 +32,11 @@ const _DropdownHeader = ({
   titleSuffix,
   trailing,
   testID,
+  children,
   ...rest
 }: DropdownHeaderProps): React.ReactElement => {
+  const { hasAutoCompleteInHeader, setShouldIgnoreBlurAnimation } = useDropdown();
+
   return (
     <BaseBox
       flexShrink={0}
@@ -41,8 +45,12 @@ const _DropdownHeader = ({
         : {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onMouseDown: (e: any) => {
-              // we don't want focus to ever move on header because its static element
-              e.preventDefault();
+              // we don't want focus to ever move on header because its static element except when autocomplete is present
+              if (!hasAutoCompleteInHeader) {
+                e.preventDefault();
+              } else {
+                setShouldIgnoreBlurAnimation(false);
+              }
             },
           })}
     >
@@ -59,7 +67,9 @@ const _DropdownHeader = ({
         // close button
         showCloseButton={false}
         {...makeAnalyticsAttribute(rest)}
-      />
+      >
+        {children}
+      </BaseHeader>
     </BaseBox>
   );
 };

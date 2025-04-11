@@ -409,6 +409,26 @@ InternalSectionListPerformance.parameters = {
   },
 };
 
+export const InternalDropdownWithSearch = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Select fruits" />
+      <DropdownOverlay>
+        <DropdownHeader>
+          <AutoComplete label="Search Fruits" />
+        </DropdownHeader>
+        <ActionList>
+          <ActionListItem title="Apples" value="Apples" />
+          <ActionListItem title="Appricots" value="Appricots" />
+          <ActionListItem title="Cherries" value="Cherries" />
+          <ActionListItem title="Crab apples" value="Crab apples" />
+          <ActionListItem title="Jambolan" value="Jambolan" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
 export const InternalDropdownPerformance = (): React.ReactElement => {
   const fruits = [
     'Apples',
