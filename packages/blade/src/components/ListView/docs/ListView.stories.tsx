@@ -1481,3 +1481,304 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
 
 export const MultiSelectQuickFilterExample = MultiSelectQuickFilter.bind({});
 MultiSelectQuickFilterExample.storyName = 'Multi Select Quick Filter';
+
+const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
+  const getQuickFilterValueCount = (value: string): number => {
+    if (value === 'All') {
+      return data.nodes.length;
+    }
+    return data.nodes.filter((node) => node.status === value).length;
+  };
+  const getQuickFilterData = (data: TableData<Item>, value?: string): TableData<Item> => {
+    if (!value || value === 'All') {
+      return { nodes: data.nodes };
+    }
+    return { nodes: data.nodes.filter((node) => node.status === value) };
+  };
+  const getSearchedData = (data: TableData<Item>, value?: string): TableData<Item> => {
+    if (!value) {
+      return { nodes: data.nodes };
+    }
+    return { nodes: data.nodes.filter((node) => node.paymentId.includes(value)) };
+  };
+  const getMethodFilterData = (data: TableData<Item>, value?: string): TableData<Item> => {
+    if (!value) {
+      return { nodes: data.nodes };
+    }
+    return { nodes: data.nodes.filter((node) => node.method === value) };
+  };
+
+  const getFilterRangeData = (data: TableData<Item>, value?: DatesRangeValue): TableData<Item> => {
+    if (!value?.[0]) {
+      return { nodes: data.nodes };
+    }
+    return {
+      nodes: data.nodes.filter((node) => {
+        if (!value?.[0] || !value?.[1]) return false;
+        return node.date >= value[0] && node.date <= value[1];
+      }),
+    };
+  };
+  const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('Completed');
+  const [searchValue, setSearchValue] = useState<string | undefined>('');
+  const [methodFilter, setMethodFilter] = useState<string | undefined>('PayPal');
+  const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
+  const [listViewTableData, setListViewTableData] = useState(() => {
+    const filteredQuickFilterData = getQuickFilterData(data, selectedQuickFilter);
+    const methodFilterData = getMethodFilterData(filteredQuickFilterData, methodFilter);
+    return methodFilterData;
+  });
+
+  return (
+    <BaseBox height="100%">
+      <ListView>
+        <ListViewFilters
+          selectedFiltersCount={
+            (methodFilter ? 1 : 0) +
+            (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
+            (selectedQuickFilter !== 'All' ? 1 : 0)
+          }
+          quickFilters={
+            <QuickFilterGroup
+              selectionType="single"
+              onChange={({ values }) => {
+                const value = values[0];
+                const quickFilterData = getQuickFilterData(data, value);
+                const searchValueData = getSearchedData(quickFilterData, searchValue);
+                const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+
+                setListViewTableData(dateRangeFilterData);
+                setSelectedQuickFilter(value);
+              }}
+              defaultValue="All"
+              value={selectedQuickFilter}
+            >
+              {quickFilters.map((status, index) => (
+                <QuickFilter
+                  title={status}
+                  value={status}
+                  trailing={
+                    <Counter
+                      value={getQuickFilterValueCount(status)}
+                      color={
+                        quickFilterColorMapping[
+                          status as keyof typeof quickFilterColorMapping
+                        ] as FeedbackColors
+                      }
+                    />
+                  }
+                  key={`${index}-${status}`}
+                />
+              ))}
+            </QuickFilterGroup>
+          }
+        >
+          <FilterChipGroup
+            onClearButtonClick={() => {
+              const quickFilterData = getQuickFilterData(data, 'All');
+              const searchValueData = getSearchedData(quickFilterData, searchValue);
+              const methodFilterData = getMethodFilterData(searchValueData, undefined);
+              const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
+              setListViewTableData(dateRangeFilterData);
+              setMethodFilter(undefined);
+              setFilterDateRange(undefined);
+              setSelectedQuickFilter('All');
+            }}
+          >
+            <Dropdown selectionType="single">
+              <FilterChipSelectInput
+                label="Method"
+                value={methodFilter}
+                onChange={({ values }) => {
+                  const value = values[0];
+                  const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, value);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+
+                  setListViewTableData(dateRangeFilterData);
+                  setMethodFilter(value);
+                }}
+                onClearButtonClick={() => {
+                  const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const dateRangeFilterData = getFilterRangeData(searchValueData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setMethodFilter(undefined);
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {['Bank Transfer', 'Credit Card', 'PayPal'].map((method, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={method}
+                      value={method}
+                      isSelected={methodFilter?.includes(method)}
+                    />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+            <FilterChipDatePicker
+              label="Date Range"
+              selectionType="range"
+              value={filterDateRange}
+              onChange={(value) => {
+                const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+                const searchValueData = getSearchedData(quickFilterData, searchValue);
+                const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                const dateRangeFilterData = getFilterRangeData(
+                  methodFilterData,
+                  Array.isArray(value) ? value : undefined,
+                );
+                setListViewTableData(dateRangeFilterData);
+                setFilterDateRange(value as DatesRangeValue);
+              }}
+            />
+            <Dropdown selectionType="single">
+              <FilterChipSelectInput
+                label="Status"
+                value={selectedQuickFilter !== 'All' ? selectedQuickFilter : undefined}
+                onChange={({ values }) => {
+                  const value = values[0];
+                  const quickFilterData = getQuickFilterData(data, value);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter(value ? value : 'All');
+                }}
+                onClearButtonClick={() => {
+                  const quickFilterData = getQuickFilterData(data, 'All');
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter('All');
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {filterChipQuickFilters.map((method, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={method}
+                      value={method}
+                      isSelected={selectedQuickFilter === method}
+                    />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          </FilterChipGroup>
+        </ListViewFilters>
+        <Table
+          {...args}
+          data={listViewTableData}
+          defaultSelectedIds={['1', '3']}
+          onSelectionChange={console.log}
+          isFirstColumnSticky
+          selectionType="single"
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                  <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow
+                    key={index}
+                    item={tableItem}
+                    hoverActions={
+                      <>
+                        <Button variant="tertiary" size="xsmall">
+                          View Details
+                        </Button>
+                        <IconButton
+                          icon={CheckIcon}
+                          isHighlighted
+                          accessibilityLabel="Approve"
+                          onClick={() => {
+                            console.log('Approved', tableItem.id);
+                          }}
+                        />
+                        <IconButton
+                          icon={CloseIcon}
+                          isHighlighted
+                          accessibilityLabel="Reject"
+                          onClick={() => {
+                            console.log('Rejected', tableItem.id);
+                          }}
+                        />
+                      </>
+                    }
+                  >
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableEditableCell
+                      accessibilityLabel="Amount"
+                      placeholder="Enter text"
+                      successText="Amount is valid"
+                    />
+                    <TableCell>{tableItem.account}</TableCell>
+                    <TableCell>
+                      {tableItem.date?.toLocaleDateString('en-IN', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>
+                      <Badge
+                        size="medium"
+                        color={
+                          tableItem.status === 'Completed'
+                            ? 'positive'
+                            : tableItem.status === 'Pending'
+                            ? 'notice'
+                            : tableItem.status === 'Failed'
+                            ? 'negative'
+                            : 'primary'
+                        }
+                      >
+                        {tableItem.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableFooterRow>
+                  <TableFooterCell>Total</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>
+                    <Amount value={10} />
+                  </TableFooterCell>
+                </TableFooterRow>
+              </TableFooter>
+            </>
+          )}
+        </Table>
+      </ListView>
+    </BaseBox>
+  );
+};
+
+export const WithoutSearchExampleStory = WithoutSearchExample.bind({});
+WithoutSearchExampleStory.storyName = 'Without Search Example';
