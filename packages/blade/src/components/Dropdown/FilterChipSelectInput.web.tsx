@@ -59,6 +59,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     controlledValueIndices,
     changeCallbackTriggerer,
   } = useDropdown();
+  const valueTitle = options.find((option) => option.value === value)?.title ?? value;
 
   const isUnControlled = options.length > 0 && props.value === undefined;
   // Currently we are having 2 context for selectedFilters. One is for FilterChipGroup and other is for  ListView
@@ -167,7 +168,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   return (
     <BaseFilterChip
       label={label}
-      value={value ?? getUnControlledFilterChipValue()}
+      value={valueTitle ?? getUnControlledFilterChipValue()}
       onClearButtonClick={handleClearButtonClick}
       selectionType={selectionType}
       {...rest}

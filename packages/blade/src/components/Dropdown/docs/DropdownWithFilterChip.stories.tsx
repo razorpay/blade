@@ -175,4 +175,58 @@ export const UncontrolledFilterChipSelectInput = (): React.ReactElement => {
   );
 };
 
+export const FilterChipSelectInputControlled = (): React.ReactElement => {
+  const [value, setSelectedValue] = React.useState<string>();
+
+  const handleOnClick = (name: string): void => {
+    if (value === name) {
+      setSelectedValue(undefined);
+    } else {
+      setSelectedValue(name);
+    }
+  };
+  const isSelected = (name: string): boolean => value === name;
+  return (
+    <Dropdown selectionType="single">
+      <FilterChipSelectInput
+        label="Filter Chip"
+        value={value}
+        onClearButtonClick={(value) => {
+          console.log('value', value);
+          setSelectedValue(undefined);
+        }}
+      />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem
+            onClick={({ name }) => {
+              handleOnClick(name);
+            }}
+            isSelected={isSelected('latest-added')}
+            title="Latest Added"
+            value="latest-added"
+          />
+          <ActionListItem
+            onClick={({ name }) => {
+              handleOnClick(name);
+            }}
+            isSelected={isSelected('latest-invoice')}
+            title="Latest Invoice"
+            value="latest-invoice"
+          />
+
+          <ActionListItem
+            onClick={({ name }) => {
+              handleOnClick(name);
+            }}
+            isSelected={isSelected('oldest-due-date')}
+            title="Oldest Due Date"
+            value="oldest-due-date"
+          />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
 export default DropdownStoryMeta;
