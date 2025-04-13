@@ -1520,7 +1520,6 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
     };
   };
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('Completed');
-  const [searchValue, setSearchValue] = useState<string | undefined>('');
   const [methodFilter, setMethodFilter] = useState<string | undefined>('PayPal');
   const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
   const [listViewTableData, setListViewTableData] = useState(() => {
@@ -1544,8 +1543,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
               onChange={({ values }) => {
                 const value = values[0];
                 const quickFilterData = getQuickFilterData(data, value);
-                const searchValueData = getSearchedData(quickFilterData, searchValue);
-                const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
                 const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
 
                 setListViewTableData(dateRangeFilterData);
@@ -1577,8 +1575,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
           <FilterChipGroup
             onClearButtonClick={() => {
               const quickFilterData = getQuickFilterData(data, 'All');
-              const searchValueData = getSearchedData(quickFilterData, searchValue);
-              const methodFilterData = getMethodFilterData(searchValueData, undefined);
+              const methodFilterData = getMethodFilterData(quickFilterData, undefined);
               const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
               setListViewTableData(dateRangeFilterData);
               setMethodFilter(undefined);
@@ -1593,8 +1590,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
                 onChange={({ values }) => {
                   const value = values[0];
                   const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
-                  const searchValueData = getSearchedData(quickFilterData, searchValue);
-                  const methodFilterData = getMethodFilterData(searchValueData, value);
+                  const methodFilterData = getMethodFilterData(quickFilterData, value);
                   const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
 
                   setListViewTableData(dateRangeFilterData);
@@ -1602,8 +1598,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
                 }}
                 onClearButtonClick={() => {
                   const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
-                  const searchValueData = getSearchedData(quickFilterData, searchValue);
-                  const dateRangeFilterData = getFilterRangeData(searchValueData, filterDateRange);
+                  const dateRangeFilterData = getFilterRangeData(quickFilterData, filterDateRange);
                   setListViewTableData(dateRangeFilterData);
                   setMethodFilter(undefined);
                 }}
@@ -1627,8 +1622,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
               value={filterDateRange}
               onChange={(value) => {
                 const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
-                const searchValueData = getSearchedData(quickFilterData, searchValue);
-                const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
                 const dateRangeFilterData = getFilterRangeData(
                   methodFilterData,
                   Array.isArray(value) ? value : undefined,
@@ -1644,16 +1638,14 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
                 onChange={({ values }) => {
                   const value = values[0];
                   const quickFilterData = getQuickFilterData(data, value);
-                  const searchValueData = getSearchedData(quickFilterData, searchValue);
-                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
                   const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
                   setListViewTableData(dateRangeFilterData);
                   setSelectedQuickFilter(value ? value : 'All');
                 }}
                 onClearButtonClick={() => {
                   const quickFilterData = getQuickFilterData(data, 'All');
-                  const searchValueData = getSearchedData(quickFilterData, searchValue);
-                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
                   const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
                   setListViewTableData(dateRangeFilterData);
                   setSelectedQuickFilter('All');
