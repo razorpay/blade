@@ -1495,12 +1495,6 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
     }
     return { nodes: data.nodes.filter((node) => node.status === value) };
   };
-  const getSearchedData = (data: TableData<Item>, value?: string): TableData<Item> => {
-    if (!value) {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => node.paymentId.includes(value)) };
-  };
   const getMethodFilterData = (data: TableData<Item>, value?: string): TableData<Item> => {
     if (!value) {
       return { nodes: data.nodes };
