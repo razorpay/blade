@@ -88,6 +88,7 @@ const ListViewFilters = ({
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
   const { theme } = useTheme();
+  const showSearchInput = onSearchChange || onSearchClear || searchValuePlaceholder || searchName;
 
   return (
     <ListViewFiltersProvider
@@ -97,7 +98,7 @@ const ListViewFilters = ({
         selectedFiltersCount,
       }}
     >
-      {isMobile && (
+      {isMobile && showSearchInput && (
         <SearchInput
           label=""
           value={searchValue}
@@ -177,7 +178,7 @@ const ListViewFilters = ({
                 />
               </Box>
             </Box>
-            {!isMobile && (
+            {!isMobile && showSearchInput && (
               <Box width="256px">
                 <SearchInput
                   label=""
