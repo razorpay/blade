@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.21.1
+
+### Patch Changes
+
+- fd18c78b: fix(blade): show title filterChipSelectInput, optional search in listview
+
 ## 12.21.0
 
 ### Minor Changes
