@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.21.2
+
+### Patch Changes
+
+- fa9e437d: fix(blade): actionlistitem padding logic broken
+
 ## 12.21.1
 
 ### Patch Changes
