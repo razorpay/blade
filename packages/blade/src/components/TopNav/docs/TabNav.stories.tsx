@@ -30,7 +30,7 @@ const DocsPage = (): React.ReactElement => {
       componentName="TabNav"
       componentDescription="TabNav is a subcomponent of TopNav which can be used inside or outside TopNav"
     >
-      <Sandbox files={tabNavExample} editorHeight={600} hideNavigation={false} openFile="App.js" />
+      <Sandbox files={tabNavExample} editorHeight={600} hideNavigation={false} openFile="App.tsx" />
     </StoryPageWrapper>
   );
 };

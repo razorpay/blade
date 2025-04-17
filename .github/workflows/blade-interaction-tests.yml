@@ -1,7 +1,7 @@
 name: Blade Interaction Tests
 
-# Runs the action when 
-# 1. 'Run Interaction Tests' label is added to PR 
+# Runs the action when
+# 1. 'Run Interaction Tests' label is added to PR
 # 2. Workflow is trigerred manually
 # 3. PR is merged to master
 
@@ -19,7 +19,7 @@ env:
 jobs:
   interaction-tests:
     name: Run Interaction Tests
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    runs-on: ubuntu-22.04 # nosemgrep: non-self-hosted-runner
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'Run Interaction Tests' || github.event_name == 'push' }}
     steps:
       - name: Checkout Codebase
@@ -33,5 +33,5 @@ jobs:
       - name: Run Interaction Tests
         run: |
           npx playwright install chromium firefox webkit --with-deps
-          yarn test:react:interaction:ci 
+          yarn test:react:interaction:ci
         working-directory: packages/blade

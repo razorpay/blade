@@ -130,4 +130,20 @@ describe('Drawer', () => {
     );
     expect(getByTestId('drawer')).toHaveAttribute('data-analytics-drawer', 'drawer-analytics');
   });
+
+  it('should render a Drawer with a custom header', () => {
+    const { getByText, getByRole } = renderWithTheme(
+      <Drawer isOpen={true} onDismiss={() => {}}>
+        <DrawerHeader>
+          <Text>Custom Header</Text>
+        </DrawerHeader>
+        <DrawerBody>
+          <Text>Custom Content</Text>
+        </DrawerBody>
+      </Drawer>,
+    );
+    expect(getByText('Custom Header')).toBeInTheDocument();
+    expect(getByText('Custom Content')).toBeInTheDocument();
+    expect(getByRole('dialog')).toMatchSnapshot();
+  });
 });

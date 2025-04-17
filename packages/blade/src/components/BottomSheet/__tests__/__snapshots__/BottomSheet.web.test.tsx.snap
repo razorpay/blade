@@ -142,7 +142,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   padding-right: 8px;
-  padding-left: 0px;
+  padding-left: 8px;
 }
 
 .c22.c22.c22.c22.c22 {
@@ -849,6 +849,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

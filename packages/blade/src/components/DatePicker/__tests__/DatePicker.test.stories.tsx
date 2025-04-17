@@ -251,7 +251,7 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.click(applyButton);
   await sleep(400);
   // assert inputs value
-  await expect(input).toHaveValue(dayjs('02/02/2025').format('DD/MM/YYYY'));
+  await expect(input).toHaveValue(dayjs('02/02/2026').format('DD/MM/YYYY'));
 };
 
 export const DatePickerRangeSelect: StoryFn<
@@ -462,6 +462,79 @@ Localization.play = async () => {
   await userEvent.click(input);
   await sleep(400);
   await expect(queryByText('रवि')).toBeVisible();
+};
+
+export const DatePickerSingleAutoFocus: StoryFn<
+  typeof DatePickerComponent
+> = (): React.ReactElement => {
+  return <DatePickerComponent selectionType="single" accessibilityLabel="Select Date" />;
+};
+
+DatePickerSingleAutoFocus.play = async () => {
+  const { getByRole, queryByText, getByLabelText } = within(document.body);
+  const nextYear = dayjs().add(1, 'year').year();
+  const selectedDate = `22 January ${nextYear}`;
+  const input = getByRole('combobox', { name: /Select Date/i });
+  await userEvent.click(input);
+  await sleep(400);
+  await expect(queryByText('Sun')).toBeVisible();
+  await userEvent.tab();
+  await userEvent.tab();
+  const month = getByRole('button', { name: /Change month/i });
+  await expect(month).toHaveFocus();
+  await userEvent.click(month);
+  const year = getByRole('button', { name: /Change decade/i });
+  await userEvent.click(year);
+  getByRole('button', { name: /previous/i }).focus();
+  await userEvent.tab();
+  await userEvent.tab();
+  await sleep(400);
+  await expect(getByRole('button', { name: dayjs().format('YYYY') })).toHaveFocus();
+  await userEvent.keyboard('{ArrowRight}');
+  await userEvent.keyboard('{Enter}');
+  await sleep(400);
+  await userEvent.keyboard('{Enter}');
+  await sleep(400);
+  const january = getByRole('button', { name: /Jan/i });
+  await userEvent.click(january);
+  const date = getByRole('button', { name: selectedDate });
+  await userEvent.click(date);
+  const applyButton = getByRole('button', { name: /Apply/i });
+  await userEvent.click(applyButton);
+  await sleep(400);
+  await userEvent.click(input);
+  await sleep(400);
+  await expect(getByLabelText(selectedDate)).not.toBeNull();
+};
+
+export const DatePickerRangeSelectAutoFocus: StoryFn<
+  typeof DatePickerComponent
+> = (): React.ReactElement => {
+  return (
+    <DatePickerComponent selectionType="range" label={{ start: 'Start Date', end: 'End Date' }} />
+  );
+};
+
+DatePickerRangeSelectAutoFocus.play = async () => {
+  const { getByRole, getByLabelText } = within(document.body);
+  const startInput = getByRole('combobox', { name: /Start Date/i });
+  const selectedEndDate = dayjs().subtract(1, 'M').format('DD MMMM YYYY');
+  const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('DD MMMM YYYY');
+  await userEvent.click(startInput);
+  await sleep(400);
+  const previousButton = getByRole('button', { name: /previous/i });
+  await userEvent.click(previousButton);
+  const startDateButton = getByRole('button', { name: selectedStartDate });
+  await userEvent.click(startDateButton);
+  const endDateButton = getByRole('button', { name: selectedEndDate });
+  await userEvent.click(endDateButton);
+  const applyButton = getByRole('button', { name: /Apply/i });
+  await userEvent.click(applyButton);
+  await sleep(400);
+  await userEvent.click(startInput);
+  await sleep(400);
+  await expect(getByLabelText(selectedStartDate)).not.toBeNull();
+  await expect(getByLabelText(selectedEndDate)).not.toBeNull();
 };
 
 export default {

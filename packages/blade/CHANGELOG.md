@@ -1,5 +1,105 @@
 # @razorpay/blade
 
+## 12.21.1
+
+### Patch Changes
+
+- fd18c78b: fix(blade): show title filterChipSelectInput, optional search in listview
+
+## 12.21.0
+
+### Minor Changes
+
+- c874d904: feat(StepGroup): support integrating stepgroup and collapsible
+- b64e93ed: feat(Drawer): add children support to DrawerHeader
+- 234b50ca: feat(Dropdown): support AutoComplete in DropdownHeader
+
+### Patch Changes
+
+- da5663e9: fix: reset datepicker to default picker value on close
+- 6345fc04: fix: auto-shifting of the date picker on picker change.
+- d9294055: fix: persists datevalues in case of month and year change
+
+## 12.20.1
+
+### Patch Changes
+
+- 7fdb6598: fix(SideNav): scroll issue in L2 menu
+
+## 12.20.0
+
+### Minor Changes
+
+- 65142216: feat(blade): add `FilterChipSelectInput` & `FilterChipDatePicker` components
+- 65142216: feat(blade): add list view pattern
+
+## 12.19.1
+
+### Patch Changes
+
+- 08ad3279: fix(blade): date picker resetting to prev value
+
+## 12.19.0
+
+### Minor Changes
+
+- 9284a1f9: feat(blade): feat: add virtualization in section list
+
+## 12.18.0
+
+### Minor Changes
+
+- fa1800c4: feat(storybook): pre-generate lock file for documentation examples
+- f211134b: feat(blade) : add keyicon , appleicon, androidicon
+
+## 12.17.1
+
+### Patch Changes
+
+- c28b9182: fix(Modal): remove clashing position of modal on module federated apps
+
+## 12.17.0
+
+### Minor Changes
+
+- 3afdadf3: fix(blade): datepicker autofocus not working on programmatically changing date
+
+## 12.16.2
+
+### Patch Changes
+
+- 89391f8b: fix(Input): fix color differences of label between figma and code
+
+## 12.16.1
+
+### Patch Changes
+
+- 20f744ab: fix(blade): datepicker height change issue
+
+## 12.16.0
+
+### Minor Changes
+
+- 87d37ebf: feat(blade): add table background color prop
+
+## 12.15.1
+
+### Patch Changes
+
+- 1419c1f5: fix(blade): focus on selected date by default in datepicker
+
+## 12.15.0
+
+### Minor Changes
+
+- bbf24c99: feat(blade): add support for table virtualization
+
+## 12.14.0
+
+### Minor Changes
+
+- 0b79d985: feat(QuickFilter): Add QuickFilters component
+
 ## 12.13.1
 
 ### Patch Changes

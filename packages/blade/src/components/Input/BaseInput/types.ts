@@ -97,6 +97,7 @@ export type StyledBaseInputProps = {
   | 'shouldIgnoreBlurAnimation'
   | 'autoCapitalize'
   | 'isDropdownTrigger'
+  | 'tabIndex'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

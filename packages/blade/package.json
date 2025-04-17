@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.13.1",
+  "version": "12.21.1",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -111,7 +111,7 @@
     "react-native:storybook:start": "yarn react-native:get-stories && cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
     "react:storybook": "cross-env FRAMEWORK=REACT storybook dev -c ./.storybook/react -p 9009",
-    "react:storybook:build": "cross-env FRAMEWORK=REACT storybook build -c ./.storybook/react -o storybook-site --quiet",
+    "react:storybook:build": "yarn generate-docs-lockfile && cross-env FRAMEWORK=REACT storybook build -c ./.storybook/react -o storybook-site --quiet",
     "react:storybook:serve": "http-server storybook-site --port 9009 --silent",
     "react:storybook:serve:test": "wait-on http://127.0.0.1:9009/ && yarn test:react:interaction",
     "test:react:interaction": "cross-env FRAMEWORK=REACT test-storybook -c ./.storybook/react --url http://127.0.0.1:9009/",
@@ -131,6 +131,7 @@
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
+    "generate-docs-lockfile": "node ./scripts/generateDocsLockFile.mjs",
     "generate-icons": "node ./scripts/generateIcons.mjs"
   },
   "dependencies": {
