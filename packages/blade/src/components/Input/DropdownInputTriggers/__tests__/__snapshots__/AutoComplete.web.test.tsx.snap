@@ -861,7 +861,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -ms-flex-direction: column;
   flex-direction: column;
   padding-right: 8px;
-  padding-left: 8px;
+  padding-left: 0px;
 }
 
 .c48.c48.c48.c48.c48 {

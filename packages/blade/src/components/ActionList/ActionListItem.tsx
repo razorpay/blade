@@ -284,35 +284,28 @@ const ActionListItemText = assignWithoutSideEffects(_ActionListItemText, {
 
 const BaseMenuLeadingItem = ({
   isSelected,
-  leading,
-  selectionType,
   isDisabled,
 }: {
   isSelected?: boolean;
-  leading?: React.ReactNode;
-  selectionType: string | undefined;
   isDisabled?: boolean;
-}): React.ReactElement | null => {
-  if (selectionType === 'multiple') {
-    return (
-      <BaseBox
-        pointerEvents="none"
-        // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-        {...makeAccessible({
-          hidden: true,
-        })}
-      >
-        <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
-          {/*
+}): React.ReactElement => {
+  return (
+    <BaseBox
+      pointerEvents="none"
+      // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+      {...makeAccessible({
+        hidden: true,
+      })}
+    >
+      <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
+        {/*
         Checkbox requires children. Didn't want to make it optional because its helpful for consumers
         But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
       */}
-          {null}
-        </Checkbox>
-      </BaseBox>
-    );
-  }
-  return React.isValidElement(leading) ? leading : null;
+        {null}
+      </Checkbox>
+    </BaseBox>
+  );
 };
 
 type ClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -432,13 +425,15 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       title={props.title}
       description={props.description}
       leading={
-        <BaseMenuLeadingItem
-          key={`${dropdownBaseId}-${props._index}-leading-${isSelected}`}
-          isSelected={isSelected}
-          leading={props.leading}
-          selectionType={selectionType}
-          isDisabled={props.isDisabled}
-        />
+        selectionType === 'multiple' ? (
+          <BaseMenuLeadingItem
+            key={`${dropdownBaseId}-${props._index}-leading-${isSelected}`}
+            isSelected={isSelected}
+            isDisabled={props.isDisabled}
+          />
+        ) : (
+          props.leading
+        )
       }
       trailing={props.trailing}
       titleSuffix={props.titleSuffix}
