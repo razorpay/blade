@@ -354,7 +354,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     isKeydownPressed,
     filteredValues,
     hasAutoCompleteInHeader,
-    hasUnControlledFilterChipSelectInput,
   } = useDropdown();
 
   React.useEffect(() => {
@@ -367,6 +366,9 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   const hasAutoComplete =
     hasAutoCompleteInHeader || dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
+  const hasFilterChipSelectInput =
+    dropdownTriggerer === dropdownComponentIds.triggers.FilterChipSelectInput;
+
   const renderOnWebAs = props.href ? 'a' : 'button';
   /**
    * In SelectInput, returns the isSelected according to selected indexes in the state
@@ -378,7 +380,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     if (
       dropdownTriggerer === dropdownComponentIds.triggers.SelectInput ||
       hasAutoComplete ||
-      hasUnControlledFilterChipSelectInput
+      hasFilterChipSelectInput
     ) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);

@@ -176,56 +176,57 @@ export const UncontrolledFilterChipSelectInput = (): React.ReactElement => {
 };
 
 export const FilterChipSelectInputControlled = (): React.ReactElement => {
-  const [value, setSelectedValue] = React.useState<string>();
+  const [singleFilterChipSelectInputValue, setSingleFilterChipSelectInputValue] = React.useState<
+    string | undefined
+  >(undefined);
+  const [
+    multipleFilterChipSelectInputValue,
+    setMultipleFilterChipSelectInputValue,
+  ] = React.useState<string[]>([]);
 
-  const handleOnClick = (name: string): void => {
-    if (value === name) {
-      setSelectedValue(undefined);
-    } else {
-      setSelectedValue(name);
-    }
-  };
-  const isSelected = (name: string): boolean => value === name;
   return (
-    <Dropdown selectionType="single">
-      <FilterChipSelectInput
-        label="Filter Chip"
-        value={value}
-        onClearButtonClick={(value) => {
-          console.log('value', value);
-          setSelectedValue(undefined);
-        }}
-      />
-      <DropdownOverlay>
-        <ActionList>
-          <ActionListItem
-            onClick={({ name }) => {
-              handleOnClick(name);
-            }}
-            isSelected={isSelected('latest-added')}
-            title="Latest Added"
-            value="latest-added"
-          />
-          <ActionListItem
-            onClick={({ name }) => {
-              handleOnClick(name);
-            }}
-            isSelected={isSelected('latest-invoice')}
-            title="Latest Invoice"
-            value="latest-invoice"
-          />
+    <Box>
+      <Text size="small" weight="semibold" color="interactive.text.primary.normal">
+        Controlled Filter Chip Select Input - Single
+      </Text>
+      <Dropdown selectionType="single">
+        <FilterChipSelectInput
+          label="Filter Chip"
+          value={singleFilterChipSelectInputValue}
+          onChange={({ values }) => {
+            setSingleFilterChipSelectInputValue(values[0]);
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Latest Added" value="latest-added" />
+            <ActionListItem title="Latest Invoice" value="latest-invoice" />
 
-          <ActionListItem
-            onClick={({ name }) => {
-              handleOnClick(name);
-            }}
-            isSelected={isSelected('oldest-due-date')}
-            title="Oldest Due Date"
-            value="oldest-due-date"
-          />
-        </ActionList>
-      </DropdownOverlay>
-    </Dropdown>
+            <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Text> Controlled Filter Chip Select Input - Multiple </Text>
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput
+          label="Filter Chip"
+          value={multipleFilterChipSelectInputValue}
+          onClearButtonClick={() => {
+            setMultipleFilterChipSelectInputValue([]);
+          }}
+          onChange={({ values }) => {
+            setMultipleFilterChipSelectInputValue(values);
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Latest Added" value="latest-added" />
+            <ActionListItem title="Latest Invoice" value="latest-invoice" />
+            <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 

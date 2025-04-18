@@ -54,7 +54,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     triggererRef,
     selectionType,
     isControlled,
-    setHasUnControlledFilterChipSelectInput,
     setSelectedIndices,
     controlledValueIndices,
     changeCallbackTriggerer,
@@ -82,7 +81,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   useEffect(() => {
     if (isUnControlled) {
-      setHasUnControlledFilterChipSelectInput(true);
       if (listViewSelectedFilters[label]) {
         const value = (listViewSelectedFilters[label] as unknown) as number[];
         setSelectedIndices(value);
