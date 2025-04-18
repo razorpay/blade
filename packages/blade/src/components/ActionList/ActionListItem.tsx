@@ -354,7 +354,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     isKeydownPressed,
     filteredValues,
     hasAutoCompleteInHeader,
-    hasUnControlledFilterChipSelectInput,
   } = useDropdown();
 
   React.useEffect(() => {
