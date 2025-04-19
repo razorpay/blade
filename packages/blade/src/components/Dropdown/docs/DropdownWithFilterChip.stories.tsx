@@ -82,7 +82,6 @@ export const SelectionTypeMultiple = (): React.ReactElement => {
       setSelectedValue([...value, name]);
     }
   };
-  const isSelected = (name: string): boolean => value.includes(name);
   return (
     <Dropdown selectionType="multiple">
       <FilterChipSelectInput
@@ -99,7 +98,6 @@ export const SelectionTypeMultiple = (): React.ReactElement => {
             onClick={({ name }) => {
               handleOnClick(name);
             }}
-            isSelected={isSelected('latest-added')}
             title="Latest Added"
             value="latest-added"
           />
@@ -107,7 +105,6 @@ export const SelectionTypeMultiple = (): React.ReactElement => {
             onClick={({ name }) => {
               handleOnClick(name);
             }}
-            isSelected={isSelected('latest-invoice')}
             title="Latest Invoice"
             value="latest-invoice"
           />
@@ -116,7 +113,6 @@ export const SelectionTypeMultiple = (): React.ReactElement => {
             onClick={({ name }) => {
               handleOnClick(name);
             }}
-            isSelected={isSelected('oldest-due-date')}
             title="Oldest Due Date"
             value="oldest-due-date"
           />
@@ -178,11 +174,11 @@ export const UncontrolledFilterChipSelectInput = (): React.ReactElement => {
 export const FilterChipSelectInputControlled = (): React.ReactElement => {
   const [singleFilterChipSelectInputValue, setSingleFilterChipSelectInputValue] = React.useState<
     string | undefined
-  >(undefined);
+  >('latest-added');
   const [
     multipleFilterChipSelectInputValue,
     setMultipleFilterChipSelectInputValue,
-  ] = React.useState<string[]>([]);
+  ] = React.useState<string[]>(['latest-added', 'latest-invoice']);
 
   return (
     <Box>

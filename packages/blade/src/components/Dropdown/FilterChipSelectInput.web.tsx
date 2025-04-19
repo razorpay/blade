@@ -80,6 +80,13 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   };
 
   useEffect(() => {
+    const valueNotEmpty =
+      (typeof value === 'string' && value.trim() !== '') ||
+      (Array.isArray(value) && value.length > 0);
+    // since we need to sync state only one time so skipping value checking.
+    const isValueAndSelectedOptoinsSynced =
+      (typeof value === 'string' && value && selectedIndices.length === 1) ||
+      (Array.isArray(value) && value.length === selectedIndices.length);
     if (isUnControlled) {
       if (listViewSelectedFilters[label]) {
         const value = (listViewSelectedFilters[label] as unknown) as number[];
@@ -93,9 +100,18 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     } else if (listViewSelectedFilters[label]) {
       const value = (listViewSelectedFilters[label] as unknown) as number[];
       setSelectedIndices(value);
+      // This would be the case when filterChipSelectInput is controlled and are being opened first time
+    } else if (valueNotEmpty && !isValueAndSelectedOptoinsSynced && options.length > 0) {
+      const selectedIndices =
+        typeof value === 'string'
+          ? [options.findIndex((option) => option.value === value)]
+          : options
+              .map((option, index) => (value.includes(option.value) ? index : -1))
+              .filter((index) => index !== -1);
+      setSelectedIndices(selectedIndices);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUnControlled]);
+  }, [isUnControlled, options]);
 
   const getTitleFromValue = (value: string): string => {
     const option = options.find((option) => option.value === value);
@@ -124,6 +140,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       const { [label]: _, ...updatedFilters } = prev;
       return updatedFilters;
     });
+    setSelectedIndices([]);
   };
 
   useEffect(() => {

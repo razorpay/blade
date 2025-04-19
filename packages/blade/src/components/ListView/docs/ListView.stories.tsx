@@ -451,6 +451,12 @@ export default {
   },
 } as Meta<ListViewProps>;
 
+const MethodFilterValues = [
+  { key: 'bank-transfer', title: 'Bank Transfer' },
+  { key: 'credit-card', title: 'Credit Card' },
+  { key: 'paypal', title: 'PayPal' },
+];
+
 const nodes: Item[] = [
   ...Array.from({ length: 20 }, (_, i) => ({
     id: (i + 1).toString(),
@@ -459,7 +465,7 @@ const nodes: Item[] = [
     status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
     date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
     type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
-    method: ['Bank Transfer', 'Credit Card', 'PayPal'][Math.floor(Math.random() * 3)],
+    method: MethodFilterValues[Math.floor(Math.random() * 3)],
     bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
     account: Math.floor(Math.random() * 1000000000).toString(),
     name: [
@@ -481,7 +487,10 @@ const nodes: Item[] = [
     status: 'Pending',
     date: new Date(new Date().setDate(new Date().getDate() - 4)),
     type: 'Payout',
-    method: 'Bank Transfer',
+    method: {
+      key: 'bank-transfer',
+      title: 'Bank Transfer',
+    },
     bank: 'HDFC',
     account: '1234567890',
     name: 'John Doe',
@@ -495,7 +504,10 @@ type Item = {
   status: string;
   date: Date;
   type: string;
-  method: string;
+  method: {
+    key: string;
+    title: string;
+  };
   bank: string;
   account: string;
   name: string;
@@ -542,7 +554,7 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
     if (!value) {
       return { nodes: data.nodes };
     }
-    return { nodes: data.nodes.filter((node) => node.method === value) };
+    return { nodes: data.nodes.filter((node) => node.method.key === value) };
   };
 
   const getFilterRangeData = (data: TableData<Item>, value?: DatesRangeValue): TableData<Item> => {
@@ -645,8 +657,8 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
               />
               <DropdownOverlay>
                 <ActionList>
-                  {['Bank Transfer', 'Credit Card', 'PayPal'].map((method, index) => (
-                    <ActionListItem key={index} title={method} value={method} />
+                  {MethodFilterValues.map((method, index) => (
+                    <ActionListItem key={index} title={method.title} value={method.key} />
                   ))}
                 </ActionList>
               </DropdownOverlay>
@@ -771,7 +783,7 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
                         day: '2-digit',
                       })}
                     </TableCell>
-                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.method.title}</TableCell>
                     <TableCell>
                       <Badge
                         size="medium"
@@ -838,7 +850,7 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
     if (!value) {
       return { nodes: data.nodes };
     }
-    return { nodes: data.nodes.filter((node) => node.method === value) };
+    return { nodes: data.nodes.filter((node) => node.method.key === value) };
   };
 
   const getFilterRangeData = (data: TableData<Item>, value?: DatesRangeValue): TableData<Item> => {
@@ -854,7 +866,7 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
   };
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('Completed');
   const [searchValue, setSearchValue] = useState<string | undefined>('');
-  const [methodFilter, setMethodFilter] = useState<string | undefined>('PayPal');
+  const [methodFilter, setMethodFilter] = useState<string | undefined>('paypal');
   const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
   const [listViewTableData, setListViewTableData] = useState(() => {
     const filteredQuickFilterData = getQuickFilterData(data, selectedQuickFilter);
@@ -959,13 +971,8 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
               />
               <DropdownOverlay>
                 <ActionList>
-                  {['Bank Transfer', 'Credit Card', 'PayPal'].map((method, index) => (
-                    <ActionListItem
-                      key={index}
-                      title={method}
-                      value={method}
-                      isSelected={methodFilter?.includes(method)}
-                    />
+                  {MethodFilterValues.map((method, index) => (
+                    <ActionListItem key={index} title={method.title} value={method.key} />
                   ))}
                 </ActionList>
               </DropdownOverlay>
@@ -1088,7 +1095,7 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
                         day: '2-digit',
                       })}
                     </TableCell>
-                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.method.title}</TableCell>
                     <TableCell>
                       <Badge
                         size="medium"
@@ -1160,7 +1167,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
     if (!value) {
       return { nodes: data.nodes };
     }
-    return { nodes: data.nodes.filter((node) => node.method === value) };
+    return { nodes: data.nodes.filter((node) => node.method.key === value) };
   };
 
   const getFilterRangeData = (data: TableData<Item>, value?: DatesRangeValue): TableData<Item> => {
@@ -1303,8 +1310,8 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
               />
               <DropdownOverlay>
                 <ActionList>
-                  {['Bank Transfer', 'Credit Card', 'PayPal'].map((method, index) => (
-                    <ActionListItem key={index} title={method} value={method} />
+                  {MethodFilterValues.map((method, index) => (
+                    <ActionListItem key={index} title={method.title} value={method.key} />
                   ))}
                 </ActionList>
               </DropdownOverlay>
@@ -1438,7 +1445,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                         day: '2-digit',
                       })}
                     </TableCell>
-                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.method.title}</TableCell>
                     <TableCell>
                       <Badge
                         size="medium"
@@ -1499,7 +1506,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
     if (!value) {
       return { nodes: data.nodes };
     }
-    return { nodes: data.nodes.filter((node) => node.method === value) };
+    return { nodes: data.nodes.filter((node) => node.method.key === value) };
   };
 
   const getFilterRangeData = (data: TableData<Item>, value?: DatesRangeValue): TableData<Item> => {
@@ -1514,7 +1521,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
     };
   };
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('Completed');
-  const [methodFilter, setMethodFilter] = useState<string | undefined>('PayPal');
+  const [methodFilter, setMethodFilter] = useState<string | undefined>('paypal');
   const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
   const [listViewTableData, setListViewTableData] = useState(() => {
     const filteredQuickFilterData = getQuickFilterData(data, selectedQuickFilter);
@@ -1599,13 +1606,8 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
               />
               <DropdownOverlay>
                 <ActionList>
-                  {['Bank Transfer', 'Credit Card', 'PayPal'].map((method, index) => (
-                    <ActionListItem
-                      key={index}
-                      title={method}
-                      value={method}
-                      isSelected={methodFilter?.includes(method)}
-                    />
+                  {MethodFilterValues.map((method, index) => (
+                    <ActionListItem key={index} title={method.title} value={method.key} />
                   ))}
                 </ActionList>
               </DropdownOverlay>
@@ -1725,7 +1727,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
                         day: '2-digit',
                       })}
                     </TableCell>
-                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.method.title}</TableCell>
                     <TableCell>
                       <Badge
                         size="medium"
