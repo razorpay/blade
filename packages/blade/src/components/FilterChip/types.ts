@@ -34,7 +34,7 @@ type BaseFilterChipProps = {
   selectionType?: 'single' | 'multiple';
 
   id?: string;
-  onKeyDown?: (e: React.KeyboardEventHandler) => void;
+  onKeyDown?: (e: React.KeyboardEvent<Element>) => void;
   onClick?: (e: React.MouseEventHandler) => void;
   onBlur?: (e: React.FocusEventHandler) => void;
   accessibilityProps?: Partial<AccessibilityProps>;

@@ -180,6 +180,22 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
 
+  const handleKeyDown = (e: React.KeyboardEvent<Element>): void => {
+    onKeyDown?.(e);
+    onTriggerKeydown?.({ event: e as React.KeyboardEvent<HTMLInputElement> });
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    if ((e.key === 'Enter' || e.key === ' ') && !isOpen) {
+      e.preventDefault();
+      e.stopPropagation();
+      onTriggerClick();
+    }
+  };
+
   return (
     <BaseFilterChip
       label={label}
@@ -188,6 +204,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       selectionType={selectionType}
       {...rest}
       ref={triggererRef as any}
+      onKeyDown={handleKeyDown}
       accessibilityProps={{
         label: accessibilityLabel ?? label,
         hasPopup: getActionListContainerRole(hasFooterAction, 'FilterChipSelectInput'),
@@ -197,18 +214,10 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       }}
       onClick={(e) => {
         onTriggerClick();
-        // Setting it for web fails it on native typecheck and vice versa
-        onClick?.(e as any);
+        onClick?.(e);
       }}
       onBlur={(e) => {
-        // With button trigger, there is no "value" as such. It's just clickable items
-        // Setting it for web fails it on native typecheck and vice versa
-        onBlur?.(e as any);
-      }}
-      onKeyDown={(e) => {
-        onTriggerKeydown?.({ event: e as any });
-        // Setting it for web fails it on native typecheck and vice versa
-        onKeyDown?.(e as any);
+        onBlur?.(e);
       }}
     />
   );
