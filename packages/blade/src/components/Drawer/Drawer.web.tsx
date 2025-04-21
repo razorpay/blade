@@ -42,15 +42,16 @@ const AnimatedDrawerContainer = styled(BaseBox)<{
     opacity: isVisible ? 1 : 0,
     transform: isVisible
       ? isFirstDrawerInStack
-        ? 'translateX(calc(-100% - 16px))'
+        ? 'translateX(calc(-100% - 24px))'
         : `translateX(calc(-100% - ${theme.spacing[3]}px))`
       : 'translateX(0%)',
     transition: isVisible ? entranceTransition : exitTransition,
     animationFillMode: 'initial',
     position: 'fixed',
-    top: '8px',
-    bottom: '8px',
+    top: isFirstDrawerInStack ? '24px' : '8px',
+    bottom: isFirstDrawerInStack ? '24px' : '8px',
     left: '100%',
+    height: 'auto',
   };
 });
 
