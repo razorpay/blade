@@ -7,6 +7,7 @@ import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~utils';
 
 const _DrawerHeader = ({
   title,
@@ -15,10 +16,13 @@ const _DrawerHeader = ({
   trailing,
   titleSuffix,
   children,
+  backgroundImage,
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef, stackingLevel, isExiting } = React.useContext(DrawerContext);
   const { drawerStack } = useDrawerStack();
+  const { theme } = useTheme();
+
   const closeAllDrawers = (): void => {
     for (const onDismiss of Object.values(drawerStack)) {
       onDismiss();
@@ -28,6 +32,8 @@ const _DrawerHeader = ({
   const isStackedDrawer = stackingLevel && stackingLevel > 1;
 
   const isAtleastOneDrawerOpen = Object.keys(drawerStack).length > 0;
+
+  const defaultBackgroundGradient = `linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background.information.subtle} 30.26%)`;
   // This condition is to avoid back button disappear while stacked drawer is in the exiting transition
   const isDrawerExiting = isAtleastOneDrawerOpen && isExiting && stackingLevel !== 1;
 
@@ -40,10 +46,12 @@ const _DrawerHeader = ({
       onCloseButtonClick={() => closeAllDrawers()}
       onBackButtonClick={() => close()}
       title={title}
+      size="large"
       titleSuffix={titleSuffix}
       subtitle={subtitle}
       leading={leading}
       trailing={trailing}
+      backgroundImage={backgroundImage ?? defaultBackgroundGradient}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}

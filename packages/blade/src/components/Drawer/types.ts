@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type DrawerProps = {
@@ -95,6 +96,13 @@ type DrawerHeaderProps = {
    * Children elements to be rendered inside the header
    */
   children?: React.ReactElement | React.ReactElement[];
+
+  /**
+   * Background image of the header
+   *
+   * Use this for adding gradients
+   */
+  backgroundImage?: BaseHeaderProps['backgroundImage'];
 } & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps };

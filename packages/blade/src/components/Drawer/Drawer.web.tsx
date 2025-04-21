@@ -12,7 +12,7 @@ import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
 import type { DrawerProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, useTheme } from '~utils';
+import { castWebType, getMediaQuery, makeMotionTime, useTheme } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentZIndices } from '~utils/componentZIndices';
 import { useDrawerStack } from '~components/Drawer/StackProvider';
@@ -43,10 +43,24 @@ const AnimatedDrawerContainer = styled(BaseBox)<{
     transform: isVisible
       ? isFirstDrawerInStack
         ? 'translateX(calc(-100% - 16px))'
-        : 'translateX(-100%)'
+        : `translateX(-100%)`
       : 'translateX(0%)',
     transition: isVisible ? entranceTransition : exitTransition,
     animationFillMode: 'initial',
+    position: 'fixed',
+    top: '0px',
+    bottom: '0px',
+    left: '100%',
+    height: 'auto',
+    [`@media ${getMediaQuery({ min: theme.breakpoints.m })}`]: {
+      top: isFirstDrawerInStack ? '24px' : '8px',
+      bottom: isFirstDrawerInStack ? '24px' : '8px',
+      transform: isVisible
+        ? isFirstDrawerInStack
+          ? 'translateX(calc(-100% - 24px))'
+          : `translateX(calc(-100% - ${theme.spacing[3]}px))`
+        : 'translateX(0%)',
+    },
   };
 });
 
@@ -188,11 +202,9 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
                   label: accessibilityLabel,
                 })}
                 position="fixed"
-                top="spacing.0"
-                left="100%"
                 backgroundColor="popup.background.subtle"
+                borderRadius={{ base: 'none', m: 'large' }}
                 elevation="highRaised"
-                height="100%"
                 display="flex"
                 flexDirection="column"
                 ref={mergeRefs(ref, refs.setFloating)}

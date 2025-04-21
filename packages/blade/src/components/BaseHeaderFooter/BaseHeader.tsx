@@ -77,6 +77,12 @@ type BaseHeaderProps = {
    * inner child of BottomSheetHeader. Meant to be used for AutoComplete only
    */
   children?: React.ReactElement | React.ReactElement[];
+  /**
+   * Background image of the header
+   *
+   * You can use this for adding gradients.
+   */
+  backgroundImage?: BoxProps['backgroundImage'];
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -136,6 +142,9 @@ const propRestrictionMap = {
       size: 'xsmall',
       variant: 'tertiary',
     },
+    IconButton: {
+      size: 'large',
+    },
     Badge: {
       size: 'medium',
     },
@@ -155,6 +164,9 @@ const propRestrictionMap = {
     Button: {
       size: 'xsmall',
       variant: 'tertiary',
+    },
+    IconButton: {
+      size: 'large',
     },
     Badge: {
       size: 'small',
@@ -190,6 +202,7 @@ const useTrailingRestriction = ({
     if (React.isValidElement(trailing)) {
       const trailingComponentType = getComponentId(trailing) as TrailingComponents;
       const restrictedProps = propRestrictionMap[size][trailingComponentType];
+      console.log('trailingComponentType', trailingComponentType, restrictedProps);
       const allowedComponents = Object.keys(propRestrictionMap[size]);
       if (__DEV__) {
         if (!restrictedProps) {
@@ -252,6 +265,7 @@ const _BaseHeader = ({
   isDisabled,
   children,
   trailingInteractionElement,
+  backgroundImage,
   ...rest
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
@@ -275,6 +289,7 @@ const _BaseHeader = ({
     <BaseBox
       {...metaAttribute({ name: metaComponentName, testID })}
       {...makeAnalyticsAttribute(rest)}
+      backgroundImage={backgroundImage}
     >
       <BaseBox
         marginY={marginY ?? { base: 'spacing.5', m: 'spacing.6' }}
