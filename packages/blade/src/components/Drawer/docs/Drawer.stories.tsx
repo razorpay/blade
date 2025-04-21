@@ -271,7 +271,7 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
           >
             <Text size="large" textAlign="center">
               Payment was successfully captured. To be settled in your bank account by{' '}
-              <Text as="span" weight="semibold" color="feedback.text.positive.intense">
+              <Text as="span" size="large" weight="semibold" color="feedback.text.positive.intense">
                 Jan 20, 2025
               </Text>
             </Text>
