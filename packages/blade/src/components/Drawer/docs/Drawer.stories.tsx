@@ -6,7 +6,7 @@ import { Drawer, DrawerBody, DrawerHeader } from '../';
 import { DrawerStackingStory } from './stories';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { AnnouncementIcon, CheckIcon, CopyIcon, DownloadIcon, LinkIcon } from '~components/Icons';
+import { AnnouncementIcon, CheckIcon, DownloadIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Heading, Text } from '~components/Typography';
@@ -22,8 +22,7 @@ import {
 } from '~components/Card';
 import { Amount } from '~components/Amount';
 import { useTheme } from '~utils';
-import { Link } from '~components/Link';
-import { IconButton } from '~components/Button/IconButton';
+
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
@@ -236,12 +235,9 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
       >
         <DrawerHeader
           backgroundImage={`linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background.positive.subtle} 30.26%)`}
+          title="Settlements"
+          trailing={<Button icon={DownloadIcon} />}
         >
-          <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Heading size="small" weight="semibold">
-              Settlements
-            </Heading>
-          </Box>
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
               value={26000}
