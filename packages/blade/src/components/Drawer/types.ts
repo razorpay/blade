@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type DrawerProps = {

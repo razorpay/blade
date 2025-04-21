@@ -40,6 +40,11 @@ import {
   StampIcon,
   UserCheckIcon,
   UserIcon,
+  BankIcon,
+  PaymentGatewayIcon,
+  TransactionsIcon,
+  WalletIcon,
+  CustomersIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
@@ -74,7 +79,7 @@ const DocsPage = (): React.ReactElement => {
         files={sideNavWithReactRouter}
         editorHeight={600}
         hideNavigation={false}
-        openFile="App.js,navItemsJSON.js,SideNavExample.js"
+        openFile="App.tsx,navItemsJSON.tsx,SideNavExample.tsx"
       />
     </StoryPageWrapper>
   );
@@ -225,6 +230,56 @@ const navItemsJSON: NavItemsJSONType[] = [
             icon: FilePlusIcon,
             title: 'Billing',
             href: '/app/billing',
+          },
+          {
+            icon: BankIcon,
+            title: 'Bank Accounts',
+            href: '/app/bank-accounts',
+          },
+          {
+            icon: PaymentGatewayIcon,
+            title: 'Payment Gateway',
+            href: '/app/payment-gateway',
+          },
+          {
+            icon: TransactionsIcon,
+            title: 'Transaction History',
+            href: '/app/transaction-history',
+          },
+          {
+            icon: WalletIcon,
+            title: 'Digital Wallet',
+            href: '/app/digital-wallet',
+          },
+          {
+            icon: CreditCardIcon,
+            title: 'Credit Services',
+            href: '/app/credit-services',
+          },
+          {
+            icon: CashIcon,
+            title: 'Cash Management',
+            href: '/app/cash-management',
+          },
+          {
+            icon: ReportsIcon,
+            title: 'Financial Reports',
+            href: '/app/financial-reports',
+          },
+          {
+            icon: UserCheckIcon,
+            title: 'Customer Verification',
+            href: '/app/customer-verification',
+          },
+          {
+            icon: SettingsIcon,
+            title: 'Account Settings',
+            href: '/app/account-settings',
+          },
+          {
+            icon: CustomersIcon,
+            title: 'Customer Support',
+            href: '/app/customer-support',
           },
         ],
       },

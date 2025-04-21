@@ -23,6 +23,7 @@ import {
 } from '~components/Icons';
 import { Alert } from '~components/Alert';
 import { Text } from '~components/Typography';
+import { Collapsible, CollapsibleBody, CollapsibleLink } from '~components/Collapsible';
 
 const Page = (): React.ReactElement => {
   return (
@@ -392,6 +393,66 @@ export const StepGroupWithIcons = (args: StepGroupProps) => {
           ) : undefined
         }
       />
+    </StepGroup>
+  );
+};
+
+export const CollapsibleStepGroup = (args: StepGroupProps) => {
+  const isVertical = args.orientation === 'vertical';
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  return (
+    <StepGroup {...args}>
+      <StepItem
+        title="Introduction"
+        timestamp="Thu, 11th Oct'23 | 12:00pm"
+        stepProgress="full"
+        marker={<StepItemIcon icon={FileIcon} color="positive" />}
+      />
+      <StepItem
+        title="Personal Details"
+        timestamp="Mon, 15th Oct'23 | 12:00pm"
+        description="Your Personal Details for onboarding"
+        stepProgress="full"
+        marker={<StepItemIcon icon={UserIcon} color="positive" />}
+      />
+      <Collapsible
+        onExpandChange={({ isExpanded: _isExpanded }) => setIsExpanded(_isExpanded)}
+        direction="top"
+      >
+        <CollapsibleLink>{isExpanded ? 'Hide' : 'Show'}</CollapsibleLink>
+        <CollapsibleBody>
+          <StepItem
+            title="Business Details"
+            trailing={
+              isVertical ? (
+                <Badge color="positive" size={args.size}>
+                  Received by our team
+                </Badge>
+              ) : undefined
+            }
+            stepProgress="full"
+            marker={<StepItemIcon icon={BriefcaseIcon} color="positive" />}
+          />
+          <StepItem
+            title="Needs Response"
+            timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
+            stepProgress="start"
+            marker={<StepItemIcon icon={ClockIcon} color="notice" />}
+          />
+          <StepItem
+            title="Complete Onboarding"
+            marker={<StepItemIcon icon={HeartIcon} color="neutral" />}
+            trailing={
+              isVertical ? (
+                <Badge color="neutral" size={args.size}>
+                  Pending
+                </Badge>
+              ) : undefined
+            }
+          />
+        </CollapsibleBody>
+      </Collapsible>
     </StepGroup>
   );
 };

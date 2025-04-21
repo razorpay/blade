@@ -20,6 +20,7 @@ import {
 import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 const useControlledDropdownInput = (props: useControlledDropdownInputProps): void => {
   const isFirstRender = useFirstRender();
@@ -129,6 +130,7 @@ const _BaseDropdownInputTrigger = (
     dropdownBaseId,
     selectedIndices,
     triggererRef,
+    headerAutoCompleteRef,
     triggererWrapperRef,
     isTagDismissedRef,
     onTriggerClick,
@@ -137,7 +139,6 @@ const _BaseDropdownInputTrigger = (
     setShouldIgnoreBlurAnimation,
     activeIndex,
     hasFooterAction,
-    hasAutoCompleteInBottomSheetHeader,
     options,
     removeOption,
     setChangeCallbackTriggerer,
@@ -147,10 +148,11 @@ const _BaseDropdownInputTrigger = (
   const { isInsideTableEditableCell } = useTableEditableCell();
 
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
-  const isAutoCompleteInHeader = !props.isSelectInput && hasAutoCompleteInBottomSheetHeader;
+  const isAutoCompleteInHeader =
+    !props.isSelectInput && dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete;
 
   const getShowAllTags = React.useCallback((): boolean => {
-    if (hasAutoCompleteInBottomSheetHeader) {
+    if (isAutoCompleteInHeader) {
       // When AutoComplete is in bottomsheet header, we never want to show all tags in outer select input
       if (props.isSelectInput) {
         return false;
@@ -161,7 +163,7 @@ const _BaseDropdownInputTrigger = (
     }
 
     return isOpen;
-  }, [hasAutoCompleteInBottomSheetHeader, props.isSelectInput, isOpen]);
+  }, [isAutoCompleteInHeader, props.isSelectInput, isOpen]);
 
   useControlledDropdownInput({
     onChange: props.onChange,
@@ -236,10 +238,16 @@ const _BaseDropdownInputTrigger = (
     <BaseInput
       as={props.isSelectInput ? 'button' : 'input'}
       ref={
-        (!isReactNative()
-          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (isReactNative()
+          ? null
+          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (node: any) => {
-              triggererRef.current = node;
+              if (isAutoCompleteInHeader) {
+                headerAutoCompleteRef.current = node;
+              } else {
+                triggererRef.current = node;
+              }
+
               if (ref) {
                 if (typeof ref === 'function') {
                   ref(node);
@@ -247,12 +255,14 @@ const _BaseDropdownInputTrigger = (
                   ref.current = node;
                 }
               }
-            }
-          : null) as never
+            }) as never
       }
       isDropdownTrigger={true}
       setInputWrapperRef={(wrapperNode) => {
-        triggererWrapperRef.current = wrapperNode;
+        // when autocomplete is in header, its not a trigger but a component inside of DropdownOverlay
+        if (!isAutoCompleteInHeader) {
+          triggererWrapperRef.current = wrapperNode;
+        }
       }}
       maxTagRows={props.maxRows ?? 'single'}
       tags={getTags({ size: props.size || 'medium' })}
@@ -303,10 +313,15 @@ const _BaseDropdownInputTrigger = (
       // a11y Props
       id={`${dropdownBaseId}-trigger`}
       labelId={`${dropdownBaseId}-label`}
-      hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
+      role={isAutoCompleteInHeader ? 'searchbox' : 'combobox'}
+      hasPopup={
+        isAutoCompleteInHeader
+          ? false
+          : getActionListContainerRole(hasFooterAction, dropdownTriggerer)
+      }
       isPopupExpanded={isOpen}
       activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
-      popupId={`${dropdownBaseId}-actionlist`}
+      popupId={isAutoCompleteInHeader ? undefined : `${dropdownBaseId}-actionlist`}
       // Special Props for Unique behaviour between Select and AutoComplete
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
@@ -327,6 +342,8 @@ const _BaseDropdownInputTrigger = (
         )
       }
       {...(isInsideTableEditableCell ? tableInputProps : undefined)}
+      // When AutoComplete is present inside DropdownOverlay, the floating ui adds tabIndex -1 internally. We override it with tabIndex 0 here
+      tabIndex={isAutoCompleteInHeader ? 0 : undefined}
     />
   );
 };

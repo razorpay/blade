@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { CollapsibleBodyContent } from './CollapsibleBodyContent';
 import { useCollapsible } from './CollapsibleContext';
 import type { CollapsibleBodyProps } from './types';
+import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -30,7 +31,7 @@ const _CollapsibleBody = ({
 };
 
 const CollapsibleBody = assignWithoutSideEffects(_CollapsibleBody, {
-  componentId: MetaConstants.CollapsibleBody,
+  componentId: componentIds.CollapsibleBody,
 });
 
 export type { CollapsibleBodyProps };

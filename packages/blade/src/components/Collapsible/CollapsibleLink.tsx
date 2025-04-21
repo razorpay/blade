@@ -2,8 +2,8 @@ import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
+import { componentIds } from './componentIds';
 import type { LinkProps } from '~components/Link';
-import { MetaConstants } from '~utils/metaAttribute';
 import { BaseLink } from '~components/Link/BaseLink';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -58,7 +58,7 @@ const _CollapsibleLink = ({
 };
 
 const CollapsibleLink = assignWithoutSideEffects(_CollapsibleLink, {
-  componentId: MetaConstants.CollapsibleLink,
+  componentId: componentIds.CollapsibleLink,
 });
 
 export type { CollapsibleLinkProps };

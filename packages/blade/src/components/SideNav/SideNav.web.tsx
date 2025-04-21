@@ -72,6 +72,15 @@ const StyledL1Menu = styled(BaseBox)((props) => {
   };
 });
 
+const StyledL2PortalContainer = styled(BaseBox)(() => {
+  return {
+    // This ensures that the portal node has 100% height when it has items
+    '& > div:not(:empty)': {
+      height: '100%',
+    },
+  };
+});
+
 const getL1MenuClassName = ({
   isL1Collapsed,
   isL1Hovered,
@@ -293,7 +302,7 @@ const _SideNav = (
         >
           {banner ? <BannerContainer>{banner}</BannerContainer> : null}
           <BaseBox position="relative" display="block" flex="1" width="100%">
-            <BaseBox
+            <StyledL2PortalContainer
               position="absolute"
               backgroundColor="surface.background.gray.moderate"
               height="100%"

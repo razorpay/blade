@@ -111,7 +111,7 @@ const CustomTrigger = React.forwardRef<
         onTouchEnd={onTouchEnd}
         onTouchStart={onTouchStart}
       >
-        <Text contrast="low">{children}</Text>
+        <Text>{children}</Text>
       </BaseBox>
     );
   },

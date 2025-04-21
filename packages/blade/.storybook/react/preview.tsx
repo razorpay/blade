@@ -74,6 +74,8 @@ export const parameters = {
         ],
         'Components',
         ['*', 'Interaction Tests', 'KitchenSink'],
+        'Patterns',
+        ['ListView'],
         'Motion',
         [
           'Introduction to Motion',

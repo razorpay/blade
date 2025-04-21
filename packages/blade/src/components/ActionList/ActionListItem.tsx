@@ -87,6 +87,18 @@ type ActionListItemProps = {
    * @private
    */
   _index?: number;
+  /**
+   * Internally used to pass index for virtualized lists
+   *
+   * @private
+   */
+  _virtualizedIndex?: number;
+  /**
+   * Internally used to focus on virtualized list
+   *
+   * @private
+   */
+  _onVirtualizedFocus?: (_virtuazedIndex: number) => void;
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -99,7 +111,7 @@ type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
   /**
-   * Internally used to hide the divider on final item in React Native.
+   * Internally used to hide the divider on final item in React Native
    *
    * Should not be used by consumers (also won't work on web)
    *
@@ -114,6 +126,31 @@ type ActionListSectionProps = {
   _sectionChildValues?: string[];
 } & TestID &
   DataAnalyticsAttribute;
+
+const _ActionListSectionTitle = ({
+  title,
+  isInsideVirtualizedList = false,
+}: {
+  title: string;
+  isInsideVirtualizedList?: boolean;
+}): React.ReactElement => {
+  return (
+    <StyledActionListSectionTitle
+      {...makeAccessible({
+        hidden: !isInsideVirtualizedList,
+        role: isInsideVirtualizedList ? 'heading' : undefined,
+      })}
+    >
+      <Text color="surface.text.gray.muted" size="small" weight="semibold">
+        {title}
+      </Text>
+    </StyledActionListSectionTitle>
+  );
+};
+
+const ActionListSectionTitle = assignWithoutSideEffects(_ActionListSectionTitle, {
+  componentId: componentIds.ActionListSectionTitle,
+});
 const _ActionListSection = ({
   title,
   children,
@@ -122,10 +159,9 @@ const _ActionListSection = ({
   _sectionChildValues,
   ...rest
 }: ActionListSectionProps): React.ReactElement => {
-  const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
+  const { hasAutoCompleteInHeader, dropdownTriggerer, filteredValues } = useDropdown();
   const hasAutoComplete =
-    hasAutoCompleteInBottomSheetHeader ||
-    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+    hasAutoCompleteInHeader || dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const isSectionVisible = React.useMemo(() => {
     if (hasAutoComplete) {
@@ -154,13 +190,8 @@ const _ActionListSection = ({
       {...makeAnalyticsAttribute(rest as Record<string, unknown>)}
     >
       {/* We're announcing title as group label so we can hide this */}
-      {isSectionVisible ? (
-        <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-          <Text color="surface.text.gray.muted" size="small" weight="semibold">
-            {title}
-          </Text>
-        </StyledActionListSectionTitle>
-      ) : null}
+      {isSectionVisible ? <ActionListSectionTitle title={title} /> : null}
+
       <BaseBox
         {...makeAccessible({
           // On web, we just wrap it in another listbox to announce item count properly for particular group.
@@ -177,7 +208,7 @@ const _ActionListSection = ({
   );
 };
 
-const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
+const ActionListSection = assignWithoutSideEffects(React.memo(_ActionListSection), {
   componentId: componentIds.ActionListSection,
 });
 
@@ -251,6 +282,32 @@ const ActionListItemText = assignWithoutSideEffects(_ActionListItemText, {
   componentId: componentIds.ActionListItemText,
 });
 
+const BaseMenuLeadingItem = ({
+  isSelected,
+  isDisabled,
+}: {
+  isSelected?: boolean;
+  isDisabled?: boolean;
+}): React.ReactElement => {
+  return (
+    <BaseBox
+      pointerEvents="none"
+      // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+      {...makeAccessible({
+        hidden: true,
+      })}
+    >
+      <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
+        {/*
+        Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+        But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+      */}
+        {null}
+      </Checkbox>
+    </BaseBox>
+  );
+};
+
 type ClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;
 
 const makeActionListItemClickable = (
@@ -296,15 +353,21 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     dropdownTriggerer,
     isKeydownPressed,
     filteredValues,
-    hasAutoCompleteInBottomSheetHeader,
+    hasAutoCompleteInHeader,
+    hasUnControlledFilterChipSelectInput,
   } = useDropdown();
 
+  React.useEffect(() => {
+    if (activeIndex === props._index && props._virtualizedIndex !== undefined) {
+      props._onVirtualizedFocus?.(props._virtualizedIndex as number);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIndex]);
+
   const hasAutoComplete =
-    hasAutoCompleteInBottomSheetHeader ||
-    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+    hasAutoCompleteInHeader || dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const renderOnWebAs = props.href ? 'a' : 'button';
-
   /**
    * In SelectInput, returns the isSelected according to selected indexes in the state
    *
@@ -312,11 +375,14 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
    * isSelected prop explicitly is the only way to select item in menu
    */
   const getIsSelected = (): boolean | undefined => {
-    if (dropdownTriggerer === dropdownComponentIds.triggers.SelectInput || hasAutoComplete) {
+    if (
+      dropdownTriggerer === dropdownComponentIds.triggers.SelectInput ||
+      hasAutoComplete ||
+      hasUnControlledFilterChipSelectInput
+    ) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);
       }
-
       return undefined;
     }
 
@@ -360,21 +426,11 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       description={props.description}
       leading={
         selectionType === 'multiple' ? (
-          <BaseBox
-            pointerEvents="none"
-            // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-            {...makeAccessible({
-              hidden: true,
-            })}
-          >
-            <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={props.isDisabled}>
-              {/* 
-      Checkbox requires children. Didn't want to make it optional because its helpful for consumers
-      But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
-    */}
-              {null}
-            </Checkbox>
-          </BaseBox>
+          <BaseMenuLeadingItem
+            key={`${dropdownBaseId}-${props._index}-leading-${isSelected}`}
+            isSelected={isSelected}
+            isDisabled={props.isDisabled}
+          />
         ) : (
           props.leading
         )
@@ -427,4 +483,5 @@ export {
   ActionListItemBadge,
   ActionListItemBadgeGroup,
   ActionListSection,
+  ActionListSectionTitle,
 };

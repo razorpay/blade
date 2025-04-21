@@ -9,5 +9,6 @@ export const dropdownComponentIds = {
     AutoComplete: 'AutoComplete',
     SearchInput: 'SearchInput',
     DropdownIconButton: 'DropdownIconButton',
+    FilterChipSelectInput: 'FilterChipSelectInput',
   },
 };

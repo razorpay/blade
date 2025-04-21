@@ -65,9 +65,7 @@ const _BottomSheetHeader = ({
           // we don't set focus on close button when it has AutoComplete inside.
           // We set focus on AutoComplete instead inside AutoComplete component
           closeButtonRef={
-            bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader
-              ? undefined
-              : defaultInitialFocusRef
+            bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader ? undefined : defaultInitialFocusRef
           }
           // back button
           showBackButton={showBackButton}
