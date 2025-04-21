@@ -24,10 +24,13 @@ import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
 import { Drawer, DrawerHeader, DrawerBody } from '~components/Drawer';
-import { LinkIcon, CopyIcon, DownloadIcon } from '~components/Icons';
+import { CopyIcon, DownloadIcon, MoreHorizontalIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Divider } from '~components/Divider';
 import { StepGroup, StepItem, StepItemIndicator } from '~components/StepGroup';
+import { IconButton } from '~components/Button/IconButton';
+import { useTheme } from '~utils';
+import { Collapsible, CollapsibleBody, CollapsibleLink } from '~components/Collapsible';
 
 export default {
   title: 'Patterns/DetailedView',
@@ -85,26 +88,31 @@ const Timeline = ({ status }: { status: string }): React.ReactElement => {
           />
         }
       />
-      <StepItem
-        title="Payment Processing"
-        stepProgress={['Completed', 'Failed'].includes(status) ? 'full' : 'start'}
-        marker={
-          <StepItemIndicator
-            color={['Completed', 'Failed'].includes(status) ? 'positive' : 'notice'}
-          />
-        }
-      />
-      <StepItem
-        title={status === 'Failed' ? 'Payment Failed' : 'Payment Completed'}
-        stepProgress={['Completed', 'Failed'].includes(status) ? 'full' : 'none'}
-        marker={
-          <StepItemIndicator
-            color={
-              status === 'Failed' ? 'negative' : status === 'Completed' ? 'positive' : 'neutral'
+      <Collapsible direction="top">
+        <CollapsibleLink>Show More</CollapsibleLink>
+        <CollapsibleBody>
+          <StepItem
+            title="Payment Processing"
+            stepProgress={['Completed', 'Failed'].includes(status) ? 'full' : 'start'}
+            marker={
+              <StepItemIndicator
+                color={['Completed', 'Failed'].includes(status) ? 'positive' : 'notice'}
+              />
             }
           />
-        }
-      />
+          <StepItem
+            title={status === 'Failed' ? 'Payment Failed' : 'Payment Completed'}
+            stepProgress={['Completed', 'Failed'].includes(status) ? 'full' : 'none'}
+            marker={
+              <StepItemIndicator
+                color={
+                  status === 'Failed' ? 'negative' : status === 'Completed' ? 'positive' : 'neutral'
+                }
+              />
+            }
+          />
+        </CollapsibleBody>
+      </Collapsible>
     </StepGroup>
   );
 };
@@ -129,7 +137,8 @@ const nodes: Item[] = [
       'Chaitanya Deorukhkar',
       'Saurabh Daware',
       'Vinay Chopra',
-    ][Math.floor(Math.random() * 8)],
+      'Kajol Nigam',
+    ][Math.floor(Math.random() * 9)],
   })),
 ];
 
@@ -154,12 +163,20 @@ const DetailedViewTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
+  const { theme } = useTheme();
+
+  const getDrawerGradient = (intent: 'positive' | 'negative' | 'notice'): string => {
+    return `linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background[intent].subtle} 30.26%)`;
+  };
+
   return (
     <Box padding="spacing.5" overflow="auto" minHeight="400px">
       <div
         onKeyDown={(e) => {
-          e.preventDefault();
-          console.log(e.key);
+          if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            setIsDrawerOpen(true);
+          }
         }}
       >
         <TableComponent
@@ -277,57 +294,93 @@ const DetailedViewTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         }}
         showOverlay={false}
       >
-        <DrawerHeader>
-          <Box display="flex" flexDirection="column" gap="spacing.3">
-            <Box display="flex" alignItems="center" gap="spacing.2" marginBottom="spacing.3">
-              <Badge icon={LinkIcon} color="primary">
-                {selectedItem?.type ?? 'Payment'}
-              </Badge>
-              <Badge
-                color={
-                  selectedItem?.status === 'Completed'
-                    ? 'positive'
-                    : selectedItem?.status === 'Pending'
-                    ? 'notice'
-                    : 'negative'
-                }
-              >
-                {selectedItem?.status ?? 'Pending'}
-              </Badge>
+        <DrawerHeader
+          backgroundImage={getDrawerGradient(
+            selectedItem?.status === 'Completed'
+              ? 'positive'
+              : selectedItem?.status === 'Pending'
+              ? 'notice'
+              : 'negative',
+          )}
+          title="Settlements"
+          trailing={
+            <IconButton
+              icon={MoreHorizontalIcon}
+              accessibilityLabel="Options"
+              onClick={() => console.log('Options Clicked')}
+              size="large"
+            />
+          }
+        >
+          <Box marginTop="spacing.6" textAlign="center">
+            <Amount
+              value={selectedItem?.amount ?? 0}
+              currency="INR"
+              size="2xlarge"
+              type="heading"
+              weight="semibold"
+              suffix="decimals"
+            />
+          </Box>
+          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
+            <Badge
+              size="medium"
+              color={
+                selectedItem?.status === 'Completed'
+                  ? 'positive'
+                  : selectedItem?.status === 'Pending'
+                  ? 'notice'
+                  : 'negative'
+              }
+              emphasis="intense"
+            >
+              {selectedItem?.status ?? 'Pending'}
+            </Badge>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="spacing.4"
+            marginTop="spacing.6"
+            paddingX="spacing.4"
+          >
+            <Box display="flex">
+              <Divider thickness="thicker" orientation="vertical" />
+              <Box paddingX="spacing.3">
+                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
+                  Payment ID
+                </Text>
+                <Text size="medium">{selectedItem?.paymentId}</Text>
+              </Box>
             </Box>
 
-            <Box display="flex" flexDirection="column" gap="spacing.1">
-              <Amount
-                weight="semibold"
-                value={selectedItem?.amount ?? 0}
-                currency="INR"
-                size="xlarge"
-                type="heading"
-              />
-              <Text size="small" color="surface.text.gray.muted">
-                Payment ID: {selectedItem?.paymentId}
-              </Text>
-              <Text size="small" color="surface.text.gray.muted">
-                Date:{' '}
-                {selectedItem?.date?.toLocaleDateString('en-IN', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </Text>
+            <Box display="flex">
+              <Divider thickness="thicker" orientation="vertical" />
+              <Box paddingX="spacing.3">
+                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
+                  Date
+                </Text>
+                <Text size="medium">
+                  {selectedItem?.date?.toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </Text>
+              </Box>
             </Box>
-
-            <Box display="flex" gap="spacing.3">
-              <Button
-                variant="secondary"
-                color="primary"
-                size="small"
-                icon={DownloadIcon}
-                isFullWidth
-              >
-                Download Report
-              </Button>
-            </Box>
+          </Box>
+          <Box marginTop="spacing.6" textAlign="center">
+            <Button
+              variant="secondary"
+              color="primary"
+              size="small"
+              icon={DownloadIcon}
+              isFullWidth
+            >
+              Download Report
+            </Button>
           </Box>
         </DrawerHeader>
         <DrawerBody>
