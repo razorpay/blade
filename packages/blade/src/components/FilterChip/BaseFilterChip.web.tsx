@@ -135,7 +135,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
         }}
         onKeyDown={(e) => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          onClick?.(e as any);
+          onKeyDown?.(e as any);
         }}
         {...makeAccessible({
           ...accessibilityProps,
