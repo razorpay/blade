@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.21.3
+
+### Patch Changes
+
+- ca5ff972: fix(blade): filter chip keyboard navigation & auto-handling of selected state in controlled mode
+
 ## 12.21.2
 
 ### Patch Changes
