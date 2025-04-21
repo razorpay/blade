@@ -15,6 +15,7 @@ const _DrawerHeader = ({
   trailing,
   titleSuffix,
   children,
+  backgroundImage,
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef, stackingLevel, isExiting } = React.useContext(DrawerContext);
@@ -44,6 +45,7 @@ const _DrawerHeader = ({
       subtitle={subtitle}
       leading={leading}
       trailing={trailing}
+      backgroundImage={backgroundImage}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}

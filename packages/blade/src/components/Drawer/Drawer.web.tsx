@@ -43,10 +43,14 @@ const AnimatedDrawerContainer = styled(BaseBox)<{
     transform: isVisible
       ? isFirstDrawerInStack
         ? 'translateX(calc(-100% - 16px))'
-        : 'translateX(-100%)'
+        : `translateX(calc(-100% - ${theme.spacing[3]}px))`
       : 'translateX(0%)',
     transition: isVisible ? entranceTransition : exitTransition,
     animationFillMode: 'initial',
+    position: 'fixed',
+    top: '8px',
+    bottom: '8px',
+    left: '100%',
   };
 });
 
@@ -182,11 +186,9 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
                   label: accessibilityLabel,
                 })}
                 position="fixed"
-                top="spacing.0"
-                left="100%"
                 backgroundColor="popup.background.subtle"
+                borderRadius="large"
                 elevation="highRaised"
-                height="100%"
                 display="flex"
                 flexDirection="column"
                 ref={mergeRefs(ref, refs.setFloating)}
