@@ -142,6 +142,9 @@ const propRestrictionMap = {
       size: 'xsmall',
       variant: 'tertiary',
     },
+    IconButton: {
+      size: 'large',
+    },
     Badge: {
       size: 'medium',
     },
@@ -161,6 +164,9 @@ const propRestrictionMap = {
     Button: {
       size: 'xsmall',
       variant: 'tertiary',
+    },
+    IconButton: {
+      size: 'large',
     },
     Badge: {
       size: 'small',
@@ -196,6 +202,7 @@ const useTrailingRestriction = ({
     if (React.isValidElement(trailing)) {
       const trailingComponentType = getComponentId(trailing) as TrailingComponents;
       const restrictedProps = propRestrictionMap[size][trailingComponentType];
+      console.log('trailingComponentType', trailingComponentType, restrictedProps);
       const allowedComponents = Object.keys(propRestrictionMap[size]);
       if (__DEV__) {
         if (!restrictedProps) {

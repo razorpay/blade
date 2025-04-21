@@ -6,7 +6,7 @@ import { Drawer, DrawerBody, DrawerHeader } from '../';
 import { DrawerStackingStory } from './stories';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { AnnouncementIcon, CheckIcon, DownloadIcon } from '~components/Icons';
+import { AnnouncementIcon, CheckIcon, DownloadIcon, MoreHorizontalIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Heading, Text } from '~components/Typography';
@@ -22,6 +22,7 @@ import {
 } from '~components/Card';
 import { Amount } from '~components/Amount';
 import { useTheme } from '~utils';
+import { IconButton } from '~components/Button/IconButton';
 
 const Page = (): React.ReactElement => {
   return (
@@ -236,7 +237,14 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
         <DrawerHeader
           backgroundImage={`linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background.positive.subtle} 30.26%)`}
           title="Settlements"
-          trailing={<Button icon={DownloadIcon} />}
+          trailing={
+            <IconButton
+              icon={MoreHorizontalIcon}
+              accessibilityLabel="Options"
+              onClick={() => console.log('Options Clicked')}
+              size="large"
+            />
+          }
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
