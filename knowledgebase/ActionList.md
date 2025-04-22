@@ -6,7 +6,7 @@ ActionList
 ## Description
 ActionList contains a list of actionable items that can be used to perform particular actions. It can be used inside Dropdowns, BottomSheets, or as selectable items when combined with SelectInput. ActionList provides a consistent UI pattern for presenting a menu of options with optional icons, badges, and various customization options.
 
-## Typescript Types
+## TypeScript Types
 Below are the props that the ActionList component and its subcomponents accept. These types define all possible properties you can use when implementing ActionList in your application.
 
 ```typescript

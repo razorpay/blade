@@ -4,7 +4,7 @@ Alert
 ## Description
 Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way. They can include titles, descriptions, and actions, and come in different emphasis levels and colors to convey different types of information. Alerts can be dismissible and can span the full width of their container.
 
-## Typescript Types
+## TypeScript Types
 The following types represent the props that the Alert component accepts. These types define all the available properties you can use when implementing the Alert component in your application.
 
 ```typescript
