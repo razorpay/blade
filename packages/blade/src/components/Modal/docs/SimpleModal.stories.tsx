@@ -66,3 +66,32 @@ const ModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
 export const SimpleModal = ModalTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 SimpleModal.storyName = 'Simple Modal';
+
+const ModalWithFullScreen: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(!isOpen)}>Open Modal</Button>
+      <Modal
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        size="full"
+      >
+        <ModalHeader title="Full Screen Modal" />
+        <ModalBody>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office-1">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            <Radio value="office-2">Work - 5938 New York, Main Street</Radio>
+          </RadioGroup>
+        </ModalBody>
+      </Modal>
+    </>
+  );
+};
+
+export const ModalWithFullScreenTemplate = ModalWithFullScreen.bind({});
+ModalWithFullScreenTemplate.storyName = 'Modal with Full Screen';

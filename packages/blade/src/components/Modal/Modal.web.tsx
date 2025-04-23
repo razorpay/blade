@@ -17,6 +17,7 @@ import {
   modalMaxWidth,
   modalMinWidth,
   modalResponsiveScreenGap,
+  modalMargin,
 } from './modalTokens';
 import type { ModalProps } from './types';
 import { componentIds } from './constants';
@@ -53,19 +54,28 @@ const exit = keyframes`
   }
 `;
 
-const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme }) => {
-  return css`
-    box-shadow: ${theme.elevation.highRaised};
-    position: fixed;
-    transform: translate(-50%, -50%);
-    opacity: ${isVisible ? 1 : 0};
-    animation: ${isVisible ? entry : exit}
-      ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
-      ${isVisible
-        ? castWebType(theme.motion.easing.entrance)
-        : castWebType(theme.motion.easing.exit)};
-  `;
-});
+const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
+  ({ isVisible, theme, size }) => {
+    return css`
+      box-shadow: ${theme.elevation.highRaised};
+      position: fixed;
+      transform: ${size === 'full' ? 'none' : 'translate(-50%, -50%)'};
+      opacity: ${isVisible ? 1 : 0};
+      animation: ${isVisible ? entry : exit}
+        ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
+        ${isVisible
+          ? castWebType(theme.motion.easing.entrance)
+          : castWebType(theme.motion.easing.exit)};
+      ${size === 'full' &&
+      css`
+        top: ${makeSize(modalMargin[size])};
+        left: ${makeSize(modalMargin[size])};
+        right: ${makeSize(modalMargin[size])};
+        bottom: ${makeSize(modalMargin[size])};
+      `}
+    `;
+  },
+);
 
 const Modal = ({
   isOpen = false,
@@ -152,18 +162,25 @@ const Modal = ({
                   modal: true,
                   label: accessibilityLabel,
                 })}
-                maxWidth={makeSize(modalMaxWidth[size])}
+                maxWidth={size === 'full' ? '100%' : makeSize(+modalMaxWidth[size])}
                 minWidth={makeSize(modalMinWidth)}
-                maxHeight={modalMaxHeight}
-                width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
+                maxHeight={size === 'full' ? '100%' : makeSize(+modalMaxHeight[size])}
+                width={
+                  size === 'full'
+                    ? `calc(100vw - ${makeSize(modalMargin[size])} - ${makeSize(
+                        modalMargin[size],
+                      )})`
+                    : `calc(100vw - ${makeSize(modalResponsiveScreenGap)})`
+                }
                 borderRadius={modalBorderRadius}
                 backgroundColor="popup.background.subtle"
                 display="flex"
                 flexDirection="column"
-                top="50%"
-                left="50%"
+                top={size === 'full' ? makeSize(modalMargin[size]) : '50%'}
+                left={size === 'full' ? makeSize(modalMargin[size]) : '50%'}
                 onKeyDown={handleKeyDown}
                 isVisible={isVisible}
+                size={size}
                 ref={refs.setFloating}
               >
                 {children}
