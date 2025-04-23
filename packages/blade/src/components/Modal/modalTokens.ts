@@ -4,7 +4,7 @@ import type { Border, Size } from '~tokens/global';
 
 type ModalSizeWithoutFull = Exclude<NonNullable<ModalProps['size']>, 'full'>;
 
-const modalMaxWidth: Record<ModalSizeWithoutFull, Size[keyof Size] | string> = {
+const modalMaxWidth: Record<ModalSizeWithoutFull, Size[keyof Size]> = {
   small: size[400],
   medium: size[760],
   large: size[1024],

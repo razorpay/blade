@@ -164,9 +164,9 @@ const Modal = ({
                   modal: true,
                   label: accessibilityLabel,
                 })}
-                maxWidth={size === 'full' ? '100%' : makeSize(+modalMaxWidth[size])}
+                maxWidth={size === 'full' ? '100%' : makeSize(modalMaxWidth[size])}
                 minWidth={makeSize(modalMinWidth)}
-                maxHeight={size === 'full' ? '100%' : makeSize(+modalMaxHeight[size])}
+                maxHeight={size === 'full' ? '100vh' : (modalMaxHeight[size] as string)}
                 width={
                   size === 'full'
                     ? `calc(100vw - ${makeSize(modalMargin[size])} - ${makeSize(
