@@ -166,7 +166,7 @@ const Modal = ({
                 })}
                 maxWidth={size === 'full' ? '100%' : makeSize(modalMaxWidth[size])}
                 minWidth={makeSize(modalMinWidth)}
-                maxHeight={size === 'full' ? '100vh' : (modalMaxHeight[size] as string)}
+                maxHeight={size === 'full' ? '100vh' : modalMaxHeight[size]}
                 width={
                   size === 'full'
                     ? `calc(100vw - ${makeSize(modalMargin[size])} - ${makeSize(
