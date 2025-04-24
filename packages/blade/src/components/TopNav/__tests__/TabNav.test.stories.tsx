@@ -117,7 +117,8 @@ TestOverflow.play = async ({ canvasElement }) => {
   const { getByRole, queryByRole } = within(document.body);
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
   const originalResizeObserver = global.ResizeObserver;
-
+  // was gettin ResizeObserver loop completed with undelivered notifications. in safari
+  // so we need to mock it
   if (isSafari) {
     global.ResizeObserver = class ResizeObserver {
       observe = jest.fn();
