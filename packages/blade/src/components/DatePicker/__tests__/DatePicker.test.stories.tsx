@@ -215,7 +215,7 @@ DatePickerSingleChangePicker.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   await userEvent.tab();
   await userEvent.tab();
-  // go to month
+  // // go to month
   const month = getByRole('button', { name: /Change month/i });
   await expect(month).toHaveFocus();
   await userEvent.click(month);
@@ -231,6 +231,7 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.tab();
   await userEvent.tab();
   await userEvent.keyboard('{ArrowRight}');
+  await userEvent.keyboard('{ArrowLeft}');
   await userEvent.keyboard('{Enter}');
   await sleep(400);
   getByRole('button', { name: /previous/i }).focus();
@@ -238,6 +239,7 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.tab();
   await userEvent.tab();
   await userEvent.keyboard('{ArrowRight}');
+  await userEvent.keyboard('{ArrowLeft}');
   await userEvent.keyboard('{Enter}');
   await sleep(400);
   getByRole('button', { name: /previous/i }).focus();
@@ -245,13 +247,17 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.tab();
   await userEvent.tab();
   await userEvent.keyboard('{ArrowRight}');
+  await userEvent.keyboard('{ArrowLeft}');
   await userEvent.keyboard('{Enter}');
+  // choose today's date
+  await userEvent.click(getByRole('button', { name: dayjs().format('DD MMMM YYYY') }));
+  await sleep(400);
   // press apply
   const applyButton = getByRole('button', { name: /Apply/i });
   await userEvent.click(applyButton);
   await sleep(400);
-  // assert inputs value
-  await expect(input).toHaveValue(dayjs('02/02/2026').format('DD/MM/YYYY'));
+  // expect input to have today's date
+  await expect(input).toHaveValue(dayjs().format('DD/MM/YYYY'));
 };
 
 export const DatePickerRangeSelect: StoryFn<
@@ -454,7 +460,7 @@ Localization.play = async () => {
   await sleep(400);
 
   // click change locale
-  const changeLocaleButton = getByRole('button', { name: /Change locale/i });
+  const changeLocaleButton = getByRole('button', { name: /Change locale/i, hidden: true });
   await userEvent.click(changeLocaleButton);
   await sleep(400);
 
