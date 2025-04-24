@@ -104,6 +104,7 @@ export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.React
 };
 
 ControlledState.play = async () => {
+  await sleep(1000);
   onChangeFn.mockClear();
   const { getByLabelText } = within(document.body);
 
