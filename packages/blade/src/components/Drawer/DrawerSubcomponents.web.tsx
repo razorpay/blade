@@ -16,7 +16,7 @@ const _DrawerHeader = ({
   trailing,
   titleSuffix,
   children,
-  backgroundImage,
+  color = 'information',
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef, stackingLevel, isExiting } = React.useContext(DrawerContext);
@@ -33,7 +33,7 @@ const _DrawerHeader = ({
 
   const isAtleastOneDrawerOpen = Object.keys(drawerStack).length > 0;
 
-  const defaultBackgroundGradient = `linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background.information.subtle} 30.26%)`;
+  const backgroundGradient = `linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background[color].subtle} 30.26%)` as const;
   // This condition is to avoid back button disappear while stacked drawer is in the exiting transition
   const isDrawerExiting = isAtleastOneDrawerOpen && isExiting && stackingLevel !== 1;
 
@@ -51,7 +51,7 @@ const _DrawerHeader = ({
       subtitle={subtitle}
       leading={leading}
       trailing={trailing}
-      backgroundImage={backgroundImage ?? defaultBackgroundGradient}
+      backgroundImage={backgroundGradient}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
