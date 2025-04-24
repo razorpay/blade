@@ -402,8 +402,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
-  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gOSHfz-450290765 280ms cubic-bezier(0.17,0,1,1);
+  animation: gOSHfz-450290765 280ms cubic-bezier(0.17,0,1,1);
 }
 
 .c20.c20.c20.c20.c20 {
@@ -843,8 +843,8 @@ exports[`Modal renders a basic Modal 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
-  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gOSHfz-450290765 280ms cubic-bezier(0.17,0,1,1);
+  animation: gOSHfz-450290765 280ms cubic-bezier(0.17,0,1,1);
 }
 
 <div
@@ -948,8 +948,8 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
-  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gOSHfz-450290765 280ms cubic-bezier(0.17,0,1,1);
+  animation: gOSHfz-450290765 280ms cubic-bezier(0.17,0,1,1);
 }
 
 <div
@@ -1053,8 +1053,8 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
-  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation: gOSHfz-450290765 280ms cubic-bezier(0.17,0,1,1);
+  animation: gOSHfz-450290765 280ms cubic-bezier(0.17,0,1,1);
 }
 
 <div
