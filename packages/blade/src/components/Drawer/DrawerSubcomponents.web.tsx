@@ -46,7 +46,7 @@ const _DrawerHeader = ({
       onCloseButtonClick={() => closeAllDrawers()}
       onBackButtonClick={() => close()}
       title={title}
-      size="large"
+      size="xlarge"
       titleSuffix={titleSuffix}
       subtitle={subtitle}
       leading={leading}

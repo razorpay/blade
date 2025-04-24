@@ -3,7 +3,7 @@ import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
@@ -51,7 +51,7 @@ type BaseHeaderProps = {
   /**
    * Decides size of the Header
    */
-  size?: 'large' | 'medium';
+  size?: 'xlarge' | 'large' | 'medium';
   /**
    * @default true
    */
@@ -105,7 +105,11 @@ const commonCenterBoxProps: BoxProps = {
   justifyContent: 'center',
 };
 
-const centerBoxProps: { large: BoxProps; medium: BoxProps } = {
+const centerBoxProps: { xlarge: BoxProps; large: BoxProps; medium: BoxProps } = {
+  xlarge: {
+    ...commonCenterBoxProps,
+    height: '28px',
+  },
   large: {
     ...commonCenterBoxProps,
     // We want to align title, icon, titleSuffix, trailing, closeButton to baseline
@@ -127,17 +131,46 @@ const absolutePositionedButton = {
 } as const;
 
 const sizeTokensMapping = {
+  xlarge: {
+    title: 'small',
+    type: 'heading',
+  },
   large: {
     title: 'large',
+    type: 'text',
   },
   medium: {
     title: 'medium',
+    type: 'text',
   },
 } as const;
 
 // prop restriction map for corresponding sub components
 const propRestrictionMap = {
   large: {
+    Button: {
+      size: 'xsmall',
+      variant: 'tertiary',
+    },
+    IconButton: {
+      size: 'large',
+    },
+    Badge: {
+      size: 'medium',
+    },
+    Link: {
+      size: 'medium',
+    },
+    Text: {
+      size: 'medium',
+      variant: 'body',
+    },
+    Amount: {
+      type: 'body',
+      size: 'medium',
+    },
+  },
+  xlarge: {
     Button: {
       size: 'xsmall',
       variant: 'tertiary',
@@ -202,7 +235,7 @@ const useTrailingRestriction = ({
     if (React.isValidElement(trailing)) {
       const trailingComponentType = getComponentId(trailing) as TrailingComponents;
       const restrictedProps = propRestrictionMap[size][trailingComponentType];
-      console.log('trailingComponentType', trailingComponentType, restrictedProps);
+
       const allowedComponents = Object.keys(propRestrictionMap[size]);
       if (__DEV__) {
         if (!restrictedProps) {
@@ -338,15 +371,32 @@ const _BaseHeader = ({
                   flexDirection="row"
                 >
                   {title ? (
-                    <Text
-                      size={sizeTokensMapping[size].title}
-                      marginTop={makeSize(sizeToken['1'])}
-                      weight="semibold"
-                      color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'}
-                      wordBreak="break-word"
-                    >
-                      {title}
-                    </Text>
+                    sizeTokensMapping[size].type === 'heading' ? (
+                      <Heading
+                        as="h2"
+                        marginTop={makeSize(sizeToken['1'])}
+                        size={sizeTokensMapping[size].title}
+                        weight="semibold"
+                        color={
+                          isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'
+                        }
+                        wordBreak="break-word"
+                      >
+                        {title}
+                      </Heading>
+                    ) : (
+                      <Text
+                        size={sizeTokensMapping[size].title}
+                        marginTop={makeSize(sizeToken['1'])}
+                        weight="semibold"
+                        color={
+                          isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'
+                        }
+                        wordBreak="break-word"
+                      >
+                        {title}
+                      </Text>
+                    )
                   ) : null}
                   {titleSuffix && (
                     <BaseBox marginLeft="spacing.3">
