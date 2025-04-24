@@ -89,7 +89,9 @@ UncontrolledState.play = async () => {
   );
 };
 
-export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
+export const ControlledStateFocusAndDefaultValue: StoryFn<
+  typeof PhoneNumberInput
+> = (): React.ReactElement => {
   const [value, setValue] = React.useState('9876543210');
   return (
     <PhoneNumberInput
@@ -103,8 +105,8 @@ export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.React
   );
 };
 
-ControlledState.play = async () => {
-  await sleep(100);
+ControlledStateFocusAndDefaultValue.play = async () => {
+  await sleep(1000);
   onChangeFn.mockClear();
   const { getByLabelText } = within(document.body);
 
@@ -119,9 +121,32 @@ ControlledState.play = async () => {
 
   // Type inside input
   await userEvent.clear(input);
+};
+
+export const ControlledStateTypeAndOnChange: StoryFn<
+  typeof PhoneNumberInput
+> = (): React.ReactElement => {
+  const [value, setValue] = React.useState('');
+  return (
+    <PhoneNumberInput
+      label={label}
+      value={value}
+      onChange={(e) => {
+        onChangeFn(e);
+        setValue(e.value);
+      }}
+    />
+  );
+};
+
+ControlledStateTypeAndOnChange.play = async () => {
+  const { getByLabelText } = within(document.body);
+
+  await sleep(100);
+  const input = getByLabelText(label);
+
   await userEvent.type(input, '1234567890');
 
-  // Ensure the value of the input updates
   await expect(input).toHaveValue('1234567890');
 
   await expect(onChangeFn).toHaveBeenLastCalledWith(
