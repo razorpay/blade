@@ -158,7 +158,6 @@ ControlledStateTypeAndOnChange.play = async () => {
   };
   const actualValue = onChangeFn.mock.lastCall?.[0];
   await expect(actualValue).toEqual(expectedValue);
-
 };
 
 export const Disabled: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
