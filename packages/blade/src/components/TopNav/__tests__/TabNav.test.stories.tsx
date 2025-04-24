@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import type { StoryFn } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { jest, expect } from '@storybook/jest';
 import React from 'react';
 import type { TabNavProps } from '../TabNav';
 import { TabNav, TabNavItem, TabNavItems } from '../TabNav';
@@ -115,6 +115,13 @@ export const TestOverflow: StoryFn<typeof TabNav> = (): React.ReactElement => {
 
 TestOverflow.play = async ({ canvasElement }) => {
   const { getByRole, queryByRole } = within(document.body);
+
+  // global.ResizeObserver = class ResizeObserver {
+  //   observe = jest.fn();
+  //   unobserve = jest.fn();
+  //   disconnect = jest.fn();
+  // };
+
   canvasElement.style.width = '100%';
 
   await sleep(500);
@@ -138,6 +145,23 @@ TestOverflow.play = async ({ canvasElement }) => {
   await expect(queryByRole('menuitem', { name: 'Rize' })).toBeVisible();
   await expect(queryByRole('link', { name: 'Magic Checkout' })).toBeNull();
   await expect(queryByRole('menuitem', { name: 'Magic Checkout' })).toBeVisible();
+
+  canvasElement.style.width = '300px';
+  await sleep(500);
+  await expect(queryByRole('link', { name: 'Payroll' })).toBeNull();
+  await expect(queryByRole('link', { name: 'Payments' })).toBeNull();
+  await expect(queryByRole('menuitem', { name: 'Payroll' })).toBeVisible();
+  await expect(queryByRole('menuitem', { name: 'Payments' })).toBeVisible();
+
+  canvasElement.style.width = '100%';
+  await sleep(500);
+  await expect(queryByRole('menuitem', { name: 'Rize' })).toBeVisible();
+  await expect(queryByRole('menuitem', { name: 'Payroll' })).toBeNull();
+  await expect(queryByRole('menuitem', { name: 'Payments' })).toBeNull();
+  await expect(queryByRole('menuitem', { name: 'Magic Checkout' })).toBeNull();
+
+  // @ts-expect-error ResizeObserver is not optional but we need to clean it up
+  delete global.ResizeObserver;
 };
 
 export const ShouldNotShowMore: StoryFn<typeof TabNav> = (): React.ReactElement => {
@@ -154,6 +178,12 @@ export const ShouldNotShowMore: StoryFn<typeof TabNav> = (): React.ReactElement 
 
 ShouldNotShowMore.play = async ({ canvasElement }) => {
   const { getByRole, queryByRole } = within(document.body);
+
+  // global.ResizeObserver = class ResizeObserver {
+  //   observe = jest.fn();
+  //   unobserve = jest.fn();
+  //   disconnect = jest.fn();
+  // };
 
   await sleep(500);
   const homeTab = getByRole('link', { name: 'Home' });
