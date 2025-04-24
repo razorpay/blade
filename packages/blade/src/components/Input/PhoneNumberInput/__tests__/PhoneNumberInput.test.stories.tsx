@@ -149,15 +149,16 @@ ControlledStateTypeAndOnChange.play = async () => {
 
   await expect(input).toHaveValue('1234567890');
 
-  // await expect(onChangeFn).toHaveBeenLastCalledWith(
-  //   expect.objectContaining({
-  //     country: 'IN',
-  //     dialCode: '+91',
-  //     name: undefined,
-  //     phoneNumber: '1234 567890',
-  //     value: '1234567890',
-  //   }),
-  // );
+  const expectedValue = {
+    country: 'IN',
+    dialCode: '+91',
+    name: undefined,
+    phoneNumber: '1234 567890',
+    value: '1234567890',
+  };
+  const actualValue = onChangeFn.mock.lastCall?.[0];
+  await expect(actualValue).toEqual(expectedValue);
+
 };
 
 export const Disabled: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
