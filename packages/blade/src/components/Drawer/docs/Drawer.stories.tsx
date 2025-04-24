@@ -277,7 +277,9 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
             </Text>
           </Box>
           <Box marginTop="spacing.4" textAlign="center">
-            <Text size="xsmall">Created on Jan 11, 2025</Text>
+            <Text size="small" weight="medium" color="surface.text.gray.muted">
+              Created on Jan 11, 2025
+            </Text>
           </Box>
         </DrawerHeader>
         <DrawerBody>

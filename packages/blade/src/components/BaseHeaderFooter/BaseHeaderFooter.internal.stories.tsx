@@ -132,6 +132,22 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
         />
       </HeaderContainer>
       <HeaderContainer>
+        <BaseHeader
+          leading={<StarIcon color="surface.icon.gray.normal" size="medium" />}
+          title="When The Title is So Large That It Goes On Next Line"
+          subtitle="When The Subtitle of this BaseHeader is So Largeeeee That It Goes On Next Line"
+          titleSuffix={
+            <Badge size="small" color="positive">
+              New
+            </Badge>
+          }
+          trailing={<Link>Apply</Link>}
+          showCloseButton={true}
+          showBackButton={false}
+          size="large"
+        />
+      </HeaderContainer>
+      <HeaderContainer>
         <BaseHeader showCloseButton={true} showBackButton={false}>
           <Text>Custom Header</Text>
         </BaseHeader>

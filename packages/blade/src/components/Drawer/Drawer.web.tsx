@@ -204,6 +204,7 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
                 position="fixed"
                 backgroundColor="popup.background.subtle"
                 borderRadius={{ base: 'none', m: 'large' }}
+                overflow="hidden"
                 elevation="highRaised"
                 display="flex"
                 flexDirection="column"
