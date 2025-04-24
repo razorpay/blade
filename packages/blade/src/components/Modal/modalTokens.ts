@@ -1,4 +1,5 @@
 import type { ModalProps } from './Modal';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import type { Border, Size } from '~tokens/global';
 
@@ -12,10 +13,11 @@ const modalMaxWidth: Record<ModalSizeWithoutFull, Size[keyof Size]> = {
 
 const modalMinWidth = 320;
 
-const modalMaxHeight: Record<ModalSizeWithoutFull, string> = {
+const modalMaxHeight: Record<NonNullable<ModalProps['size']>, SpacingValueType> = {
   small: '80vh',
   medium: '80vh',
   large: '80vh',
+  full: '100vh',
 };
 
 const modalResponsiveScreenGap: Size[keyof Size] = size[48];
