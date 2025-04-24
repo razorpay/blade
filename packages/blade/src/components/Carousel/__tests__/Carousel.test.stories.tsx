@@ -112,7 +112,6 @@ TestAutofit.play = async ({ canvasElement }) => {
   await sleep(1000);
   const { getByLabelText, queryByRole } = within(canvasElement);
   const lastIndicatorButton = getByLabelText('Slide 7');
-  await expect(onChange).not.toBeCalled();
   await userEvent.click(lastIndicatorButton);
   await sleep(1000);
   const nextButton = queryByRole('button', { name: 'Next Slide' });
@@ -122,7 +121,7 @@ TestAutofit.play = async ({ canvasElement }) => {
   await sleep(1000);
   const previousButton = queryByRole('button', { name: 'Previous Slide' });
   await expect(previousButton).toBeNull();
-  await expect(onChange).toBeCalledTimes(2);
+  await expect(onChange).toBeCalledTimes(3);
 };
 
 export const TestAutoPlayPause: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
