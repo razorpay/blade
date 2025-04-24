@@ -121,6 +121,11 @@ TestAutofit.play = async ({ canvasElement }) => {
   await sleep(1000);
   const previousButton = queryByRole('button', { name: 'Previous Slide' });
   await expect(previousButton).toBeNull();
+  /*   onChange is called 3 times...
+       on LastIndicatorButtonClick .
+       on Next Button Click
+       on PreviousButtonClick
+  */
   await expect(onChange).toBeCalledTimes(3);
 };
 
