@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type DrawerProps = {
@@ -102,7 +102,7 @@ type DrawerHeaderProps = {
    *
    * Use this for adding gradients
    */
-  backgroundImage?: BaseHeaderProps['backgroundImage'];
+  color?: FeedbackColors;
 } & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps };

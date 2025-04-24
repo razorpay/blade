@@ -21,7 +21,6 @@ import {
   CardHeaderLeading,
 } from '~components/Card';
 import { Amount } from '~components/Amount';
-import { useTheme } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 
 const Page = (): React.ReactElement => {
@@ -224,7 +223,6 @@ export const InitialFocus = (args: DrawerProps): React.ReactElement => {
 
 export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  const { theme } = useTheme();
 
   return (
     <Box>
@@ -235,7 +233,7 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
         onDismiss={() => setIsDrawerOpen(false)}
       >
         <DrawerHeader
-          backgroundImage={`linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background.positive.subtle} 30.26%)`}
+          color="positive"
           title="Settlements"
           trailing={
             <IconButton
