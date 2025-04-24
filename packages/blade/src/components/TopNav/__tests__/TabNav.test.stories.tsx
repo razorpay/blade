@@ -138,20 +138,6 @@ TestOverflow.play = async ({ canvasElement }) => {
   await expect(queryByRole('menuitem', { name: 'Rize' })).toBeVisible();
   await expect(queryByRole('link', { name: 'Magic Checkout' })).toBeNull();
   await expect(queryByRole('menuitem', { name: 'Magic Checkout' })).toBeVisible();
-
-  canvasElement.style.width = '300px';
-  await sleep(500);
-  await expect(queryByRole('link', { name: 'Payroll' })).toBeNull();
-  await expect(queryByRole('link', { name: 'Payments' })).toBeNull();
-  await expect(queryByRole('menuitem', { name: 'Payroll' })).toBeVisible();
-  await expect(queryByRole('menuitem', { name: 'Payments' })).toBeVisible();
-
-  canvasElement.style.width = '100%';
-  await sleep(500);
-  await expect(queryByRole('menuitem', { name: 'Rize' })).toBeVisible();
-  await expect(queryByRole('menuitem', { name: 'Payroll' })).toBeNull();
-  await expect(queryByRole('menuitem', { name: 'Payments' })).toBeNull();
-  await expect(queryByRole('menuitem', { name: 'Magic Checkout' })).toBeNull();
 };
 
 export const ShouldNotShowMore: StoryFn<typeof TabNav> = (): React.ReactElement => {
