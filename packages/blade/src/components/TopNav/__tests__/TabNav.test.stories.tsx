@@ -115,12 +115,16 @@ export const TestOverflow: StoryFn<typeof TabNav> = (): React.ReactElement => {
 
 TestOverflow.play = async ({ canvasElement }) => {
   const { getByRole, queryByRole } = within(document.body);
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  const originalResizeObserver = global.ResizeObserver;
 
-  // global.ResizeObserver = class ResizeObserver {
-  //   observe = jest.fn();
-  //   unobserve = jest.fn();
-  //   disconnect = jest.fn();
-  // };
+  if (isSafari) {
+    global.ResizeObserver = class ResizeObserver {
+      observe = jest.fn();
+      unobserve = jest.fn();
+      disconnect = jest.fn();
+    };
+  }
 
   canvasElement.style.width = '100%';
 
@@ -160,8 +164,9 @@ TestOverflow.play = async ({ canvasElement }) => {
   await expect(queryByRole('menuitem', { name: 'Payments' })).toBeNull();
   await expect(queryByRole('menuitem', { name: 'Magic Checkout' })).toBeNull();
 
-  // @ts-expect-error ResizeObserver is not optional but we need to clean it up
-  delete global.ResizeObserver;
+  if (isSafari) {
+    global.ResizeObserver = originalResizeObserver;
+  }
 };
 
 export const ShouldNotShowMore: StoryFn<typeof TabNav> = (): React.ReactElement => {
@@ -179,11 +184,16 @@ export const ShouldNotShowMore: StoryFn<typeof TabNav> = (): React.ReactElement 
 ShouldNotShowMore.play = async ({ canvasElement }) => {
   const { getByRole, queryByRole } = within(document.body);
 
-  // global.ResizeObserver = class ResizeObserver {
-  //   observe = jest.fn();
-  //   unobserve = jest.fn();
-  //   disconnect = jest.fn();
-  // };
+  const originalResizeObserver = global.ResizeObserver;
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+  if (isSafari) {
+    global.ResizeObserver = class ResizeObserver {
+      observe = jest.fn();
+      unobserve = jest.fn();
+      disconnect = jest.fn();
+    };
+  }
 
   await sleep(500);
   const homeTab = getByRole('link', { name: 'Home' });
@@ -210,6 +220,9 @@ ShouldNotShowMore.play = async ({ canvasElement }) => {
   await expect(queryByRole('menu', { name: 'More' })).toBeVisible();
   await expect(queryByRole('menuitem', { name: 'Payments' })).toBeVisible();
   await expect(queryByRole('menuitem', { name: 'Payroll' })).toBeVisible();
+  if (isSafari) {
+    global.ResizeObserver = originalResizeObserver;
+  }
 };
 
 export default {
