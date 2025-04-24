@@ -215,7 +215,7 @@ DatePickerSingleChangePicker.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   await userEvent.tab();
   await userEvent.tab();
-  // // go to month
+  // go to month
   const month = getByRole('button', { name: /Change month/i });
   await expect(month).toHaveFocus();
   await userEvent.click(month);
