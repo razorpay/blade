@@ -138,8 +138,8 @@ OnlyInAnimation.play = async ({ canvasElement }) => {
   await expect(getByTestId('badge')).toHaveStyle('opacity: 0');
   const button = getByTestId('button').style.transform;
   console.log('button', button);
-  await expect(getByTestId('button').style.transform).toBe('translateY(16px)');
-  await expect(getByTestId('card').style.transform).toBe('translateY(100vh)');
+  await expect(getByTestId('button').style.transform).toBe('translateY(0px)');
+  await expect(getByTestId('card').style.transform).toBe('translateY(0%)');
 };
 
 export const OnlyOutAnimation: StoryFn = (): React.ReactElement => {
