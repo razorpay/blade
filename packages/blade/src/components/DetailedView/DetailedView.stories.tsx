@@ -26,7 +26,6 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Button } from '~components/Button';
 import { Drawer, DrawerHeader, DrawerBody } from '~components/Drawer';
 import {
-  ArrowRightIcon,
   CheckIcon,
   ClockIcon,
   CopyIcon,
@@ -85,9 +84,8 @@ export default {
     docs: {
       page: () => (
         <StoryPageWrapper
-          componentDescription="A detailed view component that displays data in a table format with additional features for detailed information viewing."
+          componentDescription="A DetailedView is a pattern that shows details of a transaction / user / entity in drawer in a defined format."
           componentName="DetailedView"
-          figmaURL="YOUR_FIGMA_URL_HERE"
         />
       ),
     },
