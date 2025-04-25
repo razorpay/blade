@@ -1,5 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { useState } from 'react';
+import { DetailedViewStoryCode } from './code';
 import type { TableData, TableProps } from '~components/Table';
 import {
   Table as TableComponent,
@@ -48,6 +49,7 @@ import {
   CardHeaderLink,
   CardHeaderTrailing,
 } from '~components/Card';
+import { Sandbox } from '~utils/storybook/Sandbox';
 
 export default {
   title: 'Patterns/DetailedView',
@@ -86,7 +88,10 @@ export default {
         <StoryPageWrapper
           componentDescription="A DetailedView is a pattern that shows details of a transaction / user / entity in drawer in a defined format."
           componentName="DetailedView"
-        />
+        >
+          <Heading size="large">Usage</Heading>
+          <Sandbox editorHeight={500}>{DetailedViewStoryCode}</Sandbox>
+        </StoryPageWrapper>
       ),
     },
   },
