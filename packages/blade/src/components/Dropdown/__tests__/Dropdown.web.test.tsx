@@ -544,7 +544,10 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
     const { container, getByRole, getByTestId } = renderWithTheme(
       <Dropdown>
         <FilterChipSelectInput label="profile" data-analytics-attribute="profile" />
-        <DropdownOverlay testID="dropdown-overlay-test" data-analytics-name="profile-options-wrapper">
+        <DropdownOverlay
+          testID="dropdown-overlay-test"
+          data-analytics-name="profile-options-wrapper"
+        >
           <ActionList data-analytics-list="user-setting">
             <ActionListItem data-analytics-item="user-profile" title="Profile" value="profile" />
             <ActionListItem title="Settings" value="settings" />
