@@ -58,12 +58,36 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
       }
     `;
 
+    const fullPageEntry = keyframes`
+      from {
+        opacity: 0 ;
+      }
+      to {
+        opacity: 1;
+      }
+    `;
+
+    const fullPageExit = keyframes`
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    `;
+
     return css`
       box-shadow: ${theme.elevation.highRaised};
       position: fixed;
       transform: ${size === 'full' ? 'none' : 'translate(-50%, -50%)'};
       opacity: ${isVisible ? 1 : 0};
-      animation: ${isVisible ? entry : exit}
+      animation: ${isVisible
+          ? size === 'full'
+            ? fullPageEntry
+            : entry
+          : size === 'full'
+          ? fullPageExit
+          : exit}
         ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
         ${isVisible
           ? castWebType(theme.motion.easing.entrance)
