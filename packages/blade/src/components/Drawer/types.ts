@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type DrawerProps = {
@@ -86,6 +87,13 @@ type DrawerHeaderProps = {
    * Children elements to be rendered inside the header
    */
   children?: React.ReactElement | React.ReactElement[];
+
+  /**
+   * Background image of the header
+   *
+   * Use this for adding gradients
+   */
+  color?: FeedbackColors;
 } & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps };
