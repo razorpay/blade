@@ -182,6 +182,7 @@ const Modal = ({
                 isVisible={isVisible}
                 size={size}
                 ref={refs.setFloating}
+                overflow="hidden"
               >
                 {children}
               </ModalContent>
