@@ -7,6 +7,9 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Radio, RadioGroup } from '~components/Radio';
+import { Skeleton } from '~components/Skeleton';
+import { DownloadIcon } from '~components/Icons';
+
 export default {
   title: 'Components/Modal/SimpleModal',
   component: Modal,
@@ -65,3 +68,60 @@ const ModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
 export const SimpleModal = ModalTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 SimpleModal.storyName = 'Simple Modal';
+
+const FullPageModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isImageLoading, setIsImageLoading] = React.useState(true);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(!isOpen)}>Open Modal</Button>
+      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size={size}>
+        <ModalHeader
+          title="Full Page Modal"
+          subtitle="This example is created for Full Page Modal"
+        />
+        <ModalBody height="100%" padding="spacing.0">
+          <Box position="relative" width="100%" height="100%">
+            {isImageLoading && (
+              <Box
+                position="absolute"
+                top="0px"
+                left="0px"
+                width="100%"
+                height="100%"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                backgroundColor="surface.background.gray.intense"
+              >
+                <Skeleton height="100%" width="100%" />
+              </Box>
+            )}
+            <img
+              width="100%"
+              height="100%"
+              src="https://picsum.photos/1920/1080"
+              alt="randm"
+              onLoad={() => setIsImageLoading(false)}
+              style={{ display: isImageLoading ? 'none' : 'block' }}
+            />
+          </Box>
+        </ModalBody>
+        <ModalFooter>
+          <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
+            <Button variant="primary" icon={DownloadIcon} isDisabled={isImageLoading}>
+              Download
+            </Button>
+          </Box>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+};
+
+export const FullPageModal = FullPageModalTemplate.bind({});
+FullPageModal.args = {
+  size: 'full',
+};
+FullPageModal.storyName = 'Full Page Modal';
