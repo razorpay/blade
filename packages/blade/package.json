@@ -145,7 +145,6 @@
     "@emotion/react": "11.11.1",
     "@table-library/react-table-library": "4.1.7",
     "tinycolor2": "1.6.0",
-    "universal-base64": "2.1.0",
     "@mantine/core": "6.0.21",
     "@mantine/dates": "6.0.21",
     "@mantine/hooks": "6.0.21",
