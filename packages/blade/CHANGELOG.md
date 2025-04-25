@@ -1,5 +1,21 @@
 # @razorpay/blade
 
+## 12.22.0
+
+### Minor Changes
+
+- 289a9c19: feat(Drawer): visual changes in Drawer (add border-radius, change stacking visuals)
+
+### Patch Changes
+
+- b514b529: fix(StepGroup): remove universal-base64 library
+
+## 12.21.3
+
+### Patch Changes
+
+- ca5ff972: fix(blade): filter chip keyboard navigation & auto-handling of selected state in controlled mode
+
 ## 12.21.2
 
 ### Patch Changes
