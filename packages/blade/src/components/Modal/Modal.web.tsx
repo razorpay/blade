@@ -169,7 +169,7 @@ const Modal = ({
                 maxHeight={modalMaxHeight[size]}
                 width={
                   size === 'full'
-                    ? `calc(100vw - ${makeSize(modalMargin[size] * 2)}`
+                    ? `calc(100vw - ${makeSize(modalMargin[size] * 2)})`
                     : `calc(100vw - ${makeSize(modalResponsiveScreenGap)})`
                 }
                 borderRadius={modalBorderRadius}
