@@ -541,10 +541,10 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
     expect(appleClickHandler).toBeCalled();
   });
   it('should support data-analytics-attribute', () => {
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, getByTestId } = renderWithTheme(
       <Dropdown>
         <FilterChipSelectInput label="profile" data-analytics-attribute="profile" />
-        <DropdownOverlay>
+        <DropdownOverlay testID="dropdown-overlay-test" data-analytics-name="profile-options-wrapper">
           <ActionList data-analytics-list="user-setting">
             <ActionListItem data-analytics-item="user-profile" title="Profile" value="profile" />
             <ActionListItem title="Settings" value="settings" />
@@ -560,6 +560,10 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
     expect(getByRole('button', { name: 'profile' })).toHaveAttribute(
       'data-analytics-attribute',
       'profile',
+    );
+    expect(getByTestId('dropdown-overlay-test')).toHaveAttribute(
+      'data-analytics-name',
+      'profile-options-wrapper',
     );
   });
 });
