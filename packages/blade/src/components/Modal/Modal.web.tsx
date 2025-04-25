@@ -176,8 +176,8 @@ const Modal = ({
                 backgroundColor="popup.background.subtle"
                 display="flex"
                 flexDirection="column"
-                top={size === 'full' ? makeSize(modalMargin[size]) : '50%'}
-                left={size === 'full' ? makeSize(modalMargin[size]) : '50%'}
+                top="50%"
+                left="50%"
                 onKeyDown={handleKeyDown}
                 isVisible={isVisible}
                 size={size}
