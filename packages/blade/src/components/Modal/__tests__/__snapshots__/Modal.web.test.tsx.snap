@@ -11,6 +11,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -789,6 +790,7 @@ exports[`Modal renders a basic Modal 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -894,6 +896,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -999,6 +1002,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
