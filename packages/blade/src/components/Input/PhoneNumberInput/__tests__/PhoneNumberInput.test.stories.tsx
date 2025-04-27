@@ -154,7 +154,7 @@ ControlledStateTypeAndOnChange.play = async () => {
     country: 'IN',
     dialCode: '+91',
     name: undefined,
-    phoneNumber: '1234 567890',
+    phoneNumber: '1234567890',
     value: '1234567890',
   };
   const actualValue = onChangeFn.mock.lastCall?.[0];
