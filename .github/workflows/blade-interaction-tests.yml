@@ -4,9 +4,13 @@ name: Blade Interaction Tests
 # 1. 'Run Interaction Tests' label is added to PR
 # 2. Workflow is trigerred manually
 # 3. PR is merged to master
+# 4. Any commit is pushed or merged
 
-on: [pull_request]
-
+on: 
+  pull_request:
+  push:
+    branches:
+      - '**'  # This will match all branch names
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
