@@ -181,7 +181,7 @@ OnlyOutAnimation.play = async ({ canvasElement }) => {
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
   await sleep(10);
   await waitFor(() => expect(getByTestId('badge')).toHaveStyle('opacity: 0'));
-  await waitFor(() => expect(getByTestId('button').style.transform).toBe('translateY(16px)'));
+  await waitFor(() => expect(getByTestId('button').style.transform).toBe('translateY(0px)'));
   await waitFor(() => expect(getByTestId('card').style.transform).toBe('translateY(100vh)'));
 };
 
