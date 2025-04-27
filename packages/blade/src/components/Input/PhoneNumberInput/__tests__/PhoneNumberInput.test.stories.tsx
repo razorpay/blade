@@ -83,7 +83,7 @@ UncontrolledState.play = async () => {
     dialCode: '+91',
     name: undefined,
     phoneNumber: '1234 567890',
-    value: '1234567890',
+    value: '1234 567890',
   };
 
   const actualValue = onChangeFn.mock.lastCall?.[0];
