@@ -108,6 +108,7 @@ export const ControlledStateFocusAndDefaultValue: StoryFn<
 
 ControlledStateFocusAndDefaultValue.play = async () => {
   await sleep(1000);
+
   onChangeFn.mockClear();
   const { getByLabelText } = within(document.body);
 
@@ -122,29 +123,8 @@ ControlledStateFocusAndDefaultValue.play = async () => {
 
   // Type inside input
   await userEvent.clear(input);
-};
-
-export const ControlledStateTypeAndOnChange: StoryFn<
-  typeof PhoneNumberInput
-> = (): React.ReactElement => {
-  const [value, setValue] = React.useState('');
-  return (
-    <PhoneNumberInput
-      label={label}
-      value={value}
-      onChange={(e) => {
-        onChangeFn(e);
-        setValue(e.value);
-      }}
-    />
-  );
-};
-
-ControlledStateTypeAndOnChange.play = async () => {
-  const { getByLabelText } = within(document.body);
 
   await sleep(100);
-  const input = getByLabelText(label);
 
   await userEvent.type(input, '1234567890');
 
