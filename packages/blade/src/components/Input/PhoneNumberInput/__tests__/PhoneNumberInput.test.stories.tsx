@@ -61,7 +61,6 @@ export const UncontrolledState: StoryFn<typeof PhoneNumberInput> = (): React.Rea
 UncontrolledState.play = async () => {
   onChangeFn.mockClear();
   const { getByLabelText } = within(document.body);
-  new Error('test');
 
   await sleep(100);
   const input = getByLabelText(label);
