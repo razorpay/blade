@@ -88,10 +88,10 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
       transform: ${size === 'full' ? 'none' : 'translate(-50%, -50%)'};
       opacity: ${isVisible ? 1 : 0};
       animation: ${getAnimation(isVisible, size)}
-      ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
-      ${isVisible
-        ? castWebType(theme.motion.easing.entrance)
-        : castWebType(theme.motion.easing.exit)};
+        ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
+        ${isVisible
+          ? castWebType(theme.motion.easing.entrance)
+          : castWebType(theme.motion.easing.exit)};
       ${size === 'full' &&
       css`
         top: ${makeSize(modalMargin[size])};
