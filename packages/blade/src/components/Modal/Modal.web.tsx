@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import type { Keyframes } from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
 import { ModalHeader } from './ModalHeader';
