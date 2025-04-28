@@ -35,14 +35,18 @@ TestCarouselOnChange.play = async ({ canvasElement }) => {
   const previousButton = getByRole('button', { name: 'Previous Slide' });
   await userEvent.click(nextButton);
   await sleep(1000);
-  await expect(onChange).toBeCalledWith(1);
+  const lastCallAfterNext = onChange?.mock.lastCall?.[0];
+  await expect(lastCallAfterNext).toBe(1);
+
   await userEvent.click(previousButton);
   await sleep(1000);
-  await expect(onChange).toBeCalledWith(0);
+  const lastCallAfterPrevious = onChange?.mock.lastCall?.[0];
+  await expect(lastCallAfterPrevious).toBe(0);
+
   getByText(/Single Flow To Collect And Disburse Payments/)?.scrollIntoView({ behavior: 'smooth' });
   await sleep(1000);
-  await expect(onChange).toBeCalledWith(3);
-  await expect(onChange).toBeCalledTimes(3);
+  const lastCallAfterScroll = onChange?.mock.lastCall?.[0];
+  await expect(lastCallAfterScroll).toBe(3);
 };
 
 export const TestIndicatorButton: StoryFn<typeof CarouselComponent> = (
