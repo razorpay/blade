@@ -22,18 +22,20 @@ import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
 import { Code, Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
-import type { SpacingValueType } from '~components/Box/BaseBox/types';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
 import { Drawer, DrawerHeader, DrawerBody } from '~components/Drawer';
 import {
+  ArrowRightIcon,
   CheckIcon,
   ClockIcon,
+  CloseIcon,
   CopyIcon,
   DownloadIcon,
   ExternalLinkIcon,
   MoreHorizontalIcon,
   RazorpayIcon,
+  UpiIcon,
 } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Divider } from '~components/Divider';
@@ -44,12 +46,14 @@ import {
   Card,
   CardBody,
   CardHeader,
+  CardHeaderBadge,
   CardHeaderIcon,
   CardHeaderLeading,
   CardHeaderLink,
   CardHeaderTrailing,
 } from '~components/Card';
 import { Sandbox } from '~utils/storybook/Sandbox';
+import { Alert } from '~components/Alert';
 
 export default {
   title: 'Patterns/DetailedView',
@@ -162,7 +166,6 @@ const Timeline = ({ status }: { status: string }): React.ReactElement => {
 
 type KeyValueGridProps = {
   children: React.ReactNode;
-  padding?: SpacingValueType;
 };
 
 type KeyValueItemProps = {
@@ -176,24 +179,14 @@ const KeyValueItem = ({ label, children }: KeyValueItemProps): React.ReactElemen
       <Text variant="body" size="small" color="surface.text.gray.muted">
         {label}
       </Text>
-      <Box textAlign="right">{children}</Box>
+      <Box>{children}</Box>
     </>
   );
 };
 
-const KeyValueGrid = ({
-  children,
-  padding = 'spacing.4',
-}: KeyValueGridProps): React.ReactElement => {
+const KeyValueGrid = ({ children }: KeyValueGridProps): React.ReactElement => {
   return (
-    <Box
-      display="grid"
-      gridTemplateColumns="160px 1fr"
-      gap="spacing.3"
-      backgroundColor="surface.background.gray.moderate"
-      padding={padding}
-      borderRadius="large"
-    >
+    <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3">
       {children}
     </Box>
   );
@@ -475,7 +468,7 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
 
                 {/* Payment Link ID */}
                 <KeyValueItem label="Payment Link ID">
-                  <Box display="flex" gap="spacing.2" alignItems="center" justifyContent="right">
+                  <Box display="flex" gap="spacing.2" alignItems="center">
                     <Code size="small">{selectedItem?.paymentId ?? 'NA'}</Code>
                     <Link variant="button" size="small" icon={CopyIcon} />
                   </Box>
@@ -582,7 +575,7 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             <Text variant="body" size="medium">
               Payment
             </Text>
-            <Box textAlign="right">
+            <Box>
               <Amount value={dummyData.amount} alignSelf="right" currency="INR" />
             </Box>
 
@@ -600,14 +593,14 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             <Text variant="body" size="medium">
               Tax
             </Text>
-            <Box textAlign="right">
+            <Box>
               <Amount value={260} currency="INR" />
             </Box>
 
             <Text variant="body" size="medium">
               Fee
             </Text>
-            <Box textAlign="right">
+            <Box>
               <Amount value={260} currency="INR" />
             </Box>
 
@@ -618,7 +611,7 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
                 <Text variant="body" size="medium" weight="semibold">
                   Net Settlement amount
                 </Text>
-                <Box textAlign="right">
+                <Box>
                   <Amount value={2600} currency="INR" weight="semibold" />
                 </Box>
               </Box>
@@ -688,7 +681,7 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
           </Heading>
           <Timeline status="Completed" />
 
-          <Heading marginTop="spacing.6" marginBottom="spacing.3" size="small" weight="semibold">
+          <Heading marginTop="spacing.6" marginBottom="spacing.4" size="small" weight="semibold">
             Transaction Breakdown
           </Heading>
 
@@ -702,7 +695,7 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             </KeyValueItem>
 
             <KeyValueItem label="Payment Link ID">
-              <Box display="flex" gap="spacing.2" alignItems="center" justifyContent="right">
+              <Box display="flex" gap="spacing.2" alignItems="center">
                 <Code size="small">{dummyData.paymentId}</Code>
                 <Link variant="button" size="small" icon={CopyIcon} />
               </Box>
@@ -721,7 +714,7 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             </KeyValueItem>
 
             <KeyValueItem label="UTR Number">
-              <Box display="flex" gap="spacing.2" alignItems="center" justifyContent="right">
+              <Box display="flex" gap="spacing.2" alignItems="center">
                 <Code size="small">{dummyData.utr}</Code>
                 <Link variant="button" size="small" icon={CopyIcon} />
               </Box>
@@ -827,12 +820,15 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
           </Text>
         </DrawerHeader>
         <DrawerBody>
-          <Heading marginBottom="spacing.3" size="small" weight="semibold">
+          <Heading marginBottom="spacing.4" size="small" weight="semibold">
             QR Code
           </Heading>
           <Box textAlign="center">
             <QRCodeImage />
           </Box>
+          <Button marginTop="spacing.4" variant="secondary" size="small" isFullWidth>
+            Download QR Code
+          </Button>
 
           <Heading marginTop="spacing.6" size="small" weight="semibold">
             Timeline
@@ -841,7 +837,7 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
 
           <Box
             marginTop="spacing.6"
-            marginBottom="spacing.3"
+            marginBottom="spacing.4"
             display="flex"
             alignItems="center"
             justifyContent="space-between"
@@ -852,17 +848,67 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
             <Link
               variant="button"
               size="small"
-              icon={ExternalLinkIcon}
+              icon={ArrowRightIcon}
               onClick={() => setIsTransactionBreakdownOpen(true)}
             >
-              Open Details
+              View More
             </Link>
           </Box>
 
-          <Text marginTop="spacing.3" marginBottom="spacing.6">
-            Order of <Amount value={dummyData.amount} currency="INR" /> is created successfully.
-            Scan the QR Code to proceed
-          </Text>
+          <Alert
+            color="positive"
+            isDismissible={false}
+            isFullWidth
+            description={
+              <Text>
+                Order of <Amount value={dummyData.amount} isAffixSubtle={false} currency="INR" /> is
+                created successfully. Scan the QR Code to proceed
+              </Text>
+            }
+          />
+
+          <Box marginTop="spacing.4">
+            <Card elevation="none" padding="spacing.4">
+              <CardHeader>
+                <CardHeaderLeading title="UPI" prefix={<CardHeaderIcon icon={UpiIcon} />} />
+                <CardHeaderTrailing
+                  visual={<CardHeaderBadge color="positive">Active</CardHeaderBadge>}
+                />
+              </CardHeader>
+              <CardBody>
+                <KeyValueGrid>
+                  <KeyValueItem label="VPA ID">
+                    <Text weight="regular" color="surface.text.gray.normal">
+                      example@ybl
+                    </Text>
+                  </KeyValueItem>
+                  <KeyValueItem label="Transaction ID">
+                    <Text weight="regular" color="surface.text.gray.normal">
+                      fa_PEisj2647UW
+                    </Text>
+                  </KeyValueItem>
+                  <KeyValueItem label="Transaction ID">
+                    <Text weight="regular" color="surface.text.gray.normal">
+                      example@ybl
+                    </Text>
+                  </KeyValueItem>
+                </KeyValueGrid>
+                <Box
+                  marginTop="spacing.4"
+                  display="flex"
+                  justifyContent="space-between"
+                  gap="spacing.3"
+                >
+                  <Button variant="primary" icon={ArrowRightIcon} iconPosition="left" isFullWidth>
+                    Payout
+                  </Button>
+                  <Button variant="tertiary" icon={CloseIcon} iconPosition="left" isFullWidth>
+                    Mark as inactive
+                  </Button>
+                </Box>
+              </CardBody>
+            </Card>
+          </Box>
         </DrawerBody>
       </Drawer>
 
@@ -885,7 +931,7 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
             </KeyValueItem>
 
             <KeyValueItem label="Payment Link ID">
-              <Box display="flex" gap="spacing.2" alignItems="center" justifyContent="right">
+              <Box display="flex" gap="spacing.2" alignItems="center">
                 <Code size="small">{dummyData.paymentId}</Code>
                 <Link variant="button" size="small" icon={CopyIcon} />
               </Box>
@@ -904,7 +950,7 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
             </KeyValueItem>
 
             <KeyValueItem label="UTR Number">
-              <Box display="flex" gap="spacing.2" alignItems="center" justifyContent="right">
+              <Box display="flex" gap="spacing.2" alignItems="center">
                 <Code size="small">{dummyData.utr}</Code>
                 <Link variant="button" size="small" icon={CopyIcon} />
               </Box>
