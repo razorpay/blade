@@ -9,9 +9,18 @@ type DrawerProps = {
   isOpen: boolean;
 
   /**
-   * Callback function triggered when the drawer is dismissed or closed
+   * Callback function triggered when the drawer is dismissed or closed.
+   *
+   * **Note**: onDismiss gets triggered immediately on close button click. Use onUnmount if you want to perform actions after the animations are complete
    */
   onDismiss: () => void;
+
+  /**
+   * Callback function triggered when the drawer is unmounted.
+   *
+   * Unlike onDismiss, this gets called after the animations are complete
+   */
+  onUnmount?: () => void;
 
   /**
    * Show or hide overlay.

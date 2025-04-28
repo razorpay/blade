@@ -141,7 +141,6 @@ CONTRIBUTING*
 node_modules/*
 bower_components/*
 vendor/*
-packages/*
 jspm_packages/*
 .gradle/*
 target/*
