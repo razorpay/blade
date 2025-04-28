@@ -136,8 +136,8 @@ OnlyInAnimation.play = async ({ canvasElement }) => {
   // we're not adding waitFor here and kept sleep timer smaller than animation duration to ensure elements are not animating out
   await sleep(50);
   await expect(getByTestId('badge')).toHaveStyle('opacity: 0');
-  await expect(getByTestId('button').style.transform).toBe('translateY(0px)');
-  await expect(getByTestId('card').style.transform).toBe('translateY(0%)');
+  await expect(getByTestId('button').style.transform).toBe('translateY(16px)');
+  await expect(getByTestId('card').style.transform).toBe('translateY(100vh)');
 };
 
 export const OnlyOutAnimation: StoryFn = (): React.ReactElement => {
@@ -175,13 +175,13 @@ OnlyOutAnimation.play = async ({ canvasElement }) => {
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
   await sleep(50);
   await expect(getByTestId('badge')).toHaveStyle('opacity: 1');
-  await expect(getByTestId('button').style.transform).toBe('translateY(16px)');
-  await expect(getByTestId('card').style.transform).toBe('translateY(100vh)');
+  await expect(getByTestId('button').style.transform).toBe('translateY(0px)');
+  await expect(getByTestId('card').style.transform).toBe('translateY(0%)');
 
   await userEvent.click(getByRole('button', { name: 'Toggle Animation' }));
   await sleep(50);
   await waitFor(() => expect(getByTestId('badge')).toHaveStyle('opacity: 0'));
-  await waitFor(() => expect(getByTestId('button').style.transform).toBe('translateY(0px)'));
+  await waitFor(() => expect(getByTestId('button').style.transform).toBe('translateY(16px)'));
   await waitFor(() => expect(getByTestId('card').style.transform).toBe('translateY(100vh)'));
 };
 
