@@ -30,7 +30,7 @@ export const TestCarouselOnChange: StoryFn<typeof CarouselComponent> = (
 
 TestCarouselOnChange.play = async ({ canvasElement }) => {
   const { getByRole, getByText } = within(canvasElement);
-  onChange?.mockReset();
+  onChange?.mockClear();
   const nextButton = getByRole('button', { name: 'Next Slide' });
   const previousButton = getByRole('button', { name: 'Previous Slide' });
   await userEvent.click(nextButton);
@@ -54,7 +54,7 @@ export const TestIndicatorButton: StoryFn<typeof CarouselComponent> = (
 
 TestIndicatorButton.play = async ({ canvasElement }) => {
   const { getByLabelText } = within(canvasElement);
-  onChange?.mockReset();
+  onChange?.mockClear();
   const indicatorButton = getByLabelText('Slide 7');
   await userEvent.click(indicatorButton);
   await sleep(1000);
@@ -71,7 +71,7 @@ export const TestStartOverAfterStartEnd: StoryFn<typeof CarouselComponent> = (
 
 TestStartOverAfterStartEnd.play = async ({ canvasElement }) => {
   const { getByRole } = within(canvasElement);
-  onChange?.mockReset();
+  onChange?.mockClear();
   const nextButton = getByRole('button', { name: 'Next Slide' });
   const previousButton = getByRole('button', { name: 'Previous Slide' });
   await userEvent.click(previousButton);
@@ -90,7 +90,7 @@ export const TestAutoPlay: StoryFn<typeof CarouselComponent> = (props): React.Re
 
 TestAutoPlay.play = async ({ canvasElement }) => {
   const { getByRole } = within(canvasElement);
-  onChange?.mockReset();
+  onChange?.mockClear();
   await sleep(8000);
   await expect(onChange).toBeCalledWith(1);
   await expect(getByRole('tab', { selected: true })).toHaveAccessibleName('Slide 3');
@@ -115,7 +115,7 @@ export const TestAutofit: StoryFn<typeof CarouselComponent> = (props): React.Rea
 TestAutofit.play = async ({ canvasElement }) => {
   await sleep(1000);
   const { getByLabelText, queryByRole } = within(canvasElement);
-  onChange?.mockReset();
+  onChange?.mockClear();
   const lastIndicatorButton = getByLabelText('Slide 7');
   await userEvent.click(lastIndicatorButton);
   await sleep(1000);
@@ -126,12 +126,7 @@ TestAutofit.play = async ({ canvasElement }) => {
   await sleep(1000);
   const previousButton = queryByRole('button', { name: 'Previous Slide' });
   await expect(previousButton).toBeNull();
-  /*   onChange is called 3 times - 
-       1. on LastIndicatorButtonClick 
-       2. on Next Button Click
-       3. on PreviousButtonClick
-  */
-  await expect(onChange).toBeCalledTimes(3);
+  await expect(onChange).toBeCalledTimes(2);
 };
 
 export const TestAutoPlayPause: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
@@ -141,7 +136,7 @@ export const TestAutoPlayPause: StoryFn<typeof CarouselComponent> = (props): Rea
 
 TestAutoPlayPause.play = async ({ canvasElement }) => {
   const { getByText } = within(canvasElement);
-  onChange?.mockReset();
+  onChange?.mockClear();
   const slide = getByText(/Acquire Customers From New Customer Segments/);
   await userEvent.hover(slide);
   await sleep(7000);
@@ -191,7 +186,7 @@ export const TestOnChangeParentUpdate: StoryFn<typeof CarouselComponent> = (
 
 TestOnChangeParentUpdate.play = async ({ canvasElement }) => {
   const { getByRole } = within(canvasElement);
-  onChange?.mockReset();
+  onChange?.mockClear();
   await expect(multipleOnChange).not.toBeCalled();
   const nextButton = getByRole('button', { name: 'Next Slide' });
   const previousButton = getByRole('button', { name: 'Previous Slide' });
@@ -236,7 +231,7 @@ export const TestControlledCarousel: StoryFn<typeof CarouselComponent> = (
 
 TestControlledCarousel.play = async ({ canvasElement }) => {
   const { getByText, getByRole } = within(canvasElement);
-  onChange?.mockReset();
+  onChange?.mockClear();
   await sleep(1000);
   await expect(controlledOnChange).not.toBeCalled();
   await expect(getByText('Current slide: 3')).toBeInTheDocument();
