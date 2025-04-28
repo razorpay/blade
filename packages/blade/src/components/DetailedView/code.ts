@@ -260,16 +260,12 @@ const KeyValueItem = ({
 
 const KeyValueGrid = ({
   children,
-  padding = 'spacing.4',
 }: KeyValueGridProps): React.ReactElement => {
   return (
     <Box
       display="grid"
       gridTemplateColumns="160px 1fr"
       gap="spacing.3"
-      backgroundColor="surface.background.gray.moderate"
-      padding={padding}
-      borderRadius="large"
     >
       {children}
     </Box>
