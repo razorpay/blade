@@ -34,27 +34,25 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
   ({ isVisible, theme, size }) => {
-    const centerTransform = size === 'full' ? 'none' : 'translate(-50%, -50%)';
-
     const entry = keyframes`
       from {
         opacity: 0;
-        transform: ${centerTransform} scale(0.9) translateY(20px);
+        transform: translate(-50%, -50%) scale(0.9) translateY(20px);
       }
       to {
         opacity: 1;
-        transform: ${centerTransform} scale(1) translateY(0px);
+        transform: translate(-50%, -50%) scale(1) translateY(0px);
       }
     `;
 
     const exit = keyframes`
       from {
         opacity: 1;
-        transform: ${centerTransform} scale(1) translateY(0px);
+        transform: translate(-50%, -50%) scale(1) translateY(0px);
       }
       to {
         opacity: 0;
-        transform: ${centerTransform} scale(0.9) translateY(20px);
+        transform: translate(-50%, -50%) scale(0.9) translateY(20px);
       }
     `;
 
@@ -75,23 +73,24 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
         opacity: 0;
       }
     `;
+    function getAnimation(isVisible: boolean, size: NonNullable<ModalProps['size']>): Keyframes {
+      if (isVisible) {
+        return size === 'full' ? fullPageEntry : entry;
+      } else {
+        return size === 'full' ? fullPageExit : exit;
+      }
+    }
 
     return css`
       box-shadow: ${theme.elevation.highRaised};
       position: fixed;
       transform: ${size === 'full' ? 'none' : 'translate(-50%, -50%)'};
       opacity: ${isVisible ? 1 : 0};
-      animation: ${isVisible
-          ? size === 'full'
-            ? fullPageEntry
-            : entry
-          : size === 'full'
-          ? fullPageExit
-          : exit}
-        ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
-        ${isVisible
-          ? castWebType(theme.motion.easing.entrance)
-          : castWebType(theme.motion.easing.exit)};
+      animation: ${getAnimation(isVisible, size)};
+      ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
+      ${isVisible
+        ? castWebType(theme.motion.easing.entrance)
+        : castWebType(theme.motion.easing.exit)};
       ${size === 'full' &&
       css`
         top: ${makeSize(modalMargin[size])};
