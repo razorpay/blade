@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.23.0
+
+### Minor Changes
+
+- 97cf1d95: feat(Drawer): add `onUnmount` to Drawer for triggering any state changes after drawer becomes invisible
+
 ## 12.22.0
 
 ### Minor Changes
