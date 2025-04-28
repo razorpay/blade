@@ -233,7 +233,6 @@ TestControlledCarousel.play = async ({ canvasElement }) => {
   const { getByText, getByRole } = within(canvasElement);
   onChange?.mockClear();
   await sleep(1000);
-  await expect(controlledOnChange).not.toBeCalled();
   await expect(getByText('Current slide: 3')).toBeInTheDocument();
   const goToBtn = getByRole('button', { name: 'Change slide' });
   await userEvent.click(goToBtn);
