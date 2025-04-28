@@ -158,6 +158,7 @@ TestVisibleItemsOnMobile.parameters = {
 
 TestVisibleItemsOnMobile.play = async ({ canvasElement }) => {
   // on mobile regardless of the visible items prop we always show 1 item
+  onChange?.mockClear();
   const { getByRole } = within(canvasElement);
   const nextButton = getByRole('button', { name: 'Next Slide' });
   await userEvent.click(nextButton);
