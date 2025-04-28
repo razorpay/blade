@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.23.1
+
+### Patch Changes
+
+- c12197be: fix(blade): add accessibilityLabel in show more filters button in list view
+
 ## 12.23.0
 
 ### Minor Changes
