@@ -35,6 +35,6 @@ jobs:
           sudo apt-get install -y libasound2t64 libffi8 libx264-dev
       - name: Run Interaction Tests
         run: |
-          npx playwright install chromium firefox webkit --with-deps
+          npx playwright install chromium firefox --with-deps
           yarn test:react:interaction:ci
         working-directory: packages/blade
