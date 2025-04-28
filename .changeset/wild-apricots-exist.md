@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": minor
+'@razorpay/blade': minor
 ---
 
-feat(Drawer): visual changes in Drawer (add border-radius, change stacking visuals)
+feat(Drawer): add `onUnmount` to Drawer for triggering any state changes after drawer becomes invisible
