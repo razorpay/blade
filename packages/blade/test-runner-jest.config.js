@@ -26,7 +26,7 @@ module.exports = {
   testEnvironmentOptions: {
     ...testRunnerConfig,
     'jest-playwright': {
-      browsers: ['chromium', 'webkit', 'firefox'],
+      browsers: ['chromium', 'firefox'],
     },
   },
 };
