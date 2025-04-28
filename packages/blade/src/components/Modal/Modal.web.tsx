@@ -87,7 +87,7 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
       position: fixed;
       transform: ${size === 'full' ? 'none' : 'translate(-50%, -50%)'};
       opacity: ${isVisible ? 1 : 0};
-      animation: ${getAnimation(isVisible, size)};
+      animation: ${getAnimation(isVisible, size)}
       ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
       ${isVisible
         ? castWebType(theme.motion.easing.entrance)
