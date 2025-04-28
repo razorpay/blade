@@ -246,7 +246,7 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
   return (
-    <Box padding="spacing.5" overflow="auto" minHeight="400px">
+    <Box overflow="auto" minHeight="400px">
       <TableComponent
         data={data}
         selectionType="none"
@@ -545,8 +545,8 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <Box padding="spacing.5">
-      <Card width="500px">
+    <Box>
+      <Card width={{ base: '100%', m: '500px' }}>
         <CardHeader>
           <CardHeaderLeading
             prefix={<CardHeaderIcon icon={RazorpayIcon} />}
@@ -562,7 +562,7 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
                 icon={ExternalLinkIcon}
                 iconPosition="right"
               >
-                Gross settlement details
+                View Details
               </CardHeaderLink>
             }
           />
@@ -769,7 +769,7 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isTransactionBreakdownOpen, setIsTransactionBreakdownOpen] = useState(false);
   return (
-    <Box padding="spacing.5">
+    <Box>
       <Button onClick={() => setIsDrawerOpen(true)}>Show QR Details</Button>
       <Drawer
         {...args}
