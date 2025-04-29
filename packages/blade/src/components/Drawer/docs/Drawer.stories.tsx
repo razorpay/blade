@@ -6,7 +6,7 @@ import { Drawer, DrawerBody, DrawerHeader } from '../';
 import { DrawerStackingStory } from './stories';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { AnnouncementIcon, DownloadIcon, LinkIcon } from '~components/Icons';
+import { AnnouncementIcon, CheckIcon, DownloadIcon, MoreHorizontalIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Heading, Text } from '~components/Typography';
@@ -21,6 +21,7 @@ import {
   CardHeaderLeading,
 } from '~components/Card';
 import { Amount } from '~components/Amount';
+import { IconButton } from '~components/Button/IconButton';
 
 const Page = (): React.ReactElement => {
   return (
@@ -222,6 +223,7 @@ export const InitialFocus = (args: DrawerProps): React.ReactElement => {
 
 export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+
   return (
     <Box>
       <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
@@ -230,20 +232,50 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
         isOpen={args.isOpen ?? isDrawerOpen}
         onDismiss={() => setIsDrawerOpen(false)}
       >
-        <DrawerHeader>
-          <Box display="flex" alignItems="center" gap="spacing.2" marginBottom="spacing.3">
-            <Badge icon={LinkIcon} color="primary">
-              Standard Payment Link
-            </Badge>
-            <Badge color="positive">Created</Badge>
+        <DrawerHeader
+          color="positive"
+          title="Settlements"
+          trailing={
+            <IconButton
+              icon={MoreHorizontalIcon}
+              accessibilityLabel="Options"
+              onClick={() => console.log('Options Clicked')}
+              size="large"
+            />
+          }
+        >
+          <Box marginTop="spacing.6" textAlign="center">
+            <Amount
+              value={26000}
+              currency="INR"
+              size="2xlarge"
+              type="heading"
+              weight="semibold"
+              suffix="decimals"
+            />
           </Box>
-
-          <Box display="flex" flexDirection="column" gap="spacing.1">
-            <Amount weight="semibold" value={5999.0} currency="INR" size="xlarge" type="heading" />
-            <Text size="small" color="surface.text.gray.muted">
-              https://rzp.io/rzp/jepsdse
+          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
+            <Badge icon={CheckIcon} size="medium" color="positive" emphasis="intense">
+              Captured
+            </Badge>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="spacing.2"
+            marginTop="spacing.6"
+            paddingX="spacing.4"
+          >
+            <Text size="large" textAlign="center">
+              Payment was successfully captured. To be settled in your bank account by{' '}
+              <Text as="span" size="large" weight="semibold" color="feedback.text.positive.intense">
+                Jan 20, 2025
+              </Text>
             </Text>
-            <Text size="small" color="surface.text.gray.muted">
+          </Box>
+          <Box marginTop="spacing.4" textAlign="center">
+            <Text size="small" weight="medium" color="surface.text.gray.muted">
               Created on Jan 11, 2025
             </Text>
           </Box>

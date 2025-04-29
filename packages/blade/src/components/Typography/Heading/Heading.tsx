@@ -23,6 +23,7 @@ export type HeadingProps = {
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;
+  wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   StyledPropsBlade;
 
@@ -85,6 +86,7 @@ const _Heading = (
     testID,
     textAlign,
     textDecorationLine,
+    wordBreak,
     ...styledProps
   }: HeadingProps,
   ref: React.Ref<BladeElementRef>,
@@ -99,6 +101,7 @@ const _Heading = (
       ref={ref}
       textAlign={textAlign}
       textDecorationLine={textDecorationLine}
+      wordBreak={wordBreak}
       {...getStyledProps(styledProps)}
     >
       {children}
