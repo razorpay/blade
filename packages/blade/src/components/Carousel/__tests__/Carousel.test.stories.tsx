@@ -260,6 +260,5 @@ export default {
     },
     a11y: { disable: true },
     essentials: { disable: true },
-    actions: { disable: true },
   },
 };
