@@ -106,7 +106,7 @@ DatePickerSingleSelect.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
@@ -135,7 +135,7 @@ DatePickerSingleSelectCancel.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // assert inputs value
   await expect(input).toHaveValue(dateToSelect.format('DD/MM/YYYY'));
@@ -189,7 +189,7 @@ DatePickerSingleSelectControlled.play = async () => {
   await expect(input).toHaveValue(dayjs().add(5, 'day').format('DD/MM/YYYY'));
   // select another date
   const dateToSelect = dayjs().add(2, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
@@ -250,7 +250,7 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.keyboard('{ArrowLeft}');
   await userEvent.keyboard('{Enter}');
   // choose today's date
-  await userEvent.click(getByRole('button', { name: dayjs().format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: dayjs().format('D MMMM YYYY') }));
   await sleep(400);
   // press apply
   const applyButton = getByRole('button', { name: /Apply/i });
@@ -284,12 +284,12 @@ DatePickerRangeSelect.play = async () => {
   await expect(queryByText('Apply')).toBeVisible();
   // select start date
   const startDateToSelect = dayjs().add(1, 'day');
-  await userEvent.click(getByRole('button', { name: startDateToSelect.format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: startDateToSelect.format('D MMMM YYYY') }));
   // press next button
   const nextButton = getByRole('button', { name: /Next/i });
   await userEvent.click(nextButton);
   const endDateToSelect = dayjs().add(2, 'month').add(2, 'day');
-  await userEvent.click(getByRole('button', { name: endDateToSelect.format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: endDateToSelect.format('D MMMM YYYY') }));
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
   await userEvent.click(applyButton);
@@ -335,12 +335,12 @@ DatePickerRangeSelectControlled.play = async () => {
   await expect(queryByText('Apply')).toBeVisible();
   // select start date
   const startDateToSelect = dayjs().add(1, 'day');
-  await userEvent.click(getByRole('button', { name: startDateToSelect.format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: startDateToSelect.format('D MMMM YYYY') }));
   // press next button
   const nextButton = getByRole('button', { name: /Next/i });
   await userEvent.click(nextButton);
   const endDateToSelect = dayjs().add(2, 'month').add(2, 'day');
-  await userEvent.click(getByRole('button', { name: endDateToSelect.format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: endDateToSelect.format('D MMMM YYYY') }));
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
   await userEvent.click(applyButton);
@@ -401,9 +401,9 @@ DatePickerPresets.play = async () => {
 
   // change date to past 7 days manually
   await userEvent.click(
-    getByRole('button', { name: dayjs().subtract(7, 'day').format('DD MMMM YYYY') }),
+    getByRole('button', { name: dayjs().subtract(7, 'day').format('D MMMM YYYY') }),
   );
-  await userEvent.click(getByRole('button', { name: dayjs().format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: dayjs().format('D MMMM YYYY') }));
   await sleep(400);
   // assert past 3 days to be not selected anymore
   await expect(getByRole('option', { name: /Past 3 days/i })).toHaveAttribute(
@@ -552,6 +552,6 @@ export default {
     },
     a11y: { disable: true },
     essentials: { disable: true },
-    actions: { disable: true },
+    actions: { disable: false },
   },
 };
