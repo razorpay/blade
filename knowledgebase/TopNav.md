@@ -133,40 +133,30 @@ type MenuTriggerProps = {
 
 Below is a comprehensive example showing how to use the TopNav component with its subcomponents, including TabNav integration and responsive behavior:
 
-```jsx
+```tsx
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-
-// Import TopNav components
 import {
   TopNav,
   TopNavBrand,
   TopNavContent,
   TopNavActions,
-} from '@razorpay/blade/components/TopNav';
-
-// Import TabNav components
-import { TabNav, TabNavItems, TabNavItem } from '@razorpay/blade/components/TopNav/TabNav';
-
-// Import supporting components
-import { Box } from '@razorpay/blade/components/Box';
-import { SearchInput } from '@razorpay/blade/components/Input/SearchInput';
-import { Button } from '@razorpay/blade/components/Button';
-import { Tooltip } from '@razorpay/blade/components/Tooltip';
-import { Avatar } from '@razorpay/blade/components/Avatar';
-import { Text } from '@razorpay/blade/components/Typography';
-import {
+  TabNav,
+  TabNavItems,
+  TabNavItem,
+  Box,
+  SearchInput,
+  Button,
+  Tooltip,
+  Avatar,
+  Text,
   Menu,
   MenuHeader,
   MenuItem,
   MenuFooter,
   MenuOverlay,
-} from '@razorpay/blade/components/Menu';
-import { Link as BladeLink } from '@razorpay/blade/components/Link';
-import { Badge } from '@razorpay/blade/components/Badge';
-
-// Import icons
-import {
+  Link as BladeLink,
+  Badge,
   HomeIcon,
   SearchIcon,
   ActivityIcon,
@@ -177,7 +167,7 @@ import {
   RazorpayxPayrollIcon,
   ShoppingBagIcon,
   AwardIcon,
-} from '@razorpay/blade/components/Icons';
+} from '@razorpay/blade/components';
 
 // Helper function to determine if a route is active
 const isRouteActive = (currentPath, routePath, activeOnPaths = []) => {
@@ -443,7 +433,7 @@ export default AppNavigation;
 
 When using TopNav with React Router, you need to handle the active state for navigation items by checking the current location against routes:
 
-```jsx
+```tsx
 import { useLocation } from 'react-router-dom';
 
 // Inside your component
@@ -462,7 +452,7 @@ const isActive = (path) => {
 
 The TopNav component adapts to different screen sizes by showing a simplified interface on mobile:
 
-```jsx
+```tsx
 import { useBreakpoint } from '@razorpay/blade/utils';
 
 const MyTopNav = () => {

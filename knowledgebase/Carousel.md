@@ -1,10 +1,13 @@
 ## Component Name
+
 Carousel
 
 ## Description
+
 The Carousel is a component that displays a collection of items in a horizontally scrollable container. It enables users to navigate through content items like images, cards, or promotional content with pagination indicators and navigation buttons. The Carousel supports various configurations including multiple visible items, autoplay, and different navigation styles.
 
 ## TypeScript Types
+
 The following types represent the props that the Carousel component and its subcomponents accept. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -32,7 +35,16 @@ type CarouselProps = {
    * Alignment of carousel items
    * @default 'start'
    */
-  carouselItemAlignment?: 'normal' | 'stretch' | 'center' | 'end' | 'flex-end' | 'flex-start' | 'self-end' | 'self-start' | 'start';
+  carouselItemAlignment?:
+    | 'normal'
+    | 'stretch'
+    | 'center'
+    | 'end'
+    | 'flex-end'
+    | 'flex-start'
+    | 'self-end'
+    | 'self-start'
+    | 'start';
 
   /**
    * Width of carousel items
@@ -94,7 +106,8 @@ type CarouselProps = {
    * Callback when slide changes
    */
   onChange?: (index: number) => void;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for the CarouselItem component
@@ -152,7 +165,7 @@ import {
   CardHeader,
   CardHeaderLeading,
   Box,
-  Text
+  Text,
 } from '@razorpay/blade/components';
 
 const BasicCarouselExample = () => {
@@ -162,31 +175,31 @@ const BasicCarouselExample = () => {
       title: 'Increased Conversion Rate',
       quote: 'We saw a 35% increase in conversion after integrating Razorpay Checkout.',
       author: 'Priya Sharma',
-      company: 'TechStart'
+      company: 'TechStart',
     },
     {
       id: '2',
       title: 'Seamless Integration',
       quote: 'The API was easy to integrate and the dashboard provides great insights.',
       author: 'Rahul Gupta',
-      company: 'Shopify Plus'
+      company: 'Shopify Plus',
     },
     {
       id: '3',
       title: 'Excellent Customer Support',
       quote: 'Whenever we faced any issues, the support team was quick to respond.',
       author: 'Anita Desai',
-      company: 'StyleBazaar'
+      company: 'StyleBazaar',
     },
     {
       id: '4',
       title: 'Simplified Refunds',
       quote: 'Processing refunds has become a breeze with the dashboard.',
       author: 'Vikram Singh',
-      company: 'TravelEasy'
-    }
+      company: 'TravelEasy',
+    },
   ];
-  
+
   return (
     <Box padding="spacing.5">
       <Carousel
@@ -202,7 +215,7 @@ const BasicCarouselExample = () => {
           <CarouselItem key={testimonial.id}>
             <Card height="100%" padding="spacing.4" elevation="lowRaised">
               <CardHeader>
-                <CardHeaderLeading 
+                <CardHeaderLeading
                   title={testimonial.title}
                   subtitle={`${testimonial.author}, ${testimonial.company}`}
                 />
@@ -234,7 +247,7 @@ import {
   CardBody,
   Box,
   Text,
-  Heading
+  Heading,
 } from '@razorpay/blade/components';
 
 const AutoPlayCarouselExample = () => {
@@ -245,7 +258,7 @@ const AutoPlayCarouselExample = () => {
       quote: 'We saw a 35% increase in conversion after integrating Razorpay Checkout.',
       author: 'Priya Sharma',
       role: 'Product Manager',
-      company: 'TechStart'
+      company: 'TechStart',
     },
     {
       id: '2',
@@ -253,7 +266,7 @@ const AutoPlayCarouselExample = () => {
       quote: 'The API was easy to integrate and the dashboard provides great insights.',
       author: 'Rahul Gupta',
       role: 'CTO',
-      company: 'Shopify Plus'
+      company: 'Shopify Plus',
     },
     {
       id: '3',
@@ -261,16 +274,12 @@ const AutoPlayCarouselExample = () => {
       quote: 'Whenever we faced any issues, the support team was quick to respond.',
       author: 'Anita Desai',
       role: 'Engineering Lead',
-      company: 'StyleBazaar'
-    }
+      company: 'StyleBazaar',
+    },
   ];
-  
+
   return (
-    <Box 
-      backgroundColor="surface.background.gray.subtle" 
-      padding="spacing.5" 
-      borderRadius="medium"
-    >
+    <Box backgroundColor="surface.background.gray.subtle" padding="spacing.5" borderRadius="medium">
       <Carousel
         accessibilityLabel="Featured testimonials"
         autoPlay={true}
@@ -286,12 +295,23 @@ const AutoPlayCarouselExample = () => {
       >
         {testimonials.map((testimonial) => (
           <CarouselItem key={testimonial.id}>
-            <Card height="100%" padding="spacing.5" elevation="raised" backgroundColor="surface.background.white.normal">
+            <Card
+              height="100%"
+              padding="spacing.5"
+              elevation="raised"
+              backgroundColor="surface.background.white.normal"
+            >
               <CardBody>
-                <Heading size="medium" marginBottom="spacing.3">{testimonial.title}</Heading>
-                <Text marginBottom="spacing.4" size="large">"{testimonial.quote}"</Text>
+                <Heading size="medium" marginBottom="spacing.3">
+                  {testimonial.title}
+                </Heading>
+                <Text marginBottom="spacing.4" size="large">
+                  "{testimonial.quote}"
+                </Text>
                 <Text weight="semibold">{testimonial.author}</Text>
-                <Text size="small">{testimonial.role}, {testimonial.company}</Text>
+                <Text size="small">
+                  {testimonial.role}, {testimonial.company}
+                </Text>
               </CardBody>
             </Card>
           </CarouselItem>
@@ -319,16 +339,14 @@ import {
   Box,
   Text,
   Heading,
-  Button
-} from '@razorpay/blade/components';
-import {
+  Button,
   ChevronLeftIcon,
-  ChevronRightIcon
-} from '@razorpay/blade/components/Icons';
+  ChevronRightIcon,
+} from '@razorpay/blade/components';
 
 const ControlledCarouselExample = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  
+
   const testimonials = [
     {
       id: '1',
@@ -336,7 +354,7 @@ const ControlledCarouselExample = () => {
       quote: 'We saw a 35% increase in conversion after integrating Razorpay Checkout.',
       author: 'Priya Sharma',
       role: 'Product Manager',
-      company: 'TechStart'
+      company: 'TechStart',
     },
     {
       id: '2',
@@ -344,7 +362,7 @@ const ControlledCarouselExample = () => {
       quote: 'The API was easy to integrate and the dashboard provides great insights.',
       author: 'Rahul Gupta',
       role: 'CTO',
-      company: 'Shopify Plus'
+      company: 'Shopify Plus',
     },
     {
       id: '3',
@@ -352,23 +370,24 @@ const ControlledCarouselExample = () => {
       quote: 'Whenever we faced any issues, the support team was quick to respond.',
       author: 'Anita Desai',
       role: 'Engineering Lead',
-      company: 'StyleBazaar'
-    }
+      company: 'StyleBazaar',
+    },
   ];
-  
+
   return (
-    <Box 
-      backgroundColor="surface.background.gray.normal"
-      padding="spacing.5"
-      borderRadius="medium"
-    >
-      <Box display="flex" justifyContent="space-between" alignItems="center" marginBottom="spacing.4">
+    <Box backgroundColor="surface.background.gray.normal" padding="spacing.5" borderRadius="medium">
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        marginBottom="spacing.4"
+      >
         <Heading size="medium">Customer Stories</Heading>
         <Box display="flex" gap="spacing.3">
           <Button
             variant="secondary"
             icon={ChevronLeftIcon}
-            onClick={() => setActiveSlide(prev => Math.max(0, prev - 1))}
+            onClick={() => setActiveSlide((prev) => Math.max(0, prev - 1))}
             isDisabled={activeSlide === 0}
           >
             Previous
@@ -377,14 +396,14 @@ const ControlledCarouselExample = () => {
             variant="secondary"
             icon={ChevronRightIcon}
             iconPosition="right"
-            onClick={() => setActiveSlide(prev => Math.min(testimonials.length - 1, prev + 1))}
+            onClick={() => setActiveSlide((prev) => Math.min(testimonials.length - 1, prev + 1))}
             isDisabled={activeSlide === testimonials.length - 1}
           >
             Next
           </Button>
         </Box>
       </Box>
-      
+
       <Carousel
         accessibilityLabel="Controlled testimonial carousel"
         activeSlide={activeSlide}
@@ -398,13 +417,21 @@ const ControlledCarouselExample = () => {
           <CarouselItem key={testimonial.id}>
             <Card height="100%" padding="spacing.5" elevation="raised">
               <CardBody>
-                <Heading size="medium" marginBottom="spacing.3">{testimonial.title}</Heading>
-                <Text marginBottom="spacing.4" size="large">"{testimonial.quote}"</Text>
+                <Heading size="medium" marginBottom="spacing.3">
+                  {testimonial.title}
+                </Heading>
+                <Text marginBottom="spacing.4" size="large">
+                  "{testimonial.quote}"
+                </Text>
                 <Text weight="semibold">{testimonial.author}</Text>
-                <Text size="small">{testimonial.role}, {testimonial.company}</Text>
+                <Text size="small">
+                  {testimonial.role}, {testimonial.company}
+                </Text>
               </CardBody>
               <CardFooter marginTop="spacing.4">
-                <Text size="small" color="text.subtle">Testimonial {index + 1} of {testimonials.length}</Text>
+                <Text size="small" color="text.subtle">
+                  Testimonial {index + 1} of {testimonials.length}
+                </Text>
               </CardFooter>
             </Card>
           </CarouselItem>
@@ -430,37 +457,37 @@ import {
   Text,
   Heading,
   Card,
-  CardBody
-} from '@razorpay/blade/components';
-import {
+  CardBody,
   CreditCardIcon,
   UpiIcon,
   WalletIcon,
   NetbankingIcon,
   EmiIcon,
-  PayLaterIcon
-} from '@razorpay/blade/components/Icons';
+  PayLaterIcon,
+} from '@razorpay/blade/components';
 
 const MultiItemSelectableCarouselExample = () => {
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
-  
+
   const paymentMethods = [
     { id: 'card', name: 'Credit/Debit Card', icon: CreditCardIcon },
     { id: 'upi', name: 'UPI', icon: UpiIcon },
     { id: 'wallet', name: 'Wallet', icon: WalletIcon },
     { id: 'netbanking', name: 'Netbanking', icon: NetbankingIcon },
     { id: 'emi', name: 'EMI', icon: EmiIcon },
-    { id: 'paylater', name: 'Pay Later', icon: PayLaterIcon }
+    { id: 'paylater', name: 'Pay Later', icon: PayLaterIcon },
   ];
-  
+
   const handleSelect = (id: string) => {
     setSelectedPayment(id === selectedPayment ? null : id);
   };
-  
+
   return (
     <Box padding="spacing.5">
-      <Heading size="medium" marginBottom="spacing.5">Payment Methods</Heading>
-      
+      <Heading size="medium" marginBottom="spacing.5">
+        Payment Methods
+      </Heading>
+
       <Carousel
         accessibilityLabel="Payment methods carousel"
         visibleItems={{ base: 1, s: 2, m: 3, l: 4 }}
@@ -474,33 +501,40 @@ const MultiItemSelectableCarouselExample = () => {
         {paymentMethods.map((method) => {
           const isSelected = selectedPayment === method.id;
           const Icon = method.icon;
-          
+
           return (
             <CarouselItem key={method.id}>
               <Card
                 height="100%"
                 padding="spacing.4"
-                elevation={isSelected ? "raised" : "lowRaised"}
-                backgroundColor={isSelected ? "surface.background.primary.subtle" : "surface.background.white.normal"}
+                elevation={isSelected ? 'raised' : 'lowRaised'}
+                backgroundColor={
+                  isSelected
+                    ? 'surface.background.primary.subtle'
+                    : 'surface.background.white.normal'
+                }
                 borderWidth="thin"
                 borderStyle="solid"
-                borderColor={isSelected ? "border.primary" : "border.secondary"}
+                borderColor={isSelected ? 'border.primary' : 'border.secondary'}
                 cursor="pointer"
                 onClick={() => handleSelect(method.id)}
               >
                 <CardBody>
-                  <Box 
-                    display="flex" 
-                    flexDirection="column" 
-                    alignItems="center" 
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
                     justifyContent="center"
                     padding="spacing.3"
                     gap="spacing.3"
                   >
-                    <Icon size="large" color={isSelected ? "interactive.icon.primary.normal" : undefined} />
-                    <Text 
-                      weight={isSelected ? "semibold" : "normal"}
-                      color={isSelected ? "interactive.text.primary.normal" : undefined}
+                    <Icon
+                      size="large"
+                      color={isSelected ? 'interactive.icon.primary.normal' : undefined}
+                    />
+                    <Text
+                      weight={isSelected ? 'semibold' : 'normal'}
+                      color={isSelected ? 'interactive.text.primary.normal' : undefined}
                     >
                       {method.name}
                     </Text>
@@ -511,15 +545,17 @@ const MultiItemSelectableCarouselExample = () => {
           );
         })}
       </Carousel>
-      
+
       {selectedPayment && (
-        <Box 
-          padding="spacing.4" 
-          backgroundColor="surface.background.gray.subtle" 
+        <Box
+          padding="spacing.4"
+          backgroundColor="surface.background.gray.subtle"
           borderRadius="medium"
           marginTop="spacing.4"
         >
-          <Text>Selected payment method: {paymentMethods.find(m => m.id === selectedPayment)?.name}</Text>
+          <Text>
+            Selected payment method: {paymentMethods.find((m) => m.id === selectedPayment)?.name}
+          </Text>
         </Box>
       )}
     </Box>
@@ -535,14 +571,7 @@ This example demonstrates an auto-playing carousel with custom styling and respo
 
 ```tsx
 import React from 'react';
-import {
-  Carousel,
-  CarouselItem,
-  Box,
-  Text,
-  Card,
-  CardBody
-} from '@razorpay/blade/components';
+import { Carousel, CarouselItem, Box, Text, Card, CardBody } from '@razorpay/blade/components';
 
 const AutoPlayProductCarouselExample = () => {
   const products = [
@@ -550,9 +579,9 @@ const AutoPlayProductCarouselExample = () => {
     { id: 2, name: 'Enterprise Solution', description: 'For large organizations' },
     { id: 3, name: 'Starter Package', description: 'Perfect for small businesses' },
     { id: 4, name: 'Custom Solution', description: 'Tailored to your needs' },
-    { id: 5, name: 'Mobile Package', description: 'Optimize for mobile payments' }
+    { id: 5, name: 'Mobile Package', description: 'Optimize for mobile payments' },
   ];
-  
+
   return (
     <Box padding="spacing.5">
       <Carousel
@@ -566,19 +595,25 @@ const AutoPlayProductCarouselExample = () => {
       >
         {products.map((product, index) => (
           <CarouselItem key={product.id}>
-            <Card 
-              height="180px" 
-              backgroundColor={index % 2 === 0 ? "surface.background.primary.subtle" : "surface.background.gray.normal"}
+            <Card
+              height="180px"
+              backgroundColor={
+                index % 2 === 0
+                  ? 'surface.background.primary.subtle'
+                  : 'surface.background.gray.normal'
+              }
             >
               <CardBody>
-                <Box 
-                  display="flex" 
-                  flexDirection="column" 
-                  justifyContent="center" 
-                  alignItems="center" 
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
                   height="100%"
                 >
-                  <Text weight="semibold" size="large">{product.name}</Text>
+                  <Text weight="semibold" size="large">
+                    {product.name}
+                  </Text>
                   <Text marginTop="spacing.2">{product.description}</Text>
                 </Box>
               </CardBody>
@@ -591,4 +626,4 @@ const AutoPlayProductCarouselExample = () => {
 };
 
 export default AutoPlayProductCarouselExample;
-``` 
+```

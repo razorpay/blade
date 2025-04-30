@@ -1,10 +1,13 @@
 ## Component Name
+
 Elevate
 
 ## Description
+
 Elevate is a motion component that animates the CSS `box-shadow` property to highlight elements. It enables smooth visual elevation transitions through hover, focus, or programmatic control. Elevate is designed to enhance interactive feedback and visual hierarchy in block-level components like Cards and Boxes, providing subtle depth cues to improve user experience.
 
 ## TypeScript Types
+
 The following types represent the props that the Elevate component accepts. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -28,16 +31,13 @@ type ElevateProps = {
    * @default []
    */
   motionTriggers?: MotionTrigger[];
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Motion triggers for animation components
  */
-type MotionTrigger = 
-  | 'hover' 
-  | 'focus' 
-  | 'press' 
-  | 'on-animate-interactions';
+type MotionTrigger = 'hover' | 'focus' | 'press' | 'on-animate-interactions';
 
 /**
  * Type for test ID
@@ -65,24 +65,19 @@ This example shows how to use multiple triggers (hover and focus) to improve acc
 
 ```tsx
 import React from 'react';
-import { 
-  Elevate, 
-  Card, 
-  CardBody, 
-  Heading, 
-  Text,
-  Button
-} from '@razorpay/blade/components';
+import { Elevate, Card, CardBody, Heading, Text, Button } from '@razorpay/blade/components';
 
 const AccessibleElevateExample = () => {
   return (
     <Elevate motionTriggers={['hover', 'focus']}>
       <Card width="300px" elevation="none">
         <CardBody>
-          <Heading size="small" marginBottom="spacing.2">Multiple Triggers</Heading>
+          <Heading size="small" marginBottom="spacing.2">
+            Multiple Triggers
+          </Heading>
           <Text marginBottom="spacing.4">
-            This card elevates on both hover and focus, improving accessibility.
-            Try focusing the button below to see the elevation effect.
+            This card elevates on both hover and focus, improving accessibility. Try focusing the
+            button below to see the elevation effect.
           </Text>
           <Button>Focus me</Button>
         </CardBody>
@@ -100,32 +95,23 @@ This example demonstrates how to control the elevation state programmatically us
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Elevate, 
-  Card, 
-  CardBody, 
-  Box,
-  Button,
-  Heading, 
-  Text 
-} from '@razorpay/blade/components';
+import { Elevate, Card, CardBody, Box, Button, Heading, Text } from '@razorpay/blade/components';
 
 const ControlledElevateExample = () => {
   const [isHighlighted, setIsHighlighted] = useState(false);
-  
+
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
-      <Button 
-        onClick={() => setIsHighlighted(!isHighlighted)}
-        variant="secondary"
-      >
+      <Button onClick={() => setIsHighlighted(!isHighlighted)} variant="secondary">
         {isHighlighted ? 'Remove Elevation' : 'Add Elevation'}
       </Button>
-      
+
       <Elevate isHighlighted={isHighlighted}>
         <Card width="300px" elevation="none">
           <CardBody>
-            <Heading size="small" marginBottom="spacing.2">Controlled Elevation</Heading>
+            <Heading size="small" marginBottom="spacing.2">
+              Controlled Elevation
+            </Heading>
             <Text>
               This card's elevation is controlled programmatically through the isHighlighted prop.
               Click the button above to toggle the elevation.
@@ -146,18 +132,18 @@ This example shows how to combine Elevate with other motion components for coord
 
 ```tsx
 import React from 'react';
-import { 
-  Elevate, 
-  Card, 
-  CardBody, 
-  Box, 
-  Button, 
-  Heading, 
+import {
+  Elevate,
+  Card,
+  CardBody,
+  Box,
+  Button,
+  Heading,
   Text,
   AnimateInteractions,
-  Move
+  Move,
+  ExternalLinkIcon,
 } from '@razorpay/blade/components';
-import { ExternalLinkIcon } from '@razorpay/blade/icons';
 
 const CoordinatedAnimationExample = () => {
   return (
@@ -179,19 +165,14 @@ const CoordinatedAnimationExample = () => {
                   Accept payments without coding on a custom branded store
                 </Heading>
                 <Text>
-                  Hover over this card to see coordinated animations. While the card elevates,
-                  the button container below moves into view - demonstrating how multiple
-                  motion components can work together.
+                  Hover over this card to see coordinated animations. While the card elevates, the
+                  button container below moves into view - demonstrating how multiple motion
+                  components can work together.
                 </Text>
               </Box>
 
               <Move motionTriggers={['on-animate-interactions']}>
-                <Box
-                  display="flex"
-                  gap="spacing.4"
-                  justifyContent="flex-end"
-                  padding="spacing.6"
-                >
+                <Box display="flex" gap="spacing.4" justifyContent="flex-end" padding="spacing.6">
                   <Button variant="secondary" icon={ExternalLinkIcon} iconPosition="right">
                     Know More
                   </Button>
@@ -206,4 +187,5 @@ const CoordinatedAnimationExample = () => {
   );
 };
 
-export default CoordinatedAnimationExample; 
+export default CoordinatedAnimationExample;
+```

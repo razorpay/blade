@@ -1,12 +1,15 @@
 # Accordion
 
 ## Component Name
+
 Accordion
 
 ## Description
+
 An accordion is used to allow users to toggle between different content sections in a compact vertical stack. It provides an expandable and collapsible interface to show/hide content, improving space utilization and organizing related information in a hierarchical structure.
 
 ## TypeScript Types
+
 Below are the component props types that Accordion and its subcomponents accept. These types define all the possible properties and configurations you can use when implementing Accordion components in your application.
 
 ```typescript
@@ -103,7 +106,8 @@ type AccordionItemProps = {
 type AccordionItemHeaderProps = Pick<
   BaseHeaderProps,
   'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
-> & DataAnalyticsAttribute;
+> &
+  DataAnalyticsAttribute;
 
 // AccordionItemBody props
 type AccordionItemBodyProps = {
@@ -114,6 +118,7 @@ type AccordionItemBodyProps = {
 ## Examples
 
 ### Basic Accordion
+
 A simple accordion with default transparent variant and expandable items.
 
 ```tsx
@@ -121,7 +126,7 @@ import {
   Accordion,
   AccordionItem,
   AccordionItemHeader,
-  AccordionItemBody
+  AccordionItemBody,
 } from '@razorpay/blade/components';
 
 const BasicAccordionExample = () => {
@@ -154,6 +159,7 @@ const BasicAccordionExample = () => {
 ```
 
 ### Accordion with Visual Variations
+
 This example shows different visual variants of Accordion, including numbered prefixes, size options, and width customization.
 
 ```tsx
@@ -162,16 +168,16 @@ import {
   AccordionItem,
   AccordionItemHeader,
   AccordionItemBody,
-  Box
+  Box,
 } from '@razorpay/blade/components';
 
 const AccordionVariantsExample = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.6">
       {/* Accordion with numbered prefixes */}
-      <Accordion 
-        showNumberPrefix={true} 
-        variant="transparent" 
+      <Accordion
+        showNumberPrefix={true}
+        variant="transparent"
         size="large"
         maxWidth={{ base: '100%', s: '480px' }}
       >
@@ -184,12 +190,9 @@ const AccordionVariantsExample = () => {
           <AccordionItemBody>Content for second item</AccordionItemBody>
         </AccordionItem>
       </Accordion>
-      
+
       {/* Filled variant with medium size */}
-      <Accordion 
-        variant="filled"
-        size="medium"
-      >
+      <Accordion variant="filled" size="medium">
         <AccordionItem>
           <AccordionItemHeader title="Filled variant medium size" />
           <AccordionItemBody>This accordion uses filled variant with medium size</AccordionItemBody>
@@ -205,6 +208,7 @@ const AccordionVariantsExample = () => {
 ```
 
 ### Accordion with Rich Header Features
+
 This example shows an accordion with various header features including icons, badges, and interactive elements.
 
 ```tsx
@@ -214,26 +218,22 @@ import {
   AccordionItemHeader,
   AccordionItemBody,
   Badge,
-  Link
+  Link,
 } from '@razorpay/blade/components';
-import {
-  RoutesIcon,
-  QRCodeIcon,
-  SubscriptionsIcon
-} from '@razorpay/blade/components/Icons';
+import { RoutesIcon, QRCodeIcon, SubscriptionsIcon } from '@razorpay/blade/components';
 
 const RichHeaderAccordionExample = () => {
   return (
     <Accordion>
       <AccordionItem>
-        <AccordionItemHeader 
+        <AccordionItemHeader
           leading={<RoutesIcon size="large" />}
-          title="How can I setup Route?" 
-          subtitle="Subtitle for route setup" 
+          title="How can I setup Route?"
+          subtitle="Subtitle for route setup"
           titleSuffix={<Badge>New</Badge>}
           trailing={
-            <Link 
-              variant="button" 
+            <Link
+              variant="button"
               onClick={(e) => {
                 e.stopPropagation();
               }}
@@ -262,9 +262,7 @@ const RichHeaderAccordionExample = () => {
           title="How can I setup Subscriptions?"
           subtitle="This item is disabled"
         />
-        <AccordionItemBody>
-          This item is disabled and cannot be expanded.
-        </AccordionItemBody>
+        <AccordionItemBody>This item is disabled and cannot be expanded.</AccordionItemBody>
       </AccordionItem>
     </Accordion>
   );
@@ -272,6 +270,7 @@ const RichHeaderAccordionExample = () => {
 ```
 
 ### Controlled Accordion
+
 An example of a controlled accordion where expansion state is managed externally.
 
 ```tsx
@@ -282,17 +281,14 @@ import {
   AccordionItemHeader,
   AccordionItemBody,
   Box,
-  Button
+  Button,
 } from '@razorpay/blade/components';
-import {
-  AnnouncementIcon,
-  RoutesIcon
-} from '@razorpay/blade/components/Icons';
+import { AnnouncementIcon, RoutesIcon } from '@razorpay/blade/components';
 
 const ControlledAccordionExample = () => {
   // State for controlled accordion
   const [expandedIndex, setExpandedIndex] = useState(-1);
-  
+
   return (
     <Box>
       <Box
@@ -306,7 +302,7 @@ const ControlledAccordionExample = () => {
         <Button onClick={() => setExpandedIndex(1)}>Expand Second</Button>
         <Button onClick={() => setExpandedIndex(-1)}>Collapse All</Button>
       </Box>
-      
+
       <Accordion
         expandedIndex={expandedIndex}
         onExpandChange={({ expandedIndex }) => setExpandedIndex(expandedIndex)}
@@ -317,9 +313,7 @@ const ControlledAccordionExample = () => {
             title="Controlled Item 1"
             subtitle="This is controlled by external state"
           />
-          <AccordionItemBody>
-            Content for controlled item 1
-          </AccordionItemBody>
+          <AccordionItemBody>Content for controlled item 1</AccordionItemBody>
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeader
@@ -327,9 +321,7 @@ const ControlledAccordionExample = () => {
             title="Controlled Item 2"
             subtitle="This is also controlled by external state"
           />
-          <AccordionItemBody>
-            Content for controlled item 2
-          </AccordionItemBody>
+          <AccordionItemBody>Content for controlled item 2</AccordionItemBody>
         </AccordionItem>
       </Accordion>
     </Box>
@@ -338,6 +330,7 @@ const ControlledAccordionExample = () => {
 ```
 
 ### Accordion with Custom Content
+
 This example shows how to use custom content in both header and body of accordion items.
 
 ```tsx
@@ -351,26 +344,30 @@ import {
   Indicator,
   Alert,
   TextInput,
-  Button
+  Button,
+  UserIcon,
 } from '@razorpay/blade/components';
-import { UserIcon } from '@razorpay/blade/components/Icons';
 import { useState } from 'react';
 
 const CustomContentAccordionExample = () => {
   const [isAlertVisible, setIsAlertVisible] = useState(true);
-  
+
   return (
     <Accordion maxWidth={{ base: '100%', s: '480px' }}>
       {/* Custom header content */}
       <AccordionItem>
         <AccordionItemHeader>
           <Box>
-            <Text size="large" color="surface.text.gray.muted">#8218851</Text>
+            <Text size="large" color="surface.text.gray.muted">
+              #8218851
+            </Text>
             <Text marginY="spacing.2" size="large" weight="semibold">
               Transactions and settlement related
             </Text>
             <Box display="flex" flexDirection="row" gap="spacing.3">
-              <Indicator size="medium" color="information">In Progress</Indicator>
+              <Indicator size="medium" color="information">
+                In Progress
+              </Indicator>
               <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.2">
                 <UserIcon size="medium" color="surface.icon.gray.subtle" />
                 <Text size="medium" color="surface.text.gray.subtle">
@@ -385,7 +382,7 @@ const CustomContentAccordionExample = () => {
           <Button marginTop="spacing.4">Submit</Button>
         </AccordionItemBody>
       </AccordionItem>
-      
+
       {/* Custom body content with conditional rendering */}
       <AccordionItem>
         <AccordionItemHeader title="Item with interactive body content" />
@@ -393,7 +390,7 @@ const CustomContentAccordionExample = () => {
           <Text color="surface.text.gray.subtle" marginBottom="spacing.4">
             You can use Razorpay services as described in the documentation.
           </Text>
-          
+
           {isAlertVisible && (
             <Alert
               title="Custom slot"
@@ -409,6 +406,7 @@ const CustomContentAccordionExample = () => {
 ```
 
 ### Payment Method Selection Example
+
 A real-world example showing how to use Accordion for payment method selection.
 
 ```tsx
@@ -420,7 +418,7 @@ import {
   Box,
   TextInput,
   Button,
-  Badge
+  Badge,
 } from '@razorpay/blade/components';
 
 const PaymentMethodsAccordion = () => {
@@ -428,53 +426,48 @@ const PaymentMethodsAccordion = () => {
     <Box maxWidth={{ base: '100%', s: '480px' }}>
       <Accordion variant="filled" defaultExpandedIndex={0}>
         <AccordionItem>
-          <AccordionItemHeader 
-            title="UPI Payment" 
-            subtitle="Pay directly from your bank account"
-          />
+          <AccordionItemHeader title="UPI Payment" subtitle="Pay directly from your bank account" />
           <AccordionItemBody>
             <TextInput label="UPI ID" placeholder="username@upi" />
-            <Button marginTop="spacing.4" isFullWidth>Pay Now</Button>
+            <Button marginTop="spacing.4" isFullWidth>
+              Pay Now
+            </Button>
           </AccordionItemBody>
         </AccordionItem>
-        
+
         <AccordionItem>
-          <AccordionItemHeader 
-            title="Credit Card" 
+          <AccordionItemHeader
+            title="Credit Card"
             subtitle="Secure card payment"
             titleSuffix={<Badge color="positive">No Extra Charge</Badge>}
           />
           <AccordionItemBody>
             <TextInput label="Card Number" placeholder="1234 5678 9012 3456" />
-            <Box 
-              display="flex" 
-              flexDirection="row" 
-              gap="spacing.4" 
-              marginTop="spacing.4"
-            >
+            <Box display="flex" flexDirection="row" gap="spacing.4" marginTop="spacing.4">
               <TextInput label="Expiry" placeholder="MM/YY" />
               <TextInput label="CVV" placeholder="123" />
             </Box>
-            <Button marginTop="spacing.4" isFullWidth>Pay Now</Button>
+            <Button marginTop="spacing.4" isFullWidth>
+              Pay Now
+            </Button>
           </AccordionItemBody>
         </AccordionItem>
-        
+
         <AccordionItem>
-          <AccordionItemHeader 
-            title="Net Banking" 
+          <AccordionItemHeader
+            title="Net Banking"
             subtitle="Pay using your bank account"
             titleSuffix={<Badge color="positive">5% Cashback</Badge>}
           />
           <AccordionItemBody>
-            <TextInput 
-              label="Select Bank" 
-              placeholder="Choose your bank"
-            />
-            <Button marginTop="spacing.4" isFullWidth>Continue</Button>
+            <TextInput label="Select Bank" placeholder="Choose your bank" />
+            <Button marginTop="spacing.4" isFullWidth>
+              Continue
+            </Button>
           </AccordionItemBody>
         </AccordionItem>
       </Accordion>
     </Box>
   );
 };
-``` 
+```

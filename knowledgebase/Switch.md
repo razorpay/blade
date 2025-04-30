@@ -170,7 +170,7 @@ This example demonstrates using multiple switches in a settings-like interface:
 ```jsx
 import React from 'react';
 import { Switch, Box, Text, Card, CardBody } from '@razorpay/blade/components';
-import { MapPinIcon, GlobeIcon, WifiIcon } from '@razorpay/blade/components/Icons';
+import { MapPinIcon, GlobeIcon, WifiIcon } from '@razorpay/blade/components';
 
 function SwitchFormExample() {
   return (
@@ -253,13 +253,13 @@ export default SwitchFormExample;
 
 This example shows how to use a ref with the Switch component:
 
-```jsx
+```tsx
 import React, { useRef } from 'react';
 import { Switch, Box, Button } from '@razorpay/blade/components';
-import type { BladeElementRef } from '@razorpay/blade/utils/types';
+import type { BladeElementRef } from '@razorpay/blade/utils';
 
 function SwitchWithRef() {
-  const switchRef = useRef < BladeElementRef > null;
+  const switchRef = useRef<BladeElementRef>(null);
 
   return (
     <Box display="flex" alignItems="center" gap="spacing.3">

@@ -4,29 +4,25 @@ VisuallyHidden
 
 ## Description
 
-The VisuallyHidden component is an accessibility-focused utility that makes content invisible to sighted users while keeping it accessible to screen readers. It's particularly useful for providing additional context to screen reader users without affecting the visual layout. This component implements the screen reader class technique from WebAIM, ensuring content is properly hidden visually but remains accessible to assistive technologies.
+The VisuallyHidden component makes content hidden from sighted users but available for screen reader users. It allows you to provide additional context for assistive technologies without visually displaying that information. This component is essential for improving accessibility in your application by providing information exclusively for screen readers.
 
 ## TypeScript Types
 
-The following types represent the props that the VisuallyHidden component accepts. These types allow you to properly configure the component for accessibility purposes.
+These are the props that the VisuallyHidden component accepts. When using the VisuallyHidden component, you'll need to provide these props to configure its behavior:
 
 ```typescript
-/**
- * Props for the VisuallyHidden component
- */
-export type VisuallyHiddenProps = {
+type VisuallyHiddenProps = {
   /**
-   * The content to be hidden visually but available to screen readers
+   * Content to be hidden visually but available to screen readers
    */
   children: React.ReactNode;
 } & TestID;
 
-/**
- * TestID type for component testing
- */
 type TestID = {
   /**
-   * ID for testing purposes
+   * Test id that can be used to select element in testing environments
+   *
+   * Checkout https://testing-library.com/docs/queries/bytestid/
    */
   testID?: string;
 };
@@ -34,69 +30,36 @@ type TestID = {
 
 ## Example
 
-Here's a comprehensive example demonstrating various use cases of the VisuallyHidden component:
+### Basic Usage
 
-### Accessibility-Enhanced Form Elements
-
-This example shows how to use VisuallyHidden to enhance form accessibility by providing additional context to screen reader users while maintaining a clean visual interface.
+This example demonstrates how to use the VisuallyHidden component to create accessible controls with hidden labels that are only available to screen readers.
 
 ```tsx
-import { VisuallyHidden, Box, Text, Button, Checkbox, TextInput } from '@razorpay/blade/components';
-import { InfoIcon } from '@razorpay/blade/components/Icons';
+import { VisuallyHidden, Checkbox, Box, Text } from '@razorpay/blade/components';
 
-const AccessibleFormExample = () => {
+function AccessibleCheckboxExample() {
   return (
-    <Box padding="spacing.5">
-      {/* Using VisuallyHidden with Checkbox for better labeling */}
-      <Box marginBottom="spacing.4">
-        <Checkbox>
-          <VisuallyHidden>Accept terms and conditions for account creation</VisuallyHidden>I accept
-          the terms
+    <Box padding="spacing.4">
+      <Text marginBottom="spacing.3">
+        The checkbox below has a label that is only visible to screen readers.
+      </Text>
+
+      <Box display="flex" alignItems="center" gap="spacing.3">
+        <Checkbox id="darkMode">
+          <VisuallyHidden>Toggle dark mode</VisuallyHidden>
         </Checkbox>
+        <Text>Enable dark mode</Text>
       </Box>
 
-      {/* Using VisuallyHidden to provide additional context for input fields */}
-      <Box marginBottom="spacing.4">
-        <Text>Card number</Text>
-        <TextInput
-          type="text"
-          placeholder="1234 5678 9012 3456"
-          aria-label="Enter 16-digit card number"
-        />
-        <VisuallyHidden testID="card-format-info">
-          Enter your 16-digit card number without spaces. For example: 1234567890123456
-        </VisuallyHidden>
-      </Box>
-
-      {/* Using VisuallyHidden with icon buttons for proper accessibility */}
-      <Box display="flex" alignItems="center" gap="spacing.2">
-        <Button variant="tertiary" icon={InfoIcon}>
-          <VisuallyHidden>View detailed payment information and processing fees</VisuallyHidden>
-        </Button>
-        <Text>Payment Information</Text>
-      </Box>
-
-      {/* Using VisuallyHidden to provide status updates */}
-      <Box marginTop="spacing.4">
-        <Button variant="primary">
-          Submit Payment
-          <VisuallyHidden testID="payment-status">
-            This will process your payment and cannot be undone
-          </VisuallyHidden>
-        </Button>
+      <Box marginTop="spacing.5">
+        <Text marginBottom="spacing.3">
+          This technique is useful when you want to provide additional context to screen reader
+          users without cluttering the visual interface.
+        </Text>
       </Box>
     </Box>
   );
-};
+}
 
-export default AccessibleFormExample;
+export default AccessibleCheckboxExample;
 ```
-
-This example demonstrates:
-
-- Using VisuallyHidden with form controls to provide detailed instructions
-- Enhancing icon buttons with descriptive labels
-- Adding context to checkboxes and interactive elements
-- Using testID prop for testing purposes
-- Providing additional status information for screen reader users
-- Maintaining clean visual design while ensuring full accessibility

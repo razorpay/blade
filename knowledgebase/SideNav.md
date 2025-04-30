@@ -290,8 +290,6 @@ import {
   Switch,
   Button,
   Tooltip,
-} from '@razorpay/blade/components';
-import {
   HomeIcon,
   SettingsIcon,
   UserIcon,
@@ -303,7 +301,7 @@ import {
   BankIcon,
   ChevronRightIcon,
   ArrowUpRightIcon,
-} from '@razorpay/blade/components/Icons';
+} from '@razorpay/blade/components';
 
 // Custom activation card for the banner slot
 const ActivationCard = () => {

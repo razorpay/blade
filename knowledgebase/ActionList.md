@@ -1,12 +1,15 @@
 # ActionList
 
 ## Component Name
+
 ActionList
 
 ## Description
+
 ActionList contains a list of actionable items that can be used to perform particular actions. It can be used inside Dropdowns, BottomSheets, or as selectable items when combined with SelectInput. ActionList provides a consistent UI pattern for presenting a menu of options with optional icons, badges, and various customization options.
 
 ## TypeScript Types
+
 Below are the props that the ActionList component and its subcomponents accept. These types define all possible properties you can use when implementing ActionList in your application.
 
 ```typescript
@@ -111,12 +114,13 @@ type ActionListItemAssetProps = {
 ## Examples
 
 ### Basic ActionList
+
 A simple example showing how to use ActionList with different types of items.
 
 ```tsx
-import { 
-  Box, 
-  ActionList, 
+import {
+  Box,
+  ActionList,
   ActionListItem,
   ActionListSection,
   ActionListItemIcon,
@@ -124,17 +128,15 @@ import {
   ActionListItemText,
   ActionListItemBadge,
   ActionListItemBadgeGroup,
-  ActionListItemAvatar
-} from '@razorpay/blade/components';
-import {
+  ActionListItemAvatar,
   LogOutIcon,
   SettingsIcon,
   DownloadIcon,
   BankIcon,
   UserIcon,
   ActivityIcon,
-  TransactionsIcon
-} from '@razorpay/blade/components/Icons';
+  TransactionsIcon,
+} from '@razorpay/blade/components';
 
 const ActionListExample = () => {
   return (
@@ -142,11 +144,8 @@ const ActionListExample = () => {
       {/* Basic ActionList with simple items */}
       <ActionList>
         {/* Basic item with just title */}
-        <ActionListItem 
-          title="Profile" 
-          value="profile"
-        />
-        
+        <ActionListItem title="Profile" value="profile" />
+
         {/* Section with title to group related items */}
         <ActionListSection title="Account Management">
           {/* Item with icon and disabled state */}
@@ -156,14 +155,14 @@ const ActionListExample = () => {
             value="settings"
             isDisabled={true}
           />
-          
+
           {/* Item with icon */}
           <ActionListItem
             leading={<ActionListItemIcon icon={DownloadIcon} />}
             title="Download"
             value="download"
           />
-          
+
           {/* Item with description */}
           <ActionListItem
             title="Credit"
@@ -172,14 +171,14 @@ const ActionListExample = () => {
             description="Check your credit here!"
           />
         </ActionListSection>
-        
+
         {/* Item with image asset */}
         <ActionListItem
           leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="India" />}
           title="Pricing"
           value="pricing"
         />
-        
+
         {/* Item with href for navigation */}
         <ActionListItem
           title="Go to Home"
@@ -187,7 +186,7 @@ const ActionListExample = () => {
           href="https://razorpay.com"
           target="_blank"
         />
-        
+
         {/* Item with click handler */}
         <ActionListItem
           title="Alert user"
@@ -196,7 +195,7 @@ const ActionListExample = () => {
             alert('Alert user is clicked!');
           }}
         />
-        
+
         {/* Item with badges */}
         <ActionListItem
           title="Systems"
@@ -212,23 +211,21 @@ const ActionListExample = () => {
             </ActionListItemBadgeGroup>
           }
         />
-        
+
         {/* Item with trailing text */}
         <ActionListItem
           title="Bank Settings"
           value="bank_settings"
           trailing={<ActionListItemText>⌘ + B</ActionListItemText>}
         />
-        
+
         {/* Item with avatar */}
         <ActionListItem
           title="Profile"
           value="profile"
-          leading={
-            <ActionListItemAvatar icon={UserIcon} color="primary" name="John Doe" />
-          }
+          leading={<ActionListItemAvatar icon={UserIcon} color="primary" name="John Doe" />}
         />
-        
+
         {/* Item with negative intent for destructive actions */}
         <ActionListItem
           leading={<ActionListItemIcon icon={LogOutIcon} />}
@@ -243,34 +240,24 @@ const ActionListExample = () => {
 ```
 
 ### ActionList with Virtualization
+
 When dealing with large lists, you can use the virtualization feature for better performance.
 
 ```tsx
-import { 
-  Box, 
-  ActionList, 
-  ActionListItem,
-  ActionListSection
-} from '@razorpay/blade/components';
+import { Box, ActionList, ActionListItem, ActionListSection } from '@razorpay/blade/components';
 
 const LargeActionListExample = () => {
   // Generate a large list of items
   const generateItems = (count) => {
     return Array.from({ length: count }).map((_, index) => (
-      <ActionListItem
-        key={index}
-        title={`Item ${index + 1}`}
-        value={`item-${index + 1}`}
-      />
+      <ActionListItem key={index} title={`Item ${index + 1}`} value={`item-${index + 1}`} />
     ));
   };
 
   return (
     <Box backgroundColor="surface.background.gray.intense" height="300px">
       <ActionList isVirtualized={true}>
-        <ActionListSection title="Large List">
-          {generateItems(100)}
-        </ActionListSection>
+        <ActionListSection title="Large List">{generateItems(100)}</ActionListSection>
       </ActionList>
     </Box>
   );
@@ -278,10 +265,11 @@ const LargeActionListExample = () => {
 ```
 
 ### ActionList in Different Contexts
+
 ActionList can be used in different contexts like Dropdowns and BottomSheets.
 
 ```tsx
-import { 
+import {
   Box,
   Dropdown,
   DropdownOverlay,
@@ -291,13 +279,11 @@ import {
   ActionList,
   ActionListItem,
   ActionListItemIcon,
-  Button
-} from '@razorpay/blade/components';
-import {
+  Button,
   HomeIcon,
   UserIcon,
-  SettingsIcon
-} from '@razorpay/blade/components/Icons';
+  SettingsIcon,
+} from '@razorpay/blade/components';
 
 const ActionListInContextExample = () => {
   return (

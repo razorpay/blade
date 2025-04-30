@@ -398,14 +398,17 @@ import {
   TablePagination,
   TableData,
   TableNode,
-} from '@razorpay/blade/components/Table';
-import { Box } from '@razorpay/blade/components/Box';
-import { Text, Code } from '@razorpay/blade/components/Typography';
-import { Button } from '@razorpay/blade/components/Button';
-import { IconButton } from '@razorpay/blade/components/Button/IconButton';
-import { Badge } from '@razorpay/blade/components/Badge';
-import { Amount } from '@razorpay/blade/components/Amount';
-import { CheckIcon, CloseIcon, PlusIcon } from '@razorpay/blade/components/Icons';
+  Box,
+  Text,
+  Code,
+  Button,
+  IconButton,
+  Badge,
+  Amount,
+  CheckIcon,
+  CloseIcon,
+  PlusIcon,
+} from '@razorpay/blade/components';
 
 // Define your data types
 type PaymentItem = {
@@ -635,9 +638,9 @@ import {
   TableCell,
   TablePagination,
   TableData,
-} from '@razorpay/blade/components/Table';
-import { Box } from '@razorpay/blade/components/Box';
-import { Spinner } from '@razorpay/blade/components/Spinner';
+  Box,
+  Spinner,
+} from '@razorpay/blade/components';
 
 type User = {
   id: string;

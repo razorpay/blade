@@ -123,8 +123,15 @@ This example demonstrates different button variants, sizes, and colors in a paym
 
 ```tsx
 import React, { useState } from 'react';
-import { Button, Box, Text, Heading } from '@razorpay/blade/components';
-import { CreditCardIcon, ArrowRightIcon, ShieldIcon } from '@razorpay/blade/components/Icons';
+import {
+  Button,
+  Box,
+  Text,
+  Heading,
+  CreditCardIcon,
+  ArrowRightIcon,
+  ShieldIcon,
+} from '@razorpay/blade/components';
 
 const PaymentFormExample = () => {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -222,8 +229,7 @@ This example demonstrates buttons with dynamic states and interactions.
 
 ```tsx
 import React, { useState } from 'react';
-import { Button, Box, Text } from '@razorpay/blade/components';
-import { CheckIcon, RefreshIcon } from '@razorpay/blade/components/Icons';
+import { Button, Box, Text, CheckIcon, RefreshIcon } from '@razorpay/blade/components';
 
 const SimpleToggleExample = () => {
   const [isActive, setIsActive] = useState(false);
