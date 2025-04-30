@@ -240,30 +240,6 @@ type SideNavLevelProps = {
    */
   children: React.ReactElement | React.ReactElement[];
 };
-
-/**
- * For component testing
- */
-type TestID = {
-  /**
-   * Test ID for testing environments
-   *
-   * @see https://testing-library.com/docs/queries/bytestid/
-   */
-  testID?: string;
-};
-
-/**
- * For analytics tracking
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attributes for tracking user interactions
-   * The key is always `data-analytics-` followed by the attribute name
-   * E.g., `data-analytics-section="sidebar"`
-   */
-  [key: `data-analytics-${string}`]: string;
-};
 ````
 
 ## Example

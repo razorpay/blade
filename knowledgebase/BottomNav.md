@@ -87,26 +87,6 @@ type BottomNavItemProps = {
   onClick?: React.MouseEventHandler;
 } & TestID &
   DataAnalyticsAttribute;
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
 ````
 
 ## Example

@@ -40,34 +40,6 @@ type ButtonGroupProps = {
 } & StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute;
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
- * Styled props for blade components
- * Includes margin, padding, and other layout props
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Examples

@@ -149,27 +149,9 @@ type ChipGroupProps = {
   TestID;
 
 /**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
  * Type for Icon Component
  */
 type IconComponent = React.ComponentType<IconProps>;
-
-/**
- * Styled props for blade components
- * Includes margin, padding, and other layout props
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Examples

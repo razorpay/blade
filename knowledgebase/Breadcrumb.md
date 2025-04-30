@@ -88,33 +88,6 @@ type BreadcrumbItemProps = {
   DataAnalyticsAttribute;
 
 /**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
-
-/**
  * Type for icon components
  */
 type IconComponent = React.ComponentType<{

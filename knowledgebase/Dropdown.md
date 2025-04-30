@@ -252,23 +252,6 @@ type FilterChipGroupProps = {
  * Type for the Icon component
  */
 type IconComponent = React.ComponentType<any>;
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Examples

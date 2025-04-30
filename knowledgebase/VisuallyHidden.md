@@ -17,15 +17,6 @@ type VisuallyHiddenProps = {
    */
   children: React.ReactNode;
 } & TestID;
-
-type TestID = {
-  /**
-   * Test id that can be used to select element in testing environments
-   *
-   * Checkout https://testing-library.com/docs/queries/bytestid/
-   */
-  testID?: string;
-};
 ```
 
 ## Example

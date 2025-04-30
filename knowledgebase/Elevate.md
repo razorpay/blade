@@ -38,23 +38,6 @@ type ElevateProps = {
  * Motion triggers for animation components
  */
 type MotionTrigger = 'hover' | 'focus' | 'press' | 'on-animate-interactions';
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Examples

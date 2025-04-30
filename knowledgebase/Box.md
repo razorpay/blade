@@ -254,26 +254,6 @@ type ResponsiveValue<T> =
     };
 
 /**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
  * Type for Box ref
  */
 type BoxRefType = HTMLElement;
