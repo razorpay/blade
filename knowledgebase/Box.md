@@ -12,6 +12,20 @@ The following types represent the props that the Box component accepts. These ty
 
 ```typescript
 /**
+ * Type for responsive values, allowing different values at different breakpoints
+ */
+type ResponsiveValue<T> =
+  | T
+  | {
+      base?: T;
+      xs?: T;
+      s?: T;
+      m?: T;
+      l?: T;
+      xl?: T;
+    };
+
+/**
  * Props for the Box component
  */
 type BoxProps = {
@@ -19,17 +33,7 @@ type BoxProps = {
    * The HTML element to render the Box as
    * @default 'div'
    */
-  as?:
-    | 'div'
-    | 'section'
-    | 'article'
-    | 'main'
-    | 'header'
-    | 'footer'
-    | 'aside'
-    | 'nav'
-    | 'form'
-    | React.ComponentType<any>;
+  as?: 'div' | 'section' | 'article' | 'main' | 'header' | 'footer' | 'aside' | 'nav';
 
   /**
    * ID attribute of the Box
@@ -100,29 +104,29 @@ type BoxProps = {
   /**
    * Gap property - defines the gap between flex/grid items
    */
-  gap?: ResponsiveValue<string>;
+  gap?: ResponsiveValue<SpacingValueType>;
 
   /**
    * Margin properties
    */
-  margin?: ResponsiveValue<string>;
-  marginTop?: ResponsiveValue<string>;
-  marginRight?: ResponsiveValue<string>;
-  marginBottom?: ResponsiveValue<string>;
-  marginLeft?: ResponsiveValue<string>;
-  marginX?: ResponsiveValue<string>;
-  marginY?: ResponsiveValue<string>;
+  margin?: ResponsiveValue<SpacingValueType>;
+  marginTop?: ResponsiveValue<SpacingValueType>;
+  marginRight?: ResponsiveValue<SpacingValueType>;
+  marginBottom?: ResponsiveValue<SpacingValueType>;
+  marginLeft?: ResponsiveValue<SpacingValueType>;
+  marginX?: ResponsiveValue<SpacingValueType>;
+  marginY?: ResponsiveValue<SpacingValueType>;
 
   /**
    * Padding properties
    */
-  padding?: ResponsiveValue<string>;
-  paddingTop?: ResponsiveValue<string>;
-  paddingRight?: ResponsiveValue<string>;
-  paddingBottom?: ResponsiveValue<string>;
-  paddingLeft?: ResponsiveValue<string>;
-  paddingX?: ResponsiveValue<string>;
-  paddingY?: ResponsiveValue<string>;
+  padding?: ResponsiveValue<SpacingValueType>;
+  paddingTop?: ResponsiveValue<SpacingValueType>;
+  paddingRight?: ResponsiveValue<SpacingValueType>;
+  paddingBottom?: ResponsiveValue<SpacingValueType>;
+  paddingLeft?: ResponsiveValue<SpacingValueType>;
+  paddingX?: ResponsiveValue<SpacingValueType>;
+  paddingY?: ResponsiveValue<SpacingValueType>;
 
   /**
    * Width property
@@ -226,7 +230,6 @@ type BoxProps = {
   /**
    * Event handlers
    */
-  onClick?: React.MouseEventHandler;
   onMouseOver?: React.MouseEventHandler;
   onMouseEnter?: React.MouseEventHandler;
   onMouseLeave?: React.MouseEventHandler;
@@ -239,19 +242,6 @@ type BoxProps = {
   onDrop?: React.DragEventHandler;
 } & TestID &
   DataAnalyticsAttribute;
-
-/**
- * Type for responsive values, allowing different values at different breakpoints
- */
-type ResponsiveValue<T> =
-  | T
-  | {
-      base?: T;
-      s?: T;
-      m?: T;
-      l?: T;
-      xl?: T;
-    };
 
 /**
  * Type for Box ref
