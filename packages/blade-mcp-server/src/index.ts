@@ -34,13 +34,72 @@ try {
 
   server.tool(
     'get-blade-components',
-    `Return a list of Blade Design System components' knowledgebase files required for generating UI code`,
+    `Return the list of Blade Design System components' knowledgebase files required for generating UI code with Blade`,
     {
-      componentList: z.string(),
+      componentList: z
+        .string()
+        .refine(
+          (str) => {
+            const components = str.split(',').map((s) => s.trim());
+            return components.every((comp) => bladeComponentsList.includes(comp));
+          },
+          {
+            message: `Components must be a comma-separated list of valid component names. Possible values: ${bladeComponentsList.join(
+              ', ',
+            )}`,
+          },
+        )
+        .describe(
+          `Comma separated list of semantic blade component names. E.g. "Button, Accordion, AccordionItem". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
+            ', ',
+          )}`,
+        ),
     },
-    async ({ componentList }: { componentList: string }) => ({
-      content: [{ type: 'text', text: `List of Blade components: ${componentList}` }],
-    }),
+    async ({ componentList }) => {
+      try {
+        // Parse the comma-separated string into an array of component names
+        const componentNames = componentList.split(',').map((name) => name.trim());
+
+        // Build the formatted documentation text
+        let responseText = `Blade component documentation for: ${componentList}\n\n`;
+
+        // Process each component
+        for (const componentName of componentNames) {
+          responseText += `## ${componentName}\n`;
+
+          try {
+            const filePath = resolve(knowledgebasePath, `${componentName}.md`);
+            const content = readFileSync(filePath, 'utf8');
+            responseText += content + '\n\n';
+          } catch (error) {
+            console.error(`Error reading markdown for component ${componentName}:`, error);
+            responseText += `⚠️ Error: Could not read documentation for ${componentName}. The component may not exist or there may be an issue with the file.\n\n`;
+          }
+        }
+
+        // Return the formatted response
+        return {
+          content: [
+            {
+              type: 'text',
+              text: responseText.trim(),
+            },
+          ],
+        };
+      } catch (error) {
+        console.error('Error processing component documentation request:', error);
+        return {
+          content: [
+            {
+              type: 'text',
+              text: `Error retrieving documentation for components: ${componentList}. ${
+                error instanceof Error ? error.message : 'Unknown error occurred.'
+              }`,
+            },
+          ],
+        };
+      }
+    },
   );
 
   // Start receiving messages on stdin and sending messages on stdout
