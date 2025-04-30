@@ -175,16 +175,6 @@ const ModalExample = () => {
 
         <ModalBody dataAnalyticsContext="address_body">
           <Box display="flex" flexDirection="column" gap="spacing.5">
-            <RadioGroup
-              label="Saved Addresses"
-              value={selectedAddress}
-              onChange={(value) => setSelectedAddress(value)}
-            >
-              <Radio value="home">Home - 11850 Florida 24, Cedar Key, FL 32625</Radio>
-              <Radio value="office">Office - 2033 Florida 21, Keystone Heights, FL 32656</Radio>
-              <Radio value="other">Other - 5938 Broadway, New York, NY 10023</Radio>
-            </RadioGroup>
-
             <Box marginTop="spacing.5">
               <Text variant="bodyMedium" color="surface.text.gray.subtle">
                 Need to add a new address?
