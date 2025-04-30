@@ -33,55 +33,56 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
+const entry = keyframes`
+   from {
+     opacity: 0;
+     transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+   }
+   to {
+     opacity: 1;
+     transform: translate(-50%, -50%) scale(1) translateY(0px);
+   }
+     `;
+
+const exit = keyframes`
+   from {
+     opacity: 1;
+     transform: translate(-50%, -50%) scale(1) translateY(0px);
+   }
+   to {
+     opacity: 0;
+     transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+   }
+   `;
+
+const fullPageEntry = keyframes`
+   from {
+     opacity: 0 ;
+   }
+   to {
+     opacity: 1;
+   }
+   `;
+
+const fullPageExit = keyframes`
+   from {
+     opacity: 1;
+   }
+   to {
+     opacity: 0;
+   }
+   `;
+
+function getAnimation(isVisible: boolean, size: NonNullable<ModalProps['size']>): Keyframes {
+  if (isVisible) {
+    return size === 'full' ? fullPageEntry : entry;
+  } else {
+    return size === 'full' ? fullPageExit : exit;
+  }
+}
+
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
   ({ isVisible, theme, size }) => {
-    const entry = keyframes`
-      from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1) translateY(0px);
-      }
-    `;
-
-    const exit = keyframes`
-      from {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1) translateY(0px);
-      }
-      to {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-      }
-    `;
-
-    const fullPageEntry = keyframes`
-      from {
-        opacity: 0 ;
-      }
-      to {
-        opacity: 1;
-      }
-    `;
-
-    const fullPageExit = keyframes`
-      from {
-        opacity: 1;
-      }
-      to {
-        opacity: 0;
-      }
-    `;
-    function getAnimation(isVisible: boolean, size: NonNullable<ModalProps['size']>): Keyframes {
-      if (isVisible) {
-        return size === 'full' ? fullPageEntry : entry;
-      } else {
-        return size === 'full' ? fullPageExit : exit;
-      }
-    }
-
     return css`
       box-shadow: ${theme.elevation.highRaised};
       position: fixed;
