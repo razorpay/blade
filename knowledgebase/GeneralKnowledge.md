@@ -172,7 +172,9 @@ These are some of the common utility types that you will find in other parts of 
 
 - `TestID` - Used to add test ID to components for testing purposes.
 - `DataAnalyticsAttribute` - Used to add data analytics attributes to components for analytics purposes.
-- `StyledPropsBlade` - Used to add styled props to components.
+- `FeedbackColors` - Used to accept feedback colors in components.
+- `Breakpoints` - Used to create responsive layouts using breakpoints.
+- `SpacingValueType` - Used to create spacing values in padding, margin props.
 
 ````ts
 type TestID = {
@@ -240,69 +242,20 @@ type SpacingValueType =
   | 'max-content'
   | 'min-content';
 
-// When type is `never`, we just want to return `never` rather than { base: never, ...etc } since that prop is intended to be never used
-// Explaination of [T] extends [never] -> https://stackoverflow.com/questions/65492464/typescript-never-type-condition
-type MakeValueResponsive<T> = [T] extends [never]
-  ? never
-  :
-      | T
-      | {
-          // Using this instead of Record to maintain the jsdoc from breakpoints.ts
-          [P in keyof Breakpoints]?: T;
-        };
-
 /**
- * Turns all the values in object into responsive object.
+ * Breakpoints type
  *
- * ```ts
- * MakeObjectResponsive<{ hello: string}>
+ * Use it in StyledPropsBlade or Box to create responsive layouts using
  *
- * // Outputs:
- * {
- *  hello: string | {
- *   base?: string;
- *   xs?: string;
- *   s?: string;
- *   // ... other breakpoints
- *  }
- * }
+ * ```jsx
+ * <Box padding={{ base: 'spacing.0', m: 'spacing.3', xl: 'spacing.6' }} />
  * ```
  */
-type MakeObjectResponsive<
-  T,
-  // using this workaround to preserve the jsdocs
-  // https://github.com/microsoft/TypeScript/issues/31992
-  K extends keyof T = Extract<keyof T, string>
-> = {
-  [P in K]: MakeValueResponsive<T[P]>;
-};
-
-export type Breakpoints = Readonly<{
+type Breakpoints = Readonly<{
   /**
    * `base` is used for responsive styling following a **mobile first** approach. It starts from 0px till the next existing token
    *
    * Think of this as styles without any media query.
-   *
-   * ### Example
-   *
-   * This code will set margin as `spacing.2` on "m" size screens and above. And as `spacing.1` on less than "m" size screens
-   * ```jsx
-   * <Box margin={{ base: 'spacing.1', m: 'spacing.2' }} />
-   * ```
-   *
-   * This roughly translates into -
-   *
-   * ```
-   * .Box {
-   *  margin: 'spacing.1';
-   * }
-   *
-   * ＠media screen and (min-width: 768px) {
-   *  .Box {
-   *    margin: 'spacing.2';
-   *  }
-   * }
-   * ```
    */
   base: number;
   /**
@@ -346,13 +299,4 @@ export type Breakpoints = Readonly<{
    */
   xl: number;
 }>;
-
-const breakpoints: Breakpoints = {
-  base: 0,
-  xs: 320,
-  s: 480,
-  m: 768,
-  l: 1024,
-  xl: 1200,
-};
 ````
