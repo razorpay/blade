@@ -150,30 +150,33 @@ export const parameters = {
   },
 };
 
+const hasFullPageExampleStories = (context) =>
+  context.kind.includes('/Dropdown/With Select') ||
+  context.kind.includes('/Dropdown/With Button') ||
+  context.kind.includes('/Dropdown/With AutoComplete') ||
+  context.kind.includes('/Carousel') ||
+  context.kind.includes('/TopNav') ||
+  context.kind.includes('/Examples') ||
+  context.kind.includes('/SideNav') ||
+  context.kind.includes('/Recipes');
+
 const StoryCanvas = styled.div<{ context }>(
   ({ theme, context }) =>
     `
       width: 100%;
       height: ${context.viewMode === 'story' ? '100vh' : '100%'};
       overflow: auto;
-      padding: ${
-        context.kind.includes('/Dropdown/With Select') ||
-        context.kind.includes('/Dropdown/With Button') ||
-        context.kind.includes('/Dropdown/With AutoComplete') ||
-        context.kind.includes('/Carousel') ||
-        context.kind.includes('/TopNav') ||
-        context.kind.includes('/Examples') ||
-        context.kind.includes('/SideNav') ||
-        context.kind.includes('/Recipes')
-          ? '0rem'
-          : '2rem'
-      };
+      padding: ${hasFullPageExampleStories(context) ? '0rem' : '2rem'};
       background-color: ${theme.colors.surface.background.gray.subtle};
       border-radius: ${
         context.viewMode === 'story'
           ? `${theme.border.radius.none}px`
           : `${theme.border.radius.medium}px`
       };
+      
+      @media (max-width: 768px) {
+        padding: ${hasFullPageExampleStories(context) ? '0rem' : '12px'};
+      }
     `,
 );
 

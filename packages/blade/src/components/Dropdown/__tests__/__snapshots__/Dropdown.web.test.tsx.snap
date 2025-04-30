@@ -2859,7 +2859,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
         data-blade-component="base-box"
       >
         <button
-          aria-controls="dropdown-623-actionlist"
+          aria-controls="dropdown-621-actionlist"
           aria-expanded="false"
           aria-haspopup="menu"
           aria-label="profile"
