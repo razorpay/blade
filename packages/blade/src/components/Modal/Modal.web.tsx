@@ -85,11 +85,11 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
   ({ isVisible, theme, size }) => {
     return css`
       box-shadow: ${theme.elevation.highRaised};
-      position: fixed;
-      transform: ${size === 'full' ? 'none' : 'translate(-50%, -50%)'};
       opacity: 0;
       ${isVisible &&
       css`
+        position: fixed;
+        transform: ${size === 'full' ? 'none' : 'translate(-50%, -50%)'};
         opacity: 1;
         animation: ${getAnimation(isVisible, size)}
           ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
