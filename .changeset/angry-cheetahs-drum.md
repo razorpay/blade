@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-fixed accessibility issues in Avatar and Card components.
+- fixed accessibility issues in Avatar, Card and Checkbox.

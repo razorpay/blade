@@ -17,13 +17,14 @@ type HintTextProps = {
   id?: string;
   color: TextProps<{ variant: 'caption' }>['color'];
   size: 'small' | 'medium' | 'large';
+  role?: string;
 };
 
-const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): ReactElement => {
+const HintText = ({ icon: Icon, children, id, color, size, role }: HintTextProps): ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <BaseBox marginTop={hintMarginTop[size]} id={id}>
+    <BaseBox marginTop={hintMarginTop[size]} id={id} role={role}>
       <FormHintWrapper>
         {Icon ? (
           // offset block element 2px down to align with text
@@ -136,6 +137,7 @@ const FormHint = ({
           id={errorTextId}
           icon={() => Icons.error({ size })}
           color={colors.error}
+          role="alert"
         >
           {errorText}
         </HintText>
