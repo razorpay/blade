@@ -85,22 +85,13 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
   ({ isVisible, theme, size }) => {
     return css`
       box-shadow: ${theme.elevation.highRaised};
-      opacity: 0;
-      ${isVisible &&
-      css`
-        position: fixed;
-        transform: ${size === 'full' ? 'none' : 'translate(-50%, -50%)'};
-        opacity: 1;
-        animation: ${getAnimation(isVisible, size)}
-          ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
-          ${castWebType(theme.motion.easing.entrance)};
-      `}
-      ${!isVisible &&
-      css`
-        animation: ${getAnimation(isVisible, size)}
-          ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
-          ${castWebType(theme.motion.easing.exit)};
-      `}
+      opacity: ${isVisible ? 1 : 0};
+      animation: ${getAnimation(isVisible, size)}
+        ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
+        ${isVisible
+          ? castWebType(theme.motion.easing.entrance)
+          : castWebType(theme.motion.easing.exit)};
+
       ${size === 'full' &&
       css`
         top: ${makeSize(modalMargin[size])};
