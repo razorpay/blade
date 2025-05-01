@@ -53,6 +53,12 @@ type IndicatorProps = {
    * a11y label for screen readers
    */
   accessibilityLabel?: string;
+  /**
+   * Whether the indicator is disabled
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -65,6 +71,7 @@ const _Indicator = (
     color = 'neutral',
     emphasis = 'subtle',
     testID,
+    isDisabled = false,
     ...rest
   }: IndicatorProps,
   ref: Ref<BladeElementRef>,
@@ -77,7 +84,9 @@ const _Indicator = (
   const fillColorOuter = isPrimary
     ? theme.colors.surface.background.primary.subtle
     : theme.colors.feedback.background[color].subtle;
-  const fillColorInner = isPrimary
+  const fillColorInner = isDisabled
+    ? theme.colors.feedback.background.notice.subtle // TODO: update color when design is updated
+    : isPrimary
     ? theme.colors.surface.icon.primary.normal
     : theme.colors.feedback.icon[color].intense;
 
