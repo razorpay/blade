@@ -129,31 +129,6 @@ const getAccessibilityCoverage = (shouldHighlightNodes = false) => {
     };
 
     try {
-      // Focus Checks
-
-      const focusPasses = document.querySelectorAll(interactiveElements.join(','));
-      document.querySelectorAll(nonInteractiveElements.join(',')).forEach((element) => {
-        const isClosestInteractiveElement = interactiveElements.some((el) => element.closest(el));
-        if (
-          !isClosestInteractiveElement &&
-          !isInsideAnotherPointerElement(element) &&
-          hasPointerCursor(element)
-        ) {
-          const issue = `${element.tagName.toLowerCase()} cannot be interactive. Make sure correct HTML element is used.`;
-          markViolation(element, issue, focusViolationBorderColor);
-          a11yChecks.focus.violations.push({ element, issue });
-        }
-      });
-      focusPasses.forEach((element) => {
-        if (element.tagName.toLowerCase() === 'a' && !element.hasAttribute('href')) {
-          const issue = 'Link without href';
-          markViolation(element, issue, focusViolationBorderColor);
-          a11yChecks.focus.violations.push({ element, issue });
-        } else {
-          a11yChecks.focus.passes.push({ element });
-        }
-      });
-
       // Check for images with alt attribute
       document.querySelectorAll('img').forEach((img) => {
         if (!img.hasAttribute('alt')) {
@@ -327,6 +302,30 @@ const getAccessibilityCoverage = (shouldHighlightNodes = false) => {
           a11yChecks.correctHeadingOrder.passes.push({ element: heading });
         }
         lastHeadingLevel = headingLevel;
+      });
+
+      // Focus Checks
+      const focusPasses = document.querySelectorAll(interactiveElements.join(','));
+      document.querySelectorAll(nonInteractiveElements.join(',')).forEach((element) => {
+        const isClosestInteractiveElement = interactiveElements.some((el) => element.closest(el));
+        if (
+          !isClosestInteractiveElement &&
+          !isInsideAnotherPointerElement(element) &&
+          hasPointerCursor(element)
+        ) {
+          const issue = `${element.tagName.toLowerCase()} cannot be interactive. Make sure correct HTML element is used.`;
+          markViolation(element, issue, focusViolationBorderColor);
+          a11yChecks.focus.violations.push({ element, issue });
+        }
+      });
+      focusPasses.forEach((element) => {
+        if (element.tagName.toLowerCase() === 'a' && !element.hasAttribute('href')) {
+          const issue = 'Link without href';
+          markViolation(element, issue, focusViolationBorderColor);
+          a11yChecks.focus.violations.push({ element, issue });
+        } else {
+          a11yChecks.focus.passes.push({ element });
+        }
       });
     } catch (error) {
       console.warn('[a11yScript]: Error checking accessibility violations', error);
