@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<StepGroup /> should render nested StepGroup 1`] = `"<div id="root"><div data-blade-component="step-group" class="BaseBox-bmPWx hxnbiw"><div class="BaseBox-bmPWx drkPES step-item step-index-0 step-nesting-level-0" data-blade-component="step-item"><div data-blade-component="box" class="BaseBox-bmPWx gbruaa"><div data-blade-component="base-box" class="BaseBox-bmPWx glTdNj"></div><div data-blade-component="box" class="BaseBox-bmPWx gxpiJO"><div data-blade-component="base-box" class="BaseBox-bmPWx kmmpgG"><div aria-label="neutral indicator" role="status" data-blade-component="indicator" class="BaseBox-bmPWx kbfJoe"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(211, 33%, 21%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text"></p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iorpPI"></div></div><div data-blade-component="box" class="BaseBox-bmPWx dozxZd"><div data-blade-component="box" class="BaseBox-bmPWx IXhpB"><div data-blade-component="box" class="BaseBox-bmPWx fJnTVO"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO ejxwnx" data-blade-component="text">Introduction</p><p class="StyledBaseText-dVBfTO ePHaRp" data-blade-component="text">Thu, 15th Oct</p><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text">Header description</p></div><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div></div></div><div class="BaseBox-bmPWx drkPES step-item step-index-1 step-nesting-level-0" data-blade-component="step-item"><div data-blade-component="box" class="BaseBox-bmPWx gbruaa"><div data-blade-component="base-box" class="BaseBox-bmPWx jHinWr"></div><div data-blade-component="box" class="BaseBox-bmPWx gxpiJO"><div data-blade-component="base-box" class="BaseBox-bmPWx kmmpgG"><div aria-label="neutral indicator" role="status" data-blade-component="indicator" class="BaseBox-bmPWx kbfJoe"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(211, 33%, 21%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text"></p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iorpPI"></div></div><div data-blade-component="box" class="BaseBox-bmPWx dozxZd"><div data-blade-component="box" class="BaseBox-bmPWx IXhpB"><div data-blade-component="box" class="BaseBox-bmPWx fJnTVO"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO ejxwnx" data-blade-component="text">Personal Details</p><p class="StyledBaseText-dVBfTO ePHaRp" data-blade-component="text">Thu, 15th Oct</p><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text">Person Details description</p></div><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div></div></div><div data-blade-component="step-group" class="BaseBox-bmPWx htjzNg"><div class="BaseBox-bmPWx drkPES step-item step-index-0 step-nesting-level-1" data-blade-component="step-item"><div data-blade-component="box" class="BaseBox-bmPWx gbruaa"><div data-blade-component="base-box" class="BaseBox-bmPWx jHinWr"></div><svg aria-hidden="true" data-blade-component="icon" height="14" viewBox="0 0 20 14" width="20" fill="none" visibility="visible" class="Svgweb__StyledSvg-vcmjs8-0 fqcDiM"><path d="M1 0V5C1 9.41828 4.58172 13 9 13H20" stroke="hsla(214, 28%, 84%, 1)" stroke-width="2" data-blade-component="svg-path"></path></svg><div data-blade-component="box" class="BaseBox-bmPWx jdaqhP"><div data-blade-component="base-box" class="BaseBox-bmPWx frIJQJ"><div aria-label="positive indicator" role="status" data-blade-component="indicator" class="BaseBox-bmPWx kbfJoe"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(150, 100%, 27%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text"></p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx fFoqQj"></div></div><div data-blade-component="box" class="BaseBox-bmPWx dozxZd"><div data-blade-component="box" class="BaseBox-bmPWx IXhpB"><div data-blade-component="box" class="BaseBox-bmPWx fJnTVO"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Address</p><p class="StyledBaseText-dVBfTO ePHaRp" data-blade-component="text">Thu, 15th Oct</p><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text"></p></div><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div></div></div><div class="BaseBox-bmPWx drkPES step-item step-index-1 step-nesting-level-1" data-blade-component="step-item"><div data-blade-component="box" class="BaseBox-bmPWx gbruaa"><div data-blade-component="base-box" class="BaseBox-bmPWx ekZKYU"></div><div data-blade-component="box" class="BaseBox-bmPWx frdbUJ"><div data-blade-component="base-box" class="BaseBox-bmPWx kmmpgG"><div aria-label="neutral indicator" role="status" data-blade-component="indicator" class="BaseBox-bmPWx kbfJoe"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(211, 33%, 21%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text"></p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx loBpGf"></div><svg aria-hidden="true" data-blade-component="icon" height="5" viewBox="0 0 42 5" width="42" fill="hsla(214, 28%, 84%, 1)" visibility="hidden" class="Svgweb__StyledSvg-vcmjs8-0 cXrVic"><path d="M32 1C32 1.55228 31.5523 2 31 2C30.4477 2 30 1.55228 30 1C30 0.447715 30.4477 0 31 0C31.5523 0 32 0.447715 32 1Z" data-blade-component="svg-path"></path><path d="M2 4C2 4.55228 1.55228 5 1 5C0.447715 5 0 4.55228 0 4C0 3.44772 0.447715 3 1 3C1.55228 3 2 3.44772 2 4Z" data-blade-component="svg-path"></path><path d="M27.5 3.5C28.0523 3.5 28.5 3.05228 28.5 2.5C28.5 1.94772 28.0523 1.5 27.5 1.5C26.9477 1.5 26.5 1.94772 26.5 2.5C26.5 3.05228 26.9477 3.5 27.5 3.5Z" data-blade-component="svg-path"></path><path d="M5.5 2.5C5.5 3.05228 5.05228 3.5 4.5 3.5C3.94772 3.5 3.5 3.05228 3.5 2.5C3.5 1.94772 3.94772 1.5 4.5 1.5C5.05228 1.5 5.5 1.94772 5.5 2.5Z" data-blade-component="svg-path"></path><path d="M16.5 3.5C17.0523 3.5 17.5 3.05228 17.5 2.5C17.5 1.94772 17.0523 1.5 16.5 1.5C15.9477 1.5 15.5 1.94772 15.5 2.5C15.5 3.05228 15.9477 3.5 16.5 3.5Z" data-blade-component="svg-path"></path><path d="M11.5 2.5C11.5 3.05228 11.0523 3.5 10.5 3.5C9.94771 3.5 9.5 3.05228 9.5 2.5C9.5 1.94772 9.94771 1.5 10.5 1.5C11.0523 1.5 11.5 1.94772 11.5 2.5Z" data-blade-component="svg-path"></path><path d="M22.5 3.5C23.0523 3.5 23.5 3.05228 23.5 2.5C23.5 1.94772 23.0523 1.5 22.5 1.5C21.9477 1.5 21.5 1.94772 21.5 2.5C21.5 3.05228 21.9477 3.5 22.5 3.5Z" data-blade-component="svg-path"></path></svg></div><div data-blade-component="box" class="BaseBox-bmPWx dozxZd"><div data-blade-component="box" class="BaseBox-bmPWx IXhpB"><div data-blade-component="box" class="BaseBox-bmPWx fJnTVO"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Bank Details</p><p class="StyledBaseText-dVBfTO ePHaRp" data-blade-component="text">Thu, 15th Oct</p><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text">Person Details description</p></div><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div></div></div></div></div></div>"`;
+exports[`<StepGroup /> should render nested StepGroup 1`] = `"<div id="root"><div data-blade-component="step-group" class="BaseBox-bmPWx hxnbiw"><div class="BaseBox-bmPWx drkPES step-item step-index-0 step-nesting-level-0" data-blade-component="step-item"><div data-blade-component="box" class="BaseBox-bmPWx gbruaa"><div data-blade-component="base-box" class="BaseBox-bmPWx glTdNj"></div><div data-blade-component="box" class="BaseBox-bmPWx gxpiJO"><div data-blade-component="base-box" class="BaseBox-bmPWx kmmpgG"><div aria-label="neutral indicator" role="status" data-blade-component="indicator" class="BaseBox-bmPWx kbfJoe"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(211, 33%, 21%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text"></p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iorpPI"></div></div><div data-blade-component="box" class="BaseBox-bmPWx dozxZd"><div data-blade-component="box" class="BaseBox-bmPWx IXhpB"><div data-blade-component="box" class="BaseBox-bmPWx fJnTVO"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Introduction</p><p class="StyledBaseText-dVBfTO ePHaRp" data-blade-component="text">Thu, 15th Oct</p><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text">Header description</p></div><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div></div></div><div class="BaseBox-bmPWx drkPES step-item step-index-1 step-nesting-level-0" data-blade-component="step-item"><div data-blade-component="box" class="BaseBox-bmPWx gbruaa"><div data-blade-component="base-box" class="BaseBox-bmPWx jHinWr"></div><div data-blade-component="box" class="BaseBox-bmPWx gxpiJO"><div data-blade-component="base-box" class="BaseBox-bmPWx kmmpgG"><div aria-label="neutral indicator" role="status" data-blade-component="indicator" class="BaseBox-bmPWx kbfJoe"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(211, 33%, 21%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text"></p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iorpPI"></div></div><div data-blade-component="box" class="BaseBox-bmPWx dozxZd"><div data-blade-component="box" class="BaseBox-bmPWx IXhpB"><div data-blade-component="box" class="BaseBox-bmPWx fJnTVO"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Personal Details</p><p class="StyledBaseText-dVBfTO ePHaRp" data-blade-component="text">Thu, 15th Oct</p><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text">Person Details description</p></div><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div></div></div><div data-blade-component="step-group" class="BaseBox-bmPWx htjzNg"><div class="BaseBox-bmPWx drkPES step-item step-index-0 step-nesting-level-1" data-blade-component="step-item"><div data-blade-component="box" class="BaseBox-bmPWx gbruaa"><div data-blade-component="base-box" class="BaseBox-bmPWx jHinWr"></div><svg aria-hidden="true" data-blade-component="icon" height="14" viewBox="0 0 20 14" width="20" fill="none" visibility="visible" class="Svgweb__StyledSvg-vcmjs8-0 fqcDiM"><path d="M1 0V5C1 9.41828 4.58172 13 9 13H20" stroke="hsla(214, 28%, 84%, 1)" stroke-width="2" data-blade-component="svg-path"></path></svg><div data-blade-component="box" class="BaseBox-bmPWx jdaqhP"><div data-blade-component="base-box" class="BaseBox-bmPWx frIJQJ"><div aria-label="positive indicator" role="status" data-blade-component="indicator" class="BaseBox-bmPWx kbfJoe"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(150, 100%, 27%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text"></p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx fFoqQj"></div></div><div data-blade-component="box" class="BaseBox-bmPWx dozxZd"><div data-blade-component="box" class="BaseBox-bmPWx IXhpB"><div data-blade-component="box" class="BaseBox-bmPWx fJnTVO"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Address</p><p class="StyledBaseText-dVBfTO ePHaRp" data-blade-component="text">Thu, 15th Oct</p><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text"></p></div><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div></div></div><div class="BaseBox-bmPWx drkPES step-item step-index-1 step-nesting-level-1" data-blade-component="step-item"><div data-blade-component="box" class="BaseBox-bmPWx gbruaa"><div data-blade-component="base-box" class="BaseBox-bmPWx ekZKYU"></div><div data-blade-component="box" class="BaseBox-bmPWx frdbUJ"><div data-blade-component="base-box" class="BaseBox-bmPWx kmmpgG"><div aria-label="neutral indicator" role="status" data-blade-component="indicator" class="BaseBox-bmPWx kbfJoe"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(211, 33%, 21%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text"></p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx loBpGf"></div><svg aria-hidden="true" data-blade-component="icon" height="5" viewBox="0 0 42 5" width="42" fill="hsla(214, 28%, 84%, 1)" visibility="hidden" class="Svgweb__StyledSvg-vcmjs8-0 cXrVic"><path d="M32 1C32 1.55228 31.5523 2 31 2C30.4477 2 30 1.55228 30 1C30 0.447715 30.4477 0 31 0C31.5523 0 32 0.447715 32 1Z" data-blade-component="svg-path"></path><path d="M2 4C2 4.55228 1.55228 5 1 5C0.447715 5 0 4.55228 0 4C0 3.44772 0.447715 3 1 3C1.55228 3 2 3.44772 2 4Z" data-blade-component="svg-path"></path><path d="M27.5 3.5C28.0523 3.5 28.5 3.05228 28.5 2.5C28.5 1.94772 28.0523 1.5 27.5 1.5C26.9477 1.5 26.5 1.94772 26.5 2.5C26.5 3.05228 26.9477 3.5 27.5 3.5Z" data-blade-component="svg-path"></path><path d="M5.5 2.5C5.5 3.05228 5.05228 3.5 4.5 3.5C3.94772 3.5 3.5 3.05228 3.5 2.5C3.5 1.94772 3.94772 1.5 4.5 1.5C5.05228 1.5 5.5 1.94772 5.5 2.5Z" data-blade-component="svg-path"></path><path d="M16.5 3.5C17.0523 3.5 17.5 3.05228 17.5 2.5C17.5 1.94772 17.0523 1.5 16.5 1.5C15.9477 1.5 15.5 1.94772 15.5 2.5C15.5 3.05228 15.9477 3.5 16.5 3.5Z" data-blade-component="svg-path"></path><path d="M11.5 2.5C11.5 3.05228 11.0523 3.5 10.5 3.5C9.94771 3.5 9.5 3.05228 9.5 2.5C9.5 1.94772 9.94771 1.5 10.5 1.5C11.0523 1.5 11.5 1.94772 11.5 2.5Z" data-blade-component="svg-path"></path><path d="M22.5 3.5C23.0523 3.5 23.5 3.05228 23.5 2.5C23.5 1.94772 23.0523 1.5 22.5 1.5C21.9477 1.5 21.5 1.94772 21.5 2.5C21.5 3.05228 21.9477 3.5 22.5 3.5Z" data-blade-component="svg-path"></path></svg></div><div data-blade-component="box" class="BaseBox-bmPWx dozxZd"><div data-blade-component="box" class="BaseBox-bmPWx IXhpB"><div data-blade-component="box" class="BaseBox-bmPWx fJnTVO"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Bank Details</p><p class="StyledBaseText-dVBfTO ePHaRp" data-blade-component="text">Thu, 15th Oct</p><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text">Person Details description</p></div><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div></div></div></div></div></div>"`;
 
 exports[`<StepGroup /> should render nested StepGroup 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -198,7 +198,7 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
   visibility: visible;
 }
 
-.c24.c24.c24.c24.c24 {
+.c23.c23.c23.c23.c23 {
   margin-left: 31px;
   height: 6px;
   width: 2px;
@@ -209,11 +209,11 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
   visibility: visible;
 }
 
-.c25.c25.c25.c25.c25 {
+.c24.c24.c24.c24.c24 {
   margin-left: 20px;
 }
 
-.c26.c26.c26.c26.c26 {
+.c25.c25.c25.c25.c25 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -230,7 +230,7 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
   visibility: visible;
 }
 
-.c27.c27.c27.c27.c27 {
+.c26.c26.c26.c26.c26 {
   visibility: hidden;
 }
 
@@ -256,7 +256,7 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -297,23 +297,6 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c23.c23.c23.c23.c23 {
-  color: hsla(211,26%,34%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -738,7 +721,7 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c23"
+                  class="c14"
                   data-blade-component="text"
                 >
                   Address
@@ -771,11 +754,11 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
           data-blade-component="box"
         >
           <div
-            class="c24"
+            class="c23"
             data-blade-component="base-box"
           />
           <div
-            class="c25"
+            class="c24"
             data-blade-component="box"
           >
             <div
@@ -823,12 +806,12 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
             </div>
           </div>
           <div
-            class="c26"
+            class="c25"
             data-blade-component="base-box"
           />
           <svg
             aria-hidden="true"
-            class="c27"
+            class="c26"
             data-blade-component="icon"
             fill="hsla(214, 28%, 84%, 1)"
             height="5"
@@ -883,7 +866,7 @@ exports[`<StepGroup /> should render nested StepGroup 2`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c23"
+                  class="c14"
                   data-blade-component="text"
                 >
                   Bank Details

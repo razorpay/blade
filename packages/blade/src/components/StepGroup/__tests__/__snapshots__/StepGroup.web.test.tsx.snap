@@ -196,7 +196,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   visibility: visible;
 }
 
-.c24.c24.c24.c24.c24 {
+.c23.c23.c23.c23.c23 {
   margin-left: 31px;
   height: 6px;
   width: 2px;
@@ -207,11 +207,11 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   visibility: visible;
 }
 
-.c25.c25.c25.c25.c25 {
+.c24.c24.c24.c24.c24 {
   margin-left: 20px;
 }
 
-.c26.c26.c26.c26.c26 {
+.c25.c25.c25.c25.c25 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -228,7 +228,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   visibility: visible;
 }
 
-.c27.c27.c27.c27.c27 {
+.c26.c26.c26.c26.c26 {
   visibility: hidden;
 }
 
@@ -254,7 +254,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -295,23 +295,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c23.c23.c23.c23.c23 {
-  color: hsla(211,26%,34%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -734,7 +717,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c23"
+                  class="c14"
                   data-blade-component="text"
                 >
                   Address
@@ -767,11 +750,11 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
           data-blade-component="box"
         >
           <div
-            class="c24"
+            class="c23"
             data-blade-component="base-box"
           />
           <div
-            class="c25"
+            class="c24"
             data-blade-component="box"
           >
             <div
@@ -819,12 +802,12 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
             </div>
           </div>
           <div
-            class="c26"
+            class="c25"
             data-blade-component="base-box"
           />
           <svg
             aria-hidden="true"
-            class="c27"
+            class="c26"
             data-blade-component="icon"
             fill="hsla(214, 28%, 84%, 1)"
             height="5"
@@ -879,7 +862,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c23"
+                  class="c14"
                   data-blade-component="text"
                 >
                   Bank Details
@@ -1072,7 +1055,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
