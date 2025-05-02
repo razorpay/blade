@@ -140,22 +140,6 @@ const ModalExample = () => {
         >
           Open Small Modal
         </Button>
-        <Button
-          onClick={() => {
-            setSelectedSize('medium');
-            openModal();
-          }}
-        >
-          Open Medium Modal
-        </Button>
-        <Button
-          onClick={() => {
-            setSelectedSize('large');
-            openModal();
-          }}
-        >
-          Open Large Modal
-        </Button>
       </Box>
 
       {/* Modal component */}
