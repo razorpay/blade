@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "styled-components": "5.3.11",
+    "tinycolor2": "^1.6.0",
     "typescript": "4.8.2",
     "web-vitals": "^2.1.0"
   },
@@ -28,7 +29,7 @@
     "clean": "rimraf chrome-extension",
     "mkdirs": "mkdir -p chrome-extension",
     "copy:assets": "cp -r build/ chrome-extension",
-    "copy:extensionAssets": "cp manifest.json chrome-extension && cp background_script.js chrome-extension",
+    "copy:extensionAssets": "cp manifest.json chrome-extension && node scripts/build-background-script.js",
     "copy": "yarn run copy:assets && yarn run copy:extensionAssets",
     "postbuild": "yarn run clean && yarn run mkdirs && yarn run copy"
   },
@@ -49,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.3"
   }
 }
