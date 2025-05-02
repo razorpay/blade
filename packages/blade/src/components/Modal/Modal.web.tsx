@@ -4,6 +4,7 @@ import styled, { css, keyframes } from 'styled-components';
 import type { Keyframes } from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
+import { m } from 'framer-motion';
 import { ModalHeader } from './ModalHeader';
 import type { ModalHeaderProps } from './ModalHeader';
 import { ModalFooter } from './ModalFooter';
@@ -32,6 +33,8 @@ import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { msToSeconds } from '~utils/msToSeconds';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 
 const entry = keyframes`
    from {
@@ -82,17 +85,10 @@ function getAnimation(isVisible: boolean, size: NonNullable<ModalProps['size']>)
 }
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
-  ({ isVisible, theme, size }) => {
+  ({ theme, size }) => {
     return css`
       box-shadow: ${theme.elevation.highRaised};
-      opacity: ${isVisible ? 1 : 0};
-      position: fixed;
       transform: ${size === 'full' ? '' : 'translate(-50%, -50%)'};
-      animation: ${getAnimation(isVisible, size)}
-        ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
-        ${isVisible
-          ? castWebType(theme.motion.easing.entrance)
-          : castWebType(theme.motion.easing.exit)};
 
       ${size === 'full' &&
       css`
@@ -104,6 +100,8 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
     `;
   },
 );
+
+const MotionModalContent = m(ModalContent);
 
 const Modal = ({
   isOpen = false,
@@ -181,7 +179,7 @@ const Modal = ({
               {...makeAnalyticsAttribute(rest)}
             >
               <ModalBackdrop />
-              <ModalContent
+              <MotionModalContent
                 {...metaAttribute({
                   name: MetaConstants.Modal,
                 })}
@@ -209,9 +207,48 @@ const Modal = ({
                 size={size}
                 ref={refs.setFloating}
                 overflow="hidden"
+                position="fixed"
+                initial={{
+                  opacity: 0,
+                  ...(size === 'full'
+                    ? {}
+                    : {
+                        scale: 0.9,
+                        transform: 'translate(-50%, -50%) translateY(20px)',
+                      }),
+                }}
+                animate={{
+                  opacity: isVisible ? 1 : 0,
+                  ...(size === 'full'
+                    ? {}
+                    : {
+                        scale: isVisible ? 1 : 0.9,
+                        transform: isVisible
+                          ? 'translate(-50%, -50%) translateY(0px)'
+                          : 'translate(-50%, -50%) translateY(20px)',
+                      }),
+                }}
+                exit={{
+                  opacity: 0,
+                  ...(size === 'full'
+                    ? {}
+                    : {
+                        scale: 0.9,
+                        transform: 'translate(-50%, -50%) translateY(20px)',
+                      }),
+                }}
+                style={{
+                  ...(size === 'full' ? {} : { transformOrigin: 'center center' }),
+                }}
+                transition={{
+                  duration: msToSeconds(theme.motion.duration.moderate),
+                  ease: isVisible
+                    ? cssBezierToArray(castWebType(theme.motion.easing.entrance))
+                    : cssBezierToArray(castWebType(theme.motion.easing.exit)),
+                }}
               >
                 {children}
-              </ModalContent>
+              </MotionModalContent>
             </Box>
           </FloatingFocusManager>
         ) : null}
