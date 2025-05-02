@@ -72,7 +72,7 @@ DatePickerMinMaxDate.play = async () => {
   await sleep(400);
   // expect date to be disabled
   const disabledDate = getByRole('button', {
-    name: dayjs().subtract(6, 'day').format('DD MMMM YYYY'),
+    name: dayjs().subtract(6, 'day').format('D MMMM YYYY'),
   });
   await expect(disabledDate).toBeDisabled();
   // expect month to be disabled
@@ -524,8 +524,8 @@ export const DatePickerRangeSelectAutoFocus: StoryFn<
 DatePickerRangeSelectAutoFocus.play = async () => {
   const { getByRole, getByLabelText } = within(document.body);
   const startInput = getByRole('combobox', { name: /Start Date/i });
-  const selectedEndDate = dayjs().subtract(1, 'M').format('DD MMMM YYYY');
-  const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('DD MMMM YYYY');
+  const selectedEndDate = dayjs().subtract(1, 'M').format('D MMMM YYYY');
+  const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('D MMMM YYYY');
   await userEvent.click(startInput);
   await sleep(400);
   const previousButton = getByRole('button', { name: /previous/i });
