@@ -88,8 +88,6 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
   ({ theme, size }) => {
     return css`
       box-shadow: ${theme.elevation.highRaised};
-      transform: ${size === 'full' ? '' : 'translate(-50%, -50%)'};
-
       ${size === 'full' &&
       css`
         top: ${makeSize(modalMargin[size])};
@@ -214,7 +212,8 @@ const Modal = ({
                     ? {}
                     : {
                         scale: 0.9,
-                        transform: 'translate(-50%, -50%) translateY(20px)',
+                        x: '-50%',
+                        y: '-50%',
                       }),
                 }}
                 animate={{
@@ -223,9 +222,8 @@ const Modal = ({
                     ? {}
                     : {
                         scale: isVisible ? 1 : 0.9,
-                        transform: isVisible
-                          ? 'translate(-50%, -50%) translateY(0px)'
-                          : 'translate(-50%, -50%) translateY(20px)',
+                        x: '-50%',
+                        y: '-50%',
                       }),
                 }}
                 exit={{
@@ -234,7 +232,8 @@ const Modal = ({
                     ? {}
                     : {
                         scale: 0.9,
-                        transform: 'translate(-50%, -50%) translateY(20px)',
+                        x: '-50%',
+                        y: '-50%',
                       }),
                 }}
                 style={{
