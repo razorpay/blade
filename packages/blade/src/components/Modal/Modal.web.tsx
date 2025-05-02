@@ -213,7 +213,7 @@ const Modal = ({
                     : {
                         scale: 0.9,
                         x: '-50%',
-                        y: '-50%',
+                        y: 'calc(-50 + 20px)',
                       }),
                 }}
                 animate={{
@@ -223,7 +223,7 @@ const Modal = ({
                     : {
                         scale: isVisible ? 1 : 0.9,
                         x: '-50%',
-                        y: '-50%',
+                        y: 'calc(-50%)',
                       }),
                 }}
                 exit={{
@@ -233,7 +233,7 @@ const Modal = ({
                     : {
                         scale: 0.9,
                         x: '-50%',
-                        y: '-50%',
+                        y: 'calc(-50% + 20px)',
                       }),
                 }}
                 style={{
