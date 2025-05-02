@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
-import styled, { css, keyframes } from 'styled-components';
-import type { Keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
 import { m } from 'framer-motion';
@@ -23,7 +22,7 @@ import {
 } from './modalTokens';
 import type { ModalProps } from './types';
 import { componentIds } from './constants';
-import { castWebType, makeMotionTime, makeSize } from '~utils';
+import { castWebType, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { Box } from '~components/Box';
@@ -35,54 +34,6 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
-
-const entry = keyframes`
-   from {
-     opacity: 0;
-     transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-   }
-   to {
-     opacity: 1;
-     transform: translate(-50%, -50%) scale(1) translateY(0px);
-   }
-     `;
-
-const exit = keyframes`
-   from {
-     opacity: 1;
-     transform: translate(-50%, -50%) scale(1) translateY(0px);
-   }
-   to {
-     opacity: 0;
-     transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-   }
-   `;
-
-const fullPageEntry = keyframes`
-   from {
-     opacity: 0 ;
-   }
-   to {
-     opacity: 1;
-   }
-   `;
-
-const fullPageExit = keyframes`
-   from {
-     opacity: 1;
-   }
-   to {
-     opacity: 0;
-   }
-   `;
-
-function getAnimation(isVisible: boolean, size: NonNullable<ModalProps['size']>): Keyframes {
-  if (isVisible) {
-    return size === 'full' ? fullPageEntry : entry;
-  } else {
-    return size === 'full' ? fullPageExit : exit;
-  }
-}
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
   ({ theme, size }) => {
