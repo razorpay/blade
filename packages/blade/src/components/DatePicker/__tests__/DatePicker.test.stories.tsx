@@ -71,15 +71,21 @@ DatePickerMinMaxDate.play = async () => {
   await userEvent.click(input);
   await sleep(400);
   // expect date to be disabled
+  // if date is greater then 15 days then we should check add 6 days from it
+  // if date is less then 15 days then we should check subtract 6 days from  it
+  const isGreaterThen15Days = dayjs().diff(dayjs(), 'day') > 15;
   const disabledDate = getByRole('button', {
-    name: dayjs().subtract(6, 'day').format('D MMMM YYYY'),
+    name: isGreaterThen15Days
+      ? dayjs().subtract(6, 'day').format('D MMMM YYYY')
+      : dayjs().add(6, 'day').format('D MMMM YYYY'),
   });
   await expect(disabledDate).toBeDisabled();
+
   // expect month to be disabled
   const month = getByRole('button', { name: /Change month/i });
   await userEvent.click(month);
   const disabledMonth = getByRole('button', {
-    name: dayjs().subtract(1, 'month').format('MMM'),
+    name: dayjs().subtract(2, 'month').format('MMM'),
   });
   await expect(disabledMonth).toBeDisabled();
   // expect year to be disabled
