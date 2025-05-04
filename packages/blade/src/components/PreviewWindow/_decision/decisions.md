@@ -29,17 +29,20 @@ The `Preview window` component will be the main component used to render a live 
 
 ## Preview window API
 
-| Prop             | Type             | Default | Required | Description                                                                                  |
-| ---------------- | ---------------- | ------- | -------- | -------------------------------------------------------------------------------------------- |
-| `isInteractive`  | `boolean`        | `true`  | No       | Determines whether to show preview controls and heading text.                               |
-| `children`       | `React.Element`  | —       | Yes      | The component to be rendered inside the preview window.                                       |
-| `headingText`    | `string`         | `""`    | No       | If provided, displays a heading above the previewed component.                              |
-| `onFullScreen`   | `() => void`     | —       | No       | Callback invoked when the fullscreen button is clicked.                                     |
-| `onZoomInClick`  | `({ zoomLevel }) => void`     | —       | No       | Callback invoked when the zoom-in button is clicked.                                        |
-| `onZoomOutClick` | `({ zoomlevel }) => void`     | —       | No       | Callback invoked when the zoom-out button is clicked.                                       |
-| `initialZoom` | number     | 50       | no      | a number between 1 to 100 which set zoom level      |
-| `zoomStep` | number     | 10       | no      | a number between 5 to 30 that determines the zoom step percentage per click.|
-
+| Prop                        | Type             | Default                   | Required | Description                                                                  |
+| --------------------------- | ---------------- | ------------------------- | -------- | ---------------------------------------------------------------------------- | ----------------------------------------------------- | --- |
+| `isInteractive`             | `boolean`        | `true`                    | No       | Determines whether to show preview controls and heading text.                |
+| `children`                  | `React.Element`  | —                         | Yes      | The component to be rendered inside the preview window.                      |
+| `headingText`               | `string`         | `""`                      | No       | If provided, displays a heading above the previewed component.               |
+| `onFullScreen`              | `() => void`     | —                         | No       | Callback invoked when the fullscreen button is clicked.                      |
+| <!--                        | `onZoomInClick`  | `({ zoomLevel }) => void` | —        | No                                                                           | Callback invoked when the zoom-in button is clicked.  | --> |
+| <!--                        | `onZoomOutClick` | `({ zoomlevel }) => void` | —        | No                                                                           | Callback invoked when the zoom-out button is clicked. |
+|                            | -->              |
+| `onZoomChange`              | `() => void`     | —                         | No       | Callback invoked when zoom changes.                                          |
+| `zoom`                      | number           | 50                        | no       | a number between 1 to 100 which set zoom level                               |
+| `onDragChange`              | `() => void`     | -                         | no       | Callback invoked when Drag Changes.                                          |
+| `additionalPreviewControls` | `React.Element`  | -                         | no       | If we want to show additional controls button or button group                |
+| `zoomStep`                  | number           | 10                        | no       | a number between 5 to 30 that determines the zoom step percentage per click. |
 
 ```tsx
 type PreviewwindowProps = {
@@ -47,18 +50,22 @@ type PreviewwindowProps = {
   children: React.ReactElement;
   headingText?: string;
   onFullScreen?: () => void;
-  onZoomInClick?: () => void;
-  onZoomOutClick?: () => void;
+  zoom: number;
+  onZoomChange?: () => void;
+  onDragChange?: () => void;
+  additionalPreviewControls: React.ReactElement;
   initialZoom?: number;
   zoomStep?: number;
 };
-
 ```
 
 ```tsx
 <Previewwindow
   headingText="Image Preview"
   onFullScreen={() => console.log('Fullscreen triggered')}
+  additionalPreviewControls={
+    <CustomComponent/>
+  }
 >
   <img src="/preview.jpg" alt="Example Preview" />
 </Previewwindow>
@@ -67,7 +74,11 @@ type PreviewwindowProps = {
 <Previewwindow
   isInteractive
   onZoomInClick={() => console.log('Zoom In')}
-  onZoomOutClick={() => console.log('Zoom Out')}>
+  onZoomOutClick={() => console.log('Zoom Out')}
+  additionalPreviewControls={
+    <CustomComponent/>
+  }
+  >
   <ComponentToPreview />
 </Previewwindow>
 
@@ -77,14 +88,13 @@ type PreviewwindowProps = {
 </Previewwindow>
 ```
 
-## Alternative API 
+## Alternative API
+
 ```tsx
 // Using prop-driven content instead of children
-<Previewwindow
-  content={<ImageComponent />}
-  headingText="Preview"
-/>
+<Previewwindow content={<ImageComponent />} headingText="Preview" />
 ```
 
 ## Open Questions
+
 - should we change it's name to PreviewPanel ?
