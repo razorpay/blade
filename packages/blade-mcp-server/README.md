@@ -1,66 +1,98 @@
 # Blade MCP Server
 
-A server implementation for the Model Context Protocol (MCP) used with the Blade design system.
+[![npm version](https://img.shields.io/npm/v/@razorpay/blade-mcp-server.svg)](https://www.npmjs.com/package/@razorpay/blade-mcp-server)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](https://www.typescriptlang.org/)
 
-## Overview
+Blade MCP Server is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) that implements Razorpay's Design Guidelines and allows anyone to build Web Interfaces using Blade Design System.
 
-This package provides an MCP server implementation using Anthropic's Model Context Protocol SDK to integrate AI assistants with the Blade design system.
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
+- Node.js 18.x or higher ([install using NVM](https://github.com/nvm-sh/nvm#installing-and-updating))
 
-- Node.js 18.x or higher
-- Yarn package manager
+## Integrations
 
-### Installation
+### Cursor  or VS Code
 
-```bash
-# From the root of the monorepo
-yarn install
+Create or update your `mcp.json` file with:
+
+```json
+{
+  "mcpServers": {
+    "blade-mcp-server": {
+      "command": "npx",
+      "args": ["@razorpay/blade-mcp-server@latest"]
+    }
+  }
+}
+
 ```
 
-### Environment Setup
+### Claude Desktop
 
-Copy the example environment file and update with your credentials:
+Add the following to `claude_desktop_config.json`:
 
-```bash
-cp .env.example .env
+```json
+{
+  "mcpServers": {
+    "blade-mcp-server": {
+      "command": "npx",
+      "args": ["@razorpay/blade-mcp-server@latest"]
+    }
+  }
+}
+```
+> [!NOTE]
+> * Learn about how to configure MCP servers in [Claude Desktop](https://modelcontextprotocol.io/quickstart/user)
+> * Learn how to install [Claude Desktop](https://claude.ai/download)
+
+## Usage Example
+
+```
+Can you create a signup form with best UX practices using Blade?
 ```
 
-Update the `.env` file with your Anthropic API key.
+The AI agents will use the MCP server to retrieve components and generate appropriate code.
 
-### Development
+## Local Development Setup
 
-To start the development server:
-
+### Clone the repository
 ```bash
-yarn dev
-```
+# Clone the repository
+git clone https://github.com/razorpay/blade.git
+cd blade
 
-The server will run on http://localhost:3000 (or the port specified in your environment).
+# Install dependencies
+yarn
 
-### Building
+# Navigate to the MCP server package
+cd packages/blade-mcp-server
 
-To build the package:
-
-```bash
+# Build the package
 yarn build
 ```
 
-### Running in Production
+### Local Development with Cursor
 
-To run the built server:
+For local development with Cursor, update your `mcp.json` with the local path:
 
-```bash
-yarn start
+```json
+{
+  "blade-mcp-server": {
+    "command": "node",
+    "args": ["<<USER_PATH>>/blade/packages/blade-mcp-server/dist/index.js"]
+  }
+}
 ```
 
-## API Endpoints
+Replace the `<<USER_PATH>>` with your actual local path to the repository.
 
-- `GET /v1/assistants`: List all available assistants
-- `POST /v1/assistants/{assistant_id}/messages`: Send a message to an assistant
+
+## Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](../../CONTRIBUTING.md) for details.
 
 ## License
 
-MIT 
+MIT © Razorpay 
