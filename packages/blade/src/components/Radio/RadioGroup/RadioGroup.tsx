@@ -144,7 +144,7 @@ const RadioGroup = ({
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
-  const gap = radioSizes.group.gap[size][matchedDeviceType];
+  const gap = radioSizes.group.orientation[orientation].gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
 
   return (
@@ -174,7 +174,7 @@ const RadioGroup = ({
             <BaseBox
               display="flex"
               flexDirection={orientation === 'vertical' ? 'column' : 'row'}
-              gap={orientation === 'horizontal' ? 'spacing.2' : 'spacing.0'}
+              // gap={orientation === 'horizontal' ? 'spacing.2' : 'spacing.0'}
             >
               {React.Children.map(children, (child, index) => {
                 return (
