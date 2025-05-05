@@ -35,13 +35,12 @@ The `Preview window` component will be the main component used to render a live 
 | `children`                  | `React.Element`  | —                         | Yes      | The component to be rendered inside the preview window.                      |
 | `headingText`               | `string`         | `""`                      | No       | If provided, displays a heading above the previewed component.               |
 | `onFullScreen`              | `() => void`     | —                         | No       | Callback invoked when the fullscreen button is clicked.                      |
-| `onZoomInClick`             | `({ zoomLevel }) => void` | —               | No       | Callback invoked when the zoom-in button is clicked.                         |
-| `onZoomOutClick`            | `({ zoomLevel }) => void` | —               | No       | Callback invoked when the zoom-out button is clicked.                        |
 | `onZoomChange`              | `() => void`     | —                         | No       | Callback invoked when zoom changes.                                          |
 | `zoom`                      | `number`         | `50`                      | No       | A number between 1 to 100 which sets the zoom level.                         |
 | `onDragChange`              | `() => void`     | —                         | No       | Callback invoked when drag changes.                                          |
 | `additionalPreviewControls` | `React.Element`  | —                         | No       | If we want to show additional controls button or button group.               |
 | `zoomStep`                  | `number`         | `10`                      | No       | A number between 5 to 30 that determines the zoom step percentage per click. |
+| `defaultZoom`                  | `number`         | `10`                      | No       |  A number between 1 to 100 which tells initial zoom level
 
 ```tsx
 type PreviewwindowProps = {
@@ -53,7 +52,7 @@ type PreviewwindowProps = {
   onZoomChange?: () => void;
   onDragChange?: () => void;
   additionalPreviewControls: React.ReactElement;
-  initialZoom?: number;
+  defaultZoom?: number;
   zoomStep?: number;
 };
 ```
