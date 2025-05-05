@@ -30,19 +30,18 @@ The `Preview window` component will be the main component used to render a live 
 ## Preview window API
 
 | Prop                        | Type             | Default                   | Required | Description                                                                  |
-| --------------------------- | ---------------- | ------------------------- | -------- | ---------------------------------------------------------------------------- | ----------------------------------------------------- | --- |
+| --------------------------- | ---------------- | ------------------------- | -------- | ---------------------------------------------------------------------------- |
 | `isInteractive`             | `boolean`        | `true`                    | No       | Determines whether to show preview controls and heading text.                |
 | `children`                  | `React.Element`  | —                         | Yes      | The component to be rendered inside the preview window.                      |
 | `headingText`               | `string`         | `""`                      | No       | If provided, displays a heading above the previewed component.               |
 | `onFullScreen`              | `() => void`     | —                         | No       | Callback invoked when the fullscreen button is clicked.                      |
-| <!--                        | `onZoomInClick`  | `({ zoomLevel }) => void` | —        | No                                                                           | Callback invoked when the zoom-in button is clicked.  | --> |
-| <!--                        | `onZoomOutClick` | `({ zoomlevel }) => void` | —        | No                                                                           | Callback invoked when the zoom-out button is clicked. |
-|                            | -->              |
+| `onZoomInClick`             | `({ zoomLevel }) => void` | —               | No       | Callback invoked when the zoom-in button is clicked.                         |
+| `onZoomOutClick`            | `({ zoomLevel }) => void` | —               | No       | Callback invoked when the zoom-out button is clicked.                        |
 | `onZoomChange`              | `() => void`     | —                         | No       | Callback invoked when zoom changes.                                          |
-| `zoom`                      | number           | 50                        | no       | a number between 1 to 100 which set zoom level                               |
-| `onDragChange`              | `() => void`     | -                         | no       | Callback invoked when Drag Changes.                                          |
-| `additionalPreviewControls` | `React.Element`  | -                         | no       | If we want to show additional controls button or button group                |
-| `zoomStep`                  | number           | 10                        | no       | a number between 5 to 30 that determines the zoom step percentage per click. |
+| `zoom`                      | `number`         | `50`                      | No       | A number between 1 to 100 which sets the zoom level.                         |
+| `onDragChange`              | `() => void`     | —                         | No       | Callback invoked when drag changes.                                          |
+| `additionalPreviewControls` | `React.Element`  | —                         | No       | If we want to show additional controls button or button group.               |
+| `zoomStep`                  | `number`         | `10`                      | No       | A number between 5 to 30 that determines the zoom step percentage per click. |
 
 ```tsx
 type PreviewwindowProps = {
