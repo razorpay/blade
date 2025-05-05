@@ -88,12 +88,24 @@ type PreviewwindowProps = {
 ```
 
 ## Alternative API
+- For PreviewWindow component
+    ```tsx
+    // Using prop-driven content instead of children
+    <Previewwindow content={<ImageComponent />} headingText="Preview" />
+    ```
+- For `additionalPreviewControls `
 
-```tsx
-// Using prop-driven content instead of children
-<Previewwindow content={<ImageComponent />} headingText="Preview" />
-```
+    we can provide a wrapper component  <PreviewControls> and consumers can pass their custom controls
+    ```tsx
+    <PreviewControls>
+     <ZoomControls/>
+     <ResponsiveControls /> 
+    </PreviewControls>
+    ```
+
+
+ 
 
 ## Open Questions
 
-- should we change it's name to PreviewPanel ?
+- Should we change it's name to PreviewPanel ?
