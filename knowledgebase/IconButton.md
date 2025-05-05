@@ -1,10 +1,13 @@
 ## Component Name
+
 IconButton
 
 ## Description
+
 The IconButton component provides an accessible way to trigger actions using only icons. It is designed for interfaces where space is limited or when a visual-only control is preferred, such as close buttons for modals, action buttons in cards, or compact toolbar controls. IconButton maintains proper accessibility with required labels while offering various visual styles.
 
 ## TypeScript Types
+
 The following types represent the props that the IconButton component accepts. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -46,7 +49,9 @@ type IconButtonProps = {
    * Function called when the IconButton is clicked
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-} & StyledPropsBlade & TestID & DataAnalyticsAttribute;
+} & StyledPropsBlade &
+  TestID &
+  DataAnalyticsAttribute;
 
 /**
  * Type for icon components
@@ -55,34 +60,6 @@ type IconComponent = React.ComponentType<{
   size?: 'small' | 'medium' | 'large';
   color?: string;
 }>;
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
- * Styled props for blade components that can be applied to IconButton
- * Includes margin, padding, and other layout props
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Examples
@@ -93,36 +70,24 @@ This example demonstrates the basic usage of the IconButton component with diffe
 
 ```tsx
 import React from 'react';
-import { 
-  IconButton, 
-  Box, 
-  Text 
-} from '@razorpay/blade/components';
-import {
-  CloseIcon,
-  EditIcon,
-  InfoIcon
-} from '@razorpay/blade/components/Icons';
+import { IconButton, Box, Text, CloseIcon, EditIcon, InfoIcon } from '@razorpay/blade/components';
 
 const IconButtonBasicExample = () => {
   return (
     <Box padding="spacing.5">
-      <Box 
+      <Box
         backgroundColor="surface.background.gray.subtle"
         padding="spacing.4"
         borderRadius="medium"
       >
-        <Box 
-          display="flex" 
-          gap="spacing.4" 
-        >
+        <Box display="flex" gap="spacing.4">
           {/* Default */}
           <IconButton
             icon={CloseIcon}
             accessibilityLabel="Close dialog"
             onClick={() => console.log('Close clicked')}
           />
-          
+
           {/* With size and emphasis */}
           <IconButton
             icon={EditIcon}
@@ -131,7 +96,7 @@ const IconButtonBasicExample = () => {
             accessibilityLabel="Edit item"
             onClick={() => console.log('Edit clicked')}
           />
-          
+
           {/* Disabled state */}
           <IconButton
             icon={InfoIcon}

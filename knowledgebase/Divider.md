@@ -1,10 +1,13 @@
 ## Component Name
+
 Divider
 
 ## Description
+
 Divider is a visual element used to separate or divide content within a layout. It provides a clear visual distinction between different sections of content, enhancing readability and organization. The component supports both horizontal and vertical orientations, making it versatile for various UI patterns and layout requirements.
 
 ## TypeScript Types
+
 The following types represent the props that the Divider component accepts. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -17,30 +20,15 @@ type DividerProps = {
    * @default 'horizontal'
    */
   orientation?: 'horizontal' | 'vertical';
-} & StyledPropsBlade & TestID;
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- * Includes margin, padding, layout and other styling props
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
+} & StyledPropsBlade &
+  TestID;
 ```
 
 ## Examples
 
 ### Horizontal Divider
+
+This example shows the default horizontal divider that separates text sections with vertical spacing.
 
 ```tsx
 import { Divider, Box, Text } from '@razorpay/blade/components';
@@ -56,6 +44,8 @@ const HorizontalDividerExample = () => (
 
 ### Vertical Divider
 
+This example demonstrates a vertical divider that separates inline content horizontally within a flex container.
+
 ```tsx
 import { Divider, Box, Text } from '@razorpay/blade/components';
 
@@ -70,6 +60,8 @@ const VerticalDividerExample = () => (
 
 ### Styled Divider
 
+This example shows how to customize dividers with different colors and thicknesses to create visual hierarchies.
+
 ```tsx
 import { Divider, Box, Text } from '@razorpay/blade/components';
 
@@ -77,13 +69,9 @@ const StyledDividerExample = () => (
   <Box>
     <Text>Regular divider below</Text>
     <Divider marginY="spacing.2" />
-    
+
     <Text>Colored divider below</Text>
-    <Divider 
-      marginY="spacing.2"
-      borderColor="border.primary" 
-      borderWidth="thick"
-    />
+    <Divider marginY="spacing.2" borderColor="border.primary" borderWidth="thick" />
   </Box>
 );
-``` 
+```

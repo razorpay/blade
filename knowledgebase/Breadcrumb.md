@@ -1,10 +1,13 @@
 ## Component Name
+
 Breadcrumb
 
 ## Description
+
 Breadcrumbs are navigational components that display the user's current location within an application's hierarchy. They provide a clear path back to previous pages or sections, enhancing user orientation and enabling quick navigation between related pages. Breadcrumbs are particularly useful in applications with multiple levels of content organization, helping users understand their current context and navigate efficiently.
 
 ## TypeScript Types
+
 The following types represent the props that the Breadcrumb component and its subcomponent BreadcrumbItem accept. These types allow you to properly configure the navigation according to your needs.
 
 ```typescript
@@ -35,7 +38,9 @@ type BreadcrumbProps = {
    * @default false
    */
   showLastSeparator?: boolean;
-} & StyledPropsBlade & TestID & DataAnalyticsAttribute;
+} & StyledPropsBlade &
+  TestID &
+  DataAnalyticsAttribute;
 
 /**
  * Props for the BreadcrumbItem component
@@ -79,34 +84,8 @@ type BreadcrumbItemProps = {
    * For advanced use cases: render with a custom component (e.g., React Router's Link)
    */
   as?: React.ElementType;
-} & TestID & DataAnalyticsAttribute;
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
+} & TestID &
+  DataAnalyticsAttribute;
 
 /**
  * Type for icon components
@@ -118,6 +97,7 @@ type IconComponent = React.ComponentType<{
 ```
 
 ## Example
+
 The following examples demonstrate how to use the Breadcrumb component in various scenarios.
 
 ### Basic Breadcrumb with Different Sizes and Colors
@@ -126,47 +106,30 @@ This example demonstrates Breadcrumbs with different sizes, colors, and on diffe
 
 ```tsx
 import React from 'react';
-import { 
-  Box, 
-  Breadcrumb, 
-  BreadcrumbItem 
-} from '@razorpay/blade/components';
-import { 
-  HomeIcon
-} from '@razorpay/blade/components/Icons';
+import { Box, Breadcrumb, BreadcrumbItem, HomeIcon } from '@razorpay/blade/components';
 
 const BreadcrumbExample = () => {
   return (
     <Box padding="spacing.4">
-      <Breadcrumb 
-        size="medium" 
+      <Breadcrumb
+        size="medium"
         color="primary"
         testID="breadcrumb-example"
         data-analytics="breadcrumb-primary"
       >
-        <BreadcrumbItem 
-          icon={HomeIcon} 
-          href="/home" 
+        <BreadcrumbItem
+          icon={HomeIcon}
+          href="/home"
           accessibilityLabel="Home"
           testID="breadcrumb-home"
         />
-        <BreadcrumbItem 
-          href="/dashboard"
-          testID="breadcrumb-dashboard"
-        >
+        <BreadcrumbItem href="/dashboard" testID="breadcrumb-dashboard">
           Dashboard
         </BreadcrumbItem>
-        <BreadcrumbItem 
-          href="/payments"
-          testID="breadcrumb-payments"
-        >
+        <BreadcrumbItem href="/payments" testID="breadcrumb-payments">
           Payments
         </BreadcrumbItem>
-        <BreadcrumbItem 
-          isCurrentPage 
-          href="/settlements"
-          testID="breadcrumb-settlements"
-        >
+        <BreadcrumbItem isCurrentPage href="/settlements" testID="breadcrumb-settlements">
           Settlements
         </BreadcrumbItem>
       </Breadcrumb>
@@ -183,41 +146,26 @@ This example demonstrates how to integrate the Breadcrumb component with React R
 
 ```tsx
 import React from 'react';
-import { 
-  Box, 
-  Breadcrumb, 
-  BreadcrumbItem
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  HomeIcon,
+  PaymentIcon,
+  ProductIcon,
 } from '@razorpay/blade/components';
-import { 
-  HomeIcon, 
-  PaymentIcon, 
-  ProductIcon 
-} from '@razorpay/blade/components/Icons';
-import { 
-  useLocation, 
-  Link as RouterLink, 
-  matchPath
-} from 'react-router-dom';
+import { useLocation, Link as RouterLink, matchPath } from 'react-router-dom';
 
 // Custom BreadcrumbItem that integrates with React Router
 const RouterBreadcrumbItem = (props) => {
   const location = useLocation();
   const { to, children, icon, ...rest } = props;
-  
+
   // Check if this item matches the current location
-  const isCurrentPage = matchPath(
-    { path: to, end: true }, 
-    location.pathname
-  ) !== null;
+  const isCurrentPage = matchPath({ path: to, end: true }, location.pathname) !== null;
 
   return (
-    <BreadcrumbItem
-      as={RouterLink}
-      href={to}
-      icon={icon}
-      isCurrentPage={isCurrentPage}
-      {...rest}
-    >
+    <BreadcrumbItem as={RouterLink} href={to} icon={icon} isCurrentPage={isCurrentPage} {...rest}>
       {children}
     </BreadcrumbItem>
   );
@@ -235,33 +183,24 @@ const DynamicBreadcrumb = () => {
 
     // Always include home
     items.push(
-      <RouterBreadcrumbItem
-        key="home"
-        to="/"
-        icon={HomeIcon}
-        accessibilityLabel="Home"
-      />
+      <RouterBreadcrumbItem key="home" to="/" icon={HomeIcon} accessibilityLabel="Home" />,
     );
 
     // Add items for each path segment
     pathSegments.forEach((segment, index) => {
       currentPath += `/${segment}`;
-      
+
       // Get appropriate icon and label based on the segment
       let icon = null;
       let label = segment.charAt(0).toUpperCase() + segment.slice(1);
-      
+
       if (segment === 'products') icon = ProductIcon;
       if (segment === 'payments') icon = PaymentIcon;
 
       items.push(
-        <RouterBreadcrumbItem
-          key={currentPath}
-          to={currentPath}
-          icon={icon}
-        >
+        <RouterBreadcrumbItem key={currentPath} to={currentPath} icon={icon}>
           {label}
-        </RouterBreadcrumbItem>
+        </RouterBreadcrumbItem>,
       );
     });
 
@@ -270,8 +209,8 @@ const DynamicBreadcrumb = () => {
 
   return (
     <Box padding="spacing.4">
-      <Breadcrumb 
-        size="medium" 
+      <Breadcrumb
+        size="medium"
         color={location.pathname.includes('/payments') ? 'primary' : 'neutral'}
       >
         {getItems()}
@@ -289,16 +228,14 @@ This example demonstrates a responsive breadcrumb that wraps to multiple lines o
 
 ```tsx
 import React from 'react';
-import { 
-  Box, 
-  Breadcrumb, 
-  BreadcrumbItem, 
-  Text 
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  Text,
+  HomeIcon,
+  FolderIcon,
 } from '@razorpay/blade/components';
-import { 
-  HomeIcon, 
-  FolderIcon 
-} from '@razorpay/blade/components/Icons';
 
 const ResponsiveBreadcrumb = () => {
   // Example deep navigation structure
@@ -310,28 +247,25 @@ const ResponsiveBreadcrumb = () => {
     { label: 'Laptops', href: '/products/electronics/computers/laptops' },
     { label: 'Gaming Laptops', href: '/products/electronics/computers/laptops/gaming' },
     { label: 'Accessories', href: '/products/electronics/computers/laptops/gaming/accessories' },
-    { label: 'Product Details', href: '/products/electronics/computers/laptops/gaming/accessories/details', isCurrentPage: true }
+    {
+      label: 'Product Details',
+      href: '/products/electronics/computers/laptops/gaming/accessories/details',
+      isCurrentPage: true,
+    },
   ];
 
   return (
-    <Box 
+    <Box
       width={{ base: '100%', m: '80%', l: '100%' }}
       padding="spacing.4"
       backgroundColor="surface.background.gray.subtle"
       borderRadius="medium"
     >
-      <Text 
-        variant="body" 
-        size="medium" 
-        marginBottom="spacing.3"
-      >
+      <Text variant="body" size="medium" marginBottom="spacing.3">
         Breadcrumb automatically wraps to multiple lines when needed:
       </Text>
-      
-      <Breadcrumb 
-        size="medium" 
-        color="primary"
-      >
+
+      <Breadcrumb size="medium" color="primary">
         {navigationItems.map((item, index) => (
           <BreadcrumbItem
             key={index}
@@ -348,4 +282,5 @@ const ResponsiveBreadcrumb = () => {
   );
 };
 
-export default ResponsiveBreadcrumb; 
+export default ResponsiveBreadcrumb;
+```

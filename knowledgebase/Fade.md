@@ -1,10 +1,13 @@
 ## Component Name
+
 Fade
 
 ## Description
+
 The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear. It provides seamless transitions that enhance the user experience by softening abrupt content changes. Fade can be triggered by various interactions such as mounting, visibility changes, or viewport entry, making it versatile for creating engaging interfaces.
 
 ## TypeScript Types
+
 The following types represent the props that the Fade component accepts. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -39,19 +42,13 @@ type FadeProps = {
    * @default false
    */
   shouldUnmountWhenHidden?: boolean;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Motion triggers for animation components
  */
-type MotionTrigger = 
-  | 'hover' 
-  | 'focus' 
-  | 'press' 
-  | 'mount'
-  | 'in-view'
-  | 'on-animate-interactions';
-
+type MotionTrigger = 'hover' | 'focus' | 'press' | 'mount' | 'in-view' | 'on-animate-interactions';
 ```
 
 ## Examples
@@ -62,19 +59,11 @@ This example demonstrates the controlled usage of the Fade component with a togg
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Fade, 
-  Box, 
-  Button, 
-  Card, 
-  CardBody, 
-  Heading, 
-  Text 
-} from '@razorpay/blade/components';
+import { Fade, Box, Button, Card, CardBody, Heading, Text } from '@razorpay/blade/components';
 
 const ControlledFadeExample = () => {
   const [isVisible, setIsVisible] = useState(true);
-  
+
   return (
     <Box
       backgroundColor="surface.background.gray.intense"
@@ -82,28 +71,20 @@ const ControlledFadeExample = () => {
       borderRadius="medium"
       minHeight="300px"
     >
-      <Button 
-        marginBottom="spacing.4" 
-        onClick={() => setIsVisible(!isVisible)}
-        variant="secondary"
-      >
+      <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)} variant="secondary">
         {isVisible ? 'Hide Content' : 'Show Content'}
       </Button>
-      
-      <Fade 
-        isVisible={isVisible} 
-        type="inout" 
-        shouldUnmountWhenHidden={false}
-      >
+
+      <Fade isVisible={isVisible} type="inout" shouldUnmountWhenHidden={false}>
         <Card>
           <CardBody>
             <Heading size="medium" marginBottom="spacing.3">
               Fade Animation Demo
             </Heading>
             <Text>
-              This content fades in and out when the toggle button is clicked.
-              The shouldUnmountWhenHidden prop is set to false, so the component
-              remains in the DOM even when hidden.
+              This content fades in and out when the toggle button is clicked. The
+              shouldUnmountWhenHidden prop is set to false, so the component remains in the DOM even
+              when hidden.
             </Text>
           </CardBody>
         </Card>
@@ -121,14 +102,7 @@ This example shows how to trigger fade animations when elements enter the viewpo
 
 ```tsx
 import React from 'react';
-import { 
-  Fade, 
-  Box, 
-  Card, 
-  CardBody, 
-  Heading, 
-  Text 
-} from '@razorpay/blade/components';
+import { Fade, Box, Card, CardBody, Heading, Text } from '@razorpay/blade/components';
 
 const ViewportFadeExample = () => {
   return (
@@ -141,28 +115,27 @@ const ViewportFadeExample = () => {
     >
       {/* Spacer to enable scrolling */}
       <Box height="700px" display="flex" alignItems="center" justifyContent="center">
-        <Text size="large" weight="semibold">Scroll down to see the fade effect</Text>
+        <Text size="large" weight="semibold">
+          Scroll down to see the fade effect
+        </Text>
       </Box>
-      
+
       {/* Content that fades in when scrolled into view */}
-      <Fade 
-        motionTriggers={['in-view']} 
-        type="in"
-      >
+      <Fade motionTriggers={['in-view']} type="in">
         <Card>
           <CardBody>
             <Heading size="medium" marginBottom="spacing.3">
               Appears on Scroll
             </Heading>
             <Text>
-              This card fades in when it enters the viewport as you scroll down.
-              The 'in-view' motion trigger activates the animation when the element
-              becomes visible in the viewport.
+              This card fades in when it enters the viewport as you scroll down. The 'in-view'
+              motion trigger activates the animation when the element becomes visible in the
+              viewport.
             </Text>
           </CardBody>
         </Card>
       </Fade>
-      
+
       {/* Additional space after the content */}
       <Box height="200px" />
     </Box>
@@ -178,21 +151,21 @@ This example demonstrates using Fade for smooth transitions between routes in a 
 
 ```tsx
 import React from 'react';
-import { 
-  Fade, 
-  Card, 
-  CardBody, 
-  CardHeader, 
-  CardHeaderLeading, 
+import {
+  Fade,
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
   Box,
-  Text 
+  Text,
 } from '@razorpay/blade/components';
 import { Route, Switch, useLocation } from 'react-router-dom';
 
 const PageTransitionExample = () => {
   // Access location object to trigger fade on route changes
   const location = useLocation();
-  
+
   return (
     <Box padding="spacing.4">
       <Switch location={location}>
@@ -200,54 +173,47 @@ const PageTransitionExample = () => {
           <Fade key="dashboard" motionTriggers={['mount']} type="in">
             <Card>
               <CardHeader>
-                <CardHeaderLeading 
-                  title="Dashboard" 
-                  subtitle="View your account summary" 
-                />
+                <CardHeaderLeading title="Dashboard" subtitle="View your account summary" />
               </CardHeader>
               <CardBody>
                 <Text>
-                  This is the dashboard page that fades in when navigated to.
-                  Each route uses a Fade component to create a smooth transition effect.
+                  This is the dashboard page that fades in when navigated to. Each route uses a Fade
+                  component to create a smooth transition effect.
                 </Text>
               </CardBody>
             </Card>
           </Fade>
         </Route>
-        
+
         <Route path="/profile">
           <Fade key="profile" motionTriggers={['mount']} type="in">
             <Card>
               <CardHeader>
-                <CardHeaderLeading 
-                  title="User Profile" 
-                  subtitle="Manage your personal information" 
+                <CardHeaderLeading
+                  title="User Profile"
+                  subtitle="Manage your personal information"
                 />
               </CardHeader>
               <CardBody>
                 <Text>
-                  This is the profile page that fades in when navigated to.
-                  Using a unique key with the Fade component ensures the animation
-                  plays for each route change.
+                  This is the profile page that fades in when navigated to. Using a unique key with
+                  the Fade component ensures the animation plays for each route change.
                 </Text>
               </CardBody>
             </Card>
           </Fade>
         </Route>
-        
+
         <Route path="/">
           <Fade key="home" motionTriggers={['mount']} type="in">
             <Card>
               <CardHeader>
-                <CardHeaderLeading 
-                  title="Home" 
-                  subtitle="Welcome to the application" 
-                />
+                <CardHeaderLeading title="Home" subtitle="Welcome to the application" />
               </CardHeader>
               <CardBody>
                 <Text>
-                  This is the home page with a fade-in animation.
-                  The mount trigger ensures the content fades in when the route loads.
+                  This is the home page with a fade-in animation. The mount trigger ensures the
+                  content fades in when the route loads.
                 </Text>
               </CardBody>
             </Card>
@@ -267,38 +233,26 @@ This example shows how to use the Fade component with refs to maintain functiona
 
 ```tsx
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Fade, 
-  Box, 
-  Button, 
-  TextInput 
-} from '@razorpay/blade/components';
+import { Fade, Box, Button, TextInput } from '@razorpay/blade/components';
 
 const FadeWithRefExample = () => {
   const [isVisible, setIsVisible] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  
+
   // Focus the input when it becomes visible
   useEffect(() => {
     if (isVisible && inputRef.current) {
       inputRef.current.focus();
     }
   }, [isVisible]);
-  
+
   return (
     <Box minHeight="200px" padding="spacing.6">
-      <Button 
-        marginBottom="spacing.4" 
-        onClick={() => setIsVisible(!isVisible)}
-      >
+      <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
         {isVisible ? 'Hide Form' : 'Show Form'}
       </Button>
-      
-      <Fade 
-        isVisible={isVisible} 
-        type="inout"
-        shouldUnmountWhenHidden={true}
-      >
+
+      <Fade isVisible={isVisible} type="inout" shouldUnmountWhenHidden={true}>
         <TextInput
           ref={inputRef}
           label="Email Address"
@@ -311,4 +265,4 @@ const FadeWithRefExample = () => {
 };
 
 export default FadeWithRefExample;
-``` 
+```

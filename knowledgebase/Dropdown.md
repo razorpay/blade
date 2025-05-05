@@ -1,10 +1,13 @@
 ## Component Name
+
 Dropdown
 
 ## Description
+
 Dropdown is a versatile component that displays a floating overlay with content beneath a trigger element. It supports various trigger types (buttons, links, inputs) and content patterns including selection menus, filter chips, and autocomplete. Dropdown offers controlled and uncontrolled modes, with built-in positioning logic to ensure the overlay appears in the optimal location regardless of available space.
 
 ## TypeScript Types
+
 The following types represent the props that the Dropdown component and its subcomponents accept.
 
 ```typescript
@@ -49,7 +52,8 @@ type DropdownProps = {
    * @default true
    */
   shouldCloseOnEscape?: boolean;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for the DropdownOverlay component
@@ -248,23 +252,6 @@ type FilterChipGroupProps = {
  * Type for the Icon component
  */
 type IconComponent = React.ComponentType<any>;
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Examples
@@ -275,30 +262,28 @@ This example shows a simple dropdown with a button trigger and action list items
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Dropdown, 
-  DropdownButton, 
+import {
+  Dropdown,
+  DropdownButton,
   DropdownOverlay,
   ActionList,
   ActionListItem,
-  ActionListItemIcon
+  ActionListItemIcon,
+  CheckIcon,
+  ClockIcon,
+  CloseIcon,
 } from '@razorpay/blade/components';
-import { 
-  CheckIcon, 
-  ClockIcon, 
-  CloseIcon 
-} from '@razorpay/blade/icons';
 
 const BasicDropdownExample = () => {
   const [status, setStatus] = useState<string | undefined>();
-  
+
   return (
     <Dropdown>
       {/* Button trigger with dynamic text based on selection */}
       <DropdownButton variant="tertiary" size="medium">
         Status: {status || 'Select'}
       </DropdownButton>
-      
+
       <DropdownOverlay width="240px">
         <ActionList>
           <ActionListItem
@@ -308,7 +293,7 @@ const BasicDropdownExample = () => {
             title="Approve"
             value="approve"
           />
-          
+
           <ActionListItem
             onClick={({ name }) => setStatus(name)}
             leading={<ActionListItemIcon icon={ClockIcon} />}
@@ -316,7 +301,7 @@ const BasicDropdownExample = () => {
             title="In Progress"
             value="in-progress"
           />
-          
+
           <ActionListItem
             onClick={({ name }) => setStatus(name)}
             leading={<ActionListItemIcon icon={CloseIcon} />}
@@ -338,8 +323,8 @@ This example demonstrates a form-style dropdown for selecting values, supporting
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Dropdown, 
+import {
+  Dropdown,
   DropdownOverlay,
   DropdownHeader,
   DropdownFooter,
@@ -347,19 +332,22 @@ import {
   ActionListItem,
   SelectInput,
   Button,
-  Box
+  Box,
+  CheckIcon,
+  ClockIcon,
+  CloseIcon,
 } from '@razorpay/blade/components';
 
 const SelectDropdownExample = () => {
   // Single selection state
   const [singleValue, setSingleValue] = useState<string>('');
-  
+
   // Multiple selection state
   const [multiValues, setMultiValues] = useState<string[]>([]);
-  
+
   // Controlled open state for multiple selection dropdown
   const [isMultiOpen, setIsMultiOpen] = useState(false);
-  
+
   return (
     <Box display="flex" flexDirection="column" gap="spacing.6">
       {/* Single Selection Dropdown */}
@@ -386,13 +374,9 @@ const SelectDropdownExample = () => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-      
+
       {/* Multiple Selection Dropdown with Header and Footer */}
-      <Dropdown 
-        selectionType="multiple"
-        isOpen={isMultiOpen}
-        onOpenChange={setIsMultiOpen}
-      >
+      <Dropdown selectionType="multiple" isOpen={isMultiOpen} onOpenChange={setIsMultiOpen}>
         <SelectInput
           label="Select Multiple Cities"
           placeholder="Choose cities"
@@ -407,10 +391,10 @@ const SelectDropdownExample = () => {
           errorText="Please select at least one city"
           isRequired
         />
-        
+
         <DropdownOverlay width="300px">
           <DropdownHeader title="Available Cities" subtitle="Select one or more" />
-          
+
           <ActionList>
             <ActionListItem title="Mumbai" value="mumbai" />
             <ActionListItem title="Bangalore" value="bangalore" />
@@ -418,20 +402,13 @@ const SelectDropdownExample = () => {
             <ActionListItem title="Chennai" value="chennai" />
             <ActionListItem title="Hyderabad" value="hyderabad" />
           </ActionList>
-          
+
           <DropdownFooter>
             <Box display="flex" justifyContent="space-between" width="100%">
-              <Button 
-                variant="tertiary" 
-                size="small" 
-                onClick={() => setMultiValues([])}
-              >
+              <Button variant="tertiary" size="small" onClick={() => setMultiValues([])}>
                 Clear All
               </Button>
-              <Button 
-                size="small" 
-                onClick={() => setIsMultiOpen(false)}
-              >
+              <Button size="small" onClick={() => setIsMultiOpen(false)}>
                 Apply
               </Button>
             </Box>
@@ -449,40 +426,55 @@ This example demonstrates the AutoComplete dropdown for searching and selecting 
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Dropdown, 
+import {
+  Dropdown,
   DropdownOverlay,
   DropdownHeader,
   ActionList,
   ActionListItem,
   AutoComplete,
-  Box
+  Box,
+  CheckIcon,
+  ClockIcon,
+  CloseIcon,
 } from '@razorpay/blade/components';
 
 const AutoCompleteDropdownExample = () => {
   const fruits = [
-    'Apples', 'Apricots', 'Avocados', 'Bananas', 'Blueberries', 
-    'Cherries', 'Cranberries', 'Grapes', 'Lemons', 'Mangoes',
-    'Oranges', 'Peaches', 'Pears', 'Pineapples', 'Strawberries'
+    'Apples',
+    'Apricots',
+    'Avocados',
+    'Bananas',
+    'Blueberries',
+    'Cherries',
+    'Cranberries',
+    'Grapes',
+    'Lemons',
+    'Mangoes',
+    'Oranges',
+    'Peaches',
+    'Pears',
+    'Pineapples',
+    'Strawberries',
   ];
-  
+
   const [query, setQuery] = useState('');
   const [selectedFruits, setSelectedFruits] = useState<string[]>([]);
-  
+
   // Filter fruits based on search query
-  const filteredFruits = query 
-    ? fruits.filter(fruit => fruit.toLowerCase().includes(query.toLowerCase()))
+  const filteredFruits = query
+    ? fruits.filter((fruit) => fruit.toLowerCase().includes(query.toLowerCase()))
     : fruits;
-  
+
   // Toggle selection of a fruit
   const toggleFruit = (fruit: string) => {
     if (selectedFruits.includes(fruit)) {
-      setSelectedFruits(selectedFruits.filter(f => f !== fruit));
+      setSelectedFruits(selectedFruits.filter((f) => f !== fruit));
     } else {
       setSelectedFruits([...selectedFruits, fruit]);
     }
   };
-  
+
   return (
     <Box maxWidth="300px">
       <Dropdown selectionType="multiple">
@@ -501,19 +493,19 @@ const AutoCompleteDropdownExample = () => {
           maxRows="multiple"
           size="medium"
         />
-        
+
         <DropdownOverlay maxHeight="300px">
           <DropdownHeader>
-            <AutoComplete 
-              label="Search Fruits" 
+            <AutoComplete
+              label="Search Fruits"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               autoFocus
             />
           </DropdownHeader>
-          
+
           <ActionList>
-            {filteredFruits.map(fruit => (
+            {filteredFruits.map((fruit) => (
               <ActionListItem
                 key={fruit}
                 title={fruit}
@@ -522,7 +514,7 @@ const AutoCompleteDropdownExample = () => {
                 onClick={() => toggleFruit(fruit)}
               />
             ))}
-            
+
             {filteredFruits.length === 0 && (
               <Box padding="spacing.4" textAlign="center">
                 No matching fruits found
@@ -542,29 +534,32 @@ This example demonstrates the FilterChip dropdown for compact filtering interfac
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Dropdown, 
+import {
+  Dropdown,
   DropdownOverlay,
   FilterChipSelectInput,
   FilterChipGroup,
   ActionList,
   ActionListItem,
   Box,
-  Text
+  Text,
+  CheckIcon,
+  ClockIcon,
+  CloseIcon,
+  FilterChipDatePicker,
 } from '@razorpay/blade/components';
-import { FilterChipDatePicker } from '@razorpay/blade/components';
 
 const FilterChipDropdownExample = () => {
   // Single selection filter
   const [statusFilter, setStatusFilter] = useState<string>();
-  
+
   // Multiple selection filter
   const [categoryFilters, setCategoryFilters] = useState<string[]>([]);
-  
+
   return (
     <Box>
       <Text marginBottom="spacing.3">Filter transactions by:</Text>
-      
+
       <FilterChipGroup>
         {/* Single selection filter chip */}
         <Dropdown>
@@ -596,7 +591,7 @@ const FilterChipDropdownExample = () => {
             </ActionList>
           </DropdownOverlay>
         </Dropdown>
-        
+
         {/* Multiple selection filter chip */}
         <Dropdown selectionType="multiple">
           <FilterChipSelectInput
@@ -609,7 +604,7 @@ const FilterChipDropdownExample = () => {
               <ActionListItem
                 onClick={({ name }) => {
                   if (categoryFilters.includes(name)) {
-                    setCategoryFilters(categoryFilters.filter(cat => cat !== name));
+                    setCategoryFilters(categoryFilters.filter((cat) => cat !== name));
                   } else {
                     setCategoryFilters([...categoryFilters, name]);
                   }
@@ -621,7 +616,7 @@ const FilterChipDropdownExample = () => {
               <ActionListItem
                 onClick={({ name }) => {
                   if (categoryFilters.includes(name)) {
-                    setCategoryFilters(categoryFilters.filter(cat => cat !== name));
+                    setCategoryFilters(categoryFilters.filter((cat) => cat !== name));
                   } else {
                     setCategoryFilters([...categoryFilters, name]);
                   }
@@ -633,7 +628,7 @@ const FilterChipDropdownExample = () => {
               <ActionListItem
                 onClick={({ name }) => {
                   if (categoryFilters.includes(name)) {
-                    setCategoryFilters(categoryFilters.filter(cat => cat !== name));
+                    setCategoryFilters(categoryFilters.filter((cat) => cat !== name));
                   } else {
                     setCategoryFilters([...categoryFilters, name]);
                   }
@@ -645,13 +640,11 @@ const FilterChipDropdownExample = () => {
             </ActionList>
           </DropdownOverlay>
         </Dropdown>
-        
+
         {/* Date range filter chip (just for demonstration) */}
-        <FilterChipDatePicker 
-          label="Date Range" 
-          selectionType="range" 
-        />
+        <FilterChipDatePicker label="Date Range" selectionType="range" />
       </FilterChipGroup>
     </Box>
   );
-}; 
+};
+```
