@@ -1,9 +1,9 @@
 <br/>
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./branding/blade-original-dark-mode.min.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./branding/blade-original.min.svg">
-  <img width="450px" alt="Blade Design System Logo" src="./branding/blade-original.min.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="../../branding/blade-original-dark-mode.min.svg">
+  <source media="(prefers-color-scheme: light)" srcset="../../branding/blade-original.min.svg">
+  <img width="450px" alt="Blade Design System Logo" src="../../branding/blade-original.min.svg">
 </picture>
 </p>
 
@@ -16,7 +16,7 @@
 
 <br/>
 
-Blade is the Design System that powers [Razorpay](https://razorpay.com/). 
+Blade is the Design System that powers [Razorpay](https://razorpay.com/).
 
 ## 🔗 Links
 
@@ -25,6 +25,7 @@ Blade is the Design System that powers [Razorpay](https://razorpay.com/).
 - [@razorpay/blade-old](https://github.com/razorpay/blade-old) (Deprecated, Private)
 
 ## ✨ Features
+
 - Cross-Platform (Works Natively on [React Web and React Native](https://blade.razorpay.com/?path=/docs/guides-installation--docs))
 - [White Labelling](https://blade.razorpay.com/?path=/docs/guides-theming-theme-playground--docs)
 - [Accessible](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#manual-testing)
@@ -37,4 +38,3 @@ Licensed under the [MIT License](https://github.com/razorpay/blade/blob/master/L
 <h1 aria-hidden="true"></h1>
 
 <p align="center">Interested in working with us? Checkout our <a href="https://razorpay.com/jobs">Jobs Page</a> for open roles 🤗</p>
-
