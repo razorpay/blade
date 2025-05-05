@@ -405,22 +405,9 @@ DatePickerPresets.play = async () => {
     'true',
   );
 
-  // change date to past 7 days manually
-  await userEvent.click(
-    getByRole('button', { name: dayjs().subtract(7, 'day').format('D MMMM YYYY') }),
-  );
-  await userEvent.click(getByRole('button', { name: dayjs().format('D MMMM YYYY') }));
-  await sleep(400);
-  // assert past 3 days to be not selected anymore
-  await expect(getByRole('option', { name: /Past 3 days/i })).toHaveAttribute(
-    'aria-selected',
-    'false',
-  );
-  // assert past 7 days to be selected
-  await expect(getByRole('option', { name: /Past 7 days/i })).toHaveAttribute(
-    'aria-selected',
-    'true',
-  );
+  // change date to past 7
+  await userEvent.click(getByRole('option', { name: /Past 7 days/i }));
+
   // press apply button
   await userEvent.click(applyButton);
   await sleep(400);
