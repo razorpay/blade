@@ -109,9 +109,22 @@ const RadioTemplate: StoryFn<typeof RadioGroupComponent> = ({ children, ...args 
 export const Default = RadioTemplate.bind({});
 Default.storyName = 'Default';
 
+export const RadioGroupOrientation = RadioTemplate.bind({});
+RadioGroupOrientation.storyName = 'RadioGroupOrientation';
+RadioGroupOrientation.args = {
+  orientation: 'horizontal',
+};
+
 export const HelpText = RadioTemplate.bind({});
 HelpText.storyName = 'HelpText';
 HelpText.args = {
+  helpText: 'RadioGroup help text',
+};
+
+export const HorizontalRadioGroupWithHelpText = RadioTemplate.bind({});
+HorizontalRadioGroupWithHelpText.storyName = 'HorizontalRadioGroupWithHelpText';
+HorizontalRadioGroupWithHelpText.args = {
+  orientation: 'horizontal',
   helpText: 'RadioGroup help text',
 };
 
@@ -120,6 +133,15 @@ ErrorText.storyName = 'ErrorText';
 ErrorText.args = {
   validationState: 'error',
   errorText: 'RadioGroup help text',
+};
+
+export const HorizontalRadioGroupWithHelpTextAndErrorText = RadioTemplate.bind({});
+HorizontalRadioGroupWithHelpTextAndErrorText.storyName =
+  'HorizontalRadioGroupWithHelpTextAndErrorText';
+HorizontalRadioGroupWithHelpTextAndErrorText.args = {
+  orientation: 'horizontal',
+  helpText: 'RadioGroup help text',
+  errorText: 'RadioGroup error text',
 };
 
 export const Disabled = RadioTemplate.bind({});
@@ -137,6 +159,13 @@ Optional.args = {
 export const RequiredRadio = RadioTemplate.bind({});
 RequiredRadio.storyName = 'Required';
 RequiredRadio.args = {
+  necessityIndicator: 'required',
+};
+
+export const HorizontalRadioGroupWithRequiredRadio = RadioTemplate.bind({});
+HorizontalRadioGroupWithRequiredRadio.storyName = 'HorizontalRadioGroupWithRequiredRadio';
+HorizontalRadioGroupWithRequiredRadio.args = {
+  orientation: 'horizontal',
   necessityIndicator: 'required',
 };
 

@@ -96,6 +96,13 @@ type RadioGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium' | 'large';
+
+  /**
+   * Orientation of the radio group
+   *
+   * @default 'vertical'
+   */
+  orientation?: 'vertical' | 'horizontal';
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -115,6 +122,7 @@ const RadioGroup = ({
   onChange,
   value,
   size = 'medium',
+  orientation = 'vertical',
   testID,
   ...rest
 }: RadioGroupProps): React.ReactElement => {
@@ -163,7 +171,11 @@ const RadioGroup = ({
             </FormLabel>
           ) : null}
           <BaseBox>
-            <BaseBox display="flex" flexDirection="column">
+            <BaseBox
+              display="flex"
+              flexDirection={orientation === 'vertical' ? 'column' : 'row'}
+              gap={orientation === 'horizontal' ? 'spacing.2' : 'spacing.0'}
+            >
               {React.Children.map(children, (child, index) => {
                 return (
                   <BaseBox
