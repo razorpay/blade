@@ -11,7 +11,6 @@ import {
   CardBody,
   Heading,
   Text,
-  Checkbox,
   Tabs,
   TabList,
   TabItem,
@@ -19,6 +18,7 @@ import {
   Tooltip,
   InfoIcon,
   TooltipInteractiveWrapper,
+  Link,
 } from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
 import styled from 'styled-components';
@@ -48,23 +48,20 @@ type A11yCoverage = {
 const App = (): ReactElement => {
   const [coverage, setCoverage] = useState<BladeCoverage | undefined>(undefined);
   const [a11yCoverage, setA11yCoverage] = useState<A11yCoverage | undefined>(undefined);
-  const [shouldHighlightNodes, setShouldHighlightNodes] = useState(false);
   const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-  const getBladeCoverage = (): void => {
-    console.log('getBladeCoverage');
+  const getBladeCoverage = (shouldHighlightNodes: boolean): void => {
     // @ts-expect-error
-    chrome.runtime.sendMessage({ action: 'executeScript', shouldHighlightNodes });
+    chrome?.runtime?.sendMessage?.({ action: 'executeScript', shouldHighlightNodes });
   };
 
-  const getA11yCoverage = (): void => {
-    console.log('getA11yCoverage');
+  const getA11yCoverage = (shouldHighlightNodes: boolean): void => {
     // @ts-expect-error
-    chrome.runtime.sendMessage({ action: 'executeAccessibilityScript', shouldHighlightNodes });
+    chrome?.runtime?.sendMessage?.({ action: 'executeAccessibilityScript', shouldHighlightNodes });
   };
 
   // @ts-expect-error
-  chrome.runtime.onMessage.addListener(
+  chrome?.runtime?.onMessage?.addListener(
     (message: { action: string; coverage: BladeCoverage | A11yCoverage }, sender: unknown) => {
       console.log('message and sender in popup js', message, sender);
       if (message.action === 'blade-coverage') {
@@ -78,7 +75,7 @@ const App = (): ReactElement => {
 
   return (
     <BladeProvider themeTokens={bladeTheme} colorScheme={isDarkMode ? 'dark' : 'light'}>
-      <Box height="312px" width="500px">
+      <Box id="blade-coverage-extension" height="312px" width="500px">
         <Card
           elevation="lowRaised"
           padding="spacing.7"
@@ -88,11 +85,11 @@ const App = (): ReactElement => {
             <Tabs defaultValue="blade">
               <TabList>
                 <TabItem value="blade">Blade Coverage</TabItem>
-                <TabItem value="a11y">Accessibility</TabItem>
+                <TabItem value="a11y">Accessibility Score</TabItem>
               </TabList>
               <TabPanel value="blade">
                 <Box
-                  width="450px"
+                  width="100%"
                   height="251px"
                   marginBottom="spacing.5"
                   backgroundColor="surface.background.gray.intense"
@@ -116,26 +113,41 @@ const App = (): ReactElement => {
                       </Text>
                     </>
                   ) : (
-                    <Text>Open a page which uses Blade then click the calculate Button below</Text>
+                    <Text textAlign="center">
+                      Open a page which uses Blade then click the calculate Button
+                    </Text>
                   )}
                   <StyledImg src={BarChartImg} alt="bar-chart" />
                 </Box>
                 <Box display="flex" alignItems="center" flexDirection="column" gap="spacing.3">
-                  <Button icon={ActivityIcon} iconPosition="left" onClick={getBladeCoverage}>
-                    Calculate Blade Coverage
-                  </Button>
-                  <Checkbox
-                    onChange={(e) => {
-                      setShouldHighlightNodes(e.isChecked);
+                  <Button
+                    icon={ActivityIcon}
+                    iconPosition="left"
+                    onClick={() => {
+                      if (a11yCoverage) {
+                        getA11yCoverage(false);
+                      }
+                      getBladeCoverage(true);
                     }}
                   >
-                    Highlight Non Blade Nodes
-                  </Checkbox>
+                    Calculate Blade Coverage
+                  </Button>
+                  <Link
+                    variant="button"
+                    marginTop="spacing.3"
+                    onClick={() => {
+                      if (coverage) {
+                        getBladeCoverage(false);
+                      }
+                    }}
+                  >
+                    Clear Highlighted Nodes
+                  </Link>
                 </Box>
               </TabPanel>
               <TabPanel value="a11y">
                 <Box
-                  width="450px"
+                  width="100%"
                   height="251px"
                   marginBottom="spacing.5"
                   backgroundColor="surface.background.gray.intense"
@@ -186,26 +198,29 @@ const App = (): ReactElement => {
                   <StyledImg src={BarChartImg} alt="bar-chart" />
                 </Box>
                 <Box display="flex" alignItems="center" flexDirection="column" gap="spacing.3">
-                  <Button icon={ActivityIcon} iconPosition="left" onClick={getA11yCoverage}>
+                  <Button
+                    icon={ActivityIcon}
+                    iconPosition="left"
+                    onClick={() => {
+                      if (coverage) {
+                        getBladeCoverage(false);
+                      }
+                      getA11yCoverage(true);
+                    }}
+                  >
                     Check Accessibility
                   </Button>
-                  <Box display="flex" alignItems="center" gap="spacing.2">
-                    <Checkbox
-                      onChange={(e) => {
-                        setShouldHighlightNodes(e.isChecked);
-                      }}
-                    >
-                      Highlight Violations
-                    </Checkbox>
-                    <Tooltip
-                      placement="bottom"
-                      content="Violations will be highlighted on the page with red for non-focusable elements and orange for static violations. You can also close this extension panel and hover over the violations to see the issue."
-                    >
-                      <TooltipInteractiveWrapper>
-                        <InfoIcon color="surface.icon.gray.muted" size="medium" />
-                      </TooltipInteractiveWrapper>
-                    </Tooltip>
-                  </Box>
+                  <Link
+                    variant="button"
+                    marginTop="spacing.3"
+                    onClick={() => {
+                      if (a11yCoverage) {
+                        getA11yCoverage(false);
+                      }
+                    }}
+                  >
+                    Clear Highlighted Nodes
+                  </Link>
                 </Box>
               </TabPanel>
             </Tabs>

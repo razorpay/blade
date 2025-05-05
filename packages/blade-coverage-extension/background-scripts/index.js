@@ -4,7 +4,6 @@ import { getAccessibilityCoverage } from './accessibility-coverage-script';
 
 chrome.runtime.onMessage.addListener(async (message) => {
   if (message.action === 'executeScript') {
-    console.log('executeScript');
     chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
       const response = await chrome.scripting.executeScript({
         target: { tabId: tabs[0].id },
@@ -17,7 +16,6 @@ chrome.runtime.onMessage.addListener(async (message) => {
   }
 
   if (message.action === 'executeAccessibilityScript') {
-    console.log('executeAccessibilityScript');
     chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
       const response = await chrome.scripting.executeScript({
         target: { tabId: tabs[0].id },
