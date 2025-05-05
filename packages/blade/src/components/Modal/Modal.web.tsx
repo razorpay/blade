@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import type { Keyframes } from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
-import { m } from 'framer-motion';
 import { ModalHeader } from './ModalHeader';
 import type { ModalHeaderProps } from './ModalHeader';
 import { ModalFooter } from './ModalFooter';
@@ -22,7 +22,7 @@ import {
 } from './modalTokens';
 import type { ModalProps } from './types';
 import { componentIds } from './constants';
-import { castWebType, makeSize } from '~utils';
+import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { Box } from '~components/Box';
@@ -32,13 +32,68 @@ import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { msToSeconds } from '~utils/msToSeconds';
-import { cssBezierToArray } from '~utils/cssBezierToArray';
+
+const entry = keyframes`
+   from {
+     opacity: 0;
+     transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+   }
+   to {
+     opacity: 1;
+     transform: translate(-50%, -50%) scale(1) translateY(0px);
+   }
+     `;
+
+const exit = keyframes`
+   from {
+     opacity: 1;
+     transform: translate(-50%, -50%) scale(1) translateY(0px);
+   }
+   to {
+     opacity: 0;
+     transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+   }
+   `;
+
+const fullPageEntry = keyframes`
+   from {
+     opacity: 0 ;
+   }
+   to {
+     opacity: 1;
+   }
+   `;
+
+const fullPageExit = keyframes`
+   from {
+     opacity: 1;
+   }
+   to {
+     opacity: 0;
+   }
+   `;
+
+function getAnimation(isVisible: boolean, size: NonNullable<ModalProps['size']>): Keyframes {
+  if (isVisible) {
+    return size === 'full' ? fullPageEntry : entry;
+  } else {
+    return size === 'full' ? fullPageExit : exit;
+  }
+}
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
-  ({ theme, size }) => {
+  ({ isVisible, theme, size }) => {
     return css`
       box-shadow: ${theme.elevation.highRaised};
+      opacity: ${isVisible ? 1 : 0};
+      position: fixed;
+      transform: ${size === 'full' ? '' : 'translate(-50%, -50%)'};
+      animation: ${getAnimation(isVisible, size)}
+        ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
+        ${isVisible
+          ? castWebType(theme.motion.easing.entrance)
+          : castWebType(theme.motion.easing.exit)};
+
       ${size === 'full' &&
       css`
         top: ${makeSize(modalMargin[size])};
@@ -49,8 +104,6 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<Mod
     `;
   },
 );
-
-const MotionModalContent = m(ModalContent);
 
 const Modal = ({
   isOpen = false,
@@ -128,7 +181,7 @@ const Modal = ({
               {...makeAnalyticsAttribute(rest)}
             >
               <ModalBackdrop />
-              <MotionModalContent
+              <ModalContent
                 {...metaAttribute({
                   name: MetaConstants.Modal,
                 })}
@@ -156,49 +209,9 @@ const Modal = ({
                 size={size}
                 ref={refs.setFloating}
                 overflow="hidden"
-                position="fixed"
-                initial={{
-                  opacity: 0,
-                  ...(size === 'full'
-                    ? {}
-                    : {
-                        scale: 0.9,
-                        x: '-50%',
-                        y: 'calc(-50 + 20px)',
-                      }),
-                }}
-                animate={{
-                  opacity: isVisible ? 1 : 0,
-                  ...(size === 'full'
-                    ? {}
-                    : {
-                        scale: isVisible ? 1 : 0.9,
-                        x: '-50%',
-                        y: 'calc(-50%)',
-                      }),
-                }}
-                exit={{
-                  opacity: 0,
-                  ...(size === 'full'
-                    ? {}
-                    : {
-                        scale: 0.9,
-                        x: '-50%',
-                        y: 'calc(-50% + 20px)',
-                      }),
-                }}
-                style={{
-                  ...(size === 'full' ? {} : { transformOrigin: 'center center' }),
-                }}
-                transition={{
-                  duration: msToSeconds(theme.motion.duration.moderate),
-                  ease: isVisible
-                    ? cssBezierToArray(castWebType(theme.motion.easing.entrance))
-                    : cssBezierToArray(castWebType(theme.motion.easing.exit)),
-                }}
               >
                 {children}
-              </MotionModalContent>
+              </ModalContent>
             </Box>
           </FloatingFocusManager>
         ) : null}
