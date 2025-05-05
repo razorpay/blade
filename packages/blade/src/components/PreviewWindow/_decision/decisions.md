@@ -8,8 +8,8 @@ A **Preview window** is a component used to display a visual preview of an image
 ---
 
 - [Design](#design)
-- [Preview window Component](#previewwindow-component)
-  - [Preview window API](#previewwindow-api)
+- [Preview window Component](#PreviewWindow-component)
+  - [Preview window API](#PreviewWindow-api)
   - [Alternative API](#alternative-api)
 - [Open Questions](#open-questions)
 
@@ -35,30 +35,30 @@ The `Preview window` component will be the main component used to render a live 
 | `children`                  | `React.Element`  | —                         | Yes      | The component to be rendered inside the preview window.                      |
 | `headingText`               | `string`         | `""`                      | No       | If provided, displays a heading above the previewed component.               |
 | `onFullScreen`              | `() => void`     | —                         | No       | Callback invoked when the fullscreen button is clicked.                      |
-| `onZoomChange`              | `() => void`     | —                         | No       | Callback invoked when zoom changes.                                          |
-| `zoom`                      | `number`         | `50`                      | No       | A number between 1 to 100 which sets the zoom level.                         |
-| `onDragChange`              | `() => void`     | —                         | No       | Callback invoked when drag changes.                                          |
+| `onZoomChange`              | `(newZoom: number)  => void`     | —                         | No       | Callback invoked when zoom changes.                                          |
+| `zoom`                      | `number`         | `50`                      | Yes       | A number between 1 to 100 which sets the zoom level.                         |
+| `onDragChange`              | `(position: { x: number; y: number }) => void`     | —                         | No       | Callback invoked when drag changes.                                          |
 | `additionalPreviewControls` | `React.Element`  | —                         | No       | If we want to show additional controls button or button group.               |
 | `zoomStep`                  | `number`         | `10`                      | No       | A number between 5 to 30 that determines the zoom step percentage per click. |
 | `defaultZoom`                  | `number`         | `10`                      | No       |  A number between 1 to 100 which tells initial zoom level
 
 ```tsx
-type PreviewwindowProps = {
+type PreviewWindowProps = {
   isInteractive?: boolean;
   children: React.ReactElement;
   headingText?: string;
   onFullScreen?: () => void;
   zoom: number;
-  onZoomChange?: () => void;
-  onDragChange?: () => void;
-  additionalPreviewControls: React.ReactElement;
+  onZoomChange?: (newZoom: number) => void;
+  onDragChange?: (position: { x: number; y: number }) => void;
+  additionalPreviewControls?: React.ReactElement;
   defaultZoom?: number;
   zoomStep?: number;
 };
 ```
 
 ```tsx
-<Previewwindow
+<PreviewWindow
   headingText="Image Preview"
   onFullScreen={() => console.log('Fullscreen triggered')}
   additionalPreviewControls={
@@ -66,31 +66,29 @@ type PreviewwindowProps = {
   }
 >
   <img src="/preview.jpg" alt="Example Preview" />
-</Previewwindow>
+</PreviewWindow>
 
 // With zoom controls
-<Previewwindow
+<PreviewWindow
   isInteractive
-  onZoomInClick={() => console.log('Zoom In')}
-  onZoomOutClick={() => console.log('Zoom Out')}
   additionalPreviewControls={
     <CustomComponent/>
   }
   >
   <ComponentToPreview />
-</Previewwindow>
+</PreviewWindow>
 
 // Without interactivity
-<Previewwindow isInteractive={false}>
+<PreviewWindow isInteractive={false}>
   <StaticComponent />
-</Previewwindow>
+</PreviewWindow>
 ```
 
 ## Alternative API
 - For PreviewWindow component
     ```tsx
     // Using prop-driven content instead of children
-    <Previewwindow content={<ImageComponent />} headingText="Preview" />
+    <PreviewWindow content={<ImageComponent />} headingText="Preview" />
     ```
 - For `additionalPreviewControls `
 
