@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
-import styled, { css, keyframes } from 'styled-components';
-import type { Keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
 import { ModalHeader } from './ModalHeader';
@@ -33,66 +32,21 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const entry = keyframes`
-   from {
-     opacity: 0;
-     transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-   }
-   to {
-     opacity: 1;
-     transform: translate(-50%, -50%) scale(1) translateY(0px);
-   }
-     `;
-
-const exit = keyframes`
-   from {
-     opacity: 1;
-     transform: translate(-50%, -50%) scale(1) translateY(0px);
-   }
-   to {
-     opacity: 0;
-     transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-   }
-   `;
-
-const fullPageEntry = keyframes`
-   from {
-     opacity: 0 ;
-   }
-   to {
-     opacity: 1;
-   }
-   `;
-
-const fullPageExit = keyframes`
-   from {
-     opacity: 1;
-   }
-   to {
-     opacity: 0;
-   }
-   `;
-
-function getAnimation(isVisible: boolean, size: NonNullable<ModalProps['size']>): Keyframes {
-  if (isVisible) {
-    return size === 'full' ? fullPageEntry : entry;
-  } else {
-    return size === 'full' ? fullPageExit : exit;
-  }
-}
-
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
   ({ isVisible, theme, size }) => {
+    const scale = isVisible ? 1 : 0.9;
+    const transform = size !== 'full' ? `translate(-50%, -50%) scale(${scale})` : ``;
+
     return css`
       box-shadow: ${theme.elevation.highRaised};
       opacity: ${isVisible ? 1 : 0};
       position: fixed;
-      transform: ${size === 'full' ? '' : 'translate(-50%, -50%)'};
-      animation: ${getAnimation(isVisible, size)}
-        ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
-        ${isVisible
-          ? castWebType(theme.motion.easing.entrance)
-          : castWebType(theme.motion.easing.exit)};
+      transform: ${transform};
+      transition-property: opacity, transform;
+      transition-duration: ${castWebType(makeMotionTime(theme.motion.duration.moderate))};
+      transition-timing-function: ${isVisible
+        ? castWebType(theme.motion.easing.entrance)
+        : castWebType(theme.motion.easing.exit)};
 
       ${size === 'full' &&
       css`
