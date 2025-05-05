@@ -50,6 +50,8 @@ type CounterProps = {
 
 ## Example
 
+This example demonstrates different variants of the Counter component with various sizes, colors, emphasis levels, and a max value with overflow handling.
+
 ```tsx
 import React from 'react';
 import { Counter, Box, Text } from '@razorpay/blade/components';

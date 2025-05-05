@@ -377,7 +377,9 @@ type TablePaginationProps = {
 
 ## Example
 
-Here's a comprehensive example demonstrating how to use the Table component with its various features:
+### Comprehensive Table with Advanced Features
+
+This example demonstrates a fully-featured payment transactions table with multiple interactive elements including selection, sorting, sticky headers, row actions, editable cells, custom toolbar, pagination, and footer summaries.
 
 ```tsx
 import React, { useState } from 'react';
@@ -625,6 +627,8 @@ export default PaymentTable;
 ```
 
 ### Server-Side Pagination Example
+
+This example shows how to implement a table with server-side pagination, where data is fetched from an API based on the current page, with loading states and proper handling of page changes.
 
 ```tsx
 import React, { useState, useEffect } from 'react';

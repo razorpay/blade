@@ -48,6 +48,8 @@ type TooltipInteractiveWrapperProps = Omit<BaseBoxProps, 'as'>;
 
 ### Basic Usage
 
+This example shows the simplest implementation of a Tooltip component providing additional information for a button element.
+
 ```tsx
 import { Tooltip, Button } from '@razorpay/blade/components';
 
@@ -61,6 +63,8 @@ function BasicTooltipExample() {
 ```
 
 ### Tooltip with Title
+
+This example demonstrates a Tooltip with both a title and content, including a callback function that triggers when the tooltip opens or closes.
 
 ```tsx
 import { Tooltip, Button } from '@razorpay/blade/components';
@@ -81,7 +85,7 @@ function TooltipWithTitleExample() {
 
 ### Using with Non-Interactive Elements
 
-When using non-interactive elements like icons as tooltip triggers, wrap them with TooltipInteractiveWrapper:
+This example shows how to properly implement tooltips on non-interactive elements like icons by using the TooltipInteractiveWrapper to ensure accessibility.
 
 ```tsx
 import {

@@ -96,6 +96,8 @@ type SlideProps = {
 
 ### Basic Usage
 
+This example demonstrates a simple slide animation toggled by a button, showing how to use the Slide component with the isVisible prop to control the animation state.
+
 ```tsx
 import { useState } from 'react';
 import { Slide, Box, Button, Card, CardBody, Text } from '@razorpay/blade/components';
@@ -125,6 +127,8 @@ function BasicSlideExample() {
 ```
 
 ### Slide In View Example
+
+This example shows how to trigger slide animations when elements enter the viewport during scrolling, with multiple elements sliding from different directions and with varying delays.
 
 ```tsx
 import {

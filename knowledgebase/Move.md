@@ -71,6 +71,8 @@ type MotionDelay = keyof Delay | { enter: keyof Delay; exit: keyof Delay };
 
 ### Basic Usage
 
+This example demonstrates the basic implementation of the Move component to create a subtle animation effect for a card that appears with combined fade and movement animation when the component first mounts.
+
 ```tsx
 import { Move } from '@razorpay/blade/components';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '@razorpay/blade/components';

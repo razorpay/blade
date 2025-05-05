@@ -91,6 +91,8 @@ type UseToastReturn = {
 
 ### Basic Usage
 
+This example demonstrates the simplest implementation of a Toast notification with success message using the useToast hook.
+
 ```tsx
 import { ToastContainer, useToast, Box, Button } from '@razorpay/blade/components';
 
@@ -118,6 +120,8 @@ function BasicToastExample() {
 ```
 
 ### Toast with Different Colors
+
+This example shows how to create toasts with different color schemes to convey various types of messages like success, error, warning, and information.
 
 ```tsx
 import { ToastContainer, useToast, Box, Button } from '@razorpay/blade/components';
@@ -193,6 +197,8 @@ function ColoredToastExample() {
 
 ### Toast with Action Button
 
+This example demonstrates how to add an interactive action button to a toast, along with custom dismissal behavior and event logging.
+
 ```tsx
 import { ToastContainer, useToast, Box, Button } from '@razorpay/blade/components';
 
@@ -228,6 +234,8 @@ function ActionToastExample() {
 ```
 
 ### Promotional Toast
+
+This example shows how to create a rich promotional toast with custom content, images, and multiple text elements for marketing announcements.
 
 ```tsx
 import { ToastContainer, useToast, Box, Button, Heading, Text } from '@razorpay/blade/components';
@@ -279,6 +287,8 @@ function PromotionalToastExample() {
 ```
 
 ### Comprehensive Example
+
+This advanced example demonstrates multiple toast types, dynamic updating of toast content, handling loading states, and programmatic toast management.
 
 ```tsx
 import {

@@ -62,6 +62,8 @@ type SpinnerMotion = {
 
 ### Basic Usage
 
+This example demonstrates how to use the Spinner component to indicate a loading state, with a timer that simulates content loading for 3 seconds before displaying a success message.
+
 ```tsx
 import { useState, useEffect } from 'react';
 import { Spinner, Text, Box } from '@razorpay/blade/components';

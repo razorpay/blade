@@ -28,6 +28,8 @@ type DividerProps = {
 
 ### Horizontal Divider
 
+This example shows the default horizontal divider that separates text sections with vertical spacing.
+
 ```tsx
 import { Divider, Box, Text } from '@razorpay/blade/components';
 
@@ -42,6 +44,8 @@ const HorizontalDividerExample = () => (
 
 ### Vertical Divider
 
+This example demonstrates a vertical divider that separates inline content horizontally within a flex container.
+
 ```tsx
 import { Divider, Box, Text } from '@razorpay/blade/components';
 
@@ -55,6 +59,8 @@ const VerticalDividerExample = () => (
 ```
 
 ### Styled Divider
+
+This example shows how to customize dividers with different colors and thicknesses to create visual hierarchies.
 
 ```tsx
 import { Divider, Box, Text } from '@razorpay/blade/components';

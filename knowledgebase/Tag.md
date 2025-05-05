@@ -70,6 +70,8 @@ type TagProps = {
 
 ### Basic Usage
 
+This example shows the simplest implementation of a Tag component with an icon and dismiss functionality.
+
 ```tsx
 import React from 'react';
 import { Tag, FileTextIcon } from '@razorpay/blade/components';
@@ -96,6 +98,8 @@ function BasicTagExample() {
 ```
 
 ### Disabled Tag
+
+This example demonstrates a Tag in its disabled state, where the dismiss functionality is visually indicated as unavailable but still defined in the code.
 
 ```tsx
 import React from 'react';
@@ -125,6 +129,8 @@ function DisabledTagExample() {
 
 ### Different Size Tags
 
+This example shows both medium and large Tag sizes side by side for comparison, each with their own dismiss handlers.
+
 ```tsx
 import React from 'react';
 import { Tag, Box, FileTextIcon } from '@razorpay/blade/components';
@@ -152,6 +158,8 @@ function TagSizesExample() {
 ```
 
 ### Tag Group with Input
+
+This example demonstrates how to implement a tag input system where users can add new tags through a text input and remove existing tags by clicking their dismiss buttons.
 
 ```tsx
 import React from 'react';
@@ -212,6 +220,8 @@ function TagInputExample() {
 ```
 
 ### Comprehensive Example
+
+This advanced example shows a complete tag management system with different tag states, icons, and interactive features including adding new tags, toggling disabled states, and random tag removal.
 
 ```tsx
 import React from 'react';

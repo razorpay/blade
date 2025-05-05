@@ -132,6 +132,8 @@ type TabPanelProps = {
 
 ### Basic Usage
 
+This example demonstrates the fundamental implementation of Tabs with a bordered horizontal layout, showing how to structure TabList, TabItems, and TabPanels.
+
 ```tsx
 import { Box, Text, Tabs, TabList, TabItem, TabPanel } from '@razorpay/blade/components';
 
@@ -165,6 +167,8 @@ function BasicTabsExample() {
 ```
 
 ### Controlled Tabs
+
+This example shows how to create controlled tabs where the active tab is managed by state, allowing programmatic tab switching through external controls.
 
 ```tsx
 import { Box, Text, Tabs, TabList, TabItem, TabPanel, Button } from '@razorpay/blade/components';
@@ -220,6 +224,8 @@ function ControlledTabsExample() {
 ```
 
 ### Tabs with Icons and Badges
+
+This example demonstrates how to enhance tabs with visual elements like icons, counters, and badges to provide additional context and improve usability.
 
 ```tsx
 import {

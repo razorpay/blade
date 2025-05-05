@@ -117,6 +117,8 @@ type SpotlightPopoverStepRenderProps = {
 
 ### Basic Tour Example
 
+This example demonstrates a simple guided tour with three steps highlighting different UI elements, using a custom footer component to control navigation between steps.
+
 ```jsx
 import { useState } from 'react';
 import {
@@ -299,6 +301,8 @@ function BasicTourExample() {
 ```
 
 ### Interruptible Tour Example
+
+This example shows an advanced implementation of a tour that can be interrupted or skipped, with dynamic step content that changes based on whether the user completed or skipped the tour.
 
 ```jsx
 import { useState } from 'react';

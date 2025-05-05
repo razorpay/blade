@@ -77,6 +77,8 @@ type QuickFilterGroupContextType = Pick<QuickFilterGroupProps, 'selectionType'> 
 
 ### Basic Usage
 
+This example demonstrates a single-selection QuickFilter group with three filter options, each displaying a Counter component in the trailing position to show the number of items in each category.
+
 ```tsx
 import { QuickFilterGroup, QuickFilter } from '@razorpay/blade/components';
 import { Counter } from '@razorpay/blade/components';

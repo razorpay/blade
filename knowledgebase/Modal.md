@@ -12,7 +12,7 @@ These types represent the props that the Modal component and its subcomponents a
 
 ```typescript
 // The main Modal component props
-export type ModalProps = {
+type ModalProps = {
   /**
    *  Children of Modal
    * Only ModalHeader, ModalBody and ModalFooter are allowed as children

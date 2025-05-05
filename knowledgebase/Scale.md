@@ -63,6 +63,8 @@ type ScaleProps = {
 
 ### Basic Usage
 
+This example demonstrates the Scale component's basic functionality with two cards - one that scales up on hover and another that scales down on click, showing different motion triggers and scaling variants.
+
 ```tsx
 import {
   Scale,
@@ -106,6 +108,8 @@ function BasicScaleExample() {
 ```
 
 ### Controlled Scaling
+
+This example shows how to implement controlled scaling with a toggle button, demonstrating both scale-up and scale-down variants side by side that respond to state changes rather than direct user interactions.
 
 ```tsx
 import { useState } from 'react';

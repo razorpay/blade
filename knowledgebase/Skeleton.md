@@ -66,6 +66,8 @@ type SkeletonProps = {
 
 ### Basic Usage
 
+This example shows a simple implementation of multiple Skeleton elements with varying widths and heights to create a text-like loading placeholder.
+
 ```tsx
 import { Skeleton, Box } from '@razorpay/blade/components';
 
@@ -86,6 +88,8 @@ function BasicSkeletonExample() {
 ```
 
 ### Card With Loading State
+
+This example demonstrates how to use Skeleton components within a card to create a realistic loading state that mimics the actual content's structure, with a toggle button to switch between loading and loaded states.
 
 ```tsx
 import { useState, useEffect } from 'react';

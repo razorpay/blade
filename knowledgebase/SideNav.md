@@ -244,7 +244,9 @@ type SideNavLevelProps = {
 
 ## Example
 
-Here's a comprehensive example of the SideNav component that demonstrates multi-level navigation with React Router integration, custom styling, accessibility features, and interactive elements:
+### Comprehensive SideNav with React Router Integration
+
+This example demonstrates a fully-featured SideNav implementation with multi-level navigation, React Router integration, dynamic active state handling, nested sections, responsive design for mobile, and interactive elements like a test mode toggle and activation banner.
 
 ```tsx
 import React, { useState } from 'react';

@@ -16,7 +16,7 @@ Blade has Box component that is used to create general layouts. Check out Box do
 
 ### Styled Props
 
-Blade also supports limited styled props on several components to modify styles.
+Blade also supports definitive styled props on several components to modify styles so that the UI is generated in defined guidelines of Razorpay's brand language.
 
 Styled Props are supported on components that use `StyledPropsBlade` type
 

@@ -51,7 +51,7 @@ type TextProps<T> = T extends { variant: infer Variant }
 
 ## Example
 
-Here's a comprehensive example showcasing the Text component's various features and props:
+Here's a comprehensive example showcasing the Text component's various features and props, demonstrating different text variants, sizes, weights, and styling options for creating properly formatted content:
 
 ```tsx
 import { Text } from '@razorpay/blade/components';
