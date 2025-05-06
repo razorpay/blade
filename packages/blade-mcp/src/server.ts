@@ -30,7 +30,7 @@ try {
 
 try {
   const server = new McpServer({
-    name: 'Blade MCP Server',
+    name: 'Blade MCP',
     version: packageJson.version,
   });
 
@@ -109,8 +109,8 @@ try {
 
   // Use Promise handling for async operations
   await server.connect(transport);
-  console.error('Blade MCP Server connected successfully');
+  console.error('Blade MCP connected successfully');
 } catch (error: unknown) {
-  console.error('Blade MCP Server initialization failed:', error);
+  console.error('Blade MCP initialization failed:', error);
   process.exit(1);
 }

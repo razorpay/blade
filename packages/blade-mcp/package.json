@@ -1,11 +1,11 @@
 {
-  "name": "@razorpay/blade-mcp-server",
+  "name": "@razorpay/blade-mcp",
   "version": "0.0.1",
   "description": "Model Context Protocol server for Blade",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
   "type": "module",
-  "bin": "dist/index.js",
+  "bin": "dist/server.js",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
@@ -16,9 +16,9 @@
   ],
   "scripts": {
     "prepare": "yarn build",
-    "build": "tsc && chmod +x dist/index.js",
-    "dev": "tsx src/index.ts",
-    "start": "node dist/index.js",
+    "build": "tsc && chmod +x dist/server.js",
+    "dev": "tsx src/server.ts",
+    "start": "node dist/server.js",
     "lint": "eslint --ext .ts src/",
     "typecheck": "tsc --noEmit"
   },
