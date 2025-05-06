@@ -1,0 +1,30 @@
+name: Release Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+env:
+  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+
+jobs:
+  release:
+    name: Test
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Public npm registry check
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
+        run: yarn publish-npm

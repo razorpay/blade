@@ -27,8 +27,15 @@ const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true
 //registry.npmjs.org/:_authToken=\${NPM_TOKEN}
 `;
+console.log('[blade]: default .npmrc configuration:');
+console.log(fs.readFileSync(NPMRC_PATH, 'utf8'));
 
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
+
+console.log('MONOREPO_ROOT', MONOREPO_ROOT);
+console.log('NPMRC_PATH', NPMRC_PATH);
+console.log('[blade]: Updated .npmrc configuration:');
+console.log(fs.readFileSync(NPMRC_PATH, 'utf8'));
 
 // Helper function to get package path from package name
 function getPackagePath(packageName) {
@@ -43,6 +50,7 @@ try {
   for (const pkg of publishedPackages) {
     const packagePath = getPackagePath(pkg.name);
     console.log(`[blade]: Publishing ${pkg.name}@${pkg.version} on NPM ✨`);
+
     execa.commandSync('npm publish', {
       cwd: path.join(MONOREPO_ROOT, packagePath),
       stdio: 'inherit',
