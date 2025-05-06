@@ -6,6 +6,9 @@
   "types": "dist/server.d.ts",
   "type": "module",
   "bin": "dist/server.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
