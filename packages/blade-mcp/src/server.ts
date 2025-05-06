@@ -111,7 +111,7 @@ try {
 
   // Use Promise handling for async operations
   await server.connect(transport);
-  console.error('Blade MCP connected successfully!');
+  console.error('Blade MCP connected successfully.');
 } catch (error: unknown) {
   console.error('Blade MCP initialization failed:', error);
   process.exit(1);
