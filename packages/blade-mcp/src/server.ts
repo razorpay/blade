@@ -62,7 +62,7 @@ try {
     ({ componentList }) => {
       try {
         // Parse the comma-separated string into an array of component names
-        const componentNames = componentList.split(',').map((name) => name.trim());
+        const componentNames = componentList.split(',').map((name: string) => name.trim());
 
         // Build the formatted documentation text
         let responseText = `Blade component documentation for: ${componentList}\n\n`;
