@@ -19,7 +19,9 @@ const fs = require('fs');
 const path = require('path');
 const execa = require('execa');
 
-const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES || '[]');
+const publishedPackages = JSON.parse(
+  process.env.PUBLISHED_PACKAGES || '[{"name":"@razorpay/blade-mcp","version":"0.0.4"}]',
+);
 const MONOREPO_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
