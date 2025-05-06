@@ -89,6 +89,12 @@ type CheckboxGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * Orientation of the checkbox group
+   *
+   * @default "vertical"
+   */
+  orientation?: 'vertical' | 'horizontal';
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -109,6 +115,7 @@ const CheckboxGroup = ({
   value,
   size = 'medium',
   testID,
+  orientation = 'vertical',
   ...rest
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
@@ -155,7 +162,7 @@ const CheckboxGroup = ({
             </FormLabel>
           ) : null}
           <BaseBox>
-            <BaseBox display="flex" flexDirection="column">
+            <BaseBox display="flex" flexDirection={orientation === 'horizontal' ? 'row' : 'column'}>
               {React.Children.map(children, (child, index) => {
                 return (
                   <BaseBox
