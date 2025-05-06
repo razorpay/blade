@@ -1,13 +1,16 @@
 ## Component Name
+
 BottomNav
 
 ## Description
+
 BottomNav is a persistent navigation component designed for mobile interfaces, positioned at the bottom of the screen. It provides quick access to core functionalities through icons and labels, allowing users to navigate between primary destinations in an application. The component is optimized for touch interaction and follows mobile UI design patterns with clear visual indicators for active states.
 
 ## TypeScript Types
+
 The following types represent the props that the BottomNav component and its subcomponents accept. These types allow you to properly configure the navigation according to your app's structure.
 
-```typescript
+````typescript
 /**
  * Props for the BottomNav component
  */
@@ -84,29 +87,10 @@ type BottomNavItemProps = {
   onClick?: React.MouseEventHandler;
 } & TestID &
   DataAnalyticsAttribute;
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-```
+````
 
 ## Example
+
 This example demonstrates how to implement BottomNav with React Router for a mobile application, including active state management and integration with side navigation.
 
 ```tsx
@@ -119,9 +103,7 @@ import {
   SideNavBody,
   SideNavLink,
   Box,
-  Text
-} from '@razorpay/blade/components';
-import {
+  Text,
   HomeIcon,
   PaymentGatewayIcon,
   TransactionsIcon,
@@ -129,29 +111,29 @@ import {
   PaymentPagesIcon,
   MenuDotsIcon,
   CurrentAccountIcon,
-  RazorpayIcon
-} from '@razorpay/blade/components/Icons';
+  RazorpayIcon,
+} from '@razorpay/blade/components';
 
 // Sample page component to show when a route is matched
 const PageContent = ({ title }) => (
   <Box padding="spacing.5" paddingBottom="spacing.16">
-    <Text variant="body" size="medium">{title} Page Content</Text>
+    <Text variant="body" size="medium">
+      {title} Page Content
+    </Text>
   </Box>
 );
 
 // Helper function to check if a route is active
 const isItemActive = (
   location: { pathname: string },
-  { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] }
+  { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] },
 ): boolean => {
   const isCurrentPathActive = Boolean(
-    href && matchPath({ path: href, end: true }, location.pathname)
+    href && matchPath({ path: href, end: true }, location.pathname),
   );
 
   const isSubItemActive = Boolean(
-    activeOnLinks?.find((link) => 
-      matchPath({ path: link, end: true }, location.pathname)
-    )
+    activeOnLinks?.find((link) => matchPath({ path: link, end: true }, location.pathname)),
   );
 
   return isCurrentPathActive || isSubItemActive;
@@ -159,7 +141,7 @@ const isItemActive = (
 
 // Custom BottomNavItem with React Router integration
 const RouterBottomNavItem = (
-  props: Omit<typeof BottomNavItem, 'as'> & { activeOnLinks?: string[] }
+  props: Omit<typeof BottomNavItem, 'as'> & { activeOnLinks?: string[] },
 ) => {
   const location = useLocation();
 
@@ -167,9 +149,9 @@ const RouterBottomNavItem = (
     <BottomNavItem
       {...props}
       as={NavLink}
-      isActive={isItemActive(location, { 
-        href: props.href, 
-        activeOnLinks: props.activeOnLinks 
+      isActive={isItemActive(location, {
+        href: props.href,
+        activeOnLinks: props.activeOnLinks,
       })}
     />
   );
@@ -177,7 +159,7 @@ const RouterBottomNavItem = (
 
 // Custom SideNavLink with React Router integration
 const RouterSideNavLink = (
-  props: Omit<typeof SideNavLink, 'as'> & { activeOnLinks?: string[] }
+  props: Omit<typeof SideNavLink, 'as'> & { activeOnLinks?: string[] },
 ) => {
   const location = useLocation();
 
@@ -185,9 +167,9 @@ const RouterSideNavLink = (
     <SideNavLink
       {...props}
       as={NavLink}
-      isActive={isItemActive(location, { 
-        href: props.href, 
-        activeOnLinks: props.activeOnLinks 
+      isActive={isItemActive(location, {
+        href: props.href,
+        activeOnLinks: props.activeOnLinks,
       })}
     />
   );
@@ -196,7 +178,6 @@ const RouterSideNavLink = (
 // Main App component with navigation implementation
 const MobileAppExample = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-  
   // Bottom navigation items
   const mainNavItems = [
     {
@@ -218,9 +199,9 @@ const MobileAppExample = () => {
       title: 'Links',
       href: '/payment-links',
       icon: PaymentLinkIcon,
-    }
+    },
   ];
-  
+
   // Additional items for side navigation
   const sideNavItems = [
     {
@@ -237,7 +218,7 @@ const MobileAppExample = () => {
       title: 'Settings',
       href: '/settings',
       icon: RazorpayIcon,
-    }
+    },
   ];
 
   return (
@@ -252,7 +233,6 @@ const MobileAppExample = () => {
         <Route path="/account" element={<PageContent title="Account" />} />
         <Route path="/settings" element={<PageContent title="Settings" />} />
       </Routes>
-      
       {/* Side Navigation */}
       <SideNav
         isOpen={isSideNavOpen}
@@ -273,7 +253,6 @@ const MobileAppExample = () => {
           ))}
         </SideNavBody>
       </SideNav>
-      
       {/* Bottom Navigation */}
       <BottomNav
         position="fixed"
@@ -293,7 +272,6 @@ const MobileAppExample = () => {
             testID={`nav-item-${item.title.toLowerCase()}`}
           />
         ))}
-        
         {/* More button that opens side nav */}
         <BottomNavItem
           title="More"
@@ -301,8 +279,8 @@ const MobileAppExample = () => {
           onClick={() => setIsSideNavOpen(true)}
           testID="nav-item-more"
           activeOnLinks={[
-            ...mainNavItems.slice(3).map(item => item.href),
-            ...sideNavItems.map(item => item.href)
+            ...mainNavItems.slice(3).map((item) => item.href),
+            ...sideNavItems.map((item) => item.href),
           ]}
         />
       </BottomNav>
@@ -317,4 +295,5 @@ const App = () => (
   </BrowserRouter>
 );
 
-export default App; 
+export default App;
+```

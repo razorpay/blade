@@ -1,10 +1,13 @@
 ## Component Name
+
 BottomSheet
 
 ## Description
+
 BottomSheet is a component commonly used in mobile applications to display additional information or actions without obstructing the main content of the screen. It slides up from the bottom of the viewport and can be configured with various heights through snap points. BottomSheet provides a structured layout with optional header, body, and footer sections, making it ideal for presenting forms, selection menus, and detailed information in a mobile-friendly interface.
 
 ## TypeScript Types
+
 The following types represent the props that the BottomSheet component and its subcomponents accept. These types allow you to properly configure the bottom sheet according to your needs.
 
 ```typescript
@@ -44,7 +47,7 @@ type BottomSheetProps = {
    * @default 400
    */
   zIndex?: number;
-} & TestID & 
+} & TestID &
   DataAnalyticsAttribute;
 
 /**
@@ -118,37 +121,19 @@ type BottomSheetFooterProps = {
   children: React.ReactNode;
 } & TestID &
   DataAnalyticsAttribute;
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
 ```
 
 ## Example
+
 Here are several examples demonstrating different uses of the BottomSheet component:
 
 ### Basic BottomSheet with Terms and Conditions
+
 This example shows a basic BottomSheet with header, body, and footer sections used for displaying terms and conditions with an agreement checkbox.
 
 ```tsx
 import React, { useState } from 'react';
-import { 
+import {
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
@@ -156,7 +141,7 @@ import {
   Button,
   Box,
   Text,
-  Checkbox
+  Checkbox,
 } from '@razorpay/blade/components';
 
 const TermsAndConditionsBottomSheet = () => {
@@ -165,30 +150,20 @@ const TermsAndConditionsBottomSheet = () => {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>
-        Open Terms & Conditions
-      </Button>
-      
-      <BottomSheet
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-        testID="terms-bottomsheet"
-      >
-        <BottomSheetHeader 
-          title="Terms & Conditions"
-          subtitle="Read carefully before accepting"
-        />
+      <Button onClick={() => setIsOpen(true)}>Open Terms & Conditions</Button>
+
+      <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)} testID="terms-bottomsheet">
+        <BottomSheetHeader title="Terms & Conditions" subtitle="Read carefully before accepting" />
         <BottomSheetBody>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. 
-            Maecenas consequat, dolor vel lobortis ultrices, risus velit volutpat erat, 
-            ac pretium urna nibh sit amet magna. Donec tristique quam at lectus blandit, 
-            non eleifend dui dictum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas
+            consequat, dolor vel lobortis ultrices, risus velit volutpat erat, ac pretium urna nibh
+            sit amet magna. Donec tristique quam at lectus blandit, non eleifend dui dictum.
           </Text>
           <Text marginTop="spacing.3">
-            Curabitur id neque vel metus tincidunt efficitur. Morbi vitae arcu lorem. 
-            Vivamus at tortor et metus placerat elementum vel ac neque. Nulla facilisi. 
-            Praesent vel dolor orci.
+            Curabitur id neque vel metus tincidunt efficitur. Morbi vitae arcu lorem. Vivamus at
+            tortor et metus placerat elementum vel ac neque. Nulla facilisi. Praesent vel dolor
+            orci.
           </Text>
         </BottomSheetBody>
         <BottomSheetFooter>
@@ -198,17 +173,10 @@ const TermsAndConditionsBottomSheet = () => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Checkbox
-              checked={termsAccepted}
-              onChange={() => setTermsAccepted(!termsAccepted)}
-            >
+            <Checkbox checked={termsAccepted} onChange={() => setTermsAccepted(!termsAccepted)}>
               I accept terms and conditions
             </Checkbox>
-            <Button 
-              variant="primary"
-              isDisabled={!termsAccepted}
-              onClick={() => setIsOpen(false)}
-            >
+            <Button variant="primary" isDisabled={!termsAccepted} onClick={() => setIsOpen(false)}>
               Continue
             </Button>
           </Box>
@@ -226,7 +194,7 @@ This example demonstrates a BottomSheet with form controls and custom initial fo
 
 ```tsx
 import React, { useRef, useState } from 'react';
-import { 
+import {
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
@@ -237,9 +205,9 @@ import {
   TextInput,
   ActionList,
   ActionListItem,
-  ActionListItemIcon
+  ActionListItemIcon,
 } from '@razorpay/blade/components';
-import { CustomersIcon } from '@razorpay/blade/components/Icons';
+import { CustomersIcon } from '@razorpay/blade/components';
 
 const SearchUsersBottomSheet = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -247,10 +215,8 @@ const SearchUsersBottomSheet = () => {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>
-        Search Users
-      </Button>
-      
+      <Button onClick={() => setIsOpen(true)}>Search Users</Button>
+
       <BottomSheet
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
@@ -263,17 +229,22 @@ const SearchUsersBottomSheet = () => {
           onBackButtonClick={() => setIsOpen(false)}
         />
         <BottomSheetBody>
-          <TextInput 
-            label="Search for users" 
+          <TextInput
+            label="Search for users"
             placeholder="Type a name or email"
             ref={searchInputRef}
             marginBottom="spacing.5"
           />
-          
-          <Text variant="body" size="small" color="surface.text.gray.muted" marginBottom="spacing.3">
+
+          <Text
+            variant="body"
+            size="small"
+            color="surface.text.gray.muted"
+            marginBottom="spacing.3"
+          >
             Recently viewed users
           </Text>
-          
+
           <ActionList>
             <ActionListItem
               title="Anurag Hazra"
@@ -293,10 +264,7 @@ const SearchUsersBottomSheet = () => {
           </ActionList>
         </BottomSheetBody>
         <BottomSheetFooter>
-          <Button 
-            isFullWidth 
-            onClick={() => setIsOpen(false)}
-          >
+          <Button isFullWidth onClick={() => setIsOpen(false)}>
             Done
           </Button>
         </BottomSheetFooter>
@@ -313,7 +281,7 @@ This example shows all possible header variants with title, subtitle, titleSuffi
 
 ```tsx
 import React, { useState } from 'react';
-import { 
+import {
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
@@ -322,7 +290,7 @@ import {
   Badge,
   Counter,
   Radio,
-  RadioGroup
+  RadioGroup,
 } from '@razorpay/blade/components';
 
 const AddressSelectionBottomSheet = () => {
@@ -331,14 +299,9 @@ const AddressSelectionBottomSheet = () => {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>
-        Select Address
-      </Button>
-      
-      <BottomSheet
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-      >
+      <Button onClick={() => setIsOpen(true)}>Select Address</Button>
+
+      <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader
           title="Address Details"
           subtitle="Saving addresses will improve your checkout experience"
@@ -348,8 +311,8 @@ const AddressSelectionBottomSheet = () => {
           onBackButtonClick={() => setIsOpen(false)}
         />
         <BottomSheetBody>
-          <RadioGroup 
-            label="Addresses" 
+          <RadioGroup
+            label="Addresses"
             value={selectedAddress}
             onChange={({ value }) => setSelectedAddress(value)}
           >
@@ -379,7 +342,7 @@ This example demonstrates a BottomSheet with form validation and error handling.
 
 ```tsx
 import React, { useState } from 'react';
-import { 
+import {
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
@@ -388,15 +351,14 @@ import {
   Box,
   Text,
   TextInput,
-  Link
+  Link,
 } from '@razorpay/blade/components';
-import { ArrowRightIcon } from '@razorpay/blade/components/Icons';
+import { ArrowRightIcon } from '@razorpay/blade/components';
 
 const PhoneVerificationBottomSheet = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [verificationError, setVerificationError] = useState('');
-  
   const handleVerify = () => {
     if (!phoneNumber) {
       setVerificationError('Please enter a phone number');
@@ -409,17 +371,12 @@ const PhoneVerificationBottomSheet = () => {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>
-        Verify Phone Number
-      </Button>
-      
-      <BottomSheet
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-      >
-        <BottomSheetHeader 
-          title="Verify Phone Number" 
-          showBackButton 
+      <Button onClick={() => setIsOpen(true)}>Verify Phone Number</Button>
+
+      <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+        <BottomSheetHeader
+          title="Verify Phone Number"
+          showBackButton
           onBackButtonClick={() => setIsOpen(false)}
         />
         <BottomSheetBody>
@@ -432,28 +389,18 @@ const PhoneVerificationBottomSheet = () => {
             validationState={verificationError ? 'error' : 'none'}
             marginBottom="spacing.5"
           />
-          
+
           <Text variant="body" size="small" textAlign="center">
-            By continuing, you agree to our{' '}
-            <Link href="#">Terms of Service</Link> and{' '}
+            By continuing, you agree to our <Link href="#">Terms of Service</Link> and{' '}
             <Link href="#">Privacy Policy</Link>
           </Text>
         </BottomSheetBody>
         <BottomSheetFooter>
           <Box display="flex" flexDirection="column" gap="spacing.3">
-            <Button
-              isFullWidth
-              icon={ArrowRightIcon}
-              iconPosition="right"
-              onClick={handleVerify}
-            >
+            <Button isFullWidth icon={ArrowRightIcon} iconPosition="right" onClick={handleVerify}>
               Verify
             </Button>
-            <Button
-              isFullWidth
-              variant="tertiary"
-              onClick={() => setIsOpen(false)}
-            >
+            <Button isFullWidth variant="tertiary" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
           </Box>
@@ -471,7 +418,7 @@ This example shows how to use BottomSheet with the Dropdown component.
 
 ```tsx
 import React from 'react';
-import { 
+import {
   Dropdown,
   SelectInput,
   BottomSheet,
@@ -479,13 +426,9 @@ import {
   BottomSheetBody,
   ActionList,
   ActionListItem,
-  ActionListItemIcon
+  ActionListItemIcon,
 } from '@razorpay/blade/components';
-import {
-  CustomersIcon,
-  ClockIcon,
-  ThumbsUpIcon
-} from '@razorpay/blade/components/Icons';
+import { CustomersIcon, ClockIcon, ThumbsUpIcon } from '@razorpay/blade/components';
 
 const DropdownWithBottomSheet = () => {
   return (
@@ -525,7 +468,7 @@ This example demonstrates how to implement a multi-step flow using stacked Botto
 
 ```tsx
 import React, { useState } from 'react';
-import { 
+import {
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
@@ -535,15 +478,15 @@ import {
   ActionList,
   ActionListItem,
   ActionListSection,
-  ActionListItemIcon
+  ActionListItemIcon,
 } from '@razorpay/blade/components';
 import {
   CustomersIcon,
   ClockIcon,
   ThumbsUpIcon,
   TrendingUpIcon,
-  TrendingDownIcon
-} from '@razorpay/blade/components/Icons';
+  TrendingDownIcon,
+} from '@razorpay/blade/components';
 
 const StackedBottomSheets = () => {
   const [isFirstSheetOpen, setIsFirstSheetOpen] = useState(false);
@@ -561,19 +504,11 @@ const StackedBottomSheets = () => {
 
   return (
     <>
-      <Button onClick={() => setIsFirstSheetOpen(true)}>
-        Open Multi-step Flow
-      </Button>
-      
+      <Button onClick={() => setIsFirstSheetOpen(true)}>Open Multi-step Flow</Button>
+
       {/* First sheet with sort options */}
-      <BottomSheet
-        isOpen={isFirstSheetOpen}
-        onDismiss={() => setIsFirstSheetOpen(false)}
-      >
-        <BottomSheetHeader 
-          title="Sort Options" 
-          subtitle="Choose how to organize your data"
-        />
+      <BottomSheet isOpen={isFirstSheetOpen} onDismiss={() => setIsFirstSheetOpen(false)}>
+        <BottomSheetHeader title="Sort Options" subtitle="Choose how to organize your data" />
         <BottomSheetBody>
           <ActionList>
             <ActionListItem
@@ -604,20 +539,14 @@ const StackedBottomSheets = () => {
           </ActionList>
         </BottomSheetBody>
         <BottomSheetFooter>
-          <Button 
-            isFullWidth 
-            onClick={openSecondSheet}
-          >
+          <Button isFullWidth onClick={openSecondSheet}>
             Next: Filter Options
           </Button>
         </BottomSheetFooter>
       </BottomSheet>
 
       {/* Second sheet with filter options */}
-      <BottomSheet
-        isOpen={isSecondSheetOpen}
-        onDismiss={() => setIsSecondSheetOpen(false)}
-      >
+      <BottomSheet isOpen={isSecondSheetOpen} onDismiss={() => setIsSecondSheetOpen(false)}>
         <BottomSheetHeader title="Filter By Cuisines" />
         <BottomSheetBody>
           <ActionList>
@@ -637,17 +566,10 @@ const StackedBottomSheets = () => {
         </BottomSheetBody>
         <BottomSheetFooter>
           <Box display="flex" flexDirection="column" gap="spacing.3">
-            <Button 
-              isFullWidth 
-              onClick={() => setIsSecondSheetOpen(false)}
-            >
+            <Button isFullWidth onClick={() => setIsSecondSheetOpen(false)}>
               Apply Filters
             </Button>
-            <Button 
-              isFullWidth 
-              variant="tertiary" 
-              onClick={backToFirstSheet}
-            >
+            <Button isFullWidth variant="tertiary" onClick={backToFirstSheet}>
               Back to Sort Options
             </Button>
           </Box>
@@ -665,7 +587,7 @@ This example shows how to create a BottomSheet with zero padding for full-width 
 
 ```tsx
 import React, { useState } from 'react';
-import { 
+import {
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
@@ -673,7 +595,7 @@ import {
   Button,
   Box,
   Text,
-  Heading
+  Heading,
 } from '@razorpay/blade/components';
 
 const ZeroPaddingBottomSheet = () => {
@@ -681,21 +603,16 @@ const ZeroPaddingBottomSheet = () => {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>
-        Open Full-Width Content
-      </Button>
-      
-      <BottomSheet
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-      >
+      <Button onClick={() => setIsOpen(true)}>Open Full-Width Content</Button>
+
+      <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader />
         <BottomSheetBody padding="spacing.0">
           <Box>
             {/* Full-width banner/image container */}
-            <Box 
-              position="relative" 
-              height="200px" 
+            <Box
+              position="relative"
+              height="200px"
               backgroundColor="surface.background.cloud.subtle"
               display="flex"
               alignItems="flex-end"
@@ -705,12 +622,13 @@ const ZeroPaddingBottomSheet = () => {
                 All-in-one Management Platform
               </Heading>
             </Box>
-            
+
             {/* Content with padding */}
             <Box padding="spacing.5">
               <Text>
-                We bring together all services in ONE place to deliver a seamless user experience for you. 
-                Work with our experts to ensure your transfers are always compliant, safe & effortless.
+                We bring together all services in ONE place to deliver a seamless user experience
+                for you. Work with our experts to ensure your transfers are always compliant, safe &
+                effortless.
               </Text>
               <Text marginTop="spacing.3" color="surface.text.gray.muted">
                 100% secure | Instant payouts | Unbeatable pricing
@@ -726,4 +644,5 @@ const ZeroPaddingBottomSheet = () => {
   );
 };
 
-export default ZeroPaddingBottomSheet; 
+export default ZeroPaddingBottomSheet;
+```

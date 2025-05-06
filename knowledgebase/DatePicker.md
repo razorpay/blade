@@ -1,10 +1,13 @@
 ## Component Name
+
 DatePicker
 
 ## Description
+
 DatePicker is a component for selecting dates or date ranges with an intuitive calendar interface. It supports single date selection or date range selection modes, with features such as date constraints, presets for quick selection, and validation states. The component also offers a FilterChipDatePicker variant for use in filtering interfaces, making it versatile for various date selection scenarios.
 
 ## TypeScript Types
+
 The following types represent the props that the DatePicker component and its variants accept. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -124,7 +127,8 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
   onPreviousYear?: () => void;
   onMonthSelect?: (month: Date) => void;
   onYearSelect?: (year: Date) => void;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for single selection DatePicker
@@ -310,24 +314,6 @@ type FilterChipDatePickerProps<T extends DatePickerSelectionType = 'single'> = O
    */
   onClearButtonClick?: () => void;
 };
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- * Includes margin, padding, and other layout props
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Examples
@@ -343,11 +329,13 @@ import dayjs from 'dayjs';
 
 const SingleDatePickerExample = () => {
   const [date, setDate] = useState<Date | null>(new Date());
-  
+
   return (
     <Box display="flex" flexDirection="column" gap="spacing.8">
       <Box>
-        <Text weight="semibold" marginBottom="spacing.3">Standard Configuration</Text>
+        <Text weight="semibold" marginBottom="spacing.3">
+          Standard Configuration
+        </Text>
         <DatePicker
           selectionType="single"
           label="Event date"
@@ -367,7 +355,6 @@ const SingleDatePickerExample = () => {
             return day === 0 || day === 6; // Exclude weekends
           }}
         />
-        
         <Text size="small" marginTop="spacing.2">
           Selected: {date ? dayjs(date).format('DD MMM YYYY') : 'None'}
         </Text>
@@ -390,12 +377,16 @@ import dayjs from 'dayjs';
 
 const SizeVariantsExample = () => {
   const [date, setDate] = useState<Date | null>(new Date());
-  const [disabledDate, setDisabledDate] = useState<Date | null>(dayjs().subtract(1, 'week').toDate());
+  const [disabledDate, setDisabledDate] = useState<Date | null>(
+    dayjs().subtract(1, 'week').toDate(),
+  );
   const [isSingleOpen, setIsSingleOpen] = useState(false);
-  
+
   return (
     <Box>
-      <Text weight="semibold" marginBottom="spacing.3">Size Variants and Controlled DatePicker</Text>
+      <Text weight="semibold" marginBottom="spacing.3">
+        Size Variants and Controlled DatePicker
+      </Text>
       <Box display="flex" gap="spacing.4" alignItems="flex-start">
         <DatePicker
           selectionType="single"
@@ -406,7 +397,6 @@ const SizeVariantsExample = () => {
           isOpen={isSingleOpen}
           onOpenChange={({ isOpen }) => setIsSingleOpen(isOpen)}
         />
-      
         <DatePicker
           selectionType="single"
           label="Large (Disabled)"
@@ -415,18 +405,14 @@ const SizeVariantsExample = () => {
           value={disabledDate}
         />
       </Box>
-      
+
       <Box display="flex" gap="spacing.4" marginTop="spacing.3">
-        <Button 
-          size="small" 
-          variant="secondary"
-          onClick={() => setIsSingleOpen(!isSingleOpen)}
-        >
+        <Button size="small" variant="secondary" onClick={() => setIsSingleOpen(!isSingleOpen)}>
           {isSingleOpen ? 'Close Calendar' : 'Open Calendar'}
         </Button>
-        
-        <Button 
-          size="small" 
+
+        <Button
+          size="small"
           variant="secondary"
           onClick={() => setDate(dayjs().add(1, 'week').toDate())}
         >
@@ -451,10 +437,12 @@ import dayjs from 'dayjs';
 
 const MonthYearPickerExample = () => {
   const [date, setDate] = useState<Date | null>(new Date());
-  
+
   return (
     <Box>
-      <Text weight="semibold" marginBottom="spacing.3">Month and Year Pickers</Text>
+      <Text weight="semibold" marginBottom="spacing.3">
+        Month and Year Pickers
+      </Text>
       <Box display="flex" gap="spacing.6">
         <DatePicker
           selectionType="single"
@@ -466,7 +454,6 @@ const MonthYearPickerExample = () => {
             setDate(selectedDate);
           }}
         />
-        
         <DatePicker
           selectionType="single"
           label="Year"
@@ -478,9 +465,9 @@ const MonthYearPickerExample = () => {
           }}
         />
       </Box>
-      
+
       <Text size="small" marginTop="spacing.3">
-        Selected: {date ? dayjs(date).format('MMMM YYYY') : 'None'} 
+        Selected: {date ? dayjs(date).format('MMMM YYYY') : 'None'}
       </Text>
     </Box>
   );
@@ -502,11 +489,11 @@ const DateRangeExample = () => {
   // Date range with validation
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
     dayjs().subtract(7, 'days').toDate(),
-    new Date()
+    new Date(),
   ]);
   const [hasRangeError, setHasRangeError] = useState(false);
   const [isRangeOpen, setIsRangeOpen] = useState(false);
-  
+
   // Define preset options for quick selection
   const datePresets = [
     {
@@ -532,11 +519,11 @@ const DateRangeExample = () => {
       ],
     },
   ];
-  
+
   // Handle range change with validation
   const handleRangeChange = (dates: [Date | null, Date | null]) => {
     setDateRange(dates);
-    
+
     // Validate: range cannot be more than 7 days
     if (dates[0] && dates[1]) {
       const daysDiff = dayjs(dates[1]).diff(dates[0], 'day');
@@ -545,21 +532,22 @@ const DateRangeExample = () => {
       setHasRangeError(false);
     }
   };
-  
   return (
     <Box display="flex" flexDirection="column" gap="spacing.8">
       {/* Comprehensive date range picker */}
       <Box>
-        <Text weight="semibold" marginBottom="spacing.3">Complete Range DatePicker</Text>
+        <Text weight="semibold" marginBottom="spacing.3">
+          Complete Range DatePicker
+        </Text>
         <DatePicker
           selectionType="range"
-          label={{ start: "Start Date", end: "End Date" }}
+          label={{ start: 'Start Date', end: 'End Date' }}
           value={dateRange}
           onChange={handleRangeChange}
           validationState={hasRangeError ? 'error' : 'none'}
-          errorText={{ 
-            start: "Range cannot exceed 7 days", 
-            end: "Please select a shorter range" 
+          errorText={{
+            start: 'Range cannot exceed 7 days',
+            end: 'Please select a shorter range',
           }}
           helpText="Select a date range or use preset options"
           presets={datePresets}
@@ -569,29 +557,24 @@ const DateRangeExample = () => {
           necessityIndicator="required"
           size="medium"
         />
-        
-        <Text size="small" marginTop="spacing.3" color={hasRangeError ? "text.error" : undefined}>
-          Selected: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} - 
+
+        <Text size="small" marginTop="spacing.3" color={hasRangeError ? 'text.error' : undefined}>
+          Selected: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} -
           {dateRange[1] ? dayjs(dateRange[1]).format('DD MMM YYYY') : 'None'}
-          {hasRangeError && " (Error: Range too long)"}
+          {hasRangeError && ' (Error: Range too long)'}
         </Text>
-        
+
         <Box display="flex" gap="spacing.4" marginTop="spacing.3">
-          <Button 
-            size="small" 
-            variant="secondary"
-            onClick={() => setIsRangeOpen(!isRangeOpen)}
-          >
+          <Button size="small" variant="secondary" onClick={() => setIsRangeOpen(!isRangeOpen)}>
             {isRangeOpen ? 'Close Calendar' : 'Open Calendar'}
           </Button>
-          
-          <Button 
-            size="small" 
+
+          <Button
+            size="small"
             variant="secondary"
-            onClick={() => setDateRange([
-              dayjs().startOf('month').toDate(),
-              dayjs().endOf('month').toDate()
-            ])}
+            onClick={() =>
+              setDateRange([dayjs().startOf('month').toDate(), dayjs().endOf('month').toDate()])
+            }
           >
             Set to Current Month
           </Button>
@@ -617,7 +600,6 @@ const FilterChipDatePickerExample = () => {
   // FilterChip states
   const [singleDate, setSingleDate] = useState<Date | null>(null);
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
-  
   // Common presets
   const datePresets = [
     {
@@ -630,15 +612,19 @@ const FilterChipDatePickerExample = () => {
         dayjs(date).startOf('month').toDate(),
         dayjs(date).endOf('month').toDate(),
       ],
-    }
+    },
   ];
-  
+
   return (
     <Box>
-      <Text weight="semibold" marginBottom="spacing.3">FilterChipDatePicker Variants</Text>
+      <Text weight="semibold" marginBottom="spacing.3">
+        FilterChipDatePicker Variants
+      </Text>
       <Box display="flex" gap="spacing.4" alignItems="flex-start">
         <Box>
-          <Text size="small" marginBottom="spacing.2">Single Selection</Text>
+          <Text size="small" marginBottom="spacing.2">
+            Single Selection
+          </Text>
           <FilterChipDatePicker
             label="Created Date"
             selectionType="single"
@@ -646,9 +632,11 @@ const FilterChipDatePickerExample = () => {
             onChange={(date) => setSingleDate(date as Date)}
           />
         </Box>
-        
+
         <Box>
-          <Text size="small" marginBottom="spacing.2">Range Selection with Presets</Text>
+          <Text size="small" marginBottom="spacing.2">
+            Range Selection with Presets
+          </Text>
           <FilterChipDatePicker
             label="Date Range"
             selectionType="range"
@@ -659,13 +647,12 @@ const FilterChipDatePickerExample = () => {
           />
         </Box>
       </Box>
-      
       <Box marginTop="spacing.3">
         <Text size="small">
           Single Date: {singleDate ? dayjs(singleDate).format('DD MMM YYYY') : 'None'}
         </Text>
         <Text size="small">
-          Date Range: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} - 
+          Date Range: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} -
           {dateRange[1] ? dayjs(dateRange[1]).format('DD MMM YYYY') : 'None'}
         </Text>
       </Box>
@@ -688,30 +675,27 @@ import { I18nProvider } from '@razorpay/i18nify-react';
 const LocalizationExample = () => {
   return (
     <Box>
-      <Text weight="semibold" marginBottom="spacing.3">DatePicker Localization</Text>
+      <Text weight="semibold" marginBottom="spacing.3">
+        DatePicker Localization
+      </Text>
       <Box display="flex" gap="spacing.6" flexWrap="wrap">
-
         {/* Hindi locale */}
         <Box width="250px">
-          <Text size="small" marginBottom="spacing.2">Hindi</Text>
+          <Text size="small" marginBottom="spacing.2">
+            Hindi
+          </Text>
           <I18nProvider initData={{ locale: 'hi-IN' }}>
-            <DatePicker
-              selectionType="single"
-              label="तारीख चुनें"
-              size="small"
-            />
+            <DatePicker selectionType="single" label="तारीख चुनें" size="small" />
           </I18nProvider>
         </Box>
-        
+
         {/* Malay locale */}
         <Box width="250px">
-          <Text size="small" marginBottom="spacing.2">Malay</Text>
+          <Text size="small" marginBottom="spacing.2">
+            Malay
+          </Text>
           <I18nProvider initData={{ locale: 'ms-MY' }}>
-            <DatePicker
-              selectionType="single"
-              label="Pilih Tarikh"
-              size="small"
-            />
+            <DatePicker selectionType="single" label="Pilih Tarikh" size="small" />
           </I18nProvider>
         </Box>
       </Box>
@@ -720,3 +704,4 @@ const LocalizationExample = () => {
 };
 
 export default LocalizationExample;
+```

@@ -1,28 +1,16 @@
 ## Component Name
+
 Menu
 
 ## Description
+
 Action Menu displays a list of actions on temporary surfaces. They allow users to perform actions from multiple options. Menus appear when users interact with a button, action, or other control, creating a contextual interface for related actions. Note that Menus are not responsive by default and are not intended for selection - use Dropdown with Select or AutoComplete for selectable options.
 
 ## TypeScript Types
+
 The following types represent the props that the Menu component and its subcomponents accept. These types should be used when implementing the Menu component in your application.
 
 ```typescript
-// Base utility types
-type TestID = {
-  /**
-   * Test ID used for testing
-   */
-  testID?: string;
-};
-
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
 // The main Menu component props
 type MenuProps = {
   /**
@@ -152,7 +140,8 @@ type MenuOverlayProps = {
    * maxWidth override
    */
   maxWidth?: string | number;
-} & TestID & DataAnalyticsAttribute;
+} & TestID &
+  DataAnalyticsAttribute;
 
 // MenuHeader props
 type MenuHeaderProps = {
@@ -221,12 +210,12 @@ This example demonstrates a comprehensive menu with an Avatar trigger and variou
 
 ```tsx
 import React from 'react';
-import { 
-  Menu, 
-  MenuDivider, 
-  MenuItem, 
-  MenuOverlay, 
-  MenuHeader, 
+import {
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuOverlay,
+  MenuHeader,
   MenuFooter,
   Button,
   Box,
@@ -238,7 +227,7 @@ import {
   ShareIcon,
   TestIcon,
   TicketIcon,
-  UserIcon
+  UserIcon,
 } from '@razorpay/blade/components';
 
 function BasicMenu() {
@@ -309,12 +298,12 @@ This example shows how to create a controlled menu where the open state is manag
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Menu, 
-  MenuDivider, 
-  MenuItem, 
-  MenuOverlay, 
-  MenuHeader, 
+import {
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuOverlay,
+  MenuHeader,
   MenuFooter,
   Button,
   Box,
@@ -326,18 +315,16 @@ import {
   ShareIcon,
   TestIcon,
   TicketIcon,
-  UserIcon
+  UserIcon,
 } from '@razorpay/blade/components';
 
 function ControlledMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  
   return (
     <Box>
       <Button marginY="spacing.4" onClick={() => setIsOpen(true)}>
         Open Menu
       </Button>
-      
       <Menu isOpen={isOpen} onOpenChange={({ isOpen }) => setIsOpen(isOpen)}>
         <Avatar name="Saurabh Daware" size="large" color="primary" />
         <MenuOverlay>
@@ -378,3 +365,4 @@ function ControlledMenu() {
 }
 
 export default ControlledMenu;
+```

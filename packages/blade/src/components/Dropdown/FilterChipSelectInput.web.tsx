@@ -54,7 +54,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     triggererRef,
     selectionType,
     isControlled,
-    setHasUnControlledFilterChipSelectInput,
     setSelectedIndices,
     controlledValueIndices,
     changeCallbackTriggerer,
@@ -81,8 +80,14 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   };
 
   useEffect(() => {
+    const valueNotEmpty =
+      (typeof value === 'string' && value.trim() !== '') ||
+      (Array.isArray(value) && value.length > 0);
+    // since we need to sync state only one time so skipping value checking.
+    const isValueAndSelectedOptoinsSynced =
+      (typeof value === 'string' && value && selectedIndices.length === 1) ||
+      (Array.isArray(value) && value.length === selectedIndices.length);
     if (isUnControlled) {
-      setHasUnControlledFilterChipSelectInput(true);
       if (listViewSelectedFilters[label]) {
         const value = (listViewSelectedFilters[label] as unknown) as number[];
         setSelectedIndices(value);
@@ -95,9 +100,18 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     } else if (listViewSelectedFilters[label]) {
       const value = (listViewSelectedFilters[label] as unknown) as number[];
       setSelectedIndices(value);
+      // This would be the case when filterChipSelectInput is controlled and are being opened first time
+    } else if (valueNotEmpty && !isValueAndSelectedOptoinsSynced && options.length > 0) {
+      const selectedIndices =
+        typeof value === 'string'
+          ? [options.findIndex((option) => option.value === value)]
+          : options
+              .map((option, index) => (value.includes(option.value) ? index : -1))
+              .filter((index) => index !== -1);
+      setSelectedIndices(selectedIndices);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUnControlled]);
+  }, [isUnControlled, options]);
 
   const getTitleFromValue = (value: string): string => {
     const option = options.find((option) => option.value === value);
@@ -126,6 +140,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       const { [label]: _, ...updatedFilters } = prev;
       return updatedFilters;
     });
+    setSelectedIndices([]);
   };
 
   useEffect(() => {
@@ -165,6 +180,22 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
 
+  const handleKeyDown = (e: React.KeyboardEvent<Element>): void => {
+    onKeyDown?.(e);
+    onTriggerKeydown?.({ event: e as React.KeyboardEvent<HTMLInputElement> });
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    if ((e.key === 'Enter' || e.key === ' ') && !isOpen) {
+      e.preventDefault();
+      e.stopPropagation();
+      onTriggerClick();
+    }
+  };
+
   return (
     <BaseFilterChip
       label={label}
@@ -173,6 +204,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       selectionType={selectionType}
       {...rest}
       ref={triggererRef as any}
+      onKeyDown={handleKeyDown}
       accessibilityProps={{
         label: accessibilityLabel ?? label,
         hasPopup: getActionListContainerRole(hasFooterAction, 'FilterChipSelectInput'),
@@ -182,18 +214,10 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       }}
       onClick={(e) => {
         onTriggerClick();
-        // Setting it for web fails it on native typecheck and vice versa
-        onClick?.(e as any);
+        onClick?.(e);
       }}
       onBlur={(e) => {
-        // With button trigger, there is no "value" as such. It's just clickable items
-        // Setting it for web fails it on native typecheck and vice versa
-        onBlur?.(e as any);
-      }}
-      onKeyDown={(e) => {
-        onTriggerKeydown?.({ event: e as any });
-        // Setting it for web fails it on native typecheck and vice versa
-        onKeyDown?.(e as any);
+        onBlur?.(e);
       }}
     />
   );

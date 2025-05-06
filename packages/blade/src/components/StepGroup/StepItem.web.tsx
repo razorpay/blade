@@ -164,7 +164,7 @@ const _StepItem = ({
           {description}
         </Text>
       </Box>
-      <Box>{trailing}</Box>
+      {trailing ? <Box>{trailing}</Box> : null}
     </Box>
   );
 

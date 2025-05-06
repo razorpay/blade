@@ -1,13 +1,30 @@
 ## Component Name
+
 Box
 
 ## Description
+
 Box is a versatile layout primitive component that serves as the foundational building block for creating complex layouts in Blade applications. It provides a comprehensive set of styling and layout properties through a consistent prop-based API, supporting responsive design, flexbox layouts, and styled-system patterns. Box allows developers to create consistent layouts without writing custom CSS while maintaining design system constraints.
 
 ## TypeScript Types
+
 The following types represent the props that the Box component accepts. These types allow you to properly configure the component according to your needs.
 
 ```typescript
+/**
+ * Type for responsive values, allowing different values at different breakpoints
+ */
+type ResponsiveValue<T> =
+  | T
+  | {
+      base?: T;
+      xs?: T;
+      s?: T;
+      m?: T;
+      l?: T;
+      xl?: T;
+    };
+
 /**
  * Props for the Box component
  */
@@ -16,7 +33,7 @@ type BoxProps = {
    * The HTML element to render the Box as
    * @default 'div'
    */
-  as?: 'div' | 'section' | 'article' | 'main' | 'header' | 'footer' | 'aside' | 'nav' | 'form' | React.ComponentType<any>;
+  as?: 'div' | 'section' | 'article' | 'main' | 'header' | 'footer' | 'aside' | 'nav';
 
   /**
    * ID attribute of the Box
@@ -36,7 +53,7 @@ type BoxProps = {
 
   /**
    * Flex direction property - defines the direction of the flex items
-   * @example "row" | "column" | "row-reverse" | "column-reverse" 
+   * @example "row" | "column" | "row-reverse" | "column-reverse"
    */
   flexDirection?: ResponsiveValue<string>;
 
@@ -87,29 +104,29 @@ type BoxProps = {
   /**
    * Gap property - defines the gap between flex/grid items
    */
-  gap?: ResponsiveValue<string>;
+  gap?: ResponsiveValue<SpacingValueType>;
 
   /**
    * Margin properties
    */
-  margin?: ResponsiveValue<string>;
-  marginTop?: ResponsiveValue<string>;
-  marginRight?: ResponsiveValue<string>;
-  marginBottom?: ResponsiveValue<string>;
-  marginLeft?: ResponsiveValue<string>;
-  marginX?: ResponsiveValue<string>;
-  marginY?: ResponsiveValue<string>;
+  margin?: ResponsiveValue<SpacingValueType>;
+  marginTop?: ResponsiveValue<SpacingValueType>;
+  marginRight?: ResponsiveValue<SpacingValueType>;
+  marginBottom?: ResponsiveValue<SpacingValueType>;
+  marginLeft?: ResponsiveValue<SpacingValueType>;
+  marginX?: ResponsiveValue<SpacingValueType>;
+  marginY?: ResponsiveValue<SpacingValueType>;
 
   /**
    * Padding properties
    */
-  padding?: ResponsiveValue<string>;
-  paddingTop?: ResponsiveValue<string>;
-  paddingRight?: ResponsiveValue<string>;
-  paddingBottom?: ResponsiveValue<string>;
-  paddingLeft?: ResponsiveValue<string>;
-  paddingX?: ResponsiveValue<string>;
-  paddingY?: ResponsiveValue<string>;
+  padding?: ResponsiveValue<SpacingValueType>;
+  paddingTop?: ResponsiveValue<SpacingValueType>;
+  paddingRight?: ResponsiveValue<SpacingValueType>;
+  paddingBottom?: ResponsiveValue<SpacingValueType>;
+  paddingLeft?: ResponsiveValue<SpacingValueType>;
+  paddingX?: ResponsiveValue<SpacingValueType>;
+  paddingY?: ResponsiveValue<SpacingValueType>;
 
   /**
    * Width property
@@ -119,7 +136,7 @@ type BoxProps = {
 
   /**
    * Height property
-   * @example "100%" | "200px" | "auto" | "fit-content" 
+   * @example "100%" | "200px" | "auto" | "fit-content"
    */
   height?: ResponsiveValue<string | number>;
 
@@ -213,7 +230,6 @@ type BoxProps = {
   /**
    * Event handlers
    */
-  onClick?: React.MouseEventHandler;
   onMouseOver?: React.MouseEventHandler;
   onMouseEnter?: React.MouseEventHandler;
   onMouseLeave?: React.MouseEventHandler;
@@ -224,38 +240,8 @@ type BoxProps = {
   onDragOver?: React.DragEventHandler;
   onDragLeave?: React.DragEventHandler;
   onDrop?: React.DragEventHandler;
-} & TestID & DataAnalyticsAttribute;
-
-/**
- * Type for responsive values, allowing different values at different breakpoints
- */
-type ResponsiveValue<T> = T | {
-  base?: T;
-  s?: T;
-  m?: T;
-  l?: T;
-  xl?: T;
-};
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
+} & TestID &
+  DataAnalyticsAttribute;
 
 /**
  * Type for Box ref
@@ -272,12 +258,11 @@ This example demonstrates a responsive card layout with flexbox properties, styl
 
 ```tsx
 import React from 'react';
-import { Box, Text, Heading, Button } from '@razorpay/blade/components';
-import { RazorpayIcon } from '@razorpay/blade/components/Icons';
+import { Box, Text, Heading, Button, RazorpayIcon } from '@razorpay/blade/components';
 
 const ResponsiveCardLayout = () => {
   return (
-    <Box 
+    <Box
       // Responsive container with padding that changes at different breakpoints
       padding={{ base: 'spacing.3', m: 'spacing.5' }}
       backgroundColor="surface.background.gray.subtle"
@@ -286,17 +271,19 @@ const ResponsiveCardLayout = () => {
       maxWidth="800px"
       margin="0 auto"
     >
-      <Heading size="large" marginBottom="spacing.5">Responsive Card Layout</Heading>
-      
+      <Heading size="large" marginBottom="spacing.5">
+        Responsive Card Layout
+      </Heading>
+
       {/* Responsive card grid */}
-      <Box 
-        display="flex" 
+      <Box
+        display="flex"
         flexDirection={{ base: 'column', m: 'row' }}
         flexWrap="wrap"
         gap="spacing.4"
       >
         {/* Card 1 */}
-        <Box 
+        <Box
           flex={{ base: 1, m: 1 }}
           flexBasis={{ base: '100%', m: '45%' }}
           backgroundColor="surface.background.gray.normal"
@@ -306,14 +293,14 @@ const ResponsiveCardLayout = () => {
           overflow="hidden"
           position="relative"
         >
-          <Box 
-            display="flex" 
-            alignItems="center" 
+          <Box
+            display="flex"
+            alignItems="center"
             justifyContent="space-between"
             marginBottom="spacing.3"
           >
             <Heading size="small">Basic Plan</Heading>
-            <Box 
+            <Box
               backgroundColor="surface.background.primary.subtle"
               padding="spacing.2"
               borderRadius="circle"
@@ -321,11 +308,11 @@ const ResponsiveCardLayout = () => {
               <RazorpayIcon size="medium" />
             </Box>
           </Box>
-          
+
           <Text marginBottom="spacing.3">
             Perfect for individuals and small teams getting started with our platform.
           </Text>
-          
+
           <Box marginY="spacing.3">
             <Box display="flex" justifyContent="space-between" marginBottom="spacing.2">
               <Text>Storage</Text>
@@ -340,14 +327,16 @@ const ResponsiveCardLayout = () => {
               <Text>Email</Text>
             </Box>
           </Box>
-          
+
           <Box marginTop="spacing.4">
-            <Button variant="secondary" isFullWidth>Choose Plan</Button>
+            <Button variant="secondary" isFullWidth>
+              Choose Plan
+            </Button>
           </Box>
         </Box>
-        
+
         {/* Card 2 */}
-        <Box 
+        <Box
           flex={{ base: 1, m: 1 }}
           flexBasis={{ base: '100%', m: '45%' }}
           backgroundColor="surface.background.primary.intense"
@@ -357,7 +346,7 @@ const ResponsiveCardLayout = () => {
           overflow="hidden"
           position="relative"
         >
-          <Box 
+          <Box
             position="absolute"
             top="spacing.2"
             right="spacing.2"
@@ -365,17 +354,21 @@ const ResponsiveCardLayout = () => {
             borderRadius="medium"
             padding="spacing.1 spacing.2"
           >
-            <Text size="small" color="interactive.text.primary.normal">Popular</Text>
+            <Text size="small" color="interactive.text.primary.normal">
+              Popular
+            </Text>
           </Box>
-          
-          <Box 
-            display="flex" 
-            alignItems="center" 
+
+          <Box
+            display="flex"
+            alignItems="center"
             justifyContent="space-between"
             marginBottom="spacing.3"
           >
-            <Heading size="small" color="surface.text.staticWhite.normal">Pro Plan</Heading>
-            <Box 
+            <Heading size="small" color="surface.text.staticWhite.normal">
+              Pro Plan
+            </Heading>
+            <Box
               backgroundColor="surface.background.gray.intense"
               padding="spacing.2"
               borderRadius="circle"
@@ -383,11 +376,11 @@ const ResponsiveCardLayout = () => {
               <RazorpayIcon size="medium" color="surface.icon.staticWhite.normal" />
             </Box>
           </Box>
-          
+
           <Text marginBottom="spacing.3" color="surface.text.staticWhite.normal">
             Enhanced features for growing businesses and professional teams.
           </Text>
-          
+
           <Box marginY="spacing.3">
             <Box display="flex" justifyContent="space-between" marginBottom="spacing.2">
               <Text color="surface.text.staticWhite.normal">Storage</Text>
@@ -402,9 +395,11 @@ const ResponsiveCardLayout = () => {
               <Text color="surface.text.staticWhite.normal">Priority</Text>
             </Box>
           </Box>
-          
+
           <Box marginTop="spacing.4">
-            <Button variant="primary" isFullWidth>Choose Plan</Button>
+            <Button variant="primary" isFullWidth>
+              Choose Plan
+            </Button>
           </Box>
         </Box>
       </Box>
@@ -446,7 +441,6 @@ const AdvancedPositioningExample = () => {
         backgroundColor="surface.background.primary.subtle"
         clipPath="circle(50% at 50% 50%)"
       />
-      
       <Box
         position="absolute"
         bottom="-30px"
@@ -457,7 +451,6 @@ const AdvancedPositioningExample = () => {
         backgroundColor="surface.background.cloud.subtle"
         transform="rotate(45deg)"
       />
-      
       {/* Content container */}
       <Box
         position="relative"
@@ -469,7 +462,6 @@ const AdvancedPositioningExample = () => {
         <Text variant="body" size="large" marginBottom="spacing.5">
           Advanced positioning example
         </Text>
-        
         {/* Card with transformation */}
         <Box
           backgroundColor="surface.background.gray.normal"
@@ -480,11 +472,9 @@ const AdvancedPositioningExample = () => {
           transform="rotate(-2deg)"
           transformOrigin="center"
         >
-          <Text>
-            This card has a slight rotation applied to create visual interest.
-          </Text>
+          <Text>This card has a slight rotation applied to create visual interest.</Text>
         </Box>
-        
+
         {/* Overlapping elements */}
         <Box position="relative" height="100px" marginBottom="spacing.4">
           <Box
@@ -502,7 +492,6 @@ const AdvancedPositioningExample = () => {
           >
             <Text color="surface.text.staticWhite.normal">Box 1</Text>
           </Box>
-          
           <Box
             position="absolute"
             left="40px"
@@ -518,7 +507,6 @@ const AdvancedPositioningExample = () => {
           >
             <Text color="surface.text.onCloud.onIntense">Box 2</Text>
           </Box>
-          
           <Box
             position="absolute"
             left="80px"
@@ -535,7 +523,6 @@ const AdvancedPositioningExample = () => {
             <Text color="surface.text.staticWhite.normal">Box 3</Text>
           </Box>
         </Box>
-        
         {/* Custom shape using clipPath */}
         <Box
           height="80px"
@@ -566,7 +553,6 @@ import { Box, Text, Heading } from '@razorpay/blade/components';
 const ResponsiveGridExample = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [draggedItem, setDraggedItem] = useState<number | null>(null);
-  
   const handleDrop = (e: React.DragEvent, destinationIndex: number) => {
     e.preventDefault();
     if (draggedItem !== null) {
@@ -574,7 +560,6 @@ const ResponsiveGridExample = () => {
     }
     setDraggedItem(null);
   };
-  
   const gridItems = [
     { title: 'Analytics', color: 'surface.background.primary.intense' },
     { title: 'Customers', color: 'surface.background.cloud.intense' },
@@ -583,7 +568,6 @@ const ResponsiveGridExample = () => {
     { title: 'Settings', color: 'surface.background.gray.moderate' },
     { title: 'Reports', color: 'surface.background.cloud.subtle' },
   ];
-  
   return (
     <Box
       // Container
@@ -594,17 +578,13 @@ const ResponsiveGridExample = () => {
       <Heading size="large" marginBottom="spacing.5">
         Responsive Grid Layout
       </Heading>
-      
+
       <Text marginBottom="spacing.4">
         This grid adapts to screen size and supports hover effects and drag-and-drop.
       </Text>
-      
+
       {/* Grid container */}
-      <Box
-        display="flex"
-        flexWrap="wrap"
-        gap="spacing.4"
-      >
+      <Box display="flex" flexWrap="wrap" gap="spacing.4">
         {gridItems.map((item, index) => (
           <Box
             key={index}
@@ -635,11 +615,11 @@ const ResponsiveGridExample = () => {
             // Click handler
             onClick={() => console.log(`Clicked on ${item.title}`)}
           >
-            <Text 
+            <Text
               color={
-                item.color.includes('primary.intense') || 
-                item.color.includes('gray.intense') ? 
-                'surface.text.staticWhite.normal' : 'surface.text.gray.normal'
+                item.color.includes('primary.intense') || item.color.includes('gray.intense')
+                  ? 'surface.text.staticWhite.normal'
+                  : 'surface.text.gray.normal'
               }
               fontWeight="semibold"
             >
@@ -653,4 +633,4 @@ const ResponsiveGridExample = () => {
 };
 
 export default ResponsiveGridExample;
-``` 
+```

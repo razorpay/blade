@@ -1,19 +1,16 @@
 ## Component Name
+
 Alert
 
 ## Description
+
 Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way. They can include titles, descriptions, and actions, and come in different emphasis levels and colors to convey different types of information. Alerts can be dismissible and can span the full width of their container.
 
 ## TypeScript Types
+
 The following types represent the props that the Alert component accepts. These types define all the available properties you can use when implementing the Alert component in your application.
 
 ```typescript
-import type { ReactChild } from 'react';
-import type { StyledPropsBlade } from '@razorpay/blade/components';
-import type { IconComponent } from '@razorpay/blade/components';
-import type { FeedbackColors, SubtleOrIntense } from '@razorpay/blade/tokens';
-import type { TestID, DataAnalyticsAttribute } from '@razorpay/blade/utils';
-
 type PrimaryAction = {
   text: string;
   onClick: () => void;
@@ -123,13 +120,13 @@ function StandardAlertExample() {
       onDismiss={() => console.log('Alert dismissed')}
       actions={{
         primary: {
-          text: "Enable International Payments",
+          text: 'Enable International Payments',
           onClick: () => console.log('Primary action clicked'),
         },
         secondary: {
-          text: "Learn More",
-          href: "https://razorpay.com/docs",
-          target: "_blank",
+          text: 'Learn More',
+          href: 'https://razorpay.com/docs',
+          target: '_blank',
         },
       }}
     />
@@ -154,7 +151,7 @@ function HighEmphasisAlertExample() {
       isDismissible={true}
       actions={{
         primary: {
-          text: "Try Refetching",
+          text: 'Try Refetching',
           onClick: () => console.log('Refetch clicked'),
         },
       }}
@@ -198,7 +195,7 @@ function SingleActionAlertExample() {
       emphasis="subtle"
       actions={{
         primary: {
-          text: "Try Refetching",
+          text: 'Try Refetching',
           onClick: () => console.log('Refetch clicked'),
         },
       }}
@@ -224,17 +221,17 @@ function FullWidthAlertExample() {
         isFullWidth={true}
         actions={{
           primary: {
-            text: "Acknowledge",
+            text: 'Acknowledge',
             onClick: () => console.log('Acknowledged'),
           },
           secondary: {
-            text: "Read Policy",
-            href: "https://razorpay.com/policy",
-            target: "_blank",
+            text: 'Read Policy',
+            href: 'https://razorpay.com/policy',
+            target: '_blank',
           },
         }}
       />
     </Box>
   );
 }
-``` 
+```

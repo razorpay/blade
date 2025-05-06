@@ -1,15 +1,16 @@
 ## Component Name
+
 ListView
 
 ## Description
+
 ListView is a pattern component that provides a structured way to display tabular data with powerful filtering capabilities. It combines search functionality, quick filters, and advanced filtering options with a table display in a unified interface. This component is designed for data-heavy applications that require efficient data navigation and manipulation.
 
 ## TypeScript Types
+
 These types define the props that the ListView component and its subcomponents accept. Understanding these types will help you properly implement the ListView pattern in your application.
 
 ```typescript
-import type { TestID, DataAnalyticsAttribute } from '@razorpay/blade/utils/types';
-
 type ListViewCommonProps = {
   children: React.ReactNode;
 };
@@ -141,15 +142,17 @@ function ListViewExample() {
       id: (i + 1).toString(),
       paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
       amount: Number((Math.random() * 10000).toFixed(2)),
-      status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)] as PaymentItem['status'],
+      status: ['Completed', 'Pending', 'Failed'][
+        Math.floor(Math.random() * 3)
+      ] as PaymentItem['status'],
       date: new Date(2023, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
       method: ['Bank Transfer', 'Credit Card', 'PayPal'][Math.floor(Math.random() * 3)],
       account: Math.floor(Math.random() * 1000000000).toString(),
     })),
   ];
-  
+
   const data: TableData<PaymentItem> = { nodes };
-  
+
   // State management for filters and search
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
@@ -164,7 +167,6 @@ function ListViewExample() {
     Failed: 'negative',
     Completed: 'positive',
   };
-  
   // Filter utility functions
   const getQuickFilterValueCount = (value: string): number => {
     if (value === 'All') {
@@ -172,29 +174,41 @@ function ListViewExample() {
     }
     return data.nodes.filter((node) => node.status === value).length;
   };
-  
-  const getQuickFilterData = (data: TableData<PaymentItem>, value?: string): TableData<PaymentItem> => {
+
+  const getQuickFilterData = (
+    data: TableData<PaymentItem>,
+    value?: string,
+  ): TableData<PaymentItem> => {
     if (!value || value === 'All') {
       return { nodes: data.nodes };
     }
     return { nodes: data.nodes.filter((node) => node.status === value) };
   };
-  
-  const getSearchedData = (data: TableData<PaymentItem>, value?: string): TableData<PaymentItem> => {
+
+  const getSearchedData = (
+    data: TableData<PaymentItem>,
+    value?: string,
+  ): TableData<PaymentItem> => {
     if (!value) {
       return { nodes: data.nodes };
     }
     return { nodes: data.nodes.filter((node) => node.paymentId.includes(value)) };
   };
-  
-  const getMethodFilterData = (data: TableData<PaymentItem>, value?: string): TableData<PaymentItem> => {
+
+  const getMethodFilterData = (
+    data: TableData<PaymentItem>,
+    value?: string,
+  ): TableData<PaymentItem> => {
     if (!value) {
       return { nodes: data.nodes };
     }
     return { nodes: data.nodes.filter((node) => node.method === value) };
   };
 
-  const getFilterRangeData = (data: TableData<PaymentItem>, value?: [Date, Date]): TableData<PaymentItem> => {
+  const getFilterRangeData = (
+    data: TableData<PaymentItem>,
+    value?: [Date, Date],
+  ): TableData<PaymentItem> => {
     if (!value?.[0]) {
       return { nodes: data.nodes };
     }
@@ -205,7 +219,6 @@ function ListViewExample() {
       }),
     };
   };
-  
   return (
     <Box height="100%" testID="payment-list-view">
       <ListView>
@@ -309,7 +322,6 @@ function ListViewExample() {
                 </ActionList>
               </DropdownOverlay>
             </Dropdown>
-            
             <FilterChipDatePicker
               label="Date Range"
               selectionType="range"
@@ -318,7 +330,10 @@ function ListViewExample() {
                 const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
                 const searchValueData = getSearchedData(quickFilterData, searchValue);
                 const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
-                const dateRangeFilterData = getFilterRangeData(methodFilterData, value as [Date, Date]);
+                const dateRangeFilterData = getFilterRangeData(
+                  methodFilterData,
+                  value as [Date, Date],
+                );
                 setListViewTableData(dateRangeFilterData);
                 setFilterDateRange(value as [Date, Date]);
               }}
@@ -332,7 +347,6 @@ function ListViewExample() {
             />
           </FilterChipGroup>
         </ListViewFilters>
-        
         <Table
           data={listViewTableData}
           defaultSelectedIds={['1', '3']}
@@ -424,8 +438,8 @@ function ListViewExample() {
                 <TableFooterRow>
                   <TableFooterCell>Total</TableFooterCell>
                   <TableFooterCell>
-                    <Amount 
-                      value={tableData.reduce((sum, item) => sum + item.amount, 0)} 
+                    <Amount
+                      value={tableData.reduce((sum, item) => sum + item.amount, 0)}
                       currency="INR"
                     />
                   </TableFooterCell>
@@ -472,35 +486,33 @@ function MultiSelectListViewExample() {
   const data = {
     nodes: [
       // ... payment data items
-    ]
+    ],
   };
-  
+
   // State management
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilters, setSelectedQuickFilters] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(true);
-  
   // Filter function for multiple selected status values
   const getMultipleStatusFilterData = (data, values) => {
     if (!values || values.length === 0) {
       return { nodes: data.nodes };
     }
-    return { 
-      nodes: data.nodes.filter((node) => values.includes(node.status))
+    return {
+      nodes: data.nodes.filter((node) => values.includes(node.status)),
     };
   };
-  
+
   return (
     <Box height="100%">
       <Flex padding="spacing.5" alignItems="center" gap="spacing.3">
         <Text>Show Quick Filters</Text>
-        <Switch 
+        <Switch
           isChecked={showFilters}
           onChange={() => setShowFilters(!showFilters)}
           accessibilityLabel="Toggle quick filters visibility"
         />
       </Flex>
-      
       <ListView>
         <ListViewFilters
           quickFilters={
@@ -520,8 +532,14 @@ function MultiSelectListViewExample() {
                   value={status}
                   trailing={
                     <Counter
-                      value={data.nodes.filter(node => node.status === status).length}
-                      color={status === 'Completed' ? 'positive' : status === 'Failed' ? 'negative' : 'notice'}
+                      value={data.nodes.filter((node) => node.status === status).length}
+                      color={
+                        status === 'Completed'
+                          ? 'positive'
+                          : status === 'Failed'
+                          ? 'negative'
+                          : 'notice'
+                      }
                     />
                   }
                 />
@@ -535,15 +553,12 @@ function MultiSelectListViewExample() {
           onShowQuickFiltersChange={setShowFilters}
         >
           {/* Filter chips and table similar to first example */}
-          <FilterChipGroup>
-            {/* Filter chips */}
-          </FilterChipGroup>
+          <FilterChipGroup>{/* Filter chips */}</FilterChipGroup>
         </ListViewFilters>
-        
-        <Table data={listViewTableData}>
-          {/* Table implementation */}
-        </Table>
+
+        <Table data={listViewTableData}>{/* Table implementation */}</Table>
       </ListView>
     </Box>
   );
 }
+```

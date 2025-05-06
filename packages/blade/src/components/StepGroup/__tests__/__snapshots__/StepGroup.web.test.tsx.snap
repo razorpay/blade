@@ -515,10 +515,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 Header description
               </p>
             </div>
-            <div
-              class=""
-              data-blade-component="box"
-            />
           </div>
         </div>
       </div>
@@ -623,10 +619,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 Person Details description
               </p>
             </div>
-            <div
-              class=""
-              data-blade-component="box"
-            />
           </div>
         </div>
       </div>
@@ -750,10 +742,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                   data-blade-component="text"
                 />
               </div>
-              <div
-                class=""
-                data-blade-component="box"
-              />
             </div>
           </div>
         </div>
@@ -897,10 +885,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                   Person Details description
                 </p>
               </div>
-              <div
-                class=""
-                data-blade-component="box"
-              />
             </div>
           </div>
         </div>
@@ -1224,10 +1208,6 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
                 data-blade-component="text"
               />
             </div>
-            <div
-              class=""
-              data-blade-component="box"
-            />
           </div>
         </div>
       </div>

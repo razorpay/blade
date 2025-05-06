@@ -1,10 +1,13 @@
 ## Component Name
+
 Counter
 
 ## Description
+
 Counter is a visual indicator that displays numerical values, tallies, or counts within a specific context. It provides a compact way to show non-interactive numerical data, with customizable appearance through size, color, and emphasis variations. Counters are useful for displaying notification counts, item quantities, or status indicators throughout an interface.
 
 ## TypeScript Types
+
 The following types represent the props that the Counter component accepts. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -28,41 +31,26 @@ type CounterProps = {
    * Visual color of the counter
    * @default "neutral"
    */
-  color?: "positive" | "negative" | "notice" | "information" | "neutral" | "primary";
+  color?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral' | 'primary';
 
   /**
    * Visual emphasis/intensity of the counter
    * @default "subtle"
    */
-  emphasis?: "subtle" | "intense";
-  
+  emphasis?: 'subtle' | 'intense';
+
   /**
    * Size of the counter
    * @default "medium"
    */
-  size?: "small" | "medium" | "large";
-} & StyledPropsBlade & TestID;
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- * Includes margin, padding, and other layout props
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
+  size?: 'small' | 'medium' | 'large';
+} & StyledPropsBlade &
+  TestID;
 ```
 
 ## Example
+
+This example demonstrates different variants of the Counter component with various sizes, colors, emphasis levels, and a max value with overflow handling.
 
 ```tsx
 import React from 'react';
@@ -72,7 +60,6 @@ const CounterExample = () => {
   return (
     <Box padding="spacing.4">
       <Text marginBottom="spacing.4">Counter Component Examples</Text>
-      
       <Box display="flex" flexWrap="wrap" gap="spacing.4">
         <Counter value={8} size="small" color="primary" />
         <Counter value={24} size="medium" color="positive" />
@@ -83,4 +70,5 @@ const CounterExample = () => {
   );
 };
 
-export default CounterExample; 
+export default CounterExample;
+```

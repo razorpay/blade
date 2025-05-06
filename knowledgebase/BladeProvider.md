@@ -1,10 +1,13 @@
 ## Component Name
+
 BladeProvider
 
 ## Description
+
 BladeProvider is the essential wrapper component for all Blade applications, responsible for providing theme context and styling infrastructure. It manages theme tokens, color schemes, and breakpoints while setting up necessary context providers for components like Drawers and BottomSheets. This component must be placed at the root of your application to ensure proper styling and functionality of all Blade components.
 
 ## TypeScript Types
+
 The following types represent the props that the BladeProvider component accepts. These types allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -16,13 +19,11 @@ type BladeProviderProps = {
    * Theme tokens to be used throughout the application
    */
   themeTokens: ThemeTokens;
-  
   /**
    * Initial color scheme to be used
    * @default 'light'
    */
   colorScheme?: ColorSchemeNamesInput;
-  
   /**
    * Child components that will be wrapped by BladeProvider
    */
@@ -85,34 +86,28 @@ This example demonstrates how to set up the BladeProvider at the root of your ap
 
 ```tsx
 import React from 'react';
-import { 
-  BladeProvider, 
-  Box,
-  Text,
-  Dropdown,
-  useTheme,
-  Heading
-} from '@razorpay/blade/components';
+import { BladeProvider, Box, Text, Dropdown, useTheme, Heading } from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
 
 // Theme switcher component
 const ThemeSwitcher = () => {
   const { colorScheme, setColorScheme } = useTheme();
-  
   return (
     <Box padding="spacing.5">
       <Text variant="bodyMedium" marginBottom="spacing.3">
         Current theme: {colorScheme}
       </Text>
-      
       <Dropdown
         label="Select Theme"
         value={colorScheme}
         onChange={(value) => setColorScheme(value)}
       >
         <Dropdown.Button>
-          {colorScheme === 'light' ? 'Light Theme' : 
-           colorScheme === 'dark' ? 'Dark Theme' : 'System Theme'}
+          {colorScheme === 'light'
+            ? 'Light Theme'
+            : colorScheme === 'dark'
+            ? 'Dark Theme'
+            : 'System Theme'}
         </Dropdown.Button>
         <Dropdown.Overlay>
           <Dropdown.Item value="light" onClick={() => setColorScheme('light')}>
@@ -133,27 +128,22 @@ const ThemeSwitcher = () => {
 // Main application with BladeProvider
 const App = () => {
   return (
-    <BladeProvider 
-      themeTokens={bladeTheme}
-    >
-      <Box 
-        padding="spacing.5" 
-        display="flex" 
-        flexDirection="column" 
-        gap="spacing.5"
-      >
+    <BladeProvider themeTokens={bladeTheme}>
+      <Box padding="spacing.5" display="flex" flexDirection="column" gap="spacing.5">
         <Heading size="large">Blade Application</Heading>
-        
+
         {/* Theme switcher using the theme context */}
         <ThemeSwitcher />
-        
+
         {/* Your application content goes here */}
-        <Box 
-          padding="spacing.4" 
+        <Box
+          padding="spacing.4"
           backgroundColor="surface.background.gray.subtle"
           borderRadius="medium"
         >
-          <Text variant="body" size="medium">Your application content wrapped with BladeProvider</Text>
+          <Text variant="body" size="medium">
+            Your application content wrapped with BladeProvider
+          </Text>
         </Box>
       </Box>
     </BladeProvider>
@@ -168,35 +158,26 @@ This example demonstrates how to create and use a custom theme with BladeProvide
 
 ```tsx
 import React from 'react';
-import { 
-  BladeProvider, 
-  Box,
-  Text,
-  Heading,
-  Button,
-  Input,
-  Link
-} from '@razorpay/blade/components';
+import { BladeProvider, Box, Text, Heading, Button, Input, Link } from '@razorpay/blade/components';
 import { createTheme } from '@razorpay/blade/tokens';
 
 // Create a custom theme with a teal brand color
 const { theme: customTheme } = createTheme({
-  brandColor: '#0891B2' // Teal brand color
+  brandColor: '#0891B2', // Teal brand color
 });
 
 // Simple app component with custom theme
 const CustomThemeExample = () => {
   return (
     <BladeProvider themeTokens={customTheme}>
-      <Box 
-        padding="spacing.5" 
-        backgroundColor="surface.background.gray.subtle" 
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.gray.subtle"
         borderRadius="medium"
       >
         <Heading size="large" color="interactive.text.primary.normal" marginBottom="spacing.4">
           Custom Themed Form
         </Heading>
-        
         <Box display="flex" flexDirection="column" gap="spacing.4">
           {/* Text input examples */}
           <Input
@@ -204,36 +185,26 @@ const CustomThemeExample = () => {
             placeholder="Enter your email"
             helperText="We'll never share your email with anyone else."
           />
-          
-          <Input
-            label="Password"
-            type="password"
-            placeholder="Enter your password"
-          />
-          
+
+          <Input label="Password" type="password" placeholder="Enter your password" />
+
           {/* Button examples showing primary, secondary and tertiary variants */}
           <Box display="flex" gap="spacing.3" marginTop="spacing.2">
-            <Button variant="primary">
-              Submit
-            </Button>
-            
-            <Button variant="secondary">
-              Cancel
-            </Button>
-            
-            <Button variant="tertiary">
-              Reset
-            </Button>
+            <Button variant="primary">Submit</Button>
+
+            <Button variant="secondary">Cancel</Button>
+
+            <Button variant="tertiary">Reset</Button>
           </Box>
-          
+
           {/* Link example */}
           <Box marginTop="spacing.3">
             <Text variant="body" size="small">
               By signing up, you agree to our{' '}
               <Link href="#" target="_blank">
                 Terms of Service
-              </Link>
-              {' '}and{' '}
+              </Link>{' '}
+              and{' '}
               <Link href="#" target="_blank">
                 Privacy Policy
               </Link>
@@ -245,4 +216,5 @@ const CustomThemeExample = () => {
   );
 };
 
-export default CustomThemeExample; 
+export default CustomThemeExample;
+```

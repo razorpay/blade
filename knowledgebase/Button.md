@@ -1,10 +1,13 @@
 ## Component Name
+
 Button
 
 ## Description
+
 The Button component is a versatile interactive element used for triggering actions within an application. It supports multiple variants, sizes, and colors to accommodate different UI requirements and hierarchies. Buttons can contain text, icons, or both, and feature various states including disabled and loading to provide clear feedback to users during interactions.
 
 ## TypeScript Types
+
 The following types represent the props that the Button component accepts. These types allow you to properly configure the button according to your needs.
 
 ```typescript
@@ -105,7 +108,9 @@ type ButtonProps = {
    * Ref object for the button element
    */
   ref?: React.RefObject<HTMLButtonElement | HTMLAnchorElement>;
-} & StyledPropsBlade & TestID & DataAnalyticsAttribute;
+} & StyledPropsBlade &
+  TestID &
+  DataAnalyticsAttribute;
 
 /**
  * Type for icon components
@@ -114,37 +119,10 @@ type IconComponent = React.ComponentType<{
   size?: 'small' | 'medium' | 'large';
   color?: string;
 }>;
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Type for data analytics attributes
- */
-type DataAnalyticsAttribute = {
-  /**
-   * Data analytics attribute
-   */
-  'data-analytics'?: string;
-};
-
-/**
- * Styled props for blade components that can be applied to Button
- * Includes margin, padding, and other layout props
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Example
+
 Here are comprehensive examples demonstrating various ways to use the Button component:
 
 ### Basic Button Variants, Sizes, and Colors
@@ -153,21 +131,19 @@ This example demonstrates different button variants, sizes, and colors in a paym
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Button, 
-  Box, 
-  Text, 
-  Heading 
+import {
+  Button,
+  Box,
+  Text,
+  Heading,
+  CreditCardIcon,
+  ArrowRightIcon,
+  ShieldIcon,
 } from '@razorpay/blade/components';
-import { 
-  CreditCardIcon, 
-  ArrowRightIcon, 
-  ShieldIcon
-} from '@razorpay/blade/components/Icons';
 
 const PaymentFormExample = () => {
   const [isProcessing, setIsProcessing] = useState(false);
-  
+
   const handlePayment = () => {
     setIsProcessing(true);
     // Simulate payment processing
@@ -176,20 +152,22 @@ const PaymentFormExample = () => {
       // Handle success
     }, 2000);
   };
-  
+
   return (
-    <Box 
-      padding="spacing.5" 
+    <Box
+      padding="spacing.5"
       backgroundColor="surface.background.gray.subtle"
       borderRadius="medium"
       maxWidth="500px"
     >
-      <Heading size="large" marginBottom="spacing.4">Complete Payment</Heading>
-      
+      <Heading size="large" marginBottom="spacing.4">
+        Complete Payment
+      </Heading>
+
       <Text marginBottom="spacing.5">
         Please select a payment option and complete your transaction.
       </Text>
-      
+
       {/* Primary button - Large size with icon on the right */}
       <Button
         variant="primary"
@@ -206,7 +184,6 @@ const PaymentFormExample = () => {
       >
         Pay Now ₹1,999
       </Button>
-      
       {/* Secondary button - Medium size */}
       <Button
         variant="secondary"
@@ -220,7 +197,6 @@ const PaymentFormExample = () => {
       >
         Save for Later
       </Button>
-      
       {/* Tertiary button - Small size with left icon */}
       <Button
         variant="tertiary"
@@ -235,7 +211,6 @@ const PaymentFormExample = () => {
       >
         View Terms & Conditions
       </Button>
-      
       {/* Extra small icon-only button */}
       <Box display="flex" justifyContent="flex-end">
         <Button
@@ -259,20 +234,11 @@ This example demonstrates buttons with dynamic states and interactions.
 
 ```tsx
 import React, { useState } from 'react';
-import { 
-  Button, 
-  Box, 
-  Text 
-} from '@razorpay/blade/components';
-import {
-  CheckIcon,
-  RefreshIcon
-} from '@razorpay/blade/components/Icons';
+import { Button, Box, Text, CheckIcon, RefreshIcon } from '@razorpay/blade/components';
 
 const SimpleToggleExample = () => {
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
   const handleActivate = () => {
     setIsLoading(true);
     // Simulate API call
@@ -281,25 +247,22 @@ const SimpleToggleExample = () => {
       setIsActive(true);
     }, 1000);
   };
-  
+
   const handleReset = () => {
     setIsActive(false);
   };
-  
+
   return (
-    <Box 
-      padding="spacing.5" 
+    <Box
+      padding="spacing.5"
       backgroundColor="surface.background.gray.subtle"
       borderRadius="medium"
       maxWidth="400px"
     >
       <Text marginBottom="spacing.4">
-        {isActive 
-          ? "Feature is now active!" 
-          : "Activate this feature to continue"
-        }
+        {isActive ? 'Feature is now active!' : 'Activate this feature to continue'}
       </Text>
-      
+
       <Box display="flex" gap="spacing.3">
         {!isActive ? (
           <Button
@@ -312,12 +275,7 @@ const SimpleToggleExample = () => {
             Activate
           </Button>
         ) : (
-          <Button
-            variant="secondary"
-            icon={RefreshIcon}
-            iconPosition="left"
-            onClick={handleReset}
-          >
+          <Button variant="secondary" icon={RefreshIcon} iconPosition="left" onClick={handleReset}>
             Reset
           </Button>
         )}
@@ -327,3 +285,4 @@ const SimpleToggleExample = () => {
 };
 
 export default SimpleToggleExample;
+```

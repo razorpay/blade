@@ -1,10 +1,13 @@
 ## Component Name
+
 FileUpload
 
 ## Description
+
 The FileUpload component is used to handle file attachments, including drag-and-drop interactions. It supports both single and multiple file uploads, with built-in validation for file types, sizes, and counts. The component can operate in controlled or uncontrolled modes, making it versatile for various scenarios from simple form inputs to complex upload workflows with progress indicators and previews.
 
 ## TypeScript Types
+
 The following types represent the props that the FileUpload component accepts. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -118,7 +121,8 @@ type FileUploadProps = {
    * @default 'top'
    */
   labelPosition?: 'top' | 'left';
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * File object for the FileUpload component
@@ -159,23 +163,6 @@ type BladeFile = File & {
  * List of BladeFile objects
  */
 type BladeFileList = BladeFile[];
-
-/**
- * Type for test ID
- */
-type TestID = {
-  /**
-   * ID used for testing
-   */
-  testID?: string;
-};
-
-/**
- * Styled props for blade components
- */
-type StyledPropsBlade = {
-  // Various styling props like margin, padding, etc.
-};
 ```
 
 ## Examples
@@ -192,10 +179,10 @@ const SingleFileUploadExample = () => {
   const [name, setName] = useState('');
   const [fileList, setFileList] = useState([]);
   const [validationState, setValidationState] = useState('none');
-  
+
   const handleFileChange = ({ fileList }) => {
     setFileList(fileList);
-    
+
     // Simple validation based on whether files are selected
     if (fileList.length > 0) {
       setValidationState('success');
@@ -203,7 +190,6 @@ const SingleFileUploadExample = () => {
       setValidationState('none');
     }
   };
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(`Form submitted: Name: ${name}, File: ${fileList[0]?.name || 'None'}`);
@@ -219,7 +205,6 @@ const SingleFileUploadExample = () => {
           marginBottom="spacing.3"
           isRequired
         />
-        
         <FileUpload
           uploadType="single"
           label="Profile Image"
@@ -238,11 +223,8 @@ const SingleFileUploadExample = () => {
           }}
           marginBottom="spacing.3"
         />
-        
-        <Button 
-          type="submit" 
-          isDisabled={!name || fileList.length === 0}
-        >
+
+        <Button type="submit" isDisabled={!name || fileList.length === 0}>
           Submit
         </Button>
       </form>
@@ -264,51 +246,43 @@ import type { BladeFile, BladeFileList } from '@razorpay/blade/components';
 
 const MultipleFileUploadExample = () => {
   const [fileList, setFileList] = useState<BladeFileList>([]);
-  
+
   // Simulate file upload with progress
   const simulateUpload = (file: BladeFile) => {
     // Set initial uploading state
-    setFileList(prevList => 
-      prevList.map(f => 
-        f.id === file.id ? { ...f, status: 'uploading', progress: 0 } : f
-      )
+    setFileList((prevList) =>
+      prevList.map((f) => (f.id === file.id ? { ...f, status: 'uploading', progress: 0 } : f)),
     );
-    
+
     // Simulate progress with intervals
     let progress = 0;
     const interval = setInterval(() => {
       progress += 10;
-      
+
       if (progress <= 100) {
         // Update progress
-        setFileList(prevList => 
-          prevList.map(f => 
-            f.id === file.id ? { ...f, progress } : f
-          )
-        );
+        setFileList((prevList) => prevList.map((f) => (f.id === file.id ? { ...f, progress } : f)));
       } else {
         // Complete the upload
         clearInterval(interval);
-        setFileList(prevList => 
-          prevList.map(f => 
-            f.id === file.id ? { ...f, status: 'success' } : f
-          )
+        setFileList((prevList) =>
+          prevList.map((f) => (f.id === file.id ? { ...f, status: 'success' } : f)),
         );
       }
     }, 500);
   };
-  
+
   const handleFileChange = ({ fileList: newFileList }) => {
     // Find files that need to be uploaded (no status)
-    const filesToUpload = newFileList.filter(file => !file.status);
-    
+    const filesToUpload = newFileList.filter((file) => !file.status);
+
     // Update file list first
     setFileList(newFileList);
-    
+
     // Start simulated upload for new files
     filesToUpload.forEach(simulateUpload);
   };
-  
+
   return (
     <Box padding="spacing.4">
       <FileUpload
@@ -328,4 +302,4 @@ const MultipleFileUploadExample = () => {
 };
 
 export default MultipleFileUploadExample;
-``` 
+```
