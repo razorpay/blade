@@ -171,11 +171,7 @@ const RadioGroup = ({
             </FormLabel>
           ) : null}
           <BaseBox>
-            <BaseBox
-              display="flex"
-              flexDirection={orientation === 'vertical' ? 'column' : 'row'}
-              // gap={orientation === 'horizontal' ? 'spacing.2' : 'spacing.0'}
-            >
+            <BaseBox display="flex" flexDirection={orientation === 'vertical' ? 'column' : 'row'}>
               {React.Children.map(children, (child, index) => {
                 return (
                   <BaseBox
