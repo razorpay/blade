@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.25.0
+
+### Minor Changes
+
+- 59fb0163: feat(PhoneNumberInput): add virtualization to phone number input
+
 ## 12.24.0
 
 ### Minor Changes
