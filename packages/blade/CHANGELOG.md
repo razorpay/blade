@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 12.24.0
+
+### Minor Changes
+
+- f7b868ad: feat(blade): add full page modal
+
+### Patch Changes
+
+- 9eb42df8: fix(StepGroup): extra space because of trailing property
+
 ## 12.23.1
 
 ### Patch Changes
