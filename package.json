@@ -9,7 +9,8 @@
   "workspaces": {
     "packages": [
       "packages/blade",
-      "packages/eslint-plugin-blade"
+      "packages/eslint-plugin-blade",
+      "packages/blade-mcp"
     ],
     "nohoist": [
       "**"
@@ -18,8 +19,8 @@
   "scripts": {
     "tsc:blade": "lerna run --scope @razorpay/blade typecheck",
     "lint": "eslint --ext js,jsx,ts,tsx packages && stylelint '**/*.{js,jsx,ts,tsx}'",
-    "publish-npm": "lerna run --scope @razorpay/blade publish-npm",
-    "release": "lerna run --scope @razorpay/blade generate-github-npmrc && changeset publish",
+    "publish-npm": "node ./scripts/publishToNpm.js",
+    "release": "node ./scripts/generateGitHubRegistryNpmrc.js && changeset publish",
     "build": "lerna run --scope @razorpay/blade build",
     "generate-docs-lockfile": "node packages/blade/scripts/generateDocsLockFile.mjs",
     "postinstall": "lerna run --scope eslint-plugin-blade build",

@@ -127,10 +127,8 @@
     "watch:test:react": "yarn test:react --watch --onlyChanged",
     "watch:test:react-native": "yarn test:react-native --watch --onlyChanged",
     "chromatic": "npx chromatic",
-    "publish-npm": "node ./scripts/publishToNpm.js",
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
-    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
     "generate-docs-lockfile": "node ./scripts/generateDocsLockFile.mjs",
     "generate-icons": "node ./scripts/generateIcons.mjs"
   },
