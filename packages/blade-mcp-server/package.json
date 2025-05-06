@@ -15,7 +15,6 @@
     "knowledgebase"
   ],
   "scripts": {
-    "prebuild": "mkdir -p knowledgebase && if [ -d \"../../knowledgebase\" ]; then find ../../knowledgebase -name \"*.md\" -exec cp {} ./knowledgebase/ \\; || true; else echo \"blade/knowledgebase directory not found\"; fi",
     "prepare": "yarn build",
     "build": "tsc && chmod +x dist/index.js",
     "dev": "tsx src/index.ts",
