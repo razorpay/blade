@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-mcp",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Model Context Protocol server for Blade",
   "main": "dist/server.js",
   "types": "dist/server.d.ts",
