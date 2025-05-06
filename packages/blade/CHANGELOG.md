@@ -1,5 +1,43 @@
 # @razorpay/blade
 
+## 12.24.0
+
+### Minor Changes
+
+- f7b868ad: feat(blade): add full page modal
+
+### Patch Changes
+
+- 9eb42df8: fix(StepGroup): extra space because of trailing property
+
+## 12.23.1
+
+### Patch Changes
+
+- c12197be: fix(blade): add accessibilityLabel in show more filters button in list view
+
+## 12.23.0
+
+### Minor Changes
+
+- 97cf1d95: feat(Drawer): add `onUnmount` to Drawer for triggering any state changes after drawer becomes invisible
+
+## 12.22.0
+
+### Minor Changes
+
+- 289a9c19: feat(Drawer): visual changes in Drawer (add border-radius, change stacking visuals)
+
+### Patch Changes
+
+- b514b529: fix(StepGroup): remove universal-base64 library
+
+## 12.21.3
+
+### Patch Changes
+
+- ca5ff972: fix(blade): filter chip keyboard navigation & auto-handling of selected state in controlled mode
+
 ## 12.21.2
 
 ### Patch Changes

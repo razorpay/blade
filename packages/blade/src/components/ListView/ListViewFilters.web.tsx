@@ -163,6 +163,7 @@ const ListViewFilters = ({
                   setShowFilters((prev) => !prev);
                 }}
                 icon={FilterIcon}
+                accessibilityLabel="Show More Filters"
               />
               <Box
                 position="absolute"

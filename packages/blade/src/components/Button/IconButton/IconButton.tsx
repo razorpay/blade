@@ -10,6 +10,7 @@ import type { Platform } from '~utils';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type IconButtonProps = {
   /**
@@ -115,7 +116,9 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
   );
 };
 
-const IconButton = React.forwardRef(_IconButton);
+const IconButton = assignWithoutSideEffects(React.forwardRef(_IconButton), {
+  componentId: 'IconButton',
+});
 
 export type { IconButtonProps };
 export { IconButton };
