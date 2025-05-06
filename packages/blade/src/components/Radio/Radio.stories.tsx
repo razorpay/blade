@@ -112,12 +112,26 @@ Default.storyName = 'Default';
 export const RadioGroupOrientation = RadioTemplate.bind({});
 RadioGroupOrientation.storyName = 'RadioGroupOrientation';
 RadioGroupOrientation.args = {
+  orientation: 'vertical',
+};
+
+export const RadioGroupOrientationHorizontal = RadioTemplate.bind({});
+RadioGroupOrientationHorizontal.storyName = 'RadioGroupOrientationHorizontal';
+RadioGroupOrientationHorizontal.args = {
   orientation: 'horizontal',
 };
 
 export const HelpText = RadioTemplate.bind({});
 HelpText.storyName = 'HelpText';
 HelpText.args = {
+  helpText: 'RadioGroup help text',
+};
+
+export const RadioGroupOrientationHorizontalWithHelpText = RadioTemplate.bind({});
+RadioGroupOrientationHorizontalWithHelpText.storyName =
+  'RadioGroupOrientationHorizontalWithHelpText';
+RadioGroupOrientationHorizontalWithHelpText.args = {
+  orientation: 'horizontal',
   helpText: 'RadioGroup help text',
 };
 
@@ -135,12 +149,22 @@ ErrorText.args = {
   errorText: 'RadioGroup help text',
 };
 
+export const RadioGroupOrientationHorizontalWithErrorText = RadioTemplate.bind({});
+RadioGroupOrientationHorizontalWithErrorText.storyName =
+  'RadioGroupOrientationHorizontalWithErrorText';
+RadioGroupOrientationHorizontalWithErrorText.args = {
+  orientation: 'horizontal',
+  validationState: 'error',
+  errorText: 'RadioGroup error text',
+};
+
 export const HorizontalRadioGroupWithHelpTextAndErrorText = RadioTemplate.bind({});
 HorizontalRadioGroupWithHelpTextAndErrorText.storyName =
   'HorizontalRadioGroupWithHelpTextAndErrorText';
 HorizontalRadioGroupWithHelpTextAndErrorText.args = {
   orientation: 'horizontal',
   helpText: 'RadioGroup help text',
+  validationState: 'error',
   errorText: 'RadioGroup error text',
 };
 
