@@ -104,9 +104,23 @@ const CheckboxGroupTemplate: StoryFn<typeof CheckboxGroupComponent> = ({ childre
 export const Default = CheckboxGroupTemplate.bind({});
 Default.storyName = 'Default';
 
+export const CheckboxGroupOrientationHorizontal = CheckboxGroupTemplate.bind({});
+CheckboxGroupOrientationHorizontal.storyName = 'CheckboxGroup Orientation Horizontal';
+CheckboxGroupOrientationHorizontal.args = {
+  orientation: 'horizontal',
+};
+
 export const HelpTextCheckbox = CheckboxGroupTemplate.bind({});
 HelpTextCheckbox.storyName = 'HelpText';
 HelpTextCheckbox.args = {
+  helpText: 'CheckboxGroup help text',
+};
+
+export const CheckboxGroupOrientationHorizontalWithHelpText = CheckboxGroupTemplate.bind({});
+CheckboxGroupOrientationHorizontalWithHelpText.storyName =
+  'CheckboxGroup Orientation Horizontal With HelpText';
+CheckboxGroupOrientationHorizontalWithHelpText.args = {
+  orientation: 'horizontal',
   helpText: 'CheckboxGroup help text',
 };
 
@@ -115,6 +129,15 @@ ErrorText.storyName = 'ErrorText';
 ErrorText.args = {
   validationState: 'error',
   errorText: 'CheckboxGroup help text',
+};
+
+export const CheckboxGroupOrientationHorizontalWithErrorText = CheckboxGroupTemplate.bind({});
+CheckboxGroupOrientationHorizontalWithErrorText.storyName =
+  'CheckboxGroup Orientation Horizontal With ErrorText';
+CheckboxGroupOrientationHorizontalWithErrorText.args = {
+  orientation: 'horizontal',
+  validationState: 'error',
+  errorText: 'CheckboxGroup error text',
 };
 
 export const Disabled = CheckboxGroupTemplate.bind({});
