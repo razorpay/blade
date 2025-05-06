@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { z } from 'zod';
 import { readFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { z } from 'zod';
 
 // Get package.json path and read version
 const __filename = fileURLToPath(import.meta.url);
@@ -24,7 +24,7 @@ try {
       bladeComponentsList.push(file.replace('.md', ''));
     }
   }
-} catch (error) {
+} catch (error: unknown) {
   console.error('Error reading knowledgebase directory:', error);
 }
 
@@ -57,7 +57,7 @@ try {
           )}`,
         ),
     },
-    async ({ componentList }) => {
+    ({ componentList }) => {
       try {
         // Parse the comma-separated string into an array of component names
         const componentNames = componentList.split(',').map((name) => name.trim());
@@ -72,8 +72,8 @@ try {
           try {
             const filePath = resolve(knowledgebasePath, `${componentName}.md`);
             const content = readFileSync(filePath, 'utf8');
-            responseText += content + '\n\n';
-          } catch (error) {
+            responseText += `${content}\n\n`;
+          } catch (error: unknown) {
             console.error(`Error reading markdown for component ${componentName}:`, error);
             responseText += `⚠️ Error: Could not read documentation for ${componentName}. The component may not exist or there may be an issue with the file.\n\n`;
           }
@@ -88,7 +88,7 @@ try {
             },
           ],
         };
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error processing component documentation request:', error);
         return {
           content: [
@@ -110,7 +110,7 @@ try {
   // Use Promise handling for async operations
   await server.connect(transport);
   console.error('Blade MCP Server connected successfully');
-} catch (error) {
+} catch (error: unknown) {
   console.error('Blade MCP Server initialization failed:', error);
   process.exit(1);
 }

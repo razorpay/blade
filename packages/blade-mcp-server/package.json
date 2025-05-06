@@ -1,19 +1,21 @@
 {
   "name": "@razorpay/blade-mcp-server",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Model Context Protocol server for Blade",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "bin": {
-    "blade-mcp-server": "dist/index.js"
+  "bin": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/razorpay/blade.git"
   },
   "files": [
     "dist",
     "knowledgebase"
   ],
   "scripts": {
-    "prebuild": "mkdir -p knowledgebase && if [ -d \"../../knowledgebase\" ]; then find ../../knowledgebase -name \"*.md\" -exec cp {} ./knowledgebase/ \\; || true; else echo \"blade/knowledgebase directory not found\"; fi",
+    "prepare": "yarn build",
     "build": "tsc && chmod +x dist/index.js",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
@@ -29,13 +31,13 @@
   "author": "Razorpay",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.10.2",
-    "zod": "3.22.4"
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/express": "4.17.21",
-    "@types/node": "20.12.6",
-    "tsx": "4.7.1",
-    "typescript": "4.8.2"
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.6",
+    "tsx": "^4.7.1",
+    "typescript": "^4.8.2"
   }
 }

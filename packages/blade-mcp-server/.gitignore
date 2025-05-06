@@ -1,5 +1,4 @@
 node_modules/
 dist/
 .env
-.env.local 
-knowledgebase
+.env.local

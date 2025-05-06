@@ -19,8 +19,8 @@ const fs = require('fs');
 const path = require('path');
 const execa = require('execa');
 
-const BLADE_ROOT = path.join(__dirname, '..');
-const MONOREPO_ROOT = path.join(BLADE_ROOT, '../..');
+const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES || '[]');
+const MONOREPO_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
 const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
@@ -28,17 +28,27 @@ const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:_authToken=\${NPM_TOKEN}
 `;
 
-console.log('[blade]: Publishing on NPM ✨');
-
-fs.copyFileSync(path.join(MONOREPO_ROOT, 'README.md'), path.join(BLADE_ROOT, 'README.md'));
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
 
+// Helper function to get package path from package name
+function getPackagePath(packageName) {
+  // Remove the scope part and get just the package name
+  const packageNameWithoutScope = packageName.replace('@razorpay/', '');
+  // Assume the package is in the packages directory with the same name
+  return `packages/${packageNameWithoutScope}`;
+}
+
 try {
-  execa.commandSync('npm publish', {
-    cwd: BLADE_ROOT,
-    stdio: 'inherit',
-  });
+  // Now you can use the array of objects
+  for (const pkg of publishedPackages) {
+    const packagePath = getPackagePath(pkg.name);
+    console.log(`[blade]: Publishing ${pkg.name}@${pkg.version} on NPM ✨`);
+    execa.commandSync('npm publish', {
+      cwd: path.join(MONOREPO_ROOT, packagePath),
+      stdio: 'inherit',
+    });
+  }
 } finally {
-  fs.rmSync(NPMRC_PATH);
-  fs.rmSync(path.join(BLADE_ROOT, 'README.md'));
+  // Clean up the .npmrc file
+  fs.rmSync(NPMRC_PATH, { force: true });
 }
