@@ -1,9 +1,9 @@
 <br/>
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../branding/blade-original-dark-mode.min.svg">
-  <source media="(prefers-color-scheme: light)" srcset="../../branding/blade-original.min.svg">
-  <img width="450px" alt="Blade Design System Logo" src="../../branding/blade-original.min.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/razorpay/blade/refs/heads/master/branding/blade-original-dark-mode.min.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/razorpay/blade/refs/heads/master/branding/blade-original.min.svg">
+  <img width="450px" alt="Blade Design System Logo" src="https://raw.githubusercontent.com/razorpay/blade/refs/heads/master/branding/blade-original.min.svg">
 </picture>
 </p>
 

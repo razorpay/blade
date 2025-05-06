@@ -82,7 +82,7 @@ For local development with Cursor, update your `mcp.json` with the local path:
 {
   "blade-mcp": {
     "command": "node",
-    "args": ["<<USER_PATH>>/blade/packages/blade-mcp/dist/index.js"]
+    "args": ["<<USER_PATH>>/blade/packages/blade-mcp/dist/server.js"]
   }
 }
 ```
