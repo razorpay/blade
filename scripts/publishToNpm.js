@@ -19,9 +19,7 @@ const fs = require('fs');
 const path = require('path');
 const execa = require('execa');
 
-const publishedPackages = JSON.parse(
-  process.env.PUBLISHED_PACKAGES || '[{"name":"@razorpay/blade-mcp","version":"0.0.4"}]',
-);
+const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES || '[]');
 const MONOREPO_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
@@ -29,15 +27,8 @@ const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true
 //registry.npmjs.org/:_authToken=\${NPM_TOKEN}
 `;
-console.log('[blade]: default .npmrc configuration:');
-console.log(fs.readFileSync(NPMRC_PATH, 'utf8'));
 
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
-
-console.log('MONOREPO_ROOT', MONOREPO_ROOT);
-console.log('NPMRC_PATH', NPMRC_PATH);
-console.log('[blade]: Updated .npmrc configuration:');
-console.log(fs.readFileSync(NPMRC_PATH, 'utf8'));
 
 // Helper function to get package path from package name
 function getPackagePath(packageName) {
