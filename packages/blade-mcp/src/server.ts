@@ -42,11 +42,9 @@ const hiBladeMessage = `
 
 Here's what I can help you with:
 • 🚀 Start a new Blade project — just say: "Create a new blade project with a login page."
-• 🛠️ Build UIs fast — try: "Create a card grid layout using Blade in this file"
+• 🛠️ Build UIs fast — try: "Create a Dashboard layout with Sidebar, Avatar Menu, and a main content area with a breadcrumb"
 • 📚 Learn components — ask: "How do I use the OTPInput component?"
 • ...and much more!
-
-Need help or found an issue? Reach out at https://github.com/razorpay/blade/issues or on the #design-system Slack channel.
 
 Happy vibe coding! 💙
   `;
