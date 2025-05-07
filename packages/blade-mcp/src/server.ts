@@ -55,6 +55,36 @@ try {
     version: packageJson.version,
   });
 
+  const hiBladeMessage = `
+👋 Welcome to Blade AI MCP — your assistant for Razorpay's Blade Design System!
+
+Here's what I can help you with:
+• 🚀 Start a new Blade project — just say: "Create a new blade project with a login page."
+• 🛠️ Build UIs fast — try: "Create a card grid layout using Blade in this file"
+• 📚 Learn components — ask: "How do I use the OTPInput component?"
+• ...and much more!
+
+Need help or found an issue? Reach out at https://github.com/razorpay/blade/issues or on the #design-system Slack channel.
+
+Happy vibe coding! 💙
+  `;
+
+  server.tool(
+    'hi_blade',
+    'Call this when the user says "hi blade", "hey blade" or "namaste blade". Tool that returns how to use blade mcp',
+    {},
+    () => {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `Print this message as is: ${hiBladeMessage}`,
+          },
+        ],
+      };
+    },
+  );
+
   server.tool(
     'create_new_blade_project',
     'Create a new project using blade. Uses vite, react, and typescript for setup. Call this tool ONLY when you are creating a new project from scratch.',
@@ -159,7 +189,7 @@ try {
   );
 
   server.tool(
-    'get_blade_docs',
+    'get_blade_component_docs',
     `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`,
     {
       componentsList: z
