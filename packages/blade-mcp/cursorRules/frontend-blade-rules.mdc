@@ -1,7 +1,8 @@
 ---
 description: Razorpay's Frontend Engineer who knows how to use our Design System Blade
-globs: 
+globs:
 alwaysApply: false
+rules_version: <!-- dynamic_version -->
 ---
 
 You are Razorpay's Frontend Engineer who knows how to use our design system called "blade". Rather than using outdated knowledge of blade from the internet, you effectively use Blade MCP to learn things about blade components before answering questions or creating / updating UI code. When asked to write some frontend code, you always prefer blade components over custom components to bring consistency in the UI.
@@ -23,14 +24,13 @@ Box is a generic layout component that renders div by default. Checkout Box comp
 
 Blade also supports definitive styled props on several components to modify styles so that the UI is generated in defined guidelines of Razorpay's brand language.
 
-Styled Props are supported on components that use `StyledPropsBlade` type 
-
+Styled Props are supported on components that use `StyledPropsBlade` type
 
 #### StyledPropsBlade Type
 
 These are the types that are supported in components that support styled props.
 
-```ts
+````ts
 type LayoutProps = MakeObjectResponsive<
   {
     height: SpacingValueType;
@@ -144,7 +144,7 @@ type StyledPropsBlade = Partial<
     > &
     Pick<CSSProperties, 'display' | 'visibility'>
 >;
-```
+````
 
 #### Usage
 
@@ -162,14 +162,13 @@ type StyledPropsBlade = Partial<
 
 These are some of the common utility types that you will come across when you get response from Blade MCP
 
-
 - `TestID` - Used to add test ID to components for testing purposes.
 - `DataAnalyticsAttribute` - Used to add data analytics attributes to components for analytics purposes.
 - `FeedbackColors` - Used to accept feedback colors in components.
 - `Breakpoints` - Used to create responsive layouts using breakpoints.
 - `SpacingValueType` - Used to create spacing values in padding, margin props.
 
-```ts
+````ts
 type TestID = {
   /**
    * Test id that can be used to select element in testing environments
@@ -256,29 +255,29 @@ type Breakpoints = Readonly<{
 
 
 type Spacing = Readonly<{
-  /** 0: 0(px/rem/pt) */
+  /** 0: 0px */
   0: 0;
-  /** 1: 2(px/rem/pt) */
+  /** 1: 2px */
   1: 2;
-  /** 2: 4(px/rem/pt) */
+  /** 2: 4px */
   2: 4;
-  /** 3: 8(px/rem/pt) */
+  /** 3: 8px */
   3: 8;
-  /** 4: 12(px/rem/pt) */
+  /** 4: 12px */
   4: 12;
-  /** 5: 16(px/rem/pt) */
+  /** 5: 16px */
   5: 16;
-  /** 6: 20(px/rem/pt) */
+  /** 6: 20px */
   6: 20;
-  /** 7: 24(px/rem/pt) */
+  /** 7: 24px */
   7: 24;
-  /** 8: 32(px/rem/pt) */
+  /** 8: 32px */
   8: 32;
-  /** 9: 40(px/rem/pt) */
+  /** 9: 40px */
   9: 40;
-  /** 10: 48(px/rem/pt) */
+  /** 10: 48px */
   10: 48;
-  /** 11: 56(px/rem/pt) */
+  /** 11: 56px */
   11: 56;
 }>;
 
@@ -294,9 +293,4 @@ type SpacingValueType =
   | 'fit-content'
   | 'max-content'
   | 'min-content';
-```
-
-
-
-
-
+````
