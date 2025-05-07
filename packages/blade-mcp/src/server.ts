@@ -37,7 +37,7 @@ try {
   });
 
   server.tool(
-    'get-blade-components',
+    'get_blade_components',
     `Return the list of Blade Design System components' knowledgebase files required for generating UI code with Blade`,
     {
       componentList: z
