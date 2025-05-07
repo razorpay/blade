@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs';
+import { List, ListItem, ListItemText, Heading } from '../../src/components';
+
+<Meta title="Guides/Blade MCP" />
+
+<Heading size="xlarge">Blade MCP</Heading>
+Blade MCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that
+implements Razorpay's Design Guidelines and allows you to build Web Interfaces with AI using Blade Design
+System.
+<br />
+
+<Heading size="large">Pre-requisite</Heading>
+
+<List marginBottom="spacing.5">
+  <ListItem>
+    <ListItemText>You must be running Node version >=18.18.0</ListItemText>
+  </ListItem>
+</List>
+<br />
+
+<Heading size="large">Integrations</Heading>
+<br />
+
+<Heading size="medium">Cursor or VS Code</Heading>
+
+Create or update your `mcp.json` file with:
+
+```json
+{
+  "mcpServers": {
+    "blade-mcp": {
+      "command": "npx",
+      "args": ["@razorpay/blade-mcp@latest"]
+    }
+  }
+}
+```
+
+<Heading size="medium">Claude Desktop</Heading>
+
+Add the following to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "blade-mcp": {
+      "command": "npx",
+      "args": ["@razorpay/blade-mcp@latest"]
+    }
+  }
+}
+```
+
+> - Learn about how to configure MCP servers in [Claude Desktop](https://modelcontextprotocol.io/quickstart/user)
+> - Learn how to install [Claude Desktop](https://claude.ai/download)
+
+<br />
+
+<Heading size="medium">Usage Example</Heading>
+
+```
+Can you create a signup form with best UX practices using Blade?
+```
+
+The AI agents will use the MCP server to retrieve components and generate appropriate code.
