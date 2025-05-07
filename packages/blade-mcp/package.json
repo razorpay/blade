@@ -3,7 +3,6 @@
   "version": "0.0.4",
   "description": "Model Context Protocol server for Blade",
   "main": "dist/server.js",
-  "types": "dist/server.d.ts",
   "type": "module",
   "bin": "dist/server.js",
   "publishConfig": {
@@ -21,6 +20,7 @@
     "prepare": "yarn build",
     "build": "tsc && chmod +x dist/server.js",
     "dev": "tsx src/server.ts",
+    "inspect": "yarn build && npx -y @modelcontextprotocol/inspector node ./dist/server.js",
     "start": "node dist/server.js",
     "lint": "eslint --ext .ts src/",
     "typecheck": "tsc --noEmit"
@@ -35,7 +35,7 @@
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.11.0",
-    "zod": "3.23.8"
+    "zod": "3.24.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
