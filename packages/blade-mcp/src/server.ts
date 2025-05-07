@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync, existsSync, writeFileSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
+import { dirname, resolve, join } from 'path';
 // eslint-disable-next-line import/extensions
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 // eslint-disable-next-line import/extensions
@@ -36,8 +36,48 @@ try {
     version: packageJson.version,
   });
 
+  // create a tool to write cursor rules to consumer's project
   server.tool(
-    'get-blade-components',
+    'create_blade_cursor_rules',
+    'Call this tool when frontend-blade-rules.mdc files does not exist in cursor rules. Only call this when using cursor and when the frontend-blade-rules.mdc rule does not already exist.',
+    {
+      currentProjectRootDirectory: z
+        .string()
+        .describe("The working root directory of the consumer's project"),
+    },
+    ({ currentProjectRootDirectory }) => {
+      if (
+        existsSync(resolve(currentProjectRootDirectory, './.cursor/rules/frontend-blade-rules.mdc'))
+      ) {
+        return {
+          content: [{ type: 'text', text: 'Cursor rules already exist. Doing nothing' }],
+        };
+      }
+
+      const ruleFileTemplatePath = join(__dirname, '..', 'cursorRules', 'frontend-blade-rules.mdc');
+      const ruleFileTemplateContent = readFileSync(ruleFileTemplatePath, 'utf8');
+
+      const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
+      const ruleFilePath = join(ruleFileDir, 'frontend-blade-rules.mdc');
+      if (!existsSync(ruleFileDir)) {
+        mkdirSync(ruleFileDir, { recursive: true });
+      }
+
+      writeFileSync(ruleFilePath, ruleFileTemplateContent);
+
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `Blade cursor rules created at: ${ruleFilePath}`,
+          },
+        ],
+      };
+    },
+  );
+
+  server.tool(
+    'get_blade_components',
     `Return the list of Blade Design System components' knowledgebase files required for generating UI code with Blade`,
     {
       componentList: z

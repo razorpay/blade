@@ -15,7 +15,8 @@
   },
   "files": [
     "dist",
-    "knowledgebase"
+    "knowledgebase",
+    "cursorRules"
   ],
   "scripts": {
     "prepare": "yarn build",
