@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { LazyMotion } from 'framer-motion';
 import { createGlobalStyle } from 'styled-components';
@@ -23,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 `;
 
-const loadFeatures = () => import('./features.js').then((res) => res.default);
+const loadFeatures = () => import('./features.ts').then((res) => res.default);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BladeProvider themeTokens={bladeTheme} colorScheme="light">
