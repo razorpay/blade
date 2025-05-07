@@ -37,6 +37,20 @@ const hasOutDatedRules = (ruleFilePath: string): boolean => {
   return !ruleFileContent.includes(CURSOR_RULES_VERSION_STRING);
 };
 
+const hiBladeMessage = `
+👋 Welcome to Blade AI MCP — your assistant for Razorpay's Blade Design System!
+
+Here's what I can help you with:
+• 🚀 Start a new Blade project — just say: "Create a new blade project with a login page."
+• 🛠️ Build UIs fast — try: "Create a card grid layout using Blade in this file"
+• 📚 Learn components — ask: "How do I use the OTPInput component?"
+• ...and much more!
+
+Need help or found an issue? Reach out at https://github.com/razorpay/blade/issues or on the #design-system Slack channel.
+
+Happy vibe coding! 💙
+  `;
+
 try {
   // Read all markdown files and strip the .md extension
   const files = readdirSync(knowledgebasePath);
@@ -54,20 +68,6 @@ try {
     name: 'Blade MCP',
     version: packageJson.version,
   });
-
-  const hiBladeMessage = `
-👋 Welcome to Blade AI MCP — your assistant for Razorpay's Blade Design System!
-
-Here's what I can help you with:
-• 🚀 Start a new Blade project — just say: "Create a new blade project with a login page."
-• 🛠️ Build UIs fast — try: "Create a card grid layout using Blade in this file"
-• 📚 Learn components — ask: "How do I use the OTPInput component?"
-• ...and much more!
-
-Need help or found an issue? Reach out at https://github.com/razorpay/blade/issues or on the #design-system Slack channel.
-
-Happy vibe coding! 💙
-  `;
 
   server.tool(
     'hi_blade',

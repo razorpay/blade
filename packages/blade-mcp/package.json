@@ -1,9 +1,8 @@
 {
   "name": "@razorpay/blade-mcp",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Model Context Protocol server for Blade",
   "main": "dist/server.js",
-  "types": "dist/server.d.ts",
   "type": "module",
   "bin": "dist/server.js",
   "publishConfig": {
@@ -23,6 +22,7 @@
     "prepare": "yarn build",
     "build": "tsc && chmod +x dist/server.js",
     "dev": "tsx src/server.ts",
+    "inspect": "yarn build && npx -y @modelcontextprotocol/inspector node ./dist/server.js",
     "start": "node dist/server.js",
     "lint": "eslint --ext .ts src/",
     "typecheck": "tsc --noEmit",
