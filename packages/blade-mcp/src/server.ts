@@ -1,6 +1,16 @@
 #!/usr/bin/env node
 
-import { readFileSync, readdirSync, existsSync, writeFileSync, mkdirSync, unlinkSync } from 'fs';
+import {
+  readFileSync,
+  readdirSync,
+  existsSync,
+  writeFileSync,
+  mkdirSync,
+  unlinkSync,
+  cpSync,
+  rmSync,
+  renameSync,
+} from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, resolve, join } from 'path';
 // eslint-disable-next-line import/extensions
@@ -45,57 +55,56 @@ try {
     version: packageJson.version,
   });
 
-  const bladeSetupInstructions = `
-    ## How to Install Blade?
-
-    This is ONLY for the projects that don't have \`@razorpay/blade\` package installed and need a new setup
-
-    1. Make sure you have a vite and react project setup. If not, use create-vite-app to create a new TypeScript project.
-
-    2. Install Blade and its dependencies
-
-    \`\`\`sh
-    npm install @razorpay/blade@latest styled-components@5.3.11 @razorpay/i18nify-js@1.9.3 @razorpay/i18nify-react@4.0.8 framer-motion@11.13.3 --legacy-peer-deps
-    \`\`\`
-
-    3. Add Fonts
-
-    \`\`\`ts
-    // Somewhere in root index.ts or entryBrowser.tsx file
-    import '@razorpay/blade/fonts.css';
-    \`\`\`
-
-    4. Add basic blade usage
-
-    \`\`\`jsx
-    import { BladeProvider, Button } from '@razorpay/blade/components';
-    import { bladeTheme } from '@razorpay/blade/tokens';
-
-    const App = () => {
-      return (
-        <BladeProvider themeTokens={bladeTheme} colorScheme="light">
-          <Button>Click me</Button>
-        </BladeProvider>
-      );
-    };
-
-    export default App;
-    \`\`\`
-
-
-    6. Use \`get_blade_docs\` and add basic blade example to this project
-  `;
-
   server.tool(
-    'get_blade_setup_instructions',
-    'Gives instructions on how to add blade to a new project or non-blade project. Only call this when blade is not already installed in the project.',
-    {},
-    () => {
+    'create_new_blade_project',
+    'Create a new project using blade. Uses vite, react, and typescript for setup. Call this tool ONLY when you are creating a new project from scratch.',
+    {
+      currentProjectRootDirectory: z
+        .string()
+        .describe("The working root directory of the consumer's project"),
+    },
+    ({ currentProjectRootDirectory }) => {
+      // check if project is not empty
+      if (readdirSync(currentProjectRootDirectory).length > 0) {
+        return {
+          isError: true,
+          content: [
+            {
+              type: 'text',
+              text:
+                'Project is not empty. Call this tool only when creating a new project from scratch.',
+            },
+          ],
+        };
+      }
+
+      // Copy project from __dirname/base-blade-template to consumer's project
+      const baseBladeTemplatePath = resolve(__dirname, '..', 'base-blade-template');
+
+      // copy directory
+      if (existsSync(join(baseBladeTemplatePath, 'node_modules'))) {
+        rmSync(join(baseBladeTemplatePath, 'node_modules'), { recursive: true });
+      }
+
+      cpSync(baseBladeTemplatePath, currentProjectRootDirectory, { recursive: true });
+      // rename gitignore to .gitignore
+      renameSync(
+        join(currentProjectRootDirectory, 'gitignore'),
+        join(currentProjectRootDirectory, '.gitignore'),
+      );
+
       return {
         content: [
           {
             type: 'text',
-            text: `Here's instructions on how to setup a new blade project: ${bladeSetupInstructions}`,
+            text: `Project created successfully in ${currentProjectRootDirectory}. 
+            ## AI should run the following commands
+
+            1. Call create_blade_cursor_rules to create the cursor rules.
+            2. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.
+            3. Run \`npm run dev\` to start the development server.
+            4. Start coding App.tsx. use get_blade_docs to get information about the components.
+            `,
           },
         ],
       };

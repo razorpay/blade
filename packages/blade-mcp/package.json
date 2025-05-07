@@ -16,7 +16,8 @@
   "files": [
     "dist",
     "knowledgebase",
-    "cursorRules"
+    "cursorRules",
+    "base-blade-template"
   ],
   "scripts": {
     "prepare": "yarn build",

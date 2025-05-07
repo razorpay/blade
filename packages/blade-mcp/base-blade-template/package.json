@@ -10,8 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@razorpay/blade": "^12.25.0",
+    "@razorpay/i18nify-js": "^1.9.3",
+    "@razorpay/i18nify-react": "^4.0.8",
+    "framer-motion": "^11.13.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
