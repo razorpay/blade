@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.0.5
+
+### Patch Changes
+
+- 5f8e157b: fix: mcp zod version compatibility
+
 ## 0.0.4
 
 ### Patch Changes
