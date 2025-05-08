@@ -29,7 +29,7 @@ const knowledgebasePath = resolve(__dirname, '../knowledgebase');
 const bladeComponentsList: string[] = [];
 
 // Maintaining separate version from package.json since we don't want to re-write cursor rules on every MCP release
-const CURSOR_RULES_VERSION = '0.0.2';
+const CURSOR_RULES_VERSION = '0.0.5';
 const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
 
 const hasOutDatedRules = (ruleFilePath: string): boolean => {
@@ -130,8 +130,8 @@ try {
 
             1. Call create_blade_cursor_rules to create the cursor rules.
             2. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.
-            3. Run \`npm run dev\` to start the development server.
-            4. Start coding App.tsx. use get_blade_docs to get information about the components.
+            3. Always start the development server using \`npm run dev\` before starting to code
+            4. Start coding in App.tsx. use get_blade_docs to get information about the components.
             `,
           },
         ],
@@ -192,19 +192,8 @@ try {
     {
       componentsList: z
         .string()
-        .refine(
-          (str) => {
-            const components = str.split(',').map((s) => s.trim());
-            return components.every((comp) => bladeComponentsList.includes(comp));
-          },
-          {
-            message: `Components must be a comma-separated list of valid component names. Possible values: ${bladeComponentsList.join(
-              ', ',
-            )}`,
-          },
-        )
         .describe(
-          `Comma separated list of semantic blade component names. E.g. "Button, Accordion, AccordionItem". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
+          `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
             ', ',
           )}`,
         ),
@@ -213,6 +202,22 @@ try {
         .describe("The working root directory of the consumer's project"),
     },
     ({ componentsList, currentProjectRootDirectory }) => {
+      const components = componentsList.split(',').map((s) => s.trim());
+      const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
+      if (invalidComponents.length > 0) {
+        return {
+          isError: true,
+          content: [
+            {
+              type: 'text',
+              text: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
+                ', ',
+              )}. Valid component docs values: ${bladeComponentsList.join(', ')}`,
+            },
+          ],
+        };
+      }
+
       const ruleFilePath = join(
         currentProjectRootDirectory,
         '.cursor/rules/frontend-blade-rules.mdc',
