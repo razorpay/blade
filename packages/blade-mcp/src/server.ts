@@ -29,7 +29,7 @@ const knowledgebasePath = resolve(__dirname, '../knowledgebase');
 const bladeComponentsList: string[] = [];
 
 // Maintaining separate version from package.json since we don't want to re-write cursor rules on every MCP release
-const CURSOR_RULES_VERSION = '0.0.5';
+const CURSOR_RULES_VERSION = '0.0.6';
 const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
 
 const hasOutDatedRules = (ruleFilePath: string): boolean => {
