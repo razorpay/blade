@@ -10,7 +10,6 @@ import type { IconComponent } from '~components/Icons';
 import { CheckIcon, InfoIcon } from '~components/Icons';
 import { getPlatformType } from '~utils/getPlatformType';
 import { Box } from '~components/Box';
-import { makeAccessible } from '~utils/makeAccessible';
 
 type HintTextProps = {
   icon?: IconComponent;
@@ -18,21 +17,13 @@ type HintTextProps = {
   id?: string;
   color: TextProps<{ variant: 'caption' }>['color'];
   size: 'small' | 'medium' | 'large';
-  accessibilityProps?: Record<string, unknown>;
 };
 
-const HintText = ({
-  icon: Icon,
-  children,
-  id,
-  color,
-  size,
-  accessibilityProps,
-}: HintTextProps): ReactElement => {
+const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <BaseBox marginTop={hintMarginTop[size]} id={id} {...accessibilityProps}>
+    <BaseBox marginTop={hintMarginTop[size]} id={id}>
       <FormHintWrapper>
         {Icon ? (
           // offset block element 2px down to align with text
@@ -145,9 +136,6 @@ const FormHint = ({
           id={errorTextId}
           icon={() => Icons.error({ size })}
           color={colors.error}
-          accessibilityProps={makeAccessible({
-            role: 'alert',
-          })}
         >
           {errorText}
         </HintText>
