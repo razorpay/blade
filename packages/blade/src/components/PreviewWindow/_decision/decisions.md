@@ -67,7 +67,6 @@ type PreviewWindowProps = {
   }
   additionalHeaderControls={
     <CustomComponent/>
-
   }
 >
   <img src="/preview.jpg" alt="Example Preview" />
@@ -97,14 +96,30 @@ type PreviewWindowProps = {
     ```
 - For `additionalControls `
 
-    we can provide a wrapper components  like `<Header/>` and  `<Footer/>` and consumers can pass their custom controls
+    we can provide a wrapper components  like `<Header/>` and  `<Footer/>` and consumers can pass their custom controls , we will add zoom reset automatically.
     ```tsx
     <PreviewPanel>
     <Header>
      <Controls/>
     </Header>
     <Footer>
+         <Controls/>
     </Footer>
+    ```
+
+    we can also have a hook `usePreviewWindow` which will expose methods like `onZoomIncrementButtonClick` ,  `onZoomDecrementButtonClick` , `onFullScreenClick` , `onResetZoomResetClick` and consumers can use it like 
+    ``` tsx
+    <PreviewPanel>
+      <Header>
+        <FullScreenButton onClick={onFullScreenClick} />
+        <CustomComponent/>
+      </Header>
+      <PreviewFile/>
+      <Footer>
+       <ZoomIncrementButton onClick={onZoomIncrementButtonClick} />
+       <ZoomDecrementButton onClick={onZoomDecrementButtonClick} />
+      </Footer>
+    </PreviewPanel>
     ```
 
 
@@ -113,4 +128,3 @@ type PreviewWindowProps = {
 ## Open Questions
 
 - Should we change it's name to PreviewPanel ?
-- Shoud we expose a hook as well ? 
