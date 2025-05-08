@@ -50,6 +50,7 @@ type PreviewWindowProps = {
   defaultZoom?: number;
   zoomStep?: number;
 };
+```
 
 
 In addition, we will have three layout components:
