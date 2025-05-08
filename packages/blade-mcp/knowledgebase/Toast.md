@@ -254,7 +254,6 @@ function PromotionalToastExample() {
             width="100%"
             height="100px"
             alt="Promotional Toast"
-            style={{ objectFit: 'cover', borderRadius: '8px' }}
             src="https://example.com/promotional-image.png"
           />
           <Text weight="semibold">Lightning-fast payments with the new Razorpay Turbo UPI</Text>

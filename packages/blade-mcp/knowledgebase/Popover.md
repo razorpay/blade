@@ -202,7 +202,6 @@ const CustomTrigger = React.forwardRef<
       role="button"
       tabIndex={0}
       ref={ref}
-      style={{ cursor: 'pointer' }}
       {...props} // Forward all required props
     >
       {children}
