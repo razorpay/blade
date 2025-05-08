@@ -21,7 +21,7 @@ Create or update your `mcp.json` file with:
   "mcpServers": {
     "blade-mcp": {
       "command": "npx",
-      "args": ["@razorpay/blade-mcp@latest"]
+      "args": ["-y", "--ignore-existing", "@razorpay/blade-mcp@latest"]
     }
   }
 }
@@ -36,7 +36,7 @@ Add the following to `claude_desktop_config.json`:
   "mcpServers": {
     "blade-mcp": {
       "command": "npx",
-      "args": ["@razorpay/blade-mcp@latest"]
+      "args": ["-y", "--ignore-existing", "@razorpay/blade-mcp@latest"]
     }
   }
 }
