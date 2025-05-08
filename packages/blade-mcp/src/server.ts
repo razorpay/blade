@@ -69,14 +69,14 @@ try {
 
   server.tool(
     'hi_blade',
-    'Call this when the user says "hi blade", "hey blade" or "namaste blade". Tool that returns how to use blade mcp',
+    'Call this when the user says "hi blade", "hey blade" or "namaste blade" in any language. Tool that returns how to use blade mcp',
     {},
     () => {
       return {
         content: [
           {
             type: 'text',
-            text: `Print this message as is: ${hiBladeMessage}`,
+            text: `Print this message as is (translate to language of prompt if needed): ${hiBladeMessage}`,
           },
         ],
       };
