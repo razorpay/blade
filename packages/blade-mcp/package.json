@@ -39,6 +39,9 @@
     "@modelcontextprotocol/sdk": "1.11.0",
     "zod": "3.24.3"
   },
+  "resolutions": {
+    "zod": "3.24.3"
+  },
   "devDependencies": {
     "@types/node": "^20.12.6",
     "tsx": "^4.7.1",
