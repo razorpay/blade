@@ -38,7 +38,8 @@ The `Preview window` component will be the main component used to render a live 
 | `onZoomChange`              | `(newZoom: number)  => void`     | —                         | No       | Callback invoked when zoom changes.                                          |
 | `zoom`                      | `number`         | `50`                      | Yes       | A number between 1 to 100 which sets the zoom level.                         |
 | `onDragChange`              | `(position: { x: number; y: number }) => void`     | —                         | No       | Callback invoked when drag changes.                                          |
-| `additionalPreviewControls` | `React.Element`  | —                         | No       | If we want to show additional controls button or button group.               |
+| `additionalFooterControls` | `React.Element`  | —                         | No       | If we want to show additional controls button or button group in footer            |
+| `additionalHeaderControls` | `React.Element`  | —                         | No       | If we want to show additional controls button or button group in header            |
 | `zoomStep`                  | `number`         | `10`                      | No       | A number between 5 to 30 that determines the zoom step percentage per click. |
 | `defaultZoom`                  | `number`         | `10`                      | No       |  A number between 1 to 100 which tells initial zoom level
 
@@ -61,8 +62,12 @@ type PreviewWindowProps = {
 <PreviewWindow
   headingText="Image Preview"
   onFullScreen={() => console.log('Fullscreen triggered')}
-  additionalPreviewControls={
+  additionalFooterControls={
     <CustomComponent/>
+  }
+  additionalHeaderControls={
+    <CustomComponent/>
+
   }
 >
   <img src="/preview.jpg" alt="Example Preview" />
@@ -90,14 +95,16 @@ type PreviewWindowProps = {
     // Using prop-driven content instead of children
     <PreviewWindow content={<ImageComponent />} headingText="Preview" />
     ```
-- For `additionalPreviewControls `
+- For `additionalControls `
 
-    we can provide a wrapper component  <PreviewControls> and consumers can pass their custom controls
+    we can provide a wrapper components  like `<Header/>` and  `<Footer/>` and consumers can pass their custom controls
     ```tsx
-    <PreviewControls>
-     <ZoomControls/>
-     <ResponsiveControls /> 
-    </PreviewControls>
+    <PreviewPanel>
+    <Header>
+     <Controls/>
+    </Header>
+    <Footer>
+    </Footer>
     ```
 
 
@@ -106,3 +113,4 @@ type PreviewWindowProps = {
 ## Open Questions
 
 - Should we change it's name to PreviewPanel ?
+- Shoud we expose a hook as well ? 
