@@ -208,7 +208,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
 
   const linkOverlayProps: LinkOverlayProps = {
     ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
-    ...makeAccessible({ label: accessibilityLabel, pressed: isSelected }),
+    ...makeAccessible({ label: accessibilityLabel, pressed: href ? undefined : isSelected }),
     onFocus: () => {
       setIsFocused(true);
     },

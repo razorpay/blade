@@ -188,7 +188,6 @@ exports[`<Card /> should render a linkable Card 1`] = `
       elevation="lowRaised"
     >
       <a
-        aria-pressed="false"
         class="c4"
         data-blade-component="card-link-overlay"
         href="https://google.com"
@@ -291,7 +290,6 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
       elevation="lowRaised"
     >
       <a
-        aria-pressed="false"
         class="c4"
         data-blade-component="card-link-overlay"
         href="https://google.com"

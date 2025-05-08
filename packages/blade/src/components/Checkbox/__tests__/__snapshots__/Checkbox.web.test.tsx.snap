@@ -1115,7 +1115,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
           data-blade-component="base-box"
         >
           <input
-            aria-checked="true"
+            aria-checked="mixed"
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
