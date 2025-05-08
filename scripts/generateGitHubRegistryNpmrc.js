@@ -10,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const MONOREPO_ROOT = path.join(__dirname, '../../..');
+const MONOREPO_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
 const npmRcContent = `@razorpay:registry=https://npm.pkg.github.com/
