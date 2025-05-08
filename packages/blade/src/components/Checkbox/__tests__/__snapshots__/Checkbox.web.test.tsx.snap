@@ -922,7 +922,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       class="c8"
       data-blade-component="base-box"
       id="checkbox-25-errortext-27"
-      role="alert"
     >
       <span
         class="c9"
