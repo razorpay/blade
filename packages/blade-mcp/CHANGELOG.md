@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.2
+
+### Patch Changes
+
+- 94f12cf2: feat(blade-mcp): update cursorrules to always be called
+
 ## 0.1.1
 
 ### Patch Changes
