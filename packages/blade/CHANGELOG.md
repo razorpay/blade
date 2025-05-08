@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.25.2
+
+### Patch Changes
+
+- cc3d510b: - fixed accessibility issues in Avatar, Card and Checkbox.
+
 ## 12.25.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.1
+
+### Patch Changes
+
+- f43a91bc: feat: add zod resolution
+
 ## 0.1.0
 
 ### Minor Changes
