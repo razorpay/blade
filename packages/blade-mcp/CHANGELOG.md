@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.0
+
+### Minor Changes
+
+- 8a12b96a: feat(blade-mcp): add cursorrules, create project, and hi blade tools
+
 ## 0.0.5
 
 ### Patch Changes

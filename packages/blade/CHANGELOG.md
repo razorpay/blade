@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.25.1
+
+### Patch Changes
+
+- a0132d50: fix(FC-3152): add data-analytics-\* for TabNav
+
 ## 12.25.0
 
 ### Minor Changes
