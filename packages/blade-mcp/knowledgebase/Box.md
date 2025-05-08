@@ -608,8 +608,6 @@ const ResponsiveGridExample = () => {
             elevation={hoveredIndex === index ? 'highRaised' : 'lowRaised'}
             // Transform on hover
             transform={hoveredIndex === index ? 'translateY(-4px)' : 'none'}
-            // Transition for smooth effects
-            style={{ transition: 'all 0.2s ease-in-out' }}
             // Drag and drop handlers
             draggable
             onDragStart={(e) => {

@@ -489,7 +489,7 @@ const MultiItemSelectableCarouselExample = () => {
               <Card
                 height="100%"
                 padding="spacing.4"
-                elevation={isSelected ? 'raised' : 'lowRaised'}
+                elevation={isSelected ? 'midRaised' : 'lowRaised'}
                 backgroundColor={
                   isSelected
                     ? 'surface.background.primary.subtle'
