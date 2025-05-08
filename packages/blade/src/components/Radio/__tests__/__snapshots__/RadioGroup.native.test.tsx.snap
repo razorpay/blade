@@ -175,13 +175,11 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
-          gap="spacing.0"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": 0,
               },
             ]
           }
@@ -940,13 +938,11 @@ exports[`<RadioGroup /> should render with label 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
-          gap="spacing.0"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": 0,
               },
             ]
           }

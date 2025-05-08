@@ -333,7 +333,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="textinput-1369-input-1370"
+          for="textinput-1297-input-1298"
           style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -381,7 +381,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
             data-analytics-name="Enter name"
             data-blade-component="styled-base-input"
             enterkeyhint="enter"
-            id="textinput-1369-input-1370"
+            id="textinput-1297-input-1298"
             inputmode="text"
             type="text"
             value=""

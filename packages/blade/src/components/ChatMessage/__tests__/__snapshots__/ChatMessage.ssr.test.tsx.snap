@@ -278,7 +278,7 @@ exports[`<ChatMessage/> should render last message correctly 6`] = `
 </div>
 `;
 
-exports[`<ChatMessage/> should render last message correctly 7`] = `"<div id="root"><div data-blade-component="chat-message" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx enqSjg"><div data-blade-component="base-box" class="BaseBox-bmPWx jmVjFi"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M3 3H7.5H9.74999L12 12L14.25 3H16.5H21V7.5V9.75L12 12L21 14.25V16.5V21H16.5H14.25L12 12L9.74999 21H7.5H3V16.5V14.25L12 12L3 9.75V7.5V3Z" fill="hsla(155, 100%, 31%, 1)" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx bcpQQK"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 bcWxdc cGyVzL"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="box" class="BaseBox-bmPWx fNpotV"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Where do you want to collect payments?</p><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="radio-group-undefined-label" data-blade-component="radio-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx eOSvRx"><div data-blade-component="base-box" class="BaseBox-bmPWx fdoqPr"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="website"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Website</p></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx fdoqPr"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="android"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Android App</p></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hlbQIL"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="ios"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">iOS App</p></div></div></label></div></div></div></div></div></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx dDpgVS"></div></div></div></div></div>"`;
+exports[`<ChatMessage/> should render last message correctly 7`] = `"<div id="root"><div data-blade-component="chat-message" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx enqSjg"><div data-blade-component="base-box" class="BaseBox-bmPWx jmVjFi"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M3 3H7.5H9.74999L12 12L14.25 3H16.5H21V7.5V9.75L12 12L21 14.25V16.5V21H16.5H14.25L12 12L9.74999 21H7.5H3V16.5V14.25L12 12L3 9.75V7.5V3Z" fill="hsla(155, 100%, 31%, 1)" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx bcpQQK"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 bcWxdc cGyVzL"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="box" class="BaseBox-bmPWx fNpotV"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Where do you want to collect payments?</p><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="radio-group-undefined-label" data-blade-component="radio-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fdoqPr"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="website"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Website</p></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx fdoqPr"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="android"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Android App</p></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hlbQIL"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="ios"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">iOS App</p></div></div></label></div></div></div></div></div></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx dDpgVS"></div></div></div></div></div>"`;
 
 exports[`<ChatMessage/> should render last message correctly 8`] = `
 .c0.c0.c0.c0.c0 {
@@ -341,21 +341,10 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  gap: 0px;
-}
-
-.c11.c11.c11.c11.c11 {
   margin-bottom: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -369,15 +358,15 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
   align-items: center;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   margin-left: 4px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   margin-bottom: 0px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   grid-column: 2;
 }
 
@@ -398,7 +387,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -453,7 +442,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
   position: relative;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -482,7 +471,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
   transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -491,7 +480,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
   margin-bottom: 2px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -508,7 +497,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
   word-wrap: normal;
 }
 
-.c14.c14.c14.c14.c14:focus-visible + div {
+.c13.c13.c13.c13.c13:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -519,7 +508,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c14.c14.c14.c14.c14:hover + div {
+.c13.c13.c13.c13.c13:hover + div {
   border-color: hsla(214,28%,84%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -605,11 +594,11 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c10"
+                          class="c9"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c11"
+                            class="c10"
                             data-blade-component="base-box"
                           >
                             <div
@@ -617,7 +606,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c12"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -625,7 +614,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c13"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -634,22 +623,22 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c14"
+                                      class="c13"
                                       name="radio-group-7"
                                       role="radio"
                                       type="radio"
                                       value="website"
                                     />
                                     <div
-                                      class="c15"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c16"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c17"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       Website
@@ -660,7 +649,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                             </div>
                           </div>
                           <div
-                            class="c11"
+                            class="c10"
                             data-blade-component="base-box"
                           >
                             <div
@@ -668,7 +657,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c12"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -676,7 +665,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c13"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -685,22 +674,22 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c14"
+                                      class="c13"
                                       name="radio-group-7"
                                       role="radio"
                                       type="radio"
                                       value="android"
                                     />
                                     <div
-                                      class="c15"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c16"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c17"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       Android App
@@ -711,7 +700,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                             </div>
                           </div>
                           <div
-                            class="c18"
+                            class="c17"
                             data-blade-component="base-box"
                           >
                             <div
@@ -719,7 +708,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c12"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -727,7 +716,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c13"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -736,22 +725,22 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c14"
+                                      class="c13"
                                       name="radio-group-7"
                                       role="radio"
                                       type="radio"
                                       value="ios"
                                     />
                                     <div
-                                      class="c15"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c16"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c17"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       iOS App
@@ -771,7 +760,7 @@ exports[`<ChatMessage/> should render last message correctly 8`] = `
           </div>
         </div>
         <div
-          class="c19"
+          class="c18"
           data-blade-component="base-box"
         />
       </div>
