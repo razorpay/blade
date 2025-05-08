@@ -37,7 +37,7 @@ The `PreviewWindow` component is the primary component used to render a live pre
 | `onZoomChange`   | `(newZoom: number) => void`                            | —       | No       | Callback invoked when the zoom level changes.                               |
 | `zoom`           | `number`                                               | `50`    | Yes      | A number between 1 and 100 that sets the zoom level.                        |
 | `onDragChange`   | `(position: { x: number; y: number }) => void`         | —       | No       | Callback invoked when the drag position changes.                            |
-| `zoomStep`       | `number`                                               | `10`    | No       | A number between 5 and 30 that determines the zoom step per click.         |
+| `zoomScaleStep`       | `number`                                               | `10`    | No       | A number between 5 and 30 that determines the zoom step per click.         |
 | `defaultZoom`    | `number`                                               | `10`    | No       | A number between 1 and 100 that sets the initial zoom level.               |
 
 ```tsx
@@ -48,7 +48,7 @@ type PreviewWindowProps = {
   onZoomChange?: (newZoom: number) => void;
   onDragChange?: (position: { x: number; y: number }) => void;
   defaultZoom?: number;
-  zoomStep?: number;
+  zoomScaleStep?: number;
 };
 ```
 
