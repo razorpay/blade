@@ -1,8 +1,18 @@
 #!/usr/bin/env node
 
-import { readFileSync, readdirSync } from 'fs';
+import {
+  readFileSync,
+  readdirSync,
+  existsSync,
+  writeFileSync,
+  mkdirSync,
+  unlinkSync,
+  cpSync,
+  rmSync,
+  renameSync,
+} from 'fs';
 import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
+import { dirname, resolve, join } from 'path';
 // eslint-disable-next-line import/extensions
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 // eslint-disable-next-line import/extensions
@@ -18,12 +28,33 @@ const packageJson = JSON.parse(readFileSync(resolve(__dirname, '../package.json'
 const knowledgebasePath = resolve(__dirname, '../knowledgebase');
 const bladeComponentsList: string[] = [];
 
+// Maintaining separate version from package.json since we don't want to re-write cursor rules on every MCP release
+const CURSOR_RULES_VERSION = '0.0.5';
+const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
+
+const hasOutDatedRules = (ruleFilePath: string): boolean => {
+  const ruleFileContent = readFileSync(ruleFilePath, 'utf8');
+  return !ruleFileContent.includes(CURSOR_RULES_VERSION_STRING);
+};
+
+const hiBladeMessage = `
+👋 Welcome to Blade AI MCP — your assistant for Razorpay's Blade Design System!
+
+Here's what I can help you with:
+• 🚀 Start a new Blade project — just say: "Create a new blade project with a login page."
+• 🛠️ Build UIs fast — try: "Create a Dashboard layout with Sidebar, Avatar Menu, and a main content area with a breadcrumb"
+• 📚 Learn components — ask: "How do I use the OTPInput component?"
+• ...and much more!
+
+Happy vibe coding! 💙
+  `;
+
 try {
   // Read all markdown files and strip the .md extension
   const files = readdirSync(knowledgebasePath);
   for (const file of files) {
     if (file.endsWith('.md')) {
-      bladeComponentsList.push(file.replace('.md', ''));
+      bladeComponentsList.push(file.replace('.md', '').trim());
     }
   }
 } catch (error: unknown) {
@@ -37,35 +68,192 @@ try {
   });
 
   server.tool(
-    'get_blade_components',
-    `Return the list of Blade Design System components' knowledgebase files required for generating UI code with Blade`,
-    {
-      componentList: z
-        .string()
-        .refine(
-          (str) => {
-            const components = str.split(',').map((s) => s.trim());
-            return components.every((comp) => bladeComponentsList.includes(comp));
-          },
+    'hi_blade',
+    'Call this when the user says "hi blade", "hey blade" or "namaste blade" in any language. Tool that returns how to use blade mcp',
+    {},
+    () => {
+      return {
+        content: [
           {
-            message: `Components must be a comma-separated list of valid component names. Possible values: ${bladeComponentsList.join(
-              ', ',
-            )}`,
+            type: 'text',
+            text: `Print this message as is (translate to language of prompt if needed): ${hiBladeMessage}`,
           },
-        )
+        ],
+      };
+    },
+  );
+
+  server.tool(
+    'create_new_blade_project',
+    'Create a new project using blade. Uses vite, react, and typescript for setup. Call this tool ONLY when you are creating a new project from scratch.',
+    {
+      currentProjectRootDirectory: z
+        .string()
+        .describe("The working root directory of the consumer's project"),
+    },
+    ({ currentProjectRootDirectory }) => {
+      // check if project is not empty
+      if (readdirSync(currentProjectRootDirectory).length > 0) {
+        return {
+          isError: true,
+          content: [
+            {
+              type: 'text',
+              text:
+                'Project is not empty. Call this tool only when creating a new project from scratch.',
+            },
+          ],
+        };
+      }
+
+      // Copy project from __dirname/base-blade-template to consumer's project
+      const baseBladeTemplatePath = resolve(__dirname, '..', 'base-blade-template');
+
+      // copy directory
+      if (existsSync(join(baseBladeTemplatePath, 'node_modules'))) {
+        rmSync(join(baseBladeTemplatePath, 'node_modules'), { recursive: true });
+      }
+
+      cpSync(baseBladeTemplatePath, currentProjectRootDirectory, { recursive: true });
+      // rename gitignore to .gitignore
+      renameSync(
+        join(currentProjectRootDirectory, 'gitignore'),
+        join(currentProjectRootDirectory, '.gitignore'),
+      );
+
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `Project created successfully in ${currentProjectRootDirectory}. 
+            ## AI should run the following commands
+
+            1. Call create_blade_cursor_rules to create the cursor rules.
+            2. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.
+            3. Always start the development server using \`npm run dev\` before starting to code
+            4. Start coding in App.tsx. use get_blade_docs to get information about the components.
+            `,
+          },
+        ],
+      };
+    },
+  );
+
+  // create a tool to write cursor rules to consumer's project
+  server.tool(
+    'create_blade_cursor_rules',
+    'Creates the cursor rules for blade to help with code generation. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).',
+    {
+      currentProjectRootDirectory: z
+        .string()
+        .describe("The working root directory of the consumer's project"),
+    },
+    ({ currentProjectRootDirectory }) => {
+      const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
+      const ruleFilePath = join(ruleFileDir, 'frontend-blade-rules.mdc');
+
+      if (existsSync(ruleFilePath)) {
+        if (hasOutDatedRules(ruleFilePath)) {
+          // removes the outdated rules file and continues execution to generate new rule file
+          unlinkSync(ruleFilePath);
+        } else {
+          return {
+            content: [{ type: 'text', text: 'Cursor rules already exist. Doing nothing' }],
+          };
+        }
+      }
+
+      const ruleFileTemplatePath = join(__dirname, '..', 'cursorRules', 'frontend-blade-rules.mdc');
+      const ruleFileTemplateContent = readFileSync(ruleFileTemplatePath, 'utf8').replace(
+        'rules_version: <!-- dynamic_version -->',
+        `rules_version: ${CURSOR_RULES_VERSION}`,
+      );
+
+      if (!existsSync(ruleFileDir)) {
+        mkdirSync(ruleFileDir, { recursive: true });
+      }
+
+      writeFileSync(ruleFilePath, ruleFileTemplateContent);
+
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `Blade cursor rules created at: ${ruleFilePath}. Cursor Rules Version: ${CURSOR_RULES_VERSION}`,
+          },
+        ],
+      };
+    },
+  );
+
+  server.tool(
+    'get_blade_component_docs',
+    `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`,
+    {
+      componentsList: z
+        .string()
         .describe(
-          `Comma separated list of semantic blade component names. E.g. "Button, Accordion, AccordionItem". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
+          `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
             ', ',
           )}`,
         ),
+      currentProjectRootDirectory: z
+        .string()
+        .describe("The working root directory of the consumer's project"),
     },
-    ({ componentList }) => {
+    ({ componentsList, currentProjectRootDirectory }) => {
+      const components = componentsList.split(',').map((s) => s.trim());
+      const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
+      if (invalidComponents.length > 0) {
+        return {
+          isError: true,
+          content: [
+            {
+              type: 'text',
+              text: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
+                ', ',
+              )}. Valid component docs values: ${bladeComponentsList.join(', ')}`,
+            },
+          ],
+        };
+      }
+
+      const ruleFilePath = join(
+        currentProjectRootDirectory,
+        '.cursor/rules/frontend-blade-rules.mdc',
+      );
+
+      if (!existsSync(ruleFilePath)) {
+        return {
+          isError: true,
+          content: [
+            {
+              type: 'text',
+              text: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
+            },
+          ],
+        };
+      }
+
+      if (hasOutDatedRules(ruleFilePath)) {
+        return {
+          isError: true,
+          content: [
+            {
+              type: 'text',
+              text:
+                'Cursor rules are outdated. Call create_blade_cursor_rules first to update cursor rules',
+            },
+          ],
+        };
+      }
+
       try {
         // Parse the comma-separated string into an array of component names
-        const componentNames = componentList.split(',').map((name: string) => name.trim());
+        const componentNames = componentsList.split(',').map((name: string) => name.trim());
 
         // Build the formatted documentation text
-        let responseText = `Blade component documentation for: ${componentList}\n\n`;
+        let responseText = `Blade component documentation for: ${componentsList}\n\n`;
 
         // Process each component
         for (const componentName of componentNames) {
@@ -96,7 +284,7 @@ try {
           content: [
             {
               type: 'text',
-              text: `Error retrieving documentation for components: ${componentList}. ${
+              text: `Error retrieving documentation for components: ${componentsList}. ${
                 error instanceof Error ? error.message : 'Unknown error occurred.'
               }`,
             },

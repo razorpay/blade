@@ -1,18 +1,27 @@
-# Blade General Knowledge
+---
+description: Razorpay's Frontend Engineer who knows how to use our Design System Blade
+globs:
+alwaysApply: false
+rules_version: <!-- dynamic_version -->
+---
 
-This file provides basic overview of blade along with common utility types that you will see in other parts of documentation
+You are Razorpay's Frontend Engineer who knows how to use our design system called "blade". Rather than using outdated knowledge of blade from the internet, you effectively use Blade MCP to learn things about blade components before answering questions or creating / updating UI code. When asked to write some frontend code, you always prefer blade components over custom components to bring consistency in the UI.
 
-## What is Blade?
+- You always learn and understand blade components through Blade MCP before answering questions or writing frontend code
+- You fix any TypeScript and ESlint errors that occur and refer to component docs of that component from Blade MCP again if you're unable to figure out props and prop types on your own
+- You have general understanding on how to do layouts using blade using Box component and Styled Props, you know what `StyledPropsBlade` type refers to by learning about it from frontend-blade-rules rule and hence understand what spacing values blade supports, and how to do responsive layout in blade. E.g. blade does not support `margin={0}` or `margin="0"` and only supports `margin="spacing.3"` or `margin="24px"` etc
+- You effectively install or suggest installing relevant libraries (e.g. `react-router-dom` with SideNav or TopNav)
+- While building complex layouts, you breakdown the task into smaller subtasks and then build these complex layouts part-by-part
+- You use minimal version of components unless explicitly asked for a certain usecase. E.g. don't add size prop / color prop etc unless you explicitly know which one to use
 
-Blade is Razorpay's Design System to help you build UIs that are consistent with Razorpay's visual language.
 
-Blade is comparitively restrictive than other design systems hence it won't support all the props that other component libraries or design systems do.
+## Layouts in Blade
 
-## How to build layouts in Blade?
+Here's how you can create layouts in blade
 
-### Box
+### Box Component
 
-Blade has Box component that is used to create general layouts. Check out Box documentation whenever you need to build layouts.
+Box is a generic layout component that renders div by default. Checkout Box component documentation from Blade MCP.
 
 ### Styled Props
 
@@ -25,6 +34,19 @@ Styled Props are supported on components that use `StyledPropsBlade` type
 These are the types that are supported in components that support styled props.
 
 ````ts
+type SpacingValueType =
+  | `spacing.${keyof Spacing}`
+  | `${string}${'px' | '%' | 'vh' 'vw'}`
+  | `calc(${string})`
+  | 'auto'
+  | `min(${string})`
+  | `max(${string})`
+  | 'none'
+  | 'initial'
+  | 'fit-content'
+  | 'max-content'
+  | 'min-content';
+
 type LayoutProps = MakeObjectResponsive<
   {
     height: SpacingValueType;
@@ -56,25 +78,11 @@ type MarginProps = MakeObjectResponsive<{
    */
   margin: SpacingValueType | ArrayOfMaxLength4<SpacingValueType>;
   /**
-   * ### Margin Horizontal
-   *
-   * #### Usage
-   *
-   * ```jsx
-   * marginX="spacing.3"
-   * marginX="20px"
-   * ```
+   * Margin Horizontal
    */
   marginX: SpacingValueType;
   /**
-   * ### Margin Vertical
-   *
-   * #### Usage
-   *
-   * ```jsx
-   * marginY="spacing.3"
-   * marginY="20px"
-   * ```
+   * Margin Vertical
    */
   marginY: SpacingValueType;
   marginTop: SpacingValueType;
@@ -168,15 +176,16 @@ type StyledPropsBlade = Partial<
 
 ## Common Utility Types
 
-These are some of the common utility types that you will find in other parts of documentation.
+These are some of the common utility types that you will come across when you get response from Blade MCP
 
 - `TestID` - Used to add test ID to components for testing purposes.
 - `DataAnalyticsAttribute` - Used to add data analytics attributes to components for analytics purposes.
 - `FeedbackColors` - Used to accept feedback colors in components.
 - `Breakpoints` - Used to create responsive layouts using breakpoints.
-- `SpacingValueType` - Used to create spacing values in padding, margin props.
 
 ````ts
+
+
 type TestID = {
   /**
    * Test id that can be used to select element in testing environments
@@ -202,45 +211,6 @@ type DataAnalyticsAttribute = {
  */
 type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
-type Spacing = Readonly<{
-  /** 0: 0(px/rem/pt) */
-  0: 0;
-  /** 1: 2(px/rem/pt) */
-  1: 2;
-  /** 2: 4(px/rem/pt) */
-  2: 4;
-  /** 3: 8(px/rem/pt) */
-  3: 8;
-  /** 4: 12(px/rem/pt) */
-  4: 12;
-  /** 5: 16(px/rem/pt) */
-  5: 16;
-  /** 6: 20(px/rem/pt) */
-  6: 20;
-  /** 7: 24(px/rem/pt) */
-  7: 24;
-  /** 8: 32(px/rem/pt) */
-  8: 32;
-  /** 9: 40(px/rem/pt) */
-  9: 40;
-  /** 10: 48(px/rem/pt) */
-  10: 48;
-  /** 11: 56(px/rem/pt) */
-  11: 56;
-}>;
-
-type SpacingValueType =
-  | `spacing.${keyof Spacing}`
-  | `${string}${SpaceUnits}`
-  | `calc(${string})`
-  | 'auto'
-  | `min(${string})`
-  | `max(${string})`
-  | 'none'
-  | 'initial'
-  | 'fit-content'
-  | 'max-content'
-  | 'min-content';
 
 /**
  * Breakpoints type
@@ -298,5 +268,33 @@ type Breakpoints = Readonly<{
    * HD Desktop
    */
   xl: number;
+}>;
+
+
+type Spacing = Readonly<{
+  /** 0: 0px */
+  0: 0;
+  /** 1: 2px */
+  1: 2;
+  /** 2: 4px */
+  2: 4;
+  /** 3: 8px */
+  3: 8;
+  /** 4: 12px */
+  4: 12;
+  /** 5: 16px */
+  5: 16;
+  /** 6: 20px */
+  6: 20;
+  /** 7: 24px */
+  7: 24;
+  /** 8: 32px */
+  8: 32;
+  /** 9: 40px */
+  9: 40;
+  /** 10: 48px */
+  10: 48;
+  /** 11: 56px */
+  11: 56;
 }>;
 ````

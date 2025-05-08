@@ -1,10 +1,13 @@
 ## Component Name
+
 List
 
 ## Description
-The List component displays a set of related items in a structured format. It supports ordered, unordered, and ordered-filled variants with customizable sizes and styling. Lists can be nested for hierarchical data representation and include specialized item types for links, code snippets, and formatted text, making them versatile for various content presentation needs.
+
+The List component displays a set of related items in a structured format. This is blade's equivalent of `ul` and `ol` HTML elements. It supports ordered, unordered, and ordered-filled variants with customizable sizes and styling. Lists can be nested for hierarchical data representation and include specialized item types for links, code snippets, and formatted text, making them versatile for various content presentation needs.
 
 ## TypeScript Types
+
 The following types represent the props that the List component and its subcomponents accept. These allow you to properly configure the components according to your needs.
 
 ```typescript
@@ -38,7 +41,8 @@ type ListProps = {
    * Color of the custom icon
    */
   iconColor?: string;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for the ListItem component
@@ -48,7 +52,8 @@ type ListItemProps = {
    * Content to be rendered inside the list item
    */
   children: React.ReactNode;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for the ListItemText component
@@ -74,7 +79,8 @@ type ListItemTextProps = {
    * Font weight
    */
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for the ListItemLink component
@@ -89,7 +95,8 @@ type ListItemLinkProps = {
    * URL that the link points to
    */
   href?: string;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for the ListItemCode component
@@ -99,7 +106,8 @@ type ListItemCodeProps = {
    * Content to be rendered inside the code element
    */
   children: React.ReactNode;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for all Icon components
@@ -115,7 +123,6 @@ type IconProps = {
    */
   size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 };
-
 ```
 
 ## Examples
@@ -126,30 +133,26 @@ This example demonstrates the ordered-filled variant with links for step-by-step
 
 ```tsx
 import React from 'react';
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemLink,
-  Heading
-} from '@razorpay/blade/components';
+import { Box, List, ListItem, ListItemLink, Heading } from '@razorpay/blade/components';
 
 const OrderedFilledListExample = () => {
   return (
     <Box padding="spacing.5">
-      <Heading size="large" marginBottom="spacing.5">Ordered Filled List</Heading>
-      
+      <Heading size="large" marginBottom="spacing.5">
+        Ordered Filled List
+      </Heading>
+
       <List variant="ordered-filled" size="medium">
         <ListItem>
-          <ListItemLink href="#integration">Build Integration:</ListItemLink> Use the sample codes to 
-          integrate the Razorpay Web Standard Checkout on your website.
+          <ListItemLink href="#integration">Build Integration:</ListItemLink> Use the sample codes
+          to integrate the Razorpay Web Standard Checkout on your website.
         </ListItem>
         <ListItem>
-          <ListItemLink href="#testing">Test Integration:</ListItemLink> Test the integration to 
+          <ListItemLink href="#testing">Test Integration:</ListItemLink> Test the integration to
           ensure it was successful.
         </ListItem>
         <ListItem>
-          <ListItemLink href="#golive">Go-live Checklist:</ListItemLink> Check the go-live checklist 
+          <ListItemLink href="#golive">Go-live Checklist:</ListItemLink> Check the go-live checklist
           before taking the integration live.
         </ListItem>
       </List>
@@ -174,18 +177,20 @@ import {
   ListItemLink,
   ListItemCode,
   Heading,
-  BookmarkIcon
+  BookmarkIcon,
 } from '@razorpay/blade/components';
 
 const AdvancedListExample = () => {
   return (
     <Box padding="spacing.5">
-      <Heading size="large" marginBottom="spacing.5">Advanced List Features</Heading>
-      
-      <List 
-        variant="unordered" 
-        size="medium" 
-        icon={BookmarkIcon} 
+      <Heading size="large" marginBottom="spacing.5">
+        Advanced List Features
+      </Heading>
+
+      <List
+        variant="unordered"
+        size="medium"
+        icon={BookmarkIcon}
         iconColor="interactive.icon.primary.normal"
         aria-label="Documentation resources"
         marginBottom="spacing.6"
@@ -198,7 +203,7 @@ const AdvancedListExample = () => {
             </ListItem>
             <ListItem>
               <ListItemText>
-                Check 
+                Check
                 <ListItemText as="span" weight="semibold" color="feedback.text.positive.intense">
                   {' successful '}
                 </ListItemText>
@@ -252,4 +257,5 @@ const AdvancedListExample = () => {
   );
 };
 
-export default AdvancedListExample; 
+export default AdvancedListExample;
+```

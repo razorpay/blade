@@ -35,7 +35,6 @@ properties.json
 *.dbsql
 secrets.*
 *secret*
-*password*
 *credential*
 .npmrc
 .yarnrc
