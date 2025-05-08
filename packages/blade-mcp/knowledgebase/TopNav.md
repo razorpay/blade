@@ -4,7 +4,7 @@ TopNav
 
 ## Description
 
-The TopNav component is a navigation bar positioned at the top of the screen that provides quick access to different products, search functionality, and user profile. It serves as the main navigation container in applications, working alongside TabNav for multi-product navigation. TopNav has a responsive design that adapts well to different viewport sizes and integrates seamlessly with side navigation systems.
+The TopNav component is a navigation bar positioned at the top of the screen that provides quick access to different products, search functionality, and user profile. TopNav always uses TabNav for multi-product navigation. TopNav has a responsive design that adapts well to different viewport sizes and integrates seamlessly with side navigation systems.
 
 ## TypeScript Types
 
