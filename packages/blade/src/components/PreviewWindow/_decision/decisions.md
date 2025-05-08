@@ -1,15 +1,15 @@
-# Preview window Decisions
+# Preview Window Decisions
 
-A **Preview window** is a component used to display a visual preview of an image or any other UI component.
+A **Preview Window** is a component used to display a visual preview of an image or any other UI component.
 
 <img src="./preview.png" width="380" alt="preview-thumbnail" />
-<img src="./breakdown.svg" width="380" alt="breakdown"/>
+<img src="./breakdown.svg" width="380" alt="breakdown" />
 
 ---
 
 - [Design](#design)
-- [Preview window Component](#PreviewWindow-component)
-  - [Preview window API](#PreviewWindow-api)
+- [Preview Window Component](#preview-window-component)
+  - [Preview Window API](#preview-window-api)
   - [Alternative API](#alternative-api)
 - [Open Questions](#open-questions)
 
@@ -21,69 +21,76 @@ A **Preview window** is a component used to display a visual preview of an image
 
 ---
 
-## Preview window Component
+## Preview Window Component
 
-The `Preview window` component will be the main component used to render a live preview of content with optional interactivity and controls.
+The `PreviewWindow` component is the primary component used to render a live preview of content with optional interactivity and controls.
 
 ---
 
-## Preview window API
+## Preview Window API
 
-| Prop                        | Type             | Default                   | Required | Description                                                                  |
-| --------------------------- | ---------------- | ------------------------- | -------- | ---------------------------------------------------------------------------- |
-| `isInteractive`             | `boolean`        | `true`                    | No       | Determines whether to show preview controls and heading text.                |
-| `children`                  | `React.Element`  | —                         | Yes      | The component to be rendered inside the preview window.                      |
-| `headingText`               | `string`         | `""`                      | No       | If provided, displays a heading above the previewed component.               |
-| `onFullScreen`              | `() => void`     | —                         | No       | Callback invoked when the fullscreen button is clicked.                      |
-| `onZoomChange`              | `(newZoom: number)  => void`     | —                         | No       | Callback invoked when zoom changes.                                          |
-| `zoom`                      | `number`         | `50`                      | Yes       | A number between 1 to 100 which sets the zoom level.                         |
-| `onDragChange`              | `(position: { x: number; y: number }) => void`     | —                         | No       | Callback invoked when drag changes.                                          |
-| `additionalFooterControls` | `React.Element`  | —                         | No       | If we want to show additional controls button or button group in footer            |
-| `additionalHeaderControls` | `React.Element`  | —                         | No       | If we want to show additional controls button or button group in header            |
-| `zoomStep`                  | `number`         | `10`                      | No       | A number between 5 to 30 that determines the zoom step percentage per click. |
-| `defaultZoom`                  | `number`         | `10`                      | No       |  A number between 1 to 100 which tells initial zoom level
+| Prop             | Type                                                   | Default | Required | Description                                                                 |
+|------------------|--------------------------------------------------------|---------|----------|-----------------------------------------------------------------------------|
+| `children`       | `React.Element`                                        | —       | Yes      | The component to be rendered inside the preview window.                     |
+| `onFullScreen`   | `() => void`                                           | —       | No       | Callback invoked when the fullscreen button is clicked.                     |
+| `isDragEnabled`  | `boolean`                                              | —       | No       | Whether drag functionality is enabled.                                      |
+| `onZoomChange`   | `(newZoom: number) => void`                            | —       | No       | Callback invoked when the zoom level changes.                               |
+| `zoom`           | `number`                                               | `50`    | Yes      | A number between 1 and 100 that sets the zoom level.                        |
+| `onDragChange`   | `(position: { x: number; y: number }) => void`         | —       | No       | Callback invoked when the drag position changes.                            |
+| `zoomStep`       | `number`                                               | `10`    | No       | A number between 5 and 30 that determines the zoom step per click.         |
+| `defaultZoom`    | `number`                                               | `10`    | No       | A number between 1 and 100 that sets the initial zoom level.               |
 
 ```tsx
 type PreviewWindowProps = {
-  isInteractive?: boolean;
   children: React.ReactElement;
-  headingText?: string;
   onFullScreen?: () => void;
   zoom: number;
   onZoomChange?: (newZoom: number) => void;
   onDragChange?: (position: { x: number; y: number }) => void;
-  additionalPreviewControls?: React.ReactElement;
   defaultZoom?: number;
   zoomStep?: number;
 };
-```
+
+
+In addition, we will have three layout components:
+ - PreviewHeader
+ - PreviewBody
+ - PreviewFooter
+
 
 ```tsx
-<PreviewWindow
-  headingText="Image Preview"
-  onFullScreen={() => console.log('Fullscreen triggered')}
-  additionalFooterControls={
-    <CustomComponent/>
-  }
-  additionalHeaderControls={
-    <CustomComponent/>
-  }
->
+type PreviewHeader = {
+  title?: string;
+  trailing?: React.ReactElement;
+};
+
+type PreviewBody = {
+  children: React.ReactElement;
+};
+
+type PreviewFooter = {
+  trailing?: React.ReactElement;
+};
+```
+
+Example Usage - 
+
+```tsx
+<PreviewWindow>
+  <PreviewHeader title="Preview" trailing={<DownloadButton />} />
   <img src="/preview.jpg" alt="Example Preview" />
+  <PreviewFooter trailing={<DeviceToggle />} />
 </PreviewWindow>
 
 // With zoom controls
 <PreviewWindow
-  isInteractive
-  additionalPreviewControls={
-    <CustomComponent/>
-  }
-  >
+  additionalPreviewControls={<CustomComponent />}
+>
   <ComponentToPreview />
 </PreviewWindow>
 
 // Without interactivity
-<PreviewWindow isInteractive={false}>
+<PreviewWindow isDragEnabled={false}>
   <StaticComponent />
 </PreviewWindow>
 ```
