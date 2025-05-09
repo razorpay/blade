@@ -3,6 +3,7 @@ import { LazyMotion } from 'framer-motion';
 import { createGlobalStyle } from 'styled-components';
 import { BladeProvider } from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
+import '@razorpay/blade/fonts.css';
 
 import App from './App';
 

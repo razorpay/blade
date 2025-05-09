@@ -149,12 +149,16 @@ This example demonstrates a basic SelectInput with single selection, showing how
 
 ```jsx
 import { useState } from 'react';
-import { Dropdown, DropdownOverlay } from '@razorpay/blade/components/Dropdown';
-import { SelectInput } from '@razorpay/blade/components/Input/DropdownInputTriggers';
-import { ActionList, ActionListItem } from '@razorpay/blade/components/ActionList';
-import { Box } from '@razorpay/blade/components';
-import { Text } from '@razorpay/blade/components/Typography';
-import { UserIcon } from '@razorpay/blade/components/Icons';
+import {
+  Dropdown,
+  DropdownOverlay,
+  SelectInput,
+  ActionList,
+  ActionListItem,
+  Box,
+  Text,
+  UserIcon,
+} from '@razorpay/blade/components';
 
 function BasicSelectExample() {
   const [selectedUser, setSelectedUser] = useState('');
@@ -199,16 +203,17 @@ This example shows how to implement a SelectInput with multiple selection capabi
 
 ```jsx
 import { useState, useEffect } from 'react';
-import { Dropdown, DropdownOverlay } from '@razorpay/blade/components/Dropdown';
-import { SelectInput } from '@razorpay/blade/components/Input/DropdownInputTriggers';
 import {
+  Dropdown,
+  DropdownOverlay,
+  SelectInput,
   ActionList,
   ActionListItem,
   ActionListSection,
-} from '@razorpay/blade/components/ActionList';
-import { Box } from '@razorpay/blade/components';
-import { Button } from '@razorpay/blade/components';
-import { TagIcon } from '@razorpay/blade/components/Icons';
+  Box,
+  Button,
+  TagIcon,
+} from '@razorpay/blade/components';
 
 function MultiSelectWithValidationExample() {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -302,17 +307,18 @@ This example demonstrates a controlled SelectInput with custom formatting and st
 
 ```jsx
 import { useState } from 'react';
-import { Dropdown, DropdownOverlay } from '@razorpay/blade/components/Dropdown';
-import { SelectInput } from '@razorpay/blade/components/Input/DropdownInputTriggers';
 import {
+  Dropdown,
+  DropdownOverlay,
+  SelectInput,
   ActionList,
   ActionListItem,
   ActionListItemAsset,
-} from '@razorpay/blade/components/ActionList';
-import { Box } from '@razorpay/blade/components';
-import { Button } from '@razorpay/blade/components';
-import { Text } from '@razorpay/blade/components/Typography';
-import { GlobeIcon } from '@razorpay/blade/components/Icons';
+  Box,
+  Button,
+  Text,
+  GlobeIcon,
+} from '@razorpay/blade/components';
 
 function CurrencySelectExample() {
   // Pre-defined currency data

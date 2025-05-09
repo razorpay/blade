@@ -1,10 +1,13 @@
 ## Component Name
+
 Card
 
 ## Description
+
 Cards are containers that group related content and actions on a single topic. They help separate content into distinct sections, making interfaces easier to scan and understand. Cards support various layouts with customizable headers, bodies, and footers, enabling consistent presentation of information while providing clear interaction points for users.
 
 ## TypeScript Types
+
 The following types represent the props that the Card component and its subcomponents accept. These allow you to properly configure the Card component according to your needs.
 
 ```typescript
@@ -33,14 +36,16 @@ type CardProps = {
    * Elevation (shadow) level of the card
    * @default 'lowRaised'
    */
-  elevation?: 'lowRaised' | 'raised' | 'highRaised';
+  elevation?: 'lowRaised' | 'midRaised' | 'highRaised';
 
   /**
    * Padding applied to the card
    * @default 'spacing.7'
    */
   padding?: CardSpacingValueType;
-} & StyledPropsBlade & TestID & DataAnalyticsAttribute;
+} & StyledPropsBlade &
+  TestID &
+  DataAnalyticsAttribute;
 
 /**
  * Spacing values that can be used in Card components
@@ -336,7 +341,7 @@ import {
   CardBody,
   CardFooter,
   CardFooterTrailing,
-  Text
+  Text,
 } from '@razorpay/blade/components';
 
 const BasicCard = () => {
@@ -354,22 +359,21 @@ const BasicCard = () => {
           subtitle="Learn about Razorpay payment options"
         />
       </CardHeader>
-      
+
       <CardBody>
         <Text>
-          Razorpay offers a variety of payment methods to help businesses 
-          accept payments online. Explore our solutions to find the right 
-          fit for your business needs.
+          Razorpay offers a variety of payment methods to help businesses accept payments online.
+          Explore our solutions to find the right fit for your business needs.
         </Text>
       </CardBody>
-      
+
       <CardFooter marginTop="spacing.4">
         <CardFooterTrailing
           actions={{
             primary: {
               text: 'Learn More',
-              onClick: () => console.log('Learn more clicked')
-            }
+              onClick: () => console.log('Learn more clicked'),
+            },
           }}
         />
       </CardFooter>
@@ -386,46 +390,37 @@ This example shows how to implement a selectable Card with state management.
 
 ```tsx
 import React, { useState } from 'react';
-import {
-  Card,
-  CardBody,
-  Text,
-  Box
-} from '@razorpay/blade/components';
+import { Card, CardBody, Text, Box } from '@razorpay/blade/components';
 
 const SelectableCard = () => {
   const [isSelected, setIsSelected] = useState(false);
-  
+
   const handleCardClick = () => {
     setIsSelected(!isSelected);
   };
-  
+
   return (
     <Card
-      backgroundColor={isSelected ? "surface.background.primary.subtle" : "surface.background.white.normal"}
+      backgroundColor={
+        isSelected ? 'surface.background.primary.subtle' : 'surface.background.white.normal'
+      }
       borderRadius="medium"
-      elevation={isSelected ? "raised" : "lowRaised"}
+      elevation={isSelected ? 'midRaised' : 'lowRaised'}
       padding="spacing.7"
       onClick={handleCardClick}
-      style={{ 
-        cursor: 'pointer',
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: isSelected ? 'var(--color-primary-500)' : 'var(--color-gray-300)'
-      }}
       data-analytics="selectable-card"
       testID="selectable-card"
     >
       <CardBody>
         <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Text fontWeight={isSelected ? "bold" : "normal"}>
+          <Text fontWeight={isSelected ? 'bold' : 'normal'}>
             Click to {isSelected ? 'deselect' : 'select'} this payment option
           </Text>
           {isSelected && (
-            <Box 
-              width="16px" 
-              height="16px" 
-              borderRadius="full" 
+            <Box
+              width="16px"
+              height="16px"
+              borderRadius="full"
               backgroundColor="surface.background.primary.normal"
             />
           )}
@@ -444,61 +439,52 @@ This example demonstrates using multiple Cards in a selectable group.
 
 ```tsx
 import React, { useState } from 'react';
-import {
-  Card,
-  CardBody,
-  Text,
-  Box
-} from '@razorpay/blade/components';
+import { Card, CardBody, Text, Box } from '@razorpay/blade/components';
 
 const MultiSelectCardGroup = () => {
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
-  
+
   const cards = [
     { id: 'card1', title: 'Credit Card' },
     { id: 'card2', title: 'Debit Card' },
-    { id: 'card3', title: 'UPI' }
+    { id: 'card3', title: 'UPI' },
   ];
-  
+
   const toggleCard = (id: string) => {
-    setSelectedCards(prevSelected => 
+    setSelectedCards((prevSelected) =>
       prevSelected.includes(id)
-        ? prevSelected.filter(cardId => cardId !== id)
-        : [...prevSelected, id]
+        ? prevSelected.filter((cardId) => cardId !== id)
+        : [...prevSelected, id],
     );
   };
-  
+
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
       <Text>Select payment methods (multiple allowed):</Text>
-      
-      {cards.map(card => {
+
+      {cards.map((card) => {
         const isSelected = selectedCards.includes(card.id);
-        
+
         return (
           <Card
             key={card.id}
-            backgroundColor={isSelected ? "surface.background.primary.subtle" : "surface.background.white.normal"}
+            backgroundColor={
+              isSelected ? 'surface.background.primary.subtle' : 'surface.background.white.normal'
+            }
             borderRadius="medium"
-            elevation={isSelected ? "raised" : "lowRaised"}
+            elevation={isSelected ? 'midRaised' : 'lowRaised'}
             padding="spacing.5"
             onClick={() => toggleCard(card.id)}
-            style={{ 
-              cursor: 'pointer',
-              borderWidth: '1px',
-              borderStyle: 'solid',
-              borderColor: isSelected ? 'var(--color-primary-500)' : 'var(--color-gray-300)'
-            }}
             testID={`payment-card-${card.id}`}
           >
             <CardBody>
               <Box display="flex" alignItems="center" justifyContent="space-between">
                 <Text>{card.title}</Text>
                 {isSelected && (
-                  <Box 
-                    width="16px" 
-                    height="16px" 
-                    borderRadius="full" 
+                  <Box
+                    width="16px"
+                    height="16px"
+                    borderRadius="full"
                     backgroundColor="surface.background.primary.normal"
                   />
                 )}
@@ -507,10 +493,11 @@ const MultiSelectCardGroup = () => {
           </Card>
         );
       })}
-      
+
       <Text marginTop="spacing.3">
-        Selected: {selectedCards.length > 0 
-          ? selectedCards.map(id => cards.find(c => c.id === id)?.title).join(', ') 
+        Selected:{' '}
+        {selectedCards.length > 0
+          ? selectedCards.map((id) => cards.find((c) => c.id === id)?.title).join(', ')
           : 'None'}
       </Text>
     </Box>
@@ -518,4 +505,4 @@ const MultiSelectCardGroup = () => {
 };
 
 export default MultiSelectCardGroup;
-``` 
+```

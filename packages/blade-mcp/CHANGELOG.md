@@ -1,5 +1,23 @@
 # @razorpay/blade-mcp
 
+## 0.1.3
+
+### Patch Changes
+
+- 6dd10f5c: fix(Inputs): knowledgebase imports
+
+## 0.1.2
+
+### Patch Changes
+
+- 94f12cf2: feat(blade-mcp): update cursorrules to always be called
+
+## 0.1.1
+
+### Patch Changes
+
+- f43a91bc: feat: add zod resolution
+
 ## 0.1.0
 
 ### Minor Changes
