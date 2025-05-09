@@ -44,6 +44,7 @@ The `PreviewWindow` component is the primary component used to render a live pre
 type PreviewWindowProps = {
   children: React.ReactElement;
   onFullScreen?: () => void;
+  isDragEnabled?: boolean;
   zoom: number;
   onZoomChange?: (newZoom: number) => void;
   onDragChange?: (position: { x: number; y: number }) => void;
@@ -79,18 +80,22 @@ Example Usage -
 ```tsx
 <PreviewWindow>
   <PreviewHeader title="Preview" trailing={<DownloadButton />} />
+  <PreviewBody>
   <img src="/preview.jpg" alt="Example Preview" />
+  </PreviewBody>
   <PreviewFooter trailing={<DeviceToggle />} />
 </PreviewWindow>
 
-// With zoom controls
+// Without zoom controls
 <PreviewWindow
   additionalPreviewControls={<CustomComponent />}
 >
+  <PreviewBody>
   <ComponentToPreview />
+  </PreviewBody>
 </PreviewWindow>
 
-// Without interactivity
+// Without Drag
 <PreviewWindow isDragEnabled={false}>
   <StaticComponent />
 </PreviewWindow>
