@@ -89,6 +89,12 @@ type CheckboxGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * Orientation of the checkbox group
+   *
+   * @default "vertical"
+   */
+  orientation?: 'vertical' | 'horizontal';
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -109,6 +115,7 @@ const CheckboxGroup = ({
   value,
   size = 'medium',
   testID,
+  orientation = 'vertical',
   ...rest
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
@@ -129,7 +136,7 @@ const CheckboxGroup = ({
   const showHelpText = !showError && helpText;
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const gap = checkboxSizes.group.gap[size][matchedDeviceType];
+  const gap = checkboxSizes.group[orientation].gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
 
   return (
@@ -155,12 +162,18 @@ const CheckboxGroup = ({
             </FormLabel>
           ) : null}
           <BaseBox>
-            <BaseBox display="flex" flexDirection="column">
+            <BaseBox
+              display="flex"
+              flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
+              gap={orientation === 'horizontal' ? gap : undefined}
+            >
               {React.Children.map(children, (child, index) => {
                 return (
                   <BaseBox
                     key={index}
-                    {...{ marginBottom: index === childCount - 1 ? makeSize(0) : gap }}
+                    {...(orientation === 'vertical'
+                      ? { marginBottom: index === childCount - 1 ? makeSize(0) : gap }
+                      : {})}
                   >
                     {child}
                   </BaseBox>
