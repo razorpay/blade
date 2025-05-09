@@ -99,16 +99,10 @@ const SimpleFormTemplate: StoryFn<typeof Box> = ({ ...args }): JSX.Element => {
 
 export const SimpleForm = SimpleFormTemplate.bind({});
 
-type LayoutProps = BoxProps & {
-  sectionsLayout?: 'horizontal' | 'vertical';
-  labelPosition?: 'top' | 'left';
-  density?: 'normal' | 'comfortable';
+const ValidationFormTemplate: StoryFn<{
   errorState?: 'individual' | 'grouped';
-  longForm?: boolean;
   initialErrors?: boolean;
-};
-
-const ValidationFormTemplate: StoryFn<LayoutProps> = (props): JSX.Element => {
+}> = (props): JSX.Element => {
   const { errorState = 'grouped', initialErrors = false } = props;
   const [formData, setFormData] = React.useState({
     email: initialErrors ? 'invalid-email' : '',
@@ -245,6 +239,13 @@ const CITY_OPTIONS = [
   { title: 'Bangalore', value: 'bangalore' },
   { title: 'Mysore', value: 'mysore' },
 ];
+
+type LayoutProps = BoxProps & {
+  sectionsLayout?: 'horizontal' | 'vertical';
+  labelPosition?: 'top' | 'left';
+  density?: 'normal' | 'comfortable';
+  longForm?: boolean;
+};
 
 const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps): JSX.Element => {
   const {
