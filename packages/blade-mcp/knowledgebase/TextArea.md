@@ -336,3 +336,59 @@ function MessageComposer() {
   );
 }
 ```
+
+## TextArea with Tags Validation
+
+To validate tags, you can use the following example:
+
+```jsx
+import { TextArea, Box } from '@razorpay/blade/components';
+import React from 'react';
+
+const isValidEmail = (email: string): boolean => {
+  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(email);
+};
+
+function App() {
+  const [tags, setTags] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState('');
+  const [errorText, setErrorText] = React.useState('');
+  const isErrorRef = React.useRef(false);
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextArea
+        value={inputValue}
+        onChange={({ value }) => {
+          if (!isErrorRef.current) {
+            setInputValue(value ?? '');
+            setErrorText('');
+          }
+
+          isErrorRef.current = false;
+        }}
+        tags={tags}
+        onTagChange={({ tags: newTags }) => {
+          const isTagRemoved = newTags.length < tags.length;
+          if (isTagRemoved) {
+            setTags(newTags);
+            return;
+          }
+
+          if (isValidEmail(inputValue)) {
+            setTags(newTags);
+          } else {
+            isErrorRef.current = true;
+            setErrorText(`Invalid email ${inputValue}. Try with different email`);
+          }
+        }}
+        errorText={errorText}
+        validationState={errorText ? 'error' : undefined}
+      />
+    </Box>
+  );
+}
+
+export default App;
+```
