@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { useState } from 'react';
 import { FormGroupStoryCode } from './code';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
-import { Heading } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { Button } from '~components/Button';
 import { TextInput } from '~components/Input/TextInput';
 import { TextArea } from '~components/Input/TextArea';
 import { ArrowRightIcon } from '~components/Icons';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { BoxProps } from '~components/Box';
+import type { BoxProps } from '~components/Box';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Alert } from '~components/Alert';
 import { PasswordInput } from '~components/Input/PasswordInput';
@@ -18,8 +17,7 @@ import { useToast, ToastContainer } from '~components/Toast';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { SelectInput } from '~components/Input/DropdownInputTriggers/SelectInput';
-import { Text } from '~components/Typography';
-import { SpacingValueType } from '~components/Box/BaseBox';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
 
 export default {
@@ -43,14 +41,14 @@ export default {
   },
 } as Meta<BoxProps>;
 
-const SimpleFormTemplate: StoryFn<typeof Box> = ({ ...args }) => {
+const SimpleFormTemplate: StoryFn<typeof Box> = ({ ...args }): JSX.Element => {
   const [formData, setFormData] = useState({
     email: '',
     message: '',
   });
   const toast = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
     toast.show({
@@ -77,7 +75,7 @@ const SimpleFormTemplate: StoryFn<typeof Box> = ({ ...args }) => {
             label="Email"
             name="email"
             value={formData.email}
-            onChange={({ value }) => setFormData({ ...formData, email: value || '' })}
+            onChange={({ value }) => setFormData({ ...formData, email: value ?? '' })}
             placeholder="Enter your email"
           />
 
@@ -85,7 +83,7 @@ const SimpleFormTemplate: StoryFn<typeof Box> = ({ ...args }) => {
             label="Message"
             name="message"
             value={formData.message}
-            onChange={({ value }) => setFormData({ ...formData, message: value || '' })}
+            onChange={({ value }) => setFormData({ ...formData, message: value ?? '' })}
             numberOfLines={4}
             placeholder="Enter your message"
           />
@@ -110,7 +108,7 @@ type LayoutProps = BoxProps & {
   initialErrors?: boolean;
 };
 
-const ValidationFormTemplate: StoryFn<LayoutProps> = (props) => {
+const ValidationFormTemplate: StoryFn<LayoutProps> = (props): JSX.Element => {
   const { errorState = 'grouped', initialErrors = false } = props;
   const [formData, setFormData] = React.useState({
     email: initialErrors ? 'invalid-email' : '',
@@ -139,13 +137,13 @@ const ValidationFormTemplate: StoryFn<LayoutProps> = (props) => {
       : null,
   );
 
-  const handleChange = (name: string, value: string | undefined) => {
-    setFormData((prev) => ({ ...prev, [name]: value || '' }));
+  const handleChange = (name: string, value: string | undefined): void => {
+    setFormData((prev) => ({ ...prev, [name]: value ?? '' }));
     // Clear error when typing
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
-  const validateForm = () => {
+  const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.email) {
@@ -164,7 +162,7 @@ const ValidationFormTemplate: StoryFn<LayoutProps> = (props) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     if (validateForm()) {
       setAlert({
@@ -239,7 +237,7 @@ const getSpacing = (
   density: 'normal' | 'comfortable',
   normal: SpacingValueType,
   comfortable: SpacingValueType,
-) => (density === 'comfortable' ? comfortable : normal);
+): SpacingValueType => (density === 'comfortable' ? comfortable : normal);
 
 const CITY_OPTIONS = [
   { title: 'Mumbai', value: 'mumbai' },
@@ -248,7 +246,7 @@ const CITY_OPTIONS = [
   { title: 'Mysore', value: 'mysore' },
 ];
 
-const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
+const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps): JSX.Element => {
   const {
     sectionsLayout = 'vertical',
     labelPosition = 'top',
@@ -271,11 +269,11 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
   const isMobile = useIsMobile();
   const toast = useToast();
 
-  const handleChange = (field: string, value: string) => {
+  const handleChange = (field: string, value: string): void => {
     setBankData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
     toast.show({
@@ -333,7 +331,7 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
                 label="Bank Name"
                 name="bankName"
                 value={bankData.bankName}
-                onChange={({ value }) => handleChange('bankName', value || '')}
+                onChange={({ value }) => handleChange('bankName', value ?? '')}
                 labelPosition={labelPosition}
                 helpText="Full name of the registered national bank"
                 placeholder="State Bank of India"
@@ -348,7 +346,7 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
                   label="Branch Name"
                   name="branchName"
                   value={bankData.branchName}
-                  onChange={({ value }) => handleChange('branchName', value || '')}
+                  onChange={({ value }) => handleChange('branchName', value ?? '')}
                   labelPosition={labelPosition}
                   helpText="Generally, it is location of your branch"
                   placeholder="A1 Block, Janakpuri"
@@ -358,7 +356,7 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
                   label="Branch Number"
                   name="branchNumber"
                   value={bankData.branchNumber}
-                  onChange={({ value }) => handleChange('branchNumber', value || '')}
+                  onChange={({ value }) => handleChange('branchNumber', value ?? '')}
                   labelPosition={labelPosition}
                   helpText="The 5-digit number, you can find it on your bank's cheque book"
                   placeholder="SBIN0011315"
@@ -389,7 +387,7 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
                 label="Address Line 1"
                 name="addressLine1"
                 value={bankData.addressLine1}
-                onChange={({ value }) => handleChange('addressLine1', value || '')}
+                onChange={({ value }) => handleChange('addressLine1', value ?? '')}
                 labelPosition={labelPosition}
                 placeholder="A1-240, Titan Towers, State Bank of India"
               />
@@ -398,7 +396,7 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
                 label="Address Line 2"
                 name="addressLine2"
                 value={bankData.addressLine2}
-                onChange={({ value }) => handleChange('addressLine2', value || '')}
+                onChange={({ value }) => handleChange('addressLine2', value ?? '')}
                 labelPosition={labelPosition}
                 placeholder="A1 Janakpuri, Opposite Community Hall"
               />
@@ -413,7 +411,7 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
                   label="Pin Code"
                   name="pinCode"
                   value={bankData.pinCode}
-                  onChange={({ value }) => handleChange('pinCode', value || '')}
+                  onChange={({ value }) => handleChange('pinCode', value ?? '')}
                   labelPosition={labelPosition}
                   placeholder="110018"
                 />
@@ -423,7 +421,7 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
                     label="City"
                     placeholder="Select City"
                     name="action"
-                    onChange={({ values }) => handleChange('city', values[0] || '')}
+                    onChange={({ values }) => handleChange('city', values[0] ?? '')}
                     labelPosition={labelPosition}
                   />
                   <DropdownOverlay>
@@ -442,8 +440,8 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps) => {
               label="Additional Information"
               name="additionalInformation"
               value={bankData.additionalInformation}
-              onChange={({ value }) => handleChange('additionalInformation', value || '')}
-              // @ts-ignore - Using higher numberOfLines for scrolling behavior
+              onChange={({ value }) => handleChange('additionalInformation', value ?? '')}
+              // @ts-expect-error - Using higher numberOfLines for scrolling behavior
               numberOfLines={15}
             />
           )}
