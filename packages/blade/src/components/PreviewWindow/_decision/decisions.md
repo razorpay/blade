@@ -72,6 +72,7 @@ type PreviewBody = {
 
 type PreviewFooter = {
   trailing?: React.ReactElement;
+  showZoomPercentage?: boolean;
 };
 ```
 
