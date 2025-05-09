@@ -95,8 +95,7 @@ type TextInputProps = TextInputPropsWithA11yLabel | TextInputPropsWithLabel;
 This example demonstrates basic TextInput usage with different validation states.
 
 ```jsx
-import { TextInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
+import { TextInput, Box } from '@razorpay/blade/components';
 
 function TextInputExample() {
   const handleChange = ({ name, value }) => {
@@ -155,10 +154,14 @@ function TextInputExample() {
 This example showcases TextInput with combined visual and functional features.
 
 ```jsx
-import { TextInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { Link } from '@razorpay/blade/components';
-import { SearchIcon, CreditCardIcon, InfoIcon } from '@razorpay/blade/components/Icons';
+import {
+  TextInput,
+  Box,
+  Link,
+  SearchIcon,
+  CreditCardIcon,
+  InfoIcon,
+} from '@razorpay/blade/components';
 
 function FeatureRichTextInputExample() {
   return (
@@ -213,9 +216,7 @@ function FeatureRichTextInputExample() {
 This example demonstrates how to create TextInput components without visible labels but with proper accessibility support using the accessibilityLabel prop, useful for compact UI designs.
 
 ```jsx
-import { TextInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { SearchIcon, UserIcon } from '@razorpay/blade/components/Icons';
+import { TextInput, Box, SearchIcon, UserIcon } from '@razorpay/blade/components';
 
 function AccessibleTextInputExample() {
   return (
@@ -249,9 +250,7 @@ This example demonstrates using TextInput to collect multiple values as tags.
 
 ```jsx
 import { useState } from 'react';
-import { TextInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { EmailIcon } from '@razorpay/blade/components/Icons';
+import { TextInput, Box, EmailIcon } from '@razorpay/blade/components';
 
 function TaggedTextInputExample() {
   const [emails, setEmails] = useState(['user@example.com']);

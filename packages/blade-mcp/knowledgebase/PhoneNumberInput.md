@@ -121,8 +121,7 @@ This example demonstrates a simple phone number input with validation and countr
 
 ```jsx
 import { useState } from 'react';
-import { PhoneNumberInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
+import { PhoneNumberInput, Box } from '@razorpay/blade/components';
 import { isValidPhoneNumber } from '@razorpay/i18nify-js';
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 
@@ -179,11 +178,13 @@ This example shows a more complex usage with restricted countries, custom stylin
 
 ```jsx
 import { useState } from 'react';
-import { PhoneNumberInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { Text } from '@razorpay/blade/components/Typography';
-import { PhoneIcon } from '@razorpay/blade/components/Icons';
-import { Button } from '@razorpay/blade/components';
+import {
+  PhoneNumberInput,
+  Box,
+  Text,
+  PhoneIcon,
+  Button
+} from '@razorpay/blade/components';
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 
 function AdvancedPhoneNumberExample() {
@@ -263,9 +264,7 @@ This example demonstrates how to use PhoneNumberInput with simplified configurat
 
 ```jsx
 import { useState } from 'react';
-import { PhoneNumberInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { Text } from '@razorpay/blade/components/Typography';
+import { PhoneNumberInput, Box, Text } from '@razorpay/blade/components';
 
 function SimplifiedPhoneNumberExample() {
   const [value, setValue] = useState('');
@@ -309,10 +308,12 @@ This example shows how to integrate PhoneNumberInput into a form with proper val
 
 ```jsx
 import { useState } from 'react';
-import { PhoneNumberInput } from '@razorpay/blade/components';
-import { TextInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { Button } from '@razorpay/blade/components';
+import {
+  PhoneNumberInput,
+  TextInput,
+  Box,
+  Button
+} from '@razorpay/blade/components';
 import { isValidPhoneNumber } from '@razorpay/i18nify-js';
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 

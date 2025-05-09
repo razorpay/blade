@@ -186,12 +186,16 @@ This example demonstrates a basic AutoComplete with client-side filtering, showi
 
 ```jsx
 import { useState } from 'react';
-import { Dropdown, DropdownOverlay } from '@razorpay/blade/components/Dropdown';
-import { AutoComplete } from '@razorpay/blade/components/Input/DropdownInputTriggers';
-import { ActionList, ActionListItem } from '@razorpay/blade/components/ActionList';
-import { Box } from '@razorpay/blade/components';
-import { Text } from '@razorpay/blade/components/Typography';
-import { SearchIcon } from '@razorpay/blade/components/Icons';
+import {
+  Dropdown,
+  DropdownOverlay,
+  AutoComplete,
+  ActionList,
+  ActionListItem,
+  Box,
+  Text,
+  SearchIcon,
+} from '@razorpay/blade/components';
 
 function BasicAutoCompleteExample() {
   const [selectedItem, setSelectedItem] = useState('');
@@ -269,13 +273,17 @@ This example shows how to implement an AutoComplete with asynchronous data loadi
 
 ```jsx
 import { useState, useEffect } from 'react';
-import { Dropdown, DropdownOverlay } from '@razorpay/blade/components/Dropdown';
-import { AutoComplete } from '@razorpay/blade/components/Input/DropdownInputTriggers';
-import { ActionList, ActionListItem } from '@razorpay/blade/components/ActionList';
-import { Box } from '@razorpay/blade/components';
-import { Text } from '@razorpay/blade/components/Typography';
-import { Spinner } from '@razorpay/blade/components';
-import { LocationIcon } from '@razorpay/blade/components/Icons';
+import {
+  Dropdown,
+  DropdownOverlay,
+  AutoComplete,
+  ActionList,
+  ActionListItem,
+  Box,
+  Text,
+  Spinner,
+  LocationIcon,
+} from '@razorpay/blade/components';
 
 function AsyncAutoCompleteExample() {
   const [inputValue, setInputValue] = useState('');
@@ -400,17 +408,19 @@ This example demonstrates an AutoComplete with the ability to create new options
 
 ```jsx
 import { useState } from 'react';
-import { Dropdown, DropdownOverlay } from '@razorpay/blade/components/Dropdown';
-import { AutoComplete } from '@razorpay/blade/components/Input/DropdownInputTriggers';
 import {
+  Dropdown,
+  DropdownOverlay,
+  AutoComplete,
   ActionList,
   ActionListItem,
   ActionListSection,
-} from '@razorpay/blade/components/ActionList';
-import { Box } from '@razorpay/blade/components';
-import { Button } from '@razorpay/blade/components';
-import { Text } from '@razorpay/blade/components/Typography';
-import { PlusIcon, TagIcon } from '@razorpay/blade/components/Icons';
+  Box,
+  Button,
+  Text,
+  PlusIcon,
+  TagIcon,
+} from '@razorpay/blade/components';
 
 function CreatableAutoCompleteExample() {
   const [inputValue, setInputValue] = useState('');
