@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.3
+
+### Patch Changes
+
+- 6dd10f5c: fix(Inputs): knowledgebase imports
+
 ## 0.1.2
 
 ### Patch Changes
