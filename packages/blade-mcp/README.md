@@ -21,7 +21,7 @@ Create or update your `mcp.json` file with:
   "mcpServers": {
     "blade-mcp": {
       "command": "npx",
-      "args": ["-y", "--ignore-existing", "@razorpay/blade-mcp@latest"]
+      "args": ["-y", "@razorpay/blade-mcp@latest"]
     }
   }
 }
@@ -36,7 +36,7 @@ Add the following to `claude_desktop_config.json`:
   "mcpServers": {
     "blade-mcp": {
       "command": "npx",
-      "args": ["-y", "--ignore-existing", "@razorpay/blade-mcp@latest"]
+      "args": ["-y", "@razorpay/blade-mcp@latest"]
     }
   }
 }
@@ -45,6 +45,7 @@ Add the following to `claude_desktop_config.json`:
 > [!NOTE]
 >
 > - Learn about how to configure MCP servers in [Claude Desktop](https://modelcontextprotocol.io/quickstart/user)
+> - If you're using `nvm`, you might want to [follow these steps](https://github.com/modelcontextprotocol/servers/issues/64) instead of `npx`
 > - Learn how to install [Claude Desktop](https://claude.ai/download)
 
 ## Usage Example
