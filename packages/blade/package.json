@@ -147,7 +147,8 @@
     "@mantine/dates": "6.0.21",
     "@mantine/hooks": "6.0.21",
     "dayjs": "1.11.10",
-    "react-window": "1.8.11"
+    "react-window": "1.8.11",
+    "react-zoom-pan-pinch": "3.7.0"
   },
   "devDependencies": {
     "http-server": "14.1.1",
