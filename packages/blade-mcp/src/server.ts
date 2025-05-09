@@ -212,7 +212,9 @@ try {
               type: 'text',
               text: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
                 ', ',
-              )}. Valid component docs values: ${bladeComponentsList.join(', ')}`,
+              )}. Valid component docs values: ${bladeComponentsList.join(
+                ', ',
+              )}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
             },
           ],
         };
