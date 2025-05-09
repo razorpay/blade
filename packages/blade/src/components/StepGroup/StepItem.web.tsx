@@ -39,16 +39,14 @@ const InteractiveItemHeaderBox = styled.button<InteractiveItemHeaderProps>((prop
     textDecoration: 'none',
     border: 'none',
     textAlign: 'inherit',
-    backgroundColor: props.isSelected
-      ? props.theme.colors.interactive.background.primary.faded
-      : props.theme.colors.transparent,
+    backgroundColor: props.theme.colors.transparent,
     borderRadius: props.theme.border.radius.medium,
     width: '100%',
     transition: `background-color ${props.theme.motion.duration.xquick} ${props.theme.motion.easing.standard}`,
     ':not([disabled]):hover': {
       backgroundColor: props.isSelected
-        ? props.theme.colors.interactive.background.primary.fadedHighlighted
-        : props.theme.colors.interactive.background.gray.fadedHighlighted,
+        ? props.theme.colors.interactive.background.primary.faded
+        : props.theme.colors.interactive.background.gray.default,
     },
     ':not([disabled]):focus-visible': {
       ...getFocusRingStyles({ theme: props.theme }),
@@ -143,9 +141,13 @@ const _StepItem = ({
         <Text
           size={stepItemHeaderTokens[size].title}
           color={
-            isDisabled ? 'surface.text.gray.disabled' : titleColor ?? 'surface.text.gray.subtle'
+            isDisabled
+              ? 'surface.text.gray.disabled'
+              : isSelected
+              ? 'surface.text.primary.normal'
+              : titleColor ?? 'surface.text.gray.subtle'
           }
-          weight={isNested ? 'regular' : 'semibold'}
+          weight={isNested ? 'regular' : 'medium'}
         >
           {title}
         </Text>
@@ -173,6 +175,12 @@ const _StepItem = ({
     paddingX: 'spacing.4',
   } as const;
 
+  const enhancedMarker = marker
+    ? React.cloneElement(marker, {
+        isDisabled: isDisabled ?? marker?.props?.isDisabled,
+      })
+    : undefined;
+
   return (
     <BaseBox
       display="flex"
@@ -193,7 +201,7 @@ const _StepItem = ({
         shouldShowStartBranch={!isFirstItem}
         shouldShowEndBranch={!isLastItem}
         stepType={stepType}
-        marker={marker}
+        marker={enhancedMarker}
         stepProgress={stepProgress}
       />
       <Box flex="1" marginRight={isVertical ? undefined : undefined}>
