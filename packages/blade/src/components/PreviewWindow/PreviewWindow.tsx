@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
 import type {
   PreviewWindowProps,
   PreviewHeaderProps,
   PreviewFooterProps,
   PreviewBodyProps,
 } from './types';
+import { usePreviewWindowContext, PreviewWindowProvider } from './PreviewWindowContext';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
@@ -20,6 +21,11 @@ import { Button } from '~components/Button';
 
 const PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElement => {
   const { title } = PreviewHeaderProps;
+  const { instance, zoomIn, zoomOut, ...rest } = useControls();
+  console.log('instance', instance);
+  console.log('zoomIn', zoomIn);
+  console.log('zoomOut', zoomOut);
+  console.log('rest', rest);
   return (
     <BaseBox display="flex">
       <Heading> {title}</Heading>
@@ -40,11 +46,16 @@ const PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => 
 
 const PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
+  const { instance, zoomIn, zoomOut, ...rest } = useControls();
+  console.log('instance', instance);
+  console.log('zoomIn', zoomIn);
+  console.log('zoomOut', zoomOut);
+  console.log('rest', rest);
   return (
     <BaseBox display="flex" backgroundColor="surface.background.gray.intense" padding="spacing.2">
       <ButtonGroup>
-        <Button icon={ZoomInIcon} color="primary" />
-        <Button icon={ZoomOutIcon} color="primary" />
+        <Button icon={ZoomInIcon} onClick={() => zoomIn()} color="primary" />
+        <Button icon={ZoomOutIcon} onClick={() => zoomOut()} color="primary" />
       </ButtonGroup>
       {trailing}
     </BaseBox>
@@ -57,33 +68,25 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
   console.log('children', children);
 
   return (
-    <TransformWrapper>
-      {({ zoomIn, zoomOut, resetTransfor }) => (
-        <BaseBox width="100%" height="100%">
-          {/* <PreviewHeader title="Preview" /> */}
-          <BaseBox
-            display="flex"
-            backgroundColor="surface.background.gray.intense"
-            padding="spacing.2"
-          >
-            <ButtonGroup>
-              <Button icon={ZoomInIcon} color="primary" onClick={() => zoomIn()} />
-              <Button icon={ZoomOutIcon} color="primary" onClick={() => zoomOut()} />
-            </ButtonGroup>
-            {/* {trailing} */}
+    <PreviewWindowProvider value={{ zoom, onZoomChange: setZoom }}>
+      <TransformWrapper>
+        {() => (
+          <BaseBox width="100%" height="100%">
+            <PreviewHeader title="Preview" />
+
+            <BaseBox cursor="grab" width="100%" height="100%">
+              <TransformComponent width="100%" height="100%">
+                {children}
+              </TransformComponent>
+            </BaseBox>
+            <PreviewFooter
+              showZoomPercentage={true}
+              trailing={<Button icon={FullScreenExitIcon} />}
+            />
           </BaseBox>
-          <BaseBox cursor="grab" width="100%" height="100%">
-            <TransformComponent width="100%" height="100%">
-              {children}
-            </TransformComponent>
-          </BaseBox>
-          <PreviewFooter
-            showZoomPercentage={true}
-            trailing={<Button icon={FullScreenExitIcon} />}
-          />
-        </BaseBox>
-      )}
-    </TransformWrapper>
+        )}
+      </TransformWrapper>
+    </PreviewWindowProvider>
   );
 };
 

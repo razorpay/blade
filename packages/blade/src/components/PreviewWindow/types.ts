@@ -23,4 +23,18 @@ type PreviewFooterProps = {
   showZoomPercentage?: boolean;
 };
 
-export type { PreviewWindowProps, PreviewHeaderProps, PreviewBodyProps, PreviewFooterProps };
+type PreviewWindowContextType = {
+  zoom: number;
+  onZoomChange: (newZoom: number) => void;
+  onDragChange: (position: { x: number; y: number }) => void;
+  defaultZoom: number;
+  zoomScaleStep: number;
+};
+
+export type {
+  PreviewWindowProps,
+  PreviewHeaderProps,
+  PreviewBodyProps,
+  PreviewFooterProps,
+  PreviewWindowContextType,
+};
