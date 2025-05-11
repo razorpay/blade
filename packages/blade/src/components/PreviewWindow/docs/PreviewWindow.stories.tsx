@@ -54,7 +54,6 @@ const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = (args) => {
       <Box>
         <PreviewHeader title="Preview " />
         <PreviewBody>
-          {/* <img scr="https://picsum.photos/200/300" /> */}
           <Box> This is demo component</Box>
         </PreviewBody>
       </Box>
@@ -64,7 +63,21 @@ const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = (args) => {
 
 export const Default = PreviewWindowTemplate.bind({});
 Default.storyName = 'Default';
-Default.args = {
-  senderType: 'self',
-  messageType: 'default',
+Default.args = {};
+
+const ImagePreviewTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+  return (
+    <PreviewWindow>
+      <Box>
+        <PreviewHeader title="Preview " />
+        <PreviewBody>
+          <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+        </PreviewBody>
+      </Box>
+    </PreviewWindow>
+  );
 };
+
+export const ImagePreview = ImagePreviewTemplate.bind({});
+ImagePreview.storyName = 'Image Preview';
+ImagePreview.args = {};

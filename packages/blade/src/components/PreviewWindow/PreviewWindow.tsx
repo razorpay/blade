@@ -51,11 +51,12 @@ const PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactEleme
   console.log('zoomIn', zoomIn);
   console.log('zoomOut', zoomOut);
   console.log('rest', rest);
+  console.log('showZoomPercentage', showZoomPercentage);
   return (
-    <BaseBox display="flex" backgroundColor="surface.background.gray.intense" padding="spacing.2">
-      <ButtonGroup>
-        <Button icon={ZoomInIcon} onClick={() => zoomIn()} color="primary" />
-        <Button icon={ZoomOutIcon} onClick={() => zoomOut()} color="primary" />
+    <BaseBox display="flex" justifyContent="space-between" width="100%">
+      <ButtonGroup variant="tertiary">
+        <Button icon={ZoomInIcon} onClick={() => zoomIn()} />
+        <Button icon={ZoomOutIcon} onClick={() => zoomOut()} />
       </ButtonGroup>
       {trailing}
     </BaseBox>
@@ -71,9 +72,7 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
     <PreviewWindowProvider value={{ zoom, onZoomChange: setZoom }}>
       <TransformWrapper>
         {() => (
-          <BaseBox width="100%" height="100%">
-            <PreviewHeader title="Preview" />
-
+          <BaseBox width="100%" height="100%" backgroundColor="surface.background.gray.intense">
             <BaseBox cursor="grab" width="100%" height="100%">
               <TransformComponent width="100%" height="100%">
                 {children}
@@ -81,7 +80,7 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
             </BaseBox>
             <PreviewFooter
               showZoomPercentage={true}
-              trailing={<Button icon={FullScreenExitIcon} />}
+              trailing={<Button icon={FullScreenExitIcon} variant="tertiary" />}
             />
           </BaseBox>
         )}
