@@ -22,10 +22,6 @@ import { Button } from '~components/Button';
 const PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElement => {
   const { title } = PreviewHeaderProps;
   const { instance, zoomIn, zoomOut, ...rest } = useControls();
-  console.log('instance', instance);
-  console.log('zoomIn', zoomIn);
-  console.log('zoomOut', zoomOut);
-  console.log('rest', rest);
   return (
     <BaseBox display="flex">
       <Heading> {title}</Heading>
@@ -47,11 +43,6 @@ const PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => 
 const PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
   const { instance, zoomIn, zoomOut, ...rest } = useControls();
-  console.log('instance', instance);
-  console.log('zoomIn', zoomIn);
-  console.log('zoomOut', zoomOut);
-  console.log('rest', rest);
-  console.log('showZoomPercentage', showZoomPercentage);
   return (
     <BaseBox display="flex" justifyContent="space-between" width="100%">
       <ButtonGroup variant="tertiary">
