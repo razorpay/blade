@@ -54,6 +54,10 @@ const PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactEleme
   );
 };
 
+const dotSpacing = 16;
+const dotOpacity = 0.1;
+const dotSize = 1;
+
 const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactElement => {
   const [zoom, setZoom] = useState(1);
   const { children } = PreviewWindowProps;
@@ -64,7 +68,15 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
       <TransformWrapper>
         {() => (
           <BaseBox width="100%" height="100%" backgroundColor="surface.background.gray.intense">
-            <BaseBox cursor="grab" width="100%" height="100%">
+            <BaseBox
+              cursor="grab"
+              width="100%"
+              height="100%"
+              // backgroundImage: `radial-gradient(circle, rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px, transparent ${dotSize}px)`
+              // backgroundSize: `${dotSpacing}px ${dotSpacing}px`
+              backgroundImage={`radial-gradient(circle, rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px, transparent ${dotSize}px)`}
+              backgroundSize={`${dotSpacing}px ${dotSpacing}px`}
+            >
               <TransformComponent width="100%" height="100%">
                 {children}
               </TransformComponent>
