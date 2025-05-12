@@ -5,38 +5,18 @@ import { size } from '~tokens/global';
 
 const radioSizes = {
   group: {
-    orientation: {
-      vertical: {
-        gap: {
-          small: {
-            mobile: 'spacing.2',
-            desktop: 'spacing.2',
-          },
-          medium: {
-            mobile: 'spacing.3',
-            desktop: 'spacing.3',
-          },
-          large: {
-            mobile: 'spacing.4',
-            desktop: 'spacing.4',
-          },
-        },
+    gap: {
+      small: {
+        mobile: 'spacing.2',
+        desktop: 'spacing.2',
       },
-      horizontal: {
-        gap: {
-          small: {
-            mobile: 'spacing.2',
-            desktop: 'spacing.2',
-          },
-          medium: {
-            mobile: 'spacing.3',
-            desktop: 'spacing.3',
-          },
-          large: {
-            mobile: 'spacing.4',
-            desktop: 'spacing.4',
-          },
-        },
+      medium: {
+        mobile: 'spacing.3',
+        desktop: 'spacing.3',
+      },
+      large: {
+        mobile: 'spacing.4',
+        desktop: 'spacing.4',
       },
     },
   },

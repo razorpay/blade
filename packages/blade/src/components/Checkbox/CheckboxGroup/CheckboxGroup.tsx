@@ -165,15 +165,12 @@ const CheckboxGroup = ({
             <BaseBox
               display="flex"
               flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
-              gap={orientation === 'horizontal' ? gap : undefined}
+              gap={gap}
             >
               {React.Children.map(children, (child, index) => {
                 return (
                   <BaseBox
                     key={index}
-                    {...(orientation === 'vertical'
-                      ? { marginBottom: index === childCount - 1 ? makeSize(0) : gap }
-                      : {})}
                   >
                     {child}
                   </BaseBox>
