@@ -23,7 +23,6 @@ import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-
 const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElement => {
   const { title } = PreviewHeaderProps;
   const { instance, zoomIn, zoomOut, ...rest } = useControls();
@@ -65,6 +64,8 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       bottom={0}
       left={0}
       right={0}
+      //TODO: look into this
+      backgroundColor="surface.background.gray.muted"
     >
       <ButtonGroup variant="tertiary">
         <Button icon={ZoomInIcon} onClick={() => zoomIn()} />
@@ -83,14 +84,16 @@ const PreviewFooter = assignWithoutSideEffects(_PreviewFooter, {
 const dotSpacing = 16;
 const dotOpacity = 0.1;
 const dotSize = 1;
+const ZoomContainer = styled.div`
+  width: 100%;
+  height: 100%;
 
-const StyledBaseBox = styled(BaseBox)`
-  .preview-body {
+  .zoom-wrapper,
+  .zoom-content {
     width: 100%;
     height: 100%;
   }
 `;
-
 const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactElement => {
   const [zoom, setZoom] = useState(1);
   const { children } = PreviewWindowProps;
@@ -113,7 +116,7 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
           {() => (
             // <BaseBox width="100%" height="100%" backgroundColor="surface.background.gray.intense">
 
-            <StyledBaseBox
+            <BaseBox
               cursor="grab"
               width="100%"
               height="100%"
@@ -122,18 +125,13 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
               position="relative"
             >
               {previewHeader}
-              <TransformComponent
-                wrapperClassName="preview-body"
-                contentClassName="preview-body"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                }}
-              >
-                {previewBody}
-              </TransformComponent>
+              <ZoomContainer>
+                <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
+                  {previewBody}
+                </TransformComponent>
+              </ZoomContainer>
               {previewFooter}
-            </StyledBaseBox>
+            </BaseBox>
           )}
         </TransformWrapper>
       </BaseBox>
