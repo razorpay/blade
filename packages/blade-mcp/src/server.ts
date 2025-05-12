@@ -18,6 +18,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 // eslint-disable-next-line import/extensions
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
+import { registerFigmaToCodeTool } from './tools/figma-to-code/index.js';
 
 // Get package.json path and read version
 const __filename = fileURLToPath(import.meta.url);
@@ -293,6 +294,8 @@ try {
       }
     },
   );
+
+  registerFigmaToCodeTool(server);
 
   // Start receiving messages on stdin and sending messages on stdout
   const transport = new StdioServerTransport();
