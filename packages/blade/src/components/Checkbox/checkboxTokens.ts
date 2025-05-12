@@ -5,36 +5,18 @@ import { size } from '~tokens/global';
 
 const checkboxSizes = {
   group: {
-    vertical: {
-      gap: {
-        small: {
-          mobile: 'spacing.2',
-          desktop: 'spacing.2',
-        },
-        medium: {
-          mobile: 'spacing.3',
-          desktop: 'spacing.3',
-        },
-        large: {
-          mobile: 'spacing.3',
-          desktop: 'spacing.3',
-        },
+    gap: {
+      small: {
+        mobile: 'spacing.2',
+        desktop: 'spacing.2',
       },
-    },
-    horizontal: {
-      gap: {
-        small: {
-          mobile: 'spacing.2',
-          desktop: 'spacing.2',
-        },
-        medium: {
-          mobile: 'spacing.3',
-          desktop: 'spacing.3',
-        },
-        large: {
-          mobile: 'spacing.3',
-          desktop: 'spacing.3',
-        },
+      medium: {
+        mobile: 'spacing.3',
+        desktop: 'spacing.3',
+      },
+      large: {
+        mobile: 'spacing.3',
+        desktop: 'spacing.3',
       },
     },
   },

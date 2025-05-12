@@ -136,7 +136,7 @@ const CheckboxGroup = ({
   const showHelpText = !showError && helpText;
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const gap = checkboxSizes.group[orientation].gap[size][matchedDeviceType];
+  const gap = checkboxSizes.group.gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
 
   return (
