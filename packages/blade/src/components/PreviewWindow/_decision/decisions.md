@@ -34,17 +34,16 @@ The `PreviewWindow` component is the primary component used to render a live pre
 | `children`       | `React.Element`                                        | —       | Yes      | The component to be rendered inside the preview window.                     |
 | `onFullScreen`   | `() => void`                                           | —       | No       | Callback invoked when the fullscreen button is clicked.                     |
 | `isDragAndZoomEnabled`  | `boolean`                                              | —       | No       | Whether Drag and Zoom functionality is enabled.                                      |
-| `onZoomChange`   | `(newZoom: number) => void`                            | —       | No       | Callback invoked when the zoom level changes.                               |
+| `onZoomChange`   | `({ zoom }) => void`                            | —       | No       | Callback invoked when the zoom level changes.                               |
 | `zoom`           | `number`                                               | `50`    | Yes      | A number between 1 and 100 that sets the zoom level.                        |
 | `onDragChange`   | `(position: { x: number; y: number }) => void`         | —       | No       | Callback invoked when the drag position changes.                            |
 | `zoomScaleStep`       | `number`                                               | `10`    | No       | A number between 5 and 30 that determines the zoom step per click.         |
-| `defaultZoom`    | `number`                                               | `10`    | No       | A number between 1 and 100 that sets the initial zoom level.               |
 
 ```tsx
 type PreviewWindowProps = {
   children: React.ReactElement;
   onFullScreen?: () => void;
-  isDragEnabled?: boolean;
+  isDragAndZoomEnabled?: boolean;
   zoom: number;
   onZoomChange?: (newZoom: number) => void;
   onDragChange?: (position: { x: number; y: number }) => void;
@@ -88,16 +87,14 @@ Example Usage -
 </PreviewWindow>
 
 // Without zoom controls
-<PreviewWindow
-  additionalPreviewControls={<CustomComponent />}
->
+<PreviewWindow>
   <PreviewBody>
   <ComponentToPreview />
   </PreviewBody>
 </PreviewWindow>
 
-// Without Drag
-<PreviewWindow isDragEnabled={false}>
+// Without Drag & Zoom
+<PreviewWindow isDragAndZoomEnabled={false}>
   <StaticComponent />
 </PreviewWindow>
 ```
