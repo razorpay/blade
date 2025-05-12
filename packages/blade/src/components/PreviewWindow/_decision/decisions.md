@@ -133,8 +133,13 @@ Example Usage -
     </PreviewPanel>
     ```
 
+###  Relevant API considerations and decisions taken during the discussion - 
+     - During the API discussion, we decided to use third-party libraries for implementing pinch, pan, and zoom functionality. Since we might miss out on edge cases, we chose to use `react-zoom-pan-pinch` after exploring libraries like `sasza/react-panzoom`, `react-quick-pinch-zoom`, and `react-map-interaction`.
 
- 
+    - Since most consumers may need to show previews of PDFs, documents, and other file formats, we will provide relevant examples of how to do that using the `<PreviewWindow />` component. PreviewWindow is a wrapper that provides interactions like zoom, pan, and pinch. For rendering files like PDFs, consumers will need to use custom renderers.
+
+    - [Preview Panel Discussion Doc](https://docs.google.com/document/d/1jBir51pHmvYxFTL9Z4Tt0p2oo2oAVp4ttcrw938vgl4/edit?usp=sharing)
+    - [Further Discussion – Slack Thread](https://razorpay.slack.com/archives/C01H13RTF8V/p1746701228400979)
 
 ## Open Questions
 
