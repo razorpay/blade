@@ -11,7 +11,6 @@ import { useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import { makeSize } from '~utils/makeSize';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CheckboxGroupProps = {
@@ -137,7 +136,6 @@ const CheckboxGroup = ({
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const gap = checkboxSizes.group.gap[size][matchedDeviceType];
-  const childCount = React.Children.count(children);
 
   return (
     <CheckboxGroupProvider value={contextValue}>
@@ -168,13 +166,7 @@ const CheckboxGroup = ({
               gap={gap}
             >
               {React.Children.map(children, (child, index) => {
-                return (
-                  <BaseBox
-                    key={index}
-                  >
-                    {child}
-                  </BaseBox>
-                );
+                return <BaseBox key={index}>{child}</BaseBox>;
               })}
             </BaseBox>
             <FormHint

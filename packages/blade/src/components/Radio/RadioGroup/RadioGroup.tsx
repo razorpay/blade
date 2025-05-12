@@ -10,7 +10,6 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import { makeSize } from '~utils/makeSize';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type RadioGroupProps = {
