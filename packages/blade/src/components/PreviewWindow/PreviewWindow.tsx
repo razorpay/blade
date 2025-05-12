@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
+import styled from 'styled-components';
 import type {
   PreviewWindowProps,
   PreviewHeaderProps,
@@ -15,11 +16,15 @@ import {
   ZoomInIcon,
   ZoomOutIcon,
   FullScreenExitIcon,
+  ResizerIcon,
 } from '~components/Icons';
 import { ButtonGroup } from '~components/ButtonGroup';
 import { Button } from '~components/Button';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
-const PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElement => {
+const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElement => {
   const { title } = PreviewHeaderProps;
   const { instance, zoomIn, zoomOut, ...rest } = useControls();
   return (
@@ -34,60 +39,104 @@ const PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactEleme
   );
 };
 
-const PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => {
+const PreviewHeader = assignWithoutSideEffects(_PreviewHeader, {
+  componentId: MetaConstants.PreviewHeader,
+});
+
+const _PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => {
   const { children } = PreviewBodyProps;
   console.log('children', children);
   return <React.Fragment> {children}</React.Fragment>;
 };
 
-const PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
+const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
+  componentId: MetaConstants.PreviewBody,
+});
+
+const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
-  const { instance, zoomIn, zoomOut, ...rest } = useControls();
+  const { instance, zoomIn, zoomOut, resetTransform, ...rest } = useControls();
   return (
-    <BaseBox display="flex" justifyContent="space-between" width="100%">
+    <BaseBox
+      display="flex"
+      justifyContent="space-between"
+      width="100%"
+      position="absolute"
+      bottom={0}
+      left={0}
+      right={0}
+    >
       <ButtonGroup variant="tertiary">
         <Button icon={ZoomInIcon} onClick={() => zoomIn()} />
         <Button icon={ZoomOutIcon} onClick={() => zoomOut()} />
+        <Button icon={ResizerIcon} onClick={() => resetTransform()} />
       </ButtonGroup>
       {trailing}
     </BaseBox>
   );
 };
 
+const PreviewFooter = assignWithoutSideEffects(_PreviewFooter, {
+  componentId: MetaConstants.PreviewFooter,
+});
+
 const dotSpacing = 16;
 const dotOpacity = 0.1;
 const dotSize = 1;
 
+const StyledBaseBox = styled(BaseBox)`
+  .preview-body {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactElement => {
   const [zoom, setZoom] = useState(1);
   const { children } = PreviewWindowProps;
-  console.log('children', children);
+  // filter out preview header, preview body, preview footer separately using componentId
+  const previewHeader = React.Children.toArray(children.props.children).filter(
+    (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewHeader,
+  );
 
+  const previewBody = React.Children.toArray(children.props.children).filter(
+    (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewBody,
+  );
+
+  const previewFooter = React.Children.toArray(children.props.children).filter(
+    (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewFooter,
+  );
   return (
     <PreviewWindowProvider value={{ zoom, onZoomChange: setZoom }}>
-      <TransformWrapper>
-        {() => (
-          <BaseBox width="100%" height="100%" backgroundColor="surface.background.gray.intense">
-            <BaseBox
+      <BaseBox width="100%" height="100%" position="relative">
+        <TransformWrapper width="100%" height="100%">
+          {() => (
+            // <BaseBox width="100%" height="100%" backgroundColor="surface.background.gray.intense">
+
+            <StyledBaseBox
               cursor="grab"
               width="100%"
               height="100%"
-              // backgroundImage: `radial-gradient(circle, rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px, transparent ${dotSize}px)`
-              // backgroundSize: `${dotSpacing}px ${dotSpacing}px`
               backgroundImage={`radial-gradient(circle, rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px, transparent ${dotSize}px)`}
               backgroundSize={`${dotSpacing}px ${dotSpacing}px`}
+              position="relative"
             >
-              <TransformComponent width="100%" height="100%">
-                {children}
+              {previewHeader}
+              <TransformComponent
+                wrapperClassName="preview-body"
+                contentClassName="preview-body"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+              >
+                {previewBody}
               </TransformComponent>
-            </BaseBox>
-            <PreviewFooter
-              showZoomPercentage={true}
-              trailing={<Button icon={FullScreenExitIcon} variant="tertiary" />}
-            />
-          </BaseBox>
-        )}
-      </TransformWrapper>
+              {previewFooter}
+            </StyledBaseBox>
+          )}
+        </TransformWrapper>
+      </BaseBox>
     </PreviewWindowProvider>
   );
 };

@@ -56,6 +56,7 @@ const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = (args) => {
         <PreviewBody>
           <Box> This is demo component</Box>
         </PreviewBody>
+        <PreviewFooter showZoomPercentage={true} />
       </Box>
     </PreviewWindow>
   );
@@ -73,6 +74,7 @@ const ImagePreviewTemplate: StoryFn<typeof PreviewWindow> = (args) => {
         <PreviewBody>
           <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
         </PreviewBody>
+        <PreviewFooter showZoomPercentage={true} />
       </Box>
     </PreviewWindow>
   );
