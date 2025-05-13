@@ -33,7 +33,6 @@ const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElem
         alignItems="center"
         justifyContent="space-between"
         padding="spacing.5"
-        backgroundColor="white"
       >
         <Heading size="medium"> {title}</Heading>
         <Button icon={FullScreenEnterIcon} variant="tertiary" />
@@ -92,7 +91,12 @@ const dotSize = 1;
 const ZoomContainer = styled.div`
   width: 100%;
   height: 100%;
-
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px,
+    transparent ${dotSize}px
+  );
+  background-size: ${dotSpacing}px ${dotSpacing}px;
   .zoom-wrapper,
   .zoom-content {
     width: 100%;
@@ -125,9 +129,8 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
               cursor="grab"
               width="100%"
               height="100%"
-              backgroundImage={`radial-gradient(circle, rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px, transparent ${dotSize}px)`}
-              backgroundSize={`${dotSpacing}px ${dotSpacing}px`}
               position="relative"
+              backgroundColor="surface.background.gray.moderate"
             >
               {previewHeader}
               <ZoomContainer>
