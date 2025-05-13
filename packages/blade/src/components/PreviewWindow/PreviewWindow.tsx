@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import type { ReactZoomPanPinchRef } from 'react-zoom-pan-pinch';
 import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
 import styled from 'styled-components';
 import type {
@@ -23,6 +24,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
+import { useControllableState } from '~utils/useControllable';
+import isNumber from '~utils/lodashButBetter/isNumber';
 const _PreviewHeader = ({
   title,
   _onFullScreen,
@@ -90,7 +93,23 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
   const { zoomIn, zoomOut, resetTransform } = useControls();
-  const { zoom, zoomScaleStep } = usePreviewWindowContext();
+  const { zoom, zoomScaleStep, isControlledZoom, setControlledZoom } = usePreviewWindowContext();
+  const handleZoomIn = useCallback(() => {
+    if (isControlledZoom) {
+      setControlledZoom(zoom + zoomScaleStep);
+    } else {
+      zoomIn(zoomScaleStep);
+    }
+  }, [isControlledZoom, zoom, zoomScaleStep, setControlledZoom, zoomIn]);
+
+  const handleZoomOut = useCallback(() => {
+    if (isControlledZoom) {
+      setControlledZoom(zoom - zoomScaleStep);
+    } else {
+      zoomOut();
+    }
+  }, [isControlledZoom, zoom, zoomScaleStep, setControlledZoom, zoomOut]);
+
   return (
     <BaseBox
       display="flex"
@@ -110,9 +129,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
           <BaseBox display="flex" alignItems="center" gap="spacing.2">
             <Button
               icon={ZoomInIcon}
-              onClick={() => {
-                zoomIn(zoomScaleStep);
-              }}
+              onClick={handleZoomIn}
               variant="tertiary"
               aria-label="Zoom in"
               isDisabled={zoom >= 8}
@@ -120,9 +137,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
             <Text size="medium"> {Math.round(zoom * 100)}%</Text>
             <Button
               icon={ZoomOutIcon}
-              onClick={() => {
-                zoomOut();
-              }}
+              onClick={handleZoomOut}
               variant="tertiary"
               aria-label="Zoom out"
               isDisabled={zoom <= 0.1}
@@ -137,19 +152,9 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
           </BaseBox>
         ) : (
           <ButtonGroup variant="tertiary">
-            <Button
-              icon={ZoomInIcon}
-              onClick={() => {
-                zoomIn(zoomScaleStep);
-              }}
-            />
+            <Button icon={ZoomInIcon} onClick={handleZoomIn} />
 
-            <Button
-              icon={ZoomOutIcon}
-              onClick={() => {
-                zoomOut();
-              }}
-            />
+            <Button icon={ZoomOutIcon} onClick={handleZoomOut} />
           </ButtonGroup>
         )}
       </BaseBox>
@@ -187,10 +192,17 @@ const PreviewWindow = ({
   onZoomChange,
   zoomScaleStep = 0.1,
   isDragAndZoomDisabled = false,
+  zoom,
 }: PreviewWindowProps): React.ReactElement => {
-  const [zoom, setZoom] = useState(1);
+  const [controlledZoom, setControlledZoom] = useControllableState({
+    value: zoom,
+    onChange: onZoomChange,
+    defaultValue: 1,
+  });
   const [isFullScreen, setIsFullScreen] = useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const PinchPanZoomRef = React.useRef<ReactZoomPanPinchRef | null>(null);
+  const isControlledZoom = isNumber(zoom);
 
   const handleFullScreen = useCallback(() => {
     if (!document.fullscreenElement) {
@@ -209,7 +221,7 @@ const PreviewWindow = ({
   }, [onFullScreenProp]);
 
   // this is added to handle the fullscreen change if user exits fullscreen using the escape key, or browser's exit fullscreen button
-  React.useEffect(() => {
+  useEffect(() => {
     const handleFullScreenChange = () => {
       setIsFullScreen(!!document.fullscreenElement);
     };
@@ -241,22 +253,40 @@ const PreviewWindow = ({
   const previewFooter = React.Children.toArray(children).filter(
     (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewFooter,
   );
-
-  const handleZoomChange = useCallback(
-    (zoomLevel: number) => {
-      setZoom(zoomLevel);
-      onZoomChange?.(zoomLevel);
-    },
-    [onZoomChange],
-  );
-
   const handleTransformed = ({ state }: { state: { scale: number } }): void => {
-    const { scale } = state;
-    handleZoomChange(scale);
+    if (!isControlledZoom) {
+      const { scale } = state;
+      setControlledZoom(() => scale);
+    }
   };
 
+  const setControlledZoomCallback = useCallback(
+    (newZoom: number) => {
+      setControlledZoom(() => newZoom);
+    },
+    [setControlledZoom],
+  );
+
+  useEffect(() => {
+    if (PinchPanZoomRef.current && isControlledZoom) {
+      PinchPanZoomRef.current.setTransform(
+        PinchPanZoomRef.current.instance.transformState.positionX,
+        PinchPanZoomRef.current.instance.transformState.positionY,
+        controlledZoom,
+      );
+    }
+  }, [controlledZoom, isControlledZoom]);
+
   return (
-    <PreviewWindowProvider value={{ zoom, isFullScreen, zoomScaleStep }}>
+    <PreviewWindowProvider
+      value={{
+        zoom: controlledZoom,
+        isFullScreen,
+        zoomScaleStep,
+        isControlledZoom,
+        setControlledZoom: setControlledZoomCallback,
+      }}
+    >
       <BaseBox
         ref={containerRef}
         width="100%"
@@ -273,12 +303,23 @@ const PreviewWindow = ({
           minScale={0.1}
           maxScale={8}
           disabled={isDragAndZoomDisabled}
+          initialScale={controlledZoom}
+          doubleClick={{ disabled: false }}
+          ref={PinchPanZoomRef}
+          onZoom={(ref) => {
+            if (isControlledZoom) {
+              setControlledZoom(() => ref.state.scale);
+            }
+          }}
+          panning={{ disabled: isControlledZoom }}
+          pinch={{ disabled: isControlledZoom }}
+          wheel={{ disabled: isControlledZoom }}
         >
           {() => (
             <BaseBox width="100%" height="100%" position="relative">
               {previewFooter}
               {previewHeader}
-              <ZoomContainer isDragEnabled={!isDragAndZoomDisabled}>
+              <ZoomContainer isDragEnabled={!isDragAndZoomDisabled && !isControlledZoom}>
                 <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
                   {previewBody}
                 </TransformComponent>

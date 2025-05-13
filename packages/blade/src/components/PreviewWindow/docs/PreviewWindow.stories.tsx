@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { PreviewBody, PreviewHeader, PreviewWindow, PreviewFooter } from '../PreviewWindow';
 import type { PreviewWindowProps } from '../types';
 import { Heading } from '~components/Typography/Heading';
@@ -147,3 +147,26 @@ export const WithHeaderAndFooterTrailingExample = WithHeaderAndFooterTrailingExa
 );
 WithHeaderAndFooterTrailingExample.storyName = 'With Header and Footer Trailing Example';
 WithHeaderAndFooterTrailingExample.args = {};
+
+const ControlledPreviewWindowTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+  const [zoom, setZoom] = useState(1);
+  return (
+    <PreviewWindow
+      onZoomChange={(zoom) => {
+        setZoom(zoom);
+        console.log('zoom-> onZoomChange', zoom);
+      }}
+      zoom={zoom}
+    >
+      <PreviewHeader title="Preview " />
+      <PreviewBody>
+        <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+      </PreviewBody>
+      <PreviewFooter showZoomPercentage={true} />
+    </PreviewWindow>
+  );
+};
+
+export const ControlledPreviewWindow = ControlledPreviewWindowTemplate.bind({});
+ControlledPreviewWindow.storyName = 'Controlled Preview Window';
+ControlledPreviewWindow.args = {};

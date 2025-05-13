@@ -31,6 +31,8 @@ type PreviewWindowContextType = {
   defaultZoom: number;
   zoomScaleStep: number;
   isFullScreen: boolean;
+  isControlledZoom: boolean;
+  setControlledZoom: (newZoom: number) => void;
 };
 
 export type {
