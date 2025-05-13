@@ -92,9 +92,9 @@ export const Default = PreviewWindowTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {};
 
-const ImagePreviewTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+const ImagePreviewTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
-    <PreviewWindow>
+    <PreviewWindow >
       <PreviewHeader title="Preview " />
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
@@ -108,7 +108,7 @@ export const ImagePreview = ImagePreviewTemplate.bind({});
 ImagePreview.storyName = 'Image Preview';
 ImagePreview.args = {};
 
-const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
     <Box height="300px" width="300px">
       <Heading size="large">Fixed Height Width Example</Heading>
@@ -127,7 +127,7 @@ export const FixedHeightWidthExample = FixedHeightWidthExampleTemplate.bind({});
 FixedHeightWidthExample.storyName = 'Fixed Height Width Example';
 FixedHeightWidthExample.args = {};
 
-const WithoutHeaderTitleEampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+const WithoutHeaderTitleEampleTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
     <PreviewWindow>
       <PreviewHeader />
@@ -143,7 +143,7 @@ export const WithoutHeaderTitleExample = WithoutHeaderTitleEampleTemplate.bind({
 WithoutHeaderTitleExample.storyName = 'Without Header Title Example';
 WithoutHeaderTitleExample.args = {};
 
-const isDragAndZoomDisabledExampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+const isDragAndZoomDisabledExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
     <PreviewWindow isDragAndZoomDisabled={true}>
       <PreviewBody>
@@ -157,7 +157,7 @@ export const IsDragAndZoomDisabledExample = isDragAndZoomDisabledExampleTemplate
 IsDragAndZoomDisabledExample.storyName = 'Is Drag and Zoom Disabled Example';
 IsDragAndZoomDisabledExample.args = {};
 
-const WithHeaderAndFooterTrailingExampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+const WithHeaderAndFooterTrailingExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
     <PreviewWindow>
       <PreviewHeader title="Preview " trailing={<Button>Trailing</Button>} />
@@ -175,7 +175,7 @@ export const WithHeaderAndFooterTrailingExample = WithHeaderAndFooterTrailingExa
 WithHeaderAndFooterTrailingExample.storyName = 'With Header and Footer Trailing Example';
 WithHeaderAndFooterTrailingExample.args = {};
 
-const ControlledPreviewWindowTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+const ControlledPreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
   const [zoom, setZoom] = useState(1);
   return (
     <PreviewWindow
