@@ -1,5 +1,29 @@
 # @razorpay/blade
 
+## 12.26.0
+
+### Minor Changes
+
+- 06a77475: feat(blade): add orientation in radioGroup and checkbox
+
+## 12.25.2
+
+### Patch Changes
+
+- cc3d510b: - fixed accessibility issues in Avatar, Card and Checkbox.
+
+## 12.25.1
+
+### Patch Changes
+
+- a0132d50: fix(FC-3152): add data-analytics-\* for TabNav
+
+## 12.25.0
+
+### Minor Changes
+
+- 59fb0163: feat(PhoneNumberInput): add virtualization to phone number input
+
 ## 12.24.0
 
 ### Minor Changes

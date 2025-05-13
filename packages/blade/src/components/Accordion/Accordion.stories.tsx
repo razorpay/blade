@@ -289,6 +289,7 @@ const AccordionWithCustomHeaderBodyTemplate: StoryFn<typeof AccordionComponent> 
               title="Custom slot"
               description="You can render anything here along with description"
               onDismiss={() => setIsVisible(false)}
+              isFullWidth
             />
           )}
         </AccordionItemBody>
