@@ -9,8 +9,6 @@ import type {
 } from './types';
 import { usePreviewWindowContext, PreviewWindowProvider } from './PreviewWindowContext';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading } from '~components/Typography';
-import { IconButton } from '~components/Button/IconButton';
 import {
   FullScreenEnterIcon,
   ZoomInIcon,
@@ -18,6 +16,7 @@ import {
   FullScreenExitIcon,
   ResizerIcon,
 } from '~components/Icons';
+import { Text } from '~components/Typography';
 import { ButtonGroup } from '~components/ButtonGroup';
 import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -27,13 +26,15 @@ const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElem
   const { title } = PreviewHeaderProps;
   const { instance, zoomIn, zoomOut, ...rest } = useControls();
   return (
-    <BaseBox display="flex">
-      <Heading> {title}</Heading>
-      <IconButton
-        icon={FullScreenEnterIcon}
-        accessibilityLabel="Close"
-        onClick={() => console.log('Clicked')}
-      />
+    <BaseBox
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+      padding="spacing.5"
+      backgroundColor="white"
+    >
+      <Text variant="body">{title} </Text>
+      <Button icon={FullScreenEnterIcon} variant="tertiary" />
     </BaseBox>
   );
 };
@@ -65,13 +66,13 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       left={0}
       right={0}
       //TODO: look into this
-      backgroundColor="surface.background.gray.muted"
+      backgroundColor="white"
     >
-      <ButtonGroup variant="tertiary">
-        <Button icon={ZoomInIcon} onClick={() => zoomIn()} />
-        <Button icon={ZoomOutIcon} onClick={() => zoomOut()} />
-        <Button icon={ResizerIcon} onClick={() => resetTransform()} />
-      </ButtonGroup>
+      <BaseBox>
+        <Button icon={ZoomInIcon} onClick={() => zoomIn()} variant="tertiary" />
+        <Button icon={ZoomOutIcon} onClick={() => zoomOut()} variant="tertiary" />
+      </BaseBox>
+      <Button icon={ResizerIcon} onClick={() => resetTransform()} variant="tertiary" />
       {trailing}
     </BaseBox>
   );
