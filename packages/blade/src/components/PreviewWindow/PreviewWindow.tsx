@@ -16,7 +16,7 @@ import {
   FullScreenExitIcon,
   ResizerIcon,
 } from '~components/Icons';
-import { Text } from '~components/Typography';
+import { Heading } from '~components/Typography';
 import { ButtonGroup } from '~components/ButtonGroup';
 import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -33,7 +33,7 @@ const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElem
       padding="spacing.5"
       backgroundColor="white"
     >
-      <Text variant="body">{title} </Text>
+      <Heading size="medium"> {title}</Heading>
       <Button icon={FullScreenEnterIcon} variant="tertiary" />
     </BaseBox>
   );
