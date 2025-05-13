@@ -51,13 +51,11 @@ export default {
 const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = (args) => {
   return (
     <PreviewWindow>
-      <Box>
-        <PreviewHeader title="Preview " />
-        <PreviewBody>
-          <Box> This is demo component</Box>
-        </PreviewBody>
-        <PreviewFooter showZoomPercentage={true} />
-      </Box>
+      <PreviewHeader title="Preview " />
+      <PreviewBody>
+        <Box> This is demo component</Box>
+      </PreviewBody>
+      <PreviewFooter showZoomPercentage={true} />
     </PreviewWindow>
   );
 };
@@ -69,13 +67,11 @@ Default.args = {};
 const ImagePreviewTemplate: StoryFn<typeof PreviewWindow> = (args) => {
   return (
     <PreviewWindow>
-      <Box>
-        <PreviewHeader title="Preview " />
-        <PreviewBody>
-          <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
-        </PreviewBody>
-        <PreviewFooter showZoomPercentage={true} />
-      </Box>
+      <PreviewHeader title="Preview " />
+      <PreviewBody>
+        <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+      </PreviewBody>
+      <PreviewFooter showZoomPercentage={true} />
     </PreviewWindow>
   );
 };
@@ -89,18 +85,11 @@ const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = (args) =>
     <Box height="300px" width="300px">
       <Heading size="large">Fixed Height Width Example</Heading>
       <PreviewWindow>
-        <Box>
-          <PreviewHeader title="Preview " />
-          <PreviewBody>
-            <img
-              width="100%"
-              height="100%"
-              src="https://picsum.photos/1920/1080"
-              alt="randomImage"
-            />
-          </PreviewBody>
-          <PreviewFooter showZoomPercentage={true} />
-        </Box>
+        <PreviewHeader title="Preview " />
+        <PreviewBody>
+          <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+        </PreviewBody>
+        <PreviewFooter showZoomPercentage={true} />
       </PreviewWindow>
     </Box>
   );
@@ -109,3 +98,19 @@ const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = (args) =>
 export const FixedHeightWidthExample = FixedHeightWidthExampleTemplate.bind({});
 FixedHeightWidthExample.storyName = 'Fixed Height Width Example';
 FixedHeightWidthExample.args = {};
+
+const WithoutHeaderTitleEampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+  return (
+    <PreviewWindow>
+      <PreviewHeader />
+      <PreviewBody>
+        <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+      </PreviewBody>
+      <PreviewFooter showZoomPercentage={true} />
+    </PreviewWindow>
+  );
+};
+
+export const WithoutHeaderTitleExample = WithoutHeaderTitleEampleTemplate.bind({});
+WithoutHeaderTitleExample.storyName = 'Without Header Title Example';
+WithoutHeaderTitleExample.args = {};

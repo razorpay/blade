@@ -13,6 +13,7 @@ type PreviewHeaderProps = {
   title?: string;
   trailing?: React.ReactElement;
   _onFullScreen?: () => void;
+  children?: React.ReactElement | React.ReactElement[];
 };
 
 type PreviewBodyProps = {

@@ -23,10 +23,34 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
-const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElement => {
-  const { title, _onFullScreen } = PreviewHeaderProps;
-  const { instance, zoomIn, zoomOut, ...rest } = useControls();
+const _PreviewHeader = ({
+  title,
+  _onFullScreen,
+  children,
+}: PreviewHeaderProps): React.ReactElement => {
   const { isFullScreen } = usePreviewWindowContext();
+
+  if (!title) {
+    return (
+      <BaseBox
+        position="absolute"
+        top="spacing.0"
+        right="spacing.2"
+        zIndex={1000}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        padding="spacing.2"
+      >
+        <Button
+          icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
+          variant="tertiary"
+          onClick={_onFullScreen}
+        />
+        {children}
+      </BaseBox>
+    );
+  }
   return (
     <BaseBox>
       <BaseBox
@@ -41,6 +65,7 @@ const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElem
           variant="tertiary"
           onClick={_onFullScreen}
         />
+        {children}
       </BaseBox>
       <Divider orientation="horizontal" />
     </BaseBox>
@@ -194,7 +219,7 @@ const PreviewWindow = ({
   }, []);
 
   // filter out preview header, preview body, preview footer separately using componentId
-  const previewHeader = React.Children.toArray(children.props.children)
+  const previewHeader = React.Children.toArray(children)
     .filter((child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewHeader)
     .map((child) => {
       if (React.isValidElement(child)) {
@@ -207,11 +232,11 @@ const PreviewWindow = ({
       return child;
     });
 
-  const previewBody = React.Children.toArray(children.props.children).filter(
+  const previewBody = React.Children.toArray(children).filter(
     (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewBody,
   );
 
-  const previewFooter = React.Children.toArray(children.props.children).filter(
+  const previewFooter = React.Children.toArray(children).filter(
     (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewFooter,
   );
 
