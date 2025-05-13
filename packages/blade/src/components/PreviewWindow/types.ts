@@ -12,6 +12,7 @@ type PreviewWindowProps = {
 type PreviewHeaderProps = {
   title?: string;
   trailing?: React.ReactElement;
+  _onFullScreen?: () => void;
 };
 
 type PreviewBodyProps = {
@@ -29,6 +30,7 @@ type PreviewWindowContextType = {
   onDragChange: (position: { x: number; y: number }) => void;
   defaultZoom: number;
   zoomScaleStep: number;
+  isFullScreen: boolean;
 };
 
 export type {

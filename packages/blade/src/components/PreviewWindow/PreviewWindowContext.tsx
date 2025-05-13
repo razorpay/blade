@@ -7,6 +7,7 @@ const PreviewWindowContext = React.createContext<PreviewWindowContextType>({
   onDragChange: () => {},
   defaultZoom: 1,
   zoomScaleStep: 0.1,
+  isFullScreen: false,
 });
 const PreviewWindowProvider = PreviewWindowContext.Provider;
 

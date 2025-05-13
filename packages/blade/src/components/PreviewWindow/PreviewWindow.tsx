@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
 import styled from 'styled-components';
 import type {
@@ -24,8 +24,9 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElement => {
-  const { title } = PreviewHeaderProps;
+  const { title, _onFullScreen } = PreviewHeaderProps;
   const { instance, zoomIn, zoomOut, ...rest } = useControls();
+  const { isFullScreen } = usePreviewWindowContext();
   return (
     <BaseBox>
       <BaseBox
@@ -35,7 +36,11 @@ const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElem
         padding="spacing.5"
       >
         <Heading size="medium"> {title}</Heading>
-        <Button icon={FullScreenEnterIcon} variant="tertiary" />
+        <Button
+          icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
+          variant="tertiary"
+          onClick={_onFullScreen}
+        />
       </BaseBox>
       <Divider orientation="horizontal" />
     </BaseBox>
@@ -106,11 +111,52 @@ const ZoomContainer = styled.div`
 `;
 const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactElement => {
   const [zoom, setZoom] = useState(1);
-  const { children } = PreviewWindowProps;
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const { children, onFullScreen: onFullScreenProp } = PreviewWindowProps;
+
+  const handleFullScreen = useCallback(() => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((err) => {
+        //TODO: maybe use blade error component here
+        console.error(`Error attempting to enable fullscreen: ${err.message}`);
+      });
+      setIsFullScreen(true);
+      onFullScreenProp?.();
+    } else {
+      document.exitFullscreen().catch((err) => {
+        //TODO: maybe use blade error component here
+        console.error(`Error attempting to exit fullscreen: ${err.message}`);
+      });
+      setIsFullScreen(false);
+      onFullScreenProp?.();
+    }
+  }, [onFullScreenProp]);
+
+  // this is added to handle the fullscreen change if user exits fullscreen using the escape key, or browser's exit fullscreen button
+  React.useEffect(() => {
+    const handleFullScreenChange = () => {
+      setIsFullScreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+    };
+  }, []);
+
   // filter out preview header, preview body, preview footer separately using componentId
-  const previewHeader = React.Children.toArray(children.props.children).filter(
-    (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewHeader,
-  );
+  const previewHeader = React.Children.toArray(children.props.children)
+    .filter((child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewHeader)
+    .map((child) => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child, {
+          //TODO: look into this
+          // @ts-expect-error
+          _onFullScreen: handleFullScreen,
+        });
+      }
+      return child;
+    });
 
   const previewBody = React.Children.toArray(children.props.children).filter(
     (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewBody,
@@ -120,7 +166,7 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
     (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewFooter,
   );
   return (
-    <PreviewWindowProvider value={{ zoom, onZoomChange: setZoom }}>
+    <PreviewWindowProvider value={{ zoom, onZoomChange: setZoom, isFullScreen }}>
       <BaseBox width="100%" height="100%" position="relative">
         <TransformWrapper width="100%" height="100%">
           {() => (
