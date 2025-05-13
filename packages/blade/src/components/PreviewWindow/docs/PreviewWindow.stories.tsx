@@ -50,7 +50,7 @@ export default {
   },
 } as Meta<PreviewWindowProps>;
 
-const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
     <PreviewWindow>
       <PreviewHeader title="Preview " />
@@ -94,7 +94,7 @@ Default.args = {};
 
 const ImagePreviewTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
-    <PreviewWindow >
+    <PreviewWindow>
       <PreviewHeader title="Preview " />
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
