@@ -89,8 +89,8 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
-  const { instance, zoomIn, zoomOut, resetTransform, ...rest } = useControls();
-  const { zoom, onZoomChange, zoomScaleStep } = usePreviewWindowContext();
+  const { zoomIn, zoomOut, resetTransform } = useControls();
+  const { zoom, zoomScaleStep } = usePreviewWindowContext();
   return (
     <BaseBox
       display="flex"
