@@ -26,15 +26,15 @@ type PreviewFooterProps = {
 
 type PreviewWindowContextType = {
   zoom: number;
-  onZoomChange: (newZoom: number) => void;
-  onDragChange: (position: { x: number; y: number }) => void;
-  defaultZoom: number;
   zoomScaleStep: number;
   isFullScreen: boolean;
   isControlledZoom: boolean;
   setControlledZoom: (newZoom: number) => void;
 };
 
+onZoomChange: setControlledZoomCallback,
+onDragChange,
+defaultZoom: controlledZoom,
 export type {
   PreviewWindowProps,
   PreviewHeaderProps,

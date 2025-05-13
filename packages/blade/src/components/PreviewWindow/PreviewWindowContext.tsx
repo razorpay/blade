@@ -3,14 +3,13 @@ import type { PreviewWindowContextType } from './types';
 
 const PreviewWindowContext = React.createContext<PreviewWindowContextType>({
   zoom: 1,
-  onZoomChange: () => {},
-  onDragChange: () => {},
-  defaultZoom: 0,
   zoomScaleStep: 0,
   isFullScreen: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setControlledZoom: () => {},
   isControlledZoom: false,
 });
+
 const PreviewWindowProvider = PreviewWindowContext.Provider;
 
 const usePreviewWindowContext = (): PreviewWindowContextType => {

@@ -223,7 +223,7 @@ const PreviewWindow = ({
 
   // this is added to handle the fullscreen change if user exits fullscreen using the escape key, or browser's exit fullscreen button
   useEffect(() => {
-    const handleFullScreenChange = () => {
+    const handleFullScreenChange = (): void => {
       setIsFullScreen(!!document.fullscreenElement);
     };
 
@@ -297,8 +297,6 @@ const PreviewWindow = ({
         backgroundColor="surface.background.gray.moderate"
       >
         <TransformWrapper
-          width="100%"
-          height="100%"
           centerOnInit
           onTransformed={handleTransformed}
           minScale={0.1}
