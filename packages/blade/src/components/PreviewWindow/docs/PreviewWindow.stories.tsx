@@ -1,5 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React, { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Document, Page as ReactPdfPage, pdfjs } from 'react-pdf';
 import { PreviewBody, PreviewHeader, PreviewWindow, PreviewFooter } from '../PreviewWindow';
 import type { PreviewWindowProps } from '../types';
 import { Heading, Text } from '~components/Typography';
@@ -9,6 +11,13 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Card, CardBody } from '~components/Card';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+// Set up the worker
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
 
 const Page = (): React.ReactElement => {
   return (
@@ -124,7 +133,7 @@ const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
 };
 
 export const FixedHeightWidthExample = FixedHeightWidthExampleTemplate.bind({});
-FixedHeightWidthExample.storyName = 'Fixed Height Width Example';
+FixedHeightWidthExample.storyName = 'Fixed Height Width';
 FixedHeightWidthExample.args = {};
 
 const WithoutHeaderTitleEampleTemplate: StoryFn<typeof PreviewWindow> = () => {
@@ -140,7 +149,7 @@ const WithoutHeaderTitleEampleTemplate: StoryFn<typeof PreviewWindow> = () => {
 };
 
 export const WithoutHeaderTitleExample = WithoutHeaderTitleEampleTemplate.bind({});
-WithoutHeaderTitleExample.storyName = 'Without Header Title Example';
+WithoutHeaderTitleExample.storyName = 'Without Header Title';
 WithoutHeaderTitleExample.args = {};
 
 const isDragAndZoomDisabledExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
@@ -154,7 +163,7 @@ const isDragAndZoomDisabledExampleTemplate: StoryFn<typeof PreviewWindow> = () =
 };
 
 export const IsDragAndZoomDisabledExample = isDragAndZoomDisabledExampleTemplate.bind({});
-IsDragAndZoomDisabledExample.storyName = 'Is Drag and Zoom Disabled Example';
+IsDragAndZoomDisabledExample.storyName = ' Drag and Zoom Disabled ';
 IsDragAndZoomDisabledExample.args = {};
 
 const WithHeaderAndFooterTrailingExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
@@ -172,7 +181,7 @@ const WithHeaderAndFooterTrailingExampleTemplate: StoryFn<typeof PreviewWindow> 
 export const WithHeaderAndFooterTrailingExample = WithHeaderAndFooterTrailingExampleTemplate.bind(
   {},
 );
-WithHeaderAndFooterTrailingExample.storyName = 'With Header and Footer Trailing Example';
+WithHeaderAndFooterTrailingExample.storyName = 'With Header and Footer Trailing ';
 WithHeaderAndFooterTrailingExample.args = {};
 
 const ControlledPreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
@@ -197,3 +206,38 @@ const ControlledPreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
 export const ControlledPreviewWindow = ControlledPreviewWindowTemplate.bind({});
 ControlledPreviewWindow.storyName = 'Controlled Preview Window';
 ControlledPreviewWindow.args = {};
+
+const PDFRenderer: StoryFn<typeof PreviewWindow> = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  return (
+    <PreviewWindow
+      onZoomChange={(zoom) => {
+        console.log('zoom-> onZoomChange', zoom);
+      }}
+    >
+      <PreviewHeader title="Preview " />
+      <PreviewBody>
+        <Document file="https://cdn.razorpay.com/traditional-banks-vs-razorpayx.pdf">
+          <ReactPdfPage
+            key={currentPage}
+            pageNumber={currentPage}
+            width={800}
+            height={700}
+            className="pdf-page"
+          />
+        </Document>
+      </PreviewBody>
+      <PreviewFooter
+        showZoomPercentage={true}
+        trailing={
+          <Button variant="tertiary" onClick={() => setCurrentPage(currentPage + 1)}>
+            Next Page
+          </Button>
+        }
+      />
+    </PreviewWindow>
+  );
+};
+export const PDFTemplate = PDFRenderer.bind({});
+PDFTemplate.storyName = 'With React PDF';

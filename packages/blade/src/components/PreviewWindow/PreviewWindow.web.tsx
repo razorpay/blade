@@ -43,13 +43,15 @@ const _PreviewHeader = ({
         display="flex"
         alignItems="center"
         justifyContent="space-between"
-        padding="spacing.2"
+        padding="spacing.4"
       >
-        <Button
-          icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
-          variant="tertiary"
-          onClick={_onFullScreen}
-        />
+        <BaseBox backgroundColor="surface.background.gray.moderate" borderRadius="medium">
+          <Button
+            icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
+            variant="tertiary"
+            onClick={_onFullScreen}
+          />
+        </BaseBox>
         {trailing}
       </BaseBox>
     );
@@ -115,8 +117,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       display="flex"
       justifyContent="space-between"
       width="100%"
-      //TODO: look into this
-      backgroundColor="white"
+      backgroundColor="surface.background.gray.moderate"
       position="absolute"
       bottom="spacing.0"
       left="spacing.0"
@@ -239,7 +240,6 @@ const PreviewWindow = ({
     .map((child) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
-          //TODO: look into this
           // @ts-expect-error
           _onFullScreen: handleFullScreen,
         });

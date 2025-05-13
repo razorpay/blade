@@ -288,7 +288,8 @@
     "@razorpay/i18nify-react": "4.0.12",
     "plop": "3.1.1",
     "node-plop": "0.32.0",
-    "svgson": "5.3.1"
+    "svgson": "5.3.1",
+    "react-pdf": "^9.2.1"
   },
   "peerDependencies": {
     "react": ">=18",
