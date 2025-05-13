@@ -16,7 +16,7 @@ The following types represent the props that the Card component and its subcompo
  */
 type CardProps = {
   /**
-   * The content to be displayed inside the card
+   * The content to be displayed inside the card. Card's children strictly accepts only <CardBody>, <CardHeader> & <CardFooter> components.
    */
   children: React.ReactNode;
 
