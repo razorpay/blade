@@ -83,3 +83,28 @@ const ImagePreviewTemplate: StoryFn<typeof PreviewWindow> = (args) => {
 export const ImagePreview = ImagePreviewTemplate.bind({});
 ImagePreview.storyName = 'Image Preview';
 ImagePreview.args = {};
+
+const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+  return (
+    <Box height="300px" width="300px">
+      <PreviewWindow>
+        <Box>
+          <PreviewHeader title="Preview " />
+          <PreviewBody>
+            <img
+              width="100%"
+              height="100%"
+              src="https://picsum.photos/1920/1080"
+              alt="randomImage"
+            />
+          </PreviewBody>
+          <PreviewFooter showZoomPercentage={true} />
+        </Box>
+      </PreviewWindow>
+    </Box>
+  );
+};
+
+export const FixedHeightWidthExample = FixedHeightWidthExampleTemplate.bind({});
+FixedHeightWidthExample.storyName = 'Fixed Height Width Example';
+FixedHeightWidthExample.args = {};

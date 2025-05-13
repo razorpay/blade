@@ -53,7 +53,6 @@ const PreviewHeader = assignWithoutSideEffects(_PreviewHeader, {
 
 const _PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => {
   const { children } = PreviewBodyProps;
-  console.log('children', children);
   return <BaseBox padding="spacing.5"> {children}</BaseBox>;
 };
 
@@ -71,6 +70,12 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       width="100%"
       //TODO: look into this
       backgroundColor="white"
+      position="absolute"
+      bottom="spacing.0"
+      left="spacing.0"
+      right="spacing.0"
+      padding="spacing.5"
+      zIndex={1000}
     >
       <BaseBox>
         <Button icon={ZoomInIcon} onClick={() => zoomIn()} variant="tertiary" />
@@ -163,24 +168,22 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
   );
   return (
     <PreviewWindowProvider value={{ zoom, onZoomChange: setZoom, isFullScreen }}>
-      <BaseBox width="100%" height="100%" position="relative">
+      <BaseBox width="100%" height="100%" position="relative" overflow="hidden">
         <TransformWrapper width="100%" height="100%">
           {() => (
-            // <BaseBox width="100%" height="100%" backgroundColor="surface.background.gray.intense">
-
             <BaseBox
               width="100%"
               height="100%"
               position="relative"
               backgroundColor="surface.background.gray.moderate"
             >
+              {previewFooter}
               {previewHeader}
               <ZoomContainer>
                 <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
                   {previewBody}
                 </TransformComponent>
               </ZoomContainer>
-              {previewFooter}
             </BaseBox>
           )}
         </TransformWrapper>
