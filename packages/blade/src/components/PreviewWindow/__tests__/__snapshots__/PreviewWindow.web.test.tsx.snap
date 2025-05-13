@@ -1,0 +1,808 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PreviewWindow/> should render preview header without title correctly 1`] = `
+.c0.c0.c0.c0.c0 {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: hsla(210,40%,98%,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 1000;
+  padding: 4px;
+  top: 0px;
+  right: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c9.c9.c9.c9.c9 {
+  padding: 16px;
+}
+
+.c10.c10.c10.c10.c10 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  background-color: hsla(211,20%,52%,0.12);
+  border-color: hsla(214,28%,84%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3:hover {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c3.c3.c3.c3.c3:active {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c3.c3.c3.c3.c3:focus-visible {
+  background-color: hsla(211,20%,52%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c3.c3.c3.c3.c3 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
+}
+
+.c6.c6.c6.c6.c6 {
+  opacity: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  width: 100%;
+  height: 100%;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  background-image: radial-gradient( circle,rgba(0,0,0,0.1) 1px,transparent 1px );
+  background-size: 16px 16px;
+}
+
+.c8.c8.c8.c8.c8 .zoom-wrapper,
+.c8.c8.c8.c8.c8 .zoom-content {
+  width: 100%;
+  height: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2"
+        data-blade-component="base-box"
+      >
+        <button
+          class="c3"
+          data-blade-component="button"
+          role="button"
+          type="button"
+        >
+          <div
+            class=" c4"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c5 c6"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c7"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M2 5C2 3.34315 3.34315 2 5 2H8C8.55228 2 9 2.44772 9 3C9 3.55228 8.55228 4 8 4H5C4.44772 4 4 4.44772 4 5V8C4 8.55228 3.55228 9 3 9C2.44772 9 2 8.55228 2 8V5ZM15 3C15 2.44772 15.4477 2 16 2H19C20.6569 2 22 3.34315 22 5V8C22 8.55228 21.5523 9 21 9C20.4477 9 20 8.55228 20 8V5C20 4.44772 19.5523 4 19 4H16C15.4477 4 15 3.55228 15 3ZM3 15C3.55228 15 4 15.4477 4 16V19C4 19.5523 4.44772 20 5 20H8C8.55228 20 9 20.4477 9 21C9 21.5523 8.55228 22 8 22H5C3.34315 22 2 20.6569 2 19V16C2 15.4477 2.44772 15 3 15ZM21 15C21.5523 15 22 15.4477 22 16V19C22 20.6569 20.6569 22 19 22H16C15.4477 22 15 21.5523 15 21C15 20.4477 15.4477 20 16 20H19C19.5523 20 20 19.5523 20 19V16C20 15.4477 20.4477 15 21 15Z"
+                    data-blade-component="svg-path"
+                    fill="hsla(212, 39%, 16%, 1)"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div
+        class="c8"
+      >
+        <div
+          class="react-transform-wrapper transform-component-module_wrapper__SPB86 zoom-wrapper"
+        >
+          <div
+            class="react-transform-component transform-component-module_content__FBWxo zoom-content"
+            style="transform: translate(0px, 0px) scale(1);"
+          >
+            <div
+              class="c9"
+              data-blade-component="base-box"
+            >
+               
+              <p
+                class="c10"
+                data-blade-component="text"
+              >
+                This is a demo message
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<PreviewWindow/> should render preview window correctly 1`] = `
+.c0.c0.c0.c0.c0 {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: hsla(210,40%,98%,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 1000;
+  padding: 16px;
+  width: 100%;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: white;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.c13.c13.c13.c13.c13 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c16.c16.c16.c16.c16 {
+  padding: 16px;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(212,39%,16%,1);
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  background-color: hsla(211,20%,52%,0.12);
+  border-color: hsla(214,28%,84%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c4.c4.c4.c4.c4:hover {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c4.c4.c4.c4.c4:active {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c4.c4.c4.c4.c4:focus-visible {
+  background-color: hsla(211,20%,52%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c4.c4.c4.c4.c4 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5.c5.c5 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
+}
+
+.c7.c7.c7.c7.c7 {
+  opacity: 1;
+}
+
+.c14.c14.c14.c14.c14 {
+  border-width: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c15.c15.c15.c15.c15 {
+  width: 100%;
+  height: 100%;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  background-image: radial-gradient( circle,rgba(0,0,0,0.1) 1px,transparent 1px );
+  background-size: 16px 16px;
+}
+
+.c15.c15.c15.c15.c15 .zoom-wrapper,
+.c15.c15.c15.c15.c15 .zoom-content {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width:320px) {
+  .c13.c13.c13.c13.c13 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c13.c13.c13.c13.c13 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c13.c13.c13.c13.c13 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c13.c13.c13.c13.c13 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c13.c13.c13.c13.c13 {
+    border-bottom-style: solid;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class=""
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <button
+              class="c4"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class=" c5"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c6 c7"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        d="M11 7C11.5523 7 12 7.44772 12 8V10H14C14.5523 10 15 10.4477 15 11C15 11.5523 14.5523 12 14 12H12V14C12 14.5523 11.5523 15 11 15C10.4477 15 10 14.5523 10 14V12H8C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10H10V8C10 7.44772 10.4477 7 11 7Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(212, 39%, 16%, 1)"
+                      />
+                      <path
+                        clip-rule="evenodd"
+                        d="M11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C13.125 20 15.078 19.2635 16.6177 18.0319L20.2929 21.7071C20.6834 22.0977 21.3166 22.0977 21.7071 21.7071C22.0977 21.3166 22.0977 20.6834 21.7071 20.2929L18.0319 16.6177C19.2635 15.078 20 13.125 20 11C20 6.02944 15.9706 2 11 2ZM16.0412 15.8566C17.2541 14.5978 18 12.886 18 11C18 7.13401 14.866 4 11 4C7.13401 4 4 7.13401 4 11C4 14.866 7.13401 18 11 18C12.886 18 14.5978 17.2541 15.8566 16.0412C15.8828 16.0071 15.9116 15.9742 15.9429 15.9429C15.9742 15.9116 16.0071 15.8828 16.0412 15.8566Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(212, 39%, 16%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </button>
+            <p
+              class="c9"
+              data-blade-component="text"
+            >
+               
+              100
+              %
+            </p>
+            <button
+              class="c4"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class=" c5"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c6 c7"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        d="M8 10C7.44772 10 7 10.4477 7 11C7 11.5523 7.44772 12 8 12H14C14.5523 12 15 11.5523 15 11C15 10.4477 14.5523 10 14 10H8Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(212, 39%, 16%, 1)"
+                      />
+                      <path
+                        clip-rule="evenodd"
+                        d="M2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0977 20.6834 22.0977 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11ZM18 11C18 12.886 17.2541 14.5978 16.0412 15.8566C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8828 16.0071 15.8566 16.0412C14.5978 17.2541 12.886 18 11 18C7.13401 18 4 14.866 4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(212, 39%, 16%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </button>
+            <button
+              class="c4"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class=" c5"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c6 c7"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M4.30683 18.2095C3.89715 18.6192 3.89715 19.2834 4.30683 19.6931C4.7165 20.1027 5.38071 20.1027 5.79038 19.6931L19.6926 5.79081C20.1023 5.38114 20.1023 4.71693 19.6926 4.30725C19.283 3.89758 18.6188 3.89758 18.2091 4.30725L4.30683 18.2095ZM11.3005 18.2095C10.8909 18.6192 10.8909 19.2834 11.3005 19.6931C11.7102 20.1027 12.3744 20.1027 12.7841 19.6931L19.6928 12.7844C20.1025 12.3747 20.1025 11.7105 19.6928 11.3008C19.2831 10.8911 18.6189 10.8911 18.2092 11.3008L11.3005 18.2095Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(212, 39%, 16%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class=""
+        data-blade-component="base-box"
+      >
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        >
+          <h5
+            class="c11"
+            data-blade-component="heading"
+          >
+             
+            Preview Window
+          </h5>
+          <div
+            class="c12"
+            data-blade-component="base-box"
+          >
+            <button
+              class="c4"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class=" c5"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c6 c7"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c8"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M2 5C2 3.34315 3.34315 2 5 2H8C8.55228 2 9 2.44772 9 3C9 3.55228 8.55228 4 8 4H5C4.44772 4 4 4.44772 4 5V8C4 8.55228 3.55228 9 3 9C2.44772 9 2 8.55228 2 8V5ZM15 3C15 2.44772 15.4477 2 16 2H19C20.6569 2 22 3.34315 22 5V8C22 8.55228 21.5523 9 21 9C20.4477 9 20 8.55228 20 8V5C20 4.44772 19.5523 4 19 4H16C15.4477 4 15 3.55228 15 3ZM3 15C3.55228 15 4 15.4477 4 16V19C4 19.5523 4.44772 20 5 20H8C8.55228 20 9 20.4477 9 21C9 21.5523 8.55228 22 8 22H5C3.34315 22 2 20.6569 2 19V16C2 15.4477 2.44772 15 3 15ZM21 15C21.5523 15 22 15.4477 22 16V19C22 20.6569 20.6569 22 19 22H16C15.4477 22 15 21.5523 15 21C15 20.4477 15.4477 20 16 20H19C19.5523 20 20 19.5523 20 19V16C20 15.4477 20.4477 15 21 15Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(212, 39%, 16%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div
+          class="c13 c14"
+          data-blade-component="divider"
+          role="separator"
+        />
+      </div>
+      <div
+        class="c15"
+      >
+        <div
+          class="react-transform-wrapper transform-component-module_wrapper__SPB86 zoom-wrapper"
+        >
+          <div
+            class="react-transform-component transform-component-module_content__FBWxo zoom-content"
+            style="transform: translate(0px, 0px) scale(1);"
+          >
+            <div
+              class="c16"
+              data-blade-component="base-box"
+            >
+               
+              <p
+                class="c9"
+                data-blade-component="text"
+              >
+                This is a demo message
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
