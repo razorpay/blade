@@ -50,7 +50,14 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  margin-bottom: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -320,11 +327,11 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c1"
           data-blade-component="base-box"
         >
           <div
-            class="c1"
+            class=""
             data-blade-component="base-box"
           >
             <div
