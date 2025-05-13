@@ -87,6 +87,7 @@ ImagePreview.args = {};
 const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
   return (
     <Box height="300px" width="300px">
+      <Heading size="large">Fixed Height Width Example</Heading>
       <PreviewWindow>
         <Box>
           <PreviewHeader title="Preview " />

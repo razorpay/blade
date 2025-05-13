@@ -163,18 +163,17 @@ const PreviewWindow = ({
 }: PreviewWindowProps): React.ReactElement => {
   const [zoom, setZoom] = useState(1);
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   const handleFullScreen = useCallback(() => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch((err) => {
-        //TODO: maybe use blade error component here
+      containerRef.current?.requestFullscreen().catch((err) => {
         console.error(`Error attempting to enable fullscreen: ${err.message}`);
       });
       setIsFullScreen(true);
       onFullScreenProp?.();
     } else {
       document.exitFullscreen().catch((err) => {
-        //TODO: maybe use blade error component here
         console.error(`Error attempting to exit fullscreen: ${err.message}`);
       });
       setIsFullScreen(false);
@@ -231,7 +230,14 @@ const PreviewWindow = ({
 
   return (
     <PreviewWindowProvider value={{ zoom, isFullScreen, zoomScaleStep }}>
-      <BaseBox width="100%" height="100%" position="relative" overflow="hidden">
+      <BaseBox
+        ref={containerRef}
+        width="100%"
+        height="100%"
+        position="relative"
+        overflow="hidden"
+        backgroundColor="surface.background.gray.moderate"
+      >
         <TransformWrapper
           width="100%"
           height="100%"
@@ -241,12 +247,7 @@ const PreviewWindow = ({
           maxScale={8}
         >
           {() => (
-            <BaseBox
-              width="100%"
-              height="100%"
-              position="relative"
-              backgroundColor="surface.background.gray.moderate"
-            >
+            <BaseBox width="100%" height="100%" position="relative">
               {previewFooter}
               {previewHeader}
               <ZoomContainer>
