@@ -91,6 +91,7 @@ const dotSize = 1;
 const ZoomContainer = styled.div`
   width: 100%;
   height: 100%;
+  cursor: grab;
   background-image: radial-gradient(
     circle,
     rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px,
@@ -126,7 +127,6 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
             // <BaseBox width="100%" height="100%" backgroundColor="surface.background.gray.intense">
 
             <BaseBox
-              cursor="grab"
               width="100%"
               height="100%"
               position="relative"
