@@ -207,5 +207,11 @@ Instead, Blade will continue to support error handling through existing props on
    - [Ant Design Form](https://ant.design/components/form)
 
 2. **Form Libraries**
+
    - [Formik](https://formik.org/)
    - [React Hook Form](https://react-hook-form.com/)
+
+3. 3. **Internal Documentation**
+
+   - [Research & Scoping: Form Validation Strategy](https://docs.google.com/document/d/1zLjyB_xuwKxZLvNeU0fyPlG7nyq0svEETgCP7d83uBU/edit?tab=t.0#heading=h.xfqlvfb532ld)
+   - [FormGroup Error Wrapper Decision Doc](https://docs.google.com/document/d/1R-dhienUK9hvlQOS5ezZpBisTpsJFs7mXqH5EC8AVl8/edit?tab=t.0)
