@@ -16,7 +16,7 @@ import {
   FullScreenExitIcon,
   ResizerIcon,
 } from '~components/Icons';
-import { Heading } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { ButtonGroup } from '~components/ButtonGroup';
 import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -63,6 +63,7 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
   const { instance, zoomIn, zoomOut, resetTransform, ...rest } = useControls();
+  const { zoom, onZoomChange, zoomScaleStep } = usePreviewWindowContext();
   return (
     <BaseBox
       display="flex"
@@ -78,8 +79,42 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       zIndex={1000}
     >
       <BaseBox>
-        <Button icon={ZoomInIcon} onClick={() => zoomIn()} variant="tertiary" />
-        <Button icon={ZoomOutIcon} onClick={() => zoomOut()} variant="tertiary" />
+        {showZoomPercentage ? (
+          <BaseBox display="flex" alignItems="center" gap="spacing.2">
+            <Button
+              icon={ZoomInIcon}
+              onClick={() => {
+                zoomIn(zoomScaleStep);
+              }}
+              variant="tertiary"
+            />
+            {/* <Heading size="medium"> {Math.round(zoom * 100)}%</Heading> */}
+            <Text size="medium"> {Math.round(zoom * 100)}%</Text>
+            <Button
+              icon={ZoomOutIcon}
+              onClick={() => {
+                zoomOut();
+              }}
+              variant="tertiary"
+            />
+          </BaseBox>
+        ) : (
+          <ButtonGroup variant="tertiary">
+            <Button
+              icon={ZoomInIcon}
+              onClick={() => {
+                zoomIn(zoomScaleStep);
+              }}
+            />
+
+            <Button
+              icon={ZoomOutIcon}
+              onClick={() => {
+                zoomOut();
+              }}
+            />
+          </ButtonGroup>
+        )}
       </BaseBox>
       <Button icon={ResizerIcon} onClick={() => resetTransform()} variant="tertiary" />
       {trailing}
@@ -110,10 +145,14 @@ const ZoomContainer = styled.div`
     height: 100%;
   }
 `;
-const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactElement => {
+const PreviewWindow = ({
+  children,
+  onFullScreen: onFullScreenProp,
+  onZoomChange,
+  zoomScaleStep = 0.1,
+}: PreviewWindowProps): React.ReactElement => {
   const [zoom, setZoom] = useState(1);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const { children, onFullScreen: onFullScreenProp } = PreviewWindowProps;
 
   const handleFullScreen = useCallback(() => {
     if (!document.fullscreenElement) {
@@ -166,10 +205,24 @@ const PreviewWindow = (PreviewWindowProps: PreviewWindowProps): React.ReactEleme
   const previewFooter = React.Children.toArray(children.props.children).filter(
     (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewFooter,
   );
+
+  const handleZoomChange = useCallback(
+    (zoomLevel: number) => {
+      setZoom(zoomLevel);
+      onZoomChange?.(zoomLevel);
+    },
+    [onZoomChange],
+  );
+
+  const handleTransformed = ({ state }: { state: { scale: number } }): void => {
+    const { scale } = state;
+    handleZoomChange(scale);
+  };
+
   return (
-    <PreviewWindowProvider value={{ zoom, onZoomChange: setZoom, isFullScreen }}>
+    <PreviewWindowProvider value={{ zoom, isFullScreen, zoomScaleStep }}>
       <BaseBox width="100%" height="100%" position="relative" overflow="hidden">
-        <TransformWrapper width="100%" height="100%">
+        <TransformWrapper width="100%" height="100%" centerOnInit onTransformed={handleTransformed}>
           {() => (
             <BaseBox
               width="100%"
