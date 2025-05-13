@@ -2,12 +2,13 @@ import type { StoryFn, Meta } from '@storybook/react';
 import React, { useState } from 'react';
 import { PreviewBody, PreviewHeader, PreviewWindow, PreviewFooter } from '../PreviewWindow';
 import type { PreviewWindowProps } from '../types';
-import { Heading } from '~components/Typography/Heading';
+import { Heading, Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import { Card, CardBody } from '~components/Card';
 
 const Page = (): React.ReactElement => {
   return (
@@ -54,7 +55,33 @@ const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = (args) => {
     <PreviewWindow>
       <PreviewHeader title="Preview " />
       <PreviewBody>
-        <Box> This is demo component</Box>
+        <Card elevation="highRaised" padding="spacing.0">
+          <CardBody>
+            <Box display="flex" flexDirection="row">
+              <img
+                width="300"
+                height="auto"
+                src="https://d6xcmfyh68wv8.cloudfront.net/assets/case-studies/common-card/pg_breathingroom.png"
+                alt="Breathing Room"
+                style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
+              />
+              <Box padding="spacing.7" display="flex" flexDirection="column">
+                <Heading size="large">Breathing Room</Heading>
+                <Text marginTop="spacing.5">
+                  Popular in the startup ecosystem, BreathingRoom.co offers short-term workspaces
+                  conference rooms, training rooms, cabins & hotdesks to individuals and enterprises
+                  on an hourly & monthly basis. BreathingRoom is perfect for a wide range of
+                  professional needs like training sessions, recruitment drives, team offsites, and
+                  client meetings in addition to cost effective office space rentals; great for
+                  setting up remote offices. With a network of over 450 office spaces spread across
+                  Mumbai, Delhi, Bangalore, Pune, Hyderabad and Chennai, BreathingRoom offers
+                  convenient, flexible rental options that can be easily booked through the website
+                  or mobile app.
+                </Text>
+              </Box>
+            </Box>
+          </CardBody>
+        </Card>
       </PreviewBody>
       <PreviewFooter showZoomPercentage={true} />
     </PreviewWindow>
