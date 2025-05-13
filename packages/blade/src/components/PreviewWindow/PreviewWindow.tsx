@@ -193,6 +193,7 @@ const PreviewWindow = ({
   zoomScaleStep = 0.1,
   isDragAndZoomDisabled = false,
   zoom,
+  onDragChange,
 }: PreviewWindowProps): React.ReactElement => {
   const [controlledZoom, setControlledZoom] = useControllableState({
     value: zoom,
@@ -314,6 +315,7 @@ const PreviewWindow = ({
           panning={{ disabled: isControlledZoom }}
           pinch={{ disabled: isControlledZoom }}
           wheel={{ disabled: isControlledZoom }}
+          onPanning={({ state }) => onDragChange?.({ x: state.positionX, y: state.positionY })}
         >
           {() => (
             <BaseBox width="100%" height="100%" position="relative">
