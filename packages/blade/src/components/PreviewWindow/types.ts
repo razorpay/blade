@@ -11,9 +11,8 @@ type PreviewWindowProps = {
 
 type PreviewHeaderProps = {
   title?: string;
-  trailing?: React.ReactElement;
+  trailing?: React.ReactElement | React.ReactElement[];
   _onFullScreen?: () => void;
-  children?: React.ReactElement | React.ReactElement[];
 };
 
 type PreviewBodyProps = {

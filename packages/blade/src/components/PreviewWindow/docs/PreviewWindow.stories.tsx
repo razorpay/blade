@@ -7,6 +7,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
+import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {
   return (
@@ -128,3 +129,21 @@ const isDragAndZoomDisabledExampleTemplate: StoryFn<typeof PreviewWindow> = (arg
 export const IsDragAndZoomDisabledExample = isDragAndZoomDisabledExampleTemplate.bind({});
 IsDragAndZoomDisabledExample.storyName = 'Is Drag and Zoom Disabled Example';
 IsDragAndZoomDisabledExample.args = {};
+
+const WithHeaderAndFooterTrailingExampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+  return (
+    <PreviewWindow>
+      <PreviewHeader title="Preview " trailing={<Button>Trailing</Button>} />
+      <PreviewBody>
+        <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+      </PreviewBody>
+      <PreviewFooter showZoomPercentage={true} trailing={<Button>Trailing</Button>} />
+    </PreviewWindow>
+  );
+};
+
+export const WithHeaderAndFooterTrailingExample = WithHeaderAndFooterTrailingExampleTemplate.bind(
+  {},
+);
+WithHeaderAndFooterTrailingExample.storyName = 'With Header and Footer Trailing Example';
+WithHeaderAndFooterTrailingExample.args = {};

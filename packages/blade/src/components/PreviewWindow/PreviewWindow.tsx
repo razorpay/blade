@@ -26,7 +26,7 @@ import { Divider } from '~components/Divider';
 const _PreviewHeader = ({
   title,
   _onFullScreen,
-  children,
+  trailing,
 }: PreviewHeaderProps): React.ReactElement => {
   const { isFullScreen } = usePreviewWindowContext();
 
@@ -47,7 +47,7 @@ const _PreviewHeader = ({
           variant="tertiary"
           onClick={_onFullScreen}
         />
-        {children}
+        {trailing}
       </BaseBox>
     );
   }
@@ -60,12 +60,14 @@ const _PreviewHeader = ({
         padding="spacing.5"
       >
         <Heading size="medium"> {title}</Heading>
-        <Button
-          icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
-          variant="tertiary"
-          onClick={_onFullScreen}
-        />
-        {children}
+        <BaseBox display="flex" alignItems="center" gap="spacing.3">
+          <Button
+            icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
+            variant="tertiary"
+            onClick={_onFullScreen}
+          />
+          {trailing}
+        </BaseBox>
       </BaseBox>
       <Divider orientation="horizontal" />
     </BaseBox>
@@ -151,7 +153,6 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
           </ButtonGroup>
         )}
       </BaseBox>
-      <Button icon={ResizerIcon} onClick={() => resetTransform()} variant="tertiary" />
       {trailing}
     </BaseBox>
   );
