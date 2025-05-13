@@ -32,9 +32,6 @@ type PreviewWindowContextType = {
   setControlledZoom: (newZoom: number) => void;
 };
 
-onZoomChange: setControlledZoomCallback,
-onDragChange,
-defaultZoom: controlledZoom,
 export type {
   PreviewWindowProps,
   PreviewHeaderProps,
