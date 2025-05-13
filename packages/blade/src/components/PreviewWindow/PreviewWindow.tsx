@@ -164,10 +164,10 @@ const PreviewFooter = assignWithoutSideEffects(_PreviewFooter, {
 const dotSpacing = 16;
 const dotOpacity = 0.1;
 const dotSize = 1;
-const ZoomContainer = styled.div`
+const ZoomContainer = styled.div<{ isDragEnabled: boolean }>`
   width: 100%;
   height: 100%;
-  cursor: grab;
+  cursor: ${({ isDragEnabled }) => (isDragEnabled ? 'grab' : 'default')};
   background-image: radial-gradient(
     circle,
     rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px,
@@ -185,6 +185,7 @@ const PreviewWindow = ({
   onFullScreen: onFullScreenProp,
   onZoomChange,
   zoomScaleStep = 0.1,
+  isDragAndZoomDisabled = false,
 }: PreviewWindowProps): React.ReactElement => {
   const [zoom, setZoom] = useState(1);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -270,12 +271,13 @@ const PreviewWindow = ({
           onTransformed={handleTransformed}
           minScale={0.1}
           maxScale={8}
+          disabled={isDragAndZoomDisabled}
         >
           {() => (
             <BaseBox width="100%" height="100%" position="relative">
               {previewFooter}
               {previewHeader}
-              <ZoomContainer>
+              <ZoomContainer isDragEnabled={!isDragAndZoomDisabled}>
                 <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
                   {previewBody}
                 </TransformComponent>

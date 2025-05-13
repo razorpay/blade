@@ -114,3 +114,17 @@ const WithoutHeaderTitleEampleTemplate: StoryFn<typeof PreviewWindow> = (args) =
 export const WithoutHeaderTitleExample = WithoutHeaderTitleEampleTemplate.bind({});
 WithoutHeaderTitleExample.storyName = 'Without Header Title Example';
 WithoutHeaderTitleExample.args = {};
+
+const isDragAndZoomDisabledExampleTemplate: StoryFn<typeof PreviewWindow> = (args) => {
+  return (
+    <PreviewWindow isDragAndZoomDisabled={true}>
+      <PreviewBody>
+        <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+      </PreviewBody>
+    </PreviewWindow>
+  );
+};
+
+export const IsDragAndZoomDisabledExample = isDragAndZoomDisabledExampleTemplate.bind({});
+IsDragAndZoomDisabledExample.storyName = 'Is Drag and Zoom Disabled Example';
+IsDragAndZoomDisabledExample.args = {};

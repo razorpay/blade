@@ -1,7 +1,7 @@
 type PreviewWindowProps = {
   children: React.ReactElement | React.ReactElement[];
   onFullScreen?: () => void;
-  isDragEnabled?: boolean;
+  isDragAndZoomDisabled?: boolean;
   zoom?: number;
   onZoomChange?: (newZoom: number) => void;
   onDragChange?: (position: { x: number; y: number }) => void;
