@@ -22,19 +22,23 @@ import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { Divider } from '~components/Divider';
 const _PreviewHeader = (PreviewHeaderProps: PreviewHeaderProps): React.ReactElement => {
   const { title } = PreviewHeaderProps;
   const { instance, zoomIn, zoomOut, ...rest } = useControls();
   return (
-    <BaseBox
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-      padding="spacing.5"
-      backgroundColor="white"
-    >
-      <Heading size="medium"> {title}</Heading>
-      <Button icon={FullScreenEnterIcon} variant="tertiary" />
+    <BaseBox>
+      <BaseBox
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        padding="spacing.5"
+        backgroundColor="white"
+      >
+        <Heading size="medium"> {title}</Heading>
+        <Button icon={FullScreenEnterIcon} variant="tertiary" />
+      </BaseBox>
+      <Divider orientation="horizontal" />
     </BaseBox>
   );
 };
@@ -46,7 +50,7 @@ const PreviewHeader = assignWithoutSideEffects(_PreviewHeader, {
 const _PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => {
   const { children } = PreviewBodyProps;
   console.log('children', children);
-  return <React.Fragment> {children}</React.Fragment>;
+  return <BaseBox padding="spacing.5"> {children}</BaseBox>;
 };
 
 const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
