@@ -191,6 +191,7 @@ const ValidationFormTemplate: StoryFn<{
             emphasis="subtle"
             isDismissible
             onDismiss={() => setAlert(null)}
+            isFullWidth
           />
         )}
 
@@ -454,10 +455,12 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps): JSX.E
           justifyContent="flex-end"
           backgroundColor={longForm ? 'surface.background.gray.moderate' : 'transparent'}
           padding={longForm ? 'spacing.4' : 'spacing.0'}
-          position={longForm ? 'fixed' : 'relative'}
+          position={longForm ? 'fixed' : 'static'}
           bottom="spacing.0"
           right="spacing.4"
           width="100%"
+          borderColor="surface.border.gray.muted"
+          borderWidth={longForm ? 'thin' : 'none'}
         >
           <Button variant="tertiary" color="primary" size="medium">
             Discard
