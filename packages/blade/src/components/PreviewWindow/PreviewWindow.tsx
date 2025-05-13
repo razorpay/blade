@@ -87,8 +87,9 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
                 zoomIn(zoomScaleStep);
               }}
               variant="tertiary"
+              aria-label="Zoom in"
+              isDisabled={zoom >= 8}
             />
-            {/* <Heading size="medium"> {Math.round(zoom * 100)}%</Heading> */}
             <Text size="medium"> {Math.round(zoom * 100)}%</Text>
             <Button
               icon={ZoomOutIcon}
@@ -96,6 +97,15 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
                 zoomOut();
               }}
               variant="tertiary"
+              aria-label="Zoom out"
+              isDisabled={zoom <= 0.1}
+            />
+            <Button
+              //TODO: Ask RK for Reset Icon
+              icon={ResizerIcon}
+              onClick={() => resetTransform()}
+              variant="tertiary"
+              aria-label="Reset zoom"
             />
           </BaseBox>
         ) : (
@@ -222,7 +232,14 @@ const PreviewWindow = ({
   return (
     <PreviewWindowProvider value={{ zoom, isFullScreen, zoomScaleStep }}>
       <BaseBox width="100%" height="100%" position="relative" overflow="hidden">
-        <TransformWrapper width="100%" height="100%" centerOnInit onTransformed={handleTransformed}>
+        <TransformWrapper
+          width="100%"
+          height="100%"
+          centerOnInit
+          onTransformed={handleTransformed}
+          minScale={0.1}
+          maxScale={8}
+        >
           {() => (
             <BaseBox
               width="100%"
