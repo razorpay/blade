@@ -21,6 +21,7 @@
   "scripts": {
     "prepare": "yarn build",
     "build": "tsc && chmod +x dist/server.js",
+    "build:watch": "tsc --watch && chmod +x dist/server.js",
     "dev": "tsx src/server.ts",
     "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js",
     "start": "node dist/server.js",

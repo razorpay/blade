@@ -1,6 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import { CONFIG } from '../../config.js';
+import { URLS } from '../../utils/constants.js';
 
 const toolName = 'get_figma_to_code';
 const toolDescription = `Converts Figma designs into Blade Design System code. Provide a Figma design URL to generate the corresponding React components using Blade's component library.`;
@@ -22,7 +22,7 @@ const registerFigmaToCodeTool = (server: McpServer): ReturnType<McpServer['tool'
   return server.tool(toolName, toolDescription, toolSchema, async ({ fileKey, nodeId }) => {
     try {
       const isDev = process.env.NODE_ENV === 'development';
-      const url = isDev ? CONFIG.FIGMA_TO_CODE_URL.DEV : CONFIG.FIGMA_TO_CODE_URL.PROD;
+      const url = isDev ? URLS.FIGMA_TO_CODE_URL.DEV : URLS.FIGMA_TO_CODE_URL.PROD;
       const fullUrl = `${url}/image-to-code`;
       const response = await fetch(fullUrl, {
         method: 'POST',
