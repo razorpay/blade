@@ -1,5 +1,5 @@
 export const CONFIG = {
-  URLS: {
+  FIGMA_TO_CODE_URL: {
     DEV: 'http://localhost:8888',
     PROD: 'https://blade-chat-base.dev.razorpay.in',
   },
