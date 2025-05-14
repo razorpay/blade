@@ -124,7 +124,14 @@ const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
       <PreviewWindow>
         <PreviewHeader title="Preview " />
         <PreviewBody>
-          <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+          <Box height="100%" width="100%">
+            <img
+              width="100%"
+              height="100%"
+              src="https://picsum.photos/1920/1080"
+              alt="randomImage"
+            />
+          </Box>
         </PreviewBody>
         <PreviewFooter showZoomPercentage={true} />
       </PreviewWindow>

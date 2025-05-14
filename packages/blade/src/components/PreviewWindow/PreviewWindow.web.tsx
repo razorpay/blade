@@ -55,12 +55,21 @@ const _PreviewHeader = ({
     );
   }
   return (
-    <BaseBox>
+    <BaseBox
+      zIndex={1000}
+      position="absolute"
+      top="spacing.0"
+      left="spacing.0"
+      backgroundColor="surface.background.gray.moderate"
+      width="100%"
+    >
       <BaseBox
         display="flex"
         alignItems="center"
         justifyContent="space-between"
         padding="spacing.5"
+        height="100%"
+        width="100%"
       >
         <Heading size="medium"> {title}</Heading>
         <BaseBox display="flex" alignItems="center" gap="spacing.3">
@@ -83,7 +92,7 @@ const PreviewHeader = assignWithoutSideEffects(_PreviewHeader, {
 
 const _PreviewBody = (PreviewBodyProps: PreviewBodyProps): React.ReactElement => {
   const { children } = PreviewBodyProps;
-  return <BaseBox padding="spacing.5"> {children}</BaseBox>;
+  return <BaseBox>{children}</BaseBox>;
 };
 
 const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
@@ -177,6 +186,10 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
   .zoom-content {
     width: 100%;
     height: 100%;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   transition: cursor 0.1s ease;
 `;
@@ -196,6 +209,16 @@ const PreviewWindow = ({
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const handleTransformed = ({
+    state,
+  }: {
+    state: { scale: number; positionX: number; positionY: number };
+  }): void => {
+    const { scale, positionX, positionY } = state;
+    setControlledZoom(() => scale);
+    onDragChange?.({ x: positionX, y: positionY });
+  };
 
   const handleFullScreen = useCallback(() => {
     if (!document.fullscreenElement) {
@@ -245,10 +268,6 @@ const PreviewWindow = ({
   const previewFooter = React.Children.toArray(children).filter(
     (child) => getComponentId(child as React.ReactElement) === MetaConstants.PreviewFooter,
   );
-  const handleTransformed = ({ state }: { state: { scale: number } }): void => {
-    const { scale } = state;
-    setControlledZoom(() => scale);
-  };
 
   return (
     <PreviewWindowProvider
@@ -267,7 +286,6 @@ const PreviewWindow = ({
         backgroundColor="surface.background.gray.moderate"
       >
         <TransformWrapper
-          centerOnInit
           onTransformed={handleTransformed}
           minScale={0.1}
           maxScale={8}
@@ -276,10 +294,11 @@ const PreviewWindow = ({
           doubleClick={{ disabled: false }}
           onPanningStart={() => setIsDragging(true)}
           onPanningStop={() => setIsDragging(false)}
-          onPanning={({ state }) => onDragChange?.({ x: state.positionX, y: state.positionY })}
+          panning={{ velocityDisabled: true }}
+          limitToBounds={false}
         >
           {() => (
-            <BaseBox width="100%" height="100%" position="relative">
+            <BaseBox width="100%" height="100%" position="relative" overflow="visible">
               {previewFooter}
               {previewHeader}
               <ZoomContainer isDragEnabled={!isDragAndZoomDisabled} isDragging={isDragging}>
