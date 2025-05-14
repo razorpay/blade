@@ -15,7 +15,7 @@ import {
   ZoomInIcon,
   ZoomOutIcon,
   FullScreenExitIcon,
-  ResizerIcon,
+  RefreshIcon,
 } from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
 import { ButtonGroup } from '~components/ButtonGroup';
@@ -144,8 +144,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
               isDisabled={zoom <= 0.1}
             />
             <Button
-              //TODO: Ask RK for Reset Icon
-              icon={ResizerIcon}
+              icon={RefreshIcon}
               onClick={() => resetTransform()}
               variant="tertiary"
               aria-label="Reset zoom"
@@ -153,9 +152,9 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
           </BaseBox>
         ) : (
           <ButtonGroup variant="tertiary">
-            <Button icon={ZoomInIcon} onClick={handleZoomIn} />
-
-            <Button icon={ZoomOutIcon} onClick={handleZoomOut} />
+            <Button icon={ZoomInIcon} onClick={handleZoomIn} aria-label="Zoom in" />
+            <Button icon={ZoomOutIcon} onClick={handleZoomOut} aria-label="Zoom out" />
+            <Button icon={RefreshIcon} onClick={() => resetTransform()} aria-label="Reset zoom" />
           </ButtonGroup>
         )}
       </BaseBox>
