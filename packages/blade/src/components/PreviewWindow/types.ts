@@ -2,7 +2,7 @@ type PreviewWindowProps = {
   children: React.ReactElement | React.ReactElement[];
   onFullScreen?: () => void;
   isDragAndZoomDisabled?: boolean;
-  zoom?: number;
+  initialZoom?: number;
   onZoomChange?: (newZoom: number) => void;
   onDragChange?: (position: { x: number; y: number }) => void;
   defaultZoom?: number;
@@ -28,8 +28,6 @@ type PreviewWindowContextType = {
   zoom: number;
   zoomScaleStep: number;
   isFullScreen: boolean;
-  isControlledZoom: boolean;
-  setControlledZoom: (newZoom: number) => void;
 };
 
 export type {

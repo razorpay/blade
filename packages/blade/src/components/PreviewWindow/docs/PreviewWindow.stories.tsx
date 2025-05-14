@@ -184,16 +184,9 @@ export const WithHeaderAndFooterTrailingExample = WithHeaderAndFooterTrailingExa
 WithHeaderAndFooterTrailingExample.storyName = 'With Header and Footer Trailing ';
 WithHeaderAndFooterTrailingExample.args = {};
 
-const ControlledPreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
-  const [zoom, setZoom] = useState(1);
+const WithInitialZoomExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
-    <PreviewWindow
-      onZoomChange={(zoom) => {
-        setZoom(zoom);
-        console.log('zoom-> onZoomChange', zoom);
-      }}
-      zoom={zoom}
-    >
+    <PreviewWindow initialZoom={2}>
       <PreviewHeader title="Preview " />
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
@@ -202,10 +195,9 @@ const ControlledPreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
     </PreviewWindow>
   );
 };
-
-export const ControlledPreviewWindow = ControlledPreviewWindowTemplate.bind({});
-ControlledPreviewWindow.storyName = 'Controlled Preview Window';
-ControlledPreviewWindow.args = {};
+export const WithInitialZoomExample = WithInitialZoomExampleTemplate.bind({});
+WithInitialZoomExample.storyName = 'With Initial Zoom';
+WithInitialZoomExample.args = {};
 
 const PDFRenderer: StoryFn<typeof PreviewWindow> = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
