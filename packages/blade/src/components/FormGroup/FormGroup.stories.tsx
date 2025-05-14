@@ -478,18 +478,15 @@ const LayoutVariantsTemplate: StoryFn<LayoutProps> = (props: LayoutProps): JSX.E
 export const WithHorizontalSectionsTopLabel = LayoutVariantsTemplate.bind({});
 WithHorizontalSectionsTopLabel.args = {
   sectionsLayout: 'horizontal',
-  labelPosition: 'top',
 };
 
 export const WithVerticalSectionsTopLabel = LayoutVariantsTemplate.bind({});
 WithVerticalSectionsTopLabel.args = {
-  sectionsLayout: 'vertical',
   labelPosition: 'top',
 };
 
 export const WithVerticalSectionsLeftLabel = LayoutVariantsTemplate.bind({});
 WithVerticalSectionsLeftLabel.args = {
-  sectionsLayout: 'vertical',
   labelPosition: 'left',
 };
 
