@@ -8,7 +8,7 @@ import type {
   PreviewFooterProps,
   PreviewBodyProps,
 } from './types';
-import { usePreviewWindowContext, PreviewWindowProvider } from './PreviewWindowContext.web';
+import { usePreviewWindowContext, PreviewWindowProvider } from './PreviewWindowContext';
 import BaseBox from '~components/Box/BaseBox';
 import {
   FullScreenEnterIcon,

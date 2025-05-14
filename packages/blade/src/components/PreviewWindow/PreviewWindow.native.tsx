@@ -5,7 +5,6 @@ import type {
   PreviewHeaderProps,
   PreviewWindowProps,
 } from './types';
-import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
 
 const PreviewWindow = (_prop: PreviewWindowProps): React.ReactElement => {
@@ -14,7 +13,7 @@ const PreviewWindow = (_prop: PreviewWindowProps): React.ReactElement => {
     moduleName: 'PreviewWindow',
   });
 
-  return <Text>PreviewWindow is not available for Native mobile apps.</Text>;
+  return <></>;
 };
 
 const PreviewHeader = (_prop: PreviewHeaderProps): React.ReactElement => {
@@ -23,7 +22,7 @@ const PreviewHeader = (_prop: PreviewHeaderProps): React.ReactElement => {
     moduleName: 'PreviewHeader',
   });
 
-  return <Text>PreviewHeader is not available for Native mobile apps.</Text>;
+  return <></>;
 };
 
 const PreviewBody = (_prop: PreviewBodyProps): React.ReactElement => {
@@ -32,7 +31,7 @@ const PreviewBody = (_prop: PreviewBodyProps): React.ReactElement => {
     moduleName: 'PreviewBody',
   });
 
-  return <Text>PreviewBody is not available for Native mobile apps.</Text>;
+  return <></>;
 };
 
 const PreviewFooter = (_prop: PreviewFooterProps): React.ReactElement => {
@@ -41,7 +40,7 @@ const PreviewFooter = (_prop: PreviewFooterProps): React.ReactElement => {
     moduleName: 'PreviewFooter',
   });
 
-  return <Text>PreviewFooter is not available for Native mobile apps.</Text>;
+  return <></>;
 };
 
 export { PreviewWindow, PreviewHeader, PreviewBody, PreviewFooter };
