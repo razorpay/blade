@@ -13,6 +13,10 @@ import { Button } from '~components/Button';
 import { Card, CardBody } from '~components/Card';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'react-pdf/dist/esm/Page/TextLayer.css';
+import { ArrowLeftIcon, ArrowRightIcon, RefreshIcon } from '~components/Icons';
+
 // Set up the worker
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -217,22 +221,35 @@ const PDFRenderer: StoryFn<typeof PreviewWindow> = () => {
     >
       <PreviewHeader title="Preview " />
       <PreviewBody>
-        <Document file="https://cdn.razorpay.com/traditional-banks-vs-razorpayx.pdf">
-          <ReactPdfPage
-            key={currentPage}
-            pageNumber={currentPage}
-            width={800}
-            height={700}
-            className="pdf-page"
-          />
+        <Document
+          file="https://cdn.razorpay.com/traditional-banks-vs-razorpayx.pdf"
+          className="pdf-page"
+        >
+          <ReactPdfPage key={currentPage} pageNumber={currentPage} width={800} height={700} />
         </Document>
       </PreviewBody>
       <PreviewFooter
         showZoomPercentage={true}
         trailing={
-          <Button variant="tertiary" onClick={() => setCurrentPage(currentPage + 1)}>
-            Next Page
-          </Button>
+          <Box display="flex" alignItems="center" gap="spacing.4">
+            <Button
+              icon={ArrowLeftIcon}
+              onClick={() => setCurrentPage(currentPage - 1)}
+              variant="tertiary"
+              aria-label="Zoom in"
+              isDisabled={currentPage <= 1}
+            />
+            <Text size="medium" margin="spacing.2">
+              {currentPage} / 8
+            </Text>
+            <Button
+              icon={ArrowRightIcon}
+              onClick={() => setCurrentPage(currentPage + 1)}
+              variant="tertiary"
+              aria-label="Zoom out"
+              isDisabled={currentPage >= 8}
+            />
+          </Box>
         }
       />
     </PreviewWindow>
