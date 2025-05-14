@@ -257,11 +257,6 @@ const StepLineStart = ({
 
   return (
     <Box position="relative" display="flex" flexDirection="column">
-      <StepStraightLineVertical
-        height={itemTopMargin}
-        visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        isDotted={stepProgress === 'none' || stepProgress === 'end'}
-      />
       <StepTopCurveVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
@@ -353,11 +348,6 @@ const StepLineSingleItem = ({
   const spacingTokens = getMarkerLineSpacings(size);
   return (
     <Box position="relative" display="flex" flexDirection="column">
-      <StepStraightLineVertical
-        visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        height={itemTopMargin}
-        isDotted={stepProgress === 'none' || stepProgress === 'end'}
-      />
       <StepTopCurveVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
