@@ -34,11 +34,17 @@ const Page = (): React.ReactElement => {
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import {  } from '@razorpay/blade/components';
+        import { PreviewBody, PreviewHeader, PreviewWindow, PreviewFooter } from '@razorpay/blade/components';
         
         function App() {
           return (
-            <ChatMessage > Hi, from ray! </ChatMessage>
+             <PreviewWindow>
+             <PreviewHeader title="Preview " />
+              <PreviewBody>
+                <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
+              </PreviewBody>
+            <PreviewFooter showZoomPercentage={true} />
+            </PreviewWindow>
           )
         }
 
