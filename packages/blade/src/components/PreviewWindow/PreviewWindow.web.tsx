@@ -170,10 +170,13 @@ const PreviewFooter = assignWithoutSideEffects(_PreviewFooter, {
 const dotSpacing = 16;
 const dotOpacity = 0.1;
 const dotSize = 1;
-const ZoomContainer = styled.div<{ isDragEnabled: boolean }>`
+const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }>`
   width: 100%;
   height: 100%;
-  cursor: ${({ isDragEnabled }) => (isDragEnabled ? 'grab' : 'default')};
+  cursor: ${({ isDragEnabled, isDragging }) => {
+    if (!isDragEnabled) return 'default';
+    return isDragging ? 'grabbing' : 'grab';
+  }};
   background-image: radial-gradient(
     circle,
     rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px,
@@ -185,6 +188,7 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean }>`
     width: 100%;
     height: 100%;
   }
+  transition: cursor 0.1s ease;
 `;
 const PreviewWindow = ({
   children,
@@ -201,6 +205,7 @@ const PreviewWindow = ({
     defaultValue: 1,
   });
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const PinchPanZoomRef = React.useRef<ReactZoomPanPinchRef | null>(null);
   const isControlledZoom = isNumber(zoom);
@@ -312,13 +317,18 @@ const PreviewWindow = ({
           panning={{ disabled: isControlledZoom }}
           pinch={{ disabled: isControlledZoom }}
           wheel={{ disabled: isControlledZoom }}
+          onPanningStart={() => setIsDragging(true)}
+          onPanningStop={() => setIsDragging(false)}
           onPanning={({ state }) => onDragChange?.({ x: state.positionX, y: state.positionY })}
         >
           {() => (
             <BaseBox width="100%" height="100%" position="relative">
               {previewFooter}
               {previewHeader}
-              <ZoomContainer isDragEnabled={!isDragAndZoomDisabled && !isControlledZoom}>
+              <ZoomContainer
+                isDragEnabled={!isDragAndZoomDisabled && !isControlledZoom}
+                isDragging={isDragging}
+              >
                 <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
                   {previewBody}
                 </TransformComponent>
