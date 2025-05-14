@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
-import { List, ListItem, ListItemText, Heading } from '../../src/components';
+import { List, ListItem, ListItemText, Heading, Code } from '../../src/components';
 
 <Meta title="Guides/Blade MCP" />
 
@@ -7,6 +7,52 @@ import { List, ListItem, ListItemText, Heading } from '../../src/components';
 Blade MCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that
 implements Razorpay's Design Guidelines and allows you to build Web Interfaces with AI using Blade Design
 System.
+<br />
+
+<Heading size="large">Available Tools</Heading>
+
+export const toolsData = [
+  {
+    name: 'hi_blade',
+    description:
+      'Provides a welcome message and overview of Blade MCP capabilities when user greets with "hi blade", "hey blade", etc.',
+  },
+  {
+    name: 'create_new_blade_project',
+    description:
+      'Creates a new project using Blade with Vite, React, and TypeScript setup. Should only be called when creating a new project from scratch.',
+  },
+  {
+    name: 'create_blade_cursor_rules',
+    description:
+      "Creates the cursor rules for Blade to help with code generation. Should be called before getting component docs and when the rule file doesn't exist.",
+  },
+  {
+    name: 'get_blade_component_docs',
+    description:
+      'Fetches the Blade Design System documentation for specific components. Useful when adding or modifying components in your project.',
+  },
+];
+
+<table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1.5rem' }}>
+  <thead>
+    <tr style={{ backgroundColor: '#f6f6f9', borderBottom: '2px solid #e8e8ed' }}>
+      <th style={{ padding: '0.75rem 1rem', textAlign: 'left', fontWeight: '600' }}>Tool Name</th>
+      <th style={{ padding: '0.75rem 1rem', textAlign: 'left', fontWeight: '600' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {toolsData.map((tool, index) => (
+      <tr key={index} style={{ borderBottom: '1px solid #e8e8ed' }}>
+        <td style={{ padding: '0.75rem 1rem' }}>
+          <Code size="small">{tool.name}</Code>
+        </td>
+        <td style={{ padding: '0.75rem 1rem' }}>{tool.description}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
 <br />
 
 <Heading size="large">Pre-requisite</Heading>
@@ -30,7 +76,7 @@ Create or update your `mcp.json` file with:
   "mcpServers": {
     "blade-mcp": {
       "command": "npx",
-      "args": ["-y", "--ignore-existing", "@razorpay/blade-mcp@latest"]
+      "args": ["-y", "@razorpay/blade-mcp@latest"]
     }
   }
 }
@@ -45,16 +91,24 @@ Add the following to `claude_desktop_config.json`:
   "mcpServers": {
     "blade-mcp": {
       "command": "npx",
-      "args": ["-y", "--ignore-existing", "@razorpay/blade-mcp@latest"]
+      "args": ["-y", "@razorpay/blade-mcp@latest"]
     }
   }
 }
 ```
 
 > - Learn about how to configure MCP servers in [Claude Desktop](https://modelcontextprotocol.io/quickstart/user)
+> - If you're using `nvm`, you might want to [follow these steps](https://github.com/modelcontextprotocol/servers/issues/64) instead of `npx`
 > - Learn how to install [Claude Desktop](https://claude.ai/download)
 
 <br />
+
+<Heading size="medium">How to use</Heading>
+
+- Follow [Integrations Guide](#integrations) to configure MCP servers in Cursor
+- Open Cursor, Click "Open Project" and select an empty folder
+- Press CMD + I (or CTRL + I) to open Cursor's chat
+- Type "Hi blade" and get started
 
 <Heading size="medium">Usage Example</Heading>
 

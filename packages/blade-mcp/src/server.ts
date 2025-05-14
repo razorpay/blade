@@ -131,7 +131,7 @@ try {
 
             1. Call create_blade_cursor_rules to create the cursor rules.
             2. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.
-            3. Always start the development server using \`npm run dev\` before starting to code
+            3. Always start the development server using \`npm run dev\` (if its not already running) before starting to code
             4. Start coding in App.tsx. use get_blade_docs to get information about the components.
             `,
           },
@@ -213,7 +213,9 @@ try {
               type: 'text',
               text: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
                 ', ',
-              )}. Valid component docs values: ${bladeComponentsList.join(', ')}`,
+              )}. Valid component docs values: ${bladeComponentsList.join(
+                ', ',
+              )}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
             },
           ],
         };

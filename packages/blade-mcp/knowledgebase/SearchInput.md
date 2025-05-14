@@ -59,8 +59,7 @@ This example demonstrates a basic search input with label and help text, showing
 
 ```jsx
 import { useState } from 'react';
-import { SearchInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
+import { SearchInput, Box } from '@razorpay/blade/components';
 
 function BasicSearchExample() {
   const [searchValue, setSearchValue] = useState('');
@@ -99,22 +98,21 @@ This example shows how to integrate SearchInput with Dropdown to display search 
 
 ```jsx
 import { useState, useEffect } from 'react';
-import { SearchInput } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { Dropdown, DropdownOverlay } from '@razorpay/blade/components/Dropdown';
 import {
+  SearchInput,
+  Box,
+  Dropdown,
+  DropdownOverlay,
   ActionList,
   ActionListItem,
   ActionListSection,
   ActionListItemIcon,
-} from '@razorpay/blade/components/ActionList';
-import { Spinner } from '@razorpay/blade/components/Spinner';
-import {
+  Spinner,
   TransactionsIcon,
   SettingsIcon,
   UserIcon,
   HelpCircleIcon,
-} from '@razorpay/blade/components/Icons';
+} from '@razorpay/blade/components';
 
 function SearchWithDropdownExample() {
   const [searchTerm, setSearchTerm] = useState('');

@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.26.0
+
+### Minor Changes
+
+- 06a77475: feat(blade): add orientation in radioGroup and checkbox
+
 ## 12.25.2
 
 ### Patch Changes

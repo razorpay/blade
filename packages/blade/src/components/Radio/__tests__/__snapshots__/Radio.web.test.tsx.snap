@@ -70,7 +70,14 @@ exports[`<Radio /> should accepnt data-analytics attribute 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -249,11 +256,11 @@ exports[`<Radio /> should accepnt data-analytics attribute 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -381,7 +388,14 @@ exports[`<Radio /> should render radio with label 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -560,11 +574,11 @@ exports[`<Radio /> should render radio with label 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -691,7 +705,14 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -861,11 +882,11 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div

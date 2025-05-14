@@ -1,5 +1,17 @@
 # @razorpay/blade-mcp
 
+## 0.1.4
+
+### Patch Changes
+
+- 8af9f264: feat(blade-mcp): tweaks for non-dev personas
+
+## 0.1.3
+
+### Patch Changes
+
+- 6dd10f5c: fix(Inputs): knowledgebase imports
+
 ## 0.1.2
 
 ### Patch Changes
