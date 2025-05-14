@@ -10,12 +10,12 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { Card, CardBody } from '~components/Card';
+import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-pdf/dist/esm/Page/TextLayer.css';
-import { ArrowLeftIcon, ArrowRightIcon, RefreshIcon } from '~components/Icons';
+import { ArrowLeftIcon, ArrowRightIcon } from '~components/Icons';
 
 // Set up the worker
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -74,33 +74,101 @@ const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
     <PreviewWindow>
       <PreviewHeader title="Preview " />
       <PreviewBody>
-        <Card elevation="highRaised" padding="spacing.0">
-          <CardBody>
-            <Box display="flex" flexDirection="row">
-              <img
-                width="300"
-                height="auto"
-                src="https://d6xcmfyh68wv8.cloudfront.net/assets/case-studies/common-card/pg_breathingroom.png"
-                alt="Breathing Room"
-                style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
-              />
-              <Box padding="spacing.7" display="flex" flexDirection="column">
-                <Heading size="large">Breathing Room</Heading>
-                <Text marginTop="spacing.5">
-                  Popular in the startup ecosystem, BreathingRoom.co offers short-term workspaces
-                  conference rooms, training rooms, cabins & hotdesks to individuals and enterprises
-                  on an hourly & monthly basis. BreathingRoom is perfect for a wide range of
-                  professional needs like training sessions, recruitment drives, team offsites, and
-                  client meetings in addition to cost effective office space rentals; great for
-                  setting up remote offices. With a network of over 450 office spaces spread across
-                  Mumbai, Delhi, Bangalore, Pune, Hyderabad and Chennai, BreathingRoom offers
-                  convenient, flexible rental options that can be easily booked through the website
-                  or mobile app.
-                </Text>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="spacing.4"
+          width={{ s: '100%', m: '800px' }}
+        >
+          <Card elevation="highRaised" padding="spacing.0">
+            <CardBody>
+              <Box display="flex" flexDirection="row">
+                <img
+                  width="300"
+                  height="auto"
+                  src="https://d6xcmfyh68wv8.cloudfront.net/assets/case-studies/common-card/pg_breathingroom.png"
+                  alt="Breathing Room"
+                  style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
+                />
+                <Box padding="spacing.7" display="flex" flexDirection="column">
+                  <Heading size="large">Lorem ipsum dolor sit amet</Heading>
+                  <Text marginTop="spacing.5">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </Text>
+                </Box>
               </Box>
-            </Box>
-          </CardBody>
-        </Card>
+            </CardBody>
+          </Card>
+          <Box
+            display="flex"
+            flexDirection="row"
+            gap="spacing.4"
+            justifyContent="space-between"
+            width={{ s: '100%', m: '800px' }}
+          >
+            <Card shouldScaleOnHover width={{ s: '100%', m: '500px' }}>
+              <CardHeader>
+                <CardHeaderLeading
+                  title="Lorem ipsum dolor sit amet"
+                  subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                />
+              </CardHeader>
+              <CardBody>
+                <Box display="flex" flexDirection="column" gap="spacing.4">
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et dolore.
+                  </Text>
+                  <Box display="flex" flexDirection="row" justifyContent="space-between">
+                    <Button
+                      href="https://razorpay.com/payment-links/"
+                      variant="primary"
+                      target="_blank"
+                    >
+                      Get Started
+                    </Button>
+                  </Box>
+                </Box>
+              </CardBody>
+            </Card>
+            <Card shouldScaleOnHover>
+              <CardBody>
+                <img
+                  width="300"
+                  height="auto"
+                  src="https://d6xcmfyh68wv8.cloudfront.net/newsroom-content/uploads/2021/07/New-Project-18-1024x576.jpg"
+                  alt="Breathing Room"
+                  style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
+                />
+              </CardBody>
+            </Card>
+          </Box>
+          <Box display="flex" flexDirection="row" gap="spacing.4">
+            <Card elevation="highRaised" padding="spacing.0">
+              <CardBody>
+                <Box display="flex" flexDirection="row">
+                  <Box padding="spacing.7" display="flex" flexDirection="column">
+                    <Heading size="large">Lorem ipsum dolor sit amet</Heading>
+                    <Text marginTop="spacing.5">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </Text>
+                  </Box>
+                  <img
+                    width="300"
+                    height="auto"
+                    src="https://d6xcmfyh68wv8.cloudfront.net/newsroom-content/uploads/2023/05/Newsroom.png"
+                    alt="Breathing Room"
+                    style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
+                  />
+                </Box>
+              </CardBody>
+            </Card>
+          </Box>
+        </Box>
       </PreviewBody>
       <PreviewFooter showZoomPercentage={true} />
     </PreviewWindow>
