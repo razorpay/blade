@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 import type { AccordionProps } from './types';
 import { throwBladeError } from '~utils/logger';
+import { propValidations } from '~utils/errors';
 
 type AccordionContextState = {
   expandedIndex?: number;
@@ -40,7 +41,9 @@ const useAccordionItemIndex = (): AccordionItemContextState => {
   if (__DEV__) {
     if (!accordionItemContext) {
       throwBladeError({
-        message: 'AccordionItem* components should be only used within AccordionItem',
+        message:
+          propValidations.Accordion
+            .ACCORDION_ITEM_COMPONENTS_SHOULD_BE_ONLY_USED_WITHIN_ACCORDION_ITEM,
         moduleName: 'AccordionContext',
       });
     }

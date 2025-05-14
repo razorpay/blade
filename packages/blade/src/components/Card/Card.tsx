@@ -5,7 +5,7 @@ import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
 import type { CardSpacingValueType, LinkOverlayProps } from './types';
-import { CARD_LINK_OVERLAY_ID } from './constants';
+import { CARD_LINK_OVERLAY_ID, ComponentIds } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -21,23 +21,6 @@ import { isReactNative } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-
-export const ComponentIds = {
-  CardHeader: 'CardHeader',
-  CardHeaderTrailing: 'CardHeaderTrailing',
-  CardHeaderLeading: 'CardHeaderLeading',
-  CardFooter: 'CardFooter',
-  CardFooterTrailing: 'CardFooterTrailing',
-  CardFooterLeading: 'CardFooterLeading',
-  CardBody: 'CardBody',
-  CardHeaderIcon: 'CardHeaderIcon',
-  CardHeaderCounter: 'CardHeaderCounter',
-  CardHeaderBadge: 'CardHeaderBadge',
-  CardHeaderAmount: 'CardHeaderAmount',
-  CardHeaderText: 'CardHeaderText',
-  CardHeaderLink: 'CardHeaderLink',
-  CardHeaderIconButton: 'CardHeaderIconButton',
-};
 
 type CardSurfaceBackgroundColors = `surface.background.gray.${DotNotationToken<
   Theme['colors']['surface']['background']['gray']

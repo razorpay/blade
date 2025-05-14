@@ -11,6 +11,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { propValidations } from '~utils/errors';
 
 const _AccordionButton = ({
   index,
@@ -40,7 +41,7 @@ const _AccordionButton = ({
   if (__DEV__) {
     if (_index && _icon) {
       throwBladeError({
-        message: "showNumberPrefix and icon shouldn't be used together",
+        message: propValidations.Accordion.SHOW_NUMBER_PREFIX_AND_ICON,
         moduleName: 'Accordion',
       });
     }

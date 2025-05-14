@@ -15,6 +15,7 @@ import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { propValidations } from '~utils/errors';
 
 type AccordionItemProps = {
   /**
@@ -97,7 +98,7 @@ const AccordionItem = ({
     ) {
       throwBladeError({
         message:
-          'AccordionItem only allows AccordionItemHeader as first component and AccordionItemBody as second. Check Accordion documentation',
+          propValidations.Accordion.ACCORDION_ITEM_ONLY_ALLOWS_ACCORDION_ITEM_HEADER_AND_BODY,
         moduleName: 'AccordionItem',
       });
     }

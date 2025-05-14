@@ -1,4 +1,5 @@
 import React from 'react';
+import { propValidations } from '~utils/errors';
 import { throwBladeError } from '~utils/logger';
 
 type CardContextType = true | null;
@@ -9,8 +10,9 @@ const useVerifyInsideCard = (componentName: string): CardContextType => {
   if (__DEV__) {
     if (!context) {
       throwBladeError({
-        message: `${componentName} cannot be used outside of Card component`,
         moduleName: 'Card',
+        message: propValidations.Card.CANNOT_BE_USED_OUTSIDE,
+        values: { componentName },
       });
     }
   }

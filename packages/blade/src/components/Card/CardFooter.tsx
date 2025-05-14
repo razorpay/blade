@@ -2,7 +2,7 @@
 import type { ReactElement } from 'react';
 import React from 'react';
 import { useVerifyInsideCard } from './CardContext';
-import { ComponentIds } from './Card';
+import { ComponentIds } from './constants';
 import type { CardSpacingValueType } from './types';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
