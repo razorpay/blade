@@ -70,6 +70,7 @@ import { useBreakpoint } from '~utils/useBreakpoint';
 import { useIsMobile } from '~utils/useIsMobile';
 import { StepGroup, StepItem, StepItemIcon } from '~components/StepGroup';
 import { Divider } from '~components/Divider';
+import { TextArea } from '~components/Input/TextArea';
 
 const Page = (): React.ReactElement => {
   return (
@@ -941,14 +942,19 @@ const GRNSteps = [
     stepNumber: 2,
   },
   {
+    title: 'GRN Details',
+    description: 'Add GRN details and notes',
+    stepNumber: 3,
+  },
+  {
     title: 'Line Item Details',
     description: 'Add line items and quantities',
-    stepNumber: 3,
+    stepNumber: 4,
   },
   {
     title: 'Review GRN Details',
     description: 'Review and confirm GRN details',
-    stepNumber: 4,
+    stepNumber: 5,
   },
 ];
 
@@ -1054,15 +1060,28 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
   const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
-  const [loadingStep, setLoadingStep] = React.useState<number | null>(null);
   const [errors, setErrors] = React.useState<{
     vendor?: string;
     purchaseOrder?: string;
+    grnDetails?: string;
+    date?: string;
   }>({});
+  const [grnDetails, setGrnDetails] = React.useState({
+    grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
+      .toString()
+      .padStart(3, '0')}`,
+    date: new Date().toISOString().split('T')[0],
+    notes: '',
+  });
+  const [alert, setAlert] = React.useState<{
+    type: 'positive' | 'negative';
+    title: string;
+    description: string;
+  } | null>(null);
 
   const handleStepClick = (stepNumber: number): void => {
-    // Only allow clicking on completed steps or the next available step
-    if (stepNumber <= currentStep && completedSteps.includes(stepNumber - 1)) {
+    // Allow clicking on any previous step or the current step
+    if (stepNumber <= currentStep) {
       setCurrentStep(stepNumber);
     }
   };
@@ -1078,6 +1097,17 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
       newErrors.purchaseOrder = 'Please select a purchase order to proceed';
     }
 
+    if (step === 3) {
+      if (!grnDetails.date) {
+        newErrors.date = 'Date is required';
+      } else {
+        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateRegex.test(grnDetails.date)) {
+          newErrors.date = 'Please enter a valid date in YYYY-MM-DD format';
+        }
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -1087,6 +1117,19 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
       if (validateStep(currentStep)) {
         setCompletedSteps((prev) => [...prev, currentStep]);
         setCurrentStep(currentStep + 1);
+        if (currentStep === 3) {
+          setAlert({
+            type: 'positive',
+            title: 'Success!',
+            description: 'GRN details have been saved successfully.',
+          });
+        }
+      } else if (currentStep === 3) {
+        setAlert({
+          type: 'negative',
+          title: 'Validation Failed',
+          description: 'Please fix the errors in the form and try again.',
+        });
       }
     }
   };
@@ -1098,9 +1141,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   };
 
   const getStepIcon = (stepNumber: number): React.ReactElement => {
-    if (loadingStep === stepNumber) {
-      return <StepItemIcon icon={ClockIcon} color="primary" />;
-    }
     if (completedSteps.includes(stepNumber)) {
       return <StepItemIcon icon={CheckIcon} color="positive" />;
     }
@@ -1406,6 +1446,92 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
           <Box
             display="flex"
             flexDirection="column"
+            gap="spacing.4"
+            width="100%"
+            height="100%"
+            justifyContent="space-between"
+          >
+            <Box padding="spacing.7" display="flex" flexDirection="column" gap="spacing.4">
+              <Box>
+                <Heading size="medium">GRN Details</Heading>
+                <Text>Add additional details for this GRN.</Text>
+              </Box>
+              <Divider />
+              {alert && (
+                <Alert
+                  color={alert.type}
+                  title={alert.title}
+                  description={alert.description}
+                  emphasis="subtle"
+                  isDismissible
+                  onDismiss={() => setAlert(null)}
+                  isFullWidth
+                />
+              )}
+              <Box display="flex" flexDirection="column" gap="spacing.4">
+                <TextInput
+                  label="GRN Number"
+                  name="grnNumber"
+                  value={grnDetails.grnNumber}
+                  onChange={({ value }) =>
+                    setGrnDetails((prev) => ({ ...prev, grnNumber: value ?? '' }))
+                  }
+                  isDisabled
+                  helpText="Auto-generated GRN number"
+                />
+                <TextInput
+                  label="Date"
+                  name="date"
+                  value={grnDetails.date}
+                  onChange={({ value }) => {
+                    setGrnDetails((prev) => ({ ...prev, date: value ?? '' }));
+                    if (errors.date) {
+                      setErrors((prev) => ({ ...prev, date: undefined }));
+                    }
+                  }}
+                  placeholder="YYYY-MM-DD"
+                  validationState={errors.date ? 'error' : 'none'}
+                  errorText={errors.date}
+                  helpText="Enter date in YYYY-MM-DD format"
+                />
+                <TextArea
+                  label="Notes"
+                  name="notes"
+                  value={grnDetails.notes}
+                  onChange={({ value }) =>
+                    setGrnDetails((prev) => ({ ...prev, notes: value ?? '' }))
+                  }
+                  numberOfLines={4}
+                  placeholder="Add any additional notes or comments"
+                />
+              </Box>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              marginTop="spacing.4"
+              padding="spacing.4"
+              borderTopColor="surface.border.gray.muted"
+            >
+              <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                Save and Close
+              </Button>
+              <Box display="flex" gap="spacing.4">
+                <Button variant="tertiary" onClick={handlePreviousStep}>
+                  Previous
+                </Button>
+                <Button variant="primary" onClick={handleNextStep}>
+                  Next
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        );
+      case 4:
+        return (
+          <Box
+            display="flex"
+            flexDirection="column"
             justifyContent="space-between"
             gap="spacing.4"
             height="100%"
@@ -1477,7 +1603,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             </Box>
           </Box>
         );
-      case 4:
+      case 5:
         return (
           <Box
             display="flex"
@@ -1496,7 +1622,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               <Box width="800px" height="500px">
                 <PreviewWindow initialZoom={0.5}>
                   <PreviewHeader />
-
                   <PreviewBody>
                     <Box
                       padding="spacing.4"
@@ -1505,7 +1630,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                       gap="spacing.6"
                       backgroundColor="surface.background.gray.intense"
                     >
-                      {/* Vendor Details Section */}
+                      {/* GRN Details Section */}
                       <Box
                         padding="spacing.4"
                         borderBottomWidth="thin"
@@ -1513,12 +1638,14 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                       >
                         <Heading size="large">Goods Receipt Note</Heading>
                         <Text size="small" color="surface.text.gray.muted">
-                          GRN-{new Date().getFullYear()}-
-                          {Math.floor(Math.random() * 1000)
-                            .toString()
-                            .padStart(3, '0')}
+                          {grnDetails.grnNumber}
+                        </Text>
+                        <Text size="small" color="surface.text.gray.muted">
+                          Date: {grnDetails.date}
                         </Text>
                       </Box>
+
+                      {/* Vendor Details Section */}
                       <Box>
                         <Heading size="medium">Vendor Details</Heading>
                         <Box
@@ -1537,9 +1664,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                                   <Text size="small" color="surface.text.gray.muted">
                                     {GRNVendors.find((v) => v.id === selectedVendor)?.email}
                                   </Text>
-                                </Box>
-                                <Box>
-                                  <Text size="small">Date: {new Date().toLocaleDateString()}</Text>
                                 </Box>
                               </Box>
                               <Box
@@ -1594,13 +1718,28 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                                       : 'notice'
                                   }
                                 >
-                                  {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status}
+                                  {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status || ''}
                                 </Badge>
                               </Box>
                             </>
                           )}
                         </Box>
                       </Box>
+
+                      {/* Notes Section */}
+                      {grnDetails.notes && (
+                        <Box>
+                          <Heading size="medium">Notes</Heading>
+                          <Box
+                            marginTop="spacing.3"
+                            padding="spacing.4"
+                            backgroundColor="surface.background.gray.moderate"
+                            borderRadius="medium"
+                          >
+                            <Text>{grnDetails.notes}</Text>
+                          </Box>
+                        </Box>
+                      )}
 
                       {/* Line Items Section */}
                       <Box>
@@ -1722,10 +1861,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                         description={step.description}
                         marker={getStepIcon(step.stepNumber)}
                         isSelected={currentStep === step.stepNumber}
-                        isDisabled={
-                          !completedSteps.includes(step.stepNumber - 1) &&
-                          step.stepNumber !== currentStep
-                        }
+                        isDisabled={step.stepNumber > currentStep}
                         onClick={() => handleStepClick(step.stepNumber)}
                         stepProgress={
                           completedSteps.includes(step.stepNumber)
