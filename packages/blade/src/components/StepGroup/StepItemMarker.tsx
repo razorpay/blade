@@ -63,9 +63,14 @@ const StepItemIndicator = ({ color }: { color: IndicatorProps['color'] }): React
 type StepItemIconProps = {
   icon: IconComponent;
   color: IndicatorProps['color'];
+  isDisabled?: boolean;
 };
 
-const StepItemIcon = ({ icon: Icon, color = 'neutral' }: StepItemIconProps): React.ReactElement => {
+const StepItemIcon = ({
+  icon: Icon,
+  color = 'neutral',
+  isDisabled = false,
+}: StepItemIconProps): React.ReactElement => {
   const { size } = useStepGroup();
   const spacingTokens = getMarkerLineSpacings(size);
 
@@ -78,7 +83,11 @@ const StepItemIcon = ({ icon: Icon, color = 'neutral' }: StepItemIconProps): Rea
       <Icon
         size={iconSizeTokens[size]}
         color={
-          color === 'primary' ? 'surface.icon.primary.normal' : `feedback.icon.${color}.intense`
+          isDisabled
+            ? 'surface.icon.gray.disabled'
+            : color === 'primary'
+            ? 'surface.icon.primary.normal'
+            : `feedback.icon.${color}.intense`
         }
       />
     </MarkerBackgroundCircle>

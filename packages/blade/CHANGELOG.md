@@ -1,5 +1,22 @@
 # @razorpay/blade
 
+## 12.27.0
+
+### Minor Changes
+
+- 0b2b1d7a: fix(create-theme): disabled state colors in createTheme
+- ca378c3c: feat(stepgroup): UI enhancements
+
+### Patch Changes
+
+- bf3c19b0: fix(Tagged Inputs): prevent calling onTagChange twice
+
+## 12.26.0
+
+### Minor Changes
+
+- 06a77475: feat(blade): add orientation in radioGroup and checkbox
+
 ## 12.25.2
 
 ### Patch Changes
