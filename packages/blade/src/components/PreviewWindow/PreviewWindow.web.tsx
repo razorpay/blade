@@ -24,6 +24,8 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 import { useControllableState } from '~utils/useControllable';
+import { componentZIndices } from '~utils/componentZIndices';
+
 const _PreviewHeader = ({
   title,
   _onFullScreen,
@@ -37,7 +39,7 @@ const _PreviewHeader = ({
         position="absolute"
         top="spacing.0"
         right="spacing.2"
-        zIndex={1000}
+        zIndex={componentZIndices.previewPanel}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
@@ -56,7 +58,7 @@ const _PreviewHeader = ({
   }
   return (
     <BaseBox
-      zIndex={1000}
+      zIndex={componentZIndices.previewPanel}
       position="absolute"
       top="spacing.0"
       left="spacing.0"
@@ -122,7 +124,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       left="spacing.0"
       right="spacing.0"
       padding="spacing.5"
-      zIndex={1000}
+      zIndex={componentZIndices.previewPanel}
     >
       <BaseBox>
         {showZoomPercentage ? (
