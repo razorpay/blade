@@ -10,7 +10,14 @@ import type { TableData } from '~components/Table/types';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
-import { FileIcon, CheckIcon, ClockIcon } from '~components/Icons';
+import {
+  FileIcon,
+  CheckIcon,
+  ClockIcon,
+  PhoneIcon,
+  MailIcon,
+  CalendarIcon,
+} from '~components/Icons';
 import { Code } from '~components/Typography/Code';
 import { TableEditableCell } from '~components/Table/TableEditableCell';
 import { Amount } from '~components/Amount';
@@ -61,6 +68,7 @@ import {
 import { useBreakpoint } from '~utils/useBreakpoint';
 import { useIsMobile } from '~utils/useIsMobile';
 import { StepGroup, StepItem, StepItemIcon } from '~components/StepGroup';
+import { Divider } from '~components/Divider';
 
 const Page = (): React.ReactElement => {
   return (
@@ -1013,6 +1021,30 @@ const GRNPurchaseOrders = [
   },
 ];
 
+const RadioCard = ({
+  value,
+  label,
+  children,
+}: {
+  value: string;
+  label: string;
+  children?: React.ReactNode;
+}): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+      <Radio value={value} />
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Box display="flex" flexDirection="row" gap="spacing.4">
+          <Text weight="medium" color="surface.text.gray.subtle">
+            {label}
+          </Text>
+        </Box>
+        {children}
+      </Box>
+    </Box>
+  );
+};
+
 const MultiStepExample: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
@@ -1101,121 +1133,185 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     switch (currentStep) {
       case 1:
         return (
-          <Box display="flex" flexDirection="column" gap="spacing.4">
-            <Heading size="medium">Select Vendor</Heading>
-            <Text>Choose a vendor from the list below to proceed with GRN creation.</Text>
-            <RadioGroup
-              label="Vendors"
-              name="vendor"
-              value={selectedVendor ?? ''}
-              onChange={({ value }) => setSelectedVendor(value)}
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="spacing.4"
+            width="100%"
+            height="100%"
+            justifyContent="space-between"
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              padding="spacing.7"
+              justifyContent="center"
+              alignItems="center"
             >
-              {GRNVendors.map((vendor) => (
-                <Box
-                  key={vendor.id}
-                  padding="spacing.4"
-                  borderWidth="thin"
-                  borderColor={
-                    selectedVendor === vendor.id
-                      ? 'surface.border.primary.normal'
-                      : 'surface.border.gray.muted'
-                  }
-                  borderRadius="medium"
-                  backgroundColor={
-                    selectedVendor === vendor.id
-                      ? 'surface.background.primary.subtle'
-                      : 'surface.background.gray.subtle'
-                  }
-                >
-                  <Radio value={vendor.id}>
-                    <Box display="flex" flexDirection="column" gap="spacing.2">
-                      <Box>
-                        <Text weight="semibold">{vendor.name}</Text>
-                        <Text size="small" color="surface.text.gray.muted">
-                          {vendor.email}
-                        </Text>
-                      </Box>
-                      <Box>
-                        <Text size="small">{vendor.phone}</Text>
-                        <Text size="small">{vendor.address}</Text>
-                      </Box>
-                    </Box>
-                  </Radio>
+              <Box display="flex" flexDirection="column" gap="spacing.4">
+                <Box>
+                  <Heading size="medium">Select Vendor</Heading>
+                  <Text>Choose a vendor from the list below to proceed with GRN creation.</Text>
                 </Box>
-              ))}
-            </RadioGroup>
-            <Box display="flex" justifyContent="space-between" marginTop="spacing.4">
-              <Button
-                variant="tertiary"
-                onClick={handlePreviousStep}
-                isDisabled={currentStep === 1}
-              >
-                Previous
+                <Divider />
+                <RadioGroup
+                  label="Vendors"
+                  name="vendor"
+                  value={selectedVendor ?? ''}
+                  onChange={({ value }) => setSelectedVendor(value)}
+                >
+                  {GRNVendors.map((vendor) => (
+                    <Box
+                      key={vendor.id}
+                      padding="spacing.4"
+                      borderWidth="thin"
+                      borderColor={
+                        selectedVendor === vendor.id
+                          ? 'surface.border.primary.normal'
+                          : 'surface.border.gray.muted'
+                      }
+                      borderRadius="medium"
+                    >
+                      <RadioCard value={vendor.id} label={vendor.name}>
+                        <Box display="flex" gap="spacing.2">
+                          <MailIcon color="interactive.icon.gray.muted" />
+                          <Text size="small" color="surface.text.gray.muted">
+                            {vendor.email} •
+                          </Text>
+                          <PhoneIcon color="interactive.icon.gray.muted" />
+                          <Text size="small" color="surface.text.gray.muted">
+                            {vendor.phone}
+                          </Text>
+                        </Box>
+                      </RadioCard>
+                    </Box>
+                  ))}
+                </RadioGroup>
+              </Box>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              marginTop="spacing.4"
+              padding="spacing.4"
+              borderTopColor="surface.border.gray.muted"
+            >
+              <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                Save and Close
               </Button>
-              <Button onClick={handleNextStep} isDisabled={!selectedVendor}>
-                Next
-              </Button>
+              <Box display="flex" gap="spacing.4">
+                <Button
+                  variant="tertiary"
+                  onClick={handlePreviousStep}
+                  isDisabled={currentStep === 1}
+                >
+                  Previous
+                </Button>
+                <Button variant="primary" onClick={handleNextStep}>
+                  Next
+                </Button>
+              </Box>
             </Box>
           </Box>
         );
       case 2:
         return (
-          <Box display="flex" flexDirection="column" gap="spacing.4">
-            <Heading size="medium">Link PO</Heading>
-            <Text>Select a Purchase Order to link with this GRN.</Text>
-            <Box display="flex" gap="spacing.4">
-              <Box flex={1}>
-                <RadioGroup
-                  label="Purchase Orders"
-                  name="purchaseOrder"
-                  value={selectedPO ?? ''}
-                  onChange={({ value }) => setSelectedPO(value)}
-                >
-                  {GRNPurchaseOrders.map((po) => (
-                    <Box
-                      key={po.id}
-                      padding="spacing.4"
-                      borderWidth="thin"
-                      borderColor={
-                        selectedPO === po.id
-                          ? 'surface.border.primary.normal'
-                          : 'surface.border.gray.muted'
-                      }
-                      borderRadius="medium"
-                      backgroundColor={
-                        selectedPO === po.id
-                          ? 'surface.background.primary.subtle'
-                          : 'surface.background.gray.subtle'
-                      }
-                    >
-                      <Radio value={po.id}>
-                        <Box display="flex" flexDirection="column" gap="spacing.2">
-                          <Box display="flex" justifyContent="space-between" alignItems="center">
-                            <Box>
-                              <Text weight="semibold">{po.number}</Text>
-                              <Text size="small" color="surface.text.gray.muted">
-                                {po.vendor}
-                              </Text>
-                            </Box>
-                            <Badge
-                              size="medium"
-                              color={po.status === 'Approved' ? 'positive' : 'notice'}
-                            >
-                              {po.status}
-                            </Badge>
+          <Box display="flex" width="100%" height="100%" width="100%">
+            <Box display="flex" width="100%" justifyContent="space-between">
+              <Box
+                flex={6}
+                display="flex"
+                flexDirection="column"
+                height="100%"
+                justifyContent="space-between"
+                width="100%"
+              >
+                <Box display="flex" alignItems="center" justifyContent="center" width="100%">
+                  <Box padding="spacing.7" width="500px">
+                    <Heading size="medium">Link PO</Heading>
+                    <Text>Select a Purchase Order to link with this GRN.</Text>
+                    <Box flex={1}>
+                      <RadioGroup
+                        label="Purchase Orders"
+                        name="purchaseOrder"
+                        value={selectedPO ?? ''}
+                        onChange={({ value }) => setSelectedPO(value)}
+                      >
+                        {GRNPurchaseOrders.map((po) => (
+                          <Box
+                            key={po.id}
+                            padding="spacing.4"
+                            borderWidth="thin"
+                            borderColor={
+                              selectedPO === po.id
+                                ? 'surface.border.primary.normal'
+                                : 'surface.border.gray.muted'
+                            }
+                            borderRadius="medium"
+                          >
+                            <RadioCard value={po.id} label={po.number}>
+                              <Box display="flex" flexDirection="column" gap="spacing.2">
+                                <Box display="flex" gap="spacing.2" alignItems="center">
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    {po.vendor}
+                                  </Text>
+                                  <Badge
+                                    size="medium"
+                                    color={po.status === 'Approved' ? 'positive' : 'notice'}
+                                  >
+                                    {po.status || ''}
+                                  </Badge>
+                                </Box>
+                                <Box display="flex" gap="spacing.4">
+                                  <Box display="flex" gap="spacing.2">
+                                    <CalendarIcon color="interactive.icon.gray.muted" />
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      {po.date}
+                                    </Text>
+                                  </Box>
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    •
+                                  </Text>
+
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    {po.items} Items
+                                  </Text>
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    •
+                                  </Text>
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    ₹ {po.amount.toLocaleString()}
+                                  </Text>
+                                </Box>
+                              </Box>
+                            </RadioCard>
                           </Box>
-                          <Box display="flex" gap="spacing.4">
-                            <Text size="small">Date: {po.date}</Text>
-                            <Text size="small">Items: {po.items}</Text>
-                            <Text size="small">Amount: ₹{po.amount.toLocaleString()}</Text>
-                          </Box>
-                        </Box>
-                      </Radio>
+                        ))}
+                      </RadioGroup>
                     </Box>
-                  ))}
-                </RadioGroup>
+                  </Box>
+                </Box>
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  marginTop="spacing.4"
+                  padding="spacing.4"
+                  borderTopColor="surface.border.gray.muted"
+                >
+                  <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                    Save and Close
+                  </Button>
+                  <Box display="flex" gap="spacing.4">
+                    <Button variant="tertiary" onClick={handlePreviousStep}>
+                      Previous
+                    </Button>
+                    <Button variant="primary" onClick={handleNextStep}>
+                      Next
+                    </Button>
+                  </Box>
+                </Box>
               </Box>
-              <Box width="400px">
+              <Box flex={4}>
                 <PreviewWindow isDragAndZoomDisabled>
                   <PreviewBody>
                     <Box
@@ -1274,245 +1370,279 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 </PreviewWindow>
               </Box>
             </Box>
-            <Box display="flex" justifyContent="space-between" marginTop="spacing.4">
-              <Button
-                variant="tertiary"
-                onClick={handlePreviousStep}
-                isDisabled={currentStep === 1}
-              >
-                Previous
-              </Button>
-              <Button onClick={handleNextStep} isDisabled={!selectedPO}>
-                Next
-              </Button>
-            </Box>
           </Box>
         );
       case 3:
         return (
-          <Box display="flex" flexDirection="column" gap="spacing.4">
-            <Heading size="medium">Line Item Details</Heading>
-            <Text>Add line items and quantities for this GRN.</Text>
-            <Table data={tableData}>
-              {(tableData) => (
-                <>
-                  <TableHeader>
-                    <TableHeaderRow>
-                      <TableHeaderCell>Item Name</TableHeaderCell>
-                      <TableHeaderCell>Quantity</TableHeaderCell>
-                      <TableHeaderCell>Unit Price</TableHeaderCell>
-                      <TableHeaderCell>Total Amount</TableHeaderCell>
-                    </TableHeaderRow>
-                  </TableHeader>
-                  <TableBody>
-                    {tableData.map((item) => (
-                      <TableRow key={item.id} item={item}>
-                        <TableCell>{item.name}</TableCell>
-                        <TableCell>{item.quantity}</TableCell>
-                        <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
-                        <TableCell>₹{(item.quantity * item.unitPrice).toLocaleString()}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                  <TableFooter>
-                    <TableFooterRow>
-                      <TableFooterCell>Total Amount</TableFooterCell>
-                      <TableFooterCell>-</TableFooterCell>
-                      <TableFooterCell>-</TableFooterCell>
-                      <TableFooterCell>
-                        ₹
-                        {tableData
-                          .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
-                          .toLocaleString()}
-                      </TableFooterCell>
-                    </TableFooterRow>
-                  </TableFooter>
-                </>
-              )}
-            </Table>
-            <Box display="flex" justifyContent="space-between" marginTop="spacing.4">
-              <Button
-                variant="tertiary"
-                onClick={handlePreviousStep}
-                isDisabled={currentStep === 1}
-              >
-                Previous
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+            gap="spacing.4"
+            height="100%"
+          >
+            <Box padding="spacing.7" display="flex" flexDirection="column" gap="spacing.4">
+              <Box>
+                <Heading size="medium">Line Item Details</Heading>
+                <Text>Add line items and quantities for this GRN.</Text>
+              </Box>
+              <Divider />
+              <Table data={tableData}>
+                {(tableData) => (
+                  <>
+                    <TableHeader>
+                      <TableHeaderRow>
+                        <TableHeaderCell>Item Name</TableHeaderCell>
+                        <TableHeaderCell>Quantity</TableHeaderCell>
+                        <TableHeaderCell>Unit Price</TableHeaderCell>
+                        <TableHeaderCell>Total Amount</TableHeaderCell>
+                      </TableHeaderRow>
+                    </TableHeader>
+                    <TableBody>
+                      {tableData.map((item) => (
+                        <TableRow key={item.id} item={item}>
+                          <TableCell>{item.name}</TableCell>
+                          <TableCell>{item.quantity}</TableCell>
+                          <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
+                          <TableCell>
+                            ₹{(item.quantity * item.unitPrice).toLocaleString()}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                    <TableFooter>
+                      <TableFooterRow>
+                        <TableFooterCell>Total Amount</TableFooterCell>
+                        <TableFooterCell>-</TableFooterCell>
+                        <TableFooterCell>-</TableFooterCell>
+                        <TableFooterCell>
+                          ₹
+                          {tableData
+                            .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
+                            .toLocaleString()}
+                        </TableFooterCell>
+                      </TableFooterRow>
+                    </TableFooter>
+                  </>
+                )}
+              </Table>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              marginTop="spacing.4"
+              padding="spacing.4"
+              borderTopColor="surface.border.gray.muted"
+            >
+              <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                Save and Close
               </Button>
-              <Button onClick={handleNextStep}>Next</Button>
+              <Box display="flex" gap="spacing.4">
+                <Button variant="tertiary" onClick={handlePreviousStep}>
+                  Previous
+                </Button>
+                <Button variant="primary" onClick={handleNextStep}>
+                  Next
+                </Button>
+              </Box>
             </Box>
           </Box>
         );
       case 4:
         return (
-          <Box display="flex" flexDirection="column" gap="spacing.4">
-            <Heading size="medium">Review GRN Details</Heading>
-            <Text>Review and confirm all GRN details before submission.</Text>
-            <Box width="500px" height="500px">
-              <PreviewWindow initialZoom={0.5}>
-                <PreviewHeader />
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="spacing.4"
+            width="100%"
+            height="100%"
+            justifyContent="space-between"
+          >
+            <Box padding="spacing.7" display="flex" flexDirection="column" gap="spacing.4">
+              <Box display="flex" flexDirection="column" gap="spacing.2">
+                <Heading size="medium">Review GRN Details</Heading>
+                <Text>Review and confirm all GRN details before submission.</Text>
+              </Box>
+              <Divider />
+              <Box width="800px" height="500px">
+                <PreviewWindow initialZoom={0.5}>
+                  <PreviewHeader />
 
-                <PreviewBody>
-                  <Box
-                    padding="spacing.4"
-                    display="flex"
-                    flexDirection="column"
-                    gap="spacing.6"
-                    backgroundColor="surface.background.gray.intense"
-                  >
-                    {/* Vendor Details Section */}
+                  <PreviewBody>
                     <Box
                       padding="spacing.4"
-                      borderBottomWidth="thin"
-                      borderBottomColor="surface.border.gray.muted"
+                      display="flex"
+                      flexDirection="column"
+                      gap="spacing.6"
+                      backgroundColor="surface.background.gray.intense"
                     >
-                      <Heading size="large">Goods Receipt Note</Heading>
-                      <Text size="small" color="surface.text.gray.muted">
-                        GRN-{new Date().getFullYear()}-
-                        {Math.floor(Math.random() * 1000)
-                          .toString()
-                          .padStart(3, '0')}
-                      </Text>
-                    </Box>
-                    <Box>
-                      <Heading size="medium">Vendor Details</Heading>
+                      {/* Vendor Details Section */}
                       <Box
-                        marginTop="spacing.3"
                         padding="spacing.4"
-                        backgroundColor="surface.background.gray.moderate"
-                        borderRadius="medium"
+                        borderBottomWidth="thin"
+                        borderBottomColor="surface.border.gray.muted"
                       >
-                        {selectedVendor && (
-                          <>
-                            <Box display="flex" justifyContent="space-between">
-                              <Box>
-                                <Text weight="semibold" size="large">
-                                  {GRNVendors.find((v) => v.id === selectedVendor)?.name}
-                                </Text>
-                                <Text size="small" color="surface.text.gray.muted">
-                                  {GRNVendors.find((v) => v.id === selectedVendor)?.email}
-                                </Text>
-                              </Box>
-                              <Box>
-                                <Text size="small">Date: {new Date().toLocaleDateString()}</Text>
-                              </Box>
-                            </Box>
-                            <Box
-                              marginTop="spacing.3"
-                              display="flex"
-                              flexDirection="column"
-                              gap="spacing.2"
-                            >
-                              <Text size="small">
-                                Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
-                              </Text>
-                              <Text size="small">
-                                Address: {GRNVendors.find((v) => v.id === selectedVendor)?.address}
-                              </Text>
-                            </Box>
-                          </>
-                        )}
+                        <Heading size="large">Goods Receipt Note</Heading>
+                        <Text size="small" color="surface.text.gray.muted">
+                          GRN-{new Date().getFullYear()}-
+                          {Math.floor(Math.random() * 1000)
+                            .toString()
+                            .padStart(3, '0')}
+                        </Text>
                       </Box>
-                    </Box>
-
-                    {/* PO Details Section */}
-                    <Box>
-                      <Heading size="medium">Purchase Order Details</Heading>
-                      <Box
-                        marginTop="spacing.3"
-                        padding="spacing.4"
-                        backgroundColor="surface.background.gray.moderate"
-                        borderRadius="medium"
-                      >
-                        {selectedPO && (
-                          <>
-                            <Box display="flex" justifyContent="space-between" alignItems="center">
-                              <Box>
-                                <Text weight="semibold" size="large">
-                                  {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
-                                </Text>
-                                <Text size="small" color="surface.text.gray.muted">
-                                  Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
-                                </Text>
-                              </Box>
-                              <Badge
-                                size="medium"
-                                color={
-                                  GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
-                                  'Approved'
-                                    ? 'positive'
-                                    : 'notice'
-                                }
-                              >
-                                {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status}
-                              </Badge>
-                            </Box>
-                          </>
-                        )}
-                      </Box>
-                    </Box>
-
-                    {/* Line Items Section */}
-                    <Box>
-                      <Heading size="medium">Line Items</Heading>
-                      <Box marginTop="spacing.3">
-                        <Table data={tableData}>
-                          {(tableData) => (
+                      <Box>
+                        <Heading size="medium">Vendor Details</Heading>
+                        <Box
+                          marginTop="spacing.3"
+                          padding="spacing.4"
+                          backgroundColor="surface.background.gray.moderate"
+                          borderRadius="medium"
+                        >
+                          {selectedVendor && (
                             <>
-                              <TableHeader>
-                                <TableHeaderRow>
-                                  <TableHeaderCell>Item Name</TableHeaderCell>
-                                  <TableHeaderCell>Quantity</TableHeaderCell>
-                                  <TableHeaderCell>Unit Price</TableHeaderCell>
-                                  <TableHeaderCell>Total Amount</TableHeaderCell>
-                                </TableHeaderRow>
-                              </TableHeader>
-                              <TableBody>
-                                {tableData.map((item) => (
-                                  <TableRow key={item.id} item={item}>
-                                    <TableCell>{item.name}</TableCell>
-                                    <TableCell>{item.quantity}</TableCell>
-                                    <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
-                                    <TableCell>
-                                      ₹{(item.quantity * item.unitPrice).toLocaleString()}
-                                    </TableCell>
-                                  </TableRow>
-                                ))}
-                              </TableBody>
-                              <TableFooter>
-                                <TableFooterRow>
-                                  <TableFooterCell>Total Amount</TableFooterCell>
-                                  <TableFooterCell>-</TableFooterCell>
-                                  <TableFooterCell>-</TableFooterCell>
-                                  <TableFooterCell>
-                                    ₹
-                                    {tableData
-                                      .reduce(
-                                        (sum, item) => sum + item.quantity * item.unitPrice,
-                                        0,
-                                      )
-                                      .toLocaleString()}
-                                  </TableFooterCell>
-                                </TableFooterRow>
-                              </TableFooter>
+                              <Box display="flex" justifyContent="space-between">
+                                <Box>
+                                  <Text weight="semibold" size="large">
+                                    {GRNVendors.find((v) => v.id === selectedVendor)?.name}
+                                  </Text>
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    {GRNVendors.find((v) => v.id === selectedVendor)?.email}
+                                  </Text>
+                                </Box>
+                                <Box>
+                                  <Text size="small">Date: {new Date().toLocaleDateString()}</Text>
+                                </Box>
+                              </Box>
+                              <Box
+                                marginTop="spacing.3"
+                                display="flex"
+                                flexDirection="column"
+                                gap="spacing.2"
+                              >
+                                <Text size="small">
+                                  Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
+                                </Text>
+                                <Text size="small">
+                                  Address:{' '}
+                                  {GRNVendors.find((v) => v.id === selectedVendor)?.address}
+                                </Text>
+                              </Box>
                             </>
                           )}
-                        </Table>
+                        </Box>
+                      </Box>
+
+                      {/* PO Details Section */}
+                      <Box>
+                        <Heading size="medium">Purchase Order Details</Heading>
+                        <Box
+                          marginTop="spacing.3"
+                          padding="spacing.4"
+                          backgroundColor="surface.background.gray.moderate"
+                          borderRadius="medium"
+                        >
+                          {selectedPO && (
+                            <>
+                              <Box
+                                display="flex"
+                                justifyContent="space-between"
+                                alignItems="center"
+                              >
+                                <Box>
+                                  <Text weight="semibold" size="large">
+                                    {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
+                                  </Text>
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
+                                  </Text>
+                                </Box>
+                                <Badge
+                                  size="medium"
+                                  color={
+                                    GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
+                                    'Approved'
+                                      ? 'positive'
+                                      : 'notice'
+                                  }
+                                >
+                                  {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status}
+                                </Badge>
+                              </Box>
+                            </>
+                          )}
+                        </Box>
+                      </Box>
+
+                      {/* Line Items Section */}
+                      <Box>
+                        <Heading size="medium">Line Items</Heading>
+                        <Box marginTop="spacing.3">
+                          <Table data={tableData}>
+                            {(tableData) => (
+                              <>
+                                <TableHeader>
+                                  <TableHeaderRow>
+                                    <TableHeaderCell>Item Name</TableHeaderCell>
+                                    <TableHeaderCell>Quantity</TableHeaderCell>
+                                    <TableHeaderCell>Unit Price</TableHeaderCell>
+                                    <TableHeaderCell>Total Amount</TableHeaderCell>
+                                  </TableHeaderRow>
+                                </TableHeader>
+                                <TableBody>
+                                  {tableData.map((item) => (
+                                    <TableRow key={item.id} item={item}>
+                                      <TableCell>{item.name}</TableCell>
+                                      <TableCell>{item.quantity}</TableCell>
+                                      <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
+                                      <TableCell>
+                                        ₹{(item.quantity * item.unitPrice).toLocaleString()}
+                                      </TableCell>
+                                    </TableRow>
+                                  ))}
+                                </TableBody>
+                                <TableFooter>
+                                  <TableFooterRow>
+                                    <TableFooterCell>Total Amount</TableFooterCell>
+                                    <TableFooterCell>-</TableFooterCell>
+                                    <TableFooterCell>-</TableFooterCell>
+                                    <TableFooterCell>
+                                      ₹
+                                      {tableData
+                                        .reduce(
+                                          (sum, item) => sum + item.quantity * item.unitPrice,
+                                          0,
+                                        )
+                                        .toLocaleString()}
+                                    </TableFooterCell>
+                                  </TableFooterRow>
+                                </TableFooter>
+                              </>
+                            )}
+                          </Table>
+                        </Box>
                       </Box>
                     </Box>
-                  </Box>
-                </PreviewBody>
-                <PreviewFooter />
-              </PreviewWindow>
+                  </PreviewBody>
+                  <PreviewFooter />
+                </PreviewWindow>
+              </Box>
             </Box>
-            <Box display="flex" justifyContent="space-between" marginTop="spacing.4">
-              <Button
-                variant="tertiary"
-                onClick={handlePreviousStep}
-                isDisabled={currentStep === 1}
-              >
-                Previous
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              marginTop="spacing.4"
+              padding="spacing.4"
+              borderTopColor="surface.border.gray.muted"
+            >
+              <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                Save and Close
               </Button>
-              <Button variant="primary">Submit GRN</Button>
+              <Box display="flex" gap="spacing.4">
+                <Button variant="tertiary" onClick={handlePreviousStep}>
+                  Previous
+                </Button>
+                <Button variant="primary">Submit GRN</Button>
+              </Box>
             </Box>
           </Box>
         );
@@ -1549,9 +1679,9 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
           <ModalHeader title="New GRN" />
           <ModalBody height="100%" padding="spacing.0">
             <Box width="100%" height="100%" display="flex" flexDirection="column">
-              <Box display="flex" flex={1} gap="spacing.4">
+              <Box display="flex" flex={1}>
                 <Box
-                  width="30%"
+                  width="300px"
                   padding="spacing.7"
                   backgroundColor="surface.background.gray.moderate"
                 >
@@ -1579,7 +1709,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                     ))}
                   </StepGroup>
                 </Box>
-                <Box width="70%" padding="spacing.7" display="flex" flexDirection="column">
+                <Box width="100%" display="flex" flexDirection="column">
                   <Box flex={1} overflow="auto">
                     {renderStepContent()}
                   </Box>
