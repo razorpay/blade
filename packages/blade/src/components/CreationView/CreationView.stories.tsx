@@ -1291,7 +1291,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                                     {po.status || ''}
                                   </Badge>
                                 </Box>
-                                <Box display="flex" gap="spacing.4">
+                                <Box display="flex" gap="spacing.2">
                                   <Box display="flex" gap="spacing.2">
                                     <CalendarIcon color="interactive.icon.gray.muted" />
                                     <Text size="small" color="surface.text.gray.muted">
