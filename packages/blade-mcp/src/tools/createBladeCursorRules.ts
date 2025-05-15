@@ -7,13 +7,13 @@ import { BLADE_CURSOR_RULES_FILE_PATH, hasOutDatedRules, CURSOR_RULES_VERSION } 
 const createBladeCursorRulesDescription =
   'Creates the cursor rules for blade to help with code generation. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
 
-const createCursorRulesSchema = {
+const createBladeCursorRulesSchema = {
   currentProjectRootDirectory: z
     .string()
     .describe("The working root directory of the consumer's project"),
 };
 
-const createBladeCursorRulesCallback: ToolCallback<typeof createCursorRulesSchema> = ({
+const createBladeCursorRulesCallback: ToolCallback<typeof createBladeCursorRulesSchema> = ({
   currentProjectRootDirectory,
 }) => {
   const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
@@ -53,6 +53,6 @@ const createBladeCursorRulesCallback: ToolCallback<typeof createCursorRulesSchem
 
 export {
   createBladeCursorRulesCallback,
-  createCursorRulesSchema,
+  createBladeCursorRulesSchema,
   createBladeCursorRulesDescription,
 };

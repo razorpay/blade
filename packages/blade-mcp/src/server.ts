@@ -9,9 +9,9 @@ import {
 } from './tools/createNewProject.js';
 import {
   createBladeCursorRulesCallback,
-  createCursorRulesSchema,
+  createBladeCursorRulesSchema,
   createBladeCursorRulesDescription,
-} from './tools/createCursorRules.js';
+} from './tools/createBladeCursorRules.js';
 import {
   getBladeComponentDocsCallback,
   getBladeComponentDocsSchema,
@@ -38,7 +38,7 @@ try {
   server.tool(
     'create_blade_cursor_rules',
     createBladeCursorRulesDescription,
-    createCursorRulesSchema,
+    createBladeCursorRulesSchema,
     createBladeCursorRulesCallback,
   );
 
