@@ -1320,7 +1320,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
         <Text>Review and confirm all GRN details before submission.</Text>
       </Box>
       <Divider />
-      <Box width="100%">
+      <Box width={isMobile ? '100%' : '50%'} height={isMobile ? '100%' : '400px'}>
         <PreviewWindow initialZoom={0.5}>
           <PreviewHeader />
           <PreviewBody>
@@ -1702,64 +1702,66 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   </Box>
                 )}
               </Box>
-              <Box flex={4}>
-                <PreviewWindow isDragAndZoomDisabled>
-                  <PreviewBody>
-                    <Box
-                      padding="spacing.4"
-                      display="flex"
-                      flexDirection="column"
-                      gap="spacing.4"
-                      backgroundColor="surface.background.gray.moderate"
-                    >
-                      {selectedVendor && (
-                        <>
-                          <Box>
-                            <Text weight="semibold" size="large">
-                              {GRNVendors.find((v) => v.id === selectedVendor)?.name}
+              {!isMobile && (
+                <Box flex={4}>
+                  <PreviewWindow isDragAndZoomDisabled>
+                    <PreviewBody>
+                      <Box
+                        padding="spacing.4"
+                        display="flex"
+                        flexDirection="column"
+                        gap="spacing.4"
+                        backgroundColor="surface.background.gray.moderate"
+                      >
+                        {selectedVendor && (
+                          <>
+                            <Box>
+                              <Text weight="semibold" size="large">
+                                {GRNVendors.find((v) => v.id === selectedVendor)?.name}
+                              </Text>
+                              <Text size="small" color="surface.text.gray.muted">
+                                {GRNVendors.find((v) => v.id === selectedVendor)?.email}
+                              </Text>
+                            </Box>
+                            <Box display="flex" flexDirection="column" gap="spacing.2">
+                              <Text size="small">
+                                Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
+                              </Text>
+                              <Text size="small">
+                                Address: {GRNVendors.find((v) => v.id === selectedVendor)?.address}
+                              </Text>
+                            </Box>
+                          </>
+                        )}
+                        {selectedPO && (
+                          <Box
+                            marginTop="spacing.4"
+                            paddingTop="spacing.4"
+                            borderTopWidth="thin"
+                            borderTopColor="surface.border.gray.muted"
+                          >
+                            <Text weight="semibold" size="medium">
+                              Selected PO
                             </Text>
-                            <Text size="small" color="surface.text.gray.muted">
-                              {GRNVendors.find((v) => v.id === selectedVendor)?.email}
-                            </Text>
+                            <Box marginTop="spacing.2">
+                              <Text size="small">
+                                PO Number:{' '}
+                                {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
+                              </Text>
+                              <Text size="small">
+                                Amount: ₹
+                                {GRNPurchaseOrders.find(
+                                  (p) => p.id === selectedPO,
+                                )?.amount.toLocaleString()}
+                              </Text>
+                            </Box>
                           </Box>
-                          <Box display="flex" flexDirection="column" gap="spacing.2">
-                            <Text size="small">
-                              Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
-                            </Text>
-                            <Text size="small">
-                              Address: {GRNVendors.find((v) => v.id === selectedVendor)?.address}
-                            </Text>
-                          </Box>
-                        </>
-                      )}
-                      {selectedPO && (
-                        <Box
-                          marginTop="spacing.4"
-                          paddingTop="spacing.4"
-                          borderTopWidth="thin"
-                          borderTopColor="surface.border.gray.muted"
-                        >
-                          <Text weight="semibold" size="medium">
-                            Selected PO
-                          </Text>
-                          <Box marginTop="spacing.2">
-                            <Text size="small">
-                              PO Number:{' '}
-                              {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
-                            </Text>
-                            <Text size="small">
-                              Amount: ₹
-                              {GRNPurchaseOrders.find(
-                                (p) => p.id === selectedPO,
-                              )?.amount.toLocaleString()}
-                            </Text>
-                          </Box>
-                        </Box>
-                      )}
-                    </Box>
-                  </PreviewBody>
-                </PreviewWindow>
-              </Box>
+                        )}
+                      </Box>
+                    </PreviewBody>
+                  </PreviewWindow>
+                </Box>
+              )}
             </Box>
           </Box>
         );
@@ -1940,9 +1942,9 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     }
   };
 
-  // In the footer, show Preview button on mobile for step 2 and 4
+  // In the footer, show Preview button on mobile for last step
   const renderFooter = (): React.ReactElement => {
-    const showPreview = isMobile && (currentStep === 2 || currentStep === 4);
+    const showPreview = isMobile && currentStep === lastStep;
     return (
       <Box
         display="flex"
@@ -1968,14 +1970,21 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
           />
         )}
         <Box display="flex" gap="spacing.4" justifyContent="space-between">
-          <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
-            Previous
-          </Button>
-          {showPreview && (
-            <Button variant="tertiary" onClick={() => setIsPreviewOpen(true)}>
-              Preview
+          <Box display="flex" gap="spacing.2">
+            {showPreview && (
+              <Button
+                variant="tertiary"
+                icon={FileIcon}
+                onClick={() => setIsPreviewOpen(true)}
+                iconPosition="left"
+              >
+                Preview
+              </Button>
+            )}
+            <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
+              Previous
             </Button>
-          )}
+          </Box>
           <Button variant="primary" onClick={handleNextStep}>
             {currentStep === lastStep ? 'Submit GRN' : 'Next'}
           </Button>
@@ -2075,14 +2084,16 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             </Box>
             {/* Navigation buttons always at bottom */}
             {renderFooter()}
-            {/* Preview Modal for mobile */}
-            {isPreviewOpen && (
-              <Modal isOpen onDismiss={() => setIsPreviewOpen(false)} size="full">
-                <ModalHeader title="Review GRN Details" />
-                <ModalBody height="100%" padding="spacing.0">
-                  {renderReviewContent()}
-                </ModalBody>
-              </Modal>
+            {/* Preview BottomSheet for mobile */}
+            {isPreviewOpen && isMobile && (
+              <BottomSheet
+                isOpen={isPreviewOpen}
+                onDismiss={() => setIsPreviewOpen(false)}
+                snapPoints={[0.9, 0.9, 0.9]}
+              >
+                <BottomSheetHeader title="Review GRN Details" />
+                <BottomSheetBody padding="spacing.0">{renderReviewContent()}</BottomSheetBody>
+              </BottomSheet>
             )}
           </Box>
         )
