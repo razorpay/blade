@@ -898,30 +898,144 @@ const DefaultExample: StoryFn<typeof Modal> = (args) => {
     <Box>
       <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
       {isMobile ? (
-        <>
-          <BottomSheet
-            isOpen={isOpen}
-            onDismiss={() => setIsOpen(false)}
-            snapPoints={[0.75, 0.75, 0.75]}
+        isOpen && (
+          <Box
+            width="100%"
+            minHeight="100%"
+            backgroundColor="surface.background.gray.moderate"
+            display="flex"
+            flexDirection="column"
+            position="fixed"
+            top="spacing.0"
+            left="spacing.0"
+            zIndex={1000}
           >
-            <BottomSheetHeader title="Create QR Code" />
-            <BottomSheetBody>{renderContent({ isMobile })}</BottomSheetBody>
-            <BottomSheetFooter>{renderFooter({ isMobile })}</BottomSheetFooter>
-          </BottomSheet>
-          <BottomSheet
-            isOpen={isPreviewOpen}
-            onDismiss={() => setIsPreviewOpen(false)}
-            snapPoints={[1, 1, 1]}
-          >
-            <BottomSheetHeader title="QR Code Preview" />
-            <BottomSheetBody>{renderPreview()}</BottomSheetBody>
-          </BottomSheet>
-        </>
+            {/* Header with current step name */}
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              padding="spacing.4"
+              backgroundColor="surface.background.gray.subtle"
+              borderBottomWidth="thin"
+              borderBottomColor="surface.border.gray.muted"
+              position="relative"
+            >
+              <Button
+                variant="tertiary"
+                size="small"
+                onClick={() => setIsOpen(false)}
+                accessibilityLabel="Close"
+              >
+                ×
+              </Button>
+              <Box flex={1} display="flex" justifyContent="center">
+                <Button
+                  variant="tertiary"
+                  size="small"
+                  onClick={() => setShowStepGroup((prev: boolean) => !prev)}
+                >
+                  {currentStepObj?.title}
+                </Button>
+              </Box>
+              <Box width="spacing.10" /> {/* Spacer for symmetry */}
+              {/* StepGroup dropdown/overlay */}
+              {showStepGroup && (
+                <Box
+                  position="absolute"
+                  top="100%"
+                  left="spacing.0"
+                  width="100%"
+                  backgroundColor="surface.background.gray.subtle"
+                  zIndex={1100}
+                  borderBottomLeftRadius="medium"
+                  borderBottomRightRadius="medium"
+                >
+                  <StepGroup orientation="vertical" size="medium">
+                    {GRNSteps.filter((s) => s.stepNumber !== 5).map((step) => (
+                      <StepItem
+                        key={step.stepNumber}
+                        title={step.title}
+                        description={step.description}
+                        marker={getStepIcon(step.stepNumber)}
+                        isSelected={currentStep === step.stepNumber}
+                        isDisabled={step.stepNumber > currentStep}
+                        onClick={() => {
+                          if (step.stepNumber <= currentStep) {
+                            setCurrentStep(step.stepNumber);
+                            setShowStepGroup(false);
+                          }
+                        }}
+                        stepProgress={
+                          completedSteps.includes(step.stepNumber)
+                            ? 'full'
+                            : currentStep === step.stepNumber
+                            ? 'start'
+                            : 'none'
+                        }
+                      />
+                    ))}
+                  </StepGroup>
+                </Box>
+              )}
+            </Box>
+            {/* Step content */}
+            <Box flex={1} overflow="auto" padding="spacing.4">
+              {renderStepContent(isMobile)}
+            </Box>
+            {/* Navigation buttons always at bottom */}
+            {renderFooter({ isMobile })}
+            {/* Preview Modal for mobile */}
+            {isPreviewOpen && (
+              <Modal isOpen onDismiss={() => setIsPreviewOpen(false)} size="full">
+                <ModalHeader title="Review GRN Details" />
+                <ModalBody height="100%" padding="spacing.0">
+                  {renderReviewContent()}
+                </ModalBody>
+              </Modal>
+            )}
+          </Box>
+        )
       ) : (
-        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
-          <ModalHeader title="Create QR Code" />
-          <ModalBody>{renderContent({ isMobile })}</ModalBody>
-          <ModalFooter>{renderFooter({ isMobile })}</ModalFooter>
+        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
+          <ModalHeader title="New GRN" />
+          <ModalBody height="100%" padding="spacing.0">
+            <Box width="100%" height="100%" display="flex" flexDirection="column">
+              <Box display="flex" flex={1}>
+                <Box
+                  width="300px"
+                  padding="spacing.7"
+                  backgroundColor="surface.background.gray.moderate"
+                >
+                  <StepGroup orientation="vertical" size="medium">
+                    {GRNSteps.map((step) => (
+                      <StepItem
+                        key={step.stepNumber}
+                        title={step.title}
+                        description={step.description}
+                        marker={getStepIcon(step.stepNumber)}
+                        isSelected={currentStep === step.stepNumber}
+                        isDisabled={step.stepNumber > currentStep}
+                        onClick={() => handleStepClick(step.stepNumber)}
+                        stepProgress={
+                          completedSteps.includes(step.stepNumber)
+                            ? 'full'
+                            : currentStep === step.stepNumber
+                            ? 'start'
+                            : 'none'
+                        }
+                      />
+                    ))}
+                  </StepGroup>
+                </Box>
+                <Box width="100%" display="flex" flexDirection="column">
+                  <Box flex={1} overflow="auto">
+                    {renderStepContent(isMobile)}
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </ModalBody>
         </Modal>
       )}
     </Box>
@@ -1665,7 +1779,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 <Text>Add additional details for this GRN.</Text>
               </Box>
               <Divider />
-              {alert && (
+              {!isMobile && alert && (
                 <Alert
                   color={alert.type}
                   title={alert.title}
@@ -1827,13 +1941,13 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   };
 
   // In the footer, show Preview button on mobile for step 2 and 4
-  const renderFooter = () => {
+  const renderFooter = (): React.ReactElement => {
     const showPreview = isMobile && (currentStep === 2 || currentStep === 4);
     return (
       <Box
         display="flex"
+        flexDirection="column"
         gap="spacing.4"
-        justifyContent="space-between"
         padding="spacing.4"
         backgroundColor="surface.background.gray.subtle"
         borderTopWidth="thin"
@@ -1842,17 +1956,30 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
         bottom="spacing.0"
         zIndex={1001}
       >
-        <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
-          Previous
-        </Button>
-        {showPreview && (
-          <Button variant="tertiary" onClick={() => setIsPreviewOpen(true)}>
-            Preview
-          </Button>
+        {isMobile && alert && (
+          <Alert
+            color={alert.type}
+            title={alert.title}
+            description={alert.description}
+            emphasis="subtle"
+            isDismissible
+            onDismiss={() => setAlert(null)}
+            isFullWidth
+          />
         )}
-        <Button variant="primary" onClick={handleNextStep}>
-          {currentStep === lastStep ? 'Submit GRN' : 'Next'}
-        </Button>
+        <Box display="flex" gap="spacing.4" justifyContent="space-between">
+          <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
+            Previous
+          </Button>
+          {showPreview && (
+            <Button variant="tertiary" onClick={() => setIsPreviewOpen(true)}>
+              Preview
+            </Button>
+          )}
+          <Button variant="primary" onClick={handleNextStep}>
+            {currentStep === lastStep ? 'Submit GRN' : 'Next'}
+          </Button>
+        </Box>
       </Box>
     );
   };
@@ -1907,16 +2034,15 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 <Box
                   position="absolute"
                   top="100%"
-                  left={0}
+                  left="spacing.0"
                   width="100%"
                   backgroundColor="surface.background.gray.subtle"
-                  boxShadow="elevation.2"
                   zIndex={1100}
                   borderBottomLeftRadius="medium"
                   borderBottomRightRadius="medium"
                 >
                   <StepGroup orientation="vertical" size="medium">
-                    {visibleSteps.map((step) => (
+                    {GRNSteps.filter((s) => s.stepNumber !== 5).map((step) => (
                       <StepItem
                         key={step.stepNumber}
                         title={step.title}
@@ -1961,49 +2087,46 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
           </Box>
         )
       ) : (
-        <Box>
-          <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
-          <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
-            <ModalHeader title="New GRN" />
-            <ModalBody height="100%" padding="spacing.0">
-              <Box width="100%" height="100%" display="flex" flexDirection="column">
-                <Box display="flex" flex={1}>
-                  <Box
-                    width="300px"
-                    padding="spacing.7"
-                    backgroundColor="surface.background.gray.moderate"
-                  >
-                    <StepGroup orientation="vertical" size="medium">
-                      {GRNSteps.map((step) => (
-                        <StepItem
-                          key={step.stepNumber}
-                          title={step.title}
-                          description={step.description}
-                          marker={getStepIcon(step.stepNumber)}
-                          isSelected={currentStep === step.stepNumber}
-                          isDisabled={step.stepNumber > currentStep}
-                          onClick={() => handleStepClick(step.stepNumber)}
-                          stepProgress={
-                            completedSteps.includes(step.stepNumber)
-                              ? 'full'
-                              : currentStep === step.stepNumber
-                              ? 'start'
-                              : 'none'
-                          }
-                        />
-                      ))}
-                    </StepGroup>
-                  </Box>
-                  <Box width="100%" display="flex" flexDirection="column">
-                    <Box flex={1} overflow="auto">
-                      {renderStepContent(isMobile)}
-                    </Box>
+        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
+          <ModalHeader title="New GRN" />
+          <ModalBody height="100%" padding="spacing.0">
+            <Box width="100%" height="100%" display="flex" flexDirection="column">
+              <Box display="flex" flex={1}>
+                <Box
+                  width="300px"
+                  padding="spacing.7"
+                  backgroundColor="surface.background.gray.moderate"
+                >
+                  <StepGroup orientation="vertical" size="medium">
+                    {GRNSteps.map((step) => (
+                      <StepItem
+                        key={step.stepNumber}
+                        title={step.title}
+                        description={step.description}
+                        marker={getStepIcon(step.stepNumber)}
+                        isSelected={currentStep === step.stepNumber}
+                        isDisabled={step.stepNumber > currentStep}
+                        onClick={() => handleStepClick(step.stepNumber)}
+                        stepProgress={
+                          completedSteps.includes(step.stepNumber)
+                            ? 'full'
+                            : currentStep === step.stepNumber
+                            ? 'start'
+                            : 'none'
+                        }
+                      />
+                    ))}
+                  </StepGroup>
+                </Box>
+                <Box width="100%" display="flex" flexDirection="column">
+                  <Box flex={1} overflow="auto">
+                    {renderStepContent(isMobile)}
                   </Box>
                 </Box>
               </Box>
-            </ModalBody>
-          </Modal>
-        </Box>
+            </Box>
+          </ModalBody>
+        </Modal>
       )}
     </Box>
   );
