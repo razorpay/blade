@@ -1054,6 +1054,10 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
   const [loadingStep, setLoadingStep] = React.useState<number | null>(null);
+  const [errors, setErrors] = React.useState<{
+    vendor?: string;
+    purchaseOrder?: string;
+  }>({});
 
   const handleStepClick = (stepNumber: number): void => {
     // Only allow clicking on completed steps or the next available step
@@ -1062,10 +1066,27 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     }
   };
 
+  const validateStep = (step: number): boolean => {
+    const newErrors: typeof errors = {};
+
+    if (step === 1 && !selectedVendor) {
+      newErrors.vendor = 'Please select a vendor to proceed';
+    }
+
+    if (step === 2 && !selectedPO) {
+      newErrors.purchaseOrder = 'Please select a purchase order to proceed';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleNextStep = (): void => {
     if (currentStep < GRNSteps.length) {
-      setCompletedSteps((prev) => [...prev, currentStep]);
-      setCurrentStep(currentStep + 1);
+      if (validateStep(currentStep)) {
+        setCompletedSteps((prev) => [...prev, currentStep]);
+        setCurrentStep(currentStep + 1);
+      }
     }
   };
 
@@ -1148,7 +1169,14 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   label="Vendors"
                   name="vendor"
                   value={selectedVendor ?? ''}
-                  onChange={({ value }) => setSelectedVendor(value)}
+                  onChange={({ value }) => {
+                    setSelectedVendor(value);
+                    if (errors.vendor) {
+                      setErrors((prev) => ({ ...prev, vendor: undefined }));
+                    }
+                  }}
+                  validationState={errors.vendor ? 'error' : 'none'}
+                  errorText={errors.vendor}
                 >
                   {GRNVendors.map((vendor) => (
                     <Box
@@ -1225,7 +1253,14 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                         label="Purchase Orders"
                         name="purchaseOrder"
                         value={selectedPO ?? ''}
-                        onChange={({ value }) => setSelectedPO(value)}
+                        onChange={({ value }) => {
+                          setSelectedPO(value);
+                          if (errors.purchaseOrder) {
+                            setErrors((prev) => ({ ...prev, purchaseOrder: undefined }));
+                          }
+                        }}
+                        validationState={errors.purchaseOrder ? 'error' : 'none'}
+                        errorText={errors.purchaseOrder}
                       >
                         {GRNPurchaseOrders.map((po) => (
                           <Box
