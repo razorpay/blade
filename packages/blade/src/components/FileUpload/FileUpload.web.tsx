@@ -68,7 +68,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 ): React.ReactElement => {
   const { actionButtonText, dropAreaText } = rest as FileUploadVariableSizeProps;
   const isSizeVariable = size === 'variable';
-  // 'uploadButtonText' and 'dragPromptText' are only valid when size is 'variable'
+  // 'actionButtonText' and 'dropAreaText' are only valid when size is 'variable'
   if (__DEV__ && !isSizeVariable && (actionButtonText || dropAreaText)) {
     const propName =
       actionButtonText && dropAreaText
@@ -293,7 +293,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                       : fileUploadColorTokens.text.default
                   }
                 >
-                  {isSizeVariable ? dropAreaText ?? 'Drag files here' : 'Drag files here or'}{' '}
+                  {isSizeVariable
+                    ? dropAreaText ?? 'Drag and drop your files here'
+                    : 'Drag files here or'}{' '}
                 </Text>
                 <SelectorInput
                   id={inputId}
