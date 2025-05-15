@@ -10,7 +10,7 @@ import type { TableData } from '~components/Table/types';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
-import { FileIcon } from '~components/Icons';
+import { FileIcon, CheckIcon, ClockIcon } from '~components/Icons';
 import { Code } from '~components/Typography/Code';
 import { TableEditableCell } from '~components/Table/TableEditableCell';
 import { Amount } from '~components/Amount';
@@ -60,6 +60,7 @@ import {
 } from '~components/BottomSheet';
 import { useBreakpoint } from '~utils/useBreakpoint';
 import { useIsMobile } from '~utils/useIsMobile';
+import { StepGroup, StepItem, StepItemIcon } from '~components/StepGroup';
 
 const Page = (): React.ReactElement => {
   return (
@@ -918,3 +919,679 @@ const DefaultExample: StoryFn<typeof Modal> = (args) => {
 };
 export const Default = DefaultExample.bind({});
 Default.storyName = 'Single Step With Form Group and Preview';
+
+const GRNSteps = [
+  {
+    title: 'Select Vendor',
+    description: 'Choose a vendor for the GRN',
+    stepNumber: 1,
+  },
+  {
+    title: 'Link PO',
+    description: 'Link Purchase Order to GRN',
+    stepNumber: 2,
+  },
+  {
+    title: 'Line Item Details',
+    description: 'Add line items and quantities',
+    stepNumber: 3,
+  },
+  {
+    title: 'Review GRN Details',
+    description: 'Review and confirm GRN details',
+    stepNumber: 4,
+  },
+];
+
+const GRNVendors = [
+  {
+    id: '1',
+    name: 'ABC Suppliers',
+    email: 'contact@abcsuppliers.com',
+    phone: '+91 9876543210',
+    address: '123 Business Park, Mumbai',
+  },
+  {
+    id: '2',
+    name: 'XYZ Trading Co.',
+    email: 'info@xyztrading.com',
+    phone: '+91 9876543211',
+    address: '456 Corporate Hub, Delhi',
+  },
+  {
+    id: '3',
+    name: 'Global Imports Ltd',
+    email: 'support@globalimports.com',
+    phone: '+91 9876543212',
+    address: '789 Trade Center, Bangalore',
+  },
+  {
+    id: '4',
+    name: 'Local Distributors',
+    email: 'sales@localdist.com',
+    phone: '+91 9876543213',
+    address: '321 Market Street, Chennai',
+  },
+];
+
+const GRNPurchaseOrders = [
+  {
+    id: 'PO-001',
+    number: 'PO-2024-001',
+    date: '2024-03-15',
+    amount: 15000,
+    status: 'Pending',
+    items: 5,
+    vendor: 'ABC Suppliers',
+  },
+  {
+    id: 'PO-002',
+    number: 'PO-2024-002',
+    date: '2024-03-14',
+    amount: 25000,
+    status: 'Approved',
+    items: 8,
+    vendor: 'XYZ Trading Co.',
+  },
+  {
+    id: 'PO-003',
+    number: 'PO-2024-003',
+    date: '2024-03-13',
+    amount: 18000,
+    status: 'Pending',
+    items: 3,
+    vendor: 'Global Imports Ltd',
+  },
+  {
+    id: 'PO-004',
+    number: 'PO-2024-004',
+    date: '2024-03-12',
+    amount: 32000,
+    status: 'Approved',
+    items: 6,
+    vendor: 'Local Distributors',
+  },
+];
+
+const MultiStepExample: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
+  const isMobile = useIsMobile();
+  const [currentStep, setCurrentStep] = React.useState(1);
+  const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
+  const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
+  const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
+  const [loadingStep, setLoadingStep] = React.useState<number | null>(null);
+
+  const handleStepClick = (stepNumber: number) => {
+    // Only allow clicking on completed steps or the next available step
+    if (stepNumber <= currentStep && completedSteps.includes(stepNumber - 1)) {
+      setCurrentStep(stepNumber);
+    }
+  };
+
+  const handleNextStep = () => {
+    if (currentStep < GRNSteps.length) {
+      setLoadingStep(currentStep);
+      // Simulate loading state
+      setTimeout(() => {
+        setCompletedSteps((prev) => [...prev, currentStep]);
+        setCurrentStep(currentStep + 1);
+        setLoadingStep(null);
+      }, 1000);
+    }
+  };
+
+  const handlePreviousStep = () => {
+    if (currentStep > 1) {
+      setLoadingStep(currentStep);
+      // Simulate loading state
+      setTimeout(() => {
+        setCurrentStep(currentStep - 1);
+        setLoadingStep(null);
+      }, 500);
+    }
+  };
+
+  const getStepIcon = (stepNumber: number) => {
+    if (loadingStep === stepNumber) {
+      return <StepItemIcon icon={ClockIcon} color="primary" />;
+    }
+    if (completedSteps.includes(stepNumber)) {
+      return <StepItemIcon icon={CheckIcon} color="positive" />;
+    }
+    return <StepItemIcon icon={FileIcon} color="primary" />;
+  };
+  const tableData = {
+    nodes: [
+      {
+        id: '1',
+        name: 'Laptop Dell XPS 13',
+        quantity: 2,
+        unitPrice: 85000,
+      },
+      {
+        id: '2',
+        name: 'Wireless Mouse',
+        quantity: 5,
+        unitPrice: 1200,
+      },
+      {
+        id: '3',
+        name: 'Mechanical Keyboard',
+        quantity: 3,
+        unitPrice: 4500,
+      },
+      {
+        id: '4',
+        name: 'External SSD 1TB',
+        quantity: 4,
+        unitPrice: 6500,
+      },
+      {
+        id: '5',
+        name: 'USB-C Hub',
+        quantity: 2,
+        unitPrice: 2500,
+      },
+    ],
+  };
+
+  const renderStepContent = () => {
+    switch (currentStep) {
+      case 1:
+        return (
+          <Box display="flex" flexDirection="column" gap="spacing.4">
+            <Heading size="medium">Select Vendor</Heading>
+            <Text>Choose a vendor from the list below to proceed with GRN creation.</Text>
+            <RadioGroup
+              label="Vendors"
+              name="vendor"
+              value={selectedVendor ?? ''}
+              onChange={({ value }) => setSelectedVendor(value)}
+            >
+              {GRNVendors.map((vendor) => (
+                <Box
+                  key={vendor.id}
+                  padding="spacing.4"
+                  borderWidth="thin"
+                  borderColor={
+                    selectedVendor === vendor.id
+                      ? 'surface.border.primary.normal'
+                      : 'surface.border.gray.muted'
+                  }
+                  borderRadius="medium"
+                  backgroundColor={
+                    selectedVendor === vendor.id
+                      ? 'surface.background.primary.subtle'
+                      : 'surface.background.gray.subtle'
+                  }
+                >
+                  <Radio value={vendor.id}>
+                    <Box display="flex" flexDirection="column" gap="spacing.2">
+                      <Box>
+                        <Text weight="semibold">{vendor.name}</Text>
+                        <Text size="small" color="surface.text.gray.muted">
+                          {vendor.email}
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Text size="small">{vendor.phone}</Text>
+                        <Text size="small">{vendor.address}</Text>
+                      </Box>
+                    </Box>
+                  </Radio>
+                </Box>
+              ))}
+            </RadioGroup>
+            <Box display="flex" justifyContent="space-between" marginTop="spacing.4">
+              <Button
+                variant="tertiary"
+                onClick={handlePreviousStep}
+                isDisabled={currentStep === 1}
+              >
+                Previous
+              </Button>
+              <Button onClick={handleNextStep} isDisabled={!selectedVendor}>
+                Next
+              </Button>
+            </Box>
+          </Box>
+        );
+      case 2:
+        return (
+          <Box display="flex" flexDirection="column" gap="spacing.4">
+            <Heading size="medium">Link PO</Heading>
+            <Text>Select a Purchase Order to link with this GRN.</Text>
+            <Box display="flex" gap="spacing.4">
+              <Box flex={1}>
+                <RadioGroup
+                  label="Purchase Orders"
+                  name="purchaseOrder"
+                  value={selectedPO ?? ''}
+                  onChange={({ value }) => setSelectedPO(value)}
+                >
+                  {GRNPurchaseOrders.map((po) => (
+                    <Box
+                      key={po.id}
+                      padding="spacing.4"
+                      borderWidth="thin"
+                      borderColor={
+                        selectedPO === po.id
+                          ? 'surface.border.primary.normal'
+                          : 'surface.border.gray.muted'
+                      }
+                      borderRadius="medium"
+                      backgroundColor={
+                        selectedPO === po.id
+                          ? 'surface.background.primary.subtle'
+                          : 'surface.background.gray.subtle'
+                      }
+                    >
+                      <Radio value={po.id}>
+                        <Box display="flex" flexDirection="column" gap="spacing.2">
+                          <Box display="flex" justifyContent="space-between" alignItems="center">
+                            <Box>
+                              <Text weight="semibold">{po.number}</Text>
+                              <Text size="small" color="surface.text.gray.muted">
+                                {po.vendor}
+                              </Text>
+                            </Box>
+                            <Badge
+                              size="medium"
+                              color={po.status === 'Approved' ? 'positive' : 'notice'}
+                            >
+                              {po.status}
+                            </Badge>
+                          </Box>
+                          <Box display="flex" gap="spacing.4">
+                            <Text size="small">Date: {po.date}</Text>
+                            <Text size="small">Items: {po.items}</Text>
+                            <Text size="small">Amount: ₹{po.amount.toLocaleString()}</Text>
+                          </Box>
+                        </Box>
+                      </Radio>
+                    </Box>
+                  ))}
+                </RadioGroup>
+              </Box>
+              <Box width="400px">
+                <PreviewWindow isDragAndZoomDisabled>
+                  <PreviewBody>
+                    <Box
+                      padding="spacing.4"
+                      display="flex"
+                      flexDirection="column"
+                      gap="spacing.4"
+                      backgroundColor="surface.background.gray.moderate"
+                    >
+                      {selectedVendor && (
+                        <>
+                          <Box>
+                            <Text weight="semibold" size="large">
+                              {GRNVendors.find((v) => v.id === selectedVendor)?.name}
+                            </Text>
+                            <Text size="small" color="surface.text.gray.muted">
+                              {GRNVendors.find((v) => v.id === selectedVendor)?.email}
+                            </Text>
+                          </Box>
+                          <Box display="flex" flexDirection="column" gap="spacing.2">
+                            <Text size="small">
+                              Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
+                            </Text>
+                            <Text size="small">
+                              Address: {GRNVendors.find((v) => v.id === selectedVendor)?.address}
+                            </Text>
+                          </Box>
+                        </>
+                      )}
+                      {selectedPO && (
+                        <Box
+                          marginTop="spacing.4"
+                          paddingTop="spacing.4"
+                          borderTopWidth="thin"
+                          borderTopColor="surface.border.gray.muted"
+                        >
+                          <Text weight="semibold" size="medium">
+                            Selected PO
+                          </Text>
+                          <Box marginTop="spacing.2">
+                            <Text size="small">
+                              PO Number:{' '}
+                              {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
+                            </Text>
+                            <Text size="small">
+                              Amount: ₹
+                              {GRNPurchaseOrders.find(
+                                (p) => p.id === selectedPO,
+                              )?.amount.toLocaleString()}
+                            </Text>
+                          </Box>
+                        </Box>
+                      )}
+                    </Box>
+                  </PreviewBody>
+                </PreviewWindow>
+              </Box>
+            </Box>
+            <Box display="flex" justifyContent="space-between" marginTop="spacing.4">
+              <Button
+                variant="tertiary"
+                onClick={handlePreviousStep}
+                isDisabled={currentStep === 1}
+              >
+                Previous
+              </Button>
+              <Button onClick={handleNextStep} isDisabled={!selectedPO}>
+                Next
+              </Button>
+            </Box>
+          </Box>
+        );
+      case 3:
+        return (
+          <Box display="flex" flexDirection="column" gap="spacing.4">
+            <Heading size="medium">Line Item Details</Heading>
+            <Text>Add line items and quantities for this GRN.</Text>
+            <Table data={tableData}>
+              {(tableData) => (
+                <>
+                  <TableHeader>
+                    <TableHeaderRow>
+                      <TableHeaderCell>Item Name</TableHeaderCell>
+                      <TableHeaderCell>Quantity</TableHeaderCell>
+                      <TableHeaderCell>Unit Price</TableHeaderCell>
+                      <TableHeaderCell>Total Amount</TableHeaderCell>
+                    </TableHeaderRow>
+                  </TableHeader>
+                  <TableBody>
+                    {tableData.map((item) => (
+                      <TableRow key={item.id} item={item}>
+                        <TableCell>{item.name}</TableCell>
+                        <TableCell>{item.quantity}</TableCell>
+                        <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
+                        <TableCell>₹{(item.quantity * item.unitPrice).toLocaleString()}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                  <TableFooter>
+                    <TableFooterRow>
+                      <TableFooterCell>Total Amount</TableFooterCell>
+                      <TableFooterCell>-</TableFooterCell>
+                      <TableFooterCell>-</TableFooterCell>
+                      <TableFooterCell>
+                        ₹
+                        {tableData
+                          .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
+                          .toLocaleString()}
+                      </TableFooterCell>
+                    </TableFooterRow>
+                  </TableFooter>
+                </>
+              )}
+            </Table>
+            <Box display="flex" justifyContent="space-between" marginTop="spacing.4">
+              <Button
+                variant="tertiary"
+                onClick={handlePreviousStep}
+                isDisabled={currentStep === 1}
+              >
+                Previous
+              </Button>
+              <Button onClick={handleNextStep}>Next</Button>
+            </Box>
+          </Box>
+        );
+      case 4:
+        return (
+          <Box display="flex" flexDirection="column" gap="spacing.4">
+            <Heading size="medium">Review GRN Details</Heading>
+            <Text>Review and confirm all GRN details before submission.</Text>
+            <Box width="500px" height="500px">
+              <PreviewWindow initialZoom={0.5}>
+                <PreviewHeader />
+
+                <PreviewBody>
+                  <Box
+                    padding="spacing.4"
+                    display="flex"
+                    flexDirection="column"
+                    gap="spacing.6"
+                    backgroundColor="surface.background.gray.intense"
+                  >
+                    {/* Vendor Details Section */}
+                    <Box
+                      padding="spacing.4"
+                      borderBottomWidth="thin"
+                      borderBottomColor="surface.border.gray.muted"
+                    >
+                      <Heading size="large">Goods Receipt Note</Heading>
+                      <Text size="small" color="surface.text.gray.muted">
+                        GRN-{new Date().getFullYear()}-
+                        {Math.floor(Math.random() * 1000)
+                          .toString()
+                          .padStart(3, '0')}
+                      </Text>
+                    </Box>
+                    <Box>
+                      <Heading size="medium">Vendor Details</Heading>
+                      <Box
+                        marginTop="spacing.3"
+                        padding="spacing.4"
+                        backgroundColor="surface.background.gray.moderate"
+                        borderRadius="medium"
+                      >
+                        {selectedVendor && (
+                          <>
+                            <Box display="flex" justifyContent="space-between">
+                              <Box>
+                                <Text weight="semibold" size="large">
+                                  {GRNVendors.find((v) => v.id === selectedVendor)?.name}
+                                </Text>
+                                <Text size="small" color="surface.text.gray.muted">
+                                  {GRNVendors.find((v) => v.id === selectedVendor)?.email}
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Text size="small">Date: {new Date().toLocaleDateString()}</Text>
+                              </Box>
+                            </Box>
+                            <Box
+                              marginTop="spacing.3"
+                              display="flex"
+                              flexDirection="column"
+                              gap="spacing.2"
+                            >
+                              <Text size="small">
+                                Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
+                              </Text>
+                              <Text size="small">
+                                Address: {GRNVendors.find((v) => v.id === selectedVendor)?.address}
+                              </Text>
+                            </Box>
+                          </>
+                        )}
+                      </Box>
+                    </Box>
+
+                    {/* PO Details Section */}
+                    <Box>
+                      <Heading size="medium">Purchase Order Details</Heading>
+                      <Box
+                        marginTop="spacing.3"
+                        padding="spacing.4"
+                        backgroundColor="surface.background.gray.moderate"
+                        borderRadius="medium"
+                      >
+                        {selectedPO && (
+                          <>
+                            <Box display="flex" justifyContent="space-between" alignItems="center">
+                              <Box>
+                                <Text weight="semibold" size="large">
+                                  {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
+                                </Text>
+                                <Text size="small" color="surface.text.gray.muted">
+                                  Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
+                                </Text>
+                              </Box>
+                              <Badge
+                                size="medium"
+                                color={
+                                  GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
+                                  'Approved'
+                                    ? 'positive'
+                                    : 'notice'
+                                }
+                              >
+                                {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status}
+                              </Badge>
+                            </Box>
+                          </>
+                        )}
+                      </Box>
+                    </Box>
+
+                    {/* Line Items Section */}
+                    <Box>
+                      <Heading size="medium">Line Items</Heading>
+                      <Box marginTop="spacing.3">
+                        <Table data={tableData}>
+                          {(tableData) => (
+                            <>
+                              <TableHeader>
+                                <TableHeaderRow>
+                                  <TableHeaderCell>Item Name</TableHeaderCell>
+                                  <TableHeaderCell>Quantity</TableHeaderCell>
+                                  <TableHeaderCell>Unit Price</TableHeaderCell>
+                                  <TableHeaderCell>Total Amount</TableHeaderCell>
+                                </TableHeaderRow>
+                              </TableHeader>
+                              <TableBody>
+                                {tableData.map((item) => (
+                                  <TableRow key={item.id} item={item}>
+                                    <TableCell>{item.name}</TableCell>
+                                    <TableCell>{item.quantity}</TableCell>
+                                    <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
+                                    <TableCell>
+                                      ₹{(item.quantity * item.unitPrice).toLocaleString()}
+                                    </TableCell>
+                                  </TableRow>
+                                ))}
+                              </TableBody>
+                              <TableFooter>
+                                <TableFooterRow>
+                                  <TableFooterCell>Total Amount</TableFooterCell>
+                                  <TableFooterCell>-</TableFooterCell>
+                                  <TableFooterCell>-</TableFooterCell>
+                                  <TableFooterCell>
+                                    ₹
+                                    {tableData
+                                      .reduce(
+                                        (sum, item) => sum + item.quantity * item.unitPrice,
+                                        0,
+                                      )
+                                      .toLocaleString()}
+                                  </TableFooterCell>
+                                </TableFooterRow>
+                              </TableFooter>
+                            </>
+                          )}
+                        </Table>
+                      </Box>
+                    </Box>
+                  </Box>
+                </PreviewBody>
+                <PreviewFooter />
+              </PreviewWindow>
+            </Box>
+            <Box display="flex" justifyContent="space-between" marginTop="spacing.4">
+              <Button
+                variant="tertiary"
+                onClick={handlePreviousStep}
+                isDisabled={currentStep === 1}
+              >
+                Previous
+              </Button>
+              <Button variant="primary">Submit GRN</Button>
+            </Box>
+          </Box>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
+      {isMobile ? (
+        <>
+          <BottomSheet
+            isOpen={isOpen}
+            onDismiss={() => setIsOpen(false)}
+            snapPoints={[0.75, 0.75, 0.75]}
+          >
+            <BottomSheetHeader title="Create QR Code" />
+            {/* <BottomSheetBody>{renderContent({ isMobile })}</BottomSheetBody>
+            <BottomSheetFooter>{renderFooter({ isMobile })}</BottomSheetFooter> */}
+          </BottomSheet>
+          <BottomSheet
+            isOpen={isPreviewOpen}
+            onDismiss={() => setIsPreviewOpen(false)}
+            snapPoints={[1, 1, 1]}
+          >
+            <BottomSheetHeader title="QR Code Preview" />
+            {/* <BottomSheetBody>{renderPreview()}</BottomSheetBody> */}
+          </BottomSheet>
+        </>
+      ) : (
+        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
+          <ModalHeader title="New GRN" />
+          <ModalBody height="100%" padding="spacing.0">
+            <Box width="100%" height="100%" display="flex" flexDirection="column">
+              <Box display="flex" flex={1} gap="spacing.4">
+                <Box
+                  width="30%"
+                  padding="spacing.7"
+                  backgroundColor="surface.background.gray.moderate"
+                >
+                  <StepGroup orientation="vertical" size="medium">
+                    {GRNSteps.map((step) => (
+                      <StepItem
+                        key={step.stepNumber}
+                        title={step.title}
+                        description={step.description}
+                        marker={getStepIcon(step.stepNumber)}
+                        isSelected={currentStep === step.stepNumber}
+                        isDisabled={
+                          !completedSteps.includes(step.stepNumber - 1) &&
+                          step.stepNumber !== currentStep
+                        }
+                        onClick={() => handleStepClick(step.stepNumber)}
+                        stepProgress={
+                          completedSteps.includes(step.stepNumber)
+                            ? 'full'
+                            : currentStep === step.stepNumber
+                            ? 'start'
+                            : 'none'
+                        }
+                      />
+                    ))}
+                  </StepGroup>
+                </Box>
+                <Box width="70%" padding="spacing.7" display="flex" flexDirection="column">
+                  <Box flex={1} overflow="auto">
+                    {renderStepContent()}
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </ModalBody>
+        </Modal>
+      )}
+    </Box>
+  );
+};
+
+export const MultiStep = MultiStepExample.bind({});
+MultiStep.storyName = 'Multi Step Example';
