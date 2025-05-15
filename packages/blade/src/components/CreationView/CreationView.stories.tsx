@@ -1023,14 +1023,14 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
   const [loadingStep, setLoadingStep] = React.useState<number | null>(null);
 
-  const handleStepClick = (stepNumber: number) => {
+  const handleStepClick = (stepNumber: number): void => {
     // Only allow clicking on completed steps or the next available step
     if (stepNumber <= currentStep && completedSteps.includes(stepNumber - 1)) {
       setCurrentStep(stepNumber);
     }
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = (): void => {
     if (currentStep < GRNSteps.length) {
       setLoadingStep(currentStep);
       // Simulate loading state
@@ -1042,7 +1042,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     }
   };
 
-  const handlePreviousStep = () => {
+  const handlePreviousStep = (): void => {
     if (currentStep > 1) {
       setLoadingStep(currentStep);
       // Simulate loading state
@@ -1053,7 +1053,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     }
   };
 
-  const getStepIcon = (stepNumber: number) => {
+  const getStepIcon = (stepNumber: number): React.ReactElement => {
     if (loadingStep === stepNumber) {
       return <StepItemIcon icon={ClockIcon} color="primary" />;
     }
@@ -1097,7 +1097,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     ],
   };
 
-  const renderStepContent = () => {
+  const renderStepContent = (): React.ReactElement | null => {
     switch (currentStep) {
       case 1:
         return (
