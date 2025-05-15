@@ -18,12 +18,12 @@ import {
   getBladeComponentDocsDescription,
 } from './tools/getBladeComponentDocs.js';
 import { hiBladeCallback, hiBladeSchema, hiBladeDescription } from './tools/hiBlade.js';
-import { getVersionNumber } from './utils.js';
+import { getPackageJSONVersion } from './utils.js';
 
 try {
   const server = new McpServer({
     name: 'Blade MCP',
-    version: getVersionNumber(),
+    version: getPackageJSONVersion(),
   });
 
   server.tool('hi_blade', hiBladeDescription, hiBladeSchema, hiBladeCallback);

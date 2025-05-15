@@ -1,7 +1,8 @@
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { getPackageJSONVersion } from '../utils.js';
 
 const hiBladeMessage = `
-👋 Welcome to Blade AI MCP — your assistant for Razorpay's Blade Design System!
+👋 Welcome to Blade AI MCP v${getPackageJSONVersion()} — your assistant for Razorpay's Blade Design System!
 
 Here's what I can help you with:
 • 🚀 Start a new Blade project — just say: "Create a new blade project with a login page."

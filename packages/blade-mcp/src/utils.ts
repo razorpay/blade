@@ -1,33 +1,36 @@
 import { readdirSync, readFileSync } from 'fs';
-import { join, dirname, resolve } from 'path';
+import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const PROJECT_ROOT_DIRECTORY = join(__dirname, '..');
 
 // Cursor Rules Tokens
 const CURSOR_RULES_VERSION = '0.0.6';
 const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
 
-const CURSOR_RULES_TEMPLATE_DIRECTORY = join(__dirname, '..', 'cursorRules');
+const CURSOR_RULES_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'cursorRules');
 const BLADE_CURSOR_RULES_FILE_PATH = join(
   CURSOR_RULES_TEMPLATE_DIRECTORY,
   'frontend-blade-rules.mdc',
 );
 
 // Blade Template
-const BASE_BLADE_TEMPLATE_DIRECTORY = join(__dirname, '..', 'base-blade-template');
+const BASE_BLADE_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'base-blade-template');
 
 // Knowledgebase
-const KNOWLEDGEBASE_DIRECTORY = join(__dirname, '..', 'knowledgebase');
+const KNOWLEDGEBASE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'knowledgebase');
 
 const hasOutDatedRules = (ruleFilePath: string): boolean => {
   const ruleFileContent = readFileSync(ruleFilePath, 'utf8');
   return !ruleFileContent.includes(CURSOR_RULES_VERSION_STRING);
 };
 
-const getVersionNumber = (): string => {
-  const packageJson = JSON.parse(readFileSync(resolve(__dirname, '../package.json'), 'utf8'));
+const getPackageJSONVersion = (): string => {
+  const packageJson = JSON.parse(
+    readFileSync(join(PROJECT_ROOT_DIRECTORY, 'package.json'), 'utf8'),
+  );
   return packageJson.version;
 };
 
@@ -57,6 +60,6 @@ export {
   BASE_BLADE_TEMPLATE_DIRECTORY,
   KNOWLEDGEBASE_DIRECTORY,
   hasOutDatedRules,
-  getVersionNumber,
+  getPackageJSONVersion,
   getBladeComponentsList,
 };
