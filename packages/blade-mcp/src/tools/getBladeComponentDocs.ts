@@ -12,11 +12,15 @@ const getBladeComponentDocsSchema = {
   componentsList: z
     .string()
     .describe(
-      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords).`,
+      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
+        ', ',
+      )}`,
     ),
   currentProjectRootDirectory: z
     .string()
-    .describe("The working root directory of the consumer's project"),
+    .describe(
+      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
+    ),
 };
 
 const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSchema> = ({

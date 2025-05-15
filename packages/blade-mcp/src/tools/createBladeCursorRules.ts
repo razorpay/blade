@@ -10,7 +10,9 @@ const createBladeCursorRulesDescription =
 const createBladeCursorRulesSchema = {
   currentProjectRootDirectory: z
     .string()
-    .describe("The working root directory of the consumer's project"),
+    .describe(
+      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
+    ),
 };
 
 const createBladeCursorRulesCallback: ToolCallback<typeof createBladeCursorRulesSchema> = ({

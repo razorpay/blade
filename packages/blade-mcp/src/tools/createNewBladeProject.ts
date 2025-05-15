@@ -10,7 +10,9 @@ const createNewBladeProjectDescription =
 const createNewBladeProjectSchema = {
   currentProjectRootDirectory: z
     .string()
-    .describe("The working root directory of the consumer's project"),
+    .describe(
+      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
+    ),
 };
 
 const createNewBladeProjectCallback: ToolCallback<typeof createNewBladeProjectSchema> = ({
@@ -48,7 +50,14 @@ const createNewBladeProjectCallback: ToolCallback<typeof createNewBladeProjectSc
     content: [
       {
         type: 'text',
-        text: `Project created successfully in ${currentProjectRootDirectory}. \n            ## AI should run the following commands\n\n            1. Call create_blade_cursor_rules to create the cursor rules.\n            2. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.\n            3. Always start the development server using \`npm run dev\` (if its not already running) before starting to code. Do not start it again after writing code.\n            4. Start coding in App.tsx. use get_blade_docs to get information about the components.\n            `,
+        text: `Project created successfully in ${currentProjectRootDirectory}. 
+            ## AI should run the following commands
+            
+            1. Call create_blade_cursor_rules to create the cursor rules.
+            2. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.
+            3. Always start the development server using \`npm run dev\` (if its not already running) before starting to code. Do not start it again after writing code.
+            4. Start coding in App.tsx. use get_blade_docs to get information about the components.
+            `,
       },
     ],
   };
