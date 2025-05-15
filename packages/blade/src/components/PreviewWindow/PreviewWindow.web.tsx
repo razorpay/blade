@@ -199,6 +199,14 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
   }
   transition: cursor 0.1s ease;
 `;
+
+const TransFormWrapperContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.colors.surface.background.gray.moderate};
+`;
 const PreviewWindow = ({
   children,
   onFullScreen: onFullScreenProp,
@@ -228,7 +236,7 @@ const PreviewWindow = ({
 
   const handleFullScreen = useCallback(() => {
     if (!document.fullscreenElement) {
-      containerRef.current?.requestFullscreen().catch((err) => {
+      containerRef.current?.requestFullscreen().catch((err: Error) => {
         console.error(`Error attempting to enable fullscreen: ${err.message}`);
       });
       setIsFullScreen(true);
@@ -299,14 +307,7 @@ const PreviewWindow = ({
         initialZoom: initialZoom ?? 1,
       }}
     >
-      <BaseBox
-        ref={containerRef}
-        width="100%"
-        height="100%"
-        position="relative"
-        overflow="hidden"
-        backgroundColor="surface.background.gray.moderate"
-      >
+      <TransFormWrapperContainer ref={containerRef}>
         <TransformWrapper
           onTransformed={handleTransformed}
           minScale={0.1}
@@ -331,7 +332,7 @@ const PreviewWindow = ({
             </BaseBox>
           )}
         </TransformWrapper>
-      </BaseBox>
+      </TransFormWrapperContainer>
     </PreviewWindowProvider>
   );
 };
