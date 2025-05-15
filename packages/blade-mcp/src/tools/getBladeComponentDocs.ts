@@ -3,18 +3,19 @@ import { existsSync, readFileSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { KNOWLEDGEBASE_DIRECTORY, hasOutDatedRules, getBladeComponentsList } from '../utils.js';
+import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeComponentsList = getBladeComponentsList();
+const bladeComponentsListString = bladeComponentsList.join(', ');
 
+const getBladeComponentDocsToolName = 'get_blade_component_docs';
 const getBladeComponentDocsDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
 
 const getBladeComponentDocsSchema = {
   componentsList: z
     .string()
     .describe(
-      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
-        ', ',
-      )}`,
+      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsListString}`,
     ),
   currentProjectRootDirectory: z
     .string()
@@ -29,17 +30,14 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
 }) => {
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
+  const invalidComponentsString = invalidComponents.join(', ');
   if (invalidComponents.length > 0) {
     return {
       isError: true,
       content: [
         {
           type: 'text',
-          text: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
-            ', ',
-          )}. Valid component docs values: ${bladeComponentsList.join(
-            ', ',
-          )}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
+          text: `Invalid argument componentsList. Invalid values: ${invalidComponentsString}. Valid component docs values: ${bladeComponentsListString}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
         },
       ],
     };
@@ -53,7 +51,7 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
       content: [
         {
           type: 'text',
-          text: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
+          text: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
         },
       ],
     };
@@ -65,8 +63,7 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
       content: [
         {
           type: 'text',
-          text:
-            'Cursor rules are outdated. Call create_blade_cursor_rules first to update cursor rules',
+          text: `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
         },
       ],
     };
@@ -121,4 +118,5 @@ export {
   getBladeComponentDocsCallback,
   getBladeComponentDocsSchema,
   getBladeComponentDocsDescription,
+  getBladeComponentDocsToolName,
 };
