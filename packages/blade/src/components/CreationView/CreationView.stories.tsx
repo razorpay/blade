@@ -1893,7 +1893,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
 
   return (
     <Box>
-      <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
+      <Button onClick={() => setIsOpen(!isOpen)}>Create GNR Details</Button>
       {isMobile ? (
         isOpen && (
           <Box
