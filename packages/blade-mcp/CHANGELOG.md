@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.5
+
+### Patch Changes
+
+- 6868bbd5: feat(blade-mcp): internal refactor of tools, improve prompts and descriptions and add version number to hi blade
+
 ## 0.1.4
 
 ### Patch Changes
