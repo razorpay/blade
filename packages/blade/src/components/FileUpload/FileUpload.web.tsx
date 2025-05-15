@@ -265,7 +265,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           inputProps={{}}
           style={{
             cursor: isDisabled ? 'not-allowed' : 'pointer',
-            width: '100%',
+            width: isOneFileSelectedWithSingleUpload && isLabelLeftPositioned ? undefined : '100%',
           }}
         >
           <BaseBox display="flex" flexDirection="column" width="100%">
