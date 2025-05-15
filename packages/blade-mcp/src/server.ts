@@ -6,7 +6,7 @@ import {
   createNewBladeProjectCallback,
   createNewBladeProjectSchema,
   createNewBladeProjectDescription,
-} from './tools/createNewProject.js';
+} from './tools/createNewBladeProject.js';
 import {
   createBladeCursorRulesCallback,
   createBladeCursorRulesSchema,
