@@ -1,21 +1,12 @@
 import { resolve, join } from 'path';
-import { existsSync, readFileSync, readdirSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { KNOWLEDGEBASE_DIRECTORY, hasOutDatedRules } from '../utils.js';
+import { KNOWLEDGEBASE_DIRECTORY, hasOutDatedRules, getBladeComponentsList } from '../utils.js';
 
-const bladeComponentsList: string[] = [];
-try {
-  // Read all markdown files and strip the .md extension
-  const files = readdirSync(KNOWLEDGEBASE_DIRECTORY);
-  for (const file of files) {
-    if (file.endsWith('.md')) {
-      bladeComponentsList.push(file.replace('.md', '').trim());
-    }
-  }
-} catch (error: unknown) {
-  console.error('Error reading knowledgebase directory:', error);
-}
+const bladeComponentsList = getBladeComponentsList();
+
+const getBladeComponentDocsDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
 
 const getBladeComponentDocsSchema = {
   componentsList: z
@@ -122,4 +113,8 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
   }
 };
 
-export { getBladeComponentDocsCallback, getBladeComponentDocsSchema };
+export {
+  getBladeComponentDocsCallback,
+  getBladeComponentDocsSchema,
+  getBladeComponentDocsDescription,
+};

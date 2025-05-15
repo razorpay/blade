@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
+import { readdirSync, readFileSync } from 'fs';
+import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,10 +26,37 @@ const hasOutDatedRules = (ruleFilePath: string): boolean => {
   return !ruleFileContent.includes(CURSOR_RULES_VERSION_STRING);
 };
 
+const getVersionNumber = (): string => {
+  const packageJson = JSON.parse(readFileSync(resolve(__dirname, '../package.json'), 'utf8'));
+  return packageJson.version;
+};
+
+/**
+ * Reads the files names of knowledgebase directory and returns a list of available blade components
+ */
+const getBladeComponentsList = (): string[] => {
+  const bladeComponentsList: string[] = [];
+  try {
+    // Read all markdown files and strip the .md extension
+    const files = readdirSync(KNOWLEDGEBASE_DIRECTORY);
+    for (const file of files) {
+      if (file.endsWith('.md')) {
+        bladeComponentsList.push(file.replace('.md', '').trim());
+      }
+    }
+  } catch (error: unknown) {
+    throw new Error('Error reading knowledgebase directory');
+  }
+
+  return bladeComponentsList;
+};
+
 export {
   BLADE_CURSOR_RULES_FILE_PATH,
   CURSOR_RULES_VERSION,
   BASE_BLADE_TEMPLATE_DIRECTORY,
   KNOWLEDGEBASE_DIRECTORY,
   hasOutDatedRules,
+  getVersionNumber,
+  getBladeComponentsList,
 };

@@ -4,6 +4,9 @@ import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { BASE_BLADE_TEMPLATE_DIRECTORY } from '../utils.js';
 
+const createNewBladeProjectDescription =
+  'Create a new project using blade. Uses vite, react, and typescript for setup. Call this tool ONLY when you are creating a new project from scratch.';
+
 const createNewBladeProjectSchema = {
   currentProjectRootDirectory: z
     .string()
@@ -51,4 +54,8 @@ const createNewBladeProjectCallback: ToolCallback<typeof createNewBladeProjectSc
   };
 };
 
-export { createNewBladeProjectCallback, createNewBladeProjectSchema };
+export {
+  createNewBladeProjectCallback,
+  createNewBladeProjectSchema,
+  createNewBladeProjectDescription,
+};

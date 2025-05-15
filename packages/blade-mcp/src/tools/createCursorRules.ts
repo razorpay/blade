@@ -4,6 +4,9 @@ import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { BLADE_CURSOR_RULES_FILE_PATH, hasOutDatedRules, CURSOR_RULES_VERSION } from '../utils.js';
 
+const createBladeCursorRulesDescription =
+  'Creates the cursor rules for blade to help with code generation. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
+
 const createCursorRulesSchema = {
   currentProjectRootDirectory: z
     .string()
@@ -48,4 +51,8 @@ const createBladeCursorRulesCallback: ToolCallback<typeof createCursorRulesSchem
   };
 };
 
-export { createBladeCursorRulesCallback, createCursorRulesSchema };
+export {
+  createBladeCursorRulesCallback,
+  createCursorRulesSchema,
+  createBladeCursorRulesDescription,
+};
