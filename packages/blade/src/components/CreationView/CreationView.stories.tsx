@@ -1195,7 +1195,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   // Extract review content as a function for reuse
   const renderReviewContent = (): React.ReactElement => (
     <Box
-      padding="spacing.7"
       display="flex"
       flexDirection="column"
       gap="spacing.4"
@@ -1203,174 +1202,211 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
       height="100%"
       justifyContent="space-between"
     >
-      <Box display="flex" flexDirection="column" gap="spacing.2">
-        <Heading size="medium">Review GRN Details</Heading>
-        <Text>Review and confirm all GRN details before submission.</Text>
-      </Box>
-      <Divider />
-      <Box width={isMobile ? '100%' : '50%'} height={isMobile ? '100%' : '400px'}>
-        <PreviewWindow initialZoom={0.5}>
-          <PreviewHeader />
-          <PreviewBody>
-            <Box
-              padding="spacing.4"
-              display="flex"
-              flexDirection="column"
-              gap="spacing.6"
-              backgroundColor="surface.background.gray.intense"
-            >
-              {/* GRN Details Section */}
+      <Box
+        display="flex"
+        flexDirection={isMobile ? 'column' : 'row'}
+        padding="spacing.7"
+        gap="spacing.4"
+        width="100%"
+        height="100%"
+        justifyContent="space-between"
+      >
+        <Box display="flex" flexDirection="column" gap="spacing.2">
+          <Heading size="medium">Review GRN Details</Heading>
+          <Text>Review and confirm all GRN details before submission.</Text>
+        </Box>
+        <Divider />
+        <Box width="100%" height={isMobile ? '400px' : '600px'}>
+          <PreviewWindow initialZoom={0.5}>
+            <PreviewHeader />
+            <PreviewBody>
               <Box
                 padding="spacing.4"
-                borderBottomWidth="thin"
-                borderBottomColor="surface.border.gray.muted"
+                display="flex"
+                flexDirection="column"
+                gap="spacing.6"
+                backgroundColor="surface.background.gray.intense"
               >
-                <Heading size="large">Goods Receipt Note</Heading>
-                <Text size="small" color="surface.text.gray.muted">
-                  {grnDetails.grnNumber}
-                </Text>
-                <Text size="small" color="surface.text.gray.muted">
-                  Date: {grnDetails.date}
-                </Text>
-              </Box>
-              {/* Vendor Details Section */}
-              <Box>
-                <Heading size="medium">Vendor Details</Heading>
+                {/* GRN Details Section */}
                 <Box
-                  marginTop="spacing.3"
                   padding="spacing.4"
-                  backgroundColor="surface.background.gray.moderate"
-                  borderRadius="medium"
+                  borderBottomWidth="thin"
+                  borderBottomColor="surface.border.gray.muted"
                 >
-                  {selectedVendor && (
-                    <>
-                      <Box display="flex" justifyContent="space-between">
-                        <Box>
-                          <Text weight="semibold" size="large">
-                            {GRNVendors.find((v) => v.id === selectedVendor)?.name}
-                          </Text>
-                          <Text size="small" color="surface.text.gray.muted">
-                            {GRNVendors.find((v) => v.id === selectedVendor)?.email}
-                          </Text>
-                        </Box>
-                      </Box>
-                      <Box
-                        marginTop="spacing.3"
-                        display="flex"
-                        flexDirection="column"
-                        gap="spacing.2"
-                      >
-                        <Text size="small">
-                          Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
-                        </Text>
-                        <Text size="small">
-                          Address: {GRNVendors.find((v) => v.id === selectedVendor)?.address}
-                        </Text>
-                      </Box>
-                    </>
-                  )}
+                  <Heading size="large">Goods Receipt Note</Heading>
+                  <Text size="small" color="surface.text.gray.muted">
+                    {grnDetails.grnNumber}
+                  </Text>
+                  <Text size="small" color="surface.text.gray.muted">
+                    Date: {grnDetails.date}
+                  </Text>
                 </Box>
-              </Box>
-              {/* PO Details Section */}
-              <Box>
-                <Heading size="medium">Purchase Order Details</Heading>
-                <Box
-                  marginTop="spacing.3"
-                  padding="spacing.4"
-                  backgroundColor="surface.background.gray.moderate"
-                  borderRadius="medium"
-                >
-                  {selectedPO && (
-                    <>
-                      <Box display="flex" justifyContent="space-between" alignItems="center">
-                        <Box>
-                          <Text weight="semibold" size="large">
-                            {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
-                          </Text>
-                          <Text size="small" color="surface.text.gray.muted">
-                            Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
-                          </Text>
-                        </Box>
-                        <Badge
-                          size="medium"
-                          color={
-                            GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
-                            'Approved'
-                              ? 'positive'
-                              : 'notice'
-                          }
-                        >
-                          {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ?? ''}
-                        </Badge>
-                      </Box>
-                    </>
-                  )}
-                </Box>
-              </Box>
-              {/* Notes Section */}
-              {grnDetails.notes && (
+                {/* Vendor Details Section */}
                 <Box>
-                  <Heading size="medium">Notes</Heading>
+                  <Heading size="medium">Vendor Details</Heading>
                   <Box
                     marginTop="spacing.3"
                     padding="spacing.4"
                     backgroundColor="surface.background.gray.moderate"
                     borderRadius="medium"
                   >
-                    <Text>{grnDetails.notes}</Text>
-                  </Box>
-                </Box>
-              )}
-              {/* Line Items Section */}
-              <Box>
-                <Heading size="medium">Line Items</Heading>
-                <Box marginTop="spacing.3">
-                  <Table data={tableData}>
-                    {(tableData) => (
+                    {selectedVendor && (
                       <>
-                        <TableHeader>
-                          <TableHeaderRow>
-                            <TableHeaderCell>Item Name</TableHeaderCell>
-                            <TableHeaderCell>Quantity</TableHeaderCell>
-                            <TableHeaderCell>Unit Price</TableHeaderCell>
-                            <TableHeaderCell>Total Amount</TableHeaderCell>
-                          </TableHeaderRow>
-                        </TableHeader>
-                        <TableBody>
-                          {tableData.map((item) => (
-                            <TableRow key={item.id} item={item}>
-                              <TableCell>{item.name}</TableCell>
-                              <TableCell>{item.quantity}</TableCell>
-                              <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
-                              <TableCell>
-                                ₹{(item.quantity * item.unitPrice).toLocaleString()}
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                        <TableFooter>
-                          <TableFooterRow>
-                            <TableFooterCell>Total Amount</TableFooterCell>
-                            <TableFooterCell>-</TableFooterCell>
-                            <TableFooterCell>-</TableFooterCell>
-                            <TableFooterCell>
-                              ₹
-                              {tableData
-                                .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
-                                .toLocaleString()}
-                            </TableFooterCell>
-                          </TableFooterRow>
-                        </TableFooter>
+                        <Box display="flex" justifyContent="space-between">
+                          <Box>
+                            <Text weight="semibold" size="large">
+                              {GRNVendors.find((v) => v.id === selectedVendor)?.name}
+                            </Text>
+                            <Text size="small" color="surface.text.gray.muted">
+                              {GRNVendors.find((v) => v.id === selectedVendor)?.email}
+                            </Text>
+                          </Box>
+                        </Box>
+                        <Box
+                          marginTop="spacing.3"
+                          display="flex"
+                          flexDirection="column"
+                          gap="spacing.2"
+                        >
+                          <Text size="small">
+                            Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
+                          </Text>
+                          <Text size="small">
+                            Address: {GRNVendors.find((v) => v.id === selectedVendor)?.address}
+                          </Text>
+                        </Box>
                       </>
                     )}
-                  </Table>
+                  </Box>
+                </Box>
+                {/* PO Details Section */}
+                <Box>
+                  <Heading size="medium">Purchase Order Details</Heading>
+                  <Box
+                    marginTop="spacing.3"
+                    padding="spacing.4"
+                    backgroundColor="surface.background.gray.moderate"
+                    borderRadius="medium"
+                  >
+                    {selectedPO && (
+                      <>
+                        <Box display="flex" justifyContent="space-between" alignItems="center">
+                          <Box>
+                            <Text weight="semibold" size="large">
+                              {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
+                            </Text>
+                            <Text size="small" color="surface.text.gray.muted">
+                              Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
+                            </Text>
+                          </Box>
+                          <Badge
+                            size="medium"
+                            color={
+                              GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
+                              'Approved'
+                                ? 'positive'
+                                : 'notice'
+                            }
+                          >
+                            {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ?? ''}
+                          </Badge>
+                        </Box>
+                      </>
+                    )}
+                  </Box>
+                </Box>
+                {/* Notes Section */}
+                {grnDetails.notes && (
+                  <Box>
+                    <Heading size="medium">Notes</Heading>
+                    <Box
+                      marginTop="spacing.3"
+                      padding="spacing.4"
+                      backgroundColor="surface.background.gray.moderate"
+                      borderRadius="medium"
+                    >
+                      <Text>{grnDetails.notes}</Text>
+                    </Box>
+                  </Box>
+                )}
+                {/* Line Items Section */}
+                <Box>
+                  <Heading size="medium">Line Items</Heading>
+                  <Box marginTop="spacing.3">
+                    <Table data={tableData}>
+                      {(tableData) => (
+                        <>
+                          <TableHeader>
+                            <TableHeaderRow>
+                              <TableHeaderCell>Item Name</TableHeaderCell>
+                              <TableHeaderCell>Quantity</TableHeaderCell>
+                              <TableHeaderCell>Unit Price</TableHeaderCell>
+                              <TableHeaderCell>Total Amount</TableHeaderCell>
+                            </TableHeaderRow>
+                          </TableHeader>
+                          <TableBody>
+                            {tableData.map((item) => (
+                              <TableRow key={item.id} item={item}>
+                                <TableCell>{item.name}</TableCell>
+                                <TableCell>{item.quantity}</TableCell>
+                                <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
+                                <TableCell>
+                                  ₹{(item.quantity * item.unitPrice).toLocaleString()}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                          <TableFooter>
+                            <TableFooterRow>
+                              <TableFooterCell>Total Amount</TableFooterCell>
+                              <TableFooterCell>-</TableFooterCell>
+                              <TableFooterCell>-</TableFooterCell>
+                              <TableFooterCell>
+                                ₹
+                                {tableData
+                                  .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
+                                  .toLocaleString()}
+                              </TableFooterCell>
+                            </TableFooterRow>
+                          </TableFooter>
+                        </>
+                      )}
+                    </Table>
+                  </Box>
                 </Box>
               </Box>
-            </Box>
-          </PreviewBody>
-          <PreviewFooter />
-        </PreviewWindow>
+            </PreviewBody>
+            <PreviewFooter />
+          </PreviewWindow>
+        </Box>
       </Box>
+      {!isMobile && (
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          marginTop="spacing.4"
+          padding="spacing.4"
+          borderTopColor="surface.border.gray.muted"
+        >
+          <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+            Save and Close
+          </Button>
+          <Box display="flex" gap="spacing.4">
+            <Button variant="tertiary" onClick={handlePreviousStep}>
+              Previous
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                // close modal
+                setIsOpen(false);
+              }}
+            >
+              Submit GRN
+            </Button>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 
