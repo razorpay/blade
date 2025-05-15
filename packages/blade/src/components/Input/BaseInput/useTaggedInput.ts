@@ -47,8 +47,6 @@ const useTaggedInput = ({
     },
   });
 
-  const isTagsControlled = Boolean(tags);
-
   const getNewTagsArray = (indexToRemove: number): string[] => {
     const currentTags = tagsValue;
 
@@ -77,11 +75,7 @@ const useTaggedInput = ({
         activeTagIndex,
         isDisabled,
         onDismiss: ({ tagIndex }) => {
-          if (!isTagsControlled) {
-            setTagsValue(() => getNewTagsArray(tagIndex));
-          } else {
-            onTagChange?.({ tags: getNewTagsArray(tagIndex) });
-          }
+          setTagsValue(() => getNewTagsArray(tagIndex));
         },
       });
     },
@@ -101,11 +95,7 @@ const useTaggedInput = ({
       return;
     }
 
-    if (!isTagsControlled) {
-      setTagsValue(() => []);
-    } else {
-      onTagChange?.({ tags: [] });
-    }
+    setTagsValue(() => []);
   };
 
   const clearInput = (): void => {
@@ -146,21 +136,13 @@ const useTaggedInput = ({
     if (e.key === 'Enter' || e.key === ',') {
       e.event.preventDefault?.(); // we don't want textarea to treat enter as line break in tagged inputs
       if (inputValue) {
-        if (!isTagsControlled) {
-          setTagsValue(() => [...currentTags, inputValue]);
-        } else {
-          onTagChange?.({ tags: [...currentTags, inputValue] });
-        }
+        setTagsValue(() => [...currentTags, inputValue]);
         clearInput();
         setActiveTagIndex(-1);
       }
     }
     if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0 && currentTags.length > 0) {
-      if (!isTagsControlled) {
-        setTagsValue(() => currentTags.slice(0, -1));
-      } else {
-        onTagChange?.({ tags: currentTags.slice(0, -1) });
-      }
+      setTagsValue(() => currentTags.slice(0, -1));
     }
   };
 
