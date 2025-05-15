@@ -28,6 +28,7 @@ type PreviewWindowContextType = {
   zoom: number;
   zoomScaleStep: number;
   isFullScreen: boolean;
+  initialZoom: number;
 };
 
 export type {

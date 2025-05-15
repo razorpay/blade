@@ -103,8 +103,8 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
-  const { zoomIn, zoomOut, resetTransform } = useControls();
-  const { zoom, zoomScaleStep } = usePreviewWindowContext();
+  const { zoomIn, zoomOut, setTransform } = useControls();
+  const { zoom, zoomScaleStep, initialZoom } = usePreviewWindowContext();
   const handleZoomIn = useCallback(() => {
     zoomIn(zoomScaleStep);
   }, [zoomScaleStep, zoomIn]);
@@ -112,6 +112,10 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
   const handleZoomOut = useCallback(() => {
     zoomOut(zoomScaleStep);
   }, [zoomScaleStep, zoomOut]);
+
+  const handleReset = useCallback(() => {
+    setTransform(0, 0, initialZoom);
+  }, [initialZoom, setTransform]);
 
   return (
     <BaseBox
@@ -146,7 +150,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
             />
             <Button
               icon={RefreshIcon}
-              onClick={() => resetTransform()}
+              onClick={() => handleReset()}
               variant="tertiary"
               aria-label="Reset zoom"
             />
@@ -155,7 +159,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
           <ButtonGroup variant="tertiary">
             <Button icon={ZoomInIcon} onClick={handleZoomIn} aria-label="Zoom in" />
             <Button icon={ZoomOutIcon} onClick={handleZoomOut} aria-label="Zoom out" />
-            <Button icon={RefreshIcon} onClick={() => resetTransform()} aria-label="Reset zoom" />
+            <Button icon={RefreshIcon} onClick={() => handleReset()} aria-label="Reset zoom" />
           </ButtonGroup>
         )}
       </BaseBox>
@@ -292,6 +296,7 @@ const PreviewWindow = ({
         zoom: controlledZoom,
         isFullScreen,
         zoomScaleStep,
+        initialZoom: initialZoom ?? 1,
       }}
     >
       <BaseBox
