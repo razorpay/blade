@@ -1057,6 +1057,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
   const isMobile = useIsMobile();
   const [currentStep, setCurrentStep] = React.useState(1);
+  const [showStepGroup, setShowStepGroup] = React.useState(false);
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
   const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
@@ -1070,7 +1071,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
       .toString()
       .padStart(3, '0')}`,
-    date: new Date().toISOString().split('T')[0],
+    date: '',
     notes: '',
   });
   const [alert, setAlert] = React.useState<{
@@ -1184,7 +1185,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     ],
   };
 
-  const renderStepContent = (): React.ReactElement | null => {
+  const renderStepContent = (isMobile: boolean): React.ReactElement | null => {
     switch (currentStep) {
       case 1:
         return (
@@ -1235,15 +1236,28 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                       borderRadius="medium"
                     >
                       <RadioCard value={vendor.id} label={vendor.name}>
-                        <Box display="flex" gap="spacing.2">
-                          <MailIcon color="interactive.icon.gray.muted" />
-                          <Text size="small" color="surface.text.gray.muted">
-                            {vendor.email} •
-                          </Text>
-                          <PhoneIcon color="interactive.icon.gray.muted" />
-                          <Text size="small" color="surface.text.gray.muted">
-                            {vendor.phone}
-                          </Text>
+                        <Box
+                          display="flex"
+                          gap="spacing.2"
+                          flexDirection={isMobile ? 'column' : 'row'}
+                        >
+                          <Box display="flex" gap="spacing.2">
+                            <MailIcon color="interactive.icon.gray.muted" />
+                            <Text size="small" color="surface.text.gray.muted">
+                              {vendor.email}
+                            </Text>
+                            {!isMobile && (
+                              <Text size="small" color="surface.text.gray.muted">
+                                •
+                              </Text>
+                            )}
+                          </Box>
+                          <Box display="flex" gap="spacing.2">
+                            <PhoneIcon color="interactive.icon.gray.muted" />
+                            <Text size="small" color="surface.text.gray.muted">
+                              {vendor.phone}
+                            </Text>
+                          </Box>
                         </Box>
                       </RadioCard>
                     </Box>
@@ -1251,29 +1265,31 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 </RadioGroup>
               </Box>
             </Box>
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              marginTop="spacing.4"
-              padding="spacing.4"
-              borderTopColor="surface.border.gray.muted"
-            >
-              <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-                Save and Close
-              </Button>
-              <Box display="flex" gap="spacing.4">
-                <Button
-                  variant="tertiary"
-                  onClick={handlePreviousStep}
-                  isDisabled={currentStep === 1}
-                >
-                  Previous
+            {!isMobile && (
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                marginTop="spacing.4"
+                padding="spacing.4"
+                borderTopColor="surface.border.gray.muted"
+              >
+                <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                  Save and Close
                 </Button>
-                <Button variant="primary" onClick={handleNextStep}>
-                  Next
-                </Button>
+                <Box display="flex" gap="spacing.4">
+                  <Button
+                    variant="tertiary"
+                    onClick={handlePreviousStep}
+                    isDisabled={currentStep === 1}
+                  >
+                    Previous
+                  </Button>
+                  <Button variant="primary" onClick={handleNextStep}>
+                    Next
+                  </Button>
+                </Box>
               </Box>
-            </Box>
+            )}
           </Box>
         );
       case 2:
@@ -1360,25 +1376,28 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                     </Box>
                   </Box>
                 </Box>
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  marginTop="spacing.4"
-                  padding="spacing.4"
-                  borderTopColor="surface.border.gray.muted"
-                >
-                  <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-                    Save and Close
-                  </Button>
-                  <Box display="flex" gap="spacing.4">
-                    <Button variant="tertiary" onClick={handlePreviousStep}>
-                      Previous
+                {!isMobile && (
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    marginTop="spacing.4"
+                    padding="spacing.4"
+                    borderTopColor="surface.border.gray.muted"
+                  >
+                    <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                      Save and Close
                     </Button>
-                    <Button variant="primary" onClick={handleNextStep}>
-                      Next
-                    </Button>
+
+                    <Box display="flex" gap="spacing.4">
+                      <Button variant="tertiary" onClick={handlePreviousStep}>
+                        Previous
+                      </Button>
+                      <Button variant="primary" onClick={handleNextStep}>
+                        Next
+                      </Button>
+                    </Box>
                   </Box>
-                </Box>
+                )}
               </Box>
               <Box flex={4}>
                 <PreviewWindow isDragAndZoomDisabled>
@@ -1506,25 +1525,27 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 />
               </Box>
             </Box>
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              marginTop="spacing.4"
-              padding="spacing.4"
-              borderTopColor="surface.border.gray.muted"
-            >
-              <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-                Save and Close
-              </Button>
-              <Box display="flex" gap="spacing.4">
-                <Button variant="tertiary" onClick={handlePreviousStep}>
-                  Previous
+            {!isMobile && (
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                marginTop="spacing.4"
+                padding="spacing.4"
+                borderTopColor="surface.border.gray.muted"
+              >
+                <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                  Save and Close
                 </Button>
-                <Button variant="primary" onClick={handleNextStep}>
-                  Next
-                </Button>
+                <Box display="flex" gap="spacing.4">
+                  <Button variant="tertiary" onClick={handlePreviousStep}>
+                    Previous
+                  </Button>
+                  <Button variant="primary" onClick={handleNextStep}>
+                    Next
+                  </Button>
+                </Box>
               </Box>
-            </Box>
+            )}
           </Box>
         );
       case 4:
@@ -1582,25 +1603,27 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 )}
               </Table>
             </Box>
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              marginTop="spacing.4"
-              padding="spacing.4"
-              borderTopColor="surface.border.gray.muted"
-            >
-              <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-                Save and Close
-              </Button>
-              <Box display="flex" gap="spacing.4">
-                <Button variant="tertiary" onClick={handlePreviousStep}>
-                  Previous
+            {!isMobile && (
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                marginTop="spacing.4"
+                padding="spacing.4"
+                borderTopColor="surface.border.gray.muted"
+              >
+                <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+                  Save and Close
                 </Button>
-                <Button variant="primary" onClick={handleNextStep}>
-                  Next
-                </Button>
+                <Box display="flex" gap="spacing.4">
+                  <Button variant="tertiary" onClick={handlePreviousStep}>
+                    Previous
+                  </Button>
+                  <Button variant="primary" onClick={handleNextStep}>
+                    Next
+                  </Button>
+                </Box>
               </Box>
-            </Box>
+            )}
           </Box>
         );
       case 5:
@@ -1819,70 +1842,161 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     }
   };
 
+  const currentStepObj = GRNSteps.find((s) => s.stepNumber === currentStep);
+
   return (
     <Box>
-      <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
       {isMobile ? (
-        <>
-          <BottomSheet
-            isOpen={isOpen}
-            onDismiss={() => setIsOpen(false)}
-            snapPoints={[0.75, 0.75, 0.75]}
+        <Box
+          width="100%"
+          minHeight="100%"
+          backgroundColor="surface.background.gray.moderate"
+          display="flex"
+          flexDirection="column"
+          position="fixed"
+          top="spacing.0"
+          left="spacing.0"
+          zIndex={1000}
+        >
+          {/* Header with current step name */}
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+            padding="spacing.4"
+            backgroundColor="surface.background.gray.subtle"
+            borderBottomWidth="thin"
+            borderBottomColor="surface.border.gray.muted"
+            position="relative"
           >
-            <BottomSheetHeader title="Create QR Code" />
-            {/* <BottomSheetBody>{renderContent({ isMobile })}</BottomSheetBody>
-            <BottomSheetFooter>{renderFooter({ isMobile })}</BottomSheetFooter> */}
-          </BottomSheet>
-          <BottomSheet
-            isOpen={isPreviewOpen}
-            onDismiss={() => setIsPreviewOpen(false)}
-            snapPoints={[1, 1, 1]}
-          >
-            <BottomSheetHeader title="QR Code Preview" />
-            {/* <BottomSheetBody>{renderPreview()}</BottomSheetBody> */}
-          </BottomSheet>
-        </>
-      ) : (
-        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
-          <ModalHeader title="New GRN" />
-          <ModalBody height="100%" padding="spacing.0">
-            <Box width="100%" height="100%" display="flex" flexDirection="column">
-              <Box display="flex" flex={1}>
-                <Box
-                  width="300px"
-                  padding="spacing.7"
-                  backgroundColor="surface.background.gray.moderate"
-                >
-                  <StepGroup orientation="vertical" size="medium">
-                    {GRNSteps.map((step) => (
-                      <StepItem
-                        key={step.stepNumber}
-                        title={step.title}
-                        description={step.description}
-                        marker={getStepIcon(step.stepNumber)}
-                        isSelected={currentStep === step.stepNumber}
-                        isDisabled={step.stepNumber > currentStep}
-                        onClick={() => handleStepClick(step.stepNumber)}
-                        stepProgress={
-                          completedSteps.includes(step.stepNumber)
-                            ? 'full'
-                            : currentStep === step.stepNumber
-                            ? 'start'
-                            : 'none'
+            <Button
+              variant="tertiary"
+              size="small"
+              onClick={() => setIsOpen(false)}
+              accessibilityLabel="Close"
+            >
+              ×
+            </Button>
+            <Box flex={1} display="flex" justifyContent="center">
+              <Button
+                variant="tertiary"
+                size="small"
+                onClick={() => setShowStepGroup((prev: boolean) => !prev)}
+              >
+                {currentStepObj?.title}
+              </Button>
+            </Box>
+            <Box width="spacing.10" /> {/* Spacer for symmetry */}
+            {/* StepGroup dropdown/overlay */}
+            {showStepGroup && (
+              <Box
+                position="absolute"
+                top="100%"
+                left={0}
+                width="100%"
+                backgroundColor="surface.background.gray.subtle"
+                boxShadow="elevation.2"
+                zIndex={1100}
+                borderBottomLeftRadius="medium"
+                borderBottomRightRadius="medium"
+              >
+                <StepGroup orientation="vertical" size="medium">
+                  {GRNSteps.map((step) => (
+                    <StepItem
+                      key={step.stepNumber}
+                      title={step.title}
+                      description={step.description}
+                      marker={getStepIcon(step.stepNumber)}
+                      isSelected={currentStep === step.stepNumber}
+                      isDisabled={step.stepNumber > currentStep}
+                      onClick={() => {
+                        if (step.stepNumber <= currentStep) {
+                          setCurrentStep(step.stepNumber);
+                          setShowStepGroup(false);
                         }
-                      />
-                    ))}
-                  </StepGroup>
-                </Box>
-                <Box width="100%" display="flex" flexDirection="column">
-                  <Box flex={1} overflow="auto">
-                    {renderStepContent()}
+                      }}
+                      stepProgress={
+                        completedSteps.includes(step.stepNumber)
+                          ? 'full'
+                          : currentStep === step.stepNumber
+                          ? 'start'
+                          : 'none'
+                      }
+                    />
+                  ))}
+                </StepGroup>
+              </Box>
+            )}
+          </Box>
+          {/* Step content */}
+          <Box flex={1} overflow="auto" padding="spacing.4">
+            {renderStepContent(isMobile)}
+          </Box>
+          {/* Navigation buttons always at bottom */}
+          <Box
+            display="flex"
+            gap="spacing.4"
+            justifyContent="space-between"
+            padding="spacing.4"
+            backgroundColor="surface.background.gray.subtle"
+            borderTopWidth="thin"
+            borderTopColor="surface.border.gray.muted"
+            position="sticky"
+            bottom="spacing.0"
+            zIndex={1001}
+          >
+            <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
+              Previous
+            </Button>
+            <Button variant="primary" onClick={handleNextStep}>
+              {currentStep === GRNSteps.length ? 'Submit GRN' : 'Next'}
+            </Button>
+          </Box>
+        </Box>
+      ) : (
+        <Box>
+          <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
+          <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
+            <ModalHeader title="New GRN" />
+            <ModalBody height="100%" padding="spacing.0">
+              <Box width="100%" height="100%" display="flex" flexDirection="column">
+                <Box display="flex" flex={1}>
+                  <Box
+                    width="300px"
+                    padding="spacing.7"
+                    backgroundColor="surface.background.gray.moderate"
+                  >
+                    <StepGroup orientation="vertical" size="medium">
+                      {GRNSteps.map((step) => (
+                        <StepItem
+                          key={step.stepNumber}
+                          title={step.title}
+                          description={step.description}
+                          marker={getStepIcon(step.stepNumber)}
+                          isSelected={currentStep === step.stepNumber}
+                          isDisabled={step.stepNumber > currentStep}
+                          onClick={() => handleStepClick(step.stepNumber)}
+                          stepProgress={
+                            completedSteps.includes(step.stepNumber)
+                              ? 'full'
+                              : currentStep === step.stepNumber
+                              ? 'start'
+                              : 'none'
+                          }
+                        />
+                      ))}
+                    </StepGroup>
+                  </Box>
+                  <Box width="100%" display="flex" flexDirection="column">
+                    <Box flex={1} overflow="auto">
+                      {renderStepContent(isMobile)}
+                    </Box>
                   </Box>
                 </Box>
               </Box>
-            </Box>
-          </ModalBody>
-        </Modal>
+            </ModalBody>
+          </Modal>
+        </Box>
       )}
     </Box>
   );
