@@ -905,7 +905,7 @@ const DefaultExample: StoryFn<typeof Modal> = (args) => {
           </BottomSheet>
         </>
       ) : (
-        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
+        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
           <ModalHeader title="Create QR Code" />
           <ModalBody>{renderContent({ isMobile })}</ModalBody>
           <ModalFooter>{renderFooter({ isMobile })}</ModalFooter>
