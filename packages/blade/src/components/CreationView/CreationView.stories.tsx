@@ -10,7 +10,7 @@ import type { TableData } from '~components/Table/types';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
-import { ArrowRightIcon, CheckIcon, CloseIcon, DownloadIcon } from '~components/Icons';
+import { FileIcon } from '~components/Icons';
 import { Code } from '~components/Typography/Code';
 import { TableEditableCell } from '~components/Table/TableEditableCell';
 import { Amount } from '~components/Amount';
@@ -700,8 +700,8 @@ const DefaultExample: StoryFn<typeof Modal> = (args) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent): void => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent<HTMLFormElement>): void => {
+    e?.preventDefault();
     if (validateForm()) {
       setAlert({
         type: 'positive',
@@ -854,27 +854,31 @@ const DefaultExample: StoryFn<typeof Modal> = (args) => {
           isFullWidth
         />
       )}
-      <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-        <Button variant="secondary" onClick={() => setIsOpen(false)}>
-          Cancel
-        </Button>
+      <Box display="flex" gap="spacing.3" justifyContent="space-between" width="100%">
+        {isMobile && (
+          <Button
+            variant="tertiary"
+            icon={FileIcon}
+            onClick={() => setIsPreviewOpen(true)}
+            iconPosition="left"
+          />
+        )}
+        <Box display="flex" width="100%" justifyContent="flex-end" gap="spacing.3">
+          <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+            Cancel
+          </Button>
+          {isMobile && !isQrGenerated && (
+            <Button onClick={() => handleSubmit()} iconPosition="right">
+              Create QR Code
+            </Button>
+          )}
 
-        {isMobile && isQrGenerated && (
-          <Button isFullWidth onClick={() => setIsPreviewOpen(true)} iconPosition="right">
-            Preview
-          </Button>
-        )}
-        {isMobile && !isQrGenerated && (
-          <Button onClick={handleSubmit} iconPosition="right">
-            Create QR Code
-          </Button>
-        )}
-
-        {!isMobile && (
-          <Button variant="primary" onClick={handleSubmit} isDisabled={!isQrGenerated}>
-            Save
-          </Button>
-        )}
+          {!isMobile && (
+            <Button variant="primary" onClick={() => handleSubmit()} isDisabled={!isQrGenerated}>
+              Save
+            </Button>
+          )}
+        </Box>
       </Box>
     </Box>
   );
@@ -884,28 +888,26 @@ const DefaultExample: StoryFn<typeof Modal> = (args) => {
       <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
       {isMobile ? (
         <>
-          <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+          <BottomSheet
+            isOpen={isOpen}
+            onDismiss={() => setIsOpen(false)}
+            snapPoints={[0.75, 0.75, 0.75]}
+          >
             <BottomSheetHeader title="Create QR Code" />
             <BottomSheetBody>{renderContent({ isMobile })}</BottomSheetBody>
             <BottomSheetFooter>{renderFooter({ isMobile })}</BottomSheetFooter>
           </BottomSheet>
-          <BottomSheet isOpen={isPreviewOpen} onDismiss={() => setIsPreviewOpen(false)}>
+          <BottomSheet
+            isOpen={isPreviewOpen}
+            onDismiss={() => setIsPreviewOpen(false)}
+            snapPoints={[1, 1, 1]}
+          >
             <BottomSheetHeader title="QR Code Preview" />
             <BottomSheetBody>{renderPreview()}</BottomSheetBody>
-            <BottomSheetFooter>
-              <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-                <Button variant="secondary" onClick={() => setIsPreviewOpen(false)}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={() => setIsOpen(false)}>
-                  Save
-                </Button>
-              </Box>
-            </BottomSheetFooter>
           </BottomSheet>
         </>
       ) : (
-        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
+        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
           <ModalHeader title="Create QR Code" />
           <ModalBody>{renderContent({ isMobile })}</ModalBody>
           <ModalFooter>{renderFooter({ isMobile })}</ModalFooter>
