@@ -13,6 +13,7 @@ import {
 } from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
 import { isFileAccepted } from './isFileAccepted';
+import { FileUploadItemIcon } from './FileUploadItemIcon';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -34,7 +35,6 @@ import { useControllableState } from '~utils/useControllable';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { throwBladeError } from '~utils/logger';
-import { FileUploadItemIcon } from './FileUploadItemIcon';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -66,6 +66,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   },
   ref,
 ): React.ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const { actionButtonText, dropAreaText } = rest as FileUploadVariableSizeProps;
   const isSizeVariable = size === 'variable';
   // 'actionButtonText' and 'dropAreaText' are only valid when size is 'variable'
