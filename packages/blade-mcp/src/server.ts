@@ -6,19 +6,33 @@ import {
   createNewBladeProjectCallback,
   createNewBladeProjectSchema,
   createNewBladeProjectDescription,
+  createNewBladeProjectToolName,
 } from './tools/createNewBladeProject.js';
 import {
   createBladeCursorRulesCallback,
   createBladeCursorRulesSchema,
   createBladeCursorRulesDescription,
+  createBladeCursorRulesToolName,
 } from './tools/createBladeCursorRules.js';
 import {
   getBladeComponentDocsCallback,
   getBladeComponentDocsSchema,
   getBladeComponentDocsDescription,
+  getBladeComponentDocsToolName,
 } from './tools/getBladeComponentDocs.js';
-import { hiBladeCallback, hiBladeSchema, hiBladeDescription } from './tools/hiBlade.js';
+import {
+  getFigmaToCodeCallback,
+  getFigmaToCodeSchema,
+  getFigmaToCodeDescription,
+  getFigmaToCodeToolName,
+} from './tools/getFigmaToCode.js';
 import { getPackageJSONVersion } from './utils.js';
+import {
+  hiBladeCallback,
+  hiBladeDescription,
+  hiBladeSchema,
+  hiBladeToolName,
+} from './tools/hiBlade.js';
 
 try {
   const server = new McpServer({
@@ -26,27 +40,34 @@ try {
     version: getPackageJSONVersion(),
   });
 
-  server.tool('hi_blade', hiBladeDescription, hiBladeSchema, hiBladeCallback);
+  server.tool(hiBladeToolName, hiBladeDescription, hiBladeSchema, hiBladeCallback);
 
   server.tool(
-    'create_new_blade_project',
+    createNewBladeProjectToolName,
     createNewBladeProjectDescription,
     createNewBladeProjectSchema,
     createNewBladeProjectCallback,
   );
 
   server.tool(
-    'create_blade_cursor_rules',
+    createBladeCursorRulesToolName,
     createBladeCursorRulesDescription,
     createBladeCursorRulesSchema,
     createBladeCursorRulesCallback,
   );
 
   server.tool(
-    'get_blade_component_docs',
+    getBladeComponentDocsToolName,
     getBladeComponentDocsDescription,
     getBladeComponentDocsSchema,
     getBladeComponentDocsCallback,
+  );
+
+  server.tool(
+    getFigmaToCodeToolName,
+    getFigmaToCodeDescription,
+    getFigmaToCodeSchema,
+    getFigmaToCodeCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout

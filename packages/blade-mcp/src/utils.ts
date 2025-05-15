@@ -5,6 +5,12 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PROJECT_ROOT_DIRECTORY = join(__dirname, '..');
+const URLS = {
+  FIGMA_TO_CODE_URL: {
+    DEV: 'http://localhost:8888',
+    PROD: 'https://blade-chat-base.dev.razorpay.in',
+  },
+} as const;
 
 // Cursor Rules Tokens
 const CURSOR_RULES_VERSION = '0.0.6';
@@ -62,4 +68,5 @@ export {
   hasOutDatedRules,
   getPackageJSONVersion,
   getBladeComponentsList,
+  URLS,
 };
