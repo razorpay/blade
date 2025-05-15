@@ -455,8 +455,6 @@ export const TextAreaWithTags: StoryFn<typeof TextAreaComponent> = ({ ...args })
         isTaggedInput={true}
         tags={tags}
         onTagChange={({ tags }) => {
-          // console.count('onTagChange');
-          console.log({ tags });
           setTags(tags);
         }}
       />
