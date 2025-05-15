@@ -13,11 +13,12 @@ import { Badge } from '~components/Badge';
 import {
   FileIcon,
   CheckIcon,
-  ClockIcon,
   PhoneIcon,
   MailIcon,
   CalendarIcon,
   LockIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
 } from '~components/Icons';
 import { Code } from '~components/Typography/Code';
 import { TableEditableCell } from '~components/Table/TableEditableCell';
@@ -33,6 +34,7 @@ import {
 import { ActionList, ActionListItem } from '~components/ActionList';
 import type { DatesRangeValue } from '~components/DatePicker';
 import { FilterChipDatePicker } from '~components/DatePicker';
+import { ProgressBar } from '~components/ProgressBar';
 import {
   Table,
   TableHeader,
@@ -1985,7 +1987,17 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               Previous
             </Button>
           </Box>
-          <Button variant="primary" onClick={handleNextStep}>
+          <Button
+            variant="primary"
+            onClick={
+              currentStep === lastStep
+                ? () => {
+                    // close modal
+                    setIsOpen(false);
+                  }
+                : handleNextStep
+            }
+          >
             {currentStep === lastStep ? 'Submit GRN' : 'Next'}
           </Button>
         </Box>
@@ -2013,45 +2025,50 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             <Box
               display="flex"
               alignItems="center"
-              justifyContent="space-between"
+              justifyContent="center"
               padding="spacing.4"
               backgroundColor="surface.background.gray.subtle"
               borderBottomWidth="thin"
               borderBottomColor="surface.border.gray.muted"
               position="relative"
             >
-              <Button
-                variant="tertiary"
-                size="small"
-                onClick={() => setIsOpen(false)}
-                accessibilityLabel="Close"
-              >
-                ×
-              </Button>
-              <Box flex={1} display="flex" justifyContent="center">
-                <Button
-                  variant="tertiary"
-                  size="small"
-                  onClick={() => setShowStepGroup((prev: boolean) => !prev)}
-                >
-                  {currentStepObj?.title}
-                </Button>
+              <Box display="flex" alignItems="center" gap="spacing.4">
+                <Badge>
+                  {' '}
+                  {currentStep} / {lastStep}{' '}
+                </Badge>
+                <Heading size="small">{currentStepObj?.title}</Heading>
+
+                <IconButton
+                  icon={showStepGroup ? ChevronUpIcon : ChevronDownIcon}
+                  accessibilityLabel="Open steps"
+                  onClick={() => {
+                    setShowStepGroup((prev: boolean) => !prev);
+                  }}
+                />
               </Box>
-              <Box width="spacing.10" /> {/* Spacer for symmetry */}
-              {/* StepGroup dropdown/overlay */}
-              {showStepGroup && (
+            </Box>
+            <ProgressBar
+              value={(currentStep / lastStep) * 100}
+              showPercentage={false}
+              size="medium"
+            />
+            {showStepGroup && (
+              <Box>
                 <Box
-                  position="absolute"
-                  top="100%"
+                  position="fixed"
+                  top="spacing.10"
                   left="spacing.0"
+                  backgroundColor="surface.background.gray.intense"
+                  zIndex={1005}
                   width="100%"
-                  backgroundColor="surface.background.gray.subtle"
-                  zIndex={1100}
-                  borderBottomLeftRadius="medium"
-                  borderBottomRightRadius="medium"
+                  height="40%"
+                  borderBottomLeftRadius="2xlarge"
+                  borderBottomRightRadius="2xlarge"
+                  padding="spacing.7"
                 >
                   <StepGroup orientation="vertical" size="medium">
-                    {GRNSteps.filter((s) => s.stepNumber !== 5).map((step) => (
+                    {GRNSteps.map((step) => (
                       <StepItem
                         key={step.stepNumber}
                         title={step.title}
@@ -2059,12 +2076,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                         marker={getStepIcon(step.stepNumber)}
                         isSelected={currentStep === step.stepNumber}
                         isDisabled={step.stepNumber > currentStep}
-                        onClick={() => {
-                          if (step.stepNumber <= currentStep) {
-                            setCurrentStep(step.stepNumber);
-                            setShowStepGroup(false);
-                          }
-                        }}
+                        onClick={() => handleStepClick(step.stepNumber)}
                         stepProgress={
                           completedSteps.includes(step.stepNumber)
                             ? 'full'
@@ -2076,8 +2088,23 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                     ))}
                   </StepGroup>
                 </Box>
-              )}
-            </Box>
+                <div
+                  style={{
+                    position: 'fixed',
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0,0,0,0.6)',
+                    zIndex: 1004,
+                  }}
+                  onClick={() => {
+                    setShowStepGroup((prev: boolean) => !prev);
+                  }}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onKeyDown={() => {}}
+                />
+              </Box>
+            )}
+
             {/* Step content */}
             <Box flex={1} overflow="auto" padding="spacing.4">
               {renderStepContent(isMobile)}
