@@ -17,6 +17,7 @@ import {
   PhoneIcon,
   MailIcon,
   CalendarIcon,
+  LockIcon,
 } from '~components/Icons';
 import { Code } from '~components/Typography/Code';
 import { TableEditableCell } from '~components/Table/TableEditableCell';
@@ -1103,7 +1104,10 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     if (completedSteps.includes(stepNumber)) {
       return <StepItemIcon icon={CheckIcon} color="positive" />;
     }
-    return <StepItemIcon icon={FileIcon} color="primary" />;
+    if (stepNumber === currentStep) {
+      return <StepItemIcon icon={FileIcon} color="primary" />;
+    }
+    return <StepItemIcon icon={LockIcon} color="primary" />;
   };
   const tableData = {
     nodes: [
