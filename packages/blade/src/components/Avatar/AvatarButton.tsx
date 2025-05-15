@@ -98,15 +98,17 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
         {/* eslint-disable-next-line jsx-a11y/alt-text -- alt text is provided in imgProps */}
         {imgProps?.src ? <img {...imgProps} /> : null}
 
-        {size === 'xlarge' ? (
-          <Heading size={avatarTextSizeMapping[size]} weight="semibold" color={textColor}>
-            {children}
-          </Heading>
-        ) : (
-          <Text size={avatarTextSizeMapping[size]} weight="semibold" color={textColor}>
-            {children}
-          </Text>
-        )}
+        {children ? (
+          size === 'xlarge' ? (
+            <Heading size={avatarTextSizeMapping[size]} weight="semibold" color={textColor}>
+              {children}
+            </Heading>
+          ) : (
+            <Text size={avatarTextSizeMapping[size]} weight="semibold" color={textColor}>
+              {children}
+            </Text>
+          )
+        ) : null}
       </BaseBox>
     </StyledAvatarButton>
   );

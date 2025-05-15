@@ -9,6 +9,7 @@ import { Button } from '~components/Button';
 import { Checkbox } from '~components/Checkbox';
 import { isReactNative } from '~utils';
 import { Link } from '~components/Link';
+import { Text } from '~components/Typography';
 
 const HeaderContainer = ({ children }: { children: BoxProps['children'] }): React.ReactElement => {
   return <Box padding={{ base: 'spacing.0', m: 'spacing.2' }}>{children}</Box>;
@@ -129,6 +130,27 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
           showBackButton={false}
           size="medium"
         />
+      </HeaderContainer>
+      <HeaderContainer>
+        <BaseHeader
+          leading={<StarIcon color="surface.icon.gray.normal" size="medium" />}
+          title="When The Title is So Large That It Goes On Next Line"
+          subtitle="When The Subtitle of this BaseHeader is So Largeeeee That It Goes On Next Line"
+          titleSuffix={
+            <Badge size="small" color="positive">
+              New
+            </Badge>
+          }
+          trailing={<Link>Apply</Link>}
+          showCloseButton={true}
+          showBackButton={false}
+          size="large"
+        />
+      </HeaderContainer>
+      <HeaderContainer>
+        <BaseHeader showCloseButton={true} showBackButton={false}>
+          <Text>Custom Header</Text>
+        </BaseHeader>
       </HeaderContainer>
     </Box>
   );

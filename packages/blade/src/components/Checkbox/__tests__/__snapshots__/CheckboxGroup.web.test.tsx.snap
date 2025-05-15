@@ -64,7 +64,14 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -81,12 +88,8 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
   margin-left: 4px;
 }
 
-.c14.c14.c14.c14.c14 {
-  margin-bottom: 0px;
-}
-
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -255,11 +258,11 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -340,7 +343,7 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
             </div>
           </div>
           <div
-            class="c14"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -491,7 +494,14 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -509,14 +519,10 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  margin-bottom: 0px;
-}
-
-.c15.c15.c15.c15.c15 {
   margin-top: 4px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -532,7 +538,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -588,7 +594,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -718,11 +724,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -803,7 +809,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             </div>
           </div>
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -884,7 +890,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             </div>
           </div>
           <div
-            class="c14"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -966,15 +972,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           </div>
         </div>
         <div
-          class="c15"
+          class="c14"
           data-blade-component="base-box"
         >
           <span
-            class="c16"
+            class="c15"
             data-blade-component="base-box"
           >
             <span
-              class="c17"
+              class="c16"
               data-blade-component="text"
             >
               Select one
@@ -1051,7 +1057,14 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1068,12 +1081,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   margin-left: 4px;
 }
 
-.c14.c14.c14.c14.c14 {
-  margin-bottom: 0px;
-}
-
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1241,11 +1250,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -1326,7 +1335,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             </div>
           </div>
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -1407,7 +1416,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             </div>
           </div>
           <div
-            class="c14"
+            class=""
             data-blade-component="base-box"
           >
             <div

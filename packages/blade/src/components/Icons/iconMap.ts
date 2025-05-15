@@ -14,9 +14,11 @@ import AlignJustifyIconComponent from './AlignJustifyIcon';
 import AlignLeftIconComponent from './AlignLeftIcon';
 import AlignRightIconComponent from './AlignRightIcon';
 import AnchorIconComponent from './AnchorIcon';
+import AndroidIconComponent from './AndroidIcon';
 import AnnouncementIconComponent from './AnnouncementIcon';
 import ApertureIconComponent from './ApertureIcon';
 import AppStoreIconComponent from './AppStoreIcon';
+import AppleIconComponent from './AppleIcon';
 import ArrowDownIconComponent from './ArrowDownIcon';
 import ArrowDownLeftIconComponent from './ArrowDownLeftIcon';
 import ArrowDownRightIconComponent from './ArrowDownRightIcon';
@@ -133,6 +135,7 @@ import DollarsIconComponent from './DollarsIcon';
 import DotIconComponent from './DotIcon';
 import DownloadCloudIconComponent from './DownloadCloudIcon';
 import DownloadIconComponent from './DownloadIcon';
+import DragHandleIconComponent from './DragHandleIcon';
 import DropletIconComponent from './DropletIcon';
 import EcommerceIconComponent from './EcommerceIcon';
 import EditComposeIconComponent from './EditComposeIcon';
@@ -185,6 +188,7 @@ import InstantSettlementIconComponent from './InstantSettlementIcon';
 import InternationalPaymentsIconComponent from './InternationalPaymentsIcon';
 import InvoicesIconComponent from './InvoicesIcon';
 import ItalicIconComponent from './ItalicIcon';
+import KeyIconComponent from './KeyIcon';
 import KeyboardIconComponent from './KeyboardIcon';
 import LayersIconComponent from './LayersIcon';
 import LayoutIconComponent from './LayoutIcon';
@@ -399,9 +403,11 @@ const iconMap: Record<string, IconComponent> = {
   AlignLeftIcon: AlignLeftIconComponent,
   AlignRightIcon: AlignRightIconComponent,
   AnchorIcon: AnchorIconComponent,
+  AndroidIcon: AndroidIconComponent,
   AnnouncementIcon: AnnouncementIconComponent,
   ApertureIcon: ApertureIconComponent,
   AppStoreIcon: AppStoreIconComponent,
+  AppleIcon: AppleIconComponent,
   ArrowDownIcon: ArrowDownIconComponent,
   ArrowDownLeftIcon: ArrowDownLeftIconComponent,
   ArrowDownRightIcon: ArrowDownRightIconComponent,
@@ -518,6 +524,7 @@ const iconMap: Record<string, IconComponent> = {
   DotIcon: DotIconComponent,
   DownloadCloudIcon: DownloadCloudIconComponent,
   DownloadIcon: DownloadIconComponent,
+  DragHandleIcon: DragHandleIconComponent,
   DropletIcon: DropletIconComponent,
   EcommerceIcon: EcommerceIconComponent,
   EditComposeIcon: EditComposeIconComponent,
@@ -570,6 +577,7 @@ const iconMap: Record<string, IconComponent> = {
   InternationalPaymentsIcon: InternationalPaymentsIconComponent,
   InvoicesIcon: InvoicesIconComponent,
   ItalicIcon: ItalicIconComponent,
+  KeyIcon: KeyIconComponent,
   KeyboardIcon: KeyboardIconComponent,
   LayersIcon: LayersIconComponent,
   LayoutIcon: LayoutIconComponent,

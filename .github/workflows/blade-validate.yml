@@ -16,6 +16,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.12.1
+      - name: Pre-Generate Documentation Lock File
+        run: yarn generate-docs-lockfile
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Build Blade

@@ -1,0 +1,408 @@
+## Component Name
+
+SelectInput
+
+## Description
+
+SelectInput is a dropdown trigger component that functions as the equivalent of the HTML `<select>` element in Blade Design System. It must be used within a Dropdown component and works with ActionList to create selectable options. SelectInput provides a clean interface for single or multiple item selection with full keyboard accessibility and rich styling options.
+
+## TypeScript Types
+
+The following types define the props that the SelectInput component accepts. These types are essential for proper usage of the component in TypeScript projects.
+
+```typescript
+type SelectInputProps = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: string;
+
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+
+  /**
+   * Position of the label.
+   * Can be 'top', 'left', or 'inside-input'
+   */
+  labelPosition?: 'top' | 'left' | 'inside-input';
+
+  /**
+   * Indicates whether the field is optional or required
+   */
+  necessityIndicator?: 'optional' | 'required';
+
+  /**
+   * Validation state of the input
+   */
+  validationState?: 'none' | 'error' | 'success';
+
+  /**
+   * Help text to be displayed below the input
+   */
+  helpText?: string;
+
+  /**
+   * Error text to be displayed when validationState is 'error'
+   */
+  errorText?: string;
+
+  /**
+   * Success text to be displayed when validationState is 'success'
+   */
+  successText?: string;
+
+  /**
+   * Name of the input field
+   */
+  name?: string;
+
+  /**
+   * Whether the input is disabled
+   */
+  isDisabled?: boolean;
+
+  /**
+   * Whether the input is required
+   */
+  isRequired?: boolean;
+
+  /**
+   * Prefix text to be displayed before the value
+   */
+  prefix?: string;
+
+  /**
+   * Suffix text to be displayed after the value
+   */
+  suffix?: string;
+
+  /**
+   * Whether the input should be focused on mount
+   */
+  autoFocus?: boolean;
+
+  /**
+   * Callback that is called when the input is clicked
+   */
+  onClick?: ({ name, value }: { name?: string; value?: string }) => void;
+
+  /**
+   * Callback that is called when the input receives focus
+   */
+  onFocus?: ({ name, value }: { name?: string; value?: string }) => void;
+
+  /**
+   * Callback that is called when the input loses focus
+   */
+  onBlur?: ({ name, value }: { name?: string; value?: string }) => void;
+
+  /**
+   * Placeholder text to be displayed when no value is selected
+   */
+  placeholder?: string;
+
+  /**
+   * Test ID for testing
+   */
+  testID?: string;
+
+  /**
+   * Size of the input
+   */
+  size?: 'medium' | 'large';
+
+  /**
+   * Icon to be displayed at the beginning of the input
+   */
+  icon?: React.ComponentType<any>;
+
+  /**
+   * Controlled value of the Select. Use it in combination of `onChange`.
+   */
+  value?: string | string[];
+
+  /**
+   * Used to set the default value of SelectInput when it's uncontrolled.
+   */
+  defaultValue?: string | string[];
+
+  /**
+   * Callback that is called when the selection changes
+   */
+  onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
+
+  /**
+   * Constraints the height of input to given number rows
+   * @default 'single'
+   */
+  maxRows?: 'single' | 'multiple' | 'expandable';
+} & DataAnalyticsAttribute;
+```
+
+## Example
+
+### Basic SelectInput with Single Selection
+
+This example demonstrates a basic SelectInput with single selection, showing how to use it within a Dropdown component.
+
+```jsx
+import { useState } from 'react';
+import {
+  Dropdown,
+  DropdownOverlay,
+  SelectInput,
+  ActionList,
+  ActionListItem,
+  Box,
+  Text,
+  UserIcon,
+} from '@razorpay/blade/components';
+
+function BasicSelectExample() {
+  const [selectedUser, setSelectedUser] = useState('');
+
+  const handleUserChange = ({ values }) => {
+    setSelectedUser(values[0] || '');
+  };
+
+  return (
+    <Box width="100%" maxWidth="400px">
+      <Text marginBottom="spacing.4">Selected user: {selectedUser || 'None'}</Text>
+
+      <Dropdown selectionType="single">
+        <SelectInput
+          label="Select User"
+          name="user"
+          placeholder="Choose a user"
+          icon={UserIcon}
+          onChange={handleUserChange}
+          helpText="Select a user to view their profile"
+          necessityIndicator="required"
+          size="medium"
+          data-analytics-section="user-selection"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="John Doe" value="john" />
+            <ActionListItem title="Jane Smith" value="jane" />
+            <ActionListItem title="Robert Johnson" value="robert" />
+            <ActionListItem title="Emily Davis" value="emily" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+}
+```
+
+### SelectInput with Multiple Selection and Validation
+
+This example shows how to implement a SelectInput with multiple selection capability along with validation states.
+
+```jsx
+import { useState, useEffect } from 'react';
+import {
+  Dropdown,
+  DropdownOverlay,
+  SelectInput,
+  ActionList,
+  ActionListItem,
+  ActionListSection,
+  Box,
+  Button,
+  TagIcon,
+} from '@razorpay/blade/components';
+
+function MultiSelectWithValidationExample() {
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [validationState, setValidationState] = useState('none');
+
+  // Validate whenever selection changes
+  useEffect(() => {
+    if (selectedCategories.length === 0) {
+      setValidationState('error');
+    } else if (selectedCategories.length > 3) {
+      setValidationState('error');
+    } else {
+      setValidationState('success');
+    }
+  }, [selectedCategories]);
+
+  const handleCategoryChange = ({ values }) => {
+    setSelectedCategories(values);
+  };
+
+  const handleSubmit = () => {
+    if (validationState === 'success') {
+      alert(`Selected categories: ${selectedCategories.join(', ')}`);
+    }
+  };
+
+  return (
+    <Box
+      width="100%"
+      maxWidth="450px"
+      padding="spacing.5"
+      backgroundColor="surface.background.gray.subtle"
+      borderRadius="medium"
+    >
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Product Categories"
+          name="categories"
+          placeholder="Select categories"
+          icon={TagIcon}
+          value={selectedCategories}
+          onChange={handleCategoryChange}
+          validationState={validationState}
+          errorText={
+            selectedCategories.length === 0
+              ? 'At least one category is required'
+              : 'Maximum 3 categories allowed'
+          }
+          successText={`${selectedCategories.length} categories selected`}
+          maxRows="multiple"
+          isRequired={true}
+          size="large"
+          data-analytics-field="product-categories"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListSection title="Electronics">
+              <ActionListItem title="Smartphones" value="smartphones" />
+              <ActionListItem title="Laptops" value="laptops" />
+              <ActionListItem title="Accessories" value="accessories" />
+            </ActionListSection>
+            <ActionListSection title="Clothing">
+              <ActionListItem title="Men's Wear" value="mens-wear" />
+              <ActionListItem title="Women's Wear" value="womens-wear" />
+              <ActionListItem title="Children's Wear" value="childrens-wear" />
+            </ActionListSection>
+            <ActionListSection title="Home">
+              <ActionListItem title="Furniture" value="furniture" />
+              <ActionListItem title="Decor" value="decor" />
+              <ActionListItem title="Kitchen" value="kitchen" />
+            </ActionListSection>
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+
+      <Button
+        marginTop="spacing.4"
+        onClick={handleSubmit}
+        isDisabled={validationState !== 'success'}
+      >
+        Save Categories
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Controlled SelectInput with Custom Formatting
+
+This example demonstrates a controlled SelectInput with custom formatting and state management for a more complex use case.
+
+```jsx
+import { useState } from 'react';
+import {
+  Dropdown,
+  DropdownOverlay,
+  SelectInput,
+  ActionList,
+  ActionListItem,
+  ActionListItemAsset,
+  Box,
+  Button,
+  Text,
+  GlobeIcon,
+} from '@razorpay/blade/components';
+
+function CurrencySelectExample() {
+  // Pre-defined currency data
+  const currencies = [
+    { code: 'USD', symbol: '$', name: 'US Dollar', flag: '🇺🇸' },
+    { code: 'EUR', symbol: '€', name: 'Euro', flag: '🇪🇺' },
+    { code: 'GBP', symbol: '£', name: 'British Pound', flag: '🇬🇧' },
+    { code: 'JPY', symbol: '¥', name: 'Japanese Yen', flag: '🇯🇵' },
+    { code: 'INR', symbol: '₹', name: 'Indian Rupee', flag: '🇮🇳' },
+  ];
+
+  const [selectedCurrency, setSelectedCurrency] = useState('INR');
+  const [amount, setAmount] = useState('1000');
+
+  const handleCurrencyChange = ({ values }) => {
+    if (values && values.length > 0) {
+      setSelectedCurrency(values[0]);
+    }
+  };
+
+  // Get current currency data
+  const currentCurrency = currencies.find((c) => c.code === selectedCurrency) || currencies[0];
+
+  return (
+    <Box
+      width="100%"
+      maxWidth="450px"
+      padding="spacing.5"
+      backgroundColor="surface.background.white.normal"
+      borderRadius="medium"
+      borderWidth="1px"
+      borderStyle="solid"
+      borderColor="border.neutral.muted"
+    >
+      <Text size="xlarge" weight="semibold" marginBottom="spacing.4">
+        Currency Converter
+      </Text>
+
+      <Box display="flex" alignItems="flex-end" gap="spacing.3" marginBottom="spacing.5">
+        <Box width="150px">
+          <Dropdown selectionType="single">
+            <SelectInput
+              label="Currency"
+              name="currency"
+              value={selectedCurrency}
+              onChange={handleCurrencyChange}
+              labelPosition="top"
+              prefix={currentCurrency.symbol}
+              defaultValue="INR"
+              size="medium"
+              data-analytics-field="currency-selector"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {currencies.map((currency) => (
+                  <ActionListItem
+                    key={currency.code}
+                    title={`${currency.flag} ${currency.code} - ${currency.name}`}
+                    value={currency.code}
+                    leading={<ActionListItemAsset>{currency.symbol}</ActionListItemAsset>}
+                  />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+
+        <Box flexGrow={1}>
+          <Text as="div" size="xlarge" weight="semibold" padding="spacing.3">
+            {currentCurrency.symbol} {amount}
+          </Text>
+        </Box>
+      </Box>
+
+      <Box>
+        <Text size="small" color="text.neutral.muted">
+          Selected currency: {currentCurrency.flag} {currentCurrency.name} ({currentCurrency.code})
+        </Text>
+      </Box>
+
+      <Button marginTop="spacing.4" icon={GlobeIcon} iconPosition="left" isFullWidth>
+        View Exchange Rates
+      </Button>
+    </Box>
+  );
+}
+```

@@ -6,19 +6,22 @@ exports[`Drawer renders a Drawer 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   position: fixed;
-  height: 100%;
   width: 90%;
-  top: 0px;
-  left: 100%;
   background-color: hsla(0,0%,100%,1);
+  border-radius: 0px;
   box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
 }
 
 .c2.c2.c2.c2.c2 {
+  background-image: linear-gradient(155deg,hsla(0,0%,100%,0) 0%,hsla(200,84%,44%,0.09) 30.26%);
+}
+
+.c3.c3.c3.c3.c3 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -26,7 +29,7 @@ exports[`Drawer renders a Drawer 1`] = `
   touch-action: none;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,13 +37,14 @@ exports[`Drawer renders a Drawer 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,7 +63,7 @@ exports[`Drawer renders a Drawer 1`] = `
   margin-right: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -76,13 +80,13 @@ exports[`Drawer renders a Drawer 1`] = `
   height: 28px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -95,11 +99,11 @@ exports[`Drawer renders a Drawer 1`] = `
   flex-shrink: 0;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   margin-left: 8px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -115,20 +119,20 @@ exports[`Drawer renders a Drawer 1`] = `
   height: 28px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   text-align: left;
   height: 20px;
   background-color: hsla(150,100%,32%,0.09);
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -149,7 +153,7 @@ exports[`Drawer renders a Drawer 1`] = `
   padding-left: 8px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,16 +172,16 @@ exports[`Drawer renders a Drawer 1`] = `
   width: 100%;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   width: 100%;
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   overflow: auto;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -185,11 +189,11 @@ exports[`Drawer renders a Drawer 1`] = `
   padding: 20px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   margin-right: 16px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -211,7 +215,7 @@ exports[`Drawer renders a Drawer 1`] = `
   z-index: 1;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -235,9 +239,14 @@ exports[`Drawer renders a Drawer 1`] = `
   transition: all 280ms cubic-bezier(0.17,0,1,1);
   -webkit-animation-fill-mode: initial;
   animation-fill-mode: initial;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 100%;
+  height: auto;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -247,10 +256,10 @@ exports[`Drawer renders a Drawer 1`] = `
   flex-grow: 1;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.125rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
@@ -266,7 +275,7 @@ exports[`Drawer renders a Drawer 1`] = `
   margin-top: 1px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -289,7 +298,7 @@ exports[`Drawer renders a Drawer 1`] = `
   overflow-wrap: break-word;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -306,7 +315,7 @@ exports[`Drawer renders a Drawer 1`] = `
   padding: 0;
 }
 
-.c29.c29.c29.c29.c29 {
+.c30.c30.c30.c30.c30 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -323,7 +332,7 @@ exports[`Drawer renders a Drawer 1`] = `
   padding: 0;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -350,12 +359,12 @@ exports[`Drawer renders a Drawer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c23.c23.c23.c23.c23:hover:not([disabled]) {
+.c24.c24.c24.c24.c24:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
   background-color: transparent;
 }
 
-.c23.c23.c23.c23.c23:focus-visible {
+.c24.c24.c24.c24.c24:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -367,11 +376,11 @@ exports[`Drawer renders a Drawer 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
-.c23.c23.c23.c23.c23:active {
+.c24.c24.c24.c24.c24:active {
   color: hsla(211,26%,34%,1);
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   background-color: hsla(150,100%,32%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -386,7 +395,7 @@ exports[`Drawer renders a Drawer 1`] = `
   width: fit-content;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   min-height: 28px;
   height: 28px;
   width: 28px;
@@ -424,21 +433,21 @@ exports[`Drawer renders a Drawer 1`] = `
   position: relative;
 }
 
-.c18.c18.c18.c18.c18:hover {
+.c19.c19.c19.c19.c19:hover {
   background-color: hsla(211,20%,52%,0.18);
 }
 
-.c18.c18.c18.c18.c18:active {
+.c19.c19.c19.c19.c19:active {
   background-color: hsla(211,20%,52%,0.18);
 }
 
-.c18.c18.c18.c18.c18:focus-visible {
+.c19.c19.c19.c19.c19:focus-visible {
   background-color: hsla(211,20%,52%,0.18);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c18.c18.c18.c18.c18 * {
+.c19.c19.c19.c19.c19 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -447,7 +456,7 @@ exports[`Drawer renders a Drawer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -457,7 +466,7 @@ exports[`Drawer renders a Drawer 1`] = `
   transition-timing-function: 160px;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   opacity: 1;
 }
 
@@ -470,11 +479,12 @@ exports[`Drawer renders a Drawer 1`] = `
 @media screen and (min-width:768px) {
   .c0.c0.c0.c0.c0 {
     width: 420px;
+    border-radius: 8px;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c2.c2.c2.c2.c2 {
+  .c3.c3.c3.c3.c3 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -483,32 +493,42 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c26.c26.c26.c26.c26 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c1.c1.c1.c1.c1 {
+    top: 8px;
+    bottom: 8px;
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
   }
 }
 
@@ -522,23 +542,23 @@ exports[`Drawer renders a Drawer 1`] = `
   tabindex="-1"
 >
   <div
-    class=""
+    class="c2"
     data-blade-component="base-box"
   >
     <div
-      class="c2"
+      class="c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class="c5"
           data-blade-component="base-box"
         >
           <div
-            class="c5"
+            class="c6"
             data-blade-component="base-box"
           >
             <svg
@@ -560,41 +580,41 @@ exports[`Drawer renders a Drawer 1`] = `
             </svg>
           </div>
           <div
-            class="c6"
+            class="c7"
             data-blade-component="base-box"
           >
             <div
-              class="c7"
+              class="c8"
               data-blade-component="base-box"
             >
-              <p
-                class="c8"
-                data-blade-component="text"
+              <h2
+                class="c9"
+                data-blade-component="heading"
               >
                 Address Details
-              </p>
+              </h2>
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c10"
+                  class="c11"
                   data-blade-component="box"
                 >
                   <div
-                    class="c11"
+                    class="c12"
                     data-blade-component="badge"
                   >
                     <div
-                      class="c12 c13"
+                      class="c13 c14"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c14"
+                        class="c15"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c15"
+                          class="c16"
                           data-blade-component="text"
                         >
                           NEW
@@ -606,7 +626,7 @@ exports[`Drawer renders a Drawer 1`] = `
               </div>
             </div>
             <p
-              class="c16"
+              class="c17"
               data-blade-component="text"
             >
               Saving addresses will improve your checkout experience
@@ -614,29 +634,29 @@ exports[`Drawer renders a Drawer 1`] = `
           </div>
         </div>
         <div
-          class="c17"
+          class="c18"
           data-blade-component="base-box"
         >
           <div
-            class="c10"
+            class="c11"
             data-blade-component="box"
           >
             <button
-              class="c18"
+              class="c19"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c19"
+                class=" c20"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c20 c21"
+                  class="c21 c22"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c22"
+                    class="c23"
                     data-blade-component="base-box"
                   >
                     <svg
@@ -666,12 +686,12 @@ exports[`Drawer renders a Drawer 1`] = `
           </div>
         </div>
         <div
-          class="c10"
+          class="c11"
           data-blade-component="box"
         >
           <button
             aria-label="Close"
-            class="c23"
+            class="c24"
             data-blade-component="icon-button"
             type="button"
           >
@@ -694,30 +714,354 @@ exports[`Drawer renders a Drawer 1`] = `
         </div>
       </div>
       <div
-        class="c24"
+        class="c25"
         data-blade-component="base-box"
       >
         <div
-          class="c25"
+          class="c26"
           data-blade-component="box"
         />
       </div>
     </div>
     <div
-      class="c26 c27"
+      class="c27 c28"
       data-blade-component="divider"
       role="separator"
     />
   </div>
   <div
-    class="c28"
+    class="c29"
     data-blade-component="box"
   >
     <p
-      class="c29"
+      class="c30"
       data-blade-component="text"
     >
       Test Content
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Drawer should render a Drawer with a custom header 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: fixed;
+  width: 90%;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 0px;
+  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  background-image: linear-gradient(155deg,hsla(0,0%,100%,0) 0%,hsla(200,84%,44%,0.09) 30.26%);
+}
+
+.c3.c3.c3.c3.c3 {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  touch-action: none;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c5.c5.c5.c5.c5 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c8.c8.c8.c8.c8 {
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c12.c12.c12.c12.c12 {
+  overflow: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 20px;
+}
+
+.c1.c1.c1.c1.c1 {
+  opacity: 0;
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
+  -webkit-transition: all 280ms cubic-bezier(0.17,0,1,1);
+  transition: all 280ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation-fill-mode: initial;
+  animation-fill-mode: initial;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 100%;
+  height: auto;
+}
+
+.c11.c11.c11.c11.c11 {
+  border-width: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c6.c6.c6.c6.c6 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(211,22%,56%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6:hover:not([disabled]) {
+  color: hsla(211,26%,34%,1);
+  background-color: transparent;
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  color: hsla(211,26%,34%,1);
+}
+
+.c6.c6.c6.c6.c6:active {
+  color: hsla(211,26%,34%,1);
+}
+
+@media screen and (min-width:480px) {
+  .c0.c0.c0.c0.c0 {
+    width: 375px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c0.c0.c0.c0.c0 {
+    width: 420px;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c3.c3.c3.c3.c3 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c1.c1.c1.c1.c1 {
+    top: 8px;
+    bottom: 8px;
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+
+<div
+  aria-modal="true"
+  class="c0 c1"
+  data-blade-component="base-box"
+  elevation="highRaised"
+  role="dialog"
+  tabindex="-1"
+>
+  <div
+    class="c2"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c3"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c4"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c5"
+          data-blade-component="box"
+        >
+          <button
+            aria-label="Close"
+            class="c6"
+            data-blade-component="icon-button"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="20px"
+              viewBox="0 0 24 24"
+              width="20px"
+            >
+              <path
+                d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                data-blade-component="svg-path"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="box"
+        >
+          <p
+            class="c9"
+            data-blade-component="text"
+          >
+            Custom Header
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="c10 c11"
+      data-blade-component="divider"
+      role="separator"
+    />
+  </div>
+  <div
+    class="c12"
+    data-blade-component="box"
+  >
+    <p
+      class="c9"
+      data-blade-component="text"
+    >
+      Custom Content
     </p>
   </div>
 </div>

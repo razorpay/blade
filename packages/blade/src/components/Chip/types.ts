@@ -4,6 +4,7 @@ import type { IconComponent } from '~components/Icons';
 import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { MotionMetaProp } from '~components/BaseMotion';
+import type { BoxProps } from '~components/Box/BaseBox/types/propsTypes';
 
 type ChipCommonProps = {
   /**
@@ -29,6 +30,18 @@ type ChipCommonProps = {
    * Use `onChange` to update its value
    */
   value?: string;
+  /**
+   * width prop sets the width of the Chip
+   */
+  width?: BoxProps['width'];
+  /**
+   * maxWidth prop sets the maxWidth of the Chip
+   */
+  maxWidth?: BoxProps['maxWidth'];
+  /**
+   * min prop sets the minWidth of the Chip
+   */
+  minWidth?: BoxProps['minWidth'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade &
@@ -226,6 +239,9 @@ type AnimatedChipProps = {
   isDesktop?: boolean;
   theme: Theme;
   children: React.ReactNode;
+  width?: BoxProps['width'];
+  maxWidth?: BoxProps['maxWidth'];
+  minWidth?: BoxProps['minWidth'];
 };
 
 type StyledChipWrapperProps = {

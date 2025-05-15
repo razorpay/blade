@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import { encode } from 'universal-base64';
 import type { StepItemProps } from './types';
 import { StepItemIndicator } from './StepItemMarker';
 import { useStepGroup } from './StepGroupContext';
@@ -16,6 +15,25 @@ import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { makeSize, useTheme } from '~utils';
+import { throwBladeError } from '~utils/logger';
+
+// universal base64 encode
+const encode = (svgString: string): string => {
+  try {
+    if (typeof Buffer !== 'undefined') {
+      return Buffer.from(svgString).toString('base64');
+    }
+
+    return window.btoa(svgString);
+  } catch (error: unknown) {
+    throwBladeError({
+      message: `Failed to encode SVG string: ${error}`,
+      moduleName: 'StepLine',
+    });
+
+    return '';
+  }
+};
 
 type StepLineSvgProps = {
   isDotted?: boolean;
@@ -239,11 +257,6 @@ const StepLineStart = ({
 
   return (
     <Box position="relative" display="flex" flexDirection="column">
-      <StepStraightLineVertical
-        height={itemTopMargin}
-        visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        isDotted={stepProgress === 'none' || stepProgress === 'end'}
-      />
       <StepTopCurveVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
@@ -335,11 +348,6 @@ const StepLineSingleItem = ({
   const spacingTokens = getMarkerLineSpacings(size);
   return (
     <Box position="relative" display="flex" flexDirection="column">
-      <StepStraightLineVertical
-        visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        height={itemTopMargin}
-        isDotted={stepProgress === 'none' || stepProgress === 'end'}
-      />
       <StepTopCurveVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
         isDotted={stepProgress === 'none' || stepProgress === 'end'}

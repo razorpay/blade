@@ -6,7 +6,7 @@ import { Drawer, DrawerBody, DrawerHeader } from '../';
 import { DrawerStackingStory } from './stories';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
+import { AnnouncementIcon, CheckIcon, DownloadIcon, MoreHorizontalIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Heading, Text } from '~components/Typography';
@@ -20,6 +20,8 @@ import {
   CardHeader,
   CardHeaderLeading,
 } from '~components/Card';
+import { Amount } from '~components/Amount';
+import { IconButton } from '~components/Button/IconButton';
 
 const Page = (): React.ReactElement => {
   return (
@@ -209,6 +211,93 @@ export const InitialFocus = (args: DrawerProps): React.ReactElement => {
           </Box>
           <Box>
             <Button ref={drawerInitialFocusRef}>Payout</Button>{' '}
+            <Button marginLeft="spacing.2" variant="tertiary">
+              Invite Vendor
+            </Button>
+          </Box>
+        </DrawerBody>
+      </Drawer>
+    </Box>
+  );
+};
+
+export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+
+  return (
+    <Box>
+      <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
+      <Drawer
+        {...args}
+        isOpen={args.isOpen ?? isDrawerOpen}
+        onDismiss={() => setIsDrawerOpen(false)}
+      >
+        <DrawerHeader
+          color="positive"
+          title="Settlements"
+          trailing={
+            <IconButton
+              icon={MoreHorizontalIcon}
+              accessibilityLabel="Options"
+              onClick={() => console.log('Options Clicked')}
+              size="large"
+            />
+          }
+        >
+          <Box marginTop="spacing.6" textAlign="center">
+            <Amount
+              value={26000}
+              currency="INR"
+              size="2xlarge"
+              type="heading"
+              weight="semibold"
+              suffix="decimals"
+            />
+          </Box>
+          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
+            <Badge icon={CheckIcon} size="medium" color="positive" emphasis="intense">
+              Captured
+            </Badge>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="spacing.2"
+            marginTop="spacing.6"
+            paddingX="spacing.4"
+          >
+            <Text size="large" textAlign="center">
+              Payment was successfully captured. To be settled in your bank account by{' '}
+              <Text as="span" size="large" weight="semibold" color="feedback.text.positive.intense">
+                Jan 20, 2025
+              </Text>
+            </Text>
+          </Box>
+          <Box marginTop="spacing.4" textAlign="center">
+            <Text size="small" weight="medium" color="surface.text.gray.muted">
+              Created on Jan 11, 2025
+            </Text>
+          </Box>
+        </DrawerHeader>
+        <DrawerBody>
+          <Box display="flex" alignItems="center">
+            <Heading>Starters{"'"} CFP Private Limited </Heading>
+            <Badge size="small" color="primary" marginLeft="spacing.3">
+              Vendor
+            </Badge>
+          </Box>
+          <Box marginTop="spacing.6" marginBottom="spacing.8">
+            <TextInput label="Email" type="email" placeholder="Enter your email" />
+            <TextInput
+              marginTop="spacing.4"
+              label="Phone Number"
+              type="telephone"
+              placeholder="Enter your phone number"
+            />
+          </Box>
+          <Box>
+            <Button>Payout</Button>{' '}
             <Button marginLeft="spacing.2" variant="tertiary">
               Invite Vendor
             </Button>

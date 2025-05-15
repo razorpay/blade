@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 
 export const sideNavWithReactRouter = {
-  'App.js': dedent`import React from 'react';
+  'App.tsx': dedent`import React from 'react';
   import { BrowserRouter } from 'react-router-dom';
   import SideNavExample from './SideNavExample';
   
@@ -15,7 +15,7 @@ export const sideNavWithReactRouter = {
 
   export default App;
   `,
-  'SideNavExample.js': dedent`import React from 'react';
+  'SideNavExample.tsx': dedent`import React from 'react';
   import {
     matchPath,
     useLocation,
@@ -282,7 +282,7 @@ export const sideNavWithReactRouter = {
 
   export default SideNavExample;
   `,
-  'navItemsJSON.js': dedent`import React from 'react';
+  'navItemsJSON.tsx': dedent`import React from 'react';
   import {
     ArrowUpRightIcon,
     BillIcon,
