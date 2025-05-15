@@ -20,20 +20,6 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from '~components/Icons';
-import { Code } from '~components/Typography/Code';
-import { TableEditableCell } from '~components/Table/TableEditableCell';
-import { Amount } from '~components/Amount';
-import { QuickFilter, QuickFilterGroup } from '~components/QuickFilters';
-import { Counter } from '~components/Counter';
-import {
-  FilterChipSelectInput,
-  Dropdown,
-  DropdownOverlay,
-  FilterChipGroup,
-} from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
-import type { DatesRangeValue } from '~components/DatePicker';
-import { FilterChipDatePicker } from '~components/DatePicker';
 import { ProgressBar } from '~components/ProgressBar';
 import {
   Table,
@@ -52,7 +38,6 @@ import { Box } from '~components/Box';
 import type { CounterProps } from '~components/Counter';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '~components/Modal';
 import { Text } from '~components/Typography/Text';
-import { PasswordInput } from '~components/Input/PasswordInput';
 import { Alert } from '~components/Alert';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -68,7 +53,6 @@ import {
   BottomSheetHeader,
   BottomSheetFooter,
 } from '~components/BottomSheet';
-import { useBreakpoint } from '~utils/useBreakpoint';
 import { useIsMobile } from '~utils/useIsMobile';
 import { StepGroup, StepItem, StepItemIcon } from '~components/StepGroup';
 import { Divider } from '~components/Divider';
@@ -77,10 +61,10 @@ import { TextArea } from '~components/Input/TextArea';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="ListView"
-      componentDescription="List View is a pattern"
+      componentName="CreationView"
+      componentDescription="Creation View is a pattern"
       apiDecisionLink={null}
-      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
+      figmaURL="https://www.figma.com/design/ZZ2dpcIAsPCEGPwQ2UdgL1/Blade-Cheatsheet?node-id=949-178337&m=dev"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
@@ -599,80 +583,6 @@ export default {
   },
 } as Meta<ModalProps>;
 
-const MethodFilterValues = [
-  { key: 'bank-transfer', title: 'Bank Transfer' },
-  { key: 'credit-card', title: 'Credit Card' },
-  { key: 'paypal', title: 'PayPal' },
-];
-
-const nodes: Item[] = [
-  ...Array.from({ length: 20 }, (_, i) => ({
-    id: (i + 1).toString(),
-    paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
-    amount: Number((Math.random() * 10000).toFixed(2)),
-    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
-    date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
-    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
-    method: MethodFilterValues[Math.floor(Math.random() * 3)],
-    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
-    account: Math.floor(Math.random() * 1000000000).toString(),
-    name: [
-      'John Doe',
-      'Jane Doe',
-      'Bob Smith',
-      'Alice Smith',
-      'John Smith',
-      'Jane Smith',
-      'Bob Doe',
-      'Alice Doe',
-    ][Math.floor(Math.random() * 8)],
-  })),
-  // to make sure one item from last week's date is always present
-  {
-    id: '21',
-    paymentId: 'rzp123456',
-    amount: 1000,
-    status: 'Pending',
-    date: new Date(new Date().setDate(new Date().getDate() - 4)),
-    type: 'Payout',
-    method: {
-      key: 'bank-transfer',
-      title: 'Bank Transfer',
-    },
-    bank: 'HDFC',
-    account: '1234567890',
-    name: 'John Doe',
-  },
-];
-
-type Item = {
-  id: string;
-  paymentId: string;
-  amount: number;
-  status: string;
-  date: Date;
-  type: string;
-  method: {
-    key: string;
-    title: string;
-  };
-  bank: string;
-  account: string;
-  name: string;
-};
-const data: TableData<Item> = {
-  nodes,
-};
-
-const quickFilters = ['All', 'Pending', 'Failed', 'Completed'];
-const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
-const quickFilterColorMapping: Record<Item['status'], CounterProps['color']> = {
-  All: 'primary',
-  Pending: 'notice',
-  Failed: 'negative',
-  Completed: 'neutral',
-};
-
 const DefaultExample: StoryFn<typeof Modal> = (args) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
@@ -930,7 +840,7 @@ const DefaultExample: StoryFn<typeof Modal> = (args) => {
   );
 };
 export const Default = DefaultExample.bind({});
-Default.storyName = 'Single Step With Form Group and Preview';
+Default.storyName = 'Single Step (Form Group + Preview)';
 
 const GRNSteps = [
   {
@@ -2093,4 +2003,4 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
 };
 
 export const MultiStep = MultiStepExample.bind({});
-MultiStep.storyName = 'Multi Step Example';
+MultiStep.storyName = 'Multi Step Example (Form Group + Preview + Full Page Modal)';
