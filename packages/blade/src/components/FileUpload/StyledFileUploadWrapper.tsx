@@ -20,7 +20,7 @@ const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
     return {
       display: 'flex',
       borderStyle: 'dashed',
-      height: makeSize(fileUploadHeightTokens[size]),
+      height: size === 'variable' ? '100%' : makeSize(fileUploadHeightTokens[size]),
       width: '100%',
       transitionProperty: 'background-color',
       transitionTimingFunction: easing,

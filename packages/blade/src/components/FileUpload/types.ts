@@ -109,17 +109,34 @@ type FileUploadCommonProps = {
    */
   errorText?: string;
   /**
-   * Size of the FileUpload component
-   *
-   * @default 'medium'
-   */
-  size?: 'medium' | 'large';
-  /**
    * Test ID for automation
    */
   testID?: string;
 } & StyledPropsBlade &
   MotionMetaProp;
+
+// Standard size props (medium or large)
+type FileUploadStandardSizeProps = FileUploadCommonProps & {
+  /**
+   * Size of the FileUpload component
+   *
+   * @default 'medium'
+   */
+  size?: 'medium' | 'large';
+};
+
+// Variable size props with custom text options
+type FileUploadVariableSizeProps = FileUploadCommonProps & {
+  size: 'variable';
+  /**
+   * Custom text for the upload action button
+   */
+  actionButtonText?: string;
+  /**
+   * Custom text for the drag & drop area
+   */
+  dropAreaText?: string;
+};
 
 /*
   Mandatory accessibilityLabel prop when label is not provided
@@ -150,7 +167,7 @@ type FileUploadPropsWithLabel = {
 };
 
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
-  FileUploadCommonProps;
+  (FileUploadStandardSizeProps | FileUploadVariableSizeProps);
 
 type FileUploadItemProps = Pick<
   FileUploadProps,
@@ -194,4 +211,5 @@ export type {
   StyledFileUploadWrapperProps,
   StyledFileUploadItemWrapperProps,
   FileUploadItemBackgroundColors,
+  FileUploadVariableSizeProps,
 };

@@ -1,5 +1,10 @@
 import { useState, useCallback, useMemo, useRef, forwardRef } from 'react';
-import type { FileUploadProps, BladeFile, BladeFileList } from './types';
+import type {
+  FileUploadProps,
+  BladeFile,
+  BladeFileList,
+  FileUploadVariableSizeProps,
+} from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
   fileUploadColorTokens,
@@ -28,6 +33,8 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import { useControllableState } from '~utils/useControllable';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { throwBladeError } from '~utils/logger';
+import { FileUploadItemIcon } from './FileUploadItemIcon';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -59,6 +66,23 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   },
   ref,
 ): React.ReactElement => {
+  const { actionButtonText, dropAreaText } = rest as FileUploadVariableSizeProps;
+  const isSizeVariable = size === 'variable';
+  // 'uploadButtonText' and 'dragPromptText' are only valid when size is 'variable'
+  if (__DEV__ && !isSizeVariable && (actionButtonText || dropAreaText)) {
+    const propName =
+      actionButtonText && dropAreaText
+        ? 'Action Button Text and Drop Area Text props'
+        : dropAreaText
+        ? 'Drop Area Text prop'
+        : 'Action Button Text prop';
+
+    throwBladeError({
+      message: `${propName} can only be used when size is "variable"`,
+      moduleName: 'FileUpload',
+    });
+  }
+
   const inputRef = useRef<HTMLInputElement | null>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
   const { platform } = useTheme();
@@ -179,6 +203,17 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     event.target.value = '';
   };
 
+  const getFileIconExtension = (acceptValue?: string): string => {
+    if (!acceptValue) return 'example.xyz';
+
+    const extensions = acceptValue
+      .split(',')
+      .map((ext) => ext.trim())
+      .filter((ext) => ext.startsWith('.'));
+
+    return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
+  };
+
   return (
     <BaseBox
       ref={getOuterMotionRef({ _motionMeta, ref })}
@@ -197,7 +232,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       >
         {label ? (
           <FormLabel
-            size={size}
+            size={isSizeVariable ? 'large' : size}
             as="span"
             necessityIndicator={necessityIndicator}
             position={labelPosition}
@@ -240,10 +275,17 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                flexDirection={{ base: 'column', s: 'row' }}
+                flexDirection={{ base: 'column', s: `${isSizeVariable ? 'column' : 'row'}` }}
                 gap={makeSize(6)}
                 padding="spacing.3"
               >
+                {isSizeVariable && (
+                  <FileUploadItemIcon
+                    fileName={getFileIconExtension(accept)}
+                    uploadStatus="success"
+                  />
+                )}
+
                 <Text
                   color={
                     isDisabled
@@ -251,7 +293,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                       : fileUploadColorTokens.text.default
                   }
                 >
-                  Drag files here or{' '}
+                  {isSizeVariable ? dropAreaText ?? 'Drag files here' : 'Drag files here or'}{' '}
                 </Text>
                 <SelectorInput
                   id={inputId}
@@ -296,7 +338,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                           : fileUploadColorTokens.link.default
                       }
                     >
-                      Upload
+                      {actionButtonText ?? 'Upload'}
                     </Text>
                   </Box>
                 </Box>
@@ -340,12 +382,14 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       {willRenderHintText && (
         <BaseBox
           marginLeft={makeSize(
-            label && isLabelLeftPositioned ? formHintLeftLabelMarginLeft[size] : 0,
+            label && isLabelLeftPositioned
+              ? formHintLeftLabelMarginLeft[isSizeVariable ? 'large' : size]
+              : 0,
           )}
         >
           <BaseBox display="flex" flexDirection="row" justifyContent="'space-between">
             <FormHint
-              size={size}
+              size={isSizeVariable ? 'large' : size}
               type={getHintType({
                 validationState: showError ? 'error' : validationState,
                 hasHelpText: Boolean(helpText),
@@ -363,7 +407,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           <BaseBox
             key={file.id}
             marginLeft={makeSize(
-              label && isLabelLeftPositioned ? formHintLeftLabelMarginLeft[size] : 0,
+              label && isLabelLeftPositioned
+                ? formHintLeftLabelMarginLeft[isSizeVariable ? 'large' : size]
+                : 0,
             )}
             marginTop={index === 0 ? 'spacing.5' : 'spacing.3'}
           >
