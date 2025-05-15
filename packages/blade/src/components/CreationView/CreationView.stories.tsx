@@ -1064,24 +1064,14 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
 
   const handleNextStep = (): void => {
     if (currentStep < GRNSteps.length) {
-      setLoadingStep(currentStep);
-      // Simulate loading state
-      setTimeout(() => {
-        setCompletedSteps((prev) => [...prev, currentStep]);
-        setCurrentStep(currentStep + 1);
-        setLoadingStep(null);
-      }, 1000);
+      setCompletedSteps((prev) => [...prev, currentStep]);
+      setCurrentStep(currentStep + 1);
     }
   };
 
   const handlePreviousStep = (): void => {
     if (currentStep > 1) {
-      setLoadingStep(currentStep);
-      // Simulate loading state
-      setTimeout(() => {
-        setCurrentStep(currentStep - 1);
-        setLoadingStep(null);
-      }, 500);
+      setCurrentStep(currentStep - 1);
     }
   };
 
