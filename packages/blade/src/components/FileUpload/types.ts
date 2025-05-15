@@ -3,6 +3,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import type { BoxProps } from '~components/Box';
 
 interface BladeFile extends File {
   /**
@@ -136,6 +137,14 @@ type FileUploadVariableSizeProps = FileUploadCommonProps & {
    * Custom text for the drag & drop area
    */
   dropAreaText?: string;
+  /**
+   * Height of the file upload component
+   */
+  height?: BoxProps['height'];
+  /**
+   * Width of the file upload component
+   */
+  width?: BoxProps['width'];
 };
 
 /*

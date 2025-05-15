@@ -8,6 +8,7 @@ import type {
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
   fileUploadColorTokens,
+  fileUploadHeightTokens,
   fileUploadLinkBorderTokens,
   getFileUploadInputHoverTokens,
 } from './fileUploadTokens';
@@ -67,21 +68,33 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   ref,
 ): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  const { actionButtonText, dropAreaText } = rest as FileUploadVariableSizeProps;
+  const { actionButtonText, dropAreaText, height, width } = rest as FileUploadVariableSizeProps;
   const isSizeVariable = size === 'variable';
-  // 'actionButtonText' and 'dropAreaText' are only valid when size is 'variable'
-  if (__DEV__ && !isSizeVariable && (actionButtonText || dropAreaText)) {
-    const propName =
-      actionButtonText && dropAreaText
-        ? 'Action Button Text and Drop Area Text props'
-        : dropAreaText
-        ? 'Drop Area Text prop'
-        : 'Action Button Text prop';
+  // 'actionButtonText', 'dropAreaText', 'height', 'width' are only valid when size is 'variable'
+  if (__DEV__) {
+    if (!isSizeVariable && (actionButtonText || dropAreaText)) {
+      const propName =
+        actionButtonText && dropAreaText
+          ? 'Action Button Text and Drop Area Text props'
+          : dropAreaText
+          ? 'Drop Area Text prop'
+          : 'Action Button Text prop';
 
-    throwBladeError({
-      message: `${propName} can only be used when size is "variable"`,
-      moduleName: 'FileUpload',
-    });
+      throwBladeError({
+        message: `${propName} can only be used when size is "variable"`,
+        moduleName: 'FileUpload',
+      });
+    }
+
+    if (!isSizeVariable && (height || width)) {
+      const propName =
+        height && width ? 'Height and Width props' : height ? 'Height prop' : 'Width prop';
+
+      throwBladeError({
+        message: `${propName} can only be used when size is "variable"`,
+        moduleName: 'FileUpload',
+      });
+    }
   }
 
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -215,6 +228,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
   };
 
+  const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
+  const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
+
   return (
     <BaseBox
       ref={getOuterMotionRef({ _motionMeta, ref })}
@@ -261,6 +277,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               flexDirection="row"
               justifyContent="center"
               alignItems="center"
+              height={computedHeight}
+              width={computedWidth}
               borderRadius="medium"
               borderWidth="thin"
               onDragOver={handleDragOver}
