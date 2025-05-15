@@ -2,7 +2,6 @@ import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { BladeElementRefWithValue } from '~utils/types';
 import type { FormInputOnEvent, FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
-// import { isReactNative } from '~utils';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import { isReactNative } from '~utils';
 import { useControllableState } from '~utils/useControllable';
@@ -48,8 +47,6 @@ const useTaggedInput = ({
     },
   });
 
-  const isTagsControlled = Boolean(tags);
-
   const getNewTagsArray = (indexToRemove: number): string[] => {
     const currentTags = tagsValue;
 
@@ -78,11 +75,7 @@ const useTaggedInput = ({
         activeTagIndex,
         isDisabled,
         onDismiss: ({ tagIndex }) => {
-          console.log('dismiss', { tagIndex });
-          if (!isTagsControlled) {
-            setTagsValue(() => getNewTagsArray(tagIndex));
-          }
-          onTagChange?.({ tags: getNewTagsArray(tagIndex) });
+          setTagsValue(() => getNewTagsArray(tagIndex));
         },
       });
     },
@@ -102,11 +95,7 @@ const useTaggedInput = ({
       return;
     }
 
-    if (!isTagsControlled) {
-      setTagsValue(() => []);
-    }
-
-    onTagChange?.({ tags: [] });
+    setTagsValue(() => []);
   };
 
   const clearInput = (): void => {
@@ -147,19 +136,13 @@ const useTaggedInput = ({
     if (e.key === 'Enter' || e.key === ',') {
       e.event.preventDefault?.(); // we don't want textarea to treat enter as line break in tagged inputs
       if (inputValue) {
-        if (!isTagsControlled) {
-          setTagsValue(() => [...currentTags, inputValue]);
-        }
-        onTagChange?.({ tags: [...currentTags, inputValue] });
+        setTagsValue(() => [...currentTags, inputValue]);
         clearInput();
         setActiveTagIndex(-1);
       }
     }
     if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0 && currentTags.length > 0) {
-      if (!isTagsControlled) {
-        setTagsValue(() => currentTags.slice(0, -1));
-      }
-      onTagChange?.({ tags: currentTags.slice(0, -1) });
+      setTagsValue(() => currentTags.slice(0, -1));
     }
   };
 

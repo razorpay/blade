@@ -24,6 +24,8 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 import { useControllableState } from '~utils/useControllable';
+import { componentZIndices } from '~utils/componentZIndices';
+
 const _PreviewHeader = ({
   title,
   _onFullScreen,
@@ -37,7 +39,7 @@ const _PreviewHeader = ({
         position="absolute"
         top="spacing.0"
         right="spacing.2"
-        zIndex={1000}
+        zIndex={componentZIndices.previewPanel}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
@@ -56,7 +58,7 @@ const _PreviewHeader = ({
   }
   return (
     <BaseBox
-      zIndex={1000}
+      zIndex={componentZIndices.previewPanel}
       position="absolute"
       top="spacing.0"
       left="spacing.0"
@@ -101,8 +103,8 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
-  const { zoomIn, zoomOut, resetTransform } = useControls();
-  const { zoom, zoomScaleStep } = usePreviewWindowContext();
+  const { zoomIn, zoomOut, setTransform } = useControls();
+  const { zoom, zoomScaleStep, initialZoom } = usePreviewWindowContext();
   const handleZoomIn = useCallback(() => {
     zoomIn(zoomScaleStep);
   }, [zoomScaleStep, zoomIn]);
@@ -110,6 +112,10 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
   const handleZoomOut = useCallback(() => {
     zoomOut(zoomScaleStep);
   }, [zoomScaleStep, zoomOut]);
+
+  const handleReset = useCallback(() => {
+    setTransform(0, 0, initialZoom);
+  }, [initialZoom, setTransform]);
 
   return (
     <BaseBox
@@ -122,7 +128,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       left="spacing.0"
       right="spacing.0"
       padding="spacing.5"
-      zIndex={1000}
+      zIndex={componentZIndices.previewPanel}
     >
       <BaseBox>
         {showZoomPercentage ? (
@@ -144,7 +150,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
             />
             <Button
               icon={RefreshIcon}
-              onClick={() => resetTransform()}
+              onClick={() => handleReset()}
               variant="tertiary"
               aria-label="Reset zoom"
             />
@@ -153,7 +159,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
           <ButtonGroup variant="tertiary">
             <Button icon={ZoomInIcon} onClick={handleZoomIn} aria-label="Zoom in" />
             <Button icon={ZoomOutIcon} onClick={handleZoomOut} aria-label="Zoom out" />
-            <Button icon={RefreshIcon} onClick={() => resetTransform()} aria-label="Reset zoom" />
+            <Button icon={RefreshIcon} onClick={() => handleReset()} aria-label="Reset zoom" />
           </ButtonGroup>
         )}
       </BaseBox>
@@ -193,6 +199,14 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
   }
   transition: cursor 0.1s ease;
 `;
+
+const TransFormWrapperContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.colors.surface.background.gray.moderate};
+`;
 const PreviewWindow = ({
   children,
   onFullScreen: onFullScreenProp,
@@ -222,7 +236,7 @@ const PreviewWindow = ({
 
   const handleFullScreen = useCallback(() => {
     if (!document.fullscreenElement) {
-      containerRef.current?.requestFullscreen().catch((err) => {
+      containerRef.current?.requestFullscreen().catch((err: Error) => {
         console.error(`Error attempting to enable fullscreen: ${err.message}`);
       });
       setIsFullScreen(true);
@@ -235,6 +249,21 @@ const PreviewWindow = ({
       onFullScreenProp?.();
     }
   }, [onFullScreenProp]);
+
+  // Handle keyboard shortcut for fullscreen
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'f') {
+        event.preventDefault();
+        handleFullScreen();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleFullScreen]);
 
   // this is added to handle the fullscreen change if user exits fullscreen using the escape key, or browser's exit fullscreen button
   useEffect(() => {
@@ -275,16 +304,10 @@ const PreviewWindow = ({
         zoom: controlledZoom,
         isFullScreen,
         zoomScaleStep,
+        initialZoom: initialZoom ?? 1,
       }}
     >
-      <BaseBox
-        ref={containerRef}
-        width="100%"
-        height="100%"
-        position="relative"
-        overflow="hidden"
-        backgroundColor="surface.background.gray.moderate"
-      >
+      <TransFormWrapperContainer ref={containerRef}>
         <TransformWrapper
           onTransformed={handleTransformed}
           minScale={0.1}
@@ -309,7 +332,7 @@ const PreviewWindow = ({
             </BaseBox>
           )}
         </TransformWrapper>
-      </BaseBox>
+      </TransFormWrapperContainer>
     </PreviewWindowProvider>
   );
 };

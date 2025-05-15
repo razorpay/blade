@@ -288,7 +288,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(150, 100%, 37%, 1)",
           },
           "primary": {
-            "disabled": "hsla(240, 20%, 99%, 1)",
+            "disabled": "hsla(332, 100%, 26%, 0.24)",
             "muted": "hsla(240, 20%, 99%, 1)",
             "normal": "hsla(240, 20%, 99%, 1)",
             "subtle": "hsla(240, 20%, 99%, 1)",
@@ -350,7 +350,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(150, 100%, 37%, 1)",
           },
           "primary": {
-            "disabled": "hsla(240, 20%, 99%, 1)",
+            "disabled": "hsla(332, 100%, 26%, 0.24)",
             "muted": "hsla(240, 20%, 99%, 1)",
             "normal": "hsla(240, 20%, 99%, 1)",
             "subtle": "hsla(240, 20%, 99%, 1)",
@@ -738,7 +738,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(150, 100%, 32%, 1)",
           },
           "primary": {
-            "disabled": "hsl(332, 100%, 26%)",
+            "disabled": "hsla(332, 100%, 26%, 0.18)",
             "muted": "hsl(332, 100%, 26%)",
             "normal": "hsl(332, 100%, 26%)",
             "subtle": "hsl(332, 100%, 26%)",
@@ -800,7 +800,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(150, 100%, 32%, 1)",
           },
           "primary": {
-            "disabled": "hsl(332, 100%, 26%)",
+            "disabled": "hsla(332, 100%, 26%, 0.18)",
             "muted": "hsl(332, 100%, 26%)",
             "normal": "hsl(332, 100%, 26%)",
             "subtle": "hsl(332, 100%, 26%)",
@@ -1553,7 +1553,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(150, 100%, 37%, 1)",
           },
           "primary": {
-            "disabled": "hsl(60, 100%, 55%)",
+            "disabled": "hsla(57, 100%, 52%, 0.24)",
             "muted": "hsl(60, 100%, 55%)",
             "normal": "hsl(60, 100%, 55%)",
             "subtle": "hsl(60, 100%, 55%)",
@@ -1615,7 +1615,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(150, 100%, 37%, 1)",
           },
           "primary": {
-            "disabled": "hsl(60, 100%, 55%)",
+            "disabled": "hsla(57, 100%, 52%, 0.24)",
             "muted": "hsl(60, 100%, 55%)",
             "normal": "hsl(60, 100%, 55%)",
             "subtle": "hsl(60, 100%, 55%)",
@@ -2003,7 +2003,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(150, 100%, 32%, 1)",
           },
           "primary": {
-            "disabled": "hsla(211, 33%, 21%, 1)",
+            "disabled": "hsla(57, 100%, 52%, 0.18)",
             "muted": "hsla(211, 33%, 21%, 1)",
             "normal": "hsla(211, 33%, 21%, 1)",
             "subtle": "hsla(211, 33%, 21%, 1)",
@@ -2065,7 +2065,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(150, 100%, 32%, 1)",
           },
           "primary": {
-            "disabled": "hsla(211, 33%, 21%, 1)",
+            "disabled": "hsla(57, 100%, 52%, 0.18)",
             "muted": "hsla(211, 33%, 21%, 1)",
             "normal": "hsla(211, 33%, 21%, 1)",
             "subtle": "hsla(211, 33%, 21%, 1)",
