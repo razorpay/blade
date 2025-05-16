@@ -9,5 +9,5 @@ export const componentZIndices = {
   popover: 1100,
   tooltip: 1100,
   topnav: 100,
-  previewPanel: 1001,
+  previewPanel: 1100,
 };
