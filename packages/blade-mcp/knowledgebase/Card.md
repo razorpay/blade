@@ -6,7 +6,7 @@ Card
 
 Cards are containers that group related content and actions on a single topic. They help separate content into distinct sections, making interfaces easier to scan and understand. Cards support various layouts with customizable headers, bodies, and footers, enabling consistent presentation of information while providing clear interaction points for users.
 
-**Important Note:**
+## Important Constraints
 
 - `Card` component only accepts `CardHeader`, `CardBody`, `CardFooter` components as children
 - `CardHeader` component only accepts `CardHeaderLeading`, `CardHeaderTrailing` components as children
