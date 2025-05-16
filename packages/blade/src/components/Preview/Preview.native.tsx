@@ -7,7 +7,7 @@ import type {
 } from './types';
 import { throwBladeError } from '~utils/logger';
 
-const PreviewWindow = (_prop: PreviewProps): React.ReactElement => {
+const Preview = (_prop: PreviewProps): React.ReactElement => {
   throwBladeError({
     message: 'PreviewWindow is not yet implemented for native',
     moduleName: 'PreviewWindow',
@@ -43,4 +43,4 @@ const PreviewFooter = (_prop: PreviewFooterProps): React.ReactElement => {
   return <></>;
 };
 
-export { PreviewWindow, PreviewHeader, PreviewBody, PreviewFooter };
+export { Preview, PreviewHeader, PreviewBody, PreviewFooter };
