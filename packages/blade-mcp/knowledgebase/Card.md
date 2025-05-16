@@ -6,6 +6,14 @@ Card
 
 Cards are containers that group related content and actions on a single topic. They help separate content into distinct sections, making interfaces easier to scan and understand. Cards support various layouts with customizable headers, bodies, and footers, enabling consistent presentation of information while providing clear interaction points for users.
 
+## Important Constraints
+
+- `Card` component only accepts `CardHeader`, `CardBody`, `CardFooter` components as children
+- `CardHeader` component only accepts `CardHeaderLeading`, `CardHeaderTrailing` components as children
+- `CardFooter` component only accepts `CardFooterLeading`, `CardFooterTrailing` components as children
+
+The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below.
+
 ## TypeScript Types
 
 The following types represent the props that the Card component and its subcomponents accept. These allow you to properly configure the Card component according to your needs.
