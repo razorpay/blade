@@ -234,19 +234,31 @@ const Preview = ({
     onDragChange?.({ x: positionX, y: positionY });
   };
 
-  const handleFullScreen = useCallback(() => {
-    if (!document.fullscreenElement) {
-      containerRef.current?.requestFullscreen().catch((err: Error) => {
-        console.error(`Error attempting to enable fullscreen: ${err.message}`);
-      });
-      setIsFullScreen(true);
-      onFullScreenProp?.();
+  const handleFullScreenError = (err: unknown): void => {
+    if (err instanceof DOMException) {
+      console.error(`Fullscreen request failed: ${err.name} - ${err.message}`);
     } else {
-      document.exitFullscreen().catch((err) => {
-        console.error(`Error attempting to exit fullscreen: ${err.message}`);
-      });
-      setIsFullScreen(false);
-      onFullScreenProp?.();
+      console.error('Unexpected error during fullscreen request:', err);
+    }
+  };
+
+  const handleFullScreen = useCallback(async () => {
+    if (!document.fullscreenElement) {
+      try {
+        await containerRef.current?.requestFullscreen();
+        setIsFullScreen(true);
+        onFullScreenProp?.();
+      } catch (err: unknown) {
+        handleFullScreenError(err);
+      }
+    } else {
+      try {
+        await document.exitFullscreen();
+        setIsFullScreen(false);
+        onFullScreenProp?.();
+      } catch (err: unknown) {
+        handleFullScreenError(err);
+      }
     }
   }, [onFullScreenProp]);
 
@@ -255,7 +267,7 @@ const Preview = ({
     const handleKeyDown = (event: KeyboardEvent): void => {
       if ((event.metaKey || event.ctrlKey) && event.key === 'f') {
         event.preventDefault();
-        handleFullScreen();
+        void handleFullScreen();
       }
     };
 
