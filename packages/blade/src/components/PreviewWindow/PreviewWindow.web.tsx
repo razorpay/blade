@@ -104,7 +104,7 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
   const { zoomIn, zoomOut, setTransform } = useControls();
-  const { zoom, zoomScaleStep, initialZoom } = usePreviewWindowContext();
+  const { zoom, zoomScaleStep, defaultZoom } = usePreviewWindowContext();
   const handleZoomIn = useCallback(() => {
     zoomIn(zoomScaleStep);
   }, [zoomScaleStep, zoomIn]);
@@ -114,8 +114,8 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
   }, [zoomScaleStep, zoomOut]);
 
   const handleReset = useCallback(() => {
-    setTransform(0, 0, initialZoom);
-  }, [initialZoom, setTransform]);
+    setTransform(0, 0, defaultZoom);
+  }, [defaultZoom, setTransform]);
 
   return (
     <BaseBox
@@ -213,12 +213,12 @@ const PreviewWindow = ({
   onZoomChange,
   zoomScaleStep = 0.1,
   isDragAndZoomDisabled = false,
-  initialZoom,
+  defaultZoom,
   onDragChange,
 }: PreviewWindowProps): React.ReactElement => {
   const [controlledZoom, setControlledZoom] = useControllableState({
     onChange: onZoomChange,
-    defaultValue: initialZoom ?? 1,
+    defaultValue: defaultZoom ?? 1,
   });
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -304,7 +304,7 @@ const PreviewWindow = ({
         zoom: controlledZoom,
         isFullScreen,
         zoomScaleStep,
-        initialZoom: initialZoom ?? 1,
+        defaultZoom: defaultZoom ?? 1,
       }}
     >
       <TransFormWrapperContainer ref={containerRef}>
@@ -313,7 +313,7 @@ const PreviewWindow = ({
           minScale={0.1}
           maxScale={8}
           disabled={isDragAndZoomDisabled}
-          initialScale={initialZoom ?? controlledZoom}
+          initialScale={defaultZoom ?? controlledZoom}
           doubleClick={{ disabled: false }}
           onPanningStart={() => setIsDragging(true)}
           onPanningStop={() => setIsDragging(false)}

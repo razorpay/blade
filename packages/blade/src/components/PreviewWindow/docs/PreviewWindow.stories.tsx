@@ -271,7 +271,7 @@ WithHeaderAndFooterTrailingExample.args = {};
 
 const WithInitialZoomExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
   return (
-    <PreviewWindow initialZoom={2}>
+    <PreviewWindow defaultZoom={2}>
       <PreviewHeader title="Preview " />
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />

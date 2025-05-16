@@ -14,7 +14,7 @@ type PreviewWindowProps = {
   /**
    * The initial zoom of the PreviewWindow component.
    */
-  initialZoom?: number;
+  defaultZoom?: number;
   /**
    * The function to call when the zoom changes.
    */
@@ -67,7 +67,7 @@ type PreviewWindowContextType = {
   zoom: number;
   zoomScaleStep: number;
   isFullScreen: boolean;
-  initialZoom: number;
+  defaultZoom: number;
 };
 
 export type {
