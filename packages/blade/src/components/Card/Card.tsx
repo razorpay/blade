@@ -96,6 +96,10 @@ export type CardProps = {
    */
   minWidth?: BoxProps['minWidth'];
   /**
+   * Sets maximum width of the card
+   */
+  maxWidth?: BoxProps['maxWidth'];
+  /**
    * If `true`, the card will be in selected state
    * Card will have a primary color border around it.
    *
@@ -185,6 +189,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     height,
     minHeight,
     minWidth,
+    maxWidth,
     onClick,
     isSelected = false,
     accessibilityLabel,
@@ -235,6 +240,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         height={height}
         minHeight={minHeight}
         minWidth={minWidth}
+        maxWidth={maxWidth}
         href={href}
         accessibilityLabel={accessibilityLabel}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
