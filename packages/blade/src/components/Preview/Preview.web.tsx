@@ -2,12 +2,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
 import styled from 'styled-components';
 import type {
-  PreviewWindowProps,
+  PreviewProps,
   PreviewHeaderProps,
   PreviewFooterProps,
   PreviewBodyProps,
 } from './types';
-import { usePreviewWindowContext, PreviewWindowProvider } from './PreviewWindowContext';
+import { usePreviewContext, PreviewProvider } from './PreviewContext';
 import BaseBox from '~components/Box/BaseBox';
 import {
   FullScreenEnterIcon,
@@ -31,7 +31,7 @@ const _PreviewHeader = ({
   _onFullScreen,
   trailing,
 }: PreviewHeaderProps): React.ReactElement => {
-  const { isFullScreen } = usePreviewWindowContext();
+  const { isFullScreen } = usePreviewContext();
 
   if (!title) {
     return (
@@ -104,7 +104,7 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
   const { zoomIn, zoomOut, setTransform } = useControls();
-  const { zoom, zoomScaleStep, defaultZoom } = usePreviewWindowContext();
+  const { zoom, zoomScaleStep, defaultZoom } = usePreviewContext();
   const handleZoomIn = useCallback(() => {
     zoomIn(zoomScaleStep);
   }, [zoomScaleStep, zoomIn]);
@@ -207,7 +207,7 @@ const TransFormWrapperContainer = styled.div`
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.surface.background.gray.moderate};
 `;
-const PreviewWindow = ({
+const Preview = ({
   children,
   onFullScreen: onFullScreenProp,
   onZoomChange,
@@ -215,7 +215,7 @@ const PreviewWindow = ({
   isDragAndZoomDisabled = false,
   defaultZoom,
   onDragChange,
-}: PreviewWindowProps): React.ReactElement => {
+}: PreviewProps): React.ReactElement => {
   const [controlledZoom, setControlledZoom] = useControllableState({
     onChange: onZoomChange,
     defaultValue: defaultZoom ?? 1,
@@ -299,7 +299,7 @@ const PreviewWindow = ({
   );
 
   return (
-    <PreviewWindowProvider
+    <PreviewProvider
       value={{
         zoom: controlledZoom,
         isFullScreen,
@@ -333,8 +333,8 @@ const PreviewWindow = ({
           )}
         </TransformWrapper>
       </TransFormWrapperContainer>
-    </PreviewWindowProvider>
+    </PreviewProvider>
   );
 };
 
-export { PreviewWindow, PreviewHeader, PreviewBody, PreviewFooter };
+export { Preview, PreviewHeader, PreviewBody, PreviewFooter };

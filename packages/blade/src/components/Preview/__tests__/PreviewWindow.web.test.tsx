@@ -1,4 +1,4 @@
-import { PreviewWindow, PreviewBody, PreviewFooter, PreviewHeader } from '../PreviewWindow.web';
+import { PreviewWindow, PreviewBody, PreviewFooter, PreviewHeader } from '../Preview.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 

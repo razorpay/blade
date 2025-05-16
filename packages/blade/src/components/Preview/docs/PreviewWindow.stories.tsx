@@ -2,8 +2,8 @@ import type { StoryFn, Meta } from '@storybook/react';
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Document, Page as ReactPdfPage, pdfjs } from 'react-pdf';
-import { PreviewBody, PreviewHeader, PreviewWindow, PreviewFooter } from '../PreviewWindow';
-import type { PreviewWindowProps } from '../types';
+import { PreviewBody, PreviewHeader, Preview, PreviewFooter } from '../Preview';
+import type { PreviewProps } from '../types';
 import { Heading, Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -26,7 +26,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="PreviewWindow"
+      componentName="Preview"
       componentDescription="A Preview Window is a component that is used to preivew a file"
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
@@ -34,17 +34,17 @@ const Page = (): React.ReactElement => {
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { PreviewBody, PreviewHeader, PreviewWindow, PreviewFooter } from '@razorpay/blade/components';
+        import { PreviewBody, PreviewHeader, Preview, PreviewFooter } from '@razorpay/blade/components';
         
         function App() {
           return (
-             <PreviewWindow>
+             <Preview>
              <PreviewHeader title="Preview " />
               <PreviewBody>
                 <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
               </PreviewBody>
             <PreviewFooter showZoomPercentage={true} />
-            </PreviewWindow>
+            </Preview>
           )
         }
 
@@ -56,8 +56,8 @@ const Page = (): React.ReactElement => {
 };
 
 export default {
-  title: 'Components/PreviewWindow',
-  component: PreviewWindow,
+  title: 'Components/Preview',
+  component: Preview,
   tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
@@ -67,11 +67,11 @@ export default {
       page: Page,
     },
   },
-} as Meta<PreviewWindowProps>;
+} as Meta<PreviewProps>;
 
-const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
+const PreviewTemplate: StoryFn<typeof Preview> = () => {
   return (
-    <PreviewWindow>
+    <Preview>
       <PreviewHeader title="Preview " />
       <PreviewBody>
         <Box
@@ -171,23 +171,23 @@ const PreviewWindowTemplate: StoryFn<typeof PreviewWindow> = () => {
         </Box>
       </PreviewBody>
       <PreviewFooter showZoomPercentage={true} />
-    </PreviewWindow>
+    </Preview>
   );
 };
 
-export const Default = PreviewWindowTemplate.bind({});
+export const Default = PreviewTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {};
 
-const ImagePreviewTemplate: StoryFn<typeof PreviewWindow> = () => {
+const ImagePreviewTemplate: StoryFn<typeof Preview> = () => {
   return (
-    <PreviewWindow>
+    <Preview>
       <PreviewHeader title="Preview " />
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
       </PreviewBody>
       <PreviewFooter showZoomPercentage={true} />
-    </PreviewWindow>
+    </Preview>
   );
 };
 
@@ -195,11 +195,11 @@ export const ImagePreview = ImagePreviewTemplate.bind({});
 ImagePreview.storyName = 'Image Preview';
 ImagePreview.args = {};
 
-const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
+const FixedHeightWidthExampleTemplate: StoryFn<typeof Preview> = () => {
   return (
     <Box height="300px" width="300px">
       <Heading size="large">Fixed Height Width Example</Heading>
-      <PreviewWindow>
+      <Preview>
         <PreviewHeader title="Preview " />
         <PreviewBody>
           <Box height="100%" width="100%">
@@ -212,7 +212,7 @@ const FixedHeightWidthExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
           </Box>
         </PreviewBody>
         <PreviewFooter showZoomPercentage={true} />
-      </PreviewWindow>
+      </Preview>
     </Box>
   );
 };
@@ -221,15 +221,15 @@ export const FixedHeightWidthExample = FixedHeightWidthExampleTemplate.bind({});
 FixedHeightWidthExample.storyName = 'Fixed Height Width';
 FixedHeightWidthExample.args = {};
 
-const WithoutHeaderTitleEampleTemplate: StoryFn<typeof PreviewWindow> = () => {
+const WithoutHeaderTitleEampleTemplate: StoryFn<typeof Preview> = () => {
   return (
-    <PreviewWindow>
+    <Preview>
       <PreviewHeader />
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
       </PreviewBody>
       <PreviewFooter showZoomPercentage={true} />
-    </PreviewWindow>
+    </Preview>
   );
 };
 
@@ -237,13 +237,13 @@ export const WithoutHeaderTitleExample = WithoutHeaderTitleEampleTemplate.bind({
 WithoutHeaderTitleExample.storyName = 'Without Header Title';
 WithoutHeaderTitleExample.args = {};
 
-const isDragAndZoomDisabledExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
+const isDragAndZoomDisabledExampleTemplate: StoryFn<typeof Preview> = () => {
   return (
-    <PreviewWindow isDragAndZoomDisabled={true}>
+    <Preview isDragAndZoomDisabled={true}>
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
       </PreviewBody>
-    </PreviewWindow>
+    </Preview>
   );
 };
 
@@ -251,15 +251,15 @@ export const IsDragAndZoomDisabledExample = isDragAndZoomDisabledExampleTemplate
 IsDragAndZoomDisabledExample.storyName = ' Drag and Zoom Disabled ';
 IsDragAndZoomDisabledExample.args = {};
 
-const WithHeaderAndFooterTrailingExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
+const WithHeaderAndFooterTrailingExampleTemplate: StoryFn<typeof Preview> = () => {
   return (
-    <PreviewWindow>
+    <Preview>
       <PreviewHeader title="Preview " trailing={<Button>Trailing</Button>} />
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
       </PreviewBody>
       <PreviewFooter showZoomPercentage={true} trailing={<Button>Trailing</Button>} />
-    </PreviewWindow>
+    </Preview>
   );
 };
 
@@ -269,26 +269,26 @@ export const WithHeaderAndFooterTrailingExample = WithHeaderAndFooterTrailingExa
 WithHeaderAndFooterTrailingExample.storyName = 'With Header and Footer Trailing ';
 WithHeaderAndFooterTrailingExample.args = {};
 
-const WithInitialZoomExampleTemplate: StoryFn<typeof PreviewWindow> = () => {
+const WithInitialZoomExampleTemplate: StoryFn<typeof Preview> = () => {
   return (
-    <PreviewWindow defaultZoom={2}>
+    <Preview defaultZoom={2}>
       <PreviewHeader title="Preview " />
       <PreviewBody>
         <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
       </PreviewBody>
       <PreviewFooter showZoomPercentage={true} />
-    </PreviewWindow>
+    </Preview>
   );
 };
 export const WithInitialZoomExample = WithInitialZoomExampleTemplate.bind({});
 WithInitialZoomExample.storyName = 'With Initial Zoom';
 WithInitialZoomExample.args = {};
 
-const PDFRenderer: StoryFn<typeof PreviewWindow> = () => {
+const PDFRenderer: StoryFn<typeof Preview> = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   return (
-    <PreviewWindow
+    <Preview
       onZoomChange={(zoom) => {
         console.log('zoom-> onZoomChange', zoom);
       }}
@@ -326,7 +326,7 @@ const PDFRenderer: StoryFn<typeof PreviewWindow> = () => {
           </Box>
         }
       />
-    </PreviewWindow>
+    </Preview>
   );
 };
 export const PDFTemplate = PDFRenderer.bind({});

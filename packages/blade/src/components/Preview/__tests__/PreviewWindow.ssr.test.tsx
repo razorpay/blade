@@ -1,6 +1,6 @@
 // test case for ChatMessage component
 // eslint-disable-next-line blade/no-cross-platform-imports
-import { PreviewFooter, PreviewWindow, PreviewBody, PreviewHeader } from '../PreviewWindow.web';
+import { PreviewFooter, PreviewWindow, PreviewBody, PreviewHeader } from '../Preview.web';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Text } from '~components/Typography';
 

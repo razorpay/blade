@@ -1,6 +1,6 @@
-type PreviewWindowProps = {
+type PreviewProps = {
   /**
-   * The children of the PreviewWindow component.
+   * The children of the Preview component.
    */
   children: React.ReactElement | React.ReactElement[];
   /**
@@ -12,7 +12,7 @@ type PreviewWindowProps = {
    */
   isDragAndZoomDisabled?: boolean;
   /**
-   * The initial zoom of the PreviewWindow component.
+   * The initial zoom of the Preview component.
    */
   defaultZoom?: number;
   /**
@@ -63,7 +63,7 @@ type PreviewFooterProps = {
   showZoomPercentage?: boolean;
 };
 
-type PreviewWindowContextType = {
+type PreviewContextType = {
   zoom: number;
   zoomScaleStep: number;
   isFullScreen: boolean;
@@ -71,9 +71,9 @@ type PreviewWindowContextType = {
 };
 
 export type {
-  PreviewWindowProps,
+  PreviewProps,
   PreviewHeaderProps,
   PreviewBodyProps,
   PreviewFooterProps,
-  PreviewWindowContextType,
+  PreviewContextType,
 };

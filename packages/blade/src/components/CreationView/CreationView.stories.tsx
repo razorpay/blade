@@ -42,7 +42,7 @@ import {
   PreviewBody,
   PreviewHeader,
   PreviewFooter,
-} from '~components/PreviewWindow';
+} from '~components/Preview';
 import {
   BottomSheet,
   BottomSheetBody,
