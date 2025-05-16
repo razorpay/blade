@@ -22,7 +22,7 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   -ms-flex-pack: justify;
   justify-content: space-between;
   position: absolute;
-  z-index: 1000;
+  z-index: 1100;
   padding: 12px;
   top: 0px;
   right: 4px;
@@ -305,7 +305,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   position: absolute;
-  z-index: 1000;
+  z-index: 1100;
   padding: 16px;
   width: 100%;
   right: 0px;
@@ -365,7 +365,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
 
 .c10.c10.c10.c10.c10 {
   position: absolute;
-  z-index: 1000;
+  z-index: 1100;
   width: 100%;
   top: 0px;
   left: 0px;
