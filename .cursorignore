@@ -24,7 +24,6 @@ temp/*
 logs/*
 
 # Sensitive Data
-*.json
 *.xml
 *.yml
 *.yaml
