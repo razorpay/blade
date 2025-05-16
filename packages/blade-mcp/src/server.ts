@@ -23,7 +23,7 @@ import { getPackageJSONVersion } from './utils.js';
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
-  environment: process.env.NODE_ENV || 'development',
+  environment: process.env.NODE_ENV ?? 'development',
   release: getPackageJSONVersion(),
   sendDefaultPii: false,
 });
