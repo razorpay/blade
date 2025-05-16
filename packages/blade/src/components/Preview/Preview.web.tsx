@@ -2,12 +2,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
 import styled from 'styled-components';
 import type {
-  PreviewWindowProps,
+  PreviewProps,
   PreviewHeaderProps,
   PreviewFooterProps,
   PreviewBodyProps,
 } from './types';
-import { usePreviewWindowContext, PreviewWindowProvider } from './PreviewWindowContext';
+import { usePreviewContext, PreviewProvider } from './PreviewContext';
 import BaseBox from '~components/Box/BaseBox';
 import {
   FullScreenEnterIcon,
@@ -31,7 +31,7 @@ const _PreviewHeader = ({
   _onFullScreen,
   trailing,
 }: PreviewHeaderProps): React.ReactElement => {
-  const { isFullScreen } = usePreviewWindowContext();
+  const { isFullScreen } = usePreviewContext();
 
   if (!title) {
     return (
@@ -104,7 +104,7 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
   const { zoomIn, zoomOut, setTransform } = useControls();
-  const { zoom, zoomScaleStep, initialZoom } = usePreviewWindowContext();
+  const { zoom, zoomScaleStep, defaultZoom } = usePreviewContext();
   const handleZoomIn = useCallback(() => {
     zoomIn(zoomScaleStep);
   }, [zoomScaleStep, zoomIn]);
@@ -114,8 +114,8 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
   }, [zoomScaleStep, zoomOut]);
 
   const handleReset = useCallback(() => {
-    setTransform(0, 0, initialZoom);
-  }, [initialZoom, setTransform]);
+    setTransform(0, 0, defaultZoom);
+  }, [defaultZoom, setTransform]);
 
   return (
     <BaseBox
@@ -207,18 +207,18 @@ const TransFormWrapperContainer = styled.div`
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.surface.background.gray.moderate};
 `;
-const PreviewWindow = ({
+const Preview = ({
   children,
   onFullScreen: onFullScreenProp,
   onZoomChange,
   zoomScaleStep = 0.1,
   isDragAndZoomDisabled = false,
-  initialZoom,
+  defaultZoom,
   onDragChange,
-}: PreviewWindowProps): React.ReactElement => {
+}: PreviewProps): React.ReactElement => {
   const [controlledZoom, setControlledZoom] = useControllableState({
     onChange: onZoomChange,
-    defaultValue: initialZoom ?? 1,
+    defaultValue: defaultZoom ?? 1,
   });
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -234,19 +234,31 @@ const PreviewWindow = ({
     onDragChange?.({ x: positionX, y: positionY });
   };
 
-  const handleFullScreen = useCallback(() => {
-    if (!document.fullscreenElement) {
-      containerRef.current?.requestFullscreen().catch((err: Error) => {
-        console.error(`Error attempting to enable fullscreen: ${err.message}`);
-      });
-      setIsFullScreen(true);
-      onFullScreenProp?.();
+  const handleFullScreenError = (err: unknown): void => {
+    if (err instanceof DOMException) {
+      console.error(`Fullscreen request failed: ${err.name} - ${err.message}`);
     } else {
-      document.exitFullscreen().catch((err) => {
-        console.error(`Error attempting to exit fullscreen: ${err.message}`);
-      });
-      setIsFullScreen(false);
-      onFullScreenProp?.();
+      console.error('Unexpected error during fullscreen request:', err);
+    }
+  };
+
+  const handleFullScreen = useCallback(async () => {
+    if (!document.fullscreenElement) {
+      try {
+        await containerRef.current?.requestFullscreen();
+        setIsFullScreen(true);
+        onFullScreenProp?.();
+      } catch (err: unknown) {
+        handleFullScreenError(err);
+      }
+    } else {
+      try {
+        await document.exitFullscreen();
+        setIsFullScreen(false);
+        onFullScreenProp?.();
+      } catch (err: unknown) {
+        handleFullScreenError(err);
+      }
     }
   }, [onFullScreenProp]);
 
@@ -255,7 +267,7 @@ const PreviewWindow = ({
     const handleKeyDown = (event: KeyboardEvent): void => {
       if ((event.metaKey || event.ctrlKey) && event.key === 'f') {
         event.preventDefault();
-        handleFullScreen();
+        void handleFullScreen();
       }
     };
 
@@ -299,12 +311,12 @@ const PreviewWindow = ({
   );
 
   return (
-    <PreviewWindowProvider
+    <PreviewProvider
       value={{
         zoom: controlledZoom,
         isFullScreen,
         zoomScaleStep,
-        initialZoom: initialZoom ?? 1,
+        defaultZoom: defaultZoom ?? 1,
       }}
     >
       <TransFormWrapperContainer ref={containerRef}>
@@ -313,7 +325,7 @@ const PreviewWindow = ({
           minScale={0.1}
           maxScale={8}
           disabled={isDragAndZoomDisabled}
-          initialScale={initialZoom ?? controlledZoom}
+          initialScale={defaultZoom ?? controlledZoom}
           doubleClick={{ disabled: false }}
           onPanningStart={() => setIsDragging(true)}
           onPanningStop={() => setIsDragging(false)}
@@ -333,8 +345,8 @@ const PreviewWindow = ({
           )}
         </TransformWrapper>
       </TransFormWrapperContainer>
-    </PreviewWindowProvider>
+    </PreviewProvider>
   );
 };
 
-export { PreviewWindow, PreviewHeader, PreviewBody, PreviewFooter };
+export { Preview, PreviewHeader, PreviewBody, PreviewFooter };

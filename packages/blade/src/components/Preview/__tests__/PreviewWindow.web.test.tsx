@@ -1,30 +1,28 @@
-// test case for ChatMessage component
-// eslint-disable-next-line blade/no-cross-platform-imports
-import { PreviewFooter, PreviewWindow, PreviewBody, PreviewHeader } from '../PreviewWindow.web';
-import renderWithSSR from '~utils/testing/renderWithSSR.web';
+import { Preview, PreviewBody, PreviewFooter, PreviewHeader } from '../Preview.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 
 describe('<PreviewWindow/>', () => {
   it('should render preview window correctly', () => {
-    const { container } = renderWithSSR(
-      <PreviewWindow>
+    const { container } = renderWithTheme(
+      <Preview>
         <PreviewHeader title="Preview Window" />
         <PreviewBody>
           <Text>This is a demo message</Text>
         </PreviewBody>
         <PreviewFooter showZoomPercentage={true} />
-      </PreviewWindow>,
+      </Preview>,
     );
     expect(container).toMatchSnapshot();
   });
   it('should render preview header without title correctly', () => {
-    const { container } = renderWithSSR(
-      <PreviewWindow>
+    const { container } = renderWithTheme(
+      <Preview>
         <PreviewHeader />
         <PreviewBody>
           <Text>This is a demo message</Text>
         </PreviewBody>
-      </PreviewWindow>,
+      </Preview>,
     );
     expect(container).toMatchSnapshot();
   });

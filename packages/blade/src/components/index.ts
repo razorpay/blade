@@ -67,4 +67,4 @@ export * from './types';
 export * from './Typography';
 export * from './VisuallyHidden';
 export * from './ListView';
-export * from './PreviewWindow';
+export * from './Preview';
