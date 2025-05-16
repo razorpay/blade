@@ -2,6 +2,7 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import * as Sentry from '@sentry/node';
 import {
   createNewBladeProjectCallback,
   createNewBladeProjectSchema,
@@ -19,6 +20,13 @@ import {
 } from './tools/getBladeComponentDocs.js';
 import { hiBladeCallback, hiBladeSchema, hiBladeDescription } from './tools/hiBlade.js';
 import { getPackageJSONVersion } from './utils.js';
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  environment: process.env.NODE_ENV || 'development',
+  release: getPackageJSONVersion(),
+  sendDefaultPii: false,
+});
 
 try {
   const server = new McpServer({
@@ -54,8 +62,9 @@ try {
 
   // Use Promise handling for async operations
   await server.connect(transport);
-  console.error('Blade MCP connected successfully.');
+  console.log('Blade MCP connected successfully.');
 } catch (error: unknown) {
-  console.error('Blade MCP initialization failed:', error);
+  Sentry.captureException(error);
+  console.error('Blade MCP Error', error);
   process.exit(1);
 }
