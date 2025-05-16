@@ -37,12 +37,7 @@ import { Text } from '~components/Typography/Text';
 import { Alert } from '~components/Alert';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
-import {
-  PreviewWindow,
-  PreviewBody,
-  PreviewHeader,
-  PreviewFooter,
-} from '~components/PreviewWindow';
+import { Preview, PreviewBody, PreviewHeader, PreviewFooter } from '~components/Preview';
 import {
   BottomSheet,
   BottomSheetBody,
@@ -250,7 +245,7 @@ const Page = (): React.ReactElement => {
               </Box>
               {!isMobile && (
                 <Box width="500px">
-                  <PreviewWindow>
+                  <Preview>
                     <PreviewHeader />
                     <PreviewBody>
                       {isQrGenerated ? (
@@ -268,7 +263,7 @@ const Page = (): React.ReactElement => {
                       )}
                     </PreviewBody>
                     <PreviewFooter />
-                  </PreviewWindow>
+                  </Preview>
                 </Box>
               )}
             </Box>
@@ -276,7 +271,7 @@ const Page = (): React.ReactElement => {
         
           const renderPreview = (): React.ReactElement => (
             <Box display="flex" flexDirection="column" gap="spacing.4">
-              <PreviewWindow>
+              <Preview>
                 <PreviewHeader />
                 <PreviewBody>
                   <Box display="flex" flexDirection="column" gap="spacing.4">
@@ -300,7 +295,7 @@ const Page = (): React.ReactElement => {
                   </Box>
                 </PreviewBody>
                 <PreviewFooter />
-              </PreviewWindow>
+              </Preview>
             </Box>
           );
         
@@ -530,7 +525,7 @@ const DefaultExample: StoryFn<typeof Modal> = () => {
       </Box>
       {!isMobile && (
         <Box width="500px">
-          <PreviewWindow>
+          <Preview>
             <PreviewHeader />
             <PreviewBody>
               {isQrGenerated ? (
@@ -548,7 +543,7 @@ const DefaultExample: StoryFn<typeof Modal> = () => {
               )}
             </PreviewBody>
             <PreviewFooter />
-          </PreviewWindow>
+          </Preview>
         </Box>
       )}
     </Box>
@@ -556,7 +551,7 @@ const DefaultExample: StoryFn<typeof Modal> = () => {
 
   const renderPreview = (): React.ReactElement => (
     <Box display="flex" flexDirection="column" gap="spacing.4">
-      <PreviewWindow>
+      <Preview>
         <PreviewHeader />
         <PreviewBody>
           <Box display="flex" flexDirection="column" gap="spacing.4">
@@ -580,7 +575,7 @@ const DefaultExample: StoryFn<typeof Modal> = () => {
           </Box>
         </PreviewBody>
         <PreviewFooter />
-      </PreviewWindow>
+      </Preview>
     </Box>
   );
 
@@ -947,7 +942,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
         </Box>
         <Divider />
         <Box width="100%" height={isMobile ? '400px' : '600px'}>
-          <PreviewWindow initialZoom={0.5}>
+          <Preview defaultZoom={0.5}>
             <PreviewHeader />
             <PreviewBody>
               <Box
@@ -1107,7 +1102,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               </Box>
             </PreviewBody>
             <PreviewFooter />
-          </PreviewWindow>
+          </Preview>
         </Box>
       </Box>
       {!isMobile && (
@@ -1358,7 +1353,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               </Box>
               {!isMobile && (
                 <Box flex={4}>
-                  <PreviewWindow isDragAndZoomDisabled>
+                  <Preview isDragAndZoomDisabled>
                     <PreviewBody>
                       <Box
                         padding="spacing.4"
@@ -1413,7 +1408,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                         )}
                       </Box>
                     </PreviewBody>
-                  </PreviewWindow>
+                  </Preview>
                 </Box>
               )}
             </Box>
