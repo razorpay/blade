@@ -1,13 +1,10 @@
-import dayjs from 'dayjs';
 import type { StoryFn, Meta } from '@storybook/react';
-import React, { useState } from 'react';
+import React from 'react';
 import storyRouterDecorator from 'storybook-react-router';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import type { TableData } from '~components/Table/types';
-import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import {
@@ -35,7 +32,6 @@ import {
 } from '~components/Table';
 import { IconButton } from '~components/Button/IconButton';
 import { Box } from '~components/Box';
-import type { CounterProps } from '~components/Counter';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '~components/Modal';
 import { Text } from '~components/Typography/Text';
 import { Alert } from '~components/Alert';
@@ -583,7 +579,7 @@ export default {
   },
 } as Meta<ModalProps>;
 
-const DefaultExample: StoryFn<typeof Modal> = (args) => {
+const DefaultExample: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
   const isMobile = useIsMobile();
@@ -1431,7 +1427,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
         );
       case 2:
         return (
-          <Box display="flex" width="100%" height="100%" width="100%">
+          <Box display="flex" width="100%" height="100%">
             <Box display="flex" width="100%" justifyContent="space-between">
               <Box
                 flex={6}
