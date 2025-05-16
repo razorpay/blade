@@ -222,6 +222,75 @@ describe('<Amount />', () => {
     });
   });
 
+  it('should allow customizing number of fraction digits', () => {
+    setState({ locale: 'en-IN' });
+    // Test with 3 decimal places
+    expect(
+      getAmountByParts({ value: 123.456, suffix: 'decimals', currency: 'INR', fractionDigits: 3 }),
+    ).toEqual({
+      currency: '₹',
+      decimal: '.',
+      fraction: '456',
+      integer: '123',
+      isPrefixSymbol: true,
+      rawParts: [
+        { type: 'currency', value: '₹' },
+        { type: 'integer', value: '123' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '456' },
+      ],
+    });
+
+    // Test with 4 decimal places
+    expect(
+      getAmountByParts({ value: 123.4567, suffix: 'decimals', currency: 'INR', fractionDigits: 4 }),
+    ).toEqual({
+      currency: '₹',
+      decimal: '.',
+      fraction: '4567',
+      integer: '123',
+      isPrefixSymbol: true,
+      rawParts: [
+        { type: 'currency', value: '₹' },
+        { type: 'integer', value: '123' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '4567' },
+      ],
+    });
+
+    // Test with 0 decimal places
+    expect(
+      getAmountByParts({ value: 123.456, suffix: 'decimals', currency: 'INR', fractionDigits: 0 }),
+    ).toEqual({
+      currency: '₹',
+      integer: '123',
+      isPrefixSymbol: true,
+      rawParts: [
+        { type: 'currency', value: '₹' },
+        { type: 'integer', value: '123' },
+      ],
+    });
+  });
+
+  it('should display the correct number of decimal places based on fractionDigits prop', () => {
+    setState({ locale: 'en-IN' });
+
+    const { getByTestId: getByTestId1 } = renderWithTheme(
+      <Amount value={123.456789} fractionDigits={1} testID="amount-one-decimal" />,
+    );
+    expect(getByTestId1('amount-one-decimal')).toHaveTextContent('₹123.5');
+
+    const { getByTestId: getByTestId3 } = renderWithTheme(
+      <Amount value={123.456789} fractionDigits={3} testID="amount-three-decimals" />,
+    );
+    expect(getByTestId3('amount-three-decimals')).toHaveTextContent('₹123.457');
+
+    const { getByTestId: getByTestId0 } = renderWithTheme(
+      <Amount value={123.456789} fractionDigits={0} testID="amount-zero-decimals" />,
+    );
+    expect(getByTestId0('amount-zero-decimals')).toHaveTextContent('₹123');
+  });
+
   it.each(AMOUNT_SUFFIX_TEST_SET)(
     `should render different outputs in Amount for different suffix values`,
     (item) => {
@@ -231,6 +300,7 @@ describe('<Amount />', () => {
           suffix={item.suffix}
           testID="amount-test"
           locale={item.locale}
+          fractionDigits={item.fractionDigits}
         />,
       );
 

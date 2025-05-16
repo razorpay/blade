@@ -5,6 +5,7 @@ export const AMOUNT_SUFFIX_TEST_SET: {
   suffix: AmountProps['suffix'];
   output: string;
   locale?: string;
+  fractionDigits?: number;
 }[] = [
   { value: 1000000.22, suffix: 'humanize', output: '1Mio.₹', locale: 'de-DE' },
   { value: 1000000.0, suffix: 'decimals', output: '₹1,000,000.00', locale: 'en-US' },
@@ -15,4 +16,5 @@ export const AMOUNT_SUFFIX_TEST_SET: {
   { value: 1000000.12, suffix: 'decimals', output: '₹10,00,000.12', locale: 'en-IN' },
   { value: -1000000.12, suffix: 'decimals', output: '-₹10,00,000.12', locale: 'en-IN' },
   { value: -1000000.12, suffix: 'humanize', output: '-1Mio.₹', locale: 'de-De' },
+  { value: 123.456789, suffix: 'decimals', output: '₹123.457', locale: 'en-IN', fractionDigits: 3 },
 ];

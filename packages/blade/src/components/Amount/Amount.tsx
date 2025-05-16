@@ -102,6 +102,12 @@ type AmountCommonProps = {
    * @default false
    */
   isStrikethrough?: boolean;
+  /**
+   * Controls the number of decimal places to display when suffix is 'decimals'.
+   *
+   * @default 2
+   */
+  fractionDigits?: number;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -192,6 +198,7 @@ type FormatAmountWithSuffixType = {
   suffix: AmountProps['suffix'];
   value: number;
   currency: AmountProps['currency'];
+  fractionDigits?: number;
 };
 
 /**
@@ -212,14 +219,15 @@ export const getAmountByParts = ({
   suffix,
   value,
   currency,
+  fractionDigits = 2,
 }: FormatAmountWithSuffixType): AmountType => {
   try {
     switch (suffix) {
       case 'decimals': {
         const options = {
           intlOptions: {
-            maximumFractionDigits: 2,
-            minimumFractionDigits: 2,
+            maximumFractionDigits: fractionDigits,
+            minimumFractionDigits: fractionDigits,
           },
           currency,
         } as const;
@@ -268,6 +276,7 @@ const _Amount = (
     color,
     currencyIndicator = 'currency-symbol',
     currency = 'INR',
+    fractionDigits = 2,
     testID,
     ...rest
   }: AmountProps,
@@ -317,7 +326,7 @@ const _Amount = (
     color,
   });
 
-  const renderedValue = getAmountByParts({ suffix, value, currency });
+  const renderedValue = getAmountByParts({ suffix, value, currency, fractionDigits });
   const isPrefixSymbol = renderedValue.isPrefixSymbol ?? true;
   const currencySymbol = renderedValue.currency ?? currency;
 
