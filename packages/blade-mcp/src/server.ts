@@ -22,7 +22,7 @@ import { hiBladeCallback, hiBladeSchema, hiBladeDescription } from './tools/hiBl
 import { getPackageJSONVersion } from './utils.js';
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN,
+  dsn: process.env.BLADE_MCP_SENTRY_DSN,
   environment: process.env.NODE_ENV ?? 'development',
   release: getPackageJSONVersion(),
   sendDefaultPii: false,
