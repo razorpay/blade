@@ -653,3 +653,132 @@ const ZeroPaddingBottomSheet = () => {
 
 export default ZeroPaddingBottomSheet;
 ```
+
+
+## BottomSheet with Custom Snap Points
+
+This example demonstrates a BottomSheet with custom snap points.
+
+To create this, you need to pass the `snapPoints` prop with an array of values representing the snap points.
+
+```jsx
+import React from 'react';
+import { 
+  BottomSheet,
+  BottomSheetBody,
+  BottomSheetHeader,
+  Button,
+  Box,
+  Text,
+  List,
+  ListItem,
+  Dropdown,
+  SelectInput,
+  ActionList,
+  ActionListItem,
+} from '@razorpay/blade/components';
+
+function App(): React.ReactElement {
+  const fruits = [
+    'Apple', 'Apricot', 'Avocado', 'Banana', 'Blackberry', 'Blueberry', 'Cherry', 'Coconut', 
+    'Cucumber', 'Durian', 'Dragonfruit', 'Fig', 'Gooseberry', 'Grape', 'Guava', 'Jackfruit', 
+    'Plum', 'Kiwifruit', 'Kumquat', 'Lemon', 'Lime', 'Mango', 'Watermelon', 'Mulberry', 'Orange', 
+    'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Pineapple', 'Pineberry', 'Quince', 
+    'Raspberry', 'Soursop', 'Star fruit', 'Strawberry', 'Tamarind', 'Yuzu',
+  ];
+
+  return (
+    <Box>
+      <Box marginBottom="spacing.5">
+        <Text marginBottom="spacing.4">Example of Custom SnapPoints at [50%, 80%, 100%]</Text>
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Cuisines Filter" />
+          <BottomSheet snapPoints={[0.5, 0.8, 1]}>
+            <BottomSheetHeader title="Fruits" />
+            <BottomSheetBody>
+              <ActionList>
+                {fruits.map((fruit) => {
+                  return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+                })}
+              </ActionList>
+            </BottomSheetBody>
+          </BottomSheet>
+        </Dropdown>
+      </Box>
+      <Heading marginBottom="spacing.3">SnapPoint Behaviour</Heading>
+
+      <Box display="flex" gap="spacing.2" flexWrap="wrap">
+        <Text>By default BottomSheet's SnapPoints are</Text>
+        <Text weight="semibold">[35%, 50%, 85%]</Text>
+      </Box>
+
+      <Text>
+        Below is the behaviour BottomSheet follows to intelligently open the content at the optimal
+        SnapPoint initially
+      </Text>
+
+      <Box marginTop="spacing.3">
+        <Text weight="semibold">At SnapPoint 1: 35% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height is less than 35% of screen height - then bottom sheet takes the height
+            of the content.
+          </ListItem>
+          <ListItem>
+            If content height is {'>'}35% screen height (and {'<'}50% of screen’s height) - then
+            bottom sheet’s initial snap point should be 35%.
+            <List>
+              <ListItem>
+                Bottom sheet will extend till the height of the content on upwards drag.
+              </ListItem>
+            </List>
+          </ListItem>
+        </List>
+
+        <Text weight="semibold">At SnapPoint 2: 50% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height {'>'}35% but {'<'}50% screen height - the bottom sheet extends till
+            the height of the content.
+          </ListItem>
+          <ListItem>
+            If content height {'>'}50% (but {'<'}85% screen height) then bottom sheet’s initial snap
+            point should be at 50% screen height.
+            <List>
+              <ListItem>
+                The bottom sheet extends till the height of the content on upwards drag.
+              </ListItem>
+            </List>
+          </ListItem>
+        </List>
+
+        <Text weight="semibold">At SnapPoint 3: 85% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height {'>'}50% but {'<'}85% screen height - the bottom sheet extends till
+            the height of the content.
+          </ListItem>
+          <ListItem>Bottom Sheet’s height can extend maximum until 85% screen size.</ListItem>
+          <ListItem>
+            If content height {'>'}85% of screen height then bottom sheet’s initial snap point
+            should be at 85% of screen height.
+            <List>
+              <ListItem>On further scroll or drag, contents scrolls internally.</ListItem>
+            </List>
+          </ListItem>
+        </List>
+
+        <Text>
+          Checkout the{' '}
+          <Link href="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76785-1455819&t=eMQWVawMPyhCdtgv-1&scaling=min-zoom&page-id=25042%3A498654&mode=design">
+            design guideline
+          </Link>{' '}
+          here for more details
+        </Text>
+      </Box>
+    </Box>
+  );
+}
+
+export default App;
+```

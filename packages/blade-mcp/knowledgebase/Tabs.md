@@ -284,3 +284,73 @@ function TabsWithIconsAndBadgesExample() {
   );
 }
 ```
+
+### Tabs with Tooltip
+
+This example demonstrates how to use the `Tooltip` component with `TabItem` to show additional information.
+
+To create this example, you need to:
+
+- Wrap the `TabItem` with `TooltipInteractiveWrapper`.
+- Use the `Tooltip` component to provide additional information.
+
+```jsx
+import {
+  Box,
+  Text,
+  Tabs,
+  TabList,
+  TabItem,
+  TabPanel,
+  Tooltip,
+  TooltipInteractiveWrapper,
+} from '@razorpay/blade/components';
+
+function App() {
+  return (
+    <Box>
+      <Text>
+        You can compose Tooltip with TabItem to show additional information about the TabItem by
+        wrapping the <Code size="medium">TabItem</Code> with{' '}
+        <Code size="medium">TooltipInteractiveWrapper</Code>.
+      </Text>
+      <Text marginBottom="spacing.5" color="surface.text.gray.subtle">
+        (Hover over the Settings tab to see it in action)
+      </Text>
+      <Tabs>
+        <TabList>
+          <TabItem value="subscriptions">Subscription</TabItem>
+          <TabItem value="plans">Plans</TabItem>
+          <Tooltip
+            placement="right"
+            content="Change payment method settings and enable different payment methods."
+            title="Payment Settings"
+          >
+            <TooltipInteractiveWrapper>
+              <TabItem value="settings">Settings</TabItem>
+            </TooltipInteractiveWrapper>
+          </Tooltip>
+        </TabList>
+
+        <TabPanel value="subscriptions">
+          <Box paddingTop="spacing.4">
+            <Text>Subscriptions Panel</Text>
+          </Box>
+        </TabPanel>
+        <TabPanel value="plans">
+          <Box paddingTop="spacing.4">
+            <Text>Plans Panel</Text>
+          </Box>
+        </TabPanel>
+        <TabPanel value="settings">
+          <Box paddingTop="spacing.4">
+            <Text>Settings Panel</Text>
+          </Box>
+        </TabPanel>
+      </Tabs>
+    </Box>
+  );
+}
+
+export default App;
+```
