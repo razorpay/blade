@@ -26,10 +26,14 @@ const getFigmaToCodeCallback: ToolCallback<typeof getFigmaToCodeSchema> = async 
   try {
     const isDev = process.env.NODE_ENV === 'development';
     const url = isDev ? URLS.FIGMA_TO_CODE_URL.DEV : URLS.FIGMA_TO_CODE_URL.PROD;
-    const fullUrl = `${url}/image-to-code`;
+    const fullUrl = `${url}/figma-to-code`;
     const response = await fetch(fullUrl, {
       method: 'POST',
-      body: JSON.stringify({ fileKey, nodeId, userId: 'blade-mcp' }),
+      headers: new Headers({
+        'x-blade-mcp': 'true',
+        'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify({ fileKey, nodeId }),
     });
 
     const data = await response.text();
