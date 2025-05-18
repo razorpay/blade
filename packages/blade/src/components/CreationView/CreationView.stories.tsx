@@ -998,10 +998,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
         height="100%"
         justifyContent="space-between"
       >
-        <Box display="flex" flexDirection="column" gap="spacing.2">
-          <Heading size="medium">Review GRN Details</Heading>
-          <Text>Review and confirm all GRN details before submission.</Text>
-        </Box>
         <Divider />
         <Box width="100%" height={isMobile ? '400px' : '600px'}>
           <Preview defaultZoom={0.5}>
