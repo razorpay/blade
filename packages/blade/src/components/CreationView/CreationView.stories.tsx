@@ -3,6 +3,7 @@ import React from 'react';
 import storyRouterDecorator from 'storybook-react-router';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import styled from 'styled-components';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -52,8 +53,7 @@ import { Divider } from '~components/Divider';
 import { TextArea } from '~components/Input/TextArea';
 import { Card, CardBody } from '~components/Card';
 import { DatePicker } from '~components/DatePicker';
-import styled from 'styled-components';
-import { Fade } from '~components/Fade';
+import { Slide } from '~components/Slide';
 
 // Initialize dayjs plugins
 dayjs.extend(customParseFormat);
@@ -1684,11 +1684,17 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               size="medium"
             />
             {showStepGroup && (
-              <Fade type="inout">
-                <Box>
+              <Box>
+                <Slide
+                  direction="top"
+                  delay="xquick"
+                  isVisible
+                  motionTriggers={['mount']}
+                  type="inout"
+                >
                   <Box
                     position="fixed"
-                    top="spacing.10"
+                    top="51px"
                     left="spacing.0"
                     backgroundColor="surface.background.gray.intense"
                     zIndex={1005}
@@ -1700,15 +1706,15 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   >
                     {renderStepGroup()}
                   </Box>
-                  <BackdropContainer
-                    onClick={() => {
-                      setShowStepGroup((prev: boolean) => !prev);
-                    }}
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
-                    onKeyDown={() => {}}
-                  />
-                </Box>
-              </Fade>
+                </Slide>
+                <BackdropContainer
+                  onClick={() => {
+                    setShowStepGroup((prev: boolean) => !prev);
+                  }}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onKeyDown={() => {}}
+                />
+              </Box>
             )}
 
             {/* Step content */}
