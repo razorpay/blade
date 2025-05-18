@@ -103,7 +103,7 @@ const PreviewBody = assignWithoutSideEffects(_PreviewBody, {
 
 const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElement => {
   const { showZoomPercentage, trailing } = PreviewFooterProps;
-  const { zoomIn, zoomOut, setTransform } = useControls();
+  const { zoomIn, zoomOut, centerView } = useControls();
   const { zoom, zoomScaleStep, defaultZoom } = usePreviewContext();
   const handleZoomIn = useCallback(() => {
     zoomIn(zoomScaleStep);
@@ -114,8 +114,9 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
   }, [zoomScaleStep, zoomOut]);
 
   const handleReset = useCallback(() => {
-    setTransform(0, 0, defaultZoom);
-  }, [defaultZoom, setTransform]);
+    // thanks to https://github.com/BetterTyped/react-zoom-pan-pinch/issues/286#issuecomment-1442888219
+    centerView(defaultZoom, 0);
+  }, [defaultZoom, centerView]);
 
   return (
     <BaseBox
