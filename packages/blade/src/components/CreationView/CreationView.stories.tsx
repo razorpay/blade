@@ -1601,6 +1601,31 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     );
   };
 
+  const renderStepGroup = (): React.ReactElement => {
+    return (
+      <StepGroup orientation="vertical" size="medium">
+        {GRNSteps.map((step) => (
+          <StepItem
+            key={step.stepNumber}
+            title={step.title}
+            description={step.description}
+            marker={getStepIcon(step.stepNumber)}
+            isSelected={currentStep === step.stepNumber}
+            isDisabled={step.stepNumber > currentStep}
+            onClick={() => handleStepClick(step.stepNumber)}
+            stepProgress={
+              completedSteps.includes(step.stepNumber)
+                ? 'full'
+                : currentStep === step.stepNumber
+                ? 'start'
+                : 'none'
+            }
+          />
+        ))}
+      </StepGroup>
+    );
+  };
+
   return (
     <Box>
       <Button onClick={() => setIsOpen(!isOpen)}>Create GNR Details</Button>
@@ -1663,26 +1688,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   borderBottomRightRadius="2xlarge"
                   padding="spacing.7"
                 >
-                  <StepGroup orientation="vertical" size="medium">
-                    {GRNSteps.map((step) => (
-                      <StepItem
-                        key={step.stepNumber}
-                        title={step.title}
-                        description={step.description}
-                        marker={getStepIcon(step.stepNumber)}
-                        isSelected={currentStep === step.stepNumber}
-                        isDisabled={step.stepNumber > currentStep}
-                        onClick={() => handleStepClick(step.stepNumber)}
-                        stepProgress={
-                          completedSteps.includes(step.stepNumber)
-                            ? 'full'
-                            : currentStep === step.stepNumber
-                            ? 'start'
-                            : 'none'
-                        }
-                      />
-                    ))}
-                  </StepGroup>
+                  {renderStepGroup()}
                 </Box>
                 <div
                   style={{
@@ -1730,26 +1736,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   padding="spacing.7"
                   backgroundColor="surface.background.gray.moderate"
                 >
-                  <StepGroup orientation="vertical" size="medium">
-                    {GRNSteps.map((step) => (
-                      <StepItem
-                        key={step.stepNumber}
-                        title={step.title}
-                        description={step.description}
-                        marker={getStepIcon(step.stepNumber)}
-                        isSelected={currentStep === step.stepNumber}
-                        isDisabled={step.stepNumber > currentStep}
-                        onClick={() => handleStepClick(step.stepNumber)}
-                        stepProgress={
-                          completedSteps.includes(step.stepNumber)
-                            ? 'full'
-                            : currentStep === step.stepNumber
-                            ? 'start'
-                            : 'none'
-                        }
-                      />
-                    ))}
-                  </StepGroup>
+                  {renderStepGroup()}
                 </Box>
                 <Box width="100%" display="flex" flexDirection="column">
                   <Box flex={1} overflow="auto">
