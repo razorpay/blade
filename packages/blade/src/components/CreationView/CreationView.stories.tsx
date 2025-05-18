@@ -1,6 +1,8 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import storyRouterDecorator from 'storybook-react-router';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -48,6 +50,11 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { StepGroup, StepItem, StepItemIcon } from '~components/StepGroup';
 import { Divider } from '~components/Divider';
 import { TextArea } from '~components/Input/TextArea';
+import { Card, CardBody } from '~components/Card';
+import { DatePicker } from '~components/DatePicker';
+
+// Initialize dayjs plugins
+dayjs.extend(customParseFormat);
 
 const Page = (): React.ReactElement => {
   return (
@@ -801,6 +808,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     date: '',
     notes: '',
   });
+  console.log('setGrnDetails', setGrnDetails);
   const [alert, setAlert] = React.useState<{
     type: 'positive' | 'negative';
     title: string;
@@ -829,9 +837,17 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
       if (!grnDetails.date) {
         newErrors.date = 'Date is required';
       } else {
-        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-        if (!dateRegex.test(grnDetails.date)) {
+        // Check date format and validity using dayjs
+        const date = dayjs(grnDetails.date, 'YYYY-MM-DD', true);
+
+        if (!date.isValid()) {
           newErrors.date = 'Please enter a valid date in YYYY-MM-DD format';
+        } else {
+          // Check if date is in the past
+          const today = dayjs().startOf('day');
+          if (date.isBefore(today)) {
+            newErrors.date = 'Date cannot be in the past';
+          }
         }
       }
     }
@@ -951,6 +967,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 flexDirection="column"
                 gap="spacing.6"
                 backgroundColor="surface.background.gray.intense"
+                alignItems="center"
               >
                 {/* GRN Details Section */}
                 <Box
@@ -1176,43 +1193,43 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   errorText={errors.vendor}
                 >
                   {GRNVendors.map((vendor) => (
-                    <Box
+                    <Card
                       key={vendor.id}
                       padding="spacing.4"
-                      borderWidth="thin"
-                      borderColor={
-                        selectedVendor === vendor.id
-                          ? 'surface.border.primary.normal'
-                          : 'surface.border.gray.muted'
-                      }
                       borderRadius="medium"
+                      elevation="none"
+                      as="label"
+                      accessibilityLabel={vendor.name}
+                      marginBottom="spacing.2"
                     >
-                      <RadioCard value={vendor.id} label={vendor.name}>
-                        <Box
-                          display="flex"
-                          gap="spacing.2"
-                          flexDirection={isMobile ? 'column' : 'row'}
-                        >
-                          <Box display="flex" gap="spacing.2">
-                            <MailIcon color="interactive.icon.gray.muted" />
-                            <Text size="small" color="surface.text.gray.muted">
-                              {vendor.email}
-                            </Text>
-                            {!isMobile && (
+                      <CardBody>
+                        <RadioCard value={vendor.id} label={vendor.name}>
+                          <Box
+                            display="flex"
+                            gap="spacing.2"
+                            flexDirection={isMobile ? 'column' : 'row'}
+                          >
+                            <Box display="flex" gap="spacing.2">
+                              <MailIcon color="interactive.icon.gray.muted" />
                               <Text size="small" color="surface.text.gray.muted">
-                                •
+                                {vendor.email}
                               </Text>
-                            )}
+                              {!isMobile && (
+                                <Text size="small" color="surface.text.gray.muted">
+                                  •
+                                </Text>
+                              )}
+                            </Box>
+                            <Box display="flex" gap="spacing.2">
+                              <PhoneIcon color="interactive.icon.gray.muted" />
+                              <Text size="small" color="surface.text.gray.muted">
+                                {vendor.phone}
+                              </Text>
+                            </Box>
                           </Box>
-                          <Box display="flex" gap="spacing.2">
-                            <PhoneIcon color="interactive.icon.gray.muted" />
-                            <Text size="small" color="surface.text.gray.muted">
-                              {vendor.phone}
-                            </Text>
-                          </Box>
-                        </Box>
-                      </RadioCard>
-                    </Box>
+                        </RadioCard>
+                      </CardBody>
+                    </Card>
                   ))}
                 </RadioGroup>
               </Box>
@@ -1258,9 +1275,12 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               >
                 <Box display="flex" alignItems="center" justifyContent="center" width="100%">
                   <Box padding="spacing.7" width="500px">
-                    <Heading size="medium">Link PO</Heading>
-                    <Text>Select a Purchase Order to link with this GRN.</Text>
-                    <Box flex={1}>
+                    <Box display="flex" flexDirection="column" gap="spacing.2">
+                      <Heading size="medium">Link PO</Heading>
+                      <Text>Select a Purchase Order to link with this GRN.</Text>
+                    </Box>
+
+                    <Box flex={1} gap="spacing.2" marginTop="spacing.2">
                       <RadioGroup
                         label="Purchase Orders"
                         name="purchaseOrder"
@@ -1275,54 +1295,53 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                         errorText={errors.purchaseOrder}
                       >
                         {GRNPurchaseOrders.map((po) => (
-                          <Box
+                          <Card
+                            as="label"
+                            accessibilityLabel={po.number}
+                            isSelected={selectedPO === po.id}
+                            marginBottom="spacing.2"
                             key={po.id}
-                            padding="spacing.4"
-                            borderWidth="thin"
-                            borderColor={
-                              selectedPO === po.id
-                                ? 'surface.border.primary.normal'
-                                : 'surface.border.gray.muted'
-                            }
-                            borderRadius="medium"
+                            elevation="none"
                           >
-                            <RadioCard value={po.id} label={po.number}>
-                              <Box display="flex" flexDirection="column" gap="spacing.2">
-                                <Box display="flex" gap="spacing.2" alignItems="center">
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    {po.vendor}
-                                  </Text>
-                                  <Badge
-                                    size="medium"
-                                    color={po.status === 'Approved' ? 'positive' : 'notice'}
-                                  >
-                                    {po.status || ''}
-                                  </Badge>
-                                </Box>
-                                <Box display="flex" gap="spacing.2">
-                                  <Box display="flex" gap="spacing.2">
-                                    <CalendarIcon color="interactive.icon.gray.muted" />
+                            <CardBody>
+                              <RadioCard value={po.id} label={po.number}>
+                                <Box display="flex" flexDirection="column" gap="spacing.2">
+                                  <Box display="flex" gap="spacing.2" alignItems="center">
                                     <Text size="small" color="surface.text.gray.muted">
-                                      {po.date}
+                                      {po.vendor}
+                                    </Text>
+                                    <Badge
+                                      size="medium"
+                                      color={po.status === 'Approved' ? 'positive' : 'notice'}
+                                    >
+                                      {po.status || ''}
+                                    </Badge>
+                                  </Box>
+                                  <Box display="flex" gap="spacing.2">
+                                    <Box display="flex" gap="spacing.2">
+                                      <CalendarIcon color="interactive.icon.gray.muted" />
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        {po.date}
+                                      </Text>
+                                    </Box>
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      •
+                                    </Text>
+
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      {po.items} Items
+                                    </Text>
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      •
+                                    </Text>
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      ₹ {po.amount.toLocaleString()}
                                     </Text>
                                   </Box>
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    •
-                                  </Text>
-
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    {po.items} Items
-                                  </Text>
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    •
-                                  </Text>
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    ₹ {po.amount.toLocaleString()}
-                                  </Text>
                                 </Box>
-                              </Box>
-                            </RadioCard>
-                          </Box>
+                              </RadioCard>
+                            </CardBody>
+                          </Card>
                         ))}
                       </RadioGroup>
                     </Box>
@@ -1452,20 +1471,25 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   isDisabled
                   helpText="Auto-generated GRN number"
                 />
-                <TextInput
+                <DatePicker
                   label="Date"
                   name="date"
-                  value={grnDetails.date}
-                  onChange={({ value }) => {
-                    setGrnDetails((prev) => ({ ...prev, date: value ?? '' }));
+                  value={grnDetails.date ? dayjs(grnDetails.date).toDate() : undefined}
+                  onApply={(value) => {
+                    setGrnDetails((prev) => ({
+                      ...prev,
+                      date: value ? dayjs(value).format('YYYY-MM-DD') : '',
+                    }));
                     if (errors.date) {
                       setErrors((prev) => ({ ...prev, date: undefined }));
                     }
                   }}
-                  placeholder="YYYY-MM-DD"
                   validationState={errors.date ? 'error' : 'none'}
                   errorText={errors.date}
-                  helpText="Enter date in YYYY-MM-DD format"
+                  helpText="Select the GRN date"
+                  isRequired
+                  necessityIndicator="required"
+                  minDate={new Date()} // Prevents selecting past dates
                 />
                 <TextArea
                   label="Notes"
