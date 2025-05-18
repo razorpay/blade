@@ -933,7 +933,39 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const lastStep = visibleSteps[visibleSteps.length - 1].stepNumber;
   const currentStepObj = visibleSteps.find((s) => s.stepNumber === currentStep);
 
-  // Extract review content as a function for reuse
+  const deskTopFooter = ({ isLastStep }: { isLastStep?: boolean }): React.ReactElement => {
+    return (
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        marginTop="spacing.4"
+        padding="spacing.4"
+        borderTopColor="surface.border.gray.muted"
+      >
+        <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+          Save and Close
+        </Button>
+        <Box display="flex" gap="spacing.4">
+          <Button variant="tertiary" onClick={handlePreviousStep}>
+            Previous
+          </Button>
+          <Button
+            variant="primary"
+            onClick={
+              isLastStep
+                ? () => {
+                    setIsOpen(false);
+                  }
+                : handleNextStep
+            }
+          >
+            {isLastStep ? 'Submit' : 'Next'}
+          </Button>
+        </Box>
+      </Box>
+    );
+  };
+
   const renderReviewContent = (): React.ReactElement => (
     <Box
       display="flex"
@@ -1122,33 +1154,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
           </Preview>
         </Box>
       </Box>
-      {!isMobile && (
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          marginTop="spacing.4"
-          padding="spacing.4"
-          borderTopColor="surface.border.gray.muted"
-        >
-          <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-            Save and Close
-          </Button>
-          <Box display="flex" gap="spacing.4">
-            <Button variant="tertiary" onClick={handlePreviousStep}>
-              Previous
-            </Button>
-            <Button
-              variant="primary"
-              onClick={() => {
-                // close modal
-                setIsOpen(false);
-              }}
-            >
-              Submit GRN
-            </Button>
-          </Box>
-        </Box>
-      )}
+      {!isMobile && deskTopFooter({ isLastStep: true })}
     </Box>
   );
 
@@ -1234,31 +1240,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 </RadioGroup>
               </Box>
             </Box>
-            {!isMobile && (
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                marginTop="spacing.4"
-                padding="spacing.4"
-                borderTopColor="surface.border.gray.muted"
-              >
-                <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-                  Save and Close
-                </Button>
-                <Box display="flex" gap="spacing.4">
-                  <Button
-                    variant="tertiary"
-                    onClick={handlePreviousStep}
-                    isDisabled={currentStep === 1}
-                  >
-                    Previous
-                  </Button>
-                  <Button variant="primary" onClick={handleNextStep}>
-                    Next
-                  </Button>
-                </Box>
-              </Box>
-            )}
+            {!isMobile && deskTopFooter({})}
           </Box>
         );
       case 2:
@@ -1347,28 +1329,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                     </Box>
                   </Box>
                 </Box>
-                {!isMobile && (
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    marginTop="spacing.4"
-                    padding="spacing.4"
-                    borderTopColor="surface.border.gray.muted"
-                  >
-                    <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-                      Save and Close
-                    </Button>
-
-                    <Box display="flex" gap="spacing.4">
-                      <Button variant="tertiary" onClick={handlePreviousStep}>
-                        Previous
-                      </Button>
-                      <Button variant="primary" onClick={handleNextStep}>
-                        Next
-                      </Button>
-                    </Box>
-                  </Box>
-                )}
+                {!isMobile && deskTopFooter({})}
               </Box>
               {!isMobile && (
                 <Box flex={4}>
@@ -1503,27 +1464,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 />
               </Box>
             </Box>
-            {!isMobile && (
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                marginTop="spacing.4"
-                padding="spacing.4"
-                borderTopColor="surface.border.gray.muted"
-              >
-                <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-                  Save and Close
-                </Button>
-                <Box display="flex" gap="spacing.4">
-                  <Button variant="tertiary" onClick={handlePreviousStep}>
-                    Previous
-                  </Button>
-                  <Button variant="primary" onClick={handleNextStep}>
-                    Next
-                  </Button>
-                </Box>
-              </Box>
-            )}
+            {!isMobile && deskTopFooter({})}
           </Box>
         );
       case 4:
@@ -1581,27 +1522,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 )}
               </Table>
             </Box>
-            {!isMobile && (
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                marginTop="spacing.4"
-                padding="spacing.4"
-                borderTopColor="surface.border.gray.muted"
-              >
-                <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
-                  Save and Close
-                </Button>
-                <Box display="flex" gap="spacing.4">
-                  <Button variant="tertiary" onClick={handlePreviousStep}>
-                    Previous
-                  </Button>
-                  <Button variant="primary" onClick={handleNextStep}>
-                    Next
-                  </Button>
-                </Box>
-              </Box>
-            )}
+            {!isMobile && deskTopFooter({})}
           </Box>
         );
       case 5:
