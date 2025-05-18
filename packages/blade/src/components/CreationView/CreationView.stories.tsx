@@ -1652,32 +1652,42 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             zIndex={1000}
           >
             {/* Header with current step name */}
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              padding="spacing.4"
-              backgroundColor="surface.background.gray.subtle"
-              borderBottomWidth="thin"
-              borderBottomColor="surface.border.gray.muted"
-              position="relative"
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => {
+                setShowStepGroup((prev: boolean) => !prev);
+              }}
+              // eslint-disable-next-line @typescript-eslint/no-empty-function
+              onKeyDown={() => {}}
             >
-              <Box display="flex" alignItems="center" gap="spacing.4">
-                <Badge>
-                  {' '}
-                  {currentStep} / {lastStep}{' '}
-                </Badge>
-                <Heading size="small">{currentStepObj?.title}</Heading>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                padding="spacing.4"
+                backgroundColor="surface.background.gray.subtle"
+                borderBottomWidth="thin"
+                borderBottomColor="surface.border.gray.muted"
+                position="relative"
+              >
+                <Box display="flex" alignItems="center" gap="spacing.4">
+                  <Badge>
+                    {' '}
+                    {currentStep} / {lastStep}{' '}
+                  </Badge>
+                  <Heading size="small">{currentStepObj?.title}</Heading>
 
-                <IconButton
-                  icon={showStepGroup ? ChevronUpIcon : ChevronDownIcon}
-                  accessibilityLabel="Open steps"
-                  onClick={() => {
-                    setShowStepGroup((prev: boolean) => !prev);
-                  }}
-                />
+                  <IconButton
+                    icon={showStepGroup ? ChevronUpIcon : ChevronDownIcon}
+                    accessibilityLabel="Open steps"
+                    onClick={() => {
+                      setShowStepGroup((prev: boolean) => !prev);
+                    }}
+                  />
+                </Box>
               </Box>
-            </Box>
+            </div>
             <ProgressBar
               value={(currentStep / lastStep) * 100}
               showPercentage={false}
@@ -1685,13 +1695,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             />
             {showStepGroup && (
               <Box>
-                <Slide
-                  direction="top"
-                  delay="xquick"
-                  isVisible
-                  motionTriggers={['mount']}
-                  type="inout"
-                >
+                <Slide direction="top" motionTriggers={['in-view']} type="inout">
                   <Box
                     position="fixed"
                     top="51px"
@@ -1711,8 +1715,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   onClick={() => {
                     setShowStepGroup((prev: boolean) => !prev);
                   }}
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
-                  onKeyDown={() => {}}
                 />
               </Box>
             )}
