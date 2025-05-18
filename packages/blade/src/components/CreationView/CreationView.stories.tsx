@@ -19,6 +19,7 @@ import {
   LockIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  InfoIcon,
 } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import {
@@ -817,12 +818,18 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     description: string;
   } | null>(null);
 
+  const onStepGroupChange = (): void => {
+    setAlert(null);
+    setErrors({});
+  };
+
   const handleStepClick = (stepNumber: number): void => {
     // Allow clicking on any previous step or the current step
     if (stepNumber <= currentStep) {
       setCurrentStep(stepNumber);
     }
     setShowStepGroup(false);
+    onStepGroupChange();
   };
 
   const validateStep = (step: number): boolean => {
@@ -884,10 +891,14 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const handlePreviousStep = (): void => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+      onStepGroupChange();
     }
   };
 
   const getStepIcon = (stepNumber: number): React.ReactElement => {
+    if (alert?.type === 'negative' && stepNumber === currentStep) {
+      return <StepItemIcon icon={InfoIcon} color="negative" />;
+    }
     if (completedSteps.includes(stepNumber)) {
       return <StepItemIcon icon={CheckIcon} color="positive" />;
     }
@@ -1610,8 +1621,13 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             key={step.stepNumber}
             title={step.title}
             description={step.description}
+            titleColor={
+              alert?.type === 'negative' && step.stepNumber === currentStep
+                ? 'feedback.text.negative.intense'
+                : undefined
+            }
             marker={getStepIcon(step.stepNumber)}
-            isSelected={currentStep === step.stepNumber}
+            isSelected={alert?.type === 'negative' ? false : currentStep === step.stepNumber}
             isDisabled={step.stepNumber > currentStep}
             onClick={() => handleStepClick(step.stepNumber)}
             stepProgress={
@@ -1671,7 +1687,10 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 position="relative"
               >
                 <Box display="flex" alignItems="center" gap="spacing.4">
-                  <Badge>
+                  {alert?.type === 'negative' && (
+                    <InfoIcon color="feedback.icon.negative.intense" />
+                  )}
+                  <Badge color={alert?.type === 'negative' ? 'negative' : undefined}>
                     {' '}
                     {currentStep} / {lastStep}{' '}
                   </Badge>
@@ -1691,6 +1710,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               value={(currentStep / lastStep) * 100}
               showPercentage={false}
               size="medium"
+              color={alert?.type === 'negative' ? 'negative' : undefined}
             />
             {showStepGroup && (
               <Box>
