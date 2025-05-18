@@ -52,6 +52,8 @@ import { Divider } from '~components/Divider';
 import { TextArea } from '~components/Input/TextArea';
 import { Card, CardBody } from '~components/Card';
 import { DatePicker } from '~components/DatePicker';
+import styled from 'styled-components';
+import { Fade } from '~components/Fade';
 
 // Initialize dayjs plugins
 dayjs.extend(customParseFormat);
@@ -820,6 +822,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     if (stepNumber <= currentStep) {
       setCurrentStep(stepNumber);
     }
+    setShowStepGroup(false);
   };
 
   const validateStep = (step: number): boolean => {
@@ -1625,6 +1628,13 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     );
   };
 
+  const BackdropContainer = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1004;
+  `;
   return (
     <Box>
       <Button onClick={() => setIsOpen(!isOpen)}>Create GNR Details</Button>
@@ -1674,36 +1684,31 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               size="medium"
             />
             {showStepGroup && (
-              <Box>
-                <Box
-                  position="fixed"
-                  top="spacing.10"
-                  left="spacing.0"
-                  backgroundColor="surface.background.gray.intense"
-                  zIndex={1005}
-                  width="100%"
-                  height="40%"
-                  borderBottomLeftRadius="2xlarge"
-                  borderBottomRightRadius="2xlarge"
-                  padding="spacing.7"
-                >
-                  {renderStepGroup()}
+              <Fade type="inout">
+                <Box>
+                  <Box
+                    position="fixed"
+                    top="spacing.10"
+                    left="spacing.0"
+                    backgroundColor="surface.background.gray.intense"
+                    zIndex={1005}
+                    width="100%"
+                    height="40%"
+                    borderBottomLeftRadius="2xlarge"
+                    borderBottomRightRadius="2xlarge"
+                    padding="spacing.7"
+                  >
+                    {renderStepGroup()}
+                  </Box>
+                  <BackdropContainer
+                    onClick={() => {
+                      setShowStepGroup((prev: boolean) => !prev);
+                    }}
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    onKeyDown={() => {}}
+                  />
                 </Box>
-                <div
-                  style={{
-                    position: 'fixed',
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: 'rgba(0,0,0,0.6)',
-                    zIndex: 1004,
-                  }}
-                  onClick={() => {
-                    setShowStepGroup((prev: boolean) => !prev);
-                  }}
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
-                  onKeyDown={() => {}}
-                />
-              </Box>
+              </Fade>
             )}
 
             {/* Step content */}
