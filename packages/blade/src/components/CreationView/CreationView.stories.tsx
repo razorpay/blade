@@ -809,7 +809,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     date: '',
     notes: '',
   });
-  console.log('setGrnDetails', setGrnDetails);
   const [alert, setAlert] = React.useState<{
     type: 'positive' | 'negative';
     title: string;
