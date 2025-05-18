@@ -792,7 +792,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
   const isMobile = useIsMobile();
-  const [currentStep, setCurrentStep] = React.useState(1);
+  const [currentStep, setCurrentStep] = React.useState(5);
   const [showStepGroup, setShowStepGroup] = React.useState(false);
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
   const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
@@ -1002,7 +1002,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 flexDirection="column"
                 gap="spacing.6"
                 backgroundColor="surface.background.gray.intense"
-                alignItems="center"
               >
                 {/* GRN Details Section */}
                 <Box

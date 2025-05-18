@@ -331,6 +331,7 @@ const Preview = ({
           onPanningStop={() => setIsDragging(false)}
           panning={{ velocityDisabled: true }}
           limitToBounds={false}
+          centerOnInit={true}
         >
           {() => (
             <BaseBox width="100%" height="100%" position="relative" overflow="visible">
