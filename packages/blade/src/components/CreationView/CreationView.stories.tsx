@@ -1147,6 +1147,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                               <TableFooterCell>
                                 ₹
                                 {tableData
+                                  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
                                   .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
                                   .toLocaleString()}
                               </TableFooterCell>
@@ -1525,6 +1526,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                         <TableFooterCell>
                           ₹
                           {tableData
+                            // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
                             .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
                             .toLocaleString()}
                         </TableFooterCell>
