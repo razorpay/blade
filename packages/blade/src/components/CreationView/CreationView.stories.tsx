@@ -795,6 +795,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
   const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
+  const [isDatePickerOpen, setIsDatePickerOpen] = React.useState<boolean>(false);
   const [errors, setErrors] = React.useState<{
     vendor?: string;
     purchaseOrder?: string;
@@ -1445,6 +1446,9 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                       setErrors((prev) => ({ ...prev, date: undefined }));
                     }
                   }}
+                  onOpenChange={() => {
+                    setIsDatePickerOpen((prev) => !prev);
+                  }}
                   validationState={errors.date ? 'error' : 'none'}
                   errorText={errors.date}
                   helpText="Select the GRN date"
@@ -1701,8 +1705,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             <Box flex={1} overflow="auto" padding="spacing.4">
               {renderStepContent(isMobile)}
             </Box>
-            {/* Navigation buttons always at bottom */}
-            {renderFooter()}
+            {!isDatePickerOpen && !isPreviewOpen && renderFooter()}
             {/* Preview BottomSheet for mobile */}
             {isPreviewOpen && isMobile && (
               <BottomSheet
