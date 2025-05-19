@@ -21,7 +21,7 @@ export const PreviewWindow = (): JSX.Element => {
 };
 
 export default {
-  title: 'Components/KitchenSink/PreviewWindow',
+  title: 'Components/KitchenSink/Preview',
   component: PreviewWindow,
   parameters: {
     // enable Chromatic's snapshots only for kitchen sink
