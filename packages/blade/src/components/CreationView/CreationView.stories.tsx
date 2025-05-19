@@ -1720,10 +1720,11 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                     backgroundColor="surface.background.gray.intense"
                     zIndex={1005}
                     width="100%"
-                    height="40%"
+                    height="320px"
                     borderBottomLeftRadius="2xlarge"
                     borderBottomRightRadius="2xlarge"
                     padding="spacing.7"
+                    paddingTop="spacing.0"
                   >
                     {renderStepGroup()}
                   </Box>
