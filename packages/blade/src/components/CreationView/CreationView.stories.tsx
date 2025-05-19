@@ -1036,7 +1036,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   <Box
                     marginTop="spacing.3"
                     padding="spacing.4"
-                    backgroundColor="surface.background.gray.moderate"
+                    backgroundColor="surface.background.gray.intense"
                     borderRadius="medium"
                   >
                     {selectedVendor && (
@@ -1651,7 +1651,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: ${({ theme }) => theme.colors.overlay.background.subtle};
     z-index: 1004;
   `;
   return (
@@ -1729,7 +1729,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                     backgroundColor="surface.background.gray.intense"
                     zIndex={1005}
                     width="100%"
-                    height="320px"
+                    height="330px"
                     borderBottomLeftRadius="2xlarge"
                     borderBottomRightRadius="2xlarge"
                     padding="spacing.7"
