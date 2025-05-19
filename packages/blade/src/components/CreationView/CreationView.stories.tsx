@@ -1611,7 +1611,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 : handleNextStep
             }
           >
-            {currentStep === lastStep ? 'Submit GRN' : 'Next'}
+            {currentStep === lastStep ? 'Submit' : 'Next'}
           </Button>
         </Box>
       </Box>
@@ -1746,7 +1746,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 />
               </Box>
             )}
-
 
             {/* Step content */}
             <Box
