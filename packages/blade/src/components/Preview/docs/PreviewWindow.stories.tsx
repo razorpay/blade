@@ -303,9 +303,18 @@ const PDFRenderer: StoryFn<typeof Preview> = () => {
         </Document>
       </PreviewBody>
       <PreviewFooter
-        showZoomPercentage={true}
+        // showZoomPercentage={true}
         trailing={
-          <Box display="flex" alignItems="center" gap="spacing.4">
+          <Box
+            display="flex"
+            alignItems="center"
+            gap="spacing.4"
+            borderColor="surface.border.gray.muted"
+            borderWidth="thin"
+            padding="spacing.2"
+            backgroundColor="surface.background.gray.intense"
+            borderRadius="medium"
+          >
             <Button
               icon={ArrowLeftIcon}
               onClick={() => setCurrentPage(currentPage - 1)}
