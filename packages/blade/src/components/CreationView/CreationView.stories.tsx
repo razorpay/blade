@@ -1568,9 +1568,10 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
         backgroundColor="surface.background.gray.subtle"
         borderTopWidth="thin"
         borderTopColor="surface.border.gray.muted"
-        position="sticky"
+        position="fixed"
         bottom="spacing.0"
         zIndex={1001}
+        width="100%"
       >
         {isMobile && alert && (
           <Alert
@@ -1746,8 +1747,14 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               </Box>
             )}
 
+
             {/* Step content */}
-            <Box flex={1} overflow="auto" padding="spacing.4">
+            <Box
+              overflow="auto"
+              height="calc(100vh - 100px)"
+              padding="spacing.4"
+              paddingBottom="spacing.8"
+            >
               {renderStepContent(isMobile)}
             </Box>
             {!isDatePickerOpen && !isPreviewOpen && renderFooter()}
