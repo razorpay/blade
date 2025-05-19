@@ -1,5 +1,6 @@
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { getPackageJSONVersion } from '../utils.js';
+import { sendAnalytics } from '../sendAnalytics.js';
 
 const hiBladeMessage = `
 👋 Welcome to Blade AI MCP v${getPackageJSONVersion()} — your assistant for Razorpay's Blade Design System!
@@ -13,12 +14,20 @@ Here's what I can help you with:
 Happy vibe coding! 💙
   `;
 
-const hiBladeDescription =
+const hiBladeToolName = 'hi_blade';
+
+const hiBladeToolDescription =
   'Call this when the user says "hi blade", "hey blade" or "namaste blade" in any language. Tool that returns how to use blade mcp';
 
-const hiBladeSchema = {};
+const hiBladeToolSchema = {};
 
-const hiBladeCallback: ToolCallback<typeof hiBladeSchema> = () => {
+const hiBladeToolCallback: ToolCallback<typeof hiBladeToolSchema> = async () => {
+  await sendAnalytics({
+    eventName: 'Blade MCP Tool Called',
+    properties: {
+      toolName: hiBladeToolName,
+    },
+  });
   return {
     content: [
       {
@@ -29,4 +38,4 @@ const hiBladeCallback: ToolCallback<typeof hiBladeSchema> = () => {
   };
 };
 
-export { hiBladeCallback, hiBladeSchema, hiBladeDescription };
+export { hiBladeToolName, hiBladeToolDescription, hiBladeToolSchema, hiBladeToolCallback };

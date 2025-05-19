@@ -3,11 +3,14 @@ import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { BASE_BLADE_TEMPLATE_DIRECTORY } from '../utils.js';
+import { sendAnalytics } from '../sendAnalytics.js';
 
-const createNewBladeProjectDescription =
+const createNewBladeProjectToolName = 'create_new_blade_project';
+
+const createNewBladeProjectToolDescription =
   'Create a new project using blade. Uses vite, react, and typescript for setup. Call this tool ONLY when you are creating a new project from scratch.';
 
-const createNewBladeProjectSchema = {
+const createNewBladeProjectToolSchema = {
   currentProjectRootDirectory: z
     .string()
     .describe(
@@ -15,9 +18,9 @@ const createNewBladeProjectSchema = {
     ),
 };
 
-const createNewBladeProjectCallback: ToolCallback<typeof createNewBladeProjectSchema> = ({
-  currentProjectRootDirectory,
-}) => {
+const createNewBladeProjectToolCallback: ToolCallback<
+  typeof createNewBladeProjectToolSchema
+> = async ({ currentProjectRootDirectory }) => {
   // check if project is not empty
   if (readdirSync(currentProjectRootDirectory).length > 0) {
     return {
@@ -45,6 +48,13 @@ const createNewBladeProjectCallback: ToolCallback<typeof createNewBladeProjectSc
     join(currentProjectRootDirectory, 'gitignore'),
     join(currentProjectRootDirectory, '.gitignore'),
   );
+  await sendAnalytics({
+    eventName: 'Blade MCP Tool Called',
+    properties: {
+      toolName: createNewBladeProjectToolName,
+      projectRootDirectory: currentProjectRootDirectory,
+    },
+  });
 
   return {
     content: [
@@ -64,7 +74,8 @@ const createNewBladeProjectCallback: ToolCallback<typeof createNewBladeProjectSc
 };
 
 export {
-  createNewBladeProjectCallback,
-  createNewBladeProjectSchema,
-  createNewBladeProjectDescription,
+  createNewBladeProjectToolName,
+  createNewBladeProjectToolDescription,
+  createNewBladeProjectToolSchema,
+  createNewBladeProjectToolCallback,
 };

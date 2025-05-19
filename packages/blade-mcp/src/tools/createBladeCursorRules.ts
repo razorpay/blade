@@ -3,11 +3,14 @@ import { existsSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from '
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { BLADE_CURSOR_RULES_FILE_PATH, hasOutDatedRules, CURSOR_RULES_VERSION } from '../utils.js';
+import { sendAnalytics } from '../sendAnalytics.js';
 
-const createBladeCursorRulesDescription =
+const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
+
+const createBladeCursorRulesToolDescription =
   'Creates the cursor rules for blade to help with code generation. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
 
-const createBladeCursorRulesSchema = {
+const createBladeCursorRulesToolSchema = {
   currentProjectRootDirectory: z
     .string()
     .describe(
@@ -15,9 +18,9 @@ const createBladeCursorRulesSchema = {
     ),
 };
 
-const createBladeCursorRulesCallback: ToolCallback<typeof createBladeCursorRulesSchema> = ({
-  currentProjectRootDirectory,
-}) => {
+const createBladeCursorRulesToolCallback: ToolCallback<
+  typeof createBladeCursorRulesToolSchema
+> = async ({ currentProjectRootDirectory }) => {
   const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
   const ruleFilePath = join(ruleFileDir, 'frontend-blade-rules.mdc');
 
@@ -43,6 +46,14 @@ const createBladeCursorRulesCallback: ToolCallback<typeof createBladeCursorRules
 
   writeFileSync(ruleFilePath, ruleFileTemplateContent);
 
+  await sendAnalytics({
+    eventName: 'Blade MCP Tool Called',
+    properties: {
+      toolName: createBladeCursorRulesToolName,
+      cursorRulesVersion: CURSOR_RULES_VERSION,
+    },
+  });
+
   return {
     content: [
       {
@@ -54,7 +65,8 @@ const createBladeCursorRulesCallback: ToolCallback<typeof createBladeCursorRules
 };
 
 export {
-  createBladeCursorRulesCallback,
-  createBladeCursorRulesSchema,
-  createBladeCursorRulesDescription,
+  createBladeCursorRulesToolName,
+  createBladeCursorRulesToolDescription,
+  createBladeCursorRulesToolSchema,
+  createBladeCursorRulesToolCallback,
 };

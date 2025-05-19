@@ -3,12 +3,15 @@ import { existsSync, readFileSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { KNOWLEDGEBASE_DIRECTORY, hasOutDatedRules, getBladeComponentsList } from '../utils.js';
+import { sendAnalytics } from '../sendAnalytics.js';
 
 const bladeComponentsList = getBladeComponentsList();
 
-const getBladeComponentDocsDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
+const getBladeComponentDocsToolName = 'get_blade_component_docs';
 
-const getBladeComponentDocsSchema = {
+const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
+
+const getBladeComponentDocsToolSchema = {
   componentsList: z
     .string()
     .describe(
@@ -23,10 +26,9 @@ const getBladeComponentDocsSchema = {
     ),
 };
 
-const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSchema> = ({
-  componentsList,
-  currentProjectRootDirectory,
-}) => {
+const getBladeComponentDocsToolCallback: ToolCallback<
+  typeof getBladeComponentDocsToolSchema
+> = async ({ componentsList, currentProjectRootDirectory }) => {
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
   if (invalidComponents.length > 0) {
@@ -94,6 +96,13 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
     }
 
     // Return the formatted response
+    await sendAnalytics({
+      eventName: 'Blade MCP Tool Called',
+      properties: {
+        toolName: getBladeComponentDocsToolName,
+        componentsList,
+      },
+    });
     return {
       content: [
         {
@@ -103,6 +112,14 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
       ],
     };
   } catch (error: unknown) {
+    await sendAnalytics({
+      eventName: 'Blade MCP Tool Called',
+      properties: {
+        toolName: getBladeComponentDocsToolName,
+        componentsList,
+        error: `Error retrieving documentation for components: ${componentsList}`,
+      },
+    });
     console.error('Error processing component documentation request:', error);
     return {
       content: [
@@ -118,7 +135,8 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
 };
 
 export {
-  getBladeComponentDocsCallback,
-  getBladeComponentDocsSchema,
-  getBladeComponentDocsDescription,
+  getBladeComponentDocsToolName,
+  getBladeComponentDocsToolDescription,
+  getBladeComponentDocsToolSchema,
+  getBladeComponentDocsToolCallback,
 };
