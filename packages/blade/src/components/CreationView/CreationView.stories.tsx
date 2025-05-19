@@ -55,6 +55,11 @@ import { TextArea } from '~components/Input/TextArea';
 import { Card, CardBody } from '~components/Card';
 import { DatePicker } from '~components/DatePicker';
 import { Slide } from '~components/Slide';
+import { m } from 'framer-motion';
+import { castWebType } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+import { msToSeconds } from '~utils/msToSeconds';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 
 // Initialize dayjs plugins
 dayjs.extend(customParseFormat);
@@ -805,6 +810,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     grnDetails?: string;
     date?: string;
   }>({});
+  const { theme } = useTheme();
   const [grnDetails, setGrnDetails] = React.useState({
     grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
       .toString()
@@ -1673,6 +1679,9 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               }}
               // eslint-disable-next-line @typescript-eslint/no-empty-function
               onKeyDown={() => {}}
+              style={{
+                zIndex: 1006,
+              }}
             >
               <Box
                 display="flex"
@@ -1712,7 +1721,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             />
             {showStepGroup && (
               <Box>
-                <Slide direction="top" motionTriggers={['in-view']} type="inout">
+                <Slide direction="top" fromOffset="100%" motionTriggers={['mount']}>
                   <Box
                     position="fixed"
                     top="51px"
