@@ -948,6 +948,22 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
   const lastStep = visibleSteps[visibleSteps.length - 1].stepNumber;
   const currentStepObj = visibleSteps.find((s) => s.stepNumber === currentStep);
 
+  const resetState = (): void => {
+    setCurrentStep(1);
+    setSelectedVendor(null);
+    setSelectedPO(null);
+    setCompletedSteps([]);
+    setErrors({});
+    setAlert(null);
+    setGrnDetails({
+      grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
+        .toString()
+        .padStart(3, '0')}`,
+      date: '',
+      notes: '',
+    });
+  };
+
   const deskTopFooter = ({ isLastStep }: { isLastStep?: boolean }): React.ReactElement => {
     return (
       <Box
@@ -1551,23 +1567,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
         return null;
     }
   };
-
-  const resetState = (): void => {
-    setCurrentStep(1);
-    setSelectedVendor(null);
-    setSelectedPO(null);
-    setCompletedSteps([]);
-    setErrors({});
-    setAlert(null);
-    setGrnDetails({
-      grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
-        .toString()
-        .padStart(3, '0')}`,
-      date: '',
-      notes: '',
-    });
-  };
-
   const renderFooter = (): React.ReactElement => {
     const showPreview = isMobile && currentStep === lastStep;
     return (
