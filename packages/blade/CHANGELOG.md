@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.28.0
+
+### Minor Changes
+
+- b16eb895: feat(Amount): expose `fractionDigits` for control over decimals
+
 ## 12.27.0
 
 ### Minor Changes
