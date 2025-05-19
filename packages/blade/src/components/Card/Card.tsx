@@ -105,7 +105,6 @@ export type CardProps = {
    *
    * @default false
    */
-
   isSelected?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
