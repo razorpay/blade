@@ -9,6 +9,22 @@ export const COMPONENT_KEYS = {
     PRIMARY: '85eb0f59e41cfabf81fcc9149270313b50df9e3d',
   },
 
+  // Input variants
+  INPUT: {
+    TEXT: 'a3034b80e660a9f2b859242268cd1e552d38da8e',
+    PASSWORD: 'b4fa2360f93a68d84b79e9f91ffb692e2419ebc8',
+    SELECT: 'fe9d72085512864f93d0aa91fc047d4847c69da4',
+    TEXTAREA: 'e663d195b898ea151c4523a4fcab0e75a6370edb',
+    OTP: '2f569b9b314181609ad6ff55c3e4483b265bfac7',
+    PHONE_NUMBER: '796bcacabd69333f36c9f5455f8c31f78fcd174a',
+    SEARCH: '4ec3810d35860eb80910bb5aa5c3e33dac346422',
+  },
+
+  // Heading variants
+  HEADING: {
+    LARGE: 'b4e10834bf099e43b00349ab7dbf2a1a4c34ab13',
+  },
+
   // Table variants
   TABLE: {
     TABLE_HEADER: {

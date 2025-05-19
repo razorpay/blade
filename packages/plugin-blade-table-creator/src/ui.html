@@ -21,8 +21,15 @@
           <input type="number" id="table-columns" value="4" min="1" max="10" placeholder="Enter number of columns">
         </div>
         <div class="input-group">
-          <label for="table-rows">Number of Rows</label>
-          <input type="number" id="table-rows" value="4" min="1" max="50" placeholder="Enter number of rows">
+          <label for="rows">Number of Rows</label>
+          <input type="number" id="rows" min="1" max="100" value="4" />
+        </div>
+        <div class="input-group">
+          <label for="renderType">Render Type</label>
+          <select id="renderType">
+            <option value="row" selected>By Row</option>
+            <option value="column">By Column</option>
+          </select>
         </div>
       </div>
       <div class="density-section">
@@ -140,9 +147,17 @@
 
     document.getElementById('next').onclick = () => {
       columns = parseInt(document.getElementById('table-columns').value);
-      rows = parseInt(document.getElementById('table-rows').value);
+      rows = parseInt(document.getElementById('rows').value);
       headerDensity = document.getElementById('header-density').value;
       bodyDensity = document.getElementById('body-density').value;
+      const renderType = document.getElementById('renderType').value;
+
+      // Store values for later use
+      window.columns = columns;
+      window.rows = rows;
+      window.headerDensity = headerDensity;
+      window.bodyDensity = bodyDensity;
+      window.renderType = renderType;
 
       // Initialize column types and titles if not already set
       if (columnTypes.length === 0) {
@@ -172,15 +187,19 @@
     };
 
     document.getElementById('create').onclick = () => {
-      // Collect final column types and titles
-      for (let i = 0; i < columns; i++) {
-        const typeSelect = document.getElementById(`column-type-${i}`);
-        const titleInput = document.querySelector(`#column-type-${i}`).closest('tr').querySelector('.column-title-input input');
+      const columnTypes = [];
+      const columnTitles = [];
 
-        columnTypes[i] = typeSelect.value;
-        columnTitles[i] = titleInput.value;
-      }
+      // Get all column configurations
+      const columnRows = document.querySelectorAll('.column-type-row');
+      columnRows.forEach((row) => {
+        const typeSelect = row.querySelector('select');
+        const titleInput = row.querySelector('input[type="text"]');
+        columnTypes.push(typeSelect.value);
+        columnTitles.push(titleInput.value);
+      });
 
+      // Send message to plugin
       parent.postMessage({
         pluginMessage: {
           type: 'create-table',
@@ -188,11 +207,12 @@
           rows,
           headerDensity,
           bodyDensity,
+          renderType,
           columnTypes,
-          columnTitles
-        }
+          columnTitles,
+        },
       }, '*');
-    }
+    };
   </script>
 </body>
 
