@@ -55,11 +55,7 @@ import { TextArea } from '~components/Input/TextArea';
 import { Card, CardBody } from '~components/Card';
 import { DatePicker } from '~components/DatePicker';
 import { Slide } from '~components/Slide';
-import { m } from 'framer-motion';
-import { castWebType } from '~utils';
-import { useTheme } from '~components/BladeProvider';
-import { msToSeconds } from '~utils/msToSeconds';
-import { cssBezierToArray } from '~utils/cssBezierToArray';
+import type { ModalProps } from '~components/Modal';
 
 // Initialize dayjs plugins
 dayjs.extend(customParseFormat);
@@ -810,7 +806,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     grnDetails?: string;
     date?: string;
   }>({});
-  const { theme } = useTheme();
   const [grnDetails, setGrnDetails] = React.useState({
     grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
       .toString()
@@ -974,6 +969,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             onClick={
               isLastStep
                 ? () => {
+                    resetState();
                     setIsOpen(false);
                   }
                 : handleNextStep
@@ -1556,7 +1552,22 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     }
   };
 
-  // In the footer, show Preview button on mobile for last step
+  const resetState = (): void => {
+    setCurrentStep(1);
+    setSelectedVendor(null);
+    setSelectedPO(null);
+    setCompletedSteps([]);
+    setErrors({});
+    setAlert(null);
+    setGrnDetails({
+      grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
+        .toString()
+        .padStart(3, '0')}`,
+      date: '',
+      notes: '',
+    });
+  };
+
   const renderFooter = (): React.ReactElement => {
     const showPreview = isMobile && currentStep === lastStep;
     return (
@@ -1605,7 +1616,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
             onClick={
               currentStep === lastStep
                 ? () => {
-                    // close modal
+                    resetState();
                     setIsOpen(false);
                   }
                 : handleNextStep
