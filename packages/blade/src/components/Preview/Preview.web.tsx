@@ -281,7 +281,7 @@ const Preview = ({
   // Handle keyboard shortcut for fullscreen
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
-      if ((event.metaKey || event.ctrlKey) && event.key === 'f') {
+      if (event.key === 'f') {
         event.preventDefault();
         void handleFullScreen();
       }
