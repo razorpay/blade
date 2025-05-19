@@ -303,7 +303,6 @@ const PDFRenderer: StoryFn<typeof Preview> = () => {
         </Document>
       </PreviewBody>
       <PreviewFooter
-        // showZoomPercentage={true}
         trailing={
           <Box
             display="flex"
