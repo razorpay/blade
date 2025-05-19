@@ -130,8 +130,16 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       right="spacing.0"
       padding="spacing.5"
       zIndex={componentZIndices.previewPanel}
+      borderTopWidth="thin"
+      borderTopColor="surface.border.gray.muted"
     >
-      <BaseBox>
+      <BaseBox
+        padding="spacing.2"
+        backgroundColor="surface.background.gray.intense"
+        borderRadius="medium"
+        borderWidth="thin"
+        borderColor="surface.border.gray.muted"
+      >
         {showZoomPercentage ? (
           <BaseBox display="flex" alignItems="center" gap="spacing.2">
             <Button
@@ -157,11 +165,18 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
             />
           </BaseBox>
         ) : (
-          <ButtonGroup variant="tertiary">
-            <Button icon={ZoomInIcon} onClick={handleZoomIn} aria-label="Zoom in" />
-            <Button icon={ZoomOutIcon} onClick={handleZoomOut} aria-label="Zoom out" />
-            <Button icon={RefreshIcon} onClick={() => handleReset()} aria-label="Reset zoom" />
-          </ButtonGroup>
+          <BaseBox display="flex" alignItems="center" gap="spacing.2">
+            <ButtonGroup variant="tertiary">
+              <Button icon={ZoomInIcon} onClick={handleZoomIn} aria-label="Zoom in" />
+              <Button icon={ZoomOutIcon} onClick={handleZoomOut} aria-label="Zoom out" />
+            </ButtonGroup>
+            <Button
+              icon={RefreshIcon}
+              onClick={() => handleReset()}
+              aria-label="Reset zoom"
+              variant="tertiary"
+            />
+          </BaseBox>
         )}
       </BaseBox>
       {trailing}

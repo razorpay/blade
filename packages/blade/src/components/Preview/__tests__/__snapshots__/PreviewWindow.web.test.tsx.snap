@@ -312,9 +312,21 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   bottom: 0px;
   left: 0px;
   background-color: hsla(210,40%,98%,1);
+  border-top-width: 1px;
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-top-style: solid;
 }
 
 .c3.c3.c3.c3.c3 {
+  padding: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+}
+
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -326,7 +338,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   gap: 4px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -348,7 +360,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   z-index: 1;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -363,7 +375,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   justify-content: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   position: absolute;
   z-index: 1100;
   width: 100%;
@@ -372,7 +384,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   background-color: hsla(210,40%,98%,1);
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -390,7 +402,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   width: 100%;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -402,12 +414,12 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   gap: 8px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -424,7 +436,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
@@ -441,7 +453,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   min-height: 36px;
   height: 36px;
   width: 36px;
@@ -479,21 +491,21 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   position: relative;
 }
 
-.c4.c4.c4.c4.c4:hover {
+.c5.c5.c5.c5.c5:hover {
   background-color: hsla(211,20%,52%,0.18);
 }
 
-.c4.c4.c4.c4.c4:active {
+.c5.c5.c5.c5.c5:active {
   background-color: hsla(211,20%,52%,0.18);
 }
 
-.c4.c4.c4.c4.c4:focus-visible {
+.c5.c5.c5.c5.c5:focus-visible {
   background-color: hsla(211,20%,52%,0.18);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c4.c4.c4.c4.c4 * {
+.c5.c5.c5.c5.c5 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -502,7 +514,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -512,11 +524,11 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   transition-timing-function: 160px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   opacity: 1;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -526,7 +538,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   flex-grow: 1;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   width: 100%;
   height: 100%;
   cursor: -webkit-grab;
@@ -538,8 +550,8 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   transition: cursor 0.1s ease;
 }
 
-.c16.c16.c16.c16.c16 .zoom-wrapper,
-.c16.c16.c16.c16.c16 .zoom-content {
+.c17.c17.c17.c17.c17 .zoom-wrapper,
+.c17.c17.c17.c17.c17 .zoom-content {
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -566,31 +578,91 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c14.c14.c14.c14.c14 {
+  .c2.c2.c2.c2.c2 {
+    border-top-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c2.c2.c2.c2.c2 {
+    border-top-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c2.c2.c2.c2.c2 {
+    border-top-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c2.c2.c2.c2.c2 {
+    border-top-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c2.c2.c2.c2.c2 {
+    border-top-style: solid;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c3.c3.c3.c3.c3 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c3.c3.c3.c3.c3 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c3.c3.c3.c3.c3 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c3.c3.c3.c3.c3 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c3.c3.c3.c3.c3 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c15.c15.c15.c15.c15 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c14.c14.c14.c14.c14 {
+  .c15.c15.c15.c15.c15 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c14.c14.c14.c14.c14 {
+  .c15.c15.c15.c15.c15 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c14.c14.c14.c14.c14 {
+  .c15.c15.c15.c15.c15 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c14.c14.c14.c14.c14 {
+  .c15.c15.c15.c15.c15 {
     border-bottom-style: solid;
   }
 }
@@ -608,29 +680,29 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class=""
+          class="c3"
           data-blade-component="base-box"
         >
           <div
-            class="c3"
+            class="c4"
             data-blade-component="base-box"
           >
             <button
-              class="c4"
+              class="c5"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c5"
+                class=" c6"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c6 c7"
+                  class="c7 c8"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c9"
                     data-blade-component="base-box"
                   >
                     <svg
@@ -660,7 +732,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
               </div>
             </button>
             <p
-              class="c9"
+              class="c10"
               data-blade-component="text"
             >
                
@@ -668,21 +740,21 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
               %
             </p>
             <button
-              class="c4"
+              class="c5"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c5"
+                class=" c6"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c6 c7"
+                  class="c7 c8"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c9"
                     data-blade-component="base-box"
                   >
                     <svg
@@ -712,21 +784,21 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
               </div>
             </button>
             <button
-              class="c4"
+              class="c5"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c5"
+                class=" c6"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c6 c7"
+                  class="c7 c8"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c9"
                     data-blade-component="base-box"
                   >
                     <svg
@@ -757,40 +829,40 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
         </div>
       </div>
       <div
-        class="c10"
+        class="c11"
         data-blade-component="base-box"
       >
         <div
-          class="c11"
+          class="c12"
           data-blade-component="base-box"
         >
           <h5
-            class="c12"
+            class="c13"
             data-blade-component="heading"
           >
              
             Preview Window
           </h5>
           <div
-            class="c13"
+            class="c14"
             data-blade-component="base-box"
           >
             <button
-              class="c4"
+              class="c5"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c5"
+                class=" c6"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c6 c7"
+                  class="c7 c8"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c9"
                     data-blade-component="base-box"
                   >
                     <svg
@@ -817,13 +889,13 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
           </div>
         </div>
         <div
-          class="c14 c15"
+          class="c15 c16"
           data-blade-component="divider"
           role="separator"
         />
       </div>
       <div
-        class="c16"
+        class="c17"
       >
         <div
           class="react-transform-wrapper transform-component-module_wrapper__SPB86 zoom-wrapper"
@@ -837,7 +909,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
               data-blade-component="base-box"
             >
               <p
-                class="c9"
+                class="c10"
                 data-blade-component="text"
               >
                 This is a demo message

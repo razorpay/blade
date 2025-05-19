@@ -27,9 +27,9 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Preview"
-      componentDescription="A Preview  is a component that is used to preivew a file"
+      componentDescription="A Preview is a component that is used to preivew a file"
       apiDecisionLink={null}
-      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
+      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=105023-179625&m=dev"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
@@ -303,9 +303,17 @@ const PDFRenderer: StoryFn<typeof Preview> = () => {
         </Document>
       </PreviewBody>
       <PreviewFooter
-        showZoomPercentage={true}
         trailing={
-          <Box display="flex" alignItems="center" gap="spacing.4">
+          <Box
+            display="flex"
+            alignItems="center"
+            gap="spacing.4"
+            borderColor="surface.border.gray.muted"
+            borderWidth="thin"
+            padding="spacing.2"
+            backgroundColor="surface.background.gray.intense"
+            borderRadius="medium"
+          >
             <Button
               icon={ArrowLeftIcon}
               onClick={() => setCurrentPage(currentPage - 1)}
