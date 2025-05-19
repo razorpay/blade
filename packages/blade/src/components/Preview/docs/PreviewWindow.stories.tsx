@@ -29,7 +29,7 @@ const Page = (): React.ReactElement => {
       componentName="Preview"
       componentDescription="A Preview Window is a component that is used to preivew a file"
       apiDecisionLink={null}
-      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
+      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=105023-179625&m=dev"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
