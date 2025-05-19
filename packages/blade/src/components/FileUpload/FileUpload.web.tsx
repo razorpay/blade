@@ -75,10 +75,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     if (!isSizeVariable && (actionButtonText || dropAreaText)) {
       const propName =
         actionButtonText && dropAreaText
-          ? 'Action Button Text and Drop Area Text props'
+          ? 'actionButtonText and dropAreaText'
           : dropAreaText
-          ? 'Drop Area Text prop'
-          : 'Action Button Text prop';
+          ? 'dropAreaText'
+          : 'actionButtonText';
 
       throwBladeError({
         message: `${propName} can only be used when size is "variable"`,
@@ -87,8 +87,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     }
 
     if (!isSizeVariable && (height || width)) {
-      const propName =
-        height && width ? 'Height and Width props' : height ? 'Height prop' : 'Width prop';
+      const propName = height && width ? 'height and width' : height ? 'height' : 'width';
 
       throwBladeError({
         message: `${propName} can only be used when size is "variable"`,
