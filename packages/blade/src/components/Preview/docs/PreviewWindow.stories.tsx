@@ -27,7 +27,7 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Preview"
-      componentDescription="A Preview Window is a component that is used to preivew a file"
+      componentDescription="A Preview is a component that is used to preivew a file"
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=105023-179625&m=dev"
     >
