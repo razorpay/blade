@@ -168,7 +168,7 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
-  background-image: radial-gradient( circle,rgba(0,0,0,0.1) 1px,transparent 1px );
+  background-image: radial-gradient( circle, rgba(0,0,0,0.1) 1px, transparent 1px );
   background-size: 16px 16px;
   -webkit-transition: cursor 0.1s ease;
   transition: cursor 0.1s ease;
@@ -437,10 +437,10 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -544,7 +544,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
-  background-image: radial-gradient( circle,rgba(0,0,0,0.1) 1px,transparent 1px );
+  background-image: radial-gradient( circle, rgba(0,0,0,0.1) 1px, transparent 1px );
   background-size: 16px 16px;
   -webkit-transition: cursor 0.1s ease;
   transition: cursor 0.1s ease;
@@ -840,7 +840,6 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
             class="c13"
             data-blade-component="heading"
           >
-             
             Preview Window
           </h5>
           <div

@@ -73,7 +73,9 @@ const _PreviewHeader = ({
         height="100%"
         width="100%"
       >
-        <Heading size="medium"> {title}</Heading>
+        <Heading size="medium" weight="regular" color="surface.text.gray.subtle">
+          {title}
+        </Heading>
         <BaseBox display="flex" alignItems="center" gap="spacing.3">
           <Button
             icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
@@ -198,11 +200,14 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
     if (!isDragEnabled) return 'default';
     return isDragging ? 'grabbing' : 'grab';
   }};
-  background-image: radial-gradient(
+  background-image: ${({ isDragEnabled }) =>
+    isDragEnabled
+      ? `radial-gradient(
     circle,
     rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px,
     transparent ${dotSize}px
-  );
+  )`
+      : 'none'};
   background-size: ${dotSpacing}px ${dotSpacing}px;
   .zoom-wrapper,
   .zoom-content {
@@ -281,7 +286,7 @@ const Preview = ({
   // Handle keyboard shortcut for fullscreen
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
-      if ((event.metaKey || event.ctrlKey) && event.key === 'f') {
+      if (event.key === 'f') {
         event.preventDefault();
         void handleFullScreen();
       }
