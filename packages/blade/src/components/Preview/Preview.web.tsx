@@ -73,7 +73,9 @@ const _PreviewHeader = ({
         height="100%"
         width="100%"
       >
-        <Heading size="medium"> {title}</Heading>
+        <Heading size="medium" weight="regular" color="surface.text.gray.subtle">
+          {title}
+        </Heading>
         <BaseBox display="flex" alignItems="center" gap="spacing.3">
           <Button
             icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
