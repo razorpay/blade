@@ -1,6 +1,5 @@
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { getPackageJSONVersion } from '../utils.js';
-import { sendAnalytics } from '../sendAnalytics.js';
+import { getPackageJSONVersion, sendAnalytics } from '../utils.js';
 
 const hiBladeMessage = `
 👋 Welcome to Blade AI MCP v${getPackageJSONVersion()} — your assistant for Razorpay's Blade Design System!
@@ -32,7 +31,7 @@ const hiBladeToolCallback: ToolCallback<typeof hiBladeToolSchema> = async () => 
     content: [
       {
         type: 'text',
-        text: `Print this message as is (translate to language of prompt if needed): ${hiBladeMessage}`,
+        text: hiBladeMessage,
       },
     ],
   };

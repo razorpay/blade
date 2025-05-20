@@ -10,8 +10,8 @@ const __dirname = path.dirname(__filename);
 
 // Define the path to the server.js file
 const SERVER_JS_PATH = path.resolve(__dirname, '../dist/server.js');
-// Define the path to the sendAnalytics.js file
-const SEND_ANALYTICS_JS_PATH = path.resolve(__dirname, '../dist/sendAnalytics.js');
+// Define the path to the utils.js file
+const UTILS_JS_PATH = path.resolve(__dirname, '../dist/utils.js');
 
 // Load env variables from .env file (if exists) or use process.env
 dotenv.config();
@@ -39,7 +39,7 @@ async function replaceEnvironmentVariables() {
     // Replace BLADE_SEGMENT_KEY
     const BLADE_SEGMENT_KEY = process.env.BLADE_SEGMENT_KEY || '';
     await replaceInFile({
-      files: SEND_ANALYTICS_JS_PATH,
+      files: UTILS_JS_PATH,
       from: /process\.env\.BLADE_SEGMENT_KEY/g,
       to: `'${BLADE_SEGMENT_KEY}'`,
     });

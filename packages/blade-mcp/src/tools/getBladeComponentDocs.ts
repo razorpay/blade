@@ -2,8 +2,13 @@ import { resolve, join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { KNOWLEDGEBASE_DIRECTORY, hasOutDatedRules, getBladeComponentsList } from '../utils.js';
-import { sendAnalytics } from '../sendAnalytics.js';
+import {
+  KNOWLEDGEBASE_DIRECTORY,
+  hasOutDatedRules,
+  getBladeComponentsList,
+  handleError,
+  sendAnalytics,
+} from '../utils.js';
 
 const bladeComponentsList = getBladeComponentsList();
 
@@ -32,46 +37,30 @@ const getBladeComponentDocsToolCallback: ToolCallback<
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
   if (invalidComponents.length > 0) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
-            ', ',
-          )}. Valid component docs values: ${bladeComponentsList.join(
-            ', ',
-          )}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      customErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
+        ', ',
+      )}. Valid component docs values: ${bladeComponentsList.join(
+        ', ',
+      )}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
+    });
   }
 
   const ruleFilePath = join(currentProjectRootDirectory, '.cursor/rules/frontend-blade-rules.mdc');
 
   if (!existsSync(ruleFilePath)) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      customErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
+    });
   }
 
   if (hasOutDatedRules(ruleFilePath)) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text:
-            'Cursor rules are outdated. Call create_blade_cursor_rules first to update cursor rules',
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      customErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
+    });
   }
 
   try {
@@ -90,7 +79,6 @@ const getBladeComponentDocsToolCallback: ToolCallback<
         const content = readFileSync(filePath, 'utf8');
         responseText += `${content}\n\n`;
       } catch (error: unknown) {
-        console.error(`Error reading markdown for component ${componentName}:`, error);
         responseText += `⚠️ Error: Could not read documentation for ${componentName}. The component may not exist or there may be an issue with the file.\n\n`;
       }
     }
@@ -112,25 +100,10 @@ const getBladeComponentDocsToolCallback: ToolCallback<
       ],
     };
   } catch (error: unknown) {
-    await sendAnalytics({
-      eventName: 'Blade MCP Tool Called',
-      properties: {
-        toolName: getBladeComponentDocsToolName,
-        componentsList,
-        error: `Error retrieving documentation for components: ${componentsList}`,
-      },
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      error,
     });
-    console.error('Error processing component documentation request:', error);
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Error retrieving documentation for components: ${componentsList}. ${
-            error instanceof Error ? error.message : 'Unknown error occurred.'
-          }`,
-        },
-      ],
-    };
   }
 };
 
