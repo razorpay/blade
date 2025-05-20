@@ -283,21 +283,6 @@ const Preview = ({
     }
   }, [onFullScreenProp]);
 
-  // Handle keyboard shortcut for fullscreen
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent): void => {
-      if (event.key === 'f') {
-        event.preventDefault();
-        void handleFullScreen();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleFullScreen]);
-
   // this is added to handle the fullscreen change if user exits fullscreen using the escape key, or browser's exit fullscreen button
   useEffect(() => {
     const handleFullScreenChange = (): void => {
