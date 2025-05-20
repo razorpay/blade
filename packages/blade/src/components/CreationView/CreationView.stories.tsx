@@ -34,7 +34,6 @@ import {
   TableFooterRow,
   TableFooterCell,
 } from '~components/Table';
-import { IconButton } from '~components/Button/IconButton';
 import { Box } from '~components/Box';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '~components/Modal';
 import { Text } from '~components/Typography/Text';
