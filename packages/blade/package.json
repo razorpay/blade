@@ -147,7 +147,8 @@
     "@mantine/dates": "6.0.21",
     "@mantine/hooks": "6.0.21",
     "dayjs": "1.11.10",
-    "react-window": "1.8.11"
+    "react-window": "1.8.11",
+    "react-zoom-pan-pinch": "3.7.0"
   },
   "devDependencies": {
     "http-server": "14.1.1",
@@ -287,7 +288,8 @@
     "@razorpay/i18nify-react": "4.0.12",
     "plop": "3.1.1",
     "node-plop": "0.32.0",
-    "svgson": "5.3.1"
+    "svgson": "5.3.1",
+    "react-pdf": "9.2.1"
   },
   "peerDependencies": {
     "react": ">=18",
