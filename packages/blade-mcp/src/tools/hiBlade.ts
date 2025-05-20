@@ -20,8 +20,8 @@ const hiBladeToolDescription =
 
 const hiBladeToolSchema = {};
 
-const hiBladeToolCallback: ToolCallback<typeof hiBladeToolSchema> = async () => {
-  await sendAnalytics({
+const hiBladeToolCallback: ToolCallback<typeof hiBladeToolSchema> = () => {
+  sendAnalytics({
     eventName: 'Blade MCP Tool Called',
     properties: {
       toolName: hiBladeToolName,

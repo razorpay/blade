@@ -31,9 +31,10 @@ const getBladeComponentDocsToolSchema = {
     ),
 };
 
-const getBladeComponentDocsToolCallback: ToolCallback<
-  typeof getBladeComponentDocsToolSchema
-> = async ({ componentsList, currentProjectRootDirectory }) => {
+const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDocsToolSchema> = ({
+  componentsList,
+  currentProjectRootDirectory,
+}) => {
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
   if (invalidComponents.length > 0) {
@@ -84,7 +85,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<
     }
 
     // Return the formatted response
-    await sendAnalytics({
+    sendAnalytics({
       eventName: 'Blade MCP Tool Called',
       properties: {
         toolName: getBladeComponentDocsToolName,

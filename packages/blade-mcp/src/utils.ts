@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import os from 'os';
 import crypto from 'crypto';
 import * as Sentry from '@sentry/node';
+import { Analytics } from '@segment/analytics-node';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -162,35 +163,26 @@ export const getUniqueIdentifier = (): string => {
   }
 };
 
-const sendAnalytics = async ({
+const sendAnalytics = ({
   eventName,
   properties,
 }: {
   eventName: string;
   properties: object;
-}): Promise<void> => {
+}): void => {
   try {
+    const analytics = new Analytics({ writeKey: process.env.BLADE_SEGMENT_KEY ?? '' });
     // Get or create machine ID
     const machineId = getUniqueIdentifier();
-
-    await fetch('https://api.segment.io/v1/track', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Basic ${process.env.BLADE_SEGMENT_KEY}`,
+    analytics.track({
+      userId: machineId,
+      event: eventName,
+      properties: {
+        osType: os.type(),
+        nodeVersion: process.version,
+        serverVersion: getPackageJSONVersion(),
+        ...properties,
       },
-      body: JSON.stringify({
-        userId: machineId,
-        event: eventName,
-        properties: {
-          // Use only the properties passed in
-          osType: os.type(),
-          nodeVersion: process.version,
-          serverVersion: getPackageJSONVersion(),
-          // add user email
-          ...properties,
-        },
-      }),
     });
   } catch (error: unknown) {
     Sentry.captureException(error);

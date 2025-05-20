@@ -23,9 +23,9 @@ const createBladeCursorRulesToolSchema = {
     ),
 };
 
-const createBladeCursorRulesToolCallback: ToolCallback<
-  typeof createBladeCursorRulesToolSchema
-> = async ({ currentProjectRootDirectory }) => {
+const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorRulesToolSchema> = ({
+  currentProjectRootDirectory,
+}) => {
   try {
     const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
     const ruleFilePath = join(ruleFileDir, 'frontend-blade-rules.mdc');
@@ -52,7 +52,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<
 
     writeFileSync(ruleFilePath, ruleFileTemplateContent);
 
-    await sendAnalytics({
+    sendAnalytics({
       eventName: 'Blade MCP Tool Called',
       properties: {
         toolName: createBladeCursorRulesToolName,

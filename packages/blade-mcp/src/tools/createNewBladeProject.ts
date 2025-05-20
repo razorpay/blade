@@ -17,9 +17,9 @@ const createNewBladeProjectToolSchema = {
     ),
 };
 
-const createNewBladeProjectToolCallback: ToolCallback<
-  typeof createNewBladeProjectToolSchema
-> = async ({ currentProjectRootDirectory }) => {
+const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProjectToolSchema> = ({
+  currentProjectRootDirectory,
+}) => {
   try {
     // check if project is not empty
     if (readdirSync(currentProjectRootDirectory).length > 0) {
@@ -44,7 +44,7 @@ const createNewBladeProjectToolCallback: ToolCallback<
       join(currentProjectRootDirectory, '.gitignore'),
     );
 
-    await sendAnalytics({
+    sendAnalytics({
       eventName: 'Blade MCP Tool Called',
       properties: {
         toolName: createNewBladeProjectToolName,

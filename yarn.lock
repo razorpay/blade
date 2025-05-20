@@ -4246,6 +4246,18 @@
   dependencies:
     call-bind "^1.0.7"
 
+"@lukeed/csprng@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@lukeed/csprng/-/csprng-1.1.0.tgz#1e3e4bd05c1cc7a0b2ddbd8a03f39f6e4b5e6cfe"
+  integrity sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==
+
+"@lukeed/uuid@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@lukeed/uuid/-/uuid-2.0.1.tgz#4f6c34259ee0982a455e1797d56ac27bb040fd74"
+  integrity sha512-qC72D4+CDdjGqJvkFMMEAtancHUQ7/d/tAiHf64z8MopFDmcrtbcJuerDtFceuAfQJ2pDSfCKCtbqoGBNnwg0w==
+  dependencies:
+    "@lukeed/csprng" "^1.1.0"
+
 "@mantine/core@6.0.21":
   version "6.0.21"
   resolved "https://registry.yarnpkg.com/@mantine/core/-/core-6.0.21.tgz#6e3a1b8d0f6869518a644d5f5e3d55a5db7e1e51"
@@ -5729,6 +5741,36 @@
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.10.1.tgz#7ca168b6937818e9a74b47ac4e2112b2e1a024cf"
   integrity sha512-S3Kq8e7LqxkA9s7HKLqXGTGck1uwis5vAXan3FnU5yw1Ec5hsSGnq4s/UCaSqABPOnOTg7zASLyst7+ohgWexg==
+
+"@segment/analytics-core@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@segment/analytics-core/-/analytics-core-1.8.1.tgz#e9c24cd161ff6d6cfd6ac592c0ed29be680c92be"
+  integrity sha512-EYcdBdhfi1pOYRX+Sf5orpzzYYFmDHTEu6+w0hjXpW5bWkWct+Nv6UJg1hF4sGDKEQjpZIinLTpQ4eioFM4KeQ==
+  dependencies:
+    "@lukeed/uuid" "^2.0.0"
+    "@segment/analytics-generic-utils" "1.2.0"
+    dset "^3.1.4"
+    tslib "^2.4.1"
+
+"@segment/analytics-generic-utils@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@segment/analytics-generic-utils/-/analytics-generic-utils-1.2.0.tgz#9232162d6dbcd18501813fdff18035ce48fd24bf"
+  integrity sha512-DfnW6mW3YQOLlDQQdR89k4EqfHb0g/3XvBXkovH1FstUN93eL1kfW9CsDcVQyH3bAC5ZsFyjA/o/1Q2j0QeoWw==
+  dependencies:
+    tslib "^2.4.1"
+
+"@segment/analytics-node@2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@segment/analytics-node/-/analytics-node-2.2.1.tgz#9b086ca2719c53d30183a86e47f30796872a0b21"
+  integrity sha512-J+p5r2BewzowI6YsnSH6U+W9IAvRbEyheqDOSUEwh6QDbxjwcBXwzuPwtz5DtEjbEGMu2QwrwoJvZlZ/n5fugw==
+  dependencies:
+    "@lukeed/uuid" "^2.0.0"
+    "@segment/analytics-core" "1.8.1"
+    "@segment/analytics-generic-utils" "1.2.0"
+    buffer "^6.0.3"
+    jose "^5.1.0"
+    node-fetch "^2.6.7"
+    tslib "^2.4.1"
 
 "@sentry/core@9.19.0":
   version "9.19.0"
@@ -14363,6 +14405,11 @@ dotenv@^8.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.6.0.tgz#061af664d19f7f4d8fc6e4ff9b584ce237adcb8b"
   integrity sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==
 
+dset@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/dset/-/dset-3.1.4.tgz#f8eaf5f023f068a036d08cd07dc9ffb7d0065248"
+  integrity sha512-2QF/g9/zTaPDc3BjNcVTGoBbXBgYfMTTceLaYcFJ/W9kggFUkhxD/hMEeuLKbugyef9SqAx8cpgwlIP/jinUTA==
+
 dunder-proto@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/dunder-proto/-/dunder-proto-1.0.1.tgz#d7ae667e1dc83482f8b70fd0f6eefc50da30f58a"
@@ -20205,6 +20252,11 @@ joi@^17.11.0, joi@^17.2.1:
     "@sideway/address" "^4.1.5"
     "@sideway/formula" "^3.0.1"
     "@sideway/pinpoint" "^2.0.0"
+
+jose@^5.1.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.10.0.tgz#c37346a099d6467c401351a9a0c2161e0f52c4be"
+  integrity sha512-s+3Al/p9g32Iq+oqXxkW//7jk2Vig6FF1CFqzVXoTUXt2qz89YWbL+OwS17NFYEvxC35n0FKeGO2LGYSxeM2Gg==
 
 js-sdsl@^4.1.4:
   version "4.4.2"
@@ -29800,6 +29852,11 @@ tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.1, tslib@^2.4
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
+
+tslib@^2.4.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
+  integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
 tsutils@^3.21.0:
   version "3.21.0"
