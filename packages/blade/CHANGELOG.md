@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.29.0
+
+### Minor Changes
+
+- 546aceaa3: feat(Card): add maxWidth property to card
+
 ## 12.28.0
 
 ### Minor Changes

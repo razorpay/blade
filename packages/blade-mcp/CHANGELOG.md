@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.7
+
+### Patch Changes
+
+- 546aceaa3: feat(Card): add maxWidth property to card
+
 ## 0.1.6
 
 ### Patch Changes
