@@ -56,6 +56,7 @@ import { Card, CardBody } from '~components/Card';
 import { DatePicker } from '~components/DatePicker';
 import { Slide } from '~components/Slide';
 import type { ModalProps } from '~components/Modal';
+import { Fade } from '~components/Fade';
 
 // Initialize dayjs plugins
 dayjs.extend(customParseFormat);
@@ -839,7 +840,6 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
     if (step === 1 && !selectedVendor) {
       newErrors.vendor = 'Please select a vendor to proceed';
     }
-
     if (step === 2 && !selectedPO) {
       newErrors.purchaseOrder = 'Please select a purchase order to proceed';
     }
@@ -1730,33 +1730,34 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               size="medium"
               color={alert?.type === 'negative' ? 'negative' : undefined}
             />
-            {showStepGroup && (
-              <Box>
-                <Slide direction="top" fromOffset="100%" motionTriggers={['mount']}>
-                  <Box
-                    position="fixed"
-                    top="51px"
-                    left="spacing.0"
-                    backgroundColor="surface.background.gray.intense"
-                    zIndex={1005}
-                    width="100%"
-                    height="330px"
-                    borderBottomLeftRadius="2xlarge"
-                    borderBottomRightRadius="2xlarge"
-                    padding="spacing.7"
-                    paddingTop="spacing.0"
-                  >
-                    {renderStepGroup()}
-                  </Box>
-                </Slide>
-                <BackdropContainer
-                  onClick={() => {
-                    setShowStepGroup((prev: boolean) => !prev);
-                  }}
-                />
-              </Box>
-            )}
 
+            <Box>
+              <Slide
+                direction="top"
+                fromOffset="100%"
+                motionTriggers={['mount']}
+                isVisible={showStepGroup}
+              >
+                <Box
+                  position="fixed"
+                  top="51px"
+                  left="spacing.0"
+                  backgroundColor="surface.background.gray.intense"
+                  zIndex={1005}
+                  width="100%"
+                  height="330px"
+                  borderBottomLeftRadius="2xlarge"
+                  borderBottomRightRadius="2xlarge"
+                  padding="spacing.7"
+                  paddingTop="spacing.0"
+                >
+                  {renderStepGroup()}
+                </Box>
+              </Slide>
+              <Fade motionTriggers={['mount']} isVisible={showStepGroup}>
+                <BackdropContainer />
+              </Fade>
+            </Box>
             {/* Step content */}
             <Box
               overflow="auto"
