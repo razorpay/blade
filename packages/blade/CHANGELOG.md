@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.29.0
+
+### Minor Changes
+
+- 546aceaa3: feat(Card): add maxWidth property to card
+
+## 12.28.0
+
+### Minor Changes
+
+- b16eb895: feat(Amount): expose `fractionDigits` for control over decimals
+
 ## 12.27.0
 
 ### Minor Changes

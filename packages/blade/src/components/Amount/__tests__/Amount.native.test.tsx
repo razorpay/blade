@@ -207,6 +207,60 @@ describe('<Amount />', () => {
     });
   });
 
+  it('should allow customizing number of fraction digits', () => {
+    setState({ locale: 'en-IN' });
+
+    // Test with custom fraction digits
+    expect(
+      getAmountByParts({ value: 123.456, suffix: 'decimals', currency: 'INR', fractionDigits: 3 }),
+    ).toEqual({
+      currency: '₹',
+      decimal: '.',
+      fraction: '456',
+      integer: '123',
+      isPrefixSymbol: true,
+      rawParts: [
+        { type: 'currency', value: '₹' },
+        { type: 'integer', value: '123' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '456' },
+      ],
+    });
+
+    // Test with 0 fraction digits
+    expect(
+      getAmountByParts({ value: 123.456, suffix: 'decimals', currency: 'INR', fractionDigits: 0 }),
+    ).toEqual({
+      currency: '₹',
+      integer: '123',
+      isPrefixSymbol: true,
+      rawParts: [
+        { type: 'currency', value: '₹' },
+        { type: 'integer', value: '123' },
+      ],
+    });
+
+    // Test rendering with fractionDigits
+    const { toJSON } = renderWithTheme(
+      <Amount value={123.456789} fractionDigits={4} testID="amount-custom-decimals" />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should display the correct number of decimal places based on fractionDigits prop', () => {
+    setState({ locale: 'en-IN' });
+
+    const { getByTestId: getByTestId1 } = renderWithTheme(
+      <Amount value={123.456789} fractionDigits={1} testID="amount-one-decimal" />,
+    );
+    expect(getByTestId1('amount-one-decimal')).toHaveTextContent('₹123.5');
+
+    const { getByTestId: getByTestId0 } = renderWithTheme(
+      <Amount value={123.456789} fractionDigits={0} testID="amount-zero-decimals" />,
+    );
+    expect(getByTestId0('amount-zero-decimals')).toHaveTextContent('₹123');
+  });
+
   AMOUNT_SUFFIX_TEST_SET.forEach((item) => {
     it(`should render ${item.output} in Amount for value:${item.value} & suffix:${item.suffix}`, () => {
       const { getByTestId } = renderWithTheme(
@@ -215,6 +269,7 @@ describe('<Amount />', () => {
           suffix={item.suffix}
           testID="amount-test"
           locale={item.locale}
+          fractionDigits={item.fractionDigits}
         />,
       );
 

@@ -17,5 +17,5 @@
     "jsx": "react-jsx",
     "moduleSuffixes": [".all", ".web", ""]
   },
-  "include": ["src"]
+  "include": ["src", "service-worker"]
 }

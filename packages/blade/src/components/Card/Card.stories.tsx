@@ -429,9 +429,9 @@ const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement
 
 export const CardBodyContent = CardChildrenExample.bind({});
 
-const CardWithoutPaddingExample: StoryFn<typeof Card> = (): React.ReactElement => {
+const CardWithoutPaddingExample: StoryFn<typeof Card> = (args): React.ReactElement => {
   return (
-    <Card elevation="highRaised" padding="spacing.0">
+    <Card {...args}>
       <CardBody>
         <Box display="flex" flexDirection="row">
           <img
@@ -465,4 +465,15 @@ CardWithoutPadding.parameters = {
   controls: {
     disable: true,
   },
+};
+
+CardWithoutPadding.args = {
+  elevation: 'highRaised',
+  padding: 'spacing.0',
+};
+
+export const CardWithMaxWidth = CardWithoutPaddingExample.bind({});
+CardWithMaxWidth.args = {
+  maxWidth: '800px',
+  padding: 'spacing.0',
 };
