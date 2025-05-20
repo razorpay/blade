@@ -1748,7 +1748,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                 </Box>
               </Slide>
               <Fade motionTriggers={['mount']} isVisible={showStepGroup} shouldUnmountWhenHidden>
-                <BackdropContainer />
+                <BackdropContainer onClick={() => setShowStepGroup((prev: boolean) => !prev)} />
               </Fade>
             </Box>
             {/* Step content */}
