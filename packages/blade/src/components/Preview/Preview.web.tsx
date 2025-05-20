@@ -198,11 +198,14 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
     if (!isDragEnabled) return 'default';
     return isDragging ? 'grabbing' : 'grab';
   }};
-  background-image: radial-gradient(
+  background-image: ${({ isDragEnabled }) =>
+    isDragEnabled
+      ? `radial-gradient(
     circle,
     rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px,
     transparent ${dotSize}px
-  );
+  )`
+      : 'none'};
   background-size: ${dotSpacing}px ${dotSpacing}px;
   .zoom-wrapper,
   .zoom-content {
