@@ -1714,13 +1714,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   </Badge>
                   <Heading size="small">{currentStepObj?.title}</Heading>
 
-                  <IconButton
-                    icon={showStepGroup ? ChevronUpIcon : ChevronDownIcon}
-                    accessibilityLabel="Open steps"
-                    onClick={() => {
-                      setShowStepGroup((prev: boolean) => !prev);
-                    }}
-                  />
+                  {showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />}
                 </Box>
               </Box>
             </div>
