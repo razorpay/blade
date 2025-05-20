@@ -57,7 +57,6 @@ const createNewBladeProjectCallback: ToolCallback<typeof createNewBladeProjectSc
             2. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.
             3. Always start the development server using \`npm run dev\` (if its not already running) before starting to code. Do not start it again after writing code.
             4. Start coding in App.tsx. use get_blade_docs to get information about the components.
-            5. If you see any errors on terminal, fix them.
             `,
       },
     ],
