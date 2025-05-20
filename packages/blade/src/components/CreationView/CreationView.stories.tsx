@@ -1748,7 +1748,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   {renderStepGroup()}
                 </Box>
               </Slide>
-              <Fade motionTriggers={['mount']} isVisible={showStepGroup}>
+              <Fade motionTriggers={['mount']} isVisible={showStepGroup} shouldUnmountWhenHidden>
                 <BackdropContainer />
               </Fade>
             </Box>
