@@ -41,7 +41,8 @@ const ErrorFallback = ({ error }: { error: Error; resetErrorBoundary?: () => voi
             primary: {
               text: isCopied ? 'Copied' : 'Copy Error',
               onClick: () => {
-                navigator.clipboard.writeText(error.message);
+                const prompt = `Fix the following runtime error: ${error.message}\n\nstack: ${error.stack}`;
+                navigator.clipboard.writeText(prompt);
                 setIsCopied(true);
               },
             },
