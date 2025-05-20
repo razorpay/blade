@@ -1,5 +1,5 @@
 import { composeStories } from '@storybook/react';
-import * as previewWindow from './PreviewWindow.stories';
+import * as previewWindow from './Preview.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
