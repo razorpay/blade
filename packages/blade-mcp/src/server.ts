@@ -4,21 +4,29 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import * as Sentry from '@sentry/node';
 import {
-  createNewBladeProjectCallback,
-  createNewBladeProjectSchema,
-  createNewBladeProjectDescription,
+  createNewBladeProjectToolName,
+  createNewBladeProjectToolDescription,
+  createNewBladeProjectToolSchema,
+  createNewBladeProjectToolCallback,
 } from './tools/createNewBladeProject.js';
 import {
-  createBladeCursorRulesCallback,
-  createBladeCursorRulesSchema,
-  createBladeCursorRulesDescription,
+  createBladeCursorRulesToolName,
+  createBladeCursorRulesToolDescription,
+  createBladeCursorRulesToolSchema,
+  createBladeCursorRulesToolCallback,
 } from './tools/createBladeCursorRules.js';
 import {
-  getBladeComponentDocsCallback,
-  getBladeComponentDocsSchema,
-  getBladeComponentDocsDescription,
+  getBladeComponentDocsToolName,
+  getBladeComponentDocsToolDescription,
+  getBladeComponentDocsToolSchema,
+  getBladeComponentDocsToolCallback,
 } from './tools/getBladeComponentDocs.js';
-import { hiBladeCallback, hiBladeSchema, hiBladeDescription } from './tools/hiBlade.js';
+import {
+  hiBladeToolName,
+  hiBladeToolDescription,
+  hiBladeToolSchema,
+  hiBladeToolCallback,
+} from './tools/hiBlade.js';
 import { getPackageJSONVersion } from './utils.js';
 
 Sentry.init({
@@ -34,27 +42,27 @@ try {
     version: getPackageJSONVersion(),
   });
 
-  server.tool('hi_blade', hiBladeDescription, hiBladeSchema, hiBladeCallback);
+  server.tool(hiBladeToolName, hiBladeToolDescription, hiBladeToolSchema, hiBladeToolCallback);
 
   server.tool(
-    'create_new_blade_project',
-    createNewBladeProjectDescription,
-    createNewBladeProjectSchema,
-    createNewBladeProjectCallback,
+    createNewBladeProjectToolName,
+    createNewBladeProjectToolDescription,
+    createNewBladeProjectToolSchema,
+    createNewBladeProjectToolCallback,
   );
 
   server.tool(
-    'create_blade_cursor_rules',
-    createBladeCursorRulesDescription,
-    createBladeCursorRulesSchema,
-    createBladeCursorRulesCallback,
+    createBladeCursorRulesToolName,
+    createBladeCursorRulesToolDescription,
+    createBladeCursorRulesToolSchema,
+    createBladeCursorRulesToolCallback,
   );
 
   server.tool(
-    'get_blade_component_docs',
-    getBladeComponentDocsDescription,
-    getBladeComponentDocsSchema,
-    getBladeComponentDocsCallback,
+    getBladeComponentDocsToolName,
+    getBladeComponentDocsToolDescription,
+    getBladeComponentDocsToolSchema,
+    getBladeComponentDocsToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout
