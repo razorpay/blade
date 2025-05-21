@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.31.0
+
+### Minor Changes
+
+- c48acef5: feat(Heading): add medium weight
+
 ## 12.30.0
 
 ### Minor Changes
