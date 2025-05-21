@@ -8,20 +8,13 @@
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/TopNav.md",
     "errors": [
-      "index.tsx:1:1 - error TS1109: Expression expected.\n\n1 * import { Link } from 'react-router-dom';\n  ~",
-      "index.tsx:1:3 - error TS1109: Expression expected.\n\n1 * import { Link } from 'react-router-dom';\n    ~~~~~~",
-      "index.tsx:1:24 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n1 * import { Link } from 'react-router-dom';\n                         ~~~~~~~~~~~~~~~~~~",
-      "index.tsx:2:4 - error TS1109: Expression expected.\n\n2    *\n     ~",
-      "index.tsx:3:4 - error TS1109: Expression expected.\n\n3    * <TabNavItem as={Link} />\n     ~",
       "index.tsx:3:6 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n3    * <TabNavItem as={Link} />\n       ~~~~~~~~~~~~~~~~~~~~~~~~",
-      "index.tsx:3:7 - error TS2304: Cannot find name 'TabNavItem'.\n\n3    * <TabNavItem as={Link} />\n        ~~~~~~~~~~",
-      "index.tsx:4:5 - error TS1109: Expression expected.\n\n4    *"
+      "index.tsx:3:7 - error TS2304: Cannot find name 'TabNavItem'.\n\n3    * <TabNavItem as={Link} />\n        ~~~~~~~~~~"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/TopNav.md",
     "errors": [
-      "index.tsx:2:48 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n2 import { useLocation, useNavigate, Link } from 'react-router-dom';\n                                                 ~~~~~~~~~~~~~~~~~~",
       "index.tsx:133:53 - error TS2322: Type '{ size: \"medium\"; name: string; accessibilityLabel: string; }' is not assignable to type 'IntrinsicAttributes & { size?: \"small\" | \"medium\" | \"xsmall\" | \"large\" | \"xlarge\"; variant?: \"circle\" | \"square\"; color?: FeedbackColors | \"primary\"; ... 9 more ...; testID?: string; } & BladeCommonEvents & Partial<...> & { ...; } & RefAttributes<...>'.\n  Property 'accessibilityLabel' does not exist on type 'IntrinsicAttributes & { size?: \"small\" | \"medium\" | \"xsmall\" | \"large\" | \"xlarge\"; variant?: \"circle\" | \"square\"; color?: FeedbackColors | \"primary\"; ... 9 more ...; testID?: string; } & BladeCommonEvents & Partial<...> & { ...; } & RefAttributes<...>'.\n\n133             <Avatar size=\"medium\" name=\"Jane Smith\" accessibilityLabel=\"Open user menu\" />\n                                                        ~~~~~~~~~~~~~~~~~~",
       "index.tsx:147:63 - error TS2322: Type '{ children: Element; onClick: () => any; accessibilityLabel: string; }' is not assignable to type 'IntrinsicAttributes & { title?: string; description?: string; children?: ReactNode; as?: \"a\" | \"button\" | ComponentType<any>; onClick?: (event: MouseEvent<...>) => void; ... 10 more ...; _isSubmenuOpen?: boolean; } & RefAttributes<...>'.\n  Property 'accessibilityLabel' does not exist on type 'IntrinsicAttributes & { title?: string; description?: string; children?: ReactNode; as?: \"a\" | \"button\" | ComponentType<any>; onClick?: (event: MouseEvent<...>) => void; ... 10 more ...; _isSubmenuOpen?: boolean; } & RefAttributes<...>'.\n\n147               <MenuItem onClick={() => navigate('/settings')} accessibilityLabel=\"Go to settings\">\n                                                                  ~~~~~~~~~~~~~~~~~~",
       "index.tsx:153:17 - error TS2322: Type '{ children: Element; color: \"negative\"; onClick: () => any; accessibilityLabel: string; }' is not assignable to type 'IntrinsicAttributes & { title?: string; description?: string; children?: ReactNode; as?: \"a\" | \"button\" | ComponentType<any>; onClick?: (event: MouseEvent<...>) => void; ... 10 more ...; _isSubmenuOpen?: boolean; } & RefAttributes<...>'.\n  Property 'accessibilityLabel' does not exist on type 'IntrinsicAttributes & { title?: string; description?: string; children?: ReactNode; as?: \"a\" | \"button\" | ComponentType<any>; onClick?: (event: MouseEvent<...>) => void; ... 10 more ...; _isSubmenuOpen?: boolean; } & RefAttributes<...>'.\n\n153                 accessibilityLabel=\"Log out\"\n                    ~~~~~~~~~~~~~~~~~~",
@@ -35,7 +28,6 @@
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/TopNav.md",
     "errors": [
-      "index.tsx:1:29 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n1 import { useLocation } from 'react-router-dom';\n                              ~~~~~~~~~~~~~~~~~~",
       "index.tsx:12:2 - error TS2304: Cannot find name 'TabNavItem'.\n\n12 <TabNavItem as={Link} to=\"/dashboard\" title=\"Dashboard\" isActive={isActive('/dashboard')} />;\n    ~~~~~~~~~~",
       "index.tsx:12:17 - error TS2304: Cannot find name 'Link'.\n\n12 <TabNavItem as={Link} to=\"/dashboard\" title=\"Dashboard\" isActive={isActive('/dashboard')} />;\n                   ~~~~"
     ]
@@ -50,54 +42,29 @@
     ]
   },
   {
-    "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/TextInput.md",
-    "errors": [
-      "index.tsx:2:26 - error TS2724: '\"@razorpay/blade/components\"' has no exported member named 'EmailIcon'. Did you mean 'MailIcon'?\n\n2 import { TextInput, Box, EmailIcon } from '@razorpay/blade/components';\n                           ~~~~~~~~~"
-    ]
-  },
-  {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/TextArea.md",
     "errors": [
       "index.tsx:31:9 - error TS2322: Type 'string' is not assignable to type '\"none\" | \"error\" | \"success\"'.\n\n31         validationState={validationState}\n           ~~~~~~~~~~~~~~~\n\n  packages/blade/build/types/components/index.d.ts:15123:5\n    15123     validationState?: 'success' | 'error' | 'none';\n              ~~~~~~~~~~~~~~~\n    The expected type comes from property 'validationState' which is declared here on type 'IntrinsicAttributes & (TextAreaProps & RefAttributes<BladeElementRef>)'"
     ]
   },
   {
-    "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/TextArea.md",
-    "errors": [
-      "index.tsx:39:9 - error TS2820: Type '\"surface.background.gray.muted\"' is not assignable to type '\"transparent\" | \"surface.background.gray.subtle\" | \"surface.background.gray.moderate\" | \"surface.background.gray.intense\" | \"surface.background.primary.subtle\" | \"surface.background.primary.intense\" | ... 6 more ... | { ...; }'. Did you mean '\"surface.background.gray.subtle\"'?\n\n39         backgroundColor=\"surface.background.gray.muted\"\n           ~~~~~~~~~~~~~~~\n\n  packages/blade/build/types/components/index.d.ts:1956:5\n    1956     backgroundColor: \"transparent\" | \"surface.background.gray.subtle\" | \"surface.background.gray.moderate\" | \"surface.background.gray.intense\" | \"surface.background.primary.subtle\" | \"surface.background.primary.intense\" | \"surface.background.sea.subtle\" | \"surface.background.sea.intense\" | \"surface.background.cloud.subtle\" | \"surface.background.cloud.intense\" | \"overlay.background.subtle\" | \"overlay.background.moderate\";\n             ~~~~~~~~~~~~~~~\n    The expected type comes from property 'backgroundColor' which is declared here on type 'IntrinsicAttributes & Partial<PaddingProps & MarginProps & { width: SpacingValueType | { readonly base?: SpacingValueType; ... 4 more ...; readonly xl?: SpacingValueType; }; ... 11 more ...; __brand__?: \"platform-web\" | { ...; }; } & ... 10 more ... & DataAnalyticsAttribute> & RefAttributes<...>'",
-      "index.tsx:48:13 - error TS2322: Type '\"surface.background.white.normal\"' is not assignable to type '\"transparent\" | \"surface.background.gray.subtle\" | \"surface.background.gray.moderate\" | \"surface.background.gray.intense\" | \"surface.background.primary.subtle\" | \"surface.background.primary.intense\" | ... 6 more ... | { ...; }'.\n\n48             backgroundColor=\"surface.background.white.normal\"\n               ~~~~~~~~~~~~~~~\n\n  packages/blade/build/types/components/index.d.ts:1956:5\n    1956     backgroundColor: \"transparent\" | \"surface.background.gray.subtle\" | \"surface.background.gray.moderate\" | \"surface.background.gray.intense\" | \"surface.background.primary.subtle\" | \"surface.background.primary.intense\" | \"surface.background.sea.subtle\" | \"surface.background.sea.intense\" | \"surface.background.cloud.subtle\" | \"surface.background.cloud.intense\" | \"overlay.background.subtle\" | \"overlay.background.moderate\";\n             ~~~~~~~~~~~~~~~\n    The expected type comes from property 'backgroundColor' which is declared here on type 'IntrinsicAttributes & Partial<PaddingProps & MarginProps & { width: SpacingValueType | { readonly base?: SpacingValueType; ... 4 more ...; readonly xl?: SpacingValueType; }; ... 11 more ...; __brand__?: \"platform-web\" | { ...; }; } & ... 10 more ... & DataAnalyticsAttribute> & RefAttributes<...>'"
-    ]
-  },
-  {
-    "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Table.md",
-    "errors": [
-      "index.tsx:106:67 - error TS2322: Type '{ children: string; variant: \"secondary\"; marginRight: \"spacing.2\"; leadingIcon: IconComponent; }' is not assignable to type 'IntrinsicAttributes & (ButtonProps & RefAttributes<BladeElementRef>)'.\n  Property 'leadingIcon' does not exist on type 'IntrinsicAttributes & (ButtonProps & RefAttributes<BladeElementRef>)'.\n\n106               <Button variant=\"secondary\" marginRight=\"spacing.2\" leadingIcon={PlusIcon}>\n                                                                      ~~~~~~~~~~~"
-    ]
-  },
-  {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/StepGroup.md",
     "errors": [
-      "index.tsx:1:1 - error TS1109: Expression expected.\n\n1 * timestamp=\"Thu, 11th Oct23 | 12:00pm\"\n  ~",
       "index.tsx:1:3 - error TS2304: Cannot find name 'timestamp'.\n\n1 * timestamp=\"Thu, 11th Oct23 | 12:00pm\"\n    ~~~~~~~~~",
       "index.tsx:1:12 - error TS1005: ';' expected.\n\n1 * timestamp=\"Thu, 11th Oct23 | 12:00pm\"\n             ~",
-      "index.tsx:1:13 - error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n1 * timestamp=\"Thu, 11th Oct23 | 12:00pm\"\n              ~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-      "index.tsx:2:5 - error TS1109: Expression expected.\n\n2    *"
+      "index.tsx:1:13 - error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n1 * timestamp=\"Thu, 11th Oct23 | 12:00pm\"\n              ~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/StepGroup.md",
     "errors": [
-      "index.tsx:1:1 - error TS1109: Expression expected.\n\n1 * marker={<StepItemIndicator color=\"positive\" />}\n  ~",
       "index.tsx:1:3 - error TS2304: Cannot find name 'marker'.\n\n1 * marker={<StepItemIndicator color=\"positive\" />}\n    ~~~~~~",
       "index.tsx:1:9 - error TS1005: ';' expected.\n\n1 * marker={<StepItemIndicator color=\"positive\" />}\n          ~",
       "index.tsx:1:12 - error TS2304: Cannot find name 'StepItemIndicator'.\n\n1 * marker={<StepItemIndicator color=\"positive\" />}\n             ~~~~~~~~~~~~~~~~~",
-      "index.tsx:2:4 - error TS1109: Expression expected.\n\n2    * marker={<StepItemIcon icon={CheckIcon} color=\"positive\" />}\n     ~",
       "index.tsx:2:6 - error TS2304: Cannot find name 'marker'.\n\n2    * marker={<StepItemIcon icon={CheckIcon} color=\"positive\" />}\n       ~~~~~~",
       "index.tsx:2:12 - error TS1005: ';' expected.\n\n2    * marker={<StepItemIcon icon={CheckIcon} color=\"positive\" />}\n             ~",
       "index.tsx:2:15 - error TS2304: Cannot find name 'StepItemIcon'.\n\n2    * marker={<StepItemIcon icon={CheckIcon} color=\"positive\" />}\n                ~~~~~~~~~~~~",
-      "index.tsx:2:34 - error TS2304: Cannot find name 'CheckIcon'.\n\n2    * marker={<StepItemIcon icon={CheckIcon} color=\"positive\" />}\n                                   ~~~~~~~~~",
-      "index.tsx:3:4 - error TS1109: Expression expected.\n\n3    *\n     ~",
-      "index.tsx:3:5 - error TS1109: Expression expected.\n\n3    *"
+      "index.tsx:2:34 - error TS2304: Cannot find name 'CheckIcon'.\n\n2    * marker={<StepItemIcon icon={CheckIcon} color=\"positive\" />}\n                                   ~~~~~~~~~"
     ]
   },
   {
@@ -182,82 +149,61 @@
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/SideNav.md",
     "errors": [
-      "index.tsx:1:1 - error TS1109: Expression expected.\n\n1 * import { Link } from 'react-router-dom';\n  ~",
-      "index.tsx:1:3 - error TS1109: Expression expected.\n\n1 * import { Link } from 'react-router-dom';\n    ~~~~~~",
-      "index.tsx:1:24 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n1 * import { Link } from 'react-router-dom';\n                         ~~~~~~~~~~~~~~~~~~",
-      "index.tsx:2:4 - error TS1109: Expression expected.\n\n2    *\n     ~",
-      "index.tsx:3:4 - error TS1109: Expression expected.\n\n3    * <SideNavLink as={Link} />\n     ~",
       "index.tsx:3:6 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n3    * <SideNavLink as={Link} />\n       ~~~~~~~~~~~~~~~~~~~~~~~~~",
-      "index.tsx:3:7 - error TS2304: Cannot find name 'SideNavLink'.\n\n3    * <SideNavLink as={Link} />\n        ~~~~~~~~~~~",
-      "index.tsx:4:5 - error TS1109: Expression expected.\n\n4    *"
+      "index.tsx:3:7 - error TS2304: Cannot find name 'SideNavLink'.\n\n3    * <SideNavLink as={Link} />\n        ~~~~~~~~~~~"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/SideNav.md",
     "errors": [
-      "index.tsx:1:1 - error TS1109: Expression expected.\n\n1 * <SideNavLink title=\"L2 Trigger\" href=\"/l2-first-item\">\n  ~",
       "index.tsx:1:3 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n  1 * <SideNavLink title=\"L2 Trigger\" href=\"/l2-first-item\">\n      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  2    *  <SideNavLevel>\n    ~~~~~~~~~~~~~~~~~~~~\n... \n  5    *  </SideNavLevel>\n    ~~~~~~~~~~~~~~~~~~~~~\n  6    * </SideNavLink>\n    ~~~~~~~~~~~~~~~~~~~",
       "index.tsx:1:4 - error TS2304: Cannot find name 'SideNavLink'.\n\n1 * <SideNavLink title=\"L2 Trigger\" href=\"/l2-first-item\">\n     ~~~~~~~~~~~",
       "index.tsx:2:8 - error TS2304: Cannot find name 'SideNavLevel'.\n\n2    *  <SideNavLevel>\n         ~~~~~~~~~~~~",
       "index.tsx:3:10 - error TS2304: Cannot find name 'SideNavLink'.\n\n3    *    <SideNavLink title=\"L2 Item\" href=\"/l2-first-item\" />\n           ~~~~~~~~~~~",
       "index.tsx:4:10 - error TS2304: Cannot find name 'SideNavLink'.\n\n4    *    <SideNavLink title=\"L2 Item 2\" href=\"/l2-second-item\" />\n           ~~~~~~~~~~~",
       "index.tsx:5:9 - error TS2304: Cannot find name 'SideNavLevel'.\n\n5    *  </SideNavLevel>\n          ~~~~~~~~~~~~",
-      "index.tsx:6:8 - error TS2304: Cannot find name 'SideNavLink'.\n\n6    * </SideNavLink>\n         ~~~~~~~~~~~",
-      "index.tsx:7:5 - error TS1109: Expression expected.\n\n7    *"
+      "index.tsx:6:8 - error TS2304: Cannot find name 'SideNavLink'.\n\n6    * </SideNavLink>\n         ~~~~~~~~~~~"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/SideNav.md",
     "errors": [
-      "index.tsx:1:1 - error TS1109: Expression expected.\n\n1 * <SideNavLink\n  ~",
       "index.tsx:1:3 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n1 * <SideNavLink\n    ~~~~~~~~~~~~",
       "index.tsx:1:4 - error TS2304: Cannot find name 'SideNavLink'.\n\n1 * <SideNavLink\n     ~~~~~~~~~~~",
       "index.tsx:2:4 - error TS1003: Identifier expected.\n\n2    *  tooltip={{\n     ~",
       "index.tsx:2:7 - error TS2304: Cannot find name 'tooltip'.\n\n2    *  tooltip={{\n        ~~~~~~~",
       "index.tsx:2:14 - error TS1005: ';' expected.\n\n2    *  tooltip={{\n               ~",
-      "index.tsx:3:4 - error TS1109: Expression expected.\n\n3    *    title: 'Tooltip Title',\n     ~",
       "index.tsx:3:9 - error TS2304: Cannot find name 'title'.\n\n3    *    title: 'Tooltip Title',\n          ~~~~~",
       "index.tsx:3:14 - error TS1005: ';' expected.\n\n3    *    title: 'Tooltip Title',\n               ~",
       "index.tsx:3:16 - error TS2695: Left side of comma operator is unused and has no side effects.\n\n3    *    title: 'Tooltip Title',\n                 ~~~~~~~~~~~~~~~",
-      "index.tsx:4:4 - error TS1109: Expression expected.\n\n4    *    content: 'Tooltip description'\n     ~",
       "index.tsx:4:9 - error TS2304: Cannot find name 'content'.\n\n4    *    content: 'Tooltip description'\n          ~~~~~~~",
       "index.tsx:4:16 - error TS1005: ';' expected.\n\n4    *    content: 'Tooltip description'\n                 ~",
       "index.tsx:4:18 - error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n4    *    content: 'Tooltip description'\n                   ~~~~~~~~~~~~~~~~~~~~~",
-      "index.tsx:5:7 - error TS1109: Expression expected.\n\n5    *  }}\n        ~",
-      "index.tsx:6:4 - error TS1109: Expression expected.\n\n6    * />\n     ~",
       "index.tsx:6:6 - error TS1161: Unterminated regular expression literal.\n\n6    * />\n       ~~",
-      "index.tsx:6:6 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n6    * />\n       ~~",
-      "index.tsx:7:5 - error TS1109: Expression expected.\n\n7    *"
+      "index.tsx:6:6 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n6    * />\n       ~~"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/SideNav.md",
     "errors": [
-      "index.tsx:1:1 - error TS1109: Expression expected.\n\n1 * <SideNavItem\n  ~",
       "index.tsx:1:3 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n1 * <SideNavItem\n    ~~~~~~~~~~~~",
       "index.tsx:1:4 - error TS2304: Cannot find name 'SideNavItem'.\n\n1 * <SideNavItem\n     ~~~~~~~~~~~",
       "index.tsx:2:4 - error TS1003: Identifier expected.\n\n2    *  tooltip={{\n     ~",
       "index.tsx:2:7 - error TS2304: Cannot find name 'tooltip'.\n\n2    *  tooltip={{\n        ~~~~~~~",
       "index.tsx:2:14 - error TS1005: ';' expected.\n\n2    *  tooltip={{\n               ~",
-      "index.tsx:3:4 - error TS1109: Expression expected.\n\n3    *    title: 'Tooltip Title',\n     ~",
       "index.tsx:3:9 - error TS2304: Cannot find name 'title'.\n\n3    *    title: 'Tooltip Title',\n          ~~~~~",
       "index.tsx:3:14 - error TS1005: ';' expected.\n\n3    *    title: 'Tooltip Title',\n               ~",
       "index.tsx:3:16 - error TS2695: Left side of comma operator is unused and has no side effects.\n\n3    *    title: 'Tooltip Title',\n                 ~~~~~~~~~~~~~~~",
-      "index.tsx:4:4 - error TS1109: Expression expected.\n\n4    *    content: 'Tooltip description'\n     ~",
       "index.tsx:4:9 - error TS2304: Cannot find name 'content'.\n\n4    *    content: 'Tooltip description'\n          ~~~~~~~",
       "index.tsx:4:16 - error TS1005: ';' expected.\n\n4    *    content: 'Tooltip description'\n                 ~",
       "index.tsx:4:18 - error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n4    *    content: 'Tooltip description'\n                   ~~~~~~~~~~~~~~~~~~~~~",
-      "index.tsx:5:7 - error TS1109: Expression expected.\n\n5    *  }}\n        ~",
-      "index.tsx:6:4 - error TS1109: Expression expected.\n\n6    * />\n     ~",
       "index.tsx:6:6 - error TS1161: Unterminated regular expression literal.\n\n6    * />\n       ~~",
-      "index.tsx:6:6 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n6    * />\n       ~~",
-      "index.tsx:7:5 - error TS1109: Expression expected.\n\n7    *"
+      "index.tsx:6:6 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n6    * />\n       ~~"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/SideNav.md",
     "errors": [
-      "index.tsx:2:71 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n2 import { BrowserRouter as Router, Link, useLocation, matchPath } from 'react-router-dom';\n                                                                        ~~~~~~~~~~~~~~~~~~",
       "index.tsx:203:9 - error TS2322: Type '{ children: Element[]; isOpen: boolean; onDismiss: () => void; onVisibleLevelChange: ({ visibleLevel }: { visibleLevel: number; }) => void; banner: Element; testID: string; position: \"absolute\"; elevation: string; }' is not assignable to type 'IntrinsicAttributes & { children: ReactNode; isOpen?: boolean; onDismiss?: () => void; onVisibleLevelChange?: ({ visibleLevel }: { visibleLevel: number; }) => void; banner?: ReactElement<...>; } & Partial<...> & TestID & RefAttributes<...>'.\n  Property 'elevation' does not exist on type 'IntrinsicAttributes & { children: ReactNode; isOpen?: boolean; onDismiss?: () => void; onVisibleLevelChange?: ({ visibleLevel }: { visibleLevel: number; }) => void; banner?: ReactElement<...>; } & Partial<...> & TestID & RefAttributes<...>'.\n\n203         elevation=\"raised\"\n            ~~~~~~~~~"
     ]
   },
@@ -301,15 +247,11 @@
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/PhoneNumberInput.md",
-    "errors": [
-      "index.tsx:3:36 - error TS2307: Cannot find module '@razorpay/i18nify-js' or its corresponding type declarations.\n\n3 import { isValidPhoneNumber } from '@razorpay/i18nify-js';\n                                     ~~~~~~~~~~~~~~~~~~~~~~",
-      "index.tsx:4:38 - error TS2307: Cannot find module '@razorpay/i18nify-js' or its corresponding type declarations.\n\n4 import type { CountryCodeType } from '@razorpay/i18nify-js';\n                                       ~~~~~~~~~~~~~~~~~~~~~~"
-    ]
+    "errors": []
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/PhoneNumberInput.md",
     "errors": [
-      "index.tsx:9:38 - error TS2307: Cannot find module '@razorpay/i18nify-js' or its corresponding type declarations.\n\n9 import type { CountryCodeType } from '@razorpay/i18nify-js';\n                                       ~~~~~~~~~~~~~~~~~~~~~~",
       "index.tsx:69:28 - error TS2322: Type '\"text.neutral.subtle\"' is not assignable to type 'TextColors | \"currentColor\"'.\n\n69         <Text size=\"small\" color=\"text.neutral.subtle\">\n                              ~~~~~\n\n  packages/blade/build/types/components/index.d.ts:11092:5\n    11092     color?: BaseTextProps['color'];\n              ~~~~~\n    The expected type comes from property 'color' which is declared here on type 'IntrinsicAttributes & ((TextBodyVariant | TextCaptionVariant) & RefAttributes<BladeElementRef>)'"
     ]
   },
@@ -322,8 +264,6 @@
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/PhoneNumberInput.md",
     "errors": [
-      "index.tsx:8:36 - error TS2307: Cannot find module '@razorpay/i18nify-js' or its corresponding type declarations.\n\n8 import { isValidPhoneNumber } from '@razorpay/i18nify-js';\n                                     ~~~~~~~~~~~~~~~~~~~~~~",
-      "index.tsx:9:38 - error TS2307: Cannot find module '@razorpay/i18nify-js' or its corresponding type declarations.\n\n9 import type { CountryCodeType } from '@razorpay/i18nify-js';\n                                       ~~~~~~~~~~~~~~~~~~~~~~",
       "index.tsx:55:7 - error TS2322: Type '\"surface.background.white.normal\"' is not assignable to type '\"transparent\" | \"surface.background.gray.subtle\" | \"surface.background.gray.moderate\" | \"surface.background.gray.intense\" | \"surface.background.primary.subtle\" | \"surface.background.primary.intense\" | ... 6 more ... | { ...; }'.\n\n55       backgroundColor=\"surface.background.white.normal\"\n         ~~~~~~~~~~~~~~~\n\n  packages/blade/build/types/components/index.d.ts:1956:5\n    1956     backgroundColor: \"transparent\" | \"surface.background.gray.subtle\" | \"surface.background.gray.moderate\" | \"surface.background.gray.intense\" | \"surface.background.primary.subtle\" | \"surface.background.primary.intense\" | \"surface.background.sea.subtle\" | \"surface.background.sea.intense\" | \"surface.background.cloud.subtle\" | \"surface.background.cloud.intense\" | \"overlay.background.subtle\" | \"overlay.background.moderate\";\n             ~~~~~~~~~~~~~~~\n    The expected type comes from property 'backgroundColor' which is declared here on type 'IntrinsicAttributes & Partial<PaddingProps & MarginProps & { width: SpacingValueType | { readonly base?: SpacingValueType; ... 4 more ...; readonly xl?: SpacingValueType; }; ... 11 more ...; __brand__?: \"platform-web\" | { ...; }; } & ... 10 more ... & DataAnalyticsAttribute> & RefAttributes<...>'"
     ]
   },
@@ -343,21 +283,15 @@
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Morph.md",
-    "errors": [
-      "index.tsx:4:33 - error TS2307: Cannot find module 'framer-motion' or its corresponding type declarations.\n\n4 import { AnimatePresence } from 'framer-motion';\n                                  ~~~~~~~~~~~~~~~"
-    ]
+    "errors": []
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Morph.md",
-    "errors": [
-      "index.tsx:4:33 - error TS2307: Cannot find module 'framer-motion' or its corresponding type declarations.\n\n4 import { AnimatePresence } from 'framer-motion';\n                                  ~~~~~~~~~~~~~~~"
-    ]
+    "errors": []
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Morph.md",
-    "errors": [
-      "index.tsx:4:33 - error TS2307: Cannot find module 'framer-motion' or its corresponding type declarations.\n\n4 import { AnimatePresence } from 'framer-motion';\n                                  ~~~~~~~~~~~~~~~"
-    ]
+    "errors": []
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Modal.md",
@@ -434,9 +368,7 @@
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Fade.md",
-    "errors": [
-      "index.tsx:11:44 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n11 import { Route, Switch, useLocation } from 'react-router-dom';\n                                              ~~~~~~~~~~~~~~~~~~"
-    ]
+    "errors": []
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Dropdown.md",
@@ -466,27 +398,21 @@
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/DatePicker.md",
-    "errors": [
-      "index.tsx:3:19 - error TS2307: Cannot find module 'dayjs' or its corresponding type declarations.\n\n3 import dayjs from 'dayjs';\n                    ~~~~~~~"
-    ]
+    "errors": []
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/DatePicker.md",
     "errors": [
-      "index.tsx:3:19 - error TS2307: Cannot find module 'dayjs' or its corresponding type declarations.\n\n3 import dayjs from 'dayjs';\n                    ~~~~~~~",
       "index.tsx:21:11 - error TS2322: Type '\"small\"' is not assignable to type '\"medium\" | \"large\"'.\n\n21           size=\"small\"\n             ~~~~\n\n  packages/blade/build/types/components/index.d.ts:15361:5\n    15361     size?: 'medium' | 'large';\n              ~~~~\n    The expected type comes from property 'size' which is declared here on type 'IntrinsicAttributes & Omit<CalendarProps<\"single\">, MantineInternalProps> & Omit<DatePickerCommonInputProps, \"labelPosition\" | ... 5 more ... | \"referenceProps\"> & { ...; }'"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/DatePicker.md",
-    "errors": [
-      "index.tsx:3:19 - error TS2307: Cannot find module 'dayjs' or its corresponding type declarations.\n\n3 import dayjs from 'dayjs';\n                    ~~~~~~~"
-    ]
+    "errors": []
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/DatePicker.md",
     "errors": [
-      "index.tsx:3:19 - error TS2307: Cannot find module 'dayjs' or its corresponding type declarations.\n\n3 import dayjs from 'dayjs';\n                    ~~~~~~~",
       "index.tsx:70:11 - error TS2322: Type 'string' is not assignable to type '{ start: string; end?: string; }'.\n\n70           helpText=\"Select a date range or use preset options\"\n             ~~~~~~~~\n\n  packages/blade/build/types/components/index.d.ts:15646:5\n    15646     helpText?: Type extends 'single' ? string : {\n              ~~~~~~~~\n    The expected type comes from property 'helpText' which is declared here on type 'IntrinsicAttributes & Omit<CalendarProps<\"range\">, MantineInternalProps> & Omit<DatePickerCommonInputProps, \"labelPosition\" | ... 5 more ... | \"referenceProps\"> & { ...; }'",
       "index.tsx:71:11 - error TS2322: Type '{ label: string; value: (date: Date) => any[]; }[]' is not assignable to type 'Preset[]'.\n  Type '{ label: string; value: (date: Date) => any[]; }' is not assignable to type 'Preset'.\n    The types returned by 'value(...)' are incompatible between these types.\n      Type 'any[]' is not assignable to type 'DatesRangeValue'.\n        Target requires 2 element(s) but source may have fewer.\n\n71           presets={datePresets}\n             ~~~~~~~\n\n  packages/blade/build/types/components/index.d.ts:15582:5\n    15582     presets?: Preset[];\n              ~~~~~~~\n    The expected type comes from property 'presets' which is declared here on type 'IntrinsicAttributes & Omit<CalendarProps<\"range\">, MantineInternalProps> & Omit<DatePickerCommonInputProps, \"labelPosition\" | ... 5 more ... | \"referenceProps\"> & { ...; }'",
       "index.tsx:79:50 - error TS2322: Type '\"text.error\"' is not assignable to type 'TextColors | \"currentColor\"'.\n\n79         <Text size=\"small\" marginTop=\"spacing.3\" color={hasRangeError ? 'text.error' : undefined}>\n                                                    ~~~~~\n\n  packages/blade/build/types/components/index.d.ts:11092:5\n    11092     color?: BaseTextProps['color'];\n              ~~~~~\n    The expected type comes from property 'color' which is declared here on type 'IntrinsicAttributes & ((TextBodyVariant | TextCaptionVariant) & RefAttributes<BladeElementRef>)'"
@@ -495,14 +421,12 @@
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/DatePicker.md",
     "errors": [
-      "index.tsx:3:19 - error TS2307: Cannot find module 'dayjs' or its corresponding type declarations.\n\n3 import dayjs from 'dayjs';\n                    ~~~~~~~",
       "index.tsx:52:13 - error TS2322: Type '{ label: string; value: (date: Date) => any[]; }[]' is not assignable to type 'Preset[]'.\n  Type '{ label: string; value: (date: Date) => any[]; }' is not assignable to type 'Preset'.\n    The types returned by 'value(...)' are incompatible between these types.\n      Type 'any[]' is not assignable to type 'DatesRangeValue'.\n        Target requires 2 element(s) but source may have fewer.\n\n52             presets={datePresets}\n               ~~~~~~~\n\n  packages/blade/build/types/components/index.d.ts:15582:5\n    15582     presets?: Preset[];\n              ~~~~~~~\n    The expected type comes from property 'presets' which is declared here on type 'IntrinsicAttributes & Omit<DatePickerProps<\"single\" | \"range\">, \"label\"> & { label: string; onClearButtonClick?: () => void; }'"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/DatePicker.md",
     "errors": [
-      "index.tsx:3:30 - error TS2307: Cannot find module '@razorpay/i18nify-react' or its corresponding type declarations.\n\n3 import { I18nProvider } from '@razorpay/i18nify-react';\n                               ~~~~~~~~~~~~~~~~~~~~~~~~~",
       "index.tsx:18:68 - error TS2322: Type '\"small\"' is not assignable to type '\"medium\" | \"large\"'.\n\n18             <DatePicker selectionType=\"single\" label=\"तारीख चुनें\" size=\"small\" />\n                                                                      ~~~~\n\n  packages/blade/build/types/components/index.d.ts:15361:5\n    15361     size?: 'medium' | 'large';\n              ~~~~\n    The expected type comes from property 'size' which is declared here on type 'IntrinsicAttributes & Omit<CalendarProps<\"single\">, MantineInternalProps> & Omit<DatePickerCommonInputProps, \"labelPosition\" | ... 5 more ... | \"referenceProps\"> & { ...; }'",
       "index.tsx:28:69 - error TS2322: Type '\"small\"' is not assignable to type '\"medium\" | \"large\"'.\n\n28             <DatePicker selectionType=\"single\" label=\"Pilih Tarikh\" size=\"small\" />\n                                                                       ~~~~\n\n  packages/blade/build/types/components/index.d.ts:15361:5\n    15361     size?: 'medium' | 'large';\n              ~~~~\n    The expected type comes from property 'size' which is declared here on type 'IntrinsicAttributes & Omit<CalendarProps<\"single\">, MantineInternalProps> & Omit<DatePickerCommonInputProps, \"labelPosition\" | ... 5 more ... | \"referenceProps\"> & { ...; }'"
     ]
@@ -616,12 +540,6 @@
     ]
   },
   {
-    "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Card.md",
-    "errors": [
-      "index.tsx:12:39 - error TS2686: 'React' refers to a UMD global, but the current file is a module. Consider adding an import instead.\n\n12   const [isSelected, setIsSelected] = React.useState(false);\n                                         ~~~~~"
-    ]
-  },
-  {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Breadcrumb.md",
     "errors": [
       "index.tsx:10:9 - error TS2322: Type '{ children: Element[]; size: \"medium\"; color: \"primary\"; testID: string; \"data-analytics\": string; }' is not assignable to type 'IntrinsicAttributes & Partial<Omit<MarginProps & Pick<FlexboxProps, \"alignSelf\" | \"justifySelf\" | \"placeSelf\" | \"order\"> & { ...; } & Pick<...> & Pick<...> & Pick<...>, \"__brand__\">> & { ...; } & RefAttributes<...>'.\n  Property 'testID' does not exist on type 'IntrinsicAttributes & Partial<Omit<MarginProps & Pick<FlexboxProps, \"alignSelf\" | \"justifySelf\" | \"placeSelf\" | \"order\"> & { ...; } & Pick<...> & Pick<...> & Pick<...>, \"__brand__\">> & { ...; } & RefAttributes<...>'.\n\n10         testID=\"breadcrumb-example\"\n           ~~~~~~",
@@ -635,8 +553,7 @@
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/Breadcrumb.md",
     "errors": [
       "index.tsx:7:3 - error TS2305: Module '\"@razorpay/blade/components\"' has no exported member 'PaymentIcon'.\n\n7   PaymentIcon,\n    ~~~~~~~~~~~",
-      "index.tsx:8:3 - error TS2724: '\"@razorpay/blade/components\"' has no exported member named 'ProductIcon'. Did you mean 'RouteIcon'?\n\n8   ProductIcon,\n    ~~~~~~~~~~~",
-      "index.tsx:10:60 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n10 import { useLocation, Link as RouterLink, matchPath } from 'react-router-dom';\n                                                              ~~~~~~~~~~~~~~~~~~"
+      "index.tsx:8:3 - error TS2724: '\"@razorpay/blade/components\"' has no exported member named 'ProductIcon'. Did you mean 'RouteIcon'?\n\n8   ProductIcon,\n    ~~~~~~~~~~~"
     ]
   },
   {
@@ -682,20 +599,13 @@
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/BottomNav.md",
     "errors": [
-      "index.tsx:1:1 - error TS1109: Expression expected.\n\n1 * import { NavLink } from 'react-router-dom';\n  ~",
-      "index.tsx:1:3 - error TS1109: Expression expected.\n\n1 * import { NavLink } from 'react-router-dom';\n    ~~~~~~",
-      "index.tsx:1:27 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n1 * import { NavLink } from 'react-router-dom';\n                            ~~~~~~~~~~~~~~~~~~",
-      "index.tsx:2:4 - error TS1109: Expression expected.\n\n2    *\n     ~",
-      "index.tsx:3:4 - error TS1109: Expression expected.\n\n3    * <BottomNavItem as={NavLink} />\n     ~",
       "index.tsx:3:6 - error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.\n\n3    * <BottomNavItem as={NavLink} />\n       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-      "index.tsx:3:7 - error TS2304: Cannot find name 'BottomNavItem'.\n\n3    * <BottomNavItem as={NavLink} />\n        ~~~~~~~~~~~~~",
-      "index.tsx:4:5 - error TS1109: Expression expected.\n\n4    *"
+      "index.tsx:3:7 - error TS2304: Cannot find name 'BottomNavItem'.\n\n3    * <BottomNavItem as={NavLink} />\n        ~~~~~~~~~~~~~"
     ]
   },
   {
     "file": "/Users/kamlesh.c/razorpay/blade/packages/blade-mcp/knowledgebase/BottomNav.md",
     "errors": [
-      "index.tsx:2:79 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.\n\n2 import { BrowserRouter, Routes, Route, NavLink, useLocation, matchPath } from 'react-router-dom';\n                                                                                ~~~~~~~~~~~~~~~~~~",
       "index.tsx:23:28 - error TS2820: Type '\"spacing.16\"' is not assignable to type 'SpacingValueType | { readonly base?: SpacingValueType; readonly xs?: SpacingValueType; readonly s?: SpacingValueType; readonly m?: SpacingValueType; readonly l?: SpacingValueType; readonly xl?: SpacingValueType; }'. Did you mean '\"spacing.1\"'?\n\n23   <Box padding=\"spacing.5\" paddingBottom=\"spacing.16\">\n                              ~~~~~~~~~~~~~\n\n  packages/blade/build/types/components/index.d.ts:943:5\n    943     paddingBottom: SpacingValueType;\n            ~~~~~~~~~~~~~\n    The expected type comes from property 'paddingBottom' which is declared here on type 'IntrinsicAttributes & Partial<PaddingProps & MarginProps & { width: SpacingValueType | { readonly base?: SpacingValueType; ... 4 more ...; readonly xl?: SpacingValueType; }; ... 11 more ...; __brand__?: \"platform-web\" | { ...; }; } & ... 10 more ... & DataAnalyticsAttribute> & RefAttributes<...>'",
       "index.tsx:53:6 - error TS2739: Type '{ as: any; isActive: boolean; activeOnLinks?: string[]; }' is missing the following properties from type '{ title: string; icon: IconComponent; href?: string; target?: string; rel?: string; as?: ComponentType<any>; isActive?: boolean; onClick?: Select<{ web: MouseEventHandler<Element>; native: undefined; }>; }': title, icon\n\n53     <BottomNavItem\n        ~~~~~~~~~~~~~",
       "index.tsx:57:21 - error TS2339: Property 'href' does not exist on type 'Omit<({ title, href, rel, target, as, isActive, onClick, icon: Icon, testID, ...rest }: BottomNavItemProps) => ReactElement<any, string | JSXElementConstructor<any>>, \"as\"> & { ...; }'.\n\n57         href: props.href,\n                       ~~~~",

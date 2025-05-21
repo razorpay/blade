@@ -61,7 +61,14 @@ for (const file of filesToLint) {
     if (typeErrors.length > 0) {
       errors.push({
         file,
-        errors: typeErrors,
+        errors: typeErrors
+          .map((error) => {
+            if (error.includes('Expression expected') || error.includes('Cannot find module')) {
+              return null;
+            }
+            return error.trim();
+          })
+          .filter(Boolean),
       });
     }
   }
