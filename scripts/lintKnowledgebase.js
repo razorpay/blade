@@ -69,4 +69,4 @@ for (const file of filesToLint) {
 
 // write to fs
 fs.writeFileSync('./knowledgebase-ts-errors.json', JSON.stringify(errors, null, 2), 'utf-8');
-console.log(errors);
+// console.log(errors);

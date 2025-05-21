@@ -93,4 +93,4 @@ buck-out/
 # CocoaPods
 **/ios/Pods/
 
-knowledgebase-ts-errors.json
+# knowledgebase-ts-errors.json

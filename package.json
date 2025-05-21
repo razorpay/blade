@@ -68,12 +68,13 @@
     "stylelint-processor-styled-components": "1.10.0",
     "stylelint": "13.13.1",
     "typescript": "4.8.2",
-    "glob": "11.0.2",
+    "glob": "10.4.5",
     "ts-morph": "26.0.0"
   },
   "resolutions": {
     "@types/react": "18.2.24",
-    "@types/styled-components": "5.1.34"
+    "@types/styled-components": "5.1.34",
+    "minimatch": "9.0.4"
   },
   "husky": {
     "hooks": {
