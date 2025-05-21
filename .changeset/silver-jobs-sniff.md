@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-feat(blade): add preview
+feat(blade): add preview component
