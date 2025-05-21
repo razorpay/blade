@@ -18,7 +18,7 @@ export type HeadingProps = {
    * **Note** This takes priority over `type` and `contrast` prop to decide color of heading
    */
   color?: BaseTextProps['color'];
-  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'semibold'>;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
