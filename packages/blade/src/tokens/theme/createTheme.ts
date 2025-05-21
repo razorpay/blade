@@ -334,9 +334,5 @@ export const createTheme = ({
     },
   });
 
-  // @ts-expect-error window
-  window.brandTheme = brandedThemeTokens;
-  console.log('brandedThemeTokens ', brandedThemeTokens);
-
   return { theme: brandedThemeTokens, brandColors: chromaticBrandColors };
 };
