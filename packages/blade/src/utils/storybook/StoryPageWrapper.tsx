@@ -111,7 +111,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           ) : null}
           {props.codeUrl ? (
             <Button href={props.codeUrl} variant="tertiary" icon={FileTextIcon} target="_blank">
-              View on Storybook
+              View Storybook file
             </Button>
           ) : null}
           {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
