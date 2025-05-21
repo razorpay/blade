@@ -71,68 +71,28 @@ const Page = (): React.ReactElement => {
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-      import { useState } from 'react';
-      import {
-        Amount,
-        ListView,
-        ListViewFilters,
-        Box,
-        QuickFilterGroup,
-        QuickFilter,
-        FilterChipGroup,
-        Dropdown,
-        DropdownOverlay,
-        Counter,
-        FilterChipSelectInput,
-        ActionList,
-        ActionListItem,
-        FilterChipDatePicker,
-        Table,
-        TableHeader,
-        TableCell,
-        TableRow,
-        TableHeaderRow,
-        TableHeaderCell,
-        TableBody,
-        TableFooter,
-        TableFooterRow,
-        TableFooterCell,
-        TableEditableCell,
-        Button,
-        IconButton,
-        CheckIcon,
-        CloseIcon,
-        Code,
-        Badge,
-        RadioGroup,
-        Radio,
-        RadioGroupItem,
-        RadioGroupItemLabel,
-        RadioGroupItemDescription,
-        RadioGroupItemIcon,
-        Modal,
-        ModalOverlay,
-        ModalContent,
-        ModalHeader,
-        ModalBody,
-        ModalFooter,
-        ModalCloseButton,
-        ModalTitle,
-        Preview,
-        PreviewHeader,
-        PreviewBody,
-        PreviewFooter,        
-      } from '@razorpay/blade/components';
-      import type {
-        DatesRangeValue,
-        TableData,
-        CounterProps,
-      } from '@razorpay/blade/components';
-      
-      function App() {
-         const [isOpen, setIsOpen] = React.useState(false);
+        import React from 'react';
+        import {
+          Box,
+          Button,
+          RadioGroup,
+          Radio,
+          Modal,
+          ModalHeader,
+          ModalBody,
+          ModalFooter,
+          Preview,
+          PreviewHeader,
+          PreviewBody,
+          PreviewFooter,
+          Heading,
+          Alert,
+          TextInput,
+          Text,
+        } from '@razorpay/blade/components';
+        function App() {
+          const [isOpen, setIsOpen] = React.useState(false);
           const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
-          const isMobile = useIsMobile();
         
           const [formData, setFormData] = React.useState({
             qrUsage: '',
@@ -162,7 +122,8 @@ const Page = (): React.ReactElement => {
             }
         
             if (!formData.acceptFixedAmount) {
-              newErrors.acceptFixedAmount = 'Please select if you want to accept fixed amount';
+              newErrors.acceptFixedAmount =
+                'Please select if you want to accept fixed amount';
             }
         
             setErrors(newErrors);
@@ -188,18 +149,23 @@ const Page = (): React.ReactElement => {
             }
           };
         
-          const renderContent = ({ isMobile }: { isMobile: boolean }): React.ReactElement => (
+          const renderContent = (): React.ReactElement => (
             <Box display="flex" gap="spacing.4" justifyContent="space-between">
               <Box>
                 <form onSubmit={handleSubmit}>
-                  <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
+                  <Box
+                    padding="spacing.4"
+                    display="flex"
+                    flexDirection="column"
+                    gap="spacing.4"
+                  >
                     <Box>
                       <Heading size="medium" weight="regular">
                         Configure your QR code settings
                       </Heading>
                     </Box>
         
-                    {!isMobile && alert && (
+                    {alert && (
                       <Alert
                         color={alert.type}
                         title={alert.title}
@@ -228,7 +194,9 @@ const Page = (): React.ReactElement => {
                         label="Accept Fixed Amount"
                         name="acceptFixedAmount"
                         value={formData.acceptFixedAmount}
-                        onChange={({ value }) => handleChange('acceptFixedAmount', value)}
+                        onChange={({ value }) =>
+                          handleChange('acceptFixedAmount', value)
+                        }
                         validationState={errors.acceptFixedAmount ? 'error' : 'none'}
                         errorText={errors.acceptFixedAmount}
                       >
@@ -245,108 +213,54 @@ const Page = (): React.ReactElement => {
                         helpText="Add a description to identify this QR code"
                       />
         
-                      {!isMobile && (
-                        <Button isFullWidth type="submit" iconPosition="right">
-                          Create QR Code
-                        </Button>
-                      )}
+                      <Button isFullWidth type="submit" iconPosition="right">
+                        Create QR Code
+                      </Button>
                     </Box>
                   </Box>
                 </form>
               </Box>
-              {!isMobile && (
-                <Box width="500px">
-                  <Preview>
-                    <PreviewHeader />
-                    <PreviewBody>
-                      {isQrGenerated ? (
-                        <Box>
-                          <img
-                            src="https://blog.razorpay.in/blog-content/uploads/2021/11/QR-codes-blog-header.png"
-                            alt="QR Code"
-                            height="400px"
-                          />
-                        </Box>
-                      ) : (
-                        <Box>
-                          <Text>QR Code Preview</Text>
-                        </Box>
-                      )}
-                    </PreviewBody>
-                    <PreviewFooter />
-                  </Preview>
-                </Box>
-              )}
-            </Box>
-          );
-        
-          const renderPreview = (): React.ReactElement => (
-            <Box display="flex" flexDirection="column" gap="spacing.4">
-              <Preview>
-                <PreviewHeader />
-                <PreviewBody>
-                  <Box display="flex" flexDirection="column" gap="spacing.4">
-                    <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
-                      <img
-                        src="https://blog.razorpay.in/blog-content/uploads/2021/11/QR-codes-blog-header.png"
-                        alt="QR Code"
-                        height="400px"
-                      />
-                    </Box>
-                    <Box padding="spacing.4">
-                      <Text>QR Code Details:</Text>
-                      <Box marginTop="spacing.3">
-                        <Text>
-                          Usage: {formData.qrUsage === 'single' ? 'Single Payment' : 'Multiple Payments'}
-                        </Text>
-                        <Text>Fixed Amount: {formData.acceptFixedAmount === 'yes' ? 'Yes' : 'No'}</Text>
-                        {formData.description && <Text>Description: {formData.description}</Text>}
+              <Box width="500px">
+                <Preview>
+                  <PreviewHeader />
+                  <PreviewBody>
+                    {isQrGenerated ? (
+                      <Box>
+                        <img
+                          src="https://blog.razorpay.in/blog-content/uploads/2021/11/QR-codes-blog-header.png"
+                          alt="QR Code"
+                          height="400px"
+                        />
                       </Box>
-                    </Box>
-                  </Box>
-                </PreviewBody>
-                <PreviewFooter />
-              </Preview>
+                    ) : (
+                      <Box>
+                        <Text>QR Code Preview</Text>
+                      </Box>
+                    )}
+                  </PreviewBody>
+                  <PreviewFooter />
+                </Preview>
+              </Box>
             </Box>
           );
         
-          const renderFooter = ({ isMobile }: { isMobile: boolean }): React.ReactElement => (
+          const renderFooter = (): React.ReactElement => (
             <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
-              {isMobile && alert && (
-                <Alert
-                  color={alert.type}
-                  title={alert.title}
-                  description={alert.description}
-                  emphasis="subtle"
-                  isDismissible
-                  onDismiss={() => setAlert(null)}
-                  isFullWidth
-                />
-              )}
-              <Box display="flex" gap="spacing.3" justifyContent="space-between" width="100%">
-                {isMobile && (
-                  <Button
-                    variant="tertiary"
-                    icon={FileIcon}
-                    onClick={() => setIsPreviewOpen(true)}
-                    iconPosition="left"
-                  />
-                )}
-                <Box display="flex" width="100%" justifyContent="flex-end" gap="spacing.3">
+              <Box
+                display="flex"
+                gap="spacing.3"
+                justifyContent="space-between"
+                width="100%"
+              >
+                <Box
+                  display="flex"
+                  width="100%"
+                  justifyContent="flex-end"
+                  gap="spacing.3"
+                >
                   <Button variant="tertiary" onClick={() => setIsOpen(false)}>
                     Cancel
                   </Button>
-                  {isMobile && !isQrGenerated && (
-                    <Button onClick={() => handleSubmit()} iconPosition="right">
-                      Create QR Code
-                    </Button>
-                  )}
-        
-                  {!isMobile && (
-                    <Button variant="primary" onClick={() => handleSubmit()} isDisabled={!isQrGenerated}>
-                      Save
-                    </Button>
-                  )}
                 </Box>
               </Box>
             </Box>
@@ -355,40 +269,18 @@ const Page = (): React.ReactElement => {
           return (
             <Box>
               <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
-              {isMobile ? (
-                <>
-                  <BottomSheet
-                    isOpen={isOpen}
-                    onDismiss={() => setIsOpen(false)}
-                    snapPoints={[0.75, 0.75, 0.75]}
-                  >
-                    <BottomSheetHeader title="Create QR Code" />
-                    <BottomSheetBody>{renderContent({ isMobile })}</BottomSheetBody>
-                    <BottomSheetFooter>{renderFooter({ isMobile })}</BottomSheetFooter>
-                  </BottomSheet>
-                  <BottomSheet
-                    isOpen={isPreviewOpen}
-                    onDismiss={() => setIsPreviewOpen(false)}
-                    snapPoints={[1, 1, 1]}
-                  >
-                    <BottomSheetHeader title="QR Code Preview" />
-                    <BottomSheetBody>{renderPreview()}</BottomSheetBody>
-                  </BottomSheet>
-                </>
-              ) : (
-                <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
-                  <ModalHeader title="Create QR Code" />
-                  <ModalBody>{renderContent({ isMobile })}</ModalBody>
-                  <ModalFooter>{renderFooter({ isMobile })}</ModalFooter>
-                </Modal>
-              )}
+              <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
+                <ModalHeader title="Create QR Code" />
+                <ModalBody>{renderContent()}</ModalBody>
+                <ModalFooter>{renderFooter()}</ModalFooter>
+              </Modal>
             </Box>
-            );
-              }
-              
-              export default App;
-
-      `}
+          );
+        }
+        
+        export default App;
+        
+        `}
       </Sandbox>
     </StoryPageWrapper>
   );
