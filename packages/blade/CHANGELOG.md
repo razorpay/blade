@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.30.0
+
+### Minor Changes
+
+- 1de828f1: feat(fileUpload): add new size variant "variable"
+- a48a3a30: feat(blade): add preview component
+
 ## 12.29.0
 
 ### Minor Changes
