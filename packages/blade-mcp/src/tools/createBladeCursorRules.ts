@@ -8,6 +8,7 @@ import {
   CURSOR_RULES_VERSION,
   handleError,
   sendAnalytics,
+  analyticsToolCallEventName,
 } from '../utils.js';
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
@@ -53,7 +54,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
     writeFileSync(ruleFilePath, ruleFileTemplateContent);
 
     sendAnalytics({
-      eventName: 'Blade MCP Tool Called',
+      eventName: analyticsToolCallEventName,
       properties: {
         toolName: createBladeCursorRulesToolName,
         cursorRulesVersion: CURSOR_RULES_VERSION,
@@ -71,7 +72,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
   } catch (error: unknown) {
     return handleError({
       toolName: createBladeCursorRulesToolName,
-      error,
+      errorObject: error,
     });
   }
 };

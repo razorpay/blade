@@ -11,6 +11,8 @@ const __dirname = dirname(__filename);
 const PROJECT_ROOT_DIRECTORY = join(__dirname, '..');
 let cachedMachineId: string | null = null;
 
+const analyticsToolCallEventName = 'Blade MCP Tool Called';
+
 // Cursor Rules Tokens
 const CURSOR_RULES_VERSION = '0.0.6';
 const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
@@ -63,27 +65,29 @@ const getBladeComponentsList = (): string[] => {
 
 const handleError = ({
   toolName,
-  error,
-  customErrorMessage = '',
+  errorObject,
+  mcpErrorMessage = '',
 }: {
   toolName: string;
-  error?: unknown;
-  customErrorMessage?: string;
+  errorObject?: unknown;
+  mcpErrorMessage?: string;
 }): {
   isError: true;
   content: Array<{ type: 'text'; text: string }>;
 } => {
-  if (error) {
-    Sentry.captureException(error);
+  if (errorObject) {
+    Sentry.captureException(errorObject);
   }
   return {
     isError: true,
     content: [
       {
         type: 'text',
-        text: error
-          ? `Error in ${toolName}: ${error instanceof Error ? error.message : String(error)}`
-          : customErrorMessage,
+        text: errorObject
+          ? `Error in ${toolName}: ${
+              errorObject instanceof Error ? errorObject.message : String(errorObject)
+            }`
+          : mcpErrorMessage,
       },
     ],
   };
@@ -199,4 +203,5 @@ export {
   getBladeComponentsList,
   handleError,
   sendAnalytics,
+  analyticsToolCallEventName,
 };

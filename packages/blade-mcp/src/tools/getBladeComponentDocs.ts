@@ -8,6 +8,7 @@ import {
   getBladeComponentsList,
   handleError,
   sendAnalytics,
+  analyticsToolCallEventName,
 } from '../utils.js';
 
 const bladeComponentsList = getBladeComponentsList();
@@ -40,7 +41,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
   if (invalidComponents.length > 0) {
     return handleError({
       toolName: getBladeComponentDocsToolName,
-      customErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
+      mcpErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
         ', ',
       )}. Valid component docs values: ${bladeComponentsList.join(
         ', ',
@@ -53,14 +54,14 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
   if (!existsSync(ruleFilePath)) {
     return handleError({
       toolName: getBladeComponentDocsToolName,
-      customErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
+      mcpErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
     });
   }
 
   if (hasOutDatedRules(ruleFilePath)) {
     return handleError({
       toolName: getBladeComponentDocsToolName,
-      customErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
+      mcpErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
     });
   }
 
@@ -86,7 +87,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
 
     // Return the formatted response
     sendAnalytics({
-      eventName: 'Blade MCP Tool Called',
+      eventName: analyticsToolCallEventName,
       properties: {
         toolName: getBladeComponentDocsToolName,
         componentsList,
@@ -103,7 +104,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
   } catch (error: unknown) {
     return handleError({
       toolName: getBladeComponentDocsToolName,
-      error,
+      errorObject: error,
     });
   }
 };

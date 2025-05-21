@@ -2,7 +2,12 @@ import { readdirSync, existsSync, cpSync, rmSync, renameSync } from 'fs';
 import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { BASE_BLADE_TEMPLATE_DIRECTORY, handleError, sendAnalytics } from '../utils.js';
+import {
+  analyticsToolCallEventName,
+  BASE_BLADE_TEMPLATE_DIRECTORY,
+  handleError,
+  sendAnalytics,
+} from '../utils.js';
 
 const createNewBladeProjectToolName = 'create_new_blade_project';
 
@@ -25,7 +30,7 @@ const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProje
     if (readdirSync(currentProjectRootDirectory).length > 0) {
       return handleError({
         toolName: createNewBladeProjectToolName,
-        customErrorMessage:
+        mcpErrorMessage:
           'Project is not empty. Call this tool only when creating a new project from scratch.',
       });
     }
@@ -45,7 +50,7 @@ const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProje
     );
 
     sendAnalytics({
-      eventName: 'Blade MCP Tool Called',
+      eventName: analyticsToolCallEventName,
       properties: {
         toolName: createNewBladeProjectToolName,
         projectRootDirectory: currentProjectRootDirectory,
@@ -70,7 +75,7 @@ const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProje
   } catch (error: unknown) {
     return handleError({
       toolName: createNewBladeProjectToolName,
-      error,
+      errorObject: error,
     });
   }
 };
