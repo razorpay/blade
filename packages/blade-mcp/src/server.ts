@@ -14,11 +14,11 @@ import {
   createBladeCursorRulesSchema,
   createBladeCursorRulesDescription,
 } from './tools/createBladeCursorRules.js';
-// import {
-//   getBladeComponentDocsCallback,
-//   getBladeComponentDocsSchema,
-//   getBladeComponentDocsDescription,
-// } from './tools/getBladeComponentDocs.js';
+import {
+  getBladeComponentDocsCallback,
+  getBladeComponentDocsSchema,
+  getBladeComponentDocsDescription,
+} from './tools/getBladeComponentDocs.js';
 import { hiBladeCallback, hiBladeSchema, hiBladeDescription } from './tools/hiBlade.js';
 import { getPackageJSONVersion, KNOWLEDGEBASE_DIRECTORY } from './utils.js';
 
@@ -44,12 +44,12 @@ try {
     createBladeCursorRulesCallback,
   );
 
-  // server.tool(
-  //   'get_blade_component_docs',
-  //   getBladeComponentDocsDescription,
-  //   getBladeComponentDocsSchema,
-  //   getBladeComponentDocsCallback,
-  // );
+  server.tool(
+    'get_blade_component_docs',
+    getBladeComponentDocsDescription,
+    getBladeComponentDocsSchema,
+    getBladeComponentDocsCallback,
+  );
 
   server.tool(
     'get_blade_docs',
@@ -62,7 +62,10 @@ try {
         content: [
           {
             type: 'text',
-            text: `Go through the docs that you need from this index:\n${baseBladeDocs}`,
+            text: `Go through the docs that you need from this index:\n${baseBladeDocs.replaceAll(
+              '<_dirname_>',
+              KNOWLEDGEBASE_DIRECTORY,
+            )}`,
           },
         ],
       };
