@@ -8,7 +8,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import type { BladeElementRef } from '~utils/types';
 
-const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
+const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed?: boolean; isMobile: boolean }>(
   ({ as, theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
     const selectedColor = isSelected ? theme.colors.surface.border.primary.normal : 'transparent';
     const selectedBorder = `0px 0px 0px ${theme.border.width.thicker}px ${selectedColor}`;
@@ -69,17 +69,29 @@ const _CardRoot: React.ForwardRefRenderFunction<BladeElementRef, CardRootProps> 
   const isMobile = useIsMobile();
   const [isPressed, setIsPressed] = React.useState(false);
 
+  const scaleOnHoverProps = {
+    isPressed,
+    onTouchStart: () => {
+      setIsPressed(true);
+    },
+    onTouchEnd: () => {
+      setIsPressed(false);
+    },
+    onMouseDown: () => {
+      setIsPressed(true);
+    },
+    onMouseUp: () => {
+      setIsPressed(false);
+    },
+  };
+
   return (
     <StyledCardRoot
       ref={ref as never}
       as={as}
       {...props}
       isMobile={isMobile}
-      isPressed={props.shouldScaleOnHover ? isPressed : false}
-      onTouchStart={() => setIsPressed(true)}
-      onTouchEnd={() => setIsPressed(false)}
-      onMouseDown={() => setIsPressed(true)}
-      onMouseUp={() => setIsPressed(false)}
+      {...(props.shouldScaleOnHover ? scaleOnHoverProps : {})}
       {...makeAccessible({
         label: as === 'label' ? accessibilityLabel : undefined,
       })}
