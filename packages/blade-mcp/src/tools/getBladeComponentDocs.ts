@@ -2,7 +2,11 @@ import { resolve, join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { KNOWLEDGEBASE_DIRECTORY, hasOutDatedRules, getBladeComponentsList } from '../utils.js';
+import {
+  hasOutDatedRules,
+  getBladeComponentsList,
+  COMPONENTS_KNOWLEDGEBASE_DIRECTORY,
+} from '../utils.js';
 
 const bladeComponentsList = getBladeComponentsList();
 
@@ -84,7 +88,7 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
       responseText += `## ${componentName}\n`;
 
       try {
-        const filePath = resolve(KNOWLEDGEBASE_DIRECTORY, `${componentName}.md`);
+        const filePath = resolve(COMPONENTS_KNOWLEDGEBASE_DIRECTORY, `${componentName}.md`);
         const content = readFileSync(filePath, 'utf8');
         responseText += `${content}\n\n`;
       } catch (error: unknown) {

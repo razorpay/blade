@@ -21,6 +21,9 @@ const BASE_BLADE_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'base-blade-t
 
 // Knowledgebase
 const KNOWLEDGEBASE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'knowledgebase');
+const COMPONENTS_KNOWLEDGEBASE_DIRECTORY = join(KNOWLEDGEBASE_DIRECTORY, 'components');
+const PATTERNS_KNOWLEDGEBASE_DIRECTORY = join(KNOWLEDGEBASE_DIRECTORY, 'patterns');
+const GENERAL_KNOWLEDGEBASE_DIRECTORY = join(KNOWLEDGEBASE_DIRECTORY, 'general');
 
 const hasOutDatedRules = (ruleFilePath: string): boolean => {
   const ruleFileContent = readFileSync(ruleFilePath, 'utf8');
@@ -59,6 +62,9 @@ export {
   CURSOR_RULES_VERSION,
   BASE_BLADE_TEMPLATE_DIRECTORY,
   KNOWLEDGEBASE_DIRECTORY,
+  COMPONENTS_KNOWLEDGEBASE_DIRECTORY,
+  PATTERNS_KNOWLEDGEBASE_DIRECTORY,
+  GENERAL_KNOWLEDGEBASE_DIRECTORY,
   hasOutDatedRules,
   getPackageJSONVersion,
   getBladeComponentsList,
