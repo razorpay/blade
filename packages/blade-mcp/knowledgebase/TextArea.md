@@ -299,7 +299,7 @@ function MessageComposer() {
         flexDirection="column"
         gap="spacing.2"
         padding="spacing.3"
-        backgroundColor="surface.background.gray.muted"
+        backgroundColor="surface.background.gray.subtle"
         borderRadius="medium"
         maxHeight="200px"
         overflow="auto"
@@ -308,7 +308,7 @@ function MessageComposer() {
           <Box
             key={index}
             padding="spacing.3"
-            backgroundColor="surface.background.white.normal"
+            backgroundColor="surface.background.gray.intense"
             borderRadius="medium"
           >
             {msg}

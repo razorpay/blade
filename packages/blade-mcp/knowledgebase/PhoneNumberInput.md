@@ -361,7 +361,7 @@ function ContactFormExample() {
       width="100%"
       maxWidth="500px"
       padding="spacing.5"
-      backgroundColor="surface.background.white.normal"
+      backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
     >
       <Box display="flex" gap="spacing.4">

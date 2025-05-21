@@ -280,8 +280,8 @@ const AutoPlayCarouselExample = () => {
             <Card
               height="100%"
               padding="spacing.5"
-              elevation="raised"
-              backgroundColor="surface.background.white.normal"
+              elevation="lowRaised"
+              backgroundColor="surface.background.gray.intense"
             >
               <CardBody>
                 <Heading size="medium" marginBottom="spacing.3">
@@ -397,7 +397,7 @@ const ControlledCarouselExample = () => {
       >
         {testimonials.map((testimonial, index) => (
           <CarouselItem key={testimonial.id}>
-            <Card height="100%" padding="spacing.5" elevation="raised">
+            <Card height="100%" padding="spacing.5" elevation="lowRaised">
               <CardBody>
                 <Heading size="medium" marginBottom="spacing.3">
                   {testimonial.title}
@@ -493,7 +493,7 @@ const MultiItemSelectableCarouselExample = () => {
                 backgroundColor={
                   isSelected
                     ? 'surface.background.primary.subtle'
-                    : 'surface.background.white.normal'
+                    : 'surface.background.gray.intense'
                 }
                 borderWidth="thin"
                 borderStyle="solid"
