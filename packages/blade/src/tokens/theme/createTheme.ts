@@ -177,6 +177,12 @@ const getOnLightOverrides = (
           subtle: brandColors[200],
         },
       },
+      border: {
+        primary: {
+          normal: brandColors[600],
+          muted: brandColors.a200,
+        },
+      },
       icon: {
         primary: {
           normal: brandColors[600],
@@ -276,6 +282,12 @@ const getOnDarkOverrides = (
           subtle: brandColors[200],
         },
       },
+      border: {
+        primary: {
+          normal: brandColors[600],
+          muted: brandColors.a200,
+        },
+      },
       icon: {
         primary: {
           normal: brandColors[600],
@@ -321,6 +333,10 @@ export const createTheme = ({
       },
     },
   });
+
+  // @ts-expect-error window
+  window.brandTheme = brandedThemeTokens;
+  console.log('brandedThemeTokens ', brandedThemeTokens);
 
   return { theme: brandedThemeTokens, brandColors: chromaticBrandColors };
 };
