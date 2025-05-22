@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.31.1
+
+### Patch Changes
+
+- 273730ff: fix: surface primary border color when using custom brand color
+
+## 12.31.0
+
+### Minor Changes
+
+- c48acef5: feat(Heading): add medium weight
+
 ## 12.30.0
 
 ### Minor Changes
