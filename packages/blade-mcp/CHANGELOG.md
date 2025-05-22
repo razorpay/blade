@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.8
+
+### Patch Changes
+
+- 90c22ea9: docs(blade-mcp): add Preview and Full Page Modal knowledgebase
+
 ## 0.1.7
 
 ### Patch Changes
