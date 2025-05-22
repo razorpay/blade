@@ -95,6 +95,7 @@ type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
 */
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
   icon: IconComponent;
+  baseButtonIconColor?: IconColor;
   children?: StringChildrenType;
 } & DataAnalyticsAttribute;
 
@@ -184,6 +185,7 @@ const getProps = ({
   variant,
   color,
   hasIcon,
+  iconColor,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -193,6 +195,7 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
+  iconColor: IconColor;
 }): BaseButtonStyleProps => {
   if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
@@ -212,12 +215,14 @@ const getProps = ({
     width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
     iconPadding:
       hasIcon && childrenString?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
-    iconColor: getTextColorToken({
-      property: 'icon',
-      variant,
-      color,
-      state: 'default',
-    }) as IconColor,
+    iconColor:
+      iconColor ??
+      (getTextColorToken({
+        property: 'icon',
+        variant,
+        color,
+        state: 'default',
+      }) as IconColor),
     textColor: getTextColorToken({
       property: 'text',
       variant,
@@ -332,6 +337,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     accessibilityProps,
     onTouchEnd,
     onTouchStart,
+    baseButtonIconColor,
     ...rest
   },
   ref,
@@ -401,6 +407,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     theme,
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
+    iconColor: baseButtonIconColor,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
