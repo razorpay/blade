@@ -46,7 +46,7 @@ jobs:
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run Unit Tests with Coverage
-        run: yarn test 
+        run: yarn test --coverage
         working-directory: packages/blade
         env:
           SHARD: ${{ matrix.shard }}
@@ -83,18 +83,22 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: coverage-reports
-      - name: Install Coverage Merge Dependencies
+      - name: Create Merged Coverage Report
         run: |
-          cd packages/blade
-          yarn add -D nyc
-      - name: Merge Coverage Reports
-        run: |
+          # Create directory for nyc output
           mkdir -p .nyc_output
+          
+          # Find and copy all coverage-final.json files to .nyc_output
           find coverage-reports -name "coverage-final.json" -exec cp {} .nyc_output/ \;
-          cd packages/blade
+          
+          # Generate merged report
           npx nyc report --reporter=json
-          mkdir -p coverage
-          cp ../../coverage/coverage-final.json coverage/
+          
+          # Ensure output directory exists
+          mkdir -p packages/blade/coverage
+          
+          # Copy the merged report to expected location
+          cp coverage/coverage-final.json packages/blade/coverage/
       - name: Report Coverage
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
