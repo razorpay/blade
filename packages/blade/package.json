@@ -117,7 +117,7 @@
     "test:react:interaction": "cross-env FRAMEWORK=REACT test-storybook -c ./.storybook/react --url http://127.0.0.1:9009/",
     "test:react:interaction:ci": "yarn react:storybook:build && run-p react:storybook:serve react:storybook:serve:test --race",
     "test:react": "cross-env FRAMEWORK=REACT jest -c ./jest.web.config.js --shard=$SHARD --coverage --forceExit",
-    "test:react-native": "cross-env FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js --shard=$SHARD --coverage --forceExit",
+    "test:react-native": "cross-env FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js --shard=$SHARD --forceExit",
     "start:ios": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
     "start:android": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android",
     "start:native": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
