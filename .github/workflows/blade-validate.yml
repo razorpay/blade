@@ -51,7 +51,7 @@ jobs:
         env:
           SHARD: ${{ matrix.shard }}
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  
         with:
           name: coverage-report-${{ matrix.shard }}
           path: packages/blade/coverage
@@ -73,7 +73,7 @@ jobs:
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Download Coverage Reports
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: coverage-reports
       - name: Install Coverage Merge Dependencies
