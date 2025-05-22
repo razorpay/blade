@@ -53,7 +53,7 @@ jobs:
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4  
         with:
-          name: coverage-report-${{ github.run_id }}
+          name: coverage-report-${{ github.run_id }}-${{ matrix.shardIndex }}
           path: packages/blade/coverage
           retention-days: 1
 
