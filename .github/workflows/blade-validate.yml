@@ -84,14 +84,17 @@ jobs:
         with:
           path: coverage-reports
       - name: Install Coverage Merge Dependencies
-        run: yarn add -D nyc
+        run: |
+          cd packages/blade
+          yarn add -D nyc
       - name: Merge Coverage Reports
         run: |
           mkdir -p .nyc_output
-          cp coverage-reports/coverage-report-*/coverage-final.json .nyc_output/
+          find coverage-reports -name "coverage-final.json" -exec cp {} .nyc_output/ \;
+          cd packages/blade
           npx nyc report --reporter=json
-          mkdir -p packages/blade/coverage
-          cp coverage/coverage-final.json packages/blade/coverage/
+          mkdir -p coverage
+          cp ../../coverage/coverage-final.json coverage/
       - name: Report Coverage
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
