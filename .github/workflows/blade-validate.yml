@@ -53,7 +53,7 @@ jobs:
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4  
         with:
-          name: coverage-report-${{ matrix.shard.split('/')[0] }}
+          name: coverage-report-${{ matrix.shard.replace('/', '_') }}
           path: packages/blade/coverage
           retention-days: 1
 
