@@ -88,6 +88,7 @@ Mandatory children prop when icon is not provided
 type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
   icon?: undefined;
   children: StringChildrenType;
+  baseButtonIconColor?: undefined;
 } & DataAnalyticsAttribute;
 
 /*
