@@ -62,10 +62,9 @@ const IconsExample = () => {
     <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.6">
       {/* Different sizes with semantic colors */}
       <ArrowRightIcon size="small" color="surface.icon.primary.normal" />
-      <CheckCircleIcon size="medium" color="surface.icon.success.normal" />
-      <CloseIcon size="large" color="surface.icon.error.normal" />
-      <InfoIcon size="xlarge" color="surface.icon.information.normal" />
-      <AlertTriangleIcon size="2xlarge" color="surface.icon.warning.normal" />
+      <CheckCircleIcon size="medium" color="feedback.icon.positive.subtle" />
+      <CloseIcon size="large" color="feedback.icon.error.intense" />
+      <AlertTriangleIcon size="2xlarge" color="surface.icon.gray.subtle" />
     </Box>
   );
 };

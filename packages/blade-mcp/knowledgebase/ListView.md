@@ -358,7 +358,6 @@ function ListViewExample() {
           onSelectionChange={(selectedIds) => console.log('Selected rows:', selectedIds)}
           isFirstColumnSticky
           selectionType="single"
-          accessibilityLabel="Payments history table"
         >
           {(tableData) => (
             <>

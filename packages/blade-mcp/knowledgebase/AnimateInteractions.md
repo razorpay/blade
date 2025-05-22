@@ -249,7 +249,7 @@ const TapRevealExample = () => {
     <AnimateInteractions motionTriggers={['tap']}>
       <Card
         width="400px"
-        padding="spacing.6"
+        padding="spacing.7"
         backgroundColor="surface.background.gray.moderate"
         cursor="pointer"
       >

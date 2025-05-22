@@ -501,7 +501,7 @@ const AutoCompleteDropdownExample = () => {
             <TextInput
               label="Search Fruits"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={({ value }) => setQuery(value)}
               autoFocus
             />
           </DropdownHeader>

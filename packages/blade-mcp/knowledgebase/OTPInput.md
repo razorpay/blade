@@ -178,7 +178,7 @@ function OTPVerificationExample() {
       </Button>
 
       {attempts > 0 && (
-        <Text size="small" color="text.error.normal">
+        <Text size="small" color="feedback.text.negative.intense">
           Attempts: {attempts}/3
         </Text>
       )}
@@ -237,7 +237,7 @@ function SecurePINEntryExample() {
       backgroundColor="surface.background.gray.subtle"
       borderRadius="medium"
     >
-      <Text size="xlarge" weight="semibold" marginBottom="spacing.5">
+      <Text size="large" weight="semibold" marginBottom="spacing.5">
         {step === 'success' ? 'PIN Created Successfully' : 'Create Transaction PIN'}
       </Text>
 
@@ -292,7 +292,7 @@ function SecurePINEntryExample() {
               (step === 'create' && pin.length !== 4) ||
               (step === 'confirm' && confirmPin.length !== 4)
             }
-            width="100%"
+            isFullWidth
           >
             {step === 'confirm' || step === 'mismatch' ? 'Confirm PIN' : 'Continue'}
           </Button>

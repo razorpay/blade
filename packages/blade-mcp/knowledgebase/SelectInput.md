@@ -387,7 +387,7 @@ function CurrencySelectExample() {
         </Box>
 
         <Box flexGrow={1}>
-          <Heading size="xlarge" weight="semibold" padding="spacing.3">
+          <Heading size="xlarge" weight="semibold">
             {currentCurrency.symbol} {amount}
           </Heading>
         </Box>

@@ -158,7 +158,7 @@ const App = () => {
       <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
         <Popover
           title="Information"
-          content={<Text padding="spacing.2">This icon triggers a popover.</Text>}
+          content={<Text>This icon triggers a popover.</Text>}
           placement="top"
         >
           <PopoverInteractiveWrapper
@@ -199,7 +199,6 @@ const CustomTrigger = React.forwardRef<
       backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       borderRadius="medium"
-      role="button"
       tabIndex={0}
       ref={ref}
       {...props} // Forward all required props
@@ -213,7 +212,7 @@ const CustomTriggerExample = () => {
   return (
     <Popover
       title="Custom Trigger Example"
-      content={<Text padding="spacing.3">This popover is triggered by a custom component.</Text>}
+      content={<Text>This popover is triggered by a custom component.</Text>}
       placement="top"
     >
       <CustomTrigger>Click me to open popover</CustomTrigger>

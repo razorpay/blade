@@ -78,7 +78,7 @@ type ListItemTextProps = {
   /**
    * Font weight
    */
-  weight?: 'regular' | 'medium' | 'semibold' | 'bold';
+  weight?: 'regular' | 'medium' | 'semibold';
 } & StyledPropsBlade &
   TestID;
 
@@ -218,7 +218,7 @@ const AdvancedListExample = () => {
             <ListItem>
               <ListItemText>
                 UPI status is
-                <ListItemText as="span" weight="bold" color="feedback.text.positive.intense">
+                <ListItemText as="span" color="feedback.text.positive.intense">
                   {' active '}
                 </ListItemText>
               </ListItemText>
@@ -226,7 +226,7 @@ const AdvancedListExample = () => {
             <ListItem>
               <ListItemText>
                 Card status is
-                <ListItemText as="span" weight="medium" color="interactive.text.primary.normal">
+                <ListItemText as="span" color="feedback.text.notice.intense">
                   {' pending '}
                 </ListItemText>
               </ListItemText>

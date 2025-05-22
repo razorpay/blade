@@ -270,7 +270,7 @@ const ResponsiveCardLayout = () => {
       borderRadius="large"
       width="100%"
       maxWidth="800px"
-      margin="0 auto"
+      margin={{ base: 'spacing.0', m: 'auto' }}
     >
       <Heading size="large" marginBottom="spacing.5">
         Responsive Card Layout
@@ -287,7 +287,7 @@ const ResponsiveCardLayout = () => {
         <Box
           flex={{ base: 1, m: 1 }}
           flexBasis={{ base: '100%', m: '45%' }}
-          backgroundColor="surface.background.gray.normal"
+          backgroundColor="surface.background.gray.intense"
           borderRadius="medium"
           padding="spacing.4"
           elevation="lowRaised"
@@ -304,7 +304,7 @@ const ResponsiveCardLayout = () => {
             <Box
               backgroundColor="surface.background.primary.subtle"
               padding="spacing.2"
-              borderRadius="circle"
+              borderRadius="round"
             >
               <RazorpayIcon size="medium" />
             </Box>
@@ -366,37 +366,32 @@ const ResponsiveCardLayout = () => {
             justifyContent="space-between"
             marginBottom="spacing.3"
           >
-            <Text
-              fontWeight="semibold"
-              color="surface.text.staticWhite.normal"
-            >
-              Pro Plan
-            </Text>
+            <Text fontWeight="semibold">Pro Plan</Text>
             <Box
               backgroundColor="surface.background.gray.intense"
               padding="spacing.2"
-              borderRadius="circle"
+              borderRadius="round"
             >
               <RazorpayIcon size="medium" color="surface.icon.staticWhite.normal" />
             </Box>
           </Box>
 
-          <Text marginBottom="spacing.3" color="surface.text.staticWhite.normal">
+          <Text marginBottom="spacing.3">
             Enhanced features for growing businesses and professional teams.
           </Text>
 
           <Box marginY="spacing.3">
             <Box display="flex" justifyContent="space-between" marginBottom="spacing.2">
-              <Text color="surface.text.staticWhite.normal">Storage</Text>
-              <Text color="surface.text.staticWhite.normal">100GB</Text>
+              <Text>Storage</Text>
+              <Text>100GB</Text>
             </Box>
             <Box display="flex" justifyContent="space-between" marginBottom="spacing.2">
-              <Text color="surface.text.staticWhite.normal">Users</Text>
-              <Text color="surface.text.staticWhite.normal">Up to 20</Text>
+              <Text>Users</Text>
+              <Text>Up to 20</Text>
             </Box>
             <Box display="flex" justifyContent="space-between">
-              <Text color="surface.text.staticWhite.normal">Support</Text>
-              <Text color="surface.text.staticWhite.normal">Priority</Text>
+              <Text>Support</Text>
+              <Text>Priority</Text>
             </Box>
           </Box>
 
@@ -441,7 +436,7 @@ const AdvancedPositioningExample = () => {
         right="-50px"
         width="200px"
         height="200px"
-        borderRadius="circle"
+        borderRadius="round"
         backgroundColor="surface.background.primary.subtle"
         clipPath="circle(50% at 50% 50%)"
       />
@@ -452,7 +447,7 @@ const AdvancedPositioningExample = () => {
         left="20%"
         width="150px"
         height="150px"
-        borderRadius="circle"
+        borderRadius="round"
         backgroundColor="surface.background.cloud.subtle"
         transform="rotate(45deg)"
       />
@@ -471,7 +466,7 @@ const AdvancedPositioningExample = () => {
 
         {/* Card with transformation */}
         <Box
-          backgroundColor="surface.background.gray.normal"
+          backgroundColor="surface.background.gray.subtle"
           borderRadius="medium"
           padding="spacing.4"
           elevation="midRaised"
@@ -497,7 +492,7 @@ const AdvancedPositioningExample = () => {
             justifyContent="center"
             zIndex={1}
           >
-            <Text color="surface.text.staticWhite.normal">Box 1</Text>
+            <Text>Box 1</Text>
           </Box>
 
           <Box
@@ -529,7 +524,7 @@ const AdvancedPositioningExample = () => {
             justifyContent="center"
             zIndex={3}
           >
-            <Text color="surface.text.staticWhite.normal">Box 3</Text>
+            <Text>Box 3</Text>
           </Box>
         </Box>
 

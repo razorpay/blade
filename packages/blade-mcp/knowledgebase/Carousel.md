@@ -500,7 +500,6 @@ const MultiItemSelectableCarouselExample = () => {
                 backgroundColor={
                   isSelected ? 'surface.background.gray.intense' : 'surface.background.gray.subtle'
                 }
-                borderWidth="thin"
                 borderStyle="solid"
                 borderColor={isSelected ? 'border.primary' : 'border.secondary'}
                 cursor="pointer"

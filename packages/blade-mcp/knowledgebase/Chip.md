@@ -170,9 +170,9 @@ import {
   TagIcon,
   StarIcon,
   CheckCircleIcon,
-  TruckIcon,
+  BoxIcon,
   CreditCardIcon,
-  DiscIcon,
+  OffersIcon,
   CalendarIcon,
   InfoIcon,
   ShieldIcon,
@@ -242,16 +242,16 @@ const ProductDetailsCard = () => {
 
           {/* Delivery options row */}
           <Box display="flex" gap="spacing.2" flexWrap="wrap">
-            <Chip value="free-shipping" icon={TruckIcon} color="positive">
+            <Chip value="free-shipping" icon={BoxIcon} color="positive">
               Free Shipping
             </Chip>
             <Chip value="express" icon={CalendarIcon}>
               Express (2-3 days)
             </Chip>
-            <Chip value="discount" icon={DiscIcon} color="primary">
+            <Chip value="discount" icon={OffersIcon} color="primary">
               10% Off
             </Chip>
-            <Chip value="international" icon={TruckIcon} isDisabled>
+            <Chip value="international" icon={BoxIcon} isDisabled>
               International
             </Chip>
           </Box>

@@ -553,7 +553,6 @@ function CreatableAutoCompleteExample() {
                 backgroundColor="surface.background.gray.subtle"
                 padding={['spacing.1', 'spacing.3']}
                 borderRadius="medium"
-                fontSize="small"
               >
                 {tagName}
               </Box>

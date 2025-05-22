@@ -294,14 +294,14 @@ const AvatarGroupExample = () => {
       {/* Basic avatar group */}
       <AvatarGroup>
         {teamMembers.map((member, index) => (
-          <Avatar key={index} name={member.name} color={member.color} />
+          <Avatar key={index} name={member.name} />
         ))}
       </AvatarGroup>
 
       {/* With maxCount - shows "+2" for overflow */}
       <AvatarGroup maxCount={3} size="large">
         {teamMembers.map((member, index) => (
-          <Avatar key={index} name={member.name} color={member.color} />
+          <Avatar key={index} name={member.name} />
         ))}
       </AvatarGroup>
 
@@ -352,7 +352,6 @@ const InteractiveAvatarGroupExample = () => {
           <Avatar
             key={member.id}
             name={member.name}
-            color={member.color}
             isSelected={selectedUser === member.name}
             onClick={() => handleAvatarClick(member.name)}
           />
