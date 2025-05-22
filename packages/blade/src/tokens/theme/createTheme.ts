@@ -177,6 +177,12 @@ const getOnLightOverrides = (
           subtle: brandColors[200],
         },
       },
+      border: {
+        primary: {
+          normal: brandColors[600],
+          muted: brandColors.a200,
+        },
+      },
       icon: {
         primary: {
           normal: brandColors[600],
@@ -274,6 +280,12 @@ const getOnDarkOverrides = (
         primary: {
           intense: brandColors[600],
           subtle: brandColors[200],
+        },
+      },
+      border: {
+        primary: {
+          normal: brandColors[600],
+          muted: brandColors.a200,
         },
       },
       icon: {
