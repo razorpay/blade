@@ -4,6 +4,7 @@ import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { SearchInputProps } from './SearchInput';
 import { SearchInput as SearchInputComponent } from './SearchInput';
+import { FilterSearchInput as FilterSearchInputComponent } from './FilterSearchInput';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -445,3 +446,75 @@ const SearchInputWithTableTemplate: StoryFn<typeof SearchInputComponent> = () =>
 
 export const SearchInputWithTable = SearchInputWithTableTemplate.bind({});
 SearchInputWithTable.storyName = 'With Table';
+
+const SearchInputWithSideDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [isFetching, setIsFetching] = React.useState(false);
+
+  // Set a timeout to simulate fetching data
+  React.useEffect(() => {
+    if (searchTerm.length > 0) {
+      setIsFetching(true);
+      setTimeout(() => {
+        setIsFetching(false);
+      }, 1000);
+    }
+  }, [searchTerm]);
+
+  const popularItems = [
+    { title: 'Transactions', icon: TransactionsIcon },
+    { title: 'Settlements', icon: SettlementsIcon },
+    { title: 'Account & Settings', icon: SettingsIcon },
+  ];
+  const filteredItems = menuItems.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  return (
+    <Dropdown>
+      <FilterSearchInputComponent
+        label="Search"
+        placeholder="Search here"
+        {...args}
+        onChange={({ value }) => setSearchTerm(value as string)}
+      />
+
+      <DropdownOverlay>
+        {isFetching ? (
+          <BaseBox display="flex" justifyContent="center" padding="spacing.4">
+            <Spinner accessibilityLabel="Fetching data" />
+          </BaseBox>
+        ) : (
+          <ActionList>
+            {searchTerm.length === 0 ? (
+              <ActionListSection title="Popular Searches">
+                {popularItems.map((item, index) => (
+                  <ActionListItem
+                    key={index}
+                    title={item.title}
+                    value={item.title}
+                    leading={<ActionListItemIcon icon={item.icon} />}
+                  />
+                ))}
+              </ActionListSection>
+            ) : (
+              <ActionListSection title={`${filteredItems.length} items found`}>
+                {filteredItems.map((item, index) => (
+                  <ActionListItem
+                    key={index}
+                    title={item.title}
+                    value={item.title}
+                    leading={<ActionListItemIcon icon={item.icon} />}
+                  />
+                ))}
+              </ActionListSection>
+            )}
+          </ActionList>
+        )}
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+export const SearchInputWithSideDropdown = SearchInputWithSideDropdownTemplate.bind({});
+SearchInputWithSideDropdown.storyName = 'With Side Dropdown';
