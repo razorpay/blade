@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 const PROJECT_ROOT_DIRECTORY = join(__dirname, '..');
 
 // Cursor Rules Tokens
-const CURSOR_RULES_VERSION = '0.0.6';
+const CURSOR_RULES_VERSION = '0.0.7';
 const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
 
 const CURSOR_RULES_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'cursorRules');
