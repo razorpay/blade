@@ -45,8 +45,49 @@ jobs:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
-      - name: Run Unit Tests
-        run: yarn test
+      - name: Run Unit Tests with Coverage
+        run: yarn test 
         working-directory: packages/blade
         env:
           SHARD: ${{ matrix.shard }}
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report-${{ matrix.shard }}
+          path: packages/blade/coverage
+          retention-days: 1
+
+  coverage-report:
+    name: Generate Coverage Report
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Download Coverage Reports
+        uses: actions/download-artifact@v3
+        with:
+          path: coverage-reports
+      - name: Install Coverage Merge Dependencies
+        run: yarn add -D nyc
+      - name: Merge Coverage Reports
+        run: |
+          mkdir -p .nyc_output
+          cp coverage-reports/coverage-report-*/coverage-final.json .nyc_output/
+          npx nyc report --reporter=json
+          mkdir -p packages/blade/coverage
+          cp coverage/coverage-final.json packages/blade/coverage/
+      - name: Report Coverage
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          github-token: ${{ secrets.CI_BOT_TOKEN }}
+          coverage-file: ./packages/blade/coverage/coverage-final.json
+          base-coverage-file: ./packages/blade/coverage/coverage-final.json
