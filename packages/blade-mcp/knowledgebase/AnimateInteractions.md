@@ -247,12 +247,7 @@ import {
 const TapRevealExample = () => {
   return (
     <AnimateInteractions motionTriggers={['tap']}>
-      <Card
-        width="400px"
-        padding="spacing.7"
-        backgroundColor="surface.background.gray.moderate"
-        cursor="pointer"
-      >
+      <Card width="400px" padding="spacing.7" backgroundColor="surface.background.gray.moderate">
         <CardBody>
           <Heading as="h2" size="large" marginBottom="spacing.4">
             Click me to reveal more

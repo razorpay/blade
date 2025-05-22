@@ -293,9 +293,7 @@ const AppNavigation = () => {
         /* Desktop View */
         <>
           <TopNavBrand>
-            <BladeLink href="/home">
-              <img src="/logo.svg" alt="Company Logo" width="120" height="32" />
-            </BladeLink>
+            <BladeLink href="/home">Home</BladeLink>
           </TopNavBrand>
 
           <TopNavContent>
@@ -406,7 +404,6 @@ const AppNavigation = () => {
                   <Text color="surface.text.gray.subtle">Settings</Text>
                 </MenuItem>
                 <MenuItem color="negative" onClick={() => navigate('/logout')}>
-                >
                   <Text color="feedback.text.negative.intense">Logout</Text>
                 </MenuItem>
               </MenuOverlay>

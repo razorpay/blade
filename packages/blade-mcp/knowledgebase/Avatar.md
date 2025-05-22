@@ -255,7 +255,6 @@ const InteractiveAvatarExample = () => {
           <Avatar
             key={user.id}
             name={user.name}
-            color={user.color}
             size="medium"
             isSelected={selectedIndex === index}
             onClick={() => handleAvatarClick(index, user.id)}
