@@ -120,9 +120,8 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.fontSize = 100;
       props.lineHeight = 50;
       props.fontWeight = 'regular';
+      props.fontStyle = 'italic';
     }
-    //TODO: need to check this we need to remove fontstyle italic for caption
-    props.fontStyle = 'italic';
   }
 
   return props;
