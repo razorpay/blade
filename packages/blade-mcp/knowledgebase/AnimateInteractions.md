@@ -1,10 +1,13 @@
 ## Component Name
+
 AnimateInteractions
 
 ## Description
+
 AnimateInteractions is a component that allows you to animate child components based on interactions with the parent element. It acts similar to the CSS pattern `.parent:hover .child {}`, enabling effects like revealing elements, adding movement, or scaling components when a user interacts with a container.
 
 ## TypeScript Types
+
 The following types represent the props that the AnimateInteractions component accepts. These types allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -24,31 +27,32 @@ type AnimateInteractionsProps = {
 
   /**
    * Determines what interactions will trigger the animations of children.
-   * 
+   *
    * Possible values:
    * - 'hover': Animations trigger when the parent is hovered
    * - 'focus': Animations trigger when the parent receives focus
    * - 'tap': Animations trigger when the parent is tapped/clicked
    * - 'mount': Animations trigger when the component mounts
    * - 'in-view': Animations trigger when the component enters the viewport
-   * 
+   *
    * @default ['hover']
    */
   motionTriggers?: MotionTriggersType[];
-}
+};
 ```
 
 ## Examples
 
 ### Basic Card with Animated Buttons
+
 This example shows a card that reveals action buttons when hovered.
 
 ```tsx
 import React from 'react';
-import { 
+import {
   AnimateInteractions,
   Move,
-  Card, 
+  Card,
   CardBody,
   Box,
   Heading,
@@ -73,9 +77,7 @@ const AnimatedCardExample = () => {
                   without coding on a custom branded store
                 </Heading>
               </Heading>
-              <Text>
-                Hover over this card to see the buttons animate in from below
-              </Text>
+              <Text>Hover over this card to see the buttons animate in from below</Text>
             </Box>
 
             <Move motionTriggers={['on-animate-interactions']}>
@@ -83,7 +85,7 @@ const AnimatedCardExample = () => {
                 display="flex"
                 gap="spacing.4"
                 justifyContent="flex-end"
-                padding={['spacing.4', 'spacing.6']}
+                padding="spacing.4"
                 elevation="highRaised"
               >
                 <Button variant="secondary" icon={ExternalLinkIcon} iconPosition="right">
@@ -103,16 +105,17 @@ export default AnimatedCardExample;
 ```
 
 ### Image with Hover Overlay
+
 This example demonstrates an image that reveals an overlay with a button when hovered.
 
 ```tsx
 import React from 'react';
-import { 
-  AnimateInteractions, 
+import {
+  AnimateInteractions,
   Fade,
   Box,
   Button,
-  ExternalLinkIcon 
+  ExternalLinkIcon,
 } from '@razorpay/blade/components';
 
 const AnimatedImageOverlayExample = () => {
@@ -163,18 +166,19 @@ export default AnimatedImageOverlayExample;
 ```
 
 ### Interactive Card with Multiple Triggers
+
 This example shows a card that responds to both hover and focus interactions, using scale animation.
 
 ```tsx
 import React from 'react';
-import { 
+import {
   AnimateInteractions,
   Scale,
   Card,
   CardBody,
   Box,
   Heading,
-  Text
+  Text,
 } from '@razorpay/blade/components';
 
 const MultiTriggerAnimationExample = () => {
@@ -182,10 +186,9 @@ const MultiTriggerAnimationExample = () => {
     <AnimateInteractions motionTriggers={['hover', 'focus']}>
       <Card
         width="400px"
-        padding="spacing.0"
+        padding="spacing.5"
         backgroundColor="surface.background.gray.moderate"
         onClick={() => console.log('Card clicked')}
-        tabIndex={0}
       >
         <CardBody>
           <Box overflow="auto">
@@ -197,8 +200,8 @@ const MultiTriggerAnimationExample = () => {
               <Box display="flex" gap="spacing.4" marginTop="spacing.4">
                 <Box flex="2">
                   <Text>
-                    This card responds to both hover and keyboard focus. 
-                    Try hovering over it or pressing Tab to focus on it.
+                    This card responds to both hover and keyboard focus. Try hovering over it or
+                    pressing Tab to focus on it.
                   </Text>
                 </Box>
 
@@ -225,27 +228,28 @@ export default MultiTriggerAnimationExample;
 ```
 
 ### Tap to Reveal Information
+
 This example shows content that is revealed when the user clicks/taps on a card.
 
 ```tsx
 import React from 'react';
-import { 
+import {
   AnimateInteractions,
   Fade,
-  Card, 
+  Card,
   CardBody,
   Box,
   Heading,
   Text,
-  Button
+  Button,
 } from '@razorpay/blade/components';
 
 const TapRevealExample = () => {
   return (
     <AnimateInteractions motionTriggers={['tap']}>
-      <Card 
-        width="400px" 
-        padding="spacing.6" 
+      <Card
+        width="400px"
+        padding="spacing.6"
         backgroundColor="surface.background.gray.moderate"
         cursor="pointer"
       >
@@ -253,15 +257,19 @@ const TapRevealExample = () => {
           <Heading as="h2" size="large" marginBottom="spacing.4">
             Click me to reveal more
           </Heading>
-          
+
           <Text>This card reveals additional information when clicked/tapped.</Text>
-          
+
           <Fade motionTriggers={['on-animate-interactions']}>
-            <Box marginTop="spacing.6" padding="spacing.4" backgroundColor="surface.background.gray.subtle">
+            <Box
+              marginTop="spacing.6"
+              padding="spacing.4"
+              backgroundColor="surface.background.gray.subtle"
+            >
               <Text weight="semibold">Additional Information</Text>
               <Text marginTop="spacing.2">
-                This content is revealed when the user interacts with the card by clicking or tapping.
-                The 'tap' trigger works well for mobile experiences.
+                This content is revealed when the user interacts with the card by clicking or
+                tapping. The 'tap' trigger works well for mobile experiences.
               </Text>
               <Button marginTop="spacing.4">Take Action</Button>
             </Box>
@@ -276,23 +284,18 @@ export default TapRevealExample;
 ```
 
 ### In-View Animation on Scroll
+
 This example shows content that animates when it scrolls into the viewport.
 
 ```tsx
 import React from 'react';
-import { 
-  AnimateInteractions,
-  Move,
-  Box,
-  Heading,
-  Text
-} from '@razorpay/blade/components';
+import { AnimateInteractions, Move, Box, Heading, Text } from '@razorpay/blade/components';
 
 const ScrollInViewExample = () => {
   return (
     <AnimateInteractions motionTriggers={['in-view']}>
-      <Box 
-        padding="spacing.6" 
+      <Box
+        padding="spacing.6"
         backgroundColor="surface.background.gray.moderate"
         borderRadius="medium"
         width="100%"
@@ -301,23 +304,23 @@ const ScrollInViewExample = () => {
         <Heading as="h2" size="large">
           Scroll-triggered Animation
         </Heading>
-        
+
         <Text marginTop="spacing.4">
-          This content animates when it scrolls into the viewport. Useful for creating engaging 
+          This content animates when it scrolls into the viewport. Useful for creating engaging
           scroll experiences on landing pages and long-form content.
         </Text>
-        
+
         <Move motionTriggers={['on-animate-interactions']}>
-          <Box 
-            marginTop="spacing.6" 
-            padding="spacing.4" 
-            backgroundColor="surface.background.brand.subtle"
+          <Box
+            marginTop="spacing.6"
+            padding="spacing.4"
+            backgroundColor="surface.background.primary.subtle"
             borderRadius="medium"
           >
             <Text weight="semibold">I animate when scrolled into view!</Text>
             <Text marginTop="spacing.2">
-              The 'in-view' trigger is perfect for creating scroll-based animations 
-              that engage users as they move down the page.
+              The 'in-view' trigger is perfect for creating scroll-based animations that engage
+              users as they move down the page.
             </Text>
           </Box>
         </Move>
@@ -327,4 +330,4 @@ const ScrollInViewExample = () => {
 };
 
 export default ScrollInViewExample;
-``` 
+```

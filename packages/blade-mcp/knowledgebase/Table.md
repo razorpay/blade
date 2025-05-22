@@ -487,7 +487,7 @@ const PaymentTable = () => {
             selectedTitle={`${selectedIds.length} Payments Selected`}
           >
             <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2" leadingIcon={PlusIcon}>
+              <Button variant="secondary" marginRight="spacing.2" icon={PlusIcon}>
                 Export
               </Button>
               <Button>Process Selected</Button>

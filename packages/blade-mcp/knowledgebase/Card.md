@@ -295,9 +295,10 @@ import {
   Text,
   UsersIcon,
 } from '@razorpay/blade/components';
+import React, { useState } from 'react';
 
 const InteractiveCardExample = () => {
-  const [isSelected, setIsSelected] = React.useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
   return (
     <Card

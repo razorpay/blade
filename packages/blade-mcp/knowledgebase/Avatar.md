@@ -234,7 +234,7 @@ const InteractiveAvatarExample = () => {
     { id: 1, name: 'John Doe', color: 'primary' },
     { id: 2, name: 'Jane Smith', color: 'positive' },
     { id: 3, name: 'Bob Miller', color: 'negative' },
-    { id: 4, name: 'Alice Walker', color: 'notice' },
+    { id: 4, name: 'Alice Walker', color: 'primary' },
   ];
 
   // Handle avatar click
@@ -285,8 +285,8 @@ const AvatarGroupExample = () => {
     { name: 'John Doe', color: 'primary' },
     { name: 'Jane Smith', color: 'positive' },
     { name: 'Bob Miller', color: 'negative' },
-    { name: 'Alice Walker', color: 'notice' },
-    { name: 'David Clark', color: 'information' },
+    { name: 'Alice Walker', color: 'primary' },
+    { name: 'David Clark', color: 'primary' },
   ];
 
   return (
@@ -334,8 +334,8 @@ const InteractiveAvatarGroupExample = () => {
     { id: 1, name: 'John Doe', color: 'primary' },
     { id: 2, name: 'Jane Smith', color: 'positive' },
     { id: 3, name: 'Bob Miller', color: 'negative' },
-    { id: 4, name: 'Alice Walker', color: 'notice' },
-    { id: 5, name: 'David Clark', color: 'information' },
+    { id: 4, name: 'Alice Walker', color: 'primary' },
+    { id: 5, name: 'David Clark', color: 'primary' },
   ];
 
   const handleAvatarClick = (name: string) => {

@@ -181,7 +181,7 @@ const TopDirectionExample = () => {
       padding="spacing.4"
       borderWidth="thin"
       borderStyle="solid"
-      borderColor="border.normal"
+      borderColor="surface.border.gray.normal"
     >
       <Text marginBottom="spacing.4">
         The content below will expand upward instead of downward.

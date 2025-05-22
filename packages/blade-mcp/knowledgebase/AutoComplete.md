@@ -247,7 +247,6 @@ function BasicAutoCompleteExample() {
           value={selectedItem}
           inputValue={inputValue}
           onChange={handleSelectionChange}
-          onInputChange={handleInputChange}
           filter={filterFruits}
           formatValue={formatFruitValue}
           helpText="Start typing to see matching fruits"
@@ -282,7 +281,6 @@ import {
   Box,
   Text,
   Spinner,
-  LocationIcon,
 } from '@razorpay/blade/components';
 
 function AsyncAutoCompleteExample() {
@@ -362,11 +360,9 @@ function AsyncAutoCompleteExample() {
           label="Search Cities"
           name="city"
           placeholder="Enter city or country name..."
-          icon={LocationIcon}
           value={selectedCity}
           inputValue={inputValue}
           onChange={handleSelectionChange}
-          onInputChange={handleInputChange}
           formatValue={formatCityValue}
           helpText="Type at least 2 characters to search"
           validationState={error ? 'error' : 'none'}
@@ -377,7 +373,7 @@ function AsyncAutoCompleteExample() {
         <DropdownOverlay>
           {isLoading ? (
             <Box padding="spacing.4" display="flex" justifyContent="center">
-              <Spinner size="medium" />
+              <Spinner size="medium" accessibilityLabel="Loading cities" />
             </Box>
           ) : cities.length === 0 ? (
             <Box padding="spacing.4" textAlign="center">
@@ -389,7 +385,7 @@ function AsyncAutoCompleteExample() {
                 <ActionListItem
                   key={city.id}
                   title={city.name}
-                  subtitle={city.country}
+                  description={city.country}
                   value={city.id}
                 />
               ))}
@@ -510,7 +506,6 @@ function CreatableAutoCompleteExample() {
           value={selectedTags}
           inputValue={inputValue}
           onChange={handleSelectionChange}
-          onInputChange={handleInputChange}
           filter={filterTags}
           formatValue={formatTagValue}
           shouldKeepInputValueOnSelect={true}
@@ -526,7 +521,7 @@ function CreatableAutoCompleteExample() {
                   title={`Create "${inputValue}"`}
                   value={`create:${inputValue}`}
                   leading={<PlusIcon />}
-                  onSelect={handleCreateTag}
+                  onClick={handleCreateTag}
                 />
               </ActionListSection>
             )}
@@ -555,9 +550,8 @@ function CreatableAutoCompleteExample() {
             selectedTagNames.map((tagName, index) => (
               <Box
                 key={index}
-                backgroundColor="surface.background.primary.subtle"
-                color="text.primary.normal"
-                padding="spacing.1 spacing.3"
+                backgroundColor="surface.background.gray.subtle"
+                padding={['spacing.1', 'spacing.3']}
                 borderRadius="medium"
                 fontSize="small"
               >
@@ -565,9 +559,7 @@ function CreatableAutoCompleteExample() {
               </Box>
             ))
           ) : (
-            <Text size="small" color="text.neutral.muted">
-              No tags selected
-            </Text>
+            <Text size="small">No tags selected</Text>
           )}
         </Box>
       </Box>

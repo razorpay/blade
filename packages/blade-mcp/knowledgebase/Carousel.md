@@ -191,7 +191,6 @@ const BasicCarouselExample = () => {
         navigationButtonPosition="bottom"
         indicatorVariant="gray"
         showIndicators={true}
-        testID="testimonial-carousel"
       >
         {testimonials.map((testimonial) => (
           <CarouselItem key={testimonial.id}>
@@ -261,7 +260,11 @@ const AutoPlayCarouselExample = () => {
   ];
 
   return (
-    <Box backgroundColor="surface.background.gray.subtle" padding="spacing.5" borderRadius="medium">
+    <Box
+      backgroundColor="surface.background.gray.moderate"
+      padding="spacing.5"
+      borderRadius="medium"
+    >
       <Carousel
         accessibilityLabel="Featured testimonials"
         autoPlay={true}
@@ -281,7 +284,7 @@ const AutoPlayCarouselExample = () => {
               height="100%"
               padding="spacing.5"
               elevation="lowRaised"
-              backgroundColor="surface.background.gray.intense"
+              backgroundColor="surface.background.gray.subtle"
             >
               <CardBody>
                 <Heading size="medium" marginBottom="spacing.3">
@@ -357,7 +360,11 @@ const ControlledCarouselExample = () => {
   ];
 
   return (
-    <Box backgroundColor="surface.background.gray.normal" padding="spacing.5" borderRadius="medium">
+    <Box
+      backgroundColor="surface.background.gray.moderate"
+      padding="spacing.5"
+      borderRadius="medium"
+    >
       <Box
         display="flex"
         justifyContent="space-between"
@@ -411,7 +418,7 @@ const ControlledCarouselExample = () => {
                 </Text>
               </CardBody>
               <CardFooter marginTop="spacing.4">
-                <Text size="small" color="text.subtle">
+                <Text size="small" color="surface.text.gray.muted">
                   Testimonial {index + 1} of {testimonials.length}
                 </Text>
               </CardFooter>
@@ -443,9 +450,9 @@ import {
   CreditCardIcon,
   UpiIcon,
   WalletIcon,
-  NetbankingIcon,
-  EmiIcon,
-  PayLaterIcon,
+  BankIcon,
+  CalendarIcon,
+  ClockIcon,
 } from '@razorpay/blade/components';
 
 const MultiItemSelectableCarouselExample = () => {
@@ -455,9 +462,9 @@ const MultiItemSelectableCarouselExample = () => {
     { id: 'card', name: 'Credit/Debit Card', icon: CreditCardIcon },
     { id: 'upi', name: 'UPI', icon: UpiIcon },
     { id: 'wallet', name: 'Wallet', icon: WalletIcon },
-    { id: 'netbanking', name: 'Netbanking', icon: NetbankingIcon },
-    { id: 'emi', name: 'EMI', icon: EmiIcon },
-    { id: 'paylater', name: 'Pay Later', icon: PayLaterIcon },
+    { id: 'netbanking', name: 'Netbanking', icon: BankIcon },
+    { id: 'emi', name: 'EMI', icon: CalendarIcon },
+    { id: 'paylater', name: 'Pay Later', icon: ClockIcon },
   ];
 
   const handleSelect = (id: string) => {
@@ -472,9 +479,9 @@ const MultiItemSelectableCarouselExample = () => {
 
       <Carousel
         accessibilityLabel="Payment methods carousel"
-        visibleItems={{ base: 1, s: 2, m: 3, l: 4 }}
+        visibleItems={3}
         navigationButtonPosition="side"
-        navigationButtonVariant="outlined"
+        navigationButtonVariant="stroked"
         indicatorVariant="gray"
         carouselItemWidth={{ base: '80%', s: '45%', m: '30%', l: '22%' }}
         shouldAddStartEndSpacing={false}
@@ -491,9 +498,7 @@ const MultiItemSelectableCarouselExample = () => {
                 padding="spacing.4"
                 elevation={isSelected ? 'midRaised' : 'lowRaised'}
                 backgroundColor={
-                  isSelected
-                    ? 'surface.background.primary.subtle'
-                    : 'surface.background.gray.intense'
+                  isSelected ? 'surface.background.gray.intense' : 'surface.background.gray.subtle'
                 }
                 borderWidth="thin"
                 borderStyle="solid"
@@ -515,7 +520,7 @@ const MultiItemSelectableCarouselExample = () => {
                       color={isSelected ? 'interactive.icon.primary.normal' : undefined}
                     />
                     <Text
-                      weight={isSelected ? 'semibold' : 'normal'}
+                      weight={isSelected ? 'semibold' : 'regular'}
                       color={isSelected ? 'interactive.text.primary.normal' : undefined}
                     >
                       {method.name}
@@ -581,8 +586,8 @@ const AutoPlayProductCarouselExample = () => {
               height="180px"
               backgroundColor={
                 index % 2 === 0
-                  ? 'surface.background.primary.subtle'
-                  : 'surface.background.gray.normal'
+                  ? 'surface.background.gray.intense'
+                  : 'surface.background.gray.moderate'
               }
             >
               <CardBody>

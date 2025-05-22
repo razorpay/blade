@@ -151,8 +151,8 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   HomeIcon,
-  PaymentIcon,
-  ProductIcon,
+  CreditCardIcon,
+  FolderIcon,
 } from '@razorpay/blade/components';
 import { useLocation, Link as RouterLink, matchPath } from 'react-router-dom';
 
@@ -194,8 +194,8 @@ const DynamicBreadcrumb = () => {
       let icon = null;
       let label = segment.charAt(0).toUpperCase() + segment.slice(1);
 
-      if (segment === 'products') icon = ProductIcon;
-      if (segment === 'payments') icon = PaymentIcon;
+      if (segment === 'products') icon = FolderIcon;
+      if (segment === 'payments') icon = CreditCardIcon;
 
       items.push(
         <RouterBreadcrumbItem key={currentPath} to={currentPath} icon={icon}>

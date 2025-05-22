@@ -36,7 +36,7 @@ function AccessibleCheckboxExample() {
       </Text>
 
       <Box display="flex" alignItems="center" gap="spacing.3">
-        <Checkbox id="darkMode">
+        <Checkbox>
           <VisuallyHidden>
             <Text>Toggle dark mode</Text>
           </VisuallyHidden>

@@ -84,7 +84,7 @@ function CodeExample() {
       {/* Non-highlighted code with custom color */}
       <Text>
         Status:{' '}
-        <Code isHighlighted={false} color="feedback.text.success.intense" weight="bold">
+        <Code isHighlighted={false} color="feedback.text.positive.intense" weight="bold">
           COMPLETED
         </Code>
       </Text>

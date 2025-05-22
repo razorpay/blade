@@ -353,7 +353,7 @@ const ResponsiveCardLayout = () => {
             right="spacing.2"
             backgroundColor="surface.background.primary.subtle"
             borderRadius="medium"
-            padding="spacing.1 spacing.2"
+            padding="spacing.2"
           >
             <Text size="small" color="interactive.text.primary.normal">
               Popular
@@ -366,9 +366,12 @@ const ResponsiveCardLayout = () => {
             justifyContent="space-between"
             marginBottom="spacing.3"
           >
-            <Heading size="small" color="surface.text.staticWhite.normal">
+            <Text
+              fontWeight="semibold"
+              color="surface.text.staticWhite.normal"
+            >
               Pro Plan
-            </Heading>
+            </Text>
             <Box
               backgroundColor="surface.background.gray.intense"
               padding="spacing.2"
@@ -483,8 +486,8 @@ const AdvancedPositioningExample = () => {
         <Box position="relative" height="100px" marginBottom="spacing.4">
           <Box
             position="absolute"
-            left="0"
-            top="0"
+            left="spacing.0"
+            top="spacing.0"
             width="80px"
             height="80px"
             backgroundColor="surface.background.primary.intense"

@@ -437,6 +437,7 @@ import {
   CheckIcon,
   ClockIcon,
   CloseIcon,
+  TextInput,
 } from '@razorpay/blade/components';
 
 const AutoCompleteDropdownExample = () => {
@@ -482,21 +483,22 @@ const AutoCompleteDropdownExample = () => {
           label="Select Fruits"
           placeholder="Search fruits..."
           value={selectedFruits}
-          onChange={(values) => {
-            if (values) {
-              setSelectedFruits(values.values);
+          onChange={(args) => {
+            if (args) {
+              setSelectedFruits(args.values);
+              // Update query when input changes
+              if (args.inputValue !== undefined) {
+                setQuery(args.inputValue);
+              }
             }
-          }}
-          onInputChange={(text) => {
-            setQuery(text || '');
           }}
           maxRows="multiple"
           size="medium"
         />
 
-        <DropdownOverlay maxHeight="300px">
+        <DropdownOverlay>
           <DropdownHeader>
-            <AutoComplete
+            <TextInput
               label="Search Fruits"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -523,127 +525,6 @@ const AutoCompleteDropdownExample = () => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </Box>
-  );
-};
-```
-
-### FilterChip Dropdown
-
-This example demonstrates the FilterChip dropdown for compact filtering interfaces, supporting both single and multiple selection.
-
-```tsx
-import React, { useState } from 'react';
-import {
-  Dropdown,
-  DropdownOverlay,
-  FilterChipSelectInput,
-  FilterChipGroup,
-  ActionList,
-  ActionListItem,
-  Box,
-  Text,
-  CheckIcon,
-  ClockIcon,
-  CloseIcon,
-  FilterChipDatePicker,
-} from '@razorpay/blade/components';
-
-const FilterChipDropdownExample = () => {
-  // Single selection filter
-  const [statusFilter, setStatusFilter] = useState<string>();
-
-  // Multiple selection filter
-  const [categoryFilters, setCategoryFilters] = useState<string[]>([]);
-
-  return (
-    <Box>
-      <Text marginBottom="spacing.3">Filter transactions by:</Text>
-
-      <FilterChipGroup>
-        {/* Single selection filter chip */}
-        <Dropdown>
-          <FilterChipSelectInput
-            label="Status"
-            value={statusFilter}
-            onClearButtonClick={() => setStatusFilter(undefined)}
-          />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem
-                onClick={({ name }) => setStatusFilter(name)}
-                isSelected={statusFilter === 'completed'}
-                title="Completed"
-                value="completed"
-              />
-              <ActionListItem
-                onClick={({ name }) => setStatusFilter(name)}
-                isSelected={statusFilter === 'pending'}
-                title="Pending"
-                value="pending"
-              />
-              <ActionListItem
-                onClick={({ name }) => setStatusFilter(name)}
-                isSelected={statusFilter === 'failed'}
-                title="Failed"
-                value="failed"
-              />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-
-        {/* Multiple selection filter chip */}
-        <Dropdown selectionType="multiple">
-          <FilterChipSelectInput
-            label="Category"
-            value={categoryFilters}
-            onClearButtonClick={() => setCategoryFilters([])}
-          />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem
-                onClick={({ name }) => {
-                  if (categoryFilters.includes(name)) {
-                    setCategoryFilters(categoryFilters.filter((cat) => cat !== name));
-                  } else {
-                    setCategoryFilters([...categoryFilters, name]);
-                  }
-                }}
-                isSelected={categoryFilters.includes('food')}
-                title="Food & Dining"
-                value="food"
-              />
-              <ActionListItem
-                onClick={({ name }) => {
-                  if (categoryFilters.includes(name)) {
-                    setCategoryFilters(categoryFilters.filter((cat) => cat !== name));
-                  } else {
-                    setCategoryFilters([...categoryFilters, name]);
-                  }
-                }}
-                isSelected={categoryFilters.includes('travel')}
-                title="Travel"
-                value="travel"
-              />
-              <ActionListItem
-                onClick={({ name }) => {
-                  if (categoryFilters.includes(name)) {
-                    setCategoryFilters(categoryFilters.filter((cat) => cat !== name));
-                  } else {
-                    setCategoryFilters([...categoryFilters, name]);
-                  }
-                }}
-                isSelected={categoryFilters.includes('shopping')}
-                title="Shopping"
-                value="shopping"
-              />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-
-        {/* Date range filter chip (just for demonstration) */}
-        <FilterChipDatePicker label="Date Range" selectionType="range" />
-      </FilterChipGroup>
     </Box>
   );
 };

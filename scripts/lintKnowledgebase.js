@@ -88,6 +88,33 @@ function isCodeBlockInComment(content, blockStart) {
   return false;
 }
 
+// Function to process and add errors to the file errors map
+function addErrorsToMap(file, typeErrors, fileErrorsMap) {
+  // Filter and process errors
+  const processedErrors = typeErrors
+    .map((error) => {
+      if (error.includes('Expression expected') || error.includes('Cannot find module')) {
+        return null;
+      }
+      return error.trim();
+    })
+    .filter(Boolean);
+
+  // If we have errors to add after filtering
+  if (processedErrors.length > 0) {
+    // Initialize the array if this is the first time we're seeing this file
+    if (!fileErrorsMap[file]) {
+      fileErrorsMap[file] = [];
+    }
+
+    // Add all errors for this code block to the file's error array
+    fileErrorsMap[file].push(...processedErrors);
+  }
+}
+
+// Object to store errors by file path
+const fileErrorsMap = {};
+
 for (const file of filesToLint) {
   console.log(file);
   const fileContent = fs.readFileSync(file, 'utf8');
@@ -111,19 +138,17 @@ for (const file of filesToLint) {
   for (const codeBlock of validCodeBlocks) {
     const { typeErrors } = getTypeErrors(codeBlock.code);
     if (typeErrors.length > 0) {
-      errors.push({
-        file,
-        errors: typeErrors
-          .map((error) => {
-            if (error.includes('Expression expected') || error.includes('Cannot find module')) {
-              return null;
-            }
-            return error.trim();
-          })
-          .filter(Boolean),
-      });
+      addErrorsToMap(file, typeErrors, fileErrorsMap);
     }
   }
+}
+
+// Convert the map to the final errors array format
+for (const [file, fileErrors] of Object.entries(fileErrorsMap)) {
+  errors.push({
+    file,
+    errors: fileErrors,
+  });
 }
 
 // write to fs

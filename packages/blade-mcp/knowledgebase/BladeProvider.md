@@ -89,7 +89,16 @@ This example demonstrates how to set up the BladeProvider at the root of your ap
 
 ```tsx
 import React from 'react';
-import { BladeProvider, Box, Text, Dropdown, useTheme, Heading } from '@razorpay/blade/components';
+import {
+  BladeProvider,
+  Box,
+  Text,
+  Dropdown,
+  useTheme,
+  Heading,
+  Button,
+  TextInput,
+} from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
 
 // Theme switcher component
@@ -98,33 +107,29 @@ const ThemeSwitcher = () => {
 
   return (
     <Box padding="spacing.5">
-      <Text variant="bodyMedium" marginBottom="spacing.3">
+      <Text variant="body" marginBottom="spacing.3">
         Current theme: {colorScheme}
       </Text>
 
       <Dropdown
-        label="Select Theme"
-        value={colorScheme}
-        onChange={(value) => setColorScheme(value)}
+        selectionType="single"
+        defaultValue={colorScheme}
+        onSelectionChange={({ values }) => setColorScheme(values[0])}
       >
-        <Dropdown.Button>
-          {colorScheme === 'light'
-            ? 'Light Theme'
-            : colorScheme === 'dark'
-            ? 'Dark Theme'
-            : 'System Theme'}
-        </Dropdown.Button>
-        <Dropdown.Overlay>
-          <Dropdown.Item value="light" onClick={() => setColorScheme('light')}>
-            Light
-          </Dropdown.Item>
-          <Dropdown.Item value="dark" onClick={() => setColorScheme('dark')}>
-            Dark
-          </Dropdown.Item>
-          <Dropdown.Item value="system" onClick={() => setColorScheme('system')}>
-            System
-          </Dropdown.Item>
-        </Dropdown.Overlay>
+        <Dropdown.Trigger>
+          <Button>
+            {colorScheme === 'light'
+              ? 'Light Theme'
+              : colorScheme === 'dark'
+              ? 'Dark Theme'
+              : 'System Theme'}
+          </Button>
+        </Dropdown.Trigger>
+        <Dropdown.Menu>
+          <Dropdown.MenuItem value="light">Light</Dropdown.MenuItem>
+          <Dropdown.MenuItem value="dark">Dark</Dropdown.MenuItem>
+          <Dropdown.MenuItem value="system">System</Dropdown.MenuItem>
+        </Dropdown.Menu>
       </Dropdown>
     </Box>
   );
@@ -164,7 +169,15 @@ This example demonstrates how to create and use a custom theme with BladeProvide
 
 ```tsx
 import React from 'react';
-import { BladeProvider, Box, Text, Heading, Button, Input, Link } from '@razorpay/blade/components';
+import {
+  BladeProvider,
+  Box,
+  Text,
+  Heading,
+  Button,
+  TextInput,
+  Link,
+} from '@razorpay/blade/components';
 import { createTheme } from '@razorpay/blade/tokens';
 
 // Create a custom theme with a teal brand color
@@ -187,13 +200,18 @@ const CustomThemeExample = () => {
 
         <Box display="flex" flexDirection="column" gap="spacing.4">
           {/* Text input examples */}
-          <Input
+          <TextInput
             label="Email Address"
             placeholder="Enter your email"
-            helperText="We'll never share your email with anyone else."
+            helpText="We'll never share your email with anyone else."
           />
 
-          <Input label="Password" type="password" placeholder="Enter your password" />
+          <TextInput
+            label="Password"
+            type="text"
+            inputMode="password"
+            placeholder="Enter your password"
+          />
 
           {/* Button examples showing primary, secondary and tertiary variants */}
           <Box display="flex" gap="spacing.3" marginTop="spacing.2">
