@@ -47,6 +47,14 @@ type SideNavProps = {
    * IMPORTANT: Avoid adding promotional items in this
    */
   banner?: React.ReactElement;
+  /**
+   * Position of the SideNav.
+   *
+   * It is position="fixed" by default with top="spacing.0" and left="spacing.0" and height="100%"
+   *
+   * @default 'fixed'
+   */
+  position?: StyledPropsBlade['position'];
 } & StyledPropsBlade &
   TestID;
 
