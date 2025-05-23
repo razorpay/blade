@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.12
+
+### Patch Changes
+
+- e6b88620: feat(SideNav): add default position note in knowledgebase
+
 ## 0.1.11
 
 ### Patch Changes
