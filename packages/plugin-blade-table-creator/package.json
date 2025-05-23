@@ -1,0 +1,19 @@
+{
+  "name": "table-creator",
+  "version": "1.0.0",
+  "description": "A Figma plugin for creating tables",
+  "main": "code.js",
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "dev": "vite build --watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.110.0",
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4"
+  }
+}
