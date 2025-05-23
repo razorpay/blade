@@ -19,6 +19,7 @@ import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
+import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -33,6 +34,7 @@ type GetInputStyles = Pick<
   | 'textAlign'
   | 'isDropdownTrigger'
   | 'valueComponentType'
+  | '_inputPosition'
 > & {
   isHovered?: boolean;
   isFocused?: boolean;
@@ -72,6 +74,7 @@ export const getInputBackgroundAndBorderStyles = ({
   isTextArea,
   isDropdownTrigger,
   isTableInputCell,
+  _inputPosition,
 }: Pick<
   GetInputStyles,
   | 'theme'
@@ -82,7 +85,11 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isTextArea'
   | 'isDropdownTrigger'
   | 'isTableInputCell'
+  | '_inputPosition'
 >): CSSObject => {
+  const inputGroupProps = useInputGroupContext();
+  const isWithinInputGroup = Object.keys(inputGroupProps).length > 0;
+
   // normal state
   const backgroundColorTokens = isTableInputCell
     ? baseInputBorderlessBackgroundColor
@@ -92,6 +99,7 @@ export const getInputBackgroundAndBorderStyles = ({
     ? theme.colors.transparent
     : getIn(theme.colors, baseInputBorderColor.default);
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
+  let zIndex = undefined;
 
   const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
 
@@ -105,15 +113,16 @@ export const getInputBackgroundAndBorderStyles = ({
   if (!isTableInputCell && validationState && validationState !== 'none') {
     borderColor = getIn(theme.colors, baseInputBorderColor[validationState]);
     borderWidth = getIn(theme.border.width, baseInputBorderWidth[validationState]);
+    zIndex = 1; // Prevent validation ring clipping by adjacent inputs in InputGroup
   } else if (validationState && validationState !== 'none') {
     backgroundColor = getIn(theme.colors, baseInputBorderlessBackgroundColor[validationState]);
   }
 
   return {
     backgroundColor,
-    borderRadius: makeBorderSize(
-      isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
-    ),
+    borderRadius: isWithinInputGroup
+      ? getBorderRadius({ theme, _inputPosition })
+      : makeBorderSize(isTableInputCell ? theme.border.radius.none : theme.border.radius.medium),
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
@@ -122,6 +131,7 @@ export const getInputBackgroundAndBorderStyles = ({
     position: 'relative',
     height: isDropdownTrigger && !isTextArea ? 'auto' : undefined,
     border: 'none',
+    zIndex,
     ...getBaseInputBorderStyles({ theme, borderColor, borderWidth, isFocused }),
   };
 };
@@ -262,4 +272,49 @@ export const getAnimatedBaseInputWrapperMaxHeight = ({
 
   // In expandable, max-height depends on the state
   return showAllTags ? baseInputWrapperMaxHeight[size] : baseInputHeight[size];
+};
+
+const getBorderRadius = ({
+  theme,
+  _inputPosition,
+}: {
+  theme: Theme;
+  _inputPosition: BaseInputWrapperProps['_inputPosition'];
+}) => {
+  if (!_inputPosition) return theme.border.radius.medium;
+
+  const { row, col } = _inputPosition;
+
+  const radius = theme.border.radius.medium;
+  const zero = theme.spacing[0];
+
+  /**
+   * Calculate border radius based on input position in group
+   * @param corner Corner abbreviation:
+   *   - tl: top-left
+   *   - tr: top-right
+   *   - br: bottom-right
+   *   - bl: bottom-left
+   */
+  const getCorner = (corner: 'tl' | 'tr' | 'br' | 'bl') => {
+    if (row === 'only' && col === 'only') return radius;
+
+    if (row === 'first') {
+      if (col === 'only') return corner === 'tl' || corner === 'tr' ? radius : zero;
+      if (col === 'first' && corner === 'tl') return radius;
+      if (col === 'last' && corner === 'tr') return radius;
+    }
+
+    if (row === 'last') {
+      if (col === 'only') return corner === 'bl' || corner === 'br' ? radius : zero;
+      if (col === 'first' && corner === 'bl') return radius;
+      if (col === 'last' && corner === 'br') return radius;
+    }
+
+    return zero;
+  };
+
+  return [getCorner('tl'), getCorner('tr'), getCorner('br'), getCorner('bl')]
+    .map((v) => makeBorderSize(v))
+    .join(' ');
 };

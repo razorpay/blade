@@ -230,6 +230,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
  */
 const PhoneNumberInput = assignWithoutSideEffects(React.forwardRef(_PhoneNumberInput), {
   displayName: 'PhoneNumberInput',
+  componentId: 'PhoneNumberInput',
 });
 
 export { PhoneNumberInput };
