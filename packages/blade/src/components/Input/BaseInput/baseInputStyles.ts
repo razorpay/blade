@@ -121,7 +121,7 @@ export const getInputBackgroundAndBorderStyles = ({
   return {
     backgroundColor,
     borderRadius: isWithinInputGroup
-      ? getBorderRadius({ theme, _inputPosition })
+      ? calculatePositionalBorderRadius({ theme, _inputPosition })
       : makeBorderSize(isTableInputCell ? theme.border.radius.none : theme.border.radius.medium),
     borderStyle: 'solid',
     display: 'flex',
@@ -274,7 +274,7 @@ export const getAnimatedBaseInputWrapperMaxHeight = ({
   return showAllTags ? baseInputWrapperMaxHeight[size] : baseInputHeight[size];
 };
 
-const getBorderRadius = ({
+const calculatePositionalBorderRadius = ({
   theme,
   _inputPosition,
 }: {
