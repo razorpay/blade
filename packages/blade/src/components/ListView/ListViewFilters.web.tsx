@@ -166,7 +166,7 @@ const ListViewFilters = ({
           </Box>
 
           <BaseBox display="flex" gap="spacing.4" alignItems="center">
-            {children && (
+            {children ? (
               <Box position="relative" display="inline-block">
                 <Button
                   variant="tertiary"
@@ -193,7 +193,7 @@ const ListViewFilters = ({
                   />
                 </Box>
               </Box>
-            )}
+            ) : null}
             {!isMobile && showSearchInput && (
               <Box width="256px">
                 <SearchInput
