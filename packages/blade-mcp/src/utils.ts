@@ -9,6 +9,12 @@ import { Analytics } from '@segment/analytics-node';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PROJECT_ROOT_DIRECTORY = join(__dirname, '..');
+const URLS = {
+  FIGMA_TO_CODE_URL: {
+    DEV: 'http://localhost:8888',
+    PROD: 'https://blade-chat-base.dev.razorpay.in',
+  },
+} as const;
 let cachedMachineId: string | null = null;
 
 const analyticsToolCallEventName = 'Blade MCP Tool Called';
@@ -201,6 +207,7 @@ export {
   hasOutDatedRules,
   getPackageJSONVersion,
   getBladeComponentsList,
+  URLS,
   handleError,
   sendAnalytics,
   analyticsToolCallEventName,

@@ -27,6 +27,12 @@ import {
   hiBladeToolSchema,
   hiBladeToolCallback,
 } from './tools/hiBlade.js';
+import {
+  getFigmaToCodeToolCallback,
+  getFigmaToCodeToolDescription,
+  getFigmaToCodeToolName,
+  getFigmaToCodeToolSchema,
+} from './tools/getFigmaToCode.js';
 import { getPackageJSONVersion } from './utils.js';
 
 Sentry.init({
@@ -63,6 +69,13 @@ try {
     getBladeComponentDocsToolDescription,
     getBladeComponentDocsToolSchema,
     getBladeComponentDocsToolCallback,
+  );
+
+  server.tool(
+    getFigmaToCodeToolName,
+    getFigmaToCodeToolDescription,
+    getFigmaToCodeToolSchema,
+    getFigmaToCodeToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout
