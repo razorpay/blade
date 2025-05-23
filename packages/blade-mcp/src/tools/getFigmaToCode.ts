@@ -1,6 +1,6 @@
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import { URLS } from '../utils.js';
+import { handleError, URLS } from '../utils.js';
 
 const getFigmaToCodeToolName = 'get_figma_to_code';
 
@@ -48,11 +48,10 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
       ],
     };
   } catch (error: unknown) {
-    console.error('Error fetching Figma to Code:', error);
-    return {
-      isError: true,
-      content: [{ type: 'text', text: 'error' }],
-    };
+    return handleError({
+      toolName: getFigmaToCodeToolName,
+      mcpErrorMessage: `Failed to generate figma code, ${error}`,
+    });
   }
 };
 

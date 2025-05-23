@@ -40,41 +40,26 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
   const invalidComponentsString = invalidComponents.join(', ');
   if (invalidComponents.length > 0) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text: `Invalid argument componentsList. Invalid values: ${invalidComponentsString}. Valid component docs values: ${bladeComponentsListString}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      mcpErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponentsString}. Valid component docs values: ${bladeComponentsListString}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
+    });
   }
 
   const ruleFilePath = join(currentProjectRootDirectory, '.cursor/rules/frontend-blade-rules.mdc');
 
   if (!existsSync(ruleFilePath)) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
+    });
   }
 
   if (hasOutDatedRules(ruleFilePath)) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text: `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      mcpErrorMessage: `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
+    });
   }
 
   try {
