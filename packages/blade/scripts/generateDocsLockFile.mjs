@@ -1,9 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import dependencies from '../src/utils/storybook/Sandbox/dependencies.json' assert { type: 'json' };
+import { fileURLToPath } from 'url';
 
-const __dirname = new URL('.', import.meta.url).pathname;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Read dependencies JSON file
+const dependenciesPath = path.resolve(
+  __dirname,
+  '../src/utils/storybook/Sandbox/dependencies.json',
+);
+const dependenciesData = JSON.parse(fs.readFileSync(dependenciesPath, 'utf8'));
 
 const resolve = (resolvePath) => path.resolve(__dirname, resolvePath);
 
@@ -33,6 +41,6 @@ const generateLockFileContent = ({ dependencies, devDependencies }) => {
 };
 
 generateLockFileContent({
-  dependencies: dependencies.dependencies,
-  devDependencies: dependencies.devDependencies,
+  dependencies: dependenciesData.dependencies,
+  devDependencies: dependenciesData.devDependencies,
 });
