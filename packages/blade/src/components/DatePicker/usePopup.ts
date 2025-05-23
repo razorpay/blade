@@ -54,7 +54,10 @@ const usePopup = ({
       flip({ padding: GAP, fallbackAxisSideDirection: 'end' }),
       offset(GAP),
     ],
-    whileElementsMounted: autoUpdate,
+    whileElementsMounted: (reference, floating, update) =>
+      autoUpdate(reference, floating, update, {
+        elementResize: false,
+      }),
   });
 
   // we need to animate from the offset of the computed placement

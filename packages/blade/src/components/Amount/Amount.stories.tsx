@@ -226,6 +226,35 @@ StrikeThrough.args = {
 };
 StrikeThrough.storyName = 'Strike Through';
 
+const FractionDigitsTemplate: StoryFn<typeof AmountComponent> = (args) => {
+  const fractionDigitsList = [0, 1, 2, 3, 4, 5];
+
+  return (
+    <BaseBox justifyContent="flex-start">
+      {fractionDigitsList.map((digits) => (
+        <BaseBox
+          display="flex"
+          key={digits}
+          alignItems="baseline"
+          paddingRight="spacing.3"
+          paddingBottom="spacing.3"
+          flexDirection="column"
+        >
+          <Text marginBottom="spacing.1">{`fractionDigits: ${digits}`}</Text>
+          <AmountComponent {...args} fractionDigits={digits} />
+        </BaseBox>
+      ))}
+    </BaseBox>
+  );
+};
+
+export const CustomFractionDigits = FractionDigitsTemplate.bind({});
+CustomFractionDigits.args = {
+  ...defaultArgs,
+  value: 123.456789,
+};
+CustomFractionDigits.storyName = 'Custom Fraction Digits';
+
 // TODO: Replace below with i18nify getDefaultLocales API
 const localeList = [
   {

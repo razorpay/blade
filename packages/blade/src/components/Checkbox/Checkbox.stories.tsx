@@ -54,7 +54,6 @@ export default {
     value: undefined,
     helpText: undefined,
     errorText: undefined,
-    labelPosition: 'top',
     children: 'Toggle checkbox',
     size: 'medium',
   },

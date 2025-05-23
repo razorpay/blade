@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import dayjs from 'dayjs';
 import React from 'react';
-import type { CalendarLevel } from '@mantine/dates';
+import type { CalendarLevel, DatesRangeValue } from '@mantine/dates';
 import { useDatesContext, DatePicker } from '@mantine/dates';
 import type { CalendarProps, DateSelectionType, PickerType, DateValue } from './types';
 import { CalendarHeader } from './CalendarHeader';
@@ -29,12 +29,14 @@ const Calendar = <Type extends DateSelectionType>({
   onPrevious,
   presets,
   showLevelChangeLink,
+  selectedValue,
   ...props
 }: CalendarProps<Type> & {
   date?: Date;
   defaultDate?: Date;
   onDateChange?: (date: DateValue) => void;
   showLevelChangeLink?: boolean;
+  selectedValue: DatesRangeValue | null;
 }): React.ReactElement => {
   const isRange = selectionType === 'range';
 
@@ -64,7 +66,19 @@ const Calendar = <Type extends DateSelectionType>({
 
   const dateContext = useDatesContext();
   const isMobile = useIsMobile();
-  const currentDate = _date ?? shiftTimezone('add', new Date());
+  const currentDate = React.useMemo(() => {
+    if (_date) {
+      return _date;
+    }
+    const isRangeSelection = Array.isArray(selectedValue);
+    if (isRangeSelection && selectedValue[0]) {
+      return selectedValue[0];
+    }
+    if (!isRangeSelection && selectedValue) {
+      return selectedValue;
+    }
+    return shiftTimezone('add', new Date());
+  }, [_date, selectedValue]);
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
 
@@ -133,7 +147,7 @@ const Calendar = <Type extends DateSelectionType>({
         <DatePicker
           withCellSpacing={false}
           type={isRange ? 'range' : 'default'}
-          date={_date}
+          date={currentDate}
           locale={dateContext.locale}
           level={level}
           onDateChange={setDate}

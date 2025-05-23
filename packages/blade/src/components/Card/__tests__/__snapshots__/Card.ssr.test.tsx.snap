@@ -878,7 +878,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 </div>
 `;
 
-exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 bcWxdc cGyVzL"><a href="https://google.com" data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 cmIkCR"></a><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 bcWxdc cGyVzL"><a href="https://google.com" data-blade-component="card-link-overlay" class="LinkOverlayweb__LinkOverlay-ugib1o-0 cmIkCR"></a><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
 
 exports[`<Card /> should render a Interactive Card with href 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -986,7 +986,6 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
       elevation="lowRaised"
     >
       <a
-        aria-pressed="false"
         class="c4"
         data-blade-component="card-link-overlay"
         href="https://google.com"

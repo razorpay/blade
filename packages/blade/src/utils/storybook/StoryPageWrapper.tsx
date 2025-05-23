@@ -21,6 +21,7 @@ const Subtitle = (props: HeadingProps): React.ReactElement => {
 
 type StoryPageWrapperTypes = {
   figmaURL?: string;
+  codeUrl?: string;
   argTableComponent?: unknown;
   componentDescription: string;
   propsDescription?: string;
@@ -106,6 +107,11 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           {props.figmaURL ? (
             <Button href={props.figmaURL} variant="tertiary" icon={FigmaIcon} target="_blank">
               View on Figma
+            </Button>
+          ) : null}
+          {props.codeUrl ? (
+            <Button href={props.codeUrl} variant="tertiary" icon={FileTextIcon} target="_blank">
+              View Storybook file
             </Button>
           ) : null}
           {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (

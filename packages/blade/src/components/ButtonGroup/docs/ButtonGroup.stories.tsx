@@ -120,6 +120,29 @@ const ButtonGroupVariantsTemplate: StoryFn<typeof ButtonGroupComponent> = (args)
 export const AllVariants = ButtonGroupVariantsTemplate.bind({});
 AllVariants.storyName = 'All Variants';
 
+const ButtonGroupVariantsTemplateWithLoading: StoryFn<typeof ButtonGroupComponent> = (args) => {
+  const variants: ButtonGroupProps['variant'][] = ['primary', 'secondary', 'tertiary'];
+  return (
+    <>
+      {variants.map((variant) => (
+        <Box key={variant} marginBottom="spacing.8">
+          <Heading marginBottom="spacing.3">{variant}</Heading>
+          <ButtonGroupComponent {...args} variant={variant}>
+            <Button icon={RefreshIcon} isLoading>
+              Sync
+            </Button>
+            <Button icon={ShareIcon}>Share</Button>
+            <Button icon={DownloadIcon}>Download</Button>
+          </ButtonGroupComponent>
+        </Box>
+      ))}
+    </>
+  );
+};
+
+export const AllVariantsWithLoading = ButtonGroupVariantsTemplateWithLoading.bind({});
+AllVariantsWithLoading.storyName = 'All Variants With Loading';
+
 const ButtonGroupSizesTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   const sizes: ButtonGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
   return (
@@ -129,7 +152,9 @@ const ButtonGroupSizesTemplate: StoryFn<typeof ButtonGroupComponent> = (args) =>
           <Heading marginBottom="spacing.3">{size}</Heading>
           <ButtonGroupComponent {...args} size={size}>
             <Button icon={RefreshIcon}>Sync</Button>
-            <Button icon={ShareIcon}>Share</Button>
+            <Button isLoading icon={ShareIcon}>
+              Share
+            </Button>
             <Button icon={DownloadIcon}>Download</Button>
           </ButtonGroupComponent>
         </Box>

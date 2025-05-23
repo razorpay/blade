@@ -513,12 +513,14 @@ describe('<TextInput />', () => {
     await userEvent.type(input, bladeEmail);
     await userEvent.type(input, ',');
     expect(getTag(bladeEmail)).toBeVisible();
+    expect(tagChangeCallback).toHaveBeenCalledTimes(1);
     expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail] });
 
     expect(getTag(tagEmail)).toBeUndefined();
     await userEvent.type(input, tagEmail);
     await userEvent.keyboard('{ENTER}');
     expect(getTag(tagEmail)).toBeVisible();
+    expect(tagChangeCallback).toHaveBeenCalledTimes(2);
     expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail, tagEmail] });
 
     await userEvent.keyboard('{Backspace}');
@@ -531,6 +533,7 @@ describe('<TextInput />', () => {
 
   it(`should add tags in controlled API`, async () => {
     const label = 'Enter Name';
+    const tagChangeCallback = jest.fn();
 
     const Example = (): React.ReactElement => {
       const [tags, setTags] = React.useState<string[]>([]);
@@ -540,7 +543,10 @@ describe('<TextInput />', () => {
             label={label}
             isTaggedInput={true}
             tags={tags}
-            onTagChange={({ tags }) => setTags(tags)}
+            onTagChange={({ tags }) => {
+              setTags(tags);
+              tagChangeCallback();
+            }}
           />
           <Button
             onClick={() => {
@@ -561,11 +567,12 @@ describe('<TextInput />', () => {
     await userEvent.type(input, bladeEmail);
     await userEvent.type(input, ',');
     expect(getTag(bladeEmail)).toBeVisible();
-
+    expect(tagChangeCallback).toHaveBeenCalledTimes(1);
     expect(getTag(tagEmail)).toBeUndefined();
     await userEvent.type(input, tagEmail);
     await userEvent.keyboard('{ENTER}');
     expect(getTag(tagEmail)).toBeVisible();
+    expect(tagChangeCallback).toHaveBeenCalledTimes(2);
 
     await userEvent.keyboard('{Backspace}');
     expect(getTag(tagEmail)).toBeUndefined();

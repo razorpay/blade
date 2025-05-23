@@ -103,7 +103,7 @@ const useCheckbox = ({
     required: Boolean(isRequired),
     invalid: Boolean(hasError),
     disabled: Boolean(isDisabled),
-    checked: checkboxState,
+    checked: inputRef.current?.indeterminate ? 'mixed' : checkboxState,
     ...(hasError ? { errorMessage: errorTextId } : {}),
     ...(hasHelperText ? { describedBy: helpTextId } : {}),
   });

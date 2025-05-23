@@ -2,6 +2,8 @@
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
+// @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
+import deps from './dependencies.json'; // eslint-disable-line
 
 const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
 
@@ -37,9 +39,9 @@ export const tsConfigJSON = JSON.stringify(
       jsx: 'react-jsx',
 
       /* Linting */
-      strict: true,
-      noUnusedLocals: true,
-      noUnusedParameters: true,
+      strict: false,
+      noUnusedLocals: false,
+      noUnusedParameters: false,
       noFallthroughCasesInSwitch: true,
     },
     include: ['src'],
@@ -68,28 +70,6 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
   };
 };
 
-export const getViteReactTSDependencies = (): Dependencies => {
-  return {
-    dependencies: {
-      react: '^19',
-      'react-dom': '^19',
-      'react-router-dom': '^6',
-      'framer-motion': '11.13.3',
-      'react-scripts': '4.0.3',
-      '@types/react': '^19',
-      '@types/react-dom': '^19',
-      '@razorpay/blade': getBladeVersion(),
-      'styled-components': packageJson.peerDependencies['styled-components'],
-      '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
-      '@razorpay/i18nify-react': packageJson.peerDependencies['@razorpay/i18nify-react'],
-    },
-    devDependencies: {
-      vite: '4.5.0',
-      '@vitejs/plugin-react': '4.1.1',
-    },
-  };
-};
-
 export const vitePackageJSON = JSON.stringify(
   {
     scripts: {
@@ -97,10 +77,14 @@ export const vitePackageJSON = JSON.stringify(
       build: 'vite build',
     },
     stackblitz: {
-      startCommand: 'pnpm install && pnpm dev',
+      startCommand: 'yarn && yarn dev',
       installDependencies: false,
     },
-    ...getViteReactTSDependencies(),
+    dependencies: {
+      ...deps.dependencies,
+      '@razorpay/blade': getBladeVersion(),
+    },
+    devDependencies: deps.devDependencies,
   },
   null,
   4,
@@ -147,7 +131,7 @@ export const indexHTML = dedent`
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.js"></script>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
 `;

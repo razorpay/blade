@@ -4,12 +4,9 @@ import type { IconComponent } from '~components/Icons';
 import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { MotionMetaProp } from '~components/BaseMotion';
+import type { BoxProps } from '~components/Box/BaseBox/types/propsTypes';
 
-type ChipProps = {
-  /**
-   * Sets the label of the Chip
-   */
-  children: StringChildrenType;
+type ChipCommonProps = {
   /**
    * Displays the Blade Icon component within the Chip
    * Accepts a component of type `IconComponent` from Blade.
@@ -33,10 +30,40 @@ type ChipProps = {
    * Use `onChange` to update its value
    */
   value?: string;
+  /**
+   * width prop sets the width of the Chip
+   */
+  width?: BoxProps['width'];
+  /**
+   * maxWidth prop sets the maxWidth of the Chip
+   */
+  maxWidth?: BoxProps['maxWidth'];
+  /**
+   * min prop sets the minWidth of the Chip
+   */
+  minWidth?: BoxProps['minWidth'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade &
   MotionMetaProp;
+
+/*
+  Mandatory children prop when icon is not provided
+*/
+type ChipWithoutIconProps = ChipCommonProps & {
+  icon?: undefined;
+  children: StringChildrenType;
+};
+
+/*
+  Optional children prop when icon is provided
+*/
+type ChipWithIconProps = ChipCommonProps & {
+  icon: IconComponent;
+  children?: StringChildrenType;
+};
+
+type ChipProps = ChipWithoutIconProps | ChipWithIconProps;
 
 type ChipGroupCommonProps = {
   /**
@@ -212,6 +239,9 @@ type AnimatedChipProps = {
   isDesktop?: boolean;
   theme: Theme;
   children: React.ReactNode;
+  width?: BoxProps['width'];
+  maxWidth?: BoxProps['maxWidth'];
+  minWidth?: BoxProps['minWidth'];
 };
 
 type StyledChipWrapperProps = {

@@ -1,11 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Blade Coverage Extension",
+  "description": "Extension to calculate coverage and accessibility of blade design system components",
   "version": "1.1",
   "permissions": ["activeTab", "scripting"],
   "background": {
     "service_worker": "background_script.js",
     "type": "module"
+  },
+  "icons": {
+    "32": "logo32.png",
+    "48": "logo48.png",
+    "128": "logo.png"
   },
   "action": {
     "default_popup": "./index.html"

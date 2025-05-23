@@ -79,7 +79,7 @@ const DocsPage = (): React.ReactElement => {
         files={topNavFullExample}
         editorHeight={600}
         hideNavigation={false}
-        openFile="SideNavExample.js,utils.js,App.js,TopNavExample.js"
+        openFile="SideNavExample.tsx,utils.tsx,App.tsx,TopNavExample.tsx"
       />
     </StoryPageWrapper>
   );

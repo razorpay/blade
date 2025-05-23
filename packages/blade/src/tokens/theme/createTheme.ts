@@ -144,7 +144,7 @@ const getOnLightOverrides = (
       text: {
         primary: {
           normal: foregroundOnSurface,
-          disabled: foregroundOnSurface,
+          disabled: brandColors.a200,
           muted: foregroundOnSurface,
           subtle: foregroundOnSurface,
         },
@@ -158,7 +158,7 @@ const getOnLightOverrides = (
       icon: {
         primary: {
           normal: foregroundOnSurface,
-          disabled: foregroundOnSurface,
+          disabled: brandColors.a200,
           muted: foregroundOnSurface,
           subtle: foregroundOnSurface,
         },
@@ -175,6 +175,12 @@ const getOnLightOverrides = (
         primary: {
           intense: brandColors[600],
           subtle: brandColors[200],
+        },
+      },
+      border: {
+        primary: {
+          normal: brandColors[600],
+          muted: brandColors.a200,
         },
       },
       icon: {
@@ -243,7 +249,7 @@ const getOnDarkOverrides = (
       text: {
         primary: {
           normal: foregroundOnSurface,
-          disabled: foregroundOnSurface,
+          disabled: brandColors.a400,
           muted: foregroundOnSurface,
           subtle: foregroundOnSurface,
         },
@@ -257,7 +263,7 @@ const getOnDarkOverrides = (
       icon: {
         primary: {
           normal: foregroundOnSurface,
-          disabled: foregroundOnSurface,
+          disabled: brandColors.a400,
           muted: foregroundOnSurface,
           subtle: foregroundOnSurface,
         },
@@ -274,6 +280,12 @@ const getOnDarkOverrides = (
         primary: {
           intense: brandColors[600],
           subtle: brandColors[200],
+        },
+      },
+      border: {
+        primary: {
+          normal: brandColors[600],
+          muted: brandColors.a200,
         },
       },
       icon: {

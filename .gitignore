@@ -16,6 +16,7 @@ packages/blade/tokens.d.ts
 packages/blade/utils.js
 packages/blade/utils.native.js
 packages/blade/utils.d.ts
+packages/blade/public/docs-yarn-lock.yaml
 
 # misc
 .DS_Store
@@ -91,3 +92,5 @@ buck-out/
 
 # CocoaPods
 **/ios/Pods/
+
+# knowledgebase-ts-errors.json

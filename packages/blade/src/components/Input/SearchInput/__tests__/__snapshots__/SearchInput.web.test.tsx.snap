@@ -122,7 +122,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -616,7 +616,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1107,7 +1107,7 @@ exports[`<SearchInput /> should render 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1631,7 +1631,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -2207,7 +2207,7 @@ exports[`<SearchInput /> should render large size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;

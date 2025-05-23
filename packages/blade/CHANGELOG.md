@@ -1,5 +1,298 @@
 # @razorpay/blade
 
+## 12.31.2
+
+### Patch Changes
+
+- b42ad547: fix(blade): Display 'Show more filters' only if children are provided
+
+## 12.31.1
+
+### Patch Changes
+
+- 273730ff: fix: surface primary border color when using custom brand color
+
+## 12.31.0
+
+### Minor Changes
+
+- c48acef5: feat(Heading): add medium weight
+
+## 12.30.0
+
+### Minor Changes
+
+- 1de828f1: feat(fileUpload): add new size variant "variable"
+- a48a3a30: feat(blade): add preview component
+
+## 12.29.0
+
+### Minor Changes
+
+- 546aceaa3: feat(Card): add maxWidth property to card
+
+## 12.28.0
+
+### Minor Changes
+
+- b16eb895: feat(Amount): expose `fractionDigits` for control over decimals
+
+## 12.27.0
+
+### Minor Changes
+
+- 0b2b1d7a: fix(create-theme): disabled state colors in createTheme
+- ca378c3c: feat(stepgroup): UI enhancements
+
+### Patch Changes
+
+- bf3c19b0: fix(Tagged Inputs): prevent calling onTagChange twice
+
+## 12.26.0
+
+### Minor Changes
+
+- 06a77475: feat(blade): add orientation in radioGroup and checkbox
+
+## 12.25.2
+
+### Patch Changes
+
+- cc3d510b: - fixed accessibility issues in Avatar, Card and Checkbox.
+
+## 12.25.1
+
+### Patch Changes
+
+- a0132d50: fix(FC-3152): add data-analytics-\* for TabNav
+
+## 12.25.0
+
+### Minor Changes
+
+- 59fb0163: feat(PhoneNumberInput): add virtualization to phone number input
+
+## 12.24.0
+
+### Minor Changes
+
+- f7b868ad: feat(blade): add full page modal
+
+### Patch Changes
+
+- 9eb42df8: fix(StepGroup): extra space because of trailing property
+
+## 12.23.1
+
+### Patch Changes
+
+- c12197be: fix(blade): add accessibilityLabel in show more filters button in list view
+
+## 12.23.0
+
+### Minor Changes
+
+- 97cf1d95: feat(Drawer): add `onUnmount` to Drawer for triggering any state changes after drawer becomes invisible
+
+## 12.22.0
+
+### Minor Changes
+
+- 289a9c19: feat(Drawer): visual changes in Drawer (add border-radius, change stacking visuals)
+
+### Patch Changes
+
+- b514b529: fix(StepGroup): remove universal-base64 library
+
+## 12.21.3
+
+### Patch Changes
+
+- ca5ff972: fix(blade): filter chip keyboard navigation & auto-handling of selected state in controlled mode
+
+## 12.21.2
+
+### Patch Changes
+
+- fa9e437d: fix(blade): actionlistitem padding logic broken
+
+## 12.21.1
+
+### Patch Changes
+
+- fd18c78b: fix(blade): show title filterChipSelectInput, optional search in listview
+
+## 12.21.0
+
+### Minor Changes
+
+- c874d904: feat(StepGroup): support integrating stepgroup and collapsible
+- b64e93ed: feat(Drawer): add children support to DrawerHeader
+- 234b50ca: feat(Dropdown): support AutoComplete in DropdownHeader
+
+### Patch Changes
+
+- da5663e9: fix: reset datepicker to default picker value on close
+- 6345fc04: fix: auto-shifting of the date picker on picker change.
+- d9294055: fix: persists datevalues in case of month and year change
+
+## 12.20.1
+
+### Patch Changes
+
+- 7fdb6598: fix(SideNav): scroll issue in L2 menu
+
+## 12.20.0
+
+### Minor Changes
+
+- 65142216: feat(blade): add `FilterChipSelectInput` & `FilterChipDatePicker` components
+- 65142216: feat(blade): add list view pattern
+
+## 12.19.1
+
+### Patch Changes
+
+- 08ad3279: fix(blade): date picker resetting to prev value
+
+## 12.19.0
+
+### Minor Changes
+
+- 9284a1f9: feat(blade): feat: add virtualization in section list
+
+## 12.18.0
+
+### Minor Changes
+
+- fa1800c4: feat(storybook): pre-generate lock file for documentation examples
+- f211134b: feat(blade) : add keyicon , appleicon, androidicon
+
+## 12.17.1
+
+### Patch Changes
+
+- c28b9182: fix(Modal): remove clashing position of modal on module federated apps
+
+## 12.17.0
+
+### Minor Changes
+
+- 3afdadf3: fix(blade): datepicker autofocus not working on programmatically changing date
+
+## 12.16.2
+
+### Patch Changes
+
+- 89391f8b: fix(Input): fix color differences of label between figma and code
+
+## 12.16.1
+
+### Patch Changes
+
+- 20f744ab: fix(blade): datepicker height change issue
+
+## 12.16.0
+
+### Minor Changes
+
+- 87d37ebf: feat(blade): add table background color prop
+
+## 12.15.1
+
+### Patch Changes
+
+- 1419c1f5: fix(blade): focus on selected date by default in datepicker
+
+## 12.15.0
+
+### Minor Changes
+
+- bbf24c99: feat(blade): add support for table virtualization
+
+## 12.14.0
+
+### Minor Changes
+
+- 0b79d985: feat(QuickFilter): Add QuickFilters component
+
+## 12.13.1
+
+### Patch Changes
+
+- 37392871: feat(blade): add should showNavigationButtons prop in carousel
+
+## 12.13.0
+
+### Minor Changes
+
+- 19119623: feat(blade): add drag handle icon
+
+## 12.12.1
+
+### Patch Changes
+
+- 9dda1513: fix: remove js check that allows brand token for Box backgroundColor
+- 18fe5390: fix(blade): allow consumers to align chips in chipgroup
+- ba66b346: fix(blade): loading single button in buttonGroup
+
+## 12.12.0
+
+### Minor Changes
+
+- 7e155b6f: feat(blade): add engage and translate icons
+
+## 12.11.0
+
+### Minor Changes
+
+- d906838f: feat(blade): add Chat Message component
+
+## 12.10.0
+
+### Minor Changes
+
+- 142afcdf: feat(TextArea): expose `onKeydown` on TextArea and allow `numOfLines={1}`
+
+### Patch Changes
+
+- 6cf03ea3: feat: Improve OTPInput field value clear behaviour
+
+## 12.9.1
+
+### Patch Changes
+
+- 5531ef3f: feat: remove overflowY if L1 sidenav is collapsed
+- 5531ef3f: feat: SideNav improvements & fixes for X migration
+
+  1. Removed overflowY if L1 sidenav is collapsed
+  2. Fixed onVisibleLevelChange not getting called when clicking on a nested submenu
+
+## 12.9.0
+
+### Minor Changes
+
+- e035b38b: feat(DropdownIconButton): add support for DropdownIconButton and tooltip for Dropdown triggers
+
+## 12.8.2
+
+### Patch Changes
+
+- 3be3f0f9: fix(FileUpload): revert to not calling onChange on file remove
+
+  > [!NOTE]
+  >
+  > Check the below timeline if you're upgrading from 11.34.1+ version to this version
+
+  **Timeline of FileUpload changes**
+
+  - In 11.34.1: We did not call onChange on removing of file. Only onRemove was called
+  - In 11:36.2: We added dispatchEvent call which started calling onChange on onRemove (since React treats `input type="file"` differently than `input type="text"` - [CodeSandbox Link](https://codesandbox.io/p/sandbox/friendly-ishizaka-yk7mm3))
+  - In 12.4.0: We released a fix thinking onChange call was expected behaviour and we just updated the state value for it
+  - **This version:** Reverts back to 11.34.1 behaviour. If you're upgrading to this version from 11.34.1 or previous versions, the behaviour will stay same. If you're upgrading from 11.34.1+ and use FileUpload component, its recommended to test out FileUpload instances.
+
+- 3c040f66: feat: add icon only chip
+
 ## 12.8.1
 
 ### Patch Changes

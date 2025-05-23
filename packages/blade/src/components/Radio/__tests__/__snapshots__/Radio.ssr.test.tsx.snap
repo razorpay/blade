@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Radio /> should render with help text 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="radio-group-undefined-label" data-blade-component="radio-group" class="BaseBox-bmPWx fnwmJW"><span style="width:auto;flex-shrink:0;margin-right:0px" id="radio-group-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO kCEKIT" data-blade-component="text">Select fruit</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">,Select One</p></div></div></div></span><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fdoqPr"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="apple"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Apple</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx ewfYUx"><div id="radio-undefined-helptext-undefined" data-blade-component="box" class="BaseBox-bmPWx kTMxBD"><span class="StyledBaseText-dVBfTO csXxAx" data-blade-component="text">Apple Help</span></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hlbQIL"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="mango"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Mango</p></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span data-blade-component="base-box" class="BaseBox-bmPWx hnjoEU"><span class="StyledBaseText-dVBfTO kECbDA" data-blade-component="text">Select One</span></span></div></div></div></div></div>"`;
+exports[`<Radio /> should render with help text 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="radio-group-undefined-label" data-blade-component="radio-group" class="BaseBox-bmPWx fnwmJW"><span style="width:auto;flex-shrink:0;margin-right:0px" id="radio-group-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Select fruit</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">,Select One</p></div></div></div></span><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fNpotV"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="apple"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Apple</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx ewfYUx"><div id="radio-undefined-helptext-undefined" data-blade-component="box" class="BaseBox-bmPWx kTMxBD"><span class="StyledBaseText-dVBfTO csXxAx" data-blade-component="text">Apple Help</span></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jTPQRW" value="mango"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 pToRZ"></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Mango</p></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span data-blade-component="base-box" class="BaseBox-bmPWx hnjoEU"><span class="StyledBaseText-dVBfTO kECbDA" data-blade-component="text">Select One</span></span></div></div></div></div></div>"`;
 
 exports[`<Radio /> should render with help text 2`] = `
 .c10.c10.c10.c10.c10 {
@@ -72,7 +72,14 @@ exports[`<Radio /> should render with help text 2`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -102,14 +109,10 @@ exports[`<Radio /> should render with help text 2`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  margin-bottom: 0px;
-}
-
-.c17.c17.c17.c17.c17 {
   margin-top: 4px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -125,7 +128,7 @@ exports[`<Radio /> should render with help text 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -198,7 +201,7 @@ exports[`<Radio /> should render with help text 2`] = `
   padding: 0;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -321,11 +324,11 @@ exports[`<Radio /> should render with help text 2`] = `
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -393,7 +396,7 @@ exports[`<Radio /> should render with help text 2`] = `
             </div>
           </div>
           <div
-            class="c16"
+            class=""
             data-blade-component="base-box"
           >
             <div
@@ -445,15 +448,15 @@ exports[`<Radio /> should render with help text 2`] = `
           </div>
         </div>
         <div
-          class="c17"
+          class="c16"
           data-blade-component="base-box"
         >
           <span
-            class="c18"
+            class="c17"
             data-blade-component="base-box"
           >
             <span
-              class="c19"
+              class="c18"
               data-blade-component="text"
             >
               Select One

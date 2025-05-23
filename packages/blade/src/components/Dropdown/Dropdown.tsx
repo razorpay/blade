@@ -23,10 +23,12 @@ const validDropdownChildren = [
   dropdownComponentIds.triggers.SelectInput,
   dropdownComponentIds.triggers.SearchInput,
   dropdownComponentIds.triggers.DropdownButton,
+  dropdownComponentIds.triggers.DropdownIconButton,
   dropdownComponentIds.triggers.DropdownLink,
   dropdownComponentIds.DropdownOverlay,
   dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
+  dropdownComponentIds.triggers.FilterChipSelectInput,
 ];
 
 /**
@@ -79,10 +81,7 @@ const _Dropdown = (
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
-  const [
-    hasAutoCompleteInBottomSheetHeader,
-    setHasAutoCompleteInBottomSheetHeader,
-  ] = React.useState(false);
+  const [hasAutoCompleteInHeader, setHasAutoCompleteInHeader] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
   const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
     DropdownContextType['changeCallbackTriggerer']
@@ -97,6 +96,7 @@ const _Dropdown = (
    * */
   const triggererWrapperRef = React.useRef<ContainerElementType>(null);
   const triggererRef = React.useRef<HTMLButtonElement>(null);
+  const headerAutoCompleteRef = React.useRef<HTMLButtonElement>(null);
   const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
   const isTagDismissedRef = React.useRef<{ value: boolean } | null>({ value: false });
@@ -153,8 +153,15 @@ const _Dropdown = (
         dropdownTriggerer.current = 'DropdownButton';
       }
 
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownIconButton)) {
+        dropdownTriggerer.current = 'DropdownIconButton';
+      }
+
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {
         dropdownTriggerer.current = 'AutoComplete';
+      }
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.FilterChipSelectInput)) {
+        dropdownTriggerer.current = 'FilterChipSelectInput';
       }
     }
   });
@@ -183,13 +190,14 @@ const _Dropdown = (
       setIsKeydownPressed,
       dropdownBaseId,
       triggererRef,
+      headerAutoCompleteRef,
       triggererWrapperRef,
       actionListItemRef,
       selectionType,
       hasFooterAction,
       setHasFooterAction,
-      hasAutoCompleteInBottomSheetHeader,
-      setHasAutoCompleteInBottomSheetHeader,
+      hasAutoCompleteInHeader,
+      setHasAutoCompleteInHeader,
       dropdownTriggerer: dropdownTriggerer.current,
       changeCallbackTriggerer,
       setChangeCallbackTriggerer,
@@ -220,13 +228,13 @@ const _Dropdown = (
     return {
       isOpen: isDropdownOpen,
       dropdownHasBottomSheet,
-      hasAutoCompleteInBottomSheetHeader,
+      hasAutoCompleteInHeader,
       setDropdownHasBottomSheet,
       // This is the dismiss function which will be injected into the BottomSheet
       // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
       onBottomSheetDismiss: close,
     };
-  }, [dropdownHasBottomSheet, hasAutoCompleteInBottomSheetHeader, isDropdownOpen, close]);
+  }, [dropdownHasBottomSheet, hasAutoCompleteInHeader, isDropdownOpen, close]);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>

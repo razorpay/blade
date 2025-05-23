@@ -36,20 +36,22 @@ const makeDevTokenNames = (): void => {
       // @ts-expect-error because valuesByMode can be undefined and bunch of other things that is not worthy to put conditions for hence ignoring because for our dataset it will always be true
       variable.valuesByMode[Object.keys(variable.valuesByMode)[0]].id,
     );
-    // console.log(variableModeValue);
 
     let tokenName = '';
-    if (variableModeValue.name.includes('Radius')) {
-      tokenName = `border.radius.${variableModeValue.name.split('/').pop()}`;
-      // set the syntax for border radius
-    } else if (variableModeValue.name.includes('Width')) {
-      // set the syntax for border width
-      tokenName = `border.width.${variableModeValue.name.split('/').pop()}`;
-    } else if (variableModeValue.name.includes('spacing')) {
-      // set the syntax for spacing
-      tokenName = variableModeValue.name
-        .replace(/\//g, '.')
-        .replace(/\.[0-9]+/, (matchedString) => `[${matchedString.replace('.', '')}]`);
+
+    if (variableModeValue) {
+      if (variableModeValue.name.includes('Radius')) {
+        tokenName = `border.radius.${variableModeValue.name.split('/').pop()}`;
+        // set the syntax for border radius
+      } else if (variableModeValue.name.includes('Width')) {
+        // set the syntax for border width
+        tokenName = `border.width.${variableModeValue.name.split('/').pop()}`;
+      } else if (variableModeValue.name.includes('spacing')) {
+        // set the syntax for spacing
+        tokenName = variableModeValue.name
+          .replace(/\//g, '.')
+          .replace(/\.[0-9]+/, (matchedString) => `[${matchedString.replace('.', '')}]`);
+      }
     }
 
     if (tokenName) {

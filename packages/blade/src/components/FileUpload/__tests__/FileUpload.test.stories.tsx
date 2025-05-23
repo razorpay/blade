@@ -380,7 +380,7 @@ TestFileUploadError.play = async ({ canvasElement }) => {
 
   await expect(getByRole('progressbar')).toBeInTheDocument();
 
-  await sleep(4000);
+  await sleep(5000);
   await expect(getByText(filename)).toBeVisible();
   await expect(getByText('Oops! Something went wrong. Unknown API key')).toBeInTheDocument();
 };

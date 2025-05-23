@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+
 import React from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
@@ -53,7 +56,6 @@ const _DropdownButton = ({
       type={type}
       variant={variant}
       testID={testID}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={triggererRef as any}
       accessibilityProps={{
         label: accessibilityLabel,
@@ -65,20 +67,16 @@ const _DropdownButton = ({
       onClick={(e) => {
         onTriggerClick();
         // Setting it for web fails it on native typecheck and vice versa
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
         onClick?.(e as any);
       }}
       onBlur={(e) => {
         // With button trigger, there is no "value" as such. It's just clickable items
         // Setting it for web fails it on native typecheck and vice versa
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
         onBlur?.(e as any);
       }}
       onKeyDown={(e) => {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
         onTriggerKeydown?.({ event: e as any });
         // Setting it for web fails it on native typecheck and vice versa
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
         onKeyDown?.(e as any);
       }}
     />

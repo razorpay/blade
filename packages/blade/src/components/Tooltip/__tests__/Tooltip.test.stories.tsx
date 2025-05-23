@@ -111,7 +111,7 @@ const CustomTrigger = React.forwardRef<
         onTouchEnd={onTouchEnd}
         onTouchStart={onTouchStart}
       >
-        <Text contrast="low">{children}</Text>
+        <Text>{children}</Text>
       </BaseBox>
     );
   },
@@ -185,6 +185,5 @@ export default {
     },
     a11y: { disable: true },
     essentials: { disable: true },
-    actions: { disable: true },
   },
 };

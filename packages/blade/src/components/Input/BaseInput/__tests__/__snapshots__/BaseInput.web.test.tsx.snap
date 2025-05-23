@@ -68,7 +68,7 @@ exports[`<BaseInput /> should render 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -861,7 +861,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1401,7 +1401,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1965,7 +1965,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -2286,7 +2286,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="coupon-165-input-166"
+          for="coupon-166-input-167"
           style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -2331,7 +2331,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
             aria-required="false"
             class="c9"
             data-blade-component="styled-base-input"
-            id="coupon-165-input-166"
+            id="coupon-166-input-167"
             type="text"
             value=""
           />
@@ -2448,7 +2448,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -2713,7 +2713,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
       >
         <label
           data-blade-component="form-label"
-          for="name-555-input-556"
+          for="name-556-input-557"
           style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -2759,7 +2759,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
             class="c9"
             data-analytics-name="base-input"
             data-blade-component="styled-base-input"
-            id="name-555-input-556"
+            id="name-556-input-557"
             type="text"
             value=""
           />

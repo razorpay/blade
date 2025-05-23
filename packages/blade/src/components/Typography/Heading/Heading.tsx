@@ -18,11 +18,12 @@ export type HeadingProps = {
    * **Note** This takes priority over `type` and `contrast` prop to decide color of heading
    */
   color?: BaseTextProps['color'];
-  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'semibold'>;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;
+  wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   StyledPropsBlade;
 
@@ -85,6 +86,7 @@ const _Heading = (
     testID,
     textAlign,
     textDecorationLine,
+    wordBreak,
     ...styledProps
   }: HeadingProps,
   ref: React.Ref<BladeElementRef>,
@@ -99,6 +101,7 @@ const _Heading = (
       ref={ref}
       textAlign={textAlign}
       textDecorationLine={textDecorationLine}
+      wordBreak={wordBreak}
       {...getStyledProps(styledProps)}
     >
       {children}

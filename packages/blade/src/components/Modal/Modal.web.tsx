@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
 import { ModalHeader } from './ModalHeader';
@@ -17,6 +17,7 @@ import {
   modalMaxWidth,
   modalMinWidth,
   modalResponsiveScreenGap,
+  modalMargin,
 } from './modalTokens';
 import type { ModalProps } from './types';
 import { componentIds } from './constants';
@@ -31,41 +32,32 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const entry = keyframes`
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1) translateY(0px);
-  }
-`;
+const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
+  ({ isVisible, theme, size }) => {
+    const scale = isVisible ? 1 : 0.9;
+    const transform = size !== 'full' ? `translate(-50%, -50%) scale(${scale})` : ``;
 
-const exit = keyframes`
-  from {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1) translateY(0px);
-  }
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-  }
-`;
-
-const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme }) => {
-  return css`
-    box-shadow: ${theme.elevation.highRaised};
-    position: fixed;
-    transform: translate(-50%, -50%);
-    opacity: ${isVisible ? 1 : 0};
-    animation: ${isVisible ? entry : exit}
-      ${castWebType(makeMotionTime(theme.motion.duration.moderate))}
-      ${isVisible
+    return css`
+      box-shadow: ${theme.elevation.highRaised};
+      opacity: ${isVisible ? 1 : 0};
+      position: fixed;
+      transform: ${transform};
+      transition-property: opacity, transform;
+      transition-duration: ${castWebType(makeMotionTime(theme.motion.duration.moderate))};
+      transition-timing-function: ${isVisible
         ? castWebType(theme.motion.easing.entrance)
         : castWebType(theme.motion.easing.exit)};
-  `;
-});
+
+      ${size === 'full' &&
+      css`
+        top: ${makeSize(modalMargin[size])};
+        left: ${makeSize(modalMargin[size])};
+        right: ${makeSize(modalMargin[size])};
+        bottom: ${makeSize(modalMargin[size])};
+      `}
+    `;
+  },
+);
 
 const Modal = ({
   isOpen = false,
@@ -152,20 +144,25 @@ const Modal = ({
                   modal: true,
                   label: accessibilityLabel,
                 })}
-                maxWidth={makeSize(modalMaxWidth[size])}
+                maxWidth={size === 'full' ? '100%' : makeSize(modalMaxWidth[size])}
                 minWidth={makeSize(modalMinWidth)}
-                maxHeight={modalMaxHeight}
-                width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
+                maxHeight={modalMaxHeight[size]}
+                width={
+                  size === 'full'
+                    ? `calc(100vw - ${makeSize(modalMargin[size] * 2)})`
+                    : `calc(100vw - ${makeSize(modalResponsiveScreenGap)})`
+                }
                 borderRadius={modalBorderRadius}
                 backgroundColor="popup.background.subtle"
-                position="absolute"
                 display="flex"
                 flexDirection="column"
                 top="50%"
                 left="50%"
                 onKeyDown={handleKeyDown}
                 isVisible={isVisible}
+                size={size}
                 ref={refs.setFloating}
+                overflow="hidden"
               >
                 {children}
               </ModalContent>

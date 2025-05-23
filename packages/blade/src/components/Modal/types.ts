@@ -24,7 +24,7 @@ export type ModalProps = {
    *  Size of the modal
    * @default 'small'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'full';
   /**
    *  Accessibility label for the modal
    */

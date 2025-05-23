@@ -1,3 +1,5 @@
+import type React from 'react';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type DrawerProps = {
@@ -7,9 +9,18 @@ type DrawerProps = {
   isOpen: boolean;
 
   /**
-   * Callback function triggered when the drawer is dismissed or closed
+   * Callback function triggered when the drawer is dismissed or closed.
+   *
+   * **Note**: onDismiss gets triggered immediately on close button click. Use onUnmount if you want to perform actions after the animations are complete
    */
   onDismiss: () => void;
+
+  /**
+   * Callback function triggered when the drawer is unmounted.
+   *
+   * Unlike onDismiss, this gets called after the animations are complete
+   */
+  onUnmount?: () => void;
 
   /**
    * Show or hide overlay.
@@ -53,7 +64,7 @@ type DrawerHeaderProps = {
   /**
    * Title of the Drawer
    */
-  title: string;
+  title?: string;
 
   /**
    * Subtitle of the Drawer
@@ -80,6 +91,18 @@ type DrawerHeaderProps = {
    * Link, Button[]
    */
   trailing?: React.ReactNode;
+
+  /**
+   * Children elements to be rendered inside the header
+   */
+  children?: React.ReactElement | React.ReactElement[];
+
+  /**
+   * Background image of the header
+   *
+   * Use this for adding gradients
+   */
+  color?: FeedbackColors;
 } & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps };

@@ -7,6 +7,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BoxProps } from '~components/Box';
 
 type ModalBodyProps = {
   children: React.ReactNode;
@@ -18,11 +19,13 @@ type ModalBodyProps = {
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--docs
    */
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.6'>;
+  height?: BoxProps['height'];
 } & DataAnalyticsAttribute;
 
 const _ModalBody = ({
   children,
   padding = 'spacing.6',
+  height,
   ...rest
 }: ModalBodyProps): React.ReactElement => {
   const contentRef = React.useRef<any>(null);
@@ -34,6 +37,7 @@ const _ModalBody = ({
       ref={contentRef}
       overflowY="auto"
       overflowX="hidden"
+      height={height}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}

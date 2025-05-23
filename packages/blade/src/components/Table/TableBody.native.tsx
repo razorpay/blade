@@ -4,7 +4,7 @@ import React from 'react';
 import type { TableBodyProps, TableCellProps, TableRowProps } from './types';
 import { Text } from '~components/Typography';
 
-const TableBody = (props: TableBodyProps): React.ReactElement => {
+const TableBody = <Item,>(props: TableBodyProps<Item>): React.ReactElement => {
   return <Text>Table Component is not available for Native mobile apps.</Text>;
 };
 

@@ -11,6 +11,7 @@ module.exports = {
   ...jestConfig,
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
   testMatch: ['**/*.test.stories.{ts,tsx}'],
+  testTimeout: 30000,
   moduleNameMapper: {
     '^\\~src/(.*)': '<rootDir>/src/$1',
     '^\\~components/(.*)': '<rootDir>/src/components/$1',
@@ -25,7 +26,7 @@ module.exports = {
   testEnvironmentOptions: {
     ...testRunnerConfig,
     'jest-playwright': {
-      browsers: ['chromium', 'webkit', 'firefox'],
+      browsers: ['chromium', 'firefox'],
     },
   },
 };

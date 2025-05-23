@@ -745,23 +745,6 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   object-fit: cover;
 }
 
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -811,10 +794,6 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
               />
             </svg>
           </div>
-          <p
-            class="c6"
-            data-blade-component="text"
-          />
         </div>
       </div>
     </div>
@@ -1456,23 +1435,6 @@ exports[`<Avatar /> should render default avatar 1`] = `
   object-fit: cover;
 }
 
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,33%,21%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <div
     class="c0 c1"
@@ -1517,10 +1479,6 @@ exports[`<Avatar /> should render default avatar 1`] = `
               />
             </svg>
           </div>
-          <p
-            class="c6"
-            data-blade-component="text"
-          />
         </div>
       </div>
     </div>
