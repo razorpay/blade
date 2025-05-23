@@ -142,6 +142,7 @@ import {
   TextInput,
   Heading,
   Text,
+  DownloadIcon,
 } from '@razorpay/blade/components';
 
 const BasicDrawer = () => {
@@ -163,7 +164,7 @@ const BasicDrawer = () => {
           title="Vendor Payment Details"
           titleSuffix={<Badge color="positive">New</Badge>}
           subtitle="See your payment details here"
-          trailing={<Button icon="download" accessibilityLabel="Download details" />}
+          trailing={<Button icon={DownloadIcon} accessibilityLabel="Download details" />}
         />
         <DrawerBody>
           <Box display="flex" alignItems="center">
@@ -228,6 +229,7 @@ import {
   Amount,
   CheckIcon,
   MoreHorizontalIcon,
+  DownloadIcon,
 } from '@razorpay/blade/components';
 
 const CustomHeaderDrawer = () => {

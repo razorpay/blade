@@ -85,7 +85,7 @@ type TabNavItemProps = {
    * @default 'a'
    *
    * @example
-   * ```jsx
+   * ```
    * import { Link } from 'react-router-dom';
    *
    * <TabNavItem as={Link} />
@@ -266,7 +266,7 @@ const AppNavigation = () => {
             {navItems.find((item) => item.href === selectedProduct)?.title || 'Dashboard'}
           </Text>
           <Menu openInteraction="click">
-            <Avatar size="medium" name="Jane Smith" accessibilityLabel="Open user menu" />
+            <Avatar size="medium" name="Jane Smith" />
             <MenuOverlay>
               <MenuHeader title="Profile" />
               <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -280,14 +280,10 @@ const AppNavigation = () => {
                   </Text>
                 </Box>
               </Box>
-              <MenuItem onClick={() => navigate('/settings')} accessibilityLabel="Go to settings">
+              <MenuItem onClick={() => navigate('/settings')}>
                 <Text color="surface.text.gray.subtle">Settings</Text>
               </MenuItem>
-              <MenuItem
-                color="negative"
-                onClick={() => navigate('/logout')}
-                accessibilityLabel="Log out"
-              >
+              <MenuItem color="negative" onClick={() => navigate('/logout')}>
                 <Text color="feedback.text.negative.intense">Logout</Text>
               </MenuItem>
             </MenuOverlay>
@@ -297,9 +293,7 @@ const AppNavigation = () => {
         /* Desktop View */
         <>
           <TopNavBrand>
-            <BladeLink href="/home">
-              <img src="/logo.svg" alt="Company Logo" width="120" height="32" />
-            </BladeLink>
+            <BladeLink href="/home">Home</BladeLink>
           </TopNavBrand>
 
           <TopNavContent>
@@ -349,7 +343,6 @@ const AppNavigation = () => {
                                 navigate(item.href);
                                 setSelectedProduct(item.href);
                               }}
-                              accessibilityLabel={`Go to ${item.title}`}
                             >
                               <ExploreItem
                                 icon={item.icon}
@@ -393,7 +386,7 @@ const AppNavigation = () => {
               />
             </Tooltip>
             <Menu openInteraction="click">
-              <Avatar size="medium" name="Jane Smith" accessibilityLabel="Open user menu" />
+              <Avatar size="medium" name="Jane Smith" />
               <MenuOverlay>
                 <MenuHeader title="Profile" />
                 <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -407,14 +400,10 @@ const AppNavigation = () => {
                     </Text>
                   </Box>
                 </Box>
-                <MenuItem onClick={() => navigate('/settings')} accessibilityLabel="Go to settings">
+                <MenuItem onClick={() => navigate('/settings')}>
                   <Text color="surface.text.gray.subtle">Settings</Text>
                 </MenuItem>
-                <MenuItem
-                  color="negative"
-                  onClick={() => navigate('/logout')}
-                  accessibilityLabel="Log out"
-                >
+                <MenuItem color="negative" onClick={() => navigate('/logout')}>
                   <Text color="feedback.text.negative.intense">Logout</Text>
                 </MenuItem>
               </MenuOverlay>
@@ -434,7 +423,7 @@ export default AppNavigation;
 When using TopNav with React Router, you need to handle the active state for navigation items by checking the current location against routes:
 
 ```tsx
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link, TabNavItem } from 'react-router-dom';
 
 // Inside your component
 const location = useLocation();
@@ -454,20 +443,23 @@ The TopNav component adapts to different screen sizes by showing a simplified in
 
 ```tsx
 import { useBreakpoint } from '@razorpay/blade/utils';
+import { useTheme } from '@razorpay/blade/components';
+import { TopNav } from '@razorpay/blade/components';
 
 const MyTopNav = () => {
-  const { matchedDeviceType } = useBreakpoint();
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isMobile = matchedDeviceType === 'mobile';
 
   return (
     <TopNav>
-      {isMobile ? (
-        // Mobile view with essential controls
-        // ...
-      ) : (
-        // Desktop view with full navigation
-        // ...
-      )}
+      {isMobile
+        ? {
+            /* Mobile view with essential controls */
+          }
+        : {
+            /* Desktop view with full navigation */
+          }}
     </TopNav>
   );
 };

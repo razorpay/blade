@@ -4,9 +4,9 @@ import { URLS } from '../utils.js';
 
 const getFigmaToCodeToolName = 'get_figma_to_code';
 
-const getFigmaToCodeDescription = `Converts Figma designs into Blade Design System code. Provide a Figma design URL to generate the corresponding React components using Blade's component library.`;
+const getFigmaToCodeToolDescription = `Converts Figma designs into Blade Design System code. Provide a Figma design URL to generate the corresponding React components using Blade's component library.`;
 
-const getFigmaToCodeSchema = {
+const getFigmaToCodeToolSchema = {
   fileKey: z
     .string()
     .describe(
@@ -19,7 +19,7 @@ const getFigmaToCodeSchema = {
     ),
 };
 
-const getFigmaToCodeCallback: ToolCallback<typeof getFigmaToCodeSchema> = async ({
+const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> = async ({
   fileKey,
   nodeId,
 }) => {
@@ -57,8 +57,8 @@ const getFigmaToCodeCallback: ToolCallback<typeof getFigmaToCodeSchema> = async 
 };
 
 export {
-  getFigmaToCodeCallback,
-  getFigmaToCodeSchema,
-  getFigmaToCodeDescription,
+  getFigmaToCodeToolCallback,
   getFigmaToCodeToolName,
+  getFigmaToCodeToolDescription,
+  getFigmaToCodeToolSchema,
 };

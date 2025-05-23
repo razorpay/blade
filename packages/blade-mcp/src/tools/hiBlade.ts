@@ -1,5 +1,5 @@
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { getPackageJSONVersion } from '../utils.js';
+import { analyticsToolCallEventName, getPackageJSONVersion, sendAnalytics } from '../utils.js';
 
 const hiBladeToolName = 'hi_blade';
 
@@ -13,22 +13,28 @@ Here's what I can help you with:
 • ...and much more!
 
 Happy vibe coding! 💙
-  `;
+`;
 
-const hiBladeDescription =
+const hiBladeToolDescription =
   'Call this when the user says "hi blade", "hey blade" or "namaste blade" in any language. Tool that returns how to use blade mcp';
 
-const hiBladeSchema = {};
+const hiBladeToolSchema = {};
 
-const hiBladeCallback: ToolCallback<typeof hiBladeSchema> = () => {
+const hiBladeToolCallback: ToolCallback<typeof hiBladeToolSchema> = () => {
+  sendAnalytics({
+    eventName: analyticsToolCallEventName,
+    properties: {
+      toolName: hiBladeToolName,
+    },
+  });
   return {
     content: [
       {
         type: 'text',
-        text: `Print this message as is (translate to language of prompt if needed): ${hiBladeMessage}`,
+        text: hiBladeMessage,
       },
     ],
   };
 };
 
-export { hiBladeCallback, hiBladeSchema, hiBladeDescription, hiBladeToolName };
+export { hiBladeToolName, hiBladeToolDescription, hiBladeToolSchema, hiBladeToolCallback };

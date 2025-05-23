@@ -2,16 +2,24 @@ import { resolve, join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { KNOWLEDGEBASE_DIRECTORY, hasOutDatedRules, getBladeComponentsList } from '../utils.js';
+import {
+  KNOWLEDGEBASE_DIRECTORY,
+  hasOutDatedRules,
+  getBladeComponentsList,
+  handleError,
+  sendAnalytics,
+  analyticsToolCallEventName,
+} from '../utils.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeComponentsList = getBladeComponentsList();
 const bladeComponentsListString = bladeComponentsList.join(', ');
 
 const getBladeComponentDocsToolName = 'get_blade_component_docs';
-const getBladeComponentDocsDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
 
-const getBladeComponentDocsSchema = {
+const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
+
+const getBladeComponentDocsToolSchema = {
   componentsList: z
     .string()
     .describe(
@@ -24,7 +32,7 @@ const getBladeComponentDocsSchema = {
     ),
 };
 
-const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSchema> = ({
+const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDocsToolSchema> = ({
   componentsList,
   currentProjectRootDirectory,
 }) => {
@@ -85,12 +93,18 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
         const content = readFileSync(filePath, 'utf8');
         responseText += `${content}\n\n`;
       } catch (error: unknown) {
-        console.error(`Error reading markdown for component ${componentName}:`, error);
         responseText += `⚠️ Error: Could not read documentation for ${componentName}. The component may not exist or there may be an issue with the file.\n\n`;
       }
     }
 
     // Return the formatted response
+    sendAnalytics({
+      eventName: analyticsToolCallEventName,
+      properties: {
+        toolName: getBladeComponentDocsToolName,
+        componentsList,
+      },
+    });
     return {
       content: [
         {
@@ -100,23 +114,16 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
       ],
     };
   } catch (error: unknown) {
-    console.error('Error processing component documentation request:', error);
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Error retrieving documentation for components: ${componentsList}. ${
-            error instanceof Error ? error.message : 'Unknown error occurred.'
-          }`,
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      errorObject: error,
+    });
   }
 };
 
 export {
-  getBladeComponentDocsCallback,
-  getBladeComponentDocsSchema,
-  getBladeComponentDocsDescription,
   getBladeComponentDocsToolName,
+  getBladeComponentDocsToolDescription,
+  getBladeComponentDocsToolSchema,
+  getBladeComponentDocsToolCallback,
 };

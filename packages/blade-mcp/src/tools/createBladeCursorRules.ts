@@ -2,13 +2,21 @@ import { join } from 'path';
 import { existsSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import { BLADE_CURSOR_RULES_FILE_PATH, hasOutDatedRules, CURSOR_RULES_VERSION } from '../utils.js';
+import {
+  BLADE_CURSOR_RULES_FILE_PATH,
+  hasOutDatedRules,
+  CURSOR_RULES_VERSION,
+  handleError,
+  sendAnalytics,
+  analyticsToolCallEventName,
+} from '../utils.js';
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
-const createBladeCursorRulesDescription =
+
+const createBladeCursorRulesToolDescription =
   'Creates the cursor rules for blade to help with code generation. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
 
-const createBladeCursorRulesSchema = {
+const createBladeCursorRulesToolSchema = {
   currentProjectRootDirectory: z
     .string()
     .describe(
@@ -16,47 +24,62 @@ const createBladeCursorRulesSchema = {
     ),
 };
 
-const createBladeCursorRulesCallback: ToolCallback<typeof createBladeCursorRulesSchema> = ({
+const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorRulesToolSchema> = ({
   currentProjectRootDirectory,
 }) => {
-  const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
-  const ruleFilePath = join(ruleFileDir, 'frontend-blade-rules.mdc');
+  try {
+    const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
+    const ruleFilePath = join(ruleFileDir, 'frontend-blade-rules.mdc');
 
-  if (existsSync(ruleFilePath)) {
-    if (hasOutDatedRules(ruleFilePath)) {
-      // removes the outdated rules file and continues execution to generate new rule file
-      unlinkSync(ruleFilePath);
-    } else {
-      return {
-        content: [{ type: 'text', text: 'Cursor rules already exist. Doing nothing' }],
-      };
+    if (existsSync(ruleFilePath)) {
+      if (hasOutDatedRules(ruleFilePath)) {
+        // removes the outdated rules file and continues execution to generate new rule file
+        unlinkSync(ruleFilePath);
+      } else {
+        return {
+          content: [{ type: 'text', text: 'Cursor rules already exist. Doing nothing' }],
+        };
+      }
     }
-  }
 
-  const ruleFileTemplateContent = readFileSync(BLADE_CURSOR_RULES_FILE_PATH, 'utf8').replace(
-    'rules_version: <!-- dynamic_version -->',
-    `rules_version: ${CURSOR_RULES_VERSION}`,
-  );
+    const ruleFileTemplateContent = readFileSync(BLADE_CURSOR_RULES_FILE_PATH, 'utf8').replace(
+      'rules_version: <!-- dynamic_version -->',
+      `rules_version: ${CURSOR_RULES_VERSION}`,
+    );
 
-  if (!existsSync(ruleFileDir)) {
-    mkdirSync(ruleFileDir, { recursive: true });
-  }
+    if (!existsSync(ruleFileDir)) {
+      mkdirSync(ruleFileDir, { recursive: true });
+    }
 
-  writeFileSync(ruleFilePath, ruleFileTemplateContent);
+    writeFileSync(ruleFilePath, ruleFileTemplateContent);
 
-  return {
-    content: [
-      {
-        type: 'text',
-        text: `Blade cursor rules created at: ${ruleFilePath}. Cursor Rules Version: ${CURSOR_RULES_VERSION}`,
+    sendAnalytics({
+      eventName: analyticsToolCallEventName,
+      properties: {
+        toolName: createBladeCursorRulesToolName,
+        cursorRulesVersion: CURSOR_RULES_VERSION,
       },
-    ],
-  };
+    });
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Blade cursor rules created at: ${ruleFilePath}. Cursor Rules Version: ${CURSOR_RULES_VERSION}`,
+        },
+      ],
+    };
+  } catch (error: unknown) {
+    return handleError({
+      toolName: createBladeCursorRulesToolName,
+      errorObject: error,
+    });
+  }
 };
 
 export {
-  createBladeCursorRulesCallback,
   createBladeCursorRulesToolName,
-  createBladeCursorRulesDescription,
-  createBladeCursorRulesSchema,
+  createBladeCursorRulesToolDescription,
+  createBladeCursorRulesToolSchema,
+  createBladeCursorRulesToolCallback,
 };

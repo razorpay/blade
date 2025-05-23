@@ -1,5 +1,36 @@
 # @razorpay/blade
 
+## 12.31.1
+
+### Patch Changes
+
+- 273730ff: fix: surface primary border color when using custom brand color
+
+## 12.31.0
+
+### Minor Changes
+
+- c48acef5: feat(Heading): add medium weight
+
+## 12.30.0
+
+### Minor Changes
+
+- 1de828f1: feat(fileUpload): add new size variant "variable"
+- a48a3a30: feat(blade): add preview component
+
+## 12.29.0
+
+### Minor Changes
+
+- 546aceaa3: feat(Card): add maxWidth property to card
+
+## 12.28.0
+
+### Minor Changes
+
+- b16eb895: feat(Amount): expose `fractionDigits` for control over decimals
+
 ## 12.27.0
 
 ### Minor Changes

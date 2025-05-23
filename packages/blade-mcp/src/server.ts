@@ -2,37 +2,45 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import * as Sentry from '@sentry/node';
 import {
-  createNewBladeProjectCallback,
-  createNewBladeProjectSchema,
-  createNewBladeProjectDescription,
   createNewBladeProjectToolName,
+  createNewBladeProjectToolDescription,
+  createNewBladeProjectToolSchema,
+  createNewBladeProjectToolCallback,
 } from './tools/createNewBladeProject.js';
 import {
-  createBladeCursorRulesCallback,
-  createBladeCursorRulesSchema,
-  createBladeCursorRulesDescription,
   createBladeCursorRulesToolName,
+  createBladeCursorRulesToolDescription,
+  createBladeCursorRulesToolSchema,
+  createBladeCursorRulesToolCallback,
 } from './tools/createBladeCursorRules.js';
 import {
-  getBladeComponentDocsCallback,
-  getBladeComponentDocsSchema,
-  getBladeComponentDocsDescription,
   getBladeComponentDocsToolName,
+  getBladeComponentDocsToolDescription,
+  getBladeComponentDocsToolSchema,
+  getBladeComponentDocsToolCallback,
 } from './tools/getBladeComponentDocs.js';
 import {
-  getFigmaToCodeCallback,
-  getFigmaToCodeSchema,
-  getFigmaToCodeDescription,
+  hiBladeToolName,
+  hiBladeToolDescription,
+  hiBladeToolSchema,
+  hiBladeToolCallback,
+} from './tools/hiBlade.js';
+import {
+  getFigmaToCodeToolCallback,
+  getFigmaToCodeToolDescription,
   getFigmaToCodeToolName,
+  getFigmaToCodeToolSchema,
 } from './tools/getFigmaToCode.js';
 import { getPackageJSONVersion } from './utils.js';
-import {
-  hiBladeCallback,
-  hiBladeDescription,
-  hiBladeSchema,
-  hiBladeToolName,
-} from './tools/hiBlade.js';
+
+Sentry.init({
+  dsn: process.env.BLADE_MCP_SENTRY_DSN,
+  environment: process.env.NODE_ENV ?? 'development',
+  release: getPackageJSONVersion(),
+  sendDefaultPii: false,
+});
 
 try {
   const server = new McpServer({
@@ -40,34 +48,34 @@ try {
     version: getPackageJSONVersion(),
   });
 
-  server.tool(hiBladeToolName, hiBladeDescription, hiBladeSchema, hiBladeCallback);
+  server.tool(hiBladeToolName, hiBladeToolDescription, hiBladeToolSchema, hiBladeToolCallback);
 
   server.tool(
     createNewBladeProjectToolName,
-    createNewBladeProjectDescription,
-    createNewBladeProjectSchema,
-    createNewBladeProjectCallback,
+    createNewBladeProjectToolDescription,
+    createNewBladeProjectToolSchema,
+    createNewBladeProjectToolCallback,
   );
 
   server.tool(
     createBladeCursorRulesToolName,
-    createBladeCursorRulesDescription,
-    createBladeCursorRulesSchema,
-    createBladeCursorRulesCallback,
+    createBladeCursorRulesToolDescription,
+    createBladeCursorRulesToolSchema,
+    createBladeCursorRulesToolCallback,
   );
 
   server.tool(
     getBladeComponentDocsToolName,
-    getBladeComponentDocsDescription,
-    getBladeComponentDocsSchema,
-    getBladeComponentDocsCallback,
+    getBladeComponentDocsToolDescription,
+    getBladeComponentDocsToolSchema,
+    getBladeComponentDocsToolCallback,
   );
 
   server.tool(
     getFigmaToCodeToolName,
-    getFigmaToCodeDescription,
-    getFigmaToCodeSchema,
-    getFigmaToCodeCallback,
+    getFigmaToCodeToolDescription,
+    getFigmaToCodeToolSchema,
+    getFigmaToCodeToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout
@@ -75,8 +83,9 @@ try {
 
   // Use Promise handling for async operations
   await server.connect(transport);
-  console.error('Blade MCP connected successfully.');
+  console.log('Blade MCP connected successfully.');
 } catch (error: unknown) {
-  console.error('Blade MCP initialization failed:', error);
+  Sentry.captureException(error);
+  console.error('Blade MCP Error', error);
   process.exit(1);
 }

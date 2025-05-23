@@ -6,373 +6,272 @@ Card
 
 Cards are containers that group related content and actions on a single topic. They help separate content into distinct sections, making interfaces easier to scan and understand. Cards support various layouts with customizable headers, bodies, and footers, enabling consistent presentation of information while providing clear interaction points for users.
 
+## Important Constraints
+
+- `Card` component only accepts `CardHeader`, `CardBody`, `CardFooter` components as children
+- `CardHeader` component only accepts `CardHeaderLeading`, `CardHeaderTrailing` components as children
+- `CardFooter` component only accepts `CardFooterLeading`, `CardFooterTrailing` components as children
+
+The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+
 ## TypeScript Types
 
-The following types represent the props that the Card component and its subcomponents accept. These allow you to properly configure the Card component according to your needs.
+The following types define the props that the Card component and its subcomponents accept:
 
 ```typescript
-/**
- * Props for the Card component
- */
-type CardProps = {
+export type CardProps = {
   /**
-   * The content to be displayed inside the card
+   * Card contents
    */
   children: React.ReactNode;
-
   /**
-   * Background color of the card
-   * @default 'surface.background.white.normal'
+   * Sets the background color of the Card
+   *
+   * @default `surface.background.gray.intense`
    */
-  backgroundColor?: string;
-
+  backgroundColor?:
+    | 'surface.background.gray.intense'
+    | 'surface.background.gray.moderate'
+    | 'surface.background.gray.subtle';
   /**
-   * Border radius of the card
-   * @default 'medium'
+   * Sets the border radius of the Card
+   *
+   * @default `medium`
    */
-  borderRadius?: 'none' | 'small' | 'medium' | 'large' | 'full';
-
+  borderRadius?: Extract<BoxProps['borderRadius'], 'medium' | 'large' | 'xlarge'>;
   /**
-   * Elevation (shadow) level of the card
-   * @default 'lowRaised'
+   * Sets the elevation for Cards
+   *
+   * eg: `theme.elevation.midRaised`
+   *
+   * @default `theme.elevation.lowRaised`
    */
-  elevation?: 'lowRaised' | 'midRaised' | 'highRaised';
-
+  elevation?: keyof Elevation;
   /**
-   * Padding applied to the card
-   * @default 'spacing.7'
+   * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
+   * @default `spacing.7`
    */
-  padding?: CardSpacingValueType;
-} & StyledPropsBlade &
-  TestID &
-  DataAnalyticsAttribute;
-
-/**
- * Spacing values that can be used in Card components
- */
-type CardSpacingValueType = 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
-
-/**
- * Props for the CardHeader component
- */
-type CardHeaderProps = {
+  padding?: 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
   /**
-   * Content of the header
+   * Sets the width of the card
    */
-  children: React.ReactNode;
-
+  width?: BoxProps['width'];
   /**
-   * Padding at the bottom of the header
-   * @default 'spacing.4'
+   * Sets the height of the card
    */
-  paddingBottom?: CardSpacingValueType;
-
+  height?: BoxProps['height'];
   /**
-   * Margin at the bottom of the header
-   * @default 'spacing.4'
+   * Sets minimum height of the card
    */
-  marginBottom?: CardSpacingValueType;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderLeading component
- */
-type CardHeaderLeadingProps = {
+  minHeight?: BoxProps['minHeight'];
   /**
-   * Title text of the header
+   * Sets minimum width of the card
    */
-  title: string;
-
+  minWidth?: BoxProps['minWidth'];
   /**
-   * Subtitle text of the header
+   * Sets maximum width of the card
    */
-  subtitle?: string;
-
+  maxWidth?: BoxProps['maxWidth'];
   /**
-   * Element to display before the title
-   */
-  prefix?: React.ReactNode;
-
-  /**
-   * Element to display after the title
-   */
-  suffix?: React.ReactNode;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderTrailing component
- */
-type CardHeaderTrailingProps = {
-  /**
-   * Visual element to display in the trailing section
-   */
-  visual?: React.ReactNode;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderIcon component
- */
-type CardHeaderIconProps = {
-  /**
-   * Icon component to display
-   */
-  icon: IconComponent;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderCounter component
- */
-type CardHeaderCounterProps = {
-  /**
-   * Numeric value to display in the counter
-   */
-  value: number;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderBadge component
- */
-type CardHeaderBadgeProps = {
-  /**
-   * Content of the badge
-   */
-  children: React.ReactNode;
-
-  /**
-   * Color of the badge
-   * @default 'primary'
-   */
-  color?: 'primary' | 'positive' | 'negative' | 'notice';
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderIconButton component
- */
-type CardHeaderIconButtonProps = {
-  /**
-   * Icon component for the button
-   */
-  icon: IconComponent;
-
-  /**
-   * Function called when the button is clicked
-   */
-  onClick?: () => void;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderLink component
- */
-type CardHeaderLinkProps = {
-  /**
-   * URL the link points to
-   */
-  href: string;
-
-  /**
-   * Content of the link
-   */
-  children: React.ReactNode;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderText component
- */
-type CardHeaderTextProps = {
-  /**
-   * Text content to display
-   */
-  children: React.ReactNode;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardHeaderAmount component
- */
-type CardHeaderAmountProps = {
-  /**
-   * Numeric value to display as currency amount
-   */
-  value: number;
-
-  /**
-   * Currency code
-   * @default 'INR'
-   */
-  currency?: string;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardBody component
- */
-type CardBodyProps = {
-  /**
-   * Content of the card body
-   */
-  children: React.ReactNode;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardFooter component
- */
-type CardFooterProps = {
-  /**
-   * Content of the footer
-   */
-  children: React.ReactNode;
-
-  /**
-   * Padding at the top of the footer
-   * @default 'spacing.4'
-   */
-  paddingTop?: CardSpacingValueType;
-
-  /**
-   * Margin at the top of the footer
-   * @default 'spacing.4'
-   */
-  marginTop?: CardSpacingValueType;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardFooterLeading component
- */
-type CardFooterLeadingProps = {
-  /**
-   * Title text of the footer
-   */
-  title?: string;
-
-  /**
-   * Subtitle text of the footer
-   */
-  subtitle?: string;
-} & StyledPropsBlade;
-
-/**
- * Props for the CardFooterTrailing component
- */
-type CardFooterTrailingProps = {
-  /**
-   * Actions for the footer buttons
-   */
-  actions: {
-    /**
-     * Configuration for the primary action button
-     */
-    primary?: CardFooterAction;
-
-    /**
-     * Configuration for the secondary action button
-     */
-    secondary?: CardFooterAction;
-  };
-} & StyledPropsBlade;
-
-/**
- * Configuration for a footer action button
- */
-type CardFooterAction = {
-  /**
-   * Text to display on the button
-   */
-  text: string;
-
-  /**
-   * Function called when the button is clicked
-   */
-  onClick: () => void;
-
-  /**
-   * Whether the button is disabled
+   * If `true`, the card will be in selected state
+   * Card will have a primary color border around it.
+   *
    * @default false
    */
-  isDisabled?: boolean;
-
+  isSelected?: boolean;
   /**
-   * Icon to display on the button
+   * Makes the Card linkable by setting the `href` prop
+   *
+   * @default undefined
    */
-  icon?: IconComponent;
-
+  href?: string;
   /**
-   * Accessible label for the button
+   * Sets the `target` attribute for the linkable card
+   */
+  target?: string;
+  /**
+   * Sets the `rel` attribute for the linkable card
+   */
+  rel?: string;
+  /**
+   * Sets the accessibility label for the card
+   * This is useful when the card has an `href` or `onClick` prop
+   * Setting this will announce the label when the card is focused
    */
   accessibilityLabel?: string;
-
   /**
-   * Position of the icon
-   * @default 'left'
-   */
-  iconPosition?: 'left' | 'right';
-
-  /**
-   * Whether to show loading state
+   * If `true`, the card will scale up on hover
+   *
+   * On mobile devices it will scale down on press
+   *
    * @default false
    */
-  isLoading?: boolean;
-
+  shouldScaleOnHover?: boolean;
   /**
-   * HTML button type attribute
-   * @default 'button'
+   * Callback triggered when the card is hovered
    */
-  type?: 'button' | 'submit' | 'reset';
+  onHover?: () => void;
+  /**
+   * Callback triggered when the card is clicked
+   */
+  onClick?: (
+    event: Platform.Select<{
+      web: React.MouseEvent;
+      native: GestureResponderEvent;
+    }>,
+  ) => void;
+  /**
+   * Sets the HTML element for the Card
+   *
+   * When `as` is set to `label`, the card will be rendered as a label element
+   * This can be used to create a custom checkbox or radio button using the card
+   *
+   * @default undefined
+   */
+  as?: 'label';
+} & TestID &
+  DataAnalyticsAttribute &
+  StyledPropsBlade;
+
+type CardBodyProps = {
+  children: React.ReactNode;
+  height?: BoxProps['height'];
+} & TestID &
+  DataAnalyticsAttribute;
+
+type CardHeaderProps = {
+  children?: React.ReactNode;
+  /**
+   * For spacing between divider and header title
+   */
+  paddingBottom?: CardSpacingValueType;
+  /**
+   * For spacing between body content and divider
+   */
+  marginBottom?: CardSpacingValueType;
+  /**
+   * @default true
+   */
+  showDivider?: boolean;
+} & TestID &
+  DataAnalyticsAttribute;
+
+type CardHeaderLeadingProps = {
+  title: string;
+  subtitle?: string;
+  /**
+   * prefix element of Card
+   *
+   * Accepts: `CardHeaderIcon` component
+   */
+  prefix?: React.ReactNode;
+  /**
+   * suffix element of Card
+   *
+   * Accepts: `CardHeaderCounter` component
+   */
+  suffix?: React.ReactNode;
+} & DataAnalyticsAttribute;
+
+type CardHeaderTrailingProps = {
+  /**
+   * Renders a visual ornament in card header trailing section
+   *
+   * Accepts: `CardHeaderLink`, `CardHeaderText`, `CardHeaderIconButton`, `CardHeaderBadge`
+   */
+  visual?: React.ReactNode;
 };
 
-/**
- * Type for icon components
- */
-type IconComponent = React.ComponentType<{
-  size?: 'small' | 'medium' | 'large';
-  color?: string;
-}>;
+export type CardFooterAction = Pick<
+  ButtonProps,
+  'type' | 'accessibilityLabel' | 'isLoading' | 'isDisabled' | 'icon' | 'iconPosition' | 'onClick'
+> & {
+  text: ButtonProps['children'];
+};
+
+type CardFooterProps = {
+  children?: React.ReactNode;
+  /**
+   * For spacing between divider and footer title
+   */
+  paddingTop?: CardSpacingValueType;
+  /**
+   * For spacing between body content and divider
+   */
+  marginTop?: CardSpacingValueType;
+  /**
+   * @default true
+   */
+  showDivider?: boolean;
+} & TestID &
+  DataAnalyticsAttribute;
+
+type CardFooterLeadingProps = {
+  title?: string;
+  subtitle?: string;
+} & DataAnalyticsAttribute;
+
+type CardFooterTrailingProps = {
+  actions?: {
+    primary?: CardFooterAction;
+    secondary?: CardFooterAction;
+  };
+} & DataAnalyticsAttribute;
 ```
 
 ## Example
 
-### Basic Card Usage
+### Basic Card with Header, Body, and Footer
 
-This example demonstrates a simple Card with essential props.
+A complete Card with header, body, and footer sections. Shows how to combine all Card components including icons, titles, badges, and actions.
 
 ```tsx
-import React from 'react';
 import {
   Card,
-  CardHeader,
-  CardHeaderLeading,
   CardBody,
   CardFooter,
+  CardFooterLeading,
   CardFooterTrailing,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
   Text,
+  InfoIcon,
 } from '@razorpay/blade/components';
 
-const BasicCard = () => {
+const BasicCardExample = () => {
   return (
-    <Card
-      backgroundColor="surface.background.white.normal"
-      borderRadius="medium"
-      elevation="lowRaised"
-      padding="spacing.7"
-      testID="basic-card"
-    >
-      <CardHeader marginBottom="spacing.4">
+    <Card>
+      <CardHeader>
         <CardHeaderLeading
-          title="Payment Features"
-          subtitle="Learn about Razorpay payment options"
+          title="Card Header"
+          subtitle="Subtitle text that explains more"
+          prefix={<CardHeaderIcon icon={InfoIcon} />}
+          suffix={<CardHeaderCounter value={12} />}
         />
+        <CardHeaderTrailing visual={<CardHeaderBadge color="positive">NEW</CardHeaderBadge>} />
       </CardHeader>
-
       <CardBody>
         <Text>
-          Razorpay offers a variety of payment methods to help businesses accept payments online.
-          Explore our solutions to find the right fit for your business needs.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur nisl nec
+          dapibus volutpat. Sed vitae fringilla justo, in finibus metus. Nulla facilisi. Nunc ac
+          luctus nisi, a ultrices purus.
         </Text>
       </CardBody>
-
-      <CardFooter marginTop="spacing.4">
+      <CardFooter>
+        <CardFooterLeading title="Card footer title" subtitle="Subtitle with more information" />
         <CardFooterTrailing
           actions={{
             primary: {
-              text: 'Learn More',
-              onClick: () => console.log('Learn more clicked'),
+              onClick: () => console.log('Primary action clicked'),
+              text: 'Accept',
+            },
+            secondary: {
+              onClick: () => console.log('Secondary action clicked'),
+              text: 'Cancel',
             },
           }}
         />
@@ -380,129 +279,49 @@ const BasicCard = () => {
     </Card>
   );
 };
-
-export default BasicCard;
 ```
 
-### Selectable Card
+### Interactive Cards
 
-This example shows how to implement a selectable Card with state management.
+A Card that responds to user interaction with hover effects and selection state. Demonstrates how to create clickable cards with proper accessibility support.
 
 ```tsx
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderIcon,
+  Text,
+  UsersIcon,
+} from '@razorpay/blade/components';
 import React, { useState } from 'react';
-import { Card, CardBody, Text, Box } from '@razorpay/blade/components';
 
-const SelectableCard = () => {
+const InteractiveCardExample = () => {
   const [isSelected, setIsSelected] = useState(false);
-
-  const handleCardClick = () => {
-    setIsSelected(!isSelected);
-  };
 
   return (
     <Card
-      backgroundColor={
-        isSelected ? 'surface.background.primary.subtle' : 'surface.background.white.normal'
-      }
-      borderRadius="medium"
-      elevation={isSelected ? 'midRaised' : 'lowRaised'}
-      padding="spacing.7"
-      onClick={handleCardClick}
-      data-analytics="selectable-card"
-      testID="selectable-card"
+      shouldScaleOnHover
+      isSelected={isSelected}
+      onClick={() => setIsSelected(!isSelected)}
+      accessibilityLabel="User Profile Card"
     >
+      <CardHeader>
+        <CardHeaderLeading
+          title="User Profile"
+          subtitle="Click to select this profile"
+          prefix={<CardHeaderIcon icon={UsersIcon} />}
+        />
+      </CardHeader>
       <CardBody>
-        <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Text fontWeight={isSelected ? 'bold' : 'normal'}>
-            Click to {isSelected ? 'deselect' : 'select'} this payment option
-          </Text>
-          {isSelected && (
-            <Box
-              width="16px"
-              height="16px"
-              borderRadius="full"
-              backgroundColor="surface.background.primary.normal"
-            />
-          )}
-        </Box>
+        <Text>
+          This is an interactive card that scales on hover and can be selected. Click to toggle the
+          selection state. The card uses accessibility features to ensure it can be used with screen
+          readers.
+        </Text>
       </CardBody>
     </Card>
   );
 };
-
-export default SelectableCard;
-```
-
-### Multi-Select Card Group
-
-This example demonstrates using multiple Cards in a selectable group.
-
-```tsx
-import React, { useState } from 'react';
-import { Card, CardBody, Text, Box } from '@razorpay/blade/components';
-
-const MultiSelectCardGroup = () => {
-  const [selectedCards, setSelectedCards] = useState<string[]>([]);
-
-  const cards = [
-    { id: 'card1', title: 'Credit Card' },
-    { id: 'card2', title: 'Debit Card' },
-    { id: 'card3', title: 'UPI' },
-  ];
-
-  const toggleCard = (id: string) => {
-    setSelectedCards((prevSelected) =>
-      prevSelected.includes(id)
-        ? prevSelected.filter((cardId) => cardId !== id)
-        : [...prevSelected, id],
-    );
-  };
-
-  return (
-    <Box display="flex" flexDirection="column" gap="spacing.4">
-      <Text>Select payment methods (multiple allowed):</Text>
-
-      {cards.map((card) => {
-        const isSelected = selectedCards.includes(card.id);
-
-        return (
-          <Card
-            key={card.id}
-            backgroundColor={
-              isSelected ? 'surface.background.primary.subtle' : 'surface.background.white.normal'
-            }
-            borderRadius="medium"
-            elevation={isSelected ? 'midRaised' : 'lowRaised'}
-            padding="spacing.5"
-            onClick={() => toggleCard(card.id)}
-            testID={`payment-card-${card.id}`}
-          >
-            <CardBody>
-              <Box display="flex" alignItems="center" justifyContent="space-between">
-                <Text>{card.title}</Text>
-                {isSelected && (
-                  <Box
-                    width="16px"
-                    height="16px"
-                    borderRadius="full"
-                    backgroundColor="surface.background.primary.normal"
-                  />
-                )}
-              </Box>
-            </CardBody>
-          </Card>
-        );
-      })}
-
-      <Text marginTop="spacing.3">
-        Selected:{' '}
-        {selectedCards.length > 0
-          ? selectedCards.map((id) => cards.find((c) => c.id === id)?.title).join(', ')
-          : 'None'}
-      </Text>
-    </Box>
-  );
-};
-
-export default MultiSelectCardGroup;
 ```
