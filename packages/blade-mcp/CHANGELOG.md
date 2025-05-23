@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.11
+
+### Patch Changes
+
+- 735ec600: fix: update knowledgebase
+
 ## 0.1.10
 
 ### Patch Changes
