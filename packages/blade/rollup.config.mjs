@@ -2,6 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable prefer-template */
 import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'node:url';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
@@ -12,7 +13,10 @@ import pluginAlias from '@rollup/plugin-alias';
 import pluginReplace from '@rollup/plugin-replace';
 import ts from 'typescript';
 import { depsExternalPlugin } from './dependencies-external-plugin.mjs';
-import packagejson from './package.json' assert { type: 'json' };
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const packagejson = JSON.parse(fs.readFileSync(path.resolve(__dirname, './package.json'), 'utf8'));
 
 const webExtensions = [
   '.web.js',
@@ -58,7 +62,6 @@ const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const libDirectory = 'lib';
 const typesDirectory = 'types';
-const themeBundleCategories = ['tokens', 'utils'];
 
 const aliases = pluginAlias({
   entries: [
