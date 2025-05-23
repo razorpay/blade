@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.31.2
+
+### Patch Changes
+
+- b42ad547: fix(blade): Display 'Show more filters' only if children are provided
+
 ## 12.31.1
 
 ### Patch Changes
