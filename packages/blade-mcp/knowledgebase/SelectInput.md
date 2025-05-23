@@ -217,7 +217,8 @@ import {
 
 function MultiSelectWithValidationExample() {
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [validationState, setValidationState] = useState('none');
+  const [validationState, setValidationState] =
+    (useState < 'none') | 'error' | ('success' > 'none');
 
   // Validate whenever selection changes
   useEffect(() => {

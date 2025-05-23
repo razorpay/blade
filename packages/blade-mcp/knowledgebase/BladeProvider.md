@@ -94,10 +94,15 @@ import {
   Box,
   Text,
   Dropdown,
+  DropdownButton,
+  DropdownOverlay,
+  ActionList,
+  ActionListItem,
   useTheme,
   Heading,
   Button,
   TextInput,
+  PasswordInput,
 } from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
 
@@ -113,23 +118,36 @@ const ThemeSwitcher = () => {
 
       <Dropdown
         selectionType="single"
-        defaultValue={colorScheme}
-        onSelectionChange={({ values }) => setColorScheme(values[0])}
+        onOpenChange={(isOpen) => {
+          // Handle dropdown open/close if needed
+        }}
       >
-        <Dropdown.Trigger>
-          <Button>
-            {colorScheme === 'light'
-              ? 'Light Theme'
-              : colorScheme === 'dark'
-              ? 'Dark Theme'
-              : 'System Theme'}
-          </Button>
-        </Dropdown.Trigger>
-        <Dropdown.Menu>
-          <Dropdown.MenuItem value="light">Light</Dropdown.MenuItem>
-          <Dropdown.MenuItem value="dark">Dark</Dropdown.MenuItem>
-          <Dropdown.MenuItem value="system">System</Dropdown.MenuItem>
-        </Dropdown.Menu>
+        <DropdownButton>
+          {colorScheme === 'light'
+            ? 'Light Theme'
+            : colorScheme === 'dark'
+            ? 'Dark Theme'
+            : 'System Theme'}
+        </DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem
+              value="light"
+              title="Light"
+              onClick={({ value }) => setColorScheme('light')}
+            />
+            <ActionListItem
+              value="dark"
+              title="Dark"
+              onClick={({ value }) => setColorScheme('dark')}
+            />
+            <ActionListItem
+              value="system"
+              title="System"
+              onClick={({ value }) => setColorScheme('system')}
+            />
+          </ActionList>
+        </DropdownOverlay>
       </Dropdown>
     </Box>
   );
@@ -177,6 +195,7 @@ import {
   Button,
   TextInput,
   Link,
+  PasswordInput,
 } from '@razorpay/blade/components';
 import { createTheme } from '@razorpay/blade/tokens';
 
@@ -206,12 +225,7 @@ const CustomThemeExample = () => {
             helpText="We'll never share your email with anyone else."
           />
 
-          <TextInput
-            label="Password"
-            type="text"
-            inputMode="password"
-            placeholder="Enter your password"
-          />
+          <PasswordInput label="Password" placeholder="Enter your password" />
 
           {/* Button examples showing primary, secondary and tertiary variants */}
           <Box display="flex" gap="spacing.3" marginTop="spacing.2">

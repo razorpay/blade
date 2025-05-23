@@ -85,7 +85,7 @@ type TabNavItemProps = {
    * @default 'a'
    *
    * @example
-   * ```jsx
+   * ```
    * import { Link } from 'react-router-dom';
    *
    * <TabNavItem as={Link} />

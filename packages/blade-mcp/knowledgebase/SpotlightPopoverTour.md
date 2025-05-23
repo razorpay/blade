@@ -169,7 +169,7 @@ function BasicTourExample() {
   };
 
   // Define the tour steps
-  const steps = [
+  const steps: SpotlightPopoverTourSteps = [
     {
       name: 'refunds-step',
       title: 'Overview of Refunds',
@@ -185,7 +185,7 @@ function BasicTourExample() {
           </Text>
         </Box>
       ),
-      placement: 'bottom',
+      placement: 'bottom' as const,
       footer: CustomTourFooter,
     },
     {
@@ -198,7 +198,7 @@ function BasicTourExample() {
           </Text>
         </Box>
       ),
-      placement: 'bottom',
+      placement: 'bottom' as const,
       footer: CustomTourFooter,
     },
     {
@@ -210,7 +210,7 @@ function BasicTourExample() {
           clicking on the button.
         </Text>
       ),
-      placement: 'bottom',
+      placement: 'bottom' as const,
       footer: CustomTourFooter,
     },
   ];
@@ -385,7 +385,7 @@ function InterruptibleTourExample() {
   };
 
   // Define steps dynamically based on state
-  const steps = [
+  const steps: SpotlightPopoverTourSteps = [
     {
       name: 'step-1',
       title: 'Step 1',
@@ -394,7 +394,7 @@ function InterruptibleTourExample() {
           <Text color="surface.text.gray.subtle">This is step 1, press skip</Text>
         </Box>
       ),
-      placement: 'top',
+      placement: 'top' as const,
       footer: (props) => <InterruptibleTourFooter {...props} />,
     },
     {
@@ -405,7 +405,7 @@ function InterruptibleTourExample() {
           <Text color="surface.text.gray.subtle">This is step 2</Text>
         </Box>
       ),
-      placement: 'bottom',
+      placement: 'bottom' as const,
       footer: (props) => <InterruptibleTourFooter {...props} />,
     },
     // The final step changes based on whether user skipped or completed

@@ -63,7 +63,7 @@ const IconsExample = () => {
       {/* Different sizes with semantic colors */}
       <ArrowRightIcon size="small" color="surface.icon.primary.normal" />
       <CheckCircleIcon size="medium" color="feedback.icon.positive.subtle" />
-      <CloseIcon size="large" color="feedback.icon.error.intense" />
+      <CloseIcon size="large" color="feedback.icon.negative.intense" />
       <AlertTriangleIcon size="2xlarge" color="surface.icon.gray.subtle" />
     </Box>
   );

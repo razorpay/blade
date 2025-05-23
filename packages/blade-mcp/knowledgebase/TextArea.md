@@ -80,7 +80,8 @@ import { Box } from '@razorpay/blade/components';
 
 function FeedbackForm() {
   const [feedback, setFeedback] = useState('');
-  const [validationState, setValidationState] = useState('none');
+  const [validationState, setValidationState] =
+    (useState < 'none') | 'error' | ('success' > 'none');
 
   const handleChange = ({ value }) => {
     setFeedback(value || '');

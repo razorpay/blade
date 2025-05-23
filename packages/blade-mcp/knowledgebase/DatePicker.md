@@ -392,7 +392,7 @@ const SizeVariantsExample = () => {
         <DatePicker
           selectionType="single"
           label="Small"
-          size="small"
+          size="medium"
           value={date}
           onChange={setDate}
           isOpen={isSingleOpen}
@@ -501,7 +501,7 @@ const DateRangeExample = () => {
   const datePresets = [
     {
       label: 'Last 7 days',
-      value: (today) => {
+      value: (today: Date): [Date, Date] => {
         const sevenDaysAgo = new Date(today);
         sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
         return [sevenDaysAgo, today];
@@ -509,7 +509,7 @@ const DateRangeExample = () => {
     },
     {
       label: 'Last 30 days',
-      value: (today) => {
+      value: (today: Date): [Date, Date] => {
         const thirtyDaysAgo = new Date(today);
         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
         return [thirtyDaysAgo, today];
@@ -517,7 +517,7 @@ const DateRangeExample = () => {
     },
     {
       label: 'This month',
-      value: (today) => {
+      value: (today: Date): [Date, Date] => {
         const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
         return [firstDayOfMonth, today];
       },
@@ -566,7 +566,7 @@ const DateRangeExample = () => {
         <Text
           size="small"
           marginTop="spacing.3"
-          color={hasRangeError ? 'feedback.text.error.normal' : undefined}
+          color={hasRangeError ? 'feedback.text.negative.intense' : undefined}
         >
           Selected: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} -
           {dateRange[1] ? dayjs(dateRange[1]).format('DD MMM YYYY') : 'None'}
@@ -614,11 +614,11 @@ const FilterChipDatePickerExample = () => {
   const datePresets = [
     {
       label: 'Last 7 days',
-      value: (date: Date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+      value: (date: Date): [Date, Date] => [dayjs(date).subtract(7, 'days').toDate(), date],
     },
     {
       label: 'This month',
-      value: (date: Date) => [
+      value: (date: Date): [Date, Date] => [
         dayjs(date).startOf('month').toDate(),
         dayjs(date).endOf('month').toDate(),
       ],

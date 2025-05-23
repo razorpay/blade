@@ -101,6 +101,7 @@ const IconButtonBasicExample = () => {
             icon={InfoIcon}
             isDisabled
             accessibilityLabel="Information"
+            onClick={() => console.log('Info clicked')}
             data-analytics="info-click"
           />
         </Box>

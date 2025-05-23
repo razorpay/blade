@@ -177,7 +177,6 @@ import {
   InfoIcon,
   ShieldIcon,
   RefreshIcon,
-  PresentIcon,
   CloseIcon,
 } from '@razorpay/blade/components';
 
@@ -262,7 +261,7 @@ const ProductDetailsCard = () => {
             <Chip value="available" icon={CheckCircleIcon} color="positive" />
             <Chip value="warranty" icon={ShieldIcon} color="primary" />
             <Chip value="exchange" icon={RefreshIcon} />
-            <Chip value="gift" icon={PresentIcon} isDisabled />
+            <Chip value="gift" icon={OffersIcon} isDisabled />
           </Box>
         </Box>
       </Box>

@@ -188,7 +188,7 @@ export default StandardLinkExample;
 
 ```tsx
 import React from 'react';
-import { Box, Text, Heading, Link } from '@razorpay/blade/components';
+import { Box, Text, Heading, Link, ArrowRightIcon } from '@razorpay/blade/components';
 
 const InlineLinkExample = () => {
   return (

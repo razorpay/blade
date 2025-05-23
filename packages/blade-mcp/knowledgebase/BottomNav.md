@@ -279,10 +279,6 @@ const MobileAppExample = () => {
           icon={MenuDotsIcon}
           onClick={() => setIsSideNavOpen(true)}
           testID="nav-item-more"
-          activeOnLinks={[
-            ...mainNavItems.slice(3).map((item) => item.href),
-            ...sideNavItems.map((item) => item.href),
-          ]}
         />
       </BottomNav>
     </Box>

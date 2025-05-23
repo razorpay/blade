@@ -366,7 +366,7 @@ const ResponsiveCardLayout = () => {
             justifyContent="space-between"
             marginBottom="spacing.3"
           >
-            <Text fontWeight="semibold">Pro Plan</Text>
+            <Text weight="semibold">Pro Plan</Text>
             <Box
               backgroundColor="surface.background.gray.intense"
               padding="spacing.2"
@@ -567,7 +567,16 @@ const ResponsiveGridExample = () => {
     setDraggedItem(null);
   };
 
-  const gridItems = [
+  const gridItems: Array<{
+    title: string;
+    color:
+      | 'surface.background.primary.intense'
+      | 'surface.background.cloud.intense'
+      | 'surface.background.primary.subtle'
+      | 'surface.background.gray.intense'
+      | 'surface.background.gray.moderate'
+      | 'surface.background.cloud.subtle';
+  }> = [
     { title: 'Analytics', color: 'surface.background.primary.intense' },
     { title: 'Customers', color: 'surface.background.cloud.intense' },
     { title: 'Payments', color: 'surface.background.primary.subtle' },
@@ -627,7 +636,7 @@ const ResponsiveGridExample = () => {
                   ? 'surface.text.staticWhite.normal'
                   : 'surface.text.gray.normal'
               }
-              fontWeight="semibold"
+              weight="semibold"
             >
               {item.title}
             </Text>

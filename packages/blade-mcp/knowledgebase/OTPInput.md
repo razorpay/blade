@@ -165,7 +165,6 @@ function OTPVerificationExample() {
         autoCompleteSuggestionType="oneTimeCode"
         data-analytics-section="verification"
         data-analytics-field="otp-input"
-        marginBottom="spacing.4"
       />
 
       <Button
@@ -237,7 +236,7 @@ function SecurePINEntryExample() {
       backgroundColor="surface.background.gray.subtle"
       borderRadius="medium"
     >
-      <Text size="large" weight="semibold" marginBottom="spacing.5">
+      <Text size="large" weight="semibold">
         {step === 'success' ? 'PIN Created Successfully' : 'Create Transaction PIN'}
       </Text>
 
@@ -300,10 +299,8 @@ function SecurePINEntryExample() {
       )}
 
       {step === 'success' && (
-        <Box textAlign="center">
-          <Text marginBottom="spacing.4">
-            Your PIN has been created. You can use it for future transactions.
-          </Text>
+        <Box>
+          <Text>Your PIN has been created. You can use it for future transactions.</Text>
           <Button onClick={resetForm} variant="secondary">
             Create New PIN
           </Button>
@@ -342,7 +339,7 @@ function ProgrammaticOTPExample() {
 
   return (
     <Box width="100%" maxWidth="568px">
-      <Text marginBottom="spacing.4">Current focus position: {focusIndex + 1} of 6</Text>
+      <Text>Current focus position: {focusIndex + 1} of 6</Text>
 
       <OTPInput
         ref={otpInputRef}
@@ -356,7 +353,6 @@ function ProgrammaticOTPExample() {
         size="medium"
         otpLength={6}
         data-analytics-field="otp-with-ref"
-        marginBottom="spacing.4"
       />
 
       <Box display="flex" gap="spacing.3" marginBottom="spacing.4">

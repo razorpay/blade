@@ -486,10 +486,6 @@ const AutoCompleteDropdownExample = () => {
           onChange={(args) => {
             if (args) {
               setSelectedFruits(args.values);
-              // Update query when input changes
-              if (args.inputValue !== undefined) {
-                setQuery(args.inputValue);
-              }
             }
           }}
           maxRows="multiple"
