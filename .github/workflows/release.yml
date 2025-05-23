@@ -29,6 +29,8 @@ jobs:
         if: github.event_name != 'workflow_dispatch' # only run on master merges
         env:
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+          BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
+          BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
         with:
           publish: yarn release
           commit: 'build: update version'
@@ -37,6 +39,8 @@ jobs:
         if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
+          BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: yarn publish-npm
       - name: Build Blade if not built by changeset
