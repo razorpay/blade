@@ -106,13 +106,13 @@ type OTPInputProps = OTPInputPropsWithA11yLabel | OTPInputPropsWithLabel;
 
 This example shows a basic OTP verification flow with different states based on the input validation.
 
-```jsx
+```tsx
 import { useState, useEffect } from 'react';
 import { OTPInput, Box, Button, Text } from '@razorpay/blade/components';
 
 function OTPVerificationExample() {
   const [otp, setOtp] = useState('');
-  const [validationState, setValidationState] = useState('none');
+  const [validationState, setValidationState] = useState<'none' | 'error' | 'success'>('none');
   const [isVerifying, setIsVerifying] = useState(false);
   const [attempts, setAttempts] = useState(0);
 

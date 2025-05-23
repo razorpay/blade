@@ -453,13 +453,13 @@ const MyTopNav = () => {
 
   return (
     <TopNav>
-      {isMobile ? (
-        // Mobile view with essential controls
-        // ...
-      ) : (
-        // Desktop view with full navigation
-        // ...
-      )}
+      {isMobile
+        ? {
+            /* Mobile view with essential controls */
+          }
+        : {
+            /* Desktop view with full navigation */
+          }}
     </TopNav>
   );
 };
