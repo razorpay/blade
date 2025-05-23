@@ -116,7 +116,7 @@ import {
 
 // Sample page component to show when a route is matched
 const PageContent = ({ title }) => (
-  <Box padding="spacing.5" paddingBottom="spacing.16">
+  <Box padding="spacing.5" paddingBottom="spacing.6">
     <Text variant="body" size="medium">
       {title} Page Content
     </Text>
@@ -140,36 +140,34 @@ const isItemActive = (
 };
 
 // Custom BottomNavItem with React Router integration
-const RouterBottomNavItem = (
-  props: Omit<typeof BottomNavItem, 'as'> & { activeOnLinks?: string[] },
-) => {
+const RouterBottomNavItem = (props) => {
+  const { activeOnLinks, ...rest } = props;
   const location = useLocation();
 
   return (
     <BottomNavItem
-      {...props}
+      {...rest}
       as={NavLink}
       isActive={isItemActive(location, {
         href: props.href,
-        activeOnLinks: props.activeOnLinks,
+        activeOnLinks,
       })}
     />
   );
 };
 
 // Custom SideNavLink with React Router integration
-const RouterSideNavLink = (
-  props: Omit<typeof SideNavLink, 'as'> & { activeOnLinks?: string[] },
-) => {
+const RouterSideNavLink = (props) => {
+  const { activeOnLinks, ...rest } = props;
   const location = useLocation();
 
   return (
     <SideNavLink
-      {...props}
+      {...rest}
       as={NavLink}
       isActive={isItemActive(location, {
         href: props.href,
-        activeOnLinks: props.activeOnLinks,
+        activeOnLinks,
       })}
     />
   );
@@ -261,7 +259,6 @@ const MobileAppExample = () => {
         position="fixed"
         bottom="spacing.0"
         left="spacing.0"
-        width="100%"
         testID="main-navigation"
         data-analytics="bottom-nav"
       >
@@ -282,10 +279,6 @@ const MobileAppExample = () => {
           icon={MenuDotsIcon}
           onClick={() => setIsSideNavOpen(true)}
           testID="nav-item-more"
-          activeOnLinks={[
-            ...mainNavItems.slice(3).map((item) => item.href),
-            ...sideNavItems.map((item) => item.href),
-          ]}
         />
       </BottomNav>
     </Box>

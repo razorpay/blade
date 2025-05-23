@@ -39,7 +39,6 @@ type BreadcrumbProps = {
    */
   showLastSeparator?: boolean;
 } & StyledPropsBlade &
-  TestID &
   DataAnalyticsAttribute;
 
 /**
@@ -84,8 +83,7 @@ type BreadcrumbItemProps = {
    * For advanced use cases: render with a custom component (e.g., React Router's Link)
    */
   as?: React.ElementType;
-} & TestID &
-  DataAnalyticsAttribute;
+} & DataAnalyticsAttribute;
 
 /**
  * Type for icon components
@@ -111,25 +109,11 @@ import { Box, Breadcrumb, BreadcrumbItem, HomeIcon } from '@razorpay/blade/compo
 const BreadcrumbExample = () => {
   return (
     <Box padding="spacing.4">
-      <Breadcrumb
-        size="medium"
-        color="primary"
-        testID="breadcrumb-example"
-        data-analytics="breadcrumb-primary"
-      >
-        <BreadcrumbItem
-          icon={HomeIcon}
-          href="/home"
-          accessibilityLabel="Home"
-          testID="breadcrumb-home"
-        />
-        <BreadcrumbItem href="/dashboard" testID="breadcrumb-dashboard">
-          Dashboard
-        </BreadcrumbItem>
-        <BreadcrumbItem href="/payments" testID="breadcrumb-payments">
-          Payments
-        </BreadcrumbItem>
-        <BreadcrumbItem isCurrentPage href="/settlements" testID="breadcrumb-settlements">
+      <Breadcrumb size="medium" color="primary" data-analytics="breadcrumb-primary">
+        <BreadcrumbItem icon={HomeIcon} href="/home" accessibilityLabel="Home" />
+        <BreadcrumbItem href="/dashboard">Dashboard</BreadcrumbItem>
+        <BreadcrumbItem href="/payments">Payments</BreadcrumbItem>
+        <BreadcrumbItem isCurrentPage href="/settlements">
           Settlements
         </BreadcrumbItem>
       </Breadcrumb>
@@ -151,8 +135,8 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   HomeIcon,
-  PaymentIcon,
-  ProductIcon,
+  CreditCardIcon,
+  FolderIcon,
 } from '@razorpay/blade/components';
 import { useLocation, Link as RouterLink, matchPath } from 'react-router-dom';
 
@@ -194,8 +178,8 @@ const DynamicBreadcrumb = () => {
       let icon = null;
       let label = segment.charAt(0).toUpperCase() + segment.slice(1);
 
-      if (segment === 'products') icon = ProductIcon;
-      if (segment === 'payments') icon = PaymentIcon;
+      if (segment === 'products') icon = FolderIcon;
+      if (segment === 'payments') icon = CreditCardIcon;
 
       items.push(
         <RouterBreadcrumbItem key={currentPath} to={currentPath} icon={icon}>

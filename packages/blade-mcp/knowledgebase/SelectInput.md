@@ -217,7 +217,8 @@ import {
 
 function MultiSelectWithValidationExample() {
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [validationState, setValidationState] = useState('none');
+  const [validationState, setValidationState] =
+    (useState < 'none') | 'error' | ('success' > 'none');
 
   // Validate whenever selection changes
   useEffect(() => {
@@ -316,6 +317,7 @@ import {
   ActionListItemAsset,
   Box,
   Button,
+  Heading,
   Text,
   GlobeIcon,
 } from '@razorpay/blade/components';
@@ -347,15 +349,15 @@ function CurrencySelectExample() {
       width="100%"
       maxWidth="450px"
       padding="spacing.5"
-      backgroundColor="surface.background.white.normal"
+      backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
-      borderWidth="1px"
+      borderWidth="thinner"
       borderStyle="solid"
-      borderColor="border.neutral.muted"
+      borderColor="surface.border.gray.subtle"
     >
-      <Text size="xlarge" weight="semibold" marginBottom="spacing.4">
+      <Heading size="xlarge" weight="semibold" marginBottom="spacing.4">
         Currency Converter
-      </Text>
+      </Heading>
 
       <Box display="flex" alignItems="flex-end" gap="spacing.3" marginBottom="spacing.5">
         <Box width="150px">
@@ -378,7 +380,6 @@ function CurrencySelectExample() {
                     key={currency.code}
                     title={`${currency.flag} ${currency.code} - ${currency.name}`}
                     value={currency.code}
-                    leading={<ActionListItemAsset>{currency.symbol}</ActionListItemAsset>}
                   />
                 ))}
               </ActionList>
@@ -387,14 +388,14 @@ function CurrencySelectExample() {
         </Box>
 
         <Box flexGrow={1}>
-          <Text as="div" size="xlarge" weight="semibold" padding="spacing.3">
+          <Heading size="xlarge" weight="semibold">
             {currentCurrency.symbol} {amount}
-          </Text>
+          </Heading>
         </Box>
       </Box>
 
       <Box>
-        <Text size="small" color="text.neutral.muted">
+        <Text size="small">
           Selected currency: {currentCurrency.flag} {currentCurrency.name} ({currentCurrency.code})
         </Text>
       </Box>

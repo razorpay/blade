@@ -246,19 +246,7 @@ const PaymentSetupForm = () => {
   };
 
   return (
-    <Box
-      as="form"
-      onSubmit={handleSubmit}
-      padding="spacing.6"
-      display="flex"
-      flexDirection="column"
-      gap="spacing.8"
-      maxWidth="600px"
-      borderWidth="thin"
-      borderStyle="solid"
-      borderColor="border.normal"
-      borderRadius="radius.2"
-    >
+    <form onSubmit={handleSubmit}>
       <Heading size="large">Payment Gateway Setup</Heading>
 
       {/* Section 1: Basic Business Preferences (Uncontrolled Checkboxes) */}
@@ -399,7 +387,7 @@ const PaymentSetupForm = () => {
       <Button type="submit" variant="primary" size="medium">
         Complete Setup
       </Button>
-    </Box>
+    </form>
   );
 };
 
@@ -446,15 +434,7 @@ const ProductConfigurationForm = () => {
   };
 
   return (
-    <Box
-      as="form"
-      onSubmit={handleSubmit}
-      padding="spacing.6"
-      display="flex"
-      flexDirection="column"
-      gap="spacing.6"
-      maxWidth="550px"
-    >
+    <form>
       <Heading size="medium">Configure Your Product</Heading>
 
       {/* Product Features Section */}
@@ -528,7 +508,7 @@ const ProductConfigurationForm = () => {
         <Text size="medium" weight="semibold">
           Enterprise Features
         </Text>
-        <Text size="small" color="text.subdued">
+        <Text size="small" color="surface.text.gray.muted">
           The following features are only available with Enterprise plan
         </Text>
 
@@ -552,7 +532,7 @@ const ProductConfigurationForm = () => {
       <Button type="submit" variant="primary">
         Save Configuration
       </Button>
-    </Box>
+    </form>
   );
 };
 

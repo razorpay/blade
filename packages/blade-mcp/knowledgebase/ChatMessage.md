@@ -178,13 +178,13 @@ const ComprehensiveChatExample = () => {
   return (
     <Box
       maxWidth="600px"
-      margin="0 auto"
+      margin="auto"
       padding="spacing.5"
       aria-label="Chat conversation about payment gateway integration"
     >
       <Text
         size="small"
-        color="text.subtle"
+        color="surface.text.gray.muted"
         textAlign="center"
         marginBottom="spacing.4"
         aria-hidden="true"
@@ -215,7 +215,7 @@ const ComprehensiveChatExample = () => {
             return (
               <ChatMessage
                 key={message.id}
-                senderType={message.senderType}
+                senderType={message.senderType === 'self' ? 'self' : 'other'}
                 messageType={isLastFromSender ? 'last' : 'default'}
                 leading={
                   showLeadingIcon ? (
@@ -228,16 +228,8 @@ const ComprehensiveChatExample = () => {
                   message.senderType === 'other' && index === messages.length - 1 ? (
                     <Box display="flex" justifyContent="flex-start" marginTop="spacing.2">
                       <ChipGroup label="">
-                        <Chip
-                          value="helpful"
-                          icon={ThumbsUpIcon}
-                          onClick={() => handleFeedback('helpful')}
-                        />
-                        <Chip
-                          value="not-helpful"
-                          icon={ThumbsDownIcon}
-                          onClick={() => handleFeedback('not-helpful')}
-                        />
+                        <Chip value="helpful" icon={ThumbsUpIcon} />
+                        <Chip value="not-helpful" icon={ThumbsDownIcon} />
                       </ChipGroup>
                     </Box>
                   ) : undefined
@@ -250,7 +242,7 @@ const ComprehensiveChatExample = () => {
                 {message.text}
                 <Text
                   size="xsmall"
-                  color="text.subtle"
+                  color="surface.text.gray.muted"
                   display="block"
                   marginTop="spacing.2"
                   aria-hidden="true"
@@ -275,7 +267,7 @@ const ComprehensiveChatExample = () => {
               {failedMessage.text}
               <Text
                 size="xsmall"
-                color="text.subtle"
+                color="surface.text.gray.muted"
                 display="block"
                 marginTop="spacing.2"
                 aria-hidden="true"
@@ -312,7 +304,7 @@ const ComprehensiveChatExample = () => {
                 </Text>
                 <RadioGroup
                   value={selectedOption}
-                  onChange={(value) => setSelectedOption(value)}
+                  onChange={({ value }) => setSelectedOption(value)}
                   aria-label="Business type options"
                 >
                   <Radio value="ecommerce">E-commerce</Radio>

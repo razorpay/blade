@@ -78,7 +78,7 @@ type ListItemTextProps = {
   /**
    * Font weight
    */
-  weight?: 'regular' | 'medium' | 'semibold' | 'bold';
+  weight?: 'regular' | 'medium' | 'semibold';
 } & StyledPropsBlade &
   TestID;
 
@@ -138,9 +138,7 @@ import { Box, List, ListItem, ListItemLink, Heading } from '@razorpay/blade/comp
 const OrderedFilledListExample = () => {
   return (
     <Box padding="spacing.5">
-      <Heading size="large" marginBottom="spacing.5">
-        Ordered Filled List
-      </Heading>
+      <Heading size="large">Ordered Filled List</Heading>
 
       <List variant="ordered-filled" size="medium">
         <ListItem>
@@ -183,17 +181,13 @@ import {
 const AdvancedListExample = () => {
   return (
     <Box padding="spacing.5">
-      <Heading size="large" marginBottom="spacing.5">
-        Advanced List Features
-      </Heading>
+      <Heading size="large">Advanced List Features</Heading>
 
       <List
         variant="unordered"
         size="medium"
         icon={BookmarkIcon}
         iconColor="interactive.icon.primary.normal"
-        aria-label="Documentation resources"
-        marginBottom="spacing.6"
       >
         <ListItem>
           <ListItemLink href="#resources">Documentation Resources</ListItemLink>
@@ -218,7 +212,7 @@ const AdvancedListExample = () => {
             <ListItem>
               <ListItemText>
                 UPI status is
-                <ListItemText as="span" weight="bold" color="feedback.text.positive.intense">
+                <ListItemText as="span" color="feedback.text.positive.intense">
                   {' active '}
                 </ListItemText>
               </ListItemText>
@@ -226,7 +220,7 @@ const AdvancedListExample = () => {
             <ListItem>
               <ListItemText>
                 Card status is
-                <ListItemText as="span" weight="medium" color="interactive.text.primary.normal">
+                <ListItemText as="span" color="feedback.text.notice.intense">
                   {' pending '}
                 </ListItemText>
               </ListItemText>
@@ -245,7 +239,7 @@ const AdvancedListExample = () => {
             <ListItem>
               <ListItemText>
                 Payment errors are marked as
-                <ListItemText as="span" weight="bold" color="feedback.text.negative.intense">
+                <ListItemText as="span" weight="semibold" color="feedback.text.negative.intense">
                   {' failed '}
                 </ListItemText>
               </ListItemText>

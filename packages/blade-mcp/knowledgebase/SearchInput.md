@@ -119,7 +119,12 @@ function SearchWithDropdownExample() {
   const [isLoading, setIsLoading] = useState(false);
 
   // Mock data for search results
-  const searchItems = [
+  const searchItems: Array<{
+    id: string;
+    title: string;
+    icon: React.ComponentType<any>;
+    category: string;
+  }> = [
     { id: '1', title: 'Transactions', icon: TransactionsIcon, category: 'pages' },
     { id: '2', title: 'Settings', icon: SettingsIcon, category: 'pages' },
     { id: '3', title: 'Profile', icon: UserIcon, category: 'pages' },
@@ -141,11 +146,11 @@ function SearchWithDropdownExample() {
     : searchItems;
 
   // Group items by category
-  const groupedItems = filteredItems.reduce((acc, item) => {
+  const groupedItems: Record<string, typeof searchItems> = filteredItems.reduce((acc, item) => {
     acc[item.category] = acc[item.category] || [];
     acc[item.category].push(item);
     return acc;
-  }, {});
+  }, {} as Record<string, typeof searchItems>);
 
   return (
     <Box width="400px">
@@ -168,7 +173,7 @@ function SearchWithDropdownExample() {
               <Spinner accessibilityLabel="Loading search results" />
             </Box>
           ) : filteredItems.length === 0 ? (
-            <Box padding="spacing.4" textAlign="center">
+            <Box padding="spacing.4">
               No results found for "{searchTerm}"
             </Box>
           ) : (
@@ -182,6 +187,7 @@ function SearchWithDropdownExample() {
                     <ActionListItem
                       key={item.id}
                       title={item.title}
+                      value={item.id}
                       leading={<ActionListItemIcon icon={item.icon} />}
                       onClick={() => console.log(`Selected: ${item.title}`)}
                     />

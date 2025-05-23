@@ -71,7 +71,7 @@ function HeadingExample() {
       <Box display="flex" alignItems="flex-start">
         <Heading size="medium">
           Special Offer
-          <Heading as="span" size="small" color="feedback.text.success.intense">
+          <Heading as="span" size="small" color="feedback.text.positive.intense">
             *
           </Heading>
         </Heading>

@@ -451,7 +451,6 @@ const SideNavExample = () => {
         banner={<ActivationCard />}
         testID="main-navigation"
         position="absolute"
-        elevation="raised"
       >
         <SideNavBody>
           {navigationItems.map((section, sectionIndex) => {
