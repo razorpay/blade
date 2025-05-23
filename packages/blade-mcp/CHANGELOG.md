@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.1.10
+
+### Patch Changes
+
+- 94621723: Update release.yml
+
 ## 0.1.9
 
 ### Patch Changes
