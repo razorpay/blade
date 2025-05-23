@@ -50,6 +50,7 @@ export const MetaConstants = {
   Icon: 'icon',
   IconButton: 'icon-button',
   Indicator: 'indicator',
+  InputGroup: 'input-group',
   Link: 'link',
   List: 'list',
   ListItem: 'list-item',

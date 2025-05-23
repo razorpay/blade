@@ -209,6 +209,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
 // nosemgrep
 const PasswordInput = assignWithoutSideEffects(React.forwardRef(_PasswordInput), {
   displayName: 'PasswordInput',
+  componentId: 'PasswordInput',
 });
 
 export type { PasswordInputProps };
