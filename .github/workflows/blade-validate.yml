@@ -46,7 +46,7 @@ jobs:
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run Unit Tests with Coverage
-        run: yarn test --coverage
+        run: yarn test
         working-directory: packages/blade
         env:
           SHARD: ${{ matrix.shard }}
