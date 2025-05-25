@@ -138,7 +138,7 @@ jobs:
             exit 1
           fi
       - name: Report Coverage
-        uses: ArtiomTr/jest-coverage-report-action@v3
+        uses: ArtiomTr/jest-coverage-report-action@v2
         continue-on-error: true
         with:
           github-token: ${{ secrets.CI_BOT_TOKEN }}
