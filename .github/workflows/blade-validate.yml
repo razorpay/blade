@@ -139,4 +139,3 @@ jobs:
           coverage-file: ./packages/blade/coverage/coverage-final.json
           base-coverage-file: ./packages/blade/coverage/coverage-final.json
           skip-step: install
-          working-directory: ./packages/blade
