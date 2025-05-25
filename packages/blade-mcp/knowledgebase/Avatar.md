@@ -234,7 +234,7 @@ const InteractiveAvatarExample = () => {
     { id: 1, name: 'John Doe', color: 'primary' },
     { id: 2, name: 'Jane Smith', color: 'positive' },
     { id: 3, name: 'Bob Miller', color: 'negative' },
-    { id: 4, name: 'Alice Walker', color: 'notice' },
+    { id: 4, name: 'Alice Walker', color: 'primary' },
   ];
 
   // Handle avatar click
@@ -255,7 +255,6 @@ const InteractiveAvatarExample = () => {
           <Avatar
             key={user.id}
             name={user.name}
-            color={user.color}
             size="medium"
             isSelected={selectedIndex === index}
             onClick={() => handleAvatarClick(index, user.id)}
@@ -285,8 +284,8 @@ const AvatarGroupExample = () => {
     { name: 'John Doe', color: 'primary' },
     { name: 'Jane Smith', color: 'positive' },
     { name: 'Bob Miller', color: 'negative' },
-    { name: 'Alice Walker', color: 'notice' },
-    { name: 'David Clark', color: 'information' },
+    { name: 'Alice Walker', color: 'primary' },
+    { name: 'David Clark', color: 'primary' },
   ];
 
   return (
@@ -294,14 +293,14 @@ const AvatarGroupExample = () => {
       {/* Basic avatar group */}
       <AvatarGroup>
         {teamMembers.map((member, index) => (
-          <Avatar key={index} name={member.name} color={member.color} />
+          <Avatar key={index} name={member.name} />
         ))}
       </AvatarGroup>
 
       {/* With maxCount - shows "+2" for overflow */}
       <AvatarGroup maxCount={3} size="large">
         {teamMembers.map((member, index) => (
-          <Avatar key={index} name={member.name} color={member.color} />
+          <Avatar key={index} name={member.name} />
         ))}
       </AvatarGroup>
 
@@ -334,8 +333,8 @@ const InteractiveAvatarGroupExample = () => {
     { id: 1, name: 'John Doe', color: 'primary' },
     { id: 2, name: 'Jane Smith', color: 'positive' },
     { id: 3, name: 'Bob Miller', color: 'negative' },
-    { id: 4, name: 'Alice Walker', color: 'notice' },
-    { id: 5, name: 'David Clark', color: 'information' },
+    { id: 4, name: 'Alice Walker', color: 'primary' },
+    { id: 5, name: 'David Clark', color: 'primary' },
   ];
 
   const handleAvatarClick = (name: string) => {
@@ -352,7 +351,6 @@ const InteractiveAvatarGroupExample = () => {
           <Avatar
             key={member.id}
             name={member.name}
-            color={member.color}
             isSelected={selectedUser === member.name}
             onClick={() => handleAvatarClick(member.name)}
           />

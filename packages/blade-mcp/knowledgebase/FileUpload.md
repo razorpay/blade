@@ -185,7 +185,7 @@ const SingleFileUploadExample = () => {
 
     // Simple validation based on whether files are selected
     if (fileList.length > 0) {
-      setValidationState('success');
+      setValidationState('none');
     } else {
       setValidationState('none');
     }
@@ -296,7 +296,7 @@ const MultipleFileUploadExample = () => {
         maxSize={5 * 1024 * 1024}
         fileList={fileList}
         onChange={handleFileChange}
-        onRemove={({ fileList: updatedList }) => setFileList(updatedList)}
+        onRemove={({ file, fileList: updatedList }) => setFileList(updatedList)}
         size="medium"
       />
     </Box>

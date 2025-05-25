@@ -58,7 +58,7 @@ This example demonstrates badges with key properties and styling.
 
 ```tsx
 import React from 'react';
-import { Badge, Box, InfoIcon, CheckCircleIcon, WarningIcon } from '@razorpay/blade/components';
+import { Badge, Box, InfoIcon, CheckCircleIcon } from '@razorpay/blade/components';
 
 const BadgeExample = () => {
   return (
@@ -81,7 +81,7 @@ const BadgeExample = () => {
       <Badge
         color="notice"
         emphasis="subtle"
-        icon={WarningIcon}
+        icon={InfoIcon}
         size="large"
         marginLeft="spacing.2"
         display="inline-flex"

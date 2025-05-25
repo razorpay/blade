@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.31.2
+
+### Patch Changes
+
+- b42ad547: fix(blade): Display 'Show more filters' only if children are provided
+
+## 12.31.1
+
+### Patch Changes
+
+- 273730ff: fix: surface primary border color when using custom brand color
+
 ## 12.31.0
 
 ### Minor Changes

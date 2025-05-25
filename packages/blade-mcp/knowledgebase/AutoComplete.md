@@ -86,7 +86,7 @@ type AutoCompleteProps = {
   /**
    * Callback that is called when the input value changes
    */
-  onInputChange?: (params: { name?: string; value: string }) => void;
+  onInputValueChange?: (params: { name?: string; value: string }) => void;
 
   /**
    * Callback that is called when the input is clicked
@@ -129,7 +129,7 @@ type AutoCompleteProps = {
   value?: string | string[];
 
   /**
-   * Controlled input value of the AutoComplete. Used in combination with `onInputChange`.
+   * Controlled input value of the AutoComplete. Used in combination with `onInputValueChange`.
    */
   inputValue?: string;
 
@@ -175,6 +175,13 @@ type AutoCompleteProps = {
    * @default 'single'
    */
   maxRows?: 'single' | 'multiple' | 'expandable';
+
+  /**
+   * Controlled state of filtering of items in AutoComplete.
+   *
+   * Checkout [Custom Filtering Example](https://blade.razorpay.com/?path=/story/components-dropdown-with-autocomplete--controlled-filtering)
+   */
+  filteredValues?: string[];
 } & DataAnalyticsAttribute;
 ```
 
@@ -216,26 +223,15 @@ function BasicAutoCompleteExample() {
     setSelectedItem(values[0] || '');
   };
 
-  const handleInputChange = ({ value }) => {
+  const handleInputValueChange = ({ value }) => {
     setInputValue(value);
-  };
-
-  // Custom filter that searches by name
-  const filterFruits = (inputValue, optionValue) => {
-    const fruit = fruits.find((f) => f.id === optionValue);
-    return fruit ? fruit.name.toLowerCase().includes(inputValue.toLowerCase()) : false;
-  };
-
-  // Format the display value
-  const formatFruitValue = (value) => {
-    const fruit = fruits.find((f) => f.id === value);
-    return fruit ? fruit.name : value;
   };
 
   return (
     <Box width="100%" maxWidth="400px">
       <Text marginBottom="spacing.4">
-        Selected fruit: {selectedItem ? formatFruitValue(selectedItem) : 'None'}
+        Selected fruit:{' '}
+        {selectedItem ? fruits.find((f) => f.id === selectedItem)?.name || selectedItem : 'None'}
       </Text>
 
       <Dropdown selectionType="single">
@@ -247,9 +243,7 @@ function BasicAutoCompleteExample() {
           value={selectedItem}
           inputValue={inputValue}
           onChange={handleSelectionChange}
-          onInputChange={handleInputChange}
-          filter={filterFruits}
-          formatValue={formatFruitValue}
+          onInputValueChange={handleInputValueChange}
           helpText="Start typing to see matching fruits"
           size="medium"
           data-analytics-section="fruit-search"
@@ -282,7 +276,6 @@ import {
   Box,
   Text,
   Spinner,
-  LocationIcon,
 } from '@razorpay/blade/components';
 
 function AsyncAutoCompleteExample() {
@@ -338,7 +331,7 @@ function AsyncAutoCompleteExample() {
     fetchCities();
   }, [inputValue]);
 
-  const handleInputChange = ({ value }) => {
+  const handleInputValueChange = ({ value }) => {
     setInputValue(value);
   };
 
@@ -346,15 +339,15 @@ function AsyncAutoCompleteExample() {
     setSelectedCity(values[0] || '');
   };
 
-  const formatCityValue = (value) => {
-    const city = cities.find((c) => c.id === value);
-    return city ? `${city.name}, ${city.country}` : value;
-  };
-
   return (
     <Box width="100%" maxWidth="400px">
       <Text marginBottom="spacing.4">
-        Selected city: {selectedCity ? formatCityValue(selectedCity) : 'None'}
+        Selected city:{' '}
+        {selectedCity
+          ? cities.find((c) => c.id === selectedCity)?.name +
+              ', ' +
+              cities.find((c) => c.id === selectedCity)?.country || selectedCity
+          : 'None'}
       </Text>
 
       <Dropdown selectionType="single">
@@ -362,12 +355,10 @@ function AsyncAutoCompleteExample() {
           label="Search Cities"
           name="city"
           placeholder="Enter city or country name..."
-          icon={LocationIcon}
           value={selectedCity}
           inputValue={inputValue}
           onChange={handleSelectionChange}
-          onInputChange={handleInputChange}
-          formatValue={formatCityValue}
+          onInputValueChange={handleInputValueChange}
           helpText="Type at least 2 characters to search"
           validationState={error ? 'error' : 'none'}
           errorText={error}
@@ -377,7 +368,7 @@ function AsyncAutoCompleteExample() {
         <DropdownOverlay>
           {isLoading ? (
             <Box padding="spacing.4" display="flex" justifyContent="center">
-              <Spinner size="medium" />
+              <Spinner size="medium" accessibilityLabel="Loading cities" />
             </Box>
           ) : cities.length === 0 ? (
             <Box padding="spacing.4" textAlign="center">
@@ -389,7 +380,7 @@ function AsyncAutoCompleteExample() {
                 <ActionListItem
                   key={city.id}
                   title={city.name}
-                  subtitle={city.country}
+                  description={city.country}
                   value={city.id}
                 />
               ))}
@@ -434,29 +425,12 @@ function CreatableAutoCompleteExample() {
     { id: 'documentation', name: 'Documentation' },
   ]);
 
-  const handleInputChange = ({ value }) => {
+  const handleInputValueChange = ({ value }) => {
     setInputValue(value);
   };
 
   const handleSelectionChange = ({ values }) => {
     setSelectedTags(values);
-  };
-
-  const filterTags = (inputValue, optionValue) => {
-    // Handle special "create" option
-    if (optionValue.startsWith('create:')) return true;
-
-    const tag = availableTags.find((t) => t.id === optionValue);
-    return tag ? tag.name.toLowerCase().includes(inputValue.toLowerCase()) : false;
-  };
-
-  const formatTagValue = (value) => {
-    if (value.startsWith('create:')) {
-      return value.replace('create:', '');
-    }
-
-    const tag = availableTags.find((t) => t.id === value);
-    return tag ? tag.name : value;
   };
 
   const handleCreateTag = () => {
@@ -510,10 +484,7 @@ function CreatableAutoCompleteExample() {
           value={selectedTags}
           inputValue={inputValue}
           onChange={handleSelectionChange}
-          onInputChange={handleInputChange}
-          filter={filterTags}
-          formatValue={formatTagValue}
-          shouldKeepInputValueOnSelect={true}
+          onInputValueChange={handleInputValueChange}
           maxRows="multiple"
           size="medium"
           data-analytics-section="task-tagging"
@@ -526,7 +497,7 @@ function CreatableAutoCompleteExample() {
                   title={`Create "${inputValue}"`}
                   value={`create:${inputValue}`}
                   leading={<PlusIcon />}
-                  onSelect={handleCreateTag}
+                  onClick={handleCreateTag}
                 />
               </ActionListSection>
             )}
@@ -555,19 +526,15 @@ function CreatableAutoCompleteExample() {
             selectedTagNames.map((tagName, index) => (
               <Box
                 key={index}
-                backgroundColor="surface.background.primary.subtle"
-                color="text.primary.normal"
-                padding="spacing.1 spacing.3"
+                backgroundColor="surface.background.gray.subtle"
+                padding={['spacing.1', 'spacing.3']}
                 borderRadius="medium"
-                fontSize="small"
               >
                 {tagName}
               </Box>
             ))
           ) : (
-            <Text size="small" color="text.neutral.muted">
-              No tags selected
-            </Text>
+            <Text size="small">No tags selected</Text>
           )}
         </Box>
       </Box>

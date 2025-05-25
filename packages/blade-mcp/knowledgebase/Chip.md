@@ -169,15 +169,15 @@ import {
   Text,
   TagIcon,
   StarIcon,
-  VerifiedIcon,
-  ShippingIcon,
+  CheckCircleIcon,
+  BoxIcon,
   CreditCardIcon,
-  DiscountIcon,
+  OffersIcon,
   CalendarIcon,
   InfoIcon,
   ShieldIcon,
   RefreshIcon,
-  GiftIcon,
+  CloseIcon,
 } from '@razorpay/blade/components';
 
 const ProductDetailsCard = () => {
@@ -190,11 +190,11 @@ const ProductDetailsCard = () => {
       maxWidth="600px"
       borderWidth="thin"
       borderStyle="solid"
-      borderColor="border.normal"
-      borderRadius="radius.3"
+      borderColor="surface.border.gray.normal"
+      borderRadius="medium"
     >
       <Heading size="large">Wireless Bluetooth Headphones</Heading>
-      <Text size="xlarge" weight="semibold">
+      <Text size="large" weight="semibold">
         ₹2,499
       </Text>
 
@@ -204,16 +204,16 @@ const ProductDetailsCard = () => {
           Features
         </Text>
         <Box display="flex" gap="spacing.2" flexWrap="wrap">
-          <Chip value="24hr-battery" icon={VerifiedIcon} color="positive">
+          <Chip value="24hr-battery" icon={CheckCircleIcon} color="positive">
             24hr Battery
           </Chip>
-          <Chip value="noise-cancelling" icon={VerifiedIcon} color="positive">
+          <Chip value="noise-cancelling" icon={CheckCircleIcon} color="positive">
             Noise Cancelling
           </Chip>
-          <Chip value="voice-assistant" icon={VerifiedIcon} color="primary">
+          <Chip value="voice-assistant" icon={CheckCircleIcon} color="primary">
             Voice Assistant
           </Chip>
-          <Chip value="bluetooth" icon={VerifiedIcon} color="primary">
+          <Chip value="bluetooth" icon={CheckCircleIcon} color="primary">
             Bluetooth 5.0
           </Chip>
         </Box>
@@ -241,16 +241,16 @@ const ProductDetailsCard = () => {
 
           {/* Delivery options row */}
           <Box display="flex" gap="spacing.2" flexWrap="wrap">
-            <Chip value="free-shipping" icon={ShippingIcon} color="positive">
+            <Chip value="free-shipping" icon={BoxIcon} color="positive">
               Free Shipping
             </Chip>
             <Chip value="express" icon={CalendarIcon}>
               Express (2-3 days)
             </Chip>
-            <Chip value="discount" icon={DiscountIcon} color="primary">
+            <Chip value="discount" icon={OffersIcon} color="primary">
               10% Off
             </Chip>
-            <Chip value="international" icon={ShippingIcon} isDisabled>
+            <Chip value="international" icon={BoxIcon} isDisabled>
               International
             </Chip>
           </Box>
@@ -258,10 +258,10 @@ const ProductDetailsCard = () => {
           {/* Row with icon-only chips for simple status indicators */}
           <Box display="flex" alignItems="center" gap="spacing.3">
             <Text size="small">Quick status:</Text>
-            <Chip value="available" icon={VerifiedIcon} color="positive" />
+            <Chip value="available" icon={CheckCircleIcon} color="positive" />
             <Chip value="warranty" icon={ShieldIcon} color="primary" />
             <Chip value="exchange" icon={RefreshIcon} />
-            <Chip value="gift" icon={GiftIcon} isDisabled />
+            <Chip value="gift" icon={OffersIcon} isDisabled />
           </Box>
         </Box>
       </Box>
@@ -285,7 +285,7 @@ import {
   Heading,
   Text,
   Button,
-  StoreIcon,
+  AppStoreIcon,
   BuildingIcon,
   CreditCardIcon,
   WifiIcon,
@@ -293,6 +293,7 @@ import {
   StarIcon,
   ThumbsUpIcon,
   ThumbsDownIcon,
+  CloseIcon,
 } from '@razorpay/blade/components';
 
 const BusinessRegistrationForm = () => {
@@ -323,15 +324,7 @@ const BusinessRegistrationForm = () => {
   };
 
   return (
-    <Box
-      as="form"
-      onSubmit={handleSubmit}
-      display="flex"
-      flexDirection="column"
-      gap="spacing.6"
-      maxWidth="700px"
-      padding="spacing.6"
-    >
+    <form onSubmit={handleSubmit}>
       <Heading size="large">Business Registration</Heading>
 
       {/* Single selection with label, default value, and different sizes */}
@@ -349,7 +342,7 @@ const BusinessRegistrationForm = () => {
         validationState={showValidation && !businessType ? 'error' : 'none'}
         errorText="Business type is required"
       >
-        <Chip value="proprietorship" icon={StoreIcon}>
+        <Chip value="proprietorship" icon={AppStoreIcon}>
           Proprietorship
         </Chip>
         <Chip value="small-business" icon={BuildingIcon}>
@@ -427,7 +420,7 @@ const BusinessRegistrationForm = () => {
       <Button type="submit" variant="primary" size="medium">
         Complete Registration
       </Button>
-    </Box>
+    </form>
   );
 };
 
@@ -451,7 +444,6 @@ import {
   FilterIcon,
   CloseIcon,
 } from '@razorpay/blade/components';
-import type { BladeElementRef } from '@razorpay/blade/components';
 
 const ProductFilterInterface = () => {
   // State for filters
@@ -461,7 +453,7 @@ const ProductFilterInterface = () => {
   const [sortOrder, setSortOrder] = useState<string>('recommended');
 
   // Ref for focusing a chip
-  const newArrivalsRef = useRef<BladeElementRef>(null);
+  const newArrivalsRef = useRef<HTMLDivElement>(null);
 
   // Reset all filters
   const clearAllFilters = () => {
@@ -488,13 +480,13 @@ const ProductFilterInterface = () => {
       maxWidth="800px"
       borderWidth="thin"
       borderStyle="solid"
-      borderColor="border.normal"
-      borderRadius="radius.3"
+      borderColor="surface.border.gray.normal"
+      borderRadius="medium"
     >
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Heading size="medium">Product Filters</Heading>
 
-        <Button variant="secondary" size="small" leftIcon={CloseIcon} onClick={clearAllFilters}>
+        <Button variant="secondary" size="small" icon={CloseIcon} onClick={clearAllFilters}>
           Clear All
         </Button>
       </Box>
@@ -506,7 +498,6 @@ const ProductFilterInterface = () => {
         value={categories}
         onChange={({ values }) => setCategories(values)}
         selectionType="multiple"
-        icon={TagIcon}
         helpText={
           categories.length
             ? `${categories.length} categories selected`

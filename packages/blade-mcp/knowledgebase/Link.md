@@ -1,10 +1,13 @@
 ## Component Name
+
 Link
 
 ## Description
+
 The Link component is used for navigating between pages or triggering in-page actions. It supports both anchor-style links for navigation and button-style links for actions. Links can be customized with different sizes, colors, and icon positions to match your design requirements, and they can be used standalone or inline within text content.
 
 ## TypeScript Types
+
 The following types represent the props that the Link component accepts. These allow you to properly configure the component according to your needs.
 
 ```typescript
@@ -71,7 +74,8 @@ type LinkProps = {
    * Function called when the link is clicked
    */
   onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
-} & StyledPropsBlade & TestID;
+} & StyledPropsBlade &
+  TestID;
 
 /**
  * Props for all Icon components
@@ -89,7 +93,6 @@ type IconProps = {
    */
   size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 };
-
 ```
 
 ## Examples
@@ -98,24 +101,26 @@ type IconProps = {
 
 ```tsx
 import React from 'react';
-import { 
-  Box, 
-  Heading, 
-  Link, 
-  InfoIcon, 
-  DownloadIcon, 
-  ArrowRightIcon
+import {
+  Box,
+  Heading,
+  Link,
+  InfoIcon,
+  DownloadIcon,
+  ArrowRightIcon,
 } from '@razorpay/blade/components';
 
 const StandardLinkExample = () => {
   return (
     <Box padding="spacing.5">
-      <Heading size="medium" marginBottom="spacing.5">Link Component</Heading>
-      
+      <Heading size="medium" marginBottom="spacing.5">
+        Link Component
+      </Heading>
+
       <Box display="flex" gap="spacing.4" flexWrap="wrap" alignItems="center">
-        <Link 
-          href="https://razorpay.com" 
-          target="_blank" 
+        <Link
+          href="https://razorpay.com"
+          target="_blank"
           rel="noopener noreferrer"
           icon={ArrowRightIcon}
           iconPosition="right"
@@ -126,19 +131,12 @@ const StandardLinkExample = () => {
           Razorpay Website
         </Link>
 
-        <Link 
-          href="#" 
-          color="negative" 
-          size="small"
-          icon={InfoIcon}
-          iconPosition="left"
-        >
+        <Link href="#" color="negative" size="small" icon={InfoIcon} iconPosition="left">
           Important Notice
         </Link>
 
-        <Link 
-          href="#" 
-          variant="button" 
+        <Link
+          href="#"
           icon={DownloadIcon}
           iconPosition="left"
           onClick={() => console.log('Download clicked')}
@@ -147,38 +145,37 @@ const StandardLinkExample = () => {
           Download Report
         </Link>
 
-        <Link 
-          variant="button" 
+        <Link
+          variant="button"
           isDisabled={true}
           color="neutral"
           onClick={() => console.log('This will not be called')}
         >
           Unavailable Action
         </Link>
-        
-        <Link href="#" color="positive">Positive Link</Link>
-        
-        <Box 
-          backgroundColor="surface.background.cloud.intense" 
-          padding="spacing.3" 
-          borderRadius="border.radius.4"
+
+        <Link href="#" color="positive">
+          Positive Link
+        </Link>
+
+        <Box
+          backgroundColor="surface.background.cloud.intense"
+          padding="spacing.3"
+          borderRadius="medium"
         >
-          <Link href="#" color="white">White Link</Link>
+          <Link href="#" color="white">
+            White Link
+          </Link>
         </Box>
-        
-        <Link 
-          variant="button" 
+
+        <Link
+          variant="button"
           icon={InfoIcon}
           aria-label="Get more information"
           onClick={() => console.log('Info clicked')}
         />
-        
-        <Link 
-          href="#"
-          variant="anchor" 
-          icon={DownloadIcon}
-          aria-label="Download resources"
-        />
+
+        <Link href="#" variant="anchor" icon={DownloadIcon} aria-label="Download resources" />
       </Box>
     </Box>
   );
@@ -191,35 +188,47 @@ export default StandardLinkExample;
 
 ```tsx
 import React from 'react';
-import { 
-  Box, 
-  Text, 
-  Heading, 
-  Link
-} from '@razorpay/blade/components';
+import { Box, Text, Heading, Link, ArrowRightIcon } from '@razorpay/blade/components';
 
 const InlineLinkExample = () => {
   return (
     <Box padding="spacing.5">
-      <Heading size="medium" marginBottom="spacing.5">Inline Link Usage</Heading>
-      
+      <Heading size="medium" marginBottom="spacing.5">
+        Inline Link Usage
+      </Heading>
+
       <Box>
         <Text marginBottom="spacing.3">
-          Read our <Link href="/terms" color="primary">Terms of Service</Link> and 
-          <Link href="/privacy" color="primary" marginLeft="spacing.1">Privacy Policy</Link> for more information.
+          Read our{' '}
+          <Link href="/terms" color="primary">
+            Terms of Service
+          </Link>{' '}
+          and
+          <Link href="/privacy" color="primary" marginLeft="spacing.1">
+            Privacy Policy
+          </Link> for more information.
         </Text>
-        
+
         <Text>
-          Forgot your password? <Link variant="button" size="small">Reset it here</Link>
+          Forgot your password?{' '}
+          <Link variant="button" size="small">
+            Reset it here
+          </Link>
         </Text>
-        
+
         <Text marginTop="spacing.3">
-          For more details, please visit our <Link href="/help" icon={ArrowRightIcon} iconPosition="right">Help Center</Link> 
-          or contact our <Link href="/support" variant="button" size="small" color="primary">Support Team</Link>.
+          For more details, please visit our{' '}
+          <Link href="/help" icon={ArrowRightIcon} iconPosition="right">
+            Help Center
+          </Link>
+          or contact our <Link href="/support" size="small" color="primary">
+            Support Team
+          </Link>.
         </Text>
       </Box>
     </Box>
   );
 };
 
-export default InlineLinkExample; 
+export default InlineLinkExample;
+```

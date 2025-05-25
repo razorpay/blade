@@ -51,7 +51,7 @@ type SkipNavContentProps = {
 This example demonstrates how to implement the SkipNav component for accessibility, showing proper placement of SkipNavLink at the beginning of the document and SkipNavContent at the start of the main content area.
 
 ```tsx
-import { SkipNavLink, SkipNavContent, Box, Link, Text } from '@razorpay/blade/components';
+import { SkipNavLink, SkipNavContent, Box, Link, Text, Heading } from '@razorpay/blade/components';
 
 function AccessibleLayout() {
   return (
@@ -62,24 +62,25 @@ function AccessibleLayout() {
       {/* Navigation Section */}
       <nav>
         <Box
-          as="ul"
           display="flex"
           gap="spacing.4"
           padding="spacing.4"
           backgroundColor="surface.background.gray.subtle"
         >
-          <li>
-            <Link href="#home">Home</Link>
-          </li>
-          <li>
-            <Link href="#features">Features</Link>
-          </li>
-          <li>
-            <Link href="#pricing">Pricing</Link>
-          </li>
-          <li>
-            <Link href="#contact">Contact</Link>
-          </li>
+          <ul>
+            <li>
+              <Link href="#home">Home</Link>
+            </li>
+            <li>
+              <Link href="#features">Features</Link>
+            </li>
+            <li>
+              <Link href="#pricing">Pricing</Link>
+            </li>
+            <li>
+              <Link href="#contact">Contact</Link>
+            </li>
+          </ul>
         </Box>
       </nav>
 
@@ -87,9 +88,7 @@ function AccessibleLayout() {
       <main>
         <SkipNavContent />
         <Box padding="spacing.4">
-          <Text variant="heading" size="xlarge">
-            Welcome to Our Website
-          </Text>
+          <Heading size="xlarge">Welcome to Our Website</Heading>
           <Text marginTop="spacing.3">
             This is the main content area that users will skip to when using the SkipNavLink.
           </Text>
