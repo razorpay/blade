@@ -2,6 +2,12 @@ name: Blade Validate
 
 on: [pull_request]
 
+# Add permissions required for coverage reporting
+permissions:
+  checks: write
+  pull-requests: write
+  contents: read
+
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
@@ -79,25 +85,58 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: coverage-reports
+      - name: Debug Downloaded Artifacts
+        run: |
+          echo "Checking downloaded coverage reports..."
+          find coverage-reports -type f -name "*.json" | head -20
+          ls -la coverage-reports/
       - name: Create Merged Coverage Report
         run: |
           # Create directory for nyc output
           mkdir -p .nyc_output
           
-          # Find and copy all coverage-final.json files to .nyc_output
-          find coverage-reports -name "coverage-final.json" -exec cp {} .nyc_output/ \;
+          # Find and copy all coverage-final.json files to .nyc_output with unique names
+          counter=1
+          find coverage-reports -name "coverage-final.json" | while read file; do
+            cp "$file" ".nyc_output/coverage-final-${counter}.json"
+            counter=$((counter + 1))
+          done
+          
+          # List files in .nyc_output for debugging
+          echo "Files in .nyc_output:"
+          ls -la .nyc_output/
           
           # Generate merged report
-          yarn nyc report --reporter=json
+          yarn nyc report --reporter=json --reporter=text-summary
           
           # Ensure output directory exists
           mkdir -p packages/blade/coverage
           
           # Copy the merged report to expected location
-          cp coverage/coverage-final.json packages/blade/coverage/
+          if [ -f "coverage/coverage-final.json" ]; then
+            cp coverage/coverage-final.json packages/blade/coverage/
+            echo "Coverage file copied successfully"
+          else
+            echo "Error: coverage/coverage-final.json not found"
+            exit 1
+          fi
+      - name: Verify Coverage File
+        run: |
+          echo "Checking final coverage file..."
+          if [ -f "packages/blade/coverage/coverage-final.json" ]; then
+            echo "Coverage file exists"
+            echo "File size: $(wc -c < packages/blade/coverage/coverage-final.json) bytes"
+            echo "First 200 characters:"
+            head -c 200 packages/blade/coverage/coverage-final.json
+          else
+            echo "Error: Coverage file not found"
+            exit 1
+          fi
       - name: Report Coverage
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
           github-token: ${{ secrets.CI_BOT_TOKEN }}
           coverage-file: ./packages/blade/coverage/coverage-final.json
           base-coverage-file: ./packages/blade/coverage/coverage-final.json
+          skip-step: install
+          working-directory: ./packages/blade
