@@ -80,6 +80,7 @@ import CheckSquareIconComponent from './CheckSquareIcon';
 import ChevronDownIconComponent from './ChevronDownIcon';
 import ChevronLeftIconComponent from './ChevronLeftIcon';
 import ChevronRightIconComponent from './ChevronRightIcon';
+import ChevronUpDownIconComponent from './ChevronUpDownIcon';
 import ChevronUpIconComponent from './ChevronUpIcon';
 import ChevronsDownIconComponent from './ChevronsDownIcon';
 import ChevronsLeftIconComponent from './ChevronsLeftIcon';
@@ -469,6 +470,7 @@ const iconMap: Record<string, IconComponent> = {
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,
   ChevronRightIcon: ChevronRightIconComponent,
+  ChevronUpDownIcon: ChevronUpDownIconComponent,
   ChevronUpIcon: ChevronUpIconComponent,
   ChevronsDownIcon: ChevronsDownIconComponent,
   ChevronsLeftIcon: ChevronsLeftIconComponent,

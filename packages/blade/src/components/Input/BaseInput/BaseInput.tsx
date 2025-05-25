@@ -352,6 +352,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default undefined
      */
     tabIndex?: number;
+    /**
+     *   isTrailingDropdown
+     */
+    isTrailingDropdown?: boolean;
   } & TestID &
   Platform.Select<{
     native: {

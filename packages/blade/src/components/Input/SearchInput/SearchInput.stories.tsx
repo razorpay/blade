@@ -3,7 +3,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { SearchInputProps } from './SearchInput';
-import { SearchInput as SearchInputComponent } from './SearchInput';
+import { SearchInput as SearchInputComponent, SearchInputTrailingDropdown } from './SearchInput';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -316,6 +316,7 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         placeholder="Search here"
         {...args}
         onChange={({ value }) => setSearchTerm(value as string)}
+        trailingDropdown={<SearchInputTrailingDropdown title="Popular Searches" />}
       />
 
       <DropdownOverlay>

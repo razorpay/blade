@@ -5,7 +5,7 @@ import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
-import { CloseIcon, SearchIcon } from '~components/Icons';
+import { ChevronUpDownIcon, CloseIcon, SearchIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { MetaConstants } from '~utils/metaAttribute';
@@ -21,6 +21,11 @@ import type {
 } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { makeSize } from '~utils/makeSize';
+import { Divider } from '~components/Divider';
+import { size } from '../../../tokens/global/size';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -59,6 +64,10 @@ type SearchInputCommonProps = Pick<
    * @default true
    */
   showSearchIcon?: boolean;
+  /**
+   * trailingDropdown?: React.ReactNode
+   */
+  trailingDropdown?: React.ReactNode;
 } & StyledPropsBlade;
 
 /*
@@ -98,6 +107,53 @@ const isReactNative = (_textInputRef?: any): _textInputRef is TextInputReactNati
   return getPlatformType() === 'react-native';
 };
 
+const SearchInputTrailingDropdown = ({
+  title,
+  inputRef,
+  setIsParentDropDownOpen,
+  isTrailingDropDownOpen,
+  setIsTrailingDropDownOpen,
+}: {
+  title: string;
+  inputRef: BladeElementRef<HTMLElement>;
+  setIsParentDropDownOpen: () => void;
+}): React.ReactElement => {
+  const [dropdownWidth, setDropdownWidth] = React.useState<number>(240);
+  const { setIsOpen } = useDropdown();
+  React.useEffect(() => {
+    const measureWidth = (): void => {
+      if (inputRef.current) {
+        const width = inputRef.current.getBoundingClientRect().width;
+        setDropdownWidth(width);
+      }
+    };
+
+    measureWidth();
+    window.addEventListener('resize', measureWidth);
+    return () => window.removeEventListener('resize', measureWidth);
+  }, [inputRef]);
+  console.log('dropdownWidth', dropdownWidth);
+  console.log('ref', makeSize(dropdownWidth));
+  console.log('inputRef', inputRef.current);
+
+  return (
+    <Dropdown selectionType="single">
+      <DropdownButton variant="tertiary" size="small" icon={ChevronUpDownIcon} iconPosition="right">
+        in {title}
+      </DropdownButton>
+      <DropdownOverlay referenceRef={(inputRef as unknown) as HTMLElement}>
+        <ActionList>
+          <ActionListItem title="Option 1" value="option1" />
+          <ActionListItem title="Option 2" value="option2" />
+          <ActionListItem title="Option 3" value="option3" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+SearchInputTrailingDropdown.displayName = 'SearchInputTrailingDropdown';
+
 const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputProps> = (
   {
     label,
@@ -121,6 +177,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     testID,
     size = 'medium',
     showSearchIcon = true,
+    trailingDropdown,
     ...rest
   },
   ref,
@@ -133,44 +190,69 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     onTriggerKeydown,
     onTriggerClick,
     dropdownTriggerer,
+    setIsOpen,
   } = useDropdown();
+  const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = useState(false);
   const isInsideDropdown = dropdownTriggerer === 'SearchInput';
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
   }, [defaultValue, value]);
 
+  const renderTrailingDropDown = () => {
+    return React.cloneElement(trailingDropdown as React.ReactElement, {
+      inputRef: triggererWrapperRef,
+      setIsParentDropDownOpen: setIsOpen,
+      isTrailingDropDownOpen: isTrailingDropDownOpen,
+      setIsTrailingDropDownOpen: setIsTrailingDropDownOpen,
+    });
+  };
+
+  const renderClearButton = () => {
+    return (
+      <IconButton
+        size="medium"
+        icon={CloseIcon}
+        onClick={() => {
+          if (isEmpty(value) && textInputRef.current) {
+            // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+            if (isReactNative(textInputRef.current)) {
+              textInputRef.current.clear();
+              textInputRef.current.focus();
+            } else if (textInputRef.current instanceof HTMLInputElement) {
+              textInputRef.current.value = '';
+              textInputRef.current.focus();
+            }
+          }
+
+          // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+          onClearButtonClick?.();
+          textInputRef?.current?.focus();
+          setShouldShowClearButton(false);
+        }}
+        isDisabled={isDisabled}
+        accessibilityLabel="Clear Input Content"
+      />
+    );
+  };
+
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
       return <Spinner accessibilityLabel="Loading Content" color="primary" />;
     }
 
-    if (shouldShowClearButton) {
+    if (shouldShowClearButton && trailingDropdown) {
       return (
-        <IconButton
-          size="medium"
-          icon={CloseIcon}
-          onClick={() => {
-            if (isEmpty(value) && textInputRef.current) {
-              // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-              if (isReactNative(textInputRef.current)) {
-                textInputRef.current.clear();
-                textInputRef.current.focus();
-              } else if (textInputRef.current instanceof HTMLInputElement) {
-                textInputRef.current.value = '';
-                textInputRef.current.focus();
-              }
-            }
-
-            // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
-            onClearButtonClick?.();
-            textInputRef?.current?.focus();
-            setShouldShowClearButton(false);
-          }}
-          isDisabled={isDisabled}
-          accessibilityLabel="Clear Input Content"
-        />
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" /> {renderTrailingDropDown()}
+        </BaseBox>
       );
+    }
+    if (shouldShowClearButton) {
+      return renderClearButton();
+    }
+    if (trailingDropdown) {
+      return renderTrailingDropDown();
     }
 
     return null;
@@ -246,4 +328,4 @@ const SearchInput = assignWithoutSideEffects(React.forwardRef(_SearchInput), {
 });
 
 export type { SearchInputProps };
-export { SearchInput };
+export { SearchInput, SearchInputTrailingDropdown };
