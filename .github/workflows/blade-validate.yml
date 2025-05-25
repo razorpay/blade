@@ -70,6 +70,11 @@ jobs:
     name: Generate Coverage Report
     runs-on: ubuntu-latest
     needs: test
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+      actions: read
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
@@ -133,7 +138,8 @@ jobs:
             exit 1
           fi
       - name: Report Coverage
-        uses: ArtiomTr/jest-coverage-report-action@v2
+        uses: ArtiomTr/jest-coverage-report-action@v3
+        continue-on-error: true
         with:
           github-token: ${{ secrets.CI_BOT_TOKEN }}
           coverage-file: ./packages/blade/coverage/coverage-final.json
