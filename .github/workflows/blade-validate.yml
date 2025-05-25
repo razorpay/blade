@@ -92,7 +92,7 @@ jobs:
           find coverage-reports -name "coverage-final.json" -exec cp {} .nyc_output/ \;
           
           # Generate merged report
-          npx nyc report --reporter=json
+          nyc report --reporter=json
           
           # Ensure output directory exists
           mkdir -p packages/blade/coverage
