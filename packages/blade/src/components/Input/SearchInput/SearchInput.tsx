@@ -25,7 +25,6 @@ import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown'
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { makeSize } from '~utils/makeSize';
 import { Divider } from '~components/Divider';
-import { size } from '../../../tokens/global/size';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
