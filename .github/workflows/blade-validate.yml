@@ -141,7 +141,17 @@ jobs:
         uses: ArtiomTr/jest-coverage-report-action@v2
         continue-on-error: true
         with:
+          package-manager: yarn
           github-token: ${{ secrets.CI_BOT_TOKEN }}
           coverage-file: ./packages/blade/coverage/coverage-final.json
           base-coverage-file: ./packages/blade/coverage/coverage-final.json
           skip-step: install
+          threshold: |
+            {
+              "global": {
+                "statements": 80,
+                "branches": 80,
+                "functions": 80,
+                "lines": 80
+              }
+            }
