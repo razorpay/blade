@@ -5,23 +5,24 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
-import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { IconButtonProps } from '~components/Button/IconButton';
-import StyledIconButton from '~components/Button/IconButton/StyledIconButton';
-import BaseBox from '~components/Box/BaseBox';
 import { makeSpace } from '~utils';
 import { ChevronUpDownIcon } from '~components/Icons';
 import { Box } from '~components/Box';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { Text } from '~components/Typography';
+import { makeAccessible } from '~utils/makeAccessible';
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 
 type SearchTrailingDropdownProps = Omit<IconButtonProps, 'onClick'> & {
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
   onClick?: IconButtonProps['onClick'];
   title?: string;
+  assertAccessible?: string;
+  label?: string;
 };
 
 // const SearchTrailingDropdownButton = styled(BaseBox)
@@ -54,16 +55,18 @@ const _SearchTrailingDropdown = ({
   onBlur,
   onKeyDown,
   title,
+  accessibilityLabel,
+  label,
 }: // accessibilityLabel,
 SearchTrailingDropdownProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
-    // dropdownBaseId,
-    // isOpen,
-    // activeIndex,
-    // hasFooterAction,
-    // triggererRef,
+    dropdownBaseId,
+    isOpen,
+    activeIndex,
+    hasFooterAction,
+    triggererRef,
   } = useDropdown();
 
   return (
@@ -87,6 +90,15 @@ SearchTrailingDropdownProps): React.ReactElement => {
         onKeyDown?.(e as any);
         e?.stopPropagation();
       }}
+      {...makeAccessible({
+        label: accessibilityLabel ?? label,
+        hasPopup: getActionListContainerRole(hasFooterAction, 'SearchTrailingDropdown'),
+        expanded: isOpen,
+        controls: `${dropdownBaseId}-actionlist`,
+        activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
+        role: 'button',
+      })}
+      ref={triggererRef}
     >
       <Box padding="spacing.2" display="flex" gap="spacing.2" alignItems="center">
         <Text variant="body" size="medium" weight="regular" color="surface.text.gray.muted">
