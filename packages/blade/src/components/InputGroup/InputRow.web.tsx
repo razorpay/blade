@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import type { InputRowProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
 const StyledInputRow = styled.div<{ $templateColumns: string }>`
   display: grid;
@@ -15,18 +14,6 @@ export const _InputRow = ({
   testID,
   _rowPosition = 'only',
 }: InputRowProps): JSX.Element => {
-  useVerifyAllowedChildren({
-    componentName: 'InputRow',
-    children,
-    allowedComponents: [
-      'TextInput',
-      'SearchInput',
-      'PhoneNumberInput',
-      'TextArea',
-      'PasswordInput',
-      'OTPInput',
-    ],
-  });
   const childCount = React.Children.count(children);
 
   return (

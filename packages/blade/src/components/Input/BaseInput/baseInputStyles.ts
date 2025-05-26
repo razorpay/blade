@@ -64,6 +64,51 @@ export const getBaseInputState = ({
   }
 };
 
+const calculatePositionalBorderRadius = ({
+  theme,
+  _inputPosition,
+}: {
+  theme: Theme;
+  _inputPosition: BaseInputWrapperProps['_inputPosition'];
+}): string => {
+  if (!_inputPosition) return makeBorderSize(theme.border.radius.medium);
+
+  const { row, col } = _inputPosition;
+
+  const radius = theme.border.radius.medium;
+  const zero = theme.spacing[0];
+
+  /**
+   * Calculate border radius based on input position in group
+   * @param corner Corner abbreviation:
+   *   - tl: top-left
+   *   - tr: top-right
+   *   - br: bottom-right
+   *   - bl: bottom-left
+   */
+  const getCorner = (corner: 'tl' | 'tr' | 'br' | 'bl'): number => {
+    if (row === 'only' && col === 'only') return radius;
+
+    if (row === 'first') {
+      if (col === 'only') return corner === 'tl' || corner === 'tr' ? radius : zero;
+      if (col === 'first' && corner === 'tl') return radius;
+      if (col === 'last' && corner === 'tr') return radius;
+    }
+
+    if (row === 'last') {
+      if (col === 'only') return corner === 'bl' || corner === 'br' ? radius : zero;
+      if (col === 'first' && corner === 'bl') return radius;
+      if (col === 'last' && corner === 'br') return radius;
+    }
+
+    return zero;
+  };
+
+  return [getCorner('tl'), getCorner('tr'), getCorner('br'), getCorner('bl')]
+    .map((v) => makeBorderSize(v))
+    .join(' ');
+};
+
 export const getInputBackgroundAndBorderStyles = ({
   theme,
   isHovered,
@@ -95,7 +140,7 @@ export const getInputBackgroundAndBorderStyles = ({
     ? theme.colors.transparent
     : getIn(theme.colors, baseInputBorderColor.default);
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
-  let zIndex = undefined;
+  let zIndex: number | undefined;
 
   const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
 
@@ -267,49 +312,4 @@ export const getAnimatedBaseInputWrapperMaxHeight = ({
 
   // In expandable, max-height depends on the state
   return showAllTags ? baseInputWrapperMaxHeight[size] : baseInputHeight[size];
-};
-
-const calculatePositionalBorderRadius = ({
-  theme,
-  _inputPosition,
-}: {
-  theme: Theme;
-  _inputPosition: BaseInputWrapperProps['_inputPosition'];
-}) => {
-  if (!_inputPosition) return theme.border.radius.medium;
-
-  const { row, col } = _inputPosition;
-
-  const radius = theme.border.radius.medium;
-  const zero = theme.spacing[0];
-
-  /**
-   * Calculate border radius based on input position in group
-   * @param corner Corner abbreviation:
-   *   - tl: top-left
-   *   - tr: top-right
-   *   - br: bottom-right
-   *   - bl: bottom-left
-   */
-  const getCorner = (corner: 'tl' | 'tr' | 'br' | 'bl') => {
-    if (row === 'only' && col === 'only') return radius;
-
-    if (row === 'first') {
-      if (col === 'only') return corner === 'tl' || corner === 'tr' ? radius : zero;
-      if (col === 'first' && corner === 'tl') return radius;
-      if (col === 'last' && corner === 'tr') return radius;
-    }
-
-    if (row === 'last') {
-      if (col === 'only') return corner === 'bl' || corner === 'br' ? radius : zero;
-      if (col === 'first' && corner === 'bl') return radius;
-      if (col === 'last' && corner === 'br') return radius;
-    }
-
-    return zero;
-  };
-
-  return [getCorner('tl'), getCorner('tr'), getCorner('br'), getCorner('bl')]
-    .map((v) => makeBorderSize(v))
-    .join(' ');
 };
