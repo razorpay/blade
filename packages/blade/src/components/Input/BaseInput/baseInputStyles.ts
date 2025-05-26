@@ -19,7 +19,6 @@ import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
-import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -87,9 +86,6 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isTableInputCell'
   | '_inputPosition'
 >): CSSObject => {
-  const inputGroupProps = useInputGroupContext();
-  const isWithinInputGroup = Object.keys(inputGroupProps).length > 0;
-
   // normal state
   const backgroundColorTokens = isTableInputCell
     ? baseInputBorderlessBackgroundColor
@@ -117,10 +113,9 @@ export const getInputBackgroundAndBorderStyles = ({
   } else if (validationState && validationState !== 'none') {
     backgroundColor = getIn(theme.colors, baseInputBorderlessBackgroundColor[validationState]);
   }
-
   return {
     backgroundColor,
-    borderRadius: isWithinInputGroup
+    borderRadius: _inputPosition
       ? calculatePositionalBorderRadius({ theme, _inputPosition })
       : makeBorderSize(isTableInputCell ? theme.border.radius.none : theme.border.radius.medium),
     borderStyle: 'solid',
