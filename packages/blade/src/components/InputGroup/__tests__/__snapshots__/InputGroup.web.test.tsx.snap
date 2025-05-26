@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputGroup should handle validation states correctly 1`] = `
+.c7.c7.c7.c7.c7 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -372,11 +377,6 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   z-index: 1;
 }
 
-.c7.c7.c7.c7.c7 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 <div>
   <div
     class=""
@@ -533,6 +533,11 @@ exports[`InputGroup should handle validation states correctly 1`] = `
 `;
 
 exports[`InputGroup should render InputGroup with large size 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -909,11 +914,6 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
   z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 <div>
   <div
     class=""
@@ -1053,6 +1053,11 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
 `;
 
 exports[`InputGroup should render InputGroup with medium size 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1429,11 +1434,6 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
   z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 <div>
   <div
     class=""
@@ -1573,6 +1573,11 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
 `;
 
 exports[`InputGroup should render Inputgroup with default properties 1`] = `
+.c7.c7.c7.c7.c7 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2162,11 +2167,6 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   z-index: 1;
 }
 
-.c7.c7.c7.c7.c7 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .c17.c17.c17.c17.c17 {
   border: none;
   cursor: pointer;
@@ -2432,6 +2432,11 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
 `;
 
 exports[`InputGroup should render disabled ButtonGroup 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2732,11 +2737,6 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 1;
-}
-
-.c2.c2.c2.c2.c2 {
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 <div>
