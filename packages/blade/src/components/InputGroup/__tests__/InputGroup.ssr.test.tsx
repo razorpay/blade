@@ -1,7 +1,7 @@
 import React from 'react';
-import renderWithSSR from '~utils/testing/renderWithSSR.web';
-import { InputGroup } from '../InputGroup.web';
 import { InputRow } from '../InputRow';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
+import { InputGroup } from '../';
 import { TextInput } from '~components/Input/TextInput';
 import { PasswordInput } from '~components/Input/PasswordInput';
 

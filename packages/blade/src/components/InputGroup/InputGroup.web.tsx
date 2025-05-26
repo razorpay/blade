@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import type { InputGroupProps } from './types';
 import { InputGroupProvider } from './InputGroupContext';
+import { InputRow } from './InputRow';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import type { BladeElementRef } from '~utils/types';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
@@ -18,7 +19,6 @@ import { useId } from '~utils/useId';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { getOuterMotionRef } from '~utils/getMotionRefs';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { InputRow } from './InputRow';
 
 const _InputGroup = (
   {

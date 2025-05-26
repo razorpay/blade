@@ -42,11 +42,6 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   gap: 0px;
 }
 
-.c7.c7.c7.c7.c7 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -377,6 +372,11 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   z-index: 1;
 }
 
+.c7.c7.c7.c7.c7 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 <div>
   <div
     class=""
@@ -429,7 +429,6 @@ exports[`InputGroup should handle validation states correctly 1`] = `
         >
           <div
             class="c7"
-            data-blade-component="box"
           >
             <div
               class=""
@@ -553,11 +552,6 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c2.c2.c2.c2.c2 {
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -915,6 +909,11 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
   z-index: 1;
 }
 
+.c2.c2.c2.c2.c2 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 <div>
   <div
     class=""
@@ -935,7 +934,6 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
         >
           <div
             class="c2"
-            data-blade-component="box"
           >
             <div
               class=""
@@ -1010,7 +1008,6 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
           </div>
           <div
             class="c2"
-            data-blade-component="box"
           >
             <div
               class=""
@@ -1075,11 +1072,6 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c2.c2.c2.c2.c2 {
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1437,6 +1429,11 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
   z-index: 1;
 }
 
+.c2.c2.c2.c2.c2 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 <div>
   <div
     class=""
@@ -1457,7 +1454,6 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
         >
           <div
             class="c2"
-            data-blade-component="box"
           >
             <div
               class=""
@@ -1532,7 +1528,6 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
           </div>
           <div
             class="c2"
-            data-blade-component="box"
           >
             <div
               class=""
@@ -1617,11 +1612,6 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   align-items: center;
   max-height: 36px;
   gap: 0px;
-}
-
-.c7.c7.c7.c7.c7 {
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -2172,6 +2162,11 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   z-index: 1;
 }
 
+.c7.c7.c7.c7.c7 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .c17.c17.c17.c17.c17 {
   border: none;
   cursor: pointer;
@@ -2273,7 +2268,6 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
         >
           <div
             class="c7"
-            data-blade-component="box"
           >
             <div
               class=""
@@ -2313,7 +2307,6 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
           </div>
           <div
             class="c7"
-            data-blade-component="box"
           >
             <div
               class=""
@@ -2458,11 +2451,6 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c2.c2.c2.c2.c2 {
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2746,6 +2734,11 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
   z-index: 1;
 }
 
+.c2.c2.c2.c2.c2 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 <div>
   <div
     class=""
@@ -2766,7 +2759,6 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
         >
           <div
             class="c2"
-            data-blade-component="box"
           >
             <div
               class=""
@@ -2807,7 +2799,6 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
           </div>
           <div
             class="c2"
-            data-blade-component="box"
           >
             <div
               class=""

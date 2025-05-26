@@ -1,8 +1,8 @@
 import React from 'react';
+import { InputRow } from '../InputRow';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import type { InputGroupProps } from '../types';
 import { InputGroup } from '../InputGroup.web';
-import { InputRow } from '../InputRow';
 import { TextInput } from '~components/Input/TextInput';
 import { PasswordInput } from '~components/Input/PasswordInput';
 

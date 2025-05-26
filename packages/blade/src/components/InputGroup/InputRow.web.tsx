@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { InputRowProps } from './types';
+import type { InputRowProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
@@ -48,7 +48,7 @@ export const _InputRow = ({
               row: _rowPosition,
               col: _colPosition,
             },
-          } as any);
+          } as Record<string, unknown>);
         }
         return child;
       })}
