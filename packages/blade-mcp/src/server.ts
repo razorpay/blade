@@ -29,7 +29,8 @@ import {
   hiBladeToolSchema,
   hiBladeToolCallback,
 } from './tools/hiBlade.js';
-import { getPackageJSONVersion, KNOWLEDGEBASE_DIRECTORY } from './utils.js';
+import { getPackageJSONVersion } from './utils/generalUtils.js';
+import { KNOWLEDGEBASE_DIRECTORY } from './utils/tokens.js';
 
 Sentry.init({
   dsn: process.env.BLADE_MCP_SENTRY_DSN,

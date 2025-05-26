@@ -1,28 +1,26 @@
-import { join } from 'path';
 import { existsSync } from 'fs';
+import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
   CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
 } from '../utils/tokens.js';
-import { hasOutDatedRules, getBladeDocsList } from '../utils/generalUtils.js';
+import { getBladeDocsList, hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 
-const bladeComponentsList = getBladeDocsList('components');
+const bladePatternsList = getBladeDocsList('patterns');
 
-const getBladeComponentDocsToolName = 'get_blade_component_docs';
+const getBladePatternDocsToolName = 'get_blade_pattern_docs';
 
-const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
+const getBladePatternDocsToolDescription = `Fetch the Blade Design System pattern docs. Use this to get information about design patterns, best practices, and implementation guidelines.`;
 
-const getBladeComponentDocsToolSchema = {
-  componentsList: z
+const getBladePatternDocsToolSchema = {
+  patternsList: z
     .string()
     .describe(
-      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
-        ', ',
-      )}`,
+      'Comma separated list of blade pattern names. E.g. "Layout, Navigation". Possible values: Layout, Navigation, Forms, DataDisplay, Feedback',
     ),
   currentProjectRootDirectory: z
     .string()
@@ -31,18 +29,18 @@ const getBladeComponentDocsToolSchema = {
     ),
 };
 
-const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDocsToolSchema> = ({
-  componentsList,
+const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsToolSchema> = ({
+  patternsList,
   currentProjectRootDirectory,
 }) => {
-  const components = componentsList.split(',').map((s) => s.trim());
-  const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
+  const components = patternsList.split(',').map((s) => s.trim());
+  const invalidComponents = components.filter((comp) => !bladePatternsList.includes(comp));
   if (invalidComponents.length > 0) {
     return handleError({
-      toolName: getBladeComponentDocsToolName,
+      toolName: getBladePatternDocsToolName,
       mcpErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
         ', ',
-      )}. Valid component docs values: ${bladeComponentsList.join(
+      )}. Valid component docs values: ${bladePatternsList.join(
         ', ',
       )}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
     });
@@ -52,30 +50,30 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
 
   if (!existsSync(ruleFilePath)) {
     return handleError({
-      toolName: getBladeComponentDocsToolName,
+      toolName: getBladePatternDocsToolName,
       mcpErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
     });
   }
 
   if (hasOutDatedRules(ruleFilePath)) {
     return handleError({
-      toolName: getBladeComponentDocsToolName,
+      toolName: getBladePatternDocsToolName,
       mcpErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
     });
   }
 
   try {
     const responseText = getBladeDocsResponseText({
-      docsList: componentsList,
-      documentationType: 'components',
+      docsList: patternsList,
+      documentationType: 'patterns',
     });
 
     // Return the formatted response
     sendAnalytics({
       eventName: analyticsToolCallEventName,
       properties: {
-        toolName: getBladeComponentDocsToolName,
-        componentsList,
+        toolName: getBladePatternDocsToolName,
+        patternsList,
       },
     });
 
@@ -89,15 +87,15 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
     };
   } catch (error: unknown) {
     return handleError({
-      toolName: getBladeComponentDocsToolName,
+      toolName: getBladePatternDocsToolName,
       errorObject: error,
     });
   }
 };
 
 export {
-  getBladeComponentDocsToolName,
-  getBladeComponentDocsToolDescription,
-  getBladeComponentDocsToolSchema,
-  getBladeComponentDocsToolCallback,
+  getBladePatternDocsToolName,
+  getBladePatternDocsToolDescription,
+  getBladePatternDocsToolSchema,
+  getBladePatternDocsToolCallback,
 };
