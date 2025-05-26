@@ -137,6 +137,12 @@ jobs:
             echo "Error: Coverage file not found"
             exit 1
           fi
+      - name: Upload Merged Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-coverage-final
+          path: packages/blade/coverage/coverage-final.json
+          retention-days: 7
       - name: Report Coverage
         uses: ArtiomTr/jest-coverage-report-action@v2
         continue-on-error: true
@@ -155,3 +161,4 @@ jobs:
                 "lines": 80
               }
             }
+
