@@ -112,7 +112,7 @@ function BasicSlideExample() {
       </Button>
 
       <Slide isVisible={isVisible} direction="bottom">
-        <Card width="100%" maxWidth="400px">
+        <Card width="100%" height="100%">
           <CardBody>
             <Text>
               This card slides in from the bottom and out to the bottom when the toggle button is

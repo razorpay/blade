@@ -119,6 +119,8 @@ import {
   CloseIcon,
   Code,
   Badge,
+  Switch,
+  Text,
 } from '@razorpay/blade/components';
 
 // Define data types for strong typing
@@ -160,9 +162,10 @@ function ListViewExample() {
   const [searchValue, setSearchValue] = useState<string>('');
   const [methodFilter, setMethodFilter] = useState<string>('');
   const [filterDateRange, setFilterDateRange] = useState<[Date, Date] | undefined>(undefined);
+  const [showFilters, setShowFilters] = useState(true);
 
   // Quick filter status colors
-  const quickFilterColorMapping = {
+  const quickFilterColorMapping: Record<string, 'primary' | 'notice' | 'negative' | 'positive'> = {
     All: 'primary',
     Pending: 'notice',
     Failed: 'negative',
@@ -224,6 +227,14 @@ function ListViewExample() {
 
   return (
     <Box height="100%" testID="payment-list-view">
+      <Box display="flex" padding="spacing.5" alignItems="center" gap="spacing.3">
+        <Text>Show Quick Filters</Text>
+        <Switch
+          isChecked={showFilters}
+          onChange={() => setShowFilters(!showFilters)}
+          accessibilityLabel="Toggle quick filters visibility"
+        />
+      </Box>
       <ListView>
         <ListViewFilters
           quickFilters={
@@ -358,7 +369,6 @@ function ListViewExample() {
           onSelectionChange={(selectedIds) => console.log('Selected rows:', selectedIds)}
           isFirstColumnSticky
           selectionType="single"
-          accessibilityLabel="Payments history table"
         >
           {(tableData) => (
             <>
@@ -482,7 +492,6 @@ import {
   Table,
   Switch,
   Text,
-  Flex,
   // ...other imports as needed
 } from '@razorpay/blade/components';
 
@@ -511,14 +520,14 @@ function MultiSelectListViewExample() {
 
   return (
     <Box height="100%">
-      <Flex padding="spacing.5" alignItems="center" gap="spacing.3">
+      <Box display="flex" padding="spacing.5" alignItems="center" gap="spacing.3">
         <Text>Show Quick Filters</Text>
         <Switch
           isChecked={showFilters}
           onChange={() => setShowFilters(!showFilters)}
           accessibilityLabel="Toggle quick filters visibility"
         />
-      </Flex>
+      </Box>
 
       <ListView>
         <ListViewFilters
@@ -560,7 +569,6 @@ function MultiSelectListViewExample() {
           onShowQuickFiltersChange={setShowFilters}
         >
           {/* Filter chips and table similar to first example */}
-          <FilterChipGroup>{/* Filter chips */}</FilterChipGroup>
         </ListViewFilters>
 
         <Table data={listViewTableData}>{/* Table implementation */}</Table>

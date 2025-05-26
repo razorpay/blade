@@ -35,7 +35,7 @@ type ModalProps = {
    *  Size of the modal
    * @default 'small'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'full';
   /**
    *  Accessibility label for the modal
    */
@@ -103,8 +103,7 @@ import {
   Radio,
   RadioGroup,
   Text,
-  Select,
-  TextField,
+  TextArea,
   Checkbox,
 } from '@razorpay/blade/components';
 
@@ -149,28 +148,26 @@ const ModalExample = () => {
         size={selectedSize}
         initialFocusRef={addAddressButtonRef}
         accessibilityLabel="Address selection modal"
-        dataAnalyticsAction="address_selection"
       >
         <ModalHeader
           title="Select Delivery Address"
           subtitle="Choose where you'd like your order delivered"
-          dataAnalyticsContext="address_header"
         />
 
-        <ModalBody dataAnalyticsContext="address_body">
+        <ModalBody>
           <Box display="flex" flexDirection="column" gap="spacing.5">
             <Box marginTop="spacing.5">
-              <Text variant="bodyMedium" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 Need to add a new address?
               </Text>
 
               <Box marginTop="spacing.4">
-                <TextField
+                <TextArea
                   label="Address Line 1"
                   placeholder="Enter street address"
                   marginBottom="spacing.4"
                 />
-                <TextField
+                <TextArea
                   label="Address Line 2"
                   placeholder="Apt, Suite, Building (optional)"
                   marginBottom="spacing.4"
@@ -180,7 +177,7 @@ const ModalExample = () => {
           </Box>
         </ModalBody>
 
-        <ModalFooter dataAnalyticsContext="address_footer">
+        <ModalFooter>
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
             <Button variant="tertiary" onClick={closeModal}>
               Cancel

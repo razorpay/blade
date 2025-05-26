@@ -12,7 +12,7 @@ Cards are containers that group related content and actions on a single topic. T
 - `CardHeader` component only accepts `CardHeaderLeading`, `CardHeaderTrailing` components as children
 - `CardFooter` component only accepts `CardFooterLeading`, `CardFooterTrailing` components as children
 
-The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below.
+The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
 ## TypeScript Types
 
@@ -295,9 +295,10 @@ import {
   Text,
   UsersIcon,
 } from '@razorpay/blade/components';
+import React, { useState } from 'react';
 
 const InteractiveCardExample = () => {
-  const [isSelected, setIsSelected] = React.useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
   return (
     <Card

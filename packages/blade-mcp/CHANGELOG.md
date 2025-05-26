@@ -1,5 +1,36 @@
 # @razorpay/blade-mcp
 
+## 0.1.12
+
+### Patch Changes
+
+- e6b88620: feat(SideNav): add default position note in knowledgebase
+
+## 0.1.11
+
+### Patch Changes
+
+- 735ec600: fix: update knowledgebase
+
+## 0.1.10
+
+### Patch Changes
+
+- 94621723: Update release.yml
+
+## 0.1.9
+
+### Patch Changes
+
+- b06afe7c: feat(blade-mcp): add runtime check fixes on cursor
+- 4c5104ba: feat: add mcp error monitoring & instrumentation
+
+## 0.1.8
+
+### Patch Changes
+
+- 90c22ea9: docs(blade-mcp): add Preview and Full Page Modal knowledgebase
+
 ## 0.1.7
 
 ### Patch Changes

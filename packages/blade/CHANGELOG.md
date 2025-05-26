@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 12.31.2
+
+### Patch Changes
+
+- b42ad547: fix(blade): Display 'Show more filters' only if children are provided
+
+## 12.31.1
+
+### Patch Changes
+
+- 273730ff: fix: surface primary border color when using custom brand color
+
+## 12.31.0
+
+### Minor Changes
+
+- c48acef5: feat(Heading): add medium weight
+
+## 12.30.0
+
+### Minor Changes
+
+- 1de828f1: feat(fileUpload): add new size variant "variable"
+- a48a3a30: feat(blade): add preview component
+
 ## 12.29.0
 
 ### Minor Changes

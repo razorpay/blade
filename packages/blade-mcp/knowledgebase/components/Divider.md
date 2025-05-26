@@ -71,7 +71,7 @@ const StyledDividerExample = () => (
     <Divider marginY="spacing.2" />
 
     <Text>Colored divider below</Text>
-    <Divider marginY="spacing.2" borderColor="border.primary" borderWidth="thick" />
+    <Divider marginY="spacing.2" variant="normal" thickness="thick" />
   </Box>
 );
 ```

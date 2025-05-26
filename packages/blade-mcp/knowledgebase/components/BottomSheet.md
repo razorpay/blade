@@ -152,7 +152,7 @@ const TermsAndConditionsBottomSheet = () => {
     <>
       <Button onClick={() => setIsOpen(true)}>Open Terms & Conditions</Button>
 
-      <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)} testID="terms-bottomsheet">
+      <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader title="Terms & Conditions" subtitle="Read carefully before accepting" />
         <BottomSheetBody>
           <Text>
@@ -173,7 +173,7 @@ const TermsAndConditionsBottomSheet = () => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Checkbox checked={termsAccepted} onChange={() => setTermsAccepted(!termsAccepted)}>
+            <Checkbox isChecked={termsAccepted} onChange={() => setTermsAccepted(!termsAccepted)}>
               I accept terms and conditions
             </Checkbox>
             <Button variant="primary" isDisabled={!termsAccepted} onClick={() => setIsOpen(false)}>
@@ -388,7 +388,7 @@ const PhoneVerificationBottomSheet = () => {
             label="Phone Number"
             placeholder="Enter your phone number"
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={({ value }) => setPhoneNumber(value)}
             errorText={verificationError}
             validationState={verificationError ? 'error' : 'none'}
             marginBottom="spacing.5"
