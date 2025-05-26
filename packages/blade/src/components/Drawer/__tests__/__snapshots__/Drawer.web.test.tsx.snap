@@ -373,6 +373,7 @@ exports[`Drawer renders a Drawer 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
   color: hsla(211,26%,34%,1);
 }
 
@@ -913,6 +914,7 @@ exports[`Drawer should render a Drawer with a custom header 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
   color: hsla(211,26%,34%,1);
 }
 

@@ -316,6 +316,7 @@ exports[`<BaseInput /> should render 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 <div>
@@ -1109,6 +1110,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 <div>
@@ -1576,6 +1578,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   width: 100%;
   position: relative;
   border: none;
+  z-index: 1;
   border-width: 0px;
   box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
@@ -1600,6 +1603,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   width: 100%;
   position: relative;
   border: none;
+  z-index: 1;
   border-width: 0px;
   box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
@@ -1626,6 +1630,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   width: 100%;
   position: relative;
   border: none;
+  z-index: 1;
   border-width: 0px;
   box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
@@ -1671,6 +1676,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 <div>
@@ -2231,6 +2237,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -2696,6 +2703,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 <div>

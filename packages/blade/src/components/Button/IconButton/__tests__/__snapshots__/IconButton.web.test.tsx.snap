@@ -42,6 +42,7 @@ exports[`<IconButton /> should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
   color: hsla(211,26%,34%,1);
 }
 
@@ -117,6 +118,7 @@ exports[`<IconButton /> should render with emphasis 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
   color: hsla(211,26%,34%,1);
 }
 

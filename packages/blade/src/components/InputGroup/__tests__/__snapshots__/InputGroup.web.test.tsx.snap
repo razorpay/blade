@@ -429,7 +429,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
         >
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""
@@ -935,7 +935,7 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
         >
           <div
             class="c2"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""
@@ -1010,7 +1010,7 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
           </div>
           <div
             class="c2"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""
@@ -1457,7 +1457,7 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
         >
           <div
             class="c2"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""
@@ -1532,7 +1532,7 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
           </div>
           <div
             class="c2"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""
@@ -2273,7 +2273,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
         >
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""
@@ -2313,7 +2313,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
           </div>
           <div
             class="c7"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""
@@ -2766,7 +2766,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
         >
           <div
             class="c2"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""
@@ -2807,7 +2807,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
           </div>
           <div
             class="c2"
-            data-blade-component="base-box"
+            data-blade-component="box"
           >
             <div
               class=""

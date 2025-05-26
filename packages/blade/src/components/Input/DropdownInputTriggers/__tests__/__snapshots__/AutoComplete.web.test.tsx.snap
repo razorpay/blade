@@ -435,6 +435,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 <div>
@@ -1193,6 +1194,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
   color: hsla(211,26%,34%,1);
 }
 
@@ -1631,6 +1633,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1647,6 +1650,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
+  z-index: 1;
 }
 
 .c43.c43.c43.c43.c43 {
@@ -1692,6 +1696,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 .c44.c44.c44.c44.c44[aria-selected=true] {
@@ -2793,6 +2798,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 @media screen and (min-width:768px) {
@@ -3424,6 +3430,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
+  z-index: 1;
 }
 
 @media screen and (min-width:768px) {

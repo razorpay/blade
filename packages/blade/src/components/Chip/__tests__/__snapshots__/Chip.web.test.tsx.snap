@@ -198,6 +198,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 .c8.c8.c8.c8.c8:hover + div {
@@ -643,6 +644,7 @@ exports[`<Chip /> should render chip 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 .c8.c8.c8.c8.c8:hover + div {
@@ -1092,6 +1094,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 .c8.c8.c8.c8.c8:hover + div {
@@ -1676,6 +1679,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 .c14.c14.c14.c14.c14 {
@@ -1704,6 +1708,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 1;
 }
 
 .c14.c14.c14.c14.c14:hover + div {

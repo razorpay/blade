@@ -1,11 +1,11 @@
 import React from 'react';
+import BaseBox from '~components/Box/BaseBox';
 import { InputRowProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
-import { Box } from '~components/Box/Box';
 
 export const _InputRow = ({
-  templateColumns,
+  templateColumns = '1fr',
   children,
   testID,
   _rowPosition = 'only',
@@ -25,7 +25,7 @@ export const _InputRow = ({
   const childCount = React.Children.count(children);
 
   return (
-    <Box display="grid" gridTemplateColumns={templateColumns || '1fr'} data-testid={testID}>
+    <BaseBox display="grid" gridTemplateColumns={templateColumns} data-testid={testID}>
       {React.Children.map(children, (child, colIndex) => {
         if (React.isValidElement(child)) {
           // Calculate column position
@@ -47,7 +47,7 @@ export const _InputRow = ({
         }
         return child;
       })}
-    </Box>
+    </BaseBox>
   );
 };
 
