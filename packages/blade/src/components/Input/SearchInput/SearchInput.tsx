@@ -25,6 +25,7 @@ import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown'
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { makeSize } from '~utils/makeSize';
 import { Divider } from '~components/Divider';
+import { SearchInputTrailingDropdownButton } from '~components/Dropdown/SearchInputTrailingDropdownButton';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -164,9 +165,10 @@ const SearchInputTrailingDropdown = ({
         setIsTrailingDropDownOpen(isOpen);
       }}
     >
-      <DropdownButton variant="tertiary" size="small" icon={ChevronUpDownIcon} iconPosition="right">
+      {/* <DropdownButton variant="tertiary" size="small" icon={ChevronUpDownIcon} iconPosition="right">
         in {title}
-      </DropdownButton>
+      </DropdownButton> */}
+      <SearchInputTrailingDropdownButton title={title} />
       <DropdownOverlay referenceRef={(inputRef as unknown) as HTMLElement}>
         {/* <DropdownOverlay> */}
         <ActionList>
