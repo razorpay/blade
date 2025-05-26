@@ -25,7 +25,6 @@ import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown'
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { makeSize } from '~utils/makeSize';
 import { Divider } from '~components/Divider';
-import { SearchInputTrailingDropdownButton } from '~components/Dropdown/SearchInputTrailingDropdownButton';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -107,78 +106,78 @@ const isReactNative = (_textInputRef?: any): _textInputRef is TextInputReactNati
   return getPlatformType() === 'react-native';
 };
 
-const SearchInputTrailingDropdown = ({
-  title,
-  inputRef,
-  closeParentDropDown,
-  isParentDropDownOpen,
-  children,
-}: {
-  title: string;
-  inputRef: BladeElementRef<HTMLElement>;
-  closeParentDropDown: () => void;
-  isParentDropDownOpen: boolean;
-  children: React.ReactElement;
-}): React.ReactElement => {
-  const [dropdownWidth, setDropdownWidth] = React.useState<number>(240);
-  const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = useState(false);
+// const InputDropDownButton = ({
+//   title,
+//   inputRef,
+//   closeParentDropDown,
+//   isParentDropDownOpen,
+//   children,
+// }: {
+//   title: string;
+//   inputRef: BladeElementRef<HTMLElement>;
+//   closeParentDropDown: () => void;
+//   isParentDropDownOpen: boolean;
+//   children: React.ReactElement;
+// }): React.ReactElement => {
+//   const [dropdownWidth, setDropdownWidth] = React.useState<number>(240);
+//   const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = useState(false);
 
-  console.log({
-    isParentDropDownOpen,
-    isTrailingDropDownOpen,
-  });
+//   console.log({
+//     isParentDropDownOpen,
+//     isTrailingDropDownOpen,
+//   });
 
-  useEffect(() => {
-    if (isParentDropDownOpen && isTrailingDropDownOpen) {
-      setIsTrailingDropDownOpen(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [closeParentDropDown, isParentDropDownOpen]);
+//   useEffect(() => {
+//     if (isParentDropDownOpen && isTrailingDropDownOpen) {
+//       setIsTrailingDropDownOpen(false);
+//     }
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [closeParentDropDown, isParentDropDownOpen]);
 
-  useEffect(() => {
-    if (isTrailingDropDownOpen && isParentDropDownOpen) {
-      closeParentDropDown();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setIsTrailingDropDownOpen, isTrailingDropDownOpen]);
+//   useEffect(() => {
+//     if (isTrailingDropDownOpen && isParentDropDownOpen) {
+//       closeParentDropDown();
+//     }
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [setIsTrailingDropDownOpen, isTrailingDropDownOpen]);
 
-  React.useEffect(() => {
-    const measureWidth = (): void => {
-      if (inputRef.current) {
-        const width = inputRef.current.getBoundingClientRect().width;
-        setDropdownWidth(width);
-      }
-    };
+//   React.useEffect(() => {
+//     const measureWidth = (): void => {
+//       if (inputRef.current) {
+//         const width = inputRef.current.getBoundingClientRect().width;
+//         setDropdownWidth(width);
+//       }
+//     };
 
-    measureWidth();
-    window.addEventListener('resize', measureWidth);
-    return () => window.removeEventListener('resize', measureWidth);
-  }, [inputRef]);
+//     measureWidth();
+//     window.addEventListener('resize', measureWidth);
+//     return () => window.removeEventListener('resize', measureWidth);
+//   }, [inputRef]);
 
-  console.log('dropdownWidth', dropdownWidth);
-  console.log('ref', makeSize(dropdownWidth));
-  console.log('inputRef', inputRef.current);
+//   console.log('dropdownWidth', dropdownWidth);
+//   console.log('ref', makeSize(dropdownWidth));
+//   console.log('inputRef', inputRef.current);
 
-  return (
-    <Dropdown
-      selectionType="single"
-      isOpen={isTrailingDropDownOpen}
-      onOpenChange={(isOpen) => {
-        setIsTrailingDropDownOpen(isOpen);
-      }}
-    >
-      {/* <DropdownButton variant="tertiary" size="small" icon={ChevronUpDownIcon} iconPosition="right">
-        in {title}
-      </DropdownButton> */}
-      <SearchInputTrailingDropdownButton title={title} />
-      <DropdownOverlay referenceRef={(inputRef as unknown) as HTMLElement}>
-        {children}
-      </DropdownOverlay>
-    </Dropdown>
-  );
-};
+//   return (
+//     <Dropdown
+//       selectionType="single"
+//       isOpen={isTrailingDropDownOpen}
+//       onOpenChange={(isOpen) => {
+//         setIsTrailingDropDownOpen(isOpen);
+//       }}
+//     >
+//       {/* <DropdownButton variant="tertiary" size="small" icon={ChevronUpDownIcon} iconPosition="right">
+//         in {title}
+//       </DropdownButton> */}
+//       {/* <SearchInputTrailingDropdownButton title={title} /> */}
+//       <DropdownOverlay referenceRef={(inputRef as unknown) as HTMLElement}>
+//         {children}
+//       </DropdownOverlay>
+//     </Dropdown>
+//   );
+// };
 
-SearchInputTrailingDropdown.displayName = 'SearchInputTrailingDropdown';
+// SearchInputTrailingDropdown.displayName = 'SearchInputTrailingDropdown';
 
 const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputProps> = (
   {
@@ -211,6 +210,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   const textInputRef = React.useRef<BladeElementRefWithValue>(null);
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
+  const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = useState(false);
   const {
     triggererWrapperRef,
     onTriggerKeydown,
@@ -226,16 +226,42 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     setShouldShowClearButton(Boolean(defaultValue ?? value));
   }, [defaultValue, value]);
 
-  const renderTrailingDropDown = () => {
+  useEffect(() => {
+    if (isParentDropDownOpen && isTrailingDropDownOpen) {
+      setIsTrailingDropDownOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [closeParentDropDown, isParentDropDownOpen]);
+
+  useEffect(() => {
+    if (isTrailingDropDownOpen && isParentDropDownOpen) {
+      closeParentDropDown();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setIsTrailingDropDownOpen, isTrailingDropDownOpen]);
+
+  const renderTrailingDropDown = (): React.ReactElement => {
     return React.cloneElement(trailingDropdown as React.ReactElement, {
-      inputRef: triggererWrapperRef,
-      setIsParentDropDownOpen: setIsOpen,
-      closeParentDropDown: closeParentDropDown,
-      isParentDropDownOpen: isParentDropDownOpen,
+      selectionType: 'single',
+      isOpen: isTrailingDropDownOpen,
+      onOpenChange: (isOpen: boolean) => {
+        setIsTrailingDropDownOpen(isOpen);
+      },
+      children: React.Children.map(
+        (trailingDropdown as React.ReactElement).props.children,
+        (child) => {
+          if (child.type === DropdownOverlay) {
+            return React.cloneElement(child, {
+              referenceRef: triggererWrapperRef,
+            });
+          }
+          return child;
+        },
+      ),
     });
   };
 
-  const renderClearButton = () => {
+  const renderClearButton = (): React.ReactElement => {
     return (
       <IconButton
         size="medium"
@@ -280,6 +306,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     }
     if (trailingDropdown) {
       return renderTrailingDropDown();
+      // return trailingDropdown;
     }
 
     return null;
@@ -355,4 +382,4 @@ const SearchInput = assignWithoutSideEffects(React.forwardRef(_SearchInput), {
 });
 
 export type { SearchInputProps };
-export { SearchInput, SearchInputTrailingDropdown };
+export { SearchInput };

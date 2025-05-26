@@ -16,7 +16,7 @@ import { Text } from '~components/Typography';
 import { makeAccessible } from '~utils/makeAccessible';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 
-type SearchTrailingDropdownProps = Omit<IconButtonProps, 'onClick'> & {
+type InputDropDownButtonProps = Omit<IconButtonProps, 'onClick'> & {
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
   onClick?: IconButtonProps['onClick'];
@@ -25,7 +25,6 @@ type SearchTrailingDropdownProps = Omit<IconButtonProps, 'onClick'> & {
   label?: string;
 };
 
-// const SearchTrailingDropdownButton = styled(BaseBox)
 const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean }>(({ theme }) => {
   const { spacing } = theme;
   return {
@@ -50,15 +49,14 @@ const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean }>(({
   };
 });
 
-const _SearchTrailingDropdown = ({
+const _InputDropDownButton = ({
   onClick,
   onBlur,
   onKeyDown,
   title,
   accessibilityLabel,
   label,
-}: // accessibilityLabel,
-SearchTrailingDropdownProps): React.ReactElement => {
+}: InputDropDownButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -114,9 +112,9 @@ SearchTrailingDropdownProps): React.ReactElement => {
   );
 };
 
-const SearchInputTrailingDropdownButton = assignWithoutSideEffects(_SearchTrailingDropdown, {
+const InputDropDownButton = assignWithoutSideEffects(_InputDropDownButton, {
   componentId: dropdownComponentIds.triggers.SearchTrailingDropdown,
   displayName: 'SearchTrailingDropdown',
 });
 
-export { SearchInputTrailingDropdownButton };
+export { InputDropDownButton };

@@ -3,19 +3,31 @@ import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { SearchInputProps } from './SearchInput';
-import { SearchInput as SearchInputComponent, SearchInputTrailingDropdown } from './SearchInput';
+import {
+  // InputDropDownButton,
+  SearchInput as SearchInputComponent,
+  SearchInputTrailingDropdown,
+} from './SearchInput';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import {
+  Dropdown,
+  DropdownFooter,
+  DropdownHeader,
+  DropdownIconButton,
+  DropdownOverlay,
+  InputDropDownButton,
+} from '~components/Dropdown';
 import {
   ActionList,
   ActionListItem,
   ActionListSection,
   ActionListItemIcon,
+  ActionListItemAsset,
 } from '~components/ActionList';
 import {
   Table,
@@ -36,6 +48,7 @@ import {
   TransactionsIcon,
   HelpCircleIcon,
   BulkPayoutsIcon,
+  HomeIcon,
 } from '~components/Icons';
 import { Spinner } from '~components/Spinner';
 
@@ -317,13 +330,23 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         {...args}
         onChange={({ value }) => setSearchTerm(value as string)}
         trailingDropdown={
-          <SearchInputTrailingDropdown title="Popular Searches">
-            <ActionList>
-              <ActionListItem title="Option 1" value="option1" />
-              <ActionListItem title="Option 2" value="option2" />
-              <ActionListItem title="Option 3" value="option3" />
-            </ActionList>
-          </SearchInputTrailingDropdown>
+          // <SearchInputTrailingDropdown title="Popular Searches">
+          //   <ActionList>
+          //     <ActionListItem title="Option 1" value="option1" />
+          //     <ActionListItem title="Option 2" value="option2" />
+          //     <ActionListItem title="Option 3" value="option3" />
+          //   </ActionList>
+          // </SearchInputTrailingDropdown>
+          <Dropdown selectionType="multiple">
+            <InputDropDownButton title="Popular Searches" />
+            {/* <DropdownIconButton icon={UserIcon} /> */}
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
         }
       />
 
