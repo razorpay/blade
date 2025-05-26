@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-fix(blade): make childrens optional for ListViewFilters
+fix(blade): make children optional for ListViewFilters
