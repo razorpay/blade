@@ -112,11 +112,13 @@ const SearchInputTrailingDropdown = ({
   inputRef,
   closeParentDropDown,
   isParentDropDownOpen,
+  children,
 }: {
   title: string;
   inputRef: BladeElementRef<HTMLElement>;
   closeParentDropDown: () => void;
   isParentDropDownOpen: boolean;
+  children: React.ReactElement;
 }): React.ReactElement => {
   const [dropdownWidth, setDropdownWidth] = React.useState<number>(240);
   const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = useState(false);
@@ -170,12 +172,7 @@ const SearchInputTrailingDropdown = ({
       </DropdownButton> */}
       <SearchInputTrailingDropdownButton title={title} />
       <DropdownOverlay referenceRef={(inputRef as unknown) as HTMLElement}>
-        {/* <DropdownOverlay> */}
-        <ActionList>
-          <ActionListItem title="Option 1" value="option1" />
-          <ActionListItem title="Option 2" value="option2" />
-          <ActionListItem title="Option 3" value="option3" />
-        </ActionList>
+        {children}
       </DropdownOverlay>
     </Dropdown>
   );
