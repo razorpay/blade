@@ -1,8 +1,13 @@
 import React from 'react';
-import BaseBox from '~components/Box/BaseBox';
+import styled from 'styled-components';
 import { InputRowProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+
+const StyledInputRow = styled.div<{ $templateColumns: string }>`
+  display: grid;
+  grid-template-columns: ${(props) => props.$templateColumns};
+`;
 
 export const _InputRow = ({
   templateColumns = '1fr',
@@ -25,7 +30,7 @@ export const _InputRow = ({
   const childCount = React.Children.count(children);
 
   return (
-    <BaseBox display="grid" gridTemplateColumns={templateColumns} data-testid={testID}>
+    <StyledInputRow $templateColumns={templateColumns} data-testid={testID}>
       {React.Children.map(children, (child, colIndex) => {
         if (React.isValidElement(child)) {
           // Calculate column position
@@ -47,7 +52,7 @@ export const _InputRow = ({
         }
         return child;
       })}
-    </BaseBox>
+    </StyledInputRow>
   );
 };
 
