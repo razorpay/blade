@@ -8,7 +8,7 @@ type ListViewCommonProps = {
 type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute;
 
 type ListViewFilterProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * Quick Filters Component
    */
