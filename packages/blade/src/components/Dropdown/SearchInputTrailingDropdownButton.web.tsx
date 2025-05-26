@@ -72,16 +72,20 @@ SearchTrailingDropdownProps): React.ReactElement => {
         onTriggerClick();
         // Setting it for web fails it on native typecheck and vice versa
         onClick?.(e as any);
+        // Since this dropdown is inside another dropdown we should stop event stopPropagation.
+        e?.stopPropagation();
       }}
       onBlur={(e) => {
         // With button trigger, there is no "value" as such. It's just clickable items
         // Setting it for web fails it on native typecheck and vice versa
         onBlur?.(e as any);
+        e?.stopPropagation();
       }}
       onKeyDown={(e) => {
         onTriggerKeydown?.({ event: e as any });
         // Setting it for web fails it on native typecheck and vice versa
         onKeyDown?.(e as any);
+        e?.stopPropagation();
       }}
     >
       <Box padding="spacing.2" display="flex" gap="spacing.2" alignItems="center">
