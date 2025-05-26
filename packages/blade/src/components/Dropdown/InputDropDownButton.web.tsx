@@ -16,13 +16,12 @@ import { Text } from '~components/Typography';
 import { makeAccessible } from '~utils/makeAccessible';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 
-type InputDropDownButtonProps = Omit<IconButtonProps, 'onClick'> & {
+type InputDropDownButtonProps = {
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
-  onClick?: IconButtonProps['onClick'];
+  onClick?: BaseButtonProps['onClick'];
   title?: string;
-  assertAccessible?: string;
-  label?: string;
+  accessibilityLabel?: string;
 };
 
 const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean }>(({ theme }) => {
@@ -55,7 +54,6 @@ const _InputDropDownButton = ({
   onKeyDown,
   title,
   accessibilityLabel,
-  label,
 }: InputDropDownButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
@@ -89,7 +87,7 @@ const _InputDropDownButton = ({
         e?.stopPropagation();
       }}
       {...makeAccessible({
-        label: accessibilityLabel ?? label,
+        label: accessibilityLabel,
         hasPopup: getActionListContainerRole(hasFooterAction, 'SearchTrailingDropdown'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
