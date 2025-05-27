@@ -11,7 +11,7 @@ import {
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import type { DropdownOverlayProps } from '~components/Dropdown';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
-import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
+import { ChevronUpDownIcon } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
 import { size as sizes } from '~tokens/global';
 import { makeSize } from '~utils';
@@ -90,7 +90,7 @@ const CountrySelector = ({
           size={size === 'medium' ? 'xsmall' : 'medium'}
           variant="tertiary"
           accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
-          icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
+          icon={ChevronUpDownIcon}
           iconPosition="right"
           // We need to prevent the click event from propagating to the BaseInputWrapper,
           // Because the BaseInputWrapper is listening for click events to focus the input.
@@ -99,6 +99,8 @@ const CountrySelector = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
+          color="white"
+          iconColor="surface.icon.gray.muted"
         >
           {/* @ts-expect-error */}
           <img
