@@ -8,7 +8,7 @@ The Usage guide covers the core fundamentals of implementing Blade in your appli
 
 ## AvailableIcons
 
-A comprehensive reference of all 356+ icons available in the Blade design system. This includes usage examples showing how to import icons, use them in components with icon props, and implement them as standalone components.
+A reference of which all icons are available in the blade design system. This includes usage examples showing how to import icons, use them in components with icon props, and implement them as standalone components.
 
 ## WhiteLabelling
 
