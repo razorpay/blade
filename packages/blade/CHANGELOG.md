@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.31.4
+
+### Patch Changes
+
+- 7fa1620e: fix(blade): listviewfilter props
+
 ## 12.31.3
 
 ### Patch Changes
