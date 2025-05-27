@@ -1,22 +1,21 @@
+import React, { useState } from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import type { InputGroupProps } from '../types';
 import { InputGroup as InputGroupComponent } from '../InputGroup';
 import { InputRow } from '../InputRow';
+import { InputGroupStoryCode } from './code';
 import { TextInput } from '~components/Input/TextInput';
 import { DatePicker } from '~components/DatePicker';
 import { Button } from '~components/Button';
 import { Heading } from '~components/Typography';
+import { Box } from '~components/Box';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { useToast, ToastContainer } from '~components/Toast';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { InputGroupStoryCode } from './code';
-import { Box } from '~components/Box';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
-import { ActionList } from '~components/ActionList';
-import { ActionListItem } from '~components/ActionList';
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import React, { useState } from 'react';
-import { useToast, ToastContainer } from '~components/Toast';
 
 export default {
   title: 'Components/InputGroup',
@@ -162,7 +161,7 @@ const ComplexInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
       </InputRow>
     </InputGroupComponent>
     <Box display="flex" justifyContent="space-between" width="100%">
-      <Box></Box>
+      <Box />
       <Button variant="primary" marginTop="spacing.3">
         Submit Application
       </Button>
@@ -262,8 +261,14 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
     email: true,
   });
 
-  const validateField = () => {
-    const newErrors: any = {};
+  const validateField = (): boolean => {
+    const newErrors = {
+      cardNumber: false,
+      expiryDate: false,
+      cvv: false,
+      cardholderName: false,
+      email: false,
+    };
 
     if (!formData.cardNumber) {
       newErrors.cardNumber = true;
@@ -295,18 +300,18 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
     return Object.values(newErrors).every((error) => error === false);
   };
 
-  const hasFormErrors = () => {
-    return Object.values(errors).some((error) => error === true);
+  const hasFormErrors = (): boolean => {
+    return Object.values(errors).some((error) => error);
   };
 
-  const handleInputChange = (name: string, value: string | Date | null) => {
+  const handleInputChange = (name: string, value: string | Date | null): void => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Clear error when typing
     if (errors[name as keyof typeof errors]) setErrors((prev) => ({ ...prev, [name]: false }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     if (validateField()) {
       toast.show({
         content: 'Payment information saved successfully!',
@@ -315,7 +320,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
     }
   };
 
-  const getValidationState = (fieldName: string) => {
+  const getValidationState = (fieldName: string): 'error' | 'none' => {
     if (errors[fieldName as keyof typeof errors]) return 'error';
 
     return 'none';
@@ -377,7 +382,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
         </InputRow>
       </InputGroupComponent>
       <Box display="flex" justifyContent="space-between" alignItems="center" marginTop="spacing.4">
-        <Box></Box>
+        <Box />
         <Button variant="primary" onClick={handleSubmit}>
           Submit Payment
         </Button>
@@ -392,8 +397,8 @@ const InputGroupSizesTemplate: StoryFn<InputGroupProps> = (args) => {
   const sizes: InputGroupProps['size'][] = ['medium', 'large'];
   return (
     <>
-      {sizes.map((size) => (
-        <Box marginBottom="spacing.8">
+      {sizes.map((size, index) => (
+        <Box key={index} marginBottom="spacing.8">
           <Heading marginBottom="spacing.3">{size}</Heading>
           <Default {...args} size={size} />
         </Box>
