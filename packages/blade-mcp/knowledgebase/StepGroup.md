@@ -158,13 +158,13 @@ function MyStepGroup() {
     <StepGroup orientation="vertical" size="medium">
       <StepItem
         title="Introduction"
-        timestamp="Thu, 11th Oct'23 | 12:00pm"
+        timestamp="Thu, 11th Oct’23 | 12:00pm"
         stepProgress="full"
         marker={<StepItemIcon icon={FileIcon} color="positive" />}
       />
       <StepItem
         title="Personal Details"
-        timestamp="Mon, 15th Oct'23 | 12:00pm"
+        timestamp="Mon, 15th Oct’23 | 12:00pm"
         description="Your Personal Details for onboarding"
         stepProgress="full"
         marker={<StepItemIcon icon={UserIcon} color="positive" />}
@@ -205,13 +205,7 @@ function MyStepGroup() {
 This example shows how to create an interactive StepGroup where steps can be selected via click events, with visual feedback and state management to track the current selected step.
 
 ```jsx
-import {
-  StepGroup,
-  StepItem,
-  StepItemIndicator,
-  Button,
-  Box
-} from '@razorpay/blade/components';
+import { StepGroup, StepItem, StepItemIndicator, Button, Box } from '@razorpay/blade/components';
 import { useState } from 'react';
 
 function InteractiveStepGroup() {
@@ -220,23 +214,23 @@ function InteractiveStepGroup() {
   const stepItems = [
     {
       title: 'Introduction',
-      timestamp: 'Mon, 15th Oct'23 | 12:00pm',
+      timestamp: 'Mon, 15th Oct’23 | 12:00pm',
       description: 'Introduction to Razorpay Payment Gateway',
     },
     {
       title: 'Personal Details',
-      timestamp: 'Mon, 16th Oct'23 | 12:00pm',
+      timestamp: 'Mon, 16th Oct’23 | 12:00pm',
       description: 'Fill your Personal Details for onboarding',
     },
     {
       title: 'Business Details',
-      timestamp: 'Mon, 17th Oct'23 | 12:00pm',
+      timestamp: 'Mon, 17th Oct’23 | 12:00pm',
       description: 'Fill your Business Details for onboarding',
       isDisabled: true,
     },
     {
       title: 'Complete Onboarding',
-      timestamp: 'Mon, 20th Oct'23 | 12:00pm',
+      timestamp: 'Mon, 20th Oct’23 | 12:00pm',
       description: 'Complete your onboarding to start',
     },
   ];
@@ -250,7 +244,9 @@ function InteractiveStepGroup() {
             isSelected={selectedIndex === index}
             marker={<StepItemIndicator color={selectedIndex === index ? 'primary' : 'neutral'} />}
             onClick={() => setSelectedIndex(index)}
-            stepProgress={index === selectedIndex ? 'start' : index < selectedIndex ? 'full' : 'none'}
+            stepProgress={
+              index === selectedIndex ? 'start' : index < selectedIndex ? 'full' : 'none'
+            }
             {...stepInfo}
           />
         ))}
@@ -297,7 +293,7 @@ function NestedStepGroup() {
     <StepGroup orientation="vertical" size="medium" width="100%" maxWidth="600px">
       <StepItem
         title="Disputes Raised"
-        timestamp="Thu, 11th Oct'23 | 12:00pm"
+        timestamp="Thu, 11th Oct’23 | 12:00pm"
         stepProgress="full"
         marker={<StepItemIndicator color="positive" />}
       />
@@ -314,7 +310,7 @@ function NestedStepGroup() {
       <StepGroup>
         <StepItem
           title="Review from Razorpay Team"
-          timestamp="Fri, 12th Oct'23 | 12:00pm"
+          timestamp="Fri, 12th Oct’23 | 12:00pm"
           description="The dispute is reviewed by Razorpay team"
           stepProgress="full"
           marker={<StepItemIcon icon={RazorpayIcon} color="positive" />}

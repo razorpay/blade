@@ -50,7 +50,6 @@ type IconButtonProps = {
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 } & StyledPropsBlade &
-  TestID &
   DataAnalyticsAttribute;
 
 /**
@@ -102,7 +101,7 @@ const IconButtonBasicExample = () => {
             icon={InfoIcon}
             isDisabled
             accessibilityLabel="Information"
-            testID="info-button"
+            onClick={() => console.log('Info clicked')}
             data-analytics="info-click"
           />
         </Box>

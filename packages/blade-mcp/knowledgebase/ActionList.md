@@ -258,6 +258,10 @@ const LargeActionListExample = () => {
     <Box backgroundColor="surface.background.gray.intense" height="300px">
       <ActionList isVirtualized={true}>
         <ActionListSection title="Large List">{generateItems(100)}</ActionListSection>
+        <ActionListSection title="Other Items">
+          <ActionListItem title="Additional Item 1" value="additional-1" />
+          <ActionListItem title="Additional Item 2" value="additional-2" />
+        </ActionListSection>
       </ActionList>
     </Box>
   );

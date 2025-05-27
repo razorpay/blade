@@ -245,7 +245,7 @@ function AdvancedPhoneNumberExample() {
       </Box>
 
       <Box marginBottom="spacing.4">
-        <Text size="small" color="text.neutral.subtle">
+        <Text size="small">
           Selected country: {phoneData.country}, Dial code: {phoneData.dialCode}
         </Text>
       </Box>
@@ -286,17 +286,6 @@ function SimplifiedPhoneNumberExample() {
         size="medium"
         data-analytics-field="local-phone"
       />
-
-      <Box
-        marginTop="spacing.4"
-        padding="spacing.3"
-        backgroundColor="surface.background.gray.muted"
-        borderRadius="medium"
-      >
-        <Text size="small">
-          Note: Country code is fixed to India (+91) but not displayed in the input field.
-        </Text>
-      </Box>
     </Box>
   );
 }
@@ -361,7 +350,7 @@ function ContactFormExample() {
       width="100%"
       maxWidth="500px"
       padding="spacing.5"
-      backgroundColor="surface.background.white.normal"
+      backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
     >
       <Box display="flex" gap="spacing.4">

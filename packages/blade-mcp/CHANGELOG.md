@@ -1,5 +1,23 @@
 # @razorpay/blade-mcp
 
+## 0.1.12
+
+### Patch Changes
+
+- e6b88620: feat(SideNav): add default position note in knowledgebase
+
+## 0.1.11
+
+### Patch Changes
+
+- 735ec600: fix: update knowledgebase
+
+## 0.1.10
+
+### Patch Changes
+
+- 94621723: Update release.yml
+
 ## 0.1.9
 
 ### Patch Changes

@@ -250,7 +250,7 @@ This example demonstrates using TextInput to collect multiple values as tags.
 
 ```jsx
 import { useState } from 'react';
-import { TextInput, Box, EmailIcon } from '@razorpay/blade/components';
+import { TextInput, Box, MailIcon } from '@razorpay/blade/components';
 
 function TaggedTextInputExample() {
   const [emails, setEmails] = useState(['user@example.com']);
@@ -277,7 +277,7 @@ function TaggedTextInputExample() {
         validationState={emails.every(isValidEmail) ? 'success' : 'error'}
         errorText="Please enter valid email addresses"
         autoCompleteSuggestionType="email"
-        leadingIcon={EmailIcon}
+        leadingIcon={MailIcon}
         showClearButton={true}
         data-analytics-section="email-recipients"
         data-analytics-action="add-email"

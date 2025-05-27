@@ -59,8 +59,8 @@ function DisplayExample() {
       {/* Pricing section with emphasis */}
       <Display size="medium">
         Starting at just{' '}
-        <Display as="span" size="medium" color="feedback.text.success.intense">
-          2%
+        <Display as="span" size="medium" color="feedback.text.positive.intense">
+          25% Off on Premium Plans
         </Display>
         <Display as="span" size="small" weight="regular">
           *
