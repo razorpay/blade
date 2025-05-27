@@ -48,8 +48,7 @@ type ListViewFilterProps = {
    */
   selectedFiltersCount?: number;
 } & TestID &
-  DataAnalyticsAttribute &
-  ListViewCommonProps;
+  DataAnalyticsAttribute;
 
 type ListViewSelectedFiltersType = {
   [key: string]: string[] | string | number[];
