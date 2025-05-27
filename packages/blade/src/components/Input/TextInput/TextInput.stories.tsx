@@ -13,6 +13,9 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { InputDropDownButton } from '~components/Dropdown/InputDropDownButton';
+import { ActionList, ActionListItem } from '~components/ActionList';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -673,4 +676,36 @@ export const TextInputWithUncontrolledTags: StoryFn<typeof TextInputComponent> =
 TextInputWithUncontrolledTags.args = {
   isTaggedInput: true,
   showClearButton: true,
+};
+
+export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...args }) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent
+        {...args}
+        leadingDropDown={
+          <Dropdown>
+            <InputDropDownButton title="Popular Searches" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+        trailingDropdown={
+          <Dropdown>
+            <InputDropDownButton title="Popular Searches" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
+  );
 };

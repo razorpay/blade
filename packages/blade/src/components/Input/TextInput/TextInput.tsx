@@ -98,6 +98,14 @@ type TextInputCommonProps = Pick<
    * @default text
    */
   type?: Type;
+  /**
+   *
+   */
+  trailingDropdown?: React.ReactElement;
+  /**
+   *
+   */
+  leadingDropDown?: React.ReactElement;
 } & TaggedInputProps &
   StyledPropsBlade;
 
@@ -178,6 +186,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isTaggedInput,
     tags,
     onTagChange,
+    trailingDropdown,
+    leadingDropDown,
     ...rest
   },
   ref,
@@ -241,6 +251,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       );
     }
 
+    if (trailingDropdown) {
+      return trailingDropdown;
+    }
+
     return null;
   };
 
@@ -264,6 +278,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       maxTagRows="single"
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
+      leadingInteractionElement={leadingDropDown}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
