@@ -141,7 +141,6 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     onTriggerKeydown,
     onTriggerClick,
     dropdownTriggerer,
-    setIsOpen,
     close: closeParentDropDown,
     isOpen: isParentDropDownOpen,
   } = useDropdown();

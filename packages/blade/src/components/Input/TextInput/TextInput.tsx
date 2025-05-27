@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -24,6 +24,7 @@ import type {
   DataAnalyticsAttribute,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import { DropdownOverlay } from '~components/Dropdown';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -213,6 +214,65 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     value,
     inputRef: textInputRef,
   });
+  const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = React.useState(false);
+  const [isLeadingDropDownOpen, setIsLeadingDropDownOpen] = React.useState(false);
+  const textInputWrapperRef = useRef<BladeElementRef>(null);
+
+  useEffect(() => {
+    if (isTrailingDropDownOpen && isLeadingDropDownOpen) {
+      setIsLeadingDropDownOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTrailingDropDownOpen]);
+
+  useEffect(() => {
+    if (isLeadingDropDownOpen && isTrailingDropDownOpen) {
+      setIsTrailingDropDownOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLeadingDropDownOpen]);
+
+  const renderLeadingDropDown = (): React.ReactElement => {
+    return React.cloneElement(leadingDropDown as React.ReactElement, {
+      selectionType: 'single',
+      isOpen: isLeadingDropDownOpen,
+      onOpenChange: (isOpen: boolean) => {
+        setIsLeadingDropDownOpen(isOpen);
+      },
+      children: React.Children.map(
+        (leadingDropDown as React.ReactElement).props.children,
+        (child) => {
+          if (child.type === DropdownOverlay) {
+            return React.cloneElement(child, {
+              referenceRef: textInputWrapperRef,
+            });
+          }
+          return child;
+        },
+      ),
+    });
+  };
+
+  const renderTailingLeadingDropdown = (): React.ReactElement => {
+    return React.cloneElement(trailingDropdown as React.ReactElement, {
+      selectionType: 'single',
+      isOpen: isTrailingDropDownOpen,
+      onOpenChange: (isOpen: boolean) => {
+        setIsTrailingDropDownOpen(isOpen);
+      },
+      children: React.Children.map(
+        (trailingDropdown as React.ReactElement).props.children,
+        (child) => {
+          if (child.type === DropdownOverlay) {
+            return React.cloneElement(child, {
+              referenceRef: textInputWrapperRef,
+            });
+          }
+          return child;
+        },
+      ),
+    });
+  };
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
@@ -252,7 +312,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     }
 
     if (trailingDropdown) {
-      return trailingDropdown;
+      return renderTailingLeadingDropdown();
     }
 
     return null;
@@ -262,6 +322,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     <BaseInput
       id="textinput"
       componentName={MetaConstants.TextInput}
+      setInputWrapperRef={(wrapperNode) => {
+        textInputWrapperRef.current = wrapperNode;
+      }}
       ref={mergedRef}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
@@ -278,7 +341,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       maxTagRows="single"
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
-      leadingInteractionElement={leadingDropDown}
+      leadingInteractionElement={renderLeadingDropDown()}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in

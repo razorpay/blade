@@ -689,7 +689,7 @@ export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...a
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Home" value="home" />
-                <ActionListItem title="Pricing" value="pricing" />
+                <ActionListItem title="Pricing" value="home" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
@@ -699,8 +699,8 @@ export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...a
             <InputDropDownButton title="Popular Searches" />
             <DropdownOverlay>
               <ActionList>
-                <ActionListItem title="Home" value="home" />
-                <ActionListItem title="Pricing" value="pricing" />
+                <ActionListItem title="Car" value="card" />
+                <ActionListItem title="Bike" value="Bike" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
