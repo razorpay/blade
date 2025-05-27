@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.31.3
+
+### Patch Changes
+
+- be3e0233: fix: build script for node 22
+- 0f0df69c: fix(blade): make children optional for ListViewFilters
+
 ## 12.31.2
 
 ### Patch Changes
