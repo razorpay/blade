@@ -393,21 +393,28 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
 
 export const WithValidation = InputGroupWithValidationTemplate.bind({});
 
-const InputGroupSizesTemplate: StoryFn<InputGroupProps> = (args) => {
+const InputGroupVariantsTemplate: StoryFn<InputGroupProps> = (args) => {
   const sizes: InputGroupProps['size'][] = ['medium', 'large'];
+  const labelPositions: InputGroupProps['labelPosition'][] = ['top', 'left'];
   return (
     <>
       {sizes.map((size, index) => (
         <Box key={index} marginBottom="spacing.8">
-          <Heading marginBottom="spacing.3">{size}</Heading>
-          <Default {...args} size={size} />
+          <Heading marginBottom="spacing.3">
+            Size: {size} & Label Position: {labelPositions[index]}
+          </Heading>
+          <Default {...args} size={size} labelPosition={labelPositions[index]} />
         </Box>
       ))}
     </>
   );
 };
 
-export const AllSizes = InputGroupSizesTemplate.bind({});
+export const AllVariants = InputGroupVariantsTemplate.bind({});
+AllVariants.args = {
+  label: 'Shipping Address',
+  helpText: 'Where should we deliver your order?',
+};
 
 const DisabledInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   <InputGroupComponent {...args}>
