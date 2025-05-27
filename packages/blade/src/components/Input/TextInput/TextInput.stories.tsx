@@ -13,13 +13,9 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
-<<<<<<< HEAD
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { InputDropDownButton } from '~components/Dropdown/InputDropDownButton';
 import { ActionList, ActionListItem } from '~components/ActionList';
-=======
-import { UserIcon } from '~components/Icons';
->>>>>>> feat/input-group-changes
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
