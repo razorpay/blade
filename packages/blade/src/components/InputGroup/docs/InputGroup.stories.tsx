@@ -38,7 +38,7 @@ export default {
   },
 } as Meta<InputGroupProps>;
 
-const SimpleInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
+const DefaultInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   <InputGroupComponent {...args}>
     <InputRow templateColumns="1fr">
       <TextInput placeholder="Street Address" label="Street Address" />
@@ -53,8 +53,8 @@ const SimpleInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   </InputGroupComponent>
 );
 
-export const SimpleInputGroup = SimpleInputGroupTemplate.bind({});
-SimpleInputGroup.args = {
+export const Default = DefaultInputGroupTemplate.bind({});
+Default.args = {
   label: 'Shipping Address',
   helpText: 'Where should we deliver your order?',
 };
@@ -85,8 +85,8 @@ const DetailedInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   </InputGroupComponent>
 );
 
-export const DetailedInputGroup = DetailedInputGroupTemplate.bind({});
-DetailedInputGroup.args = {
+export const Detailed = DetailedInputGroupTemplate.bind({});
+Detailed.args = {
   label: 'Billing Address',
   helpText: 'Complete address information required for billing',
 };
@@ -170,8 +170,8 @@ const ComplexInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   </Box>
 );
 
-export const ComplexInputGroup = ComplexInputGroupTemplate.bind({});
-ComplexInputGroup.args = {
+export const Complex = ComplexInputGroupTemplate.bind({});
+Complex.args = {
   label: 'Job Application Form',
   helpText: 'Please fill out all required information',
 };
@@ -237,8 +237,8 @@ const CompactInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   </InputGroupComponent>
 );
 
-export const CompactInputGroup = CompactInputGroupTemplate.bind({});
-CompactInputGroup.args = {
+export const Compact = CompactInputGroupTemplate.bind({});
+Compact.args = {
   label: 'Quick Registration',
   helpText: 'Compact form for fast data entry',
 };
@@ -386,7 +386,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
   );
 };
 
-export const InputGroupWithValidation = InputGroupWithValidationTemplate.bind({});
+export const WithValidation = InputGroupWithValidationTemplate.bind({});
 
 const InputGroupSizesTemplate: StoryFn<InputGroupProps> = (args) => {
   const sizes: InputGroupProps['size'][] = ['medium', 'large'];
@@ -395,7 +395,7 @@ const InputGroupSizesTemplate: StoryFn<InputGroupProps> = (args) => {
       {sizes.map((size) => (
         <Box marginBottom="spacing.8">
           <Heading marginBottom="spacing.3">{size}</Heading>
-          <SimpleInputGroup {...args} size={size} />
+          <Default {...args} size={size} />
         </Box>
       ))}
     </>
@@ -403,3 +403,25 @@ const InputGroupSizesTemplate: StoryFn<InputGroupProps> = (args) => {
 };
 
 export const AllSizes = InputGroupSizesTemplate.bind({});
+
+const DisabledInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
+  <InputGroupComponent {...args}>
+    <InputRow templateColumns="1fr">
+      <TextInput placeholder="Street Address" label="Street Address" value="123 Main Street" />
+    </InputRow>
+    <InputRow templateColumns="2fr 1fr">
+      <TextInput placeholder="City" label="City" value="San Francisco" />
+      <TextInput placeholder="ZIP Code" label="ZIP Code" value="94102" />
+    </InputRow>
+    <InputRow templateColumns="1fr">
+      <TextInput placeholder="Country" label="Country" value="United States" />
+    </InputRow>
+  </InputGroupComponent>
+);
+
+export const Disabled = DisabledInputGroupTemplate.bind({});
+Disabled.args = {
+  label: 'Shipping Address (Read Only)',
+  helpText: 'This address cannot be modified',
+  isDisabled: true,
+};
