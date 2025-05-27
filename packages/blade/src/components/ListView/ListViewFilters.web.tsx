@@ -9,6 +9,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { FilterIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Counter } from '~components/Counter';
+import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { SearchInput } from '~components/Input/SearchInput';
 import { useId } from '~utils/useId';
@@ -89,6 +90,15 @@ const ListViewFilters = ({
   const isMobile = useIsMobile();
   const { theme } = useTheme();
   const showSearchInput = onSearchChange || onSearchClear || searchValuePlaceholder || searchName;
+  const getFilterContainerWidth = (): BoxProps['width'] => {
+    if (isMobile && Boolean(children)) {
+      return '88%';
+    }
+    if (isMobile && !Boolean(children)) {
+      return '100%';
+    }
+    return 'auto';
+  };
 
   return (
     <ListViewFiltersProvider
@@ -119,7 +129,7 @@ const ListViewFilters = ({
             position="relative"
             display="flex"
             flexDirection="column"
-            width={isMobile ? '88%' : 'auto'}
+            width={getFilterContainerWidth()}
             marginRight={isMobile ? 'spacing.2' : 'spacing.0'}
           >
             <StyledQuickFilterContainer
@@ -127,7 +137,9 @@ const ListViewFilters = ({
               width={isMobile ? '100%' : 'auto'}
               ref={(node) => {
                 if (node instanceof HTMLElement && quickFilters) {
-                  setShouldShowDecorationInQuickFilters(node.scrollWidth > node.offsetWidth);
+                  setShouldShowDecorationInQuickFilters(
+                    node.scrollWidth > node.offsetWidth && Boolean(children),
+                  );
                 }
               }}
               paddingY="spacing.4"
@@ -154,31 +166,34 @@ const ListViewFilters = ({
           </Box>
 
           <BaseBox display="flex" gap="spacing.4" alignItems="center">
-            <Box position="relative" display="inline-block">
-              <Button
-                variant="tertiary"
-                size="medium"
-                color="primary"
-                onClick={() => {
-                  setShowFilters((prev) => !prev);
-                }}
-                icon={FilterIcon}
-                accessibilityLabel="Show More Filters"
-              />
-              <Box
-                position="absolute"
-                right="spacing.0"
-                top="spacing.0"
-                transform="translate(50%, -50%)"
-              >
-                <Counter
-                  value={selectedFiltersCount || Object.keys(listViewSelectedFilters).length}
+            {children ? (
+              <Box position="relative" display="inline-block">
+                <Button
+                  variant="tertiary"
+                  size="medium"
                   color="primary"
-                  emphasis="intense"
-                  size="small"
+                  onClick={() => {
+                    setShowFilters((prev) => !prev);
+                  }}
+                  icon={FilterIcon}
+                  accessibilityLabel="Show More Filters"
                 />
+
+                <Box
+                  position="absolute"
+                  right="spacing.0"
+                  top="spacing.0"
+                  transform="translate(50%, -50%)"
+                >
+                  <Counter
+                    value={selectedFiltersCount || Object.keys(listViewSelectedFilters).length}
+                    color="primary"
+                    emphasis="intense"
+                    size="small"
+                  />
+                </Box>
               </Box>
-            </Box>
+            ) : null}
             {!isMobile && showSearchInput && (
               <Box width="256px">
                 <SearchInput
