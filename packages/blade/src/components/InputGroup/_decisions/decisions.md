@@ -4,9 +4,13 @@ The `InputGroup` component is used to group related input fields together under 
 
 This component provides a consistent way to organize multiple inputs that collect related information. InputGroup automatically handles proper spacing and visual connection between inputs to create a unified control.
 
-### Image Group Anatomy
+### Input Group Anatomy
 
 <img width="100%" src="./inputgroup-anatomy.png" alt="InputGroup Anatomy" />
+
+### Input Group Example Usage
+
+<img width="100%" src="./inputgroup-examples.png" alt="InputGroup Examples">
 
 - [Design](#design)
 - [Component Hierarchy](#component-hierarchy)
