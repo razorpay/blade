@@ -1,10 +1,11 @@
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
   CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
+  GENERAL_KNOWLEDGEBASE_DIRECTORY,
 } from '../utils/tokens.js';
 import { getBladeDocsList, hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
@@ -14,6 +15,11 @@ const bladeGeneralDocsList = getBladeDocsList('general');
 
 const getBladeGeneralDocsToolName = 'get_blade_general_docs';
 
+const whichGeneralDocsToUse = readFileSync(
+  join(GENERAL_KNOWLEDGEBASE_DIRECTORY, 'index.md'),
+  'utf8',
+);
+
 const getBladeGeneralDocsToolDescription = `Fetch general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines.`;
 
 const getBladeGeneralDocsToolSchema = {
@@ -22,7 +28,7 @@ const getBladeGeneralDocsToolSchema = {
     .describe(
       `Comma separated list of general documentation topics. E.g. "Installation, Theming". Possible values: ${bladeGeneralDocsList.join(
         ', ',
-      )}`,
+      )}. Here is guide on how to decide which general docs you might need:\n ${whichGeneralDocsToUse}`,
     ),
   currentProjectRootDirectory: z
     .string()

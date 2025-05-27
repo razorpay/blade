@@ -3,12 +3,12 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const PROJECT_ROOT_DIRECTORY = join(__dirname, '..');
+const PROJECT_ROOT_DIRECTORY = join(__dirname, '..', '..');
 
 const analyticsToolCallEventName = 'Blade MCP Tool Called';
 
 // Cursor Rules Tokens
-const CURSOR_RULES_VERSION = '0.0.7';
+const CURSOR_RULES_VERSION = '0.0.8';
 const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
 
 const CURSOR_RULES_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'cursorRules');

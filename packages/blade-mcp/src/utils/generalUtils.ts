@@ -30,7 +30,7 @@ const getBladeDocsList = (documentationType: DocumentationType): string[] => {
     // Read all markdown files and strip the .md extension
     const files = readdirSync(join(KNOWLEDGEBASE_DIRECTORY, documentationType));
     for (const file of files) {
-      if (file.endsWith('.md')) {
+      if (file.endsWith('.md') && !file.includes('index.md')) {
         bladeDocsList.push(file.replace('.md', '').trim());
       }
     }

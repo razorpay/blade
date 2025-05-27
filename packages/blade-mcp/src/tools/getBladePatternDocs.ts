@@ -1,16 +1,22 @@
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
   CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
+  PATTERNS_KNOWLEDGEBASE_DIRECTORY,
 } from '../utils/tokens.js';
 import { getBladeDocsList, hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
+import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 
 const bladePatternsList = getBladeDocsList('patterns');
+const whichPatternToUseGuide = readFileSync(
+  join(PATTERNS_KNOWLEDGEBASE_DIRECTORY, 'index.md'),
+  'utf8',
+);
 
 const getBladePatternDocsToolName = 'get_blade_pattern_docs';
 
@@ -20,7 +26,9 @@ const getBladePatternDocsToolSchema = {
   patternsList: z
     .string()
     .describe(
-      'Comma separated list of blade pattern names. E.g. "Layout, Navigation". Possible values: Layout, Navigation, Forms, DataDisplay, Feedback',
+      `Comma separated list of blade pattern names. E.g. "ListView, DetailedView". Possible values: ${bladePatternsList.join(
+        ', ',
+      )}. Here is guide on how to decide which pattern to use: ${whichPatternToUseGuide}`,
     ),
   currentProjectRootDirectory: z
     .string()
@@ -81,7 +89,7 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
       content: [
         {
           type: 'text',
-          text: responseText.trim(),
+          text: `Below is the documentation for Patterns. After this, call ${getBladeComponentDocsToolName} to get documentation for components that are used in patterns.:\n ${responseText}`,
         },
       ],
     };

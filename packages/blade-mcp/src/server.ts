@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { join } from 'path';
-import { readFileSync } from 'fs';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import * as Sentry from '@sentry/node';
@@ -30,7 +28,18 @@ import {
   hiBladeToolCallback,
 } from './tools/hiBlade.js';
 import { getPackageJSONVersion } from './utils/generalUtils.js';
-import { KNOWLEDGEBASE_DIRECTORY } from './utils/tokens.js';
+import {
+  getBladePatternDocsToolName,
+  getBladePatternDocsToolDescription,
+  getBladePatternDocsToolSchema,
+  getBladePatternDocsToolCallback,
+} from './tools/getBladePatternDocs.js';
+import {
+  getBladeGeneralDocsToolName,
+  getBladeGeneralDocsToolDescription,
+  getBladeGeneralDocsToolSchema,
+  getBladeGeneralDocsToolCallback,
+} from './tools/getBladeGeneralDocs.js';
 
 Sentry.init({
   dsn: process.env.BLADE_MCP_SENTRY_DSN,
@@ -69,24 +78,17 @@ try {
   );
 
   server.tool(
-    'get_blade_docs',
-    'Fetch the latest Blade Design System docs. Use this to get information about the components, patterns, usage, props, and anything about design-system',
-    {},
-    () => {
-      const baseBladeDocs = readFileSync(join(KNOWLEDGEBASE_DIRECTORY, 'base.md'), 'utf8');
+    getBladePatternDocsToolName,
+    getBladePatternDocsToolDescription,
+    getBladePatternDocsToolSchema,
+    getBladePatternDocsToolCallback,
+  );
 
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Go through the docs that you need from this index:\n${baseBladeDocs.replaceAll(
-              '<_dirname_>',
-              KNOWLEDGEBASE_DIRECTORY,
-            )}`,
-          },
-        ],
-      };
-    },
+  server.tool(
+    getBladeGeneralDocsToolName,
+    getBladeGeneralDocsToolDescription,
+    getBladeGeneralDocsToolSchema,
+    getBladeGeneralDocsToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout
