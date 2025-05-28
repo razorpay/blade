@@ -3,20 +3,14 @@ import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { SearchInputProps } from './SearchInput';
-import {
-  SearchInput as SearchInputComponent,
-} from './SearchInput';
+import { SearchInput as SearchInputComponent } from './SearchInput';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
-import {
-  Dropdown,
-  DropdownOverlay,
-  InputDropDownButton,
-} from '~components/Dropdown';
+import { Dropdown, DropdownOverlay, InputDropDownButton } from '~components/Dropdown';
 import {
   ActionList,
   ActionListItem,
