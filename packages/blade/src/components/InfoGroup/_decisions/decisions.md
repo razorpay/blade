@@ -2,6 +2,8 @@
 
 InfoGroup is a structured component for displaying key-value pairs in a consistent, organized format. It provides a standardized way to present information such as transaction details, user data, or any related data pairs with proper visual hierarchy and alignment. The component supports various orientations, sizes, and customization options to suit different use cases across dashboards, modals, drawers, and detail views.
 
+<p align="center"><img src="./2025-05-28-13-36-53.png" alt="InfoGroup" width="600px" /></p>
+
 ## Design
 
 - [Figma - InfoGroup](figma-url)
