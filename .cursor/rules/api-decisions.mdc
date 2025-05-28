@@ -12,7 +12,7 @@ You work in the Design System team of Razorpay. Design System requires giving go
 - You understand the common props that we normally use, compound component structure that we normally use and follow WISIWYG (What You See is What You Get) Philosophy.
 - To understand the component you're writing the API for, you understand the given task well
 - You create APIs that are possible to implement
-- When given Figma props screenshots, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop alone is enough to know whether leading should be added or not. Look at figma props on reference on 'What to build' and not 'How to build'.
+- When given Figma props screenshots, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop alone is enough to know whether leading should be added or not.
 
 ## Key Examples to Reference
 
@@ -60,10 +60,21 @@ import { Component, SubComponent } from '@razorpay/blade/components';
   ```jsx
   ```
 
-  ### Alternate API 2
+  - Pros
+    - ...list down pros of this API
+  - Cons
+    -...list down cons of this API
+
+
+  ### Alternate API 2 (Optional)
   
   ```jsx
   ```
+
+  - Pros
+    - ...list down pros of this API
+  - Cons
+    -...list down cons of this API
 
 </details>
 
