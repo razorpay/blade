@@ -4,9 +4,7 @@ import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { SearchInputProps } from './SearchInput';
 import {
-  // InputDropDownButton,
   SearchInput as SearchInputComponent,
-  SearchInputTrailingDropdown,
 } from './SearchInput';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -16,9 +14,6 @@ import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
 import {
   Dropdown,
-  DropdownFooter,
-  DropdownHeader,
-  DropdownIconButton,
   DropdownOverlay,
   InputDropDownButton,
 } from '~components/Dropdown';
@@ -27,7 +22,6 @@ import {
   ActionListItem,
   ActionListSection,
   ActionListItemIcon,
-  ActionListItemAsset,
 } from '~components/ActionList';
 import {
   Table,
