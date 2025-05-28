@@ -331,7 +331,7 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         onChange={({ value }) => setSearchTerm(value as string)}
         trailingDropdown={
           <Dropdown>
-            <InputDropDownButton title="Popular Searches" />
+            <InputDropDownButton title="Popular Searches" defaultValue="home" />
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Home" value="home" />
