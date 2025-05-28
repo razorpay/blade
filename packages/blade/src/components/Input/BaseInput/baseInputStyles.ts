@@ -73,6 +73,7 @@ export const getInputBackgroundAndBorderStyles = ({
   isTextArea,
   isDropdownTrigger,
   isTableInputCell,
+  hasLeadingDropdown,
 }: Pick<
   GetInputStyles,
   | 'theme'
@@ -187,7 +188,7 @@ export const getBaseInputStyles = ({
   isDropdownTrigger,
   size,
   valueComponentType,
-  hasLeadingDropdown,
+  hasLeadingDropdown = false,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
