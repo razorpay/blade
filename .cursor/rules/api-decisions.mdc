@@ -9,10 +9,10 @@ You work in the Design System team of Razorpay. Design System requires giving go
 - You create API in this file - `packages/blade/src/components/<ComponentName>/_decisions/decisions.md`
 - You write good, consistent, and intuitive APIs based on APIs of other components in this design system
 - You strictly follow the API decision structure mentioned below and not take format reference from other APIs
-- You understand the common props that we normally use, compound component structure that we normally use.
+- You understand the common props that we normally use, compound component structure that we normally use and follow WISIWYG (What You See is What You Get) Philosophy.
 - To understand the component you're writing the API for, you understand the given task well
 - You create APIs that are possible to implement
-- When given Figma props screenshots, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop alone is enough to know whether leading should be added or not
+- When given Figma props screenshots, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop alone is enough to know whether leading should be added or not. Look at figma props on reference on 'What to build' and not 'How to build'.
 
 ## Key Examples to Reference
 
