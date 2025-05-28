@@ -62,7 +62,7 @@ type SearchInputCommonProps = Pick<
    */
   showSearchIcon?: boolean;
   /**
-   * trailingDropdown?: React.ReactNode
+   * Optional trailing dropdown to be shown at the end of the input.
    */
   trailingDropdown?: React.ReactNode;
 } & StyledPropsBlade;

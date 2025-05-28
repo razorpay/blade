@@ -179,11 +179,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     leadingInteractionElement?: ReactNode;
     /**
-     * Element for leading Interection
+     * Leading DropDown to be rendered at Prefix slot
      */
     leadingDropDown?: ReactNode;
     /**
-     *
+     * Trailing DropDown to be rendered at Suffix slot
      */
     trailingDropDown?: ReactNode;
     /**
