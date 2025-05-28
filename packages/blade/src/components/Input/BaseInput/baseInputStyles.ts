@@ -73,7 +73,6 @@ export const getInputBackgroundAndBorderStyles = ({
   isTextArea,
   isDropdownTrigger,
   isTableInputCell,
-  hasLeadingDropdown,
 }: Pick<
   GetInputStyles,
   | 'theme'
