@@ -109,6 +109,15 @@ const _InputDropDownButton = ({
     }
   }, [defaultValue, options, setSelectedIndices]);
 
+  // set initial index when value is provided and we don't have a selected index
+  useEffect(() => {
+    if (value && options.length > 0 && selectedIndices.length === 0) {
+      const index = options.findIndex((option) => option.value === value);
+      setSelectedIndices([index]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, options, setSelectedIndices]);
+
   const valueTitle = options.find((option) => option.value === value)?.title ?? value;
 
   const isUnControlled = options.length > 0 && value === undefined;
