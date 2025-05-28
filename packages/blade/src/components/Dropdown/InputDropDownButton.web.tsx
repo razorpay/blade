@@ -112,7 +112,7 @@ const _InputDropDownButton = ({
         <Text variant="body" size="medium" weight="regular" color="surface.text.gray.subtle">
           {title}
         </Text>
-        {_isInsideSearchInput && <ChevronUpDownIcon color="surface.icon.gray.muted" />}
+        <ChevronUpDownIcon color="surface.icon.gray.muted" />
       </Box>
     </StyledSearchTrailingDropdown>
   );
