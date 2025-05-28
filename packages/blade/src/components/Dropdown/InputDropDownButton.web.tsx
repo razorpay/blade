@@ -175,7 +175,7 @@ const _InputDropDownButton = ({
       }}
       {...makeAccessible({
         label: accessibilityLabel,
-        hasPopup: getActionListContainerRole(hasFooterAction, 'SearchTrailingDropdown'),
+        hasPopup: getActionListContainerRole(hasFooterAction, 'InputDropDownButton'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
@@ -203,8 +203,8 @@ const _InputDropDownButton = ({
 };
 
 const InputDropDownButton = assignWithoutSideEffects(_InputDropDownButton, {
-  componentId: dropdownComponentIds.triggers.SearchTrailingDropdown,
-  displayName: 'SearchTrailingDropdown',
+  componentId: dropdownComponentIds.triggers.InputDropDownButton,
+  displayName: 'InputDropDown',
 });
 
 export { InputDropDownButton };
