@@ -101,6 +101,11 @@ const calculatePositionalBorderRadius = ({
       if (col === 'last' && corner === 'br') return radius;
     }
 
+    if (row === 'only') {
+      if (col === 'first') return corner === 'tl' || corner === 'bl' ? radius : zero;
+      if (col === 'last') return corner === 'tr' || corner === 'br' ? radius : zero;
+    }
+
     return zero;
   };
 
