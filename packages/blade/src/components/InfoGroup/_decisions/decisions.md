@@ -137,9 +137,9 @@ type InfoItemKeyProps = {
   helpText?: string;
 
   /**
-   * Content of the key - typically a label, icon, or description
+   * Content of the key.
    */
-  children?: React.ReactNode;
+  children?: StringChildrenType;
 };
 ```
 
