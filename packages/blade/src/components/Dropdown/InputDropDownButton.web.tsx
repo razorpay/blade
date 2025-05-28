@@ -17,6 +17,7 @@ import { getActionListContainerRole } from '~components/ActionList/getA11yRoles'
 import { useId } from '~utils/useId';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
+import type { IconComponent } from '~components/Icons';
 
 type InputDropDownButtonProps = {
   onBlur?: BaseButtonProps['onBlur'];
@@ -34,6 +35,7 @@ type InputDropDownButtonProps = {
   testID?: () => void;
   value?: string;
   defaultValue?: string;
+  icon?: IconComponent;
 } & DataAnalyticsAttribute;
 
 const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean; isDisabled?: boolean }>(
@@ -75,6 +77,7 @@ const _InputDropDownButton = ({
   testID,
   value,
   defaultValue,
+  icon: Icon,
   ...rest
 }: InputDropDownButtonProps): React.ReactElement => {
   const idBase = useId('input-drop-down-button');
@@ -201,6 +204,7 @@ const _InputDropDownButton = ({
             in
           </Text>
         )}
+        {Icon && <Icon size="medium" color="surface.icon.gray.muted" />}
 
         <Text variant="body" size="medium" weight="regular" color="surface.text.gray.subtle">
           {valueTitle ?? getUnControlledFilterChipValue()}

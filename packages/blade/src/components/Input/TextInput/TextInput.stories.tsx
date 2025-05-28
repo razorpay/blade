@@ -16,6 +16,7 @@ import { Link } from '~components/Link';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { InputDropDownButton } from '~components/Dropdown/InputDropDownButton';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import { BankIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -702,7 +703,7 @@ export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...a
         }
         trailingDropdown={
           <Dropdown>
-            <InputDropDownButton defaultValue="sbi" />
+            <InputDropDownButton defaultValue="sbi" icon={BankIcon} />
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="@oksbi" value="sbi" />
