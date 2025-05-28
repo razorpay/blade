@@ -163,11 +163,6 @@ type InfoItemValueProps = {
    * Content of the value - text, components, or other ReactNode
    */
   children?: React.ReactNode;
-
-  /**
-   * Click handler for interactive values
-   */
-  onClick?: () => void;
 };
 ```
 
@@ -334,7 +329,6 @@ Using Blade components and custom layouts for complex value rendering.
 
 - InfoGroup maintains proper semantic structure with `dl`, `dt`, and `dd` elements for screen readers
 - InfoItem components have appropriate ARIA labels and relationships between keys and values
-- Interactive values (with onClick) include proper keyboard navigation support
 - Icons include meaningful `accessibilityLabel` props
 - Sufficient color contrast ratios for all text combinations
 - Focus management follows logical tab order through interactive elements
