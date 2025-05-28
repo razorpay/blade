@@ -93,77 +93,99 @@ Detailed.args = {
 const ComplexInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   <Box>
     <InputGroupComponent {...args}>
-      <InputRow templateColumns="1fr 1fr 1fr">
-        <TextInput placeholder="First Name" label="First Name" />
-        <TextInput placeholder="Middle Initial" label="Middle Initial" />
-        <TextInput placeholder="Last Name" label="Last Name" />
-      </InputRow>
-      <InputRow templateColumns="2fr 1fr">
-        <TextInput placeholder="Email Address" label="Email Address" />
-        <TextInput placeholder="Phone" label="Phone" />
-      </InputRow>
-      <InputRow templateColumns="1fr">
-        <DatePicker inputPlaceHolder="MM/DD/YYYY" label="Date of Birth" />
-      </InputRow>
-      <InputRow templateColumns="1fr">
-        <TextInput placeholder="Street Address" label="Street Address" />
-      </InputRow>
-      <InputRow templateColumns="1fr">
-        <TextInput placeholder="Address Line 2" label="Address Line 2" />
-      </InputRow>
-      <InputRow templateColumns="2fr 1fr 1fr">
-        <TextInput placeholder="City" label="City" />
-        <TextInput placeholder="State" label="State" />
-        <TextInput placeholder="ZIP Code" label="ZIP Code" />
+      <InputRow templateColumns="1fr 1fr">
+        <TextInput placeholder="Business Name" label="Business Name" />
+        <TextInput placeholder="Trading Name" label="Trading Name (if different)" />
       </InputRow>
       <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="Role" label="Role" />
-        <TextInput placeholder="Company" label="Company" />
+        <TextInput placeholder="Business Email" label="Business Email" />
+        <TextInput placeholder="Business Phone" label="Business Phone" />
       </InputRow>
-      <InputRow templateColumns="1fr 1fr 1fr">
-        <TextInput placeholder="University Name" label="University" />
-        <TextInput placeholder="Degree" label="Degree" />
-        <TextInput placeholder="Graduation Year" label="Graduation Year" />
-      </InputRow>
-      <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="Years of Experience" label="Experience (Years)" />
+      <InputRow templateColumns="1fr">
         <Dropdown selectionType="single">
           <SelectInput
-            label="Employment Type"
-            placeholder="Select Type"
-            name="employment"
+            label="Business Type"
+            placeholder="Select Business Type"
+            name="businessType"
             onChange={({ name, values }) => {
               console.log({ name, values });
             }}
           />
           <DropdownOverlay>
             <ActionList>
-              <ActionListItem title="Full-time" value="fulltime" />
-              <ActionListItem title="Part-time" value="parttime" />
-              <ActionListItem title="Contract" value="contract" />
-              <ActionListItem title="Freelance" value="freelance" />
+              <ActionListItem title="Private Limited Company" value="private_limited" />
+              <ActionListItem title="Public Limited Company" value="public_limited" />
+              <ActionListItem title="Partnership" value="partnership" />
+              <ActionListItem title="Sole Proprietorship" value="sole_proprietorship" />
+              <ActionListItem title="LLP" value="llp" />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>
       </InputRow>
+      <InputRow templateColumns="1fr">
+        <TextInput placeholder="Registered Business Address" label="Registered Address" />
+      </InputRow>
+      <InputRow templateColumns="2fr 1fr 1fr">
+        <TextInput placeholder="City" label="City" />
+        <TextInput placeholder="State" label="State" />
+        <TextInput placeholder="PIN Code" label="PIN Code" />
+      </InputRow>
       <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="Reference Name" label="Reference Name" />
-        <TextInput placeholder="Reference Phone" label="Reference Phone" />
+        <TextInput placeholder="PAN Number" label="Business PAN" />
+        <TextInput placeholder="GST Number" label="GSTIN" />
+      </InputRow>
+      <InputRow templateColumns="1fr 1fr">
+        <TextInput placeholder="Account Holder Name" label="Bank Account Holder Name" />
+        <TextInput placeholder="Account Number" label="Bank Account Number" />
+      </InputRow>
+      <InputRow templateColumns="1fr 1fr">
+        <TextInput placeholder="IFSC Code" label="IFSC Code" />
+        <TextInput placeholder="Bank Name" label="Bank Name" />
+      </InputRow>
+      <InputRow templateColumns="1fr 1fr">
+        <TextInput placeholder="Contact Person Name" label="Authorized Signatory Name" />
+        <TextInput placeholder="Contact Person Phone" label="Signatory Phone" />
+      </InputRow>
+      <InputRow templateColumns="1fr 1fr">
+        <TextInput placeholder="Aadhar Number" label="Aadhar Number" />
+        <DatePicker inputPlaceHolder="DD/MM/YYYY" label="Date of Incorporation" />
       </InputRow>
       <InputRow templateColumns="1fr">
-        <TextInput placeholder="LinkedIn Profile URL" label="LinkedIn Profile" />
+        <Dropdown selectionType="single">
+          <SelectInput
+            label="Business Category"
+            placeholder="Select Business Category"
+            name="businessCategory"
+            onChange={({ name, values }) => {
+              console.log({ name, values });
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="E-commerce" value="ecommerce" />
+              <ActionListItem title="Education" value="education" />
+              <ActionListItem title="Healthcare" value="healthcare" />
+              <ActionListItem title="Food & Beverage" value="food_beverage" />
+              <ActionListItem title="Financial Services" value="financial" />
+              <ActionListItem title="Others" value="others" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </InputRow>
+      <InputRow templateColumns="1fr">
+        <TextInput placeholder="Website URL" label="Business Website" />
       </InputRow>
       <InputRow templateColumns="1fr">
         <TextInput
-          placeholder="Additional skills, certifications, or notes"
-          label="Additional Information"
+          placeholder="Describe your business and expected transaction volume"
+          label="Business Description"
         />
       </InputRow>
     </InputGroupComponent>
     <Box display="flex" justifyContent="space-between" width="100%">
       <Box />
       <Button variant="primary" marginTop="spacing.3">
-        Submit Application
+        Submit for Verification
       </Button>
     </Box>
   </Box>
@@ -171,8 +193,8 @@ const ComplexInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
 
 export const Complex = ComplexInputGroupTemplate.bind({});
 Complex.args = {
-  label: 'Job Application Form',
-  helpText: 'Please fill out all required information',
+  label: 'Merchant Onboarding Form',
+  helpText: 'Complete all required information to start accepting payments',
 };
 
 const CompactInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
