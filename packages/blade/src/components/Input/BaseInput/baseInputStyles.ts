@@ -146,7 +146,6 @@ const getLeftPadding = ({
     return theme.spacing[0];
   }
 
-
   if (hasLeadingIcon || hasPrefix || hasLeadingDropdown) {
     return theme.spacing[3];
   }
