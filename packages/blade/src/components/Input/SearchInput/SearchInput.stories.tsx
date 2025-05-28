@@ -36,7 +36,6 @@ import {
   TransactionsIcon,
   HelpCircleIcon,
   BulkPayoutsIcon,
-  HomeIcon,
 } from '~components/Icons';
 import { Spinner } from '~components/Spinner';
 
