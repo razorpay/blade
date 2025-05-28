@@ -22,6 +22,7 @@ import type {
   BladeElementRef,
   BladeElementRefWithValue,
   DataAnalyticsAttribute,
+  ContainerElementType,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
 import { DropdownOverlay } from '~components/Dropdown';
@@ -217,7 +218,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   });
   const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = React.useState(false);
   const [isLeadingDropDownOpen, setIsLeadingDropDownOpen] = React.useState(false);
-  const textInputWrapperRef = useRef<BladeElementRef>(null);
+  const textInputWrapperRef = useRef<ContainerElementType | null>(null);
 
   useEffect(() => {
     if (isTrailingDropDownOpen && isLeadingDropDownOpen) {
@@ -327,7 +328,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
     return null;
   };
-
   return (
     <BaseInput
       id="textinput"
