@@ -18,14 +18,12 @@ import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '@razorpay/blade
     <InfoItemKey leadingIcon={UserIcon} helpText="Customer information">
       Account Holder
     </InfoItemKey>
-    <InfoItemValue valueType="text" trailingIcon={CheckIcon}>
-      Saurabh Daware
-    </InfoItemValue>
+    <InfoItemValue trailingIcon={CheckIcon}>Saurabh Daware</InfoItemValue>
   </InfoItem>
   <InfoItem>
     <InfoItemKey>Payment ID</InfoItemKey>
-    <InfoItemValue valueType="code" trailingIcon={CopyIcon}>
-      pay_MK7DGqwYXEwx9Q
+    <InfoItemValue trailingIcon={CopyIcon}>
+      <Code size="small">pay_MK7DGqwYXEwx9Q</Code>
     </InfoItemValue>
   </InfoItem>
 </InfoGroup>;
@@ -156,7 +154,7 @@ type InfoItemValueProps = {
   /**
    * Content of the value - text, components, or other ReactNode
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Click handler for interactive values
@@ -184,6 +182,54 @@ Simple horizontal layout with text-based key-value pairs.
 </InfoGroup>
 ```
 
+### Different orientations
+
+<table>
+<tr>
+<th>Code</th>
+<th>Preview</th>
+</tr>
+<tr>
+<td>
+
+```jsx
+<InfoGroup orientation="horizontal" size="medium">
+  <InfoItem>
+    <InfoItemKey>Account Holder</InfoItemKey>
+    <InfoItemValue>Saurabh Daware</InfoItemValue>
+  </InfoItem>
+</InfoGroup>
+```
+
+</td>
+<td>
+  <img src="./2025-05-28-11-01-20.png" alt="Horizontal" width="500px" />
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+```jsx
+<InfoGroup orientation="vertical" size="medium">
+  <InfoItem>
+    <InfoItemKey>Account Holder</InfoItemKey>
+    <InfoItemValue>Saurabh Daware</InfoItemValue>
+  </InfoItem>
+</InfoGroup>
+```
+
+</td>
+<td>
+
+<img src="./2025-05-28-11-03-40.png" alt="Vertical" width="500px" />
+
+</td>
+
+</tr>
+</table>
+
 ### Vertical Layout with Icons
 
 Vertical orientation with leading icons and help text.
@@ -194,9 +240,7 @@ Vertical orientation with leading icons and help text.
     <InfoItemKey leadingIcon={UserIcon} helpText="Primary account holder name">
       Account Holder
     </InfoItemKey>
-    <InfoItemValue leadingIcon={CheckIcon} valueType="text">
-      Saurabh Daware
-    </InfoItemValue>
+    <InfoItemValue leadingIcon={CheckIcon}>Saurabh Daware</InfoItemValue>
   </InfoItem>
   <InfoItem>
     <InfoItemKey leadingIcon={CreditCardIcon}>Payment Method</InfoItemKey>
@@ -217,7 +261,7 @@ Using Blade components and custom layouts for complex value rendering.
     </InfoItemKey>
     <InfoItemValue>
       <Box display="flex" alignItems="center" gap="spacing.2">
-        <Text>•••• 7890</Text>
+        <Amount size="small" currency="INR" value={7890} />
         <Badge size="small" color="positive">
           Verified
         </Badge>
@@ -254,3 +298,5 @@ Using Blade components and custom layouts for complex value rendering.
   - **Cons of `showDivider` prop:**
     - Non intuitive because the divider is not of the item but rather of the group technically
     - `<Divider />` on the other hand follows 'What you see is what you get' philosophy
+
+- ### `orientation` prop vs `itemOrientation` prop
