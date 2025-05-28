@@ -18,6 +18,7 @@ import { useId } from '~utils/useId';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
 import type { IconComponent } from '~components/Icons';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type InputDropDownButtonProps = {
   onBlur?: BaseButtonProps['onBlur'];
@@ -195,7 +196,7 @@ const _InputDropDownButton = ({
       })}
       ref={triggererRef}
       isDisabled={isDisabled}
-      {...rest}
+      {...makeAnalyticsAttribute(rest)}
     >
       <Box padding="spacing.2" display="flex" gap="spacing.2" alignItems="center">
         {_isInsideSearchInput && (
