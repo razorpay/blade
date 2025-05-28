@@ -11,18 +11,24 @@ InfoGroup is a structured component for displaying key-value pairs in a consiste
 The InfoGroup component uses a compound structure with an outer container and InfoItem sub-components for individual key-value pairs. This approach allows layout and styling props to be defined once at the container level.
 
 ```jsx
-import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '@razorpay/blade/components';
+import {
+  InfoGroup,
+  InfoItem,
+  InfoItemKey,
+  InfoItemValue,
+  InfoItemIcon,
+} from '@razorpay/blade/components';
 
-<InfoGroup orientation="horizontal" size="medium">
+<InfoGroup itemOrientation="horizontal" size="medium">
   <InfoItem>
-    <InfoItemKey leadingIcon={UserIcon} helpText="Customer information">
+    <InfoItemKey leading={<InfoItemIcon icon={UserIcon} />} helpText="Customer information">
       Account Holder
     </InfoItemKey>
-    <InfoItemValue trailingIcon={CheckIcon}>Saurabh Daware</InfoItemValue>
+    <InfoItemValue trailing={<InfoItemIcon icon={CheckIcon} />}>Saurabh Daware</InfoItemValue>
   </InfoItem>
   <InfoItem>
     <InfoItemKey>Payment ID</InfoItemKey>
-    <InfoItemValue trailingIcon={CopyIcon}>
+    <InfoItemValue trailing={<InfoItemIcon icon={CopyIcon} />}>
       <Code size="small">pay_MK7DGqwYXEwx9Q</Code>
     </InfoItemValue>
   </InfoItem>
@@ -35,7 +41,7 @@ import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '@razorpay/blade
 ### Alternate API 1: Single Component with Props
 
 ```jsx
-<InfoGroup orientation="horizontal" size="medium">
+<InfoGroup itemOrientation="horizontal" size="medium">
   <InfoItem
     keyText="Account Holder"
     valueText="Saurabh Daware"
@@ -46,20 +52,20 @@ import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '@razorpay/blade
 </InfoGroup>
 ```
 
-### Alternate API 2: With Divider Integration
+**Pros:**
 
-```jsx
-<InfoGroup orientation="vertical">
-  <InfoItem showDivider>
-    <InfoItemKey>Payment ID</InfoItemKey>
-    <InfoItemValue valueType="code">pay_MK7DGqwYXEwx9Q</InfoItemValue>
-  </InfoItem>
-  <InfoItem>
-    <InfoItemKey>Amount</InfoItemKey>
-    <InfoItemValue valueType="amount" value={19000} currency="INR" />
-  </InfoItem>
-</InfoGroup>
-```
+- Simpler API with fewer components to remember
+- Faster to write for basic use cases
+- Consistent prop naming pattern
+- Less verbose for simple key-value pairs
+
+**Cons:**
+
+- Less flexible for complex value layouts
+- Cannot compose with other Blade components easily
+- Limited customization options for styling individual parts
+- Props can become numerous for complex scenarios
+- Harder to extend for future use cases
 
 </details>
 
@@ -73,7 +79,7 @@ type InfoGroupProps = {
    * Defines how Key and Value are arranged — side by side or stacked
    * @default 'horizontal'
    */
-  orientation?: 'horizontal' | 'vertical';
+  itemOrientation?: 'horizontal' | 'vertical';
 
   /**
    * Shows the size of the component
@@ -85,7 +91,7 @@ type InfoGroupProps = {
    * Defines whether the value is aligned left or right
    * @default 'left'
    */
-  alignment?: 'left' | 'right';
+  textAlign?: 'left' | 'right';
 
   /**
    * Children should be InfoItem components
@@ -116,14 +122,14 @@ type InfoItemProps = {
 ```typescript
 type InfoItemKeyProps = {
   /**
-   * Relevant supporting icon for the component
+   * Leading element - can be icon, avatar, or any React element
    */
-  leadingIcon?: IconComponent;
+  leading?: React.ReactElement;
 
   /**
-   * Relevant trailing icon for the component
+   * Trailing element - can be icon, avatar, or any React element
    */
-  trailingIcon?: IconComponent;
+  trailing?: React.ReactElement;
 
   /**
    * Additional help text to provide context for the key
@@ -142,14 +148,14 @@ type InfoItemKeyProps = {
 ```typescript
 type InfoItemValueProps = {
   /**
-   * Relevant leading icon for the component
+   * Leading element - can be icon, avatar, or any React element
    */
-  leadingIcon?: IconComponent;
+  leading?: React.ReactElement;
 
   /**
-   * Relevant trailing icon for the component
+   * Trailing element - can be icon, avatar, or any React element
    */
-  trailingIcon?: IconComponent;
+  trailing?: React.ReactElement;
 
   /**
    * Content of the value - text, components, or other ReactNode
@@ -163,6 +169,17 @@ type InfoItemValueProps = {
 };
 ```
 
+#### InfoItemIcon
+
+```typescript
+type InfoItemIconProps = {
+  /**
+   * Icon component to be rendered
+   */
+  icon: IconComponent;
+};
+```
+
 ## Examples
 
 ### Basic Key-Value Display
@@ -170,7 +187,7 @@ type InfoItemValueProps = {
 Simple horizontal layout with text-based key-value pairs.
 
 ```jsx
-<InfoGroup orientation="horizontal" size="medium">
+<InfoGroup itemOrientation="horizontal" size="medium">
   <InfoItem>
     <InfoItemKey>Account Holder</InfoItemKey>
     <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -193,7 +210,7 @@ Simple horizontal layout with text-based key-value pairs.
 <td>
 
 ```jsx
-<InfoGroup orientation="horizontal" size="medium">
+<InfoGroup itemOrientation="horizontal" size="medium">
   <InfoItem>
     <InfoItemKey>Account Holder</InfoItemKey>
     <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -203,7 +220,7 @@ Simple horizontal layout with text-based key-value pairs.
 
 </td>
 <td>
-  <img src="./2025-05-28-11-01-20.png" alt="Horizontal" width="500px" />
+  <img src="./2025-05-28-11-01-20.png" alt="Horizontal" width="300px" />
 </td>
 
 </tr>
@@ -212,7 +229,7 @@ Simple horizontal layout with text-based key-value pairs.
 <td>
 
 ```jsx
-<InfoGroup orientation="vertical" size="medium">
+<InfoGroup itemOrientation="vertical" size="medium">
   <InfoItem>
     <InfoItemKey>Account Holder</InfoItemKey>
     <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -223,27 +240,59 @@ Simple horizontal layout with text-based key-value pairs.
 </td>
 <td>
 
-<img src="./2025-05-28-11-03-40.png" alt="Vertical" width="500px" />
+<img src="./2025-05-28-11-03-40.png" alt="Vertical" width="300px" />
 
 </td>
 
 </tr>
 </table>
 
+### With Avatars and Custom Elements
+
+Using avatars and other React elements with the flexible leading/trailing props.
+
+```jsx
+<InfoGroup itemOrientation="horizontal" size="large">
+  <InfoItem>
+    <InfoItemKey
+      leading={<Avatar size="medium" name="Saurabh Daware" />}
+      helpText="Account holder profile"
+    >
+      Account Holder
+    </InfoItemKey>
+    <InfoItemValue trailing={<InfoItemIcon icon={ExternalLinkIcon} />}>
+      Saurabh Daware
+    </InfoItemValue>
+  </InfoItem>
+  <InfoItem>
+    <InfoItemKey leading={<InfoItemIcon icon={BankIcon} />}>Bank Account</InfoItemKey>
+    <InfoItemValue
+      leading={
+        <Badge size="small" color="positive">
+          Verified
+        </Badge>
+      }
+    >
+      HDFC Bank
+    </InfoItemValue>
+  </InfoItem>
+</InfoGroup>
+```
+
 ### Vertical Layout with Icons
 
 Vertical orientation with leading icons and help text.
 
 ```jsx
-<InfoGroup orientation="vertical" size="large">
+<InfoGroup itemOrientation="vertical" size="large">
   <InfoItem>
-    <InfoItemKey leadingIcon={UserIcon} helpText="Primary account holder name">
+    <InfoItemKey leading={<InfoItemIcon icon={UserIcon} />} helpText="Primary account holder name">
       Account Holder
     </InfoItemKey>
-    <InfoItemValue leadingIcon={CheckIcon}>Saurabh Daware</InfoItemValue>
+    <InfoItemValue leading={<InfoItemIcon icon={CheckIcon} />}>Saurabh Daware</InfoItemValue>
   </InfoItem>
   <InfoItem>
-    <InfoItemKey leadingIcon={CreditCardIcon}>Payment Method</InfoItemKey>
+    <InfoItemKey leading={<InfoItemIcon icon={CreditCardIcon} />}>Payment Method</InfoItemKey>
     <InfoItemValue>Credit Card</InfoItemValue>
   </InfoItem>
 </InfoGroup>
@@ -254,9 +303,9 @@ Vertical orientation with leading icons and help text.
 Using Blade components and custom layouts for complex value rendering.
 
 ```jsx
-<InfoGroup orientation="horizontal" size="medium" alignment="right">
+<InfoGroup itemOrientation="horizontal" size="medium" textAlign="right">
   <InfoItem>
-    <InfoItemKey leadingIcon={BankIcon} helpText="Bank account details">
+    <InfoItemKey leading={<InfoItemIcon icon={BankIcon} />} helpText="Bank account details">
       Bank Account
     </InfoItemKey>
     <InfoItemValue>
@@ -272,7 +321,7 @@ Using Blade components and custom layouts for complex value rendering.
 
   <InfoItem>
     <InfoItemKey>IFSC Code</InfoItemKey>
-    <InfoItemValue trailingIcon={CopyIcon}>
+    <InfoItemValue trailing={<InfoItemIcon icon={CopyIcon} />}>
       <Code size="small">HDFC0001234</Code>
     </InfoItemValue>
   </InfoItem>
@@ -294,9 +343,11 @@ Using Blade components and custom layouts for complex value rendering.
 - ### Should we have `showDivider` prop or let consumer use `<Divider />` directly?
 
   - **Pros of `showDivider` prop:**
-    - With orientation="vertical", we can internally move divider to left and make it orientation vertical as well
+    - With itemOrientation="vertical", we can internally move divider to left and make it orientation vertical as well
   - **Cons of `showDivider` prop:**
     - Non intuitive because the divider is not of the item but rather of the group technically
     - `<Divider />` on the other hand follows 'What you see is what you get' philosophy
 
 - ### `orientation` prop vs `itemOrientation` prop
+
+  - Earlier we had thought of `orientation` prop although it can be confusing because `orientation="vertical"` on InfoGroup will mean that the items themselves are horizontally placed but the key and values inside the item are vertically placed
