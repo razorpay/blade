@@ -179,6 +179,14 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     leadingInteractionElement?: ReactNode;
     /**
+     * Element for leading Interection
+     */
+    leadingDropDown?: ReactNode;
+    /**
+     *
+     */
+    trailingDropDown?: ReactNode;
+    /**
      * Suffix symbol to be displayed at the end of the input field. If trailingIcon is provided it'll be placed before it
      */
     suffix?: string;
@@ -850,6 +858,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     _motionMeta,
     role,
     tabIndex,
+    leadingDropDown,
+    trailingDropDown,
     ...rest
   },
   ref,
@@ -1013,6 +1023,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               prefix={prefix}
               isDisabled={isDisabled}
               leadingInteractionElement={leadingInteractionElement}
+              leadingDropDown={leadingDropDown}
             />
             <BaseInputTagSlot
               renderAs={as}
@@ -1037,6 +1048,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               size={size}
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
+              hasLeadingDropDown={Boolean(leadingDropDown)}
             >
               <StyledBaseInput
                 as={as}
@@ -1084,6 +1096,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
                 tabIndex={tabIndex}
+                hasLeadingDropdown={Boolean(leadingDropDown)}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                 {...makeAnalyticsAttribute(rest)}
               />
@@ -1100,6 +1113,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               errorText={errorText}
               successText={successText}
               showHintsAsTooltip={showHintsAsTooltip}
+              trailingDropDown={trailingDropDown}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>

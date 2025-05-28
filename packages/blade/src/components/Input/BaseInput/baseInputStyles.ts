@@ -41,6 +41,7 @@ type GetInputStyles = Pick<
   theme: Theme;
   size: NonNullable<BaseInputProps['size']>;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
+  hasLeadingDropdown?: boolean;
 };
 
 export const getBaseInputState = ({
@@ -132,18 +133,21 @@ const getLeftPadding = ({
   hasLeadingIcon,
   hasPrefix,
   size,
+  hasLeadingDropdown,
 }: {
   theme: Theme;
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
   isDropdownTrigger: GetInputStyles['isDropdownTrigger'];
   size: GetInputStyles['size'];
+  hasLeadingDropdown: boolean;
 }): number => {
   if (isDropdownTrigger) {
     return theme.spacing[0];
   }
 
-  if (hasLeadingIcon || hasPrefix) {
+
+  if (hasLeadingIcon || hasPrefix || hasLeadingDropdown) {
     return theme.spacing[3];
   }
 
@@ -184,6 +188,7 @@ export const getBaseInputStyles = ({
   isDropdownTrigger,
   size,
   valueComponentType,
+  hasLeadingDropdown,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -229,7 +234,14 @@ export const getBaseInputStyles = ({
     paddingTop: makeSpace(theme.spacing[baseInputPaddingTokens.top[size]]),
     paddingBottom: makeSpace(theme.spacing[baseInputPaddingTokens.bottom[size]]),
     paddingLeft: makeSpace(
-      getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix, size }),
+      getLeftPadding({
+        theme,
+        isDropdownTrigger,
+        hasLeadingIcon,
+        hasPrefix,
+        size,
+        hasLeadingDropdown,
+      }),
     ),
     paddingRight: getRightPadding({
       theme,

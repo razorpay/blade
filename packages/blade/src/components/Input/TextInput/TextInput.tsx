@@ -311,10 +311,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       );
     }
 
-    if (trailingDropdown) {
-      return renderTailingLeadingDropdown();
-    }
-
     return null;
   };
 
@@ -341,7 +337,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       maxTagRows="single"
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
-      leadingInteractionElement={renderLeadingDropDown()}
+      leadingDropDown={renderLeadingDropDown()}
+      trailingDropDown={renderTailingLeadingDropdown()}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in

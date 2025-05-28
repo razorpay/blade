@@ -19,6 +19,8 @@ type InputVisuals = Pick<
   | 'trailingInteractionElement'
   | 'onTrailingInteractionElementClick'
   | 'leadingInteractionElement'
+  | 'leadingDropDown'
+  | 'trailingDropDown'
   | 'suffix'
   | 'trailingIcon'
   | 'isDisabled'
@@ -86,17 +88,23 @@ const getPrefixStyles = ({
 const getInteractionElementStyles = ({
   hasTrailingIcon,
   hasLeadingInteractionElement,
+  hasLeadingDropDown,
   hasTrailingInteractionElement,
   hasSuffix,
   hasTrailingButton,
 }: {
   hasTrailingIcon: boolean;
   hasLeadingInteractionElement?: boolean;
+  hasLeadingDropDown?: boolean;
   hasTrailingInteractionElement?: boolean;
   hasSuffix: boolean;
   hasTrailingButton: boolean;
 }): SpacingValueType => {
   if (hasTrailingInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingButton)) {
+    return 'spacing.2';
+  }
+
+  if (hasLeadingDropDown) {
     return 'spacing.2';
   }
 
@@ -169,6 +177,8 @@ export const getInputVisualsToBeRendered = ({
   suffix,
   trailingIcon,
   trailingButton,
+  leadingDropDown,
+  trailingDropDown,
 }: InputVisuals) => ({
   hasLeadingIcon: Boolean(leadingIcon),
   hasPrefix: Boolean(prefix),
@@ -177,6 +187,8 @@ export const getInputVisualsToBeRendered = ({
   hasSuffix: Boolean(suffix),
   hasTrailingIcon: Boolean(trailingIcon),
   hasTrailingButton: Boolean(trailingButton),
+  hasLeadingDropDown: Boolean(leadingDropDown),
+  hasTrailingDropDown: Boolean(trailingDropDown),
 });
 
 const getTooltipContent = ({
@@ -233,6 +245,8 @@ export const BaseInputVisuals = ({
   prefix,
   trailingInteractionElement,
   onTrailingInteractionElementClick,
+  leadingDropDown,
+  trailingDropDown,
   leadingInteractionElement,
   suffix,
   trailingIcon: TrailingIcon,
@@ -252,6 +266,8 @@ export const BaseInputVisuals = ({
     hasLeadingInteractionElement,
     hasTrailingIcon,
     hasTrailingButton,
+    hasLeadingDropDown,
+    hasTrailingDropDown,
   } = getInputVisualsToBeRendered({
     leadingIcon: LeadingIcon,
     prefix,
@@ -260,12 +276,20 @@ export const BaseInputVisuals = ({
     suffix,
     trailingIcon: TrailingIcon,
     trailingButton: TrailingButton,
+    leadingDropDown,
+    trailingDropDown,
     size,
   });
+  console.log('leadingDropDown', leadingDropDown);
 
-  const hasLeadingVisuals = hasLeadingInteractionElement || hasLeadingIcon || hasPrefix;
+  const hasLeadingVisuals =
+    hasLeadingInteractionElement || hasLeadingIcon || hasPrefix || hasLeadingDropDown;
   const hasTrailingVisuals =
-    hasTrailingInteractionElement || hasSuffix || hasTrailingIcon || hasTrailingButton;
+    hasTrailingInteractionElement ||
+    hasSuffix ||
+    hasTrailingIcon ||
+    hasTrailingButton ||
+    hasTrailingDropDown;
 
   if (__DEV__) {
     if (hasTrailingButton && !isValidAllowedChildren(TrailingButton, 'Link')) {
@@ -312,6 +336,11 @@ export const BaseInputVisuals = ({
             >
               {prefix}
             </Text>
+          </BaseBox>
+        ) : null}
+        {leadingDropDown ? (
+          <BaseBox paddingLeft="spacing.2" display="flex">
+            {leadingDropDown}
           </BaseBox>
         ) : null}
       </BaseBox>
@@ -390,6 +419,11 @@ export const BaseInputVisuals = ({
               variant: 'button',
               isDisabled,
             })}
+          </BaseBox>
+        ) : null}
+        {hasTrailingDropDown ? (
+          <BaseBox paddingRight="spacing.2" display="flex">
+            {trailingDropDown}
           </BaseBox>
         ) : null}
       </BaseBox>

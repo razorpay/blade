@@ -149,7 +149,6 @@ const _InputDropDownButton = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
 
-
   return (
     <StyledSearchTrailingDropdown
       onClick={(e) => {

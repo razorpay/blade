@@ -30,6 +30,7 @@ const getWebInputStyles = (
       size: props.$size,
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
+      hasLeadingDropdown: props.hasLeadingDropdown,
     }),
     outline: 'none',
     border: 'none',
@@ -111,6 +112,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
   },
   ref,
 ) => {
+  console.log('props', props);
   const commonProps = {
     onBlur: (event: React.ChangeEvent<HTMLInputElement>): void => {
       // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
