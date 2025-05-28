@@ -22,6 +22,10 @@ type InputDropDownButtonProps = {
   onClick?: BaseButtonProps['onClick'];
   title?: string;
   accessibilityLabel?: string;
+  /**
+   * @private
+   */
+  _isInsideSearchInput?: boolean;
 };
 
 const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean }>(({ theme }) => {
@@ -54,6 +58,7 @@ const _InputDropDownButton = ({
   onKeyDown,
   title,
   accessibilityLabel,
+  _isInsideSearchInput = false,
 }: InputDropDownButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
@@ -97,14 +102,17 @@ const _InputDropDownButton = ({
       ref={triggererRef}
     >
       <Box padding="spacing.2" display="flex" gap="spacing.2" alignItems="center">
-        <Text variant="body" size="medium" weight="regular" color="surface.text.gray.muted">
-          {' '}
-          in
-        </Text>
+        {_isInsideSearchInput && (
+          <Text variant="body" size="medium" weight="regular" color="surface.text.gray.muted">
+            {' '}
+            in
+          </Text>
+        )}
+
         <Text variant="body" size="medium" weight="regular" color="surface.text.gray.subtle">
           {title}
         </Text>
-        <ChevronUpDownIcon color="surface.icon.gray.muted" />
+        {_isInsideSearchInput && <ChevronUpDownIcon color="surface.icon.gray.muted" />}
       </Box>
     </StyledSearchTrailingDropdown>
   );

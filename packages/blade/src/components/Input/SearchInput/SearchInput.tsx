@@ -21,7 +21,7 @@ import type {
 } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { DropdownOverlay } from '~components/Dropdown';
+import { DropdownOverlay, InputDropDownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 
 type SearchInputCommonProps = Pick<
@@ -177,6 +177,11 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
           if (child.type === DropdownOverlay) {
             return React.cloneElement(child, {
               referenceRef: triggererWrapperRef,
+            });
+          }
+          if (child.type === InputDropDownButton) {
+            return React.cloneElement(child, {
+              _isInsideSearchInput: true,
             });
           }
           return child;
