@@ -234,7 +234,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLeadingDropDownOpen]);
 
-  const renderLeadingDropDown = (): React.ReactElement => {
+  const renderLeadingDropDown = (): React.ReactElement | null => {
+    if (!leadingDropDown) {
+      return null;
+    }
     return React.cloneElement(leadingDropDown as React.ReactElement, {
       selectionType: 'single',
       isOpen: isLeadingDropDownOpen,
@@ -255,7 +258,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     });
   };
 
-  const renderTailingLeadingDropdown = (): React.ReactElement => {
+  const renderTailingLeadingDropdown = (): React.ReactElement | null => {
+    if (!trailingDropdown) {
+      return null;
+    }
     return React.cloneElement(trailingDropdown as React.ReactElement, {
       selectionType: 'single',
       isOpen: isTrailingDropDownOpen,

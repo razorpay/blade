@@ -164,7 +164,10 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setIsTrailingDropDownOpen, isTrailingDropDownOpen]);
 
-  const renderTrailingDropDown = (): React.ReactElement => {
+  const renderTrailingDropDown = (): React.ReactElement | null => {
+    if (!trailingDropdown) {
+      return null;
+    }
     return React.cloneElement(trailingDropdown as React.ReactElement, {
       selectionType: 'single',
       isOpen: isTrailingDropDownOpen,
