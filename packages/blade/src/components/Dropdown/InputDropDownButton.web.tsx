@@ -37,27 +37,27 @@ type InputDropDownButtonProps = {
 } & DataAnalyticsAttribute;
 
 const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean; isDisabled?: boolean }>(
-  ({ theme }) => {
+  ({ theme, isDisabled }) => {
     const { spacing } = theme;
     return {
-      backgroundColor: theme.colors.transparent,
+      backgroundColor: isDisabled
+        ? theme.colors.interactive.background.gray.faded
+        : theme.colors.transparent,
       gap: makeSpace(spacing[2]),
       display: 'flex',
       height: '100%',
       alignItems: 'center',
       border: 'none',
-      cursor: 'pointer',
-      color: 'currentcolor',
-      '&:not([disabled]):hover': {
-        backgroundColor: theme.colors.interactive.background.gray.faded,
-      },
+      cursor: isDisabled ? 'not-allowed' : 'pointer',
       '&[disabled]': {
         cursor: 'not-allowed',
+        pointerEvents: 'none',
       },
       '&:focus-visible': {
         ...getFocusRingStyles({ theme }),
-        outlineOffset: makeSpace(theme.spacing[1]),
+        outlineOffset: makeSpace(theme.spacing[0]),
       },
+      borderRadius: theme.border.radius.small,
     };
   },
 );
@@ -152,6 +152,7 @@ const _InputDropDownButton = ({
   return (
     <StyledSearchTrailingDropdown
       onClick={(e) => {
+        if (isDisabled) return;
         onTriggerClick();
         // Setting it for web fails it on native typecheck and vice versa
         onClick?.(e as any);
@@ -159,12 +160,14 @@ const _InputDropDownButton = ({
         e?.stopPropagation();
       }}
       onBlur={(e) => {
+        if (isDisabled) return;
         // With button trigger, there is no "value" as such. It's just clickable items
         // Setting it for web fails it on native typecheck and vice versa
         onBlur?.(e as any);
         e?.stopPropagation();
       }}
       onKeyDown={(e) => {
+        if (isDisabled) return;
         onTriggerKeydown?.({ event: e as any });
         // Setting it for web fails it on native typecheck and vice versa
         onKeyDown?.(e as any);
@@ -193,7 +196,7 @@ const _InputDropDownButton = ({
         <Text variant="body" size="medium" weight="regular" color="surface.text.gray.subtle">
           {valueTitle ?? getUnControlledFilterChipValue()}
         </Text>
-        <ChevronUpDownIcon color="surface.icon.gray.muted" />
+        {!isDisabled ? <ChevronUpDownIcon color="surface.icon.gray.muted" /> : null}
       </Box>
     </StyledSearchTrailingDropdown>
   );
