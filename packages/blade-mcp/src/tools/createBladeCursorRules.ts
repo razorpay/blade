@@ -4,12 +4,11 @@ import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import {
   BLADE_CURSOR_RULES_FILE_PATH,
-  hasOutDatedRules,
   CURSOR_RULES_VERSION,
-  handleError,
-  sendAnalytics,
   analyticsToolCallEventName,
-} from '../utils.js';
+} from '../utils/tokens.js';
+import { hasOutDatedRules } from '../utils/generalUtils.js';
+import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 
