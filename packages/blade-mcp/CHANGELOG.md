@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.2.0
+
+### Minor Changes
+
+- 07bf89369: feat(knowledgebase): support for patterns and different types of documentations
+
 ## 0.1.12
 
 ### Patch Changes
