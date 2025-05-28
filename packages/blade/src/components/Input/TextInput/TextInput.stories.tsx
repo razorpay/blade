@@ -1,7 +1,7 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import React from 'react';
+import React, { useState } from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
@@ -679,28 +679,34 @@ TextInputWithUncontrolledTags.args = {
 };
 
 export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...args }) => {
+  const [leadingDropDownValue, setLeadingDropDownValue] = useState('inr');
   return (
     <Box display="flex" flexDirection="column">
       <TextInputComponent
         {...args}
         leadingDropDown={
           <Dropdown>
-            <InputDropDownButton title="Popular Searches" />
+            <InputDropDownButton
+              value={leadingDropDownValue}
+              onChange={({ value }) => {
+                setLeadingDropDownValue(value);
+              }}
+            />
             <DropdownOverlay>
               <ActionList>
-                <ActionListItem title="Home" value="home" />
-                <ActionListItem title="Pricing" value="home" />
+                <ActionListItem title="INR" value="inr" />
+                <ActionListItem title="USD" value="usd" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
         }
         trailingDropdown={
           <Dropdown>
-            <InputDropDownButton title="Popular Searches" />
+            <InputDropDownButton defaultValue="sbi" />
             <DropdownOverlay>
               <ActionList>
-                <ActionListItem title="Car" value="card" />
-                <ActionListItem title="Bike" value="Bike" />
+                <ActionListItem title="@oksbi" value="sbi" />
+                <ActionListItem title="@hdfc" value="hdfc" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
