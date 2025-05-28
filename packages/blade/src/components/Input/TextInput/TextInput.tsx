@@ -25,6 +25,7 @@ import type {
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
 import { DropdownOverlay } from '~components/Dropdown';
+import { Divider } from '~components/Divider';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -278,37 +279,50 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
   }, [showClearButton, defaultValue, value]);
 
+  const renderClearButton = (): React.ReactElement => {
+    return (
+      <IconButton
+        size="medium"
+        icon={CloseIcon}
+        onClick={() => {
+          if (isEmpty(value) && textInputRef.current) {
+            // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+            if (isReactNative(textInputRef.current)) {
+              textInputRef.current.clear();
+              textInputRef.current.focus();
+            } else if (textInputRef.current instanceof HTMLInputElement) {
+              textInputRef.current.value = '';
+              textInputRef.current.focus();
+            }
+          }
+          handleTagsClear();
+          // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+          onClearButtonClick?.();
+          textInputRef?.current?.focus();
+          setShouldShowClearButton(false);
+        }}
+        isDisabled={isDisabled}
+        accessibilityLabel="Clear Input Content"
+      />
+    );
+  };
+  const hasTrailingDropDown = Boolean(trailingDropdown);
+
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
       return <Spinner accessibilityLabel="Loading Content" color="primary" />;
     }
 
-    if (shouldShowClearButton) {
+    if (shouldShowClearButton && hasTrailingDropDown) {
       return (
-        <IconButton
-          size="medium"
-          icon={CloseIcon}
-          onClick={() => {
-            if (isEmpty(value) && textInputRef.current) {
-              // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-              if (isReactNative(textInputRef.current)) {
-                textInputRef.current.clear();
-                textInputRef.current.focus();
-              } else if (textInputRef.current instanceof HTMLInputElement) {
-                textInputRef.current.value = '';
-                textInputRef.current.focus();
-              }
-            }
-            handleTagsClear();
-            // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
-            onClearButtonClick?.();
-            textInputRef?.current?.focus();
-            setShouldShowClearButton(false);
-          }}
-          isDisabled={isDisabled}
-          accessibilityLabel="Clear Input Content"
-        />
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" />
+        </BaseBox>
       );
+    }
+
+    if (shouldShowClearButton) {
+      return renderClearButton();
     }
 
     return null;

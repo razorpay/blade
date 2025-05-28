@@ -92,6 +92,7 @@ const getInteractionElementStyles = ({
   hasTrailingInteractionElement,
   hasSuffix,
   hasTrailingButton,
+  hasTrailingDropDown,
 }: {
   hasTrailingIcon: boolean;
   hasLeadingInteractionElement?: boolean;
@@ -99,12 +100,13 @@ const getInteractionElementStyles = ({
   hasTrailingInteractionElement?: boolean;
   hasSuffix: boolean;
   hasTrailingButton: boolean;
+  hasTrailingDropDown?: boolean;
 }): SpacingValueType => {
   if (hasTrailingInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingButton)) {
     return 'spacing.2';
   }
 
-  if (hasLeadingDropDown) {
+  if (hasLeadingDropDown || hasTrailingDropDown) {
     return 'spacing.2';
   }
 
@@ -368,6 +370,8 @@ export const BaseInputVisuals = ({
                 hasTrailingInteractionElement,
                 hasSuffix,
                 hasTrailingButton,
+
+                hasTrailingDropDown,
               })}
               display="flex"
               alignItems="stretch"

@@ -226,16 +226,12 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     if (shouldShowClearButton && trailingDropdown) {
       return (
         <BaseBox display="flex" gap="spacing.3">
-          {renderClearButton()} <Divider orientation="vertical" /> {renderTrailingDropDown()}
+          {renderClearButton()} <Divider orientation="vertical" />
         </BaseBox>
       );
     }
     if (shouldShowClearButton) {
       return renderClearButton();
-    }
-    if (trailingDropdown) {
-      return renderTrailingDropDown();
-      // return trailingDropdown;
     }
 
     return null;
@@ -290,6 +286,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         isDisabled={isDisabled}
         leadingIcon={showSearchIcon ? SearchIcon : undefined}
         trailingInteractionElement={renderInteractionElement()}
+        trailingDropDown={renderTrailingDropDown()}
         helpText={helpText}
         // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus={autoFocus}
