@@ -142,7 +142,7 @@ const _InputDropDownButton = ({
     return indices.length > 0 ? options[indices[0]].value : '';
   };
 
-  const getUnControlledFilterChipValue = (): string | string[] => {
+  const getUnControlledInputGroupValue = (): string | string[] => {
     if (uncontrolledInputValue) {
       return getTitleFromValue(uncontrolledInputValue);
     }
@@ -208,7 +208,7 @@ const _InputDropDownButton = ({
         {Icon && <Icon size="medium" color="surface.icon.gray.muted" />}
 
         <Text variant="body" size="medium" weight="regular" color="surface.text.gray.subtle">
-          {valueTitle ?? getUnControlledFilterChipValue()}
+          {valueTitle ?? getUnControlledInputGroupValue()}
         </Text>
         {!isDisabled ? <ChevronUpDownIcon color="surface.icon.gray.muted" /> : null}
       </Box>
