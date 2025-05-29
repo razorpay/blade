@@ -25,8 +25,9 @@ import type {
   ContainerElementType,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
-import { DropdownOverlay } from '~components/Dropdown';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -104,11 +105,11 @@ type TextInputCommonProps = Pick<
   /**
    *
    */
-  trailingDropdown?: React.ReactElement;
+  trailing?: React.ReactElement | IconComponent;
   /**
    *
    */
-  leadingDropDown?: React.ReactElement;
+  leading?: React.ReactElement | IconComponent;
 } & TaggedInputProps &
   StyledPropsBlade;
 
@@ -189,8 +190,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isTaggedInput,
     tags,
     onTagChange,
-    trailingDropdown,
-    leadingDropDown,
+    trailing,
+    leading,
     ...rest
   },
   ref,
@@ -233,6 +234,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLeadingDropDownOpen]);
+
+  const leadingDropDown =
+    leading && getComponentId(leading as React.ReactElement) === 'Dropdown' ? leading : null;
+
+  const trailingDropdown =
+    trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
 
   const renderLeadingDropDown = (): React.ReactElement | null => {
     if (!leadingDropDown) {

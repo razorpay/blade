@@ -685,7 +685,7 @@ export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...a
     <Box display="flex" flexDirection="column">
       <TextInputComponent
         {...args}
-        leadingDropDown={
+        leading={
           <Dropdown>
             <InputDropDownButton
               value={leadingDropDownValue}
@@ -701,7 +701,7 @@ export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...a
             </DropdownOverlay>
           </Dropdown>
         }
-        trailingDropdown={
+        trailing={
           <Dropdown>
             <InputDropDownButton defaultValue="sbi" icon={BankIcon} />
             <DropdownOverlay>
