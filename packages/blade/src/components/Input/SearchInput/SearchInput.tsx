@@ -5,7 +5,6 @@ import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
-import type { IconComponent } from '~components/Icons';
 import { CloseIcon, SearchIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import type { StyledPropsBlade } from '~components/Box/styledProps';

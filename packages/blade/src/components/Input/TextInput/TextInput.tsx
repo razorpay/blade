@@ -406,7 +406,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
-      leadingIcon={_leadingIcon ?? icon}
+      leadingIcon={_leadingIcon ?? leadingIcon ?? icon}
       prefix={prefix}
       trailingInteractionElement={renderInteractionElement()}
       trailingIcon={_trailingIcon ?? trailingIcon}
