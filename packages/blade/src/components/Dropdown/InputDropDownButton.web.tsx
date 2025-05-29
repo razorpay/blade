@@ -19,6 +19,7 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
 import type { IconComponent } from '~components/Icons';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute } from '~utils/metaAttribute';
 
 type InputDropDownButtonProps = {
   /**
@@ -70,7 +71,7 @@ type InputDropDownButtonProps = {
    */
   value?: string;
   /**
-   * defaultValue is the default value of the dropdown
+   * defaultValue is the default selected value of the dropdown
    */
   defaultValue?: string;
   /**
@@ -237,6 +238,7 @@ const _InputDropDownButton = ({
       ref={triggererRef}
       isDisabled={isDisabled}
       {...makeAnalyticsAttribute(rest)}
+      {...metaAttribute({ name: 'InputDropDownButton', testID })}
     >
       <Box padding="spacing.2" display="flex" gap="spacing.2" alignItems="center">
         {_isInsideSearchInput && (
