@@ -25,7 +25,7 @@ import type {
   ContainerElementType,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { DropdownOverlay } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 

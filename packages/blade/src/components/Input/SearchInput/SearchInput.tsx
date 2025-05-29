@@ -5,6 +5,7 @@ import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
+import type { IconComponent } from '~components/Icons';
 import { CloseIcon, SearchIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -23,6 +24,7 @@ import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds'
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { DropdownOverlay, InputDropDownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -62,9 +64,9 @@ type SearchInputCommonProps = Pick<
    */
   showSearchIcon?: boolean;
   /**
-   * Optional trailing dropdown to be shown at the end of the input.
+   * Optional trailing  to be shown at the end of the input.
    */
-  trailingDropdown?: React.ReactNode;
+  trailing?: React.ReactNode;
 } & StyledPropsBlade;
 
 /*
@@ -127,7 +129,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     testID,
     size = 'medium',
     showSearchIcon = true,
-    trailingDropdown,
+    trailing,
     ...rest
   },
   ref,
@@ -163,6 +165,9 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setIsTrailingDropDownOpen, isTrailingDropDownOpen]);
+
+  const trailingDropdown =
+    trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
 
   const renderTrailingDropDown = (): React.ReactElement | null => {
     if (!trailingDropdown) {
