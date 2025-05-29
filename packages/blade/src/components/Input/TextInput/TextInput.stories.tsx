@@ -1,7 +1,7 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import React from 'react';
+import React, { useState } from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
@@ -13,7 +13,10 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
-import { UserIcon } from '~components/Icons';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { InputDropDownButton } from '~components/Dropdown/InputDropDownButton';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { BankIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -676,13 +679,40 @@ TextInputWithUncontrolledTags.args = {
   showClearButton: true,
 };
 
-export const TextInputWithLeadingIcon: StoryFn<typeof TextInputComponent> = () => {
+export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...args }) => {
+  const [leadingDropDownValue, setLeadingDropDownValue] = useState('inr');
   return (
-    <TextInputComponent
-      label="First Name"
-      placeholder="Enter your first"
-      name="fullName"
-      leadingIcon={UserIcon}
-    />
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent
+        {...args}
+        leading={
+          <Dropdown>
+            <InputDropDownButton
+              value={leadingDropDownValue}
+              onChange={({ value }) => {
+                setLeadingDropDownValue(value);
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="INR" value="inr" />
+                <ActionListItem title="USD" value="usd" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+        trailing={
+          <Dropdown>
+            <InputDropDownButton defaultValue="sbi" icon={BankIcon} />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="@oksbi" value="sbi" />
+                <ActionListItem title="@hdfc" value="hdfc" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
   );
 };

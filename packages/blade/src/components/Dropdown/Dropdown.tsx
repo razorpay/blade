@@ -29,6 +29,7 @@ const validDropdownChildren = [
   dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
   dropdownComponentIds.triggers.FilterChipSelectInput,
+  dropdownComponentIds.triggers.InputDropDownButton,
 ];
 
 /**
@@ -162,6 +163,9 @@ const _Dropdown = (
       }
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.FilterChipSelectInput)) {
         dropdownTriggerer.current = 'FilterChipSelectInput';
+      }
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.InputDropDownButton)) {
+        dropdownTriggerer.current = 'InputDropDownButton';
       }
     }
   });

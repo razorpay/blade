@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -22,8 +22,12 @@ import type {
   BladeElementRef,
   BladeElementRefWithValue,
   DataAnalyticsAttribute,
+  ContainerElementType,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import { DropdownOverlay } from '~components/Dropdown';
+import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -98,6 +102,14 @@ type TextInputCommonProps = Pick<
    * @default text
    */
   type?: Type;
+  /**
+   *
+   */
+  trailing?: React.ReactElement | IconComponent;
+  /**
+   *
+   */
+  leading?: React.ReactElement | IconComponent;
 } & TaggedInputProps &
   StyledPropsBlade;
 
@@ -178,6 +190,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isTaggedInput,
     tags,
     onTagChange,
+    trailing,
+    leading,
     ...rest
   },
   ref,
@@ -203,51 +217,147 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     value,
     inputRef: textInputRef,
   });
+  const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = React.useState(false);
+  const [isLeadingDropDownOpen, setIsLeadingDropDownOpen] = React.useState(false);
+  const textInputWrapperRef = useRef<ContainerElementType | null>(null);
+
+  useEffect(() => {
+    if (isTrailingDropDownOpen && isLeadingDropDownOpen) {
+      setIsLeadingDropDownOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTrailingDropDownOpen]);
+
+  useEffect(() => {
+    if (isLeadingDropDownOpen && isTrailingDropDownOpen) {
+      setIsTrailingDropDownOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLeadingDropDownOpen]);
+
+  const leadingDropDown =
+    leading && getComponentId(leading as React.ReactElement) === 'Dropdown' ? leading : null;
+
+  const trailingDropdown =
+    trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
+
+  const _leadingIcon: IconComponent | undefined =
+    leading && getComponentId(leading as React.ReactElement) === 'Icon'
+      ? (leading as IconComponent)
+      : undefined;
+
+  const _trailingIcon: IconComponent | undefined =
+    trailing && getComponentId(trailing as React.ReactElement) === 'Icon'
+      ? (trailing as IconComponent)
+      : undefined;
+
+  const renderLeadingDropDown = (): React.ReactElement | null => {
+    if (!leadingDropDown) {
+      return null;
+    }
+    return React.cloneElement(leadingDropDown as React.ReactElement, {
+      selectionType: 'single',
+      isOpen: isLeadingDropDownOpen,
+      onOpenChange: (isOpen: boolean) => {
+        setIsLeadingDropDownOpen(isOpen);
+      },
+      children: React.Children.map(
+        (leadingDropDown as React.ReactElement).props.children,
+        (child) => {
+          if (child.type === DropdownOverlay) {
+            return React.cloneElement(child, {
+              referenceRef: textInputWrapperRef,
+            });
+          }
+          return child;
+        },
+      ),
+    });
+  };
+
+  const renderTailingLeadingDropdown = (): React.ReactElement | null => {
+    if (!trailingDropdown) {
+      return null;
+    }
+    return React.cloneElement(trailingDropdown as React.ReactElement, {
+      selectionType: 'single',
+      isOpen: isTrailingDropDownOpen,
+      onOpenChange: (isOpen: boolean) => {
+        setIsTrailingDropDownOpen(isOpen);
+      },
+      children: React.Children.map(
+        (trailingDropdown as React.ReactElement).props.children,
+        (child) => {
+          if (child.type === DropdownOverlay) {
+            return React.cloneElement(child, {
+              referenceRef: textInputWrapperRef,
+            });
+          }
+          return child;
+        },
+      ),
+    });
+  };
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
   }, [showClearButton, defaultValue, value]);
+
+  const renderClearButton = (): React.ReactElement => {
+    return (
+      <IconButton
+        size="medium"
+        icon={CloseIcon}
+        onClick={() => {
+          if (isEmpty(value) && textInputRef.current) {
+            // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+            if (isReactNative(textInputRef.current)) {
+              textInputRef.current.clear();
+              textInputRef.current.focus();
+            } else if (textInputRef.current instanceof HTMLInputElement) {
+              textInputRef.current.value = '';
+              textInputRef.current.focus();
+            }
+          }
+          handleTagsClear();
+          // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+          onClearButtonClick?.();
+          textInputRef?.current?.focus();
+          setShouldShowClearButton(false);
+        }}
+        isDisabled={isDisabled}
+        accessibilityLabel="Clear Input Content"
+      />
+    );
+  };
+  const hasTrailingDropDown = Boolean(trailingDropdown);
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
       return <Spinner accessibilityLabel="Loading Content" color="primary" />;
     }
 
-    if (shouldShowClearButton) {
+    if (shouldShowClearButton && hasTrailingDropDown) {
       return (
-        <IconButton
-          size="medium"
-          icon={CloseIcon}
-          onClick={() => {
-            if (isEmpty(value) && textInputRef.current) {
-              // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-              if (isReactNative(textInputRef.current)) {
-                textInputRef.current.clear();
-                textInputRef.current.focus();
-              } else if (textInputRef.current instanceof HTMLInputElement) {
-                textInputRef.current.value = '';
-                textInputRef.current.focus();
-              }
-            }
-            handleTagsClear();
-            // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
-            onClearButtonClick?.();
-            textInputRef?.current?.focus();
-            setShouldShowClearButton(false);
-          }}
-          isDisabled={isDisabled}
-          accessibilityLabel="Clear Input Content"
-        />
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" />
+        </BaseBox>
       );
+    }
+
+    if (shouldShowClearButton) {
+      return renderClearButton();
     }
 
     return null;
   };
-
   return (
     <BaseInput
       id="textinput"
       componentName={MetaConstants.TextInput}
+      setInputWrapperRef={(wrapperNode) => {
+        textInputWrapperRef.current = wrapperNode;
+      }}
       ref={mergedRef}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
@@ -264,6 +374,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       maxTagRows="single"
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
+      leadingDropDown={renderLeadingDropDown()}
+      trailingDropDown={renderTailingLeadingDropdown()}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
@@ -294,10 +406,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
-      leadingIcon={leadingIcon ?? icon}
+      leadingIcon={_leadingIcon ?? leadingIcon ?? icon}
       prefix={prefix}
       trailingInteractionElement={renderInteractionElement()}
-      trailingIcon={trailingIcon}
+      trailingIcon={_trailingIcon ?? trailingIcon}
       suffix={suffix}
       validationState={validationState}
       errorText={errorText}

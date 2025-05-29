@@ -30,6 +30,7 @@ const getWebInputStyles = (
       size: props.$size,
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
+      hasLeadingDropdown: props.hasLeadingDropdown,
     }),
     outline: 'none',
     border: 'none',

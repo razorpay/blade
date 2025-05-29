@@ -10,7 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Dropdown, DropdownOverlay, InputDropDownButton } from '~components/Dropdown';
 import {
   ActionList,
   ActionListItem,
@@ -316,6 +316,17 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         placeholder="Search here"
         {...args}
         onChange={({ value }) => setSearchTerm(value as string)}
+        trailingDropdown={
+          <Dropdown>
+            <InputDropDownButton title="Popular Searches" defaultValue="home" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
       />
 
       <DropdownOverlay>
@@ -357,6 +368,89 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
 
 export const SearchInputWithDropdown = SearchInputWithDropdownTemplate.bind({});
 SearchInputWithDropdown.storyName = 'With Dropdown';
+
+const SearchInputWithDisabledDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [isFetching, setIsFetching] = React.useState(false);
+
+  // Set a timeout to simulate fetching data
+  React.useEffect(() => {
+    if (searchTerm.length > 0) {
+      setIsFetching(true);
+      setTimeout(() => {
+        setIsFetching(false);
+      }, 1000);
+    }
+  }, [searchTerm]);
+
+  const popularItems = [
+    { title: 'Transactions', icon: TransactionsIcon },
+    { title: 'Settlements', icon: SettlementsIcon },
+    { title: 'Account & Settings', icon: SettingsIcon },
+  ];
+  const filteredItems = menuItems.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  return (
+    <Dropdown>
+      <SearchInputComponent
+        label="Search"
+        placeholder="Search here"
+        {...args}
+        onChange={({ value }) => setSearchTerm(value as string)}
+        trailingDropdown={
+          <Dropdown>
+            <InputDropDownButton isDisabled title="Popular Searches" defaultValue="home" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+
+      <DropdownOverlay>
+        {isFetching ? (
+          <BaseBox display="flex" justifyContent="center" padding="spacing.4">
+            <Spinner accessibilityLabel="Fetching data" />
+          </BaseBox>
+        ) : (
+          <ActionList>
+            {searchTerm.length === 0 ? (
+              <ActionListSection title="Popular Searches">
+                {popularItems.map((item, index) => (
+                  <ActionListItem
+                    key={index}
+                    title={item.title}
+                    value={item.title}
+                    leading={<ActionListItemIcon icon={item.icon} />}
+                  />
+                ))}
+              </ActionListSection>
+            ) : (
+              <ActionListSection title={`${filteredItems.length} items found`}>
+                {filteredItems.map((item, index) => (
+                  <ActionListItem
+                    key={index}
+                    title={item.title}
+                    value={item.title}
+                    leading={<ActionListItemIcon icon={item.icon} />}
+                  />
+                ))}
+              </ActionListSection>
+            )}
+          </ActionList>
+        )}
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+export const SearchInputWithDisabledDropdown = SearchInputWithDisabledDropdownTemplate.bind({});
+SearchInputWithDisabledDropdown.storyName = 'With Dropdown Disabled';
 
 const SearchInputWithTableTemplate: StoryFn<typeof SearchInputComponent> = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
