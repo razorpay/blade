@@ -95,82 +95,46 @@ jobs:
           echo "Checking downloaded coverage reports..."
           find coverage-reports -type f -name "*.json" | head -20
           ls -la coverage-reports/
-      - name: Merge Jest coverage reports
+      - name: Create Merged Coverage Report
         run: |
-          node - <<'NODE'
-          const fs = require('fs');
-          const glob = require('glob');
-          const { createCoverageMap } = require('istanbul-lib-coverage');
-
-          // Locate all shard coverage reports
-          const files = glob.sync('coverage-reports/**/report.json');
-          if (!files.length) {
-            console.error('No report.json files found');
-            process.exit(1);
-          }
-
-          // Aggregated stats that Jest adds to its JSON report
-          const summaryCounters = {
-            numTotalTests: 0,
-            numPassedTests: 0,
-            numFailedTests: 0,
-            numPendingTests: 0,
-            numRuntimeErrorTestSuites: 0,
-            numTotalTestSuites: 0,
-            numPassedTestSuites: 0,
-            numFailedTestSuites: 0,
-            numPendingTestSuites: 0,
-          };
-
-          // Merge coverage maps using istanbul's native utilities to ensure per-file
-          // statement counts are accumulated instead of overwritten.
-          const mergedCoverageMap = createCoverageMap({});
-
-          for (const file of files) {
-            const data = JSON.parse(fs.readFileSync(file, 'utf8'));
-
-            // Merge coverage information
-            if (data.coverageMap) {
-              mergedCoverageMap.merge(data.coverageMap);
-            }
-
-            // Merge Jest summary counters
-            Object.keys(summaryCounters).forEach((key) => {
-              if (typeof data[key] === 'number') {
-                summaryCounters[key] += data[key];
-              }
-            });
-          }
-
-          const mergedReport = {
-            ...summaryCounters,
-            coverageMap: mergedCoverageMap.toJSON(),
-          };
-
-          fs.writeFileSync('merged-report.json', JSON.stringify(mergedReport));
-          console.log('Merged Jest report written to merged-report.json');
-          NODE
-
-      - name: Upload merged Jest report
-        uses: actions/upload-artifact@v4
-        with:
-          name: merged-jest-report
-          path: merged-report.json
-          retention-days: 7
-      - name: Report Coverage
-        uses: ArtiomTr/jest-coverage-report-action@v2
-        continue-on-error: true
-        with:
-          coverage-file: ./merged-report.json
-          base-coverage-file: ./merged-report.json
-          skip-step: all
-          threshold: |
-            {
-              "global": {
-                "statements": 80,
-                "branches": 80,
-                "functions": 80,
-                "lines": 80
-              }
-            }
+          # Create directory for nyc output
+          mkdir -p .nyc_output
+          
+          # Find and copy all coverage-final.json files to .nyc_output with unique names
+          counter=1
+          find coverage-reports -name "coverage-final.json" | while read file; do
+            cp "$file" ".nyc_output/coverage-final-${counter}.json"
+            counter=$((counter + 1))
+          done
+          
+          # List files in .nyc_output for debugging
+          echo "Files in .nyc_output:"
+          ls -la .nyc_output/
+          
+          # Generate merged report
+          yarn nyc report --reporter=json --reporter=text-summary
+          
+          # Ensure output directory exists
+          mkdir -p packages/blade/coverage
+          
+          # Copy the merged report to expected location
+          if [ -f "coverage/coverage-final.json" ]; then
+            cp coverage/coverage-final.json packages/blade/coverage/
+            echo "Coverage file copied successfully"
+          else
+            echo "Error: coverage/coverage-final.json not found"
+            exit 1
+          fi
+      - name: Verify Coverage File
+        run: |
+          echo "Checking final coverage file..."
+          if [ -f "packages/blade/coverage/coverage-final.json" ]; then
+            echo "Coverage file exists"
+            echo "File size: $(wc -c < packages/blade/coverage/coverage-final.json) bytes"
+            echo "First 200 characters:"
+            head -c 200 packages/blade/coverage/coverage-final.json
+          else
+            echo "Error: Coverage file not found"
+            exit 1
+          fi
 
