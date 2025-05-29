@@ -100,34 +100,54 @@ jobs:
           node - <<'NODE'
           const fs = require('fs');
           const glob = require('glob');
+          const { createCoverageMap } = require('istanbul-lib-coverage');
 
+          // Locate all shard coverage reports
           const files = glob.sync('coverage-reports/**/report.json');
           if (!files.length) {
             console.error('No report.json files found');
             process.exit(1);
           }
 
-          const merged = JSON.parse(fs.readFileSync(files[0], 'utf8'));
+          // Aggregated stats that Jest adds to its JSON report
+          const summaryCounters = {
+            numTotalTests: 0,
+            numPassedTests: 0,
+            numFailedTests: 0,
+            numPendingTests: 0,
+            numRuntimeErrorTestSuites: 0,
+            numTotalTestSuites: 0,
+            numPassedTestSuites: 0,
+            numFailedTestSuites: 0,
+            numPendingTestSuites: 0,
+          };
 
-          for (const f of files.slice(1)) {
-            const data = JSON.parse(fs.readFileSync(f, 'utf8'));
-            Object.assign(merged.coverageMap, data.coverageMap);
+          // Merge coverage maps using istanbul's native utilities to ensure per-file
+          // statement counts are accumulated instead of overwritten.
+          const mergedCoverageMap = createCoverageMap({});
 
-            const counters = [
-              'numTotalTests', 'numPassedTests', 'numFailedTests',
-              'numPendingTests', 'numRuntimeErrorTestSuites',
-              'numTotalTestSuites', 'numPassedTestSuites',
-              'numFailedTestSuites', 'numPendingTestSuites'
-            ];
+          for (const file of files) {
+            const data = JSON.parse(fs.readFileSync(file, 'utf8'));
 
-            counters.forEach(key => {
+            // Merge coverage information
+            if (data.coverageMap) {
+              mergedCoverageMap.merge(data.coverageMap);
+            }
+
+            // Merge Jest summary counters
+            Object.keys(summaryCounters).forEach((key) => {
               if (typeof data[key] === 'number') {
-                merged[key] = (merged[key] || 0) + data[key];
+                summaryCounters[key] += data[key];
               }
             });
           }
 
-          fs.writeFileSync('merged-report.json', JSON.stringify(merged));
+          const mergedReport = {
+            ...summaryCounters,
+            coverageMap: mergedCoverageMap.toJSON(),
+          };
+
+          fs.writeFileSync('merged-report.json', JSON.stringify(mergedReport));
           console.log('Merged Jest report written to merged-report.json');
           NODE
 
