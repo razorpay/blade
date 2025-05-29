@@ -111,8 +111,8 @@ jobs:
           echo "Files in .nyc_output:"
           ls -la .nyc_output/
           
-          # Generate merged report
-          yarn nyc report --reporter=json --reporter=text-summary
+          # Generate merged report and capture text-summary
+          yarn nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
           
           # Ensure output directory exists
           mkdir -p packages/blade/coverage
@@ -125,16 +125,10 @@ jobs:
             echo "Error: coverage/coverage-final.json not found"
             exit 1
           fi
-      - name: Verify Coverage File
-        run: |
-          echo "Checking final coverage file..."
-          if [ -f "packages/blade/coverage/coverage-final.json" ]; then
-            echo "Coverage file exists"
-            echo "File size: $(wc -c < packages/blade/coverage/coverage-final.json) bytes"
-            echo "First 200 characters:"
-            head -c 200 packages/blade/coverage/coverage-final.json
-          else
-            echo "Error: Coverage file not found"
-            exit 1
-          fi
+      - name: Post Coverage Summary as PR Comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body-file: coverage-summary.txt
+          token: ${{ secrets.CI_BOT_TOKEN }}
 
