@@ -9,8 +9,10 @@ import type { ButtonProps } from '~components/Button';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { IconColor } from '~components/Button/BaseButton/types';
 
 type DropdownButtonProps = ButtonProps & {
+  iconColor?: IconColor;
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
 };
@@ -19,6 +21,7 @@ const _DropdownButton = ({
   children,
   icon,
   iconPosition = 'left',
+  iconColor,
   isDisabled = false,
   isFullWidth = false,
   isLoading = false,
@@ -47,7 +50,7 @@ const _DropdownButton = ({
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
     <BaseButton
       {...rest}
-      {...(icon ? { icon, children } : { children })}
+      {...(icon ? { icon, baseButtonIconColor: iconColor, children } : { children })}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
