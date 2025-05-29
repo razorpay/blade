@@ -241,6 +241,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   const trailingDropdown =
     trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
 
+  const _leadingIcon =
+    leading && getComponentId(leading as React.ReactElement) === 'Icon' ? leading : undefined;
+
+  const _trailingIcon =
+    trailing && getComponentId(trailing as React.ReactElement) === 'Icon' ? trailing : undefined;
+
   const renderLeadingDropDown = (): React.ReactElement | null => {
     if (!leadingDropDown) {
       return null;
@@ -396,10 +402,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
-      leadingIcon={leadingIcon ?? icon}
+      leadingIcon={_leadingIcon ?? icon}
       prefix={prefix}
       trailingInteractionElement={renderInteractionElement()}
-      trailingIcon={trailingIcon}
+      trailingIcon={_trailingIcon ?? trailingIcon}
       suffix={suffix}
       validationState={validationState}
       errorText={errorText}
