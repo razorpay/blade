@@ -148,4 +148,33 @@ describe('<StepGroup />', () => {
       expect(container).toMatchSnapshot();
     });
   });
+
+  describe('minWidth prop', () => {
+    it('should use default minWidth when not provided', () => {
+      const { container } = renderWithTheme(
+        <StepGroup orientation="horizontal">
+          <StepItem title="Introduction" />
+        </StepGroup>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should use custom minWidth when provided', () => {
+      const { container } = renderWithTheme(
+        <StepGroup orientation="horizontal">
+          <StepItem title="Introduction" minWidth="200px" />
+        </StepGroup>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should not apply minWidth in vertical orientation', () => {
+      const { container } = renderWithTheme(
+        <StepGroup orientation="vertical">
+          <StepItem title="Introduction" minWidth="200px" />
+        </StepGroup>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
