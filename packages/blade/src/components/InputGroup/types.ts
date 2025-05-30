@@ -67,7 +67,7 @@ type InputRowProps = {
    * CSS grid template columns value (e.g., "1fr 2fr" or "200px 1fr").
    * Controls how space is distributed between child inputs.
    */
-  templateColumns?: string;
+  gridTemplateColumns?: string;
   /**
    * Input components to render in this row.
    */

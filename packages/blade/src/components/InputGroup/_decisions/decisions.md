@@ -4,9 +4,13 @@ The `InputGroup` component is used to group related input fields together under 
 
 This component provides a consistent way to organize multiple inputs that collect related information. InputGroup automatically handles proper spacing and visual connection between inputs to create a unified control.
 
-### Image Group Anatomy
+### Input Group Anatomy
 
 <img width="100%" src="./inputgroup-anatomy.png" alt="InputGroup Anatomy" />
+
+### Input Group Example Usage
+
+<img width="100%" src="./inputgroup-examples.png" alt="InputGroup Examples">
 
 - [Design](#design)
 - [Component Hierarchy](#component-hierarchy)
@@ -58,11 +62,11 @@ The following props are supported by the InputGroup component:
 
 ### Prop Table
 
-| Prop            | Type            | Default | Description                                                                                                               |
-| --------------- | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
-| templateColumns | string          | -       | CSS grid template columns value (e.g., "1fr 2fr" or "200px 1fr"). Controls how space is distributed between child inputs. |
-| children        | React.ReactNode | -       | Input components to render in this row.                                                                                   |
-| testID          | string          | -       | Test ID for automation.                                                                                                   |
+| Prop                | Type            | Default | Description                                                                                                               |
+| ------------------- | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
+| gridTemplateColumns | string          | -       | CSS grid template columns value (e.g., "1fr 2fr" or "200px 1fr"). Controls how space is distributed between child inputs. |
+| children            | React.ReactNode | -       | Input components to render in this row.                                                                                   |
+| testID              | string          | -       | Test ID for automation.                                                                                                   |
 
 ## Usage
 
@@ -77,7 +81,7 @@ const App = () => {
       <InputRow>
         <TextInput placeholder="4400-1234-5422-6574" />
       </InputRow>
-      <InputRow templateColumns="1fr 2fr">
+      <InputRow gridTemplateColumns="1fr 2fr">
         <TextInput placeholder="John Doe" />
         <PasswordInput placeholder="•••••" />
       </InputRow>
@@ -102,11 +106,11 @@ const App = () => {
         <TextInput placeholder="First Name" isRequired />
         <TextInput placeholder="Last Name" isRequired />
       </InputRow>
-      <InputRow templateColumns="1fr 2fr">
+      <InputRow gridTemplateColumns="1fr 2fr">
         <TextInput placeholder="Street Number" />
         <TextInput validationState="error" placeholder="Street Name" isRequired />
       </InputRow>
-      <InputRow templateColumns="2fr 1fr 1fr">
+      <InputRow gridTemplateColumns="2fr 1fr 1fr">
         <TextInput validationState="error" placeholder="City" isRequired />
         <TextInput placeholder="State" />
         <TextInput placeholder="Zip Code" isRequired />
@@ -139,8 +143,8 @@ This approach allows for highlighting specific inputs with errors while displayi
 ### Responsive Behavior
 
 - On mobile screens:
-  - Inputs within `InputRow` will stack vertically regardless of `templateColumns` setting
-  - Each input will span the full width of the container
+  - Users need to handle mobile conditions themselves by adjusting `gridTemplateColumns` or component structure
+  - Consider using single-column layouts or simplified grid structures for better mobile experience
   - `labelPosition` will automatically switch to 'top' even if 'left' is specified
 - The vertical spacing between rows remains consistent across all viewport sizes
 

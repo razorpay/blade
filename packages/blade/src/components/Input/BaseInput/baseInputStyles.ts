@@ -64,6 +64,33 @@ export const getBaseInputState = ({
   }
 };
 
+// Border radius lookup table for input group positioning
+const INPUT_GROUP_BORDER_RADIUS_MAP: Record<string, Record<string, Set<string>>> = {
+  first: {
+    only: new Set(['tl', 'tr']),
+    first: new Set(['tl']),
+    last: new Set(['tr']),
+    middle: new Set<string>(),
+  },
+  last: {
+    only: new Set(['bl', 'br']),
+    first: new Set(['bl']),
+    last: new Set(['br']),
+    middle: new Set<string>(),
+  },
+  only: {
+    first: new Set(['tl', 'bl']),
+    last: new Set(['tr', 'br']),
+    middle: new Set<string>(),
+  },
+  middle: {
+    only: new Set<string>(),
+    first: new Set<string>(),
+    last: new Set<string>(),
+    middle: new Set<string>(),
+  },
+};
+
 const calculatePositionalBorderRadius = ({
   theme,
   _inputPosition,
@@ -75,42 +102,16 @@ const calculatePositionalBorderRadius = ({
 
   const { row, col } = _inputPosition;
 
-  const radius = theme.border.radius.medium;
-  const zero = theme.spacing[0];
+  if (row === 'only' && col === 'only') {
+    return makeBorderSize(theme.border.radius.medium);
+  }
 
-  /**
-   * Calculate border radius based on input position in group
-   * @param corner Corner abbreviation:
-   *   - tl: top-left
-   *   - tr: top-right
-   *   - br: bottom-right
-   *   - bl: bottom-left
-   */
-  const getCorner = (corner: 'tl' | 'tr' | 'br' | 'bl'): number => {
-    if (row === 'only' && col === 'only') return radius;
+  const cornersWithRadius = INPUT_GROUP_BORDER_RADIUS_MAP[row]?.[col] || new Set<string>();
 
-    if (row === 'first') {
-      if (col === 'only') return corner === 'tl' || corner === 'tr' ? radius : zero;
-      if (col === 'first' && corner === 'tl') return radius;
-      if (col === 'last' && corner === 'tr') return radius;
-    }
-
-    if (row === 'last') {
-      if (col === 'only') return corner === 'bl' || corner === 'br' ? radius : zero;
-      if (col === 'first' && corner === 'bl') return radius;
-      if (col === 'last' && corner === 'br') return radius;
-    }
-
-    if (row === 'only') {
-      if (col === 'first') return corner === 'tl' || corner === 'bl' ? radius : zero;
-      if (col === 'last') return corner === 'tr' || corner === 'br' ? radius : zero;
-    }
-
-    return zero;
-  };
-
-  return [getCorner('tl'), getCorner('tr'), getCorner('br'), getCorner('bl')]
-    .map((v) => makeBorderSize(v))
+  return (['tl', 'tr', 'br', 'bl'] as const)
+    .map((corner) =>
+      makeBorderSize(cornersWithRadius.has(corner) ? theme.border.radius.medium : theme.spacing[0]),
+    )
     .join(' ');
 };
 
