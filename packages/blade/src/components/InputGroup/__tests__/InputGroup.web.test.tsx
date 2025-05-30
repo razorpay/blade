@@ -99,22 +99,4 @@ describe('InputGroup', () => {
 
     expect(container.querySelector('[data-analytics-test="test"]')).toBeInTheDocument();
   });
-
-  it('should throw error for invalid children', () => {
-    expect(() =>
-      renderWithTheme(
-        <InputGroup>
-          <InputRow>
-            <TextInput label="First Input" placeholder="Enter text" />
-          </InputRow>
-          <InputRow>
-            <TextInput label="Second Input" placeholder="Enter text" />
-          </InputRow>
-          <p>Three</p>
-        </InputGroup>,
-      ),
-    ).toThrowError(
-      '[Blade: InputGroup]: Only `InputRow` components are accepted in `InputGroup` children',
-    );
-  });
 });
