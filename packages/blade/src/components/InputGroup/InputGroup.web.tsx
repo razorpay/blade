@@ -4,7 +4,6 @@ import { InputGroupProvider } from './InputGroupContext';
 import { InputRow } from './InputRow';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import type { BladeElementRef } from '~utils/types';
-import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils';
@@ -45,12 +44,6 @@ const _InputGroup = (
     [size, isDisabled],
   );
 
-  useVerifyAllowedChildren({
-    componentName: 'InputGroup',
-    children,
-    allowedComponents: ['InputRow'],
-  });
-
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-group');
   const idBase = useId('input-group');
   const labelId = `${idBase}-label`;
@@ -63,9 +56,18 @@ const _InputGroup = (
     (validationState === 'success' && Boolean(successText)) ||
     (validationState === 'error' && Boolean(errorText));
 
-  const inputRows = React.Children.toArray(children).filter(
-    (child) => React.isValidElement(child) && child.type === InputRow,
-  );
+  const inputRows = React.Children.toArray(children).flatMap((child) => {
+    if (React.isValidElement(child)) {
+      if (child.type === InputRow) {
+        return [child];
+      } else if (child.type === React.Fragment) {
+        return React.Children.toArray(child.props.children).filter(
+          (fragmentChild) => React.isValidElement(fragmentChild) && fragmentChild.type === InputRow,
+        );
+      }
+    }
+    return [];
+  }) as React.ReactElement[];
 
   const totalRows = inputRows.length;
 
