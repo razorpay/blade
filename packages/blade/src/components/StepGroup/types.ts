@@ -89,6 +89,11 @@ type StepItemProps = {
   description?: string;
 
   /**
+   * minWidth prop of StepItem
+   */
+  minWidth?: BoxProps['minWidth'];
+
+  /**
    * Progress line of step. When its start only starting part is highlighted and rest is kept dotted
    *
    * @default full

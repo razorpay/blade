@@ -64,6 +64,30 @@ describe('<StepGroup />', () => {
     expect(clickHandler).toBeCalledTimes(1);
   });
 
+  it('should use custom minWidth in horizontal orientation when minWidth is provided', () => {
+    const { container } = renderWithTheme(
+      <StepGroup orientation="horizontal">
+        <StepItem title="Introduction" minWidth="200px" />
+      </StepGroup>,
+    );
+    const stepItem = container.querySelector('.step-item');
+    expect(stepItem).toHaveStyle({
+      minWidth: '200px',
+    });
+  });
+
+  it('should have a default minWidth in horizontal orientation when minWidth is not provided', () => {
+    const { container } = renderWithTheme(
+      <StepGroup orientation="horizontal">
+        <StepItem title="Introduction" />
+      </StepGroup>,
+    );
+    const stepItem = container.querySelector('.step-item');
+    expect(stepItem).toHaveStyle({
+      minWidth: 'min(120px,100%)',
+    });
+  });
+
   it('should throw an error when trailing is passed in horizontal orientation', () => {
     // hiding error from terminal
     const tempConsoleError = console.error;
