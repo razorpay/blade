@@ -91,7 +91,7 @@ const INPUT_GROUP_BORDER_RADIUS_MAP: Record<string, Record<string, Set<string>>>
   },
 };
 
-const calculatePositionalBorderRadius = ({
+export const getPositionalBorderRadius = ({
   theme,
   _inputPosition,
 }: {
@@ -167,7 +167,7 @@ export const getInputBackgroundAndBorderStyles = ({
   return {
     backgroundColor,
     borderRadius: _inputPosition
-      ? calculatePositionalBorderRadius({ theme, _inputPosition })
+      ? getPositionalBorderRadius({ theme, _inputPosition })
       : makeBorderSize(isTableInputCell ? theme.border.radius.none : theme.border.radius.medium),
     borderStyle: 'solid',
     display: 'flex',
