@@ -218,6 +218,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c12.c12.c12.c12.c12:hover + div {
@@ -1136,6 +1137,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c12.c12.c12.c12.c12:hover + div {

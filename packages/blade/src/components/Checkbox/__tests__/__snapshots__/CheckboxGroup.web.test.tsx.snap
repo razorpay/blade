@@ -197,6 +197,7 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9:hover + div {
@@ -664,6 +665,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9:hover + div {
@@ -1190,6 +1192,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9:hover + div {

@@ -344,6 +344,7 @@ const _BaseDropdownInputTrigger = (
       {...(isInsideTableEditableCell ? tableInputProps : undefined)}
       // When AutoComplete is present inside DropdownOverlay, the floating ui adds tabIndex -1 internally. We override it with tabIndex 0 here
       tabIndex={isAutoCompleteInHeader ? 0 : undefined}
+      _inputPosition={props._inputPosition}
     />
   );
 };

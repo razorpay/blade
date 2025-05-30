@@ -29,6 +29,7 @@ type DropdownInputTriggersCommonProps = Pick<
   | 'placeholder'
   | 'testID'
   | 'size'
+  | '_inputPosition'
   | keyof DataAnalyticsAttribute
 > & {
   icon?: IconComponent;
