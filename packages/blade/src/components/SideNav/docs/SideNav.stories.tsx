@@ -45,10 +45,10 @@ import {
   TransactionsIcon,
   WalletIcon,
   CustomersIcon,
+  TestIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
-import { Indicator } from '~components/Indicator';
 import { Switch as BladeSwitch } from '~components/Switch';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -489,13 +489,7 @@ const SideNavExample = ({
           <SideNavItem
             as="label"
             title="Test Mode"
-            leading={
-              <Indicator
-                color={isTestModeActive ? 'notice' : 'positive'}
-                emphasis="intense"
-                accessibilityLabel=""
-              />
-            }
+            leading={<TestIcon />}
             trailing={
               <BladeSwitch
                 accessibilityLabel=""
