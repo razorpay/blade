@@ -46,6 +46,8 @@ import {
   WalletIcon,
   CustomersIcon,
   TestIcon,
+  GlobeIcon,
+  DollarIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
@@ -57,6 +59,7 @@ import { Card, CardBody } from '~components/Card';
 import { ProgressBar } from '~components/ProgressBar';
 import { Text } from '~components/Typography';
 import { Alert } from '~components/Alert';
+import { Badge } from '~components/Badge';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -193,6 +196,29 @@ const navItemsJSON: NavItemsJSONType[] = [
         icon: FileTextIcon,
         title: 'Account Statement',
         href: '/app/account-statement',
+      },
+    ],
+  },
+  {
+    type: 'section',
+    title: 'International Payments',
+    items: [
+      {
+        icon: GlobeIcon,
+        title: 'Global',
+        href: '/app/global',
+        trailing: (
+          <Badge color="positive" size="small">
+            New
+          </Badge>
+        ),
+        items: [
+          {
+            icon: DollarIcon,
+            title: 'International Payments',
+            href: '/app/international-payments',
+          },
+        ],
       },
     ],
   },
@@ -454,7 +480,7 @@ const SideNavExample = ({
                       activeOnLinks={getAllChildHrefs(l1Item.items)}
                       href={l1Item.items[0].href}
                     >
-                      <SideNavLevel key={l1Item.title}>
+                      <SideNavLevel key={l1Item.title} trailing={l1Item.trailing}>
                         {l1Item.items?.map((l2Item) => {
                           if (!l2Item.items) {
                             return (
