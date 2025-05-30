@@ -43,12 +43,10 @@ type TextInputProps = BaseInputProps & {
   /**
    * Enhanced onChange provides both formatted and raw values
    */
-  onChange?: (event: {
-    target: {
-      value: string; // Formatted value (e.g., "1234 5678 9012 3456")
-      rawValue: string; // Raw digits only (e.g., "1234567890123456")
-      name?: string;
-    };
+  onChange?: ({
+    value: string; // Formatted value (e.g., "1234 5678 9012 3456")
+    rawValue: string; // Raw digits only (e.g., "1234567890123456")
+    name?: string;
   }) => void;
 };
 ```
@@ -61,9 +59,10 @@ For CVV, we keep it simple with just character limits:
 type CVVInputProps = BaseInputProps & {
   /**
    * Maximum number of characters allowed
+   * Will hide the character limit display at bottom for CVV inputs
    * @default 4
    */
-  maxLength?: number;
+  maxCharacter?: number;
 };
 ```
 
@@ -81,8 +80,7 @@ const [cardIcon, setCardIcon] = useState(null);
     label="Card Number"
     format="#### #### #### ####"
     trailing={cardIcon}
-    onChange={(event) => {
-      const rawValue = event.target.rawValue;
+    onChange={({ rawValue }) => {
       if (rawValue.length === 4) {
         const cardType = detectCardType(rawValue);
         setCardIcon(getCardIcon(cardType));
@@ -92,7 +90,7 @@ const [cardIcon, setCardIcon] = useState(null);
 
   <Box display="flex" gap="spacing.3">
     <TextInput label="Expiry Date" format="##/##" placeholder="MM/YY" />
-    <PasswordInput label="CVV" maxLength={3} placeholder="123" />
+    <PasswordInput label="CVV" maxCharacter={3} placeholder="123" />
   </Box>
 </Box>;
 ```
@@ -106,7 +104,7 @@ const [cardIcon, setCardIcon] = useState(null);
   </InputRow>
   <InputRow templateColumns="1fr 1fr">
     <TextInput label="Expiry Date" format="##/##" />
-    <PasswordInput label="CVV" maxLength={3} />
+    <PasswordInput label="CVV" maxCharacter={3} />
   </InputRow>
 </InputGroup>
 ```
@@ -215,8 +213,9 @@ const [cardIcon, setCardIcon] = useState(null);
 
 ### External
 
-- [Razorpay Checkout](https://github.com/razorpay/dashboard/pull/17299) - Payment input UX patterns
+- [Razorpay Checkout](https://razorpay.com/demopg3/) - Payment input UX patterns
 - [Stripe Elements](https://checkout.stripe.dev/checkout) - Payment input UX patterns
 - [Ant Design Input](https://ant.design/components/input-number#input-number-demo-formatter) - Formatter function
   approach
+- [React Input Auto Format](https://danielyefet.github.io/react-input-auto-format/) - Format pattern approach
 - [Chakra UI Input](https://chakra-ui.com/docs/components/input) - Mask and format patterns
