@@ -409,6 +409,7 @@ const SideNavExample = ({
 }: SideNavProps & { showExampleContentPadding?: boolean }): React.ReactElement => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
   const [isTestModeActive, setIsTestModeActive] = React.useState(false);
+
   const location = useLocation();
 
   const getSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
@@ -495,7 +496,6 @@ const SideNavExample = ({
                 accessibilityLabel=""
               />
             }
-            backgroundColor={isTestModeActive ? `feedback.background.notice.subtle` : undefined}
             trailing={
               <BladeSwitch
                 accessibilityLabel=""
