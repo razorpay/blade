@@ -316,7 +316,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 <div>
@@ -719,7 +719,7 @@ exports[`<TextInput /> should render 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 <div>
@@ -1227,7 +1227,7 @@ exports[`<TextInput /> should render large size 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1840,7 +1840,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 <div>

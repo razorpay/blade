@@ -218,7 +218,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c11.c11.c11.c11.c11:hover + div {
@@ -778,7 +778,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c11.c11.c11.c11.c11:hover + div {

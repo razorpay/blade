@@ -213,7 +213,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 
@@ -484,7 +484,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c18.c18.c18.c18.c18[aria-selected=true] {
@@ -530,7 +530,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c25.c25.c25.c25.c25[aria-selected=true] {
@@ -1096,7 +1096,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 
@@ -1825,7 +1825,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 

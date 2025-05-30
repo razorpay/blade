@@ -32,7 +32,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -66,7 +66,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -186,7 +186,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -457,7 +457,7 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -491,7 +491,7 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -607,7 +607,7 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -838,7 +838,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -872,7 +872,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -979,7 +979,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -1210,7 +1210,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c11.c11.c11.c11.c11 {
@@ -1244,7 +1244,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -1368,7 +1368,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -1634,7 +1634,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1668,7 +1668,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -1788,7 +1788,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -2084,7 +2084,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -2118,7 +2118,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -2234,7 +2234,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
