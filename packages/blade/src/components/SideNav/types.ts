@@ -240,7 +240,10 @@ type SideNavBodyProps = {
   children: React.ReactElement | React.ReactElement[];
 };
 
-type SideNavLevelProps = { children: React.ReactElement | React.ReactElement[] };
+type SideNavLevelProps = {
+  children: React.ReactElement | React.ReactElement[];
+  trailing?: React.ReactElement;
+};
 
 export type {
   SideNavProps,
