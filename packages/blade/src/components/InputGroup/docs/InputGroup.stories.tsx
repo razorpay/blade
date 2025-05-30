@@ -16,6 +16,7 @@ import { useToast, ToastContainer } from '~components/Toast';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { useIsMobile } from '~utils/useIsMobile';
 
 export default {
   title: 'Components/InputGroup',
@@ -28,6 +29,7 @@ export default {
         <StoryPageWrapper
           componentDescription="InputGroup organizes related form inputs with consistent spacing and layout."
           componentName="InputGroup"
+          figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=103885-35158&m=dev"
         >
           <Heading size="large">Usage</Heading>
           <Sandbox editorHeight={500}>{InputGroupStoryCode}</Sandbox>
@@ -39,14 +41,14 @@ export default {
 
 const DefaultInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   <InputGroupComponent {...args}>
-    <InputRow templateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Street Address" label="Street Address" />
     </InputRow>
-    <InputRow templateColumns="2fr 1fr">
+    <InputRow gridTemplateColumns="2fr 1fr">
       <TextInput placeholder="City" label="City" />
       <TextInput placeholder="ZIP Code" label="ZIP Code" />
     </InputRow>
-    <InputRow templateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Country" label="Country" />
     </InputRow>
   </InputGroupComponent>
@@ -60,25 +62,25 @@ Default.args = {
 
 const DetailedInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   <InputGroupComponent {...args}>
-    <InputRow templateColumns="1fr 1fr">
+    <InputRow gridTemplateColumns="1fr 1fr">
       <TextInput placeholder="First Name" label="First Name" />
       <TextInput placeholder="Last Name" label="Last Name" />
     </InputRow>
-    <InputRow templateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Street Address" label="Street Address" />
     </InputRow>
-    <InputRow templateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Street Address Line-2" label="Address Line 2" />
     </InputRow>
-    <InputRow templateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Apartment Name" label="Apartment Name" />
     </InputRow>
-    <InputRow templateColumns="2fr 1fr 1fr">
+    <InputRow gridTemplateColumns="2fr 1fr 1fr">
       <TextInput placeholder="City" label="City" />
       <TextInput placeholder="State" label="State" />
       <TextInput placeholder="ZIP Code" label="ZIP Code" />
     </InputRow>
-    <InputRow templateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Country" label="Country" />
     </InputRow>
   </InputGroupComponent>
@@ -90,178 +92,97 @@ Detailed.args = {
   helpText: 'Complete address information required for billing',
 };
 
-const ComplexInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
-  <Box>
-    <InputGroupComponent {...args}>
-      <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="Business Name" label="Business Name" />
-        <TextInput placeholder="Trading Name" label="Trading Name (if different)" />
-      </InputRow>
-      <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="Business Email" label="Business Email" />
-        <TextInput placeholder="Business Phone" label="Business Phone" />
-      </InputRow>
-      <InputRow templateColumns="1fr">
-        <Dropdown selectionType="single">
-          <SelectInput
-            label="Business Type"
-            placeholder="Select Business Type"
-            name="businessType"
-            onChange={({ name, values }) => {
-              console.log({ name, values });
-            }}
-          />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem title="Private Limited Company" value="private_limited" />
-              <ActionListItem title="Public Limited Company" value="public_limited" />
-              <ActionListItem title="Partnership" value="partnership" />
-              <ActionListItem title="Sole Proprietorship" value="sole_proprietorship" />
-              <ActionListItem title="LLP" value="llp" />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-      </InputRow>
-      <InputRow templateColumns="1fr">
-        <TextInput placeholder="Registered Business Address" label="Registered Address" />
-      </InputRow>
-      <InputRow templateColumns="2fr 1fr 1fr">
-        <TextInput placeholder="City" label="City" />
-        <TextInput placeholder="State" label="State" />
-        <TextInput placeholder="PIN Code" label="PIN Code" />
-      </InputRow>
-      <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="PAN Number" label="Business PAN" />
-        <TextInput placeholder="GST Number" label="GSTIN" />
-      </InputRow>
-      <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="Account Holder Name" label="Bank Account Holder Name" />
-        <TextInput placeholder="Account Number" label="Bank Account Number" />
-      </InputRow>
-      <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="IFSC Code" label="IFSC Code" />
-        <TextInput placeholder="Bank Name" label="Bank Name" />
-      </InputRow>
-      <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="Contact Person Name" label="Authorized Signatory Name" />
-        <TextInput placeholder="Contact Person Phone" label="Signatory Phone" />
-      </InputRow>
-      <InputRow templateColumns="1fr 1fr">
-        <TextInput placeholder="Aadhar Number" label="Aadhar Number" />
-        <DatePicker inputPlaceHolder="DD/MM/YYYY" label="Date of Incorporation" />
-      </InputRow>
-      <InputRow templateColumns="1fr">
-        <Dropdown selectionType="single">
-          <SelectInput
-            label="Business Category"
-            placeholder="Select Business Category"
-            name="businessCategory"
-            onChange={({ name, values }) => {
-              console.log({ name, values });
-            }}
-          />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem title="E-commerce" value="ecommerce" />
-              <ActionListItem title="Education" value="education" />
-              <ActionListItem title="Healthcare" value="healthcare" />
-              <ActionListItem title="Food & Beverage" value="food_beverage" />
-              <ActionListItem title="Financial Services" value="financial" />
-              <ActionListItem title="Others" value="others" />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-      </InputRow>
-      <InputRow templateColumns="1fr">
-        <TextInput placeholder="Website URL" label="Business Website" />
-      </InputRow>
-      <InputRow templateColumns="1fr">
-        <TextInput
-          placeholder="Describe your business and expected transaction volume"
-          label="Business Description"
-        />
-      </InputRow>
-    </InputGroupComponent>
-    <Box display="flex" justifyContent="space-between" width="100%">
-      <Box />
-      <Button variant="primary" marginTop="spacing.3">
-        Submit for Verification
-      </Button>
-    </Box>
-  </Box>
-);
+const ResponsiveFormTemplate: StoryFn<InputGroupProps> = (args) => {
+  const isMobile = useIsMobile();
 
-export const Complex = ComplexInputGroupTemplate.bind({});
-Complex.args = {
-  label: 'Merchant Onboarding Form',
-  helpText: 'Complete all required information to start accepting payments',
+  return (
+    <Box>
+      <InputGroupComponent {...args}>
+        {isMobile ? (
+          <>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput placeholder="Business Name" label="Business Name" />
+            </InputRow>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput placeholder="Trading Name" label="Trading Name" />
+            </InputRow>
+          </>
+        ) : (
+          <InputRow gridTemplateColumns="1fr 1fr">
+            <TextInput placeholder="Business Name" label="Business Name" />
+            <TextInput placeholder="Trading Name" label="Trading Name" />
+          </InputRow>
+        )}
+        <InputRow gridTemplateColumns="1fr">
+          <TextInput placeholder="Business Email" label="Business Email" />
+        </InputRow>
+        {isMobile ? (
+          <>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput placeholder="PAN Number" label="Business PAN" />
+            </InputRow>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput placeholder="GST Number" label="GSTIN" />
+            </InputRow>
+          </>
+        ) : (
+          <InputRow gridTemplateColumns="1fr 1fr">
+            <TextInput placeholder="PAN Number" label="Business PAN" />
+            <TextInput placeholder="GST Number" label="GSTIN" />
+          </InputRow>
+        )}
+        {isMobile ? (
+          <>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput placeholder="Account Number" label="Bank Account Number" />
+            </InputRow>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput placeholder="IFSC Code" label="IFSC Code" />
+            </InputRow>
+          </>
+        ) : (
+          <InputRow gridTemplateColumns="2fr 1fr">
+            <TextInput placeholder="Account Number" label="Bank Account Number" />
+            <TextInput placeholder="IFSC Code" label="IFSC Code" />
+          </InputRow>
+        )}
+        <InputRow gridTemplateColumns="1fr">
+          <Dropdown selectionType="single">
+            <SelectInput
+              label="Business Category"
+              placeholder="Select Business Category"
+              name="businessCategory"
+              onChange={({ name, values }) => {
+                console.log({ name, values });
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="E-commerce" value="ecommerce" />
+                <ActionListItem title="Education" value="education" />
+                <ActionListItem title="Healthcare" value="healthcare" />
+                <ActionListItem title="Food & Beverage" value="food_beverage" />
+                <ActionListItem title="Financial Services" value="financial" />
+                <ActionListItem title="Others" value="others" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </InputRow>
+      </InputGroupComponent>
+      <Box display="flex" justifyContent="space-between" width="100%">
+        <Box />
+        <Button variant="primary" marginTop="spacing.3">
+          Start Onboarding
+        </Button>
+      </Box>
+    </Box>
+  );
 };
 
-const CompactInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
-  <InputGroupComponent {...args}>
-    <InputRow templateColumns="1fr 1fr 1fr 1fr 1fr">
-      <TextInput placeholder="First Name" label="First Name" />
-      <TextInput placeholder="Last Name" label="Last Name" />
-      <TextInput placeholder="Age" label="Age" />
-      <TextInput placeholder="Title" label="Title" />
-      <Dropdown selectionType="single">
-        <SelectInput
-          label="Gender"
-          placeholder="Select your Gender"
-          name="action"
-          onChange={({ name, values }) => {
-            console.log({ name, values });
-          }}
-        />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Male" value="male" />
-            <ActionListItem title="Female" value="female" />
-            <ActionListItem title="Others" value="other" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-    </InputRow>
-    <InputRow templateColumns="2fr 1fr 1fr">
-      <TextInput placeholder="Email Address" label="Email Address" />
-      <TextInput placeholder="Phone" label="Phone" />
-      <TextInput placeholder="City" label="City" />
-    </InputRow>
-    <InputRow templateColumns="3fr 1fr">
-      <TextInput placeholder="Street Address" label="Street Address" />
-      <TextInput placeholder="ZIP Code" label="ZIP Code" />
-    </InputRow>
-    <InputRow templateColumns="1fr 1fr 1fr 1fr 1fr 1fr">
-      <TextInput placeholder="Country" label="Country" />
-      <TextInput placeholder="State" label="State" />
-      <TextInput placeholder="Department" label="Department" />
-      <TextInput placeholder="Employee ID" label="Employee ID" />
-      <DatePicker inputPlaceHolder="MM/DD/YYYY" label="Start Date" />
-      <Dropdown selectionType="single">
-        <SelectInput
-          label="Status"
-          placeholder="Select Status"
-          name="status"
-          onChange={({ name, values }) => {
-            console.log({ name, values });
-          }}
-        />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Active" value="active" />
-            <ActionListItem title="Inactive" value="inactive" />
-            <ActionListItem title="Pending" value="pending" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-    </InputRow>
-  </InputGroupComponent>
-);
-
-export const Compact = CompactInputGroupTemplate.bind({});
-Compact.args = {
-  label: 'Quick Registration',
-  helpText: 'Compact form for fast data entry',
+export const ResponsiveForm = ResponsiveFormTemplate.bind({});
+ResponsiveForm.args = {
+  label: 'Merchant Onboarding',
+  helpText: 'Complete your business details to start accepting payments',
 };
 
 const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
@@ -358,7 +279,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
         validationState={hasFormErrors() ? 'error' : 'none'}
         errorText={hasFormErrors() ? 'Please fix all errors before submitting' : ''}
       >
-        <InputRow templateColumns="1fr">
+        <InputRow gridTemplateColumns="1fr">
           <TextInput
             placeholder="Card Number"
             label="Card Number"
@@ -367,7 +288,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
             validationState={getValidationState('cardNumber')}
           />
         </InputRow>
-        <InputRow templateColumns="1fr 1fr">
+        <InputRow gridTemplateColumns="1fr 1fr">
           <DatePicker
             inputPlaceHolder="Expiry Date"
             label="Expiry Date"
@@ -384,7 +305,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
             validationState={getValidationState('cvv')}
           />
         </InputRow>
-        <InputRow templateColumns="1fr">
+        <InputRow gridTemplateColumns="1fr">
           <TextInput
             placeholder="Cardholder Name"
             label="Cardholder Name"
@@ -393,7 +314,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
             validationState={getValidationState('cardholderName')}
           />
         </InputRow>
-        <InputRow templateColumns="1fr">
+        <InputRow gridTemplateColumns="1fr">
           <TextInput
             placeholder="Email Address"
             label="Email Address"
@@ -440,14 +361,14 @@ AllVariants.args = {
 
 const DisabledInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
   <InputGroupComponent {...args}>
-    <InputRow templateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Street Address" label="Street Address" value="123 Main Street" />
     </InputRow>
-    <InputRow templateColumns="2fr 1fr">
+    <InputRow gridTemplateColumns="2fr 1fr">
       <TextInput placeholder="City" label="City" value="San Francisco" />
       <TextInput placeholder="ZIP Code" label="ZIP Code" value="94102" />
     </InputRow>
-    <InputRow templateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Country" label="Country" value="United States" />
     </InputRow>
   </InputGroupComponent>

@@ -28,7 +28,7 @@ const InputGroupExample = () => {
 
   return (
       <InputGroup label="Payment Details" hintText="Enter your payment details">
-        <InputRow templateColumns="1fr">
+        <InputRow gridTemplateColumns="1fr">
           <TextInput 
             placeholder="1234 5678 9012 3456" 
             label="Card Number"
@@ -36,7 +36,7 @@ const InputGroupExample = () => {
             onChange={({ value }) => handleInputChange('cardNumber', value)}
           />
         </InputRow>
-        <InputRow templateColumns="1fr">
+        <InputRow gridTemplateColumns="1fr">
           <DatePicker 
             inputPlaceHolder="MM/YY" 
             label="Expiry Date"
@@ -44,7 +44,7 @@ const InputGroupExample = () => {
             onChange={({ value }) => handleInputChange('expiryDate', value)}
           />
         </InputRow>
-        <InputRow templateColumns="1fr 1fr">
+        <InputRow gridTemplateColumns="1fr 1fr">
           <TextInput 
             placeholder="123" 
             label="CVV"
@@ -58,7 +58,7 @@ const InputGroupExample = () => {
             onChange={({ value }) => handleInputChange('cardholderName', value)}
           />
         </InputRow>
-        <InputRow templateColumns="1fr">
+        <InputRow gridTemplateColumns="1fr">
           <Button onClick={handleSubmit} variant="primary">
             Submit Payment
           </Button>
