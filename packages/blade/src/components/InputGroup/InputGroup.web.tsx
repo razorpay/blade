@@ -105,7 +105,7 @@ const _InputGroup = (
 
             <BaseBox display="flex" flexDirection="column">
               {React.Children.map(inputRows, (child, rowIndex) =>
-                React.cloneElement(child as React.ReactElement, {
+                React.cloneElement(child, {
                   _rowPosition:
                     totalRows === 1
                       ? 'only'
