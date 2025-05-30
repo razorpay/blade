@@ -8,6 +8,7 @@ import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
 import type { InputWrapperRef } from './types';
 import { baseInputBorderBackgroundMotion, formHintLeftLabelMarginLeft } from './baseInputTokens';
+import { getPositionalBorderRadius } from './baseInputStyles';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -58,7 +59,6 @@ import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
-import { getPositionalBorderRadius } from './baseInputStyles';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'

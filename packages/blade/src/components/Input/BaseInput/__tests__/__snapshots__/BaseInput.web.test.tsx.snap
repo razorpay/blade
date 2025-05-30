@@ -316,7 +316,7 @@ exports[`<BaseInput /> should render 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 <div>
@@ -1110,7 +1110,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 <div>
@@ -1676,7 +1676,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 <div>
@@ -2237,7 +2237,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -2703,7 +2703,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 1;
+  z-index: 2;
 }
 
 <div>
