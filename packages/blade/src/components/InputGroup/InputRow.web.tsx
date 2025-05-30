@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import type { InputRowProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const StyledInputRow = styled.div<{ $templateColumns: string }>`
+const StyledInputRow = styled.div<{ $gridTemplateColumns: string }>`
   display: grid;
-  grid-template-columns: ${(props) => props.$templateColumns};
+  grid-template-columns: ${(props) => props.$gridTemplateColumns};
 `;
 
 // Helper function to recursively add _inputPosition to all children
@@ -33,7 +33,7 @@ const addInputPositionToChildren = (
 };
 
 export const _InputRow = ({
-  templateColumns = '1fr',
+  gridTemplateColumns = '1fr',
   children,
   testID,
   _rowPosition = 'only',
@@ -41,7 +41,7 @@ export const _InputRow = ({
   const childCount = React.Children.count(children);
 
   return (
-    <StyledInputRow $templateColumns={templateColumns} data-testid={testID}>
+    <StyledInputRow $gridTemplateColumns={gridTemplateColumns} data-testid={testID}>
       {React.Children.map(children, (child, colIndex) => {
         if (React.isValidElement(child)) {
           const _colPosition =
