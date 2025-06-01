@@ -58,6 +58,7 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
     accessibilityLabel,
     date,
     format,
+    ...rest
   } = props;
   const { locale } = useDatesContext();
 
@@ -77,6 +78,7 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
         role: 'combobox',
       }}
       {...referenceProps}
+      {...rest}
     />
   );
 };
