@@ -58,7 +58,7 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
     accessibilityLabel,
     date,
     format,
-    ...rest
+    isDisabled,
   } = props;
   const { locale } = useDatesContext();
 
@@ -77,8 +77,8 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
         controls: referenceProps['aria-controls'],
         role: 'combobox',
       }}
+      isDisabled={isDisabled}
       {...referenceProps}
-      {...rest}
     />
   );
 };
