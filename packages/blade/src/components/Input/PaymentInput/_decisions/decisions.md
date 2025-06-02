@@ -26,7 +26,7 @@ We extend existing TextInput with formatting capabilities using a generic approa
 ```ts
 type TextInputProps = BaseInputProps & {
   /**
-   * Format pattern where # represents digits and other characters are delimiters
+   * Format pattern where # represents input characters and other symbols act as delimiters
    * When provided, input will be automatically formatted
    * @example "#### #### #### ####" for card numbers
    * @example "##/##" for expiry dates
@@ -45,7 +45,7 @@ type TextInputProps = BaseInputProps & {
    */
   onChange?: ({
     value: string; // Formatted value (e.g., "1234 5678 9012 3456")
-    rawValue: string; // Raw digits only (e.g., "1234567890123456")
+    rawValue: string; // Raw input without delimiters (e.g., "1234567890123456")
     name?: string;
   }) => void;
 };
@@ -56,7 +56,7 @@ type TextInputProps = BaseInputProps & {
 For CVV, we keep it simple with just character limits:
 
 ```ts
-type CVVInputProps = BaseInputProps & {
+type PasswordInputProps = BaseInputProps & {
   /**
    * Maximum number of characters allowed
    * Will hide the character limit display at bottom for CVV inputs
@@ -139,17 +139,66 @@ const [cardIcon, setCardIcon] = useState(null);
 
 ### User-Managed Icon Handling
 
-**Decision**: Users pass React components via `trailing` prop instead of built-in card type icons.
+**Decision**: Users pass React components via `trailing` prop instead of built-in card type detection and automatic icon display provided by Blade.
 
-**Rationale**:
+**What are card type icons?** Visual indicators showing the detected payment card brand (Visa, Mastercard, Amex, etc.) that appear in the input field to provide user feedback.
 
-- **Flexibility**: Users can pass any React component (Image, Icon, custom components)
-- **Control**: Teams have full control over icon appearance and behavior
-- **Generic**: Works for non-payment use cases (bank icons, validation icons, etc.)
+**Alternative Approaches Considered:**
+
+**Option A: Built-in Card Type Icons (Rejected)**
+
+```jsx
+// Component automatically detects card type based on user input and shows appropriate icon
+<PaymentInput
+  type="cardNumber"
+  showCardIcon={true} // Blade decides which icon to show
+/>
+```
+
+**Option B: User-Managed Icons (Chosen)**
+
+```jsx
+// User controls detection logic and icon display
+const [cardIcon, setCardIcon] = useState(null);
+
+<TextInput
+  format="#### #### #### ####"
+  trailing={cardIcon}
+  onChange={({ rawValue }) => {
+    const cardType = detectCardType(rawValue); // User's logic
+    setCardIcon(<VisaIcon />); // User's icon component
+  }}
+/>;
+```
+
+**Pros of User-Managed Approach:**
+
+- **Custom Detection Logic**: Teams can use their preferred card detection libraries or custom rules
+- **Brand Flexibility**: Use custom icon designs that match brand guidelines
+- **Generic Reusability**: Same pattern works for bank icons, validation icons, or any trailing component
+- **Business Logic Integration**: Card detection often involves business-specific rules (supported cards, regional variations)
+
+**Cons of User-Managed Approach:**
+
+- **Requires Existing Detection Logic**: Teams need to integrate their existing card detection and icon management
+- **Potential Inconsistency**: Different teams might implement different detection behaviors
+
+**Pros of Built-in Approach (Why we didn't choose it):**
+
+- **Ease of Use**: Simple boolean prop to enable card icons
+- **Consistency**: All teams get the same detection behavior
+- **Less Code**: No need to implement detection logic
+
+**Cons of Built-in Approach (Why we rejected it):**
+
+- **Limited Flexibility**: Hard to customize detection rules or icon appearance
+- **Business Logic Conflicts**: Built-in detection might not match business requirements
+- **Generic Use Case Limitation**: Doesn't work for non-payment formatting scenarios
+- **Additional Learning Curve**: Teams need to learn Blade's specific card detection API and behavior
 
 ### Enhanced onChange with Dual Values
 
-**Decision**: `onChange` provides both `value` (formatted) and `rawValue` (digits only) instead of separate formatting functions.
+**Decision**: `onChange` provides both `value` (formatted) and `rawValue` (without delimiters) instead of separate formatting functions.
 
 **Rationale**:
 
@@ -160,7 +209,7 @@ const [cardIcon, setCardIcon] = useState(null);
 
 ### Format-Based Constraints
 
-**Decision**: `maxLength`, `minLength`, and input type are automatically derived from the `format` pattern.
+**Decision**: `maxLength` and `minLength` are automatically derived from the `format` pattern.
 
 **Rationale**:
 
