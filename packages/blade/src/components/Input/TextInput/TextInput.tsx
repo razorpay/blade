@@ -85,7 +85,7 @@ type TextInputCommonProps = Pick<
 
   /**
    * Icon that will be rendered at the beginning of the input field
-   * @deprecated Use `leadingIcon` instead. This prop will be removed in the next major version.
+   * @deprecated Use `leading` instead. This prop will be removed in the next major version.
    */
   icon?: IconComponent;
   /**
@@ -104,10 +104,11 @@ type TextInputCommonProps = Pick<
   type?: Type;
   /**
    *
+   * Icon or React Element to be rendered at the end of the input field
    */
   trailing?: React.ReactElement | IconComponent;
   /**
-   *
+   * Icon or React Element to be rendered at the beginning of the input field
    */
   leading?: React.ReactElement | IconComponent;
 } & TaggedInputProps &
