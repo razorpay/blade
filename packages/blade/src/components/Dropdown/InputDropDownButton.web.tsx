@@ -137,7 +137,6 @@ const _InputDropDownButton = ({
     activeIndex,
     hasFooterAction,
     triggererRef,
-    // selectionType,
     isControlled,
     setSelectedIndices,
     controlledValueIndices,
@@ -146,22 +145,19 @@ const _InputDropDownButton = ({
 
   // Set initial selected index when defaultValue is provided
   useEffect(() => {
-    if (defaultValue && options.length > 0) {
+    const currentValueIndex = value ? options.findIndex((option) => option.value === value) : -1;
+    if (defaultValue && options.length > 0 && !value) {
       const defaultIndex = options.findIndex((option) => option.value === defaultValue);
       if (defaultIndex !== -1) {
         setSelectedIndices([defaultIndex]);
       }
+    } else if (value && options.length > 0 && selectedIndices.length === 0) {
+      setSelectedIndices([currentValueIndex]);
+      // since it will be always one selectedIndices in case of InputDropDownButton.
+    } else if (value && selectedIndices.length > 0 && currentValueIndex !== selectedIndices[0]) {
+      setSelectedIndices([currentValueIndex]);
     }
-  }, [defaultValue, options, setSelectedIndices]);
-
-  // set initial index when value is provided and we don't have a selected index
-  useEffect(() => {
-    if (value && options.length > 0 && selectedIndices.length === 0) {
-      const index = options.findIndex((option) => option.value === value);
-      setSelectedIndices([index]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, options, setSelectedIndices]);
+  }, [defaultValue, options, setSelectedIndices, value]);
 
   const valueTitle = options.find((option) => option.value === value)?.title ?? value;
 

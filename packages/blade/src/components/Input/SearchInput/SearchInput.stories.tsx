@@ -449,6 +449,36 @@ const SearchInputWithDisabledDropdownTemplate: StoryFn<typeof SearchInputCompone
   );
 };
 
+const SearchInputWithControlledDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
+  const [inputDropdownValue, setInputDropdownValue] = React.useState('home');
+  return (
+    <SearchInputComponent
+      label="Search"
+      placeholder="Search here"
+      {...args}
+      trailing={
+        <Dropdown>
+          <InputDropDownButton
+            title="Popular Searches"
+            defaultValue="home"
+            value={inputDropdownValue}
+            onChange={({ value }) => setInputDropdownValue(value)}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Home" value="home" />
+              <ActionListItem title="Pricing" value="pricing" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      }
+    />
+  );
+};
+
+export const SearchInputWithControlledDropdown = SearchInputWithControlledDropdownTemplate.bind({});
+SearchInputWithControlledDropdown.storyName = 'With Controlled Dropdown';
+
 export const SearchInputWithDisabledDropdown = SearchInputWithDisabledDropdownTemplate.bind({});
 SearchInputWithDisabledDropdown.storyName = 'With Dropdown Disabled';
 
