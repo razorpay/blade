@@ -169,7 +169,7 @@ const _InputDropDownButton = ({
     return option ? option.title : '';
   };
 
-  const getValueFromIndices = (): string => {
+  const getValueFromIndices = React.useMemo((): string => {
     let indices: number[] = [];
     if (isControlled) {
       indices = controlledValueIndices;
@@ -178,7 +178,7 @@ const _InputDropDownButton = ({
     }
 
     return indices.length > 0 ? options[indices[0]].value : '';
-  };
+  }, [isControlled, options, controlledValueIndices, selectedIndices]);
 
   const getUnControlledInputGroupValue = (): string | string[] => {
     if (uncontrolledInputValue) {
@@ -191,10 +191,10 @@ const _InputDropDownButton = ({
     if (!isFirstRender) {
       onChange?.({
         name: name || idBase,
-        value: getValueFromIndices(),
+        value: getValueFromIndices,
       });
       if (isUnControlled) {
-        setUncontrolledInputValue(getValueFromIndices());
+        setUncontrolledInputValue(getValueFromIndices);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
