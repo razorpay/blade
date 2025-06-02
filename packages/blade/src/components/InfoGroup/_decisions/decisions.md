@@ -6,7 +6,7 @@ InfoGroup is a structured component for displaying key-value pairs in a consiste
 
 ## Design
 
-- [Figma - InfoGroup](figma-url)
+- [Figma - InfoGroup](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=99000-73547&p=f&m=dev)
 
 ## API
 
