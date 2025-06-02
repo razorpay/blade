@@ -8,7 +8,15 @@ export type FormInputHandleOnEvent = ({
   value?: React.ChangeEvent<HTMLInputElement> | string;
 }) => void;
 
-export type FormInputOnEvent = ({ name, value }: { name?: string; value?: string }) => void;
+export type FormInputOnEvent = ({
+  name,
+  value,
+  rawValue,
+}: {
+  name?: string;
+  value?: string;
+  rawValue?: string;
+}) => void;
 
 export type FormInputHandleOnKeyDownEvent = ({
   name,

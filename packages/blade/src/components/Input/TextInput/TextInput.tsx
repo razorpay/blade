@@ -6,6 +6,7 @@ import { BaseInput } from '../BaseInput';
 import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
 import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
 import { useTaggedInput } from '../BaseInput/useTaggedInput';
+import { useFormattedInput } from './useFormattedInput';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
@@ -24,6 +25,7 @@ import type {
   DataAnalyticsAttribute,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import type { FormInputOnEvent } from '~components/Form/FormTypes';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -64,6 +66,16 @@ type TextInputCommonProps = Pick<
   | 'textAlign'
   | keyof DataAnalyticsAttribute
 > & {
+  /**
+   * Format pattern where # represents digits and other characters are delimiters
+   * When provided, input will be automatically formatted and onChange will include rawValue
+   *
+   * @example "#### #### #### ####" for card numbers
+   * @example "##/##" for expiry dates
+   * @example "(###) ###-####" for phone numbers
+   */
+  format?: string;
+
   /**
    * Decides whether to render a clear icon button
    */
@@ -149,6 +161,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     name,
     value,
     maxCharacters,
+    format,
     onChange,
     onClick,
     onFocus,
@@ -186,6 +199,33 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
   const [isInputFocussed, setIsInputFocussed] = useState(autoFocus ?? false);
+
+  // Use formatting hook only when format is provided
+  const formattingResult = useFormattedInput({
+    format,
+    onChange,
+    value,
+    defaultValue,
+  });
+
+  // Use formatted values when format is provided, otherwise use original values
+  const inputValue = format ? formattingResult.formattedValue : value;
+  const effectiveMaxCharacters = format ? formattingResult.maxLength : maxCharacters;
+
+  // Create adapter for onChange to handle both formatted and standard cases
+  const handleOnChange: FormInputOnEvent = React.useCallback(
+    ({ name, value: inputValue }) => {
+      if (format) {
+        // Use the formatting hook's handler which will call onChange with rawValue
+        formattingResult.handleChange({ name, value: inputValue });
+      } else {
+        // Standard behavior - call onChange without rawValue
+        onChange?.({ name, value: inputValue });
+      }
+    },
+    [format, formattingResult.handleChange, onChange],
+  );
+
   const {
     activeTagIndex,
     setActiveTagIndex,
@@ -198,15 +238,15 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     tags,
     onTagChange,
     isDisabled,
-    onChange,
+    onChange: handleOnChange,
     name,
-    value,
+    value: inputValue,
     inputRef: textInputRef,
   });
 
   React.useEffect(() => {
-    setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
-  }, [showClearButton, defaultValue, value]);
+    setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? inputValue)));
+  }, [showClearButton, defaultValue, inputValue]);
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
@@ -219,7 +259,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
           size="medium"
           icon={CloseIcon}
           onClick={() => {
-            if (isEmpty(value) && textInputRef.current) {
+            if (isEmpty(inputValue) && textInputRef.current) {
               // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
               if (isReactNative(textInputRef.current)) {
                 textInputRef.current.clear();
@@ -244,6 +284,34 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     return null;
   };
 
+  const handleInputChange = ({ name, value }: { name?: string; value?: string }) => {
+    if (showClearButton && value?.length) {
+      // show the clear button when the user starts typing in
+      setShouldShowClearButton(true);
+    }
+
+    if (shouldShowClearButton && !value?.length) {
+      // hide the clear button when the input field is empty
+      setShouldShowClearButton(false);
+    }
+
+    handleTaggedInputChange({ name, value });
+    handleOnChange({ name, value });
+  };
+
+  const handleKeyDown = (keyDownEvent: {
+    name?: string;
+    key?: string;
+    code?: string;
+    event: React.KeyboardEvent<HTMLInputElement>;
+  }) => {
+    handleTaggedInputKeydown(keyDownEvent);
+
+    if (format) {
+      formattingResult.handleKeyDown(keyDownEvent.event);
+    }
+  };
+  console.log('inputValue', inputValue, 'defaultValue', defaultValue, 'value', value);
   return (
     <BaseInput
       id="textinput"
@@ -255,29 +323,16 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       labelPosition={labelPosition}
       placeholder={placeholder}
       defaultValue={defaultValue}
-      value={value}
+      value={inputValue}
       name={name}
-      maxCharacters={maxCharacters}
+      maxCharacters={effectiveMaxCharacters}
       isDropdownTrigger={isTaggedInput}
       tags={isTaggedInput ? getTags({ size }) : undefined}
       showAllTags={isInputFocussed}
       maxTagRows="single"
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
-      onChange={({ name, value }) => {
-        if (showClearButton && value?.length) {
-          // show the clear button when the user starts typing in
-          setShouldShowClearButton(true);
-        }
-
-        if (shouldShowClearButton && !value?.length) {
-          // hide the clear button when the input field is empty
-          setShouldShowClearButton(false);
-        }
-
-        handleTaggedInputChange({ name, value });
-        onChange?.({ name, value });
-      }}
+      onChange={handleInputChange}
       onClick={onClick}
       onFocus={(e) => {
         setIsInputFocussed(true);
@@ -287,9 +342,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         setIsInputFocussed(false);
         onBlur?.(e);
       }}
-      onKeyDown={(e) => {
-        handleTaggedInputKeydown(e);
-      }}
+      onKeyDown={handleKeyDown}
       onSubmit={onSubmit}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
@@ -304,11 +357,11 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       helpText={helpText}
       successText={successText}
       trailingFooterSlot={(value) => {
-        return maxCharacters ? (
+        return effectiveMaxCharacters ? (
           <BaseBox marginTop={hintMarginTop[size]} marginRight="spacing.1">
             <CharacterCounter
               currentCount={value?.length ?? 0}
-              maxCount={maxCharacters}
+              maxCount={effectiveMaxCharacters}
               size={size}
             />
           </BaseBox>

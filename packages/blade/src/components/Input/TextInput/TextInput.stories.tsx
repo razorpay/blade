@@ -37,8 +37,9 @@ export default {
     textAlign: 'left',
     autoFocus: false,
     size: 'medium',
-    onChange: ({ name, value }): void => {
+    onChange: ({ name, value, rawValue }): void => {
       console.log(`input field ${name} content changed to ${value}`);
+      console.log(`raw value is ${rawValue}`);
     },
     onFocus: ({ name, value }): void => {
       console.log(`input field ${name} received focus. The value is ${value}`);
@@ -330,6 +331,7 @@ TextInputTypeNumber.args = {
   type: 'number',
   label: 'Enter Number',
   placeholder: 'Enter any random number',
+  format: '#### #### #### ####',
 };
 
 TextInputTypeNumber.parameters = {
