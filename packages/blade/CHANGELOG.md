@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.31.5
+
+### Patch Changes
+
+- ce5916a56: feat(StepItem): expose minwidth for StepItem
+
 ## 12.31.4
 
 ### Patch Changes
