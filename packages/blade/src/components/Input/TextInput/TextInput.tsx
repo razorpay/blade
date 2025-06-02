@@ -251,53 +251,42 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       ? (trailing as IconComponent)
       : undefined;
 
-  const renderLeadingDropDown = (): React.ReactElement | null => {
-    if (!leadingDropDown) {
+  const renderDropdown = (
+    dropdown: React.ReactElement,
+    isOpen: boolean,
+    setIsOpen: (isOpen: boolean) => void,
+  ): React.ReactElement | null => {
+    if (!dropdown) {
       return null;
     }
-    return React.cloneElement(leadingDropDown as React.ReactElement, {
+    return React.cloneElement(dropdown, {
       selectionType: 'single',
-      isOpen: isLeadingDropDownOpen,
+      isOpen,
       onOpenChange: (isOpen: boolean) => {
-        setIsLeadingDropDownOpen(isOpen);
+        setIsOpen(isOpen);
       },
-      children: React.Children.map(
-        (leadingDropDown as React.ReactElement).props.children,
-        (child) => {
-          if (child.type === DropdownOverlay) {
-            return React.cloneElement(child, {
-              referenceRef: textInputWrapperRef,
-            });
-          }
-          return child;
-        },
-      ),
+      children: React.Children.map(dropdown.props.children, (child) => {
+        if (child.type === DropdownOverlay) {
+          return React.cloneElement(child, {
+            referenceRef: textInputWrapperRef,
+          });
+        }
+        return child;
+      }),
     });
   };
 
-  const renderTailingLeadingDropdown = (): React.ReactElement | null => {
-    if (!trailingDropdown) {
-      return null;
-    }
-    return React.cloneElement(trailingDropdown as React.ReactElement, {
-      selectionType: 'single',
-      isOpen: isTrailingDropDownOpen,
-      onOpenChange: (isOpen: boolean) => {
-        setIsTrailingDropDownOpen(isOpen);
-      },
-      children: React.Children.map(
-        (trailingDropdown as React.ReactElement).props.children,
-        (child) => {
-          if (child.type === DropdownOverlay) {
-            return React.cloneElement(child, {
-              referenceRef: textInputWrapperRef,
-            });
-          }
-          return child;
-        },
-      ),
-    });
-  };
+  const renderLeadingDropDown = renderDropdown(
+    leadingDropDown as React.ReactElement,
+    isLeadingDropDownOpen,
+    setIsLeadingDropDownOpen,
+  );
+
+  const renderTrailingDropDown = renderDropdown(
+    trailingDropdown as React.ReactElement,
+    isTrailingDropDownOpen,
+    setIsTrailingDropDownOpen,
+  );
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
@@ -374,8 +363,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       maxTagRows="single"
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
-      leadingDropDown={renderLeadingDropDown()}
-      trailingDropDown={renderTailingLeadingDropdown()}
+      leadingDropDown={renderLeadingDropDown}
+      trailingDropDown={renderTrailingDropDown}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
