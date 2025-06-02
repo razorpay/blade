@@ -365,11 +365,11 @@ exports[`<BaseInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -1159,11 +1159,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -1725,11 +1725,11 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -2324,11 +2324,11 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -2752,11 +2752,11 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <input

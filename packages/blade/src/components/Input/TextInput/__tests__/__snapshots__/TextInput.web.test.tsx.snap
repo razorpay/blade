@@ -365,11 +365,11 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -768,11 +768,11 @@ exports[`<TextInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -1314,11 +1314,11 @@ exports[`<TextInput /> should render large size 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -1889,11 +1889,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
           data-blade-component="base-box"
         >
           <div

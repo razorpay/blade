@@ -497,11 +497,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1912,11 +1912,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -2147,11 +2147,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             </label>
                           </div>
                           <div
-                            class=" c36"
+                            class=" c36 focus-ring-wrapper"
                             data-blade-component="base-box"
                           >
                             <div
-                              class=" c37 c11"
+                              class=" c37 c11 base-input-wrapper"
                               data-blade-component="base-box"
                             >
                               <div
@@ -2888,11 +2888,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -3524,11 +3524,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div

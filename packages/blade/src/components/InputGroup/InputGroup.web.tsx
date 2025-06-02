@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import type { InputGroupProps } from './types';
+import { StyledInputGroup } from './StyledInputGroup';
 import { InputGroupProvider } from './InputGroupContext';
-import { InputRow } from './InputRow';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import type { BladeElementRef } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
@@ -56,24 +56,9 @@ const _InputGroup = (
     (validationState === 'success' && Boolean(successText)) ||
     (validationState === 'error' && Boolean(errorText));
 
-  const inputRows = React.Children.toArray(children).flatMap((child) => {
-    if (React.isValidElement(child)) {
-      if (child.type === InputRow) {
-        return [child];
-      } else if (child.type === React.Fragment) {
-        return React.Children.toArray(child.props.children).filter(
-          (fragmentChild) => React.isValidElement(fragmentChild) && fragmentChild.type === InputRow,
-        );
-      }
-    }
-    return [];
-  }) as React.ReactElement[];
-
-  const totalRows = inputRows.length;
-
   return (
     <InputGroupProvider value={contextValue}>
-      <BaseBox
+      <StyledInputGroup
         ref={getOuterMotionRef({ _motionMeta, ref })}
         {...metaAttribute({ name: MetaConstants.InputGroup, testID })}
         {...getStyledProps(rest)}
@@ -104,19 +89,7 @@ const _InputGroup = (
             )}
 
             <BaseBox display="flex" flexDirection="column">
-              {React.Children.map(inputRows, (child, rowIndex) =>
-                React.cloneElement(child, {
-                  _rowPosition:
-                    totalRows === 1
-                      ? 'only'
-                      : rowIndex === 0
-                      ? 'first'
-                      : rowIndex === totalRows - 1
-                      ? 'last'
-                      : 'middle',
-                  _totalRows: totalRows,
-                }),
-              )}
+              {children}
             </BaseBox>
           </BaseBox>
 
@@ -141,7 +114,7 @@ const _InputGroup = (
             </BaseBox>
           )}
         </BaseBox>
-      </BaseBox>
+      </StyledInputGroup>
     </InputGroupProvider>
   );
 };

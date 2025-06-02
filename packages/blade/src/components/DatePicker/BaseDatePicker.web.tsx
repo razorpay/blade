@@ -434,7 +434,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
               necessityIndicator={necessityIndicator}
               format={finalFormat}
               placeholder={finalInputPlaceHolder}
-              {...props}
               {...makeAnalyticsAttribute(props)}
             />
           )}
