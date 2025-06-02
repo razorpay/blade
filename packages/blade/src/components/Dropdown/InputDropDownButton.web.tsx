@@ -157,6 +157,7 @@ const _InputDropDownButton = ({
     } else if (value && selectedIndices.length > 0 && currentValueIndex !== selectedIndices[0]) {
       setSelectedIndices([currentValueIndex]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultValue, options, setSelectedIndices, value]);
 
   const valueTitle = options.find((option) => option.value === value)?.title ?? value;
