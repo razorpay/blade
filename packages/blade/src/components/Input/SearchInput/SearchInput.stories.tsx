@@ -316,7 +316,7 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         placeholder="Search here"
         {...args}
         onChange={({ value }) => setSearchTerm(value as string)}
-        trailingDropdown={
+        trailing={
           <Dropdown>
             <InputDropDownButton title="Popular Searches" defaultValue="home" />
             <DropdownOverlay>
@@ -399,7 +399,7 @@ const SearchInputWithDisabledDropdownTemplate: StoryFn<typeof SearchInputCompone
         placeholder="Search here"
         {...args}
         onChange={({ value }) => setSearchTerm(value as string)}
-        trailingDropdown={
+        trailing={
           <Dropdown>
             <InputDropDownButton isDisabled title="Popular Searches" defaultValue="home" />
             <DropdownOverlay>
