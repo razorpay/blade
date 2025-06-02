@@ -33,7 +33,6 @@ type GetInputStyles = Pick<
   | 'textAlign'
   | 'isDropdownTrigger'
   | 'valueComponentType'
-  | '_inputPosition'
 > & {
   isHovered?: boolean;
   isFocused?: boolean;
@@ -64,57 +63,6 @@ export const getBaseInputState = ({
   }
 };
 
-// Border radius lookup table for input group positioning
-const INPUT_GROUP_BORDER_RADIUS_MAP: Record<string, Record<string, Set<string>>> = {
-  first: {
-    only: new Set(['tl', 'tr']),
-    first: new Set(['tl']),
-    last: new Set(['tr']),
-    middle: new Set<string>(),
-  },
-  last: {
-    only: new Set(['bl', 'br']),
-    first: new Set(['bl']),
-    last: new Set(['br']),
-    middle: new Set<string>(),
-  },
-  only: {
-    first: new Set(['tl', 'bl']),
-    last: new Set(['tr', 'br']),
-    middle: new Set<string>(),
-  },
-  middle: {
-    only: new Set<string>(),
-    first: new Set<string>(),
-    last: new Set<string>(),
-    middle: new Set<string>(),
-  },
-};
-
-export const getPositionalBorderRadius = ({
-  theme,
-  _inputPosition,
-}: {
-  theme: Theme;
-  _inputPosition: BaseInputWrapperProps['_inputPosition'];
-}): string => {
-  if (!_inputPosition) return makeBorderSize(theme.border.radius.medium);
-
-  const { row, col } = _inputPosition;
-
-  if (row === 'only' && col === 'only') {
-    return makeBorderSize(theme.border.radius.medium);
-  }
-
-  const cornersWithRadius = INPUT_GROUP_BORDER_RADIUS_MAP[row]?.[col] || new Set<string>();
-
-  return (['tl', 'tr', 'br', 'bl'] as const)
-    .map((corner) =>
-      makeBorderSize(cornersWithRadius.has(corner) ? theme.border.radius.medium : theme.spacing[0]),
-    )
-    .join(' ');
-};
-
 export const getInputBackgroundAndBorderStyles = ({
   theme,
   isHovered,
@@ -124,7 +72,6 @@ export const getInputBackgroundAndBorderStyles = ({
   isTextArea,
   isDropdownTrigger,
   isTableInputCell,
-  _inputPosition,
 }: Pick<
   GetInputStyles,
   | 'theme'
@@ -135,7 +82,6 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isTextArea'
   | 'isDropdownTrigger'
   | 'isTableInputCell'
-  | '_inputPosition'
 >): CSSObject => {
   // normal state
   const backgroundColorTokens = isTableInputCell
@@ -166,9 +112,9 @@ export const getInputBackgroundAndBorderStyles = ({
   }
   return {
     backgroundColor,
-    borderRadius: _inputPosition
-      ? getPositionalBorderRadius({ theme, _inputPosition })
-      : makeBorderSize(isTableInputCell ? theme.border.radius.none : theme.border.radius.medium),
+    borderRadius: makeBorderSize(
+      isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
+    ),
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',

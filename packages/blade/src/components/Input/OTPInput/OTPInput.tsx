@@ -15,7 +15,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -427,13 +426,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   );
 };
 
-const OTPInput = assignWithoutSideEffects(
-  React.forwardRef<HTMLInputElement[], OTPInputProps>(_OTPInput),
-  {
-    displayName: 'OTPInput',
-    componentId: 'OTPInput',
-  },
-);
+const OTPInput = React.forwardRef<HTMLInputElement[], OTPInputProps>(_OTPInput);
 
 export type { OTPInputProps };
 export { OTPInput };

@@ -33,12 +33,7 @@ export type BaseInputTagSlotProps = {
 
 export type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  | 'isDisabled'
-  | 'validationState'
-  | 'showAllTags'
-  | 'maxTagRows'
-  | 'isDropdownTrigger'
-  | '_inputPosition'
+  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows' | 'isDropdownTrigger'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;

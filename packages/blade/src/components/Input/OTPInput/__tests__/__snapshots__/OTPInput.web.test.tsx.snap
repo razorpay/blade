@@ -392,11 +392,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -435,11 +435,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -478,11 +478,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -521,11 +521,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -953,11 +953,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -994,11 +994,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1035,11 +1035,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1076,11 +1076,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1117,11 +1117,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1158,11 +1158,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1588,11 +1588,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1630,11 +1630,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1672,11 +1672,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1714,11 +1714,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1756,11 +1756,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1797,11 +1797,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input

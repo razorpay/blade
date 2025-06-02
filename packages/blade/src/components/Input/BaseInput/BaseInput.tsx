@@ -8,7 +8,6 @@ import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
 import type { InputWrapperRef } from './types';
 import { baseInputBorderBackgroundMotion, formHintLeftLabelMarginLeft } from './baseInputTokens';
-import { getPositionalBorderRadius } from './baseInputStyles';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -354,18 +353,6 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default undefined
      */
     tabIndex?: number;
-    /**
-     * Private property for Blade.
-     *
-     * Should not be used by consumers.
-     *
-     * The position of the input field in the input group
-     * @private
-     */
-    _inputPosition?: {
-      row: 'first' | 'last' | 'only';
-      col: 'first' | 'last' | 'only';
-    };
   } & TestID &
   Platform.Select<{
     native: {
@@ -765,11 +752,11 @@ const getDescribedByElementId = ({
 const FocusRingWrapper = styled(BaseBox)<{
   currentInteraction: ActionStates;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
-  _inputPosition: BaseInputProps['_inputPosition'];
-}>(({ theme, currentInteraction, isTableInputCell, _inputPosition }) => ({
-  borderRadius: _inputPosition
-    ? getPositionalBorderRadius({ theme, _inputPosition })
-    : makeBorderSize(isTableInputCell ? theme.border.radius.none : theme.border.radius.medium),
+  className: string;
+}>(({ theme, currentInteraction, isTableInputCell }) => ({
+  borderRadius: makeBorderSize(
+    isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
+  ),
   width: '100%',
   '&:focus-within': !isTableInputCell
     ? {
@@ -865,7 +852,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     _motionMeta,
     role,
     tabIndex,
-    _inputPosition,
     ...rest
   },
   ref,
@@ -1003,7 +989,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         <FocusRingWrapper
           currentInteraction={currentInteraction}
           isTableInputCell={isTableInputCell}
-          _inputPosition={_inputPosition}
+          className="focus-ring-wrapper"
         >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
@@ -1029,7 +1015,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               }
             }}
             isTableInputCell={isTableInputCell}
-            _inputPosition={_inputPosition}
           >
             <BaseInputVisuals
               size={_size}

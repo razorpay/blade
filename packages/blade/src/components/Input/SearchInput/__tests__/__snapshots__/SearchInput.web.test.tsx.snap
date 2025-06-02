@@ -444,11 +444,11 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
           </label>
         </div>
         <div
-          class=" c8"
+          class=" c8 focus-ring-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10"
+            class=" c9 c10 base-input-wrapper"
             data-blade-component="base-box"
           >
             <div
@@ -939,11 +939,11 @@ exports[`<SearchInput /> should hide search icon 1`] = `
           </label>
         </div>
         <div
-          class=" c8"
+          class=" c8 focus-ring-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10"
+            class=" c9 c10 base-input-wrapper"
             data-blade-component="base-box"
           >
             <div
@@ -1431,11 +1431,11 @@ exports[`<SearchInput /> should render 1`] = `
           </label>
         </div>
         <div
-          class=" c8"
+          class=" c8 focus-ring-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10"
+            class=" c9 c10 base-input-wrapper"
             data-blade-component="base-box"
           >
             <div
@@ -1992,11 +1992,11 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -2551,11 +2551,11 @@ exports[`<SearchInput /> should render large size 1`] = `
           </label>
         </div>
         <div
-          class=" c8"
+          class=" c8 focus-ring-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10"
+            class=" c9 c10 base-input-wrapper"
             data-blade-component="base-box"
           >
             <div

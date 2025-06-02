@@ -331,7 +331,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
 const TextInput = assignWithoutSideEffects(React.forwardRef(_TextInput), {
   displayName: 'TextInput',
-  componentId: 'TextInput',
 });
 
 export type { TextInputProps };

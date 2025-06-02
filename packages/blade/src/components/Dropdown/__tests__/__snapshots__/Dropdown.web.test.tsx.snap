@@ -567,11 +567,11 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1245,11 +1245,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1922,11 +1922,11 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
