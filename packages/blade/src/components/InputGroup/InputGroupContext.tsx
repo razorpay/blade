@@ -1,7 +1,9 @@
 import React from 'react';
 import type { InputGroupContextType } from './types';
 
-const InputGroupContext = React.createContext<InputGroupContextType>({});
+const InputGroupContext = React.createContext<InputGroupContextType>({
+  isInsideInputGroup: false,
+});
 const InputGroupProvider = InputGroupContext.Provider;
 
 const useInputGroupContext = (): InputGroupContextType => {

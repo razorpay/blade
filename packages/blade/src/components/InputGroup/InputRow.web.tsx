@@ -1,12 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import type { InputRowProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
-const StyledInputRow = styled.div<{ $gridTemplateColumns: string }>`
-  display: grid;
-  grid-template-columns: ${(props) => props.$gridTemplateColumns};
-`;
+import BaseBox from '~components/Box/BaseBox';
 
 export const _InputRow = ({
   gridTemplateColumns = '1fr',
@@ -14,13 +9,14 @@ export const _InputRow = ({
   testID,
 }: InputRowProps): JSX.Element => {
   return (
-    <StyledInputRow
-      $gridTemplateColumns={gridTemplateColumns}
+    <BaseBox
+      display="grid"
+      gridTemplateColumns={gridTemplateColumns}
       data-testid={testID}
       className="input-row"
     >
       {children}
-    </StyledInputRow>
+    </BaseBox>
   );
 };
 
