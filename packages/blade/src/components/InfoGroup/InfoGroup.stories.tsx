@@ -1,7 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { InfoGroupProps } from './types';
-import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue, InfoItemIcon } from './InfoGroup';
+import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from './InfoGroup';
 import { UserIcon, BankIcon, CheckIcon, CopyIcon, ExternalLinkIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Badge } from '~components/Badge';
@@ -9,6 +9,7 @@ import { Code } from '~components/Typography';
 import { Avatar } from '~components/Avatar';
 import { Amount } from '~components/Amount';
 import { IconButton } from '~components/Button/IconButton';
+import { Divider } from '~components/Divider';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -23,13 +24,13 @@ const Page = (): React.ReactElement => {
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue, InfoItemIcon, UserIcon } from '@razorpay/blade/components';
+        import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue, UserIcon } from '@razorpay/blade/components';
         
         function App() {
           return (
             <InfoGroup itemOrientation="horizontal" size="medium">
               <InfoItem>
-                <InfoItemKey leading={<InfoItemIcon icon={UserIcon} />} helpText="Customer information">
+                <InfoItemKey leading={UserIcon} helpText="Customer information">
                   Account Holder
                 </InfoItemKey>
                 <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -86,14 +87,14 @@ export const WithIcons: StoryFn<typeof InfoGroup> = (args) => {
   return (
     <InfoGroup {...args}>
       <InfoItem>
-        <InfoItemKey leading={<InfoItemIcon icon={UserIcon} />} helpText="Customer information">
+        <InfoItemKey leading={UserIcon} helpText="Customer information">
           Account Holder
         </InfoItemKey>
-        <InfoItemValue trailing={<InfoItemIcon icon={CheckIcon} />}>Saurabh Daware</InfoItemValue>
+        <InfoItemValue trailing={CheckIcon}>Saurabh Daware</InfoItemValue>
       </InfoItem>
       <InfoItem>
-        <InfoItemKey leading={<InfoItemIcon icon={BankIcon} />}>Payment ID</InfoItemKey>
-        <InfoItemValue trailing={<InfoItemIcon icon={CopyIcon} />}>
+        <InfoItemKey leading={BankIcon}>Payment ID</InfoItemKey>
+        <InfoItemValue trailing={CopyIcon}>
           <Code size="small">pay_MK7DGqwYXEwx9Q</Code>
         </InfoItemValue>
       </InfoItem>
@@ -110,16 +111,13 @@ export const VerticalOrientation: StoryFn<typeof InfoGroup> = (args) => {
   return (
     <InfoGroup {...args}>
       <InfoItem>
-        <InfoItemKey
-          leading={<InfoItemIcon icon={UserIcon} />}
-          helpText="Primary account holder name"
-        >
+        <InfoItemKey leading={UserIcon} helpText="Primary account holder name">
           Account Holder
         </InfoItemKey>
-        <InfoItemValue leading={<InfoItemIcon icon={CheckIcon} />}>Saurabh Daware</InfoItemValue>
+        <InfoItemValue leading={CheckIcon}>Saurabh Daware</InfoItemValue>
       </InfoItem>
       <InfoItem>
-        <InfoItemKey leading={<InfoItemIcon icon={BankIcon} />}>Payment Method</InfoItemKey>
+        <InfoItemKey leading={BankIcon}>Payment Method</InfoItemKey>
         <InfoItemValue>Credit Card</InfoItemValue>
       </InfoItem>
     </InfoGroup>
@@ -135,7 +133,7 @@ export const WithComplexValues: StoryFn<typeof InfoGroup> = (args) => {
   return (
     <InfoGroup {...args}>
       <InfoItem>
-        <InfoItemKey leading={<InfoItemIcon icon={BankIcon} />} helpText="Bank account details">
+        <InfoItemKey leading={BankIcon} helpText="Bank account details">
           Bank Account
         </InfoItemKey>
         <InfoItemValue>
@@ -155,7 +153,7 @@ export const WithComplexValues: StoryFn<typeof InfoGroup> = (args) => {
       </InfoItem>
       <InfoItem>
         <InfoItemKey>IFSC Code</InfoItemKey>
-        <InfoItemValue trailing={<InfoItemIcon icon={CopyIcon} />}>
+        <InfoItemValue trailing={CopyIcon}>
           <Code size="small">HDFC0001234</Code>
         </InfoItemValue>
       </InfoItem>
@@ -179,12 +177,10 @@ export const WithAvatars: StoryFn<typeof InfoGroup> = (args) => {
         >
           Account Holder
         </InfoItemKey>
-        <InfoItemValue trailing={<InfoItemIcon icon={ExternalLinkIcon} />}>
-          Saurabh Daware
-        </InfoItemValue>
+        <InfoItemValue trailing={ExternalLinkIcon}>Saurabh Daware</InfoItemValue>
       </InfoItem>
       <InfoItem>
-        <InfoItemKey leading={<InfoItemIcon icon={BankIcon} />}>Bank Account</InfoItemKey>
+        <InfoItemKey leading={BankIcon}>Bank Account</InfoItemKey>
         <InfoItemValue
           leading={
             <Badge size="small" color="positive">
@@ -207,14 +203,16 @@ WithAvatars.storyName = 'With Avatars';
 export const WithDividers: StoryFn<typeof InfoGroup> = (args) => {
   return (
     <InfoGroup {...args}>
-      <InfoItem showDivider>
+      <InfoItem>
         <InfoItemKey>Account Holder</InfoItemKey>
         <InfoItemValue>Saurabh Daware</InfoItemValue>
       </InfoItem>
-      <InfoItem showDivider>
+      <Divider />
+      <InfoItem>
         <InfoItemKey>Payment Method</InfoItemKey>
         <InfoItemValue>Credit Card</InfoItemValue>
       </InfoItem>
+      <Divider />
       <InfoItem>
         <InfoItemKey>Payment ID</InfoItemKey>
         <InfoItemValue>

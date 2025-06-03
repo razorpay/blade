@@ -1,11 +1,5 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import type {
-  InfoGroupProps,
-  InfoItemProps,
-  InfoItemKeyProps,
-  InfoItemValueProps,
-  InfoItemIconProps,
-} from './types';
+import type { InfoGroupProps, InfoItemProps, InfoItemKeyProps, InfoItemValueProps } from './types';
 import { throwBladeError } from '~utils/logger';
 
 const InfoGroup = (_props: InfoGroupProps): React.ReactElement => {
@@ -44,13 +38,4 @@ const InfoItemValue = (_props: InfoItemValueProps): React.ReactElement => {
   return <></>;
 };
 
-const InfoItemIcon = (_props: InfoItemIconProps): React.ReactElement => {
-  throwBladeError({
-    message: 'InfoItemIcon is not yet implemented for React Native',
-    moduleName: 'InfoItemIcon',
-  });
-
-  return <></>;
-};
-
-export { InfoGroup, InfoItem, InfoItemKey, InfoItemValue, InfoItemIcon };
+export { InfoGroup, InfoItem, InfoItemKey, InfoItemValue };

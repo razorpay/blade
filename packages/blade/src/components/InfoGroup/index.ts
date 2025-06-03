@@ -1,2 +1,2 @@
-export { InfoGroup, InfoItem, InfoItemKey, InfoItemValue, InfoItemIcon } from './InfoGroup';
+export { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from './InfoGroup';
 export * from './types';

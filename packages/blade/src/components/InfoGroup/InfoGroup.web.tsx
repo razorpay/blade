@@ -1,12 +1,6 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import type {
-  InfoGroupProps,
-  InfoItemProps,
-  InfoItemKeyProps,
-  InfoItemValueProps,
-  InfoItemIconProps,
-} from './types';
+import type { InfoGroupProps, InfoItemProps, InfoItemKeyProps, InfoItemValueProps } from './types';
 import {
   itemSpacing,
   keyValueGap,
@@ -15,16 +9,32 @@ import {
   valueTypography,
   helpTextSize,
   iconSize,
-  dividerSpacing,
 } from './infoGroupTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { Divider } from '~components/Divider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~utils/types';
+import type { IconComponent } from '~components/Icons';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
+
+// Helper function to render leading/trailing elements (icons or JSX)
+const renderElement = (
+  element: IconComponent | React.ReactElement | undefined,
+  size: NonNullable<InfoGroupProps['size']>,
+): React.ReactNode => {
+  if (!element) return null;
+
+  // Check if it's an icon component (function) vs JSX element
+  if (typeof element === 'function') {
+    const IconComponent = element;
+    return <IconComponent size={iconSize[size]} />;
+  }
+
+  // It's already a JSX element
+  return element;
+};
 
 // Create React Context for InfoGroup configuration
 const InfoGroupContext = React.createContext<{
@@ -35,30 +45,6 @@ const InfoGroupContext = React.createContext<{
   size: 'medium',
   itemOrientation: 'horizontal',
   textAlign: 'left',
-});
-
-// InfoItemIcon Component
-const _InfoItemIcon = (
-  { icon: Icon, testID }: InfoItemIconProps,
-  ref: React.Ref<BladeElementRef>,
-): ReactElement => {
-  const { size } = React.useContext(InfoGroupContext);
-
-  return (
-    <BaseBox
-      ref={ref as never}
-      display="flex"
-      alignItems="center"
-      {...metaAttribute({ name: MetaConstants.InfoItemIcon, testID })}
-    >
-      <Icon size={iconSize[size]} />
-    </BaseBox>
-  );
-};
-
-const InfoItemIcon = assignWithoutSideEffects(React.forwardRef(_InfoItemIcon), {
-  displayName: 'InfoItemIcon',
-  componentId: 'InfoItemIcon',
 });
 
 // InfoItemKey Component
@@ -78,7 +64,7 @@ const _InfoItemKey = (
       flex="1"
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
-      {leading}
+      {renderElement(leading, size)}
       <BaseBox display="flex" flexDirection="column" flex="1">
         {children && (
           <Text
@@ -101,7 +87,7 @@ const _InfoItemKey = (
           </Text>
         )}
       </BaseBox>
-      {trailing}
+      {renderElement(trailing, size)}
     </BaseBox>
   );
 };
@@ -129,7 +115,7 @@ const _InfoItemValue = (
       justifyContent={textAlign === 'right' ? 'flex-end' : 'flex-start'}
       {...metaAttribute({ name: MetaConstants.InfoItemValue, testID })}
     >
-      {leading}
+      {renderElement(leading, size)}
       <BaseBox
         display="flex"
         alignItems="center"
@@ -149,7 +135,7 @@ const _InfoItemValue = (
           children
         )}
       </BaseBox>
-      {trailing}
+      {renderElement(trailing, size)}
     </BaseBox>
   );
 };
@@ -161,7 +147,7 @@ const InfoItemValue = assignWithoutSideEffects(React.forwardRef(_InfoItemValue),
 
 // InfoItem Component
 const _InfoItem = (
-  { children, showDivider = false, testID }: InfoItemProps,
+  { children, testID }: InfoItemProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
   const { size, itemOrientation } = React.useContext(InfoGroupContext);
@@ -176,7 +162,6 @@ const _InfoItem = (
       >
         {children}
       </BaseBox>
-      {showDivider && <Divider marginY={dividerSpacing[size]} />}
     </BaseBox>
   );
 };
@@ -237,12 +222,6 @@ const InfoGroup = assignWithoutSideEffects(React.forwardRef(_InfoGroup), {
   componentId: 'InfoGroup',
 });
 
-export type {
-  InfoGroupProps,
-  InfoItemProps,
-  InfoItemKeyProps,
-  InfoItemValueProps,
-  InfoItemIconProps,
-};
+export type { InfoGroupProps, InfoItemProps, InfoItemKeyProps, InfoItemValueProps };
 
-export { InfoGroup, InfoItem, InfoItemKey, InfoItemValue, InfoItemIcon };
+export { InfoGroup, InfoItem, InfoItemKey, InfoItemValue };

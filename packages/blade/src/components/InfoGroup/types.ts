@@ -30,12 +30,6 @@ export type InfoGroupProps = {
 
 export type InfoItemProps = {
   /**
-   * Toggles divider below the item (for horizontal orientation) or on the left (for vertical)
-   * @default false
-   */
-  showDivider?: boolean;
-
-  /**
    * Content should be InfoItemKey and InfoItemValue components
    */
   children: React.ReactNode;
@@ -43,14 +37,14 @@ export type InfoItemProps = {
 
 export type InfoItemKeyProps = {
   /**
-   * Leading element - can be icon, avatar, or any React element
+   * Leading element - can be icon component, avatar, or any React element
    */
-  leading?: React.ReactElement;
+  leading?: IconComponent | React.ReactElement;
 
   /**
-   * Trailing element - can be icon, avatar, or any React element
+   * Trailing element - can be icon component, avatar, or any React element
    */
-  trailing?: React.ReactElement;
+  trailing?: IconComponent | React.ReactElement;
 
   /**
    * Additional help text to provide context for the key
@@ -65,24 +59,17 @@ export type InfoItemKeyProps = {
 
 export type InfoItemValueProps = {
   /**
-   * Leading element - can be icon, avatar, or any React element
+   * Leading element - can be icon component, avatar, or any React element
    */
-  leading?: React.ReactElement;
+  leading?: IconComponent | React.ReactElement;
 
   /**
-   * Trailing element - can be icon, avatar, or any React element
+   * Trailing element - can be icon component, avatar, or any React element
    */
-  trailing?: React.ReactElement;
+  trailing?: IconComponent | React.ReactElement;
 
   /**
    * Content of the value - text, components, or other ReactNode
    */
   children?: React.ReactNode;
-} & TestID;
-
-export type InfoItemIconProps = {
-  /**
-   * Icon component to be rendered
-   */
-  icon: IconComponent;
 } & TestID;
