@@ -56,6 +56,8 @@ const _InputGroup = (
     (validationState === 'success' && Boolean(successText)) ||
     (validationState === 'error' && Boolean(errorText));
 
+  const totalInputRows = React.Children.count(children);
+
   return (
     <InputGroupProvider value={contextValue}>
       <StyledInputGroup
@@ -74,7 +76,7 @@ const _InputGroup = (
           <BaseBox
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
-            alignItems={isLabelLeftPositioned ? 'center' : undefined}
+            alignItems={isLabelLeftPositioned && totalInputRows < 2 ? 'center' : undefined}
           >
             {label && (
               <FormLabel
