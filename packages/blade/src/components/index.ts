@@ -36,6 +36,7 @@ export * from './Input/TextArea';
 export * from './Input/TextInput';
 export * from './Input/SearchInput';
 export * from './Input/PhoneNumberInput';
+export * from './InputGroup';
 export * from './Link';
 export * from './List';
 export * from './LiveAnnouncer';

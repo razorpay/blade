@@ -608,6 +608,7 @@ exports[`<SideNav /> should render SideNav ssr 2`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c23.c23.c23.c23.c23 {
@@ -738,6 +739,7 @@ exports[`<SideNav /> should render SideNav ssr 2`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c42.c42.c42.c42.c42:hover + div {

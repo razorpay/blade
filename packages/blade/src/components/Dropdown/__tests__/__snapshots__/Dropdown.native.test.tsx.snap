@@ -213,6 +213,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </View>
             </View>
             <View
+              className="focus-ring-wrapper"
               currentInteraction="default"
               data-blade-component="base-box"
               isTableInputCell={false}
