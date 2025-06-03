@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState, useEffect, useMemo } from 'react';
+import type React from 'react';
+import { useCallback, useRef, useState, useEffect, useMemo } from 'react';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
 
 /**
@@ -63,11 +64,11 @@ type UseFormattedInputReturn = {
 export const useFormattedInput = ({
   format: pattern,
   onChange,
-  value: userValue = '',
+  value: userValue,
   defaultValue = '',
 }: UseFormattedInputProps): UseFormattedInputReturn => {
   const initialValue = useMemo(() => {
-    return format(userValue || defaultValue, pattern || '');
+    return format(userValue ?? defaultValue, pattern ?? '');
   }, [userValue, defaultValue, pattern]);
 
   const [internalValue, setInternalValue] = useState(initialValue);
@@ -83,15 +84,15 @@ export const useFormattedInput = ({
     ({ name, value: inputValue }) => {
       if (!pattern) {
         // No pattern = regular input
-        const cleanValue = inputValue || '';
+        const cleanValue = inputValue ?? '';
         onChange?.({ name, value: cleanValue });
         setInternalValue(cleanValue);
         return;
       }
 
       const currentValue = internalValue; // "12/34" (user wants to delete "/")
-      const newInputValue = inputValue || ''; // "1234" (after deleting "/")
-      const cursorPosition = inputRef.current?.selectionStart || 0; // 2 (cursor where "/" was)
+      const newInputValue = inputValue ?? ''; // "1234" (after deleting "/")
+      const cursorPosition = inputRef.current?.selectionStart ?? 0; // 2 (cursor where "/" was)
       const didDelete = newInputValue.length < currentValue.length; // 4 < 5 → true
 
       infoRef.current.cursorPosition = cursorPosition;
@@ -100,7 +101,7 @@ export const useFormattedInput = ({
 
       // Handle special case: user deleted a delimiter (like deleting "/" in "12/|34")
       if (didDelete) {
-        const deletedChar = currentValue[cursorPosition] || ''; // "12/34"[2] → "/"
+        const deletedChar = currentValue[cursorPosition] ?? ''; // "12/34"[2] → "/"
         const deletedDelimiter = !isUserCharacter(deletedChar); // "/" → true (is delimiter)
 
         if (deletedDelimiter) {
@@ -135,7 +136,7 @@ export const useFormattedInput = ({
 
         // Move cursor past auto-inserted delimiters for smooth typing
         if (nextIsDelimiter && hasMoreUserChars) {
-          const prevChar = formattedValue[cursorPosition - 1] || '';
+          const prevChar = formattedValue[cursorPosition - 1] ?? '';
           const prevIsDelimiter = !isUserCharacter(prevChar);
 
           if (prevIsDelimiter) {
