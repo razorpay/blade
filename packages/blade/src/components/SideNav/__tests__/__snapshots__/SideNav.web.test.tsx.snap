@@ -1439,52 +1439,47 @@ exports[`SideNav should render 1`] = `
               data-blade-component="box"
             >
               <div
-                class=""
-                data-blade-component="box"
+                aria-label="Positive Indicator"
+                class="c36"
+                data-blade-component="indicator"
+                role="status"
               >
                 <div
-                  aria-label="Positive Indicator"
-                  class="c36"
-                  data-blade-component="indicator"
-                  role="status"
+                  class="c8"
+                  data-blade-component="base-box"
                 >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="20"
+                    viewBox="0 0 10 10"
+                    width="20"
+                  >
+                    <circle
+                      cx="5"
+                      cy="5"
+                      data-blade-component="svg-circle"
+                      fill="hsla(150, 100%, 32%, 0.09)"
+                      r="5"
+                    />
+                    <circle
+                      cx="5"
+                      cy="5"
+                      data-blade-component="svg-circle"
+                      fill="hsla(150, 100%, 27%, 1)"
+                      r="2.5"
+                    />
+                  </svg>
                   <div
-                    class="c8"
+                    class="c37"
                     data-blade-component="base-box"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="Svgweb__StyledSvg-vcmjs8-0"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="20"
-                      viewBox="0 0 10 10"
-                      width="20"
-                    >
-                      <circle
-                        cx="5"
-                        cy="5"
-                        data-blade-component="svg-circle"
-                        fill="hsla(150, 100%, 32%, 0.09)"
-                        r="5"
-                      />
-                      <circle
-                        cx="5"
-                        cy="5"
-                        data-blade-component="svg-circle"
-                        fill="hsla(150, 100%, 27%, 1)"
-                        r="2.5"
-                      />
-                    </svg>
-                    <div
-                      class="c37"
-                      data-blade-component="base-box"
-                    >
-                      <p
-                        class="c38"
-                        data-blade-component="text"
-                      />
-                    </div>
+                    <p
+                      class="c38"
+                      data-blade-component="text"
+                    />
                   </div>
                 </div>
               </div>
