@@ -45,8 +45,8 @@ const SideNavItem = ({
       >
         <Box display="inline-flex" alignItems="center" gap="spacing.3">
           {Icon ? (
-            <BaseBox display="flex" alignItems="center">
-              <Icon size="medium" />
+            <BaseBox display="flex" alignItems="center" paddingX="spacing.2">
+              <Icon size="medium" color="interactive.icon.gray.subtle" />
             </BaseBox>
           ) : (
             (leading as React.ReactNode)
