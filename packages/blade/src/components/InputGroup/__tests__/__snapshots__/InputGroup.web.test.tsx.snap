@@ -1,11 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputGroup should handle validation states correctly 1`] = `
-.c8.c8.c8.c8.c8 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -45,6 +40,11 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   align-items: center;
   max-height: 36px;
   gap: 0px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -488,6 +488,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
         >
           <div
             class="c8 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -592,11 +593,6 @@ exports[`InputGroup should handle validation states correctly 1`] = `
 `;
 
 exports[`InputGroup should render InputGroup with large size 1`] = `
-.c3.c3.c3.c3.c3 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -616,6 +612,11 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -904,6 +905,7 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
         >
           <div
             class="c3 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -978,6 +980,7 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
           </div>
           <div
             class="c3 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -1023,11 +1026,6 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
 `;
 
 exports[`InputGroup should render InputGroup with medium size 1`] = `
-.c3.c3.c3.c3.c3 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1047,6 +1045,11 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1335,6 +1338,7 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
         >
           <div
             class="c3 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -1409,6 +1413,7 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
           </div>
           <div
             class="c3 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -1454,11 +1459,6 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
 `;
 
 exports[`InputGroup should render Inputgroup with default properties 1`] = `
-.c8.c8.c8.c8.c8 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1498,6 +1498,11 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   align-items: center;
   max-height: 36px;
   gap: 0px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -2060,6 +2065,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
         >
           <div
             class="c8 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -2099,6 +2105,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
           </div>
           <div
             class="c8 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -2224,11 +2231,6 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
 `;
 
 exports[`InputGroup should render disabled ButtonGroup 1`] = `
-.c3.c3.c3.c3.c3 {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2248,6 +2250,11 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2536,6 +2543,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
         >
           <div
             class="c3 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -2576,6 +2584,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
           </div>
           <div
             class="c3 input-row"
+            data-blade-component="base-box"
           >
             <div
               class=""
