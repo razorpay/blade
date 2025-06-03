@@ -6,6 +6,18 @@ SideNav
 
 The SideNav component provides a responsive side navigation layout positioned along the left side of the screen. It enables quick access to different sections or functionalities of an application with support for multi-level navigation, collapsible sections, and mobile responsiveness. SideNav supports both standalone usage and integration with routing libraries like React Router.
 
+## Important Constraints
+
+- `SideNavLink`: `as` prop requires React Router's Link. Always install React Router while using this component. Example:
+
+  ```jsx
+  import { Link } from 'react-router-dom';
+
+  <SideNavLink as={Link} />;
+  ```
+
+- Explicitly add `position` prop to `SideNav` component to ensure it is positioned correctly.
+
 ## TypeScript Types
 
 The following types represent the props that the SideNav component and its subcomponents accept. These types help configure the navigation structure properly.

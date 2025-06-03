@@ -6,6 +6,12 @@ FileUpload
 
 The FileUpload component is used to handle file attachments, including drag-and-drop interactions. It supports both single and multiple file uploads, with built-in validation for file types, sizes, and counts. The component can operate in controlled or uncontrolled modes, making it versatile for various scenarios from simple form inputs to complex upload workflows with progress indicators and previews.
 
+## Important Constraints
+
+- Custom text props (`actionButtonText`, `dropAreaText`) and dimensions (`height`, `width`) can only be used when `size` is "variable"
+
+The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+
 ## TypeScript Types
 
 The following types represent the props that the FileUpload component accepts. These allow you to properly configure the component according to your needs.
