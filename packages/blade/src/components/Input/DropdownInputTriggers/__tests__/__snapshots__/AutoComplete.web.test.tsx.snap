@@ -435,6 +435,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -496,11 +497,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1193,6 +1194,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 
@@ -1631,6 +1633,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1647,6 +1650,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
+  z-index: 2;
 }
 
 .c43.c43.c43.c43.c43 {
@@ -1692,6 +1696,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c44.c44.c44.c44.c44[aria-selected=true] {
@@ -1907,11 +1912,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -2142,11 +2147,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             </label>
                           </div>
                           <div
-                            class=" c36"
+                            class=" c36 focus-ring-wrapper"
                             data-blade-component="base-box"
                           >
                             <div
-                              class=" c37 c11"
+                              class=" c37 c11 __blade-base-input-wrapper"
                               data-blade-component="base-box"
                             >
                               <div
@@ -2793,6 +2798,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -2882,11 +2888,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -3424,6 +3430,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -3517,11 +3524,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div

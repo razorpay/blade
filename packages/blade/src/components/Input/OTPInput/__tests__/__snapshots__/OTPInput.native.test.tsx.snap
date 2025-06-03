@@ -212,6 +212,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -364,6 +365,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -516,6 +518,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -668,6 +671,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -820,6 +824,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -972,6 +977,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1313,6 +1319,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1466,6 +1473,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1619,6 +1627,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1772,6 +1781,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1925,6 +1935,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -2077,6 +2088,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}

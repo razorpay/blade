@@ -496,6 +496,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -548,11 +549,11 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -1172,6 +1173,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -1224,11 +1226,11 @@ exports[`<PhoneNumberInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -1846,6 +1848,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -1898,11 +1901,11 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
