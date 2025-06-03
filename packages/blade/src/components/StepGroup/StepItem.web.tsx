@@ -98,6 +98,7 @@ const _StepItem = ({
   _index = 0,
   _totalIndex = 0,
   _nestingLevel = 0,
+  minWidth,
   ...rest
 }: StepItemProps): React.ReactElement => {
   const {
@@ -189,7 +190,7 @@ const _StepItem = ({
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
       textAlign={isVertical ? 'left' : 'center'}
       alignItems={isVertical ? undefined : 'center'}
-      minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['120'])}, 100%)`}
+      minWidth={isVertical ? undefined : minWidth ?? `min(${makeSize(sizeTokens['120'])}, 100%)`}
       width={isVertical ? '100%' : undefined}
       flex={isVertical ? undefined : '1'}
       marginX={isVertical ? 'spacing.4' : 'spacing.0'}

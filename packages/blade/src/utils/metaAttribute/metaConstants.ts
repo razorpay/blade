@@ -139,4 +139,8 @@ export const MetaConstants = {
   Skeleton: 'skeleton',
   StepGroup: 'step-group',
   StepItem: 'step-item',
+  PreviewWindow: 'preview-window',
+  PreviewHeader: 'preview-header',
+  PreviewBody: 'preview-body',
+  PreviewFooter: 'preview-footer',
 } as const;

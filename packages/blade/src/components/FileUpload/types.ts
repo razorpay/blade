@@ -3,6 +3,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import type { BoxProps } from '~components/Box';
 
 interface BladeFile extends File {
   /**
@@ -109,17 +110,42 @@ type FileUploadCommonProps = {
    */
   errorText?: string;
   /**
-   * Size of the FileUpload component
-   *
-   * @default 'medium'
-   */
-  size?: 'medium' | 'large';
-  /**
    * Test ID for automation
    */
   testID?: string;
 } & StyledPropsBlade &
   MotionMetaProp;
+
+// Standard size props (medium or large)
+type FileUploadStandardSizeProps = FileUploadCommonProps & {
+  /**
+   * Size of the FileUpload component
+   *
+   * @default 'medium'
+   */
+  size?: 'medium' | 'large';
+};
+
+// Variable size props with custom text options
+type FileUploadVariableSizeProps = FileUploadCommonProps & {
+  size: 'variable';
+  /**
+   * Custom text for the upload action button
+   */
+  actionButtonText?: string;
+  /**
+   * Custom text for the drag & drop area
+   */
+  dropAreaText?: string;
+  /**
+   * Height of the file upload component
+   */
+  height?: BoxProps['height'];
+  /**
+   * Width of the file upload component
+   */
+  width?: BoxProps['width'];
+};
 
 /*
   Mandatory accessibilityLabel prop when label is not provided
@@ -150,7 +176,7 @@ type FileUploadPropsWithLabel = {
 };
 
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
-  FileUploadCommonProps;
+  (FileUploadStandardSizeProps | FileUploadVariableSizeProps);
 
 type FileUploadItemProps = Pick<
   FileUploadProps,
@@ -194,4 +220,5 @@ export type {
   StyledFileUploadWrapperProps,
   StyledFileUploadItemWrapperProps,
   FileUploadItemBackgroundColors,
+  FileUploadVariableSizeProps,
 };
