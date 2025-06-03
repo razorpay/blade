@@ -44,7 +44,7 @@ const DefaultInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
     <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Street Address" label="Street Address" />
     </InputRow>
-    <InputRow gridTemplateColumns="2fr 1fr">
+    <InputRow gridTemplateColumns="1fr 1fr">
       <TextInput placeholder="City" label="City" />
       <TextInput placeholder="ZIP Code" label="ZIP Code" />
     </InputRow>
@@ -75,12 +75,12 @@ const DetailedInputGroupTemplate: StoryFn<InputGroupProps> = (args) => (
     <InputRow gridTemplateColumns="1fr">
       <TextInput placeholder="Apartment Name" label="Apartment Name" />
     </InputRow>
-    <InputRow gridTemplateColumns="2fr 1fr 1fr">
+    <InputRow gridTemplateColumns="1fr 1fr">
       <TextInput placeholder="City" label="City" />
       <TextInput placeholder="State" label="State" />
-      <TextInput placeholder="ZIP Code" label="ZIP Code" />
     </InputRow>
-    <InputRow gridTemplateColumns="1fr">
+    <InputRow gridTemplateColumns="1fr 1fr">
+      <TextInput placeholder="ZIP Code" label="ZIP Code" />
       <TextInput placeholder="Country" label="Country" />
     </InputRow>
   </InputGroupComponent>
