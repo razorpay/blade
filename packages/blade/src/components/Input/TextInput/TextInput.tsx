@@ -289,7 +289,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       labelPosition={labelPosition}
       placeholder={placeholder}
       defaultValue={defaultValue}
-      value={value ? inputValue : undefined}
+      value={value !== undefined ? inputValue : undefined}
       name={name}
       maxCharacters={effectiveMaxCharacters}
       isDropdownTrigger={isTaggedInput}
