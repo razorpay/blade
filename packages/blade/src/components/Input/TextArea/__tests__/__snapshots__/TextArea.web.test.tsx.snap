@@ -382,7 +382,7 @@ exports[`<TextArea /> should render 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -816,7 +816,7 @@ exports[`<TextArea /> should render large size 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -1243,7 +1243,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -1655,7 +1655,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea

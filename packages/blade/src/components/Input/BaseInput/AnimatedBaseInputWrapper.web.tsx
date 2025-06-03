@@ -152,7 +152,7 @@ to {
         }
       }}
       isTableInputCell={rest.isTableInputCell}
-      className="base-input-wrapper"
+      className="__blade-base-input-wrapper"
     />
   );
 };

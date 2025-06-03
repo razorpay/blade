@@ -501,7 +501,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 base-input-wrapper"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1916,7 +1916,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 base-input-wrapper"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -2151,7 +2151,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             data-blade-component="base-box"
                           >
                             <div
-                              class=" c37 c11 base-input-wrapper"
+                              class=" c37 c11 __blade-base-input-wrapper"
                               data-blade-component="base-box"
                             >
                               <div
@@ -2892,7 +2892,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 base-input-wrapper"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -3528,7 +3528,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 base-input-wrapper"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div

@@ -13,7 +13,7 @@ export const _InputRow = ({
       display="grid"
       gridTemplateColumns={gridTemplateColumns}
       data-testid={testID}
-      className="input-row"
+      className="__blade-input-row"
     >
       {children}
     </BaseBox>
