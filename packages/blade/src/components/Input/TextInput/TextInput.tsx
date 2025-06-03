@@ -207,8 +207,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   });
 
   const inputValue = format ? formattingResult.formattedValue : value;
-  const effectiveMaxCharacters =
-    format && !defaultValue ? formattingResult.maxLength : maxCharacters;
+  const effectiveMaxCharacters = format ? formattingResult.maxLength : maxCharacters;
 
   const handleOnChange: FormInputOnEvent = React.useCallback(
     ({ name, value: inputValue }) => {
@@ -289,8 +288,19 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       placeholder={placeholder}
-      defaultValue={defaultValue}
-      value={value !== undefined ? inputValue : undefined}
+      // CONTROLLED/UNCONTROLLED INPUT LOGIC:
+      //
+      // For inputs WITH format:
+      //   - Always use controlled mode (value prop) to enable re-rendering when formatting changes
+      //   - This ensures the input displays formatted values as user types
+      //   - Example: User types "1234" → input shows "12/34" immediately
+      //
+      // For inputs WITHOUT format:
+      //   - Use original React controlled/uncontrolled logic based on user's props
+      //   - Controlled: user provides `value` prop → use `value` prop
+      //   - Uncontrolled: user provides `defaultValue` prop → use `defaultValue` prop
+      defaultValue={format ? undefined : defaultValue !== undefined ? defaultValue : undefined}
+      value={format ? inputValue : value !== undefined ? value : undefined}
       name={name}
       maxCharacters={effectiveMaxCharacters}
       isDropdownTrigger={isTaggedInput}
