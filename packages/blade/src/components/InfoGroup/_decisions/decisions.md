@@ -18,19 +18,20 @@ import {
   InfoItem,
   InfoItemKey,
   InfoItemValue,
-  InfoItemIcon,
+  Divider,
 } from '@razorpay/blade/components';
 
 <InfoGroup itemOrientation="horizontal" size="medium">
   <InfoItem>
-    <InfoItemKey leading={<InfoItemIcon icon={UserIcon} />} helpText="Customer information">
+    <InfoItemKey leading={UserIcon} helpText="Customer information">
       Account Holder
     </InfoItemKey>
-    <InfoItemValue trailing={<InfoItemIcon icon={CheckIcon} />}>Saurabh Daware</InfoItemValue>
+    <InfoItemValue trailing={CheckIcon}>Saurabh Daware</InfoItemValue>
   </InfoItem>
+  <Divider />
   <InfoItem>
     <InfoItemKey>Payment ID</InfoItemKey>
-    <InfoItemValue trailing={<InfoItemIcon icon={CopyIcon} />}>
+    <InfoItemValue trailing={CopyIcon}>
       <Code size="small">pay_MK7DGqwYXEwx9Q</Code>
     </InfoItemValue>
   </InfoItem>
@@ -107,12 +108,6 @@ type InfoGroupProps = {
 ```typescript
 type InfoItemProps = {
   /**
-   * Toggles divider below the item (for horizontal orientation) or on the left (for vertical)
-   * @default false
-   */
-  showDivider?: boolean;
-
-  /**
    * Content should be InfoItemKey and InfoItemValue components
    */
   children: React.ReactNode;
@@ -126,12 +121,12 @@ type InfoItemKeyProps = {
   /**
    * Leading element - can be icon, avatar, or any React element
    */
-  leading?: React.ReactElement;
+  leading?: React.ReactElement | IconComponent;
 
   /**
    * Trailing element - can be icon, avatar, or any React element
    */
-  trailing?: React.ReactElement;
+  trailing?: React.ReactElement | IconComponent;
 
   /**
    * Additional help text to provide context for the key
@@ -152,28 +147,17 @@ type InfoItemValueProps = {
   /**
    * Leading element - can be icon, avatar, or any React element
    */
-  leading?: React.ReactElement;
+  leading?: React.ReactElement | IconComponent;
 
   /**
    * Trailing element - can be icon, avatar, or any React element
    */
-  trailing?: React.ReactElement;
+  trailing?: React.ReactElement | IconComponent;
 
   /**
    * Content of the value - text, components, or other ReactNode
    */
   children?: React.ReactNode;
-};
-```
-
-#### InfoItemIcon
-
-```typescript
-type InfoItemIconProps = {
-  /**
-   * Icon component to be rendered
-   */
-  icon: IconComponent;
 };
 ```
 
@@ -257,12 +241,10 @@ Using avatars and other React elements with the flexible leading/trailing props.
     >
       Account Holder
     </InfoItemKey>
-    <InfoItemValue trailing={<InfoItemIcon icon={ExternalLinkIcon} />}>
-      Saurabh Daware
-    </InfoItemValue>
+    <InfoItemValue trailing={ExternalLinkIcon}>Saurabh Daware</InfoItemValue>
   </InfoItem>
   <InfoItem>
-    <InfoItemKey leading={<InfoItemIcon icon={BankIcon} />}>Bank Account</InfoItemKey>
+    <InfoItemKey leading={BankIcon}>Bank Account</InfoItemKey>
     <InfoItemValue
       leading={
         <Badge size="small" color="positive">
@@ -283,13 +265,13 @@ Vertical orientation with leading icons and help text.
 ```jsx
 <InfoGroup itemOrientation="vertical" size="large">
   <InfoItem>
-    <InfoItemKey leading={<InfoItemIcon icon={UserIcon} />} helpText="Primary account holder name">
+    <InfoItemKey leading={UserIcon} helpText="Primary account holder name">
       Account Holder
     </InfoItemKey>
-    <InfoItemValue leading={<InfoItemIcon icon={CheckIcon} />}>Saurabh Daware</InfoItemValue>
+    <InfoItemValue leading={CheckIcon}>Saurabh Daware</InfoItemValue>
   </InfoItem>
   <InfoItem>
-    <InfoItemKey leading={<InfoItemIcon icon={CreditCardIcon} />}>Payment Method</InfoItemKey>
+    <InfoItemKey leading={CreditCardIcon}>Payment Method</InfoItemKey>
     <InfoItemValue>Credit Card</InfoItemValue>
   </InfoItem>
 </InfoGroup>
@@ -302,7 +284,7 @@ Using Blade components and custom layouts for complex value rendering.
 ```jsx
 <InfoGroup itemOrientation="horizontal" size="medium" textAlign="right">
   <InfoItem>
-    <InfoItemKey leading={<InfoItemIcon icon={BankIcon} />} helpText="Bank account details">
+    <InfoItemKey leading={BankIcon} helpText="Bank account details">
       Bank Account
     </InfoItemKey>
     <InfoItemValue>
@@ -318,7 +300,7 @@ Using Blade components and custom layouts for complex value rendering.
 
   <InfoItem>
     <InfoItemKey>IFSC Code</InfoItemKey>
-    <InfoItemValue trailing={<InfoItemIcon icon={CopyIcon} />}>
+    <InfoItemValue trailing={CopyIcon}>
       <Code size="small">HDFC0001234</Code>
     </InfoItemValue>
   </InfoItem>
@@ -338,12 +320,14 @@ Using Blade components and custom layouts for complex value rendering.
 
 - ### Should we have `showDivider` prop or let consumer use `<Divider />` directly?
 
-  - **Pros of `showDivider` prop:**
-    - With itemOrientation="vertical", we can internally move divider to left and make it orientation vertical as well
-  - **Cons of `showDivider` prop:**
-    - Non intuitive because the divider is not of the item but rather of the group technically
-    - `<Divider />` on the other hand follows 'What you see is what you get' philosophy
+  - Decided to go with `<Divider />` because it is more intuitive and follows 'What you see is what you get' philosophy and avoids new props.
 
 - ### `orientation` prop vs `itemOrientation` prop
 
   - Earlier we had thought of `orientation` prop although it can be confusing because `orientation="vertical"` on InfoGroup will mean that the items themselves are horizontally placed but the key and values inside the item are vertically placed
+
+- ### `leading` and `trailing` props types
+
+  - We have been following `leading={<InfoItemIcon icon={BankIcon} />}` and `trailing={<InfoItemIcon icon={CopyIcon} />}` type of API for other components.
+  - Although that leads to us creating too many wrapper components.
+  - We decided to go with `leading={BankIcon}` and `leading={<Avatar />}` type of API as it avoids extra wrappers.
