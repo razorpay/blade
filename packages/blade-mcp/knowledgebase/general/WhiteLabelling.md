@@ -20,6 +20,8 @@ To make this possible, Blade allows you to customize the theme of the components
 
 ## Usage
 
+If your application has multiple `BladeProvider` components, you can pass the `brandColor` to each of them to customize the branding of the components inside them.
+
 ```tsx
 import { createTheme } from '@razorpay/blade/tokens';
 

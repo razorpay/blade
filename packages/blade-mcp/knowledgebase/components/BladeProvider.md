@@ -4,7 +4,7 @@ BladeProvider
 
 ## Description
 
-BladeProvider is the essential wrapper component for all Blade applications, responsible for providing theme context and styling infrastructure. It manages theme tokens, color schemes, and breakpoints while setting up necessary context providers for components like Drawers and BottomSheets. This component must be placed at the root of your application to ensure proper styling and functionality of all Blade components.
+BladeProvider is the essential wrapper component for all Blade applications, responsible for providing theme context and styling infrastructure. It manages theme tokens, color schemes, and breakpoints while setting up necessary context providers for components like Drawers and BottomSheets.
 
 ## TypeScript Types
 
