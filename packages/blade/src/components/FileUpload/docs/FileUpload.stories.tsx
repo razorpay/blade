@@ -137,7 +137,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
               isRequired
               necessityIndicator="required"
               onChange={({ value }) => setProductName(value)}
-              size={args.size}
+              size={args.size === 'variable' ? 'large' : args.size}
               labelPosition={args.labelPosition}
             />
             <FileUploadComponent

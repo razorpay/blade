@@ -76,29 +76,12 @@ type InputRowProps = {
    * Test ID for automation
    */
   testID?: string;
-  /**
-   * Private property for Blade.
-   *
-   * Should not be used by consumers.
-   *
-   * Position of the row within the group.
-   *
-   * @default 'only'
-   * @private
-   */
-  _rowPosition?: 'only' | 'first' | 'middle' | 'last';
-  /**
-   * Private property for Blade.
-   *
-   * Should not be used by consumers.
-   *
-   * Total number of rows in the group.
-   * @private
-   * @default 1
-   */
-  _totalRows?: number;
 };
 
-type InputGroupContextType = Pick<InputGroupProps, 'isDisabled' | 'size'>;
+type InputGroupContextType = {
+  isInsideInputGroup: boolean;
+  isDisabled?: BaseInputProps['isDisabled'];
+  size?: BaseInputProps['size'];
+};
 
 export type { InputGroupProps, InputGroupContextType, InputRowProps };

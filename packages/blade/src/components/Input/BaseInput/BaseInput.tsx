@@ -870,8 +870,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   const defaultRole = hasPopup ? 'combobox' : undefined;
 
   const inputGroupProps = useInputGroupContext();
-  const isWithinInputGroup = Object.keys(inputGroupProps).length > 0;
-  const _isDisabled = inputGroupProps.isDisabled || isDisabled;
+  const { isInsideInputGroup } = inputGroupProps;
+  const _isDisabled = inputGroupProps.isDisabled ?? isDisabled;
   const _size = inputGroupProps.size ?? size;
 
   React.useEffect(() => {
@@ -965,7 +965,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         width="100%"
       >
         {/* If the input is in an input group, we don't want to render the label */}
-        {!hideLabelText && !isLabelInsideInput && label && !isWithinInputGroup && (
+        {!hideLabelText && !isLabelInsideInput && label && !isInsideInputGroup && (
           <BaseBox
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
@@ -1114,7 +1114,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         </FocusRingWrapper>
       </BaseBox>
       {/* If the input is in an input group, we don't want to render the hint text */}
-      {hideFormHint || showHintsAsTooltip || isWithinInputGroup ? null : (
+      {hideFormHint || showHintsAsTooltip || isInsideInputGroup ? null : (
         <BaseBox
           marginLeft={makeSize(
             isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[_size] : 0,

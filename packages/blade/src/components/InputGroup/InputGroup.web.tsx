@@ -38,6 +38,7 @@ const _InputGroup = (
 ): React.ReactElement => {
   const contextValue = useMemo(
     () => ({
+      isInsideInputGroup: true,
       size,
       isDisabled,
     }),

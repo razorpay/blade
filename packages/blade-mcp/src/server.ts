@@ -2,23 +2,51 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import * as Sentry from '@sentry/node';
 import {
-  createNewBladeProjectCallback,
-  createNewBladeProjectSchema,
-  createNewBladeProjectDescription,
+  createNewBladeProjectToolName,
+  createNewBladeProjectToolDescription,
+  createNewBladeProjectToolSchema,
+  createNewBladeProjectToolCallback,
 } from './tools/createNewBladeProject.js';
 import {
-  createBladeCursorRulesCallback,
-  createBladeCursorRulesSchema,
-  createBladeCursorRulesDescription,
+  createBladeCursorRulesToolName,
+  createBladeCursorRulesToolDescription,
+  createBladeCursorRulesToolSchema,
+  createBladeCursorRulesToolCallback,
 } from './tools/createBladeCursorRules.js';
 import {
-  getBladeComponentDocsCallback,
-  getBladeComponentDocsSchema,
-  getBladeComponentDocsDescription,
+  getBladeComponentDocsToolName,
+  getBladeComponentDocsToolDescription,
+  getBladeComponentDocsToolSchema,
+  getBladeComponentDocsToolCallback,
 } from './tools/getBladeComponentDocs.js';
-import { hiBladeCallback, hiBladeSchema, hiBladeDescription } from './tools/hiBlade.js';
-import { getPackageJSONVersion } from './utils.js';
+import {
+  hiBladeToolName,
+  hiBladeToolDescription,
+  hiBladeToolSchema,
+  hiBladeToolCallback,
+} from './tools/hiBlade.js';
+import { getPackageJSONVersion } from './utils/generalUtils.js';
+import {
+  getBladePatternDocsToolName,
+  getBladePatternDocsToolDescription,
+  getBladePatternDocsToolSchema,
+  getBladePatternDocsToolCallback,
+} from './tools/getBladePatternDocs.js';
+import {
+  getBladeGeneralDocsToolName,
+  getBladeGeneralDocsToolDescription,
+  getBladeGeneralDocsToolSchema,
+  getBladeGeneralDocsToolCallback,
+} from './tools/getBladeGeneralDocs.js';
+
+Sentry.init({
+  dsn: process.env.BLADE_MCP_SENTRY_DSN,
+  environment: process.env.NODE_ENV ?? 'development',
+  release: getPackageJSONVersion(),
+  sendDefaultPii: false,
+});
 
 try {
   const server = new McpServer({
@@ -26,27 +54,41 @@ try {
     version: getPackageJSONVersion(),
   });
 
-  server.tool('hi_blade', hiBladeDescription, hiBladeSchema, hiBladeCallback);
+  server.tool(hiBladeToolName, hiBladeToolDescription, hiBladeToolSchema, hiBladeToolCallback);
 
   server.tool(
-    'create_new_blade_project',
-    createNewBladeProjectDescription,
-    createNewBladeProjectSchema,
-    createNewBladeProjectCallback,
+    createNewBladeProjectToolName,
+    createNewBladeProjectToolDescription,
+    createNewBladeProjectToolSchema,
+    createNewBladeProjectToolCallback,
   );
 
   server.tool(
-    'create_blade_cursor_rules',
-    createBladeCursorRulesDescription,
-    createBladeCursorRulesSchema,
-    createBladeCursorRulesCallback,
+    createBladeCursorRulesToolName,
+    createBladeCursorRulesToolDescription,
+    createBladeCursorRulesToolSchema,
+    createBladeCursorRulesToolCallback,
   );
 
   server.tool(
-    'get_blade_component_docs',
-    getBladeComponentDocsDescription,
-    getBladeComponentDocsSchema,
-    getBladeComponentDocsCallback,
+    getBladeComponentDocsToolName,
+    getBladeComponentDocsToolDescription,
+    getBladeComponentDocsToolSchema,
+    getBladeComponentDocsToolCallback,
+  );
+
+  server.tool(
+    getBladePatternDocsToolName,
+    getBladePatternDocsToolDescription,
+    getBladePatternDocsToolSchema,
+    getBladePatternDocsToolCallback,
+  );
+
+  server.tool(
+    getBladeGeneralDocsToolName,
+    getBladeGeneralDocsToolDescription,
+    getBladeGeneralDocsToolSchema,
+    getBladeGeneralDocsToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout
@@ -54,8 +96,9 @@ try {
 
   // Use Promise handling for async operations
   await server.connect(transport);
-  console.error('Blade MCP connected successfully.');
+  console.log('Blade MCP connected successfully.');
 } catch (error: unknown) {
-  console.error('Blade MCP initialization failed:', error);
+  Sentry.captureException(error);
+  console.error('Blade MCP Error', error);
   process.exit(1);
 }

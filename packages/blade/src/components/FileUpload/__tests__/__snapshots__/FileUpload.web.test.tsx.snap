@@ -60,6 +60,8 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  height: 56px;
+  width: 100%;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;
@@ -162,8 +164,6 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  height: 56px;
-  width: 100%;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -588,6 +588,8 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  height: 56px;
+  width: 100%;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;
@@ -690,8 +692,6 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  height: 56px;
-  width: 100%;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1127,6 +1127,8 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  height: 64px;
+  width: 100%;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;
@@ -1229,8 +1231,6 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  height: 64px;
-  width: 100%;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1666,6 +1666,8 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  height: 56px;
+  width: 100%;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;
@@ -1768,8 +1770,6 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  height: 56px;
-  width: 100%;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
