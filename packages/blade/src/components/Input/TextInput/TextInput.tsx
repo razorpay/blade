@@ -207,7 +207,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   });
 
   const inputValue = format ? formattingResult.formattedValue : value;
-  const effectiveMaxCharacters = format ? formattingResult.maxLength : maxCharacters;
+  const effectiveMaxCharacters =
+    format && !defaultValue ? formattingResult.maxLength : maxCharacters;
 
   const handleOnChange: FormInputOnEvent = React.useCallback(
     ({ name, value: inputValue }) => {
