@@ -60,6 +60,7 @@ import { ProgressBar } from '~components/ProgressBar';
 import { Text } from '~components/Typography';
 import { Alert } from '~components/Alert';
 import { Badge } from '~components/Badge';
+import { Indicator } from '~components/Indicator';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -515,7 +516,7 @@ const SideNavExample = ({
           <SideNavItem
             as="label"
             title="Test Mode"
-            leading={<TestIcon />}
+            leading={TestIcon}
             trailing={
               <BladeSwitch
                 accessibilityLabel=""

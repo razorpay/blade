@@ -193,7 +193,7 @@ type SideNavItemProps = {
    *
    * Meant for Indicator, Icon, etc
    */
-  leading: React.ReactElement;
+  leading: React.ReactElement | IconComponent;
 
   /**
    * Trailing slot for SideNavItem.

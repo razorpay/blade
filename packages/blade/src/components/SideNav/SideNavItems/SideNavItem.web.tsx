@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import type { SideNavItemProps } from '../types';
@@ -7,17 +8,11 @@ import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
+import type { IconComponent } from '~components/Icons';
 
 const SideNavItemContainer = styled(BaseBox)((props) => {
   return {
     transition: getNavItemTransition(props.theme),
-  };
-});
-
-const LeadingContainer = styled(Box)((props) => {
-  return {
-    transition: `all ${props.theme.motion.duration['2xquick']} ${props.theme.motion.easing.standard}`,
-    willChange: 'transform',
   };
 });
 
@@ -30,6 +25,9 @@ const SideNavItem = ({
   as = 'div',
   ...rest
 }: SideNavItemProps): React.ReactElement => {
+  const isIcon = typeof leading === 'function' && leading.name?.endsWith('Icon');
+  const Icon: IconComponent | undefined = isIcon ? leading : undefined;
+
   return (
     <TooltipifyComponent tooltip={tooltip}>
       <SideNavItemContainer
@@ -46,7 +44,13 @@ const SideNavItem = ({
         {...makeAnalyticsAttribute(rest)}
       >
         <Box display="inline-flex" alignItems="center" gap="spacing.3">
-          <LeadingContainer>{leading}</LeadingContainer>
+          {Icon ? (
+            <BaseBox display="flex" alignItems="center">
+              <Icon size="medium" />
+            </BaseBox>
+          ) : (
+            (leading as React.ReactNode)
+          )}
           <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>
             <Text
               truncateAfterLines={1}
