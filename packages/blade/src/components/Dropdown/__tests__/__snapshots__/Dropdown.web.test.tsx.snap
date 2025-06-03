@@ -571,7 +571,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 base-input-wrapper"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1249,7 +1249,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 base-input-wrapper"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1926,7 +1926,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 base-input-wrapper"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div

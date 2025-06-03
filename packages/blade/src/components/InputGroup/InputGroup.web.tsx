@@ -19,7 +19,7 @@ import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { getOuterMotionRef } from '~utils/getMotionRefs';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _InputGroup = (
+const _InputGroup: React.ForwardRefRenderFunction<BladeElementRef, InputGroupProps> = (
   {
     label,
     labelPosition = 'top',
@@ -33,9 +33,9 @@ const _InputGroup = (
     testID,
     _motionMeta,
     ...rest
-  }: InputGroupProps,
-  ref: React.Ref<BladeElementRef>,
-): React.ReactElement => {
+  },
+  ref,
+) => {
   const contextValue = useMemo(
     () => ({
       isInsideInputGroup: true,

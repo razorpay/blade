@@ -3377,7 +3377,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
                           data-blade-component="base-box"
                         >
                           <div
-                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c24 base-input-wrapper"
+                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c24 __blade-base-input-wrapper"
                             data-blade-component="base-box"
                           >
                             <input
@@ -3577,7 +3577,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
                           data-blade-component="base-box"
                         >
                           <div
-                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c24 base-input-wrapper"
+                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c24 __blade-base-input-wrapper"
                             data-blade-component="base-box"
                           >
                             <input

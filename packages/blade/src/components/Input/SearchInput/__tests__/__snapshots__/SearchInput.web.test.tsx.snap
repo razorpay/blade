@@ -448,7 +448,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10 base-input-wrapper"
+            class=" c9 c10 __blade-base-input-wrapper"
             data-blade-component="base-box"
           >
             <div
@@ -943,7 +943,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10 base-input-wrapper"
+            class=" c9 c10 __blade-base-input-wrapper"
             data-blade-component="base-box"
           >
             <div
@@ -1435,7 +1435,7 @@ exports[`<SearchInput /> should render 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10 base-input-wrapper"
+            class=" c9 c10 __blade-base-input-wrapper"
             data-blade-component="base-box"
           >
             <div
@@ -1996,7 +1996,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 base-input-wrapper"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -2555,7 +2555,7 @@ exports[`<SearchInput /> should render large size 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10 base-input-wrapper"
+            class=" c9 c10 __blade-base-input-wrapper"
             data-blade-component="base-box"
           >
             <div
