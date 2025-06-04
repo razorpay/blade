@@ -58,9 +58,11 @@ const renderElement = (
 const InfoGroupContext = React.createContext<{
   size: NonNullable<InfoGroupProps['size']>;
   itemOrientation: NonNullable<InfoGroupProps['itemOrientation']>;
+  isHighlighted: boolean;
 }>({
   size: 'medium',
   itemOrientation: 'horizontal',
+  isHighlighted: false,
 });
 
 const TitleCollection = ({
@@ -116,7 +118,7 @@ const _InfoItemKey = (
   { children, leading, trailing, helpText, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation } = React.useContext(InfoGroupContext);
+  const { itemOrientation, isHighlighted } = React.useContext(InfoGroupContext);
 
   return (
     <BaseBox
@@ -126,7 +128,9 @@ const _InfoItemKey = (
       alignSelf="flex-start"
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
-      {itemOrientation === 'horizontal' ? <Divider orientation="vertical" /> : null}
+      {itemOrientation === 'horizontal' && isHighlighted ? (
+        <Divider orientation="vertical" />
+      ) : null}
       <TitleCollection
         leading={leading}
         trailing={trailing}
@@ -207,16 +211,16 @@ const ContentsItemBox = React.forwardRef<
 
 const FlexItemBox = React.forwardRef<
   BladeElementRef,
-  { children: React.ReactNode; testID?: string }
+  { children: React.ReactNode; testID?: string; isHighlighted?: boolean }
 >(
-  ({ children, testID }, ref): React.ReactElement => {
+  ({ children, testID, isHighlighted = false }, ref): React.ReactElement => {
     return (
       <BaseBox
         display="flex"
         ref={ref as never}
         {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
       >
-        <Divider orientation="vertical" />
+        {isHighlighted && <Divider orientation="vertical" />}
         <BaseBox display="flex" flexDirection="column" gap="spacing.2">
           {children}
         </BaseBox>
@@ -227,15 +231,18 @@ const FlexItemBox = React.forwardRef<
 
 // InfoItem Component
 const _InfoItem = (
-  { children, testID }: InfoItemProps,
+  { children, testID, isHighlighted }: InfoItemProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation } = React.useContext(InfoGroupContext);
+  const { itemOrientation, isHighlighted: contextIsHighlighted } = React.useContext(
+    InfoGroupContext,
+  );
   const isVertical = itemOrientation === 'vertical';
+  const shouldHighlight = isHighlighted ?? contextIsHighlighted;
 
   if (isVertical) {
     return (
-      <FlexItemBox ref={ref as never} testID={testID}>
+      <FlexItemBox ref={ref as never} testID={testID} isHighlighted={shouldHighlight}>
         {children}
       </FlexItemBox>
     );
@@ -259,6 +266,7 @@ const _InfoGroup = (
     children,
     itemOrientation = 'horizontal',
     size = 'medium',
+    isHighlighted = false,
     testID,
     width,
     maxWidth,
@@ -271,8 +279,9 @@ const _InfoGroup = (
     () => ({
       size,
       itemOrientation,
+      isHighlighted,
     }),
-    [size, itemOrientation],
+    [size, itemOrientation, isHighlighted],
   );
 
   return (
@@ -280,7 +289,7 @@ const _InfoGroup = (
       <BaseBox
         ref={ref as never}
         display="grid"
-        gridTemplateColumns={itemOrientation === 'horizontal' ? 'max-content 1fr' : '1fr'}
+        gridTemplateColumns={itemOrientation === 'horizontal' ? 'max-content 1fr' : '1fr 1fr'}
         rowGap="spacing.4"
         columnGap="spacing.6"
         flexDirection="column"

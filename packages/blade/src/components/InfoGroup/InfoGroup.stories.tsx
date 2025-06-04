@@ -234,3 +234,30 @@ WithDividers.args = {
   size: 'medium',
 };
 WithDividers.storyName = 'With Dividers';
+
+export const WithHighlighting: StoryFn<typeof InfoGroup> = (args) => {
+  return (
+    <InfoGroup {...args}>
+      <InfoItem>
+        <InfoItemKey leading={UserIcon}>Account Holder</InfoItemKey>
+        <InfoItemValue>Saurabh Daware</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={BankIcon}>Payment Method</InfoItemKey>
+        <InfoItemValue>Credit Card</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey>Payment ID</InfoItemKey>
+        <InfoItemValue>
+          <Code size="small">pay_MK7DGqwYXEwx9Q</Code>
+        </InfoItemValue>
+      </InfoItem>
+    </InfoGroup>
+  );
+};
+WithHighlighting.args = {
+  itemOrientation: 'horizontal',
+  size: 'medium',
+  isHighlighted: true,
+};
+WithHighlighting.storyName = 'With Highlighting (All Items)';

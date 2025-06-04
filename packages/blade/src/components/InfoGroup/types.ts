@@ -23,6 +23,12 @@ export type InfoGroupProps = {
   textAlign?: 'left' | 'right';
 
   /**
+   * Controls whether vertical dividers are rendered
+   * @default false
+   */
+  isHighlighted?: boolean;
+
+  /**
    * Children should be InfoItem components
    */
   children: React.ReactNode;
@@ -35,6 +41,12 @@ export type InfoItemProps = {
    * Content should be InfoItemKey and InfoItemValue components
    */
   children: React.ReactNode;
+
+  /**
+   * Controls whether vertical dividers are rendered for this item
+   * @default false
+   */
+  isHighlighted?: boolean;
 } & TestID;
 
 type TitlePeripheralProps = {
