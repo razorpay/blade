@@ -242,7 +242,6 @@ type SideNavBodyProps = {
 
 type SideNavLevelProps = {
   children: React.ReactElement | React.ReactElement[];
-  trailing?: React.ReactElement;
 };
 
 export type {
