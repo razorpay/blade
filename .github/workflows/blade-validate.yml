@@ -114,6 +114,9 @@ jobs:
           # Generate merged report and capture text-summary
           yarn nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
           
+          # Generate full coverage report
+          yarn nyc report --reporter=json --reporter=text > coverage-full.txt
+          
           # Ensure output directory exists
           mkdir -p packages/blade/coverage
           
@@ -125,10 +128,27 @@ jobs:
             echo "Error: coverage/coverage-final.json not found"
             exit 1
           fi
+      - name: Prepare Coverage Comment
+        run: |
+          echo '## 🛡️ Coverage Report' > coverage-comment.md
+          echo '' >> coverage-comment.md
+          echo '### Summary' >> coverage-comment.md
+          echo '```' >> coverage-comment.md
+          cat coverage-summary.txt >> coverage-comment.md
+          echo '```' >> coverage-comment.md
+          echo '' >> coverage-comment.md
+          echo '<details>' >> coverage-comment.md
+          echo '<summary>Full Coverage Details</summary>' >> coverage-comment.md
+          echo '' >> coverage-comment.md
+          echo '```' >> coverage-comment.md
+          cat coverage-full.txt >> coverage-comment.md
+          echo '```' >> coverage-comment.md
+          echo '' >> coverage-comment.md
+          echo '</details>' >> coverage-comment.md
       - name: Post Coverage Summary as PR Comment
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          body-file: coverage-summary.txt
+          body-file: coverage-comment.md
           token: ${{ secrets.CI_BOT_TOKEN }}
 
