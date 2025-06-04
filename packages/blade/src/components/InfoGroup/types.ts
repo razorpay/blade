@@ -58,6 +58,8 @@ export type TitleCollectionProps = {
   children: string | React.ReactNode;
   titleWeight: 'medium' | 'semibold';
   titleColor: 'surface.text.gray.muted' | 'surface.text.gray.subtle';
+  paddingLeft?: BoxProps['paddingLeft'];
+  paddingRight?: BoxProps['paddingRight'];
 } & TitlePeripheralProps;
 
 export type InfoItemKeyProps = {

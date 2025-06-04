@@ -70,11 +70,19 @@ const TitleCollection = ({
   helpText,
   titleWeight,
   titleColor,
+  paddingLeft,
+  paddingRight,
 }: TitleCollectionProps): React.ReactElement => {
   const { size } = React.useContext(InfoGroupContext);
 
   return (
-    <BaseBox display="flex" alignItems="flex-start" gap={elementGap[size]}>
+    <BaseBox
+      display="flex"
+      alignItems="flex-start"
+      gap={elementGap[size]}
+      paddingLeft={paddingLeft}
+      paddingRight={paddingRight}
+    >
       {leading && <BaseBox {...getCenterBoxProps(size)}>{renderElement(leading, size)}</BaseBox>}
       <BaseBox display="flex" flexDirection="column" flex="1">
         <BaseBox {...getCenterBoxProps(size)}>
@@ -108,22 +116,26 @@ const _InfoItemKey = (
   { children, leading, trailing, helpText, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  // const { theme } = useTheme();
-  // const leadingWidth = makeSize(iconSizeMap[size] + getIn(theme, elementGap[size]));
+  const { itemOrientation } = React.useContext(InfoGroupContext);
 
   return (
     <BaseBox
       ref={ref as never}
       display="flex"
       alignItems="center"
+      alignSelf="flex-start"
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
+      {itemOrientation === 'horizontal' ? <Divider orientation="vertical" /> : null}
       <TitleCollection
         leading={leading}
         trailing={trailing}
         helpText={helpText}
         titleWeight="medium"
         titleColor="surface.text.gray.muted"
+        // paddingLeft={itemOrientation === 'horizontal' ? 'spacing.4' : undefined}
+        paddingLeft="spacing.4"
+        paddingRight="spacing.0"
       >
         {children}
       </TitleCollection>
@@ -141,11 +153,13 @@ const _InfoItemValue = (
   { children, leading, trailing, helpText, testID }: InfoItemValueProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
+  const { itemOrientation } = React.useContext(InfoGroupContext);
   return (
     <BaseBox
       ref={ref as never}
       display="flex"
       alignItems="center"
+      alignSelf="flex-start"
       justifyContent="flex-start" // set to flex-end when textAlign is right
       {...metaAttribute({ name: MetaConstants.InfoItemValue, testID })}
     >
@@ -155,6 +169,9 @@ const _InfoItemValue = (
         helpText={helpText}
         titleWeight="semibold"
         titleColor="surface.text.gray.subtle"
+        // paddingRight={itemOrientation === 'horizontal' ? 'spacing.4' : undefined}
+        paddingLeft={itemOrientation === 'vertical' ? 'spacing.4' : 'spacing.0'}
+        paddingRight="spacing.4"
       >
         {children}
       </TitleCollection>
@@ -167,31 +184,67 @@ const InfoItemValue = assignWithoutSideEffects(React.forwardRef(_InfoItemValue),
   componentId: 'InfoItemValue',
 });
 
+const ContentsItemBox = React.forwardRef<
+  BladeElementRef,
+  {
+    children: React.ReactNode;
+    testID?: string;
+  }
+>(
+  ({ children, testID }, ref): React.ReactElement => {
+    return (
+      <BaseBox
+        display="contents"
+        marginX="200px"
+        ref={ref as never}
+        {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
+      >
+        {children}
+      </BaseBox>
+    );
+  },
+);
+
+const FlexItemBox = React.forwardRef<
+  BladeElementRef,
+  { children: React.ReactNode; testID?: string }
+>(
+  ({ children, testID }, ref): React.ReactElement => {
+    return (
+      <BaseBox
+        display="flex"
+        ref={ref as never}
+        {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
+      >
+        <Divider orientation="vertical" />
+        <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+          {children}
+        </BaseBox>
+      </BaseBox>
+    );
+  },
+);
+
 // InfoItem Component
 const _InfoItem = (
   { children, testID }: InfoItemProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
   const { itemOrientation } = React.useContext(InfoGroupContext);
+  const isVertical = itemOrientation === 'vertical';
+
+  if (isVertical) {
+    return (
+      <FlexItemBox ref={ref as never} testID={testID}>
+        {children}
+      </FlexItemBox>
+    );
+  }
 
   return (
-    <BaseBox
-      display="flex"
-      ref={ref as never}
-      {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
-    >
-      <Divider orientation="vertical" />
-      <BaseBox
-        display="grid"
-        gridTemplateColumns={itemOrientation === 'horizontal' ? '50% 50%' : '1fr'}
-        gap="spacing.2"
-        alignItems="flex-start"
-        paddingX="spacing.4"
-        width="100%"
-      >
-        {children}
-      </BaseBox>
-    </BaseBox>
+    <ContentsItemBox ref={ref as never} testID={testID}>
+      {children}
+    </ContentsItemBox>
   );
 };
 
@@ -226,9 +279,11 @@ const _InfoGroup = (
     <InfoGroupContext.Provider value={contextValue}>
       <BaseBox
         ref={ref as never}
-        display="flex"
+        display="grid"
+        gridTemplateColumns={itemOrientation === 'horizontal' ? 'max-content 1fr' : '1fr'}
+        rowGap="spacing.4"
+        columnGap="spacing.6"
         flexDirection="column"
-        gap="spacing.4"
         width={width}
         maxWidth={maxWidth}
         minWidth={minWidth}
