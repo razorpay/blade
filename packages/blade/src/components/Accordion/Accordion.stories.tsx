@@ -503,6 +503,7 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
                 height={20}
                 width={20}
                 style={{ borderRadius: '4px' }}
+                alt="Random placeholder"
               />
             }
             title="Slot item with subtitle"
@@ -521,6 +522,7 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
                 height={20}
                 width={20}
                 style={{ borderRadius: '4px' }}
+                alt="Random placeholder"
               />
             }
             title="Slot item without subtitle"

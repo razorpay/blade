@@ -318,7 +318,7 @@ const _BaseHeader = ({
     if (!leading || !React.isValidElement(leading)) return false;
 
     // Check if it's a Text component (has componentId "Text")
-    if ((leading.type as any)?.componentId === 'Text') return true;
+    if (getComponentId(leading) === 'Text') return true;
 
     // Check if it's an Icon component (function name ends with "Icon")
     if (typeof leading.type === 'function' && leading.type.name?.endsWith('Icon')) return true;
