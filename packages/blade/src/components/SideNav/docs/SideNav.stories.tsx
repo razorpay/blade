@@ -159,7 +159,7 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
 
 type ItemsType = Pick<
   SideNavLinkProps,
-  'icon' | 'title' | 'href' | 'trailing' | 'tooltip' | 'onClick'
+  'icon' | 'title' | 'href' | 'trailing' | 'tooltip' | 'onClick' | 'titleSuffix'
 >;
 type NavItemsJSONType = {
   type: 'section';
@@ -207,7 +207,7 @@ const navItemsJSON: NavItemsJSONType[] = [
         icon: GlobeIcon,
         title: 'Global',
         href: '/app/global',
-        trailing: (
+        titleSuffix: (
           <Badge color="positive" size="small">
             New
           </Badge>
@@ -473,14 +473,16 @@ const SideNavExample = ({
                     return <NavItem key={l1Item.title} {...l1Item} />;
                   }
 
+                  const { titleSuffix, ...l1ItemWithoutTitleSuffix } = l1Item;
+
                   return (
                     <NavItem
                       key={l1Item.title}
-                      {...l1Item}
+                      {...l1ItemWithoutTitleSuffix}
                       activeOnLinks={getAllChildHrefs(l1Item.items)}
                       href={l1Item.items[0].href}
                     >
-                      <SideNavLevel key={l1Item.title} trailing={l1Item.trailing}>
+                      <SideNavLevel key={l1Item.title} titleSuffix={l1Item.titleSuffix}>
                         {l1Item.items?.map((l2Item) => {
                           if (!l2Item.items) {
                             return (

@@ -6,12 +6,12 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
 
-const SideNavLevel = ({ children, trailing }: SideNavLevelProps): React.ReactElement => {
+const SideNavLevel = ({ children, titleSuffix }: SideNavLevelProps): React.ReactElement => {
   const { level: _prevLevel, title: headingTitle } = useNavLink();
 
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
-  const hasTrailing = !!trailing;
+  const hasTrailing = !!titleSuffix;
   return (
     <BaseBox
       marginLeft={
@@ -46,7 +46,7 @@ const SideNavLevel = ({ children, trailing }: SideNavLevelProps): React.ReactEle
           <Text size="large" weight="semibold">
             {headingTitle}
           </Text>
-          {trailing}
+          {titleSuffix}
         </BaseBox>
       ) : null}
       <BaseBox padding={{ base: 'spacing.0', m: 'spacing.3' }} overflowY="auto">

@@ -242,6 +242,7 @@ type SideNavBodyProps = {
 
 type SideNavLevelProps = {
   children: React.ReactElement | React.ReactElement[];
+  titleSuffix?: React.ReactElement;
 };
 
 export type {
