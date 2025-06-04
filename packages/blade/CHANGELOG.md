@@ -1,5 +1,14 @@
 # @razorpay/blade
 
+## 12.32.1
+
+### Patch Changes
+
+- 562c93dac: feat(SideNav): change SideNav width and test mode icon
+  > [!NOTE]
+  >
+  > This changes the width of the SideNav. Make sure to adjust the rest of the layout accordingly if it depends on SideNav width.
+
 ## 12.32.0
 
 ### Minor Changes
