@@ -98,15 +98,18 @@ const renderCoverageCard = async ({
   const BLADE_INTENT_COLOR_KEYS = {
     positive: {
       id: '',
-      key: 'c61aca5db3a21aead10da4889ad2b31c74d93529',
+      keyStyle: 'c61aca5db3a21aead10da4889ad2b31c74d93529',
+      keyVariable: '6489b823f0ea6a46820027c92b5650d0d7950350',
     },
     negative: {
       id: '',
-      key: 'cccac5aac53e828b3be3e8617e462f8ee1a058dd',
+      keyStyle: 'cccac5aac53e828b3be3e8617e462f8ee1a058dd',
+      keyVariable: '11c2fb911f47d4f8dc6ff648c2e9c6ee2ee3f2b9',
     },
     notice: {
       id: '',
-      key: '707d5fdfc748a5fc4777d212ee247bc40a86fe85',
+      keyStyle: '707d5fdfc748a5fc4777d212ee247bc40a86fe85',
+      keyVariable: '6fe5b15560ece4139ebacb2ae64f93892761d858',
     },
   };
 
@@ -125,8 +128,12 @@ const renderCoverageCard = async ({
 
     // import styles for positive, negative and notice colors and set their id in BLADE_INTENT_COLOR_KEYS
     for await (const [intent, intentObject] of Object.entries(BLADE_INTENT_COLOR_KEYS)) {
-      const colorStyle = await figma.importStyleByKeyAsync(intentObject.key);
-      BLADE_INTENT_COLOR_KEYS[intent as 'positive' | 'negative' | 'notice'].id = colorStyle.id;
+      // const colorStyle = await figma.importStyleByKeyAsync(intentObject.keyStyle);
+      const colorVariable = await figma.variables.importVariableByKeyAsync(
+        intentObject.keyVariable,
+      );
+      // BLADE_INTENT_COLOR_KEYS[intent as 'positive' | 'negative' | 'notice'].id = colorStyle.id;
+      BLADE_INTENT_COLOR_KEYS[intent as 'positive' | 'negative' | 'notice'].id = colorVariable.id;
     }
 
     let coverageColorIntent = BLADE_INTENT_COLOR_KEYS.negative.id;
@@ -151,18 +158,31 @@ const renderCoverageCard = async ({
     });
 
     const detachedCoverageCard = coverageCardInstance.detachInstance();
+
+    // Function to create a paint object bound to a variable
+    const createVariableBoundPaint = (variableId: string): SolidPaint => ({
+      type: 'SOLID',
+      // Optional: provide a fallback color if the variable isn't resolvable,
+      // though Figma typically handles this.
+      color: { r: 0, g: 0, b: 0 }, // Example fallback
+      boundVariables: {
+        color: {
+          type: 'VARIABLE_ALIAS',
+          id: variableId,
+        },
+      },
+    });
+
     traverseNode(detachedCoverageCard, (traversedNode) => {
       if (traversedNode.type === 'TEXT') {
         if (['bladeCoverageType', 'bladeCoverage'].includes(traversedNode.name)) {
-          traversedNode.setRangeFillStyleId(
-            0,
-            traversedNode.characters.length,
-            coverageColorIntent,
-          );
+          const newFill = createVariableBoundPaint(coverageColorIntent);
+          traversedNode.fills = [newFill];
         }
       } else if (traversedNode.type === 'RECTANGLE' && traversedNode.name === 'Progress') {
         traversedNode.resizeWithoutConstraints(bladeCoverageProgress || 0.1, 4);
-        traversedNode.fillStyleId = coverageColorIntent;
+        const newFill = createVariableBoundPaint(coverageColorIntent);
+        traversedNode.fills = [newFill];
       }
     });
     detachedCoverageCard.visible = true;
