@@ -8,7 +8,7 @@ exports[`SideNav should render 1`] = `
   flex-direction: column;
   position: fixed;
   height: 100%;
-  width: 245px;
+  width: 240px;
   top: 0px;
   left: 0px;
   background-color: hsla(210,40%,98%,1);
