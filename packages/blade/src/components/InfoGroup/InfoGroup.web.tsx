@@ -1,14 +1,18 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { InfoGroupProps, InfoItemProps, InfoItemKeyProps, InfoItemValueProps } from './types';
+import type {
+  InfoGroupProps,
+  InfoItemProps,
+  InfoItemKeyProps,
+  InfoItemValueProps,
+  TitleCollectionProps,
+} from './types';
 import {
-  itemSpacing,
-  keyValueGap,
   elementGap,
-  keyTypography,
-  valueTypography,
+  titleTextSize,
   helpTextSize,
   iconSize,
+  itemTitleHeight,
 } from './infoGroupTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
@@ -17,7 +21,21 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~utils/types';
 import type { IconComponent } from '~components/Icons';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { throwBladeError } from '~utils/logger';
+import { makeSize } from '~utils';
+// import { iconSizeMap } from '~components/Icons/useIconProps/iconSizeMap';
+// import getIn from '~utils/lodashButBetter/get';
+// import { useTheme } from '~components/BladeProvider';
+import type { BoxProps } from '~components/Box';
+import { Divider } from '~components/Divider';
+
+const getCenterBoxProps = (size: NonNullable<InfoGroupProps['size']>): BoxProps => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    height: makeSize(itemTitleHeight[size]),
+  };
+};
 
 // Helper function to render leading/trailing elements (icons or JSX)
 const renderElement = (
@@ -26,68 +44,89 @@ const renderElement = (
 ): React.ReactNode => {
   if (!element) return null;
 
-  // Check if it's an icon component (function) vs JSX element
-  if (typeof element === 'function') {
-    const IconComponent = element;
-    return <IconComponent size={iconSize[size]} />;
+  // Check if it's already a JSX element (React element)
+  if (React.isValidElement(element)) {
+    return element;
   }
 
-  // It's already a JSX element
-  return element;
+  // Otherwise, it's a component function - render it with size prop
+  const IconComponent = element as IconComponent;
+  return <IconComponent size={iconSize[size]} color="surface.icon.gray.muted" />;
 };
 
 // Create React Context for InfoGroup configuration
 const InfoGroupContext = React.createContext<{
   size: NonNullable<InfoGroupProps['size']>;
   itemOrientation: NonNullable<InfoGroupProps['itemOrientation']>;
-  textAlign: NonNullable<InfoGroupProps['textAlign']>;
 }>({
   size: 'medium',
   itemOrientation: 'horizontal',
-  textAlign: 'left',
 });
+
+const TitleCollection = ({
+  children,
+  leading,
+  trailing,
+  helpText,
+  titleWeight,
+  titleColor,
+}: TitleCollectionProps): React.ReactElement => {
+  const { size } = React.useContext(InfoGroupContext);
+
+  return (
+    <BaseBox display="flex" alignItems="flex-start" gap={elementGap[size]}>
+      {leading && <BaseBox {...getCenterBoxProps(size)}>{renderElement(leading, size)}</BaseBox>}
+      <BaseBox display="flex" flexDirection="column" flex="1">
+        <BaseBox {...getCenterBoxProps(size)}>
+          {typeof children === 'string' ? (
+            <Text variant="body" size={titleTextSize[size]} weight={titleWeight} color={titleColor}>
+              {children}
+            </Text>
+          ) : (
+            children
+          )}
+        </BaseBox>
+
+        {helpText && (
+          <Text
+            variant="body"
+            size={helpTextSize[size]}
+            weight="regular"
+            color="surface.text.gray.muted"
+          >
+            {helpText}
+          </Text>
+        )}
+      </BaseBox>
+      {trailing && <BaseBox {...getCenterBoxProps(size)}>{renderElement(trailing, size)}</BaseBox>}
+    </BaseBox>
+  );
+};
 
 // InfoItemKey Component
 const _InfoItemKey = (
   { children, leading, trailing, helpText, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { size } = React.useContext(InfoGroupContext);
-  const keyTyping = keyTypography[size];
+  // const { theme } = useTheme();
+  // const leadingWidth = makeSize(iconSizeMap[size] + getIn(theme, elementGap[size]));
 
   return (
     <BaseBox
       ref={ref as never}
       display="flex"
       alignItems="center"
-      gap={elementGap[size]}
-      flex="1"
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
-      {renderElement(leading, size)}
-      <BaseBox display="flex" flexDirection="column" flex="1">
-        {children && (
-          <Text
-            variant="body"
-            size={keyTyping.size}
-            weight={keyTyping.weight}
-            color="surface.text.gray.muted"
-          >
-            {children}
-          </Text>
-        )}
-        {helpText && (
-          <Text
-            variant="body"
-            size={helpTextSize[size]}
-            weight="regular"
-            color="surface.text.gray.subtle"
-          >
-            {helpText}
-          </Text>
-        )}
-      </BaseBox>
-      {renderElement(trailing, size)}
+      <TitleCollection
+        leading={leading}
+        trailing={trailing}
+        helpText={helpText}
+        titleWeight="medium"
+        titleColor="surface.text.gray.muted"
+      >
+        {children}
+      </TitleCollection>
     </BaseBox>
   );
 };
@@ -99,43 +138,26 @@ const InfoItemKey = assignWithoutSideEffects(React.forwardRef(_InfoItemKey), {
 
 // InfoItemValue Component
 const _InfoItemValue = (
-  { children, leading, trailing, testID }: InfoItemValueProps,
+  { children, leading, trailing, helpText, testID }: InfoItemValueProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { size, textAlign } = React.useContext(InfoGroupContext);
-  const valueTyping = valueTypography[size];
-
   return (
     <BaseBox
       ref={ref as never}
       display="flex"
       alignItems="center"
-      gap={elementGap[size]}
-      flex="1"
-      justifyContent={textAlign === 'right' ? 'flex-end' : 'flex-start'}
+      justifyContent="flex-start" // set to flex-end when textAlign is right
       {...metaAttribute({ name: MetaConstants.InfoItemValue, testID })}
     >
-      {renderElement(leading, size)}
-      <BaseBox
-        display="flex"
-        alignItems="center"
-        flex="1"
-        justifyContent={textAlign === 'right' ? 'flex-end' : 'flex-start'}
+      <TitleCollection
+        leading={leading}
+        trailing={trailing}
+        helpText={helpText}
+        titleWeight="semibold"
+        titleColor="surface.text.gray.subtle"
       >
-        {typeof children === 'string' ? (
-          <Text
-            variant="body"
-            size={valueTyping.size}
-            weight={valueTyping.weight}
-            color="surface.text.gray.subtle"
-          >
-            {children}
-          </Text>
-        ) : (
-          children
-        )}
-      </BaseBox>
-      {renderElement(trailing, size)}
+        {children}
+      </TitleCollection>
     </BaseBox>
   );
 };
@@ -150,15 +172,22 @@ const _InfoItem = (
   { children, testID }: InfoItemProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { size, itemOrientation } = React.useContext(InfoGroupContext);
+  const { itemOrientation } = React.useContext(InfoGroupContext);
 
   return (
-    <BaseBox ref={ref as never} {...metaAttribute({ name: MetaConstants.InfoItem, testID })}>
+    <BaseBox
+      display="flex"
+      ref={ref as never}
+      {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
+    >
+      <Divider orientation="vertical" />
       <BaseBox
-        display="flex"
-        flexDirection={itemOrientation === 'horizontal' ? 'row' : 'column'}
-        gap={keyValueGap[size]}
-        alignItems={itemOrientation === 'horizontal' ? 'center' : 'flex-start'}
+        display="grid"
+        gridTemplateColumns={itemOrientation === 'horizontal' ? '50% 50%' : '1fr'}
+        gap="spacing.2"
+        alignItems="flex-start"
+        paddingX="spacing.4"
+        width="100%"
       >
         {children}
       </BaseBox>
@@ -177,28 +206,20 @@ const _InfoGroup = (
     children,
     itemOrientation = 'horizontal',
     size = 'medium',
-    textAlign = 'left',
     testID,
-    ...props
+    width,
+    maxWidth,
+    minWidth,
+    ...rest
   }: InfoGroupProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  if (__DEV__) {
-    if (!children) {
-      throwBladeError({
-        message: 'InfoGroup requires InfoItem children.',
-        moduleName: 'InfoGroup',
-      });
-    }
-  }
-
   const contextValue = React.useMemo(
     () => ({
       size,
       itemOrientation,
-      textAlign,
     }),
-    [size, itemOrientation, textAlign],
+    [size, itemOrientation],
   );
 
   return (
@@ -207,9 +228,12 @@ const _InfoGroup = (
         ref={ref as never}
         display="flex"
         flexDirection="column"
-        gap={itemSpacing[size]}
+        gap="spacing.4"
+        width={width}
+        maxWidth={maxWidth}
+        minWidth={minWidth}
         {...metaAttribute({ name: MetaConstants.InfoGroup, testID })}
-        {...getStyledProps(props)}
+        {...getStyledProps(rest)}
       >
         {children}
       </BaseBox>

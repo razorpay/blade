@@ -1,6 +1,7 @@
 import type { IconComponent } from '~components/Icons';
 import type { StringChildrenType, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BoxProps } from '~components/Box';
 
 export type InfoGroupProps = {
   /**
@@ -26,7 +27,8 @@ export type InfoGroupProps = {
    */
   children: React.ReactNode;
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  Pick<BoxProps, 'width' | 'maxWidth' | 'minWidth'>;
 
 export type InfoItemProps = {
   /**
@@ -35,7 +37,7 @@ export type InfoItemProps = {
   children: React.ReactNode;
 } & TestID;
 
-export type InfoItemKeyProps = {
+type TitlePeripheralProps = {
   /**
    * Leading element - can be icon component, avatar, or any React element
    */
@@ -47,29 +49,36 @@ export type InfoItemKeyProps = {
   trailing?: IconComponent | React.ReactElement;
 
   /**
-   * Additional help text to provide context for the key
+   * Additional help text to provide context
    */
   helpText?: string;
+};
 
+export type TitleCollectionProps = {
+  children: string | React.ReactNode;
+  titleWeight: 'medium' | 'semibold';
+  titleColor: 'surface.text.gray.muted' | 'surface.text.gray.subtle';
+} & TitlePeripheralProps;
+
+export type InfoItemKeyProps = {
   /**
    * Content of the key.
    */
   children?: StringChildrenType;
-} & TestID;
+} & TitlePeripheralProps &
+  TestID;
 
 export type InfoItemValueProps = {
   /**
-   * Leading element - can be icon component, avatar, or any React element
-   */
-  leading?: IconComponent | React.ReactElement;
-
-  /**
-   * Trailing element - can be icon component, avatar, or any React element
-   */
-  trailing?: IconComponent | React.ReactElement;
-
-  /**
    * Content of the value - text, components, or other ReactNode
    */
-  children?: React.ReactNode;
-} & TestID;
+  children?: StringChildrenType | React.ReactNode;
+
+  /**
+   * Defines whether the value is aligned left or right
+   *
+   * @default 'left'
+   */
+  textAlign?: 'left' | 'right';
+} & TitlePeripheralProps &
+  TestID;

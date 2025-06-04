@@ -13,6 +13,7 @@ import { Divider } from '~components/Divider';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
 
 const Page = (): React.ReactElement => {
   return (
@@ -53,6 +54,10 @@ export default {
   argTypes: {
     ...getStyledPropsArgTypes(),
   },
+  args: {
+    maxWidth: '600px',
+    width: '500px',
+  },
   parameters: {
     docs: {
       page: Page,
@@ -62,16 +67,18 @@ export default {
 
 const InfoGroupTemplate: StoryFn<typeof InfoGroup> = (args) => {
   return (
-    <InfoGroup {...args}>
-      <InfoItem>
-        <InfoItemKey>Account Holder</InfoItemKey>
-        <InfoItemValue>Saurabh Daware</InfoItemValue>
-      </InfoItem>
-      <InfoItem>
-        <InfoItemKey>Payment Method</InfoItemKey>
-        <InfoItemValue>Credit Card</InfoItemValue>
-      </InfoItem>
-    </InfoGroup>
+    <Box display="inline-block" flexShrink={0} backgroundColor="surface.background.gray.intense">
+      <InfoGroup {...args}>
+        <InfoItem>
+          <InfoItemKey>Account Holder</InfoItemKey>
+          <InfoItemValue>Saurabh Daware</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Payment Method</InfoItemKey>
+          <InfoItemValue>Credit Card</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>
+    </Box>
   );
 };
 
