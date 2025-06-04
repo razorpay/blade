@@ -112,10 +112,10 @@ jobs:
           ls -la .nyc_output/
           
           # Generate merged report and capture text-summary
-          yarn nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
+          yarn --silent nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
           
           # Generate full coverage report
-          yarn nyc report --reporter=json --reporter=text > coverage-full.txt
+          yarn --silent nyc report --reporter=json --reporter=text > coverage-full.txt
           
           # Ensure output directory exists
           mkdir -p packages/blade/coverage
