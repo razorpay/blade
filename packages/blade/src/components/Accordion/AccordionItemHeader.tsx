@@ -46,10 +46,11 @@ const _AccordionItemHeader = ({
         isDisabled={isDisabled}
         showBackButton={false}
         showCloseButton={false}
-        showDivider={false}
+        showDivider={true}
         paddingX="spacing.5"
         marginY="spacing.5"
         size={size}
+        isAccordionContext={true}
         trailingInteractionElement={
           <CollapsibleChevronIcon
             color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
