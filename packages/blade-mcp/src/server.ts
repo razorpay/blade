@@ -27,7 +27,19 @@ import {
   hiBladeToolSchema,
   hiBladeToolCallback,
 } from './tools/hiBlade.js';
-import { getPackageJSONVersion } from './utils.js';
+import { getPackageJSONVersion } from './utils/generalUtils.js';
+import {
+  getBladePatternDocsToolName,
+  getBladePatternDocsToolDescription,
+  getBladePatternDocsToolSchema,
+  getBladePatternDocsToolCallback,
+} from './tools/getBladePatternDocs.js';
+import {
+  getBladeGeneralDocsToolName,
+  getBladeGeneralDocsToolDescription,
+  getBladeGeneralDocsToolSchema,
+  getBladeGeneralDocsToolCallback,
+} from './tools/getBladeGeneralDocs.js';
 
 Sentry.init({
   dsn: process.env.BLADE_MCP_SENTRY_DSN,
@@ -63,6 +75,20 @@ try {
     getBladeComponentDocsToolDescription,
     getBladeComponentDocsToolSchema,
     getBladeComponentDocsToolCallback,
+  );
+
+  server.tool(
+    getBladePatternDocsToolName,
+    getBladePatternDocsToolDescription,
+    getBladePatternDocsToolSchema,
+    getBladePatternDocsToolCallback,
+  );
+
+  server.tool(
+    getBladeGeneralDocsToolName,
+    getBladeGeneralDocsToolDescription,
+    getBladeGeneralDocsToolSchema,
+    getBladeGeneralDocsToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout

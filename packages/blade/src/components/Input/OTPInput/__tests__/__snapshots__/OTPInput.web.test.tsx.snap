@@ -326,6 +326,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -391,11 +392,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -434,11 +435,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -477,11 +478,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -520,11 +521,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -886,6 +887,7 @@ exports[`<OTPInput /> should render 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -951,11 +953,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -992,11 +994,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1033,11 +1035,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1074,11 +1076,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1115,11 +1117,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1156,11 +1158,11 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1520,6 +1522,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -1585,11 +1588,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1627,11 +1630,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1669,11 +1672,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1711,11 +1714,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1753,11 +1756,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1794,11 +1797,11 @@ exports[`<OTPInput /> should render large size 1`] = `
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c9 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
