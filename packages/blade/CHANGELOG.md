@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 12.32.0
+
+### Minor Changes
+
+- d956170e9: feat(blade): add inputgroup
+
+### Patch Changes
+
+- 1d14b48c0: fix(blade): remove modal contraints
+
 ## 12.31.5
 
 ### Patch Changes
