@@ -84,9 +84,6 @@ const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean; isDi
   ({ theme, isDisabled }) => {
     const { spacing } = theme;
     return {
-      // backgroundColor: isDisabled
-      //   ? theme.colors.interactive.background.gray.faded
-      //   : theme.colors.transparent,
       backgroundColor: theme.colors.transparent,
       gap: makeSpace(spacing[2]),
       display: 'flex',
