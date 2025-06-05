@@ -29,7 +29,7 @@ const validDropdownChildren = [
   dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
   dropdownComponentIds.triggers.FilterChipSelectInput,
-  dropdownComponentIds.triggers.InputDropDownButton,
+  dropdownComponentIds.triggers.InputDropdownButton,
 ];
 
 /**
@@ -164,8 +164,8 @@ const _Dropdown = (
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.FilterChipSelectInput)) {
         dropdownTriggerer.current = 'FilterChipSelectInput';
       }
-      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.InputDropDownButton)) {
-        dropdownTriggerer.current = 'InputDropDownButton';
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.InputDropdownButton)) {
+        dropdownTriggerer.current = 'InputDropdownButton';
       }
     }
   });

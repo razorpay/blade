@@ -10,7 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
-import { Dropdown, DropdownOverlay, InputDropDownButton } from '~components/Dropdown';
+import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import {
   ActionList,
   ActionListItem,
@@ -318,7 +318,7 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         onChange={({ value }) => setSearchTerm(value as string)}
         trailing={
           <Dropdown>
-            <InputDropDownButton defaultValue="home" />
+            <InputDropdownButton defaultValue="home" />
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Home" value="home" />
@@ -401,7 +401,7 @@ const SearchInputWithDisabledDropdownTemplate: StoryFn<typeof SearchInputCompone
         onChange={({ value }) => setSearchTerm(value as string)}
         trailing={
           <Dropdown>
-            <InputDropDownButton isDisabled defaultValue="home" />
+            <InputDropdownButton isDisabled defaultValue="home" />
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Home" value="home" />
@@ -458,7 +458,7 @@ const SearchInputWithControlledDropdownTemplate: StoryFn<typeof SearchInputCompo
       {...args}
       trailing={
         <Dropdown>
-          <InputDropDownButton
+          <InputDropdownButton
             value={inputDropdownValue}
             onChange={({ value }) => setInputDropdownValue(value)}
           />

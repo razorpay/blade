@@ -112,7 +112,7 @@ const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean; isDi
   },
 );
 
-const _InputDropDownButton = ({
+const _InputDropdownButton = ({
   onClick,
   onBlur,
   onKeyDown,
@@ -156,7 +156,7 @@ const _InputDropDownButton = ({
       }
     } else if (value && options.length > 0 && selectedIndices.length === 0) {
       setSelectedIndices([currentValueIndex]);
-      // since it will be always one selectedIndices in case of InputDropDownButton.
+      // since it will be always one selectedIndices in case of InputDropdownButton.
     } else if (value && selectedIndices.length > 0 && currentValueIndex !== selectedIndices[0]) {
       setSelectedIndices([currentValueIndex]);
     }
@@ -214,7 +214,7 @@ const _InputDropDownButton = ({
       }}
       {...makeAccessible({
         label: accessibilityLabel,
-        hasPopup: getActionListContainerRole(hasFooterAction, 'InputDropDownButton'),
+        hasPopup: getActionListContainerRole(hasFooterAction, 'InputDropdownButton'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
@@ -223,7 +223,7 @@ const _InputDropDownButton = ({
       ref={triggererRef}
       isDisabled={isDisabled}
       {...makeAnalyticsAttribute(rest)}
-      {...metaAttribute({ name: 'InputDropDownButton', testID })}
+      {...metaAttribute({ name: 'InputDropdownButton', testID })}
     >
       <Box padding="spacing.2" display="flex" gap="spacing.2" alignItems="center">
         {_isInsideSearchInput && (
@@ -260,9 +260,9 @@ const _InputDropDownButton = ({
   );
 };
 
-const InputDropDownButton = assignWithoutSideEffects(_InputDropDownButton, {
-  componentId: dropdownComponentIds.triggers.InputDropDownButton,
+const InputDropdownButton = assignWithoutSideEffects(_InputDropdownButton, {
+  componentId: dropdownComponentIds.triggers.InputDropdownButton,
   displayName: 'InputDropDown',
 });
 
-export { InputDropDownButton };
+export { InputDropdownButton };

@@ -14,7 +14,7 @@ import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
-import { InputDropDownButton } from '~components/Dropdown/InputDropDownButton';
+import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton.web';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { BankIcon } from '~components/Icons';
 
@@ -687,7 +687,7 @@ export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...a
         {...args}
         leading={
           <Dropdown>
-            <InputDropDownButton
+            <InputDropdownButton
               value={leadingDropDownValue}
               onChange={({ value }) => {
                 setLeadingDropDownValue(value);
@@ -703,7 +703,7 @@ export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...a
         }
         trailing={
           <Dropdown>
-            <InputDropDownButton defaultValue="sbi" icon={BankIcon} />
+            <InputDropdownButton defaultValue="sbi" icon={BankIcon} />
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="@oksbi" value="sbi" />
