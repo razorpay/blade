@@ -54,6 +54,7 @@ import {
 } from '~components/Card';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Alert } from '~components/Alert';
+import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '~components/InfoGroup';
 
 export default {
   title: 'Patterns/DetailedView',
@@ -164,32 +165,17 @@ const Timeline = ({ status }: { status: string }): React.ReactElement => {
   );
 };
 
-type KeyValueGridProps = {
-  children: React.ReactNode;
-};
-
-type KeyValueItemProps = {
-  label: string;
-  children: React.ReactNode;
-};
-
-const KeyValueItem = ({ label, children }: KeyValueItemProps): React.ReactElement => {
-  return (
-    <>
-      <Text variant="body" size="small" color="surface.text.gray.muted">
-        {label}
-      </Text>
-      <Box>{children}</Box>
-    </>
-  );
-};
-
-const KeyValueGrid = ({ children }: KeyValueGridProps): React.ReactElement => {
-  return (
-    <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3">
-      {children}
-    </Box>
-  );
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  status: string;
+  date: Date;
+  type: string;
+  method: string;
+  bank: string;
+  account: string;
+  name: string;
 };
 
 const nodes: Item[] = [
@@ -216,19 +202,6 @@ const nodes: Item[] = [
     ][Math.floor(Math.random() * 9)],
   })),
 ];
-
-type Item = {
-  id: string;
-  paymentId: string;
-  amount: number;
-  status: string;
-  date: Date;
-  type: string;
-  method: string;
-  bank: string;
-  account: string;
-  name: string;
-};
 
 const data: TableData<Item> = {
   nodes,
@@ -455,60 +428,61 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
               <Text variant="body" size="medium" weight="semibold" marginBottom="spacing.4">
                 Details
               </Text>
-              <KeyValueGrid>
+              <InfoGroup itemOrientation="horizontal" size="medium">
                 {/* Amount */}
-                <KeyValueItem label="Amount">
-                  <Amount value={selectedItem?.amount ?? 0} />
-                </KeyValueItem>
+                <InfoItem>
+                  <InfoItemKey>Amount</InfoItemKey>
+                  <InfoItemValue>
+                    <Amount value={selectedItem?.amount ?? 0} />
+                  </InfoItemValue>
+                </InfoItem>
 
                 {/* Amount Paid */}
-                <KeyValueItem label="Amount Paid">
-                  <Amount value={0} />
-                </KeyValueItem>
+                <InfoItem>
+                  <InfoItemKey>Amount Paid</InfoItemKey>
+                  <InfoItemValue>
+                    <Amount value={0} />
+                  </InfoItemValue>
+                </InfoItem>
 
                 {/* Payment Link ID */}
-                <KeyValueItem label="Payment Link ID">
-                  <Box display="flex" gap="spacing.2" alignItems="center">
+                <InfoItem>
+                  <InfoItemKey>Payment Link ID</InfoItemKey>
+                  <InfoItemValue trailing={<Link variant="button" size="small" icon={CopyIcon} />}>
                     <Code size="small">{selectedItem?.paymentId ?? 'NA'}</Code>
-                    <Link variant="button" size="small" icon={CopyIcon} />
-                  </Box>
-                </KeyValueItem>
+                  </InfoItemValue>
+                </InfoItem>
 
                 {/* Reference ID */}
-                <KeyValueItem label="Reference ID">
-                  <Text variant="body" size="medium">
-                    NA
-                  </Text>
-                </KeyValueItem>
+                <InfoItem>
+                  <InfoItemKey>Reference ID</InfoItemKey>
+                  <InfoItemValue>NA</InfoItemValue>
+                </InfoItem>
 
                 {/* Payment For */}
-                <KeyValueItem label="Payment for">
-                  <Text variant="body" size="medium">
-                    {selectedItem?.type}
-                  </Text>
-                </KeyValueItem>
+                <InfoItem>
+                  <InfoItemKey>Payment for</InfoItemKey>
+                  <InfoItemValue>{selectedItem?.type}</InfoItemValue>
+                </InfoItem>
 
                 {/* Partial Payment */}
-                <KeyValueItem label="Partial Payment">
-                  <Text variant="body" size="medium">
-                    Enabled
-                  </Text>
-                </KeyValueItem>
+                <InfoItem>
+                  <InfoItemKey>Partial Payment</InfoItemKey>
+                  <InfoItemValue>Enabled</InfoItemValue>
+                </InfoItem>
 
                 {/* Reminders */}
-                <KeyValueItem label="Reminders">
-                  <Text variant="body" size="medium">
-                    Send auto reminders
-                  </Text>
-                </KeyValueItem>
+                <InfoItem>
+                  <InfoItemKey>Reminders</InfoItemKey>
+                  <InfoItemValue>Send auto reminders</InfoItemValue>
+                </InfoItem>
 
                 {/* Created By */}
-                <KeyValueItem label="Created By">
-                  <Text variant="body" size="medium">
-                    {selectedItem?.name}
-                  </Text>
-                </KeyValueItem>
-              </KeyValueGrid>
+                <InfoItem>
+                  <InfoItemKey>Created By</InfoItemKey>
+                  <InfoItemValue>{selectedItem?.name}</InfoItemValue>
+                </InfoItem>
+              </InfoGroup>
             </Box>
           </Box>
         </DrawerBody>
@@ -685,71 +659,89 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             Transaction Breakdown
           </Heading>
 
-          <KeyValueGrid>
-            <KeyValueItem label="Amount">
-              <Amount value={dummyData.amount} currency="INR" />
-            </KeyValueItem>
+          <InfoGroup>
+            <InfoItem>
+              <InfoItemKey>Amount</InfoItemKey>
+              <InfoItemValue>
+                <Amount value={dummyData.amount} currency="INR" />
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Amount Paid">
-              <Amount value={dummyData.amountPaid} currency="INR" />
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Amount Paid</InfoItemKey>
+              <InfoItemValue>
+                <Amount value={dummyData.amountPaid} currency="INR" />
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Payment Link ID">
-              <Box display="flex" gap="spacing.2" alignItems="center">
-                <Code size="small">{dummyData.paymentId}</Code>
-                <Link variant="button" size="small" icon={CopyIcon} />
-              </Box>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Payment Link ID</InfoItemKey>
+              <InfoItemValue>
+                <Box display="flex" gap="spacing.2" alignItems="center">
+                  <Code size="small">{dummyData.paymentId}</Code>
+                  <Link variant="button" size="small" icon={CopyIcon} />
+                </Box>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Reference ID">
-              <Text variant="body" size="medium">
-                {dummyData.referenceId}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Reference ID</InfoItemKey>
+              <InfoItemValue>{dummyData.referenceId}</InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Payment for">
-              <Text variant="body" size="medium">
-                {dummyData.type}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Payment for</InfoItemKey>
+              <InfoItemValue>{dummyData.type}</InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="UTR Number">
-              <Box display="flex" gap="spacing.2" alignItems="center">
-                <Code size="small">{dummyData.utr}</Code>
-                <Link variant="button" size="small" icon={CopyIcon} />
-              </Box>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>UTR Number</InfoItemKey>
+              <InfoItemValue trailing={<Link variant="button" size="small" icon={CopyIcon} />}>
+                <Code size="medium">{dummyData.utr}</Code>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Bank Account">
-              <Text variant="body" size="medium">
-                {dummyData.bankAccount}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Bank Account</InfoItemKey>
+              <InfoItemValue>{dummyData.bankAccount}</InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="IFSC">
-              <Text variant="body" size="medium">
-                {dummyData.ifsc}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>IFSC</InfoItemKey>
+              <InfoItemValue>
+                <Text variant="body" size="medium">
+                  {dummyData.ifsc}
+                </Text>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Partial Payment">
-              <Text variant="body" size="medium">
-                {dummyData.partialPayment}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Partial Payment</InfoItemKey>
+              <InfoItemValue>
+                <Text variant="body" size="medium">
+                  {dummyData.partialPayment}
+                </Text>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Reminders">
-              <Text variant="body" size="medium">
-                {dummyData.reminders}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Reminders</InfoItemKey>
+              <InfoItemValue>
+                <Text variant="body" size="medium">
+                  {dummyData.reminders}
+                </Text>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Created By">
-              <Text variant="body" size="medium">
-                {dummyData.createdBy}
-              </Text>
-            </KeyValueItem>
-          </KeyValueGrid>
+            <InfoItem>
+              <InfoItemKey>Created By</InfoItemKey>
+              <InfoItemValue>
+                <Text variant="body" size="medium">
+                  {dummyData.createdBy}
+                </Text>
+              </InfoItemValue>
+            </InfoItem>
+          </InfoGroup>
         </DrawerBody>
       </Drawer>
     </Box>
@@ -876,23 +868,20 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
                 />
               </CardHeader>
               <CardBody>
-                <KeyValueGrid>
-                  <KeyValueItem label="VPA ID">
-                    <Text weight="regular" color="surface.text.gray.normal">
-                      example@ybl
-                    </Text>
-                  </KeyValueItem>
-                  <KeyValueItem label="Transaction ID">
-                    <Text weight="regular" color="surface.text.gray.normal">
-                      fa_PEisj2647UW
-                    </Text>
-                  </KeyValueItem>
-                  <KeyValueItem label="Transaction ID">
-                    <Text weight="regular" color="surface.text.gray.normal">
-                      example@ybl
-                    </Text>
-                  </KeyValueItem>
-                </KeyValueGrid>
+                <InfoGroup>
+                  <InfoItem>
+                    <InfoItemKey>VPA ID</InfoItemKey>
+                    <InfoItemValue>example@ybl</InfoItemValue>
+                  </InfoItem>
+                  <InfoItem>
+                    <InfoItemKey>Transaction ID</InfoItemKey>
+                    <InfoItemValue>fa_PEisj2647UW</InfoItemValue>
+                  </InfoItem>
+                  <InfoItem>
+                    <InfoItemKey>Transaction ID</InfoItemKey>
+                    <InfoItemValue>example@ybl</InfoItemValue>
+                  </InfoItem>
+                </InfoGroup>
                 <Box
                   marginTop="spacing.4"
                   display="flex"
@@ -921,71 +910,81 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
       >
         <DrawerHeader title="Transaction Breakdown" />
         <DrawerBody>
-          <KeyValueGrid>
-            <KeyValueItem label="Amount">
-              <Amount value={dummyData.amount} currency="INR" />
-            </KeyValueItem>
+          <InfoGroup>
+            <InfoItem>
+              <InfoItemKey>Amount</InfoItemKey>
+              <InfoItemValue>
+                <Amount value={dummyData.amount} currency="INR" />
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Amount Paid">
-              <Amount value={dummyData.amountPaid} currency="INR" />
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Amount Paid</InfoItemKey>
+              <InfoItemValue>
+                <Amount value={dummyData.amountPaid} currency="INR" />
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Payment Link ID">
-              <Box display="flex" gap="spacing.2" alignItems="center">
-                <Code size="small">{dummyData.paymentId}</Code>
-                <Link variant="button" size="small" icon={CopyIcon} />
-              </Box>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Payment Link ID</InfoItemKey>
+              <InfoItemValue>
+                <Box display="flex" gap="spacing.2" alignItems="center">
+                  <Code size="small">{dummyData.paymentId}</Code>
+                  <Link variant="button" size="small" icon={CopyIcon} />
+                </Box>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Reference ID">
-              <Text variant="body" size="medium">
-                {dummyData.referenceId}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Reference ID</InfoItemKey>
+              <InfoItemValue>
+                <Text variant="body" size="medium">
+                  {dummyData.referenceId}
+                </Text>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Payment for">
-              <Text variant="body" size="medium">
-                {dummyData.type}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Payment for</InfoItemKey>
+              <InfoItemValue>
+                <Text variant="body" size="medium">
+                  {dummyData.type}
+                </Text>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="UTR Number">
-              <Box display="flex" gap="spacing.2" alignItems="center">
-                <Code size="small">{dummyData.utr}</Code>
-                <Link variant="button" size="small" icon={CopyIcon} />
-              </Box>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>UTR Number</InfoItemKey>
+              <InfoItemValue trailing={<Link variant="button" size="small" icon={CopyIcon} />}>
+                <Code size="medium">{dummyData.utr}</Code>
+              </InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Bank Account">
-              <Text variant="body" size="medium">
-                {dummyData.bankAccount}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Bank Account</InfoItemKey>
+              <InfoItemValue>{dummyData.bankAccount}</InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="IFSC">
-              <Text variant="body" size="medium">
-                {dummyData.ifsc}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>IFSC</InfoItemKey>
+              <InfoItemValue>{dummyData.ifsc}</InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Partial Payment">
-              <Text variant="body" size="medium">
-                {dummyData.partialPayment}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Partial Payment</InfoItemKey>
+              <InfoItemValue>{dummyData.partialPayment}</InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Reminders">
-              <Text variant="body" size="medium">
-                {dummyData.reminders}
-              </Text>
-            </KeyValueItem>
+            <InfoItem>
+              <InfoItemKey>Reminders</InfoItemKey>
+              <InfoItemValue>{dummyData.reminders}</InfoItemValue>
+            </InfoItem>
 
-            <KeyValueItem label="Created By">
-              <Text variant="body" size="medium">
-                {dummyData.createdBy}
-              </Text>
-            </KeyValueItem>
-          </KeyValueGrid>
+            <InfoItem>
+              <InfoItemKey>Created By</InfoItemKey>
+              <InfoItemValue>{dummyData.createdBy}</InfoItemValue>
+            </InfoItem>
+          </InfoGroup>
         </DrawerBody>
       </Drawer>
     </Box>

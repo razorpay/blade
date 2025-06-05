@@ -17,16 +17,30 @@ export type InfoGroupProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
-   * Defines whether the value is aligned left or right
+   * Defines the alignment of the key content
    * @default 'left'
    */
-  textAlign?: 'left' | 'right';
+  keyAlign?: 'left' | 'right';
+
+  /**
+   * Defines the alignment of the value content
+   * @default 'left'
+   */
+  valueAlign?: 'left' | 'right';
 
   /**
    * Controls whether vertical dividers are rendered
    * @default false
    */
   isHighlighted?: boolean;
+
+  /**
+   * Custom grid template columns for the InfoGroup layout
+   *
+   * @default 'max-content 1fr' for horizontal itemOrientation
+   * @default 'repeat(min(3, ${React.Children.count(children)}), 1fr)' for vertical itemOrientation
+   */
+  gridTemplateColumns?: BoxProps['gridAutoColumns'];
 
   /**
    * Children should be InfoItem components
@@ -64,6 +78,12 @@ type TitlePeripheralProps = {
    * Additional help text to provide context
    */
   helpText?: string;
+
+  /**
+   * Truncates text after specified number of lines
+   * @default undefined
+   */
+  truncateAfterLines?: number;
 };
 
 export type TitleCollectionProps = {
@@ -87,12 +107,5 @@ export type InfoItemValueProps = {
    * Content of the value - text, components, or other ReactNode
    */
   children?: StringChildrenType | React.ReactNode;
-
-  /**
-   * Defines whether the value is aligned left or right
-   *
-   * @default 'left'
-   */
-  textAlign?: 'left' | 'right';
 } & TitlePeripheralProps &
   TestID;

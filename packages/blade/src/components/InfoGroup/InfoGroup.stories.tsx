@@ -1,18 +1,28 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import React from 'react';
 import type { InfoGroupProps } from './types';
 import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from './InfoGroup';
-import { UserIcon, BankIcon, CheckIcon, CopyIcon, ExternalLinkIcon } from '~components/Icons';
-import BaseBox from '~components/Box/BaseBox';
-import { Badge } from '~components/Badge';
+import {
+  UserIcon,
+  BankIcon,
+  CheckIcon,
+  CopyIcon,
+  InfoIcon,
+  EditIcon,
+  CloseIcon,
+} from '~components/Icons';
 import { Code } from '~components/Typography';
 import { Avatar } from '~components/Avatar';
-import { Amount } from '~components/Amount';
-import { IconButton } from '~components/Button/IconButton';
-import { Divider } from '~components/Divider';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Link } from '~components/Link';
+import { Badge } from '~components/Badge';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Amount } from '~components/Amount';
+import { Button } from '~components/Button';
+import { TextInput } from '~components/Input/TextInput';
 import { Box } from '~components/Box';
 
 const Page = (): React.ReactElement => {
@@ -54,10 +64,7 @@ export default {
   argTypes: {
     ...getStyledPropsArgTypes(),
   },
-  args: {
-    maxWidth: '600px',
-    width: '500px',
-  },
+  args: {},
   parameters: {
     docs: {
       page: Page,
@@ -67,18 +74,30 @@ export default {
 
 const InfoGroupTemplate: StoryFn<typeof InfoGroup> = (args) => {
   return (
-    <Box display="inline-block" flexShrink={0} backgroundColor="surface.background.gray.intense">
-      <InfoGroup {...args}>
-        <InfoItem>
-          <InfoItemKey>Account Holder</InfoItemKey>
-          <InfoItemValue>Saurabh Daware</InfoItemValue>
-        </InfoItem>
-        <InfoItem>
-          <InfoItemKey>Payment Method</InfoItemKey>
-          <InfoItemValue>Credit Card</InfoItemValue>
-        </InfoItem>
-      </InfoGroup>
-    </Box>
+    <InfoGroup {...args}>
+      <InfoItem>
+        <InfoItemKey>Account Holder</InfoItemKey>
+        <InfoItemValue>Saurabh Daware</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey>Payment Method</InfoItemKey>
+        <InfoItemValue>Credit Card</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey>Transaction Amount</InfoItemKey>
+        <InfoItemValue>
+          <Amount value={123456} size={args.size} />
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey>Transaction Date</InfoItemKey>
+        <InfoItemValue>Dec 15, 2023</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey>Status</InfoItemKey>
+        <InfoItemValue>Completed</InfoItemValue>
+      </InfoItem>
+    </InfoGroup>
   );
 };
 
@@ -86,9 +105,56 @@ export const InfoGroupDefault = InfoGroupTemplate.bind({});
 InfoGroupDefault.args = {
   itemOrientation: 'horizontal',
   size: 'medium',
-  textAlign: 'left',
+  keyAlign: 'left',
+  valueAlign: 'left',
 };
 InfoGroupDefault.storyName = 'Default';
+
+const InfoGroupTemplateWithTruncate: StoryFn<typeof InfoGroup> = (args) => {
+  return (
+    <InfoGroup {...args}>
+      <InfoItem>
+        <InfoItemKey truncateAfterLines={1}>Key that truncates</InfoItemKey>
+        <InfoItemValue truncateAfterLines={1}>Value that truncates</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey>Key that wraps to next line</InfoItemKey>
+        <InfoItemValue>Value that wraps to next line</InfoItemValue>
+      </InfoItem>
+    </InfoGroup>
+  );
+};
+
+// Story from InfoGroupTemplate with different width. use InfoGroupTemplate.bind()
+export const InfoGroupWithTruncation = InfoGroupTemplateWithTruncate.bind({});
+InfoGroupWithTruncation.args = {
+  itemOrientation: 'horizontal',
+  size: 'medium',
+  maxWidth: '100px',
+  gridTemplateColumns: '1fr 1fr',
+};
+InfoGroupWithTruncation.storyName = 'With Truncation';
+
+const codeSizeMap = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
+} as const;
+
+const badgeSizeMap = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const;
+
+const inputSizeMap = {
+  xsmall: 'medium',
+  small: 'medium',
+  medium: 'medium',
+  large: 'large',
+} as const;
 
 export const WithIcons: StoryFn<typeof InfoGroup> = (args) => {
   return (
@@ -97,13 +163,54 @@ export const WithIcons: StoryFn<typeof InfoGroup> = (args) => {
         <InfoItemKey leading={UserIcon} helpText="Customer information">
           Account Holder
         </InfoItemKey>
-        <InfoItemValue trailing={CheckIcon}>Saurabh Daware</InfoItemValue>
+        <InfoItemValue helpText="Name of the account holder" trailing={CheckIcon}>
+          Saurabh Daware
+        </InfoItemValue>
       </InfoItem>
       <InfoItem>
         <InfoItemKey leading={BankIcon}>Payment ID</InfoItemKey>
-        <InfoItemValue trailing={CopyIcon}>
-          <Code size="small">pay_MK7DGqwYXEwx9Q</Code>
+        <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
+          <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
         </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={BankIcon}>Transaction Amount</InfoItemKey>
+        <InfoItemValue>
+          <Amount value={250000} size={args.size} />
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey
+          leading={UserIcon}
+          trailing={
+            <Tooltip content="Name of the Approved Merchant" placement="top">
+              <TooltipInteractiveWrapper display="flex" alignItems="center">
+                <InfoIcon size={args.size} color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+        >
+          Merchant Name
+        </InfoItemKey>
+        <InfoItemValue
+          trailing={
+            <Badge color="positive" size={badgeSizeMap[args.size!]}>
+              Approved
+            </Badge>
+          }
+        >
+          Razorpay Software Pvt Ltd
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={BankIcon}>Reference Number</InfoItemKey>
+        <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
+          <Code size={codeSizeMap[args.size!]}>ref_ABC123XYZ789</Code>
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={CheckIcon}>Transaction Status</InfoItemKey>
+        <InfoItemValue>Success</InfoItemValue>
       </InfoItem>
     </InfoGroup>
   );
@@ -111,91 +218,54 @@ export const WithIcons: StoryFn<typeof InfoGroup> = (args) => {
 WithIcons.args = {
   itemOrientation: 'horizontal',
   size: 'medium',
+  maxWidth: { base: '100%', m: '700px' },
 };
 WithIcons.storyName = 'With Icons';
-
-export const VerticalOrientation: StoryFn<typeof InfoGroup> = (args) => {
-  return (
-    <InfoGroup {...args}>
-      <InfoItem>
-        <InfoItemKey leading={UserIcon} helpText="Primary account holder name">
-          Account Holder
-        </InfoItemKey>
-        <InfoItemValue leading={CheckIcon}>Saurabh Daware</InfoItemValue>
-      </InfoItem>
-      <InfoItem>
-        <InfoItemKey leading={BankIcon}>Payment Method</InfoItemKey>
-        <InfoItemValue>Credit Card</InfoItemValue>
-      </InfoItem>
-    </InfoGroup>
-  );
-};
-VerticalOrientation.args = {
-  itemOrientation: 'vertical',
-  size: 'large',
-};
-VerticalOrientation.storyName = 'Vertical Orientation';
-
-export const WithComplexValues: StoryFn<typeof InfoGroup> = (args) => {
-  return (
-    <InfoGroup {...args}>
-      <InfoItem>
-        <InfoItemKey leading={BankIcon} helpText="Bank account details">
-          Bank Account
-        </InfoItemKey>
-        <InfoItemValue>
-          <BaseBox display="flex" alignItems="center" gap="spacing.2">
-            <Amount size="small" currency="INR" value={7890} />
-            <Badge size="small" color="positive">
-              Verified
-            </Badge>
-            <IconButton
-              icon={ExternalLinkIcon}
-              size="small"
-              accessibilityLabel="View details"
-              onClick={() => console.log('View details clicked')}
-            />
-          </BaseBox>
-        </InfoItemValue>
-      </InfoItem>
-      <InfoItem>
-        <InfoItemKey>IFSC Code</InfoItemKey>
-        <InfoItemValue trailing={CopyIcon}>
-          <Code size="small">HDFC0001234</Code>
-        </InfoItemValue>
-      </InfoItem>
-    </InfoGroup>
-  );
-};
-WithComplexValues.args = {
-  itemOrientation: 'horizontal',
-  size: 'medium',
-  textAlign: 'right',
-};
-WithComplexValues.storyName = 'With Complex Values';
 
 export const WithAvatars: StoryFn<typeof InfoGroup> = (args) => {
   return (
     <InfoGroup {...args}>
       <InfoItem>
         <InfoItemKey
-          leading={<Avatar size="medium" name="Saurabh Daware" />}
-          helpText="Account holder profile"
+          leading={<Avatar size={args.size} name="Saurabh Daware" />}
+          helpText="Customer information"
         >
           Account Holder
         </InfoItemKey>
-        <InfoItemValue trailing={ExternalLinkIcon}>Saurabh Daware</InfoItemValue>
+        <InfoItemValue trailing={CheckIcon}>Saurabh Daware</InfoItemValue>
       </InfoItem>
       <InfoItem>
-        <InfoItemKey leading={BankIcon}>Bank Account</InfoItemKey>
-        <InfoItemValue
-          leading={
-            <Badge size="small" color="positive">
-              Verified
-            </Badge>
-          }
-        >
-          HDFC Bank
+        <InfoItemKey leading={<Avatar size={args.size} name="Bank Account" />}>
+          Payment ID
+        </InfoItemKey>
+        <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
+          <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={<Avatar size={args.size} name="Customer Support" />}>
+          Support Agent
+        </InfoItemKey>
+        <InfoItemValue>John Doe</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={<Avatar size={args.size} name="Transaction Manager" />}>
+          Processed By
+        </InfoItemKey>
+        <InfoItemValue trailing={CheckIcon}>Jane Smith</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={<Avatar size={args.size} name="Business Account" />}>
+          Business Name
+        </InfoItemKey>
+        <InfoItemValue>Tech Solutions Inc.</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={<Avatar size={args.size} name="Payment Gateway" />}>
+          Gateway Response
+        </InfoItemKey>
+        <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
+          <Code size={codeSizeMap[args.size!]}>gw_resp_SUCCESS_001</Code>
         </InfoItemValue>
       </InfoItem>
     </InfoGroup>
@@ -203,61 +273,176 @@ export const WithAvatars: StoryFn<typeof InfoGroup> = (args) => {
 };
 WithAvatars.args = {
   itemOrientation: 'horizontal',
-  size: 'large',
+  size: 'medium',
 };
 WithAvatars.storyName = 'With Avatars';
 
-export const WithDividers: StoryFn<typeof InfoGroup> = (args) => {
-  return (
-    <InfoGroup {...args}>
-      <InfoItem>
-        <InfoItemKey>Account Holder</InfoItemKey>
-        <InfoItemValue>Saurabh Daware</InfoItemValue>
-      </InfoItem>
-      <Divider />
-      <InfoItem>
-        <InfoItemKey>Payment Method</InfoItemKey>
-        <InfoItemValue>Credit Card</InfoItemValue>
-      </InfoItem>
-      <Divider />
-      <InfoItem>
-        <InfoItemKey>Payment ID</InfoItemKey>
-        <InfoItemValue>
-          <Code size="small">pay_MK7DGqwYXEwx9Q</Code>
-        </InfoItemValue>
-      </InfoItem>
-    </InfoGroup>
-  );
-};
-WithDividers.args = {
-  itemOrientation: 'horizontal',
-  size: 'medium',
-};
-WithDividers.storyName = 'With Dividers';
-
-export const WithHighlighting: StoryFn<typeof InfoGroup> = (args) => {
+export const WithVerticalItemOrientation: StoryFn<typeof InfoGroup> = (args) => {
   return (
     <InfoGroup {...args}>
       <InfoItem>
         <InfoItemKey leading={UserIcon}>Account Holder</InfoItemKey>
-        <InfoItemValue>Saurabh Daware</InfoItemValue>
+        <InfoItemValue trailing={CheckIcon}>Saurabh Daware</InfoItemValue>
       </InfoItem>
       <InfoItem>
-        <InfoItemKey leading={BankIcon}>Payment Method</InfoItemKey>
-        <InfoItemValue>Credit Card</InfoItemValue>
-      </InfoItem>
-      <InfoItem>
-        <InfoItemKey>Payment ID</InfoItemKey>
-        <InfoItemValue>
-          <Code size="small">pay_MK7DGqwYXEwx9Q</Code>
+        <InfoItemKey leading={BankIcon}>Payment ID</InfoItemKey>
+        <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
+          <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
         </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={BankIcon}>Transaction Amount</InfoItemKey>
+        <InfoItemValue>
+          <Amount value={575025} size={args.size} />
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={UserIcon}>Customer Email</InfoItemKey>
+        <InfoItemValue>saurabh.daware@example.com</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={CheckIcon}>Payment Status</InfoItemKey>
+        <InfoItemValue trailing={CheckIcon}>Authorized</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={BankIcon}>Settlement Date</InfoItemKey>
+        <InfoItemValue>Dec 16, 2023</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={UserIcon}>Currency</InfoItemKey>
+        <InfoItemValue>INR</InfoItemValue>
       </InfoItem>
     </InfoGroup>
   );
 };
-WithHighlighting.args = {
-  itemOrientation: 'horizontal',
+WithVerticalItemOrientation.args = {
+  itemOrientation: 'vertical',
   size: 'medium',
   isHighlighted: true,
+  gridTemplateColumns: 'repeat(3, 1fr)',
 };
-WithHighlighting.storyName = 'With Highlighting (All Items)';
+WithVerticalItemOrientation.storyName = 'With Vertical Item Orientation';
+
+export const WithInteractiveItems: StoryFn<typeof InfoGroup> = (args) => {
+  const [isEditing, setIsEditing] = React.useState(false);
+  const [accountHolder, setAccountHolder] = React.useState('Saurabh Daware');
+  const [tempValue, setTempValue] = React.useState('');
+  const [copied, setCopied] = React.useState(false);
+
+  React.useEffect(() => {
+    if (copied) {
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+    }
+  }, [copied]);
+
+  const handleEdit = (): void => {
+    setTempValue(accountHolder);
+    setIsEditing(true);
+  };
+
+  const handleSave = (): void => {
+    setAccountHolder(tempValue);
+    setIsEditing(false);
+  };
+
+  const handleCancel = (): void => {
+    setTempValue('');
+    setIsEditing(false);
+  };
+
+  return (
+    <InfoGroup {...args}>
+      <InfoItem>
+        <InfoItemKey leading={UserIcon} helpText="Click to edit customer information">
+          Account Holder
+        </InfoItemKey>
+        <InfoItemValue
+          trailing={
+            isEditing ? undefined : (
+              <Link icon={EditIcon} variant="button" size={args.size} onClick={handleEdit} />
+            )
+          }
+        >
+          {isEditing ? (
+            <Box display="flex" alignItems="center" gap="spacing.3">
+              <TextInput
+                label=""
+                value={tempValue}
+                onChange={({ name: _name, value }) => setTempValue(value || '')}
+                size={inputSizeMap[args.size!]}
+                placeholder="Enter account holder name"
+              />
+              <Button
+                icon={CheckIcon}
+                variant="primary"
+                size={inputSizeMap[args.size!]}
+                onClick={handleSave}
+              />
+              <Button
+                icon={CloseIcon}
+                variant="tertiary"
+                size={inputSizeMap[args.size!]}
+                onClick={handleCancel}
+              />
+            </Box>
+          ) : (
+            accountHolder
+          )}
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={BankIcon}>Payment ID</InfoItemKey>
+        <InfoItemValue
+          trailing={
+            <Link
+              icon={copied ? CheckIcon : CopyIcon}
+              color={copied ? 'positive' : 'primary'}
+              onClick={() => {
+                void navigator.clipboard.writeText('pay_MK7DGqwYXEwx9Q');
+                setCopied(true);
+              }}
+              variant="button"
+              size={args.size}
+            />
+          }
+        >
+          <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={BankIcon}>Transaction Amount</InfoItemKey>
+        <InfoItemValue>
+          <Amount value={250000} size={args.size} />
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={UserIcon}>Email Address</InfoItemKey>
+        <InfoItemValue>saurabh.daware@example.com</InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={CheckIcon}>Payment Status</InfoItemKey>
+        <InfoItemValue
+          trailing={
+            <Badge color="positive" size={badgeSizeMap[args.size!]}>
+              Success
+            </Badge>
+          }
+        >
+          Completed
+        </InfoItemValue>
+      </InfoItem>
+      <InfoItem>
+        <InfoItemKey leading={BankIcon}>Transaction Date</InfoItemKey>
+        <InfoItemValue>Dec 15, 2023</InfoItemValue>
+      </InfoItem>
+    </InfoGroup>
+  );
+};
+WithInteractiveItems.args = {
+  itemOrientation: 'horizontal',
+  size: 'medium',
+  maxWidth: { base: '100%', m: '700px' },
+};
+WithInteractiveItems.storyName = 'With Interactive Items';

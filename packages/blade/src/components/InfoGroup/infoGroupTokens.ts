@@ -48,4 +48,18 @@ const itemTitleHeight = {
   large: size['24'],
 };
 
-export { elementGap, titleTextSize, helpTextSize, iconSize, itemTitleHeight };
+const avatarAdjustmentPaddingY = {
+  xsmall: 'spacing.1',
+  small: 'spacing.2',
+  medium: 'spacing.2',
+  large: 'spacing.3',
+} as const;
+
+export {
+  elementGap,
+  titleTextSize,
+  helpTextSize,
+  iconSize,
+  itemTitleHeight,
+  avatarAdjustmentPaddingY,
+};

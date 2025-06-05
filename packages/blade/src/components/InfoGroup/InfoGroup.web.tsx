@@ -13,6 +13,7 @@ import {
   helpTextSize,
   iconSize,
   itemTitleHeight,
+  avatarAdjustmentPaddingY,
 } from './infoGroupTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
@@ -22,18 +23,25 @@ import type { BladeElementRef } from '~utils/types';
 import type { IconComponent } from '~components/Icons';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils';
-// import { iconSizeMap } from '~components/Icons/useIconProps/iconSizeMap';
-// import getIn from '~utils/lodashButBetter/get';
-// import { useTheme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useTruncationTitle } from '~utils/useTruncationTitle';
 
-const getCenterBoxProps = (size: NonNullable<InfoGroupProps['size']>): BoxProps => {
+const getCenterBoxProps = (
+  size: NonNullable<InfoGroupProps['size']>,
+  strictHeight = false,
+): BoxProps => {
   return {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: makeSize(itemTitleHeight[size]),
+    ...(strictHeight
+      ? { height: makeSize(itemTitleHeight[size]) }
+      : {
+          minHeight: makeSize(itemTitleHeight[size]),
+        }),
   };
 };
 
@@ -58,11 +66,26 @@ const renderElement = (
 const InfoGroupContext = React.createContext<{
   size: NonNullable<InfoGroupProps['size']>;
   itemOrientation: NonNullable<InfoGroupProps['itemOrientation']>;
-  isHighlighted: boolean;
+  keyAlign: NonNullable<InfoGroupProps['keyAlign']>;
+  valueAlign: NonNullable<InfoGroupProps['valueAlign']>;
+  isHighlighted: NonNullable<InfoGroupProps['isHighlighted']>;
 }>({
   size: 'medium',
   itemOrientation: 'horizontal',
+  keyAlign: 'left',
+  valueAlign: 'left',
   isHighlighted: false,
+});
+
+// Create React Context for InfoItem configuration
+const InfoItemContext = React.createContext<{
+  hasAvatar: boolean;
+  setHasAvatar: (hasAvatar: boolean) => void;
+}>({
+  hasAvatar: false,
+  setHasAvatar: () => {
+    // no-op default implementation
+  },
 });
 
 const TitleCollection = ({
@@ -74,8 +97,23 @@ const TitleCollection = ({
   titleColor,
   paddingLeft,
   paddingRight,
+  truncateAfterLines,
 }: TitleCollectionProps): React.ReactElement => {
   const { size } = React.useContext(InfoGroupContext);
+  const { setHasAvatar } = React.useContext(InfoItemContext);
+
+  const isAvatar = getComponentId(React.isValidElement(leading) ? leading : undefined) === 'Avatar';
+
+  // Set hasAvatar context when an avatar is detected
+  useIsomorphicLayoutEffect(() => {
+    if (isAvatar) {
+      setHasAvatar(true);
+    }
+  }, [isAvatar, setHasAvatar]);
+
+  const { containerRef, textRef } = useTruncationTitle({
+    content: typeof children === 'string' ? children : undefined,
+  });
 
   return (
     <BaseBox
@@ -85,11 +123,20 @@ const TitleCollection = ({
       paddingLeft={paddingLeft}
       paddingRight={paddingRight}
     >
-      {leading && <BaseBox {...getCenterBoxProps(size)}>{renderElement(leading, size)}</BaseBox>}
+      {leading && (
+        <BaseBox {...getCenterBoxProps(size, true)}>{renderElement(leading, size)}</BaseBox>
+      )}
       <BaseBox display="flex" flexDirection="column" flex="1">
-        <BaseBox {...getCenterBoxProps(size)}>
+        <BaseBox ref={containerRef} {...getCenterBoxProps(size)}>
           {typeof children === 'string' ? (
-            <Text variant="body" size={titleTextSize[size]} weight={titleWeight} color={titleColor}>
+            <Text
+              ref={textRef}
+              variant="body"
+              size={titleTextSize[size]}
+              weight={titleWeight}
+              color={titleColor}
+              truncateAfterLines={truncateAfterLines}
+            >
               {children}
             </Text>
           ) : (
@@ -108,17 +155,20 @@ const TitleCollection = ({
           </Text>
         )}
       </BaseBox>
-      {trailing && <BaseBox {...getCenterBoxProps(size)}>{renderElement(trailing, size)}</BaseBox>}
+      {trailing && (
+        <BaseBox {...getCenterBoxProps(size, true)}>{renderElement(trailing, size)}</BaseBox>
+      )}
     </BaseBox>
   );
 };
 
-// InfoItemKey Component
 const _InfoItemKey = (
-  { children, leading, trailing, helpText, testID }: InfoItemKeyProps,
+  { children, leading, trailing, helpText, truncateAfterLines, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation, isHighlighted } = React.useContext(InfoGroupContext);
+  const { itemOrientation, isHighlighted, keyAlign, size } = React.useContext(InfoGroupContext);
+
+  const { hasAvatar } = React.useContext(InfoItemContext);
 
   return (
     <BaseBox
@@ -126,6 +176,8 @@ const _InfoItemKey = (
       display="flex"
       alignItems="center"
       alignSelf="flex-start"
+      justifyContent={keyAlign === 'right' ? 'flex-end' : 'flex-start'}
+      paddingY={hasAvatar ? avatarAdjustmentPaddingY[size] : undefined}
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
       {itemOrientation === 'horizontal' && isHighlighted ? (
@@ -137,7 +189,7 @@ const _InfoItemKey = (
         helpText={helpText}
         titleWeight="medium"
         titleColor="surface.text.gray.muted"
-        // paddingLeft={itemOrientation === 'horizontal' ? 'spacing.4' : undefined}
+        truncateAfterLines={truncateAfterLines}
         paddingLeft="spacing.4"
         paddingRight="spacing.0"
       >
@@ -154,17 +206,21 @@ const InfoItemKey = assignWithoutSideEffects(React.forwardRef(_InfoItemKey), {
 
 // InfoItemValue Component
 const _InfoItemValue = (
-  { children, leading, trailing, helpText, testID }: InfoItemValueProps,
+  { children, leading, trailing, helpText, truncateAfterLines, testID }: InfoItemValueProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation } = React.useContext(InfoGroupContext);
+  const { itemOrientation, valueAlign, size } = React.useContext(InfoGroupContext);
+
+  const { hasAvatar } = React.useContext(InfoItemContext);
+
   return (
     <BaseBox
       ref={ref as never}
       display="flex"
       alignItems="center"
       alignSelf="flex-start"
-      justifyContent="flex-start" // set to flex-end when textAlign is right
+      justifyContent={valueAlign === 'right' ? 'flex-end' : 'flex-start'}
+      paddingY={hasAvatar ? avatarAdjustmentPaddingY[size] : undefined}
       {...metaAttribute({ name: MetaConstants.InfoItemValue, testID })}
     >
       <TitleCollection
@@ -173,6 +229,7 @@ const _InfoItemValue = (
         helpText={helpText}
         titleWeight="semibold"
         titleColor="surface.text.gray.subtle"
+        truncateAfterLines={truncateAfterLines}
         // paddingRight={itemOrientation === 'horizontal' ? 'spacing.4' : undefined}
         paddingLeft={itemOrientation === 'vertical' ? 'spacing.4' : 'spacing.0'}
         paddingRight="spacing.4"
@@ -237,21 +294,34 @@ const _InfoItem = (
   const { itemOrientation, isHighlighted: contextIsHighlighted } = React.useContext(
     InfoGroupContext,
   );
+  const [hasAvatar, setHasAvatar] = React.useState(false);
   const isVertical = itemOrientation === 'vertical';
   const shouldHighlight = isHighlighted ?? contextIsHighlighted;
 
+  const infoItemContextValue = React.useMemo(
+    () => ({
+      hasAvatar,
+      setHasAvatar,
+    }),
+    [hasAvatar],
+  );
+
   if (isVertical) {
     return (
-      <FlexItemBox ref={ref as never} testID={testID} isHighlighted={shouldHighlight}>
-        {children}
-      </FlexItemBox>
+      <InfoItemContext.Provider value={infoItemContextValue}>
+        <FlexItemBox ref={ref as never} testID={testID} isHighlighted={shouldHighlight}>
+          {children}
+        </FlexItemBox>
+      </InfoItemContext.Provider>
     );
   }
 
   return (
-    <ContentsItemBox ref={ref as never} testID={testID}>
-      {children}
-    </ContentsItemBox>
+    <InfoItemContext.Provider value={infoItemContextValue}>
+      <ContentsItemBox ref={ref as never} testID={testID}>
+        {children}
+      </ContentsItemBox>
+    </InfoItemContext.Provider>
   );
 };
 
@@ -266,11 +336,14 @@ const _InfoGroup = (
     children,
     itemOrientation = 'horizontal',
     size = 'medium',
+    keyAlign = 'left',
+    valueAlign = 'left',
     isHighlighted = false,
-    testID,
+    gridTemplateColumns,
     width,
     maxWidth,
     minWidth,
+    testID,
     ...rest
   }: InfoGroupProps,
   ref: React.Ref<BladeElementRef>,
@@ -279,19 +352,29 @@ const _InfoGroup = (
     () => ({
       size,
       itemOrientation,
+      keyAlign,
+      valueAlign,
       isHighlighted,
     }),
-    [size, itemOrientation, isHighlighted],
+    [size, itemOrientation, keyAlign, valueAlign, isHighlighted],
   );
+
+  const defaultGridTemplateColumns =
+    itemOrientation === 'horizontal'
+      ? 'max-content 1fr'
+      : `repeat(min(4, ${React.Children.count(children)}), 1fr)`;
+
+  // Use provided gridTemplateColumns or default based on itemOrientation
+  const templateColumns = gridTemplateColumns ?? defaultGridTemplateColumns;
 
   return (
     <InfoGroupContext.Provider value={contextValue}>
       <BaseBox
         ref={ref as never}
         display="grid"
-        gridTemplateColumns={itemOrientation === 'horizontal' ? 'max-content 1fr' : '1fr 1fr'}
+        gridTemplateColumns={templateColumns}
         rowGap="spacing.4"
-        columnGap="spacing.6"
+        columnGap={{ base: 'spacing.6', m: 'spacing.10' }}
         flexDirection="column"
         width={width}
         maxWidth={maxWidth}
