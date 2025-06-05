@@ -39,10 +39,6 @@ type BaseInputDropDownButtonProps = {
    */
   onClick?: BaseButtonProps['onClick'];
   /**
-   * title is the title of the dropdown
-   */
-  title?: string;
-  /**
    * accessibilityLabel is the label of the dropdown
    */
   accessibilityLabel?: string;
@@ -120,7 +116,6 @@ const _InputDropDownButton = ({
   onClick,
   onBlur,
   onKeyDown,
-  title,
   accessibilityLabel,
   _isInsideSearchInput = false,
   isDisabled,

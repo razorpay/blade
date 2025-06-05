@@ -318,7 +318,7 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         onChange={({ value }) => setSearchTerm(value as string)}
         trailing={
           <Dropdown>
-            <InputDropDownButton title="Popular Searches" defaultValue="home" />
+            <InputDropDownButton defaultValue="home" />
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Home" value="home" />
@@ -401,7 +401,7 @@ const SearchInputWithDisabledDropdownTemplate: StoryFn<typeof SearchInputCompone
         onChange={({ value }) => setSearchTerm(value as string)}
         trailing={
           <Dropdown>
-            <InputDropDownButton isDisabled title="Popular Searches" defaultValue="home" />
+            <InputDropDownButton isDisabled defaultValue="home" />
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Home" value="home" />
@@ -459,8 +459,6 @@ const SearchInputWithControlledDropdownTemplate: StoryFn<typeof SearchInputCompo
       trailing={
         <Dropdown>
           <InputDropDownButton
-            title="Popular Searches"
-            defaultValue="home"
             value={inputDropdownValue}
             onChange={({ value }) => setInputDropdownValue(value)}
           />
