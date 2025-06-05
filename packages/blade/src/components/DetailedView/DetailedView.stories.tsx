@@ -543,83 +543,60 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
           />
         </CardHeader>
         <CardBody>
-          <Box
-            display="grid"
-            gridTemplateColumns="1fr auto"
-            columnGap="spacing.4"
-            rowGap="spacing.3"
-          >
+          <InfoGroup valueAlign="right">
             {/* Gross Settlements */}
-            <Text variant="body" size="medium" color="surface.text.gray.muted" gridColumn="1 / -1">
+            <Text gridColumn="span 2" variant="body" size="medium">
               Gross Settlements
             </Text>
 
-            <Text variant="body" size="medium">
-              Payment
-            </Text>
-            <Box>
-              <Amount
-                value={dummyData.amount}
-                alignSelf="right"
-                currency="INR"
-                weight="semibold"
-                color="surface.text.gray.subtle"
-              />
-            </Box>
+            <InfoItem>
+              <InfoItemKey>Payment</InfoItemKey>
+              <InfoItemValue>
+                <Amount
+                  value={dummyData.amount}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
+              </InfoItemValue>
+            </InfoItem>
 
             {/* Deductions - spans full width */}
-            <Text
-              variant="body"
-              size="medium"
-              color="surface.text.gray.muted"
-              gridColumn="1 / -1"
-              marginTop="spacing.4"
-            >
+            <Text variant="body" size="medium" marginTop="spacing.4" gridColumn="span 2">
               Deductions
             </Text>
 
-            <Text variant="body" size="medium">
-              Tax
-            </Text>
-            <Box>
-              <Amount
-                value={260}
-                currency="INR"
-                weight="semibold"
-                color="surface.text.gray.subtle"
-              />
-            </Box>
+            <InfoItem>
+              <InfoItemKey>Tax</InfoItemKey>
+              <InfoItemValue>
+                <Amount
+                  value={260}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
+              </InfoItemValue>
+            </InfoItem>
 
-            <Text variant="body" size="medium">
-              Fee
-            </Text>
-            <Box>
-              <Amount
-                value={260}
-                currency="INR"
-                weight="semibold"
-                color="surface.text.gray.subtle"
-              />
-            </Box>
+            <InfoItem>
+              <InfoItemKey>Fee</InfoItemKey>
+              <InfoItemValue>
+                <Amount
+                  value={260}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
+              </InfoItemValue>
+            </InfoItem>
 
             {/* Net Settlement - with divider */}
-            <Box gridColumn="1 / -1" marginTop="spacing.4">
-              <Divider marginBottom="spacing.4" />
-              <Box display="grid" gridTemplateColumns="1fr auto">
-                <Text variant="body" size="medium" weight="semibold">
-                  Net Settlement amount
-                </Text>
-                <Box>
-                  <Amount
-                    value={2600}
-                    currency="INR"
-                    weight="semibold"
-                    color="surface.text.gray.subtle"
-                  />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
+            <Divider gridColumn="span 2" />
+            <InfoItem>
+              <InfoItemKey>Net Settlement amount</InfoItemKey>
+              <InfoItemValue>₹2,600</InfoItemValue>
+            </InfoItem>
+          </InfoGroup>
         </CardBody>
       </Card>
 
