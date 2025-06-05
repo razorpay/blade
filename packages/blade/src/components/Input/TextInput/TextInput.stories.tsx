@@ -14,7 +14,7 @@ import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
-import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton.web';
+import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { BankIcon } from '~components/Icons';
 
