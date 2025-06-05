@@ -1,6 +1,6 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay, InputDropDownButton } from '..';
+import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
   WithAutoPositioningSelectStory,

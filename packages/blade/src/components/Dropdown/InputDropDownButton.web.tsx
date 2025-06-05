@@ -21,7 +21,7 @@ import type { IconComponent } from '~components/Icons';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 
-type InputDropDownButtonProps = {
+type BaseInputDropDownButtonProps = {
   /**
    * isOpen is used to control the open state of the dropdown
    */
@@ -67,18 +67,30 @@ type InputDropDownButtonProps = {
    */
   testID?: string;
   /**
-   * value is the value of the dropdown
-   */
-  value?: string;
-  /**
-   * defaultValue is the default selected value of the dropdown
-   */
-  defaultValue?: string;
-  /**
    * icon is the icon of the dropdown
    */
   icon?: IconComponent;
 } & DataAnalyticsAttribute;
+
+type ControlledInputDropDownButtonProps = BaseInputDropDownButtonProps & {
+  /**
+   * value is the value of the dropdown
+   */
+  value: string;
+  defaultValue?: never;
+};
+
+type UncontrolledInputDropDownButtonProps = BaseInputDropDownButtonProps & {
+  value?: never;
+  /**
+   * defaultValue is the default selected value of the dropdown
+   */
+  defaultValue: string;
+};
+
+type InputDropDownButtonProps =
+  | ControlledInputDropDownButtonProps
+  | UncontrolledInputDropDownButtonProps;
 
 const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean; isDisabled?: boolean }>(
   ({ theme, isDisabled }) => {
