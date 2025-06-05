@@ -122,9 +122,6 @@ const _InputDropDownButton = ({
 }: InputDropDownButtonProps): React.ReactElement => {
   const idBase = useId('input-drop-down-button');
   const isFirstRender = useFirstRender();
-  const [uncontrolledInputValue, setUncontrolledInputValue] = React.useState<string>(
-    defaultValue ?? '',
-  );
   const {
     options,
     selectedIndices,
@@ -139,6 +136,7 @@ const _InputDropDownButton = ({
     setSelectedIndices,
     controlledValueIndices,
     changeCallbackTriggerer,
+    displayValue,
   } = useDropdown();
 
   // Set initial selected index when defaultValue is provided
@@ -158,15 +156,6 @@ const _InputDropDownButton = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultValue, options, setSelectedIndices, value]);
 
-  const valueTitle = options.find((option) => option.value === value)?.title ?? value;
-
-  const isUnControlled = options.length > 0 && value === undefined;
-
-  const getTitleFromValue = (value: string): string => {
-    const option = options.find((option) => option.value === value);
-    return option ? option.title : '';
-  };
-
   const getValueFromIndices = React.useMemo((): string => {
     let indices: number[] = [];
     if (isControlled) {
@@ -178,22 +167,12 @@ const _InputDropDownButton = ({
     return indices.length > 0 ? options[indices[0]].value : '';
   }, [isControlled, options, controlledValueIndices, selectedIndices]);
 
-  const getUnControlledInputGroupValue = (): string | string[] => {
-    if (uncontrolledInputValue) {
-      return getTitleFromValue(uncontrolledInputValue);
-    }
-    return '';
-  };
-
   useEffect(() => {
     if (!isFirstRender) {
       onChange?.({
         name: name || idBase,
         value: getValueFromIndices,
       });
-      if (isUnControlled) {
-        setUncontrolledInputValue(getValueFromIndices);
-      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
@@ -260,7 +239,7 @@ const _InputDropDownButton = ({
           weight="regular"
           color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
         >
-          {valueTitle ?? getUnControlledInputGroupValue()}
+          {displayValue}
         </Text>
         <ChevronUpDownIcon
           color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
