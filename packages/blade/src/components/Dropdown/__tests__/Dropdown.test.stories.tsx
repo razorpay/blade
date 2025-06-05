@@ -400,7 +400,12 @@ export const DropdownWithControlledSearch: StoryFn<typeof Dropdown> = (): React.
       placeholder="98XXXXXXXXX"
       trailing={
         <Dropdown>
-          <InputDropdownButton defaultValue="sbi" />
+          <InputDropdownButton
+            defaultValue="sbi"
+            onChange={({ name, value }) => {
+              console.log('onChange', name, value);
+            }}
+          />
           <DropdownOverlay>
             <ActionList>
               <ActionListItem title="@sbi" value="sbi" />
