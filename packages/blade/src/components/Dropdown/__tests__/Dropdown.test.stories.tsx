@@ -15,8 +15,7 @@ import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTrigge
 import { SearchInput } from '~components/Input/SearchInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
-import { getByText } from '@testing-library/react';
-
+import { TextInput } from '~components/Input/TextInput';
 const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
   const activeDescendantElement = document.querySelector(`#${activeDescendantId}`);
@@ -392,6 +391,42 @@ SearchTrailingDropdown.play = async () => {
   //sleep for 2 seconds
   await new Promise((resolve) => setTimeout(resolve, 2000));
   await expect(getByRole('button', { name: 'change Pricing filter' })).toBeInTheDocument();
+};
+
+export const DropdownWithControlledSearch: StoryFn<typeof Dropdown> = (): React.ReactElement => {
+  return (
+    <TextInput
+      label="Enter Upi Id"
+      placeholder="98XXXXXXXXX"
+      trailing={
+        <Dropdown>
+          <InputDropdownButton defaultValue="sbi" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="@sbi" value="sbi" />
+              <ActionListItem title="@yesbank" value="yesbank" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      }
+    />
+  );
+};
+
+DropdownWithControlledSearch.play = async () => {
+  const { getByRole } = within(document.body);
+  //sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  const selectInput = getByRole('button', { name: 'change @sbi filter' });
+  await userEvent.click(selectInput);
+  // sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await userEvent.click(getByRole('menuitem', { name: '@yesbank' }));
+  await waitFor(() => expect(selectInput).toHaveTextContent('@yesbank'));
+  await userEvent.click(getByRole('button', { name: 'change @yesbank filter' }));
+  // sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await userEvent.click(getByRole('button', { name: 'change @yesbank filter' }));
 };
 
 export default {
