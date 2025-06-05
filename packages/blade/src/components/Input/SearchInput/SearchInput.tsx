@@ -252,7 +252,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         ref={mergedRef}
         isDropdownTrigger={true}
         setInputWrapperRef={
-          isInsideDropdown
+          isInsideDropdown || isTrailingDropDownOpen
             ? (wrapperNode) => {
                 triggererWrapperRef.current = wrapperNode;
               }

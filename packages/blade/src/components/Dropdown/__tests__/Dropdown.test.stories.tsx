@@ -3,11 +3,19 @@ import React from 'react';
 import type { StoryFn } from '@storybook/react';
 import { within, userEvent, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import { Dropdown, DropdownOverlay, DropdownFooter, DropdownHeader } from '../';
+import {
+  Dropdown,
+  DropdownOverlay,
+  DropdownFooter,
+  DropdownHeader,
+  InputDropdownButton,
+} from '../';
 import type { DropdownProps } from '../';
 import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
+import { SearchInput } from '~components/Input/SearchInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
+import { getByText } from '@testing-library/react';
 
 const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
@@ -353,6 +361,39 @@ DropdownWithSearch.play = async () => {
   await userEvent.click(selectInput);
 };
 
+export const SearchTrailingDropdown: StoryFn<typeof Dropdown> = (): React.ReactElement => {
+  return (
+    <SearchInput
+      label="Search"
+      placeholder="Search here"
+      trailing={
+        <Dropdown>
+          <InputDropdownButton defaultValue="home" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Home" value="home" />
+              <ActionListItem title="Pricing" value="pricing" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      }
+    />
+  );
+};
+
+SearchTrailingDropdown.play = async () => {
+  const { getByRole } = within(document.body);
+  //sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  const trailingDropdown = getByRole('button', { name: 'change Home filter' });
+  await userEvent.click(trailingDropdown);
+  await waitFor(() => expect(getByRole('menuitem', { name: 'Home' })).toBeVisible());
+  await userEvent.click(getByRole('menuitem', { name: 'Pricing' }));
+  //sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await expect(getByRole('button', { name: 'change Pricing filter' })).toBeInTheDocument();
+};
+
 export default {
   title: 'Components/Interaction Tests/Dropdown',
   component: Dropdown,
@@ -362,6 +403,5 @@ export default {
     },
     a11y: { disable: true },
     essentials: { disable: true },
-    actions: { disable: true },
   },
 };

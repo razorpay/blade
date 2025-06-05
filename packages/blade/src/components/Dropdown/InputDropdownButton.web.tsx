@@ -182,12 +182,11 @@ const _InputDropdownButton = ({
         e?.stopPropagation();
       }}
       {...makeAccessible({
-        label: accessibilityLabel,
+        label: accessibilityLabel ?? `change ${displayValue} filter`,
         hasPopup: getActionListContainerRole(hasFooterAction, 'InputDropdownButton'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
-        role: 'button',
       })}
       ref={triggererRef}
       isDisabled={isDisabled}
