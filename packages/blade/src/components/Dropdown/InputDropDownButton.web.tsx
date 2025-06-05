@@ -84,9 +84,10 @@ const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean; isDi
   ({ theme, isDisabled }) => {
     const { spacing } = theme;
     return {
-      backgroundColor: isDisabled
-        ? theme.colors.interactive.background.gray.faded
-        : theme.colors.transparent,
+      // backgroundColor: isDisabled
+      //   ? theme.colors.interactive.background.gray.faded
+      //   : theme.colors.transparent,
+      backgroundColor: theme.colors.transparent,
       gap: makeSpace(spacing[2]),
       display: 'flex',
       height: '100%',
@@ -239,17 +240,34 @@ const _InputDropDownButton = ({
     >
       <Box padding="spacing.2" display="flex" gap="spacing.2" alignItems="center">
         {_isInsideSearchInput && (
-          <Text variant="body" size="medium" weight="regular" color="surface.text.gray.muted">
+          <Text
+            variant="body"
+            size="medium"
+            weight="regular"
+            color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
+          >
             {' '}
             in
           </Text>
         )}
-        {Icon && <Icon size="medium" color="surface.icon.gray.muted" />}
+        {Icon && (
+          <Icon
+            size="medium"
+            color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
+          />
+        )}
 
-        <Text variant="body" size="medium" weight="regular" color="surface.text.gray.subtle">
+        <Text
+          variant="body"
+          size="medium"
+          weight="regular"
+          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
+        >
           {valueTitle ?? getUnControlledInputGroupValue()}
         </Text>
-        {!isDisabled ? <ChevronUpDownIcon color="surface.icon.gray.muted" /> : null}
+        <ChevronUpDownIcon
+          color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
+        />
       </Box>
     </StyledSearchTrailingDropdown>
   );
