@@ -377,31 +377,33 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             marginTop="spacing.6"
             paddingX="spacing.4"
           >
-            <Box display="flex">
-              <Divider thickness="thicker" orientation="vertical" />
-              <Box paddingX="spacing.3">
-                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
-                  Payment ID
-                </Text>
-                <Text size="medium">{selectedItem?.paymentId}</Text>
-              </Box>
-            </Box>
+            <InfoGroup itemOrientation="vertical">
+              <InfoItem>
+                <Box display="flex" alignItems="center" gap="spacing.3">
+                  <Divider thickness="thicker" orientation="vertical" />
+                  <Box>
+                    <InfoItemKey>Payment ID</InfoItemKey>
+                    <InfoItemValue>{selectedItem?.paymentId}</InfoItemValue>
+                  </Box>
+                </Box>
+              </InfoItem>
 
-            <Box display="flex">
-              <Divider thickness="thicker" orientation="vertical" />
-              <Box paddingX="spacing.3">
-                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
-                  Date
-                </Text>
-                <Text size="medium">
-                  {selectedItem?.date?.toLocaleDateString('en-IN', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </Text>
-              </Box>
-            </Box>
+              <InfoItem>
+                <Box display="flex" alignItems="center" gap="spacing.3">
+                  <Divider thickness="thicker" orientation="vertical" />
+                  <Box>
+                    <InfoItemKey>Date</InfoItemKey>
+                    <InfoItemValue>
+                      {selectedItem?.date?.toLocaleDateString('en-IN', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </InfoItemValue>
+                  </Box>
+                </Box>
+              </InfoItem>
+            </InfoGroup>
           </Box>
           <Box marginTop="spacing.6" textAlign="center">
             <Button
@@ -428,12 +430,16 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
               <Text variant="body" size="medium" weight="semibold" marginBottom="spacing.4">
                 Details
               </Text>
-              <InfoGroup itemOrientation="horizontal" size="medium">
+              <InfoGroup gridTemplateColumns="1fr 1fr">
                 {/* Amount */}
                 <InfoItem>
                   <InfoItemKey>Amount</InfoItemKey>
                   <InfoItemValue>
-                    <Amount value={selectedItem?.amount ?? 0} />
+                    <Amount
+                      value={selectedItem?.amount ?? 0}
+                      weight="semibold"
+                      color="surface.text.gray.subtle"
+                    />
                   </InfoItemValue>
                 </InfoItem>
 
@@ -441,15 +447,17 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
                 <InfoItem>
                   <InfoItemKey>Amount Paid</InfoItemKey>
                   <InfoItemValue>
-                    <Amount value={0} />
+                    <Amount value={0} weight="semibold" color="surface.text.gray.subtle" />
                   </InfoItemValue>
                 </InfoItem>
 
                 {/* Payment Link ID */}
                 <InfoItem>
                   <InfoItemKey>Payment Link ID</InfoItemKey>
-                  <InfoItemValue trailing={<Link variant="button" size="small" icon={CopyIcon} />}>
-                    <Code size="small">{selectedItem?.paymentId ?? 'NA'}</Code>
+                  <InfoItemValue trailing={<Link variant="button" size="medium" icon={CopyIcon} />}>
+                    <Code size="medium" weight="bold">
+                      {selectedItem?.paymentId ?? 'NA'}
+                    </Code>
                   </InfoItemValue>
                 </InfoItem>
 
@@ -550,7 +558,13 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
               Payment
             </Text>
             <Box>
-              <Amount value={dummyData.amount} alignSelf="right" currency="INR" />
+              <Amount
+                value={dummyData.amount}
+                alignSelf="right"
+                currency="INR"
+                weight="semibold"
+                color="surface.text.gray.subtle"
+              />
             </Box>
 
             {/* Deductions - spans full width */}
@@ -568,14 +582,24 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
               Tax
             </Text>
             <Box>
-              <Amount value={260} currency="INR" />
+              <Amount
+                value={260}
+                currency="INR"
+                weight="semibold"
+                color="surface.text.gray.subtle"
+              />
             </Box>
 
             <Text variant="body" size="medium">
               Fee
             </Text>
             <Box>
-              <Amount value={260} currency="INR" />
+              <Amount
+                value={260}
+                currency="INR"
+                weight="semibold"
+                color="surface.text.gray.subtle"
+              />
             </Box>
 
             {/* Net Settlement - with divider */}
@@ -586,7 +610,12 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
                   Net Settlement amount
                 </Text>
                 <Box>
-                  <Amount value={2600} currency="INR" weight="semibold" />
+                  <Amount
+                    value={2600}
+                    currency="INR"
+                    weight="semibold"
+                    color="surface.text.gray.subtle"
+                  />
                 </Box>
               </Box>
             </Box>
@@ -613,6 +642,7 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
               size="2xlarge"
               type="heading"
               weight="semibold"
+              color="surface.text.gray.subtle"
               suffix="decimals"
             />
           </Box>
@@ -629,15 +659,17 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             marginTop="spacing.6"
             paddingX="spacing.4"
           >
-            <Box display="flex">
-              <Divider thickness="thicker" orientation="vertical" />
-              <Box paddingX="spacing.3">
-                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
-                  Payment ID
-                </Text>
-                <Text size="medium">{dummyData?.paymentId}</Text>
-              </Box>
-            </Box>
+            <InfoGroup itemOrientation="vertical">
+              <InfoItem>
+                <Box display="flex" alignItems="center" gap="spacing.3">
+                  <Divider thickness="thicker" orientation="vertical" />
+                  <Box>
+                    <InfoItemKey>Payment ID</InfoItemKey>
+                    <InfoItemValue>{dummyData?.paymentId}</InfoItemValue>
+                  </Box>
+                </Box>
+              </InfoItem>
+            </InfoGroup>
           </Box>
 
           <Text
@@ -659,28 +691,37 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             Transaction Breakdown
           </Heading>
 
-          <InfoGroup>
+          <InfoGroup gridTemplateColumns="1fr 1fr">
             <InfoItem>
               <InfoItemKey>Amount</InfoItemKey>
               <InfoItemValue>
-                <Amount value={dummyData.amount} currency="INR" />
+                <Amount
+                  value={dummyData.amount}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
               </InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Amount Paid</InfoItemKey>
               <InfoItemValue>
-                <Amount value={dummyData.amountPaid} currency="INR" />
+                <Amount
+                  value={dummyData.amountPaid}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
               </InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Payment Link ID</InfoItemKey>
-              <InfoItemValue>
-                <Box display="flex" gap="spacing.2" alignItems="center">
-                  <Code size="small">{dummyData.paymentId}</Code>
-                  <Link variant="button" size="small" icon={CopyIcon} />
-                </Box>
+              <InfoItemValue trailing={<Link variant="button" size="medium" icon={CopyIcon} />}>
+                <Code size="medium" weight="bold">
+                  {dummyData.paymentId}
+                </Code>
               </InfoItemValue>
             </InfoItem>
 
@@ -696,8 +737,10 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
 
             <InfoItem>
               <InfoItemKey>UTR Number</InfoItemKey>
-              <InfoItemValue trailing={<Link variant="button" size="small" icon={CopyIcon} />}>
-                <Code size="medium">{dummyData.utr}</Code>
+              <InfoItemValue trailing={<Link variant="button" size="medium" icon={CopyIcon} />}>
+                <Code size="medium" weight="bold">
+                  {dummyData.utr}
+                </Code>
               </InfoItemValue>
             </InfoItem>
 
@@ -708,38 +751,22 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
 
             <InfoItem>
               <InfoItemKey>IFSC</InfoItemKey>
-              <InfoItemValue>
-                <Text variant="body" size="medium">
-                  {dummyData.ifsc}
-                </Text>
-              </InfoItemValue>
+              <InfoItemValue>{dummyData.ifsc}</InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Partial Payment</InfoItemKey>
-              <InfoItemValue>
-                <Text variant="body" size="medium">
-                  {dummyData.partialPayment}
-                </Text>
-              </InfoItemValue>
+              <InfoItemValue>{dummyData.partialPayment}</InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Reminders</InfoItemKey>
-              <InfoItemValue>
-                <Text variant="body" size="medium">
-                  {dummyData.reminders}
-                </Text>
-              </InfoItemValue>
+              <InfoItemValue>{dummyData.reminders}</InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Created By</InfoItemKey>
-              <InfoItemValue>
-                <Text variant="body" size="medium">
-                  {dummyData.createdBy}
-                </Text>
-              </InfoItemValue>
+              <InfoItemValue>{dummyData.createdBy}</InfoItemValue>
             </InfoItem>
           </InfoGroup>
         </DrawerBody>
@@ -775,6 +802,7 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
               size="2xlarge"
               type="heading"
               weight="semibold"
+              color="surface.text.gray.subtle"
               suffix="decimals"
             />
           </Box>
@@ -791,15 +819,17 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
             marginTop="spacing.6"
             paddingX="spacing.4"
           >
-            <Box display="flex">
-              <Divider thickness="thicker" orientation="vertical" />
-              <Box paddingX="spacing.3">
-                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
-                  Payment ID
-                </Text>
-                <Text size="medium">{dummyData?.paymentId}</Text>
-              </Box>
-            </Box>
+            <InfoGroup itemOrientation="vertical">
+              <InfoItem>
+                <Box display="flex" alignItems="center" gap="spacing.3">
+                  <Divider thickness="thicker" orientation="vertical" />
+                  <Box>
+                    <InfoItemKey>Payment ID</InfoItemKey>
+                    <InfoItemValue>{dummyData?.paymentId}</InfoItemValue>
+                  </Box>
+                </Box>
+              </InfoItem>
+            </InfoGroup>
           </Box>
 
           <Text
@@ -853,8 +883,15 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
             isFullWidth
             description={
               <Text>
-                Order of <Amount value={dummyData.amount} isAffixSubtle={false} currency="INR" /> is
-                created successfully. Scan the QR Code to proceed
+                Order of{' '}
+                <Amount
+                  value={dummyData.amount}
+                  isAffixSubtle={false}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />{' '}
+                is created successfully. Scan the QR Code to proceed
               </Text>
             }
           />
@@ -868,7 +905,7 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
                 />
               </CardHeader>
               <CardBody>
-                <InfoGroup>
+                <InfoGroup gridTemplateColumns="1fr 1fr">
                   <InfoItem>
                     <InfoItemKey>VPA ID</InfoItemKey>
                     <InfoItemValue>example@ybl</InfoItemValue>
@@ -910,53 +947,56 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
       >
         <DrawerHeader title="Transaction Breakdown" />
         <DrawerBody>
-          <InfoGroup>
+          <InfoGroup gridTemplateColumns="1fr 1fr">
             <InfoItem>
               <InfoItemKey>Amount</InfoItemKey>
               <InfoItemValue>
-                <Amount value={dummyData.amount} currency="INR" />
+                <Amount
+                  value={dummyData.amount}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
               </InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Amount Paid</InfoItemKey>
               <InfoItemValue>
-                <Amount value={dummyData.amountPaid} currency="INR" />
+                <Amount
+                  value={dummyData.amountPaid}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
               </InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Payment Link ID</InfoItemKey>
-              <InfoItemValue>
-                <Box display="flex" gap="spacing.2" alignItems="center">
-                  <Code size="small">{dummyData.paymentId}</Code>
-                  <Link variant="button" size="small" icon={CopyIcon} />
-                </Box>
+              <InfoItemValue trailing={<Link variant="button" size="medium" icon={CopyIcon} />}>
+                <Code size="medium" weight="bold">
+                  {dummyData.paymentId}
+                </Code>
               </InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Reference ID</InfoItemKey>
-              <InfoItemValue>
-                <Text variant="body" size="medium">
-                  {dummyData.referenceId}
-                </Text>
-              </InfoItemValue>
+              <InfoItemValue>{dummyData.referenceId}</InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>Payment for</InfoItemKey>
-              <InfoItemValue>
-                <Text variant="body" size="medium">
-                  {dummyData.type}
-                </Text>
-              </InfoItemValue>
+              <InfoItemValue>{dummyData.type}</InfoItemValue>
             </InfoItem>
 
             <InfoItem>
               <InfoItemKey>UTR Number</InfoItemKey>
-              <InfoItemValue trailing={<Link variant="button" size="small" icon={CopyIcon} />}>
-                <Code size="medium">{dummyData.utr}</Code>
+              <InfoItemValue trailing={<Link variant="button" size="medium" icon={CopyIcon} />}>
+                <Code size="medium" weight="bold">
+                  {dummyData.utr}
+                </Code>
               </InfoItemValue>
             </InfoItem>
 

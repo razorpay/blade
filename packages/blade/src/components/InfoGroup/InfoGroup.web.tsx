@@ -175,6 +175,7 @@ const _InfoItemKey = (
   return (
     <BaseBox
       ref={ref as never}
+      as="dt"
       display="flex"
       alignItems="center"
       alignSelf="flex-start"
@@ -218,6 +219,8 @@ const _InfoItemValue = (
   return (
     <BaseBox
       ref={ref as never}
+      as="dd"
+      margin="spacing.0"
       display="flex"
       alignItems="center"
       alignSelf="flex-start"
@@ -380,11 +383,13 @@ const _InfoGroup = (
     <InfoGroupContext.Provider value={contextValue}>
       <BaseBox
         ref={ref as never}
+        as="dl"
         display="grid"
         gridTemplateColumns={templateColumns}
         rowGap="spacing.4"
         columnGap={{ base: 'spacing.6', m: 'spacing.10' }}
         flexDirection="column"
+        margin="spacing.0"
         width={width}
         maxWidth={maxWidth}
         minWidth={minWidth}

@@ -154,7 +154,9 @@ export const WithIcons: StoryFn<typeof InfoGroup> = (args) => {
       <InfoItem>
         <InfoItemKey leading={BankIcon}>Payment ID</InfoItemKey>
         <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
-          <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
+          <Code weight="bold" size={codeSizeMap[args.size!]}>
+            pay_MK7DGqwYXEwx9Q
+          </Code>
         </InfoItemValue>
       </InfoItem>
       <InfoItem>
@@ -194,7 +196,9 @@ export const WithIcons: StoryFn<typeof InfoGroup> = (args) => {
       <InfoItem>
         <InfoItemKey leading={BankIcon}>Reference Number</InfoItemKey>
         <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
-          <Code size={codeSizeMap[args.size!]}>ref_ABC123XYZ789</Code>
+          <Code weight="bold" size={codeSizeMap[args.size!]}>
+            ref_ABC123XYZ789
+          </Code>
         </InfoItemValue>
       </InfoItem>
       <InfoItem>
@@ -228,7 +232,9 @@ export const WithAvatars: StoryFn<typeof InfoGroup> = (args) => {
           Payment ID
         </InfoItemKey>
         <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
-          <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
+          <Code weight="bold" size={codeSizeMap[args.size!]}>
+            pay_MK7DGqwYXEwx9Q
+          </Code>
         </InfoItemValue>
       </InfoItem>
       <InfoItem>
@@ -254,7 +260,9 @@ export const WithAvatars: StoryFn<typeof InfoGroup> = (args) => {
           Gateway Response
         </InfoItemKey>
         <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
-          <Code size={codeSizeMap[args.size!]}>gw_resp_SUCCESS_001</Code>
+          <Code weight="bold" size={codeSizeMap[args.size!]}>
+            gw_resp_SUCCESS_001
+          </Code>
         </InfoItemValue>
       </InfoItem>
     </InfoGroup>
@@ -276,7 +284,9 @@ export const WithVerticalItemOrientation: StoryFn<typeof InfoGroup> = (args) => 
       <InfoItem>
         <InfoItemKey leading={BankIcon}>Payment ID</InfoItemKey>
         <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
-          <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
+          <Code weight="bold" size={codeSizeMap[args.size!]}>
+            pay_MK7DGqwYXEwx9Q
+          </Code>
         </InfoItemValue>
       </InfoItem>
       <InfoItem>
@@ -427,7 +437,9 @@ export const WithInteractiveItems: StoryFn<typeof InfoGroup> = (args) => {
               </Tooltip>
             }
           >
-            <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
+            <Code weight="bold" size={codeSizeMap[args.size!]}>
+              pay_MK7DGqwYXEwx9Q
+            </Code>
           </InfoItemValue>
         </InfoItem>
         <InfoItem>
@@ -544,7 +556,9 @@ export const InfoGroupWithCollapsible: StoryFn<typeof InfoGroup> = (args) => {
         <InfoItem>
           <InfoItemKey leading={BankIcon}>Payment ID</InfoItemKey>
           <InfoItemValue trailing={<Link icon={CopyIcon} variant="button" size={args.size} />}>
-            <Code size={codeSizeMap[args.size!]}>pay_MK7DGqwYXEwx9Q</Code>
+            <Code weight="bold" size={codeSizeMap[args.size!]}>
+              pay_MK7DGqwYXEwx9Q
+            </Code>
           </InfoItemValue>
         </InfoItem>
       </InfoGroup>
