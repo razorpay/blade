@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.32.2
+
+### Patch Changes
+
+- a9fdac32f: fix(blade): add disabled prop in filterchip
+
 ## 12.32.1
 
 ### Patch Changes
