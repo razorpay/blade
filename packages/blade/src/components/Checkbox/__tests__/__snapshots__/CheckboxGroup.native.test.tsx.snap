@@ -1399,7 +1399,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               data-blade-component="text"
               fontFamily="text"
               fontSize={50}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -1408,7 +1408,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     "color": "hsla(211, 22%, 56%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 11,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,

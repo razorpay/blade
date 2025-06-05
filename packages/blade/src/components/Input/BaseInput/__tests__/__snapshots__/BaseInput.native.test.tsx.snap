@@ -1084,7 +1084,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
               data-blade-component="text"
               fontFamily="text"
               fontSize={50}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -1093,7 +1093,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
                     "color": "hsla(4, 74%, 49%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 11,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,
@@ -1543,7 +1543,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
               data-blade-component="text"
               fontFamily="text"
               fontSize={50}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -1552,7 +1552,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                     "color": "hsla(150, 100%, 27%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 11,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,
@@ -2748,7 +2748,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -2757,7 +2757,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                     "color": "hsla(150, 100%, 27%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,
