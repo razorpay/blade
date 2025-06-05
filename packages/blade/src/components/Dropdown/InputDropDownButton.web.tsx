@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
@@ -16,10 +16,10 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { useId } from '~utils/useId';
 import type { DataAnalyticsAttribute } from '~utils/types';
-import { useFirstRender } from '~utils/useFirstRender';
 import type { IconComponent } from '~components/Icons';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
+import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
 
 type BaseInputDropDownButtonProps = {
   /**
@@ -128,10 +128,7 @@ const _InputDropdownButton = ({
   ...rest
 }: InputDropDownButtonProps): React.ReactElement | null => {
   const idBase = useId('input-drop-down-button');
-  const isFirstRender = useFirstRender();
   const {
-    options,
-    selectedIndices,
     onTriggerClick,
     onTriggerKeydown,
     dropdownBaseId,
@@ -139,50 +136,22 @@ const _InputDropdownButton = ({
     activeIndex,
     hasFooterAction,
     triggererRef,
-    isControlled,
-    setSelectedIndices,
-    controlledValueIndices,
-    changeCallbackTriggerer,
     displayValue,
   } = useDropdown();
 
-  // Set initial selected index when defaultValue is provided
-  useEffect(() => {
-    const currentValueIndex = value ? options.findIndex((option) => option.value === value) : -1;
-    if (defaultValue && options.length > 0 && !value) {
-      const defaultIndex = options.findIndex((option) => option.value === defaultValue);
-      if (defaultIndex !== -1) {
-        setSelectedIndices([defaultIndex]);
-      }
-    } else if (value && options.length > 0 && selectedIndices.length === 0) {
-      setSelectedIndices([currentValueIndex]);
-      // since it will be always one selectedIndices in case of InputDropdownButton.
-    } else if (value && selectedIndices.length > 0 && currentValueIndex !== selectedIndices[0]) {
-      setSelectedIndices([currentValueIndex]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultValue, options, setSelectedIndices, value]);
-
-  const getValueFromIndices = React.useMemo((): string => {
-    let indices: number[] = [];
-    if (isControlled) {
-      indices = controlledValueIndices;
-    } else {
-      indices = selectedIndices;
-    }
-
-    return indices.length > 0 ? options[indices[0]].value : '';
-  }, [isControlled, options, controlledValueIndices, selectedIndices]);
-
-  useEffect(() => {
-    if (!isFirstRender) {
+  useControlledDropdownInput({
+    onChange: ({ name, values }) => {
       onChange?.({
         name: name || idBase,
-        value: getValueFromIndices,
+        value: values[0],
       });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changeCallbackTriggerer]);
+    },
+    name,
+    value,
+    defaultValue,
+    triggererRef,
+    isSelectInput: false,
+  });
 
   if (!displayValue) {
     return null;
