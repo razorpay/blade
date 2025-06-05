@@ -377,31 +377,21 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             marginTop="spacing.6"
             paddingX="spacing.4"
           >
-            <InfoGroup itemOrientation="vertical">
+            <InfoGroup itemOrientation="vertical" isHighlighted>
               <InfoItem>
-                <Box display="flex" alignItems="center" gap="spacing.3">
-                  <Divider thickness="thicker" orientation="vertical" />
-                  <Box>
-                    <InfoItemKey>Payment ID</InfoItemKey>
-                    <InfoItemValue>{selectedItem?.paymentId}</InfoItemValue>
-                  </Box>
-                </Box>
+                <InfoItemKey>Payment ID</InfoItemKey>
+                <InfoItemValue>{selectedItem?.paymentId}</InfoItemValue>
               </InfoItem>
 
               <InfoItem>
-                <Box display="flex" alignItems="center" gap="spacing.3">
-                  <Divider thickness="thicker" orientation="vertical" />
-                  <Box>
-                    <InfoItemKey>Date</InfoItemKey>
-                    <InfoItemValue>
-                      {selectedItem?.date?.toLocaleDateString('en-IN', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </InfoItemValue>
-                  </Box>
-                </Box>
+                <InfoItemKey>Date</InfoItemKey>
+                <InfoItemValue>
+                  {selectedItem?.date?.toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </InfoItemValue>
               </InfoItem>
             </InfoGroup>
           </Box>
@@ -636,15 +626,10 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
             marginTop="spacing.6"
             paddingX="spacing.4"
           >
-            <InfoGroup itemOrientation="vertical">
+            <InfoGroup itemOrientation="vertical" isHighlighted>
               <InfoItem>
-                <Box display="flex" alignItems="center" gap="spacing.3">
-                  <Divider thickness="thicker" orientation="vertical" />
-                  <Box>
-                    <InfoItemKey>Payment ID</InfoItemKey>
-                    <InfoItemValue>{dummyData?.paymentId}</InfoItemValue>
-                  </Box>
-                </Box>
+                <InfoItemKey>Payment ID</InfoItemKey>
+                <InfoItemValue>{dummyData?.paymentId}</InfoItemValue>
               </InfoItem>
             </InfoGroup>
           </Box>
@@ -796,15 +781,10 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
             marginTop="spacing.6"
             paddingX="spacing.4"
           >
-            <InfoGroup itemOrientation="vertical">
+            <InfoGroup itemOrientation="vertical" isHighlighted>
               <InfoItem>
-                <Box display="flex" alignItems="center" gap="spacing.3">
-                  <Divider thickness="thicker" orientation="vertical" />
-                  <Box>
-                    <InfoItemKey>Payment ID</InfoItemKey>
-                    <InfoItemValue>{dummyData?.paymentId}</InfoItemValue>
-                  </Box>
-                </Box>
+                <InfoItemKey>Payment ID</InfoItemKey>
+                <InfoItemValue>{dummyData?.paymentId}</InfoItemValue>
               </InfoItem>
             </InfoGroup>
           </Box>
