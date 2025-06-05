@@ -119,7 +119,7 @@ const _InputDropDownButton = ({
   defaultValue,
   icon: Icon,
   ...rest
-}: InputDropDownButtonProps): React.ReactElement => {
+}: InputDropDownButtonProps): React.ReactElement | null => {
   const idBase = useId('input-drop-down-button');
   const isFirstRender = useFirstRender();
   const {
@@ -176,6 +176,10 @@ const _InputDropDownButton = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
+
+  if (!displayValue) {
+    return null;
+  }
 
   return (
     <StyledSearchTrailingDropdown

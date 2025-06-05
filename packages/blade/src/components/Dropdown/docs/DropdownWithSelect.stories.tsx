@@ -1,6 +1,6 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
+import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay, InputDropDownButton } from '..';
 import {
   getSimpleSelectCode,
   WithAutoPositioningSelectStory,
@@ -617,3 +617,34 @@ InternalDropdownPerformance.parameters = {
 };
 
 export default DropdownStoryMeta;
+
+export const WithInputDropDownButton = (): React.ReactElement => {
+  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>('mumbai');
+
+  return (
+    <Dropdown selectionType="single">
+      <SelectInput
+        label="Select City"
+        value={currentSelection}
+        onChange={(args) => {
+          if (args) {
+            setCurrentSelection(args.values[0]);
+            console.log('onChange triggered');
+          }
+        }}
+      />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Mumbai" value="mumbai" />
+          <ActionListItem title="Bangalore" value="bangalore" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+WithInputDropDownButton.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
+};
