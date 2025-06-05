@@ -81,11 +81,13 @@ const InfoGroupContext = React.createContext<{
 const InfoItemContext = React.createContext<{
   hasAvatar: boolean;
   setHasAvatar: (hasAvatar: boolean) => void;
+  isHighlighted: boolean;
 }>({
   hasAvatar: false,
   setHasAvatar: () => {
     // no-op default implementation
   },
+  isHighlighted: false,
 });
 
 const TitleCollection = ({
@@ -166,9 +168,9 @@ const _InfoItemKey = (
   { children, leading, trailing, helpText, truncateAfterLines, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation, isHighlighted, keyAlign, size } = React.useContext(InfoGroupContext);
+  const { itemOrientation, keyAlign, size } = React.useContext(InfoGroupContext);
 
-  const { hasAvatar } = React.useContext(InfoItemContext);
+  const { hasAvatar, isHighlighted } = React.useContext(InfoItemContext);
 
   return (
     <BaseBox
@@ -190,7 +192,7 @@ const _InfoItemKey = (
         titleWeight="medium"
         titleColor="surface.text.gray.muted"
         truncateAfterLines={truncateAfterLines}
-        paddingLeft="spacing.4"
+        paddingLeft={isHighlighted ? 'spacing.4' : 'spacing.0'}
         paddingRight="spacing.0"
       >
         {children}
@@ -211,7 +213,7 @@ const _InfoItemValue = (
 ): ReactElement => {
   const { itemOrientation, valueAlign, size } = React.useContext(InfoGroupContext);
 
-  const { hasAvatar } = React.useContext(InfoItemContext);
+  const { hasAvatar, isHighlighted } = React.useContext(InfoItemContext);
 
   return (
     <BaseBox
@@ -230,9 +232,8 @@ const _InfoItemValue = (
         titleWeight="semibold"
         titleColor="surface.text.gray.subtle"
         truncateAfterLines={truncateAfterLines}
-        // paddingRight={itemOrientation === 'horizontal' ? 'spacing.4' : undefined}
-        paddingLeft={itemOrientation === 'vertical' ? 'spacing.4' : 'spacing.0'}
-        paddingRight="spacing.4"
+        paddingLeft={isHighlighted && itemOrientation === 'vertical' ? 'spacing.4' : 'spacing.0'}
+        paddingRight={isHighlighted ? 'spacing.4' : 'spacing.0'}
       >
         {children}
       </TitleCollection>
@@ -302,8 +303,9 @@ const _InfoItem = (
     () => ({
       hasAvatar,
       setHasAvatar,
+      isHighlighted: shouldHighlight,
     }),
-    [hasAvatar],
+    [hasAvatar, shouldHighlight],
   );
 
   if (isVertical) {
@@ -344,6 +346,13 @@ const _InfoGroup = (
     maxWidth,
     minWidth,
     testID,
+    paddingLeft,
+    paddingRight,
+    paddingTop,
+    paddingBottom,
+    padding,
+    paddingX,
+    paddingY,
     ...rest
   }: InfoGroupProps,
   ref: React.Ref<BladeElementRef>,
@@ -379,6 +388,13 @@ const _InfoGroup = (
         width={width}
         maxWidth={maxWidth}
         minWidth={minWidth}
+        paddingLeft={paddingLeft}
+        paddingRight={paddingRight}
+        paddingTop={paddingTop}
+        paddingBottom={paddingBottom}
+        padding={padding}
+        paddingX={paddingX}
+        paddingY={paddingY}
         {...metaAttribute({ name: MetaConstants.InfoGroup, testID })}
         {...getStyledProps(rest)}
       >

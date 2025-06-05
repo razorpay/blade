@@ -48,7 +48,19 @@ export type InfoGroupProps = {
   children: React.ReactNode;
 } & TestID &
   StyledPropsBlade &
-  Pick<BoxProps, 'width' | 'maxWidth' | 'minWidth'>;
+  Pick<
+    BoxProps,
+    | 'width'
+    | 'maxWidth'
+    | 'minWidth'
+    | 'paddingLeft'
+    | 'paddingRight'
+    | 'paddingTop'
+    | 'paddingBottom'
+    | 'padding'
+    | 'paddingX'
+    | 'paddingY'
+  >;
 
 export type InfoItemProps = {
   /**
