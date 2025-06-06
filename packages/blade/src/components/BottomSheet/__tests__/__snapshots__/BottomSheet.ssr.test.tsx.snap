@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BottomSheet /> should render a BottomSheet ssr 1`] = `"<div id="root"><div data-testid="bottomsheet-backdrop" opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx BottomSheetBackdropweb__StyledBottomSheetBackdrop-sc-198k9f6-0 jkMvvn bUGCBC"></div><div data-blade-component="bottom-sheet" data-testid="bottomsheet-surface" aria-modal="true" role="dialog" style="opacity:1;pointer-events:all;height:0;bottom:0;top:auto;z-index:101" class="BottomSheetweb__BottomSheetSurface-qlloie-0 gfJEHp"><div data-blade-component="base-box" class="BaseBox-bmPWx gWSczs"><div data-blade-component="BottomSheetGrabHandle" class="BottomSheetGrabHandleweb__BottomSheetGrabHandle-mo12ak-0 ckvWTP"></div><div data-blade-component="bottom-sheet-header" class="BaseBox-bmPWx bONxzW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx djABsd"><div data-blade-component="base-box" class="BaseBox-bmPWx hKLQfF"><div data-blade-component="base-box" class="BaseBox-bmPWx hXjMxV"><div data-blade-component="base-box" class="BaseBox-bmPWx jxfNRL"><div data-blade-component="base-box" class="BaseBox-bmPWx kDqSNs"><p class="StyledBaseText-dVBfTO jUKanS" data-blade-component="text">Address Details</p><div data-blade-component="base-box" class="BaseBox-bmPWx jOqpMP"><div data-blade-component="box" class="BaseBox-bmPWx kgBOXG"><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 igYNjO iHlsLG"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO iSRZOa" data-blade-component="text">2</p></div></div></div></div></div></div><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text">Saving addresses will improve your checkout experience</p></div></div><div data-blade-component="box" class="BaseBox-bmPWx kgBOXG"><button type="button" aria-label="Close" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 iuKqDM"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx gJhLSN"><div data-blade-component="box" class="BaseBox-bmPWx mhVFF"></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bWVnPN WrXok"></div></div></div><div data-blade-component="bottom-sheet-body" data-testid="bottomsheet-body" style="-webkit-tap-highlight-color:revert;-webkit-touch-callout:revert;-webkit-user-select:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;user-select:auto;touch-action:none" class="BaseBox-bmPWx QAxeY"><div data-blade-component="base-box" class="BaseBox-bmPWx iaqkon"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">BottomSheet body</p></div></div><div data-blade-component="bottom-sheet-footer" class="BaseBox-bmPWx hZLBAO"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bWVnPN WrXok"></div><div data-blade-component="base-box" class="BaseBox-bmPWx dJEYFx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cxbnnu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO RwjIC" data-blade-component="base-text">Remove address</div></div></div></button></div></div></div></div></div>"`;
+exports[`<BottomSheet /> should render a BottomSheet ssr 1`] = `"<div id="root"><div data-testid="bottomsheet-backdrop" opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx BottomSheetBackdropweb__StyledBottomSheetBackdrop-sc-198k9f6-0 jkMvvn bUGCBC"></div><div data-blade-component="bottom-sheet" data-testid="bottomsheet-surface" aria-modal="true" role="dialog" style="opacity:1;pointer-events:all;height:0;bottom:0;top:auto;z-index:101" class="BottomSheetweb__BottomSheetSurface-qlloie-0 gfJEHp"><div data-blade-component="base-box" class="BaseBox-bmPWx gWSczs"><div data-blade-component="BottomSheetGrabHandle" class="BottomSheetGrabHandleweb__BottomSheetGrabHandle-mo12ak-0 ckvWTP"></div><div data-blade-component="bottom-sheet-header" class="BaseBox-bmPWx bONxzW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx djABsd"><div data-blade-component="base-box" class="BaseBox-bmPWx hKLQfF"><div data-blade-component="base-box" class="BaseBox-bmPWx hXjMxV"><div data-blade-component="base-box" class="BaseBox-bmPWx jxfNRL"><div data-blade-component="base-box" class="BaseBox-bmPWx kDqSNs"><p class="StyledBaseText-dVBfTO jUKanS" data-blade-component="text">Address Details</p><div data-blade-component="base-box" class="BaseBox-bmPWx jOqpMP"><div data-blade-component="box" class="BaseBox-bmPWx kgBOXG"><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 igYNjO iHlsLG"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO iSRZOa" data-blade-component="text">2</p></div></div></div></div></div></div><p class="StyledBaseText-dVBfTO kAzdjS" data-blade-component="text">Saving addresses will improve your checkout experience</p></div></div><div data-blade-component="box" class="BaseBox-bmPWx kgBOXG"><button type="button" aria-label="Close" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 iuKqDM"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx gJhLSN"><div data-blade-component="box" class="BaseBox-bmPWx mhVFF"></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gxKpoi WrXok"></div></div></div><div data-blade-component="bottom-sheet-body" data-testid="bottomsheet-body" style="-webkit-tap-highlight-color:revert;-webkit-touch-callout:revert;-webkit-user-select:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;user-select:auto;touch-action:none" class="BaseBox-bmPWx QAxeY"><div data-blade-component="base-box" class="BaseBox-bmPWx iaqkon"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">BottomSheet body</p></div></div><div data-blade-component="bottom-sheet-footer" class="BaseBox-bmPWx hZLBAO"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bWVnPN WrXok"></div><div data-blade-component="base-box" class="BaseBox-bmPWx dJEYFx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cxbnnu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO RwjIC" data-blade-component="base-text">Remove address</div></div></div></button></div></div></div></div></div>"`;
 
 exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 .c3.c3.c3.c3.c3 {
@@ -159,6 +159,8 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 }
 
 .c27.c27.c27.c27.c27 {
+  margin-right: 0px;
+  margin-left: 0px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
@@ -194,10 +196,15 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 }
 
 .c33.c33.c33.c33.c33 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c34.c34.c34.c34.c34 {
   padding: 16px;
 }
 
-.c36.c36.c36.c36.c36 {
+.c37.c37.c37.c37.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -376,7 +383,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   padding: 0;
 }
 
-.c38.c38.c38.c38.c38 {
+.c39.c39.c39.c39.c39 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -528,7 +535,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   width: fit-content;
 }
 
-.c34.c34.c34.c34.c34 {
+.c35.c35.c35.c35.c35 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -565,24 +572,24 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   position: relative;
 }
 
-.c34.c34.c34.c34.c34:hover {
+.c35.c35.c35.c35.c35:hover {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c34.c34.c34.c34.c34:active {
+.c35.c35.c35.c35.c35:active {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c34.c34.c34.c34.c34:focus-visible {
+.c35.c35.c35.c35.c35:focus-visible {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c34.c34.c34.c34.c34 * {
+.c35.c35.c35.c35.c35 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -591,7 +598,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c35.c35.c35.c35.c35 {
+.c36.c36.c36.c36.c36 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -601,7 +608,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   transition-timing-function: 160px;
 }
 
-.c37.c37.c37.c37.c37 {
+.c38.c38.c38.c38.c38 {
   opacity: 1;
 }
 
@@ -644,8 +651,38 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   }
 }
 
+@media screen and (min-width:320px) {
+  .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c34.c34.c34.c34.c34 {
     padding: 20px;
   }
 }
@@ -848,30 +885,30 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
         data-blade-component="bottom-sheet-footer"
       >
         <div
-          class="c27 c28"
+          class="c33 c28"
           data-blade-component="divider"
           role="separator"
         />
         <div
-          class="c33"
+          class="c34"
           data-blade-component="base-box"
         >
           <button
-            class="c34"
+            class="c35"
             data-blade-component="button"
             role="button"
             type="button"
           >
             <div
-              class=" c35"
+              class=" c36"
               data-blade-component="base-box"
             >
               <div
-                class="c36 c37"
+                class="c37 c38"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c38"
+                  class="c39"
                   data-blade-component="base-text"
                 >
                   Remove address

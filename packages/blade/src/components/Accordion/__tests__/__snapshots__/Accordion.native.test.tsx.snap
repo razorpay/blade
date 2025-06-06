@@ -410,28 +410,6 @@ exports[`<Accordion /> should render 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>
@@ -991,28 +969,6 @@ exports[`<Accordion /> should render 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>
@@ -1572,28 +1528,6 @@ exports[`<Accordion /> should render 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>
@@ -2202,28 +2136,6 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>
@@ -2783,28 +2695,6 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>
@@ -3364,28 +3254,6 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>
@@ -3993,28 +3861,6 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>
@@ -4574,28 +4420,6 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>
@@ -5155,28 +4979,6 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         />
                       </View>
                     </View>
-                    <View
-                      borderBottomColor="surface.border.gray.muted"
-                      borderPosition="borderBottom"
-                      data-blade-component="divider"
-                      dividerStyle="solid"
-                      isDividerHorizontal={true}
-                      style={
-                        [
-                          {
-                            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                            "borderBottomStyle": "solid",
-                          },
-                          {
-                            "borderBottomStyle": "solid",
-                            "borderBottomWidth": 1,
-                            "borderWidth": 0,
-                            "flexGrow": 1,
-                          },
-                        ]
-                      }
-                      thickness="thin"
-                    />
                   </View>
                 </View>
               </View>

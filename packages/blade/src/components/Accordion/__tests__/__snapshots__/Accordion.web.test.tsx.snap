@@ -127,17 +127,12 @@ exports[`<Accordion /> should render 1`] = `
   width: 100%;
 }
 
-.c14.c14.c14.c14.c14 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c17.c17.c17.c17.c17 {
+.c15.c15.c15.c15.c15 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -151,7 +146,12 @@ exports[`<Accordion /> should render 1`] = `
   gap: 16px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c18.c18.c18.c18.c18 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c19.c19.c19.c19.c19 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -180,7 +180,7 @@ exports[`<Accordion /> should render 1`] = `
   margin-top: 1px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -276,7 +276,7 @@ exports[`<Accordion /> should render 1`] = `
   border-radius: 2px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c14.c14.c14.c14.c14 {
   -webkit-transition-duration: 280ms;
   transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -311,31 +311,31 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
@@ -451,11 +451,6 @@ exports[`<Accordion /> should render 1`] = `
                         />
                       </div>
                     </div>
-                    <div
-                      class="c14 c15"
-                      data-blade-component="divider"
-                      role="separator"
-                    />
                   </div>
                 </div>
               </button>
@@ -468,11 +463,11 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c16"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c17"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -480,11 +475,11 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="accordion-item-body"
                   >
                     <div
-                      class="c18"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c19"
+                        class="c17"
                         data-blade-component="text"
                       >
                         You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
@@ -497,7 +492,7 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c14 c15"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -604,11 +599,6 @@ exports[`<Accordion /> should render 1`] = `
                         />
                       </div>
                     </div>
-                    <div
-                      class="c14 c15"
-                      data-blade-component="divider"
-                      role="separator"
-                    />
                   </div>
                 </div>
               </button>
@@ -621,11 +611,11 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c16"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c17"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -633,11 +623,11 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="accordion-item-body"
                   >
                     <div
-                      class="c18"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c19"
+                        class="c17"
                         data-blade-component="text"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
@@ -650,7 +640,7 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c14 c15"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -757,11 +747,6 @@ exports[`<Accordion /> should render 1`] = `
                         />
                       </div>
                     </div>
-                    <div
-                      class="c14 c15"
-                      data-blade-component="divider"
-                      role="separator"
-                    />
                   </div>
                 </div>
               </button>
@@ -774,11 +759,11 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c16"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c17"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -786,11 +771,11 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="accordion-item-body"
                   >
                     <div
-                      class="c18"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c19"
+                        class="c17"
                         data-blade-component="text"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
@@ -803,7 +788,7 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c14 c15"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -940,17 +925,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   width: 100%;
 }
 
-.c14.c14.c14.c14.c14 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c17.c17.c17.c17.c17 {
+.c15.c15.c15.c15.c15 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -964,7 +944,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   gap: 16px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c18.c18.c18.c18.c18 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c19.c19.c19.c19.c19 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -993,7 +978,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   margin-top: 1px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1089,7 +1074,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   border-radius: 2px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c14.c14.c14.c14.c14 {
   -webkit-transition-duration: 280ms;
   transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1124,31 +1109,31 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c14.c14.c14.c14.c14 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
@@ -1264,11 +1249,6 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         />
                       </div>
                     </div>
-                    <div
-                      class="c14 c15"
-                      data-blade-component="divider"
-                      role="separator"
-                    />
                   </div>
                 </div>
               </button>
@@ -1281,11 +1261,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c16"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c17"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -1293,11 +1273,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     data-blade-component="accordion-item-body"
                   >
                     <div
-                      class="c18"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c19"
+                        class="c17"
                         data-blade-component="text"
                       >
                         You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
@@ -1310,7 +1290,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c14 c15"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -1417,11 +1397,6 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         />
                       </div>
                     </div>
-                    <div
-                      class="c14 c15"
-                      data-blade-component="divider"
-                      role="separator"
-                    />
                   </div>
                 </div>
               </button>
@@ -1434,11 +1409,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c16"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c17"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -1446,11 +1421,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     data-blade-component="accordion-item-body"
                   >
                     <div
-                      class="c18"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c19"
+                        class="c17"
                         data-blade-component="text"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
@@ -1463,7 +1438,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c14 c15"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -1570,11 +1545,6 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         />
                       </div>
                     </div>
-                    <div
-                      class="c14 c15"
-                      data-blade-component="divider"
-                      role="separator"
-                    />
                   </div>
                 </div>
               </button>
@@ -1587,11 +1557,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c16"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c17"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -1599,11 +1569,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     data-blade-component="accordion-item-body"
                   >
                     <div
-                      class="c18"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c19"
+                        class="c17"
                         data-blade-component="text"
                       >
                         Just use Razorpay.
@@ -1616,7 +1586,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c14 c15"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />

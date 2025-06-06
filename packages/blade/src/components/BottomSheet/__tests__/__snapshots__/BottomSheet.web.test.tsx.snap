@@ -974,6 +974,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c27.c27.c27.c27.c27 {
+  margin-right: 0px;
+  margin-left: 0px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
@@ -1009,10 +1011,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c33.c33.c33.c33.c33 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c34.c34.c34.c34.c34 {
   padding: 16px;
 }
 
-.c36.c36.c36.c36.c36 {
+.c37.c37.c37.c37.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1191,7 +1198,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c38.c38.c38.c38.c38 {
+.c39.c39.c39.c39.c39 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1328,7 +1335,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   width: fit-content;
 }
 
-.c34.c34.c34.c34.c34 {
+.c35.c35.c35.c35.c35 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -1365,24 +1372,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   position: relative;
 }
 
-.c34.c34.c34.c34.c34:hover {
+.c35.c35.c35.c35.c35:hover {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c34.c34.c34.c34.c34:active {
+.c35.c35.c35.c35.c35:active {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c34.c34.c34.c34.c34:focus-visible {
+.c35.c35.c35.c35.c35:focus-visible {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c34.c34.c34.c34.c34 * {
+.c35.c35.c35.c35.c35 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -1391,7 +1398,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c35.c35.c35.c35.c35 {
+.c36.c36.c36.c36.c36 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1401,7 +1408,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: 160px;
 }
 
-.c37.c37.c37.c37.c37 {
+.c38.c38.c38.c38.c38 {
   opacity: 1;
 }
 
@@ -1459,8 +1466,38 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   }
 }
 
+@media screen and (min-width:320px) {
+  .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c33.c33.c33.c33.c33 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c34.c34.c34.c34.c34 {
     padding: 20px;
   }
 }
@@ -1662,30 +1699,30 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
           data-blade-component="bottom-sheet-footer"
         >
           <div
-            class="c27 c28"
+            class="c33 c28"
             data-blade-component="divider"
             role="separator"
           />
           <div
-            class="c33"
+            class="c34"
             data-blade-component="base-box"
           >
             <button
-              class="c34"
+              class="c35"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c35"
+                class=" c36"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c36 c37"
+                  class="c37 c38"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c38"
+                    class="c39"
                     data-blade-component="base-text"
                   >
                     Remove address
