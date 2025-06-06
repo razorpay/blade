@@ -220,7 +220,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   });
   const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = React.useState(false);
   const [isLeadingDropDownOpen, setIsLeadingDropDownOpen] = React.useState(false);
-  const textInputWrapperRef = useRef<ContainerElementType | null>(null);
 
   useEffect(() => {
     if (isTrailingDropDownOpen && isLeadingDropDownOpen) {
@@ -266,14 +265,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       onOpenChange: (isOpen: boolean) => {
         setIsOpen(isOpen);
       },
-      children: React.Children.map(dropdown.props.children, (child) => {
-        if (child.type === DropdownOverlay) {
-          return React.cloneElement(child, {
-            referenceRef: textInputWrapperRef,
-          });
-        }
-        return child;
-      }),
+      children: dropdown.props.children,
     });
   };
 
@@ -345,9 +337,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     <BaseInput
       id="textinput"
       componentName={MetaConstants.TextInput}
-      setInputWrapperRef={(wrapperNode) => {
-        textInputWrapperRef.current = wrapperNode;
-      }}
       ref={mergedRef}
       label={label as string}
       accessibilityLabel={accessibilityLabel}

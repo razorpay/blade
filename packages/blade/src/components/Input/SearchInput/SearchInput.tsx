@@ -181,11 +181,6 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
       children: React.Children.map(
         (trailingDropdown as React.ReactElement).props.children,
         (child) => {
-          if (child.type === DropdownOverlay) {
-            return React.cloneElement(child, {
-              referenceRef: triggererWrapperRef,
-            });
-          }
           if (child.type === InputDropdownButton) {
             return React.cloneElement(child, {
               _isInsideSearchInput: true,
@@ -252,7 +247,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         ref={mergedRef}
         isDropdownTrigger={true}
         setInputWrapperRef={
-          isInsideDropdown || isTrailingDropDownOpen
+          isInsideDropdown
             ? (wrapperNode) => {
                 triggererWrapperRef.current = wrapperNode;
               }

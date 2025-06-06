@@ -16,7 +16,7 @@ import { Link } from '~components/Link';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
 import { ActionList, ActionListItem } from '~components/ActionList';
-import { BankIcon } from '~components/Icons';
+import { BankIcon, GlobeIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -679,28 +679,46 @@ TextInputWithUncontrolledTags.args = {
   showClearButton: true,
 };
 
-export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...args }) => {
-  const [leadingDropDownValue, setLeadingDropDownValue] = useState('inr');
+export const TextInputWithTrailingAndLeadingDropdown: StoryFn<typeof TextInputComponent> = ({
+  ...args
+}) => {
   return (
     <Box display="flex" flexDirection="column">
       <TextInputComponent
-        {...args}
+        label="Enter Website URL"
         leading={
           <Dropdown>
-            <InputDropdownButton
-              value={leadingDropDownValue}
-              onChange={({ value }) => {
-                setLeadingDropDownValue(value);
-              }}
-            />
-            <DropdownOverlay>
+            <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+            <DropdownOverlay width="80px">
               <ActionList>
-                <ActionListItem title="INR" value="inr" />
-                <ActionListItem title="USD" value="usd" />
+                <ActionListItem title="www." value="www" />
+                <ActionListItem title="blog." value="blog" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
         }
+        trailing={
+          <Dropdown>
+            <InputDropdownButton defaultValue="in" />
+            <DropdownOverlay width="80px">
+              <ActionList>
+                <ActionListItem title=".in" value="in" />
+                <ActionListItem title=".com" value="com" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
+  );
+};
+
+export const TextInputWithTrailingDropdown: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent
+        label="Enter your upi id"
+        placeholder="98000xxxxx"
         trailing={
           <Dropdown>
             <InputDropdownButton defaultValue="sbi" icon={BankIcon} />
@@ -708,6 +726,28 @@ export const TextInputWithDropDown: StoryFn<typeof TextInputComponent> = ({ ...a
               <ActionList>
                 <ActionListItem title="@oksbi" value="sbi" />
                 <ActionListItem title="@hdfc" value="hdfc" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
+  );
+};
+
+export const TextInputWithLeadingDropdown: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent
+        label="Select Currency"
+        placeholder="Select Currency"
+        leading={
+          <Dropdown>
+            <InputDropdownButton defaultValue="inr" icon={BankIcon} />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="INR" value="inr" />
+                <ActionListItem title="USD" value="usd" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>

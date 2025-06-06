@@ -319,7 +319,7 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         trailing={
           <Dropdown>
             <InputDropdownButton defaultValue="home" />
-            <DropdownOverlay>
+            <DropdownOverlay width="100px">
               <ActionList>
                 <ActionListItem title="Home" value="home" />
                 <ActionListItem title="Pricing" value="pricing" />
@@ -462,7 +462,7 @@ const SearchInputWithControlledDropdownTemplate: StoryFn<typeof SearchInputCompo
             value={inputDropdownValue}
             onChange={({ value }) => setInputDropdownValue(value)}
           />
-          <DropdownOverlay>
+          <DropdownOverlay width="100px">
             <ActionList>
               <ActionListItem title="Home" value="home" />
               <ActionListItem title="Pricing" value="pricing" />
