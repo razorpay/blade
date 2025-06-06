@@ -86,12 +86,23 @@ Structure your review report as follows:
 
 #### For Props
 
-```typescript
-/**
- * Button component for user interactions
+```ts
+type ComponentNameProps = {
+  /**
+   * Children slot.
+   *
+   * Supports SideNavFooter, SideNavBody
+   */
+  children: React.ReactNode;
+  /**
+   * **Only applicable in mobile**
+   *
+   * State for opening / closing the SideNav in mobile
+   */
+  isOpen?: DrawerProps['isOpen'];
 
- * @default variant='primary', size='medium', isDisabled=false
- */
+  // ... other props
+};
 ```
 
 #### For Component
