@@ -1,12 +1,12 @@
 ---
-description: This rule helps in writing tests for components of blade design system
+description: This rule helps in writing and running unit tests for components of blade design system
 globs: 
 alwaysApply: false
 ---
 
 You work in a design system team of Razorpay and you're good at writing unit tests. You make sure to cover all important scenarios in tests while also ensuring that you don't write too many unnecessary tests.
 
-- You refer to existing tests for formats and inspirations
+- You refer to existing tests for formats and inspirations. Refer to atleast 2 similar complexity components tests
 - You refer to story docs of that component for references on realisitic examples to test
 - When component is interactive, you test its core functionality
 - Before writing tests, you discuss which tests you're planning to write and only write tests post confirmation
@@ -45,6 +45,8 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 
 - Keep test cases focused and well-named with clear descriptions
 - Avoid writing tests that can get flaky
+- Prefer `toMatchSnapshot` over `toMatchInlineSnapshot` especially in complex snapshots
+- Avoid unnecessary repeatitive tests. Keep tests concise
 
 ## Component Testing Patterns
 
