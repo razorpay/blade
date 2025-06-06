@@ -15,6 +15,7 @@ import {
   itemTitleHeight,
   avatarAdjustmentPaddingY,
 } from './infoGroupTokens';
+import { InfoGroupContext, useInfoGroup, InfoItemContext, useInfoItem } from './InfoGroupContext';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -62,34 +63,6 @@ const renderElement = (
   return <IconComponent size={iconSize[size]} color="surface.icon.gray.muted" />;
 };
 
-// Create React Context for InfoGroup configuration
-const InfoGroupContext = React.createContext<{
-  size: NonNullable<InfoGroupProps['size']>;
-  itemOrientation: NonNullable<InfoGroupProps['itemOrientation']>;
-  keyAlign: NonNullable<InfoGroupProps['keyAlign']>;
-  valueAlign: NonNullable<InfoGroupProps['valueAlign']>;
-  isHighlighted: NonNullable<InfoGroupProps['isHighlighted']>;
-}>({
-  size: 'medium',
-  itemOrientation: 'horizontal',
-  keyAlign: 'left',
-  valueAlign: 'left',
-  isHighlighted: false,
-});
-
-// Create React Context for InfoItem configuration
-const InfoItemContext = React.createContext<{
-  hasAvatar: boolean;
-  setHasAvatar: (hasAvatar: boolean) => void;
-  isHighlighted: boolean;
-}>({
-  hasAvatar: false,
-  setHasAvatar: () => {
-    // no-op default implementation
-  },
-  isHighlighted: false,
-});
-
 const TitleCollection = ({
   children,
   leading,
@@ -101,8 +74,8 @@ const TitleCollection = ({
   paddingRight,
   truncateAfterLines,
 }: TitleCollectionProps): React.ReactElement => {
-  const { size } = React.useContext(InfoGroupContext);
-  const { setHasAvatar } = React.useContext(InfoItemContext);
+  const { size } = useInfoGroup();
+  const { setHasAvatar } = useInfoItem();
 
   const isAvatar = getComponentId(React.isValidElement(leading) ? leading : undefined) === 'Avatar';
 
@@ -168,9 +141,9 @@ const _InfoItemKey = (
   { children, leading, trailing, helpText, truncateAfterLines, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation, keyAlign, size } = React.useContext(InfoGroupContext);
+  const { itemOrientation, keyAlign, size } = useInfoGroup();
 
-  const { hasAvatar, isHighlighted } = React.useContext(InfoItemContext);
+  const { hasAvatar, isHighlighted } = useInfoItem();
 
   return (
     <BaseBox
@@ -202,19 +175,35 @@ const _InfoItemKey = (
   );
 };
 
+/**
+ * InfoItemKey
+ *
+ * Displays the key portion of a key-value pair within an InfoItem.
+ * Supports leading/trailing elements and customizable text alignment.
+ *
+ * ----
+ *
+ * #### Usage
+ *
+ * ```tsx
+ * <InfoItemKey leading={UserIcon}>Account Holder</InfoItemKey>
+ * ```
+ *
+ * ----
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-infogroup InfoGroup Documentation}
+ */
 const InfoItemKey = assignWithoutSideEffects(React.forwardRef(_InfoItemKey), {
   displayName: 'InfoItemKey',
   componentId: 'InfoItemKey',
 });
 
-// InfoItemValue Component
 const _InfoItemValue = (
   { children, leading, trailing, helpText, truncateAfterLines, testID }: InfoItemValueProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation, valueAlign, size } = React.useContext(InfoGroupContext);
+  const { itemOrientation, valueAlign, size } = useInfoGroup();
 
-  const { hasAvatar, isHighlighted } = React.useContext(InfoItemContext);
+  const { hasAvatar, isHighlighted } = useInfoItem();
 
   return (
     <BaseBox
@@ -244,6 +233,25 @@ const _InfoItemValue = (
   );
 };
 
+/**
+ * InfoItemValue
+ *
+ * Displays the value portion of a key-value pair within an InfoItem.
+ * Supports leading/trailing elements and customizable text alignment.
+ *
+ * ----
+ *
+ * #### Usage
+ *
+ * ```tsx
+ * <InfoItemValue helpText="Customer name" trailing={CheckIcon}>
+ *   Saurabh Daware
+ * </InfoItemValue>
+ * ```
+ *
+ * ----
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-infogroup InfoGroup Documentation}
+ */
 const InfoItemValue = assignWithoutSideEffects(React.forwardRef(_InfoItemValue), {
   displayName: 'InfoItemValue',
   componentId: 'InfoItemValue',
@@ -290,14 +298,11 @@ const FlexItemBox = React.forwardRef<
   },
 );
 
-// InfoItem Component
 const _InfoItem = (
   { children, testID, isHighlighted }: InfoItemProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation, isHighlighted: contextIsHighlighted } = React.useContext(
-    InfoGroupContext,
-  );
+  const { itemOrientation, isHighlighted: contextIsHighlighted } = useInfoGroup();
   const [hasAvatar, setHasAvatar] = React.useState(false);
   const isVertical = itemOrientation === 'vertical';
   const shouldHighlight = isHighlighted ?? contextIsHighlighted;
@@ -330,6 +335,26 @@ const _InfoItem = (
   );
 };
 
+/**
+ * InfoItem
+ *
+ * Container component that wraps InfoItemKey and InfoItemValue pairs.
+ * Manages the layout and visual connection between key-value elements.
+ *
+ * ----
+ *
+ * #### Usage
+ *
+ * ```tsx
+ * <InfoItem>
+ *   <InfoItemKey>Account Holder</InfoItemKey>
+ *   <InfoItemValue>Saurabh Daware</InfoItemValue>
+ * </InfoItem>
+ * ```
+ *
+ * ----
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-infogroup InfoGroup Documentation}
+ */
 const InfoItem = assignWithoutSideEffects(React.forwardRef(_InfoItem), {
   displayName: 'InfoItem',
   componentId: 'InfoItem',
@@ -409,6 +434,28 @@ const _InfoGroup = (
   );
 };
 
+/**
+ * InfoGroup
+ *
+ * A structured component for displaying key-value pairs in a consistent, organized format.
+ * Provides standardized presentation for transaction details, user data, or any related data pairs.
+ *
+ * ----
+ *
+ * #### Usage
+ *
+ * ```tsx
+ * <InfoGroup itemOrientation="horizontal" size="medium">
+ *   <InfoItem>
+ *     <InfoItemKey leading={UserIcon}>Account Holder</InfoItemKey>
+ *     <InfoItemValue>Saurabh Daware</InfoItemValue>
+ *   </InfoItem>
+ * </InfoGroup>
+ * ```
+ *
+ * ----
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-infogroup InfoGroup Documentation}
+ */
 const InfoGroup = assignWithoutSideEffects(React.forwardRef(_InfoGroup), {
   displayName: 'InfoGroup',
   componentId: 'InfoGroup',
