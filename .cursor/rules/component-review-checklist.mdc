@@ -49,6 +49,10 @@ When a user asks you to review a component before shipping, you must check the f
 - Ensure that we're re-exporting component without `.web` or `.native` extensions
 - Verify that the component is re-exported from `packages/blade/src/components/index.ts`
 
+### 8. Knowledgebase Update
+
+- Verify that there is knowledgebase created for this component. Look for `{ComponentName}.md` inside `packages/blade-mcp/knowledgebase/**`
+
 ## Reporting Format
 
 Structure your review report as follows:
