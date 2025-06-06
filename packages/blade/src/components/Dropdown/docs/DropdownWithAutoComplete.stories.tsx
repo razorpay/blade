@@ -221,5 +221,4 @@ InternalDropdownPerformance.parameters = {
   },
 };
 
-
 export default DropdownStoryMeta;
