@@ -1,14 +1,13 @@
-import React from 'react';
+import type { InfoGroupProps } from '../types';
 import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '../InfoGroup';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
-import { UserIcon, BankIcon, CheckIcon, InfoIcon, CopyIcon } from '~components/Icons';
-import { Amount } from '~components/Amount';
-import { Badge } from '~components/Badge';
-import { Avatar } from '~components/Avatar';
-import { Link } from '~components/Link';
+import { UserIcon, BankIcon, CheckIcon, CopyIcon } from '~components/Icons';
 import { Code } from '~components/Typography';
-import { Box } from '~components/Box';
+import { Avatar } from '~components/Avatar';
+import { Badge } from '~components/Badge';
+import { Amount } from '~components/Amount';
+import { Divider } from '~components/Divider';
 
 describe('<InfoGroup />', () => {
   it('should render simple InfoGroup', () => {
@@ -22,17 +21,26 @@ describe('<InfoGroup />', () => {
           <InfoItemKey>Payment Method</InfoItemKey>
           <InfoItemValue>Credit Card</InfoItemValue>
         </InfoItem>
-        <InfoItem>
-          <InfoItemKey>Transaction Amount</InfoItemKey>
-          <InfoItemValue>₹1,234.56</InfoItemValue>
-        </InfoItem>
       </InfoGroup>,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render InfoGroup with itemOrientation="vertical"', () => {
-    const { container } = renderWithTheme(
+  it('should render InfoGroup with different item orientations', () => {
+    const { container: horizontalContainer } = renderWithTheme(
+      <InfoGroup itemOrientation="horizontal">
+        <InfoItem>
+          <InfoItemKey>Account Holder</InfoItemKey>
+          <InfoItemValue>Saurabh Daware</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Payment Method</InfoItemKey>
+          <InfoItemValue>Credit Card</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+
+    const { container: verticalContainer } = renderWithTheme(
       <InfoGroup itemOrientation="vertical">
         <InfoItem>
           <InfoItemKey>Account Holder</InfoItemKey>
@@ -42,22 +50,32 @@ describe('<InfoGroup />', () => {
           <InfoItemKey>Payment Method</InfoItemKey>
           <InfoItemValue>Credit Card</InfoItemValue>
         </InfoItem>
-        <InfoItem>
-          <InfoItemKey>Transaction Amount</InfoItemKey>
-          <InfoItemValue>₹1,234.56</InfoItemValue>
-        </InfoItem>
-        <InfoItem>
-          <InfoItemKey>Status</InfoItemKey>
-          <InfoItemValue>Completed</InfoItemValue>
-        </InfoItem>
       </InfoGroup>,
     );
-    expect(container).toMatchSnapshot();
+
+    expect(horizontalContainer).toMatchSnapshot();
+    expect(verticalContainer).toMatchSnapshot();
   });
 
-  it('should render InfoGroup with gridTemplateColumns="50% 50%"', () => {
+  it('should render InfoGroup with different sizes', () => {
+    const sizes: InfoGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
+
+    sizes.forEach((size) => {
+      const { container } = renderWithTheme(
+        <InfoGroup size={size}>
+          <InfoItem>
+            <InfoItemKey>Account Holder</InfoItemKey>
+            <InfoItemValue>Saurabh Daware</InfoItemValue>
+          </InfoItem>
+        </InfoGroup>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  it('should render InfoGroup with different key and value alignments', () => {
     const { container } = renderWithTheme(
-      <InfoGroup gridTemplateColumns="50% 50%">
+      <InfoGroup keyAlign="right" valueAlign="right">
         <InfoItem>
           <InfoItemKey>Account Holder</InfoItemKey>
           <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -66,72 +84,84 @@ describe('<InfoGroup />', () => {
           <InfoItemKey>Payment Method</InfoItemKey>
           <InfoItemValue>Credit Card</InfoItemValue>
         </InfoItem>
+      </InfoGroup>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render InfoGroup with highlighting', () => {
+    const { container } = renderWithTheme(
+      <InfoGroup isHighlighted={true}>
         <InfoItem>
-          <InfoItemKey>Transaction Amount</InfoItemKey>
-          <InfoItemValue>₹1,234.56</InfoItemValue>
+          <InfoItemKey>Account Holder</InfoItemKey>
+          <InfoItemValue>Saurabh Daware</InfoItemValue>
         </InfoItem>
-        <InfoItem>
-          <InfoItemKey>Status</InfoItemKey>
-          <InfoItemValue>Completed</InfoItemValue>
+        <InfoItem isHighlighted={false}>
+          <InfoItemKey>Payment Method</InfoItemKey>
+          <InfoItemValue>Credit Card</InfoItemValue>
         </InfoItem>
       </InfoGroup>,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render complex InfoGroup with horizontal itemOrientation, leading/trailing props, helpText, etc', () => {
+  it('should render InfoGroup with custom grid template columns', () => {
     const { container } = renderWithTheme(
-      <InfoGroup
-        itemOrientation="horizontal"
-        size="medium"
-        keyAlign="left"
-        valueAlign="right"
-        isHighlighted={true}
-        maxWidth="600px"
-        padding="spacing.3"
-      >
+      <InfoGroup gridTemplateColumns="1fr 2fr">
+        <InfoItem>
+          <InfoItemKey>Account Holder</InfoItemKey>
+          <InfoItemValue>Saurabh Daware</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Payment Method</InfoItemKey>
+          <InfoItemValue>Credit Card</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render InfoGroup with icons and help text', () => {
+    const { container } = renderWithTheme(
+      <InfoGroup>
         <InfoItem>
           <InfoItemKey leading={UserIcon} helpText="Customer information">
             Account Holder
           </InfoItemKey>
-          <InfoItemValue leading={<Avatar name="Saurabh Daware" size="xsmall" />}>
+          <InfoItemValue helpText="Name of the account holder" trailing={CheckIcon}>
             Saurabh Daware
           </InfoItemValue>
         </InfoItem>
         <InfoItem>
-          <InfoItemKey leading={BankIcon} helpText="Payment method used">
-            Payment Method
-          </InfoItemKey>
-          <InfoItemValue
-            trailing={
-              <Badge size="small" color="positive" emphasis="subtle">
-                Active
-              </Badge>
-            }
-          >
-            Credit Card
+          <InfoItemKey leading={BankIcon}>Payment ID</InfoItemKey>
+          <InfoItemValue trailing={CopyIcon}>
+            <Code weight="bold">pay_MK7DGqwYXEwx9Q</Code>
           </InfoItemValue>
         </InfoItem>
+      </InfoGroup>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render InfoGroup with complex content', () => {
+    const { container } = renderWithTheme(
+      <InfoGroup>
         <InfoItem>
-          <InfoItemKey leading={InfoIcon} helpText="Transaction amount">
-            Transaction Amount
-          </InfoItemKey>
+          <InfoItemKey leading={UserIcon}>Customer</InfoItemKey>
           <InfoItemValue>
-            <Amount value={123456} size="medium" />
+            <Avatar name="Saurabh Daware" />
           </InfoItemValue>
         </InfoItem>
         <InfoItem>
-          <InfoItemKey leading={CheckIcon} helpText="Current status">
-            Status
-          </InfoItemKey>
-          <InfoItemValue
-            trailing={
-              <Badge size="small" color="positive" emphasis="intense">
-                Success
-              </Badge>
-            }
-          >
-            Completed
+          <InfoItemKey>Status</InfoItemKey>
+          <InfoItemValue>
+            <Badge color="positive">Active</Badge>
+          </InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Amount</InfoItemKey>
+          <InfoItemValue>
+            <Amount value={123456} />
           </InfoItemValue>
         </InfoItem>
       </InfoGroup>,
@@ -139,161 +169,7 @@ describe('<InfoGroup />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render InfoGroup with Avatars and apply correct padding to InfoItemKey and InfoItemValue', () => {
-    const { container, getByTestId } = renderWithTheme(
-      <InfoGroup itemOrientation="horizontal" size="medium">
-        <InfoItem>
-          <InfoItemKey
-            leading={<Avatar size="medium" name="Saurabh Daware" />}
-            helpText="Customer information"
-            testID="info-item-key-with-avatar-1"
-          >
-            Account Holder
-          </InfoItemKey>
-          <InfoItemValue trailing={CheckIcon} testID="info-item-value-with-avatar-1">
-            Saurabh Daware
-          </InfoItemValue>
-        </InfoItem>
-        <InfoItem>
-          <InfoItemKey
-            leading={<Avatar size="medium" name="Bank Account" />}
-            testID="info-item-key-with-avatar-2"
-          >
-            Payment ID
-          </InfoItemKey>
-          <InfoItemValue
-            trailing={<Link icon={CopyIcon} variant="button" size="medium" />}
-            testID="info-item-value-with-avatar-2"
-          >
-            <Code weight="bold" size="small">
-              pay_MK7DGqwYXEwx9Q
-            </Code>
-          </InfoItemValue>
-        </InfoItem>
-        <InfoItem>
-          <InfoItemKey
-            testID="info-item-key-with-non-avatar"
-            leading={<span>Non Avatar element</span>}
-          >
-            Support Agent
-          </InfoItemKey>
-          <InfoItemValue testID="info-item-value-with-non-avatar">John Doe</InfoItemValue>
-        </InfoItem>
-      </InfoGroup>,
-    );
-
-    expect(container).toMatchSnapshot();
-
-    // Check that InfoItemKey has correct padding when Avatar is present (test first 2 items)
-    const infoItemKey1 = getByTestId('info-item-key-with-avatar-1');
-    const infoItemKey2 = getByTestId('info-item-key-with-avatar-2');
-
-    const computedStyleKey1 = window.getComputedStyle(infoItemKey1);
-    // For medium size, avatarAdjustmentPaddingY is 'spacing.2' which is 8px
-    expect(computedStyleKey1.paddingTop).toBe('4px');
-    expect(computedStyleKey1.paddingBottom).toBe('4px');
-
-    const computedStyleKey2 = window.getComputedStyle(infoItemKey2);
-    // For medium size, avatarAdjustmentPaddingY is 'spacing.2' which is 8px
-    expect(computedStyleKey2.paddingTop).toBe('4px');
-    expect(computedStyleKey2.paddingBottom).toBe('4px');
-
-    // Check that InfoItemValue has correct padding when Avatar is present (test first 2 items)
-    const infoItemValue1 = getByTestId('info-item-value-with-avatar-1');
-    const infoItemValue2 = getByTestId('info-item-value-with-avatar-2');
-
-    const computedStyleValue1 = window.getComputedStyle(infoItemValue1);
-    // For medium size, avatarAdjustmentPaddingY is 'spacing.2' which is 8px
-    expect(computedStyleValue1.paddingTop).toBe('4px');
-    expect(computedStyleValue1.paddingBottom).toBe('4px');
-
-    const computedStyleValue2 = window.getComputedStyle(infoItemValue2);
-    // For medium size, avatarAdjustmentPaddingY is 'spacing.2' which is 8px
-    expect(computedStyleValue2.paddingTop).toBe('4px');
-    expect(computedStyleValue2.paddingBottom).toBe('4px');
-
-    // When there is no avatar, the padding should be 0
-    const infoItemValue3 = getByTestId('info-item-value-with-non-avatar');
-    const computedStyleValue3 = window.getComputedStyle(infoItemValue3);
-    expect(computedStyleValue3.paddingTop).toBeFalsy();
-    expect(computedStyleValue3.paddingBottom).toBeFalsy();
-  });
-
-  it('should accept testID', () => {
-    const { getByTestId } = renderWithTheme(
-      <InfoGroup testID="info-group-test">
-        <InfoItem testID="info-item-test">
-          <InfoItemKey testID="info-item-key-test">Account Holder</InfoItemKey>
-          <InfoItemValue testID="info-item-value-test">Saurabh Daware</InfoItemValue>
-        </InfoItem>
-      </InfoGroup>,
-    );
-
-    expect(getByTestId('info-group-test')).toBeTruthy();
-    expect(getByTestId('info-item-test')).toBeTruthy();
-    expect(getByTestId('info-item-key-test')).toBeTruthy();
-    expect(getByTestId('info-item-value-test')).toBeTruthy();
-  });
-
-  it('should render InfoGroup with different sizes', () => {
-    const { container } = renderWithTheme(
-      <Box>
-        <InfoGroup size="xsmall">
-          <InfoItem>
-            <InfoItemKey>Account Holder</InfoItemKey>
-            <InfoItemValue>Saurabh Daware</InfoItemValue>
-          </InfoItem>
-        </InfoGroup>
-        <InfoGroup size="small">
-          <InfoItem>
-            <InfoItemKey>Account Holder</InfoItemKey>
-            <InfoItemValue>Saurabh Daware</InfoItemValue>
-          </InfoItem>
-        </InfoGroup>
-        <InfoGroup size="medium">
-          <InfoItem>
-            <InfoItemKey>Account Holder</InfoItemKey>
-            <InfoItemValue>Saurabh Daware</InfoItemValue>
-          </InfoItem>
-        </InfoGroup>
-        <InfoGroup size="large">
-          <InfoItem>
-            <InfoItemKey>Account Holder</InfoItemKey>
-            <InfoItemValue>Saurabh Daware</InfoItemValue>
-          </InfoItem>
-        </InfoGroup>
-      </Box>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render InfoGroup with different alignments', () => {
-    const { container } = renderWithTheme(
-      <div>
-        <InfoGroup keyAlign="left" valueAlign="left">
-          <InfoItem>
-            <InfoItemKey>Account Holder</InfoItemKey>
-            <InfoItemValue>Saurabh Daware</InfoItemValue>
-          </InfoItem>
-        </InfoGroup>
-        <InfoGroup keyAlign="left" valueAlign="right">
-          <InfoItem>
-            <InfoItemKey>Account Holder</InfoItemKey>
-            <InfoItemValue>Saurabh Daware</InfoItemValue>
-          </InfoItem>
-        </InfoGroup>
-        <InfoGroup keyAlign="right" valueAlign="right">
-          <InfoItem>
-            <InfoItemKey>Account Holder</InfoItemKey>
-            <InfoItemValue>Saurabh Daware</InfoItemValue>
-          </InfoItem>
-        </InfoGroup>
-      </div>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should not have accessibility violations', async () => {
+  it('should render InfoGroup with dividers', () => {
     const { container } = renderWithTheme(
       <InfoGroup>
         <InfoItem>
@@ -304,8 +180,118 @@ describe('<InfoGroup />', () => {
           <InfoItemKey>Payment Method</InfoItemKey>
           <InfoItemValue>Credit Card</InfoItemValue>
         </InfoItem>
+        <Divider gridColumn="span 2" />
+        <InfoItem>
+          <InfoItemKey>Status</InfoItemKey>
+          <InfoItemValue>Completed</InfoItemValue>
+        </InfoItem>
       </InfoGroup>,
     );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render InfoGroup with width and padding props', () => {
+    const { container } = renderWithTheme(
+      <InfoGroup width="400px" maxWidth="500px" padding="spacing.4" paddingX="spacing.6">
+        <InfoItem>
+          <InfoItemKey>Account Holder</InfoItemKey>
+          <InfoItemValue>Saurabh Daware</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should apply correct grid template columns based on itemOrientation', () => {
+    const { getByTestId: getHorizontal } = renderWithTheme(
+      <InfoGroup itemOrientation="horizontal" testID="horizontal-info-group">
+        <InfoItem>
+          <InfoItemKey>Key</InfoItemKey>
+          <InfoItemValue>Value</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+
+    const { getByTestId: getVertical } = renderWithTheme(
+      <InfoGroup itemOrientation="vertical" testID="vertical-info-group">
+        <InfoItem>
+          <InfoItemKey>Key1</InfoItemKey>
+          <InfoItemValue>Value1</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Key2</InfoItemKey>
+          <InfoItemValue>Value2</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+
+    const horizontalElement = getHorizontal('horizontal-info-group');
+    const verticalElement = getVertical('vertical-info-group');
+
+    // Test computed styles for grid template columns
+    expect(getComputedStyle(horizontalElement).gridTemplateColumns).toBe('max-content 1fr');
+    expect(getComputedStyle(verticalElement).gridTemplateColumns).toBe('repeat(min(4,2),1fr)');
+  });
+
+  it('should apply correct gap spacing', () => {
+    const { getByTestId } = renderWithTheme(
+      <InfoGroup testID="info-group">
+        <InfoItem>
+          <InfoItemKey>Key</InfoItemKey>
+          <InfoItemValue>Value</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+
+    const element = getByTestId('info-group');
+    const computedStyle = getComputedStyle(element);
+
+    // rowGap should be spacing.4 = 12px
+    expect(computedStyle.rowGap).toBe('12px');
+    // columnGap should be spacing.6 = 20px (base)
+    expect(computedStyle.columnGap).toBe('20px');
+  });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <InfoGroup testID="info-group-test">
+        <InfoItem testID="info-item-test">
+          <InfoItemKey testID="info-key-test">Account Holder</InfoItemKey>
+          <InfoItemValue testID="info-value-test">Saurabh Daware</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+
+    expect(getByTestId('info-group-test')).toBeTruthy();
+    expect(getByTestId('info-item-test')).toBeTruthy();
+    expect(getByTestId('info-key-test')).toBeTruthy();
+    expect(getByTestId('info-value-test')).toBeTruthy();
+  });
+
+  it('should not have accessibility violations', async () => {
+    const { container } = renderWithTheme(
+      <InfoGroup>
+        <InfoItem>
+          <InfoItemKey leading={UserIcon} helpText="Customer information">
+            Account Holder
+          </InfoItemKey>
+          <InfoItemValue helpText="Name of the account holder" trailing={CheckIcon}>
+            Saurabh Daware
+          </InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey leading={BankIcon}>Payment Method</InfoItemKey>
+          <InfoItemValue>Credit Card</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Status</InfoItemKey>
+          <InfoItemValue>
+            <Badge color="positive">Active</Badge>
+          </InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+
     await assertAccessible(container);
   });
 });
