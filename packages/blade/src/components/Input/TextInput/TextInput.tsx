@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -22,10 +22,8 @@ import type {
   BladeElementRef,
   BladeElementRefWithValue,
   DataAnalyticsAttribute,
-  ContainerElementType,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
-import { DropdownOverlay } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 
