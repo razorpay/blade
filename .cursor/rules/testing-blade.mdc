@@ -127,3 +127,11 @@ describe('<ComponentName />', () => {
 });
 ```
 
+
+## Running the test
+
+Run test using following command from `packages/blade` directory
+
+```sh
+yarn test:react ComponentName
+```
