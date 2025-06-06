@@ -1,0 +1,116 @@
+---
+description: This rule helps in writing tests for components of blade design system
+globs: 
+alwaysApply: false
+---
+
+You work in a design system team of Razorpay and you're good at writing unit tests. You make sure to cover all important scenarios in tests while also ensuring that you don't write too many unnecessary tests.
+
+- You refer to existing tests for formats and inspirations
+- You refer to story docs of that component for references on realisitic examples to test
+- When component is interactive, you test its core functionality
+- Before writing tests, you discuss which tests you're planning to write and only write tests post confirmation
+- You don't write `ComponentName.native.test.tsx` tests since that is not maintained anymore
+- Whenever you're unsure about some practice, just ask for confirmation
+
+# Blade Component Testing Guidelines
+
+## Test File Structure
+
+- Create tests in a `__tests__` directory within the component folder
+- Use `.web.test.tsx` for web-specific tests and `.ssr.test.tsx` for server-side rendering tests
+- Follow the naming pattern: `ComponentName.web.test.tsx` and `ComponentName.ssr.test.tsx`
+
+## Testing Patterns
+
+- Always start by examining existing test patterns (e.g., Box component tests) to understand established conventions
+- Use `renderWithTheme` for web tests and `renderWithSSR` for SSR tests
+- Include `assertAccessible` test to ensure components meet accessibility standards
+- Import testing utilities from `~utils/testing/`
+
+### Testing Utilities and Imports
+
+```typescript
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import renderWithSSR from '~utils/testing/renderWithSSR';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+```
+
+## Element Selection Best Practices
+
+- Always prefer `getByRole` over anything else wherever possible
+- Use `testID` props for precise element targeting in other cases where getByRole is not possible
+
+## Code Style in Tests
+
+- Keep test cases focused and well-named with clear descriptions
+- Avoid writing tests that can get flaky
+
+## Component Testing Patterns
+
+- Test different orientations, alignments, and layout configurations
+- When testing styling/padding behavior, verify actual computed styles using `window.getComputedStyle()`
+- Test integration with other Blade components (Icons, Avatar, Badge, Amount, etc.)
+- Include tests for conditional behavior (e.g., padding changes when Avatar is present vs absent)
+
+## Import Organization
+
+```typescript
+// Component imports
+import { ComponentName, SubComponent } from '../index';
+// Testing utilities
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+// Blade components used in tests
+import { Icon, Avatar, Badge, Amount } from '~components/...';
+```
+
+## Test Structure Template
+
+```typescript
+describe('<ComponentName />', () => {
+  it('should render simple ComponentName', () => {
+    // Basic rendering test with snapshot
+  });
+
+  it('should render ComponentName with different complex configurations', () => {
+    // Test various prop combinations
+  });
+
+  // Test for any hacky implementations that we've added while writing code that are likely break or not intuitive
+  it('should test for any hacky implementations', () => {
+    // Test conditional behavior with actual assertions
+  });
+
+  // test for import styling scenario
+  it('should render the important style', () => {
+    // Test for 2 most important styles using getComputedStyle
+  });
+
+  // test for core functionality (ignore if component is non-interactive)
+  it('should render ComponentName with different complex configurations', () => {
+    // Test various prop combinations
+  });
+
+  it('should accept testID', () => {
+    // Test testID prop support
+  });
+
+  it('should not have accessibility violations', async () => {
+    // accessibility violation test
+    await assertAccessible(container);
+  });
+});
+```
+
+## Styling/Layout Testing
+
+- When testing computed styles, use specific pixel values that match design tokens
+- Comment the expected values with their token references (e.g., `// spacing.2 = 4px`)
+- Test both presence and absence of styling conditions
+
+## Component Integration
+
+- Use real Blade components in tests rather than mocks when possible
+- Test with realistic data and component combinations
+- Include both simple and complex usage scenarios
