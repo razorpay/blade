@@ -23,7 +23,7 @@ const _AccordionItemHeader = ({
   'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
 > &
   DataAnalyticsAttribute): React.ReactElement => {
-  const { size, showNumberPrefix } = useAccordion();
+  const { size, showNumberPrefix, expandedIndex } = useAccordion();
   const { index, isDisabled } = useAccordionItemIndex();
 
   return (
@@ -46,7 +46,7 @@ const _AccordionItemHeader = ({
         isDisabled={isDisabled}
         showBackButton={false}
         showCloseButton={false}
-        showDivider={true}
+        showDivider={expandedIndex === index}
         paddingX="spacing.5"
         marginY="spacing.5"
         size={size}
