@@ -475,7 +475,12 @@ const _BaseHeader = ({
           ) : null}
         </BaseBox>
       </BaseBox>
-      {showDivider ? <Divider marginX={isAccordionContext ? 'spacing.5' : 'spacing.0'} /> : null}
+      {showDivider ? (
+        <Divider
+          thickness={isAccordionContext ? 'thinner' : undefined}
+          marginX={isAccordionContext ? 'spacing.5' : 'spacing.0'}
+        />
+      ) : null}
     </BaseBox>
   );
 };
