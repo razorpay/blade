@@ -88,19 +88,51 @@ type InfoGroupProps = {
    * Shows the size of the component
    * @default 'medium'
    */
-  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+
+  /**
+   * Defines whether the key is aligned left or right
+   * @default 'left'
+   */
+  keyAlign?: 'left' | 'right';
 
   /**
    * Defines whether the value is aligned left or right
    * @default 'left'
    */
-  textAlign?: 'left' | 'right';
+  valueAlign?: 'left' | 'right';
 
+  /**
+   * Controls whether vertical dividers are rendered next to the item
+   * @default false
+   */
+  isHighlighted?: boolean;
+
+  /**
+   * Custom grid template columns for the InfoGroup layout
+   *
+   * @default 'max-content 1fr' for horizontal itemOrientation
+   * @default 'repeat(min(3, ${React.Children.count(children)}), 1fr)' for vertical itemOrientation
+   */
+  gridTemplateColumns?: BoxProps['gridAutoColumns'];
   /**
    * Children should be InfoItem components
    */
   children: React.ReactNode;
-};
+} & StyledPropsBlade &
+  Pick<
+    BoxProps,
+    | 'width'
+    | 'minWidth'
+    | 'maxWidth'
+    | 'padding'
+    | 'paddingX'
+    | 'paddingY'
+    | 'paddingTop'
+    | 'paddingBottom'
+    | 'paddingLeft'
+    | 'paddingRight'
+  >;
 ```
 
 #### InfoItem
@@ -111,6 +143,12 @@ type InfoItemProps = {
    * Content should be InfoItemKey and InfoItemValue components
    */
   children: React.ReactNode;
+
+  /**
+   * Controls whether vertical dividers are rendered for this item
+   * @default false
+   */
+  isHighlighted?: boolean;
 };
 ```
 
@@ -134,6 +172,12 @@ type InfoItemKeyProps = {
   helpText?: string;
 
   /**
+   * Truncates text after specified number of lines
+   * @default undefined
+   */
+  truncateAfterLines?: number;
+
+  /**
    * Content of the key.
    */
   children?: StringChildrenType;
@@ -153,6 +197,17 @@ type InfoItemValueProps = {
    * Trailing element - can be icon, avatar, or any React element
    */
   trailing?: React.ReactElement | IconComponent;
+
+  /**
+   * Additional help text to provide context for the key
+   */
+  helpText?: string;
+
+  /**
+   * Truncates text after specified number of lines
+   * @default undefined
+   */
+  truncateAfterLines?: number;
 
   /**
    * Content of the value - text, components, or other ReactNode
@@ -282,7 +337,7 @@ Vertical orientation with leading icons and help text.
 Using Blade components and custom layouts for complex value rendering.
 
 ```jsx
-<InfoGroup itemOrientation="horizontal" size="medium" textAlign="right">
+<InfoGroup itemOrientation="horizontal" size="medium" valueAlign="right">
   <InfoItem>
     <InfoItemKey leading={BankIcon} helpText="Bank account details">
       Bank Account
