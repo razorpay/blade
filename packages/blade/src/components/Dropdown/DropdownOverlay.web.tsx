@@ -50,6 +50,7 @@ const _DropdownOverlay = ({
     dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
     dropdownTriggerer !== dropdownComponentIds.triggers.SearchInput &&
     dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete &&
+    dropdownTriggerer !== dropdownComponentIds.triggers.InputDropdownButton &&
     referenceRef == undefined;
 
   const { refs, floatingStyles, context } = useFloating({

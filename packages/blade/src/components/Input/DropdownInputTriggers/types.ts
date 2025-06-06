@@ -129,19 +129,6 @@ export type BaseDropdownInputTriggerProps = Omit<
   onTriggerClick: BaseInputProps['onClick'];
 };
 
-export type useControlledDropdownInputProps = Pick<
-  BaseDropdownInputTriggerProps,
-  | 'onChange'
-  | 'name'
-  | 'value'
-  | 'defaultValue'
-  | 'onInputValueChange'
-  | 'syncInputValueWithSelection'
-  | 'isSelectInput'
-> & {
-  triggererRef: React.RefObject<HTMLElement>;
-};
-
 export type SelectInputProps = DropdownInputTriggersProps;
 
 export type AutoCompleteProps = DropdownInputTriggersCommonProps & {

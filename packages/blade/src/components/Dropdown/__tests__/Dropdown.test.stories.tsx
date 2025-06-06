@@ -3,12 +3,19 @@ import React from 'react';
 import type { StoryFn } from '@storybook/react';
 import { within, userEvent, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import { Dropdown, DropdownOverlay, DropdownFooter, DropdownHeader } from '../';
+import {
+  Dropdown,
+  DropdownOverlay,
+  DropdownFooter,
+  DropdownHeader,
+  InputDropdownButton,
+} from '../';
 import type { DropdownProps } from '../';
 import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
+import { SearchInput } from '~components/Input/SearchInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
-
+import { TextInput } from '~components/Input/TextInput';
 const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
   const activeDescendantElement = document.querySelector(`#${activeDescendantId}`);
@@ -353,6 +360,80 @@ DropdownWithSearch.play = async () => {
   await userEvent.click(selectInput);
 };
 
+export const SearchTrailingDropdown: StoryFn<typeof Dropdown> = (): React.ReactElement => {
+  return (
+    <SearchInput
+      label="Search"
+      placeholder="Search here"
+      trailing={
+        <Dropdown>
+          <InputDropdownButton defaultValue="home" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Home" value="home" />
+              <ActionListItem title="Pricing" value="pricing" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      }
+    />
+  );
+};
+
+SearchTrailingDropdown.play = async () => {
+  const { getByRole } = within(document.body);
+  //sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  const trailingDropdown = getByRole('button', { name: 'change Home filter' });
+  await userEvent.click(trailingDropdown);
+  await waitFor(() => expect(getByRole('menuitem', { name: 'Home' })).toBeVisible());
+  await userEvent.click(getByRole('menuitem', { name: 'Pricing' }));
+  //sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await expect(getByRole('button', { name: 'change Pricing filter' })).toBeInTheDocument();
+};
+
+export const DropdownWithControlledSearch: StoryFn<typeof Dropdown> = (): React.ReactElement => {
+  return (
+    <TextInput
+      label="Enter Upi Id"
+      placeholder="98XXXXXXXXX"
+      trailing={
+        <Dropdown>
+          <InputDropdownButton
+            defaultValue="sbi"
+            onChange={({ name, value }) => {
+              console.log('onChange', name, value);
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="@sbi" value="sbi" />
+              <ActionListItem title="@yesbank" value="yesbank" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      }
+    />
+  );
+};
+
+DropdownWithControlledSearch.play = async () => {
+  const { getByRole } = within(document.body);
+  //sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  const selectInput = getByRole('button', { name: 'change @sbi filter' });
+  await userEvent.click(selectInput);
+  // sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await userEvent.click(getByRole('menuitem', { name: '@yesbank' }));
+  await waitFor(() => expect(selectInput).toHaveTextContent('@yesbank'));
+  await userEvent.click(getByRole('button', { name: 'change @yesbank filter' }));
+  // sleep for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await userEvent.click(getByRole('button', { name: 'change @yesbank filter' }));
+};
+
 export default {
   title: 'Components/Interaction Tests/Dropdown',
   component: Dropdown,
@@ -362,6 +443,5 @@ export default {
     },
     a11y: { disable: true },
     essentials: { disable: true },
-    actions: { disable: true },
   },
 };

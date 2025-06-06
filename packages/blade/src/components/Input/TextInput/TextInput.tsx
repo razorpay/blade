@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -24,6 +24,8 @@ import type {
   DataAnalyticsAttribute,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -81,7 +83,7 @@ type TextInputCommonProps = Pick<
 
   /**
    * Icon that will be rendered at the beginning of the input field
-   * @deprecated Use `leadingIcon` instead. This prop will be removed in the next major version.
+   * @deprecated Use `leading` instead. This prop will be removed in the next major version.
    */
   icon?: IconComponent;
   /**
@@ -98,6 +100,15 @@ type TextInputCommonProps = Pick<
    * @default text
    */
   type?: Type;
+  /**
+   *
+   * Icon or React Element to be rendered at the end of the input field
+   */
+  trailing?: React.ReactElement | IconComponent;
+  /**
+   * Icon or React Element to be rendered at the beginning of the input field
+   */
+  leading?: React.ReactElement | IconComponent;
 } & TaggedInputProps &
   StyledPropsBlade;
 
@@ -178,6 +189,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isTaggedInput,
     tags,
     onTagChange,
+    trailing,
+    leading,
     ...rest
   },
   ref,
@@ -203,47 +216,121 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     value,
     inputRef: textInputRef,
   });
+  const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = React.useState(false);
+  const [isLeadingDropDownOpen, setIsLeadingDropDownOpen] = React.useState(false);
+
+  useEffect(() => {
+    if (isTrailingDropDownOpen && isLeadingDropDownOpen) {
+      setIsLeadingDropDownOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTrailingDropDownOpen]);
+
+  useEffect(() => {
+    if (isLeadingDropDownOpen && isTrailingDropDownOpen) {
+      setIsTrailingDropDownOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLeadingDropDownOpen]);
+
+  const leadingDropDown =
+    leading && getComponentId(leading as React.ReactElement) === 'Dropdown' ? leading : null;
+
+  const trailingDropdown =
+    trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
+
+  const _leadingIcon: IconComponent | undefined =
+    leading && getComponentId(leading as React.ReactElement) === 'Icon'
+      ? (leading as IconComponent)
+      : undefined;
+
+  const _trailingIcon: IconComponent | undefined =
+    trailing && getComponentId(trailing as React.ReactElement) === 'Icon'
+      ? (trailing as IconComponent)
+      : undefined;
+
+  const renderDropdown = (
+    dropdown: React.ReactElement,
+    isOpen: boolean,
+    setIsOpen: (isOpen: boolean) => void,
+  ): React.ReactElement | null => {
+    if (!dropdown) {
+      return null;
+    }
+    return React.cloneElement(dropdown, {
+      selectionType: 'single',
+      isOpen,
+      onOpenChange: (isOpen: boolean) => {
+        setIsOpen(isOpen);
+      },
+      children: dropdown.props.children,
+    });
+  };
+
+  const renderLeadingDropDown = renderDropdown(
+    leadingDropDown as React.ReactElement,
+    isLeadingDropDownOpen,
+    setIsLeadingDropDownOpen,
+  );
+
+  const renderTrailingDropDown = renderDropdown(
+    trailingDropdown as React.ReactElement,
+    isTrailingDropDownOpen,
+    setIsTrailingDropDownOpen,
+  );
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
   }, [showClearButton, defaultValue, value]);
+
+  const renderClearButton = (): React.ReactElement => {
+    return (
+      <IconButton
+        size="medium"
+        icon={CloseIcon}
+        onClick={() => {
+          if (isEmpty(value) && textInputRef.current) {
+            // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+            if (isReactNative(textInputRef.current)) {
+              textInputRef.current.clear();
+              textInputRef.current.focus();
+            } else if (textInputRef.current instanceof HTMLInputElement) {
+              textInputRef.current.value = '';
+              textInputRef.current.focus();
+            }
+          }
+          handleTagsClear();
+          // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+          onClearButtonClick?.();
+          textInputRef?.current?.focus();
+          setShouldShowClearButton(false);
+        }}
+        isDisabled={isDisabled}
+        accessibilityLabel="Clear Input Content"
+      />
+    );
+  };
+  const hasTrailingDropDown = Boolean(trailingDropdown);
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
       return <Spinner accessibilityLabel="Loading Content" color="primary" />;
     }
 
-    if (shouldShowClearButton) {
+    if (shouldShowClearButton && hasTrailingDropDown) {
       return (
-        <IconButton
-          size="medium"
-          icon={CloseIcon}
-          onClick={() => {
-            if (isEmpty(value) && textInputRef.current) {
-              // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-              if (isReactNative(textInputRef.current)) {
-                textInputRef.current.clear();
-                textInputRef.current.focus();
-              } else if (textInputRef.current instanceof HTMLInputElement) {
-                textInputRef.current.value = '';
-                textInputRef.current.focus();
-              }
-            }
-            handleTagsClear();
-            // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
-            onClearButtonClick?.();
-            textInputRef?.current?.focus();
-            setShouldShowClearButton(false);
-          }}
-          isDisabled={isDisabled}
-          accessibilityLabel="Clear Input Content"
-        />
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" />
+        </BaseBox>
       );
+    }
+
+    if (shouldShowClearButton) {
+      return renderClearButton();
     }
 
     return null;
   };
-
   return (
     <BaseInput
       id="textinput"
@@ -264,6 +351,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       maxTagRows="single"
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
+      leadingDropDown={renderLeadingDropDown}
+      trailingDropDown={renderTrailingDropDown}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
@@ -294,10 +383,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
-      leadingIcon={leadingIcon ?? icon}
+      leadingIcon={_leadingIcon ?? leadingIcon ?? icon}
       prefix={prefix}
       trailingInteractionElement={renderInteractionElement()}
-      trailingIcon={trailingIcon}
+      trailingIcon={_trailingIcon ?? trailingIcon}
       suffix={suffix}
       validationState={validationState}
       errorText={errorText}
