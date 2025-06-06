@@ -18,6 +18,7 @@ import {
   StarIcon,
   SubscriptionsIcon,
   UserIcon,
+  ArrowUpIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -477,8 +478,54 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
           <AccordionItemHeader
             leading={<AnnouncementIcon size="large" />}
             title="Item with Badge"
-            subtitle="Subtitle Text"
             titleSuffix={<Badge>New</Badge>}
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader
+            leading={<ArrowUpIcon size="large" />}
+            title="Item without subtitle"
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader
+            leading={
+              <img
+                src="https://picsum.photos/200/300"
+                height={20}
+                width={20}
+                style={{ borderRadius: '4px' }}
+                alt="Random placeholder"
+              />
+            }
+            title="Slot item with subtitle"
+            subtitle="Subtitle Text"
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader
+            leading={
+              <img
+                src="https://picsum.photos/200/300"
+                height={20}
+                width={20}
+                style={{ borderRadius: '4px' }}
+                alt="Random placeholder"
+              />
+            }
+            title="Slot item without subtitle"
           />
           <AccordionItemBody>
             Just use Razorpay. You may also check our docs for detailed instructions. Please use the

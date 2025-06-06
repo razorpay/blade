@@ -1007,6 +1007,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       {
                         "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
                         "borderBottomStyle": "solid",
+                        "marginLeft": 0,
+                        "marginRight": 0,
                       },
                       {
                         "borderBottomStyle": "solid",

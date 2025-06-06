@@ -22,7 +22,7 @@ const getBackgroundColor = ({
 
   if (isExpanded) {
     if (isActive) {
-      return gray.fadedHighlighted;
+      return gray.faded;
     }
 
     return gray.faded;

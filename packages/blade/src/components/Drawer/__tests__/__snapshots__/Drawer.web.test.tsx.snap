@@ -177,6 +177,8 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 .c27.c27.c27.c27.c27 {
+  margin-right: 0px;
+  margin-left: 0px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
@@ -818,6 +820,8 @@ exports[`Drawer should render a Drawer with a custom header 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
+  margin-right: 0px;
+  margin-left: 0px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }

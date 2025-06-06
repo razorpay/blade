@@ -64,6 +64,14 @@ type BaseHeaderProps = {
    */
   isDisabled?: boolean;
 
+  /**
+   * Indicates if the BaseHeader is being used within an Accordion context
+   * This allows for specific styling or behavior modifications when used in AccordionItemHeader
+   *
+   * @default false
+   */
+  isAccordionContext?: boolean;
+
   paddingX?: BoxProps['paddingX'];
   marginY?: BoxProps['marginY'];
   marginTop?: BoxProps['marginTop'];
@@ -299,11 +307,24 @@ const _BaseHeader = ({
   children,
   trailingInteractionElement,
   backgroundImage,
+  isAccordionContext = false,
   ...rest
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
   const hasOnlyChildren = children && !(title || subtitle || titleSuffix || leading);
+
+  const isLeadingNumberOrIcon = React.useMemo(() => {
+    if (!leading || !React.isValidElement(leading)) return false;
+
+    // Check if it's a Text component (has componentId "Text")
+    if (getComponentId(leading) === 'Text') return true;
+
+    // Check if it's an Icon component (function name ends with "Icon")
+    if (typeof leading.type === 'function' && leading.type.name?.endsWith('Icon')) return true;
+
+    return false;
+  }, [leading]);
 
   const webOnlyEventHandlers: Record<string, any> = isReactNative()
     ? {}
@@ -353,7 +374,9 @@ const _BaseHeader = ({
               flex="auto"
               display="flex"
               flexDirection="row"
-              alignItems="flex-start"
+              alignItems={
+                isAccordionContext && !subtitle && !isLeadingNumberOrIcon ? 'center' : 'flex-start'
+              }
             >
               {leading ? (
                 <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
@@ -452,7 +475,12 @@ const _BaseHeader = ({
           ) : null}
         </BaseBox>
       </BaseBox>
-      {showDivider ? <Divider /> : null}
+      {showDivider ? (
+        <Divider
+          thickness={isAccordionContext ? 'thinner' : undefined}
+          marginX={isAccordionContext ? 'spacing.5' : 'spacing.0'}
+        />
+      ) : null}
     </BaseBox>
   );
 };

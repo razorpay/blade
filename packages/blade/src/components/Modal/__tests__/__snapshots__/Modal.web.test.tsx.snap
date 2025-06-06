@@ -163,6 +163,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
+  margin-right: 0px;
+  margin-left: 0px;
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
@@ -174,10 +176,15 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c29.c29.c29.c29.c29 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c30.c30.c30.c30.c30 {
   padding: 16px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c33.c33.c33.c33.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -296,7 +303,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c34.c34.c34.c34.c34 {
+.c35.c35.c35.c35.c35 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -444,7 +451,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -481,24 +488,24 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   position: relative;
 }
 
-.c30.c30.c30.c30.c30:hover {
+.c31.c31.c31.c31.c31:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c30.c30.c30.c30.c30:active {
+.c31.c31.c31.c31.c31:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c30.c30.c30.c30.c30:focus-visible {
+.c31.c31.c31.c31.c31:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c30.c30.c30.c30.c30 * {
+.c31.c31.c31.c31.c31 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -507,7 +514,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c31.c31.c31.c31.c31 {
+.c32.c32.c32.c32.c32 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -517,7 +524,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: 160px;
 }
 
-.c33.c33.c33.c33.c33 {
+.c34.c34.c34.c34.c34 {
   opacity: 1;
 }
 
@@ -560,8 +567,38 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   }
 }
 
+@media screen and (min-width:320px) {
+  .c29.c29.c29.c29.c29 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c29.c29.c29.c29.c29 {
+    border-bottom-style: solid;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c29.c29.c29.c29.c29 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c29.c29.c29.c29.c29 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c29.c29.c29.c29.c29 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c30.c30.c30.c30.c30 {
     padding: 20px;
   }
 }
@@ -748,30 +785,30 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       data-blade-component="box"
     >
       <div
-        class="c25 c26"
+        class="c29 c26"
         data-blade-component="divider"
         role="separator"
       />
       <div
-        class="c29"
+        class="c30"
         data-blade-component="modal-footer"
       >
         <button
-          class="c30"
+          class="c31"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class=" c31"
+            class=" c32"
             data-blade-component="base-box"
           >
             <div
-              class="c32 c33"
+              class="c33 c34"
               data-blade-component="base-box"
             >
               <div
-                class="c34"
+                class="c35"
                 data-blade-component="base-text"
               >
                 Save
