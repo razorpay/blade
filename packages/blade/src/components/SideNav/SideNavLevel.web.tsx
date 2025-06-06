@@ -6,10 +6,12 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
 
-const SideNavLevel = ({ children }: SideNavLevelProps): React.ReactElement => {
+const SideNavLevel = ({ children, titleSuffix }: SideNavLevelProps): React.ReactElement => {
   const { level: _prevLevel, title: headingTitle } = useNavLink();
+
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
+  const hasTrailing = !!titleSuffix;
   return (
     <BaseBox
       marginLeft={
@@ -34,14 +36,17 @@ const SideNavLevel = ({ children }: SideNavLevelProps): React.ReactElement => {
       {currentLevel === 2 && headingTitle ? (
         <BaseBox
           // In mobile, we use DrawerHeader for this heading
-          display={{ base: 'none', m: 'block' }}
+          display={{ base: 'none', m: hasTrailing ? 'flex' : 'block' }}
           padding="spacing.4"
           borderBottomWidth="thin"
           borderBottomColor="surface.border.gray.muted"
+          gap={hasTrailing ? 'spacing.2' : 'spacing.0'}
+          alignItems={hasTrailing ? 'center' : undefined}
         >
           <Text size="large" weight="semibold">
             {headingTitle}
           </Text>
+          {titleSuffix}
         </BaseBox>
       ) : null}
       <BaseBox padding={{ base: 'spacing.0', m: 'spacing.3' }} overflowY="auto">

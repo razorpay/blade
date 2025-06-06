@@ -1,0 +1,777 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputGroup should render Inputgroup with default properties 1`] = `"<div id="root"><div data-blade-component="input-group" class="BaseBox-bmPWx StyledInputGroup-sc-11o2n6c-0  jtnRjs"><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="input-group-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:0px" id="input-group-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Test Group</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div class="BaseBox-bmPWx gmTudM __blade-input-row" data-blade-component="base-box"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="text" inputMode="text" enterKeyHint="enter" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eZHqRc"/></div></div></div></div></div><div class="BaseBox-bmPWx gmTudM __blade-input-row" data-blade-component="base-box"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="text" inputMode="text" enterKeyHint="enter" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eZHqRc"/></div></div></div></div><div data-blade-component="password-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="password" autoCapitalize="none" enterKeyHint="done" id="password-field-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gBmLuL"/><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx fTNRoG"><button type="button" aria-label="Show password" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 iuKqDM"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8ZM10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path><path d="M12 3C8.8711 3 6.22807 4.48937 4.23728 6.25113C2.24678 8.01264 0.822273 10.1194 0.105573 11.5528C-0.0351909 11.8343 -0.0351909 12.1657 0.105573 12.4472C0.822273 13.8806 2.24678 15.9874 4.23728 17.7489C6.22807 19.5106 8.8711 21 12 21C15.1289 21 17.7719 19.5106 19.7627 17.7489C21.7532 15.9874 23.1777 13.8806 23.8944 12.4472C24.0352 12.1657 24.0352 11.8343 23.8944 11.5528C23.1777 10.1194 21.7532 8.01264 19.7627 6.25113C17.7719 4.48937 15.1289 3 12 3ZM5.56272 16.2511C3.98954 14.8589 2.80913 13.2146 2.13142 12C2.80913 10.7854 3.98954 9.14106 5.56272 7.74887C7.3386 6.17729 9.5289 5 12 5C14.4711 5 16.6614 6.17729 18.4373 7.74887C20.0105 9.14106 21.1909 10.7854 21.8686 12C21.1909 13.2146 20.0105 14.8589 18.4373 16.2511C16.6614 17.8227 14.4711 19 12 19C9.5289 19 7.3386 17.8227 5.56272 16.2511Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div></div></div></div></div></div></div></div></div>"`;
+
+exports[`InputGroup should render Inputgroup with default properties 2`] = `
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3.c3.c3.c3.c3 {
+  margin-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c14.c14.c14.c14.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.c15.c15.c15.c15.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row .focus-ring-wrapper {
+  border-radius: 0;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:first-child > div:first-child .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:first-child > div:first-child .focus-ring-wrapper {
+  border-top-left-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:first-child > div:last-child .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:first-child > div:last-child .focus-ring-wrapper {
+  border-top-right-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:last-child > div:first-child .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:last-child > div:first-child .focus-ring-wrapper {
+  border-bottom-left-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:last-child > div:last-child .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:last-child > div:last-child .focus-ring-wrapper {
+  border-bottom-right-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:first-child > div:only-child .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:first-child > div:only-child .focus-ring-wrapper {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:last-child > div:only-child .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:last-child > div:only-child .focus-ring-wrapper {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:only-child > div:only-child .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:only-child > div:only-child .focus-ring-wrapper {
+  border-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:only-child > div:first-child:not(:only-child) .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:only-child > div:first-child:not(:only-child) .focus-ring-wrapper {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:only-child > div:last-child:not(:only-child) .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:only-child > div:last-child:not(:only-child) .focus-ring-wrapper {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.c0.c0.c0.c0.c0 .__blade-input-row:only-child > div:not(:first-child):not(:last-child) .__blade-base-input-wrapper,
+.c0.c0.c0.c0.c0 .__blade-input-row:only-child > div:not(:first-child):not(:last-child) .focus-ring-wrapper {
+  border-radius: 0;
+}
+
+.c6.c6.c6.c6.c6 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c12.c12.c12.c12.c12 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c12.c12.c12.c12.c12::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c12.c12.c12.c12.c12::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c12.c12.c12.c12.c12:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c12.c12.c12.c12.c12::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c12.c12.c12.c12.c12:focus {
+  outline: none;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13:focus {
+  outline: none;
+}
+
+.c11.c11.c11.c11.c11 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c16.c16.c16.c16.c16 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(211,22%,56%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c16.c16.c16.c16.c16:hover:not([disabled]) {
+  color: hsla(211,26%,34%,1);
+  background-color: transparent;
+}
+
+.c16.c16.c16.c16.c16:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  color: hsla(211,26%,34%,1);
+}
+
+.c16.c16.c16.c16.c16:active {
+  color: hsla(211,26%,34%,1);
+}
+
+<div
+  id="root"
+>
+  <div
+    class=" c0"
+    data-blade-component="input-group"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+      role="group"
+    >
+      <div
+        class="c2"
+        data-blade-component="base-box"
+      >
+        <label
+          data-blade-component="form-label"
+          for="input-group-19-input-20"
+          id="input-group-25-label"
+          style="width:auto;flex-shrink:0;margin-right:0px"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c4"
+              data-blade-component="base-box"
+            >
+              <p
+                class="c5"
+                data-blade-component="text"
+              >
+                Test Group
+              </p>
+              <div
+                class="c6"
+                data-blade-component="visually-hidden"
+              >
+                <p
+                  class="c7"
+                  data-blade-component="text"
+                />
+              </div>
+            </div>
+          </div>
+        </label>
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c8 __blade-input-row"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="textinput"
+            >
+              <div
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class=" c10 focus-ring-wrapper"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-describedby=""
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocomplete="off"
+                      class="c12"
+                      data-blade-component="styled-base-input"
+                      enterkeyhint="enter"
+                      id="textinput-1-input-2"
+                      inputmode="text"
+                      placeholder="Enter text"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="c8 __blade-input-row"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="textinput"
+            >
+              <div
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class=" c10 focus-ring-wrapper"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-describedby=""
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocomplete="off"
+                      class="c12"
+                      data-blade-component="styled-base-input"
+                      enterkeyhint="enter"
+                      id="textinput-7-input-8"
+                      inputmode="text"
+                      placeholder="Enter text"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class=""
+              data-blade-component="password-input"
+            >
+              <div
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class=" c10 focus-ring-wrapper"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-describedby=""
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocapitalize="none"
+                      class="c13"
+                      data-blade-component="styled-base-input"
+                      enterkeyhint="done"
+                      id="password-field-13-input-14"
+                      placeholder="Enter text"
+                      type="password"
+                      value=""
+                    />
+                    <div
+                      class="c14"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c14"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class="c15"
+                          data-blade-component="base-box"
+                        >
+                          <button
+                            aria-label="Show password"
+                            class="c16"
+                            data-blade-component="icon-button"
+                            type="button"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              width="16px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8ZM10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12Z"
+                                data-blade-component="svg-path"
+                                fill="currentColor"
+                                fill-rule="evenodd"
+                              />
+                              <path
+                                clip-rule="evenodd"
+                                d="M12 3C8.8711 3 6.22807 4.48937 4.23728 6.25113C2.24678 8.01264 0.822273 10.1194 0.105573 11.5528C-0.0351909 11.8343 -0.0351909 12.1657 0.105573 12.4472C0.822273 13.8806 2.24678 15.9874 4.23728 17.7489C6.22807 19.5106 8.8711 21 12 21C15.1289 21 17.7719 19.5106 19.7627 17.7489C21.7532 15.9874 23.1777 13.8806 23.8944 12.4472C24.0352 12.1657 24.0352 11.8343 23.8944 11.5528C23.1777 10.1194 21.7532 8.01264 19.7627 6.25113C17.7719 4.48937 15.1289 3 12 3ZM5.56272 16.2511C3.98954 14.8589 2.80913 13.2146 2.13142 12C2.80913 10.7854 3.98954 9.14106 5.56272 7.74887C7.3386 6.17729 9.5289 5 12 5C14.4711 5 16.6614 6.17729 18.4373 7.74887C20.0105 9.14106 21.1909 10.7854 21.8686 12C21.1909 13.2146 20.0105 14.8589 18.4373 16.2511C16.6614 17.8227 14.4711 19 12 19C9.5289 19 7.3386 17.8227 5.56272 16.2511Z"
+                                data-blade-component="svg-path"
+                                fill="currentColor"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

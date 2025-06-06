@@ -1,26 +1,41 @@
-## Component Name
+# DetailedView
+
+## Pattern Name
 
 DetailedView
 
 ## Description
 
-A DetailedView is a pattern that shows details of a transaction, user, or entity in a drawer in a defined format. It provides a standardized way to display detailed information when a user interacts with a row in a table or clicks a link to view additional information about an item. This is a commonly reused template rather than a component with exposed APIs.
+A DetailedView is a pattern that displays comprehensive details of a transaction, user, or entity in a drawer format. It provides a structured layout for showing key information, timelines, transaction breakdowns, and related actions. This pattern is commonly used when users need to view detailed information about a selected item from a table, list, or card without navigating away from the current page.
 
-## Examples
+## Components Used
 
-The following examples demonstrate how to implement the DetailedView pattern in different contexts.
+- Drawer
+- Table
+- Card
+- Box
+- Amount
+- Badge
+- Button
+- IconButton
+- Text
+- Heading
+- Code
+- Link
+- Divider
+- StepGroup
+- Collapsible
+- Alert
 
-### DetailedView with Table Integration
+## Example
 
-This example shows how to implement a DetailedView triggered from a table row, with timeline and key-value pair details.
+### Transaction Details with Table Integration
+
+This example shows a DetailedView pattern integrated with a Table component, displaying transaction details in a drawer when a table row is clicked.
 
 ```tsx
 import React, { useState } from 'react';
 import {
-  Drawer,
-  DrawerHeader,
-  DrawerBody,
-  Box,
   Table,
   TableHeader,
   TableHeaderRow,
@@ -31,55 +46,48 @@ import {
   TableToolbar,
   TableToolbarActions,
   TablePagination,
-  Code,
+  Drawer,
+  DrawerHeader,
+  DrawerBody,
+  Box,
   Amount,
   Badge,
   Button,
+  IconButton,
+  Text,
+  Heading,
+  Code,
+  Link,
+  Divider,
   StepGroup,
   StepItem,
   StepItemIndicator,
   Collapsible,
   CollapsibleBody,
   CollapsibleLink,
-  Divider,
-  Link,
-  Text,
-  IconButton,
-  CopyIcon,
-  DownloadIcon,
-  MoreHorizontalIcon,
 } from '@razorpay/blade/components';
-import type { TableData, BoxProps } from '@razorpay/blade/components';
+import {
+  MoreHorizontalIcon,
+  DownloadIcon,
+  CopyIcon,
+  CheckIcon,
+  ClockIcon,
+} from '@razorpay/blade/tokens';
 
-// Define the item type for the table data
-type Item = {
+type Transaction = {
   id: string;
   paymentId: string;
   amount: number;
-  status: string;
+  status: 'Completed' | 'Pending' | 'Failed';
   date: Date;
   type: string;
   method: string;
   name: string;
+  bank: string;
+  account: string;
 };
 
-// Helper types for the DetailedView pattern
-type KeyValueGridProps = {
-  children: React.ReactNode;
-  padding?: BoxProps['padding'];
-};
-
-type KeyValueItemProps = {
-  label: string;
-  children: React.ReactNode;
-};
-
-type TimelineProps = {
-  status: string; // 'Completed', 'Pending', 'Failed', etc.
-};
-
-// Helper component for key-value display in DetailedView
-const KeyValueItem = ({ label, children }: KeyValueItemProps) => (
+const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <>
     <Text variant="body" size="small" color="surface.text.gray.muted">
       {label}
@@ -88,15 +96,13 @@ const KeyValueItem = ({ label, children }: KeyValueItemProps) => (
   </>
 );
 
-// Container grid for key-value pairs
-const KeyValueGrid = ({ children, padding }: KeyValueGridProps) => (
-  <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3" padding={padding}>
+const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
+  <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3">
     {children}
   </Box>
 );
 
-// Timeline component to show transaction status
-const Timeline = ({ status }: TimelineProps) => (
+const Timeline = ({ status }: { status: string }) => (
   <StepGroup orientation="vertical" size="medium">
     <StepItem
       title="Payment Initiated"
@@ -135,54 +141,46 @@ const Timeline = ({ status }: TimelineProps) => (
   </StepGroup>
 );
 
-const DetailedViewWithTable = () => {
+const TransactionDetailedView = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+  const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
 
-  // Sample data for the table
-  const sampleData: Item[] = [
+  const transactions: Transaction[] = [
     {
       id: '1',
-      paymentId: 'rzp123456',
-      amount: 2500,
+      paymentId: 'rzp_123456',
+      amount: 5000,
       status: 'Completed',
-      date: new Date(2023, 4, 15),
-      type: 'Payout',
+      date: new Date('2024-01-15'),
+      type: 'Settlement',
       method: 'Bank Transfer',
-      name: 'Saurabh Daware',
+      name: 'John Doe',
+      bank: 'HDFC',
+      account: '1234567890',
     },
     {
       id: '2',
-      paymentId: 'rzp789012',
-      amount: 1750.5,
+      paymentId: 'rzp_789012',
+      amount: 2500,
       status: 'Pending',
-      date: new Date(2023, 4, 16),
+      date: new Date('2024-01-16'),
       type: 'Refund',
-      method: 'Credit Card',
-      name: 'Kamlesh Chandnani',
-    },
-    {
-      id: '3',
-      paymentId: 'rzp345678',
-      amount: 890,
-      status: 'Failed',
-      date: new Date(2023, 4, 17),
-      type: 'Payout',
-      method: 'PayPal',
-      name: 'Gaurav Tewari',
+      method: 'UPI',
+      name: 'Jane Smith',
+      bank: 'ICICI',
+      account: '0987654321',
     },
   ];
 
-  const data: TableData<Item> = { nodes: sampleData };
+  const tableData = { nodes: transactions };
 
   return (
     <Box overflow="auto" minHeight="400px">
-      {/* Table component displaying the data */}
       <Table
-        data={data}
+        data={tableData}
         selectionType="none"
         toolbar={
-          <TableToolbar title="Showing 1-3 Payments" selectedTitle="Showing 1-3 Payments">
+          <TableToolbar title="Transactions">
             <TableToolbarActions>
               <Button variant="secondary" marginRight="spacing.2">
                 Export
@@ -191,18 +189,11 @@ const DetailedViewWithTable = () => {
             </TableToolbarActions>
           </TableToolbar>
         }
-        sortFunctions={{
-          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
-          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
-          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
-        }}
         pagination={
           <TablePagination
-            onPageChange={console.log}
+            onPageChange={() => {}}
             defaultPageSize={10}
-            onPageSizeChange={console.log}
+            onPageSizeChange={() => {}}
             showPageSizePicker
             showPageNumberSelector
           />
@@ -212,53 +203,51 @@ const DetailedViewWithTable = () => {
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="NAME">Account Holder</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Account Holder</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
-              {tableData.map((tableItem, index) => (
+              {tableData.map((transaction, index) => (
                 <TableRow
                   key={index}
-                  item={tableItem}
+                  item={transaction}
                   onClick={() => {
-                    setSelectedItem(tableItem);
+                    setSelectedTransaction(transaction);
                     setIsDrawerOpen(true);
                   }}
                 >
                   <TableCell>
-                    <Code size="medium">{tableItem.paymentId}</Code>
+                    <Code size="medium">{transaction.paymentId}</Code>
                   </TableCell>
-                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>{transaction.name}</TableCell>
                   <TableCell>
-                    <Amount value={tableItem.amount} />
+                    <Amount value={transaction.amount} currency="INR" />
                   </TableCell>
                   <TableCell>
-                    {tableItem.date?.toLocaleDateString('en-IN', {
+                    {transaction.date.toLocaleDateString('en-IN', {
                       year: 'numeric',
                       month: '2-digit',
                       day: '2-digit',
                     })}
                   </TableCell>
-                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{transaction.method}</TableCell>
                   <TableCell>
                     <Badge
                       size="medium"
                       color={
-                        tableItem.status === 'Completed'
+                        transaction.status === 'Completed'
                           ? 'positive'
-                          : tableItem.status === 'Pending'
+                          : transaction.status === 'Pending'
                           ? 'notice'
-                          : tableItem.status === 'Failed'
-                          ? 'negative'
-                          : 'primary'
+                          : 'negative'
                       }
                     >
-                      {tableItem.status}
+                      {transaction.status}
                     </Badge>
                   </TableCell>
                 </TableRow>
@@ -268,38 +257,32 @@ const DetailedViewWithTable = () => {
         )}
       </Table>
 
-      {/* DetailedView implemented as a Drawer */}
       <Drawer
-        showOverlay={false}
         isOpen={isDrawerOpen}
-        onDismiss={() => {
-          setIsDrawerOpen(false);
-        }}
-        onUnmount={() => {
-          setSelectedItem(null);
-        }}
+        onDismiss={() => setIsDrawerOpen(false)}
+        onUnmount={() => setSelectedTransaction(null)}
       >
         <DrawerHeader
           color={
-            selectedItem?.status === 'Completed'
+            selectedTransaction?.status === 'Completed'
               ? 'positive'
-              : selectedItem?.status === 'Pending'
+              : selectedTransaction?.status === 'Pending'
               ? 'notice'
               : 'negative'
           }
-          title="Payment Details"
+          title="Transaction Details"
           trailing={
             <IconButton
               icon={MoreHorizontalIcon}
-              accessibilityLabel="Options"
-              onClick={() => console.log('Options Clicked')}
+              accessibilityLabel="More options"
+              onClick={() => console.log('Options clicked')}
               size="large"
             />
           }
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
-              value={selectedItem?.amount ?? 0}
+              value={selectedTransaction?.amount ?? 0}
               currency="INR"
               size="2xlarge"
               type="heading"
@@ -311,15 +294,22 @@ const DetailedViewWithTable = () => {
             <Badge
               size="medium"
               color={
-                selectedItem?.status === 'Completed'
+                selectedTransaction?.status === 'Completed'
                   ? 'positive'
-                  : selectedItem?.status === 'Pending'
+                  : selectedTransaction?.status === 'Pending'
                   ? 'notice'
                   : 'negative'
               }
               emphasis="intense"
+              icon={
+                selectedTransaction?.status === 'Completed'
+                  ? CheckIcon
+                  : selectedTransaction?.status === 'Pending'
+                  ? ClockIcon
+                  : undefined
+              }
             >
-              {selectedItem?.status ?? 'Pending'}
+              {selectedTransaction?.status ?? 'Pending'}
             </Badge>
           </Box>
           <Box
@@ -336,10 +326,9 @@ const DetailedViewWithTable = () => {
                 <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
                   Payment ID
                 </Text>
-                <Text size="medium">{selectedItem?.paymentId}</Text>
+                <Text size="medium">{selectedTransaction?.paymentId}</Text>
               </Box>
             </Box>
-
             <Box display="flex">
               <Divider thickness="thicker" orientation="vertical" />
               <Box paddingX="spacing.3">
@@ -347,7 +336,7 @@ const DetailedViewWithTable = () => {
                   Date
                 </Text>
                 <Text size="medium">
-                  {selectedItem?.date?.toLocaleDateString('en-IN', {
+                  {selectedTransaction?.date?.toLocaleDateString('en-IN', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
@@ -374,45 +363,46 @@ const DetailedViewWithTable = () => {
               <Text variant="body" size="medium" weight="semibold" marginBottom="spacing.4">
                 Timeline
               </Text>
-              <Timeline status={selectedItem?.status ?? 'Pending'} />
+              <Timeline status={selectedTransaction?.status ?? 'Pending'} />
             </Box>
             <Divider />
             <Box>
               <Text variant="body" size="medium" weight="semibold" marginBottom="spacing.4">
-                Details
+                Transaction Details
               </Text>
               <KeyValueGrid>
-                {/* Amount */}
                 <KeyValueItem label="Amount">
-                  <Amount value={selectedItem?.amount ?? 0} />
+                  <Amount value={selectedTransaction?.amount ?? 0} currency="INR" />
                 </KeyValueItem>
-
-                {/* Payment Link ID */}
-                <KeyValueItem label="Payment Link ID">
+                <KeyValueItem label="Payment ID">
                   <Box display="flex" gap="spacing.2" alignItems="center">
-                    <Code size="small">{selectedItem?.paymentId ?? 'NA'}</Code>
+                    <Code size="small">{selectedTransaction?.paymentId ?? 'NA'}</Code>
                     <Link variant="button" size="small" icon={CopyIcon} />
                   </Box>
                 </KeyValueItem>
-
-                {/* Payment Type */}
-                <KeyValueItem label="Payment for">
+                <KeyValueItem label="Payment Type">
                   <Text variant="body" size="medium">
-                    {selectedItem?.type}
+                    {selectedTransaction?.type}
                   </Text>
                 </KeyValueItem>
-
-                {/* Payment Method */}
                 <KeyValueItem label="Payment Method">
                   <Text variant="body" size="medium">
-                    {selectedItem?.method}
+                    {selectedTransaction?.method}
                   </Text>
                 </KeyValueItem>
-
-                {/* Created By */}
-                <KeyValueItem label="Created By">
+                <KeyValueItem label="Account Holder">
                   <Text variant="body" size="medium">
-                    {selectedItem?.name}
+                    {selectedTransaction?.name}
+                  </Text>
+                </KeyValueItem>
+                <KeyValueItem label="Bank">
+                  <Text variant="body" size="medium">
+                    {selectedTransaction?.bank}
+                  </Text>
+                </KeyValueItem>
+                <KeyValueItem label="Account Number">
+                  <Text variant="body" size="medium">
+                    {selectedTransaction?.account}
                   </Text>
                 </KeyValueItem>
               </KeyValueGrid>
@@ -424,53 +414,45 @@ const DetailedViewWithTable = () => {
   );
 };
 
-export default DetailedViewWithTable;
+export default TransactionDetailedView;
 ```
 
-### DetailedView with Card Trigger
+### Settlement Details with Card Integration
 
-This example demonstrates how to implement a DetailedView that opens from a Card component instead of a table row.
+This example demonstrates a DetailedView pattern triggered from a Card component, showing settlement breakdown and transaction details.
 
 ```tsx
 import React, { useState } from 'react';
 import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderLink,
   Drawer,
   DrawerHeader,
   DrawerBody,
   Box,
-  Card,
-  CardHeader,
-  CardHeaderLeading,
-  CardHeaderIcon,
-  CardHeaderTrailing,
-  CardHeaderLink,
-  CardBody,
   Amount,
   Badge,
   Button,
   Text,
+  Heading,
   Divider,
-  Link,
   Code,
-  CheckIcon,
-  DownloadIcon,
-  ExternalLinkIcon,
-  RazorpayIcon,
-  CopyIcon,
+  Link,
 } from '@razorpay/blade/components';
+import {
+  RazorpayIcon,
+  ExternalLinkIcon,
+  DownloadIcon,
+  CheckIcon,
+  CopyIcon,
+} from '@razorpay/blade/tokens';
 
-// Helper types for DetailedView pattern
-type KeyValueItemProps = {
-  label: string;
-  children: React.ReactNode;
-};
-
-type KeyValueGridProps = {
-  children: React.ReactNode;
-};
-
-// Helper components for the DetailedView pattern
-const KeyValueItem = ({ label, children }: KeyValueItemProps) => (
+const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <>
     <Text variant="body" size="small" color="surface.text.gray.muted">
       {label}
@@ -479,47 +461,43 @@ const KeyValueItem = ({ label, children }: KeyValueItemProps) => (
   </>
 );
 
-const KeyValueGrid = ({ children }: KeyValueGridProps) => (
+const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
   <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3">
     {children}
   </Box>
 );
 
-// Sample transaction data
-const transactionData = {
-  amount: 3120,
-  amountPaid: 3120,
-  paymentId: 'pay_MK7DGqwYXEwx9Q',
-  referenceId: 'ref_MK7DGqwYXEwx9Q',
-  type: 'Settlement',
-  partialPayment: 'Enabled',
-  reminders: 'Send auto reminders',
-  createdBy: 'Saurabh Daware',
-  utr: 'UTR123456789',
-  bankAccount: '1234567890',
-  ifsc: 'HDFC0001234',
-  status: 'Completed',
-};
-
-const DetailedViewWithCard = () => {
+const SettlementDetailedView = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const settlementData = {
+    amount: 3120,
+    amountPaid: 3120,
+    paymentId: 'pay_MK7DGqwYXEwx9Q',
+    referenceId: 'ref_MK7DGqwYXEwx9Q',
+    type: 'Settlement',
+    utr: 'UTR123456789',
+    bankAccount: '1234567890',
+    ifsc: 'HDFC0001234',
+    status: 'Completed',
+    tax: 260,
+    fee: 260,
+    netAmount: 2600,
+  };
 
   return (
     <Box>
-      {/* Card that triggers the DetailedView */}
       <Card width={{ base: '100%', m: '500px' }}>
         <CardHeader>
           <CardHeaderLeading
             prefix={<CardHeaderIcon icon={RazorpayIcon} />}
-            title="Transaction Details"
+            title="Settlement Summary"
           />
           <CardHeaderTrailing
             visual={
               <CardHeaderLink
                 variant="button"
-                onClick={() => {
-                  setIsDrawerOpen(true);
-                }}
+                onClick={() => setIsDrawerOpen(true)}
                 icon={ExternalLinkIcon}
                 iconPosition="right"
               >
@@ -535,19 +513,16 @@ const DetailedViewWithCard = () => {
             columnGap="spacing.4"
             rowGap="spacing.3"
           >
-            {/* Gross Settlements */}
             <Text variant="body" size="medium" color="surface.text.gray.muted" gridColumn="1 / -1">
               Gross Settlements
             </Text>
-
             <Text variant="body" size="medium">
               Payment
             </Text>
             <Box>
-              <Amount value={transactionData.amount} alignSelf="right" currency="INR" />
+              <Amount value={settlementData.amount} currency="INR" />
             </Box>
 
-            {/* Deductions - spans full width */}
             <Text
               variant="body"
               size="medium"
@@ -557,30 +532,27 @@ const DetailedViewWithCard = () => {
             >
               Deductions
             </Text>
-
             <Text variant="body" size="medium">
               Tax
             </Text>
             <Box>
-              <Amount value={260} currency="INR" />
+              <Amount value={settlementData.tax} currency="INR" />
             </Box>
-
             <Text variant="body" size="medium">
               Fee
             </Text>
             <Box>
-              <Amount value={260} currency="INR" />
+              <Amount value={settlementData.fee} currency="INR" />
             </Box>
 
-            {/* Net Settlement - with divider */}
             <Box gridColumn="1 / -1" marginTop="spacing.4">
               <Divider marginBottom="spacing.4" />
               <Box display="grid" gridTemplateColumns="1fr auto">
                 <Text variant="body" size="medium" weight="semibold">
-                  Net Settlement amount
+                  Net Settlement Amount
                 </Text>
                 <Box>
-                  <Amount value={2600} currency="INR" weight="semibold" />
+                  <Amount value={settlementData.netAmount} currency="INR" weight="semibold" />
                 </Box>
               </Box>
             </Box>
@@ -588,21 +560,15 @@ const DetailedViewWithCard = () => {
         </CardBody>
       </Card>
 
-      {/* DetailedView Drawer showing detailed information */}
-      <Drawer
-        isOpen={isDrawerOpen}
-        onDismiss={() => {
-          setIsDrawerOpen(false);
-        }}
-      >
+      <Drawer isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
         <DrawerHeader
           color="positive"
-          title="Settlements"
+          title="Settlement Details"
           trailing={<Button size="medium" icon={DownloadIcon} />}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
-              value={transactionData.amount}
+              value={settlementData.amount}
               currency="INR"
               size="2xlarge"
               type="heading"
@@ -612,7 +578,7 @@ const DetailedViewWithCard = () => {
           </Box>
           <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
             <Badge icon={CheckIcon} size="medium" color="positive" emphasis="intense">
-              Completed
+              {settlementData.status}
             </Badge>
           </Box>
           <Box
@@ -629,75 +595,72 @@ const DetailedViewWithCard = () => {
                 <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
                   Payment ID
                 </Text>
-                <Text size="medium">{transactionData.paymentId}</Text>
+                <Text size="medium">{settlementData.paymentId}</Text>
               </Box>
             </Box>
           </Box>
-
           <Text
             size="small"
             marginTop="spacing.6"
             textAlign="center"
             color="surface.text.gray.muted"
           >
-            Settlement was completed on 24th April 2023
+            Settlement was completed on 24th April 2025
           </Text>
         </DrawerHeader>
         <DrawerBody>
-          <Text variant="body" size="medium" weight="semibold" marginBottom="spacing.4">
-            Transaction Breakdown
-          </Text>
-
+          <Heading size="small" weight="semibold" marginBottom="spacing.4">
+            Settlement Breakdown
+          </Heading>
           <KeyValueGrid>
-            <KeyValueItem label="Amount">
-              <Amount value={transactionData.amount} currency="INR" />
+            <KeyValueItem label="Gross Amount">
+              <Amount value={settlementData.amount} currency="INR" />
             </KeyValueItem>
-
-            <KeyValueItem label="Amount Paid">
-              <Amount value={transactionData.amountPaid} currency="INR" />
+            <KeyValueItem label="Tax Deducted">
+              <Amount value={settlementData.tax} currency="INR" />
             </KeyValueItem>
+            <KeyValueItem label="Processing Fee">
+              <Amount value={settlementData.fee} currency="INR" />
+            </KeyValueItem>
+            <KeyValueItem label="Net Amount">
+              <Amount value={settlementData.netAmount} currency="INR" weight="semibold" />
+            </KeyValueItem>
+          </KeyValueGrid>
 
+          <Heading marginTop="spacing.6" marginBottom="spacing.4" size="small" weight="semibold">
+            Transaction Information
+          </Heading>
+          <KeyValueGrid>
             <KeyValueItem label="Payment ID">
               <Box display="flex" gap="spacing.2" alignItems="center">
-                <Code size="small">{transactionData.paymentId}</Code>
+                <Code size="small">{settlementData.paymentId}</Code>
                 <Link variant="button" size="small" icon={CopyIcon} />
               </Box>
             </KeyValueItem>
-
             <KeyValueItem label="Reference ID">
               <Text variant="body" size="medium">
-                {transactionData.referenceId}
+                {settlementData.referenceId}
               </Text>
             </KeyValueItem>
-
-            <KeyValueItem label="Payment for">
-              <Text variant="body" size="medium">
-                {transactionData.type}
-              </Text>
-            </KeyValueItem>
-
             <KeyValueItem label="UTR Number">
               <Box display="flex" gap="spacing.2" alignItems="center">
-                <Code size="small">{transactionData.utr}</Code>
+                <Code size="small">{settlementData.utr}</Code>
                 <Link variant="button" size="small" icon={CopyIcon} />
               </Box>
             </KeyValueItem>
-
             <KeyValueItem label="Bank Account">
               <Text variant="body" size="medium">
-                {transactionData.bankAccount}
+                {settlementData.bankAccount}
               </Text>
             </KeyValueItem>
-
-            <KeyValueItem label="IFSC">
+            <KeyValueItem label="IFSC Code">
               <Text variant="body" size="medium">
-                {transactionData.ifsc}
+                {settlementData.ifsc}
               </Text>
             </KeyValueItem>
-
-            <KeyValueItem label="Created By">
+            <KeyValueItem label="Settlement Type">
               <Text variant="body" size="medium">
-                {transactionData.createdBy}
+                {settlementData.type}
               </Text>
             </KeyValueItem>
           </KeyValueGrid>
@@ -707,5 +670,5 @@ const DetailedViewWithCard = () => {
   );
 };
 
-export default DetailedViewWithCard;
+export default SettlementDetailedView;
 ```

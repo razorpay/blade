@@ -85,17 +85,23 @@ const StyledFilterCloseButton = styled.button(({ theme }) => {
 const renderValue = (
   selectionType: BaseFilterChipProps['selectionType'],
   value: BaseFilterChipProps['value'],
+  isDisabled?: boolean,
 ): React.ReactElement => {
   if (selectionType === 'multiple' && Array.isArray(value)) {
     return (
       <Box display="flex" alignItems="center">
-        <Counter value={value.length} color="primary" size="small" />
+        <Counter value={value.length} color={isDisabled ? 'neutral' : 'primary'} size="small" />
       </Box>
     );
   }
 
   return (
-    <Text as="span" size="small" weight="semibold" color="interactive.text.primary.normal">
+    <Text
+      as="span"
+      size="small"
+      weight="semibold"
+      color={isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.primary.normal'}
+    >
       {value}
     </Text>
   );
@@ -150,7 +156,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
             {label}
             {isSelected ? ':' : null}
           </Text>
-          {isSelected ? renderValue(selectionType, value) : null}
+          {isSelected ? renderValue(selectionType, value, isDisabled) : null}
         </Box>
         <Box display="flex" alignItems="center" paddingRight="spacing.1">
           <ChevronDownIcon size="small" color="currentColor" />
