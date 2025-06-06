@@ -49,9 +49,33 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 ## Component Testing Patterns
 
 - Test different orientations, alignments, and layout configurations
-- When testing styling/padding behavior, verify actual computed styles using `window.getComputedStyle()`
-- Test integration with other Blade components (Icons, Avatar, Badge, Amount, etc.)
-- Include tests for conditional behavior (e.g., padding changes when Avatar is present vs absent)
+- For focussed testing of particular style, use `getComputedStyle` instead of adding snapshot for whole code
+- Include tests for conditional behavior that change the DOM structure heavily
+
+## Types of Tests
+
+### Styling/Layout Testing
+
+- When testing computed styles, use specific pixel values that match design tokens
+- Comment the expected values with their token references (e.g., `// spacing.2 = 4px`)
+- Test both presence and absence of styling conditions
+
+### Functional / Logic Testing
+
+- Use this pattern for triggering any events
+
+  ```jsx
+  import userEvents from '@testing-library/user-event';
+
+  const user = userEvents.setup();
+  // ...render example
+
+  // click / other events
+  await user.click(getByRole('button', { name: 'Toggle Show' }));
+  ```
+
+- Test the core Logic
+- If there is any logic that is too complex or too flaky for unit tests, ignore it and suggest user to write integration test instead
 
 ## Import Organization
 
@@ -103,14 +127,3 @@ describe('<ComponentName />', () => {
 });
 ```
 
-## Styling/Layout Testing
-
-- When testing computed styles, use specific pixel values that match design tokens
-- Comment the expected values with their token references (e.g., `// spacing.2 = 4px`)
-- Test both presence and absence of styling conditions
-
-## Component Integration
-
-- Use real Blade components in tests rather than mocks when possible
-- Test with realistic data and component combinations
-- Include both simple and complex usage scenarios
