@@ -2,12 +2,8 @@ import { readdirSync, existsSync, cpSync, rmSync, renameSync } from 'fs';
 import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import {
-  analyticsToolCallEventName,
-  BASE_BLADE_TEMPLATE_DIRECTORY,
-  handleError,
-  sendAnalytics,
-} from '../utils.js';
+import { analyticsToolCallEventName, BASE_BLADE_TEMPLATE_DIRECTORY } from '../utils/tokens.js';
+import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 
 const createNewBladeProjectToolName = 'create_new_blade_project';
 

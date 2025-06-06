@@ -6,6 +6,15 @@ List
 
 The List component displays a set of related items in a structured format. This is blade's equivalent of `ul` and `ol` HTML elements. It supports ordered, unordered, and ordered-filled variants with customizable sizes and styling. Lists can be nested for hierarchical data representation and include specialized item types for links, code snippets, and formatted text, making them versatile for various content presentation needs.
 
+## Important Constraints
+
+- `List` component only accepts `ListItem` components as children
+- `ListItem` component only accepts `List`, `ListItemLink`, `ListItemCode`, `ListItemText` components or strings as children
+- List nesting is limited to a maximum of 3 levels
+- Icons can only be used with unordered lists (`variant="unordered"`)
+
+The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+
 ## TypeScript Types
 
 The following types represent the props that the List component and its subcomponents accept. These allow you to properly configure the components according to your needs.

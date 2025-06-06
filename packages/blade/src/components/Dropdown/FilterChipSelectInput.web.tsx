@@ -22,6 +22,7 @@ type FilterChipSelectInputProps = Pick<
   onChange?: (props: { name: string; values: string[] }) => void;
   name?: string;
   onClearButtonClick?: (props: { name: string; values: string[] }) => void;
+  isDisabled?: boolean;
 } & DataAnalyticsAttribute;
 
 const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactElement => {
@@ -37,6 +38,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     label,
     onChange,
     name,
+    isDisabled,
     ...rest
   } = props;
   const [uncontrolledInputValue, setUncontrolledInputValue] = React.useState<string[]>([]);
@@ -219,6 +221,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       onBlur={(e) => {
         onBlur?.(e);
       }}
+      isDisabled={isDisabled}
     />
   );
 };
