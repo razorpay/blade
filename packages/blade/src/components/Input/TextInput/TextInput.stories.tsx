@@ -1,7 +1,7 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import React, { useState } from 'react';
+import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
