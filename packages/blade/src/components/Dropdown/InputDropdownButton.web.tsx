@@ -103,8 +103,14 @@ const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean; isDi
         cursor: 'not-allowed',
         pointerEvents: 'none',
       },
-      '&:focus-visible': {
+      '&:focus': {
         ...getFocusRingStyles({ theme }),
+        backgroundColor: theme.colors.interactive.background.gray.faded,
+      },
+      '&:hover': {
+        backgroundColor: theme.colors.interactive.background.gray.faded,
+      },
+      '&:focus-visible': {
         outlineOffset: makeSpace(theme.spacing[0]),
       },
       borderRadius: theme.border.radius.small,
