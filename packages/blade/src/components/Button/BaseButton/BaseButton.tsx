@@ -69,6 +69,10 @@ type BaseButtonCommonProps = {
     native: (event: GestureResponderEvent) => void;
     web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   }>;
+  onPointerLeave?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.PointerEvent<HTMLButtonElement>) => void;
+  }>;
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -78,6 +82,7 @@ type BaseButtonCommonProps = {
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  showBgColorOnFocusAndHoverOnly?: boolean;
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -187,6 +192,7 @@ const getProps = ({
   color,
   hasIcon,
   iconColor,
+  showBgColorOnFocusAndHoverOnly,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -197,6 +203,7 @@ const getProps = ({
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
   iconColor: IconColor;
+  showBgColorOnFocusAndHoverOnly: boolean;
 }): BaseButtonStyleProps => {
   if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
@@ -241,10 +248,12 @@ const getProps = ({
       ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: childrenString?.trim(),
-    defaultBackgroundColor: getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),
-    ),
+    defaultBackgroundColor: showBgColorOnFocusAndHoverOnly
+      ? theme.colors.transparent
+      : getIn(
+          theme.colors,
+          getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),
+        ),
     defaultBorderColor: getIn(
       theme.colors,
       getBackgroundColorToken({ property: 'border', variant, color, state: 'default' }),
@@ -335,10 +344,12 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     onMouseDown,
     onPointerDown,
     onPointerEnter,
+    onPointerLeave,
     accessibilityProps,
     onTouchEnd,
     onTouchStart,
     baseButtonIconColor,
+    showBgColorOnFocusAndHoverOnly = false,
     ...rest
   },
   ref,
@@ -409,6 +420,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
     iconColor: baseButtonIconColor,
+    showBgColorOnFocusAndHoverOnly,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
@@ -484,6 +496,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       tabIndex={tabIndex}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
       // Setting type for web fails it on native typecheck and vice versa
       onKeyDown={(event: any) => {
         handleKeyboardPressedIn(event);

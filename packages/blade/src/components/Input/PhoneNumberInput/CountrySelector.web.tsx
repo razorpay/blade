@@ -52,6 +52,7 @@ const CountrySelector = ({
   size,
 }: CounterSelectorProps): React.ReactElement => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const [isHoverOrFocus, setIsHoverOrFocus] = React.useState(false);
   const isMobile = useIsMobile();
 
   const actionList = (
@@ -99,8 +100,18 @@ const CountrySelector = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          color="white"
-          iconColor="surface.icon.gray.muted"
+          onPointerLeave={() => {
+            setIsHoverOrFocus(false);
+          }}
+          onPointerEnter={() => {
+            setIsHoverOrFocus(true);
+          }}
+          onFocus={() => {
+            setIsHoverOrFocus(true);
+          }}
+          onBlur={() => setIsHoverOrFocus(false)}
+          showBgColorOnFocusAndHoverOnly={true}
+          iconColor={isHoverOrFocus ? 'surface.icon.gray.subtle' : 'surface.icon.gray.muted'}
         >
           {/* @ts-expect-error */}
           <img
