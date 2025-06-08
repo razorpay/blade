@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -21,11 +21,13 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import type {
   BladeElementRef,
   BladeElementRefWithValue,
+  ContainerElementType,
   DataAnalyticsAttribute,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { DropdownOverlay } from '~components/Dropdown';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -218,6 +220,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   });
   const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = React.useState(false);
   const [isLeadingDropDownOpen, setIsLeadingDropDownOpen] = React.useState(false);
+  const textInputWrapperRef = useRef<ContainerElementType | null>(null);
 
   useEffect(() => {
     if (isTrailingDropDownOpen && isLeadingDropDownOpen) {
@@ -253,6 +256,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     dropdown: React.ReactElement,
     isOpen: boolean,
     setIsOpen: (isOpen: boolean) => void,
+    defaultPlacement: 'bottom-start' | 'bottom-end',
   ): React.ReactElement | null => {
     if (!dropdown) {
       return null;
@@ -263,7 +267,16 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       onOpenChange: (isOpen: boolean) => {
         setIsOpen(isOpen);
       },
-      children: dropdown.props.children,
+      children: React.Children.map(dropdown.props.children, (child) => {
+        if (child.type === DropdownOverlay) {
+          return React.cloneElement(child, {
+            referenceRef: textInputWrapperRef,
+            _isNestedDropdown: true,
+            defaultPlacement,
+          });
+        }
+        return child;
+      }),
     });
   };
 
@@ -271,12 +284,14 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     leadingDropDown as React.ReactElement,
     isLeadingDropDownOpen,
     setIsLeadingDropDownOpen,
+    'bottom-start',
   );
 
   const renderTrailingDropDown = renderDropdown(
     trailingDropdown as React.ReactElement,
     isTrailingDropDownOpen,
     setIsTrailingDropDownOpen,
+    'bottom-end',
   );
 
   React.useEffect(() => {
@@ -336,6 +351,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       id="textinput"
       componentName={MetaConstants.TextInput}
       ref={mergedRef}
+      setInputWrapperRef={(wrapperNode) => {
+        textInputWrapperRef.current = wrapperNode;
+      }}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}

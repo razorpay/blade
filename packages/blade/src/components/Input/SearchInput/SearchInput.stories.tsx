@@ -10,7 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
-import { Dropdown, DropdownOverlay, InputDropdownButton, DropdownLink } from '~components/Dropdown';
+import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import {
   ActionList,
   ActionListItem,
@@ -321,7 +321,7 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         trailing={
           <Dropdown>
             <InputDropdownButton defaultValue="home" />
-            <DropdownOverlay width="100px">
+            <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Home" value="home" />
                 <ActionListItem title="Pricing" value="pricing" />
@@ -453,8 +453,6 @@ const SearchInputWithDisabledDropdownTemplate: StoryFn<typeof SearchInputCompone
 
 const SearchInputWithControlledDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
   const [inputDropdownValue, setInputDropdownValue] = React.useState('payment-products');
-  const [status, setStatus] = React.useState<string | undefined>('latest-added');
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   return (
     <Box display="flex" flexDirection="column">
       <SearchInputComponent

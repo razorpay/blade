@@ -21,7 +21,7 @@ import type {
 } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { InputDropdownButton } from '~components/Dropdown';
+import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 
@@ -186,6 +186,13 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
               _isInsideSearchInput: true,
             });
           }
+          if (child.type === DropdownOverlay) {
+            return React.cloneElement(child, {
+              referenceRef: triggererWrapperRef,
+              _isNestedDropdown: true,
+              defaultPlacement: 'bottom-end',
+            });
+          }
           return child;
         },
       ),
@@ -247,7 +254,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         ref={mergedRef}
         isDropdownTrigger={true}
         setInputWrapperRef={
-          isInsideDropdown
+          isInsideDropdown || isTrailingDropDownOpen
             ? (wrapperNode) => {
                 triggererWrapperRef.current = wrapperNode;
               }
