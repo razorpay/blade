@@ -36,8 +36,6 @@ import {
   TransactionsIcon,
   HelpCircleIcon,
   BulkPayoutsIcon,
-  ChevronUpIcon,
-  ChevronDownIcon,
 } from '~components/Icons';
 import { Spinner } from '~components/Spinner';
 
