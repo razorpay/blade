@@ -679,20 +679,20 @@ TextInputWithUncontrolledTags.args = {
   showClearButton: true,
 };
 
-export const TextInputWithTrailingAndLeadingDropdown: StoryFn<typeof TextInputComponent> = ({
-  ...args
-}) => {
+export const TextInputWithTrailingAndLeadingDropdown: StoryFn<typeof TextInputComponent> = () => {
   return (
     <Box display="flex" flexDirection="column">
       <TextInputComponent
-        label="Enter Website URL"
+        label="Enter Website URL (for verification)"
         leading={
           <Dropdown>
             <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
-            <DropdownOverlay width="80px">
+            <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="www." value="www" />
                 <ActionListItem title="blog." value="blog" />
+                <ActionListItem title="shop." value="shop" />
+                <ActionListItem title="ecommerce." value="ecommerce" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
@@ -700,10 +700,14 @@ export const TextInputWithTrailingAndLeadingDropdown: StoryFn<typeof TextInputCo
         trailing={
           <Dropdown>
             <InputDropdownButton defaultValue="in" />
-            <DropdownOverlay width="80px">
+            <DropdownOverlay>
               <ActionList>
                 <ActionListItem title=".in" value="in" />
                 <ActionListItem title=".com" value="com" />
+                <ActionListItem title=".biz" value="biz" />
+                <ActionListItem title=".business" value="business" />
+                {/* maybe one day */}
+                <ActionListItem title=".razorpay" value="razorpay" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
@@ -726,6 +730,7 @@ export const TextInputWithTrailingDropdown: StoryFn<typeof TextInputComponent> =
               <ActionList>
                 <ActionListItem title="@oksbi" value="sbi" />
                 <ActionListItem title="@hdfc" value="hdfc" />
+                <ActionListItem title="@razorpay-airtelbank" value="razorpay" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>

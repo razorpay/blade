@@ -10,7 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
-import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
+import { Dropdown, DropdownOverlay, InputDropdownButton, DropdownLink } from '~components/Dropdown';
 import {
   ActionList,
   ActionListItem,
@@ -36,6 +36,8 @@ import {
   TransactionsIcon,
   HelpCircleIcon,
   BulkPayoutsIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
 } from '~components/Icons';
 import { Spinner } from '~components/Spinner';
 
@@ -450,27 +452,32 @@ const SearchInputWithDisabledDropdownTemplate: StoryFn<typeof SearchInputCompone
 };
 
 const SearchInputWithControlledDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
-  const [inputDropdownValue, setInputDropdownValue] = React.useState('home');
+  const [inputDropdownValue, setInputDropdownValue] = React.useState('payment-products');
+  const [status, setStatus] = React.useState<string | undefined>('latest-added');
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   return (
-    <SearchInputComponent
-      label="Search"
-      placeholder="Search here"
-      {...args}
-      trailing={
-        <Dropdown>
-          <InputDropdownButton
-            value={inputDropdownValue}
-            onChange={({ value }) => setInputDropdownValue(value)}
-          />
-          <DropdownOverlay width="100px">
-            <ActionList>
-              <ActionListItem title="Home" value="home" />
-              <ActionListItem title="Pricing" value="pricing" />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-      }
-    />
+    <Box display="flex" flexDirection="column">
+      <SearchInputComponent
+        label="Search"
+        placeholder="Search here"
+        {...args}
+        trailing={
+          <Dropdown>
+            <InputDropdownButton
+              value={inputDropdownValue}
+              onChange={({ value }) => setInputDropdownValue(value)}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Payment Products" value="payment-products" />
+                <ActionListItem title="Business Credit Card" value="business-credit-card" />
+                <ActionListItem title="Lending Tech Stack" value="lending-tech-stack" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
   );
 };
 
