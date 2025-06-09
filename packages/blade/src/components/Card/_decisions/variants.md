@@ -33,6 +33,15 @@ import { Card } from '@razorpay/blade/components';
 <Card>//content</Card>;
 ```
 
+## Typescript Types
+
+```typescript
+type CardProps = {
+  variant: 'layout' | 'metric' | 'default';
+  // other props
+}
+```
+
 ## Layout Card
 
 Layout cards serve as comprehensive content containers that guide users through multi-step processes, feature highlights, or detailed information sections. They're particularly effective in scenarios where users need to consume information and take specific actions, such as dashboards, detailed information sections or settings pages.
@@ -72,6 +81,18 @@ import { Card, CardHeader } from '@razorpay/blade/components';
 </Card>;
 ```
 
+## Typescript Types
+
+
+```typescript
+type CardHeaderTrailingProps = {
+  children?: React.ReactNode;
+  visual?: React.ReactNode;
+}
+```
+- we can add internal check to verify if the children prop is a valid component.
+
+
 ### Alternative APIs
 
 ```jsx
@@ -103,10 +124,22 @@ import { Card, CardHeader } from '@razorpay/blade/components';
 </Card>;
 ```
 
-* we might need to modify the visual prop to accept more components. maybe move checks to the component itself ? or eslint plugin
-* might need to do JSX parsing in case of mobile and render action list.
 
-### Open Questions
+
+```typescript
+type CardHeaderTrailingProps = {
+  children?: React.ReactNode;
+  visual?: React.ReactNode;
+}
+```
+
+- we can add internal check to verify if the children prop is a valid component ( Link , Button) or add check in eslint plugin.
+
+
+- we might need to modify the visual prop to accept more components. maybe move checks to the component itself ? or eslint plugin
+
+- might need to do JSX parsing in case of mobile and render action list.
+
 
 
 ## Metric Card
@@ -142,6 +175,21 @@ import { Card , CardHeader } from '@razorpay/blade/components';
    </CardFooter>
 </Card>
 ```
+
+
+## Typescript Types
+
+
+```typescript
+type CardHeaderLeading = {
+  value?: React.ReactNode;
+  valueSuffix?: React.ReactNode;
+  valueDescription?: React.ReactNode;
+}
+```
+- we can add internal check to verify if the children prop is a valid component (Amount, Text, Description)
+
+
 
 ### Open Questions
 
