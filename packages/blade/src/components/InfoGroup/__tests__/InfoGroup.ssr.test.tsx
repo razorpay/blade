@@ -47,7 +47,7 @@ describe('<InfoGroup />', () => {
         size="medium"
         keyAlign="left"
         valueAlign="right"
-        gridTemplateColumns="40% 60%"
+        gridTemplateColumns={'40% 60%' as never}
       >
         <InfoItem>
           <InfoItemKey leading={UserIcon} helpText="Customer information">
