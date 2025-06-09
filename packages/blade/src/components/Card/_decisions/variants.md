@@ -39,6 +39,15 @@ import { Card } from '@razorpay/blade/components';
 <Card>//content</Card>;
 ```
 
+## Typescript Types
+
+```typescript
+type CardProps = {
+  variant: 'layout' | 'metric' | 'default';
+  // other props
+}
+```
+
 
 ## Alternative API 
 ```jsx
@@ -49,16 +58,6 @@ import { Card  , LayoutCard , MetricCard} from '@razorpay/blade/components';
 <Card>//content</Card>;
 ```
 
-
-
-## Typescript Types
-
-```typescript
-type CardProps = {
-  variant: 'layout' | 'metric' | 'default';
-  // other props
-}
-```
 
 ## Layout Card
 
