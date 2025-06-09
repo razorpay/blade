@@ -1,13 +1,19 @@
 # Card Variants
 
-We are introducing 3 variants of cards - Layout, Metric and default.
+We are introducing 2 new variants of cards - Layout, Metric and default (currently exists as `Card`)
 
 - Layout Card - Layout cards serve as comprehensive content containers that guide users through multi-step processes, feature highlights, or detailed information sections. They're particularly effective in scenarios where users need to consume information and take specific actions, such as dashboards, detailed information sections or settings pages.
 
+<img src="./layout.png" alt="Layout Card" />
+
 - Metric Card - Metric card is designed to prominently display key performance indicators, statistics, and measurable data points. They provide merchants with at-a-glance visibility into important business metrics through a structured, scannable format. This card should be used wherever we need to show metrics/data points
+
+<img src="./metric.png" alt="Metric Card" />
 
 
 - Default Card - A card component with a header and content area. (currently exists as `Card`)
+
+<img src="./card-anatomy.png" alt="Default Card" />
 
 ## API
 
@@ -32,6 +38,18 @@ import { Card } from '@razorpay/blade/components';
 
 <Card>//content</Card>;
 ```
+
+
+## Alternative API 
+```jsx
+import { Card  , LayoutCard , MetricCard} from '@razorpay/blade/components';
+ 
+<LayoutCard>//content</LayoutCard>;
+<MetricCard>//content</MetricCard>;
+<Card>//content</Card>;
+```
+
+
 
 ## Typescript Types
 
