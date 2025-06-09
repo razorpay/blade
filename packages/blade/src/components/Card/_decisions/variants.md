@@ -3,7 +3,10 @@
 We are introducing 3 variants of cards - Layout, Metric and default.
 
 - Layout Card - Layout cards serve as comprehensive content containers that guide users through multi-step processes, feature highlights, or detailed information sections. They're particularly effective in scenarios where users need to consume information and take specific actions, such as dashboards, detailed information sections or settings pages.
+
 - Metric Card - Metric card is designed to prominently display key performance indicators, statistics, and measurable data points. They provide merchants with at-a-glance visibility into important business metrics through a structured, scannable format. This card should be used wherever we need to show metrics/data points
+
+
 - Default Card - A card component with a header and content area. (currently exists as `Card`)
 
 ## API
@@ -88,9 +91,9 @@ import { Card, CardHeader } from '@razorpay/blade/components';
         <Link  href="https://github.com" />
         // second link
         <Link  href="https://github.com" />
-        // primary action
+        //secondary action
         <Button variant="secondary" />
-        // secondary action
+        // primary action
         <Button variant="primary" />
       </Box>}
     ></CardHeaderTrailing>
@@ -100,11 +103,11 @@ import { Card, CardHeader } from '@razorpay/blade/components';
 </Card>;
 ```
 
+* we might need to modify the visual prop to accept more components. maybe move checks to the component itself ? or eslint plugin
+* might need to do JSX parsing in case of mobile and render action list.
+
 ### Open Questions
 
-- How menu will open in case of mobile ?
-- Why we have a tooltip icon next to heading?
-- We should handle isMobile internally in the component and not expose it to the consumer ?
 
 ## Metric Card
 
