@@ -52,7 +52,16 @@ import { Card, CardHeader } from '@razorpay/blade/components';
       prefix={<Icon />}
     />
     <CardHeaderTrailing>
-      <Box>// first link // second link // primary action // secondary action</Box>
+      <Box>
+        // first link
+        <Link  href="https://github.com" />
+        // second link
+        <Link  href="https://github.com" />
+        // primary action
+        <Button variant="secondary" />
+        // secondary action
+        <Button variant="primary" />
+      </Box>
     </CardHeaderTrailing>
   </CardHeader>
   <CardBody>//content</CardBody>
@@ -74,7 +83,16 @@ import { Card, CardHeader } from '@razorpay/blade/components';
       prefix={<Icon />}
     />
     <CardHeaderTrailing
-      visual={<Box>// first link // second link // primary action // secondary action</Box>}
+      visual={<Box>
+        // first link
+        <Link  href="https://github.com" />
+        // second link
+        <Link  href="https://github.com" />
+        // primary action
+        <Button variant="secondary" />
+        // secondary action
+        <Button variant="primary" />
+      </Box>}
     ></CardHeaderTrailing>
   </CardHeader>
   <CardBody>//content</CardBody>
