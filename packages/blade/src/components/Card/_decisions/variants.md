@@ -4,16 +4,16 @@ We are introducing 2 new variants of cards - Layout, Metric and default (current
 
 - Layout Card - Layout cards serve as comprehensive content containers that guide users through multi-step processes, feature highlights, or detailed information sections. They're particularly effective in scenarios where users need to consume information and take specific actions, such as dashboards, detailed information sections or settings pages.
 
-<img src="./layout.png" alt="Layout Card" />
+<img src="./layout.png" width="380"  alt="Layout Card" />
 
 - Metric Card - Metric card is designed to prominently display key performance indicators, statistics, and measurable data points. They provide merchants with at-a-glance visibility into important business metrics through a structured, scannable format. This card should be used wherever we need to show metrics/data points
 
-<img src="./metric.png" alt="Metric Card" />
+<img src="./metric.png" alt="Metric Card" width="380"  />
 
 
 - Default Card - A card component with a header and content area. (currently exists as `Card`)
 
-<img src="./card-anatomy.png" alt="Default Card" />
+<img src="./card-anatomy.png" alt="Default Card"  width="380"/>
 
 ## API
 
@@ -151,7 +151,6 @@ type CardHeaderTrailingProps = {
 ```
 
 - we can add internal check to verify if the children prop is a valid component ( Link , Button) or add check in eslint plugin.
-
 
 - we might need to modify the visual prop to accept more components. maybe move checks to the component itself ? or eslint plugin
 
