@@ -49,7 +49,7 @@ export type InfoGroupProps = {
    * Custom grid template columns for the InfoGroup layout
    *
    * @default 'max-content 1fr' for horizontal itemOrientation
-   * @default 'repeat(min(3, ${React.Children.count(children)}), 1fr)' for vertical itemOrientation
+   * @default 'repeat(min(4, ${React.Children.count(children)}), 1fr)' for vertical itemOrientation
    */
   gridTemplateColumns?: BoxProps['gridAutoColumns'];
 
