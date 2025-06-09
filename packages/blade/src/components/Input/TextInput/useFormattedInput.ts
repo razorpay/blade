@@ -80,6 +80,13 @@ export const useFormattedInput = ({
 
   const maxLength = useMemo(() => pattern?.length, [pattern]);
 
+  // Reset internal formatting state when external value becomes empty
+  useEffect(() => {
+    if ((userValue === '' || userValue === undefined) && defaultValue === '') {
+      setInternalValue('');
+    }
+  }, [userValue]);
+
   const handleChange: FormInputOnEvent = useCallback(
     ({ name, value: inputValue }) => {
       if (!pattern) {
