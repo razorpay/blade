@@ -119,9 +119,9 @@ export type InfoItemKeyProps = {
 
 export type InfoItemValueProps = {
   /**
-   * Content of the value - text, components, or other ReactNode
+   * Content of the value - text string, components, or other ReactNode
    */
-  children?: StringChildrenType | React.ReactNode;
+  children?: React.ReactNode;
 } & TitlePeripheralProps &
   TestID;
 
