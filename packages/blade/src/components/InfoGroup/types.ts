@@ -2,6 +2,7 @@ import type { IconComponent } from '~components/Icons';
 import type { StringChildrenType, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
+import type { TextColors } from '~components/Typography/BaseText/types';
 
 export type InfoGroupProps = {
   /**
@@ -101,7 +102,7 @@ type TitlePeripheralProps = {
 export type TitleCollectionProps = {
   children: string | React.ReactNode;
   titleWeight: 'medium' | 'semibold';
-  titleColor: 'surface.text.gray.muted' | 'surface.text.gray.subtle';
+  titleColor: Extract<TextColors, 'surface.text.gray.muted' | 'surface.text.gray.subtle'>;
   paddingLeft?: BoxProps['paddingLeft'];
   paddingRight?: BoxProps['paddingRight'];
 } & TitlePeripheralProps;
@@ -116,8 +117,8 @@ export type InfoItemKeyProps = {
 
 export type InfoItemValueProps = {
   /**
-   * Content of the value - text, components, or other ReactNode
+   * Content of the value - text string, components, or other ReactNode
    */
-  children?: StringChildrenType | React.ReactNode;
+  children?: React.ReactNode;
 } & TitlePeripheralProps &
   TestID;
