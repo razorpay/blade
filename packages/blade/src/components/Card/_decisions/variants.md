@@ -135,7 +135,7 @@ import { Card , CardHeader } from '@razorpay/blade/components';
       valueDescription={<Text/>}
       />
     <CardHeaderTrailing
-     visual={<CardHeaderBadge color="positive">NEW</CardHeaderBadge>} />
+     visual={isMobile ? <CardHeaderBadge/> :  <CardHeaderLink>} />
    </CardHeader>
    <CardBody>
    //content
