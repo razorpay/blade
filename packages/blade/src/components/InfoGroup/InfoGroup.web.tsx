@@ -268,7 +268,6 @@ const ContentsItemBox = React.forwardRef<
     return (
       <BaseBox
         display="contents"
-        marginX="200px"
         ref={ref as never}
         {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
       >
