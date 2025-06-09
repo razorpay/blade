@@ -747,7 +747,7 @@ describe('<Table />', () => {
   it('should render table with single select', async () => {
     const onSelectionChange = jest.fn();
     const user = userEvent.setup();
-    const { getByText } = renderWithTheme(
+    const { getByText, container } = renderWithTheme(
       <Table
         data={{ nodes: nodes.slice(0, 5) }}
         selectionType="single"
@@ -785,15 +785,27 @@ describe('<Table />', () => {
     const firstSelectableRow = getByText('rzp01').closest('td');
     if (firstSelectableRow) await user.click(firstSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]], selectedIds: ['1'] });
+
+    // Check that the selected row has the intended styles
+    const selectedRow = getByText('rzp01').closest('tr');
+    expect(selectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(container).toMatchSnapshot();
+
     const secondSelectableRow = getByText('rzp02').closest('td');
     if (secondSelectableRow) await user.click(secondSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[1]], selectedIds: ['2'] });
+
+    // Check that the new selected row has the intended styles and previous is deselected
+    const newSelectedRow = getByText('rzp02').closest('tr');
+    const previousRow = getByText('rzp01').closest('tr');
+    expect(newSelectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(previousRow).toHaveAttribute('aria-selected', 'false');
   });
 
   it('should render table with multi select', async () => {
     const onSelectionChange = jest.fn();
     const user = userEvent.setup();
-    const { getByText, getAllByRole, getByRole } = renderWithTheme(
+    const { getByText, getAllByRole, getByRole, container } = renderWithTheme(
       <Table
         data={{ nodes: nodes.slice(0, 5) }}
         selectionType="multiple"
@@ -837,6 +849,12 @@ describe('<Table />', () => {
     const firstSelectableRow = getByText('rzp01').closest('td');
     if (firstSelectableRow) await user.click(firstSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]], selectedIds: ['1'] });
+
+    // Check that the first selected row has the intended styles
+    const firstSelectedRow = getByText('rzp01').closest('tr');
+    expect(firstSelectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(container).toMatchSnapshot();
+
     const secondSelectableRow = getByText('rzp02').closest('td');
     if (secondSelectableRow) await user.click(secondSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({
@@ -844,9 +862,21 @@ describe('<Table />', () => {
       selectedIds: ['1', '2'],
     });
     expect(getByText('2 Items Selected')).toBeInTheDocument();
+
+    // Check that both selected rows have the intended styles
+    const secondSelectedRow = getByText('rzp02').closest('tr');
+    expect(firstSelectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(secondSelectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(container).toMatchSnapshot();
+
     const deselectButton = getByText('Deselect');
     await user.click(deselectButton);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [], selectedIds: [] });
+
+    // Check that all rows are deselected after clicking deselect
+    expect(firstSelectedRow).toHaveAttribute('aria-selected', 'false');
+    expect(secondSelectedRow).toHaveAttribute('aria-selected', 'false');
+    expect(container).toMatchSnapshot();
   });
 
   it('should render table with single select and defaultSelectedIds', async () => {
