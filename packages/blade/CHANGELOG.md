@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.32.3
+
+### Patch Changes
+
+- c09440955: fix(table): fix table selected styles
+- 5badd6410: fix: label position to 'top' for CheckboxGroup and RadioGroup on mobile viewports
+
 ## 12.32.2
 
 ### Patch Changes
