@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": minor
+'@razorpay/blade': patch
 ---
 
 feat(accordion): UI enhancement
