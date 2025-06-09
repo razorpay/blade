@@ -88,6 +88,42 @@ figma.ui.onmessage = async (msg) => {
             console.log('Bodyamount', tableBodyCellTextInstance.componentProperties);
             tableBodyCellTextInstance.setProperties({ contentType: 'Amount' });
             break;
+          case 'BADGE (GROUP)':
+            console.log('Bodybadge', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Badges Group' });
+            break;
+          case 'BUTTON (GROUP)':
+            console.log('Bodybutton', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Button Group' });
+            break;
+          case 'STATUS':
+            console.log('Bodystatus', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Status' });
+            break;
+          case 'NUMBER':
+            console.log('Bodynumber', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Numbers' });
+            break;
+          case 'ACTIONS/LINKS':
+            console.log('Bodyaction', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Actions / Link' });
+            break;
+          case 'ICON':
+            console.log('Bodyicon', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Icon' });
+            break;
+          case 'SLOT':
+            console.log('Bodyslot', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Slot' });
+            break;
+          case 'INPUT TEXT':
+            console.log('Bodyinputtext', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Input (Text/Number)' });
+            break;
+          case 'INPUT SELECT':
+            console.log('Bodyinputselect', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'Input (Select)' });
+            break;
           case 'TEXT':
           default:
             console.log('Bodytext', tableBodyCellTextInstance.componentProperties);
