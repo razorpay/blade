@@ -1,29 +1,20 @@
 import type { IconProps } from '..';
+import { iconSizeMap } from './iconSizeMap';
 import get from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
-import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
-
-const iconSize = {
-  xsmall: size[8],
-  small: size[12],
-  medium: size[16],
-  large: size[20],
-  xlarge: size[24],
-  '2xlarge': size[32],
-} as const;
 
 function useIconProps({
   size = 'medium',
   color = 'surface.icon.gray.normal',
 }: IconProps): {
-  height: `${typeof iconSize[keyof typeof iconSize]}px`;
-  width: `${typeof iconSize[keyof typeof iconSize]}px`;
+  height: `${typeof iconSizeMap[keyof typeof iconSizeMap]}px`;
+  width: `${typeof iconSizeMap[keyof typeof iconSizeMap]}px`;
   iconColor: string;
 } {
   const { theme } = useTheme();
-  const height = makeSize(iconSize[size]);
-  const width = makeSize(iconSize[size]);
+  const height = makeSize(iconSizeMap[size]);
+  const width = makeSize(iconSizeMap[size]);
   const iconColor = color === 'currentColor' ? 'currentColor' : get(theme.colors, color, '');
 
   return { height, width, iconColor };
