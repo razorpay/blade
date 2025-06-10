@@ -10,54 +10,13 @@ We are introducing 2 new variants of cards - Layout, Metric and default (current
 
 <img src="./metric.png" alt="Metric Card" width="380"  />
 
-
 - Default Card - A card component with a header and content area. (currently exists as `Card`)
 
 <img src="./card-anatomy.png" alt="Default Card"  width="380"/>
 
 ## API
 
-```jsx
-import { Card, CardHeader } from '@razorpay/blade/components';
-
-<Card variant="layout">//content</Card>;
-```
-
-## Metric Card
-
-```jsx
-import { Card, CardHeader } from '@razorpay/blade/components';
-
-<Card variant="metric">//content</Card>;
-```
-
-## Default Card
-
-```jsx
-import { Card } from '@razorpay/blade/components';
-
-<Card>//content</Card>;
-```
-
-## Typescript Types
-
-```typescript
-type CardProps = {
-  variant: 'layout' | 'metric' | 'default';
-  // other props
-}
-```
-
-
-## Alternative API 
-```jsx
-import { Card  , LayoutCard , MetricCard} from '@razorpay/blade/components';
- 
-<LayoutCard>//content</LayoutCard>;
-<MetricCard>//content</MetricCard>;
-<Card>//content</Card>;
-```
-
+We would be treating as enhancements to the existing `Card` component. so the API would be same as the existing `Card` component.
 
 ## Layout Card
 
@@ -72,7 +31,7 @@ Layout cards serve as comprehensive content containers that guide users through 
 ```jsx
 import { Card, CardHeader } from '@razorpay/blade/components';
 
-<Card variant="layout">
+<Card>
   <CardHeader>
     <CardHeaderLeading
       title="Header Title"
@@ -83,13 +42,13 @@ import { Card, CardHeader } from '@razorpay/blade/components';
     <CardHeaderTrailing>
       <Box>
         // first link
-        <Link  href="https://github.com" />
+        <Link href="https://github.com" />
         // second link
-        <Link  href="https://github.com" />
+        <Link href="https://github.com" />
         // primary action
-        <Button variant="secondary" />
+        <Button  />
         // secondary action
-        <Button variant="primary" />
+        <Button />
       </Box>
     </CardHeaderTrailing>
   </CardHeader>
@@ -100,22 +59,21 @@ import { Card, CardHeader } from '@razorpay/blade/components';
 
 ## Typescript Types
 
-
 ```typescript
 type CardHeaderTrailingProps = {
   children?: React.ReactNode;
   visual?: React.ReactNode;
-}
+};
 ```
-- we can add internal check to verify if the children prop is a valid component.
 
+- we can add internal check to verify if the children prop is a valid component.
 
 ### Alternative APIs
 
 ```jsx
 import { Card, CardHeader } from '@razorpay/blade/components';
 
-<Card variant="layout">
+<Card>
   <CardHeader>
     <CardHeaderLeading
       title="Header Title"
@@ -124,16 +82,18 @@ import { Card, CardHeader } from '@razorpay/blade/components';
       prefix={<Icon />}
     />
     <CardHeaderTrailing
-      visual={<Box>
-        // first link
-        <Link  href="https://github.com" />
-        // second link
-        <Link  href="https://github.com" />
-        //secondary action
-        <Button variant="secondary" />
-        // primary action
-        <Button variant="primary" />
-      </Box>}
+      visual={
+        <Box>
+          // first link
+          <Link href="https://github.com" />
+          // second link
+          <Link href="https://github.com" />
+          //secondary action
+          <Button  />
+          // primary action
+          <Button />
+        </Box>
+      }
     ></CardHeaderTrailing>
   </CardHeader>
   <CardBody>//content</CardBody>
@@ -141,13 +101,11 @@ import { Card, CardHeader } from '@razorpay/blade/components';
 </Card>;
 ```
 
-
-
 ```typescript
 type CardHeaderTrailingProps = {
   children?: React.ReactNode;
   visual?: React.ReactNode;
-}
+};
 ```
 
 - we can add internal check to verify if the children prop is a valid component ( Link , Button) or add check in eslint plugin.
@@ -155,8 +113,6 @@ type CardHeaderTrailingProps = {
 - we might need to modify the visual prop to accept more components. maybe move checks to the component itself ? or eslint plugin
 
 - might need to do JSX parsing in case of mobile and render action list.
-
-
 
 ## Metric Card
 
@@ -171,14 +127,15 @@ Metric card is designed to prominently display key performance indicators, stati
 ```jsx
 import { Card , CardHeader } from '@razorpay/blade/components';
 
-<Card variant="metric">
+<Card>
   <CardHeader>
     <CardHeaderLeading
       title="Header Title"
       subtitle="Header Subtitle"
-      value={<Amount/>}
-      valueSuffix={<Text/>}
-      valueDescription={<Text/>}
+      slot={<Box> 
+       <Amount/>
+       <Text> ferferf </Text>
+      </Box>}
       />
     <CardHeaderTrailing
      visual={isMobile ? <CardHeaderBadge/> :  <CardHeaderLink>} />
@@ -192,21 +149,12 @@ import { Card , CardHeader } from '@razorpay/blade/components';
 </Card>
 ```
 
-
 ## Typescript Types
-
 
 ```typescript
 type CardHeaderLeading = {
-  value?: React.ReactNode;
-  valueSuffix?: React.ReactNode;
-  valueDescription?: React.ReactNode;
-}
+  slot?: React.ReactNode;
+};
 ```
-- we can add internal check to verify if the children prop is a valid component (Amount, Text, Description)
 
 
-
-### Open Questions
-
-- Behavior of card on mobile ?
