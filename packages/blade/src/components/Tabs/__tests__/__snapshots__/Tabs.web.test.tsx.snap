@@ -2365,13 +2365,13 @@ exports[`Tabs should support adding data-analytics attribute 1`] = `
             role="tablist"
           >
             <button
-              aria-controls="tabs-27-payments-tabpanel"
+              aria-controls="tabs-26-payments-tabpanel"
               aria-selected="true"
               class="c6"
               data-active=""
               data-analytics-tab-item="payments"
               data-blade-component="tab-item"
-              id="tabs-27-payments-tabitem"
+              id="tabs-26-payments-tabitem"
               role="tab"
               tabindex="0"
               type="button"
@@ -2384,13 +2384,13 @@ exports[`Tabs should support adding data-analytics attribute 1`] = `
               </p>
             </button>
             <button
-              aria-controls="tabs-27-refunds-tabpanel"
+              aria-controls="tabs-26-refunds-tabpanel"
               aria-selected="false"
               class="c6"
               data-analytics-tab-item="refunds"
               data-blade-component="tab-item"
               disabled=""
-              id="tabs-27-refunds-tabitem"
+              id="tabs-26-refunds-tabitem"
               role="tab"
               tabindex="-1"
               type="button"
@@ -2419,11 +2419,11 @@ exports[`Tabs should support adding data-analytics attribute 1`] = `
     </div>
     <div
       aria-hidden="false"
-      aria-labelledby="tabs-27-payments-tabitem"
+      aria-labelledby="tabs-26-payments-tabitem"
       class="c12"
       data-analytics-tab-panel="payments"
       data-blade-component="tab-panel"
-      id="tabs-27-payments-tabpanel"
+      id="tabs-26-payments-tabpanel"
       role="tabpanel"
       tabindex="0"
     >
@@ -2436,11 +2436,11 @@ exports[`Tabs should support adding data-analytics attribute 1`] = `
     </div>
     <div
       aria-hidden="true"
-      aria-labelledby="tabs-27-refunds-tabitem"
+      aria-labelledby="tabs-26-refunds-tabitem"
       class="c14"
       data-analytics-tab-panel="refunds"
       data-blade-component="tab-panel"
-      id="tabs-27-refunds-tabpanel"
+      id="tabs-26-refunds-tabpanel"
       role="tabpanel"
       tabindex="0"
     >
