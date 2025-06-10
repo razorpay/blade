@@ -109,6 +109,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c3.c3.c3.c3.c3:hover + div {
@@ -342,6 +343,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c3.c3.c3.c3.c3:hover + div {
@@ -599,6 +601,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -839,6 +842,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -1085,6 +1089,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c3.c3.c3.c3.c3:hover + div {

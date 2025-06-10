@@ -1,0 +1,12 @@
+{
+  "name": "Blade Table Creator",
+  "id": "1494767773383094405",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/src/ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
+}

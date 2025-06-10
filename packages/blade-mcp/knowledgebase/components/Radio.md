@@ -6,6 +6,13 @@ Radio & RadioGroup
 
 The Radio and RadioGroup components are used in forms when a user needs to select a single value from multiple options. RadioGroup serves as a container for Radio components, allowing users to make a single selection from a set of options. It handles state management and provides accessible markup with features like validation states, help text, and various size options.
 
+## Important Constraints
+
+- `Radio` component cannot be used outside of `RadioGroup` component
+- `RadioGroup` component only accepts `Radio` components as children
+
+The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+
 ## TypeScript Types
 
 These types represent the props that the component accepts. When using the Radio component along with RadioGroup, you'll need to understand these types to properly configure them.

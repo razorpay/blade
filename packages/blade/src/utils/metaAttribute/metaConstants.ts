@@ -55,6 +55,7 @@ export const MetaConstants = {
   InfoItemValue: 'info-item-value',
   InfoItemIcon: 'info-item-icon',
   Indicator: 'indicator',
+  InputGroup: 'input-group',
   Link: 'link',
   List: 'list',
   ListItem: 'list-item',

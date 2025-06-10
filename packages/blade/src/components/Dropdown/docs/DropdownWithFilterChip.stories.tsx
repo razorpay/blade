@@ -226,4 +226,19 @@ export const FilterChipSelectInputControlled = (): React.ReactElement => {
   );
 };
 
+export const FilterChipSelectInputDisabled = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="single">
+      <FilterChipSelectInput label="Filter Chip" isDisabled />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Latest Added" value="latest-added" />
+          <ActionListItem title="Latest Invoice" value="latest-invoice" />
+          <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
 export default DropdownStoryMeta;

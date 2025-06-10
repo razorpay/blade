@@ -1,45 +1,36 @@
-import type { InfoGroupProps } from './types';
-import type { DotNotationSpacingStringToken } from '~utils/types';
-import type { IconProps } from '~components/Icons';
 import { size } from '~tokens/global';
 
 // Gap between leading/trailing elements and content
-const elementGap: Record<NonNullable<InfoGroupProps['size']>, DotNotationSpacingStringToken> = {
+const elementGap = {
   xsmall: 'spacing.1',
   small: 'spacing.2',
   medium: 'spacing.2',
   large: 'spacing.3',
-};
+} as const;
 
 // Size mapping for InfoItemKey
-const titleTextSize: Record<
-  NonNullable<InfoGroupProps['size']>,
-  'xsmall' | 'small' | 'medium' | 'large'
-> = {
+const titleTextSize = {
   xsmall: 'xsmall',
   small: 'small',
   medium: 'medium',
   large: 'large',
-};
+} as const;
 
 // Text sizes for help text (has different mapping)
-const helpTextSize: Record<
-  NonNullable<InfoGroupProps['size']>,
-  'xsmall' | 'small' | 'medium' | 'large'
-> = {
+const helpTextSize = {
   xsmall: 'xsmall',
   small: 'xsmall',
   medium: 'xsmall',
   large: 'small',
-};
+} as const;
 
 // Icon sizes for different InfoGroup sizes
-const iconSize: Record<NonNullable<InfoGroupProps['size']>, IconProps['size']> = {
+const iconSize = {
   xsmall: 'xsmall',
   small: 'small',
   medium: 'medium',
   large: 'large',
-};
+} as const;
 
 const itemTitleHeight = {
   xsmall: size['14'],

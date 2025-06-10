@@ -192,6 +192,7 @@ exports[`<SearchInput /> should render 1`] = `
           </View>
         </View>
         <View
+          className="focus-ring-wrapper"
           currentInteraction="default"
           data-blade-component="base-box"
           isTableInputCell={false}

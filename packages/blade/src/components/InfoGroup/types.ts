@@ -2,6 +2,7 @@ import type { IconComponent } from '~components/Icons';
 import type { StringChildrenType, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
+import type { TextColors } from '~components/Typography/BaseText/types';
 
 export type InfoGroupProps = {
   /**
@@ -38,7 +39,7 @@ export type InfoGroupProps = {
    * Custom grid template columns for the InfoGroup layout
    *
    * @default 'max-content 1fr' for horizontal itemOrientation
-   * @default 'repeat(min(3, ${React.Children.count(children)}), 1fr)' for vertical itemOrientation
+   * @default 'repeat(min(4, ${React.Children.count(children)}), 1fr)' for vertical itemOrientation
    */
   gridTemplateColumns?: BoxProps['gridAutoColumns'];
 
@@ -101,7 +102,7 @@ type TitlePeripheralProps = {
 export type TitleCollectionProps = {
   children: string | React.ReactNode;
   titleWeight: 'medium' | 'semibold';
-  titleColor: 'surface.text.gray.muted' | 'surface.text.gray.subtle';
+  titleColor: Extract<TextColors, 'surface.text.gray.muted' | 'surface.text.gray.subtle'>;
   paddingLeft?: BoxProps['paddingLeft'];
   paddingRight?: BoxProps['paddingRight'];
 } & TitlePeripheralProps;
@@ -116,8 +117,8 @@ export type InfoItemKeyProps = {
 
 export type InfoItemValueProps = {
   /**
-   * Content of the value - text, components, or other ReactNode
+   * Content of the value - text string, components, or other ReactNode
    */
-  children?: StringChildrenType | React.ReactNode;
+  children?: React.ReactNode;
 } & TitlePeripheralProps &
   TestID;

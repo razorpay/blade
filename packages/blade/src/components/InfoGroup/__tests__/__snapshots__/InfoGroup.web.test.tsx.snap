@@ -15,8 +15,6 @@ exports[`<InfoGroup /> should render InfoGroup with Avatars and apply correct pa
 
 .c1.c1.c1.c1.c1 {
   display: contents;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 
 .c23.c23.c23.c23.c23 {
@@ -755,8 +753,6 @@ exports[`<InfoGroup /> should render InfoGroup with different alignments 1`] = `
 
 .c1.c1.c1.c1.c1 {
   display: contents;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1124,8 +1120,6 @@ exports[`<InfoGroup /> should render InfoGroup with different sizes 1`] = `
 
 .c1.c1.c1.c1.c1 {
   display: contents;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1699,8 +1693,6 @@ exports[`<InfoGroup /> should render InfoGroup with gridTemplateColumns="50% 50%
 
 .c1.c1.c1.c1.c1 {
   display: contents;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2487,8 +2479,6 @@ exports[`<InfoGroup /> should render complex InfoGroup with horizontal itemOrien
 
 .c1.c1.c1.c1.c1 {
   display: contents;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 
 .c20.c20.c20.c20.c20 {
@@ -3524,8 +3514,6 @@ exports[`<InfoGroup /> should render simple InfoGroup 1`] = `
 
 .c1.c1.c1.c1.c1 {
   display: contents;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 
 .c2.c2.c2.c2.c2 {
