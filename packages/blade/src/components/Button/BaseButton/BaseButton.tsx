@@ -575,7 +575,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             <BaseSpinner
               accessibilityLabel="Loading"
               size={spinnerSize}
-              color={color === 'transparent' ? 'white' : color}
+              color={color === 'transparent' ? 'primary' : color}
             />
           </BaseBox>
         ) : null}

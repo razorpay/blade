@@ -13,7 +13,6 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
-import { UserIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -674,15 +673,4 @@ export const TextInputWithUncontrolledTags: StoryFn<typeof TextInputComponent> =
 TextInputWithUncontrolledTags.args = {
   isTaggedInput: true,
   showClearButton: true,
-};
-
-export const TextInputWithLeadingIcon: StoryFn<typeof TextInputComponent> = () => {
-  return (
-    <TextInputComponent
-      label="First Name"
-      placeholder="Enter your first"
-      name="fullName"
-      leadingIcon={UserIcon}
-    />
-  );
 };
