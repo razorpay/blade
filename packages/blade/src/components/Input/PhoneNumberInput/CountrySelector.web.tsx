@@ -88,7 +88,9 @@ const CountrySelector = ({
         <DropdownButton
           isDisabled={isDisabled}
           size={size === 'medium' ? 'xsmall' : 'medium'}
-          variant="transparent"
+          variant="tertiary"
+          //@ts-expect-error
+          color="transparent"
           accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
           icon={ChevronUpDownIcon}
           iconPosition="right"

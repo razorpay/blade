@@ -30,22 +30,24 @@ const StyledBaseButton = styled.button
       ...(props.variant !== 'tertiary' && {
         borderColor: props.hoverBorderColor,
       }),
-      ...(props.variant === 'transparent' && {
-        '&& [data-blade-component="svg-path"]': {
-          fill: props.hoverIconColor,
-        },
-      }),
+      ...(props.variant === 'tertiary' &&
+        props.color === 'transparent' && {
+          '&& [data-blade-component="svg-path"]': {
+            fill: props.hoverIconColor,
+          },
+        }),
     },
     '&:active': {
       backgroundColor: props.focusBackgroundColor,
       ...(props.variant !== 'tertiary' && {
         borderColor: props.focusBorderColor,
       }),
-      ...(props.variant === 'transparent' && {
-        '&& [data-blade-component="svg-path"]': {
-          fill: props.hoverIconColor,
-        },
-      }),
+      ...(props.variant === 'tertiary' &&
+        props.color === 'transparent' && {
+          '&& [data-blade-component="svg-path"]': {
+            fill: props.hoverIconColor,
+          },
+        }),
     },
     '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
@@ -54,11 +56,12 @@ const StyledBaseButton = styled.button
       }),
       outline: `1px solid ${props.theme.colors.surface.background.primary.subtle}`,
       boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
-      ...(props.variant === 'transparent' && {
-        '&& [data-blade-component="svg-path"]': {
-          fill: props.hoverIconColor,
-        },
-      }),
+      ...(props.variant === 'tertiary' &&
+        props.color === 'transparent' && {
+          '&& [data-blade-component="svg-path"]': {
+            fill: props.hoverIconColor,
+          },
+        }),
     },
     '*': {
       transitionProperty: 'color, fill, opacity',

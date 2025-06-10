@@ -76,8 +76,16 @@ type BaseButtonCommonProps = {
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
   accessibilityProps?: Partial<AccessibilityProps>;
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'transparent';
-  color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  color?:
+    | 'primary'
+    | 'white'
+    | 'positive'
+    | 'negative'
+    | 'notice'
+    | 'information'
+    | 'neutral'
+    | 'transparent';
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -136,6 +144,15 @@ export const getBackgroundColorToken = ({
     return tokens.white[variant][_state];
   }
 
+  if (color === 'transparent') {
+    if (variant !== 'tertiary') {
+      throw new Error(
+        `Transparent color can only be used with tertiary variant but received "${variant}"`,
+      );
+    }
+    return tokens.transparent.tertiary[_state];
+  }
+
   if (color && color !== 'primary') {
     if (variant === 'tertiary') {
       throw new Error(
@@ -163,13 +180,22 @@ export const getTextColorToken = ({
     return tokens.white[variant][_state];
   }
 
+  if (color === 'transparent') {
+    if (variant !== 'tertiary') {
+      throw new Error(
+        `Transparent color can only be used with tertiary variant but received "${variant}"`,
+      );
+    }
+    return tokens.transparent.tertiary[_state];
+  }
+
   if (color && color !== 'primary') {
     if (variant === 'tertiary') {
       throw new Error(
         `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
       );
     }
-    return tokens.color(color)[variant as 'primary' | 'secondary'][_state];
+    return tokens.color(color)[variant][_state];
   }
 
   return tokens.base[variant][_state];
@@ -194,10 +220,15 @@ const getProps = ({
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
 }): BaseButtonStyleProps => {
-  if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
+  if (
+    variant === 'tertiary' &&
+    color !== 'primary' &&
+    color !== 'white' &&
+    color !== 'transparent'
+  ) {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
+      message: `Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "${color}"`,
     });
   }
 
@@ -463,6 +494,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         }),
       }}
       variant={variant}
+      color={color}
       isLoading={isLoading}
       disabled={disabled}
       defaultBorderColor={defaultBorderColor}
@@ -540,7 +572,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             right="0px"
             zIndex={1}
           >
-            <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
+            <BaseSpinner
+              accessibilityLabel="Loading"
+              size={spinnerSize}
+              color={color === 'transparent' ? 'white' : color}
+            />
           </BaseBox>
         ) : null}
         <ButtonContent

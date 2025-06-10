@@ -65,9 +65,11 @@ const backgroundColor = (property: 'background' | 'border') => {
         highlighted: `interactive.background.staticWhite.fadedHighlighted`,
         disabled: `interactive.background.staticWhite.disabled`,
       },
-      transparent: {
+    },
+    transparent: {
+      tertiary: {
         default: 'transparent',
-        highlighted: `interactive.background.staticWhite.fadedHighlighted`,
+        highlighted: 'interactive.background.gray.faded',
         disabled: `interactive.background.staticWhite.disabled`,
       },
     },
@@ -86,11 +88,6 @@ const backgroundColor = (property: 'background' | 'border') => {
             ? (`interactive.border.${color}.default` as const)
             : (`interactive.background.${color}.fadedHighlighted` as const),
           disabled: `interactive.${property}.${color}.disabled`,
-        },
-        transparent: {
-          default: 'transparent',
-          highlighted: 'transparent',
-          disabled: 'transparent',
         },
       } as const;
     },
@@ -115,11 +112,6 @@ const textColor = (property: 'icon' | 'text') => {
         highlighted: `interactive.${property}.gray.normal`,
         disabled: `interactive.${property}.gray.disabled`,
       },
-      transparent: {
-        default: property === 'icon' ? 'surface.icon.gray.muted' : 'surface.text.gray.normal',
-        highlighted: property === 'icon' ? 'surface.icon.gray.subtle' : 'surface.text.gray.normal',
-        disabled: `interactive.${property}.gray.disabled`,
-      },
     },
     white: {
       primary: {
@@ -137,12 +129,15 @@ const textColor = (property: 'icon' | 'text') => {
         highlighted: `interactive.${property}.staticWhite.normal`,
         disabled: `interactive.${property}.staticWhite.disabled`,
       },
-      transparent: {
-        default: `interactive.${property}.gray.normal`,
-        highlighted: `interactive.${property}.gray.normal`,
+    },
+    transparent: {
+      tertiary: {
+        default: property === 'icon' ? 'surface.icon.gray.muted' : 'surface.text.gray.normal',
+        highlighted: property === 'icon' ? 'surface.icon.gray.subtle' : 'surface.text.gray.normal',
         disabled: `interactive.${property}.gray.disabled`,
       },
     },
+
     color: (color: FeedbackColors) => {
       return {
         primary: {
