@@ -11,7 +11,7 @@ import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { IconColor } from '~components/Button/BaseButton/types';
 
-type DropdownButtonProps = ButtonProps & {
+type DropdownButtonProps = Omit<ButtonProps, 'variant'> & {
   iconColor?: IconColor;
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];

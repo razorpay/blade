@@ -173,7 +173,7 @@ export const getTextColorToken = ({
         `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
       );
     }
-    return tokens.color(color)[variant][_state];
+    return tokens.color(color)[variant as 'primary' | 'secondary'][_state];
   }
 
   return tokens.base[variant][_state];
