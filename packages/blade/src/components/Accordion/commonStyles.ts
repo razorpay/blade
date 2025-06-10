@@ -20,19 +20,7 @@ const getBackgroundColor = ({
 }): string => {
   const { gray } = theme.colors.interactive.background;
 
-  if (isExpanded) {
-    if (isActive) {
-      return gray.faded;
-    }
-
-    return gray.faded;
-  }
-
-  if (isActive) {
-    return gray.faded;
-  }
-
-  return theme.colors.transparent;
+  return isActive ? gray.faded : theme.colors.transparent;
 };
 
 const getCommonAccordionButtonStyles = (

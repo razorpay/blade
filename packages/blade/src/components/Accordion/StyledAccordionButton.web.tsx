@@ -14,7 +14,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
   const commonStyles = getCommonAccordionButtonStyles(props);
   return {
     ...commonStyles,
-    backgroundColor: 'transparent',
+    backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: false }),
     transitionProperty: 'background-color, box-shadow, border-radius, color',
     transitionDuration: castWebType(getTransitionDuration(theme)),
     transitionTimingFunction: castWebType(getTransitionEasing(theme)),
