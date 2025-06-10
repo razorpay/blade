@@ -132,8 +132,9 @@ const textColor = (property: 'icon' | 'text') => {
     },
     transparent: {
       tertiary: {
-        default: property === 'icon' ? 'surface.icon.gray.muted' : 'surface.text.gray.normal',
-        highlighted: property === 'icon' ? 'surface.icon.gray.subtle' : 'surface.text.gray.normal',
+        default: property === 'icon' ? 'interactive.icon.gray.muted' : 'surface.text.gray.normal',
+        highlighted:
+          property === 'icon' ? 'interactive.icon.gray.subtle' : 'surface.text.gray.normal',
         disabled: `interactive.${property}.gray.disabled`,
       },
     },
