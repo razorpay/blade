@@ -32,7 +32,7 @@ const StyledBaseButton = styled.button
       }),
       ...(props.variant === 'transparent' && {
         '&& [data-blade-component="svg-path"]': {
-          fill: getIn(props.theme.colors, props.hoverIconColor),
+          fill: props.hoverIconColor,
         },
       }),
     },
@@ -43,7 +43,7 @@ const StyledBaseButton = styled.button
       }),
       ...(props.variant === 'transparent' && {
         '&& [data-blade-component="svg-path"]': {
-          fill: getIn(props.theme.colors, props.hoverIconColor),
+          fill: props.hoverIconColor,
         },
       }),
     },
@@ -56,7 +56,7 @@ const StyledBaseButton = styled.button
       boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
       ...(props.variant === 'transparent' && {
         '&& [data-blade-component="svg-path"]': {
-          fill: getIn(props.theme.colors, props.hoverIconColor),
+          fill: props.hoverIconColor,
         },
       }),
     },

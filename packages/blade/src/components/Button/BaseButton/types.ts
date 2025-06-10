@@ -35,7 +35,7 @@ export type BaseButtonStyleProps = {
   defaultBorderColor: string;
   hoverBackgroundColor: string;
   hoverBorderColor: string;
-  hoverIconColor?: string;
+  hoverIconColor: string;
   focusBackgroundColor: string;
   focusBorderColor: string;
   focusRingColor: string;

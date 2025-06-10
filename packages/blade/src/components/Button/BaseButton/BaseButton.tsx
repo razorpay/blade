@@ -255,12 +255,15 @@ const getProps = ({
       theme.colors,
       getBackgroundColorToken({ property: 'border', variant, color, state: 'hover' }),
     ),
-    hoverIconColor: getTextColorToken({
-      property: 'icon',
-      variant,
-      color,
-      state: 'hover',
-    }) as IconColor,
+    hoverIconColor: getIn(
+      theme.colors,
+      getTextColorToken({
+        property: 'icon',
+        variant,
+        color,
+        state: 'hover',
+      }),
+    ),
     focusBackgroundColor: getIn(
       theme.colors,
       getBackgroundColorToken({ property: 'background', variant, color, state: 'focus' }),
@@ -510,7 +513,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       height={height}
       width={width}
       isPressed={isPressed}
-      hoverIconColor={isDisabled ? iconColor : hoverIconColor}
+      hoverIconColor={
+        isDisabled
+          ? getIn(theme.colors, iconColor as DotNotationToken<Theme['colors']>)
+          : hoverIconColor
+      }
       onMouseDown={(event: React.MouseEvent) => {
         handlePointerPressedIn();
         onMouseDown?.(event);
