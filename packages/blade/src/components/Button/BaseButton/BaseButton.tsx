@@ -69,10 +69,6 @@ type BaseButtonCommonProps = {
     native: (event: GestureResponderEvent) => void;
     web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   }>;
-  onPointerLeave?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
-    web: (event: React.PointerEvent<HTMLButtonElement>) => void;
-  }>;
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
