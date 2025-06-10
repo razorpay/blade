@@ -70,6 +70,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         buttonPaddingRight="20px"
         buttonPaddingTop="0px"
         collapsable={false}
+        color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
         defaultBorderColor="hsla(227, 100%, 59%, 1)"

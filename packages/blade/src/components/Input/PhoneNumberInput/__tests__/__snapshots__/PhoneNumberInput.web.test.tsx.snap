@@ -264,7 +264,6 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 
 .c14.c14.c14.c14.c14:hover {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
 }
 
 .c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
@@ -273,7 +272,6 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 
 .c14.c14.c14.c14.c14:active {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
 }
 
 .c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
@@ -282,7 +280,6 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 
 .c14.c14.c14.c14.c14:focus-visible {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
@@ -959,7 +956,6 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 
 .c14.c14.c14.c14.c14:hover {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
 }
 
 .c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
@@ -968,7 +964,6 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 
 .c14.c14.c14.c14.c14:active {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
 }
 
 .c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
@@ -977,7 +972,6 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 
 .c14.c14.c14.c14.c14:focus-visible {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
@@ -1652,7 +1646,6 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 
 .c14.c14.c14.c14.c14:hover {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
 }
 
 .c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
@@ -1661,7 +1654,6 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 
 .c14.c14.c14.c14.c14:active {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
 }
 
 .c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
@@ -1670,7 +1662,6 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 
 .c14.c14.c14.c14.c14:focus-visible {
   background-color: hsla(211,20%,52%,0.06);
-  border-color: hsla(211,20%,52%,0.18);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
