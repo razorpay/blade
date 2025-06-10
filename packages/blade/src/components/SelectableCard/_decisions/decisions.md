@@ -1,9 +1,9 @@
 # SelectableCard
 
-SelectableCard combines the existing Card component with form control groups (CheckboxGroup/RadioGroup) to create selectable card interfaces. Instead of creating new components, we leverage Blade's existing Card component with its `isSelected` prop alongside established form control patterns to achieve selectable card functionality.
+SelectableCard combines the existing Card component with form control groups (CheckboxGroup/RadioGroup) to create selectable card interfaces.
 
 - [Design](#design)
-- [Variants](#variants)
+- [Anatomy](#anatomy)
 - [API](#api)
 - [Enhancements](#enhancements)
 - [Examples](#examples)
@@ -14,11 +14,11 @@ SelectableCard combines the existing Card component with form control groups (Ch
 
 ## Design
 
-- [Figma - SelectableCard](figma-url-placeholder)
+- [Figma - SelectableCard](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=105706-19869&p=f&m=dev)
 
-## Variants
+## Anatomy
 
-<img src="./selectable-card-variants.png" width="100%" alt="SelectableCard Variants" />
+<img src="./selectable-card-anatomy.png" width="100%" alt="SelectableCard Anatomy" />
 
 ## API
 
