@@ -91,12 +91,6 @@ type InfoGroupProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
-   * Defines whether the key is aligned left or right
-   * @default 'left'
-   */
-  keyAlign?: 'left' | 'right';
-
-  /**
    * Defines whether the value is aligned left or right
    * @default 'left'
    */
