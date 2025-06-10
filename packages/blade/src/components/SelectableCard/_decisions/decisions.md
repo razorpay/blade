@@ -155,7 +155,7 @@ const cardValidationState = groupValidationState; // Apply to border styling
 We extend existing RadioGroup and CheckboxGroup components with flex wrapping capabilities to prevent horizontal scrolling when needed by user:
 
 ```ts
-type RadioGroupProps = BaseRadioGroupProps & {
+type RadioGroupProps = RadioGroupProps & {
   /**
    * Controls wrapping behavior for horizontal orientation
    * When set to 'wrap', items will wrap to next line instead of causing horizontal scrolling
@@ -164,7 +164,7 @@ type RadioGroupProps = BaseRadioGroupProps & {
   flexWrap?: 'wrap' | 'nowrap';
 };
 
-type CheckboxGroupProps = BaseCheckboxGroupProps & {
+type CheckboxGroupProps = CheckboxGroupProps & {
   /**
    * Controls wrapping behavior for horizontal orientation
    * When set to 'wrap', items will wrap to next line instead of causing horizontal scrolling
