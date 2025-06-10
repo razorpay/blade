@@ -28,6 +28,7 @@ export * from './Elevate';
 export * from './Fade';
 export * from './FileUpload';
 export * from './Icons';
+export * from './InfoGroup';
 export * from './Indicator';
 export * from './Input/DropdownInputTriggers';
 export * from './Input/OTPInput';
