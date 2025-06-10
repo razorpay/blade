@@ -99,7 +99,6 @@ const CountrySelector = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          // iconColor={isHoverOrFocus ? 'surface.icon.gray.subtle' : 'surface.icon.gray.muted'}
         >
           {/* @ts-expect-error */}
           <img
