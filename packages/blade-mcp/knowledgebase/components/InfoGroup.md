@@ -28,12 +28,6 @@ export type InfoGroupProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
-   * Defines the alignment of the key content
-   * @default 'left'
-   */
-  keyAlign?: 'left' | 'right';
-
-  /**
    * Defines the alignment of the value content
    * @default 'left'
    */
@@ -156,13 +150,7 @@ import {
 
 function BasicInfoGroup() {
   return (
-    <InfoGroup
-      itemOrientation="horizontal"
-      size="medium"
-      keyAlign="left"
-      valueAlign="left"
-      maxWidth="600px"
-    >
+    <InfoGroup itemOrientation="horizontal" size="medium" valueAlign="left" maxWidth="600px">
       <InfoItem>
         <InfoItemKey>Account Holder</InfoItemKey>
         <InfoItemValue>Saurabh Daware</InfoItemValue>

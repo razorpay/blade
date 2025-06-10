@@ -4,7 +4,6 @@ import type { InfoGroupProps } from './types';
 type InfoGroupContextType = {
   size: NonNullable<InfoGroupProps['size']>;
   itemOrientation: NonNullable<InfoGroupProps['itemOrientation']>;
-  keyAlign: NonNullable<InfoGroupProps['keyAlign']>;
   valueAlign: NonNullable<InfoGroupProps['valueAlign']>;
   isHighlighted: NonNullable<InfoGroupProps['isHighlighted']>;
 };
@@ -18,7 +17,6 @@ type InfoItemContextType = {
 const InfoGroupContext = React.createContext<InfoGroupContextType>({
   size: 'medium',
   itemOrientation: 'horizontal',
-  keyAlign: 'left',
   valueAlign: 'left',
   isHighlighted: false,
 });

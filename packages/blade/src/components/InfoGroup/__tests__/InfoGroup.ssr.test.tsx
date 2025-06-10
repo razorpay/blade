@@ -45,7 +45,6 @@ describe('<InfoGroup />', () => {
       <InfoGroup
         itemOrientation="horizontal"
         size="medium"
-        keyAlign="left"
         valueAlign="right"
         gridTemplateColumns={'40% 60%' as never}
       >

@@ -141,7 +141,7 @@ const _InfoItemKey = (
   { children, leading, trailing, helpText, truncateAfterLines, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
-  const { itemOrientation, keyAlign, size } = useInfoGroup();
+  const { itemOrientation, size } = useInfoGroup();
 
   const { hasAvatar, isHighlighted } = useInfoItem();
 
@@ -152,7 +152,7 @@ const _InfoItemKey = (
       display="flex"
       alignItems="center"
       alignSelf="flex-start"
-      justifyContent={keyAlign === 'right' ? 'flex-end' : 'flex-start'}
+      justifyContent="flex-start"
       paddingY={hasAvatar ? avatarAdjustmentPaddingY[size] : undefined}
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
@@ -365,7 +365,6 @@ const _InfoGroup = (
     children,
     itemOrientation = 'horizontal',
     size = 'medium',
-    keyAlign = 'left',
     valueAlign = 'left',
     isHighlighted = false,
     gridTemplateColumns,
@@ -388,11 +387,10 @@ const _InfoGroup = (
     () => ({
       size,
       itemOrientation,
-      keyAlign,
       valueAlign,
       isHighlighted,
     }),
-    [size, itemOrientation, keyAlign, valueAlign, isHighlighted],
+    [size, itemOrientation, valueAlign, isHighlighted],
   );
 
   const defaultGridTemplateColumns =

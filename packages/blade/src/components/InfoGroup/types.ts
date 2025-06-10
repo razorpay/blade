@@ -18,12 +18,6 @@ export type InfoGroupProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
-   * Defines the alignment of the key content
-   * @default 'left'
-   */
-  keyAlign?: 'left' | 'right';
-
-  /**
    * Defines the alignment of the value content
    * @default 'left'
    */
