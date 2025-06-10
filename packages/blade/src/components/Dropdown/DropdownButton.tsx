@@ -51,7 +51,7 @@ const _DropdownButton = ({
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
     <BaseButton
       {...rest}
-      {...(icon ? { icon, children } : { children })}
+      {...(icon ? { icon, children } : { children: children || '' })}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
