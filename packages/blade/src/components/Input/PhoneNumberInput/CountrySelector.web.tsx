@@ -52,7 +52,6 @@ const CountrySelector = ({
   size,
 }: CounterSelectorProps): React.ReactElement => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const [isHoverOrFocus, setIsHoverOrFocus] = React.useState(false);
   const isMobile = useIsMobile();
 
   const actionList = (
@@ -89,7 +88,7 @@ const CountrySelector = ({
         <DropdownButton
           isDisabled={isDisabled}
           size={size === 'medium' ? 'xsmall' : 'medium'}
-          variant="tertiary"
+          variant="transparent"
           accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
           icon={ChevronUpDownIcon}
           iconPosition="right"
@@ -100,18 +99,7 @@ const CountrySelector = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          onPointerLeave={() => {
-            setIsHoverOrFocus(false);
-          }}
-          onPointerEnter={() => {
-            setIsHoverOrFocus(true);
-          }}
-          onFocus={() => {
-            setIsHoverOrFocus(true);
-          }}
-          onBlur={() => setIsHoverOrFocus(false)}
-          showBgColorOnFocusAndHoverOnly={true}
-          iconColor={isHoverOrFocus ? 'surface.icon.gray.subtle' : 'surface.icon.gray.muted'}
+          // iconColor={isHoverOrFocus ? 'surface.icon.gray.subtle' : 'surface.icon.gray.muted'}
         >
           {/* @ts-expect-error */}
           <img

@@ -80,9 +80,8 @@ type BaseButtonCommonProps = {
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
   accessibilityProps?: Partial<AccessibilityProps>;
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'transparent';
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-  showBgColorOnFocusAndHoverOnly?: boolean;
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -93,7 +92,6 @@ Mandatory children prop when icon is not provided
 type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
   icon?: undefined;
   children: StringChildrenType;
-  baseButtonIconColor?: undefined;
 } & DataAnalyticsAttribute;
 
 /*
@@ -101,7 +99,6 @@ type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
 */
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
   icon: IconComponent;
-  baseButtonIconColor?: IconColor;
   children?: StringChildrenType;
 } & DataAnalyticsAttribute;
 
@@ -191,8 +188,6 @@ const getProps = ({
   variant,
   color,
   hasIcon,
-  iconColor,
-  showBgColorOnFocusAndHoverOnly,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -202,8 +197,6 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
-  iconColor: IconColor;
-  showBgColorOnFocusAndHoverOnly: boolean;
 }): BaseButtonStyleProps => {
   if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
@@ -223,14 +216,12 @@ const getProps = ({
     width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
     iconPadding:
       hasIcon && childrenString?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
-    iconColor:
-      iconColor ??
-      (getTextColorToken({
-        property: 'icon',
-        variant,
-        color,
-        state: 'default',
-      }) as IconColor),
+    iconColor: getTextColorToken({
+      property: 'icon',
+      variant,
+      color,
+      state: 'default',
+    }) as IconColor,
     textColor: getTextColorToken({
       property: 'text',
       variant,
@@ -248,12 +239,10 @@ const getProps = ({
       ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: childrenString?.trim(),
-    defaultBackgroundColor: showBgColorOnFocusAndHoverOnly
-      ? theme.colors.transparent
-      : getIn(
-          theme.colors,
-          getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),
-        ),
+    defaultBackgroundColor: getIn(
+      theme.colors,
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),
+    ),
     defaultBorderColor: getIn(
       theme.colors,
       getBackgroundColorToken({ property: 'border', variant, color, state: 'default' }),
@@ -266,6 +255,12 @@ const getProps = ({
       theme.colors,
       getBackgroundColorToken({ property: 'border', variant, color, state: 'hover' }),
     ),
+    hoverIconColor: getTextColorToken({
+      property: 'icon',
+      variant,
+      color,
+      state: 'hover',
+    }) as IconColor,
     focusBackgroundColor: getIn(
       theme.colors,
       getBackgroundColorToken({ property: 'background', variant, color, state: 'focus' }),
@@ -348,8 +343,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     accessibilityProps,
     onTouchEnd,
     onTouchStart,
-    baseButtonIconColor,
-    showBgColorOnFocusAndHoverOnly = false,
     ...rest
   },
   ref,
@@ -399,6 +392,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     fontSize,
     hoverBorderColor,
     hoverBackgroundColor,
+    hoverIconColor,
     iconColor,
     iconSize,
     iconPadding,
@@ -419,8 +413,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     theme,
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
-    iconColor: baseButtonIconColor,
-    showBgColorOnFocusAndHoverOnly,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
@@ -518,6 +510,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       height={height}
       width={width}
       isPressed={isPressed}
+      hoverIconColor={isDisabled ? iconColor : hoverIconColor}
       onMouseDown={(event: React.MouseEvent) => {
         handlePointerPressedIn();
         onMouseDown?.(event);

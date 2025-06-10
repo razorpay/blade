@@ -34,6 +34,7 @@ export type BaseButtonStyleProps = {
   defaultBorderColor: string;
   hoverBackgroundColor: string;
   hoverBorderColor: string;
+  hoverIconColor: string;
   focusBackgroundColor: string;
   focusBorderColor: string;
   focusRingColor: string;
@@ -65,6 +66,8 @@ export type StyledBaseButtonProps = Omit<
   focusRingColor: string;
   hoverBorderColor: string;
   hoverBackgroundColor: string;
+  hoverIconColor: IconColor;
+  iconColor: IconColor;
   isFullWidth: boolean;
   motionDuration: DurationString;
   motionEasing: EasingString;

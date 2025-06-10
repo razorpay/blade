@@ -15,6 +15,7 @@ type DropdownButtonProps = ButtonProps & {
   iconColor?: IconColor;
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
+  variant?: BaseButtonProps['variant'];
 };
 
 const _DropdownButton = ({
@@ -50,7 +51,7 @@ const _DropdownButton = ({
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
     <BaseButton
       {...rest}
-      {...(icon ? { icon, baseButtonIconColor: iconColor, children } : { children })}
+      {...(icon ? { icon, children } : { children })}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
