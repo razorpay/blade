@@ -73,9 +73,12 @@ import {
   name="addon-selection"
   onChange={({ values }) => console.log(values)}
   orientation="horizontal"
+  validationState="error"
+  errorText="Please select at least one add-on"
   // Note: flexWrap prop will be available after enhancement implementation
 >
   <Card as="label" isSelected={selectedValues.includes('smart_collect')}>
+    {/* Card automatically inherits error validation state from CheckboxGroup */}
     <CardBody>
       <Box display="flex" flexDirection="row" gap="spacing.3">
         <CardHeaderLeading title="Smart Collect" subtitle="₹199/month" prefix={<CollectIcon />} />
@@ -103,38 +106,48 @@ import {
 
 ## Enhancements
 
-### Card Border Validation State
+### Card Validation State via Group Context
 
-We extend existing Card component with validation state capabilities for better visual feedback:
+Cards will automatically reflect validation states from their parent CheckboxGroup/RadioGroup context, similar to how individual Checkbox/Radio components currently work. No new Card props needed.
 
-```ts
-type CardProps = BaseCardProps & {
-  /**
-   * Visual validation state that changes border color
-   * When provided, card border will reflect the validation state
-   * @default "none"
-   */
-  validationState?: 'none' | 'error' | 'success';
-};
+**Current Implementation:**
+
+```tsx
+// In Checkbox component
+const _validationState = validationState ?? groupProps?.validationState;
+```
+
+**Proposed Implementation for Card:**
+
+```tsx
+// Card will consume validation state from CheckboxGroup/RadioGroup context
+const groupValidationState =
+  useCheckboxGroupContext()?.validationState || useRadioGroupContext()?.validationState;
+const cardValidationState = groupValidationState; // Apply to border styling
 ```
 
 **Usage Examples:**
 
 ```jsx
-// Error state for validation feedback
-<Card
-  as="label"
-  isSelected={isSelected}
-  validationState="error" // "success" "none"
->
-  {/* Card content */}
-</Card>
+// Error state automatically applied to all cards in group
+<CheckboxGroup validationState="error" errorText="Please select at least one option">
+  <Card as="label" isSelected={isSelected}>
+    {/* Card automatically gets error border styling from group context */}
+  </Card>
+</CheckboxGroup>
+
+// Success state for RadioGroup
+<RadioGroup validationState="success">
+  <Card as="label" isSelected={isSelected}>
+    {/* Card automatically gets success border styling from group context */}
+  </Card>
+</RadioGroup>
 ```
 
 **Implementation needed:**
 
-- Add `validationState?: 'none' | 'error' | 'success'` prop to Card component
-- Update Card styles to show error (red) and success (green) border colors
+- Update Card component to consume validation state from CheckboxGroup/RadioGroup context
+- Apply validation state styling (error/success border colors) when present
 - Maintain existing `isSelected` styling when combined with validation states
 
 ### RadioGroup/CheckboxGroup Horizontal Wrapping
