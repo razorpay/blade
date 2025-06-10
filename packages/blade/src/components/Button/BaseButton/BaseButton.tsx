@@ -338,7 +338,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     onMouseDown,
     onPointerDown,
     onPointerEnter,
-    onPointerLeave,
     accessibilityProps,
     onTouchEnd,
     onTouchStart,
@@ -487,7 +486,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       tabIndex={tabIndex}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
-      onPointerLeave={onPointerLeave}
       // Setting type for web fails it on native typecheck and vice versa
       onKeyDown={(event: any) => {
         handleKeyboardPressedIn(event);
