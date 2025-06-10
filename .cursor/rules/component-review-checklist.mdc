@@ -43,13 +43,19 @@ When a user asks you to review a component before shipping, you must check the f
 - JSDoc should exist on props that are exported publically
 - JSDoc should exist on component that is exported publically with small usage example
 
-### 7. Component Exports
+### 7. Storybook Documentation
+
+- `{ComponentName}.stories.tsx` file exists
+- It is using StoryPageWrapper and Sandbox component
+- StoryPageWrapper has `componentName`, `componentDescription`, and `figmaURL` passed to it
+
+### 8. Component Exports
 
 - Verify that only intended components and types are exported from the `{ComponentName}/index.ts` directory
 - Ensure that we're re-exporting component without `.web` or `.native` extensions
 - Verify that the component is re-exported from `packages/blade/src/components/index.ts`
 
-### 8. Knowledgebase Update
+### 9. Knowledgebase Update
 
 - Verify that there is knowledgebase created for this component. Look for `{ComponentName}.md` inside `packages/blade-mcp/knowledgebase/**`
 - Suggest them to run prompt from `packages/blade-mcp/knowledgebase/components/prompt.txt` to generate this markdown
