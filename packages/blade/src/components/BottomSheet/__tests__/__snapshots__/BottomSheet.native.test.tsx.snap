@@ -1075,8 +1075,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     {
                       "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
                       "borderBottomStyle": "solid",
-                      "marginLeft": 0,
-                      "marginRight": 0,
                     },
                     {
                       "borderBottomStyle": "solid",

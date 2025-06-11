@@ -2,6 +2,7 @@
 import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { Divider } from '~components/Divider';
+import type { DividerProps } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
@@ -16,7 +17,6 @@ import { metaAttribute } from '~utils/metaAttribute';
 import { logger, throwBladeError } from '~utils/logger';
 import { size as sizeToken } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { DividerProps } from '~components/Divider';
 
 type BaseHeaderProps = {
   title?: string;

@@ -486,26 +486,6 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 
 }
 
-@media screen and (min-width:320px) {
-
-}
-
-@media screen and (min-width:480px) {
-
-}
-
-@media screen and (min-width:768px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1200px) {
-
-}
-
 @media screen and (min-width:768px) {
 
 }
@@ -1188,26 +1168,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 }
 
-@media screen and (min-width:320px) {
-
-}
-
-@media screen and (min-width:480px) {
-
-}
-
-@media screen and (min-width:768px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1200px) {
-
-}
-
 @media screen and (min-width:768px) {
 
 }
@@ -1862,26 +1822,6 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 }
 
 @media screen and (min-width:768px) {
-
-}
-
-@media screen and (min-width:320px) {
-
-}
-
-@media screen and (min-width:480px) {
-
-}
-
-@media screen and (min-width:768px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1200px) {
 
 }
 
