@@ -72,8 +72,8 @@ const HiddenInput = ({
 };
 
 const iconVerticalMargin = {
-  medium: sizeTokens[14],
-  large: sizeTokens[24],
+  medium: sizeTokens[6],
+  large: sizeTokens[12],
 } as const;
 const LEFT_LABEL_WIDTH = 132;
 
@@ -99,7 +99,6 @@ const _DatePickerInput = (
   ref: React.ForwardedRef<any>,
 ): React.ReactElement => {
   const isMobile = useIsMobile();
-  const isLarge = size === 'large';
   const hasLabel = typeof label === 'string' ? Boolean(label) : Boolean(label?.start || label?.end);
   const isLabelPositionLeft = labelPosition === 'left';
   const isLabelPositionTop = labelPosition === 'top';
@@ -213,18 +212,8 @@ const _DatePickerInput = (
             {...referenceProps}
           />
         </BaseBox>
-        <BaseBox flexShrink={0} alignSelf="start">
-          <ArrowRightIcon
-            size="medium"
-            marginTop={
-              // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
-              hasLabel && (!isLabelPositionLeft || isMobile)
-                ? `calc(${makeSize(iconVerticalMargin[size])} + ${makeSize(
-                    isLarge ? sizeTokens[20] : sizeTokens[15],
-                  )})`
-                : makeSize(iconVerticalMargin[size])
-            }
-          />
+        <BaseBox flexShrink={0} alignSelf="end">
+          <ArrowRightIcon size="medium" marginBottom={makeSize(iconVerticalMargin[size])} />
         </BaseBox>
         <BaseBox flex={1}>
           <HiddenInput
