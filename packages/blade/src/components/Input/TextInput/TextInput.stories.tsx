@@ -761,3 +761,15 @@ export const TextInputWithLeadingDropdown: StoryFn<typeof TextInputComponent> = 
     </Box>
   );
 };
+
+export const TextInputWithLeadingIcon: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <TextInputComponent label="Enter your upi id" placeholder="98000xxxxx" leading={BankIcon} />
+  );
+};
+
+export const TextInputWithTrailingIcon: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <TextInputComponent label="Enter your upi id" placeholder="98000xxxxx" trailing={BankIcon} />
+  );
+};
