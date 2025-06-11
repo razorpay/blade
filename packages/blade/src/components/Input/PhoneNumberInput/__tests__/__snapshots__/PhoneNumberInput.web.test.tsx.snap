@@ -229,8 +229,8 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   min-height: 28px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(0,0%,100%,0);
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.18);
   border-width: 0px;
   border-radius: 4px;
   border-style: solid;
@@ -263,29 +263,17 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover {
-  background-color: hsla(211,20%,52%,0.06);
-}
-
-.c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  background-color: hsla(0,0%,100%,0.32);
 }
 
 .c14.c14.c14.c14.c14:active {
-  background-color: hsla(211,20%,52%,0.06);
-}
-
-.c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  background-color: hsla(0,0%,100%,0.32);
 }
 
 .c14.c14.c14.c14.c14:focus-visible {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(0,0%,100%,0.32);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c14.c14.c14.c14.c14:focus-visible.c14.c14.c14.c14.c14:focus-visible [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
 }
 
 .c14.c14.c14.c14.c14 * {
@@ -921,8 +909,8 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   min-height: 28px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(0,0%,100%,0);
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.18);
   border-width: 0px;
   border-radius: 4px;
   border-style: solid;
@@ -955,29 +943,17 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover {
-  background-color: hsla(211,20%,52%,0.06);
-}
-
-.c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  background-color: hsla(0,0%,100%,0.32);
 }
 
 .c14.c14.c14.c14.c14:active {
-  background-color: hsla(211,20%,52%,0.06);
-}
-
-.c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  background-color: hsla(0,0%,100%,0.32);
 }
 
 .c14.c14.c14.c14.c14:focus-visible {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(0,0%,100%,0.32);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c14.c14.c14.c14.c14:focus-visible.c14.c14.c14.c14.c14:focus-visible [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
 }
 
 .c14.c14.c14.c14.c14 * {
@@ -1611,13 +1587,8 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-<<<<<<< HEAD
   background-color: hsla(0,0%,100%,0.18);
   border-color: hsla(0,0%,100%,0.18);
-=======
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(0,0%,100%,0);
->>>>>>> origin/master
   border-width: 0px;
   border-radius: 4px;
   border-style: solid;
@@ -1650,7 +1621,6 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover {
-<<<<<<< HEAD
   background-color: hsla(0,0%,100%,0.32);
 }
 
@@ -1660,31 +1630,8 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 
 .c14.c14.c14.c14.c14:focus-visible {
   background-color: hsla(0,0%,100%,0.32);
-=======
-  background-color: hsla(211,20%,52%,0.06);
-}
-
-.c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
-}
-
-.c14.c14.c14.c14.c14:active {
-  background-color: hsla(211,20%,52%,0.06);
-}
-
-.c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
-}
-
-.c14.c14.c14.c14.c14:focus-visible {
-  background-color: hsla(211,20%,52%,0.06);
->>>>>>> origin/master
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c14.c14.c14.c14.c14:focus-visible.c14.c14.c14.c14.c14:focus-visible [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
 }
 
 .c14.c14.c14.c14.c14 * {
