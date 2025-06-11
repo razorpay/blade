@@ -54,6 +54,8 @@ import { Card, CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBo
       subtitle="Header Subtitle"
       suffix={<Link />}
       prefix={<Icon />}
+      toolTipTittle="Total Payment Volume"
+      toolTipContent="This is a tooltip"
     />
     <CardHeaderTrailing
       visual={
@@ -78,6 +80,13 @@ type CardHeaderTrailingProps = {
   children?: React.ReactNode;
   visual?: React.ReactNode;
 };
+
+type CardHeaderLeadingProps = {
+   // rest of the props
+   toolTipTittle?: string;
+   toolTipContent?: string;
+  }
+
 ```
 
 - we can add internal check to verify if the children prop is a valid component.
