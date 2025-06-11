@@ -174,12 +174,14 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
+          flexWrap="nowrap"
           gap="spacing.3"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
+                "flexWrap": "nowrap",
                 "gap": 8,
               },
             ]
@@ -861,12 +863,14 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
+          flexWrap="nowrap"
           gap="spacing.3"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
+                "flexWrap": "nowrap",
                 "gap": 8,
               },
             ]
