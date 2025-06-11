@@ -289,7 +289,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   const hasTrailingInterectionElement = !_trailingIcon && !trailingDropdown && trailing;
 
-  console.log('hasLeadingInterectionElement', hasLeadingInterectionElement);
 
   const renderDropdown = (
     dropdown: React.ReactElement,
