@@ -174,6 +174,7 @@ module.exports = {
         'react-native-a11y/has-valid-accessibility-live-region': 'off',
         '@typescript-eslint/no-shadow': ['off'],
         '@typescript-eslint/explicit-module-boundary-types': ['off'],
+        '@typescript-eslint/restrict-plus-operands': 'off',
         'no-only-tests/no-only-tests': 'error',
         'no-restricted-imports': [
           'error',

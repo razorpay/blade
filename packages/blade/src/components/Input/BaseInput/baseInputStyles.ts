@@ -93,6 +93,7 @@ export const getInputBackgroundAndBorderStyles = ({
     ? theme.colors.transparent
     : getIn(theme.colors, baseInputBorderColor.default);
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
+  let zIndex: number | undefined;
 
   const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
 
@@ -106,10 +107,10 @@ export const getInputBackgroundAndBorderStyles = ({
   if (!isTableInputCell && validationState && validationState !== 'none') {
     borderColor = getIn(theme.colors, baseInputBorderColor[validationState]);
     borderWidth = getIn(theme.border.width, baseInputBorderWidth[validationState]);
+    zIndex = 1; // Prevent validation ring clipping by adjacent inputs in InputGroup
   } else if (validationState && validationState !== 'none') {
     backgroundColor = getIn(theme.colors, baseInputBorderlessBackgroundColor[validationState]);
   }
-
   return {
     backgroundColor,
     borderRadius: makeBorderSize(
@@ -123,6 +124,7 @@ export const getInputBackgroundAndBorderStyles = ({
     position: 'relative',
     height: isDropdownTrigger && !isTextArea ? 'auto' : undefined,
     border: 'none',
+    zIndex,
     ...getBaseInputBorderStyles({ theme, borderColor, borderWidth, isFocused }),
   };
 };

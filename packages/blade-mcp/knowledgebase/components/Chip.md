@@ -6,6 +6,14 @@ Chip
 
 Chip and ChipGroup components enable users to make selections, filter content, and trigger actions through selectable elements. ChipGroup manages collections of Chips that can be configured for single or multiple selection. Chips are compact, interactive elements that support icons, various colors, and sizes, making them ideal for selection interfaces and filters.
 
+## Important Constraints
+
+- `Chip` component can only be used within the context of a `ChipGroup` component
+- `ChipGroup` component only accepts `Chip` components as children
+- The `value` and `defaultValue` props must match the `selectionType` (string for "single", array for "multiple")
+
+The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+
 ## TypeScript Types
 
 The following types represent the props that the Chip component and its subcomponents accept. These allow you to properly configure the components according to your needs.

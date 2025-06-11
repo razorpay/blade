@@ -181,6 +181,7 @@ exports[`<BaseInput /> should render 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -498,6 +499,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={true}
@@ -815,6 +817,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={true}
@@ -1301,6 +1304,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -1332,6 +1336,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                 "flexDirection": "row",
                 "position": "relative",
                 "width": "100%",
+                "zIndex": 1,
               },
               {},
               {
@@ -1759,6 +1764,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -2279,6 +2285,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -2310,6 +2317,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                 "flexDirection": "row",
                 "position": "relative",
                 "width": "100%",
+                "zIndex": 1,
               },
               {},
               {
@@ -2963,6 +2971,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}

@@ -57,6 +57,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -759,6 +760,7 @@ const getDescribedByElementId = ({
 const FocusRingWrapper = styled(BaseBox)<{
   currentInteraction: ActionStates;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
+  className: string;
 }>(({ theme, currentInteraction, isTableInputCell }) => ({
   borderRadius: makeBorderSize(
     isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
@@ -877,6 +879,11 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   const isReactNative = getPlatformType() === 'react-native';
   const defaultRole = hasPopup ? 'combobox' : undefined;
 
+  const inputGroupProps = useInputGroupContext();
+  const { isInsideInputGroup } = inputGroupProps;
+  const _isDisabled = inputGroupProps.isDisabled ?? isDisabled;
+  const _size = inputGroupProps.size ?? size;
+
   React.useEffect(() => {
     if (showAllTags) {
       setShowAllTagsWithAnimation(true);
@@ -914,7 +921,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
 
   const accessibilityProps = makeAccessible({
     required: Boolean(_isRequired),
-    disabled: Boolean(isDisabled),
+    disabled: Boolean(_isDisabled),
     invalid: Boolean(validationState === 'error'),
     describedBy: getDescribedByElementId({
       validationState,
@@ -967,7 +974,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         position="relative"
         width="100%"
       >
-        {!hideLabelText && !isLabelInsideInput && label && (
+        {/* If the input is in an input group, we don't want to render the label */}
+        {!hideLabelText && !isLabelInsideInput && label && !isInsideInputGroup && (
           <BaseBox
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
@@ -981,7 +989,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               position={labelPosition}
               id={labelId}
               htmlFor={inputId}
-              size={size}
+              size={_size}
             >
               {label}
             </FormLabel>
@@ -991,11 +999,12 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         <FocusRingWrapper
           currentInteraction={currentInteraction}
           isTableInputCell={isTableInputCell}
+          className="focus-ring-wrapper"
         >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}
-            isDisabled={isDisabled}
+            isDisabled={_isDisabled}
             validationState={validationState}
             currentInteraction={currentInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
@@ -1008,7 +1017,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               }
             }}
             maxTagRows={maxTagRows}
-            size={size}
+            size={_size}
             numberOfLines={numberOfLines}
             onClick={() => {
               if (!isReactNative) {
@@ -1018,17 +1027,17 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             isTableInputCell={isTableInputCell}
           >
             <BaseInputVisuals
-              size={size}
+              size={_size}
               leadingIcon={leadingIcon}
               prefix={prefix}
-              isDisabled={isDisabled}
+              isDisabled={_isDisabled}
               leadingInteractionElement={leadingInteractionElement}
               leadingDropDown={leadingDropDown}
             />
             <BaseInputTagSlot
               renderAs={as}
               tags={tags}
-              isDisabled={isDisabled}
+              isDisabled={_isDisabled}
               showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
                 const innerRef = getInnerMotionRef({ _motionMeta, ref });
@@ -1045,7 +1054,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
               maxTagRows={maxTagRows}
               inputWrapperRef={inputWrapperRef}
-              size={size}
+              size={_size}
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
               hasLeadingDropDown={Boolean(leadingDropDown)}
@@ -1059,7 +1068,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 defaultValue={defaultValue}
                 value={value}
                 placeholder={placeholder}
-                isDisabled={isDisabled}
+                isDisabled={_isDisabled}
                 validationState={validationState}
                 isRequired={_isRequired}
                 handleOnFocus={handleOnFocus}
@@ -1092,7 +1101,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
                 autoCapitalize={autoCapitalize}
                 isDropdownTrigger={isDropdownTrigger}
-                $size={size}
+                $size={_size}
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
                 tabIndex={tabIndex}
@@ -1106,10 +1115,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               onTrailingInteractionElementClick={onTrailingInteractionElementClick}
               suffix={suffix}
               trailingIcon={trailingIcon}
-              isDisabled={isDisabled}
+              isDisabled={_isDisabled}
               validationState={validationState}
               trailingButton={trailingButton}
-              size={size}
+              size={_size}
               errorText={errorText}
               successText={successText}
               showHintsAsTooltip={showHintsAsTooltip}
@@ -1118,11 +1127,11 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>
-
-      {hideFormHint || showHintsAsTooltip ? null : (
+      {/* If the input is in an input group, we don't want to render the hint text */}
+      {hideFormHint || showHintsAsTooltip || isInsideInputGroup ? null : (
         <BaseBox
           marginLeft={makeSize(
-            isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,
+            isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[_size] : 0,
           )}
         >
           <BaseBox
@@ -1138,7 +1147,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               helpTextId={helpTextId}
               errorTextId={errorTextId}
               successTextId={successTextId}
-              size={size}
+              size={_size}
             />
             {trailingFooterSlot?.(value ?? inputValue)}
           </BaseBox>

@@ -200,7 +200,7 @@ describe('<BaseButton />', () => {
         </BaseButton>,
       ),
     ).toThrowErrorMatchingInlineSnapshot(
-      `"[Blade: BaseButton]: Tertiary variant can only be used with color: "primary" or "white" but received "positive""`,
+      `"[Blade: BaseButton]: Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "positive""`,
     );
   });
 
