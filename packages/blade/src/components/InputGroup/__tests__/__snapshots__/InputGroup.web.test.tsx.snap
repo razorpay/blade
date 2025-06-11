@@ -224,7 +224,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -2433,7 +2433,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(213,47%,96%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
@@ -2457,7 +2457,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(213,47%,96%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
@@ -2483,7 +2483,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 }
 
 .c6.c6.c6.c6.c6:focus-within {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(213,47%,96%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;

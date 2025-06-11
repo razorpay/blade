@@ -28,6 +28,7 @@ const _DropdownButton = ({
   size = 'medium',
   type = 'button',
   variant = 'primary',
+  color = 'primary',
   accessibilityLabel,
   testID,
   ...rest
@@ -57,6 +58,7 @@ const _DropdownButton = ({
       variant={variant}
       testID={testID}
       ref={triggererRef as any}
+      color={color}
       accessibilityProps={{
         label: accessibilityLabel,
         hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
