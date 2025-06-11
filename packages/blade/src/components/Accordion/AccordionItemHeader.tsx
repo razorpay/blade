@@ -1,3 +1,4 @@
+import React from 'react';
 import { useAccordion, useAccordionItemIndex } from './AccordionContext';
 import { componentIds } from './componentIds';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
@@ -26,6 +27,22 @@ const _AccordionItemHeader = ({
   const { size, showNumberPrefix, expandedIndex } = useAccordion();
   const { index, isDisabled } = useAccordionItemIndex();
 
+  const isLeadingNumberOrIcon = React.useMemo(() => {
+    // Check if leading is a number
+    if (showNumberPrefix && typeof index === 'number') return true;
+
+    // Check if leading is an Icon component (name ends with "Icon")
+    if (
+      leading &&
+      React.isValidElement(leading) &&
+      typeof leading.type === 'function' &&
+      leading.type.name?.endsWith('Icon')
+    )
+      return true;
+
+    return false;
+  }, [leading, showNumberPrefix, index]);
+
   return (
     <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItemHeader })} flex="1">
       <BaseHeader
@@ -50,7 +67,11 @@ const _AccordionItemHeader = ({
         paddingX="spacing.5"
         marginY="spacing.5"
         size={size}
-        isAccordionContext={true}
+        alignItems={!subtitle && !isLeadingNumberOrIcon ? 'center' : 'flex-start'}
+        dividerProps={{
+          thickness: 'thinner',
+          marginX: 'spacing.5',
+        }}
         trailingInteractionElement={
           <CollapsibleChevronIcon
             color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
