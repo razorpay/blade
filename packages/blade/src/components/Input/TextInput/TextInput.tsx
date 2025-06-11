@@ -251,9 +251,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     trailing && typeof trailing === 'function' && trailing.name?.endsWith('Icon')
       ? (trailing as IconComponent)
       : undefined;
-  const hasLeadingInterectionElement = !_leadingIcon && !leadingDropDown && leading;
+  const hasLeadingInteractionElement = !_leadingIcon && !leadingDropDown && leading;
 
-  const hasTrailingInterectionElement = !_trailingIcon && !trailingDropdown && trailing;
+  const hasTrailingInteractionElement = !_trailingIcon && !trailingDropdown && trailing;
 
   const renderDropdown = (
     dropdown: React.ReactElement,
@@ -342,7 +342,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       );
     }
 
-    if (showClearButton && hasTrailingInterectionElement) {
+    if (showClearButton && hasTrailingInteractionElement) {
       return (
         <BaseBox display="flex" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" /> {trailing as React.ReactElement}
@@ -354,7 +354,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       return renderClearButton();
     }
 
-    if (hasTrailingInterectionElement) {
+    if (hasTrailingInteractionElement) {
       return trailing as React.ReactElement;
     }
     return null;
@@ -385,7 +385,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       leadingDropDown={renderLeadingDropDown}
       trailingDropDown={renderTrailingDropDown}
       leadingInteractionElement={
-        hasLeadingInterectionElement ? (leading as React.ReactElement) : null
+        hasLeadingInteractionElement ? (leading as React.ReactElement) : null
       }
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
