@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.2.3
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
 ## 0.2.2
 
 ### Patch Changes

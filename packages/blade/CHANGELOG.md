@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.33.1
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
 ## 12.33.0
 
 ### Minor Changes
