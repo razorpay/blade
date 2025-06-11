@@ -514,12 +514,18 @@ const SingleSelectCardWeb = (): React.ReactElement => {
         to the <Code size="medium">Card</Code>.
       </Text>
 
-      <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
+      <Box
+        display="flex"
+        gap="spacing.5"
+        flexDirection={{ xs: 'column', m: 'row' }}
+        alignItems="stretch"
+      >
         <Card
           as="label"
           accessibilityLabel="Free Tier"
           shouldScaleOnHover
           isSelected={selected === 'free'}
+          minHeight="100%"
         >
           <CardBody>
             <HiddenInput
@@ -544,6 +550,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
           accessibilityLabel="Standard Tier"
           shouldScaleOnHover
           isSelected={selected === 'standard'}
+          minHeight="100%"
         >
           <CardBody>
             <HiddenInput
@@ -567,6 +574,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
           accessibilityLabel="Premium Tier"
           shouldScaleOnHover
           isSelected={selected === 'premium'}
+          minHeight="100%"
         >
           <CardBody>
             <HiddenInput
@@ -609,8 +617,13 @@ const MultiSelectCardWeb = (): React.ReactElement => {
         to the <Code size="medium">Card</Code>.
       </Text>
 
-      <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
-        <Card as="label" shouldScaleOnHover isSelected={selected.includes('free')}>
+      <Box
+        display="flex"
+        gap="spacing.5"
+        flexDirection={{ xs: 'column', m: 'row' }}
+        alignItems="stretch"
+      >
+        <Card as="label" shouldScaleOnHover isSelected={selected.includes('free')} minHeight="100%">
           <CardBody>
             <HiddenInput
               type="checkbox"
@@ -630,7 +643,12 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             </Box>
           </CardBody>
         </Card>
-        <Card as="label" shouldScaleOnHover isSelected={selected.includes('standard')}>
+        <Card
+          as="label"
+          shouldScaleOnHover
+          isSelected={selected.includes('standard')}
+          minHeight="100%"
+        >
           <CardBody>
             <HiddenInput
               type="checkbox"
@@ -649,7 +667,12 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             </Box>
           </CardBody>
         </Card>
-        <Card as="label" shouldScaleOnHover isSelected={selected.includes('premium')}>
+        <Card
+          as="label"
+          shouldScaleOnHover
+          isSelected={selected.includes('premium')}
+          minHeight="100%"
+        >
           <CardBody>
             <HiddenInput
               type="checkbox"
