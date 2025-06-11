@@ -369,7 +369,6 @@ export const BaseInputVisuals = ({
                 hasTrailingInteractionElement,
                 hasSuffix,
                 hasTrailingButton,
-
                 hasTrailingDropDown,
               })}
               display="flex"
