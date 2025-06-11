@@ -77,15 +77,7 @@ type BaseButtonCommonProps = {
   isLoading?: boolean;
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?:
-    | 'primary'
-    | 'white'
-    | 'positive'
-    | 'negative'
-    | 'notice'
-    | 'information'
-    | 'neutral'
-    | 'transparent';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -96,7 +88,6 @@ Mandatory children prop when icon is not provided
 type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
   icon?: undefined;
   children: StringChildrenType;
-  baseButtonIconColor?: undefined;
 } & DataAnalyticsAttribute;
 
 /*
@@ -104,7 +95,6 @@ type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
 */
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
   icon: IconComponent;
-  baseButtonIconColor?: IconColor;
   children?: StringChildrenType;
 } & DataAnalyticsAttribute;
 
@@ -146,15 +136,6 @@ export const getBackgroundColorToken = ({
     return tokens.white[variant][_state];
   }
 
-  if (color === 'transparent') {
-    if (variant !== 'tertiary') {
-      throw new Error(
-        `Transparent color can only be used with tertiary variant but received "${variant}"`,
-      );
-    }
-    return tokens.transparent.tertiary[_state];
-  }
-
   if (color && color !== 'primary') {
     if (variant === 'tertiary') {
       throw new Error(
@@ -182,15 +163,6 @@ export const getTextColorToken = ({
     return tokens.white[variant][_state];
   }
 
-  if (color === 'transparent') {
-    if (variant !== 'tertiary') {
-      throw new Error(
-        `Transparent color can only be used with tertiary variant but received "${variant}"`,
-      );
-    }
-    return tokens.transparent.tertiary[_state];
-  }
-
   if (color && color !== 'primary') {
     if (variant === 'tertiary') {
       throw new Error(
@@ -212,7 +184,6 @@ const getProps = ({
   variant,
   color,
   hasIcon,
-  iconColor,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -222,17 +193,11 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
-  iconColor: IconColor;
 }): BaseButtonStyleProps => {
-  if (
-    variant === 'tertiary' &&
-    color !== 'primary' &&
-    color !== 'white' &&
-    color !== 'transparent'
-  ) {
+  if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "${color}"`,
+      message: `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
     });
   }
 
@@ -247,14 +212,12 @@ const getProps = ({
     width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
     iconPadding:
       hasIcon && childrenString?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
-    iconColor:
-      iconColor ??
-      (getTextColorToken({
-        property: 'icon',
-        variant,
-        color,
-        state: 'default',
-      }) as IconColor),
+    iconColor: getTextColorToken({
+      property: 'icon',
+      variant,
+      color,
+      state: 'default',
+    }) as IconColor,
     textColor: getTextColorToken({
       property: 'text',
       variant,
@@ -287,15 +250,6 @@ const getProps = ({
     hoverBorderColor: getIn(
       theme.colors,
       getBackgroundColorToken({ property: 'border', variant, color, state: 'hover' }),
-    ),
-    hoverIconColor: getIn(
-      theme.colors,
-      getTextColorToken({
-        property: 'icon',
-        variant,
-        color,
-        state: 'hover',
-      }),
     ),
     focusBackgroundColor: getIn(
       theme.colors,
@@ -378,7 +332,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     accessibilityProps,
     onTouchEnd,
     onTouchStart,
-    baseButtonIconColor,
     ...rest
   },
   ref,
@@ -428,7 +381,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     fontSize,
     hoverBorderColor,
     hoverBackgroundColor,
-    hoverIconColor,
     iconColor,
     iconSize,
     iconPadding,
@@ -449,7 +401,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     theme,
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
-    iconColor: baseButtonIconColor,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
@@ -502,7 +453,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         }),
       }}
       variant={variant}
-      color={color}
       isLoading={isLoading}
       disabled={disabled}
       defaultBorderColor={defaultBorderColor}
@@ -547,11 +497,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       height={height}
       width={width}
       isPressed={isPressed}
-      hoverIconColor={
-        isDisabled
-          ? getIn(theme.colors, iconColor as DotNotationToken<Theme['colors']>)
-          : hoverIconColor
-      }
       onMouseDown={(event: React.MouseEvent) => {
         handlePointerPressedIn();
         onMouseDown?.(event);
@@ -580,11 +525,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             right="0px"
             zIndex={1}
           >
-            <BaseSpinner
-              accessibilityLabel="Loading"
-              size={spinnerSize}
-              color={color === 'transparent' ? 'primary' : color}
-            />
+            <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
           </BaseBox>
         ) : null}
         <ButtonContent

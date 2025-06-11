@@ -9,10 +9,8 @@ import type { ButtonProps } from '~components/Button';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { IconColor } from '~components/Button/BaseButton/types';
 
 type DropdownButtonProps = ButtonProps & {
-  iconColor?: IconColor;
   onBlur?: BaseButtonProps['onBlur'];
   onKeyDown?: BaseButtonProps['onKeyDown'];
 };
@@ -21,7 +19,6 @@ const _DropdownButton = ({
   children,
   icon,
   iconPosition = 'left',
-  iconColor,
   isDisabled = false,
   isFullWidth = false,
   isLoading = false,
@@ -31,7 +28,6 @@ const _DropdownButton = ({
   size = 'medium',
   type = 'button',
   variant = 'primary',
-  color = 'primary',
   accessibilityLabel,
   testID,
   ...rest
@@ -51,7 +47,7 @@ const _DropdownButton = ({
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
     <BaseButton
       {...rest}
-      {...(icon ? { icon, baseButtonIconColor: iconColor, children } : { children })}
+      {...(icon ? { icon, children } : { children })}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
@@ -61,7 +57,6 @@ const _DropdownButton = ({
       variant={variant}
       testID={testID}
       ref={triggererRef as any}
-      color={color}
       accessibilityProps={{
         label: accessibilityLabel,
         hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
