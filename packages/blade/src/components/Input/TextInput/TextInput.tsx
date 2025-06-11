@@ -285,6 +285,11 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     trailing && typeof trailing === 'function' && trailing.name?.endsWith('Icon')
       ? (trailing as IconComponent)
       : undefined;
+  const hasLeadingInterectionElement = !_leadingIcon && !leadingDropDown && leading;
+
+  const hasTrailingInterectionElement = !_trailingIcon && !trailingDropdown && trailing;
+
+  console.log('hasLeadingInterectionElement', hasLeadingInterectionElement);
 
   const renderDropdown = (
     dropdown: React.ReactElement,
@@ -378,6 +383,18 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       return renderClearButton();
     }
 
+    if (hasTrailingInterectionElement) {
+      return trailing as React.ReactElement;
+    }
+
+    if (showClearButton && hasTrailingDropDown) {
+      return (
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" />
+        </BaseBox>
+      );
+    }
+
     return null;
   };
   return (
@@ -416,6 +433,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       setActiveTagIndex={setActiveTagIndex}
       leadingDropDown={renderLeadingDropDown}
       trailingDropDown={renderTrailingDropDown}
+      leadingInteractionElement={
+        hasLeadingInterectionElement ? (leading as React.ReactElement) : null
+      }
       onChange={({ name, value }: { name?: string; value?: string }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in

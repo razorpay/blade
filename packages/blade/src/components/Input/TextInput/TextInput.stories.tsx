@@ -17,6 +17,7 @@ import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { BankIcon, GlobeIcon } from '~components/Icons';
+import { Badge } from '~components/Badge';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -771,5 +772,25 @@ export const TextInputWithLeadingIcon: StoryFn<typeof TextInputComponent> = () =
 export const TextInputWithTrailingIcon: StoryFn<typeof TextInputComponent> = () => {
   return (
     <TextInputComponent label="Enter your upi id" placeholder="98000xxxxx" trailing={BankIcon} />
+  );
+};
+
+export const TextInputWithLeadingElement: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <TextInputComponent
+      label="Enter your upi id"
+      placeholder="98000xxxxx"
+      leading={<Badge>+91</Badge>}
+    />
+  );
+};
+
+export const TextInputWithTrailingElement: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <TextInputComponent
+      label="Enter your upi id"
+      placeholder="98000xxxxx"
+      trailing={<Badge>@oksbi</Badge>}
+    />
   );
 };
