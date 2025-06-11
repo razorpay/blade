@@ -27,7 +27,9 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVer
 import type { AmountProps } from '~components/Amount';
 import { Amount } from '~components/Amount';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { BoxProps } from '~components/Box';
+import type { BoxProps } from '~components/Box';
+import { Tooltip } from '~components/Tooltip';
+import { InfoIcon } from '~components/Icons';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -177,6 +179,14 @@ type CardHeaderLeadingProps = {
    * Accepts: `CardHeaderBox` component
    */
   slot?: React.ReactNode;
+  /**
+   * Tooltip title
+   */
+  toolTipTittle?: string;
+  /**
+   * Tooltip content
+   */
+  toolTipContent?: string;
 } & DataAnalyticsAttribute;
 const _CardHeaderLeading = ({
   title,
@@ -184,6 +194,8 @@ const _CardHeaderLeading = ({
   prefix,
   slot,
   suffix,
+  toolTipTittle,
+  toolTipContent,
   ...rest
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
@@ -220,6 +232,13 @@ const _CardHeaderLeading = ({
             <Text color="surface.text.gray.normal" size="large" weight="semibold">
               {title}
             </Text>
+            {(toolTipTittle || toolTipContent) && (
+              //TODO: Add a tooltip component
+              <Tooltip title={toolTipTittle} content={toolTipContent || ''}>
+                <InfoIcon size="small" color="surface.icon.gray.subtle" marginLeft="spacing.2" />
+              </Tooltip>
+            )}
+
             <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
           </BaseBox>
           {subtitle && (
@@ -252,6 +271,7 @@ const headerTrailingAllowedComponents = [
   ComponentIds.CardHeaderIconButton,
   ComponentIds.CardHeaderBadge,
   ComponentIds.CardHeaderAmount,
+  ComponentIds.CardHeaderBox,
 ];
 
 const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
@@ -284,6 +304,16 @@ const CardHeaderBox = assignWithoutSideEffects(_CardHeaderBox, {
   componentId: ComponentIds.CardHeaderBox,
 });
 
+const _CardHeaderButton = (props: ButtonProps): React.ReactElement => {
+  useVerifyInsideCard('CardHeaderButton');
+
+  return <Button {...props} />;
+};
+
+const CardHeaderButton = assignWithoutSideEffects(_CardHeaderButton, {
+  componentId: ComponentIds.CardHeaderButton,
+});
+
 export {
   CardHeader,
   CardHeaderLeading,
@@ -296,4 +326,5 @@ export {
   CardHeaderAmount,
   CardHeaderIconButton,
   CardHeaderBox,
+  CardHeaderButton,
 };

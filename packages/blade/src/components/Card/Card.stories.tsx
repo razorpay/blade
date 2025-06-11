@@ -20,6 +20,7 @@ import {
   CardHeaderAmount,
   CardHeaderText,
   CardHeaderBox,
+  CardHeaderButton,
 } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -32,6 +33,8 @@ import {
   ArrowSquareDownIcon,
   ArrowUpIcon,
   ArrowSquareUpIcon,
+  PlusIcon,
+  ExternalLinkIcon,
 } from '~components/Icons';
 
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -522,6 +525,7 @@ const MetricCardVariantExample = (): React.ReactElement => {
         <CardHeaderLeading
           title="Total Payment Volume"
           subtitle="Total payment volume for the current month"
+          toolTipTittle="Total Payment Volume"
           slot={
             <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
               <Amount
@@ -555,3 +559,34 @@ const MetricCardVariantExample = (): React.ReactElement => {
 };
 
 export const MetricCardVariant = MetricCardVariantExample.bind({});
+
+const LayoutCardVariantExample = (): React.ReactElement => {
+  return (
+    <Card backgroundColor="surface.background.gray.intense">
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title="Total Payment Volume"
+          subtitle="Total payment volume for the current month"
+        />
+        <CardHeaderTrailing
+          visual={
+            <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+              <CardHeaderLink href="/" icon={ExternalLinkIcon}>
+                View chart settings
+              </CardHeaderLink>
+
+              <CardHeaderButton variant="primary" icon={PlusIcon}>
+                View Dashboard
+              </CardHeaderButton>
+            </CardHeaderBox>
+          }
+        />
+      </CardHeader>
+      <CardBody>
+        <GraphSVG />
+      </CardBody>
+    </Card>
+  );
+};
+
+export const LayoutCardVariant = LayoutCardVariantExample.bind({});
