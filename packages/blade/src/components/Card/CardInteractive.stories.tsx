@@ -17,7 +17,7 @@ import {
   CardHeaderBadge,
 } from '.';
 import { Code, Text, Heading } from '~components/Typography';
-import { RupeeIcon } from '~components/Icons';
+import { RupeeIcon, RazorpayIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -30,6 +30,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { Badge } from '~components/Badge';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Checkbox, CheckboxGroup } from '~components/Checkbox';
+import { Divider } from '~components/Divider';
 
 const Page = (): React.ReactElement => {
   return (
@@ -956,6 +957,231 @@ export const MultiSelectSelectWithCheckbox = (): React.ReactElement => {
           </CardBody>
         </Card>
       </CheckboxGroup>
+    </Box>
+  );
+};
+
+const merchantOnboardingOptions = [
+  {
+    value: 'payment-gateway',
+    title: 'Payment Gateway',
+    subtitle: 'Accept online payments',
+    icon: RazorpayIcon,
+    features: [
+      '100+ payment methods',
+      'UPI, Cards, Netbanking, Wallets',
+      'Industry-leading success rates',
+      'Real-time payment tracking',
+    ],
+  },
+  {
+    value: 'payment-links',
+    title: 'Payment Links',
+    subtitle: 'Share & collect payments',
+    icon: RazorpayIcon,
+    features: [
+      'No coding required',
+      'Share via SMS, email, WhatsApp',
+      'Instant payment collection',
+      'Custom branding options',
+    ],
+  },
+  {
+    value: 'payment-pages',
+    title: 'Payment Pages',
+    subtitle: 'Create online store',
+    icon: RazorpayIcon,
+    features: [
+      'Ready-to-use online store',
+      'Product catalog management',
+      'Inventory tracking',
+      'Mobile-optimized checkout',
+    ],
+  },
+  {
+    value: 'pos',
+    title: 'Point of Sale (POS)',
+    subtitle: 'In-store payments',
+    icon: RazorpayIcon,
+    features: [
+      'Accept card & UPI payments',
+      'Contactless payments',
+      'Inventory management',
+      'Sales analytics & reports',
+    ],
+  },
+];
+
+const OptionCard = ({
+  option,
+  isSelected,
+  children,
+}: {
+  option: typeof merchantOnboardingOptions[0];
+  isSelected: boolean;
+  children: React.ReactNode;
+}) => (
+  <Card
+    as="label"
+    isSelected={isSelected}
+    marginBottom="spacing.3"
+    width={{ s: '100%', m: '400px' }}
+  >
+    <CardBody>
+      <Box display="flex" flexDirection="row" gap="spacing.3">
+        <CardHeaderLeading
+          title={option.title}
+          subtitle={option.subtitle}
+          prefix={<CardHeaderIcon icon={option.icon} />}
+        />
+        {children}
+      </Box>
+      <Divider />
+      {option.features.map((feature, index) => (
+        <Text key={index} marginTop={index === 0 ? 'spacing.2' : undefined}>
+          • {feature}
+        </Text>
+      ))}
+    </CardBody>
+  </Card>
+);
+
+export const SelectableCardSingleSelect = (): React.ReactElement => {
+  const [selectedBusinessType, setSelectedBusinessType] = React.useState('');
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const hasError = isSubmitted && !selectedBusinessType;
+
+  return (
+    <Box display="flex" gap="spacing.6" flexDirection="column">
+      <Box>
+        <Text marginBottom="spacing.4" weight="semibold" size="large">
+          Merchant Onboarding - Primary Product Selection
+        </Text>
+        <Text marginBottom="spacing.4">
+          Choose your primary Razorpay product to get started. You can add more products later from
+          your dashboard.
+        </Text>
+
+        <RadioGroup
+          value={selectedBusinessType}
+          onChange={({ value }) => setSelectedBusinessType(value)}
+          label="Which product do you want to start with?"
+          necessityIndicator="required"
+          validationState={hasError ? 'error' : 'none'}
+          errorText={hasError ? 'Please select a product to continue' : undefined}
+          helpText="Select one primary product for your initial setup"
+          orientation="horizontal"
+          labelPosition="left"
+          flexWrap="wrap"
+        >
+          {merchantOnboardingOptions.map((option) => (
+            <OptionCard
+              key={option.value}
+              option={option}
+              isSelected={selectedBusinessType === option.value}
+            >
+              <Radio value={option.value} />
+            </OptionCard>
+          ))}
+        </RadioGroup>
+
+        <Box display="flex" justifyContent="space-between">
+          <Button marginTop="spacing.4" onClick={() => setIsSubmitted(true)} variant="primary">
+            Continue Setup
+          </Button>
+          {selectedBusinessType && (
+            <Box
+              marginTop="spacing.3"
+              backgroundColor="surface.background.gray.intense"
+              padding="spacing.3"
+              borderRadius="medium"
+            >
+              <Text color="surface.text.gray.subtle">
+                Selected:{' '}
+                {
+                  merchantOnboardingOptions.find((option) => option.value === selectedBusinessType)
+                    ?.title
+                }
+              </Text>
+            </Box>
+          )}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const SelectableCardMultiSelect = (): React.ReactElement => {
+  const [selectedProducts, setSelectedProducts] = React.useState<string[]>([]);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const hasError = isSubmitted && selectedProducts.length === 0;
+  const hasMaxError = selectedProducts.length > 3;
+  const validationState = hasError || hasMaxError ? 'error' : 'none';
+  const errorText = hasError
+    ? 'Please select at least one Razorpay product to get started'
+    : hasMaxError
+    ? 'You can select maximum 3 products during initial setup'
+    : undefined;
+
+  return (
+    <Box display="flex" gap="spacing.6" flexDirection="column">
+      <Box>
+        <Text marginBottom="spacing.4" weight="semibold" size="large">
+          Merchant Onboarding - Multiple Product Selection
+        </Text>
+        <Text marginBottom="spacing.4">
+          Choose multiple Razorpay products you want to integrate. You can always add more products
+          later from your dashboard.
+        </Text>
+
+        <CheckboxGroup
+          value={selectedProducts}
+          onChange={({ values }) => setSelectedProducts(values)}
+          label="Which products do you want to use?"
+          necessityIndicator="required"
+          validationState={validationState}
+          errorText={errorText}
+          helpText="Select 1-3 products to start with. Additional products can be enabled later."
+        >
+          {merchantOnboardingOptions.map((option) => (
+            <OptionCard
+              key={option.value}
+              option={option}
+              isSelected={selectedProducts.includes(option.value)}
+            >
+              <Checkbox value={option.value} />
+            </OptionCard>
+          ))}
+        </CheckboxGroup>
+
+        <Box display="flex" justifyContent="space-between">
+          <Button marginTop="spacing.4" onClick={() => setIsSubmitted(true)} variant="primary">
+            Continue Setup
+          </Button>
+
+          {selectedProducts.length > 0 && (
+            <Box
+              marginTop="spacing.3"
+              backgroundColor="surface.background.gray.intense"
+              padding="spacing.3"
+              borderRadius="medium"
+            >
+              <Text color="surface.text.gray.subtle">
+                Selected products ({selectedProducts.length}/3):{' '}
+                {selectedProducts
+                  .map(
+                    (productValue) =>
+                      merchantOnboardingOptions.find((option) => option.value === productValue)
+                        ?.title,
+                  )
+                  .join(', ')}
+              </Text>
+            </Box>
+          )}
+        </Box>
+      </Box>
     </Box>
   );
 };
