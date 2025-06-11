@@ -13,6 +13,10 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { BankIcon, GlobeIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -673,4 +677,87 @@ export const TextInputWithUncontrolledTags: StoryFn<typeof TextInputComponent> =
 TextInputWithUncontrolledTags.args = {
   isTaggedInput: true,
   showClearButton: true,
+};
+
+export const TextInputWithTrailingAndLeadingDropdown: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent
+        label="Enter Website URL (for verification)"
+        leading={
+          <Dropdown>
+            <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="www." value="www" />
+                <ActionListItem title="blog." value="blog" />
+                <ActionListItem title="shop." value="shop" />
+                <ActionListItem title="ecommerce." value="ecommerce" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+        trailing={
+          <Dropdown>
+            <InputDropdownButton defaultValue="in" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title=".in" value="in" />
+                <ActionListItem title=".com" value="com" />
+                <ActionListItem title=".biz" value="biz" />
+                <ActionListItem title=".business" value="business" />
+                {/* maybe one day */}
+                <ActionListItem title=".razorpay" value="razorpay" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
+  );
+};
+
+export const TextInputWithTrailingDropdown: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent
+        label="Enter your upi id"
+        placeholder="98000xxxxx"
+        trailing={
+          <Dropdown>
+            <InputDropdownButton defaultValue="sbi" icon={BankIcon} />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="@oksbi" value="sbi" />
+                <ActionListItem title="@hdfc" value="hdfc" />
+                <ActionListItem title="@razorpay-airtelbank" value="razorpay" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
+  );
+};
+
+export const TextInputWithLeadingDropdown: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent
+        label="Select Currency"
+        placeholder="Select Currency"
+        leading={
+          <Dropdown>
+            <InputDropdownButton defaultValue="inr" icon={BankIcon} />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="INR" value="inr" />
+                <ActionListItem title="USD" value="usd" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
+  );
 };
