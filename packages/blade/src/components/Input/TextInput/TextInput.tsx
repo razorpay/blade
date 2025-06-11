@@ -343,6 +343,14 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       );
     }
 
+    if (showClearButton && hasTrailingInterectionElement) {
+      return (
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" /> {trailing as React.ReactElement}
+        </BaseBox>
+      );
+    }
+
     if (shouldShowClearButton) {
       return renderClearButton();
     }
@@ -350,15 +358,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     if (hasTrailingInterectionElement) {
       return trailing as React.ReactElement;
     }
-
-    if (showClearButton && hasTrailingDropDown) {
-      return (
-        <BaseBox display="flex" gap="spacing.3">
-          {renderClearButton()} <Divider orientation="vertical" />
-        </BaseBox>
-      );
-    }
-
     return null;
   };
   return (
