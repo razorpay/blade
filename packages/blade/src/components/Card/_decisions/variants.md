@@ -15,6 +15,8 @@ We are introducing 2 new variants of cards - Layout, Metric and default (current
 <img src="./card-anatomy.png" alt="Default Card"  width="380"/>
 
 *Note*
+
+
 After initial discussion we decided that we would be treating these card variants as enhancements to the existing `Card` component. 
 
 ## Layout Card
@@ -31,7 +33,7 @@ Layout cards serve as comprehensive content containers that guide users through 
 ### API
 
 ```jsx
-import { Card, CardHeader ,CardHeaderBox , CardHeaderLink ,CardHeaderButton  } from '@razorpay/blade/components';
+import { Card, CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBox , CardHeaderLink ,CardHeaderButton  } from '@razorpay/blade/components';
 
 <Card>
   <CardHeader>
@@ -71,7 +73,7 @@ type CardHeaderTrailingProps = {
 ### Alternative APIs
 
 ```jsx
-import { Card, CardHeader } from '@razorpay/blade/components';
+import { Card, CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBox , CardHeaderLink ,CardHeaderButton } from '@razorpay/blade/components';
 
 <Card>
   <CardHeader>
@@ -123,7 +125,7 @@ Metric card is designed to prominently display key performance indicators, stati
 ### API
 
 ```jsx
-import { Card , CardHeader , CardHeaderBox } from '@razorpay/blade/components';
+import { Card ,CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBadge , CardHeaderLink ,CardHeaderButton } from '@razorpay/blade/components';
 
 <Card>
   <CardHeader>
