@@ -9,30 +9,10 @@ const getTransitionDuration = (theme: Theme) => makeMotionTime(theme.motion.dura
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getTransitionEasing = (theme: Theme) => theme.motion.easing.standard;
 
-const getBackgroundColor = ({
-  theme,
-  isExpanded,
-  isActive,
-}: {
-  theme: Theme;
-  isExpanded: boolean;
-  isActive: boolean;
-}): string => {
+const getBackgroundColor = ({ theme, isActive }: { theme: Theme; isActive: boolean }): string => {
   const { gray } = theme.colors.interactive.background;
 
-  if (isExpanded) {
-    if (isActive) {
-      return gray.fadedHighlighted;
-    }
-
-    return gray.faded;
-  }
-
-  if (isActive) {
-    return gray.faded;
-  }
-
-  return theme.colors.transparent;
+  return isActive ? gray.faded : theme.colors.transparent;
 };
 
 const getCommonAccordionButtonStyles = (
