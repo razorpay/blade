@@ -650,7 +650,6 @@ WithDivider.args = {
   valueAlign: 'right',
   maxWidth: { base: '100%', m: '400px' },
 };
-
 export const WithHorizontalItemAlignments: StoryFn<typeof InfoGroup> = (args) => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
