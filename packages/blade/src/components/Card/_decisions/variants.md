@@ -14,17 +14,13 @@ We are introducing 2 new variants of cards - Layout, Metric and default (current
 
 <img src="./card-anatomy.png" alt="Default Card"  width="380"/>
 
-## API
-
-We would be treating as enhancements to the existing `Card` component. so the API would be same as the existing `Card` component.
+*Note*
+After initial discussion we decided that we would be treating these card variants as enhancements to the existing `Card` component. 
 
 ## Layout Card
 
 Layout cards serve as comprehensive content containers that guide users through multi-step processes, feature highlights, or detailed information sections. They're particularly effective in scenarios where users need to consume information and take specific actions, such as dashboards, detailed information sections or settings pages.
 
-
-*Note*
-After initial discussion we decided that we would be treating these card variants as enhancements to the existing `Card` component. 
 
 
 ### Design
@@ -86,16 +82,16 @@ import { Card, CardHeader } from '@razorpay/blade/components';
       prefix={<Icon />}
     />
     <CardHeaderTrailing>
-      <Box>
+      <CardHeaderBox>
         // first link
-        <Link href="https://github.com" />
+        <CardHeaderLink href="https://github.com" />
         // second link
-        <Link href="https://github.com" />
+        <CardHeaderLink href="https://github.com" />
         // primary action
-        <Button  />
+        <CardHeaderButton  />
         // secondary action
-        <Button />
-      </Box>
+        <CardHeaderButton />
+      </CardHeaderBox>
     </CardHeaderTrailing>
   </CardHeader>
   <CardBody>//content</CardBody>
