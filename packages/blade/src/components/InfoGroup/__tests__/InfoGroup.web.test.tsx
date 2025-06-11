@@ -84,7 +84,6 @@ describe('<InfoGroup />', () => {
       <InfoGroup
         itemOrientation="horizontal"
         size="medium"
-        keyAlign="left"
         valueAlign="right"
         isHighlighted={true}
         maxWidth="600px"
@@ -270,19 +269,13 @@ describe('<InfoGroup />', () => {
   it('should render InfoGroup with different alignments', () => {
     const { container } = renderWithTheme(
       <div>
-        <InfoGroup keyAlign="left" valueAlign="left">
+        <InfoGroup valueAlign="left">
           <InfoItem>
             <InfoItemKey>Account Holder</InfoItemKey>
             <InfoItemValue>Saurabh Daware</InfoItemValue>
           </InfoItem>
         </InfoGroup>
-        <InfoGroup keyAlign="left" valueAlign="right">
-          <InfoItem>
-            <InfoItemKey>Account Holder</InfoItemKey>
-            <InfoItemValue>Saurabh Daware</InfoItemValue>
-          </InfoItem>
-        </InfoGroup>
-        <InfoGroup keyAlign="right" valueAlign="right">
+        <InfoGroup valueAlign="right">
           <InfoItem>
             <InfoItemKey>Account Holder</InfoItemKey>
             <InfoItemValue>Saurabh Daware</InfoItemValue>

@@ -41,16 +41,18 @@ const _DropdownOverlay = ({
   maxWidth,
   referenceRef,
   defaultPlacement = 'bottom-start',
+  _isNestedDropdown = false,
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   const isMenu =
-    dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
-    dropdownTriggerer !== dropdownComponentIds.triggers.SearchInput &&
-    dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete &&
-    referenceRef == undefined;
+    (dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
+      dropdownTriggerer !== dropdownComponentIds.triggers.SearchInput &&
+      dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete &&
+      referenceRef == undefined) ||
+    _isNestedDropdown;
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,

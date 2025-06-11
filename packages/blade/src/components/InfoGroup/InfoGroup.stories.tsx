@@ -114,7 +114,6 @@ export const InfoGroupDefault = InfoGroupTemplate.bind({});
 InfoGroupDefault.args = {
   itemOrientation: 'horizontal',
   size: 'medium',
-  keyAlign: 'left',
   valueAlign: 'left',
 };
 InfoGroupDefault.storyName = 'Default';
@@ -651,34 +650,24 @@ WithDivider.args = {
   valueAlign: 'right',
   maxWidth: { base: '100%', m: '400px' },
 };
-// with different alignments
 export const WithHorizontalItemAlignments: StoryFn<typeof InfoGroup> = (args) => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
       <Card elevation="none" maxWidth={args.maxWidth}>
         <CardHeader>
-          <CardHeaderLeading title="With keyAlign: left and valueAlign: left" />
+          <CardHeaderLeading title="With valueAlign: left" />
         </CardHeader>
         <CardBody>
-          <WithDivider {...args} keyAlign="left" valueAlign="left" />
+          <WithDivider {...args} valueAlign="left" />
         </CardBody>
       </Card>
 
       <Card elevation="none" maxWidth={args.maxWidth}>
         <CardHeader>
-          <CardHeaderLeading title="With keyAlign: left and valueAlign: right" />
+          <CardHeaderLeading title="With valueAlign: right" />
         </CardHeader>
         <CardBody>
-          <WithDivider {...args} keyAlign="left" valueAlign="right" />
-        </CardBody>
-      </Card>
-
-      <Card elevation="none" maxWidth={args.maxWidth}>
-        <CardHeader>
-          <CardHeaderLeading title="With keyAlign: right and valueAlign: right" />
-        </CardHeader>
-        <CardBody>
-          <WithDivider {...args} keyAlign="right" valueAlign="right" />
+          <WithDivider {...args} valueAlign="right" />
         </CardBody>
       </Card>
     </Box>

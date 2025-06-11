@@ -854,24 +854,6 @@ exports[`<InfoGroup /> should render InfoGroup with different alignments 1`] = `
   margin: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
 .c6.c6.c6.c6.c6 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -987,68 +969,6 @@ exports[`<InfoGroup /> should render InfoGroup with different alignments 1`] = `
       >
         <dt
           class="c2"
-          data-blade-component="info-item-key"
-        >
-          <div
-            class="c3"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c4"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c5"
-                data-blade-component="base-box"
-              >
-                <p
-                  class="c6"
-                  data-blade-component="text"
-                >
-                  Account Holder
-                </p>
-              </div>
-            </div>
-          </div>
-        </dt>
-        <dd
-          class="c9"
-          data-blade-component="info-item-value"
-        >
-          <div
-            class="c3"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c4"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c5"
-                data-blade-component="base-box"
-              >
-                <p
-                  class="c8"
-                  data-blade-component="text"
-                >
-                  Saurabh Daware
-                </p>
-              </div>
-            </div>
-          </div>
-        </dd>
-      </div>
-    </dl>
-    <dl
-      class="c0"
-      data-blade-component="info-group"
-    >
-      <div
-        class="c1"
-        data-blade-component="info-item"
-      >
-        <dt
-          class="c10"
           data-blade-component="info-item-key"
         >
           <div

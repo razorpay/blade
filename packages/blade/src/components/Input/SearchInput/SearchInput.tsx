@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -21,6 +21,9 @@ import type {
 } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
+import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -59,6 +62,10 @@ type SearchInputCommonProps = Pick<
    * @default true
    */
   showSearchIcon?: boolean;
+  /**
+   * Optional trailing  to be shown at the end of the input.
+   */
+  trailing?: React.ReactNode;
 } & StyledPropsBlade;
 
 /*
@@ -121,6 +128,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     testID,
     size = 'medium',
     showSearchIcon = true,
+    trailing,
     ...rest
   },
   ref,
@@ -128,11 +136,14 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   const textInputRef = React.useRef<BladeElementRefWithValue>(null);
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
+  const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = useState(false);
   const {
     triggererWrapperRef,
     onTriggerKeydown,
     onTriggerClick,
     dropdownTriggerer,
+    close: closeParentDropDown,
+    isOpen: isParentDropDownOpen,
   } = useDropdown();
   const isInsideDropdown = dropdownTriggerer === 'SearchInput';
 
@@ -140,37 +151,96 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     setShouldShowClearButton(Boolean(defaultValue ?? value));
   }, [defaultValue, value]);
 
+  useEffect(() => {
+    if (isParentDropDownOpen && isTrailingDropDownOpen) {
+      setIsTrailingDropDownOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [closeParentDropDown, isParentDropDownOpen]);
+
+  useEffect(() => {
+    if (isTrailingDropDownOpen && isParentDropDownOpen) {
+      closeParentDropDown();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setIsTrailingDropDownOpen, isTrailingDropDownOpen]);
+
+  const trailingDropdown =
+    trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
+
+  const renderTrailingDropDown = (): React.ReactElement | null => {
+    if (!trailingDropdown) {
+      return null;
+    }
+    return React.cloneElement(trailingDropdown as React.ReactElement, {
+      selectionType: 'single',
+      isOpen: isTrailingDropDownOpen,
+      onOpenChange: (isOpen: boolean) => {
+        setIsTrailingDropDownOpen(isOpen);
+      },
+      children: React.Children.map(
+        (trailingDropdown as React.ReactElement).props.children,
+        (child) => {
+          if (child.type === InputDropdownButton) {
+            return React.cloneElement(child, {
+              _isInsideSearchInput: true,
+            });
+          }
+          if (child.type === DropdownOverlay) {
+            return React.cloneElement(child, {
+              referenceRef: triggererWrapperRef,
+              _isNestedDropdown: true,
+              defaultPlacement: 'bottom-end',
+            });
+          }
+          return child;
+        },
+      ),
+    });
+  };
+
+  const renderClearButton = (): React.ReactElement => {
+    return (
+      <IconButton
+        size="medium"
+        icon={CloseIcon}
+        onClick={() => {
+          if (isEmpty(value) && textInputRef.current) {
+            // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+            if (isReactNative(textInputRef.current)) {
+              textInputRef.current.clear();
+              textInputRef.current.focus();
+            } else if (textInputRef.current instanceof HTMLInputElement) {
+              textInputRef.current.value = '';
+              textInputRef.current.focus();
+            }
+          }
+
+          // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+          onClearButtonClick?.();
+          textInputRef?.current?.focus();
+          setShouldShowClearButton(false);
+        }}
+        isDisabled={isDisabled}
+        accessibilityLabel="Clear Input Content"
+      />
+    );
+  };
+
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
       return <Spinner accessibilityLabel="Loading Content" color="primary" />;
     }
 
-    if (shouldShowClearButton) {
+    if (shouldShowClearButton && trailingDropdown) {
       return (
-        <IconButton
-          size="medium"
-          icon={CloseIcon}
-          onClick={() => {
-            if (isEmpty(value) && textInputRef.current) {
-              // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-              if (isReactNative(textInputRef.current)) {
-                textInputRef.current.clear();
-                textInputRef.current.focus();
-              } else if (textInputRef.current instanceof HTMLInputElement) {
-                textInputRef.current.value = '';
-                textInputRef.current.focus();
-              }
-            }
-
-            // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
-            onClearButtonClick?.();
-            textInputRef?.current?.focus();
-            setShouldShowClearButton(false);
-          }}
-          isDisabled={isDisabled}
-          accessibilityLabel="Clear Input Content"
-        />
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" />
+        </BaseBox>
       );
+    }
+    if (shouldShowClearButton) {
+      return renderClearButton();
     }
 
     return null;
@@ -184,7 +254,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         ref={mergedRef}
         isDropdownTrigger={true}
         setInputWrapperRef={
-          isInsideDropdown
+          isInsideDropdown || isTrailingDropDownOpen
             ? (wrapperNode) => {
                 triggererWrapperRef.current = wrapperNode;
               }
@@ -225,6 +295,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         isDisabled={isDisabled}
         leadingIcon={showSearchIcon ? SearchIcon : undefined}
         trailingInteractionElement={renderInteractionElement()}
+        trailingDropDown={renderTrailingDropDown()}
         helpText={helpText}
         // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus={autoFocus}
