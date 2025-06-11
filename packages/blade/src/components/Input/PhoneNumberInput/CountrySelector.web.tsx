@@ -101,7 +101,6 @@ const CountrySelector = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          color="white"
           iconColor="surface.icon.gray.muted"
         >
           {/* @ts-expect-error */}
