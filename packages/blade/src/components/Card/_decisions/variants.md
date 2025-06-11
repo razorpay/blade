@@ -22,14 +22,20 @@ We would be treating as enhancements to the existing `Card` component. so the AP
 
 Layout cards serve as comprehensive content containers that guide users through multi-step processes, feature highlights, or detailed information sections. They're particularly effective in scenarios where users need to consume information and take specific actions, such as dashboards, detailed information sections or settings pages.
 
+
+*Note*
+After initial discussion we decided that we would be treating these card variants as enhancements to the existing `Card` component. 
+
+
 ### Design
 
 - [Figma - Layout Card](https://www.figma.com/design/yKBlpifyZvi28APkmlY5Td/-Research--Cards--v2-?node-id=1429-61697&p=f&m=dev)
 
+
 ### API
 
 ```jsx
-import { Card, CardHeader } from '@razorpay/blade/components';
+import { Card, CardHeader ,CardHeaderBox , CardHeaderLink ,CardHeaderButton  } from '@razorpay/blade/components';
 
 <Card>
   <CardHeader>
@@ -39,18 +45,16 @@ import { Card, CardHeader } from '@razorpay/blade/components';
       suffix={<Link />}
       prefix={<Icon />}
     />
-    <CardHeaderTrailing>
-      <Box>
-        // first link
-        <Link href="https://github.com" />
-        // second link
-        <Link href="https://github.com" />
-        // primary action
-        <Button  />
-        // secondary action
-        <Button />
-      </Box>
-    </CardHeaderTrailing>
+    <CardHeaderTrailing
+      visual={
+        <CardHeaderBox>
+          <CardHeaderLink />
+          <CardHeaderLink />
+          <CardHeaderButton />
+          <CardHeaderButton />
+        </CardHeaderBox>
+      }
+    ></CardHeaderTrailing>
   </CardHeader>
   <CardBody>//content</CardBody>
   <CardFooter>//footer</CardFooter>
@@ -81,20 +85,18 @@ import { Card, CardHeader } from '@razorpay/blade/components';
       suffix={<Link />}
       prefix={<Icon />}
     />
-    <CardHeaderTrailing
-      visual={
-        <Box>
-          // first link
-          <Link href="https://github.com" />
-          // second link
-          <Link href="https://github.com" />
-          //secondary action
-          <Button  />
-          // primary action
-          <Button />
-        </Box>
-      }
-    ></CardHeaderTrailing>
+    <CardHeaderTrailing>
+      <Box>
+        // first link
+        <Link href="https://github.com" />
+        // second link
+        <Link href="https://github.com" />
+        // primary action
+        <Button  />
+        // secondary action
+        <Button />
+      </Box>
+    </CardHeaderTrailing>
   </CardHeader>
   <CardBody>//content</CardBody>
   <CardFooter>//footer</CardFooter>
@@ -125,17 +127,17 @@ Metric card is designed to prominently display key performance indicators, stati
 ### API
 
 ```jsx
-import { Card , CardHeader } from '@razorpay/blade/components';
+import { Card , CardHeader , CardHeaderBox } from '@razorpay/blade/components';
 
 <Card>
   <CardHeader>
     <CardHeaderLeading
       title="Header Title"
       subtitle="Header Subtitle"
-      slot={<Box> 
+      slot={<CardHeaderBox> 
        <Amount/>
        <Text> ferferf </Text>
-      </Box>}
+      </CardHeaderBox>}
       />
     <CardHeaderTrailing
      visual={isMobile ? <CardHeaderBadge/> :  <CardHeaderLink>} />
