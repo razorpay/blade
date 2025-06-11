@@ -289,7 +289,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     setIsLeadingDropDownOpen,
     'bottom-start',
   );
-
   const renderTrailingDropDown = renderDropdown(
     trailingDropdown as React.ReactElement,
     isTrailingDropDownOpen,
