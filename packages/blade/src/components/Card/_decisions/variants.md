@@ -1,5 +1,17 @@
 # Card Variants
 
+## Table of Contents
+- [Card Variants](#card-variants)
+  - [Layout Card](#layout-card)
+    - [Design](#design)
+    - [API](#api)
+    - [Typescript Types](#typescript-types)
+    - [Alternative APIs](#alternative-apis)
+  - [Metric Card](#metric-card)
+    - [Design](#design-1)
+    - [API](#api-1)
+    - [Typescript Types](#typescript-types-1)
+
 We are introducing 2 new variants of cards - Layout, Metric and default (currently exists as `Card`)
 
 - Layout Card - Layout cards serve as comprehensive content containers that guide users through multi-step processes, feature highlights, or detailed information sections. They're particularly effective in scenarios where users need to consume information and take specific actions, such as dashboards, detailed information sections or settings pages.
@@ -112,7 +124,9 @@ type CardHeaderTrailingProps = {
 
 - we might need to modify the visual prop to accept more components. maybe move checks to the component itself ? or eslint plugin
 
-- might need to do JSX parsing in case of mobile and render action list.
+-  need to do JSX parsing in case of mobile and render action list.
+## Benefis of this approach
+
 
 ## Metric Card
 
