@@ -41,7 +41,6 @@ import {
   name="plan-selection"
   onChange={({ values }) => console.log(values)}
   orientation="horizontal"
-  // Note: flexWrap prop will be available after enhancement implementation
 >
   <Card as="label" isSelected={selectedValue === 'starter'}>
     <CardBody>
@@ -75,7 +74,6 @@ import {
   orientation="horizontal"
   validationState="error"
   errorText="Please select at least one add-on"
-  // Note: flexWrap prop will be available after enhancement implementation
 >
   <Card as="label" isSelected={selectedValues.includes('smart_collect')}>
     {/* Card automatically inherits error validation state from CheckboxGroup */}
@@ -152,7 +150,7 @@ const cardValidationState = groupValidationState; // Apply to border styling
 
 ### RadioGroup/CheckboxGroup Horizontal Wrapping
 
-We extend existing RadioGroup and CheckboxGroup components with flex wrapping capabilities to prevent horizontal scrolling when needed by user:
+We extend existing RadioGroup and CheckboxGroup components with flex wrapping capabilities:
 
 ```ts
 type RadioGroupProps = RadioGroupProps & {
@@ -161,7 +159,7 @@ type RadioGroupProps = RadioGroupProps & {
    * When set to 'wrap', items will wrap to next line instead of causing horizontal scrolling
    * @default "nowrap"
    */
-  flexWrap?: 'wrap' | 'nowrap';
+  flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
 };
 
 type CheckboxGroupProps = CheckboxGroupProps & {
@@ -170,7 +168,7 @@ type CheckboxGroupProps = CheckboxGroupProps & {
    * When set to 'wrap', items will wrap to next line instead of causing horizontal scrolling
    * @default "nowrap"
    */
-  flexWrap?: 'wrap' | 'nowrap';
+  flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
 };
 ```
 
@@ -205,7 +203,7 @@ type CheckboxGroupProps = CheckboxGroupProps & {
 
 **Implementation needed:**
 
-- Add `flexWrap?: 'wrap' | 'nowrap'` prop to RadioGroup and CheckboxGroup component interfaces
+- Add `flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'` prop to RadioGroup and CheckboxGroup component interfaces
 - Update internal BaseBox layout to use `flexWrap={flexWrap}` when `orientation="horizontal"`
 - Default to `flexWrap="nowrap"` to maintain current behavior and backward compatibility
 - Ensure proper spacing between wrapped items using existing gap system
