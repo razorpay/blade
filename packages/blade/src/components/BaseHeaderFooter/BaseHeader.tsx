@@ -2,6 +2,7 @@
 import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { Divider } from '~components/Divider';
+import type { DividerProps } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
@@ -68,6 +69,9 @@ type BaseHeaderProps = {
   marginY?: BoxProps['marginY'];
   marginTop?: BoxProps['marginTop'];
   marginBottom?: BoxProps['marginBottom'];
+  alignItems?: BoxProps['alignItems'];
+  dividerProps?: DividerProps;
+
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
@@ -299,6 +303,8 @@ const _BaseHeader = ({
   children,
   trailingInteractionElement,
   backgroundImage,
+  alignItems = 'flex-start',
+  dividerProps,
   ...rest
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
@@ -353,7 +359,7 @@ const _BaseHeader = ({
               flex="auto"
               display="flex"
               flexDirection="row"
-              alignItems="flex-start"
+              alignItems={alignItems}
             >
               {leading ? (
                 <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
@@ -452,7 +458,7 @@ const _BaseHeader = ({
           ) : null}
         </BaseBox>
       </BaseBox>
-      {showDivider ? <Divider /> : null}
+      {showDivider ? <Divider {...dividerProps} /> : null}
     </BaseBox>
   );
 };

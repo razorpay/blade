@@ -275,16 +275,19 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   const trailingDropdown =
     trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
-
+  // we need to look into name of component and check if it 's and icon or a dropdown
   const _leadingIcon: IconComponent | undefined =
-    leading && getComponentId(leading as React.ReactElement) === 'Icon'
+    leading && typeof leading === 'function' && leading.name?.endsWith('Icon')
       ? (leading as IconComponent)
       : undefined;
 
   const _trailingIcon: IconComponent | undefined =
-    trailing && getComponentId(trailing as React.ReactElement) === 'Icon'
+    trailing && typeof trailing === 'function' && trailing.name?.endsWith('Icon')
       ? (trailing as IconComponent)
       : undefined;
+  const hasLeadingInteractionElement = !_leadingIcon && !leadingDropDown && leading;
+
+  const hasTrailingInteractionElement = !_trailingIcon && !trailingDropdown && trailing;
 
   const renderDropdown = (
     dropdown: React.ReactElement,
@@ -320,7 +323,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     setIsLeadingDropDownOpen,
     'bottom-start',
   );
-
   const renderTrailingDropDown = renderDropdown(
     trailingDropdown as React.ReactElement,
     isTrailingDropDownOpen,
@@ -374,10 +376,21 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       );
     }
 
+    if (showClearButton && hasTrailingInteractionElement) {
+      return (
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" /> {trailing as React.ReactElement}
+        </BaseBox>
+      );
+    }
+
     if (shouldShowClearButton) {
       return renderClearButton();
     }
 
+    if (hasTrailingInteractionElement) {
+      return trailing as React.ReactElement;
+    }
     return null;
   };
   return (
@@ -416,6 +429,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       setActiveTagIndex={setActiveTagIndex}
       leadingDropDown={renderLeadingDropDown}
       trailingDropDown={renderTrailingDropDown}
+      leadingInteractionElement={
+        hasLeadingInteractionElement ? (leading as React.ReactElement) : null
+      }
       onChange={({ name, value }: { name?: string; value?: string }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
