@@ -1,5 +1,54 @@
 # @razorpay/blade
 
+## 12.33.1
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
+## 12.33.0
+
+### Minor Changes
+
+- 43cc06167: feat(InfoGroup): add InfoGroup component
+
+### Patch Changes
+
+- 16a8f55c5: feat(InfoGroup): remove keyAlign prop
+  feat(InfoGroup knowledgebase): update knowledgebase to add InfoGroup component
+
+## 12.32.3
+
+### Patch Changes
+
+- c09440955: fix(table): fix table selected styles
+- 5badd6410: fix: label position to 'top' for CheckboxGroup and RadioGroup on mobile viewports
+
+## 12.32.2
+
+### Patch Changes
+
+- a9fdac32f: fix(blade): add disabled prop in filterchip
+
+## 12.32.1
+
+### Patch Changes
+
+- 562c93dac: feat(SideNav): change SideNav width and test mode icon
+  > [!NOTE]
+  >
+  > This changes the width of the SideNav. Make sure to adjust the rest of the layout accordingly if it depends on SideNav width.
+
+## 12.32.0
+
+### Minor Changes
+
+- d956170e9: feat(blade): add inputgroup
+
+### Patch Changes
+
+- 1d14b48c0: fix(blade): remove modal contraints
+
 ## 12.31.5
 
 ### Patch Changes

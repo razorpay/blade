@@ -41,6 +41,11 @@ const backgroundColor = (property: 'background' | 'border') => {
         highlighted: `interactive.${property}.gray.highlighted`,
         disabled: `interactive.${property}.gray.disabled`,
       },
+      transparent: {
+        default: 'transparent',
+        highlighted: `interactive.${property}.gray.faded`,
+        disabled: `interactive.${property}.gray.disabled`,
+      },
     },
     white: {
       primary: {
@@ -58,6 +63,13 @@ const backgroundColor = (property: 'background' | 'border') => {
       tertiary: {
         default: `interactive.background.staticWhite.faded`,
         highlighted: `interactive.background.staticWhite.fadedHighlighted`,
+        disabled: `interactive.background.staticWhite.disabled`,
+      },
+    },
+    transparent: {
+      tertiary: {
+        default: 'transparent',
+        highlighted: 'interactive.background.gray.faded',
         disabled: `interactive.background.staticWhite.disabled`,
       },
     },
@@ -118,6 +130,15 @@ const textColor = (property: 'icon' | 'text') => {
         disabled: `interactive.${property}.staticWhite.disabled`,
       },
     },
+    transparent: {
+      tertiary: {
+        default: property === 'icon' ? 'interactive.icon.gray.muted' : 'surface.text.gray.normal',
+        highlighted:
+          property === 'icon' ? 'interactive.icon.gray.subtle' : 'surface.text.gray.normal',
+        disabled: `interactive.${property}.gray.disabled`,
+      },
+    },
+
     color: (color: FeedbackColors) => {
       return {
         primary: {

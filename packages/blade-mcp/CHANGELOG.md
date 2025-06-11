@@ -1,5 +1,18 @@
 # @razorpay/blade-mcp
 
+## 0.2.3
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
+## 0.2.2
+
+### Patch Changes
+
+- 16a8f55c5: feat(InfoGroup): remove keyAlign prop
+  feat(InfoGroup knowledgebase): update knowledgebase to add InfoGroup component
+
 ## 0.2.1
 
 ### Patch Changes
