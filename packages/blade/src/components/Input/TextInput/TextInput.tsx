@@ -241,16 +241,19 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   const trailingDropdown =
     trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
-
+  // we need to look into name of component and check if it 's and icon or a dropdown
   const _leadingIcon: IconComponent | undefined =
-    leading && getComponentId(leading as React.ReactElement) === 'Icon'
+    leading && typeof leading === 'function' && leading.name?.endsWith('Icon')
       ? (leading as IconComponent)
       : undefined;
 
   const _trailingIcon: IconComponent | undefined =
-    trailing && getComponentId(trailing as React.ReactElement) === 'Icon'
+    trailing && typeof trailing === 'function' && trailing.name?.endsWith('Icon')
       ? (trailing as IconComponent)
       : undefined;
+  const hasLeadingInterectionElement = !_leadingIcon && !leadingDropDown && leading;
+
+  const hasTrailingInterectionElement = !_trailingIcon && !trailingDropdown && trailing;
 
   const renderDropdown = (
     dropdown: React.ReactElement,
@@ -344,6 +347,18 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       return renderClearButton();
     }
 
+    if (hasTrailingInterectionElement) {
+      return trailing as React.ReactElement;
+    }
+
+    if (showClearButton && hasTrailingDropDown) {
+      return (
+        <BaseBox display="flex" gap="spacing.3">
+          {renderClearButton()} <Divider orientation="vertical" />
+        </BaseBox>
+      );
+    }
+
     return null;
   };
   return (
@@ -371,6 +386,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       setActiveTagIndex={setActiveTagIndex}
       leadingDropDown={renderLeadingDropDown}
       trailingDropDown={renderTrailingDropDown}
+      leadingInteractionElement={
+        hasLeadingInterectionElement ? (leading as React.ReactElement) : null
+      }
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
