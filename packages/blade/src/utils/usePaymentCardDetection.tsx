@@ -12,7 +12,7 @@ export const detectPaymentCardBrand = (cardNumber: string): PaymentCardBrand => 
   const cleanNumber = cardNumber.replace(/\s/g, '');
 
   // Visa: starts with 4
-  if (/^4/.test(cleanNumber)) {
+  if (cleanNumber.startsWith('4')) {
     return 'visa';
   }
 
@@ -85,7 +85,13 @@ export const getPaymentCardCVVLength = (brand: string): number => {
   return 3;
 };
 
-export const usePaymentCardDetection = () => {
+export const usePaymentCardDetection = (): {
+  detectPaymentCardBrand: (cardNumber: string) => PaymentCardBrand;
+  getPaymentCardBrandIcon: (brand: string) => React.ReactElement;
+  getPaymentCardNumberFormat: (brand: string) => string;
+  getPaymentCardCVVLength: (brand: string) => number;
+  paymentCardBrandAssets: typeof paymentCardBrandAssets;
+} => {
   return {
     detectPaymentCardBrand,
     getPaymentCardBrandIcon,
