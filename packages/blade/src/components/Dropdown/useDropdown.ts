@@ -80,7 +80,8 @@ type DropdownContextType = {
     | 'AutoComplete'
     | 'DropdownLink'
     | 'SearchInput'
-    | 'FilterChipSelectInput';
+    | 'FilterChipSelectInput'
+    | 'InputDropdownButton';
 
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.MutableRefObject<HTMLButtonElement | null>;

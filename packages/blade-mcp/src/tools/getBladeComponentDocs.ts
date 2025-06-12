@@ -1,20 +1,18 @@
-import { resolve, join } from 'path';
-import { existsSync, readFileSync } from 'fs';
+import { join } from 'path';
+import { existsSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
-  KNOWLEDGEBASE_DIRECTORY,
-  hasOutDatedRules,
-  getBladeComponentsList,
-  handleError,
-  sendAnalytics,
+  CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
-} from '../utils.js';
+} from '../utils/tokens.js';
+import { hasOutDatedRules, getBladeDocsList } from '../utils/generalUtils.js';
+import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
-const bladeComponentsList = getBladeComponentsList();
+const bladeComponentsList = getBladeDocsList('components');
 const bladeComponentsListString = bladeComponentsList.join(', ');
-
 const getBladeComponentDocsToolName = 'get_blade_component_docs';
 
 const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
@@ -46,7 +44,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
     });
   }
 
-  const ruleFilePath = join(currentProjectRootDirectory, '.cursor/rules/frontend-blade-rules.mdc');
+  const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
 
   if (!existsSync(ruleFilePath)) {
     return handleError({
@@ -63,24 +61,10 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
   }
 
   try {
-    // Parse the comma-separated string into an array of component names
-    const componentNames = componentsList.split(',').map((name: string) => name.trim());
-
-    // Build the formatted documentation text
-    let responseText = `Blade component documentation for: ${componentsList}\n\n`;
-
-    // Process each component
-    for (const componentName of componentNames) {
-      responseText += `## ${componentName}\n`;
-
-      try {
-        const filePath = resolve(KNOWLEDGEBASE_DIRECTORY, `${componentName}.md`);
-        const content = readFileSync(filePath, 'utf8');
-        responseText += `${content}\n\n`;
-      } catch (error: unknown) {
-        responseText += `⚠️ Error: Could not read documentation for ${componentName}. The component may not exist or there may be an issue with the file.\n\n`;
-      }
-    }
+    const responseText = getBladeDocsResponseText({
+      docsList: componentsList,
+      documentationType: 'components',
+    });
 
     // Return the formatted response
     sendAnalytics({
@@ -90,6 +74,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
         componentsList,
       },
     });
+
     return {
       content: [
         {

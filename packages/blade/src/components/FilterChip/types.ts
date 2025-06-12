@@ -1,4 +1,4 @@
-import type { TestID } from '~utils/types';
+import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import type { AccessibilityProps } from '~utils/makeAccessible';
 
 type BaseFilterChipProps = {
@@ -38,6 +38,7 @@ type BaseFilterChipProps = {
   onClick?: (e: React.MouseEventHandler) => void;
   onBlur?: (e: React.FocusEventHandler) => void;
   accessibilityProps?: Partial<AccessibilityProps>;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 export type { BaseFilterChipProps };

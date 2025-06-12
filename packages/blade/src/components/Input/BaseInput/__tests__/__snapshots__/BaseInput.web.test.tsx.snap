@@ -316,6 +316,7 @@ exports[`<BaseInput /> should render 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -364,11 +365,11 @@ exports[`<BaseInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -1109,6 +1110,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -1157,11 +1159,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -1445,7 +1447,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -1576,6 +1578,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   width: 100%;
   position: relative;
   border: none;
+  z-index: 1;
   border-width: 0px;
   box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
@@ -1600,6 +1603,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   width: 100%;
   position: relative;
   border: none;
+  z-index: 1;
   border-width: 0px;
   box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
@@ -1626,6 +1630,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   width: 100%;
   position: relative;
   border: none;
+  z-index: 1;
   border-width: 0px;
   box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
@@ -1671,6 +1676,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -1719,11 +1725,11 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -2231,6 +2237,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -2317,11 +2324,11 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -2696,6 +2703,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -2744,11 +2752,11 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input

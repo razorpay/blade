@@ -65,10 +65,10 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-right: 16px;
   margin-right: auto;
 }
@@ -258,6 +258,11 @@ exports[`<Accordion /> should render 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
+.c3.c3.c3.c3.c3:hover [data-blade-component="divider"],
+.c3.c3.c3.c3.c3:focus-visible [data-blade-component="divider"] {
+  opacity: 0;
+}
+
 .c3.c3.c3.c3.c3:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
@@ -267,6 +272,7 @@ exports[`<Accordion /> should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   border-radius: 2px;
 }
 
@@ -857,10 +863,10 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-right: 16px;
   margin-right: auto;
 }
@@ -1050,6 +1056,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
+.c3.c3.c3.c3.c3:hover [data-blade-component="divider"],
+.c3.c3.c3.c3.c3:focus-visible [data-blade-component="divider"] {
+  opacity: 0;
+}
+
 .c3.c3.c3.c3.c3:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
@@ -1059,6 +1070,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   border-radius: 2px;
 }
 
