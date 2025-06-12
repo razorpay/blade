@@ -218,6 +218,13 @@ const _CardHeaderLeading = ({
         moduleName: 'CardHeaderLeading',
       });
     }
+
+    if (slot && !isValidAllowedChildren(slot, ComponentIds.CardHeaderBox)) {
+      throwBladeError({
+        message: `Only \`${ComponentIds.CardHeaderBox}\` component is accepted in slot`,
+        moduleName: 'CardHeaderLeading',
+      });
+    }
   }
 
   return (

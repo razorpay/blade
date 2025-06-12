@@ -525,7 +525,7 @@ const GraphSVG = (): React.ReactElement => {
 
 const MetricInfo = (): React.ReactElement => {
   return (
-    <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
       <Amount
         value={1000}
         color="surface.text.gray.normal"
@@ -544,7 +544,7 @@ const MetricInfo = (): React.ReactElement => {
 
         <Text color="interactive.text.positive.normal">12</Text>
       </Box>
-    </CardHeaderBox>
+    </Box>
   );
 };
 
@@ -559,7 +559,13 @@ const MetricCardVariantExample = (): React.ReactElement => {
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
           toolTipTitle="Total Payment Volume"
-          slot={isMobile ? undefined : <MetricInfo />}
+          slot={
+            isMobile ? undefined : (
+              <CardHeaderBox>
+                <MetricInfo />
+              </CardHeaderBox>
+            )
+          }
         />
         <CardHeaderTrailing
           visual={

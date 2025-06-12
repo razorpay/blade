@@ -209,22 +209,25 @@ describe('<Card />', () => {
     mockConsoleError.mockRestore();
   });
 
-  it('should allow to pass Any Element in card slot in CardHeader', () => {
-    const { container } = renderWithTheme(
-      <Card>
-        <CardHeader>
-          <CardHeaderLeading
-            title="Card Header"
-            slot={
-              <Box>
-                <Text>some random text</Text>
-              </Box>
-            }
-          />
-        </CardHeader>
-      </Card>,
-    );
-    expect(container).toMatchSnapshot();
+  it('should only accept allowed components in CardHeader slot', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <CardHeader>
+            <CardHeaderLeading
+              title="Card Header"
+              slot={
+                <Box>
+                  <Text>some random text</Text>
+                </Box>
+              }
+            />
+          </CardHeader>
+        </Card>,
+      ),
+    ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderBox` component is accepted in slot');
+    mockConsoleError.mockRestore();
   });
 
   it('should restrict childrens & only allow CardHeader, CardBody & CardFooter in Card', () => {
