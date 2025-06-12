@@ -54,7 +54,7 @@ import { Card, CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBo
       subtitle="Header Subtitle"
       suffix={<Link />}
       prefix={<Icon />}
-      toolTipTittle="Total Payment Volume"
+      toolTipTitle="Total Payment Volume"
       toolTipContent="This is a tooltip"
     />
     <CardHeaderTrailing
@@ -83,9 +83,16 @@ type CardHeaderTrailingProps = {
 
 type CardHeaderLeadingProps = {
    // rest of the props
-   toolTipTittle?: string;
+   toolTipTitle?: string;
    toolTipContent?: string;
   }
+
+type CardHeaderBoxProps extends BoxProps {}
+
+type CardHeaderLinkProps extends LinkProps {}
+
+type CardHeaderButtonProps extends ButtonProps {}
+
 
 ```
 
@@ -134,8 +141,12 @@ type CardHeaderTrailingProps = {
 - we might need to modify the visual prop to accept more components. maybe move checks to the component itself ? or eslint plugin
 
 -  need to do JSX parsing in case of mobile and render action list.
-## Benefis of this approach
 
+## Benefis of this approach
+  - Since we are not building new components, we are not introducing breaking changes and we are not adding to the complexity of the codebase. consumers of the library can use the existing `Card` component and extend it with new variants.
+  - We can add more variants in the future without breaking changes.
+  - This approach make it easier to maintain the codebase and add new variants.
+  - it will save a lot of development time and effort.
 
 ## Metric Card
 
