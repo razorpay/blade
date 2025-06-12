@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.34.0
+
+### Minor Changes
+
+- b933afc11: feat: add toast container offset prop
+
 ## 12.33.2
 
 ### Patch Changes
