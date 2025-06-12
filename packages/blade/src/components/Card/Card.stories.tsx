@@ -605,7 +605,7 @@ const LayoutCardVariantExample = (): React.ReactElement => {
   const isMobile = useIsMobile();
   const [isBottomSheetOpen, setIsBottomSheetOpen] = React.useState(false);
   return (
-    <Card backgroundColor="surface.background.gray.intense">
+    <Card backgroundColor="surface.background.gray.intense" maxWidth="700px" minWidth="300px">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
           title={isMobile ? 'TPV' : 'Total Payment Volume'}
@@ -619,7 +619,7 @@ const LayoutCardVariantExample = (): React.ReactElement => {
               icon={ExternalLinkIcon}
               iconPosition="right"
             >
-              {isMobile ? 'Learn more' : 'Learn more about TPV'}
+              Learn more
             </CardHeaderLink>
           }
         />
@@ -658,12 +658,12 @@ const LayoutCardVariantExample = (): React.ReactElement => {
                 </Box>
               ) : (
                 <CardHeaderButton variant="secondary" icon={PlusIcon}>
-                  View Dashboard
+                  View
                 </CardHeaderButton>
               )}
 
               <CardHeaderButton variant="primary" icon={PlusIcon}>
-                View Dashboard
+                Add
               </CardHeaderButton>
             </CardHeaderBox>
           }
