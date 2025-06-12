@@ -222,8 +222,8 @@ exports[`<PreviewWindow/> should render preview header without title correctly 2
           data-blade-component="base-box"
         >
           <button
-            class="c4"
             aria-label="Enter Full Screen"
+            class="c4"
             data-blade-component="button"
             role="button"
             type="button"
