@@ -18,6 +18,12 @@ import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { BankIcon, GlobeIcon } from '~components/Icons';
 import { Badge } from '~components/Badge';
+import {
+  detectPaymentCardBrand,
+  getPaymentCardBrandIcon,
+  getPaymentCardNumberFormat,
+} from '~utils/usePaymentCardDetection';
+import type { PaymentCardBrand } from '~utils/usePaymentCardDetection';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -794,3 +800,31 @@ export const TextInputWithTrailingElement: StoryFn<typeof TextInputComponent> = 
     />
   );
 };
+
+export const TextInputWithFormat: StoryFn<typeof TextInputComponent> = () => {
+  const [cardNumber, setCardNumber] = React.useState('');
+  const [cardBrand, setCardBrand] = React.useState<PaymentCardBrand>('unknown');
+
+  const handleCardNumberChange = ({ value, rawValue }: { value?: string; rawValue?: string }) => {
+    setCardNumber(value ?? '');
+
+    if (rawValue) {
+      const brand = detectPaymentCardBrand(rawValue);
+      setCardBrand(brand);
+    }
+  };
+
+  return (
+    <TextInputComponent
+      label="Card Number"
+      placeholder="Enter card number"
+      value={cardNumber}
+      format={getPaymentCardNumberFormat(cardBrand)}
+      onChange={handleCardNumberChange}
+      helpText="Try: 4111111111111111 (Visa), 5555555555554444 (Mastercard), 378282246310005 (Amex)"
+      trailing={getPaymentCardBrandIcon(cardBrand)}
+    />
+  );
+};
+
+TextInputWithFormat.storyName = 'TextInput with format';

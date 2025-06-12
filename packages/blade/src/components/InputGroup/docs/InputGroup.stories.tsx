@@ -17,6 +17,14 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { useIsMobile } from '~utils/useIsMobile';
+import {
+  detectPaymentCardBrand,
+  getPaymentCardBrandIcon,
+  getPaymentCardNumberFormat,
+  getPaymentCardCVVLength,
+} from '~utils/usePaymentCardDetection';
+import type { PaymentCardBrand } from '~utils/usePaymentCardDetection';
+import { PasswordInput } from '~components/Input/PasswordInput';
 
 export default {
   title: 'Components/InputGroup',
@@ -380,3 +388,198 @@ Disabled.args = {
   helpText: 'This address cannot be modified',
   isDisabled: true,
 };
+
+const InputGroupWithFormatTemplate: StoryFn<InputGroupProps> = () => {
+  const toast = useToast();
+
+  const [formData, setFormData] = useState({
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+    cardholderName: '',
+  });
+
+  const [rawFormData, setRawFormData] = useState({
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+    cardholderName: '',
+  });
+
+  const [cardBrand, setCardBrand] = useState<PaymentCardBrand>('unknown');
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validators = {
+    cardNumber: (rawValue: string): string => {
+      if (!rawValue.trim()) return 'Card number is required';
+      if (rawValue.length < 13) return 'Card number incomplete';
+      return '';
+    },
+    expiryDate: (rawValue: string): string => {
+      if (!rawValue.trim()) return 'Expiry date is required';
+      if (rawValue.length !== 4) return 'Invalid format';
+
+      const month = rawValue.substring(0, 2);
+      const year = rawValue.substring(2, 4);
+
+      const currentDate = new Date();
+      const currentYear = currentDate.getFullYear() % 100;
+      const currentMonth = currentDate.getMonth() + 1;
+      const expYear = parseInt(year);
+      const expMonth = parseInt(month);
+
+      if (expYear < currentYear || (expYear === currentYear && expMonth < currentMonth)) {
+        return 'Card expired';
+      }
+      return '';
+    },
+    cvv: (value: string): string => {
+      if (!value.trim()) return 'CVV is required';
+      const expectedLength = getPaymentCardCVVLength(cardBrand);
+      if (value.length !== expectedLength) return `CVV must be ${expectedLength} digits`;
+      return '';
+    },
+    cardholderName: (value: string): string => {
+      return !value.trim() ? 'Name is required' : '';
+    },
+  };
+
+  const handleInputChange = (field: string, value: string, rawValue?: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+
+    if (rawValue !== undefined) {
+      setRawFormData((prev) => ({ ...prev, [field]: rawValue }));
+      if (field === 'cardNumber') {
+        setCardBrand(detectPaymentCardBrand(rawValue));
+      }
+    } else {
+      setRawFormData((prev) => ({ ...prev, [field]: value }));
+    }
+
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: '' }));
+    }
+  };
+
+  const handleBlur = (field: string) => {
+    const rawValue = rawFormData[field as keyof typeof rawFormData];
+    const formattedValue = formData[field as keyof typeof formData];
+
+    let error = '';
+    if (field === 'cardNumber' || field === 'expiryDate') {
+      error = validators[field](rawValue);
+    } else {
+      error = validators[field as keyof typeof validators](formattedValue);
+    }
+
+    if (error) {
+      setErrors((prev) => ({ ...prev, [field]: error }));
+    }
+  };
+
+  const hasFormErrors = (): boolean => {
+    return Object.values(errors).some((error) => error !== '');
+  };
+
+  const resetForm = () => {
+    setFormData({ cardNumber: '', expiryDate: '', cvv: '', cardholderName: '' });
+    setRawFormData({ cardNumber: '', expiryDate: '', cvv: '', cardholderName: '' });
+    setCardBrand('unknown');
+    setErrors({});
+  };
+
+  const handleSubmit = () => {
+    const newErrors = {
+      cardNumber: validators.cardNumber(rawFormData.cardNumber),
+      expiryDate: validators.expiryDate(rawFormData.expiryDate),
+      cvv: validators.cvv(formData.cvv),
+      cardholderName: validators.cardholderName(formData.cardholderName),
+    };
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some((error) => error !== '');
+    if (!hasErrors) {
+      toast.show({
+        content: `Payment method added! Card ending in ${formData.cardNumber.slice(-4)}`,
+        color: 'positive',
+      });
+      resetForm();
+    } else {
+      toast.show({
+        content: 'Please fix all errors before submitting',
+        color: 'negative',
+      });
+    }
+  };
+
+  return (
+    <Box>
+      <ToastContainer />
+
+      <InputGroupComponent
+        label="Payment Information"
+        helpText="Enter your card details to add a payment method"
+        validationState={hasFormErrors() ? 'error' : 'none'}
+        errorText={hasFormErrors() ? 'Please fix all errors before submitting' : ''}
+      >
+        <InputRow gridTemplateColumns="1fr">
+          <TextInput
+            label="Card Number"
+            placeholder="1234 5678 9012 3456"
+            value={formData.cardNumber}
+            format={getPaymentCardNumberFormat(cardBrand)}
+            trailing={getPaymentCardBrandIcon(cardBrand)}
+            onChange={({ value, rawValue }) =>
+              handleInputChange('cardNumber', value || '', rawValue)
+            }
+            onBlur={() => handleBlur('cardNumber')}
+            validationState={errors.cardNumber ? 'error' : 'none'}
+          />
+        </InputRow>
+
+        <InputRow gridTemplateColumns="1fr 1fr">
+          <TextInput
+            label="Expiry Date"
+            placeholder="MM/YY"
+            value={formData.expiryDate}
+            format="##/##"
+            onChange={({ value, rawValue }) =>
+              handleInputChange('expiryDate', value || '', rawValue)
+            }
+            onBlur={() => handleBlur('expiryDate')}
+            validationState={errors.expiryDate ? 'error' : 'none'}
+          />
+          <PasswordInput
+            label={`CVV ${cardBrand === 'amex' ? '(4 digits)' : '(3 digits)'}`}
+            placeholder={cardBrand === 'amex' ? '1234' : '123'}
+            maxCharacters={getPaymentCardCVVLength(cardBrand)}
+            value={formData.cvv}
+            onChange={({ value }) => handleInputChange('cvv', value || '')}
+            onBlur={() => handleBlur('cvv')}
+            validationState={errors.cvv ? 'error' : 'none'}
+          />
+        </InputRow>
+
+        <InputRow gridTemplateColumns="1fr">
+          <TextInput
+            label="Cardholder Name"
+            placeholder="John Doe"
+            value={formData.cardholderName}
+            onChange={({ value }) => handleInputChange('cardholderName', value || '')}
+            onBlur={() => handleBlur('cardholderName')}
+            validationState={errors.cardholderName ? 'error' : 'none'}
+          />
+        </InputRow>
+      </InputGroupComponent>
+
+      <Box display="flex" justifyContent="flex-end" alignItems="center" marginTop="spacing.4">
+        <Button variant="primary" onClick={handleSubmit}>
+          Add Payment Method
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+export const InputGroupWithFormat = InputGroupWithFormatTemplate.bind({});
