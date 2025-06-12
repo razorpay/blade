@@ -186,7 +186,7 @@ type CardHeaderLeadingProps = {
   /**
    * Tooltip title
    */
-  toolTipTittle?: string;
+  toolTipTitle?: string;
   /**
    * Tooltip content
    */
@@ -198,7 +198,7 @@ const _CardHeaderLeading = ({
   prefix,
   slot,
   suffix,
-  toolTipTittle,
+  toolTipTitle,
   toolTipContent,
   ...rest
 }: CardHeaderLeadingProps): React.ReactElement => {
@@ -239,8 +239,8 @@ const _CardHeaderLeading = ({
             <Text color="surface.text.gray.normal" size="large" weight="semibold">
               {title}
             </Text>
-            {(toolTipTittle || toolTipContent) && (
-              <Tooltip title={toolTipTittle} content={toolTipContent || ''} placement="top">
+            {(toolTipTitle || toolTipContent) && (
+              <Tooltip title={toolTipTitle} content={toolTipContent || ''} placement="top">
                 <TooltipInteractiveWrapper>
                   <InfoIcon size="small" color="surface.icon.gray.subtle" marginLeft="spacing.2" />
                 </TooltipInteractiveWrapper>

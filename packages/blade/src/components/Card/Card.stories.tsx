@@ -558,7 +558,7 @@ const MetricCardVariantExample = (): React.ReactElement => {
           subtitle={
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
-          toolTipTittle="Total Payment Volume"
+          toolTipTitle="Total Payment Volume"
           slot={isMobile ? undefined : <MetricInfo />}
         />
         <CardHeaderTrailing
