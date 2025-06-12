@@ -35,7 +35,9 @@ import {
   ArrowSquareUpIcon,
   PlusIcon,
   ExternalLinkIcon,
+  ArrowRightIcon,
 } from '~components/Icons';
+import { useIsMobile } from '~utils/useIsMobile';
 
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
@@ -518,41 +520,67 @@ const GraphSVG = (): React.ReactElement => {
   );
 };
 
-const MetricCardVariantExample = (): React.ReactElement => {
+const MetricInfo = (): React.ReactElement => {
   return (
-    <Card backgroundColor="surface.background.gray.intense">
+    <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+      <Amount
+        value={1000}
+        color="surface.text.gray.normal"
+        weight="semibold"
+        size="2xlarge"
+        type="heading"
+      />
+      <Box
+        display="flex"
+        flexDirection="row"
+        gap="spacing.1"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <ArrowSquareUpIcon color="interactive.icon.positive.normal" />
+
+        <Text color="interactive.text.positive.normal">12</Text>
+      </Box>
+    </CardHeaderBox>
+  );
+};
+
+const MetricCardVariantExample = (): React.ReactElement => {
+  const isMobile = useIsMobile();
+  return (
+    <Card backgroundColor="surface.background.gray.intense" maxWidth="500px" minWidth="300px">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
-          title="Total Payment Volume"
-          subtitle="Total payment volume for the current month"
+          title={isMobile ? 'TPV' : 'Total Payment Volume'}
+          subtitle={
+            isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
+          }
           toolTipTittle="Total Payment Volume"
-          slot={
-            <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
-              <Amount
-                value={1000}
-                color="surface.text.gray.normal"
-                weight="semibold"
-                size="2xlarge"
-                type="heading"
-              />
-              <Box
-                display="flex"
-                flexDirection="row"
-                gap="spacing.1"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <ArrowSquareUpIcon color="interactive.icon.positive.normal" />
-
-                <Text color="interactive.text.positive.normal">12</Text>
-              </Box>
-            </CardHeaderBox>
+          slot={isMobile ? undefined : <MetricInfo />}
+        />
+        <CardHeaderTrailing
+          visual={
+            isMobile ? (
+              <CardHeaderLink href="/" icon={ArrowRightIcon} iconPosition="right">
+                Chart settings
+              </CardHeaderLink>
+            ) : (
+              <CardHeaderBadge color="positive"> New </CardHeaderBadge>
+            )
           }
         />
-        <CardHeaderTrailing visual={<CardHeaderBadge color="positive"> New </CardHeaderBadge>} />
       </CardHeader>
       <CardBody>
-        <GraphSVG />
+        {isMobile ? (
+          <Box display="flex" flexDirection="row" gap="spacing.5">
+            <Box display="flex" flexDirection="column" justifyContent="flex-end">
+              <MetricInfo />
+            </Box>
+            <GraphSVG />
+          </Box>
+        ) : (
+          <GraphSVG />
+        )}
       </CardBody>
     </Card>
   );
@@ -561,6 +589,8 @@ const MetricCardVariantExample = (): React.ReactElement => {
 export const MetricCardVariant = MetricCardVariantExample.bind({});
 
 const LayoutCardVariantExample = (): React.ReactElement => {
+  const isMobile = useIsMobile();
+  console.log('isMobile', isMobile);
   return (
     <Card backgroundColor="surface.background.gray.intense">
       <CardHeader showDivider={false}>
@@ -583,7 +613,9 @@ const LayoutCardVariantExample = (): React.ReactElement => {
         />
       </CardHeader>
       <CardBody>
-        <GraphSVG />
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <GraphSVG />
+        </Box>
       </CardBody>
     </Card>
   );
