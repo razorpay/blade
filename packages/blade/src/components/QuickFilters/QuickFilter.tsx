@@ -17,6 +17,7 @@ const QuickFilterContent = ({
   trailing,
   selectionType = 'single',
   isSelected = false,
+  ...rest
 }: QuickFilterContentProps): React.ReactElement => {
   return (
     <BaseBox
@@ -37,7 +38,7 @@ const QuickFilterContent = ({
         justifyContent="center"
         alignItems="center"
       >
-        {selectionType === 'single' ? <Radio value={value} data-analytics-name={value} /> : <Checkbox value={value} data-analytics-name={value} />}
+        {selectionType === 'single' ? <Radio value={value} {...makeAnalyticsAttribute(rest)} /> : <Checkbox value={value} {...makeAnalyticsAttribute(rest)} />}
         <Text
           variant="body"
           size="medium"

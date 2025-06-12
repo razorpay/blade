@@ -86,7 +86,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor={backgroundColor} {...makeAnalyticsAttribute(rest)}>
+    <BaseBox backgroundColor={backgroundColor}>
       <ToolbarWrapper
         display="flex"
         backgroundColor={

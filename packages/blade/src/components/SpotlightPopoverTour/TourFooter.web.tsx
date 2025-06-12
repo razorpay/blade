@@ -33,6 +33,11 @@ const SpotlightPopoverTourFooter = ({
     isBothIcon = primaryHasIcon && secondaryHasIcon;
   }
 
+  const analyticsStepInfoProps = {
+    'data-analytics-active-step': activeStep + 1,
+    'data-analytics-total-steps': totalSteps,
+  };
+
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
       <Text size="small" weight="semibold">
@@ -40,12 +45,12 @@ const SpotlightPopoverTourFooter = ({
       </Text>
       <Box display="flex" gap={isBothIcon ? 'spacing.3' : 'spacing.4'}>
         {hasSecondaryAction ? (
-          <Button size="small" variant="secondary" {...actions.secondary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_SECONDARY_ACTION}>
+          <Button size="small" variant="secondary" {...actions.secondary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_SECONDARY_ACTION} {...analyticsStepInfoProps}>
             {actions?.secondary!.text!}
           </Button>
         ) : null}
         {hasPrimaryAction ? (
-          <Button size="small" variant="primary" {...actions.primary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_PRIMARY_ACTION}>
+          <Button size="small" variant="primary" {...actions.primary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_PRIMARY_ACTION} {...analyticsStepInfoProps}>
             {actions?.primary!.text!}
           </Button>
         ) : null}

@@ -536,7 +536,10 @@ const _Table = <Item,>({
               <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
             </RefreshWrapper>
           )}
-          {toolbar}
+          {/* wrapping toolbar in BaseBox and passing the same analytics attributes as of table because in analytics POV, events triggered are from table */}
+          <BaseBox {...makeAnalyticsAttribute(rest)}>
+            {toolbar}
+          </BaseBox>
           <StyledReactTable
             role="table"
             layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
