@@ -407,18 +407,25 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       labelPosition={labelPosition}
       placeholder={placeholder}
       // CONTROLLED/UNCONTROLLED INPUT LOGIC:
-      //
-      // For inputs WITH format:
-      //   - Always use controlled mode (value prop) to enable re-rendering when formatting changes
-      //   - This ensures the input displays formatted values as user types
-      //   - Example: User types "1234" → input shows "12/34" immediately
-      //
       // For inputs WITHOUT format:
-      //   - Use original React controlled/uncontrolled logic based on user's props
+      //   - Use standard React controlled/uncontrolled logic
       //   - Controlled: user provides `value` prop → use `value` prop
       //   - Uncontrolled: user provides `defaultValue` prop → use `defaultValue` prop
-      defaultValue={format ? undefined : defaultValue !== undefined ? defaultValue : undefined}
-      value={format ? inputValue : value !== undefined ? value : undefined}
+      //
+      // For inputs WITH format:
+      //   - Formatting requires controlled mode to re-render and show formatted values
+      //   - Case 1: Only `value` provided → defaultValue: undefined, value: formattedValue (normal controlled)
+      //   - Case 2: Only `defaultValue` provided → defaultValue: undefined, value: formattedValue (convert to controlled)
+      //   - Case 3: Both `value` and `defaultValue` provided → defaultValue: defaultValue, value: formattedValue (let BaseInput detect conflict and throw error)
+      //
+      defaultValue={
+        format
+          ? value !== undefined && defaultValue !== undefined
+            ? defaultValue
+            : undefined
+          : defaultValue
+      }
+      value={format ? inputValue : value}
       name={name}
       maxCharacters={effectiveMaxCharacters}
       isDropdownTrigger={isTaggedInput}
