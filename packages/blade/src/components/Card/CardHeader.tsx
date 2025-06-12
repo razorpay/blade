@@ -228,9 +228,12 @@ const _CardHeaderLeading = ({
       gap="spacing.4"
     >
       <BaseBox flex={1} display="flex" flexDirection="row">
-        <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
-          {prefix}
-        </BaseBox>
+        {prefix && (
+          <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
+            {prefix}
+          </BaseBox>
+        )}
+
         <BaseBox marginRight="spacing.5">
           <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
             <Text color="surface.text.gray.normal" size="large" weight="semibold">
@@ -244,7 +247,7 @@ const _CardHeaderLeading = ({
               </Tooltip>
             )}
 
-            <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
+            {suffix && <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>}
           </BaseBox>
           {subtitle && (
             <Text color="surface.text.gray.subtle" textAlign="left" size="small">
