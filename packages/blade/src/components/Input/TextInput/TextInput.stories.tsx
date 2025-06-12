@@ -805,7 +805,13 @@ export const TextInputWithFormat: StoryFn<typeof TextInputComponent> = () => {
   const [cardNumber, setCardNumber] = React.useState('');
   const [cardBrand, setCardBrand] = React.useState<PaymentCardBrand>('unknown');
 
-  const handleCardNumberChange = ({ value, rawValue }: { value?: string; rawValue?: string }) => {
+  const handleCardNumberChange = ({
+    value,
+    rawValue,
+  }: {
+    value?: string;
+    rawValue?: string;
+  }): void => {
     setCardNumber(value ?? '');
 
     if (rawValue) {

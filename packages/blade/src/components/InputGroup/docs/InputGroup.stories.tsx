@@ -248,7 +248,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
     }
 
     setErrors(newErrors);
-    return Object.values(newErrors).every((error) => error === false);
+    return Object.values(newErrors).every((error) => !error);
   };
 
   const hasFormErrors = (): boolean => {
@@ -425,8 +425,8 @@ const InputGroupWithFormatTemplate: StoryFn<InputGroupProps> = () => {
       const currentDate = new Date();
       const currentYear = currentDate.getFullYear() % 100;
       const currentMonth = currentDate.getMonth() + 1;
-      const expYear = parseInt(year);
-      const expMonth = parseInt(month);
+      const expYear = parseInt(year, 10);
+      const expMonth = parseInt(month, 10);
 
       if (expYear < currentYear || (expYear === currentYear && expMonth < currentMonth)) {
         return 'Card expired';
@@ -444,7 +444,7 @@ const InputGroupWithFormatTemplate: StoryFn<InputGroupProps> = () => {
     },
   };
 
-  const handleInputChange = (field: string, value: string, rawValue?: string) => {
+  const handleInputChange = (field: string, value: string, rawValue?: string): void => {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
     if (rawValue !== undefined) {
@@ -461,7 +461,7 @@ const InputGroupWithFormatTemplate: StoryFn<InputGroupProps> = () => {
     }
   };
 
-  const handleBlur = (field: string) => {
+  const handleBlur = (field: string): void => {
     const rawValue = rawFormData[field as keyof typeof rawFormData];
     const formattedValue = formData[field as keyof typeof formData];
 
@@ -481,14 +481,14 @@ const InputGroupWithFormatTemplate: StoryFn<InputGroupProps> = () => {
     return Object.values(errors).some((error) => error !== '');
   };
 
-  const resetForm = () => {
+  const resetForm = (): void => {
     setFormData({ cardNumber: '', expiryDate: '', cvv: '', cardholderName: '' });
     setRawFormData({ cardNumber: '', expiryDate: '', cvv: '', cardholderName: '' });
     setCardBrand('unknown');
     setErrors({});
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     const newErrors = {
       cardNumber: validators.cardNumber(rawFormData.cardNumber),
       expiryDate: validators.expiryDate(rawFormData.expiryDate),
