@@ -36,6 +36,9 @@ import {
   PlusIcon,
   ExternalLinkIcon,
   ArrowRightIcon,
+  MoreVerticalIcon,
+  EditIcon,
+  EyeIcon,
 } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
 
@@ -48,6 +51,16 @@ import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { Amount } from '~components/Amount';
 import { Badge } from '~components/Badge';
+import { Button } from '~components/Button';
+import {
+  BottomSheet,
+  BottomSheetBody,
+  BottomSheetHeader,
+  BottomSheetFooter,
+} from '~components/BottomSheet';
+import { IconButton } from '~components/Button/IconButton';
+import { ActionListItem, ActionListItemIcon } from '~components/ActionList';
+import { ActionList } from '~components/ActionList';
 
 const Page = (): React.ReactElement => {
   return (
@@ -590,20 +603,64 @@ export const MetricCardVariant = MetricCardVariantExample.bind({});
 
 const LayoutCardVariantExample = (): React.ReactElement => {
   const isMobile = useIsMobile();
-  console.log('isMobile', isMobile);
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = React.useState(false);
   return (
     <Card backgroundColor="surface.background.gray.intense">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
-          title="Total Payment Volume"
-          subtitle="Total payment volume for the current month"
+          title={isMobile ? 'TPV' : 'Total Payment Volume'}
+          subtitle={
+            isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
+          }
+          suffix={
+            <CardHeaderLink
+              href="https://www.google.com/search?q=what+is+total+payment+volume"
+              target="_blank"
+              icon={ExternalLinkIcon}
+              iconPosition="right"
+            >
+              {isMobile ? 'Learn more' : 'Learn more about TPV'}
+            </CardHeaderLink>
+          }
         />
         <CardHeaderTrailing
           visual={
             <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
-              <CardHeaderLink href="/" icon={ExternalLinkIcon}>
-                View chart settings
-              </CardHeaderLink>
+              {isMobile ? (
+                <Box>
+                  <Button
+                    accessibilityLabel="View More Options"
+                    icon={MoreVerticalIcon}
+                    onClick={() => setIsBottomSheetOpen(true)}
+                    variant="tertiary"
+                  />
+                  <BottomSheet
+                    isOpen={isBottomSheetOpen}
+                    onDismiss={() => setIsBottomSheetOpen(false)}
+                    // Optional: Define custom snap points (heights) for the sheet
+                    snapPoints={[0.35, 0.5, 0.85]}
+                  >
+                    <BottomSheetBody>
+                      <ActionList>
+                        <ActionListItem
+                          title="View Dashboard"
+                          value="view-dashboard"
+                          trailing={<ActionListItemIcon icon={EyeIcon} />}
+                        />
+                        <ActionListItem
+                          trailing={<ActionListItemIcon icon={EditIcon} />}
+                          title="Edit Chart"
+                          value="edit-chart"
+                        />
+                      </ActionList>
+                    </BottomSheetBody>
+                  </BottomSheet>
+                </Box>
+              ) : (
+                <CardHeaderButton variant="secondary" icon={PlusIcon}>
+                  View Dashboard
+                </CardHeaderButton>
+              )}
 
               <CardHeaderButton variant="primary" icon={PlusIcon}>
                 View Dashboard

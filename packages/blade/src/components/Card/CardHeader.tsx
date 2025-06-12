@@ -158,6 +158,10 @@ const _CardHeader = ({
 };
 const CardHeader = assignWithoutSideEffects(_CardHeader, { componentId: ComponentIds.CardHeader });
 
+const CardHeaderSuffixAllowedComponents = [
+  ComponentIds.CardHeaderCounter,
+  ComponentIds.CardHeaderLink,
+];
 type CardHeaderLeadingProps = {
   title: string;
   subtitle?: string;
@@ -170,7 +174,7 @@ type CardHeaderLeadingProps = {
   /**
    * suffix element of Card
    *
-   * Accepts: `CardHeaderCounter` component
+   * Accepts: `CardHeaderCounter` and `CardHeaderLink` component
    */
   suffix?: React.ReactNode;
   /**
@@ -208,9 +212,9 @@ const _CardHeaderLeading = ({
       });
     }
 
-    if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
+    if (suffix && !CardHeaderSuffixAllowedComponents.includes(getComponentId(suffix)!)) {
       throwBladeError({
-        message: `Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
+        message: `Only \`${ComponentIds.CardHeaderCounter}\` and \`${ComponentIds.CardHeaderLink}\` component is accepted in suffix`,
         moduleName: 'CardHeaderLeading',
       });
     }
