@@ -49,7 +49,9 @@ const SpotlightPopoverTourFooter = ({
             size="small"
             variant="secondary"
             {...actions.secondary}
-            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_SECONDARY_ACTION}
+            data-analytics-name={
+              MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_SECONDARY_ACTION
+            }
             {...analyticsStepInfoProps}
           >
             {actions?.secondary!.text!}
@@ -60,7 +62,9 @@ const SpotlightPopoverTourFooter = ({
             size="small"
             variant="primary"
             {...actions.primary}
-            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_PRIMARY_ACTION}
+            data-analytics-name={
+              MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_PRIMARY_ACTION
+            }
             {...analyticsStepInfoProps}
           >
             {actions?.primary!.text!}

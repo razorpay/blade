@@ -460,6 +460,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             >
               <button
                 class="c14"
+                data-analytics-name="card-footer-secondary-action-button"
                 data-blade-component="button"
                 role="button"
                 type="button"
@@ -492,6 +493,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             >
               <button
                 class="c20"
+                data-analytics-name="card-footer-primary-action-button"
                 data-blade-component="button"
                 role="button"
                 type="button"
@@ -1678,6 +1680,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
             >
               <button
                 class="c13"
+                data-analytics-name="card-footer-secondary-action-button"
                 data-blade-component="button"
                 role="button"
                 type="button"
@@ -1710,6 +1713,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
             >
               <button
                 class="c19"
+                data-analytics-name="card-footer-primary-action-button"
                 data-blade-component="button"
                 role="button"
                 type="button"

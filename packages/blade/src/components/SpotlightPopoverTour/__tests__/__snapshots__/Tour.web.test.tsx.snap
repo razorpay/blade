@@ -553,6 +553,9 @@ exports[`<Tour /> should render 1`] = `
               >
                 <button
                   class="c15"
+                  data-analytics-active-step="1"
+                  data-analytics-name="spotlight-popover-tour-footer-primary-action-button"
+                  data-analytics-total-steps="2"
                   data-blade-component="button"
                   role="button"
                   type="button"

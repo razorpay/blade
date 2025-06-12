@@ -238,7 +238,7 @@ describe('Modal', () => {
   });
 
   it('should support adding data-analytics attribute', () => {
-    const { getByTestId } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <Modal
         isOpen={true}
         onDismiss={() => {}}
@@ -255,7 +255,7 @@ describe('Modal', () => {
         </ModalFooter>
       </Modal>,
     );
-    const container = getByTestId('modal-wrapper');
+    const container = getByRole('dialog');
     expect(container).toHaveAttribute('data-analytics-modal');
     expect(container).toHaveAttribute('data-analytics-modal', 'test-modal');
   });
