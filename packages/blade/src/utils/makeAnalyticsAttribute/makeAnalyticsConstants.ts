@@ -1,12 +1,12 @@
 export const MAKE_ANALYTICS_CONSTANTS = {
   ACCORDION: {
-    ACCORDION_ITEM_BUTTON: 'accordion-toggle-button'
+    ACCORDION_ITEM_BUTTON: 'accordion-toggle-button',
   },
   ALERT: {
     PRIMARY_ACTION_BUTTON: 'alert-primary-action-button',
   },
   AVATAR: {
-    AVATAR_BUTTON: 'avatar-button'
+    AVATAR_BUTTON: 'avatar-button',
   },
   CARD: {
     FOOTER_PRIMARY_ACTION_BUTTON: 'card-footer-primary-action-button',
@@ -25,5 +25,5 @@ export const MAKE_ANALYTICS_CONSTANTS = {
   },
   TOAST: {
     ACTION_BUTTON: 'toast-action-button',
-  }
-}
+  },
+};

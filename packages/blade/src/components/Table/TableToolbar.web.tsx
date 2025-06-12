@@ -54,7 +54,6 @@ const _TableToolbar = ({
   children,
   title,
   selectedTitle: controlledSelectedTitle,
-  ...rest
 }: TableToolbarProps): React.ReactElement => {
   const {
     selectedRows,

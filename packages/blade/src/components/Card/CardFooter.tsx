@@ -148,7 +148,13 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
     >
       <BaseBox flexGrow={1}>
         {actions?.secondary ? (
-          <Button isFullWidth size="medium" variant="secondary" {...actions.secondary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.CARD.FOOTER_SECONDARY_ACTION_BUTTON}>
+          <Button
+            isFullWidth
+            size="medium"
+            variant="secondary"
+            {...actions.secondary}
+            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.CARD.FOOTER_SECONDARY_ACTION_BUTTON}
+          >
             {actions.secondary.text!}
           </Button>
         ) : null}
@@ -156,7 +162,12 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
       <BaseBox marginLeft="spacing.5" />
       <BaseBox flexGrow={1}>
         {actions?.primary ? (
-          <Button isFullWidth size="medium" {...actions.primary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.CARD.FOOTER_PRIMARY_ACTION_BUTTON}>
+          <Button
+            isFullWidth
+            size="medium"
+            {...actions.primary}
+            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.CARD.FOOTER_PRIMARY_ACTION_BUTTON}
+          >
             {actions.primary.text!}
           </Button>
         ) : null}

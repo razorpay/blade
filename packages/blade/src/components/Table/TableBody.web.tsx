@@ -195,7 +195,12 @@ const TableCheckboxCell = ({
         width={makeSize(checkboxCellWidth)}
         onClick={(e) => e.stopPropagation()}
       >
-        <Checkbox isDisabled={isDisabled} isChecked={isChecked} onChange={onChange} {...makeAccessible({ label: 'Select Row' })}/>
+        <Checkbox
+          isDisabled={isDisabled}
+          isChecked={isChecked}
+          onChange={onChange}
+          {...makeAccessible({ label: 'Select Row' })}
+        />
       </BaseBox>
     </TableCell>
   );

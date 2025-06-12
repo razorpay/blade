@@ -120,9 +120,7 @@ const AccordionItem = ({
         isDisabled,
       }}
     >
-      <BaseBox
-        {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}
-      >
+      <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>
         <Collapsible
           isExpanded={isExpanded}
           defaultIsExpanded={isDefaultExpanded}

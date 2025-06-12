@@ -119,11 +119,7 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box
-              zIndex={zIndex}
-              position="fixed"
-              testID="modal-wrapper"
-            >
+            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({

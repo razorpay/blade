@@ -45,12 +45,24 @@ const SpotlightPopoverTourFooter = ({
       </Text>
       <Box display="flex" gap={isBothIcon ? 'spacing.3' : 'spacing.4'}>
         {hasSecondaryAction ? (
-          <Button size="small" variant="secondary" {...actions.secondary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_SECONDARY_ACTION} {...analyticsStepInfoProps}>
+          <Button
+            size="small"
+            variant="secondary"
+            {...actions.secondary}
+            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_SECONDARY_ACTION}
+            {...analyticsStepInfoProps}
+          >
             {actions?.secondary!.text!}
           </Button>
         ) : null}
         {hasPrimaryAction ? (
-          <Button size="small" variant="primary" {...actions.primary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_PRIMARY_ACTION} {...analyticsStepInfoProps}>
+          <Button
+            size="small"
+            variant="primary"
+            {...actions.primary}
+            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_PRIMARY_ACTION}
+            {...analyticsStepInfoProps}
+          >
             {actions?.primary!.text!}
           </Button>
         ) : null}

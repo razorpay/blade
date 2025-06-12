@@ -19,7 +19,6 @@ const _AccordionButton = ({
   isDeprecatedAPI,
   header,
   isDisabled,
-  ...rest
 }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex, size } = useAccordion();

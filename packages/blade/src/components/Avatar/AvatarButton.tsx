@@ -81,7 +81,9 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
       onPointerEnter={onPointerEnter}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
-      data-analytics-name={as === 'button' ? MAKE_ANALYTICS_CONSTANTS.AVATAR.AVATAR_BUTTON : undefined}
+      data-analytics-name={
+        as === 'button' ? MAKE_ANALYTICS_CONSTANTS.AVATAR.AVATAR_BUTTON : undefined
+      }
     >
       <BaseBox
         display="flex"

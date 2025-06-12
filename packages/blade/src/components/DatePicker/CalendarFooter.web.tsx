@@ -27,7 +27,13 @@ const CalendarFooter = ({
         flexDirection="row"
         gap="spacing.4"
       >
-        <Button isFullWidth={isMobile} variant="tertiary" size="medium" onClick={onCancel} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.CANCEL_BUTTON}>
+        <Button
+          isFullWidth={isMobile}
+          variant="tertiary"
+          size="medium"
+          onClick={onCancel}
+          data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.CANCEL_BUTTON}
+        >
           Cancel
         </Button>
         <Button
