@@ -627,8 +627,6 @@ const LayoutCardVariantExample = (): React.ReactElement => {
                   <BottomSheet
                     isOpen={isBottomSheetOpen}
                     onDismiss={() => setIsBottomSheetOpen(false)}
-                    // Optional: Define custom snap points (heights) for the sheet
-                    snapPoints={[0.35, 0.5, 0.85]}
                   >
                     <BottomSheetBody>
                       <ActionList>
