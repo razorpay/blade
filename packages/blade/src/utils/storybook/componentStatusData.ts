@@ -108,6 +108,15 @@ const componentData: ComponentStatusDataType = [
     platform: 'all',
   },
   {
+    name: 'InfoGroup',
+    status: 'released',
+    releasedIn: '12.33.0',
+    storybookLink: 'Components/InfoGroup',
+    description:
+      'A structured component for displaying key-value pairs in a consistent, organized format. Provides standardized presentation for transaction details, user data, or any related data pairs.',
+    platform: 'web',
+  },
+  {
     name: 'Link',
     status: 'released',
     releasedIn: '0.13.0',

@@ -1,5 +1,44 @@
 # @razorpay/blade
 
+## 12.33.2
+
+### Patch Changes
+
+- b03d34fdf: feat(blade): update input styles
+- 2807550e3: feat(blade): add Dropdown in TextInput and SearchInput
+- b8453bbcf: fix(blade): leading and trailing in textInput
+- 11fb3afe7: feat(accordion): UI enhancement
+
+## 12.33.1
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
+## 12.33.0
+
+### Minor Changes
+
+- 43cc06167: feat(InfoGroup): add InfoGroup component
+
+### Patch Changes
+
+- 16a8f55c5: feat(InfoGroup): remove keyAlign prop
+  feat(InfoGroup knowledgebase): update knowledgebase to add InfoGroup component
+
+## 12.32.3
+
+### Patch Changes
+
+- c09440955: fix(table): fix table selected styles
+- 5badd6410: fix: label position to 'top' for CheckboxGroup and RadioGroup on mobile viewports
+
+## 12.32.2
+
+### Patch Changes
+
+- a9fdac32f: fix(blade): add disabled prop in filterchip
+
 ## 12.32.1
 
 ### Patch Changes

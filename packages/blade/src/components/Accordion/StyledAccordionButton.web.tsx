@@ -14,7 +14,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
   const commonStyles = getCommonAccordionButtonStyles(props);
   return {
     ...commonStyles,
-    backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: false }),
+    backgroundColor: getBackgroundColor({ theme, isActive: false }),
     transitionProperty: 'background-color, box-shadow, border-radius, color',
     transitionDuration: castWebType(getTransitionDuration(theme)),
     transitionTimingFunction: castWebType(getTransitionEasing(theme)),
@@ -25,8 +25,12 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
     textAlign: 'left',
 
     '&:hover, &:focus-visible': {
-      backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: true }),
+      backgroundColor: getBackgroundColor({ theme, isActive: true }),
       color: theme.colors.interactive.icon.gray.subtle,
+
+      '& [data-blade-component="divider"]': {
+        opacity: 0,
+      },
     },
     '&:focus-visible': {
       ...getFocusRingStyles({ theme }),

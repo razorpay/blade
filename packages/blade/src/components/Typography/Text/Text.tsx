@@ -121,7 +121,6 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.lineHeight = 50;
       props.fontWeight = 'regular';
     }
-    props.fontStyle = 'italic';
   }
 
   return props;
