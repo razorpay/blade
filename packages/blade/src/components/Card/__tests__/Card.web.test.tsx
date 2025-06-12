@@ -20,6 +20,8 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
+import { Box } from '~components/Box';
+import { Link } from '~components/Link';
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {
@@ -155,12 +157,28 @@ describe('<Card />', () => {
       renderWithTheme(
         <Card>
           <CardHeader>
+            <CardHeaderLeading
+              title={cardTitle}
+              subtitle={cardSubtitle}
+              suffix={<Link href="https://razorpay.com">Link</Link>}
+            />
+          </CardHeader>
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` and `CardHeaderLink` component is accepted in suffix',
+    );
+
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <CardHeader>
             <CardHeaderTrailing visual={<Badge>NEW</Badge>} />
           </CardHeader>
         </Card>,
       ),
     ).toThrow(
-      'Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount, CardHeaderBox` component is accepted in visual',
+      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount, CardHeaderBox` component is accepted in visual',
     );
     mockConsoleError.mockRestore();
   });
@@ -189,6 +207,24 @@ describe('<Card />', () => {
       '[Blade: Card]: CardFooterTrailing cannot be used outside of Card component',
     );
     mockConsoleError.mockRestore();
+  });
+
+  it('should allow to pass Any Element in card slot in CardHeader', () => {
+    const { container } = renderWithTheme(
+      <Card>
+        <CardHeader>
+          <CardHeaderLeading
+            title="Card Header"
+            slot={
+              <Box>
+                <Text>some random text</Text>
+              </Box>
+            }
+          />
+        </CardHeader>
+      </Card>,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should restrict childrens & only allow CardHeader, CardBody & CardFooter in Card', () => {
