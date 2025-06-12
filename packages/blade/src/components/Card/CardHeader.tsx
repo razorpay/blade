@@ -28,7 +28,7 @@ import type { AmountProps } from '~components/Amount';
 import { Amount } from '~components/Amount';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BoxProps } from '~components/Box';
-import { Tooltip } from '~components/Tooltip';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { InfoIcon } from '~components/Icons';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
@@ -233,9 +233,10 @@ const _CardHeaderLeading = ({
               {title}
             </Text>
             {(toolTipTittle || toolTipContent) && (
-              //TODO: Add a tooltip component
-              <Tooltip title={toolTipTittle} content={toolTipContent || ''}>
-                <InfoIcon size="small" color="surface.icon.gray.subtle" marginLeft="spacing.2" />
+              <Tooltip title={toolTipTittle} content={toolTipContent || ''} placement="top">
+                <TooltipInteractiveWrapper>
+                  <InfoIcon size="small" color="surface.icon.gray.subtle" marginLeft="spacing.2" />
+                </TooltipInteractiveWrapper>
               </Tooltip>
             )}
 
