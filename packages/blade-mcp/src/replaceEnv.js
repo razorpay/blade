@@ -23,11 +23,11 @@ const BLADE_MCP_SENTRY_DSN = process.env.BLADE_MCP_SENTRY_DSN || '';
 function replaceInFileSync(filePath, replacements) {
   try {
     let content = fs.readFileSync(filePath, 'utf8');
-    
+
     for (const { from, to } of replacements) {
       content = content.replace(from, to);
     }
-    
+
     fs.writeFileSync(filePath, content, 'utf8');
   } catch (error) {
     console.error(`Error processing file ${filePath}:`, error);
