@@ -46,7 +46,7 @@ async function replaceEnvironmentVariables() {
       {
         from: /process\.env\.BLADE_MCP_SENTRY_DSN/g,
         to: `'${BLADE_MCP_SENTRY_DSN}'`,
-      }
+      },
     ]);
 
     // Replace BLADE_SEGMENT_KEY in analytics utils
@@ -55,7 +55,7 @@ async function replaceEnvironmentVariables() {
       {
         from: /process\.env\.BLADE_SEGMENT_KEY/g,
         to: `'${BLADE_SEGMENT_KEY}'`,
-      }
+      },
     ]);
 
     console.log('Environment variables replaced successfully');
