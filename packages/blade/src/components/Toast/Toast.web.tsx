@@ -20,6 +20,7 @@ import { Text } from '~components/Typography';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute/makeAnalyticsConstants';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const iconMap = {
@@ -99,6 +100,7 @@ const Toast = ({
           action?.onClick?.({ event: event as never, toastId: id! });
         }}
         isLoading={action?.isLoading}
+        data-analytics-name={MAKE_ANALYTICS_CONSTANTS.TOAST.ACTION_BUTTON}
       >
         {action?.text}
       </Button>

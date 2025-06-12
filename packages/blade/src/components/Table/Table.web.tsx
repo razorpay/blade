@@ -517,6 +517,7 @@ const _Table = <Item,>({
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           width={isVirtualized ? `100%` : undefined}
+          {...makeAnalyticsAttribute(rest)}
         >
           {isRefreshSpinnerMounted && (
             <RefreshWrapper

@@ -122,7 +122,6 @@ const AccordionItem = ({
     >
       <BaseBox
         {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}
-        {...makeAnalyticsAttribute(rest)}
       >
         <Collapsible
           isExpanded={isExpanded}
@@ -131,6 +130,8 @@ const AccordionItem = ({
           // Accordion has its own width restrictions
           _shouldApplyWidthRestrictions={false}
           _dangerouslyDisableValidations={true}
+          // adding analytics attributes to Collapsible section
+          {...makeAnalyticsAttribute(rest)}
         >
           <AccordionButton
             index={_index}

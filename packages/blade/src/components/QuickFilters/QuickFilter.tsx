@@ -37,7 +37,7 @@ const QuickFilterContent = ({
         justifyContent="center"
         alignItems="center"
       >
-        {selectionType === 'single' ? <Radio value={value} /> : <Checkbox value={value} />}
+        {selectionType === 'single' ? <Radio value={value} data-analytics-name={value} /> : <Checkbox value={value} data-analytics-name={value} />}
         <Text
           variant="body"
           size="medium"

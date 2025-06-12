@@ -10,7 +10,7 @@ import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 
 const _AccordionButton = ({
   index,
@@ -52,7 +52,6 @@ const _AccordionButton = ({
     <BaseBox
       // a11y guidelines suggest having an apt heading surround a button but heading level is hardcoded here
       {...makeAccessible({ role: 'heading', level: 3 })}
-      {...makeAnalyticsAttribute(rest)}
       width="100%"
     >
       <StyledAccordionButton
@@ -62,6 +61,7 @@ const _AccordionButton = ({
         onClick={onClick}
         {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
         {...metaAttribute({ name: MetaConstants.AccordionButton })}
+        data-analytics-name={MAKE_ANALYTICS_CONSTANTS.ACCORDION.ACCORDION_ITEM_BUTTON}
       >
         {isDeprecatedAPI ? <AccordionItemHeader title={title} leading={_icon ?? _index} /> : header}
       </StyledAccordionButton>

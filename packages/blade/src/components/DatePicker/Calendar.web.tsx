@@ -14,6 +14,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 
 const Calendar = <Type extends DateSelectionType>({
   firstDayOfWeek = 0,
@@ -129,6 +130,7 @@ const Calendar = <Type extends DateSelectionType>({
       gap="spacing.7"
       pickerType={levelToPicker[level]}
       {...metaAttribute({ name: MetaConstants.Calendar })}
+      data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.CALENDAR}
     >
       <CalendarHeader
         isRange={isRange}

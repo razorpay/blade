@@ -4,6 +4,7 @@ import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 
 type SpotlightPopoverFooterAction = {
   text?: string;
@@ -39,12 +40,12 @@ const SpotlightPopoverTourFooter = ({
       </Text>
       <Box display="flex" gap={isBothIcon ? 'spacing.3' : 'spacing.4'}>
         {hasSecondaryAction ? (
-          <Button size="small" variant="secondary" {...actions.secondary}>
+          <Button size="small" variant="secondary" {...actions.secondary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_SECONDARY_ACTION}>
             {actions?.secondary!.text!}
           </Button>
         ) : null}
         {hasPrimaryAction ? (
-          <Button size="small" variant="primary" {...actions.primary}>
+          <Button size="small" variant="primary" {...actions.primary} data-analytics-name={MAKE_ANALYTICS_CONSTANTS.SPOTLIGHT_POPOVER_TOUR.FOOTER_PRIMARY_ACTION}>
             {actions?.primary!.text!}
           </Button>
         ) : null}
