@@ -30,8 +30,6 @@ import {
   UsersIcon,
   TrashIcon,
   CheckCircleIcon,
-  ArrowSquareDownIcon,
-  ArrowUpIcon,
   ArrowSquareUpIcon,
   PlusIcon,
   ExternalLinkIcon,
@@ -50,17 +48,9 @@ import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { Amount } from '~components/Amount';
-import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
-import {
-  BottomSheet,
-  BottomSheetBody,
-  BottomSheetHeader,
-  BottomSheetFooter,
-} from '~components/BottomSheet';
-import { IconButton } from '~components/Button/IconButton';
-import { ActionListItem, ActionListItemIcon } from '~components/ActionList';
-import { ActionList } from '~components/ActionList';
+import { BottomSheet, BottomSheetBody } from '~components/BottomSheet';
+import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
 
 const Page = (): React.ReactElement => {
   return (
