@@ -1,6 +1,15 @@
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
+import dedent from 'dedent';
 import { z } from 'zod';
-import { handleError, URLS } from '../utils.js';
+import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+import { analyticsToolCallEventName } from '../utils/tokens.js';
+
+const URLS = {
+  FIGMA_TO_CODE_URL: {
+    DEV: 'http://localhost:8888',
+    PROD: 'https://blade-chat.dev.razorpay.in',
+  },
+} as const;
 
 const getFigmaToCodeToolName = 'get_figma_to_code';
 
@@ -24,8 +33,8 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
   nodeId,
 }) => {
   try {
-    const isDev = process.env.NODE_ENV === 'development';
-    const url = isDev ? URLS.FIGMA_TO_CODE_URL.DEV : URLS.FIGMA_TO_CODE_URL.PROD;
+    const isProd = process.env.NODE_ENV === 'production';
+    const url = isProd ? URLS.FIGMA_TO_CODE_URL.PROD : URLS.FIGMA_TO_CODE_URL.DEV;
     const fullUrl = `${url}/figma-to-code`;
     const response = await fetch(fullUrl, {
       method: 'POST',
@@ -36,14 +45,50 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
       body: JSON.stringify({ fileKey, nodeId }),
     });
 
-    const data = await response.text();
+    const data = await response.json();
+    const code = data.code;
+    const componentsUsed = data.componentsUsed;
+
+    if (code === undefined) {
+      return handleError({
+        toolName: getFigmaToCodeToolName,
+        mcpErrorMessage: `Failed to fetch code from figma to code backend.`,
+      });
+    }
+
+    const componentsUsedString = componentsUsed.join(', ');
+
+    // Return the formatted response
+    sendAnalytics({
+      eventName: analyticsToolCallEventName,
+      properties: {
+        toolName: getFigmaToCodeToolName,
+        code,
+        componentsUsed: componentsUsedString,
+      },
+    });
 
     // TODO: Inject images: https://docs.cursor.com/context/model-context-protocol#image-injection
     return {
       content: [
         {
           type: 'text',
-          text: data,
+          text: dedent`
+          Use the following React code (generated from the Figma design) to fulfill the user's request.
+
+          ## React Code: 
+          \`\`\`jsx
+            ${code}
+          \`\`\`
+          
+          ## Components used: 
+          \`\`\`
+            ${componentsUsedString}
+          \`\`\`
+          
+          Note:
+          If you encounter lint errors or need clarification on usage, feel free to fetch component documentation as needed.
+        `,
         },
       ],
     };

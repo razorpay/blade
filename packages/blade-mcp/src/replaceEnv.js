@@ -8,9 +8,9 @@ import * as dotenv from 'dotenv';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Define the path to the server.js file
+// Define the paths to the files to be replaced
 const SERVER_JS_PATH = path.resolve(__dirname, '../dist/server.js');
-// Define the path to the utils.js file
+const FIGMA_TO_CODE_JS_PATH = path.resolve(__dirname, '../dist/tools/getFigmaToCode.js');
 const ANALYTICS_UTILS_JS_PATH = path.resolve(__dirname, '../dist/utils/analyticsUtils.js');
 
 // Load env variables from .env file (if exists) or use process.env
@@ -20,6 +20,7 @@ dotenv.config();
 const NODE_ENV = process.env.NODE_ENV;
 const BLADE_MCP_SENTRY_DSN = process.env.BLADE_MCP_SENTRY_DSN || '';
 
+// TODO: we should run this recursively for all files in dist folder
 function replaceInFileSync(filePath, replacements) {
   try {
     let content = fs.readFileSync(filePath, 'utf8');
@@ -55,6 +56,14 @@ async function replaceEnvironmentVariables() {
       {
         from: /process\.env\.BLADE_SEGMENT_KEY/g,
         to: `'${BLADE_SEGMENT_KEY}'`,
+      },
+    ]);
+
+    // Replace NODE_ENV in figma-to-code.js
+    replaceInFileSync(FIGMA_TO_CODE_JS_PATH, [
+      {
+        from: /process\.env\.NODE_ENV/g,
+        to: `'${NODE_ENV}'`,
       },
     ]);
 
