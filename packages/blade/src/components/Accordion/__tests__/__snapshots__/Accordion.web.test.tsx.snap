@@ -371,6 +371,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-1"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -519,6 +520,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-2"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -667,6 +669,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-3"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -1169,6 +1172,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-34"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -1317,6 +1321,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-35"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -1465,6 +1470,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-36"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >

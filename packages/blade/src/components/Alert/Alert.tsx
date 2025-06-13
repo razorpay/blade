@@ -28,7 +28,7 @@ import type {
   TestID,
 } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { MAKE_ANALYTICS_CONSTANTS, makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type PrimaryAction = {
   text: string;
@@ -222,6 +222,7 @@ const _Alert = (
         onClick={actions.primary.onClick}
         color={emphasis === 'intense' ? 'white' : color}
         variant="secondary"
+        data-analytics-name={MAKE_ANALYTICS_CONSTANTS.ALERT.PRIMARY_ACTION_BUTTON}
       >
         {actions.primary.text}
       </BaseButton>

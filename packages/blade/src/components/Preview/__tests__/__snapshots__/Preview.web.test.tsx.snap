@@ -218,6 +218,7 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
           data-blade-component="base-box"
         >
           <button
+            aria-label="Enter Full Screen"
             class="c4"
             data-blade-component="button"
             role="button"
@@ -688,6 +689,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
             data-blade-component="base-box"
           >
             <button
+              aria-label="Zoom In"
               class="c5"
               data-blade-component="button"
               role="button"
@@ -740,6 +742,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
               %
             </p>
             <button
+              aria-label="Zoom Out"
               class="c5"
               data-blade-component="button"
               role="button"
@@ -784,6 +787,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
               </div>
             </button>
             <button
+              aria-label="Reset Zoom"
               class="c5"
               data-blade-component="button"
               role="button"
