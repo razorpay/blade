@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.34.1
+
+### Patch Changes
+
+- 9e5c6ef04: fix(blade): table editable cell dropdown issue
+
 ## 12.34.0
 
 ### Minor Changes
