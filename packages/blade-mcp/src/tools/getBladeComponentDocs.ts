@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join, basename } from 'path';
 import { existsSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
@@ -76,6 +76,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
       properties: {
         toolName: getBladeComponentDocsToolName,
         componentsList,
+        rootDirectoryName: basename(currentProjectRootDirectory),
       },
     });
 
