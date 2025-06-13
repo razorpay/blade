@@ -86,6 +86,18 @@ Why Can't we put the Metric inside the body of the card ?
  - We can also put metric inside the body of the card. that way we don't have to do much changes to the existing `Card` component.  
    (we might need to change the spacing between cardHeader and cardBody)
 
+```jsx
+<Card>
+  <CardHeader>
+    <CardHeaderLeading />
+  </CardHeader>
+  <CardBody>
+    <Metric />
+    <OtherComponent />
+  </CardBody>
+</Card>
+```
+
 ### Other Changes
 
 
