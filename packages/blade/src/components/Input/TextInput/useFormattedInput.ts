@@ -120,9 +120,9 @@ export const useFormattedInput = ({
 
           rawValue = rawBefore.slice(0, -1) + rawAfter; // "12".slice(0,-1) + "34" → "1" + "34" → "134"
 
-          // Position cursor after remaining chars
+          // Removes trailing non-alphanumeric characters from the end of the string, preserving the last alphanumeric word before them.
           infoRef.current.cursorPosition =
-            beforeCursor.replace(/([\d\w]+)[^\dA-z]+$/, '$1').length - 1; // "12" → 2-1 → 1
+            beforeCursor.replace(/([\d\w]+)[^\dA-z]+$/, '$1').length - 1;
         }
       }
 
