@@ -114,7 +114,7 @@ type TextInputCommonProps = Pick<
    */
   leading?: React.ReactElement | IconComponent;
   /**
-   * Format pattern where # represents digits and other characters are delimiters
+   * Format pattern where # represents input characters and other symbols act as delimiters
    * When provided, input will be automatically formatted and onChange will include rawValue
    *
    * @example "#### #### #### ####" for card numbers
