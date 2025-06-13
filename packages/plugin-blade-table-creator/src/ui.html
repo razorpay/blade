@@ -111,7 +111,7 @@
         selectInput.id = `column-type-${i}`;
         selectInput.value = columnTypes[i] || 'TEXT';
 
-        const options = ['TEXT', 'CHECKBOX', 'SPACER', 'AMOUNT'].map(type => {
+        const options = ['TEXT', 'AMOUNT', 'NUMBER', 'CHECKBOX', 'SPACER', 'STATUS', 'BADGE (GROUP)', 'BUTTON (GROUP)', 'ACTIONS/LINKS', 'ICON', 'SLOT', 'INPUT TEXT', 'INPUT SELECT'].map(type => {
           const option = document.createElement('option');
           option.value = type;
           option.textContent = type.charAt(0) + type.slice(1).toLowerCase();
