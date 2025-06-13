@@ -5,7 +5,6 @@ import { InputGroup as InputGroupComponent } from '../InputGroup';
 import { InputRow } from '../InputRow';
 import { InputGroupStoryCode } from './code';
 import { TextInput } from '~components/Input/TextInput';
-import { DatePicker } from '~components/DatePicker';
 import { Button } from '~components/Button';
 import { Heading } from '~components/Typography';
 import { Box } from '~components/Box';
