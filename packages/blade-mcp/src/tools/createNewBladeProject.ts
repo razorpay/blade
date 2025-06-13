@@ -49,6 +49,7 @@ const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProje
       eventName: analyticsToolCallEventName,
       properties: {
         toolName: createNewBladeProjectToolName,
+        projectRootDirectory: currentProjectRootDirectory,
         rootDirectoryName: basename(currentProjectRootDirectory),
       },
     });
