@@ -197,8 +197,8 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
   const toast = useToast();
 
   const [formData, setFormData] = useState({
-    cardNumber: '1234 5678',
-    expiryDate: null as Date | null,
+    cardNumber: '12345678',
+    expiryDate: '12',
     cvv: '12',
     cardholderName: 'John Doe',
     email: 'invalid-email',
@@ -223,7 +223,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
 
     if (!formData.cardNumber) {
       newErrors.cardNumber = true;
-    } else if (formData.cardNumber.replace(/\s/g, '').length < 16) {
+    } else if (formData.cardNumber.length < 13) {
       newErrors.cardNumber = true;
     }
 
@@ -233,7 +233,9 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
 
     if (!formData.cvv) {
       newErrors.cvv = true;
-    } else if (formData.cvv.length !== 3) {
+    } else if (
+      formData.cvv.length !== getPaymentCardCVVLength(detectPaymentCardBrand(formData.cardNumber))
+    ) {
       newErrors.cvv = true;
     }
 
@@ -255,7 +257,7 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
     return Object.values(errors).some((error) => error);
   };
 
-  const handleInputChange = (name: string, value: string | Date | null): void => {
+  const handleInputChange = (name: string, value: string): void => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Clear error when typing
@@ -294,23 +296,26 @@ const InputGroupWithValidationTemplate: StoryFn<InputGroupProps> = () => {
             value={formData.cardNumber}
             onChange={({ value }) => handleInputChange('cardNumber', value || '')}
             validationState={getValidationState('cardNumber')}
+            trailing={getPaymentCardBrandIcon(detectPaymentCardBrand(formData.cardNumber))}
+            format={getPaymentCardNumberFormat(detectPaymentCardBrand(formData.cardNumber))}
           />
         </InputRow>
         <InputRow gridTemplateColumns="1fr 1fr">
-          <DatePicker
-            inputPlaceHolder="Expiry Date"
+          <TextInput
+            placeholder="Expiry Date"
             label="Expiry Date"
-            selectionType="single"
+            format="##/##"
             value={formData.expiryDate}
-            onChange={(date) => handleInputChange('expiryDate', date)}
+            onChange={({ value }) => handleInputChange('expiryDate', value || '')}
             validationState={getValidationState('expiryDate')}
           />
-          <TextInput
+          <PasswordInput
             placeholder="CVV"
             label="CVV"
             value={formData.cvv}
             onChange={({ value }) => handleInputChange('cvv', value || '')}
             validationState={getValidationState('cvv')}
+            maxCharacters={getPaymentCardCVVLength(detectPaymentCardBrand(formData.cardNumber))}
           />
         </InputRow>
         <InputRow gridTemplateColumns="1fr">
