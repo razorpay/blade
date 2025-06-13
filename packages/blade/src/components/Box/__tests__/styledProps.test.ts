@@ -17,6 +17,7 @@ describe('getStyledProps', () => {
         "alignSelf": undefined,
         "bottom": undefined,
         "display": undefined,
+        "flexWrap": undefined,
         "gridArea": undefined,
         "gridColumn": undefined,
         "gridColumnEnd": undefined,
