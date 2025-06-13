@@ -37,6 +37,8 @@ export const ComponentIds = {
   CardHeaderText: 'CardHeaderText',
   CardHeaderLink: 'CardHeaderLink',
   CardHeaderIconButton: 'CardHeaderIconButton',
+  CardHeaderBox: 'CardHeaderBox',
+  CardHeaderButton: 'CardHeaderButton',
 };
 
 type CardSurfaceBackgroundColors = `surface.background.gray.${DotNotationToken<

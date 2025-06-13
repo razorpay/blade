@@ -20,6 +20,8 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
+import { Box } from '~components/Box';
+import { Link } from '~components/Link';
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {
@@ -148,7 +150,23 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
+      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` and `CardHeaderLink` component is accepted in suffix',
+    );
+
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <CardHeader>
+            <CardHeaderLeading
+              title={cardTitle}
+              subtitle={cardSubtitle}
+              suffix={<Link href="https://razorpay.com">Link</Link>}
+            />
+          </CardHeader>
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` and `CardHeaderLink` component is accepted in suffix',
     );
 
     expect(() =>
@@ -160,7 +178,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount` component is accepted in visual',
+      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount, CardHeaderBox` component is accepted in visual',
     );
     mockConsoleError.mockRestore();
   });
@@ -188,6 +206,27 @@ describe('<Card />', () => {
     expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
       '[Blade: Card]: CardFooterTrailing cannot be used outside of Card component',
     );
+    mockConsoleError.mockRestore();
+  });
+
+  it('should only accept allowed components in CardHeader slot', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <CardHeader>
+            <CardHeaderLeading
+              title="Card Header"
+              slot={
+                <Box>
+                  <Text>some random text</Text>
+                </Box>
+              }
+            />
+          </CardHeader>
+        </Card>,
+      ),
+    ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderBox` component is accepted in slot');
     mockConsoleError.mockRestore();
   });
 
