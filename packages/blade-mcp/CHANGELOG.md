@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.2.4
+
+### Patch Changes
+
+- 8beb5e541: feat(blade-mcp): pass directory name to analytics
+
 ## 0.2.3
 
 ### Patch Changes
