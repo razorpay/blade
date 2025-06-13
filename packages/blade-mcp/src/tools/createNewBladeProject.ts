@@ -1,5 +1,5 @@
 import { readdirSync, existsSync, cpSync, rmSync, renameSync } from 'fs';
-import { join } from 'path';
+import { join, basename } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { analyticsToolCallEventName, BASE_BLADE_TEMPLATE_DIRECTORY } from '../utils/tokens.js';
@@ -49,7 +49,7 @@ const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProje
       eventName: analyticsToolCallEventName,
       properties: {
         toolName: createNewBladeProjectToolName,
-        projectRootDirectory: currentProjectRootDirectory,
+        rootDirectoryName: basename(currentProjectRootDirectory),
       },
     });
 
