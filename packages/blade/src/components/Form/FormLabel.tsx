@@ -2,6 +2,7 @@ import React from 'react';
 import {
   labelLeftMarginRight,
   labelMarginBottom,
+  labelMarginBottomInChipGroup,
   labelOptionalIndicatorTextSize,
   labelTextSize,
   labelWidth,
@@ -28,6 +29,10 @@ type CommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * Name of the component that the label is inside
+   */
+  componentName?: 'chip-group' | 'checkbox-group' | 'radio-group' | 'file-upload';
 };
 
 type LabelProps = CommonProps & {
@@ -66,6 +71,7 @@ const FormLabel = ({
   id,
   htmlFor,
   size = 'medium',
+  componentName,
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -158,7 +164,13 @@ const FormLabel = ({
       id={id}
       {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
-      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}>
+      <BaseBox
+        marginBottom={
+          isLabelLeftPositioned && componentName === 'chip-group'
+            ? labelMarginBottomInChipGroup[size]
+            : labelMarginBottom[size]
+        }
+      >
         {textNode}
       </BaseBox>
     </Component>

@@ -254,6 +254,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             position={labelPosition}
             id={labelId}
             accessibilityText={accessibilityText}
+            componentName="file-upload"
           >
             {label}
           </FormLabel>
