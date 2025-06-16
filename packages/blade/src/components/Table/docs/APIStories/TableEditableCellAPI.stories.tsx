@@ -137,6 +137,7 @@ const TableTemplate: StoryFn<TableTemplateProps> = ({ rowDensity, ...args }) => 
                     validationState="error"
                     placeholder="Account number"
                     errorText="Account number is invalid"
+                    inputType="number"
                   />
                   <TableEditableDropdownCell selectionType="multiple">
                     <AutoComplete

@@ -68,6 +68,7 @@ const _TableEditableCell = ({
   trailingButton,
   errorText,
   successText,
+  inputType,
 }: TableEditableCellProps): React.ReactElement => {
   const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
 
@@ -93,7 +94,7 @@ const _TableEditableCell = ({
               isTableInputCell={rowDensityToIsTableInputCellMapping[rowDensity]}
               validationState={validationState}
               id="table-editable-cell-input"
-              type="text"
+              type={inputType}
               size={tableEditableCellRowDensityToInputSizeMap[rowDensity]}
               trailingIcon={validationStateToInputTrailingIconMap[validationState]}
               accessibilityLabel={accessibilityLabel}
