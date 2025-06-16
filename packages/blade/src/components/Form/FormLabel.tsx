@@ -82,6 +82,16 @@ const FormLabel = ({
 
   const isLabelLeftPositioned = position === 'left' && isDesktop;
 
+  const textNodeContainerMarginBottom = () => {
+    if (isLabelLeftPositioned && componentName === 'chip-group') {
+      return labelMarginBottomInChipGroup[size];
+    }
+    if (isLabelLeftPositioned) {
+      return undefined;
+    }
+    return labelMarginBottom[size];
+  };
+
   if (necessityIndicator === 'optional') {
     necessityLabel = (
       <Text
@@ -164,15 +174,7 @@ const FormLabel = ({
       id={id}
       {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
-      <BaseBox
-        marginBottom={
-          isLabelLeftPositioned && componentName === 'chip-group'
-            ? labelMarginBottomInChipGroup[size]
-            : labelMarginBottom[size]
-        }
-      >
-        {textNode}
-      </BaseBox>
+      <BaseBox marginBottom={textNodeContainerMarginBottom()}>{textNode}</BaseBox>
     </Component>
   );
 };
