@@ -159,7 +159,11 @@ const TableEditableDropdownCell = (
             flex={1}
             hasPadding={false}
           >
-            <Dropdown _width="calc(100% - 8px)" margin={getEditableInputMargin({ rowDensity })} {...dropdownProps} />
+            <Dropdown
+              _width="calc(100% - 8px)"
+              margin={getEditableInputMargin({ rowDensity })}
+              {...dropdownProps}
+            />
           </CellWrapper>
         </BaseBox>
       </StyledEditableCell>
