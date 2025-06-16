@@ -442,11 +442,15 @@ const _BottomSheet = ({
 
   // Disable body scroll lock when the component is unmounted forcefully
   React.useEffect(() => {
-    const lockTarget = scrollRef.current!;
-    return () => {
-      enableBodyScroll(lockTarget);
+    const lockTarget = scrollRef.current;
+    return function () {
+      if (lockTarget) {
+        enableBodyScroll(lockTarget);
+      }
     };
-  }, []);
+  // when BottomSheet is mounted with isOpen={false}, then BottomSheetBody does not set scrollRef
+  // so, we added scrollRef to dependencies to ensure that we update lockTarget when scrollRef is updated
+  }, [scrollRef]);
 
   // We will need to reset these values otherwise the next time the bottomsheet opens
   // this will be populated and the animations won't run
