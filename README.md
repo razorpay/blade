@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/razorpay-blade-badge.png)](https://mseep.ai/app/razorpay-blade)
+
 <br/>
 <p align="center">
 <picture>
