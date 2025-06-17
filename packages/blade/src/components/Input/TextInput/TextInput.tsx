@@ -127,7 +127,19 @@ type TextInputCommonProps = Pick<
    * @example "##/##" for expiry dates
    * @example "(###) ###-####" for phone numbers
    */
-  format?: string;
+  format?:
+    | '#### #### #### ####'
+    | '##/##'
+    | '##/##/####'
+    | '(###) ###-####'
+    | '###-##-####'
+    | '##:##'
+    | '##:##:##'
+    | '#### #### ####'
+    | '###.###.###.###'
+    | '## ## ####'
+    | '##-###-##'
+    | (string & Record<string, never>);
 } & TaggedInputProps &
   StyledPropsBlade;
 
