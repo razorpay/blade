@@ -122,7 +122,7 @@ DateFormat.storyName = 'Format Uncontrolled';
 export const CustomFormat: StoryFn<typeof TextInputComponent> = () => {
   const [value, setValue] = React.useState('');
   const [rawValue, setRawValue] = React.useState('');
-  const [pattern, setPattern] = React.useState('####-####-####');
+  const [pattern, setPattern] = React.useState('(####)-####-####');
 
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
@@ -147,6 +147,11 @@ export const CustomFormat: StoryFn<typeof TextInputComponent> = () => {
           setRawValue(rawValue ?? '');
         }}
         helpText="Enter value to see it formatted according to the pattern above"
+        showClearButton={true}
+        onClearButtonClick={() => {
+          setValue('');
+          setRawValue('');
+        }}
       />
       <Box
         backgroundColor="surface.background.gray.moderate"
@@ -201,10 +206,10 @@ export const FormatPatterns: StoryFn<typeof TextInputComponent> = () => {
         helpText="Format: XXX.XXX.XXX.XXX"
       />
       <TextInputComponent
-        label="IFSC Code"
-        placeholder="Enter IFSC"
-        format="####0####0##"
-        helpText="Format: XXXX0XXXX0XX"
+        label="License Plate"
+        placeholder="Enter license plate"
+        format="## ## ####"
+        helpText="Format: AB 12 CDEF"
       />
       <TextInputComponent
         label="GST Number"
