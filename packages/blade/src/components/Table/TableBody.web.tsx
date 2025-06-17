@@ -133,10 +133,16 @@ const _TableCell = ({
   gridColumnEnd,
   gridRowStart,
   gridRowEnd,
+  backgroundColor,
   ...rest
 }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
+  const {
+    selectionType,
+    rowDensity,
+    showStripedRows,
+    backgroundColor: tableBackgroundColor,
+  } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
   const gridStyle: React.CSSProperties = {};
@@ -151,7 +157,7 @@ const _TableCell = ({
       gridColumnStart={gridColumnStart}
       gridColumnEnd={gridColumnEnd}
       style={gridStyle}
-      $backgroundColor={backgroundColor}
+      $backgroundColor={backgroundColor ?? tableBackgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
     >
@@ -219,7 +225,8 @@ const StyledRow = styled(Row)<{
   $isSelectable: boolean;
   $isHoverable: boolean;
   $showBorderedCells: boolean;
-}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells }) => {
+  $notShowBorderedRows: boolean;
+}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $notShowBorderedRows }) => {
   const { hasHoverActions } = useTableContext();
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
@@ -294,6 +301,11 @@ const StyledRow = styled(Row)<{
         },
       }),
       '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
+      ...($notShowBorderedRows && {
+        '& .cell-wrapper': {
+          borderBottom: 'none',
+        },
+      }),
     },
   };
 });
@@ -306,6 +318,7 @@ const _TableRow = <Item,>({
   onClick,
   hoverActions,
   testID,
+  notShowBorderedRows,
   ...rest
 }: TableRowProps<Item>): React.ReactElement => {
   const {
@@ -348,6 +361,7 @@ const _TableRow = <Item,>({
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
       $isVirtualized={isVirtualized}
+      $notShowBorderedRows={notShowBorderedRows}
     >
       {isMultiSelect && (
         <TableCheckboxCell

@@ -295,6 +295,11 @@ type TableRowProps<Item> = {
   onClick?: ({ item }: { item: TableNode<Item> }) => void;
 
   hoverActions?: React.ReactElement;
+  /**
+   * The notShowBorderedRows prop determines whether the table should have bordered rows or not.
+   * The default value is `false`.
+   **/
+  notShowBorderedRows?: boolean;
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -347,6 +352,10 @@ type TableCellProps = {
    * <TableCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableCell>
    */
   gridRowEnd?: number;
+  /**
+   * The backgroundColor prop determines the background color of the table cell.
+   **/
+  backgroundColor?: TableBackgroundColors | 'transparent';
 } & DataAnalyticsAttribute;
 
 type TableEditableCellProps = Pick<
