@@ -28,8 +28,8 @@ type CommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-  labelSuffix?: React.ReactElement;
-  labelTrailing?: React.ReactElement;
+  labelSuffix?: React.ReactNode;
+  labelTrailing?: React.ReactNode;
 };
 
 type LabelProps = CommonProps & {
@@ -72,12 +72,12 @@ export type FormInputLabelProps = {
    * }
    * ```
    */
-  labelSuffix?: React.ReactElement;
+  labelSuffix?: React.ReactNode;
 
   /**
    * Trailing element to be shown for the input field
    */
-  labelTrailing?: React.ReactElement;
+  labelTrailing?: React.ReactNode;
 };
 
 const FormLabel = ({
