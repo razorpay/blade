@@ -139,6 +139,7 @@ type TextInputCommonProps = Pick<
     | '###.###.###.###'
     | '## ## ####'
     | '##-###-##'
+    // eslint-disable-next-line @typescript-eslint/ban-types
     | (string & {});
 } & TaggedInputProps &
   StyledPropsBlade;
