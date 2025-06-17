@@ -28,6 +28,8 @@ type CommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
+  labelSuffix?: React.ReactElement;
+  labelTrailing?: React.ReactElement;
 };
 
 type LabelProps = CommonProps & {
@@ -55,6 +57,27 @@ export type FormInputLabelProps = {
    * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
    */
   necessityIndicator?: 'required' | 'optional' | 'none';
+
+  /**
+   * Suffix element to be shown for the input field
+   *
+   * @example
+   * ```jsx
+   * labelSuffix={
+   *  <Tooltip content="This is a tooltip" placement="right">
+   *    <TooltipInteractiveWrapper>
+   *        <InfoIcon size="small" color="surface.icon.gray.subtle" />
+   *    </TooltipInteractiveWrapper>
+   *  </Tooltip>
+   * }
+   * ```
+   */
+  labelSuffix?: React.ReactElement;
+
+  /**
+   * Trailing element to be shown for the input field
+   */
+  labelTrailing?: React.ReactElement;
 };
 
 const FormLabel = ({
@@ -66,6 +89,8 @@ const FormLabel = ({
   id,
   htmlFor,
   size = 'medium',
+  labelSuffix,
+  labelTrailing,
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -143,7 +168,7 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : '100%';
 
   return (
     <Component
@@ -158,8 +183,22 @@ const FormLabel = ({
       id={id}
       {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
-      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}>
-        {textNode}
+      <BaseBox
+        width="100%"
+        display="flex"
+        flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
+        alignItems={isLabelLeftPositioned ? 'flex-start' : 'center'}
+        marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}
+      >
+        <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
+          <BaseBox>{textNode}</BaseBox>
+          {labelSuffix ? <BaseBox display="flex">{labelSuffix}</BaseBox> : null}
+        </BaseBox>
+        {labelTrailing ? (
+          <BaseBox marginLeft={isLabelLeftPositioned ? 'spacing.0' : 'auto'}>
+            {labelTrailing}
+          </BaseBox>
+        ) : null}
       </BaseBox>
     </Component>
   );
