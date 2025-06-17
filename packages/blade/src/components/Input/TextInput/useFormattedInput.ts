@@ -72,7 +72,7 @@ export const useFormattedInput = ({
   }, [userValue, defaultValue, pattern]);
 
   const [internalValue, setInternalValue] = useState(initialValue);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const infoRef = useRef<{
     cursorPosition?: number;
     endOfSection?: boolean;
@@ -88,6 +88,17 @@ export const useFormattedInput = ({
       setInternalValue(emptyFormatted);
     }
   }, [userValue, pattern]);
+
+  // Apply calculated cursor position after value updates
+  useEffect(() => {
+    const { cursorPosition, endOfSection } = infoRef.current;
+
+    if (endOfSection || cursorPosition === undefined) return; // Skip if no position or end section
+
+    if (inputRef.current) {
+      inputRef.current.setSelectionRange(cursorPosition, cursorPosition);
+    }
+  }, [internalValue]);
 
   const handleChange: FormInputOnEvent = useCallback(
     ({ name, value: inputValue }) => {
@@ -160,20 +171,9 @@ export const useFormattedInput = ({
     [pattern, onChange, internalValue],
   );
 
-  // Apply calculated cursor position after value updates
-  useEffect(() => {
-    const { cursorPosition, endOfSection } = infoRef.current;
-
-    if (endOfSection || cursorPosition === undefined) return; // Skip if no position or end section
-
-    if (inputRef.current) {
-      inputRef.current.setSelectionRange(cursorPosition, cursorPosition);
-    }
-  }, [internalValue]);
-
   const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.currentTarget && inputRef.current !== event.currentTarget) {
-      (inputRef as React.MutableRefObject<HTMLInputElement>).current = event.currentTarget;
+      inputRef.current = event.currentTarget;
     }
   }, []);
 
