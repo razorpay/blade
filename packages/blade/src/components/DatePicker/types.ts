@@ -200,7 +200,14 @@ type DatePickerCommonInputProps = {
   referenceProps: any;
 } & Pick<
   TextInputProps,
-  'size' | 'isRequired' | 'necessityIndicator' | 'autoFocus' | 'isDisabled' | 'accessibilityLabel'
+  | 'size'
+  | 'isRequired'
+  | 'necessityIndicator'
+  | 'autoFocus'
+  | 'isDisabled'
+  | 'accessibilityLabel'
+  | 'labelSuffix'
+  | 'labelTrailing'
 > &
   FormInputValidationProps;
 

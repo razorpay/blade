@@ -11,6 +11,9 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { Code, Text } from '~components/Typography';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { InfoIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
@@ -569,6 +572,41 @@ export const DisabledDatePickerWithFilterChipSelectInput: StoryFn<
         }}
         isDisabled
       />
+    </Box>
+  );
+};
+
+export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box>
+      <Box display="flex" gap="spacing.5" flexDirection="column">
+        <DatePickerComponent
+          selectionType="single"
+          labelPosition="left"
+          label="Select a date"
+          labelSuffix={
+            <Tooltip content="Select a date" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+        />
+        <DatePickerComponent
+          labelPosition="left"
+          selectionType="range"
+          label={{ start: 'Select a range' }}
+          labelSuffix={
+            <Tooltip content="Select a date" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+        />
+      </Box>
     </Box>
   );
 };
