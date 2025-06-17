@@ -29,10 +29,16 @@ const TextInputFormatMeta: Meta<typeof TextInputComponent> = {
 
 export default TextInputFormatMeta;
 
+const validateNumber = (value: string): boolean => {
+  return /^\d*$/.test(value);
+};
+
 export const CardNumberFormat: StoryFn<typeof TextInputComponent> = () => {
   const [cardNumber, setCardNumber] = React.useState('');
   const [rawCardNumber, setRawCardNumber] = React.useState('');
   const [cardBrand, setCardBrand] = React.useState<PaymentCardBrand>('unknown');
+  const [validationState, setValidationState] = React.useState<'none' | 'error'>('none');
+  const [errorText, setErrorText] = React.useState('');
 
   const handleCardNumberChange = ({
     value,
@@ -41,10 +47,20 @@ export const CardNumberFormat: StoryFn<typeof TextInputComponent> = () => {
     value?: string;
     rawValue?: string;
   }): void => {
+    const isValidNumber = validateNumber(rawValue ?? '');
+
+    if (!isValidNumber && rawValue) {
+      setValidationState('error');
+      setErrorText('Please enter numbers only');
+    } else {
+      setValidationState('none');
+      setErrorText('');
+    }
+
     setCardNumber(value ?? '');
     setRawCardNumber(rawValue ?? '');
 
-    if (rawValue) {
+    if (rawValue && isValidNumber) {
       const brand = detectPaymentCardBrand(rawValue);
       setCardBrand(brand);
     }
@@ -60,6 +76,9 @@ export const CardNumberFormat: StoryFn<typeof TextInputComponent> = () => {
         onChange={handleCardNumberChange}
         helpText="Try: 4111111111111111 (Visa), 5555555555554444 (Mastercard), 378282246310005 (Amex)"
         trailing={getPaymentCardBrandIcon(cardBrand)}
+        type="number"
+        validationState={validationState}
+        errorText={errorText}
       />
       <Box
         backgroundColor="surface.background.gray.moderate"
@@ -84,6 +103,8 @@ CardNumberFormat.storyName = 'Format Controlled';
 export const DateFormat: StoryFn<typeof TextInputComponent> = () => {
   const [date, setDate] = React.useState('');
   const [rawDate, setRawDate] = React.useState('');
+  const [validationState, setValidationState] = React.useState<'none' | 'error'>('none');
+  const [errorText, setErrorText] = React.useState('');
 
   return (
     <Box>
@@ -93,10 +114,23 @@ export const DateFormat: StoryFn<typeof TextInputComponent> = () => {
         defaultValue=""
         format="##/##/####"
         onChange={({ value, rawValue }) => {
+          const isValidNumber = validateNumber(rawValue ?? '');
+
+          if (!isValidNumber && rawValue) {
+            setValidationState('error');
+            setErrorText('Please enter numbers only');
+          } else {
+            setValidationState('none');
+            setErrorText('');
+          }
+
           setDate(value ?? '');
           setRawDate(rawValue ?? '');
         }}
         helpText="Enter date in DD/MM/YYYY format"
+        type="number"
+        validationState={validationState}
+        errorText={errorText}
       />
       <Box
         backgroundColor="surface.background.gray.moderate"
