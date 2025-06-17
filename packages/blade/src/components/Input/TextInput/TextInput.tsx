@@ -139,7 +139,7 @@ type TextInputCommonProps = Pick<
     | '###.###.###.###'
     | '## ## ####'
     | '##-###-##'
-    | (string & {});
+    | (string & Record<string, never>);
 } & TaggedInputProps &
   StyledPropsBlade;
 
