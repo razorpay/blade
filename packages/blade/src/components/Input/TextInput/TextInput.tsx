@@ -127,7 +127,20 @@ type TextInputCommonProps = Pick<
    * @example "##/##" for expiry dates
    * @example "(###) ###-####" for phone numbers
    */
-  format?: string;
+  format?:
+    | '#### #### #### ####'
+    | '##/##'
+    | '##/##/####'
+    | '(###) ###-####'
+    | '###-##-####'
+    | '##:##'
+    | '##:##:##'
+    | '#### #### ####'
+    | '###.###.###.###'
+    | '## ## ####'
+    | '##-###-##'
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    | (string & {});
 } & TaggedInputProps &
   StyledPropsBlade;
 
