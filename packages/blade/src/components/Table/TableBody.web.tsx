@@ -79,7 +79,9 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
   componentId: ComponentIds.TableBody,
 });
 
-export const StyledCell = styled(Cell)<{
+export const StyledCell = styled(Cell).withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$') && prop !== 'theme',
+})<{
   $backgroundColor: TableBackgroundColors;
 }>(({ theme, $backgroundColor }) => ({
   '&&&': {
@@ -127,16 +129,28 @@ const _TableCell = ({
   children,
   textAlign,
   _hasPadding,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
+  const gridStyle: React.CSSProperties = {};
+  if (gridRowStart && gridRowEnd) {
+    gridStyle.gridRow = `${gridRowStart} / ${gridRowEnd}`;
+  }
+
   return (
     <StyledCell
       tabIndex={0}
       role="cell"
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
+      style={gridStyle}
       $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
