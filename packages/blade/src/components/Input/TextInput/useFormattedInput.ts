@@ -80,12 +80,14 @@ export const useFormattedInput = ({
 
   const maxLength = useMemo(() => pattern?.length, [pattern]);
 
-  // Reset internal formatting state when external value becomes empty
+  // Reset internal state when parent clears value (form resets, external state changes)
+  // Preserves format delimiters for visual guidance. Example: "(###)" → "(   )" when cleared
   useEffect(() => {
     if ((userValue === '' || userValue === undefined) && defaultValue === '') {
-      setInternalValue('');
+      const emptyFormatted = format('', pattern ?? '');
+      setInternalValue(emptyFormatted);
     }
-  }, [userValue]);
+  }, [userValue, pattern]);
 
   const handleChange: FormInputOnEvent = useCallback(
     ({ name, value: inputValue }) => {

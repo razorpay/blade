@@ -117,6 +117,12 @@ type TextInputCommonProps = Pick<
    * Format pattern where # represents input characters and other symbols act as delimiters
    * When provided, input will be automatically formatted and onChange will include rawValue
    *
+   * **Note:**
+   * 1. Format pattern should only contain # symbols and special characters as delimiters.
+   *    Alphanumeric characters (letters and numbers) are not allowed in the format pattern.
+   * 2. When format is provided, user input is restricted to alphanumeric characters only.
+   *    Special characters and symbols will be filtered out automatically from user input.
+   *
    * @example "#### #### #### ####" for card numbers
    * @example "##/##" for expiry dates
    * @example "(###) ###-####" for phone numbers
@@ -213,6 +219,17 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
   const [isInputFocussed, setIsInputFocussed] = useState(autoFocus ?? false);
+
+  if (__DEV__) {
+    if (format) {
+      const hasAlphanumeric = /[a-zA-Z0-9]/.test(format);
+      if (hasAlphanumeric) {
+        throw new Error(
+          `[Blade: TextInput] Invalid format "${format}". Only # and special characters allowed, no letters/numbers.`,
+        );
+      }
+    }
+  }
 
   const formattingResult = useFormattedInput({
     format,
