@@ -2,7 +2,6 @@ import React from 'react';
 import { checkboxSizes } from '../checkboxTokens';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
-import type { FormInputLabelProps } from '~components/Form';
 import { FormLabel, FormHint } from '~components/Form';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
@@ -14,7 +13,7 @@ import { useTheme } from '~components/BladeProvider';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-type CheckboxGroupProps = Pick<FormInputLabelProps, 'labelSuffix' | 'labelTrailing'> & {
+type CheckboxGroupProps = {
   /**
    * Accepts multiple checkboxes as children
    */
@@ -116,8 +115,6 @@ const CheckboxGroup = ({
   size = 'medium',
   testID,
   orientation = 'vertical',
-  labelSuffix,
-  labelTrailing,
   ...rest
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
@@ -158,8 +155,6 @@ const CheckboxGroup = ({
               id={ids.labelId}
               accessibilityText={accessibilityText}
               size={size}
-              labelSuffix={labelSuffix}
-              labelTrailing={labelTrailing}
             >
               {label}
             </FormLabel>

@@ -3,7 +3,6 @@ import { radioSizes } from '../radioTokens';
 import { RadioGroupProvider } from './RadioContext';
 import { useRadioGroup } from './useRadioGroup';
 import BaseBox from '~components/Box/BaseBox';
-import type { FormInputLabelProps } from '~components/Form';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -13,7 +12,7 @@ import { useTheme } from '~components/BladeProvider';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-type RadioGroupProps = Pick<FormInputLabelProps, 'labelSuffix' | 'labelTrailing'> & {
+type RadioGroupProps = {
   /**
    * Accepts multiple radios as children
    */
@@ -124,8 +123,6 @@ const RadioGroup = ({
   size = 'medium',
   orientation = 'vertical',
   testID,
-  labelSuffix,
-  labelTrailing,
   ...rest
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
@@ -167,8 +164,6 @@ const RadioGroup = ({
               id={ids.labelId}
               accessibilityText={accessibilityText && `,${accessibilityText}`}
               size={size}
-              labelSuffix={labelSuffix}
-              labelTrailing={labelTrailing}
             >
               {label}
             </FormLabel>
