@@ -444,7 +444,7 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
         <AccordionItem>
           <AccordionItemHeader
             leading={<AnnouncementIcon size="large" />}
-            title="Item with Icon and subtitle"
+            title="Item with Icon and subtifftle"
             subtitle="Subtitle Text"
           />
           <AccordionItemBody>

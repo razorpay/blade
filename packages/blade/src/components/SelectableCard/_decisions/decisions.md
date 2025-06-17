@@ -1,6 +1,9 @@
 # SelectableCard
 
-SelectableCard combines the existing Card component with form control groups (CheckboxGroup/RadioGroup) to create selectable card interfaces.
+SelectableCard enhances the existing Card component to work seamlessly with form control groups (CheckboxGroup/RadioGroup). While we already have interactive cards that include form controls, this enhancement adds:
+
+- **Automatic validation state inheritance** from parent CheckboxGroup/RadioGroup context to Card styling
+- **Flexible wrapping behavior** for horizontal RadioGroup/CheckboxGroup layouts 
 
 - [Design](#design)
 - [Anatomy](#anatomy)
