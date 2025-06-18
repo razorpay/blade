@@ -39,7 +39,19 @@ type TextInputProps = BaseInputProps & {
    * @example "##/##" for expiry dates
    * @example "(###) ###-####" for phone numbers
    */
-  format?: string;
+  format?:
+    | '#### #### #### ####'
+    | '##/##'
+    | '##/##/####'
+    | '(###) ###-####'
+    | '###-##-####'
+    | '##:##'
+    | '##:##:##'
+    | '#### #### ####'
+    | '###.###.###.###'
+    | '## ## ####'
+    | '##-###-##'
+    | (string & {});
 
   /**
    * Trailing React component (e.g., Image, Icon)
