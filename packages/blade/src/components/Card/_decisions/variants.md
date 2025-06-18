@@ -4,8 +4,11 @@
 - [Card Variants](#card-variants)
   - [Metric Card](#metric-card)
     - [Design](#design-1)
-    - [API](#api-1)
   - [Enhancements](#enhancements)
+    - [API](#API-1)
+    - [API](#API-1)
+
+    
 
 We are introducing a new variant of card -  Metric and default (currently exists as `Card`)
 
@@ -70,7 +73,35 @@ but still we need to enhancement to support these changes..
   - Add Support for passing headerLayout in CardHeaderTrailing (will pick this up with layout pattern)
   
 
-## Typescript Types
+
+## API-1
+* Support passing multiple components in Suffix of CardHeaderTrailing. (this way we can pass tooltip and other components in suffix)
+```tsx
+<CardHeaderLeading
+  suffix={
+    <CardHeaderBox>
+      <Tooltip />
+      <Button />
+    </CardHeaderBox>
+  }
+/>
+
+
+```typescript
+type CardHeaderLeading = {
+  suffix?: React.ReactNode;
+};
+```
+* Here we are also adding a new component `CardHeaderBox` which is a wrapper on top of `Box` component. it can be only used in `CardHeaderLeading`.
+## API-2
+* Maybe support passing tooltip  in CardHeaderLeading
+
+
+<CardHeaderLeading
+  suffix={<CardHeaderBadge />}
+  toolTipTitle="Tooltip Title"
+  toolTipContent="Tooltip Content"
+/>
 
 ```typescript
 
