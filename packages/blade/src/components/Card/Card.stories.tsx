@@ -37,6 +37,7 @@ import {
   MoreVerticalIcon,
   EditIcon,
   EyeIcon,
+  InfoIcon,
 } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
 
@@ -51,6 +52,7 @@ import { Amount } from '~components/Amount';
 import { Button } from '~components/Button';
 import { BottomSheet, BottomSheetBody } from '~components/BottomSheet';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -558,7 +560,6 @@ const MetricCardVariantExample = (): React.ReactElement => {
           subtitle={
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
-          toolTipTitle="Total Payment Volume"
           slot={
             isMobile ? undefined : (
               <CardHeaderBox>
@@ -609,14 +610,25 @@ const LayoutCardVariantExample = (): React.ReactElement => {
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
           suffix={
-            <CardHeaderLink
-              href="https://www.google.com/search?q=what+is+total+payment+volume"
-              target="_blank"
-              icon={ExternalLinkIcon}
-              iconPosition="right"
-            >
-              Learn more
-            </CardHeaderLink>
+            <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+              <Tooltip
+                title="Total Payment Volume"
+                content="Total Payment Volume is the total amount of payments made in the current month."
+                placement="top"
+              >
+                <TooltipInteractiveWrapper>
+                  <InfoIcon size="small" color="surface.icon.gray.subtle" marginLeft="spacing.2" />
+                </TooltipInteractiveWrapper>
+              </Tooltip>
+              <CardHeaderLink
+                href="https://www.google.com/search?q=what+is+total+payment+volume"
+                target="_blank"
+                icon={ExternalLinkIcon}
+                iconPosition="right"
+              >
+                Learn more
+              </CardHeaderLink>
+            </CardHeaderBox>
           }
         />
         <CardHeaderTrailing

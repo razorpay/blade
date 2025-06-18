@@ -161,6 +161,7 @@ const CardHeader = assignWithoutSideEffects(_CardHeader, { componentId: Componen
 const CardHeaderSuffixAllowedComponents = [
   ComponentIds.CardHeaderCounter,
   ComponentIds.CardHeaderLink,
+  ComponentIds.CardHeaderBox,
 ];
 type CardHeaderLeadingProps = {
   title: string;
@@ -174,7 +175,7 @@ type CardHeaderLeadingProps = {
   /**
    * suffix element of Card
    *
-   * Accepts: `CardHeaderCounter` and `CardHeaderLink` component
+   * Accepts: `CardHeaderCounter`,`CardHeaderLink` ,`CardHeaderBox` component
    */
   suffix?: React.ReactNode;
   /**
@@ -183,14 +184,6 @@ type CardHeaderLeadingProps = {
    * Accepts: `CardHeaderBox` component
    */
   slot?: React.ReactNode;
-  /**
-   * Tooltip title
-   */
-  toolTipTitle?: string;
-  /**
-   * Tooltip content
-   */
-  toolTipContent?: string;
 } & DataAnalyticsAttribute;
 const _CardHeaderLeading = ({
   title,
@@ -198,8 +191,6 @@ const _CardHeaderLeading = ({
   prefix,
   slot,
   suffix,
-  toolTipTitle,
-  toolTipContent,
   ...rest
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
@@ -214,7 +205,7 @@ const _CardHeaderLeading = ({
 
     if (suffix && !CardHeaderSuffixAllowedComponents.includes(getComponentId(suffix)!)) {
       throwBladeError({
-        message: `Only \`${ComponentIds.CardHeaderCounter}\` and \`${ComponentIds.CardHeaderLink}\` component is accepted in suffix`,
+        message: `Only \`${ComponentIds.CardHeaderCounter}\` ,  \`${ComponentIds.CardHeaderLink}\` ,  \`${ComponentIds.CardHeaderBox}\` component is accepted in suffix`,
         moduleName: 'CardHeaderLeading',
       });
     }
@@ -246,13 +237,6 @@ const _CardHeaderLeading = ({
             <Text color="surface.text.gray.normal" size="large" weight="semibold">
               {title}
             </Text>
-            {(toolTipTitle || toolTipContent) && (
-              <Tooltip title={toolTipTitle} content={toolTipContent || ''} placement="top">
-                <TooltipInteractiveWrapper>
-                  <InfoIcon size="small" color="surface.icon.gray.subtle" marginLeft="spacing.2" />
-                </TooltipInteractiveWrapper>
-              </Tooltip>
-            )}
 
             {suffix && <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>}
           </BaseBox>
