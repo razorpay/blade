@@ -595,7 +595,7 @@ const MetricCardVariantExample = (): React.ReactElement => {
 
 export const MetricCardVariant = MetricCardVariantExample.bind({});
 
-const LayoutCardVariantExample = (): React.ReactElement => {
+const CardWithTooltipExample = (): React.ReactElement => {
   const isMobile = useIsMobile();
   return (
     <Card backgroundColor="surface.background.gray.intense" maxWidth="700px" minWidth="300px">
@@ -638,4 +638,4 @@ const LayoutCardVariantExample = (): React.ReactElement => {
   );
 };
 
-export const LayoutCardVariant = LayoutCardVariantExample.bind({});
+export const CardWithTooltip = CardWithTooltipExample.bind({});
