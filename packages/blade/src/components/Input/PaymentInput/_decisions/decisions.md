@@ -28,6 +28,13 @@ type TextInputProps = BaseInputProps & {
   /**
    * Format pattern where # represents input characters and other symbols act as delimiters
    * When provided, input will be automatically formatted
+   *
+   * **Note:**
+   * 1. Format pattern should only contain # symbols and special characters as delimiters.
+   *    Alphanumeric characters (letters and numbers) are not allowed in the format pattern.
+   * 2. When format is provided, user input is restricted to alphanumeric characters only.
+   *    Special characters and symbols will be filtered out automatically from user input.
+   *
    * @example "#### #### #### ####" for card numbers
    * @example "##/##" for expiry dates
    * @example "(###) ###-####" for phone numbers
