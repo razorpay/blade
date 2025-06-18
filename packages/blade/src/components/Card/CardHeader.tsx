@@ -28,8 +28,6 @@ import type { AmountProps } from '~components/Amount';
 import { Amount } from '~components/Amount';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BoxProps } from '~components/Box';
-import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
-import { InfoIcon } from '~components/Icons';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
