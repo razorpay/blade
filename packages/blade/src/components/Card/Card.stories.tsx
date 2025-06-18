@@ -20,7 +20,6 @@ import {
   CardHeaderAmount,
   CardHeaderText,
   CardHeaderBox,
-  CardHeaderButton,
 } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -598,7 +597,6 @@ export const MetricCardVariant = MetricCardVariantExample.bind({});
 
 const LayoutCardVariantExample = (): React.ReactElement => {
   const isMobile = useIsMobile();
-  const [isBottomSheetOpen, setIsBottomSheetOpen] = React.useState(false);
   return (
     <Card backgroundColor="surface.background.gray.intense" maxWidth="700px" minWidth="300px">
       <CardHeader showDivider={false}>
@@ -629,49 +627,7 @@ const LayoutCardVariantExample = (): React.ReactElement => {
             </CardHeaderBox>
           }
         />
-        <CardHeaderTrailing
-          visual={
-            <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
-              {isMobile ? (
-                <Box>
-                  <Button
-                    accessibilityLabel="View More Options"
-                    icon={MoreVerticalIcon}
-                    onClick={() => setIsBottomSheetOpen(true)}
-                    variant="tertiary"
-                  />
-                  <BottomSheet
-                    isOpen={isBottomSheetOpen}
-                    onDismiss={() => setIsBottomSheetOpen(false)}
-                  >
-                    <BottomSheetBody>
-                      <ActionList>
-                        <ActionListItem
-                          title="View Dashboard"
-                          value="view-dashboard"
-                          trailing={<ActionListItemIcon icon={EyeIcon} />}
-                        />
-                        <ActionListItem
-                          trailing={<ActionListItemIcon icon={EditIcon} />}
-                          title="Edit Chart"
-                          value="edit-chart"
-                        />
-                      </ActionList>
-                    </BottomSheetBody>
-                  </BottomSheet>
-                </Box>
-              ) : (
-                <CardHeaderButton variant="secondary" icon={PlusIcon}>
-                  View
-                </CardHeaderButton>
-              )}
-
-              <CardHeaderButton variant="primary" icon={PlusIcon}>
-                Add
-              </CardHeaderButton>
-            </CardHeaderBox>
-          }
-        />
+        <CardHeaderTrailing />
       </CardHeader>
       <CardBody>
         <Box display="flex" flexDirection="column" gap="spacing.5">

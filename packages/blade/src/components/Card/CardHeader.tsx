@@ -286,16 +286,6 @@ const CardHeaderBox = assignWithoutSideEffects(_CardHeaderBox, {
   componentId: ComponentIds.CardHeaderBox,
 });
 
-const _CardHeaderButton = (props: ButtonProps): React.ReactElement => {
-  useVerifyInsideCard('CardHeaderButton');
-
-  return <Button {...props} />;
-};
-
-const CardHeaderButton = assignWithoutSideEffects(_CardHeaderButton, {
-  componentId: ComponentIds.CardHeaderButton,
-});
-
 export {
   CardHeader,
   CardHeaderLeading,
@@ -308,5 +298,4 @@ export {
   CardHeaderAmount,
   CardHeaderIconButton,
   CardHeaderBox,
-  CardHeaderButton,
 };
