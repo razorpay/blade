@@ -20,7 +20,6 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
-import { Box } from '~components/Box';
 import { Link } from '~components/Link';
 
 describe('<Card />', () => {
