@@ -50,7 +50,7 @@ const PresetSideBar = ({
         >
           {presets.map((preset, index) => {
             return (
-              <Chip value={preset.label} key={index}>
+              <Chip value={preset.label} key={index} data-analytics-name={preset.label}>
                 {preset.label}
               </Chip>
             );
