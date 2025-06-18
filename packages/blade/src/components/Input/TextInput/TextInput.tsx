@@ -512,7 +512,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       helpText={helpText}
       successText={successText}
       trailingFooterSlot={(value) => {
-        return effectiveMaxCharacters ? (
+        return format ? null : effectiveMaxCharacters ? (
           <BaseBox marginTop={hintMarginTop[size]} marginRight="spacing.1">
             <CharacterCounter
               currentCount={value?.length ?? 0}
