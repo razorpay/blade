@@ -3,10 +3,10 @@
 ## Table of Contents
 - [Card Variants](#card-variants)
   - [Metric Card](#metric-card)
-    - [Design](#design-1)
+    - [Design](#design)
   - [Enhancements](#enhancements)
-    - [API](#API-1)
-    - [API](#API-1)
+    - [API 1](#api-1)
+    - [API 2](#api-2)
 
     
 
@@ -35,7 +35,9 @@ Metric card is designed to prominently display key performance indicators, stati
 
 - [Figma - Metric Card](https://www.figma.com/design/yKBlpifyZvi28APkmlY5Td/-Research--Cards--v2-?node-id=1448-6614&m=dev)
 
-### API
+### API 
+* We won't be changing the existing api of the existing card component.
+* We can directly pass `MetricSlot` in `CardBody` and it will render the metric card.
 
 ```jsx
 import { Card ,CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBadge , CardHeaderLink ,CardHeaderButton } from '@razorpay/blade/components';
@@ -59,8 +61,7 @@ import { Card ,CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBa
 </Card>
 ```
 
-### Other Changes
-
+### Enhancements
 
 We also have a layout card variant (which have changes in header) but during discussion we got to know that would be part of the `Layout` pattern
 but still we need to enhancement to support these changes.. 
@@ -93,6 +94,7 @@ type CardHeaderLeading = {
 };
 ```
 * Here we are also adding a new component `CardHeaderBox` which is a wrapper on top of `Box` component. it can be only used in `CardHeaderLeading`.
+
 ## API-2
 * Maybe support passing tooltip  in CardHeaderLeading
 
