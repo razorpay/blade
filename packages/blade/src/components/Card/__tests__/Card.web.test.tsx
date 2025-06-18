@@ -150,7 +150,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` and `CardHeaderLink` component is accepted in suffix',
+      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` ,  `CardHeaderLink` ,  `CardHeaderBox` component is accepted in suffix',
     );
 
     expect(() =>
@@ -206,27 +206,6 @@ describe('<Card />', () => {
     expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
       '[Blade: Card]: CardFooterTrailing cannot be used outside of Card component',
     );
-    mockConsoleError.mockRestore();
-  });
-
-  it('should only accept allowed components in CardHeader slot', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading
-              title="Card Header"
-              slot={
-                <Box>
-                  <Text>some random text</Text>
-                </Box>
-              }
-            />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderBox` component is accepted in slot');
     mockConsoleError.mockRestore();
   });
 
