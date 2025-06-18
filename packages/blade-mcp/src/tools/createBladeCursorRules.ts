@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join, basename } from 'path';
 import { existsSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
@@ -57,6 +57,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
       properties: {
         toolName: createBladeCursorRulesToolName,
         cursorRulesVersion: CURSOR_RULES_VERSION,
+        rootDirectoryName: basename(currentProjectRootDirectory),
       },
     });
 
