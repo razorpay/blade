@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.35.0
+
+### Minor Changes
+
+- 1801b3865: feat: Payment Component
+
 ## 12.34.1
 
 ### Patch Changes
