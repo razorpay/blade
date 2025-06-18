@@ -165,7 +165,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` and `CardHeaderLink` component is accepted in suffix',
+      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` ,  `CardHeaderLink` ,  `CardHeaderBox` component is accepted in suffix',
     );
 
     expect(() =>
