@@ -11,24 +11,28 @@ type TabItemPadding = Record<
   Record<TabOrientation, Record<DeviceType, Record<TabSizes, DotNotationSpacingStringToken>>>
 >;
 
-const paddingY: TabItemPadding = {
+const paddingTop: TabItemPadding = {
   bordered: {
     horizontal: {
       desktop: {
-        medium: 'spacing.5',
+        small: 'spacing.2',
+        medium: 'spacing.2',
         large: 'spacing.4',
       },
       mobile: {
-        medium: 'spacing.3',
+        small: 'spacing.2',
+        medium: 'spacing.2',
         large: 'spacing.3',
       },
     },
     vertical: {
       desktop: {
+        small: 'spacing.2',
         medium: 'spacing.2',
         large: 'spacing.2',
       },
       mobile: {
+        small: 'spacing.2',
         medium: 'spacing.2',
         large: 'spacing.2',
       },
@@ -37,21 +41,80 @@ const paddingY: TabItemPadding = {
   filled: {
     horizontal: {
       desktop: {
-        medium: 'spacing.3',
+        small: 'spacing.2',
+        medium: 'spacing.2',
         large: 'spacing.3',
       },
       mobile: {
+        small: 'spacing.2',
         medium: 'spacing.2',
         large: 'spacing.2',
       },
     },
     vertical: {
       desktop: {
+        small: 'spacing.4',
         medium: 'spacing.4',
         large: 'spacing.4',
       },
       mobile: {
-        medium: 'spacing.3',
+        small: 'spacing.4',
+        medium: 'spacing.4',
+        large: 'spacing.3',
+      },
+    },
+  },
+};
+
+const paddingBottom: TabItemPadding = {
+  bordered: {
+    horizontal: {
+      desktop: {
+        small: 'spacing.4',
+        medium: 'spacing.4',
+        large: 'spacing.4',
+      },
+      mobile: {
+        small: 'spacing.4',
+        medium: 'spacing.4',
+        large: 'spacing.3',
+      },
+    },
+    vertical: {
+      desktop: {
+        small: 'spacing.2',
+        medium: 'spacing.2',
+        large: 'spacing.2',
+      },
+      mobile: {
+        small: 'spacing.2',
+        medium: 'spacing.2',
+        large: 'spacing.2',
+      },
+    },
+  },
+  filled: {
+    horizontal: {
+      desktop: {
+        small: 'spacing.2',
+        medium: 'spacing.2',
+        large: 'spacing.3',
+      },
+      mobile: {
+        small: 'spacing.2',
+        medium: 'spacing.2',
+        large: 'spacing.2',
+      },
+    },
+    vertical: {
+      desktop: {
+        small: 'spacing.4',
+        medium: 'spacing.4',
+        large: 'spacing.4',
+      },
+      mobile: {
+        small: 'spacing.4',
+        medium: 'spacing.4',
         large: 'spacing.3',
       },
     },
@@ -62,20 +125,24 @@ const paddingX: TabItemPadding = {
   bordered: {
     horizontal: {
       desktop: {
+        small: 'spacing.0', // TODO: Update with final design tokens
         medium: 'spacing.0',
         large: 'spacing.0',
       },
       mobile: {
+        small: 'spacing.0', // TODO: Update with final design tokens
         medium: 'spacing.0',
         large: 'spacing.0',
       },
     },
     vertical: {
       desktop: {
+        small: 'spacing.3', // TODO: Update with final design tokens
         medium: 'spacing.4',
         large: 'spacing.4',
       },
       mobile: {
+        small: 'spacing.3', // TODO: Update with final design tokens
         medium: 'spacing.4',
         large: 'spacing.4',
       },
@@ -84,20 +151,24 @@ const paddingX: TabItemPadding = {
   filled: {
     horizontal: {
       desktop: {
+        small: 'spacing.2', // TODO: Update with final design tokens
         medium: 'spacing.3',
         large: 'spacing.3',
       },
       mobile: {
+        small: 'spacing.1', // TODO: Update with final design tokens
         medium: 'spacing.2',
         large: 'spacing.2',
       },
     },
     vertical: {
       desktop: {
+        small: 'spacing.3', // TODO: Update with final design tokens
         medium: 'spacing.4',
         large: 'spacing.4',
       },
       mobile: {
+        small: 'spacing.2', // TODO: Update with final design tokens
         medium: 'spacing.3',
         large: 'spacing.3',
       },
@@ -169,4 +240,19 @@ const iconColor = {
   },
 } as const;
 
-export { backgroundColor, textColor, iconColor, trackColor, paddingY, paddingX };
+const textSizeMap = {
+  small: 'medium',
+  medium: 'medium',
+  large: 'large',
+} as const;
+
+export {
+  backgroundColor,
+  textColor,
+  iconColor,
+  trackColor,
+  paddingTop,
+  paddingBottom,
+  paddingX,
+  textSizeMap,
+};

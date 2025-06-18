@@ -5,22 +5,28 @@ import { logger, throwBladeError } from '~utils/logger';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const iconSizeMap = {
+  small: 'medium',
   medium: 'medium',
   large: 'large',
 } as const;
 
 const badgeSizeMap = {
+  small: 'small',
   medium: 'small',
   large: 'medium',
 } as const;
 
 const counterSizeMap = {
+  small: 'small',
   medium: 'small',
   large: 'small',
 } as const;
 
 const propRestrictionMap = {
   Badge: {
+    small: {
+      size: badgeSizeMap.small,
+    },
     medium: {
       size: badgeSizeMap.medium,
     },
@@ -29,6 +35,9 @@ const propRestrictionMap = {
     },
   },
   Counter: {
+    small: {
+      size: counterSizeMap.small,
+    },
     medium: {
       size: counterSizeMap.medium,
     },

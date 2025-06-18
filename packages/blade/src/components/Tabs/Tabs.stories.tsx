@@ -611,6 +611,12 @@ const TabsWithTooltipTemplate: StoryFn<(props: StoryControlProps) => React.React
 
 export const WithTooltip = TabsWithTooltipTemplate.bind({});
 
+export const Small = TabsTemplate.bind({});
+Small.storyName = 'Size: Small';
+Small.args = {
+  size: 'small',
+};
+
 export const Medium = TabsTemplate.bind({});
 Medium.storyName = 'Size: Medium';
 Medium.args = {
