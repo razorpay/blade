@@ -5,7 +5,6 @@
   - [Metric Card](#metric-card)
     - [Design](#design-1)
     - [API](#api-1)
-    - [Typescript Types](#typescript-types-1)
   - [Enhancements](#enhancements)
 
 We are introducing a new variant of card -  Metric and default (currently exists as `Card`)
@@ -23,7 +22,7 @@ We are introducing a new variant of card -  Metric and default (currently exists
 
 - After initial discussion we decided that we would be treating these card variants as enhancements to the existing `Card` component. 
 - We also had a layout card variant (which have changes in header) but during discussion we got to know that would be part of the `Layout` pattern
-
+- Earlier we had a plan to move Metric slot to `cardHeader` but during discussion we decided to move it to `cardBody`.  (so not much api changes , enhasments only)
 
 ## Metric Card
 
@@ -43,58 +42,17 @@ import { Card ,CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBa
     <CardHeaderLeading
       title="Header Title"
       subtitle="Header Subtitle"
-      slot={<CardHeaderBox> 
-       <Amount/>
-       <Text> ferferf </Text>
-      </CardHeaderBox>}
       />
     <CardHeaderTrailing
      visual={isMobile ? <CardHeaderBadge/> :  <CardHeaderLink>} />
    </CardHeader>
    <CardBody>
+   <MetricSlot/>
    //content
    </CardBody>
    <CardFooter>
    //footer
    </CardFooter>
-</Card>
-```
-
-## Typescript Types
-
-```typescript
-type CardHeaderLeading = {
-  slot?: React.ReactNode;
-};
-```
-
-## Alternative API
-case 1 - 
-  We can also change the slot to children prop and add a check to verify if the children prop is a valid component.
-
-```jsx
-<CardHeaderLeading>
-  <CardHeaderBox>
-    <Amount/>
-    <Text> ferferf </Text>
-  </CardHeaderBox>
-</CardHeaderLeading>
-```
-
-case 2 - 
-Why Can't we put the Metric inside the body of the card ?
- - We can also put metric inside the body of the card. that way we don't have to do much changes to the existing `Card` component.  
-   (we might need to change the spacing between cardHeader and cardBody)
-
-```jsx
-<Card>
-  <CardHeader>
-    <CardHeaderLeading />
-  </CardHeader>
-  <CardBody>
-    <Metric />
-    <OtherComponent />
-  </CardBody>
 </Card>
 ```
 
@@ -110,6 +68,7 @@ but still we need to enhancement to support these changes..
 - Changes: 
   - Add Support for ToolTip in Title 
   - Add Support for passing headerLayout in CardHeaderTrailing
+  - Add support for tooltip in cardHeaderLeading
 
 ## Typescript Types
 
