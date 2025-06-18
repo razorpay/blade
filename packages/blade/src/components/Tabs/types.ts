@@ -34,7 +34,7 @@ type TabsProps = {
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /**
    * The variant of the tabs.
    *
