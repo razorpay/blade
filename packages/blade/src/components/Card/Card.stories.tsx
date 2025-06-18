@@ -560,13 +560,6 @@ const MetricCardVariantExample = (): React.ReactElement => {
           subtitle={
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
-          slot={
-            isMobile ? undefined : (
-              <CardHeaderBox>
-                <MetricInfo />
-              </CardHeaderBox>
-            )
-          }
         />
         <CardHeaderTrailing
           visual={
@@ -589,7 +582,12 @@ const MetricCardVariantExample = (): React.ReactElement => {
             <GraphSVG />
           </Box>
         ) : (
-          <GraphSVG />
+          <Box display="flex" flexDirection="column" gap="spacing.5">
+            <Box display="flex" flexDirection="column" justifyContent="flex-end">
+              <MetricInfo />
+            </Box>
+            <GraphSVG />
+          </Box>
         )}
       </CardBody>
     </Card>

@@ -178,18 +178,11 @@ type CardHeaderLeadingProps = {
    * Accepts: `CardHeaderCounter`,`CardHeaderLink` ,`CardHeaderBox` component
    */
   suffix?: React.ReactNode;
-  /**
-   * slot element of Card
-   *
-   * Accepts: `CardHeaderBox` component
-   */
-  slot?: React.ReactNode;
 } & DataAnalyticsAttribute;
 const _CardHeaderLeading = ({
   title,
   subtitle,
   prefix,
-  slot,
   suffix,
   ...rest
 }: CardHeaderLeadingProps): React.ReactElement => {
@@ -206,13 +199,6 @@ const _CardHeaderLeading = ({
     if (suffix && !CardHeaderSuffixAllowedComponents.includes(getComponentId(suffix)!)) {
       throwBladeError({
         message: `Only \`${ComponentIds.CardHeaderCounter}\` ,  \`${ComponentIds.CardHeaderLink}\` ,  \`${ComponentIds.CardHeaderBox}\` component is accepted in suffix`,
-        moduleName: 'CardHeaderLeading',
-      });
-    }
-
-    if (slot && !isValidAllowedChildren(slot, ComponentIds.CardHeaderBox)) {
-      throwBladeError({
-        message: `Only \`${ComponentIds.CardHeaderBox}\` component is accepted in slot`,
         moduleName: 'CardHeaderLeading',
       });
     }
@@ -247,7 +233,6 @@ const _CardHeaderLeading = ({
           )}
         </BaseBox>
       </BaseBox>
-      {slot}
     </BaseBox>
   );
 };
