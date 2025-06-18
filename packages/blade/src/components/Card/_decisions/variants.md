@@ -22,7 +22,7 @@ We are introducing a new variant of card -  Metric and default (currently exists
 
 - After initial discussion we decided that we would be treating these card variants as enhancements to the existing `Card` component. 
 - We also had a layout card variant (which have changes in header) but during discussion we got to know that would be part of the `Layout` pattern
-- Earlier we had a plan to move Metric slot to `cardHeader` but during discussion we decided to move it to `cardBody`.  (so not much api changes , enhasments only)
+- Earlier we had a plan to move Metric slot to `cardHeader` but during discussion we decided to move it to `cardBody`.  (so not much api changes , enhancement only)
 
 ## Metric Card
 
@@ -67,15 +67,12 @@ but still we need to enhancement to support these changes..
 
 - Changes: 
   - Add Support for ToolTip in Title 
-  - Add Support for passing headerLayout in CardHeaderTrailing
-  - Add support for tooltip in cardHeaderLeading
+  - Add Support for passing headerLayout in CardHeaderTrailing (will pick this up with layout pattern)
+  
 
 ## Typescript Types
 
 ```typescript
-type CardHeaderTrailingProps = {
-  visual?: React.ReactNode;
-};
 
 type CardHeaderLeadingProps = {
    // rest of the props
