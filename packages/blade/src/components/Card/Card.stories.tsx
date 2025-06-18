@@ -30,12 +30,8 @@ import {
   TrashIcon,
   CheckCircleIcon,
   ArrowSquareUpIcon,
-  PlusIcon,
   ExternalLinkIcon,
   ArrowRightIcon,
-  MoreVerticalIcon,
-  EditIcon,
-  EyeIcon,
   InfoIcon,
 } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
@@ -48,9 +44,6 @@ import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { Amount } from '~components/Amount';
-import { Button } from '~components/Button';
-import { BottomSheet, BottomSheetBody } from '~components/BottomSheet';
-import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const Page = (): React.ReactElement => {
