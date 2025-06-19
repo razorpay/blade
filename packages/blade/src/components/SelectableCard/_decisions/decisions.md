@@ -5,6 +5,8 @@ SelectableCard enhances the existing Card component to work seamlessly with form
 - **Automatic validation state inheritance** from parent CheckboxGroup/RadioGroup context to Card styling
 - **Flexible wrapping behavior** for horizontal RadioGroup/CheckboxGroup layouts 
 
+> **Note:** While design treats SelectableCard as separate components, in development we treat it as an enhancement to existing Card component - no new components are being created.
+
 - [Design](#design)
 - [Anatomy](#anatomy)
 - [API](#api)
