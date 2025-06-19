@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 0.2.6
+
+### Patch Changes
+
+- 49b1b3cce: docs: trimmed knowledgebase for inputgroup and textinput
+
 ## 0.2.5
 
 ### Patch Changes
