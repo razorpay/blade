@@ -40,7 +40,7 @@ Metric card is designed to prominently display key performance indicators, stati
 * We can directly pass `MetricSlot` in `CardBody` and it will render the metric card.
 
 ```jsx
-import { Card ,CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBadge , CardHeaderLink ,CardHeaderButton } from '@razorpay/blade/components';
+import { Card ,CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBadge , CardHeaderLink  } from '@razorpay/blade/components';
 
 <Card>
   <CardHeader>
@@ -64,7 +64,7 @@ import { Card ,CardHeader , CardHeaderLeading , CardHeaderTrailing, CardHeaderBa
 ### Enhancements
 
 We also have a layout card variant (which have changes in header) but during discussion we got to know that would be part of the `Layout` pattern
-but still we need to enhancement to support these changes.. 
+but still we need to enhancement to support these changes.
 
 - [Figma - Layout Card ](https://www.figma.com/design/yKBlpifyZvi28APkmlY5Td/-Research--Cards--v2-?node-id=1429-61697&p=f&m=dev)
 
@@ -76,7 +76,7 @@ but still we need to enhancement to support these changes..
 
 
 ## API-1
-* Support passing multiple components in Suffix of CardHeaderTrailing. (this way we can pass tooltip and other components in suffix)
+* Support passing multiple components in Suffix of CardHeaderLeading. (this way we can pass tooltip and other components in suffix)
 ```tsx
 <CardHeaderLeading
   suffix={
