@@ -1089,7 +1089,7 @@ export const SelectableCardSingleSelect = (): React.ReactElement => {
         <RadioGroup
           value={selectedBusinessType}
           onChange={({ value }) => setSelectedBusinessType(value)}
-          label="Which product do you want to start with?"
+          label="Select Product"
           necessityIndicator="required"
           validationState={hasError ? 'error' : 'none'}
           errorText={hasError ? 'Please select a product to continue' : undefined}

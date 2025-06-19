@@ -19,14 +19,14 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
     isMobile,
     validationState,
   }) => {
-    const selectedColor =
-      validationState === 'error'
-        ? theme.colors.interactive.border.negative.default
-        : validationState === 'success'
-        ? theme.colors.interactive.border.positive.default
-        : isSelected
-        ? theme.colors.surface.border.primary.normal
-        : 'transparent';
+    const getCardBorderColor = (): string => {
+      if (validationState === 'error') return theme.colors.interactive.border.negative.default;
+      if (validationState === 'success') return theme.colors.interactive.border.positive.default;
+      if (isSelected) return theme.colors.surface.border.primary.normal;
+      return 'transparent';
+    };
+
+    const selectedColor = getCardBorderColor();
     const selectedBorder = `0px 0px 0px ${theme.border.width.thicker}px ${selectedColor}`;
     //  focused state
     const focusRing = isFocused

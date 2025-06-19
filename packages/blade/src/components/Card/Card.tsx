@@ -21,8 +21,14 @@ import { isReactNative } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { useCheckboxGroupContext } from '~components/Checkbox/CheckboxGroup/CheckboxGroupContext';
-import { useRadioGroupContext } from '~components/Radio/RadioGroup/RadioContext';
+import {
+  CheckboxGroupContextType,
+  useCheckboxGroupContext,
+} from '~components/Checkbox/CheckboxGroup/CheckboxGroupContext';
+import {
+  RadioGroupContextType,
+  useRadioGroupContext,
+} from '~components/Radio/RadioGroup/RadioContext';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -226,12 +232,14 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
 
   const checkboxGroupProps = useCheckboxGroupContext();
   const radioGroupProps = useRadioGroupContext();
-  const groupProps =
-    Object.keys(checkboxGroupProps).length > 0
-      ? checkboxGroupProps
-      : Object.keys(radioGroupProps).length > 0
-      ? radioGroupProps
-      : undefined;
+
+  const getGroupProps = (): CheckboxGroupContextType | RadioGroupContextType | undefined => {
+    if (Object.keys(checkboxGroupProps).length > 0) return checkboxGroupProps;
+    if (Object.keys(radioGroupProps).length > 0) return radioGroupProps;
+    return undefined;
+  };
+
+  const groupProps = getGroupProps();
 
   const _validationState = groupProps?.validationState;
 
