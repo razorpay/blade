@@ -98,57 +98,6 @@ type InputGroupContextType = {
 
 ## Examples
 
-### Basic Address Form
-
-Create a structured address form with proper grid layouts and validation states.
-
-```jsx
-import { InputGroup, InputRow } from '@razorpay/blade/components/InputGroup';
-import { TextInput } from '@razorpay/blade/components/Input/TextInput';
-import { Button } from '@razorpay/blade/components/Button';
-import { Box } from '@razorpay/blade/components/Box';
-
-function AddressForm() {
-  return (
-    <Box>
-      <InputGroup
-        label="Shipping Address"
-        helpText="Where should we deliver your order?"
-        size="medium"
-        labelPosition="top"
-        validationState="none"
-      >
-        <InputRow gridTemplateColumns="1fr">
-          <TextInput
-            placeholder="Street Address"
-            label="Street Address"
-            accessibilityLabel="Enter your street address"
-          />
-        </InputRow>
-        <InputRow gridTemplateColumns="2fr 1fr">
-          <TextInput placeholder="City" label="City" accessibilityLabel="Enter your city" />
-          <TextInput
-            placeholder="ZIP Code"
-            label="ZIP Code"
-            accessibilityLabel="Enter your ZIP code"
-          />
-        </InputRow>
-        <InputRow gridTemplateColumns="1fr">
-          <TextInput
-            placeholder="Country"
-            label="Country"
-            accessibilityLabel="Enter your country"
-          />
-        </InputRow>
-      </InputGroup>
-      <Box display="flex" justifyContent="flex-end" marginTop="spacing.4">
-        <Button variant="primary">Save Address</Button>
-      </Box>
-    </Box>
-  );
-}
-```
-
 ### Payment Form with Validation
 
 Create a payment information form with format validation, different input types, and error handling.
@@ -163,13 +112,18 @@ import { useState } from 'react';
 
 function PaymentForm() {
   const [formData, setFormData] = useState({
-    cardNumber: '4111111111111111',
-    expiryDate: '1225',
-    cvv: '123',
-    cardholderName: 'John Doe',
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+    cardholderName: '',
   });
 
-  const [hasErrors, setHasErrors] = useState(false);
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value || '' }));
+  };
+
+  const isFieldEmpty = (field) => !formData[field] || formData[field].trim() === '';
+  const hasErrors = Object.values(formData).some((value) => !value || value.trim() === '');
 
   return (
     <Box>
@@ -179,8 +133,8 @@ function PaymentForm() {
         size="large"
         labelPosition="top"
         validationState={hasErrors ? 'error' : 'success'}
-        errorText={hasErrors ? 'Please fix all errors before submitting' : ''}
-        successText={!hasErrors ? 'Payment information verified' : ''}
+        errorText={hasErrors ? 'Please fill in all required fields' : ''}
+        successText={!hasErrors ? 'All fields completed' : ''}
         testID="payment-form"
       >
         <InputRow gridTemplateColumns="1fr">
@@ -189,8 +143,9 @@ function PaymentForm() {
             placeholder="1234 5678 9012 3456"
             value={formData.cardNumber}
             format="#### #### #### ####"
-            onChange={({ value }) => setFormData((prev) => ({ ...prev, cardNumber: value || '' }))}
-            validationState={hasErrors ? 'error' : 'none'}
+            onChange={({ value }) => handleInputChange('cardNumber', value)}
+            validationState={isFieldEmpty('cardNumber') ? 'error' : 'success'}
+            errorText={isFieldEmpty('cardNumber') ? 'Card number is required' : ''}
             accessibilityLabel="Enter your credit card number"
           />
         </InputRow>
@@ -200,8 +155,9 @@ function PaymentForm() {
             placeholder="MM/YY"
             value={formData.expiryDate}
             format="##/##"
-            onChange={({ value }) => setFormData((prev) => ({ ...prev, expiryDate: value || '' }))}
-            validationState={hasErrors ? 'error' : 'none'}
+            onChange={({ value }) => handleInputChange('expiryDate', value)}
+            validationState={isFieldEmpty('expiryDate') ? 'error' : 'success'}
+            errorText={isFieldEmpty('expiryDate') ? 'Expiry date is required' : ''}
             accessibilityLabel="Enter card expiry date"
           />
           <PasswordInput
@@ -209,8 +165,9 @@ function PaymentForm() {
             placeholder="123"
             value={formData.cvv}
             maxCharacters={3}
-            onChange={({ value }) => setFormData((prev) => ({ ...prev, cvv: value || '' }))}
-            validationState={hasErrors ? 'error' : 'none'}
+            onChange={({ value }) => handleInputChange('cvv', value)}
+            validationState={isFieldEmpty('cvv') ? 'error' : 'success'}
+            errorText={isFieldEmpty('cvv') ? 'CVV is required' : ''}
             accessibilityLabel="Enter card CVV"
           />
         </InputRow>
@@ -219,16 +176,15 @@ function PaymentForm() {
             label="Cardholder Name"
             placeholder="John Doe"
             value={formData.cardholderName}
-            onChange={({ value }) =>
-              setFormData((prev) => ({ ...prev, cardholderName: value || '' }))
-            }
-            validationState={hasErrors ? 'error' : 'none'}
+            onChange={({ value }) => handleInputChange('cardholderName', value)}
+            validationState={isFieldEmpty('cardholderName') ? 'error' : 'success'}
+            errorText={isFieldEmpty('cardholderName') ? 'Cardholder name is required' : ''}
             accessibilityLabel="Enter cardholder name"
           />
         </InputRow>
       </InputGroup>
       <Box display="flex" justifyContent="flex-end" marginTop="spacing.4">
-        <Button variant="primary" onClick={() => setHasErrors(!hasErrors)}>
+        <Button variant="primary" isDisabled={hasErrors}>
           Submit Payment
         </Button>
       </Box>
@@ -237,9 +193,9 @@ function PaymentForm() {
 }
 ```
 
-### Business Onboarding Form with Dropdown
+### Business Onboarding Form with Responsive Layout
 
-Create a comprehensive business onboarding form with mixed input types including dropdowns and conditional layouts.
+Create a comprehensive business onboarding form with conditional layouts that adapt to different screen sizes.
 
 ```jsx
 import { InputGroup, InputRow } from '@razorpay/blade/components/InputGroup';
@@ -249,8 +205,11 @@ import { Dropdown, DropdownOverlay } from '@razorpay/blade/components/Dropdown';
 import { ActionList, ActionListItem } from '@razorpay/blade/components/ActionList';
 import { Button } from '@razorpay/blade/components/Button';
 import { Box } from '@razorpay/blade/components/Box';
+import { useIsMobile } from '@razorpay/blade/utils/useIsMobile';
 
 function BusinessOnboardingForm() {
+  const isMobile = useIsMobile();
+
   return (
     <Box>
       <InputGroup
@@ -261,18 +220,37 @@ function BusinessOnboardingForm() {
         validationState="none"
         testID="business-onboarding"
       >
-        <InputRow gridTemplateColumns="1fr 1fr">
-          <TextInput
-            placeholder="Business Name"
-            label="Business Name"
-            accessibilityLabel="Enter your business name"
-          />
-          <TextInput
-            placeholder="Trading Name"
-            label="Trading Name"
-            accessibilityLabel="Enter your trading name"
-          />
-        </InputRow>
+        {isMobile ? (
+          <>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput
+                placeholder="Business Name"
+                label="Business Name"
+                accessibilityLabel="Enter your business name"
+              />
+            </InputRow>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput
+                placeholder="Trading Name"
+                label="Trading Name"
+                accessibilityLabel="Enter your trading name"
+              />
+            </InputRow>
+          </>
+        ) : (
+          <InputRow gridTemplateColumns="1fr 1fr">
+            <TextInput
+              placeholder="Business Name"
+              label="Business Name"
+              accessibilityLabel="Enter your business name"
+            />
+            <TextInput
+              placeholder="Trading Name"
+              label="Trading Name"
+              accessibilityLabel="Enter your trading name"
+            />
+          </InputRow>
+        )}
         <InputRow gridTemplateColumns="1fr">
           <TextInput
             placeholder="Business Email"
@@ -280,30 +258,37 @@ function BusinessOnboardingForm() {
             accessibilityLabel="Enter your business email address"
           />
         </InputRow>
-        <InputRow gridTemplateColumns="1fr 1fr">
-          <TextInput
-            placeholder="PAN Number"
-            label="Business PAN"
-            accessibilityLabel="Enter business PAN number"
-          />
-          <TextInput
-            placeholder="GST Number"
-            label="GSTIN"
-            accessibilityLabel="Enter GST identification number"
-          />
-        </InputRow>
-        <InputRow gridTemplateColumns="2fr 1fr">
-          <TextInput
-            placeholder="Account Number"
-            label="Bank Account Number"
-            accessibilityLabel="Enter bank account number"
-          />
-          <TextInput
-            placeholder="IFSC Code"
-            label="IFSC Code"
-            accessibilityLabel="Enter bank IFSC code"
-          />
-        </InputRow>
+        {isMobile ? (
+          <>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput
+                placeholder="PAN Number"
+                label="Business PAN"
+                accessibilityLabel="Enter business PAN number"
+              />
+            </InputRow>
+            <InputRow gridTemplateColumns="1fr">
+              <TextInput
+                placeholder="GST Number"
+                label="GSTIN"
+                accessibilityLabel="Enter GST identification number"
+              />
+            </InputRow>
+          </>
+        ) : (
+          <InputRow gridTemplateColumns="1fr 1fr">
+            <TextInput
+              placeholder="PAN Number"
+              label="Business PAN"
+              accessibilityLabel="Enter business PAN number"
+            />
+            <TextInput
+              placeholder="GST Number"
+              label="GSTIN"
+              accessibilityLabel="Enter GST identification number"
+            />
+          </InputRow>
+        )}
         <InputRow gridTemplateColumns="1fr">
           <Dropdown selectionType="single">
             <SelectInput
@@ -330,132 +315,6 @@ function BusinessOnboardingForm() {
         <Button variant="primary">Start Onboarding</Button>
       </Box>
     </Box>
-  );
-}
-```
-
-### Disabled Input Group
-
-Create a read-only form display with disabled state for all inputs.
-
-```jsx
-import { InputGroup, InputRow } from '@razorpay/blade/components/InputGroup';
-import { TextInput } from '@razorpay/blade/components/Input/TextInput';
-import { Box } from '@razorpay/blade/components/Box';
-
-function DisabledAddressView() {
-  return (
-    <InputGroup
-      label="Shipping Address (Read Only)"
-      helpText="This address cannot be modified"
-      size="medium"
-      labelPosition="top"
-      isDisabled={true}
-      validationState="none"
-      testID="disabled-address"
-    >
-      <InputRow gridTemplateColumns="1fr">
-        <TextInput
-          placeholder="Street Address"
-          label="Street Address"
-          value="123 Main Street"
-          accessibilityLabel="Street address (read only)"
-        />
-      </InputRow>
-      <InputRow gridTemplateColumns="2fr 1fr">
-        <TextInput
-          placeholder="City"
-          label="City"
-          value="San Francisco"
-          accessibilityLabel="City (read only)"
-        />
-        <TextInput
-          placeholder="ZIP Code"
-          label="ZIP Code"
-          value="94102"
-          accessibilityLabel="ZIP code (read only)"
-        />
-      </InputRow>
-      <InputRow gridTemplateColumns="1fr">
-        <TextInput
-          placeholder="Country"
-          label="Country"
-          value="United States"
-          accessibilityLabel="Country (read only)"
-        />
-      </InputRow>
-    </InputGroup>
-  );
-}
-```
-
-### Responsive Personal Information Form
-
-Create a personal information form that adapts to different screen sizes with conditional layouts.
-
-```jsx
-import { InputGroup, InputRow } from '@razorpay/blade/components/InputGroup';
-import { TextInput } from '@razorpay/blade/components/Input/TextInput';
-import { Box } from '@razorpay/blade/components/Box';
-import { useIsMobile } from '@razorpay/blade/utils/useIsMobile';
-
-function PersonalInfoForm() {
-  const isMobile = useIsMobile();
-
-  return (
-    <InputGroup
-      label="Personal Information"
-      helpText="Please provide your complete personal details"
-      size="large"
-      labelPosition="top"
-      validationState="none"
-    >
-      {isMobile ? (
-        <>
-          <InputRow gridTemplateColumns="1fr">
-            <TextInput
-              placeholder="First Name"
-              label="First Name"
-              accessibilityLabel="Enter your first name"
-            />
-          </InputRow>
-          <InputRow gridTemplateColumns="1fr">
-            <TextInput
-              placeholder="Last Name"
-              label="Last Name"
-              accessibilityLabel="Enter your last name"
-            />
-          </InputRow>
-        </>
-      ) : (
-        <InputRow gridTemplateColumns="1fr 1fr">
-          <TextInput
-            placeholder="First Name"
-            label="First Name"
-            accessibilityLabel="Enter your first name"
-          />
-          <TextInput
-            placeholder="Last Name"
-            label="Last Name"
-            accessibilityLabel="Enter your last name"
-          />
-        </InputRow>
-      )}
-      <InputRow gridTemplateColumns="1fr">
-        <TextInput
-          placeholder="Email Address"
-          label="Email Address"
-          accessibilityLabel="Enter your email address"
-        />
-      </InputRow>
-      <InputRow gridTemplateColumns="1fr">
-        <TextInput
-          placeholder="Phone Number"
-          label="Phone Number"
-          accessibilityLabel="Enter your phone number"
-        />
-      </InputRow>
-    </InputGroup>
   );
 }
 ```
