@@ -123,6 +123,7 @@ const _ListItem = ({
 
     if (
       typeof child === 'string' ||
+      typeof child === 'number' ||
       isValidAllowedChildren(child, MetaConstants.ListItemLink) ||
       isValidAllowedChildren(child, MetaConstants.ListItemText) ||
       isValidAllowedChildren(child, MetaConstants.ListItemCode)
