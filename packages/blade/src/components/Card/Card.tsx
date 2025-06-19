@@ -21,14 +21,8 @@ import { isReactNative } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import {
-  CheckboxGroupContextType,
-  useCheckboxGroupContext,
-} from '~components/Checkbox/CheckboxGroup/CheckboxGroupContext';
-import {
-  RadioGroupContextType,
-  useRadioGroupContext,
-} from '~components/Radio/RadioGroup/RadioContext';
+import { useCheckboxGroupContext, type CheckboxGroupContextType } from '~components/Checkbox/CheckboxGroup/CheckboxGroupContext';
+import { useRadioGroupContext, type RadioGroupContextType } from '~components/Radio/RadioGroup/RadioContext';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
