@@ -95,6 +95,16 @@ type CardHeaderLeading = {
 ```
 * Here we are also adding a new component `CardHeaderBox` which is a wrapper on top of `Box` component. it can be only used in `CardHeaderLeading`.
 
+ Benefits:
+ - We can pass multiple components in suffix.
+ - We can use `Box` props on suffix.
+ - Gives more flexibility to the developer to pass any component in suffix.
+
+Drawbacks:
+- We are adding a new component `CardHeaderBox` which is a wrapper on top of `Box` component.
+
+So we went ahead with this api and added a new component `CardHeaderBox` which is a wrapper on top of `Box` component.
+
 ## API-2
 * Maybe support passing tooltip  in CardHeaderLeading
 
@@ -114,3 +124,11 @@ type CardHeaderLeadingProps = {
   }
 
 ```
+
+Benefits:
+- We can pass tooltip in suffix.
+- Gives more flexibility to the developer to pass any component in suffix.
+
+Drawbacks:
+- We are adding a new prop `toolTipTitle` and `toolTipContent` in `CardHeaderLeading`.
+- This api is too much restricted to pass any component in suffix.
