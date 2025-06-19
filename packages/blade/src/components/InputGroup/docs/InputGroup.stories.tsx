@@ -36,7 +36,7 @@ export default {
         <StoryPageWrapper
           componentDescription="InputGroup organizes related form inputs with consistent spacing and layout."
           componentName="InputGroup"
-          figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=103885-35158&m=dev"
+          figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=104279-27155&p=f&m=dev"
         >
           <Heading size="large">Usage</Heading>
           <Sandbox editorHeight={500}>{InputGroupStoryCode}</Sandbox>
