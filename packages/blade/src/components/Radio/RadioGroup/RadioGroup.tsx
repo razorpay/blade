@@ -164,6 +164,7 @@ const RadioGroup = ({
               id={ids.labelId}
               accessibilityText={accessibilityText && `,${accessibilityText}`}
               size={size}
+              componentName="radio-group"
             >
               {label}
             </FormLabel>

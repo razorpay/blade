@@ -43,6 +43,12 @@ const labelMarginBottom = {
   large: 'spacing.3',
 } as const;
 
+const labelMarginBottomInChipGroup = {
+  small: 'spacing.3',
+  medium: 'spacing.3',
+  large: 'spacing.4',
+} as const;
+
 const labelWidth = {
   small: size[120],
   medium: size[120],
@@ -64,4 +70,5 @@ export {
   labelMarginBottom,
   labelWidth,
   labelLeftMarginRight,
+  labelMarginBottomInChipGroup,
 };

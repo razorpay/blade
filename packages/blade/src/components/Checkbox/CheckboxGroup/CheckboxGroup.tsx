@@ -155,6 +155,7 @@ const CheckboxGroup = ({
               id={ids.labelId}
               accessibilityText={accessibilityText}
               size={size}
+              componentName="checkbox-group"
             >
               {label}
             </FormLabel>
