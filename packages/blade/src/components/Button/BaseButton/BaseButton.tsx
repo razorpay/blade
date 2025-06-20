@@ -338,6 +338,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 ) => {
   const { theme } = useTheme();
   const buttonGroupProps = useButtonGroupContext();
+  // Only use isPressed state for React Native, web will use CSS :active
   const [isPressed, setIsPressed] = React.useState(false);
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
@@ -406,19 +407,20 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRole = isLink ? 'link' : 'button';
 
+  // These handlers are only used for React Native
   const handlePointerPressedIn = React.useCallback(() => {
-    if (disabled) return;
+    if (!isReactNative() || disabled) return;
     setIsPressed(true);
   }, [disabled]);
 
   const handlePointerPressedOut = React.useCallback(() => {
-    if (disabled) return;
+    if (!isReactNative() || disabled) return;
     setIsPressed(false);
   }, [disabled]);
 
   const handleKeyboardPressedIn = React.useCallback(
     (e: React.KeyboardEvent) => {
-      if (disabled) return;
+      if (!isReactNative() || disabled) return;
       if (e.key === ' ' || e.key === 'Enter') {
         setIsPressed(true);
       }
@@ -428,7 +430,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   const handleKeyboardPressedOut = React.useCallback(
     (e: React.KeyboardEvent) => {
-      if (disabled) return;
+      if (!isReactNative() || disabled) return;
       if (e.key === ' ' || e.key === 'Enter') {
         setIsPressed(false);
       }
