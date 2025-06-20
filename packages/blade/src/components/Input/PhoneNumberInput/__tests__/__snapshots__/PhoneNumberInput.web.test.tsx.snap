@@ -289,10 +289,25 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c15.c15.c15.c15.c15 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c15.c15.c15.c15.c15 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c17.c17.c17.c17.c17 {
@@ -965,10 +980,25 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c15.c15.c15.c15.c15 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c15.c15.c15.c15.c15 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1639,10 +1669,25 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c15.c15.c15.c15.c15 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c15.c15.c15.c15.c15 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c17.c17.c17.c17.c17 {

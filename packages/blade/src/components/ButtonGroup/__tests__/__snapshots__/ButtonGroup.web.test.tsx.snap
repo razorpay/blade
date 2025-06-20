@@ -112,10 +112,25 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -370,10 +385,25 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -637,10 +667,25 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -874,10 +919,25 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1111,10 +1171,25 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1348,10 +1423,25 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1585,10 +1675,25 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1822,10 +1927,25 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -2040,10 +2160,25 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2186,10 +2321,25 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2332,10 +2482,25 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2478,10 +2643,25 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2624,10 +2804,25 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2770,10 +2965,25 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2913,10 +3123,25 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -3059,10 +3284,25 @@ exports[`<ButtonGroup /> should render disabled white color primary button 1`] =
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -3205,10 +3445,25 @@ exports[`<ButtonGroup /> should render disabled white color secondary button 1`]
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -3348,10 +3603,25 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -3516,10 +3786,25 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -3770,10 +4055,25 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -4007,10 +4307,25 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -4261,10 +4576,25 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -4498,10 +4828,25 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -4752,10 +5097,25 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -4989,10 +5349,25 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -5226,10 +5601,25 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -5480,10 +5870,25 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -5717,10 +6122,25 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c5.c5.c5.c5.c5 {

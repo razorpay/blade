@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AnimateInteractions /> should render its children as expected 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Test</p><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Submit</div></div></div></button></div></div>"`;
+exports[`<AnimateInteractions /> should render its children as expected 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Test</p><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  fFhUjt"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Submit</div></div></div></button></div></div>"`;
 
 exports[`<AnimateInteractions /> should render its children as expected 2`] = `
 .c3.c3.c3.c3.c3 {
@@ -127,10 +127,25 @@ exports[`<AnimateInteractions /> should render its children as expected 2`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c4.c4.c4.c4.c4 {

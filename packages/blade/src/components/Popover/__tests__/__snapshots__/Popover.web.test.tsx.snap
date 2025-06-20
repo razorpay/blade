@@ -215,10 +215,25 @@ exports[`<Popover /> should render 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -585,10 +600,25 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -989,10 +1019,25 @@ exports[`<Popover /> should render with title,footer 1`] = `
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 160px;
+  transition-duration: 160px;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+button:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+a:active .c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .c3.c3.c3.c3.c3 {
