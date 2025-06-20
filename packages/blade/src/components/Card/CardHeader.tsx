@@ -27,6 +27,7 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVer
 import type { AmountProps } from '~components/Amount';
 import { Amount } from '~components/Amount';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BoxProps } from '~components/Box';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -155,6 +156,11 @@ const _CardHeader = ({
 };
 const CardHeader = assignWithoutSideEffects(_CardHeader, { componentId: ComponentIds.CardHeader });
 
+const CardHeaderSuffixAllowedComponents = [
+  ComponentIds.CardHeaderCounter,
+  ComponentIds.CardHeaderLink,
+  ComponentIds.CardHeaderBox,
+];
 type CardHeaderLeadingProps = {
   title: string;
   subtitle?: string;
@@ -167,7 +173,7 @@ type CardHeaderLeadingProps = {
   /**
    * suffix element of Card
    *
-   * Accepts: `CardHeaderCounter` component
+   * Accepts: `CardHeaderCounter`,`CardHeaderLink` ,`CardHeaderBox` component
    */
   suffix?: React.ReactNode;
 } & DataAnalyticsAttribute;
@@ -188,31 +194,42 @@ const _CardHeaderLeading = ({
       });
     }
 
-    if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
+    if (suffix && !CardHeaderSuffixAllowedComponents.includes(getComponentId(suffix)!)) {
       throwBladeError({
-        message: `Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
+        message: `Only \`${ComponentIds.CardHeaderCounter}\` ,  \`${ComponentIds.CardHeaderLink}\` ,  \`${ComponentIds.CardHeaderBox}\` component is accepted in suffix`,
         moduleName: 'CardHeaderLeading',
       });
     }
   }
 
   return (
-    <BaseBox {...makeAnalyticsAttribute(rest)} flex={1} display="flex" flexDirection="row">
-      <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
-        {prefix}
-      </BaseBox>
-      <BaseBox marginRight="spacing.5">
-        <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-          <Text color="surface.text.gray.normal" size="large" weight="semibold">
-            {title}
-          </Text>
-          <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
-        </BaseBox>
-        {subtitle && (
-          <Text color="surface.text.gray.subtle" textAlign="left" size="small">
-            {subtitle}
-          </Text>
+    <BaseBox
+      {...makeAnalyticsAttribute(rest)}
+      display="flex"
+      flexDirection="column"
+      gap="spacing.4"
+    >
+      <BaseBox flex={1} display="flex" flexDirection="row">
+        {prefix && (
+          <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
+            {prefix}
+          </BaseBox>
         )}
+
+        <BaseBox marginRight="spacing.5">
+          <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+            <Text color="surface.text.gray.normal" size="large" weight="semibold">
+              {title}
+            </Text>
+
+            {suffix && <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>}
+          </BaseBox>
+          {subtitle && (
+            <Text color="surface.text.gray.subtle" textAlign="left" size="small">
+              {subtitle}
+            </Text>
+          )}
+        </BaseBox>
       </BaseBox>
     </BaseBox>
   );
@@ -236,6 +253,7 @@ const headerTrailingAllowedComponents = [
   ComponentIds.CardHeaderIconButton,
   ComponentIds.CardHeaderBadge,
   ComponentIds.CardHeaderAmount,
+  ComponentIds.CardHeaderBox,
 ];
 
 const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
@@ -258,6 +276,16 @@ const CardHeaderTrailing = assignWithoutSideEffects(_CardHeaderTrailing, {
   componentId: ComponentIds.CardHeaderTrailing,
 });
 
+const _CardHeaderBox = (props: BoxProps): React.ReactElement => {
+  useVerifyInsideCard('CardHeaderBox');
+
+  return <BaseBox {...props} />;
+};
+
+const CardHeaderBox = assignWithoutSideEffects(_CardHeaderBox, {
+  componentId: ComponentIds.CardHeaderBox,
+});
+
 export {
   CardHeader,
   CardHeaderLeading,
@@ -269,4 +297,5 @@ export {
   CardHeaderLink,
   CardHeaderAmount,
   CardHeaderIconButton,
+  CardHeaderBox,
 };

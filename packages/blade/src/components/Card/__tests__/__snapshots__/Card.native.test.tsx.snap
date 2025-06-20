@@ -725,168 +725,324 @@ exports[`<Card /> should render a Card with Header 1`] = `
           <View
             data-blade-component="base-box"
             display="flex"
-            flexDirection="row"
+            flexDirection="column"
+            gap="spacing.4"
             style={
               [
                 {
                   "display": "flex",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "flexDirection": "column",
+                  "gap": 12,
                 },
               ]
             }
           >
             <View
-              alignSelf="center"
               data-blade-component="base-box"
               display="flex"
+              flexDirection="row"
               style={
                 [
                   {
-                    "alignSelf": "center",
                     "display": "flex",
-                    "marginRight": 8,
-                  },
-                ]
-              }
-            >
-              <RNSVGSvgView
-                accessibilityElementsHidden={true}
-                align="xMidYMid"
-                bbHeight="20px"
-                bbWidth="20px"
-                data-blade-component="icon"
-                fill="none"
-                focusable={false}
-                height="20px"
-                importantForAccessibility="no-hide-descendants"
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
-                style={
-                  [
-                    {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    [
-                      {},
-                    ],
-                    {
-                      "flex": 0,
-                      "height": 20,
-                      "width": 20,
-                    },
-                  ]
-                }
-                vbHeight={24}
-                vbWidth={24}
-                width="20px"
-              >
-                <RNSVGGroup
-                  fill={null}
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                >
-                  <RNSVGPath
-                    d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                    fill={
-                      {
-                        "payload": 4279838777,
-                        "type": 0,
-                      }
-                    }
-                    propList={
-                      [
-                        "fill",
-                      ]
-                    }
-                  />
-                  <RNSVGPath
-                    d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                    fill={
-                      {
-                        "payload": 4279838777,
-                        "type": 0,
-                      }
-                    }
-                    propList={
-                      [
-                        "fill",
-                      ]
-                    }
-                  />
-                  <RNSVGPath
-                    clipRule={0}
-                    d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                    fill={
-                      {
-                        "payload": 4279838777,
-                        "type": 0,
-                      }
-                    }
-                    fillRule={0}
-                    propList={
-                      [
-                        "fill",
-                        "fillRule",
-                      ]
-                    }
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
-            <View
-              data-blade-component="base-box"
-              style={
-                [
-                  {
-                    "marginRight": 16,
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   },
                 ]
               }
             >
               <View
-                alignItems="center"
+                alignSelf="center"
                 data-blade-component="base-box"
                 display="flex"
-                flexDirection="row"
-                flexWrap="wrap"
                 style={
                   [
                     {
-                      "alignItems": "center",
+                      "alignSelf": "center",
                       "display": "flex",
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
+                      "marginRight": 8,
                     },
                   ]
                 }
               >
-                <Text
-                  accessible={true}
-                  color="surface.text.gray.normal"
-                  data-blade-component="text"
-                  fontFamily="text"
-                  fontSize={200}
-                  fontStyle="normal"
-                  fontWeight="semibold"
-                  lineHeight={200}
+                <RNSVGSvgView
+                  accessibilityElementsHidden={true}
+                  align="xMidYMid"
+                  bbHeight="20px"
+                  bbWidth="20px"
+                  data-blade-component="icon"
+                  fill="none"
+                  focusable={false}
+                  height="20px"
+                  importantForAccessibility="no-hide-descendants"
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
                   style={
                     [
                       {
-                        "color": "hsla(212, 39%, 16%, 1)",
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      [
+                        {},
+                      ],
+                      {
+                        "flex": 0,
+                        "height": 20,
+                        "width": 20,
+                      },
+                    ]
+                  }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width="20px"
+                >
+                  <RNSVGGroup
+                    fill={null}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                      fill={
+                        {
+                          "payload": 4279838777,
+                          "type": 0,
+                        }
+                      }
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                    />
+                    <RNSVGPath
+                      d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                      fill={
+                        {
+                          "payload": 4279838777,
+                          "type": 0,
+                        }
+                      }
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                    />
+                    <RNSVGPath
+                      clipRule={0}
+                      d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                      fill={
+                        {
+                          "payload": 4279838777,
+                          "type": 0,
+                        }
+                      }
+                      fillRule={0}
+                      propList={
+                        [
+                          "fill",
+                          "fillRule",
+                        ]
+                      }
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <View
+                data-blade-component="base-box"
+                style={
+                  [
+                    {
+                      "marginRight": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  flexWrap="wrap"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.normal"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={200}
+                    fontStyle="normal"
+                    fontWeight="semibold"
+                    lineHeight={200}
+                    style={
+                      [
+                        {
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontStyle": "normal",
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Card Header
+                  </Text>
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="counter"
+                      display="flex"
+                      style={
+                        [
+                          {
+                            "display": "flex",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        backgroundColor="feedback.background.neutral.subtle"
+                        data-blade-component="base-box"
+                        minHeight="20px"
+                        platform="onMobile"
+                        size="medium"
+                        style={
+                          [
+                            {
+                              "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                              "minHeight": 20,
+                            },
+                            {
+                              "alignSelf": "center",
+                              "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                              "borderRadius": 9999,
+                              "display": "flex",
+                              "flexWrap": "nowrap",
+                              "maxWidth": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          justifyContent="center"
+                          overflow="hidden"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                                "overflow": "hidden",
+                                "paddingLeft": 8,
+                                "paddingRight": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="feedback.text.neutral.intense"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={75}
+                            fontStyle="normal"
+                            fontWeight="medium"
+                            lineHeight={75}
+                            numberOfLines={1}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(211, 33%, 21%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "500",
+                                  "letterSpacing": 0,
+                                  "lineHeight": 18,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textAlign": "center",
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                            textAlign="center"
+                          >
+                            12
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <Text
+                  accessible={true}
+                  color="surface.text.gray.subtle"
+                  data-blade-component="text"
+                  fontFamily="text"
+                  fontSize={75}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight={75}
+                  style={
+                    [
+                      {
+                        "color": "hsla(211, 26%, 34%, 1)",
                         "fontFamily": "Inter",
-                        "fontSize": 16,
+                        "fontSize": 12,
                         "fontStyle": "normal",
-                        "fontWeight": "600",
+                        "fontWeight": "400",
                         "letterSpacing": 0,
-                        "lineHeight": 24,
+                        "lineHeight": 18,
                         "marginBottom": 0,
                         "marginLeft": 0,
                         "marginRight": 0,
@@ -895,156 +1051,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
                   }
+                  textAlign="left"
                 >
-                  Card Header
+                  Card subtitle
                 </Text>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {
-                        "marginLeft": 8,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    data-blade-component="counter"
-                    display="flex"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      backgroundColor="feedback.background.neutral.subtle"
-                      data-blade-component="base-box"
-                      minHeight="20px"
-                      platform="onMobile"
-                      size="medium"
-                      style={
-                        [
-                          {
-                            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-                            "minHeight": 20,
-                          },
-                          {
-                            "alignSelf": "center",
-                            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-                            "borderRadius": 9999,
-                            "display": "flex",
-                            "flexWrap": "nowrap",
-                            "maxWidth": 100,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        alignItems="center"
-                        data-blade-component="base-box"
-                        display="flex"
-                        flexDirection="row"
-                        justifyContent="center"
-                        overflow="hidden"
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 8,
-                              "paddingRight": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          accessible={true}
-                          color="feedback.text.neutral.intense"
-                          data-blade-component="text"
-                          fontFamily="text"
-                          fontSize={75}
-                          fontStyle="normal"
-                          fontWeight="medium"
-                          lineHeight={75}
-                          numberOfLines={1}
-                          style={
-                            [
-                              {
-                                "color": "hsla(211, 33%, 21%, 1)",
-                                "fontFamily": "Inter",
-                                "fontSize": 12,
-                                "fontStyle": "normal",
-                                "fontWeight": "500",
-                                "letterSpacing": 0,
-                                "lineHeight": 18,
-                                "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
-                                "marginTop": 0,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "textAlign": "center",
-                                "textDecorationLine": "none",
-                              },
-                            ]
-                          }
-                          textAlign="center"
-                        >
-                          12
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
               </View>
-              <Text
-                accessible={true}
-                color="surface.text.gray.subtle"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={75}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={75}
-                style={
-                  [
-                    {
-                      "color": "hsla(211, 26%, 34%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 12,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "left",
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                textAlign="left"
-              >
-                Card subtitle
-              </Text>
             </View>
           </View>
           <View

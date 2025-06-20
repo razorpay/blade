@@ -151,7 +151,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
+      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` ,  `CardHeaderLink` ,  `CardHeaderBox` component is accepted in suffix',
     );
 
     expect(() =>
@@ -163,7 +163,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount` component is accepted in visual',
+      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount, CardHeaderBox` component is accepted in visual',
     );
     mockConsoleError.mockRestore();
   });
