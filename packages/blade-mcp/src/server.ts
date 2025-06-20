@@ -40,6 +40,12 @@ import {
   getBladeGeneralDocsToolSchema,
   getBladeGeneralDocsToolCallback,
 } from './tools/getBladeGeneralDocs.js';
+import {
+  getFigmaToCodeToolName,
+  getFigmaToCodeToolDescription,
+  getFigmaToCodeToolSchema,
+  getFigmaToCodeToolCallback,
+} from './tools/getFigmaToCode.js';
 
 Sentry.init({
   dsn: process.env.BLADE_MCP_SENTRY_DSN,
@@ -89,6 +95,13 @@ try {
     getBladeGeneralDocsToolDescription,
     getBladeGeneralDocsToolSchema,
     getBladeGeneralDocsToolCallback,
+  );
+
+  server.tool(
+    getFigmaToCodeToolName,
+    getFigmaToCodeToolDescription,
+    getFigmaToCodeToolSchema,
+    getFigmaToCodeToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout

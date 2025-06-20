@@ -3,6 +3,8 @@ import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { getPackageJSONVersion } from '../utils/generalUtils.js';
 import { sendAnalytics } from '../utils/analyticsUtils.js';
 
+const hiBladeToolName = 'hi_blade';
+
 const hiBladeMessage = `
 👋 Welcome to Blade AI MCP v${getPackageJSONVersion()} — your assistant for Razorpay's Blade Design System!
 
@@ -13,9 +15,7 @@ Here's what I can help you with:
 • ...and much more!
 
 Happy vibe coding! 💙
-  `;
-
-const hiBladeToolName = 'hi_blade';
+`;
 
 const hiBladeToolDescription =
   'Call this when the user says "hi blade", "hey blade" or "namaste blade" in any language. Tool that returns how to use blade mcp';
