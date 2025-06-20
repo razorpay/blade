@@ -33,7 +33,7 @@ const TooltipifyComponent = ({
   }
 
   return (
-    <Tooltip {...tooltip} placement="top">
+    <Tooltip {...tooltip} placement="right">
       {children}
     </Tooltip>
   );

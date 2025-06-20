@@ -181,8 +181,8 @@ const navItemsJSON: NavItemsJSONType[] = [
       },
       {
         icon: ArrowUpRightIcon,
-        title: 'Payouts',
-        href: '/app/payouts',
+        title: 'Transactions',
+        href: '/app/transactions',
         tooltip: {
           content: 'Open Payouts (Cmd + O)',
         },
@@ -194,171 +194,67 @@ const navItemsJSON: NavItemsJSONType[] = [
       },
       {
         icon: FileTextIcon,
-        title: 'Account Statement',
+        title: 'Settlements',
+        href: '/app/account-statement',
+      },
+      {
+        icon: FileTextIcon,
+        title: 'Reports',
         href: '/app/account-statement',
       },
     ],
   },
   {
     type: 'section',
-    title: 'International Payments',
+    title: 'Recommended for you',
     items: [
       {
-        icon: GlobeIcon,
-        title: 'Global',
-        href: '/app/global',
-        titleSuffix: (
-          <Badge color="positive" size="small">
-            New
-          </Badge>
+        icon: ArrowUpRightIcon,
+        title: 'Product 1',
+        href: '/app/transactions',
+        tooltip: {
+          content: 'Here comes tooltip content for the first product',
+        },
+        trailing: (
+          <Tooltip
+            content="Here is why we think product 1 will be a good fit for you"
+            placement="right"
+          >
+            <Box height="50px" width="100px" />
+          </Tooltip>
         ),
-        items: [
-          {
-            icon: DollarIcon,
-            title: 'International Payments',
-            href: '/app/international-payments',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    type: 'section',
-    title: 'Offerings',
-    maxItemsVisible: 3,
-    items: [
-      {
-        icon: CreditCardIcon,
-        title: 'Corporate Credit Card',
-        href: '/app/corporate-credit-card',
-        items: [
-          {
-            icon: UserIcon,
-            title: 'User Profile',
-            href: '/app/user/profile',
-          },
-          {
-            icon: BuildingIcon,
-            title: 'Business Profile',
-            href: '/app/business/profile',
-            items: [
-              {
-                title: 'Business Banks',
-                href: '/app/business/banks',
-              },
-              {
-                title: 'Business Routes',
-                href: '/app/business/routes',
-              },
-            ],
-          },
-          {
-            icon: FilePlusIcon,
-            title: 'Billing',
-            href: '/app/billing',
-          },
-          {
-            icon: BankIcon,
-            title: 'Bank Accounts',
-            href: '/app/bank-accounts',
-          },
-          {
-            icon: PaymentGatewayIcon,
-            title: 'Payment Gateway',
-            href: '/app/payment-gateway',
-          },
-          {
-            icon: TransactionsIcon,
-            title: 'Transaction History',
-            href: '/app/transaction-history',
-          },
-          {
-            icon: WalletIcon,
-            title: 'Digital Wallet',
-            href: '/app/digital-wallet',
-          },
-          {
-            icon: CreditCardIcon,
-            title: 'Credit Services',
-            href: '/app/credit-services',
-          },
-          {
-            icon: CashIcon,
-            title: 'Cash Management',
-            href: '/app/cash-management',
-          },
-          {
-            icon: ReportsIcon,
-            title: 'Financial Reports',
-            href: '/app/financial-reports',
-          },
-          {
-            icon: UserCheckIcon,
-            title: 'Customer Verification',
-            href: '/app/customer-verification',
-          },
-          {
-            icon: SettingsIcon,
-            title: 'Account Settings',
-            href: '/app/account-settings',
-          },
-          {
-            icon: CustomersIcon,
-            title: 'Customer Support',
-            href: '/app/customer-support',
-          },
-        ],
       },
       {
-        icon: BillIcon,
-        title: 'Vendor Payments',
-        href: '/app/vendor-payments',
+        icon: ArrowUpRightIcon,
+        title: 'Product 2',
+        href: '/app/transactions',
+        tooltip: {
+          content: 'Product 2 is great for your business due to these reasons',
+        },
+        trailing: (
+          <Tooltip
+            content="Product 2 is great for your business due to these reasons"
+            placement="right"
+          >
+            <Box height="50px" width="100px" />
+          </Tooltip>
+        ),
       },
       {
-        icon: StampIcon,
-        title: 'Tax Payments',
-        href: '/app/tax-payments',
-      },
-      {
-        icon: RazorpayxPayrollIcon,
-        title: 'Payroll',
-        href: '/app/payroll',
-      },
-      {
-        icon: ReportsIcon,
-        title: 'Reports',
-        href: '/app/reports',
-      },
-      {
-        icon: UserCheckIcon,
-        title: 'Public Profile',
-        href: '/app/public-profile',
-      },
-      {
-        icon: CodeSnippetIcon,
-        title: 'Code Snippet',
-        href: '/app/code-snippet',
-      },
-      {
-        icon: HeadsetIcon,
-        title: 'Support',
-        href: '/app/support',
-      },
-    ],
-  },
-  {
-    type: 'section',
-    title: 'Miscellaneous',
-    items: [
-      {
-        icon: CashIcon,
-        title: 'Cost Center',
-        href: '/app/cost-center',
-      },
-      {
-        icon: ConfettiIcon,
-        title: 'Offers',
-        href: '/app/confetti',
+        icon: ArrowUpRightIcon,
+        title: 'Product 3',
+        href: '/app/transactions',
+        tooltip: {
+          content: 'Explore the benefits of Product 3 in the context of your problems',
+        },
+        trailing: (
+          <Tooltip
+            content="Explore the benefits of Product 3 in the context of your problems"
+            placement="right"
+          >
+            <Box height="50px" width="100px" />
+          </Tooltip>
+        ),
       },
     ],
   },
