@@ -817,6 +817,93 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
   );
 };
 
+const merchantOnboardingOptions = [
+  {
+    value: 'payment-gateway',
+    title: 'Payment Gateway',
+    subtitle: 'Accept online payments',
+    icon: RazorpayIcon,
+    features: [
+      '100+ payment methods',
+      'UPI, Cards, Netbanking, Wallets',
+      'Industry-leading success rates',
+      'Real-time payment tracking',
+    ],
+  },
+  {
+    value: 'payment-links',
+    title: 'Payment Links',
+    subtitle: 'Share & collect payments',
+    icon: RazorpayIcon,
+    features: [
+      'No coding required',
+      'Share via SMS, email, WhatsApp',
+      'Instant payment collection',
+      'Custom branding options',
+    ],
+  },
+  {
+    value: 'payment-pages',
+    title: 'Payment Pages',
+    subtitle: 'Create online store',
+    icon: RazorpayIcon,
+    features: [
+      'Ready-to-use online store',
+      'Product catalog management',
+      'Inventory tracking',
+      'Mobile-optimized checkout',
+    ],
+  },
+  {
+    value: 'pos',
+    title: 'Point of Sale (POS)',
+    subtitle: 'In-store payments',
+    icon: RazorpayIcon,
+    features: [
+      'Accept card & UPI payments',
+      'Contactless payments',
+      'Inventory management',
+      'Sales analytics & reports',
+    ],
+  },
+];
+
+const OptionCard = ({
+  option,
+  isSelected,
+  children,
+}: {
+  option: typeof merchantOnboardingOptions[0];
+  isSelected: boolean;
+  children: React.ReactNode;
+}) => (
+  <Card
+    as="label"
+    isSelected={isSelected}
+    marginBottom="spacing.3"
+    width={{ s: '100%', m: '400px' }}
+  >
+    <CardBody>
+      <Box display="flex" flexDirection="row" gap="spacing.3">
+        <CardHeaderLeading
+          title={option.title}
+          subtitle={option.subtitle}
+          prefix={<CardHeaderIcon icon={option.icon} />}
+        />
+        {children}
+      </Box>
+      <Divider marginTop="spacing.2" />
+      <List variant="unordered" marginTop="spacing.2">
+        {option.features.map((feature, index) => (
+          <ListItem key={index}>
+            <ListItemText>{feature}</ListItemText>
+          </ListItem>
+        ))}
+      </List>
+    </CardBody>
+  </Card>
+);
+
 export const SingleSelectableCardWithRadio = (): React.ReactElement => {
   const [selectedBusinessType, setSelectedBusinessType] = React.useState('');
   const [isSubmitted, setIsSubmitted] = React.useState(false);
@@ -960,9 +1047,6 @@ export const MultiSelectableCardWithCheckbox = (): React.ReactElement => {
 
 export const SelectableCardWithLabelLeft = (): React.ReactElement => {
   const [selectedBusinessType, setSelectedBusinessType] = React.useState('');
-  const [isSubmitted, setIsSubmitted] = React.useState(false);
-
-  const hasError = isSubmitted && !selectedBusinessType;
 
   return (
     <Box display="flex" gap="spacing.6" flexDirection="column">
@@ -981,8 +1065,6 @@ export const SelectableCardWithLabelLeft = (): React.ReactElement => {
           orientation="horizontal"
           labelPosition="left"
           flexWrap="wrap"
-          validationState={hasError ? 'error' : 'none'}
-          errorText={hasError ? 'Please select a product to continue' : undefined}
           helpText="Select one primary product for your initial setup"
         >
           {merchantOnboardingOptions.slice(0, 2).map((option) => (
@@ -1013,90 +1095,3 @@ export const MultiSelectableCard = (): React.ReactElement => {
   }
   return <MultiSelectCardWeb />;
 };
-
-const merchantOnboardingOptions = [
-  {
-    value: 'payment-gateway',
-    title: 'Payment Gateway',
-    subtitle: 'Accept online payments',
-    icon: RazorpayIcon,
-    features: [
-      '100+ payment methods',
-      'UPI, Cards, Netbanking, Wallets',
-      'Industry-leading success rates',
-      'Real-time payment tracking',
-    ],
-  },
-  {
-    value: 'payment-links',
-    title: 'Payment Links',
-    subtitle: 'Share & collect payments',
-    icon: RazorpayIcon,
-    features: [
-      'No coding required',
-      'Share via SMS, email, WhatsApp',
-      'Instant payment collection',
-      'Custom branding options',
-    ],
-  },
-  {
-    value: 'payment-pages',
-    title: 'Payment Pages',
-    subtitle: 'Create online store',
-    icon: RazorpayIcon,
-    features: [
-      'Ready-to-use online store',
-      'Product catalog management',
-      'Inventory tracking',
-      'Mobile-optimized checkout',
-    ],
-  },
-  {
-    value: 'pos',
-    title: 'Point of Sale (POS)',
-    subtitle: 'In-store payments',
-    icon: RazorpayIcon,
-    features: [
-      'Accept card & UPI payments',
-      'Contactless payments',
-      'Inventory management',
-      'Sales analytics & reports',
-    ],
-  },
-];
-
-const OptionCard = ({
-  option,
-  isSelected,
-  children,
-}: {
-  option: typeof merchantOnboardingOptions[0];
-  isSelected: boolean;
-  children: React.ReactNode;
-}) => (
-  <Card
-    as="label"
-    isSelected={isSelected}
-    marginBottom="spacing.3"
-    width={{ s: '100%', m: '400px' }}
-  >
-    <CardBody>
-      <Box display="flex" flexDirection="row" gap="spacing.3">
-        <CardHeaderLeading
-          title={option.title}
-          subtitle={option.subtitle}
-          prefix={<CardHeaderIcon icon={option.icon} />}
-        />
-        {children}
-      </Box>
-      <Divider marginTop="spacing.2" />
-      <List variant="unordered" marginTop="spacing.2">
-        {option.features.map((feature, index) => (
-          <ListItem key={index}>
-            <ListItemText>{feature}</ListItemText>
-          </ListItem>
-        ))}
-      </List>
-    </CardBody>
-  </Card>
-);
