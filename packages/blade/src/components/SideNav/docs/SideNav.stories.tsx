@@ -186,11 +186,6 @@ const navItemsJSON: NavItemsJSONType[] = [
         tooltip: {
           content: 'Open Payouts (Cmd + O)',
         },
-        trailing: (
-          <Tooltip content="Create Payout (Cmd + P)" placement="right">
-            <Button icon={PlusIcon} size="xsmall" variant="tertiary" />
-          </Tooltip>
-        ),
       },
       {
         icon: FileTextIcon,
@@ -215,14 +210,6 @@ const navItemsJSON: NavItemsJSONType[] = [
         tooltip: {
           content: 'Here comes tooltip content for the first product',
         },
-        trailing: (
-          <Tooltip
-            content="Here is why we think product 1 will be a good fit for you"
-            placement="right"
-          >
-            <Box height="50px" width="100px" />
-          </Tooltip>
-        ),
       },
       {
         icon: ArrowUpRightIcon,
@@ -231,14 +218,6 @@ const navItemsJSON: NavItemsJSONType[] = [
         tooltip: {
           content: 'Product 2 is great for your business due to these reasons',
         },
-        trailing: (
-          <Tooltip
-            content="Product 2 is great for your business due to these reasons"
-            placement="right"
-          >
-            <Box height="50px" width="100px" />
-          </Tooltip>
-        ),
       },
       {
         icon: ArrowUpRightIcon,
@@ -247,14 +226,6 @@ const navItemsJSON: NavItemsJSONType[] = [
         tooltip: {
           content: 'Explore the benefits of Product 3 in the context of your problems',
         },
-        trailing: (
-          <Tooltip
-            content="Explore the benefits of Product 3 in the context of your problems"
-            placement="right"
-          >
-            <Box height="50px" width="100px" />
-          </Tooltip>
-        ),
       },
     ],
   },

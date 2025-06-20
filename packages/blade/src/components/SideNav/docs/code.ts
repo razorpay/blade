@@ -308,124 +308,64 @@ export const sideNavWithReactRouter = {
 
   export const navItemsJSON = [
     {
-      type: 'section',
-      title: undefined,
-      items: [
-        {
-          icon: LayoutIcon,
-          title: 'Home',
-          href: '/app/dashboard',
+    type: 'section',
+    title: undefined,
+    items: [
+      {
+        icon: LayoutIcon,
+        title: 'Home',
+        href: '/app/dashboard',
+      },
+      {
+        icon: ArrowUpRightIcon,
+        title: 'Transactions',
+        href: '/app/transactions',
+        tooltip: {
+          content: 'Open Payouts (Cmd + O)',
         },
-        {
-          icon: ArrowUpRightIcon,
-          title: 'Payouts',
-          href: '/app/payouts',
-          tooltip: {
-            content: 'Open Payouts (Cmd + O)',
-          },
-          trailing: (
-            <Tooltip content="Create Payout (Cmd + P)" placement="right">
-              <Button icon={PlusIcon} size="xsmall" variant="tertiary" />
-            </Tooltip>
-          ),
+      },
+      {
+        icon: FileTextIcon,
+        title: 'Settlements',
+        href: '/app/account-statement',
+      },
+      {
+        icon: FileTextIcon,
+        title: 'Reports',
+        href: '/app/account-statement',
+      },
+    ],
+  },
+  {
+    type: 'section',
+    title: 'Recommended for you',
+    items: [
+      {
+        icon: ArrowUpRightIcon,
+        title: 'Product 1',
+        href: '/app/transactions',
+        tooltip: {
+          content: 'Here comes tooltip content for the first product',
         },
-        {
-          icon: FileTextIcon,
-          title: 'Account Statement',
-          href: '/app/account-statement',
+      },
+      {
+        icon: ArrowUpRightIcon,
+        title: 'Product 2',
+        href: '/app/transactions',
+        tooltip: {
+          content: 'Product 2 is great for your business due to these reasons',
         },
-      ],
-    },
-    {
-      type: 'section',
-      title: 'Offerings',
-      maxItemsVisible: 3,
-      items: [
-        {
-          icon: CreditCardIcon,
-          title: 'Corporate Credit Card',
-          href: '/app/corporate-credit-card',
-          items: [
-            {
-              icon: UserIcon,
-              title: 'User Profile',
-              href: '/app/user/profile',
-            },
-            {
-              icon: BuildingIcon,
-              title: 'Business Profile',
-              href: '/app/business/profile',
-              items: [
-                {
-                  title: 'Business Banks',
-                  href: '/app/business/banks',
-                },
-                {
-                  title: 'Business Routes',
-                  href: '/app/business/routes',
-                },
-              ],
-            },
-            {
-              icon: FilePlusIcon,
-              title: 'Billing',
-              href: '/app/billing',
-            },
-          ],
+      },
+      {
+        icon: ArrowUpRightIcon,
+        title: 'Product 3',
+        href: '/app/transactions',
+        tooltip: {
+          content: 'Explore the benefits of Product 3 in the context of your problems',
         },
-        {
-          icon: BillIcon,
-          title: 'Vendor Payments',
-          href: '/app/vendor-payments',
-        },
-        {
-          icon: StampIcon,
-          title: 'Tax Payments',
-          href: '/app/tax-payments',
-        },
-        {
-          icon: RazorpayxPayrollIcon,
-          title: 'Payroll',
-          href: '/app/payroll',
-        },
-        {
-          icon: ReportsIcon,
-          title: 'Reports',
-          href: '/app/reports',
-        },
-        {
-          icon: UserCheckIcon,
-          title: 'Public Profile',
-          href: '/app/public-profile',
-        },
-        {
-          icon: CodeSnippetIcon,
-          title: 'Code Snippet',
-          href: '/app/code-snippet',
-        },
-        {
-          icon: HeadsetIcon,
-          title: 'Support',
-          href: '/app/support',
-        },
-      ],
-    },
-    {
-      type: 'section',
-      title: 'Miscellaneous',
-      items: [
-        {
-          icon: CashIcon,
-          title: 'Cost Center',
-          href: '/app/cost-center',
-        },
-        {
-          icon: ConfettiIcon,
-          title: 'Offers',
-          href: '/app/confetti',
-        },
-      ],
-    },
+      },
+    ],
+  },
   ];
   `,
 };
