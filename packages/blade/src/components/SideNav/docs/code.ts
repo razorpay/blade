@@ -345,7 +345,7 @@ export const sideNavWithReactRouter = {
         title: 'Product 1',
         href: '/app/transactions',
         tooltip: {
-          content: 'Here comes tooltip content for the first product',
+          content: 'Here is why we think product 1 will be a good fit for you',
         },
       },
       {
