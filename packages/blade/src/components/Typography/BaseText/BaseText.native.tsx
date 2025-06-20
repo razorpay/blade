@@ -20,6 +20,7 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
     lineHeight,
     letterSpacing,
     textAlign,
+    textTransform,
     as,
     opacity,
     ...props
@@ -39,6 +40,7 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
         letterSpacing,
         textAlign,
         opacity,
+        textTransform,
         theme: props.theme,
       }),
       ...styledPropsCSSObject,
@@ -59,6 +61,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
     textAlign,
     children,
     truncateAfterLines,
+    textTransform,
     opacity,
     className,
     style,
@@ -87,6 +90,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
       className={className}
       style={style}
       id={id}
+      textTransform={textTransform}
       {...makeAccessible(accessibilityProps)}
       {...metaAttribute({ name: componentName, testID })}
     >

@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { Theme } from '~components/BladeProvider';
 import type { AccessibilityProps } from '~utils/makeAccessible/types';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
@@ -37,6 +38,7 @@ export type BaseTextProps = {
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
+  textTransform?: CSSProperties['textTransform'];
   lineHeight?: keyof Theme['typography']['lineHeights'];
   letterSpacing?: keyof Theme['typography']['letterSpacings'];
   wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
@@ -76,6 +78,7 @@ export type StyledBaseTextProps = Pick<
   | 'truncateAfterLines'
   | 'wordBreak'
   | 'opacity'
+  | 'textTransform'
 > & { theme: Theme };
 
 export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';

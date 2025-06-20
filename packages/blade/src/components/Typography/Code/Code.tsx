@@ -26,6 +26,7 @@ type CodeCommonProps = {
   size?: Extract<BaseTextSizes, 'small' | 'medium'>;
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'bold'>;
   isHighlighted?: boolean;
+  textTransform?: BaseTextProps['textTransform'];
   color?: BaseTextProps['color'];
 } & TestID &
   StyledPropsBlade;
@@ -132,6 +133,7 @@ const _Code = (
     isHighlighted = true,
     color,
     testID,
+    textTransform,
     ...styledProps
   }: CodeProps,
   ref: React.Ref<BladeElementRef>,
@@ -158,6 +160,7 @@ const _Code = (
         fontWeight={weight}
         as={isPlatformWeb ? 'code' : undefined}
         lineHeight={lineHeight}
+        textTransform={textTransform}
       >
         {children}
       </BaseText>

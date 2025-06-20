@@ -19,6 +19,7 @@ const getBaseTextStyles = ({
   textAlign,
   opacity,
   theme,
+  textTransform,
 }: StyledBaseTextProps): CSSObject => {
   const textColor = color === 'currentColor' ? 'currentColor' : getIn(theme.colors, color);
   const themeFontFamily = theme.typography.fonts.family[fontFamily];
@@ -71,6 +72,7 @@ const getBaseTextStyles = ({
     margin: 0,
     padding: 0,
     opacity,
+    textTransform,
     ...truncateStyles,
     ...wordBreakStyles,
   };
