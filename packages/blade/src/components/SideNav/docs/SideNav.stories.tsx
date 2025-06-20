@@ -178,6 +178,9 @@ const navItemsJSON: NavItemsJSONType[] = [
         icon: LayoutIcon,
         title: 'Home',
         href: '/app/dashboard',
+        tooltip: {
+          content: 'Open Home',
+        },
       },
       {
         icon: ArrowUpRightIcon,
