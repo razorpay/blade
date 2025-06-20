@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.0.0
+
+### Major Changes
+
+- e5bcc887d: feat(blade-mcp): add figma to code mcp tool
+
 ## 0.2.6
 
 ### Patch Changes
