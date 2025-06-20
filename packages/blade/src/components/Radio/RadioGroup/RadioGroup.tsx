@@ -123,6 +123,7 @@ const RadioGroup = ({
   size = 'medium',
   orientation = 'vertical',
   testID,
+  flexWrap = 'nowrap',
   ...rest
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
@@ -173,6 +174,7 @@ const RadioGroup = ({
               display="flex"
               flexDirection={orientation === 'vertical' ? 'column' : 'row'}
               gap={gap}
+              flexWrap={flexWrap}
             >
               {React.Children.map(children, (child, index) => {
                 return <BaseBox key={index}>{child}</BaseBox>;
