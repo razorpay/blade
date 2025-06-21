@@ -333,7 +333,7 @@ export const BaseInputVisuals = ({
               size={textSize[size]}
               variant="body"
               weight="regular"
-              color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
+              color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
             >
               {prefix}
             </Text>

@@ -678,7 +678,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             >
               <Text
                 accessible={true}
-                color="surface.text.gray.subtle"
+                color="surface.text.gray.muted"
                 data-blade-component="text"
                 fontFamily="text"
                 fontSize={100}
@@ -688,7 +688,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(211, 26%, 34%, 1)",
+                      "color": "hsla(211, 22%, 56%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
