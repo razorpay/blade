@@ -30,6 +30,8 @@ type SearchInputCommonProps = Pick<
   | 'label'
   | 'accessibilityLabel'
   | 'labelPosition'
+  | 'labelSuffix'
+  | 'labelTrailing'
   | 'helpText'
   | 'placeholder'
   | 'defaultValue'
@@ -120,6 +122,8 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     onBlur,
     onSubmit,
     isDisabled,
+    labelSuffix,
+    labelTrailing,
     helpText,
     onClearButtonClick,
     isLoading,
@@ -264,6 +268,8 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         accessibilityLabel={accessibilityLabel}
         hideLabelText={!Boolean(label)}
         labelPosition={labelPosition}
+        labelSuffix={labelSuffix}
+        labelTrailing={labelTrailing}
         placeholder={placeholder}
         defaultValue={defaultValue}
         value={value}

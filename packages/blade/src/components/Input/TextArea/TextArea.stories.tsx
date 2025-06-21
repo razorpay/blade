@@ -11,6 +11,9 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { ToastContainer, useToast } from '~components/Toast';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { InfoIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -128,6 +131,16 @@ export default {
       },
     },
     label: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelSuffix: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelTrailing: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -579,4 +592,19 @@ export const TextAreaWithTagsValidation: StoryFn<typeof TextAreaComponent> = ({ 
 TextAreaWithTagsValidation.args = {
   isTaggedInput: true,
   showClearButton: false,
+};
+
+export const TextAreaWithLabelSuffixTrailing = TextAreaTemplate.bind({});
+TextAreaWithLabelSuffixTrailing.storyName = 'TextArea with Label Suffix & Trailing';
+TextAreaWithLabelSuffixTrailing.args = {
+  label: 'Enter GSTIN',
+  placeholder: 'Enter GSTIN',
+  labelSuffix: (
+    <Tooltip content="Your GSTIN is used to generate invoices and receipts" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
 };

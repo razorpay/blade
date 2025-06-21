@@ -862,6 +862,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     tabIndex,
     leadingDropDown,
     trailingDropDown,
+    labelSuffix,
+    labelTrailing,
     ...rest
   },
   ref,
@@ -980,7 +982,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
             justifyContent="space-between"
-            alignSelf={isTextArea ? 'flex-start' : undefined}
+            alignSelf={isTextArea && isLabelLeftPositioned ? 'flex-start' : undefined}
             marginY={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
           >
             <FormLabel
@@ -990,6 +992,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               id={labelId}
               htmlFor={inputId}
               size={_size}
+              labelSuffix={labelSuffix}
+              labelTrailing={labelTrailing}
             >
               {label}
             </FormLabel>

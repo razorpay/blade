@@ -73,6 +73,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   inputPlaceHolder,
   inputElementType = 'datePickerInput',
   onClearButtonClick,
+  labelSuffix,
+  labelTrailing,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -434,6 +436,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
               necessityIndicator={necessityIndicator}
               format={finalFormat}
               placeholder={finalInputPlaceHolder}
+              labelSuffix={labelSuffix}
+              labelTrailing={labelTrailing}
               {...makeAnalyticsAttribute(props)}
             />
           )}

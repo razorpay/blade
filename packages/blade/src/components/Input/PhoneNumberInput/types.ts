@@ -8,6 +8,8 @@ type CommonProps = Pick<
   | 'size'
   | 'label'
   | 'labelPosition'
+  | 'labelSuffix'
+  | 'labelTrailing'
   | 'name'
   | 'validationState'
   | 'errorText'

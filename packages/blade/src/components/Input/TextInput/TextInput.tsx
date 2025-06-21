@@ -39,6 +39,8 @@ type TextInputCommonProps = Pick<
   | 'label'
   | 'accessibilityLabel'
   | 'labelPosition'
+  | 'labelSuffix'
+  | 'labelTrailing'
   | 'necessityIndicator'
   | 'validationState'
   | 'helpText'
@@ -224,6 +226,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     onTagChange,
     trailing,
     leading,
+    labelSuffix,
+    labelTrailing,
     ...rest
   },
   ref,
@@ -432,6 +436,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         textInputWrapperRef.current = wrapperNode;
       }}
       label={label as string}
+      labelSuffix={labelSuffix}
+      labelTrailing={labelTrailing}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}

@@ -36,8 +36,11 @@ import {
   TransactionsIcon,
   HelpCircleIcon,
   BulkPayoutsIcon,
+  InfoIcon,
 } from '~components/Icons';
 import { Spinner } from '~components/Spinner';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'Search Input Props',
@@ -161,6 +164,16 @@ export default {
       },
     },
     labelPosition: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelSuffix: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelTrailing: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -570,3 +583,18 @@ const SearchInputWithTableTemplate: StoryFn<typeof SearchInputComponent> = () =>
 
 export const SearchInputWithTable = SearchInputWithTableTemplate.bind({});
 SearchInputWithTable.storyName = 'With Table';
+
+export const SearchInputWithLabelSuffixTrailing = SearchInputTemplate.bind({});
+SearchInputWithLabelSuffixTrailing.storyName = 'SearchInput with Label Suffix & Trailing';
+SearchInputWithLabelSuffixTrailing.args = {
+  label: 'Search here',
+  placeholder: 'Search here',
+  labelSuffix: (
+    <Tooltip content="Search for payment products, settings, and more" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
+};

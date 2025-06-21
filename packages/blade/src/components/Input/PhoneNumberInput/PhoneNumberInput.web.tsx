@@ -53,6 +53,8 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     autoCompleteSuggestionType,
     allowedCountries,
     placeholder,
+    labelSuffix,
+    labelTrailing,
     ...rest
   },
   ref,
@@ -166,6 +168,8 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
       trailingIcon={trailingIcon}
       leadingIcon={leadingIcon}
       prefix={showDialCode ? getDialCodeByCountryCode(selectedCountry) : undefined}
+      labelSuffix={labelSuffix}
+      labelTrailing={labelTrailing}
       trailingInteractionElement={renderTrailingInteractionElement()}
       leadingInteractionElement={
         showCountrySelector ? (
