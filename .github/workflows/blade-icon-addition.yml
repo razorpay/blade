@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feat/automate-icon-addition
   workflow_dispatch:
 
 jobs:
