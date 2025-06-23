@@ -22,6 +22,7 @@ import {
   CardHeaderBox,
 } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
+import { Button } from '~components/Button';
 
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
@@ -606,7 +607,7 @@ const CardWithTooltipExample = (): React.ReactElement => {
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
           suffix={
-            <CardHeaderBox display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+            <Box display="flex" alignItems="center">
               <Tooltip
                 title="Total Payment Volume"
                 content="Total Payment Volume is the total amount of payments made in the current month."
@@ -616,18 +617,19 @@ const CardWithTooltipExample = (): React.ReactElement => {
                   <InfoIcon size="small" color="surface.icon.gray.subtle" marginLeft="spacing.2" />
                 </TooltipInteractiveWrapper>
               </Tooltip>
-              <CardHeaderLink
-                href="https://www.google.com/search?q=what+is+total+payment+volume"
-                target="_blank"
-                icon={ExternalLinkIcon}
-                iconPosition="right"
-              >
-                Learn more
-              </CardHeaderLink>
-            </CardHeaderBox>
+            </Box>
           }
         />
-        <CardHeaderTrailing />
+        <CardHeaderTrailing
+          visual={
+            <Box display="flex" flexDirection="row" gap="spacing.7" alignItems="center">
+              <CardHeaderLink href="/" icon={ArrowRightIcon} iconPosition="right">
+                Chart settings
+              </CardHeaderLink>
+              <Button> View Chart</Button>
+            </Box>
+          }
+        />
       </CardHeader>
       <CardBody>
         <Box display="flex" flexDirection="column" gap="spacing.5">

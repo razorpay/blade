@@ -156,7 +156,7 @@ const _CardHeader = ({
 };
 const CardHeader = assignWithoutSideEffects(_CardHeader, { componentId: ComponentIds.CardHeader });
 
-const CardHeaderSuffixAllowedComponents = [
+const CardHeaderSuffixComponents = [
   ComponentIds.CardHeaderCounter,
   ComponentIds.CardHeaderLink,
   ComponentIds.CardHeaderBox,
@@ -173,7 +173,7 @@ type CardHeaderLeadingProps = {
   /**
    * suffix element of Card
    *
-   * Accepts: `CardHeaderCounter`,`CardHeaderLink` ,`CardHeaderBox` component
+   * it add marginLeft to `CardHeaderCounter`,`CardHeaderLink` ,`CardHeaderBox` components.
    */
   suffix?: React.ReactNode;
   /**
@@ -198,14 +198,9 @@ const _CardHeaderLeading = ({
         moduleName: 'CardHeaderLeading',
       });
     }
-
-    if (suffix && !CardHeaderSuffixAllowedComponents.includes(getComponentId(suffix)!)) {
-      throwBladeError({
-        message: `Only \`${ComponentIds.CardHeaderCounter}\` ,  \`${ComponentIds.CardHeaderLink}\` ,  \`${ComponentIds.CardHeaderBox}\` component is accepted in suffix`,
-        moduleName: 'CardHeaderLeading',
-      });
-    }
   }
+
+  const isSuffixACardComponent = CardHeaderSuffixComponents.includes(getComponentId(suffix)!);
 
   return (
     <BaseBox
@@ -226,8 +221,13 @@ const _CardHeaderLeading = ({
             <Text color="surface.text.gray.normal" size={titleSize} weight="semibold">
               {title}
             </Text>
-
-            {suffix && <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>}
+            {/* if we are using CardHeaderSuffixComponents we still need marginLeft for spacing ,
+             but if it's not a CardHeaderSuffixComponents we don't need marginLeft for example in case of tooltip */}
+            {suffix && isSuffixACardComponent ? (
+              <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
+            ) : (
+              suffix
+            )}
           </BaseBox>
           {subtitle && (
             <Text color="surface.text.gray.subtle" textAlign="left" size="small">
@@ -247,33 +247,12 @@ type CardHeaderTrailingProps = {
   /**
    * Renders a visual ornament in card header trailing section
    *
-   * Accepts: `CardHeaderLink`, `CardHeaderText`, `CardHeaderIconButton`, `CardHeaderBadge`
    */
   visual?: React.ReactNode;
 };
 
-const headerTrailingAllowedComponents = [
-  ComponentIds.CardHeaderLink,
-  ComponentIds.CardHeaderText,
-  ComponentIds.CardHeaderIconButton,
-  ComponentIds.CardHeaderBadge,
-  ComponentIds.CardHeaderAmount,
-  ComponentIds.CardHeaderBox,
-];
-
 const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderTrailing');
-
-  if (__DEV__) {
-    if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
-      throwBladeError({
-        message: `Only one of \`${headerTrailingAllowedComponents.join(
-          ', ',
-        )}\` component is accepted in visual`,
-        moduleName: 'CardHeaderTrailing',
-      });
-    }
-  }
 
   return <BaseBox alignSelf="center">{visual}</BaseBox>;
 };
