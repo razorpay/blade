@@ -182,12 +182,12 @@ type EmptyStateProps = {
    * <EmptyState asset={<CustomIllustration />} />
    * ```
    */
-  asset: React.ReactNode;
+  asset?: React.ReactNode;
 
   /**
    * Primary heading text for the empty state
    */
-  title: string;
+  title?: string;
 
   /**
    * Supporting description text providing context and guidance
