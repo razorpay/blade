@@ -18,9 +18,6 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Text } from '~components/Typography';
-import { Counter } from '~components/Counter';
-import { Badge } from '~components/Badge';
-import { Link } from '~components/Link';
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {

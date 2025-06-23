@@ -16,8 +16,6 @@ import {
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
-import { Counter } from '~components/Counter';
-import { Badge } from '~components/Badge';
 import BaseBox from '~components/Box/BaseBox';
 
 describe('<Card />', () => {
