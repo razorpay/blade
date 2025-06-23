@@ -545,13 +545,19 @@ const MetricInfo = (): React.ReactElement => {
 const MetricCardVariantExample = (): React.ReactElement => {
   const isMobile = useIsMobile();
   return (
-    <Card backgroundColor="surface.background.gray.intense" maxWidth="500px" minWidth="300px">
+    <Card
+      backgroundColor="surface.background.gray.intense"
+      maxWidth="500px"
+      minWidth="300px"
+      padding="spacing.5"
+    >
       <CardHeader showDivider={false}>
         <CardHeaderLeading
           title={isMobile ? 'TPV' : 'Total Payment Volume'}
           subtitle={
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
+          titleSize="medium"
         />
         <CardHeaderTrailing
           visual={

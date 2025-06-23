@@ -176,12 +176,17 @@ type CardHeaderLeadingProps = {
    * Accepts: `CardHeaderCounter`,`CardHeaderLink` ,`CardHeaderBox` component
    */
   suffix?: React.ReactNode;
+  /**
+   * @default "large"
+   */
+  titleSize?: TextProps<{ variant: TextVariant }>['size'];
 } & DataAnalyticsAttribute;
 const _CardHeaderLeading = ({
   title,
   subtitle,
   prefix,
   suffix,
+  titleSize = 'large',
   ...rest
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
@@ -218,7 +223,7 @@ const _CardHeaderLeading = ({
 
         <BaseBox marginRight="spacing.5">
           <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-            <Text color="surface.text.gray.normal" size="large" weight="semibold">
+            <Text color="surface.text.gray.normal" size={titleSize} weight="semibold">
               {title}
             </Text>
 
