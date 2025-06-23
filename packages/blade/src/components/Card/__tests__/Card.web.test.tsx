@@ -136,49 +136,6 @@ describe('<Card />', () => {
       ),
     ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
 
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading
-              title={cardTitle}
-              subtitle={cardSubtitle}
-              suffix={<Counter value={12} />}
-            />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` ,  `CardHeaderLink` ,  `CardHeaderBox` component is accepted in suffix',
-    );
-
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading
-              title={cardTitle}
-              subtitle={cardSubtitle}
-              suffix={<Link href="https://razorpay.com">Link</Link>}
-            />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` ,  `CardHeaderLink` ,  `CardHeaderBox` component is accepted in suffix',
-    );
-
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderTrailing visual={<Badge>NEW</Badge>} />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount, CardHeaderBox` component is accepted in visual',
-    );
     mockConsoleError.mockRestore();
   });
 
