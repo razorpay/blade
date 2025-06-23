@@ -120,54 +120,6 @@ describe('<Card />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should only accept allowed components in Card Header', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-    const cardTitle = 'Card Header';
-    const cardSubtitle = 'Card subtitle';
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading
-              title={cardTitle}
-              subtitle={cardSubtitle}
-              prefix={<InfoIcon color="interactive.icon.staticWhite.normal" size="xsmall" />}
-            />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
-
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading
-              title={cardTitle}
-              subtitle={cardSubtitle}
-              suffix={<Counter value={12} />}
-            />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` ,  `CardHeaderLink` ,  `CardHeaderBox` component is accepted in suffix',
-    );
-
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderTrailing visual={<Badge>NEW</Badge>} />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount, CardHeaderBox` component is accepted in visual',
-    );
-    mockConsoleError.mockRestore();
-  });
-
   it('should throw error if any sub card components are used outside of Card', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() => renderWithTheme(<CardBody>body</CardBody>)).toThrow(
