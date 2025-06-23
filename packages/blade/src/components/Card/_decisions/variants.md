@@ -70,8 +70,8 @@ but still we need to enhancement to support these changes.
 
 
 - Changes: 
-  - Add Support for ToolTip in Title 
-  - Add Support for passing headerLayout in CardHeaderTrailing (will pick this up with layout pattern)
+  - Add Support for ToolTip in Title  (Allowed developers to pass any component)
+  - Add Support for passing headerLayout in CardHeaderTrailing (Allowed developers to pass any component)
   
 
 
@@ -80,10 +80,10 @@ but still we need to enhancement to support these changes.
 ```tsx
 <CardHeaderLeading
   suffix={
-    <CardHeaderBox>
+    <Box>
       <Tooltip />
       <Button />
-    </CardHeaderBox>
+    </Box>
   }
 />
 
@@ -93,17 +93,16 @@ type CardHeaderLeading = {
   suffix?: React.ReactNode;
 };
 ```
-* Here we are also adding a new component `CardHeaderBox` which is a wrapper on top of `Box` component. it can be only used in `CardHeaderLeading`.
+* We are adding support to pass `Box` props on suffix.
 
  Benefits:
  - We can pass multiple components in suffix.
  - We can use `Box` props on suffix.
  - Gives more flexibility to the developer to pass any component in suffix.
 
-Drawbacks:
-- We are adding a new component `CardHeaderBox` which is a wrapper on top of `Box` component.
-
-*So we went ahead with API-1 and added a new component `CardHeaderBox` which is a wrapper on top of `Box` component.*
+ Drawbacks:
+ - Api is too flexible to pass any component in suffix.
+*So we went ahead with API-1*
 
 #### API-2
 * Maybe support passing tooltip  in CardHeaderLeading
