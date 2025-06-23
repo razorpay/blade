@@ -75,7 +75,7 @@ but still we need to enhancement to support these changes.
   
 
 
-## API-1
+#### API-1
 * Support passing multiple components in Suffix of CardHeaderLeading. (this way we can pass tooltip and other components in suffix)
 ```tsx
 <CardHeaderLeading
@@ -105,7 +105,7 @@ Drawbacks:
 
 So we went ahead with this api and added a new component `CardHeaderBox` which is a wrapper on top of `Box` component.
 
-## API-2
+#### API-2
 * Maybe support passing tooltip  in CardHeaderLeading
 
 
