@@ -213,6 +213,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               </View>
             </View>
             <View
+              className="focus-ring-wrapper"
               currentInteraction="default"
               data-blade-component="base-box"
               isTableInputCell={false}
@@ -366,6 +367,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           autoCompleteType="off"
                           data-blade-component="styled-base-input"
                           editable={true}
+                          hasLeadingDropdown={false}
                           hasTags={false}
                           id="dropdown-7-trigger-1-input-2"
                           isDropdownTrigger={true}
@@ -1869,6 +1871,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   buttonPaddingRight="20px"
                   buttonPaddingTop="0px"
                   collapsable={false}
+                  color="primary"
                   data-blade-component="button"
                   defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
                   defaultBorderColor="hsla(227, 100%, 59%, 1)"
@@ -1878,6 +1881,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   focusable={true}
                   hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
                   hoverBorderColor="hsla(227, 100%, 59%, 1)"
+                  hoverIconColor="hsla(0, 0%, 100%, 1)"
                   isFullWidth={false}
                   isLoading={false}
                   isPressed={false}

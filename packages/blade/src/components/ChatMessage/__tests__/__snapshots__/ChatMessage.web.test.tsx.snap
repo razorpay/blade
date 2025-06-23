@@ -218,6 +218,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c12.c12.c12.c12.c12:hover + div {
@@ -561,7 +562,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -1136,6 +1137,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c12.c12.c12.c12.c12:hover + div {

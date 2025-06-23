@@ -1,5 +1,85 @@
 # @razorpay/blade-mcp
 
+## 1.0.0
+
+### Major Changes
+
+- e5bcc887d: feat(blade-mcp): add figma to code mcp tool
+
+## 0.2.6
+
+### Patch Changes
+
+- 49b1b3cce: docs: trimmed knowledgebase for inputgroup and textinput
+
+## 0.2.5
+
+### Patch Changes
+
+- 21b936ce5: docs: add Input Group, updated text input knowledgebase
+
+## 0.2.4
+
+### Patch Changes
+
+- 8beb5e541: feat(blade-mcp): pass directory name to analytics
+
+## 0.2.3
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
+## 0.2.2
+
+### Patch Changes
+
+- 16a8f55c5: feat(InfoGroup): remove keyAlign prop
+  feat(InfoGroup knowledgebase): update knowledgebase to add InfoGroup component
+
+## 0.2.1
+
+### Patch Changes
+
+- 4fef0f921: feat(knowledgebase): update knowledgebase with constraints
+
+## 0.2.0
+
+### Minor Changes
+
+- 07bf89369: feat(knowledgebase): support for patterns and different types of documentations
+
+## 0.1.12
+
+### Patch Changes
+
+- e6b88620: feat(SideNav): add default position note in knowledgebase
+
+## 0.1.11
+
+### Patch Changes
+
+- 735ec600: fix: update knowledgebase
+
+## 0.1.10
+
+### Patch Changes
+
+- 94621723: Update release.yml
+
+## 0.1.9
+
+### Patch Changes
+
+- b06afe7c: feat(blade-mcp): add runtime check fixes on cursor
+- 4c5104ba: feat: add mcp error monitoring & instrumentation
+
+## 0.1.8
+
+### Patch Changes
+
+- 90c22ea9: docs(blade-mcp): add Preview and Full Page Modal knowledgebase
+
 ## 0.1.7
 
 ### Patch Changes

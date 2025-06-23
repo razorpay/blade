@@ -69,6 +69,12 @@ type DropdownOverlayProps = {
    * @default 'bottom-start'
    */
   defaultPlacement?: Placement;
+  /**
+   * Nested Dropdown Overlay (Input Search Dropdown)
+   * @default false
+   * @private
+   */
+  _isNestedDropdown?: boolean;
 } & TestID;
 
 type FilterChipGroupProps = TestID &

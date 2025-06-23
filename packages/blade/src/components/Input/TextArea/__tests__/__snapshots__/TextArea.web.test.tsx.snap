@@ -329,6 +329,7 @@ exports[`<TextArea /> should render 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -377,11 +378,11 @@ exports[`<TextArea /> should render 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -531,7 +532,7 @@ exports[`<TextArea /> should render large size 1`] = `
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -762,6 +763,7 @@ exports[`<TextArea /> should render large size 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -810,11 +812,11 @@ exports[`<TextArea /> should render large size 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -1188,6 +1190,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -1236,11 +1239,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -1599,6 +1602,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -1647,11 +1651,11 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
         </label>
       </div>
       <div
-        class=" c7"
+        class=" c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea

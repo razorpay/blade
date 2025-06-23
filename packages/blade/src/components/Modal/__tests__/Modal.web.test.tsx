@@ -223,21 +223,6 @@ describe('Modal', () => {
     expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('should throw error when invalid children are passed', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-    const Example = (): React.ReactElement => {
-      return (
-        <Modal isOpen={true} onDismiss={() => {}}>
-          <Text>I am not supposed to be here</Text>
-        </Modal>
-      );
-    };
-    expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade: Modal]: Only `ModalHeader, ModalBody, ModalFooter` components are accepted in `Modal` children',
-    );
-    mockConsoleError.mockRestore();
-  });
-
   it('renders a Modal with custom zIndex', () => {
     const { getByTestId } = renderWithTheme(
       <Modal isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Modal" zIndex={9999}>

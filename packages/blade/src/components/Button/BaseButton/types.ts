@@ -10,6 +10,7 @@ import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import type { Theme } from '~components/BladeProvider';
 import type { DataAnalyticsAttribute, DotNotationSpacingStringToken } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 /**
  * All possible icon colors, derived from `IconProps` minus `currentColor` because possible values should only be from tokens
@@ -34,6 +35,7 @@ export type BaseButtonStyleProps = {
   defaultBorderColor: string;
   hoverBackgroundColor: string;
   hoverBorderColor: string;
+  hoverIconColor: string;
   focusBackgroundColor: string;
   focusBorderColor: string;
   focusRingColor: string;
@@ -65,6 +67,7 @@ export type StyledBaseButtonProps = Omit<
   focusRingColor: string;
   hoverBorderColor: string;
   hoverBackgroundColor: string;
+  hoverIconColor: DotNotationToken<Theme['colors']>;
   isFullWidth: boolean;
   motionDuration: DurationString;
   motionEasing: EasingString;

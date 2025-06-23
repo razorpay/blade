@@ -37,12 +37,8 @@ const _AccordionButton = ({
   const duration = castNativeType(getTransitionDuration(theme));
   const easing = castNativeType(getTransitionEasing(theme));
 
-  const activeBackgroundColor = useSharedValue(
-    getBackgroundColor({ theme, isExpanded, isActive: true }),
-  );
-  const inActiveBackgroundColor = useSharedValue(
-    getBackgroundColor({ theme, isExpanded, isActive: false }),
-  );
+  const activeBackgroundColor = useSharedValue(getBackgroundColor({ theme, isActive: true }));
+  const inActiveBackgroundColor = useSharedValue(getBackgroundColor({ theme, isActive: false }));
 
   /**
    * `backgroundColor` is derived from `isExpanded` and pressed state.
@@ -51,9 +47,9 @@ const _AccordionButton = ({
    * this effect updates the shared values for active / inactive states which are used by `animatedStyles`.
    */
   useEffect(() => {
-    activeBackgroundColor.value = getBackgroundColor({ theme, isExpanded, isActive: true });
-    inActiveBackgroundColor.value = getBackgroundColor({ theme, isExpanded, isActive: false });
-  }, [isExpanded, activeBackgroundColor, inActiveBackgroundColor, theme]);
+    activeBackgroundColor.value = getBackgroundColor({ theme, isActive: true });
+    inActiveBackgroundColor.value = getBackgroundColor({ theme, isActive: false });
+  }, [activeBackgroundColor, inActiveBackgroundColor, theme]);
 
   const animatedStyles = useAnimatedStyle(() => ({
     backgroundColor: withTiming(

@@ -459,6 +459,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -566,11 +567,11 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1140,6 +1141,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transition-duration: 640ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
   transition-timing-function: cubic-bezier(0.5,0,0,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -1243,11 +1245,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1816,6 +1818,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -1919,11 +1922,11 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
               </label>
             </div>
             <div
-              class=" c9"
+              class=" c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11"
+                class=" c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -2681,6 +2684,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {
@@ -2854,6 +2858,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 @media screen and (min-width:768px) {

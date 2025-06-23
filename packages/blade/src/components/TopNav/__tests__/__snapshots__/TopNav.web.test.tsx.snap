@@ -31,7 +31,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   margin-top: 12px;
-  width: 245px;
+  width: 240px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -830,7 +830,7 @@ exports[`TopNav should render 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   margin-top: 12px;
-  width: 245px;
+  width: 240px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1629,7 +1629,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   margin-top: 12px;
-  width: 245px;
+  width: 240px;
 }
 
 .c3.c3.c3.c3.c3 {

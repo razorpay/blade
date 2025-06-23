@@ -412,8 +412,8 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(217, 27%, 21%, 1)",
           },
           "primary": {
-            "muted": "hsla(227, 100%, 59%, 0.32)",
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "muted": "hsla(332, 100%, 26%, 0.18)",
+            "normal": "hsl(332, 100%, 26%)",
           },
         },
         "icon": {
@@ -862,8 +862,8 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(214, 28%, 84%, 1)",
           },
           "primary": {
-            "muted": "hsla(227, 100%, 59%, 0.18)",
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "muted": "hsla(332, 100%, 26%, 0.18)",
+            "normal": "hsl(332, 100%, 26%)",
           },
         },
         "icon": {
@@ -1229,15 +1229,17 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
+    color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsl(332, 100%, 26%)"
     defaultBorderColor="hsl(332, 100%, 26%)"
     focusBackgroundColor="hsl(332, 100%, 23%)"
     focusBorderColor="hsl(332, 100%, 23%)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(332, 100%, 26%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsl(332, 100%, 23%)"
     hoverBorderColor="hsl(332, 100%, 23%)"
+    hoverIconColor="hsl(0, 0%, 100%)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -1782,8 +1784,8 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(217, 27%, 21%, 1)",
           },
           "primary": {
-            "muted": "hsla(227, 100%, 59%, 0.32)",
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "muted": "hsla(57, 100%, 52%, 0.18)",
+            "normal": "hsl(57, 100%, 52%)",
           },
         },
         "icon": {
@@ -2232,8 +2234,8 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(214, 28%, 84%, 1)",
           },
           "primary": {
-            "muted": "hsla(227, 100%, 59%, 0.18)",
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "muted": "hsla(57, 100%, 52%, 0.18)",
+            "normal": "hsl(57, 100%, 52%)",
           },
         },
         "icon": {
@@ -2599,15 +2601,17 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
+    color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsl(57, 100%, 52%)"
     defaultBorderColor="hsl(57, 100%, 52%)"
     focusBackgroundColor="hsl(57, 100%, 47%)"
     focusBorderColor="hsl(57, 100%, 47%)"
-    focusRingColor="hsla(227, 100%, 59%, 0.32)"
+    focusRingColor="hsla(57, 100%, 52%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsl(57, 100%, 47%)"
     hoverBorderColor="hsl(57, 100%, 47%)"
+    hoverIconColor="hsl(0, 0%, 0%)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}

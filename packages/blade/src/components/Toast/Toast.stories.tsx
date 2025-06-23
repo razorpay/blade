@@ -221,3 +221,34 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
 
 export const ToastVariants = ToastVariantsTemplate.bind({});
 ToastVariants.storyName = 'Toast Variants';
+
+const ContainerOffsetTemplate: StoryFn<ToastProps> = () => {
+  const toast = useToast();
+
+  const showToast = () => {
+    toast.show({
+      content: 'This toast appears with custom bottom offset',
+      color: 'information',
+      action: {
+        text: 'Dismiss',
+        onClick: ({ toastId }) => toast.dismiss(toastId),
+      },
+    });
+  };
+
+  return (
+    <Box height="80vh">
+      <Text size="medium" marginBottom="spacing.4">
+        ToastContainer with custom `offsetBottom`
+      </Text>
+      <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.6">
+        The toast will appear 100px from the bottom of the viewport instead of the default position
+      </Text>
+      <Button onClick={showToast}>Show Toast with Custom Offset</Button>
+      <ToastContainer offsetBottom={100} />
+    </Box>
+  );
+};
+
+export const ContainerOffset = ContainerOffsetTemplate.bind({});
+ContainerOffset.storyName = 'Container Offset';
