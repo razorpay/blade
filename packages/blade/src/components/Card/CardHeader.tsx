@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
-import { useVerifyInsideCard } from './CardContext';
+import React, { useContext } from 'react';
+import { useVerifyInsideCard, CardContext } from './CardContext';
 import { ComponentIds } from './Card';
 import type { CardSpacingValueType } from './types';
 import type { BadgeProps } from '~components/Badge';
@@ -171,20 +171,16 @@ type CardHeaderLeadingProps = {
    * it add marginLeft to `CardHeaderCounter`,`CardHeaderLink`  components by default.
    */
   suffix?: React.ReactNode;
-  /**
-   * @default "large"
-   */
-  titleSize?: TextProps<{ variant: TextVariant }>['size'];
 } & DataAnalyticsAttribute;
 const _CardHeaderLeading = ({
   title,
   subtitle,
   prefix,
   suffix,
-  titleSize = 'large',
   ...rest
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
+  const { size } = useContext(CardContext);
 
   if (__DEV__) {
     if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
@@ -213,7 +209,7 @@ const _CardHeaderLeading = ({
 
         <BaseBox marginRight="spacing.5">
           <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-            <Text color="surface.text.gray.normal" size={titleSize} weight="semibold">
+            <Text color="surface.text.gray.normal" size={size} weight="semibold">
               {title}
             </Text>
             {/* if we are using CardHeaderSuffixComponents we still need marginLeft for spacing ,

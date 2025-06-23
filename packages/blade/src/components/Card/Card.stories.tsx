@@ -549,6 +549,7 @@ const MetricCardVariantExample = (): React.ReactElement => {
       maxWidth="500px"
       minWidth="300px"
       padding="spacing.5"
+      size="medium"
     >
       <CardHeader showDivider={false}>
         <CardHeaderLeading
@@ -556,7 +557,6 @@ const MetricCardVariantExample = (): React.ReactElement => {
           subtitle={
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
-          titleSize="medium"
         />
         <CardHeaderTrailing
           visual={
@@ -596,11 +596,15 @@ export const MetricCardVariant = MetricCardVariantExample.bind({});
 const LayoutCardExample = (): React.ReactElement => {
   const isMobile = useIsMobile();
   return (
-    <Card backgroundColor="surface.background.gray.intense" maxWidth="700px" minWidth="300px">
+    <Card
+      backgroundColor="surface.background.gray.intense"
+      maxWidth="700px"
+      minWidth="300px"
+      size="medium"
+    >
       <CardHeader showDivider={false}>
         <CardHeaderLeading
           title={isMobile ? 'TPV' : 'Total Payment Volume'}
-          titleSize="medium"
           subtitle={
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
@@ -612,7 +616,7 @@ const LayoutCardExample = (): React.ReactElement => {
                 placement="top"
               >
                 <TooltipInteractiveWrapper>
-                  <InfoIcon size="small" color="surface.icon.gray.subtle" marginLeft="spacing.2" />
+                  <InfoIcon color="surface.icon.gray.subtle" marginLeft="spacing.2" />
                 </TooltipInteractiveWrapper>
               </Tooltip>
             </Box>
