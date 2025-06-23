@@ -17,7 +17,7 @@ import {
   CardHeaderBadge,
 } from '.';
 import { Code, Text, Heading } from '~components/Typography';
-import { RupeeIcon } from '~components/Icons';
+import { RupeeIcon, RazorpayIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -27,9 +27,10 @@ import { isReactNative } from '~utils';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Switch } from '~components/Switch';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { Badge } from '~components/Badge';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Checkbox, CheckboxGroup } from '~components/Checkbox';
+import { Divider } from '~components/Divider';
+import { List, ListItem, ListItemText } from '~components/List';
 
 const Page = (): React.ReactElement => {
   return (
@@ -446,37 +447,6 @@ export const LinkableCard = (): React.ReactElement => {
   );
 };
 
-export const SelectableCard = (): React.ReactElement => {
-  const [isSelected, setIsSelected] = React.useState(true);
-
-  return (
-    <Box>
-      <Text marginBottom="spacing.6">
-        By passing the <Code size="medium">isSelected</Code> prop, the card will be highlighted.
-      </Text>
-      <Card
-        shouldScaleOnHover
-        isSelected={isSelected}
-        onClick={() => {
-          setIsSelected(!isSelected);
-        }}
-        accessibilityLabel="Payment Links Card"
-        width={{ s: '100%', m: '400px' }}
-      >
-        <CardHeader>
-          <CardHeaderLeading title="Payment Links" subtitle="Click the Card to toggle selection" />
-        </CardHeader>
-        <CardBody>
-          <Text>
-            Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.
-            Accepting payments from customers is now just a link away.
-          </Text>
-        </CardBody>
-      </Card>
-    </Box>
-  );
-};
-
 const HiddenInput = ({
   onChange,
   value,
@@ -513,12 +483,18 @@ const SingleSelectCardWeb = (): React.ReactElement => {
         to the <Code size="medium">Card</Code>.
       </Text>
 
-      <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
+      <Box
+        display="flex"
+        gap="spacing.5"
+        flexDirection={{ xs: 'column', m: 'row' }}
+        alignItems="stretch"
+      >
         <Card
           as="label"
           accessibilityLabel="Free Tier"
           shouldScaleOnHover
           isSelected={selected === 'free'}
+          minHeight="100%"
         >
           <CardBody>
             <HiddenInput
@@ -543,6 +519,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
           accessibilityLabel="Standard Tier"
           shouldScaleOnHover
           isSelected={selected === 'standard'}
+          minHeight="100%"
         >
           <CardBody>
             <HiddenInput
@@ -566,6 +543,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
           accessibilityLabel="Premium Tier"
           shouldScaleOnHover
           isSelected={selected === 'premium'}
+          minHeight="100%"
         >
           <CardBody>
             <HiddenInput
@@ -608,8 +586,13 @@ const MultiSelectCardWeb = (): React.ReactElement => {
         to the <Code size="medium">Card</Code>.
       </Text>
 
-      <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
-        <Card as="label" shouldScaleOnHover isSelected={selected.includes('free')}>
+      <Box
+        display="flex"
+        gap="spacing.5"
+        flexDirection={{ xs: 'column', m: 'row' }}
+        alignItems="stretch"
+      >
+        <Card as="label" shouldScaleOnHover isSelected={selected.includes('free')} minHeight="100%">
           <CardBody>
             <HiddenInput
               type="checkbox"
@@ -629,7 +612,12 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             </Box>
           </CardBody>
         </Card>
-        <Card as="label" shouldScaleOnHover isSelected={selected.includes('standard')}>
+        <Card
+          as="label"
+          shouldScaleOnHover
+          isSelected={selected.includes('standard')}
+          minHeight="100%"
+        >
           <CardBody>
             <HiddenInput
               type="checkbox"
@@ -648,7 +636,12 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             </Box>
           </CardBody>
         </Card>
-        <Card as="label" shouldScaleOnHover isSelected={selected.includes('premium')}>
+        <Card
+          as="label"
+          shouldScaleOnHover
+          isSelected={selected.includes('premium')}
+          minHeight="100%"
+        >
           <CardBody>
             <HiddenInput
               type="checkbox"
@@ -824,138 +817,281 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
   );
 };
 
-export const SingleSelectCard = (): React.ReactElement => {
+const merchantOnboardingOptions = [
+  {
+    value: 'payment-gateway',
+    title: 'Payment Gateway',
+    subtitle: 'Accept online payments',
+    icon: RazorpayIcon,
+    features: [
+      '100+ payment methods',
+      'UPI, Cards, Netbanking, Wallets',
+      'Industry-leading success rates',
+      'Real-time payment tracking',
+    ],
+  },
+  {
+    value: 'payment-links',
+    title: 'Payment Links',
+    subtitle: 'Share & collect payments',
+    icon: RazorpayIcon,
+    features: [
+      'No coding required',
+      'Share via SMS, email, WhatsApp',
+      'Instant payment collection',
+      'Custom branding options',
+    ],
+  },
+  {
+    value: 'payment-pages',
+    title: 'Payment Pages',
+    subtitle: 'Create online store',
+    icon: RazorpayIcon,
+    features: [
+      'Ready-to-use online store',
+      'Product catalog management',
+      'Inventory tracking',
+      'Mobile-optimized checkout',
+    ],
+  },
+  {
+    value: 'pos',
+    title: 'Point of Sale (POS)',
+    subtitle: 'In-store payments',
+    icon: RazorpayIcon,
+    features: [
+      'Accept card & UPI payments',
+      'Contactless payments',
+      'Inventory management',
+      'Sales analytics & reports',
+    ],
+  },
+];
+
+const OptionCard = ({
+  option,
+  isSelected,
+  children,
+}: {
+  option: typeof merchantOnboardingOptions[0];
+  isSelected: boolean;
+  children: React.ReactNode;
+}) => (
+  <Card
+    as="label"
+    isSelected={isSelected}
+    marginBottom="spacing.3"
+    width={{ s: '100%', m: '400px' }}
+  >
+    <CardBody>
+      <Box display="flex" flexDirection="row" gap="spacing.3">
+        <CardHeaderLeading
+          title={option.title}
+          subtitle={option.subtitle}
+          prefix={<CardHeaderIcon icon={option.icon} />}
+        />
+        {children}
+      </Box>
+      <Divider marginTop="spacing.2" />
+      <List variant="unordered" marginTop="spacing.2">
+        {option.features.map((feature, index) => (
+          <ListItem key={index}>
+            <ListItemText>{feature}</ListItemText>
+          </ListItem>
+        ))}
+      </List>
+    </CardBody>
+  </Card>
+);
+
+export const SingleSelectableCardWithRadio = (): React.ReactElement => {
+  const [selectedBusinessType, setSelectedBusinessType] = React.useState('');
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const hasError = isSubmitted && !selectedBusinessType;
+
+  return (
+    <Box display="flex" gap="spacing.6" flexDirection="column">
+      <Box>
+        <Text marginBottom="spacing.4" weight="semibold" size="large">
+          Merchant Onboarding - Primary Product Selection
+        </Text>
+        <Text marginBottom="spacing.4">
+          Choose your primary Razorpay product to get started. You can add more products later from
+          your dashboard.
+        </Text>
+
+        <RadioGroup
+          value={selectedBusinessType}
+          onChange={({ value }) => setSelectedBusinessType(value)}
+          label="Select Product"
+          necessityIndicator="required"
+          validationState={hasError ? 'error' : 'none'}
+          errorText={hasError ? 'Please select a product to continue' : undefined}
+          helpText="Select one primary product for your initial setup"
+          orientation="horizontal"
+          flexWrap="wrap"
+        >
+          {merchantOnboardingOptions.map((option) => (
+            <OptionCard
+              key={option.value}
+              option={option}
+              isSelected={selectedBusinessType === option.value}
+            >
+              <Radio value={option.value} />
+            </OptionCard>
+          ))}
+        </RadioGroup>
+
+        <Box display="flex" justifyContent="space-between">
+          <Button marginTop="spacing.4" onClick={() => setIsSubmitted(true)} variant="primary">
+            Continue Setup
+          </Button>
+          {selectedBusinessType && (
+            <Box
+              marginTop="spacing.3"
+              backgroundColor="surface.background.gray.intense"
+              padding="spacing.3"
+              borderRadius="medium"
+            >
+              <Text color="surface.text.gray.subtle">
+                Selected:{' '}
+                {
+                  merchantOnboardingOptions.find((option) => option.value === selectedBusinessType)
+                    ?.title
+                }
+              </Text>
+            </Box>
+          )}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const MultiSelectableCardWithCheckbox = (): React.ReactElement => {
+  const [selectedProducts, setSelectedProducts] = React.useState<string[]>([]);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const hasError = isSubmitted && selectedProducts.length === 0;
+  const hasMaxError = selectedProducts.length > 3;
+  const validationState = hasError || hasMaxError ? 'error' : 'none';
+  const errorText = hasError
+    ? 'Please select at least one Razorpay product to get started'
+    : hasMaxError
+    ? 'You can select maximum 3 products during initial setup'
+    : undefined;
+
+  return (
+    <Box display="flex" gap="spacing.6" flexDirection="column">
+      <Box>
+        <Text marginBottom="spacing.4" weight="semibold" size="large">
+          Merchant Onboarding - Multiple Product Selection
+        </Text>
+        <Text marginBottom="spacing.4">
+          Choose multiple Razorpay products you want to integrate. You can always add more products
+          later from your dashboard.
+        </Text>
+
+        <CheckboxGroup
+          value={selectedProducts}
+          onChange={({ values }) => setSelectedProducts(values)}
+          label="Which products do you want to use?"
+          necessityIndicator="required"
+          validationState={validationState}
+          errorText={errorText}
+          helpText="Select 1-3 products to start with. Additional products can be enabled later."
+          orientation="horizontal"
+          flexWrap="wrap"
+        >
+          {merchantOnboardingOptions.map((option) => (
+            <OptionCard
+              key={option.value}
+              option={option}
+              isSelected={selectedProducts.includes(option.value)}
+            >
+              <Checkbox value={option.value} />
+            </OptionCard>
+          ))}
+        </CheckboxGroup>
+
+        <Box display="flex" justifyContent="space-between">
+          <Button marginTop="spacing.4" onClick={() => setIsSubmitted(true)} variant="primary">
+            Continue Setup
+          </Button>
+
+          {selectedProducts.length > 0 && (
+            <Box
+              marginTop="spacing.3"
+              backgroundColor="surface.background.gray.intense"
+              padding="spacing.3"
+              borderRadius="medium"
+            >
+              <Text color="surface.text.gray.subtle">
+                Selected products ({selectedProducts.length}/3):{' '}
+                {selectedProducts
+                  .map(
+                    (productValue) =>
+                      merchantOnboardingOptions.find((option) => option.value === productValue)
+                        ?.title,
+                  )
+                  .join(', ')}
+              </Text>
+            </Box>
+          )}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const SelectableCardWithLabelLeft = (): React.ReactElement => {
+  const [selectedBusinessType, setSelectedBusinessType] = React.useState('');
+
+  return (
+    <Box display="flex" gap="spacing.6" flexDirection="column">
+      <Box>
+        <Text marginBottom="spacing.4" weight="semibold" size="large">
+          Label Position Left Example
+        </Text>
+        <Text marginBottom="spacing.4">
+          RadioGroup with label positioned on the left side of the cards.
+        </Text>
+
+        <RadioGroup
+          value={selectedBusinessType}
+          onChange={({ value }) => setSelectedBusinessType(value)}
+          label="Select Product"
+          orientation="horizontal"
+          labelPosition="left"
+          flexWrap="wrap"
+          helpText="Select one primary product for your initial setup"
+        >
+          {merchantOnboardingOptions.slice(0, 2).map((option) => (
+            <OptionCard
+              key={option.value}
+              option={option}
+              isSelected={selectedBusinessType === option.value}
+            >
+              <Radio value={option.value} />
+            </OptionCard>
+          ))}
+        </RadioGroup>
+      </Box>
+    </Box>
+  );
+};
+
+export const SingleSelectableCard = (): React.ReactElement => {
   if (isReactNative()) {
     return <SingleSelectCardReactNative />;
   }
   return <SingleSelectCardWeb />;
 };
 
-export const MultiSelectCard = (): React.ReactElement => {
+export const MultiSelectableCard = (): React.ReactElement => {
   if (isReactNative()) {
     return <MultiSelectCardReactNative />;
   }
   return <MultiSelectCardWeb />;
-};
-
-const RadioCard = ({ value, label }: { value: string; label: string }) => {
-  return (
-    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
-      <Radio value={value} />
-      <Box display="flex" flexDirection="column" gap="spacing.3">
-        <Box display="flex" flexDirection="row" gap="spacing.4">
-          <Text weight="semibold">{label}</Text>
-          <Badge color="positive">Issued</Badge>
-        </Box>
-        <Box display="flex" flexDirection="row" gap="spacing.4">
-          <Text size="small">13 Aug’23</Text>
-          <Amount size="small" value={1000} />
-          <Text size="small">Un-billed/₹1,000</Text>
-        </Box>
-      </Box>
-    </Box>
-  );
-};
-
-export const SingleSelectWithRadio = (): React.ReactElement => {
-  const [selected, setSelected] = React.useState('P0');
-
-  const onChange = (value: string) => {
-    setSelected(value);
-  };
-
-  return (
-    <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'column' }}>
-      <Text>⚡️ 1 open PO(s) detected against Vendor Name, Selected: {selected}</Text>
-
-      <RadioGroup value={selected} onChange={({ value }) => onChange(value)}>
-        <Card
-          as="label"
-          accessibilityLabel="PO Issue 1234"
-          isSelected={selected === 'P0'}
-          marginBottom="spacing.2"
-        >
-          <CardBody>
-            <RadioCard value="P0" label="P0#123" />
-          </CardBody>
-        </Card>
-        <Card
-          as="label"
-          accessibilityLabel="P1 Issue 123"
-          isSelected={selected === 'P1'}
-          marginBottom="spacing.2"
-        >
-          <CardBody>
-            <RadioCard value="P1" label="P1#123" />
-          </CardBody>
-        </Card>
-        <Card as="label" accessibilityLabel="P2 Issue 123" isSelected={selected === 'P2'}>
-          <CardBody>
-            <RadioCard value="P2" label="P2#123" />
-          </CardBody>
-        </Card>
-      </RadioGroup>
-    </Box>
-  );
-};
-
-const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
-  return (
-    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
-      <Checkbox value={value} />
-      <Box display="flex" flexDirection="column" gap="spacing.3">
-        <Box display="flex" flexDirection="row" gap="spacing.4">
-          <Text weight="medium">{label}</Text>
-          <Badge color="positive">Issued</Badge>
-        </Box>
-        <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.4">
-          <Text size="small">13 Aug’23</Text>
-          <Amount size="small" weight="medium" value={1000} />
-          <Text size="small">Un-billed | ₹1,000</Text>
-        </Box>
-      </Box>
-    </Box>
-  );
-};
-
-export const MultiSelectSelectWithCheckbox = (): React.ReactElement => {
-  const [selected, setSelected] = React.useState(['P0']);
-
-  const onChange = (value: string[]) => {
-    setSelected(value);
-  };
-
-  return (
-    <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'column' }}>
-      <Text>⚡️ 1 open PO(s) detected against Vendor Name, Selected: {selected.join(', ')}</Text>
-
-      <CheckboxGroup value={selected} onChange={({ values }) => onChange(values)}>
-        <Card
-          as="label"
-          accessibilityLabel="PO Issue 1234"
-          isSelected={selected.includes('P0')}
-          marginBottom="spacing.2"
-        >
-          <CardBody>
-            <CheckboxCard value="P0" label="P0#123" />
-          </CardBody>
-        </Card>
-        <Card
-          as="label"
-          accessibilityLabel="P1 Issue 123"
-          isSelected={selected.includes('P1')}
-          marginBottom="spacing.2"
-        >
-          <CardBody>
-            <CheckboxCard value="P1" label="P1#123" />
-          </CardBody>
-        </Card>
-        <Card as="label" accessibilityLabel="P2 Issue 123" isSelected={selected.includes('P2')}>
-          <CardBody>
-            <CheckboxCard value="P2" label="P2#123" />
-          </CardBody>
-        </Card>
-      </CheckboxGroup>
-    </Box>
-  );
 };
