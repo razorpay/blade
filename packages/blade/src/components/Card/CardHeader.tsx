@@ -156,11 +156,7 @@ const _CardHeader = ({
 };
 const CardHeader = assignWithoutSideEffects(_CardHeader, { componentId: ComponentIds.CardHeader });
 
-const CardHeaderSuffixComponents = [
-  ComponentIds.CardHeaderCounter,
-  ComponentIds.CardHeaderLink,
-  ComponentIds.CardHeaderBox,
-];
+const CardHeaderSuffixComponents = [ComponentIds.CardHeaderCounter, ComponentIds.CardHeaderLink];
 type CardHeaderLeadingProps = {
   title: string;
   subtitle?: string;
@@ -173,7 +169,7 @@ type CardHeaderLeadingProps = {
   /**
    * suffix element of Card
    *
-   * it add marginLeft to `CardHeaderCounter`,`CardHeaderLink` ,`CardHeaderBox` components.
+   * it add marginLeft to `CardHeaderCounter`,`CardHeaderLink`  components.
    */
   suffix?: React.ReactNode;
   /**
@@ -260,16 +256,6 @@ const CardHeaderTrailing = assignWithoutSideEffects(_CardHeaderTrailing, {
   componentId: ComponentIds.CardHeaderTrailing,
 });
 
-const _CardHeaderBox = (props: BoxProps): React.ReactElement => {
-  useVerifyInsideCard('CardHeaderBox');
-
-  return <BaseBox {...props} />;
-};
-
-const CardHeaderBox = assignWithoutSideEffects(_CardHeaderBox, {
-  componentId: ComponentIds.CardHeaderBox,
-});
-
 export {
   CardHeader,
   CardHeaderLeading,
@@ -281,5 +267,4 @@ export {
   CardHeaderLink,
   CardHeaderAmount,
   CardHeaderIconButton,
-  CardHeaderBox,
 };
