@@ -27,7 +27,6 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVer
 import type { AmountProps } from '~components/Amount';
 import { Amount } from '~components/Amount';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { BoxProps } from '~components/Box';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -169,7 +168,7 @@ type CardHeaderLeadingProps = {
   /**
    * suffix element of Card
    *
-   * it add marginLeft to `CardHeaderCounter`,`CardHeaderLink`  components.
+   * it add marginLeft to `CardHeaderCounter`,`CardHeaderLink`  components by default.
    */
   suffix?: React.ReactNode;
   /**
