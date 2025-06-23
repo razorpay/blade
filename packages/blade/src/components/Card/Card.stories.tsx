@@ -638,4 +638,4 @@ const LayoutCardExample = (): React.ReactElement => {
   );
 };
 
-export const LayoutCardVariant = LayoutCardExample.bind({});
+export const LayoutSection = LayoutCardExample.bind({});
