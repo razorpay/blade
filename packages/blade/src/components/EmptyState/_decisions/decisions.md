@@ -13,7 +13,7 @@ EmptyState is a component that displays a visual placeholder when there is no co
 
 ## Design
 
-- [Figma - EmptyState](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=figma-node-id)
+- [Figma - EmptyState](https://www.figma.com/design/UTlH5NpDte6c9L7o8z93vd/-Research--Empty-States?node-id=582-85262&m=dev)
 
 ## Anatomy
 
