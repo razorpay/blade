@@ -1,7 +1,7 @@
 import React from 'react';
 import { throwBladeError } from '~utils/logger';
 
-type CardContextType = { size: 'large' | 'medium' | undefined } | null;
+type CardContextType = { size: 'large' | 'medium' | undefined };
 const CardContext = React.createContext<CardContextType>({ size: undefined });
 
 const useVerifyInsideCard = (componentName: string): CardContextType => {
