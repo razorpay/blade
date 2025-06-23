@@ -19,7 +19,6 @@ import {
   CardHeaderLink,
   CardHeaderAmount,
   CardHeaderText,
-  CardHeaderBox,
 } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Button } from '~components/Button';
@@ -31,7 +30,6 @@ import {
   TrashIcon,
   CheckCircleIcon,
   ArrowSquareUpIcon,
-  ExternalLinkIcon,
   ArrowRightIcon,
   InfoIcon,
 } from '~components/Icons';
