@@ -601,6 +601,7 @@ const CardWithTooltipExample = (): React.ReactElement => {
       <CardHeader showDivider={false}>
         <CardHeaderLeading
           title={isMobile ? 'TPV' : 'Total Payment Volume'}
+          titleSize="medium"
           subtitle={
             isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
           }
