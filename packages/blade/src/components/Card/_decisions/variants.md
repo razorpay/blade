@@ -103,7 +103,7 @@ type CardHeaderLeading = {
 Drawbacks:
 - We are adding a new component `CardHeaderBox` which is a wrapper on top of `Box` component.
 
-So we went ahead with this api and added a new component `CardHeaderBox` which is a wrapper on top of `Box` component.
+*So we went ahead with API-1 and added a new component `CardHeaderBox` which is a wrapper on top of `Box` component.*
 
 #### API-2
 * Maybe support passing tooltip  in CardHeaderLeading
