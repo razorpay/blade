@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAccordion, useAccordionItemIndex } from './AccordionContext';
 import { componentIds } from './componentIds';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
@@ -72,9 +72,6 @@ const _AccordionItemHeader = ({
       />
     );
   }, [shouldAlignHeaderItemsInCenter, isDisabled]);
-
-
-  console.log('shouldAlignHeaderItemsInCenter', shouldAlignHeaderItemsInCenter);
 
   const leadingElement = React.useMemo(() => {
     if (showNumberPrefix && typeof index === 'number') {

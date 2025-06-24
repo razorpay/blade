@@ -397,10 +397,6 @@ const _BaseHeader = ({
       </BaseBox>
     );
   };
-  console.log(
-    'renderTrailingInteractionElementWithoutChildren',
-    renderTrailingInteractionElementWithoutChildren(),
-  );
 
   return (
     <BaseBox
