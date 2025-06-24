@@ -1,6 +1,6 @@
+import type { EmptyStateSize } from './emptyStateTokens';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
-import type { EmptyStateSize } from './emptyStateTokens';
 
 export type EmptyStateProps = {
   /**

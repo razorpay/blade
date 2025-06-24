@@ -12,7 +12,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
-const getEmptyStateArgTypes = (): Record<string, any> => ({
+const getEmptyStateArgTypes = (): Record<string, unknown> => ({
   size: {
     control: {
       type: 'select',
