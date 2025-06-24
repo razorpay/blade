@@ -1,7 +1,7 @@
 import React from 'react';
-import type { BladeElementRef } from '~utils/types';
-import type { EmptyStateProps } from './types';
 import { emptyStateSizeTokens } from './emptyStateTokens';
+import type { EmptyStateProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -14,7 +14,7 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
   ref,
 ) => {
   const tokens = emptyStateSizeTokens[size];
-  console.log(asset);
+
   return (
     <BaseBox
       ref={ref as never}

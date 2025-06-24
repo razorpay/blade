@@ -1,18 +1,18 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { EmptyState } from '../EmptyState';
+import type { EmptyStateProps } from '../types';
+import { EmptyStateStoryCode } from './code';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
+import { Heading } from '~components/Typography';
+import { EcommerceIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { Heading } from '~components/Typography';
-import type { EmptyStateProps } from '../types';
-import { EmptyStateStoryCode } from './code';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { EcommerceIcon } from '~components/Icons';
 
-const getEmptyStateArgTypes = () => ({
+const getEmptyStateArgTypes = (): Record<string, any> => ({
   size: {
     control: {
       type: 'select',
@@ -63,7 +63,7 @@ export default {
 // Asset components with size-based dimensions
 type AssetSize = 'small' | 'medium' | 'large' | 'xlarge';
 
-const getAssetDimensions = (size: AssetSize) => {
+const getAssetDimensions = (size: AssetSize): { width: string; height: string } => {
   const dimensions = {
     small: { width: '60px', height: '60px' },
     medium: { width: '90px', height: '90px' },
@@ -98,8 +98,8 @@ Basic.args = {
   children: (
     <Box display="flex" flexDirection="column" gap="spacing.4" alignItems="center">
       <Box display="flex" flexDirection="row" gap="spacing.2">
-        <Button onClick={() => {}}>Go to Home</Button>
-        <Button variant="secondary" onClick={() => {}}>
+        <Button onClick={() => console.log('Navigate to home')}>Go to Home</Button>
+        <Button variant="secondary" onClick={() => console.log('Navigate to docs')}>
           Go to Blade Docs
         </Button>
       </Box>
@@ -120,7 +120,7 @@ OnlyAsset.args = {
   asset: <AccessDeniedAsset />,
 };
 
-export const AllSizes = () => (
+export const AllSizes = (): React.ReactElement => (
   <Box display="flex" flexDirection="column" gap="spacing.10">
     <Box>
       <Heading size="small" marginBottom="spacing.4">
@@ -216,7 +216,7 @@ WithLinkOnly.args = {
   children: <Link href="/settings">Manage Notification Settings</Link>,
 };
 
-export const DifferentAssets = () => (
+export const DifferentAssets = (): React.ReactElement => (
   <Box display="flex" flexDirection="column" gap="spacing.10">
     <Box>
       <Heading size="medium" marginBottom="spacing.4">
