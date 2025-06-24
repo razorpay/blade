@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.0.1
+
+### Patch Changes
+
+- 50e2ce3cf: feat(mcp/README): update mcp readme with new tools and troubleshooting
+
 ## 1.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.36.0
+
+### Minor Changes
+
+- eb7381a21: feat: Selectable Card
+
 ## 12.35.0
 
 ### Minor Changes
