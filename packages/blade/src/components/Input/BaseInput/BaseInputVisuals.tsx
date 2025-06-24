@@ -64,13 +64,21 @@ const textSize = {
 const getPrefixStyles = ({
   hasLeadingIcon,
   hasPrefix,
+  hasLeadingInteractionElement,
 }: {
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
+  hasLeadingInteractionElement: boolean;
 }): Pick<BaseBoxProps, 'paddingLeft'> => {
   if (hasPrefix && hasLeadingIcon) {
     return {
       paddingLeft: 'spacing.3',
+    };
+  }
+
+  if (hasLeadingInteractionElement && hasPrefix && !hasLeadingIcon) {
+    return {
+      paddingLeft: 'spacing.2',
     };
   }
 
@@ -328,7 +336,9 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasPrefix ? (
-          <BaseBox {...getPrefixStyles({ hasLeadingIcon, hasPrefix })}>
+          <BaseBox
+            {...getPrefixStyles({ hasLeadingIcon, hasPrefix, hasLeadingInteractionElement })}
+          >
             <Text
               size={textSize[size]}
               variant="body"

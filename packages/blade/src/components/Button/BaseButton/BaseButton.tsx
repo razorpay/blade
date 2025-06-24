@@ -38,6 +38,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type {
   BladeElementRef,
   DataAnalyticsAttribute,
+  DotNotationSpacingStringToken,
   StringChildrenType,
   TestID,
 } from '~utils/types';
@@ -201,6 +202,32 @@ export const getTextColorToken = ({
   return tokens.base[variant][_state];
 };
 
+const getIconPadding = ({
+  color,
+  hasIcon,
+  childrenString,
+  size,
+  buttonIconPadding,
+}: {
+  color: BaseButtonProps['color'];
+  hasIcon: boolean;
+  childrenString?: string;
+  size: NonNullable<BaseButtonProps['size']>;
+  buttonIconPadding: Record<string, number>;
+}): DotNotationSpacingStringToken | undefined => {
+  const hasText = childrenString?.trim();
+
+  if (!hasIcon || !hasText) {
+    return undefined;
+  }
+
+  if (color === 'transparent') {
+    return 'spacing.2' as DotNotationSpacingStringToken;
+  }
+
+  return `spacing.${buttonIconPadding[size]}` as DotNotationSpacingStringToken;
+};
+
 const getProps = ({
   buttonTypographyTokens,
   childrenString,
@@ -241,8 +268,13 @@ const getProps = ({
     minHeight: makeSize(buttonMinHeight[size]),
     height: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
     width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
-    iconPadding:
-      hasIcon && childrenString?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
+    iconPadding: getIconPadding({
+      color,
+      hasIcon,
+      childrenString,
+      size,
+      buttonIconPadding,
+    }),
     iconColor: getTextColorToken({
       property: 'icon',
       variant,
