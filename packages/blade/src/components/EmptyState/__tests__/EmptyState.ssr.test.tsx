@@ -4,7 +4,7 @@ import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 const TestAsset = (): React.ReactElement => (
   <img
-    src="https://shorturl.at/5z72G"
+    src="https://shorturl.at/M02qe"
     alt="List view asset"
     width="90px"
     height="90px"

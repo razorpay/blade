@@ -205,7 +205,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
       <img
         alt="List view asset"
         height="96px"
-        src="https://shorturl.at/x1CRv"
+        src="https://shorturl.at/M02qe"
         style="object-fit: contain;"
         width="96px"
       />
@@ -412,7 +412,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
       <img
         alt="List view asset"
         height="96px"
-        src="https://shorturl.at/x1CRv"
+        src="https://shorturl.at/M02qe"
         style="object-fit: contain;"
         width="96px"
       />
@@ -546,7 +546,7 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
       <img
         alt="List view asset"
         height="96px"
-        src="https://shorturl.at/x1CRv"
+        src="https://shorturl.at/M02qe"
         style="object-fit: contain;"
         width="96px"
       />
@@ -624,7 +624,7 @@ exports[`<EmptyState /> should render EmptyState with asset only 1`] = `
       <img
         alt="List view asset"
         height="96px"
-        src="https://shorturl.at/x1CRv"
+        src="https://shorturl.at/M02qe"
         style="object-fit: contain;"
         width="96px"
       />
@@ -871,7 +871,7 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
       <img
         alt="List view asset"
         height="96px"
-        src="https://shorturl.at/x1CRv"
+        src="https://shorturl.at/M02qe"
         style="object-fit: contain;"
         width="96px"
       />
@@ -985,7 +985,7 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
       <img
         alt="List view asset"
         height="96px"
-        src="https://shorturl.at/x1CRv"
+        src="https://shorturl.at/M02qe"
         style="object-fit: contain;"
         width="96px"
       />
@@ -1099,7 +1099,7 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
       <img
         alt="List view asset"
         height="96px"
-        src="https://shorturl.at/x1CRv"
+        src="https://shorturl.at/M02qe"
         style="object-fit: contain;"
         width="96px"
       />
@@ -1213,7 +1213,7 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
       <img
         alt="List view asset"
         height="96px"
-        src="https://shorturl.at/x1CRv"
+        src="https://shorturl.at/M02qe"
         style="object-fit: contain;"
         width="96px"
       />

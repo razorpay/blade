@@ -82,11 +82,11 @@ const createAssetComponent = (src: string, alt: string) => ({
   return <img src={src} alt={alt} width={width} height={height} style={{ objectFit: 'contain' }} />;
 };
 
-const ListViewAsset = createAssetComponent('https://shorturl.at/x1CRv', 'List view');
-const NoDataAsset = createAssetComponent('https://shorturl.at/5z72G', 'No data');
-const ErrorAsset = createAssetComponent('https://shorturl.at/qvgcJ', 'Error');
-const NoNotificationAsset = createAssetComponent('https://shorturl.at/XDpWx', 'No notifications');
-const AccessDeniedAsset = createAssetComponent('https://shorturl.at/64ss7', 'Access denied');
+const ListViewAsset = createAssetComponent('https://shorturl.at/M02qe', 'List view');
+const NoDataAsset = createAssetComponent('https://shorturl.at/tCRRX', 'No data');
+const ErrorAsset = createAssetComponent('https://shorturl.at/dzeyS', 'Error');
+const NoNotificationAsset = createAssetComponent('https://shorturl.at/6AMik', 'No notifications');
+const AccessDeniedAsset = createAssetComponent('https://shorturl.at/G9Diy', 'Access denied');
 
 const BasicTemplate: StoryFn<typeof EmptyState> = (args) => <EmptyState {...args} />;
 
@@ -233,7 +233,7 @@ export const DifferentAssets = (): React.ReactElement => (
         List View Asset
       </Heading>
       <EmptyState
-        asset={<ListViewAsset />}
+        asset={<ListViewAsset size="medium" />}
         title="No items in list"
         description="Add items to see them appear in your list view."
       >
@@ -246,7 +246,7 @@ export const DifferentAssets = (): React.ReactElement => (
         No Data Asset
       </Heading>
       <EmptyState
-        asset={<NoDataAsset />}
+        asset={<NoDataAsset size="medium" />}
         title="No data available"
         description="Import or create data to get started with your dashboard."
       >
@@ -259,7 +259,7 @@ export const DifferentAssets = (): React.ReactElement => (
         Error Asset
       </Heading>
       <EmptyState
-        asset={<ErrorAsset />}
+        asset={<ErrorAsset size="medium" />}
         title="Failed to load data"
         description="We couldn't retrieve your data. Please check your connection and try again."
       >
@@ -275,7 +275,7 @@ export const DifferentAssets = (): React.ReactElement => (
         No Notifications Asset
       </Heading>
       <EmptyState
-        asset={<NoNotificationAsset />}
+        asset={<NoNotificationAsset size="medium" />}
         title="No notifications"
         description="You're all caught up! New notifications will appear here."
       >
@@ -288,7 +288,7 @@ export const DifferentAssets = (): React.ReactElement => (
         Access Denied Asset
       </Heading>
       <EmptyState
-        asset={<AccessDeniedAsset />}
+        asset={<AccessDeniedAsset size="medium" />}
         title="Access denied"
         description="You don't have permission to view this content. Contact your administrator for access."
       >

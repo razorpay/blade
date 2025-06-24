@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<EmptyState /> SSR should render EmptyState on server 1`] = `"<div id="root"><div data-blade-component="empty-state" class="BaseBox-bmPWx eRMGuT"><div data-blade-component="base-box" class="BaseBox-bmPWx iylgaX"><img src="https://shorturl.at/5z72G" alt="List view asset" width="90px" height="90px" style="object-fit:contain"/></div><div data-blade-component="base-box" class="BaseBox-bmPWx eWcMvj"><h6 class="StyledBaseText-dVBfTO eEjhUl" data-blade-component="heading">No data found</h6><p class="StyledBaseText-dVBfTO hpfIUV" data-blade-component="text">There&#x27;s no data to display right now</p></div></div></div>"`;
+exports[`<EmptyState /> SSR should render EmptyState on server 1`] = `"<div id="root"><div data-blade-component="empty-state" class="BaseBox-bmPWx eRMGuT"><div data-blade-component="base-box" class="BaseBox-bmPWx iylgaX"><img src="https://shorturl.at/M02qe" alt="List view asset" width="90px" height="90px" style="object-fit:contain"/></div><div data-blade-component="base-box" class="BaseBox-bmPWx eWcMvj"><h6 class="StyledBaseText-dVBfTO eEjhUl" data-blade-component="heading">No data found</h6><p class="StyledBaseText-dVBfTO hpfIUV" data-blade-component="text">There&#x27;s no data to display right now</p></div></div></div>"`;
 
 exports[`<EmptyState /> SSR should render EmptyState on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -92,7 +92,7 @@ exports[`<EmptyState /> SSR should render EmptyState on server 2`] = `
       <img
         alt="List view asset"
         height="90px"
-        src="https://shorturl.at/5z72G"
+        src="https://shorturl.at/M02qe"
         style="object-fit:contain"
         width="90px"
       />
