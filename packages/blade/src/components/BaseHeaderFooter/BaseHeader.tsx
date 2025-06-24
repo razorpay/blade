@@ -356,11 +356,23 @@ const _BaseHeader = ({
     return null;
   };
 
+  const renderTrailingInteractionElementWithoutChildren = (): React.ReactNode => {
+    if (removeWrapperInTrailingInteractionElements && trailingInteractionElement && !children) {
+      return trailingInteractionElement;
+    }
+
+    if (trailingInteractionElement && !children) {
+      return <Box {...centerBoxProps[size]}>{trailingInteractionElement}</Box>;
+    }
+    return null;
+  };
+
   const renderLeadingElement = (): React.ReactNode => {
-    if (leading && removeWrapperInLeadingInteractionElements) {
+    if (Boolean(leading) && removeWrapperInLeadingInteractionElements) {
       return leading;
     }
-    if (leading) {
+
+    if (Boolean(leading)) {
       return (
         <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
           {leading}
@@ -369,6 +381,26 @@ const _BaseHeader = ({
     }
     return null;
   };
+
+  const renderTrailingElement = (): React.ReactNode => {
+    if (removeWrapperInTrailingInteractionElements) {
+      return (
+        <BaseBox marginRight="spacing.5" display="flex" alignItems="center" justifyContent="center">
+          <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
+        </BaseBox>
+      );
+    }
+
+    return (
+      <BaseBox marginRight="spacing.5">
+        <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
+      </BaseBox>
+    );
+  };
+  console.log(
+    'renderTrailingInteractionElementWithoutChildren',
+    renderTrailingInteractionElementWithoutChildren(),
+  );
 
   return (
     <BaseBox
@@ -465,11 +497,8 @@ const _BaseHeader = ({
               </BaseBox>
             </BaseBox>
           )}
-          {validatedTrailingComponent ? (
-            <BaseBox marginRight="spacing.5">
-              <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
-            </BaseBox>
-          ) : null}
+          {renderTrailingElement()}
+
           {showCloseButton ? (
             <Box {...(hasOnlyChildren ? absolutePositionedButton : centerBoxProps[size])}>
               <IconButton
@@ -481,9 +510,7 @@ const _BaseHeader = ({
               />
             </Box>
           ) : null}
-          {trailingInteractionElement && !children ? (
-            <Box {...centerBoxProps[size]}>{trailingInteractionElement}</Box>
-          ) : null}
+          {renderTrailingInteractionElementWithoutChildren()}
         </BaseBox>
         <BaseBox
           display="flex"

@@ -50,7 +50,13 @@ const _AccordionItemHeader = ({
   const trailingInteractionElement = React.useMemo(() => {
     if (shouldAlignHeaderItemsInCenter) {
       return (
-        <Box display="flex" alignItems="center" justifyContent="center" height="100%">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+          alignSelf="center"
+        >
           <CollapsibleChevronIcon
             color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
             size="large"
@@ -66,6 +72,7 @@ const _AccordionItemHeader = ({
       />
     );
   }, [shouldAlignHeaderItemsInCenter, isDisabled]);
+
 
   console.log('shouldAlignHeaderItemsInCenter', shouldAlignHeaderItemsInCenter);
 
@@ -112,7 +119,7 @@ const _AccordionItemHeader = ({
         }}
         trailingInteractionElement={trailingInteractionElement}
         removeWrapperInTrailingInteractionElements={shouldAlignHeaderItemsInCenter}
-        removeWrapperInLeadingInteractionElements={shouldAlignHeaderItemsInCenter }
+        removeWrapperInLeadingInteractionElements={shouldAlignHeaderItemsInCenter}
         {...makeAnalyticsAttribute(rest)}
       >
         {children}

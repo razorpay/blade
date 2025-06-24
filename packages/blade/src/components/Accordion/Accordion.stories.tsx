@@ -637,6 +637,38 @@ const AccordionWithCustomSlotInHeaderTemplate: StoryFn<typeof AccordionComponent
 
 export const AccordionWithCustomSlotInHeaderIcon = AccordionWithCustomSlotInHeaderTemplate.bind({});
 
+const AccordionWithCustomSlotAndTrailingTemplate: StoryFn<typeof AccordionComponent> = ({
+  ...args
+}) => {
+  return (
+    <AccordionComponent {...args}>
+      <AccordionItem>
+        <AccordionItemHeader
+          leading={
+            <img
+              src="https://picsum.photos/200/300"
+              height={100}
+              width={100}
+              style={{ borderRadius: '4px' }}
+              alt="Random placeholder"
+            />
+          }
+          trailing={
+            <Button variant="secondary" size="small">
+              Apply
+            </Button>
+          }
+          title="Custom Slot Header"
+        />
+      </AccordionItem>
+    </AccordionComponent>
+  );
+};
+
+export const AccordionWithCustomSlotAndTrailing = AccordionWithCustomSlotAndTrailingTemplate.bind(
+  {},
+);
+
 AccordionWithCustomSlotInHeader.args = {
   variant: 'transparent',
   size: 'large',
