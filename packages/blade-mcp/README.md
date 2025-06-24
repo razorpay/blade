@@ -70,6 +70,8 @@ If your MCP server is failing to start or if you want to manually force update t
 
 - Step 1: Clear the npx cache
 
+  Run following command in your terminal
+
   ```sh
   npx clear-npx-cache
   ```
