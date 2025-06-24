@@ -592,7 +592,52 @@ const AccordionDeprecatedAPITemplate: StoryFn<typeof AccordionComponent> = ({ ..
 
 export const AccordionDeprecatedAPI = AccordionDeprecatedAPITemplate.bind({});
 
-AccordionDeprecatedAPI.args = {
+const AccordionWithCustomSlotInBodyTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
+  return (
+    <AccordionComponent {...args}>
+      <AccordionItem>
+        <AccordionItemHeader>
+          <Box>
+            <Text>Custom Slot Header</Text>
+            <Text>Custom Slot Header</Text>
+          </Box>
+        </AccordionItemHeader>
+        <AccordionItemBody>
+          <Text>Custom Slot Body</Text>
+        </AccordionItemBody>
+      </AccordionItem>
+    </AccordionComponent>
+  );
+};
+
+export const AccordionWithCustomSlotInHeader = AccordionWithCustomSlotInBodyTemplate.bind({});
+
+const AccordionWithCustomSlotInHeaderTemplate: StoryFn<typeof AccordionComponent> = ({
+  ...args
+}) => {
+  return (
+    <AccordionComponent {...args}>
+      <AccordionItem>
+        <AccordionItemHeader
+          title="Custom Slot Header"
+          leading={
+            <img
+              src="https://picsum.photos/200/300"
+              height={100}
+              width={100}
+              style={{ borderRadius: '4px' }}
+              alt="Random placeholder"
+            />
+          }
+        />
+      </AccordionItem>
+    </AccordionComponent>
+  );
+};
+
+export const AccordionWithCustomSlotInHeaderIcon = AccordionWithCustomSlotInHeaderTemplate.bind({});
+
+AccordionWithCustomSlotInHeader.args = {
   variant: 'transparent',
   size: 'large',
 };
