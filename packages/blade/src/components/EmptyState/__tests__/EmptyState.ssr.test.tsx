@@ -1,5 +1,5 @@
 import React from 'react';
-import { EmptyState } from '../EmptyState';
+import { EmptyState } from '../index';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 const TestAsset = (): React.ReactElement => (
